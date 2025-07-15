@@ -1,0 +1,453 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+import("//build/cangjie/cjc.gni")
+template("cj_ace_library") {
+  ohos_cj_library(target_name) {
+    forward_variables_from(invoker,
+                           [
+                             "module_name",
+                             "sources",
+                             "native_deps",
+                             "cj_deps"
+                           ])
+    external_deps = [ "ace_engine:cj_frontend_ohos" ]
+    if (defined(invoker.external_deps)) {
+      external_deps += invoker.external_deps
+    }
+
+    lib_name = invoker.lib_name
+    cj_external_deps = [
+      "cangjie_api:ohos.labels",
+    ]
+    if (defined(invoker.cj_external_deps)) {
+      cj_external_deps += invoker.cj_external_deps
+    }
+
+    enable_strip = false
+    part_name = "arkui_cangjie_api"
+    subsystem_name = "arkui"
+  }
+}
+
+cj_ace_library("ohos.state_manage") {
+  sources = [
+    "state_manage/app_storage.cj",
+    "state_manage/environment.cj",
+    "state_manage/local_storage.cj",
+    "state_manage/local_storage_inter_op.cj",
+    "state_manage/observable.cj",
+    "state_manage/observed_array.cj",
+    "state_manage/observed_array_list.cj",
+    "state_manage/observed_complex_abstract.cj",
+    "state_manage/observed_object.cj",
+    "state_manage/observed_property.cj",
+    "state_manage/observed_property_abstract.cj",
+    "state_manage/observer.cj",
+    "state_manage/persistent_storage.cj",
+    "state_manage/subscriber_manager.cj",
+    "state_manage/view_stack_processor.cj",
+  ]
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.ffi",
+    "cangjie_api:ohos.hilog",
+    "cangjie_api:ohos.ark_interop",
+    "cangjie_api:ohos.labels",
+  ]
+
+  lib_name = "state_manage"
+}
+
+cj_ace_library("ohos.component") {
+  sources = [
+    "component/ace_log.cj",
+    "component/alphabet_indexer.cj",
+    "component/blank.cj",
+    "component/canvas_pattern.cj",
+    "component/canvas_rendering_context_2d.cj",
+    "component/cj_action_sheet.cj",
+    "component/cj_alert_dialog.cj",
+    "component/cj_animate_param.cj",
+    "component/cj_badge.cj",
+    "component/cj_button.cj",
+    "component/cj_calendar_picker.cj",
+    "component/cj_canvas.cj",
+    "component/cj_checkbox.cj",
+    "component/cj_checkbox_group.cj",
+    "component/cj_circle.cj",
+    "component/cj_component_base.cj",
+    "component/cj_component_id.cj",
+    "component/cj_custom_dialog.cj",
+    "component/cj_data_panel.cj",
+    "component/cj_data_source.cj",
+    "component/cj_datepicker.cj",
+    "component/cj_ellipse.cj",
+    "component/cj_entry.cj",
+    "component/cj_enum.cj",
+    "component/cj_flex.cj",
+    "component/cj_gesture.cj",
+    "component/cj_grid.cj",
+    "component/cj_grid_col.cj",
+    "component/cj_grid_item.cj",
+    "component/cj_grid_row.cj",
+    "component/cj_image.cj",
+    "component/cj_image_animator.cj",
+    "component/cj_image_span.cj",
+    "component/cj_interactable_view.cj",
+    "component/cj_interactable_view_ffi.cj",
+    "component/cj_lambda_invoker_impl.cj",
+    "component/cj_list.cj",
+    "component/cj_location_button.cj",
+    "component/cj_save_button.cj",
+    "component/cj_paste_button.cj",
+    "component/cj_security_component.cj",
+    "component/cj_list_item.cj",
+    "component/cj_list_item_group.cj",
+    "component/cj_menu.cj",
+    "component/cj_navdestination.cj",
+    "component/cj_navigation.cj",
+    "component/cj_page_transition.cj",
+    "component/cj_path.cj",
+    "component/cj_pattern_lock.cj",
+    "component/cj_pixel_unit_convert.cj",
+    "component/cj_progress.cj",
+    "component/cj_rect.cj",
+    "component/cj_recycle_manager.cj",
+    "component/cj_refresh.cj",
+    "component/cj_relative_container.cj",
+    "component/cj_richeditor.cj",
+    "component/cj_richeditor_controller.cj",
+    "component/cj_scroll.cj",
+    "component/cj_search.cj",
+    "component/cj_select.cj",
+    "component/cj_shared_trasition_optin.cj",
+    "component/cj_sidebar_container.cj",
+    "component/cj_span.cj",
+    "component/cj_swiper.cj",
+    "component/cj_symbol_glyph.cj",
+    "component/cj_tab.cj",
+    "component/cj_text.cj",
+    "component/cj_text_clock.cj",
+    "component/cj_text_timer.cj",
+    "component/cj_textarea.cj",
+    "component/cj_textinput.cj",
+    "component/cj_textpicker.cj",
+    "component/cj_timepicker.cj",
+    "component/cj_transitioneffect.cj",
+    "component/cj_util.cj",
+    "component/cj_video.cj",
+    "component/cj_view.cj",
+    "component/cj_view_base.cj",
+    "component/cj_view_builder.cj",
+    "component/cj_view_context.cj",
+    "component/cj_view_ffi.cj",
+    "component/cj_view_typedef.cj",
+    "component/cj_water_flow.cj",
+    "component/cj_web.cj",
+    "component/cj_xcomponent.cj",
+    "component/column.cj",
+    "component/column_split.cj",
+    "component/container_base.cj",
+    "component/context_menu.cj",
+    "component/counter.cj",
+    "component/cursor_control.cj",
+    "component/custom_view.cj",
+    "component/divider.cj",
+    "component/fake_component.cj",
+    "component/focus_control.cj",
+    "component/for_each.cj",
+    "component/gauge.cj",
+    "component/hyperlink.cj",
+    "component/if.cj",
+    "component/image_bitmap.cj",
+    "component/image_data.cj",
+    "component/lazy_for_each.cj",
+    "component/line.cj",
+    "component/loading_progress.cj",
+    "component/marquee.cj",
+    "component/matrix_2d.cj",
+    "component/menu_item.cj",
+    "component/menu_item_group.cj",
+    "component/offscreen_canvas.cj",
+    "component/offscreen_canvas_rendering_context_2d.cj",
+    "component/panel.cj",
+    "component/path_2d.cj",
+    "component/polygon.cj",
+    "component/polyline.cj",
+    "component/progress_mask.cj",
+    "component/qrcode.cj",
+    "component/radio.cj",
+    "component/rating.cj",
+    "component/recycle.cj",
+    "component/remote_view.cj",
+    "component/rich_text.cj",
+    "component/row.cj",
+    "component/row_split.cj",
+    "component/scroll_bar.cj",
+    "component/shape.cj",
+    "component/slider.cj",
+    "component/stack.cj",
+    "component/stepper.cj",
+    "component/stepper_item.cj",
+    "component/submit_event.cj",
+    "component/symbol_span.cj",
+    "component/toggle.cj",
+  ]
+
+  cj_deps = [
+    ":ohos.state_manage",
+    ":ohos.ui_resource",
+    ":ohos.matrix4",
+  ]
+
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.ffi",
+    "hiviewdfx_cangjie_api:ohos.hi_tracemeter",
+    "cangjie_api:ohos.hilog",
+    "multimedia_cangjie_api:ohos.image",
+    "cangjie_api:ohos.ark_interop",
+    "global_cangjie_api:ohos.resource_manager",
+    "web_cangjie_api:ohos.webview",
+    "cangjie_api:ohos.labels",
+  ]
+
+  external_deps = [ "access_token:cj_ability_access_ctrl_ffi" ]
+
+  lib_name = "component"
+}
+
+cj_ace_library("ohos.curves") {
+
+  cj_deps = [
+    ":ohos.component",
+  ]
+
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.ffi",
+    "cangjie_api:ohos.labels",
+  ]
+  sources = [ "curves/cj_curves.cj" ]
+  lib_name = "curves"
+}
+
+cj_ace_library("ohos.ui_resource") {
+  sources = [ "ui_resource/cj_ui_resource.cj" ]
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.encoding.json",
+    "global_cangjie_api:ohos.resource_manager",
+    "cangjie_api:ohos.labels",
+  ]
+
+  lib_name = "ui_resource"
+}
+
+cj_macro_library("state_macro_manage") {
+  sources = [
+    "state_macro_manage/cj_app_storage_define.cj",
+    "state_macro_manage/cj_binder_define.cj",
+    "state_macro_manage/cj_builder_define.cj",
+    "state_macro_manage/cj_builder_param_define.cj",
+    "state_macro_manage/cj_check_component.cj",
+    "state_macro_manage/cj_component_define.cj",
+    "state_macro_manage/cj_constants.cj",
+    "state_macro_manage/cj_consume_define.cj",
+    "state_macro_manage/cj_customdialog_define.cj",
+    "state_macro_manage/cj_entry_define.cj",
+    "state_macro_manage/cj_error_info.cj",
+    "state_macro_manage/cj_generate_var_decl.cj",
+    "state_macro_manage/cj_link_define.cj",
+    "state_macro_manage/cj_local_storage_define.cj",
+    "state_macro_manage/cj_macro_common.cj",
+    "state_macro_manage/cj_macro_concat.cj",
+    "state_macro_manage/cj_observed_define.cj",
+    "state_macro_manage/cj_prop_define.cj",
+    "state_macro_manage/cj_provide_define.cj",
+    "state_macro_manage/cj_publish_define.cj",
+    "state_macro_manage/cj_resource_define.cj",
+    "state_macro_manage/cj_reusable_define.cj",
+    "state_macro_manage/cj_state_define.cj",
+    "state_macro_manage/cj_state_manage_handler.cj",
+    "state_macro_manage/cj_watch_define.cj",
+  ]
+
+  cj_external_deps = [ 
+    "cangjie_api:ohos.json.static",
+  ]
+  compilation_config = "pipeline=NG"
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+cj_ace_library("ohos.router") {
+  sources = [ "router/cj_router.cj" ]
+  lib_name = "router"
+  cj_deps = [
+    ":ohos.component",
+  ]
+
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.ffi",
+    "cangjie_api:ohos.hilog",
+    "cangjie_api:ohos.labels",
+  ]
+}
+
+cj_ace_library("ohos.font") {
+  cj_deps = [
+    ":ohos.ui_resource",
+  ]
+
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.hilog",
+    "global_cangjie_api:ohos.resource_manager",
+    "cangjie_api:ohos.labels",
+  ]
+  sources = [
+    "font/cj_font.cj",
+    "font/cj_font_api.cj",
+  ]
+  lib_name = "font"
+}
+
+cj_ace_library("ohos.prompt_action") {
+  cj_deps = [
+    ":ohos.component",
+  ]
+
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.ffi",
+    "multimedia_cangjie_api:ohos.image",
+    "cangjie_api:ohos.labels",
+  ]
+  sources = [ "prompt_action/cj_prompt_action.cj" ]
+  lib_name = "prompt_action"
+}
+
+cj_ace_library("ohos.animator") {
+  cj_deps = [
+    ":ohos.component",
+  ]
+
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.ffi",
+    "cangjie_api:ohos.hilog",
+    "cangjie_api:ohos.labels",
+  ]
+  sources = [ "animator/cj_animator.cj" ]
+  lib_name = "animator"
+}
+
+cj_ace_library("ohos.matrix4") {
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.ffi",
+    "cangjie_api:ohos.labels",
+  ]
+  sources = [ "matrix4/cj_matrix4.cj" ]
+  lib_name = "matrix4"
+}
+
+cj_ace_library("ohos.measure") {
+  cj_deps = [
+    ":ohos.component",
+  ]
+
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.ffi",
+    "cangjie_api:ohos.labels",
+  ]
+  sources = [ "measure/cj_measure.cj" ]
+  lib_name = "measure"
+}
+
+cj_ace_library("ohos.concurrency") {
+  sources = [ "concurrency/cj_concurrency.cj" ]
+  lib_name = "concurrency"
+  cj_external_deps = [ 
+    "cangjie_api:ohos.ffi",
+    "cangjie_api:ohos.labels", 
+  ]
+}
+
+cj_ace_library("ohos.component_utils") {
+  sources = [ "component_utils/cj_component_utils.cj" ]
+  lib_name = "component_utils"
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.ffi",
+    "cangjie_api:ohos.labels",
+  ]
+}
+
+cj_ace_library("ohos.component_snapshot") {
+  sources = [ "component_snapshot/cj_component_snapshot.cj" ]
+  lib_name = "component_snapshot"
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.ffi",
+    "multimedia_cangjie_api:ohos.image",
+    "cangjie_api:ohos.labels",
+  ]
+}
+
+cj_ace_library("ohos") {
+  sources = [ "ohos/ohos.cj" ]
+  lib_name = "ohos"
+  module_name = ""
+}
+
+cj_ace_library("ohos.observer") {
+  cj_deps = [
+    ":ohos.component",
+  ]
+
+  cj_external_deps = [
+    "cangjie_api:ohos.base",
+    "cangjie_api:ohos.ffi",
+    "cangjie_api:ohos.hilog",
+    "cangjie_api:ohos.labels",
+  ]
+  sources = [ "observer/cj_observer.cj" ]
+  lib_name = "observer"
+}
+
+group("cj_ace_libraries") {
+  deps = [
+    ":ohos",
+    ":ohos.animator",
+    ":ohos.component",
+    ":ohos.component_snapshot",
+    ":ohos.component_utils",
+    ":ohos.concurrency",
+    ":ohos.font",
+    ":ohos.matrix4",
+    ":ohos.measure",
+    ":ohos.prompt_action",
+    ":ohos.router",
+    ":ohos.state_manage",
+    ":ohos.ui_resource",
+    ":state_macro_manage",
+  ]
+}
