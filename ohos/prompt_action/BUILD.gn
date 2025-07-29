@@ -18,6 +18,7 @@ ohos_cj_library("ohos.prompt_action") {
 
   cj_deps = [
     "../arkui/component:ohos.arkui.component",
+    "../arkui/component/native_struct:ohos.arkui.component.native_struct",
     "../base:ohos.base",
   ]
 

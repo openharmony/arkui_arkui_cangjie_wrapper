@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.marquee
 
 foreign func FfiOHOSAceFrameworkMarqueeCreate(start: Bool, src: CString, step: Float64, loop: Int32, fromStart: Bool): Unit
 

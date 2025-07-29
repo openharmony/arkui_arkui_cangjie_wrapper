@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.alphabet_indexer
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
+import ohos.resource.*
 
 import std.convert.*
 
@@ -75,7 +82,6 @@ foreign {
 
     func FfiOHOSAceFrameworkAlphabetIndexerOnPopupSelected(callback: Int64): Unit
 }
-
 /**
  * Defines an AlphabetIndexer callback when onSelect.
  *
@@ -136,7 +142,6 @@ public class AlphabetIndexer <: ViewBase {
         unsafe { FfiOHOSAceFrameworkAlphabetIndexerCreate(vecFfi.getNativeHandle(), actualIdx) }
         vecFfi.free()
     }
-
     /**
      * Definitions color.
      *
@@ -280,15 +285,15 @@ public class AlphabetIndexer <: ViewBase {
         }
         this
     }
-
-    /**
-     * Select the text background color.
-     *
-     * @param { Length } size
-     * @param { FontWeight } weight
-     * @param { ResourceStr } family
-     * @param { FontStyle } style
-     * @returns { This }
+ 
+    /**	
+     * Select the text background color.	
+     *	
+     * @param { Length } size	
+     * @param { FontWeight } weight	
+     * @param { ResourceStr } family	
+     * @param { FontStyle } style	
+     * @returns { This }	
      */
     @!APILevel[
         12,
@@ -317,14 +322,14 @@ public class AlphabetIndexer <: ViewBase {
         this
     }
 
-    /**
-     * Definitions fonts.
-     *
-     * @param { Length } size
-     * @param { FontWeight } weight
-     * @param { ResourceStr } family
-     * @param { FontStyle } style
-     * @returns { This }
+    /**	
+     * Definitions fonts.	
+     *	
+     * @param { Length } size	
+     * @param { FontWeight } weight	
+     * @param { ResourceStr } family	
+     * @param { FontStyle } style	
+     * @returns { This }	
      */
     @!APILevel[
         12,
@@ -364,8 +369,8 @@ public class AlphabetIndexer <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func itemSize(value: Length): This {
-        var size_ = transAppResourceToLength(value)
+    public func itemSize(size: Length): This {
+        var size_ = transAppResourceToLength(size)
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerItemSize(size_.value, size_.unitType.getValue())
         }

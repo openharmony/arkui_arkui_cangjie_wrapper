@@ -13,18 +13,16 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.view
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
+import std.collection.ArrayList
 
 public type VectorCJInt64Handle = CPointer<Unit>
-
-@C
-struct VectorToCFFIArray {
-    VectorToCFFIArray(
-        let size: Int64,
-        let buffer: CPointer<Unit>,
-        let free: CFunc<(CPointer<Unit>) -> Unit>
-    ) {}
-}
 
 foreign {
     func FfiOHOSAceFrameworkNativeViewCreate(view: Int64): Unit

@@ -13,7 +13,15 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.pattern_lock
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.arkui.component.view.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 @C
 struct CJCircleStyleOptions {

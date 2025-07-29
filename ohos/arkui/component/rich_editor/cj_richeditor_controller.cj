@@ -13,9 +13,17 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.rich_editor
 
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.resource.*
+import ohos.labels.APILevel
 import ohos.multimedia.image.*
+import std.collection.ArrayList
 
 // HarmonyOS system default font
 let DEFAULT_FONT: String = "HarmonyOS Sans"
@@ -247,19 +255,6 @@ func parseRichEditorTextSpanOptions(value: RichEditorTextSpanOptions): NativeRic
     return NativeRichEditorTextSpanOptions(value.offset, nativeRichEditorTextStyle)
 }
 
-@C
-struct NativeMargin {
-    NativeMargin(
-        let top: Float64,
-        let topUnit: Int32,
-        let right: Float64,
-        let rightUnit: Int32,
-        let bottom: Float64,
-        let bottomUnit: Int32,
-        let left: Float64,
-        let leftUnit: Int32
-    ) {}
-}
 
 @C
 struct NativeBorderRadiuses {
@@ -309,99 +304,6 @@ struct NativeRichEditorImageSpanOptions {
         let offset: Int32,
         let imageStyle: NativeRichEditorImageSpanStyle
     ) {}
-}
-
-@!APILevel[
-    19,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class Margin {
-    let top: Length
-    let right: Length
-    let bottom: Length
-    let left: Length
-    public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp) {
-        this.top = transAppResourceToLength(top)
-        this.right = transAppResourceToLength(right)
-        this.bottom = transAppResourceToLength(bottom)
-        this.left = transAppResourceToLength(left)
-    }
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class BorderRadiuses {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var topLeft: Length
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var topRight: Length
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var bottomLeft: Length
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var bottomRight: Length
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(topLeft!: Length = 0.vp, topRight!: Length = 0.vp, bottomLeft!: Length = 0.vp,
-        bottomRight!: Length = 0.vp) {
-        this.topLeft = transAppResourceToLength(topLeft)
-        this.topRight = transAppResourceToLength(topRight)
-        this.bottomLeft = transAppResourceToLength(bottomLeft)
-        this.bottomRight = transAppResourceToLength(bottomRight)
-    }
-
-    func toCBorderRadiuses(): CBorderRadiuses {
-        return CBorderRadiuses(topLeft, topRight, bottomLeft, bottomRight)
-    }
-}
-
-@C
-struct CBorderRadiuses {
-    let topLeftRadiuses: Float64
-    let topLeftUnit: Int32
-    let topRightRadiuses: Float64
-    let topRightUnit: Int32
-    let bottomLeftRadiuses: Float64
-    let bottomLeftUnit: Int32
-    let bottomRightRadiuses: Float64
-    let bottomRightUnit: Int32
-
-    init(topLeft: Length, topRight: Length, bottomLeft: Length, bottomRight: Length) {
-        topLeftRadiuses = topLeft.value
-        topLeftUnit = topLeft.unitType.getValue()
-        topRightRadiuses = topRight.value
-        topRightUnit = topRight.unitType.getValue()
-        bottomLeftRadiuses = bottomLeft.value
-        bottomLeftUnit = bottomLeft.unitType.getValue()
-        bottomRightRadiuses = bottomRight.value
-        bottomRightUnit = bottomRight.unitType.getValue()
-    }
 }
 
 // unsupport in this ohos version

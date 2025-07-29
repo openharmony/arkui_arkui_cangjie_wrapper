@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.text_field
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkTextFieldSetHeight(height: Float64, unit: Int32): Unit
@@ -200,15 +207,15 @@ foreign {
 }
 
 
-struct TextField {
-    func height(width: Length): Unit {
+protected struct TextField {
+    protected func height(width: Length): Unit {
         var width_ = transAppResourceToLength(width)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetHeight(width_.value, width_.unitType.getValue())
         }
     }
 
-    func size(width!: Length, height!: Length): Unit {
+    protected func size(width!: Length, height!: Length): Unit {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
@@ -221,14 +228,14 @@ struct TextField {
         }
     }
 
-    func padding(value: Length): Unit {
+    protected func padding(value: Length): Unit {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetPadding(value_.value, value_.unitType.getValue())
         }
     }
 
-    func padding(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp): Unit {
+    protected func padding(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp): Unit {
         var top_ = transAppResourceToLength(top)
         var right_ = transAppResourceToLength(right)
         var bottom_ = transAppResourceToLength(bottom)
@@ -249,14 +256,14 @@ struct TextField {
         }
     }
 
-    func margin(value: Length): Unit {
+    protected func margin(value: Length): Unit {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetMargin(value_.value, value_.unitType.getValue())
         }
     }
 
-    func margin(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp): Unit {
+    protected func margin(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp): Unit {
         var top_ = transAppResourceToLength(top)
         var right_ = transAppResourceToLength(right)
         var bottom_ = transAppResourceToLength(bottom)
@@ -277,7 +284,7 @@ struct TextField {
         }
     }
 
-    func border(
+    protected func border(
         width!: Length,
         color!: ResourceColor = Color.BLACK,
         radius!: Length = 0.vp,
@@ -299,14 +306,14 @@ struct TextField {
         }
     }
 
-    func borderWidth(width: Length): Unit {
+    protected func borderWidth(width: Length): Unit {
         var width_ = transAppResourceToLength(width)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBorderWidth(width_.value, width_.unitType.getValue())
         }
     }
 
-    func borderWidth(edgeWidths: EdgeWidths): Unit {
+    protected func borderWidth(edgeWidths: EdgeWidths): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBorderWidthWithCJEdge(
                 CJEdge(
@@ -323,20 +330,20 @@ struct TextField {
         }
     }
 
-    func borderColor(color: ResourceColor): Unit {
+    protected func borderColor(color: ResourceColor): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBorderColor(transAppResourceToResourceColor(color))
         }
     }
 
-    func borderRadius(radius: Length): Unit {
+    protected func borderRadius(radius: Length): Unit {
         var radius_ = transAppResourceToLength(radius)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBorderRadius(radius_.value, radius_.unitType.getValue())
         }
     }
 
-    func borderRadius(
+    protected func borderRadius(
         topLeft!: Length = 0.vp,
         topRight!: Length = 0.vp,
         bottomLeft!: Length = 0.vp,
@@ -361,43 +368,43 @@ struct TextField {
         }
     }
 
-    func borderStyle(style: BorderStyle): Unit {
+    protected func borderStyle(style: BorderStyle): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBorderStyle(style.getValue())
         }
     }
 
-    func enterKeyType(value: EnterKeyType): Unit {
+    protected func enterKeyType(value: EnterKeyType): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetEnterKeyType(value.getValue())
         }
     }
 
-    func textAlign(value: TextAlign): Unit {
+    protected func textAlign(value: TextAlign): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetTextAlign(value.getValue())
         }
     }
 
-    func setType(value: InputType): Unit {
+    protected func setType(value: InputType): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetType(value.getValue())
         }
     }
 
-    func placeholderColor(value: ResourceColor): Unit {
+    protected func placeholderColor(value: ResourceColor): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetPlaceholderColor(transAppResourceToResourceColor(value))
         }
     }
 
-    func caretColor(value: ResourceColor): Unit {
+    protected func caretColor(value: ResourceColor): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetCaretColor(transAppResourceToResourceColor(value))
         }
     }
 
-    func placeholderFont(
+    protected func placeholderFont(
         size!: Length,
         weight!: FontWeight = FontWeight.W400,
         family!: String = "",
@@ -420,26 +427,26 @@ struct TextField {
         }
     }
 
-    func maxLength(value: UInt32): Unit {
+    protected func maxLength(value: UInt32): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetMaxLength(value)
         }
     }
 
-    func fontSize(value: Length): Unit {
+    protected func fontSize(value: Length): Unit {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
         }
     }
 
-    func fontColor(value: ResourceColor): Unit {
+    protected func fontColor(value: ResourceColor): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetFontColor(transAppResourceToResourceColor(value))
         }
     }
 
-    func fontWeight(value: FontWeight): Unit {
+    protected func fontWeight(value: FontWeight): Unit {
         unsafe {
             var weightCString = LibC.mallocCString(value.getValue())
             FfiOHOSAceFrameworkTextFieldSetFontWeight(weightCString)
@@ -447,12 +454,12 @@ struct TextField {
         }
     }
 
-    func fontStyle(value: FontStyle): Unit {
+    protected func fontStyle(value: FontStyle): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetFontStyle(value.getValue())
         }
     }
-    func fontFamily(value: String): Unit {
+    protected func fontFamily(value: String): Unit {
         unsafe {
             var familyCString = LibC.mallocCString(value)
             FfiOHOSAceFrameworkTextFieldSetFontFamily(familyCString)
@@ -460,7 +467,7 @@ struct TextField {
         }
     }
 
-    func inputFilter(value!: String, error!: (String) -> Unit = {_ =>}): Unit {
+    protected func inputFilter(value!: String, error!: (String) -> Unit = {_ =>}): Unit {
         let lambdaData = Callback1Param<CString, Unit>({
             value: CString => error(value.toString())
         })
@@ -471,13 +478,13 @@ struct TextField {
         }
     }
 
-    func backgroundColor(value: ResourceColor): Unit {
+    protected func backgroundColor(value: ResourceColor): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBackgroundColor(transAppResourceToResourceColor(value))
         }
     }
 
-    func fontFeature(value: String): Unit {
+    protected func fontFeature(value: String): Unit {
         unsafe {
             var featureCString = LibC.mallocCString(value)
             FfiOHOSAceFrameworkTextFieldSetFontFeature(featureCString)
@@ -485,73 +492,73 @@ struct TextField {
         }
     }
 
-    func lineHeight(value: Length): Unit {
+    protected func lineHeight(value: Length): Unit {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetLineHeight(value_.value, value_.unitType.getValue())
         }
     }
 
-    func lineSpacing(value: Length): Unit {
+    protected func lineSpacing(value: Length): Unit {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetLineSpacing(value_.value, value_.unitType.getValue())
         }
     }
 
-    func letterSpacing(value: Length): Unit {
+    protected func letterSpacing(value: Length): Unit {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetLetterSpacing(value_.value, value_.unitType.getValue())
         }
     }
 
-    func decoration(value: TextDecorationType, color: ResourceColor, style: TextDecorationStyle): Unit {
+    protected func decoration(value: TextDecorationType, color: ResourceColor, style: TextDecorationStyle): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetDecoration(value.getValue(), transAppResourceToResourceColor(color),
                 style.getValue())
         }
     }
 
-    func lineBreakStrategy(value: LineBreakStrategy): Unit {
+    protected func lineBreakStrategy(value: LineBreakStrategy): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetLineBreakStrategy(value.getValue())
         }
     }
 
-    func wordBreak(value: WordBreak): Unit {
+    protected func wordBreak(value: WordBreak): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetWordBreak(value.getValue())
         }
     }
 
-    func heightAdaptivePolicy(value: TextHeightAdaptivePolicy): Unit {
+    protected func heightAdaptivePolicy(value: TextHeightAdaptivePolicy): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetHeightAdaptivePolicy(value.getValue())
         }
     }
 
-    func maxFontSize(value: Length): Unit {
+    protected func maxFontSize(value: Length): Unit {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetMaxFontSize(value_.value, value_.unitType.getValue())
         }
     }
 
-    func minFontSize(value: Length): Unit {
+    protected func minFontSize(value: Length): Unit {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetMinFontSize(value_.value, value_.unitType.getValue())
         }
     }
 
-    func selectedBackgroundColor(value: ResourceColor): Unit {
+    protected func selectedBackgroundColor(value: ResourceColor): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetSelectedBackgroundColor(transAppResourceToResourceColor(value))
         }
     }
 
-    func caretStyle(value: Length, color: ResourceColor): Unit {
+    protected func caretStyle(value: Length, color: ResourceColor): Unit {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetCaretStyle(value_.value, value_.unitType.getValue(),
@@ -559,100 +566,100 @@ struct TextField {
         }
     }
 
-    func textIndent(value: Length): Unit {
+    protected func textIndent(value: Length): Unit {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetTextIndent(value_.value, value_.unitType.getValue())
         }
     }
 
-    func textOverflow(value: TextOverflow): Unit {
+    protected func textOverflow(value: TextOverflow): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetTextOverflow(value.getValue())
         }
     }
 
-    func enablePreviewText(value: Bool): Unit {
+    protected func enablePreviewText(value: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetEnablePreviewText(value)
         }
     }
 
-    func style(value: TextContentStyle): Unit {
+    protected func style(value: TextContentStyle): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetStyle(value.getValue())
         }
     }
 
-    func style(value: TextInputStyle): Unit {
+    protected func style(value: TextInputStyle): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetStyle(value.getValue())
         }
     }
 
-    func barState(value: BarState): Unit {
+    protected func barState(value: BarState): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBarState(value.getValue())
         }
     }
 
-    func selectionMenuHidden(value: Bool): Unit {
+    protected func selectionMenuHidden(value: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetSelectionMenuHidden(value)
         }
     }
 
-    func showCounter(value: Bool, thresholdPercentage: Float64, highlightBorder: Bool): Unit {
+    protected func showCounter(value: Bool, thresholdPercentage: Float64, highlightBorder: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetShowCounter(value, Int32(thresholdPercentage), highlightBorder)
         }
         this
     }
 
-    func maxLines(value: Int32): Unit {
+    protected func maxLines(value: Int32): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetMaxLines(value)
         }
         this
     }
 
-    func enableKeyboardOnFocus(value: Bool): Unit {
+    protected func enableKeyboardOnFocus(value: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetEnableKeyboardOnFocus(value)
         }
     }
 
-    func contentType(value: ContentType): Unit {
+    protected func contentType(value: ContentType): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetContentType(value.getValue())
         }
     }
 
-    func enableAutoFill(value: Bool): Unit {
+    protected func enableAutoFill(value: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetEnableAutoFill(value)
         }
     }
 
-    func setType(value: TextAreaType): Unit {
+    protected func setType(value: TextAreaType): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetTextAreaType(value.getValue())
         }
     }
 
-    func copyOption(value: CopyOptions): Unit {
+    protected func copyOption(value: CopyOptions): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetCopyOption(value.getValue())
         }
     }
 
-    func customKeyboard(value: () -> Unit, options: Bool): Unit {
+    protected func customKeyboard(value: () -> Unit, options: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetCustomKeyboard(Callback0Param<Unit>(value).getID(), options)
         }
     }
 
-    func onSubmit(callback: (EnterKeyType) -> Unit): Unit {
+    protected func onSubmit(callback: (EnterKeyType) -> Unit): Unit {
         let wrapper = {
             value: Int32 =>
             let typeArr = [
@@ -677,7 +684,7 @@ struct TextField {
         }
     }
 
-    func onChange(callback: (String) -> Unit): Unit {
+    protected func onChange(callback: (String) -> Unit): Unit {
         let wrapper = {
             value: CString => callback(value.toString())
         }
@@ -687,7 +694,7 @@ struct TextField {
         }
     }
 
-    func onCopy(callback: (String) -> Unit): Unit {
+    protected func onCopy(callback: (String) -> Unit): Unit {
         let wrapper = {
             value: CString => callback(value.toString())
         }
@@ -697,7 +704,7 @@ struct TextField {
         }
     }
 
-    func onCut(callback: (String) -> Unit): Unit {
+    protected func onCut(callback: (String) -> Unit): Unit {
         let wrapper = {
             value: CString => callback(value.toString())
         }
@@ -707,7 +714,7 @@ struct TextField {
         }
     }
 
-    func onPaste(callback: (String) -> Unit): Unit {
+    protected func onPaste(callback: (String) -> Unit): Unit {
         let wrapper = {
             value: CString => callback(value.toString())
         }
@@ -717,33 +724,33 @@ struct TextField {
         }
     }
 
-    func onEditChanged(callback: (Bool) -> Unit): Unit {
+    protected func onEditChanged(callback: (Bool) -> Unit): Unit {
         let lambdaData = Callback1Param<Bool, Unit>(callback)
         unsafe {
             FfiOHOSAceFrameworkTextFieldOnEditChanged(lambdaData.getID())
         }
     }
 
-    func onEditChange(callback: (Bool) -> Unit): Unit {
+    protected func onEditChange(callback: (Bool) -> Unit): Unit {
         let lambdaData = Callback1Param<Bool, Unit>(callback)
         unsafe {
             FfiOHOSAceFrameworkTextFieldOnEditChanged(lambdaData.getID())
         }
     }
 
-    func onContentScroll(callback: (Float32, Float32) -> Unit): Unit {
+    protected func onContentScroll(callback: (Float32, Float32) -> Unit): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldOnContentScroll(Callback2Param<Float32, Float32, Unit>(callback).getID())
         }
     }
 
-    func onTextSelectionChange(callback: (Int32, Int32) -> Unit): Unit {
+    protected func onTextSelectionChange(callback: (Int32, Int32) -> Unit): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldOnTextSelectionChange(Callback2Param<Int32, Int32, Unit>(callback).getID())
         }
     }
 
-    func onDidDelete(callback: (Float64, Int32, String) -> Unit): Unit {
+    protected func onDidDelete(callback: (Float64, Int32, String) -> Unit): Unit {
         let wrapper = {
             deleteOffset: Float64, direction: Int32, deleteValue: CString => callback(
                 deleteOffset,
@@ -756,7 +763,7 @@ struct TextField {
         }
     }
 
-    func onWillDelete(callback: (Float64, Int32, String) -> Bool): Unit {
+    protected func onWillDelete(callback: (Float64, Int32, String) -> Bool): Unit {
         let wrapper = {
             deleteOffset: Float64, direction: Int32, deleteValue: CString => callback(
                 deleteOffset,
@@ -769,7 +776,7 @@ struct TextField {
         }
     }
 
-    func onDidInsert(callback: (Float64, String) -> Unit): Unit {
+    protected func onDidInsert(callback: (Float64, String) -> Unit): Unit {
         let wrapper = {
             insertOffset: Float64, insertValue: CString => callback(insertOffset, insertValue.toString())
         }
@@ -778,7 +785,7 @@ struct TextField {
         }
     }
 
-    func onWillInsert(callback: (Float64, String) -> Bool): Unit {
+    protected func onWillInsert(callback: (Float64, String) -> Bool): Unit {
         let wrapper = {
             insertOffset: Float64, insertValue: CString => callback(insertOffset, insertValue.toString())
         }
@@ -787,20 +794,20 @@ struct TextField {
         }
     }
 
-    func onSecurityStateChange(callback: (Bool) -> Unit): Unit {
+    protected func onSecurityStateChange(callback: (Bool) -> Unit): Unit {
         let lambdaData = Callback1Param<Bool, Unit>(callback)
         unsafe {
             FfiOHOSAceFrameworkTextFieldOnSecurityStateChange(lambdaData.getID())
         }
     }
 
-    func showUnit(builder: () -> Unit): Unit {
+    protected func showUnit(builder: () -> Unit): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldShowUnit(Callback0Param<Unit>(builder).getID())
         }
     }
 
-    func passwordRules(value: String): Unit {
+    protected func passwordRules(value: String): Unit {
         unsafe {
             var rules = LibC.mallocCString(value)
             FfiOHOSAceFrameworkTextFieldSetPasswordRules(rules)
@@ -808,7 +815,7 @@ struct TextField {
         }
     }
 
-    func showError(value: String): Unit {
+    protected func showError(value: String): Unit {
         unsafe {
             var errorText = LibC.mallocCString(value)
             FfiOHOSAceFrameworkTextFieldSetShowError(errorText)
@@ -816,19 +823,19 @@ struct TextField {
         }
     }
 
-    func showPasswordIcon(value: Bool): Unit {
+    protected func showPasswordIcon(value: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetShowPasswordIcon(value)
         }
     }
 
-    func showPassword(value: Bool): Unit {
+    protected func showPassword(value: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldShowPasswordText(value)
         }
     }
 
-    func passwordIcon(onIconSrc: String, offIconSrc: String): Unit {
+    protected func passwordIcon(onIconSrc: String, offIconSrc: String): Unit {
         unsafe {
             var onSrc: ?CString = None
             var offSrc: ?CString = None
@@ -843,33 +850,33 @@ struct TextField {
         }
     }
 
-    func caretPosition(position: Int32): Unit {
+    protected func caretPosition(position: Int32): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetCaretPosition(position)
         }
     }
-    func selectAll(value: Bool): Unit {
+    protected func selectAll(value: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetSelectAllValue(value)
         }
     }
-    func showUnderline(value: Bool): Unit {
+    protected func showUnderline(value: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetShowUnderline(value)
         }
     }
-    func normalUnderlineColor(color: UInt32): Unit {
+    protected func normalUnderlineColor(color: UInt32): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldNormalUnderlineColor(color)
         }
     }
-    func userUnderlineColor(typing: UInt32, normal: UInt32, error: UInt32, disable: UInt32): Unit {
+    protected func userUnderlineColor(typing: UInt32, normal: UInt32, error: UInt32, disable: UInt32): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldUserUnderlineColor(typing, normal, error, disable)
         }
     }
 
-    func cancelButton(style: Int32, size: Float64, unit: Int32, color: UInt32, src: String): Unit {
+    protected func cancelButton(style: Int32, size: Float64, unit: Int32, color: UInt32, src: String): Unit {
         unsafe {
             var srcCstring = LibC.mallocCString(src)
             FfiOHOSAceFrameworkTextFieldCancelButton(style, size, unit, color, srcCstring);

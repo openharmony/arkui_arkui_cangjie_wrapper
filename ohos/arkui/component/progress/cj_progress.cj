@@ -13,7 +13,13 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.progress
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 @C
 struct RingStyle {
@@ -178,78 +184,6 @@ public class RingStyleOptions {
         this.status = status
         this.enableSmoothEffect = enableSmoothEffect
         this.enableScanEffect = enableScanEffect
-    }
-}
-
-@!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class Fonts {
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var size: Length
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var weight: FontWeight
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var family: String
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var style: FontStyle
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(size!: Length = 16.fp, weight!: FontWeight = FontWeight.Normal, family!: String = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal) {
-        this.size = transAppResourceToLength(size)
-        this.weight = weight
-        this.family = family
-        this.style = style
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(size!: Length = 16.fp, weight!: FontWeight = FontWeight.Normal, family!: AppResource,
-        style!: FontStyle = FontStyle.Normal) {
-        this(size: size, weight: weight, family: getResourceString(family), style: style)
     }
 }
 

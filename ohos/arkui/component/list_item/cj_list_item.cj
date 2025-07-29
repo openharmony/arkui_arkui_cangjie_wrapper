@@ -13,9 +13,13 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.list_item
 
+import ohos.arkui.component.common.*
 import ohos.arkui.state_management.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkListItemCreate(): Unit

@@ -13,17 +13,21 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+protected package ohos.arkui.component.util
+
+import ohos.base.*
+import ohos.resource.*
 
 // !! Do not use the following variables as match-case conditions
-const LENGTH_PX: Int32 = 0
-const LENGTH_VP: Int32 = 1
-const LENGTH_FP: Int32 = 2
-const LENGTH_PERCENT: Int32 = 3
-const LENGTH_LPX: Int32 = 4
+
+protected const LENGTH_PX: Int32 = 0
+protected const LENGTH_VP: Int32 = 1
+protected const LENGTH_FP: Int32 = 2
+protected const LENGTH_PERCENT: Int32 = 3
+protected const LENGTH_LPX: Int32 = 4
 let MEMORY_OP_ERR: Int32 = 9800001
 
-func normalizeValue(value: Length, targetValue: Float64) {
+protected func normalizeValue(value: Length, targetValue: Float64) {
     var value_ = value.value
     if (value_ < targetValue) {
         return targetValue
@@ -31,7 +35,7 @@ func normalizeValue(value: Length, targetValue: Float64) {
     return value_
 }
 
-func transValueToTarget(value: Length, compareValue: Float64, targetValue: Float64) {
+protected func transValueToTarget(value: Length, compareValue: Float64, targetValue: Float64) {
     var value_ = value.value
     if (value_ < compareValue) {
         return targetValue
@@ -39,14 +43,14 @@ func transValueToTarget(value: Length, compareValue: Float64, targetValue: Float
     return value_
 }
 
-func transAppResourceToLength(value: Length): Length {
+protected func transAppResourceToLength(value: Length): Length {
     if (value is AppResource) {
         return getResourceLength((value as AppResource).getOrThrow())
     }
     return value
 }
 
-func transAppResourceToResourceColor(value: ResourceColor): UInt32 {
+protected func transAppResourceToResourceColor(value: ResourceColor): UInt32 {
     if (value is AppResource) {
         var value_ = getResourceColor((value as AppResource).getOrThrow())
         return value_.toUInt32()
@@ -54,7 +58,7 @@ func transAppResourceToResourceColor(value: ResourceColor): UInt32 {
     return value.toUInt32()
 }
 
-func getLengthUnitOrFp(value: Length): LengthType {
+protected func getLengthUnitOrFp(value: Length): LengthType {
     if (value is Float64) {
         LengthType.fp((value as Float64).getOrThrow())
     } else if (value is Int64) {

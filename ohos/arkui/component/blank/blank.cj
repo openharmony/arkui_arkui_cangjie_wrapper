@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.blank
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.labels.APILevel
 
 foreign func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
 

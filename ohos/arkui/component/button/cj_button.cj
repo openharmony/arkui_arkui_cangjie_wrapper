@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.button
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.labels.APILevel
+import ohos.resource.*
 
 @!APILevel[	
     19,	

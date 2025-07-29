@@ -13,24 +13,12 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.common
+
+import ohos.arkui.component.native_struct.*
+import ohos.labels.APILevel
 
 public type VectorCPointerTouchTestInfoHandle = CPointer<Unit>
-
-@C
-struct CJClickEvent {
-    CJClickEvent(
-        let x: Float64,
-        let y: Float64,
-        let timestamp: Int64,
-        let source: Int32,
-        let target: CPointer<CJEventTarget>,
-        let windowX: Float64,
-        let windowY: Float64,
-        let displayX: Float64,
-        let displayY: Float64
-    ) {}
-}
 
 @C
 struct CJTouchInfo {
@@ -309,7 +297,7 @@ func parseCJTouchEvent(cjTouchEvent: CJTouchEvent): TouchEvent {
         parseCJTarget(unsafe { cjTouchEvent.target.read() }), SourceType.parseValue(cjTouchEvent.sourceType))
 }
 
-func parseCJTarget(cjTarget: CJEventTarget): EventTarget {
+protected func parseCJTarget(cjTarget: CJEventTarget): EventTarget {
     unsafe {
         if (cjTarget.area.isNull()) {
             throw NoneValueException("Touch target area is null")
@@ -338,7 +326,7 @@ func parseCJTarget(cjTarget: CJEventTarget): EventTarget {
     }
 }
 
-func parseCJClickEvent(cjClickEvent: CJClickEvent): ClickEvent {
+protected func parseCJClickEvent(cjClickEvent: CJClickEvent): ClickEvent {
     unsafe {
         if (cjClickEvent.target.isNull()) {
             throw NoneValueException("Click target is null")

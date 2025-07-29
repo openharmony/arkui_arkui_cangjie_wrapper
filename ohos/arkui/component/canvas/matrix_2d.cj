@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.canvas
+
+import ohos.arkui.component.common.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkCanvasMatrixCtor(unit: Int32): Int64

@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.row_split
+
+import ohos.arkui.component.common.*
+import ohos.base.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkRowSplitCreate(): Unit

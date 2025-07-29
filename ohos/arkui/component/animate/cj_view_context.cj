@@ -13,9 +13,13 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.animate
 
-foreign func FfiOHOSAceFrameworkViewContextAnimation(option: NativeOptionAnimateParam): Unit
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 foreign func FfiOHOSAceFrameworkViewContextAnimationTo(option: NativeAnimateParam, callback: Int64, isImmediately: Bool): Unit
 

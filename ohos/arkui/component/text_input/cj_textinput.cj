@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.text_input
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.text_field.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.resource.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkTextInputCreate(placeholder: CString, text: CString, controllerId: Int64): Unit
@@ -28,35 +35,6 @@ foreign {
     func FfiOHOSAceFrameworkTextInputControllerStopEditing(selfID: Int64): Unit
 
     func FfiOHOSAceFrameworkTextInputControllerGetTextContentLineCount(id: Int64): Int32
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public enum TextInputStyle {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Default
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Inline
-    | ...
-
-    func getValue(): Int32 {
-        match (this) {
-            case Default => 0
-            case Inline => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
 }
 
 @!APILevel[

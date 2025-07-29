@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.text_area
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.text_field.*
+import ohos.ffi.*
+import ohos.base.*
+import ohos.resource.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkTextAreaCreate(placeholder: CString, text: CString, controllerId: Int64): Unit
@@ -33,56 +40,6 @@ foreign {
 
     func FfiOHOSAceFrameworkTextAreaControllerGetTextContentLineCount(id: Int64): Int32
 
-}
-
-@!APILevel[
-    19,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public enum TextAreaType {
-    @!APILevel[
-        19,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    NORMAL
-    | @!APILevel[
-        19,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    NUMBER
-    | @!APILevel[
-        19,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    PHONE_NUMBER
-    | @!APILevel[
-        19,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    EMAIL
-    | @!APILevel[
-        19,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    NUMBER_DECIMAL
-    | @!APILevel[
-        19,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    URL
-    | ...
-
-    func getValue(): Int32 {
-        match (this) {
-            case NORMAL => 0
-            case NUMBER => 2
-            case PHONE_NUMBER => 3
-            case EMAIL => 5
-            case NUMBER_DECIMAL => 12
-            case URL => 13
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
 }
 
 @!APILevel[

@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.sidebar
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.resource.*
+import ohos.labels.APILevel
 
 @C
 struct CJSideBarIconStyle {
@@ -22,6 +29,14 @@ struct CJSideBarIconStyle {
         let hidden: CString,
         let switching: CString
     ) {}
+}
+
+foreign {
+    func FfiOHOSAceFrameworkStackSetWidth(width: Float64, unit: Int32): Unit
+
+    func FfiOHOSAceFrameworkStackSetHeight(height: Float64, unit: Int32): Unit
+
+    func FfiOHOSAceFrameworkStackSetSize(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
 }
 
 @!APILevel[

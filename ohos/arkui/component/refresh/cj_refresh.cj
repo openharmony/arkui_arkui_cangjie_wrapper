@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.refresh
+
+import ohos.arkui.component.common.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkRefreshCreate(refreshing: Bool, offset: Float64, offsetUnit: Int32, friction: Int32): Unit

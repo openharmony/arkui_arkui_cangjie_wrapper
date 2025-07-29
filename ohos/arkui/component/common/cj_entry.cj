@@ -13,7 +13,10 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.common
+
+import ohos.arkui.component.native_struct.*
+import ohos.labels.APILevel
 
 /**
  * CJEntry is a singleton class, it provides global functions to be accessed by native.

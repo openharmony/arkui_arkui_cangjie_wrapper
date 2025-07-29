@@ -13,8 +13,12 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.recycle
 
+import ohos.arkui.component.common.*
+import ohos.arkui.component.view.*
+import ohos.base.*
+import ohos.labels.APILevel
 import std.collection.HashMap
 import std.collection.ArrayList
 
@@ -132,83 +136,5 @@ class BidirectionalMap {
     func put(pair: (Int64, Int64)) {
         fwdMap[pair[0]] = pair[1]
         revMap[pair[1]] = pair[0]
-    }
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class ReuseParams <: FFIData {
-    private var maps: HashMap<String, Any>
-
-    public init() {
-        super()
-        maps = HashMap<String, Any>()
-    }
-
-    // used by @Component
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(arr: Array<(String, Any)>) {
-        super()
-        maps = HashMap<String, Any>(arr.size, {
-            i => (arr[i][0], arr[i][1])
-        })
-    }
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public prop size: Int64 {
-        get() {
-            maps.size
-        }
-    }
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func get(key: String): ?Any {
-        maps.get(key)
-    }
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getValue<T>(key: String): ?T {
-        let anyVal = maps.get(key)
-        if (let Some(v) <- anyVal) {
-            return (v as T) ?? Option<T>.None
-        }
-        Option<T>.None
-    }
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func contains(key: String): Bool {
-        maps.contains(key)
-    }
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func add(key: String, value: Any): ?Any {
-        maps.add(key, value)
     }
 }

@@ -13,7 +13,13 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.slider
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 @C
 struct CJSliderCreate {

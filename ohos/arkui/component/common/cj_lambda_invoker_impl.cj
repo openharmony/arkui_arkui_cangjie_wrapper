@@ -13,10 +13,13 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.common
 
-class CallbackCJClickEvent <: BaseCallBack {
-    CallbackCJClickEvent(let closure: (CJClickEvent) -> Unit) {
+import ohos.arkui.component.native_struct.*
+import ohos.labels.APILevel
+
+protected class CallbackCJClickEvent <: BaseCallBack {
+    protected CallbackCJClickEvent(let closure: (CJClickEvent) -> Unit) {
         registerSelf()
     }
     public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
@@ -191,8 +194,8 @@ class CallbackCJKeyEvent <: BaseCallBack {
     }
 }
 
-class CallbackCJGestureEvent <: BaseCallBack {
-    CallbackCJGestureEvent(let closure: (CJGestureEventV2) -> Unit) {
+protected class CallbackCJGestureEvent <: BaseCallBack {
+    protected CallbackCJGestureEvent(let closure: (CJGestureEventV2) -> Unit) {
         registerSelf()
     }
 
@@ -207,150 +210,6 @@ class CallbackCJGestureEvent <: BaseCallBack {
         let ptrArg0 = unsafe { CPointer<CJGestureEventV2>(argv.read()) }
         if (ptrArg0.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackCJGestureEvent")
-            throw InvalidArgsException()
-        }
-        let arg0 = unsafe { ptrArg0.read() }
-        closure(arg0)
-    }
-}
-
-class CallbackFFiCheckboxGroupResult <: BaseCallBack {
-    CallbackFFiCheckboxGroupResult(let closure: (FFiCheckboxGroupResult) -> Unit) {
-        registerSelf()
-    }
-
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
-        if (argc != 1) {
-            throw InvalidArgsException()
-        }
-        if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackFFiCheckboxGroupResult")
-            throw InvalidArgsException()
-        }
-        let ptrArg0 = unsafe { CPointer<FFiCheckboxGroupResult>(argv.read()) }
-        if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackFFiCheckboxGroupResult")
-            throw InvalidArgsException()
-        }
-        let arg0 = unsafe { ptrArg0.read() }
-        closure(arg0)
-    }
-}
-
-class CallbackCJImageError <: BaseCallBack {
-    CallbackCJImageError(let closure: (CJImageError) -> Unit) {
-        registerSelf()
-    }
-
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
-        if (argc != 1) {
-            throw InvalidArgsException()
-        }
-        if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJImageError")
-            throw InvalidArgsException()
-        }
-        let ptrArg0 = unsafe { CPointer<CImageError>(argv.read()) }
-        if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJImageError")
-            throw InvalidArgsException()
-        }
-        let c_arg0 = unsafe { ptrArg0.read() }
-        let arg0: CJImageError = CJImageError(c_arg0.componentWidth, c_arg0.componentHeight)
-        //arg0.message = c_arg0.message.toString()
-        closure(arg0)
-    }
-}
-class CallbackCJImageComplete <: BaseCallBack {
-    CallbackCJImageComplete(let closure: (CJImageComplete) -> Unit) {
-        registerSelf()
-    }
-
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
-        if (argc != 1) {
-            throw InvalidArgsException()
-        }
-        if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJImageComplete")
-            throw InvalidArgsException()
-        }
-        let ptrArg0 = unsafe { CPointer<CImageComplete>(argv.read()) }
-        if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJImageComplete")
-            throw InvalidArgsException()
-        }
-        let c_arg0 = unsafe { ptrArg0.read() }
-        let arg0: CJImageComplete = CJImageComplete(c_arg0.width, c_arg0.height, c_arg0.componentWidth,
-            c_arg0.componentHeight, c_arg0.loadingStatus)
-        arg0.contentWidth = c_arg0.contentWidth
-        arg0.contentHeight = c_arg0.contentHeight
-        arg0.contentOffsetX = c_arg0.contentOffsetX
-        arg0.contentOffsetY = c_arg0.contentOffsetY
-        closure(arg0)
-    }
-}
-
-class CallbackOffset <: BaseCallBack {
-    CallbackOffset(let closure: (OffsetResult) -> Unit) {
-        registerSelf()
-    }
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
-        if (argc != 1) {
-            throw InvalidArgsException()
-        }
-        if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackOffset")
-            throw InvalidArgsException()
-        }
-        let ptrArg0 = unsafe { CPointer<OffsetResult>(argv.read()) }
-        if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackOffset")
-            throw InvalidArgsException()
-        }
-        let arg0 = unsafe { ptrArg0.read() }
-        closure(arg0)
-    }
-}
-
-class CallbackTextPickerResult <: BaseCallBack {
-    CallbackTextPickerResult(let closure: (TextPickerResult) -> Unit) {
-        registerSelf()
-    }
-
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
-        if (argc != 1) {
-            throw InvalidArgsException()
-        }
-        if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackTextPickerResult")
-            throw InvalidArgsException()
-        }
-        let ptrArg0 = unsafe { CPointer<TextPickerResult>(argv.read()) }
-        if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackTextPickerResult")
-            throw InvalidArgsException()
-        }
-        let arg0 = unsafe { ptrArg0.read() }
-        closure(arg0)
-    }
-}
-
-class CallbackCJWebEvent <: BaseCallBack {
-    CallbackCJWebEvent(let closure: (FfiWebEvent) -> Bool) {
-        registerSelf()
-    }
-
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
-        if (argc != 1) {
-            throw InvalidArgsException()
-        }
-        if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJWebEvent")
-            throw InvalidArgsException()
-        }
-        let ptrArg0 = unsafe { CPointer<FfiWebEvent>(argv.read()) }
-        if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJWebEvent")
             throw InvalidArgsException()
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -384,37 +243,6 @@ class CallbackCJDragInfoVCDragItemInfo <: BaseCallBack {
     }
 }
 
-class CallbackCJTransitionEvent <: BaseCallBack {
-    CallbackCJTransitionEvent(let closuer: (CJRouteType, Float64) -> Unit) {
-        registerSelf()
-    }
-
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
-        if (argc != 2) {
-            throw InvalidArgsException()
-        }
-        if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
-            throw InvalidArgsException()
-        }
-        let ptrArg0 = unsafe { CPointer<CJRouteType>(argv.read()) }
-        if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
-            throw InvalidArgsException()
-        }
-        let ptrArg1 = unsafe { CPointer<Float64>(argv.read(1)) }
-        if (ptrArg1.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
-            throw InvalidArgsException()
-        }
-        unsafe {
-            let arg0 = ptrArg0.read()
-            let arg1 = ptrArg1.read()
-            closuer(arg0, arg1)
-        }
-    }
-}
-
 @!APILevel[
     12,
     atomicservice: true,
@@ -422,7 +250,7 @@ class CallbackCJTransitionEvent <: BaseCallBack {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CallbackCJWebResourceRequest <: BaseCallBack {
-    CallbackCJWebResourceRequest(let closure: (FfiWebResourceRequest) -> Bool) {
+    protected CallbackCJWebResourceRequest(let closure: (FfiWebResourceRequest) -> Bool) {
         registerSelf()
     }
 

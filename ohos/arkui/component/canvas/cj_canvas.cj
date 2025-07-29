@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.canvas
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.util.*
+import ohos.arkui.component.native_struct.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkCanvasCreate(contextId: Int64): Unit
@@ -59,85 +66,6 @@ struct ImageInfo {
         let dy: Float64,
         let dWidth: Float64,
         let dHeight: Float64
-    ) {}
-}
-
-@C
-struct TransformParams {
-    TransformParams(
-        let scaleX: Float64,
-        let skewX: Float64,
-        let skewY: Float64,
-        let scaleY: Float64,
-        let translateX: Float64,
-        let translateY: Float64
-    ) {}
-}
-
-@C
-struct ArcParams {
-    ArcParams(
-        let x: Float64,
-        let y: Float64,
-        let radius: Float64,
-        let startAngle: Float64,
-        let endAngle: Float64
-    ) {}
-}
-
-@C
-struct ArcToParams {
-    ArcToParams(
-        let x1: Float64,
-        let y1: Float64,
-        let x2: Float64,
-        let y2: Float64,
-        let radius: Float64
-    ) {}
-}
-
-@C
-struct QuadraticCurveToParams {
-    QuadraticCurveToParams(
-        let cpx: Float64,
-        let cpy: Float64,
-        let x: Float64,
-        let y: Float64
-    ) {}
-}
-
-@C
-struct BezierCurveToParams {
-    BezierCurveToParams(
-        let cp1x: Float64,
-        let cp1y: Float64,
-        let cp2x: Float64,
-        let cp2y: Float64,
-        let x: Float64,
-        let y: Float64
-    ) {}
-}
-
-@C
-struct EllipseParams {
-    EllipseParams(
-        let x: Float64,
-        let y: Float64,
-        let radiusX: Float64,
-        let radiusY: Float64,
-        let rotation: Float64,
-        let startAngle: Float64,
-        let endAngle: Float64
-    ) {}
-}
-
-@C
-struct RectParams {
-    RectParams(
-        let x: Float64,
-        let y: Float64,
-        let width: Float64,
-        let height: Float64
     ) {}
 }
 

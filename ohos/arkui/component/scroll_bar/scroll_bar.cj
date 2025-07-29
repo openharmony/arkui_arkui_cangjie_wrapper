@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.scroll_bar
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.scroll.*
+import ohos.base.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkScrollBarCreate(scroller: Int64, direction: Int32, state: Int32): Unit

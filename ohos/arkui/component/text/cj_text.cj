@@ -13,7 +13,15 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.text
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.resource.*
+import ohos.labels.APILevel
 
 public type VectorNativeShadowOptionsHandle = CPointer<Unit>
 
@@ -137,108 +145,6 @@ foreign {
     func FfiOHOSAceFrameworkTextControllerCtor(): Int64
 
     func FfiOHOSAceFrameworkTextControllerCloseSelectionMenu(selfID: Int64): Unit
-}
-
-
-@C
-struct NativeShadowOptions {
-    NativeShadowOptions(
-        let radius: Float64,
-        let shadowType: UInt32,
-        let color: UInt32,
-        let offsetX: Float64,
-        let offsetY: Float64,
-        let fill: Bool
-    ) {}
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class ShadowOptions {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var radius: Float64 = 0.0
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var shadowType: UInt32 = ShadowType.COLOR.getValue()
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var color: UInt32 = 0xff000000
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var offsetX: Float64 = 0.0
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var offsetY: Float64 = 0.0
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var fill: Bool = false    
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(radius!: Float64, offsetX!: Float64, offsetY!: Float64, color!: ResourceColor) {
-        this.radius = radius
-        this.offsetX = offsetX
-        this.offsetY = offsetY
-        this.color = transAppResourceToResourceColor(color)
-    }
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(radius!: Float64, shadowType!: ShadowType, color!: ResourceColor = Color.BLACK, offsetX!: Float64 = 0.0,
-        offsetY!: Float64 = 0.0, fill!: Bool = false) {
-        this.radius = radius
-        this.shadowType = shadowType.getValue()
-        this.color = transAppResourceToResourceColor(color)
-        this.offsetX = offsetX
-        this.offsetY = offsetY
-        this.fill = fill
-    }
-
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {}    
-    func parseToNative(): NativeShadowOptions {
-        return NativeShadowOptions(
-            radius,
-            shadowType,
-            color,
-            offsetX,
-            offsetY,
-            fill
-        )
-    }
-    func optionToNative(): NativeTextShadowV2 {
-        return NativeTextShadowV2(this.radius, this.offsetX, this.offsetY, this.color, this.fill, this.shadowType)
-    }    
 }
 
 class FFIVectorNativeShadowOptions {

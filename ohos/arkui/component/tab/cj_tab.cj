@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.tab
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.util.*
+import ohos.ffi.*
+import ohos.base.*
+import ohos.resource.*
+import ohos.labels.APILevel
 
 @C
 struct CJTabsScrollableBarModeOptions {

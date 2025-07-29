@@ -13,7 +13,15 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.select
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.resource.*
+import ohos.labels.APILevel
 
 public type VectorNativeSelectOptionHandle = CPointer<Unit>
 

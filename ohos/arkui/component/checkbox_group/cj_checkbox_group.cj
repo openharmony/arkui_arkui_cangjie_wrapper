@@ -13,41 +13,15 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.checkbox_group
 
-@C
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-struct FFiCheckboxGroupResult {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    FFiCheckboxGroupResult(
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        let status: Int32,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        let size: Int64,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let nameBuffer: CPointer<CString>
-    ) {}
-}
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
+import std.collection.ArrayList
 
 foreign {
     func FfiOHOSAceFrameworkCheckBoxGroupCreate(group: CString): Unit
@@ -78,6 +52,29 @@ foreign {
         strokeWidth: Float64, strokeWidthUnit: Int32): Unit
 
     func FfiOHOSAceFrameworkCheckBoxGroupSetCheckboxShape(value: Int32): Unit
+}
+
+class CallbackFFiCheckboxGroupResult <: BaseCallBack {
+    CallbackFFiCheckboxGroupResult(let closure: (FFiCheckboxGroupResult) -> Unit) {
+        registerSelf()
+    }
+
+    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+        if (argc != 1) {
+            throw InvalidArgsException()
+        }
+        if (argv.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackFFiCheckboxGroupResult")
+            throw InvalidArgsException()
+        }
+        let ptrArg0 = unsafe { CPointer<FFiCheckboxGroupResult>(argv.read()) }
+        if (ptrArg0.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackFFiCheckboxGroupResult")
+            throw InvalidArgsException()
+        }
+        let arg0 = unsafe { ptrArg0.read() }
+        closure(arg0)
+    }
 }
 
 @!APILevel[

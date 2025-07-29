@@ -13,8 +13,11 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.common
 
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.labels.APILevel
 import std.math.*
 
 foreign func FfiOHOSAceFrameworkVp2Px(value: Float64): Float64

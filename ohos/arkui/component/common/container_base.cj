@@ -13,12 +13,11 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.common
 
 internal import ohos.labels.APILevel
 internal import ohos.base.*
 internal import ohos.ffi.*
-internal import ohos.base.*
 internal import std.collection.*
 internal import ohos.resource.*
 
@@ -30,7 +29,7 @@ foreign func FfiOHOSAceFrameworkContainerBasePop(): Unit
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ContainerBase <: ViewBase {
-    var child: () -> Unit = {=>}
+    protected var child: () -> Unit = {=>}
 
     protected open override func pop(): Unit {
         unsafe {

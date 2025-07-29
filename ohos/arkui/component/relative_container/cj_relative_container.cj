@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.relative_container
+
+import ohos.arkui.component.common.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 @C
 struct CLength {
@@ -174,93 +179,6 @@ struct CBarrierInfos {
     }
 }
 
-@C
-struct CJAlignRuleOption {
-    var leftAnchor: CString = CString(CPointer<UInt8>())
-    var leftHorizontalAlign: Int32 = -1
-    var rightAnchor: CString = CString(CPointer<UInt8>())
-    var rightHorizontalAlign: Int32 = -1
-    var middleAnchor: CString = CString(CPointer<UInt8>())
-    var middleHorizontalAlign: Int32 = -1
-    var topAnchor: CString = CString(CPointer<UInt8>())
-    var topVerticalAlign: Int32 = -1
-    var bottomAnchor: CString = CString(CPointer<UInt8>())
-    var bottomVerticalAlign: Int32 = -1
-    var centerAnchor: CString = CString(CPointer<UInt8>())
-    var centerVerticalAlign: Int32 = -1
-    var horizontalBias: CPointer<Float32> = CPointer<Float32>()
-    var verticalBias: CPointer<Float32> = CPointer<Float32>()
-
-    init(option: AlignRuleOption) {
-        try {
-            if (let Some(v) <- option.left) {
-                leftAnchor = unsafe { LibC.mallocCString(v.anchor) }
-                leftHorizontalAlign = v.align.getValue()
-            }
-            if (let Some(v) <- option.right) {
-                rightAnchor = unsafe { LibC.mallocCString(v.anchor) }
-                rightHorizontalAlign = v.align.getValue()
-            }
-            if (let Some(v) <- option.middle) {
-                middleAnchor = unsafe { LibC.mallocCString(v.anchor) }
-                middleHorizontalAlign = v.align.getValue()
-            }
-            if (let Some(v) <- option.top) {
-                topAnchor = unsafe { LibC.mallocCString(v.anchor) }
-                topVerticalAlign = v.align.getValue()
-            }
-            if (let Some(v) <- option.bottom) {
-                bottomAnchor = unsafe { LibC.mallocCString(v.anchor) }
-                bottomVerticalAlign = v.align.getValue()
-            }
-            if (let Some(v) <- option.center) {
-                centerAnchor = unsafe { LibC.mallocCString(v.anchor) }
-                centerVerticalAlign = v.align.getValue()
-            }
-            if (let Some(v) <- option.bias) {
-                if (let Some(horizontal) <- v.horizontal) {
-                    horizontalBias = unsafe { LibC.malloc<Float32>() }
-                    if (horizontalBias.isNull()) {
-                        throw IllegalMemoryException("memory malloc failed.")
-                    }
-                    unsafe { horizontalBias.write(horizontal) }
-                }
-                if (let Some(vertival) <- v.vertical) {
-                    verticalBias = unsafe { LibC.malloc<Float32>() }
-                    if (verticalBias.isNull()) {
-                        throw IllegalMemoryException("memory malloc failed.")
-                    }
-                    unsafe { verticalBias.write(vertival) }
-                }
-            }
-        } catch (e: Exception) {
-            free()
-            throw e
-        }
-    }
-
-    func free(): Unit {
-        unsafe {
-            LibC.free(leftAnchor)
-            LibC.free(rightAnchor)
-            LibC.free(middleAnchor)
-            LibC.free(topAnchor)
-            LibC.free(bottomAnchor)
-            LibC.free(centerAnchor)
-            LibC.free<Float32>(horizontalBias)
-            LibC.free<Float32>(verticalBias)
-        }
-    }
-}
-
-@C
-struct CJChainInfo {
-    CJChainInfo(
-        let direction: Int32,
-        let style: Int32
-    ) {}
-}
-
 foreign {
     func FfiOHOSAceFrameworkRelativeContainerCreate(): Unit
 
@@ -359,144 +277,6 @@ public class GuideLineStyle {
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         public var position: GuideLinePosition
-    ) {}
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class AlignRuleOption {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public AlignRuleOption(
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var left!: ?HorizontalAnchor = None,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var right!: ?HorizontalAnchor = None,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var middle!: ?HorizontalAnchor = None,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var top!: ?VerticalAnchor = None,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var bottom!: ?VerticalAnchor = None,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var center!: ?VerticalAnchor = None,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var bias!: ?Bias = None
-    ) {}
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class HorizontalAnchor {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public HorizontalAnchor(
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var anchor: String,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var align: HorizontalAlign
-    ) {}
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class VerticalAnchor {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public VerticalAnchor(
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var anchor: String,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var align: VerticalAlign
-    ) {}
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class Bias {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public Bias(
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var horizontal!: ?Float32 = None,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var vertical!: ?Float32 = None
     ) {}
 }
 

@@ -13,8 +13,15 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.image
 
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.resource.*
+import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 
 @C
@@ -29,15 +36,6 @@ struct CImageComplete {
         let contentHeight: Float64,
         let contentOffsetX: Float64,
         let contentOffsetY: Float64
-    ) {}
-}
-
-@C
-struct CImageError {
-    CImageError(
-        let componentWidth: Float64,
-        let componentHeight: Float64,
-        let message: CString
     ) {}
 }
 
@@ -88,6 +86,61 @@ foreign {
 
     func FfiOHOSAceFrameworkImageOnCompleteV2(callback: Int64): Unit
 }
+
+
+protected class CallbackCJImageError <: BaseCallBack {
+    protected CallbackCJImageError(let closure: (CJImageError) -> Unit) {
+        registerSelf()
+    }
+
+    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+        if (argc != 1) {
+            throw InvalidArgsException()
+        }
+        if (argv.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackCJImageError")
+            throw InvalidArgsException()
+        }
+        let ptrArg0 = unsafe { CPointer<CImageError>(argv.read()) }
+        if (ptrArg0.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackCJImageError")
+            throw InvalidArgsException()
+        }
+        let c_arg0 = unsafe { ptrArg0.read() }
+        let arg0: CJImageError = CJImageError(c_arg0.componentWidth, c_arg0.componentHeight)
+        //arg0.message = c_arg0.message.toString()
+        closure(arg0)
+    }
+}
+class CallbackCJImageComplete <: BaseCallBack {
+    CallbackCJImageComplete(let closure: (CJImageComplete) -> Unit) {
+        registerSelf()
+    }
+
+    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+        if (argc != 1) {
+            throw InvalidArgsException()
+        }
+        if (argv.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackCJImageComplete")
+            throw InvalidArgsException()
+        }
+        let ptrArg0 = unsafe { CPointer<CImageComplete>(argv.read()) }
+        if (ptrArg0.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackCJImageComplete")
+            throw InvalidArgsException()
+        }
+        let c_arg0 = unsafe { ptrArg0.read() }
+        let arg0: CJImageComplete = CJImageComplete(c_arg0.width, c_arg0.height, c_arg0.componentWidth,
+            c_arg0.componentHeight, c_arg0.loadingStatus)
+        arg0.contentWidth = c_arg0.contentWidth
+        arg0.contentHeight = c_arg0.contentHeight
+        arg0.contentOffsetX = c_arg0.contentOffsetX
+        arg0.contentOffsetY = c_arg0.contentOffsetY
+        closure(arg0)
+    }
+}
+
 
 @!APILevel[
     12,

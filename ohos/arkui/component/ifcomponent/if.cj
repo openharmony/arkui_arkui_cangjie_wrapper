@@ -13,7 +13,10 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.ifcomponent
+
+import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkIfElseCreate(): Unit

@@ -13,11 +13,22 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.common
 
+import ohos.arkui.component.native_struct.*
+import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 
 public type VectorTouchTestInfoHandle = CPointer<Unit>
+
+func parseCJArea(area: CJArea): Area {
+    Area(
+        area.width,
+        area.height,
+        unsafe { Position(area.position.read().x, area.position.read().y) },
+        unsafe { Position(area.globalPosition.read().x, area.globalPosition.read().y) },
+    )
+}
 
 @!APILevel[
     12,

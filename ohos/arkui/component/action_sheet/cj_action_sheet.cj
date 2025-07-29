@@ -13,7 +13,15 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.action_sheet
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.resource.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkActionSheetShowWithShadowOptions(
@@ -26,18 +34,6 @@ foreign {
     func FfiOHOSAceFrameworkActionSheetShow(options: NativeActionSheetOptions): Unit
 
     func FfiOHOSAceFrameworkActionSheetDismiss(): Unit
-}
-
-@C
-struct NativeActionSheetShadowOptions {
-    NativeActionSheetShadowOptions(
-        let radius: Float64,
-        let shadowType: Int32,
-        let color: UInt32,
-        let offsetX: Float64,
-        let offsetY: Float64,
-        let fill: Bool
-    ) {}
 }
 
 @C
@@ -128,33 +124,6 @@ struct NativeSheetInfoArray {
 }
 
 @C
-struct NativeConfirm {
-    NativeConfirm(
-        let value: CString,
-        let action: Int64,
-        let enabled: Bool,
-        let defaultFocus: Bool,
-        let style: Int32
-    ) {}
-
-    func free(): Unit {
-        unsafe {
-            LibC.free(value)
-        }
-    }
-}
-
-@C
-struct NativeEdgeStyle {
-    NativeEdgeStyle(
-        let top: Int32,
-        let right: Int32,
-        let bottom: Int32,
-        let left: Int32
-    ) {}
-}
-
-@C
 struct NativeDismissDialogAction {
     NativeDismissDialogAction(let reason: Int32) {}
 }
@@ -164,38 +133,6 @@ struct NativeOptionConfirm {
     NativeOptionConfirm(
         let hasValue: Bool,
         let value: NativeConfirm
-    ) {}
-}
-
-@C
-struct NativeOptionOffset {
-    NativeOptionOffset(
-        let hasValue: Bool,
-        let value: NativeOffset
-    ) {}
-}
-
-@C
-struct NativeOptionRectangle {
-    NativeOptionRectangle(
-        let hasValue: Bool,
-        let value: NativeRectangle
-    ) {}
-}
-
-@C
-struct NativeOptionRadius {
-    NativeOptionRadius(
-        let hasValue: Bool,
-        let value: CBorderRadiuses
-    ) {}
-}
-
-@C
-struct NativeOptionEdgeStyle {
-    NativeOptionEdgeStyle(
-        let hasValue: Bool,
-        let value: NativeEdgeStyle
     ) {}
 }
 
@@ -263,7 +200,7 @@ public class ActionSheetShadowOptions {
         this.fill = fill
     }
 
-    func toNative(): NativeActionSheetShadowOptions {
+    protected func toNative(): NativeActionSheetShadowOptions {
         NativeActionSheetShadowOptions(
             radius,
             Int32(shadowType.getValue()),
@@ -402,153 +339,6 @@ public class Confirm {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class EdgeStyle {
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var top: BorderStyle
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var right: BorderStyle
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var bottom: BorderStyle
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var left: BorderStyle
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        top: BorderStyle,
-        right: BorderStyle,
-        bottom: BorderStyle,
-        left: BorderStyle
-    ) {
-        this.top = top
-        this.right = right
-        this.bottom = bottom
-        this.left = left
-    }
-
-    func toNative(): NativeEdgeStyle {
-        NativeEdgeStyle(
-            top.getValue(),
-            right.getValue(),
-            bottom.getValue(),
-            left.getValue()
-        )
-    }
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static let SOLID = EdgeStyle(
-        BorderStyle.Solid,
-        BorderStyle.Solid,
-        BorderStyle.Solid,
-        BorderStyle.Solid
-    )
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static let DASHED = EdgeStyle(
-        BorderStyle.Dashed,
-        BorderStyle.Dashed,
-        BorderStyle.Dashed,
-        BorderStyle.Dashed
-    )
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static let DOTTED = EdgeStyle(
-        BorderStyle.Dotted,
-        BorderStyle.Dotted,
-        BorderStyle.Dotted,
-        BorderStyle.Dotted
-    )
-}
-
-@!APILevel[
-    19,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public enum DismissReason {
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    PRESS_BACK
-    | @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    TOUCH_OUTSIDE
-    | @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    CLOSE_BUTTON
-    | @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    SLIDE_DOWN
-    | ...
-
-    func toValue(): Int32 {
-        match (this) {
-            case PRESS_BACK => 0
-            case TOUCH_OUTSIDE => 1
-            case CLOSE_BUTTON => 2
-            case SLIDE_DOWN => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-
-    static func toEnum(value: Int32): DismissReason {
-        if (value == 0) {
-            return DismissReason.PRESS_BACK
-        } else if (value == 1) {
-            return DismissReason.TOUCH_OUTSIDE
-        } else if (value == 2) {
-            return DismissReason.CLOSE_BUTTON
-        } else if (value == 3) {
-            return DismissReason.SLIDE_DOWN
-        } else {
-            return DismissReason.PRESS_BACK
-        }
-    }
-}
-
-@!APILevel[
-    19,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 public class DismissDialogAction {
     @!APILevel[
         19,
@@ -576,7 +366,7 @@ public class DismissDialogAction {
     }
 }
 
-func parseToDismissDialogAction(reason: Int32): DismissDialogAction {
+protected func parseToDismissDialogAction(reason: Int32): DismissDialogAction {
     return DismissDialogAction(DismissReason.toEnum(reason))
 }
 

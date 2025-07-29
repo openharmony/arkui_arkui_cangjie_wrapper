@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.common
+
+import ohos.labels.APILevel
 
 foreign func FfiOHOSAceFrameworkComponentIdGetInspectorByKey(id: CString): ExternalString
 

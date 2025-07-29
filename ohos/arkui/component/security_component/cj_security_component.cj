@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.security_component
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.resource.*
+import ohos.labels.APILevel
 
 import std.deriving.Derive
 
@@ -67,6 +74,10 @@ foreign {
     func FfiOHOSAceFrameWorkSecButtonBaseSetFontStyle(fontStyle: Int32): Unit
 
     func FfiOHOSAceFrameWorkSecButtonBaseSetLayoutDirection(value: Int32): Unit
+
+    func FfiOHOSAceFrameworkViewAbstractSetId(id: CString): Unit
+
+    func FfiOHOSAceFrameworkViewAbstractSetPaddings(params: CJEdge): Unit
 }
 
 @Derive[Equatable]

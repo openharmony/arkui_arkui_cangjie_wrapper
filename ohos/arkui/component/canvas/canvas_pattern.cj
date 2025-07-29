@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.canvas
+
+import ohos.arkui.component.common.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkRenderingContextCreateCanvasPattern(reder: Int64, imageId: Int64, repetition: CString): Int64

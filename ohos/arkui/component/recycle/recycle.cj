@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.recycle
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.view.*
+import ohos.base.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkRecycleCreate(): Unit

@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.rich_text
+
+import ohos.arkui.component.common.*
+import ohos.ffi.*
+import ohos.base.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkRichTextCreate(content: CString): Unit

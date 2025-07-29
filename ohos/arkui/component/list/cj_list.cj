@@ -13,20 +13,15 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.list
 
-@C
-struct DividerParams {
-    DividerParams(
-        let width: Float64,
-        let widthUnit: Int32,
-        let color: UInt32,
-        let startMargin: Float64,
-        let startMarginUnit: Int32,
-        let endMargin: Float64,
-        let endMarginUnit: Int32
-    ) {}
-}
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.scroll.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 @C
 struct CJVisibleListContentInfo {

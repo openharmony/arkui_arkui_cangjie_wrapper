@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.shape
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.resource.*
+import ohos.labels.APILevel
 
 import ohos.multimedia.image.PixelMap
 
@@ -67,17 +74,6 @@ foreign {
     func FfiOHOSAceFrameworkShapeSetHeight(height: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkShapeSetSize(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
-
-    func FfiOHOSAceFrameworkShapeSetInsFill(shapeId: Int64, color: UInt32): Unit
-
-    func FfiOHOSAceFrameworkShapeSetInsWidth(shapeId: Int64, value: Float64, unit: Int32): Unit
-
-    func FfiOHOSAceFrameworkShapeSetInsHeight(shapeId: Int64, value: Float64, unit: Int32): Unit
-
-    func FfiOHOSAceFrameworkShapeSetInsSize(shapeId: Int64, width: Float64, widthUnit: Int32, height: Float64,
-        heightUnit: Int32): Unit
-
-    func FfiOHOSAceFrameworkShapeSetInsOffset(shapeId: Int64, x: Float64, xUnit: Int32, y: Float64, yUnit: Int32): Unit
 }
 
 @!APILevel[
@@ -85,128 +81,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-sealed abstract class ShapeAbstract <: ContainerBase {
-    /**
-     * ShapeAbstract Constructor.
-     * @param id: Component ID
-     * @since 11
-     */
-    protected init(id: Int64) {
-        super(id)
-    }
-
-    /**
-     * Sets the color of the filled area. The abnormal value is processed based on the default value.
-     *
-     * @param color: Color of the filled area
-     * @return ShapeAbstract instance
-     * @since 11
-     */
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func fill(color: ResourceColor): This {
-        unsafe {
-            FfiOHOSAceFrameworkShapeSetInsFill(getID(), transAppResourceToResourceColor(color))
-        }
-        this
-    }
-
-    /**
-     * Sets the shape width.
-     *
-     * @param value: Shape width
-     * @return ShapeAbstract instance
-     * @since 11
-     */
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func width(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkShapeSetInsWidth(getID(), value_.value, value_.unitType.getValue())
-        }
-        this
-    }
-
-    /**
-     * Sets the shape height.
-     *
-     * @param value: Shape height
-     * @return ShapeAbstract instance
-     * @since 11
-     */
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func height(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkShapeSetInsHeight(getID(), value_.value, value_.unitType.getValue())
-        }
-        this
-    }
-
-    /**
-     * Sets the shape size.
-     *
-     * @param width: Shape width
-     * @param height: Shape height
-     * @return ShapeAbstract instance
-     * @since 11
-     */
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func size(width!: Length, height!: Length): This {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkShapeSetInsSize(getID(), width_.value, width_.unitType.getValue(), height_.value,
-                height_.unitType.getValue())
-        }
-        this
-    }
-
-    /**
-     * Sets the shape offset.
-     *
-     * @param x: x Offset
-     * @param y: y Offset
-     * @return ShapeAbstract instance
-     * @since 11
-     */
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func offset(x!: Length, y!: Length): This {
-        var x_ = transAppResourceToLength(x)
-        var y_ = transAppResourceToLength(y)
-        unsafe {
-            FfiOHOSAceFrameworkShapeSetInsOffset(getID(), x_.value, x_.unitType.getValue(), y_.value,
-                y_.unitType.getValue())
-        }
-        this
-    }
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-sealed abstract class ShapeComponent <: ContainerBase {
+public abstract class ShapeComponent <: ContainerBase {
     /**
      * Sets the color of the filled area. The abnormal value is processed based on the default value.
      *

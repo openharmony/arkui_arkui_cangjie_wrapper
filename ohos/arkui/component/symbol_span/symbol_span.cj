@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.symbol_span
+
+import ohos.base.*
 
 foreign {
     func FfiOHOSAceFrameworkSymbolSpanCreate(id: UInt32): Unit

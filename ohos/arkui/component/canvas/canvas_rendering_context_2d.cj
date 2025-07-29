@@ -13,8 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.canvas
 
+import ohos.arkui.component.common.*
+import ohos.arkui.component.path_2d.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 import ohos.multimedia.image.*
 
 foreign {

@@ -13,9 +13,11 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.view
 
+import ohos.arkui.component.common.*
 import ohos.arkui.state_management.*
+import ohos.labels.APILevel
 
 @!APILevel[
     12,

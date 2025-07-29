@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.text_clock
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.ffi.*
+import ohos.base.*
+import ohos.resource.*
+import ohos.labels.APILevel
 
 import std.convert.*
-
-public type VectorNativeTextShadow = CPointer<Unit>
 
 foreign {
     func FFICJCreateVectorNativeTextShadowV2(size: Int64): VectorNativeTextShadow
@@ -26,32 +32,6 @@ foreign {
         thisShadow: NativeTextShadowV2): Unit
 
     func FFICJVectorNativeTextShadowDeleteV2(vec: VectorNativeTextShadow): Unit
-}
-
-@C
-struct NativeTextShadowV2 {
-    let radius: Float64
-    let offsetX: Float64
-    let offsetY: Float64
-    let color: UInt32
-    let fill: Bool
-    let shadowType: UInt32
-
-    init(
-        radius: Float64,
-        offsetX: Float64,
-        offsetY: Float64,
-        color: UInt32,
-        fill: Bool,
-        shadowType: UInt32
-    ) {
-        this.radius = radius
-        this.offsetX = offsetX
-        this.offsetY = offsetY
-        this.color = color
-        this.fill = fill
-        this.shadowType = shadowType
-    }
 }
 
 class CJVectorNativeTextShadow {

@@ -13,5 +13,5 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.time_picker
 

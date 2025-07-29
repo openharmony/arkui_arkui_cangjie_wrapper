@@ -13,10 +13,19 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.view
 
+import ohos.arkui.component.common.*
+import ohos.arkui.component.ifcomponent.*
+import ohos.arkui.component.custom_view.*
 import ohos.arkui.state_management.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 import std.sort.*
+import std.collection.*
+import std.collection.HashMap
+import std.collection.ArrayList
 
 foreign func FfiOHOSAceFrameworkLoadNativeView(view: Int64): Bool
 

@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.common
+
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
 
 foreign func FfiOHOSAceFrameworkTransitionEffectOpacity(number: Float64): Int64
 
@@ -69,25 +74,6 @@ public class TranslateOptions {
         this.x = transAppResourceToLength(x)
         this.y = transAppResourceToLength(y)
         this.z = transAppResourceToLength(z)
-    }
-}
-
-@C
-struct CTranslateOptions {
-    let x: Float64
-    let xType: UInt32
-    let y: Float64
-    let yType: UInt32
-    let z: Float64
-    let zType: UInt32
-
-    CTranslateOptions(options: TranslateOptions) {
-        x = options.x.value
-        xType = UInt32(options.x.unitType.getValue())
-        y = options.y.value
-        yType = UInt32(options.y.unitType.getValue())
-        z = options.z.value
-        zType = UInt32(options.z.unitType.getValue())
     }
 }
 

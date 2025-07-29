@@ -13,9 +13,15 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.common
 
-const INVALID_CALLBACK_ID = 0
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
+
+protected const INVALID_CALLBACK_ID = 0
 
 @!APILevel[
     12,
@@ -1414,7 +1420,7 @@ public class Rectangle {
         this.height = transAppResourceToLength(height)
     }
 
-    func parseToNative(): NativeRectangle {
+    protected func parseToNative(): NativeRectangle {
         return NativeRectangle(
             x.value,
             x.unitType.getValue(),

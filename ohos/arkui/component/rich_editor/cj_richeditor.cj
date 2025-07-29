@@ -13,9 +13,15 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.rich_editor
 
+import ohos.arkui.component.common.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.resource.*
+import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
+import std.collection.ArrayList
 
 foreign {
     func FfiOHOSAceFrameworkRichEditorCreateWithController(controller: Int64): Unit

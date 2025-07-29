@@ -13,7 +13,16 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.lazy_for_each
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.view.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
+import std.collection.HashMap
+import std.collection.HashMap
 
 foreign {
     func FfiOHOSAceFrameworkLazyForEachCreate(viewID: Int64, parentView: Int64, lazyForEachFuncsRef: Int64): Unit
@@ -24,17 +33,6 @@ foreign {
 type KeyGenFuncType<T> = (T, Int64) -> String
 
 type ItemGenFuncType<T> = (T, Int64) -> Unit
-
-abstract class BaseLazyForEachFuncs <: FFIData {
-    protected func generateKey(index: Int64): String
-    protected func generateItem(index: Int64): Unit
-    protected func getTotalCount(): Int64
-    protected func dataChangeListenerRegister(listenerId: Int64): Unit
-    protected func dataChangeListenerUnregister(listenerId: Int64): Unit
-    protected func startMarkLazy(id: String): Unit
-    protected func endMarkLazy(): Unit
-    protected func removeChildGroup(id: String): Unit
-}
 
 class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
     private var cacheData: Option<(T, Int64)> = None
@@ -248,60 +246,4 @@ public class LazyForEach <: ComponentRender {
     public func genChild(): Unit {
         child()
     }
-}
-
-@C
-func OHOSAceFrameworkLazyForEachFuncsGenerateKey(funcsID: Int64, idx: Int64): ExternalString {
-    let optData = FFIDataManager.getInstance().getData<BaseLazyForEachFuncs>(funcsID)
-    let resStr = getOrThrow(optData, msg: "no funcsID of BaseLazyForEachFuncs ${funcsID}").generateKey(idx)
-    return ExternalString(resStr)
-}
-
-@C
-func OHOSAceFrameworkLazyForEachFuncsGenerateItem(funcsID: Int64, idx: Int64): Int64 {
-    let optData = FFIDataManager.getInstance().getData<BaseLazyForEachFuncs>(funcsID)
-    getOrThrow(optData, msg: "no funcsID of BaseLazyForEachFuncs ${funcsID}").generateItem(idx)
-    0
-}
-
-@C
-func OHOSAceFrameworkLazyForEachFuncsGetTotalCount(funcsID: Int64): Int64 {
-    let optData = FFIDataManager.getInstance().getData<BaseLazyForEachFuncs>(funcsID)
-    let resStr = getOrThrow(optData, msg: "no funcsID of BaseLazyForEachFuncs ${funcsID}").getTotalCount()
-    return resStr
-}
-
-@C
-func OHOSAceFrameworkLazyForEachFuncsDataChangeListenerRegister(funcsID: Int64, idx: Int64): Int64 {
-    let optData = FFIDataManager.getInstance().getData<BaseLazyForEachFuncs>(funcsID)
-    getOrThrow(optData, msg: "no funcsID of BaseLazyForEachFuncs ${funcsID}").dataChangeListenerRegister(idx)
-    0
-}
-
-@C
-func OHOSAceFrameworkLazyForEachFuncsDataChangeListenerUnregister(funcsID: Int64, idx: Int64): Int64 {
-    let optData = FFIDataManager.getInstance().getData<BaseLazyForEachFuncs>(funcsID)
-    getOrThrow(optData, msg: "no funcsID of BaseLazyForEachFuncs ${funcsID}").dataChangeListenerUnregister(idx)
-    0
-}
-
-@C
-func OHOSAceFrameworkLazyForEachFuncsMarkLazy(funcsID: Int64, key: CString): Unit {
-    let optData = FFIDataManager.getInstance().getData<BaseLazyForEachFuncs>(funcsID)
-    let funcs = getOrThrow(optData, msg: "no funcsID of BaseLazyForEachFuncs ${funcsID}")
-    funcs.startMarkLazy(key.toString())
-}
-
-@C
-func OHOSAceFrameworkLazyForEachFuncsResetLazy(funcsID: Int64): Unit {
-    let optData = FFIDataManager.getInstance().getData<BaseLazyForEachFuncs>(funcsID)
-    let funcs = getOrThrow(optData, msg: "no funcsID of BaseLazyForEachFuncs ${funcsID}")
-    funcs.endMarkLazy()
-}
-
-@C
-func OHOSAceFrameworkLazyForEachFuncsRemoveChildGroup(funcsID: Int64, composedId: CString): Unit {
-    let optData = FFIDataManager.getInstance().getData<BaseLazyForEachFuncs>(funcsID)
-    let funcs = getOrThrow(optData, msg: "no funcsID of BaseLazyForEachFuncs ${funcsID}")
-    funcs.removeChildGroup(composedId.toString())
 }

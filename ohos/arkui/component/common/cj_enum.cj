@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.common
 
+import ohos.labels.APILevel
 import std.deriving.Derive
 
 @!APILevel[
@@ -89,7 +90,7 @@ public enum InputType {
     PhoneNumber
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Normal => 0
             case Number => 1
@@ -151,7 +152,7 @@ public enum EnterKeyType {
     NEW_LINE
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Go => 2
             case EntrySearch => 3
@@ -197,7 +198,7 @@ public enum FlexDirection {
     ColumnReverse
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Row => 0
             case Column => 1
@@ -234,7 +235,7 @@ public enum FlexWrap {
     WrapReverse
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case NoWrap => 0
             case Wrap => 1
@@ -288,7 +289,7 @@ public enum FlexAlign {
     SpaceEvenly
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Start => 1
             case Center => 2
@@ -345,7 +346,7 @@ public enum ItemAlign {
     Baseline
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Auto => 0
             case Start => 1
@@ -384,7 +385,7 @@ public enum ShapeType {
     CircleType
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Normal => 0
             case Capsule => 1
@@ -420,7 +421,7 @@ public enum ToggleType {
     ButtonType
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case CheckboxType => 0
             case SwitchType => 1
@@ -463,7 +464,7 @@ public enum FontStyle {
         }
     }
 
-    static func parseValue(value: Int32): FontStyle {
+    protected static func parseValue(value: Int32): FontStyle {
         match (value) {
             case 0 => Normal
             case 1 => Italic
@@ -582,7 +583,7 @@ public enum HorizontalAlign {
     End
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Start => 1
             case Center => 2
@@ -618,7 +619,7 @@ public enum VerticalAlign {
     Bottom
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Top => 1
             case Center => 2
@@ -798,7 +799,7 @@ public enum FontWeight {
         }
     }
 
-    static func parseValue(value: Int32): FontWeight {
+    protected static func parseValue(value: Int32): FontWeight {
         match (value) {
             case 0 => W100
             case 1 => W200
@@ -840,7 +841,7 @@ public enum BarPosition {
     End
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Start => 0
             case End => 1
@@ -869,7 +870,7 @@ public enum BarMode {
     Scrollable
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Fixed => 0
             case Scrollable => 1
@@ -898,7 +899,7 @@ public enum ShadowType {
     BLUR
     | ...
 
-    func getValue(): UInt32 {
+    protected func getValue(): UInt32 {
         match (this) {
             case COLOR => 0
             case BLUR => 1
@@ -939,7 +940,7 @@ public enum TextDecorationType {
     LineThrough
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case None => 0
             case Underline => 1
@@ -949,7 +950,7 @@ public enum TextDecorationType {
         }
     }
 
-    static func parseValue(value: Int32): TextDecorationType {
+    protected static func parseValue(value: Int32): TextDecorationType {
         match (value) {
             case 0 => None
             case 1 => Underline
@@ -1000,7 +1001,7 @@ public enum TextAlign {
         }
     }
 
-    static func parseValue(value: Int32): TextAlign {
+    protected static func parseValue(value: Int32): TextAlign {
         match (value) {
             case 0 => Start
             case 1 => Center
@@ -1091,7 +1092,7 @@ public enum WordBreak {
         }
     }
 
-    static func parseValue(value: Int32): WordBreak {
+    protected static func parseValue(value: Int32): WordBreak {
         match (value) {
             case 0 => Normal
             case 1 => BreakAll
@@ -1133,7 +1134,7 @@ public enum ImageRepeat {
     XY
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case NoRepeat => 0
             case X => 1
@@ -1223,7 +1224,7 @@ public enum ResourceType {
     Rawfile
     | ...
 
-    func getValue(): UInt32 {
+    protected func getValue(): UInt32 {
         match (this) {
             case ResColor => 10001
             case Float => 10002
@@ -1267,7 +1268,7 @@ public enum ImageSize {
     Auto
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Contain => 0
             case Cover => 1
@@ -1460,7 +1461,7 @@ public enum ImageFit {
     ScaleDown
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Fill => 0
             case Contain => 1
@@ -1472,7 +1473,7 @@ public enum ImageFit {
         }
     }
 
-    static func parseValue(value: Int32): ImageFit {
+    protected static func parseValue(value: Int32): ImageFit {
         match (value) {
             case 0 => Fill
             case 1 => Contain
@@ -1511,7 +1512,7 @@ public enum Direction {
     Auto
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Ltr => 0
             case Rtl => 1
@@ -1541,7 +1542,7 @@ public enum ScrollDirection {
     Horizontal
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Vertical => 0
             case Horizontal => 1
@@ -1570,7 +1571,7 @@ public enum ScrollBarDirection {
     Horizontal
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Vertical => 0
             case Horizontal => 1
@@ -1611,7 +1612,7 @@ public enum SliderChangeMode {
     Click
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Begin => 0
             case Moving => 1
@@ -1621,7 +1622,7 @@ public enum SliderChangeMode {
         }
     }
 
-    static func setValue(value: Int32): SliderChangeMode {
+    protected static func setValue(value: Int32): SliderChangeMode {
         match (value) {
             case 0 => SliderChangeMode.Begin
             case 1 => SliderChangeMode.Moving
@@ -1651,7 +1652,7 @@ public enum SliderStyle {
     InSet
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case OutSet => 0
             case InSet => 1
@@ -1671,7 +1672,7 @@ enum WindowBlurStyle {
     | XLargeDark
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case SmallLight => 0
             case MediumLight => 1
@@ -1718,7 +1719,7 @@ public enum ImageInterpolation {
     Low
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case None => 0
             case High => 1
@@ -1755,7 +1756,7 @@ public enum BarState {
     On
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Off => 0
             case Auto => 1
@@ -1791,7 +1792,7 @@ public enum Visibility {
     None
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Visible => 0
             case Hidden => 1
@@ -1832,7 +1833,7 @@ public enum LineCapStyle {
     Square
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Butt => 0
             case Round => 1
@@ -1880,7 +1881,7 @@ public enum ProgressType {
     Capsule
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Linear => 0
             case Ring => 1
@@ -1912,7 +1913,7 @@ public enum ImageRenderMode {
     Template
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Original => 0
             case Template => 1
@@ -1947,7 +1948,7 @@ public enum NavigationType {
     Back
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Push => 1
             case Replace => 2
@@ -1977,7 +1978,7 @@ public enum SwiperDisplayMode {
     AutoLinear
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Stretch => 0
             case AutoLinear => 1
@@ -2072,7 +2073,7 @@ public enum Curve {
     Friction
     | ...
 
-    func getValue(): String {
+    protected func getValue(): String {
         match (this) {
             case Linear => "linear"
             case Ease => "ease"
@@ -2118,7 +2119,7 @@ public enum EdgeEffect {
     None
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Spring => 0
             case Fade => 1
@@ -2160,7 +2161,7 @@ public enum Edge {
     End
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Top => 0
             case Start => 1
@@ -2170,7 +2171,7 @@ public enum Edge {
         }
     }
 
-    static func setValue(value: Int32): Edge {
+    protected static func setValue(value: Int32): Edge {
         match (value) {
             case 0 => Edge.Top
             case 1 => Edge.Start
@@ -2272,7 +2273,7 @@ public enum Placement {
     None
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Left => 0
             case Right => 1
@@ -2323,7 +2324,7 @@ public enum LineJoinStyle {
     Bevel
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Miter => 0
             case Round => 1
@@ -2449,7 +2450,7 @@ public enum TextBaseline {
     Hanging
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Alphabetic => 0
             case Ideographic => 1
@@ -2541,7 +2542,7 @@ public enum CompositeOperation {
     Xor
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case SourceOver => 0
             case SourceAtop => 1
@@ -2585,7 +2586,7 @@ public enum QualityType {
     High
     | ...
 
-    func getValue(): String {
+    protected func getValue(): String {
         match (this) {
             case Low => "low"
             case Medium => "medium"
@@ -2615,7 +2616,7 @@ public enum GesturePriority {
     High
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Low => 0
             case High => 1
@@ -2624,13 +2625,13 @@ public enum GesturePriority {
     }
 }
 
-enum GesturePriorityInner {
+protected enum GesturePriorityInner {
     Low
     | High
     | Parallel
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Low => 0
             case High => 1
@@ -2660,7 +2661,7 @@ public enum GestureMask {
     IgnoreInternal
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Normal => 0
             case IgnoreInternal => 1
@@ -2695,7 +2696,7 @@ public enum SwipeDirection {
     All
     | ...
 
-    func getValue(): UInt32 {
+    protected func getValue(): UInt32 {
         match (this) {
             case Horizontal => 1
             case Vertical => 2
@@ -2767,7 +2768,7 @@ public enum PanDirection {
     Computed(UInt32)
     | ...
 
-    func getValue(): UInt32 {
+    protected func getValue(): UInt32 {
         match (this) {
             case None => 0
             case Left => 1
@@ -2827,7 +2828,7 @@ public enum GestureMode {
     Exclusive
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Sequence => 0
             case Parallel => 1
@@ -2862,7 +2863,7 @@ public enum Axis {
     Horizontal
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Vertical => 0
             case Horizontal => 1
@@ -2891,7 +2892,7 @@ public enum ResponseType {
     LongPress
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case RightClick => 0
             case LongPress => 1
@@ -2926,7 +2927,7 @@ public enum CopyOptions {
     LocalDevice
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case None => 0
             case InApp => 1
@@ -3006,7 +3007,7 @@ public enum TouchType {
         }
     }
 
-    static func parseValue(value: UInt8): TouchType {
+    protected static func parseValue(value: UInt8): TouchType {
         match (value) {
             case 0 => Down
             case 1 => Up
@@ -3025,7 +3026,7 @@ enum DragComponent {
     | DragGrid
     | ...
 
-    func getValue(): UInt32 {
+    protected func getValue(): UInt32 {
         match (this) {
             case DragCommon => 0
             case DragText => 1
@@ -3057,7 +3058,7 @@ public enum SideBarContainerType {
     Overlay
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Embed => 0
             case Overlay => 1
@@ -3086,7 +3087,7 @@ public enum SideBarPosition {
     End
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Start => 0
             case End => 1
@@ -3121,7 +3122,7 @@ public enum SourceType {
     TouchScreen
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Unknown => 0
             case Mouse => 1
@@ -3130,7 +3131,7 @@ public enum SourceType {
         }
     }
 
-    static func parseValue(value: Int32): SourceType {
+    protected static func parseValue(value: Int32): SourceType {
         match (value) {
             case 1 => Mouse
             case 2 => TouchScreen
@@ -3214,7 +3215,7 @@ public enum MouseButton {
         }
     }
 
-    static func parseValue(value: Int32): MouseButton {
+    protected static func parseValue(value: Int32): MouseButton {
         match (value) {
             case 1 => Left
             case 2 => Right
@@ -3297,7 +3298,7 @@ public enum MouseAction {
         }
     }
 
-    static func parseValue(value: Int32): MouseAction {
+    protected static func parseValue(value: Int32): MouseAction {
         match (value) {
             case 1 => Press
             case 2 => Release
@@ -3357,7 +3358,7 @@ public enum KeySource {
         }
     }
 
-    static func parseValue(value: Int32): KeySource {
+    protected static func parseValue(value: Int32): KeySource {
         match (value) {
             case 4 => Keyboard
             case _ => Unknown
@@ -3418,7 +3419,7 @@ public enum KeyType {
         }
     }
 
-    static func parseValue(value: Int32): KeyType {
+    protected static func parseValue(value: Int32): KeyType {
         match (value) {
             case 0 => Down
             case 1 => Up
@@ -3467,7 +3468,7 @@ public enum ModifierKey {
     ALT
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case CTRL => 0
             case SHIFT => 1
@@ -3582,7 +3583,7 @@ public enum FunctionKey {
     TAB
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case ESC => 0
             case F1 => 1
@@ -3623,7 +3624,7 @@ public enum DataPanelType {
     LineType
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case CircleType => 0
             case LineType => 1
@@ -3733,7 +3734,7 @@ public enum RefreshStatus {
     Done
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Inactive => 0
             case Drag => 1
@@ -3755,7 +3756,7 @@ public enum RefreshStatus {
         }
     }
 
-    static func parseValue(value: Int32): RefreshStatus {
+    protected static func parseValue(value: Int32): RefreshStatus {
         match (value) {
             case 0 => Inactive
             case 1 => Drag
@@ -3799,7 +3800,7 @@ public enum SeekMode {
     Accurate
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case PreviousKeyframe => 0
             case NextKeyframe => 1
@@ -3848,7 +3849,7 @@ public enum PlaybackSpeed {
     Speed_Forward_2_00_X
     | ...
 
-    func getValue(): Float64 {
+    protected func getValue(): Float64 {
         match (this) {
             case Speed_Forward_0_75_X => 0.75
             case Speed_Forward_1_00_X => 1.00
@@ -3914,7 +3915,7 @@ public enum SelectStatus {
         }
     }
 
-    static func parseValue(value: Int32): SelectStatus {
+    protected static func parseValue(value: Int32): SelectStatus {
         match (value) {
             case 0 => All
             case 1 => Part
@@ -3956,7 +3957,7 @@ public enum AnimationStatus {
     Stopped
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Initial => 0
             case Running => 1
@@ -3999,7 +4000,7 @@ public enum FillMode {
     Both
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case None => 0
             case Forwards => 1
@@ -4064,7 +4065,7 @@ public enum SharedTransitionEffectType {
     SharedEffectExchange
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case SharedEffectStatic => 0
             case SharedEffectExchange => 1
@@ -4127,7 +4128,7 @@ public enum ScrollState {
         }
     }
 
-    static func parseValue(value: Int32): ScrollState {
+    protected static func parseValue(value: Int32): ScrollState {
         match (value) {
             case 0 => Idle
             case 1 => Scrolling
@@ -4299,7 +4300,7 @@ public enum ImageSpanAlignment {
     BASELINE
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case TOP => 0
             case CENTER => 1
@@ -4309,7 +4310,7 @@ public enum ImageSpanAlignment {
         }
     }
 
-    static func parseValue(value: Int32): ImageSpanAlignment {
+    protected static func parseValue(value: Int32): ImageSpanAlignment {
         match (value) {
             case 1 => TOP
             case 2 => CENTER
@@ -4340,7 +4341,7 @@ public enum RichEditorDeleteDirection {
     FORWARD
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case BACKWARD => 0
             case FORWARD => 1
@@ -4348,7 +4349,7 @@ public enum RichEditorDeleteDirection {
         }
     }
 
-    static func parseValue(value: Int32): RichEditorDeleteDirection {
+    protected static func parseValue(value: Int32): RichEditorDeleteDirection {
         match (value) {
             case 0 => BACKWARD
             case 1 => FORWARD
@@ -4379,13 +4380,13 @@ public enum SpanType {
 }
 
 // Not public enum, only for RichEditor component internal implementation.
-enum MarginType {
+protected enum MarginType {
     None
     | MarginLength
     | MarginPlaceholder
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case None => 0
             case MarginLength => 1
@@ -4436,19 +4437,6 @@ public enum MixMode {
     }
 }
 
-enum WebType {
-    SURFACE
-    | TEXTURE
-    | ...
-
-    func getValue(): Int32 {
-        match (this) {
-            case SURFACE => 0
-            case TEXTURE => 1
-            case _ => 0
-        }
-    }
-}
 
 @!APILevel[
     12,
@@ -4560,7 +4548,7 @@ public enum GradientDirection {
     None
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Left => 0
             case Top => 1
@@ -4680,7 +4668,7 @@ public enum RenderFit {
     RESIZE_COVER_BOTTOM_RIGHT
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case CENTER => 0
             case TOP => 1
@@ -4825,7 +4813,7 @@ public enum BarrierDirection {
     BOTTOM
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case LEFT => 0
             case RIGHT => 1
@@ -4862,7 +4850,7 @@ public enum SafeAreaType {
     KEYBOARD
     | ...
 
-    func getValue(): UInt32 {
+    protected func getValue(): UInt32 {
         match (this) {
             case SYSTEM => 1
             case CUTOUT => 1 << 1
@@ -4904,7 +4892,7 @@ public enum SafeAreaEdge {
     END
     | ...
 
-    func getValue(): UInt32 {
+    protected func getValue(): UInt32 {
         match (this) {
             case TOP => 1
             case BOTTOM => 1 << 1
@@ -4974,7 +4962,7 @@ public enum NestedScrollMode {
     PARALLEL
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case SELF_ONLY => 0
             case SELF_FIRST => 1
@@ -5191,7 +5179,7 @@ public enum ControlSize {
     NORMAL
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case SMALL => 0
             case NORMAL => 1
@@ -5220,7 +5208,7 @@ public enum OptionWidthMode {
     FIT_TRIGGER
     | ...
 
-    func getValue(): String {
+    protected func getValue(): String {
         match (this) {
             case FIT_CONTENT => "fit_content"
             case FIT_TRIGGER => "fit_trigger"
@@ -5249,7 +5237,7 @@ public enum ArrowPosition {
     START
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case END => 0
             case START => 1
@@ -5284,7 +5272,7 @@ public enum MenuAlignType {
     END
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case START => 0
             case CENTER => 1
@@ -5320,7 +5308,7 @@ public enum WebDarkMode {
     Auto
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Off => 0
             case On => 1
@@ -5374,7 +5362,7 @@ public enum SourceTool {
     Joystick
     | ...
 
-    static func parseValue(value: Int32): SourceTool {
+    protected static func parseValue(value: Int32): SourceTool {
         match (value) {
             case 0 => Unknown
             case 1 => Finger
@@ -5510,7 +5498,7 @@ public enum ScrollSource {
     SCROLLER_ANIMATION
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case DRAG => 0
             case FLING => 1
@@ -5524,7 +5512,7 @@ public enum ScrollSource {
         }
     }
 
-    static func parseValue(value: Int32): ScrollSource {
+    protected static func parseValue(value: Int32): ScrollSource {
         match (value) {
             case 0 => DRAG
             case 1 => FLING
@@ -5798,7 +5786,7 @@ public enum ContentType {
     FORMAT_ADDRESS
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case USER_NAME => 0
             case PASSWORD => 1
@@ -5882,7 +5870,7 @@ public enum GestureTypes {
     CLICK
     | ...
 
-    static func parseValue(value: Int32): GestureTypes {
+    protected static func parseValue(value: Int32): GestureTypes {
         match (value) {
             case 0 => TAP_GESTURE
             case 1 => LONG_PRESS_GESTURE
@@ -5945,7 +5933,7 @@ public enum MenuPolicy {
     Show
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Default => 0
             case Hide => 1
@@ -6027,7 +6015,7 @@ public enum TextDecorationStyle {
     WAVY
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case SOLID => 0
             case DOUBLE => 1
@@ -6085,7 +6073,7 @@ public enum LineBreakStrategy {
     BALANCED
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case GREEDY => 0
             case HIGH_QUALITY => 1
@@ -6094,7 +6082,7 @@ public enum LineBreakStrategy {
         }
     }
 
-    static func parseValue(value: Int32): LineBreakStrategy {
+    protected static func parseValue(value: Int32): LineBreakStrategy {
         match (value) {
             case 0 => GREEDY
             case 1 => HIGH_QUALITY
@@ -6140,7 +6128,7 @@ public enum TextContentStyle {
     INLINE
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case DEFAULT => 0
             case INLINE => 1
@@ -6174,7 +6162,7 @@ public enum CheckBoxShape {
     ROUNDED_SQUARE
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case CIRCLE => 0
             case ROUNDED_SQUARE => 1
@@ -6261,7 +6249,7 @@ public enum ArrowPointPosition {
     END
     | ...
 
-    func getValue(): String {
+    protected func getValue(): String {
         match (this) {
             case START => "Start"
             case CENTER => "Center"
@@ -6291,7 +6279,7 @@ public enum TitleHeight {
     MainWithSub
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case MainOnly => 0
             case MainWithSub => 1
@@ -6325,7 +6313,7 @@ public enum DialogButtonStyle {
     HIGHLIGHT
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case DEFAULT => 0
             case HIGHLIGHT => 1
@@ -6381,7 +6369,7 @@ public enum FoldStatus {
     FOLD_STATUS_HALF_FOLDED
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case FOLD_STATUS_UNKNOWN => 0
             case FOLD_STATUS_EXPANDED => 1
@@ -6417,7 +6405,7 @@ public enum LengthMetricsUnit {
     PX
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case DEFAULT => 0
             case PX => 1
@@ -6457,7 +6445,7 @@ public enum CanvasDirection {
     rtl
     | ...
 
-    func getValue(): String {
+    protected func getValue(): String {
         match (this) {
             case inherit => "inherit"
             case ltr => "ltr"
@@ -6492,7 +6480,7 @@ public enum CanvasFillRule {
     nonzero
     | ...
 
-    func getValue(): String {
+    protected func getValue(): String {
         match (this) {
             case evenodd => "evenodd"
             case nonzero => "nonzero"
@@ -6532,7 +6520,7 @@ public enum ImageType {
     webp
     | ...
 
-    func getValue(): String {
+    protected func getValue(): String {
         match (this) {
             case png => "image/png"
             case jpeg => "image/jpeg"
@@ -6555,7 +6543,7 @@ public enum LayoutSafeAreaType {
     ]
     SYSTEM | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case SYSTEM => 0
             case _ => throw IllegalArgumentException("The type is not supported.")
@@ -6583,7 +6571,7 @@ public enum LayoutSafeAreaEdge {
     BOTTOM
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case TOP => 0
             case BOTTOM => 1
@@ -6619,7 +6607,7 @@ public enum NavigationTitleMode {
     Mini
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Free => 0
             case Full => 1
@@ -6628,7 +6616,7 @@ public enum NavigationTitleMode {
         }
     }
 
-    static func parseValue(value: Int32): NavigationTitleMode {
+    protected static func parseValue(value: Int32): NavigationTitleMode {
         match (value) {
             case 0 => Free
             case 1 => Full
@@ -6673,10 +6661,286 @@ public enum BarStyle {
     Stack
     | ...
 
-    func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
             case Standard => 0
             case Stack => 1
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+}
+
+@!APILevel[
+    12,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public enum FinishCallbackType {
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    REMOVED
+    | @!APILevel[
+        16,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    LOGICALLY
+    | ...
+
+    protected func getValue(): Int32 {
+        match (this) {
+            case REMOVED => 0
+            case LOGICALLY => 1
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+}
+
+@!APILevel[
+    12,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public enum BlurStyle {
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    Thin
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    Regular
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    Thick
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    BACKGROUND_THIN
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    BACKGROUND_REGULAR
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    BACKGROUND_THICK
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    BACKGROUND_ULTRA_THICK
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    NONE
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    COMPONENT_ULTRA_THIN
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    COMPONENT_THIN
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    COMPONENT_REGULAR
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    COMPONENT_THICK
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    COMPONENT_ULTRA_THICK
+    | ...
+
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func getValue(): Int32 {
+        match (this) {
+            case Thin => 1
+            case Regular => 2
+            case Thick => 3
+            case BACKGROUND_THIN => 4
+            case BACKGROUND_REGULAR => 5
+            case BACKGROUND_THICK => 6
+            case BACKGROUND_ULTRA_THICK => 7
+            case NONE => 0
+            case COMPONENT_ULTRA_THIN => 8
+            case COMPONENT_THIN => 9
+            case COMPONENT_REGULAR => 10
+            case COMPONENT_THICK => 11
+            case COMPONENT_ULTRA_THICK => 12
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+}
+
+@!APILevel[
+    19,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public enum DismissReason {
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    PRESS_BACK
+    | @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    TOUCH_OUTSIDE
+    | @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    CLOSE_BUTTON
+    | @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    SLIDE_DOWN
+    | ...
+
+    func toValue(): Int32 {
+        match (this) {
+            case PRESS_BACK => 0
+            case TOUCH_OUTSIDE => 1
+            case CLOSE_BUTTON => 2
+            case SLIDE_DOWN => 3
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+
+    protected static func toEnum(value: Int32): DismissReason {
+        if (value == 0) {
+            return DismissReason.PRESS_BACK
+        } else if (value == 1) {
+            return DismissReason.TOUCH_OUTSIDE
+        } else if (value == 2) {
+            return DismissReason.CLOSE_BUTTON
+        } else if (value == 3) {
+            return DismissReason.SLIDE_DOWN
+        } else {
+            return DismissReason.PRESS_BACK
+        }
+    }
+}
+
+@!APILevel[
+    12,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public enum TextInputStyle {
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    Default
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    Inline
+    | ...
+
+    protected func getValue(): Int32 {
+        match (this) {
+            case Default => 0
+            case Inline => 1
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+}
+
+@!APILevel[
+    19,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public enum TextAreaType {
+    @!APILevel[
+        19,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    NORMAL
+    | @!APILevel[
+        19,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    NUMBER
+    | @!APILevel[
+        19,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    PHONE_NUMBER
+    | @!APILevel[
+        19,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    EMAIL
+    | @!APILevel[
+        19,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    NUMBER_DECIMAL
+    | @!APILevel[
+        19,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    URL
+    | ...
+
+    protected func getValue(): Int32 {
+        match (this) {
+            case NORMAL => 0
+            case NUMBER => 2
+            case PHONE_NUMBER => 3
+            case EMAIL => 5
+            case NUMBER_DECIMAL => 12
+            case URL => 13
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

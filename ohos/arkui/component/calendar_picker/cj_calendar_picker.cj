@@ -13,15 +13,9 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.calendar_picker
 
-@C
-struct NativeOptionalShadow {
-    NativeOptionalShadow(
-        let hasValue: Bool,
-        let value: NativeShadowOptions
-    ) {}
-}
+import ohos.arkui.component.native_struct.*
 
 @C
 struct NativeOptionalCallback {

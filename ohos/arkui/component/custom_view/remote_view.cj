@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.custom_view
+
+import ohos.ffi.*
+import ohos.labels.APILevel
+import std.collection.HashMap
+import std.collection.ArrayList
 
 @!APILevel[
     12,
@@ -74,133 +79,80 @@ public abstract class RemoteView <: FFIData {
     protected open func recycleSelf(_: String): Unit {}
 }
 
-@C
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public func OHOSAceFrameworkRemoteViewForceCompleteRerender(id: Int64, deep: Bool): Unit {
-    getRemoteViewOrThrow(id).forceCompleteRerender(deep)
-}
+public class ReuseParams <: FFIData {
+    private var maps: HashMap<String, Any>
 
-@C
-struct OHOSAceFrameworkRemoteViewUpdateWithJsonParams {
-    OHOSAceFrameworkRemoteViewUpdateWithJsonParams(
-        let self: Int64,
-        let json: CString
-    ) {}
-}
-
-func getRemoteViewOrThrow(id: Int64): RemoteView {
-    let optHost = FFIDataManager.getInstance().getData<RemoteView>(id)
-    match (optHost) {
-        case None =>
-            throwNativeError("RemoteView of " + id.toString() + " does not exist!\n")
-            throw NoneValueException("RemoteView of " + id.toString() + " does not exist!")
-        case Some(host) => host
+    public init() {
+        super()
+        maps = HashMap<String, Any>()
     }
-}
 
-@C
-func OHOSAceFrameworkRemoteViewRender(id: Int64): Int64 {
-    getRemoteViewOrThrow(id).build()
-    0
-}
+    // used by @Component
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(arr: Array<(String, Any)>) {
+        super()
+        maps = HashMap<String, Any>(arr.size, {
+            i => (arr[i][0], arr[i][1])
+        })
+    }
 
-@C
-func OHOSAceFrameworkRemoteViewRerender(id: Int64): Unit {
-    getRemoteViewOrThrow(id).rerender()
-}
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public prop size: Int64 {
+        get() {
+            maps.size
+        }
+    }
 
-/**
- * @deprecated
- */
-@C
-func OHOSAceFrameworkRemoteViewRelease(_: Int64): Int64 {
-    0
-}
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func get(key: String): ?Any {
+        maps.get(key)
+    }
 
-@C
-func OHOSAceFrameworkRemoteViewOnAppear(id: Int64): Int64 {
-    getRemoteViewOrThrow(id).aboutToAppear()
-    0
-}
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func getValue<T>(key: String): ?T {
+        let anyVal = maps.get(key)
+        if (let Some(v) <- anyVal) {
+            return (v as T) ?? Option<T>.None
+        }
+        Option<T>.None
+    }
 
-@C
-func OHOSAceFrameworkRemoteViewOnShow(id: Int64): Int64 {
-    getRemoteViewOrThrow(id).onPageShow()
-    0
-}
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func contains(key: String): Bool {
+        maps.contains(key)
+    }
 
-@C
-func OHOSAceFrameworkRemoteViewOnHide(id: Int64): Int64 {
-    getRemoteViewOrThrow(id).onPageHide()
-    0
-}
-
-@C
-func OHOSAceFrameworkRemoteViewOnBackPress(id: Int64): Bool {
-    getRemoteViewOrThrow(id).onBackPress()
-}
-
-@C
-func OHOSAceFrameworkRemoteViewUpdateWithJson(id: Int64, json: CString): Unit {
-    getRemoteViewOrThrow(id).updateWithJson(json.toString())
-}
-
-@C
-func OHOSAceFrameworkRemoteViewOnTransition(id: Int64): Int64 {
-    getRemoteViewOrThrow(id).onTransition()
-    0
-}
-
-@C
-func OHOSAceFrameworkRemoteViewOnAboutToRender(id: Int64): Int64 {
-    getRemoteViewOrThrow(id).onAboutToRender()
-    0
-}
-
-@C
-func OHOSAceFrameworkRemoteViewOnAfterRender(id: Int64): Int64 {
-    getRemoteViewOrThrow(id).onAfterRender()
-    0
-}
-
-@C
-func OHOSAceFrameworkRemoteViewOnDisappear(id: Int64): Int64 {
-    getRemoteViewOrThrow(id).aboutToDisappear()
-    0
-}
-
-@C
-func OHOSAceFrameworkRemoteViewOnAboutToBeDeleted(id: Int64): Int64 {
-    getRemoteViewOrThrow(id).onAboutToBeDeleted()
-    0
-}
-
-@C
-func OHOSAceFrameworkRemoteViewOnDidBuild(id: Int64): Int64 {
-    getRemoteViewOrThrow(id).onDidBuild()
-    0
-}
-
-@C
-func OHOSAceFrameworkRemoteViewAboutToReuse(id: Int64, params: CString): Int64 {
-    // 用于node buider，临时版本仅支持String，后期优化为FFIData。
-    let reuseParams = ReuseParams([("${id}", params.toString())])
-    getRemoteViewOrThrow(id).aboutToReuseInternal(reuseParams)
-    0
-}
-
-@C
-func OHOSAceFrameworkRemoteViewAboutToRecycle(id: Int64): Int64 {
-    getRemoteViewOrThrow(id).aboutToRecycleInternal()
-    0
-}
-
-@C
-func OHOSAceFrameworkRemoteViewRecycleSelf(id: Int64, params: CString): Int64 {
-    getRemoteViewOrThrow(id).recycleSelf(params.toString())
-    0
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func add(key: String, value: Any): ?Any {
+        maps.add(key, value)
+    }
 }

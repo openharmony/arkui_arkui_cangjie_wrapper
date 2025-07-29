@@ -13,7 +13,16 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.custom_dialog
+
+import ohos.arkui.component.action_sheet.*
+import ohos.arkui.component.view.*
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 @C
 struct NativeOptionShadow {
@@ -53,35 +62,6 @@ struct NativeCustomDialogControllerOptions {
     func free() {
         this.openAnimation.free()
         this.closeAnimation.free()
-    }
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class Offset {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var dx: Length
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var dy: Length
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(dx: Length, dy: Length) {
-        this.dx = transAppResourceToLength(dx)
-        this.dy = transAppResourceToLength(dy)
     }
 }
 
@@ -310,19 +290,6 @@ public class CustomDialogControllerOptions {
         this.shadow = shadow
         this.backgroundBlurStyle = backgroundBlurStyle
     }
-}
-
-func parseOffset(offset: Offset): NativeOffset {
-    return NativeOffset(
-        NativeLength(
-            offset.dx.value,
-            offset.dx.unitType.getValue()
-        ),
-        NativeLength(
-            offset.dy.value,
-            offset.dy.unitType.getValue()
-        )
-    )
 }
 
 func parseNativeShadowOptions(shadowOptions: ShadowOptions): NativeShadowOptions {

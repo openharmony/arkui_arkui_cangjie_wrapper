@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.text_picker
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 @C
 struct TextPickerResult {
@@ -90,6 +97,29 @@ foreign {
     func FfiOHOSAceFrameworkTextPickerSetSelectedIndexMulti(values: VectorUInt32Handle): Unit
 
     func FfiOHOSAceFrameworkTextPickerSetOpacity(opacityValue: Float64): Unit
+}
+
+class CallbackTextPickerResult <: BaseCallBack {
+    CallbackTextPickerResult(let closure: (TextPickerResult) -> Unit) {
+        registerSelf()
+    }
+
+    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+        if (argc != 1) {
+            throw InvalidArgsException()
+        }
+        if (argv.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackTextPickerResult")
+            throw InvalidArgsException()
+        }
+        let ptrArg0 = unsafe { CPointer<TextPickerResult>(argv.read()) }
+        if (ptrArg0.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackTextPickerResult")
+            throw InvalidArgsException()
+        }
+        let arg0 = unsafe { ptrArg0.read() }
+        closure(arg0)
+    }
 }
 
 @!APILevel[

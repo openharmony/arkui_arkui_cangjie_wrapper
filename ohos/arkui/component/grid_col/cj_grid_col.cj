@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.grid_col
+
+import ohos.arkui.component.common.*
+import ohos.base.*
+import ohos.labels.APILevel
 
 @C
 @!APILevel[

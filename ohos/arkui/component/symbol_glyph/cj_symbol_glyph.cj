@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.symbol_glyph
+
+import ohos.base.*
 
 enum SymbolEffectType {
     NONE

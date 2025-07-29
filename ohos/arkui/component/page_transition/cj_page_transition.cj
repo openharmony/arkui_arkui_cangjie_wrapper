@@ -13,7 +13,13 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.page_transition
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 foreign func FfiPageTransitionEnterCreate(`type`: Int32, duration: Int32, curve: CString, delay: Int32): Unit
 
@@ -30,6 +36,37 @@ foreign func FfiPageTransitionSetOpacity(value: Float64): Unit
 foreign func FfiPageTransitionOnEnter(callback: Int64): Unit
 
 foreign func FfiPageTransitionOnExit(callback: Int64): Unit
+
+class CallbackCJTransitionEvent <: BaseCallBack {
+    CallbackCJTransitionEvent(let closuer: (CJRouteType, Float64) -> Unit) {
+        registerSelf()
+    }
+
+    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+        if (argc != 2) {
+            throw InvalidArgsException()
+        }
+        if (argv.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
+            throw InvalidArgsException()
+        }
+        let ptrArg0 = unsafe { CPointer<CJRouteType>(argv.read()) }
+        if (ptrArg0.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
+            throw InvalidArgsException()
+        }
+        let ptrArg1 = unsafe { CPointer<Float64>(argv.read(1)) }
+        if (ptrArg1.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
+            throw InvalidArgsException()
+        }
+        unsafe {
+            let arg0 = ptrArg0.read()
+            let arg1 = ptrArg1.read()
+            closuer(arg0, arg1)
+        }
+    }
+}
 
 @!APILevel[
     12,

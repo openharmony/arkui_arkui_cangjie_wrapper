@@ -13,9 +13,17 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.web
 
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.resource.*
+import ohos.labels.APILevel
 import ohos.web.webview.*
+import std.collection.ArrayList
 
 type VectorScriptItemHandle = CPointer<Unit>
 
@@ -249,6 +257,20 @@ class FfiVectorScriptItem {
     }
 }
 
+enum WebType {
+    SURFACE
+    | TEXTURE
+    | ...
+
+    func getValue(): Int32 {
+        match (this) {
+            case SURFACE => 0
+            case TEXTURE => 1
+            case _ => 0
+        }
+    }
+}
+
 class FfiVectorExpandedMenuItemOptions {
     private let vecHandle: VectorExpandedMenuItemOptionsHandle
     init(vec: VectorExpandedMenuItemOptionsHandle) {
@@ -310,16 +332,30 @@ struct FfiWebEvent {
     ) {}
 }
 
-@C
-struct FfiMapToCFFIArray {
-    FfiMapToCFFIArray(
-        let size: Int64,
-        let key: CPointer<CPointer<UInt8>>,
-        let value: CPointer<CPointer<UInt8>>
-    ) {}
-}
-
 const RAWFILE_TYPE: Int32 = 30000
+
+class CallbackCJWebEvent <: BaseCallBack {
+    CallbackCJWebEvent(let closure: (FfiWebEvent) -> Bool) {
+        registerSelf()
+    }
+
+    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+        if (argc != 1) {
+            throw InvalidArgsException()
+        }
+        if (argv.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackCJWebEvent")
+            throw InvalidArgsException()
+        }
+        let ptrArg0 = unsafe { CPointer<FfiWebEvent>(argv.read()) }
+        if (ptrArg0.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackCJWebEvent")
+            throw InvalidArgsException()
+        }
+        let arg0 = unsafe { ptrArg0.read() }
+        closure(arg0)
+    }
+}
 
 @!APILevel[
     12,
@@ -749,18 +785,6 @@ struct CPermissionRequest {
 @C
 struct COnPermissionRequestEvent {
     COnPermissionRequestEvent(let request: CPermissionRequest) {}
-}
-
-@C
-struct FfiWebResourceRequest {
-    FfiWebResourceRequest(
-        let requestUrl: CString,
-        let isMainFrame: Bool,
-        let isRedirect: Bool,
-        let isRequestGesture: Bool,
-        let requestMethod: CString,
-        let ffiHeaders: CPointer<FfiMapToCFFIArray>
-    ) {}
 }
 
 func parsePermissionRequestEvent(event: COnPermissionRequestEvent): OnPermissionRequestEvent {

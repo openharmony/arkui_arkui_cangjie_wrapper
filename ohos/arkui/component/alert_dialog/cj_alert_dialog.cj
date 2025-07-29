@@ -13,7 +13,15 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.alert_dialog
+
+import ohos.arkui.component.action_sheet.*
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSShowAlertDialogParamWithConfirmV2(
@@ -275,117 +283,6 @@ func freeButtonsArr(nativeButtons: CArrNativeAlertDialogButtonOptionsV2) {
                 freeButton(nativeButtons.head.read(i))
             }
             LibC.free(nativeButtons.head)
-        }
-    }
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public enum BlurStyle {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Thin
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Regular
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Thick
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    BACKGROUND_THIN
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    BACKGROUND_REGULAR
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    BACKGROUND_THICK
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    BACKGROUND_ULTRA_THICK
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    NONE
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    COMPONENT_ULTRA_THIN
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    COMPONENT_THIN
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    COMPONENT_REGULAR
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    COMPONENT_THICK
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    COMPONENT_ULTRA_THICK
-    | ...
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getValue(): Int32 {
-        match (this) {
-            case Thin => 1
-            case Regular => 2
-            case Thick => 3
-            case BACKGROUND_THIN => 4
-            case BACKGROUND_REGULAR => 5
-            case BACKGROUND_THICK => 6
-            case BACKGROUND_ULTRA_THICK => 7
-            case NONE => 0
-            case COMPONENT_ULTRA_THIN => 8
-            case COMPONENT_THIN => 9
-            case COMPONENT_REGULAR => 10
-            case COMPONENT_THICK => 11
-            case COMPONENT_ULTRA_THICK => 12
-            case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 }

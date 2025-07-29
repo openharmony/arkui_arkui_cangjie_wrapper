@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.common
 
 import ohos.ark_interop.JSInteropType
 import ohos.hilog.HilogChannel
 
-let AceLog = HilogChannel(1, 0xD003902, "Cangjie-Ace")
+protected let AceLog = HilogChannel(1, 0xD003902, "Cangjie-Ace")

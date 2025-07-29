@@ -13,8 +13,15 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.navigation
 
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.resource.*
+import ohos.ffi.*
+import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 import std.deriving.Derive
 
@@ -151,87 +158,35 @@ foreign {
     func FFICJCommonVectorNavigationItemGetSize(vec: VectorNavigationItemHandle): Int64
 }
 
-@C
-struct NavigationItemFFI {
-    NavigationItemFFI(
-        let value: CString,
-        let icon: CString,
-        let isEnable: Bool,
-        let action: Int64,
-        let status: Int32,
-        let activeIcon: CString
-    ) {}
-}
-
-type VectorNavigationItemHandle = CPointer<Unit>
-
-class FFIVectorNavigationItem {
+protected class FFIVectorNavigationItem {
     private let vecHandle: VectorNavigationItemHandle
 
-    init(vec: VectorNavigationItemHandle) {
+    protected init(vec: VectorNavigationItemHandle) {
         vecHandle = vec
     }
 
-    init(size: Int64) {
+    protected init(size: Int64) {
         vecHandle = unsafe { FFICJCommonCreateVectorNavigationItem(size) }
     }
 
-    func setElement(index: Int64, value: NavigationItemFFI): Unit {
+    protected func setElement(index: Int64, value: NavigationItemFFI): Unit {
         unsafe { FFICJCommonVectorNavigationItemSetElement(vecHandle, index, value) }
     }
 
-    func getElement(index: Int64): NavigationItemFFI {
+    protected func getElement(index: Int64): NavigationItemFFI {
         unsafe { FFICJCommonVectorNavigationItemGetElement(vecHandle, index) }
     }
 
-    func free(): Unit {
+    protected func free(): Unit {
         unsafe { FFICJCommonVectorNavigationItemDelete(vecHandle) }
     }
 
-    func getSize(): Int64 {
+    protected func getSize(): Int64 {
         unsafe { FFICJCommonVectorNavigationItemGetSize(vecHandle) }
     }
 
-    func getNativeHandle(): VectorNavigationItemHandle {
+    protected func getNativeHandle(): VectorNavigationItemHandle {
         vecHandle
-    }
-}
-
-@C
-struct CJNavigationTitleOptions {
-    CJNavigationTitleOptions(
-        // backgroundColor
-        var isBackgroundColorValid: Bool,
-        var backgroundColor: UInt32,
-        // backgroundBlurStyle
-        var isBackgroundBlurStyleValid: Bool,
-        var backgroundBlurStyle: Int32,
-        // barStyle
-        var isBarStyleValid: Bool,
-        var barStyle: Int32,
-        // paddingStart
-        var isPaddingStartValid: Bool,
-        var paddingStart: Float64,
-        var paddingStartUnit: Int32,
-        // paddingEnd
-        var isPaddingEndValid: Bool,
-        var paddingEnd: Float64,
-        var paddingEndUnit: Int32
-    ) {}
-
-    init() {
-        this.isBackgroundColorValid = false
-        this.backgroundColor = 0
-        this.isBackgroundBlurStyleValid = false
-        this.backgroundBlurStyle = 0
-        this.isBarStyleValid = false
-        this.barStyle = 0
-        this.isPaddingStartValid = false
-        this.paddingStart = 0.0
-        this.paddingStartUnit = 0
-        this.isPaddingEndValid = false
-        this.paddingEnd = 0.0
-        this.paddingEndUnit = 0
     }
 }
 
@@ -478,7 +433,7 @@ public class NavigationToolbarOptions {
     }
 }
 
-func convertNavigationTitleOptions2FFi(value: NavigationTitleOptions): CJNavigationTitleOptions {
+protected func convertNavigationTitleOptions2FFi(value: NavigationTitleOptions): CJNavigationTitleOptions {
     var ret: CJNavigationTitleOptions = CJNavigationTitleOptions()
     ret.isBackgroundColorValid = false
     ret.isBackgroundBlurStyleValid = false
@@ -698,35 +653,6 @@ public class ToolBarItem {
         }
         if (let Some(v) <- activeIcon) {
             this.activeIcon = getResourceMedia(v)
-        }
-    }
-}
-
-@C
-struct CJNavPathInfo {
-    CJNavPathInfo(
-        let id: Int64,
-        let name: CString,
-        let param: CString,
-        let onPop: Int64,
-        let onPopValid: Bool,
-        let index: Int32,
-        let navDestinationId: CString,
-        let isEntry: Bool,
-        let valid: Int32
-    ) {}
-
-    func free(): Unit {
-        unsafe {
-            if (!name.isNull()) {
-                name.free()
-            }
-            if (!param.isNull()) {
-                param.free()
-            }
-            if (!navDestinationId.isNull()) {
-                navDestinationId.free()
-            }
         }
     }
 }

@@ -1,0 +1,52 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/cangjie/cjc.gni")
+
+ohos_cj_library("ohos.arkui.component.native_struct") {
+  sources = [
+    "native_animate.cj",
+    "native_action_sheet.cj",
+    "native_canvas.cj",
+    "native_common.cj",
+    "native_checkbox_group.cj",
+    "native_custom_view.cj",
+    "native_gesture.cj",
+    "native_image.cj",
+    "native_lazy_for_each.cj",
+    "native_list.cj",
+    "native_navigation.cj",
+    "native_relative_container.cj",
+    "native_rich_editor.cj",
+    "native_shared_transition_options.cj",
+    "native_scroll.cj",
+    "native_text_clock.cj",
+    "native_text.cj",
+    "native_view.cj",
+    "native_web.cj",
+  ]
+
+  cj_deps = [
+    "../custom_view:ohos.arkui.component.custom_view",
+    "../../../base:ohos.base",
+  ]
+
+  cj_external_deps = [
+    "cangjie_api:ohos.labels",
+    "cangjie_api:ohos.ffi",
+  ]
+
+  subsystem_name = "arkui"
+  part_name = "arkui_cangjie_api"
+  lib_name = "arkui.component.native_struct"
+}

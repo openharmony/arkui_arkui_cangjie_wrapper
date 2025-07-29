@@ -13,7 +13,13 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.path
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.shape.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkPathCreate(commands: CString): Unit

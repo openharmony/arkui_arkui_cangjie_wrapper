@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.gesture
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.base.*
+import ohos.ffi.*
+import ohos.labels.APILevel
+import std.collection.ArrayList
 
 enum EventTargetInfoType {
     | Normal
@@ -33,112 +40,6 @@ enum EventTargetInfoType {
             case 1 => Scrollable
             case _ => Normal
         }
-    }
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class Position {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var x: Float64
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var y: Float64
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(x: Float64, y: Float64) {
-        this.x = x
-        this.y = y
-    }
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class Area {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var width: Float64
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var height: Float64
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var position: Position
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var globalPosition: Position
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        width: Float64,
-        height: Float64,
-        position: Position,
-        globalPosition: Position
-    ) {
-        this.width = width
-        this.height = height
-        this.position = position
-        this.globalPosition = globalPosition
-    }
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class EventTarget {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var area: Area
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(area: Area) {
-        this.area = area
     }
 }
 
@@ -839,70 +740,6 @@ public class SwipeGestureEvent <: BaseGestureEvent {
 }
 
 @C
-struct CJPosition {
-    CJPosition(
-        let x: Float64,
-        let y: Float64
-    ) {}
-}
-
-@C
-struct CJArea {
-    CJArea(
-        let width: Float64,
-        let height: Float64,
-        let position: CPointer<CJPosition>,
-        let globalPosition: CPointer<CJPosition>
-    ) {}
-}
-
-@C
-struct CJEventTarget {
-    CJEventTarget(let area: CPointer<CJArea>) {}
-}
-
-@C
-struct CJFingerInfo {
-    CJFingerInfo(
-        let id: Int32,
-        let globalX: Float64,
-        let globalY: Float64,
-        let localX: Float64,
-        let localY: Float64
-    ) {}
-}
-
-@C
-struct CJGestureEventV2 {
-    CJGestureEventV2(
-        let timestamp: Int64,
-        let target: CPointer<CJEventTarget>,
-        let repeat: Bool,
-        let fingerList: CPointer<CJFingerInfo>,
-        let fingerListSize: Int32,
-        let source: Int32,
-        let offsetX: Float64,
-        let offsetY: Float64,
-        let scale: Float64,
-        let pinchCenterX: Float64,
-        let pinchCenterY: Float64,
-        let angle: Float64,
-        let speed: Float64,
-        let tiltX: Int64,
-        let tiltY: Int64,
-        let sourceTool: Int32,
-        let velocityX: Float64,
-        let velocityY: Float64,
-        let velocity: Float64,
-        let pressure: Float64,
-        let axisHorizontal: Float32,
-        let axisVertical: Float32,
-        let deviveId: Int64,
-        let baseEvtInfo: CPointer<Unit>
-    ) {}
-}
-
-@C
 struct CJBaseEvent {
     CJBaseEvent(
         let target: CPointer<CJEventTarget>,
@@ -1101,15 +938,6 @@ func parseCJGestureInfo(info: CJGestureInfo): GestureInfo {
         info.tag.toString(),
         GestureTypes.parseValue(info.`type`),
         info.isSystemGesture
-    )
-}
-
-func parseCJArea(area: CJArea): Area {
-    Area(
-        area.width,
-        area.height,
-        unsafe { Position(area.position.read().x, area.position.read().y) },
-        unsafe { Position(area.globalPosition.read().x, area.globalPosition.read().y) },
     )
 }
 

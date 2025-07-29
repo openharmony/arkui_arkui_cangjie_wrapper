@@ -13,7 +13,10 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component
+package ohos.arkui.component.fake_component
+
+import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 
 @!APILevel[
     12,
