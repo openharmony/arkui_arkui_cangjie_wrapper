@@ -87,6 +87,7 @@ foreign {
  *
  * @typedef { function } OnAlphabetIndexerSelectCallback
  * @param { Int64 } index - selected index
+ * @relation declare type OnAlphabetIndexerSelectCallback = (index: number) => void;
  */
 public type OnAlphabetIndexerSelectCallback = (Int64) -> Unit
 
@@ -96,6 +97,7 @@ public type OnAlphabetIndexerSelectCallback = (Int64) -> Unit
  * @typedef { function } OnAlphabetIndexerRequestPopupDataCallback
  * @param { Int64 } index - selected index
  * @returns { Array<String> } string array corresponding to the index
+ * @relation declare type OnAlphabetIndexerRequestPopupDataCallback = (index: number) => Array<string>;
  */
 public type OnAlphabetIndexerRequestPopupDataCallback = (Int64) -> Array<String>
 
@@ -104,6 +106,7 @@ public type OnAlphabetIndexerRequestPopupDataCallback = (Int64) -> Array<String>
  *
  * @typedef { function } OnAlphabetIndexerPopupSelectCallback
  * @param { Int64 } index - selected index
+ * @relation declare type OnAlphabetIndexerPopupSelectCallback = (index: number) => void;
  */
 public type OnAlphabetIndexerPopupSelectCallback = (Int64) -> Unit
 
@@ -147,6 +150,7 @@ public class AlphabetIndexer <: ViewBase {
      *
      * @param { ResourceColor } value
      * @returns { This }
+     * @relation color(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -165,6 +169,7 @@ public class AlphabetIndexer <: ViewBase {
      *
      * @param { ResourceColor } value
      * @returns { This }
+     * @relation selectedColor(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -183,6 +188,7 @@ public class AlphabetIndexer <: ViewBase {
      *
      * @param { ResourceColor } value
      * @returns { This }
+     * @relation popupColor(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -201,6 +207,7 @@ public class AlphabetIndexer <: ViewBase {
      *
      * @param { ResourceColor } value
      * @returns { This }
+     * @relation selectedBackgroundColor(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -219,6 +226,7 @@ public class AlphabetIndexer <: ViewBase {
      *
      * @param { ResourceColor } value
      * @returns { This }
+     * @relation popupBackground(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -237,6 +245,7 @@ public class AlphabetIndexer <: ViewBase {
      *
      * @param { Bool } value
      * @returns { This }
+     * @relation usingPopup(value: boolean): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -258,6 +267,7 @@ public class AlphabetIndexer <: ViewBase {
      * @param { ResourceStr } family
      * @param { FontStyle } style
      * @returns { This }
+     * @relation selectedFont(value: Font): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -293,7 +303,8 @@ public class AlphabetIndexer <: ViewBase {
      * @param { FontWeight } weight	
      * @param { ResourceStr } family	
      * @param { FontStyle } style	
-     * @returns { This }	
+     * @returns { This }
+     * @relation popupFont(value: Font): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -309,7 +320,7 @@ public class AlphabetIndexer <: ViewBase {
         var size_ = transAppResourceToLength(size)
         unsafe {
             try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(family.toString()).asResource()) {
+                fontFamilyCString = LibC.mallocCString(transAppResourceToString(family)).asResource()) {
                 FfiOHOSAceFrameworkAlphabetIndexerPopupFont(
                     size_.value,
                     size_.unitType.getValue(),
@@ -329,7 +340,8 @@ public class AlphabetIndexer <: ViewBase {
      * @param { FontWeight } weight	
      * @param { ResourceStr } family	
      * @param { FontStyle } style	
-     * @returns { This }	
+     * @returns { This }
+     * @relation font(value: Font): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -363,6 +375,7 @@ public class AlphabetIndexer <: ViewBase {
      *
      * @param { Length } value
      * @returns { This }
+     * @relation itemSize(value: string | number): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -383,6 +396,7 @@ public class AlphabetIndexer <: ViewBase {
      *
      * @param { IndexerAlign } value - indicates the alignment style of Alphabet index.
      * @returns { This }
+     * @relation alignStyle(value: IndexerAlign, offset?: Length): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -401,6 +415,7 @@ public class AlphabetIndexer <: ViewBase {
      *
      * @param { Int32 } index
      * @returns { This }
+     * @relation selected(index: number): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -420,6 +435,7 @@ public class AlphabetIndexer <: ViewBase {
      * @param { Length } x
      * @param { Length } y
      * @returns { This }
+     * @relation popupPosition(value: Position): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -442,6 +458,7 @@ public class AlphabetIndexer <: ViewBase {
      *
      * @param { OnAlphabetIndexerSelectCallback } callback
      * @returns { This }
+     * @relation onSelect(callback: OnAlphabetIndexerSelectCallback): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -465,6 +482,7 @@ public class AlphabetIndexer <: ViewBase {
      *
      * @param { OnAlphabetIndexerRequestPopupDataCallback } callback
      * @returns { This }
+     * @relation onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,
@@ -494,6 +512,7 @@ public class AlphabetIndexer <: ViewBase {
      *
      * @param { OnAlphabetIndexerPopupSelectCallback } callback
      * @returns { This }
+     * @relation onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback): AlphabetIndexerAttribute;
      */
     @!APILevel[
         12,

@@ -20,23 +20,48 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.labels.APILevel
 
+foreign {
+    func FfiOHOSAceFrameworkBadgeCreateV2(count: Int32, style: CJBadgeStyleV2, position: Int32, maxCount: Int32): Unit
+
+    func FfiOHOSAceFrameworkBadgeCreateTextV2(value: CString, style: CJBadgeStyleV2, position: Int32): Unit
+}
+
+/**
+ * Defines the badge position property.
+ *
+ * @enum
+ * @relation enum BadgePosition
+ */
+@Derive[Equatable]
 @!APILevel[
     12,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BadgePosition {
+    /**
+     * The badge is displayed in the upper right corner of the parent component.
+     * @relation RightTop
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    RightTop
-    | @!APILevel[
+    RightTop |
+    /**
+     * The badge is vertically centered on the right of the parent component.
+     * @relation Right
+     */
+    @!APILevel[
         12,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Right
-    | @!APILevel[
+    Right |
+    /**
+     * The badge is vertically centered on the left of the parent component.
+     * @relation Left
+     */
+    @!APILevel[
         12,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -53,78 +78,152 @@ public enum BadgePosition {
     }
 }
 
+/**
+ * BadgeStyle object
+ *
+ * @class BadgeStyle
+ * @relation interface BadgeStyle
+ */
 @!APILevel[
     12,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BadgeStyle {
+    /**
+     * Font color.
+     *
+     * @type { ResourceColor }
+     * @default Color.White
+     * @relation color?: ResourceColor;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var color: UInt32
+    public var color: ResourceColor
+    /**
+     * Font size.
+     * For the string type, only numeric string values with optional units.
+     * The value must be greater than or equal to 0. If the value is less than 0, the default value is used.
+     * Unit: fp
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This parameter cannot be set in percentage.
+     * </p>
+     *
+     * @type { Length }
+     * @default 10
+     * @relation fontSize?: number | ResourceStr;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontSize: Int64
+    public var fontSize: Length
+    /**
+     * Badge size.
+     * For the string type, numeric string values with optional units.
+     * The value must be greater than or equal to 0. If the value is less than 0, the default value is used.
+     * Unit: vp
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This parameter cannot be set in percentage.
+     * <br>If it is set to an invalid value, the default value is used.
+     * </p>
+     *
+     * @type { Length }
+     * @default 16
+     * @relation badgeSize?: number | ResourceStr;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var badgeSize: Int64
+    public var badgeSize: Length
+    /**
+     * Badge color.
+     *
+     * @type { ResourceColor }
+     * @default Color.RED
+     * @relation badgeColor?: ResourceColor;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var badgeColor: UInt32
+    public var badgeColor: ResourceColor
+    /**
+     * Font weight of the text.
+     * For the number type, the value ranges from 100 to 900, at an interval of 100. Default value: 400
+     * A larger value indicates a heavier font weight.
+     * For the string type, only strings that represent a number. Default value: FontWeight.Normal
+     * 
+     * <p><strong>NOTE</strong>:
+     * <br>This parameter cannot be set in percentage.
+     * </p>
+     *
+     * @type { FontWeight }
+     * @relation fontWeight?: number | FontWeight | ResourceStr;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontWeight: UInt32
+    public var fontWeight: FontWeight
+    /**
+     * Border color of the background.
+     *
+     * @type { ResourceColor }
+     * @default Color.RED
+     * @relation borderColor?: ResourceColor;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderColor: UInt32
+    public var borderColor: ResourceColor
+    /**
+     * Border width of the background.
+     * This parameter cannot be set in percentage.
+     * Unit: vp
+     *
+     * @type { Length }
+     * @default 1
+     * @relation borderWidth?: Length;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderWidth: Float64
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var borderWidthUnit: Int32
+    public var borderWidth: Length
 
+    /**
+     * BadgeStyle constructor
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(color!: ResourceColor = Color.WHITE, fontSize!: Int64 = 10, badgeSize!: Int64 = 16,
+    public init(color!: ResourceColor = Color.WHITE, fontSize!: Length = 10.fp, badgeSize!: Length = 16.vp,
         badgeColor!: ResourceColor = Color.RED, fontWeight!: FontWeight = FontWeight.Normal,
         borderColor!: ResourceColor = Color.RED, borderWidth!: Length = 1.vp) {
-        this.color = transAppResourceToResourceColor(color)
+        this.color = color
         this.fontSize = fontSize
         this.badgeSize = badgeSize
-        this.badgeColor = transAppResourceToResourceColor(badgeColor)
-        this.fontWeight = fontWeight.getValueInt()
-        this.borderColor = transAppResourceToResourceColor(borderColor)
+        this.badgeColor = badgeColor
+        this.fontWeight = fontWeight
+        this.borderColor = borderColor
 
         var borderWidth_ = transAppResourceToLength(borderWidth)
-        this.borderWidth = borderWidth_.value
-        this.borderWidthUnit = borderWidth_.unitType.getValue()
+        this.borderWidth = borderWidth_
     }
 }
 
@@ -142,105 +241,71 @@ struct CJBadgeStyleV2 {
     ) {}
 }
 
-foreign {
-    func FfiOHOSAceFrameworkBadgeCreateV2(count: Int32, style: CJBadgeStyleV2, position: Int32, maxCount: Int32): Unit
-
-    func FfiOHOSAceFrameworkBadgeCreateTextV2(value: CString, style: CJBadgeStyleV2, position: Int32): Unit
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-enum BadgeOptionMode {
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    COUNT_MOD
-    | @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    STRING_MOD
-}
-
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class BadgeParams {
-    var value: String = ""
-    var count: Int32 = 0
-    var style: BadgeStyle
-    var position: BadgePosition
-    var maxCount: Int32 = 0
-    var mode: BadgeOptionMode
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(count!: Int32, style!: BadgeStyle, position!: BadgePosition = BadgePosition.RightTop,
-        maxCount!: Int32 = 99) {
-        this.mode = COUNT_MOD
-        this.count = count
-        this.style = style
-        this.position = position
-        this.maxCount = maxCount
-    }
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(value!: String, style!: BadgeStyle, position!: BadgePosition = BadgePosition.RightTop) {
-        this.mode = STRING_MOD
-        this.value = value
-        this.style = style
-        this.position = position
-    }
-}
-
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Badge <: ContainerBase {
+    /**
+     * position: Set the display position of the prompt point.
+     * maxCount: Maximum number of messages. If the number of messages exceeds the maximum, only maxCount+ is displayed.
+     * count: Set the number of reminder messages.
+     * style: You can set the style of the Badge component, including the text color, size, dot color, and size.
+     *
+     * @param { Int32 } count
+     * @param { BadgeStyle } style
+     * @param { BadgePosition } position
+     * @param { Int32 } maxCount
+     * @param { () -> Unit } child
+     * @returns { Badge }
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: BadgeParams, child: () -> Unit) {
-        match (value.mode) {
-            case COUNT_MOD => unsafe {
-                FfiOHOSAceFrameworkBadgeCreateV2(
-                    value.count,
-                    CJBadgeStyleV2(value.style.color, Float64(value.style.fontSize), Float64(value.style.badgeSize),
-                        value.style.badgeColor, value.style.fontWeight, value.style.borderColor,
-                        value.style.borderWidth, value.style.borderWidthUnit),
-                    value.position.getValue(),
-                    value.maxCount
-                )
-            }
-            case STRING_MOD => unsafe {
-                let textValue = LibC.mallocCString(value.value)
+    public init(count!: Int32, style!: BadgeStyle, position!: BadgePosition = BadgePosition.RightTop,
+        maxCount!: Int32 = 99, child!: () -> Unit) {
+        unsafe {
+            FfiOHOSAceFrameworkBadgeCreateV2(
+                count,
+                CJBadgeStyleV2(transAppResourceToResourceColor(style.color), Float64(style.fontSize.value), Float64(style.badgeSize.value),
+                    transAppResourceToResourceColor(style.badgeColor), style.fontWeight.getValueInt(), transAppResourceToResourceColor(style.borderColor),
+                    style.borderWidth.value, style.borderWidth.unitType.getValue()),
+                position.getValue(),
+                maxCount
+            )
+        }
+        this.child = child
+    }
+
+    /**
+     * value: Text string of the prompt content.
+     * position: Set the display position of the prompt point.
+     * style: You can set the style of the Badge component, including the text color, size, dot color, and size.
+     *
+     * @param { String } value
+     * @param { BadgeStyle } style
+     * @param { BadgePosition } position
+     * @param { () -> Unit } child
+     * @returns { Badge }
+     */
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(value!: String, style!: BadgeStyle, position!: BadgePosition = BadgePosition.RightTop, child!: () -> Unit) {
+        unsafe {
+            try (textValue = LibC.mallocCString(value).asResource()) {
                 FfiOHOSAceFrameworkBadgeCreateTextV2(
-                    textValue,
-                    CJBadgeStyleV2(value.style.color, Float64(value.style.fontSize), Float64(value.style.badgeSize),
-                        value.style.badgeColor, value.style.fontWeight, value.style.borderColor,
-                        value.style.borderWidth, value.style.borderWidthUnit),
-                    value.position.getValue()
+                    textValue.value,
+                    CJBadgeStyleV2(transAppResourceToResourceColor(style.color), Float64(style.fontSize.value), Float64(style.badgeSize.value),
+                        transAppResourceToResourceColor(style.badgeColor), style.fontWeight.getValueInt(), transAppResourceToResourceColor(style.borderColor),
+                        style.borderWidth.value, style.borderWidth.unitType.getValue()),
+                    position.getValue()
                 )
-                LibC.free(textValue)
             }
         }
         this.child = child
