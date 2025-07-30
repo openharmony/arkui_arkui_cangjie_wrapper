@@ -18,19 +18,36 @@ package ohos.arkui.component.common
 import ohos.labels.APILevel
 import std.deriving.Derive
 
+/**
+ * indexer align property.
+ *
+ * @relation enum IndexerAlign
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum IndexerAlign {
+    /**
+     * A dialog box is displayed on the right of the index bar.
+     *
+     * @relation enum Left
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
-    | @!APILevel[
+    |
+    /**
+     * A dialog box is displayed on the left of the index bar.
+     *
+     * @relation enum Right
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -52,37 +69,85 @@ public enum IndexerAlign {
     }
 }
 
+/**
+ * Declare the type of input box
+ *
+ * @relation enum InputType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum InputType {
+    /**
+     * Basic input mode.
+     *
+     * @relation Normal
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
-    | @!APILevel[
+    |
+    /**
+     * Pure digital input mode.
+     *
+     * @relation Number
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Number
-    | @!APILevel[
+    |
+    /**
+     * E-mail address input mode.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This mode accepts only digits, letters, underscores (_), dots (.),
+     * and the following special characters: ! # $ % & ' " * + - / = ? ^ ` { | } ~ @ (which can only appear once)
+     * </p>
+     *
+     * @relation Email
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Email
-    | @!APILevel[
+    |
+    /**
+     * Password entry mode.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>An eye icon is used to show or hide the password.
+     * <br>By default, the entered characters are temporarily shown before being obscured by dots;
+     * they are directly obscured by dots since API version 12 on certain devices.
+     * <br>The password input mode does not support underlines.
+     * <br>If Password Vault is enabled, autofill is available for the username and password.
+     * </p>
+     *
+     * @relation Password
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Password
-    | @!APILevel[
+    |
+    /**
+     * Phone number entry mode.
+     *
+     * @relation PhoneNumber
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -102,49 +167,96 @@ public enum InputType {
     }
 }
 
+/**
+ * Declare the type of soft keyboard.
+ *
+ * @relation enum EnterKeyType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum EnterKeyType {
+    /**
+     * Go.
+     *
+     * @relation Go = 2
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Go
-    | @!APILevel[
+    |
+    /**
+     * Search.
+     *
+     * @relation Search = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EntrySearch
-    | @!APILevel[
+    |
+    /**
+     * Send.
+     *
+     * @relation Send = 4
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Send
-    | @!APILevel[
+    |
+    /**
+     * Next.
+     *
+     * @relation Next = 5
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Next
-    | @!APILevel[
+    |
+    /**
+     * Done.
+     *
+     * @relation Done = 6
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Done
-    | @!APILevel[
+    |
+    /**
+     * Showed as 'previous' pattern.
+     *
+     * @relation PREVIOUS = 7
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PREVIOUS
-    | @!APILevel[
+    |
+    /**
+     * Showed as 'new line' pattern.
+     *
+     * @relation NEW_LINE = 8
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -166,31 +278,60 @@ public enum EnterKeyType {
     }
 }
 
+/**
+ * FlexDirection enumeration description
+ *
+ * @relation enum FlexDirection
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FlexDirection {
+    /**
+     * The main axis is consistent with the row direction as the layout mode.
+     *
+     * @relation Row
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Row
-    | @!APILevel[
+    |
+    /**
+     * The main axis is consistent with the column direction as the layout mode.
+     *
+     * @relation Column
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Column
-    | @!APILevel[
+    |
+    /**
+     * The layout is in the opposite direction to the Row direction.
+     *
+     * @relation RowReverse
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RowReverse
-    | @!APILevel[
+    |
+    /**
+     * Layout in the opposite direction to the column.
+     *
+     * @relation ColumnReverse
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -209,25 +350,48 @@ public enum FlexDirection {
     }
 }
 
+/**
+ * FlexDirection enumeration description
+ *
+ * @relation enum FlexWrap
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FlexWrap {
+    /**
+     * The Flex container has a single row/column layout of elements, and children are allowed to go beyond the container.
+     *
+     * @relation NoWrap
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NoWrap
-    | @!APILevel[
+    |
+    /**
+     * The elements of the Flex container are arranged in multiple rows or columns, and the sub-items are allowed to exceed the container.
+     *
+     * @relation Wrap
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Wrap
-    | @!APILevel[
+    |
+    /**
+     * The elements of the Flex container are arranged in reverse multiple rows/columns, and children are allowed to exceed the container.
+     *
+     * @relation WrapReverse
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -245,43 +409,93 @@ public enum FlexWrap {
     }
 }
 
+/**
+ * FlexAlign enumeration description.
+ *
+ * @relation enum FlexAlign
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FlexAlign {
+    /**
+     * The element is aligned at the head of the principal axis,
+     * the first element is aligned with the head of the row, and subsequent elements are aligned with the previous one.
+     *
+     * @relation Start
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
-    | @!APILevel[
+    |
+    /**
+     * The elements are centered in the direction of the principal axis,
+     * and the first element is the same distance from the beginning of the row as the last element is from the end of the row.
+     *
+     * @relation Center
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
-    | @!APILevel[
+    |
+    /**
+     * The element is aligned at the tail of the principal axis,
+     * the last element is aligned at the end of the row, and the other elements are aligned with the next.
+     *
+     * @relation End
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
-    | @!APILevel[
+    |
+    /**
+     * Elastic elements are evenly distributed in the direction of the Flex principal axis,
+     * with the same distance between adjacent elements.
+     * The first element aligns with the beginning of the line, and the last element aligns with the end of the line.
+     *
+     * @relation SpaceBetween
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SpaceBetween
-    | @!APILevel[
+    |
+    /**
+     * Elastic elements are evenly distributed in the direction of the Flex principal axis,
+     *  with the same distance between adjacent elements. Half the distance between adjacent elements as the distance between
+     * the first element and the distance between the last element and the end of the row.
+     *
+     * @relation SpaceAround
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SpaceAround
-    | @!APILevel[
+    |
+    /**
+     * Elements in the Flex axis direction are evenly spaced.
+     * The spacing between adjacent elements, the spacing between the first element and the beginning of the row,
+     * and the spacing between the last element and the end of the row are the same.
+     *
+     * @relation SpaceEvenly
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -302,43 +516,84 @@ public enum FlexAlign {
     }
 }
 
+/**
+ * ItemAlign enumeration description
+ *
+ * @relation enum ItemAlign
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ItemAlign {
+    /**
+     * Use the default configuration in the Flex container.
+     *
+     * @relation Auto
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
-    | @!APILevel[
+    |
+    /**
+     * The element is in the Flex container with the cross-axis direction head aligned.
+     *
+     * @relation Start
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
-    | @!APILevel[
+    |
+    /**
+     * The element is centered in the Flex container with the cross axis direction aligned.
+     *
+     * @relation Center
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
-    | @!APILevel[
+    |
+    /**
+     * The element is bottom aligned in the Flex container with the cross axis direction.
+     *
+     * @relation End
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
-    | @!APILevel[
+    |
+    /**
+     * Element In the Flex container, the cross-axis direction text baseline is aligned.
+     *
+     * @relation Stretch
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Stretch
-    | @!APILevel[
+    |
+    /**
+     * Element In a Flex container, the fill is stretched across the axis and, when no dimension is set, to the container size.
+     *
+     * @relation Baseline
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -359,25 +614,48 @@ public enum ItemAlign {
     }
 }
 
+/**
+ * Provides a button component.
+ *
+ * @relation enum ButtonType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ShapeType {
+    /**
+     * Common button (no rounded corners by default).
+     *
+     * @relation Normal
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
-    | @!APILevel[
+    |
+    /**
+     * Capsule button (rounded corners default to half the height).
+     *
+     * @relation Capsule
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Capsule
-    | @!APILevel[
+    |
+    /**
+     * Round buttons.
+     *
+     * @relation Circle
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -395,25 +673,48 @@ public enum ShapeType {
     }
 }
 
+/**
+ * Declare the type of status button
+ *
+ * @relation enum ToggleType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ToggleType {
+    /**
+     * Checkbox
+     *
+     * @relation Checkbox
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CheckboxType
-    | @!APILevel[
+    |
+    /**
+     * Switch
+     *
+     * @relation Switch
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SwitchType
-    | @!APILevel[
+    |
+    /**
+     * Button
+     *
+     * @relation Button
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -431,19 +732,36 @@ public enum ToggleType {
     }
 }
 
+/**
+ * Text style
+ *
+ * @relation enum FontStyle
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FontStyle {
+    /**
+     * Default style.
+     *
+     * @relation Normal
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
-    | @!APILevel[
+    |
+    /**
+     * Italic style.
+     *
+     * @relation Italic
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -473,61 +791,120 @@ public enum FontStyle {
     }
 }
 
+/**
+ * Alignment enumeration description.
+ *
+ * @relation enum Alignment
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Alignment {
+    /**
+     * Top Start.
+     *
+     * @relation TopStart
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopStart
-    | @!APILevel[
+    |
+    /**
+     * The top is centered horizontally.
+     *
+     * @relation Top
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
-    | @!APILevel[
+    |
+    /**
+     * Top tail end.
+     *
+     * @relation TopEnd
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopEnd
-    | @!APILevel[
+    |
+    /**
+     * The starting end is centered longitudinally.
+     *
+     * @relation Start
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
-    | @!APILevel[
+    |
+    /**
+     * Center horizontal and vertical.
+     *
+     * @relation Center
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
-    | @!APILevel[
+    |
+    /**
+     * The tail end is centered longitudinally.
+     *
+     * @relation End
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
-    | @!APILevel[
+    |
+    /**
+     * Bottom starting end.
+     *
+     * @relation BottomStart
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomStart
-    | @!APILevel[
+    |
+    /**
+     * The bottom is centered horizontally.
+     *
+     * @relation Bottom
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
-    | @!APILevel[
+    |
+    /**
+     * Bottom end.
+     *
+     * @relation BottomEnd
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -556,26 +933,48 @@ public enum Alignment {
     }
 }
 
-// cpp: frameworks\core\components\common\layout
+/**
+ * HorizontalAlign enumeration description.
+ *
+ * @relation enum HorizontalAlign
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum HorizontalAlign {
+    /**
+     * Aligns the start end in the language direction.
+     *
+     * @relation Start
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
-    | @!APILevel[
+    |
+    /**
+     * Center alignment. The default alignment mode is used.
+     *
+     * @relation Center
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
-    | @!APILevel[
+    |
+    /**
+     * Aligns the ends in the language direction.
+     *
+     * @relation End
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -593,25 +992,48 @@ public enum HorizontalAlign {
     }
 }
 
+/**
+ * VerticalAlign enumeration description
+ *
+ * @relation enum VerticalAlign
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum VerticalAlign {
+    /**
+     * Top alignment.
+     *
+     * @relation Top
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
-    | @!APILevel[
+    |
+    /**
+     * Center alignment. The default alignment mode is used.
+     *
+     * @relation Center
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
-    | @!APILevel[
+    |
+    /**
+     * Bottom alignment.
+     *
+     * @relation Bottom
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -629,49 +1051,91 @@ public enum VerticalAlign {
     }
 }
 
+/**
+ * The font weight of the text
+ *
+ * @relation enum FontWeight
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FontWeight {
+    /**
+     * Normal font. Equivalent to a digital value of 400.
+     *
+     * @relation enum Normal
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
-    | @!APILevel[
+    |
+    /**
+     * Bold. Equivalent to a numeric value of 700.
+     *
+     * @relation enum Bold
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bold
-    | @!APILevel[
+    |
+    /**
+     * Defines a value that is heavier than [Inherited Value].
+     *
+     * @relation enum Bolder
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bolder
-    | @!APILevel[
+    |
+    /**
+     * Defines a lighter value than [Inherited Value]..
+     *
+     * @relation enum Lighter
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Lighter
-    | @!APILevel[
+    |
+    /**
+     * Defines a value that is more centered than [Inherited Value].
+     *
+     * @relation enum Medium
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Medium
-    | @!APILevel[
+    |
+    /**
+     * Defines a more general value than [Inherited Value].
+     *
+     * @relation enum Regular
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Regular
-    | @!APILevel[
+    |
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -821,19 +1285,36 @@ public enum FontWeight {
     }
 }
 
+/**
+ * Declare the location of the bar chart.
+ *
+ * @relation enum BarPosition
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BarPosition {
+    /**
+     * When the vertical attribute method is set to true, the tab is on the left of the container. When the vertical property method is set to false, the tab is at the top of the container.
+     *
+     * @relation Start
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
-    | @!APILevel[
+    |
+    /**
+     * When the vertical attribute method is set to true, the tab is located on the right of the container. When the vertical property method is set to false, the tab is at the bottom of the container.
+     *
+     * @relation End
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -850,19 +1331,39 @@ public enum BarPosition {
     }
 }
 
+/**
+ * Declare the graphic format of the bar chart.
+ *
+ * @relation enum BarMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BarMode {
+    /**
+     * The width of each tab is determined by equally dividing the number of tabs by the bar width
+     * (or bar height in the vertical layout).
+     *
+     * @relation Fixed = 1
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fixed
-    | @!APILevel[
+    |
+    /**
+     * The width of each tab is determined by the actual layout. The tabs are scrollable in the following case:
+     * In horizontal layout, the total width exceeds the tab bar width; in vertical layout,
+     * the total height exceeds the tab bar height.
+     *
+     * @relation Scrollable = 0
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -879,19 +1380,36 @@ public enum BarMode {
     }
 }
 
+/**
+ * Define the type of shadow
+ *
+ * @relation enum ShadowType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ShadowType {
+    /**
+     * Define a color type of shadow
+     *
+     * @relation enum COLOR
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     COLOR
-    | @!APILevel[
+    |
+    /**
+     * Blur.
+     *
+     * @relation enum BLUR
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -908,31 +1426,60 @@ public enum ShadowType {
     }
 }
 
+/**
+ * Type of text modifier.
+ *
+ * @relation enum TextDecorationType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextDecorationType {
+    /**
+     * Do not use text decorative lines.
+     *
+     * @relation None
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
-    | @!APILevel[
+    |
+    /**
+     * Underline the words.
+     *
+     * @relation Underline
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Underline
-    | @!APILevel[
+    |
+    /**
+     * Text is in all uppercase.
+     *
+     * @relation Overline
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Overline
-    | @!APILevel[
+    |
+    /**
+     * A modifier line that passes through the text.
+     *
+     * @relation LineThrough
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -961,25 +1508,48 @@ public enum TextDecorationType {
     }
 }
 
+/**
+ * Alignment of text.
+ *
+ * @relation enum TextAlign
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextAlign {
+    /**
+     * The text is aligned in the same direction as the writing
+     *
+     * @relation Start
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
-    | @!APILevel[
+    |
+    /**
+     * Center the text.
+     *
+     * @relation Center
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
-    | @!APILevel[
+    |
+    /**
+     * The text is aligned in the opposite direction of writing
+     *
+     * @relation End
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1011,25 +1581,48 @@ public enum TextAlign {
     }
 }
 
+/**
+ * Declare how text overflows.
+ *
+ * @relation enum TextOverflow
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextOverflow {
+    /**
+     * When the text overflows its dimensions, the text will not be cropped.
+     *
+     * @relation Clip
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Clip
-    | @!APILevel[
+    |
+    /**
+     * If the text overflows its dimensions, the text that cannot be displayed shall be replaced by ellipsis.
+     *
+     * @relation Ellipsis
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ellipsis
-    | @!APILevel[
+    |
+    /**
+     * When the text overflows its dimensions, the text will not be cropped.
+     *
+     * @relation None
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1052,25 +1645,49 @@ public enum TextOverflow {
     }
 }
 
+/**
+ * Enum of word break
+ *
+ * @relation enum WordBreak
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum WordBreak {
+    /**
+     * By default, CJK text can be wrapped between any 2 characters, and non-CJK text can only be wrapped in spaces.
+     *
+     * @relation NORMAL = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
-    | @!APILevel[
+    |
+    /**
+     * Non-CJK text be wrapped at any character
+     *
+     * @relation BREAK_ALL = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BreakAll
-    | @!APILevel[
+    |
+    /**
+     * Non-CJK text can be wrapped at any character
+     * and if a complete word can be preserved in space breaks, the word must be kept on the line.
+     *
+     * @relation BREAK_WORD = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1102,31 +1719,60 @@ public enum WordBreak {
     }
 }
 
+/**
+ * ImageRepeat enumeration description
+ *
+ * @relation enum ImageRepeat
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageRepeat {
+    /**
+     * Do not draw the picture again.
+     *
+     * @relation NoRepeat
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NoRepeat
-    | @!APILevel[
+    |
+    /**
+     * Repeat the drawing only on the horizontal axis.
+     *
+     * @relation X
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     X
-    | @!APILevel[
+    |
+    /**
+     * Repeat the drawing only on the vertical axis.
+     *
+     * @relation Y
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Y
-    | @!APILevel[
+    |
+    /**
+     * Draw the picture repeatedly on both axes.
+     *
+     * @relation XY
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1145,122 +1791,48 @@ public enum ImageRepeat {
     }
 }
 
-/*
- * Reference from the ace_engine
- * File path: bridge/cj_frontend/cppview/view_abstract.h
- * Object name: RESOURCE_TYPE
+/**
+ * ImageSize enumeration description
+ *
+ * @relation enum ImageRepeat
  */
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public enum ResourceType {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    ResColor
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Float
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    String
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Plural
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Boolean
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    IntArray
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Integer
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Pattern
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    StrArray
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Media
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Rawfile
-    | ...
-
-    protected func getValue(): UInt32 {
-        match (this) {
-            case ResColor => 10001
-            case Float => 10002
-            case String => 10003
-            case Plural => 10004
-            case Boolean => 10005
-            case IntArray => 10006
-            case Integer => 10007
-            case Pattern => 10008
-            case StrArray => 10009
-            case Media => 20000 // resource is placed in the media folder
-            case Rawfile => 30000 // resource is placed in the rawfile folder
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-}
-
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageSize {
+    /**
+     * Keep the aspect ratio to zoom out or zoom in so that the image is completely displayed within the display boundary.
+     *
+     * @relation Contain
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Contain
-    | @!APILevel[
+    |
+    /**
+     * Keep the aspect ratio to zoom in or out the image so that both sides of the image are greater than or equal to the display boundary.
+     *
+     * @relation Cover
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Cover
-    | @!APILevel[
+    |
+    /**
+     * Keep the scale of the original image unchanged.
+     *
+     * @relation Auto
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1278,43 +1850,84 @@ public enum ImageSize {
     }
 }
 
+/**
+ * enum Shadow style
+ *
+ * @relation enum ImageRepeat
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ShadowStyle {
+    /**
+     * Defines the super small default shadow style.
+     *
+     * @relation OUTER_DEFAULT_XS
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OUTER_DEFAULT_XS
-    | @!APILevel[
+    |
+    /**
+     * Defines the small default shadow style.
+     *
+     * @relation OUTER_DEFAULT_SM
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OUTER_DEFAULT_SM
-    | @!APILevel[
+    |
+    /**
+     * Medium shadow.
+     *
+     * @relation OUTER_DEFAULT_MD
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OUTER_DEFAULT_MD
-    | @!APILevel[
+    |
+    /**
+     * Large shadow.
+     *
+     * @relation OUTER_DEFAULT_LG
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OUTER_DEFAULT_LG
-    | @!APILevel[
+    |
+    /**
+     * Floating medium shadow.
+     *
+     * @relation OUTER_FLOATING_SM
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OUTER_FLOATING_SM
-    | @!APILevel[
+    |
+    /**
+     * Floating medium shadow.
+     *
+     * @relation OUTER_FLOATING_MD
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1335,25 +1948,48 @@ public enum ShadowStyle {
     }
 }
 
+/**
+ * Letter type in text
+ *
+ * @relation enum TextCase
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextCase {
+    /**
+     * The default is normal.
+     *
+     * @relation Normal
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
-    | @!APILevel[
+    |
+    /**
+     * The text is all lowercase.
+     *
+     * @relation LowerCase
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LowerCase
-    | @!APILevel[
+    |
+    /**
+     * The text is all uppercase.
+     *
+     * @relation UpperCase
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1376,25 +2012,48 @@ public enum TextCase {
     }
 }
 
+/**
+ * Border Style
+ *
+ * @relation enum BorderStyle
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BorderStyle {
+    /**
+     * Shows as a solid line.
+     *
+     * @relation Solid
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Solid
-    | @!APILevel[
+    |
+    /**
+     * Shows as a series of short square dashed lines.
+     *
+     * @relation Dashed
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Dashed
-    | @!APILevel[
+    |
+    /**
+     * Displays as a series of dots with a radius of half the borderWidth.
+     *
+     * @relation Dotted
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1417,43 +2076,84 @@ public enum BorderStyle {
     }
 }
 
+/**
+ * Image display mode.
+ *
+ * @relation enum ImageFit
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageFit {
+    /**
+     * Zoom in or out without maintaining the aspect ratio so that the image fills the display boundary.
+     *
+     * @relation Fill
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fill
-    | @!APILevel[
+    |
+    /**
+     * Keep the aspect ratio to zoom out or zoom in so that the image is completely displayed within the display boundary.
+     *
+     * @relation Contain
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Contain
-    | @!APILevel[
+    |
+    /**
+     * Keep the aspect ratio to zoom out or zoom in so that both sides of the image are greater than or equal to the display boundary.
+     *
+     * @relation Cover
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Cover
-    | @!APILevel[
+    |
+    /**
+     * Adaptive display
+     *
+     * @relation Auto
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
-    | @!APILevel[
+    |
+    /**
+     * Keep the original size and display it in the center.
+     *
+     * @relation None
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
-    | @!APILevel[
+    |
+    /**
+     * Keep the aspect ratio displayed, and the image zooms out or remains unchanged.
+     *
+     * @relation ScaleDown
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1486,25 +2186,48 @@ public enum ImageFit {
     }
 }
 
+/**
+ * Sets the horizontal layout of elements.
+ *
+ * @relation enum Direction
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Direction {
+    /**
+     * Elements are laid out from left to right.
+     *
+     * @relation Ltr
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ltr
-    | @!APILevel[
+    |
+    /**
+     * Elements are laid out from right to left.
+     *
+     * @relation Rtl
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Rtl
-    | @!APILevel[
+    |
+    /**
+     * Use the default layout direction.
+     *
+     * @relation Auto
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1522,19 +2245,36 @@ public enum Direction {
     }
 }
 
+/**
+ * Enumerates the scrolling directions.
+ *
+ * @relation enum ScrollDirection
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ScrollDirection {
+    /**
+     * Only vertical scrolling is supported.
+     *
+     * @relation Vertical
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vertical
-    | @!APILevel[
+    |
+    /**
+     * Only horizontal scrolling is supported.
+     *
+     * @relation Horizontal
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1551,19 +2291,36 @@ public enum ScrollDirection {
     }
 }
 
+/**
+ * Content scroll direction.
+ *
+ * @relation enum ScrollBarDirection
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ScrollBarDirection {
+    /**
+     * Vertical scrolling is supported.
+     *
+     * @relation Vertical
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vertical
-    | @!APILevel[
+    |
+    /**
+     * Horizontal scrolling is supported.
+     *
+     * @relation Horizontal
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1580,31 +2337,64 @@ public enum ScrollBarDirection {
     }
 }
 
+/**
+ * State triggered by the event.
+ *
+ * @relation enum SliderChangeMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SliderChangeMode {
+    /**
+     * The user touches or clicks the thumb.
+     *
+     * @relation Begin
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Begin
-    | @!APILevel[
+    |
+    /**
+     * The user is dragging the slider.
+     *
+     * @relation Moving
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Moving
-    | @!APILevel[
+    |
+    /**
+     * The user stops dragging the slider by lifting their finger or releasing the mouse device.
+     * <p><strong>NOTE</strong>:
+     * <br>The trigger occurs when an invalid value is restored to the default value, that is, when the value is set to
+     * less than min or greater than max.
+     * </p>
+     *
+     * @relation End
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
-    | @!APILevel[
+    |
+    /**
+     * The user moves the thumb by touching or clicking the track.
+     *
+     * @relation Click
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1632,19 +2422,36 @@ public enum SliderChangeMode {
     }
 }
 
+/**
+ * Style of the slider thumb and track.
+ *
+ * @relation enum SliderStyle
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SliderStyle {
+    /**
+     * The thumb is on the track.
+     *
+     * @relation OutSet
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OutSet
-    | @!APILevel[
+    |
+    /**
+     * The thumb is in the track.
+     *
+     * @relation InSet
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1687,31 +2494,60 @@ enum WindowBlurStyle {
     }
 }
 
+/**
+ * The interpolation effect of the image.
+ *
+ * @relation enum ImageInterpolation
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageInterpolation {
+    /**
+     * Do not use interpolated image data.
+     *
+     * @relation None
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
-    | @!APILevel[
+    |
+    /**
+     * High usage of interpolated image data may affect the speed of image rendering.
+     *
+     * @relation High
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     High
-    | @!APILevel[
+    |
+    /**
+     * Interpolated image data is used moderately.
+     *
+     * @relation Medium
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Medium
-    | @!APILevel[
+    |
+    /**
+     * Low usage of interpolated image data.
+     *
+     * @relation Low
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1730,25 +2566,48 @@ public enum ImageInterpolation {
     }
 }
 
+/**
+ * Used to set the status of the scroll bar.
+ *
+ * @relation enum BarState
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BarState {
+    /**
+     * Not displayed.
+     *
+     * @relation Off
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Off
-    | @!APILevel[
+    |
+    /**
+     * On-demand display (displayed when you touch it and disappears after 2 seconds).
+     *
+     * @relation Auto
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
-    | @!APILevel[
+    |
+    /**
+     * Resident display.
+     *
+     * @relation On
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1766,25 +2625,48 @@ public enum BarState {
     }
 }
 
+/**
+ * Controls the display or hide of the current component
+ *
+ * @relation enum Visibility
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Visibility {
+    /**
+     * Resident display.
+     *
+     * @relation Visible
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Visible
-    | @!APILevel[
+    |
+    /**
+     * Hide, but participate in layout for placeholder.
+     *
+     * @relation Hidden
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Hidden
-    | @!APILevel[
+    |
+    /**
+     * Hides but does not participate in layout and does not take place.
+     *
+     * @relation None
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1803,29 +2685,47 @@ public enum Visibility {
 }
 
 /**
- * the position of Corresponding enum in Native:
- * Path: /frameworks/core/components/common/properties/paint_state.h
- * Identifier: LineCapStyle
+ * LineCapStyle enumeration description
+ *
+ * @relation enum LineCapStyle
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LineCapStyle {
+    /**
+     * The two ends of the dividing line are parallel lines.
+     *
+     * @relation Butt
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Butt
-    | @!APILevel[
+    |
+    /**
+     * The two ends of the dividing line are semicircles.
+     *
+     * @relation Round
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Round
-    | @!APILevel[
+    |
+    /**
+     * Extends half a circle at the end of the path with a width equal to half the line width and a height equal to the line width.
+     *
+     * @relation Square
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1843,37 +2743,72 @@ public enum LineCapStyle {
     }
 }
 
+/**
+ * Type of progress bar
+ *
+ * @relation enum ProgressType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ProgressType {
+    /**
+     * Linear progress bar style.
+     *
+     * @relation Linear = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Linear
-    | @!APILevel[
+    |
+    /**
+     * Ring progress bar.
+     *
+     * @relation Ring = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ring
-    | @!APILevel[
+    |
+    /**
+     * Eclipse progress bar.
+     *
+     * @relation Eclipse = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Eclipse
-    | @!APILevel[
+    |
+    /**
+     * ScaleRing progress bar.
+     *
+     * @relation ScaleRing = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ScaleRing
-    | @!APILevel[
+    |
+    /**
+     * Capsule progress bar.
+     *
+     * @relation Capsule = 4
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1893,19 +2828,36 @@ public enum ProgressType {
     }
 }
 
+/**
+ * Image Rendering Mode.
+ *
+ * @relation enum ImageRenderMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageRenderMode {
+    /**
+     * Render according to the original image, including colors.
+     *
+     * @relation Original
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Original
-    | @!APILevel[
+    |
+    /**
+     * Render the image as a template image, ignoring the color information of the image.
+     *
+     * @relation Template
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1922,25 +2874,48 @@ public enum ImageRenderMode {
     }
 }
 
+/**
+ * Route jump.
+ *
+ * @relation enum NavigationType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum NavigationType {
+    /**
+     * Jump to the next page.
+     *
+     * @relation Push
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Push
-    | @!APILevel[
+    |
+    /**
+     * Replace page.
+     *
+     * @relation Replace
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Replace
-    | @!APILevel[
+    |
+    /**
+     * Return to the previous page.
+     *
+     * @relation Back
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1958,19 +2933,36 @@ public enum NavigationType {
     }
 }
 
+/**
+ * Declare the size of the swiper on the spindle.
+ *
+ * @relation enum SwiperDisplayMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SwiperDisplayMode {
+    /**
+     * Carousel map extension.
+     *
+     * @relation Stretch
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Stretch
-    | @!APILevel[
+    |
+    /**
+     * The rotation chart is self linear.
+     *
+     * @relation AutoLinear
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1987,85 +2979,168 @@ public enum SwiperDisplayMode {
     }
 }
 
+/**
+ * Sets the animation playback mode. By default, the animation starts to play again after the playback is complete.
+ *
+ * @relation enum Curve
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Curve {
+    /**
+     * Indicates that the speed of the animation is the same from start to finish.
+     *
+     * @relation Linear
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Linear
-    | @!APILevel[
+    |
+    /**
+     * Indicates that the animation starts at a low speed, then accelerates, and then slows down before it ends, CubicBezier(0.25, 0.1, 0.25, 1.0).
+     *
+     * @relation Ease
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ease
-    | @!APILevel[
+    |
+    /**
+     * Indicates that the animation starts at a low speed, CubicBezier(0.42, 0.0, 1.0, 1.0).
+     *
+     * @relation EaseIn
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EaseIn
-    | @!APILevel[
+    |
+    /**
+     * Indicates that the animation ends at a low speed, CubicBezier(0.0, 0.0, 0.78, 1.0).
+     *
+     * @relation EaseOut
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EaseOut
-    | @!APILevel[
+    |
+    /**
+     * Indicates that the animation starts and ends at a slow speed, CubicBezier(0.42, 0.0, 0.78, 1.0).
+     *
+     * @relation EaseInOut
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EaseInOut
-    | @!APILevel[
+    |
+    /**
+     * Slow-in, fast-out
+     *
+     * @relation FastOutSlowIn
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FastOutSlowIn
-    | @!APILevel[
+    |
+    /**
+     * Linear Out Slow In
+     *
+     * @relation LinearOutSlowIn
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LinearOutSlowIn
-    | @!APILevel[
+    |
+    /**
+     * Fast Out Linear In.
+     *
+     * @relation FastOutLinearIn
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FastOutLinearIn
-    | @!APILevel[
+    |
+    /**
+     * Extreme Deceleration.
+     *
+     * @relation ExtremeDeceleration
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ExtremeDeceleration
-    | @!APILevel[
+    |
+    /**
+     * Sharp.
+     *
+     * @relation Sharp
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Sharp
-    | @!APILevel[
+    |
+    /**
+     * Rhythm.
+     *
+     * @relation Rhythm
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Rhythm
-    | @!APILevel[
+    |
+    /**
+     * Smooth.
+     *
+     * @relation Smooth
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Smooth
-    | @!APILevel[
+    |
+    /**
+     * Damping curve, CubicBezier(0.2, 0.0, 0.2, 1.0).
+     *
+     * @relation Friction
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2093,25 +3168,48 @@ public enum Curve {
     }
 }
 
+/**
+ * Sliding effect
+ *
+ * @relation enum EdgeEffect
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum EdgeEffect {
+    /**
+     * Elastic physical action, sliding to the edge can continue to slide for a distance based on the initial speed or touch event, and spring back when released.
+     *
+     * @relation Spring
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Spring
-    | @!APILevel[
+    |
+    /**
+     * Fade.
+     *
+     * @relation Fade
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fade
-    | @!APILevel[
+    |
+    /**
+     * Sliding to the edge has no effect.
+     *
+     * @relation None
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2129,31 +3227,60 @@ public enum EdgeEffect {
     }
 }
 
+/**
+ * Edge.
+ *
+ * @relation enum Edge
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Edge {
+    /**
+     * The top is centered horizontally.
+     *
+     * @relation Top
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
-    | @!APILevel[
+    |
+    /**
+     * Align the head of the cross axis direction.
+     *
+     * @relation Start
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
-    | @!APILevel[
+    |
+    /**
+     * The bottom is centered horizontally.
+     *
+     * @relation Bottom
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
-    | @!APILevel[
+    |
+    /**
+     * Align the head of the cross axis direction.
+     *
+     * @relation End
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2187,79 +3314,156 @@ public enum Edge {
  * Path: /frameworks/core/components/common/properties/placement.h
  * Identifier: Placement
  */
+/**
+ * Placement enumeration description
+ *
+ * @relation enum Placement
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Placement {
+    /**
+     * Left placement
+     *
+     * @relation Left
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
-    | @!APILevel[
+    |
+    /**
+     * Right placement
+     *
+     * @relation Right
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
-    | @!APILevel[
+    |
+    /**
+     * Top placement
+     *
+     * @relation Top
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
-    | @!APILevel[
+    |
+    /**
+     * Bottom placement
+     *
+     * @relation Bottom
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
-    | @!APILevel[
+    |
+    /**
+     * TopLeft placement
+     *
+     * @relation TopLeft
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopLeft
-    | @!APILevel[
+    |
+    /**
+     * TopRight placement
+     *
+     * @relation TopRight
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopRight
-    | @!APILevel[
+    |
+    /**
+     * BottomLeft placement
+     *
+     * @relation BottomLeft
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomLeft
-    | @!APILevel[
+    |
+    /**
+     * BottomRight placement
+     *
+     * @relation BottomRight
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomRight
-    | @!APILevel[
+    |
+    /**
+     * LeftTop placement
+     *
+     * @relation LeftTop
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LeftTop
-    | @!APILevel[
+    |
+    /**
+     * LeftBottom placement
+     *
+     * @relation LeftBottom
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LeftBottom
-    | @!APILevel[
+    |
+    /**
+     * RightTop placement
+     *
+     * @relation RightTop
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RightTop
-    | @!APILevel[
+    |
+    /**
+     * RightBottom placement
+     *
+     * @relation RightBottom
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2298,25 +3502,48 @@ public enum Placement {
  * Path: /frameworks/core/components/common/properties/paint_state.h
  * Identifier: LineJoinStyle
  */
+/**
+ * Line Join Style
+ *
+ * @relation enum LineJoinStyle
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LineJoinStyle {
+    /**
+     * Connect path segments using bevels.
+     *
+     * @relation Miter
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Miter
-    | @!APILevel[
+    |
+    /**
+     * Connect path segments using sharp corners.
+     *
+     * @relation Round
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Round
-    | @!APILevel[
+    |
+    /**
+     * Connect path segments using fillets.
+     *
+     * @relation Bevel
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2339,43 +3566,81 @@ public enum LineJoinStyle {
  * Path: /frameworks/core/components/common/layout/constants.h
  * Identifier: TextAlign
  */
+/**
+ * Describes the alignment mode for drawing text.
+ *
+ * @relation type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextAlignStyle {
+    /**
+     * (Default) The text is left-aligned.
+     *
+     * @relation type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
-    | @!APILevel[
+    |
+    /**
+     * The text is right-aligned.
+     *
+     * @relation type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
-    | @!APILevel[
+    |
+    /**
+     * The text is centered.
+     *
+     * @relation type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
-    | @!APILevel[
+    |
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Justify
-    | @!APILevel[
+    |
+    /**
+     * Where the text snap line begins (Left alignment refers to the local from left to right,
+     * and right alignment refers to the local from right to left)
+     *
+     * @relation type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
-    | @!APILevel[
+    |
+    /**
+     * Where text aligns lines end (Left alignment refers to the local from left to right,
+     * and right alignment refers to the local from right to left)
+     *
+     * @relation type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2406,19 +3671,38 @@ public enum TextAlignStyle {
  * Path: /frameworks/core/components/common/properties/text_style.h
  * Identifier: TextBaseline
  */
+/**
+ * Enumeration the type of text baseline.
+ *
+ * @relation enum TextBaseline
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextBaseline {
+    /**
+     * The alphabetic baseline, typically used for Latin-based scripts where the baseline aligns
+     * with the base of lowercase letters.
+     *
+     * @relation ALPHABETIC
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Alphabetic
-    | @!APILevel[
+    |
+    /**
+     * The ideographic baseline, commonly used for ideographic scripts such as Chinese, Japanese, and Korean,
+     * where the baseline aligns with the center of characters.
+     *
+     * @relation IDEOGRAPHIC
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2468,73 +3752,125 @@ public enum TextBaseline {
  * Path: /frameworks/core/components/common/properties/paint_state.h
  * Identifier: CompositeOperation
  */
+/**
+ * Type of composition operation applied when drawing a new shape.
+ *
+ * @relation globalCompositeOperation: string
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum CompositeOperation {
+    /**
+     * (Default) Draws a new drawing on top of an existing canvas context.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SourceOver
-    | @!APILevel[
+    |
+    /**
+     * The new drawing is drawn only where it overlaps the content of the existing canvas.
+     * 
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SourceAtop
-    | @!APILevel[
+    |
+    /**
+     * The new drawing is drawn only where the new drawing overlaps the target canvas.
+     * Everything else is transparent.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SourceIn
-    | @!APILevel[
+    |
+    /**
+     * Draws a new drawing where it does not overlap with the existing canvas content.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SourceOut
-    | @!APILevel[
+    |
+    /**
+     * Draws a new graphic behind the existing canvas content.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DestinationOver
-    | @!APILevel[
+    |
+    /**
+     * The existing canvas retains only the part that overlaps with the new drawing,
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DestinationAtop
-    | @!APILevel[
+    |
+    /**
+     * Existing canvas content remains where the new drawing overlaps the existing canvas content.
+     * Everything else is transparent.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DestinationIn
-    | @!APILevel[
+    |
+    /**
+     * Existing content remains where the new drawing does not overlap.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DestinationOut
-    | @!APILevel[
+    |
+    /**
+     * The color of two overlapping shapes is determined by adding the color values.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Lighter
-    | @!APILevel[
+    |
+    /**
+     * Only new graphics are displayed.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Copy
-    | @!APILevel[
+    |
+    /**
+     * In the image, those overlaps and other places outside of the normal drawing are transparent.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2560,25 +3896,48 @@ public enum CompositeOperation {
     }
 }
 
+/**
+ * Sets the image smoothness attribute.
+ *
+ * @relation type ImageSmoothingQuality = "high" | "low" | "medium"
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum QualityType {
+    /**
+     * (default)low
+     *
+     * @relation type ImageSmoothingQuality = "high" | "low" | "medium"
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Low
-    | @!APILevel[
+    |
+    /**
+     * Medium
+     *
+     * @relation type ImageSmoothingQuality = "high" | "low" | "medium"
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Medium
-    | @!APILevel[
+    |
+    /**
+     * height
+     *
+     * @relation type ImageSmoothingQuality = "high" | "low" | "medium"
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2596,6 +3955,12 @@ public enum QualityType {
     }
 }
 
+/**
+ * Creating an Object
+ *
+ * @relation enum GesturePriority
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -2625,35 +3990,36 @@ public enum GesturePriority {
     }
 }
 
-protected enum GesturePriorityInner {
-    Low
-    | High
-    | Parallel
-    | ...
-
-    protected func getValue(): Int32 {
-        match (this) {
-            case Low => 0
-            case High => 1
-            case Parallel => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-}
-
+/**
+ * Creating an Object
+ *
+ * @relation enum GestureMask
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum GestureMask {
+    /**
+     * High-priority response to the current gesture.When the current gesture fails to be recognized, other gesture responses are triggered.For gestures with the same priority, responses are performed based on the recognition sequence.
+     *
+     * @relation Normal
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
-    | @!APILevel[
+    |
+    /**
+     * Ignore internal gestures and recognize the current gesture first.
+     *
+     * @relation IgnoreInternal
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2670,25 +4036,48 @@ public enum GestureMask {
     }
 }
 
+/**
+ * Creating an Object
+ *
+ * @relation enum SwipeDirection
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SwipeDirection {
+    /**
+     * Sliding horizontally.
+     *
+     * @relation Horizontal
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Horizontal
-    | @!APILevel[
+    |
+    /**
+     * Sliding Vertical
+     *
+     * @relation Vertical
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vertical
-    | @!APILevel[
+    |
+    /**
+     * Sliding in all directions.
+     *
+     * @relation All
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2706,55 +4095,108 @@ public enum SwipeDirection {
     }
 }
 
+/**
+ * Creating an Object
+ *
+ * @relation enum PanDirection
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum PanDirection {
+    /**
+     * Default.
+     *
+     * @relation None
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
-    | @!APILevel[
+    |
+    /**
+     * Sliding left.
+     *
+     * @relation Left
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
-    | @!APILevel[
+    |
+    /**
+     * Sliding right.
+     *
+     * @relation Right
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
-    | @!APILevel[
+    |
+    /**
+     * Sliding horizontally.
+     *
+     * @relation Horizontal
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Horizontal
-    | @!APILevel[
+    |
+    /**
+     * Sliding up.
+     *
+     * @relation None
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Up
-    | @!APILevel[
+    |
+    /**
+     * Sliding Down.
+     *
+     * @relation None
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Down
-    | @!APILevel[
+    |
+    /**
+     * Sliding Vertical
+     *
+     * @relation Vertical
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vertical
-    | @!APILevel[
+    |
+    /**
+     * Sliding in all directions.
+     *
+     * @relation All
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2802,25 +4244,48 @@ public enum PanDirection {
     }
 }
 
+/**
+ * Creating an Object
+ *
+ * @relation enum GestureMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum GestureMode {
+    /**
+     * Sequential gesture recognition is performed in sequence according to the gesture registration sequence.
+     *
+     * @relation Sequence
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Sequence
-    | @!APILevel[
+    |
+    /**
+     * Simultaneous recognition. Registration gestures participate in recognition. Everything can be triggered.
+     *
+     * @relation Parallel
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Parallel
-    | @!APILevel[
+    |
+    /**
+     * Mutually exclusive recognition. Only one gesture is successfully recognized.
+     *
+     * @relation Exclusive
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2843,19 +4308,36 @@ public enum GestureMode {
  * Path: /frameworks/base/geometry/axis.h
  * Identifier: Axis
  */
+/**
+ * Axis enumeration description.
+ *
+ * @relation enum Axis
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Axis {
+    /**
+     * Longitudinal arrangement
+     *
+     * @relation Vertical
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vertical
-    | @!APILevel[
+    |
+    /**
+     * Horizontal arrangement.
+     *
+     * @relation Horizontal
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2872,19 +4354,36 @@ public enum Axis {
     }
 }
 
+/**
+ * ResponseType for contextMenu
+ *
+ * @relation enum ResponseType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ResponseType {
+    /**
+     * Right click.
+     *
+     * @relation RightClick
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RightClick
-    | @!APILevel[
+    |
+    /**
+     * Long press.
+     *
+     * @relation LongPress
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2901,25 +4400,48 @@ public enum ResponseType {
     }
 }
 
+/**
+ * Indicates the share option.
+ *
+ * @relation enum CopyOptions
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum CopyOptions {
+    /**
+     * Not allow share.
+     *
+     * @relation None = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
-    | @!APILevel[
+    |
+    /**
+     * Share in app.
+     *
+     * @relation InApp = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     InApp
-    | @!APILevel[
+    |
+    /**
+     * Share in local device.
+     *
+     * @relation LocalDevice = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2937,31 +4459,60 @@ public enum CopyOptions {
     }
 }
 
+/**
+ * Function Called by Touch
+ *
+ * @relation enum TouchType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TouchType {
+    /**
+     * Triggered when the finger is pressed.
+     *
+     * @relation Down
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Down
-    | @!APILevel[
+    |
+    /**
+     * Triggered when the finger is raised.
+     *
+     * @relation Up
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Up
-    | @!APILevel[
+    |
+    /**
+     * Triggered when the finger presses on the screen.
+     *
+     * @relation Move
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Move
-    | @!APILevel[
+    |
+    /**
+     * Triggers when the touch event cancels.
+     *
+     * @relation Cancel
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3038,19 +4589,36 @@ enum DragComponent {
     }
 }
 
+/**
+ * Sets the sidebar style of showing
+ *
+ * @relation enum SideBarContainerType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SideBarContainerType {
+    /**
+     * The sidebar invisible
+     *
+     * @relation Embed
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Embed
-    | @!APILevel[
+    |
+    /**
+     * The sidebar visible
+     *
+     * @relation Overlay
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3067,19 +4635,36 @@ public enum SideBarContainerType {
     }
 }
 
+/**
+ * Sets the sidebar position of showing
+ *
+ * @relation enum SideBarPosition
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SideBarPosition {
+    /**
+     * The sidebar is on the Start of the container
+     *
+     * @relation Start
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
-    | @!APILevel[
+    |
+    /**
+     * The sidebar is on the End of the container
+     *
+     * @relation End
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3096,25 +4681,48 @@ public enum SideBarPosition {
     }
 }
 
+/**
+ * Defines the event source type.
+ *
+ * @relation enum SourceType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SourceType {
+    /**
+     * Unknown type.
+     *
+     * @relation Unknown
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Unknown
-    | @!APILevel[
+    |
+    /**
+     * The mouse type.
+     *
+     * @relation Mouse
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Mouse
-    | @!APILevel[
+    |
+    /**
+     * The touch screen type.
+     *
+     * @relation TouchScreen
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3154,43 +4762,84 @@ public enum SourceType {
     }
 }
 
+/**
+ * Function Called by Mouse
+ *
+ * @relation enum MouseButton
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum MouseButton {
+    /**
+     * Mouse None Button.
+     *
+     * @relation None
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
-    | @!APILevel[
+    |
+    /**
+     * Mouse Left Button.
+     *
+     * @relation Left
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
-    | @!APILevel[
+    |
+    /**
+     * Mouse Right Button.
+     *
+     * @relation Right
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
-    | @!APILevel[
+    |
+    /**
+     * Mouse Middle Button.
+     *
+     * @relation Middle
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Middle
-    | @!APILevel[
+    |
+    /**
+     * Mouse Back Button.
+     *
+     * @relation Back
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Back
-    | @!APILevel[
+    |
+    /**
+     * Mouse Forward Button.
+     *
+     * @relation Forward
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3244,6 +4893,12 @@ public enum MouseButton {
     }
 }
 
+/**
+ * Function Called by Mouse
+ *
+ * @relation enum MouseAction
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -3256,25 +4911,49 @@ public enum MouseAction {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
-    | @!APILevel[
+    |
+    /**
+     * Triggered when the mouse is pressed.
+     *
+     * @relation Press
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Press
-    | @!APILevel[
+    |
+    /**
+     * Triggered when the mouse is released.
+     *
+     * @relation Release
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Release
-    | @!APILevel[
+    |
+    /**
+     * Triggered when the mouse is Moved.
+     *
+     * @relation Move
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Move
-    | @!APILevel[
+    |
+    /**
+     * Triggered when the mouse is Hovered.
+     *
+     * @relation Hover
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3325,19 +5004,36 @@ public enum MouseAction {
     }
 }
 
+/**
+ * Type of the input device that triggers the current key.
+ *
+ * @relation enum KeySource
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum KeySource {
+    /**
+     * The input device type is unknown.
+     *
+     * @relation Unknown
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Unknown
-    | @!APILevel[
+    |
+    /**
+     * Set Device Type to Keyboard.
+     *
+     * @relation Keyboard
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3379,6 +5075,12 @@ public enum KeySource {
     }
 }
 
+/**
+ * Type of a key.
+ *
+ * @relation enum KeyType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -3391,13 +5093,25 @@ public enum KeyType {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Unknown
-    | @!APILevel[
+    |
+    /**
+     * Press the key.
+     *
+     * @relation Down
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Down
-    | @!APILevel[
+    |
+    /**
+     * The key is released.
+     *
+     * @relation Up
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3442,25 +5156,48 @@ public enum KeyType {
     }
 }
 
+/**
+ * Modifier key for hot key.
+ *
+ * @relation enum ModifierKey
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ModifierKey {
+    /**
+     * ctrl.
+     *
+     * @relation CTRL
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CTRL
-    | @!APILevel[
+    |
+    /**
+     * shift.
+     *
+     * @relation SHIFT
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SHIFT
-    | @!APILevel[
+    |
+    /**
+     * alt.
+     *
+     * @relation ALT
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3491,91 +5228,180 @@ public enum ModifierKey {
     }
 }
 
+/**
+ * Function key for hot key.
+ *
+ * @relation enum FunctionKey
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FunctionKey {
+    /**
+     * Escape key.
+     *
+     * @relation ESC
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ESC
-    | @!APILevel[
+    |
+    /**
+     * F1 key.
+     *
+     * @relation F1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F1
-    | @!APILevel[
+    |
+    /**
+     * F2 key.
+     *
+     * @relation F2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F2
-    | @!APILevel[
+    |
+    /**
+     * F3 key.
+     *
+     * @relation F3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F3
-    | @!APILevel[
+    |
+    /**
+     * F4 key.
+     *
+     * @relation F4
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F4
-    | @!APILevel[
+    |
+    /**
+     * F5 key.
+     *
+     * @relation F5
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F5
-    | @!APILevel[
+    |
+    /**
+     * F6 key.
+     *
+     * @relation F6
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F6
-    | @!APILevel[
+    |
+    /**
+     * F7 key.
+     *
+     * @relation F7
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F7
-    | @!APILevel[
+    |
+    /**
+     * F8 key.
+     *
+     * @relation F8
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F8
-    | @!APILevel[
+    |
+    /**
+     * F9 key.
+     *
+     * @relation F9
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F9
-    | @!APILevel[
+    |
+    /**
+     * F10 key.
+     *
+     * @relation F10
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F10
-    | @!APILevel[
+    |
+    /**
+     * F11 key.
+     *
+     * @relation F11
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F11
-    | @!APILevel[
+    |
+    /**
+     * F12 key.
+     *
+     * @relation F12
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F12
-    | @!APILevel[
+    |
+    /**
+     * Tab key.
+     *
+     * @relation TAB
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3604,19 +5430,36 @@ public enum FunctionKey {
     }
 }
 
+/**
+ * DataPanelType enum
+ *
+ * @relation enum DataPanelType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum DataPanelType {
+    /**
+     * Line Rainbow
+     *
+     * @relation Circle
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CircleType
-    | @!APILevel[
+    |
+    /**
+     * Line Type
+     *
+     * @relation Line
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3633,31 +5476,60 @@ public enum DataPanelType {
     }
 }
 
+/**
+ * ItemState
+ *
+ * @relation enum ItemState
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ItemState {
+    /**
+     * Default State
+     *
+     * @relation Normal
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
-    | @!APILevel[
+    |
+    /**
+     * Disabled State
+     *
+     * @relation Disabled
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Disabled
-    | @!APILevel[
+    |
+    /**
+     * Waiting State
+     *
+     * @relation Waiting
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Waiting
-    | @!APILevel[
+    |
+    /**
+     * Skip State
+     *
+     * @relation Skip
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3696,37 +5568,72 @@ public enum ItemState {
     }
 }
 
+/**
+ * The refresh status of the drop-down refresh.
+ *
+ * @relation enum RefreshStatus
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RefreshStatus {
+    /**
+     * The refresh status of the drop-down refresh.
+     *
+     * @relation Inactive
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Inactive
-    | @!APILevel[
+    |
+    /**
+     * Drop down, but the drop-down distance is less than the refresh distance.
+     *
+     * @relation Drag
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Drag
-    | @!APILevel[
+    |
+    /**
+     * The pull-down exceeds the refresh distance.
+     *
+     * @relation OverDrag
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OverDrag
-    | @!APILevel[
+    |
+    /**
+     * After the pull-down, it rebounds to the refresh distance and enters the refresh state.
+     *
+     * @relation Refresh
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Refresh
-    | @!APILevel[
+    |
+    /**
+     * After refresh, return to the initial state.
+     *
+     * @relation Done
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3768,31 +5675,60 @@ public enum RefreshStatus {
     }
 }
 
+/**
+ * Seek mode.
+ *
+ * @relation enum SeekMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SeekMode {
+    /**
+     * Sync to keyframes before the time point.
+     *
+     * @relation PreviousKeyframe
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PreviousKeyframe
-    | @!APILevel[
+    |
+    /**
+     * Sync to keyframes after the time point.
+     *
+     * @relation NextKeyframe
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NextKeyframe
-    | @!APILevel[
+    |
+    /**
+     * Sync to closest keyframes.
+     *
+     * @relation ClosestKeyframe
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ClosestKeyframe
-    | @!APILevel[
+    |
+    /**
+     * Seek to frames closest the time point.
+     *
+     * @relation Accurate
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3811,37 +5747,72 @@ public enum SeekMode {
     }
 }
 
+/**
+ * playback speed.
+ *
+ * @relation enum PlaybackSpeed
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum PlaybackSpeed {
+    /**
+     * 0.75x speed playback.
+     *
+     * @relation Speed_Forward_0_75_X
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Speed_Forward_0_75_X
-    | @!APILevel[
+    |
+    /**
+     * 1.00x speed playback.
+     *
+     * @relation Speed_Forward_1_00_X
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Speed_Forward_1_00_X
-    | @!APILevel[
+    |
+    /**
+     * 1.25x speed playback.
+     *
+     * @relation Speed_Forward_1_25_X
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Speed_Forward_1_25_X
-    | @!APILevel[
+    |
+    /**
+     * 1.75x speed playback.
+     *
+     * @relation Speed_Forward_1_75_X
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Speed_Forward_1_75_X
-    | @!APILevel[
+    |
+    /**
+     * 2.00x speed playback.
+     *
+     * @relation Speed_Forward_2_00_X
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3861,25 +5832,48 @@ public enum PlaybackSpeed {
     }
 }
 
+/**
+ * CheckboxGroup SelectStatus
+ *
+ * @relation enum SelectStatus
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SelectStatus {
+    /**
+     * All checkboxes are selected.
+     *
+     * @relation All
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     All
-    | @!APILevel[
+    |
+    /**
+     * Part of the checkbox is selected.
+     *
+     * @relation Part
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Part
-    | @!APILevel[
+    |
+    /**
+     * None of the checkbox is selected.
+     *
+     * @relation None
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3925,31 +5919,60 @@ public enum SelectStatus {
     }
 }
 
+/**
+ * Animation status.
+ *
+ * @relation enum AnimationStatus
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum AnimationStatus {
+    /**
+     * Initial state of the animation.
+     *
+     * @relation Initial
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Initial
-    | @!APILevel[
+    |
+    /**
+     * The animation is playing.
+     *
+     * @relation Running
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Running
-    | @!APILevel[
+    |
+    /**
+     * The animation is paused.
+     *
+     * @relation Paused
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Paused
-    | @!APILevel[
+    |
+    /**
+     * The animation is stopped.
+     *
+     * @relation Stopped
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -3968,31 +5991,60 @@ public enum AnimationStatus {
     }
 }
 
+/**
+ * Sets the state before and after the animation starts.
+ *
+ * @relation enum FillMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FillMode {
+    /**
+     * Restores to the initial state after the playback is complete.
+     *
+     * @relation None
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
-    | @!APILevel[
+    |
+    /**
+     * Retains the state at the end of the animation when the playback is complete.
+     *
+     * @relation Forwards
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Forwards
-    | @!APILevel[
+    |
+    /**
+     * Applies the start attribute value for the period specified by animation-delay before the animation is displayed.
+     *
+     * @relation Backwards
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Backwards
-    | @!APILevel[
+    |
+    /**
+     * Both forward and backward fill modes are applied.
+     *
+     * @relation Both
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4011,19 +6063,36 @@ public enum FillMode {
     }
 }
 
+/**
+ * Sliding effect
+ *
+ * @relation enum SwipeEdgeEffect
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SwipeEdgeEffect {
+    /**
+     * Elastic physical action, sliding to the edge can continue to slide for a distance based on the initial speed or touch event, and spring back when released.
+     *
+     * @relation Spring
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Spring
-    | @!APILevel[
+    |
+    /**
+     * Sliding to the edge has no effect.
+     *
+     * @relation None
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4045,19 +6114,37 @@ public enum SwipeEdgeEffect {
     }
 }
 
+/**
+ * SharedTransitionEffectType enumeration description
+ *
+ * @relation enum SharedTransitionEffectType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SharedTransitionEffectType {
+    /**
+     * The location of the destination page element remains unchanged, and you can configure the transparency animation. Currently,
+     * only the static effect configured for redirecting to the target page takes effect.
+     *
+     * @relation Static
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SharedEffectStatic
-    | @!APILevel[
+    |
+    /**
+     * Move the source page element to the destination page element location and scale it appropriately.
+     *
+     * @relation Exchange
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4074,25 +6161,48 @@ public enum SharedTransitionEffectType {
     }
 }
 
+/**
+ * Declare scroll status
+ *
+ * @relation enum ScrollState
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ScrollState {
+    /**
+     * Not activated.
+     *
+     * @relation Idle
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Idle
-    | @!APILevel[
+    |
+    /**
+     * Scrolling status.
+     *
+     * @relation Scrolling
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Scrolling
-    | @!APILevel[
+    |
+    /**
+     * Inertial scrolling state.
+     *
+     * @relation Fling
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4138,25 +6248,48 @@ public enum ScrollState {
     }
 }
 
+/**
+ * Declare list item alignment status
+ *
+ * @relation enum ListItemAlign
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ListItemAlign {
+    /**
+     * The list items are packed toward the start edge of the <em>List</em> component along the cross axis.
+     *
+     * @relation Start
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
-    | @!APILevel[
+    |
+    /**
+     * The list items are centered in the <em>List</em> component along the cross axis.
+     *
+     * @relation Center
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
-    | @!APILevel[
+    |
+    /**
+     * The list items are packed toward the end edge of the <em>List</em> component along the cross axis.
+     *
+     * @relation End
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4179,25 +6312,51 @@ public enum ListItemAlign {
     }
 }
 
+/**
+ * Declare item group sticky style.
+ *
+ * @relation enum StickyStyle
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum StickyStyle {
+    /**
+     * In the ListItemGroup component, the header is not pinned to the top,
+     * and the footer is not pinned to the bottom.
+     *
+     * @relation None = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
-    | @!APILevel[
+    |
+    /**
+     * In the ListItemGroup component, the header is pinned to the top,
+     * and the footer is not pinned to the bottom.
+     *
+     * @relation Header = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Header
-    | @!APILevel[
+    |
+    /**
+     * In the <em>ListItemGroup</em> component, the footer is pinned to the bottom,
+     * and the header is not pinned to the top.
+     *
+     * @relation Footer = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4227,25 +6386,48 @@ public enum StickyStyle {
     }
 }
 
+/**
+ * Defines span type.
+ *
+ * @relation enum RichEditorSpanType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RichEditorSpanType {
+    /**
+     * Text,corresponding textSpan type.
+     *
+     * @relation TEXT = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TEXT
-    | @!APILevel[
+    |
+    /**
+     * Image,corresponding imageSpan type.
+     *
+     * @relation IMAGE = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     IMAGE
-    | @!APILevel[
+    |
+    /**
+     * Mixed,corresponding mixed span type.
+     *
+     * @relation MIXED = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4268,31 +6450,60 @@ public enum RichEditorSpanType {
     }
 }
 
+/**
+ * The alignment of ImageSpan
+ *
+ * @relation enum ImageSpanAlignment
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageSpanAlignment {
+    /**
+     * Indicating that the top of the ImageSpan should be aligned with the top of the surrounding text.
+     *
+     * @relation TOP
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TOP
-    | @!APILevel[
+    |
+    /**
+     * Indicating that the center of the ImageSpan should be aligned with the center of the surrounding text.
+     *
+     * @relation CENTER
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CENTER
-    | @!APILevel[
+    |
+    /**
+     * Indicating that the bottom of the ImageSpan should be aligned with the bottom of the surrounding text.
+     *
+     * @relation BOTTOM
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BOTTOM
-    | @!APILevel[
+    |
+    /**
+     * Indicating that the bottom of the ImageSpan should be aligned with the baseline of the surrounding text.
+     *
+     * @relation BASELINE
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4321,19 +6532,36 @@ public enum ImageSpanAlignment {
     }
 }
 
+/**
+ * Defines delete text direction.
+ *
+ * @relation enum RichEditorDeleteDirection
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RichEditorDeleteDirection {
+    /**
+     * Delete backward.
+     *
+     * @relation BACKWARD
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BACKWARD
-    | @!APILevel[
+    |
+    /**
+     * Delete forward.
+     *
+     * @relation FORWARD
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4358,6 +6586,12 @@ public enum RichEditorDeleteDirection {
     }
 }
 
+/**
+ * Defines delete text direction.
+ *
+ * @relation enum RichEditorDeleteDirection
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -4379,42 +6613,48 @@ public enum SpanType {
     | ...
 }
 
-// Not public enum, only for RichEditor component internal implementation.
-protected enum MarginType {
-    None
-    | MarginLength
-    | MarginPlaceholder
-    | ...
-
-    protected func getValue(): Int32 {
-        match (this) {
-            case None => 0
-            case MarginLength => 1
-            case MarginPlaceholder => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-}
-
+/**
+ * The Web's behavior to load from HTTP or HTTPS. Defaults to MixedMode.None.
+ *
+ * @relation enum MixedMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum MixMode {
+    /**
+     * Loose Mode: HTTP and HTTPS hybrid content can be loaded. This means that all insecure content can be loaded.
+     *
+     * @relation All = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     All
-    | @!APILevel[
+    |
+    /**
+     * Compatibility Modes: HTTP and HTTPS hybrid content can be loaded in compatibility mode. This means that some insecure content may be loaded.
+     *
+     * @relation Compatible = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Compatible
-    | @!APILevel[
+    |
+    /**
+     * Strict Mode: HTTP and HTTPS hybrid content cannot be loaded.
+     *
+     * @relation None = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4437,32 +6677,74 @@ public enum MixMode {
     }
 }
 
+enum WebType {
+    SURFACE
+    | TEXTURE
+    | ...
 
+    protected func getValue(): Int32 {
+        match (this) {
+            case SURFACE => 0
+            case TEXTURE => 1
+            case _ => 0
+        }
+    }
+}
+
+/**
+ * Play Mode
+ *
+ * @relation enum PlayMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum PlayMode {
+    /**
+     * The animation plays normally.
+     *
+     * @relation Normal
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
-    | @!APILevel[
+    |
+    /**
+     * The animation plays backwards.
+     *
+     * @relation Reverse
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Reverse
-    | @!APILevel[
+    |
+    /**
+     * The animation plays forward on odd numbers (1, 3, 7...) and backward on even numbers (2, 4, 6...).
+     *
+     * @relation Alternate
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Alternate
-    | @!APILevel[
+    |
+    /**
+     * The animation plays backwards on odd numbers (1, 3, 7...) and forwards on even numbers (2, 4, 6...)..
+     *
+     * @relation AlternateReverse
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4486,61 +6768,120 @@ public enum PlayMode {
     }
 }
 
+/**
+ * GradientDirection enumeration description
+ *
+ * @relation enum GradientDirection
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum GradientDirection {
+    /**
+     * Right to left.
+     *
+     * @relation Left
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
-    | @!APILevel[
+    |
+    /**
+     * From the bottom up.
+     *
+     * @relation Top
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
-    | @!APILevel[
+    |
+    /**
+     * From left to right.
+     *
+     * @relation Right
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
-    | @!APILevel[
+    |
+    /**
+     * From the top down.
+     *
+     * @relation Bottom
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
-    | @!APILevel[
+    |
+    /**
+     * Top Left
+     *
+     * @relation LeftTop
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LeftTop
-    | @!APILevel[
+    |
+    /**
+     * Left Bottom
+     *
+     * @relation LeftBottom
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LeftBottom
-    | @!APILevel[
+    |
+    /**
+     * Right Top
+     *
+     * @relation RightTop
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RightTop
-    | @!APILevel[
+    |
+    /**
+     * Right Bottom
+     *
+     * @relation RightBottom
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RightBottom
-    | @!APILevel[
+    |
+    /**
+     * None
+     *
+     * @relation None
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4564,103 +6905,224 @@ public enum GradientDirection {
     }
 }
 
+/**
+ * Enum of RenderFit
+ * 
+ * @relation enum RenderFit
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RenderFit {
+    /**
+     * Without scaling the content area, the content area is drawn in the center of the node.
+     * 
+     * @relation CENTER = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CENTER
-    | @!APILevel[
+    |
+    /**
+     * Without scaling the content area, the content area is drawn in the top center of the node.
+     * 
+     * @relation TOP = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TOP
-    | @!APILevel[
+    |
+    /**
+     * Without scaling the content area, the content area is drawn in the bottom center of the node.
+     * 
+     * @relation BOTTOM = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BOTTOM
-    | @!APILevel[
+    |
+    /**
+     * Without scaling the content area, the content area is drawn in the left center of the node.
+     * 
+     * @relation LEFT = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LEFT
-    | @!APILevel[
+    |
+    /**
+     * Without scaling the content area, the content area is drawn in the right center of the node.
+     * 
+     * @relation RIGHT = 4
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RIGHT
-    | @!APILevel[
+    |
+    /**
+     * Without scaling the content area, the content area is drawn in the top left of the node.
+     * 
+     * @relation TOP_LEFT = 5
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TOP_LEFT
-    | @!APILevel[
+    |
+    /**
+     * Without scaling the content area, the content area is drawn in the top right of the node.
+     * 
+     * @relation TOP_RIGHT = 6
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TOP_RIGHT
-    | @!APILevel[
+    |
+    /**
+     * Without scaling the content area, the content area is drawn in the bottom left of the node.
+     * 
+     * @relation BOTTOM_LEFT = 7
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BOTTOM_LEFT
-    | @!APILevel[
+    |
+    /**
+     * Without scaling the content area, the content area is drawn in the bottom right of the node.
+     * 
+     * @relation BOTTOM_RIGHT = 8
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BOTTOM_RIGHT
-    | @!APILevel[
+    |
+    /**
+     * Scale the length and width of the content area to the node size to fill the node.
+     * 
+     * @relation RESIZE_FILL = 9
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RESIZE_FILL
-    | @!APILevel[
+    |
+    /**
+     * Scale the length or width of the content to the length or width of the node, ensuring that one side is equal,
+     * the other side is less than or equal to the corresponding side of the node, and the content after scaling 
+     * is centered.
+     * 
+     * @relation RESIZE_CONTAIN = 10
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RESIZE_CONTAIN
-    | @!APILevel[
+    |
+    /**
+     * Scale the length or width of the content to the length or width of the node, ensuring that one side is equal,
+     * the other side is less than or equal to the corresponding side of the node. If the height of the scaled content
+     * is less than or equal to the height of the node, the scaled content area is displayed at the top; otherwise,
+     * the width of the scaled content is less than or equal to the width of the node, the scaled content area is
+     * displayed at the left.
+     * 
+     * @relation RESIZE_CONTAIN_TOP_LEFT = 11
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RESIZE_CONTAIN_TOP_LEFT
-    | @!APILevel[
+    |
+    /**
+     * Scale the length or width of the content to the length or width of the node, ensuring that one side is equal,
+     * the other side is less than or equal to the corresponding side of the node. If the height of the scaled content
+     * is less than or equal to the height of the node, the scaled content area is displayed at the bottom; otherwise,
+     * the width of the scaled content is less than or equal to the width of the node, the scaled content area is
+     * displayed at the right.
+     * 
+     * @relation RESIZE_CONTAIN_BOTTOM_RIGHT = 12
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RESIZE_CONTAIN_BOTTOM_RIGHT
-    | @!APILevel[
+    |
+    /**
+     * Scale the length or width of the content to the length or width of the node, ensuring that one side is equal,
+     * the other side is greater than or equal to the corresponding side of the node, and the content after scaling 
+     * displays the center area.
+     * 
+     * @relation RESIZE_COVER = 13
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RESIZE_COVER
-    | @!APILevel[
+    |
+    /**
+     * Scale the length or width of the content to the length or width of the node, ensuring that one side is equal,
+     * the other side is greater than or equal to the corresponding side of the node. If the height of the scaled content
+     * is greater than or equal to the height of the node, the scaled content area displays the top area; otherwise,
+     * the width of the scaled content is greater than or equal to the width of the node, the scaled content area
+     * displays the left area.
+     * 
+     * @relation RESIZE_COVER_TOP_LEFT = 14
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RESIZE_COVER_TOP_LEFT
-    | @!APILevel[
+    |
+    /**
+     * Scale the length or width of the content to the length or width of the node, ensuring that one side is equal,
+     * the other side is greater than or equal to the corresponding side of the node. If the height of the scaled content
+     * is greater than or equal to the height of the node, the scaled content area displays the bottom area; otherwise,
+     * the width of the scaled content is greater than or equal to the width of the node, the scaled content area
+     * displays the right area.
+     * 
+     * @relation RESIZE_COVER_BOTTOM_RIGHT = 15
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4691,67 +7153,132 @@ public enum RenderFit {
     }
 }
 
+/**
+ * The alignment of dialog,
+ *
+ * @relation enum DialogAlignment
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum DialogAlignment {
+    /**
+     * Vertical top alignment.
+     *
+     * @relation Top
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
-    | @!APILevel[
+    |
+    /**
+     * Align vertically to the center.
+     *
+     * @relation Center
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
-    | @!APILevel[
+    |
+    /**
+     * Vertical bottom alignment.
+     *
+     * @relation Bottom
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
-    | @!APILevel[
+    |
+    /**
+     * Default alignment.
+     *
+     * @relation Default
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default
-    | @!APILevel[
+    |
+    /**
+     * Align the upper left corner.
+     *
+     * @relation TopStart
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopStart
-    | @!APILevel[
+    |
+    /**
+     * Align the upper right corner.
+     *
+     * @relation TopEnd
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopEnd
-    | @!APILevel[
+    |
+    /**
+     * Left center alignment.
+     *
+     * @relation CenterStart
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CenterStart
-    | @!APILevel[
+    |
+    /**
+     * Right center alignment.
+     *
+     * @relation CenterEnd
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CenterEnd
-    | @!APILevel[
+    |
+    /**
+     * Align the lower left corner.
+     *
+     * @relation BottomStart
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomStart
-    | @!APILevel[
+    |
+    /**
+     * Align the lower right corner.
+     *
+     * @relation BottomEnd
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4781,31 +7308,60 @@ public enum DialogAlignment {
     }
 }
 
+/**
+ * Specifies the direction value of Barrier.
+ *
+ * @relation enum BarrierDirection
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BarrierDirection {
+    /**
+     * Barrier will be positioned to the far left of all referenced components.
+     *
+     * @relation LEFT
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LEFT
-    | @!APILevel[
+    |
+    /**
+     * Barrier will be positioned to the far right of all referenced components.
+     *
+     * @relation RIGHT
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RIGHT
-    | @!APILevel[
+    |
+    /**
+     * Barrier will be positioned to the top of all referenced components.
+     *
+     * @relation TOP
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TOP
-    | @!APILevel[
+    |
+    /**
+     * Barrier will be positioned to the bottom of all referenced components.
+     *
+     * @relation BOTTOM
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4824,25 +7380,48 @@ public enum BarrierDirection {
     }
 }
 
+/**
+ * The types of expanded safe areas.
+ *
+ * @relation enum SafeAreaType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SafeAreaType {
+    /**
+     * Default non-safe area of the system, including the status bar and navigation bar.
+     *
+     * @relation SYSTEM
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SYSTEM
-    | @!APILevel[
+    |
+    /**
+     * Non-safe area of the device like Notch or punch hole.
+     *
+     * @relation CUTOUT
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CUTOUT
-    | @!APILevel[
+    |
+    /**
+     * Soft keyboard area.
+     *
+     * @relation KEYBOARD
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4860,31 +7439,60 @@ public enum SafeAreaType {
     }
 }
 
+/**
+ * Enumerates the safe area edges.
+ *
+ * @relation enum SafeAreaEdge
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SafeAreaEdge {
+    /**
+     * Top edge.
+     *
+     * @relation TOP
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TOP
-    | @!APILevel[
+    |
+    /**
+     * Bottom edge of the safe area.
+     *
+     * @relation BOTTOM
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BOTTOM
-    | @!APILevel[
+    |
+    /**
+     * Start edge.
+     *
+     * @relation START
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     START
-    | @!APILevel[
+    |
+    /**
+     * End edge.
+     *
+     * @relation END
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4903,12 +7511,23 @@ public enum SafeAreaEdge {
     }
 }
 
+/**
+ * Common enum of color strategy
+ *
+ * @relation enum ColoringStrategy
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ColoringStrategy {
+    /**
+     * Use the inverse color strategy. Gets the inverse of the background color. Only applies to foregroundColor.
+     *
+     * @relation INVERT = 'invert'
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -4930,31 +7549,60 @@ public enum ColoringStrategy {
     }
 }
 
+/**
+ * Nested scroll nested mode
+ * 
+ * @relation enum NestedScrollMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum NestedScrollMode {
+    /**
+     * Only Self response scrolling.
+     * 
+     * @relation SELF_ONLY
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SELF_ONLY
-    | @!APILevel[
+    |
+    /**
+     * Self priority response scrolling.
+     * 
+     * @relation SELF_FIRST
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SELF_FIRST
-    | @!APILevel[
+    |
+    /**
+     * Parent scrollable component priority response scrolling.
+     * 
+     * @relation PARENT_FIRST
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PARENT_FIRST
-    | @!APILevel[
+    |
+    /**
+     * Both self and parent scrollable component response scrolling.
+     * 
+     * @relation PARALLEL
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -4973,85 +7621,168 @@ public enum NestedScrollMode {
     }
 }
 
+/**
+ * enum Blur style
+ * 
+ * @relation enum ForegroundBlurStyle
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ForegroundBlurStyle {
+    /**
+     * No blur.
+     * 
+     * @relation NONE
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NONE
-    | @!APILevel[
+    |
+    /**
+     * Thin material.
+     * 
+     * @relation Thin
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     THIN
-    | @!APILevel[
+    |
+    /**
+     * Regular material.
+     * 
+     * @relation Regular
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     REGULAR
-    | @!APILevel[
+    |
+    /**
+     * Thick material.
+     * 
+     * @relation Thick
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     THICK
-    | @!APILevel[
+    |
+    /**
+     * Material that creates the minimum depth of field effect.
+     * 
+     * @relation BACKGROUND_THIN
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BACKGROUND_THIN
-    | @!APILevel[
+    |
+    /**
+     * Material that creates a medium shallow depth of field effect.
+     * 
+     * @relation BACKGROUND_REGULAR
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BACKGROUND_REGULAR
-    | @!APILevel[
+    |
+    /**
+     * Material that creates a high shallow depth of field effect.
+     * 
+     * @relation BACKGROUND_THICK
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BACKGROUND_THICK
-    | @!APILevel[
+    |
+    /**
+     * Material that creates the maximum depth of field effect.
+     * 
+     * @relation BACKGROUND_ULTRA_THICK
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BACKGROUND_ULTRA_THICK
-    | @!APILevel[
+    |
+    /**
+     * Component ultra-thin material.
+     * 
+     * @relation COMPONENT_ULTRA_THIN = 8
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     COMPONENT_ULTRA_THIN
-    | @!APILevel[
+    |
+    /**
+     * Defines the thin component material.
+     * 
+     * @relation COMPONENT_THIN = 9
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     COMPONENT_THIN
-    | @!APILevel[
+    |
+    /**
+     * Defines the regular component material.
+     * 
+     * @relation COMPONENT_REGULAR = 10
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     COMPONENT_REGULAR
-    | @!APILevel[
+    |
+    /**
+     * Defines the thick component material.
+     * 
+     * @relation COMPONENT_THICK = 11
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     COMPONENT_THICK
-    | @!APILevel[
+    |
+    /**
+     * Defines the ultra thick component material.
+     * 
+     * @relation COMPONENT_ULTRA_THICK = 12
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5084,25 +7815,48 @@ public enum ForegroundBlurStyle {
     }
 }
 
+/**
+ * enum color mode
+ *
+ * @relation enum ThemeColorMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ThemeColorMode {
+    /**
+     * Defines the mode which is follow up with system.
+     *
+     * @relation SYSTEM
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SYSTEM
-    | @!APILevel[
+    |
+    /**
+     * Defines the light mode.
+     *
+     * @relation LIGHT
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LIGHT
-    | @!APILevel[
+    |
+    /**
+     * Defines the dark mode.
+     *
+     * @relation DARK
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5125,19 +7879,37 @@ public enum ThemeColorMode {
     }
 }
 
+/**
+ * Defines adaptive color
+ *
+ * @relation enum AdaptiveColor
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum AdaptiveColor {
+    /**
+     * Adaptive color mode is not used.
+     * The default color is used as the mask color. Using a mode other than **DEFAULT** can be more time-consuming.
+     *
+     * @relation DEFAULT
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DEFAULT
-    | @!APILevel[
+    |
+    /**
+     * Adaptive color mode is used. The average color value of the color picking area is used as the mask color.
+     *
+     * @relation AVERAGE
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5159,19 +7931,36 @@ public enum AdaptiveColor {
     }
 }
 
+/**
+ * Enum for Control Size.
+ *
+ * @relation enum ControlSize
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ControlSize {
+    /**
+     * The component size is small.
+     *
+     * @relation SMALL = 'small'
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SMALL
-    | @!APILevel[
+    |
+    /**
+     * The component size is normal.
+     *
+     * @relation NORMAL = 'normal'
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5188,19 +7977,36 @@ public enum ControlSize {
     }
 }
 
+/**
+ * Decide whether the width of select menu fit the trigger or content 
+ *
+ * @relation enum OptionWidthMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum OptionWidthMode {
+    /**
+     * The menu width fit the content.
+     *
+     * @relation FIT_CONTENT = 'fit_content'
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FIT_CONTENT
-    | @!APILevel[
+    |
+    /**
+     * The menu width fit the trigger.
+     *
+     * @relation FIT_TRIGGER = 'fit_trigger'
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5217,19 +8023,36 @@ public enum OptionWidthMode {
     }
 }
 
+/**
+ * The enum for arrow position in the select
+ *
+ * @relation enum ArrowPosition
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ArrowPosition {
+    /**
+     * The value of arrow position end
+     *
+     * @relation END = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     END
-    | @!APILevel[
+    |
+    /**
+     * The value of arrow position start
+     *
+     * @relation START = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5246,25 +8069,48 @@ public enum ArrowPosition {
     }
 }
 
+/**
+ * The type of alignment between select and menu.
+ *
+ * @relation enum MenuAlignType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum MenuAlignType {
+    /**
+     * The type of alignment between select and menu.
+     *
+     * @relation START
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     START
-    | @!APILevel[
+    |
+    /**
+     * The value of menu align type center.
+     *
+     * @relation CENTER
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CENTER
-    | @!APILevel[
+    |
+    /**
+     * The value of menu align type end.
+     *
+     * @relation END
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5282,25 +8128,48 @@ public enum MenuAlignType {
     }
 }
 
+/**
+ * Enum type supplied to {@link darkMode} for setting the web dark mode.
+ *
+ * @relation enum WebDarkMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum WebDarkMode {
+    /**
+     * Disable the web dark mode.
+     *
+     * @relation Off = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Off
-    | @!APILevel[
+    |
+    /**
+     * Enable the web dark mode.
+     *
+     * @relation On = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     On
-    | @!APILevel[
+    |
+    /**
+     * Make web dark mode follow the system.
+     *
+     * @relation Auto = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5318,43 +8187,84 @@ public enum WebDarkMode {
     }
 }
 
+/**
+ * Defines the event tool type.
+ *
+ * @relation enum SourceTool
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SourceTool {
+    /**
+     * Unknown type.
+     *
+     * @relation Unknown
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Unknown
-    | @!APILevel[
+    |
+    /**
+     * The finger type.
+     *
+     * @relation Finger
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Finger
-    | @!APILevel[
+    |
+    /**
+     * The pen type.
+     *
+     * @relation Pen
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Pen
-    | @!APILevel[
+    |
+    /**
+     * The mouse type.
+     *
+     * @relation MOUSE
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Mouse
-    | @!APILevel[
+    |
+    /**
+     * The touchpad type.
+     *
+     * @relation TOUCHPAD
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Touchpad
-    | @!APILevel[
+    |
+    /**
+     * The joystick type.
+     *
+     * @relation JOYSTICK
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5377,46 +8287,68 @@ public enum SourceTool {
 
 /**
  * Repetition mode.
- *
- * @since 14
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Repetition {
+    /**
+     * The repeat method of image repetition.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     repeat
-    | @!APILevel[
+    |
+    /**
+     * The repeat-x method of image repetition.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     repeat_x
-    | @!APILevel[
+    |
+    /**
+     * The repeat-y method of image repetition.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     repeat_y
-    | @!APILevel[
+    |
+    /**
+     * The no-repeat method of image repetition.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     no_repeat
-    | @!APILevel[
+    |
+    /**
+     * The clamp method of image repetition.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     clamp
-    | @!APILevel[
+    |
+    /**
+     * The mirror method of image repetition.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5442,55 +8374,108 @@ public enum Repetition {
     }
 }
 
+/**
+ * The possible source of scroll event
+ *
+ * @relation enum ScrollSource
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ScrollSource {
+    /**
+     * Drag events.
+     *
+     * @relation DRAG = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DRAG
-    | @!APILevel[
+    |
+    /**
+     * Fling after the drag has ended with velocity.
+     *
+     * @relation enum FLING
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FLING
-    | @!APILevel[
+    |
+    /**
+     * Over scroll with EdgeEffect.Spring.
+     *
+     * @relation EDGE_EFFECT
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EDGE_EFFECT
-    | @!APILevel[
+    |
+    /**
+     * Other user input except drag, such as mouse wheel, key event.
+     *
+     * @relation OTHER_USER_INPUT
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OTHER_USER_INPUT
-    | @!APILevel[
+    |
+    /**
+     * Drag events of scroll bar.
+     *
+     * @relation SCROLL_BAR
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SCROLL_BAR
-    | @!APILevel[
+    |
+    /**
+     * Fling after the drag on scroll bar has ended with velocity.
+     *
+     * @relation SCROLL_BAR_FLING
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SCROLL_BAR_FLING
-    | @!APILevel[
+    |
+    /**
+     * Member methods of Scroller without animation.
+     *
+     * @relation SCROLLER
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SCROLLER
-    | @!APILevel[
+    |
+    /**
+     * Member methods of Scroller with animation.
+     *
+     * @relation SCROLLER_ANIMATION
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5527,6 +8512,12 @@ public enum ScrollSource {
     }
 }
 
+/**
+ * Declare the type of input content
+ *
+ * @relation enum ContentType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -5535,8 +8526,9 @@ public enum ScrollSource {
 public enum ContentType {
     /**
      * User name content type.
+     * Password Vault, when enabled, can automatically save and fill in usernames.
      *
-     * @since 14
+     * @relation USER_NAME = 0
      */
     @!APILevel[
         21,
@@ -5545,240 +8537,278 @@ public enum ContentType {
     ]
     USER_NAME
     |
-        /**
-         * Password content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Password content type.
+     * Password Vault, when enabled, can automatically save and fill in passwords.
+     *
+     * @relation PASSWORD = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PASSWORD
     |
-        /**
-         * New password content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * New password content type.
+     * Password Vault, when enabled, can automatically generate a new password.
+     *
+     * @relation NEW_PASSWORD = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NEW_PASSWORD
     |
-        /**
-         * Full street address content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Full street address content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in full street addresses.
+     *
+     * @relation FULL_STREET_ADDRESS = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FULL_STREET_ADDRESS
     |
-        /**
-         * House number content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * House number content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in house numbers.
+     *
+     * @relation HOUSE_NUMBER = 4
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     HOUSE_NUMBER
     |
-        /**
-         * District address content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * District address content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in districts and counties.
+     *
+     * @relation DISTRICT_ADDRESS = 5
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DISTRICT_ADDRESS
     |
-        /**
-         * City address content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * City address content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in cities.
+     *
+     * @relation CITY_ADDRESS = 6
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CITY_ADDRESS
     |
-        /**
-         * Province address content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Province address content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in provinces.
+     *
+     * @relation PROVINCE_ADDRESS = 7
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PROVINCE_ADDRESS
     |
-        /**
-         * Country address content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Country address content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in countries.
+     *
+     * @relation COUNTRY_ADDRESS = 8
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     COUNTRY_ADDRESS
     |
-        /**
-         * Person full name content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Person full name content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in full names.
+     *
+     * @relation PERSON_FULL_NAME = 9
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PERSON_FULL_NAME
     |
-        /**
-         * Person last name content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Person last name content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in last names.
+     *
+     * @relation PERSON_LAST_NAME = 10
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PERSON_LAST_NAME
     |
-        /**
-         * Person first name content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Person first name content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in first names.
+     *
+     * @relation PERSON_FIRST_NAME = 11
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PERSON_FIRST_NAME
     |
-        /**
-         * Phone number content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Phone number content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in phone numbers.
+     *
+     * @relation PHONE_NUMBER = 12
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PHONE_NUMBER
     |
-        /**
-         * Phone country code content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Phone country code content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in country codes.
+     *
+     * @relation PHONE_COUNTRY_CODE = 13
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PHONE_COUNTRY_CODE
     |
-        /**
-         * Full phone number content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Full phone number content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in phone numbers with country codes.
+     *
+     * @relation FULL_PHONE_NUMBER = 14
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FULL_PHONE_NUMBER
     |
-        /**
-         * Email address content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Email address content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in email addresses.
+     *
+     * @relation EMAIL_ADDRESS = 15
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EMAIL_ADDRESS
     |
-        /**
-         * Bank card number content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Bank card number content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in bank card numbers.
+     *
+     * @relation BANK_CARD_NUMBER = 16
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BANK_CARD_NUMBER
     |
-        /**
-         * ID card number content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * ID card number content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in ID card numbers.
+     *
+     * @relation ID_CARD_NUMBER = 17
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ID_CARD_NUMBER
     |
-        /**
-         * Nickname content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Nickname content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in nicknames.
+     *
+     * @relation NICKNAME = 23
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NICKNAME
     |
-        /**
-         * Detail info without street content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Detail info without street content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in address information without street addresses.
+     *
+     * @relation DETAIL_INFO_WITHOUT_STREET = 24
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DETAIL_INFO_WITHOUT_STREET
     |
-        /**
-         * Format address content type.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Format address content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in standard addresses.
+     *
+     * @relationFORMAT_ADDRESS = 25
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5814,55 +8844,108 @@ public enum ContentType {
     }
 }
 
+/**
+ * Declare the type of input content
+ *
+ * @relation enum GestureType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum GestureTypes {
+    /**
+     * TapGesture.
+     *
+     * @relation TAP_GESTURE = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TAP_GESTURE
-    | @!APILevel[
+    |
+    /**
+     * LongPressGesture.
+     *
+     * @relation LONG_PRESS_GESTURE = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LONG_PRESS_GESTURE
-    | @!APILevel[
+    |
+    /**
+     * PanGesture.
+     *
+     * @relation PAN_GESTURE = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PAN_GESTURE
-    | @!APILevel[
+    |
+    /**
+     * PinchGesture.
+     *
+     * @relation PINCH_GESTURE = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PINCH_GESTURE
-    | @!APILevel[
+    |
+    /**
+     * SwipeGesture.
+     *
+     * @relation SWIPE_GESTURE = 4
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SWIPE_GESTURE
-    | @!APILevel[
+    |
+    /**
+     * RotationGesture.
+     *
+     * @relation ROTATION_GESTURE = 5
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ROTATION_GESTURE
-    | @!APILevel[
+    |
+    /**
+     * Drag.
+     *
+     * @relation DRAG = 6
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DRAG
-    | @!APILevel[
+    |
+    /**
+     * Click.
+     *
+     * @relation CLICK = 7
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5886,10 +8969,11 @@ public enum GestureTypes {
 }
 
 /**
- * Define the menu pop-up policy.
+ * Define the menu pop-up policy
  *
- * @since 12
+ * @relation enum MenuPolicy
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -5899,7 +8983,7 @@ public enum MenuPolicy {
     /**
      * Default value. The default logic of whether to pop up a menu depends on the scene.
      *
-     * @since 12
+     * @relation DEFAULT = 0
      */
     @!APILevel[
         21,
@@ -5908,24 +8992,24 @@ public enum MenuPolicy {
     ]
     Default
     |
-        /**
-         * Hide pop up menu.
-         *
-         * @since 12
-         */
-        @!APILevel[
+    /**
+     * The menu is always hidden.
+     *
+     * @relation HIDE = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Hide
     |
-        /**
-         * Show pop up menu.
-         *
-         * @since 12
-         */
-        @!APILevel[
+    /**
+     * The menu is always displayed.
+     *
+     * @relation SHOW = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -5944,10 +9028,11 @@ public enum MenuPolicy {
 }
 
 /**
- * Type of Text Decoration line Style.
+ * Type of text decoration line style.
  *
- * @since 12
+ * @relation enum TextDecorationStyle
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -5957,7 +9042,7 @@ public enum TextDecorationStyle {
     /**
      * Solid line.
      *
-     * @since 12
+     * @relation SOLID = 0
      */
     @!APILevel[
         21,
@@ -5966,48 +9051,48 @@ public enum TextDecorationStyle {
     ]
     SOLID
     |
-        /**
-         * Double lines.
-         *
-         * @since 12
-         */
-        @!APILevel[
+    /**
+     * Double lines.
+     *
+     * @relation DOUBLE = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DOUBLE
     |
-        /**
-         * Dotted line.
-         *
-         * @since 12
-         */
-        @!APILevel[
+    /**
+     * Dotted lines.
+     *
+     * @relation DOTTED = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DOTTED
     |
-        /**
-         * Dashed line.
-         *
-         * @since 12
-         */
-        @!APILevel[
+    /**
+     * Dashed line.
+     *
+     * @relation DASHED = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DASHED
     |
-        /**
-         * Wavy line.
-         *
-         * @since 12
-         */
-        @!APILevel[
+    /**
+     * Wavy line.
+     *
+     * @relation WAVY = 4
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6027,6 +9112,12 @@ public enum TextDecorationStyle {
     }
 }
 
+/**
+ * Enum of line break strategy
+ *
+ * @relation enum LineBreakStrategy
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -6037,7 +9128,7 @@ public enum LineBreakStrategy {
      * By default. Display as many characters as possible on each line until no more characters
      * can be displayed on that line, and do not automatically add hyphens under this strategy
      *
-     * @since 14
+     * @relation GREEDY = 0
      */
     @!APILevel[
         21,
@@ -6046,26 +9137,26 @@ public enum LineBreakStrategy {
     ]
     GREEDY
     |
-        /**
-         * High quality folding. Optimize the layout of the entire text's line breaks and automatically
-         * add hyphens if necessary.
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * High quality folding. Optimize the layout of the entire text's line breaks and automatically
+     * add hyphens if necessary.
+     *
+     * @relation HIGH_QUALITY  = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     HIGH_QUALITY
     |
-        /**
-         * Balanced folding. We will try our best to ensure that the width of each line in a paragraph
-         * is the same, and if necessary, we will add conjunction
-         *
-         * @since 14
-         */
-        @!APILevel[
+    /**
+     * Balanced folding. We will try our best to ensure that the width of each line in a paragraph
+     * is the same, and if necessary, we will add conjunction
+     *
+     * @relation BALANCED  = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6095,8 +9186,9 @@ public enum LineBreakStrategy {
 /**
  * Text content style.
  *
- * @since 12
+ * @relation enum TextContentStyle
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -6106,7 +9198,7 @@ public enum TextContentStyle {
     /**
      * Text content default style.
      *
-     * @since 10
+     * @relation DEFAULT
      */
     @!APILevel[
         21,
@@ -6115,12 +9207,12 @@ public enum TextContentStyle {
     ]
     DEFAULT
     |
-        /**
-         * Text content inline style.
-         *
-         * @since 10
-         */
-        @!APILevel[
+    /**
+     * Text content inline style.
+     *
+     * @relation INLINE
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6138,23 +9230,35 @@ public enum TextContentStyle {
 }
 
 /**
- * Enum of checkBox shape.
+ * common enum of the checkbox shape
  *
- * @since 14
+ * @relation enum CheckBoxShape
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum CheckBoxShape {
+    /**
+    * Circle.
+    *
+    * @relation CIRCLE = 0
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CIRCLE
-    | @!APILevel[
+    |
+    /**
+    * Rounded Square.
+    *
+    * @relation ROUNDED_SQUARE = 1
+    */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6171,31 +9275,55 @@ public enum CheckBoxShape {
     }
 }
 
-
 /**
- * Indicates the adaptive height mode of the label text.
+ * Enum of text height adaptation
  *
- * @since 14
+ * @relation enum CheckBoxShape
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextHeightAdaptivePolicy {
+    /**
+    * Priority is given to using the maxLines attribute to adapt the text height.
+    * If the layout size using the maxLines attribute exceeds the layout constraint, try reducing the font size to
+    * display more text.
+    *
+    * @relation MAX_LINES_FIRST
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     MAX_LINES_FIRST
-    | @!APILevel[
+    |
+    /**
+    * Priority is given to using the minFontSize attribute to adapt the text height.
+    * If the text can be layout in a single line using the minFontSize property, try increasing the font size and using
+    * the maximum possible font size.
+    *
+    * @relation MIN_FONT_SIZE_FIRST
+    */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     MIN_FONT_SIZE_FIRST
-    | @!APILevel[
+    |
+    /**
+    * Priority is given to using the layout constraint to adapt the text height.
+    * If the layout size exceeds the layout constraint, try reducing the font size. If the layout size still exceeds
+    * the layout constraint after reducing the font size to minFontSize, remove the lines that exceed the layout
+    * constraint.
+    *
+    * @relation LAYOUT_CONSTRAINT_FIRST
+    */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6219,29 +9347,47 @@ public enum TextHeightAdaptivePolicy {
 }
 
 /**
- * Enum of rrrow point position.
+ * ArrowPointPosition enumeration description
  *
- * @since 14
+ * @relation enum ArrowPointPosition
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ArrowPointPosition {
+    /**
+     * Target start position
+     *
+     * @relation START = 'Start'
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     START
-    | @!APILevel[
+    |
+    /**
+     * Target center position
+     *
+     * @relation CENTER = 'Center'
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CENTER
-    | @!APILevel[
+    |
+    /**
+     * Target end position
+     *
+     * @relation END = 'End'
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6259,19 +9405,36 @@ public enum ArrowPointPosition {
     }
 }
 
+/**
+ * Title height.
+ *
+ * @relation enum TitleHeight
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TitleHeight {
+    /**
+     * Title height when only main title is available.
+     *
+     * @relation MainOnly
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     MainOnly
-    | @!APILevel[
+    |
+    /**
+     * Title height when main title and subtitle are both available.
+     *
+     * @relation MainWithSub
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6289,23 +9452,35 @@ public enum TitleHeight {
 }
 
 /**
- * Defines style of button.
+ * The Button Style of dialog,
  *
- * @since 11
+ * @relation enum DialogButtonStyle
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum DialogButtonStyle {
+    /**
+     * Default Style.
+     *
+     * @relation DEFAULT = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DEFAULT
-    | @!APILevel[
+    |
+    /**
+     * Highlight Style.
+     *
+     * @relation HIGHLIGHT = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6323,10 +9498,11 @@ public enum DialogButtonStyle {
 }
 
 /**
- * Enum of fold status.
+ * Enumerates the fold status.
  *
- * @since 14
+ * @relation enum FoldStatus
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     atomicservice: true,
@@ -6335,6 +9511,11 @@ public enum DialogButtonStyle {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FoldStatus {
+    /**
+     * Fold Status Unknown.
+     *
+     * @relation FOLD_STATUS_UNKNOWN = 0
+     */
     @!APILevel[
         21,
         atomicservice: true,
@@ -6343,7 +9524,13 @@ public enum FoldStatus {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FOLD_STATUS_UNKNOWN
-    | @!APILevel[
+    |
+    /**
+     * Fold Status Expanded.
+     *
+     * @relation FOLD_STATUS_EXPANDED = 1
+     */
+    @!APILevel[
         21,
         atomicservice: true,
         crossplatform: true,
@@ -6351,7 +9538,13 @@ public enum FoldStatus {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FOLD_STATUS_EXPANDED
-    | @!APILevel[
+    |
+    /**
+     * Fold Status Folded.
+     *
+     * @relation FOLD_STATUS_FOLDED = 2
+     */
+    @!APILevel[
         21,
         atomicservice: true,
         crossplatform: true,
@@ -6359,7 +9552,13 @@ public enum FoldStatus {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FOLD_STATUS_FOLDED
-    | @!APILevel[
+    |
+    /**
+     * Fold Status Half Folded.
+     *
+     * @relation FOLD_STATUS_HALF_FOLDED = 3
+     */
+    @!APILevel[
         21,
         atomicservice: true,
         crossplatform: true,
@@ -6381,23 +9580,35 @@ public enum FoldStatus {
 }
 
 /**
- * Length attribute unit.
+ * Enumerates the length metrics unit.
  *
- * @since 14
+ * @relation enum LengthMetricsUnit
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LengthMetricsUnit {
+    /**
+     * The default length metrics unit, in vp.
+     *
+     * @relation DEFAULT = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DEFAULT
-    | @!APILevel[
+    |
+    /**
+     * The pixel length metrics unit.
+     *
+     * @relation PX = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6415,29 +9626,47 @@ public enum LengthMetricsUnit {
 }
 
 /**
- * Canvas direction.
+ * Indicates the attribute of the current text direction.
  *
- * @since 14
+ * @relation type CanvasDirection = "inherit" | "ltr" | "rtl"
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum CanvasDirection {
+    /**
+     * (Default) Inherit current Canvas component settings
+     *
+     * @relation type CanvasDirection = "inherit" | "ltr" | "rtl"
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     inherit
-    | @!APILevel[
+    |
+    /**
+     * The text direction is left to right.
+     *
+     * @relation type CanvasDirection = "inherit" | "ltr" | "rtl"
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ltr
-    | @!APILevel[
+    |
+    /**
+     * The text direction is from right to left.
+     *
+     * @relation type CanvasDirection = "inherit" | "ltr" | "rtl"
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6456,23 +9685,36 @@ public enum CanvasDirection {
 }
 
 /**
- * Canvas fill rule.
+ * Filling style algorithm, which determines whether a point is within or outside the path. The following
+ * two configurations are supported:
  *
- * @since 14
+ * @relation type CanvasFillRule = "evenodd" | "nonzero"
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum CanvasFillRule {
+    /**
+     * odd and even round rule
+     *
+     * @relation type CanvasFillRule = "evenodd" | "nonzero"
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     evenodd
-    | @!APILevel[
+    |
+    /**
+     * (Default) Non-zero Wrap Rules
+     *
+     * @relation type CanvasFillRule = "evenodd" | "nonzero"
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6490,29 +9732,39 @@ public enum CanvasFillRule {
 }
 
 /**
- * Image type.
- *
- * @since 14
+ * Image format.
  */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageType {
+    /**
+     * Image format png.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     png
-    | @!APILevel[
+    |
+    /**
+     * Image format jpeg.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     jpeg
-    | @!APILevel[
+    |
+    /**
+     * Image format webp.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6530,12 +9782,23 @@ public enum ImageType {
     }
 }
 
+/**
+ * Describe the types for expanding the safe area in layout.
+ *
+ * @relation enum LayoutSafeAreaType
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LayoutSafeAreaType {
+    /**
+     * Default non-safe area of the system, including the status bar and navigation bar.
+     *
+     * @relation SYSTEM = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -6551,19 +9814,36 @@ public enum LayoutSafeAreaType {
     }
 }
 
+/**
+ * Define the edges for expanding the safe area in layout.
+ *
+ * @relation enum LayoutSafeAreaEdge
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LayoutSafeAreaEdge {
+    /**
+     * Top edge.
+     *
+     * @relation TOP = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TOP
-    | @!APILevel[
+    |
+    /**
+     * Bottom edge.
+     *
+     * @relation BOTTOM = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6580,6 +9860,11 @@ public enum LayoutSafeAreaEdge {
     }
 }
 
+/**
+ * Navigation title mode.
+ *
+ * @relation enum NavigationTitleMode
+ */
 @Derive[Equatable]
 @!APILevel[
     21,
@@ -6587,19 +9872,53 @@ public enum LayoutSafeAreaEdge {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum NavigationTitleMode {
+    /**
+     * When the content is more than one screen in a scrollable component, the
+     * main title shrinks as the content scrolls down (the subtitle fades out
+     * with its size remaining unchanged) and restores as the content scrolls
+     * up to the top.
+     * <br>**NOTE**
+     * <br>The effect where the main title's size changes in response to content
+     * scrolling is effective only when **title** is set to **ResourceStr** or
+     * **NavigationCommonTitle**. If **title** is set to any other value type, the
+     * main title changes in mere location when pulled down.
+     * <br>For this effect to work when the content is less than one screen in a
+     * scrollable component, set the **options** parameter of the scrollable
+     * component's edgeEffect attribute to **true**. In the non-scrolling state, the
+     * height of the title bar is the same as in **Full** mode; in the scrolling state,
+     * the minimum height of the title bar is the same as in **Mini** mode.
+     *
+     * @relation Free = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Free
-    | @!APILevel[
+    |
+    /**
+     * The title is fixed at full mode.<br>Default value: If there is only a main
+     * title, the title bar height is 112 vp; if there is both a main title and a
+     * subtitle, the title bar height is 138 vp.
+     *
+     * @relation Full
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Full
-    | @!APILevel[
+    |
+    /**
+     * The title is fixed at mini mode. Default value: In versions earlier than API version 12,
+     * If there is only a main title, the title bar height is 56 vp; if there are both a main title and a subtitle,
+     * The title bar height is 82 vp. Since API version 12, the title bar height is 56 vp.
+     *
+     * @relation Mini
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -6640,6 +9959,11 @@ public enum NavigationTitleMode {
     }
 }
 
+/**
+ * Declare BarStyle enum.
+ *
+ * @relation enum BarStyle
+ */
 @Derive[Equatable]
 @!APILevel[
     21,
@@ -6647,13 +9971,24 @@ public enum NavigationTitleMode {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BarStyle {
+    /**
+     * In this mode, the title bar or toolbar is laid out above the content area.
+     *
+     * @relation STANDARD = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Standard
-    | @!APILevel[
+    |
+    /**
+     * In this mode, the title bar or toolbar is overlaid on top of the content area.
+     *
+     * @relation STACK = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

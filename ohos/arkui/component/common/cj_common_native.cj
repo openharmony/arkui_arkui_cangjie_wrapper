@@ -87,22 +87,16 @@ struct CJAlignRuleOption {
                 centerAnchor = unsafe { LibC.mallocCString(v.anchor) }
                 centerVerticalAlign = v.align.getValue()
             }
-            if (let Some(v) <- option.bias) {
-                if (let Some(horizontal) <- v.horizontal) {
-                    horizontalBias = unsafe { LibC.malloc<Float32>() }
-                    if (horizontalBias.isNull()) {
-                        throw IllegalMemoryException("memory malloc failed.")
-                    }
-                    unsafe { horizontalBias.write(horizontal) }
-                }
-                if (let Some(vertival) <- v.vertical) {
-                    verticalBias = unsafe { LibC.malloc<Float32>() }
-                    if (verticalBias.isNull()) {
-                        throw IllegalMemoryException("memory malloc failed.")
-                    }
-                    unsafe { verticalBias.write(vertival) }
-                }
+            horizontalBias = unsafe { LibC.malloc<Float32>() }
+            if (horizontalBias.isNull()) {
+                throw IllegalMemoryException("memory malloc failed.")
             }
+            unsafe { horizontalBias.write(option.bias.horizontal) }
+            verticalBias = unsafe { LibC.malloc<Float32>() }
+            if (verticalBias.isNull()) {
+                throw IllegalMemoryException("memory malloc failed.")
+            }
+            unsafe { verticalBias.write(option.bias.vertical) }
         } catch (e: Exception) {
             free()
             throw e

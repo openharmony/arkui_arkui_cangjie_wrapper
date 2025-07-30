@@ -330,86 +330,154 @@ public class AnimateParam {
     }
 }
 
-
+/**
+ * Defines the HorizontalAlignment.
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class HorizontalAnchor {
+public class HorizontalAlignment {
+    /*
+     * ID of the component that functions as the anchor point.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public HorizontalAnchor(
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var anchor: String,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var align: HorizontalAlign
-    ) {}
+    public var anchor: String
+
+    /*
+     * alignment mode relative to the anchor component.
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var align: HorizontalAlign
+
+    /**
+    * Defines the constructor of HorizontalAlignment.
+    *
+    * @param { String } anchor
+    * @param { HorizontalAlign } align
+    * @returns { HorizontalAlignment }
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(anchor: String, align: HorizontalAlign) {
+        this.anchor = anchor
+        this.align = align
+    }
 }
 
+/**
+ * Defines the VerticalAlignment.
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class VerticalAnchor {
+public class VerticalAlignment {
+    /*
+     * ID of the component that functions as the anchor point.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public VerticalAnchor(
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var anchor: String,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var align: VerticalAlign
-    ) {}
+    public var anchor: String
+
+    /*
+     * alignment mode relative to the anchor component.
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var align: VerticalAlign
+
+    /**
+    * Defines the constructor of VerticalAlignment.
+    *
+    * @param { String } anchor
+    * @param { VerticalAlign } align
+    * @returns { VerticalAlignment }
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(anchor: String, align: VerticalAlign) {
+        this.anchor = anchor
+        this.align = align
+    }
 }
 
+/**
+ * Defines the Bias.
+ *
+ * @relation interface Bias
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Bias {
+
+    /**
+     * Horizontal ratio of the Bias, it must be >= 0.
+     *
+     * @type { Float32 }
+     * @default 0.5
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public Bias(
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var horizontal!: ?Float32 = None,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var vertical!: ?Float32 = None
-    ) {}
+    public var horizontal: Float32 = 0.5
+
+    /**
+     * Vertical ratio of the Bias, it must be >= 0.
+     *
+     * @type { Float32 }
+     * @default 0.5
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var vertical: Float32 = 0.5
+
+    /**
+    * Defines the constructor of Bias.
+    *
+    * @param { Float32 } horizontal
+    * @param { Float32 } vertical
+    * @returns { Bias }
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(horizontal!: Float32 = 0.5, vertical!: Float32 = 0.5) {
+        this.horizontal = horizontal
+        this.vertical = vertical
+    }
 }
 
 
@@ -865,7 +933,6 @@ protected func parseOffset(offset: Offset): NativeOffset {
     )
 }
 
-
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -907,59 +974,149 @@ public class ExpectedFrameRateRange {
     }
 }
 
+/**
+ * Defines the align rule options of relative container.
+ *
+ * @relation interface AlignRuleOption
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AlignRuleOption {
+    /**
+    * Left alignment.
+    * <br>anchor: ID of the component that functions as the anchor point.
+    * <br>align: alignment mode relative to the anchor component.
+    *
+    * @type { ?HorizontalAlignment }
+    * @relation left?: { anchor: string, align: HorizontalAlign }
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public AlignRuleOption(
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var left!: ?HorizontalAnchor = None,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var right!: ?HorizontalAnchor = None,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var middle!: ?HorizontalAnchor = None,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var top!: ?VerticalAnchor = None,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var bottom!: ?VerticalAnchor = None,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var center!: ?VerticalAnchor = None,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var bias!: ?Bias = None
-    ) {}
+    public var left: ?HorizontalAlignment = None
+
+    /**
+    * Right alignment.
+    * <br>anchor: ID of the component that functions as the anchor point.
+    * <br>align: alignment mode relative to the anchor component.
+    *
+    * @type { ?HorizontalAlignment }
+    * @relation right?: { anchor: string, align: HorizontalAlign }
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var right: ?HorizontalAlignment = None
+
+    /**
+    * Horizontal center alignment.
+    * <br>anchor: ID of the component that functions as the anchor point.
+    * <br>align: alignment mode relative to the anchor component.
+    *
+    * @type { ?HorizontalAlignment }
+    * @relation middle?: { anchor: string, align: HorizontalAlign }
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var middle: ?HorizontalAlignment = None
+
+    /**
+    * Top alignment.
+    * <br>anchor: ID of the component that functions as the anchor point.
+    * <br>align: alignment mode relative to the anchor component.
+    *
+    * @type { ?VerticalAlignment }
+    * @relation top?: { anchor: string, align: VerticalAlign }
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var top: ?VerticalAlignment = None
+
+    /**
+    * Bottom alignment.
+    * <br>anchor: ID of the component that functions as the anchor point.
+    * <br>align: alignment mode relative to the anchor component.
+    *
+    * @type { ?VerticalAlignment }
+    * @relation bottom?: { anchor: string, align: VerticalAlign }
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var bottom: ?VerticalAlignment = None
+
+    /**
+    * Vertical center alignment.
+    * <br>anchor: ID of the component that functions as the anchor point.
+    * <br>align: alignment mode relative to the anchor component.
+    *
+    * @type { ?VerticalAlignment }
+    * @relation center?: { anchor: string, align: VerticalAlign }
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var center: ?VerticalAlignment = None
+
+    /**
+    * Offset of the component under the anchor constraints.
+    * <br>The value is the ratio of the distance to the left/upper anchor to the total distance between anchors.
+    *
+    * @type { ?Bias }
+    * @relation bias?: Bias
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var bias: Bias = Bias()
+
+    /**
+    * Defines the constructor of AlignRuleOption.
+    *
+    * @param { ?HorizontalAlignment } left
+    * @param { ?HorizontalAlignment } right
+    * @param { ?HorizontalAlignment } middle
+    * @param { ?VerticalAlignment } top
+    * @param { ?VerticalAlignment } bottom
+    * @param { ?VerticalAlignment } center
+    * @param { Bias } bias
+    * @returns { AlignRuleOption }
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = None,
+        middle!: ?HorizontalAlignment = None, top!: ?VerticalAlignment = None, 
+        bottom!: ?VerticalAlignment = None, center!: ?VerticalAlignment = None, 
+        bias!: Bias = Bias()
+    ) {
+        this.left = left
+        this.right = right
+        this.middle = middle
+        this.top = top
+        this.bottom = bottom
+        this.center = center
+        this.bias = bias
+    }
 }
