@@ -23,12 +23,10 @@ group("arkui_cangjie_api_package") {
     "ohos/arkui/state_management:ohos.arkui.state_management",
     "ohos/base:ohos.base",
     "ohos/curves:ohos.curves",
-    "ohos/display:ohos.display",
     "ohos/font:ohos.font",
     "ohos/matrix4:ohos.matrix4",
     "ohos/measure:ohos.measure",
     "ohos/prompt_action:ohos.prompt_action",
     "ohos/router:ohos.router",
-    "ohos/screenshot:ohos.screenshot",
   ]
 }
