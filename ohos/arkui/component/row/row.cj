@@ -34,69 +34,63 @@ foreign {
     func FfiOHOSAceFrameworkRowSetWidth(width: Float64, unit: Int32): Unit
 }
 
+/**
+ * Defines Row Component.
+ *
+ * @relation const Row: RowInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Row <: ContainerBase {
+    /**
+    * Defines the constructor of Row.
+    *
+    * @param { Length } space
+    * @param { () -> Unit } child
+    * @returns { Row }
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(child: () -> Unit) {
-        unsafe {
-            FfiOHOSAceFrameworkRowCreateWithSpace(0.0, LENGTH_VP)
-        }
-        this.child = child
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {
-        unsafe {
-            FfiOHOSAceFrameworkRowCreateWithSpace(0.0, LENGTH_VP)
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(space: Length) {
+    public init(space!: Length = 0.vp, child!: () -> Unit) {
         var space_ = transAppResourceToLength(space)
         unsafe {
             FfiOHOSAceFrameworkRowCreateWithSpace(space_.value, space_.unitType.getValue())
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(space: Length, child: () -> Unit) {
-        this(space)
         this.child = child
     }
 
+    /**
+    * Called when the vertical alignment is set.
+    *
+    * @param { VerticalAlign } value
+    * @returns { Row }
+    * @relation alignItems(value: VerticalAlign): RowAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alignItems(algin: VerticalAlign): This {
+    public func alignItems(value: VerticalAlign): This {
         unsafe {
-            FfiOHOSAceFrameworkRowSetAlignItems(algin.getValue())
+            FfiOHOSAceFrameworkRowSetAlignItems(value.getValue())
         }
         this
     }
 
+    /**
+    * Called when the horizontal alignment is set.
+    *
+    * @param { FlexAlign } value
+    * @returns { Row }
+    * @relation justifyContent(value: FlexAlign): RowAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,

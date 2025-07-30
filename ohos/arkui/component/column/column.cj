@@ -34,41 +34,30 @@ foreign {
     func FfiOHOSAceFrameworkColumnSetWidth(width: Float64, unit: Int32): Unit
 }
 
+/**
+ * Defines Column Component.
+ *
+ * @relation const Column: ColumnInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Column <: ContainerBase {
+    /**
+    * Column constructor.
+    *
+    * @param { Length } space
+    * @param { () -> Unit } child
+    * @returns { Column }
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(child: () -> Unit) {
-        unsafe {
-            FfiOHOSAceFrameworkColumnCreateWithSpace(0.0, LENGTH_VP)
-        }
-        this.child = child
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {
-        unsafe {
-            FfiOHOSAceFrameworkColumnCreateWithSpace(0.0, LENGTH_VP)
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(space: Length, child: () -> Unit) {
+    public init(space!: Length = 0.vp, child!: () -> Unit) {
         var space_ = transAppResourceToLength(space)
         unsafe {
             FfiOHOSAceFrameworkColumnCreateWithSpace(space_.value, space_.unitType.getValue())
@@ -76,18 +65,13 @@ public class Column <: ContainerBase {
         this.child = child
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(space: Length) {
-        var space_ = transAppResourceToLength(space)
-        unsafe {
-            FfiOHOSAceFrameworkColumnCreateWithSpace(space_.value, space_.unitType.getValue())
-        }
-    }
-
+    /**
+    * Sets the alignment format of the subassembly in the horizontal direction.
+    *
+    * @param { HorizontalAlign } value
+    * @returns { Column }
+    * @relation alignItems(value: HorizontalAlign): ColumnAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -100,6 +84,13 @@ public class Column <: ContainerBase {
         this
     }
 
+    /**
+    * Sets the alignment format of the subassembly in the vertical direction.
+    *
+    * @param { FlexAlign } value
+    * @returns { Column }
+    * @relation justifyContent(value: FlexAlign): ColumnAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,

@@ -933,7 +933,6 @@ protected func parseOffset(offset: Offset): NativeOffset {
     )
 }
 
-
 @!APILevel[
     21,
     stagemodelonly: true,

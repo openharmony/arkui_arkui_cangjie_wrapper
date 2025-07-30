@@ -187,123 +187,235 @@ foreign {
     func FfiOHOSAceFrameworkReletiveContainerBarrier(barrierInfos: CBarrierInfos): Unit
 }
 
+/**
+ * Specifies the BarrierStyle of relative container
+ *
+ * @relation interface BarrierStyle
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BarrierStyle {
+    /**
+    * Specifies the id of barrier
+    *
+    * @type { string }
+    * @relation id : string
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public BarrierStyle(
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var id: String,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var direction: BarrierDirection,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var referencedId: Array<String>
-    ) {}
+    public var id: String
+
+    /**
+    * Specifies the direction of barrier
+    *
+    * @type { BarrierDirection }
+    * @relation direction : BarrierDirection
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var direction: BarrierDirection
+
+    /**
+    * Specifies the referencedId of barrier
+    *
+    * @type { Array<string> }
+    * @relation referencedId : Array<string>
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var referencedId: Array<String>
+
+    /**
+    * Defines the constructor of BarrierStyle.
+    *
+    * @param { String } id
+    * @param { BarrierDirection } direction
+    * @param { Array<String> } referencedId
+    * @returns { BarrierStyle }
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(id: String, direction: BarrierDirection, referencedId: Array<String>) {
+        this.id = id
+        this.direction = direction
+        this.referencedId = referencedId
+    }
 }
 
+/**
+ * Specifies the position of guideLine
+ *
+ * @relation interface GuideLinePosition
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GuideLinePosition {
+    /**
+    * Specifies the distance to start of container
+    *
+    * @type { ?Length }
+    * @relation start? : Dimension
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public GuideLinePosition(
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var start!: ?Length = None,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var end!: ?Length = None
-    ) {}
+    public var start: ?Length = None
+
+    /**
+    * Specifies the distance to start of container
+    *
+    * @type { ?Length }
+    * @relation start? : Dimension
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var end: ?Length = None
+
+    /**
+    * Defines the constructor of GuideLinePosition.
+    *
+    * @param { ?Length } start
+    * @param { ?Length } end
+    * @returns { GuideLinePosition }
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(start!: ?Length = None, end!: ?Length = None) {
+        this.start = start
+        this.end = end
+    }
 }
 
+/**
+ * Specifies the GuideLineStyle of relative container
+ *
+ * @relation interface GuideLineStyle
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GuideLineStyle {
+    /**
+    * Specifies the id of guideLine
+    *
+    * @type { String }
+    * @relation id : string
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public GuideLineStyle(
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var id: String,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var direction: Axis,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var position: GuideLinePosition
-    ) {}
+    public var id: String
+
+    /**
+    * Specifies the direction of guideLine
+    *
+    * @type { Axis }
+    * @relation direction : Axis
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var direction: Axis
+
+    /**
+    * Specifies the position of guideLine
+    *
+    * @type { GuideLinePosition }
+    * @relation position : GuideLinePosition
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var position: GuideLinePosition
+    /**
+    * Defines the constructor of GuideLineStyle.
+    *
+    * @param { String } id
+    * @param { Axis } direction
+    * @param { GuideLinePosition } position
+    * @returns { GuideLineStyle }
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(id: String, direction: Axis, position: GuideLinePosition) {
+        this.id = id
+        this.direction = direction
+        this.position = position
+    }
 }
 
+/**
+ * RelativeContainer
+ *
+ * @relation RelativeContainer
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RelativeContainer <: ContainerBase {
+    /**
+    * Specifies guideLines of relativeContainer
+    *
+    * @param { Array<GuideLineStyle> } value
+    * @returns { RelativeContainer }
+    * @relation guideLine(value: Array<GuideLineStyle>): RelativeContainerAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(child: () -> Unit) {
+    public init(child!: () -> Unit) {
         unsafe { FfiOHOSAceFrameworkRelativeContainerCreate() }
         this.child = child
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {
-        unsafe { FfiOHOSAceFrameworkRelativeContainerCreate() }
-    }
 
+    /**
+    * Specifies guideLines of relativeContainer
+    *
+    * @param { Array<GuideLineStyle> } value
+    * @returns { RelativeContainer }
+    * @relation guideLine(value: Array<GuideLineStyle>): RelativeContainerAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -316,6 +428,13 @@ public class RelativeContainer <: ContainerBase {
         this
     }
 
+    /**
+    * Specifies barriers of relativeContainer
+    *
+    * @param { Array<BarrierStyle> } value
+    * @returns { RelativeContainer }
+    * @relation barrier(value: Array<BarrierStyle>): RelativeContainerAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,

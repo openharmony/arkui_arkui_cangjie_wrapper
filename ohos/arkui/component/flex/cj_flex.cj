@@ -31,51 +31,6 @@ struct CJFlexParams {
     ) {}
 }
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class FlexParams {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public FlexParams(
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var direction!: FlexDirection = FlexDirection.Row,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var wrap!: FlexWrap = FlexWrap.NoWrap,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var justifyContent!: FlexAlign = FlexAlign.Start,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var alignItems!: ItemAlign = ItemAlign.Start,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var alignContent!: FlexAlign = FlexAlign.Start
-    ) {}
-}
-
 @C
 struct CJFlexOptions {
     CJFlexOptions(
@@ -105,48 +60,48 @@ foreign {
     func FfiOHOSAceFrameworkFlexCreateByOptions(options: CJFlexOptions): Unit
 }
 
+/**
+ * Defines Flex Component.
+ *
+ * @relation const Flex: FlexInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Flex <: ContainerBase {
+    /**
+    * Defines the constructor of Flex.
+    *
+    * @param { FlexDirection } direction
+    * @param { FlexWrap } wrap
+    * @param { FlexAlign } justifyContent
+    * @param { ItemAlign } alignItems
+    * @param { FlexAlign } alignContent
+    * @returns { Flex }
+    * @relation (value?: FlexOptions): FlexAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public Flex(value: FlexParams) {
+    public init(direction!: FlexDirection = FlexDirection.Row, wrap!: FlexWrap = FlexWrap.NoWrap,
+        justifyContent!: FlexAlign = FlexAlign.Start, alignItems!: ItemAlign = ItemAlign.Start,
+        alignContent!: FlexAlign = FlexAlign.Start, child!: () -> Unit) {
         unsafe {
             FfiOHOSAceFrameworkFlexCreateWithParams(
                 CJFlexParams(
-                    value.direction.getValue(),
-                    value.wrap.getValue(),
-                    value.justifyContent.getValue(),
-                    value.alignItems.getValue(),
-                    value.alignContent.getValue()
+                    direction.getValue(),
+                    wrap.getValue(),
+                    justifyContent.getValue(),
+                    alignItems.getValue(),
+                    alignContent.getValue()
                 )
             )
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(value: FlexParams, child: () -> Unit) {
-        this(value)
         this.child = child
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(child: () -> Unit) {
-        this(FlexParams(), child)
     }
 
     @!APILevel[

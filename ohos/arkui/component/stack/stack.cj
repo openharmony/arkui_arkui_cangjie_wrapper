@@ -36,51 +36,33 @@ foreign {
     func FfiOHOSAceFrameworkStackSetSize(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
 }
 
+/**
+ * Defines Stack Component.
+ *
+ * @relation const Stack: StackInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Stack <: ContainerBase {
+    /**
+    * Defines the constructor of Stack.
+    *
+    * @param { Alignment } alignContent
+    * @returns { Stack }
+    * @relation (options?: StackOptions): StackAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public Stack(child: () -> Unit) {
-        unsafe {
-            FfiOHOSAceFrameworkStackCreate(Alignment.Center.getValue())
-        }
-        this.child = child
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {
-        this(Alignment.Center)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(alignContent: Alignment) {
+    public init(alignContent!: Alignment = Alignment.Center, child!: () -> Unit) {
         unsafe {
             FfiOHOSAceFrameworkStackCreate(alignContent.getValue())
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(alignContent: Alignment, child: () -> Unit) {
-        this(alignContent)
         this.child = child
     }
 
@@ -125,6 +107,13 @@ public class Stack <: ContainerBase {
         this
     }
 
+    /**
+    * Called when the alignment of items in the container is set.
+    *
+    * @param { Alignment } value
+    * @returns { Stack }
+    * @relation alignContent(value: Alignment): StackAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
