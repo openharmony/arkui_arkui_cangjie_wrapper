@@ -17,12 +17,15 @@ package ohos.arkui.component.common
 
 import ohos.labels.APILevel
 
+/**
+ * Defines the base type of Component.
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public interface ComponentRender {
+public interface UINodeBase {
     func initial(): Unit
     func update(): Unit
 }

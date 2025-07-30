@@ -43,9 +43,9 @@ public func loadNativeView(view: CustomView): Bool {
     }
 }
 
-type UpdateFuncNew = (Int64, Bool) -> ComponentRender
+type UpdateFuncNew = (Int64, Bool) -> UINodeBase
 
-type RecycleUpdateFunc = (Int64, Bool, ?CustomView) -> ComponentRender
+type RecycleUpdateFunc = (Int64, Bool, ?CustomView) -> UINodeBase
 
 @!APILevel[
     21,

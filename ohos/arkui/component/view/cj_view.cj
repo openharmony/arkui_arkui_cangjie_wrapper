@@ -22,7 +22,7 @@ import ohos.ffi.*
 import ohos.labels.APILevel
 import std.collection.ArrayList
 
-public type VectorCJInt64Handle = CPointer<Unit>
+type VectorCJInt64Handle = CPointer<Unit>
 
 foreign {
     func FfiOHOSAceFrameworkNativeViewCreate(view: Int64): Unit

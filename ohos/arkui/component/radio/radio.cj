@@ -82,12 +82,7 @@ public class Radio <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func size(width!: Length, height!: Length): This {
+    protected override func sizeInner(width: Length, height: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
@@ -101,12 +96,7 @@ public class Radio <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func padding(value: Length): This {
+    protected override func paddingInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkRadioSetPadding(value_.value, value_.unitType.getValue())
@@ -149,12 +139,7 @@ public class Radio <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func responseRegion(rect: Rectangle): This {
+    protected override func responseRegionInner(rect: Rectangle): This {
         let cjRect = rect.parseToNative()
         unsafe {
             FfiRadioSetResponseRegion(
@@ -173,12 +158,7 @@ public class Radio <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func responseRegionArray(array: Array<Rectangle>): This {
+    protected override func responseRegionInner(array: Array<Rectangle>): This {
         let vecFFi = FFIVectorNativeRectangle(array.size)
         var index = 0
         for (rect in array) {

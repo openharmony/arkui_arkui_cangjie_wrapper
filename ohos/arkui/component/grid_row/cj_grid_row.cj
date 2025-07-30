@@ -919,7 +919,7 @@ public class GridRow <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public override func height(value: Length): This {
+    protected override func heightInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkGridRowSetHeight(value_.value, value_.unitType.getValue())

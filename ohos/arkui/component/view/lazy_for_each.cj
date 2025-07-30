@@ -168,7 +168,7 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class LazyForEach <: ComponentRender {
+public class LazyForEach <: UINodeBase {
     var child: () -> Unit = {=>}
     private static var uniqueKey_ = 0
     @!APILevel[

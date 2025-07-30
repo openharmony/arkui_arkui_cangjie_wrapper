@@ -228,12 +228,7 @@ public class Progress <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func backgroundColor(color: ResourceColor): This {
+    protected override func backgroundColorInner(color: ResourceColor): This {
         unsafe {
             FfiOHOSAceFrameworkProgressSetBackgroundColor(transAppResourceToResourceColor(color))
         }

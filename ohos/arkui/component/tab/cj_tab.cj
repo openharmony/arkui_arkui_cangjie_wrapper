@@ -733,28 +733,8 @@ public class TabContent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public override func size(width!: Length, height!: Length): This {
+    protected override func sizeInner(width: Length, height: Length): This {
         AppLog.warn("TabContent does not support size settings.")
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func width(_: Length): This {
-        AppLog.info("TabContent does not support width settings.")
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func height(_: Length): This {
-        AppLog.info("TabContent does not support height settings.")
         this
     }
 }

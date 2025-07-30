@@ -115,7 +115,7 @@ public enum SecurityComponentLayoutDirection {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public open class SecurityComponent <: ComponentRender {
+public open class SecurityComponent <: UINodeBase {
     protected open func pop(): Unit {
         unsafe {
             FfiOHOSAceFrameworkSecButtonBasePop()

@@ -368,12 +368,7 @@ public open class DatePicker <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func opacity(opacityValue: Float64): This {
+    protected override func opacityInner(opacityValue: Float64): This {
         unsafe {
             FfiOHOSAceFrameworkDatePickerSetOpacity(opacityValue)
         }

@@ -34,7 +34,7 @@ foreign {
     crossplatform: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class If <: ComponentRender {
+public class If <: UINodeBase {
     var child: () -> Unit = {=>}
 
     @!APILevel[

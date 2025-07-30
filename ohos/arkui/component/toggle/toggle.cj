@@ -88,12 +88,7 @@ public class Toggle <: ContainerBase {
         }
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func width(width: Length): This {
+    protected override func widthInner(width: Length): This {
         var width_ = transAppResourceToLength(width)
         unsafe {
             FfiOHOSAceFrameworkToggleWidth(width_.value, width_.unitType.getValue())
@@ -101,12 +96,7 @@ public class Toggle <: ContainerBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func height(value: Length): This {
+    protected override func heightInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkToggleHeight(value_.value, value_.unitType.getValue())
@@ -114,12 +104,7 @@ public class Toggle <: ContainerBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func size(width!: Length, height!: Length): This {
+    protected override func sizeInner(width: Length, height: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
@@ -166,12 +151,7 @@ public class Toggle <: ContainerBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func responseRegion(rect: Rectangle): This {
+    protected override func responseRegionInner(rect: Rectangle): This {
         let cjRect = rect.parseToNative()
         unsafe {
             FfiToggleSetResponseRegion(
@@ -190,12 +170,7 @@ public class Toggle <: ContainerBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func responseRegionArray(array: Array<Rectangle>): This {
+    protected override func responseRegionInner(array: Array<Rectangle>): This {
         let vecFFi = FFIVectorNativeRectangle(array.size)
         var index = 0
         for (rect in array) {

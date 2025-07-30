@@ -107,20 +107,7 @@ public abstract class ShapeAbstract <: ContainerBase {
         this
     }
 
-    /**
-     * Sets the shape size.
-     *
-     * @param width: Shape width
-     * @param height: Shape height
-     * @return ShapeAbstract instance
-     * @since 11
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func size(width!: Length, height!: Length): This {
+    protected override func sizeInner(width: Length, height: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
@@ -130,20 +117,7 @@ public abstract class ShapeAbstract <: ContainerBase {
         this
     }
 
-    /**
-     * Sets the shape offset.
-     *
-     * @param x: x Offset
-     * @param y: y Offset
-     * @return ShapeAbstract instance
-     * @since 11
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func offset(x!: Length, y!: Length): This {
+    protected override func offsetInner(x: Length, y: Length): This {
         var x_ = transAppResourceToLength(x)
         var y_ = transAppResourceToLength(y)
         unsafe {

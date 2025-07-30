@@ -23,9 +23,9 @@ import ohos.ffi.*
 import ohos.resource.*
 import ohos.labels.APILevel
 
-public type VectorNativeShadowOptionsHandle = CPointer<Unit>
+type VectorNativeShadowOptionsHandle = CPointer<Unit>
 
-public type VectorTextMenuItemHandle = CPointer<Unit>
+type VectorTextMenuItemHandle = CPointer<Unit>
 
 foreign {
     func FfiOHOSAceFrameworkTextCreate(content: CString): Unit
@@ -214,12 +214,20 @@ class FFIVectorFfiTextMenuItem {
     }
 }
 
+/**
+ * Defines the controller of Text.
+ *
+ * @relation declare class TextController
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextController <: RemoteDataLite {
+    /**
+     * Defines the TextController constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -235,33 +243,48 @@ public class TextController <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Close the select menu when menu is on.
+     *
+     * @relation closeSelectionMenu(): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func closeSelectionMenu() {
+    public func closeSelectionMenu(): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextControllerCloseSelectionMenu(this.getID())
         }
     }
 }
 
-
+/**
+ * Provides a class for writing texts.
+ *
+ * @relation interface TextInterface
+ * @relation declare class TextAttribute extends CommonMethod<TextAttribute>;
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Text <: ContainerBase {
+    /**
+     * Called when writing text.
+     *
+     * @relation (content?: string | Resource, value?: TextOptions): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(content: String, controller!: TextController = TextController()) {
+    public init(content: ResourceStr, controller!: TextController = TextController()) {
         unsafe {
-            var unsafeContent = LibC.mallocCString(content)
+            var unsafeContent = LibC.mallocCString(transResourceStrToString(content))
             FfiOHOSAceFrameworkTextCreateWithController(unsafeContent, controller.getID())
             unsafeContent.free()
         }
@@ -272,30 +295,12 @@ public class Text <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(subcomponent: () -> Unit) {
+    public init(chid: () -> Unit) {
         this("")
-        this.child = subcomponent
+        this.child = chid
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(content: AppResource, controller!: TextController = TextController()) {
-        unsafe {
-            var unsafeContent = LibC.mallocCString(getResourceString(content))
-            FfiOHOSAceFrameworkTextCreateWithController(unsafeContent, controller.getID())
-            unsafeContent.free()
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func width(value: Length): This {
+    protected override func widthInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTextSetWidth(value_.value, value_.unitType.getValue())
@@ -303,12 +308,7 @@ public class Text <: ContainerBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func height(value: Length): This {
+    protected override func heightInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTextSetHeight(value_.value, value_.unitType.getValue())
@@ -527,16 +527,11 @@ public class Text <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public override func foregroundColor(color: ResourceColor): This {
+    protected override func foregroundColorInner(color: ResourceColor): This {
         fontColor(color)
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func responseRegion(rect: Rectangle): This {
+    protected override func responseRegionInner(rect: Rectangle): This {
         let cjRect = rect.parseToNative()
         unsafe {
             FfiTextSetResponseRegion(
@@ -555,12 +550,7 @@ public class Text <: ContainerBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func responseRegionArray(array: Array<Rectangle>): This {
+    protected override func responseRegionInner(array: Array<Rectangle>): This {
         let vecFFi = FFIVectorNativeRectangle(array.size)
         var index = 0
         for (rect in array) {
