@@ -36,6 +36,23 @@ struct NativeTextDecoration {
     ) {}
 }
 
+// Not public enum, only for RichEditor component internal implementation.
+enum MarginType {
+    None
+    | MarginLength
+    | MarginPlaceholder
+    | ...
+
+    func getValue(): Int32 {
+        match (this) {
+            case None => 0
+            case MarginLength => 1
+            case MarginPlaceholder => 2
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+}
+
 @!APILevel[
     21,
     stagemodelonly: true,

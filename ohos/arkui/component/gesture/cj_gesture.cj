@@ -22,6 +22,22 @@ import ohos.ffi.*
 import ohos.labels.APILevel
 import std.collection.ArrayList
 
+enum GesturePriorityInner {
+    Low
+    | High
+    | Parallel
+    | ...
+
+    func getValue(): Int32 {
+        match (this) {
+            case Low => 0
+            case High => 1
+            case Parallel => 2
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+}
+
 enum EventTargetInfoType {
     | Normal
     | Scrollable

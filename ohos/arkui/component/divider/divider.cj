@@ -32,12 +32,23 @@ foreign {
     func FfiOHOSAceFrameworkDividerSetStrokeWidth(width: Float64, unit: Int32): Unit
 }
 
+/**
+ * Defines Divider Component.
+ *
+ * @relation const Divider: DividerInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Divider <: ViewBase {
+    /**
+    * Return Divider.
+    *
+    * @returns { Divider }
+    * @relation (): DividerAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -49,51 +60,80 @@ public class Divider <: ViewBase {
         }
     }
 
+    /**
+    * Indicates whether to use a horizontal splitter or a vertical splitter.
+    * The options are as follows: false: horizontal splitter; true: vertical splitter.
+    *
+    * @param { Bool } value
+    * @returns { Divider }
+    * @relation vertical(value: boolean): DividerAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func vertical(isVertical: Bool): This {
+    public func vertical(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkDividerSetVertical(isVertical)
+            FfiOHOSAceFrameworkDividerSetVertical(value)
         }
         this
     }
 
+    /**
+    * Sets the color of the divider line.
+    *
+    * @param { ResourceColor } value
+    * @returns { Divider }
+    * @relation color(value: ResourceColor): DividerAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(color: ResourceColor): This {
+    public func color(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkDividerSetDividerColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkDividerSetDividerColor(transAppResourceToResourceColor(value))
         }
         this
     }
 
+    /**
+    * Sets the width of the dividing line.
+    *
+    * @param { Length } value
+    * @returns { Divider }
+    * @relation strokeWidth(value: number | string): DividerAttribute;
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeWidth(width: Length): This {
-        var width_ = transAppResourceToLength(width)
+    public func strokeWidth(value: Length): This {
+        var width_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkDividerSetStrokeWidth(width_.value, width_.unitType.getValue())
         }
         this
     }
 
+    /**
+    * Sets the end style of the split line. The default value is Butt.
+    *
+    * @param { LineCapStyle } value
+    * @returns { Divider }
+    * @relation lineCap(value: LineCapStyle): DividerAttribute;
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lineCap(style: LineCapStyle): This {
+    public func lineCap(value: LineCapStyle): This {
         unsafe {
-            FfiOHOSAceFrameworkDividerSetLineCap(style.getValue())
+            FfiOHOSAceFrameworkDividerSetLineCap(value.getValue())
         }
         this
     }

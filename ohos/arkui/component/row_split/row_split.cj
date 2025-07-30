@@ -29,12 +29,24 @@ foreign {
     func FfiOHOSAceFrameworkRowSplitClipByShape(shapeId: Int64): Unit
 }
 
+/**
+ * Defines RowSplit Component.
+ *
+ * @relation const RowSplit: RowSplitInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public open class RowSplit <: ContainerBase {
+public class RowSplit <: ContainerBase {
+    /**
+    * Called when the layout along the vertical direction is set.
+    *
+    * @param { () -> Unit } content
+    * @returns { RowSplit }
+    * @relation (): RowSplitAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -47,6 +59,13 @@ public open class RowSplit <: ContainerBase {
         this.child = content
     }
 
+    /**
+    * Called when judging whether the split line can be dragged.
+    *
+    * @param { Bool } value
+    * @returns { RowSplitAttribute }
+    * @relation resizeable(value: boolean): RowSplitAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,

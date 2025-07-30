@@ -22,12 +22,25 @@ import ohos.labels.APILevel
 
 foreign func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
 
+/**
+ * Defines Blank Component.
+ *
+ * @relation const Blank: BlankAttribute
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Blank <: ViewBase {
+    /**
+    * Minimum size of the Blank component in the container along the main axis
+    * Default value: **0.vp**.
+    *
+    * @param { Length } min
+    * @returns { Blank }
+    * @relation (min?: number | string): BlankAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -40,13 +53,21 @@ public class Blank <: ViewBase {
         }
     }
 
+    /**
+    * Sets the color to fill the blank
+    * Default value: **Color.Transparent**.
+    *
+    * @param { ResourceColor } value
+    * @returns { Blank }
+    * @relation color(value: ResourceColor): BlankAttribute
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(color: ResourceColor): This {
-        backgroundColor(transAppResourceToResourceColor(color))
+    public func color(value: ResourceColor): This {
+        backgroundColor(transAppResourceToResourceColor(value))
         this
     }
 }
