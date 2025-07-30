@@ -153,7 +153,7 @@ foreign {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -163,7 +163,7 @@ public class List <: ScrollableBase {
     static var scrollerIdDefault: Int64 = -1
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -183,7 +183,7 @@ public class List <: ScrollableBase {
         this.child = child
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -195,7 +195,7 @@ public class List <: ScrollableBase {
         this
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -208,7 +208,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -220,7 +220,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -246,7 +246,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -258,7 +258,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -270,7 +270,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -282,7 +282,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -294,7 +294,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -307,7 +307,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -319,7 +319,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -331,7 +331,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -343,7 +343,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -362,7 +362,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -374,7 +374,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -386,7 +386,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -401,7 +401,7 @@ public class List <: ScrollableBase {
         this
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -413,7 +413,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -427,7 +427,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -440,7 +440,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -456,7 +456,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -469,7 +469,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -482,7 +482,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -495,7 +495,7 @@ public class List <: ScrollableBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

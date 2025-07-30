@@ -18,7 +18,7 @@ package ohos.base
 import ohos.labels.APILevel
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -26,7 +26,7 @@ import ohos.labels.APILevel
 ]
 public class AsyncError {
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -34,7 +34,7 @@ public class AsyncError {
     ]
     public AsyncError(
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]

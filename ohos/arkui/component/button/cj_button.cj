@@ -23,7 +23,7 @@ import ohos.labels.APILevel
 import ohos.resource.*
 
 @!APILevel[	
-    19,	
+    21,	
     atomicservice: true,
     crossplatform: true,
     form: true,
@@ -31,7 +31,7 @@ import ohos.resource.*
 ]
 public enum ButtonType {
     @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -39,7 +39,7 @@ public enum ButtonType {
     ]
     Normal
     | @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -47,7 +47,7 @@ public enum ButtonType {
     ]
     Capsule
     | @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -55,7 +55,7 @@ public enum ButtonType {
     ]
     Circle
     | @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -76,7 +76,7 @@ public enum ButtonType {
 }
 
 @!APILevel[
-    19,
+    21,
     atomicservice: true,
     crossplatform: true,
     form: true,
@@ -84,7 +84,7 @@ public enum ButtonType {
 ]
 public enum ButtonRole {
     @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -92,7 +92,7 @@ public enum ButtonRole {
     ]
     NORMAL
     | @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -102,7 +102,7 @@ public enum ButtonRole {
     | ...
 
     @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -118,24 +118,24 @@ public enum ButtonRole {
 }
 
 @!APILevel[
-    19,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ButtonStyleMode {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NORMAL
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EMPHASIZED
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -143,7 +143,7 @@ public enum ButtonStyleMode {
     | ...
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -240,43 +240,43 @@ foreign {
 }
 
 @!APILevel[
-    19,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ButtonOptions {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shape: ButtonType
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var stateEffect: Bool
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var buttonStyle: ButtonStyleMode
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var controlSize: ControlSize
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var role: ButtonRole
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -296,12 +296,12 @@ public class ButtonOptions {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Button <: ContainerBase {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -314,7 +314,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -326,7 +326,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -338,7 +338,7 @@ public class Button <: ContainerBase {
         }
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -347,7 +347,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -366,7 +366,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -386,7 +386,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -408,7 +408,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -417,7 +417,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -430,7 +430,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -444,7 +444,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -456,7 +456,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -469,7 +469,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -482,7 +482,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -494,7 +494,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -506,7 +506,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -520,7 +520,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -530,7 +530,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -542,7 +542,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -556,7 +556,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -569,7 +569,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -584,7 +584,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -595,7 +595,7 @@ public class Button <: ContainerBase {
         this
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -623,7 +623,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -640,7 +640,7 @@ public class Button <: ContainerBase {
         this
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -671,7 +671,7 @@ public class Button <: ContainerBase {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

@@ -31,42 +31,42 @@ func parseCJArea(area: CJArea): Area {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TouchObject {
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var touchType: TouchType
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var id: Int32
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenX: Float64
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenY: Float64
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float64
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float64
@@ -82,58 +82,58 @@ public class TouchObject {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ClickEvent {
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timestamp: Int64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var source: SourceType
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var target: EventTarget
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var windowX: Float64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var windowY: Float64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var displayX: Float64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var displayY: Float64
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init (x: Float64, y: Float64, timestamp: Int64, source: SourceType, target: EventTarget,
@@ -151,23 +151,23 @@ public class ClickEvent {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DragInfo {
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var extraParams: String
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dragEvent: Position
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init (extraParams: String, dragEvent: Position) {
@@ -177,27 +177,27 @@ public class DragInfo {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DragItemInfo {
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var pixelMap: Option<PixelMap> = Option.None
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var builder: Option<() -> Unit> = Option.None
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var extraInfo: String = ""
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init (pixelMap!: Option<PixelMap> = Option.None,
@@ -212,48 +212,48 @@ public class DragItemInfo {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MouseEvent {
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timestamp: Int64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenX: Float64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenY: Float64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var button: MouseButton
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var action: MouseAction
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init (timestamp: Int64, screenX: Float64, screenY: Float64, x: Float64, y: Float64, button: MouseButton, action: MouseAction) {
@@ -268,17 +268,17 @@ public class MouseEvent {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TouchEvent {
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isStopPropagation: Bool = false
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func stopPropagation(): Unit {
@@ -286,38 +286,38 @@ public class TouchEvent {
     }
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var eventType: TouchType
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var touches: ArrayList<TouchObject>
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var changedTouches: ArrayList<TouchObject>
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timestamp: Int64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var target: EventTarget
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var source: SourceType
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(eventType: TouchType, touches: ArrayList<TouchObject>,
@@ -333,17 +333,17 @@ public class TouchEvent {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class KeyEvent {
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isStopPropagation: Bool = false
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func stopPropagation(): Unit {
@@ -351,43 +351,43 @@ public class KeyEvent {
     }
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keyText: String
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keyType: KeyType
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keyCode: Int32
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keySource: KeySource
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var metaKey: Int32
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var deviceId: Int64
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timestamp: Int64
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init (keyText: String, keyType: KeyType, keyCode: Int32, keySource: KeySource, metaKey: Int32, deviceId: Int64, timestamp: Int64) {
@@ -402,12 +402,12 @@ public class KeyEvent {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class InteractableView <: RemoteData {
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onClick(callback: (ClickEvent) -> Unit): This {
@@ -422,7 +422,7 @@ public open class InteractableView <: RemoteData {
     }
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onAppear(callback: () -> Unit): This {
@@ -432,7 +432,7 @@ public open class InteractableView <: RemoteData {
         this
     }
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onDisAppear(callback: () -> Unit): This {
@@ -443,7 +443,7 @@ public open class InteractableView <: RemoteData {
     }
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onTouch(callback: (TouchEvent) -> Unit): This {
@@ -460,7 +460,7 @@ public open class InteractableView <: RemoteData {
     }
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onHover(callback: (Bool) -> Unit): This {
@@ -471,7 +471,7 @@ public open class InteractableView <: RemoteData {
     }
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onAreaChange(callback: (Area, Area) -> Unit): This {
@@ -485,7 +485,7 @@ public open class InteractableView <: RemoteData {
     }
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onVisibleAreaChange(raitos: Array<Float64>, callback: (Bool, Float64) -> Unit): This {
@@ -504,7 +504,7 @@ public open class InteractableView <: RemoteData {
         this
     }
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onMouse(callback: (MouseEvent) -> Unit): This {
@@ -519,7 +519,7 @@ public open class InteractableView <: RemoteData {
         this
     }
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onKeyEvent(callback: (KeyEvent) -> Unit): This {
@@ -535,7 +535,7 @@ public open class InteractableView <: RemoteData {
         this
     }
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onFocus(callback: () -> Unit): This {
@@ -545,7 +545,7 @@ public open class InteractableView <: RemoteData {
         this
     }
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onBlur(callback: () -> Unit): This {
@@ -555,7 +555,7 @@ public open class InteractableView <: RemoteData {
         this
     }
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onDragStart(callback: (DragInfo) -> DragItemInfo): This {
@@ -584,7 +584,7 @@ public open class InteractableView <: RemoteData {
         this
     }
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onDragStart(callback: (DragInfo) -> (() -> Unit)): This {
@@ -601,7 +601,7 @@ public open class InteractableView <: RemoteData {
         this
     }
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onDragStart(callback: (DragInfo) -> Unit): This {
@@ -619,7 +619,7 @@ public open class InteractableView <: RemoteData {
     }
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onDragEnter(callback: (DragInfo) -> Unit): This {
@@ -634,7 +634,7 @@ public open class InteractableView <: RemoteData {
     }
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onDragMove(callback: (DragInfo) -> Unit): This {
@@ -648,7 +648,7 @@ public open class InteractableView <: RemoteData {
         this
     }
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onDragLeave(callback: (DragInfo) -> Unit): This {
@@ -662,7 +662,7 @@ public open class InteractableView <: RemoteData {
         this
     }
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func onDrop(callback: (DragInfo) -> Unit): This {

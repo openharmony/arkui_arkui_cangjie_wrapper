@@ -19,7 +19,7 @@ import ohos.labels.APILevel
 import std.collection.*
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -29,7 +29,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
     protected let dependentElementIds_: ArrayList<Int64> = ArrayList<Int64>()
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -39,7 +39,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -49,7 +49,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -57,7 +57,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
     public func subscribeEx(observer: Observer): Unit
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -65,7 +65,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
     public func unsubscribeEx(observer: Observer): Unit
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -94,7 +94,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

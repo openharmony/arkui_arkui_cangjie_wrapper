@@ -18,7 +18,7 @@ package ohos.base
 import ohos.labels.APILevel
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -38,7 +38,7 @@ public interface Length {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -53,7 +53,7 @@ public interface LengthProp {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -61,7 +61,7 @@ public interface LengthProp {
 ]
 public enum LengthType <: Length {
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -69,7 +69,7 @@ public enum LengthType <: Length {
     ]
     px(Float64)
     | @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -77,7 +77,7 @@ public enum LengthType <: Length {
     ]
     vp(Float64)
     | @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -85,7 +85,7 @@ public enum LengthType <: Length {
     ]
     fp(Float64)
     | @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -93,7 +93,7 @@ public enum LengthType <: Length {
     ]
     percent(Float64)
     | @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -103,7 +103,7 @@ public enum LengthType <: Length {
     | ...
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -121,7 +121,7 @@ public enum LengthType <: Length {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -140,7 +140,7 @@ public enum LengthType <: Length {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -148,7 +148,7 @@ public enum LengthType <: Length {
 ]
 extend Float64 <: LengthProp & Length {
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -160,7 +160,7 @@ extend Float64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -172,7 +172,7 @@ extend Float64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -184,7 +184,7 @@ extend Float64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -196,7 +196,7 @@ extend Float64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -208,7 +208,7 @@ extend Float64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -220,7 +220,7 @@ extend Float64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -234,7 +234,7 @@ extend Float64 <: LengthProp & Length {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -247,7 +247,7 @@ extend Int64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -259,7 +259,7 @@ extend Int64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -271,7 +271,7 @@ extend Int64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -283,7 +283,7 @@ extend Int64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -295,7 +295,7 @@ extend Int64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -307,7 +307,7 @@ extend Int64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,

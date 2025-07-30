@@ -26,67 +26,67 @@ import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageLoadResult {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: Float64
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: Float64
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentWidth: Float64
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentHeight: Float64
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var loadingStatus: Int64
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentWidth: Float64
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentHeight: Float64
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentOffsetX: Float64
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentOffsetY: Float64
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -156,12 +156,12 @@ foreign {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageSpan <: ViewBase {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -174,7 +174,7 @@ public class ImageSpan <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -185,7 +185,7 @@ public class ImageSpan <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -198,7 +198,7 @@ public class ImageSpan <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -210,7 +210,7 @@ public class ImageSpan <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -222,7 +222,7 @@ public class ImageSpan <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -236,7 +236,7 @@ public class ImageSpan <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -249,7 +249,7 @@ public class ImageSpan <: ViewBase {
     }
 
     @!APILevel[
-        15,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colorFilter(filter: ColorFilter): This {
@@ -265,7 +265,7 @@ public class ImageSpan <: ViewBase {
     }
 
     @!APILevel[
-        15,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onComplete(callback: (ImageLoadResult) -> Unit): This {
@@ -280,7 +280,7 @@ public class ImageSpan <: ViewBase {
     }
 
     @!APILevel[
-        15,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onError(callback: (CJImageError) -> Unit): This {

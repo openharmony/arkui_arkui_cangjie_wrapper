@@ -19,7 +19,7 @@ import std.collection.ArrayList
 import ohos.labels.APILevel
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -28,7 +28,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
     private let publishVars: ArrayList<ObservedPropertyAbstract> = ArrayList<ObservedPropertyAbstract>()
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -38,7 +38,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -48,7 +48,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -60,7 +60,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

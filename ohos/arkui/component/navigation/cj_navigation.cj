@@ -216,25 +216,25 @@ struct CJNavigationToolbarOptions {
 
 @Derive[Equatable]
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ToolbarItemStatus {
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
     | @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Disabled
     | @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -253,19 +253,19 @@ public enum ToolbarItemStatus {
 
 @Derive[Equatable]
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum NavBarPosition {
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
     | @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -282,25 +282,25 @@ public enum NavBarPosition {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum NavigationMode {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Stack
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Split
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -336,44 +336,44 @@ public enum NavigationMode {
 }
 
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavigationTitleOptions {
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor = None
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle = None
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var barStyle: ?BarStyle = None
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var paddingStart: ?Length = None
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var paddingEnd: ?Length = None
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -393,32 +393,32 @@ public class NavigationTitleOptions {
 }
 
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavigationToolbarOptions {
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor = None
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle = None
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var barStyle: ?BarStyle = None
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -488,38 +488,38 @@ func convertNavigationToolbarOptions2FFi(value: NavigationToolbarOptions): CJNav
 }
 
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavigationMenuItem {
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var value: String = ""
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var icon: String = ""
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isEnable: Bool = true
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var action: () -> Unit = {=>}
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -542,7 +542,7 @@ public class NavigationMenuItem {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -566,44 +566,44 @@ public class NavigationMenuItem {
 }
 
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ToolBarItem {
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var value: String = ""
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var icon: String = ""
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var action: () -> Unit = {=>}
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var status: ToolbarItemStatus = ToolbarItemStatus.Normal
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var activeIcon: String = ""
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -630,7 +630,7 @@ public class ToolBarItem {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -683,26 +683,26 @@ struct CJNavigationOptions {
 }
 
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PopInfo {
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let info: NavPathInfo
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let result: String
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -716,32 +716,32 @@ public class PopInfo {
 }
 
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavPathInfo <: FFIData {
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var name: String
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var param: String
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onPop: Option<(PopInfo) -> Unit> = None
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -752,7 +752,7 @@ public class NavPathInfo <: FFIData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -796,26 +796,26 @@ public class NavPathInfo <: FFIData {
 }
 
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavigationOptions {
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var launchMode: LaunchMode = LaunchMode.Standard
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var animated: Bool = true
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -831,27 +831,27 @@ public class NavigationOptions {
 
 @Derive[Equatable]
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavigationCommonTitle {
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var `main`: String
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var sub: String
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -862,31 +862,31 @@ public class NavigationCommonTitle {
 }
 
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LaunchMode {
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Standard
     | @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     MoveToTopSingleTon
     | @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PopToSingleTon
     | @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -905,7 +905,7 @@ public enum LaunchMode {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -913,7 +913,7 @@ public class NavPathStack <: RemoteData {
     var isExistObj: Bool = true
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -925,7 +925,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -934,7 +934,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -943,7 +943,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -956,7 +956,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -965,7 +965,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -974,7 +974,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -983,7 +983,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -992,7 +992,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1001,7 +1001,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1010,7 +1010,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1019,7 +1019,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1028,7 +1028,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1041,7 +1041,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1050,7 +1050,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1067,7 +1067,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1081,7 +1081,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1095,7 +1095,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1104,7 +1104,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1113,7 +1113,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1133,7 +1133,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1142,7 +1142,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1158,7 +1158,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1167,7 +1167,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1180,7 +1180,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1194,7 +1194,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1205,7 +1205,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1216,7 +1216,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1232,7 +1232,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1246,7 +1246,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1264,7 +1264,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1282,7 +1282,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1293,7 +1293,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1304,7 +1304,7 @@ public class NavPathStack <: RemoteData {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1335,13 +1335,13 @@ public class NavPathStack <: RemoteData {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Navigation <: ContainerBase {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1352,7 +1352,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1364,7 +1364,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1375,7 +1375,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1387,7 +1387,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1403,7 +1403,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1423,7 +1423,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1443,7 +1443,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1463,7 +1463,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1486,7 +1486,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1506,7 +1506,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1528,7 +1528,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1554,7 +1554,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1566,7 +1566,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1578,7 +1578,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1611,7 +1611,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1630,7 +1630,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1642,7 +1642,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1654,7 +1654,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1666,7 +1666,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1678,7 +1678,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1690,7 +1690,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1703,7 +1703,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1715,7 +1715,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1727,7 +1727,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1741,7 +1741,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1753,7 +1753,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1767,7 +1767,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1779,7 +1779,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1794,7 +1794,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1807,7 +1807,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1819,7 +1819,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1838,7 +1838,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1850,7 +1850,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1869,7 +1869,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1881,7 +1881,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1893,7 +1893,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1905,7 +1905,7 @@ public class Navigation <: ContainerBase {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

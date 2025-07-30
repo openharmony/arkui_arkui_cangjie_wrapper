@@ -18,7 +18,7 @@ package ohos.arkui.component.common
 import ohos.labels.APILevel
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]

@@ -27,7 +27,7 @@ foreign {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -36,7 +36,7 @@ public class ScrollBar <: ContainerBase {
     static let stateDefault: BarState = BarState.Auto
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -47,7 +47,7 @@ public class ScrollBar <: ContainerBase {
         this.child = child
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -55,7 +55,7 @@ public class ScrollBar <: ContainerBase {
         this(scroller, directionDefault, stateDefault, child)
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -63,7 +63,7 @@ public class ScrollBar <: ContainerBase {
         this(scroller, direction, stateDefault, child)
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

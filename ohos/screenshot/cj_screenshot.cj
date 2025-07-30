@@ -45,37 +45,37 @@ struct CRect {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.WindowManager.WindowManager.Core"
 ]
 public class Rect {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.WindowManager.WindowManager.Core"
     ]
     public Rect(
         @!APILevel[
-            19,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.WindowManager.WindowManager.Core"
         ]
         public var left: Int32,
         @!APILevel[
-            19,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.WindowManager.WindowManager.Core"
         ]
         public var top: Int32,
         @!APILevel[
-            19,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.WindowManager.WindowManager.Core"
         ]
         public var width: UInt32,
         @!APILevel[
-            19,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.WindowManager.WindowManager.Core"
         ]

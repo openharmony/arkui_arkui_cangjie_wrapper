@@ -25,7 +25,7 @@ func isPartialUpdate(): Bool {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -36,7 +36,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     protected var propsInfo: ArrayList<String> = ArrayList<String>()
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -44,7 +44,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     public func subscribeInner(observer: Observer): Unit
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -52,7 +52,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     public func unsubscribeInner(observer: Observer): Unit
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -60,7 +60,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     public func set(v: ObservedComplexAbstract): Unit
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -72,7 +72,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -91,7 +91,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -101,7 +101,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -111,7 +111,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -121,7 +121,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -137,7 +137,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

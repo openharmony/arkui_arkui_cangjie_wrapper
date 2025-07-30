@@ -23,13 +23,13 @@ import ohos.labels.APILevel
 foreign func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Blank <: ViewBase {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -41,7 +41,7 @@ public class Blank <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

@@ -33,7 +33,7 @@ foreign func FfiOHOSAceFrameworkLpx2Px(value: Float64): Float64
 foreign func FfiOHOSAceFrameworkPx2Lpx(value: Float64): Float64
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -50,7 +50,7 @@ public func vp2px(value: Length): Option<Length> {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -67,7 +67,7 @@ public func px2vp(value: Length): Option<Length> {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -84,7 +84,7 @@ public func fp2px(value: Length): Option<Length> {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -101,7 +101,7 @@ public func px2fp(value: Length): Option<Length> {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -118,7 +118,7 @@ public func lpx2px(value: Length): Option<Length> {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]

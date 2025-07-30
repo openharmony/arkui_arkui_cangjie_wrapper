@@ -20,7 +20,7 @@ import ohos.arkui.state_management.*
 import ohos.labels.APILevel
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -29,7 +29,7 @@ public class ViewBuilder {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -38,7 +38,7 @@ public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView) {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -47,7 +47,7 @@ public func bind<T1>(builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder,
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -59,7 +59,7 @@ public func bind<T1, T2>(
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -74,7 +74,7 @@ public func bind<T1, T2, T3>(
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]

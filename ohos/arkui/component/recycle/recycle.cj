@@ -27,12 +27,12 @@ foreign {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class __Recycle__ <: ContainerBase {
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -41,7 +41,7 @@ public class __Recycle__ <: ContainerBase {
         }
     }
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -51,7 +51,7 @@ public class __Recycle__ <: ContainerBase {
         this.child = child
     }
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func pop() {

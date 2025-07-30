@@ -114,7 +114,7 @@ foreign func FFICJCommonVectorBoolDelete(vec: VectorBoolHandle): Unit
 foreign func FFICJCommonVectorBoolGetSize(vec: VectorBoolHandle): Int64
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -124,7 +124,7 @@ public class FFIVectorString {
     private let vecHandle: VectorStringHandle
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -135,7 +135,7 @@ public class FFIVectorString {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -146,7 +146,7 @@ public class FFIVectorString {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -161,7 +161,7 @@ public class FFIVectorString {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -172,7 +172,7 @@ public class FFIVectorString {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -183,7 +183,7 @@ public class FFIVectorString {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -194,7 +194,7 @@ public class FFIVectorString {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -206,7 +206,7 @@ public class FFIVectorString {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -216,7 +216,7 @@ public class FFIVectorInt32 {
     private let vecHandle: VectorInt32Handle
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -227,7 +227,7 @@ public class FFIVectorInt32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -238,7 +238,7 @@ public class FFIVectorInt32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -249,7 +249,7 @@ public class FFIVectorInt32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -260,7 +260,7 @@ public class FFIVectorInt32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -271,7 +271,7 @@ public class FFIVectorInt32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -282,7 +282,7 @@ public class FFIVectorInt32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -294,7 +294,7 @@ public class FFIVectorInt32 {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -304,7 +304,7 @@ public class FFIVectorInt64 {
     private let vecHandle: VectorInt64Handle
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -315,7 +315,7 @@ public class FFIVectorInt64 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -326,7 +326,7 @@ public class FFIVectorInt64 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -337,7 +337,7 @@ public class FFIVectorInt64 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -348,7 +348,7 @@ public class FFIVectorInt64 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -359,7 +359,7 @@ public class FFIVectorInt64 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -370,7 +370,7 @@ public class FFIVectorInt64 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -382,7 +382,7 @@ public class FFIVectorInt64 {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -392,7 +392,7 @@ public class FFIVectorUInt8 {
     private let vecHandle: VectorUInt8Handle
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -403,7 +403,7 @@ public class FFIVectorUInt8 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -414,7 +414,7 @@ public class FFIVectorUInt8 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -425,7 +425,7 @@ public class FFIVectorUInt8 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -436,7 +436,7 @@ public class FFIVectorUInt8 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -447,7 +447,7 @@ public class FFIVectorUInt8 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -458,7 +458,7 @@ public class FFIVectorUInt8 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -470,7 +470,7 @@ public class FFIVectorUInt8 {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -480,7 +480,7 @@ public class FFIVectorUInt32 {
     private let vecHandle: VectorUInt32Handle
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -491,7 +491,7 @@ public class FFIVectorUInt32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -502,7 +502,7 @@ public class FFIVectorUInt32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -513,7 +513,7 @@ public class FFIVectorUInt32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -524,7 +524,7 @@ public class FFIVectorUInt32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -535,7 +535,7 @@ public class FFIVectorUInt32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -546,7 +546,7 @@ public class FFIVectorUInt32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -558,7 +558,7 @@ public class FFIVectorUInt32 {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -568,7 +568,7 @@ public class FFIVectorFloat32 {
     private let vecHandle: VectorFloat32Handle
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -579,7 +579,7 @@ public class FFIVectorFloat32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -590,7 +590,7 @@ public class FFIVectorFloat32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -601,7 +601,7 @@ public class FFIVectorFloat32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -612,7 +612,7 @@ public class FFIVectorFloat32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -623,7 +623,7 @@ public class FFIVectorFloat32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -634,7 +634,7 @@ public class FFIVectorFloat32 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -646,7 +646,7 @@ public class FFIVectorFloat32 {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -656,7 +656,7 @@ public class FFIVectorFloat64 {
     private let vecHandle: VectorFloat64Handle
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -667,7 +667,7 @@ public class FFIVectorFloat64 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -678,7 +678,7 @@ public class FFIVectorFloat64 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -689,7 +689,7 @@ public class FFIVectorFloat64 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -700,7 +700,7 @@ public class FFIVectorFloat64 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -711,7 +711,7 @@ public class FFIVectorFloat64 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -722,7 +722,7 @@ public class FFIVectorFloat64 {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -734,7 +734,7 @@ public class FFIVectorFloat64 {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -744,7 +744,7 @@ public class FFIVectorBool {
     private let vecHandle: VectorBoolHandle
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -755,7 +755,7 @@ public class FFIVectorBool {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -766,7 +766,7 @@ public class FFIVectorBool {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -777,7 +777,7 @@ public class FFIVectorBool {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -788,7 +788,7 @@ public class FFIVectorBool {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -799,7 +799,7 @@ public class FFIVectorBool {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -810,7 +810,7 @@ public class FFIVectorBool {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,

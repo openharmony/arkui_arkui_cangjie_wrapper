@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 foreign func FFIOHOSAceFrameworkRequestFocus(inspectorKey: CString): Bool
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -38,7 +38,7 @@ public class FocusControl {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

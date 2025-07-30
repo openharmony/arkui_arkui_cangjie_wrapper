@@ -162,7 +162,7 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -172,7 +172,7 @@ public class LazyForEach <: ComponentRender {
     var child: () -> Unit = {=>}
     private static var uniqueKey_ = 0
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -181,7 +181,7 @@ public class LazyForEach <: ComponentRender {
     public LazyForEach() {}
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -202,7 +202,7 @@ public class LazyForEach <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -213,7 +213,7 @@ public class LazyForEach <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -225,7 +225,7 @@ public class LazyForEach <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -236,7 +236,7 @@ public class LazyForEach <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,

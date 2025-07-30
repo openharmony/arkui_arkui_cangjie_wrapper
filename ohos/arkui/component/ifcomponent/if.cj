@@ -29,7 +29,7 @@ foreign {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -38,7 +38,7 @@ public class If <: ComponentRender {
     var child: () -> Unit = {=>}
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -51,7 +51,7 @@ public class If <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -63,7 +63,7 @@ public class If <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -75,7 +75,7 @@ public class If <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -87,7 +87,7 @@ public class If <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -98,7 +98,7 @@ public class If <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -109,7 +109,7 @@ public class If <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

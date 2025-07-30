@@ -57,7 +57,7 @@ foreign {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     form: true,
@@ -68,7 +68,7 @@ public class ForEach <: ComponentRender {
     var child: () -> Unit = {=>}
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -105,7 +105,7 @@ public class ForEach <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -117,7 +117,7 @@ public class ForEach <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         deprecated: 12,
         stagemodelonly: true,
@@ -131,7 +131,7 @@ public class ForEach <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         deprecated: 12,
         stagemodelonly: true,
@@ -142,7 +142,7 @@ public class ForEach <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         deprecated: 12,
         stagemodelonly: true,
@@ -154,7 +154,7 @@ public class ForEach <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         deprecated: 12,
         stagemodelonly: true,
@@ -166,7 +166,7 @@ public class ForEach <: ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         deprecated: 12,
         stagemodelonly: true,

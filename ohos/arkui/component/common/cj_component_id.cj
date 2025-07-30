@@ -30,7 +30,7 @@ foreign func FfiOHOSAceFrameworkComponentIdSendKeyEvent(cJKeyEvent: CJKeyEvent):
 foreign func FfiOHOSAceFrameworkComponentIdSendMouseEvent(cJMouseEvent: CJMouseEvent): Bool
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -45,7 +45,7 @@ public func sendEventByKey(id: String, action: IntNative, params: String): Bool 
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -56,7 +56,7 @@ public func sendTouchEvent(event: TouchObject): Bool {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -70,7 +70,7 @@ public func sendKeyEvent(event: KeyEvent): Bool {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]

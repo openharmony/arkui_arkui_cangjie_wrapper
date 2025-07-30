@@ -23,7 +23,7 @@ foreign func FfiOHOSAceFrameworkPostTaskToMainThread(taskId: Int64): Unit
 foreign func FfiOHOSAceFrameworkHasContainer(): Bool
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -32,7 +32,7 @@ public func launch(task: () -> Unit): Unit {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]

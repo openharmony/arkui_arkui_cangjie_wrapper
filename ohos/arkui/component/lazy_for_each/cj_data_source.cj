@@ -31,7 +31,7 @@ foreign {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -45,7 +45,7 @@ public interface IDataSource<T> {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -53,7 +53,7 @@ public interface IDataSource<T> {
 ]
 public class DataChangeListener <: RemoteData {
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -64,7 +64,7 @@ public class DataChangeListener <: RemoteData {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -75,7 +75,7 @@ public class DataChangeListener <: RemoteData {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -86,7 +86,7 @@ public class DataChangeListener <: RemoteData {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -97,7 +97,7 @@ public class DataChangeListener <: RemoteData {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -108,7 +108,7 @@ public class DataChangeListener <: RemoteData {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,

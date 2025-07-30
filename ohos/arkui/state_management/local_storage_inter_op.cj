@@ -110,7 +110,7 @@ class ObservedPropertyInterOp<T> <: ObservedProperty<T> & ObservedPropertySyncIn
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     form: true,
@@ -123,7 +123,7 @@ public open class LocalStorageInterOp {
     protected static var instance_: ?LocalStorageInterOp = None
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -146,7 +146,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -156,7 +156,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -169,7 +169,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -191,7 +191,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -203,7 +203,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -221,7 +221,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -240,7 +240,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -259,7 +259,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -271,7 +271,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -283,7 +283,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -295,7 +295,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -343,7 +343,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -356,7 +356,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -368,7 +368,7 @@ public open class LocalStorageInterOp {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -22,7 +22,7 @@ import ohos.labels.APILevel
 
 @C
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
