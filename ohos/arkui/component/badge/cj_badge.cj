@@ -19,6 +19,7 @@ import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.labels.APILevel
+import std.deriving.Derive
 
 foreign {
     func FfiOHOSAceFrameworkBadgeCreateV2(count: Int32, style: CJBadgeStyleV2, position: Int32, maxCount: Int32): Unit

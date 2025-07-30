@@ -283,7 +283,7 @@ public class AlphabetIndexer <: ViewBase {
         var size_ = transAppResourceToLength(size)
         unsafe {
             try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(family.toString()).asResource()) {
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
                 FfiOHOSAceFrameworkAlphabetIndexerSelectedFont(
                     size_.value,
                     size_.unitType.getValue(),
@@ -320,7 +320,7 @@ public class AlphabetIndexer <: ViewBase {
         var size_ = transAppResourceToLength(size)
         unsafe {
             try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(transAppResourceToString(family)).asResource()) {
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
                 FfiOHOSAceFrameworkAlphabetIndexerPopupFont(
                     size_.value,
                     size_.unitType.getValue(),
@@ -357,7 +357,7 @@ public class AlphabetIndexer <: ViewBase {
         var size_ = transAppResourceToLength(size)
         unsafe {
             try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(family.toString()).asResource()) {
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
                 FfiOHOSAceFrameworkAlphabetIndexerFont(
                     size_.value,
                     size_.unitType.getValue(),

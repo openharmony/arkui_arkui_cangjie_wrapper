@@ -17,26 +17,10 @@ package ohos.base
 
 import ohos.labels.APILevel
 
-foreign {
-    func FFIOHOSAceFrameworkGetResourceStr(id: Int64, resType: UInt32, param: CString): ExternalString
-
-    func FFIOHOSAceFrameworkGetResourcePluralStr(id: Int64, resType: UInt32, count: Int64, plural: CString): ExternalString
-
-    func FFIOHOSAceFrameworkGetResourceDimension(id: Int64): RetDimension
-
-    func FFIOHOSAceFrameworkGetResourceColor(id: Int64): UInt32
-
-    func FFIOHOSAceFrameworkGetResourceMedia(id: Int64, resType: UInt32, param: CString): ExternalString
-}
-
 @!APILevel[
     12,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public interface ResourceStr {
-    func toString(): String {
-        transResourceStrToString(this)
-    }
-}
+public interface ResourceStr {}
 
 extend String <: ResourceStr {}
