@@ -615,65 +615,6 @@ public enum ItemAlign {
 }
 
 /**
- * Provides a button component.
- *
- * @relation enum ButtonType
- */
-@Derive[Equatable]
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public enum ShapeType {
-    /**
-     * Common button (no rounded corners by default).
-     *
-     * @relation Normal
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Normal
-    |
-    /**
-     * Capsule button (rounded corners default to half the height).
-     *
-     * @relation Capsule
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Capsule
-    |
-    /**
-     * Round buttons.
-     *
-     * @relation Circle
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    CircleType
-    | ...
-
-    protected func getValue(): Int32 {
-        match (this) {
-            case Normal => 0
-            case Capsule => 1
-            case CircleType => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-}
-
-/**
  * Declare the type of status button
  *
  * @relation enum ToggleType
@@ -7953,7 +7894,7 @@ public enum ControlSize {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    SMALL
+    Small
     |
     /**
      * The component size is normal.
@@ -7965,13 +7906,13 @@ public enum ControlSize {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    NORMAL
+    Normal
     | ...
 
     protected func getValue(): Int32 {
         match (this) {
-            case SMALL => 0
-            case NORMAL => 1
+            case Small => 0
+            case Normal => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

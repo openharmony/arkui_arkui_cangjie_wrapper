@@ -30,7 +30,6 @@ foreign {
 /**
  * Defines the badge position property.
  *
- * @enum
  * @relation enum BadgePosition
  */
 @Derive[Equatable]
@@ -95,7 +94,7 @@ public class BadgeStyle {
      *
      * @type { ResourceColor }
      * @default Color.White
-     * @relation color?: ResourceColor;
+     * @relation color?: ResourceColor
      */
     @!APILevel[
         21,
@@ -115,7 +114,7 @@ public class BadgeStyle {
      *
      * @type { Length }
      * @default 10
-     * @relation fontSize?: number | ResourceStr;
+     * @relation fontSize?: number | ResourceStr
      */
     @!APILevel[
         21,
@@ -136,7 +135,7 @@ public class BadgeStyle {
      *
      * @type { Length }
      * @default 16
-     * @relation badgeSize?: number | ResourceStr;
+     * @relation badgeSize?: number | ResourceStr
      */
     @!APILevel[
         21,
@@ -149,7 +148,7 @@ public class BadgeStyle {
      *
      * @type { ResourceColor }
      * @default Color.RED
-     * @relation badgeColor?: ResourceColor;
+     * @relation badgeColor?: ResourceColor
      */
     @!APILevel[
         21,
@@ -168,7 +167,7 @@ public class BadgeStyle {
      * </p>
      *
      * @type { FontWeight }
-     * @relation fontWeight?: number | FontWeight | ResourceStr;
+     * @relation fontWeight?: number | FontWeight | ResourceStr
      */
     @!APILevel[
         21,
@@ -196,7 +195,7 @@ public class BadgeStyle {
      *
      * @type { Length }
      * @default 1
-     * @relation borderWidth?: Length;
+     * @relation borderWidth?: Length
      */
     @!APILevel[
         21,
@@ -242,6 +241,9 @@ struct CJBadgeStyleV2 {
     ) {}
 }
 
+/**
+ * Defines Badge Component.
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
