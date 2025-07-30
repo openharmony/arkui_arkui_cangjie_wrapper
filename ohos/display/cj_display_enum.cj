@@ -207,7 +207,7 @@ public enum DisplayState {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public enum FoldStatus {
     /**
@@ -218,7 +218,7 @@ public enum FoldStatus {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     FoldStatusUnknown
     |
@@ -230,7 +230,7 @@ public enum FoldStatus {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     FoldStatusExpanded
     |
@@ -242,7 +242,7 @@ public enum FoldStatus {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     FoldStatusFolded
     |
@@ -254,7 +254,7 @@ public enum FoldStatus {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     FoldStatusHalfFolded
     | ...
@@ -278,7 +278,7 @@ public enum FoldStatus {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public enum FoldDisplayMode {
     /**
@@ -289,7 +289,7 @@ public enum FoldDisplayMode {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     FoldDisplayModeUnknown
     |
@@ -301,7 +301,7 @@ public enum FoldDisplayMode {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     FoldDisplayModeFull
     |
@@ -313,7 +313,7 @@ public enum FoldDisplayMode {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     FoldDisplayModeMain
     |
@@ -325,7 +325,7 @@ public enum FoldDisplayMode {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     FoldDisplayModeSub
     |
@@ -337,7 +337,7 @@ public enum FoldDisplayMode {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     FoldDisplayModeCoordination
     | ...
@@ -372,7 +372,7 @@ public enum FoldDisplayMode {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public enum ListenerType {
     /**
@@ -381,7 +381,7 @@ public enum ListenerType {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     ListnerTypeAdd
     |
@@ -391,7 +391,7 @@ public enum ListenerType {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     ListnerTypeRemove
     |
@@ -401,7 +401,7 @@ public enum ListenerType {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     ListnerTypeChange
     |
@@ -411,7 +411,7 @@ public enum ListenerType {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     ListnerTypeFoldStatusChange
     |
@@ -421,7 +421,7 @@ public enum ListenerType {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     ListnerTypeFoldAngleChange
     |
@@ -431,7 +431,7 @@ public enum ListenerType {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     ListnerTypeCaptureStatusChange
     |
@@ -441,7 +441,7 @@ public enum ListenerType {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     ListnerTypeFoldDisplayModeChange
     |
@@ -451,7 +451,7 @@ public enum ListenerType {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     ListnerTypeAvailableAreaChange
     | ...

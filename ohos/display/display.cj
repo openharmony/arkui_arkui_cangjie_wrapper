@@ -180,7 +180,7 @@ public func getAllDisplays(): Array<Display> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public func isFoldable(): Bool {
     unsafe { FfiOHOSIsFoldable() }
@@ -195,7 +195,7 @@ public func isFoldable(): Bool {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public func getFoldStatus(): FoldStatus {
     unsafe {
@@ -213,7 +213,7 @@ public func getFoldStatus(): FoldStatus {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public func getFoldDisplayMode(): FoldDisplayMode {
     unsafe {
@@ -232,7 +232,7 @@ public func getFoldDisplayMode(): FoldDisplayMode {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public func getCurrentFoldCreaseRegion(): FoldCreaseRegion {
     let retData = unsafe {
@@ -264,7 +264,7 @@ public func getCurrentFoldCreaseRegion(): FoldCreaseRegion {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public func off(`type`: ListenerType): Unit {
     offAllCallback(`type`.getValue())
@@ -303,11 +303,11 @@ func offAllCallback(callbackType: String): Unit {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public func on(`type`: ListenerType, callback: Callback1Argument<FoldStatus>): Unit {
     match (`type`) {
-        case LISTNER_TYPE_FOLD_STATUS_CHANGE => onFoldStatusChange(`type`.getValue(), callback)
+        case ListnerTypeFoldStatusChange => onFoldStatusChange(`type`.getValue(), callback)
         case _ => throw BusinessException(EXCEPTION_PARAMCHECK,
             "Parameter error: ${`type`.getValue()} is not supported.")
     }
@@ -354,11 +354,11 @@ func onFoldStatusChange(callbackType: String, callback: Callback1Argument<FoldSt
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public func off(`type`: ListenerType, callback: Callback1Argument<FoldStatus>): Unit {
     match (`type`) {
-        case LISTNER_TYPE_FOLD_STATUS_CHANGE => offFoldStatusChange(`type`.getValue(), callback)
+        case ListnerTypeFoldStatusChange => offFoldStatusChange(`type`.getValue(), callback)
         case _ => throw BusinessException(EXCEPTION_PARAMCHECK,
             "Parameter error: ${`type`.getValue()} is not supported.")
     }
@@ -403,11 +403,11 @@ func offFoldStatusChange(callbackType: String, callback: Callback1Argument<FoldS
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public func on(`type`: ListenerType, callback: Callback1Argument<FoldDisplayMode>): Unit {
     match (`type`) {
-        case LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE => onFoldDisplayModeChange(`type`.getValue(), callback)
+        case ListnerTypeFoldDisplayModeChange => onFoldDisplayModeChange(`type`.getValue(), callback)
         case _ => throw BusinessException(EXCEPTION_PARAMCHECK,
             "Parameter error: ${`type`.getValue()} is not supported.")
     }
@@ -456,11 +456,11 @@ func onFoldDisplayModeChange(callbackType: String, callback: Callback1Argument<F
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public func off(`type`: ListenerType, callback: Callback1Argument<FoldDisplayMode>): Unit {
     match (`type`) {
-        case LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE => offFoldDisplayModeChange(`type`.getValue(), callback)
+        case ListnerTypeFoldDisplayModeChange => offFoldDisplayModeChange(`type`.getValue(), callback)
         case _ => throw BusinessException(EXCEPTION_PARAMCHECK,
             "Parameter error: ${`type`.getValue()} is not supported.")
     }

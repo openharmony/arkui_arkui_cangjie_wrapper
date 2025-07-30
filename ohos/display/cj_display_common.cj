@@ -300,7 +300,7 @@ struct CFoldCreaseRegion {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.WindowManager.WindowManager.Core"
+    syscap: "SystemCapability.Window.SessionManager"
 ]
 public class FoldCreaseRegion {
     /**
@@ -311,7 +311,7 @@ public class FoldCreaseRegion {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     public let displayId: UInt32
     /**
@@ -322,7 +322,7 @@ public class FoldCreaseRegion {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     public let creaseRects: Array<Rect>
 
@@ -332,7 +332,7 @@ public class FoldCreaseRegion {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.WindowManager.WindowManager.Core"
+        syscap: "SystemCapability.Window.SessionManager"
     ]
     public init(
         displayId!: UInt32,
