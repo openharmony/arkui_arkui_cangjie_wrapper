@@ -20,7 +20,7 @@ import std.collection.*
 import ohos.labels.APILevel
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -29,7 +29,7 @@ public class ObservedArray<T> <: ObservedComplexAbstract & ArrayLike<T> {
     private var internalValue: Array<T>
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -56,7 +56,7 @@ public class ObservedArray<T> <: ObservedComplexAbstract & ArrayLike<T> {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -75,7 +75,7 @@ public class ObservedArray<T> <: ObservedComplexAbstract & ArrayLike<T> {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -92,7 +92,7 @@ public class ObservedArray<T> <: ObservedComplexAbstract & ArrayLike<T> {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -104,7 +104,7 @@ public class ObservedArray<T> <: ObservedComplexAbstract & ArrayLike<T> {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -115,7 +115,7 @@ public class ObservedArray<T> <: ObservedComplexAbstract & ArrayLike<T> {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -126,7 +126,7 @@ public class ObservedArray<T> <: ObservedComplexAbstract & ArrayLike<T> {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -138,7 +138,7 @@ public class ObservedArray<T> <: ObservedComplexAbstract & ArrayLike<T> {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -157,7 +157,7 @@ public class ObservedArray<T> <: ObservedComplexAbstract & ArrayLike<T> {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

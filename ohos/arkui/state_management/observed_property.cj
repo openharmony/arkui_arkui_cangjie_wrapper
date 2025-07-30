@@ -23,7 +23,7 @@ func isEqual<T>(value: T, newValue: T): Bool {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -33,7 +33,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     private let subProps_ = ArrayList<ObservedProperty<T>>()
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -59,7 +59,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -71,7 +71,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -81,7 +81,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -98,7 +98,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -115,7 +115,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -131,7 +131,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

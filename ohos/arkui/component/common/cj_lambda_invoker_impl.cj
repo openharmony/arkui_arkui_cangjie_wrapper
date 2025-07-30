@@ -244,7 +244,7 @@ class CallbackCJDragInfoVCDragItemInfo <: BaseCallBack {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -255,7 +255,7 @@ public class CallbackCJWebResourceRequest <: BaseCallBack {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -28,7 +28,7 @@ import ohos.labels.APILevel
  *   4. provide native method to throw CJ error
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]

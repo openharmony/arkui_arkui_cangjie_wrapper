@@ -20,13 +20,13 @@ import ohos.labels.APILevel
 foreign func FfiOHOSAceFrameworkContextMenuClose(): Unit
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ContextMenu {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

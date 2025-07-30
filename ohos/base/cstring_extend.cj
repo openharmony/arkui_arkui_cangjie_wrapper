@@ -19,7 +19,7 @@ import ohos.hilog.HilogChannel
 import ohos.labels.APILevel
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -28,7 +28,7 @@ import ohos.labels.APILevel
 public let BaseLog = HilogChannel(1, 0xD003901, "Cangjie-Base")
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -41,7 +41,7 @@ foreign func FfiOHOSAceFrameworkThrowNativeError(msg: CString): Unit
 foreign func FfiOHOSAceFrameworkNativeLog(msg: CString): Unit
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -56,7 +56,7 @@ public func throwNativeError(msg: String): Unit {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -71,7 +71,7 @@ public func nativeLog(msg: String): Unit {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -87,7 +87,7 @@ public func getOrThrow<T>(optData: Option<T>, msg!: String = ""): T {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -99,7 +99,7 @@ public interface CStringExtend {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,

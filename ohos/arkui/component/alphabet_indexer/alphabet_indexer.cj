@@ -116,7 +116,7 @@ public type OnAlphabetIndexerPopupSelectCallback = (Int64) -> Unit
  * @syscap SystemCapability.ArkUI.ArkUI.Full
  */
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AlphabetIndexer <: ViewBase {
@@ -129,7 +129,7 @@ public class AlphabetIndexer <: ViewBase {
      * @returns { AlphabetIndexer }
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -153,7 +153,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation color(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -172,7 +172,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation selectedColor(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -191,7 +191,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation popupColor(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -210,7 +210,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation selectedBackgroundColor(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -229,7 +229,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation popupBackground(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -248,7 +248,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation usingPopup(value: boolean): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -270,7 +270,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation selectedFont(value: Font): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -307,7 +307,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation popupFont(value: Font): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -344,7 +344,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation font(value: Font): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -378,7 +378,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation itemSize(value: string | number): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -399,7 +399,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation alignStyle(value: IndexerAlign, offset?: Length): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -418,7 +418,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation selected(index: number): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -438,7 +438,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation popupPosition(value: Position): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -461,7 +461,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation onSelect(callback: OnAlphabetIndexerSelectCallback): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -485,7 +485,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -515,7 +515,7 @@ public class AlphabetIndexer <: ViewBase {
      * @relation onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

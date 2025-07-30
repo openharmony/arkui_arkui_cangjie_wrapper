@@ -364,13 +364,13 @@ foreign {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public const MAX_CHANNEL_VALUE: UInt8 = 0xff
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -444,13 +444,13 @@ func fromHexStringToArray(data: String): Option<Array<Byte>> {
  * @since 11
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class ViewBase <: InteractableView & ComponentRender {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -469,7 +469,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -482,7 +482,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -500,7 +500,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -513,7 +513,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -528,7 +528,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -541,7 +541,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -573,7 +573,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -592,7 +592,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -624,7 +624,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -636,7 +636,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -678,7 +678,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -690,7 +690,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -702,7 +702,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -717,7 +717,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -732,7 +732,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -746,7 +746,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -758,7 +758,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -770,7 +770,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -782,7 +782,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -795,7 +795,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -807,7 +807,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -819,7 +819,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -831,7 +831,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -843,7 +843,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -855,7 +855,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -879,7 +879,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -906,7 +906,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -944,7 +944,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -957,7 +957,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -980,7 +980,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -992,7 +992,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1041,7 +1041,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1051,7 +1051,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1063,7 +1063,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1081,7 +1081,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1095,7 +1095,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1107,7 +1107,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1119,7 +1119,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1134,7 +1134,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1145,7 +1145,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1158,7 +1158,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1173,7 +1173,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1186,7 +1186,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1201,7 +1201,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1231,7 +1231,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1243,7 +1243,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1255,7 +1255,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1267,7 +1267,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1279,7 +1279,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1291,7 +1291,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1303,7 +1303,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1315,7 +1315,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1325,7 +1325,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1357,7 +1357,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1374,7 +1374,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1386,7 +1386,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1398,7 +1398,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1410,7 +1410,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1422,7 +1422,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1434,7 +1434,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1446,7 +1446,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1470,7 +1470,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1483,7 +1483,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1496,7 +1496,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1509,7 +1509,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1521,7 +1521,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1533,7 +1533,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1564,7 +1564,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1578,7 +1578,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1590,7 +1590,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1600,7 +1600,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1612,7 +1612,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1624,7 +1624,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1647,7 +1647,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1664,7 +1664,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1684,7 +1684,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1696,7 +1696,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1706,7 +1706,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1718,7 +1718,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1728,7 +1728,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1740,7 +1740,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1750,7 +1750,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1762,7 +1762,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1772,7 +1772,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1788,7 +1788,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1798,7 +1798,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1889,7 +1889,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1901,7 +1901,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1911,7 +1911,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1923,7 +1923,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1933,7 +1933,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1945,7 +1945,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1957,7 +1957,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1969,7 +1969,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1981,7 +1981,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2000,7 +2000,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2089,7 +2089,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2140,7 +2140,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2185,7 +2185,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2212,7 +2212,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2224,7 +2224,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2242,7 +2242,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2269,7 +2269,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2293,7 +2293,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2307,7 +2307,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2351,7 +2351,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2368,7 +2368,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2387,7 +2387,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2405,7 +2405,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2425,7 +2425,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2439,7 +2439,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2451,7 +2451,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2465,7 +2465,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2488,7 +2488,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2501,7 +2501,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2515,7 +2515,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2529,7 +2529,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2541,7 +2541,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2554,7 +2554,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2566,7 +2566,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2578,7 +2578,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2590,7 +2590,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2602,7 +2602,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2622,7 +2622,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2631,7 +2631,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2640,7 +2640,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2657,7 +2657,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2667,7 +2667,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -2677,7 +2677,7 @@ public open class ViewBase <: InteractableView & ComponentRender {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

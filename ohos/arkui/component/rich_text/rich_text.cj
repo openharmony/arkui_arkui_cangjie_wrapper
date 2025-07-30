@@ -29,12 +29,12 @@ foreign {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichText <: ViewBase {
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(content: String) {
@@ -46,7 +46,7 @@ public class RichText <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStart(callback: () -> Unit): This {
@@ -56,7 +56,7 @@ public class RichText <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onComplete(callback: () -> Unit): This {

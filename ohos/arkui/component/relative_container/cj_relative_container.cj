@@ -188,31 +188,31 @@ foreign {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BarrierStyle {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public BarrierStyle(
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         public var id: String,
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         public var direction: BarrierDirection,
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
@@ -221,25 +221,25 @@ public class BarrierStyle {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GuideLinePosition {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public GuideLinePosition(
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         public var start!: ?Length = None,
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
@@ -248,31 +248,31 @@ public class GuideLinePosition {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GuideLineStyle {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public GuideLineStyle(
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         public var id: String,
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         public var direction: Axis,
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
@@ -281,13 +281,13 @@ public class GuideLineStyle {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RelativeContainer <: ContainerBase {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -296,7 +296,7 @@ public class RelativeContainer <: ContainerBase {
         this.child = child
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -305,7 +305,7 @@ public class RelativeContainer <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -317,7 +317,7 @@ public class RelativeContainer <: ContainerBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

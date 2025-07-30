@@ -72,47 +72,47 @@ func findCallbackObject(list: ArrayList<(CallbackObject, Int64)>, callback: Call
 }
 
 @!APILevel[
-    19,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ObserverType <: ToString {
     @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OBSERVER_NAV_DESTINATION_UPDATE
     | @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OBSERVER_SCROLL_EVENT
     | @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OBSERVER_ROUTER_PAGE_UPDATE
     | @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OBSERVER_DENSITY_UPDATE
     | @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OBSERVER_WILL_DRAW
     | @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OBSERVER_DID_LAYOUT
     | @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OBSERVER_NAV_DESTINATION_SWITCH
     | @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OBSERVER_TAB_CONTENT_UPDATE
@@ -134,17 +134,17 @@ public enum ObserverType <: ToString {
 }
 
 @!APILevel[
-    19,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ScrollEventType {
     @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SCROLL_START
     | @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SCROLL_STOP
@@ -168,17 +168,17 @@ public enum ScrollEventType {
 }
 
 @!APILevel[
-    19,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TabContentState {
     @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ON_SHOW
     | @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ON_HIDE
@@ -225,23 +225,23 @@ struct CScrollEventInfo {
 }
 
 @!APILevel[
-    19,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScrollEventInfo {
     public ScrollEventInfo(
         @!APILevel[
-            19,
+            21,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         public let id: String,
         @!APILevel[
-            19,
+            21,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         public let uniqueId: Int32,
         @!APILevel[
-            19,
+            21,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         public let scrollEvent: ScrollEventType,
@@ -268,7 +268,7 @@ struct CTabContentInfo {
 }
 
 @!APILevel[
-    19,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -277,7 +277,7 @@ struct CTabContentInfo {
 public class TabContentInfo {
     public TabContentInfo(
         @!APILevel[
-            19,
+            21,
             atomicservice: true,
             crossplatform: true,
             stagemodelonly: true,
@@ -285,7 +285,7 @@ public class TabContentInfo {
         ]
         public let tabContentId: String,
         @!APILevel[
-            19,
+            21,
             atomicservice: true,
             crossplatform: true,
             stagemodelonly: true,
@@ -293,7 +293,7 @@ public class TabContentInfo {
         ]
         public let tabContentUniqueId: Int32,
         @!APILevel[
-            19,
+            21,
             atomicservice: true,
             crossplatform: true,
             stagemodelonly: true,
@@ -301,7 +301,7 @@ public class TabContentInfo {
         ]
         public let state: TabContentState,
         @!APILevel[
-            19,
+            21,
             atomicservice: true,
             crossplatform: true,
             stagemodelonly: true,
@@ -309,7 +309,7 @@ public class TabContentInfo {
         ]
         public let id: String,
         @!APILevel[
-            19,
+            21,
             atomicservice: true,
             crossplatform: true,
             stagemodelonly: true,
@@ -328,13 +328,13 @@ public class TabContentInfo {
 }
 
 @!APILevel[
-    19,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ObserverOptions {
     public ObserverOptions(
         @!APILevel[
-            19,
+            21,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         public let id: String) {}

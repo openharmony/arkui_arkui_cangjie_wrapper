@@ -18,14 +18,14 @@ package ohos.base
 import ohos.labels.APILevel
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class CallbackObject {}
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -34,7 +34,7 @@ public abstract class Callback0Argument <: CallbackObject {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -43,7 +43,7 @@ public abstract class Callback1Argument<A> <: CallbackObject {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -52,7 +52,7 @@ public abstract class Callback2Argument<A, B> <: CallbackObject {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -61,7 +61,7 @@ public abstract class Callback3ArgumentWithReturn<A, B, C, D> <: CallbackObject 
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -70,7 +70,7 @@ public abstract class Callback1ArgumentWithReturn<A, B> <: CallbackObject {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]

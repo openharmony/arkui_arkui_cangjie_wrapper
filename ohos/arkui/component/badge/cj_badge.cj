@@ -35,7 +35,7 @@ foreign {
  */
 @Derive[Equatable]
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BadgePosition {
@@ -44,7 +44,7 @@ public enum BadgePosition {
      * @relation RightTop
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -54,7 +54,7 @@ public enum BadgePosition {
      * @relation Right
      */
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right |
@@ -63,7 +63,7 @@ public enum BadgePosition {
      * @relation Left
      */
     @!APILevel[
-        12,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -86,7 +86,7 @@ public enum BadgePosition {
  * @relation interface BadgeStyle
  */
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BadgeStyle {
@@ -98,7 +98,7 @@ public class BadgeStyle {
      * @relation color?: ResourceColor;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -118,7 +118,7 @@ public class BadgeStyle {
      * @relation fontSize?: number | ResourceStr;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -139,7 +139,7 @@ public class BadgeStyle {
      * @relation badgeSize?: number | ResourceStr;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -152,7 +152,7 @@ public class BadgeStyle {
      * @relation badgeColor?: ResourceColor;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -171,7 +171,7 @@ public class BadgeStyle {
      * @relation fontWeight?: number | FontWeight | ResourceStr;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -184,7 +184,7 @@ public class BadgeStyle {
      * @relation borderColor?: ResourceColor;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -199,7 +199,7 @@ public class BadgeStyle {
      * @relation borderWidth?: Length;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -209,7 +209,7 @@ public class BadgeStyle {
      * BadgeStyle constructor
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -243,7 +243,7 @@ struct CJBadgeStyleV2 {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -262,7 +262,7 @@ public class Badge <: ContainerBase {
      * @returns { Badge }
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -293,7 +293,7 @@ public class Badge <: ContainerBase {
      * @returns { Badge }
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

@@ -77,7 +77,7 @@ foreign {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -90,7 +90,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -109,7 +109,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -120,7 +120,7 @@ public abstract class ShapeComponent <: ContainerBase {
         this
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -128,7 +128,7 @@ public abstract class ShapeComponent <: ContainerBase {
         fillOpacity(Float64(value))
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -145,7 +145,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -164,7 +164,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -194,7 +194,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -214,7 +214,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -233,7 +233,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -252,12 +252,12 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -268,7 +268,7 @@ public abstract class ShapeComponent <: ContainerBase {
         this
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -284,7 +284,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -295,7 +295,7 @@ public abstract class ShapeComponent <: ContainerBase {
         this
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -303,7 +303,7 @@ public abstract class ShapeComponent <: ContainerBase {
         strokeOpacity(Float64(value))
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -320,7 +320,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -340,7 +340,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -359,7 +359,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -379,7 +379,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -400,7 +400,7 @@ public abstract class ShapeComponent <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -416,13 +416,13 @@ public abstract class ShapeComponent <: ContainerBase {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Shape <: ShapeComponent {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -433,7 +433,7 @@ public class Shape <: ShapeComponent {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -445,7 +445,7 @@ public class Shape <: ShapeComponent {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -456,7 +456,7 @@ public class Shape <: ShapeComponent {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -488,7 +488,7 @@ public class Shape <: ShapeComponent {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -504,7 +504,7 @@ public class Shape <: ShapeComponent {
         this
     }
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

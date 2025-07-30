@@ -35,7 +35,7 @@ foreign {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -49,7 +49,7 @@ public open class Stepper <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -67,7 +67,7 @@ public open class Stepper <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -83,7 +83,7 @@ public open class Stepper <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -103,7 +103,7 @@ public open class Stepper <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -123,7 +123,7 @@ public open class Stepper <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -146,7 +146,7 @@ public open class Stepper <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -169,7 +169,7 @@ public open class Stepper <: ContainerBase {
      * @since 11
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

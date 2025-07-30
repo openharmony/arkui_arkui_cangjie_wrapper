@@ -27,7 +27,7 @@ foreign {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -35,7 +35,7 @@ public class CanvasPattern <: RemoteDataLite {
     private var isNoneValue: Bool = true
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -61,7 +61,7 @@ public class CanvasPattern <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -72,7 +72,7 @@ public class CanvasPattern <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

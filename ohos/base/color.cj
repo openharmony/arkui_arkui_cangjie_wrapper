@@ -18,7 +18,7 @@ package ohos.base
 import ohos.labels.APILevel
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -31,7 +31,7 @@ public interface ResourceColor {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -39,7 +39,7 @@ public interface ResourceColor {
 ]
 extend Int64 <: ResourceColor {
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -52,7 +52,7 @@ extend Int64 <: ResourceColor {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -60,7 +60,7 @@ extend Int64 <: ResourceColor {
 ]
 extend UInt32 <: ResourceColor {
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -72,7 +72,7 @@ extend UInt32 <: ResourceColor {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -82,7 +82,7 @@ public class Color <: ResourceColor {
     private var value_: UInt32 = 0
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -91,7 +91,7 @@ public class Color <: ResourceColor {
     ]
     public static let BLACK: Color = Color(0xff000000)
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -100,7 +100,7 @@ public class Color <: ResourceColor {
     ]
     public static let BLUE: Color = Color(0xff0000ff)
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -109,7 +109,7 @@ public class Color <: ResourceColor {
     ]
     public static let GRAY: Color = Color(0xff808080)
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -118,7 +118,7 @@ public class Color <: ResourceColor {
     ]
     public static let GREEN: Color = Color(0xff008000)
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -127,7 +127,7 @@ public class Color <: ResourceColor {
     ]
     public static let RED: Color = Color(0xffff0000)
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -136,7 +136,7 @@ public class Color <: ResourceColor {
     ]
     public static let WHITE: Color = Color(0xffffffff)
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -146,7 +146,7 @@ public class Color <: ResourceColor {
     public static let TRANSPARENT: Color = Color(0, 0, 0, alpha: 0.0)
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -165,7 +165,7 @@ public class Color <: ResourceColor {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -176,7 +176,7 @@ public class Color <: ResourceColor {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -191,7 +191,7 @@ public class Color <: ResourceColor {
     }
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,

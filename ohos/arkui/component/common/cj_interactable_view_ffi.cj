@@ -43,7 +43,7 @@ struct CJTouchInfo {
 
 
 @!APILevel[
-    19,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @C
@@ -79,7 +79,7 @@ public struct CJTouchTestInfo {
 }
 
 @!APILevel[
-    19,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @C

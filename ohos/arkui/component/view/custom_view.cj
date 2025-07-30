@@ -32,7 +32,7 @@ foreign func FfiOHOSAceFrameworkLoadNativeView(view: Int64): Bool
 foreign func FfiOHOSAceFrameworkProcessViewId(view: Int64): ExternalString
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -48,13 +48,13 @@ type UpdateFuncNew = (Int64, Bool) -> ComponentRender
 type RecycleUpdateFunc = (Int64, Bool, ?CustomView) -> ComponentRender
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class CustomView <: RemoteView & Observer {
     @!APILevel[
-        16,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -87,7 +87,7 @@ public abstract class CustomView <: RemoteView & Observer {
     private var runReuse_: Bool = false
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -101,7 +101,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -116,7 +116,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -138,7 +138,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -158,7 +158,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -191,7 +191,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -210,7 +210,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -245,7 +245,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -268,7 +268,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -298,7 +298,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -312,7 +312,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -343,7 +343,7 @@ public abstract class CustomView <: RemoteView & Observer {
     protected open func aboutToRecycle(): Unit {}
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -360,7 +360,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -413,7 +413,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -423,7 +423,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -433,7 +433,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -442,7 +442,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -451,7 +451,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -460,7 +460,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -469,7 +469,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -481,7 +481,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -498,7 +498,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -509,7 +509,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -536,7 +536,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -545,7 +545,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -558,7 +558,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -567,7 +567,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -604,7 +604,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -613,7 +613,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -631,7 +631,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -640,7 +640,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -662,7 +662,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

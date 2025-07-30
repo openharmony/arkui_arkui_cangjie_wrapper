@@ -19,7 +19,7 @@ import ohos.labels.APILevel
 import std.collection.*
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"

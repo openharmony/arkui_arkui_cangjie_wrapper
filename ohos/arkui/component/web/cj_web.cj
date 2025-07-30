@@ -358,20 +358,20 @@ class CallbackCJWebEvent <: BaseCallBack {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class WebResult {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let result: Int64
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -380,7 +380,7 @@ public class WebResult {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -389,7 +389,7 @@ public class WebResult {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -398,7 +398,7 @@ public class WebResult {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -418,38 +418,38 @@ public class WebResult {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class WebEvent {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var url: String
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var message: String
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var value: String
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var result: WebResult
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -467,20 +467,20 @@ public class WebEvent {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class OnPageEvent {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var url: String
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -490,19 +490,19 @@ public class OnPageEvent {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class Header {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public var headerKey: String
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -559,7 +559,7 @@ struct FfiOnDownloadStartEvent {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
@@ -574,7 +574,7 @@ public class WebResourceRequest {
     ) {}
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -599,7 +599,7 @@ public class WebResourceRequest {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -608,7 +608,7 @@ public class WebResourceRequest {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -617,7 +617,7 @@ public class WebResourceRequest {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -626,7 +626,7 @@ public class WebResourceRequest {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -635,7 +635,7 @@ public class WebResourceRequest {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -645,20 +645,20 @@ public class WebResourceRequest {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class OnPermissionRequestEvent {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public let request: PermissionRequest
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -668,7 +668,7 @@ public class OnPermissionRequestEvent {
 }
 
 @!APILevel[
-    19,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -683,7 +683,7 @@ public class PermissionRequest {
     let cFree: CFunc<(CPointer<Unit>) -> Unit>
 
     @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -696,7 +696,7 @@ public class PermissionRequest {
     }
 
     @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -712,7 +712,7 @@ public class PermissionRequest {
     }
 
     @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -730,7 +730,7 @@ public class PermissionRequest {
     }
 
     @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -803,13 +803,13 @@ func parsePermissionRequestEvent(event: COnPermissionRequestEvent): OnPermission
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class Web <: ViewBase {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -826,7 +826,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -848,7 +848,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -860,7 +860,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -872,7 +872,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -884,7 +884,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -896,7 +896,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -908,7 +908,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -920,7 +920,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -932,7 +932,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -944,7 +944,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -959,7 +959,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -984,7 +984,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -1004,7 +1004,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -1024,7 +1024,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -1061,7 +1061,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -1073,7 +1073,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -1085,7 +1085,7 @@ public class Web <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]

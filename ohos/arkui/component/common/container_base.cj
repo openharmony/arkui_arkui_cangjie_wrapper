@@ -24,7 +24,7 @@ internal import ohos.resource.*
 foreign func FfiOHOSAceFrameworkContainerBasePop(): Unit
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -42,7 +42,7 @@ public abstract class ContainerBase <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

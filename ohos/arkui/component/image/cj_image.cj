@@ -143,62 +143,62 @@ class CallbackCJImageComplete <: BaseCallBack {
 
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CJImageComplete {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: Float64 = 0.0
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: Float64 = 0.0
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentWidth: Float64 = 0.0
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentHeight: Float64 = 0.0
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var loadingStatus: Int32 = 0
     @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentWidth: Float64 = 0.0
     @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentHeight: Float64 = 0.0
     @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentOffsetX: Float64 = 0.0
     @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentOffsetY: Float64 = 0.0
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -217,7 +217,7 @@ public class CJImageComplete {
     }
 
     @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -246,7 +246,7 @@ public class CJImageComplete {
     }
 
     @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -256,30 +256,30 @@ public class CJImageComplete {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CJImageError {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentWidth: Float64 = 0.0
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentHeight: Float64 = 0.0
     @!APILevel[
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var message: String = ""
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -292,7 +292,7 @@ public class CJImageError {
     }
 
     @!APILevel[	
-        19,
+        21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -306,7 +306,7 @@ public class CJImageError {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -314,7 +314,7 @@ public class CJImageError {
 }
 
 @!APILevel[
-    19,
+    21,
     atomicservice: true,
     crossplatform: true,
     form: true,
@@ -322,7 +322,7 @@ public class CJImageError {
 ]
 public class ColorFilter {
     @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -334,7 +334,7 @@ public class ColorFilter {
     protected let matrix: Array<Float32>
 
     @!APILevel[
-        19,
+        21,
         atomicservice: true,
         crossplatform: true,
         form: true,
@@ -350,12 +350,12 @@ public class ColorFilter {
 }
 
 @!APILevel[
-    12,
+    21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Image <: ViewBase {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -368,7 +368,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -381,7 +381,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -392,7 +392,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -406,7 +406,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -420,7 +420,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -432,7 +432,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -444,7 +444,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -456,7 +456,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -468,7 +468,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -486,7 +486,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -499,7 +499,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -517,7 +517,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -532,7 +532,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -544,7 +544,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -556,7 +556,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -568,7 +568,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -580,7 +580,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -592,7 +592,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -605,7 +605,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -618,7 +618,7 @@ public class Image <: ViewBase {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

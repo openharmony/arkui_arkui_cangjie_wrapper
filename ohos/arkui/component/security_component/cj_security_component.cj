@@ -82,19 +82,19 @@ foreign {
 
 @Derive[Equatable]
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SecurityComponentLayoutDirection {
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Horizontal
     | @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -111,7 +111,7 @@ public enum SecurityComponentLayoutDirection {
 }
 
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -129,7 +129,7 @@ public open class SecurityComponent <: ComponentRender {
 
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -139,7 +139,7 @@ public open class SecurityComponent <: ComponentRender {
 
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -148,7 +148,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -161,7 +161,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -174,7 +174,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -186,7 +186,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -201,7 +201,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -214,7 +214,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -229,7 +229,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -271,7 +271,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -284,7 +284,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -296,7 +296,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -312,7 +312,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -324,7 +324,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -337,7 +337,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -349,7 +349,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -362,7 +362,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -377,7 +377,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -389,7 +389,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -402,7 +402,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -434,7 +434,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -448,7 +448,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -461,7 +461,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -475,7 +475,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -485,7 +485,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -497,7 +497,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -509,7 +509,7 @@ public open class SecurityComponent <: ComponentRender {
     }
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
