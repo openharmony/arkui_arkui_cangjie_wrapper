@@ -67,3 +67,11 @@ protected func getLengthUnitOrFp(value: Length): LengthType {
         value.unitType
     }
 }
+
+protected func transResourceStrToString(value: ResourceStr): String {
+    match (value) {
+        case res: AppResource => getResourceString(res)
+        case str: String => str
+        case _ => ""
+    }
+}
