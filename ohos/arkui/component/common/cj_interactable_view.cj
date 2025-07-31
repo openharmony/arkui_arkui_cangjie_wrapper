@@ -281,7 +281,7 @@ public class TouchEvent {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public open func stopPropagation(): Unit {
+    public func stopPropagation(): Unit {
         this.isStopPropagation = true
     }
 
@@ -346,7 +346,7 @@ public class KeyEvent {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public open func stopPropagation(): Unit {
+    public func stopPropagation(): Unit {
         this.isStopPropagation = true
     }
 

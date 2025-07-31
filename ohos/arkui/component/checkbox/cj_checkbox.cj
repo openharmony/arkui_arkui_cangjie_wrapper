@@ -106,12 +106,7 @@ public class Checkbox <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func width(value: Length): This {
+    protected override func widthInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxSetWidth(value_.value, value_.unitType.getValue())
@@ -124,7 +119,7 @@ public class Checkbox <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public override func height(value: Length): This {
+    protected override func heightInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxSetHeight(value_.value, value_.unitType.getValue())
@@ -137,7 +132,7 @@ public class Checkbox <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public override func size(width!: Length, height!: Length): This {
+    protected override func sizeInner(width: Length, height: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
@@ -152,7 +147,7 @@ public class Checkbox <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public override func padding(value: Length): This {
+    protected override func paddingInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxSetPadding(value_.value, value_.unitType.getValue())
@@ -217,7 +212,7 @@ public class Checkbox <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func responseRegion(rect: Rectangle): This {
+    protected override func responseRegionInner(rect: Rectangle): This {
         let cjRect = rect.parseToNative()
         unsafe {
             FfiCheckBoxSetResponseRegion(
@@ -241,7 +236,7 @@ public class Checkbox <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func responseRegionArray(array: Array<Rectangle>): This {
+    protected override func responseRegionInner(array: Array<Rectangle>): This {
         let vecFFi = FFIVectorNativeRectangle(array.size)
         var index = 0
         for (rect in array) {

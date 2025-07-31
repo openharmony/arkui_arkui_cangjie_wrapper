@@ -66,12 +66,7 @@ public class Stack <: ContainerBase {
         this.child = child
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func width(value: Length): This {
+    protected override func widthInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkStackSetWidth(value_.value, value_.unitType.getValue())
@@ -84,7 +79,7 @@ public class Stack <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public override func height(value: Length): This {
+    protected override func heightInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkStackSetHeight(value_.value, value_.unitType.getValue())
@@ -97,7 +92,7 @@ public class Stack <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public override func size(width!: Length, height!: Length): This {
+    protected override func sizeInner(width: Length, height: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {

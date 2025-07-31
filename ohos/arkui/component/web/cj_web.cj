@@ -1060,12 +1060,7 @@ public class Web <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Web.Webview.Core"
-    ]
-    public override func backgroundColor(color: ResourceColor): This {
+    protected override func backgroundColorInner(color: ResourceColor): This {
         unsafe {
             FfiOHOSAceFrameworkWebBackgroundColor(transAppResourceToResourceColor(color))
         }

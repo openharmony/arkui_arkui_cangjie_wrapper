@@ -103,12 +103,7 @@ public class Column <: ContainerBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func width(value: Length): This {
+    protected override func widthInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkColumnSetWidth(value_.value, value_.unitType.getValue())
@@ -121,7 +116,7 @@ public class Column <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public override func height(value: Length): This {
+    protected override func heightInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkColumnSetHeight(value_.value, value_.unitType.getValue())

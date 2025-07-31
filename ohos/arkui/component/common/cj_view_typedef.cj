@@ -1611,7 +1611,7 @@ public open class ContextMenuOptions {
     }
 
 
-    func parseCContextMenuOptions(): CJContextMenuOptions {
+    func parseContextMenuOptions(): CJContextMenuOptions {
         CJContextMenuOptions(
             NativePosition(offset.x, offset.y),
             unsafe { parsePlacement(placement) },
@@ -1753,3 +1753,7 @@ public class DismissSheetAction {
         }
     }
 }
+
+protected interface CombinationKeyType {}
+extend FunctionKey <: CombinationKeyType {}
+extend String <: CombinationKeyType {}

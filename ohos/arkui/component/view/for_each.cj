@@ -64,7 +64,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ForEach <: ComponentRender {
+public class ForEach <: UINodeBase {
     var child: () -> Unit = {=>}
 
     @!APILevel[

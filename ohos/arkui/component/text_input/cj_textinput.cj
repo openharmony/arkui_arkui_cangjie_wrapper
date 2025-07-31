@@ -156,32 +156,17 @@ public class TextInput <: ViewBase {
         )
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func height(width: Length): This {
+    protected override func heightInner(width: Length): This {
         textField.height(width)
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func size(width!: Length, height!: Length): This {
+    protected override func sizeInner(width: Length, height: Length): This {
         textField.size(width: width, height: height)
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func padding(value: Length): This {
+    protected override func paddingInner(value: Length): This {
         textField.padding(value)
         this
     }
@@ -222,22 +207,12 @@ public class TextInput <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func borderWidth(width: Length): This {
+    protected override func borderWidthInner(width: Length): This {
         textField.borderWidth(width)
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func borderWidth(edgeWidths: EdgeWidths): This {
+    protected override func borderWidthInner(edgeWidths: EdgeWidths): This {
         textField.borderWidth(edgeWidths)
         this
     }
@@ -247,7 +222,7 @@ public class TextInput <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public override func borderColor(color: ResourceColor): This {
+    protected override func borderColorInner(color: ResourceColor): This {
         textField.borderColor(color)
         this
     }
@@ -257,7 +232,7 @@ public class TextInput <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public override func borderRadius(radius: Length): This {
+    protected override func borderRadiusInner(radius: Length): This {
         textField.borderRadius(radius)
         this
     }
@@ -272,22 +247,12 @@ public class TextInput <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func backgroundColor(value: ResourceColor): This {
+    protected override func backgroundColorInner(value: ResourceColor): This {
         textField.backgroundColor(value)
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func borderStyle(style: BorderStyle): This {
+    protected override func borderStyleInner(style: BorderStyle): This {
         textField.borderStyle(style)
         this
     }
