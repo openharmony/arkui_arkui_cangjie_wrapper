@@ -57,7 +57,7 @@ public class Row <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(space!: Length = 0.vp, child!: () -> Unit) {
+    public init(space!: Length = 0.vp, child!: () -> Unit = {=>}) {
         var space_ = transAppResourceToLength(space)
         unsafe {
             FfiOHOSAceFrameworkRowCreateWithSpace(space_.value, space_.unitType.getValue())
@@ -96,9 +96,9 @@ public class Row <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func justifyContent(algin: FlexAlign): This {
+    public func justifyContent(value: FlexAlign): This {
         unsafe {
-            FfiOHOSAceFrameworkRowSetJustifyContent(algin.getValue())
+            FfiOHOSAceFrameworkRowSetJustifyContent(value.getValue())
         }
         this
     }

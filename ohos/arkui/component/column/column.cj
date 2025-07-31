@@ -57,7 +57,7 @@ public class Column <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(space!: Length = 0.vp, child!: () -> Unit) {
+    public init(space!: Length = 0.vp, child!: () -> Unit = {=>}) {
         var space_ = transAppResourceToLength(space)
         unsafe {
             FfiOHOSAceFrameworkColumnCreateWithSpace(space_.value, space_.unitType.getValue())

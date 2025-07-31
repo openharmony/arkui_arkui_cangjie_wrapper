@@ -89,7 +89,7 @@ public class Flex <: ContainerBase {
     ]
     public init(direction!: FlexDirection = FlexDirection.Row, wrap!: FlexWrap = FlexWrap.NoWrap,
         justifyContent!: FlexAlign = FlexAlign.Start, alignItems!: ItemAlign = ItemAlign.Start,
-        alignContent!: FlexAlign = FlexAlign.Start, child!: () -> Unit) {
+        alignContent!: FlexAlign = FlexAlign.Start, child!: () -> Unit = {=>}) {
         unsafe {
             FfiOHOSAceFrameworkFlexCreateWithParams(
                 CJFlexParams(

@@ -59,7 +59,7 @@ public class Stack <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(alignContent!: Alignment = Alignment.Center, child!: () -> Unit) {
+    public init(alignContent!: Alignment = Alignment.Center, child!: () -> Unit = {=>}) {
         unsafe {
             FfiOHOSAceFrameworkStackCreate(alignContent.getValue())
         }
