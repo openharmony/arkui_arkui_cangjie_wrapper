@@ -221,7 +221,7 @@ public class GridCol <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(span!: Int32 = 1, offset!: Int32 = 0, order!: Int32 = 0, child!: () -> Unit) {
+    public init(span!: Int32 = 1, offset!: Int32 = 0, order!: Int32 = 0, child!: () -> Unit = {=>}) {
         unsafe {
             FfiOHOSAceFrameworkGridColCreateWithInt32(span, offset, order)
         }
@@ -237,7 +237,7 @@ public class GridCol <: ContainerBase {
         span!: GridColColumnOption,
         offset!: GridColColumnOption,
         order!: GridColColumnOption,
-        child!: () -> Unit
+        child!: () -> Unit = {=>}
     ) {
         unsafe {
             let nativeSpan = span.parseToNative()

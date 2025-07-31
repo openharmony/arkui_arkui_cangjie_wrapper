@@ -707,7 +707,7 @@ public class GridRow <: ContainerBase {
         gutter!: Length = 0.vp,
         breakpoints!: BreakPoints = BreakPoints(),
         direction!: GridRowDirection = GridRowDirection.Row,
-        child!: () -> Unit
+        child!: () -> Unit = {=>}
     ) {
         var gutter_ = transAppResourceToLength(gutter)
         let valuesHandle = FFIVectorFloat64(breakpoints.value.size)
@@ -754,7 +754,7 @@ public class GridRow <: ContainerBase {
         gutter!: Length = 0.vp,
         breakpoints!: BreakPoints = BreakPoints(),
         direction!: GridRowDirection = GridRowDirection.Row,
-        child!: () -> Unit
+        child!: () -> Unit = {=>}
     ) {
         var gutter_ = transAppResourceToLength(gutter)
         let valuesHandle = FFIVectorFloat64(breakpoints.value.size)
@@ -802,7 +802,7 @@ public class GridRow <: ContainerBase {
         gutter!: GutterOption,
         breakpoints!: BreakPoints = BreakPoints(),
         direction!: GridRowDirection = GridRowDirection.Row,
-        child!: () -> Unit
+        child!: () -> Unit = {=>}
     ) {
         let valuesHandle = FFIVectorFloat64(breakpoints.value.size)
         let unitsHandle = FFIVectorInt32(breakpoints.value.size)
@@ -867,7 +867,7 @@ public class GridRow <: ContainerBase {
         gutter!: GutterOption,
         breakpoints!: BreakPoints = BreakPoints(),
         direction!: GridRowDirection = GridRowDirection.Row,
-        child!: () -> Unit) {
+        child!: () -> Unit = {=>}) {
 
         let valuesHandle = FFIVectorFloat64(breakpoints.value.size)
         let unitsHandle = FFIVectorInt32(breakpoints.value.size)

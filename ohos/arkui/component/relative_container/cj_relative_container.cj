@@ -404,7 +404,7 @@ public class RelativeContainer <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(child!: () -> Unit) {
+    public init(child!: () -> Unit = {=>}) {
         unsafe { FfiOHOSAceFrameworkRelativeContainerCreate() }
         this.child = child
     }
