@@ -274,7 +274,7 @@ public abstract class CustomView <: RemoteView & Observer {
     ]
     public func forEachUpdateFunction<T>(
         elmtId: Int64,
-        arr: ArrayLike<T>,
+        arr: ObservedArrayList<T>,
         itemGenFunc!: (T, Int64) -> Unit,
         keyGeneratorFunc!: (T, Int64) -> String = {
             realData: T, idx: Int64 => match (realData) {

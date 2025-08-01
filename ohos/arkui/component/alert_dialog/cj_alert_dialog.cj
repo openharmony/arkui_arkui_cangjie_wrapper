@@ -57,216 +57,6 @@ foreign {
         buttonDirection: Int32): Unit
 }
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class AlertDialog {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func show(alertDialog: AlertDialogParamWithConfirm): Unit {
-        let nativeDialog = alertDialog.getNativeParam()
-        let nativeConfirm = alertDialog.confirm.toNative()
-        unsafe {
-            FfiOHOSShowAlertDialogParamWithConfirmV2(nativeDialog, nativeConfirm)
-            nativeDialog.free()
-            freeButton(nativeConfirm)
-        }
-        return
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func show(alertDialog: AlertDialogParamWithConfirm, shadow: ActionSheetShadowOptions): Unit {
-        let nativeDialog = alertDialog.getNativeParam()
-        let nativeConfirm = alertDialog.confirm.toNative()
-        unsafe {
-            FfiOHOSShowAlertDialogParamWithConfirmShadowOptions(nativeDialog, nativeConfirm, shadow.toNative())
-            nativeDialog.free()
-            freeButton(nativeConfirm)
-        }
-        return
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func show(alertDialog: AlertDialogParamWithConfirm, shadow: ShadowStyle): Unit {
-        let nativeDialog = alertDialog.getNativeParam()
-        let nativeConfirm = alertDialog.confirm.toNative()
-        unsafe {
-            FfiOHOSShowAlertDialogParamWithConfirmShadowStyle(nativeDialog, nativeConfirm, shadow.getValue())
-            nativeDialog.free()
-            freeButton(nativeConfirm)
-        }
-        return
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func show(alertDialog: AlertDialogParamWithButtons): Unit {
-        let nativeDialog = alertDialog.getNativeParam()
-        let nativePrimaryButton = alertDialog.primaryButton.toNative()
-        let nativeSecondaryButton = alertDialog.secondaryButton.toNative()
-        unsafe {
-            FfiOHOSShowAlertDialogParamWithButtonsV2(nativeDialog, nativePrimaryButton, nativeSecondaryButton)
-            nativeDialog.free()
-            freeButton(nativePrimaryButton)
-            freeButton(nativeSecondaryButton)
-        }
-        return
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func show(alertDialog: AlertDialogParamWithButtons, shadow: ActionSheetShadowOptions): Unit {
-        let nativeDialog = alertDialog.getNativeParam()
-        let nativePrimaryButton = alertDialog.primaryButton.toNative()
-        let nativeSecondaryButton = alertDialog.secondaryButton.toNative()
-        unsafe {
-            FfiOHOSShowAlertDialogParamWithButtonsShadowOptions(nativeDialog, nativePrimaryButton, nativeSecondaryButton,
-                shadow.toNative())
-            nativeDialog.free()
-            freeButton(nativePrimaryButton)
-            freeButton(nativeSecondaryButton)
-        }
-        return
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func show(alertDialog: AlertDialogParamWithButtons, shadow: ShadowStyle): Unit {
-        let nativeDialog = alertDialog.getNativeParam()
-        let nativePrimaryButton = alertDialog.primaryButton.toNative()
-        let nativeSecondaryButton = alertDialog.secondaryButton.toNative()
-        unsafe {
-            FfiOHOSShowAlertDialogParamWithButtonsShadowStyle(nativeDialog, nativePrimaryButton, nativeSecondaryButton,
-                shadow.getValue())
-            nativeDialog.free()
-            freeButton(nativePrimaryButton)
-            freeButton(nativeSecondaryButton)
-        }
-        return
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func show(alertDialog: AlertDialogParamWithOptions): Unit {
-        let nativeDialog = alertDialog.getNativeParam()
-        let buttons = alertDialog.buttons
-        let buttonSize = buttons.size
-        let buttonsArr = Array<NativeAlertDialogButtonOptionsV2>(buttonSize, {index => buttons[index].toNative()})
-        let arr: CPointer<NativeAlertDialogButtonOptionsV2> = unsafe {
-            LibC.malloc<NativeAlertDialogButtonOptionsV2>(count: buttonSize)
-        }
-        if (arr.isNull()) {
-            nativeDialog.free()
-            throw IllegalMemoryException("malloc memory")
-        }
-        for (i in 0..buttonSize) {
-            unsafe {
-                arr.write(i, buttonsArr[i])
-            }
-        }
-        let nativeButtons = CArrNativeAlertDialogButtonOptionsV2(arr, buttonSize)
-        unsafe {
-            FfiOHOSShowAlertDialogParamWithOptionsV2(
-                nativeDialog,
-                nativeButtons,
-                alertDialog.buttonDirection.getValue()
-            )
-            nativeDialog.free()
-            freeButtonsArr(nativeButtons)
-        }
-        return
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func show(alertDialog: AlertDialogParamWithOptions, shadow: ActionSheetShadowOptions): Unit {
-        let nativeDialog = alertDialog.getNativeParam()
-        let buttons = alertDialog.buttons
-        let buttonSize = buttons.size
-        let buttonsArr = Array<NativeAlertDialogButtonOptionsV2>(buttonSize, {index => buttons[index].toNative()})
-        let arr: CPointer<NativeAlertDialogButtonOptionsV2> = unsafe {
-            LibC.malloc<NativeAlertDialogButtonOptionsV2>(count: buttonSize)
-        }
-        if (arr.isNull()) {
-            nativeDialog.free()
-            throw IllegalMemoryException("malloc memory")
-        }
-        for (i in 0..buttonSize) {
-            unsafe {
-                arr.write(i, buttonsArr[i])
-            }
-        }
-        let nativeButtons = CArrNativeAlertDialogButtonOptionsV2(arr, buttonSize)
-        unsafe {
-            FfiOHOSShowAlertDialogParamWithOptionsShadowOptions(nativeDialog, nativeButtons, shadow.toNative(),
-                alertDialog.buttonDirection.getValue())
-            nativeDialog.free()
-            freeButtonsArr(nativeButtons)
-        }
-        return
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func show(alertDialog: AlertDialogParamWithOptions, shadow: ShadowStyle): Unit {
-        let nativeDialog = alertDialog.getNativeParam()
-        let buttons = alertDialog.buttons
-        let buttonSize = buttons.size
-        let buttonsArr = Array<NativeAlertDialogButtonOptionsV2>(buttonSize, {index => buttons[index].toNative()})
-        let arr: CPointer<NativeAlertDialogButtonOptionsV2> = unsafe {
-            LibC.malloc<NativeAlertDialogButtonOptionsV2>(count: buttonSize)
-        }
-        if (arr.isNull()) {
-            nativeDialog.free()
-            throw IllegalMemoryException("malloc memory")
-        }
-        for (i in 0..buttonSize) {
-            unsafe {
-                arr.write(i, buttonsArr[i])
-            }
-        }
-        let nativeButtons = CArrNativeAlertDialogButtonOptionsV2(arr, buttonSize)
-        unsafe {
-            FfiOHOSShowAlertDialogParamWithOptionsShadowStyle(nativeDialog, nativeButtons, shadow.getValue(),
-                alertDialog.buttonDirection.getValue())
-            nativeDialog.free()
-            freeButtonsArr(nativeButtons)
-        }
-        return
-    }
-}
-
 func freeButton(button: NativeAlertDialogButtonOptionsV2) {
     unsafe {
         LibC.free(button.value)
@@ -617,13 +407,13 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundColor: Option<Color> = Color.TRANSPARENT
+    public var backgroundColor: Option<Color> = Color.Transparent
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: Option<BlurStyle> = BlurStyle.COMPONENT_ULTRA_THICK
+    public var backgroundBlurStyle: Option<BlurStyle> = BlurStyle.ComponentUltraThick
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -666,13 +456,13 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderColor: Option<Color> = Color.BLACK
+    public var borderColor: Option<Color> = Color.Black
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderStyle: Option<EdgeStyle> = EdgeStyle.SOLID
+    public var borderStyle: Option<EdgeStyles> = EdgeStyles()
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -697,8 +487,8 @@ public open class AlertDialogParam {
         maskRect!: Rectangle = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
         showInSubWindow!: Bool = false,
         isModal!: Bool = true,
-        backgroundColor!: Color = Color.TRANSPARENT,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
+        backgroundColor!: Color = Color.Transparent,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick
     ) {
         this.message = message
         this.title = title
@@ -732,8 +522,8 @@ public open class AlertDialogParam {
         maskRect!: Option<Rectangle> = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
         showInSubWindow!: Option<Bool> = false,
         isModal!: Option<Bool> = true,
-        backgroundColor!: Option<Color> = Color.TRANSPARENT,
-        backgroundBlurStyle!: Option<BlurStyle> = BlurStyle.COMPONENT_ULTRA_THICK,
+        backgroundColor!: Option<Color> = Color.Transparent,
+        backgroundBlurStyle!: Option<BlurStyle> = BlurStyle.ComponentUltraThick,
         onWillDismiss!: Option<(DismissDialogAction) -> Unit>,
         cornerRadius!: Option<BorderRadiuses> = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
             bottomRight: 32.vp),
@@ -741,8 +531,8 @@ public open class AlertDialogParam {
         width!: Option<Length> = Option<Length>.None,
         height!: Option<Length> = Option<Length>.None,
         borderWidth!: Option<Length> = 0.vp,
-        borderColor!: Option<Color> = Color.BLACK,
-        borderStyle!: Option<EdgeStyle> = EdgeStyle.SOLID,
+        borderColor!: Option<Color> = Color.Black,
+        borderStyle!: Option<EdgeStyles> = EdgeStyles(),
         textStyle!: Option<WordBreak> = WordBreak.Normal
     ) {
         this.message = message
@@ -851,7 +641,7 @@ public open class AlertDialogParam {
         }
         let nativeBorderStyle = match (borderStyle) {
             case Some(value) => NativeOptionEdgeStyle(true, value.toNative())
-            case None => NativeOptionEdgeStyle(false, NativeEdgeStyle(0, 0, 0, 0))
+            case None => NativeOptionEdgeStyle(false, NativeEdgeStyles(0, 0, 0, 0))
         }
         let nativeWidth = match (width) {
             case Some(value) =>
@@ -930,8 +720,8 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
         maskRect!: Rectangle = Rectangle(),
         showInSubWindow!: Bool = false,
         isModal!: Bool = true,
-        backgroundColor!: Color = Color.TRANSPARENT,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+        backgroundColor!: Color = Color.Transparent,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
         confirm!: AlertDialogButtonOptions = AlertDialogButtonOptions()
     ) {
         super(
@@ -969,8 +759,8 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
         maskRect!: Option<Rectangle> = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
         showInSubWindow!: Option<Bool> = false,
         isModal!: Option<Bool> = true,
-        backgroundColor!: Option<Color> = Color.TRANSPARENT,
-        backgroundBlurStyle!: Option<BlurStyle> = BlurStyle.COMPONENT_ULTRA_THICK,
+        backgroundColor!: Option<Color> = Color.Transparent,
+        backgroundBlurStyle!: Option<BlurStyle> = BlurStyle.ComponentUltraThick,
         onWillDismiss!: Option<(DismissDialogAction) -> Unit>, // 5.1 start
         cornerRadius!: Option<BorderRadiuses> = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
             bottomRight: 32.vp),
@@ -978,8 +768,8 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
         width!: Option<Length> = Option<Length>.None,
         height!: Option<Length> = Option<Length>.None,
         borderWidth!: Option<Length> = 0.vp,
-        borderColor!: Option<Color> = Color.BLACK,
-        borderStyle!: Option<EdgeStyle> = EdgeStyle.SOLID,
+        borderColor!: Option<Color> = Color.Black,
+        borderStyle!: Option<EdgeStyles> = EdgeStyles(),
         textStyle!: Option<WordBreak> = WordBreak.Normal,
         confirm!: AlertDialogButtonOptions = AlertDialogButtonOptions()
     ) {
@@ -1057,8 +847,8 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
         maskRect!: Rectangle = Rectangle(),
         showInSubWindow!: Bool = false,
         isModal!: Bool = true,
-        backgroundColor!: Color = Color.TRANSPARENT,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+        backgroundColor!: Color = Color.Transparent,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
         primaryButton!: AlertDialogButtonOptions = AlertDialogButtonOptions(),
         secondaryButton!: AlertDialogButtonOptions = AlertDialogButtonOptions()
     ) {
@@ -1098,8 +888,8 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
         maskRect!: Option<Rectangle> = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
         showInSubWindow!: Option<Bool> = false,
         isModal!: Option<Bool> = true,
-        backgroundColor!: Option<Color> = Color.TRANSPARENT,
-        backgroundBlurStyle!: Option<BlurStyle> = BlurStyle.COMPONENT_ULTRA_THICK,
+        backgroundColor!: Option<Color> = Color.Transparent,
+        backgroundBlurStyle!: Option<BlurStyle> = BlurStyle.ComponentUltraThick,
         onWillDismiss!: Option<(DismissDialogAction) -> Unit>,
         cornerRadius!: Option<BorderRadiuses> = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
             bottomRight: 32.vp),
@@ -1107,8 +897,8 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
         width!: Option<Length> = Option<Length>.None,
         height!: Option<Length> = Option<Length>.None,
         borderWidth!: Option<Length> = 0.vp,
-        borderColor!: Option<Color> = Color.BLACK,
-        borderStyle!: Option<EdgeStyle> = EdgeStyle.SOLID,
+        borderColor!: Option<Color> = Color.Black,
+        borderStyle!: Option<EdgeStyles> = EdgeStyles(),
         textStyle!: Option<WordBreak> = WordBreak.Normal,
         primaryButton!: AlertDialogButtonOptions = AlertDialogButtonOptions(),
         secondaryButton!: AlertDialogButtonOptions = AlertDialogButtonOptions()
@@ -1188,8 +978,8 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
         maskRect!: Rectangle = Rectangle(),
         showInSubWindow!: Bool = false,
         isModal!: Bool = true,
-        backgroundColor!: Color = Color.TRANSPARENT,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+        backgroundColor!: Color = Color.Transparent,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
         buttons!: Array<AlertDialogButtonOptions> = Array<AlertDialogButtonOptions>(),
         buttonDirection!: DialogButtonDirection = DialogButtonDirection.AUTO
     ) {
@@ -1229,8 +1019,8 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
         maskRect!: Option<Rectangle> = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
         showInSubWindow!: Option<Bool> = false,
         isModal!: Option<Bool> = true,
-        backgroundColor!: Option<Color> = Color.TRANSPARENT,
-        backgroundBlurStyle!: Option<BlurStyle> = BlurStyle.COMPONENT_ULTRA_THICK,
+        backgroundColor!: Option<Color> = Color.Transparent,
+        backgroundBlurStyle!: Option<BlurStyle> = BlurStyle.ComponentUltraThick,
         onWillDismiss!: Option<(DismissDialogAction) -> Unit>,
         cornerRadius!: Option<BorderRadiuses> = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
             bottomRight: 32.vp),
@@ -1238,8 +1028,8 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
         width!: Option<Length> = Option<Length>.None,
         height!: Option<Length> = Option<Length>.None,
         borderWidth!: Option<Length> = 0.vp,
-        borderColor!: Option<Color> = Color.BLACK,
-        borderStyle!: Option<EdgeStyle> = EdgeStyle.SOLID,
+        borderColor!: Option<Color> = Color.Black,
+        borderStyle!: Option<EdgeStyles> = EdgeStyles(),
         textStyle!: Option<WordBreak> = WordBreak.Normal,
         buttons!: Array<AlertDialogButtonOptions> = Array<AlertDialogButtonOptions>(),
         buttonDirection!: DialogButtonDirection = DialogButtonDirection.AUTO

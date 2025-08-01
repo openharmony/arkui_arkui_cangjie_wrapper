@@ -15,4 +15,22 @@
 
 package ohos.base
 
-public type Callback<T> = (T) -> Unit
+/**
+ * Defines VoidCallback.
+ *
+ * @typedef { func } VoidCallback
+ * @syscap SystemCapability.ArkUI.ArkUI.Full
+ * @relation declare type VoidCallback = () => void
+ */
+public type VoidCallback = () -> Unit
+
+/**
+ * Defines the callback
+ *
+ * @typedef { func } Callback<T, V>
+ * @param { T } data
+ * @returns { V }
+ * @syscap SystemCapability.ArkUI.ArkUI.Full
+ * @relation export type Callback<T, V = void> = (data: T) => V
+ */
+public type Callback<T, V> = (T) -> V

@@ -20,6 +20,7 @@ import ohos.arkui.component.common.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import ohos.arkui.state_management.ObservedArrayList
 import std.collection.ArrayList
 
 @C
@@ -75,7 +76,7 @@ public class ForEach <: UINodeBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func create<T>(viewID: Int64, parentView: CustomView, dataSource: ArrayLike<T>,
+    public static func create<T>(viewID: Int64, parentView: CustomView, dataSource: ObservedArrayList<T>,
         itemGeneratorFunc!: ItemGenFuncType<T>,
         keyGeneratorFunc!: KeyGenFuncType<T> = {
             realData: T, idx: Int64 => match (realData) {

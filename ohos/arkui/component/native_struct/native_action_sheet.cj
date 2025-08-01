@@ -47,16 +47,6 @@ protected struct NativeConfirm {
 }
 
 @C
-protected struct NativeEdgeStyle {
-    protected NativeEdgeStyle(
-        let top: Int32,
-        let right: Int32,
-        let bottom: Int32,
-        let left: Int32
-    ) {}
-}
-
-@C
 protected struct NativeOptionOffset {
     protected NativeOptionOffset(
         let hasValue: Bool,
@@ -69,14 +59,6 @@ protected struct NativeOptionRadius {
     protected NativeOptionRadius(
         let hasValue: Bool,
         let value: CBorderRadiuses
-    ) {}
-}
-
-@C
-protected struct NativeOptionEdgeStyle {
-    protected NativeOptionEdgeStyle(
-        let hasValue: Bool,
-        let value: NativeEdgeStyle
     ) {}
 }
 

@@ -172,13 +172,13 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderColor: Option<ResourceColor> = Color.BLACK
+    public var borderColor: Option<ResourceColor> = Color.Black
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderStyle: Option<EdgeStyle> = EdgeStyle.SOLID
+    public var borderStyle: Option<EdgeStyles> = EdgeStyles()
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -202,7 +202,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: Option<BlurStyle> = BlurStyle.COMPONENT_ULTRA_THICK
+    public var backgroundBlurStyle: Option<BlurStyle> = BlurStyle.ComponentUltraThick
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -260,12 +260,12 @@ public class CustomDialogControllerOptions {
         isModal!: Option<Bool>, // 5.1 start
         onWillDismiss!: Option<(DismissDialogAction) -> Unit> = Option.None,
         borderWidth!: Option<Length> = 0.vp,
-        borderColor!: Option<ResourceColor> = Color.BLACK,
-        borderStyle!: Option<EdgeStyle> = EdgeStyle.SOLID,
+        borderColor!: Option<ResourceColor> = Color.Black,
+        borderStyle!: Option<EdgeStyles> = EdgeStyles(),
         width!: Option<Length> = Option.None,
         height!: Option<Length> = Option.None,
         shadow!: Option<ShadowOptions> = Option.None,
-        backgroundBlurStyle!: Option<BlurStyle> = BlurStyle.COMPONENT_ULTRA_THICK
+        backgroundBlurStyle!: Option<BlurStyle> = BlurStyle.ComponentUltraThick
     ) {
         this.cancel = cancel
         this.autoCancel = autoCancel
@@ -295,8 +295,8 @@ public class CustomDialogControllerOptions {
 func parseNativeShadowOptions(shadowOptions: ShadowOptions): NativeShadowOptions {
     return NativeShadowOptions(
         shadowOptions.radius,
-        shadowOptions.shadowType,
-        shadowOptions.color,
+        shadowOptions.shadowType.getValue(),
+        shadowOptions.color.toUInt32(),
         shadowOptions.offsetX,
         shadowOptions.offsetY,
         shadowOptions.fill
@@ -382,7 +382,7 @@ public class CustomDialogController <: RemoteDataLite {
         }
         let nativeBorderStyle = match (options.borderStyle) {
             case Some(value) => NativeOptionEdgeStyle(true, value.toNative())
-            case None => NativeOptionEdgeStyle(false, NativeEdgeStyle(0, 0, 0, 0))
+            case None => NativeOptionEdgeStyle(false, NativeEdgeStyles(0, 0, 0, 0))
         }
         let nativeBackgroundBlurStyle = match (options.backgroundBlurStyle) {
             case Some(value) => NativeOptionInt32(true, value.getValue())
@@ -390,7 +390,7 @@ public class CustomDialogController <: RemoteDataLite {
         }
         let nativeOptionShadow = match (options.shadow) {
             case Some(value) => NativeOptionShadow(true, parseNativeShadowOptions(value))
-            case None => NativeOptionShadow(false, parseNativeShadowOptions(ShadowOptions()))
+            case None => NativeOptionShadow(false, parseNativeShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.COLOR)))
         }
         let cancelLambda = Callback0Param<Unit>(options.cancel)
         this.ffiCancel_ = cancelLambda

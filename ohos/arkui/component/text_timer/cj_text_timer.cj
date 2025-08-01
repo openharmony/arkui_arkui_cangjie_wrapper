@@ -40,7 +40,7 @@ foreign {
 ]
 extend ShadowOptions {
     func optionToNativeTextTimerShadow(): NativeTextTimerShadow {
-        return NativeTextTimerShadow(this.radius, this.offsetX, this.offsetY, this.color, this.fill, this.shadowType)
+        return NativeTextTimerShadow(this.radius, this.offsetX, this.offsetY, this.color.toUInt32(), this.fill, this.shadowType.getValue())
     }
 }
 
@@ -311,7 +311,7 @@ public open class TextTimer <: ViewBase {
         shadowType!: ShadowType = ShadowType.COLOR,
         offsetX!: Float64 = 0.0,
         offsetY!: Float64 = 0.0,
-        color!: Color = Color.BLACK,
+        color!: Color = Color.Black,
         fill!: Bool = false
     ): This {
         let thisShadow: NativeTextTimerShadow = NativeTextTimerShadow(radius, offsetX, offsetY, color.toUInt32(), fill,

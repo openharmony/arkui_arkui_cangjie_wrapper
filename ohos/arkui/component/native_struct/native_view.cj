@@ -321,6 +321,24 @@ protected struct NativeShadow {
 }
 
 @C
+protected struct NativeEdgeStyles {
+    protected NativeEdgeStyles(
+        let top: Int32,
+        let right: Int32,
+        let bottom: Int32,
+        let left: Int32
+    ) {}
+}
+
+@C
+protected struct NativeOptionEdgeStyle {
+    protected NativeOptionEdgeStyle(
+        let hasValue: Bool,
+        let value: NativeEdgeStyles
+    ) {}
+}
+
+@C
 protected struct CSheetOptionsV2 {
     protected CSheetOptionsV2(
         protected let backgroundColor: NativeOptionUInt32,
@@ -353,6 +371,7 @@ protected struct CSheetOptionsV2 {
         protected let scrollSizeMode: NativeOptionUInt32
     ) {}
 }
+
 
 @C
 protected struct CJPixelRoundPolicy {

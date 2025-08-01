@@ -640,13 +640,13 @@ public class ShadowOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var shadowType: UInt32 = ShadowType.COLOR.getValue()
+    public var shadowType: ShadowType = ShadowType.COLOR
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var color: UInt32 = 0xff000000
+    public var color: ResourceColor = Color.Black
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -664,142 +664,48 @@ public class ShadowOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fill: Bool = false    
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(radius!: Float64, offsetX!: Float64, offsetY!: Float64, color!: ResourceColor) {
-        this.radius = radius
-        this.offsetX = offsetX
-        this.offsetY = offsetY
-        this.color = transAppResourceToResourceColor(color)
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(radius!: Float64, shadowType!: ShadowType, color!: ResourceColor = Color.BLACK, offsetX!: Float64 = 0.0,
-        offsetY!: Float64 = 0.0, fill!: Bool = false) {
-        this.radius = radius
-        this.shadowType = shadowType.getValue()
-        this.color = transAppResourceToResourceColor(color)
-        this.offsetX = offsetX
-        this.offsetY = offsetY
-        this.fill = fill
-    }
+    public var fill: Bool = false
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {}    
-    func parseToNative(): NativeShadowOptions {
-        return NativeShadowOptions(
-            radius,
-            shadowType,
-            color,
-            offsetX,
-            offsetY,
-            fill
-        )
-    }
-    protected func optionToNative(): NativeTextShadowV2 {
-        return NativeTextShadowV2(this.radius, this.offsetX, this.offsetY, this.color, this.fill, this.shadowType)
-    }    
-}
-
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class EdgeStyle {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var top: BorderStyle
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var right: BorderStyle
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var bottom: BorderStyle
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var left: BorderStyle
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        top: BorderStyle,
-        right: BorderStyle,
-        bottom: BorderStyle,
-        left: BorderStyle
+        radius!: Float64,
+        shadowType!: ShadowType,
+        color!: ResourceColor = Color.Black,
+        offsetX!: Float64 = 0.0,
+        offsetY!: Float64 = 0.0,
+        fill!: Bool = false
     ) {
-        this.top = top
-        this.right = right
-        this.bottom = bottom
-        this.left = left
+        this.radius = radius
+        this.shadowType = shadowType
+        this.color = color
+        this.offsetX = offsetX
+        this.offsetY = offsetY
+        this.fill = fill
     }
-
-    protected func toNative(): NativeEdgeStyle {
-        NativeEdgeStyle(
-            top.getValue(),
-            right.getValue(),
-            bottom.getValue(),
-            left.getValue()
+    protected func toActionSheetShadowNative(): NativeActionSheetShadowOptions {
+        return NativeActionSheetShadowOptions(
+            this.radius,
+            Int32(this.shadowType.getValue()),
+            transAppResourceToResourceColor(this.color),
+            this.offsetX,
+            this.offsetY,
+            this.fill
         )
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static let SOLID = EdgeStyle(
-        BorderStyle.Solid,
-        BorderStyle.Solid,
-        BorderStyle.Solid,
-        BorderStyle.Solid
-    )
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static let DASHED = EdgeStyle(
-        BorderStyle.Dashed,
-        BorderStyle.Dashed,
-        BorderStyle.Dashed,
-        BorderStyle.Dashed
-    )
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static let DOTTED = EdgeStyle(
-        BorderStyle.Dotted,
-        BorderStyle.Dotted,
-        BorderStyle.Dotted,
-        BorderStyle.Dotted
-    )
+    protected func toNative(): NativeTextShadowV2 {
+        return NativeTextShadowV2(
+            this.radius,
+            this.offsetX,
+            this.offsetY,
+            transAppResourceToResourceColor(this.color),
+            this.fill,
+            this.shadowType.getValue()
+        )
+    }
 }
 
 protected func parseAnimateParam(params: AnimateParam): NativeAnimateParam {
@@ -1086,8 +992,8 @@ public class AlignRuleOption {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = None,
-        middle!: ?HorizontalAlignment = None, top!: ?VerticalAlignment = None, 
-        bottom!: ?VerticalAlignment = None, center!: ?VerticalAlignment = None, 
+        middle!: ?HorizontalAlignment = None, top!: ?VerticalAlignment = None,
+        bottom!: ?VerticalAlignment = None, center!: ?VerticalAlignment = None,
         bias!: Bias = Bias()
     ) {
         this.left = left
@@ -1097,5 +1003,63 @@ public class AlignRuleOption {
         this.bottom = bottom
         this.center = center
         this.bias = bias
+    }
+}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class EdgeStyles {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var top: BorderStyle
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var right: BorderStyle
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var bottom: BorderStyle
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var left: BorderStyle
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(
+        top!: BorderStyle = BorderStyle.Solid,
+        right!: BorderStyle = BorderStyle.Solid,
+        bottom!: BorderStyle = BorderStyle.Solid,
+        left!: BorderStyle = BorderStyle.Solid
+    ) {
+        this.top = top
+        this.right = right
+        this.bottom = bottom
+        this.left = left
+    }
+
+    protected func toNative(): NativeEdgeStyles {
+        return NativeEdgeStyles(
+            top.getValue(),
+            right.getValue(),
+            bottom.getValue(),
+            left.getValue()
+        )
     }
 }
