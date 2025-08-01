@@ -84,7 +84,7 @@ public class Checkbox <: ViewBase {
      *
      * @param { String } name
      * @param { String } group
-     * @param { ?() -> Unit } indicatorBuilder
+     * @param { ?CustomBuilder } indicatorBuilder
      * @returns { Checkbox }
      * @relation (options?: CheckboxOptions): CheckboxAttribute
      */
@@ -93,7 +93,7 @@ public class Checkbox <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(name!: String = "", group!: String = "", indicatorBuilder!: ?() -> Unit = None) {
+    public init(name!: String = "", group!: String = "", indicatorBuilder!: ?CustomBuilder = None) {
         unsafe {
             try (nameCString = LibC.mallocCString(name).asResource(),
                  groupCString = LibC.mallocCString(group).asResource()) {
