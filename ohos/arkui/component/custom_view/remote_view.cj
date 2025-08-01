@@ -62,7 +62,7 @@ public abstract class RemoteView <: FFIData {
         false
     }
     protected open func updateWithJson(_: String): Unit {}
-    protected open func onTransition(): Unit {}
+    protected open func pageTransition(): Unit {}
     protected open func onAboutToRender(): Unit {}
     protected open func onAfterRender(): Unit {}
     protected open func aboutToDisappear(): Unit {}

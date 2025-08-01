@@ -1796,9 +1796,9 @@ public open class ViewBase <: InteractableView & UINodeBase {
                     options.delay,
                     options.zIndex,
                     unsafeCurve.value,
-                    CJMotionPathOptions(unsafeMotionPath.value, options.motionPath.`from`, options.motionPath.to,
+                    CJMotionPathOptions(unsafeMotionPath.value, options.motionPath.pathFrom, options.motionPath.pathTo,
                         options.motionPath.rotatable),
-                    options.`type`.getValue()
+                    options.effectType.getValue()
                 )
                 FfiOHOSAceFrameworkViewAbstractSetSharedTransition(unsafeId.value, unsafeOptions)
             }

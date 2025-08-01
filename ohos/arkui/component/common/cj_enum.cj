@@ -9957,19 +9957,19 @@ public enum FinishCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    REMOVED
+    Removed
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    LOGICALLY
+    Logically
     | ...
 
     protected func getValue(): Int32 {
         match (this) {
-            case REMOVED => 0
-            case LOGICALLY => 1
+            case Removed => 0
+            case Logically => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

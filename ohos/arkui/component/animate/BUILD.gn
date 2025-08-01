@@ -15,7 +15,6 @@ import("//build/cangjie/cjc.gni")
 
 ohos_cj_library("ohos.arkui.component.animate") {
   sources = [
-    "cj_animate_param.cj",
     "cj_view_context.cj"
   ]
 
