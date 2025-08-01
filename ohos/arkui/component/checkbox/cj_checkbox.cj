@@ -57,12 +57,37 @@ foreign {
         strokeWidthUnit: Int32): Unit
 }
 
+/**
+ * Defines a Checkbox callback when onChange.
+ * Anonymous Object Rectification.
+ *
+ * @typedef { function } OnCheckboxChangeCallback
+ * @param { boolean } value - selected status
+ * @relation declare type OnCheckboxChangeCallback = (value: boolean) => void
+ */
+public type OnCheckboxChangeCallback = (Bool) -> Unit
+
+/**
+ * Defines Checkbox Component.
+ *
+ * @relation const Checkbox: CheckboxInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Checkbox <: ViewBase {
+    /**
+     * Construct the Checkbox component.
+     * Called when the Checkbox component is used.
+     *
+     * @param { String } name
+     * @param { String } group
+     * @param { ?() -> Unit } indicatorBuilder
+     * @returns { Checkbox }
+     * @relation (options?: CheckboxOptions): CheckboxAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -70,18 +95,24 @@ public class Checkbox <: ViewBase {
     ]
     public init(name!: String = "", group!: String = "", indicatorBuilder!: ?() -> Unit = None) {
         unsafe {
-            let nameCString = LibC.mallocCString(name)
-            let groupCString = LibC.mallocCString(group)
-            if (let Some(v) <- indicatorBuilder) {
-                FfiCheckBoxCreateWithIndicator(nameCString, groupCString, Callback0Param<Unit>(v).getID())
-            } else {
-                FfiOHOSAceFrameworkCheckBoxCreate(nameCString, groupCString)
+            try (nameCString = LibC.mallocCString(name).asResource(),
+                 groupCString = LibC.mallocCString(group).asResource()) {
+                if (let Some(v) <- indicatorBuilder) {
+                    FfiCheckBoxCreateWithIndicator(nameCString.value, groupCString.value, Callback0Param<Unit>(v).getID())
+                } else {
+                    FfiOHOSAceFrameworkCheckBoxCreate(nameCString.value, groupCString.value)
+                }
             }
-            LibC.free(nameCString)
-            LibC.free(groupCString)
         }
     }
 
+    /**
+     * setting whether checkbox is selected.
+     *
+     * @param { Bool } value
+     * @returns { This }
+     * @relation select(value: boolean): CheckboxAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -94,14 +125,21 @@ public class Checkbox <: ViewBase {
         this
     }
 
+    /**
+     * setting the display color of checkbox.
+     *
+     * @param { ResourceColor } value
+     * @returns { This }
+     * @relation selectedColor(value: ResourceColor): CheckboxAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(color: ResourceColor): This {
+    public func selectedColor(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkCheckBoxSetSelectedColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkCheckBoxSetSelectedColor(transAppResourceToResourceColor(value))
         }
         this
     }
@@ -114,11 +152,6 @@ public class Checkbox <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func heightInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
@@ -127,11 +160,6 @@ public class Checkbox <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func sizeInner(width: Length, height: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
@@ -142,11 +170,6 @@ public class Checkbox <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func paddingInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
@@ -155,11 +178,6 @@ public class Checkbox <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func paddingInner(top: Length, right: Length, bottom: Length, left: Length): This {
         var top_ = transAppResourceToLength(top)
         var right_ = transAppResourceToLength(right)
@@ -182,12 +200,20 @@ public class Checkbox <: ViewBase {
         this
     }
 
+    /**
+     * Called when the selection status changes.
+     * Anonymous Object Rectification.
+     *
+     * @param { OnCheckboxChangeCallback } callback
+     * @returns { This }
+     * @relation onChange(callback: OnCheckboxChangeCallback): CheckboxAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (Bool) -> Unit): This {
+    public func onChange(callback: OnCheckboxChangeCallback): This {
         let lambdaData = Callback1Param<Bool, Unit>(callback)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxSetOnChange(lambdaData.getID())
@@ -195,6 +221,13 @@ public class Checkbox <: ViewBase {
         this
     }
 
+    /**
+     * setting the shape of checkbox.
+     *
+     * @param { CheckBoxShape } value - The configuration of checkbox shape.
+     * @returns { This }
+     * @relation shape(value: CheckBoxShape): CheckboxAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -207,11 +240,6 @@ public class Checkbox <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func responseRegionInner(rect: Rectangle): This {
         let cjRect = rect.parseToNative()
         unsafe {
@@ -231,11 +259,6 @@ public class Checkbox <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func responseRegionInner(array: Array<Rectangle>): This {
         let vecFFi = FFIVectorNativeRectangle(array.size)
         var index = 0
