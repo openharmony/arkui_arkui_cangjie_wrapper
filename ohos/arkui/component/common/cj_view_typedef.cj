@@ -20,194 +20,288 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import std.deriving.Derive
 
 protected const INVALID_CALLBACK_ID = 0
 
+/**
+ * Defines modal transition type.
+ *
+ * @relation declare enum ModalTransition
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ModalTransition {
+    /**
+     * Use default animation.
+     *
+     * @relation DEFAULT
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    DEFAULT
-    | @!APILevel[
+    Default |
+    /**
+     * No transition animation for the modal.
+     *
+     * @relation NONE
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    NONE
-    | @!APILevel[
+    None |
+    /**
+     * Use alpha animation.
+     *
+     * @relation ALPHA
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    ALPHA
-    | ...
+    Alpha |
+    ...
 
     func getValue(): UInt32 {
         match (this) {
-            case DEFAULT => 0
-            case NONE => 1
-            case ALPHA => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case Default => 0
+            case None => 1
+            case _ => 2
         }
     }
 }
 
+/**
+ * Defines sheet size type.
+ *
+ * @relation declare enum SheetSize
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SheetSize {
+    /**
+     * The sheet height is half of the screen height.
+     *
+     * @relation MEDIUM
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    MEDIUM
-    | @!APILevel[
+    Medium |
+    /**
+     * The sheet height is half of the screen height.
+     *
+     * @relation LARGE
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    LARGE
-    | @!APILevel[
+    Large |
+    /**
+     * The sheet height is half of the screen height.
+     *
+     * @relation FIT_CONTENT
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    FIT_CONTENT
+    FitContent
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case MEDIUM => 0
-            case LARGE => 1
-            case FIT_CONTENT => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case Medium => 0
+            case Large => 1
+            case _ => 2
         }
     }
 }
 
+/**
+ * Defines the sheet type.
+ *
+ * @relation declare enum SheetType.
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SheetType {
+    /**
+     * Bottom sheet.
+     *
+     * @relation BOTTOM = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    BOTTOM
-    | @!APILevel[
+    Bottom |
+    /**
+     * Center sheet.
+     *
+     * @relation CENTER = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    CENTER
-    | @!APILevel[
+    Center |
+    /**
+     * Popup sheet. The popup sheet cannot be dismissed with a pull-down gesture.
+     *
+     * @relation POPUP = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    POPUP
+    Popup
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case BOTTOM => 0
-            case CENTER => 1
-            case POPUP => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case Bottom => 0
+            case Center => 1
+            case _ => 2
         }
     }
 }
 
-
+/**
+ * Defines the options of blur
+ *
+ * @relation declare interface BlurOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BlurOptions {
+    /**
+     * Fuzzy gray scale parameter
+     *
+     * @relation grayscale: [number, number]
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var grayscale: VArray<Float32, $2>
+
+    /**
+     * constructor
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init (grayscale: VArray<Float32, $2>) {
+    public init(grayscale: VArray<Float32, $2>) {
         this.grayscale = grayscale
     }
-
 }
 
+/**
+ * Defines the options of ForegroundBlurStyle
+ *
+ * @relation declare interface ForegroundBlurStyleOptions extends BlurStyleOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ForegroundBlurStyleOptions {
+    /**
+     * Color mode used for the foreground blur.
+     * <br>Default value: **ThemeColorMode.System**.
+     *
+     * @relation colorMode?: ThemeColorMode;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var colorMode: ThemeColorMode = SYSTEM
+    public var colorMode: ThemeColorMode = ThemeColorMode.System
+
+    /**
+     * Adaptive color mode.
+     * <br>Default value: **AdaptiveColor.Default**.
+     *
+     * @relation colorMode?: ThemeColorMode;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var adaptiveColor: AdaptiveColor = DEFAULT
+    public var adaptiveColor: AdaptiveColor = AdaptiveColor.Default
+
+    /**
+     * Defines the options of blur
+     *
+     * @relation blurOptions?: BlurOptions;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var blurOptions: BlurOptions = BlurOptions([0.0, 0.0])
+
+    /**
+     * Foreground blur scale.
+     * <br>Default value: **1.0**.
+     * <br>Value range: [0.0, 1.0].
+     *
+     * @relation scale?: number;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var scale: Float32 = 1.0
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        colorMode!: ThemeColorMode = SYSTEM,
-        adaptiveColor!: AdaptiveColor = DEFAULT,
-        blurOptions!: BlurOptions = BlurOptions([0.0, 0.0])
-    ) {
-        this.colorMode = colorMode
-        this.adaptiveColor = adaptiveColor
-        this.blurOptions = blurOptions
-    }
 
+    /**
+     * constructor
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        colorMode!: ThemeColorMode = SYSTEM,
-        adaptiveColor!: AdaptiveColor = DEFAULT,
+        colorMode!: ThemeColorMode = ThemeColorMode.System,
+        adaptiveColor!: AdaptiveColor = AdaptiveColor.Default,
         blurOptions!: BlurOptions = BlurOptions([0.0, 0.0]),
-        scale!: Float32
+        scale!: Float32 = 1.0
     ) {
         this.colorMode = colorMode
         this.adaptiveColor = adaptiveColor
@@ -216,31 +310,54 @@ public class ForegroundBlurStyleOptions {
     }
 }
 
+/**
+ * Defines the popup options.
+ *
+ * @relation declare interface PopupButton
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Action {
+public class PopupButton {
     let value: String
     let action: () -> Unit
+
+    /**
+     * constructor
+     *
+     * @param {String} value - Button text value
+     * @param { () -> Unit } action - action
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init (value!: String, action!: () -> Unit) {
+    public init(value!: String, action!: () -> Unit) {
         this.value = value
         this.action = action
     }
 }
 
+/**
+ * Popup state change param
+ *
+ * @relation declare interface PopupStateChangeParam
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class StateChangeEvent {
+public class PopupStateChangeParam {
+    /**
+     * is Visible.
+     * Anonymous Object Rectification.
+     *
+     * @relation isVisible: boolean;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -248,180 +365,316 @@ public class StateChangeEvent {
     ]
     public var isVisible: Bool
 
+    /**
+     * constructor
+     *
+     * @param {Bool} value
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init (isVisible: Bool) {
-        this.isVisible = isVisible
+    public init(value: Bool) {
+        this.isVisible = value
     }
 }
 
+/**
+ * Defines the popup options.
+ *
+ * @relation declare interface PopupOptions
+ */
 @!APILevel[
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PopupOptions {
+    /**
+     * Content of the popup message.
+     *
+     * @relation message: string;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var message: String = ""
+
+    /**
+     * The first button.
+     *
+     *
+     * @relation primaryButton?: PopupButton;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var placementOnTop: Bool = false
+    public var primaryButton: PopupButton = PopupButton(value: "", action: {=>})
+
+    /**
+     * The second button.
+     *
+     *
+     * @relation secondaryButton?:PopupButton
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var primaryButton: Action = Action(value: "", action: {=>})
+    public var secondaryButton: PopupButton = PopupButton(value: "", action: {=>})
+
+    /**
+     * on State Change
+     *
+     * @relation onStateChange?: PopupStateChangeCallback;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var secondaryButton: Action = Action(value: "", action: {=>})
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var onStateChange: Option<(StateChangeEvent) -> Unit> = Option.None
+    public var onStateChange: ?(PopupStateChangeParam) -> Unit = Option.None
+
+    /**
+     * Parameters of the popup message
+     *
+     * @relation messageOptions?: PopupMessageOptions
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var messageOptions: PopupMessageOptions = PopupMessageOptions()
+
+    /**
+     * The offset of the sharp corner of popup.
+     *
+     * @relation arrowOffset?: Length;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowOffset: Length = 0.vp
+
+    /**
+     * Whether to display in the sub window.
+     *
+     * @relation showInSubWindow?: boolean;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: Bool = false
+
+    /**
+     * Whether to apply a mask to the popup.
+     * and a color value means to apply a mask in the corresponding color to the popup.
+     *
+     * @relation mask?: boolean | { color: ResourceColor };
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var mask: Color = Color(0x1000000)
+    public var mask: ResourceColor = Color(0x1000000)
+
+    /**
+     * Sets the space of between the popup and target.
+     *
+     * @relation targetSpace?: Length
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var targetSpace: Length = 0.vp
+
+    /**
+     * The placement of popup.
+     * Supports all positions defined in Placement.
+     *
+     * @relation placement?: Placement;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var placement: ?Placement = Option.None
+    public var placement: Placement = Placement.BottomLeft
+
+    /**
+     * Sets the position offset of the popup.
+     *
+     * @relation offset?: Position
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: Position = Position(0.0, 0.0)
+
+    /**
+     * whether show arrow
+     *
+     * @relation enableArrow?: boolean;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enableArrow: Bool = true
+
+    /**
+     * Sets the position offset of the popup.
+     *
+     * @relation popupColor?: Color | string | Resource | number;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var popupColor: Color = Color(0x1000000)
+    public var popupColor: ResourceColor = Color(0x1000000)
+
+    /**
+     * Whether hide popup when click mask.
+     *
+     * @relation autoCancel?: boolean;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: Bool = true
+
+    /**
+     * Set the width of the popup.
+     *
+     * @relation width?: Dimension;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: Length = 0.vp
+
+    /**
+     * The position of the sharp corner of popup.
+     *
+     * @relation arrowPointPosition?: ArrowPointPosition;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowPointPosition: Option<ArrowPointPosition> = None
+
+    /**
+     * The width of the arrow.
+     *
+     * @relation arrowWidth?: Dimension;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var arrowWidth: Length = 16.vp
+    public var arrowWidth: Length = 16.0.vp
+
+    /**
+     * The height of the arrow.
+     *
+     * @relation arrowWidth?: Dimension;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var arrowHeight: Length = 8.vp
+    public var arrowHeight: Length = 8.0.vp
+
+    /**
+     * The round corners of the popup.
+     *
+     * @relation adius?: Dimension;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var radius: Length = 20.vp
+    public var radius: Length = 20.0.vp
+
+    /**
+     * The style of popup Shadow.
+     *
+     * @relation shadow?: ShadowOptions | ShadowStyle;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var shadow: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD
+    public var shadow: ShadowStyle = ShadowStyle.OuterDefaultMD
+
+    /**
+     * Defines popup background blur Style
+     *
+     * @relation backgroundBlurStyle?: BlurStyle;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
+    /**
+     * Defines the transition effect of popup opening and closing
+     *
+     * @relation transition?: TransitionEffect;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var transition: Option<TransitionEffect> = Option.None
+    public var transition: ?TransitionEffect = Option.None
+
+    /**
+     * Callback function when the popup interactive dismiss
+     *
+     * @relation onWillDismiss?: boolean | Callback<DismissPopupAction>;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var onWillDismiss: Option<(DismissPopupAction) -> Unit> = None
+    public var onWillDismiss: ?(DismissPopupAction) -> Unit = None
+
+    /**
+     * Determine if popup can follow the target node when it has rotation or scale
+     *
+     * @relation followTransformOfTarget?: boolean;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var followTransformOfTarget: Bool = false
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        message!: String,
-        placementOnTop!: Bool = false,
-        primaryButton!: Action = Action(value: "", action: {=>}),
-        secondaryButton!: Action = Action(value: "", action: {=>}),
-        onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None
-    ) {
-        this.message = message
-        this.placementOnTop = placementOnTop
-        this.primaryButton = primaryButton
-        this.secondaryButton = secondaryButton
-        this.onStateChange = onStateChange
-    }
 
+    /**
+     * constructor
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
         message!: String,
-        placementOnTop!: Bool = false,
-        primaryButton!: Action = Action(value: "", action: {=>}),
-        secondaryButton!: Action = Action(value: "", action: {=>}),
-        onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None,
+        primaryButton!: PopupButton = PopupButton(value: "", action: {=>}),
+        secondaryButton!: PopupButton = PopupButton(value: "", action: {=>}),
+        onStateChange!: Option<(PopupStateChangeParam) -> Unit> = Option.None,
         arrowOffset!: Length = 0.vp,
         showInSubWindow!: Bool,
         messageOptions!: PopupMessageOptions = PopupMessageOptions(),
         mask!: Color = Color(0x1000000),
         targetSpace!: Length = 0.vp,
-        placement!: ?Placement = Option.None,
+        placement!: Placement = Placement.BottomLeft,
         offset!: Position = Position(0.0, 0.0),
         enableArrow!: Bool = true,
         popupColor!: Color = Color(0x1000000),
@@ -431,14 +684,13 @@ public class PopupOptions {
         arrowWidth!: Length = 16.vp,
         arrowHeight!: Length = 8.vp,
         radius!: Length = 20.vp,
-        shadow!: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD,
+        shadow!: ShadowStyle = ShadowStyle.OuterDefaultMD,
         backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
         transition!: ?TransitionEffect = Option.None,
         onWillDismiss!: Option<(DismissPopupAction) -> Unit> = None,
         followTransformOfTarget!: Bool = false
     ) {
         this.message = message
-        this.placementOnTop = placementOnTop
         this.primaryButton = primaryButton
         this.secondaryButton = secondaryButton
         this.onStateChange = onStateChange
@@ -463,168 +715,327 @@ public class PopupOptions {
         this.onWillDismiss = onWillDismiss
         this.followTransformOfTarget = followTransformOfTarget
     }
-
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {}
 }
 
+/**
+ * Defines the menu element.
+ *
+ * @relation declare interface MenuElement
+ */
+public class MenuElement {
+    let value: String
+    let action: () -> Unit
+
+    let icon: ResourceStr = ""
+    let enabled: Bool = true
+    /**
+     * constructor
+     *
+     * @param {ResourceStr} value
+     * @param { () -> Unit } action - action
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(value!: ResourceStr, action!: () -> Unit) {
+        this.value = transResourceStrToString(value)
+        this.action = action
+    }
+}
+
+/**
+ * Defines the custom popup options.
+ *
+ * @relation declare interface CustomPopupOptions
+ */
 @!APILevel[
     21,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomPopupOptions {
+    /**
+     * Popup builder.
+     * <br>The popup attribute is a universal attribute. A custom popup does not support display of another popup.
+     * <br>The position attribute cannot be used for the first-layer container in the builder.
+     * <br>If the position attribute is used, the popup will not be displayed.
+     * <br>If a custom component is used in the builder, the aboutToAppear and aboutToDisappear lifecycle callbacks
+     * of the custom component are irrelevant to the visibility of the popup. As such, the lifecycle of the
+     * custom component cannot be used to determine whether the popup is displayed or not.
+     *
+     * @relation builder: CustomBuilder;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var builder: () -> Unit = {=>}
+    public var builder: CustomBuilder = {=>}
+
+    /**
+     * Preferred position of the popup. If the set position is insufficient for holding the popup,
+     * it will be automatically adjusted.
+     *
+     * @relation placement?: Placement;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var placement: Placement = Placement.Bottom
+
+    /**
+     * mask color of popup
+     *
+     * @relation maskColor?: Color | string | Resource | number;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var maskColor: Color = Color(0x1000000)
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var backgroundColor: Color = Color(0x1000000)
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var enableArrow: Bool = true
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var autoCancel: Bool = true
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var onStateChange: Option<(StateChangeEvent) -> Unit> = Option.None
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var popupColor: ?Color = None
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var arrowOffset: Length = 0.vp
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var showInSubWindow: Bool = false
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var mask: ?Color = None
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var targetSpace: Length = 0.vp
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var offset: Position = Position(0.0, 0.0)
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var width: Length = 0.vp
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var arrowPointPosition: Option<ArrowPointPosition> = None
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var arrowWidth: Length = 16.vp
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var arrowHeight: Length = 8.vp
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var radius: Length = 20.vp
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var shadow: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var focusable: Bool = false
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var transition: Option<TransitionEffect> = Option.None
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var onWillDismiss: Option<(DismissPopupAction) -> Unit> = None
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var followTransformOfTarget: Bool = false
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        builder!: () -> Unit,
-        placement!: Placement = Placement.Bottom,
-        maskColor!: Color = Color(0x1000000),
-        popupColor!: Color = Color(0x1000000),
-        enableArrow!: Bool = true,
-        autoCancel!: Bool = true,
-        onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None
-    ) {
-        this.builder = builder
-        this.placement = placement
-        this.maskColor = maskColor
-        this.popupColor = popupColor
-        this.enableArrow = enableArrow
-        this.autoCancel = autoCancel
-        this.onStateChange = onStateChange
-    }
+    public var maskColor: ResourceColor = Color(0x1000000)
 
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    public var backgroundColor: Color = Color(0x1000000)
+
+    /**
+     * whether show arrow
+     *
+     * @relation enableArrow?: boolean;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var enableArrow: Bool = true
+
+    /**
+     * Whether to automatically dismiss the popup when an operation is performed on the page.
+     * <br>To enable the popup to disappear upon a click on it, place a layout component in the builder place the
+     * <Popup> component in the layout component, and modify the value of the bindPopup variable (show: boolean)
+     * in the onClick event of the layout component.
+     *
+     * @relation autoCancel?: boolean;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var autoCancel: Bool = true
+    /**
+     * on State Change
+     *
+     * @relation onStateChange?: PopupStateChangeCallback;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var onStateChange: Option<(PopupStateChangeParam) -> Unit> = Option.None
+    /**
+     * Color of the popup. To remove the background blur, set backgroundBlurStyle to BlurStyle.NONE.
+     *
+     * @relation popupColor?: Color | string | Resource | number;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var popupColor: ?Color = None
+    /**
+     * The offset of the sharp corner of popup.
+     *
+     * Offset of the popup arrow relative to the popup. When the arrow is at the top or bottom of the popup:
+     * <br>The value 0 indicates that the arrow is located on the leftmost, and any other value indicates the distance
+     * from the arrow to the leftmost; the arrow is centered by default. When the arrow is on the left or right
+     * side of the popup: The value indicates the distance from the arrow to the top; the arrow is centered by
+     * default. When the popup is displayed on either edge of the screen, it will automatically deviate leftward
+     * or rightward to stay within the safe area. When the value is 0, the arrow always points to the bound component.
+     *
+     * @relation arrowOffset?: Length;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var arrowOffset: Length = 0.vp
+
+    /**
+     * Whether to display in the sub window.
+     *
+     * @relation showInSubWindow?: boolean;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var showInSubWindow: Bool = false
+    /**
+     * Whether to apply a mask to the popup.
+     *
+     * @relation mask?: boolean | { color: ResourceColor };
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var mask: ?Color = None
+    /**
+     * Sets the space of between the popup and target.
+     *
+     * @relation targetSpace?: Length
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var targetSpace: Length = 0.vp
+    /**
+     * Sets the position offset of the popup.
+     *
+     * @relation offset?: Position
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var offset: Position = Position(0.0, 0.0)
+    /**
+     * Set the width of the popup.
+     *
+     * @relation width?: Dimension;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var width: Length = 0.vp
+    /**
+     * Position of the popup arrow relative to its parent component. Available positions are Start, Center, and End,
+     * in both vertical and horizontal directions. All these positions are within the parent component area.
+     *
+     * @type { ?ArrowPointPosition }
+     * @relation arrowPointPosition?: ArrowPointPosition;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var arrowPointPosition: Option<ArrowPointPosition> = None
+    /**
+     * Arrow thickness. If the arrow thickness exceeds the length of the edge minus twice the size of the popup
+     * rounded corner, the arrow is not drawn.
+     *
+     * @type { Length }
+     * @relation arrowWidth?: Dimension;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var arrowWidth: Length = 16.vp
+    /**
+     * The height of the arrow.
+     *
+     * @type { Length }
+     * @relation arrowHeight?: Dimension;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var arrowHeight: Length = 8.vp
+    /**
+     * The round corners of the popup.
+     *
+     * @type { Length }
+     * @relation radius?: Dimension;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var radius: Length = 20.vp
+    /**
+     * The style of popup Shadow.
+     * @type { ShadowStyle }
+     * @relation shadow?: ShadowOptions | ShadowStyle;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var shadow: ShadowStyle = ShadowStyle.OuterDefaultMD
+    /**
+     * Background blur style of the popup.
+     * @type { BlurStyle }
+     * @relation backgroundBlurStyle?: BlurStyle;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
+    /**
+     * Set popup focusable
+     * @type { Bool }
+     * @relation focusable?: boolean;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var focusable: Bool = false
+    /**
+     * Defines the transition effect of popup opening and closing
+     *
+     * @type { ?TransitionEffect }
+     * @relation transition?: TransitionEffect;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var transition: Option<TransitionEffect> = Option.None
+    /**
+     * * Whether to perform dismissal event interception and interception callback.
+     * 1. If this parameter is set to false, the system does not respond to the dismissal event initiated by
+     * touching the Back button, swiping left or right on the screen, or pressing the Esc key; and the system
+     * dismisses the popup only when show is set to false. If this parameter is set to true, the system responds
+     * to the dismissal event as expected.
+     * 2. If this parameter is set to a function, the dismissal event is intercepted and the callback function
+     * is executed.
+     * @type { Option<(DismissPopupAction) -> Unit> }
+     * @relation onWillDismiss?: boolean | Callback<DismissPopupAction>;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var onWillDismiss: Option<(DismissPopupAction) -> Unit> = None
+    /**
+     * Determine if popup can follow the target node when it has rotation or scale.
+     *
+     * @type { Bool }
+     * @default false
+     * @relation followTransformOfTarget?: boolean;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var followTransformOfTarget: Bool = false
+    /**
+     * constructor
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(
         builder!: () -> Unit,
         placement!: Placement = Placement.Bottom,
@@ -632,7 +1043,7 @@ public class CustomPopupOptions {
         popupColor!: Color = Color(0x1000000),
         enableArrow!: Bool = true,
         autoCancel!: Bool = true,
-        onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None,
+        onStateChange!: Option<(PopupStateChangeParam) -> Unit> = Option.None,
         showInSubWindow!: Bool, // 5.1 start
         backgroundColor!: Color = Color(0x1000000),
         arrowOffset!: Length = 0.vp,
@@ -644,7 +1055,7 @@ public class CustomPopupOptions {
         arrowWidth!: Length = 16.vp,
         arrowHeight!: Length = 16.vp,
         radius!: Length = 20.vp,
-        shadow!: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD,
+        shadow!: ShadowStyle = ShadowStyle.OuterDefaultMD,
         backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
         focusable!: Bool = false,
         transition!: Option<TransitionEffect> = Option.None,
@@ -676,105 +1087,165 @@ public class CustomPopupOptions {
         this.onWillDismiss = onWillDismiss
         this.followTransformOfTarget = followTransformOfTarget
     }
-
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {}
 }
 
+/**
+ * Defines the options of popup message.
+ *
+ * @relation declare interface PopupMessageOptions
+ */
 @!APILevel[
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public struct PopupMessageOptions {
+public class PopupMessageOptions {
+    /**
+     * Sets the color of popup text.
+     *
+     * @type { ResourceColor }
+     * @relation textColor?: ResourceColor;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public PopupMessageOptions(
-        @!APILevel[
-            21,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let textColor!: Color = Color(0x000000),
-        @!APILevel[
-            21,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let font!: Fonts = Fonts()
-    ) {}
+    public var textColor: ResourceColor
+    /**
+     * Sets the color of popup text.
+     *
+     * @type { Fonts }
+     * @relation font?: Font;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var font: Fonts
+    /**
+     * constructor
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(textColor!: ResourceColor = Color(0x000000), font!: Fonts = Fonts()) {
+        this.textColor = textColor
+        this.font = font
+    }
 }
 
+/**
+ * Defines the OverlayOffset.
+ *
+ * @relation declare interface OverlayOffset
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ContentOffset {
+public class OverlayOffset {
+    /**
+     * Defines x.
+     *
+     * @type { Float64 }
+     * @relation x?: number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var xOffset: Float64
+    public var x: Float64
+    /**
+     * Defines x.
+     *
+     * @type { Float64 }
+     * @relation y?: number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var yOffset: Float64
+    public var y: Float64
+
+    /**
+     * constructor
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: Float64, y!: Float64) {
-        this.xOffset = x
-        this.yOffset = y
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(x!: Int64, y!: Int64) {
-        this.xOffset = Float64(x)
-        this.yOffset = Float64(y)
+    public init(x!: Float64 = 0.0, y!: Float64 = 0.0) {
+        this.x = x
+        this.y = y
     }
 }
 
+/**
+ * Defines the border width property.
+ *
+ * @relation declare interface EdgeWidths
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EdgeWidths {
+    /**
+     * top property.
+     *
+     * @type { Length }
+     * @relation top?: Length;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var top: Length
+    /**
+     * right property.
+     *
+     * @type { Length }
+     * @relation right?: Length;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var right: Length
+    /**
+     * bottom property.
+     *
+     * @type { Length }
+     * @relation bottom?: Length;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bottom: Length
+    /**
+     * left property.
+     *
+     * @type { Length }
+     * @relation left?: Length;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var left: Length
+    /**
+     * constructor
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -792,94 +1263,40 @@ public class EdgeWidths {
     }
 }
 
-
-func parsePlacement(placement: Option<Placement>): NativeOptionInt32 {
-    return match (placement) {
-        case Some(value) => NativeOptionInt32(true, value.getValue())
-        case None => NativeOptionInt32(false, 0)
-    }
-}
-
-func parsePreviewAnimationOptions(previewAnimationOptions: ?ContextMenuAnimationOptions): NativeOptionCJContextMenuAnimationOptions {
-    return match (previewAnimationOptions) {
-        case Some(value) => NativeOptionCJContextMenuAnimationOptions(true, value.parseCContextMenuAnimationOptions())
-        case None => NativeOptionCJContextMenuAnimationOptions(false,
-            ContextMenuAnimationOptions().parseCContextMenuAnimationOptions())
-    }
-}
-
-func parseCallBack(callBack: ?() -> Unit): NativeOptionCallBack {
-    return match (callBack) {
-        case Some(value) => NativeOptionCallBack(true, Callback0Param<Unit>(value).getID())
-        case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
-    }
-}
-
-func parseTransition(transition: ?TransitionEffect): NativeOptionInt64 {
-    return match (transition) {
-        case Some(value) => NativeOptionInt64(true, value.getID())
-        case None => NativeOptionInt64(false, 0)
-    }
-}
-
-func parseBorderRadius(borderRadius: ?BorderRadiuses): NativeOptionRadius {
-    return match (borderRadius) {
-        case Some(value) => NativeOptionRadius(true, value.toCBorderRadiuses())
-        case None => NativeOptionRadius(false, BorderRadiuses().toCBorderRadiuses())
-    }
-}
-
-func parseLayoutRegionMargin(layoutRegionMargin: ?Margin): NativeOptionMargin {
-    return match (layoutRegionMargin) {
-        case Some(value) => NativeOptionMargin(
-            true,
-            NativeMargin(
-                value.top.value,
-                value.top.unitType.getValue(),
-                value.right.value,
-                value.right.unitType.getValue(),
-                value.bottom.value,
-                value.bottom.unitType.getValue(),
-                value.left.value,
-                value.left.unitType.getValue()
-            )
-        )
-        case None => NativeOptionMargin(
-            false,
-            NativeMargin(
-                Margin().top.value,
-                Margin().top.unitType.getValue(),
-                Margin().right.value,
-                Margin().right.unitType.getValue(),
-                Margin().bottom.value,
-                Margin().bottom.unitType.getValue(),
-                Margin().left.value,
-                Margin().left.unitType.getValue()
-            )
-        )
-    }
-}
-
+/**
+ * Overlay module options
+ *
+ * @relation declare interface BindOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class BindOptions {
-    let backgroundColor: Option<Color>
-    let onAppear: Option<() -> Unit>
-    let onDisappear: Option<() -> Unit>
-    let onWillAppear: Option<() -> Unit>
-    let onWillDisappear: Option<() -> Unit>
+    let backgroundColor: ?ResourceColor
+    let onAppear: ?() -> Unit
+    let onDisappear: ?() -> Unit
+    let onWillAppear: ?() -> Unit
+    let onWillDisappear: ?() -> Unit
 
+    /**
+     * constructor
+     *
+     * @param {ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
+     * @param {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
+     * @param {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
+     * @param {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
+     * @param {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(backgroundColor!: Option<Color> = Option.None, onAppear!: Option<() -> Unit> = Option.None,
-        onDisappear!: Option<() -> Unit> = Option.None, onWillAppear!: Option<() -> Unit> = Option.None,
-        onWillDisappear!: Option<() -> Unit> = Option.None) {
+    public init(backgroundColor!: ?ResourceColor = Option.None, onAppear!: ?() -> Unit = Option.None,
+        onDisappear!: ?() -> Unit = Option.None, onWillAppear!: ?() -> Unit = Option.None,
+        onWillDisappear!: ?() -> Unit = Option.None) {
         this.backgroundColor = backgroundColor
         this.onAppear = onAppear
         this.onDisappear = onDisappear
@@ -888,41 +1305,32 @@ public open class BindOptions {
     }
 
     func parseCBindOptions(bindOption: BindOptions): CBindOptions {
-        let backgroundColor = unsafe {
-            match (bindOption.backgroundColor) {
-                case Some(value) => NativeOptionUInt32(true, value.toUInt32())
-                case None => NativeOptionUInt32(false, 0)
+        let backgroundColor = if (let Some(v) <- bindOption.backgroundColor) {
+            NativeOptionUInt32(true, v.toUInt32())
+        } else {
+            NativeOptionUInt32(false, 0)
+        }
+
+        let getCallBack = {
+            callback: ?() -> Unit => return if (let Some(v) <- callback) {
+                NativeOptionCallBack(true, Callback0Param<Unit>(v).getID())
+            } else {
+                NativeOptionCallBack(false, INVALID_CALLBACK_ID)
             }
         }
-        let onAppear = unsafe {
-            match (bindOption.onAppear) {
-                case Some(value) => NativeOptionCallBack(true, Callback0Param<Unit>(value).getID())
-                case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
-            }
-        }
-        let onDisappear = unsafe {
-            match (bindOption.onDisappear) {
-                case Some(value) => NativeOptionCallBack(true, Callback0Param<Unit>(value).getID())
-                case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
-            }
-        }
-        let onWillAppear = unsafe {
-            match (bindOption.onWillAppear) {
-                case Some(value) => NativeOptionCallBack(true, Callback0Param<Unit>(value).getID())
-                case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
-            }
-        }
-        let onWillDisappear = unsafe {
-            match (bindOption.onWillDisappear) {
-                case Some(value) => NativeOptionCallBack(true, Callback0Param<Unit>(value).getID())
-                case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
-            }
-        }
+        let onAppear = getCallBack(bindOption.onDisappear)
+        let onDisappear = getCallBack(bindOption.onDisappear)
+        let onWillAppear = getCallBack(bindOption.onWillAppear)
+        let onWillDisappear = getCallBack(bindOption.onWillDisappear)
         return CBindOptions(backgroundColor, onAppear, onDisappear, onWillAppear, onWillDisappear)
     }
 }
 
-
+/**
+ * Component content cover options
+ *
+ * @relation declare interface ContentCoverOptions extends BindOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -932,20 +1340,32 @@ public class ContentCoverOptions <: BindOptions {
     let modalTransition: ModalTransition
     let onWillDismiss: Option<(DismissContentCoverAction) -> Unit>
     let transition: Option<TransitionEffect>
+    /**
+     * constructor
+     *
+     * @param {ModalTransition} modalTransition - Defines transition type
+     * @param {?(DismissContentCoverAction) -> Unit} onWillDismiss - Callback function when the content cover interactive dismiss.
+     * @param {?TransitionEffect} transition
+     * @param {ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
+     * @param {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
+     * @param {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
+     * @param {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
+     * @param {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        modalTransition!: ModalTransition = ModalTransition.DEFAULT,
-        onWillDismiss!: Option<(DismissContentCoverAction) -> Unit> = Option.None,
-        transition!: Option<TransitionEffect> = Option.None,
-        backgroundColor!: Option<Color> = Option.None,
-        onAppear!: Option<() -> Unit> = Option.None,
-        onDisappear!: Option<() -> Unit> = Option.None,
-        onWillAppear!: Option<() -> Unit> = Option.None,
-        onWillDisappear!: Option<() -> Unit> = Option.None
+        modalTransition!: ModalTransition = ModalTransition.Default,
+        onWillDismiss!: ?(DismissContentCoverAction) -> Unit = Option.None,
+        transition!: ?TransitionEffect = Option.None,
+        backgroundColor!: ?ResourceColor = Option.None,
+        onAppear!: ?() -> Unit = Option.None,
+        onDisappear!: ?() -> Unit = Option.None,
+        onWillAppear!: ?() -> Unit = Option.None,
+        onWillDisappear!: ?() -> Unit = Option.None
     ) {
         super(backgroundColor: backgroundColor, onAppear: onAppear, onDisappear: onDisappear, onWillAppear: onWillAppear,
             onWillDisappear: onWillDisappear)
@@ -953,6 +1373,7 @@ public class ContentCoverOptions <: BindOptions {
         this.onWillDismiss = onWillDismiss
         this.transition = transition
     }
+
     func parseCJContentCoverOptions(contentCoverOptions: ContentCoverOptions): CJContentCoverOptionsV2 {
         let bindOptions = BindOptions(
             backgroundColor: contentCoverOptions.backgroundColor,
@@ -964,22 +1385,19 @@ public class ContentCoverOptions <: BindOptions {
         let cjBindOptions = contentCoverOptions.parseCBindOptions(bindOptions)
         let modalTransition = contentCoverOptions.modalTransition.getValue()
 
-        let transition = unsafe {
-            match (contentCoverOptions.transition) {
-                case Some(value) => NativeOptionInt64(true, value.getID())
-                case None => NativeOptionInt64(false, 0)
-            }
+        let transition = match (contentCoverOptions.transition) {
+            case Some(value) => NativeOptionInt64(true, value.getID())
+            case None => NativeOptionInt64(false, 0)
         }
-        let onWillDismiss = unsafe {
-            match (contentCoverOptions.onWillDismiss) {
-                case Some(value) =>
-                    let wrapper = {
-                        proxy: CJDismissContentCoverAction => value(proxy.parseToCJ())
-                    }
-                    let lambdaData = Callback1Param<CJDismissContentCoverAction, Unit>(wrapper);
-                    NativeOptionCallBack(true, lambdaData.getID())
-                case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
-            }
+
+        let onWillDismiss = match (contentCoverOptions.onWillDismiss) {
+            case Some(value) =>
+                let wrapper = {
+                    proxy: CJDismissContentCoverAction => value(proxy.parseToCJ())
+                }
+                let lambdaData = Callback1Param<CJDismissContentCoverAction, Unit>(wrapper);
+                NativeOptionCallBack(true, lambdaData.getID())
+            case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
         }
         return CJContentCoverOptionsV2(
             modalTransition,
@@ -994,37 +1412,51 @@ public class ContentCoverOptions <: BindOptions {
     }
 }
 
+/**
+ * Component sheet dismiss
+ *
+ * @relation declare interface SheetDismiss
+ */
 @!APILevel[
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SheetDismiss {
+    init() {}
+
+    /**
+     * Defines sheet dismiss function
+     *
+     * @relation dismiss: VoidCallback;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public SheetDismiss() {}
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func dismiss() {
+    public func dismiss(): Unit {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractDismiss()
         }
     }
 }
 
+/**
+ * Defines sheet spring back action
+ *
+ * @relation declare interface SpringBackAction
+ */
 @!APILevel[
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SpringBackAction {
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public SpringBackAction() {}
+    init() {}
+
+    /**
+     * Defines spring back function
+     *
+     * @relation springBack: Callback<void>;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1036,74 +1468,109 @@ public class SpringBackAction {
     }
 }
 
+/**
+ * Define the display mode of the sheet.
+ *
+ * @relation declare enum SheetMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SheetMode {
+    /**
+     * The sheet is displayed at the top of the window corresponding to the current **UIContext** instance,
+     * above all pages. It is displayed at the same level as dialog boxes.
+     *
+     * @relation OVERLAY
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    OVERLAY
-    | @!APILevel[
+    Overlay
+    |
+        /**
+         * The sheet is displayed at the top of the current page.
+         *
+         * @relation EMBEDDED = 1,
+         */
+        @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    EMBEDDED
+    Embedded
     | ...
 
     func toValue(): UInt32 {
         match (this) {
-            case OVERLAY => 0
-            case EMBEDDED => 1
+            case Overlay => 0
+            case Embedded => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func toEnum(value: UInt32): SheetMode {
         if (value == 0) {
-            return SheetMode.OVERLAY
+            return SheetMode.Overlay
         } else if (value == 1) {
-            return SheetMode.EMBEDDED
+            return SheetMode.Embedded
         } else {
-            return SheetMode.OVERLAY
+            return SheetMode.Overlay
         }
     }
 }
 
+/**
+ * Define the scroll size mode of the sheet.
+ *
+ * @relation declare enum ScrollSizeMode
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ScrollSizeMode {
+    /**
+     * Sheet change scroll size after the slide ends.
+     *
+     * @relation OLLOW_DETENT = 0,
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    FOLLOW_DETENT
-    | @!APILevel[
+    FollowDetent
+    |
+        /**
+         * Sheet change scroll size during the sliding process.
+         *
+         * @relation CONTINUOUS = 1,
+         */
+        @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    CONTINUOUS
+    Continuous
     | ...
 
     func toValue(): UInt32 {
         match (this) {
-            case FOLLOW_DETENT => 0
-            case CONTINUOUS => 1
+            case FollowDetent => 0
+            case Continuous => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func toEnum(value: UInt32): ScrollSizeMode {
         if (value == 0) {
-            return ScrollSizeMode.FOLLOW_DETENT
+            return ScrollSizeMode.FollowDetent
         } else if (value == 1) {
-            return ScrollSizeMode.CONTINUOUS
+            return ScrollSizeMode.Continuous
         } else {
-            return ScrollSizeMode.FOLLOW_DETENT
+            return ScrollSizeMode.FollowDetent
         }
     }
 }
@@ -1126,6 +1593,11 @@ func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadow {
     )
 }
 
+/**
+ * Component sheet options
+ *
+ * @relation declare interface SheetOptions extends BindOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -1161,7 +1633,7 @@ public class SheetOptions <: BindOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        backgroundColor!: Option<Color> = Color.White,
+        backgroundColor!: Option<ResourceColor> = Color.White,
         onAppear!: Option<() -> Unit> = Option.None,
         onDisappear!: Option<() -> Unit> = Option.None,
         onWillAppear!: Option<() -> Unit> = Option.None,
@@ -1187,8 +1659,8 @@ public class SheetOptions <: BindOptions {
         borderStyle!: Option<EdgeStyles> = EdgeStyles(),
         width!: Option<Length> = Option.None,
         shadow!: Option<ShadowOptions> = Option.None,
-        mode!: Option<SheetMode> = SheetMode.OVERLAY,
-        scrollSizeMode!: Option<ScrollSizeMode> = ScrollSizeMode.FOLLOW_DETENT
+        mode!: Option<SheetMode> = SheetMode.Overlay,
+        scrollSizeMode!: Option<ScrollSizeMode> = ScrollSizeMode.FollowDetent
     ) {
         super(backgroundColor: backgroundColor, onAppear: onAppear, onDisappear: onDisappear, onWillAppear: onWillAppear,
             onWillDisappear: onWillDisappear)
@@ -1378,36 +1850,72 @@ public class SheetOptions <: BindOptions {
     }
 }
 
+/**
+ * Defines the data type of the interface restriction.
+ *
+ * @relation declare interface Rectangle
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Rectangle {
+    /**
+     * x:Horizontal coordinate
+     *
+     * @type { Length }
+     * @relation x?: Length;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Length
+
+    /**
+     * y:Vertical axis coordinate.
+     *
+     * @type { Length }
+     * @relation y?: Length;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Length
+
+    /**
+     * Sets the width of the current touchRect.
+     *
+     * @type { Length }
+     * @relation width?: Length;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: Length
+
+    /**
+     * Sets the height of the current touchRect.
+     *
+     * @type { Length }
+     * @relation height?: Length;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: Length
+
+    /**
+     * constructor
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -1436,13 +1944,10 @@ public class Rectangle {
 
 class MenuActionData <: FFIData {
     private var actionList: HashMap<String, () -> Unit> = HashMap<String, () -> Unit>()
-    MenuActionData(menuList: Array<Action>) {
+    init(menuList: Array<MenuElement>) {
         super()
         registerSelf()
-        for (i in menuList) {
-            BaseLog.debug("menuActionData storage action: " + i.value)
-            actionList.add(i.value, i.action)
-        }
+        menuList |> forEach<MenuElement> {menus: MenuElement => actionList.add(menus.value, menus.action)}
     }
 
     func actionHandle(value: String): Unit {
@@ -1454,125 +1959,229 @@ class MenuActionData <: FFIData {
     }
 }
 
+/**
+ * Component popup dismiss
+ *
+ * @relation declare interface DismissPopupAction
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DismissPopupAction {
+    /**
+     * Defines popup dismiss reason
+     * @relation reason: DismissReason;
+     */
+    public let reason: DismissReason
+    init(reason!: DismissReason) {
+        this.reason = reason
+    }
+
+    /**
+     * Defines popup dismiss function
+     * @relation dismiss(): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public DismissPopupAction(
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let reason!: DismissReason) {}
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func dismiss() {
+    public func dismiss(): Unit {
         unsafe {
             FfiOHOSAceFrameworkPopupDismiss()
         }
     }
 }
 
+/**
+ * Defines the context menu options.
+ *
+ * @relation declare interface ContextMenuOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public open class ContextMenuOptions {
+public class ContextMenuOptions {
+    /**
+     * Sets the position offset of the context menu window.
+     *
+     * @type { Position }
+     * @relation offset?: Position;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var offset: Position = Position(0.0, 0.0)
 
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var offset: Position = Position(0.0, 0.0)
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var placement: Option<Placement> = Option.None
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var enableArrow: Bool = false
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var arrowOffset: Length = 0.vp
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var preview: Option<() -> Unit> = Option.None
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var previewAnimationOptions: ?ContextMenuAnimationOptions = None
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var onAppear: ?() -> Unit = None
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var onDisappear: ?() -> Unit = None
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var aboutToAppear: ?() -> Unit = None
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var aboutToDisappear: ?() -> Unit = None
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var backgroundColor: ResourceColor = Color.Transparent
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var transition: ?TransitionEffect = None
+    /**
+     * Preferred position of the context menu. If the set position is insufficient for holding the component, it will be
+     * automatically adjusted
+     *
+     * @type { ?Placement }
+     * @relation placement?: Placement;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var placement: Option<Placement> = Option.None
 
-        var borderRadius: ?BorderRadiuses = None
-        var layoutRegionMargin: ?Margin = None
+    /**
+     * whether show arrow belong to the menu.
+     *
+     * @type { ?Bool }
+     * @relation enableArrow?: boolean;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var enableArrow: Bool = false
 
+    /**
+     * The horizontal offset to the left of menu or vertical offset to the top of menu
+     *
+     * @type { Length }
+     * @relation arrowOffset?: Length;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var arrowOffset: Length = 0.vp
+
+    /**
+    * The preview content of context menu.
+    * 
+    * @type { ?CustomBuilder }
+    * @relation preview?: MenuPreviewMode | CustomBuilder;
+    */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var preview: ?CustomBuilder = Option.None
+
+    /**
+     * The preview animator options.
+     *
+     * @type { ?ContextMenuAnimationOptions }
+     * @relation previewAnimationOptions?: ContextMenuAnimationOptions;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var previewAnimationOptions: ?ContextMenuAnimationOptions = None
+
+    /**
+     * Callback triggered when the menu is displayed.
+     *
+     * @type { ?() -> Unit }
+     * @relation onAppear?: () => void;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var onAppear: ?() -> Unit = None
+
+    /**
+     * Callback function when the context menu disappear.
+     *
+     * @type { ?() -> Unit }
+     * @relation onDisappear?: () => void;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var onDisappear: ?() -> Unit = None
+
+    /**
+     * Callback triggered when the menu is about to appear.
+     *
+     * @type { ?() -> Unit }
+     * @relation aboutToAppear?: () => void;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var aboutToAppear: ?() -> Unit = None
+
+    /**
+     * Callback triggered when the menu is about to disappear.
+     *
+     * @type { ?() -> Unit }
+     * @relation aboutToDisappear?: () => void;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var aboutToDisappear: ?() -> Unit = None
+
+    /**
+     * Background color of the menu.
+     *
+     * @type { ResourceColor }
+     * @relation backgroundColor?: ResourceColor;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundColor: ResourceColor = Color.Transparent
+
+    /**
+     * Background blur style of the menu.
+     *
+     * @type { BlurStyle }
+     * @relation backgroundBlurStyle?: BlurStyle;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
+
+    /**
+     * Defines the transition effect of menu opening and closing.
+     *
+     * @type { ?TransitionEffect }
+     * @relation transition?: TransitionEffect;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var transition: ?TransitionEffect = None
+
+    var borderRadius: ?BorderRadiuses = None
+    var layoutRegionMargin: ?Margin = None
+
+    /**
+     * constructor
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -1610,7 +2219,6 @@ public open class ContextMenuOptions {
         this.layoutRegionMargin = layoutRegionMargin
     }
 
-
     func parseContextMenuOptions(): CJContextMenuOptions {
         CJContextMenuOptions(
             NativePosition(offset.x, offset.y),
@@ -1633,12 +2241,22 @@ public open class ContextMenuOptions {
     }
 }
 
+/**
+ * Component content cover dismiss
+ *
+ * @relation declare interface DismissContentCoverAction
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DismissContentCoverAction {
+    /**
+     * Defines content cover dismiss reason
+     *
+     * @relation reason: DismissReason;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -1653,6 +2271,10 @@ public class DismissContentCoverAction {
         this.mDismissContentCover = dismissContentCover
     }
 
+    /**
+     *  Defines content cover dismiss function
+     * @relation dismiss: Callback<void>;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -1665,22 +2287,49 @@ public class DismissContentCoverAction {
     }
 }
 
+/**
+ * Defines the ContextMenu's preview animator options.
+ *
+ * @relation interface ContextMenuAnimationOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public open class ContextMenuAnimationOptions {
-    public var scale: ?(Float64, Float64) = None
+public class ContextMenuAnimationOptions {
+    /**
+     * Sets the start animator scale and end animator scale.
+     *
+     * @type { ?VArray<Float64, $2> }
+     * @relation scale?: AnimationRange<number>;
+     */
+    public var scale: ?VArray<Float64, $2> = None
+    /**
+     * Defines the transition effect of menu preview opening and closing.
+     *
+     * @type { ?TransitionEffect }
+     * @relation transition?: TransitionEffect;
+     */
     public var transition: ?TransitionEffect = None
-    public var hoverScale: ?(Float64, Float64) = None
+    /**
+     * Sets the scale start and end animator of the image displayed before the custom builder preview is displayed.
+     *
+     * @type { ?VArray<Float64, $2>  }
+     * @relation hoverScale?: AnimationRange<number>;
+     */
+    public var hoverScale: ?VArray<Float64, $2> = None
+
+    /**
+     * constructor
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init (scale!: ?(Float64, Float64) = None, transition!: ?TransitionEffect = None,
-        hoverScale!: ?(Float64, Float64) = None) {
+    public init(scale!: ?VArray<Float64, $2> = None, transition!: ?TransitionEffect = None,
+        hoverScale!: ?VArray<Float64, $2> = None) {
         this.scale = scale
         this.transition = transition
         this.hoverScale = hoverScale
@@ -1721,12 +2370,22 @@ public open class ContextMenuAnimationOptions {
     }
 }
 
+/**
+ * Component sheet dismiss
+ *
+ * @relation declare interface DismissSheetAction
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DismissSheetAction {
+    /**
+     * Dismiss reason type.
+     *
+     * @relation reason: DismissReason;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -1738,16 +2397,21 @@ public class DismissSheetAction {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init (reason: DismissReason) {
+    init(reason: DismissReason) {
         this.reason = reason
     }
 
+    /**
+     *  Defines sheet dismiss function
+     *
+     * @relation reason: DismissReason;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func dismiss() {
+    public func dismiss(): Unit {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractDismiss()
         }
@@ -1755,5 +2419,74 @@ public class DismissSheetAction {
 }
 
 protected interface CombinationKeyType {}
+
 extend FunctionKey <: CombinationKeyType {}
+
 extend String <: CombinationKeyType {}
+
+func parsePlacement(placement: Option<Placement>): NativeOptionInt32 {
+    return match (placement) {
+        case Some(value) => NativeOptionInt32(true, value.getValue())
+        case None => NativeOptionInt32(false, 0)
+    }
+}
+
+func parsePreviewAnimationOptions(previewAnimationOptions: ?ContextMenuAnimationOptions): NativeOptionCJContextMenuAnimationOptions {
+    return match (previewAnimationOptions) {
+        case Some(value) => NativeOptionCJContextMenuAnimationOptions(true, value.parseCContextMenuAnimationOptions())
+        case None => NativeOptionCJContextMenuAnimationOptions(false,
+            ContextMenuAnimationOptions().parseCContextMenuAnimationOptions())
+    }
+}
+
+func parseCallBack(callBack: ?() -> Unit): NativeOptionCallBack {
+    return match (callBack) {
+        case Some(value) => NativeOptionCallBack(true, Callback0Param<Unit>(value).getID())
+        case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
+    }
+}
+
+func parseTransition(transition: ?TransitionEffect): NativeOptionInt64 {
+    return match (transition) {
+        case Some(value) => NativeOptionInt64(true, value.getID())
+        case None => NativeOptionInt64(false, 0)
+    }
+}
+
+func parseBorderRadius(borderRadius: ?BorderRadiuses): NativeOptionRadius {
+    return match (borderRadius) {
+        case Some(value) => NativeOptionRadius(true, value.toCBorderRadiuses())
+        case None => NativeOptionRadius(false, BorderRadiuses().toCBorderRadiuses())
+    }
+}
+
+func parseLayoutRegionMargin(layoutRegionMargin: ?Margin): NativeOptionMargin {
+    return match (layoutRegionMargin) {
+        case Some(value) => NativeOptionMargin(
+            true,
+            NativeMargin(
+                value.top.value,
+                value.top.unitType.getValue(),
+                value.right.value,
+                value.right.unitType.getValue(),
+                value.bottom.value,
+                value.bottom.unitType.getValue(),
+                value.left.value,
+                value.left.unitType.getValue()
+            )
+        )
+        case None => NativeOptionMargin(
+            false,
+            NativeMargin(
+                Margin().top.value,
+                Margin().top.unitType.getValue(),
+                Margin().right.value,
+                Margin().right.unitType.getValue(),
+                Margin().bottom.value,
+                Margin().bottom.unitType.getValue(),
+                Margin().left.value,
+                Margin().left.unitType.getValue()
+            )
+        )
+    }
+}

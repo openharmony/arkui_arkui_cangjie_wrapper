@@ -19,6 +19,16 @@ import ohos.base.*
 import ohos.labels.APILevel
 import std.collection.*
 
+/**
+ * LocalStorage
+ * Class implements a Map of ObservableObjectBase UI state variables.
+ * Instances can be created to manage UI state within a limited "local"
+ * access, and life cycle as defined by the app.
+ * AppStorage singleton is sub-class of LocalStorage for
+ * UI state of app-wide access and same life cycle as the app.
+ *
+ * @relation declare class LocalStorage
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -27,6 +37,13 @@ import std.collection.*
 public class LocalStorage {
     protected let storage: HashMap<String, ObservedPropertyAbstract>
 
+    /**
+     * Construct new instance of LocalStorage
+     * initialize with all properties and their values that Object.keys(params) returns
+     * Property values must not be undefined.
+     *
+     * @relation constructor(initializingProperties?: Object)
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -45,6 +62,15 @@ public class LocalStorage {
         return this.clear()
     }
 
+    /**
+     * Check if LocalStorage has a property with given name
+     * return true if property with given name exists
+     * same as ES6 Map.prototype.has()
+     *
+     * @param { String } propName - searched property
+     * @returns { Bool } true if property with such name exists in LocalStorage
+     * @relation has(propName: string): boolean;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -54,6 +80,13 @@ public class LocalStorage {
         return this.storage.contains(propName)
     }
 
+    /**
+     * Provide names of all properties in LocalStorage
+     * same as ES6 Map.prototype.keys()
+     *
+     * @returns { EquatableCollection<String> }
+     * @relation keys(): IterableIterator<string>;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -63,6 +96,13 @@ public class LocalStorage {
         return this.storage.keys()
     }
 
+    /**
+     * Returns number of properties in LocalStorage
+     * same as Map.prototype.size()
+     *
+     * @returns { Int64 } return number of properties
+     * @relation size(): number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -72,6 +112,14 @@ public class LocalStorage {
         return this.storage.size
     }
 
+    /**
+     * Returns value of given property
+     * return undefined if no property with this name
+     *
+     * @param { String } propName
+     * @returns { ?T } property value if found
+     * @relation get<T>(propName: string): T | undefined;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -88,6 +136,16 @@ public class LocalStorage {
         }
     }
 
+    /**
+     * Set value of given property in LocalStorage
+     * Method sets nothing and returns false if property with this name does not exist in LocalStorage
+     * newValue can be undefined or null from API 12.
+     *
+     * @param { String } propName
+     * @param { T } newValue - must be of type T
+     * @returns { Bool } true on success
+     * @relation set<T>(propName: string, newValue: T): boolean;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -106,6 +164,16 @@ public class LocalStorage {
         }
     }
 
+    /**
+     * Set value of given property, if it exists, see set() .
+     * Add property if no property with given name and initialize with given value.
+     * newValue can be undefined or null from API 12
+     *
+     * @param { String } propName
+     * @param { T } newValue - must be of type T, can be undefined or null
+     * @returns { boolean } true on success, i.e. when above conditions are satisfied, otherwise false
+     * @relation setOrCreate<T>(propName: string, newValue: T): boolean;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -127,6 +195,13 @@ public class LocalStorage {
         this.storage.add(propName, ObservedProperty<T>(propName, value))
     }
 
+    /**
+     * Create and return a two-way sync "(link") to named property
+     *
+     * @param { String } propName - name of source property in LocalStorage
+     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
+     * @relation link<T>(propName: string): SubscribedAbstractProperty<T>;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -143,6 +218,16 @@ public class LocalStorage {
         }
     }
 
+    /**
+     * Like see link(), but will create and initialize a new source property in LocalStorage if missing
+     *
+     * @param { String } propName - name of source property in LocalStorage
+     * @param { T } defaultValue - value to be used for initializing new property in LocalStorage
+     *        default value must be of type T.
+     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
+     *          Apps can use SDK functions of base class ObservedProperty<T>
+     * @relation setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -157,6 +242,13 @@ public class LocalStorage {
         return this.link<T>(propName).getOrThrow()
     }
 
+    /**
+     * Create and return a one-way sync ('prop') to named property
+     *
+     * @param { String } propName - name of source property in LocalStorage
+     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
+     * @relation  prop<S>(propName: string): SubscribedAbstractProperty<S>;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -173,6 +265,15 @@ public class LocalStorage {
         }
     }
 
+    /**
+     * Like see prop(), will create and initialize a new source property in LocalStorage if missing
+     *
+     * @param { String } propName - name of source property in LocalStorage
+     * @param { T } defaultValue - value to be used for initializing new property in LocalStorage.
+     *         Default value must be of type T.
+     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
+     * @relation  prop<S>(propName: string): SubscribedAbstractProperty<S>;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -187,6 +288,24 @@ public class LocalStorage {
         return this.`prop`<T>(propName).getOrThrow()
     }
 
+    /**
+     * Delete property from StorageBase
+     * Use with caution:
+     * Before deleting a prop from LocalStorage all its subscribers need to
+     * unsubscribe from the property.
+     * This method fails and returns false if given property still has subscribers
+     * Another reason for failing is unknown property.
+     * Developer advise:
+     * Subscribers are created with see link(), see prop()
+     * and also via @LocalStorageLink and @LocalStorageProp state variable decorators.
+     * That means as long as their is a @Component instance that uses such decorated variable
+     * or a sync relationship with a SubscribedAbstractProperty variable the property can nit
+     * (and also should not!) be deleted from LocalStorage.
+     *
+     * @param { String } propName
+     * @returns { Bool } false if method failed
+     * @relation delete(propName: string): boolean;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -206,6 +325,15 @@ public class LocalStorage {
         }
     }
 
+    /**
+     * Delete all properties from the LocalStorage instance
+     * Precondition is that there are no subscribers.
+     * method returns false and deletes no properties if there is any property
+     * that still has subscribers
+     *
+     * @returns { Bool }
+     * @relation clear(): boolean;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,

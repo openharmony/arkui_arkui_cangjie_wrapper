@@ -19,14 +19,9 @@ import ohos.base.*
 
 foreign {
     func FfiOHOSAceFrameworkSymbolSpanCreate(id: UInt32): Unit
-
     func FfiOHOSAceFrameworkSymbolSpanSetFontColor(array: VectorUInt32Handle): Unit
-
     func FfiOHOSAceFrameworkSymbolSpanSetFontSize(size: Float64, unit: Int32): Unit
-
     func FfiOHOSAceFrameworkSymbolSpanSetFontWeight(value: CString): Unit
-
     func FfiOHOSAceFrameworkSymbolSpanSetSymbolRenderingStrategy(strategy: Int32): Unit
-
     func FfiOHOSAceFrameworkSymbolSpanSetEffectStrategy(strategy: Int32): Unit
 }

@@ -90,6 +90,11 @@ func notifyCallbackBool(key: CString, value: Bool): Unit {
     AppStorage.setOrCreate<Bool>(key.toString(), value)
 }
 
+/**
+ * Defines the PersistentStorage interface.
+ *
+ * @relation declare class PersistentStorage
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -163,6 +168,13 @@ public class PersistentStorage <: Observer {
         PersistentStorage.instance.getOrThrow()
     }
 
+      /**
+   * Called when a persistence property is stored.
+   *
+   * @param { String } key
+   * @param { T } defaultValue
+   * @relation static PersistProp<T>(key: string, defaultValue: T): void;
+   */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -172,6 +184,14 @@ public class PersistentStorage <: Observer {
         PersistentStorage.getOrCreate().innerPersistProp(key, defaultValue)
     }
 
+     /**
+   * Persist given AppStorage properties with given names.
+   * If a property does not exist in AppStorage, add it and initialize it with given value
+   * works as persistProp for multiple properties.
+   *
+   * @param { Array<(String, T)> } key
+   * @relation static persistProps(props: PersistPropsOptions[]): void;
+   */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -181,6 +201,12 @@ public class PersistentStorage <: Observer {
         PersistentStorage.getOrCreate().innerPersistProps(props)
     }
 
+    /**
+    * Reverse of persistProp
+    *
+    * @param { String } key - no longer persist the property named key
+    * @relation static deleteProp(key: string): void;
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -190,6 +216,12 @@ public class PersistentStorage <: Observer {
         PersistentStorage.getOrCreate().innerDeleteProp(key)
     }
 
+    /**
+    * Inform persisted AppStorage property names
+    *
+    * @returns { Array<string> } array of AppStorage keys
+    * @relation  static keys(): Array<string>;
+    */
     @!APILevel[
         21,
         stagemodelonly: true,

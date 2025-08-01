@@ -74,13 +74,7 @@ public class If <: UINodeBase {
         }
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func pop(): Unit {
+    func pop(): Unit {
         unsafe {
             FfiOHOSAceFrameworkIfElsePop()
         }
@@ -108,13 +102,7 @@ public class If <: UINodeBase {
         pop()
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func genChild(): Unit {
+    func genChild(): Unit {
         child()
     }
 }

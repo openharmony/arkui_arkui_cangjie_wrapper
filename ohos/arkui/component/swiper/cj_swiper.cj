@@ -922,11 +922,6 @@ public class Swiper <: ContainerBase {
     }
 
     // TODO
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func widthInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
@@ -936,11 +931,6 @@ public class Swiper <: ContainerBase {
     }
 
     // TODO
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func heightInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
@@ -950,11 +940,6 @@ public class Swiper <: ContainerBase {
     }
 
     // TODO
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func sizeInner(width: Length, height: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
@@ -982,12 +967,7 @@ public class Swiper <: ContainerBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func onClick(callback: (ClickEvent) -> Unit): This {
+    protected override func onClickInner(callback: (ClickEvent) -> Unit): This {
         let wrapper = {
             evt: CJClickEvent => callback(parseCJClickEvent(evt))
         }

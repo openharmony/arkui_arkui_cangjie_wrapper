@@ -24,19 +24,12 @@ import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSObserverRegisterScrollEventCallback(callbackId: Int64): Unit
-
     func FfiOHOSObserverUnRegisterScrollEventCallback(callbackId: Int64): Unit
-
-    func FfiOHOSObserverRegisterScrollEventCallbackWithOptions(options: CString, callbackId: Int64): Unit
-
-    func FfiOHOSObserverUnRegisterScrollEventCallbackWithOptions(options: CString, callbackId: Int64): Unit
-
     func FfiOHOSObserverRegisterTabContentUpdateCallback(callbackId: Int64): Unit
-
     func FfiOHOSObserverUnRegisterTabContentUpdateCallback(callbackId: Int64): Unit
-
+    func FfiOHOSObserverRegisterScrollEventCallbackWithOptions(options: CString, callbackId: Int64): Unit
+    func FfiOHOSObserverUnRegisterScrollEventCallbackWithOptions(options: CString, callbackId: Int64): Unit
     func FfiOHOSObserverRegisterTabContentUpdateCallbackWithOptions(options: CString, callbackId: Int64): Unit
-
     func FfiOHOSObserverUnRegisterTabContentUpdateCallbackWithOptions(options: CString, callbackId: Int64): Unit
 }
 

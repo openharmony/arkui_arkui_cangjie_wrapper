@@ -17,7 +17,7 @@ package ohos.arkui.component.common
 
 @C
 struct CJContentCoverOptionsV2 {
-    protected CJContentCoverOptionsV2(
+    CJContentCoverOptionsV2(
         let modalTransition: UInt32,
         let onWillDismiss: NativeOptionCallBack,
         let transition: NativeOptionInt64,
@@ -119,14 +119,14 @@ struct CJAlignRuleOption {
 
 @C
 protected struct CTranslateOptions {
-    protected let x: Float64
-    protected let xType: UInt32
-    protected let y: Float64
-    protected let yType: UInt32
-    protected let z: Float64
-    protected let zType: UInt32
+    let x: Float64
+    let xType: UInt32
+    let y: Float64
+    let yType: UInt32
+    let z: Float64
+    let zType: UInt32
 
-    protected CTranslateOptions(options: TranslateOptions) {
+    init(options: TranslateOptions) {
         x = options.x.value
         xType = UInt32(options.x.unitType.getValue())
         y = options.y.value

@@ -162,29 +162,37 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
     }
 }
 
+/**
+ * Enter the value to obtain the LazyForEach.
+ *
+ * @realtion interface LazyForEachInterface
+ */
 @!APILevel[
     21,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LazyForEach <: UINodeBase {
     var child: () -> Unit = {=>}
-    private static var uniqueKey_ = 0
+    private static var uniqueKey = 0
+
+    /**
+     * Enter the value to obtain the LazyForEach.
+     *
+     */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public LazyForEach() {}
 
+    /**
+     * Enter the value to obtain the LazyForEach.
+     *
+     */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -192,8 +200,8 @@ public class LazyForEach <: UINodeBase {
         itemGeneratorFunc!: ItemGenFuncType<T>,
         keyGeneratorFunc!: KeyGenFuncType<T> = {
             _: T, idx: Int64 =>
-            uniqueKey_++
-            return "${viewID} - ${idx} - ${uniqueKey_}"
+            uniqueKey++
+            return "${viewID} - ${idx} - ${uniqueKey}"
         }): LazyForEach {
         let funcs = LazyForEachFuncs<T>(parentView, dataSource, itemGeneratorFunc, keyGeneratorFunc)
         unsafe {
@@ -202,21 +210,16 @@ public class LazyForEach <: UINodeBase {
         this
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func lazyForEachPop(): Unit {
+    func genChild(): Unit {
+        child()
+    }
+
+    func lazyForEachPop(): Unit {
         unsafe { FfiOHOSAceFrameworkLazyForEachPop() }
     }
 
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -227,23 +230,10 @@ public class LazyForEach <: UINodeBase {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func update(): Unit {
         lazyForEachPop()
-    }
-
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func genChild(): Unit {
-        child()
     }
 }

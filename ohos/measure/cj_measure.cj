@@ -20,6 +20,48 @@ import ohos.ffi.*
 import ohos.arkui.component.*
 import ohos.labels.APILevel
 
+@C
+struct CJMeasureContextToC {
+    CJMeasureContextToC(
+        let textContent: CString,
+        let fontWeight: CString,
+        let fontFamily: CString,
+        let constraintWidth: NativeOptionLength,
+        let fontSize: NativeOptionLength,
+        let lineHeight: NativeOptionLength,
+        let baselineOffset: NativeOptionLength,
+        let letterSpacing: NativeOptionLength,
+        let textIndent: NativeOptionLength,
+        let maxLines: UInt32,
+        let textAlign: Int32,
+        let fontStyle: Int32,
+        let overflow: Int32,
+        let textCase: Int32,
+        let wordBreak: Int32
+    ) {}
+}
+
+@C
+struct SizeCType {
+    var width: Float64
+    var height: Float64
+    init(width: Float64, height: Float64) {
+        this.width = width
+        this.height = height
+    }
+}
+
+foreign {
+    func FfiMeasureText(context: CJMeasureContextToC): Float64
+
+    func FfiMeasureTextSize(context: CJMeasureContextToC): SizeCType
+}
+
+/**
+ * Defines the options of MeasureText.
+ *
+ * @relation export interface MeasureOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -42,6 +84,15 @@ public class MeasureOptions {
     let textCase: TextCase
     let wordBreak: WordBreak
 
+    /**
+     * Create an object of MeasureOptions
+     *
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(
         textContent!: String,
         fontWeight!: FontWeight = FontWeight.Normal,
@@ -77,46 +128,10 @@ public class MeasureOptions {
     }
 }
 
-@C
-struct CJMeasureContextToC {
-    CJMeasureContextToC(
-        let textContent: CString,
-        let fontWeight: CString,
-        let fontFamily: CString,
-        let constraintWidth: NativeOptionLength,
-        let fontSize: NativeOptionLength,
-        let lineHeight: NativeOptionLength,
-        let baselineOffset: NativeOptionLength,
-        let letterSpacing: NativeOptionLength,
-        let textIndent: NativeOptionLength,
-        let maxLines: UInt32,
-        let textAlign: Int32,
-        let fontStyle: Int32,
-        let overflow: Int32,
-        let textCase: Int32,
-        let wordBreak: Int32
-    ) {}
-}
-
-@C
-public struct Size {
-    public var width: Float64
-    public var height: Float64    
-    public init(
-        width: Float64,
-        height: Float64
-    ) {
-        this.width = width
-        this.height = height
-    }
-}
-
-foreign {
-    func FfiMeasureText(context: CJMeasureContextToC): Float64
-
-    func FfiMeasureTextSize(context: CJMeasureContextToC): Size
-}
-
+/* 
+ * MeasureText has deprecated since 18, useinstead ohos.arkui.UIContext.MeasureUtils#measureText
+ * It can be deleted when cangjie support the UI context.
+ */
 func parseCJMeasureContext(context: MeasureOptions): CJMeasureContextToC {
     let textContentC = unsafe { LibC.mallocCString(context.textContent) }
     let fontFamilyC = unsafe { LibC.mallocCString(context.fontFamily) }
@@ -169,18 +184,64 @@ func parseCJMeasureContext(context: MeasureOptions): CJMeasureContextToC {
     )
 }
 
+/**
+ * Defines the size options.
+ *
+ * @relation declare interface SizeOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Measure {
+public class SizeOptions {
+    /**
+     * Defines the width.
+     *
+     * @type { Length }
+     * @relation width?: Length;
+     */
+    public var width: Length = 0
+    /**
+     * Defines the height.
+     *
+     * @type { Length }
+     * @relation height?: Length;
+     */
+    public var height: Length = 0
+    /*
+     * constructor
+     */
+    public init(width!: Length = 0, height!: Length = 0) {
+        this.width = width
+        this.height = height
+    }
+}
+
+/**
+ * Defines the Measure interface.
+ *
+ * @relation export default class MeasureText
+ */
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class MeasureText {
+    /**
+     * Displays the textWidth.
+     *
+     * @param  { MeasureOptions } options - Options.
+     * @returns { Float64 }
+     * @relation static measureText(options: MeasureOptions): number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func MeasureText(options: MeasureOptions): Float64 {
+    public static func measureText(options: MeasureOptions): Float64 {
         unsafe {
             let contextC = parseCJMeasureContext(options)
             let result = FfiMeasureText(contextC)
@@ -191,19 +252,26 @@ public class Measure {
         }
     }
 
+    /**
+     * Displays the text width and height.
+     *
+     * @param { MeasureOptions } options - Options of measure area occupied by text.
+     * @returns { SizeOptions } width and height for text to display
+     * @relation static measureTextSize(options: MeasureOptions): SizeOptions;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func MeasureTextSize(options: MeasureOptions): Size {
+    public static func measureTextSize(options: MeasureOptions): SizeOptions {
         unsafe {
             let contextC = parseCJMeasureContext(options)
             let result = FfiMeasureTextSize(contextC)
             LibC.free(contextC.textContent)
             LibC.free(contextC.fontWeight)
             LibC.free(contextC.fontFamily)
-            result
+            SizeOptions(width: result.width, height: result.height)
         }
     }
 }
