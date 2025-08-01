@@ -42,7 +42,7 @@ ohos_cj_library("ohos.arkui.component.common") {
     "cangjie_api:ohos.labels",
     "cangjie_api:ohos.ffi",
     "global_cangjie_api:ohos.resource",
-    "hiviewdfx_cangjie_api:ohos.hi_trace_meter",
+    "hiviewdfx_cangjie_api:ohos.hi_tracemeter",
     "hiviewdfx_cangjie_api:ohos.hilog",
     "multimedia_cangjie_api:ohos.multimedia.image",
   ]
