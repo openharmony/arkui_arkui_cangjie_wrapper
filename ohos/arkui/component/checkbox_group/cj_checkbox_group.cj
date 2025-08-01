@@ -54,12 +54,22 @@ foreign {
     func FfiOHOSAceFrameworkCheckBoxGroupSetCheckboxShape(value: Int32): Unit
 }
 
+/**
+ * Defines a CheckboxGroup callback when onChange.
+ * Anonymous Object Rectification.
+ *
+ * @typedef { function } OnCheckboxGroupChangeCallback
+ * @param { CheckboxGroupResult } value - checkbox group result
+ * @relation declare type OnCheckboxGroupChangeCallback = (value: CheckboxGroupResult) => void
+ */
+public type OnCheckboxGroupChangeCallback = (CheckboxGroupResult) -> Unit
+
 class CallbackFFiCheckboxGroupResult <: BaseCallBack {
     CallbackFFiCheckboxGroupResult(let closure: (FFiCheckboxGroupResult) -> Unit) {
         registerSelf()
     }
 
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }
@@ -77,25 +87,46 @@ class CallbackFFiCheckboxGroupResult <: BaseCallBack {
     }
 }
 
+/**
+ * Defines the options of CheckboxGroupResult.
+ *
+ * @class CheckboxGroupResult
+ * @relation interface CheckboxGroupResult
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CheckboxGroupResult {
+    /**
+     * Set the group of status.
+     *
+     * @type { SelectStatus }
+     * @relation status: SelectStatus
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var status: SelectStatus
+    /**
+     * Checkbox name.
+     *
+     * @type { Array<string> }
+     * @relation name: Array<string>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var name: ArrayList<String>
+    public var name: Array<String>
 
+    /**
+     * CheckboxGroupResult constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -103,7 +134,7 @@ public class CheckboxGroupResult {
     ]
     public init(
         status: SelectStatus,
-        name: ArrayList<String>
+        name: Array<String>
     ) {
         this.status = status
         this.name = name
@@ -112,29 +143,41 @@ public class CheckboxGroupResult {
 
 func parseCheckboxGroupResult(event: FFiCheckboxGroupResult): CheckboxGroupResult {
     let size = event.size
-    let nameList: ArrayList<String> = ArrayList<String>(size)
+    let nameList: Array<String> = Array<String>(size, repeat: "")
 
     for (i in 0..size) {
         unsafe {
             let buf = event.nameBuffer
             let item = buf.read(i)
             let value = item.toString()
-            nameList.add(value)
+            nameList[i] = value
         }
     }
 
     CheckboxGroupResult(
         SelectStatus.parseValue(event.status),
-        nameList,
+        nameList
     )
 }
 
+/**
+ * Defines CheckboxGroup Component.
+ * 
+ * @relation const CheckboxGroup: CheckboxGroupInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CheckboxGroup <: ViewBase {
+    /**
+     * Called when the CheckboxGroup component is used.
+     *
+     * @param { String } group
+     * @returns { CheckboxGroup }
+     * @relation (options?: CheckboxGroupOptions): CheckboxGroupAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -148,6 +191,13 @@ public class CheckboxGroup <: ViewBase {
         }
     }
 
+    /**
+     * setting whether all checkbox is selected.
+     *
+     * @param { Bool } isAllSelected
+     * @returns { This }
+     * @relation selectAll(value: boolean): CheckboxGroupAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -160,14 +210,21 @@ public class CheckboxGroup <: ViewBase {
         this
     }
 
+    /**
+     * setting the display color of checkbox.
+     *
+     * @param { ResourceColor } value
+     * @returns { This }
+     * @relation selectedColor(value: ResourceColor): CheckboxGroupAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(color: ResourceColor): This {
+    public func selectedColor(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkCheckBoxGroupSetSelectedColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkCheckBoxGroupSetSelectedColor(transAppResourceToResourceColor(value))
         }
         this
     }
@@ -180,11 +237,6 @@ public class CheckboxGroup <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func heightInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
@@ -193,11 +245,6 @@ public class CheckboxGroup <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func sizeInner(width: Length, height: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
@@ -208,11 +255,6 @@ public class CheckboxGroup <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func paddingInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
@@ -242,11 +284,7 @@ public class CheckboxGroup <: ViewBase {
         }
         this
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
+
     protected override func responseRegionInner(rect: Rectangle): This {
         let cjRect = rect.parseToNative()
         unsafe {
@@ -266,12 +304,7 @@ public class CheckboxGroup <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func responseRegionArray(array: Array<Rectangle>): This {
+    protected override func responseRegionInner(array: Array<Rectangle>): This {
         let vecFFi = FFIVectorNativeRectangle(array.size)
         var index = 0
         for (rect in array) {
@@ -286,12 +319,20 @@ public class CheckboxGroup <: ViewBase {
         this
     }
 
+    /**
+     * Called when the selection status changes.
+     * Anonymous Object Rectification.
+     *
+     * @param { OnCheckboxGroupChangeCallback } callback
+     * @returns { This }
+     * @relation onChange(callback: OnCheckboxGroupChangeCallback): CheckboxGroupAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (CheckboxGroupResult) -> Unit): This {
+    public func onChange(callback: OnCheckboxGroupChangeCallback): This {
         let wrapper = {
             value: FFiCheckboxGroupResult =>
             var resolved = parseCheckboxGroupResult(value)
