@@ -1063,3 +1063,66 @@ public class EdgeStyles {
         )
     }
 }
+protected class MultiShadowOptionsImpl {}
+
+/**
+ * Defines the options of Shadow.
+ *
+ * @class MultiShadowOptions
+ * @relation interface MultiShadowOptions
+ */
+@!APILevel[
+    21,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public open class MultiShadowOptions {
+    protected var impl: MultiShadowOptionsImpl = MultiShadowOptionsImpl()
+    /**
+     * Shadow blur radius.
+     * Unit: vp.
+     * <p>**NOTE**:
+     * <br>A value less than or equal to 0 is handled as the default value.
+     * </p>
+     * 
+     * @type { Length }
+     * @default 20
+     * @relation radius?: number | Resource
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var radius: Length = 20.vp
+    /**
+     * Offset on the x-axis.
+     * Unit: vp.
+     * 
+     * @type { Length }
+     * @default 5
+     * @relation offsetX?: number | Resource
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var offsetX: Length = 5.vp
+    /**
+     * Offset on the y-axis.
+     * Unit: vp.
+     * 
+     * @type { Length }
+     * @default 5
+     * @relation offsetY?: number | Resource
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var offsetY: Length = 5.vp
+
+    protected init(radius: Length, offsetX: Length, offsetY: Length) {
+        this.radius = radius
+        this.offsetX = offsetX
+        this.offsetY = offsetY
+    }
+}

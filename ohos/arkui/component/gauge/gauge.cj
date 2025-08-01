@@ -313,9 +313,9 @@ public class Gauge <: ContainerBase {
             var vecColorStop = FFIVectorColorStops(curColorStops.size)
             for (j in 0..curColorStops.size) {
                 if (curColorStops[j].offset.value >= 0.0) {
-                    vecColorStop.setElement(j, GaugeColorStop(curColorStops[j].color, curColorStops[j].offset.value))
+                    vecColorStop.setElement(j, GaugeColorStop(curColorStops[j].color.toUInt32(), curColorStops[j].offset.value))
                 } else {
-                    vecColorStop.setElement(j, GaugeColorStop(curColorStops[j].color, 0.0))
+                    vecColorStop.setElement(j, GaugeColorStop(curColorStops[j].color.toUInt32(), 0.0))
                 }
             }
             vecValueHandle.setElement(i, vecColorStop.getNativeHandle())

@@ -63,19 +63,34 @@ foreign {
     func FfiOHOSAceFrameworkDataPanelSetTrackShadow(value: NativeDataPanelShadow): Unit
 }
 
+/**
+ * ColorStop type
+ *
+ * @relation interface ColorStop
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ColorStop {
+    /**
+     * Color property.
+     * @type { ResourceColor } color - the color value.
+     * @relation color: ResourceColor
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var color: UInt32
+    public var color: ResourceColor
 
+    /**
+     * Offset property.
+     * @type { Length } offset - the color offset.
+     * @relation offset: Length
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -83,30 +98,38 @@ public class ColorStop {
     ]
     public var offset: Length
 
+    /**
+     * ColorStop constructor
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(color: ResourceColor, offset: Length) {
-        this.color = transAppResourceToResourceColor(color)
+        this.color = color
         this.offset = transAppResourceToLength(offset)
     }
 }
 
+/**
+ * LinearGradient class
+ *
+ * @relation class LinearGradient
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LinearGradient {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var colorStops: Array<ColorStop>
+    protected var colorStops: Array<ColorStop>
 
+    /**
+     * Constructor.
+     *
+     * @param { Array<ColorStop> } colorStops - the LinearGradient constructor parameter.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -116,6 +139,11 @@ public class LinearGradient {
         this.colorStops = colorStops
     }
 
+    /**
+     * Constructor.
+     *
+     * @param { ResourceColor } color - the LinearGradient constructor parameter.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -128,9 +156,9 @@ public class LinearGradient {
 
     func parseToNative(): NativeLinearGradient {
         return NativeLinearGradient(
-            colorStops[0].color,
+            colorStops[0].color.toUInt32(),
             colorStops[0].offset.value,
-            colorStops[1].color,
+            colorStops[1].color.toUInt32(),
             colorStops[1].offset.value
         )
     }
@@ -161,30 +189,26 @@ class FFIVectorNativeLinearGradient {
     }
 }
 
+/**
+ * Defines the options of Shadow.
+ *
+ * @extends MultiShadowOptions
+ * @class DataPanelShadowOptions
+ * @relation interface DataPanelShadowOptions extends MultiShadowOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class DataPanelShadowOptions {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var radius: Length
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var offsetX: Length
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var offsetY: Length
+public class DataPanelShadowOptions <: MultiShadowOptions {
+    /**
+     * Current shadow colors.
+     *
+     * @type { ?Array<ResourceColor | LinearGradient> }
+     * @default Consistent with valueColors
+     * @relation colors?: Array<ResourceColor | LinearGradient>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -192,25 +216,46 @@ public class DataPanelShadowOptions {
     ]
     public var colors: Array<LinearGradient>
 
+    /**
+     * Current shadow colors.
+     *
+     * @param { ResourceColor }
+     * @param { ResourceColor }
+     * @param { ResourceColor }
+     * @param { ResourceColor }
+     * @relation colors?: Array<ResourceColor | LinearGradient>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(radius!: Length, colors!: Array<LinearGradient>, offsetX!: Length, offsetY!: Length) {
-        this.radius = transAppResourceToLength(radius)
+    public init(radius!: Length = 20.vp, colors!: Array<LinearGradient> = [], offsetX!: Length = 5.vp, offsetY!: Length = 5.vp) {
+        super(radius, offsetX, offsetY)
         this.colors = colors
-        this.offsetX = transAppResourceToLength(offsetX)
-        this.offsetY = transAppResourceToLength(offsetY)
     }
 }
 
+/**
+ * Defines DataPanel Component.
+ *
+ * @relation const DataPanel: DataPanelInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DataPanel <: ViewBase {
+    /**
+     * Return a DataPanel.
+     *
+     * @param { Array<Float64> } values
+     * @param { Float64 } max
+     * @param { DataPanelType } panelType
+     * @returns { DataPanel }
+     * @relation (options: DataPanelOptions): DataPanelAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -227,6 +272,13 @@ public class DataPanel <: ViewBase {
         vecValueHandle.free()
     }
 
+    /**
+     * Disable the special effect of the data ratio chart.
+     *
+     * @param { Bool } value
+     * @returns { This }
+     * @relation closeEffect(value: boolean): DataPanelAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -239,15 +291,22 @@ public class DataPanel <: ViewBase {
         this
     }
 
+    /**
+     * Set the value colors of the data ratio chart.
+     *
+     * @param { Array<LinearGradient> } value - the value colors of the data ratio chart.
+     * @returns { This }
+     * @relation valueColors(value: Array<ResourceColor | LinearGradient>): DataPanelAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func valueColors(values: Array<LinearGradient>): This {
-        let vecValueHandle = FFIVectorNativeLinearGradient(values.size)
-        for (i in 0..values.size) {
-            vecValueHandle.setElement(i, values[i].parseToNative())
+    public func valueColors(value: Array<LinearGradient>): This {
+        let vecValueHandle = FFIVectorNativeLinearGradient(value.size)
+        for (i in 0..value.size) {
+            vecValueHandle.setElement(i, value[i].parseToNative())
         }
         unsafe {
             FfiOHOSAceFrameworkDataPanelSetValueColors(vecValueHandle.getNativeHandle())
@@ -256,18 +315,32 @@ public class DataPanel <: ViewBase {
         this
     }
 
+    /**
+     * Set track background color of the data ratio chart.
+     *
+     * @param { ResourceColor } value - track background color of the data ratio chart.
+     * @returns { This }
+     * @relation trackBackgroundColor(value: ResourceColor): DataPanelAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func trackBackgroundColor(color: ResourceColor): This {
+    public func trackBackgroundColor(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkDataPanelSetTrackBackgroundColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkDataPanelSetTrackBackgroundColor(transAppResourceToResourceColor(value))
         }
         this
     }
 
+    /**
+     * Set the stroke width of the data ratio chart.
+     *
+     * @param { Length } value - the stroke width of the data ratio chart.
+     * @returns { This }
+     * @relation strokeWidth(value: Length): DataPanelAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -280,6 +353,14 @@ public class DataPanel <: ViewBase {
         }
         this
     }
+
+    /**
+     * Set the shadow width of the data ratio chart.
+     *
+     * @param { DataPanelShadowOptions } value - the track shadow width of the data ratio chart.
+     * @returns { This }
+     * @relation trackShadow(value: DataPanelShadowOptions): DataPanelAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
