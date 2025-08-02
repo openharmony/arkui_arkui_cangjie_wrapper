@@ -19,6 +19,7 @@ ohos_cj_library("ohos.arkui.component.offscreen_canvas_rendering_context_2d") {
   ]
 
 
+  external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_api"
   lib_name = "arkui.component.offscreen_canvas_rendering_context_2d"

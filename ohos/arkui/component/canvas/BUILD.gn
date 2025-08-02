@@ -37,6 +37,7 @@ ohos_cj_library("ohos.arkui.component.canvas") {
     "multimedia_cangjie_api:ohos.multimedia.image",
   ]
 
+  external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_api"
   lib_name = "arkui.component.canvas"
