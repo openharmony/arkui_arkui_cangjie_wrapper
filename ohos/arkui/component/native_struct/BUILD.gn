@@ -46,6 +46,7 @@ ohos_cj_library("ohos.arkui.component.native_struct") {
     "cangjie_api:ohos.ffi",
   ]
 
+  external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_api"
   lib_name = "arkui.component.native_struct"

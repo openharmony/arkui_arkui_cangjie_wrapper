@@ -32,6 +32,7 @@ ohos_cj_library("ohos.arkui.component.web") {
     "web_cangjie_api:ohos.web.webview",
   ]
 
+  external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_api"
   lib_name = "arkui.component.web"

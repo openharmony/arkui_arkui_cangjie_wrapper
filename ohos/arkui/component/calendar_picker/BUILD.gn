@@ -22,6 +22,7 @@ ohos_cj_library("ohos.arkui.component.calendar_picker") {
     "../native_struct:ohos.arkui.component.native_struct",
   ]
 
+  external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_api"
   lib_name = "arkui.component.calendar_picker"
