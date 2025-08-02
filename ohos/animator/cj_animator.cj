@@ -37,14 +37,6 @@ foreign {
 
     func FfiAnimatorSetExpectedFrameRateRange(id: Int64, minVal: Int32, maxVal: Int32, exceptedVal: Int32): Int32
 
-    func FfiAnimatorOnframe(id: Int64, funcId: Int64): Int32
-
-    func FfiAnimatorOncancel(id: Int64, funcId: Int64): Int32
-
-    func FfiAnimatorOnfinish(id: Int64, funcId: Int64): Int32
-
-    func FfiAnimatorOnrepeat(id: Int64, funcId: Int64): Int32
-
     func FfiAnimatorOnFrame(id: Int64, funcId: Int64): Int32
 
     func FfiAnimatorOnCancel(id: Int64, funcId: Int64): Int32
@@ -73,6 +65,22 @@ struct CAnimatorOptions {
             LibC.free(fill)
             LibC.free(direction)
         }
+    }
+}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class Animator {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func create(options: AnimatorOptions): AnimatorResult {
+        return AnimatorResult(options)
     }
 }
 
@@ -173,49 +181,49 @@ public class AnimatorOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var duration: Int32 = 0
+    public var duration: Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var easing: String = "ease"
+    public var easing: String
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var delay: Int32 = 0
+    public var delay: Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fill: AnimatorFill = None
+    public var fill: AnimatorFill
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var direction: AnimatorDirection = Normal
+    public var direction: AnimatorDirection
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var iterations: Int32 = 0
+    public var iterations: Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var begin: Float64 = 0.0
+    public var begin: Float64
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var end: Float64 = 1.0
+    public var end: Float64
 
     @!APILevel[
         21,
@@ -223,14 +231,14 @@ public class AnimatorOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        duration!: Int32 = 0,
-        easing!: String = "ease",
-        delay!: Int32 = 0,
-        fill!: AnimatorFill = None,
-        direction!: AnimatorDirection = Normal,
-        iterations!: Int32 = 0,
-        begin!: Float64 = 0.0,
-        end!: Float64 = 1.0
+        duration!: Int32,
+        easing!: String,
+        delay!: Int32,
+        fill!: AnimatorFill,
+        direction!: AnimatorDirection,
+        iterations!: Int32,
+        begin!: Float64,
+        end!: Float64
     ) {
         this.duration = duration
         this.easing = easing
@@ -264,10 +272,6 @@ public class AnimatorOptions {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AnimatorResult <: RemoteDataLite {
-    var onframe_: (Float64) -> Unit = {_ =>}
-    var onfinish_: () -> Unit = {=>}
-    var oncancel_: () -> Unit = {=>}
-    var onrepeat_: () -> Unit = {=>}
     var onFrame_: (Float64) -> Unit = {_ =>}
     var onFinish_: () -> Unit = {=>}
     var onCancel_: () -> Unit = {=>}
@@ -278,7 +282,7 @@ public class AnimatorResult <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(options: AnimatorOptions) {
+    init(options: AnimatorOptions) {
         super(unsafe {
             let opt = options.toCAnimatorOptions()
             let id = FfiAnimatorCreate(opt)
@@ -289,27 +293,6 @@ public class AnimatorResult <: RemoteDataLite {
 
     ~init() {
         releaseFFIData(myDataId)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public mut prop onframe: (Float64) -> Unit {
-        get() {
-            return onframe_
-        }
-        set(callback) {
-            unsafe {
-                let lambdaData = Callback1Param<Float64, Unit>(callback)
-                let errCode = FfiAnimatorOnframe(getID(), lambdaData.getID())
-                if (errCode != 0) {
-                    throw BusinessException(errCode, "AnimatorResult play failed: Internal error.")
-                }
-                onframe_ = callback
-            }
-        }
     }
 
     @!APILevel[
@@ -329,27 +312,6 @@ public class AnimatorResult <: RemoteDataLite {
                     throw BusinessException(errCode, "AnimatorResult play failed: Internal error.")
                 }
                 onFrame_ = callback
-            }
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public mut prop onfinish: () -> Unit {
-        get() {
-            return onfinish_
-        }
-        set(callback) {
-            unsafe {
-                let lambdaData = Callback0Param<Unit>(callback)
-                let errCode = FfiAnimatorOnfinish(getID(), lambdaData.getID())
-                if (errCode != 0) {
-                    throw BusinessException(errCode, "AnimatorResult play failed: Internal error.")
-                }
-                onfinish_ = callback
             }
         }
     }
@@ -380,27 +342,6 @@ public class AnimatorResult <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public mut prop oncancel: () -> Unit {
-        get() {
-            return oncancel_
-        }
-        set(callback) {
-            unsafe {
-                let lambdaData = Callback0Param<Unit>(callback)
-                let errCode = FfiAnimatorOncancel(getID(), lambdaData.getID())
-                if (errCode != 0) {
-                    throw BusinessException(errCode, "AnimatorResult play failed: Internal error.")
-                }
-                oncancel_ = callback
-            }
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public mut prop onCancel: () -> Unit {
         get() {
             return onCancel_
@@ -413,27 +354,6 @@ public class AnimatorResult <: RemoteDataLite {
                     throw BusinessException(errCode, "AnimatorResult play failed: Internal error.")
                 }
                 onCancel_ = callback
-            }
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public mut prop onrepeat: () -> Unit {
-        get() {
-            return onrepeat_
-        }
-        set(callback) {
-            unsafe {
-                let lambdaData = Callback0Param<Unit>(callback)
-                let errCode = FfiAnimatorOnrepeat(getID(), lambdaData.getID())
-                if (errCode != 0) {
-                    throw BusinessException(errCode, "AnimatorResult play failed: Internal error.")
-                }
-                onrepeat_ = callback
             }
         }
     }
@@ -567,8 +487,8 @@ public class AnimatorResult <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setExpectedFrameRateRange(framerateRange: ExpectedFrameRateRange): Unit {
-        let checkFrameRateRange = checkExpectedFrameRateRange(framerateRange)
+    public func setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): Unit {
+        let checkFrameRateRange = checkExpectedFrameRateRange(rateRange)
         unsafe {
             let errCode = FfiAnimatorSetExpectedFrameRateRange(getID(), checkFrameRateRange.min, checkFrameRateRange.max,
                 checkFrameRateRange.expected)

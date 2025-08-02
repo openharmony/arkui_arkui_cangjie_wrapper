@@ -138,19 +138,19 @@ public class MotionPathOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var path: String = ""
+    public var path: String
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var `from`: Float64 = 0.0
+    public var pathFrom: Float64 = 0.0
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var to: Float64 = 1.0
+    public var pathTo: Float64 = 1.0
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -164,14 +164,14 @@ public class MotionPathOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        path!: String = "",
-        `from`!: Float64 = 0.0,
-        to!: Float64 = 1.0,
+        path!: String,
+        pathFrom!: Float64 = 0.0,
+        pathTo!: Float64 = 1.0,
         rotatable!: Bool = false
     ) {
         this.path = path
-        this.`from` = `from`
-        this.to = to
+        this.pathFrom = pathFrom
+        this.pathTo = pathTo
         this.rotatable = rotatable
     }
 }
@@ -205,7 +205,7 @@ public class SharedTransitionOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var motionPath: MotionPathOptions = MotionPathOptions()
+    public var motionPath: MotionPathOptions = MotionPathOptions(path: "")
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -217,7 +217,7 @@ public class SharedTransitionOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var `type`: SharedTransitionEffectType = SharedTransitionEffectType.SharedEffectExchange
+    public var effectType: SharedTransitionEffectType = SharedTransitionEffectType.SharedEffectExchange
 
     @!APILevel[
         21,
@@ -228,16 +228,16 @@ public class SharedTransitionOptions {
         duration!: Int32 = 1000,
         curve!: Curve = Curve.Linear,
         delay!: Int32 = 0,
-        motionPath!: MotionPathOptions = MotionPathOptions(),
+        motionPath!: MotionPathOptions = MotionPathOptions(path: ""),
         zIndex!: Int32 = 0,
-        `type`!: SharedTransitionEffectType = SharedTransitionEffectType.SharedEffectExchange
+        effectType!: SharedTransitionEffectType = SharedTransitionEffectType.SharedEffectExchange
     ) {
         this.duration = duration
         this.curve = curve
         this.delay = delay
         this.motionPath = motionPath
         this.zIndex = zIndex
-        this.`type` = `type`
+        this.effectType = effectType
     }
 }
 
@@ -252,37 +252,37 @@ public class AnimateParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var duration: Option<Int32>
+    public var duration: Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var tempo: Option<Float32>
+    public var tempo: Float32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var curve: Option<Curve>
+    public var curve: Curve
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var delay: Option<Int32>
+    public var delay: Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var iterations: Option<Int32>
+    public var iterations: Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var playMode: Option<PlayMode>
+    public var playMode: PlayMode
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -294,7 +294,7 @@ public class AnimateParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var finishCallbackType: Option<FinishCallbackType>
+    public var finishCallbackType: FinishCallbackType
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -308,14 +308,14 @@ public class AnimateParam {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        duration!: Option<Int32> = 1000,
-        tempo!: Option<Float32> = 1.0,
-        curve!: Option<Curve> = Curve.EaseInOut,
-        delay!: Option<Int32> = 0,
-        iterations!: Option<Int32> = 1,
-        playMode!: Option<PlayMode> = PlayMode.Normal,
+        duration!: Int32 = 1000,
+        tempo!: Float32 = 1.0,
+        curve!: Curve = Curve.EaseInOut,
+        delay!: Int32 = 0,
+        iterations!: Int32 = 1,
+        playMode!: PlayMode = PlayMode.Normal,
         onFinish!: Option<() -> Unit> = Option.None,
-        finishCallbackType!: Option<FinishCallbackType> = FinishCallbackType.REMOVED,
+        finishCallbackType!: FinishCallbackType = FinishCallbackType.Removed,
         expectedFrameRateRange!: Option<ExpectedFrameRateRange> = Option.None
     ) {
         this.duration = duration
@@ -803,42 +803,24 @@ public class EdgeStyle {
 }
 
 protected func parseAnimateParam(params: AnimateParam): NativeAnimateParam {
-    let duration = match (params.duration) {
-        case Some(value) => NativeOptionInt32(true, value)
-        case None => NativeOptionInt32(false, 0)
-    }
+    let duration = NativeOptionInt32(true, params.duration)
 
-    let tempo = match (params.tempo) {
-        case Some(value) => NativeOptionFloat32(true, value)
-        case None => NativeOptionFloat32(false, 0.0)
-    }
+    let tempo = NativeOptionFloat32(true, params.tempo)
 
     let curveCStrng = unsafe {
-        match (params.curve) {
-            case Some(value) => NativeOptionCString(true, LibC.mallocCString(value.getValue()))
-            case None => NativeOptionCString(false, CString(CPointer()))
-        }
+        NativeOptionCString(true, LibC.mallocCString(params.curve.getValue()))
     }
 
     let delay = unsafe {
-        match (params.delay) {
-            case Some(value) => NativeOptionInt32(true, value)
-            case None => NativeOptionInt32(false, 0)
-        }
+        NativeOptionInt32(true, params.delay)
     }
 
     let iterations = unsafe {
-        match (params.iterations) {
-            case Some(value) => NativeOptionInt32(true, value)
-            case None => NativeOptionInt32(false, 0)
-        }
+        NativeOptionInt32(true, params.iterations)
     }
 
     let playMode = unsafe {
-        match (params.playMode) {
-            case Some(value) => NativeOptionInt32(true, value.getValue())
-            case None => NativeOptionInt32(false, 0)
-        }
+        NativeOptionInt32(true, params.playMode.getValue())
     }
 
     let onFinish = unsafe {
@@ -849,10 +831,7 @@ protected func parseAnimateParam(params: AnimateParam): NativeAnimateParam {
     }
 
     let finishCallbackType = unsafe {
-        match (params.finishCallbackType) {
-            case Some(value) => NativeOptionInt32(true, value.getValue())
-            case None => NativeOptionInt32(false, 0)
-        }
+        NativeOptionInt32(true, params.finishCallbackType.getValue())
     }
 
     let min = unsafe {

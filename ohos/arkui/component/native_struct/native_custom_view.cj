@@ -87,7 +87,7 @@ protected func OHOSAceFrameworkRemoteViewUpdateWithJson(id: Int64, json: CString
 
 @C
 protected func OHOSAceFrameworkRemoteViewOnTransition(id: Int64): Int64 {
-    getRemoteViewOrThrow(id).onTransition()
+    getRemoteViewOrThrow(id).pageTransition()
     0
 }
 
