@@ -18,7 +18,7 @@ package ohos.arkui.component.common
 import ohos.arkui.component.native_struct.*
 import ohos.arkui.component.util.*
 import ohos.base.*
-import ohos.hi_trace_meter.*
+import ohos.hi_tracemeter.*
 import ohos.labels.APILevel
 import ohos.resource_manager.AppResource
 import std.regex.*
