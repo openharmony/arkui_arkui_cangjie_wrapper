@@ -26,6 +26,7 @@ ohos_cj_library("ohos.arkui.component.row") {
 
   cj_external_deps = [
     "cangjie_api:ohos.labels",
+    "cangjie_api:ohos.ffi",
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
