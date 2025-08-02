@@ -87,143 +87,193 @@ foreign {
     func FfiOHOSAceFrameworkImageOnCompleteV2(callback: Int64): Unit
 }
 
+/**
+ * Callback function triggered when the image is successfully loaded.
+ * 
+ * @typedef { function } ImageCompleteCallback
+ * @param { ImageLoadResult } result - the information about the successfully loaded image.
+ * @relation type ImageCompleteCallback = (result: ImageLoadResult) => void
+ */
+public type ImageCompleteCallback = (ImageLoadResult) -> Unit
 
-protected class CallbackCJImageError <: BaseCallBack {
-    protected CallbackCJImageError(let closure: (CJImageError) -> Unit) {
+/**
+ * @typedef { function } ImageErrorCallback
+ * @param { ImageError } error
+ * @relation type ImageErrorCallback = (error: ImageError) => void
+ */
+public type ImageErrorCallback = (ImageError) -> Unit
+
+protected class CallbackImageError <: BaseCallBack {
+    protected CallbackImageError(let closure: (ImageError) -> Unit) {
         registerSelf()
     }
 
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJImageError")
+            AppLog.error("Invalid argument, failed to invoke CallbackImageError")
             throw InvalidArgsException()
         }
         let ptrArg0 = unsafe { CPointer<CImageError>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJImageError")
+            AppLog.error("Invalid argument, failed to invoke CallbackImageError")
             throw InvalidArgsException()
         }
         let c_arg0 = unsafe { ptrArg0.read() }
-        let arg0: CJImageError = CJImageError(c_arg0.componentWidth, c_arg0.componentHeight)
+        let arg0: ImageError = ImageError(c_arg0.componentWidth, c_arg0.componentHeight, "")
         //arg0.message = c_arg0.message.toString()
         closure(arg0)
     }
 }
-class CallbackCJImageComplete <: BaseCallBack {
-    CallbackCJImageComplete(let closure: (CJImageComplete) -> Unit) {
+
+class CallbackImageLoadResult <: BaseCallBack {
+    CallbackImageLoadResult(let closure: (ImageLoadResult) -> Unit) {
         registerSelf()
     }
 
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJImageComplete")
+            AppLog.error("Invalid argument, failed to invoke CallbackImageLoadResult")
             throw InvalidArgsException()
         }
         let ptrArg0 = unsafe { CPointer<CImageComplete>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJImageComplete")
+            AppLog.error("Invalid argument, failed to invoke CallbackImageLoadResult")
             throw InvalidArgsException()
         }
         let c_arg0 = unsafe { ptrArg0.read() }
-        let arg0: CJImageComplete = CJImageComplete(c_arg0.width, c_arg0.height, c_arg0.componentWidth,
-            c_arg0.componentHeight, c_arg0.loadingStatus)
-        arg0.contentWidth = c_arg0.contentWidth
-        arg0.contentHeight = c_arg0.contentHeight
-        arg0.contentOffsetX = c_arg0.contentOffsetX
-        arg0.contentOffsetY = c_arg0.contentOffsetY
+        let arg0: ImageLoadResult = ImageLoadResult(c_arg0.width, c_arg0.height, c_arg0.componentWidth,
+            c_arg0.componentHeight, c_arg0.loadingStatus, c_arg0.contentWidth, c_arg0.contentHeight,
+            c_arg0.contentOffsetX, c_arg0.contentOffsetY)
+
         closure(arg0)
     }
 }
 
-
+/**
+ * The information about the successfully loaded image.
+ * 
+ * @class ImageLoadResult
+ * @relation interface ImageLoadResult
+ */
 @!APILevel[
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class CJImageComplete {
+public class ImageLoadResult {
+    /**
+     * The width of the image source.
+     *
+     * @type { Float64 }
+     * @relation width: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: Float64 = 0.0
+    /**
+     * The height of the image source.
+     *
+     * @type { Float64 }
+     * @relation height: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: Float64 = 0.0
+    /**
+     * The width of the component source.
+     *
+     * @type { Float64 }
+     * @relation componentWidth: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentWidth: Float64 = 0.0
+    /**
+     * The height of the component source.
+     *
+     * @type { Float64 }
+     * @relation componentHeight: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentHeight: Float64 = 0.0
+    /**
+     * The value of the status of the image being loaded successfully.
+     * If the returned status value is 0, the image data is successfully loaded.
+     * If the returned status value is 1, the image is successfully decoded.
+     * 
+     * @type { Int32 }
+     * @relation loadingStatus: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var loadingStatus: Int32 = 0
+    /**
+     * The width of the picture that is actually drawn.
+     *
+     * @type { Float64 }
+     * @relation contentWidth: number
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentWidth: Float64 = 0.0
+    /**
+     * The height of the picture that is actually drawn.
+     *
+     * @type { Float64 }
+     * @relation contentHeight: number
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentHeight: Float64 = 0.0
+    /**
+     * The offset between image content and image component on the X-axis.
+     *
+     * @type { Float64 }
+     * @relation contentOffsetX: number
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentOffsetX: Float64 = 0.0
+    /**
+     * The offset between image content and image component on the Y-axis.
+     *
+     * @type { Float64 }
+     * @relation contentOffsetY: number
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentOffsetY: Float64 = 0.0
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        width: Float64,
-        height: Float64,
-        componentWidth: Float64,
-        componentHeight: Float64,
-        loadingStatus: Int32
-    ) {
-        this.width = width
-        this.height = height
-        this.componentWidth = componentWidth
-        this.componentHeight = componentHeight
-        this.loadingStatus = loadingStatus
-    }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
+    protected init(
         width: Float64,
         height: Float64,
         componentWidth: Float64,
@@ -244,58 +294,54 @@ public class CJImageComplete {
         this.contentOffsetX = contentOffsetX
         this.contentOffsetY = contentOffsetY
     }
-
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {}
 }
 
+/**
+ * @class ImageError
+ * @relation interface ImageError
+ */
 @!APILevel[
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class CJImageError {
+public class ImageError {
+    /**
+     * Component width.
+     *
+     * @type { Float64 }
+     * @relation componentWidth: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentWidth: Float64 = 0.0
+    /**
+     * Component height.
+     *
+     * @type { Float64 }
+     * @relation componentHeight: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentHeight: Float64 = 0.0
+    /**
+     * Message.
+     *
+     * @type { String }
+     * @relation message: string
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var message: String = ""
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        componentWidth: Float64,
-        componentHeight: Float64
-    ) {
-        this.componentWidth = componentWidth
-        this.componentHeight = componentHeight
-    }
-
-    @!APILevel[	
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
+    protected init(
         componentWidth: Float64,
         componentHeight: Float64,
         message: String
@@ -304,15 +350,13 @@ public class CJImageError {
         this.componentHeight = componentHeight
         this.message = message
     }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {}
 }
 
+/**
+ * Defines the ColorFilter object.
+ *
+ * @relation class ColorFilter
+ */
 @!APILevel[
     21,
     atomicservice: true,
@@ -321,18 +365,17 @@ public class CJImageError {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ColorFilter {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     private static let defaultMatrix: Array<Float32> = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
         0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
 
     protected let matrix: Array<Float32>
 
+    /**
+     * Creates ColorFilter with 4*5 matrix.
+     *
+     * @param { Array<Float32> } value 4*5 color matrix values. The value[m*n] is located in the m row and n column. The matrix is row-first.
+     * @relation constructor(value: number[])
+     */
     @!APILevel[
         21,
         atomicservice: true,
@@ -340,46 +383,67 @@ public class ColorFilter {
         form: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(array: Array<Float32>) {
-        if (array.size != 20) {
+    public init(value: Array<Float32>) {
+        if (value.size != 20) {
             matrix = defaultMatrix
         } else {
-            matrix = array
+            matrix = value
         }
     }
 }
 
+/**
+ * Defines Image Component.
+ *
+ * <p>If flickering occurs during image loading, set <b>syncLoad</b> to <b>true</b>.
+ * For details, see [Concurrency Optimization]{@link 
+ * https://developer.huawei.com/consumer/en/doc/best-practices/bpta-click-to-click-response-optimization}</p>
+ * 
+ * <p>If white blocks persist during image loading, follow the steps in [Solution to White Image Blocks]{@link
+ * https://developer.huawei.com/consumer/en/doc/best-practices/bpta-image-white-lump-solution}</p>
+ * 
+ * <p>If image loading takes a long time, follow the steps in [Reducing the Loading Time of Preset Images]{@link
+ * https://developer.huawei.com/consumer/en/doc/best-practices/bpta-texture-compression-improve-performance}</p>
+ *
+ * @relation const Image: ImageInterface
+ */
 @!APILevel[
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Image <: ViewBase {
+    /**
+     * Set src to obtain images
+     *
+     * @param { ResourceStr } src
+     * @returns { Image }
+     * @relation (src: PixelMap | ResourceStr | DrawableDescriptor): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(src: String) {
+    public init(src: ResourceStr) {
+        let content = match (src) {
+            case v: AppResource => getResourceMedia(v)
+            case v: String => v
+            case _ => ""
+        }
         unsafe {
-            var unsafeSrc = LibC.mallocCString(src)
-            FfiOHOSAceFrameworkImageCreateWithUrl(unsafeSrc)
-            LibC.free(unsafeSrc)
+            try (unsafeSrc = LibC.mallocCString(content).asResource()) {
+                FfiOHOSAceFrameworkImageCreateWithUrl(unsafeSrc.value)
+            }
         }
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(src: AppResource) {
-        unsafe {
-            var unsafeSrc = LibC.mallocCString(getResourceMedia(src))
-            FfiOHOSAceFrameworkImageCreateWithUrl(unsafeSrc)
-            LibC.free(unsafeSrc)
-        }
-    }
-
+    /**
+     * Set src to obtain images
+     *
+     * @param { PixelMap } src
+     * @returns { Image }
+     * @relation (src: PixelMap | ResourceStr | DrawableDescriptor): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -391,87 +455,128 @@ public class Image <: ViewBase {
         }
     }
 
+    /**
+     * Sets the placeholder image displayed during loading.
+     * 
+     * <p><strong>NOTE</strong>:
+     * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
+     * </p>
+     * 
+     * @param { ResourceStr } value - Placeholder image displayed during loading, Default value is null.
+     * @returns { This }
+     * @relation alt(value: string | Resource | PixelMap): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alt(src: String): This {
+    public func alt(src: ResourceStr): This {
+        var content = match (src) {
+            case v: AppResource => getResourceMedia(v)
+            case v: String => v
+            case _ => ""
+        }
         unsafe {
-            var unsafeSrc = LibC.mallocCString(src)
-            FfiOHOSAceFrameworkImageSetAlt(unsafeSrc)
-            LibC.free(unsafeSrc)
+            try (unsafeSrc = LibC.mallocCString(content).asResource()) {
+                FfiOHOSAceFrameworkImageSetAlt(unsafeSrc.value)
+            }
         }
         this
     }
 
+    /**
+     * Sets how the image is resized to fit its container.
+     *
+     * @param { ImageFit } value - How the image is resized to fit its container, Default value is ImageFit.Cover.
+     * @returns { This }
+     * @relation objectFit(value: ImageFit): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alt(src: AppResource): This {
+    public func objectFit(value: ImageFit): This {
         unsafe {
-            var unsafeSrc = LibC.mallocCString(getResourceMedia(src))
-            FfiOHOSAceFrameworkImageSetAlt(unsafeSrc)
-            LibC.free(unsafeSrc)
+            FfiOHOSAceFrameworkImageSetObjectFit(value.getValue())
         }
         this
     }
 
+    /**
+     * Set the repeat style of the picture
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This attribute is not applicable to SVG images.
+     * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
+     * </p>
+     *
+     * @param { ImageRepeat } value - How the image is repeated, Default value is ImageRepeat.NoRepeat.
+     * @returns { This }
+     * @relation objectRepeat(value: ImageRepeat): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func objectFit(objectFit: ImageFit): This {
+    public func objectRepeat(value: ImageRepeat): This {
         unsafe {
-            FfiOHOSAceFrameworkImageSetObjectFit(objectFit.getValue())
+            FfiOHOSAceFrameworkImageSetObjectRepeat(value.getValue())
         }
         this
     }
 
+    /**
+     * Sets the interpolation effect of the image, which can alleviate aliasing that occurs when the image is zoomed.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This attribute is not applicable to SVG images.
+     * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
+     * </p>
+     *
+     * @param { ImageInterpolation } value - Interpolation effect of the image, Default value is ImageInterpolation.Low.
+     * @returns { This }
+     * @relation interpolation(value: ImageInterpolation): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func objectRepeat(objectRepeat: ImageRepeat): This {
+    public func interpolation(value: ImageInterpolation): This {
         unsafe {
-            FfiOHOSAceFrameworkImageSetObjectRepeat(objectRepeat.getValue())
+            FfiOHOSAceFrameworkImageSetInterpolation(value.getValue())
         }
         this
     }
 
+    /**
+     * Sets the rendering mode of the image.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This attribute is not applicable to SVG images.
+     * <br>When ColorFilter is set, this attribute is not effective.
+     * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
+     * </p>
+     *
+     * @param { ImageRenderMode } value - Rendering mode of the image, Default value is ImageRenderMode.Original.
+     * @returns { This }
+     * @relation renderMode(value: ImageRenderMode): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func interpolation(interpolation: ImageInterpolation): This {
+    public func renderMode(value: ImageRenderMode): This {
         unsafe {
-            FfiOHOSAceFrameworkImageSetInterpolation(interpolation.getValue())
+            FfiOHOSAceFrameworkImageSetRenderMode(value.getValue())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func renderMode(renderMode: ImageRenderMode): This {
-        unsafe {
-            FfiOHOSAceFrameworkImageSetRenderMode(renderMode.getValue())
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func borderInner(
         width: Length,
         color: ResourceColor,
@@ -485,11 +590,6 @@ public class Image <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func borderRadiusInner(radius: Length): This {
         super.borderRadiusInner(radius)
         unsafe {
@@ -498,11 +598,6 @@ public class Image <: ViewBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func borderRadiusInner(
         topLeft!: Length,
         topRight!: Length,
@@ -516,6 +611,22 @@ public class Image <: ViewBase {
         this
     }
 
+    /**
+     * Sets the decoding size of the image. 
+     * The original picture is decoded into a picture of a specified size. The unit of the number type is px.
+     * Anonymous Object Rectification.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This attribute works only when the target size is smaller than the source size.
+     * <br>This attribute is not applicable to SVG images or PixelMap objects.
+     * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
+     * </p>
+     *
+     * @param { Length } width - Decoding size of the image.
+     * @param { Length } height - Decoding size of the image.
+     * @returns { This }
+     * @relation sourceSize(value: ImageSourceSize): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -531,18 +642,43 @@ public class Image <: ViewBase {
         this
     }
 
+    /**
+     * Specifies whether to load the image synchronously.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
+     * </p>
+     *
+     * @param { Bool } value - Whether to load the image synchronously, Default value is false.
+     * @returns { This }
+     * @relation syncLoad(value: boolean): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func syncLoad(syncLoad: Bool): This {
+    public func syncLoad(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkImageSetSyncLoad(syncLoad)
+            FfiOHOSAceFrameworkImageSetSyncLoad(value)
         }
         this
     }
 
+    /**
+     * Sets the fill color to be superimposed on the image.
+     * By default, no fill color is applied. If an invalid value is passed, the system uses the default theme color:
+     * black in light mode and white in dark mode.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This attribute applies only to SVG images.
+     * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
+     * </p>
+     *
+     * @param { ResourceColor } value - Fill color to be superimposed on the image.
+     * @returns { This }
+     * @relation fillColor(value: ResourceColor): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -555,75 +691,147 @@ public class Image <: ViewBase {
         this
     }
 
+    /**
+     * Specifies whether to resize the image source based on the size of the display area during image decoding.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor
+     * or SVG.
+     * </p>
+     *
+     * @param { Bool } value - Whether to resize the image source based on the size of the display area
+     * during image decoding, Default value is false.
+     * @returns { ImageAttribute }
+     * @relation autoResize(value: boolean): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func autoResize(autoResize: Bool): This {
+    public func autoResize(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkImageSetAutoResize(autoResize)
+            FfiOHOSAceFrameworkImageSetAutoResize(value)
         }
         this
     }
 
+    /**
+     * Specifies whether to display the image in the system language direction.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
+     * </p>
+     *
+     * @param { Bool } value - Whether to display the image in the system language direction, Default value is false.
+     * @returns { This }
+     * @relation matchTextDirection(value: boolean): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func matchTextDirection(isMatchTextDirection: Bool): This {
+    public func matchTextDirection(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkImageSetMatchTextDirection(isMatchTextDirection)
+            FfiOHOSAceFrameworkImageSetMatchTextDirection(value)
         }
         this
     }
 
+    /**
+     * Sets whether the display size of the image follows the source size.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
+     * </p>
+     *
+     * @param { Bool } value - Whether to fit the image to the size of the image source, Default value is false.
+     * @returns { This }
+     * @relation fitOriginalSize(value: boolean): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fitOriginalSize(isFitOriginalSize: Bool): This {
+    public func fitOriginalSize(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkImageSetFitOriginalSize(isFitOriginalSize)
+            FfiOHOSAceFrameworkImageSetFitOriginalSize(value)
         }
         this
     }
 
+    /**
+     * Triggered when an image is successfully loaded or decoded.
+     * The size of the image source that is successfully loaded is returned, in pixels.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This event is not triggered if the parameter type of the component is AnimatedDrawableDescriptor.
+     * </p>
+     *
+     * @param { function } callback
+     * @returns { This }
+     * @relation onComplete
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onComplete(callback: (CJImageComplete) -> Unit): This {
-        let lambdaData = CallbackCJImageComplete(callback)
+    public func onComplete(callback: ImageCompleteCallback): This {
+        let lambdaData = CallbackImageLoadResult(callback)
         unsafe {
             FfiOHOSAceFrameworkImageOnCompleteV2(lambdaData.getID())
         }
         this
     }
 
+    /**
+     * Triggered when an error occurs during image loading.
+     * The field of "message" carries the detailed information of failed image loading.
+     * 
+     * <p><strong>NOTE</strong>:
+     * <br>This event is not triggered if the parameter type of the component is AnimatedDrawableDescriptor.
+     * </p>
+     *
+     * @param { ImageErrorCallback } callback
+     * @returns { This }
+     * @relation onError(callback: ImageErrorCallback): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onError(callback: (CJImageError) -> Unit): This {
-        let lambdaData = CallbackCJImageError(callback)
+    public func onError(callback: ImageErrorCallback): This {
+        let lambdaData = CallbackImageError(callback)
         unsafe {
             FfiOHOSAceFrameworkImageOnErrorV2(lambdaData.getID())
         }
         this
     }
 
+    /**
+     * When the loaded source file is a svg image, this callback is triggered when the playback of the svg image is complete.
+     * If the svg image is a wireless loop image, this callback is not triggered.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>Only SVG images are supported.
+     * <br>This event is not triggered if the parameter type of the component is AnimatedDrawableDescriptor.
+     * </p>
+     *
+     * @param { function } event
+     * @returns { This }
+     * @relation onFinish(event: () => void): ImageAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onFinish(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback)
+    public func onFinish(event: () -> Unit): This {
+        let lambdaData = Callback0Param<Unit>(event)
         unsafe {
             FfiOHOSAceFrameworkImageOnFinish(lambdaData.getID())
         }

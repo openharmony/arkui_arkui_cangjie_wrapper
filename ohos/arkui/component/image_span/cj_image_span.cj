@@ -283,13 +283,11 @@ public class ImageSpan <: ViewBase {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onError(callback: (CJImageError) -> Unit): This {
+    public func onError(callback: (ImageError) -> Unit): This {
         let wrapper = {
             value: CImageError =>
-            let error = CJImageError()
-            error.componentWidth = value.componentWidth
-            error.componentHeight = value.componentHeight
-            error.message = value.message.toString()
+            let error = ImageError(
+                value.componentWidth, value.componentHeight, value.message.toString())
             callback(error)
         }
         let lambdaData = Callback1Param<CImageError, Unit>(wrapper)
