@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.toggle
+protected package ohos.arkui.component.toggle
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
@@ -88,7 +88,12 @@ public class Toggle <: ContainerBase {
         }
     }
 
-    protected override func widthInner(width: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func width(width: Length): This {
         var width_ = transAppResourceToLength(width)
         unsafe {
             FfiOHOSAceFrameworkToggleWidth(width_.value, width_.unitType.getValue())
@@ -96,7 +101,12 @@ public class Toggle <: ContainerBase {
         this
     }
 
-    protected override func heightInner(value: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func height(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkToggleHeight(value_.value, value_.unitType.getValue())
@@ -104,7 +114,12 @@ public class Toggle <: ContainerBase {
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func size(width!: Length, height!: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
@@ -151,7 +166,12 @@ public class Toggle <: ContainerBase {
         this
     }
 
-    protected override func responseRegionInner(rect: Rectangle): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func responseRegion(rect: Rectangle): This {
         let cjRect = rect.parseToNative()
         unsafe {
             FfiToggleSetResponseRegion(
@@ -170,7 +190,12 @@ public class Toggle <: ContainerBase {
         this
     }
 
-    protected override func responseRegionInner(array: Array<Rectangle>): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func responseRegionArray(array: Array<Rectangle>): This {
         let vecFFi = FFIVectorNativeRectangle(array.size)
         var index = 0
         for (rect in array) {

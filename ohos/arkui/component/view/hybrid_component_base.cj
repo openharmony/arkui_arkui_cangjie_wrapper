@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.view
+protected package ohos.arkui.component.view
 
 import ohos.hilog.*
 import ohos.ark_interop.*

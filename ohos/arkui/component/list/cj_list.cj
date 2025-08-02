@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.list
+protected package ohos.arkui.component.list
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
@@ -182,16 +182,24 @@ public class List <: ScrollableBase {
         }
         this.child = child
     }
-
-    protected override func widthInner(value: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func width(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkListSetWidth(value_.value, value_.unitType.getValue())
         }
         this
     }
-    
-    protected override func heightInner(value: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func height(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkListSetHeight(value_.value, value_.unitType.getValue())

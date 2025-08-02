@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.state_management
+protected package ohos.arkui.state_management
 
 import ohos.labels.APILevel
 

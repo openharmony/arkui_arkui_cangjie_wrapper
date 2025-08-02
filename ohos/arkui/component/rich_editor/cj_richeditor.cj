@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.rich_editor
+protected package ohos.arkui.component.rich_editor
 
 import ohos.arkui.component.common.*
 import ohos.base.*

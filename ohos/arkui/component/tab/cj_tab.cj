@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.tab
+protected package ohos.arkui.component.tab
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
@@ -733,8 +733,28 @@ public class TabContent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func sizeInner(width: Length, height: Length): This {
+    public override func size(width!: Length, height!: Length): This {
         AppLog.warn("TabContent does not support size settings.")
+        this
+    }
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func width(_: Length): This {
+        AppLog.info("TabContent does not support width settings.")
+        this
+    }
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func height(_: Length): This {
+        AppLog.info("TabContent does not support height settings.")
         this
     }
 }

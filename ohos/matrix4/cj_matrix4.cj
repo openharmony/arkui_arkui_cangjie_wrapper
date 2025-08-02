@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 
-package ohos.matrix4
+protected package ohos.matrix4

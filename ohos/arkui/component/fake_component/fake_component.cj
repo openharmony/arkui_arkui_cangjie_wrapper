@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.fake_component
+protected package ohos.arkui.component.fake_component
 
 import ohos.arkui.component.common.*
 import ohos.labels.APILevel

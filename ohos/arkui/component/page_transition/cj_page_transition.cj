@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.page_transition
+protected package ohos.arkui.component.page_transition
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

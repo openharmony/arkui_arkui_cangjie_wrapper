@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component_utils
+protected package ohos.arkui.component_utils
 
 import ohos.base.*
 import ohos.ffi.*

@@ -571,7 +571,7 @@ public class Button <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func heightInner(value: Length): This {
+    public override func height(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkButtonSetHeight(normalizeValue(value_.value, 0.0), value_.unitType.getValue())
@@ -593,7 +593,7 @@ public class Button <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func widthInner(value: Length): This {
+    public override func width(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkButtonSetWidth(normalizeValue(value_.value, 0.0), value_.unitType.getValue())
@@ -673,7 +673,7 @@ public class Button <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func paddingInner(value: Length): This {
+    public func padding(value: Length): This {
         let content = transAppResourceToLength(value)
         let value_: Float64 = content.value
         let unitValue_: Int32 = content.unitType.getValue()
@@ -704,7 +704,7 @@ public class Button <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func sizeInner(width: Length, height: Length): This {
+    public override func size(width!: Length, height!: Length): This {
         let width_ = transAppResourceToLength(width)
         let height_ = transAppResourceToLength(height)
         unsafe {

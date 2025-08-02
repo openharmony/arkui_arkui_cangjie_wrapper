@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.view
+protected package ohos.arkui.component.view
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
@@ -22,7 +22,7 @@ import ohos.ffi.*
 import ohos.labels.APILevel
 import std.collection.ArrayList
 
-type VectorCJInt64Handle = CPointer<Unit>
+public type VectorCJInt64Handle = CPointer<Unit>
 
 foreign {
     func FfiOHOSAceFrameworkNativeViewCreate(view: Int64): Unit

@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.polyline
+protected package ohos.arkui.component.polyline

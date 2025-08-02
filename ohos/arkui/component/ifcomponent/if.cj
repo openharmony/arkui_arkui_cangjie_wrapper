@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.ifcomponent
+protected package ohos.arkui.component.ifcomponent
 
 import ohos.arkui.component.common.*
 import ohos.labels.APILevel
@@ -34,7 +34,7 @@ foreign {
     crossplatform: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class If <: UINodeBase {
+public class If <: ComponentRender {
     var child: () -> Unit = {=>}
 
     @!APILevel[

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.security_component
+protected package ohos.arkui.component.security_component
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
@@ -115,7 +115,7 @@ public enum SecurityComponentLayoutDirection {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public open class SecurityComponent <: UINodeBase {
+public open class SecurityComponent <: ComponentRender {
     protected open func pop(): Unit {
         unsafe {
             FfiOHOSAceFrameworkSecButtonBasePop()

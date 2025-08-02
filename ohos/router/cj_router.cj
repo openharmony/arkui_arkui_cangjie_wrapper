@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.router
+protected package ohos.router
 
 import ohos.base.*
 import ohos.hilog.HilogChannel

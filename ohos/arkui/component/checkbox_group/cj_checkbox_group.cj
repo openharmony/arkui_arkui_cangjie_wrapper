@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.checkbox_group
+protected package ohos.arkui.component.checkbox_group
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
@@ -172,7 +172,12 @@ public class CheckboxGroup <: ViewBase {
         this
     }
 
-    protected override func widthInner(value: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func width(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxGroupSetWidth(value_.value, value_.unitType.getValue())
@@ -185,7 +190,7 @@ public class CheckboxGroup <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func heightInner(value: Length): This {
+    public override func height(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxGroupSetHeight(value_.value, value_.unitType.getValue())
@@ -198,7 +203,7 @@ public class CheckboxGroup <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func sizeInner(width: Length, height: Length): This {
+    public override func size(width!: Length, height!: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
@@ -213,7 +218,7 @@ public class CheckboxGroup <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func paddingInner(value: Length): This {
+    public override func padding(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxGroupSetPadding(value_.value, value_.unitType.getValue())
@@ -247,7 +252,7 @@ public class CheckboxGroup <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func responseRegionInner(rect: Rectangle): This {
+    public func responseRegion(rect: Rectangle): This {
         let cjRect = rect.parseToNative()
         unsafe {
             FfiCheckBoxGroupSetResponseRegion(

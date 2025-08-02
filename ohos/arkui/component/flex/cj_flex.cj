@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.flex
+protected package ohos.arkui.component.flex
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
@@ -109,7 +109,7 @@ public class Flex <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func widthInner(value: Length): This {
+    public override func width(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkFlexSetFlexWidth(value_.value, value_.unitType.getValue())
@@ -117,7 +117,12 @@ public class Flex <: ContainerBase {
         this
     }
 
-    protected override func heightInner(value: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func height(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkFlexSetFlexHeight(value_.value, value_.unitType.getValue())
@@ -125,7 +130,12 @@ public class Flex <: ContainerBase {
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func size(width!: Length, height!: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {

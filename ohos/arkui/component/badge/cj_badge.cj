@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.badge
+protected package ohos.arkui.component.badge
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

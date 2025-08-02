@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.menu
+protected package ohos.arkui.component.menu
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
@@ -144,7 +144,12 @@ public class Menu <: ContainerBase {
         this
     }
 
-    protected override func widthInner(value: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func width(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkMenuSetWidth(value_.value, value_.unitType.getValue());

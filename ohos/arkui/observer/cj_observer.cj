@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.observer
+protected package ohos.arkui.observer
 
 import ohos.ffi.*
 import ohos.base.*

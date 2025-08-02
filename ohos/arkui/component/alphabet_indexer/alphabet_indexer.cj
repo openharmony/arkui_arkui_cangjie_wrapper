@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.alphabet_indexer
+protected package ohos.arkui.component.alphabet_indexer
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.search
+protected package ohos.arkui.component.search
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
@@ -371,7 +371,12 @@ public class Search <: ViewBase {
         this
     }
 
-    protected override func borderWidthInner(width: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func borderWidth(width: Length): This {
         var width_ = transAppResourceToLength(width)
         unsafe {
             FfiOHOSAceFrameworkSearchSetBorderWidth(width_.value, width_.unitType.getValue())
@@ -384,7 +389,7 @@ public class Search <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func borderColorInner(color: ResourceColor): This {
+    public override func borderColor(color: ResourceColor): This {
         unsafe {
             FfiOHOSAceFrameworkSearchSetBorderColor(transAppResourceToResourceColor(color))
         }
@@ -396,7 +401,7 @@ public class Search <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func borderStyleInner(style: BorderStyle): This {
+    public override func borderStyle(style: BorderStyle): This {
         unsafe {
             FfiOHOSAceFrameworkSearchSetBorderStyle(style.getValue())
         }
@@ -408,7 +413,7 @@ public class Search <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func borderRadiusInner(radius: Length): This {
+    public override func borderRadius(radius: Length): This {
         var radius_ = transAppResourceToLength(radius)
         unsafe {
             FfiOHOSAceFrameworkSearchSetBorderRadius(radius_.value, radius_.unitType.getValue())
@@ -421,7 +426,7 @@ public class Search <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func heightInner(value: Length): This {
+    public override func height(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkSearchSetHeight(value_.value, value_.unitType.getValue())

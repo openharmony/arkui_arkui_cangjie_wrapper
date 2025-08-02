@@ -103,7 +103,12 @@ public class Row <: ContainerBase {
         this
     }
 
-    protected override func widthInner(value: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func width(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkRowSetWidth(value_.value, value_.unitType.getValue())
@@ -111,7 +116,12 @@ public class Row <: ContainerBase {
         this
     }
 
-    protected override func heightInner(value: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func height(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkRowSetHeight(value_.value, value_.unitType.getValue())

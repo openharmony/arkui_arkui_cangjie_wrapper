@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.view
+protected package ohos.arkui.component.view
 
 import ohos.arkui.component.native_struct.*
 import ohos.arkui.component.common.*
@@ -64,7 +64,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ForEach <: UINodeBase {
+public class ForEach <: ComponentRender {
     var child: () -> Unit = {=>}
 
     @!APILevel[

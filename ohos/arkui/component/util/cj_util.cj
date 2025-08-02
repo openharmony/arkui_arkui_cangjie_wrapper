@@ -44,15 +44,16 @@ protected func transValueToTarget(value: Length, compareValue: Float64, targetVa
 }
 
 protected func transAppResourceToLength(value: Length): Length {
-    if (let Some(v) <- (value as AppResource)) {
-        return getResourceLength(v)
+    if (value is AppResource) {
+        return getResourceLength((value as AppResource).getOrThrow())
     }
     return value
 }
 
 protected func transAppResourceToResourceColor(value: ResourceColor): UInt32 {
-    if (let Some(v) <- (value as AppResource)) {
-        return getResourceColor(v).toUInt32()
+    if (value is AppResource) {
+        var value_ = getResourceColor((value as AppResource).getOrThrow())
+        return value_.toUInt32()
     }
     return value.toUInt32()
 }

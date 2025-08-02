@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.date_picker
+protected package ohos.arkui.component.date_picker
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.text_clock.*
@@ -368,7 +368,12 @@ public open class DatePicker <: ViewBase {
         this
     }
 
-    protected override func opacityInner(opacityValue: Float64): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func opacity(opacityValue: Float64): This {
         unsafe {
             FfiOHOSAceFrameworkDatePickerSetOpacity(opacityValue)
         }

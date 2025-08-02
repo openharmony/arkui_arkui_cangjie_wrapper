@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.web
+protected package ohos.arkui.component.web
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
@@ -1060,7 +1060,12 @@ public class Web <: ViewBase {
         this
     }
 
-    protected override func backgroundColorInner(color: ResourceColor): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public override func backgroundColor(color: ResourceColor): This {
         unsafe {
             FfiOHOSAceFrameworkWebBackgroundColor(transAppResourceToResourceColor(color))
         }

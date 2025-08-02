@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.font
+protected package ohos.font
 
 import ohos.base.*
 import ohos.labels.APILevel

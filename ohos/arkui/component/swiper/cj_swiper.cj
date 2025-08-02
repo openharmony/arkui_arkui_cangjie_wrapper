@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.swiper
+protected package ohos.arkui.component.swiper
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
@@ -558,7 +558,12 @@ public class Swiper <: ContainerBase {
         this
     }
 
-    protected override func enabledInner(value: Bool): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func enabled(value: Bool): This {
         unsafe {
             FfiOHOSAceFrameworkSwiperSetEnabled(value)
         }
@@ -570,7 +575,7 @@ public class Swiper <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func widthInner(value: Length): This {
+    public override func width(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkSwiperSetWidth(value_.value, value_.unitType.getValue())
@@ -583,7 +588,7 @@ public class Swiper <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func heightInner(value: Length): This {
+    public override func height(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkSwiperSetHeight(value_.value, value_.unitType.getValue())
@@ -596,7 +601,7 @@ public class Swiper <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func sizeInner(width: Length, height: Length): This {
+    public override func size(width!: Length, height!: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {

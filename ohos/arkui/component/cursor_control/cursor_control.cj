@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.cursor_control
+protected package ohos.arkui.component.cursor_control
 
 foreign func FFIOHOSAceFrameworkSetCursor(pointerStyle: Int32): Unit
 

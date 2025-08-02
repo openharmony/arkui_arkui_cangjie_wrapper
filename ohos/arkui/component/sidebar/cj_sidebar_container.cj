@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.sidebar
+protected package ohos.arkui.component.sidebar
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
@@ -466,7 +466,12 @@ public class SideBarContainer <: ContainerBase {
         this
     }
 
-    protected override func widthInner(value: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func width(value: Length): This {
         unsafe {
             let wid = transAppResourceToLength(value)
             FfiOHOSAceFrameworkStackSetWidth(wid.value, wid.unitType.getValue())
@@ -474,7 +479,12 @@ public class SideBarContainer <: ContainerBase {
         this
     }
 
-    protected override func heightInner(value: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func height(value: Length): This {
         unsafe {
             let hei = transAppResourceToLength(value)
             FfiOHOSAceFrameworkStackSetHeight(hei.value, hei.unitType.getValue())
@@ -482,11 +492,16 @@ public class SideBarContainer <: ContainerBase {
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func size(width!: Length, height!: Length): This {
         unsafe {
-            let w = transAppResourceToLength(width)
-            let h = transAppResourceToLength(height)
-            FfiOHOSAceFrameworkStackSetSize(w.value, w.unitType.getValue(), h.value, h.unitType.getValue())
+            let wid = transAppResourceToLength(width)
+            let hei = transAppResourceToLength(height)
+            FfiOHOSAceFrameworkStackSetSize(wid.value, wid.unitType.getValue(), hei.value, hei.unitType.getValue())
         }
         this
     }

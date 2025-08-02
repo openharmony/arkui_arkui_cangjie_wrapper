@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.view
+protected package ohos.arkui.component.view
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.ifcomponent.*
@@ -43,9 +43,9 @@ public func loadNativeView(view: CustomView): Bool {
     }
 }
 
-type UpdateFuncNew = (Int64, Bool) -> UINodeBase
+type UpdateFuncNew = (Int64, Bool) -> ComponentRender
 
-type RecycleUpdateFunc = (Int64, Bool, ?CustomView) -> UINodeBase
+type RecycleUpdateFunc = (Int64, Bool, ?CustomView) -> ComponentRender
 
 @!APILevel[
     21,

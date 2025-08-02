@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.progress
+protected package ohos.arkui.component.progress
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
@@ -228,7 +228,12 @@ public class Progress <: ViewBase {
         this
     }
 
-    protected override func backgroundColorInner(color: ResourceColor): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func backgroundColor(color: ResourceColor): This {
         unsafe {
             FfiOHOSAceFrameworkProgressSetBackgroundColor(transAppResourceToResourceColor(color))
         }

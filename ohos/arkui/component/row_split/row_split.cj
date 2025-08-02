@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.row_split
+protected package ohos.arkui.component.row_split
 
 import ohos.arkui.component.common.*
 import ohos.base.*

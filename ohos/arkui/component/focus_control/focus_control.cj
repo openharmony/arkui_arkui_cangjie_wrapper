@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.focus_control
+protected package ohos.arkui.component.focus_control
 
 import ohos.labels.APILevel
 

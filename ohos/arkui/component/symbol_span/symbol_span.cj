@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.symbol_span
+protected package ohos.arkui.component.symbol_span
 
 import ohos.base.*
 

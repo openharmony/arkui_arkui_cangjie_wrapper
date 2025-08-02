@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.prompt_action
+protected package ohos.prompt_action
 
 import ohos.base.*
 import ohos.ffi.*

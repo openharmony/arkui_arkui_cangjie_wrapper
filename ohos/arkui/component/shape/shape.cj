@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.shape
+protected package ohos.arkui.component.shape
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
@@ -351,7 +351,19 @@ public abstract class ShapeComponent <: ContainerBase {
         this
     }
 
-    protected override func widthInner(value: Length): This {
+    /**
+     * Sets the shape width.
+     *
+     * @param value: Shape width
+     * @return ShapeComponent instance
+     * @since 11
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func width(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkShapeSetWidth(value_.value, value_.unitType.getValue())
@@ -359,7 +371,19 @@ public abstract class ShapeComponent <: ContainerBase {
         this
     }
 
-    protected override func heightInner(value: Length): This {
+    /**
+     * Sets the shape height.
+     *
+     * @param value: Shape height
+     * @return ShapeComponent instance
+     * @since 11
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func height(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkShapeSetHeight(value_.value, value_.unitType.getValue())
@@ -367,7 +391,20 @@ public abstract class ShapeComponent <: ContainerBase {
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
+    /**
+     * Sets the shape size.
+     *
+     * @param width: Shape width
+     * @param height: Shape height
+     * @return ShapeComponent instance
+     * @since 11
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func size(width!: Length, height!: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {

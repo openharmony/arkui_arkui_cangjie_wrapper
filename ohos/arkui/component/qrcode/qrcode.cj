@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.qrcode
+protected package ohos.arkui.component.qrcode
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
@@ -63,7 +63,12 @@ public class QRCode <: ViewBase {
         this
     }
 
-    protected override func backgroundColorInner(color: ResourceColor): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func backgroundColor(color: ResourceColor): This {
         unsafe {
             FfiOHOSAceFrameworkQRCodeSetBackgroundColor(transAppResourceToResourceColor(color))
         }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.select
+protected package ohos.arkui.component.select
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
@@ -550,7 +550,12 @@ public class Select <: ViewBase {
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func size(width!: Length, height!: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
@@ -564,7 +569,12 @@ public class Select <: ViewBase {
         this
     }
 
-    protected override func paddingInner(value: Length): This {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func padding(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkSelectSetPadding(value_.value, value_.unitType.getValue())
@@ -577,7 +587,7 @@ public class Select <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func directionInner(value: Direction): This {
+    public override func direction(value: Direction): This {
         unsafe {
             FfiOHOSAceFrameworkSelectSetDirection(value.getValue())
         }

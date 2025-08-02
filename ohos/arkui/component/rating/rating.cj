@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.rating
+protected package ohos.arkui.component.rating
 
 import ohos.arkui.component.common.*
 import ohos.base.*

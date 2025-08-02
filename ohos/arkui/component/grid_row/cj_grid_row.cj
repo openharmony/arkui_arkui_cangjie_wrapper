@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.grid_row
+protected package ohos.arkui.component.grid_row
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
@@ -919,7 +919,7 @@ public class GridRow <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func heightInner(value: Length): This {
+    public override func height(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkGridRowSetHeight(value_.value, value_.unitType.getValue())
