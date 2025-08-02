@@ -36,6 +36,9 @@
             "inner_kits": [
                 {
                     "name": "//foundation/arkui/arkui_cangjie_api/ohos/base:ohos.base"
+                },
+                {
+                    "name": "//foundation/arkui/arkui_cangjie_api/ohos/ui_resource:ohos.ui_resource"
                 }
             ],
             "test": [
