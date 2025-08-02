@@ -1126,3 +1126,130 @@ public open class MultiShadowOptions {
         this.offsetY = offsetY
     }
 }
+
+/**
+ * Provide an interface for the text style of picker
+ *
+ * @class PickerTextStyle
+ * @relation interface PickerTextStyle
+ */
+@!APILevel[
+    21,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class PickerTextStyle {
+    /**
+     * Font color.
+     *
+     * @type { ?ResourceColor }
+     * @relation color?: ResourceColor
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var color: ?ResourceColor
+
+    /**
+     * Text style.
+     *
+     * @type { ?Font }
+     * @relation font?: Font
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var font: ?Font
+
+    /**
+     * PickerTextStyle constructor.
+     *
+     * @param { ?ResourceColor } color
+     * @param { ?Font } font
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(color!: ?ResourceColor = None, font!: ?Font = None) {
+        this.color = color
+        this.font = font
+    }
+}
+
+/**
+ * Provide an interface for the text style of picker
+ *
+ * @class PickerTextStyle
+ * @relation interface PickerTextStyle
+ */
+@!APILevel[
+    21,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class Font {
+    /**
+     * font size.
+     *
+     * @type { ?Length }
+     * @relation size?: Length
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var size: ?Length
+    /**
+     * font weight.
+     *
+     * @type { ?FontWeight }
+     * @relation weight?: FontWeight | number | string
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var weight: ?FontWeight
+    /**
+     * font family.
+     *
+     * @type { ?ResourceStr }
+     * @relation family?: string | Resource
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var family: ?ResourceStr
+    /**
+     * font style.
+     *
+     * @type { ?FontStyle }
+     * @relation style?: FontStyle
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var style: ?FontStyle
+
+    /**
+     * Font constructor.
+     *
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?ResourceStr } family
+     * @param { ?FontStyle } style
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?ResourceStr = None, style!: ?FontStyle = None) {
+        this.size = size
+        this.weight = weight
+        this.family = family
+        this.style = style
+    }
+}
