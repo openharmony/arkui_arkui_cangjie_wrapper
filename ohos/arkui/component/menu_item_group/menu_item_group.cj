@@ -18,7 +18,8 @@ protected package ohos.arkui.component.menu_item_group
 import ohos.arkui.component.common.*
 import ohos.base.*
 import ohos.ffi.*
-import ohos.resource.*
+import ohos.ui_resource.*
+import ohos.resource_manager.AppResource
 import ohos.labels.APILevel
 
 foreign {

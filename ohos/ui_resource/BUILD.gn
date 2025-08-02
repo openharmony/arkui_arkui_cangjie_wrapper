@@ -13,25 +13,22 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cj_library("ohos.arkui.component.menu_item") {
-  sources = [
-    "menu_item.cj"
-  ]
+ohos_cj_library("ohos.ui_resource") {
+  sources = [ "cj_ui_resource.cj" ]
 
   cj_deps = [
-    "../common:ohos.arkui.component.common",
-    "../util:ohos.arkui.component.util",
-    "../../../base:ohos.base",
-    "../../../ui_resource:ohos.ui_resource",
+    "../base:ohos.base",
   ]
 
   cj_external_deps = [
     "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
+    "cangjie_api:ohos.encoding.json",
     "global_cangjie_api:ohos.resource_manager",
   ]
 
+  external_deps = [ "ace_engine:cj_frontend_ohos" ]
+  lib_name = "ui_resource"
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_api"
-  lib_name = "arkui.component.menu_item"
 }

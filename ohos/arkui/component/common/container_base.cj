@@ -19,7 +19,7 @@ internal import ohos.labels.APILevel
 internal import ohos.base.*
 internal import ohos.ffi.*
 internal import std.collection.*
-internal import ohos.resource.*
+internal import ohos.ui_resource.*
 
 foreign func FfiOHOSAceFrameworkContainerBasePop(): Unit
 

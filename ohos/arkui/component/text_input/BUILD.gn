@@ -22,12 +22,13 @@ ohos_cj_library("ohos.arkui.component.text_input") {
     "../common:ohos.arkui.component.common",
     "../text_field:ohos.arkui.component.text_field",
     "../../../base:ohos.base",
+    "../../../ui_resource:ohos.ui_resource",
   ]
 
   cj_external_deps = [
     "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
-    "global_cangjie_api:ohos.resource",
+    "global_cangjie_api:ohos.resource_manager",
   ]
 
   subsystem_name = "arkui"

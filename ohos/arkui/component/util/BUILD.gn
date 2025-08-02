@@ -20,10 +20,11 @@ ohos_cj_library("ohos.arkui.component.util") {
 
   cj_deps = [
     "../../../base:ohos.base",
+    "../../../ui_resource:ohos.ui_resource",
   ]
 
   cj_external_deps = [
-    "global_cangjie_api:ohos.resource",
+    "global_cangjie_api:ohos.resource_manager",
   ]
 
   subsystem_name = "arkui"

@@ -20,6 +20,7 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.hi_trace_meter.*
 import ohos.labels.APILevel
+import ohos.resource_manager.AppResource
 import std.regex.*
 import std.math.*
 import std.convert.*

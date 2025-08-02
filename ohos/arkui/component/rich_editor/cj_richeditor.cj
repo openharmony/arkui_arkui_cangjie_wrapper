@@ -18,7 +18,8 @@ protected package ohos.arkui.component.rich_editor
 import ohos.arkui.component.common.*
 import ohos.base.*
 import ohos.ffi.*
-import ohos.resource.*
+import ohos.ui_resource.*
+import ohos.resource_manager.AppResource
 import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 import std.collection.ArrayList

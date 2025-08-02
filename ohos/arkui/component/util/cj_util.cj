@@ -16,7 +16,8 @@
 protected package ohos.arkui.component.util
 
 import ohos.base.*
-import ohos.resource.*
+import ohos.ui_resource.*
+import ohos.resource_manager.AppResource
 
 // !! Do not use the following variables as match-case conditions
 

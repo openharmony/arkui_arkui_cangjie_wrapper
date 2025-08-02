@@ -18,6 +18,7 @@ package ohos.arkui.component.common
 import ohos.arkui.component.native_struct.*
 import ohos.arkui.component.util.*
 import ohos.base.*
+import ohos.resource_manager.AppResource
 import ohos.ffi.*
 import ohos.labels.APILevel
 

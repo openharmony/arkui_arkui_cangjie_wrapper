@@ -20,7 +20,7 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
-import ohos.resource.*
+import ohos.ui_resource.*
 
 import std.convert.*
 

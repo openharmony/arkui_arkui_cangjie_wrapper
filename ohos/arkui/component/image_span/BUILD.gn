@@ -24,13 +24,14 @@ ohos_cj_library("ohos.arkui.component.image_span") {
     "../image:ohos.arkui.component.image",
     "../util:ohos.arkui.component.util",
     "../../../base:ohos.base",
+    "../../../ui_resource:ohos.ui_resource",
   ]
 
   cj_external_deps = [
     "cangjie_api:ohos.labels",
     "cangjie_api:ohos.ffi",
-    "global_cangjie_api:ohos.resource",
     "multimedia_cangjie_api:ohos.multimedia.image",
+    "global_cangjie_api:ohos.resource_manager",
   ]
 
   subsystem_name = "arkui"

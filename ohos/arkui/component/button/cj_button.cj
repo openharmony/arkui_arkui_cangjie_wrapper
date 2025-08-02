@@ -20,7 +20,7 @@ import ohos.arkui.component.native_struct.*
 import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.labels.APILevel
-import ohos.resource.*
+import ohos.ui_resource.*
 import std.deriving.Derive
 
 foreign {

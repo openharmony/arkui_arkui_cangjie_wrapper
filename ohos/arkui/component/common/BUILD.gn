@@ -36,15 +36,16 @@ ohos_cj_library("ohos.arkui.component.common") {
   cj_deps = [
     "../native_struct:ohos.arkui.component.native_struct",
     "../util:ohos.arkui.component.util",
+    "../../../ui_resource:ohos.ui_resource",
   ]
 
   cj_external_deps = [
     "cangjie_api:ohos.labels",
     "cangjie_api:ohos.ffi",
-    "global_cangjie_api:ohos.resource",
     "hiviewdfx_cangjie_api:ohos.hi_tracemeter",
     "hiviewdfx_cangjie_api:ohos.hilog",
-    "multimedia_cangjie_api:ohos.multimedia.image",
+    "multimedia_cangjie_api:ohos.image",
+    "global_cangjie_api:ohos.resource_manager",
   ]
 
   subsystem_name = "arkui"

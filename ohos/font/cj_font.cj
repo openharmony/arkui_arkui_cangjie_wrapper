@@ -17,7 +17,8 @@ protected package ohos.font
 
 import ohos.base.*
 import ohos.hilog.HilogChannel
-import ohos.resource.*
+import ohos.ui_resource.*
+import ohos.resource_manager.AppResource
 import ohos.labels.APILevel
 
 const RAWFILE_TYPE: Int32 = 30000

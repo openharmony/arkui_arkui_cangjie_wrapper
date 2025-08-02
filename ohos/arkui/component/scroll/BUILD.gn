@@ -24,12 +24,13 @@ ohos_cj_library("ohos.arkui.component.scroll") {
     "../rect:ohos.arkui.component.rect",
     "../util:ohos.arkui.component.util",
     "../../../base:ohos.base",
+    "../../../ui_resource:ohos.ui_resource",
   ]
 
   cj_external_deps = [
     "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
-    "global_cangjie_api:ohos.resource",
+    "global_cangjie_api:ohos.resource_manager",
   ]
 
   subsystem_name = "arkui"

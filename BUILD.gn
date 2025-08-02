@@ -22,6 +22,7 @@ group("arkui_cangjie_api_package") {
 #    "ohos/arkui/observer:ohos.arkui.observer",
 #    "ohos/arkui/state_management:ohos.arkui.state_management",
     "ohos/base:ohos.base",
+    "ohos/ui_resource:ohos.ui_resource",
 #    "ohos/curves:ohos.curves",
 #    "ohos/font:ohos.font",
 #    "ohos/matrix4:ohos.matrix4",

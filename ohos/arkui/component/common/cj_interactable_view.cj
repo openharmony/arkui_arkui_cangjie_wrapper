@@ -17,7 +17,7 @@ package ohos.arkui.component.common
 
 import ohos.arkui.component.native_struct.*
 import ohos.labels.APILevel
-import ohos.multimedia.image.PixelMap
+import ohos.image.PixelMap
 
 public type VectorTouchTestInfoHandle = CPointer<Unit>
 

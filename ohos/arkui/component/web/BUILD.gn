@@ -23,13 +23,14 @@ ohos_cj_library("ohos.arkui.component.web") {
     "../util:ohos.arkui.component.util",
     "../native_struct:ohos.arkui.component.native_struct",
     "../../../base:ohos.base",
+    "../../../ui_resource:ohos.ui_resource",
   ]
 
   cj_external_deps = [
     "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
-    "global_cangjie_api:ohos.resource",
     "web_cangjie_api:ohos.web.webview",
+    "global_cangjie_api:ohos.resource_manager",
   ]
 
   subsystem_name = "arkui"
