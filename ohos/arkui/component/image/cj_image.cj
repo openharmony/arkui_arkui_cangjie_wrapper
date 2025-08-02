@@ -88,70 +88,58 @@ foreign {
 }
 
 /**
- * Callback function triggered when the image is successfully loaded.
- * 
- * @typedef { function } ImageCompleteCallback
- * @param { ImageLoadResult } result - the information about the successfully loaded image.
- * @relation type ImageCompleteCallback = (result: ImageLoadResult) => void
+ * @class ImageError
+ * @relation interface ImageError
  */
-public type ImageCompleteCallback = (ImageLoadResult) -> Unit
+@!APILevel[
+    21,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class ImageError {
+    /**
+     * Component width.
+     *
+     * @type { Float64 }
+     * @relation componentWidth: number
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var componentWidth: Float64 = 0.0
+    /**
+     * Component height.
+     *
+     * @type { Float64 }
+     * @relation componentHeight: number
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var componentHeight: Float64 = 0.0
+    /**
+     * Message.
+     *
+     * @type { String }
+     * @relation message: string
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var message: String = ""
 
-/**
- * @typedef { function } ImageErrorCallback
- * @param { ImageError } error
- * @relation type ImageErrorCallback = (error: ImageError) => void
- */
-public type ImageErrorCallback = (ImageError) -> Unit
-
-protected class CallbackImageError <: BaseCallBack {
-    protected CallbackImageError(let closure: (ImageError) -> Unit) {
-        registerSelf()
-    }
-
-    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
-        if (argc != 1) {
-            throw InvalidArgsException()
-        }
-        if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackImageError")
-            throw InvalidArgsException()
-        }
-        let ptrArg0 = unsafe { CPointer<CImageError>(argv.read()) }
-        if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackImageError")
-            throw InvalidArgsException()
-        }
-        let c_arg0 = unsafe { ptrArg0.read() }
-        let arg0: ImageError = ImageError(c_arg0.componentWidth, c_arg0.componentHeight, "")
-        //arg0.message = c_arg0.message.toString()
-        closure(arg0)
-    }
-}
-
-class CallbackImageLoadResult <: BaseCallBack {
-    CallbackImageLoadResult(let closure: (ImageLoadResult) -> Unit) {
-        registerSelf()
-    }
-
-    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
-        if (argc != 1) {
-            throw InvalidArgsException()
-        }
-        if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackImageLoadResult")
-            throw InvalidArgsException()
-        }
-        let ptrArg0 = unsafe { CPointer<CImageComplete>(argv.read()) }
-        if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackImageLoadResult")
-            throw InvalidArgsException()
-        }
-        let c_arg0 = unsafe { ptrArg0.read() }
-        let arg0: ImageLoadResult = ImageLoadResult(c_arg0.width, c_arg0.height, c_arg0.componentWidth,
-            c_arg0.componentHeight, c_arg0.loadingStatus, c_arg0.contentWidth, c_arg0.contentHeight,
-            c_arg0.contentOffsetX, c_arg0.contentOffsetY)
-
-        closure(arg0)
+    protected init(
+        componentWidth: Float64,
+        componentHeight: Float64,
+        message: String
+    ) {
+        this.componentWidth = componentWidth
+        this.componentHeight = componentHeight
+        this.message = message
     }
 }
 
@@ -297,58 +285,71 @@ public class ImageLoadResult {
 }
 
 /**
- * @class ImageError
- * @relation interface ImageError
+ * Callback function triggered when the image is successfully loaded.
+ * 
+ * @typedef { function } ImageCompleteCallback
+ * @param { ImageLoadResult } result - the information about the successfully loaded image.
+ * @relation type ImageCompleteCallback = (result: ImageLoadResult) => void
  */
-@!APILevel[
-    21,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class ImageError {
-    /**
-     * Component width.
-     *
-     * @type { Float64 }
-     * @relation componentWidth: number
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var componentWidth: Float64 = 0.0
-    /**
-     * Component height.
-     *
-     * @type { Float64 }
-     * @relation componentHeight: number
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var componentHeight: Float64 = 0.0
-    /**
-     * Message.
-     *
-     * @type { String }
-     * @relation message: string
-     */
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var message: String = ""
+public type ImageCompleteCallback = (ImageLoadResult) -> Unit
 
-    protected init(
-        componentWidth: Float64,
-        componentHeight: Float64,
-        message: String
-    ) {
-        this.componentWidth = componentWidth
-        this.componentHeight = componentHeight
-        this.message = message
+/**
+ * @typedef { function } ImageErrorCallback
+ * @param { ImageError } error
+ * @relation type ImageErrorCallback = (error: ImageError) => void
+ */
+public type ImageErrorCallback = (ImageError) -> Unit
+
+
+protected class CallbackImageError <: BaseCallBack {
+    protected CallbackImageError(let closure: (ImageError) -> Unit) {
+        registerSelf()
+    }
+
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+        if (argc != 1) {
+            throw InvalidArgsException()
+        }
+        if (argv.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackImageError")
+            throw InvalidArgsException()
+        }
+        let ptrArg0 = unsafe { CPointer<CImageError>(argv.read()) }
+        if (ptrArg0.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackImageError")
+            throw InvalidArgsException()
+        }
+        let c_arg0 = unsafe { ptrArg0.read() }
+        let arg0: ImageError = ImageError(c_arg0.componentWidth, c_arg0.componentHeight, "")
+        //arg0.message = c_arg0.message.toString()
+        closure(arg0)
+    }
+}
+
+class CallbackImageLoadResult <: BaseCallBack {
+    CallbackImageLoadResult(let closure: (ImageLoadResult) -> Unit) {
+        registerSelf()
+    }
+
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+        if (argc != 1) {
+            throw InvalidArgsException()
+        }
+        if (argv.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackImageLoadResult")
+            throw InvalidArgsException()
+        }
+        let ptrArg0 = unsafe { CPointer<CImageComplete>(argv.read()) }
+        if (ptrArg0.isNull()) {
+            AppLog.error("Invalid argument, failed to invoke CallbackImageLoadResult")
+            throw InvalidArgsException()
+        }
+        let c_arg0 = unsafe { ptrArg0.read() }
+        let arg0: ImageLoadResult = ImageLoadResult(c_arg0.width, c_arg0.height, c_arg0.componentWidth,
+            c_arg0.componentHeight, c_arg0.loadingStatus, c_arg0.contentWidth, c_arg0.contentHeight,
+            c_arg0.contentOffsetX, c_arg0.contentOffsetY)
+
+        closure(arg0)
     }
 }
 
