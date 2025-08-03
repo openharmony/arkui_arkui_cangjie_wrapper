@@ -23,7 +23,7 @@ import ohos.ffi.*
 import ohos.ui_resource.*
 import ohos.resource_manager.AppResource
 import ohos.labels.APILevel
-import ohos.image.*
+import ohos.multimedia.image.*
 import std.collection.ArrayList
 
 // HarmonyOS system default font

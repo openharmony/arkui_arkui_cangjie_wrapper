@@ -28,7 +28,7 @@ ohos_cj_library("ohos.arkui.component.shape") {
   cj_external_deps = [
     "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
-    "multimedia_cangjie_api:ohos.image",
+    "multimedia_cangjie_api:ohos.multimedia.image",
     "global_cangjie_api:ohos.resource_manager",
   ]
 

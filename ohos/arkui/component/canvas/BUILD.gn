@@ -34,7 +34,7 @@ ohos_cj_library("ohos.arkui.component.canvas") {
   cj_external_deps = [
     "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
-    "multimedia_cangjie_api:ohos.image",
+    "multimedia_cangjie_api:ohos.multimedia.image",
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]

@@ -19,7 +19,7 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.arkui.component.*
 import ohos.arkui.component.native_struct.*
-import ohos.image.*
+import ohos.multimedia.image.*
 import ohos.labels.APILevel
 
 @C

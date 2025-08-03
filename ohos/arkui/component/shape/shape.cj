@@ -23,7 +23,7 @@ import ohos.ui_resource.*
 import ohos.resource_manager.AppResource
 import ohos.labels.APILevel
 
-import ohos.image.PixelMap
+import ohos.multimedia.image.PixelMap
 
 @C
 struct FFIAtCViewPort {
