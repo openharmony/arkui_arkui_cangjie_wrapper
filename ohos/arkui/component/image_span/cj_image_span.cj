@@ -24,7 +24,7 @@ import ohos.ffi.*
 import ohos.ui_resource.*
 import ohos.resource_manager.AppResource
 import ohos.labels.APILevel
-import ohos.multimedia.image.PixelMap
+import ohos.image.PixelMap
 
 @!APILevel[
     21,

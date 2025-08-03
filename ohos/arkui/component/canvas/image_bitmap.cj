@@ -18,7 +18,7 @@ protected package ohos.arkui.component.canvas
 import ohos.arkui.component.common.*
 import ohos.ffi.*
 import ohos.labels.APILevel
-import ohos.multimedia.image.PixelMap
+import ohos.image.PixelMap
 
 @C
 struct ImageBitMapParams {

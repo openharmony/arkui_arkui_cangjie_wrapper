@@ -25,7 +25,7 @@ import ohos.ui_resource.*
 import ohos.resource_manager.AppResource
 import ohos.labels.APILevel
 
-import ohos.multimedia.image.PixelMap
+import ohos.image.PixelMap
 import std.deriving.Derive
 
 @C

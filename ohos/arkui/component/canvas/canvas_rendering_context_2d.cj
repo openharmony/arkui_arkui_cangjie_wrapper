@@ -21,7 +21,7 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
-import ohos.multimedia.image.*
+import ohos.image.*
 
 foreign {
     func FfiOHOSAceFrameworkRenderingContextCtor(antialias: Bool): Int64

@@ -15,7 +15,7 @@
 
 protected package ohos.arkui.component_snapshot
 
-import ohos.multimedia.image.PixelMap
+import ohos.image.PixelMap
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
