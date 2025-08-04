@@ -21,21 +21,21 @@ import ohos.encoding.json.*
 import ohos.labels.APILevel
 
 @C
-public struct NativeDimension {
-    public NativeDimension(
-        public let value: Float64,
-        public let unit: Int32
+protected struct NativeDimension {
+    protected NativeDimension(
+        protected let value: Float64,
+        protected let unit: Int32
     ) {}
 }
 
 @C
-public struct NativeResourceObject {
-    public NativeResourceObject(
-        public let bundleName: CString,
-        public let moduleName: CString,
-        public let id: Int32,
-        public let resType: Int32,
-        public let paramsJsonStr: CString
+protected struct NativeResourceObject {
+    protected NativeResourceObject(
+        protected let bundleName: CString,
+        protected let moduleName: CString,
+        protected let id: Int32,
+        protected let resType: Int32,
+        protected let paramsJsonStr: CString
     ) {}
 }
 
@@ -63,10 +63,10 @@ foreign {
     func FFIGetResourceSymbolId(obj: NativeResourceObject): UInt32
 }
 
-public let UNKNOWN_RESOURCE_TYPE: Int32 = -1
+protected let UNKNOWN_RESOURCE_TYPE: Int32 = -1
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -88,7 +88,7 @@ public func getResourceString(res: AppResource): String {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -110,7 +110,7 @@ public func getResourceMedia(res: AppResource): String {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -131,7 +131,7 @@ public func getResourceColor(res: AppResource): Color {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -162,7 +162,7 @@ public func getResourceLength(res: AppResource): Length {
 }
 
 @!APILevel[
-    19,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -182,7 +182,7 @@ public func getResourceDouble(res: AppResource): Float64 {
 }
 
 @!APILevel[
-    19,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -202,7 +202,7 @@ public func getResourceUInt32(res: AppResource): UInt32 {
 }
 
 @!APILevel[
-    19,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -222,7 +222,7 @@ public func getResourceInt32(res: AppResource): Int32 {
 }
 
 @!APILevel[
-    19,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -247,7 +247,7 @@ public func getResourceStringArray(res: AppResource): Array<String> {
 }
 
 @!APILevel[
-    19,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -267,7 +267,7 @@ public func getResourceBool(res: AppResource): Bool {
 }
 
 @!APILevel[
-    19,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -287,7 +287,7 @@ public func getResourceSymbolId(res: AppResource): UInt32 {
 }
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
