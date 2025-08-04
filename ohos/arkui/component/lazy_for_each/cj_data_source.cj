@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.lazy_for_each
+package ohos.arkui.component.lazy_for_each
 
 import ohos.ffi.*
 import ohos.labels.APILevel

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.counter
+package ohos.arkui.component.counter
 
 import ohos.arkui.component.common.*
 import ohos.base.*

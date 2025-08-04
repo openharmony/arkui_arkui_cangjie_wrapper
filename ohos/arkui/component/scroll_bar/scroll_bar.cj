@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.scroll_bar
+package ohos.arkui.component.scroll_bar
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.scroll.*

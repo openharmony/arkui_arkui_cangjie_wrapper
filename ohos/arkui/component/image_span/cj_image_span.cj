@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.image_span
+package ohos.arkui.component.image_span
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
@@ -24,7 +24,7 @@ import ohos.ffi.*
 import ohos.ui_resource.*
 import ohos.resource_manager.AppResource
 import ohos.labels.APILevel
-import ohos.multimedia.image.PixelMap
+import ohos.image.PixelMap
 
 @!APILevel[
     21,

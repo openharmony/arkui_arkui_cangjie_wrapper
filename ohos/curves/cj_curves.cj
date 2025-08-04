@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.curves
+package ohos.curves
 
 import ohos.base.*
 import ohos.arkui.component.*

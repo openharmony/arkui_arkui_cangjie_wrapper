@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.measure
+package ohos.measure
 
 import ohos.base.*
 import ohos.ffi.*

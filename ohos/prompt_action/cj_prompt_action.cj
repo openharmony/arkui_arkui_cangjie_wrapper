@@ -13,13 +13,13 @@
  * limitations under the License.
  */
 
-protected package ohos.prompt_action
+package ohos.prompt_action
 
 import ohos.base.*
 import ohos.ffi.*
 import ohos.arkui.component.*
 import ohos.arkui.component.native_struct.*
-import ohos.multimedia.image.*
+import ohos.image.*
 import ohos.labels.APILevel
 
 @C

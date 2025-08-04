@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.flex
+package ohos.arkui.component.flex
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

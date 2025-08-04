@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.custom_view
+package ohos.arkui.component.custom_view
 
 import ohos.ffi.*
 import ohos.labels.APILevel

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.path_2d
+package ohos.arkui.component.path_2d
 
 import ohos.arkui.component.native_struct.*
 import ohos.base.*

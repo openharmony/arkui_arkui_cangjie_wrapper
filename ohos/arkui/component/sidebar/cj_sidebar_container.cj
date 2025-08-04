@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.sidebar
+package ohos.arkui.component.sidebar
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

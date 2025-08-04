@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.progress_mask
+package ohos.arkui.component.progress_mask
 
 foreign {
     func FfiOHOSAceFrameworkProgressMaskCreate(value: Float32, total: Float32, color: UInt32): Int64

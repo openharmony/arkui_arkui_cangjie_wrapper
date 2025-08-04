@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.paste_button
+package ohos.arkui.component.paste_button

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.relative_container
+package ohos.arkui.component.relative_container
 
 import ohos.arkui.component.common.*
 import ohos.base.*

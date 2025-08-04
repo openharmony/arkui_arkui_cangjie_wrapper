@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.water_flow
+package ohos.arkui.component.water_flow

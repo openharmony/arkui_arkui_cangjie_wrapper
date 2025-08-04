@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.circle
+package ohos.arkui.component.circle
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.shape.*

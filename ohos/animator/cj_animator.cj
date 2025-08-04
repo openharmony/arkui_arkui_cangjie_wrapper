@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.animator
+package ohos.animator
 
 import ohos.base.*
 import ohos.ffi.*

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.ellipse
+package ohos.arkui.component.ellipse
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.shape.*

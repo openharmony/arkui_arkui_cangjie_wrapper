@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.symbol_glyph
+package ohos.arkui.component.symbol_glyph
 
 import ohos.base.*
 

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.qrcode
+package ohos.arkui.component.qrcode
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

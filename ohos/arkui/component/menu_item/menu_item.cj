@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.menu_item
+package ohos.arkui.component.menu_item
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

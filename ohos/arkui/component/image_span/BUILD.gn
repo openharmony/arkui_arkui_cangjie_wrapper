@@ -30,7 +30,7 @@ ohos_cj_library("ohos.arkui.component.image_span") {
   cj_external_deps = [
     "cangjie_api:ohos.labels",
     "cangjie_api:ohos.ffi",
-    "multimedia_cangjie_api:ohos.multimedia.image",
+    "multimedia_cangjie_api:ohos.image",
     "global_cangjie_api:ohos.resource_manager",
   ]
 

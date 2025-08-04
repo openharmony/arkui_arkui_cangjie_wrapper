@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.recycle
+package ohos.arkui.component.recycle
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.view.*

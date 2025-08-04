@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.progress
+package ohos.arkui.component.progress
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

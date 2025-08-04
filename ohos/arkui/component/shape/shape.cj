@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.shape
+package ohos.arkui.component.shape
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
@@ -23,7 +23,7 @@ import ohos.ui_resource.*
 import ohos.resource_manager.AppResource
 import ohos.labels.APILevel
 
-import ohos.multimedia.image.PixelMap
+import ohos.image.PixelMap
 
 @C
 struct FFIAtCViewPort {

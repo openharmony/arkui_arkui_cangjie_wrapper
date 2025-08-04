@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.line
+package ohos.arkui.component.line
 
 import ohos.arkui.component.shape.*
 import ohos.arkui.component.util.*

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.pattern_lock
+package ohos.arkui.component.pattern_lock
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*

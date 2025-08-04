@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.rich_editor
+package ohos.arkui.component.rich_editor
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
@@ -23,7 +23,7 @@ import ohos.ffi.*
 import ohos.ui_resource.*
 import ohos.resource_manager.AppResource
 import ohos.labels.APILevel
-import ohos.multimedia.image.*
+import ohos.image.*
 import std.collection.ArrayList
 
 // HarmonyOS system default font

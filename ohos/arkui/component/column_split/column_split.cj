@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.column_split
+package ohos.arkui.component.column_split

@@ -29,7 +29,7 @@ ohos_cj_library("ohos.arkui.component.web") {
   cj_external_deps = [
     "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
-    "web_cangjie_api:ohos.web.webview",
+    "web_cangjie_api:ohos.webview",
     "global_cangjie_api:ohos.resource_manager",
   ]
 

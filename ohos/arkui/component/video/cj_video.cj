@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.video
+package ohos.arkui.component.video
 
 import ohos.arkui.component.common.*
 import ohos.base.*

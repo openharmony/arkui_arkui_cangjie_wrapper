@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.rich_text
+package ohos.arkui.component.rich_text
 
 import ohos.arkui.component.common.*
 import ohos.ffi.*

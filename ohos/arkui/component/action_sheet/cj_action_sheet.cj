@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.action_sheet
+package ohos.arkui.component.action_sheet
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.search
+package ohos.arkui.component.search
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

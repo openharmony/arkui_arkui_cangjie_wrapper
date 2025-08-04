@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.text_area
+package ohos.arkui.component.text_area
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.text_field.*

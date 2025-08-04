@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.image_animator
+package ohos.arkui.component.image_animator
 
 type VectorFfiImageHandle = CPointer<UInt32>
 

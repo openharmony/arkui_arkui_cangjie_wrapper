@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.context_menu
+package ohos.arkui.component.context_menu
 
 import ohos.labels.APILevel
 

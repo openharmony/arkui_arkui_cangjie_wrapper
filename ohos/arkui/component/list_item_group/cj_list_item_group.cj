@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.list_item_group
+package ohos.arkui.component.list_item_group
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*

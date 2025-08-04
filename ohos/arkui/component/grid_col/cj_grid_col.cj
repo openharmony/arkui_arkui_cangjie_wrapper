@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.grid_col
+package ohos.arkui.component.grid_col
 
 import ohos.arkui.component.common.*
 import ohos.base.*

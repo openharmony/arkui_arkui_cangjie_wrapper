@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.nav_destination
+package ohos.arkui.component.nav_destination
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
@@ -25,7 +25,7 @@ import ohos.ui_resource.*
 import ohos.resource_manager.AppResource
 import ohos.labels.APILevel
 
-import ohos.multimedia.image.PixelMap
+import ohos.image.PixelMap
 import std.deriving.Derive
 
 @C

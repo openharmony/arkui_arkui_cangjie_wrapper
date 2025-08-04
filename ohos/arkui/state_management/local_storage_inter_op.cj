@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.state_management
+package ohos.arkui.state_management
 
 import ohos.base.*
 import ohos.hilog.*

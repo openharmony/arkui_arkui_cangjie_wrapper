@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.path
+package ohos.arkui.component.path
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.shape.*

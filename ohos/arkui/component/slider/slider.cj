@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.slider
+package ohos.arkui.component.slider
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

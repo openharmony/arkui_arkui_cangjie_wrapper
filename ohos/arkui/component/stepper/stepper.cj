@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.stepper
+package ohos.arkui.component.stepper
 
 import ohos.arkui.component.common.*
 import ohos.ffi.*

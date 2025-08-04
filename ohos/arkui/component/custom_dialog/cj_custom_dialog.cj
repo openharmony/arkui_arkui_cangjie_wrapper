@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.custom_dialog
+package ohos.arkui.component.custom_dialog
 
 import ohos.arkui.component.action_sheet.*
 import ohos.arkui.component.view.*

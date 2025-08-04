@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.refresh
+package ohos.arkui.component.refresh
 
 import ohos.arkui.component.common.*
 import ohos.base.*

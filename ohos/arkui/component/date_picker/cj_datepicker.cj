@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.date_picker
+package ohos.arkui.component.date_picker
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.text_clock.*

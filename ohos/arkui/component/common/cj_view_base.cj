@@ -24,6 +24,7 @@ import ohos.resource_manager.AppResource
 import std.regex.*
 import std.math.*
 import std.convert.*
+import ohos.arkui.state_management.*
 
 foreign {
 

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.component.checkbox_group
+package ohos.arkui.component.checkbox_group
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
