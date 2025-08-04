@@ -22,10 +22,12 @@ ohos_cj_library("ohos.arkui.component.line") {
     "../shape:ohos.arkui.component.shape",
     "../util:ohos.arkui.component.util",
     "../../../base:ohos.base",
+    "../common:ohos.arkui.component.common",
   ]
 
   cj_external_deps = [
     "cangjie_api:ohos.labels",
+    "cangjie_api:ohos.ffi",
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]

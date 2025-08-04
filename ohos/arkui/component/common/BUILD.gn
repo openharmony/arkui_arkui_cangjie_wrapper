@@ -37,6 +37,7 @@ ohos_cj_library("ohos.arkui.component.common") {
     "../../../base:ohos.base",
     "../native_struct:ohos.arkui.component.native_struct",
     "../util:ohos.arkui.component.util",
+    "../../state_management:ohos.arkui.state_management",
     "../../../ui_resource:ohos.ui_resource",
   ]
 

@@ -31,12 +31,15 @@ ohos_cj_library("ohos.arkui.component.view") {
     "../ifcomponent:ohos.arkui.component.ifcomponent",
     "../lazy_for_each:ohos.arkui.component.lazy_for_each",
     "../native_struct:ohos.arkui.component.native_struct",
+    "../../state_management:ohos.arkui.state_management",
     "../../../base:ohos.base",
   ]
 
   cj_external_deps = [
     "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
+    "cangjie_api:ohos.ark_interop",
+    "hiviewdfx_cangjie_api:ohos.hilog",
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]

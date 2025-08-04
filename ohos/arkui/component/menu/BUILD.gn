@@ -29,6 +29,7 @@ ohos_cj_library("ohos.arkui.component.menu") {
   cj_external_deps = [
     "cangjie_api:ohos.labels",
     "global_cangjie_api:ohos.resource_manager",
+    "cangjie_api:ohos.ffi",
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]

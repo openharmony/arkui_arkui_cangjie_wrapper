@@ -21,6 +21,7 @@ ohos_cj_library("ohos.arkui.component.list_item") {
   cj_deps = [
     "../common:ohos.arkui.component.common",
     "../../../base:ohos.base",
+    "../../state_management:ohos.arkui.state_management",
   ]
 
   cj_external_deps = [

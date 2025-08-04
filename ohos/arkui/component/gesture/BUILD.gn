@@ -27,6 +27,7 @@ ohos_cj_library("ohos.arkui.component.gesture") {
   cj_external_deps = [
     "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
+    "hiviewdfx_cangjie_api:ohos.hilog",
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
