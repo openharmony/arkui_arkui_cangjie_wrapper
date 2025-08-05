@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.offscreen_canvas
+protected package ohos.arkui.component.offscreen_canvas

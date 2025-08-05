@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.text_timer
+protected package ohos.arkui.component.text_timer
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

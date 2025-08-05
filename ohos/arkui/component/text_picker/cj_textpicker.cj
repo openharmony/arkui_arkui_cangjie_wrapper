@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.text_picker
+protected package ohos.arkui.component.text_picker
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*

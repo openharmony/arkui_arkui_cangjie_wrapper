@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.data_panel
+protected package ohos.arkui.component.data_panel
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

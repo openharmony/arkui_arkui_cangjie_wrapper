@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.span
+protected package ohos.arkui.component.span
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*

@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.offscreen_canvas_rendering_context_2d
+protected package ohos.arkui.component.offscreen_canvas_rendering_context_2d

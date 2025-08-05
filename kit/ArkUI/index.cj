@@ -30,31 +30,31 @@ public import ohos.arkui.component.*
 public import ohos.arkui.state_management.*
 
 // font
-public import ohos.font.*
+// public import ohos.font.*
 
 // measure
-public import ohos.measure.*
+// public import ohos.measure.*
 
 // observer
-public import ohos.arkui.observer.*
+// public import ohos.arkui.observer.*
 
 // prompt_action
-public import ohos.prompt_action.*
+// public import ohos.prompt_action.*
 
 // router
 public import ohos.router.*
 
 // animator
-public import ohos.animator.*
+// public import ohos.animator.*
 
 // resource methods
 public import ohos.ui_resource.*
 
 // curves
-public import ohos.curves.*
+// public import ohos.curves.*
 
 // matrix4
-public import ohos.matrix4.*
+// public import ohos.matrix4.*
 
 // component snapshot
-public import ohos.arkui.component_snapshot.*
+// public import ohos.arkui.component_snapshot.*

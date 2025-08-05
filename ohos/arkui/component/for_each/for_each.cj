@@ -13,4 +13,4 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.for_each
+protected package ohos.arkui.component.for_each

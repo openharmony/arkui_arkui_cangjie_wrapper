@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.gauge
+protected package ohos.arkui.component.gauge
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.data_panel.*

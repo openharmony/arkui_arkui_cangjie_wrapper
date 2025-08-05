@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.hyperlink
+protected package ohos.arkui.component.hyperlink
 
 foreign func FfiOHOSAceFrameworkHyperlinkCreate(address: CString, content: CString): Unit
 

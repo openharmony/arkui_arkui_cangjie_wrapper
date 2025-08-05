@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.shared_trasition
+protected package ohos.arkui.component.shared_trasition
 
 import ohos.base.*
 import ohos.labels.APILevel

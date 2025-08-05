@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.stack
+protected package ohos.arkui.component.stack
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

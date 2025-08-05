@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.divider
+protected package ohos.arkui.component.divider
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*

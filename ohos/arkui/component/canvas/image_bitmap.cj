@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.canvas
+protected package ohos.arkui.component.canvas
 
 import ohos.arkui.component.common.*
 import ohos.ffi.*
