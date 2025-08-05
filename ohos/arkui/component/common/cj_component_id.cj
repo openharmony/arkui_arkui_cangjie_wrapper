@@ -79,3 +79,26 @@ public func sendMouseEvent(event: MouseEvent): Bool {
         return FfiOHOSAceFrameworkComponentIdSendMouseEvent(CJMouseEvent(event))
     }
 }
+
+@!APILevel[
+    12,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public func getInspectorByKey(id: String): String {
+    unsafe {
+        var unsafeValue: ?CString = None
+        var result = ""
+        var cResult: ?ExternalString = None
+        try {
+            unsafeValue = LibC.mallocCString(id)
+            cResult = FfiOHOSAceFrameworkComponentIdGetInspectorByKey(unsafeValue.getOrThrow())
+            result = cResult.getOrThrow().toString()
+        } finally {
+            unsafeValue?.free()
+            cResult?.free()
+        }
+        return result
+    }
+}
+
