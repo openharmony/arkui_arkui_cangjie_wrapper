@@ -19,7 +19,7 @@ import std.collection.*
 import ohos.labels.APILevel
 
 @!APILevel[
-    21,
+    12,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -32,7 +32,7 @@ public interface ArrayLike<T> {
 }
 
 @!APILevel[
-    21,
+    12,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -41,7 +41,7 @@ public interface ArrayLike<T> {
 extend<T> Array<T> <: ArrayLike<T> {}
 
 @!APILevel[
-    21,
+    12,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,

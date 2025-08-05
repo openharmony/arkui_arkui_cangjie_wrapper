@@ -26,8 +26,8 @@ public import ohos.window.Orientation as WindowOrientation
 
 // ui component
 public import ohos.base.*
-public import ohos.arkui.component.*
-public import ohos.arkui.state_management.*
+public import ohos.component.*
+public import ohos.state_manage.*
 
 // font
 // public import ohos.font.*

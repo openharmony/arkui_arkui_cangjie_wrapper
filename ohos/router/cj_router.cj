@@ -18,7 +18,7 @@ package ohos.router
 import ohos.base.*
 import ohos.hilog.HilogChannel
 import ohos.ffi.*
-import ohos.arkui.component.*
+import ohos.component.*
 import std.collection.*
 import ohos.labels.APILevel
 
@@ -51,19 +51,25 @@ foreign {
 }
 
 @!APILevel[
-    21,
+    12,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RouterMode {
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Standard
     | @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -80,52 +86,47 @@ public enum RouterMode {
 }
 
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RouterState {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var index: Int32
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var name: String
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var path: String
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var params: String
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        index!: Int32,
-        name!: String,
-        path!: String,
-        params!: String
-    ) {
-        this.index = index
-        this.name = name
-        this.path = path
-        this.params = params
-    }
+    public RouterState(
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public var index!: Int32,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public var name!: String,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public var path!: String,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public var params!: String
+    ) {}
 
     init(info: CJRouterState) {
         this.index = info.index
@@ -161,13 +162,17 @@ struct RouterStateList {
 }
 
 @!APILevel[
-    21,
+    12,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Router {
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -182,7 +187,9 @@ public class Router {
     }
 
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -197,7 +204,9 @@ public class Router {
     }
 
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -206,7 +215,9 @@ public class Router {
     }
 
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -219,7 +230,9 @@ public class Router {
     }
 
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -231,5 +244,237 @@ public class Router {
             unsafe { paramStr.free() }
         }
         res
+    }
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func pushUrl(url!: String, params!: String = "", callback!: ((Option<Int32>) -> Unit)) {
+        unsafe {
+            var cUrl = LibC.mallocCString(url)
+            let cParams = LibC.mallocCString(params)
+            let wrapper = {
+                code: Int32 => match (code) {
+                    case 0 => callback(Option<Int32>.None)
+                    case _ => callback(Option<Int32>.Some(code))
+                }
+            }
+            let lambdaData = Callback1Param<Int32, Unit>(wrapper)
+            FfiOHOSAceFrameworkRouterPushUrl(cUrl, cParams, RouterMode.Standard.getValue(), lambdaData.getID())
+            LibC.free(cUrl)
+            LibC.free(cParams)
+        }
+    }
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func pushUrl(url!: String, params!: String = "", mode!: RouterMode,
+        callback!: ((Option<Int32>) -> Unit)) {
+        unsafe {
+            var cUrl = LibC.mallocCString(url)
+            let cParams = LibC.mallocCString(params)
+            let wrapper = {
+                code: Int32 => match (code) {
+                    case 0 => callback(Option<Int32>.None)
+                    case _ => callback(Option<Int32>.Some(code))
+                }
+            }
+            let lambdaData = Callback1Param<Int32, Unit>(wrapper)
+            FfiOHOSAceFrameworkRouterPushUrl(cUrl, cParams, mode.getValue(), lambdaData.getID())
+            LibC.free(cUrl)
+            LibC.free(cParams)
+        }
+    }
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Lite"
+    ]
+    public static func replaceUrl(url!: String, params!: String = "", callback!: ((Option<Int32>) -> Unit)) {
+        unsafe {
+            var cUrl = LibC.mallocCString(url)
+            let cParams = LibC.mallocCString(params)
+            let wrapper = {
+                code: Int32 => match (code) {
+                    case 0 => callback(Option<Int32>.None)
+                    case _ => callback(Option<Int32>.Some(code))
+                }
+            }
+            let lambdaData = Callback1Param<Int32, Unit>(wrapper)
+            FfiOHOSAceFrameworkRouterReplaceUrl(cUrl, cParams, RouterMode.Standard.getValue(), lambdaData.getID())
+            LibC.free(cUrl)
+            LibC.free(cParams)
+        }
+    }
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Lite"
+    ]
+    public static func replaceUrl(url!: String, params!: String = "", mode!: RouterMode,
+        callback!: ((Option<Int32>) -> Unit)) {
+        unsafe {
+            var cUrl = LibC.mallocCString(url)
+            let cParams = LibC.mallocCString(params)
+            let wrapper = {
+                code: Int32 => match (code) {
+                    case 0 => callback(Option<Int32>.None)
+                    case _ => callback(Option<Int32>.Some(code))
+                }
+            }
+            let lambdaData = Callback1Param<Int32, Unit>(wrapper)
+            FfiOHOSAceFrameworkRouterReplaceUrl(cUrl, cParams, mode.getValue(), lambdaData.getID())
+            LibC.free(cUrl)
+            LibC.free(cParams)
+        }
+    }
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func clear() {
+        unsafe {
+            FfiOHOSAceFrameworkRouterClear()
+        }
+    }
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func getLength(): String {
+        unsafe {
+            FfiOHOSAceFrameworkRouterGetLength().toString()
+        }
+    }
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func hideAlertBeforeBackPage() {
+        unsafe {
+            FfiOHOSAceFrameworkRouterSetHideAlertBeforeBackPage()
+        }
+    }
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func showAlertBeforeBackPage(message: String, callback: ((Option<Int32>) -> Unit)) {
+        unsafe {
+            var cMsg = LibC.mallocCString(message)
+            let wrapper = {
+                code: Int32 => match (code) {
+                    case 0 => callback(Option<Int32>.None)
+                    case _ => callback(Option<Int32>.Some(code))
+                }
+            }
+            let lambdaData = Callback1Param<Int32, Unit>(wrapper)
+            FfiOHOSAceFrameworkRouterSetShowAlertBeforeBackPage(cMsg, lambdaData.getID())
+            LibC.free(cMsg)
+        }
+    }
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func getState(): RouterState {
+        unsafe {
+            let index: Int32 = 0
+            let name = LibC.mallocCString("")
+            let path = LibC.mallocCString("")
+            let params = LibC.mallocCString("")
+            var info: CJRouterState = CJRouterState(index: index, name: name, path: path, params: params)
+            FfiOHOSAceFrameworkRouterGetState(inout info)
+            let result = RouterState(info)
+            LibC.free(name)
+            LibC.free(path)
+            LibC.free(params)
+            return result
+        }
+    }
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func getStateByIndex(index: Int32): Option<RouterState> {
+        unsafe {
+            let index: Int32 = index
+            let name = LibC.mallocCString("")
+            let path = LibC.mallocCString("")
+            let params = LibC.mallocCString("")
+            var info: CJRouterState = CJRouterState(index: index, name: name, path: path, params: params)
+            FfiOHOSAceFrameworkRouterGetStateByIndex(inout info)
+            if (info.index == 0) {
+                return Option<RouterState>.None
+            }
+            let result = RouterState(info)
+            LibC.free(name)
+            LibC.free(path)
+            LibC.free(params)
+            return Option<RouterState>.Some(result)
+        }
+    }
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func getStateByUrl(url: String): ArrayList<RouterState> {
+        let ret = ArrayList<RouterState>()
+        unsafe {
+            var cUrl = LibC.mallocCString(url)
+            let result = FfiOHOSAceFrameworkRouterGetStateByUrl(cUrl)
+            LibC.free(cUrl)
+
+            if (result.size == 0) {
+                return ret
+            }
+            for (i in 0..result.size) {
+                let info = result.array.read(Int64(i))
+                ret.add(RouterState(info))
+            }
+            result.free()
+        }
+        return ret
     }
 }

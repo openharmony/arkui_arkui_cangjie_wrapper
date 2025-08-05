@@ -18,56 +18,117 @@ package ohos.font
 import ohos.base.*
 import ohos.labels.APILevel
 
-protected type VectorUIFontAliasInfoHandle = CPointer<Unit>
+public type VectorUIFontAliasInfoHandle = CPointer<Unit>
 
-protected type VectorUIFontAdjustInfoHandle = CPointer<Unit>
+public type VectorUIFontAdjustInfoHandle = CPointer<Unit>
 
-protected type VectorUIFontGenericInfoHandle = CPointer<Unit>
+public type VectorUIFontGenericInfoHandle = CPointer<Unit>
 
-protected type VectorUIFontFallbackInfoHandle = CPointer<Unit>
+public type VectorUIFontFallbackInfoHandle = CPointer<Unit>
 
-protected type VectorUIFontFallbackGroupInfoHandle = CPointer<Unit>
+public type VectorUIFontFallbackGroupInfoHandle = CPointer<Unit>
 
-protected type VectorUIFontConfigHandle = CPointer<Unit>
+public type VectorUIFontConfigHandle = CPointer<Unit>
 
 @C
-protected struct NativeUIFontAliasInfo {
-    protected NativeUIFontAliasInfo(
+public struct NativeUIFontAliasInfo {
+    public NativeUIFontAliasInfo(
         let name: ExternalString,
         let weight: UInt32
     ) {}
 }
 
+@!APILevel[
+    19,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class UIFontAliasInfo {
+    public UIFontAliasInfo(
+        public let name: String,
+        public let weight: UInt32
+    ) {}
+}
+
 @C
-protected struct NativeUIFontAdjustInfo {
-    protected NativeUIFontAdjustInfo(
+public struct NativeUIFontAdjustInfo {
+    public NativeUIFontAdjustInfo(
         let weight: UInt32,
         let to: UInt32
     ) {}
 }
 
+@!APILevel[
+    19,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class UIFontAdjustInfo {
+    public UIFontAdjustInfo(
+        public let weight: UInt32,
+        public let to: UInt32
+    ) {}
+}
+
 @C
-protected struct NativeUIFontGenericInfo {
-    protected NativeUIFontGenericInfo(
+public struct NativeUIFontGenericInfo {
+    public NativeUIFontGenericInfo(
         let family: ExternalString,
         let alias: CPointer<Unit>,
         let adjust: CPointer<Unit>
     ) {}
 }
 
+@!APILevel[
+    19,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class UIFontGenericInfo {
+    public UIFontGenericInfo(
+        public let family: String,
+        public let alias: Array<UIFontAliasInfo>,
+        public let adjust: Array<UIFontAdjustInfo>
+    ) {}
+}
+
 @C
-protected struct NativeUIFontFallbackInfo {
-    protected NativeUIFontFallbackInfo(
+public struct NativeUIFontFallbackInfo {
+    public NativeUIFontFallbackInfo(
         let language: ExternalString,
         let family: ExternalString
     ) {}
 }
 
+@!APILevel[
+    19,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class UIFontFallbackInfo {
+    public UIFontFallbackInfo(
+        public let language: String,
+        public let family: String
+    ) {}
+}
+
 @C
-protected struct NativeUIFontFallbackGroupInfo {
-    protected NativeUIFontFallbackGroupInfo(
+public struct NativeUIFontFallbackGroupInfo {
+    public NativeUIFontFallbackGroupInfo(
         let fontSetName: ExternalString,
         let fallback: CPointer<Unit>
+    ) {}
+}
+
+@!APILevel[
+    19,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class UIFontFallbackGroupInfo {
+    public UIFontFallbackGroupInfo(
+        public let fontSetName: String,
+        public let fallback: Array<UIFontFallbackInfo>
     ) {}
 }
 
@@ -77,6 +138,19 @@ struct NativeUIFontConfig {
         let fontDir: CPointer<Unit>,
         let generic: CPointer<Unit>,
         let fallbackGroups: CPointer<Unit>
+    ) {}
+}
+
+@!APILevel[
+    19,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class UIFontConfig {
+    public UIFontConfig(
+        public let fontDir: Array<String>,
+        public let generic: Array<UIFontGenericInfo>,
+        public let fallbackGroups: Array<UIFontFallbackGroupInfo>
     ) {}
 }
 
@@ -110,112 +184,112 @@ foreign func FFICJVectorNativeUIFontFallbackGroupInfoGetSize(vec: VectorUIFontFa
 
 foreign func FFICJVectorNativeUIFontFallbackGroupInfoGetElement(vec: VectorUIFontFallbackGroupInfoHandle, index: Int64): NativeUIFontFallbackGroupInfo
 
-protected class FFIVectorUIFontAliasInfo {
+public class FFIVectorUIFontAliasInfo {
     private let vecHandle: VectorUIFontAliasInfoHandle
 
-    protected init(vec: VectorUIFontAliasInfoHandle) {
+    public init(vec: VectorUIFontAliasInfoHandle) {
         vecHandle = vec
     }
 
-    protected func getElement(index: Int64): NativeUIFontAliasInfo {
+    public func getElement(index: Int64): NativeUIFontAliasInfo {
         unsafe {
             FFICJVectorNativeUIFontAliasInfoGetElement(vecHandle, index)
         }
     }
 
-    protected func getSize(): Int64 {
+    public func getSize(): Int64 {
         unsafe { FFICJVectorNativeUIFontAliasInfoGetSize(vecHandle) }
     }
 
-    protected func free(): Unit {
+    public func free(): Unit {
         unsafe { FFICJVectorNativeUIFontAliasInfoDelete(vecHandle) }
     }
 }
 
-protected class FFIVectorUIFontAdjustInfo {
+public class FFIVectorUIFontAdjustInfo {
     private let vecHandle: VectorUIFontAdjustInfoHandle
 
-    protected init(vec: VectorUIFontAdjustInfoHandle) {
+    public init(vec: VectorUIFontAdjustInfoHandle) {
         vecHandle = vec
     }
 
-    protected func getElement(index: Int64): NativeUIFontAdjustInfo {
+    public func getElement(index: Int64): NativeUIFontAdjustInfo {
         unsafe {
             FFICJVectorNativeUIFontAdjustInfoGetElement(vecHandle, index)
         }
     }
 
-    protected func getSize(): Int64 {
+    public func getSize(): Int64 {
         unsafe { FFICJVectorNativeUIFontAdjustInfoGetSize(vecHandle) }
     }
 
-    protected func free(): Unit {
+    public func free(): Unit {
         unsafe { FFICJVectorNativeUIFontAdjustInfoDelete(vecHandle) }
     }
 }
 
-protected class FFIVectorUIFontGenericInfo {
+public class FFIVectorUIFontGenericInfo {
     private let vecHandle: VectorUIFontGenericInfoHandle
 
-    protected init(vec: VectorUIFontGenericInfoHandle) {
+    public init(vec: VectorUIFontGenericInfoHandle) {
         vecHandle = vec
     }
 
-    protected func getElement(index: Int64): NativeUIFontGenericInfo {
+    public func getElement(index: Int64): NativeUIFontGenericInfo {
         unsafe {
             FFICJVectorNativeUIFontGenericInfoGetElement(vecHandle, index)
         }
     }
 
-    protected func getSize(): Int64 {
+    public func getSize(): Int64 {
         unsafe { FFICJVectorNativeUIFontGenericInfoGetSize(vecHandle) }
     }
 
-    protected func free(): Unit {
+    public func free(): Unit {
         unsafe { FFICJVectorNativeUIFontGenericInfoDelete(vecHandle) }
     }
 }
 
-protected class FFIVectorUIFontFallbackInfo {
+public class FFIVectorUIFontFallbackInfo {
     private let vecHandle: VectorUIFontFallbackInfoHandle
 
-    protected init(vec: VectorUIFontFallbackInfoHandle) {
+    public init(vec: VectorUIFontFallbackInfoHandle) {
         vecHandle = vec
     }
 
-    protected func getElement(index: Int64): NativeUIFontFallbackInfo {
+    public func getElement(index: Int64): NativeUIFontFallbackInfo {
         unsafe {
             FFICJVectorNativeUIFontFallbackInfoGetElement(vecHandle, index)
         }
     }
 
-    protected func getSize(): Int64 {
+    public func getSize(): Int64 {
         unsafe { FFICJVectorNativeUIFontFallbackInfoGetSize(vecHandle) }
     }
 
-    protected func free(): Unit {
+    public func free(): Unit {
         unsafe { FFICJVectorNativeUIFontFallbackInfoDelete(vecHandle) }
     }
 }
 
-protected class FFIVectorUIFontFallbackGroupInfo {
+public class FFIVectorUIFontFallbackGroupInfo {
     private let vecHandle: VectorUIFontFallbackGroupInfoHandle
 
-    protected init(vec: VectorUIFontFallbackGroupInfoHandle) {
+    public init(vec: VectorUIFontFallbackGroupInfoHandle) {
         vecHandle = vec
     }
 
-    protected func getElement(index: Int64): NativeUIFontFallbackGroupInfo {
+    public func getElement(index: Int64): NativeUIFontFallbackGroupInfo {
         unsafe {
             FFICJVectorNativeUIFontFallbackGroupInfoGetElement(vecHandle, index)
         }
     }
 
-    protected func getSize(): Int64 {
+    public func getSize(): Int64 {
         unsafe { FFICJVectorNativeUIFontFallbackGroupInfoGetSize(vecHandle) }
     }
 
-    protected func free(): Unit {
+    public func free(): Unit {
         unsafe { FFICJVectorNativeUIFontFallbackGroupInfoDelete(vecHandle) }
     }
 }

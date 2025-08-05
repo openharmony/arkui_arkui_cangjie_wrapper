@@ -16,8 +16,8 @@
 package ohos.font
 
 import ohos.base.*
-import ohos.hilog.HilogChannel
 import ohos.ui_resource.*
+import ohos.hilog.HilogChannel
 import ohos.resource_manager.AppResource
 import ohos.labels.APILevel
 
@@ -48,101 +48,19 @@ struct NativeOptionFontInfo {
     ) {}
 }
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 public class FontInfo {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public let path: String
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public let postScriptName: String
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public let fullName: String
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public let family: String
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public let subfamily: String
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public let weight: UInt32
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public let width: UInt32
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public let italic: Bool
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public let monoSpace: Bool
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public let symbolic: Bool
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        path: String,
-        postScriptName: String,
-        fullName: String,
-        family: String,
-        subfamily: String,
-        weight: UInt32,
-        width: UInt32,
-        italic: Bool,
-        monoSpace: Bool,
-        symbolic: Bool
-    ) {
-        this.path = path
-        this.postScriptName = postScriptName
-        this.fullName = fullName
-        this.family = family
-        this.subfamily = subfamily
-        this.weight = weight
-        this.width = width
-        this.italic = italic
-        this.monoSpace = monoSpace
-        this.symbolic = symbolic
-    }
+    public FontInfo(
+        public let path: String,
+        public let postScriptName: String,
+        public let fullName: String,
+        public let family: String,
+        public let subfamily: String,
+        public let weight: UInt32,
+        public let width: UInt32,
+        public let italic: Bool,
+        public let monoSpace: Bool,
+        public let symbolic: Bool
+    ) {}
 }
 
 foreign func FfiFontManagerRegisterFont(familyName: CString, familySrc: CString): Unit
@@ -154,13 +72,110 @@ foreign func FfiFontManagerGetFontByName(fontName: CString): CPointer<NativeFont
 foreign func FfiFontManagerGetUIFontConfig(): NativeUIFontConfig
 
 @!APILevel[
-    21,
+    12,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Font {
     @!APILevel[
-        21,
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func getUIFontConfig(): UIFontConfig {
+        unsafe {
+            let FFIUIFontConfig = FfiFontManagerGetUIFontConfig()
+            let FFIFontDirList = FFIVectorString(FFIUIFontConfig.fontDir)
+            let CJFontDirArray = Array<String>(FFIFontDirList.getSize(), {
+                i => FFIFontDirList.getElement(i)
+            })
+            FFIFontDirList.free()
+            let FFIGenericList = FFIVectorUIFontGenericInfo(FFIUIFontConfig.generic)
+            // CJGenericArray
+            let genericListSize = FFIGenericList.getSize()
+            let CJGenericInfoArray = Array<UIFontGenericInfo>(
+                genericListSize,
+                {
+                    i =>
+                    let FFIGeneric = FFIGenericList.getElement(i)
+                    // CJAliasArray
+                    let FFIAliasList = FFIVectorUIFontAliasInfo(FFIGeneric.alias)
+                    let CJAliasArray = Array<UIFontAliasInfo>(
+                        FFIAliasList.getSize(),
+                        {
+                            i =>
+                            let alias = UIFontAliasInfo(
+                                FFIAliasList.getElement(i).name.toString(),
+                                FFIAliasList.getElement(i).weight
+                            )
+                            FFIAliasList.getElement(i).name.free()
+                            return alias
+                        }
+                    )
+                    FFIAliasList.free()
+                    // CJAdjustArray
+                    let FFIAdjustList = FFIVectorUIFontAdjustInfo(FFIGeneric.adjust)
+                    let CJAdjustArray = Array<UIFontAdjustInfo>(FFIAdjustList.getSize(),
+                        {
+                            i => UIFontAdjustInfo(
+                                FFIAdjustList.getElement(i).weight,
+                                FFIAdjustList.getElement(i).to
+                            )
+                        })
+                    FFIAdjustList.free()
+                    // CJGenericInfo
+                    let CJGenericInfo = UIFontGenericInfo(
+                        FFIGeneric.family.toString(),
+                        CJAliasArray,
+                        CJAdjustArray
+                    )
+                    FFIGeneric.family.free()
+                    return CJGenericInfo
+                }
+            )
+            FFIGenericList.free()
+            // CJFallbackGroupInfoArray
+            let FFIFallbackGroupsList = FFIVectorUIFontFallbackGroupInfo(FFIUIFontConfig.fallbackGroups)
+            let fallbackGroupsListSize = FFIFallbackGroupsList.getSize()
+            let CJFallbackGroupInfoArray = Array<UIFontFallbackGroupInfo>(
+                fallbackGroupsListSize,
+                {
+                    i =>
+                    let FFIFallbackGroup = FFIFallbackGroupsList.getElement(i)
+                    let FFIFallBackList = FFIVectorUIFontFallbackInfo(FFIFallbackGroup.fallback)
+                    let CJFallBackArray = Array<UIFontFallbackInfo>(
+                        FFIFallBackList.getSize(),
+                        {
+                            j =>
+                            let fallbackInfo = UIFontFallbackInfo(
+                                FFIFallBackList.getElement(j).language.toString(),
+                                FFIFallBackList.getElement(j).family.toString()
+                            )
+                            FFIFallBackList.getElement(j).language.free()
+                            FFIFallBackList.getElement(j).family.free()
+                            return fallbackInfo
+                        }
+                    )
+                    FFIFallBackList.free()
+                    let CJFallbackGroupInfo = UIFontFallbackGroupInfo(
+                        FFIFallbackGroup.fontSetName.toString(),
+                        CJFallBackArray
+                    )
+                    CJFallbackGroupInfo
+                }
+            )
+            FFIFallbackGroupsList.free()
+            let CJUIFontConfig = UIFontConfig(
+                CJFontDirArray,
+                CJGenericInfoArray,
+                CJFallbackGroupInfoArray
+            )
+            return CJUIFontConfig
+        }
+    }
+
+    @!APILevel[
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -175,7 +190,7 @@ public class Font {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -192,7 +207,7 @@ public class Font {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -208,7 +223,7 @@ public class Font {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

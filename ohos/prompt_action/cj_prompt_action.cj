@@ -17,8 +17,7 @@ package ohos.prompt_action
 
 import ohos.base.*
 import ohos.ffi.*
-import ohos.arkui.component.*
-import ohos.arkui.component.native_struct.*
+import ohos.component.*
 import ohos.image.*
 import ohos.labels.APILevel
 
@@ -212,26 +211,22 @@ public type ShowDialogCallBack = AsyncCallback<Int32>
 public type ShowActionMenuCallBack = AsyncCallback<Int32>
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    12,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ButtonInfo {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        12,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let text: String
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        12,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let color: UInt32
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        12,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let primary: Bool
@@ -244,8 +239,7 @@ public class ButtonInfo {
      * @since 11
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        12,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(text: String, color: UInt32, primary!: Bool = false) {
@@ -262,8 +256,7 @@ public class ButtonInfo {
      * @since 11
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        12,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(text: String, color: Color, primary!: Bool = false) {
@@ -300,19 +293,96 @@ unsafe func DestoryCButtons(pButtons: CPointer<CButtonInfo>, size: Int64) {
 }
 
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
+    crossplatform: true,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public enum ShadowStyle {
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    OUTER_DEFAULT_XS
+    | @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    OUTER_DEFAULT_SM
+    | @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    OUTER_DEFAULT_MD
+    | @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    OUTER_DEFAULT_LG
+    | @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    OUTER_FLOATING_SM
+    | @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    OUTER_FLOATING_MD
+    | ...
+
+    func getValue(): Int32 {
+        match (this) {
+            case OUTER_DEFAULT_XS => 0
+            case OUTER_DEFAULT_SM => 1
+            case OUTER_DEFAULT_MD => 2
+            case OUTER_DEFAULT_LG => 3
+            case OUTER_FLOATING_SM => 4
+            case OUTER_FLOATING_MD => 5
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+}
+
+@!APILevel[
+    12,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ToastShowMode {
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default
     | @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -329,38 +399,56 @@ public enum ToastShowMode {
 }
 
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
+    crossplatform: true,
+    form: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EdgeStyles {
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var top: BorderStyle
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var right: BorderStyle
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bottom: BorderStyle
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var left: BorderStyle
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -378,37 +466,55 @@ public class EdgeStyles {
 }
 
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
+    crossplatform: true,
+    form: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EdgeColor {
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var top: Color
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var right: Color
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bottom: Color
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var left: Color
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -426,19 +532,25 @@ public class EdgeColor {
 }
 
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum HoverModeAreaType {
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TOP_SCREEN
     | @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -455,19 +567,25 @@ public enum HoverModeAreaType {
 }
 
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum KeyboardAvoidMode {
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DEFAULT
     | @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -484,104 +602,138 @@ public enum KeyboardAvoidMode {
 }
 
 @!APILevel[
-    21,
+    12,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class BaseDialogOptions {
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskRect: Rectangle = Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var alignment: DialogAlignment = DialogAlignment.Default
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: Offset = Offset(0.vp, 0.vp)
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isModal: Bool = true
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: Bool = false
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: Bool = true
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskColor: Color = Color(0x33000000)
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: TransitionEffect = TransitionEffect.OPACITY
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onDidAppear: () -> Unit = {=>}
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onDidDisappear: () -> Unit = {=>}
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillAppear: () -> Unit = {=>}
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDisappear: () -> Unit = {=>}
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keyboardAvoidMode: KeyboardAvoidMode = KeyboardAvoidMode.DEFAULT
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enableHoverMode: Bool = false
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hoverModeArea: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN
 
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -600,7 +752,9 @@ public open class BaseDialogOptions {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -640,86 +794,114 @@ public open class BaseDialogOptions {
 }
 
 @!APILevel[
-    21,
+    12,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomDialogOptions <: BaseDialogOptions {
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var builder: () -> Unit = {=>}
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: UInt32 = Color.TRANSPARENT.toUInt32()
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cornerRadius: BorderRadiuses = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
         bottomRight: 32.vp)
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: EdgeWidths = EdgeWidths()
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: EdgeColor = EdgeColor()
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderStyle: Option<BorderStyle> = None
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderEdgeStyle: Option<EdgeStyles> = None
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: Length = 400.vp
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: Length = 100.vp
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadowOption: Option<ShadowOptions> = None
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadowStyle: Option<ShadowStyle> = None
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -742,7 +924,9 @@ public class CustomDialogOptions <: BaseDialogOptions {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -808,7 +992,9 @@ public class CustomDialogOptions <: BaseDialogOptions {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -818,303 +1004,281 @@ public class CustomDialogOptions <: BaseDialogOptions {
 }
 
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class ShowDialogOptions {
     let buttonsSize: UInt32
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var title: String = ''
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var message: String = ''
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var buttons: Array<ButtonInfo> = [ButtonInfo("button", Color(0x31463146))]
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var alignment: DialogAlignment = DialogAlignment.Default
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var offset: Offset = Offset(0.vp, 0.vp)
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var maskRect: Rectangle = Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var showInSubWindow: Bool = false
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var isModal: Bool = true
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var backgroundColor: Color = Color.TRANSPARENT
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var shadowOption: Option<ShadowOptions> = Option.None
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var shadowStyle: Option<ShadowStyle> = Option.None
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var enableHoverMode: Bool = false
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var hoverModeArea: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        title!: String = '',
-        message!: String = '',
-        buttons!: Array<ButtonInfo> = [ButtonInfo("button", Color(0x31463146))],
-        alignment!: DialogAlignment = DialogAlignment.Default,
-        offset!: Offset = Offset(0.vp, 0.vp),
-        maskRect!: Rectangle = Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent),
-        showInSubWindow!: Bool = false,
-        isModal!: Bool = true,
-        backgroundColor!: Color = Color.TRANSPARENT,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
-        shadowOption!: Option<ShadowOptions> = Option.None,
-        shadowStyle!: Option<ShadowStyle> = Option.None,
-        enableHoverMode!: Bool = false,
-        hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN
+
+    public ShowDialogOptions(
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let title!: String = '',
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let message!: String = '',
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let buttons!: Array<ButtonInfo> = [ButtonInfo("button", Color(0x31463146))],
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let alignment!: DialogAlignment = DialogAlignment.Default,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let offset!: Offset = Offset(0.vp, 0.vp),
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let maskRect!: Rectangle = Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent),
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let showInSubWindow!: Bool = false,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let isModal!: Bool = true,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let backgroundColor!: Color = Color.TRANSPARENT,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let shadowOption!: Option<ShadowOptions> = Option.None,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let shadowStyle!: Option<ShadowStyle> = Option.None,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let enableHoverMode!: Bool = false,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN
     ) {
         this.buttonsSize = UInt32(buttons.size)
-        this.title = title
-        this.message = message
-        this.buttons = buttons
-        this.alignment = alignment
-        this.offset = offset
-        this.maskRect = maskRect
-        this.showInSubWindow = showInSubWindow
-        this.isModal = isModal
-        this.backgroundColor = backgroundColor
-        this.backgroundBlurStyle = backgroundBlurStyle
-        this.shadowOption = shadowOption
-        this.shadowStyle = shadowStyle
-        this.enableHoverMode = enableHoverMode
-        this.hoverModeArea = hoverModeArea
     }
 }
 
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class ActionMenuOptions {
     let buttonsSize: UInt32
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var title: String = ''
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var buttons: Array<ButtonInfo>
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var showInSubWindow: Bool = false
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var isModal: Bool = true
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        title!: String = '',
-        buttons!: Array<ButtonInfo>,
-        showInSubWindow!: Bool = false,
-        isModal!: Bool = true
+
+    public ActionMenuOptions(
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let title!: String = '',
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let buttons!: Array<ButtonInfo>,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let showInSubWindow!: Bool = false,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let isModal!: Bool = true
     ) {
         this.buttonsSize = UInt32(buttons.size)
-        this.title = title
-        this.buttons = buttons
-        this.showInSubWindow = showInSubWindow
-        this.isModal = isModal
     }
 }
 
 @!APILevel[
-    21,
+    19,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ShowToastOptions {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var message: String = 'ShowToast'
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var duration: UInt32 = 1500
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var bottom: String = '80vp'
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var showMode: ToastShowMode = ToastShowMode.Default
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var alignment: Alignment = Alignment.Bottom
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var offset: Offset = Offset(0.vp, 0.vp)
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var backgroundColor: Color = Color.TRANSPARENT
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var textColor: Color = Color.BLACK
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var shadowOption: Option<ShadowOptions> = Option.None
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var shadowStyle: Option<ShadowStyle> = Option.None
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var enableHoverMode: Bool = false
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var hoverModeArea: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        message!: String = 'ShowToast',
-        duration!: UInt32 = 1500,
-        bottom!: String = '80vp',
-        showMode!: ToastShowMode = ToastShowMode.Default,
-        alignment!: Alignment = Alignment.Bottom,
-        offset!: Offset = Offset(0.vp, 0.vp),
-        backgroundColor!: Color = Color.TRANSPARENT,
-        textColor!: Color = Color.BLACK,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
-        shadowOption!: Option<ShadowOptions> = Option.None,
-        shadowStyle!: Option<ShadowStyle> = Option.None,
-        enableHoverMode!: Bool = false,
-        hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN
-    ) {
-        this.message = message
-        this.duration = duration
-        this.bottom = bottom
-        this.showMode = showMode
-        this.alignment = alignment
-        this.offset = offset
-        this.backgroundColor = backgroundColor
-        this.textColor = textColor
-        this.backgroundBlurStyle = backgroundBlurStyle
-        this.shadowOption = shadowOption
-        this.shadowStyle = shadowStyle
-        this.enableHoverMode = enableHoverMode
-        this.hoverModeArea = hoverModeArea
-    }
+    public ShowToastOptions(
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let message!: String = 'ShowToast',
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let duration!: UInt32 = 1500,
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let bottom!: String = '80vp',
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let showMode!: ToastShowMode = ToastShowMode.Default,
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let alignment!: Alignment = Alignment.Bottom,
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let offset!: Offset = Offset(0.vp, 0.vp),
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let backgroundColor!: Color = Color.TRANSPARENT,
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let textColor!: Color = Color.BLACK,
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let shadowOption!: Option<ShadowOptions> = Option.None,
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let shadowStyle!: Option<ShadowStyle> = Option.None,
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let enableHoverMode!: Bool = false,
+        @!APILevel[
+            19,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN
+    ) {}
 }
 
 func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadowOptions {
@@ -1310,7 +1474,9 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
 }
 
 @!APILevel[
-    21,
+    12,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -1318,7 +1484,9 @@ public class PromptAction {
     private static let defaultCallback = {_: Option<AsyncError>, _: Option<Int32> =>}
 
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1334,7 +1502,9 @@ public class PromptAction {
     }
 
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1368,7 +1538,9 @@ public class PromptAction {
     }
 
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1398,7 +1570,9 @@ public class PromptAction {
     }
 
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1412,7 +1586,9 @@ public class PromptAction {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1425,7 +1601,9 @@ public class PromptAction {
     }
 
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1436,7 +1614,9 @@ public class PromptAction {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1450,7 +1630,9 @@ public class PromptAction {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -1473,7 +1655,9 @@ public class PromptAction {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

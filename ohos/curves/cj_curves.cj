@@ -16,7 +16,7 @@
 package ohos.curves
 
 import ohos.base.*
-import ohos.arkui.component.*
+import ohos.component.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 
@@ -43,13 +43,17 @@ foreign func FfiOHOSAceFrameworkCurvesCreateCustomCurve(callback: Int64): Int64
 foreign func FfiOHOSAceFrameworkCurvesInterpolate(id: Int64, fraction: Float32): Float32
 
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Curves {
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -58,7 +62,9 @@ public class Curves {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -67,7 +73,9 @@ public class Curves {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -76,7 +84,9 @@ public class Curves {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -86,7 +96,9 @@ public class Curves {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -97,7 +109,9 @@ public class Curves {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -106,7 +120,9 @@ public class Curves {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -120,7 +136,9 @@ public class Curves {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -150,7 +168,9 @@ public class Curves {
 }
 
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -166,7 +186,9 @@ public class ICurve <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        19,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

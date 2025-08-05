@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-protected package ohos.animator
+package ohos.animator
 
 import ohos.base.*
 import ohos.ffi.*
-import ohos.arkui.component.*
+import ohos.component.*
 import ohos.labels.APILevel
 
 foreign {
@@ -77,31 +77,41 @@ struct CAnimatorOptions {
 }
 
 @!APILevel[
-    21,
+    12,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum AnimatorFill {
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
     | @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Forwards
     | @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Backwards
     | @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -120,31 +130,41 @@ public enum AnimatorFill {
 }
 
 @!APILevel[
-    21,
+    12,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum AnimatorDirection {
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
     | @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Reverse
     | @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Alternate
     | @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -163,84 +183,79 @@ public enum AnimatorDirection {
 }
 
 @!APILevel[
-    21,
+    12,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AnimatorOptions {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var duration: Int32 = 0
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var easing: String = "ease"
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var delay: Int32 = 0
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var fill: AnimatorFill = None
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var direction: AnimatorDirection = Normal
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var iterations: Int32 = 0
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var begin: Float64 = 0.0
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var end: Float64 = 1.0
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        duration!: Int32 = 0,
-        easing!: String = "ease",
-        delay!: Int32 = 0,
-        fill!: AnimatorFill = None,
-        direction!: AnimatorDirection = Normal,
-        iterations!: Int32 = 0,
-        begin!: Float64 = 0.0,
-        end!: Float64 = 1.0
-    ) {
-        this.duration = duration
-        this.easing = easing
-        this.delay = delay
-        this.fill = fill
-        this.direction = direction
-        this.iterations = iterations
-        this.begin = begin
-        this.end = end
-    }
+    public AnimatorOptions(
+        @!APILevel[
+            12,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let duration!: Int32 = 0,
+        @!APILevel[
+            12,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let easing!: String = "ease",
+        @!APILevel[
+            12,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let delay!: Int32 = 0,
+        @!APILevel[
+            12,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let fill!: AnimatorFill = None,
+        @!APILevel[
+            12,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let direction!: AnimatorDirection = Normal,
+        @!APILevel[
+            12,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let iterations!: Int32 = 0,
+        @!APILevel[
+            12,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let begin!: Float64 = 0.0,
+        @!APILevel[
+            12,
+            atomicservice: true,
+            crossplatform: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        ]
+        public let end!: Float64 = 1.0
+    ) {}
 
     func toCAnimatorOptions(): CAnimatorOptions {
         unsafe {
@@ -259,7 +274,9 @@ public class AnimatorOptions {
 }
 
 @!APILevel[
-    21,
+    12,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -274,7 +291,9 @@ public class AnimatorResult <: RemoteDataLite {
     var onRepeat_: () -> Unit = {=>}
 
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -292,7 +311,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -313,7 +332,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        19,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -334,7 +353,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -355,7 +374,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        19,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -376,7 +395,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -397,7 +416,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        19,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -418,7 +437,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -439,7 +458,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        19,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -460,7 +479,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -476,7 +495,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -490,7 +509,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -504,7 +523,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -518,7 +537,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -532,7 +551,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -563,7 +582,7 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        19,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]

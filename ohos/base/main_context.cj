@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 foreign func FfiOHOSBaseGetUISchedulerHandle(): CPointer<Unit>
 
 @!APILevel[
-    21,
+    12,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -44,7 +44,7 @@ public class MainThreadContext <: ThreadContext {
     static let instance_: MainThreadContext = MainThreadContext()
 
     @!APILevel[
-        21,
+        12,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -53,7 +53,7 @@ public class MainThreadContext <: ThreadContext {
     public func end(): Unit {}
 
     @!APILevel[
-        21,
+        12,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -65,7 +65,7 @@ public class MainThreadContext <: ThreadContext {
 }
 
 @!APILevel[
-    21,
+    12,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,

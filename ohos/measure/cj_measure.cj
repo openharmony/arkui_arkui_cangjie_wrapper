@@ -17,11 +17,13 @@ package ohos.measure
 
 import ohos.base.*
 import ohos.ffi.*
-import ohos.arkui.component.*
+import ohos.component.*
 import ohos.labels.APILevel
 
 @!APILevel[
-    21,
+    12,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -100,15 +102,10 @@ struct CJMeasureContextToC {
 
 @C
 public struct Size {
-    public var width: Float64
-    public var height: Float64    
-    public init(
-        width: Float64,
-        height: Float64
-    ) {
-        this.width = width
-        this.height = height
-    }
+    public Size(
+        public let width: Float64,
+        public let height: Float64
+    ) {}
 }
 
 foreign {
@@ -170,13 +167,17 @@ func parseCJMeasureContext(context: MeasureOptions): CJMeasureContextToC {
 }
 
 @!APILevel[
-    21,
+    12,
+    atomicservice: true,
+    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Measure {
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -192,7 +193,9 @@ public class Measure {
     }
 
     @!APILevel[
-        21,
+        12,
+        atomicservice: true,
+        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
