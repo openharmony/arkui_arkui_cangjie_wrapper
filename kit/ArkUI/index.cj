@@ -57,4 +57,4 @@ public import ohos.curves.*
 public import ohos.matrix4.*
 
 // component snapshot
-public import ohos.component_snapshot.*
+public import ohos.arkui.component_snapshot.*
