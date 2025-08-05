@@ -54,7 +54,7 @@ public import ohos.arkui.component.button.*
 // public import ohos.arkui.component.progress.*
 // public import ohos.arkui.component.web.*
 // public import ohos.arkui.component.radio.*
-public import ohos.arkui.component.checkbox.*
+// public import ohos.arkui.component.checkbox.*
 // public import ohos.arkui.component.location_button.*
 // public import ohos.arkui.component.text_clock.*
 // public import ohos.arkui.component.custom_view.*
@@ -73,13 +73,13 @@ public import ohos.arkui.component.checkbox.*
 // public import ohos.arkui.component.for_each.*
 // public import ohos.arkui.component.span.*
 // public import ohos.arkui.component.custom_dialog.*
-public import ohos.arkui.component.scroll.*
+// public import ohos.arkui.component.scroll.*
 public import ohos.arkui.component.row.*
 // public import ohos.arkui.component.path_2d.*
 // public import ohos.arkui.component.swiper.*
 // public import ohos.arkui.component.grid_item.*
 // public import ohos.arkui.component.menu_item_group.*
-public import ohos.arkui.component.flex.*
+// public import ohos.arkui.component.flex.*
 // public import ohos.arkui.component.gauge.*
 // public import ohos.arkui.component.rect.*
 // public import ohos.arkui.component.text_field.*
