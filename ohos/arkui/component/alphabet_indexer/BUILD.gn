@@ -20,11 +20,13 @@ ohos_cj_library("ohos.arkui.component.alphabet_indexer") {
 
   cj_deps = [
     "../common:ohos.arkui.component.common",
+    "../util:ohos.arkui.component.util",
     "../../../base:ohos.base",
   ]
 
   cj_external_deps = [
     "cangjie_api:ohos.ffi",
+    "cangjie_api:ohos.labels",
     "global_cangjie_api:ohos.resource",
   ]
 

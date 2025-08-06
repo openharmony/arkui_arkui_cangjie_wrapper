@@ -23,6 +23,7 @@ ohos_cj_library("ohos.arkui.component.grid_item") {
   ]
 
   cj_external_deps = [
+    "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
   ]
 

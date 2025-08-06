@@ -24,6 +24,7 @@ ohos_cj_library("ohos.arkui.component.custom_dialog") {
     "../native_struct:ohos.arkui.component.native_struct",
     "../util:ohos.arkui.component.util",
     "../view:ohos.arkui.component.view",
+    "../../../base:ohos.base",
   ]
 
   cj_external_deps = [

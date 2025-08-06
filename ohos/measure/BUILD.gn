@@ -18,6 +18,7 @@ ohos_cj_library("ohos.measure") {
 
   cj_deps = [
     "../arkui/component:ohos.arkui.component",
+    "../arkui/component/common:ohos.arkui.component.common",
     "../base:ohos.base",
   ]
 

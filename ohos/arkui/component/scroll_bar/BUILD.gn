@@ -25,10 +25,14 @@ ohos_cj_library("ohos.arkui.component.scroll_bar") {
   ]
 
   cj_external_deps = [
+    "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
   ]
 
-  external_deps = [ "ace_engine:cj_frontend_ohos" ]
+  external_deps = [
+    "ace_engine:cj_frontend_ohos",
+    "access_token:cj_ability_access_ctrl_ffi",
+  ]
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_api"
   lib_name = "arkui.component.scroll_bar"

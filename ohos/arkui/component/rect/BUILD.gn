@@ -26,6 +26,7 @@ ohos_cj_library("ohos.arkui.component.rect") {
   ]
 
   cj_external_deps = [
+    "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
   ]
 

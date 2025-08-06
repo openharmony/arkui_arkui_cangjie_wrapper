@@ -30,6 +30,7 @@ ohos_cj_library("ohos.arkui.component.scroll") {
     "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
     "global_cangjie_api:ohos.resource",
+    "hiviewdfx_cangjie_api:ohos.hilog",
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
