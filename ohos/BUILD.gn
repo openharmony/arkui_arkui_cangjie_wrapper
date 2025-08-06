@@ -438,6 +438,7 @@ ohos_cj_library("ohos.concurrency") {
     "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
   ]
+  external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_api"
 }
