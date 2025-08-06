@@ -18,7 +18,6 @@ package ohos.arkui.component
 public import ohos.arkui.component.text_input.*
 public import ohos.arkui.component.relative_container.*
 public import ohos.arkui.component.shape.*
-public import ohos.arkui.component.nav_destination.*
 public import ohos.arkui.component.stepper_item.*
 public import ohos.arkui.component.panel.*
 public import ohos.arkui.component.offscreen_canvas_rendering_context_2d.*
@@ -102,7 +101,6 @@ public import ohos.arkui.component.alert_dialog.*
 public import ohos.arkui.component.canvas.*
 public import ohos.arkui.component.scroll_bar.*
 public import ohos.arkui.component.offscreen_canvas.*
-public import ohos.arkui.component.navigation.*
 public import ohos.arkui.component.stepper.*
 public import ohos.arkui.component.tab.*
 public import ohos.arkui.component.column.*
