@@ -38,6 +38,7 @@ ohos_cj_library("ohos.arkui.component.common") {
     "../../state_management:ohos.arkui.state_management",
     "../native_struct:ohos.arkui.component.native_struct",
     "../util:ohos.arkui.component.util",
+    "../../../matrix4:ohos.matrix4",
   ]
 
   cj_external_deps = [
