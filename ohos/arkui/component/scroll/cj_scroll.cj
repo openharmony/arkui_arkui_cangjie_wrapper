@@ -26,33 +26,66 @@ import ohos.labels.APILevel
 import std.convert.*
 
 @C
+struct NativeOffsetResult {
+    NativeOffsetResult(
+        let xOffset: Float64,
+        let yOffset: Float64
+    ) {}
+
+    func parseToCJ(): OffsetResult {
+        OffsetResult(xOffset, yOffset)
+    }
+}
+
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public struct OffsetResult {
-    // Float64 -> vp
+public class ScrollResult {
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public let xOffset: Float64
+    public var offsetRemain: Float64
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public let yOffset: Float64
+    public init(offsetRemain!: Float64) {
+        this.offsetRemain = offsetRemain
+    }
+}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class OffsetResult {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var xOffset: Float64
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public OffsetResult(xOffset: Float64, yOffset: Float64) {
+    public var yOffset: Float64
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(xOffset: Float64, yOffset: Float64) {
         this.xOffset = xOffset
         this.yOffset = yOffset
     }
@@ -85,7 +118,7 @@ class CallbackOffset <: BaseCallBack {
     CallbackOffset(let closure: (OffsetResult) -> Unit) {
         registerSelf()
     }
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }
@@ -93,13 +126,13 @@ class CallbackOffset <: BaseCallBack {
             AppLog.error("Invalid argument, failed to invoke CallbackOffset")
             throw InvalidArgsException()
         }
-        let ptrArg0 = unsafe { CPointer<OffsetResult>(argv.read()) }
+        let ptrArg0 = unsafe { CPointer<NativeOffsetResult>(argv.read()) }
         if (ptrArg0.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackOffset")
             throw InvalidArgsException()
         }
         let arg0 = unsafe { ptrArg0.read() }
-        closure(arg0)
+        closure(arg0.parseToCJ())
     }
 }
 
@@ -170,18 +203,21 @@ public class ScrollAnimationOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var duration: Float64
+
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var curve: Curve
+
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var canOverScroll: Bool
+
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -209,40 +245,33 @@ public enum ScrollAlign {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    START
+    Start
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    CENTER
+    Center
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    END
+    End
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    AUTO
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    NONE
+    Auto
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case START => 0
-            case CENTER => 1
-            case END => 2
-            case AUTO => 3
-            case NONE => 4
+            case Start => 0
+            case Center => 1
+            case End => 2
+            case Auto => 3
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -309,28 +338,54 @@ public enum ContentClipMode {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    CONTENT_ONLY
+    ContentOnly
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    BOUNDARY
+    Boundary
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    SAFE_AREA
+    SafeArea
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case CONTENT_ONLY => 0
-            case BOUNDARY => 1
-            case SAFE_AREA => 2
+            case ContentOnly => 0
+            case Boundary => 1
+            case SafeArea => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
+    }
+}
+
+public type OnWillScrollCallBack = (Float64, ScrollState, ScrollSource) -> ScrollResult
+
+public type OnScrollCallBack = (scrollOffset: Float64, scrollState: ScrollState) -> Unit
+
+public type ScrollOnScrollCallback = (Float64, Float64, ScrollState) -> Unit
+
+public type OnScrollFrameBeginCallback = (Float64, ScrollState) -> Float64
+
+public type OnScrollEdgeCallback = (Edge) -> Unit
+
+public class ScrollEdgeOptions {
+    public var velocity: Float32 = 0.0
+
+    public init(velocity!: Float32 = 0.0) {
+        this.velocity = velocity
+    }
+}
+
+public class ScrollToIndexOptions {
+    public var extraOffset: Length = 0.vp
+
+    public init(extraOffset!: Length = 0.vp) {
+        this.extraOffset = extraOffset
     }
 }
 
@@ -411,7 +466,7 @@ foreign {
 
     func FfiOHOSAceFrameworkScrollerScrollPageWithAnimation(scrollerID: Int64, next: Bool, animation: Bool): Unit
 
-    func FfiOHOSAceFrameworkScrollerCurrentOffset(scrollerID: Int64): OffsetResult
+    func FfiOHOSAceFrameworkScrollerCurrentOffset(scrollerID: Int64): NativeOffsetResult
 
     func FfiOHOSAceFrameworkScrollerIsAtEnd(scrollerID: Int64): Bool
 
@@ -445,70 +500,121 @@ public abstract class ScrollableBase <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollBar(barState: BarState): This
+    public func scrollBar(barState: BarState): This {
+        scrollBarInner(barState)
+    }
+
+    protected func scrollBarInner(barState: BarState): This
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollBarColor(color: ResourceColor): This
+    public func scrollBarColor(color: ResourceColor): This {
+        scrollBarColorInner(color)
+    }
+
+    protected func scrollBarColorInner(color: ResourceColor): This
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollBarWidth(value: Length): This
+    public func scrollBarWidth(value: Length): This {
+        scrollBarWidthInner(value)
+    }
+
+    protected func scrollBarWidthInner(value: Length): This
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func nestedScroll(value: NestedScrollOptions): This
+    public func nestedScroll(value: NestedScrollOptions): This {
+        nestedScrollInner(value)
+    }
+
+    protected func nestedScrollInner(value: NestedScrollOptions): This
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func enableScrollInteraction(value: Bool): This
+    public func enableScrollInteraction(value: Bool): This {
+        enableScrollInteractionInner(value)
+    }
+
+    protected func enableScrollInteractionInner(value: Bool): This
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func friction(value: Float64): This
+    public func friction(value: Float64): This {
+        frictionInner(value)
+    }
+
+    protected func frictionInner(value: Float64): This
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onReachStart(callback: () -> Unit): This
+    public func friction(value: AppResource): This {
+        frictionInner(value)
+    }
+
+    protected func frictionInner(value: AppResource): This
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onReachEnd(callback: () -> Unit): This
+    public func onReachStart(event: () -> Unit): This {
+        onReachStartInner(event)
+    }
+
+    protected func onReachStartInner(event: () -> Unit): This
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollStart(callback: () -> Unit): This
+    public func onReachEnd(event: () -> Unit): This {
+        onReachEndInner(event)
+    }
+
+    protected func onReachEndInner(event: () -> Unit): This
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollStop(callback: () -> Unit): This
+    public func onScrollStart(event: () -> Unit): This {
+        onScrollStartInner(event)
+    }
+
+    protected func onScrollStartInner(event: () -> Unit): This
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func onScrollStop(event: () -> Unit): This {
+        onScrollStopInner(event)
+    }
+
+    protected func onScrollStopInner(event: () -> Unit): This
 
     @!APILevel[
         21,
@@ -516,6 +622,10 @@ public abstract class ScrollableBase <: ContainerBase {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flingSpeedLimit(speedLimit: Float64): This {
+        flingSpeedLimitInner(speedLimit)
+    }
+
+    protected func flingSpeedLimitInner(speedLimit: Float64): This {
         unsafe {
             FfiOHOSAceFrameworkScrollableBaseFlingSpeed(speedLimit)
         }
@@ -527,9 +637,17 @@ public abstract class ScrollableBase <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fadingEdge(enabled: Bool): This {
-        unsafe {
-            FfiOHOSAceFrameworkScrollableBaseFadingEdge(enabled)
+    public func fadingEdge(enabled: Option<Bool>): This {
+        fadingEdgeInner(enabled)
+    }
+
+    protected func fadingEdgeInner(enabled: Option<Bool>): This {
+        match (enabled) {
+            case Some(v) =>
+                unsafe {
+                    FfiOHOSAceFrameworkScrollableBaseFadingEdge(v)
+                }
+            case None => ()
         }
         this
     }
@@ -539,14 +657,22 @@ public abstract class ScrollableBase <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fadingEdge(enabled: Bool, options: FadingEdgeOptions): This {
-        var fadingEdge = transAppResourceToLength(options.fadingEdgeLength)
-        unsafe {
-            FfiOHOSAceFrameworkScrollableBaseFadingEdgeOptions(
-                enabled,
-                fadingEdge.value,
-                fadingEdge.unitType.getValue()
-            )
+    public func fadingEdge(enabled: Option<Bool>, options: FadingEdgeOptions): This {
+        fadingEdgeInner(enabled, options)
+    }
+
+    protected func fadingEdgeInner(enabled: Option<Bool>, options: FadingEdgeOptions): This {
+        match (enabled) {
+            case Some(v) =>
+                var fadingEdge = transAppResourceToLength(options.fadingEdgeLength)
+                unsafe {
+                    FfiOHOSAceFrameworkScrollableBaseFadingEdgeOptions(
+                        v,
+                        fadingEdge.value,
+                        fadingEdge.unitType.getValue()
+                    )
+                }
+            case None => ()
         }
         this
     }
@@ -557,6 +683,10 @@ public abstract class ScrollableBase <: ContainerBase {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clipContent(clip: ContentClipMode): This {
+        clipContentInner(clip)
+    }
+
+    protected func clipContentInner(clip: ContentClipMode): This {
         unsafe {
             FfiOHOSAceFrameworkScrollableBaseClipMode(clip.getValue())
         }
@@ -569,6 +699,10 @@ public abstract class ScrollableBase <: ContainerBase {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clipContent(clip: RectShape): This {
+        clipContentInner(clip)
+    }
+
+    protected func clipContentInner(clip: RectShape): This {
         unsafe {
             FfiOHOSAceFrameworkScrollableBaseClipShape(clip.getID())
         }
@@ -580,15 +714,23 @@ public abstract class ScrollableBase <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onWillScroll(callback: (Float64, ScrollState, ScrollSource) -> Float64): This {
-        let wrapper = {
-            scrollOffset: Float64, scrollState: Int32, scrollSource: Int32 => callback(scrollOffset,
-                ScrollState.parseValue(scrollState), ScrollSource.parseValue(scrollSource))
-        }
-        let lambdaData = Callback3Param<Float64, Int32, Int32, Float64>(wrapper)
+    public func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) -> ScrollResult>): This {
+        onWillScrollInner(handler)
+    }
 
-        unsafe {
-            FfiOHOSAceFrameworkScrollableBaseOnWillScroll(lambdaData.getID())
+    protected func onWillScrollInner(handler: Option<(Float64, ScrollState, ScrollSource) -> ScrollResult>): This {
+        match (handler) {
+            case Some(v) =>
+                let wrapper = { scrollOffset: Float64, scrollState: Int32, scrollSource: Int32 =>
+                    let res = v(scrollOffset, ScrollState.parseValue(scrollState), ScrollSource.parseValue(scrollSource))
+                    return res.offsetRemain
+                }
+                let lambdaData = Callback3Param<Float64, Int32, Int32, Float64>(wrapper)
+
+                unsafe {
+                    FfiOHOSAceFrameworkScrollableBaseOnWillScroll(lambdaData.getID())
+                }
+            case None => ()
         }
         this
     }
@@ -598,13 +740,22 @@ public abstract class ScrollableBase <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onWillScroll(callback: (Float64, ScrollState, ScrollSource) -> Unit): This {
-        let callbackWithRet: (Float64, ScrollState, ScrollSource) -> Float64 = {
-            scrollOffset: Float64, scrollState: ScrollState, scrollSource: ScrollSource =>
-            callback(scrollOffset, scrollState, scrollSource)
-            return scrollOffset
+    public func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) -> Unit>): This {
+        onWillScrollInner(handler)
+    }
+
+    protected func onWillScrollInner(handler: Option<(Float64, ScrollState, ScrollSource) -> Unit>): This {
+        match (handler) {
+            case Some(v) =>
+                let callbackWithRet: (Float64, ScrollState, ScrollSource) -> ScrollResult = {
+                    scrollOffset: Float64, scrollState: ScrollState, scrollSource: ScrollSource =>
+                    v(scrollOffset, scrollState, scrollSource)
+                    return ScrollResult(offsetRemain: scrollOffset)
+                }
+                onWillScroll(callbackWithRet)
+            case None => ()
         }
-        onWillScroll(callbackWithRet)
+        this
     }
 
     @!APILevel[
@@ -612,9 +763,13 @@ public abstract class ScrollableBase <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDidScroll(callback: (scrollOffset: Float64, scrollState: ScrollState) -> Unit): This {
+    public func onDidScroll(handler: OnScrollCallBack): This {
+        onDidScrollInner(handler)
+    }
+
+    protected func onDidScrollInner(handler: OnScrollCallBack): This {
         let wrapper = {
-            scrollOffset: Float64, scrollState: Int32 => callback(scrollOffset, ScrollState.parseValue(scrollState))
+            scrollOffset: Float64, scrollState: Int32 => handler(scrollOffset, ScrollState.parseValue(scrollState))
         }
         let lambdaData = Callback2Param<Float64, Int32, Unit>(wrapper)
 
@@ -666,36 +821,21 @@ public class Scroll <: ScrollableBase {
         this.child = child
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func enableScrollInteraction(value: Bool): This {
+    protected func enableScrollInteractionInner(value: Bool): This {
         unsafe {
             FfiOHOSAceFrameworkScrollInteraction(value)
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func friction(value: Float64): This {
+    protected func frictionInner(value: Float64): This {
         unsafe {
             FfiOHOSAceFrameworkScrollFriction(value)
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func friction(value: AppResource): This {
+    protected func frictionInner(value: AppResource): This {
         var friction: Float64 = 0.0
         let t = Float64.tryParse(getResourceString(value))
         match (t) {
@@ -720,36 +860,21 @@ public class Scroll <: ScrollableBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scrollBar(barState: BarState): This {
+    protected func scrollBarInner(barState: BarState): This {
         unsafe {
             FfiOHOSAceFrameworkScrollScrollBar(barState.getValue())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scrollBarColor(color: ResourceColor): This {
+    protected func scrollBarColorInner(color: ResourceColor): This {
         unsafe {
             FfiOHOSAceFrameworkScrollScrollBarColor(transAppResourceToResourceColor(color))
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scrollBarWidth(width: Length): This {
+    protected func scrollBarWidthInner(width: Length): This {
         var width_ = transAppResourceToLength(width)
         unsafe {
             FfiOHOSAceFrameworkScrollScrollBarWidth(width_.value, width_.unitType.getValue())
@@ -757,12 +882,7 @@ public class Scroll <: ScrollableBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func nestedScroll(value: NestedScrollOptions): This {
+    protected func nestedScrollInner(value: NestedScrollOptions): This {
         let localScrollForward = value.scrollForward.getValue()
         let localScrollBackward = value.scrollBackward.getValue()
         unsafe {
@@ -771,24 +891,14 @@ public class Scroll <: ScrollableBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onReachStart(callback: () -> Unit): This {
+    protected func onReachStartInner(callback: () -> Unit): This {
         unsafe {
             FfiOHOSAceFrameworkScrollOnReachStart(Callback0Param<Unit>(callback).getID())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onReachEnd(callback: () -> Unit): This {
+    protected func onReachEndInner(callback: () -> Unit): This {
         unsafe {
             FfiOHOSAceFrameworkScrollOnReachEnd(Callback0Param<Unit>(callback).getID())
         }
@@ -800,12 +910,16 @@ public class Scroll <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onWillScroll(callback: (Float64, Float64, ScrollState, ScrollSource) -> OffsetResult): This {
-        let wrapper = {
-            xOffset: Float64, yOffset: Float64, scrollState: Int32, scrollSource: Int32 => callback(xOffset, yOffset,
-                ScrollState.parseValue(scrollState), ScrollSource.parseValue(scrollSource))
+    public func onWillScroll(handler: (Float64, Float64, ScrollState, ScrollSource) -> OffsetResult): This {
+        let wrapper = { xOffset: Float64, yOffset: Float64, scrollState: Int32, scrollSource: Int32 =>
+            let res = handler(
+                xOffset, yOffset,
+                ScrollState.parseValue(scrollState),
+                ScrollSource.parseValue(scrollSource)
+            )
+            NativeOffsetResult(res.xOffset, res.yOffset)
         }
-        let lambdaData = Callback4Param<Float64, Float64, Int32, Int32, OffsetResult>(wrapper)
+        let lambdaData = Callback4Param<Float64, Float64, Int32, Int32, NativeOffsetResult>(wrapper)
 
         unsafe {
             FfiOHOSAceFrameworkScrollOnWillScroll(lambdaData.getID())
@@ -818,10 +932,10 @@ public class Scroll <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onWillScroll(callback: (Float64, Float64, ScrollState, ScrollSource) -> Unit): This {
+    public func onWillScroll(handler: (Float64, Float64, ScrollState, ScrollSource) -> Unit): This {
         let callbackWithRet: (Float64, Float64, ScrollState, ScrollSource) -> OffsetResult = {
             xOffset: Float64, yOffset: Float64, scrollState: ScrollState, scrollSource: ScrollSource =>
-            callback(xOffset, yOffset, scrollState, scrollSource)
+            handler(xOffset, yOffset, scrollState, scrollSource)
             return OffsetResult(xOffset, yOffset)
         }
         onWillScroll(callbackWithRet)
@@ -832,7 +946,7 @@ public class Scroll <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDidScroll(callback: (Float64, Float64, ScrollState) -> Unit): This {
+    public func onDidScroll(callback: ScrollOnScrollCallback): This {
         let wrapper = {
             xOffset: Float64, yOffset: Float64, scrollState: Int32 => callback(xOffset, yOffset,
                 ScrollState.parseValue(scrollState))
@@ -845,24 +959,14 @@ public class Scroll <: ScrollableBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onScrollStart(callback: () -> Unit): This {
+    protected func onScrollStartInner(callback: () -> Unit): This {
         unsafe {
             FfiOHOSAceFrameworkScrollOnScrollStart(Callback0Param<Unit>(callback).getID())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onScrollStop(callback: () -> Unit): This {
+    protected func onScrollStopInner(callback: () -> Unit): This {
         unsafe {
             FfiOHOSAceFrameworkScrollOnScrollStop(Callback0Param<Unit>(callback).getID())
         }
@@ -874,9 +978,9 @@ public class Scroll <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollFrameBegin(callback: (Float64, ScrollState) -> Float64): This {
+    public func onScrollFrameBegin(event: OnScrollFrameBeginCallback): This {
         let wrapper = {
-            offset: Float64, state: Int32 => callback(offset, ScrollState.parseValue(state))
+            offset: Float64, state: Int32 => event(offset, ScrollState.parseValue(state))
         }
         let lambdaData = Callback2Param<Float64, Int32, Float64>(wrapper)
         unsafe {
@@ -890,18 +994,28 @@ public class Scroll <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollEdge(callback: (Edge) -> Unit): This {
+    public func onScrollEdge(event: OnScrollEdgeCallback): This {
         unsafe {
             FfiOHOSAceFrameworkScrollOnScrollEdge(
                 Callback1Param<Int32, Unit>(
                     {
                         value =>
                         let edge = Edge.setValue(value)
-                        callback(edge)
+                        event(edge)
                     }
                 ).getID())
         }
         this
+    }
+}
+
+class ScrollerHandler <: RemoteDataLite {
+    init(id: Int64) {
+        super(id)
+    }
+
+    ~init() {
+        releaseFFIData(myDataId)
     }
 }
 
@@ -910,19 +1024,22 @@ public class Scroll <: ScrollableBase {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-sealed abstract class BaseScroller <: RemoteDataLite {
-    /**
-     * constructor.
-     *
-     * @since 11
-     */
+public class Scroller {
+    let handler: ScrollerHandler
+
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(id: Int64) {
-        super(id)
+    public init() {
+        this.handler = ScrollerHandler(unsafe {
+            FfiOHOSAceFrameworkScrollerCtor()
+        })
+    }
+
+    protected func getID(): Int64 {
+        this.handler.getID()
     }
 
     /**
@@ -941,33 +1058,8 @@ sealed abstract class BaseScroller <: RemoteDataLite {
         var xOffset_ = transAppResourceToLength(xOffset)
         var yOffset_ = transAppResourceToLength(yOffset)
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollTo(this.getID(), xOffset_.value, xOffset_.unitType.getValue(),
+            FfiOHOSAceFrameworkScrollerScrollTo(this.handler.getID(), xOffset_.value, xOffset_.unitType.getValue(),
                 yOffset_.value, yOffset_.unitType.getValue())
-        }
-    }
-
-    /**
-     * Sets slides to the specified position.
-     *
-     * @param xOffset: X-axis offset.
-     * @param yOffset: Y-axis offset.
-     * @param duration: Scrolling duration.
-     * @param curve: Scrolling curve.
-     * @since 11
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scrollTo(xOffset!: Length, yOffset!: Length, duration!: Float64, curve!: Curve): Unit {
-        var xOffset_ = transAppResourceToLength(xOffset)
-        var yOffset_ = transAppResourceToLength(yOffset)
-        unsafe {
-            var curveCString = LibC.mallocCString(curve.getValue())
-            FfiOHOSAceFrameworkScrollerScrollToByCurve(this.getID(), xOffset_.value, xOffset_.unitType.getValue(),
-                yOffset_.value, yOffset_.unitType.getValue(), duration, curveCString)
-            LibC.free(curveCString)
         }
     }
 
@@ -988,11 +1080,11 @@ sealed abstract class BaseScroller <: RemoteDataLite {
         var xOffset_ = transAppResourceToLength(xOffset)
         var yOffset_ = transAppResourceToLength(yOffset)
         unsafe {
-            var curveCString = LibC.mallocCString(animation.curve.getValue())
-            FfiOHOSAceFrameworkScrollerScrollToAnimationOptions(this.getID(), xOffset_.value,
-                xOffset_.unitType.getValue(), yOffset_.value, yOffset_.unitType.getValue(), animation.duration,
-                curveCString, animation.canOverScroll)
-            LibC.free(curveCString)
+            try (curveResource = LibC.mallocCString(animation.curve.getValue()).asResource()) {
+                FfiOHOSAceFrameworkScrollerScrollToAnimationOptions(this.handler.getID(), xOffset_.value,
+                    xOffset_.unitType.getValue(), yOffset_.value, yOffset_.unitType.getValue(), animation.duration,
+                    curveResource.value, animation.canOverScroll)
+            }
         }
     }
 
@@ -1013,7 +1105,7 @@ sealed abstract class BaseScroller <: RemoteDataLite {
         var xOffset_ = transAppResourceToLength(xOffset)
         var yOffset_ = transAppResourceToLength(yOffset)
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollToAnimation(this.getID(), xOffset_.value, xOffset_.unitType.getValue(),
+            FfiOHOSAceFrameworkScrollerScrollToAnimation(this.handler.getID(), xOffset_.value, xOffset_.unitType.getValue(),
                 yOffset_.value, yOffset_.unitType.getValue(), animation)
         }
     }
@@ -1034,7 +1126,7 @@ sealed abstract class BaseScroller <: RemoteDataLite {
         var xOffset_ = transAppResourceToLength(xOffset)
         var yOffset_ = transAppResourceToLength(yOffset)
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollBy(this.getID(), xOffset_.value, xOffset_.unitType.getValue(),
+            FfiOHOSAceFrameworkScrollerScrollBy(this.handler.getID(), xOffset_.value, xOffset_.unitType.getValue(),
                 yOffset_.value, yOffset_.unitType.getValue())
         }
     }
@@ -1050,9 +1142,9 @@ sealed abstract class BaseScroller <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollEdge(edge: Edge): Unit {
+    public func scrollEdge(value: Edge): Unit {
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollEdge(this.getID(), edge.getValue())
+            FfiOHOSAceFrameworkScrollerScrollEdge(this.handler.getID(), value.getValue())
         }
     }
 
@@ -1068,26 +1160,10 @@ sealed abstract class BaseScroller <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollEdge(edge: Edge, velocity!: Float32): Unit {
+    public func scrollEdge(value: Edge, options: ScrollEdgeOptions): Unit {
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollEdgeWithVelocity(this.getID(), edge.getValue(), velocity)
+            FfiOHOSAceFrameworkScrollerScrollEdgeWithVelocity(this.handler.getID(), value.getValue(), options.velocity)
         }
-    }
-
-    /**
-     * Called when scrolling to the edge of the container.
-     *
-     * @param edge: Edge type of the container.
-     * @param velocity: he fasten speed of scrolling to the edge, unit is vp/s.
-     * @since 14
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scrollEdge(edge: Edge, velocity!: Int32): Unit {
-        scrollEdge(edge, velocity: Float32(velocity))
     }
 
     /**
@@ -1103,23 +1179,8 @@ sealed abstract class BaseScroller <: RemoteDataLite {
     ]
     public func fling(velocity: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollFling(this.getID(), velocity)
+            FfiOHOSAceFrameworkScrollerScrollFling(this.handler.getID(), velocity)
         }
-    }
-
-    /**
-     * Fling the scroll view.
-     *
-     * @param velocity: initial velocity of fling, in vp/s.
-     * @since 14
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func fling(velocity: Int64): Unit {
-        fling(Float64(velocity))
     }
 
     /**
@@ -1135,7 +1196,7 @@ sealed abstract class BaseScroller <: RemoteDataLite {
     ]
     public func scrollPage(next: Bool): Unit {
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollPage(this.getID(), next)
+            FfiOHOSAceFrameworkScrollerScrollPage(this.handler.getID(), next)
         }
     }
 
@@ -1151,9 +1212,9 @@ sealed abstract class BaseScroller <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollPage(next: Bool, animation!: Bool): Unit {
+    public func scrollPage(next: Bool, animation!: Bool = false): Unit {
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollPageWithAnimation(this.getID(), next, animation)
+            FfiOHOSAceFrameworkScrollerScrollPageWithAnimation(this.handler.getID(), next, animation)
         }
     }
 
@@ -1170,35 +1231,8 @@ sealed abstract class BaseScroller <: RemoteDataLite {
     ]
     public func currentOffset(): OffsetResult {
         unsafe {
-            FfiOHOSAceFrameworkScrollerCurrentOffset(this.getID())
+            FfiOHOSAceFrameworkScrollerCurrentOffset(this.handler.getID()).parseToCJ()
         }
-    }
-
-    /**
-     * Called when sliding to the specified index.
-     *
-     * @param index: Index to jump to.
-     * @param smooth: Whether there is animation when sliding.
-     * @param align: alignment mode of a specified index.
-     * @return This: Current object.
-     * @since 11
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scrollToIndex(
-        index: Int32,
-        smooth!: Bool = false,
-        align!: ScrollAlign = ScrollAlign.START
-    ): This {
-        unsafe {
-            if (index >= 0) {
-                FfiOHOSAceFrameworkScrollerScrollToIndex(this.getID(), index, smooth, align.getValue())
-            }
-        }
-        this
     }
 
     /**
@@ -1220,13 +1254,13 @@ sealed abstract class BaseScroller <: RemoteDataLite {
     public func scrollToIndex(
         index: Int32,
         smooth!: Bool = false,
-        align!: ScrollAlign = ScrollAlign.START,
-        extraOffset!: Length
+        align!: ScrollAlign = ScrollAlign.Start,
+        options!: ScrollToIndexOptions = ScrollToIndexOptions()
     ): This {
-        var extraOffset_ = transAppResourceToLength(extraOffset)
+        var extraOffset_ = transAppResourceToLength(options.extraOffset)
         unsafe {
             if (index >= 0) {
-                FfiOHOSAceFrameworkScrollerScrollToIndexWithUnit(this.getID(), index, smooth, align.getValue(),
+                FfiOHOSAceFrameworkScrollerScrollToIndexWithUnit(this.handler.getID(), index, smooth, align.getValue(),
                     extraOffset_.value, extraOffset_.unitType.getValue())
             }
         }
@@ -1246,7 +1280,7 @@ sealed abstract class BaseScroller <: RemoteDataLite {
     ]
     public func isAtEnd(): Bool {
         unsafe {
-            FfiOHOSAceFrameworkScrollerIsAtEnd(this.getID())
+            FfiOHOSAceFrameworkScrollerIsAtEnd(this.handler.getID())
         }
     }
 
@@ -1264,7 +1298,7 @@ sealed abstract class BaseScroller <: RemoteDataLite {
     ]
     public func getItemRect(index: Int32): RectResult {
         unsafe {
-            RectResult(FfiOHOSAceFrameworkScrollerGetItemRect(this.getID(), index))
+            RectResult(FfiOHOSAceFrameworkScrollerGetItemRect(this.handler.getID(), index))
         }
     }
 
@@ -1281,34 +1315,12 @@ sealed abstract class BaseScroller <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func getItemIndex(x: Length, y: Length): Int32 {
-        var x_ = transAppResourceToLength(x)
-        var y_ = transAppResourceToLength(y)
+    public func getItemIndex(x: Float64, y: Float64): Int32 {
+        var x_ = transAppResourceToLength(x.vp)
+        var y_ = transAppResourceToLength(y.vp)
         unsafe {
-            FfiOHOSAceFrameworkScrollerGetItemIndex(this.getID(), x_.value, x_.unitType.getValue(), y_.value,
+            FfiOHOSAceFrameworkScrollerGetItemIndex(this.handler.getID(), x_.value, x_.unitType.getValue(), y_.value,
                 y_.unitType.getValue())
         }
-    }
-}
-
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class Scroller <: BaseScroller {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {
-        super(unsafe {
-            FfiOHOSAceFrameworkScrollerCtor()
-        })
-    }
-
-    ~init() {
-        releaseFFIData(myDataId)
     }
 }

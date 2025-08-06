@@ -53,13 +53,13 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class RectShape <: ShapeAbstract {
+public class RectShape <: BaseShape {
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length, height!: Length) {
+    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
         super(
             unsafe {
                 var width_ = transAppResourceToLength(width)
@@ -71,15 +71,6 @@ public class RectShape <: ShapeAbstract {
                     height_.unitType.getValue()
                 )
             })
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {
-        this(width: 0.vp, height: 0.vp)
     }
 
     @!APILevel[
@@ -133,7 +124,7 @@ public class Rect <: ShapeComponent {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length, height!: Length) {
+    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
@@ -144,14 +135,6 @@ public class Rect <: ShapeComponent {
                 height_.unitType.getValue()
             )
         }
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {
-        this(width: 0.vp, height: 0.vp)
     }
 
     @!APILevel[
@@ -192,12 +175,13 @@ public class Rect <: ShapeComponent {
         }
         this
     }
+
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func radius<T>(radiusArray: Array<T>) where T <: Length {
+    public func radius(radiusArray: Array<Length>): This {
         var radiusArray_ = Array<Length>(radiusArray.size) {index => (transAppResourceToLength(radiusArray[index]))}
         let vecValueHandle = FFIVectorFloat64(radiusArray_.size)
         let vecUnitHandle = FFIVectorInt32(radiusArray_.size)
@@ -212,12 +196,13 @@ public class Rect <: ShapeComponent {
         vecUnitHandle.free()
         this
     }
+
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func radius<T>(radiusArray: Array<(T, T)>) where T <: Length {
+    public func radius(radiusArray: Array<(Length, Length)>): This {
         var radiusArray_ = Array<(Length, Length)>(radiusArray.size) {
             index => (transAppResourceToLength(radiusArray[index][0]), transAppResourceToLength(radiusArray[index][1]))
         }

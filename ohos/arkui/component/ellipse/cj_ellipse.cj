@@ -30,13 +30,13 @@ foreign func FfiOHOSAceFrameworkEllipseInsCreate(width: Float64, widthUnit: Int3
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class EllipseShape <: ShapeAbstract {
+public class EllipseShape <: BaseShape {
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length, height!: Length) {
+    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
         super(
             unsafe {
                 var width_ = transAppResourceToLength(width)
@@ -48,15 +48,6 @@ public class EllipseShape <: ShapeAbstract {
                     height_.unitType.getValue()
                 )
             })
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {
-        this(width: 0.vp, height: 0.vp)
     }
 }
 
@@ -71,22 +62,13 @@ public class Ellipse <: ShapeComponent {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length, height!: Length) {
+    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
             FfiOHOSAceFrameworkEllipseCreate(width_.value, width_.unitType.getValue(), height_.value,
                 height_.unitType.getValue())
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {
-        this(width: 0.vp, height: 0.vp)
     }
 
     @!APILevel[

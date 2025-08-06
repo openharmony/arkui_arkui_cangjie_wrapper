@@ -127,7 +127,7 @@ foreign {
     func FfiOHOSAceFrameworkSwiperSetIndicatorStyle(style: CJIndicatorStyle): Unit
 
     func FfiOHOSAceFrameworkSwiperContentProxyFinishTransition(): Unit
-    
+
     func FfiOHOSAceFrameworkInteractableViewOnClick(callback: Int64): Unit
 }
 
@@ -228,6 +228,376 @@ struct CJSwiperContentTransitionProxy {
 
 @!APILevel[
     21,
+    atomicservice: true,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+// TODO 名字和Arkts不一致
+public class FontOptions {
+    @!APILevel[
+        21,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var size: Length
+    @!APILevel[
+        21,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var weight: FontWeight
+    @!APILevel[
+        21,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(size!: Length = 14.vp, weight!: FontWeight = FontWeight.Normal) {
+        this.size = transAppResourceToLength(size)
+        this.weight = weight
+    }
+}
+
+@!APILevel[
+    21,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public open class Indicator {
+    private var mLeft: ?Length = None
+    private var mTop: ?Length = None
+    private var mRight: ?Length = None
+    private var mBottom: ?Length = None
+    private var mStart: ?Length = None
+    private var mEnd: ?Length = None
+
+    init() {}
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func dot(): DotIndicator {
+        DotIndicator()
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static func digit(): DigitIndicator {
+        DigitIndicator()
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func left(value: Length): This {
+        this.mLeft = transAppResourceToLength(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func top(value: Length): This {
+        this.mTop = transAppResourceToLength(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func right(value: Length): This {
+        this.mRight = transAppResourceToLength(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func bottom(value: Length): This {
+        this.mBottom = transAppResourceToLength(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func start(value: Length): This {
+        this.mStart = transAppResourceToLength(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func end(value: Length): This {
+        this.mEnd = transAppResourceToLength(value)
+        this
+    }
+
+    func parseToNative(): CJIndicator {
+        let (leftValue, leftUnit): (Float64, Int32) = parseValue(mLeft)
+        let (topValue, topUnit): (Float64, Int32) = parseValue(mTop)
+        let (rightValue, rightUnit): (Float64, Int32) = parseValue(mRight)
+        let (bottomValue, bottomUnit): (Float64, Int32) = parseValue(mBottom)
+        let (startValue, startUnit): (Float64, Int32) = parseValue(mStart)
+        let (endValue, endUnit): (Float64, Int32) = parseValue(mEnd)
+        return CJIndicator(
+            leftValue,
+            leftUnit,
+            topValue,
+            topUnit,
+            rightValue,
+            rightUnit,
+            bottomValue,
+            bottomUnit,
+            startValue,
+            startUnit,
+            endValue,
+            endUnit,
+        )
+    }
+
+    private func parseValue(value: ?Length): (Float64, Int32) {
+        if (let Some(v) <- value) {
+            (v.value, v.unitType.getValue())
+        } else {
+            (0.0, -1)
+        }
+    }
+}
+
+@!APILevel[
+    21,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class DotIndicator <: Indicator {
+    private var mItemWidth: Length
+    private var mItemHeight: Length
+    private var mSelectedItemWidth: Length
+    private var mSelectedItemHeight: Length
+    private var mMask: Bool
+    private var mColor: UInt32
+    private var mSelectedColor: UInt32
+    private var mMaxDisplayCount: UInt32
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init() {
+        this.mItemWidth = 6.vp
+        this.mItemHeight = 6.vp
+        this.mSelectedItemWidth = 12.vp
+        this.mSelectedItemHeight = 6.vp
+        this.mMask = false
+        this.mColor = Color(0x182431).toUInt32()
+        this.mSelectedColor = Color(0x007DFF).toUInt32()
+        this.mMaxDisplayCount = 6
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func itemWidth(value: Length): This {
+        this.mItemWidth = transAppResourceToLength(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func itemHeight(value: Length): This {
+        this.mItemHeight = transAppResourceToLength(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func selectedItemWidth(value: Length): This {
+        this.mSelectedItemWidth = transAppResourceToLength(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func selectedItemHeight(value: Length): This {
+        this.mSelectedItemHeight = transAppResourceToLength(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func mask(value: Bool): This {
+        this.mMask = value
+        this
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func color(value: ResourceColor): This {
+        this.mColor = transAppResourceToResourceColor(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func selectedColor(value: ResourceColor): This {
+        this.mSelectedColor = transAppResourceToResourceColor(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func maxDisplayCount(value: UInt32): This {
+        this.mMaxDisplayCount = value
+        this
+    }
+
+    func parseCJDot(): CJDotIndicator {
+        return CJDotIndicator(
+            mItemWidth.value,
+            mItemWidth.unitType.getValue(),
+            mItemHeight.value,
+            mItemHeight.unitType.getValue(),
+            mSelectedItemWidth.value,
+            mSelectedItemWidth.unitType.getValue(),
+            mSelectedItemHeight.value,
+            mSelectedItemHeight.unitType.getValue(),
+            mMask,
+            mColor,
+            mSelectedColor,
+            mMaxDisplayCount,
+            super.parseToNative()
+        )
+    }
+}
+
+@!APILevel[
+    21,
+    crossplatform: true,
+    atomicservice: true,
+    form: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class DigitIndicator <: Indicator {
+    private var mFontColor: UInt32
+    private var mSelectedFontColor: UInt32
+    private var mDigitFont: FontOptions
+    private var mSelectedDigitFont: FontOptions
+
+    @!APILevel[
+        21,
+        crossplatform: true,
+        atomicservice: true,
+        form: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init() {
+        this.mFontColor = Color(0xff182431).toUInt32()
+        this.mSelectedFontColor = Color(0xff182431).toUInt32()
+        this.mDigitFont = FontOptions()
+        this.mSelectedDigitFont = FontOptions()
+    }
+
+    @!APILevel[
+        21,
+        crossplatform: true,
+        atomicservice: true,
+        form: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func fontColor(value: ResourceColor): This {
+        this.mFontColor = transAppResourceToResourceColor(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        crossplatform: true,
+        atomicservice: true,
+        form: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func selectedFontColor(value: ResourceColor): This {
+        this.mSelectedFontColor = transAppResourceToResourceColor(value)
+        this
+    }
+
+    @!APILevel[
+        21,
+        crossplatform: true,
+        atomicservice: true,
+        form: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func digitFont(value: FontOptions): This {
+        this.mDigitFont = value
+        this
+    }
+
+    @!APILevel[
+        21,
+        crossplatform: true,
+        atomicservice: true,
+        form: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func selectedDigitFont(value: FontOptions): This {
+        this.mSelectedDigitFont = value
+        this
+    }
+
+    func parseCJDigit(): CJDigitIndicator {
+        var mDigitFontWeight: ?CString = None
+        var mSelectedDigitFontWeight: ?CString = None
+        try {
+            mDigitFontWeight = unsafe { LibC.mallocCString(mDigitFont.weight.getValue()) }
+            mSelectedDigitFontWeight = unsafe { LibC.mallocCString(mSelectedDigitFont.weight.getValue()) }
+        } catch (e: Exception) {
+            mDigitFontWeight?.free()
+            mSelectedDigitFontWeight?.free()
+            throw e
+        }
+        return CJDigitIndicator(
+            mFontColor,
+            mSelectedFontColor,
+            mDigitFont.size.value,
+            mDigitFont.size.unitType.getValue(),
+            mDigitFontWeight.getOrThrow(),
+            mSelectedDigitFont.size.value,
+            mSelectedDigitFont.size.unitType.getValue(),
+            mSelectedDigitFontWeight.getOrThrow(),
+            super.parseToNative()
+        )
+    }
+}
+
+@!APILevel[
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -305,11 +675,11 @@ public class Swiper <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(controller: SwiperController, subcomponent: () -> Unit) {
+    public init(controller: SwiperController, child: () -> Unit) {
         unsafe {
             FfiOHOSAceFrameworkSwiperCreate(controller.getID())
         }
-        this.child = subcomponent
+        this.child = child
     }
 
     @!APILevel[
@@ -317,11 +687,11 @@ public class Swiper <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(subcomponent: () -> Unit) {
+    public init(child: () -> Unit) {
         unsafe {
             FfiOHOSAceFrameworkSwiperCreate(controllerDefault.getID())
         }
-        this.child = subcomponent
+        this.child = child
     }
 
     @!APILevel[
@@ -401,9 +771,40 @@ public class Swiper <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func indicator(value: Bool): This {
+    public func indicator(indicator: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetIndicator(value)
+            FfiOHOSAceFrameworkSwiperSetIndicator(indicator)
+        }
+        this
+    }
+
+    @!APILevel[
+        21,
+        atomicservice: true,
+        crossplatform: true,
+        form: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func indicator(indicator: DotIndicator): This {
+        unsafe {
+            FfiOHOSAceFrameworkSwiperSetIndicatorWithDot(indicator.parseCJDot())
+        }
+        this
+    }
+
+    @!APILevel[
+        21,
+        atomicservice: true,
+        crossplatform: true,
+        form: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func indicator(indicator: DigitIndicator): This {
+        unsafe {
+            let cjDigit = indicator.parseCJDigit()
+            FfiOHOSAceFrameworkSwiperSetIndicatorWithDit(cjDigit)
+            LibC.free(cjDigit.digitFontWeight)
+            LibC.free(cjDigit.selectedDigitFontWeight)
         }
         this
     }
@@ -450,16 +851,7 @@ public class Swiper <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func displayCount(value: Int32): This {
-        this.displayCount(value, false)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func displayCount(value: Int32, swipeByGroup: Bool): This {
+    public func displayCount(value: Int32, swipeByGroup!: Bool = false): This {
         unsafe {
             FfiOHOSAceFrameworkSwiperSetDisplayCountByGroup(value, swipeByGroup)
         }
@@ -516,48 +908,12 @@ public class Swiper <: ContainerBase {
         this
     }
 
+    // TODO
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func indicatorStyle(
-        left!: Length = (-1.0).vp,
-        top!: Length = (-1.0).vp,
-        right!: Length = (-1.0).vp,
-        bottom!: Length = (-1.0).vp,
-        size!: Length = (10.0).vp,
-        color!: ResourceColor = Color(0x0c000000),
-        selectedColor!: ResourceColor = Color(0xff0a59f7),
-        mask!: Bool = false
-    ): This {
-        var left_ = transAppResourceToLength(left)
-        var top_ = transAppResourceToLength(top)
-        var right_ = transAppResourceToLength(right)
-        var bottom_ = transAppResourceToLength(bottom)
-        var size_ = transAppResourceToLength(size)
-        unsafe {
-            FfiOHOSAceFrameworkSwiperSetIndicatorStyle(
-                CJIndicatorStyle(
-                    transValueToTarget(left_.value, 0.0, -1.0),
-                    left_.unitType.getValue(),
-                    transValueToTarget(top_.value, 0.0, -1.0),
-                    top_.unitType.getValue(),
-                    transValueToTarget(right_.value, 0.0, -1.0),
-                    right_.unitType.getValue(),
-                    transValueToTarget(bottom_.value, 0.0, -1.0),
-                    bottom_.unitType.getValue(),
-                    transValueToTarget(size_.value, 0.0, 10.0),
-                    size_.unitType.getValue(),
-                    transAppResourceToResourceColor(color),
-                    transAppResourceToResourceColor(selectedColor),
-                    mask
-                )
-            )
-        }
-        this
-    }
-
     protected override func enabledInner(value: Bool): This {
         unsafe {
             FfiOHOSAceFrameworkSwiperSetEnabled(value)
@@ -565,6 +921,7 @@ public class Swiper <: ContainerBase {
         this
     }
 
+    // TODO
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -578,6 +935,7 @@ public class Swiper <: ContainerBase {
         this
     }
 
+    // TODO
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -591,6 +949,7 @@ public class Swiper <: ContainerBase {
         this
     }
 
+    // TODO
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -610,6 +969,7 @@ public class Swiper <: ContainerBase {
         this
     }
 
+    //TODO
     @!APILevel[
         21,
         stagemodelonly: true,

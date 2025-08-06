@@ -2289,7 +2289,7 @@ public open class ViewBase <: InteractableView & UINodeBase {
     /**
      * Adds a mask of the specified shape to the component.
      *
-     * @param { ShapeAbstract } value
+     * @param { BaseShape } value
      * @returns { This }
      * @relation clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T;
      */
@@ -2298,7 +2298,7 @@ public open class ViewBase <: InteractableView & UINodeBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func clipShape(value: ShapeAbstract): This {
+    public func clipShape(value: BaseShape): This {
         clipShapeInner(value)
         this
     }
@@ -2306,7 +2306,7 @@ public open class ViewBase <: InteractableView & UINodeBase {
     /**
      * Adds a mask of the specified shape to the component.
      *
-     * @param { ShapeAbstract } value
+     * @param { BaseShape } value
      * @returns { This }
      * @relation maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T;
      */
@@ -2315,19 +2315,19 @@ public open class ViewBase <: InteractableView & UINodeBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func maskShape(value: ShapeAbstract): This {
+    public func maskShape(value: BaseShape): This {
         maskShapeInner(value)
         this
     }
 
-    protected open func clipShapeInner(value: ShapeAbstract): This {
+    protected open func clipShapeInner(value: BaseShape): This {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetClipByShape(value.getID())
         }
         this
     }
 
-    protected open func maskShapeInner(value: ShapeAbstract): This {
+    protected open func maskShapeInner(value: BaseShape): This {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetMaskByShape(value.getID())
         }

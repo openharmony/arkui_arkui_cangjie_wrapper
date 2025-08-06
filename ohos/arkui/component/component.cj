@@ -59,7 +59,6 @@ public import ohos.arkui.component.text_clock.*
 public import ohos.arkui.component.custom_view.*
 public import ohos.arkui.component.sidebar.*
 public import ohos.arkui.component.animate.*
-public import ohos.arkui.component.security_component.*
 public import ohos.arkui.component.counter.*
 public import ohos.arkui.component.data_panel.*
 public import ohos.arkui.component.context_menu.*

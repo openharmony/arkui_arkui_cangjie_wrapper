@@ -40,34 +40,15 @@ public class ScrollBar <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(scroller: Scroller, direction: ScrollBarDirection, state: BarState, child: () -> Unit) {
+    public init(
+        scroller!: Scroller,
+        direction!: ScrollBarDirection = ScrollBarDirection.Vertical,
+        state!: BarState  = BarState.Auto,
+        child!: () -> Unit = { => }
+    ){
         unsafe {
             FfiOHOSAceFrameworkScrollBarCreate(scroller.getID(), direction.getValue(), state.getValue())
         }
         this.child = child
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(scroller: Scroller, child: () -> Unit) {
-        this(scroller, directionDefault, stateDefault, child)
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(scroller: Scroller, direction: ScrollBarDirection, child: () -> Unit) {
-        this(scroller, direction, stateDefault, child)
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(scroller: Scroller, state: BarState, child: () -> Unit) {
-        this(scroller, directionDefault, state, child)
     }
 }

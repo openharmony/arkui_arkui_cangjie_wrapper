@@ -39,7 +39,7 @@ public class Line <: ShapeComponent {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length, height!: Length) {
+    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
@@ -50,15 +50,6 @@ public class Line <: ShapeComponent {
                 height_.unitType.getValue()
             )
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {
-        this(width: 0.vp, height: 0.vp)
     }
 
     @!APILevel[
@@ -78,29 +69,11 @@ public class Line <: ShapeComponent {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func startPoint(value: (Int64, Int64)): This {
-        startPoint((Float64(value[0]), Float64(value[1])))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func endPoint(value: (Float64, Float64)): This {
         unsafe {
             FfiOHOSAceFrameworkLineSetEnd(value[0], value[1])
         }
         this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func endPoint(value: (Int64, Int64)): This {
-        endPoint((Float64(value[0]), Float64(value[1])))
     }
 
     @!APILevel[

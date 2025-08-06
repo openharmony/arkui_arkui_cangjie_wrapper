@@ -42,19 +42,19 @@ public enum ListItemGroupStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    NONE
+    None
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    CARD
+    Card
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case NONE => 0
-            case CARD => 1
+            case None => 0
+            case Card => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -65,47 +65,32 @@ public enum ListItemGroupStyle {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ListItemGroupParams {
+public class ListDividerOptions {
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public let header: () -> Unit
+    public var strokeWidth: Length
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public let footer: () -> Unit
+    public var color: ResourceColor = Color(0X08000000)
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public let space: Length
+    public var startMargin: Length = 0.vp
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var style: ListItemGroupStyle = ListItemGroupStyle.NONE
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        header!: () -> Unit = {=>},
-        footer!: () -> Unit = {=>},
-        space!: Length
-    ) {
-        this.header = header
-        this.footer = footer
-        this.space = space
-    }
+    public var endMargin: Length = 0.vp
 
     @!APILevel[
         21,
@@ -113,24 +98,15 @@ public class ListItemGroupParams {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        header!: () -> Unit = {=>},
-        footer!: () -> Unit = {=>}
+        strokeWidth!: Length,
+        color!: ResourceColor = Color.Black,
+        startMargin!: Length = 0.vp,
+        endMargin!: Length = 0.vp
     ) {
-        this.header = header
-        this.footer = footer
-        this.space = 0.vp
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(header!: () -> Unit = {=>}, footer!: () -> Unit = {=>}, space!: Length, style!: ListItemGroupStyle) {
-        this.header = header
-        this.footer = footer
-        this.space = transAppResourceToLength(space)
-        this.style = style
+        this.strokeWidth = strokeWidth
+        this.color = color
+        this.startMargin = startMargin
+        this.endMargin = endMargin
     }
 }
 
@@ -145,13 +121,19 @@ public class ListItemGroup <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: ListItemGroupParams, child: () -> Unit) {
-        let headerLambda = Callback0Param<Unit>(value.header)
-        let footerLambda = Callback0Param<Unit>(value.footer)
+    public init(
+        header!: CustomBuilder = {=>},
+        footer!: CustomBuilder = {=>},
+        space!: Length = 0.vp,
+        style!: ListItemGroupStyle = ListItemGroupStyle.None,
+        child!: () -> Unit
+    ) {
+        let headerLambda = Callback0Param<Unit>(header)
+        let footerLambda = Callback0Param<Unit>(footer)
 
         unsafe {
-            FfiOHOSAceFrameworkListItemGroupCreate2(headerLambda.getID(), footerLambda.getID(), value.space.value,
-                value.space.unitType.getValue(), value.style.getValue())
+            FfiOHOSAceFrameworkListItemGroupCreate2(headerLambda.getID(), footerLambda.getID(), space.value,
+                space.unitType.getValue(), style.getValue())
         }
         this.child = child
     }
@@ -161,23 +143,26 @@ public class ListItemGroup <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func divider(strokeWidth!: Length, color!: ResourceColor = Color.Black, startMargin!: Length = 0.vp,
-        endMargin!: Length = 0.vp): This {
-        var strokeWidth_ = transAppResourceToLength(strokeWidth)
-        var startMargin_ = transAppResourceToLength(startMargin)
-        var endMargin_ = transAppResourceToLength(endMargin)
-        unsafe {
-            FfiOHOSAceFrameworkListItemGroupSetDivider(
-                DividerParams(
-                    strokeWidth_.value,
-                    strokeWidth_.unitType.getValue(),
-                    transAppResourceToResourceColor(color),
-                    startMargin_.value,
-                    startMargin_.unitType.getValue(),
-                    endMargin_.value,
-                    endMargin_.unitType.getValue(),
-                )
-            )
+    public func divider(value: Option<ListDividerOptions>): This {
+        match (value) {
+            case Some(v) =>
+                var strokeWidth_ = transAppResourceToLength(v.strokeWidth)
+                var startMargin_ = transAppResourceToLength(v.startMargin)
+                var endMargin_ = transAppResourceToLength(v.endMargin)
+                unsafe {
+                    FfiOHOSAceFrameworkListItemGroupSetDivider(
+                        DividerParams(
+                            strokeWidth_.value,
+                            strokeWidth_.unitType.getValue(),
+                            transAppResourceToResourceColor(v.color),
+                            startMargin_.value,
+                            startMargin_.unitType.getValue(),
+                            endMargin_.value,
+                            endMargin_.unitType.getValue(),
+                        )
+                    )
+                }
+            case None => ()
         }
         this
     }

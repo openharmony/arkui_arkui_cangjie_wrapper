@@ -38,9 +38,9 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public abstract class ShapeAbstract <: ContainerBase {
+public abstract class BaseShape <: RemoteDataLite {
     /**
-     * ShapeAbstract Constructor.
+     * BaseShape Constructor.
      * @param id: Component ID
      * @since 11
      */
@@ -52,7 +52,7 @@ public abstract class ShapeAbstract <: ContainerBase {
      * Sets the color of the filled area. The abnormal value is processed based on the default value.
      *
      * @param color: Color of the filled area
-     * @return ShapeAbstract instance
+     * @return BaseShape instance
      * @since 11
      */
     @!APILevel[
@@ -71,7 +71,7 @@ public abstract class ShapeAbstract <: ContainerBase {
      * Sets the shape width.
      *
      * @param value: Shape width
-     * @return ShapeAbstract instance
+     * @return BaseShape instance
      * @since 11
      */
     @!APILevel[
@@ -79,8 +79,8 @@ public abstract class ShapeAbstract <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func width(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func width(width: Length): This {
+        var value_ = transAppResourceToLength(width)
         unsafe {
             FfiOHOSAceFrameworkShapeSetInsWidth(getID(), value_.value, value_.unitType.getValue())
         }
@@ -91,7 +91,7 @@ public abstract class ShapeAbstract <: ContainerBase {
      * Sets the shape height.
      *
      * @param value: Shape height
-     * @return ShapeAbstract instance
+     * @return BaseShape instance
      * @since 11
      */
     @!APILevel[
@@ -99,15 +99,28 @@ public abstract class ShapeAbstract <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func height(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func height(height: Length): This {
+        var value_ = transAppResourceToLength(height)
         unsafe {
             FfiOHOSAceFrameworkShapeSetInsHeight(getID(), value_.value, value_.unitType.getValue())
         }
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
+    /**
+     * Sets the shape size.
+     *
+     * @param width: Shape width
+     * @param height: Shape height
+     * @return BaseShape instance
+     * @since 11
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func size(width!: Length, height!: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
@@ -117,7 +130,20 @@ public abstract class ShapeAbstract <: ContainerBase {
         this
     }
 
-    protected override func offsetInner(x: Length, y: Length): This {
+    /**
+     * Sets the shape offset.
+     *
+     * @param x: x Offset
+     * @param y: y Offset
+     * @return BaseShape instance
+     * @since 11
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func offset(x!: Length, y!: Length): This {
         var x_ = transAppResourceToLength(x)
         var y_ = transAppResourceToLength(y)
         unsafe {

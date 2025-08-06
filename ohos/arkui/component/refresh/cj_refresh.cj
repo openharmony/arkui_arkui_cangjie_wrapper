@@ -46,7 +46,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class RefreshParams {
+public class RefreshOptions {
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -93,17 +93,17 @@ public class Refresh <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(refreshparams: RefreshParams, content: () -> Unit) {
+    public init(value: RefreshOptions, content: () -> Unit) {
         var offset: Length = 16.vp
         var friction: Int32 = 62
         let wrapper = {
-            value: Bool =>
-            refreshparams.changeEvent(value)
+            result: Bool =>
+            value.changeEvent(result)
         }
         let lambdaData = Callback1Param<Bool, Unit>(wrapper)
         unsafe {
             FfiOHOSAceFrameworkRefreshCreateWithChangeEvent(
-                refreshparams.refreshing,
+                value.refreshing,
                 offset.value,
                 offset.unitType.getValue(),
                 friction,

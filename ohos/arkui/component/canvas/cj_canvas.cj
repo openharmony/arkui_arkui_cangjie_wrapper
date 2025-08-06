@@ -21,6 +21,7 @@ import ohos.arkui.component.native_struct.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import std.deriving.Derive
 
 foreign {
     func FfiOHOSAceFrameworkCanvasCreate(contextId: Int64): Unit
@@ -49,9 +50,15 @@ foreign {
 }
 
 @C
-public struct TextMetrics {
-    public var width: Float64 = 0.0
-    public var height: Float64 = 0.0
+struct NativeTextMetrics {
+    NativeTextMetrics(
+        public var width: Float64,
+        public var height: Float64
+    ) {}
+
+    func parseToCJ(): TextMetrics {
+        return TextMetrics(width, height)
+    }
 }
 
 @C
@@ -69,6 +76,7 @@ struct ImageInfo {
     ) {}
 }
 
+@Derive[Equatable]
 enum CanvasImageType {
     CoordinatesOnly
     | CoordinatesAndSize
@@ -84,7 +92,7 @@ enum CanvasImageType {
 }
 
 @!APILevel[
-    21,
+    12,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -96,24 +104,52 @@ public class RenderingContextSettings {
 }
 
 @!APILevel[
-    21,
+    12,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class TextMetrics {
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public let width: Float64
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public let height: Float64
+
+    init(width: Float64, height: Float64) {
+        this.width = width
+        this.height = height
+    }
+}
+
+@!APILevel[
+    12,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Canvas <: ViewBase {
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(context: CanvasRenderingContext2D) {
-        unsafe {
-            FfiOHOSAceFrameworkCanvasCreate(context.getID())
+    public init(context: Option<CanvasRenderingContext2D>) {
+        match (context) {
+            case Some(value) => unsafe {
+                    FfiOHOSAceFrameworkCanvasCreate(value.getID())
+                }
+            case None => ()
         }
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -126,28 +162,18 @@ public class Canvas <: ViewBase {
 }
 
 @!APILevel[
-    21,
+    12,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CanvasGradient <: RemoteDataLite {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(contextId: Int64, x0: Float64, y0: Float64, x1: Float64, y1: Float64) {
+    init(contextId: Int64, x0: Float64, y0: Float64, x1: Float64, y1: Float64) {
         super(unsafe {
             FfiOHOSAceFrameworkRenderingContextCreateLinearGradient(contextId, x0, y0, x1, y1)
         })
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(contextId: Int64, x0: Float64, y0: Float64, r0: Float64, x1: Float64, y1: Float64, r1: Float64) {
+    init(contextId: Int64, x0: Float64, y0: Float64, r0: Float64, x1: Float64, y1: Float64, r1: Float64) {
         super(unsafe {
             FfiOHOSAceFrameworkRenderingContextCreateRadialGradient(contextId, x0, y0, r0, x1, y1, r1)
         })
@@ -162,7 +188,7 @@ public class CanvasGradient <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        12,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -170,14 +196,5 @@ public class CanvasGradient <: RemoteDataLite {
         unsafe {
             FfiOHOSAceFrameworkCanvasGradientAddColorStop(this.getID(), offset, transAppResourceToResourceColor(color))
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func addColorStop(offset: Int64, color: ResourceColor): Unit {
-        addColorStop(Float64(offset), color)
     }
 }

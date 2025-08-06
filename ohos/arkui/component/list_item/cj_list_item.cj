@@ -59,8 +59,8 @@ public class ListItem <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(deepRender: () -> Unit) {
-        this(deepRender, -1)
+    public init(child: () -> Unit) {
+        this(child, -1)
     }
 
     private init(deepRender: () -> Unit, style: Int32) {
@@ -98,9 +98,9 @@ public class ListItem <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectable(flag: Bool): This {
+    public func selectable(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkListItemSetSelectable(flag)
+            FfiOHOSAceFrameworkListItemSetSelectable(value)
         }
         this
     }
@@ -111,8 +111,8 @@ public class ListItem <: ContainerBase {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func swipeAction(
-        start!: () -> Unit = {=>},
-        end!: () -> Unit = {=>},
+        start!: CustomBuilder = {=>},
+        end!: CustomBuilder = {=>},
         edgeEffect!: SwipeEdgeEffect = SwipeEdgeEffect.Spring,
         onOffsetChange!: (Float64) -> Unit = {_: Float64 =>}
     ): This {
@@ -132,8 +132,8 @@ public class ListItem <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onSelect(callback: (Bool) -> Unit): This {
-        let lambdaData = Callback1Param<Bool, Unit>(callback)
+    public func onSelect(event: (Bool) -> Unit): This {
+        let lambdaData = Callback1Param<Bool, Unit>(event)
         unsafe {
             FfiOHOSAceFrameworkListItemSetOnSelect(lambdaData.getID())
         }
