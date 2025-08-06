@@ -43,7 +43,7 @@ public class RowSplit <: ContainerBase {
     /**
     * Called when the layout along the vertical direction is set.
     *
-    * @param { () -> Unit } content
+    * @param { () -> Unit } child
     * @returns { RowSplit }
     * @relation (): RowSplitAttribute
     */
@@ -52,11 +52,11 @@ public class RowSplit <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(content: () -> Unit) {
+    public init(child: () -> Unit) {
         unsafe {
             FfiOHOSAceFrameworkRowSplitCreate()
         }
-        this.child = content
+        this.child = child
     }
 
     /**
