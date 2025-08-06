@@ -20,6 +20,7 @@ group("arkui_cangjie_api_package") {
     "ohos/arkui/component_snapshot:ohos.arkui.component_snapshot",
     "ohos/arkui/component_utils:ohos.arkui.component_utils",
     "ohos/arkui/observer:ohos.arkui.observer",
+    "ohos/arkui/state_macro_manage:ohos.arkui.state_macro_manage",
     "ohos/arkui/state_management:ohos.arkui.state_management",
     "ohos/base:ohos.base",
     "ohos/curves:ohos.curves",
