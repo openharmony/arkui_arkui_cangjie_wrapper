@@ -285,7 +285,7 @@ ohos_cj_library("ohos.ui_resource") {
   part_name = "arkui_cangjie_api"
 }
 
-cj_macro_library("state_macro_manage") {
+cj_macro_library("ohos.state_macro_manage") {
   sources = [
     "state_macro_manage/cj_app_storage_define.cj",
     "state_macro_manage/cj_binder_define.cj",
@@ -515,6 +515,6 @@ group("cj_ace_libraries") {
     ":ohos.router",
     ":ohos.state_manage",
     ":ohos.ui_resource",
-    ":state_macro_manage",
+    ":ohos.state_macro_manage",
   ]
 }
