@@ -44,96 +44,34 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Icons {
-    let shown: String
-    let hidden: String
-    let switching: String
+public class ButtonIconOptions {
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(shown!: String, hidden!: String, switching!: String = "") {
+    public var shown: ResourceStr
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var hidden: ResourceStr
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var switching: ResourceStr
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(shown!: ResourceStr, hidden!: ResourceStr, switching!: ResourceStr = "") {
         this.shown = shown
         this.hidden = hidden
         this.switching = switching
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(shown!: String, hidden!: String, switching!: AppResource) {
-        this.shown = shown
-        this.hidden = hidden
-        this.switching = getResourceMedia(switching)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(shown!: AppResource, hidden!: String, switching!: String = "") {
-        this.shown = getResourceMedia(shown)
-        this.hidden = hidden
-        this.switching = switching
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(shown!: AppResource, hidden!: String, switching!: AppResource) {
-        this.shown = getResourceMedia(shown)
-        this.hidden = hidden
-        this.switching = getResourceMedia(switching)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(shown!: String, hidden!: AppResource, switching!: String = "") {
-        this.shown = shown
-        this.hidden = getResourceMedia(hidden)
-        this.switching = switching
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(shown!: String, hidden!: AppResource, switching!: AppResource) {
-        this.shown = shown
-        this.hidden = getResourceMedia(hidden)
-        this.switching = getResourceMedia(switching)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(shown!: AppResource, hidden!: AppResource, switching!: String = "") {
-        this.shown = getResourceMedia(shown)
-        this.hidden = getResourceMedia(hidden)
-        this.switching = switching
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(shown!: AppResource, hidden!: AppResource, switching!: AppResource) {
-        this.shown = getResourceMedia(shown)
-        this.hidden = getResourceMedia(hidden)
-        this.switching = getResourceMedia(switching)
     }
 }
 
@@ -154,22 +92,47 @@ struct CJSideBarButtonStyle {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ButtonStyle {
-    let left: Int64
-    let top: Int64
-    let width: Int64
-    let height: Int64
-    let icons: Icons
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var left: Float64
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var top: Float64
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var width: Float64
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var height: Float64
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var icons: ButtonIconOptions
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        left!: Int64 = 16,
-        top!: Int64 = 48,
-        width!: Int64 = 32,
-        height!: Int64 = 32,
-        icons!: Icons = Icons(shown: "", hidden: "")
+        left!: Float64 = 16.0,
+        top!: Float64 = 48.0,
+        width!: Float64 = 24.0,
+        height!: Float64 = 24.0,
+        icons!: ButtonIconOptions = ButtonIconOptions(shown: "", hidden: "")
     ) {
         this.left = left
         this.top = top
@@ -198,38 +161,38 @@ struct CJDividerStyle {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class SideBarDividerStyle {
+public class DividerStyle {
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public let strokeWidth: Length
+    public var strokeWidth: Length
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public let color: ?ResourceColor
+    public var color: ?ResourceColor
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public let startMargin: Length
+    public var startMargin: Length
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public let endMargin: Length
+    public var endMargin: Length
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(strokeWidth!: Length, color!: ?ResourceColor = Option<ResourceColor>.None, startMargin!: Length = 0.vp,
+    public init(strokeWidth!: Length, color!: ?ResourceColor = 0x08000000, startMargin!: Length = 0.vp,
         endMargin!: Length = 0.vp) {
         this.strokeWidth = transAppResourceToLength(strokeWidth)
         if (let Some(v) <- color) {
@@ -293,11 +256,11 @@ public class SideBarContainer <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(`type`: SideBarContainerType, content: () -> Unit) {
+    public init(sideBarType: SideBarContainerType, child!: () -> Unit = {=>}) {
         unsafe {
-            FfiOHOSAceFrameworkSideBarCreate(`type`.getValue())
+            FfiOHOSAceFrameworkSideBarCreate(sideBarType.getValue())
         }
-        this.child = content
+        this.child = child
     }
 
     @!APILevel[
@@ -305,18 +268,9 @@ public class SideBarContainer <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(content: () -> Unit) {
-        this(SideBarContainerType.Embed, content)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func showSideBar(isShow: Bool): This {
+    public func showSideBar(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkSideBarShowSideBar(isShow)
+            FfiOHOSAceFrameworkSideBarShowSideBar(value)
         }
         this
     }
@@ -328,15 +282,15 @@ public class SideBarContainer <: ContainerBase {
     ]
     public func controlButton(value: ButtonStyle): This {
         unsafe {
-            try (shownStr = LibC.mallocCString(value.icons.shown).asResource(),
-                hiddenStr = LibC.mallocCString(value.icons.hidden).asResource(),
-                switchingStr = LibC.mallocCString(value.icons.switching).asResource()) {
+            try (shownStr = LibC.mallocCString(transResourceMediaToString(value.icons.shown)).asResource(),
+                hiddenStr = LibC.mallocCString(transResourceMediaToString(value.icons.hidden)).asResource(),
+                switchingStr = LibC.mallocCString(transResourceMediaToString(value.icons.switching)).asResource()) {
                 FfiOHOSAceFrameworkSideBarControlButton(
                     CJSideBarButtonStyle(
-                        Float64(value.left),
-                        Float64(value.top),
-                        Float64(value.width),
-                        Float64(value.height),
+                        value.left,
+                        value.top,
+                        value.width,
+                        value.height,
                         CJSideBarIconStyle(
                             shownStr.value,
                             hiddenStr.value,
@@ -354,9 +308,9 @@ public class SideBarContainer <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func showControlButton(isShow: Bool): This {
+    public func showControlButton(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkSideBarShowControlButton(isShow)
+            FfiOHOSAceFrameworkSideBarShowControlButton(value)
         }
         this
     }
@@ -442,7 +396,7 @@ public class SideBarContainer <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func divider(value!: ?SideBarDividerStyle = None): This {
+    public func divider(value: ?DividerStyle): This {
         unsafe {
             if (let Some(v) <- value) {
                 FfiOHOSAceFrameworkSideBarDivider(v.getNative())

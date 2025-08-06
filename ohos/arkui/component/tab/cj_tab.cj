@@ -343,10 +343,10 @@ public class Tabs <: ContainerBase {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        barPosition: BarPosition,
-        controller: TabsController,
-        index: Int32,
-        child: () -> Unit
+        barPosition!: BarPosition = BarPosition.Start,
+        controller!: TabsController = TabsController(),
+        index!: Int32 = -1,
+        child!: () -> Unit = {=>}
     ) {
         unsafe {
             FfiOHOSAceFrameworkTabsCreate(barPosition.getValue(), controller.getID(), index)
@@ -359,125 +359,8 @@ public class Tabs <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(
-        barPosition: BarPosition,
-        controller: TabsController,
-        child: () -> Unit
-    ) {
-        let index: Int32 = -1
-        unsafe {
-            FfiOHOSAceFrameworkTabsCreate(barPosition.getValue(), controller.getID(), index)
-        }
-        this.child = child
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        barPosition: BarPosition,
-        index: Int32,
-        child: () -> Unit
-    ) {
-        let controller = TabsController()
-        unsafe {
-            FfiOHOSAceFrameworkTabsCreate(barPosition.getValue(), controller.getID(), index)
-        }
-        this.child = child
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        controller: TabsController,
-        index: Int32,
-        child: () -> Unit
-    ) {
-        let barPosition: BarPosition = BarPosition.Start
-        unsafe {
-            FfiOHOSAceFrameworkTabsCreate(barPosition.getValue(), controller.getID(), index)
-        }
-        this.child = child
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        barPosition: BarPosition,
-        child: () -> Unit
-    ) {
-        let controller = TabsController()
-        let index: Int32 = -1
-        unsafe {
-            FfiOHOSAceFrameworkTabsCreate(barPosition.getValue(), controller.getID(), index)
-        }
-        this.child = child
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        controller: TabsController,
-        child: () -> Unit
-    ) {
-        let barPosition: BarPosition = BarPosition.Start
-        let index: Int32 = -1
-        unsafe {
-            FfiOHOSAceFrameworkTabsCreate(barPosition.getValue(), controller.getID(), index)
-        }
-        this.child = child
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        index: Int32,
-        child: () -> Unit
-    ) {
-        let barPosition: BarPosition = BarPosition.Start
-        let controller = TabsController()
-        unsafe {
-            FfiOHOSAceFrameworkTabsCreate(barPosition.getValue(), controller.getID(), index)
-        }
-        this.child = child
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(child: () -> Unit) {
-        let barPosition: BarPosition = BarPosition.Start
-        let controller = TabsController()
-        let index: Int32 = -1
-        unsafe {
-            FfiOHOSAceFrameworkTabsCreate(barPosition.getValue(), controller.getID(), index)
-        }
-        this.child = child
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func barWidth(width: Length): This {
-        var width_ = transAppResourceToLength(width)
+    public func barWidth(value: Length): This {
+        var width_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTabsSetBarWidth(normalizeValue(width_.value, 0.0), width_.unitType.getValue())
         }
@@ -489,8 +372,8 @@ public class Tabs <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func barHeight(height: Length): This {
-        var height_ = transAppResourceToLength(height)
+    public func barHeight(value: Length): This {
+        var height_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkTabsSetBarHeight(normalizeValue(height_.value, 0.0), height_.unitType.getValue())
         }
@@ -514,9 +397,9 @@ public class Tabs <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func vertical(isVertical: Bool): This {
+    public func vertical(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkTabsSetVertical(isVertical)
+            FfiOHOSAceFrameworkTabsSetVertical(value)
         }
         this
     }
@@ -526,9 +409,9 @@ public class Tabs <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollable(isScrollable: Bool): This {
+    public func scrollable(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkTabsSetScrollable(isScrollable)
+            FfiOHOSAceFrameworkTabsSetScrollable(value)
         }
         this
     }
@@ -538,9 +421,9 @@ public class Tabs <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func barMode(mode: BarMode): This {
+    public func barMode(value: BarMode): This {
         unsafe {
-            FfiOHOSAceFrameworkTabsSetBarMode(mode.getValue())
+            FfiOHOSAceFrameworkTabsSetBarMode(value.getValue())
         }
         this
     }
@@ -550,9 +433,9 @@ public class Tabs <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func animationDuration(duration: Float32): This {
+    public func animationDuration(value: Float32): This {
         unsafe {
-            FfiOHOSAceFrameworkTabsSetAnimationDuration(duration)
+            FfiOHOSAceFrameworkTabsSetAnimationDuration(value)
         }
         this
     }
@@ -562,8 +445,11 @@ public class Tabs <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func animationDuration(duration: Int32): This {
-        animationDuration(Float32(duration))
+    public func onChange(event: Callback<Int32, Unit>): This {
+        unsafe {
+            FfiOHOSAceFrameworkTabsOnChange(Callback1Param<Int32, Unit>(event).getID())
+        }
+        this
     }
 
     protected override func pop(): Unit {
@@ -600,9 +486,9 @@ public class TabsController <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func changeIndex(index: Int32): Unit {
+    public func changeIndex(value: Int32): Unit {
         unsafe {
-            FfiOHOSAceFrameworkTabsControllerChangeIndex(this.getID(), index)
+            FfiOHOSAceFrameworkTabsControllerChangeIndex(this.getID(), value)
         }
     }
 }
@@ -650,9 +536,9 @@ public class TabContent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func tabBar(content: String): This {
+    public func tabBar(content: ResourceStr): This {
         unsafe {
-            var content_ = LibC.mallocCString(content)
+            var content_ = LibC.mallocCString(transResourceStrToString(content))
             FfiOHOSAceFrameworkTabContentSetTabBar(content_)
             content_.free()
         }
@@ -664,22 +550,13 @@ public class TabContent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func tabBar(content: AppResource): This {
-        tabBar(getResourceString(content))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func tabBar(icon!: String, text!: String): This {
+    public func tabBar(icon!: ResourceStr = "", text!: ResourceStr = ""): This {
         unsafe {
             var icon_: ?CString = None
             var text_: ?CString = None
             try {
-                icon_ = LibC.mallocCString(icon)
-                text_ = LibC.mallocCString(text)
+                icon_ = LibC.mallocCString(transResourceMediaToString(icon))
+                text_ = LibC.mallocCString(transResourceStrToString(text))
                 FfiOHOSAceFrameworkTabContentSetTabBarWithIcon(icon_.getOrThrow(), text_.getOrThrow())
             } finally {
                 icon_?.free()
@@ -694,47 +571,10 @@ public class TabContent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func tabBar(icon!: AppResource, text!: String): This {
-        tabBar(icon: getResourceMedia(icon), text: text)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func tabBar(icon!: String, text!: AppResource): This {
-        tabBar(icon: icon, text: getResourceString(text))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func tabBar(icon!: AppResource, text!: AppResource): This {
-        tabBar(icon: getResourceMedia(icon), text: getResourceString(text))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func tabBar(callback: () -> Unit): This {
+    public func tabBar(content: CustomBuilder): This {
         unsafe {
-            FfiOHOSAceFrameworkTabContentSetTabBarWithComponent(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkTabContentSetTabBarWithComponent(Callback0Param<Unit>(content).getID())
         }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    protected override func sizeInner(width: Length, height: Length): This {
-        AppLog.warn("TabContent does not support size settings.")
         this
     }
 }

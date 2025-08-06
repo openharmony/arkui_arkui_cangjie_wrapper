@@ -435,6 +435,8 @@ func fromHexStringToArray(data: String): Option<Array<Byte>> {
 
 public type CustomBuilder = () -> Unit
 
+public type TransitionFinishCallback = (Bool) -> Unit
+
 /**
  * Defines the common method of Component.
  *
@@ -3059,12 +3061,16 @@ public open class ViewBase <: InteractableView & UINodeBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func transition(value: TransitionEffect, onFinish: (Bool) -> Unit): This {
-        transitionInner(value, onFinish)
+    public func transition(value: TransitionEffect, onFinish: ?TransitionFinishCallback): This {
+        if (let Some(v) <- onFinish) {
+            transitionInner(value, v)
+        } else {
+            transitionInner(value)
+        }
         this
     }
 
-    protected open func transitionInner(value: TransitionEffect, onFinish: (Bool) -> Unit): This {
+    protected open func transitionInner(value: TransitionEffect, onFinish: TransitionFinishCallback): This {
         let lambdaData = Callback1Param<Bool, Unit>(onFinish)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractTransitionWithBack(value.getID(), lambdaData.getID())

@@ -34,7 +34,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public open class StepperItem <: ContainerBase {
+public class StepperItem <: ContainerBase {
 
     /**
      * Constructs a StepperItem component.
@@ -47,11 +47,11 @@ public open class StepperItem <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(content: () -> Unit) {
+    public init(child: () -> Unit) {
         unsafe {
             FfiOHOSAceFrameworkStepperItemCreate()
         }
-        this.child = content
+        this.child = child
     }
 
     /**
@@ -108,7 +108,7 @@ public open class StepperItem <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func status(status: ItemState): This {
+    public func status(status!: ItemState = ItemState.Normal): This {
         unsafe {
             FfiOHOSAceFrameworkStepperItemSetStatus(status.getValue())
         }

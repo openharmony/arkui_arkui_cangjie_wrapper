@@ -20,7 +20,7 @@ import ohos.arkui.component.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 
-foreign func FfiOHOSAceFrameworkCurvesCreateStepsCurve(count: Int64, end: Bool): Int64
+foreign func FfiOHOSAceFrameworkCurvesCreateStepsCurve(count: Int32, end: Bool): Int64
 
 foreign func FfiOHOSAceFrameworkCurvesCreateCubicBezierCurve(x1: Float32, y1: Float32, x2: Float32, y2: Float32): Int64
 
@@ -53,7 +53,7 @@ public class Curves {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func stepsCurve(count: Int64, end: Bool): ICurve {
+    public static func stepsCurve(count: Int32, end: Bool): ICurve {
         return ICurve(unsafe { FfiOHOSAceFrameworkCurvesCreateStepsCurve(count, end) })
     }
 
@@ -80,9 +80,9 @@ public class Curves {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func springMotion(response!: Float32 = 0.55, damping!: Float32 = 0.825,
+    public static func springMotion(response!: Float32 = 0.55, dampingFraction!: Float32 = 0.825,
         overlapDuration!: Float32 = 0.0): ICurve {
-        return ICurve(unsafe { FfiOHOSAceFrameworkCurvesCreateSpringMotion(response, damping, overlapDuration) })
+        return ICurve(unsafe { FfiOHOSAceFrameworkCurvesCreateSpringMotion(response, dampingFraction, overlapDuration) })
     }
 
     @!APILevel[

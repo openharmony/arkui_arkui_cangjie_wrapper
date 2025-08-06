@@ -31,11 +31,6 @@ public func launch(task: () -> Unit): Unit {
     unsafe { FfiOHOSAceFrameworkPostTaskToMainThread(Callback0Param<Unit>(task).getID()) }
 }
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public func hasContainer(): Bool {
+protected func hasContainer(): Bool {
     return unsafe { FfiOHOSAceFrameworkHasContainer() }
 }
