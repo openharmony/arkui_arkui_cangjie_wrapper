@@ -20,6 +20,7 @@ ohos_cj_library("ohos.arkui.component.list_item") {
 
   cj_deps = [
     "../common:ohos.arkui.component.common",
+    "../../state_management:ohos.arkui.state_management",
     "../../../base:ohos.base",
   ]
 

@@ -30,6 +30,7 @@ ohos_cj_library("ohos.arkui.component.image") {
     "cangjie_api:ohos.ffi",
     "global_cangjie_api:ohos.resource",
     "multimedia_cangjie_api:ohos.multimedia.image",
+    "hiviewdfx_cangjie_api:ohos.hilog",
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
