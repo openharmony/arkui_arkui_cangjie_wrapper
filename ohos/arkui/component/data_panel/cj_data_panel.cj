@@ -205,7 +205,7 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
     /**
      * Current shadow colors.
      *
-     * @type { ?Array<ResourceColor | LinearGradient> }
+     * @type { Array<LinearGradient> }
      * @default Consistent with valueColors
      * @relation colors?: Array<ResourceColor | LinearGradient>
      */
@@ -217,13 +217,12 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
     public var colors: Array<LinearGradient>
 
     /**
-     * Current shadow colors.
+     * DataPanelShadowOptions Constructor.
      *
-     * @param { ResourceColor }
-     * @param { ResourceColor }
-     * @param { ResourceColor }
-     * @param { ResourceColor }
-     * @relation colors?: Array<ResourceColor | LinearGradient>
+     * @param { Length } radius
+     * @param { Array<LinearGradient> } colors
+     * @param { Length } offsetX
+     * @param { Length } offsetY
      */
     @!APILevel[
         21,

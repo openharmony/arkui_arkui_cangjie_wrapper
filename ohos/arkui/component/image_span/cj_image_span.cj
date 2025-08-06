@@ -97,7 +97,7 @@ public class ImageSpan <: ViewBase {
         }
         unsafe {
             try (unsafeSrc = LibC.mallocCString(content).asResource()) {
-                FfiOHOSAceFrameworkImageSpanCreateWithUrl(unsafeSrc)
+                FfiOHOSAceFrameworkImageSpanCreateWithUrl(unsafeSrc.value)
             }
         }
     }

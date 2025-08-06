@@ -234,14 +234,14 @@ public open class DatePicker <: ViewBase {
      *
      * @param { Callback<DateTime> } callback
      * @returns { This }
-     * @relation onDateChange(callback: Callback<Date>): DatePickerAttribute
+     * @relation onDateChange(callback: Callback<DateTime, Unit>): DatePickerAttribute
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDateChange(callback: Callback<DateTime>): This {
+    public func onDateChange(callback: Callback<DateTime, Unit>): This {
         let wrapper = {
             y: Int64, m: Int64, d: Int64 => callback(DateTime.of(year: y, month: Month.of(m), dayOfMonth: d))
         }
@@ -357,7 +357,7 @@ public open class DatePicker <: ViewBase {
      * Sets the text style for the selected item.
      *
      * @param { PickerTextStyle } value - Font color, font size, and font weight of the selected item.
-     * @default {<br>color: '#ff007dff',<br>font: {<br>size: '20vp', <br>weight: FontWeight.Medium<br>}<br>}
+     * @default {<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>}
      * @returns { This }
      * @relation selectedTextStyle(value: PickerTextStyle): DatePickerAttribute
      */
@@ -368,7 +368,7 @@ public open class DatePicker <: ViewBase {
     ]
     public func selectedTextStyle(value: PickerTextStyle): This {
         var color: UInt32 = 0xff007dff
-        var size: Length = 20.vp
+        var size: Length = 20.fp
         var weight: FontWeight = FontWeight.Medium
         var family: String = "HarmonyOS Sans"
         var style: FontStyle = FontStyle.Normal
