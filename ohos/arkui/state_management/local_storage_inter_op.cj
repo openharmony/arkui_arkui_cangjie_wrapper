@@ -42,7 +42,7 @@ func interOpCall(interOpFunc: JSValue, args: Array<JSValue>, interOpThisArg: JSV
     if (interOpFunc.typeof() != JSType.FUNCTION) {
         throw IllegalArgumentException("localStorageInterOp: jsvalue not function type.")
     }
-    interOpFunc.asFunction(getRuntimeGlobal()).call(args, thisArg: interOpThisArg)
+    interOpFunc.asFunction().call(args, thisArg: interOpThisArg)
 }
 
 func createSubscriber(callback: JSFunction) {
@@ -140,7 +140,7 @@ public open class LocalStorageInterOp {
         match (jsStorage) {
             case Some(v) => ()
             case None => jsStorage = interOpCall((getRuntimeGlobal().global)["localStorageGetShared"], [],
-                getRuntimeGlobal().global.toJSValue()).asObject(getRuntimeGlobal())
+                getRuntimeGlobal().global.toJSValue()).asObject()
         }
         return jsStorage ?? throw NoneValueException("localStorageInterOp: get jsStorage failed.")
     }
@@ -177,10 +177,10 @@ public open class LocalStorageInterOp {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keys() {
-        let it = interOpCall(getJsStorage()["keys"], [], getJsStorage().toJSValue()).asObject(getRuntimeGlobal())
+        let it = interOpCall(getJsStorage()["keys"], [], getJsStorage().toJSValue()).asObject()
         let retHashmap = HashMap<String, Int64>()
         while (true) {
-            let next = interOpCall(it["next"], [], it.toJSValue()).asObject(getRuntimeGlobal())
+            let next = interOpCall(it["next"], [], it.toJSValue()).asObject()
             if (Bool.fromJSValue(getRuntimeGlobal(), next["done"]) == true) {
                 break
             }
@@ -317,7 +317,7 @@ public open class LocalStorageInterOp {
                     [propName.toJSValue(getRuntimeGlobal()),
                         createSubscriber(getRuntimeGlobal().function(hasChanged)).toJSValue()],
                     getJsStorage().toJSValue()
-                ).asObject(getRuntimeGlobal()))
+                ).asObject())
             let observedProperty = ObservedPropertyInterOp<T>(propName, property)
             storage.add(propName, observedProperty)
             observedProperty
@@ -335,7 +335,7 @@ public open class LocalStorageInterOp {
                     [propName.toJSValue(getRuntimeGlobal()), value.toJSValue(getRuntimeGlobal()),
                         createSubscriber(getRuntimeGlobal().function(hasChanged)).toJSValue()],
                     getJsStorage().toJSValue()
-                ).asObject(getRuntimeGlobal()))
+                ).asObject())
             let observedProperty = ObservedPropertyInterOp<T>(propName, property)
             storage.add(propName, observedProperty)
             observedProperty
@@ -374,7 +374,7 @@ public open class LocalStorageInterOp {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func hasChanged(context: JSContext, callInfo: JSCallInfo): JSValue {
-        let obj = callInfo[0].asObject(getRuntimeGlobal())
+        let obj = callInfo[0].asObject()
         let propName = String.fromJSValue(getRuntimeGlobal(), interOpCall(obj["info"], [], obj.toJSValue()))
         Hilog.debug(0, "cangjiePage", "prop ${propName} hasChanged")
         if (storage.contains(propName)) {
