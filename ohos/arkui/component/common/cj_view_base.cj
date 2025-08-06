@@ -1152,7 +1152,7 @@ public open class ViewBase <: InteractableView & UINodeBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func border(width!: Length, color!: ResourceColor = Color.BLACK, radius!: Length = 0.vp,
+    public func border(width!: Length, color!: ResourceColor = Color.Black, radius!: Length = 0.vp,
         style!: BorderStyle = BorderStyle.Solid): This {
         borderInner(width, color, radius, style)
         this
@@ -1632,7 +1632,7 @@ public open class ViewBase <: InteractableView & UINodeBase {
     }
 
     /**
-     * Scales the component. 
+     * Scales the component.
      * Scale ratio along the x-, y-, and z-axis. The default value is **1**.
      * centerX and centerY are used to set the scale center point.
      * default:{x:1,y:1,z:1,centerX:'50%',centerY:'50%'}
@@ -2656,7 +2656,7 @@ public open class ViewBase <: InteractableView & UINodeBase {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func linearGradient(angle!: ?Float64 = None, direction!: GradientDirection = GradientDirection.Bottom,
-        colors!: Array<(ResourceColor, Float64)> = [(Color.TRANSPARENT, 0.0)], repeating!: Bool = false): This {
+        colors!: Array<(ResourceColor, Float64)> = [(Color.Transparent, 0.0)], repeating!: Bool = false): This {
         linearGradientInner(angle, direction, colors, repeating)
         this
     }
@@ -2690,7 +2690,7 @@ public open class ViewBase <: InteractableView & UINodeBase {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sweepGradient(center: (Length, Length), start!: Float64 = 0.0, end!: Float64 = 0.0,
-        rotation!: Float64 = 0.0, colors!: Array<(ResourceColor, Float64)> = [(Color.TRANSPARENT, 0.0)],
+        rotation!: Float64 = 0.0, colors!: Array<(ResourceColor, Float64)> = [(Color.Transparent, 0.0)],
         repeating!: Bool = false): This {
         sweepGradientInner(center, start, end, rotation, colors, repeating)
         this

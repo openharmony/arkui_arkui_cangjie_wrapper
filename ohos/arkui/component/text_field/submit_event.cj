@@ -286,7 +286,7 @@ protected struct TextField {
 
     protected func border(
         width!: Length,
-        color!: ResourceColor = Color.BLACK,
+        color!: ResourceColor = Color.Black,
         radius!: Length = 0.vp,
         style!: BorderStyle = BorderStyle.Solid
     ): Unit {

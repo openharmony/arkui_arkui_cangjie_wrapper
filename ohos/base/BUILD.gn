@@ -15,7 +15,6 @@ import("//build/cangjie/cjc.gni")
 
 ohos_cj_library("ohos.base") {
   sources = [
-    "array_like.cj",
     "async_error.cj",
     "business_exception.cj",
     "callback_invoke.cj",
@@ -27,7 +26,7 @@ ohos_cj_library("ohos.base") {
     "length.cj",
     "main_context.cj",
     "resource.cj",
-    "sync_callback.cj",
+    "callback_type.cj",
   ]
 
   cj_external_deps = [

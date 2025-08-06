@@ -226,7 +226,7 @@ public class ImageSpan <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textBackgroundStyle(color!: ResourceColor = Color.TRANSPARENT, radius!: Length = 0.vp): This {
+    public func textBackgroundStyle(color!: ResourceColor = Color.Transparent, radius!: Length = 0.vp): This {
         var radius_ = transAppResourceToLength(radius)
         unsafe {
             FfiOHOSAceFrameworkImageSpanTextBackgroundStyleBorder(transAppResourceToResourceColor(color),
@@ -240,7 +240,7 @@ public class ImageSpan <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textBackgroundStyle(color!: ResourceColor = Color.TRANSPARENT, radius!: BorderRadiuses): This {
+    public func textBackgroundStyle(color!: ResourceColor = Color.Transparent, radius!: BorderRadiuses): This {
         unsafe {
             FfiOHOSAceFrameworkImageSpanTextBackgroundStyleBorder(transAppResourceToResourceColor(color),
                 radius.toCBorderRadiuses())

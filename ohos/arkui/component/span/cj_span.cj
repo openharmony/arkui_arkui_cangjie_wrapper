@@ -198,7 +198,7 @@ public open class Span <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func decoration(decorationType!: TextDecorationType, color!: ResourceColor = Color.BLACK): This {
+    public func decoration(decorationType!: TextDecorationType, color!: ResourceColor = Color.Black): This {
         unsafe {
             FfiOHOSAceFrameworkSpanSetDecoration(decorationType.getValue(), transAppResourceToResourceColor(color))
         }

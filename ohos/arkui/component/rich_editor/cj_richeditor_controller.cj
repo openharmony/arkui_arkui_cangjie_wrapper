@@ -76,7 +76,7 @@ public class TextDecoration {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(`type`!: TextDecorationType, color!: ResourceColor = Color.BLACK) {
+    public init(`type`!: TextDecorationType, color!: ResourceColor = Color.Black) {
         this.`type` = `type`
         this.color = transAppResourceToResourceColor(color)
     }
@@ -193,12 +193,12 @@ public class RichEditorTextStyle {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        fontColor!: ResourceColor = Color.BLACK,
+        fontColor!: ResourceColor = Color.Black,
         fontSize!: Length = 16.vp,
         fontStyle!: FontStyle = FontStyle.Normal,
         fontWeight!: FontWeight = FontWeight.Normal,
         fontFamily!: String = DEFAULT_FONT,
-        decoration!: TextDecoration = TextDecoration(`type`: TextDecorationType.None, color: Color.BLACK)
+        decoration!: TextDecoration = TextDecoration(`type`: TextDecorationType.None, color: Color.Black)
     ) {
         this.fontColor = transAppResourceToResourceColor(fontColor)
         this.fontSize = transAppResourceToLength(fontSize)

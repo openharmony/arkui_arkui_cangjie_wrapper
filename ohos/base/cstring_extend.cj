@@ -18,66 +18,31 @@ package ohos.base
 import ohos.hilog.HilogChannel
 import ohos.labels.APILevel
 
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public let BaseLog = HilogChannel(1, 0xD003901, "Cangjie-Base")
+foreign {
+    func FfiOHOSAceFrameworkThrowNativeError(msg: CString): Unit
+    func FfiOHOSAceFrameworkNativeLog(msg: CString): Unit
+}
 
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public let AppLog = HilogChannel(0, 0xD003903, "Cangjie-App")
+protected let BaseLog = HilogChannel(1, 0xD003901, "Cangjie-Base")
+protected let AppLog = HilogChannel(0, 0xD003903, "Cangjie-App")
 
-foreign func FfiOHOSAceFrameworkThrowNativeError(msg: CString): Unit
-
-foreign func FfiOHOSAceFrameworkNativeLog(msg: CString): Unit
-
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public func throwNativeError(msg: String): Unit {
+protected func throwNativeError(msg: String): Unit {
     unsafe {
-        let unsafeMsg = LibC.mallocCString(msg)
-        FfiOHOSAceFrameworkThrowNativeError(unsafeMsg)
-        LibC.free(unsafeMsg)
+        try (unsafeMsg = LibC.mallocCString(msg).asResource()) {
+            FfiOHOSAceFrameworkThrowNativeError(unsafeMsg.value)
+        }
     }
 }
 
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public func nativeLog(msg: String): Unit {
+protected func nativeLog(msg: String): Unit {
     unsafe {
-        let unsafeMsg = LibC.mallocCString(msg)
-        FfiOHOSAceFrameworkNativeLog(unsafeMsg)
-        LibC.free(unsafeMsg)
+        try (unsafeMsg = LibC.mallocCString(msg).asResource()) {
+            FfiOHOSAceFrameworkNativeLog(unsafeMsg.value)
+        }
     }
 }
 
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public func getOrThrow<T>(optData: Option<T>, msg!: String = ""): T {
+protected func getOrThrow<T>(optData: Option<T>, msg!: String = ""): T {
     match (optData) {
         case None =>
             throwNativeError(msg + "\n")
@@ -86,25 +51,11 @@ public func getOrThrow<T>(optData: Option<T>, msg!: String = ""): T {
     }
 }
 
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public interface CStringExtend {
+protected interface CStringExtend {
     func free(): Unit
     func toStringOption(): ?String
 }
 
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 extend CString <: CStringExtend {
     public func free(): Unit {
         unsafe {

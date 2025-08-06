@@ -199,13 +199,13 @@ public class ForegroundBlurStyleOptions {
         this.blurOptions = blurOptions
     }
 
-    @!APILevel[	
-        21,	
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public init(	
-        colorMode!: ThemeColorMode = SYSTEM,	
-        adaptiveColor!: AdaptiveColor = DEFAULT,	
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(
+        colorMode!: ThemeColorMode = SYSTEM,
+        adaptiveColor!: AdaptiveColor = DEFAULT,
         blurOptions!: BlurOptions = BlurOptions([0.0, 0.0]),
         scale!: Float32
     ) {
@@ -258,36 +258,36 @@ public class StateChangeEvent {
     }
 }
 
-@!APILevel[	
+@!APILevel[
     21,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-]	
-public class PopupOptions {	
-    @!APILevel[	
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class PopupOptions {
+    @!APILevel[
         21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public var message: String = ""	
-    @!APILevel[	
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var message: String = ""
+    @!APILevel[
         21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public var placementOnTop: Bool = false	
-    @!APILevel[	
-        21,	
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public var primaryButton: Action = Action(value: "", action: {=>})	
-    @!APILevel[	
-        21,	
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public var secondaryButton: Action = Action(value: "", action: {=>})	
-    @!APILevel[	
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var placementOnTop: Bool = false
+    @!APILevel[
         21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public var onStateChange: Option<(StateChangeEvent) -> Unit> = Option.None	
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var primaryButton: Action = Action(value: "", action: {=>})
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var secondaryButton: Action = Action(value: "", action: {=>})
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var onStateChange: Option<(StateChangeEvent) -> Unit> = Option.None
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -372,7 +372,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
+    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -388,23 +388,23 @@ public class PopupOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var followTransformOfTarget: Bool = false
-    @!APILevel[	
-        21,	
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public init(	
-        message!: String,	
-        placementOnTop!: Bool = false,	
-        primaryButton!: Action = Action(value: "", action: {=>}),	
-        secondaryButton!: Action = Action(value: "", action: {=>}),	
-        onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None	
-    ) {	
-        this.message = message	
-        this.placementOnTop = placementOnTop	
-        this.primaryButton = primaryButton	
-        this.secondaryButton = secondaryButton	
-        this.onStateChange = onStateChange	
-    }	
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(
+        message!: String,
+        placementOnTop!: Bool = false,
+        primaryButton!: Action = Action(value: "", action: {=>}),
+        secondaryButton!: Action = Action(value: "", action: {=>}),
+        onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None
+    ) {
+        this.message = message
+        this.placementOnTop = placementOnTop
+        this.primaryButton = primaryButton
+        this.secondaryButton = secondaryButton
+        this.onStateChange = onStateChange
+    }
 
     @!APILevel[
         21,
@@ -432,7 +432,7 @@ public class PopupOptions {
         arrowHeight!: Length = 8.vp,
         radius!: Length = 20.vp,
         shadow!: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
         transition!: ?TransitionEffect = Option.None,
         onWillDismiss!: Option<(DismissPopupAction) -> Unit> = None,
         followTransformOfTarget!: Bool = false
@@ -471,29 +471,29 @@ public class PopupOptions {
     public init() {}
 }
 
-@!APILevel[	
-    21,	
+@!APILevel[
+    21,
     atomicservice: true,
     crossplatform: true,
-    stagemodelonly: true,	
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-]	
-public class CustomPopupOptions {	
-    @!APILevel[	
-        21,	
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public var builder: () -> Unit = {=>}	
-    @!APILevel[	
-        21,		
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public var placement: Placement = Placement.Bottom	
-    @!APILevel[	
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class CustomPopupOptions {
+    @!APILevel[
         21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public var maskColor: Color = Color(0x1000000)	
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var builder: () -> Unit = {=>}
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var placement: Placement = Placement.Bottom
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var maskColor: Color = Color(0x1000000)
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -504,21 +504,21 @@ public class CustomPopupOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enableArrow: Bool = true
-    @!APILevel[	
+    @!APILevel[
         21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public var autoCancel: Bool = true	
-    @!APILevel[	
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var autoCancel: Bool = true
+    @!APILevel[
         21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public var onStateChange: Option<(StateChangeEvent) -> Unit> = Option.None	
-    @!APILevel[	
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var onStateChange: Option<(StateChangeEvent) -> Unit> = Option.None
+    @!APILevel[
         21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public var popupColor: ?Color = None	
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var popupColor: ?Color = None
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -578,7 +578,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
+    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -599,27 +599,27 @@ public class CustomPopupOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var followTransformOfTarget: Bool = false
-    @!APILevel[	
+    @!APILevel[
         21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"	
-    ]	
-    public init(	
-        builder!: () -> Unit,	
-        placement!: Placement = Placement.Bottom,	
-        maskColor!: Color = Color(0x1000000),	
-        popupColor!: Color = Color(0x1000000),	
-        enableArrow!: Bool = true,	
-        autoCancel!: Bool = true,	
-        onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None	
-    ) {	
-        this.builder = builder	
-        this.placement = placement	
-        this.maskColor = maskColor	
-        this.popupColor = popupColor	
-        this.enableArrow = enableArrow	
-        this.autoCancel = autoCancel	
-        this.onStateChange = onStateChange	
-    }	
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(
+        builder!: () -> Unit,
+        placement!: Placement = Placement.Bottom,
+        maskColor!: Color = Color(0x1000000),
+        popupColor!: Color = Color(0x1000000),
+        enableArrow!: Bool = true,
+        autoCancel!: Bool = true,
+        onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None
+    ) {
+        this.builder = builder
+        this.placement = placement
+        this.maskColor = maskColor
+        this.popupColor = popupColor
+        this.enableArrow = enableArrow
+        this.autoCancel = autoCancel
+        this.onStateChange = onStateChange
+    }
 
     @!APILevel[
         21,
@@ -645,7 +645,7 @@ public class CustomPopupOptions {
         arrowHeight!: Length = 16.vp,
         radius!: Length = 20.vp,
         shadow!: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
         focusable!: Bool = false,
         transition!: Option<TransitionEffect> = Option.None,
         onWillDismiss!: Option<(DismissPopupAction) -> Unit> = None,
@@ -1117,8 +1117,8 @@ func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadow {
         true,
         NativeShadowOptions(
             shadowOptions.radius,
-            shadowOptions.shadowType,
-            shadowOptions.color,
+            shadowOptions.shadowType.getValue(),
+            shadowOptions.color.toUInt32(),
             shadowOptions.offsetX,
             shadowOptions.offsetY,
             shadowOptions.fill
@@ -1150,7 +1150,7 @@ public class SheetOptions <: BindOptions {
     let onTypeDidChange: Option<(Float32) -> Unit>
     let borderWidth: Option<Length>
     let borderColor: Option<Color>
-    let borderStyle: Option<EdgeStyle>
+    let borderStyle: Option<EdgeStyles>
     let width: Option<Length>
     let shadow: Option<ShadowOptions>
     let mode: Option<SheetMode>
@@ -1161,7 +1161,7 @@ public class SheetOptions <: BindOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        backgroundColor!: Option<Color> = Color.WHITE,
+        backgroundColor!: Option<Color> = Color.White,
         onAppear!: Option<() -> Unit> = Option.None,
         onDisappear!: Option<() -> Unit> = Option.None,
         onWillAppear!: Option<() -> Unit> = Option.None,
@@ -1183,8 +1183,8 @@ public class SheetOptions <: BindOptions {
         onWidthDidChange!: Option<(Float32) -> Unit> = Option.None,
         onTypeDidChange!: Option<(Float32) -> Unit> = Option.None,
         borderWidth!: Option<Length> = 0.vp,
-        borderColor!: Option<Color> = Color.BLACK,
-        borderStyle!: Option<EdgeStyle> = EdgeStyle.SOLID,
+        borderColor!: Option<Color> = Color.Black,
+        borderStyle!: Option<EdgeStyles> = EdgeStyles(),
         width!: Option<Length> = Option.None,
         shadow!: Option<ShadowOptions> = Option.None,
         mode!: Option<SheetMode> = SheetMode.OVERLAY,
@@ -1324,7 +1324,7 @@ public class SheetOptions <: BindOptions {
             }
             let borderStyle = match (sheetOption.borderStyle) {
                 case Some(value) => NativeOptionEdgeStyle(true, value.toNative())
-                case None => NativeOptionEdgeStyle(false, NativeEdgeStyle(0, 0, 0, 0))
+                case None => NativeOptionEdgeStyle(false, NativeEdgeStyles(0, 0, 0, 0))
             }
             let width = match (sheetOption.width) {
                 case Some(value) =>
@@ -1334,7 +1334,7 @@ public class SheetOptions <: BindOptions {
             }
             let shadow = match (sheetOption.shadow) {
                 case Some(value) => parseShadowOptions(value)
-                case None => parseShadowOptions(ShadowOptions())
+                case None => parseShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.COLOR))
             }
             let mode = match (sheetOption.mode) {
                 case Some(value) => NativeOptionUInt32(true, value.toValue())
@@ -1556,13 +1556,13 @@ public open class ContextMenuOptions {
             stagemodelonly: true,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
-        public var backgroundColor: ResourceColor = Color.TRANSPARENT
+        public var backgroundColor: ResourceColor = Color.Transparent
         @!APILevel[
             21,
             stagemodelonly: true,
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
-        public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
+        public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
         @!APILevel[
             21,
             stagemodelonly: true,
@@ -1588,8 +1588,8 @@ public open class ContextMenuOptions {
         onDisappear!: ?() -> Unit = None,
         aboutToAppear!: ?() -> Unit = None,
         aboutToDisappear!: ?() -> Unit = None,
-        backgroundColor!: ResourceColor = Color.TRANSPARENT,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+        backgroundColor!: ResourceColor = Color.Transparent,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
         transition!: ?TransitionEffect = None,
         borderRadius!: ?BorderRadiuses = None,
         layoutRegionMargin!: ?Margin = None

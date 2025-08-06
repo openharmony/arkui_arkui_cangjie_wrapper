@@ -28,582 +28,136 @@ struct RetDimension {
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct ExternalString {
+protected struct ExternalString {
     let value_: CString
     let free_: CFunc<(CString) -> Unit>
-
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(value: String) {
+    protected init(value: String) {
         unsafe {
-            value_ = LibC.mallocCString(value)
+            try(unsafeVal = LibC.mallocCString(value).asResource()) {
+                value_ = unsafeVal.value
+            }
             free_ = free
         }
     }
-
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func isNull(): Bool {
+    protected func isNull(): Bool {
         return value_.isNull()
     }
-
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func toString(): String {
+    protected func toString(): String {
         if (value_.isNull()) {
             return ""
         }
         value_.toString()
     }
-
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public unsafe func free(): Unit {
+    protected unsafe func free(): Unit {
         if (!value_.isNull()) {
             free_(value_)
         }
     }
 }
 
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class SizeOptions {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public SizeOptions(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            form: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var width!: Length = 0.vp,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            form: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var height!: Length = 0.vp
+@C
+protected struct NativeOffset {
+    protected NativeOffset(
+        protected let dx: NativeLength,
+        protected let dy: NativeLength
     ) {}
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct NativeOffset {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public NativeOffset(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let dx: NativeLength,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let dy: NativeLength
+protected struct NativeLength {
+    protected NativeLength(
+        protected let value: Float64,
+        protected let unitType: Int32
     ) {}
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct NativeLength {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public NativeLength(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let value: Float64,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let unitType: Int32
+protected struct NativeOptionLength {
+    protected NativeOptionLength(
+        protected let hasValue: Bool,
+        protected let value: NativeLength
     ) {}
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct NativeOptionLength {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public NativeOptionLength(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let hasValue: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let value: NativeLength
+protected struct NativeOptionInt32 {
+    protected NativeOptionInt32(
+        protected let hasValue: Bool,
+        protected let value: Int32
     ) {}
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct NativeOptionInt32 {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public NativeOptionInt32(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let hasValue: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let value: Int32
+protected struct NativeOptionUInt32 {
+    protected NativeOptionUInt32(
+        protected let hasValue: Bool,
+        protected let value: UInt32
     ) {}
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct NativeOptionUInt32 {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public NativeOptionUInt32(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let hasValue: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let value: UInt32
+protected struct NativeOptionFloat32 {
+    protected NativeOptionFloat32(
+        protected let hasValue: Bool,
+        protected let value: Float32
     ) {}
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct NativeOptionFloat32 {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public NativeOptionFloat32(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let hasValue: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let value: Float32
+protected struct NativeOptionFloat64 {
+    protected NativeOptionFloat64(
+        protected let hasValue: Bool,
+        protected let value: Float64
     ) {}
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct NativeOptionFloat64 {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public NativeOptionFloat64(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let hasValue: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let value: Float64
+protected struct NativeOptionCallBack {
+    protected NativeOptionCallBack(
+        protected let hasValue: Bool,
+        protected let value: Int64
     ) {}
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct NativeOptionCallBack {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public NativeOptionCallBack(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let hasValue: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let value: Int64
+protected struct NativeOptionCString {
+    protected NativeOptionCString(
+        protected let hasValue: Bool,
+        protected let value: CString
     ) {}
-}
-
-@C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct NativeOptionCString {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public NativeOptionCString(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let hasValue: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let value: CString
-    ) {}
-
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func free() {
+    protected func free() {
         this.value.free()
     }
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct NativeOptionInt64 {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public NativeOptionInt64(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let hasValue: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let value: Int64
+protected struct NativeOptionInt64 {
+    protected NativeOptionInt64(
+        protected let hasValue: Bool,
+        protected let value: Int64
     ) {}
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct NativeOptionBool {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public NativeOptionBool(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let hasValue: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let value: Bool
+protected struct NativeOptionBool {
+    protected NativeOptionBool(
+        protected let hasValue: Bool,
+        protected let value: Bool
     ) {}
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct CArrInt32 {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public CArrInt32(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let head: CPointer<Int32>,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let size: Int64
+protected struct CArrInt32 {
+    protected CArrInt32(
+        protected let head: CPointer<Int32>,
+        protected let size: Int64
     ) {}
 }
 
 @C
-@!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public struct NativeOptionCArrInt32 {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public NativeOptionCArrInt32(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let hasValue: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let value: CArrInt32
+protected struct NativeOptionCArrInt32 {
+    protected NativeOptionCArrInt32(
+        protected let hasValue: Bool,
+        protected let value: CArrInt32
     ) {}
 }

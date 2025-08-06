@@ -25,7 +25,7 @@ import std.collection.*
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ObservedArrayList<T> <: ObservedComplexAbstract & ArrayLike<T> {
+public class ObservedArrayList<T> <: ObservedComplexAbstract {
     private var internalValue: ArrayList<T>
 
     @!APILevel[

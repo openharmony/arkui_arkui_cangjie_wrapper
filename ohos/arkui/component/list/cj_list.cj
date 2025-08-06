@@ -216,7 +216,7 @@ public class List <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func divider(strokeWidth!: Length, color!: ResourceColor = Color.BLACK, startMargin!: Length = 0.vp,
+    public func divider(strokeWidth!: Length, color!: ResourceColor = Color.Black, startMargin!: Length = 0.vp,
         endMargin!: Length = 0.vp): This {
         var strokeWidth_ = transAppResourceToLength(strokeWidth)
         var startMargin_ = transAppResourceToLength(startMargin)

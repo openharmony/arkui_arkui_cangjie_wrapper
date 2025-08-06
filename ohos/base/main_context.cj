@@ -21,8 +21,6 @@ foreign func FfiOHOSBaseGetUISchedulerHandle(): CPointer<Unit>
 
 @!APILevel[
     21,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -45,8 +43,6 @@ public class MainThreadContext <: ThreadContext {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -54,8 +50,6 @@ public class MainThreadContext <: ThreadContext {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -66,8 +60,6 @@ public class MainThreadContext <: ThreadContext {
 
 @!APILevel[
     21,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]

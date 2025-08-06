@@ -3717,7 +3717,7 @@ public enum CompositeOperation {
     |
     /**
      * The new drawing is drawn only where it overlaps the content of the existing canvas.
-     * 
+     *
      */
     @!APILevel[
         21,
@@ -6848,7 +6848,7 @@ public enum GradientDirection {
 
 /**
  * Enum of RenderFit
- * 
+ *
  * @relation enum RenderFit
  */
 @Derive[Equatable]
@@ -6860,7 +6860,7 @@ public enum GradientDirection {
 public enum RenderFit {
     /**
      * Without scaling the content area, the content area is drawn in the center of the node.
-     * 
+     *
      * @relation CENTER = 0
      */
     @!APILevel[
@@ -6872,7 +6872,7 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the top center of the node.
-     * 
+     *
      * @relation TOP = 1
      */
     @!APILevel[
@@ -6884,7 +6884,7 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the bottom center of the node.
-     * 
+     *
      * @relation BOTTOM = 2
      */
     @!APILevel[
@@ -6896,7 +6896,7 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the left center of the node.
-     * 
+     *
      * @relation LEFT = 3
      */
     @!APILevel[
@@ -6908,7 +6908,7 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the right center of the node.
-     * 
+     *
      * @relation RIGHT = 4
      */
     @!APILevel[
@@ -6920,7 +6920,7 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the top left of the node.
-     * 
+     *
      * @relation TOP_LEFT = 5
      */
     @!APILevel[
@@ -6932,7 +6932,7 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the top right of the node.
-     * 
+     *
      * @relation TOP_RIGHT = 6
      */
     @!APILevel[
@@ -6944,7 +6944,7 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the bottom left of the node.
-     * 
+     *
      * @relation BOTTOM_LEFT = 7
      */
     @!APILevel[
@@ -6956,7 +6956,7 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the bottom right of the node.
-     * 
+     *
      * @relation BOTTOM_RIGHT = 8
      */
     @!APILevel[
@@ -6968,7 +6968,7 @@ public enum RenderFit {
     |
     /**
      * Scale the length and width of the content area to the node size to fill the node.
-     * 
+     *
      * @relation RESIZE_FILL = 9
      */
     @!APILevel[
@@ -6980,9 +6980,9 @@ public enum RenderFit {
     |
     /**
      * Scale the length or width of the content to the length or width of the node, ensuring that one side is equal,
-     * the other side is less than or equal to the corresponding side of the node, and the content after scaling 
+     * the other side is less than or equal to the corresponding side of the node, and the content after scaling
      * is centered.
-     * 
+     *
      * @relation RESIZE_CONTAIN = 10
      */
     @!APILevel[
@@ -6998,7 +6998,7 @@ public enum RenderFit {
      * is less than or equal to the height of the node, the scaled content area is displayed at the top; otherwise,
      * the width of the scaled content is less than or equal to the width of the node, the scaled content area is
      * displayed at the left.
-     * 
+     *
      * @relation RESIZE_CONTAIN_TOP_LEFT = 11
      */
     @!APILevel[
@@ -7014,7 +7014,7 @@ public enum RenderFit {
      * is less than or equal to the height of the node, the scaled content area is displayed at the bottom; otherwise,
      * the width of the scaled content is less than or equal to the width of the node, the scaled content area is
      * displayed at the right.
-     * 
+     *
      * @relation RESIZE_CONTAIN_BOTTOM_RIGHT = 12
      */
     @!APILevel[
@@ -7026,9 +7026,9 @@ public enum RenderFit {
     |
     /**
      * Scale the length or width of the content to the length or width of the node, ensuring that one side is equal,
-     * the other side is greater than or equal to the corresponding side of the node, and the content after scaling 
+     * the other side is greater than or equal to the corresponding side of the node, and the content after scaling
      * displays the center area.
-     * 
+     *
      * @relation RESIZE_COVER = 13
      */
     @!APILevel[
@@ -7044,7 +7044,7 @@ public enum RenderFit {
      * is greater than or equal to the height of the node, the scaled content area displays the top area; otherwise,
      * the width of the scaled content is greater than or equal to the width of the node, the scaled content area
      * displays the left area.
-     * 
+     *
      * @relation RESIZE_COVER_TOP_LEFT = 14
      */
     @!APILevel[
@@ -7060,7 +7060,7 @@ public enum RenderFit {
      * is greater than or equal to the height of the node, the scaled content area displays the bottom area; otherwise,
      * the width of the scaled content is greater than or equal to the width of the node, the scaled content area
      * displays the right area.
-     * 
+     *
      * @relation RESIZE_COVER_BOTTOM_RIGHT = 15
      */
     @!APILevel[
@@ -7492,7 +7492,7 @@ public enum ColoringStrategy {
 
 /**
  * Nested scroll nested mode
- * 
+ *
  * @relation enum NestedScrollMode
  */
 @Derive[Equatable]
@@ -7504,7 +7504,7 @@ public enum ColoringStrategy {
 public enum NestedScrollMode {
     /**
      * Only Self response scrolling.
-     * 
+     *
      * @relation SELF_ONLY
      */
     @!APILevel[
@@ -7516,7 +7516,7 @@ public enum NestedScrollMode {
     |
     /**
      * Self priority response scrolling.
-     * 
+     *
      * @relation SELF_FIRST
      */
     @!APILevel[
@@ -7528,7 +7528,7 @@ public enum NestedScrollMode {
     |
     /**
      * Parent scrollable component priority response scrolling.
-     * 
+     *
      * @relation PARENT_FIRST
      */
     @!APILevel[
@@ -7540,7 +7540,7 @@ public enum NestedScrollMode {
     |
     /**
      * Both self and parent scrollable component response scrolling.
-     * 
+     *
      * @relation PARALLEL
      */
     @!APILevel[
@@ -7564,7 +7564,7 @@ public enum NestedScrollMode {
 
 /**
  * enum Blur style
- * 
+ *
  * @relation enum ForegroundBlurStyle
  */
 @Derive[Equatable]
@@ -7576,7 +7576,7 @@ public enum NestedScrollMode {
 public enum ForegroundBlurStyle {
     /**
      * No blur.
-     * 
+     *
      * @relation NONE
      */
     @!APILevel[
@@ -7584,11 +7584,11 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    NONE
+    None
     |
     /**
      * Thin material.
-     * 
+     *
      * @relation Thin
      */
     @!APILevel[
@@ -7596,11 +7596,11 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    THIN
+    Thin
     |
     /**
      * Regular material.
-     * 
+     *
      * @relation Regular
      */
     @!APILevel[
@@ -7608,11 +7608,11 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    REGULAR
+    Regular
     |
     /**
      * Thick material.
-     * 
+     *
      * @relation Thick
      */
     @!APILevel[
@@ -7620,11 +7620,11 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    THICK
+    Thick
     |
     /**
      * Material that creates the minimum depth of field effect.
-     * 
+     *
      * @relation BACKGROUND_THIN
      */
     @!APILevel[
@@ -7632,11 +7632,11 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    BACKGROUND_THIN
+    BackgroundThin
     |
     /**
      * Material that creates a medium shallow depth of field effect.
-     * 
+     *
      * @relation BACKGROUND_REGULAR
      */
     @!APILevel[
@@ -7644,11 +7644,11 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    BACKGROUND_REGULAR
+    BackgroundRegular
     |
     /**
      * Material that creates a high shallow depth of field effect.
-     * 
+     *
      * @relation BACKGROUND_THICK
      */
     @!APILevel[
@@ -7656,11 +7656,11 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    BACKGROUND_THICK
+    BackgroundThick
     |
     /**
      * Material that creates the maximum depth of field effect.
-     * 
+     *
      * @relation BACKGROUND_ULTRA_THICK
      */
     @!APILevel[
@@ -7668,11 +7668,11 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    BACKGROUND_ULTRA_THICK
+    BackgroundUltraThick
     |
     /**
      * Component ultra-thin material.
-     * 
+     *
      * @relation COMPONENT_ULTRA_THIN = 8
      */
     @!APILevel[
@@ -7680,11 +7680,11 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    COMPONENT_ULTRA_THIN
+    ComponentUltraThin
     |
     /**
      * Defines the thin component material.
-     * 
+     *
      * @relation COMPONENT_THIN = 9
      */
     @!APILevel[
@@ -7692,11 +7692,11 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    COMPONENT_THIN
+    ComponentThin
     |
     /**
      * Defines the regular component material.
-     * 
+     *
      * @relation COMPONENT_REGULAR = 10
      */
     @!APILevel[
@@ -7704,11 +7704,11 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    COMPONENT_REGULAR
+    ComponentRegular
     |
     /**
      * Defines the thick component material.
-     * 
+     *
      * @relation COMPONENT_THICK = 11
      */
     @!APILevel[
@@ -7716,11 +7716,11 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    COMPONENT_THICK
+    ComponentThick
     |
     /**
      * Defines the ultra thick component material.
-     * 
+     *
      * @relation COMPONENT_ULTRA_THICK = 12
      */
     @!APILevel[
@@ -7728,7 +7728,7 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    COMPONENT_ULTRA_THICK
+    ComponentUltraThick
     | ...
 
     @!APILevel[
@@ -7736,21 +7736,21 @@ public enum ForegroundBlurStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func getValue(): Int32 {
+    protected func getValue(): Int32 {
         match (this) {
-            case NONE => 0
-            case THIN => 1
-            case REGULAR => 2
-            case THICK => 3
-            case BACKGROUND_THIN => 4
-            case BACKGROUND_REGULAR => 5
-            case BACKGROUND_THICK => 6
-            case BACKGROUND_ULTRA_THICK => 7
-            case COMPONENT_ULTRA_THIN => 8
-            case COMPONENT_THIN => 9
-            case COMPONENT_REGULAR => 10
-            case COMPONENT_THICK => 11
-            case COMPONENT_ULTRA_THICK => 12
+            case None => 0
+            case Thin => 1
+            case Regular => 2
+            case Thick => 3
+            case BackgroundThin => 4
+            case BackgroundRegular => 5
+            case BackgroundThick => 6
+            case BackgroundUltraThick => 7
+            case ComponentUltraThin => 8
+            case ComponentThin => 9
+            case ComponentRegular => 10
+            case ComponentThick => 11
+            case ComponentUltraThick => 12
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -7919,7 +7919,7 @@ public enum ControlSize {
 }
 
 /**
- * Decide whether the width of select menu fit the trigger or content 
+ * Decide whether the width of select menu fit the trigger or content
  *
  * @relation enum OptionWidthMode
  */
@@ -9414,7 +9414,7 @@ public enum DialogButtonStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    DEFAULT
+    Default
     |
     /**
      * Highlight Style.
@@ -9426,13 +9426,13 @@ public enum DialogButtonStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    HIGHLIGHT
+    Highlight
     | ...
 
     protected func getValue(): Int32 {
         match (this) {
-            case DEFAULT => 0
-            case HIGHLIGHT => 1
+            case Default => 0
+            case Highlight => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -9975,170 +9975,298 @@ public enum FinishCallbackType {
     }
 }
 
+/**
+ * enum Blur style
+ *
+ * @syscap SystemCapability.ArkUI.ArkUI.Full
+ * @relation declare enum BlurStyle
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BlurStyle {
+    /**
+     * Thin material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation Thin
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Thin
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Regular
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    Thick
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    BACKGROUND_THIN
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    BACKGROUND_REGULAR
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    BACKGROUND_THICK
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    BACKGROUND_ULTRA_THICK
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    NONE
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    COMPONENT_ULTRA_THIN
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    COMPONENT_THIN
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    COMPONENT_REGULAR
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    COMPONENT_THICK
-    | @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    COMPONENT_ULTRA_THICK
-    | ...
-
+    |
+    /**
+     * Regular material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation Regular
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func getValue(): Int32 {
+    Regular
+    |
+    /**
+     * Thick material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation Thick
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    Thick
+    |
+    /**
+     * BackgroundThin material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation BackgroundThin
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    BackgroundThin
+    |
+    /**
+     * BackgroundRegular material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation BackgroundRegular
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    BackgroundRegular
+    |
+    /**
+     * BackgroundThick material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation BackgroundThick
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    BackgroundThick
+    |
+    /**
+     * BackgroundUltraThick material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation BackgroundUltraThick
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    BackgroundUltraThick
+    |
+    /**
+     * None material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation None
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    None
+    |
+    /**
+     * ComponentUltraThin material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation ComponentUltraThin
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    ComponentUltraThin
+    |
+    /**
+     * ComponentThin material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation ComponentThin
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    ComponentThin
+    |
+    /**
+     * ComponentRegular material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation ComponentRegular
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    ComponentRegular
+    |
+    /**
+     * ComponentThick material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation ComponentThick
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    ComponentThick
+    |
+    /**
+     * ComponentUltraThick material.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation ComponentUltraThick
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    ComponentUltraThick
+    | ...
+
+    protected func getValue(): Int32 {
         match (this) {
             case Thin => 1
             case Regular => 2
             case Thick => 3
-            case BACKGROUND_THIN => 4
-            case BACKGROUND_REGULAR => 5
-            case BACKGROUND_THICK => 6
-            case BACKGROUND_ULTRA_THICK => 7
-            case NONE => 0
-            case COMPONENT_ULTRA_THIN => 8
-            case COMPONENT_THIN => 9
-            case COMPONENT_REGULAR => 10
-            case COMPONENT_THICK => 11
-            case COMPONENT_ULTRA_THICK => 12
+            case BackgroundThin => 4
+            case BackgroundRegular => 5
+            case BackgroundThick => 6
+            case BackgroundUltraThick => 7
+            case None => 0
+            case ComponentUltraThin => 8
+            case ComponentThin => 9
+            case ComponentRegular => 10
+            case ComponentThick => 11
+            case ComponentUltraThick => 12
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 }
 
+/**
+ * Dismiss reason type.
+ *
+ * @syscap SystemCapability.ArkUI.ArkUI.Full
+ * @relation declare enum DismissReason
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum DismissReason {
+    /**
+    * Touching the Back button, swiping left or right on the screen, or pressing the Esc key.
+    *
+    * @syscap SystemCapability.ArkUI.ArkUI.Full
+    * @relation PRESS_BACK = 0
+    */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    PRESS_BACK
-    | @!APILevel[
+    PressBack
+    |
+    /**
+    * Touching the mask.
+    *
+    * @syscap SystemCapability.ArkUI.ArkUI.Full
+    * @relation TOUCH_OUTSIDE = 1
+    */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    TOUCH_OUTSIDE
-    | @!APILevel[
+    TouchOutside
+    |
+    /**
+    * Touching the Close button.
+    *
+    * @syscap SystemCapability.ArkUI.ArkUI.Full
+    * @relation CLOSE_BUTTON = 2
+    */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    CLOSE_BUTTON
-    | @!APILevel[
+    CloseButton
+    |
+    /**
+    * Slide down
+    * <p><strong>NOTE</strong>:
+    * <br>This API is effective only in sheet transition.
+    * </p>
+    *
+    * @syscap SystemCapability.ArkUI.ArkUI.Full
+    * @relation SLIDE_DOWN = 3
+    */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    SLIDE_DOWN
+    SlideDown
     | ...
 
     func toValue(): Int32 {
         match (this) {
-            case PRESS_BACK => 0
-            case TOUCH_OUTSIDE => 1
-            case CLOSE_BUTTON => 2
-            case SLIDE_DOWN => 3
+            case PressBack => 0
+            case TouchOutside => 1
+            case CloseButton => 2
+            case SlideDown => 3
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     protected static func toEnum(value: Int32): DismissReason {
         if (value == 0) {
-            return DismissReason.PRESS_BACK
+            return DismissReason.PressBack
         } else if (value == 1) {
-            return DismissReason.TOUCH_OUTSIDE
+            return DismissReason.TouchOutside
         } else if (value == 2) {
-            return DismissReason.CLOSE_BUTTON
+            return DismissReason.CloseButton
         } else if (value == 3) {
-            return DismissReason.SLIDE_DOWN
+            return DismissReason.SlideDown
         } else {
-            return DismissReason.PRESS_BACK
+            return DismissReason.PressBack
         }
     }
 }

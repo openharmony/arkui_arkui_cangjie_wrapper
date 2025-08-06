@@ -112,16 +112,6 @@ struct NativeShadowOptions {
 }
 
 @C
-struct NativeEdgeStyles {
-    NativeEdgeStyles(
-        let top: Int32,
-        let right: Int32,
-        let bottom: Int32,
-        let left: Int32
-    ) {}
-}
-
-@C
 struct NativeEdgeColor {
     NativeEdgeColor(
         let top: UInt32,
@@ -333,55 +323,6 @@ public enum ToastShowMode {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class EdgeStyles {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var top: BorderStyle
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var right: BorderStyle
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var bottom: BorderStyle
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var left: BorderStyle
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(top!: BorderStyle = BorderStyle.Solid, right!: BorderStyle = BorderStyle.Solid,
-        bottom!: BorderStyle = BorderStyle.Solid, left!: BorderStyle = BorderStyle.Solid) {
-        this.top = top
-        this.right = right
-        this.bottom = bottom
-        this.left = left
-    }
-
-    func toCEdgeStyles(): NativeEdgeStyles {
-        return NativeEdgeStyles(top.getValue(), right.getValue(), bottom.getValue(), left.getValue())
-    }
-}
-
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 public class EdgeColor {
     @!APILevel[
         21,
@@ -412,8 +353,8 @@ public class EdgeColor {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(top!: Color = Color.BLACK, right!: Color = Color.BLACK, bottom!: Color = Color.BLACK,
-        left!: Color = Color.BLACK) {
+    public init(top!: Color = Color.Black, right!: Color = Color.Black, bottom!: Color = Color.Black,
+        left!: Color = Color.Black) {
         this.top = top
         this.right = right
         this.bottom = bottom
@@ -656,7 +597,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundColor: UInt32 = Color.TRANSPARENT.toUInt32()
+    public var backgroundColor: UInt32 = Color.Transparent.toUInt32()
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -717,7 +658,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
+    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -763,18 +704,18 @@ public class CustomDialogOptions <: BaseDialogOptions {
         keyboardAvoidMode!: KeyboardAvoidMode = KeyboardAvoidMode.DEFAULT,
         enableHoverMode!: Bool = false,
         hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN,
-        backgroundColor!: Color = Color.TRANSPARENT,
+        backgroundColor!: Color = Color.Transparent,
         cornerRadius!: BorderRadiuses = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
             bottomRight: 32.vp),
         borderWidth!: EdgeWidths = EdgeWidths(top: 0.vp, right: 0.vp, bottom: 0.vp, left: 0.vp),
-        borderColor!: EdgeColor = EdgeColor(top: Color.BLACK, right: Color.BLACK, bottom: Color.BLACK, left: Color.BLACK),
+        borderColor!: EdgeColor = EdgeColor(top: Color.Black, right: Color.Black, bottom: Color.Black, left: Color.Black),
         borderStyle!: Option<BorderStyle> = Option.None,
         borderEdgeStyle!: Option<EdgeStyles> = Option.None,
         width!: Length = 400.vp,
         height!: Length = 100.vp,
         shadowOption!: Option<ShadowOptions> = Option.None,
         shadowStyle!: Option<ShadowStyle> = Option.None,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick
     ) {
         super(
             maskRect: maskRect,
@@ -877,13 +818,13 @@ public open class ShowDialogOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundColor: Color = Color.TRANSPARENT
+    public var backgroundColor: Color = Color.Transparent
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
+    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -922,8 +863,8 @@ public open class ShowDialogOptions {
         maskRect!: Rectangle = Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent),
         showInSubWindow!: Bool = false,
         isModal!: Bool = true,
-        backgroundColor!: Color = Color.TRANSPARENT,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+        backgroundColor!: Color = Color.Transparent,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
         shadowOption!: Option<ShadowOptions> = Option.None,
         shadowStyle!: Option<ShadowStyle> = Option.None,
         enableHoverMode!: Bool = false,
@@ -1044,19 +985,19 @@ public class ShowToastOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundColor: Color = Color.TRANSPARENT
+    public var backgroundColor: Color = Color.Transparent
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var textColor: Color = Color.BLACK
+    public var textColor: Color = Color.Black
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
+    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -1093,9 +1034,9 @@ public class ShowToastOptions {
         showMode!: ToastShowMode = ToastShowMode.Default,
         alignment!: Alignment = Alignment.Bottom,
         offset!: Offset = Offset(0.vp, 0.vp),
-        backgroundColor!: Color = Color.TRANSPARENT,
-        textColor!: Color = Color.BLACK,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+        backgroundColor!: Color = Color.Transparent,
+        textColor!: Color = Color.Black,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
         shadowOption!: Option<ShadowOptions> = Option.None,
         shadowStyle!: Option<ShadowStyle> = Option.None,
         enableHoverMode!: Bool = false,
@@ -1120,8 +1061,8 @@ public class ShowToastOptions {
 func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadowOptions {
     return NativeShadowOptions(
         shadowOptions.radius,
-        shadowOptions.shadowType,
-        shadowOptions.color,
+        shadowOptions.shadowType.getValue(),
+        shadowOptions.color.toUInt32(),
         shadowOptions.offsetX,
         shadowOptions.offsetY,
         shadowOptions.fill
@@ -1174,16 +1115,16 @@ func parseRectangle(rectangle: Rectangle): NativeRectangle {
 
 func parseCustomDialogOptions(options: CustomDialogOptions): NativeCustomDialogOptions {
     let borderEdgeStyle = match (options.borderEdgeStyle) {
-        case Some(edge) => edge.toCEdgeStyles()
+        case Some(edge) => edge.toNative()
         case None => match (options.borderStyle) {
-            case Some(value) => EdgeStyles(top: value, right: value, bottom: value, left: value).toCEdgeStyles()
+            case Some(value) => EdgeStyles(top: value, right: value, bottom: value, left: value).toNative()
             case None => EdgeStyles(top: BorderStyle.Solid, right: BorderStyle.Solid, bottom: BorderStyle.Solid,
-                left: BorderStyle.Solid).toCEdgeStyles()
+                left: BorderStyle.Solid).toNative()
         }
     }
     let shadowOption = match (options.shadowOption) {
         case Some(value) => parseShadowOptions(value)
-        case None => parseShadowOptions(ShadowOptions())
+        case None => parseShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.COLOR))
     }
     let shadowStyle = match (options.shadowStyle) {
         case Some(value) => value.getValue()
@@ -1234,7 +1175,7 @@ func parseBaseDialogOptions(options: CustomDialogOptions): NativeBaseDialogOptio
 func parseShowToastOptions(options: ShowToastOptions): NativeShowToastOptions {
     let shadowOption = match (options.shadowOption) {
         case Some(value) => parseShadowOptions(value)
-        case None => parseShadowOptions(ShadowOptions())
+        case None => parseShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.COLOR))
     }
     let shadowStyle = match (options.shadowStyle) {
         case Some(value) => value.getValue()
@@ -1266,7 +1207,7 @@ func parseShowDialogOptions(options: ShowDialogOptions): NativeShowDialogOptions
         })
     let shadowOption = match (options.shadowOption) {
         case Some(value) => parseShadowOptions(value)
-        case None => parseShadowOptions(ShadowOptions())
+        case None => parseShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.COLOR))
     }
     let shadowStyle = match (options.shadowStyle) {
         case Some(value) => value.getValue()

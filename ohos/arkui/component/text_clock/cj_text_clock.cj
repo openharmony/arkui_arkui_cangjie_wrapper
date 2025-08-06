@@ -462,7 +462,7 @@ public open class TextClock <: ViewBase {
     public func textShadow(values: Array<ShadowOptions>): This {
         let vecValueHandle = CJVectorNativeTextShadow(values.size)
         for (i in 0..values.size) {
-            vecValueHandle.setElement(i, values[i].optionToNative())
+            vecValueHandle.setElement(i, values[i].toNative())
         }
         unsafe {
             FfiOHOSAceFrameworkTextClockTextShadowV2(vecValueHandle.getNativeHandle())
@@ -481,7 +481,7 @@ public open class TextClock <: ViewBase {
         shadowType!: ShadowType = ShadowType.COLOR,
         offsetX!: Float64 = 0.0,
         offsetY!: Float64 = 0.0,
-        color!: ResourceColor = Color.BLACK,
+        color!: ResourceColor = Color.Black,
         fill!: Bool = false
     ): This {
         let thisShadow: NativeTextShadowV2 = NativeTextShadowV2(radius, offsetX, offsetY,

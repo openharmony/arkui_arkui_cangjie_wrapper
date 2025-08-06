@@ -147,7 +147,7 @@ public class BadgeStyle {
      * Badge color.
      *
      * @type { ResourceColor }
-     * @default Color.RED
+     * @default Color.Red
      * @relation badgeColor?: ResourceColor
      */
     @!APILevel[
@@ -161,7 +161,7 @@ public class BadgeStyle {
      * For the number type, the value ranges from 100 to 900, at an interval of 100. Default value: 400
      * A larger value indicates a heavier font weight.
      * For the string type, only strings that represent a number. Default value: FontWeight.Normal
-     * 
+     *
      * <p><strong>NOTE</strong>:
      * <br>This parameter cannot be set in percentage.
      * </p>
@@ -179,7 +179,7 @@ public class BadgeStyle {
      * Border color of the background.
      *
      * @type { ResourceColor }
-     * @default Color.RED
+     * @default Color.Red
      * @relation borderColor?: ResourceColor;
      */
     @!APILevel[
@@ -212,9 +212,9 @@ public class BadgeStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(color!: ResourceColor = Color.WHITE, fontSize!: Length = 10.fp, badgeSize!: Length = 16.vp,
-        badgeColor!: ResourceColor = Color.RED, fontWeight!: FontWeight = FontWeight.Normal,
-        borderColor!: ResourceColor = Color.RED, borderWidth!: Length = 1.vp) {
+    public init(color!: ResourceColor = Color.White, fontSize!: Length = 10.fp, badgeSize!: Length = 16.vp,
+        badgeColor!: ResourceColor = Color.Red, fontWeight!: FontWeight = FontWeight.Normal,
+        borderColor!: ResourceColor = Color.Red, borderWidth!: Length = 1.vp) {
         this.color = color
         this.fontSize = fontSize
         this.badgeSize = badgeSize
