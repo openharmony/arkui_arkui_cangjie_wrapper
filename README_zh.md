@@ -17,6 +17,7 @@ ArkUI开发框架源代码在/foundation/arkui/arkui\_cangjie\_api下，目录�
 ```
 /foundation/arkui/arkui_cangjie_api
 ├── ohos                       # 仓颉 ArkUI 接口层实现
+├── kit                        # 仓颉 ArkUI Kit 层实现
 ```
 
 ## 使用场景<a name="section171384529150"></a>

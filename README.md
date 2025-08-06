@@ -16,6 +16,7 @@ The source code of the framework is stored in  **/foundation/arkui/arkui\_cangji
 ```
 /foundation/arkui/arkui_cangjie_api
 ├── ohos                       # Cangjie ArkUI Basic libraries
+├── kit                        # Cangjie ArkUI Kit libraries
 ```
 
 ## When to Use<a name="section171384529150"></a>
