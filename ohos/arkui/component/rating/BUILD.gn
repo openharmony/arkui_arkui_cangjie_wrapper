@@ -21,11 +21,13 @@ ohos_cj_library("ohos.arkui.component.rating") {
   cj_deps = [
     "../common:ohos.arkui.component.common",
     "../../../base:ohos.base",
+    "../util:ohos.arkui.component.util",
   ]
 
   cj_external_deps = [
     "cangjie_api:ohos.ffi",
     "cangjie_api:ohos.labels",
+    "global_cangjie_api:ohos.resource",
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]

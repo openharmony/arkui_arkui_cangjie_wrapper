@@ -16,9 +16,11 @@
 package ohos.arkui.component.rating
 
 import ohos.arkui.component.common.*
+import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import ohos.resource.*
 
 foreign {
     func FfiOHOSAceFrameworkRatingCreate(rating: Float64, indicator: Bool): Unit
@@ -58,18 +60,9 @@ public class Rating <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(rating!: Int64, indicator!: Bool = false) {
-        this(rating: Float64(rating), indicator: indicator)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func stars(value: Int32): This {
+    public func stars(starCount: Int32): This {
         unsafe {
-            FfiOHOSAceFrameworkRatingSetStars(value)
+            FfiOHOSAceFrameworkRatingSetStars(starCount)
         }
         this
     }
@@ -79,23 +72,14 @@ public class Rating <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func stepSize(value: Float64): This {
+    public func stepSize(size: Float64): This {
         // When the parameter value is less than or equal to 0, use the default value of 0.5
-        if (value <= 0.0) {
+        if (size <= 0.0) {
             return this
         }
         unsafe {
-            FfiOHOSAceFrameworkRatingSetStepSize(value)
+            FfiOHOSAceFrameworkRatingSetStepSize(size)
         }
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func stepSize(value: Int64): This {
-        stepSize(Float64(value))
         this
     }
 
@@ -104,11 +88,14 @@ public class Rating <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func starStyle(backgroundUri!: String, foregroundUri!: String, secondaryUri!: String = backgroundUri): This {
+    public func starStyle(backgroundUri!: ResourceStr, foregroundUri!: ResourceStr, secondaryUri!: ResourceStr = backgroundUri): This {
+        let backgroundUri_ = transResourceStrToString(backgroundUri)
+        let foregroundUri_ = transResourceStrToString(foregroundUri)
+        let secondaryUri_ = transResourceStrToString(secondaryUri)
         unsafe {
-            try (unsafeBackgroundUri = LibC.mallocCString(backgroundUri).asResource(),
-                unsafeForegroundUri = LibC.mallocCString(foregroundUri).asResource(),
-                unsafeSecondaryUri = LibC.mallocCString(secondaryUri).asResource()) {
+            try (unsafeBackgroundUri = LibC.mallocCString(backgroundUri_).asResource(),
+                unsafeForegroundUri = LibC.mallocCString(backgroundUri_).asResource(),
+                unsafeSecondaryUri = LibC.mallocCString(backgroundUri_).asResource()) {
                 FfiOHOSAceFrameworkRatingSetStarStyle(unsafeBackgroundUri.value, unsafeForegroundUri.value,
                     unsafeSecondaryUri.value)
             }
@@ -124,17 +111,6 @@ public class Rating <: ViewBase {
     public func onChange(callback: (Float64) -> Unit): This {
         unsafe {
             FfiOHOSAceFrameworkRatingSetOnChange(Callback1Param<Float64, Unit>(callback).getID())
-        }
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onChange(callback: () -> Unit): This {
-        onChange {
-            _: Float64 => callback()
         }
         this
     }
