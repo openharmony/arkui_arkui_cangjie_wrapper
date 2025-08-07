@@ -48,7 +48,7 @@ struct NativeGridColColumnOption {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public struct GridColColumnOption {
+public class GridColColumnOption {
     /**
     * Grid Col Column Option xs
     *

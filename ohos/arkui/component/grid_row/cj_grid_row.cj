@@ -362,7 +362,7 @@ struct NativeGridRowColumnOption {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public struct GridRowColumnOption {
+public class GridRowColumnOption {
     /**
     * Grid Row Column Option xs, select xs column num based on gridRow current breakpoint
     *
