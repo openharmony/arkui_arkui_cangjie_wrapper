@@ -23,9 +23,9 @@ import ohos.ffi.*
 import ohos.resource.*
 import ohos.labels.APILevel
 
-public type VectorNativeGaugeLinearGradientHandle = CPointer<Unit>
+type VectorNativeGaugeLinearGradientHandle = CPointer<Unit>
 
-public type VectorColorStops = CPointer<Unit>
+type VectorColorStops = CPointer<Unit>
 
 foreign {
     func FfiOHOSAceFrameworkGaugeCreate(gaugeValue: Float64, gaugeMin: Float64, gaugeMax: Float64): Unit
@@ -147,37 +147,11 @@ public class Gauge <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: Float64, min!: Float64 = 0.0, max!: Float64 = 100.0) {
-        unsafe {
-            FfiOHOSAceFrameworkGaugeCreate(value, min, max)
-        }
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(value!: Int64, min!: Int64 = 0, max!: Int64 = 100) {
-        this(value: Float64(value), min: Float64(min), max: Float64(max))
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(value!: Float64, min!: Float64 = 0.0, max!: Float64 = 100.0, child!: () -> Unit) {
+    public init(value!: Float64, min!: Float64 = 0.0, max!: Float64 = 100.0, child!: () -> Unit = { => }) {
         unsafe {
             FfiOHOSAceFrameworkGaugeCreate(value, min, max)
         }
         this.child = child
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(value!: Int64, min!: Int64 = 0, max!: Int64 = 100, child!: () -> Unit) {
-        this(value: Float64(value), min: Float64(min), max: Float64(max), child: child)
     }
 
     /**
@@ -192,19 +166,10 @@ public class Gauge <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func value(gaugeValue: Float64): This {
+    public func value(value: Float32): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetValue(gaugeValue)
+            FfiOHOSAceFrameworkGaugeSetValue(Float64(value))
         }
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func value(gaugeValue: Int64): This {
-        value(Float64(gaugeValue))
         this
     }
 
@@ -220,19 +185,10 @@ public class Gauge <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func startAngle(value: Float64): This {
+    public func startAngle(angle: Float64): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetStartAngle(value)
+            FfiOHOSAceFrameworkGaugeSetStartAngle(angle)
         }
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func startAngle(value: Int64): This {
-        startAngle(Float64(value))
         this
     }
 
@@ -248,35 +204,27 @@ public class Gauge <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func endAngle(value: Float64): This {
+    public func endAngle(angle: Float64): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetEndAngle(value)
+            FfiOHOSAceFrameworkGaugeSetEndAngle(angle)
         }
         this
     }
+
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func endAngle(value: Int64): This {
-        endAngle(Float64(value))
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func colors(colorStop: Array<(Color, Float32)>): This {
-        let colors = FFIVectorUInt32(colorStop.size)
-        let weights = FFIVectorFloat32(colorStop.size)
-        for (i in 0..colorStop.size) {
-            colors.setElement(i, colorStop[i][0].toUInt32())
-            if (colorStop[i][1] < 0.0) {
+    public func colors(value: Array<(ResourceColor, Float32)>): This {
+        let colors = FFIVectorUInt32(value.size)
+        let weights = FFIVectorFloat32(value.size)
+        for (i in 0..value.size) {
+            colors.setElement(i, value[i][0].toUInt32())
+            if (value[i][1] < 0.0) {
                 weights.setElement(i, 0.0)
             } else {
-                weights.setElement(i, colorStop[i][1])
+                weights.setElement(i, value[i][1])
             }
         }
         unsafe {
@@ -300,8 +248,8 @@ public class Gauge <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(gradientColorStops: Array<(LinearGradient, Float32)>): This {
-        var maxSize = gradientColorStops.size;
+    public func colors(value: Array<(LinearGradient, Float32)>): This {
+        var maxSize = value.size;
         if (maxSize > 9) {
             maxSize = 9
         }
@@ -309,7 +257,7 @@ public class Gauge <: ContainerBase {
         var weights = FFIVectorFloat32(maxSize)
 
         for (i in 0..maxSize) {
-            var curColorStops = gradientColorStops[i][0].colorStops
+            var curColorStops = value[i][0].colorStops
             var vecColorStop = FFIVectorColorStops(curColorStops.size)
             for (j in 0..curColorStops.size) {
                 if (curColorStops[j].offset.value >= 0.0) {
@@ -319,10 +267,10 @@ public class Gauge <: ContainerBase {
                 }
             }
             vecValueHandle.setElement(i, vecColorStop.getNativeHandle())
-            if (gradientColorStops[i][1] < 0.0) {
+            if (value[i][1] < 0.0) {
                 weights.setElement(i, 0.0)
             } else {
-                weights.setElement(i, gradientColorStops[i][1])
+                weights.setElement(i, value[i][1])
             }
         }
         unsafe {
@@ -330,76 +278,6 @@ public class Gauge <: ContainerBase {
             vecValueHandle.free()
             weights.free()
         }
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func colors(gradientColorStops: Array<(LinearGradient, UInt32)>): This {
-        let array = Array<(LinearGradient, Float32)>(gradientColorStops.size) {
-            index => (gradientColorStops[index][0], Float32(gradientColorStops[index][1]))
-        }
-        colors(array)
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func colors(colorStop: Array<(Color, Int32)>): This {
-        let array = Array<(Color, Float32)>(colorStop.size) {
-            index => (colorStop[index][0], Float32(colorStop[index][1]))
-        }
-        colors(array)
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func colors(colorStop: Array<(UInt32, Float32)>): This {
-        let array = Array<(Color, Float32)>(colorStop.size) {index => (Color(colorStop[index][0]), colorStop[index][1])}
-        colors(array)
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func colors(colorStop: Array<(UInt32, Int32)>): This {
-        let array = Array<(Color, Float32)>(colorStop.size) {
-            index => (Color(colorStop[index][0]), Float32(colorStop[index][1]))
-        }
-        colors(array)
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func colors(colorStop: Array<(AppResource, Float32)>): This {
-        let array = Array<(Color, Float32)>(colorStop.size) {
-            index => (getResourceColor(colorStop[index][0]), colorStop[index][1])
-        }
-        colors(array)
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func colors(colorStop: Array<(AppResource, Int32)>): This {
-        let array = Array<(Color, Float32)>(colorStop.size) {
-            index => (getResourceColor(colorStop[index][0]), Float32(colorStop[index][1]))
-        }
-        colors(array)
         this
     }
 
@@ -416,58 +294,19 @@ public class Gauge <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(color: Color, offset: Float32): This {
-        let array: Array<(Color, Float32)> = [(color, offset)]
+    public func colors(value: ResourceColor): This {
+        let array: Array<(ResourceColor, Float32)> = [(value, 1.0)]
         colors(array)
         this
     }
+
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(color: AppResource, offset: Float32): This {
-        let array: Array<(Color, Float32)> = [(getResourceColor(color), offset)]
-        colors(array)
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func colors(color: UInt32, offset: Float32): This {
-        let array: Array<(Color, Float32)> = [(Color(color), offset)]
-        colors(array)
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func colors(color: Color, offset: Int32): This {
-        let array: Array<(Color, Float32)> = [(color, Float32(offset))]
-        colors(array)
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func colors(color: AppResource, offset: Int32): This {
-        let array: Array<(Color, Float32)> = [(getResourceColor(color), Float32(offset))]
-        colors(array)
-        this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func colors(color: UInt32, offset: Int32): This {
-        let array: Array<(Color, Float32)> = [(Color(color), Float32(offset))]
+    public func colors(value: LinearGradient): This {
+        let array: Array<(LinearGradient, Float32)> = [(value, 1.0)]
         colors(array)
         this
     }
@@ -484,8 +323,8 @@ public class Gauge <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeWidth(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func strokeWidth(length: Length): This {
+        var value_ = transAppResourceToLength(length)
         unsafe {
             FfiOHOSAceFrameworkGaugeSetStrokeWidth(value_.value, value_.unitType.getValue())
         }
@@ -526,21 +365,15 @@ public class Gauge <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func indicator(icon!: String = "default", space!: Float64 = 8.0): This {
+    public func indicator(icon!: ResourceStr = "default", space!: Length = 8.0.vp): This {
+        let icon_ = transResourceStrToString(icon)
+        let space_ = transAppResourceToLength(space)
         unsafe {
-            try (iconCString = LibC.mallocCString(icon).asResource()) {
-                FfiOHOSAceFrameworkGaugeSetIndicator(iconCString.value, space)
+            try (iconCString = LibC.mallocCString(icon_).asResource()) {
+                FfiOHOSAceFrameworkGaugeSetIndicator(iconCString.value, space_.value)
             }
         }
         this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func indicator(icon!: String = "default", space!: UInt64): This {
-        indicator(icon: icon, space: Float64(space))
     }
 
     /**
