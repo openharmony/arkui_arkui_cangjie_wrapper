@@ -39,7 +39,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public open class Stepper <: ContainerBase {
+public class Stepper <: ContainerBase {
 
     /**
      * Constructs a Stepper component.
@@ -53,26 +53,11 @@ public open class Stepper <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(index: UInt32, content: () -> Unit) {
+    public init(index!: UInt32 = 0, child!: () -> Unit = {=>}) {
         unsafe {
             FfiOHOSAceFrameworkStepperCreate(index)
         }
-        this.child = content
-    }
-
-    /**
-     * Constructs a Stepper component.
-     *
-     * @param content: Assigns the passed-in value to the child property inherited from ContainerBase.
-     * @since 11
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(content: () -> Unit) {
-        this(0, content)
+        this.child = child
     }
 
     /**

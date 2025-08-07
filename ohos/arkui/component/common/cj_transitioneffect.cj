@@ -119,7 +119,7 @@ public class ScaleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 0.0, centerX!: Length = 50.percent,
+    public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: Length = 50.percent,
         centerY!: Length = 50.percent) {
         this.x = x
         this.y = y
@@ -263,33 +263,33 @@ public enum TransitionEdge {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    TOP
+    Top
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    BOTTOM
+    Bottom
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    START
+    Start
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    END
+    End
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case TOP => 0
-            case BOTTOM => 1
-            case START => 2
-            case END => 3
+            case Top => 0
+            case Bottom => 1
+            case Start => 2
+            case End => 3
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -314,9 +314,9 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func opacity(number: Float64): TransitionEffect {
+    public static func opacity(alpha: Float64): TransitionEffect {
         unsafe {
-            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectOpacity(number))
+            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectOpacity(alpha))
         }
     }
 
@@ -380,9 +380,9 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func combine(effect: TransitionEffect): TransitionEffect {
+    public func combine(transitionEffect: TransitionEffect): TransitionEffect {
         unsafe {
-            FfiOHOSAceFrameworkTransitionEffectCombine(this.getID(), effect.getID())
+            FfiOHOSAceFrameworkTransitionEffectCombine(this.getID(), transitionEffect.getID())
         }
         return this
     }
@@ -392,9 +392,9 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func animation(param: AnimateParam): TransitionEffect {
+    public func animation(value: AnimateParam): TransitionEffect {
         unsafe {
-            let nativeParam = parseAnimateParam(param)
+            let nativeParam = parseAnimateParam(value)
             FfiOHOSAceFrameworkTransitionEffectAnimation(this.getID(), nativeParam)
             nativeParam.free()
         }
@@ -409,7 +409,7 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static let IDENTITY = unsafe {
+    public static let IDENTITY: TransitionEffect = unsafe {
         TransitionEffect(FfiOHOSAceFrameworkTransitionEffectIdentity())
     }
 
@@ -421,7 +421,7 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static let OPACITY = TransitionEffect.opacity(0.0)
+    public static let OPACITY: TransitionEffect = TransitionEffect.opacity(0.0)
 
     /**
      * @brief
@@ -438,8 +438,9 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static let SLIDE = TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START),
-        TransitionEffect.move(TransitionEdge.END))
+    public static let SLIDE: TransitionEffect = 
+        TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.Start),
+            TransitionEffect.move(TransitionEdge.End))
 
     /**
      * @brief  static readonly SLIDE_SWITCH: TransitionEffect<"slideSwitch">
@@ -449,7 +450,7 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static let SLIDE_SWITCH = unsafe {
+    public static let SLIDE_SWITCH: TransitionEffect = unsafe {
         TransitionEffect(FfiOHOSAceFrameworkTransitionEffectSlideSwitch())
     }
 }

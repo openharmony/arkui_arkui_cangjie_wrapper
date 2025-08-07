@@ -74,3 +74,11 @@ protected func transResourceStrToString(value: ResourceStr): String {
         case _ => ""
     }
 }
+
+protected func transResourceMediaToString(value: ResourceStr): String {
+    match (value) {
+        case res: AppResource => getResourceMedia(res)
+        case str: String => str
+        case _ => ""
+    }
+}

@@ -360,132 +360,69 @@ class CallbackCJWebEvent <: BaseCallBack {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    syscap: "SystemCapability.Web.Webview.Core"
 ]
-public class WebResult {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public let result: Int64
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(result: Int64) {
-        this.result = result
-    }
-
+public class OnPageBeginEvent {
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
-    ]
-    public func handleCancel(): Unit {
-        unsafe { FfiOHOSAceFrameworkWebHandleCancel(this.result) }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Web.Webview.Core"
-    ]
-    public func handleConfirm(): Unit {
-        unsafe { FfiOHOSAceFrameworkWebHandleConfirm(this.result) }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Web.Webview.Core"
-    ]
-    public func handlePromptConfirm(result: String): Unit {
-        unsafe {
-            let msg = LibC.mallocCString(result)
-            FfiOHOSAceFrameworkWebHandlePromptConfirm(this.result, msg)
-            LibC.free(msg)
-        }
-    }
-
-    ~init() {
-        unsafe {
-            FfiOHOSAceFrameworkWebReleaseResult(result)
-        }
-    }
-}
-
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class WebEvent {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var url: String
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var message: String
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var value: String
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var result: WebResult
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        url: String,
-        message: String,
-        value: String,
-        result: WebResult
-    ) {
-        this.url = url
-        this.message = message
-        this.value = value
-        this.result = result
-    }
-}
-
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class OnPageEvent {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var url: String
 
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.Web.Webview.Core"
     ]
     public init(url: String) {
         this.url = url
+    }
+}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Web.Webview.Core"
+]
+public class OnPageEndEvent {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var url: String
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public init(url: String) {
+        this.url = url
+    }
+}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class OnLoadInterceptEvent {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var data: WebResourceRequest
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(data: WebResourceRequest) {
+        this.data = data
     }
 }
 
@@ -655,7 +592,7 @@ public class OnPermissionRequestEvent {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public let request: PermissionRequest
+    public var request: PermissionRequest
 
     @!APILevel[
         21,
@@ -814,36 +751,14 @@ public class Web <: ViewBase {
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public init(
-        src!: String = "",
-        controller!: WebviewController = WebviewController()
+        src!: ResourceStr,
+        controller!: WebviewController
     ) {
         unsafe {
             FfiOHOSAceFrameworkWebSetCallback(FfiOHOSAbilityAccessCtrlRequestPermissionsFromUserCallBack)
-            let srcStr = LibC.mallocCString(src)
-            FfiOHOSAceFrameworkWebCreate(srcStr, controller.getID(), WebType.SURFACE.getValue(), false)
-            LibC.free(srcStr)
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Web.Webview.Core"
-    ]
-    public init(
-        src!: AppResource,
-        controller!: WebviewController = WebviewController()
-    ) {
-        unsafe {
-            FfiOHOSAceFrameworkWebSetCallback(FfiOHOSAbilityAccessCtrlRequestPermissionsFromUserCallBack)
-            var srcStr: CString
-            if (src.resType.getOrThrow() == RAWFILE_TYPE) {
-                srcStr = LibC.mallocCString(getResourceMedia(src))
-            } else {
-                srcStr = LibC.mallocCString(getResourceString(src))
+            try (srcStr = LibC.mallocCString(transResourceMediaToString(src)).asResource()) {
+                FfiOHOSAceFrameworkWebCreate(srcStr.value, controller.getID(), WebType.SURFACE.getValue(), false)
             }
-            FfiOHOSAceFrameworkWebCreate(srcStr, controller.getID(), WebType.SURFACE.getValue(), false)
-            LibC.free(srcStr)
         }
     }
 
@@ -949,8 +864,8 @@ public class Web <: ViewBase {
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func nestedScroll(
-        scrollForward!: NestedScrollMode = NestedScrollMode.SELF_FIRST,
-        scrollBackward!: NestedScrollMode = NestedScrollMode.SELF_FIRST
+        scrollForward!: NestedScrollMode,
+        scrollBackward!: NestedScrollMode
     ): This {
         unsafe {
             FfiOHOSAceFrameworkNestedScroll(scrollForward.getValue(), scrollBackward.getValue())
@@ -963,7 +878,7 @@ public class Web <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func onLoadIntercept(callback: (WebResourceRequest) -> Bool): This {
+    public func onLoadIntercept(callback: Callback<OnLoadInterceptEvent, Bool>): This {
         unsafe {
             let wrapper = {
                 ffiRequest: FfiWebResourceRequest =>
@@ -975,7 +890,7 @@ public class Web <: ViewBase {
                     ffiRequest.requestMethod.toString(),
                     ffiRequest.ffiHeaders.read()
                 )
-                return callback(event)
+                return callback(OnLoadInterceptEvent(event))
             }
             let lambdaData = CallbackCJWebResourceRequest(wrapper)
             FfiOHOSAceFrameworkWebOnLoadIntercept(lambdaData.getID())
@@ -988,10 +903,10 @@ public class Web <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func onPageBegin(callback: (OnPageEvent) -> Unit): This {
+    public func onPageBegin(callback: Callback<OnPageBeginEvent, Unit>): This {
         let wrapper = {
             url: CString =>
-            let event = OnPageEvent(url.toString())
+            let event = OnPageBeginEvent(url.toString())
             callback(event)
         }
 
@@ -1008,10 +923,10 @@ public class Web <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func onPageEnd(callback: (OnPageEvent) -> Unit): This {
+    public func onPageEnd(callback: Callback<OnPageEndEvent, Unit>): This {
         let wrapper = {
             url: CString =>
-            let event = OnPageEvent(url.toString())
+            let event = OnPageEndEvent(url.toString())
             callback(event)
         }
 
@@ -1060,9 +975,9 @@ public class Web <: ViewBase {
         this
     }
 
-    protected override func backgroundColorInner(color: ResourceColor): This {
+    protected override func backgroundColorInner(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkWebBackgroundColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkWebBackgroundColor(transAppResourceToResourceColor(value))
         }
         this
     }
