@@ -22,7 +22,7 @@ import ohos.base.*
 import ohos.resource.*
 import ohos.labels.APILevel
 
-public type VectorNativeTextTimerShadow = CPointer<Unit>
+type VectorNativeTextTimerShadow = CPointer<Unit>
 
 foreign {
     func FfiTextTimerCreateVectorNativeTextShadow(size: Int64): VectorNativeTextTimerShadow
@@ -33,11 +33,6 @@ foreign {
     func FfiTextTimerVectorNativeTextShadowDelete(vec: VectorNativeTextTimerShadow): Unit
 }
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 extend ShadowOptions {
     func optionToNativeTextTimerShadow(): NativeTextTimerShadow {
         return NativeTextTimerShadow(this.radius, this.offsetX, this.offsetY, this.color.toUInt32(), this.fill, this.shadowType.getValue())
@@ -109,12 +104,23 @@ foreign {
     func FfiOHOSAceFrameworkTextTimerControllerReset(selfID: Int64): Unit
 }
 
+/**
+ * Provides a way to control the process.
+ *
+ * @relation class TextTimerController
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextTimerController <: RemoteDataLite {
+    /**
+     * constructor.
+     * A constructor used to create a TextTimerController object.
+     *
+     * @relation constructor()
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -130,46 +136,75 @@ public class TextTimerController <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Provides a start event for timer.
+     *
+     * @relation start():void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func start() {
+    public func start(): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextTimerControllerStart(this.getID())
         }
     }
 
+    /**
+     * Provides a pause event for timer.
+     *
+     * @relation pause():void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func pause() {
+    public func pause(): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextTimerControllerPause(this.getID())
         }
     }
 
+    /**
+     * Provides an event to reset timer.
+     *
+     * @relation reset():void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func reset() {
+    public func reset(): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextTimerControllerReset(this.getID())
         }
     }
 }
 
+/**
+ * Defines TextTimer Component.
+ *
+ * @relation const TextTimer: TextTimerInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class TextTimer <: ViewBase {
+    /**
+     * A constructor used to create a TextTimerController object.
+     *
+     * @param { Bool } isCountDown
+     * @param { Int64 } count
+     * @param { TextTimerController } controller
+     * @returns { TextTimer }
+     * @relation (options?: TextTimerOptions): TextTimerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -182,6 +217,18 @@ public open class TextTimer <: ViewBase {
         }
     }
 
+    /**
+     * Sets the custom format.
+     * The value must contain at least one of the following keywords: HH, mm, ss, and SS.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>If the specified date format is yy, MM, or dd, the default value is used instead.
+     * </p>
+     *
+     * @param { String } value - Custom format.Default value: 'HH:mm:ss.SS'
+     * @returns { This }
+     * @relation format(value: string): TextTimerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -196,19 +243,37 @@ public open class TextTimer <: ViewBase {
         this
     }
 
+    /**
+     * Triggered when the time text changes.
+     * This event is not triggered when the screen is locked or the application is running in the background.
+     * When high-precision formats (such as SSS or SS) are used, the callback interval may vary.
+     *
+     * @param { (Int64, Int64) -> Unit } event
+     * @returns { This }
+     * @relation onTimer(event: (utc: number, elapsedTime: number) => void): TextTimerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onTimer(callback: (Int64, Int64) -> Unit): This {
-        let lambdaData = Callback2Param<Int64, Int64, Unit>(callback)
+    public func onTimer(event: (Int64, Int64) -> Unit): This {
+        let lambdaData = Callback2Param<Int64, Int64, Unit>(event)
         unsafe {
             FfiOHOSAceFrameworkTextTimerSetOnTimer(lambdaData.getID())
         }
         this
     }
 
+    /**
+     * Sets the font size.
+     *
+     * @param { Length } value - Font size.The default font size is 16 fp.
+     * <br>If fontSize is of the number type, the unit fp is used.
+     * <br>The value cannot be a percentage.
+     * @returns { This }
+     * @relation fontSize(value: Length): TextTimerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -222,6 +287,13 @@ public open class TextTimer <: ViewBase {
         this
     }
 
+    /**
+     * Sets the font color.
+     *
+     * @param { ResourceColor } value
+     * @returns { This }
+     * @relation fontColor(value: ResourceColor): TextTimerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -234,6 +306,13 @@ public open class TextTimer <: ViewBase {
         this
     }
 
+    /**
+     * Sets the font style.
+     *
+     * @param { FontStyle } value - Font style.Default value: FontStyle.Normal
+     * @returns { This }
+     * @relation fontStyle(value: FontStyle): TextTimerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -246,6 +325,20 @@ public open class TextTimer <: ViewBase {
         this
     }
 
+    /**
+     * Sets the font weight.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>If the value is too large, the text may be clipped depending on the font.
+     * </p>
+     *
+     * @param { FontWeight } value - Font weight.
+     * <br>For the number type, Value range: [100, 900], at an interval of 100.The default value is 400.
+     * <br>A larger value indicates a heavier font weight.
+     * <br>For the string type, only strings that represent a number.
+     * @returns { This }
+     * @relation fontWeight(value: number | FontWeight | ResourceStr): TextTimerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -260,39 +353,46 @@ public open class TextTimer <: ViewBase {
         this
     }
 
+    /**
+     * Sets the font family.
+     *
+     * @param { ResourceStr } value - Font family. Default font: 'HarmonyOS Sans'
+     * @returns { This }
+     * @relation fontFamily(value: ResourceStr): TextTimerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontFamily(value: String): This {
+    public func fontFamily(value: ResourceStr): This {
+        let value_ = transResourceStrToString(value)
         unsafe {
-            var unsafeFontFamily = LibC.mallocCString(value)
-            FfiOHOSAceFrameworkTextTimerSetFontFamily(unsafeFontFamily)
-            LibC.free(unsafeFontFamily)
+            try (unsafeFontFamily = LibC.mallocCString(value_).asResource()) {
+                FfiOHOSAceFrameworkTextTimerSetFontFamily(unsafeFontFamily.value)
+            }
         }
         this
     }
 
+    /**
+     * Sets the text shadow.
+     * It supports input parameters in an array to implement multiple text shadows.
+     * This API does not work with the fill attribute or coloring strategy.
+     *
+     * @param { Array<ShadowOptions> } value - The shadow options.
+     * @returns { TextTimerAttribute }
+     * @relation textShadow(value: ShadowOptions | Array<ShadowOptions>): TextTimerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontFamily(content: AppResource): This {
-        fontFamily(getResourceString(content))
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func textShadow(values: Array<ShadowOptions>): This {
-        let vecValueHandle = TextTimerVectorNativeTextShadow(values.size)
-        for (i in 0..values.size) {
-            vecValueHandle.setElement(i, values[i].optionToNativeTextTimerShadow())
+    public func textShadow(value: Array<ShadowOptions>): This {
+        let vecValueHandle = TextTimerVectorNativeTextShadow(value.size)
+        for (i in 0..value.size) {
+            vecValueHandle.setElement(i, value[i].optionToNativeTextTimerShadow())
         }
         unsafe {
             FfiOHOSAceFrameworkTextTimerSetTextShadow(vecValueHandle.getNativeHandle())
@@ -301,75 +401,29 @@ public open class TextTimer <: ViewBase {
         this
     }
 
+    /**
+     * Sets the text shadow.
+     * It supports input parameters in an array to implement multiple text shadows.
+     * This API does not work with the fill attribute or coloring strategy.
+     *
+     * @param { ShadowOptions } value - The shadow options.
+     * @returns { TextTimerAttribute }
+     * @relation textShadow(value: ShadowOptions | Array<ShadowOptions>): TextTimerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textShadow(
-        radius!: Float64,
-        shadowType!: ShadowType = ShadowType.COLOR,
-        offsetX!: Float64 = 0.0,
-        offsetY!: Float64 = 0.0,
-        color!: Color = Color.Black,
-        fill!: Bool = false
-    ): This {
-        let thisShadow: NativeTextTimerShadow = NativeTextTimerShadow(radius, offsetX, offsetY, color.toUInt32(), fill,
-            shadowType.getValue())
+    public func textShadow(value: ShadowOptions): This {
+        let thisShadow: NativeTextTimerShadow = NativeTextTimerShadow(value.radius, value.offsetX, value.offsetY, value.color.toUInt32(), value.fill,
+            value.shadowType.getValue())
         let vecValueHandle = TextTimerVectorNativeTextShadow(1)
         vecValueHandle.setElement(0, thisShadow)
         unsafe {
             FfiOHOSAceFrameworkTextTimerSetTextShadow(vecValueHandle.getNativeHandle())
         }
         vecValueHandle.free()
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func textShadow(
-        radius!: Float64,
-        shadowType!: ShadowType = ShadowType.COLOR,
-        offsetX!: Float64 = 0.0,
-        offsetY!: Float64 = 0.0,
-        color!: UInt32,
-        fill!: Bool = false
-    ): This {
-        textShadow(
-            radius: radius,
-            shadowType: shadowType,
-            offsetX: offsetX,
-            offsetY: offsetY,
-            color: Color(color),
-            fill: fill
-        )
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func textShadow(
-        radius!: Float64,
-        shadowType!: ShadowType = ShadowType.COLOR,
-        offsetX!: Float64 = 0.0,
-        offsetY!: Float64 = 0.0,
-        color!: AppResource,
-        fill!: Bool = false
-    ): This {
-        textShadow(
-            radius: radius,
-            shadowType: shadowType,
-            offsetX: offsetX,
-            offsetY: offsetY,
-            color: Color(getResourceColor(color).toUInt32()),
-            fill: fill
-        )
         this
     }
 }
