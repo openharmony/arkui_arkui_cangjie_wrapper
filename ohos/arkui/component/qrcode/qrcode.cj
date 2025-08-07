@@ -43,11 +43,12 @@ public class QRCode <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: String) {
+    public init(value: ResourceStr) {
+        let value_ = transResourceStrToString(value)
         unsafe {
-            var value_ = LibC.mallocCString(value)
-            FfiOHOSAceFrameworkQRCodeCreate(value_)
-            LibC.free(value_)
+            try (str = LibC.mallocCString(value_).asResource()) {
+                FfiOHOSAceFrameworkQRCodeCreate(str.value)
+            }
         }
     }
 
@@ -56,16 +57,16 @@ public class QRCode <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(baseColor: ResourceColor): This {
+    public func color(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkQRCodeSetQRCodeColor(transAppResourceToResourceColor(baseColor))
+            FfiOHOSAceFrameworkQRCodeSetQRCodeColor(transAppResourceToResourceColor(value))
         }
         this
     }
 
-    protected override func backgroundColorInner(color: ResourceColor): This {
+    protected override func backgroundColorInner(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkQRCodeSetBackgroundColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkQRCodeSetBackgroundColor(transAppResourceToResourceColor(value))
         }
         this
     }
@@ -80,15 +81,6 @@ public class QRCode <: ViewBase {
             FfiOHOSAceFrameworkQRCodeSetContentOpacity(value)
         }
         this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func contentOpacity(value: Int64): This {
-        contentOpacity(Float64(value))
     }
 
     @!APILevel[
