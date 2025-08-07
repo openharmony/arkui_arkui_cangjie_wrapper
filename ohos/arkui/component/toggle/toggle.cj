@@ -132,9 +132,9 @@ public class Toggle <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(color: ResourceColor): This {
+    public func selectedColor(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkToggleSelectedColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkToggleSelectedColor(transAppResourceToResourceColor(value))
         }
         this
     }
