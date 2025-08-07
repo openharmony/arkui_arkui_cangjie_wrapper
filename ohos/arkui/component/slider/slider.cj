@@ -177,17 +177,17 @@ public class Slider <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func showTips(value: Bool, content!: ?String = None): This {
+    public func showTips(value: Bool, content!: ?ResourceStr = None): This {
         unsafe {
             var contentValue = ""
             var contentExist = false
             if (let Some(v) <- content) {
                 contentExist = true
-                contentValue = v
+                contentValue = transResourceStrToString(v)
             }
-            let contentCString = LibC.mallocCString(contentValue)
-            FfiOHOSAceFrameworkSliderShowTipsNew(value, contentCString, contentExist)
-            LibC.free(contentCString)
+            try (contentCString = LibC.mallocCString(contentValue).asResource()) {
+                FfiOHOSAceFrameworkSliderShowTipsNew(value, contentCString.value, contentExist)
+            }
         }
         this
     }
@@ -210,30 +210,6 @@ public class Slider <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func maxLabel(value: Float64): This {
-        unsafe {
-            FfiOHOSAceFrameworkSliderMaxLabel(value)
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func minLabel(value: Float64): This {
-        unsafe {
-            FfiOHOSAceFrameworkSliderMinLabel(value)
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func onChange(callback: (Float64, SliderChangeMode) -> Unit): This {
         unsafe {
             FfiOHOSAceFrameworkSliderOnChange(
@@ -242,25 +218,6 @@ public class Slider <: ViewBase {
                         value, modeID =>
                         let mode = SliderChangeMode.setValue(modeID)
                         callback(value, mode)
-                    }
-                ).getID())
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onChange(callback: () -> Unit): This {
-        unsafe {
-            FfiOHOSAceFrameworkSliderOnChange(
-                Callback2Param<Float64, Int32, Unit>(
-                    {
-                        _, modeID =>
-                        SliderChangeMode.setValue(modeID)
-                        callback()
                     }
                 ).getID())
         }
