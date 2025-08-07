@@ -21,6 +21,7 @@ import ohos.ffi.*
 import ohos.resource.*
 import ohos.labels.APILevel
 import std.convert.*
+import ohos.arkui.component.util.*
 
 foreign {
     func FfiOHOSAceFrameworkVideoCreate(src: CString, progressRate: Float64, preview: CString, controller: Int64): Unit
@@ -74,12 +75,97 @@ foreign {
     func FfiOHOSAceFrameworkVideoControllerExitFullscreen(selfID: Int64): Unit
 }
 
+/**
+ * Defines the video controller.
+ *
+ * @relation interface PreparedInfo
+ */
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class PreparedInfo {
+    /**
+     * The duration of the current video, in seconds.
+     * Anonymous Object Rectification.
+     *
+     * @type { Int32 }
+     * @relation duration: number
+     */
+    public var duration: Int32
+
+    init(duration: Int32) {
+        this.duration = duration
+    }
+}
+
+/**
+ * Playback information of the video.
+ *
+ * @relation interface PlaybackInfo
+ */
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class PlaybackInfo {
+    /**
+     * The duration of the current video, in seconds.
+     * Anonymous Object Rectification.
+     *
+     * @type { Int32 }
+     * @relation time: number
+     */
+    public var time: Int32
+
+    init(time: Int32) {
+        this.time = time
+    }
+}
+
+/**
+ * Fullscreen information of the video.
+ *
+ * @relation interface FullscreenInfo
+ */
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class FullscreenInfo {
+    /**
+     * The flag whether play in full screen.
+     * Anonymous Object Rectification.
+     *
+     * @type { Bool }
+     * @relation fullscreen: boolean
+     */
+    public var fullscreen: Bool
+
+    init(fullscreen: Bool) {
+        this.fullscreen = fullscreen
+    }
+}
+
+/**
+ * Defines the video controller.
+ *
+ * @relation class VideoController
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class VideoController <: RemoteDataLite {
+    /**
+     * constructor.
+     *
+     * @relation constructor()
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -93,6 +179,11 @@ public class VideoController <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Provides events to play.
+     *
+     * @relation start(): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -102,6 +193,11 @@ public class VideoController <: RemoteDataLite {
         unsafe { FfiOHOSAceFrameworkVideoControllerStart(this.getID()) }
     }
 
+    /**
+     * Provides a pause event for playback.
+     *
+     * @relation pause(): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -111,6 +207,11 @@ public class VideoController <: RemoteDataLite {
         unsafe { FfiOHOSAceFrameworkVideoControllerPause(this.getID()) }
     }
 
+    /**
+     * Provides an event to stop playback.
+     *
+     * @relation stop(): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -120,28 +221,46 @@ public class VideoController <: RemoteDataLite {
         unsafe { FfiOHOSAceFrameworkVideoControllerStop(this.getID()) }
     }
 
+    /**
+     * Provide the progress method of video playback.
+     *
+     * @param { Int32 } value
+     * @param { SeekMode } seekMode
+     * @relation setCurrentTime(value: number, seekMode: SeekMode): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setCurrentTime(time: Int32, seekMode: SeekMode): Unit {
+    public func setCurrentTime(value: Int32, seekMode: SeekMode): Unit {
         unsafe {
-            FfiOHOSAceFrameworkVideoControllerSetCurrentTime(time, seekMode.getValue(), this.getID())
+            FfiOHOSAceFrameworkVideoControllerSetCurrentTime(value, seekMode.getValue(), this.getID())
         }
     }
 
+    /**
+     * Provides a full screen playback method.
+     *
+     * @param { Bool } value
+     * @relation requestFullscreen(value: boolean): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func requestFullscreen(fullScreen: Bool): Unit {
+    public func requestFullscreen(value: Bool): Unit {
         unsafe {
-            FfiOHOSAceFrameworkVideoControllerRequestFullscreen(fullScreen, this.getID())
+            FfiOHOSAceFrameworkVideoControllerRequestFullscreen(value, this.getID())
         }
     }
 
+    /**
+     * Provides a method to exit full screen playback.
+     *
+     * @relation exitFullscreen(): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -154,86 +273,56 @@ public class VideoController <: RemoteDataLite {
     }
 }
 
+/**
+ * Defines Video Component.
+ *
+ * @relation const Video: VideoInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Video <: ViewBase {
+    /**
+     * Set the value.
+     *
+     * @param { ResourceStr } src
+     * @param { PlaybackSpeed } currentProgressRate
+     * @param { ResourceStr } previewUri
+     * @param { VideoController } controller
+     * @returns { Video }
+     * @relation (value: VideoOptions): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        src!: String = "",
-        currentProgressRate!: Float64 = 1.0,
-        previewUri!: String = "",
+        src!: ResourceStr = "",
+        currentProgressRate!: PlaybackSpeed = Speed_Forward_1_00_X,
+        previewUri!: ResourceStr = "",
         controller!: VideoController = VideoController()
     ) {
+        let src_ = transResourceStrToString(src)
+        let previewUri_ = transResourceStrToString(previewUri)
         unsafe {
-            var srcStr = LibC.mallocCString(src)
-            var previewUriStr = LibC.mallocCString(previewUri)
-            FfiOHOSAceFrameworkVideoCreate(srcStr, currentProgressRate, previewUriStr, controller.getID())
-            LibC.free(srcStr)
-            LibC.free(previewUriStr)
+            try (srcStr = LibC.mallocCString(src_).asResource(),
+                 previewUriStr = LibC.mallocCString(previewUri_).asResource()
+            ) {
+                FfiOHOSAceFrameworkVideoCreate(srcStr.value, currentProgressRate.getValue(), previewUriStr.value, controller.getID())
+            }
         }
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        src!: String = "",
-        currentProgressRate!: PlaybackSpeed,
-        previewUri!: String = "",
-        controller!: VideoController = VideoController()
-    ) {
-        this(
-            src: src,
-            currentProgressRate: currentProgressRate.getValue(),
-            previewUri: previewUri,
-            controller: controller
-        )
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        src!: AppResource,
-        currentProgressRate!: Float64 = 1.0,
-        previewUri!: AppResource,
-        controller!: VideoController = VideoController()
-    ) {
-        this(
-            src: getResourceMedia(src),
-            currentProgressRate: currentProgressRate,
-            previewUri: getResourceMedia(previewUri),
-            controller: controller
-        )
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        src!: AppResource,
-        currentProgressRate!: PlaybackSpeed,
-        previewUri!: AppResource,
-        controller!: VideoController = VideoController()
-    ) {
-        this(
-            src: getResourceMedia(src),
-            currentProgressRate: currentProgressRate.getValue(),
-            previewUri: getResourceMedia(previewUri),
-            controller: controller
-        )
-    }
 
+    /**
+     * Called when judging whether the video is muted.
+     *
+     * @param { Bool } value
+     * @returns { This }
+     * @relation muted(value: boolean): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -246,6 +335,13 @@ public class Video <: ViewBase {
         this
     }
 
+    /**
+     * Called when judging whether the video is played automatically.
+     *
+     * @param { Bool } value
+     * @returns { This }
+     * @relation autoPlay(value: boolean): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -258,6 +354,13 @@ public class Video <: ViewBase {
         this
     }
 
+    /**
+     * Called when judging whether the control bar is displayed.
+     *
+     * @param { Bool } value
+     * @returns { This }
+     * @relation controls(value: boolean): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -270,6 +373,13 @@ public class Video <: ViewBase {
         this
     }
 
+    /**
+     * Called when determining the zoom type of the video source.
+     *
+     * @param { ImageFit } value
+     * @returns { This }
+     * @relation objectFit(value: ImageFit): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -282,6 +392,13 @@ public class Video <: ViewBase {
         this
     }
 
+    /**
+     * Called when judging whether the video is played circular.
+     *
+     * @param { Bool } value
+     * @returns { This }
+     * @relation loop(value: boolean): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -294,14 +411,22 @@ public class Video <: ViewBase {
         this
     }
 
+    /**
+     * Called when the video is played.
+     * Anonymous Object Rectification.
+     *
+     * @param { VoidCallback } event
+     * @returns { This }
+     * @relation onStart(event: VoidCallback): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onStart(callback: () -> Unit): This {
+    public func onStart(event: VoidCallback): This {
         let wrapper = {
-            _: CString => callback()
+            _: CString => event()
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -310,14 +435,22 @@ public class Video <: ViewBase {
         this
     }
 
+    /**
+     * Called when the video is paused.
+     * Anonymous Object Rectification.
+     *
+     * @param { VoidCallback } event
+     * @returns { This }
+     * @relation onPause(event: VoidCallback): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onPause(callback: () -> Unit): This {
+    public func onPause(event: VoidCallback): This {
         let wrapper = {
-            _: CString => callback()
+            _: CString => event()
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -326,14 +459,22 @@ public class Video <: ViewBase {
         this
     }
 
+    /**
+     * Called when the video playback ends.
+     * Anonymous Object Rectification.
+     *
+     * @param { VoidCallback } event
+     * @returns { This }
+     * @relation onFinish(event: VoidCallback): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onFinish(callback: () -> Unit): This {
+    public func onFinish(event: () -> Unit): This {
         let wrapper = {
-            _: CString => callback()
+            _: CString => event()
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -342,14 +483,21 @@ public class Video <: ViewBase {
         this
     }
 
+    /**
+     * Called when playback fails.
+     *
+     * @param { VoidCallback } event
+     * @returns { This}
+     * @relation onError(event: VoidCallback): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onError(callback: () -> Unit): This {
+    public func onError(event: VoidCallback): This {
         let wrapper = {
-            _: CString => callback()
+            _: CString => event()
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -358,65 +506,120 @@ public class Video <: ViewBase {
         this
     }
 
+    /**
+     * Called when the video preparation is complete.
+     * Anonymous Object Rectification.
+     *
+     * @param { Callback<PreparedInfo, Unit> } callback
+     * @returns { This}
+     * @relation onPrepared(callback: Callback<PreparedInfo>): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onPrepared(callback: (Int32) -> Unit): This {
-        let lambdaData = Callback1Param<Int32, Unit>(callback)
+    public func onPrepared(callback: Callback<PreparedInfo, Unit>): This {
+        let wrapper = {
+            duration: Int32 => callback(PreparedInfo(duration))
+        }
+        let lambdaData = Callback1Param<Int32, Unit>(wrapper)
         unsafe {
             FfiOHOSAceFrameworkVideoOnPrepared(lambdaData.getID())
         }
         this
     }
 
+    /**
+     * Called when the time information is reported when the progress bar process is operated.
+     * Anonymous Object Rectification.
+     *
+     * @param { Callback<PlaybackInfo, Unit> } callback
+     * @returns { This}
+     * @relation onSeeking(callback: Callback<PlaybackInfo>): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onSeeking(callback: (Int32) -> Unit): This {
-        let lambdaData = Callback1Param<Int32, Unit>(callback)
+    public func onSeeking(callback: Callback<PlaybackInfo, Unit>): This {
+        let wrapper = {
+            time: Int32 => callback(PlaybackInfo(time))
+        }
+        let lambdaData = Callback1Param<Int32, Unit>(wrapper)
         unsafe {
             FfiOHOSAceFrameworkVideoOnSeeking(lambdaData.getID())
         }
         this
     }
 
+    /**
+     * Called when the playback time information is reported after the operation progress bar is completed.
+     * Anonymous Object Rectification.
+     *
+     * @param { Callback<PlaybackInfo, Unit> } callback
+     * @returns { This }
+     * @relation onSeeked(callback: Callback<PlaybackInfo>): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onSeeked(callback: (Int32) -> Unit): This {
-        let lambdaData = Callback1Param<Int32, Unit>(callback)
+    public func onSeeked(callback: Callback<PlaybackInfo, Unit>): This {
+        let wrapper = {
+            time: Int32 => callback(PlaybackInfo(time))
+        }
+        let lambdaData = Callback1Param<Int32, Unit>(wrapper)
         unsafe {
             FfiOHOSAceFrameworkVideoOnSeeked(lambdaData.getID())
         }
         this
     }
 
+    /**
+     * Called when the playback progress changes.
+     * Anonymous Object Rectification.
+     *
+     * @param { Callback<PlaybackInfo, Unit> } callback
+     * @returns { This }
+     * @relation onUpdate(callback: Callback<PlaybackInfo>): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onUpdate(callback: (Int32) -> Unit): This {
-        let lambdaData = Callback1Param<Int32, Unit>(callback)
+    public func onUpdate(callback: Callback<PlaybackInfo, Unit>): This {
+        let wrapper = {
+            time: Int32 => callback(PlaybackInfo(time))
+        }
+        let lambdaData = Callback1Param<Int32, Unit>(wrapper)
         unsafe {
             FfiOHOSAceFrameworkVideoOnUpdate(lambdaData.getID())
         }
         this
     }
 
+    /**
+     * Called when the video enters and exits the full screen.
+     * Anonymous Object Rectification.
+     *
+     * @param { Callback<FullscreenInfo, Unit> } callback
+     * @returns { This }
+     * @relation onFullscreenChange(callback: Callback<FullscreenInfo>): VideoAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onFullscreenChange(callback: (Bool) -> Unit): This {
-        let lambdaData = Callback1Param<Bool, Unit>(callback)
+    public func onFullscreenChange(callback: Callback<FullscreenInfo, Unit>): This {
+        let wrapper = {
+            fullscreen: Bool => callback(FullscreenInfo(fullscreen))
+        }
+        let lambdaData = Callback1Param<Bool, Unit>(wrapper)
         unsafe {
             FfiOHOSAceFrameworkVideoOnFullscreenChange(lambdaData.getID())
         }

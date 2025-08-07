@@ -21,6 +21,7 @@ ohos_cj_library("ohos.arkui.component.video") {
   cj_deps = [
     "../common:ohos.arkui.component.common",
     "../../../base:ohos.base",
+    "../util:ohos.arkui.component.util",
   ]
 
   cj_external_deps = [
