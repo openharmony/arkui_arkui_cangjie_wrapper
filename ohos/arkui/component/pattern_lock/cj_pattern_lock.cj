@@ -65,12 +65,22 @@ foreign {
     func FfiOHOSAceFrameworkPatternLockControllerSetChallengeResult(selfID: Int64, challengeResult: Int64): Unit
 }
 
+/**
+ * Provides methods for control pattern lock component.
+ *
+ * @relation class PatternLockController
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PatternLockController <: RemoteDataLite {
+    /**
+     * A constructor used to create a PatternLockController instance.
+     *
+     * @relation constructor()
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -84,45 +94,59 @@ public class PatternLockController <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Reset pattern lock.
+     *
+     * @relation reset(): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func reset() {
+    public func reset(): Unit {
         unsafe {
             FfiOHOSAceFrameworkPatternLockControllerReset(this.getID())
         }
     }
 }
 
+/**
+ * Defines PatternLock Component.
+ *
+ * @relation const PatternLock: PatternLockInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PatternLock <: ViewBase {
+    /**
+     * Constructor.
+     *
+     * @param { PatternLockController } [controller]  controller
+     * @returns { PatternLock }
+     * @relation (controller?: PatternLockController): PatternLockAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init() {
+    public init(controller!: ?PatternLockController = None) {
         unsafe {
-            FfiOHOSAceFrameworkPatternLockCreate(-1)
-        }
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(controller: PatternLockController) {
-        unsafe {
-            FfiOHOSAceFrameworkPatternLockCreate(controller.getID())
+            FfiOHOSAceFrameworkPatternLockCreate(controller?.getID() ?? -1)
         }
     }
 
+    /**
+     * Sets the fill color of the grid dot in the selected state.
+     *
+     * @param { ResourceColor } value - Fill color of the grid dot in the selected state, Default value is '#ff182431'.
+     * @returns { This }
+     * @relation selectedColor(value: ResourceColor): PatternLockAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -135,6 +159,13 @@ public class PatternLock <: ViewBase {
         this
     }
 
+    /**
+     * Sets the path color.
+     *
+     * @param { ResourceColor } value - Path color, Default value is '#33182431'.
+     * @returns { This }
+     * @relation pathColor(value: ResourceColor): PatternLockAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -147,6 +178,13 @@ public class PatternLock <: ViewBase {
         this
     }
 
+    /**
+     * Sets the fill color of the grid dot in the activated state, which is when the dot is highlighted but not selected.
+     *
+     * @param { ResourceColor } value - Fill color of the grid dot in the activated state, Default value is '#ff182431'.
+     * @returns { This }
+     * @relation activeColor(value: ResourceColor): PatternLockAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -159,6 +197,13 @@ public class PatternLock <: ViewBase {
         this
     }
 
+    /**
+     * Sets the fill color of the grid dot in the unselected state.
+     *
+     * @param { ResourceColor } value - Fill color of the grid dot in the unselected state, Default value is '#ff182431'.
+     * @returns { This }
+     * @relation regularColor(value: ResourceColor): PatternLockAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -171,6 +216,15 @@ public class PatternLock <: ViewBase {
         this
     }
 
+    /**
+     * Sets whether to allow the user to reset the component status (that is, clear the input) by touching the component
+     * again after the input is complete.
+     *
+     * @param { Bool } value - Whether to allow the user to reset the component status (that is, clear the input) by
+     * touching the component again after the input is complete, Default value is true.
+     * @returns { This }
+     * @relation autoReset(value: boolean): PatternLockAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -183,6 +237,17 @@ public class PatternLock <: ViewBase {
         this
     }
 
+    /**
+     * Sets the radius of the dots in a grid.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>If this attribute is set to 0 or a negative value, the default value is used.
+     * </p>
+     *
+     * @param { Length } value - Radius of the dots in a grid, Default value is 6vp.
+     * @returns { This }
+     * @relation circleRadius(value: Length): PatternLockAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -196,6 +261,17 @@ public class PatternLock <: ViewBase {
         this
     }
 
+    /**
+     * Sets the width and height (same value) of the component.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>If this attribute is set to 0 or a negative number, the component is not displayed.
+     * </p>
+     *
+     * @param { Length } value - Width and height of the component, Default value is 288vp.
+     * @returns { This }
+     * @relation sideLength(value: Length): PatternLockAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -209,6 +285,17 @@ public class PatternLock <: ViewBase {
         this
     }
 
+    /**
+     * Sets the width of the path stroke.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>If this attribute is set to **0** or a negative value, the path stroke is not displayed.
+     * </p>
+     *
+     * @param { Length } value - Width of the path stroke, Default value is 12vp.
+     * @returns { This }
+     * @relation pathStrokeWidth(value: number | string): PatternLockAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -222,6 +309,13 @@ public class PatternLock <: ViewBase {
         this
     }
 
+    /**
+     * Invoked when the pattern password input is complete.
+     *
+     * @param { function } callback
+     * @returns { This }
+     * @relation onPatternComplete(callback: (input: Array<number>) => void): PatternLockAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,

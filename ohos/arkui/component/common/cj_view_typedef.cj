@@ -1128,7 +1128,7 @@ public class PopupMessageOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(textColor!: ResourceColor = Color(0x000000), font!: Fonts = Fonts()) {
+    public init(textColor!: ResourceColor = Color(0x000000), font!: Font = Font()) {
         this.textColor = textColor
         this.font = font
     }

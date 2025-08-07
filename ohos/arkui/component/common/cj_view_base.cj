@@ -2154,14 +2154,16 @@ public open class ViewBase <: InteractableView & UINodeBase {
             let primaryValue = LibC.mallocCString(popup.primaryButton.value)
             let secondaryValue = LibC.mallocCString(popup.secondaryButton.value)
             let messageOptions = popup.messageOptions
-            let fontWeight = LibC.mallocCString(messageOptions.font.weight.getValue())
             let placementOnTop = popup.placement.getValue() == 2
+            let fontWeight = LibC.mallocCString((messageOptions.font.weight ?? FontWeight.Normal).getValue())
+            let fontSize = messageOptions.font.size ?? 16.fp
+            let fontStyle = messageOptions.font.style ?? FontStyle.Normal
             FfiOHOSAceFrameworkViewAbstractBindPopupV2(
                 show,
                 CJBindPopupParamsV2(message, placementOnTop, primaryValue, primaryActionId, secondaryValue,
                     secondaryActionId, onStateChangeId, messageOptions.textColor.toUInt32(), fontWeight,
-                    messageOptions.font.size.value, messageOptions.font.size.unitType.getValue(),
-                    messageOptions.font.style.getValue(), popup.arrowOffset.value, popup
+                    fontSize.value, fontSize.unitType.getValue(),
+                    fontStyle.getValue(), popup.arrowOffset.value, popup
                         .arrowOffset
                         .unitType
                         .getValue(), popup.showInSubWindow, popup.mask.toUInt32(), popup.targetSpace.value,

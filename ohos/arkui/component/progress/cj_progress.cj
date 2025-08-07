@@ -20,6 +20,7 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import std.deriving.Derive
 
 @C
 struct RingStyle {
@@ -101,41 +102,79 @@ foreign {
         unitType: VectorInt32Handle): Unit
 }
 
+/**
+ * Current status of progress bar.
+ *
+ * @enum
+ * @relation enum ProgressStatus
+ */
+@Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ProgressStatus {
+    /**
+     * Loading status.
+     *
+     * @relation LOADING
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    LOADING
-    | @!APILevel[
+    Loading |
+    /**
+     * Processing status.
+     *
+     * @relation PROGRESSING
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    PROGRESSING
+    Progressing
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case PROGRESSING => 0
-            case LOADING => 1
+            case Progressing => 0
+            case Loading => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 }
 
+/**
+ * Progress common style options.
+ *
+ * @interface CommonProgressStyleOptions
+ * @relation interface CommonProgressStyleOptions
+ */
+sealed interface CommonProgressStyleOptions {}
+
+/**
+ * Defines the ring style Options.
+ *
+ * @extends CommonProgressStyleOptions
+ * @interface RingStyleOptions
+ * @relation interface RingStyleOptions extends ScanEffectOptions, CommonProgressStyleOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class RingStyleOptions {
+public class RingStyleOptions <: CommonProgressStyleOptions {
+    /**
+     * Defines the strokeWidth property.
+     *
+     * @type { Length }
+     * @relation strokeWidth?: Length
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -143,6 +182,12 @@ public class RingStyleOptions {
     ]
     public var strokeWidth: Length
 
+    /**
+     * Enables progress shadow.
+     *
+     * @type { Bool }
+     * @relation shadow?: boolean
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -150,6 +195,12 @@ public class RingStyleOptions {
     ]
     public var shadow: Bool
 
+    /**
+     * The status of progress, default is PROGRESSING. Set to LOADING status will trigger the loading animation.
+     *
+     * @type { ProgressStatus }
+     * @relation status?: ProgressStatus
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -157,6 +208,13 @@ public class RingStyleOptions {
     ]
     public var status: ProgressStatus
 
+    /**
+     * Enable smooth effect.
+     *
+     * @type { ?boolean }
+     * @default true
+     * @relation enableSmoothEffect?: boolean
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -164,6 +222,13 @@ public class RingStyleOptions {
     ]
     public var enableSmoothEffect: Bool
 
+    /**
+     * Enable scan effect.
+     *
+     * @type { ?boolean }
+     * @default false
+     * @relation enableScanEffect?: boolean
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -171,13 +236,22 @@ public class RingStyleOptions {
     ]
     public var enableScanEffect: Bool
 
+    /**
+     * Constructor the ring style Options.
+     *
+     * @param { Length } strokeWidth
+     * @param { Bool } shadow
+     * @param { ProgressStatus } status
+     * @param { Bool } enableSmoothEffect
+     * @param { Bool } enableScanEffect
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(strokeWidth!: Length = 4.vp, shadow!: Bool = false,
-        status!: ProgressStatus = ProgressStatus.PROGRESSING, enableSmoothEffect!: Bool = true,
+        status!: ProgressStatus = ProgressStatus.Progressing, enableSmoothEffect!: Bool = true,
         enableScanEffect!: Bool = false) {
         this.strokeWidth = transAppResourceToLength(strokeWidth)
         this.shadow = shadow
@@ -187,43 +261,71 @@ public class RingStyleOptions {
     }
 }
 
+/**
+ * Defines Progress Component.
+ *
+ * @relation const Progress: ProgressInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Progress <: ViewBase {
+    /**
+     * Called when the progress bar is set.
+     *
+     * @param { Float64 } value
+     * @param { Float64 } total
+     * @param { ProgressType } progressType
+     * @returns { Progress }
+     * @relation (options: ProgressOptions): ProgressAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: Float64, total!: Float64 = 100.0, `type`!: ProgressType = ProgressType.Linear) {
+    public init(value!: Float64, total!: Float64 = 100.0, progressType!: ProgressType = ProgressType.Linear) {
         unsafe {
-            FfiOHOSAceFrameworkProgressCreate(value, total, `type`.getValue())
+            FfiOHOSAceFrameworkProgressCreate(value, total, progressType.getValue())
         }
     }
 
+    /**
+     * Called when the current progress value is set.
+     *
+     * @param { Float64 } value
+     * @returns { This }
+     * @relation value(value: number): ProgressAttribute<Type>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func value(baseValue: Float64): This {
+    public func value(value: Float64): This {
         unsafe {
-            FfiOHOSAceFrameworkProgressSetValue(baseValue)
+            FfiOHOSAceFrameworkProgressSetValue(value)
         }
         this
     }
 
+    /**
+     * Called when the progress bar foreground is set.
+     *
+     * @param { ResourceColor } value - indicates the color of the progress.
+     * @returns { This } the attribute of the progress.
+     * @relation color(value: ResourceColor | LinearGradient): ProgressAttribute<Type>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(baseColor: ResourceColor): This {
+    public func color(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkProgressSetColor(transAppResourceToResourceColor(baseColor))
+            FfiOHOSAceFrameworkProgressSetColor(transAppResourceToResourceColor(value))
         }
         this
     }
@@ -235,6 +337,15 @@ public class Progress <: ViewBase {
         this
     }
 
+    /**
+     * Called when the style of progress bar is set.
+     *
+     * @param { Length } strokeWidth
+     * @param { Int32 } scaleCount
+     * @param { Length } scaleWidth
+     * @returns { This } the attribute of the progress.
+     * @relation style(value: Style): ProgressAttribute<Type>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -253,16 +364,23 @@ public class Progress <: ViewBase {
     // progress does not need to implement pop function
     protected override func pop(): Unit {}
 
+    /**
+     * Called when the style of progress bar is set.
+     *
+     * @param { RingStyleOptions } value - indicates the style of the progress.
+     * @returns { This } the attribute of the progress.
+     * @relation style(value: LinearStyleOptions | RingStyleOptions | CapsuleStyleOptions | ProgressStyleOptions): ProgressAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func style(ringStyle: RingStyleOptions): This {
+    public func style(value: RingStyleOptions): This {
         unsafe {
             FfiOHOSAceFrameworkProgressSetRingStyle(
-                RingStyle(ringStyle.strokeWidth.value, ringStyle.strokeWidth.unitType.getValue(), ringStyle.shadow,
-                    ringStyle.status.getValue(), ringStyle.enableSmoothEffect, ringStyle.enableScanEffect))
+                RingStyle(value.strokeWidth.value, value.strokeWidth.unitType.getValue(), value.shadow,
+                    value.status.getValue(), value.enableSmoothEffect, value.enableScanEffect))
         }
         this
     }
