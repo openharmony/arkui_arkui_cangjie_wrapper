@@ -30,35 +30,6 @@ struct TextPickerResult {
     ) {}
 }
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class TextPickerResData {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var value: String
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var index: UInt32
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(value: String, index: UInt32) {
-        this.value = value
-        this.index = index
-    }
-}
-
 @C
 struct CJDialogShow {
     CJDialogShow(
@@ -122,45 +93,6 @@ class CallbackTextPickerResult <: BaseCallBack {
     }
 }
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-open class TextPickerDialog {
-    static func show(
-        range: Array<String>,
-        selected!: UInt32 = 0,
-        defaultPickerItemHeight!: Length = 0.fp,
-        onAccept!: (TextPickerResult) -> Unit = {_ =>},
-        onCancel!: () -> Unit = {=>},
-        onChange!: (TextPickerResult) -> Unit = {_ =>}
-    ): Unit {
-        let vecFFi = FFIVectorString(range.size)
-        for (i in 0..range.size) {
-            vecFFi.setElement(i, range[i])
-        }
-        let lambdaAcceptData = CallbackTextPickerResult(onAccept)
-        let lambdaCancelData = Callback0Param<Unit>(onCancel)
-        let lambdaChangeData = CallbackTextPickerResult(onChange)
-        var defaultPickerItemHeight_ = transAppResourceToLength(defaultPickerItemHeight)
-        unsafe {
-            FfiOHOSAceFrameworkTextPickerDialogShow(
-                vecFFi.getNativeHandle(),
-                CJDialogShow(
-                    selected,
-                    defaultPickerItemHeight_.value,
-                    defaultPickerItemHeight_.unitType.getValue(),
-                    lambdaAcceptData.getID(),
-                    lambdaCancelData.getID(),
-                    lambdaChangeData.getID()
-                )
-            )
-            vecFFi.free()
-        }
-    }
-}
-
 func checkSelect(range: Array<String>, value: String): UInt32 {
     var res: UInt32 = 0
     for (i in 0..range.size) {
@@ -172,21 +104,45 @@ func checkSelect(range: Array<String>, value: String): UInt32 {
     res
 }
 
+/**
+ * Callback of TextPicker item is selected event.
+ *
+ * @typedef {function} OnTextPickerChangeCallback
+ * @param { String } selectItem - Value of the selected item.
+ * @param { UInt32 } index - Index of the selected item.
+ * @relation type OnTextPickerChangeCallback = (selectItem: string | string[], index: number | number[]) => void
+ */
+public type OnTextPickerChangeCallback = (String, UInt32) -> Unit
+
+/**
+ * Creates a text picker based on the selection range specified by range.
+ *
+ * @relation const TextPicker: TextPickerInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextPicker <: ViewBase {
+    /**
+     * Defines the TextPicker constructor.
+     *
+     * @param { Array<String> } range
+     * @param { ?UInt32 } selected
+     * @param { ?String } value
+     * @returns { TextPicker }
+     * @relation (options?: TextPickerOptions): TextPickerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        range: Array<String>,
-        selected!: Option<UInt32> = Option.None,
-        value!: Option<String> = Option.None
+        range!: Array<String>,
+        selected!: ?UInt32 = Option.None,
+        value!: ?String = Option.None
     ) {
         let vecFFi = FFIVectorString(range.size)
         for (i in 0..range.size) {
@@ -208,44 +164,44 @@ public class TextPicker <: ViewBase {
             case Some(v) => defValue = v
         }
         unsafe {
-            let tempValue = LibC.mallocCString(defValue)
-            FfiOHOSAceFrameworkTextPickerCreate(vecFFi.getNativeHandle(), getSelected, tempValue)
-            vecFFi.free()
-            LibC.free(tempValue)
+            try (tempValue = LibC.mallocCString(defValue).asResource()) {
+                FfiOHOSAceFrameworkTextPickerCreate(vecFFi.getNativeHandle(), getSelected, tempValue.value)
+                vecFFi.free()
+            }
         }
     }
 
+    /**
+     * Sets the height of each item in the picker.
+     *
+     * @param { Length } value - Height of each item in the picker.
+     * <br>For the number type, the value range is [0, +∞).
+     * <br>For the string type, only numeric string values, for example, "56", are supported.
+     * @returns { This }
+     * @default 56 vp (selected) and 36 vp (unselected).
+     * @relation defaultPickerItemHeight(value: number | string): TextPickerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func defaultPickerItemHeight(height: Length): This {
-        var height_ = transAppResourceToLength(height)
+    public func defaultPickerItemHeight(value: Length): This {
+        var height = transAppResourceToLength(value)
         unsafe {
-            FfiOHOSAceFrameworkTextPickerSetDefaultPickerItemHeight(height_.value, height_.unitType.getValue())
+            FfiOHOSAceFrameworkTextPickerSetDefaultPickerItemHeight(height.value, height.unitType.getValue())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func defaultPickerItemHeight(height: Float64): This {
-        defaultPickerItemHeight(height.fp)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func defaultPickerItemHeight(height: Int64): This {
-        defaultPickerItemHeight(height.fp)
-    }
-
+    /**
+     * Sets whether scrolling is loopable.
+     *
+     * @param { Bool } value - Whether scrolling is loopable. true: loopable; false: not loopable.
+     * @default true
+     * @returns { This }
+     * @relation canLoop(value: boolean): TextPickerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -258,17 +214,27 @@ public class TextPicker <: ViewBase {
         this
     }
 
+    /**
+     * Triggered when an item in the picker is selected.
+     * When the picker contains text only or both text and imagery,
+     * value indicates the text of the selected item.
+     * When the picker contains imagery only, value is empty.
+     *
+     * @param { OnTextPickerChangeCallback } callback - the callback of onChange.
+     * @returns { This }
+     * @relation onChange(callback: (value: string | string[], index: number | number[]) => void): TextPickerAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (TextPickerResData) -> Unit): This {
+    public func onChange(callback: OnTextPickerChangeCallback): This {
         let wrapper = {
             data: TextPickerResult =>
             let value = data.value.toString()
             let index = data.index
-            callback(TextPickerResData(value, index))
+            callback(value.toString(), index)
         }
         let lambdaData = CallbackTextPickerResult(wrapper);
         unsafe {
