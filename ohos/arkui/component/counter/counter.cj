@@ -79,9 +79,9 @@ public class Counter <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onInc(callback: () -> Unit): This {
+    public func onInc(event: VoidCallback): This {
         unsafe {
-            FfiOHOSAceFrameworkCounterSetOnInc(Callback0Param<Unit>(callback).getID());
+            FfiOHOSAceFrameworkCounterSetOnInc(Callback0Param<Unit>(event).getID());
         }
         this
     }
@@ -91,9 +91,9 @@ public class Counter <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDec(callback: () -> Unit): This {
+    public func onDec(event: VoidCallback): This {
         unsafe {
-            FfiOHOSAceFrameworkCounterSetOnDec(Callback0Param<Unit>(callback).getID());
+            FfiOHOSAceFrameworkCounterSetOnDec(Callback0Param<Unit>(event).getID());
         }
         this
     }
