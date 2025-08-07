@@ -40,17 +40,18 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class PathShape <: ShapeAbstract {
+public class PathShape <: BaseShape {
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(commands!: String) {
+    public init(commands!: ResourceStr = "") {
         super(
             unsafe {
+                let commandsValue = transResourceStrToString(commands)
                 var id: Int64 = 0
-                try (unsafeContent = LibC.mallocCString(commands).asResource()) {
+                try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
                     id = FfiOHOSAceFrameworkPathInsCreate(unsafeContent.value)
                 }
                 id
@@ -62,13 +63,14 @@ public class PathShape <: ShapeAbstract {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length, height!: Length, commands!: String = "") {
+    public init(width!: Length, height!: Length, commands!: ResourceStr = "") {
         super(
             unsafe {
                 var width_ = transAppResourceToLength(width)
                 var height_ = transAppResourceToLength(height)
+                let commandsValue = transResourceStrToString(commands)
                 var id: Int64 = 0
-                try (unsafeContent = LibC.mallocCString(commands).asResource()) {
+                try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
                     id = FfiOHOSAceFrameworkPathInsCreateWithSize(
                         width_.value,
                         width_.unitType.getValue(),
@@ -79,15 +81,6 @@ public class PathShape <: ShapeAbstract {
                 }
                 id
             })
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {
-        this(commands: "")
     }
 }
 
@@ -102,9 +95,10 @@ public class Path <: ShapeComponent {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(commands!: String = "") {
+    public init(commands!: ResourceStr = "") {
         unsafe {
-            try (unsafeContent = LibC.mallocCString(commands).asResource()) {
+            let commandsValue = transResourceStrToString(commands)
+            try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
                 FfiOHOSAceFrameworkPathCreate(unsafeContent.value)
             }
         }
@@ -115,11 +109,12 @@ public class Path <: ShapeComponent {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length, height!: Length, commands!: String = "") {
+    public init(width!: Length, height!: Length, commands!: ResourceStr = "") {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
         unsafe {
-            try (unsafeContent = LibC.mallocCString(commands).asResource()) {
+            let commandsValue = transResourceStrToString(commands)
+            try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
                 FfiOHOSAceFrameworkPathCreateWithSize(width_.value, width_.unitType.getValue(), height_.value,
                     height_.unitType.getValue(), unsafeContent.value)
             }
@@ -131,9 +126,10 @@ public class Path <: ShapeComponent {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func commands(commands: String): This {
+    public func commands(commands: ResourceStr): This {
         unsafe {
-            try (unsafeContent = LibC.mallocCString(commands).asResource()) {
+            let commandsValue = transResourceStrToString(commands)
+            try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
                 FfiOHOSAceFrameworkPathSetCommands(unsafeContent.value)
             }
         }

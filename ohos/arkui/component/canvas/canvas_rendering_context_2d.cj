@@ -129,7 +129,7 @@ foreign {
         maxWidth: Float64
     ): Unit
 
-    func FfiOHOSAceFrameworkRenderingContextMeasureText(selfId: Int64, text: CString): TextMetrics
+    func FfiOHOSAceFrameworkRenderingContextMeasureText(selfId: Int64, text: CString): NativeTextMetrics
 
     func FfiOHOSAceFrameworkRenderingContextStroke(selfId: Int64): Unit
 
@@ -347,17 +347,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         })
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(settings: RenderingContextSettings, unit: LengthMetricsUnit) {
-        super(unsafe {
-            FfiOHOSAceFrameworkRenderingContextCtorWithUnit(settings.antialias, unit.getValue())
-        })
-    }
-
     ~init() {
         releaseFFIData(myDataId)
     }
@@ -369,7 +358,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     ]
     public func fillStyle(color: ResourceColor): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetFillStyle(this.getID(), transAppResourceToResourceColor(color));
+            FfiOHOSAceFrameworkRenderingContextSetFillStyle(this.getID(), transAppResourceToResourceColor(color))
         }
     }
 
@@ -400,19 +389,17 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lineWidth(width: Float64): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetLineWidth(this.getID(), width)
+    public mut prop lineWidth: Option<Float64> {
+        get() {
+            return Option.None
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func lineWidth(width: Int64): Unit {
-        lineWidth(Float64(width))
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetLineWidth(this.getID(), v)
+                }
+            }
+        }
     }
 
     @!APILevel[
@@ -422,7 +409,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     ]
     public func strokeStyle(color: ResourceColor): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetStrokeStyle(this.getID(), transAppResourceToResourceColor(color));
+            FfiOHOSAceFrameworkRenderingContextSetStrokeStyle(this.getID(), transAppResourceToResourceColor(color))
         }
     }
 
@@ -433,7 +420,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     ]
     public func strokeStyle(gradient: CanvasGradient): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetStrokeStyleByGradient(this.getID(), gradient.getID());
+            FfiOHOSAceFrameworkRenderingContextSetStrokeStyleByGradient(this.getID(), gradient.getID())
         }
     }
 
@@ -444,7 +431,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     ]
     public func strokeStyle(pattern: CanvasPattern): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetStrokeStyleByPattern(this.getID(), pattern.getID());
+            FfiOHOSAceFrameworkRenderingContextSetStrokeStyleByPattern(this.getID(), pattern.getID())
         }
     }
 
@@ -453,9 +440,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lineCap(value: LineCapStyle): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetLineCap(this.getID(), value.getValue());
+    public mut prop lineCap: Option<LineCapStyle> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetLineCap(this.getID(), v.getValue())
+                }
+            }
         }
     }
 
@@ -464,9 +458,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lineJoin(value: LineJoinStyle): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetLineJoin(this.getID(), value.getValue());
+    public mut prop lineJoin: Option<LineJoinStyle> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetLineJoin(this.getID(), v.getValue())
+                }
+            }
         }
     }
 
@@ -475,19 +476,17 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func miterLimit(limit: Float64): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetMiterLimit(this.getID(), limit);
+    public mut prop miterLimit: Option<Float64> {
+        get() {
+            return Option.None
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func miterLimit(limit: Int64): Unit {
-        miterLimit(Float64(limit))
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetMiterLimit(this.getID(), v)
+                }
+            }
+        }
     }
 
     @!APILevel[
@@ -523,9 +522,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textAlign(align: TextAlignStyle): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetTextAlign(this.getID(), align.getValue());
+    public mut prop textAlign: Option<TextAlignStyle> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetTextAlign(this.getID(), v.getValue())
+                }
+            }
         }
     }
 
@@ -534,9 +540,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textBaseline(baseline: TextBaseline): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetTextBaseline(this.getID(), baseline.getValue());
+    public mut prop textBaseline: Option<TextBaseline> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetTextBaseline(this.getID(), v.getValue())
+                }
+            }
         }
     }
 
@@ -545,9 +558,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func globalAlpha(alpha: Float64): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetGlobalAlpha(this.getID(), alpha);
+    public mut prop globalAlpha: Option<Float64> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetGlobalAlpha(this.getID(), v)
+                }
+            }
         }
     }
 
@@ -556,16 +576,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func globalAlpha(alpha: Int64): Unit {
-        globalAlpha(Float64(alpha))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func lineDash(dashArr: Array<Float64>): Unit {
+    public func setLineDash(dashArr: Array<Float64>): Unit {
         let vecFFi = FFIVectorFloat64(dashArr.size)
         var index = 0
         for (i in dashArr) {
@@ -584,28 +595,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lineDash(dashArr: Array<Int64>): Unit {
-        let vecFFi = FFIVectorFloat64(dashArr.size)
-        var index = 0
-        for (i in dashArr) {
-            nativeLog("Canvas LineDash vecdata: " + i.toString())
-            vecFFi.setElement(index, Float64(i))
-            index++
+    public mut prop lineDashOffset: Option<Float64> {
+        get() {
+            return Option.None
         }
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetLineDash(this.getID(), vecFFi.getNativeHandle());
-            vecFFi.free()
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func lineDashOffset(offset: Float64): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetLineDashOffset(this.getID(), offset);
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetLineDashOffset(this.getID(), v)
+                }
+            }
         }
     }
 
@@ -614,18 +613,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lineDashOffset(offset: Int64): Unit {
-        lineDashOffset(Float64(offset))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func globalCompositeOperation(operation: CompositeOperation): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetGlobalCompositeOperation(this.getID(), operation.getValue());
+    public mut prop globalCompositeOperation: Option<CompositeOperation> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetGlobalCompositeOperation(this.getID(), v.getValue())
+                }
+            }
         }
     }
 
@@ -634,9 +631,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func shadowBlur(blur: Float64): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetShadowBlur(this.getID(), blur);
+    public mut prop shadowBlur: Option<Float64> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetShadowBlur(this.getID(), v)
+                }
+            }
         }
     }
 
@@ -645,18 +649,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func shadowBlur(offset: Int64): Unit {
-        shadowBlur(Float64(offset))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func shadowColor(color: ResourceColor): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetShadowColor(this.getID(), transAppResourceToResourceColor(color));
+    public mut prop shadowColor: Option<ResourceColor> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetShadowColor(this.getID(), transAppResourceToResourceColor(v))
+                }
+            }
         }
     }
 
@@ -665,9 +667,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func shadowOffsetX(offset: Float64): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetShadowOffsetX(this.getID(), offset);
+    public mut prop shadowOffsetX: Option<Float64> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetShadowOffsetX(this.getID(), v)
+                }
+            }
         }
     }
 
@@ -676,18 +685,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func shadowOffsetX(offset: Int64): Unit {
-        shadowOffsetX(Float64(offset))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func shadowOffsetY(offset: Float64): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetShadowOffsetY(this.getID(), offset);
+    public mut prop shadowOffsetY: Option<Float64> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetShadowOffsetY(this.getID(), v)
+                }
+            }
         }
     }
 
@@ -696,18 +703,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func shadowOffsetY(offset: Int64): Unit {
-        shadowOffsetY(Float64(offset))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func imageSmoothingEnabled(enabled: Bool): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetImageSmoothingEnabled(this.getID(), enabled);
+    public mut prop imageSmoothingEnabled: Option<Bool> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetImageSmoothingEnabled(this.getID(), v)
+                }
+            }
         }
     }
 
@@ -716,11 +721,18 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func imageSmoothingQuality(quality: QualityType): Unit {
-        unsafe {
-            var qualityValue = LibC.mallocCString(quality.getValue())
-            FfiOHOSAceFrameworkRenderingContextSetImageSmoothingQuality(this.getID(), qualityValue);
-            LibC.free(qualityValue)
+    public mut prop imageSmoothingQuality: Option<QualityType> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    var qualityValue = LibC.mallocCString(v.getValue())
+                    FfiOHOSAceFrameworkRenderingContextSetImageSmoothingQuality(this.getID(), qualityValue)
+                    LibC.free(qualityValue)
+                }
+            }
         }
     }
 
@@ -729,11 +741,18 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func direction(canvasDirection: CanvasDirection): Unit {
-        unsafe {
-            var directionValue = LibC.mallocCString(canvasDirection.getValue())
-            FfiOHOSAceFrameworkRenderingContextSetDirection(this.getID(), directionValue);
-            LibC.free(directionValue)
+    public mut prop direction: Option<CanvasDirection> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    var directionValue = LibC.mallocCString(v.getValue())
+                    FfiOHOSAceFrameworkRenderingContextSetDirection(this.getID(), directionValue)
+                    LibC.free(directionValue)
+                }
+            }
         }
     }
 
@@ -742,11 +761,18 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func filter(filterStr: String): Unit {
-        unsafe {
-            var filterValue = LibC.mallocCString(filterStr)
-            FfiOHOSAceFrameworkRenderingContextSetFilter(this.getID(), filterValue);
-            LibC.free(filterValue)
+    public mut prop filter: Option<String> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                unsafe {
+                    var filterValue = LibC.mallocCString(v)
+                    FfiOHOSAceFrameworkRenderingContextSetFilter(this.getID(), filterValue);
+                    LibC.free(filterValue)
+                }
+            }
         }
     }
 
@@ -766,28 +792,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fillRect(x: Int64, y: Int64, width: Int64, height: Int64): Unit {
-        fillRect(Float64(x), Float64(y), Float64(width), Float64(height))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func strokeRect(x: Float64, y: Float64, width: Float64, height: Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextStrokeRect(this.getID(), x, y, width, height)
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func strokeRect(x: Int64, y: Int64, width: Int64, height: Int64): Unit {
-        strokeRect(Float64(x), Float64(y), Float64(width), Float64(height))
     }
 
     @!APILevel[
@@ -806,20 +814,20 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func clearRect(x: Int64, y: Int64, width: Int64, height: Int64): Unit {
-        clearRect(Float64(x), Float64(y), Float64(width), Float64(height))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func fillText(text: String, x: Float64, y: Float64): Unit {
-        unsafe {
-            var content = LibC.mallocCString(text)
-            FfiOHOSAceFrameworkRenderingContextFillText(this.getID(), x, y, content)
-            LibC.free(content)
+    public func fillText(text: String, x: Float64, y: Float64, maxWidth!: Option<Float64> = Option.None): Unit {
+        match (maxWidth) {
+            case Some(v) =>
+                unsafe {
+                    var content = LibC.mallocCString(text)
+                    FfiOHOSAceFrameworkRenderingContextFillTextWithMaxWidth(this.getID(), x, y, content, v)
+                    LibC.free(content)
+                }
+            case None =>
+                unsafe {
+                    var content = LibC.mallocCString(text)
+                    FfiOHOSAceFrameworkRenderingContextFillText(this.getID(), x, y, content)
+                    LibC.free(content)
+                }
         }
     }
 
@@ -828,74 +836,21 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fillText(text: String, x: Int64, y: Int64): Unit {
-        fillText(text, Float64(x), Float64(y))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func fillText(text: String, x: Float64, y: Float64, maxWidth: Float64): Unit {
-        unsafe {
-            var content = LibC.mallocCString(text)
-            FfiOHOSAceFrameworkRenderingContextFillTextWithMaxWidth(this.getID(), x, y, content, maxWidth)
-            LibC.free(content)
+    public func strokeText(text: String, x: Float64, y: Float64, maxWidth!: Option<Float64> = Option.None): Unit {
+        match (maxWidth) {
+            case Some(v) =>
+                unsafe {
+                    var content = LibC.mallocCString(text)
+                    FfiOHOSAceFrameworkRenderingContextStrokeTextWithMaxWidth(this.getID(), x, y, content, v)
+                    LibC.free(content)
+                }
+            case None =>
+                unsafe {
+                    var content = LibC.mallocCString(text)
+                    FfiOHOSAceFrameworkRenderingContextStrokeText(this.getID(), x, y, content)
+                    LibC.free(content)
+                }
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func fillText(text: String, x: Int64, y: Int64, maxWidth: Int64): Unit {
-        fillText(text, Float64(x), Float64(y), Float64(maxWidth))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func strokeText(text: String, x: Float64, y: Float64): Unit {
-        unsafe {
-            var content = LibC.mallocCString(text)
-            FfiOHOSAceFrameworkRenderingContextStrokeText(this.getID(), x, y, content)
-            LibC.free(content)
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func strokeText(text: String, x: Int64, y: Int64): Unit {
-        strokeText(text, Float64(x), Float64(y))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func strokeText(text: String, x: Float64, y: Float64, maxWidth: Float64): Unit {
-        unsafe {
-            var content = LibC.mallocCString(text)
-            FfiOHOSAceFrameworkRenderingContextStrokeTextWithMaxWidth(this.getID(), x, y, content, maxWidth)
-            LibC.free(content)
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func strokeText(text: String, x: Int64, y: Int64, maxWidth: Int64): Unit {
-        strokeText(text, Float64(x), Float64(y), Float64(maxWidth))
     }
 
     @!APILevel[
@@ -906,7 +861,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     public func measureText(text: String): TextMetrics {
         unsafe {
             var content = LibC.mallocCString(text)
-            let metrics: TextMetrics = FfiOHOSAceFrameworkRenderingContextMeasureText(this.getID(), content)
+            let nativeMetrics: NativeTextMetrics = FfiOHOSAceFrameworkRenderingContextMeasureText(this.getID(), content)
+            let metrics = nativeMetrics.parseToCJ()
             LibC.free(content)
             return metrics
         }
@@ -961,28 +917,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func moveTo(x: Int64, y: Int64): Unit {
-        moveTo(Float64(x), Float64(y))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func lineTo(x: Float64, y: Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextLineTo(this.getID(), x, y)
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func lineTo(x: Int64, y: Int64): Unit {
-        lineTo(Float64(x), Float64(y))
     }
 
     @!APILevel[
@@ -1021,28 +959,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func bezierCurveTo(cp1x: Int64, cp1y: Int64, cp2x: Int64, cp2y: Int64, x: Int64, y: Int64): Unit {
-        bezierCurveTo(Float64(cp1x), Float64(cp1y), Float64(cp2x), Float64(cp2y), Float64(x), Float64(y))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func quadraticCurveTo(cpx: Float64, cpy: Float64, x: Float64, y: Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextQuadraticCurveTo(this.getID(), cpx, cpy, x, y)
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func quadraticCurveTo(cpx: Int64, cpy: Int64, x: Int64, y: Int64): Unit {
-        quadraticCurveTo(Float64(cpx), Float64(cpy), Float64(x), Float64(y))
     }
 
     @!APILevel[
@@ -1056,27 +976,11 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         radius: Float64,
         startAngle: Float64,
         endAngle: Float64,
-        anticlockwise!: Bool = false
+        counterclockwise!: Bool = false
     ): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextArc(this.getID(), x, y, radius, startAngle, endAngle, anticlockwise)
+            FfiOHOSAceFrameworkRenderingContextArc(this.getID(), x, y, radius, startAngle, endAngle, counterclockwise)
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func arc(x: Int64, y: Int64, radius: Int64, startAngle: Int64, endAngle: Int64, anticlockwise!: Bool = false): Unit {
-        arc(
-            Float64(x),
-            Float64(y),
-            Float64(radius),
-            Float64(startAngle),
-            Float64(endAngle),
-            anticlockwise: anticlockwise
-        )
     }
 
     @!APILevel[
@@ -1095,15 +999,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func arcTo(x1: Int64, y1: Int64, x2: Int64, y2: Int64, radius: Int64): Unit {
-        arcTo(Float64(x1), Float64(y1), Float64(x2), Float64(y2), Float64(radius))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func ellipse(
         x: Float64,
         y: Float64,
@@ -1112,7 +1007,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         rotation: Float64,
         startAngle: Float64,
         endAngle: Float64,
-        anticlockwise!: Bool = false
+        counterclockwise!: Bool = false
     ): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextEllipse(
@@ -1124,36 +1019,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
                 rotation,
                 startAngle,
                 endAngle,
-                anticlockwise
+                counterclockwise
             )
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func ellipse(
-        x: Int64,
-        y: Int64,
-        radiusX: Int64,
-        radiusY: Int64,
-        rotation: Int64,
-        startAngle: Int64,
-        endAngle: Int64,
-        anticlockwise!: Bool = false
-    ): Unit {
-        ellipse(
-            Float64(x),
-            Float64(y),
-            Float64(radiusX),
-            Float64(radiusY),
-            Float64(rotation),
-            Float64(startAngle),
-            Float64(endAngle),
-            anticlockwise: anticlockwise
-        )
     }
 
     @!APILevel[
@@ -1172,27 +1040,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func rect(x: Int64, y: Int64, width: Int64, height: Int64): Unit {
-        rect(Float64(x), Float64(y), Float64(width), Float64(height))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func fill(): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextFill(this.getID())
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func fill(fillRule: CanvasFillRule): Unit {
+    public func fill(fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit {
         unsafe {
             var ruleStr = LibC.mallocCString(fillRule.getValue())
             FfiOHOSAceFrameworkRenderingContextFillWithStr(this.getID(), ruleStr)
@@ -1205,10 +1053,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fill(path2D: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit {
+    public func fill(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit {
         unsafe {
             var ruleStr = LibC.mallocCString(fillRule.getValue())
-            FfiOHOSAceFrameworkRenderingContextFillWithPath(this.getID(), path2D.getID(), ruleStr)
+            FfiOHOSAceFrameworkRenderingContextFillWithPath(this.getID(), path.getID(), ruleStr)
             LibC.free(ruleStr)
         }
     }
@@ -1218,18 +1066,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func clip(): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextClip(this.getID())
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func clip(fillRule: CanvasFillRule): Unit {
+    public func clip(fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit {
         unsafe {
             var ruleStr = LibC.mallocCString(fillRule.getValue())
             FfiOHOSAceFrameworkRenderingContextClipWithStr(this.getID(), ruleStr)
@@ -1242,10 +1079,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func clip(path2D: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit {
+    public func clip(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit {
         unsafe {
             var ruleStr = LibC.mallocCString(fillRule.getValue())
-            FfiOHOSAceFrameworkRenderingContextClipWithPath(this.getID(), path2D.getID(), ruleStr)
+            FfiOHOSAceFrameworkRenderingContextClipWithPath(this.getID(), path.getID(), ruleStr)
             LibC.free(ruleStr)
         }
     }
@@ -1266,28 +1103,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func rotate(angle: Int64): Unit {
-        rotate(Float64(angle))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func scale(x: Float64, y: Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextScale(this.getID(), x, y)
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scale(x: Int64, y: Int64): Unit {
-        scale(Float64(x), Float64(y))
     }
 
     @!APILevel[
@@ -1321,29 +1140,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func transform(
-        scaleX: Int64,
-        skewX: Int64,
-        skewY: Int64,
-        scaleY: Int64,
-        translateX: Int64,
-        translateY: Int64
-    ): Unit {
-        transform(
-            Float64(scaleX),
-            Float64(skewX),
-            Float64(skewY),
-            Float64(scaleY),
-            Float64(translateX),
-            Float64(translateY)
-        )
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func setTransform(
         scaleX: Float64,
         skewX: Float64,
@@ -1370,33 +1166,14 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setTransform(matrix: Matrix2D): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetTransformByMatrix(this.getID(), matrix.getID())
+    public func setTransform(matrix: Option<Matrix2D>): Unit {
+        match (matrix) {
+            case Some(v) =>
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetTransformByMatrix(this.getID(), v.getID())
+                }
+            case None => ()
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setTransform(
-        scaleX: Int64,
-        skewX: Int64,
-        skewY: Int64,
-        scaleY: Int64,
-        translateX: Int64,
-        translateY: Int64
-    ): Unit {
-        setTransform(
-            Float64(scaleX),
-            Float64(skewX),
-            Float64(skewY),
-            Float64(scaleY),
-            Float64(translateX),
-            Float64(translateY)
-        )
     }
 
     @!APILevel[
@@ -1408,15 +1185,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextTranslate(this.getID(), x, y)
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func translate(x: Int64, y: Int64): Unit {
-        translate(Float64(x), Float64(y))
     }
 
     @!APILevel[
@@ -1455,26 +1223,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func createLinearGradient(x0: Int64, y0: Int64, x1: Int64, y1: Int64): CanvasGradient {
-        return createLinearGradient(Float64(x0), Float64(y0), Float64(x1), Float64(y1))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func createRadialGradient(x0: Float64, y0: Float64, r0: Float64, x1: Float64, y1: Float64, r1: Float64): CanvasGradient {
         return CanvasGradient(this.getID(), x0, y0, r0, x1, y1, r1)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func createRadialGradient(x0: Int64, y0: Int64, r0: Int64, x1: Int64, y1: Int64, r1: Int64): CanvasGradient {
-        return createRadialGradient(Float64(x0), Float64(y0), Float64(r0), Float64(x1), Float64(y1), Float64(r1))
     }
 
     @!APILevel[
@@ -1487,15 +1237,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
             let gradientId = FfiOHOSAceFrameworkRenderingContextCreateConicGradient(this.getID(), startAngle, x, y)
             return CanvasGradient(gradientId)
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func createConicGradient(startAngle: Int64, x: Int64, y: Int64): CanvasGradient {
-        return createConicGradient(Float64(startAngle), Float64(x), Float64(y))
     }
 
     @!APILevel[
@@ -1519,15 +1260,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func drawImage(image: ImageBitmap, dx: Int64, dy: Int64): Unit {
-        drawImage(image, Float64(dx), Float64(dy))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func drawImage(image: ImageBitmap, dx: Float64, dy: Float64, dWidth: Float64, dHeight: Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithImageBitMap(
@@ -1536,15 +1268,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
                 ImageInfo(CanvasImageType.CoordinatesAndSize.getValue(), 0.0, 0.0, 0.0, 0.0, dx, dy, dWidth, dHeight)
             )
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func drawImage(image: ImageBitmap, dx: Int64, dy: Int64, dWidth: Int64, dHeight: Int64): Unit {
-        drawImage(image, Float64(dx), Float64(dy), Float64(dWidth), Float64(dHeight))
     }
 
     @!APILevel[
@@ -1580,35 +1303,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
                 )
             )
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func drawImage(
-        image: ImageBitmap,
-        sx: Int64,
-        sy: Int64,
-        sWidth: Int64,
-        sHeight: Int64,
-        dx: Int64,
-        dy: Int64,
-        dWidth: Int64,
-        dHeight: Int64
-    ): Unit {
-        drawImage(
-            image,
-            Float64(sx),
-            Float64(sy),
-            Float64(sWidth),
-            Float64(sHeight),
-            Float64(dx),
-            Float64(dy),
-            Float64(dWidth),
-            Float64(dHeight)
-        )
     }
 
     @!APILevel[
@@ -1631,15 +1325,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func drawImage(pixelMap: PixelMap, dx: Int64, dy: Int64): Unit {
-        drawImage(pixelMap, Float64(dx), Float64(dy))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func drawImage(pixelMap: PixelMap, dx: Float64, dy: Float64, dWidth: Float64, dHeight: Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithPixelMap(
@@ -1648,15 +1333,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
                 ImageInfo(CanvasImageType.CoordinatesAndSize.getValue(), 0.0, 0.0, 0.0, 0.0, dx, dy, dWidth, dHeight)
             )
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func drawImage(pixelMap: PixelMap, dx: Int64, dy: Int64, dWidth: Int64, dHeight: Int64): Unit {
-        drawImage(pixelMap, Float64(dx), Float64(dy), Float64(dWidth), Float64(dHeight))
     }
 
     @!APILevel[
@@ -1699,35 +1375,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func drawImage(
-        pixelMap: PixelMap,
-        sx: Int64,
-        sy: Int64,
-        sWidth: Int64,
-        sHeight: Int64,
-        dx: Int64,
-        dy: Int64,
-        dWidth: Int64,
-        dHeight: Int64
-    ): Unit {
-        drawImage(
-            pixelMap,
-            Float64(sx),
-            Float64(sy),
-            Float64(sWidth),
-            Float64(sHeight),
-            Float64(dx),
-            Float64(dy),
-            Float64(dWidth),
-            Float64(dHeight)
-        )
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func getPixelMap(left: Float64, top: Float64, width: Float64, height: Float64): PixelMap {
         let id = unsafe {
             FfiOHOSAceFrameworkRenderingContextGetPixelMap(
@@ -1739,15 +1386,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
             )
         }
         return PixelMap(id)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getPixelMap(left: Int64, top: Int64, width: Int64, height: Int64): PixelMap {
-        return getPixelMap(Float64(left), Float64(top), Float64(width), Float64(height))
     }
 
     @!APILevel[
@@ -1811,9 +1449,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func transferFromImageBitmap(image: ImageBitmap): Unit {
+    public func transferFromImageBitmap(bitmap: ImageBitmap): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextTransferFromImageBitmap(this.getID(), image.getID())
+            FfiOHOSAceFrameworkRenderingContextTransferFromImageBitmap(this.getID(), bitmap.getID())
         }
     }
 
@@ -1822,9 +1460,11 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func height(): Float64 {
-        unsafe {
-            return FfiOHOSAceFrameworkRenderingContextGetHight(this.getID());
+    public prop height: Float64 {
+        get() {
+            unsafe {
+                return FfiOHOSAceFrameworkRenderingContextGetHight(this.getID())
+            }
         }
     }
 
@@ -1833,9 +1473,11 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func width(): Float64 {
-        unsafe {
-            return FfiOHOSAceFrameworkRenderingContextGetWidth(this.getID());
+    public prop width: Float64 {
+        get() {
+            unsafe {
+                return FfiOHOSAceFrameworkRenderingContextGetWidth(this.getID())
+            }
         }
     }
 
@@ -1844,12 +1486,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setPixelMap(pixelMap: PixelMap): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetPixelMap(
-                this.getID(),
-                pixelMap.getID()
-            )
+    public func setPixelMap(pixelMap: Option<PixelMap>): Unit {
+        match (pixelMap) {
+            case Some(v) =>
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetPixelMap(
+                        this.getID(),
+                        v.getID()
+                    )
+                }
+            case None => ()
         }
     }
 
@@ -1907,15 +1553,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func createImageData(sw: Int64, sh: Int64): ImageData {
-        return createImageData(Float64(sw), Float64(sh))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func createImageData(imageData: ImageData): ImageData {
         unsafe {
             let imageDataId = FfiOHOSAceFrameworkRenderingContextCreateImageDataWithImageData(this.getID(),
@@ -1941,28 +1578,11 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func getImageData(sx: Int64, sy: Int64, sw: Int64, sh: Int64): ImageData {
-        return getImageData(Float64(sx), Float64(sy), Float64(sw), Float64(sh))
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func putImageData(imageData: ImageData, dx: Float64, dy: Float64): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextPutImageData(this.getID(), imageData.getID(), dx, dy)
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func putImageData(imageData: ImageData, dx: Int64, dy: Int64): Unit {
-        putImageData(imageData, Float64(dx), Float64(dy))
+    public func putImageData(imageData: ImageData, dx: Length, dy: Length): Unit {
+        // TODO
+        // unsafe {
+        //     FfiOHOSAceFrameworkRenderingContextPutImageData(this.getID(), imageData.getID(), dx, dy)
+        // }
     }
 
     @!APILevel[
@@ -1983,30 +1603,5 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
             FfiOHOSAceFrameworkRenderingContextPutImageDataWithDirty(this.getID(), imageData.getID(), dx, dy, dirtyX,
                 dirtyY, dirtyWidth, dirtyHeight)
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func putImageData(
-        imageData: ImageData,
-        dx: Int64,
-        dy: Int64,
-        dirtyX: Int64,
-        dirtyY: Int64,
-        dirtyWidth: Int64,
-        dirtyHeight: Int64
-    ): Unit {
-        putImageData(
-            imageData,
-            Float64(dx),
-            Float64(dy),
-            Float64(dirtyX),
-            Float64(dirtyY),
-            Float64(dirtyWidth),
-            Float64(dirtyHeight)
-        )
     }
 }

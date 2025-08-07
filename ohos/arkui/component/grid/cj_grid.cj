@@ -21,6 +21,8 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import ohos.resource.*
+import std.convert.*
 
 foreign {
     func FfiOHOSAceFrameworkGridCreate(): Unit
@@ -122,34 +124,22 @@ public open class Grid <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(scroller: Scroller) {
-        unsafe {
-            FfiOHOSAceFrameworkGridCreateScroller(scroller.getID())
+    public init(scroller!: Option<Scroller> = Option.None, child!: Option<() -> Unit> = Option.None) {
+        match(scroller) {
+            case Some(v) =>
+                unsafe {
+                    FfiOHOSAceFrameworkGridCreateScroller(v.getID())
+                }
+            case None =>
+                unsafe {
+                    FfiOHOSAceFrameworkGridCreate()
+                }
         }
-    }
+        match(child) {
+           case Some(v) => this.child = v
+           case None => ()
+        }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(child: () -> Unit) {
-        unsafe {
-            FfiOHOSAceFrameworkGridCreate()
-        }
-        this.child = child
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(scroller: Scroller, child: () -> Unit) {
-        unsafe {
-            FfiOHOSAceFrameworkGridCreateScroller(scroller.getID())
-        }
-        this.child = child
     }
 
     @!APILevel[
@@ -159,9 +149,9 @@ public open class Grid <: ScrollableBase {
     ]
     public func columnsTemplate(value: String): This {
         unsafe {
-            var unsafeValue = LibC.mallocCString(value)
-            FfiOHOSAceFrameworkGridColumnsTemplate(unsafeValue)
-            LibC.free(unsafeValue)
+            try (unsafeValue = LibC.mallocCString(value).asResource()) {
+                FfiOHOSAceFrameworkGridColumnsTemplate(unsafeValue.value)
+            }
         }
         this
     }
@@ -173,9 +163,9 @@ public open class Grid <: ScrollableBase {
     ]
     public func rowsTemplate(value: String): This {
         unsafe {
-            var unsafeValue = LibC.mallocCString(value)
-            FfiOHOSAceFrameworkGridRowsTemplate(unsafeValue)
-            LibC.free(unsafeValue)
+            try (unsafeValue = LibC.mallocCString(value).asResource()) {
+                FfiOHOSAceFrameworkGridRowsTemplate(unsafeValue.value)
+            }
         }
         this
     }
@@ -197,9 +187,9 @@ public open class Grid <: ScrollableBase {
         }
 
         unsafe {
-            var unsafeValue = LibC.mallocCString(valueString)
-            FfiOHOSAceFrameworkGridColumnsGapWithString(unsafeValue)
-            LibC.free(unsafeValue)
+            try (unsafeValue = LibC.mallocCString(valueString).asResource()) {
+                FfiOHOSAceFrameworkGridColumnsGapWithString(unsafeValue.value)
+            }
         }
         this
     }
@@ -221,9 +211,9 @@ public open class Grid <: ScrollableBase {
         }
 
         unsafe {
-            var unsafeValue = LibC.mallocCString(valueString)
-            FfiOHOSAceFrameworkGridRowsGapWithString(unsafeValue)
-            LibC.free(unsafeValue)
+            try (unsafeValue = LibC.mallocCString(valueString).asResource()) {
+                FfiOHOSAceFrameworkGridRowsGapWithString(unsafeValue.value)
+            }
         }
         this
     }
@@ -233,31 +223,37 @@ public open class Grid <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollBar(value: BarState): This {
+    public func cachedCount(count: Int32): This {
+        cachedCount(count, false)
+    }
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func cachedCount(count: Int32, show: Bool): This {
+        unsafe {
+            FfiOHOSAceFrameworkGridCachedCount(count, show)
+        }
+        this
+    }
+
+    protected func scrollBarInner(value: BarState): This {
         unsafe {
             FfiOHOSAceFrameworkGridScrollBar(value.getValue())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scrollBarColor(color: ResourceColor): This {
+    protected func scrollBarColorInner(color: ResourceColor): This {
         unsafe {
             FfiOHOSAceFrameworkGridScrollBarColor(transAppResourceToResourceColor(color))
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scrollBarWidth(value: Length): This {
+    protected func scrollBarWidthInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkGridScrollBarWidth(value_.value, value_.unitType.getValue())
@@ -265,45 +261,14 @@ public open class Grid <: ScrollableBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func cachedCount(cacheCount: Int32): This {
-        cachedCount(cacheCount, false)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func cachedCount(cacheCount: Int32, show: Bool): This {
-        unsafe {
-            FfiOHOSAceFrameworkGridCachedCount(cacheCount, show)
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func enableScrollInteraction(isEnable: Bool): This {
+    protected func enableScrollInteractionInner(isEnable: Bool): This {
         unsafe {
             FfiOHOSAceFrameworkGridEnableScrollInteraction(isEnable)
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func nestedScroll(value: NestedScrollOptions): This {
+    protected func nestedScrollInner(value: NestedScrollOptions): This {
         let localScrollForward = value.scrollForward.getValue()
         let localScrollBackward = value.scrollBackward.getValue()
         unsafe {
@@ -312,84 +277,47 @@ public open class Grid <: ScrollableBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func friction(value: Float64): This {
+    protected func frictionInner(value: Float64): This {
         unsafe {
             FfiOHOSAceFrameworkGridFriction(value)
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func friction(value: Int32): This {
-        friction(Float64(value))
+    protected func frictionInner(value: AppResource): This {
+        var realValue: Float64 = 0.0
+        let t = Float64.tryParse(getResourceString(value))
+        match (t) {
+            case Some(n) => realValue = n
+            case None => BaseLog.debug("AppResource type param of friction func convert to Float64 fail.");
+        }
+        frictionInner(realValue)
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onScrollIndex(callback: (UInt32) -> Unit): This {
-        let lambdaData = Callback1Param<UInt32, Unit>(callback);
+    protected func onReachStartInner(event: () -> Unit): This {
         unsafe {
-            FfiOHOSAceFrameworkGridOnScrollIndex(lambdaData.getID())
+            FfiOHOSAceFrameworkGridOnReachStart(Callback0Param<Unit>(event).getID())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onReachStart(callback: () -> Unit): This {
+    protected func onReachEndInner(event: () -> Unit): This {
         unsafe {
-            FfiOHOSAceFrameworkGridOnReachStart(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkGridOnReachEnd(Callback0Param<Unit>(event).getID())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onReachEnd(callback: () -> Unit): This {
+    protected func onScrollStartInner(event: () -> Unit): This {
         unsafe {
-            FfiOHOSAceFrameworkGridOnReachEnd(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkGridOnScrollStart(Callback0Param<Unit>(event).getID())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onScrollStart(callback: () -> Unit): This {
+    protected func onScrollStopInner(event: () -> Unit): This {
         unsafe {
-            FfiOHOSAceFrameworkGridOnScrollStart(Callback0Param<Unit>(callback).getID())
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onScrollStop(callback: () -> Unit): This {
-        unsafe {
-            FfiOHOSAceFrameworkGridOnScrollStop(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkGridOnScrollStop(Callback0Param<Unit>(event).getID())
         }
         this
     }

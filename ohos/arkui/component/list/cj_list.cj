@@ -22,6 +22,8 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import ohos.resource.*
+import std.convert.*
 
 @C
 struct CJVisibleListContentInfo {
@@ -42,6 +44,24 @@ struct LanesParams {
         let gutter: Float64,
         let gutterUnit: Int32
     ) {}
+}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class onScrollFrameBeginHandleResult {
+    public var offsetRemain: Float64
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(offsetRemain!: Float64) {
+        this.offsetRemain = offsetRemain
+    }
 }
 
 foreign {
@@ -158,24 +178,20 @@ foreign {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class List <: ScrollableBase {
-    static let spaceDefault: Int64 = 0
-    static let initialIndexDefault: Int32 = 0
-    static var scrollerIdDefault: Int64 = -1
-
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        space!: Int64 = spaceDefault,
-        initialIndex!: Int32 = initialIndexDefault,
+        space!: Int64 = 0,
+        initialIndex!: Int32 = 0,
         scroller!: ?Scroller = Option<Scroller>.None,
         child!: () -> Unit
     ) {
         let scrollerID = match (scroller) {
             case Some(v) => v.getID()
-            case _ => scrollerIdDefault
+            case _ => -1
         }
         unsafe {
             FfiOHOSAceFrameworkListCreate(Float64(space), LENGTH_VP, initialIndex, scrollerID)
@@ -190,7 +206,7 @@ public class List <: ScrollableBase {
         }
         this
     }
-    
+
     protected override func heightInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
@@ -254,46 +270,9 @@ public class List <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func chainAnimation(flag: Bool): This {
+    public func chainAnimation(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkListSetChainAnimation(flag)
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scrollBar(value: BarState): This {
-        unsafe {
-            FfiOHOSAceFrameworkListSetScrollBar(value.getValue())
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scrollBarColor(color: ResourceColor): This {
-        unsafe {
-            FfiOHOSAceFrameworkListScrollBarColor(transAppResourceToResourceColor(color))
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scrollBarWidth(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkListScrollBarWidth(value_.value, value_.unitType.getValue())
+            FfiOHOSAceFrameworkListSetChainAnimation(value)
         }
         this
     }
@@ -315,9 +294,9 @@ public class List <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func multiSelectable(flag: Bool): This {
+    public func multiSelectable(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkListSetMultiSelectable(flag)
+            FfiOHOSAceFrameworkListSetMultiSelectable(value)
         }
         this
     }
@@ -377,12 +356,29 @@ public class List <: ScrollableBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func friction(value: Float64): This {
+    protected func scrollBarInner(value: BarState): This {
+        unsafe {
+            FfiOHOSAceFrameworkListSetScrollBar(value.getValue())
+        }
+        this
+    }
+
+    protected func scrollBarColorInner(color: ResourceColor): This {
+        unsafe {
+            FfiOHOSAceFrameworkListScrollBarColor(transAppResourceToResourceColor(color))
+        }
+        this
+    }
+
+    protected func scrollBarWidthInner(value: Length): This {
+        var value_ = transAppResourceToLength(value)
+        unsafe {
+            FfiOHOSAceFrameworkListScrollBarWidth(value_.value, value_.unitType.getValue())
+        }
+        this
+    }
+
+    protected func frictionInner(value: Float64): This {
         var friction: Float64 = 0.75
         if (value > 0.0) {
             friction = value
@@ -392,24 +388,25 @@ public class List <: ScrollableBase {
         }
         this
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func enableScrollInteraction(flag: Bool): This {
+
+    protected func frictionInner(value: AppResource): This {
+        var realValue: Float64 = 0.0
+        let t = Float64.tryParse(getResourceString(value))
+        match (t) {
+            case Some(n) => realValue = n
+            case None => BaseLog.debug("AppResource type param of friction func convert to Float64 fail.");
+        }
+        frictionInner(realValue)
+    }
+
+    protected func enableScrollInteractionInner(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkListSetEnableScrollInteraction(flag)
+            FfiOHOSAceFrameworkListSetEnableScrollInteraction(value)
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func nestedScroll(value: NestedScrollOptions): This {
+    protected func nestedScrollInner(value: NestedScrollOptions): This {
         let localScrollForward = value.scrollForward.getValue()
         let localScrollBackward = value.scrollBackward.getValue()
         unsafe {
@@ -423,10 +420,10 @@ public class List <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollIndex(callback: (Int32, Int32) -> Unit): This {
-        let lambdaData = Callback2Param<Int32, Int32, Unit>(callback);
+    public func onScrollIndex(event: (Int32, Int32, Int32) -> Unit): This {
+        let lambdaData = Callback3Param<Int32, Int32, Int32, Unit>(event);
         unsafe {
-            FfiOHOSAceFrameworkListSetScrollIndexCallback(lambdaData.getID())
+            FfiOHOSAceFrameworkListSetOnScrollIndexCallback(lambdaData.getID())
         }
         this
     }
@@ -436,9 +433,10 @@ public class List <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollFrameBegin(callback: (Float64, ScrollState) -> Float64): This {
-        let wrapper = {
-            offset: Float64, state: Int32 => callback(offset, ScrollState.parseValue(state))
+    public func onScrollFrameBegin(event: (Float64, ScrollState) -> onScrollFrameBeginHandleResult): This {
+        let wrapper = { offset: Float64, state: Int32 =>
+            let res = event(offset, ScrollState.parseValue(state))
+            res.offsetRemain
         }
         let lambdaData = Callback2Param<Float64, Int32, Float64>(wrapper)
         unsafe {
@@ -447,52 +445,32 @@ public class List <: ScrollableBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onReachStart(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback)
+    protected func onReachStartInner(event: () -> Unit): This {
+        let lambdaData = Callback0Param<Unit>(event)
         unsafe {
             FfiOHOSAceFrameworkListSetOnReachStartCallback(lambdaData.getID())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onReachEnd(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback)
+    protected func onReachEndInner(event: () -> Unit): This {
+        let lambdaData = Callback0Param<Unit>(event)
         unsafe {
             FfiOHOSAceFrameworkListSetOnReachEndCallback(lambdaData.getID())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onScrollStart(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback)
+    protected func onScrollStartInner(event: () -> Unit): This {
+        let lambdaData = Callback0Param<Unit>(event)
         unsafe {
             FfiOHOSAceFrameworkListSetOnScrollStartCallback(lambdaData.getID())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onScrollStop(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback)
+    protected func onScrollStopInner(event: () -> Unit): This {
+        let lambdaData = Callback0Param<Unit>(event)
         unsafe {
             FfiOHOSAceFrameworkListSetOnScrollStopCallback(lambdaData.getID())
         }

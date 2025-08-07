@@ -94,9 +94,9 @@ public abstract class ShapeComponent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fill(color: ResourceColor): This {
+    public func fill(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkShapeSetFill(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkShapeSetFill(transAppResourceToResourceColor(value))
         }
         this
     }
@@ -119,14 +119,7 @@ public abstract class ShapeComponent <: ContainerBase {
         }
         this
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func fillOpacity(value: Int64): This {
-        fillOpacity(Float64(value))
-    }
+
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -149,9 +142,9 @@ public abstract class ShapeComponent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func stroke(color: ResourceColor): This {
+    public func stroke(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkShapeSetStroke(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkShapeSetStroke(transAppResourceToResourceColor(value))
         }
         this
     }
@@ -168,12 +161,12 @@ public abstract class ShapeComponent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeDashArray(dashArray: Array<Length>): This {
-        let vecValueHandle = FFIVectorFloat64(dashArray.size)
-        let vecUnitHandle = FFIVectorInt32(dashArray.size)
-        for (i in 0..dashArray.size) {
-            vecValueHandle.setElement(i, dashArray[i].value)
-            vecUnitHandle.setElement(i, dashArray[i].unitType.getValue())
+    public func strokeDashArray(value: Array<Length>): This {
+        let vecValueHandle = FFIVectorFloat64(value.size)
+        let vecUnitHandle = FFIVectorInt32(value.size)
+        for (i in 0..value.size) {
+            vecValueHandle.setElement(i, value[i].value)
+            vecUnitHandle.setElement(i, value[i].unitType.getValue())
         }
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeDashArray(
@@ -198,8 +191,8 @@ public abstract class ShapeComponent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeDashOffset(dashOffset: Length): This {
-        var dashOffset_ = transAppResourceToLength(dashOffset)
+    public func strokeDashOffset(value: Length): This {
+        var dashOffset_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeDashOffset(dashOffset_.value, dashOffset_.unitType.getValue())
         }
@@ -218,9 +211,9 @@ public abstract class ShapeComponent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeLineCap(lineCap: LineCapStyle): This {
+    public func strokeLineCap(value: LineCapStyle): This {
         unsafe {
-            FfiOHOSAceFrameworkShapeSetStrokeLineCap(lineCap.getValue())
+            FfiOHOSAceFrameworkShapeSetStrokeLineCap(value.getValue())
         }
         this
     }
@@ -237,9 +230,9 @@ public abstract class ShapeComponent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeLineJoin(lineJoin: LineJoinStyle): This {
+    public func strokeLineJoin(value: LineJoinStyle): This {
         unsafe {
-            FfiOHOSAceFrameworkShapeSetStrokeLineJoin(lineJoin.getValue())
+            FfiOHOSAceFrameworkShapeSetStrokeLineJoin(value.getValue())
         }
         this
     }
@@ -256,24 +249,11 @@ public abstract class ShapeComponent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func strokeMiterLimit(miterLimit: Float64): This {
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeMiterLimit(miterLimit)
         }
         this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func strokeMiterLimit(miterLimit: Int64): This {
-        strokeMiterLimit(Float64(miterLimit))
     }
 
     /**
@@ -294,14 +274,7 @@ public abstract class ShapeComponent <: ContainerBase {
         }
         this
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func strokeOpacity(value: Int64): This {
-        strokeOpacity(Float64(value))
-    }
+
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -344,14 +317,27 @@ public abstract class ShapeComponent <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func antiAlias(antiAlias: Bool): This {
+    public func antiAlias(value: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkShapeSetAntiAlias(antiAlias)
+            FfiOHOSAceFrameworkShapeSetAntiAlias(value)
         }
         this
     }
 
-    protected override func widthInner(value: Length): This {
+    /**
+     * Sets the shape width.
+     *
+     * @param value: Shape width
+     * @return ShapeComponent instance
+     * @since 11
+     */
+    //TODO
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func width(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkShapeSetWidth(value_.value, value_.unitType.getValue())
@@ -359,7 +345,20 @@ public abstract class ShapeComponent <: ContainerBase {
         this
     }
 
-    protected override func heightInner(value: Length): This {
+    /**
+     * Sets the shape height.
+     *
+     * @param value: Shape height
+     * @return ShapeComponent instance
+     * @since 11
+     */
+    //TODO
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func height(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
             FfiOHOSAceFrameworkShapeSetHeight(value_.value, value_.unitType.getValue())
@@ -367,6 +366,20 @@ public abstract class ShapeComponent <: ContainerBase {
         this
     }
 
+    /**
+     * Sets the shape size.
+     *
+     * @param width: Shape width
+     * @param height: Shape height
+     * @return ShapeComponent instance
+     * @since 11
+     */
+    //TODO
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     protected override func sizeInner(width: Length, height: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
@@ -389,10 +402,11 @@ public class Shape <: ShapeComponent {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init() {
+    public init(child!: () -> Unit = { => }) {
         unsafe {
             FfiOHOSAceFrameworkShapeCreate()
         }
+        this.child = child
     }
 
     @!APILevel[
@@ -400,21 +414,9 @@ public class Shape <: ShapeComponent {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(content!: () -> Unit) {
+    public init(value!: PixelMap) {
         unsafe {
-            FfiOHOSAceFrameworkShapeCreate()
-        }
-        this.child = content
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(target!: PixelMap) {
-        unsafe {
-            FfiOHOSAceFrameworkShapeCreateWithPixelMap(target.getID())
+            FfiOHOSAceFrameworkShapeCreateWithPixelMap(value.getID())
         }
     }
 
@@ -465,14 +467,5 @@ public class Shape <: ShapeComponent {
         }
         vecValueHandle.free()
         this
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func mesh(array: Array<Int64>, column: UInt32, row: UInt32): This {
-        let value = Array<Float64>(array.size) {index => (Float64(array[index]))}
-        mesh(value, column, row)
     }
 }

@@ -106,7 +106,7 @@ public class Path2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func transform(
+    public func setTransform(
         scaleX: Float64,
         skewX: Float64,
         skewY: Float64,
@@ -121,28 +121,6 @@ public class Path2D <: RemoteDataLite {
             );
         }
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func transform(
-        scaleX: Int64,
-        skewX: Int64,
-        skewY: Int64,
-        scaleY: Int64,
-        translateX: Int64,
-        translateY: Int64
-    ): Unit {
-        transform(
-            Float64(scaleX),
-            Float64(skewX),
-            Float64(skewY),
-            Float64(scaleY),
-            Float64(translateX),
-            Float64(translateY)
-        )
-    }
 
     @!APILevel[
         21,
@@ -154,14 +132,6 @@ public class Path2D <: RemoteDataLite {
             FfiOHOSAceFrameworkCanvasPathMoveTo(this.getID(), x, y);
         }
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func moveTo(x: Int64, y: Int64): Unit {
-        moveTo(Float64(x), Float64(y))
-    }
 
     @!APILevel[
         21,
@@ -172,14 +142,6 @@ public class Path2D <: RemoteDataLite {
         unsafe {
             FfiOHOSAceFrameworkCanvasPathLineTo(this.getID(), x, y);
         }
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func lineTo(x: Int64, y: Int64): Unit {
-        lineTo(Float64(x), Float64(y))
     }
 
     @!APILevel[
@@ -193,27 +155,11 @@ public class Path2D <: RemoteDataLite {
         radius: Float64,
         startAngle: Float64,
         endAngle: Float64,
-        anticlockwise!: Bool = false
+        counterclockwise!: Bool = false
     ): Unit {
         unsafe {
-            FfiOHOSAceFrameworkCanvasPathArc(this.getID(), ArcParams(x, y, radius, startAngle, endAngle), anticlockwise);
+            FfiOHOSAceFrameworkCanvasPathArc(this.getID(), ArcParams(x, y, radius, startAngle, endAngle), counterclockwise);
         }
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func arc(
-        x: Int64,
-        y: Int64,
-        radius: Int64,
-        startAngle: Int64,
-        endAngle: Int64,
-        anticlockwise!: Bool = false
-    ): Unit {
-        arc(Float64(x), Float64(y), Float64(radius), Float64(startAngle), Float64(endAngle),
-            anticlockwise: anticlockwise)
     }
 
     @!APILevel[
@@ -232,20 +178,6 @@ public class Path2D <: RemoteDataLite {
             FfiOHOSAceFrameworkCanvasPathArcTo(this.getID(), ArcToParams(x1, y1, x2, y2, radius));
         }
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func arcTo(
-        x1: Int64,
-        y1: Int64,
-        x2: Int64,
-        y2: Int64,
-        radius: Int64
-    ): Unit {
-        arcTo(Float64(x1), Float64(y1), Float64(x2), Float64(y2), Float64(radius))
-    }
 
     @!APILevel[
         21,
@@ -261,19 +193,6 @@ public class Path2D <: RemoteDataLite {
         unsafe {
             FfiOHOSAceFrameworkCanvasPathQuadraticCurveTo(this.getID(), QuadraticCurveToParams(cpx, cpy, x, y));
         }
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func quadraticCurveTo(
-        cpx: Int64,
-        cpy: Int64,
-        x: Int64,
-        y: Int64
-    ): Unit {
-        quadraticCurveTo(Float64(cpx), Float64(cpy), Float64(x), Float64(y))
     }
 
     @!APILevel[
@@ -293,21 +212,6 @@ public class Path2D <: RemoteDataLite {
             FfiOHOSAceFrameworkCanvasPathBezierCurveTo(this.getID(), BezierCurveToParams(cp1x, cp1y, cp2x, cp2y, x, y));
         }
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func bezierCurveTo(
-        cp1x: Int64,
-        cp1y: Int64,
-        cp2x: Int64,
-        cp2y: Int64,
-        x: Int64,
-        y: Int64
-    ): Unit {
-        bezierCurveTo(Float64(cp1x), Float64(cp1y), Float64(cp2x), Float64(cp2y), Float64(x), Float64(y))
-    }
 
     @!APILevel[
         21,
@@ -322,41 +226,15 @@ public class Path2D <: RemoteDataLite {
         rotation: Float64,
         startAngle: Float64,
         endAngle: Float64,
-        anticlockwise!: Bool = false
+        counterclockwise!: Bool = false
     ): Unit {
         unsafe {
             FfiOHOSAceFrameworkCanvasPathEllipse(
                 this.getID(),
                 EllipseParams(x, y, radiusX, radiusY, rotation, startAngle, endAngle),
-                anticlockwise
+                counterclockwise
             );
         }
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func ellipse(
-        x: Int64,
-        y: Int64,
-        radiusX: Int64,
-        radiusY: Int64,
-        rotation: Int64,
-        startAngle: Int64,
-        endAngle: Int64,
-        anticlockwise!: Bool = false
-    ): Unit {
-        ellipse(
-            Float64(x),
-            Float64(y),
-            Float64(radiusX),
-            Float64(radiusY),
-            Float64(rotation),
-            Float64(startAngle),
-            Float64(endAngle),
-            anticlockwise: anticlockwise
-        )
     }
 
     @!APILevel[
@@ -369,14 +247,7 @@ public class Path2D <: RemoteDataLite {
             FfiOHOSAceFrameworkCanvasPathRect(this.getID(), RectParams(x, y, x + width, y + height));
         }
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func rect(x: Int64, y: Int64, width: Int64, height: Int64): Unit {
-        rect(Float64(x), Float64(y), Float64(width), Float64(height))
-    }
+
     @!APILevel[
         21,
         stagemodelonly: true,

@@ -32,22 +32,14 @@ foreign {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CanvasPattern <: RemoteDataLite {
-    private var isNoneValue: Bool = true
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {}
 
     init(render: Int64, image: ImageBitmap, repetition: Repetition) {
         super(
             unsafe {
-                var repSrc = LibC.mallocCString(repetition.toString())
-                let id = FfiOHOSAceFrameworkRenderingContextCreateCanvasPattern(render, image.getID(), repSrc)
-                LibC.free(repSrc)
-                this.isNoneValue = false
+                var id: Int64 = 0
+                try (repSrc = LibC.mallocCString(repetition.toString()).asResource()) {
+                    id = FfiOHOSAceFrameworkRenderingContextCreateCanvasPattern(render, image.getID(), repSrc.value)
+                }
                 id
             })
     }
@@ -69,14 +61,5 @@ public class CanvasPattern <: RemoteDataLite {
         unsafe {
             FfiOHOSAceFrameworkCanvasPatternSetTransform(this.getID(), transform.getID())
         }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func isNone(): Bool {
-        return this.isNoneValue
     }
 }

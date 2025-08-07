@@ -63,7 +63,6 @@ ohos_cj_library("ohos.arkui.component") {
     "custom_view:ohos.arkui.component.custom_view",
     "sidebar:ohos.arkui.component.sidebar",
     "animate:ohos.arkui.component.animate",
-    "security_component:ohos.arkui.component.security_component",
     "counter:ohos.arkui.component.counter",
     "data_panel:ohos.arkui.component.data_panel",
     "context_menu:ohos.arkui.component.context_menu",
