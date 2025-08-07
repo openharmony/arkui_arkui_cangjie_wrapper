@@ -1113,14 +1113,14 @@ public class PopupMessageOptions {
     /**
      * Sets the color of popup text.
      *
-     * @type { Fonts }
+     * @type { Font }
      * @relation font?: Font;
      */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var font: Fonts
+    public var font: Font
     /**
      * constructor
      */
