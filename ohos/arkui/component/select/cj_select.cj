@@ -23,7 +23,7 @@ import ohos.ffi.*
 import ohos.resource.*
 import ohos.labels.APILevel
 
-public type VectorNativeSelectOptionHandle = CPointer<Unit>
+type VectorNativeSelectOptionHandle = CPointer<Unit>
 
 foreign {
     func FFICJCreateVectorNativeSelectOption(size: Int64): VectorNativeSelectOptionHandle
@@ -112,65 +112,84 @@ struct NativeSelectOption {
     ) {}
 }
 
+/**
+ * Callback of selecting an item from the select event.
+ * 
+ * @typedef {function} OnSelectCallback
+ * @param {Int32} The index of the selected item.
+ * @param {String} The value of the selected item.
+ */
+public type OnSelectCallback = (Int32, String) -> Unit;
+
+/**
+ * The declare of selectOption.
+ *
+ * @interface SelectOption
+ * @relation interface SelectOption
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SelectOption {
+    /**
+     * Option string.
+     *
+     * @type { ResourceStr }
+     * @relation value: ResourceStr
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var value: String
+    public var value: ResourceStr
+    /**
+     * Option icon.
+     *
+     * @type { ResourceStr }
+     * @relation icon?: ResourceStr
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var icon: String
+    public var icon: ResourceStr
+
+    /**
+     * Constructor selectOption.
+     *
+     * @param { ResourceStr } value
+     * @param { ResourceStr } icon
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: String, icon!: String) {
+    public init(value!: ResourceStr, icon!: ResourceStr) {
         this.value = value
         this.icon = icon
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(value: String, icon!: AppResource) {
-        this(value, icon: getResourceMedia(icon))
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(value: AppResource, icon!: String) {
-        this(getResourceString(value), icon: icon)
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(value: AppResource, icon!: AppResource) {
-        this(getResourceString(value), icon: getResourceMedia(icon))
     }
 
     func parseToNative(): NativeSelectOption {
         var valueCString: ?CString = None
         var iconCString: ?CString = None
+        var value_ = match(value) {
+            case v: AppResource => getResourceString(v)
+            case v: String => v
+            case _ => ""
+        }
+        var icon_ = match(icon) {
+            case v: AppResource => getResourceMedia(v)
+            case v: String => v
+            case _ => ""
+        }
         try {
-            valueCString = unsafe { LibC.mallocCString(value) }
-
-            iconCString = unsafe { LibC.mallocCString(icon) }
+            valueCString = unsafe { LibC.mallocCString(value_) }
+            iconCString = unsafe { LibC.mallocCString(icon_) }
         } catch (e: Exception) {
             valueCString?.free()
             iconCString?.free()
@@ -208,59 +227,41 @@ class FFIVectorNativeSelectOption {
     }
 }
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class MenuOffset {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var dx: Length
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var dy: Length
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(dx: Length, dy: Length) {
-        this.dx = transAppResourceToLength(dx)
-        this.dy = transAppResourceToLength(dy)
-    }
-}
-
+/**
+ * Defines Select Component.
+ *
+ * @relation const Select: SelectInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Select <: ViewBase {
+    /**
+     * Called when the select is set.
+     *
+     * @param { Array<SelectOption> } options
+     * @returns { This }
+     * @relation (options: Array<SelectOption>): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(values: Array<SelectOption>) {
-        let vecValueHandle = FFIVectorNativeSelectOption(values.size)
-        let elements: Array<NativeSelectOption> = Array(values.size) {
-            i => values[i].parseToNative()
+    public init(options: Array<SelectOption>) {
+        let vecValueHandle = FFIVectorNativeSelectOption(options.size)
+        let elements: Array<NativeSelectOption> = Array(options.size) {
+            i => options[i].parseToNative()
         }
-        for (i in 0..values.size) {
+        for (i in 0..options.size) {
             vecValueHandle.setElement(i, elements[i])
         }
         unsafe {
             FfiOHOSAceFrameworkSelectCreate(vecValueHandle.getNativeHandle())
         }
-        for (i in 0..values.size) {
+        for (i in 0..options.size) {
             let element = elements[i]
             unsafe {
                 element.value.free()
@@ -270,6 +271,13 @@ public class Select <: ViewBase {
         vecValueHandle.free()
     }
 
+    /**
+     * Sets the serial number of the select item, starting from 0.
+     *
+     * @param { Int32 } value - the serial number of the select item.
+     * @returns { This } the attribute of the select.
+     * @relation selected(value: number | Resource): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -282,29 +290,38 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * Sets the text display of the select button itself.
+     *
+     * @param { ResourceStr } value - the text display of the select button itself.
+     * @returns { This } the attribute of the select.
+     * @relation value(value: ResourceStr): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func value(content: String): This {
+    public func value(value: ResourceStr): This {
+        let content = transResourceStrToString(value)
         unsafe {
-            var unsafeContent = LibC.mallocCString(content)
-            FfiOHOSAceFrameworkSelectSetValue(unsafeContent)
-            unsafeContent.free()
+            try (unsafeContent = LibC.mallocCString(content).asResource()) {
+                FfiOHOSAceFrameworkSelectSetValue(unsafeContent.value)
+            }
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func value(content: AppResource): This {
-        value(getResourceString(content))
-    }
-
+    /**
+     * Sets the text properties of the select button itself.
+     *
+     * @param { FontStyle } style
+     * @param { FontWeight } weight
+     * @param { Length } size
+     * @param { ResourceStr } family
+     * @returns { This }
+     * @relation font(value: Font): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -314,12 +331,13 @@ public class Select <: ViewBase {
         style!: FontStyle = FontStyle.Normal,
         weight!: FontWeight = FontWeight.Medium,
         size!: Length = 16.vp,
-        family!: String = "sans-serif"
+        family!: ResourceStr = "sans-serif"
     ): This {
         var size_ = transAppResourceToLength(size)
+        var family_ = transResourceStrToString(family)
         unsafe {
             try (weightValue = LibC.mallocCString(weight.getValue()).asResource(),
-                familyValue = LibC.mallocCString(family).asResource()) {
+                familyValue = LibC.mallocCString(family_).asResource()) {
                 FfiOHOSAceFrameworkSelectSetFont(
                     style.getValue(),
                     weightValue.value,
@@ -332,6 +350,13 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * Sets the text color of the select button itself.
+     *
+     * @param { ResourceColor } value
+     * @returns { This }
+     * @relation fontColor(value: ResourceColor): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -344,6 +369,13 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * Sets the background color of the selected items in the select.
+     *
+     * @param { ResourceColor } value
+     * @returns { This }
+     * @relation selectedOptionBgColor(value: ResourceColor): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -356,6 +388,16 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * Sets the text style of the selected items in the select.
+     *
+     * @param { FontStyle } style
+     * @param { FontWeight } weight
+     * @param { Length } size
+     * @param { String } family
+     * @returns { This }
+     * @relation selectedOptionFont(selectFont: Optional<Font>): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -383,6 +425,13 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * Sets the text color of the selected item in the select.
+     *
+     * @param { ResourceColor } value
+     * @returns { This }
+     * @relation selectedOptionFontColor(value: ResourceColor): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -395,6 +444,13 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * Sets the background color of the select item.
+     *
+     * @param { ResourceColor } value
+     * @returns { This }
+     * @relation optionBgColor(value: ResourceColor): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -407,6 +463,16 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * Sets the text style for select items.
+     *
+     * @param { FontStyle } style
+     * @param { FontWeight } weight
+     * @param { Length } size
+     * @param { ResourceStr } family
+     * @returns { This }
+     * @relation optionFont(value: Font): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -416,12 +482,13 @@ public class Select <: ViewBase {
         style!: FontStyle = FontStyle.Normal,
         weight!: FontWeight = FontWeight.Medium,
         size!: Length = 16.vp,
-        family!: String = "sans-serif"
+        family!: ResourceStr = "sans-serif"
     ): This {
         var size_ = transAppResourceToLength(size)
+        var family_ = transResourceStrToString(family)
         unsafe {
             try (weightValue = LibC.mallocCString(weight.getValue()).asResource(),
-                familyValue = LibC.mallocCString(family).asResource()) {
+                familyValue = LibC.mallocCString(family_).asResource()) {
                 FfiOHOSAceFrameworkSelectSetOptionFont(
                     style.getValue(),
                     weightValue.value,
@@ -434,6 +501,13 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * Sets the text color for select items.
+     *
+     * @param { ResourceColor } value
+     * @returns { This }
+     * @relation optionFontColor(value: ResourceColor): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -446,6 +520,13 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * Set the space for text and icon in select
+     *
+     * @param { Length } value - indicates the length of the space
+     * @returns { This }
+     * @relation space(value: Length): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -459,6 +540,13 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * Set the layout direction for text and arrow in select
+     *
+     * @param { ArrowPosition } value - indicates the arrow position in the select
+     * @returns { This }
+     * @relation arrowPosition(value: ArrowPosition): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -471,12 +559,20 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * Set the alignment between select and menu.
+     *
+     * @param { MenuAlignType } alignType - The type of alignment between select and menu.
+     * @param { Offset } offset - The offset between select and menu.
+     * @returns { This } the attribute of the select.
+     * @relation menuAlign(alignType: MenuAlignType, offset?: Offset): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func menuAlign(alignType: MenuAlignType, offset!: MenuOffset): This {
+    public func menuAlign(alignType!: MenuAlignType, offset!: Offset): This {
         unsafe {
             let dx = offset.dx
             let dy = offset.dy
@@ -486,6 +582,13 @@ public class Select <: ViewBase {
         this
     }
 
+    /** 
+     * Set the width of each option and set whether the option width fit the trigger.
+     *
+     * @param { OptionWidthMode } value - The length of option width and decide option width to fit trigger or content.
+     * @returns { This } the attribute of the select.
+     * @relation optionWidth(value: Dimension | OptionWidthMode ): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -493,13 +596,20 @@ public class Select <: ViewBase {
     ]
     public func optionWidth(value: OptionWidthMode): This {
         unsafe {
-            var optionWidth = LibC.mallocCString(value.getValue())
-            FfiOHOSAceFrameworkSelectSetOptionWidthWithMode(optionWidth)
-            optionWidth.free()
+            try (optionWidth = LibC.mallocCString(value.getValue()).asResource()) {
+                FfiOHOSAceFrameworkSelectSetOptionWidthWithMode(optionWidth.value)
+            }
         }
         this
     }
 
+    /** 
+     * Set the width of each option and set whether the option width fit the trigger.
+     *
+     * @param { Length } value - The length of option width and decide option width to fit trigger or content.
+     * @returns { This } the attribute of the select.
+     * @relation optionWidth(value: Dimension | OptionWidthMode ): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -513,6 +623,13 @@ public class Select <: ViewBase {
         this
     }
 
+    /** 
+     * Set the height of each option.
+     * 
+     * @param { Length } value - The length of option height.
+     * @returns { This } the attribute of the select.
+     * @relation optionHeight(value: Dimension): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -526,6 +643,13 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * set the menu's background color
+     *
+     * @param { ResourceColor } value - The backgroundColor of menu.
+     * @returns { This } the attribute of the select.
+     * @relation menuBackgroundColor(value: ResourceColor): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -538,6 +662,13 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * set menu background blur Style
+     *
+     * @param { BlurStyle } value - The BackgroundBlurStyle of menu.
+     * @returns { This } the attribute of the select.
+     * @relation menuBackgroundBlurStyle(value: BlurStyle): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -584,12 +715,19 @@ public class Select <: ViewBase {
         this
     }
 
+    /**
+     * Callback for selecting an item from the select.
+     *
+     * @param { function } callback
+     * @returns { This }
+     * @relation onSelect(callback: (index: number, value: string) => void): SelectAttribute
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onSelect(callback: (Int32, String) -> Unit): This {
+    public func onSelect(callback: OnSelectCallback): This {
         let wrapper = {
             index: Int32, value: CString => callback(index, value.toString())
         }
