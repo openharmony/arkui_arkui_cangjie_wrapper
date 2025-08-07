@@ -62,11 +62,11 @@ public class Radio <: ViewBase {
     ]
     public init(value!: String, group!: String) {
         unsafe {
-            let groupStr = LibC.mallocCString(group)
-            let valStr = LibC.mallocCString(value)
-            FfiOHOSAceFrameworkRadioCreate(groupStr, valStr)
-            groupStr.asResource().close()
-            valStr.asResource().close()
+            try (groupStr = LibC.mallocCString(group).asResource(),
+                 valStr = LibC.mallocCString(value).asResource()
+            ) {
+                FfiOHOSAceFrameworkRadioCreate(groupStr.value, valStr.value)
+            }
         }
     }
 
@@ -75,9 +75,9 @@ public class Radio <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func checked(value: Bool): This {
+    public func checked(isChecked: Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkRadioChecked(value)
+            FfiOHOSAceFrameworkRadioChecked(isChecked)
         }
         this
     }
