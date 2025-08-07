@@ -128,9 +128,9 @@ public class PatternLock <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(color: Color): This {
+    public func selectedColor(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkPatternLockSelectedColor(color.toUInt32())
+            FfiOHOSAceFrameworkPatternLockSelectedColor(value.toUInt32())
         }
         this
     }
@@ -140,9 +140,9 @@ public class PatternLock <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func pathColor(color: Color): This {
+    public func pathColor(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkPatternLockPathColor(color.toUInt32())
+            FfiOHOSAceFrameworkPatternLockPathColor(value.toUInt32())
         }
         this
     }
@@ -152,9 +152,9 @@ public class PatternLock <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func activeColor(color: Color): This {
+    public func activeColor(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkPatternLockActiveColor(color.toUInt32())
+            FfiOHOSAceFrameworkPatternLockActiveColor(value.toUInt32())
         }
         this
     }
@@ -164,9 +164,9 @@ public class PatternLock <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func regularColor(color: Color): This {
+    public func regularColor(value: ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkPatternLockRegularColor(color.toUInt32())
+            FfiOHOSAceFrameworkPatternLockRegularColor(value.toUInt32())
         }
         this
     }
