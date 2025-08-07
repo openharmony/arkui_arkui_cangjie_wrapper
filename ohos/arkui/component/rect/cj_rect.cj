@@ -22,14 +22,6 @@ import ohos.base.*
 import ohos.labels.APILevel
 
 foreign {
-    func FfiOHOSAceFrameworkRectInsCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Int64
-
-    func FfiOHOSAceFrameworkRectSetInsRadiusWidth(shapeId: Int64, radiusWidth: Float64, radiusWidthUnit: Int32): Unit
-
-    func FfiOHOSAceFrameworkRectSetInsRadiusHeight(shapeId: Int64, radiusHeight: Float64, radiusHeightUnit: Int32): Unit
-
-    func FfiOHOSAceFrameworkRectSetInsRadius(shapeId: Int64, radius: Float64, radiusUnit: Int32): Unit
-
     func FfiOHOSAceFrameworkRectCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
 
     func FfiOHOSAceFrameworkRectSetRadiusWidth(value: Float64, unit: Int32): Unit
@@ -46,71 +38,6 @@ foreign {
         arrayHeightValue: VectorFloat64Handle,
         arrayHeightUnit: VectorInt32Handle
     ): Unit
-}
-
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class RectShape <: BaseShape {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
-        super(
-            unsafe {
-                var width_ = transAppResourceToLength(width)
-                var height_ = transAppResourceToLength(height)
-                FfiOHOSAceFrameworkRectInsCreate(
-                    width_.value,
-                    width_.unitType.getValue(),
-                    height_.value,
-                    height_.unitType.getValue()
-                )
-            })
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func radiusWidth(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkRectSetInsRadiusWidth(getID(), value_.value, value_.unitType.getValue())
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func radiusHeight(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkRectSetInsRadiusHeight(getID(), value_.value, value_.unitType.getValue())
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func radius(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkRectSetInsRadius(getID(), value_.value, value_.unitType.getValue())
-        }
-        this
-    }
 }
 
 @!APILevel[

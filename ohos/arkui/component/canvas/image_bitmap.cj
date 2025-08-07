@@ -72,7 +72,8 @@ public class ImageBitmap <: RemoteData {
             }
         }
     }
-    internal var src: String = ""
+
+    var src: String = ""
     var hasSrc: Bool = true
     var unit: Int32 = 0
 
@@ -84,12 +85,14 @@ public class ImageBitmap <: RemoteData {
     public init(src: String) {
         super(
             unsafe {
+                var id = 0
                 this.src = src
-                var srcValue = LibC.mallocCString(src)
-                let id = FfiOHOSAceFrameworkImageBitMapCtor(srcValue, this.unit)
-                LibC.free(srcValue)
+                try (srcResouce = LibC.mallocCString(src).asResource()) {
+                    id = FfiOHOSAceFrameworkImageBitMapCtor(srcResouce.value, this.unit)
+                }
                 id
-            })
+            }
+        )
         RemoteDataManager.getInstance().register(this)
     }
 

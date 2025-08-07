@@ -32,9 +32,6 @@ foreign {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScrollBar <: ContainerBase {
-    static let directionDefault: ScrollBarDirection = ScrollBarDirection.Vertical
-    static let stateDefault: BarState = BarState.Auto
-
     @!APILevel[
         21,
         stagemodelonly: true,

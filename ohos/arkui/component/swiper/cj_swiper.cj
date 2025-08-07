@@ -228,29 +228,24 @@ struct CJSwiperContentTransitionProxy {
 
 @!APILevel[
     21,
-    atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-// TODO 名字和Arkts不一致
 public class FontOptions {
     @!APILevel[
         21,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var size: Length
     @!APILevel[
         21,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var weight: FontWeight
     @!APILevel[
         21,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -262,6 +257,7 @@ public class FontOptions {
 
 @!APILevel[
     21,
+    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class Indicator {
@@ -276,6 +272,7 @@ public open class Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func dot(): DotIndicator {
@@ -284,6 +281,7 @@ public open class Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func digit(): DigitIndicator {
@@ -292,6 +290,7 @@ public open class Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func left(value: Length): This {
@@ -301,6 +300,7 @@ public open class Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func top(value: Length): This {
@@ -310,6 +310,7 @@ public open class Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func right(value: Length): This {
@@ -319,6 +320,7 @@ public open class Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bottom(value: Length): This {
@@ -328,6 +330,7 @@ public open class Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func start(value: Length): This {
@@ -337,6 +340,7 @@ public open class Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func end(value: Length): This {
@@ -378,6 +382,7 @@ public open class Indicator {
 
 @!APILevel[
     21,
+    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DotIndicator <: Indicator {
@@ -392,6 +397,7 @@ public class DotIndicator <: Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -407,6 +413,7 @@ public class DotIndicator <: Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func itemWidth(value: Length): This {
@@ -416,6 +423,7 @@ public class DotIndicator <: Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func itemHeight(value: Length): This {
@@ -425,6 +433,7 @@ public class DotIndicator <: Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedItemWidth(value: Length): This {
@@ -434,6 +443,7 @@ public class DotIndicator <: Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedItemHeight(value: Length): This {
@@ -443,6 +453,7 @@ public class DotIndicator <: Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func mask(value: Bool): This {
@@ -452,6 +463,7 @@ public class DotIndicator <: Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ResourceColor): This {
@@ -461,6 +473,7 @@ public class DotIndicator <: Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ResourceColor): This {
@@ -470,6 +483,7 @@ public class DotIndicator <: Indicator {
 
     @!APILevel[
         21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxDisplayCount(value: UInt32): This {
@@ -498,9 +512,7 @@ public class DotIndicator <: Indicator {
 
 @!APILevel[
     21,
-    crossplatform: true,
-    atomicservice: true,
-    form: true,
+    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DigitIndicator <: Indicator {
@@ -511,9 +523,7 @@ public class DigitIndicator <: Indicator {
 
     @!APILevel[
         21,
-        crossplatform: true,
-        atomicservice: true,
-        form: true,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -525,9 +535,7 @@ public class DigitIndicator <: Indicator {
 
     @!APILevel[
         21,
-        crossplatform: true,
-        atomicservice: true,
-        form: true,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ResourceColor): This {
@@ -537,9 +545,7 @@ public class DigitIndicator <: Indicator {
 
     @!APILevel[
         21,
-        crossplatform: true,
-        atomicservice: true,
-        form: true,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedFontColor(value: ResourceColor): This {
@@ -549,9 +555,7 @@ public class DigitIndicator <: Indicator {
 
     @!APILevel[
         21,
-        crossplatform: true,
-        atomicservice: true,
-        form: true,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func digitFont(value: FontOptions): This {
@@ -561,9 +565,7 @@ public class DigitIndicator <: Indicator {
 
     @!APILevel[
         21,
-        crossplatform: true,
-        atomicservice: true,
-        form: true,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedDigitFont(value: FontOptions): This {
@@ -572,27 +574,27 @@ public class DigitIndicator <: Indicator {
     }
 
     func parseCJDigit(): CJDigitIndicator {
-        var mDigitFontWeight: ?CString = None
-        var mSelectedDigitFontWeight: ?CString = None
-        try {
-            mDigitFontWeight = unsafe { LibC.mallocCString(mDigitFont.weight.getValue()) }
-            mSelectedDigitFontWeight = unsafe { LibC.mallocCString(mSelectedDigitFont.weight.getValue()) }
-        } catch (e: Exception) {
-            mDigitFontWeight?.free()
-            mSelectedDigitFontWeight?.free()
-            throw e
+        var res: ?CJDigitIndicator = None
+
+        unsafe {
+            try (
+                mDigitFontWeight = LibC.mallocCString(mDigitFont.weight.getValue()).asResource(),
+                mSelectedDigitFontWeight = LibC.mallocCString(mSelectedDigitFont.weight.getValue()).asResource()
+            ) {
+                res = CJDigitIndicator(
+                    mFontColor,
+                    mSelectedFontColor,
+                    mDigitFont.size.value,
+                    mDigitFont.size.unitType.getValue(),
+                    mDigitFontWeight.value,
+                    mSelectedDigitFont.size.value,
+                    mSelectedDigitFont.size.unitType.getValue(),
+                    mSelectedDigitFontWeight.value,
+                    super.parseToNative()
+                )
+            }
         }
-        return CJDigitIndicator(
-            mFontColor,
-            mSelectedFontColor,
-            mDigitFont.size.value,
-            mDigitFont.size.unitType.getValue(),
-            mDigitFontWeight.getOrThrow(),
-            mSelectedDigitFont.size.value,
-            mSelectedDigitFont.size.unitType.getValue(),
-            mSelectedDigitFontWeight.getOrThrow(),
-            super.parseToNative()
-        )
+        res.getOrThrow({ => throw NoneValueException("ParseCJDigit failed.")})
     }
 }
 
@@ -670,6 +672,7 @@ public class SwiperController <: RemoteDataLite {
 ]
 public class Swiper <: ContainerBase {
     let controllerDefault: SwiperController = SwiperController()
+
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -780,9 +783,7 @@ public class Swiper <: ContainerBase {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func indicator(indicator: DotIndicator): This {
@@ -794,9 +795,7 @@ public class Swiper <: ContainerBase {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func indicator(indicator: DigitIndicator): This {
@@ -889,9 +888,9 @@ public class Swiper <: ContainerBase {
     ]
     public func curve(value: Curve): This {
         unsafe {
-            var content = LibC.mallocCString(value.getValue())
-            FfiOHOSAceFrameworkSwiperSetCurve(content);
-            LibC.free(content)
+            try (content = LibC.mallocCString(value.getValue()).asResource()) {
+                FfiOHOSAceFrameworkSwiperSetCurve(content.value)
+            }
         }
         this
     }
@@ -908,12 +907,6 @@ public class Swiper <: ContainerBase {
         this
     }
 
-    // TODO
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func enabledInner(value: Bool): This {
         unsafe {
             FfiOHOSAceFrameworkSwiperSetEnabled(value)
@@ -921,7 +914,6 @@ public class Swiper <: ContainerBase {
         this
     }
 
-    // TODO
     protected override func widthInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
@@ -930,7 +922,6 @@ public class Swiper <: ContainerBase {
         this
     }
 
-    // TODO
     protected override func heightInner(value: Length): This {
         var value_ = transAppResourceToLength(value)
         unsafe {
@@ -939,7 +930,6 @@ public class Swiper <: ContainerBase {
         this
     }
 
-    // TODO
     protected override func sizeInner(width: Length, height: Length): This {
         var width_ = transAppResourceToLength(width)
         var height_ = transAppResourceToLength(height)
@@ -954,7 +944,6 @@ public class Swiper <: ContainerBase {
         this
     }
 
-    //TODO
     @!APILevel[
         21,
         stagemodelonly: true,

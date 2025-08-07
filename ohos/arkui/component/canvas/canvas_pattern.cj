@@ -26,6 +26,11 @@ foreign {
     func FfiOHOSAceFrameworkCanvasPatternSetTransform(id: Int64, matrixId: Int64): Unit
 }
 
+/**
+ * Describes an opaque object of a template, which is created using the createPattern() method.
+ *
+ * @relation interface CanvasPattern
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -52,6 +57,13 @@ public class CanvasPattern <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * The 2D transformation effect is added. The current transformation matrix is not overwritten and
+     *    the transformations are superimposed for multiple times.
+     *
+     * @param { Matrix2D } transform - 2D transformation matrix.
+     * @relation setTransform(transform?: Matrix2D): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,

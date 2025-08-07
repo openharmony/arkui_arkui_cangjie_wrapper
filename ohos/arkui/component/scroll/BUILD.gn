@@ -24,6 +24,7 @@ ohos_cj_library("ohos.arkui.component.scroll") {
     "../rect:ohos.arkui.component.rect",
     "../util:ohos.arkui.component.util",
     "../../../base:ohos.base",
+    "../../shape:ohos.arkui.shape",
   ]
 
   cj_external_deps = [

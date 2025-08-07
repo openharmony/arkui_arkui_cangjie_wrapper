@@ -13,10 +13,11 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.common
+package ohos.arkui.shape
 
 import ohos.arkui.component.util.*
 import ohos.base.*
+import ohos.ffi.*
 import ohos.labels.APILevel
 
 foreign {

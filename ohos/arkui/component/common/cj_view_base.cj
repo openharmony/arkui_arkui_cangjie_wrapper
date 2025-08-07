@@ -21,6 +21,7 @@ import ohos.base.*
 import ohos.hi_trace_meter.*
 import ohos.labels.APILevel
 import ohos.matrix4.*
+import ohos.arkui.shape.*
 import std.regex.*
 import std.math.*
 import std.convert.*

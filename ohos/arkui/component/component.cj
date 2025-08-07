@@ -20,9 +20,7 @@ public import ohos.arkui.component.relative_container.*
 public import ohos.arkui.component.shape.*
 public import ohos.arkui.component.stepper_item.*
 public import ohos.arkui.component.panel.*
-public import ohos.arkui.component.offscreen_canvas_rendering_context_2d.*
 public import ohos.arkui.component.text_area.*
-public import ohos.arkui.component.gesture.*
 public import ohos.arkui.component.pattern_lock.*
 public import ohos.arkui.component.action_sheet.*
 public import ohos.arkui.component.shared_trasition.*
@@ -40,7 +38,6 @@ public import ohos.arkui.component.date_picker.*
 public import ohos.arkui.component.rating.*
 public import ohos.arkui.component.marquee.*
 public import ohos.arkui.component.alphabet_indexer.*
-public import ohos.arkui.component.polygon.*
 public import ohos.arkui.component.menu_item.*
 public import ohos.arkui.component.recycle.*
 public import ohos.arkui.component.menu.*
@@ -48,13 +45,11 @@ public import ohos.arkui.component.grid_row.*
 public import ohos.arkui.component.path.*
 public import ohos.arkui.component.blank.*
 public import ohos.arkui.component.symbol_span.*
-public import ohos.arkui.component.water_flow.*
 public import ohos.arkui.component.text_timer.*
 public import ohos.arkui.component.progress.*
 public import ohos.arkui.component.web.*
 public import ohos.arkui.component.radio.*
 public import ohos.arkui.component.checkbox.*
-public import ohos.arkui.component.location_button.*
 public import ohos.arkui.component.text_clock.*
 public import ohos.arkui.component.custom_view.*
 public import ohos.arkui.component.sidebar.*
@@ -99,7 +94,6 @@ public import ohos.arkui.component.qrcode.*
 public import ohos.arkui.component.alert_dialog.*
 public import ohos.arkui.component.canvas.*
 public import ohos.arkui.component.scroll_bar.*
-public import ohos.arkui.component.offscreen_canvas.*
 public import ohos.arkui.component.stepper.*
 public import ohos.arkui.component.tab.*
 public import ohos.arkui.component.column.*
@@ -108,13 +102,11 @@ public import ohos.arkui.component.loading_progress.*
 public import ohos.arkui.component.badge.*
 public import ohos.arkui.component.hyperlink.*
 public import ohos.arkui.component.rich_text.*
-public import ohos.arkui.component.paste_button.*
 public import ohos.arkui.component.list.*
 public import ohos.arkui.component.progress_mask.*
 public import ohos.arkui.component.cursor_control.*
 public import ohos.arkui.component.toggle.*
 public import ohos.arkui.component.list_item_group.*
-public import ohos.arkui.component.polyline.*
 public import ohos.arkui.component.image_animator.*
 public import ohos.arkui.component.save_button.*
 public import ohos.arkui.component.search.*

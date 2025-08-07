@@ -330,12 +330,22 @@ foreign {
     ): Unit
 }
 
+/**
+ * Draw context object for the Canvas component.
+ *
+ * @relation declare class CanvasRenderingContext2D extends CanvasRenderer
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CanvasRenderingContext2D <: RemoteDataLite {
+    /**
+     * Init function of the canvas drawing context object, which is used to create a drawing context object.
+     *
+     * @relation constructor(settings?: RenderingContextSettings);
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -351,6 +361,21 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Attributes that describe the fill color and style. The options are as follows:
+     *
+     * @type { string | number | CanvasGradient | CanvasPattern }
+     * string: Color String.
+     * number: Indicates the color with number.
+     * CanvasGradient: Color gradient object. For details, see {@link CanvasGradient}.
+     * CanvasPattern: Template object. For details, see {@link CanvasPattern}.
+     * @default #000000 (black)
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @crossplatform
+     * @form
+     * @atomicservice
+     * @since 11
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
