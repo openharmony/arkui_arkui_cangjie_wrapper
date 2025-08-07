@@ -189,8 +189,7 @@ public enum EnterKeyType {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Go
-    |
+    Go |
     /**
      * Search.
      *
@@ -201,8 +200,7 @@ public enum EnterKeyType {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    EntrySearch
-    |
+    EntrySearch |
     /**
      * Send.
      *
@@ -213,8 +211,7 @@ public enum EnterKeyType {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Send
-    |
+    Send |
     /**
      * Next.
      *
@@ -225,8 +222,7 @@ public enum EnterKeyType {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Next
-    |
+    Next |
     /**
      * Done.
      *
@@ -237,8 +233,7 @@ public enum EnterKeyType {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Done
-    |
+    Done |
     /**
      * Showed as 'previous' pattern.
      *
@@ -249,8 +244,7 @@ public enum EnterKeyType {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    PREVIOUS
-    |
+    Previous |
     /**
      * Showed as 'new line' pattern.
      *
@@ -261,8 +255,7 @@ public enum EnterKeyType {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    NEW_LINE
-    | ...
+    NewLine | ...
 
     protected func getValue(): Int32 {
         match (this) {
@@ -271,8 +264,8 @@ public enum EnterKeyType {
             case Send => 4
             case Next => 5
             case Done => 6
-            case PREVIOUS => 7
-            case NEW_LINE => 8
+            case Previous => 7
+            case NewLine => 8
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -300,8 +293,7 @@ public enum FlexDirection {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Row
-    |
+    Row |
     /**
      * The main axis is consistent with the column direction as the layout mode.
      *
@@ -312,8 +304,7 @@ public enum FlexDirection {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Column
-    |
+    Column |
     /**
      * The layout is in the opposite direction to the Row direction.
      *
@@ -324,8 +315,7 @@ public enum FlexDirection {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    RowReverse
-    |
+    RowReverse |
     /**
      * Layout in the opposite direction to the column.
      *
@@ -336,8 +326,8 @@ public enum FlexDirection {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    ColumnReverse
-    | ...
+    ColumnReverse |
+    ...
 
     protected func getValue(): Int32 {
         match (this) {
@@ -372,8 +362,7 @@ public enum FlexWrap {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    NoWrap
-    |
+    NoWrap |
     /**
      * The elements of the Flex container are arranged in multiple rows or columns, and the sub-items are allowed to exceed the container.
      *
@@ -384,8 +373,7 @@ public enum FlexWrap {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Wrap
-    |
+    Wrap |
     /**
      * The elements of the Flex container are arranged in reverse multiple rows/columns, and children are allowed to exceed the container.
      *
@@ -396,8 +384,8 @@ public enum FlexWrap {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    WrapReverse
-    | ...
+    WrapReverse |
+    ...
 
     protected func getValue(): Int32 {
         match (this) {
@@ -432,8 +420,7 @@ public enum FlexAlign {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Start
-    |
+    Start |
     /**
      * The elements are centered in the direction of the principal axis,
      * and the first element is the same distance from the beginning of the row as the last element is from the end of the row.
@@ -445,8 +432,7 @@ public enum FlexAlign {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Center
-    |
+    Center |
     /**
      * The element is aligned at the tail of the principal axis,
      * the last element is aligned at the end of the row, and the other elements are aligned with the next.
@@ -458,8 +444,7 @@ public enum FlexAlign {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    End
-    |
+    End |
     /**
      * Elastic elements are evenly distributed in the direction of the Flex principal axis,
      * with the same distance between adjacent elements.
@@ -472,8 +457,7 @@ public enum FlexAlign {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    SpaceBetween
-    |
+    SpaceBetween |
     /**
      * Elastic elements are evenly distributed in the direction of the Flex principal axis,
      *  with the same distance between adjacent elements. Half the distance between adjacent elements as the distance between
@@ -486,8 +470,7 @@ public enum FlexAlign {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    SpaceAround
-    |
+    SpaceAround |
     /**
      * Elements in the Flex axis direction are evenly spaced.
      * The spacing between adjacent elements, the spacing between the first element and the beginning of the row,
@@ -500,8 +483,7 @@ public enum FlexAlign {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    SpaceEvenly
-    | ...
+    SpaceEvenly | ...
 
     protected func getValue(): Int32 {
         match (this) {
@@ -636,8 +618,7 @@ public enum ToggleType {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    CheckboxType
-    |
+    CheckboxType |
     /**
      * Switch
      *
@@ -648,8 +629,7 @@ public enum ToggleType {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    SwitchType
-    |
+    SwitchType |
     /**
      * Button
      *
@@ -660,8 +640,8 @@ public enum ToggleType {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    ButtonType
-    | ...
+    ButtonType |
+    ...
 
     protected func getValue(): Int32 {
         match (this) {
@@ -1813,7 +1793,7 @@ public enum ShadowStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    OUTER_DEFAULT_XS
+    OuterDefaultXS
     |
     /**
      * Defines the small default shadow style.
@@ -1825,7 +1805,7 @@ public enum ShadowStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    OUTER_DEFAULT_SM
+    OuterDefaultSM
     |
     /**
      * Medium shadow.
@@ -1837,7 +1817,7 @@ public enum ShadowStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    OUTER_DEFAULT_MD
+    OuterDefaultMD
     |
     /**
      * Large shadow.
@@ -1849,7 +1829,7 @@ public enum ShadowStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    OUTER_DEFAULT_LG
+    OuterDefaultLG
     |
     /**
      * Floating medium shadow.
@@ -1861,7 +1841,7 @@ public enum ShadowStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    OUTER_FLOATING_SM
+    OuterFloatingSM
     |
     /**
      * Floating medium shadow.
@@ -1873,17 +1853,17 @@ public enum ShadowStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    OUTER_FLOATING_MD
+    OuterFloatingMD
     | ...
 
     protected func getValue(): Int32 {
         match (this) {
-            case OUTER_DEFAULT_XS => 0
-            case OUTER_DEFAULT_SM => 1
-            case OUTER_DEFAULT_MD => 2
-            case OUTER_DEFAULT_LG => 3
-            case OUTER_FLOATING_SM => 4
-            case OUTER_FLOATING_MD => 5
+            case OuterDefaultXS => 0
+            case OuterDefaultSM => 1
+            case OuterDefaultMD => 2
+            case OuterDefaultLG => 3
+            case OuterFloatingSM => 4
+            case OuterFloatingMD => 5
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -7778,7 +7758,7 @@ public enum ThemeColorMode {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    SYSTEM
+    System
     |
     /**
      * Defines the light mode.
@@ -7790,7 +7770,7 @@ public enum ThemeColorMode {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    LIGHT
+    Light
     |
     /**
      * Defines the dark mode.
@@ -7802,19 +7782,14 @@ public enum ThemeColorMode {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    DARK
+    Dark
     | ...
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getValue(): Int32 {
+    func getValue(): Int32 {
         match (this) {
-            case SYSTEM => 0
-            case LIGHT => 1
-            case DARK => 2
+            case System => 0
+            case Light => 1
+            case Dark => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -7843,7 +7818,7 @@ public enum AdaptiveColor {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    DEFAULT
+    Default
     |
     /**
      * Adaptive color mode is used. The average color value of the color picking area is used as the mask color.
@@ -7855,18 +7830,13 @@ public enum AdaptiveColor {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    AVERAGE
+    Average
     | ...
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getValue(): Int32 {
+    func getValue(): Int32 {
         match (this) {
-            case DEFAULT => 0
-            case AVERAGE => 1
+            case Default => 0
+            case Average => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -10160,6 +10130,7 @@ public enum BlurStyle {
 
     protected func getValue(): Int32 {
         match (this) {
+            case None => 0
             case Thin => 1
             case Regular => 2
             case Thick => 3
@@ -10167,7 +10138,6 @@ public enum BlurStyle {
             case BackgroundRegular => 5
             case BackgroundThick => 6
             case BackgroundUltraThick => 7
-            case None => 0
             case ComponentUltraThin => 8
             case ComponentThin => 9
             case ComponentRegular => 10

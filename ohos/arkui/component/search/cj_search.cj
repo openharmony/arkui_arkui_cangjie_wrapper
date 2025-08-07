@@ -53,14 +53,6 @@ foreign {
 
     func FfiOHOSAceFrameworkSearchSetPlaceholderColor(color: UInt32): Unit
 
-    func FfiOHOSAceFrameworkSearchSetPlaceholderFont(fontSize: Float64, sizeUnit: Int32, fontWeight: CString,
-        fontStyle: Int32, fontFamily: CString): Unit
-
-    func FfiOHOSAceFrameworkSearchSetTextFont(fontSize: Float64, sizeUnit: Int32, fontWeight: CString, fontStyle: Int32,
-        fontFamily: CString): Unit
-
-    func FfiOHOSAceFrameworkSearchSetBorder(value: SearchSetBorder): Unit
-
     func FfiOHOSAceFrameworkSearchSetBorderWidth(width: Float64, widthUnit: Int32): Unit
 
     func FfiOHOSAceFrameworkSearchSetBorderColor(color: UInt32): Unit
@@ -154,19 +146,34 @@ foreign {
 
     func FfiOHOSAceFrameworkSearchGetTextContentLineCount(id: Int64): Int32
 
+    func FfiOHOSAceFrameworkSearchSetBorder(value: SearchSetBorder): Unit
+
+    func FfiOHOSAceFrameworkSearchSetPlaceholderFont(fontSize: Float64, sizeUnit: Int32, fontWeight: CString,
+        fontStyle: Int32, fontFamily: CString): Unit
+
+    func FfiOHOSAceFrameworkSearchSetTextFont(fontSize: Float64, sizeUnit: Int32, fontWeight: CString, fontStyle: Int32,
+        fontFamily: CString): Unit
 }
 
-/**
- * DEFAULT_SIZE defines the default width of search component.
- */
 let DEFAULT_SIZE = 16.0
 
+/**
+ * Provides the method of switching the cursor position.
+ *
+ * @relation declare class SearchController extends TextContentControllerBase
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SearchController <: RemoteDataLite {
+    /**
+     * constructor.
+     * A constructor used to create a SearchController object.
+     *
+     * @relation constructor();
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -182,24 +189,45 @@ public class SearchController <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Called when the position of the insertion cursor is set.
+     *
+     * @param { Int32 } value
+     * @returns {Unit}
+     * @relation caretPosition(value: number): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func caretPosition(carePosition: Int32): Unit {
+    public func caretPosition(value: Int32): Unit {
         unsafe {
-            FfiOHOSAceFrameworkSearchCaretPosition(this.getID(), carePosition)
+            FfiOHOSAceFrameworkSearchCaretPosition(this.getID(), value)
         }
     }
 }
 
+/**
+ * The construct function of search
+ *
+ * @relation interface SearchInterface
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Search <: ViewBase {
+    /**
+     * The options of SearchInterface
+     * @param { String } value
+     * @param { String } placeholder
+     * @param { AppResource } icon
+     * @param { SearchController } controller
+     * @returns { This }
+     * @relation (options?: SearchOptions): SearchAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -212,49 +240,60 @@ public class Search <: ViewBase {
         controller!: Option<SearchController> = Option.None
     ) {
         unsafe {
-            var unsafeValue: ?CString = None
-            var unsafePlaceholder: ?CString = None
             var unsafeIconUrl: ?CString = None
-            try {
-                unsafeValue = LibC.mallocCString(value)
-                unsafePlaceholder = LibC.mallocCString(placeholder)
+            try (unsafeValue = LibC.mallocCString(value).asResource(), unsafePlaceholder = LibC
+                .mallocCString(placeholder)
+                .asResource()) {
                 let controllerID = match (controller) {
                     case None => -1
                     case Some(v) => v.getID()
                 }
-                var iconUrl: String = ""
-                if (let Some(v) <- icon) {
-                    iconUrl = getResourceMedia(v)
+                var iconUrl: String = if (let Some(v) <- icon) {
+                    getResourceMedia(v)
+                } else {
+                    ""
                 }
                 unsafeIconUrl = LibC.mallocCString(iconUrl)
                 FfiOHOSAceFrameworkSearchCreateByIconRes(
-                    unsafeValue.getOrThrow(),
-                    unsafePlaceholder.getOrThrow(),
+                    unsafeValue.value,
+                    unsafePlaceholder.value,
                     unsafeIconUrl.getOrThrow(),
                     controllerID,
                 )
             } finally {
-                unsafeValue?.free()
-                unsafePlaceholder?.free()
                 unsafeIconUrl?.free()
             }
         }
     }
 
+    /**
+     * Set the search button text, fontSize and fontColor
+     *
+     * @param { String } value - indicates the text of the search button.
+     * @returns { This }
+     * @relation searchButton(value: ResourceStr, option?: SearchButtonOptions): SearchAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func searchButton(text: String): This {
+    public func searchButton(value: String): This {
         unsafe {
-            var unsafeValue = LibC.mallocCString(text)
-            FfiOHOSAceFrameworkSearchSetSearchButton(unsafeValue)
-            LibC.free(unsafeValue)
+            try (unsafeValue = LibC.mallocCString(value).asResource()) {
+                FfiOHOSAceFrameworkSearchSetSearchButton(unsafeValue.value)
+            }
         }
         this
     }
 
+    /**
+     * Set the search button text, fontSize and fontColor
+     *
+     * @param { ResourceColor } value - Default value is '#99182431'.The default value on wearable devices is '#99ffffff'.
+     * @returns { This }
+     * @relation placeholderColor(value: ResourceColor): SearchAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -267,6 +306,16 @@ public class Search <: ViewBase {
         this
     }
 
+    /**
+     * Set the font used for place holder text
+     *
+     * @param { Length } size - font size.
+     * @param { FontWeight } weight - font weight.
+     * @param { FontStyle } style - font style.
+     * @param { ResourceStr } family - font family.
+     * @returns { This }
+     * @relation placeholderFont(value?: Font): SearchAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -276,57 +325,23 @@ public class Search <: ViewBase {
         size!: Length = DEFAULT_SIZE.fp,
         weight!: FontWeight = FontWeight.W400,
         style!: FontStyle = FontStyle.Normal,
-        family!: String = ""
+        family!: ResourceStr = ""
     ): This {
-        var size_ = transAppResourceToLength(size)
+        var sizeValue = transAppResourceToLength(size)
+        var familyStr = transResourceStrToString(family)
         unsafe {
-            try (unsafeFontFamily = LibC.mallocCString(family).asResource(),
-                unsafeFontWeight = LibC.mallocCString(weight.getValue()).asResource()) {
-                var sizeValue = size_.value
-                var unit = size_.unitType.getValue()
-                match (unit) {
-                    case 3 =>
-                        unit = LENGTH_FP
-                        sizeValue = DEFAULT_SIZE
-                    case _ => ()
+            try (unsafeFontFamily = LibC.mallocCString(familyStr).asResource(), unsafeFontWeight = LibC
+                .mallocCString(weight.getValue())
+                .asResource()) {
+                var unit = sizeValue.unitType.getValue()
+                var value = if (unit == LENGTH_PERCENT) {
+                    unit = LENGTH_FP
+                    DEFAULT_SIZE
+                } else {
+                    sizeValue.value
                 }
                 FfiOHOSAceFrameworkSearchSetPlaceholderFont(
-                    sizeValue,
-                    unit,
-                    unsafeFontWeight.value,
-                    style.getValue(),
-                    unsafeFontFamily.value
-                )
-            }
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func textFont(
-        size!: Length = DEFAULT_SIZE.fp,
-        weight!: FontWeight = FontWeight.W400,
-        style!: FontStyle = FontStyle.Normal,
-        family!: String = ""
-    ): This {
-        var size_ = transAppResourceToLength(size)
-        unsafe {
-            try (unsafeFontFamily = LibC.mallocCString(family).asResource(),
-                unsafeFontWeight = LibC.mallocCString(weight.getValue()).asResource()) {
-                var sizeValue = size_.value
-                var unit = size_.unitType.getValue()
-                match (unit) {
-                    case 3 =>
-                        unit = LENGTH_FP
-                        sizeValue = DEFAULT_SIZE
-                    case _ => ()
-                }
-                FfiOHOSAceFrameworkSearchSetTextFont(
-                    sizeValue,
+                    value,
                     unit,
                     unsafeFontWeight.value,
                     style.getValue(),
@@ -338,109 +353,80 @@ public class Search <: ViewBase {
     }
 
     /**
-     * Set border of search component.
+     * Set the font used for input text
      *
-     * @param width: border width.
-     * @param color: border color.
-     * @param radius: border corner radius.
-     * @param style: border style.
-     * @returns current Search component.
-     * since 11
+     * @param { Length } size - font size.
+     * @param { FontWeight } weight - font weight.
+     * @param { FontStyle } style - font style.
+     * @param { ResourceStr } family - font family.
+     * @returns { This }
+     * @relation textFont(value?: Font): SearchAttribute;
      */
-    protected override func borderInner(
-        width: Length,
-        color: ResourceColor,
-        radius: Length,
-        style: BorderStyle
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func textFont(
+        size!: Length = DEFAULT_SIZE.fp,
+        weight!: FontWeight = FontWeight.W400,
+        style!: FontStyle = FontStyle.Normal,
+        family!: ResourceStr = ""
     ): This {
-        var width_ = transAppResourceToLength(width)
-        var color_ = transAppResourceToResourceColor(color)
-        var radius_ = transAppResourceToLength(radius)
+        var sizeValue = transAppResourceToLength(size)
+        var familyStr = transResourceStrToString(family)
         unsafe {
-            FfiOHOSAceFrameworkSearchSetBorder(
-                SearchSetBorder(
-                    width_.value,
-                    width_.unitType.getValue(),
-                    color_.toUInt32(),
-                    radius_.value,
-                    radius_.unitType.getValue(),
-                    style.getValue()
+            try (unsafeFontFamily = LibC.mallocCString(familyStr).asResource(), unsafeFontWeight = LibC
+                .mallocCString(weight.getValue())
+                .asResource()) {
+                var unit = sizeValue.unitType.getValue()
+                var value = if (unit == LENGTH_PERCENT) {
+                    unit = LENGTH_FP
+                    DEFAULT_SIZE
+                } else {
+                    sizeValue.value
+                }
+                FfiOHOSAceFrameworkSearchSetTextFont(
+                    value,
+                    unit,
+                    unsafeFontWeight.value,
+                    style.getValue(),
+                    unsafeFontFamily.value
                 )
-            )
+            }
         }
         this
     }
 
-    protected override func borderWidthInner(width: Length): This {
-        var width_ = transAppResourceToLength(width)
-        unsafe {
-            FfiOHOSAceFrameworkSearchSetBorderWidth(width_.value, width_.unitType.getValue())
-        }
-        this
-    }
-
+    /**
+     * Called when the copy option is set.
+     * If this attribute is set to CopyOptions.None, the text can only be pasted;
+     * all other actions, such as copying, cutting, and sharing, are disabled.
+     * Dragging is not allowed when CopyOptions.None is set.
+     *
+     * @param { CopyOptions } value - Default value is CopyOptions.LocalDevice.
+     * @returns { This }
+     * @relation copyOption(value: CopyOptions): SearchAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func borderColorInner(color: ResourceColor): This {
+    public func copyOption(value: CopyOptions): This {
         unsafe {
-            FfiOHOSAceFrameworkSearchSetBorderColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkSearchSetCopyOption(value.getValue())
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    protected override func borderStyleInner(style: BorderStyle): This {
-        unsafe {
-            FfiOHOSAceFrameworkSearchSetBorderStyle(style.getValue())
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    protected override func borderRadiusInner(radius: Length): This {
-        var radius_ = transAppResourceToLength(radius)
-        unsafe {
-            FfiOHOSAceFrameworkSearchSetBorderRadius(radius_.value, radius_.unitType.getValue())
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkSearchSetHeight(value_.value, value_.unitType.getValue())
-        }
-        this
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func copyOption(copyOption: CopyOptions): This {
-        unsafe {
-            FfiOHOSAceFrameworkSearchSetCopyOption(copyOption.getValue())
-        }
-        this
-    }
-
+    /**
+     * Call the function when clicked the search button.
+     *
+     * @param { (String) -> Unit } callback - Search submission callback, which returns the text content currently in the search box.
+     * @returns { This }
+     * @relation onSubmit(callback: Callback<string>): SearchAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -457,6 +443,15 @@ public class Search <: ViewBase {
         this
     }
 
+    /**
+     * Call the function when editing the input text.
+     * In this callback, if cursor operations are performed,
+     * <br>developers need to adjust the cursor logic based on the previewText parameter to ensure it works seamlessly within the preview display scenario.
+     *
+     * @param { (String) -> Unit } callback - Search submission callback, which returns the text content currently in the search box.
+     * @returns { This }
+     * @relation onChange(callback: EditableTextOnChangeCallback): SearchAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -473,6 +468,13 @@ public class Search <: ViewBase {
         this
     }
 
+    /**
+     * Called when using the Clipboard menu.
+     *
+     * @param { (String) -> Unit } callback - Callback used to return the copied text content.
+     * @returns { This }
+     * @relation onCopy(callback: Callback<string>): SearchAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -489,6 +491,13 @@ public class Search <: ViewBase {
         this
     }
 
+    /**
+     * Called when using the Clipboard menu.
+     *
+     * @param { (String) -> Unit } callback - Callback used to return the cut text content.
+     * @returns { This }
+     * @relation onCut(callback: Callback<string>): SearchAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -505,6 +514,13 @@ public class Search <: ViewBase {
         this
     }
 
+    /**
+     * Called when using the Clipboard menu.
+     *
+     * @param { (String) -> Unit } callback - Executed when a paste operation is performed. Callback used to return the pasted text content.
+     * @returns { This }
+     * @relation onCut(callback: Callback<string>): SearchAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -517,6 +533,63 @@ public class Search <: ViewBase {
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
             FfiOHOSAceFrameworkSearchOnPaste(lambdaData.getID())
+        }
+        this
+    }
+
+    protected override func borderInner(width: Length, color: ResourceColor, radius: Length, style: BorderStyle): This {
+        var w = transAppResourceToLength(width)
+        var c = transAppResourceToResourceColor(color)
+        var r = transAppResourceToLength(radius)
+        unsafe {
+            FfiOHOSAceFrameworkSearchSetBorder(
+                SearchSetBorder(
+                    w.value,
+                    w.unitType.getValue(),
+                    c.toUInt32(),
+                    r.value,
+                    r.unitType.getValue(),
+                    style.getValue()
+                )
+            )
+        }
+        this
+    }
+
+    protected override func borderWidthInner(width: Length): This {
+        var w = transAppResourceToLength(width)
+        unsafe {
+            FfiOHOSAceFrameworkSearchSetBorderWidth(w.value, w.unitType.getValue())
+        }
+        this
+    }
+
+    protected override func borderColorInner(color: ResourceColor): This {
+        unsafe {
+            FfiOHOSAceFrameworkSearchSetBorderColor(transAppResourceToResourceColor(color))
+        }
+        this
+    }
+
+    protected override func borderStyleInner(style: BorderStyle): This {
+        unsafe {
+            FfiOHOSAceFrameworkSearchSetBorderStyle(style.getValue())
+        }
+        this
+    }
+
+    protected override func borderRadiusInner(radius: Length): This {
+        var r = transAppResourceToLength(radius)
+        unsafe {
+            FfiOHOSAceFrameworkSearchSetBorderRadius(r.value, r.unitType.getValue())
+        }
+        this
+    }
+
+    protected override func heightInner(value: Length): This {
+        var v = transAppResourceToLength(value)
+        unsafe {
+            FfiOHOSAceFrameworkSearchSetHeight(v.value, v.unitType.getValue())
         }
         this
     }

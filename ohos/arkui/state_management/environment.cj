@@ -34,14 +34,40 @@ foreign {
     func FfiOHOSAceFrameworkEnvironmentGetLanguageCode(): NativeOptionCString
 }
 
+/**
+ * Defines the ColorMode of device.
+ *
+ * @relation declare enum ColorMode
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ColorMode {
+    /**
+     * Light mode.
+     *
+     * @relation LIGHT = 0
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     Light
-    | Dark
+    |
+        /**
+         * Dark mode.
+         *
+         * @relation DARK
+         */
+        @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    Dark
     | ...
 
     func getValue(): Int32 {
@@ -61,15 +87,52 @@ public enum ColorMode {
     }
 }
 
+/**
+ * Defines the LayoutDirection of device.
+ *
+ * @relation declare enum LayoutDirection
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LayoutDirection {
+    /**
+     * Elements are laid out from left to right.
+     *
+     * @relation LTR
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     Ltr
-    | Rtl
-    | Auto
+    |
+        /**
+         * Elements are laid out from right to left.
+         *
+         * @relation RTL
+         */
+        @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    Rtl
+    |
+        /**
+         * Elements are laid out from auto.
+         *
+         * @relation Auto
+         */
+        @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    Auto
     | ...
 
     static func parse(val: Int32): LayoutDirection {
@@ -81,6 +144,11 @@ public enum LayoutDirection {
     }
 }
 
+/**
+ * Defines the Environment interface.
+ *
+ * @relation declare class Environment
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -116,9 +184,10 @@ public class Environment {
     }
 
     /**
-     * get keys from envionment
+     * returns an Array<string> of all environment property keys
      *
-     * @return EquatableCollection<String>
+     * @returns { Array<string> } all environment property keys
+     * @relation static keys(): Array<string>;
      */
     @!APILevel[
         21,
@@ -130,9 +199,15 @@ public class Environment {
     }
 
     /**
-     * save the environment variables of the device to AppStorage.
+     * Creates a new property in AppStorage. The UI framework implementation takes care of updating
+     * its value whenever the named device environment property changes. Recommended use is at app startup.
+     * The function call fails and returns false if a property with given name exists in AppStorage already.
+     * It is wrong API use to access a property with given name in AppStorage before calling Environment.envProp.
      *
-     * @return Bool
+     * @param { String } key - environment property
+     * @param { T } value - is the default value if cannot get the environment property value
+     * @returns { Bool } false if method failed
+     * @relation static envProp<S>(key: string, value: S): boolean;
      */
     @!APILevel[
         21,

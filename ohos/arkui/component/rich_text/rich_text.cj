@@ -18,16 +18,20 @@ package ohos.arkui.component.rich_text
 import ohos.arkui.component.common.*
 import ohos.ffi.*
 import ohos.base.*
+import ohos.resource.*
 import ohos.labels.APILevel
 
 foreign {
     func FfiOHOSAceFrameworkRichTextCreate(content: CString): Unit
-
     func FfiOHOSAceFrameworkRichTextOnStart(callback: Int64): Unit
-
     func FfiOHOSAceFrameworkRichTextOnComplete(callback: Int64): Unit
 }
 
+/**
+ * Defines RichText Component.
+ *
+ * @relation interface RichTextInterface
+ */
 @!APILevel[
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -37,14 +41,25 @@ public class RichText <: ViewBase {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(content: String) {
+    public init(content: ResourceStr) {
+        var value = match (content) {
+            case res: AppResource => getResourceString(res)
+            case _ => (content as String) ?? ""
+        }
         unsafe {
-            let cString = LibC.mallocCString(content)
-            FfiOHOSAceFrameworkRichTextCreate(cString)
-            LibC.free(cString)
+            try (cString = LibC.mallocCString(value).asResource()) {
+                FfiOHOSAceFrameworkRichTextCreate(cString.value)
+            }
         }
     }
 
+    /**
+     * Triggered when the RichText loading starts.
+     *
+     * @param { () -> Unit } callback
+     * @returns { This } 
+     * @relation onStart(callback: () => void): RichTextAttribute;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -55,6 +70,13 @@ public class RichText <: ViewBase {
         this
     }
 
+    /**
+     * Triggered when the RichText loading ends.
+     *
+     * @param { () -> Unit } callback
+     * @returns { This } 
+     * @relation onComplete(callback: () => void): RichTextAttribute;
+     */
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

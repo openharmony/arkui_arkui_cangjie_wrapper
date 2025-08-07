@@ -57,22 +57,29 @@ foreign {
     func FfiOHOSAceFrameworkViewCreateNewChildFinish(id: CString): Unit
 }
 
+type KeyGenFuncType<T> = (T, Int64) -> String
+
+type ItemGenFuncType<T> = (T, Int64) -> Unit
+
+
+/**
+ * declare ForEachAttribute
+ *
+ * @relation declare class ForEachAttribute extends DynamicNode<ForEachAttribute>
+ */
 @!APILevel[
     21,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ForEach <: UINodeBase {
     var child: () -> Unit = {=>}
 
+    /**
+     * Set the value, array, and key.
+     */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -107,7 +114,6 @@ public class ForEach <: UINodeBase {
 
     @!APILevel[
         21,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -166,14 +172,7 @@ public class ForEach <: UINodeBase {
         pop()
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        deprecated: 12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func genChild(): Unit {
+    func genChild(): Unit {
         child()
     }
 

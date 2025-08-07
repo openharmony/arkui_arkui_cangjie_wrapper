@@ -18,18 +18,60 @@ package ohos.arkui.component.common
 import ohos.arkui.component.native_struct.*
 import ohos.labels.APILevel
 
-public type VectorCPointerTouchTestInfoHandle = CPointer<Unit>
+type VectorCPointerTouchTestInfoHandle = CPointer<Unit>
+
+foreign {
+    func FfiDragEventGetResult(ptr: CPointer<Unit>): Int32
+    func FfiInteractableViewOnDragStart(callback: Int64): Unit
+    func FfiDragEventGetVelocityX(ptr: CPointer<Unit>): Float64
+    func FfiDragEventGetVelocityY(ptr: CPointer<Unit>): Float64
+    func FfiDragEventGetVelocity(ptr: CPointer<Unit>): Float64
+    func FfiDragEventGetWindowX(ptr: CPointer<Unit>): Float64
+    func FfiDragEventGetWindowY(ptr: CPointer<Unit>): Float64
+    func FfiDragEventGetDisplayX(ptr: CPointer<Unit>): Float64
+    func FfiDragEventGetDisplayY(ptr: CPointer<Unit>): Float64
+    func FfiDragEventFree(ptr: CPointer<Unit>): Unit
+    func FfiInteractableViewOnDragEnter(callback: Int64): Unit
+    func FfiInteractableViewOnDragMove(callback: Int64): Unit
+    func FfiInteractableViewOnDragLeave(callback: Int64): Unit
+    func FfiInteractableViewOnDrop(callback: Int64): Unit
+    func FfiInteractableViewOnDragEnd(callback: Int64): Unit
+    func FfiInteractableViewOnPreDrag(callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnClick(callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnTouch(callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableOnChildTouchTest(callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnAppear(callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnDisAppear(callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnHover(callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnAreaChanged(callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnMouse(callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnKey(callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnDelete(callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnFocus(callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnBlur(callback: Int64): Unit
+    func FfiDragEventSetResult(ptr: CPointer<Unit>, result: Int32): Unit
+    func FfiDragEventGetPreviewRect(ptr: CPointer<Unit>): NativeRectangle
+    func FfiOHOSAceFrameworkInteractableViewOnDrop(callback: Int64, name: UInt32): Unit
+    func FFICJCreateVectorTouchTestInfo(size: Int64): VectorCPointerTouchTestInfoHandle
+    func FFICJVectorTouchTestInfoDelete(vec: VectorCPointerTouchTestInfoHandle): Unit
+    func FFICJVectorTouchTestInfoGetSize(vec: VectorCPointerTouchTestInfoHandle): Int64
+    func FfiOHOSAceFrameworkInteractableViewOnDragStart(callback: Int64, name: UInt32): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnDragEnter(callback: Int64, name: UInt32): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnDragMove(callback: Int64, name: UInt32): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnDragLeave(callback: Int64, name: UInt32): Unit
+    func FfiDragEventGetModifierKeyState(ptr: CPointer<Unit>, keys: VectorStringHandle): Bool
+    func FfiOHOSAceFrameworkInteractableViewOnVisibleAreaChange(raitosVals: VectorFloat64Handle, callback: Int64): Unit
+    func FfiOHOSAceFrameworkViewAbstractSetOnGestureRecognizerJudgeBegin(elemId: Int64, exposeInnerGesture: Bool): Unit
+}
 
 @C
 struct CJTouchInfo {
-    CJTouchInfo(
-        let touchType: UInt8,
-        let fingerId: Int32,
-        let globalX: Float64,
-        let globalY: Float64,
-        let localX: Float64,
-        let localY: Float64
-    ) {}
+    let touchType: UInt8
+    let fingerId: Int32
+    let globalX: Float64
+    let globalY: Float64
+    let localX: Float64
+    let localY: Float64
 
     init(touchObject: TouchObject) {
         touchType = touchObject.touchType.getValue()
@@ -38,60 +80,6 @@ struct CJTouchInfo {
         globalY = touchObject.screenY
         localX = touchObject.x
         localY = touchObject.y
-    }
-}
-
-
-@!APILevel[
-    21,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-@C
-public struct CJTouchTestInfo {
-    var windowX: Float32
-    var windowY: Float32
-    var parentX: Float32
-    var parentY: Float32
-    var x: Float32
-    var y: Float32
-    var rect: RectResultParams
-    var id: ExternalString
-
-    init(
-        windowX: Float32,
-        windowY: Float32,
-        parentX: Float32,
-        parentY: Float32,
-        x: Float32,
-        y: Float32,
-        rect: RectResultParams,
-        id: ExternalString
-    ) {
-        this.windowX = windowX
-        this.windowY = windowY
-        this.parentX = parentX
-        this.parentY = parentX
-        this.x = x
-        this.y = y
-        this.rect = rect
-        this.id = id
-    }
-}
-
-@!APILevel[
-    21,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-@C
-public struct CTouchResult {
-    var strategy: Int32
-    var id: ExternalString    
-    init(
-        strategy: Int32,
-        id: ExternalString
-    ) {
-        this.strategy = strategy
-        this.id = id
     }
 }
 
@@ -111,26 +99,22 @@ struct CJTouchEvent {
 
 @C
 struct CJKeyEvent {
-    CJKeyEvent(
-        let keyText: CString,
-        let keyType: Int32,
-        let keyCode: Int32,
-        let keySource: Int32,
-        let metaKey: Int32,
-        let deviceId: Int64,
-        let timestamp: Int64
-    ) {}
+    let keyText: CString
+    let keyType: Int32
+    let keyCode: Int32
+    let keySource: Int32
+    let metaKey: Int32
+    let deviceId: Int64
+    let timestamp: Int64
 
     init(kv: KeyEvent) {
-        unsafe {
-            keyText = LibC.mallocCString(kv.keyText)
-            keyType = kv.keyType.getValue()
-            keyCode = kv.keyCode
-            keySource = kv.keySource.getValue()
-            metaKey = kv.metaKey
-            deviceId = kv.deviceId
-            timestamp = kv.timestamp
-        }
+        keyText =  unsafe { LibC.mallocCString(kv.keyText) }
+        keyType = kv.keyType.getValue()
+        keyCode = kv.keyCode
+        keySource = kv.keySource.getValue()
+        metaKey = kv.metaKey
+        deviceId = kv.deviceId
+        timestamp = kv.timestamp
     }
 
     func free() {
@@ -142,24 +126,22 @@ struct CJKeyEvent {
 
 @C
 struct CJMouseEvent {
-    CJMouseEvent(
-        let timestamp: Int64,
-        let screenX: Float64,
-        let screenY: Float64,
-        let x: Float64,
-        let y: Float64,
-        let button: Int32,
-        let action: Int32
-    ) {}
+    let timestamp: Int64
+    let screenX: Float64
+    let screenY: Float64
+    let x: Float64
+    let y: Float64
+    let button: Int32
+    let action: Int32
 
-    init(me: MouseEvent) {
-        timestamp = me.timestamp
-        screenX = me.screenX
-        screenY = me.screenY
-        x = me.x
-        y = me.y
-        button = me.button.getValue()
-        action = me.action.getValue()
+    init(mouseEvent: MouseEvent) {
+        timestamp = mouseEvent.timestamp
+        screenX = mouseEvent.screenX
+        screenY = mouseEvent.screenY
+        x = mouseEvent.x
+        y = mouseEvent.y
+        button = mouseEvent.button.getValue()
+        action = mouseEvent.action.getValue()
     }
 }
 
@@ -180,101 +162,13 @@ struct CJDragItemInfo {
     ) {}
 }
 
-foreign {
-    func FfiOHOSAceFrameworkInteractableViewOnClick(callback: Int64): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnTouch(callback: Int64): Unit
-
-    func FfiOHOSAceFrameworkInteractableOnChildTouchTest(callback: Int64): Unit
-
-    func FFICJCreateVectorTouchTestInfo(size: Int64): VectorCPointerTouchTestInfoHandle
-
-    func FFICJVectorTouchTestInfoSetElement(vec: VectorCPointerTouchTestInfoHandle, index: Int64,
-        touchTestInfo: CJTouchTestInfo): Unit
-
-    func FFICJVectorTouchTestInfoGetElement(vec: VectorCPointerTouchTestInfoHandle, index: Int64): CJTouchTestInfo
-
-    func FFICJVectorTouchTestInfoDelete(vec: VectorCPointerTouchTestInfoHandle): Unit
-
-    func FFICJVectorTouchTestInfoGetSize(vec: VectorCPointerTouchTestInfoHandle): Int64
-
-    func FfiOHOSAceFrameworkInteractableViewOnAppear(callback: Int64): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnDisAppear(callback: Int64): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnHover(callback: Int64): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnAreaChanged(callback: Int64): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnVisibleAreaChange(raitosVals: VectorFloat64Handle, callback: Int64): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnMouse(callback: Int64): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnKey(callback: Int64): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnDelete(callback: Int64): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnDragStart(callback: Int64, name: UInt32): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnDragEnter(callback: Int64, name: UInt32): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnDragMove(callback: Int64, name: UInt32): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnDragLeave(callback: Int64, name: UInt32): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnDrop(callback: Int64, name: UInt32): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnFocus(callback: Int64): Unit
-
-    func FfiOHOSAceFrameworkInteractableViewOnBlur(callback: Int64): Unit
-
-    func FfiInteractableViewOnDragStart(callback: Int64): Unit
-
-    func FfiDragEventSetResult(ptr: CPointer<Unit>, result: Int32): Unit
-
-    func FfiDragEventGetResult(ptr: CPointer<Unit>): Int32
-
-    func FfiDragEventGetPreviewRect(ptr: CPointer<Unit>): NativeRectangle
-
-    func FfiDragEventGetVelocityX(ptr: CPointer<Unit>): Float64
-
-    func FfiDragEventGetVelocityY(ptr: CPointer<Unit>): Float64
-
-    func FfiDragEventGetVelocity(ptr: CPointer<Unit>): Float64
-
-    func FfiDragEventGetWindowX(ptr: CPointer<Unit>): Float64
-
-    func FfiDragEventGetWindowY(ptr: CPointer<Unit>): Float64
-
-    func FfiDragEventGetDisplayX(ptr: CPointer<Unit>): Float64
-
-    func FfiDragEventGetDisplayY(ptr: CPointer<Unit>): Float64
-
-    func FfiDragEventFree(ptr: CPointer<Unit>): Unit
-
-    func FfiDragEventGetModifierKeyState(ptr: CPointer<Unit>, keys: VectorStringHandle): Bool
-
-    func FfiInteractableViewOnDragEnter(callback: Int64): Unit
-
-    func FfiInteractableViewOnDragMove(callback: Int64): Unit
-
-    func FfiInteractableViewOnDragLeave(callback: Int64): Unit
-
-    func FfiInteractableViewOnDrop(callback: Int64): Unit
-
-    func FfiInteractableViewOnDragEnd(callback: Int64): Unit
-
-    func FfiInteractableViewOnPreDrag(callback: Int64): Unit
-
-    func FfiOHOSAceFrameworkViewAbstractSetOnGestureRecognizerJudgeBegin(elemId: Int64, exposeInnerGesture: Bool): Unit
-}
-
 func parseCJTouchEvent(cjTouchEvent: CJTouchEvent): TouchEvent {
     let touches: ArrayList<TouchObject> = ArrayList<TouchObject>()
     let changedTouches: ArrayList<TouchObject> = ArrayList<TouchObject>()
     if (cjTouchEvent.touches_.isNull()) {
         throw NoneValueException("Touches info is null")
     }
+
     for (i in 0..cjTouchEvent.touchesSize) {
         let touchInfo = unsafe { cjTouchEvent.touches_.read(Int64(i)) }
         touches.add(
@@ -293,7 +187,7 @@ func parseCJTouchEvent(cjTouchEvent: CJTouchEvent): TouchEvent {
     if (cjTouchEvent.target.isNull()) {
         throw NoneValueException("Touch event target is null")
     }
-    TouchEvent(TouchType.parseValue(cjTouchEvent.eventType), touches, changedTouches, cjTouchEvent.timestamp,
+    TouchEvent(TouchType.parseValue(cjTouchEvent.eventType), touches.toArray(), changedTouches.toArray(), cjTouchEvent.timestamp,
         parseCJTarget(unsafe { cjTouchEvent.target.read() }), SourceType.parseValue(cjTouchEvent.sourceType))
 }
 
@@ -381,11 +275,11 @@ func parseCJMouseEvent(cjMouseEvent: CJMouseEvent): MouseEvent {
     )
 }
 
-@C
-struct CJDragEvent {
-    CJDragEvent(
-        let evtPtr: CPointer<Unit>,
-        let useCustomDropAnimation: Bool,
-        let dragBehavior: Int32
-    ) {}
+func parseCJArea(area: CJArea): Area {
+    Area(
+        area.width,
+        area.height,
+        unsafe { Position(area.position.read().x, area.position.read().y) },
+        unsafe { Position(area.globalPosition.read().x, area.globalPosition.read().y) }
+    )
 }

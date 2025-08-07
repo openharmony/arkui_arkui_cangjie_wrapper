@@ -264,7 +264,6 @@ public class TextController <: RemoteDataLite {
  * Provides a class for writing texts.
  *
  * @relation interface TextInterface
- * @relation declare class TextAttribute extends CommonMethod<TextAttribute>;
  */
 @!APILevel[
     21,
@@ -284,90 +283,162 @@ public class Text <: ContainerBase {
     ]
     public init(content: ResourceStr, controller!: TextController = TextController()) {
         unsafe {
-            var unsafeContent = LibC.mallocCString(transResourceStrToString(content))
-            FfiOHOSAceFrameworkTextCreateWithController(unsafeContent, controller.getID())
-            unsafeContent.free()
+            try (unsafeContent = LibC.mallocCString(transResourceStrToString(content)).asResource()) {
+                FfiOHOSAceFrameworkTextCreateWithController(unsafeContent.value, controller.getID())
+            }
         }
     }
 
+    /**
+     * Called when writing text.
+     *
+     * @relation (content?: string | Resource, value?: TextOptions): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(chid: () -> Unit) {
-        this("")
+    public init(content: ResourceStr, controller!: TextController = TextController(), chid!: () -> Unit) {
+        unsafe {
+            try (unsafeContent = LibC.mallocCString(transResourceStrToString(content)).asResource()) {
+                FfiOHOSAceFrameworkTextCreateWithController(unsafeContent.value, controller.getID())
+            }
+        }
         this.child = chid
     }
 
+    /**
+     * Called when writing text.
+     *
+     * @relation (content?: string | Resource, value?: TextOptions): TextAttribute;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(controller!: TextController = TextController(), chid!: () -> Unit) {
+        this("", controller: controller, chid: chid)
+    }
+
+    /**
+     * Called when writing text.
+     *
+     * @relation (content?: string | Resource, value?: TextOptions): TextAttribute;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(controller!: TextController = TextController()) {
+        this("", controller: controller)
+    }
+
     protected override func widthInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+        var v = transAppResourceToLength(value)
         unsafe {
-            FfiOHOSAceFrameworkTextSetWidth(value_.value, value_.unitType.getValue())
+            FfiOHOSAceFrameworkTextSetWidth(v.value, v.unitType.getValue())
         }
         this
     }
 
     protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+        var v = transAppResourceToLength(value)
         unsafe {
-            FfiOHOSAceFrameworkTextSetHeight(value_.value, value_.unitType.getValue())
+            FfiOHOSAceFrameworkTextSetHeight(v.value, v.unitType.getValue())
         }
         this
     }
 
+    /**
+     * Set font line spacing.
+     *
+     * @param { Length } value - Default value is 0.
+     * @returns { This }
+     * @relation lineSpacing(value: LengthMetrics): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineSpacing(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+        var v = transAppResourceToLength(value)
         unsafe {
-            FfiOHOSAceFrameworkTextSetLineSpacing(value_.value, value_.unitType.getValue())
+            FfiOHOSAceFrameworkTextSetLineSpacing(v.value, v.unitType.getValue())
         }
         this
-    }    
+    }
 
+    /**
+     * Called when the font size is set.
+     *
+     * @param { Length } value - Default value is 16.fp.
+     * @returns { This }
+     * @relation lineSpacing(value: LengthMetrics): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+        var v = transAppResourceToLength(value)
         unsafe {
-            FfiOHOSAceFrameworkTextSetFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
+            FfiOHOSAceFrameworkTextSetFontSize(v.value, getLengthUnitOrFp(v).getValue())
         }
         this
     }
 
+    /**
+     * Called when the maximum font size of the font is set.
+     *
+     * @param { Length } value
+     * @returns { This }
+     * @relation maxFontSize(value: number | string | Resource): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxFontSize(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+        var v = transAppResourceToLength(value)
         unsafe {
-            FfiOHOSAceFrameworkTextSetMaxFontSize(value_.value, value_.unitType.getValue())
+            FfiOHOSAceFrameworkTextSetMaxFontSize(v.value, v.unitType.getValue())
         }
         this
     }
 
+    /**
+     * Called when the minimum font size of the font is set.
+     *
+     * @param { Length } value
+     * @returns { This }
+     * @relation minFontSize(value: number | string | Resource): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func minFontSize(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+        var v = transAppResourceToLength(value)
         unsafe {
-            FfiOHOSAceFrameworkTextSetMinFontSize(value_.value, value_.unitType.getValue())
+            FfiOHOSAceFrameworkTextSetMinFontSize(v.value, v.unitType.getValue())
         }
         this
     }
 
+    /**
+     * Called when the font color is set.
+     *
+     * @param { Length } value - Default value is '#e6182431'.The default value on wearable devices is '#c5ffffff'.
+     * @returns { This }
+     * @relation fontColor(value: ResourceColor): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -380,6 +451,13 @@ public class Text <: ContainerBase {
         this
     }
 
+    /**
+     * Called when the font style of a font is set.
+     *
+     * @param { FontStyle } value - Default value is FontStyle.Normal.
+     * @returns { This }
+     * @relation fontStyle(value: FontStyle): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -392,6 +470,13 @@ public class Text <: ContainerBase {
         this
     }
 
+    /**
+     * Called when the font weight is set.
+     *
+     * @param { FontStyle } value
+     * @returns { This }
+     * @relation fontWeight(value: number | FontWeight | ResourceStr): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -406,34 +491,34 @@ public class Text <: ContainerBase {
         this
     }
 
+    /**
+     * Called when the font list of text is set.
+     *
+     * @param { ResourceStr } value
+     * @returns { This }
+     * @relation fontFamily(value: string | Resource): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontFamily(value: String): This {
+    public func fontFamily(value: ResourceStr): This {
         unsafe {
-            var unsafeFontFamily = LibC.mallocCString(value)
-            FfiOHOSAceFrameworkTextSetFontFamily(unsafeFontFamily)
-            unsafeFontFamily.free()
+            try (unsafeFontFamily = LibC.mallocCString(transResourceStrToString(value)).asResource()) {
+                FfiOHOSAceFrameworkTextSetFontFamily(unsafeFontFamily.value)
+            }
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func fontFamily(content: AppResource): This {
-        unsafe {
-            var unsafeContent = LibC.mallocCString(getResourceString(content))
-            FfiOHOSAceFrameworkTextSetFontFamily(unsafeContent)
-            unsafeContent.free()
-        }
-        this
-    }
-
+    /**
+     * Called when the horizontal center mode of the font is set.
+     *
+     * @param { TextAlign } value - value - Default value is TextAlign.Start.
+     * @returns { This }
+     * @relation textAlign(value: TextAlign): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -446,6 +531,13 @@ public class Text <: ContainerBase {
         this
     }
 
+    /**
+     * Called when the overflow mode of the font is set.
+     *
+     * @param { TextOverflowOptions } options - Text overflow options.
+     * @returns { This }
+     * @relation textOverflow(options: TextOverflowOptions): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -458,6 +550,15 @@ public class Text <: ContainerBase {
         this
     }
 
+    /**
+     * Called when the maximum number of lines of text is set.
+     * <br>By default, text is automatically folded.
+     * <br>If this attribute is specified, the text will not exceed the specified number of lines.
+     * <br>If there is extra text, you can use textOverflow to specify how it is displayed.
+     * @param { Int32 } options - Text overflow options.
+     * @returns { This }
+     * @relation maxLines(value: number): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -470,19 +571,38 @@ public class Text <: ContainerBase {
         this
     }
 
+    /**
+     * Called when the vertical center mode of the font is set.
+     * <br>If the value is less than or equal to 0, the line height is not limited and the font size is adaptive.
+     * <br>If the value is of the number type, the unit fp is used.
+     * <br>For the string type, numeric string values with optional units.
+     *
+     * @param { Int32 } value
+     * @returns { This }
+     * @relation maxLines(value: number): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineHeight(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+        var v = transAppResourceToLength(value)
         unsafe {
-            FfiOHOSAceFrameworkTextSetLineHeight(value_.value, value_.unitType.getValue())
+            FfiOHOSAceFrameworkTextSetLineHeight(v.value, v.unitType.getValue())
         }
         this
     }
 
+    /**
+     * Called when the text decoration of the text is set.
+     *
+     * @param { TextDecorationType } decorationType - The type value of the decoration property object.
+     * @param { ResourceColor } color - The color value of the decoration property object.
+     * @param { TextDecorationStyle } decorationStyle - The style value of the decoration property object.
+     * @returns { This }
+     * @relation decoration(value: DecorationStyleInterface): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -497,19 +617,33 @@ public class Text <: ContainerBase {
         this
     }
 
+    /**
+     * Called when the baseline offset is set.
+     *
+     * @param { Length } value
+     * @returns { This }
+     * @relation baselineOffset(value: number | ResourceStr): TextAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func baselineOffset(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+        var v = transAppResourceToLength(value)
         unsafe {
-            FfiOHOSAceFrameworkTextSetBaselineOffset(value_.value, value_.unitType.getValue())
+            FfiOHOSAceFrameworkTextSetBaselineOffset(v.value, v.unitType.getValue())
         }
         this
     }
 
+    /**
+   * Called when the type of letter in the text font is set.
+   *
+   * @param { TextCase } value - Default value is TextCase.Normal.
+   * @returns { This }
+   * @relation textCase(value: TextCase): TextAttribute;
+   */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -522,11 +656,6 @@ public class Text <: ContainerBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func foregroundColorInner(color: ResourceColor): This {
         fontColor(color)
     }

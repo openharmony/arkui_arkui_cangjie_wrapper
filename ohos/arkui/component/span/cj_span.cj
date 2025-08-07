@@ -22,16 +22,15 @@ import ohos.base.*
 import ohos.resource.*
 import ohos.labels.APILevel
 
-public type VectorNativeTextShadows = CPointer<Unit>
+type VectorNativeTextShadows = CPointer<Unit>
 
 foreign {
     func FFICJCreateVectorNativeTextShadows(size: Int64): VectorNativeTextShadows
-
     func FFICJVectorNativeTextShadowsDelete(vec: VectorNativeTextShadows): Unit
 }
 
 class CJVectorNativeTextShadows {
-    private let vecHandle: VectorNativeTextShadows
+    let vecHandle: VectorNativeTextShadows
 
     init(vec: VectorNativeTextShadows) {
         vecHandle = vec
@@ -53,84 +52,80 @@ class CJVectorNativeTextShadows {
 
 foreign {
     func FfiOHOSAceFrameworkSpanCreate(content: CString): Unit
-
-    func FfiOHOSAceFrameworkSpanSetFontSize(fontSize: Float64, unit: Int32): Unit
-
-    func FfiOHOSAceFrameworkSpanSetFontWeight(fontWeight: CString): Unit
-
-    func FfiOHOSAceFrameworkSpanSetFontColor(textColor: UInt32): Unit
-
-    func FfiOHOSAceFrameworkSpanSetFontStyle(fontStyle: Int32): Unit
-
-    func FfiOHOSAceFrameworkSpanSetFontFamily(fontFamily: CString): Unit
-
-    func FfiOHOSAceFrameworkSpanSetLetterSpacing(space: Float64, unit: Int32): Unit
-
-    func FfiOHOSAceFrameworkSpanSetTextCase(textCase: Int32): Unit
-
-    func FfiOHOSAceFrameworkSpanSetDecoration(typeValue: Int32, colorValue: UInt32): Unit
-
-    func FfiOHOSAceFrameworkSpanSetLineHeight(lineHeight: Float64, unit: Int32): Unit
-
-    func FfiOHOSAceFrameworkSpanSetBaselineOffset(baselineOffset: Float64, unit: Int32): Unit
-
-    func FfiOHOSAceFrameworkSpanSetFont(fontFamily: CString, fontSize: Float64, unit: Int32, fontWeight: CString,
-        fontStyle: Int32): Unit
-
-    func FfiOHOSAceFrameworkSpanSetTextShadow(value: VectorNativeTextShadow): Unit
-
-    func FfiOHOSAceFrameworkSpanSetTextBackgroundStyle(color: UInt32, radius: Float64, unit: Int32): Unit
-
-    func FfiOHOSAceFrameworkSpanSetTextBackgroundStyleBorder(color: UInt32, radius: CBorderRadiuses): Unit
-
     func FfiOHOSAceFrameworkSpanSetOnClick(callback: Int64): Unit
+    func FfiOHOSAceFrameworkSpanSetFontSize(fontSize: Float64, unit: Int32): Unit
+    func FfiOHOSAceFrameworkSpanSetFontWeight(fontWeight: CString): Unit
+    func FfiOHOSAceFrameworkSpanSetFontColor(textColor: UInt32): Unit
+    func FfiOHOSAceFrameworkSpanSetFontStyle(fontStyle: Int32): Unit
+    func FfiOHOSAceFrameworkSpanSetFontFamily(fontFamily: CString): Unit
+    func FfiOHOSAceFrameworkSpanSetLetterSpacing(space: Float64, unit: Int32): Unit
+    func FfiOHOSAceFrameworkSpanSetTextCase(textCase: Int32): Unit
+    func FfiOHOSAceFrameworkSpanSetDecoration(typeValue: Int32, colorValue: UInt32): Unit
+    func FfiOHOSAceFrameworkSpanSetLineHeight(lineHeight: Float64, unit: Int32): Unit
+    func FfiOHOSAceFrameworkSpanSetBaselineOffset(baselineOffset: Float64, unit: Int32): Unit
+    func FfiOHOSAceFrameworkSpanSetTextShadow(value: VectorNativeTextShadow): Unit
+    func FfiOHOSAceFrameworkSpanSetTextBackgroundStyle(color: UInt32, radius: Float64, unit: Int32): Unit
+    func FfiOHOSAceFrameworkSpanSetTextBackgroundStyleBorder(color: UInt32, radius: CBorderRadiuses): Unit
+    func FfiOHOSAceFrameworkSpanSetFont(fontFamily: CString, fontSize: Float64, unit: Int32, fontWeight: CString, fontStyle: Int32): Unit
 }
 
+/**
+ * Defines Span Component.
+ *
+ * @relation declare const Span: SpanInterface;
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public open class Span <: ContainerBase {
+public class Span <: ContainerBase {
+    /*
+     * Called when text is entered in span.
+     * 
+     * @param { ResourceStr } value
+     * @relation (value: string | Resource): SpanAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(content: String) {
+    public init(value: ResourceStr) {
         unsafe {
-            var unsafeContent = LibC.mallocCString(content)
+            var unsafeContent = LibC.mallocCString(transResourceStrToString(value))
             FfiOHOSAceFrameworkSpanCreate(unsafeContent)
             LibC.free(unsafeContent)
         }
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(content: AppResource) {
-        unsafe {
-            var unsafeContent = LibC.mallocCString(getResourceString(content))
-            FfiOHOSAceFrameworkSpanCreate(unsafeContent)
-            LibC.free(unsafeContent)
-        }
-    }
-
+    /*
+     * Called when the font size is set.
+     * 
+     * @param { Length } value
+     * @returns { This }
+     * @relation fontSize(value: number | string | Resource): SpanAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+        var v = transAppResourceToLength(value)
         unsafe {
-            FfiOHOSAceFrameworkSpanSetFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
+            FfiOHOSAceFrameworkSpanSetFontSize(v.value, getLengthUnitOrFp(v).getValue())
         }
         this
     }
 
+    /*
+     * Called when the font color is set.
+     * 
+     * @param { ResourceColor } value
+     * @returns { This }
+     * @relation fontColor(value: ResourceColor): SpanAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -143,6 +138,13 @@ public open class Span <: ContainerBase {
         this
     }
 
+    /*
+     * Called when the font style of a font is set.
+     * 
+     * @param { FontStyle } value
+     * @returns { This }
+     * @relation fontStyle(value: FontStyle): SpanAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -155,6 +157,13 @@ public open class Span <: ContainerBase {
         this
     }
 
+    /*
+     * Called when the font weight is set.
+     * 
+     * @param { FontWeight } value
+     * @returns { This }
+     * @relation fontWeight(value: number | FontWeight | ResourceStr): SpanAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -162,37 +171,42 @@ public open class Span <: ContainerBase {
     ]
     public func fontWeight(value: FontWeight): This {
         unsafe {
-            var unsafeFontWeight = LibC.mallocCString(value.getValue())
-            FfiOHOSAceFrameworkSpanSetFontWeight(unsafeFontWeight)
-            LibC.free(unsafeFontWeight)
+            try (unsafeFontWeight = LibC.mallocCString(value.getValue()).asResource()) {
+                FfiOHOSAceFrameworkSpanSetFontWeight(unsafeFontWeight.value)
+            }
         }
         this
     }
 
+    /*
+     * Called when the font list of text is set.
+     * 
+     * @param { ResourceStr } value
+     * @returns { This }
+     * @relation fontFamily(value: string | Resource): SpanAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontFamily(value: String): This {
+    public func fontFamily(value: ResourceStr): This {
         unsafe {
-            var unsafeFontFamily = LibC.mallocCString(value)
-            FfiOHOSAceFrameworkSpanSetFontFamily(unsafeFontFamily)
-            LibC.free(unsafeFontFamily)
+            try (unsafeFontWeight = LibC.mallocCString(transResourceStrToString(value)).asResource()) {
+                FfiOHOSAceFrameworkSpanSetFontFamily(unsafeFontWeight.value)
+            }
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func fontFamily(content: AppResource): This {
-        fontFamily(getResourceString(content))
-        this
-    }
-
+    /*
+     * Called when the text decoration of the text is set.
+     * 
+     * @param { TextDecorationType } decorationType
+     * @param { ResourceColor } color
+     * @returns { This }
+     * @relation decoration(value: DecorationStyleInterface): SpanAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -205,19 +219,33 @@ public open class Span <: ContainerBase {
         this
     }
 
+    /*
+     * Called when the distance between text fonts is set.
+     * 
+     * @param { Length } value
+     * @returns { This }
+     * @relation letterSpacing(value: number | ResourceStr): SpanAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func letterSpacing(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+        var v = transAppResourceToLength(value)
         unsafe {
-            FfiOHOSAceFrameworkSpanSetLetterSpacing(value_.value, value_.unitType.getValue())
+            FfiOHOSAceFrameworkSpanSetLetterSpacing(v.value, v.unitType.getValue())
         }
         this
     }
 
+    /*
+     * Called when the type of letter in the text font is set.
+     * 
+     * @param { TextCase } value
+     * @returns { This }
+     * @relation textCase(value: TextCase): SpanAttribute;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -230,12 +258,7 @@ public open class Span <: ContainerBase {
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func onClick(callback: (ClickEvent) -> Unit): This {
+    protected override func onClickInner(callback: (ClickEvent) -> Unit): This {
         let wrapper = {
             evt: CJClickEvent => callback(parseCJClickEvent(evt))
         }

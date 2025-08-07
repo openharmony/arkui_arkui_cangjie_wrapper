@@ -19,33 +19,38 @@ import ohos.labels.APILevel
 
 foreign func FFIOHOSAceFrameworkRequestFocus(inspectorKey: CString): Bool
 
+/**
+ * Defines the namespace of focus controller.
+ *
+ * @relation declare namespace focusControl
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class FocusControl {
-    private static let instance_ = FocusControl()
+    private static let instance = FocusControl()
     static func getFocusController(): FocusControl {
-        instance_
+        instance
     }
 
     /**
      * Request focus to the specific component by param: 'id/key'.
      *
-     * @param value: The target component uses the string bound by the interface key (value: string) or id (value: string).
-     * @return whether the focus is successfully applied for the target component.
-     * @since 11
+     * @param { String } value
+     * @returns { Bool }
+     * @relation function requestFocus(value: string): boolean;
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func requestFocus(keyValue: String): Bool {
+    public static func requestFocus(value: String): Bool {
         var result: Bool = false
         unsafe {
-            try (inspectorKey = LibC.mallocCString(keyValue).asResource()) {
+            try (inspectorKey = LibC.mallocCString(value).asResource()) {
                 result = FFIOHOSAceFrameworkRequestFocus(inspectorKey.value)
             }
         }

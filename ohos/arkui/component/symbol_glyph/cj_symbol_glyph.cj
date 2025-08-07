@@ -18,14 +18,15 @@ package ohos.arkui.component.symbol_glyph
 import ohos.base.*
 
 enum SymbolEffectType {
-    NONE
-    | SCALE
-    | HIERARCHICAL
-    | APPEAR
-    | DISAPPEAR
-    | BOUNCE
-    | PULSE
-    | REPLACE
+    NONE |
+    SCALE |
+    HIERARCHICAL |
+    APPEAR |
+    DISAPPEAR |
+    BOUNCE |
+    PULSE |
+    REPLACE |
+    ...
 
     func getValue(): Int32 {
         match (this) {
@@ -36,7 +37,7 @@ enum SymbolEffectType {
             case DISAPPEAR => 4
             case BOUNCE => 5
             case PULSE => 6
-            case REPLACE => 7
+            case _ => 7
         }
     }
 }
@@ -57,16 +58,10 @@ struct EffectOptions {
 
 foreign {
     func FfiOHOSAceFrameworkSymbolGlyphCreate(symbolId: UInt32): Unit
-
     func FfiOHOSAceFrameworkSymbolGlyphFontColor(colors: VectorUInt32Handle): Unit
-
     func FfiOHOSAceFrameworkSymbolGlyphFontSize(size: Float64, unit: Int32): Unit
-
     func FfiOHOSAceFrameworkSymbolGlyphFontWeight(fontWeight: CString): Unit
-
     func FfiOHOSAceFrameworkSymbolGlyphRenderingStrategy(value: Int32): Unit
-
     func FfiOHOSAceFrameworkSymbolGlyphEffectStrategy(value: Int32): Unit
-
     func FfiOHOSAceFrameworkSymbolGlyphSymbolEffect(effectOptions: EffectOptions): Unit
 }

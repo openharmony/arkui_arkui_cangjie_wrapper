@@ -38,11 +38,7 @@ struct CSnapshotGetSyncRet {
 
 foreign {
     func FfiOHOSAceFrameworkComponentSnapshotGet(id: CString, callback: Int64, options: CSnapshotOptions): Unit
-
-    func FfiOHOSAceFrameworkComponentSnapshotCreate(builder: Int64, callback: Int64, delay: Int32,
-        checkImageStatus: Bool, options: CSnapshotOptions): Unit
-
+    func FfiOHOSAceFrameworkComponentSnapshotCreate(builder: Int64, callback: Int64, delay: Int32, checkImageStatus: Bool, options: CSnapshotOptions): Unit
     func FfiOHOSAceFrameworkComponentSnapshotGetSync(id: CString, options: CSnapshotOptions): CSnapshotGetSyncRet
 }
 
-public type SnapshotRetCallBack = AsyncCallback<PixelMap>

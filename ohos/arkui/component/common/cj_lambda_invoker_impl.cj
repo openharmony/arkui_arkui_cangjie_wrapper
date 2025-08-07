@@ -22,7 +22,7 @@ protected class CallbackCJClickEvent <: BaseCallBack {
     protected CallbackCJClickEvent(let closure: (CJClickEvent) -> Unit) {
         registerSelf()
     }
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }
@@ -44,7 +44,7 @@ class CallbackCJAreaChangedEvent <: BaseCallBack {
     CallbackCJAreaChangedEvent(let closure: (CJArea, CJArea) -> Unit) {
         registerSelf()
     }
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 2) {
             throw InvalidArgsException()
         }
@@ -72,7 +72,7 @@ class CallbackCJVisibleAreaChangeEvent <: BaseCallBack {
     CallbackCJVisibleAreaChangeEvent(let closure: (Bool, Float64) -> Unit) {
         registerSelf()
     }
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 2) {
             throw InvalidArgsException()
         }
@@ -101,7 +101,7 @@ class CallbackCJTouchEvent <: BaseCallBack {
         registerSelf()
     }
 
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, res: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, res: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }
@@ -127,7 +127,7 @@ class CallbackCJMouseEvent <: BaseCallBack {
         registerSelf()
     }
 
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }
@@ -150,7 +150,7 @@ class CallbackCJDragInfo <: BaseCallBack {
         registerSelf()
     }
 
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }
@@ -173,7 +173,7 @@ class CallbackCJKeyEvent <: BaseCallBack {
         registerSelf()
     }
 
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, res: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, res: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }
@@ -199,7 +199,7 @@ protected class CallbackCJGestureEvent <: BaseCallBack {
         registerSelf()
     }
 
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }
@@ -222,7 +222,7 @@ class CallbackCJDragInfoVCDragItemInfo <: BaseCallBack {
         registerSelf()
     }
 
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, res: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, res: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }
@@ -249,7 +249,7 @@ class CallbackCJDragInfoVCDragItemInfo <: BaseCallBack {
     crossplatform: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class CallbackCJWebResourceRequest <: BaseCallBack {
+protected class CallbackCJWebResourceRequest <: BaseCallBack {
     protected CallbackCJWebResourceRequest(let closure: (FfiWebResourceRequest) -> Bool) {
         registerSelf()
     }
@@ -260,7 +260,7 @@ public class CallbackCJWebResourceRequest <: BaseCallBack {
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, res: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, res: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }
