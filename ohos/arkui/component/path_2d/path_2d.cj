@@ -79,9 +79,10 @@ public class Path2D <: RemoteDataLite {
     public init(path: String) {
         super(
             unsafe {
-                let pathString = LibC.mallocCString(path)
-                let id = FfiOHOSAceFrameworkCanvasPathCtorWithPath(pathString)
-                LibC.free(pathString)
+                var id = 0
+                try (pathString = LibC.mallocCString(path).asResource()) {
+                    id = FfiOHOSAceFrameworkCanvasPathCtorWithPath(pathString.value)
+                }
                 id
             })
     }

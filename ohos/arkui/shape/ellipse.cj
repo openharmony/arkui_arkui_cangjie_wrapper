@@ -13,48 +13,37 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.circle
+package ohos.arkui.shape
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.shape.*
 import ohos.arkui.component.util.*
 import ohos.base.*
+import ohos.ffi.*
 import ohos.labels.APILevel
 
-foreign {
-    func FfiOHOSAceFrameworkCircleCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
-
-    func FfiOHOSAceFrameworkCircleInsCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Int64
-}
+foreign func FfiOHOSAceFrameworkEllipseInsCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Int64
 
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Circle <: ShapeComponent {
+public class EllipseShape <: BaseShape {
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: Length = 0.vp, height!: Length = 0.vp) {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkCircleCreate(
-                width_.value,
-                width_.unitType.getValue(),
-                height_.value,
-                height_.unitType.getValue()
-            )
-        }
+        super(
+            unsafe {
+                var width_ = transAppResourceToLength(width)
+                var height_ = transAppResourceToLength(height)
+                FfiOHOSAceFrameworkEllipseInsCreate(
+                    width_.value,
+                    width_.unitType.getValue(),
+                    height_.value,
+                    height_.unitType.getValue()
+                )
+            })
     }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func initial() {}
 }

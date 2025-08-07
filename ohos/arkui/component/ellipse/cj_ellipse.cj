@@ -23,34 +23,6 @@ import ohos.labels.APILevel
 
 foreign func FfiOHOSAceFrameworkEllipseCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
 
-foreign func FfiOHOSAceFrameworkEllipseInsCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Int64
-
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class EllipseShape <: BaseShape {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
-        super(
-            unsafe {
-                var width_ = transAppResourceToLength(width)
-                var height_ = transAppResourceToLength(height)
-                FfiOHOSAceFrameworkEllipseInsCreate(
-                    width_.value,
-                    width_.unitType.getValue(),
-                    height_.value,
-                    height_.unitType.getValue()
-                )
-            })
-    }
-}
-
 @!APILevel[
     21,
     stagemodelonly: true,

@@ -26,7 +26,6 @@ ohos_cj_library("ohos.arkui.component.common") {
     "cj_interactable_view_ffi.cj",
     "cj_lambda_invoker_impl.cj",
     "cj_pixel_unit_convert.cj",
-    "cj_shape_base.cj",
     "cj_transitioneffect.cj",
     "cj_view_base.cj",
     "cj_view_typedef.cj",
@@ -39,6 +38,7 @@ ohos_cj_library("ohos.arkui.component.common") {
     "../native_struct:ohos.arkui.component.native_struct",
     "../util:ohos.arkui.component.util",
     "../../../matrix4:ohos.matrix4",
+    "../../shape:ohos.arkui.shape",
   ]
 
   cj_external_deps = [

@@ -13,14 +13,28 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cj_library("ohos.arkui.component.offscreen_canvas") {
+ohos_cj_library("ohos.arkui.shape") {
   sources = [
-    "offscreen_canvas.cj"
+    "circle.cj",
+    "ellipse.cj",
+    "path.cj",
+    "rect.cj",
+    "shape_base.cj"
   ]
 
+  cj_deps = [
+    "../../base:ohos.base",
+    "../component/util:ohos.arkui.component.util",
+  ]
+
+  cj_external_deps = [
+    "cangjie_api:ohos.ffi",
+    "cangjie_api:ohos.labels",
+    "global_cangjie_api:ohos.resource",
+  ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_api"
-  lib_name = "arkui.component.offscreen_canvas"
+  lib_name = "arkui.shape"
 }
