@@ -31,7 +31,8 @@
         },
         "build": {
             "sub_component": [
-                "//foundation/arkui/arkui_cangjie_api:arkui_cangjie_api_package"
+                "//foundation/arkui/arkui_cangjie_api:arkui_cangjie_api_package",
+                "//foundation/arkui/arkui_cangjie_api/kit/ArkUI:kit.ArkUI"
             ],
             "inner_kits": [
                 {
