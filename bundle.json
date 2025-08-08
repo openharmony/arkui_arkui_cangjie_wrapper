@@ -1,0 +1,49 @@
+{
+    "name": "@ohos/arkui_cangjie_api",
+    "description": "ArkUI Cross-Platform Engine for UI layout measure and paint",
+    "version": "6.0",
+    "license": "Apache-2.0",
+    "publishAs": "code-segment",
+    "segment": {
+        "destPath": "foundation/arkui/arkui_cangjie_api"
+    },
+    "dirs": {},
+    "scripts": {},
+    "component": {
+        "name": "arkui_cangjie_api",
+        "subsystem": "arkui",
+        "syscap": [],
+        "features": [],
+        "adapted_system_type": [
+            "standard"
+        ],
+        "rom": "25600KB",
+        "ram": "102400KB",
+        "hisysevent_config": [
+        ],
+        "deps": {
+            "components": [
+                "cangjie_api",
+                "hiviewdfx_cangjie_api",
+                "access_token",
+                "ace_engine"
+            ]
+        },
+        "build": {
+            "sub_component": [
+                "//foundation/arkui/arkui_cangjie_api:arkui_cangjie_api_package",
+                "//foundation/arkui/arkui_cangjie_api/kit/ArkUI:kit.ArkUI"
+            ],
+            "inner_kits": [
+                {
+                    "name": "//foundation/arkui/arkui_cangjie_api/ohos:ohos.base"
+                },
+                {
+                    "name": "//foundation/arkui/arkui_cangjie_api/ohos:ohos.ui_resource"
+                }
+            ],
+            "test": [
+            ]
+        }
+    }
+}
