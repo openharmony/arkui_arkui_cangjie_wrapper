@@ -34,6 +34,28 @@ foreign func FfiOHOSAceFrameworkComponentIdSendMouseEvent(cJMouseEvent: CJMouseE
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+public func getInspectorByKey(id: String): String {
+    unsafe {
+        var unsafeValue: ?CString = None
+        var result = ""
+        var cResult: ?ExternalString = None
+        try {
+            unsafeValue = LibC.mallocCString(id)
+            cResult = FfiOHOSAceFrameworkComponentIdGetInspectorByKey(unsafeValue.getOrThrow())
+            result = cResult.getOrThrow().toString()
+        } finally {
+            unsafeValue?.free()
+            cResult?.free()
+        }
+        return result
+    }
+}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 public func sendEventByKey(id: String, action: IntNative, params: String): Bool {
     unsafe {
         var result = true
