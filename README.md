@@ -14,7 +14,7 @@ The OpenHarmony Cangjie UI framework provides basic, container, and canvas UI co
 The source code of the framework is stored in  **/foundation/arkui/arkui\_cangjie\_api**. The following shows the directory structure.
 
 ```
-/foundation/arkui/arkui_cangjie_api
+/foundation/arkui/arkui_cangjie_wrapper
 ├── ohos                       # Cangjie ArkUI Basic libraries
 ├── kit                        # Cangjie ArkUI Kit libraries
 ```

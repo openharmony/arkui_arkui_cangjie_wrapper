@@ -15,7 +15,7 @@ Cangjie ArkUI框架是OpenHarmony UI开发框架，提供开发者进行应用UI
 ArkUI开发框架源代码在/foundation/arkui/arkui\_cangjie\_api下，目录结构如下图所示：
 
 ```
-/foundation/arkui/arkui_cangjie_api
+/foundation/arkui/arkui_cangjie_wrapper
 ├── ohos                       # 仓颉 ArkUI 接口层实现
 ├── kit                        # 仓颉 ArkUI Kit 层实现
 ```

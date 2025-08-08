@@ -24,16 +24,16 @@ ohos_cj_library("ohos.hybrid_base") {
   ]
 
   cj_external_deps = [
-    "cangjie_api:ohos.ark_interop",
-    "cangjie_api:ohos.ffi",
-    "cangjie_api:ohos.labels",
-    "hiviewdfx_cangjie_api:ohos.hilog",
+    "cangjie_ark_interop:ohos.ark_interop",
+    "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.labels",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
   ]
 
   lib_name = "hybrid_base"
 
   enable_strip = true
-  part_name = "cangjie_api"
+  part_name = "cangjie_ark_interop"
   subsystem_name = "arkcompiler"
 }
 

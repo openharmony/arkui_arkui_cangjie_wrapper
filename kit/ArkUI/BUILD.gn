@@ -35,12 +35,12 @@ ohos_cj_library("kit.ArkUI") {
   ]
 
   cj_external_deps = [
-    "window_cangjie_api:ohos.window",
-    "window_cangjie_api:ohos.display",
+    "window_cangjie_wrapper:ohos.window",
+    "window_cangjie_wrapper:ohos.display",
   ]
 
   kit = true
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
   lib_name = "ArkUI"
 }

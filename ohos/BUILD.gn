@@ -44,13 +44,13 @@ ohos_cj_library("ohos.base") {
   ]
 
   cj_external_deps = [
-    "hiviewdfx_cangjie_api:ohos.hilog",
-    "cangjie_api:ohos.labels",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
+    "cangjie_ark_interop:ohos.labels",
   ]
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
 
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
   lib_name = "base"
 }
 
@@ -77,16 +77,16 @@ ohos_cj_library("ohos.state_manage") {
   ]
 
   cj_external_deps = [
-    "cangjie_api:ohos.ffi",
-    "hiviewdfx_cangjie_api:ohos.hilog",
-    "cangjie_api:ohos.ark_interop",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.ffi",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
+    "cangjie_ark_interop:ohos.ark_interop",
+    "cangjie_ark_interop:ohos.labels",
   ]
 
   lib_name = "state_manage"
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
 }
 
 ohos_cj_library("ohos.component") {
@@ -232,20 +232,20 @@ ohos_cj_library("ohos.component") {
   ]
 
   cj_external_deps = [
-    "cangjie_api:ohos.ffi",
-    "hiviewdfx_cangjie_api:ohos.hi_tracemeter",
-    "hiviewdfx_cangjie_api:ohos.hilog",
-    "multimedia_cangjie_api:ohos.image",
-    "cangjie_api:ohos.ark_interop",
-    "global_cangjie_api:ohos.resource_manager",
-    "web_cangjie_api:ohos.webview",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.ffi",
+    "hiviewdfx_cangjie_wrapper:ohos.hi_tracemeter",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
+    "multimedia_cangjie_wrapper:ohos.image",
+    "cangjie_ark_interop:ohos.ark_interop",
+    "global_cangjie_wrapper:ohos.resource_manager",
+    "arkweb_cangjie_wrapper:ohos.webview",
+    "cangjie_ark_interop:ohos.labels",
     # "access_token:cj_ability_access_ctrl_ffi",
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
   lib_name = "component"
 }
 
@@ -256,14 +256,14 @@ ohos_cj_library("ohos.curves") {
   ]
 
   cj_external_deps = [
-    "cangjie_api:ohos.ffi",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.labels",
   ]
   sources = [ "curves/cj_curves.cj" ]
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
 
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
   lib_name = "curves"
 }
 
@@ -274,15 +274,15 @@ ohos_cj_library("ohos.ui_resource") {
   ]
 
   cj_external_deps = [
-    "cangjie_api:ohos.encoding.json",
-    "global_cangjie_api:ohos.resource_manager",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.encoding.json",
+    "global_cangjie_wrapper:ohos.resource_manager",
+    "cangjie_ark_interop:ohos.labels",
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   lib_name = "ui_resource"
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
 }
 
 cj_macro_library("ohos.state_macro_manage") {
@@ -315,12 +315,12 @@ cj_macro_library("ohos.state_macro_manage") {
   ]
 
   cj_external_deps = [
-    "cangjie_api:ohos.json.static",
+    "cangjie_ark_interop:ohos.json.static",
   ]
   compilation_config = "pipeline=NG"
 
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
 }
 
 ohos_cj_library("ohos.router") {
@@ -332,14 +332,14 @@ ohos_cj_library("ohos.router") {
   ]
 
   cj_external_deps = [
-    "cangjie_api:ohos.ffi",
-    "hiviewdfx_cangjie_api:ohos.hilog",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.ffi",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
+    "cangjie_ark_interop:ohos.labels",
   ]
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   lib_name = "router"
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
 }
 
 ohos_cj_library("ohos.font") {
@@ -348,9 +348,9 @@ ohos_cj_library("ohos.font") {
     ":ohos.ui_resource",
   ]
   cj_external_deps = [
-    "hiviewdfx_cangjie_api:ohos.hilog",
-    "global_cangjie_api:ohos.resource_manager",
-    "cangjie_api:ohos.labels",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
+    "global_cangjie_wrapper:ohos.resource_manager",
+    "cangjie_ark_interop:ohos.labels",
   ]
   sources = [
     "font/cj_font.cj",
@@ -360,7 +360,7 @@ ohos_cj_library("ohos.font") {
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
 
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
 }
 
 ohos_cj_library("ohos.prompt_action") {
@@ -369,15 +369,15 @@ ohos_cj_library("ohos.prompt_action") {
     ":ohos.component",
   ]
   cj_external_deps = [
-    "cangjie_api:ohos.ffi",
-    "multimedia_cangjie_api:ohos.image",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.ffi",
+    "multimedia_cangjie_wrapper:ohos.image",
+    "cangjie_ark_interop:ohos.labels",
   ]
   sources = [ "prompt_action/cj_prompt_action.cj" ]
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   lib_name = "prompt_action"
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
 }
 
 ohos_cj_library("ohos.animator") {
@@ -387,15 +387,15 @@ ohos_cj_library("ohos.animator") {
     ":ohos.base",
   ]
   cj_external_deps = [
-    "cangjie_api:ohos.ffi",
-    "hiviewdfx_cangjie_api:ohos.hilog",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.ffi",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
+    "cangjie_ark_interop:ohos.labels",
   ]
   sources = [ "animator/cj_animator.cj" ]
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
 
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
   lib_name = "animator"
 }
 
@@ -404,13 +404,13 @@ ohos_cj_library("ohos.matrix4") {
     ":ohos.base",
   ]
   cj_external_deps = [
-    "cangjie_api:ohos.ffi",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.labels",
   ]
   sources = [ "matrix4/cj_matrix4.cj" ]
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
   lib_name = "matrix4"
 }
 
@@ -420,14 +420,14 @@ ohos_cj_library("ohos.measure") {
     ":ohos.component",
   ]
   cj_external_deps = [
-    "cangjie_api:ohos.ffi",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.labels",
   ]
   sources = [ "measure/cj_measure.cj" ]
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   lib_name = "measure"
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
 }
 
 ohos_cj_library("ohos.concurrency") {
@@ -435,12 +435,12 @@ ohos_cj_library("ohos.concurrency") {
   lib_name = "concurrency"
 
   cj_external_deps = [
-    "cangjie_api:ohos.ffi",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.labels",
   ]
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
 }
 
 ohos_cj_library("ohos.component_utils") {
@@ -450,13 +450,13 @@ ohos_cj_library("ohos.component_utils") {
     ":ohos.base",
   ]
   cj_external_deps = [
-    "cangjie_api:ohos.ffi",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.labels",
   ]
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
 
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
 }
 
 ohos_cj_library("ohos.component_snapshot") {
@@ -466,19 +466,19 @@ ohos_cj_library("ohos.component_snapshot") {
     ":ohos.base",
   ]
   cj_external_deps = [
-    "cangjie_api:ohos.ffi",
-    "multimedia_cangjie_api:ohos.image",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.ffi",
+    "multimedia_cangjie_wrapper:ohos.image",
+    "cangjie_ark_interop:ohos.labels",
   ]
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
 }
 
 ohos_cj_library("ohos") {
   sources = [ "ohos/ohos.cj" ]
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
   lib_name = ""
 }
 
@@ -488,15 +488,15 @@ ohos_cj_library("ohos.observer") {
     ":ohos.component",
   ]
   cj_external_deps = [
-    "cangjie_api:ohos.ffi",
-    "hiviewdfx_cangjie_api:ohos.hilog",
-    "cangjie_api:ohos.labels",
+    "cangjie_ark_interop:ohos.ffi",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
+    "cangjie_ark_interop:ohos.labels",
   ]
   sources = [ "observer/cj_observer.cj" ]
   lib_name = "observer"
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"
-  part_name = "arkui_cangjie_api"
+  part_name = "arkui_cangjie_wrapper"
 }
 
 group("cj_ace_libraries") {
