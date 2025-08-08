@@ -154,6 +154,33 @@ public enum LengthType <: Length {
             case _ => vp(Float64(value))
         }
     }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public prop value: Float64 {
+        get() {
+            match (this) {
+                case px(v) => v
+                case vp(v) => v
+                case fp(v) => v
+                case percent(v) => v
+                case lpx(v) => v
+                case _ => throw IllegalArgumentException("The type is not supported.")
+            }
+        }
+    }
+
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public prop unitType: LengthType {
+        get() {
+            this
+        }
+    }
 }
 
 @!APILevel[
