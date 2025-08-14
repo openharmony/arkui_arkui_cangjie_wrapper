@@ -1,6 +1,6 @@
 {
     "name": "@ohos/arkui_cangjie_wrapper",
-    "description": "ArkUI Cross-Platform Engine for UI layout measure and paint",
+    "description": "Cangjie ArkUI Framework",
     "version": "6.0",
     "license": "Apache-2.0",
     "publishAs": "code-segment",
@@ -17,8 +17,8 @@
         "adapted_system_type": [
             "standard"
         ],
-        "rom": "25600KB",
-        "ram": "102400KB",
+        "rom": "10000KB",
+        "ram": "10000KB",
         "hisysevent_config": [
         ],
         "deps": {
