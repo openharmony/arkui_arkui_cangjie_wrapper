@@ -1,4 +1,4 @@
-# JS UI Framework<a name="EN-US_TOPIC_0000001076213364"></a>
+# Cangjie ArkUI Framework<a name="EN-US_TOPIC_0000001076213364"></a>
 
 -   [Introduction](#section15701932113019)
 -   [Directory Structure](#section1791423143211)
@@ -7,7 +7,11 @@
 
 ## Introduction<a name="section15701932113019"></a>
 
-The OpenHarmony Cangjie UI framework provides basic, container, and canvas UI components capabilities.
+The OpenHarmony Cangjie UI framework provides basic, container, and canvas UI components capabilities, include State Management, UI Components, Animation, Rendering, Events etc.
+
+Framework architecture:
+
+![Cangjie ArkUI Framework](./figures/arkui_arkui_cangjie_wrapper_en.png)
 
 ## Directory Structure<a name="section1791423143211"></a>
 
@@ -25,7 +29,9 @@ Cangjie UI framework provides various UI components with rich functionalities an
 
 ## Repositories Involved<a name="section1447164910172"></a>
 
-**arkui\_ace\_engine**
+[ArkUI Framework Subsystem](https://gitee.com/openharmony/docs/blob/master/en/readme/arkui.md)
 
-arkui\_napi
+**arkui\_arkui\_cangjie\_wrapper**
+
+[arkui\_napi](https://gitee.com/openharmony/arkui_napi)
 
