@@ -11,36 +11,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//build/cangjie/cjc.gni")
+import("//build/ohos.gni")
 
-ohos_cj_library("kit.ArkUI") {
+ohos_cangjie_shared_library("kit.ArkUI") {
   sources = [ "index.cj" ]
 
   cj_deps = [
-    "../../ohos:ohos.animator",
-    "../../ohos:ohos.component",
-    "../../ohos:ohos.component_snapshot",
-    "../../ohos:ohos.component_utils",
-    "../../ohos:ohos.observer",
-    "../../ohos:ohos.state_manage",
-    "../../ohos:ohos.base",
-    "../../ohos:ohos.ui_resource",
-    "../../ohos:ohos.curves",
-    "../../ohos:ohos.font",
-    "../../ohos:ohos.matrix4",
-    "../../ohos:ohos.measure",
-    "../../ohos:ohos.prompt_action",
-    "../../ohos:ohos.router",
+    "../../ohos/animator:ohos.animator",
+    "../../ohos/arkui/component:ohos.arkui.component",
+    "../../ohos/arkui/component_snapshot:ohos.arkui.component_snapshot",
+    "../../ohos/arkui/component_utils:ohos.arkui.component_utils",
+    "../../ohos/arkui/state_management:ohos.arkui.state_management",
+    "../../ohos/base:ohos.base",
+    "../../ohos/curves:ohos.curves",
+    "../../ohos/font:ohos.font",
+    "../../ohos/measure:ohos.measure",
+    "../../ohos/prompt_action:ohos.prompt_action",
+    "../../ohos/router:ohos.router",
   ]
 
   cj_external_deps = [
-    "window_cangjie_wrapper:ohos.window",
     "window_cangjie_wrapper:ohos.display",
+    "window_cangjie_wrapper:ohos.window",
   ]
 
-  kit = true
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_wrapper"
-  lib_name = "ArkUI"
 }

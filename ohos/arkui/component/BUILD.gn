@@ -1,0 +1,117 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/cangjie/cjc.gni")
+
+ohos_cangjie_shared_library("ohos.arkui.component") {
+  sources = [ "component.cj" ]
+
+  cj_deps = [
+    "action_sheet:ohos.arkui.component.action_sheet",
+    "alert_dialog:ohos.arkui.component.alert_dialog",
+    "alphabet_indexer:ohos.arkui.component.alphabet_indexer",
+    "badge:ohos.arkui.component.badge",
+    "blank:ohos.arkui.component.blank",
+    "button:ohos.arkui.component.button",
+    "calendar_picker:ohos.arkui.component.calendar_picker",
+    "canvas:ohos.arkui.component.canvas",
+    "checkbox:ohos.arkui.component.checkbox",
+    "checkbox_group:ohos.arkui.component.checkbox_group",
+    "circle:ohos.arkui.component.circle",
+    "column:ohos.arkui.component.column",
+    "column_split:ohos.arkui.component.column_split",
+    "common:ohos.arkui.component.common",
+    "counter:ohos.arkui.component.counter",
+    "cursor_control:ohos.arkui.component.cursor_control",
+    "custom_dialog:ohos.arkui.component.custom_dialog",
+    "custom_view:ohos.arkui.component.custom_view",
+    "data_panel:ohos.arkui.component.data_panel",
+    "date_picker:ohos.arkui.component.date_picker",
+    "divider:ohos.arkui.component.divider",
+    "ellipse:ohos.arkui.component.ellipse",
+    "empty_component:ohos.arkui.component.empty_component",
+    "flex:ohos.arkui.component.flex",
+    "focus_control:ohos.arkui.component.focus_control",
+    "for_each:ohos.arkui.component.for_each",
+    "gauge:ohos.arkui.component.gauge",
+    "grid:ohos.arkui.component.grid",
+    "grid_col:ohos.arkui.component.grid_col",
+    "grid_item:ohos.arkui.component.grid_item",
+    "grid_row:ohos.arkui.component.grid_row",
+    "hyperlink:ohos.arkui.component.hyperlink",
+    "ifcomponent:ohos.arkui.component.ifcomponent",
+    "image:ohos.arkui.component.image",
+    "image_animator:ohos.arkui.component.image_animator",
+    "image_span:ohos.arkui.component.image_span",
+    "lazy_for_each:ohos.arkui.component.lazy_for_each",
+    "line:ohos.arkui.component.line",
+    "list:ohos.arkui.component.list",
+    "list_item:ohos.arkui.component.list_item",
+    "list_item_group:ohos.arkui.component.list_item_group",
+    "loading_progress:ohos.arkui.component.loading_progress",
+    "marquee:ohos.arkui.component.marquee",
+    "menu:ohos.arkui.component.menu",
+    "menu_item:ohos.arkui.component.menu_item",
+    "menu_item_group:ohos.arkui.component.menu_item_group",
+    "page_transition:ohos.arkui.component.page_transition",
+    "path:ohos.arkui.component.path",
+    "path_2d:ohos.arkui.component.path_2d",
+    "pattern_lock:ohos.arkui.component.pattern_lock",
+    "progress:ohos.arkui.component.progress",
+    "progress_mask:ohos.arkui.component.progress_mask",
+    "qrcode:ohos.arkui.component.qrcode",
+    "radio:ohos.arkui.component.radio",
+    "rating:ohos.arkui.component.rating",
+    "rect:ohos.arkui.component.rect",
+    "recycle:ohos.arkui.component.recycle",
+    "refresh:ohos.arkui.component.refresh",
+    "relative_container:ohos.arkui.component.relative_container",
+    "rich_editor:ohos.arkui.component.rich_editor",
+    "rich_text:ohos.arkui.component.rich_text",
+    "row:ohos.arkui.component.row",
+    "row_split:ohos.arkui.component.row_split",
+    "save_button:ohos.arkui.component.save_button",
+    "scroll:ohos.arkui.component.scroll",
+    "scroll_bar:ohos.arkui.component.scroll_bar",
+    "search:ohos.arkui.component.search",
+    "select:ohos.arkui.component.select",
+    "shape:ohos.arkui.component.shape",
+    "sidebar:ohos.arkui.component.sidebar",
+    "slider:ohos.arkui.component.slider",
+    "span:ohos.arkui.component.span",
+    "stack:ohos.arkui.component.stack",
+    "stepper:ohos.arkui.component.stepper",
+    "stepper_item:ohos.arkui.component.stepper_item",
+    "swiper:ohos.arkui.component.swiper",
+    "symbol_glyph:ohos.arkui.component.symbol_glyph",
+    "symbol_span:ohos.arkui.component.symbol_span",
+    "tab:ohos.arkui.component.tab",
+    "text:ohos.arkui.component.text",
+    "text_area:ohos.arkui.component.text_area",
+    "text_clock:ohos.arkui.component.text_clock",
+    "text_field:ohos.arkui.component.text_field",
+    "text_input:ohos.arkui.component.text_input",
+    "text_picker:ohos.arkui.component.text_picker",
+    "text_timer:ohos.arkui.component.text_timer",
+    "time_picker:ohos.arkui.component.time_picker",
+    "toggle:ohos.arkui.component.toggle",
+    "util:ohos.arkui.component.util",
+    "video:ohos.arkui.component.video",
+    "view:ohos.arkui.component.view",
+    "web:ohos.arkui.component.web",
+  ]
+
+  external_deps = [ "ace_engine:cj_frontend_ohos" ]
+  subsystem_name = "arkui"
+  part_name = "arkui_cangjie_wrapper"
+}

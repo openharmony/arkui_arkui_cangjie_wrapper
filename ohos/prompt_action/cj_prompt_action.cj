@@ -13,13 +13,18 @@
  * limitations under the License.
  */
 
-package ohos.prompt_action
+public package ohos.prompt_action
 
 import ohos.base.*
+import ohos.business_exception.*
+import ohos.callback_invoke.*
 import ohos.ffi.*
-import ohos.component.*
-import ohos.image.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.arkui.component.common.*
+import ohos.multimedia.image.*
 import ohos.labels.APILevel
+import std.deriving.Derive
 
 @C
 struct CButtonInfo {
@@ -107,16 +112,6 @@ struct NativeShadowOptions {
         let offsetX: Float64,
         let offsetY: Float64,
         let fill: Bool
-    ) {}
-}
-
-@C
-struct NativeEdgeStyles {
-    NativeEdgeStyles(
-        let top: Int32,
-        let right: Int32,
-        let bottom: Int32,
-        let left: Int32
     ) {}
 }
 
@@ -210,58 +205,69 @@ public type ShowDialogCallBack = AsyncCallback<Int32>
 
 public type ShowActionMenuCallBack = AsyncCallback<Int32>
 
+/**
+ * Provides a ButtonInfo component..
+ */
 @!APILevel[
-    12,
+    21,
+    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ButtonInfo {
+    /**
+     * The text displayed in the button.
+     *
+     * @type { ResourceStr }
+     * @relation text: string | Resource;
+     */
     @!APILevel[
-        12,
+        21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public let text: String
+    public var text: ResourceStr
+
+    /**
+     * The foreground color of button.
+     *
+     * @type { ResourceColor }
+     * @relation color: string | Resource;
+     */
     @!APILevel[
-        12,
+        21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public let color: UInt32
+    public var color: ResourceColor
+
+    /**
+     * Define whether the button responds to Enter/Space key by default.
+     *
+     * @type { Bool }
+     * @relation color: primary?: boolean;
+     */
     @!APILevel[
-        12,
+        21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public let primary: Bool
+    public var primary: Bool
 
     /**
      * Constructs a menu item button in a menu.
      *
-     * @param text: Button text content.
-     * @param color: Button text color.
-     * @since 11
+     * @param { ResourceStr } text: Button text content.
+     * @param { ResourceColor } color: Button text color.
+     * @param { Bool } primary: Whether the button responds to the Enter/Space key by default.
      */
     @!APILevel[
-        12,
+        21,
+        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(text: String, color: UInt32, primary!: Bool = false) {
+    public init(text!: ResourceStr, color!: ResourceColor, primary!: Bool = false) {
         this.text = text
-        this.color = Color.alphaAdapt(color)
-        this.primary = primary
-    }
-
-    /**
-     * Constructs a menu item button in a menu.
-     *
-     * @param text: Button text content.
-     * @param color: Button text color.
-     * @since 11
-     */
-    @!APILevel[
-        12,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(text: String, color: Color, primary!: Bool = false) {
-        this.text = text
-        this.color = color.toUInt32()
+        this.color = color
         this.primary = primary
     }
 }
@@ -274,8 +280,13 @@ func CreateCButtons(buttons: Array<ButtonInfo>): Option<CPointer<CButtonInfo>> {
     }
     unsafe {
         for (i in 0..size) {
-            let text = LibC.mallocCString(buttons[i].text)
-            let color = Color.alphaAdapt(buttons[i].color)
+            var text = CString(CPointer<UInt8>())
+            try (
+                cText = LibC.mallocCString(transResourceStrToString(buttons[i].text)).asResource()
+            ) {
+                text = cText.value
+            }
+            let color = transAppResourceToResourceColor(buttons[i].color)
             let primary = buttons[i].primary
             var cButton = CButtonInfo(text, color, primary)
             pButtons.write(i, cButton)
@@ -292,97 +303,37 @@ unsafe func DestoryCButtons(pButtons: CPointer<CButtonInfo>, size: Int64) {
     free(CPointer<Unit>(pButtons))
 }
 
+/**
+ * Enum for the toast showMode.
+ *
+ * @relation enum ToastShowMode
+ */
+@Derive[Equatable]
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public enum ShadowStyle {
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    OUTER_DEFAULT_XS
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    OUTER_DEFAULT_SM
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    OUTER_DEFAULT_MD
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    OUTER_DEFAULT_LG
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    OUTER_FLOATING_SM
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    OUTER_FLOATING_MD
-    | ...
-
-    func getValue(): Int32 {
-        match (this) {
-            case OUTER_DEFAULT_XS => 0
-            case OUTER_DEFAULT_SM => 1
-            case OUTER_DEFAULT_MD => 2
-            case OUTER_DEFAULT_LG => 3
-            case OUTER_FLOATING_SM => 4
-            case OUTER_FLOATING_MD => 5
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-}
-
-@!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ToastShowMode {
+
+    /**
+     * Toast shows in app.
+     * @relation DEFAULT = 0,
+     */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default
+
+    /**
+     * Toast shows at the top.
+     *
+     * @relation TOP_MOST = 1,
+     */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -398,128 +349,84 @@ public enum ToastShowMode {
     }
 }
 
+/**
+ * Provides a EdgeColor component.
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class EdgeStyles {
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var top: BorderStyle
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var right: BorderStyle
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var bottom: BorderStyle
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var left: BorderStyle
+public class EdgeColors {
 
+    /**
+     * The top of the EdgeColor.
+     *
+     * @type { ResourceColor }
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(top!: BorderStyle = BorderStyle.Solid, right!: BorderStyle = BorderStyle.Solid,
-        bottom!: BorderStyle = BorderStyle.Solid, left!: BorderStyle = BorderStyle.Solid) {
-        this.top = top
-        this.right = right
-        this.bottom = bottom
-        this.left = left
-    }
+    public var top: ResourceColor
 
-    func toCEdgeStyles(): NativeEdgeStyles {
-        return NativeEdgeStyles(top.getValue(), right.getValue(), bottom.getValue(), left.getValue())
-    }
-}
+    /**
+     * The right of the EdgeColor.
+     *
+     * @type { ResourceColor }
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var right: ResourceColor
 
-@!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class EdgeColor {
+    /**
+     * The bottom of the EdgeColor.
+     *
+     * @type { ResourceColor }
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var top: Color
+    public var bottom: ResourceColor
+
+    /**
+     * The left of the EdgeColor.
+     *
+     * @type { ResourceColor }
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var right: Color
+    public var left: ResourceColor
+
+    /**
+     * EdgeColor constructor
+     *
+     * @param { ResourceColor } top
+     * @param { ResourceColor } right
+     * @param { ResourceColor } bottom
+     * @param { ResourceColor } left
+     * @returns { This }
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var bottom: Color
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var left: Color
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(top!: Color = Color.BLACK, right!: Color = Color.BLACK, bottom!: Color = Color.BLACK,
-        left!: Color = Color.BLACK) {
+    public init(
+        top!: ResourceColor = Color.Black,
+        right!: ResourceColor = Color.Black,
+        bottom!: ResourceColor = Color.Black,
+        left!: ResourceColor = Color.Black
+    ) {
         this.top = top
         this.right = right
         this.bottom = bottom
@@ -527,234 +434,327 @@ public class EdgeColor {
     }
 
     func toCEdgeColor(): NativeEdgeColor {
-        return NativeEdgeColor(top.toUInt32(), right.toUInt32(), bottom.toUInt32(), left.toUInt32())
+        return NativeEdgeColor(
+            transAppResourceToResourceColor(top),
+            transAppResourceToResourceColor(right),
+            transAppResourceToResourceColor(bottom),
+            transAppResourceToResourceColor(left)
+        )
     }
 }
 
+/**
+ * Provides a EdgeColor component.
+ *
+ * @relation enum HoverModeAreaType
+ */
+@Derive[Equatable]
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum HoverModeAreaType {
+
+    /**
+     * TopScreen HoverModeAreaType.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    TOP_SCREEN
+    TopScreen
+
+    /**
+     * BottomScreen HoverModeAreaType.
+     */
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    BOTTOM_SCREEN
+    BottomScreen
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case TOP_SCREEN => 0
-            case BOTTOM_SCREEN => 1
+            case TopScreen => 0
+            case BottomScreen => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 }
 
+/**
+ * Provides a KeyboardAvoidMode component.
+ *
+ * @relation enum KeyboardAvoidMode
+ */
+@Derive[Equatable]
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum KeyboardAvoidMode {
+    /**
+     * Default KeyboardAvoidMode.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    DEFAULT
+    Default
+
+    /**
+     * None KeyboardAvoidMode.
+     */
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    NONE
+    None
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case DEFAULT => 0
-            case NONE => 1
+            case Default => 0
+            case None => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 }
 
+/**
+ * Dialog base options
+ *
+ * @relation interface BaseDialogOptions
+ */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class BaseDialogOptions {
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var maskRect: Rectangle = Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var alignment: DialogAlignment = DialogAlignment.Default
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var offset: Offset = Offset(0.vp, 0.vp)
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var isModal: Bool = true
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var showInSubWindow: Bool = false
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var autoCancel: Bool = true
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var maskColor: Color = Color(0x33000000)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var transition: TransitionEffect = TransitionEffect.OPACITY
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var onDidAppear: () -> Unit = {=>}
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var onDidDisappear: () -> Unit = {=>}
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var onWillAppear: () -> Unit = {=>}
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var onWillDisappear: () -> Unit = {=>}
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var keyboardAvoidMode: KeyboardAvoidMode = KeyboardAvoidMode.DEFAULT
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var enableHoverMode: Bool = false
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var hoverModeArea: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN
 
+    /**
+     * Mask Region of dialog. The size can't exceed the main window.
+     *
+     * @type { Rectangle }
+     * @relation maskRect?: Rectangle;
+     */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(
-        maskRect!: Rectangle = Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent),
-        alignment!: DialogAlignment = DialogAlignment.Default,
-        offset!: Offset = Offset(0.vp, 0.vp),
-        isModal!: Bool = true,
-        showInSubWindow!: Bool = false
-    ) {
-        this.maskRect = maskRect
-        this.alignment = alignment
-        this.offset = offset
-        this.isModal = isModal
-        this.showInSubWindow = showInSubWindow
-    }
+    public var maskRect: Rectangle
 
+    /**
+     * Defines the dialog alignment of the screen.
+     *
+     * @type { DialogAlignment }
+     * @relation alignment?: DialogAlignment;
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var alignment: DialogAlignment
+
+    /**
+     * Defines the dialog offset.
+     *
+     * @type { Offset }
+     * @relation offset?: Offset;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var offset: Offset
+
+    /**
+     * Whether it is a modal dialog
+     * @type { Bool }
+     * @relation isModal?: boolean;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var isModal: Bool
+    /**
+     * Whether to display in the sub window.
+     *
+     * @type { Bool }
+     * @relation showInSubWindow?: boolean;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var showInSubWindow: Bool
+
+    /**
+     * Allows users to click the mask layer to exit.
+     *
+     * @type { Bool }
+     * @relation autoCancel?: boolean;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var autoCancel: Bool
+
+    /**
+     * Defines custom dialog maskColor
+     *
+     * @type { ResourceColor }
+     * @relation maskColor?: ResourceColor;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var maskColor: ResourceColor
+
+    /**
+     * Transition parameters of opening/closing custom dialog.
+     *
+     * @type { TransitionEffect }
+     * @relation transition?: TransitionEffect;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var transition: TransitionEffect
+
+    /**
+     * Callback function when the dialog appears.
+     *
+     * @type { function }
+     * @relation onDidAppear?: () => void;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var onDidAppear: () -> Unit
+
+    /**
+     * Callback function when the dialog disappears.
+     *
+     * @type { function }
+     * @relation onDidDisappear?: () => void;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var onDidDisappear: () -> Unit
+
+    /**
+     * Callback function before the dialog openAnimation starts.
+     *
+     * @type { function }
+     * @relation onWillAppear?: () => void;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var onWillAppear: () -> Unit
+
+    /**
+     * Callback function before the dialog closeAnimation starts.
+     *
+     * @type { function }
+     * @relation onWillDisappear?: () => void;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var onWillDisappear: () -> Unit
+
+    /**
+     * Defines the customDialog's keyboard avoid mode
+     *
+     * @type { KeyboardAvoidMode }
+     * @relation keyboardAvoidMode?: KeyboardAvoidMode;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var keyboardAvoidMode: KeyboardAvoidMode
+
+    /**
+     * Defines whether to respond to the hover mode.
+     *
+     * @type { Bool }
+     * @relation enableHoverMode?: boolean;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var enableHoverMode: Bool
+
+    /**
+     * Defines the dialog's display area in hover mode.
+     *
+     * @type { HoverModeAreaType }
+     * @relation hoverModeArea?: HoverModeAreaType;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var hoverModeArea: HoverModeAreaType
+
+    /**
+     * BaseDialogOptions constructor
+     *
+     * @param { Rectangle } maskRect
+     * @param { DialogAlignment } alignment
+     * @param { Offset } offset
+     * @param { Bool } isModal
+     * @param { Bool } showInSubWindow
+     * @param { Bool } autoCancel
+     * @param { ResourceColor } maskColor
+     * @param { TransitionEffect } transition
+     * @param { function } onDidAppear
+     * @param { function } onDidDisappear
+     * @param { function } onWillAppear
+     * @param { function } onWillDisappear
+     * @param { KeyboardAvoidMode } keyboardAvoidMode
+     * @param { Bool } enableHoverMode
+     * @param { HoverModeAreaType } hoverModeArea
+     * @returns { This }
+     */
+    @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -764,16 +764,16 @@ public open class BaseDialogOptions {
         offset!: Offset = Offset(0.vp, 0.vp),
         isModal!: Bool = true,
         showInSubWindow!: Bool = false,
-        autoCancel!: Bool, //5.1
-        maskColor!: Color = Color(0x33000000),
+        autoCancel!: Bool = true,
+        maskColor!: ResourceColor = Color(0x33000000),
         transition!: TransitionEffect = TransitionEffect.OPACITY,
         onDidAppear!: () -> Unit = {=>},
         onDidDisappear!: () -> Unit = {=>},
         onWillAppear!: () -> Unit = {=>},
         onWillDisappear!: () -> Unit = {=>},
-        keyboardAvoidMode!: KeyboardAvoidMode = KeyboardAvoidMode.DEFAULT,
+        keyboardAvoidMode!: KeyboardAvoidMode = KeyboardAvoidMode.Default,
         enableHoverMode!: Bool = false,
-        hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN
+        hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BottomScreen
     ) {
         this.maskRect = maskRect
         this.alignment = alignment
@@ -793,172 +793,210 @@ public open class BaseDialogOptions {
     }
 }
 
+/**
+ * Dialog's custom content options
+ *
+ * @relation interface CustomDialogOptions extends BaseDialogOptions
+ */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomDialogOptions <: BaseDialogOptions {
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var builder: () -> Unit = {=>}
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var backgroundColor: UInt32 = Color.TRANSPARENT.toUInt32()
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var cornerRadius: BorderRadiuses = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
-        bottomRight: 32.vp)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var borderWidth: EdgeWidths = EdgeWidths()
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var borderColor: EdgeColor = EdgeColor()
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var borderStyle: Option<BorderStyle> = None
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var borderEdgeStyle: Option<EdgeStyles> = None
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var width: Length = 400.vp
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var height: Length = 100.vp
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var shadowOption: Option<ShadowOptions> = None
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var shadowStyle: Option<ShadowStyle> = None
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        maskRect!: Rectangle = Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent),
-        alignment!: DialogAlignment = DialogAlignment.Default,
-        offset!: Offset = Offset(0.vp, 0.vp),
-        isModal!: Bool = true,
-        showInSubWindow!: Bool = false,
-        builder!: () -> Unit
-    ) {
-        super(
-            maskRect: maskRect,
-            alignment: alignment,
-            offset: offset,
-            isModal: isModal,
-            showInSubWindow: showInSubWindow
-        )
-        this.builder = builder
-    }
 
+    /**
+     * Allow developer custom dialog's content.
+     *
+     * @type { function }
+     * @relation builder: CustomBuilder;
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var builder: () -> Unit
+
+    /**
+     * Defines the custom dialog's background color.
+     *
+     * @type { ResourceColor }
+     * @relation backgroundColor?: ResourceColor;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundColor: ResourceColor
+
+    /**
+     * Defines the custom dialog's corner radius.
+     *
+     * @type { BorderRadiuses }
+     * @relation cornerRadius?: Dimension | BorderRadiuses;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var cornerRadius: BorderRadiuses
+
+    /**
+     * Defines the custom dialog's border width.
+     *
+     * @type { EdgeWidths }
+     * @relation borderWidth?: Dimension | EdgeWidths;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var borderWidth: EdgeWidths
+
+    /**
+     * Defines the custom dialog's border color.
+     *
+     * @type { EdgeColors }
+     * @relation borderColor?: ResourceColor | EdgeColors;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var borderColor: EdgeColors
+
+    /**
+     * Defines the custom dialog's border style.
+     *
+     * @type {EdgeStyles }
+     * @relation borderStyle?: BorderStyle | EdgeStyles;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var borderStyle: EdgeStyles
+
+    /**
+     * Defines the dialog's width.
+     *
+     * @type { Length }
+     * @relation width?: Dimension;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var width: Length
+
+    /**
+     * Defines the dialog's height.
+     *
+     * @type { Length }
+     * @relation height?: Dimension;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var height: Length
+
+    /**
+     * Defines the dialog's shadow.
+     *
+     * @type { ShadowOptions }
+     * @relation shadow?: ShadowOptions | ShadowStyle;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var shadow: ?ShadowOptions
+
+    /**
+     * Defines the dialog's background blur Style
+     *
+     * @type { BlurStyle }
+     * @relation backgroundBlurStyle?: BlurStyle;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundBlurStyle: BlurStyle
+
+    /**
+     * Dialog constructor
+     *
+     * @param { function } builder
+     * @param { Rectangle } maskRect
+     * @param { DialogAlignment } alignment
+     * @param { Offset } offset
+     * @param { Bool } isModal
+     * @param { Bool } showInSubWindow
+     * @param { Bool } autoCancel
+     * @param { ResourceColor } maskColor
+     * @param { TransitionEffect } transition
+     * @param { function } onDidAppear
+     * @param { function } onDidDisappear
+     * @param { function } onWillAppear
+     * @param { function } onWillDisappear
+     * @param { KeyboardAvoidMode } keyboardAvoidMode
+     * @param { Bool } enableHoverMode
+     * @param { HoverModeAreaType } hoverModeArea
+     * @param { ResourceColor } backgroundColor
+     * @param { BorderRadiuses } cornerRadius
+     * @param { EdgeWidths } borderWidth
+     * @param { EdgeColors } borderColor
+     * @param { EdgeStyles } borderStyle
+     * @param { Length } width
+     * @param { Length } height
+     * @param { ShadowOptions } shadow
+     * @param { BlurStyle } backgroundBlurStyle
+     * @returns { This }
+     */
+    @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
+        builder!: () -> Unit,
         maskRect!: Rectangle = Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent),
         alignment!: DialogAlignment = DialogAlignment.Default,
         offset!: Offset = Offset(0.vp, 0.vp),
         isModal!: Bool = true,
         showInSubWindow!: Bool = false,
-        builder!: () -> Unit,
-        autoCancel!: Bool, // 5.1 start
-        maskColor!: Color = Color(0x33000000),
+        autoCancel!: Bool = true,
+        maskColor!: ResourceColor = Color(0x33000000),
         transition!: TransitionEffect = TransitionEffect.OPACITY,
         onDidAppear!: () -> Unit = {=>},
         onDidDisappear!: () -> Unit = {=>},
         onWillAppear!: () -> Unit = {=>},
         onWillDisappear!: () -> Unit = {=>},
-        keyboardAvoidMode!: KeyboardAvoidMode = KeyboardAvoidMode.DEFAULT,
+        keyboardAvoidMode!: KeyboardAvoidMode = KeyboardAvoidMode.Default,
         enableHoverMode!: Bool = false,
-        hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN,
-        backgroundColor!: Color = Color.TRANSPARENT,
+        hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BottomScreen,
+        backgroundColor!: ResourceColor = Color.Transparent,
         cornerRadius!: BorderRadiuses = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
             bottomRight: 32.vp),
         borderWidth!: EdgeWidths = EdgeWidths(top: 0.vp, right: 0.vp, bottom: 0.vp, left: 0.vp),
-        borderColor!: EdgeColor = EdgeColor(top: Color.BLACK, right: Color.BLACK, bottom: Color.BLACK, left: Color.BLACK),
-        borderStyle!: Option<BorderStyle> = Option.None,
-        borderEdgeStyle!: Option<EdgeStyles> = Option.None,
+        borderColor!: EdgeColors = EdgeColors(top: Color.Black, right: Color.Black, bottom: Color.Black, left: Color.Black),
+        borderStyle!: EdgeStyles = EdgeStyles(),
         width!: Length = 400.vp,
         height!: Length = 100.vp,
-        shadowOption!: Option<ShadowOptions> = Option.None,
-        shadowStyle!: Option<ShadowStyle> = Option.None,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
+        shadow!: ?ShadowOptions = None,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick
     ) {
         super(
             maskRect: maskRect,
@@ -978,314 +1016,570 @@ public class CustomDialogOptions <: BaseDialogOptions {
             hoverModeArea: hoverModeArea
         )
         this.builder = builder
-        this.backgroundColor = backgroundColor.toUInt32()
+        this.backgroundColor = backgroundColor
         this.cornerRadius = cornerRadius
         this.borderWidth = borderWidth
         this.borderColor = borderColor
         this.borderStyle = borderStyle
-        this.borderEdgeStyle = borderEdgeStyle
         this.width = width
         this.height = height
-        this.shadowOption = shadowOption
-        this.shadowStyle = shadowStyle
+        this.shadow = shadow
         this.backgroundBlurStyle = backgroundBlurStyle
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init() {
-        super()
     }
 }
 
+/**
+ * Dialog's show options
+ *
+ * @relation interface ShowDialogOptions
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class ShowDialogOptions {
     let buttonsSize: UInt32
 
-    public ShowDialogOptions(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let title!: String = '',
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let message!: String = '',
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let buttons!: Array<ButtonInfo> = [ButtonInfo("button", Color(0x31463146))],
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let alignment!: DialogAlignment = DialogAlignment.Default,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let offset!: Offset = Offset(0.vp, 0.vp),
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let maskRect!: Rectangle = Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent),
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let showInSubWindow!: Bool = false,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let isModal!: Bool = true,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let backgroundColor!: Color = Color.TRANSPARENT,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let shadowOption!: Option<ShadowOptions> = Option.None,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let shadowStyle!: Option<ShadowStyle> = Option.None,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let enableHoverMode!: Bool = false,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN
+    /**
+     * Title of the text to display.
+     *
+     * @type { ResourceStr }
+     * @relation title?: string | Resource;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var title: ResourceStr
+
+    /**
+     * Text body.
+     *
+     * @type { ResourceStr }
+     * @relation message?: string | Resource;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var message: ResourceStr
+
+    /**
+     * Array of buttons in the dialog box.
+     * More than one buttons are supported.
+     * @type { Array<ButtonInfo> }
+     * @relation buttons?: Array<Button>;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var buttons: Array<ButtonInfo>
+
+    /**
+     * Defines the dialog alignment of the screen.
+     *
+     * @type { DialogAlignment }
+     * @relation alignment?: DialogAlignment;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var alignment: DialogAlignment
+
+    /**
+     * Defines the dialog offset.
+     *
+     * @type { Offset }
+     * @relation offset?: Offset;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var offset: Offset
+
+    /**
+     * Mask Region of dialog. The size can't exceed the main window.
+     *
+     * @type { Rectangle }
+     * @relation maskRect?: Rectangle;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var maskRect: Rectangle
+
+    /**
+     * Whether to display in the sub window.
+     *
+     * @type { Bool }
+     * @relation showInSubWindow?: boolean;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var showInSubWindow: Bool
+
+    /**
+     * Whether it is a modal dialog
+     * @type { Bool }
+     * @relation isModal?: boolean;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var isModal: Bool
+
+    /**
+     * Defines the dialog's background color.
+     *
+     * @type { ResourceColor }
+     * @relation backgroundColor?: ResourceColor;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundColor: ResourceColor
+
+    /**
+     * Defines the dialog's background blur Style
+     *
+     * @type { BlurStyle }
+     * @relation backgroundBlurStyle?: BlurStyle;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundBlurStyle: BlurStyle
+
+    /**
+     * Defines the dialog's shadow option
+     *
+     * @type { ShadowOptions }
+     * @relation shadow?: ShadowOptions | ShadowStyle;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var shadow: ?ShadowOptions
+
+   /**
+     * Defines whether to respond to the hover mode.
+     *
+     * @type { Bool }
+     * @relation enableHoverMode?: boolean;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var enableHoverMode: Bool
+
+    /**
+     * Defines the dialog's display area in hover mode.
+     *
+     * @type { HoverModeAreaType }
+     * @relation hoverModeArea?: HoverModeAreaType;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var hoverModeArea: HoverModeAreaType
+
+    /**
+     * Dialog's show options constructor
+     *
+     * @param { ResourceStr } title
+     * @param { ResourceStr } message
+     * @param { Array<ButtonInfo> } buttons
+     * @param { DialogAlignment } alignment
+     * @param { Offset } offset
+     * @param { Rectangle } maskRect
+     * @param { Bool } showInSubWindow
+     * @param { Bool } isModal
+     * @param { Color } backgroundColor
+     * @param { BlurStyle } backgroundBlurStyle
+     * @param { ShadowOptions } shadow
+     * @param { Bool } enableHoverMode
+     * @param { HoverModeAreaType } hoverModeArea
+     * @returns { This }
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(
+        title!: ResourceStr = '',
+        message!: ResourceStr = '',
+        buttons!: Array<ButtonInfo> = [],
+        alignment!: DialogAlignment = DialogAlignment.Default,
+        offset!: Offset = Offset(0.vp, 0.vp),
+        maskRect!: Rectangle = Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent),
+        showInSubWindow!: Bool = false,
+        isModal!: Bool = true,
+        backgroundColor!: Color = Color.Transparent,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
+        shadow!: ?ShadowOptions = None,
+        enableHoverMode!: Bool = false,
+        hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BottomScreen
     ) {
         this.buttonsSize = UInt32(buttons.size)
+        this.title = title
+        this.message = message
+        this.buttons = buttons
+        this.alignment = alignment
+        this.offset = offset
+        this.maskRect = maskRect
+        this.showInSubWindow = showInSubWindow
+        this.isModal = isModal
+        this.backgroundColor = backgroundColor
+        this.backgroundBlurStyle = backgroundBlurStyle
+        this.shadow = shadow
+        this.enableHoverMode = enableHoverMode
+        this.hoverModeArea = hoverModeArea
     }
 }
 
+/**
+ * Menu's Action options
+ *
+ * @relation interface ActionMenuOptions
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class ActionMenuOptions {
     let buttonsSize: UInt32
 
-    public ActionMenuOptions(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let title!: String = '',
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let buttons!: Array<ButtonInfo>,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let showInSubWindow!: Bool = false,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let isModal!: Bool = true
+    /**
+     * Title of the text to display.
+     *
+     * @type { ResourceStr }
+     * @relation title?: string | Resource;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var title: ResourceStr
+
+    /**
+     * Array of buttons in the dialog box.
+     * One to six buttons are supported.
+     *
+     * @type { Array<ButtonInfo> }
+     * @relation buttons: [Button, Button?, Button?, Button?, Button?, Button?];
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var buttons: Array<ButtonInfo>
+
+    /**
+     * Whether to display in the sub window.
+     *
+     * @type { Bool }
+     * @relation showInSubWindow?: boolean;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var showInSubWindow: Bool
+
+    /**
+     * Whether it is a modal dialog
+     * @type { Bool }
+     * @relation isModal?: boolean;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var isModal: Bool
+
+    /**
+     * Menu's Action options constructor
+     *
+     * @param { ResourceStr } title
+     * @param { Array<ButtonInfo> } buttons
+     * @param { Bool } showInSubWindow
+     * @param { Bool } isModal
+     * @returns { This }
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(
+        title!: ResourceStr = '',
+        buttons!: Array<ButtonInfo>,
+        showInSubWindow!: Bool = false,
+        isModal!: Bool = true
     ) {
         this.buttonsSize = UInt32(buttons.size)
+        this.title = title
+        this.buttons = buttons
+        this.showInSubWindow = showInSubWindow
+        this.isModal = isModal
     }
 }
 
+/**
+ * Toast's show options
+ *
+ * @relation interface ShowToastOptions
+ */
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ShowToastOptions {
-    public ShowToastOptions(
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let message!: String = 'ShowToast',
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let duration!: UInt32 = 1500,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let bottom!: String = '80vp',
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let showMode!: ToastShowMode = ToastShowMode.Default,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let alignment!: Alignment = Alignment.Bottom,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let offset!: Offset = Offset(0.vp, 0.vp),
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let backgroundColor!: Color = Color.TRANSPARENT,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let textColor!: Color = Color.BLACK,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let shadowOption!: Option<ShadowOptions> = Option.None,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let shadowStyle!: Option<ShadowStyle> = Option.None,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let enableHoverMode!: Bool = false,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public let hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BOTTOM_SCREEN
-    ) {}
+
+    /**
+     * Text to display.
+     *
+     * @type { String }
+     * @relation message: string | Resource;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var message: ResourceStr
+
+    /**
+     * Duration of toast dialog box.
+     * @type { UInt32 } -The recommended value ranges from 1500ms to 10000ms.
+     * @relation duration?: number;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var duration: UInt32
+
+    /**
+     * The distance between toast dialog box and the bottom of screen.
+     *
+     * @type { Length }
+     * @relation bottom?: string | number;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var bottom: Length
+
+    /**
+     * Determine the show mode of the toast.
+     *
+     * @type { ToastShowMode }
+     * @relation showMode?: ToastShowMode;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var showMode: ToastShowMode
+
+    /**
+     * Defines the toast alignment of the screen.
+     *
+     * @type { Alignment }
+     * @relation alignment?: Alignment;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var alignment: Alignment
+
+    /**
+     * Defines the toast offset.
+     *
+     * @type { Offset }
+     * @relation offset?: Offset;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var offset: Offset
+
+    /**
+     * Background color of toast.
+     *
+     * @type { ResourceColor }
+     * @relation backgroundColor?: ResourceColor;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundColor: ResourceColor
+
+    /**
+     * Text color of toast.
+     *
+     * @type { ResourceColor }
+     * @relation textColor?: ResourceColor;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var textColor: ResourceColor
+
+    /**
+     * Background blur Style of toast.
+     *
+     * @type { BlurStyle }
+     * @relation backgroundBlurStyle?: BlurStyle;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundBlurStyle: BlurStyle
+
+    /**
+     * Shadow of toast's option.
+     *
+     * @type { ShadowOptions }
+     * @relation shadow?: ShadowOptions | ShadowStyle;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var shadow: ?ShadowOptions = None
+
+    /**
+     * Define whether to respond to the hover mode.
+     *
+     * @type { Bool }
+     * @relation enableHoverMode?: boolean;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var enableHoverMode: Bool
+
+    /**
+     * Defines the toast's display area in hover mode.
+     *
+     * @type { HoverModeAreaType }
+     * @relation hoverModeArea?: HoverModeAreaType;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var hoverModeArea: HoverModeAreaType
+
+    /**
+     * Toast's show options constructor
+     *
+     * @param { ResourceStr } message
+     * @param { UInt32 } duration
+     * @param { Length } bottom
+     * @param { ToastShowMode } showMode
+     * @param { Alignment } alignment
+     * @param { Offset } offset
+     * @param { Color } backgroundColor
+     * @param { Color } textColor
+     * @param { BlurStyle } backgroundBlurStyle
+     * @param { ShadowOptions } shadow
+     * @param { Bool } enableHoverMode
+     * @param { HoverModeAreaType } hoverModeArea
+     * @returns { This }
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(
+        message!: ResourceStr,
+        duration!: UInt32 = 1500,
+        bottom!: Length = 80.vp,
+        showMode!: ToastShowMode = ToastShowMode.Default,
+        alignment!: Alignment = Alignment.Bottom,
+        offset!: Offset = Offset(0.vp, 0.vp),
+        backgroundColor!: Color = Color.Transparent,
+        textColor!: Color = Color.Black,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
+        shadow!: ?ShadowOptions = None,
+        enableHoverMode!: Bool = false,
+        hoverModeArea!: HoverModeAreaType = HoverModeAreaType.BottomScreen
+    ) {
+        this.message = message
+        this.duration = duration
+        this.bottom = bottom
+        this.showMode = showMode
+        this.alignment = alignment
+        this.offset = offset
+        this.backgroundColor = backgroundColor
+        this.textColor = textColor
+        this.backgroundBlurStyle = backgroundBlurStyle
+        this.shadow = shadow
+        this.enableHoverMode = enableHoverMode
+        this.hoverModeArea = hoverModeArea
+    }
 }
 
 func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadowOptions {
     return NativeShadowOptions(
         shadowOptions.radius,
-        shadowOptions.shadowType,
-        shadowOptions.color,
+        shadowOptions.shadowType.getValue(),
+        transAppResourceToResourceColor(shadowOptions.color),
         shadowOptions.offsetX,
         shadowOptions.offsetY,
         shadowOptions.fill
@@ -1337,22 +1631,15 @@ func parseRectangle(rectangle: Rectangle): NativeRectangle {
 }
 
 func parseCustomDialogOptions(options: CustomDialogOptions): NativeCustomDialogOptions {
-    let borderEdgeStyle = match (options.borderEdgeStyle) {
-        case Some(edge) => edge.toCEdgeStyles()
-        case None => match (options.borderStyle) {
-            case Some(value) => EdgeStyles(top: value, right: value, bottom: value, left: value).toCEdgeStyles()
-            case None => EdgeStyles(top: BorderStyle.Solid, right: BorderStyle.Solid, bottom: BorderStyle.Solid,
-                left: BorderStyle.Solid).toCEdgeStyles()
-        }
-    }
-    let shadowOption = match (options.shadowOption) {
+    let borderEdgeStyle = options.borderStyle.toNative()
+
+    let shadowOption = match (options.shadow) {
         case Some(value) => parseShadowOptions(value)
-        case None => parseShadowOptions(ShadowOptions())
+        case None => parseShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.Color))
     }
-    let shadowStyle = match (options.shadowStyle) {
-        case Some(value) => value.getValue()
-        case None => Int32(100)
-    }
+    let shadowStyle = Int32(100)
+    let widthLength = transAppResourceToLength(options.width)
+    let heightLength = transAppResourceToLength(options.height)
     return NativeCustomDialogOptions(
         parseRectangle(options.maskRect),
         options.alignment.getValue(),
@@ -1370,15 +1657,15 @@ func parseCustomDialogOptions(options: CustomDialogOptions): NativeCustomDialogO
         options.enableHoverMode,
         options.hoverModeArea.getValue(),
         Callback0Param<Unit>(options.builder).getID(),
-        options.backgroundColor,
+        transAppResourceToResourceColor(options.backgroundColor),
         parseBorderRadiuses(options.cornerRadius),
         parseEdgeWidths(options.borderWidth),
         options.borderColor.toCEdgeColor(),
         borderEdgeStyle,
-        options.width.value,
-        options.width.unitType.getValue(),
-        options.height.value,
-        options.height.unitType.getValue(),
+        widthLength.value,
+        widthLength.unitType.getValue(),
+        heightLength.value,
+        heightLength.unitType.getValue(),
         shadowOption,
         shadowStyle,
         options.backgroundBlurStyle.getValue()
@@ -1395,20 +1682,38 @@ func parseBaseDialogOptions(options: CustomDialogOptions): NativeBaseDialogOptio
     )
 }
 
+func length2String(value: Length): String {
+    let length = transAppResourceToLength(value)
+        return match (length.unitType) {
+            case px(v) => "${length.value}px"
+            case vp(v) => "${length.value}vp"
+            case fp(v) => "${length.value}fp"
+            case percent(v) => "${length.value}%"
+            case lpx(v) => "${length.value}lpx"
+            case _ => "${length.value}"
+        }
+}
+
 func parseShowToastOptions(options: ShowToastOptions): NativeShowToastOptions {
-    let shadowOption = match (options.shadowOption) {
+    let shadowOption = match (options.shadow) {
         case Some(value) => parseShadowOptions(value)
-        case None => parseShadowOptions(ShadowOptions())
+        case None => parseShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.Color))
     }
-    let shadowStyle = match (options.shadowStyle) {
-        case Some(value) => value.getValue()
-        case None => Int32(100)
-    }
+    let shadowStyle = Int32(100)
     unsafe {
+        var cMsg = CString(CPointer<UInt8>())
+        var cBottom = CString(CPointer<UInt8>())
+        try(
+            msg = LibC.mallocCString(transResourceStrToString(options.message)).asResource(),
+            btm = LibC.mallocCString(length2String(options.bottom)).asResource()
+        ) {
+            cMsg = msg.value
+            cBottom = btm.value
+        }
         return NativeShowToastOptions(
-            LibC.mallocCString(options.message),
+            cMsg,
             options.duration,
-            LibC.mallocCString(options.bottom),
+            cBottom,
             options.showMode.getValue(),
             options.alignment.getValue(),
             parseOffset(options.offset),
@@ -1428,18 +1733,24 @@ func parseShowDialogOptions(options: ShowDialogOptions): NativeShowDialogOptions
         {
             => IllegalArgumentException("Fail to create buttons")
         })
-    let shadowOption = match (options.shadowOption) {
+    let shadowOption = match (options.shadow) {
         case Some(value) => parseShadowOptions(value)
-        case None => parseShadowOptions(ShadowOptions())
+        case None => parseShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.Color))
     }
-    let shadowStyle = match (options.shadowStyle) {
-        case Some(value) => value.getValue()
-        case None => Int32(100)
-    }
+    let shadowStyle = Int32(100)
     unsafe {
+        var cTitle = CString(CPointer<UInt8>())
+        var cMsg = CString(CPointer<UInt8>())
+        try(
+            title = LibC.mallocCString(transResourceStrToString(options.title)).asResource(),
+            msg = LibC.mallocCString(transResourceStrToString(options.message)).asResource()
+        ) {
+            cTitle = title.value
+            cMsg = msg.value
+        }
         return NativeShowDialogOptions(
-            LibC.mallocCString(options.title),
-            LibC.mallocCString(options.message),
+            cTitle,
+            cMsg,
             pButtons,
             options.buttonsSize,
             options.alignment.getValue(),
@@ -1463,8 +1774,14 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
             => IllegalArgumentException("Fail to create buttons")
         })
     unsafe {
+        var cTitle = CString(CPointer<UInt8>())
+        try(
+            title = LibC.mallocCString(transResourceStrToString(options.title)).asResource()
+        ) {
+            cTitle = title.value
+        }
         return NativeActionMenuOptions(
-            LibC.mallocCString(options.title),
+            cTitle,
             pButtons,
             options.buttonsSize,
             options.showInSubWindow,
@@ -1473,126 +1790,10 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
     }
 }
 
-@!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class PromptAction {
-    private static let defaultCallback = {_: Option<AsyncError>, _: Option<Int32> =>}
+public class PromptActionInner {
+    private static let defaultCallback = {_: Option<BusinessException>, _: Option<Int32> =>}
 
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func showToast(message!: String, duration!: Int32 = 1500, bottom!: String = "80vp",
-        showMode!: ToastShowMode = ToastShowMode.Default): Unit {
-        unsafe {
-            let cmessage = LibC.mallocCString(message)
-            let cbottom = LibC.mallocCString(bottom)
-            FfiPromptShowToast(cmessage, duration, cbottom, showMode.getValue())
-            cmessage.free()
-            cbottom.free()
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func showDialog(title!: String = "", message!: String = "", buttons!: Array<ButtonInfo>,
-        callback!: ShowDialogCallBack = defaultCallback) {
-        unsafe {
-            let ctitle = LibC.mallocCString(title)
-            let cmessage = LibC.mallocCString(message)
-            let size = buttons.size
-            var pButtons: CPointer<CButtonInfo> = CreateCButtons(buttons).getOrThrow(
-                {
-                    =>
-                    ctitle.free()
-                    cmessage.free()
-                    IllegalArgumentException("Fail to create buttons")
-                }
-            )
-            let wrapper = {
-                code: Int32, index: Int32 => match (code) {
-                    case 0 => callback(Option<AsyncError>.None, Option<Int32>.Some(index))
-                    case _ => callback(Option<AsyncError>.Some(AsyncError(code)), Option<Int32>.None)
-                }
-            }
-            let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper);
-
-            FfiPromptShowDialog(ctitle, cmessage, Int32(size), pButtons, lambdaData.getID())
-            ctitle.free()
-            cmessage.free()
-            DestoryCButtons(pButtons, size)
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func showActionMenu(title!: String = "", buttons!: Array<ButtonInfo>,
-        callback!: ShowActionMenuCallBack = defaultCallback) {
-        unsafe {
-            let ctitle = LibC.mallocCString(title)
-            let size = buttons.size
-            var pButtons: CPointer<CButtonInfo> = CreateCButtons(buttons).getOrThrow(
-                {
-                    =>
-                    ctitle.free()
-                    IllegalArgumentException("Fail to create buttons")
-                }
-            )
-            let wrapper = {
-                code: Int32, index: Int32 => match (code) {
-                    case 0 => callback(Option<AsyncError>.None, Option<Int32>.Some(index))
-                    case _ => callback(Option<AsyncError>.Some(AsyncError(code)), Option<Int32>.None)
-                }
-            }
-            let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper);
-            FfiPromptShowActionMenu(ctitle, Int32(size), pButtons, lambdaData.getID())
-            ctitle.free()
-            DestoryCButtons(pButtons, size)
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func openCustomDialog(options: CustomDialogOptions, callBack: (Int32) -> Unit): Unit {
-        let builder = Callback0Param<Unit>(options.builder)
-        let baseOptions = parseBaseDialogOptions(options)
-        let callBackLambda = Callback1Param<Int32, Unit>(callBack)
-        unsafe {
-            FfiPromptOpenCustomDialog(builder.getID(), baseOptions, callBackLambda.getID())
-        }
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func openCustomDialogWithOption(options: CustomDialogOptions, callBack: (Int32) -> Unit): Unit {
+    protected static func openCustomDialogWithOption(options: CustomDialogOptions, callBack: (Int32) -> Unit): Unit {
         let cOptions = parseCustomDialogOptions(options)
         let callBackLambda = Callback1Param<Int32, Unit>(callBack)
         unsafe {
@@ -1600,27 +1801,13 @@ public class PromptAction {
         }
     }
 
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func closeCustomDialog(dialogId: Int32): Unit {
+    protected static func closeCustomDialog(dialogId: Int32): Unit {
         unsafe {
             FfiPromptCloseCustomDialog(dialogId)
         }
     }
 
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func showToast(option: ShowToastOptions): Unit {
+    protected static func showToast(option: ShowToastOptions): Unit {
         unsafe {
             let cOption = parseShowToastOptions(option)
             FfiPromptShowToastWithOption(cOption)
@@ -1629,20 +1816,13 @@ public class PromptAction {
         }
     }
 
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func showDialog(option: ShowDialogOptions, callback!: ShowDialogCallBack = defaultCallback) {
+    protected static func showDialog(option: ShowDialogOptions, callback!: ShowDialogCallBack = defaultCallback) {
         unsafe {
             let cOption = parseShowDialogOptions(option);
             let wrapper = {
                 code: Int32, index: Int32 => match (code) {
-                    case 0 => callback(Option<AsyncError>.None, Option<Int32>.Some(index))
-                    case _ => callback(Option<AsyncError>.Some(AsyncError(code)), Option<Int32>.None)
+                    case 0 => callback(Option<BusinessException>.None, Option<Int32>.Some(index))
+                    case _ => callback(Option<BusinessException>.Some(BusinessException(code, "")), Option<Int32>.None)
                 }
             }
             let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper);
@@ -1654,20 +1834,13 @@ public class PromptAction {
         }
     }
 
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func showActionMenu(option: ActionMenuOptions, callback!: ShowActionMenuCallBack = defaultCallback) {
+    protected static func showActionMenu(option: ActionMenuOptions, callback!: ShowActionMenuCallBack = defaultCallback) {
         unsafe {
             let cOption = parseActionMenuOptions(option);
             let wrapper = {
                 code: Int32, index: Int32 => match (code) {
-                    case 0 => callback(Option<AsyncError>.None, Option<Int32>.Some(index))
-                    case _ => callback(Option<AsyncError>.Some(AsyncError(code)), Option<Int32>.None)
+                    case 0 => callback(Option<BusinessException>.None, Option<Int32>.Some(index))
+                    case _ => callback(Option<BusinessException>.Some(BusinessException(code, "")), Option<Int32>.None)
                 }
             }
             let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper);

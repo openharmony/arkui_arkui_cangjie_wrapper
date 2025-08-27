@@ -20,9 +20,7 @@ import ohos.labels.APILevel
 foreign func FfiOHOSBaseGetUISchedulerHandle(): CPointer<Unit>
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -44,18 +42,14 @@ public class MainThreadContext <: ThreadContext {
     static let instance_: MainThreadContext = MainThreadContext()
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func end(): Unit {}
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -65,9 +59,7 @@ public class MainThreadContext <: ThreadContext {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
