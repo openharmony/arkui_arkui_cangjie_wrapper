@@ -1,0 +1,43 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/cangjie/cjc.gni")
+
+ohos_cangjie_shared_library("ohos.base") {
+  sources = [
+    "callback_type.cj",
+    "cj_concurrency.cj",
+    "collection.cj",
+    "collection_extend.cj",
+    "color.cj",
+    "common_types.cj",
+    "cstring_extend.cj",
+    "length.cj",
+    "main_context.cj",
+    "resource.cj",
+    "reuse_params.cj",
+  ]
+
+  cj_external_deps = [
+    "cangjie_ark_interop:ohos.encoding.json",
+    "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.labels",
+    "cangjie_ark_interop:ohos.business_exception",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
+  ]
+
+  external_deps = [ "ace_engine:cj_frontend_ohos" ]
+
+  subsystem_name = "arkui"
+  part_name = "arkui_cangjie_wrapper"
+}

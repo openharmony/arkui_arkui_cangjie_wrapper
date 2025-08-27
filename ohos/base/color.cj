@@ -16,11 +16,17 @@
 package ohos.base
 
 import ohos.labels.APILevel
+import ohos.business_exception.*
 
+/**
+ * Defines the color which can use resource.
+ *
+ * @typedef { Color | UInt32 | AppResource } ResourceColor
+ * @syscap SystemCapability.ArkUI.ArkUI.Full
+ * @relation declare type ResourceColor = Color | number | string | Resource
+ */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -31,15 +37,13 @@ public interface ResourceColor {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 extend Int64 <: ResourceColor {
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -52,15 +56,13 @@ extend Int64 <: ResourceColor {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 extend UInt32 <: ResourceColor {
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -71,138 +73,116 @@ extend UInt32 <: ResourceColor {
     }
 }
 
+/**
+ * common class of color
+ *
+ * @class Color
+ * @syscap SystemCapability.ArkUI.ArkUI.Full
+ * @relation declare enum Color
+ */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Color <: ResourceColor {
     private var value_: UInt32 = 0
 
+    /**
+     * Black.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation Black
+     */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static let BLACK: Color = Color(0xff000000)
+    public static let Black: Color = Color(0xff000000)
+    /**
+     * Blue.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation Blue
+     */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static let BLUE: Color = Color(0xff0000ff)
+    public static let Blue: Color = Color(0xff0000ff)
+    /**
+     * Gray.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation Gray
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static let BROWN: Color = Color(0xffa52a2a)
+    public static let Gray: Color = Color(0xff808080)
+    /**
+     * Green.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation Green
+     */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static let GRAY: Color = Color(0xff808080)
+    public static let Green: Color = Color(0xff008000)
+    /**
+     * Red.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation Red
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static let GREY: Color = Color(0xff808080)
+    public static let Red: Color = Color(0xffff0000)
+    /**
+     * White.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation White
+     */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static let GREEN: Color = Color(0xff008000)
+    public static let White: Color = Color(0xffffffff)
+    /**
+     * Transparent.
+     *
+     * @syscap SystemCapability.ArkUI.ArkUI.Full
+     * @relation Transparent
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static let ORANGE: Color = Color(0xffffa500)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static let PINK: Color = Color(0xffffc0cb)
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static let RED: Color = Color(0xffff0000)
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static let WHITE: Color = Color(0xffffffff)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static let YELLOW: Color = Color(0xffffff00)
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static let TRANSPARENT: Color = Color(0, 0, 0, alpha: 0.0)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static let FOREGROUND: Color = Color(0x00000001)
+    public static let Transparent: Color = Color(0, 0, 0, alpha: 0.0)
 
+    /**
+     * Constructor of color.
+     * @param { UInt8 } red
+     * @param { UInt8 } green
+     * @param { UInt8 } blue
+     * @param { UInt8 } alpha
+     * @returns { Color }
+     */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -218,10 +198,13 @@ public class Color <: ResourceColor {
         this.value_ = a + r + g + b
     }
 
+    /**
+     * Constructor of color.
+     * @param { UInt32 } value
+     * @returns { Color }
+     */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -229,14 +212,7 @@ public class Color <: ResourceColor {
         this.value_ = alphaAdapt(value)
     }
 
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func alphaAdapt(origin: UInt32): UInt32 {
+    protected static func alphaAdapt(origin: UInt32): UInt32 {
         var result: UInt32 = origin
         if ((origin >> 24) == 0) {
             result = origin | 0xff000000
@@ -244,13 +220,6 @@ public class Color <: ResourceColor {
         result
     }
 
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func toUInt32(): UInt32 {
         this.value_
     }

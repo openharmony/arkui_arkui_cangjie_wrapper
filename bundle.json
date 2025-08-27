@@ -1,6 +1,6 @@
 {
     "name": "@ohos/arkui_cangjie_wrapper",
-    "description": "Cangjie ArkUI Framework",
+    "description": "ArkUI Cross-Platform Engine for UI layout measure and paint",
     "version": "6.0",
     "license": "Apache-2.0",
     "publishAs": "code-segment",
@@ -17,8 +17,8 @@
         "adapted_system_type": [
             "standard"
         ],
-        "rom": "10000KB",
-        "ram": "10000KB",
+        "rom": "25600KB",
+        "ram": "102400KB",
         "hisysevent_config": [
         ],
         "deps": {
@@ -36,10 +36,10 @@
             ],
             "inner_kits": [
                 {
-                    "name": "//foundation/arkui/arkui_cangjie_wrapper/ohos:ohos.base"
+                    "name": "//foundation/arkui/arkui_cangjie_wrapper/ohos/base:ohos.base"
                 },
                 {
-                    "name": "//foundation/arkui/arkui_cangjie_wrapper/ohos:ohos.ui_resource"
+                    "name": "//foundation/arkui/arkui_cangjie_wrapper/ohos/arkui/component/util:ohos.arkui.component.util"
                 }
             ],
             "test": [

@@ -18,9 +18,9 @@ package ohos.router
 import ohos.base.*
 import ohos.hilog.HilogChannel
 import ohos.ffi.*
-import ohos.component.*
 import std.collection.*
 import ohos.labels.APILevel
+import std.deriving.Derive
 
 foreign {
     func FfiOHOSAceFrameworkRouterPush(url: CString, param: CString): Unit
@@ -50,26 +50,41 @@ foreign {
     func FfiOHOSAceFrameworkRouterGetStateByIndex(info: CPointer<CJRouterState>): Unit
 }
 
+/**
+ * Router Mode
+ *
+ * @relation enum RouterMode
+ */
+@Derive[Equatable]
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RouterMode {
+    /**
+     * Default route mode.
+     * The page will be added to the top of the page stack.
+     *
+     * @relation Standard,
+     */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Standard
+
+    /**
+     * Single route mode.
+     * If the target page already has the same url page in the page stack,
+     * the same url page closest to the top of the stack will be moved to the top of the stack.
+     * If the target page url does not exist in the page stack, route will use default route mode.
+     *
+     * @relation Single,
+     */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -85,48 +100,96 @@ public enum RouterMode {
     }
 }
 
+/**
+ * Router State
+ *
+ * @relation enum RouterState
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RouterState {
-    public RouterState(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var index!: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var name!: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var path!: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.ArkUI.ArkUI.Full"
-        ]
-        public var params!: String
-    ) {}
+
+    /**
+     * Index of the current page in the stack.
+     * NOTE: The index starts from 1 from the bottom to the top of the stack.
+     *
+     * @type { Int32 }
+     * @relation index: number;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var index: Int32
+
+    /**
+     * Name of the current page, that is, the file name.
+     *
+     * @type { String }
+     * @relation name: string;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var name: String
+
+    /**
+     * Path of the current page.
+     *
+     * @type { String }
+     * @relation name: string;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var path: String
+
+    /**
+     * Data that passed to the destination page during navigation.
+     *
+     * @type { Object }
+     * @relation params: Object;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var params: String
+
+    /**
+     * Router State constructor
+     *
+     * @param { Int32 } index
+     * @param { String } name
+     * @param { String } path
+     * @param { String } params
+     * @returns { This }
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(
+        index!: Int32,
+        name!: String,
+        path!: String,
+        params!: String
+    ) {
+        this.index = index
+        this.name = name
+        this.path = path
+        this.params = params
+    }
 
     init(info: CJRouterState) {
         this.index = info.index
@@ -162,81 +225,43 @@ struct RouterStateList {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Router {
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func push(url!: String, params!: String = "") {
+
+protected class RouterInner {
+    protected static func push(url!: String, params!: String = "") {
         unsafe {
-            var cUrl = LibC.mallocCString(url)
-            let cParams = LibC.mallocCString(params)
-            FfiOHOSAceFrameworkRouterPush(cUrl, cParams)
-            LibC.free(cUrl)
-            LibC.free(cParams)
+            try (cUrl = LibC.mallocCString(url).asResource(),
+                cParams = LibC.mallocCString(params).asResource()) {
+                FfiOHOSAceFrameworkRouterPush(cUrl.value, cParams.value)
+            }
         }
     }
 
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func back(url!: String, params!: String = "") {
+    protected static func back(url!: String, params!: String = "") {
         unsafe {
-            var cUrl = LibC.mallocCString(url)
-            let cParams = LibC.mallocCString(params)
-            FfiOHOSAceFrameworkRouterBack(cUrl, cParams)
-            LibC.free(cUrl)
-            LibC.free(cParams)
+            try (cUrl = LibC.mallocCString(url).asResource(),
+                cParams = LibC.mallocCString(params).asResource()) {
+                FfiOHOSAceFrameworkRouterBack(cUrl.value, cParams.value)
+            }
         }
     }
 
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func back() {
+    protected static func back() {
         back(url: "")
     }
 
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func back(index!: Int32, params!: String = "") {
+    protected static func back(index!: Int32, params!: String = "") {
         unsafe {
-            let cParams = LibC.mallocCString(params)
-            FfiOHOSAceFrameworkRouterBackIndex(index, cParams)
-            LibC.free(cParams)
+            try (cParams = LibC.mallocCString(params).asResource()) {
+                FfiOHOSAceFrameworkRouterBackIndex(index, cParams.value)
+            }
         }
     }
 
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func getParams(): Option<String> {
+    protected static func getParams(): Option<String> {
         let paramStr = unsafe { FfiOHOSAceFrameworkRouterGetParams() }
         var res: Option<String> = Option<String>.None
         if (!paramStr.isNull()) {
@@ -244,237 +269,5 @@ public class Router {
             unsafe { paramStr.free() }
         }
         res
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func pushUrl(url!: String, params!: String = "", callback!: ((Option<Int32>) -> Unit)) {
-        unsafe {
-            var cUrl = LibC.mallocCString(url)
-            let cParams = LibC.mallocCString(params)
-            let wrapper = {
-                code: Int32 => match (code) {
-                    case 0 => callback(Option<Int32>.None)
-                    case _ => callback(Option<Int32>.Some(code))
-                }
-            }
-            let lambdaData = Callback1Param<Int32, Unit>(wrapper)
-            FfiOHOSAceFrameworkRouterPushUrl(cUrl, cParams, RouterMode.Standard.getValue(), lambdaData.getID())
-            LibC.free(cUrl)
-            LibC.free(cParams)
-        }
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func pushUrl(url!: String, params!: String = "", mode!: RouterMode,
-        callback!: ((Option<Int32>) -> Unit)) {
-        unsafe {
-            var cUrl = LibC.mallocCString(url)
-            let cParams = LibC.mallocCString(params)
-            let wrapper = {
-                code: Int32 => match (code) {
-                    case 0 => callback(Option<Int32>.None)
-                    case _ => callback(Option<Int32>.Some(code))
-                }
-            }
-            let lambdaData = Callback1Param<Int32, Unit>(wrapper)
-            FfiOHOSAceFrameworkRouterPushUrl(cUrl, cParams, mode.getValue(), lambdaData.getID())
-            LibC.free(cUrl)
-            LibC.free(cParams)
-        }
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Lite"
-    ]
-    public static func replaceUrl(url!: String, params!: String = "", callback!: ((Option<Int32>) -> Unit)) {
-        unsafe {
-            var cUrl = LibC.mallocCString(url)
-            let cParams = LibC.mallocCString(params)
-            let wrapper = {
-                code: Int32 => match (code) {
-                    case 0 => callback(Option<Int32>.None)
-                    case _ => callback(Option<Int32>.Some(code))
-                }
-            }
-            let lambdaData = Callback1Param<Int32, Unit>(wrapper)
-            FfiOHOSAceFrameworkRouterReplaceUrl(cUrl, cParams, RouterMode.Standard.getValue(), lambdaData.getID())
-            LibC.free(cUrl)
-            LibC.free(cParams)
-        }
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Lite"
-    ]
-    public static func replaceUrl(url!: String, params!: String = "", mode!: RouterMode,
-        callback!: ((Option<Int32>) -> Unit)) {
-        unsafe {
-            var cUrl = LibC.mallocCString(url)
-            let cParams = LibC.mallocCString(params)
-            let wrapper = {
-                code: Int32 => match (code) {
-                    case 0 => callback(Option<Int32>.None)
-                    case _ => callback(Option<Int32>.Some(code))
-                }
-            }
-            let lambdaData = Callback1Param<Int32, Unit>(wrapper)
-            FfiOHOSAceFrameworkRouterReplaceUrl(cUrl, cParams, mode.getValue(), lambdaData.getID())
-            LibC.free(cUrl)
-            LibC.free(cParams)
-        }
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func clear() {
-        unsafe {
-            FfiOHOSAceFrameworkRouterClear()
-        }
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func getLength(): String {
-        unsafe {
-            FfiOHOSAceFrameworkRouterGetLength().toString()
-        }
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func hideAlertBeforeBackPage() {
-        unsafe {
-            FfiOHOSAceFrameworkRouterSetHideAlertBeforeBackPage()
-        }
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func showAlertBeforeBackPage(message: String, callback: ((Option<Int32>) -> Unit)) {
-        unsafe {
-            var cMsg = LibC.mallocCString(message)
-            let wrapper = {
-                code: Int32 => match (code) {
-                    case 0 => callback(Option<Int32>.None)
-                    case _ => callback(Option<Int32>.Some(code))
-                }
-            }
-            let lambdaData = Callback1Param<Int32, Unit>(wrapper)
-            FfiOHOSAceFrameworkRouterSetShowAlertBeforeBackPage(cMsg, lambdaData.getID())
-            LibC.free(cMsg)
-        }
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func getState(): RouterState {
-        unsafe {
-            let index: Int32 = 0
-            let name = LibC.mallocCString("")
-            let path = LibC.mallocCString("")
-            let params = LibC.mallocCString("")
-            var info: CJRouterState = CJRouterState(index: index, name: name, path: path, params: params)
-            FfiOHOSAceFrameworkRouterGetState(inout info)
-            let result = RouterState(info)
-            LibC.free(name)
-            LibC.free(path)
-            LibC.free(params)
-            return result
-        }
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func getStateByIndex(index: Int32): Option<RouterState> {
-        unsafe {
-            let index: Int32 = index
-            let name = LibC.mallocCString("")
-            let path = LibC.mallocCString("")
-            let params = LibC.mallocCString("")
-            var info: CJRouterState = CJRouterState(index: index, name: name, path: path, params: params)
-            FfiOHOSAceFrameworkRouterGetStateByIndex(inout info)
-            if (info.index == 0) {
-                return Option<RouterState>.None
-            }
-            let result = RouterState(info)
-            LibC.free(name)
-            LibC.free(path)
-            LibC.free(params)
-            return Option<RouterState>.Some(result)
-        }
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func getStateByUrl(url: String): ArrayList<RouterState> {
-        let ret = ArrayList<RouterState>()
-        unsafe {
-            var cUrl = LibC.mallocCString(url)
-            let result = FfiOHOSAceFrameworkRouterGetStateByUrl(cUrl)
-            LibC.free(cUrl)
-
-            if (result.size == 0) {
-                return ret
-            }
-            for (i in 0..result.size) {
-                let info = result.array.read(Int64(i))
-                ret.add(RouterState(info))
-            }
-            result.free()
-        }
-        return ret
     }
 }

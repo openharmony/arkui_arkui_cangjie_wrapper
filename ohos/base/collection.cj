@@ -17,21 +17,21 @@ package ohos.base
 
 import ohos.labels.APILevel
 
-public type VectorStringHandle = CPointer<Unit>
+protected type VectorStringHandle = CPointer<Unit>
 
-public type VectorInt32Handle = CPointer<Unit>
+protected type VectorInt32Handle = CPointer<Unit>
 
-public type VectorInt64Handle = CPointer<Unit>
+protected type VectorInt64Handle = CPointer<Unit>
 
-public type VectorUInt8Handle = CPointer<Unit>
+protected type VectorUInt8Handle = CPointer<Unit>
 
-public type VectorUInt32Handle = CPointer<Unit>
+protected type VectorUInt32Handle = CPointer<Unit>
 
-public type VectorFloat32Handle = CPointer<Unit>
+protected type VectorFloat32Handle = CPointer<Unit>
 
-public type VectorFloat64Handle = CPointer<Unit>
+protected type VectorFloat64Handle = CPointer<Unit>
 
-public type VectorBoolHandle = CPointer<Unit>
+protected type VectorBoolHandle = CPointer<Unit>
 
 foreign func FFICJCommonCreateVectorString(size: Int64): VectorStringHandle
 
@@ -113,710 +113,206 @@ foreign func FFICJCommonVectorBoolDelete(vec: VectorBoolHandle): Unit
 
 foreign func FFICJCommonVectorBoolGetSize(vec: VectorBoolHandle): Int64
 
-@!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class FFIVectorString {
+protected class FFIVectorString {
     private let vecHandle: VectorStringHandle
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(vec: VectorStringHandle) {
+    protected init(vec: VectorStringHandle) {
         vecHandle = vec
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(size: Int64) {
+    protected init(size: Int64) {
         vecHandle = unsafe { FFICJCommonCreateVectorString(size) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setElement(index: Int64, value: String): Unit {
+    protected func setElement(index: Int64, value: String): Unit {
         unsafe {
-            let unsafeStr = LibC.mallocCString(value)
-            FFICJCommonVectorStringSetElement(vecHandle, index, unsafeStr)
-            LibC.free(unsafeStr)
+            try (unsafeStr = LibC.mallocCString(value).asResource()) {
+                FFICJCommonVectorStringSetElement(vecHandle, index, unsafeStr.value)
+            }
         }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getElement(index: Int64): String {
+    protected func getElement(index: Int64): String {
         unsafe { FFICJCommonVectorStringGetElement(vecHandle, index).toString() }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func free(): Unit {
+    protected func free(): Unit {
         unsafe { FFICJCommonVectorStringDelete(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getSize(): Int64 {
+    protected func getSize(): Int64 {
         unsafe { FFICJCommonVectorStringGetSize(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getNativeHandle(): VectorStringHandle {
+    protected func getNativeHandle(): VectorStringHandle {
         vecHandle
     }
 }
 
-@!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class FFIVectorInt32 {
+protected class FFIVectorInt32 {
     private let vecHandle: VectorInt32Handle
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(vec: VectorInt32Handle) {
+    protected init(vec: VectorInt32Handle) {
         vecHandle = vec
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(size: Int64) {
+    protected init(size: Int64) {
         vecHandle = unsafe { FFICJCommonCreateVectorInt32(size) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setElement(index: Int64, value: Int32): Unit {
+    protected func setElement(index: Int64, value: Int32): Unit {
         unsafe { FFICJCommonVectorInt32SetElement(vecHandle, index, value) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getElement(index: Int64): Int32 {
+    protected func getElement(index: Int64): Int32 {
         unsafe { FFICJCommonVectorInt32GetElement(vecHandle, index) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func free(): Unit {
+    protected func free(): Unit {
         unsafe { FFICJCommonVectorInt32Delete(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getSize(): Int64 {
+    protected func getSize(): Int64 {
         unsafe { FFICJCommonVectorInt32GetSize(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getNativeHandle(): VectorInt32Handle {
+    protected func getNativeHandle(): VectorInt32Handle {
         vecHandle
     }
 }
 
-@!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class FFIVectorInt64 {
+protected class FFIVectorInt64 {
     private let vecHandle: VectorInt64Handle
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(vec: VectorInt64Handle) {
+    protected init(vec: VectorInt64Handle) {
         vecHandle = vec
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(size: Int64) {
+    protected init(size: Int64) {
         vecHandle = unsafe { FFICJCommonCreateVectorInt64(size) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setElement(index: Int64, value: Int64): Unit {
+    protected func setElement(index: Int64, value: Int64): Unit {
         unsafe { FFICJCommonVectorInt64SetElement(vecHandle, index, value) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getElement(index: Int64): Int64 {
+    protected func getElement(index: Int64): Int64 {
         unsafe { FFICJCommonVectorInt64GetElement(vecHandle, index) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func free(): Unit {
+    protected func free(): Unit {
         unsafe { FFICJCommonVectorInt64Delete(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getSize(): Int64 {
+    protected func getSize(): Int64 {
         unsafe { FFICJCommonVectorInt64GetSize(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getNativeHandle(): VectorInt64Handle {
+    protected func getNativeHandle(): VectorInt64Handle {
         vecHandle
     }
 }
 
-@!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class FFIVectorUInt8 {
+protected class FFIVectorUInt8 {
     private let vecHandle: VectorUInt8Handle
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(vec: VectorUInt8Handle) {
+    protected init(vec: VectorUInt8Handle) {
         vecHandle = vec
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(size: Int64) {
+    protected init(size: Int64) {
         vecHandle = unsafe { FFICJCommonCreateVectorUInt8(size) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setElement(index: Int64, value: UInt8): Unit {
+    protected func setElement(index: Int64, value: UInt8): Unit {
         unsafe { FFICJCommonVectorUInt8SetElement(vecHandle, index, value) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getElement(index: Int64): UInt8 {
+    protected func getElement(index: Int64): UInt8 {
         unsafe { FFICJCommonVectorUInt8GetElement(vecHandle, index) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func free(): Unit {
+    protected func free(): Unit {
         unsafe { FFICJCommonVectorUInt8Delete(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getSize(): Int64 {
+    protected func getSize(): Int64 {
         unsafe { FFICJCommonVectorUInt8GetSize(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getNativeHandle(): VectorUInt8Handle {
+    protected func getNativeHandle(): VectorUInt8Handle {
         vecHandle
     }
 }
 
-@!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class FFIVectorUInt32 {
+protected class FFIVectorUInt32 {
     private let vecHandle: VectorUInt32Handle
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(vec: VectorUInt32Handle) {
+    protected init(vec: VectorUInt32Handle) {
         vecHandle = vec
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(size: Int64) {
+    protected init(size: Int64) {
         vecHandle = unsafe { FFICJCommonCreateVectorUInt32(size) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setElement(index: Int64, value: UInt32): Unit {
+    protected func setElement(index: Int64, value: UInt32): Unit {
         unsafe { FFICJCommonVectorUInt32SetElement(vecHandle, index, value) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getElement(index: Int64): UInt32 {
+    protected func getElement(index: Int64): UInt32 {
         unsafe { FFICJCommonVectorUInt32GetElement(vecHandle, index) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func free(): Unit {
+    protected func free(): Unit {
         unsafe { FFICJCommonVectorUInt32Delete(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getSize(): Int64 {
+    protected func getSize(): Int64 {
         unsafe { FFICJCommonVectorUInt32GetSize(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getNativeHandle(): VectorUInt32Handle {
+    protected func getNativeHandle(): VectorUInt32Handle {
         vecHandle
     }
 }
 
-@!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class FFIVectorFloat32 {
+protected class FFIVectorFloat32 {
     private let vecHandle: VectorFloat32Handle
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(vec: VectorFloat32Handle) {
+    protected init(vec: VectorFloat32Handle) {
         vecHandle = vec
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(size: Int64) {
+    protected init(size: Int64) {
         vecHandle = unsafe { FFICJCommonCreateVectorFloat32(size) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setElement(index: Int64, value: Float32): Unit {
+    protected func setElement(index: Int64, value: Float32): Unit {
         unsafe { FFICJCommonVectorFloat32SetElement(vecHandle, index, value) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getElement(index: Int64): Float32 {
+    protected func getElement(index: Int64): Float32 {
         unsafe { FFICJCommonVectorFloat32GetElement(vecHandle, index) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func free(): Unit {
+    protected func free(): Unit {
         unsafe { FFICJCommonVectorFloat32Delete(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getSize(): Int64 {
+    protected func getSize(): Int64 {
         unsafe { FFICJCommonVectorFloat32GetSize(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getNativeHandle(): VectorFloat32Handle {
+    protected func getNativeHandle(): VectorFloat32Handle {
         vecHandle
     }
 }
 
-@!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class FFIVectorFloat64 {
+protected class FFIVectorFloat64 {
     private let vecHandle: VectorFloat64Handle
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(vec: VectorFloat64Handle) {
+    protected init(vec: VectorFloat64Handle) {
         vecHandle = vec
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(size: Int64) {
+    protected init(size: Int64) {
         vecHandle = unsafe { FFICJCommonCreateVectorFloat64(size) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setElement(index: Int64, value: Float64): Unit {
+    protected func setElement(index: Int64, value: Float64): Unit {
         unsafe { FFICJCommonVectorFloat64SetElement(vecHandle, index, value) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getElement(index: Int64): Float64 {
+    protected func getElement(index: Int64): Float64 {
         unsafe { FFICJCommonVectorFloat64GetElement(vecHandle, index) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func free(): Unit {
+    protected func free(): Unit {
         unsafe { FFICJCommonVectorFloat64Delete(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getSize(): Int64 {
+    protected func getSize(): Int64 {
         unsafe { FFICJCommonVectorFloat64GetSize(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getNativeHandle(): VectorFloat64Handle {
+    protected func getNativeHandle(): VectorFloat64Handle {
         vecHandle
     }
 }
 
-@!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class FFIVectorBool {
+protected class FFIVectorBool {
     private let vecHandle: VectorBoolHandle
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(vec: VectorBoolHandle) {
+    protected init(vec: VectorBoolHandle) {
         vecHandle = vec
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(size: Int64) {
+    protected init(size: Int64) {
         vecHandle = unsafe { FFICJCommonCreateVectorBool(size) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setElement(index: Int64, value: Bool): Unit {
+    protected func setElement(index: Int64, value: Bool): Unit {
         unsafe { FFICJCommonVectorBoolSetElement(vecHandle, index, value) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getElement(index: Int64): Bool {
+    protected func getElement(index: Int64): Bool {
         unsafe { FFICJCommonVectorBoolGetElement(vecHandle, index) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func free(): Unit {
+    protected func free(): Unit {
         unsafe { FFICJCommonVectorBoolDelete(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getSize(): Int64 {
+    protected func getSize(): Int64 {
         unsafe { FFICJCommonVectorBoolGetSize(vecHandle) }
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getNativeHandle(): VectorBoolHandle {
+    protected func getNativeHandle(): VectorBoolHandle {
         vecHandle
     }
 }

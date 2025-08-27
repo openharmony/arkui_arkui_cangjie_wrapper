@@ -1,0 +1,181 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos.arkui.component.menu
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.resource.*
+import ohos.labels.APILevel
+
+foreign {
+    func FfiOHOSAceFrameworkMenuCreate(): Unit
+
+    func FfiOHOSAceFrameworkMenuFont(size: Float64, unit: Int32, weight: CString, family: CString, style: Int32): Unit
+
+    func FfiOHOSAceFrameworkMenuSetFontColor(color: UInt32): Unit
+
+    func FfiOHOSAceFrameworkMenuSetWidth(width: Float64, unit: Int32): Unit
+
+    func FfiOHOSAceFrameworkMenuSetRadiusByLength(size: Float64, unit: Int32): Unit
+
+    func FfiOHOSAceFrameworkMenuSetRadiusByBorderRadiuses(value: CBorderRadiuses): Unit
+
+    func FfiOHOSAceFrameworkMenuSetItemDivider(params: DividerParams, hasValue: Bool): Unit
+
+    func FfiOHOSAceFrameworkMenuSetItemGroupDivider(params: DividerParams, hasValue: Bool): Unit
+
+    func FfiOHOSAceFrameworkMenuSetExpandingMode(mode: Int32): Unit
+}
+
+let LENGTH_TYPE_LNVALID: Int32 = -2
+
+/**
+ * Defines the Menu Component.
+ *
+ * @relation declare const Menu: MenuInterface
+ */
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class Menu <: ContainerBase {
+
+    /**
+     * Creates the menu component.
+     *
+     * @param { () -> Unit } child
+     * @returns { This }
+     * @relation (): MenuAttribute
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(child!: () -> Unit = {=>}) {
+        unsafe {
+            FfiOHOSAceFrameworkMenuCreate()
+        }
+        this.child = child
+    }
+
+    /**
+     * Sets the font style.
+     * Family and style are not supported currently and will be fixed in future.
+     *
+     * @param { Length } size
+     * @param { FontWeight } weight
+     * @param { ResourceStr } family
+     * @param { FontStyle } style
+     * @returns { This }
+     * @relation font(value: Font): MenuAttribute
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func font(
+        size!: Length = 16.vp,
+        weight!: FontWeight = FontWeight.Normal,
+        family!: ResourceStr = "HarmonyOS Sans",
+        style!: FontStyle = FontStyle.Normal
+    ): This {
+        unsafe {
+            try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
+                FfiOHOSAceFrameworkMenuFont(transAppResourceToLength(size).value,
+                    transAppResourceToLength(size).unitType.getValue(), weightCString.value, fontFamilyCString.value,
+                    style.getValue())
+            }
+        }
+        this
+    }
+
+    /**
+     * Sets the Menu font color.
+     *
+     * @param { ResourceColor } value
+     * @returns { This }
+     * @relation fontColor(value: ResourceColor): MenuAttribute
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func fontColor(value: ResourceColor): This {
+        unsafe {
+            FfiOHOSAceFrameworkMenuSetFontColor(transAppResourceToResourceColor(value));
+        }
+        this
+    }
+
+    /**
+     * Sets the radius of the corner around the menu.
+     * When the radius is less than the menu width, the default border radius is used.
+     *
+     * @param { Length } value
+     * @returns { This }
+     * @relation radius(value: Dimension | BorderRadiuses): MenuAttribute
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func radius(value: Length): This {
+        var value_ = transAppResourceToLength(value)
+        if (value_.value < 0.0f64) {
+            return this
+        }
+        unsafe {
+            FfiOHOSAceFrameworkMenuSetRadiusByLength(value_.value, value_.unitType.getValue());
+        }
+        this
+    }
+
+    /**
+     * Sets the radius of the corner around the menu.
+     * When the radius is less than the menu width, the default border radius is used.
+     *
+     * @param { BorderRadiuses } value
+     * @returns { This }
+     * @relation radius(value: Dimension | BorderRadiuses): MenuAttribute
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func radius(value: BorderRadiuses): This {
+        unsafe {
+            FfiOHOSAceFrameworkMenuSetRadiusByBorderRadiuses(value.toCBorderRadiuses());
+        }
+        this
+    }
+
+    protected override func widthInner(value: Length): This {
+        var value_ = transAppResourceToLength(value)
+        unsafe {
+            FfiOHOSAceFrameworkMenuSetWidth(value_.value, value_.unitType.getValue());
+        }
+        this
+    }
+}
