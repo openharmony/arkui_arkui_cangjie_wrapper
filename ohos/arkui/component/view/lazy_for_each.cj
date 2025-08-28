@@ -134,7 +134,7 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
             cacheListener.add(listenerId, tmpListner)
             tmpListner
         }
-        dataSource_.onRegisterDataChangeListener(listener)
+        dataSource_.registerDataChangeListener(listener)
     }
 
     protected func dataChangeListenerUnregister(listenerId: Int64) {
@@ -152,7 +152,7 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
      * @since 11
      */
     func onRemoveDataChangeListener(listener: DataChangeListener): Unit {
-        dataSource_.onUnregisterDataChangeListener(listener)
+        dataSource_.unregisterDataChangeListener(listener)
         listener.release()
     }
 }
@@ -180,7 +180,7 @@ public class LazyForEach <: UINodeBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public LazyForEach() {}
+    public init() {}
 
     /**
      * Enter the value to obtain the LazyForEach.

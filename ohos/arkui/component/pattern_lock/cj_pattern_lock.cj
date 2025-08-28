@@ -162,7 +162,7 @@ public class PatternLock <: ViewBase {
     /**
      * Sets the path color.
      *
-     * @param { ResourceColor } value - Path color, Default value is '#33182431'.
+     * @param { ResourceColor } value - Path color.
      * @returns { This }
      * @relation pathColor(value: ResourceColor): PatternLockAttribute
      */
@@ -181,7 +181,7 @@ public class PatternLock <: ViewBase {
     /**
      * Sets the fill color of the grid dot in the activated state, which is when the dot is highlighted but not selected.
      *
-     * @param { ResourceColor } value - Fill color of the grid dot in the activated state, Default value is '#ff182431'.
+     * @param { ResourceColor } value - Fill color of the grid dot in the activated state.
      * @returns { This }
      * @relation activeColor(value: ResourceColor): PatternLockAttribute
      */

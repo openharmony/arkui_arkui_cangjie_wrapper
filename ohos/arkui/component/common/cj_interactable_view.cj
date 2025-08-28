@@ -20,6 +20,73 @@ import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 
 /**
+ * Defines the base event.
+ *
+ * @relation declare interface BaseEvent
+ */
+sealed abstract class BaseEvent {
+    /**
+     * Display area of the element that triggers the gesture event.
+     *
+     * @relation target: EventTarget;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var target: EventTarget
+
+    /**
+     * Timestamp of the event.
+     *
+     * @relation timestamp: number;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var timestamp: Int64
+
+    /**
+     * Event input device.
+     *
+     * @relation source: SourceType;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var source: SourceType
+
+    /**
+     *  Indicates the ID of the input device that triggers the current key.
+     *
+     * @relation deviceId: number;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var deviceId: Int64 = 0
+
+    var axisHorizontal: Int64 = 0
+
+    var axisVertical: Int64 = 0
+
+    var tiltX: Float64 = 0.0
+
+    var tiltY: Float64 = 0.0
+
+    init(target!: EventTarget = EventTarget(Area(0, 0, Position(), Position())), timestamp!: Int64,
+        source!: SourceType = SourceType.Unknown, deviceId!: Int64 = 0) {
+        this.target = target
+        this.timestamp = timestamp
+        this.source = source
+        this.deviceId = deviceId
+    }
+}
+
+/**
  * Type of the touch event.
  *
  * @relation declare interface TouchObject
@@ -117,7 +184,7 @@ public class TouchObject {
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ClickEvent {
+public class ClickEvent <: BaseEvent {
     /**
      * X coordinate of the click point relative to the left edge of the clicked element.
      *
@@ -139,38 +206,6 @@ public class ClickEvent {
     ]
     public var y: Float64
 
-    /**
-     * Timestamp of the event.
-     *
-     * @relation timestamp: number;
-     */
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var timestamp: Int64
-
-    /**
-     * Event input device.
-     *
-     * @relation source: SourceType;
-     */
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var source: SourceType
-
-    /**
-     * Display area of the element that triggers the gesture event.
-     *
-     * @relation target: EventTarget;
-     */
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var target: EventTarget
     /**
      * X coordinate of the click relative to the upper left corner of the application window.
      *
@@ -212,16 +247,11 @@ public class ClickEvent {
     ]
     public var displayY: Float64
 
-    /**
-     * constructor
-     */
     init(x: Float64, y: Float64, timestamp: Int64, source: SourceType, target: EventTarget, windowX: Float64,
         windowY: Float64, displayX: Float64, displayY: Float64) {
+        super(source: source, target: target, timestamp: timestamp)
         this.x = x
         this.y = y
-        this.timestamp = timestamp
-        this.source = source
-        this.target = target
         this.windowX = windowX
         this.windowY = windowY
         this.displayX = displayX
@@ -328,18 +358,7 @@ public class DragItemInfo {
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class MouseEvent {
-    /**
-     * Timestamp of the event.
-     *
-     * @relation timestamp: number;
-     */
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var timestamp: Int64
-
+public class MouseEvent <: BaseEvent {
     /**
      * X coordinate of the mouse pointer relative to the upper left corner of the application window.
      *
@@ -417,7 +436,7 @@ public class MouseEvent {
     ]
     public init(timestamp: Int64, screenX: Float64, screenY: Float64, x: Float64, y: Float64, button: MouseButton,
         action: MouseAction) {
-        this.timestamp = timestamp
+        super(timestamp: timestamp)
         this.screenX = screenX
         this.screenY = screenY
         this.x = x
@@ -436,7 +455,7 @@ public class MouseEvent {
     21,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class TouchEvent {
+public class TouchEvent <: BaseEvent {
     var isStopPropagation: Bool = false
 
     /**
@@ -472,51 +491,16 @@ public class TouchEvent {
     ]
     public var changedTouches: Array<TouchObject>
 
-    /**
-     * Timestamp of the event.
-     *
-     * @relation timestamp: number;
-     */
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var timestamp: Int64
-
-    /**
-     * Display area of the element that triggers the gesture event.
-     *
-     * @relation target: EventTarget;
-     */
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var target: EventTarget
-
-    /**
-     * Event input device.
-     *
-     * @relation source: SourceType;
-     */
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var source: SourceType
-
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     init(eventType: TouchType, touches: Array<TouchObject>, changedTouches: Array<TouchObject>, timestamp: Int64,
         target: EventTarget, source: SourceType) {
+        super(source: source, target: target, timestamp: timestamp)    
         this.eventType = eventType
         this.touches = touches
         this.changedTouches = changedTouches
-        this.timestamp = timestamp
-        this.target = target
-        this.source = source
     }
 
     /**
@@ -603,17 +587,6 @@ public class KeyEvent {
     public var metaKey: Int32
 
     /**
-     *  Indicates the ID of the input device that triggers the current key.
-     *
-     * @relation deviceId: number;
-     */
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var deviceId: Int64
-
-    /**
      * Timestamp when the key was pressed.
      *
      * @relation timestamp: number;
@@ -623,6 +596,17 @@ public class KeyEvent {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timestamp: Int64
+
+    /**
+     *  Indicates the ID of the input device that triggers the current key.
+     *
+     * @relation deviceId: number;
+     */
+    @!APILevel[
+        21,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var deviceId: Int64
 
     /**
      * constructor

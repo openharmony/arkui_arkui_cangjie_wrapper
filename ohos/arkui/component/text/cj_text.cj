@@ -281,12 +281,13 @@ public class Text <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(content: ResourceStr, controller!: TextController = TextController()) {
+    public init(content: ResourceStr, controller!: TextController = TextController(), child!: () -> Unit = { =>}) {
         unsafe {
             try (unsafeContent = LibC.mallocCString(transResourceStrToString(content)).asResource()) {
                 FfiOHOSAceFrameworkTextCreateWithController(unsafeContent.value, controller.getID())
             }
         }
+        this.child = child
     }
 
     /**
@@ -299,27 +300,8 @@ public class Text <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(content: ResourceStr, controller!: TextController = TextController(), chid!: () -> Unit) {
-        unsafe {
-            try (unsafeContent = LibC.mallocCString(transResourceStrToString(content)).asResource()) {
-                FfiOHOSAceFrameworkTextCreateWithController(unsafeContent.value, controller.getID())
-            }
-        }
-        this.child = chid
-    }
-
-    /**
-     * Called when writing text.
-     *
-     * @relation (content?: string | Resource, value?: TextOptions): TextAttribute;
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(controller!: TextController = TextController(), chid!: () -> Unit) {
-        this("", controller: controller, chid: chid)
+    public init(controller!: TextController = TextController(), child!: () -> Unit) {
+        this("", controller: controller, child: child)
     }
 
     /**
@@ -435,7 +417,7 @@ public class Text <: ContainerBase {
     /**
      * Called when the font color is set.
      *
-     * @param { Length } value - Default value is '#e6182431'.The default value on wearable devices is '#c5ffffff'.
+     * @param { Length } value
      * @returns { This }
      * @relation fontColor(value: ResourceColor): TextAttribute;
      */

@@ -144,9 +144,9 @@ public class Offset {
 @C
 struct CTranslateResult {
     CTranslateResult(
-        let x: Float32,
-        let y: Float32,
-        let z: Float32
+        let x: Float64,
+        let y: Float64,
+        let z: Float64
     ) {}
 
     func parseToCJ(): TranslateResult {
@@ -175,7 +175,7 @@ public class TranslateResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: Float32
+    public var x: Float64
 
     /**
      * Indicates the translation distance of the y-axis, in vp.
@@ -187,7 +187,7 @@ public class TranslateResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: Float32
+    public var y: Float64
 
     /**
      * Indicates the translation distance of the z-axis, in vp.
@@ -199,7 +199,7 @@ public class TranslateResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var z: Float32
+    public var z: Float64
 
     /**
      * Create an Object of Offset.
@@ -209,7 +209,7 @@ public class TranslateResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x: Float32, y: Float32, z: Float32) {
+    public init(x: Float64, y: Float64, z: Float64) {
         this.x = x
         this.y = y
         this.z = z
@@ -218,7 +218,7 @@ public class TranslateResult {
 
 @C
 struct CScaleResult {
-    CScaleResult(let x: Float32, let y: Float32, let z: Float32, let centerX: Float32, let centerY: Float32) {}
+    CScaleResult(let x: Float64, let y: Float64, let z: Float64, let centerX: Float64, let centerY: Float64) {}
 
     func parseToCJ(): ScaleResult {
         ScaleResult(this.x, this.y, this.z, this.centerX, this.centerY)
@@ -246,7 +246,7 @@ public class ScaleResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: Float32
+    public var x: Float64
 
     /**
      * Zoom factor of the y-axis.
@@ -258,7 +258,7 @@ public class ScaleResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: Float32
+    public var y: Float64
 
     /**
      * Zoom factor of the z-axis.
@@ -270,7 +270,7 @@ public class ScaleResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var z: Float32
+    public var z: Float64
 
     /**
      * Transform the x-axis coordinate of the center point.
@@ -282,7 +282,7 @@ public class ScaleResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var centerX: Float32
+    public var centerX: Float64
 
     /**
      * Transform the y-axis coordinate of the center point.
@@ -294,7 +294,7 @@ public class ScaleResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var centerY: Float32
+    public var centerY: Float64
 
     /**
      * Defines ScaleResult Type.
@@ -304,7 +304,7 @@ public class ScaleResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x: Float32, y: Float32, z: Float32, centerX: Float32, centerY: Float32) {
+    public init(x: Float64, y: Float64, z: Float64, centerX: Float64, centerY: Float64) {
         this.x = x
         this.y = y
         this.z = z
@@ -316,12 +316,12 @@ public class ScaleResult {
 @C
 struct CRotateResult {
     CRotateResult(
-        let x: Float32,
-        let y: Float32,
-        let z: Float32,
-        let centerX: Float32,
-        let centerY: Float32,
-        let angle: Float32
+        let x: Float64,
+        let y: Float64,
+        let z: Float64,
+        let centerX: Float64,
+        let centerY: Float64,
+        let angle: Float64
     ) {}
 
     func parseToCJ(): RotateResult {
@@ -350,7 +350,7 @@ public class RotateResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: Float32
+    public var x: Float64
 
     /**
      * Axis of rotation vector y coordinate.
@@ -362,7 +362,7 @@ public class RotateResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: Float32
+    public var y: Float64
 
     /**
      * Axis of rotation vector z coordinate.
@@ -374,7 +374,7 @@ public class RotateResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var z: Float32
+    public var z: Float64
 
     /**
      * Transform the x-axis coordinate of the center point.
@@ -386,7 +386,7 @@ public class RotateResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var centerX: Float32
+    public var centerX: Float64
 
     /**
      * Transform the y-axis coordinate of the center point.
@@ -398,7 +398,7 @@ public class RotateResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var centerY: Float32
+    public var centerY: Float64
 
     /**
      * Rotation angle.
@@ -410,7 +410,7 @@ public class RotateResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var angle: Float32
+    public var angle: Float64
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -419,7 +419,7 @@ public class RotateResult {
     /**
      * Defines RotateResult Type.
      */
-    public init(x: Float32, y: Float32, z: Float32, centerX: Float32, centerY: Float32, angle: Float32) {
+    public init(x: Float64, y: Float64, z: Float64, centerX: Float64, centerY: Float64, angle: Float64) {
         this.x = x
         this.y = y
         this.z = z

@@ -69,6 +69,9 @@ foreign {
     func FfiOHOSAceFrameworkSpanSetFont(fontFamily: CString, fontSize: Float64, unit: Int32, fontWeight: CString, fontStyle: Int32): Unit
 }
 
+public abstract class BaseSpan <: UINodeBase{
+}
+
 /**
  * Defines Span Component.
  *
@@ -79,7 +82,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Span <: ContainerBase {
+public class Span <: BaseSpan {
     /*
      * Called when text is entered in span.
      * 
@@ -212,9 +215,12 @@ public class Span <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func decoration(decorationType!: TextDecorationType, color!: ResourceColor = Color.Black): This {
+    public func decoration(decorationType!: TextDecorationType, color!: ?ResourceColor = None): This {
+        var colorValue = if (let Some(v) <- color) {
+            v
+        } else { Color.Black }
         unsafe {
-            FfiOHOSAceFrameworkSpanSetDecoration(decorationType.getValue(), transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkSpanSetDecoration(decorationType.getValue(), transAppResourceToResourceColor(colorValue))
         }
         this
     }
@@ -258,7 +264,19 @@ public class Span <: ContainerBase {
         this
     }
 
-    protected override func onClickInner(callback: (ClickEvent) -> Unit): This {
+    /*
+     * Called when a click event occurs.
+     *
+     * @param { function } event
+     * @returns { This }
+     * @relation onClick(event: (event: ClickEvent) => void): T;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func onClick(callback: (ClickEvent) -> Unit): This {
         let wrapper = {
             evt: CJClickEvent => callback(parseCJClickEvent(evt))
         }
@@ -269,5 +287,9 @@ public class Span <: ContainerBase {
         this
     }
 
-    protected func pop(): Unit {}
+    public func initial() {
+    }
+
+    public func update() {
+    }
 }
