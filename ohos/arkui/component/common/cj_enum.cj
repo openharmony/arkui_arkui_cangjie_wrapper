@@ -4749,7 +4749,7 @@ public enum MouseButton {
 ]
 public enum MouseAction {
     /**
-     * None MouseAction 
+     * None MouseAction
      */
     @!APILevel[
         21,
@@ -9415,7 +9415,7 @@ public enum TextAreaType {
     |
     /**
      * E-mail address input mode.
-     * This mode accepts only digits, letters, underscores (_), dots (.), 
+     * This mode accepts only digits, letters, underscores (_), dots (.),
      * and the following special characters: ! # $ % & ' * + - / = ? ^ ` { | } ~ @ (which can only appear once).
      *
      * @relation EMAIL = 5

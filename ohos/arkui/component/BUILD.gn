@@ -63,6 +63,7 @@ ohos_cangjie_shared_library("ohos.arkui.component") {
     "menu:ohos.arkui.component.menu",
     "menu_item:ohos.arkui.component.menu_item",
     "menu_item_group:ohos.arkui.component.menu_item_group",
+    "navigation:ohos.arkui.component.navigation",
     "page_transition:ohos.arkui.component.page_transition",
     "path:ohos.arkui.component.path",
     "path_2d:ohos.arkui.component.path_2d",
