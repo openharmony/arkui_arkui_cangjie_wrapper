@@ -15,6 +15,7 @@ import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_macro_library("ohos.arkui.state_macro_manage") {
   sources = [
+    "cj_animation.cj",
     "cj_app_storage_define.cj",
     "cj_binder_define.cj",
     "cj_builder_define.cj",
