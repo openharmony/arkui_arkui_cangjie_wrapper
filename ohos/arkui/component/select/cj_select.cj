@@ -124,7 +124,6 @@ public type OnSelectCallback = (Int32, String) -> Unit;
 /**
  * The declare of selectOption.
  *
- * @interface SelectOption
  * @relation interface SelectOption
  */
 @!APILevel[
@@ -132,7 +131,7 @@ public type OnSelectCallback = (Int32, String) -> Unit;
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class SelectOption {
+public class SelectOptions {
     /**
      * Option string.
      *
@@ -241,7 +240,7 @@ public class Select <: ViewBase {
     /**
      * Called when the select is set.
      *
-     * @param { Array<SelectOption> } options
+     * @param { Array<SelectOptions> } options
      * @returns { This }
      * @relation (options: Array<SelectOption>): SelectAttribute
      */
@@ -250,7 +249,7 @@ public class Select <: ViewBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(options: Array<SelectOption>) {
+    public init(options: Array<SelectOptions>) {
         let vecValueHandle = FFIVectorNativeSelectOption(options.size)
         let elements: Array<NativeSelectOption> = Array(options.size) {
             i => options[i].parseToNative()

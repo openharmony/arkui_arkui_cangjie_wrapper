@@ -634,7 +634,7 @@ public open class ViewBase <: InteractableView & UINodeBase {
      * Sets the alignment rules in the relative container.
      * This API is valid only when the container is RelativeContainer.
      *
-     * @param { AlignRuleOption } value
+     * @param { AlignRuleOptions } value
      * @returns { This }
      * @relation alignRules(value: AlignRuleOption): T;
      */
@@ -643,11 +643,11 @@ public open class ViewBase <: InteractableView & UINodeBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alignRules(value: AlignRuleOption): This {
+    public func alignRules(value: AlignRuleOptions): This {
         alignRulesInner(value)
     }
 
-    protected open func alignRulesInner(value: AlignRuleOption): This {
+    protected open func alignRulesInner(value: AlignRuleOptions): This {
         let option = CJAlignRuleOption(value)
         unsafe { FfiOHOSAceFrameworkViewAbstractSetAlignRules(option) }
         option.free()
