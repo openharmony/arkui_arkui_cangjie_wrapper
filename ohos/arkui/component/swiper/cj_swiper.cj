@@ -706,7 +706,7 @@ public class DigitIndicator <: Indicator {
     /**
     * Sets the font color of the digit-style navigation indicator.
     *
-    * @param { ResourceColor } value - Font color of the digit-style navigation indicator. Default value is #ff182431.
+    * @param { ResourceColor } value - Font color of the digit-style navigation indicator.
     * @returns { This }
     * @relaiton fontColor(value: ResourceColor): DigitIndicator
     */

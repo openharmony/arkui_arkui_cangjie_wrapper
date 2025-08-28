@@ -307,7 +307,6 @@ public open class DatePicker <: ViewBase {
      *
      * @param { PickerTextStyle } value - Font color, font size, and font weight of all items except the top,
      * <br>bottom, and selected items.
-     * @default {<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}
      * @returns { This }
      * @relation textStyle(value: PickerTextStyle): DatePickerAttribute
      */

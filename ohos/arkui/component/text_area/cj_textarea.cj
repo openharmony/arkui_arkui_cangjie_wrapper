@@ -134,7 +134,7 @@ public class TextArea <: ViewBase {
     /**
      * Called when the color of the insertion cursor is set.
      *
-     * @param { ResourceColor } value - Default value is '#007DFF'.
+     * @param { ResourceColor } value
      * @returns { This }
      * @relation caretColor(value: ResourceColor): TextAreaAttribute;
      */

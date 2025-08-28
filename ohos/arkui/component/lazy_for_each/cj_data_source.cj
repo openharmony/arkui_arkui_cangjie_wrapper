@@ -40,8 +40,8 @@ foreign {
 public interface IDataSource<T> {
     func totalCount(): Int64
     func getData(index: Int64): T
-    func onRegisterDataChangeListener(listener: DataChangeListener): Unit
-    func onUnregisterDataChangeListener(listener: DataChangeListener): Unit
+    func registerDataChangeListener(listener: DataChangeListener): Unit
+    func unregisterDataChangeListener(listener: DataChangeListener): Unit
 }
 
 @!APILevel[
@@ -52,14 +52,7 @@ public interface IDataSource<T> {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DataChangeListener <: RemoteData {
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public DataChangeListener(id: Int64) {
+    protected DataChangeListener(id: Int64) {
         super(id)
     }
 
@@ -81,8 +74,8 @@ public class DataChangeListener <: RemoteData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDataAdd(index: Int64): Unit {
-        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataAdded(getID(), index) }
+    public func onDataAdd(index: IntNative): Unit {
+        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataAdded(getID(), Int64(index)) }
     }
 
     @!APILevel[
@@ -92,8 +85,8 @@ public class DataChangeListener <: RemoteData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDataDelete(index: Int64): Unit {
-        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataDeleted(getID(), index) }
+    public func onDataDelete(index: IntNative): Unit {
+        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataDeleted(getID(), Int64(index)) }
     }
 
     @!APILevel[
@@ -103,8 +96,8 @@ public class DataChangeListener <: RemoteData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDataChange(index: Int64): Unit {
-        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataChanged(getID(), index) }
+    public func onDataChange(index: IntNative): Unit {
+        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataChanged(getID(), Int64(index)) }
     }
 
     @!APILevel[
@@ -114,7 +107,7 @@ public class DataChangeListener <: RemoteData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDataMove(fromIdx: Int64, toIdx: Int64): Unit {
-        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataMoved(getID(), fromIdx, toIdx) }
+    public func onDataMove(from: IntNative, to: IntNative): Unit {
+        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataMoved(getID(), Int64(from), Int64(to)) }
     }
 }
