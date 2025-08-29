@@ -22,6 +22,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.list") {
     "../native_struct:ohos.arkui.component.native_struct",
     "../scroll:ohos.arkui.component.scroll",
     "../util:ohos.arkui.component.util",
+    "../list_item_group:ohos.arkui.component.list_item_group",
   ]
 
   cj_external_deps = [

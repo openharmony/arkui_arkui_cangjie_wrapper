@@ -113,7 +113,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public open class Grid <: ScrollableBase {
+public open class Grid <: ScrollableCommonMethod {
 
     /**
      * Grid is returned when the parameter is transferred.
@@ -258,8 +258,8 @@ public open class Grid <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func cachedCount(count: Int32): This {
-        cachedCount(count, false)
+    public func cachedCount(value: Int32): This {
+        cachedCount(value, false)
     }
 
     /**

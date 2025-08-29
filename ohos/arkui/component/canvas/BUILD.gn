@@ -15,6 +15,7 @@ import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.canvas") {
   sources = [
+    "canvas_constants.cj",
     "canvas_pattern.cj",
     "canvas_rendering_context_2d.cj",
     "cj_canvas.cj",
@@ -24,6 +25,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.canvas") {
   ]
 
   cj_deps = [
+    "../../../font:ohos.font",
     "../../../base:ohos.base",
     "../common:ohos.arkui.component.common",
     "../native_struct:ohos.arkui.component.native_struct",

@@ -478,7 +478,7 @@ public class RichEditorImageSpanStyleResult {
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var size: (Float64, Float64) = (0.0, 0.0)
+    public var size: (Float64, Float64)
 
     /**
      * image vertical align.
@@ -492,7 +492,7 @@ public class RichEditorImageSpanStyleResult {
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var verticalAlign: ImageSpanAlignment = ImageSpanAlignment.Center
+    public var verticalAlign: ImageSpanAlignment
 
     /**
      * image fit.
@@ -506,7 +506,7 @@ public class RichEditorImageSpanStyleResult {
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var objectFit: ImageFit = ImageFit.Auto
+    public var objectFit: ImageFit
 
     /**
      * RichEditor ImageSpan Layout Style.
@@ -520,7 +520,7 @@ public class RichEditorImageSpanStyleResult {
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var layoutStyle: RichEditorLayoutStyle = RichEditorLayoutStyle()
+    public var layoutStyle: RichEditorLayoutStyle
 
     init(origin: NativeRichEditorImageSpanStyleResult) {
         this.size = (origin.size0, origin.size1)
@@ -540,8 +540,6 @@ public class RichEditorImageSpanStyleResult {
         this.objectFit = objectFit
         this.layoutStyle = layoutStyle
     }
-
-    init() {}
 }
 
 @C
@@ -681,7 +679,7 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var spanPosition: RichEditorSpanPosition = RichEditorSpanPosition(0, (0, 0))
+    public var spanPosition: RichEditorSpanPosition
 
     /**
      * The pixel map of the image span.
@@ -694,7 +692,7 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var valuePixelMap: Option<PixelMap> = None
+    public var valuePixelMap: Option<PixelMap>
 
     /**
      * The resource string of the image span.
@@ -707,7 +705,7 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var valueResourceStr: String = ""
+    public var valueResourceStr: String
 
     /**
      * image attribute.
@@ -720,7 +718,7 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var imageStyle: RichEditorImageSpanStyleResult = RichEditorImageSpanStyleResult()
+    public var imageStyle: RichEditorImageSpanStyleResult
 
     /**
      * get offset in span.
@@ -736,7 +734,7 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offsetInSpan: (Int32, Int32) = (0, 0)
+    public var offsetInSpan: (Int32, Int32)
 
     /**
      * RichEditorImageSpanResult constructor

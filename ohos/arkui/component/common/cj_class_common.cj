@@ -639,7 +639,7 @@ public class BorderRadiuses {
                     return kayValueStringArray[index].split(":")[1]
                 })
                 let lengthArray = Array<Length>(4, { index =>
-                    return parseLengthFromString(lengthStringArray[index])
+                    return parseLengthFromString(lengthStringArray[index]).getOrDefault({ => 0.vp})
                 })
 
                 return BorderRadiuses(
@@ -649,7 +649,7 @@ public class BorderRadiuses {
                     bottomRight: lengthArray[3]
                 )
             } else {
-                let borderRadius = parseLengthFromString(value)
+                let borderRadius = parseLengthFromString(value).getOrDefault({ => 0.vp})
                 return BorderRadiuses(
                     topLeft: borderRadius,
                     topRight: borderRadius,
@@ -694,7 +694,7 @@ public class Margin {
                 let kayValueStringArray = jsonString.removePrefix("[").removeSuffix("]").split(",", removeEmpty: true)
 
                 let lengthArray = Array<Length>(4, { index =>
-                    return parseLengthFromString(kayValueStringArray[index])
+                    return parseLengthFromString(kayValueStringArray[index]).getOrDefault({ => 0.vp})
                 })
 
                 return Margin(
@@ -704,7 +704,7 @@ public class Margin {
                     bottom: lengthArray[3]
                 )
             } else {
-                let margin = parseLengthFromString(value)
+                let margin = parseLengthFromString(value).getOrDefault({ => 0.vp})
                 return Margin(
                     left: margin,
                     right: margin,
@@ -803,7 +803,7 @@ public class ShadowOptions {
     }
 }
 
-protected func parseLengthFromString(value: String): Length {
+protected func parseLengthFromString(value: String): Option<Length> {
     var realString = value.removePrefix('"').removeSuffix('"')
     if (realString.contains("vp")) {
         let valueString = realString.removeSuffix("vp")
