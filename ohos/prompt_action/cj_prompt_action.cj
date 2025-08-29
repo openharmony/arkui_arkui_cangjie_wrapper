@@ -1790,7 +1790,7 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
     }
 }
 
-public class PromptActionInner {
+protected class PromptActionInner {
     private static let defaultCallback = {_: Option<BusinessException>, _: Option<Int32> =>}
 
     protected static func openCustomDialogWithOption(options: CustomDialogOptions, callBack: (Int32) -> Unit): Unit {
