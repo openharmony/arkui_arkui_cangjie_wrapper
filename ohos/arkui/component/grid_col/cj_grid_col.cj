@@ -48,7 +48,7 @@ struct NativeGridColColumnOption {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class GridColColumnOption {
+public class GridColOptions {
     /**
     * Grid Col Column Option xs
     *
@@ -128,7 +128,7 @@ public class GridColColumnOption {
     public var xxl: Int32
 
     /**
-    * Defines the constructor of GridColColumnOption.
+    * Defines the constructor of GridColOptions.
     *
     * @param { Int32 } xs
     * @param { Int32 } sm
@@ -239,9 +239,9 @@ public class GridCol <: ContainerBase {
     /**
      * GridCol constructor.
      *
-     * @param { GridColColumnOption } span
-     * @param { GridColColumnOption } offset
-     * @param { GridColColumnOption } order
+     * @param { GridColOptions } span
+     * @param { GridColOptions } offset
+     * @param { GridColOptions } order
      * @param { () -> Unit } child
      * @returns { This }
      */
@@ -251,9 +251,9 @@ public class GridCol <: ContainerBase {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        span!: GridColColumnOption,
-        offset!: GridColColumnOption,
-        order!: GridColColumnOption,
+        span!: GridColOptions,
+        offset!: GridColOptions,
+        order!: GridColOptions,
         child!: () -> Unit = {=>}
     ) {
         unsafe {
@@ -287,7 +287,7 @@ public class GridCol <: ContainerBase {
     /**
     * Sets the span of current gird-container item.
     *
-    * @param { GridColColumnOption } value
+    * @param { GridColOptions } value
     * @returns { This }
     * @relation span(value: number | GridColColumnOption): GridColAttribute
     */
@@ -296,7 +296,7 @@ public class GridCol <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func span(value: GridColColumnOption): This {
+    public func span(value: GridColOptions): This {
         unsafe {
             let nativeValue = value.parseToNative()
             FfiOHOSAceFrameworkGridColSetSpanWithOption(nativeValue)
@@ -324,7 +324,7 @@ public class GridCol <: ContainerBase {
     /**
     * Sets the offset of current gird-container item.
     *
-    * @param { GridColColumnOption } value
+    * @param { GridColOptions } value
     * @returns { This }
     * @relation gridColOffset(value: number | GridColColumnOption): GridColAttribute
     */
@@ -333,7 +333,7 @@ public class GridCol <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func gridColOffset(value: GridColColumnOption): This {
+    public func gridColOffset(value: GridColOptions): This {
         unsafe {
             let nativeValue = value.parseToNative()
             FfiOHOSAceFrameworkGridColSetOffsetWithOption(nativeValue)
@@ -363,7 +363,7 @@ public class GridCol <: ContainerBase {
     /**
     * Sets the order of current gird-container item.
     *
-    * @param { GridColColumnOption } value
+    * @param { GridColOptions } value
     * @returns { This }
     * @relation order(value: number | GridColColumnOption): GridColAttribute
     */
@@ -372,7 +372,7 @@ public class GridCol <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func order(value: GridColColumnOption): This {
+    public func order(value: GridColOptions): This {
         unsafe {
             let nativeValue = value.parseToNative()
             FfiOHOSAceFrameworkGridColSetOrderWithOption(nativeValue)

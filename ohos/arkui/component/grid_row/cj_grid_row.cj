@@ -61,9 +61,9 @@ struct GutterLength {
 }
 
 struct GutterSizeOption {
-    let x: GridRowSizeOption
-    let y: GridRowSizeOption
-    GutterSizeOption(x: GridRowSizeOption, y: GridRowSizeOption) {
+    let x: GridRowSizeOptions
+    let y: GridRowSizeOptions
+    GutterSizeOption(x: GridRowSizeOptions, y: GridRowSizeOptions) {
         this.x = x
         this.y = y
     }
@@ -171,7 +171,7 @@ public enum BreakpointsReference {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class GridRowSizeOption {
+public class GridRowSizeOptions {
     /**
     * Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint
     *
@@ -246,7 +246,7 @@ public class GridRowSizeOption {
     public var xxl: Length
 
     /**
-    * Defines the constructor of GridRowSizeOption.
+    * Defines the constructor of GridRowSizeOptions.
     *
     * @param { Length } xs
     * @param { Length } sm
@@ -278,7 +278,7 @@ public class GridRowSizeOption {
     }
 
     /**
-    * Defines the constructor of GridRowSizeOption.
+    * Defines the constructor of GridRowSizeOptions.
     *
     * @param { Length } value
     * @returns { This }
@@ -362,7 +362,7 @@ struct NativeGridRowColumnOption {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class GridRowColumnOption {
+public class GridRowOptions {
     /**
     * Grid Row Column Option xs, select xs column num based on gridRow current breakpoint
     *
@@ -442,7 +442,7 @@ public class GridRowColumnOption {
     public var xxl: Int32
 
     /**
-    * Defines the constructor of GridRowColumnOption.
+    * Defines the constructor of GridRowOptions.
     *
     * @param { Int32 } xs
     * @param { Int32 } sm
@@ -474,7 +474,7 @@ public class GridRowColumnOption {
     }
 
     /**
-    * Defines the constructor of GridRowColumnOption.
+    * Defines the constructor of GridRowOptions.
     *
     * @param { Int32 } value
     * @returns { This }
@@ -509,10 +509,10 @@ public class GridRowColumnOption {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class GutterOption {
+public class GutterOptions {
     let data: GridRowGutter
     /**
-    * Defines the constructor of GutterOption.
+    * Defines the constructor of GutterOptions.
     *
     * @param { Length } x
     * @param { Length } y
@@ -528,10 +528,10 @@ public class GutterOption {
     }
 
     /**
-    * Defines the constructor of GutterOption.
+    * Defines the constructor of GutterOptions.
     *
-    * @param { GridRowSizeOption } x
-    * @param { GridRowSizeOption } y
+    * @param { GridRowSizeOptions } x
+    * @param { GridRowSizeOptions } y
     * @returns { This }
     */
     @!APILevel[
@@ -539,7 +539,7 @@ public class GutterOption {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: GridRowSizeOption, y!: GridRowSizeOption) {
+    public init(x!: GridRowSizeOptions, y!: GridRowSizeOptions) {
         this.data = GridRowGutter.GUTTEROPTION(GutterSizeOption(x, y))
     }
 }
@@ -743,7 +743,7 @@ public class GridRow <: ContainerBase {
     /**
     * Defines the constructor of GridRow.
     * 
-    * @param { GridRowColumnOption } columns
+    * @param { GridRowOptions } columns
     * @param { Length } gutter
     * @param { BreakPoints } breakpoints
     * @param { GridRowDirection } direction
@@ -756,7 +756,7 @@ public class GridRow <: ContainerBase {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        columns!: GridRowColumnOption,
+        columns!: GridRowOptions,
         gutter!: Length = 0.vp,
         breakpoints!: BreakPoints = BreakPoints(),
         direction!: GridRowDirection = GridRowDirection.Row,
@@ -792,7 +792,7 @@ public class GridRow <: ContainerBase {
     * Defines the constructor of GridRow.
     * 
     * @param { Int32 } columns
-    * @param { GutterOption } gutter
+    * @param { GutterOptions } gutter
     * @param { BreakPoints } breakpoints
     * @param { GridRowDirection } direction
     * @param { () -> Unit } child
@@ -805,7 +805,7 @@ public class GridRow <: ContainerBase {
     ]
     public init(
         columns!: Int32 = 12,
-        gutter!: GutterOption,
+        gutter!: GutterOptions,
         breakpoints!: BreakPoints = BreakPoints(),
         direction!: GridRowDirection = GridRowDirection.Row,
         child!: () -> Unit = {=>}
@@ -856,8 +856,8 @@ public class GridRow <: ContainerBase {
     /**
     * Defines the constructor of GridRow.
     * 
-    * @param { GridRowColumnOption } columns
-    * @param { GutterOption } gutter
+    * @param { GridRowOptions } columns
+    * @param { GutterOptions } gutter
     * @param { BreakPoints } breakpoints
     * @param { GridRowDirection } direction
     * @param { () -> Unit } child
@@ -869,8 +869,8 @@ public class GridRow <: ContainerBase {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        columns!: GridRowColumnOption,
-        gutter!: GutterOption,
+        columns!: GridRowOptions,
+        gutter!: GutterOptions,
         breakpoints!: BreakPoints = BreakPoints(),
         direction!: GridRowDirection = GridRowDirection.Row,
         child!: () -> Unit = {=>}

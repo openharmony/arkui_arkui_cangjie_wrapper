@@ -995,7 +995,7 @@ public class ExpectedFrameRateRange {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class AlignRuleOption {
+public class AlignRuleOptions {
     /**
     * Left alignment.
     * <br>anchor: ID of the component that functions as the anchor point.
@@ -1101,7 +1101,7 @@ public class AlignRuleOption {
     public var bias: Bias
 
     /**
-    * Defines the constructor of AlignRuleOption.
+    * Defines the constructor of AlignRuleOptions.
     *
     * @param { ?HorizontalAlignment } left
     * @param { ?HorizontalAlignment } right
