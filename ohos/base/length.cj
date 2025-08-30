@@ -373,6 +373,11 @@ extend Int64 <: LengthProp & Length {
      *
      * @relation declare type PX = `${number}px`
      */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public prop px: Length {
         get() {
             LengthType.px(Float64(this))

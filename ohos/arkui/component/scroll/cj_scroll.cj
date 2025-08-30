@@ -565,17 +565,47 @@ public type OnScrollFrameBeginCallback = (Float64, ScrollState) -> Float64
 
 public type OnScrollEdgeCallback = (Edge) -> Unit
 
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 public class ScrollEdgeOptions {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var velocity: Float32 = 0.0
 
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(velocity!: Float32 = 0.0) {
         this.velocity = velocity
     }
 }
 
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 public class ScrollToIndexOptions {
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var extraOffset: Length = 0.vp
 
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(extraOffset!: Length = 0.vp) {
         this.extraOffset = extraOffset
     }

@@ -286,15 +286,6 @@ struct NativeShadowOptionsResult {
     ) {}
 }
 
-public class ShadowOptionsResult {
-    ShadowOptionsResult(
-        public let radius: Float64,
-        public let color: String,
-        public let offsetX: Float64,
-        public let offsetY: Float64
-    ) {}
-}
-
 @C
 struct NativeRichEditorTextStyleResult {
     NativeRichEditorTextStyleResult(
