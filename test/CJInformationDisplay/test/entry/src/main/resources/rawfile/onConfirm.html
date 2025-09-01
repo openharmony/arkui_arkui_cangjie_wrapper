@@ -1,0 +1,74 @@
+<!-- 
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+
+<!--index.html-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+</head>
+
+<body>
+<h1>WebView onConfirm Demo</h1>
+<button onclick="myFunction()">Click onConfirm</button>
+<p id="onConfirm"></p>
+<button onclick="myFunction2()">Click onPrompt</button>
+<p id="onPrompt"></p>
+<button onclick="myFunction3()">Click onConsole Log</button>
+<button onclick="myFunction4()">Click onConsole Debug</button>
+<button onclick="myFunction5()">Click onConsole Error</button>
+<button onclick="myFunction6()">Click onConsole Warn</button>
+<p id="onConsole"></p>
+<script>
+    function myFunction() {
+      let x;
+      let r = confirm("click button!");
+      if (r == true) {
+        x = "ok";
+      } else {
+        x = "cancel";
+      }
+      document.getElementById("onConfirm").innerHTML = x;
+    }
+
+    function myFunction2() {
+      let message = prompt("Message info", "Hello World");
+      if (message != null && message != "") {
+        document.getElementById("onPrompt").innerHTML = message;
+      }
+    }
+
+    function myFunction3() {
+        console.log("onconsole printf");
+        document.getElementById("onConsole").innerHTML = "onconsole printf";
+    }
+
+    function myFunction4() {
+        console.debug("onconsole Debug");
+        document.getElementById("onConsole").innerHTML = "onconsole Debug";
+    }
+
+    function myFunction5() {
+        console.error("onconsole error");
+        document.getElementById("onConsole").innerHTML = "onconsole error";
+    }
+
+    function myFunction6() {
+        console.warn("onconsole warn");
+        document.getElementById("onConsole").innerHTML = "onconsole warn";
+    }
+</script>
+</body>
+</html>

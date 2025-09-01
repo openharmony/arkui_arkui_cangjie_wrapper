@@ -1,0 +1,16 @@
+{
+  "integer": [
+    {
+      "name": "test_cjResource",
+      "value": 10
+    },
+    {
+      "name": "max_line",
+      "value": 2
+    },
+    {
+      "name": "blue",
+      "value": 255
+    }
+  ]
+}

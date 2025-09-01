@@ -1,0 +1,44 @@
+{
+  "color": [
+    {
+      "name": "start_window_background",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "blue_23C452",
+      "value": "#FF4ECF73"
+    },
+    {
+      "name": "blue_color",
+      "value": "#0099FF"
+    },
+    {
+      "name": "red_color",
+      "value": "#FF0000"
+    },
+    {
+      "name": "colorArrayCJResource",
+      "value": "#6572B513"
+    },
+    {
+      "name": "colorArrayCJResource_1",
+      "value": "#65ed08f5"
+    },
+    {
+      "name": "colorArrayCJResource_2",
+      "value": "#95ed08e5"
+    },
+    {
+      "name": "colorArrayCJResource_3",
+      "value": "#e5ee0ef5"
+    },
+    {
+      "name": "image_test_color",
+      "value": "#FFFF0000"
+    },
+    {
+      "name": "green",
+      "value": "#116959"
+    }
+  ]
+}

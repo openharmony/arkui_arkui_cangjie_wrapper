@@ -1,0 +1,13 @@
+{
+  "name": "testsuite_cj_common_test",
+  "test_list": [
+    {
+      "name": "TitleMenuDialog_UT_1",
+      "timeout": 100
+    },
+    {
+      "name": "TitleMenuDialog_UT_2",
+      "timeout": 100
+    }
+  ]
+}
