@@ -40,6 +40,12 @@
                 },
                 {
                     "name": "//foundation/arkui/arkui_cangjie_wrapper/ohos/arkui/component/util:ohos.arkui.component.util"
+                },
+                {
+                    "name": "//foundation/arkui/arkui_cangjie_wrapper/ohos/arkui/state_macro_manage:ohos.arkui.state_macro_manage"
+                },
+                {
+                    "name": "//foundation/arkui/arkui_cangjie_wrapper/ohos/arkui/state_macro_manage:ohos.arkui.state_macro_manage_cjo"
                 }
             ],
             "test": [
