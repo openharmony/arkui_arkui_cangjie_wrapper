@@ -18,7 +18,6 @@ ohos_cangjie_shared_library("ohos.arkui.state_management") {
     "app_storage.cj",
     "environment.cj",
     "local_storage.cj",
-    "local_storage_inter_op.cj",
     "observable.cj",
     "observed_array_list.cj",
     "observed_complex_abstract.cj",

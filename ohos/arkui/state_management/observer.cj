@@ -26,7 +26,7 @@ import std.collection.*
 ]
 public interface Observer {
     func onStateUpdate(info: String, dependentElmtIds: ArrayList<Int64>): Unit
-    func notifyRead(info: String): Unit
+    func notifyRead(info: String): Unit {}
     func id(): Int64
-    func aboutToBeDeleted(): Unit
+    func aboutToBeDeleted(): Unit {}
 }

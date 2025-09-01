@@ -305,8 +305,8 @@ public class Video <: ViewBase {
         previewUri!: ResourceStr = "",
         controller!: VideoController = VideoController()
     ) {
-        let src_ = transResourceStrToString(src)
-        let previewUri_ = transResourceStrToString(previewUri)
+        let src_ = transResourceMediaToString(src)
+        let previewUri_ = transResourceMediaToString(previewUri)
         unsafe {
             try (srcStr = LibC.mallocCString(src_).asResource(),
                  previewUriStr = LibC.mallocCString(previewUri_).asResource()

@@ -281,11 +281,9 @@ func CreateCButtons(buttons: Array<ButtonInfo>): Option<CPointer<CButtonInfo>> {
     unsafe {
         for (i in 0..size) {
             var text = CString(CPointer<UInt8>())
-            try (
-                cText = LibC.mallocCString(transResourceStrToString(buttons[i].text)).asResource()
-            ) {
-                text = cText.value
-            }
+            try {
+                text = LibC.mallocCString(transResourceStrToString(buttons[i].text))
+            } finally {}
             let color = transAppResourceToResourceColor(buttons[i].color)
             let primary = buttons[i].primary
             var cButton = CButtonInfo(text, color, primary)
@@ -1703,13 +1701,10 @@ func parseShowToastOptions(options: ShowToastOptions): NativeShowToastOptions {
     unsafe {
         var cMsg = CString(CPointer<UInt8>())
         var cBottom = CString(CPointer<UInt8>())
-        try(
-            msg = LibC.mallocCString(transResourceStrToString(options.message)).asResource(),
-            btm = LibC.mallocCString(length2String(options.bottom)).asResource()
-        ) {
-            cMsg = msg.value
-            cBottom = btm.value
-        }
+        try {
+            cMsg = LibC.mallocCString(transResourceStrToString(options.message))
+            cBottom = LibC.mallocCString(length2String(options.bottom))
+        } finally {}
         return NativeShowToastOptions(
             cMsg,
             options.duration,
@@ -1741,13 +1736,10 @@ func parseShowDialogOptions(options: ShowDialogOptions): NativeShowDialogOptions
     unsafe {
         var cTitle = CString(CPointer<UInt8>())
         var cMsg = CString(CPointer<UInt8>())
-        try(
-            title = LibC.mallocCString(transResourceStrToString(options.title)).asResource(),
-            msg = LibC.mallocCString(transResourceStrToString(options.message)).asResource()
-        ) {
-            cTitle = title.value
-            cMsg = msg.value
-        }
+        try {
+            cTitle = LibC.mallocCString(transResourceStrToString(options.title))
+            cMsg = LibC.mallocCString(transResourceStrToString(options.message))
+        } finally {}
         return NativeShowDialogOptions(
             cTitle,
             cMsg,
@@ -1775,11 +1767,9 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
         })
     unsafe {
         var cTitle = CString(CPointer<UInt8>())
-        try(
-            title = LibC.mallocCString(transResourceStrToString(options.title)).asResource()
-        ) {
-            cTitle = title.value
-        }
+        try {
+            cTitle = LibC.mallocCString(transResourceStrToString(options.title))
+        } finally {}
         return NativeActionMenuOptions(
             cTitle,
             pButtons,

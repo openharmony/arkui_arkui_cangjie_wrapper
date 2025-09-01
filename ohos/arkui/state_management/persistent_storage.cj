@@ -125,25 +125,8 @@ public class PersistentStorage <: Observer {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func notifyRead(_: String): Unit {}
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public func id(): Int64 {
         subId
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func aboutToBeDeleted(): Unit {
-        PersistentStorage.getOrCreate().innerAboutToBeDeleted()
-        PersistentStorage.instance = None
     }
 
     private func innerKeys(): EquatableCollection<String> {
