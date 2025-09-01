@@ -27,8 +27,9 @@ ArkUI开发框架仓颉接口是在OpenHarmony上基于ArkUI开发框架封装�
 ArkUI开发框架仓颉接口源代码在/foundation/arkui/arkui\_cangjie\_wrapper下，目录结构如下图所示：
 
 ```
-/foundation/arkui/arkui_cangjie_wrapper
+foundation/arkui/arkui_cangjie_wrapper
 ├── figures                    # 存放README中的架构图
+├── kit                        # 仓颉 ArkUI Kit化接口
 ├── ohos                       # 仓颉ArkUI框架接口层实现
 |   |── animator               # 动画接口
 |   |── arkui                  # 仓颉UI组件接口
@@ -38,7 +39,7 @@ ArkUI开发框架仓颉接口源代码在/foundation/arkui/arkui\_cangjie\_wrapp
 |   |── measure                # 文本计算
 |   |── prompt_action          # 弹窗
 |   |── router                 # 路由
-├── kit                        # 仓颉 ArkUI Kit化接口
+├── test                       # 测试用例存放目录
 ```
 
 ## 使用说明<a name="section171384529150"></a>
@@ -52,7 +53,7 @@ ArkUI开发框架仓颉接口提供了丰富的、功能强大的UI组件、样�
 
 与ArkTS相比，暂不支持以下功能：
 - 状态管理V2
-- 命令式相关接口：包括FrameNode，RenderNode等
+- 自定义节点能力：包括自定义组件节点(FrameNode)，自定义渲染节点(RenderNode)，自定义声明式节点(BuilderNode)，详细介绍请参考[自定义节点概述](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/ui/arkts-user-defined-node.md)
 
 ## 开发者文档<a name="section171384529152"></a>
 
