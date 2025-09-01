@@ -1044,7 +1044,7 @@ public class CustomPopupOptions {
         enableArrow!: Bool = true,
         autoCancel!: Bool = true,
         onStateChange!: Option<(PopupStateChangeParam) -> Unit> = Option.None,
-        showInSubWindow!: Bool, // 5.1 start
+        showInSubWindow!: Bool = false,
         backgroundColor!: Color = Color(0x1000000),
         arrowOffset!: Length = 0.vp,
         mask!: ?Color = None,

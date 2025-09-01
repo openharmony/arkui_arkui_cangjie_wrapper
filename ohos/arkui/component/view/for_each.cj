@@ -83,7 +83,7 @@ public class ForEach <: UINodeBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func create<T>(viewID: Int64, parentView: CustomView, dataSource: CollectionEx<T>,
+    public func create<T>(viewID: Int64, parentView: CustomView, dataSource: CollectionEx<T>,
         itemGeneratorFunc!: ItemGenFuncType<T>,
         keyGeneratorFunc!: KeyGenFuncType<T> = {
             realData: T, idx: Int64 => match (realData) {
@@ -117,7 +117,7 @@ public class ForEach <: UINodeBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func create() {
+    public func create() {
         unsafe {
             FfiOHOSAceFrameworkForEachCreate()
         }
