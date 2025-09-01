@@ -1,0 +1,212 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "placeholder",
+      "value": "input your password..."
+    },
+    {
+      "name": "text",
+      "value": "inline style"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "DEFAULT_FONT",
+      "value": "HarmonyOS Sans"
+    },
+    {
+      "name": "font_size",
+      "value": "16.vp"
+    },
+    {
+      "name": "Font_name",
+      "value": "Deyihei"
+    },
+    {
+      "name": "width_100p",
+      "value": "100%"
+    },
+    {
+      "name": "len_2",
+      "value": "10.vp"
+    },
+    {
+      "name": "tab_barWidth",
+      "value": "100.0.vp"
+    },
+    {
+      "name": "control_Width",
+      "value": "20.0.vp"
+    },
+    {
+      "name": "line_height",
+      "value": "20.vp"
+    },
+    {
+      "name": "baselineOffset",
+      "value": "20.vp"
+    },
+    {
+      "name": "span_test",
+      "value": "This is a span test."
+    },
+    {
+      "name": "contentName",
+      "value": "菜单选项"
+    },
+    {
+      "name": "contentName1",
+      "value": "菜单"
+    },
+    {
+      "name": "menuItemGroup_header",
+      "value": "menuItemGroup_header"
+    },
+    {
+      "name": "menuItemGroup_footer",
+      "value": "menuItemGroup_footer"
+    },
+    {
+      "name": "size_desc",
+      "value": "20.vp"
+    },
+    {
+      "name": "family_desc",
+      "value": "HarmonyOS Sans"
+    },
+    {
+      "name": "zeroName",
+      "value": "000"
+    },
+    {
+      "name": "emptyName",
+      "value": " "
+    },
+    {
+      "name": "test_boolean",
+      "value": "true"
+    },
+    {
+      "name": "DataPanelShadowOptionsRadius",
+      "value": "5.0vp"
+    },
+    {
+      "name": "DataPanelShadowOptionsoffsetX",
+      "value": "15.0vp"
+    },
+    {
+      "name": "DataPanelShadowOptionsoffsetY",
+      "value": "15.0vp"
+    },
+    {
+      "name": "span_test_font_size",
+      "value": "12"
+    },
+    {
+      "name": "Arial",
+      "value": "Arial"
+    },
+    {
+      "name": "distance",
+      "value": "0.vp"
+    },
+    {
+      "name": "selection_option",
+      "value": "eee"
+    },
+    {
+      "name": "option_height",
+      "value": "100"
+    },
+    {
+      "name": "fontFamily",
+      "value": "Arial"
+    },
+    {
+      "name": "url",
+      "value": "www.baidu.com"
+    },
+    {
+      "name": "selectedFontFamily",
+      "value": "HarmonyOS Sans"
+    },
+    {
+      "name": "selectedFontSizeStr",
+      "value": "24.vp"
+    },
+    {
+      "name": "popupFontFamily",
+      "value": "HarmonyOS Sans"
+    },
+    {
+      "name": "content_opacity",
+      "value": "0.5"
+    },
+    {
+      "name": "fontSize",
+      "value": "20.vp"
+    },
+    {
+      "name": "button_label",
+      "value": "Disable"
+    },
+    {
+      "name": "minfontSize",
+      "value": "20.fp"
+    },
+    {
+      "name": "maxfontSize",
+      "value": "20.fp"
+    },
+    {
+      "name": "len",
+      "value": "20.px"
+    },
+    {
+      "name": "len_lpx",
+      "value": "15.lpx"
+    },
+    {
+      "name": "height",
+      "value": "100.vp"
+    },
+    {
+      "name": "cangjieWeb",
+      "value": "https://www.baidu.com"
+    },
+    {      
+      "name": "SmileySans_label",
+      "value": "SmileySans"
+    },
+    {
+      "name": "customItem3",
+      "value": "custom3"
+    },
+    {
+      "name": "len_px",
+      "value": "10.px"
+    },
+    {
+      "name": "len_fp",
+      "value": "10.fp"
+    },
+    {
+      "name": "len_percent",
+      "value": "10%"
+    },
+    {
+      "name": "len_llp",
+      "value": "10.llp"
+    }
+  ]
+}
