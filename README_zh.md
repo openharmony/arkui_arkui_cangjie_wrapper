@@ -24,7 +24,7 @@ ArkUI开发框架仓颉接口是在OpenHarmony上基于ArkUI开发框架封装�
 
 ## 目录<a name="section1791423143211"></a>
 
-ArkUI开发框架仓颉接口源代码在/foundation/arkui/arkui\_cangjie\_wrapper下，目录结构如下图所示：
+ArkUI开发框架仓颉接口源代码在foundation/arkui/arkui\_cangjie\_wrapper下，目录结构如下图所示：
 
 ```
 foundation/arkui/arkui_cangjie_wrapper

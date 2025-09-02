@@ -24,10 +24,10 @@ As shown in the architecture:
 
 ## Directory Structure<a name="section1791423143211"></a>
 
-The source code of the framework is stored in  **/foundation/arkui/arkui\_cangjie\_api**. The following shows the directory structure.
+The source code of the framework is stored in  **foundation/arkui/arkui\_cangjie\_api**. The following shows the directory structure.
 
 ```
-/foundation/arkui/arkui_cangjie_wrapper
+foundation/arkui/arkui_cangjie_wrapper
 ├── figures                    # Architectural diagram
 ├── kit                        # Cangjie ArkUI Kit libraries
 ├── ohos                       # Cangjie ArkUI Basic libraries
