@@ -628,7 +628,7 @@ public abstract class CustomView <: RemoteView & Observer {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func aboutToBeDeleted(): Unit
+    public open func aboutToBeDeleted(): Unit {}
 
     protected func aboutToBeDeletedInternal(): Unit {
         if (let Some(parent) <- parent_) {
