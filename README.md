@@ -29,6 +29,7 @@ The source code of the framework is stored in  **/foundation/arkui/arkui\_cangji
 ```
 /foundation/arkui/arkui_cangjie_wrapper
 ├── figures                    # Architectural diagram
+├── kit                        # Cangjie ArkUI Kit libraries
 ├── ohos                       # Cangjie ArkUI Basic libraries
 |   |── animator               # Animator interface
 |   |── arkui                  # Cangjie UI components
@@ -38,7 +39,7 @@ The source code of the framework is stored in  **/foundation/arkui/arkui\_cangji
 |   |── measure                # Text measure interface
 |   |── prompt_action          # Prompt dialog interface
 |   |── router                 # Router interface
-├── kit                        # Cangjie ArkUI Kit libraries
+├── test                       # Test case for ArkUI Cangjie API
 ```
 
 ## When to Use<a name="section171384529150"></a>
@@ -52,7 +53,7 @@ The following features are provided:
 
 The following features are not provided yet:
 - State Management V2
-- Imperative Style API: include FrameNode，RenderNode etc
+- Custom Node capabilitiese: include FrameNode，RenderNode, BuildNode, pelease refer to [Custom Node Overview](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/arkts-user-defined-node.md)
 
 ## Developer Document<a name="section171384529152"></a>
 

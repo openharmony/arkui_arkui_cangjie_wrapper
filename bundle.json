@@ -2,7 +2,7 @@
     "name": "@ohos/arkui_cangjie_wrapper",
     "description": "Cangjie Declarative UI Framework",
     "version": "6.0",
-    "license": "Apache-2.0",
+    "license": "Apache License 2.0",
     "publishAs": "code-segment",
     "segment": {
         "destPath": "foundation/arkui/arkui_cangjie_wrapper"
