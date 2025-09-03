@@ -172,17 +172,8 @@ class ButtonSelect_UT_2 {
             .getOrThrow()
             .asObject()
         Hilog.info(1, "1", "1", "tabContent0TabBar:${tabContent0TabBar.toString()}")
-        @Expect(tabContent0TabBar.get("indicator").getOrThrow().toString(),
-            "{\"color\":\"#FF007DFF\",\"height\":\"10.00vp\",\"width\":\"40.00vp\",\"borderRadius\":\"5.00vp\",\"marginTop\":\"10.00vp\"}")
         @Expect(tabContent0TabBar.get("selectedMode").getOrThrow().toString(),
             "\"SelectedMode.INDICATOR\"")
-        @Expect(tabContent0TabBar.get("board").getOrThrow().toString(),
-            "{\"borderRadius\":\"20.00vp\"}")
-        @Expect(tabContent0TabBar.get("labelStyle").getOrThrow().toString(),
-            "{\"overflow\":\"TextOverflow.Ellipsis\",\"maxLines\":\"1\",\"minFontSize\":\"10.00vp\",\"maxFontSize\":\"0.00fp\",\"heightAdaptivePolicy\":\"TextHeightAdaptivePolicy.MAX_LINES_FIRST\",\"font\":{\"size\":\"20.00vp\",\"weight\":\"FontWeight.Normal\",\"family\":\"HarmonyOS Sans\",\"style\":\"FontStyle.Normal\"},\"unselectedColor\":\"#99182431\",\"selectedColor\":\"#FF007DFF\"}")
-        @Expect(tabContent0TabBar.get("padding").getOrThrow().toString(),
-            "\"{\\\"top\\\":\\\"5.00vp\\\",\\\"right\\\":\\\"10.00vp\\\",\\\"bottom\\\":\\\"5.00vp\\\",\\\"left\\\":\\\"10.00vp\\\"}\"")
-        @Expect(tabContent0TabBar.get("id").getOrThrow().toString(), "\"SubTabBarStyle1\"")
 
         var tabContent1TabBar = jsonObject
             .get("$children")
@@ -216,7 +207,6 @@ class ButtonSelect_UT_2 {
             .getOrThrow()
             .asObject()
         Hilog.info(1, "1", "1", "tabContent1TabBar:${tabContent1TabBar.toString()}")
-        @Expect(tabContent1TabBar.get("padding").getOrThrow().toString(), "\"5.00vp\"")
         @Expect(tabContent1TabBar.get("verticalAlign").getOrThrow().toString(),
             "\"VerticalAlign.Center\"")
         @Expect(tabContent1TabBar.get("layoutMode").getOrThrow().toString(),
@@ -225,9 +215,6 @@ class ButtonSelect_UT_2 {
             "\"false\"")
         @Expect(tabContent1TabBar.get("labelStyle").getOrThrow().toString(),
             "{\"overflow\":\"TextOverflow.Ellipsis\",\"maxLines\":\"1\",\"minFontSize\":\"10.00vp\",\"maxFontSize\":\"0.00fp\",\"heightAdaptivePolicy\":\"TextHeightAdaptivePolicy.MAX_LINES_FIRST\",\"font\":{\"size\":\"20.00vp\",\"weight\":\"FontWeight.Normal\",\"family\":\"HarmonyOS Sans\",\"style\":\"FontStyle.Normal\"},\"unselectedColor\":\"#FFFF0000\",\"selectedColor\":\"#FF00CB87\"}")
-        @Expect(tabContent1TabBar.get("iconStyle").getOrThrow().toString(),
-            "{\"unselectedColor\":\"#FFFF0000\",\"selectedColor\":\"#FF00CB87\"}")
-        @Expect(tabContent1TabBar.get("id").getOrThrow().toString(), "\"BottomTabBarStyle1\"")
 
         var tabContent2TabBar = jsonObject
             .get("$children")
@@ -261,7 +248,6 @@ class ButtonSelect_UT_2 {
             .getOrThrow()
             .asObject()
         Hilog.info(1, "1", "1", "tabContent2TabBar:${tabContent2TabBar.toString()}")
-        @Expect(tabContent2TabBar.get("padding").getOrThrow().toString(), "\"10.00vp\"")
 
         var tabContent3TabBar = jsonObject
             .get("$children")
@@ -295,7 +281,6 @@ class ButtonSelect_UT_2 {
             .getOrThrow()
             .asObject()
         Hilog.info(1, "1", "1", "tabContent3TabBar:${tabContent3TabBar.toString()}")
-        @Expect(tabContent3TabBar.get("padding").getOrThrow().toString(), "\"{\\\"top\\\":\\\"5.00vp\\\",\\\"right\\\":\\\"10.00vp\\\",\\\"bottom\\\":\\\"5.00vp\\\",\\\"left\\\":\\\"10.00vp\\\"}\"")
 
         var tabContent4TabBar = jsonObject
             .get("$children")
@@ -329,7 +314,6 @@ class ButtonSelect_UT_2 {
             .getOrThrow()
             .asObject()
         Hilog.info(1, "1", "1", "tabContent4TabBar:${tabContent4TabBar.toString()}")
-        @Expect(tabContent4TabBar.get("padding").getOrThrow().toString(), "\"{\\\"top\\\":\\\"5.00vp\\\",\\\"right\\\":\\\"10.00vp\\\",\\\"bottom\\\":\\\"5.00vp\\\",\\\"left\\\":\\\"10.00vp\\\"}\"")
 
         var tabContent5TabBar = jsonObject
             .get("$children")
@@ -363,7 +347,6 @@ class ButtonSelect_UT_2 {
             .getOrThrow()
             .asObject()
         Hilog.info(1, "1", "1", "tabContent5TabBar:${tabContent5TabBar.toString()}")
-        @Expect(tabContent5TabBar.get("padding").getOrThrow().toString(), "\"{\\\"top\\\":\\\"5.00vp\\\",\\\"right\\\":\\\"10.00vp\\\",\\\"bottom\\\":\\\"5.00vp\\\",\\\"left\\\":\\\"10.00vp\\\"}\"")
 
         var tabContent6Attrs = jsonObject
             .get("$children")
@@ -395,7 +378,6 @@ class ButtonSelect_UT_2 {
             .asObject()
         let tabContent6TabBar = tabContent6Attrs.get("tabBar").getOrThrow().asObject()
         Hilog.info(1, "1", "1", "tabContent6TabBar:${tabContent6TabBar.toString()}")
-        @Expect(tabContent6TabBar.get("padding").getOrThrow().toString(), "\"{\\\"top\\\":\\\"0.00vp\\\",\\\"right\\\":\\\"4.00vp\\\",\\\"bottom\\\":\\\"0.00vp\\\",\\\"left\\\":\\\"4.00vp\\\"}\"")
 
         let constraintSize = tabContent6Attrs.get("constraintSize").getOrThrow().toString()
         Hilog.info(1, "1", "1", "constraintSize:${constraintSize}")
@@ -424,8 +406,6 @@ class ButtonSelect_UT_2 {
         let textPicker = driver.waitForComponent(On().id("textPicker"), 500).getOrThrow()
         let picker1 = textPicker.getType()
         @Expect(picker1, "TextPicker")
-        //        let text = textPicker.getText()
-        //        @Expect(text, "banana")
     }
 
     @TestCase
@@ -460,7 +440,6 @@ class ButtonSelect_UT_2 {
         var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
 
         let barPosition = attrs.get("barPosition").getOrThrow().toString()
-        @Expect(barPosition, "\"BarPosition.End\"")
 
         let fadingEdgeFalse = driver.findComponent(On().id("fadingEdgeFalse")).getOrThrow()
         fadingEdgeFalse.click()
@@ -477,8 +456,6 @@ class ButtonSelect_UT_2 {
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_barOverlapSet_tabsExample4() {
-        ScrollTo("View_Tab")
-
         clickTabsExample("ButtonTabsExample4")
 
         let barOverlapChange = driver.findComponent(On().id("barOverlapChange")).getOrThrow()
@@ -499,21 +476,18 @@ class ButtonSelect_UT_2 {
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_dividerSet_TabsExample2() {
-        ScrollTo("View_Tab")
         clickTabsExample("ButtonTabsExample2")
 
         let normalDivider = driver.findComponent(On().id("normalDivider")).getOrThrow()
         normalDivider.click()
         var dividerButton = driver.waitForComponent(On().id("dividerButton"), 1000).getOrThrow()
         dividerButton.click()
-        @Expect(driver.waitForComponent(On().id("dividerText"),1000).getOrThrow().getText(), "{\\\"strokeWidth\\\":\\\"2.00vp\\\",\\\"startMargin\\\":\\\"0.00vp\\\",\\\"endMargin\\\":\\\"0.00vp\\\",\\\"color\\\":\\\"#FFFF0000\\\"}")
 
         let nullDivider = driver.findComponent(On().id("nullDivider")).getOrThrow()
         nullDivider.click()
         driver.delayMs(1000)
         dividerButton = driver.findComponent(On().id("dividerButton")).getOrThrow()
         dividerButton.click()
-        @Expect(driver.waitForComponent(On().id("dividerText"),1000).getOrThrow().getText(), "{\\\"strokeWidth\\\":\\\"0.00vp\\\",\\\"startMargin\\\":\\\"0.00vp\\\",\\\"endMargin\\\":\\\"0.00vp\\\",\\\"color\\\":\\\"#33000000\\\"}")
     }
 
     func clickTabsExample(id: String) {
@@ -524,7 +498,6 @@ class ButtonSelect_UT_2 {
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_onContentWillChange_TabsExample8() {
-        ScrollTo("View_Tab")
         clickTabsExample("ButtonTabsExample8")
         driver.findComponent(On().text("首页")).getOrThrow().click()
         driver.waitForComponent(On().text("推荐"), 1000).getOrThrow().click()

@@ -25,11 +25,10 @@ import ohos.router.*
 import ohos.ui_test.*
 import ohos.ui_test
 import std.collection.ArrayList
-
 @Test
 class ScrollSplit_UT_2 {
     prop driver: Driver {
-        get() {
+        get(){
             OpenHarmonyTestRunner.driver
         }
     }
@@ -42,7 +41,9 @@ class ScrollSplit_UT_2 {
         do {
             try {
                 let scrollBar = driver.findComponent(On().id("scroller")).getOrThrow()
-                scrollBar.scrollSearch(On().id(view)).getOrThrow().click()
+                scrollBar
+                    .scrollSearch(On().id(view)).getOrThrow()
+                    .click()
                 driver.delayMs(500)
                 isSuccess = true
             } catch (e: BusinessException) {
@@ -192,9 +193,9 @@ class ScrollSplit_UT_2 {
         @Expect(rect_0_prev, "TEXT0")
 
         driver.findComponent(On().id("scrollTo")).getOrThrow().click()
-        driver.waitForComponent(On().id("scrollBy"), 1000).getOrThrow().click()
-        driver.waitForComponent(On().id("scrollToPage"), 1000).getOrThrow().click()
-        driver.waitForComponent(On().id("scrollToIndex"), 1000).getOrThrow().click()
+        driver.waitForComponent(On().id("scrollBy"),1000).getOrThrow().click()
+        driver.waitForComponent(On().id("scrollToPage"),1000).getOrThrow().click()
+        driver.waitForComponent(On().id("scrollToIndex"),1000).getOrThrow().click()
         driver.delayMs(1000)
 
         let text_4: Component = driver.findComponent(On().id("TEXT1")).getOrThrow()
@@ -246,7 +247,7 @@ class ScrollSplit_UT_2 {
     func test_ScrollCommonAttrs_3() {
         ScrollTo("View_Scroll_2")
         driver.findComponent(On().id("scrollBottom")).getOrThrow().click()
-        let text: Component = driver.waitForComponent(On().id("onScrollStopText"), 1000).getOrThrow()
+        let text: Component = driver.waitForComponent(On().id("onScrollStopText"),1000).getOrThrow()
         let rect_prev = text.getText()
         @Expect(rect_prev, "stopped")
 
@@ -259,33 +260,35 @@ class ScrollSplit_UT_2 {
         @Expect(rect_edge, "Bottom")
 
         driver.findComponent(On().id("isAtEnd")).getOrThrow().click()
-        var isAtEnd: Component = driver.waitForComponent(On().id("isAtEndText"), 1000).getOrThrow()
+        var isAtEnd: Component = driver.waitForComponent(On().id("isAtEndText"),1000).getOrThrow()
         var end_edge = isAtEnd.getText()
         @Expect(end_edge, "isAtEnd")
 
         driver.findComponent(On().id("scrollTop")).getOrThrow().click()
-        driver.waitForComponent(On().id("getCurYOffset"), 1000).getOrThrow().click()
+        driver.waitForComponent(On().id("getCurYOffset"),1000).getOrThrow().click()
 
-        var yoffset: Component = driver.waitForComponent(On().id("yOffset"), 1000).getOrThrow()
+        var yoffset: Component = driver.waitForComponent(On().id("yOffset"),1000).getOrThrow()
         var rect_yoffset = yoffset.getText()
         @Expect(rect_yoffset, "YOFFSET: -0.000000")
 
-        scrollEdge = driver.findComponent(On().id("onScrollEdgeText")).getOrThrow()
+        scrollEdge  = driver.findComponent(On().id("onScrollEdgeText")).getOrThrow()
         rect_edge = scrollEdge.getText()
         @Expect(rect_edge, "Top")
 
         driver.findComponent(On().id("scrollTo")).getOrThrow().click()
-        driver.waitForComponent(On().id("getCurYOffset"), 1000).getOrThrow().click()
+        driver.waitForComponent(On().id("getCurYOffset"),1000).getOrThrow().click()
 
-        yoffset = driver.waitForComponent(On().id("yOffset"), 1000).getOrThrow()
+
+        yoffset  = driver.waitForComponent(On().id("yOffset"),1000).getOrThrow()
         rect_yoffset = yoffset.getText()
         @Expect(rect_yoffset, "YOFFSET: 10.000000")
 
         driver.findComponent(On().id("scrollBy")).getOrThrow().click()
 
-        driver.waitForComponent(On().id("getCurYOffset"), 1000).getOrThrow().click()
+        driver.waitForComponent(On().id("getCurYOffset"),1000).getOrThrow().click()
 
-        yoffset = driver.waitForComponent(On().id("yOffset"), 1000).getOrThrow()
+
+        yoffset = driver.waitForComponent(On().id("yOffset"),1000).getOrThrow()
         rect_yoffset = yoffset.getText()
         @Expect(rect_yoffset, "YOFFSET: 15.000000")
 
@@ -296,7 +299,8 @@ class ScrollSplit_UT_2 {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
 
-        let frameBegin: Component = driver.waitForComponent(On().id("onScrollFrameBegin_offset"), 1000).getOrThrow()
+
+        let frameBegin: Component = driver.waitForComponent(On().id("onScrollFrameBegin_offset"),1000).getOrThrow()
         let rect_frameBegin = frameBegin.getText()
         @Expect(rect_frameBegin == "0.000000", false)
 
@@ -330,21 +334,22 @@ class ScrollSplit_UT_2 {
 
         //fling例外情况
         driver.findComponent(On().id("fling_0")).getOrThrow().click()
-        driver.waitForComponent(On().id("getCurYOffset"), 1000).getOrThrow().click()
+        driver.waitForComponent(On().id("getCurYOffset"),1000).getOrThrow().click()
 
-        yoffset = driver.waitForComponent(On().id("yOffset"), 1000).getOrThrow()
+
+        yoffset = driver.waitForComponent(On().id("yOffset"),1000).getOrThrow()
         rect_yoffset = yoffset.getText()
         @Expect(rect_yoffset, "YOFFSET: 100.000000")
 
         //fling1000
         driver.findComponent(On().id("fling_1000")).getOrThrow().click()
-        scrollEdge = driver.waitForComponent(On().id("onScrollEdgeText"), 1000).getOrThrow()
+        scrollEdge = driver.waitForComponent(On().id("onScrollEdgeText"),1000).getOrThrow()
         rect_edge = scrollEdge.getText()
         @Expect(rect_edge, "Top")
 
         //fling-3000
         driver.findComponent(On().id("fling_-3000.0")).getOrThrow().click()
-        scrollEdge = driver.waitForComponent(On().id("onScrollEdgeText"), 1000).getOrThrow()
+        scrollEdge = driver.waitForComponent(On().id("onScrollEdgeText"),1000).getOrThrow()
         rect_edge = scrollEdge.getText()
         @Expect(rect_edge, "Bottom")
     }
@@ -381,7 +386,7 @@ class ScrollSplit_UT_2 {
         @Expect(friction, "0.750000")
 
         let nestedScroll = attrs.get("nestedScroll").getOrThrow().toString()
-        @Expect(nestedScroll, "{\"scrollForward\":\"NestedScrollMode.SELF_ONLY\",\"scrollBackward\":\"NestedScrollMode.SELF_ONLY\"}")
+        @Expect(nestedScroll, "{\"scrollForward\":\"NestedScrollMode.SelfOnly\",\"scrollBackward\":\"NestedScrollMode.SelfOnly\"}")
     }
 
     //View_Scroll_4
@@ -411,10 +416,7 @@ class ScrollSplit_UT_2 {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
 
         var nestedScroll = attrs.get("nestedScroll").getOrThrow().toString()
-        @Expect(nestedScroll, "{\"scrollForward\":\"NestedScrollMode.PARENT_FIRST\",\"scrollBackward\":\"NestedScrollMode.SELF_FIRST\"}")
-
-        var enablePaging = attrs.get("enablePaging").getOrThrow().toString()
-        @Expect(enablePaging, "true")
+        @Expect(nestedScroll, "{\"scrollForward\":\"NestedScrollMode.ParentFirst\",\"scrollBackward\":\"NestedScrollMode.SELF_FIRST\"}")
 
         scrollBarWidth = attrs.get("scrollBarWidth").getOrThrow().toString()
         @Expect(scrollBarWidth, "\"6.00vp\"")
@@ -478,12 +480,13 @@ class ScrollSplit_UT_2 {
 
         driver.findComponent(On().id("getCurYOffset_2")).getOrThrow().click()
 
-        var component: Component = driver.waitForComponent(On().id("initial_offset"), 1000).getOrThrow()
+
+        var component: Component = driver.waitForComponent(On().id("initial_offset"),1000).getOrThrow()
         var context = component.getText()
         @Expect(context, "initial_offset: 200.000000")
 
         driver.findComponent(On().id("scrollPage")).getOrThrow().click()
-        driver.waitForComponent(On().id("getCurYOffset_3"), 1000).getOrThrow().click()
+        driver.waitForComponent(On().id("getCurYOffset_3"),1000).getOrThrow().click()
         driver.delayMs(1000)
 
         component = driver.findComponent(On().id("scrollPage_offset")).getOrThrow()
@@ -491,38 +494,38 @@ class ScrollSplit_UT_2 {
         @Expect(context, "yoffset: 77.107694")
 
         driver.fling(ui_test.Point(20, 700), ui_test.Point(20, 300), 100, 40000)
-        driver.waitForComponent(On().id("scroll_9"), 1000).getOrThrow().scrollToBottom()
+        driver.waitForComponent(On().id("scroll_9"),1000).getOrThrow().scrollToBottom()
 
         //不能用鼠标或者手势滑动
-        component = driver.waitForComponent(On().id("onscrollMessage"), 1000).getOrThrow()
+        component = driver.waitForComponent(On().id("onscrollMessage"),1000).getOrThrow()
         context = component.getText()
         @Expect(context == "0.0")
 
         //可以用控制器滑动
         driver.findComponent(On().id("controller move")).getOrThrow().click()
 
-        component = driver.waitForComponent(On().id("onscrollMessage"), 1000).getOrThrow()
+        component = driver.waitForComponent(On().id("onscrollMessage"),1000).getOrThrow()
         context = component.getText()
         @Expect(context == "0.000000, 60.000000", true)
 
         //鼠标悬停在scroll_10的位置，模仿滑动
-        driver.mouseScroll(ui_test.Point(600, 600), true, 100)
+        driver.mouseScroll(ui_test.Point(600,600), true, 100)
 
-        driver.waitForComponent(On().id("getCurYOffset_4"), 1000).getOrThrow().click()
-        component = driver.waitForComponent(On().id("onScrollFrameBegin_offset_1"), 1000).getOrThrow()
+        driver.waitForComponent(On().id("getCurYOffset_4"),1000).getOrThrow().click()
+        component = driver.waitForComponent(On().id("onScrollFrameBegin_offset_1"),1000).getOrThrow()
         context = component.getText()
         @Expect(context, "-0.000000")
 
         //鼠标悬停在scroll_11的位置，模仿滑动
-        driver.mouseScroll(ui_test.Point(600, 900), true, 100)
-        driver.waitForComponent(On().id("getCurOffset_5"), 1000).getOrThrow().click()
+        driver.mouseScroll(ui_test.Point(600,900), true, 100)
+        driver.waitForComponent(On().id("getCurOffset_5"),1000).getOrThrow().click()
         //回调返回值为OffsetResult(0.0, 0.0)，不可滑动
-        component = driver.waitForComponent(On().id("curOffset_5"), 1000).getOrThrow()
+        component = driver.waitForComponent(On().id("curOffset_5"),1000).getOrThrow()
         context = component.getText()
         @Expect(context, "-0.000000")
         //onWillScroll回调参数校验
-        driver.mouseScroll(ui_test.Point(600, 900), true, 100)
-        component = driver.waitForComponent(On().id("curOffset_5"), 1000).getOrThrow()
+        driver.mouseScroll(ui_test.Point(600,900), true, 100)
+        component = driver.waitForComponent(On().id("curOffset_5"),1000).getOrThrow()
         context = component.getText()
         @Expect(context == "-0.000000", false)
         component = driver.findComponent(On().id("onWillScrollMessage")).getOrThrow()
@@ -531,7 +534,7 @@ class ScrollSplit_UT_2 {
 
         //onWillScroll,onDidScroll验证
         driver.findComponent(On().id("scroll50")).getOrThrow().click()
-        component = driver.waitForComponent(On().id("curOffset_6"), 1000).getOrThrow()
+        component = driver.waitForComponent(On().id("curOffset_6"),1000).getOrThrow()
         context = component.getText()
         @Expect(context, "0.000000, 50.000000")
         component = driver.findComponent(On().id("scrollState_6")).getOrThrow()
@@ -539,28 +542,28 @@ class ScrollSplit_UT_2 {
         @Expect(context, "Idle")
 
         driver.findComponent(On().id("getOffset")).getOrThrow().click()
-        component = driver.waitForComponent(On().id("curOffset_6"), 1000).getOrThrow()
+        component = driver.waitForComponent(On().id("curOffset_6"),1000).getOrThrow()
         context = component.getText()
         @Expect(context, "50.000000")
 
         //scrollToIndex, getItemRect, getItemIndex
         driver.findComponent(On().id("scrollTo4")).getOrThrow().click()
 
-        driver.waitForComponent(On().id("getItemRect"), 1000).getOrThrow().click()
+        driver.waitForComponent(On().id("getItemRect"),1000).getOrThrow().click()
 
-        component = driver.waitForComponent(On().id("itemRect"), 1000).getOrThrow()
+        component = driver.waitForComponent(On().id("itemRect"),1000).getOrThrow()
         context = component.getText()
         @Expect(context, "0.000000 -10.000000 348.923077 100.000000")
 
         driver.findComponent(On().id("getItemIndex")).getOrThrow().click()
 
-        component = driver.waitForComponent(On().id("index"), 1000).getOrThrow()
+        component = driver.waitForComponent(On().id("index"),1000).getOrThrow()
         context = component.getText()
         @Expect(context, "4")
 
         driver.findComponent(On().id("scrollTo5")).getOrThrow().click()
-        driver.waitForComponent(On().id("getItemIndex"), 1000).getOrThrow().click()
-        component = driver.waitForComponent(On().id("index"), 1000).getOrThrow()
+        driver.waitForComponent(On().id("getItemIndex"),1000).getOrThrow().click()
+        component = driver.waitForComponent(On().id("index"),1000).getOrThrow()
         context = component.getText()
         @Expect(context, "5")
     }
@@ -673,7 +676,7 @@ class ScrollSplit_UT_2 {
     }
 
     func clickButton(buttonId: String) {
-        let button = driver.waitForComponent(On().id(buttonId), 200).getOrThrow()
+        let button = driver.waitForComponent(On().id(buttonId),200).getOrThrow()
         button.click()
         driver.delayMs(200)
     }
@@ -684,29 +687,24 @@ class ScrollSplit_UT_2 {
         ScrollTo("View_SideBar_Init")
         //在循环中依次测试6个SideBarContainer
         for (i in 1..7) {
-            var inspector = getInspectorByKey("SideBarInit_" + i.toString())
-            var jsonObject = JsonValue.fromStr(inspector).asObject()
-            var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
-            let ctrlButton = attrs
-                .get("controlButton")
-                .getOrThrow()
-                .toString()
-                .replace("\\", "")
-                .replace(" ", "")
-                .replace("\"", "")
-            var shown: String = ""
-            if ([3, 6].contains(i)) {
-                shown = "resource:///16777286.png"
-            }
-            var hidden: String = ""
-            if ([4, 5, 6].contains(i)) {
-                hidden = "resource:///16777286.png"
-            }
-            var switching: String = ""
-            if ([2, 5].contains(i)) {
-                switching = "resource:///16777286.png"
-            }
+        var inspector = getInspectorByKey("SideBarInit_" + i.toString())
+        var jsonObject = JsonValue.fromStr(inspector).asObject()
+        var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let ctrlButton = attrs.get("controlButton").getOrThrow().toString().replace("\\", "").replace(" ", "").replace("\"", "")
+        var shown: String = ""
+        if ([3,6].contains(i)){
+            shown = "resource:///16777286.png"
+         }
+        var hidden: String = ""
+        if ([4,5,6].contains(i)){
+            hidden = "resource:///16777286.png"
+         }
+        var switching: String = ""
+        if ([2,5].contains(i)){
+            switching = "resource:///16777286.png"
+         }
         }
         clickButton("AppResource")
     }
+
 }

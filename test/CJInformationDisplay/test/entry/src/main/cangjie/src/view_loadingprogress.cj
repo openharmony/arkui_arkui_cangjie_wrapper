@@ -23,15 +23,25 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 class View_LoadingProgress {
+
     func build() {
         Column(space: 5) {
             Row() {
-                Text('Orbital LoadingProgress').fontSize(9).fontColor(0xCCCCCC).width(90.percent).width(60).height(60)
-                LoadingProgress().color(Color.Blue).id("loadingprogressComponent1").width(60).height(60)
+                Text('Orbital LoadingProgress')
+                    .fontSize(9)
+                    .fontColor(0xCCCCCC)
+                    .width(90.percent)
+                    .width(60)
+                    .height(60)
+                LoadingProgress()
+                    .color(Color.Blue)
+                    .id("loadingprogressComponent1")
+                    .width(60)
+                    .height(60)
                 LoadingProgress()
                     .color(0xFFFF00)
                     .id("loadingprogressComponent2")
-                    .foregroundColor(ColoringStrategy.INVERT)
+                    .foregroundColor(ColoringStrategy.Invert)
                     .width(60)
                     .height(60)
                 LoadingProgress()
@@ -40,7 +50,12 @@ class View_LoadingProgress {
                     .foregroundColor(0xCCCCCC)
                     .width(60)
                     .height(60)
-            }.height(100.percent).width(100.percent).justifyContent(FlexAlign.Center)
-        }.width(270).height(120)
+            }
+                .height(100.percent)
+                .width(100.percent)
+                .justifyContent(FlexAlign.Center)
+        }
+            .width(270)
+            .height(120)
     }
 }

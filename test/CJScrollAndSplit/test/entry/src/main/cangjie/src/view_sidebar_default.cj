@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 package ohos_app_cangjie_entry
 
 internal import ohos.base.LengthProp
@@ -45,6 +46,8 @@ class View_SideBar_Default {
             Column() {
                 Text('SideBarContainer content text1').fontSize(25)
             }
-        }.id("SideBarDefault").divider(DividerStyle(strokeWidth: 0))
+        }
+            .id("SideBarDefault")
+            .divider(DividerStyle(strokeWidth: 0))
     }
 }

@@ -31,41 +31,58 @@ class View_BindSheet {
     var text: String = "123123"
 
     public func onAppear() {
-        Hilog.info(1, "1", "Cangjie-Test", "BindSheet onAppear.")
+        Hilog.info(1,"1","Cangjie-Test", "BindSheet onAppear.")
         this.message = "BindSheet onAppear."
     }
     public func onDisappear() {
-        Hilog.info(1, "1", "Cangjie-Test", "BindSheet onDisappear.")
+        Hilog.info(1,"1","Cangjie-Test", "BindSheet onDisappear.")
         this.message = "BindSheet onDisappear."
     }
 
     @Builder
     public func myBuilder() {
         Column() {
-            Button("close modal 1").margin(10).fontSize(20).onClick({
-                e => this.isShow = false
-            }).id("button2")
+            Button("close modal 1")
+                .margin(10)
+                .fontSize(20)
+                .onClick({ e
+                    => this.isShow = false
+                })
+                .id("button2")
             Text(this.message).id("text1")
-        }.width(100.percent).height(100.percent).justifyContent(FlexAlign.Center)
+        }
+            .width(100.percent)
+            .height(100.percent)
+            .justifyContent(FlexAlign.Center)
     }
 
     @Builder
     public func myBuilder1() {
         Column() {
             Text(text).id("text3")
-            Button("close modal 2").margin(10).fontSize(20).onClick({
-                e => this.isShow = false
-            }).id("button3")
-            Column().backgroundColor(Color.Blue).height(300).width(100.percent)
-            Column().backgroundColor(Color.Green).height(300).width(100.percent)
+            Button("close modal 2")
+                .margin(10)
+                .fontSize(20)
+                .onClick({ e
+                    => this.isShow = false
+                })
+                .id("button3")
+            Column()
+                .backgroundColor(Color.Blue)
+                .height(300)
+                .width(100.percent)
+            Column()
+                .backgroundColor(Color.Green)
+                .height(300)
+                .width(100.percent)
         }
     }
 
     func build() {
         Column {
             Button("transition modal 1")
-                .onClick({
-                    e => this.isShow = true
+                .onClick({ e
+                    => this.isShow = true
                 })
                 .fontSize(20)
                 .margin(10)
@@ -87,12 +104,11 @@ class View_BindSheet {
                         preferType: SheetType.Center))
                 .bindSheet(this.isShow, myBuilder,
                     options: SheetOptions(onAppear: onAppear, onDisappear: onDisappear, height: SheetSize.FitContent,
-                        preferType: SheetType.Popup, shouldDismiss: {sheet =>}, onWillDismiss: {dismiss =>},
-                        mode: SheetMode.Embedded))
+                        preferType: SheetType.Popup, shouldDismiss: { sheet => }, onWillDismiss: { dismiss => }, mode: SheetMode.Embedded))
 
             Button("transition modal 2")
-                .onClick({
-                    e => this.isShow = true
+                .onClick({ e
+                    => this.isShow = true
                 })
                 .fontSize(20)
                 .margin(10)
@@ -113,29 +129,28 @@ class View_BindSheet {
                         onHeightDidChange: {
                             height =>
                             this.text = "onHeightDidChange"
-                            Hilog.info(1, "1", "Cangjie-Test", "###ondidchange height change")
+                            Hilog.info(1,"1","Cangjie-Test", "###ondidchange height change")
                         },
                         onDetentsDidChange: {
-                            dents => Hilog.info(1, "1", "Cangjie-Test", "###ondidchange Detents change")
+                            dents => Hilog.info(1,"1","Cangjie-Test", "###ondidchange Detents change")
                         },
                         onWidthDidChange: {
-                            width => Hilog.info(1, "1", "Cangjie-Test", "###ondidchange width change")
+                            width => Hilog.info(1,"1","Cangjie-Test", "###ondidchange width change")
                         },
                         onTypeDidChange: {
-                            typee => Hilog.info(1, "1", "Cangjie-Test", "###ondidchange type change")
+                            typee => Hilog.info(1,"1","Cangjie-Test", "###ondidchange type change")
                         },
                         width: 400.vp,
-                        shadow: ShadowOptions(radius: 10.0, shadowType: ShadowType.COLOR, offsetX: 10.0, offsetY: 0.0,
-                            color: Color.Red),
+                        shadow: ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 10.0, offsetY: 0.0, color: Color.Red),
                         maskColor: Color.Red,
                         enableOutsideInteractive: false,
                         onWillDismiss: {
                             action => match (action.reason) {
-                                case PRESS_BACK => Hilog.info(1, "1", "Cangjie-Test", "onWillDismiss: PRESS_BACK")
+                                case PRESS_BACK => Hilog.info(1,"1","Cangjie-Test", "onWillDismiss: PRESS_BACK")
                                 case TOUCH_OUTSIDE => action.dismiss()
-                                case CLOSE_BUTTON => Hilog.info(1, "1", "Cangjie-Test", "onWillDismiss: CLOSE_BUTTON")
-                                case SLIDE_DOWN => Hilog.info(1, "1", "Cangjie-Test", "onWillDismiss: SLIDE_DOWN")
-                                case _ => Hilog.info(1, "1", "Cangjie-Test", "onWillDismiss: _")
+                                case CLOSE_BUTTON => Hilog.info(1,"1","Cangjie-Test", "onWillDismiss: CLOSE_BUTTON")
+                                case SLIDE_DOWN => Hilog.info(1,"1","Cangjie-Test", "onWillDismiss: SLIDE_DOWN")
+                                case _ => Hilog.info(1,"1","Cangjie-Test", "onWillDismiss: _")
                             }
                         },
                         onWillSpringBackWhenDismiss: {springback =>}
@@ -144,8 +159,8 @@ class View_BindSheet {
                 .id("bindsheet2")
 
             Button("colorHeightChange")
-                .onClick({
-                    e => this.isShow = true
+                .onClick({ e
+                    => this.isShow = true
                 })
                 .bindSheet(
                     this.isShow,
@@ -158,6 +173,10 @@ class View_BindSheet {
                     )
                 )
                 .id("bindsheet3")
-        }.justifyContent(FlexAlign.Center).backgroundColor(Color.White).width(100.percent).height(100.percent)
+        }
+            .justifyContent(FlexAlign.Center)
+            .backgroundColor(Color.White)
+            .width(100.percent)
+            .height(100.percent)
     }
 }

@@ -35,9 +35,9 @@ class View_DatePicker {
     //        maskRect: Rectangle(),
     //        offset: Offset(1, 1),
     //        alignment: DialogAlignment.TopStart,
-    //        disappearTextStyle: PickerTextStyle(Color.RED, Font()),
-    //        textStyle: PickerTextStyle(Color.BLUE, Font()),
-    //        selectedTextStyle: PickerTextStyle(Color.GRAY, Font()),
+    //        disappearTextStyle: PickerTextStyle(Color.Red, Font()),
+    //        textStyle: PickerTextStyle(Color.Blue, Font()),
+    //        selectedTextStyle: PickerTextStyle(Color.Gray, Font()),
     //        dateTimeOptions: DateTimeOptions()
     //    )
     //    var dataPickerDialogOption2: DatePickerDialogOptions = DatePickerDialogOptions()

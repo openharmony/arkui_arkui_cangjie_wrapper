@@ -13,15 +13,17 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/13
+ */
 package ohos_app_cangjie_entry
 
 let _ = testsuite()
 
-func testsuite(): Unit {
+func testsuite(): Unit{
     registerTestSuite("CanvasDrawing_UT_1") {CanvasDrawing_UT_1()}
     registerTestSuite("CanvasDrawing_UT_2") {CanvasDrawing_UT_2()}
 }
-
 let UT_views = [
     "Index_UT1",
     "Index_UT2"

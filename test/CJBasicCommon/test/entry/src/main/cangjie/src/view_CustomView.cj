@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/27
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -20,7 +23,7 @@ import ohos.font.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
@@ -33,21 +36,24 @@ class View_CustomView {
     func build() {
         Row {
             Column {
-                Button(message)
-                    .onClick {
-                        evt =>
-                        Hilog.info(1, "1", "Cangjie-App", "Hello Cangjie")
-                        onStateUpdate("")
-                        notifyRead("")
-                        try {
-                            initializeConsume("")
-                        } catch (e: Exception) {
-                            Hilog.info(1, "1", "Cangjie-Test", "initializeConsume: ${e.toString()}")
-                        }
+                Button(message).onClick {
+                    evt =>
+                    Hilog.info(1,"1","Cangjie-App", "Hello Cangjie")
+                    onStateUpdate("", ArrayList<Int64>())
+                    notifyRead("")
+                    try {
+                        initializeConsume("")
+                    } catch (e: Exception) {
+                        Hilog.info(1,"1","Cangjie-Test", "initializeConsume: ${e.toString()}")
                     }
-                    .fontSize(40)
-                    .height(80)
-                    .id("click")
+                    try {
+                        removeChildGroupById("")
+                        initializeConsume("")
+                        updateElement(2)
+                    } catch (e: Exception) {
+                        Hilog.info(1,"1","Cangjie-Test", "initializeConsume: ${e.toString()}")
+                    }
+                }.fontSize(40).height(80).id("click")
             }.width(100.percent)
         }.height(100.percent)
     }

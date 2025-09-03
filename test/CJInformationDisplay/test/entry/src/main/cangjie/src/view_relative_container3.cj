@@ -29,42 +29,49 @@ class View_Relative_Container3 {
                 Row() {
                     Text('row1')
                 }
-                    .justifyContent(FlexAlign.Center)
-                    .width(100)
-                    .height(100)
-                    .backgroundColor(0xa3cf62)
-                    .alignRules(
-                        AlignRuleOption(
-                            top: VerticalAlignment("__container__", VerticalAlign.Top),
-                            bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
-                            left: HorizontalAlignment("__container__", HorizontalAlign.Start),
-                            right: HorizontalAlignment("__container__", HorizontalAlign.End),
-                            center: VerticalAlignment("__container__", VerticalAlign.Center),
-                            bias: Bias(vertical: 0.3, horizontal: 0.3),
-                        )
+                .justifyContent(FlexAlign.Center)
+                .width(100)
+                .height(100)
+                .backgroundColor(0xa3cf62)
+                .alignRules(
+                    AlignRuleOptions(
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("__container__", HorizontalAlign.Start),
+                        right: HorizontalAlignment("__container__", HorizontalAlign.End),
+                        center: VerticalAlignment("__container__", VerticalAlign.Center),
+                        bias: Bias(vertical: 0.3, horizontal: 0.3),
                     )
-                    .id("row1")
-            }.width(300).height(300).margin(left: 50).border(width: 2, color: 0x6699FF)
+                )
+                .id("row1")
+            }
+            .width(300).height(300)
+            .margin(left: 50)
+            .border(width: 2, color: 0x6699FF)
             RelativeContainer() {
                 Row() {
                     Text('row2_1')
                 }
-                    .justifyContent(FlexAlign.Center)
-                    .width(100)
-                    .height(100)
-                    .backgroundColor(0xa3cf62)
-                    .alignRules(
-                        AlignRuleOption(
-                            top: VerticalAlignment("__container__", VerticalAlign.Top),
-                            bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
-                            left: HorizontalAlignment("__container__", HorizontalAlign.Start),
-                            right: HorizontalAlignment("__container__", HorizontalAlign.End),
-                            center: VerticalAlignment("__container__", VerticalAlign.Center),
-                            bias: Bias(),
-                        )
+                .justifyContent(FlexAlign.Center)
+                .width(100)
+                .height(100)
+                .backgroundColor(0xa3cf62)
+                .alignRules(
+                    AlignRuleOptions(
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("__container__", HorizontalAlign.Start),
+                        right: HorizontalAlignment("__container__", HorizontalAlign.End),
+                        center: VerticalAlignment("__container__", VerticalAlign.Center),
+                        bias: Bias(),
                     )
-                    .id("row2_1")
-            }.width(300).height(300).margin(left: 50).border(width: 2, color: 0x6699FF)
-        }.height(100.percent)
+                )
+                .id("row2_1")
+            }
+            .width(300).height(300)
+            .margin(left: 50)
+            .border(width: 2, color: 0x6699FF)
+        }
+        .height(100.percent)
     }
 }

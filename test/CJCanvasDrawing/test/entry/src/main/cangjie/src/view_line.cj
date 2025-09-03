@@ -26,47 +26,16 @@ class View_Line {
     func build() {
         Column(space: 10) {
             // 线条绘制的起止点坐标均是相对于Line组件本身绘制区域的坐标
-            Line()
-                .width(200)
-                .height(150)
-                .startPoint((0.0, 0.0))
-                .endPoint((50.0, 100.0))
-                .stroke(0x000000)
-                .backgroundColor(0xF5F5F5)
-                .id("line_1")
-            Line(width: 1, height: 1)
-                .width(200)
-                .height(150)
-                .startPoint((50.0, 50.0))
-                .endPoint((150.0, 150.0))
-                .strokeWidth(5)
-                .stroke(0xE4080A)
-                .strokeOpacity(0.5)
-                .backgroundColor(0xF5F5F5)
-                .id("line_2")
+            Line().width(200).height(150).startPoint((0.0, 0.0)).endPoint((50.0, 100.0)).stroke(0x000000).backgroundColor(
+                0xF5F5F5).id("line_1")
+            Line(width: 1, height: 1).width(200).height(150).startPoint((50.0, 50.0)).endPoint((150.0, 150.0)).strokeWidth(5).stroke(0xE4080A).
+                strokeOpacity(0.5).backgroundColor(0xF5F5F5).id("line_2")
             // strokeDashOffset用于定义关联虚线strokeDashArray数组渲染时的偏移
-            Line(width: 1.0, height: 1.0)
-                .width(200)
-                .height(150)
-                .startPoint((0.0, 0.0))
-                .endPoint((100.0, 100.0))
-                .stroke(0x000000)
-                .strokeWidth(3)
-                .strokeDashArray([10, 3])
-                .strokeDashOffset(5)
-                .backgroundColor(0xF5F5F5)
-                .id("line_3")
+            Line(width: 1.0, height: 1.0).width(200).height(150).startPoint((0.0, 0.0)).endPoint((100.0, 100.0)).stroke(0x000000).strokeWidth(3).
+                strokeDashArray([10, 3]).strokeDashOffset(5).backgroundColor(0xF5F5F5).id("line_3")
             // 当坐标点设置的值超出Line组件的宽高范围时，线条会画出组件绘制区域
-            Line()
-                .width(50)
-                .height(50)
-                .startPoint((0.0, 0.0))
-                .endPoint((100.0, 100.0))
-                .stroke(0x000000)
-                .strokeWidth(3)
-                .strokeDashArray([10, 3])
-                .backgroundColor(0xF5F5F5)
-                .id("line_4")
+            Line().width(50).height(50).startPoint((0.0, 0.0)).endPoint((100.0, 100.0)).stroke(0x000000).strokeWidth(3).
+                strokeDashArray([10, 3]).backgroundColor(0xF5F5F5).id("line_4")
         }
     }
 }

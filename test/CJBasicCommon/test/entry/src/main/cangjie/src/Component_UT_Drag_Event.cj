@@ -33,7 +33,7 @@ enum CustomSwipeDirection {
 
 @Test
 public class Component_UT_Drag_Event {
-    prop driver: Driver {
+    prop driver: Driver{
         get() {
             OpenHarmonyTestRunner.driver
         }
@@ -46,13 +46,13 @@ public class Component_UT_Drag_Event {
         for (i in 0..pointNumber) {
             match (direction) {
                 case CustomSwipeDirection.Left => res.add(
-                    uitestPoint(IntNative(round(startX - space * Float64(i))), IntNative(round(startY))))
+                    uitestPoint(Int32(round(startX - space * Float64(i))), Int32(round(startY))))
                 case CustomSwipeDirection.Right => res.add(
-                    uitestPoint(IntNative(round(startX + space * Float64(i))), IntNative(round(startY))))
+                    uitestPoint(Int32(round(startX + space * Float64(i))), Int32(round(startY))))
                 case CustomSwipeDirection.Up => res.add(
-                    uitestPoint(IntNative(round(startX)), IntNative(round(startY - space * Float64(i)))))
+                    uitestPoint(Int32(round(startX)), Int32(round(startY - space * Float64(i)))))
                 case CustomSwipeDirection.Down => res.add(
-                    uitestPoint(IntNative(round(startX)), IntNative(round(startY + space * Float64(i)))))
+                    uitestPoint(Int32(round(startX)), Int32(round(startY + space * Float64(i)))))
             }
         }
         return res
@@ -62,7 +62,7 @@ public class Component_UT_Drag_Event {
     func getLongPressPoints(startX: Float64, startY: Float64, pointNumber: Int64): ArrayList<uitestPoint> {
         let res: ArrayList<uitestPoint> = ArrayList<uitestPoint>([])
         for (i in 0..pointNumber) {
-            res.add(uitestPoint(IntNative(round(startX) + Float64(i % 2)), IntNative(round(startY) + Float64(i % 2))))
+            res.add(uitestPoint(Int32(round(startX) + Float64(i % 2)), Int32(round(startY) + Float64(i % 2))))
         }
         return res
     }
@@ -75,61 +75,59 @@ public class Component_UT_Drag_Event {
         let pointStr: String = rectInfo.split("],[")[0]
         let x = Float64.parse(pointStr.split(",")[0].removePrefix("\"["))
         let y = Float64.parse(pointStr.split(",")[1].removePrefix(" "))
-        return uitestPoint(IntNative(x), IntNative(y))
+        return uitestPoint(Int32(x), Int32(y))
     }
 
     private func ScrollTo(view: String) {
         driver.delayMs(200)
-        let scrollBar = driver.findComponent(On().id("scroller"))
-        Hilog.info(1, "1", "Cangjie-App", view + " started")
-        scrollBar.scrollSearch(On().id(view)).click()
+        let scrollBar = driver.findComponent(On().id("scroller")).getOrThrow()
+        Hilog.info(1,"1","Cangjie-App", view + " started")
+        scrollBar.scrollSearch(On().id(view)).getOrThrow().click()
         driver.delayMs(200)
     }
 
     protected override func beforeAll() {
-        let scrollBar = driver.waitForComponent(On().id("scroller"), 200)
-        Hilog.info(1, "1", "Cangjie-App", "started")
-        scrollBar.scrollSearch(On().id("View_DragTest")).click()
+        let scrollBar = driver.waitForComponent(On().id("scroller"),200).getOrThrow()
+        Hilog.info(1,"1","Cangjie-App", "started")
+        scrollBar.scrollSearch(On().id("View_DragTest")).getOrThrow().click()
         driver.delayMs(200)
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func Test_Drag_ListItem_1() {
-        Hilog.info(1, "1", "Cangjie-Test", "### Test_Drag_ListItem_1")
+        Hilog.info(1,"1","Cangjie-Test", "### Test_Drag_ListItem_1")
         var startPoint = getStartPoint("listItem1")
         var pointers: PointerMatrix = PointerMatrix.create(1, 400)
-        var points1: ArrayList<uitestPoint> = getLongPressPoints(Float64(startPoint.x + 10), Float64(startPoint.y + 10),
-            200)
-        var points2: ArrayList<uitestPoint> = getSwipePoints(Float64(startPoint.x + 10), Float64(startPoint.y + 10),
-            100.0, CustomSwipeDirection.Right, 200)
+        var points1: ArrayList<uitestPoint> = getLongPressPoints(Float64(startPoint.x + 10), Float64(startPoint.y + 10), 200)
+        var points2: ArrayList<uitestPoint> = getSwipePoints(Float64(startPoint.x + 10), Float64(startPoint.y + 10), 100.0,
+            CustomSwipeDirection.Right, 200)
         for (i in 0..200) {
-            pointers.setPoint(0, IntNative(i), points1[i])
+            pointers.setPoint(0, Int32(i), points1[i])
         }
         for (i in 0..200) {
-            pointers.setPoint(0, IntNative(i) + 200, points2[i])
+            pointers.setPoint(0, Int32(i) + 200, points2[i])
         }
-        Hilog.info(1, "1", "Cangjie-Test", "### 2")
+        Hilog.info(1,"1","Cangjie-Test", "### 2")
         driver.injectMultiPointerAction(pointers, speed: 210)
-        Hilog.info(1, "1", "Cangjie-Test", "### 3")
+        Hilog.info(1,"1","Cangjie-Test", "### 3")
         driver.delayMs(200)
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func Test_Drag_ListItem_2() {
-        Hilog.info(1, "1", "Cangjie-Test", "### Test_Drag_ListItem_2")
+        Hilog.info(1,"1","Cangjie-Test", "### Test_Drag_ListItem_2")
         var startPoint = getStartPoint("listItem2")
         var pointers: PointerMatrix = PointerMatrix.create(1, 400)
-        var points1: ArrayList<uitestPoint> = getLongPressPoints(Float64(startPoint.x + 10), Float64(startPoint.y + 10),
-            200)
-        var points2: ArrayList<uitestPoint> = getSwipePoints(Float64(startPoint.x + 10), Float64(startPoint.y + 10),
-            100.0, CustomSwipeDirection.Right, 200)
+        var points1: ArrayList<uitestPoint> = getLongPressPoints(Float64(startPoint.x + 10), Float64(startPoint.y + 10), 200)
+        var points2: ArrayList<uitestPoint> = getSwipePoints(Float64(startPoint.x + 10), Float64(startPoint.y + 10), 100.0,
+            CustomSwipeDirection.Right, 200)
         for (i in 0..200) {
-            pointers.setPoint(0, IntNative(i), points1[i])
+            pointers.setPoint(0, Int32(i), points1[i])
         }
         for (i in 0..200) {
-            pointers.setPoint(0, IntNative(i) + 200, points2[i])
+            pointers.setPoint(0, Int32(i) + 200, points2[i])
         }
 
         driver.injectMultiPointerAction(pointers, speed: 210)
@@ -138,18 +136,17 @@ public class Component_UT_Drag_Event {
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func Test_Drag_Img() {
-        Hilog.info(1, "1", "Cangjie-Test", "### Test_Drag_Img")
+        Hilog.info(1,"1","Cangjie-Test", "### Test_Drag_Img")
         var startPoint = getStartPoint("drag_img")
         var pointers: PointerMatrix = PointerMatrix.create(1, 400)
-        var points1: ArrayList<uitestPoint> = getLongPressPoints(Float64(startPoint.x + 10), Float64(startPoint.y + 10),
-            200)
-        var points2: ArrayList<uitestPoint> = getSwipePoints(Float64(startPoint.x + 10), Float64(startPoint.y + 10),
-            600.0, CustomSwipeDirection.Right, 200)
+        var points1: ArrayList<uitestPoint> = getLongPressPoints(Float64(startPoint.x + 10), Float64(startPoint.y + 10), 200)
+        var points2: ArrayList<uitestPoint> = getSwipePoints(Float64(startPoint.x + 10), Float64(startPoint.y + 10), 600.0,
+            CustomSwipeDirection.Right, 200)
         for (i in 0..200) {
-            pointers.setPoint(0, IntNative(i), points1[i])
+            pointers.setPoint(0, Int32(i), points1[i])
         }
         for (i in 0..200) {
-            pointers.setPoint(0, IntNative(i) + 200, points2[i])
+            pointers.setPoint(0, Int32(i) + 200, points2[i])
         }
 
         driver.injectMultiPointerAction(pointers, speed: 210)
@@ -163,11 +160,10 @@ public class Component_UT_Drag_Event {
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func Test_Drag_Enum() {
-        Hilog.info(1, "1", "Cangjie-Test", "### Test_Drag_Enum")
+        Hilog.info(1,"1","Cangjie-Test", "### Test_Drag_Enum")
         var testDragBehavior: Bool = true
         var dragBehaviorAns: Array<String> = [
-            "COPY",
-            "MOVE"
+            "COPY", "MOVE"
         ]
         var testDragResult: Bool = true
         var dragResultAns: Array<String> = [
@@ -185,25 +181,25 @@ public class Component_UT_Drag_Event {
             "PREVIEW_LIFT_FINISHED",
             "PREVIEW_LANDING_STARTED",
             "PREVIEW_LANDING_FINISHED",
-            "ACTION_CANCELED_BEFORE_DRAG"
+            "ACTION_CANCELED_BEFORE_DRAG" 
         ]
         if (testDragBehavior) {
             var tempSize = dragBehaviorAns.size
-            for (i in 0..tempSize) {
+            for(i in 0..tempSize) {
                 clickButton("changeDragBehavior")
                 @Expect(getContentFromText("parsedDragBehavior"), "\"${dragBehaviorAns[i]}\"")
             }
         }
         if (testDragResult) {
             var tempSize = dragResultAns.size
-            for (i in 0..tempSize) {
+            for(i in 0..tempSize) {
                 clickButton("changeDragResult")
                 @Expect(getContentFromText("parsedDragResult"), "\"${dragResultAns[i]}\"")
             }
         }
         if (testPreDragStatus) {
             var tempSize = preDragStatusAns.size
-            for (i in 0..tempSize) {
+            for(i in 0..tempSize) {
                 clickButton("changePreDragStatus")
                 @Expect(getContentFromText("parsedPreDragResult"), "\"${preDragStatusAns[i]}\"")
             }
@@ -218,7 +214,7 @@ public class Component_UT_Drag_Event {
     }
 
     func clickButton(buttonId: String) {
-        let button = driver.waitForComponent(On().id(buttonId), 500)
+        let button = driver.waitForComponent(On().id(buttonId),500).getOrThrow()
         button.click()
         driver.delayMs(200)
     }

@@ -13,20 +13,19 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/13
+ */
 package ohos_app_cangjie_entry
 
 let _ = testsuites()
-
 func testsuites(): Unit {
     registerTestSuite("ScrollSplit_UT1") {ScrollSplit_UT_1()}
     registerTestSuite("ScrollSplit_UT2") {ScrollSplit_UT_2()}
-    registerTestSuite("ScrollSplit_UT3") {ScrollSplit_UT_3()}
 }
-
 let UT_views = [
     "ScrollSplit_UT1",
-    "ScrollSplit_UT2",
-    "ScrollSplit_UT3"
+    "ScrollSplit_UT2"
 ]
 let UT1 = [
     "View_Column",
@@ -54,13 +53,6 @@ let UT2 = [
     "View_Scroll",
     "View_Scroll_2",
     "View_Scrollbar",
-    "View_SideBar",
-    "View_SideBar_Default",
-    "View_SideBar_Enhance",
-    "View_SideBar_Init",
-    "View_Swiper"
-]
-let UT3 = [
     "View_SideBar",
     "View_SideBar_Default",
     "View_SideBar_Enhance",

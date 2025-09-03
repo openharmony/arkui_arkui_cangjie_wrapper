@@ -26,13 +26,18 @@ import std.math.MathExtension
 import ohos.ark_interop.*
 import ohos.ui_test.*
 import std.collection.ArrayList
-import ohos.window.{Window, WindowStage, WindowCallbackType, WindowEventType, WindowStageEventType, Size,
-    WindowStatusType, TitleButtonRect, SystemBarProperties, Orientation, createWindow, findWindow, WindowType,
-    getLastWindow, shiftAppWindowFocus, AvoidAreaType, WindowProperties, ColorSpace, Configuration as WindowConfig}
+internal import kit.ArkUI.{isFoldable, getFoldStatus, getFoldDisplayMode, getCurrentFoldCreaseRegion, FoldCreaseRegion,
+    getDefaultDisplaySync, getAllDisplays, DisplayState, DisplayOrientation as orientation, DisplayRect,
+    WaterfallDisplayAreaRects, CutoutInfo, FoldDisplayMode}
+
+
+import ohos.window.{Window, WindowStage, WindowCallbackType, WindowEventType, WindowStageEventType,
+    Size, WindowStatusType, TitleButtonRect, SystemBarProperties, Orientation,createWindow,findWindow,WindowType,getLastWindow,shiftAppWindowFocus,
+    AvoidAreaType,WindowProperties,ColorSpace, Configuration as WindowConfig}
 
 @Test
 class BasicCommon_NoPage_Case {
-    prop driver: Driver {
+    prop driver: Driver{
         get() {
             OpenHarmonyTestRunner.driver
         }
@@ -40,17 +45,19 @@ class BasicCommon_NoPage_Case {
 
     private func ScrollTo(view: String) {
         driver.delayMs(1000)
-        Hilog.info(1, "1", "Cangjie-Test", "ScrollTo ${view}")
+        Hilog.info(1,"1","Cangjie-Test", "ScrollTo ${view}")
         var isSuccess = true
         var count = 0
         do {
             try {
-                let scrollBar = driver.findComponent(On().id("scroller"))
-                scrollBar.scrollSearch(On().id(view)).click()
+                let scrollBar = driver.findComponent(On().id("scroller")).getOrThrow()
+                scrollBar
+                    .scrollSearch(On().id(view)).getOrThrow()
+                    .click()
                 driver.delayMs(1000)
                 isSuccess = true
             } catch (e: BusinessException) {
-                Hilog.info(1, "1", "Cangjie-Test", e.message)
+                Hilog.info(1,"1","Cangjie-Test", e.message)
                 driver.pressBack()
                 driver.delayMs(500)
                 count = count + 1
@@ -60,171 +67,170 @@ class BasicCommon_NoPage_Case {
     }
 
     protected override func beforeAll() {
-        let scrollBar = driver.waitForComponent(On().id("scroller"), 500)
-        Hilog.error(1, "1", "Cangjie-App", "started")
-        scrollBar.scrollSearch(On().id("Hello_Cangjie")).click()
+        let scrollBar = driver.waitForComponent(On().id("scroller"),500).getOrThrow()
+        Hilog.error(1,"1","Cangjie-App", "started")
+        scrollBar.scrollSearch(On().id("Hello_Cangjie")).getOrThrow().click()
         driver.delayMs(500)
     }
 
-    //add1
+     //add1
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_viewArray() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_viewArray start")
-        let helloCangjie = driver.findComponent(On().id("helloCangjie"))
+        Hilog.info(1,"1","Cangjie-Test", "test_viewArray start")
+        let helloCangjie = driver.findComponent(On().id("helloCangjie")).getOrThrow()
         helloCangjie.click()
-        let recycleManager = driver.waitForComponent(On().id("RecycleManager"), 600)
+        let recycleManager = driver.waitForComponent(On().id("RecycleManager"),600).getOrThrow()
         recycleManager.click()
-        let reuseParams = driver.waitForComponent(On().id("ReuseParams"), 600)
+        let reuseParams = driver.waitForComponent(On().id("ReuseParams"),600).getOrThrow()
         reuseParams.click()
         driver.delayMs(600)
-        Hilog.info(1, "1", "Cangjie-Test", "test_viewArray end")
+        Hilog.info(1,"1","Cangjie-Test", "test_viewArray end")
     }
 
-    //    @TestCase
-    //    @Tag[APILevel12, TestLevel0]
-    //    func test_bigint() {
-    //        Hilog.info(1,"1","Cangjie-Test", "test_bigint start")
-    //        var vectorFloat64: FFIVectorFloat64 = FFIVectorFloat64(10)
-    //        vectorFloat64.setElement(1, 64.0)
-    //        var float_a = vectorFloat64.getElement(1)
-    //        var size = vectorFloat64.getSize()
-    //        @Expect(size, 10)
-    //        var handle: VectorFloat64Handle = vectorFloat64.getNativeHandle()
-    //        var vectorFloat64_2: FFIVectorFloat64 = FFIVectorFloat64(handle)
-    //        vectorFloat64.free()
-    //
-    //        var vectorFloat32: FFIVectorFloat32 = FFIVectorFloat32(10)
-    //        vectorFloat32.setElement(1, 32.0)
-    //        var float_b = vectorFloat32.getElement(1)
-    //        size = vectorFloat32.getSize()
-    //        @Expect(size, 10)
-    //        var handle2: VectorFloat32Handle = vectorFloat32.getNativeHandle()
-    //        var vectorFloat32_2: FFIVectorFloat32 = FFIVectorFloat32(handle2)
-    //        vectorFloat32.free()
-    //
-    //        var vectorUInt32: FFIVectorUInt32 = FFIVectorUInt32(10)
-    //        vectorUInt32.setElement(1, 32)
-    //        var uInt_b = vectorUInt32.getElement(1)
-    //        size = vectorUInt32.getSize()
-    //        @Expect(size, 10)
-    //        var handle3: VectorUInt32Handle = vectorUInt32.getNativeHandle()
-    //        var vectorUInt32_2: FFIVectorUInt32 = FFIVectorUInt32(handle3)
-    //        vectorUInt32.free()
-    //
-    //        var vectorInt64: FFIVectorInt64 = FFIVectorInt64(10)
-    //        vectorInt64.setElement(1, 32)
-    //        var int64_b = vectorInt64.getElement(1)
-    //        size = vectorInt64.getSize()
-    //        @Expect(size, 10)
-    //        var handle4: VectorInt64Handle = vectorInt64.getNativeHandle()
-    //        var vectorInt64_2: FFIVectorInt64 = FFIVectorInt64(handle4)
-    //        vectorInt64.free()
-    //
-    //        var vectorInt32: FFIVectorInt32 = FFIVectorInt32(10)
-    //        vectorInt32.setElement(1, 32)
-    //        var int32_b = vectorInt32.getElement(1)
-    //        size = vectorInt32.getSize()
-    //        @Expect(size, 10)
-    //        var handle5: VectorInt64Handle = vectorInt32.getNativeHandle()
-    //        var vectorInt32_2: FFIVectorInt32 = FFIVectorInt32(handle5)
-    //        vectorInt32.free()
-    //
-    //        var vectorString: FFIVectorString = FFIVectorString(10)
-    //        vectorString.setElement(1, "32")
-    //        var str_b = vectorString.getElement(1)
-    //        size = vectorString.getSize()
-    //        @Expect(size, 10)
-    //
-    //        var vectorCJInt64: FFIVectorCJInt64 = FFIVectorCJInt64(10)
-    //        vectorCJInt64.setElement(1, 32)
-    //        var handle6: VectorCJInt64Handle = vectorCJInt64.getNativeHandle()
-    //        var vectorCJInt64_2: FFIVectorCJInt64 = FFIVectorCJInt64(handle6)
-    //        vectorCJInt64.free()
-    //
-    //        var vectorBool: FFIVectorBool = FFIVectorBool(10)
-    //        vectorBool.setElement(1, true)
-    //        var bool_a = vectorBool.getElement(1)
-    //        size = vectorBool.getSize()
-    //        @Expect(size, 10)
-    //        var handle7: VectorBoolHandle = vectorBool.getNativeHandle()
-    //        var vectorBool_2: FFIVectorBool = FFIVectorBool(handle7)
-    //        vectorBool.free()
-    //
-    //        var vectorUInt8: FFIVectorUInt8 = FFIVectorUInt8(10)
-    //        vectorUInt8.setElement(1, 8)
-    //        var uInt8_a = vectorUInt8.getElement(1)
-    //        size = vectorUInt8.getSize()
-    //        @Expect(size, 10)
-    //        var handle9: VectorUInt8Handle = vectorUInt8.getNativeHandle()
-    //        var vectorUInt8_2: FFIVectorUInt8 = FFIVectorUInt8(handle9)
-    //        vectorUInt8.free()
-    //        Hilog.info(1,"1","Cangjie-Test", "test_bigint end")
-    //    }
+//    @TestCase
+//    @Tag[APILevel12, TestLevel0]
+//    func test_bigint() {
+//        Hilog.info(1,"1","Cangjie-Test", "test_bigint start")
+//        var vectorFloat64: FFIVectorFloat64 = FFIVectorFloat64(10)
+//        vectorFloat64.setElement(1, 64.0)
+//        var float_a = vectorFloat64.getElement(1)
+//        var size = vectorFloat64.getSize()
+//        @Expect(size, 10)
+//        var handle: VectorFloat64Handle = vectorFloat64.getNativeHandle()
+//        var vectorFloat64_2: FFIVectorFloat64 = FFIVectorFloat64(handle)
+//        vectorFloat64.free()
+//
+//        var vectorFloat32: FFIVectorFloat32 = FFIVectorFloat32(10)
+//        vectorFloat32.setElement(1, 32.0)
+//        var float_b = vectorFloat32.getElement(1)
+//        size = vectorFloat32.getSize()
+//        @Expect(size, 10)
+//        var handle2: VectorFloat32Handle = vectorFloat32.getNativeHandle()
+//        var vectorFloat32_2: FFIVectorFloat32 = FFIVectorFloat32(handle2)
+//        vectorFloat32.free()
+//
+//        var vectorUInt32: FFIVectorUInt32 = FFIVectorUInt32(10)
+//        vectorUInt32.setElement(1, 32)
+//        var uInt_b = vectorUInt32.getElement(1)
+//        size = vectorUInt32.getSize()
+//        @Expect(size, 10)
+//        var handle3: VectorUInt32Handle = vectorUInt32.getNativeHandle()
+//        var vectorUInt32_2: FFIVectorUInt32 = FFIVectorUInt32(handle3)
+//        vectorUInt32.free()
+//
+//        var vectorInt64: FFIVectorInt64 = FFIVectorInt64(10)
+//        vectorInt64.setElement(1, 32)
+//        var int64_b = vectorInt64.getElement(1)
+//        size = vectorInt64.getSize()
+//        @Expect(size, 10)
+//        var handle4: VectorInt64Handle = vectorInt64.getNativeHandle()
+//        var vectorInt64_2: FFIVectorInt64 = FFIVectorInt64(handle4)
+//        vectorInt64.free()
+//
+//        var vectorInt32: FFIVectorInt32 = FFIVectorInt32(10)
+//        vectorInt32.setElement(1, 32)
+//        var int32_b = vectorInt32.getElement(1)
+//        size = vectorInt32.getSize()
+//        @Expect(size, 10)
+//        var handle5: VectorInt64Handle = vectorInt32.getNativeHandle()
+//        var vectorInt32_2: FFIVectorInt32 = FFIVectorInt32(handle5)
+//        vectorInt32.free()
+//
+//        var vectorString: FFIVectorString = FFIVectorString(10)
+//        vectorString.setElement(1, "32")
+//        var str_b = vectorString.getElement(1)
+//        size = vectorString.getSize()
+//        @Expect(size, 10)
+//
+//        var vectorCJInt64: FFIVectorCJInt64 = FFIVectorCJInt64(10)
+//        vectorCJInt64.setElement(1, 32)
+//        var handle6: VectorCJInt64Handle = vectorCJInt64.getNativeHandle()
+//        var vectorCJInt64_2: FFIVectorCJInt64 = FFIVectorCJInt64(handle6)
+//        vectorCJInt64.free()
+//
+//        var vectorBool: FFIVectorBool = FFIVectorBool(10)
+//        vectorBool.setElement(1, true)
+//        var bool_a = vectorBool.getElement(1)
+//        size = vectorBool.getSize()
+//        @Expect(size, 10)
+//        var handle7: VectorBoolHandle = vectorBool.getNativeHandle()
+//        var vectorBool_2: FFIVectorBool = FFIVectorBool(handle7)
+//        vectorBool.free()
+//
+//        var vectorUInt8: FFIVectorUInt8 = FFIVectorUInt8(10)
+//        vectorUInt8.setElement(1, 8)
+//        var uInt8_a = vectorUInt8.getElement(1)
+//        size = vectorUInt8.getSize()
+//        @Expect(size, 10)
+//        var handle9: VectorUInt8Handle = vectorUInt8.getNativeHandle()
+//        var vectorUInt8_2: FFIVectorUInt8 = FFIVectorUInt8(handle9)
+//        vectorUInt8.free()
+//        Hilog.info(1,"1","Cangjie-Test", "test_bigint end")
+//    }
 
-    //    @TestCase
-    //    @Tag[APILevel16, TestLevel0]
-    //    func test_FFIVectorNavigationItem() {
-    //        Hilog.info(1,"1","Cangjie-Test", "test_FFIVectorNavigationItem start")
-    //        try {
-    //            var vectorNavigationItem: FFIVectorNavigationItem = FFIVectorNavigationItem(10)
-    ////            var item_a = vectorNavigationItem.getElement(0)
-    ////            vectorNavigationItem.setElement(0, item_a)
-    //            var size = vectorNavigationItem.getSize()
-    //            var handle8: VectorNavigationItemHandle = vectorNavigationItem.getNativeHandle()
-    //            var vectorNavigationItem_2: FFIVectorNavigationItem = FFIVectorNavigationItem(handle8)
-    //            vectorNavigationItem.free()
-    //        } catch (e: Exception) {
-    //            Hilog.info(1,"1","Cangjie-Test", "test_FFIVectorNavigationItem: ${e.toString()}")
-    //        }
-    //        Hilog.info(1,"1","Cangjie-Test", "test_FFIVectorNavigationItem end")
-    //    }
+//    @TestCase
+//    @Tag[APILevel16, TestLevel0]
+//    func test_FFIVectorNavigationItem() {
+//        Hilog.info(1,"1","Cangjie-Test", "test_FFIVectorNavigationItem start")
+//        try {
+//            var vectorNavigationItem: FFIVectorNavigationItem = FFIVectorNavigationItem(10)
+////            var item_a = vectorNavigationItem.getElement(0)
+////            vectorNavigationItem.setElement(0, item_a)
+//            var size = vectorNavigationItem.getSize()
+//            var handle8: VectorNavigationItemHandle = vectorNavigationItem.getNativeHandle()
+//            var vectorNavigationItem_2: FFIVectorNavigationItem = FFIVectorNavigationItem(handle8)
+//            vectorNavigationItem.free()
+//        } catch (e: Exception) {
+//            Hilog.info(1,"1","Cangjie-Test", "test_FFIVectorNavigationItem: ${e.toString()}")
+//        }
+//        Hilog.info(1,"1","Cangjie-Test", "test_FFIVectorNavigationItem end")
+//    }
 
-    //add1
-    //    @TestCase
-    //    @Tag[APILevel16, TestLevel0]
-    //    func test_NavigationItemFFI() {
-    //        Hilog.info(1,"1","Cangjie-Test", "test_NavigationItemFFI start")
-    //        try {
-    //            var vectorNavigationItem: FFIVectorNavigationItem = FFIVectorNavigationItem(10)
-    //            let cValue: CString = unsafe { LibC.mallocCString("test_FFIVectorNavigationItem") }
-    ////            vectorNavigationItem.setElement(1, NavigationItemFFI(cValue, cValue, 2))
-    ////            var item_a = vectorNavigationItem.getElement(1)
-    ////            var size = vectorNavigationItem.getSize()
-    ////            @Expect(size, 10)
-    ////            var handle8: VectorNavigationItemHandle = vectorNavigationItem.getNativeHandle()
-    ////            var vectorNavigationItem_2: FFIVectorNavigationItem = FFIVectorNavigationItem(handle8)
-    ////            vectorNavigationItem.free()
-    ////            cValue.free()
-    ////            cValue.toStringOption()
-    //        } catch (e: Exception) {
-    //            Hilog.info(1,"1","Cangjie-Test", "test_NavigationItemFFI: ${e.toString()}")
-    //        }
-    //        Hilog.info(1,"1","Cangjie-Test", "test_NavigationItemFFI end")
-    //    }
+     //add1
+//    @TestCase
+//    @Tag[APILevel16, TestLevel0]
+//    func test_NavigationItemFFI() {
+//        Hilog.info(1,"1","Cangjie-Test", "test_NavigationItemFFI start")
+//        try {
+//            var vectorNavigationItem: FFIVectorNavigationItem = FFIVectorNavigationItem(10)
+//            let cValue: CString = unsafe { LibC.mallocCString("test_FFIVectorNavigationItem") }
+////            vectorNavigationItem.setElement(1, NavigationItemFFI(cValue, cValue, 2))
+////            var item_a = vectorNavigationItem.getElement(1)
+////            var size = vectorNavigationItem.getSize()
+////            @Expect(size, 10)
+////            var handle8: VectorNavigationItemHandle = vectorNavigationItem.getNativeHandle()
+////            var vectorNavigationItem_2: FFIVectorNavigationItem = FFIVectorNavigationItem(handle8)
+////            vectorNavigationItem.free()
+////            cValue.free()
+////            cValue.toStringOption()
+//        } catch (e: Exception) {
+//            Hilog.info(1,"1","Cangjie-Test", "test_NavigationItemFFI: ${e.toString()}")
+//        }
+//        Hilog.info(1,"1","Cangjie-Test", "test_NavigationItemFFI end")
+//    }
     //
 
-    //    @TestCase
-    //    @Tag[APILevel16, TestLevel0]
-    //    func test_getOrThrow() {
-    //        Hilog.info(1,"1","Cangjie-Test", "test_getOrThrow start")
-    //        var msg = "msg"
-    //        try {
-    //            getOrThrow<String>(Option<String>.None, msg: "NoneValueException")
-    //        } catch (e: Exception) {
-    //            msg = e.toString()
-    //            Hilog.info(1,"1","Cangjie-App", msg_string)
-    //            Hilog.info(1,"1","Cangjie-Test", "test_getOrThrow setProperty: ${e.toString()}")
-    //        }
-    //        @Expect(msg.contains("NoneValueException"))
-    //        Hilog.info(1,"1","Cangjie-Test", "test_getOrThrow end")
-    //    }
+//    @TestCase
+//    @Tag[APILevel16, TestLevel0]
+//    func test_getOrThrow() {
+//        Hilog.info(1,"1","Cangjie-Test", "test_getOrThrow start")
+//        var msg = "msg"
+//        try {
+//            getOrThrow<String>(Option<String>.None, msg: "NoneValueException")
+//        } catch (e: Exception) {
+//            msg = e.toString()
+//            Hilog.info(1,"1","Cangjie-App", msg_string)
+//            Hilog.info(1,"1","Cangjie-Test", "test_getOrThrow setProperty: ${e.toString()}")
+//        }
+//        @Expect(msg.contains("NoneValueException"))
+//        Hilog.info(1,"1","Cangjie-Test", "test_getOrThrow end")
+//    }
 
     @TestCase
     @Tag[APILevel16, TestLevel0]
     func test_lengthProp() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_lengthProp start")
-        FakeComponent()
+        Hilog.info(1,"1","Cangjie-Test", "test_lengthProp start")
         var float_a: Float64 = 30.0
         var length = float_a.percent
         var lpx = float_a.lpx
@@ -234,114 +240,119 @@ class BasicCommon_NoPage_Case {
         @Expect(0.3, length.value)
 
         try {
-            UIThread.hasEnded()
-            UIThread.end()
+            Main.hasEnded()
+            Main.end()
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
         }
-        Hilog.info(1, "1", "Cangjie-Test", "test_lengthProp end")
+        Hilog.info(1,"1","Cangjie-Test", "test_lengthProp end")
     }
 
     @TestCase
     @Tag[APILevel16, TestLevel0]
     func test_forEach() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_forEach start")
+        Hilog.info(1,"1","Cangjie-Test", "test_forEach start")
         try {
-            ForEach.create()
-            var foreach: ForEach = ForEach() {}
+            var foreach: ForEach = ForEach(){}
+            foreach.create()
             foreach.update()
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
         }
         try {
             var dtcustom = DtTestCustomView(Option.None, LocalStorage())
-            ForEach.create<String>(1, dtcustom, ObservedArrayList<String>(["1"]),
-                itemGeneratorFunc: {viewName: String, _: Int64 =>})
+            var foreach2: ForEach = ForEach(){}
+            foreach2.create<String>(1, dtcustom, ObservedArrayList<String>(["1"]), itemGeneratorFunc: {viewName: String, _: Int64 => })
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
         }
-        Hilog.info(1, "1", "Cangjie-Test", "test_forEach end")
+        Hilog.info(1,"1","Cangjie-Test", "test_forEach end")
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_customview() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_customview start")
+        Hilog.info(1,"1","Cangjie-Test", "test_customview start")
         var message = "test_ObservedObject success"
         var dtcustom = DtTestCustomView(Option.None, Option.None)
         try {
             dtcustom.getLocalStorage()
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_customview getLocalStorage: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_customview getLocalStorage: ${e.toString()}")
             message = e.toString()
         }
         try {
-            dtcustom.aboutToReuseInternal(ReuseParams())
-            dtcustom.aboutToReuseInternal(ReuseParams())
+            dtcustom.aboutToRecycleInternal()
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_customview aboutToReuseInternal: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_customview aboutToRecycleInternal: ${e.toString()}")
             message = e.toString()
         }
         try {
             dtcustom.addProvideVar(ObservedProperty<String>("info", "initValue"), "addProvideVar")
             dtcustom.initializeConsume("addProvideVar")
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_customview addProvideVar: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_customview addProvideVar: ${e.toString()}")
             message = e.toString()
         }
-
+        try {
+            dtcustom.markLazyForEachProcess("lazyGroupId1")
+            dtcustom.markLazyForEachProcess("lazyGroupId2")
+            dtcustom.removeChildGroupById("lazyGroupId1")
+        } catch (e: Exception) {
+            Hilog.info(1,"1","Cangjie-Test", "test_customview markLazyForEachProcess: ${e.toString()}")
+            message = e.toString()
+        }
         try {
             var bId = If.getBranchId()
-            dtcustom.ifElseBranchUpdateFunction(bId, {=>})
+            dtcustom.ifElseBranchUpdateFunction(bId, { => })
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_customview testInitDt: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_customview testInitDt: ${e.toString()}")
             message = e.toString()
         }
         try {
             dtcustom.testInitDt()
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_customview testInitDt: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_customview testInitDt: ${e.toString()}")
             message = e.toString()
         }
         try {
-            DtTestCustomView.createRecycle(dtcustom, false, "name", {=>})
+            DtTestCustomView.createRecycle(dtcustom, false, "name", { => })
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_customview createRecycle: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_customview createRecycle: ${e.toString()}")
             message = e.toString()
         }
         try {
-            dtcustom.observeRecycleComponentCreation("name", {ab, bc, cd => return If({=>})})
+            dtcustom.observeRecycleComponentCreation("name", {ab, bc, cd => return If({ =>})})
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_customview observeRecycleComponentCreation: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_customview observeRecycleComponentCreation: ${e.toString()}")
             message = e.toString()
         }
         @Expect(message, "test_ObservedObject success")
-        Hilog.info(1, "1", "Cangjie-Test", "test_customview end")
+        Hilog.info(1,"1","Cangjie-Test", "test_customview end")
     }
 
     @TestCase
-    @Tag[APILevel16, TestLevel0]
+     @Tag[APILevel16, TestLevel0]
     func test_customview2() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_customview2 start")
+        Hilog.info(1,"1","Cangjie-Test", "test_customview2 start")
         var message = "test_customview2 success"
         var dtcustom = DtTestCustomView(Option.None, Option.None)
         try {
-            dtcustom.observeRecycleComponentCreation("name", {ab, bc, cd => return If({=>})})
+            dtcustom.observeRecycleComponentCreation("name", {ab, bc, cd => return If({ =>})})
             var recycleManager = dtcustom.getAnRecycleManager()
-            recycleManager.pushRecycleNode("name", DtTestCustomView(Option.None, Option.None))
-            dtcustom.observeRecycleComponentCreation("name", {ab, bc, cd => return If({=>})})
+            dtcustom.observeRecycleComponentCreation("name", {ab, bc, cd => return If({ =>})})
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_customview observeRecycleComponentCreation: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_customview observeRecycleComponentCreation: ${e.toString()}")
             message = e.toString()
         }
         @Expect(message, "test_customview2 success")
-        Hilog.info(1, "1", "Cangjie-Test", "test_customview2 end")
+        Hilog.info(1,"1","Cangjie-Test", "test_customview2 end")
     }
 
     @TestCase
     @Tag[APILevel16, TestLevel0]
     func test_view() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_view start")
+        Hilog.info(1,"1","Cangjie-Test", "test_view start")
         var message = ""
         try {
             var view: View = View.create(23232323)
@@ -351,94 +362,83 @@ class BasicCommon_NoPage_Case {
             view.destroy()
         } catch (e: Exception) {
             message = e.toString()
-            Hilog.info(1, "1", "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
         }
         @Expect(message.contains("NoneValueException"))
-        Hilog.info(1, "1", "Cangjie-Test", "test_view end")
+        Hilog.info(1,"1","Cangjie-Test", "test_view end")
     }
 
     @TestCase
     @Tag[APILevel16, TestLevel0]
     func test_view2() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_view2 start")
-        //        try {
-        //            NativeOptionFloat64(true, 2.0)
-        //            var view: View = View.create(23232321)
-        //            view.needsUpdate()
-        //            view.deletedElmtIdsHaveBeenPurged(ArrayList<Int64>([0]))
-        //        } catch (e: Exception) {
-        //            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
-        //        }
-        //        var nativeInt = NativeOptionInt64(true, 2)
-        //        @Expect(2, nativeInt.value)
-        //        var nativeFloat = NativeOptionFloat64(true, 2.0)
-        //        @Expect(2.0, nativeFloat.value)
-        //        Hilog.info(1,"1","Cangjie-Test", "test_view2 end")
+        Hilog.info(1,"1","Cangjie-Test", "test_view2 start")
+//        try {
+//            NativeOptionFloat64(true, 2.0)
+//            var view: View = View.create(23232321)
+//            view.needsUpdate()
+//            view.deletedElmtIdsHaveBeenPurged(ArrayList<Int64>([0]))
+//        } catch (e: Exception) {
+//            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+//        }
+//        var nativeInt = NativeOptionInt64(true, 2)
+//        @Expect(2, nativeInt.value)
+//        var nativeFloat = NativeOptionFloat64(true, 2.0)
+//        @Expect(2.0, nativeFloat.value)
+//        Hilog.info(1,"1","Cangjie-Test", "test_view2 end")
     }
 
-    @TestCase
-    @Tag[APILevel16, TestLevel0]
-    func test_contextMenu() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_contextMenu start")
-        try {
-            ContextMenu.close()
-        } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_contextMenu : ${e.toString()}")
-        }
-        Hilog.info(1, "1", "Cangjie-Test", "test_contextMenu end")
-    }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_lazyforEach() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_lazyforEach start")
-        //        try {
-        //            var foreach: LazyForEach = LazyForEach()
-        //            foreach.update()
-        //        } catch (e: Exception) {
-        //            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
-        //        }
-        Hilog.info(1, "1", "Cangjie-Test", "test_lazyforEach end")
+        Hilog.info(1,"1","Cangjie-Test", "test_lazyforEach start")
+//        try {
+//            var foreach: LazyForEach = LazyForEach()
+//            foreach.update()
+//        } catch (e: Exception) {
+//            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+//        }
+        Hilog.info(1,"1","Cangjie-Test", "test_lazyforEach end")
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+     @Tag[APILevel12, TestLevel0]
     func test_viewbuild() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_viewbuild start")
+        Hilog.info(1,"1","Cangjie-Test", "test_viewbuild start")
         var message = "Invalid args or ret"
         var legal = LegalCallCheck()
-        LegalCallCheck.check(ViewBuilder({=>}))
-        LegalCallCheck.check(ViewBuilder({=>}))
+        LegalCallCheck.check(ViewBuilder({ => }))
+        LegalCallCheck.check(ViewBuilder({ => }))
         @Expect(message.contains("Invalid args or ret"))
-        Hilog.info(1, "1", "Cangjie-Test", "test_viewbuild end")
+        Hilog.info(1,"1","Cangjie-Test", "test_viewbuild end")
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_resource_toUInt() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_resource_toUInt start")
+        Hilog.info(1,"1","Cangjie-Test", "test_resource_toUInt start")
         var message = "Invalid args or ret"
         try {
             var color: ResourceColor = @r(app.color.blue_23C452)
             color.toUInt32()
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_resource_toUInt: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_resource_toUInt: ${e.toString()}")
             message = e.toString()
         }
         @Expect(message.contains("AppResource can not get 'UInt32' value from ResourceColor"))
-        Hilog.info(1, "1", "Cangjie-Test", "test_resource_toUInt end")
+        Hilog.info(1,"1","Cangjie-Test", "test_resource_toUInt end")
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_length_value() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_length_value start")
+        Hilog.info(1,"1","Cangjie-Test", "test_length_value start")
         var message1 = "get value success"
         try {
             var length1: Length = @r(app.string.width_100p)
             length1.value
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_length_value: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_length_value: ${e.toString()}")
             message1 = e.toString()
         }
         @Expect(message1.contains("Current type not support get 'value' attribute"))
@@ -448,247 +448,219 @@ class BasicCommon_NoPage_Case {
             var length2: Length = @r(app.string.width_100p)
             length2.unitType
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_length_value: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_length_value: ${e.toString()}")
             message2 = e.toString()
         }
         @Expect(message2.contains("Current type not support get 'unitType' attribute"))
-        Hilog.info(1, "1", "Cangjie-Test", "test_length_value end")
+        Hilog.info(1,"1","Cangjie-Test", "test_length_value end")
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+     @Tag[APILevel12, TestLevel0]
     func test_Recycle() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_Recycle start")
+        Hilog.info(1,"1","Cangjie-Test", "test_Recycle start")
         var message = "test_Recycle success"
         try {
-            var recycle = __Recycle__()
+           var recycle = __Recycle__()
             recycle.pop()
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_hitrace: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_hitrace: ${e.toString()}")
             message = e.toString()
         }
         @Expect(message, "test_Recycle success")
-        Hilog.info(1, "1", "Cangjie-Test", "test_Recycle end")
+        Hilog.info(1,"1","Cangjie-Test", "test_Recycle end")
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_openView() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_openView start")
+        Hilog.info(1,"1","Cangjie-Test", "test_openView start")
         var message = "test_openView success"
         try {
             PersonGestureType()
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_openView: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_openView: ${e.toString()}")
             message = e.toString()
         }
         @Expect(message, "test_openView success")
-        Hilog.info(1, "1", "Cangjie-Test", "test_openView end")
+        Hilog.info(1,"1","Cangjie-Test", "test_openView end")
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_getLastWindow_03() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_getLastWindow_03 start")
+        let displayClass = getDefaultDisplaySync()
+        let displayList = getAllDisplays()
+
+            Hilog.info(1,"1","Cangjie-Test","id:    " + displayClass.id.toString())
+            Hilog.info(1,"1","Cangjie-Test","name:  " + displayClass.name)
+            Hilog.info(1,"1","Cangjie-Test","alive: " + displayClass.alive.toString())
+            Hilog.info(1,"1","Cangjie-Test","refreshRate: " + displayClass.refreshRate.toString())
+            Hilog.info(1,"1","Cangjie-Test","rotation:    " + displayClass.rotation.toString())
+            Hilog.info(1,"1","Cangjie-Test","width:       " + displayClass.width.toString())
+            Hilog.info(1,"1","Cangjie-Test","height:      " + displayClass.height.toString())
+            Hilog.info(1,"1","Cangjie-Test","densityDPI:  " + displayClass.densityDPI.toString())
+            Hilog.info(1,"1","Cangjie-Test","densityPixels: " + displayClass.densityPixels.toString())
+            Hilog.info(1,"1","Cangjie-Test","scaledDensity: " + displayClass.scaledDensity.toString())
+            Hilog.info(1,"1","Cangjie-Test","xDPI: " + displayClass.xDPI.toString())
+            Hilog.info(1,"1","Cangjie-Test","yDPI: " + displayClass.yDPI.toString())
+            Hilog.info(1,"1","Cangjie-Test",
+                "state: " + match (displayClass.state) {
+                    case _ => throw Exception("unsupported enum constructor")
+                })
+            Hilog.info(1,"1","Cangjie-Test",
+                "orientation: " + match (displayClass.orientation) {
+                    case _ => "unknow"
+                })
+        if (isFoldable()) {
+                let status = getFoldStatus()
+                let mode = getFoldDisplayMode()
+//                setFoldDisplayMode(mode)
+            } else {
+                let status = getFoldStatus()
+                let mode = getFoldDisplayMode()
+//                setFoldDisplayMode(mode)
+            }
+        try {
+                let region = getCurrentFoldCreaseRegion()
+            } catch (e: Exception) {
+                Hilog.info(1,"1","Cangjie-Test","Not fold display.")
+            }
+        Hilog.info(1,"1","Cangjie-Test", "test_getLastWindow_03 start")
         var mainWindow = Global.getMainWindow()
-        let mainType = mainWindow.getWindowProperties().winType
-        //        let config = WindowConfig("testCreate", WindowType.TYPE_DIALOG, stageContext, displayId: 0)
-        //        let createWin = createWindow(config)
-        //        createWin.showWindow()
-        //        let lastWindow = getLastWindow(CPointer<Unit>())
-        //        match (lastWindow
-        //            .getWindowProperties()
-        //            .winType) {
-        //            case WindowType.TYPE_DIALOG => ()
-        //            case _ => @Expect(true)
-        //        }
-        //        createWin.destroyWindow()
-        Hilog.info(1, "1", "Cangjie-Test", "test_getLastWindow_03 end")
+        let mainType = mainWindow
+            .getWindowProperties()
+            .winType
+//        let config = WindowConfig("testCreate", WindowType.TYPE_DIALOG, stageContext, displayId: 0)
+//        let createWin = createWindow(config)
+//        createWin.showWindow()
+//        let lastWindow = getLastWindow(CPointer<Unit>())
+//        match (lastWindow
+//            .getWindowProperties()
+//            .winType) {
+//            case WindowType.TYPE_DIALOG => ()
+//            case _ => @Expect(true)
+//        }
+//        createWin.destroyWindow()
+        Hilog.info(1,"1","Cangjie-Test", "test_getLastWindow_03 end")
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_getLastWindow_02() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_getLastWindow_02 start")
-        var mainWindow = Global.getMainWindow()
+        Hilog.info(1,"1","Cangjie-Test", "test_getLastWindow_02 start")
+            var mainWindow = Global.getMainWindow()
         try {
             mainWindow.resize(300, 300)
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_getLastWindow_02 resize: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_getLastWindow_02 resize: ${e.toString()}")
         }
         try {
             mainWindow.minimize()
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_getLastWindow_02 minimize: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_getLastWindow_02 minimize: ${e.toString()}")
         }
-        Hilog.info(1, "1", "Cangjie-Test", "test_getLastWindow_02 end")
+        Hilog.info(1,"1","Cangjie-Test", "test_getLastWindow_02 end")
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_remoteView() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_remoteView start")
+        Hilog.info(1,"1","Cangjie-Test", "test_remoteView start")
         var message = "test_remoteView success"
         try {
             var remoteView = PersonRemoteView()
             remoteView.testDt()
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_remoteView: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_remoteView: ${e.toString()}")
             message = e.toString()
         }
         @Expect(message, "test_remoteView success")
-        Hilog.info(1, "1", "Cangjie-Test", "test_remoteView end")
+        Hilog.info(1,"1","Cangjie-Test", "test_remoteView end")
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_Observable() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_Observable start")
+        Hilog.info(1,"1","Cangjie-Test", "test_Observable start")
         var message = "test_Observable success"
         try {
             var observable = PersonObservable()
             observable.testDt()
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_Observable: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_Observable: ${e.toString()}")
             message = e.toString()
         }
         @Expect(message, "test_Observable success")
-        Hilog.info(1, "1", "Cangjie-Test", "test_Observable end")
+        Hilog.info(1,"1","Cangjie-Test", "test_Observable end")
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_ObservedObject() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_ObservedObject start")
+        Hilog.info(1,"1","Cangjie-Test", "test_ObservedObject start")
         var message = "test_ObservedObject success"
         try {
             var observable = PersonObservedObject()
             observable.testDt()
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_ObservedObject: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_ObservedObject: ${e.toString()}")
             message = e.toString()
         }
         @Expect(message, "test_ObservedObject success")
-        Hilog.info(1, "1", "Cangjie-Test", "test_ObservedObject end")
-    }
-
-    @TestCase
-    @Tag[APILevel12, TestLevel0]
-    func test_LocalStorage2() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_LocalStorage2 start")
-        var localStorage = LocalStorage()
-        localStorage.aboutToBeDeleted()
-        var localStorageInterOp = LocalStorageInterOp.getOrCreate()
-        localStorageInterOp = LocalStorageInterOp.getOrCreate()
-        try {
-            var isDelete = localStorageInterOp.aboutToBeDeleted()
-            @Expect(true, isDelete)
-        } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "localStorageInterOp.get: ${e.toString()}")
-        }
-
-        try {
-            var haspropName = localStorageInterOp.has("propName")
-            @Expect(false, haspropName)
-        } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "localStorageInterOp.get: ${e.toString()}")
-        }
-        try {
-            localStorageInterOp.keys()
-        } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "localStorageInterOp.get: ${e.toString()}")
-        }
-        try {
-            var sizea = localStorageInterOp.size()
-            @Expect(sizea, 0)
-        } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "localStorageInterOp.get: ${e.toString()}")
-        }
-        try {
-            localStorageInterOp.set<String>("nameA", "valueA")
-            localStorageInterOp.set<String>("nameB", "valueB")
-        } catch (e: Exception) {}
-        try {
-            localStorageInterOp.get<String>("nameB")
-        } catch (e: Exception) {}
-        var message = "localStorageInterOp.get success"
-        try {
-            localStorageInterOp.get<String>("nameC")
-        } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "localStorageInterOp.get: ${e.toString()}")
-            message = e.toString()
-        }
-        @Expect(message, "NoneValueException: localStorageInterOp: get global context failed.")
-        try {
-            localStorageInterOp.setOrCreate<String>("nameC", "valueC")
-        } catch (e: Exception) {}
-        try {
-            localStorageInterOp.link<String>("nameC")
-        } catch (e: Exception) {}
-        try {
-            localStorageInterOp.setAndLink<String>("nameD", "valueD")
-        } catch (e: Exception) {}
-        try {
-            localStorageInterOp.`prop`<String>("nameD")
-        } catch (e: Exception) {}
-        try {
-            localStorageInterOp.setAndProp<String>("nameE", "valueE")
-        } catch (e: Exception) {}
-        try {
-            localStorageInterOp.delete("nameB")
-        } catch (e: Exception) {}
-        Hilog.info(1, "1", "Cangjie-Test", "test_LocalStorage2 end")
+        Hilog.info(1,"1","Cangjie-Test", "test_ObservedObject end")
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_Environment() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_Environment start")
+        Hilog.info(1,"1","Cangjie-Test", "test_Environment start")
         var message = "test_Environment success"
         try {
             Environment.aboutToBeDeleted()
-            let d1 = AppStorage.delete("accessibilityEnabled")
-            let d2 = AppStorage.delete("colorMode")
-            let d3 = AppStorage.delete("fontScale")
-            let d4 = AppStorage.delete("fontWeightScale")
-            let d5 = AppStorage.delete("layoutDirection")
-            let d6 = AppStorage.delete("languageCode")
+                let d1 = AppStorage.delete("accessibilityEnabled")
+    let d2 = AppStorage.delete("colorMode")
+    let d3 = AppStorage.delete("fontScale")
+    let d4 = AppStorage.delete("fontWeightScale")
+    let d5 = AppStorage.delete("layoutDirection")
+    let d6 = AppStorage.delete("languageCode")
 
-            // 都是 true
-            let SysAccessibilityEnabled = Environment.envProp<Bool>("accessibilityEnabled", false)
-            let SysAccessibilityEnabled1 = Environment.envProp<Bool>("accessibilityEnabled", false)
-            let SysColorMode = Environment.envProp<ColorMode>("colorMode", ColorMode.Light)
-            let SysFontScale = Environment.envProp<Float64>("fontScale", 1.30)
-            let SysFontWeightScale = Environment.envProp<Float64>("fontWeightScale", 1.40)
-            let SysLayoutDirection = Environment.envProp<LayoutDirection>("layoutDirection", LayoutDirection.Ltr)
-            let SysLanguageCode = Environment.envProp<String>("languageCode", "en")
+    // 都是 true
+    let SysAccessibilityEnabled = Environment.envProp<Bool>("accessibilityEnabled", false)
+    let SysAccessibilityEnabled1 = Environment.envProp<Bool>("accessibilityEnabled", false)
+    let SysColorMode = Environment.envProp<ColorMode>("colorMode", ColorMode.Light)
+    let SysFontScale = Environment.envProp<Float64>("fontScale", 1.30)
+    let SysFontWeightScale = Environment.envProp<Float64>("fontWeightScale",1.40)
+    let SysLayoutDirection = Environment.envProp<LayoutDirection>("layoutDirection", LayoutDirection.Ltr)
+    let SysLanguageCode = Environment.envProp<String>("languageCode", "en")
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_Environment: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_Environment: ${e.toString()}")
             message = e.toString()
         }
         @Expect(message, "test_Environment success")
-        Hilog.info(1, "1", "Cangjie-Test", "test_Environment end")
+        Hilog.info(1,"1","Cangjie-Test", "test_Environment end")
     }
+
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_observedProperty() {
-        Hilog.info(1, "1", "Cangjie-Test", "test_observedProperty start")
+        Hilog.info(1,"1","Cangjie-Test", "test_observedProperty start")
         var message = "test_observedProperty success"
         try {
-            var color = ObservedProperty<PersonObservedObject>("info", PersonObservedObject())
+           var color = ObservedProperty<PersonObservedObject>("info", PersonObservedObject())
             color.set(PersonObservedObject())
         } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_hitrace: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_hitrace: ${e.toString()}")
             message = e.toString()
         }
         @Expect(message, "test_observedProperty success")
-        Hilog.info(1, "1", "Cangjie-Test", "test_observedProperty end")
+        Hilog.info(1,"1","Cangjie-Test", "test_observedProperty end")
     }
 }
 
 class PersonView <: View {
-    protected init(id: Int64) {
+    protected init(id: Int64){
         super(id)
     }
 }
@@ -699,11 +671,14 @@ class DtTestCustomView <: CustomView {
     }
 
     public override func aboutToBeDeleted() {
-        SubscriberManager.getInstance().delete(this)
+        SubscriberManager
+            .getInstance()
+            .delete(this)
         this.aboutToBeDeletedInternal()
     }
 
     public func build() {
+
     }
 
     public func getAnRecycleManager() {
@@ -717,6 +692,12 @@ class DtTestCustomView <: CustomView {
         super.getOrCreateRecycleManager()
         super.getRecycleManager()
         super.isRecycled()
+        super.delayCompleteRerender(true)
+        super.flushDelayCompleteRerender()
+        super.aboutToRecycleInternal()
+
+        super.recycleSelf("name")
+        super.setParent(DtTestCustomView(Option.None, Option.None))
         super.recycleSelf("name")
         super.addChildById(3, DtTestCustomView(Option.None, Option.None))
         super.traverseChildDoRecycleOrReuse(true)
@@ -725,10 +706,11 @@ class DtTestCustomView <: CustomView {
 }
 
 class PersonRemoteView <: RemoteView {
-    public init() {
+    public init(){
         super()
     }
     public func build(): Unit {
+
     }
 
     public func testDt() {
@@ -739,14 +721,13 @@ class PersonRemoteView <: RemoteView {
         super.onAfterRender()
         super.onAboutToBeDeleted()
         super.forceCompleteRerender(true)
-        super.aboutToReuseInternal(ReuseParams())
         super.aboutToRecycleInternal()
         super.recycleSelf("recycleSelf")
     }
 }
 
 class PersonObservable <: Observable {
-    public init() {
+    public init(){
         super()
     }
 
@@ -754,22 +735,22 @@ class PersonObservable <: Observable {
         var customview = DtTestCustomView(Option.None, Option.None)
         super.subscribe(customview)
         var isTrue = super.isSubscribed(customview)
-        super.notifyChangesInner("Name")
-        super.notifyReadInner("Name")
+        super.notifyChangesInner("Name", ArrayList<Int64>())
     }
 }
 
 class PersonGestureType {
-    public init() {
+    public init(){
     }
 }
 
 class PersonObservedObject <: ObservedObject {
-    public init() {
+    public init(){
         super()
     }
 
     public override func set(v: ObservedComplexAbstract) {
+
     }
 
     public func testDt() {

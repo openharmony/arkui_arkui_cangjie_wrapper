@@ -36,11 +36,11 @@ class StudentDatasetSource <: IDataSource<Student> {
         return data_[index]
     }
 
-    public func onRegisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func registerDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = listener
     }
 
-    public func onUnregisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func unregisterDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = None
     }
 
@@ -48,7 +48,8 @@ class StudentDatasetSource <: IDataSource<Student> {
     }
 }
 
-func getDatasetStudent(): StudentDatasetSource {
+func getDatasetStudent(): StudentDatasetSource
+{
     let data: ArrayList<Student> = ArrayList<Student>()
     for (i in 0..50) {
         data.add(Student("name ${i}", i * i))
@@ -60,40 +61,29 @@ func getDatasetStudent(): StudentDatasetSource {
 @Entry
 @Component
 public class View_Lazyforeach_DataOptions {
-    @State
-    var msg: String = ""
+    @State var msg: String = ""
     public func build(): Unit {
         Column(space: 30) {
             Text("-----------------")
             List() {
-            //                LazyForEach(datasetSourceStu, itemGeneratorFunc: {stu: Student, idx: Int64 =>
-            //                    ListItem {
-            //                        Text(stu.name).id("stu ${idx}")
-            //                    }
-            //                })
+//                LazyForEach(datasetSourceStu, itemGeneratorFunc: {stu: Student, idx: Int64 =>
+//                    ListItem {
+//                        Text(stu.name).id("stu ${idx}")
+//                    }
+//                })
             }.height(400.px)
 
-            Text("click to notifyChange")
-                .onClick(
-                    {
-                        evt =>
-                        dataSourceStu.data_.add(Student("xiaoming", 10086), at: 0)
-                        datasetSourceStu.notifyChange()
-                        datasetSourceCnt++
-                    }
-                )
-                .id('notifyChange')
+            Text("click to notifyChange").onClick({ evt =>
+                dataSourceStu.data_.add(Student("xiaoming", 10086), at: 0)
+                datasetSourceStu.notifyChange()
+                datasetSourceCnt++
+            }).id('notifyChange')
 
             Text(this.msg).id("msg")
-            Button("verify")
-                .onClick(
-                    {
-                        evt =>
-                        this.msg = "2:${dataSourceStu.data_[2].name},3:${dataSourceStu.data_[3].name},4:${dataSourceStu.data_[4].name},"
-                        this.msg += "5:${dataSourceStu.data_[5].name},11:${dataSourceStu.data_[11].name},12:${dataSourceStu.data_[12].name}"
-                    }
-                )
-                .id('verify')
+            Button("verify").onClick({ evt =>
+                this.msg = "2:${dataSourceStu.data_[2].name},3:${dataSourceStu.data_[3].name},4:${dataSourceStu.data_[4].name},"
+                this.msg += "5:${dataSourceStu.data_[5].name},11:${dataSourceStu.data_[11].name},12:${dataSourceStu.data_[12].name}"
+            }).id('verify')
         }
     }
 }

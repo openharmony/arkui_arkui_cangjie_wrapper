@@ -22,6 +22,6 @@ internal import ohos.window.WindowStage
 
 class MyAbilityStage <: AbilityStage {
     public override func onCreate(): Unit {
-        Hilog.info(1, "1", "Cangjie-App", "MyAbilityStage onCreated.")
+        Hilog.info(1,"1","Cangjie-App", "MyAbilityStage onCreated.")
     }
 }

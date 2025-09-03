@@ -29,24 +29,26 @@ internal import ohos.business_exception.BusinessException
 @Test
 class InformationDisplay_UT_2 {
     prop driver: Driver {
-        get() {
+        get(){
             OpenHarmonyTestRunner.driver
         }
     }
 
     private func ScrollTo(view: String) {
         driver.delayMs(500)
-        Hilog.error(1, "1", "ScrollTo ${view}")
+        Hilog.error(1,"1","ScrollTo ${view}")
         var isSuccess = true
         var count = 0
         do {
             try {
                 let scrollBar = driver.findComponent(On().id("scroller")).getOrThrow()
-                scrollBar.scrollSearch(On().id(view)).getOrThrow().click()
+                scrollBar
+                    .scrollSearch(On().id(view)).getOrThrow()
+                    .click()
                 driver.delayMs(500)
                 isSuccess = true
             } catch (e: BusinessException) {
-                Hilog.error(1, "1", e.message)
+                Hilog.error(1,"1",e.message)
                 driver.pressBack()
                 driver.delayMs(500)
                 count = count + 1
@@ -58,7 +60,7 @@ class InformationDisplay_UT_2 {
     protected override func beforeAll() {
         driver.delayMs(500)
         let scrollBar = driver.findComponent(On().id("scroller")).getOrThrow()
-        Hilog.error(1, "1", "started")
+        Hilog.error(1,"1","started")
         scrollBar.scrollSearch(On().id("Index_UT2")).getOrThrow().click()
         driver.delayMs(500)
     }
@@ -90,6 +92,7 @@ class InformationDisplay_UT_2 {
 
         let bgColor6 = attrs6.get("backgroundColor").getOrThrow().toString()
         @Expect(bgColor6, "\"#19000000\"")
+
 
         let inspector10 = getInspectorByKey("progress10")
         let jsonObject10 = JsonValue.fromStr(inspector10).asObject()
@@ -157,6 +160,8 @@ class InformationDisplay_UT_2 {
         let style13_b = attrs13.get("style").getOrThrow().toString()
         @Expect(style13.contains("\\\"scaleWidth\\\":\\\"2.00vp\\\""))
     }
+
+
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
@@ -265,19 +270,21 @@ class InformationDisplay_UT_2 {
         let stack_top: Component = driver.findComponent(On().id("stack_top")).getOrThrow()
         let rect_top = stack_top.getBounds()
 
-        Hilog.info(0, "0", "stack_bottom right: ${rect_bottom.right} stack_top right: ${rect_top.right}")
+        Hilog.info(0,"0","stack_bottom right: ${rect_bottom.right} stack_top right: ${rect_top.right}")
         @Expect(rect_bottom.right, rect_top.right)
-        Hilog.info(0, "0", "stack_bottom bottom: ${rect_bottom.bottom} stack_top bottom: ${rect_top.bottom}")
+        Hilog.info(0,"0","stack_bottom bottom: ${rect_bottom.bottom} stack_top bottom: ${rect_top.bottom}")
         @Expect(rect_bottom.bottom, rect_top.bottom)
 
-        Hilog.info(0, "0", "${rect_bottom.left}")
+        Hilog.info(0,"0","${rect_bottom.left}")
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_TextTimerCtor() {
         ScrollTo("View_TextTimer2")
-        let TextTimer_1 = driver.findComponent(On().id("TextTimer_1")).getOrThrow().getType()
+        let TextTimer_1 = driver
+            .findComponent(On().id("TextTimer_1")).getOrThrow()
+            .getType()
         @Expect(TextTimer_1, "TextTimer")
     }
 
@@ -287,28 +294,54 @@ class InformationDisplay_UT_2 {
         ScrollTo("View_TextTimer2")
 
         let inspector = getInspectorByKey("TextTimer_1")
-        let jsonObject = JsonValue.fromStr(inspector).asObject()
-        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let jsonObject = JsonValue
+            .fromStr(inspector)
+            .asObject()
+        let attrs = jsonObject
+            .get("$attrs")
+            .getOrThrow()
+            .asObject()
 
-        let format = attrs.get("format").getOrThrow().toString()
+        let format = attrs
+            .get("format")
+            .getOrThrow()
+            .toString()
         @Expect(format, "\"mm:ss.SS\"")
 
-        let fontColor = attrs.get("fontColor").getOrThrow().toString()
+        let fontColor = attrs
+            .get("fontColor")
+            .getOrThrow()
+            .toString()
         @Expect(fontColor, "\"#FFFFFFFF\"")
 
-        let fontSize = attrs.get("fontSize").getOrThrow().toString()
+        let fontSize = attrs
+            .get("fontSize")
+            .getOrThrow()
+            .toString()
         @Expect(fontSize, "\"50.00fp\"")
 
-        let fontStyle = attrs.get("fontStyle").getOrThrow().toString()
+        let fontStyle = attrs
+            .get("fontStyle")
+            .getOrThrow()
+            .toString()
         @Expect(fontStyle, "\"FontStyle.Italic\"")
 
-        let fontWeight = attrs.get("fontWeight").getOrThrow().toString()
+        let fontWeight = attrs
+            .get("fontWeight")
+            .getOrThrow()
+            .toString()
         @Expect(fontWeight, "\"FontWeight.Bold\"")
 
-        let fontFamily = attrs.get("fontFamily").getOrThrow().toString()
+        let fontFamily = attrs
+            .get("fontFamily")
+            .getOrThrow()
+            .toString()
         @Expect(fontFamily, "\"HarmonyOS Sans\"")
 
-        let textShadow = attrs.get("textShadow").getOrThrow().toString()
+        let textShadow = attrs
+            .get("textShadow")
+            .getOrThrow()
+            .toString()
         @Expect(textShadow, "{\"radius\":\"10.000000\",\"color\":\"#FFFFFFFF\",\"offsetX\":\"10.000000\",\"offsetY\":\"0.000000\",\"type\":\"0\"}")
     }
 
@@ -318,10 +351,18 @@ class InformationDisplay_UT_2 {
         ScrollTo("View_TextTimer2")
 
         let inspector = getInspectorByKey("TextTimer_2")
-        let jsonObject = JsonValue.fromStr(inspector).asObject()
-        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let jsonObject = JsonValue
+            .fromStr(inspector)
+            .asObject()
+        let attrs = jsonObject
+            .get("$attrs")
+            .getOrThrow()
+            .asObject()
 
-        let textShadow = attrs.get("textShadow").getOrThrow().toString()
+        let textShadow = attrs
+            .get("textShadow")
+            .getOrThrow()
+            .toString()
         @Expect(textShadow, "{\"radius\":\"10.000000\",\"color\":\"#FFFF0000\",\"offsetX\":\"10.000000\",\"offsetY\":\"0.000000\",\"type\":\"0\"}")
     }
 
@@ -331,10 +372,18 @@ class InformationDisplay_UT_2 {
         ScrollTo("View_TextTimer2")
 
         let inspector = getInspectorByKey("TextTimer_3")
-        let jsonObject = JsonValue.fromStr(inspector).asObject()
-        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let jsonObject = JsonValue
+            .fromStr(inspector)
+            .asObject()
+        let attrs = jsonObject
+            .get("$attrs")
+            .getOrThrow()
+            .asObject()
 
-        let textShadow = attrs.get("textShadow").getOrThrow().toString()
+        let textShadow = attrs
+            .get("textShadow")
+            .getOrThrow()
+            .toString()
         @Expect(textShadow, "{\"radius\":\"10.000000\",\"color\":\"#FFFF0000\",\"offsetX\":\"10.000000\",\"offsetY\":\"0.000000\",\"type\":\"0\"}")
     }
 
@@ -344,10 +393,18 @@ class InformationDisplay_UT_2 {
         ScrollTo("View_TextTimer2")
 
         let inspector = getInspectorByKey("TextTimer_4")
-        let jsonObject = JsonValue.fromStr(inspector).asObject()
-        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let jsonObject = JsonValue
+            .fromStr(inspector)
+            .asObject()
+        let attrs = jsonObject
+            .get("$attrs")
+            .getOrThrow()
+            .asObject()
 
-        let textShadow = attrs.get("textShadow").getOrThrow().toString()
+        let textShadow = attrs
+            .get("textShadow")
+            .getOrThrow()
+            .toString()
         @Expect(textShadow, "{\"radius\":\"10.000000\",\"color\":\"#FFA52A2A\",\"offsetX\":\"10.000000\",\"offsetY\":\"0.000000\",\"type\":\"0\"}")
     }
 
@@ -357,7 +414,9 @@ class InformationDisplay_UT_2 {
         ScrollTo("View_TextTimer2")
 
         let onTimerText = driver.findComponent(On().id("onTimerText")).getOrThrow()
-        driver.findComponent(On().id("start")).getOrThrow().click()
+        driver
+            .findComponent(On().id("start")).getOrThrow()
+            .click()
         driver.delayMs(1000)
         @Expect(onTimerText.getText() == "Time Change", true)
     }
@@ -369,7 +428,7 @@ class InformationDisplay_UT_2 {
         let inspector4 = getInspectorByKey("textTimer")
         let jsonObject4 = JsonValue.fromStr(inspector4).asObject()
         let attrs4 = jsonObject4.get("$attrs").getOrThrow().asObject()
-        Hilog.info(0, "0", "[test_textTimer] textTimer attrs: ${attrs4}")
+        Hilog.info(0,"0","[test_textTimer] textTimer attrs: ${attrs4}")
         let format = attrs4.get("format").getOrThrow().toString()
 
         let textTimer = driver.findComponent(On().id("textTimer")).getOrThrow()
@@ -399,7 +458,7 @@ class InformationDisplay_UT_2 {
     }
 
     func clickButton(buttonId: String) {
-        let button = driver.waitForComponent(On().id(buttonId), 200).getOrThrow()
+        let button = driver.waitForComponent(On().id(buttonId),200).getOrThrow()
         button.click()
         driver.delayMs(200)
     }
@@ -501,6 +560,8 @@ class InformationDisplay_UT_2 {
         let exitFull = driver.findComponent(On().id("exitFull")).getOrThrow()
         exitFull.click()
         driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
     }
 
     @TestCase
@@ -510,10 +571,10 @@ class InformationDisplay_UT_2 {
 
         let refresh = driver.findComponent(On().id("refresh")).getOrThrow()
         refresh.click()
-        let btn_load = driver.waitForComponent(On().id("btn_load"), 500).getOrThrow()
+        let btn_load = driver.waitForComponent(On().id("btn_load"),500).getOrThrow()
         btn_load.click()
-        let webpage = driver.waitForComponent(On().id("my_web"), 500).getOrThrow()
-        let webpage1 = driver.waitForComponent(On().id("my_web_1"), 500).getOrThrow()
+        let webpage = driver.waitForComponent(On().id("my_web"),500).getOrThrow()
+        let webpage1 = driver.waitForComponent(On().id("my_web_1"),500).getOrThrow()
         driver.delayMs(500)
     }
 }

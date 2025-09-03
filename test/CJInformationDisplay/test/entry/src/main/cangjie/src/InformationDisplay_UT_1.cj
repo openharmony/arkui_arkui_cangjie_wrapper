@@ -30,24 +30,26 @@ import ohos.hilog.Hilog
 @Test
 class InformationDisplay_UT_1 {
     prop driver: Driver {
-        get() {
+        get(){
             OpenHarmonyTestRunner.driver
         }
     }
 
     private func ScrollTo(view: String) {
         driver.delayMs(500)
-        Hilog.error(1, "1", "ScrollTo ${view}")
+        Hilog.error(1,"1","ScrollTo ${view}")
         var isSuccess = true
         var count = 0
         do {
             try {
                 let scrollBar = driver.findComponent(On().id("scroller")).getOrThrow()
-                scrollBar.scrollSearch(On().id(view)).getOrThrow().click()
+                scrollBar
+                    .scrollSearch(On().id(view)).getOrThrow()
+                    .click()
                 driver.delayMs(500)
                 isSuccess = true
             } catch (e: BusinessException) {
-                Hilog.error(1, "1", e.message)
+                Hilog.error(1,"1",e.message)
                 driver.pressBack()
                 driver.delayMs(500)
                 count = count + 1
@@ -59,7 +61,7 @@ class InformationDisplay_UT_1 {
     protected override func beforeAll() {
         driver.delayMs(500)
         let scrollBar = driver.findComponent(On().id("scroller")).getOrThrow()
-        Hilog.error(1, "1", "started")
+        Hilog.error(1,"1","started")
         scrollBar.scrollSearch(On().id("Index_UT1")).getOrThrow().click()
         driver.delayMs(500)
     }
@@ -76,7 +78,8 @@ class InformationDisplay_UT_1 {
         let inspector = getInspectorByKey("my_alphabet_indexer")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
-        Hilog.info(1, "1", "aaaa: ${attrs.toString()}")
+        Hilog.info(1,"1","aaaa: ${attrs.toString()}")
+
 
         let selectedColor = attrs.get("selectedColor").getOrThrow().toString()
         @Expect(selectedColor, "\"#FFFFFFFF\"")
@@ -131,7 +134,7 @@ class InformationDisplay_UT_1 {
         driver.delayMs(500)
         @Expect(textC, "Chu Cai Chen ")
     }
-    @TestCase
+@TestCase
     @Tag[APILevel12, TestLevel0]
     func test_alphabet_indexer_1_OnselectA() {
         ScrollTo("View_AlphabetIndexer")
@@ -182,6 +185,7 @@ class InformationDisplay_UT_1 {
         @Expect(style1.contains("FontWeight.Bolder"))
         @Expect(style1.contains("#FF000000"))
         @Expect(style1.contains("2.00vp"))
+
 
         let position1 = attrs1.get("position").getOrThrow().toString()
         @Expect(position1, "\"BadgePosition.Left\"")
@@ -372,7 +376,7 @@ class InformationDisplay_UT_1 {
         let inspector = getInspectorByKey("test_blank")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
-        Hilog.info(1, "1", "aaaa: ${attrs.toString()}")
+        Hilog.info(1,"1","aaaa: ${attrs.toString()}")
 
         let color = attrs.get("backgroundColor").getOrThrow().toString()
         @Expect(color, "\"#FF99FFFF\"")
@@ -393,7 +397,7 @@ class InformationDisplay_UT_1 {
         let inspector = getInspectorByKey("my_divider")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
-        Hilog.info(1, "1", "aaaa: ${jsonObject.toString()}")
+        Hilog.info(1,"1","aaaa: ${jsonObject.toString()}")
 
         // must set manual ，cannot check default value。
         let vertical = attrs.get("vertical").getOrThrow().toString()
@@ -417,7 +421,7 @@ class InformationDisplay_UT_1 {
         let inspector = getInspectorByKey("my_gauge")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
-        Hilog.info(1, "1", "aaaa: ${jsonObject.toString()}")
+        Hilog.info(1,"1","aaaa: ${jsonObject.toString()}")
 
         //         must set manual ，cannot check default value
         let startAngle = attrs.get("startAngle").getOrThrow().toString()
@@ -450,7 +454,7 @@ class InformationDisplay_UT_1 {
         let inspector = getInspectorByKey("my_gauge5")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
-        Hilog.info(1, "1", "aaaa: ${jsonObject.toString()}")
+        Hilog.info(1,"1","aaaa: ${jsonObject.toString()}")
 
         //         must set manual ，cannot check default value
         let startAngle = attrs.get("startAngle").getOrThrow().toString()
@@ -479,7 +483,7 @@ class InformationDisplay_UT_1 {
         let inspector = getInspectorByKey("my_gauge7")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
-        Hilog.info(1, "1", "aaaa: ${jsonObject.toString()}")
+        Hilog.info(1,"1","aaaa: ${jsonObject.toString()}")
 
         //         must set manual ，cannot check default value
         let startAngle = attrs.get("startAngle").getOrThrow().toString()
@@ -500,6 +504,7 @@ class InformationDisplay_UT_1 {
         let indicator = attrs.get("indicator").getOrThrow().toString()
         @Expect(indicator.contains("SystemStyle"))
     }
+
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
@@ -523,19 +528,49 @@ class InformationDisplay_UT_1 {
         @Expect(attrs.get("circleRadius").getOrThrow().toString(), "\"16.00vp\"")
         @Expect(attrs.get("enableWaveEffect").getOrThrow().toString(), "\"true\"")
 
-        let pointers: PointerMatrix = PointerMatrix.create(1, 5)
-        pointers.setPoint(0, 0, ui_test.Point(406, 638))
-        pointers.setPoint(0, 1, ui_test.Point(406, 848))
-        pointers.setPoint(0, 2, ui_test.Point(406, 1058))
-        pointers.setPoint(0, 3, ui_test.Point(616, 1058))
-        pointers.setPoint(0, 4, ui_test.Point(826, 1058))
+        let pointers: PointerMatrix = PointerMatrix.create(1,5)
+        pointers.setPoint(0,0,ui_test.Point(406, 638))
+        pointers.setPoint(0,1,ui_test.Point(406, 848))
+        pointers.setPoint(0,2,ui_test.Point(406, 1058))
+        pointers.setPoint(0,3,ui_test.Point(616, 1058))
+        pointers.setPoint(0,4,ui_test.Point(826, 1058))
         driver.injectMultiPointerAction(pointers)
         driver.injectMultiPointerAction(pointers)
         var text0 = driver.findComponent(On().id("text0")).getOrThrow()
         @Expect(text0.getText(), "Set password successfully: [0, 3, 6, 7, 8]")
         let resetPattern = driver.findComponent(On().id("reset_pattern")).getOrThrow()
         resetPattern.click()
-        text0 = driver.waitForComponent(On().id("text0"), 500).getOrThrow()
+        text0 = driver.waitForComponent(On().id("text0"),500).getOrThrow()
         @Expect(text0.getText(), "Please input password")
+    }
+
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_loadingprogressCommonAttrs_001() {
+        ScrollTo("View_LoadingProgress")
+
+        let inspector = getInspectorByKey("loadingprogressComponent1")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let color = attrs.get("color").getOrThrow().toString()
+        @Expect(color, "\"#FF0000FF\"")
+        let enableLoading = attrs.get("enableLoading").getOrThrow().toString()
+        @Expect(enableLoading, "\"true\"")
+
+        let loadingprogressComponent2 = getInspectorByKey("loadingprogressComponent2")
+        let jsonObject2 = JsonValue.fromStr(loadingprogressComponent2).asObject()
+        let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
+        let color2 = attrs2.get("color").getOrThrow().toString()
+        @Expect(color2, "\"#FFFFFF00\"")
+        let enableLoading2 = attrs2.get("enableLoading").getOrThrow().toString()
+        @Expect(enableLoading2, "\"false\"")
+
+        let loadingprogressComponent3 = getInspectorByKey("loadingprogressComponent3")
+        let jsonObject3 = JsonValue.fromStr(loadingprogressComponent3).asObject()
+        let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
+        let color3 = attrs3.get("color").getOrThrow().toString()
+        @Expect(color3, "\"#FFCCCCCC\"")
+        let enableLoading3 = attrs3.get("enableLoading").getOrThrow().toString()
+        @Expect(enableLoading3, "\"true\"")
     }
 }

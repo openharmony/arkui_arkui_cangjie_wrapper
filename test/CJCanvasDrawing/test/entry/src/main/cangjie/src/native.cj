@@ -39,7 +39,8 @@ public enum JsonKind {
     JsNull | JsBool | JsInt | JsFloat | JsString | JsArray | JsObject
 }
 
-abstract sealed class JsonValue <: ToString {
+sealed abstract class JsonValue <: ToString {
+
     public func toString(): String
 
     public func toJsonString(): String
@@ -110,6 +111,7 @@ const INDENT_SIZE: Int64 = 2
  * JsonNull class used for encapsulate JSON data: null.
  */
 public class JsonNull <: JsonValue {
+
     public func kind(): JsonKind {
         return JsNull
     }
@@ -233,13 +235,13 @@ public class JsonString <: JsonValue {
     public func toString(): String {
         let buff = WriteBuffer(value.size + 2)
         jsonWriteWithoutFormat(this, buff)
-        return unsafe { String.fromUtf8Unchecked(buff.getAndClear()) }
+        return unsafe{String.fromUtf8Unchecked(buff.getAndClear())}
     }
 
     public func toJsonString(): String {
         let buff = WriteBuffer(value.size + 2)
         jsonWriteWithoutFormat(this, buff)
-        return unsafe { String.fromUtf8Unchecked(buff.getAndClear()) }
+        return unsafe{String.fromUtf8Unchecked(buff.getAndClear())}
     }
 }
 
@@ -284,13 +286,13 @@ public class JsonArray <: JsonValue {
         }
         let buff = WriteBuffer(asumecapacity(this))
         jsonWriteArray(this, buff, depth, bracketInNewLine, indent)
-        return unsafe { String.fromUtf8Unchecked(buff.getAndClear()) }
+        return unsafe{String.fromUtf8Unchecked(buff.getAndClear())}
     }
 
     public func toString(): String {
         let buff = WriteBuffer(asumecapacity(this))
         jsonWriteWithoutFormat(this, buff)
-        return unsafe { String.fromUtf8Unchecked(buff.getAndClear()) }
+        return unsafe{String.fromUtf8Unchecked(buff.getAndClear())}
     }
 
     public func size(): Int64 {
@@ -354,13 +356,13 @@ public class JsonObject <: JsonValue {
         }
         let buff = WriteBuffer(asumecapacity(this))
         jsonWriteObject(this, buff, depth, bracketInNewLine, indent)
-        return unsafe { String.fromUtf8Unchecked(buff.getAndClear()) }
+        return unsafe{String.fromUtf8Unchecked(buff.getAndClear())}
     }
 
     public func toString(): String {
         let buff = WriteBuffer(asumecapacity(this))
         jsonWriteWithoutFormat(this, buff)
-        return unsafe { String.fromUtf8Unchecked(buff.getAndClear()) }
+        return unsafe{String.fromUtf8Unchecked(buff.getAndClear())}
     }
 
     public func size(): Int64 {
@@ -401,6 +403,7 @@ extend String {
         return true
     }
 }
+
 
 /**
  * @brief Get rows and columns of the error position
@@ -448,7 +451,7 @@ func getErrRowAndCol(strArr: Array<UInt8>, errPos: Int64): (Int64, Int64) {
  * @return String Escaped character string
  */
 func handleErrChr(errChr: Rune): String {
-    match (errChr) {
+    match(errChr) {
         case r'\0' => return "\\0"
         case r'\b' => return "\\b"
         case r'\t' => return "\\t"
@@ -461,10 +464,10 @@ func handleErrChr(errChr: Rune): String {
 }
 
 enum NumberSystem {
-    Binary
-    | Octal
-    | Decimal
-    | Hex
+    Binary |
+    Octal |
+    Decimal |
+    Hex
 }
 
 class JsonParser {
@@ -475,7 +478,7 @@ class JsonParser {
     var cacheSize: Int64
     let strCache: ArrayList<Byte>
 
-    init(str: String) {
+    init (str: String) {
         this.data = unsafe { str.rawData() }
         this.size = data.size
         this.offset = 0
@@ -530,8 +533,7 @@ func parseJson(parser: JsonParser): JsonValue {
             case start == UInt8(UInt32(r't')) => return parseJsonTrue(parser)
             case start == UInt8(UInt32(r'f')) => return parseJsonFalse(parser)
             case start == UInt8(UInt32(r'\"')) => return parseJsonString(parser)
-            case start >= UInt8(UInt32(r'0')) && start <= UInt8(UInt32(r'9')) || start == UInt8(UInt32(r'-')) => return parseJsonNumber(
-                parser)
+            case start >= UInt8(UInt32(r'0')) && start <= UInt8(UInt32(r'9')) || start == UInt8(UInt32(r'-')) => return parseJsonNumber(parser)
             case _ => throw JsonException()
         }
     } catch (_: Exception) {
@@ -579,7 +581,7 @@ func parseJsonObject(parser: JsonParser): JsonObject {
     }
     parser.offset++
     let map = HashMap<String, JsonValue>(count)
-    for (i in count..0 : -1) {
+    for (i in count..0:-1) {
         let key = parser.cache[parser.cacheSize - (i * 2)].asString().getValue()
         let value = parser.cache[parser.cacheSize - (i * 2) + 1]
         map.add(key, value)
@@ -609,7 +611,7 @@ func parseJsonArray(parser: JsonParser): JsonArray {
     }
     parser.offset++
     let arr = ArrayList<JsonValue>(count)
-    for (i in count..0 : -1) {
+    for (i in count..0:-1) {
         let item = parser.cache[parser.cacheSize - i]
         arr.add(item)
     }
@@ -726,7 +728,8 @@ func parseNumberSystem(parser: JsonParser): NumberSystem {
             case 'x' | 'X' =>
                 parser.offset++
                 return Hex
-            case _ => parser.offset--
+            case _ =>
+                parser.offset--
         }
     }
     return Decimal
@@ -734,13 +737,10 @@ func parseNumberSystem(parser: JsonParser): NumberSystem {
 
 func checkNumberSystem(numSystem: NumberSystem): (Byte) -> Bool {
     match (numSystem) {
-        case Binary => return {byte: Byte => byte >= UInt8(UInt32(r'0')) && byte <= UInt8(UInt32(r'1'))}
-        case Octal => return {byte: Byte => byte >= UInt8(UInt32(r'0')) && byte <= UInt8(UInt32(r'7'))}
-        case Decimal => return {byte: Byte => byte >= UInt8(UInt32(r'0')) && byte <= UInt8(UInt32(r'9'))}
-        case Hex => return {
-            byte: Byte => byte >= UInt8(UInt32(r'0')) && byte <= UInt8(UInt32(r'9')) || byte >= UInt8(UInt32(r'a')) &&
-                byte <= UInt8(UInt32(r'f')) || byte >= UInt8(UInt32(r'A')) && byte <= UInt8(UInt32(r'F'))
-        }
+        case Binary => return { byte: Byte => byte >= UInt8(UInt32(r'0')) && byte <= UInt8(UInt32(r'1')) }
+        case Octal => return { byte: Byte => byte >= UInt8(UInt32(r'0')) && byte <= UInt8(UInt32(r'7')) }
+        case Decimal => return { byte: Byte => byte >= UInt8(UInt32(r'0')) && byte <= UInt8(UInt32(r'9')) }
+        case Hex => return { byte: Byte => byte >= UInt8(UInt32(r'0')) && byte <= UInt8(UInt32(r'9')) || byte >= UInt8(UInt32(r'a')) && byte <= UInt8(UInt32(r'f')) || byte >= UInt8(UInt32(r'A')) && byte <= UInt8(UInt32(r'F')) }
     }
 }
 
@@ -817,8 +817,7 @@ func parseDigit(parser: JsonParser): Bool {
 }
 
 func isHexNum(char: UInt8): Bool {
-    if (!((char >= UInt8(UInt32(r'0')) && char <= UInt8(UInt32(r'9'))) || (char >= UInt8(UInt32(r'a')) && char <= UInt8(UInt32(r'f'))) ||
-        (char >= UInt8(UInt32(r'A')) && char <= UInt8(UInt32(r'F'))))) {
+    if (!((char >= UInt8(UInt32(r'0')) && char <= UInt8(UInt32(r'9'))) || (char >= UInt8(UInt32(r'a')) && char <= UInt8(UInt32(r'f'))) || (char >= UInt8(UInt32(r'A')) && char <= UInt8(UInt32(r'F'))))) {
         return false
     }
     return true
@@ -881,8 +880,7 @@ func handleEscape(parser: JsonParser): Unit {
             let byte2 = getNextHexNum(parser)
             let byte3 = getNextHexNum(parser)
             let byte4 = getNextHexNum(parser)
-            let arr: Array<Byte> = [UInt8(UInt32(r'\'')), UInt8(UInt32(r'\\')), UInt8(UInt32(r'u')), UInt8(UInt32(r'{')),
-                byte1, byte2, byte3, byte4, UInt8(UInt32(r'}')), UInt8(UInt32(r'\''))]
+            let arr:Array<Byte> = [UInt8(UInt32(r'\'')), UInt8(UInt32(r'\\')), UInt8(UInt32(r'u')), UInt8(UInt32(r'{')), byte1, byte2, byte3, byte4, UInt8(UInt32(r'}')), UInt8(UInt32(r'\''))]
             try {
                 let chr = unsafe { Rune.parse(String.fromUtf8Unchecked(arr)) }
                 if (UInt32(chr) <= 127) {
@@ -891,7 +889,7 @@ func handleEscape(parser: JsonParser): Unit {
                     let str = chr.toString()
                     unsafe { parser.strCache.add(all: str.rawData()) }
                 }
-            } catch (_: Exception) {
+            } catch (_ :Exception) {
                 parser.offset++
                 if (parser.data[parser.offset] != UInt8(UInt32(r'\\'))) {
                     throw JsonException()
@@ -904,10 +902,8 @@ func handleEscape(parser: JsonParser): Unit {
                 let byte6 = getNextHexNum(parser)
                 let byte7 = getNextHexNum(parser)
                 let byte8 = getNextHexNum(parser)
-                let str1 = unsafe { String.fromUtf8Unchecked(
-                    [UInt8(UInt32(r'0')), UInt8(UInt32(r'x')), byte1, byte2, byte3, byte4]) }
-                let str2 = unsafe { String.fromUtf8Unchecked(
-                    [UInt8(UInt32(r'0')), UInt8(UInt32(r'x')), byte5, byte6, byte7, byte8]) }
+                let str1 = unsafe { String.fromUtf8Unchecked([UInt8(UInt32(r'0')), UInt8(UInt32(r'x')), byte1, byte2, byte3, byte4]) }
+                let str2 = unsafe { String.fromUtf8Unchecked([UInt8(UInt32(r'0')), UInt8(UInt32(r'x')), byte5, byte6, byte7, byte8]) }
                 let num1 = UInt16.parse(str1) & 0b0000001111111111
                 let num2 = UInt16.parse(str2) & 0b0000001111111111
                 let str = Rune((((UInt32(num1)) << 10) | (UInt32(num2))) + 0x10000).toString()
@@ -917,18 +913,19 @@ func handleEscape(parser: JsonParser): Unit {
     }
 }
 
+
 @FastNative
 foreign func memcpy_s(dest: CPointer<UInt8>, destMax: UIntNative, src: CPointer<UInt8>, count: UIntNative): Int32
-
 @FastNative
 foreign func CJ_CORE_Float64ToCPointer(num: Float64): CPointer<UInt8>
-
 @FastNative
 foreign func strlen(str: CPointer<UInt8>): UIntNative
+
 
 let BOOL_TRUE_STRING = "true".toArray()
 let BOOL_FALSE_STRING = "false".toArray()
 let NULL_STRING = "null".toArray()
+
 const MIN_CAPACITY = 16
 const BLANK: Byte = ' '
 /*
@@ -949,7 +946,7 @@ class WriteBuffer {
 
     /*
      * buff must be filled with blank
-     */
+    */
     init(capacity: Int64) {
         let cap = if (capacity > MIN_CAPACITY) {
             capacity
@@ -960,14 +957,14 @@ class WriteBuffer {
     }
 
     public prop size: Int64 {
-        get() {
+        get(){
             return _size
         }
     }
 
     /*
      * buff must be filled with blank
-     */
+    */
     func checkAndExpend(addition: Int64): Unit {
         let minCapacity = _size + addition
         let oldCapacity: Int64 = _buffer.size
@@ -987,10 +984,10 @@ class WriteBuffer {
     func append(arr: Array<Byte>): WriteBuffer {
         checkAndExpend(arr.size)
 
-        if (arr.size < 32) {
+        if(arr.size < 32) {
             for (index in 0..arr.size) {
                 _buffer[_size] = arr[index]
-                _size++
+                _size ++
             }
         } else {
             arr.copyTo(_buffer, 0, _size, arr.size)
@@ -1000,21 +997,21 @@ class WriteBuffer {
     }
 
     func append(str: String): WriteBuffer {
-        append(unsafe { str.rawData() })
+        append(unsafe{str.rawData()})
         return this
     }
 
-    func append(byte: Byte): WriteBuffer {
+    func append(byte: Byte): WriteBuffer{
         checkAndExpend(1)
         _buffer[_size] = byte
-        _size++
+        _size ++
         return this
     }
 
     func append(n: Int64): WriteBuffer {
         checkAndExpend(22)
         let len = writeBufferAppendInt(_buffer[_size..], n)
-        _size += len
+         _size += len
         return this
     }
 
@@ -1058,8 +1055,9 @@ class WriteBuffer {
         return this
     }
 
-    func removetail(): WriteBuffer {
-        if (_size > 0) {
+
+    func removetail(): WriteBuffer{
+        if(_size > 0) {
             _size--
         }
         return this
@@ -1081,13 +1079,14 @@ class WriteBuffer {
         }
     }
 
-    func getAndClear(): Array<Byte> {
+    func getAndClear(): Array<Byte>{
         let ret = _buffer[0.._size]
         _buffer = Array<Byte>(0, repeat: BLANK)
         _size = 0
         return ret
     }
 }
+
 
 func jsonWriteWithoutFormat(json: JsonValue, buff: WriteBuffer): Unit {
     match (json) {
@@ -1116,14 +1115,16 @@ func jsonWriteWithoutFormat(json: JsonValue, buff: WriteBuffer): Unit {
             }
             buff.removetail()
             buff.append(UInt8(UInt32(r']')))
-        case js: JsonString => buff
-            .append(UInt8(UInt32(r'\"')))
-            .appendEscape(js.getValue())
-            .append(UInt8(UInt32(r'\"')))
-        case jb: JsonBool => buff.append(jb.getValue())
-        case ji: JsonInt => buff.append(ji.getValue())
-        case jf: JsonFloat => buff.append(jf.getValue())
-        case _ => buff.append(NULL_STRING)
+        case js: JsonString =>
+            buff.append(UInt8(UInt32(r'\"'))).appendEscape(js.getValue()).append(UInt8(UInt32(r'\"')))
+        case jb: JsonBool =>
+            buff.append(jb.getValue())
+        case ji: JsonInt =>
+            buff.append(ji.getValue())
+        case jf: JsonFloat =>
+            buff.append(jf.getValue())
+        case _ =>
+            buff.append(NULL_STRING)
     }
 }
 
@@ -1141,18 +1142,13 @@ func jsonWriteObject(json: JsonObject, buff: WriteBuffer, depth: Int64, bracketI
 
     buff.append(UInt8(UInt32(r'{')))
     let new_depth = depth + 1
-    for ((key, jv) in json.getFields()) {
+    for((key, jv) in json.getFields()) {
         buff.append(UInt8(UInt32(r'\n')))
         for (_ in 0..new_depth) {
             buff.append(indent)
         }
-        buff
-            .append(UInt8(UInt32(r'\"')))
-            .appendEscape(key)
-            .append(UInt8(UInt32(r'\"')))
-            .append(UInt8(UInt32(r':')))
-            .appendBlank(1)
-        match (jv) {
+        buff.append(UInt8(UInt32(r'\"'))).appendEscape(key).append(UInt8(UInt32(r'\"'))).append(UInt8(UInt32(r':'))).appendBlank(1)
+        match(jv) {
             case jo: JsonObject => jsonWriteObject(jo, buff, new_depth, false, indent)
             case ja: JsonArray => jsonWriteArray(ja, buff, new_depth, false, indent)
             case _ => jsonWriteWithoutFormat(jv, buff)
@@ -1181,7 +1177,7 @@ func jsonWriteArray(json: JsonArray, buff: WriteBuffer, depth: Int64, bracketInN
 
     buff.append(UInt8(UInt32(r'[')))
     let new_depth = depth + 1
-    for (v in json.getItems()) {
+    for(v in json.getItems()) {
         buff.append(UInt8(UInt32(r'\n')))
         for (_ in 0..new_depth) {
             buff.append(indent)
@@ -1205,7 +1201,7 @@ func asumecapacity(json: JsonValue): Int64 {
     match (json) {
         case jo: JsonObject =>
             var sum = 2
-            for ((k, v) in jo.getFields()) {
+            for ((k,v) in jo.getFields()) {
                 sum = sum + k.size + 4 // + "key": value,
                 sum += asumecapacity(v)
             }
@@ -1216,11 +1212,16 @@ func asumecapacity(json: JsonValue): Int64 {
                 sum = sum + asumecapacity(v) + 1
             }
             return sum
-        case js: JsonString => return js.value.size + 2 // "value"
-        case _: JsonBool => return 5 // max of "false" and "true"
-        case _: JsonInt => return 22 // max len is 22
-        case _: JsonFloat => return 200 // not precision
-        case _ => return 4 // len of "null" is 4
+        case js: JsonString =>
+            return js.value.size + 2 // "value"
+        case _: JsonBool =>
+            return 5 // max of "false" and "true"
+        case _: JsonInt =>
+            return 22 // max len is 22
+        case _: JsonFloat =>
+            return 200 // not precision
+        case _ =>
+            return 4 // len of "null" is 4
     }
 }
 
@@ -1231,7 +1232,7 @@ func replaceEscapeChar(input: Array<Byte>, inputlen: Int64, buffer: Array<Byte>)
     for (i in 0..remainlen) {
         let b = input[i]
         if (b == 0X7f) {
-            buffer[j..j + 6] = [b'\\', b'u', b'0', b'0', b'7', b'f']
+            buffer[j..j+6] = [b'\\', b'u', b'0', b'0', b'7', b'f']
             j += 6 // 6 is the sizeof("\u007f")
             continue
         }
@@ -1242,28 +1243,28 @@ func replaceEscapeChar(input: Array<Byte>, inputlen: Int64, buffer: Array<Byte>)
         }
         match (b) {
             case b'\b' =>
-                buffer[j..j + 2] = [b'\\', b'b']
+                buffer[j..j+2] = [b'\\', b'b']
                 j += 2 // add 2 bytes
             case b'\f' =>
-                buffer[j..j + 2] = [b'\\', b'f']
+                buffer[j..j+2] = [b'\\', b'f']
                 j += 2 // add 2 bytes
             case b'\n' =>
-                buffer[j..j + 2] = [b'\\', b'n']
+                buffer[j..j+2] = [b'\\', b'n']
                 j += 2 // add 2 bytes
             case b'\r' =>
-                buffer[j..j + 2] = [b'\\', b'r']
+                buffer[j..j+2] = [b'\\', b'r']
                 j += 2 // add 2 bytes
             case b'\t' =>
-                buffer[j..j + 2] = [b'\\', b't']
+                buffer[j..j+2] = [b'\\', b't']
                 j += 2 // add 2 bytes
             case b'\\' =>
-                buffer[j..j + 2] = [b'\\', b'\\']
+                buffer[j..j+2] = [b'\\', b'\\']
                 j += 2 // add 2 bytes
             case b'\"' =>
-                buffer[j..j + 2] = [b'\\', b'\"']
+                buffer[j..j+2] = [b'\\', b'\"']
                 j += 2 // add 2 bytes
             case _ =>
-                buffer[j..j + 6] = [b'\\', b'u', b'0', b'0', hex[Int64(b) >> 4], hex[Int64(b) & 0xF]]
+                buffer[j..j+6] = [b'\\', b'u', b'0', b'0', hex[Int64(b) >> 4], hex[Int64(b) & 0xF]]
                 j += 6 // add 6 bytes
         }
     }
@@ -1287,7 +1288,7 @@ func writeBufferAppendUint(arr: Array<Byte>, num: UInt64): Int64 {
     var unum = num
     do {
         arr[index] = UInt8(unum % 10) + b'0' // mod 10
-        unum /= 10 // mod 10
+        unum /= 10                       // mod 10
         index++
     } while (unum > 0)
 
@@ -1312,13 +1313,16 @@ func stringEscapeCharNumGet(arr: Array<Byte>): Int64 {
             continue
         }
         // ASCII code over 32 don't need escape
-        if ((byte >= 32) && (byte != b'\"') && (byte != b'\\') && (byte != b'&')) {
+        if ((byte >= 32) && (byte != b'\"') && (byte != b'\\') &&
+            (byte != b'&')) {
             continue
         }
-        match (byte) {
-            case b'\r' | b'\f' | b'\t' | b'\b' | b'\n' | b'\"' | b'\\' => escapeCharacters++
-            case _ => escapeCharacters += 5
+        match(byte) {
+            case b'\r' | b'\f' | b'\t' | b'\b' | b'\n' | b'\"' | b'\\' =>
+                escapeCharacters++
+            case _ =>
+                escapeCharacters += 5
         }
     }
-    return escapeCharacters
+    return  escapeCharacters
 }

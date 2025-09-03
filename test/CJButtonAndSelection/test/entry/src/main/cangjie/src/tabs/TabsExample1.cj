@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 package ohos_app_cangjie_entry.tabs
 
 import ohos.base.*

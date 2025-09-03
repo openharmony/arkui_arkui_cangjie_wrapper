@@ -29,7 +29,8 @@ class View_QRCode {
         Scroll() {
             Column(space: 5) {
                 Text("normal").fontSize(9).width(90.percent).fontColor(0xCCCCCC).fontSize(30)
-                QRCode(this.value).width(140).height(140).id("QRCode0").contentOpacity(1.0)
+                QRCode(this.value).width(140).height(140).id("QRCode0")
+                    .contentOpacity(1.0)
 
                 // 设置二维码颜色，设置二维码背景色， 不透明度
                 Text("backgroundColor").fontSize(9).width(90.percent).fontColor(0xCCCCCC).fontSize(30)

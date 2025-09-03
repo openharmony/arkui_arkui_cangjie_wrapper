@@ -8,10 +8,6 @@
     {
       "name": "ScrollSplit_UT_2",
       "timeout": 100
-    },
-    {
-      "name": "ScrollSplit_UT_3",
-      "timeout": 100
     }
   ]
 }

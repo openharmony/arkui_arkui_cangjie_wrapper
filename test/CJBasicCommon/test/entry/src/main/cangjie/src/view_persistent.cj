@@ -76,6 +76,7 @@ class View_PersistentStorage {
             Button("clear age").onClick {
                 e => PersistentStorage.deleteProp("Age")
             }.id("PersistentStorage_deleteProp")
+
         }
     }
 }

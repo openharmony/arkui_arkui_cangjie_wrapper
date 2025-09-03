@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/14
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -43,7 +46,9 @@ class View_Grid2 {
 
     protected override func aboutToAppear() {
         for (i in 1..9) {
-            this.numbers.add("${i}")
+            this
+                .numbers
+                .add("${i}")
         }
     }
 
@@ -63,7 +68,7 @@ class View_Grid2 {
     public func build() {
         Scroll() {
             Column(space: 20) {
-                Grid(scroller: this.scroller) {
+                Grid(scroller: this.scroller, child: { =>
                     ForEach(
                         this.numbers,
                         itemGeneratorFunc: {
@@ -77,7 +82,7 @@ class View_Grid2 {
                             }
                         }
                     )
-                }
+                })
                     .columnsTemplate("1fr 1fr 1fr")
                     .columnsGap(10)
                     .rowsGap(10)

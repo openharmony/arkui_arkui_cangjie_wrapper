@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/7/4
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -20,6 +23,15 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.{ArrayList, HashMap}
+
+func parseScrollState(state: ScrollState) {
+        match (state) {
+            case Idle => "Idle"
+            case Scrolling => "Scrolling"
+            case Fling => "Fling"
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+}
 
 @Entry
 @Component
@@ -45,9 +57,12 @@ class View_List {
     var offset: Float64 = 0.0
     @State
     var state: ScrollState = ScrollState.Idle
-    let stateValue = ScrollState.Idle.getValue()
-    let stateValue2 = ScrollState.Scrolling.getValue()
-    let stateValue3 = ScrollState.Fling.getValue()
+    let stateValue = 0
+    // ScrollState.Idle.getValue()
+    let stateValue2 = 1
+    // ScrollState.Scrolling.getValue()
+    let stateValue3 = 2
+    // ScrollState.Fling.getValue()
 
     func build() {
         Column() {
@@ -82,7 +97,7 @@ class View_List {
                     .alignListItem(ListItemAlign.Center)
                     .sticky(StickyStyle.Footer)
                     .sticky(StickyStyle.None)
-                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SELF_ONLY, NestedScrollMode.SELF_ONLY))
+                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SelfOnly, NestedScrollMode.SelfOnly))
                     .onScrollIndex(
                         {
                             start: Int32, end: Int32, center: Int32 =>
@@ -108,7 +123,11 @@ class View_List {
                             this.scrollstart = false
                         }
                     )
-            }.width(100.percent).height(40.percent).backgroundColor(0xDCDCDC).padding(top: 5.px)
+            }
+                .width(100.percent)
+                .height(40.percent)
+                .backgroundColor(0xDCDCDC)
+                .padding(top: 5.px)
 
             Text("${firstIndex}" + "${lastIndex}")
                 .textAlign(TextAlign.Center)
@@ -128,7 +147,8 @@ class View_List {
                 .id("text3")
                 .backgroundColor(Color.Green)
 
-            Text("${this.offset}" + this.state.toString())
+            Text("${this.offset}" + parseScrollState(this
+                .state))
                 .textAlign(TextAlign.Center)
                 .width(100.percent)
                 .id("text4")
@@ -152,9 +172,13 @@ class View_List {
                     )
                 }
                     .id("list2")
-                    .nestedScroll(NestedScrollOptions(NestedScrollMode.PARENT_FIRST, NestedScrollMode.PARALLEL))
+                    .nestedScroll(NestedScrollOptions(NestedScrollMode.ParentFirst, NestedScrollMode.Parallel))
                     .divider(strokeWidth: 3.px, color: @r(app.color.blue_23C452), startMargin: 2.vp, endMargin: 2.vp)
-            }.width(100.percent).height(20.percent).backgroundColor(0xDCDCDC).padding(top: 5.px)
+            }
+                .width(100.percent)
+                .height(20.percent)
+                .backgroundColor(0xDCDCDC)
+                .padding(top: 5.px)
 
             Column() {
                 List(space: 20, initialIndex: 0) {
@@ -174,11 +198,15 @@ class View_List {
                     )
                 }
                     .id("list3")
-                    .sticky(StickyStyle.Both)
+                    .sticky(StickyStyle.Header)
                     .divider(strokeWidth: @r(app.string.control_Width), color: Color.Blue,
                         startMargin: @r(app.string.control_Width), endMargin: @r(app.string.control_Width))
                     .lanes(minLength: 30.vp, maxLength: 30.vp)
-            }.width(100.percent).height(20.percent).backgroundColor(0xDCDCDC).padding(top: 5.px)
+            }
+                .width(100.percent)
+                .height(20.percent)
+                .backgroundColor(0xDCDCDC)
+                .padding(top: 5.px)
 
             Column() {
                 List(space: 20, initialIndex: 0) {
@@ -202,7 +230,11 @@ class View_List {
                     .sticky(StickyStyle.Header)
                     .divider(strokeWidth: @r(app.string.control_Width), color: @r(app.color.blue_23C452),
                         startMargin: @r(app.string.control_Width), endMargin: @r(app.string.control_Width))
-            }.width(100.percent).height(20.percent).backgroundColor(0xDCDCDC).padding(top: 5.px)
+            }
+                .width(100.percent)
+                .height(20.percent)
+                .backgroundColor(0xDCDCDC)
+                .padding(top: 5.px)
         }
     }
 }

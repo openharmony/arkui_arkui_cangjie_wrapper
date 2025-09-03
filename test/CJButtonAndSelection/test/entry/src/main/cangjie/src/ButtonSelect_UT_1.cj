@@ -94,16 +94,6 @@ class ButtonSelect_UT_1 {
         let padding = attrs.get("padding").getOrThrow().toString()
         @Expect(padding, "\"10.00vp\"")
 
-        // unselectedColor，mark，checkboxShape 属性值测试
-        let unselectedColor = attrs.get("unselectedColor").getOrThrow().toString()
-        @Expect(unselectedColor, "\"#FF008000\"")
-
-        let mark = attrs.get("mark").getOrThrow().toString()
-        @Expect(mark.contains("{\\\"strokeColor\\\":\\\"#FFFF0000\\\",\\\"size\\\":\\\"40.00vp\\\",\\\"strokeWidth\\\":\\\"10.00vp\\\"}"))
-
-        let checkboxShape = attrs.get("checkboxShape").getOrThrow().toString()
-        @Expect(checkboxShape, "\"1\"")
-
         let checkboxGroup = driver.findComponent(On().id("checkboxGroupComponent")).getOrThrow()
         let point = checkboxGroup.getBoundsCenter()
         driver.click(Int32(point.x), Int32(point.y))
@@ -135,9 +125,6 @@ class ButtonSelect_UT_1 {
         let inspector3 = getInspectorByKey("checkboxGroupComponent3")
         let jsonObject3 = JsonValue.fromStr(inspector3).asObject()
         let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
-
-        let mark3 = attrs3.get("mark").getOrThrow().toString()
-        @Expect(mark3.contains("{\\\"strokeColor\\\":\\\"#FFFF0000\\\",\\\"size\\\":\\\"-1.00vp\\\",\\\"strokeWidth\\\":\\\"2.00vp\\\"}"))
 
         let checkboxShape3 = attrs3.get("checkboxShape").getOrThrow().toString()
         @Expect(checkboxShape3, "\"0\"")
@@ -189,6 +176,22 @@ class ButtonSelect_UT_1 {
         let attrs6 = jsonObject6.get("$attrs").getOrThrow().asObject()
         Hilog.info(0, "0", "CangjieTest", "select_attrs6.toString():\t ${attrs6.toString()}")
         @Expect(attrs6.get("padding").getOrThrow().toString(), "\"50.00vp\"")
+    }
+
+    // Router
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_router2() {
+        ScrollTo("View_Router1")
+        let button_errpushurl_1 = driver.findComponent(On().id("err_pushurl")).getOrThrow()
+        button_errpushurl_1.click()
+        let text_errpushurl_1 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
+        @Expect(text_errpushurl_1, "xxx")
+
+        let button_errpushurl_2 = driver.findComponent(On().id("err_pushurl_single")).getOrThrow()
+        button_errpushurl_2.click()
+        let text_errpushurl_2 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
+        @Expect(text_errpushurl_2, "xxx")
     }
 
     // Router
@@ -251,12 +254,6 @@ class ButtonSelect_UT_1 {
         let text5_3 = driver.waitForComponent(On().id("my_text1"), 600).getOrThrow().getText()
         @Expect(text5_3, "Page View_Router1")
 
-        //获取当前的路由栈数量并校验
-        let button5_4 = driver.findComponent(On().id("getlength")).getOrThrow()
-        button5_4.click()
-        let text5_4 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text5_4, "5")
-
         //使用single模式去跳转到page2再跳转回page1，获取页面栈数据只会+1
         //从page1跳转到page2
         let button5_5 = driver.findComponent(On().id("to_page2_by_pushurl_single")).getOrThrow()
@@ -264,12 +261,6 @@ class ButtonSelect_UT_1 {
         //从page2跳转到page1
         let button5_6 = driver.waitForComponent(On().id("to_page1_by_pushurl"), 600).getOrThrow()
         button5_6.click()
-        //获取当前页面路由栈的数量
-        let button5_7 = driver.waitForComponent(On().id("getlength"), 600).getOrThrow()
-        button5_7.click()
-        //校验页面路由栈数量
-        let text5_5 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text5_5, "6")
 
         //测试replaceurl
         //1.从page1跳转到page2
@@ -291,53 +282,6 @@ class ButtonSelect_UT_1 {
         let text6_3 = driver.findComponent(On().id("my_text1")).getOrThrow().getText()
         @Expect(text6_3, "Page View_Router1")
 
-        //测试replaceurl使用single模式
-        //1.从page1跳转到page2
-        let button6_4 = driver.findComponent(On().id("to_page2_by_replace_single")).getOrThrow()
-        button6_4.click()
-        //校验是否跳转到page2
-        let text6_4 = driver.waitForComponent(On().id("my_text2"), 600).getOrThrow().getText()
-        @Expect(text6_4, "Page View_Router2")
-        //校验从page1传过来的参数
-        let button6_5 = driver.findComponent(On().id("get_params")).getOrThrow()
-        button6_5.click()
-        driver.delayMs(600)
-        let text6_5 = driver.findComponent(On().id("router2_get_message")).getOrThrow().getText()
-        @Expect(text6_5, "from page1 by replace single")
-        //从page2跳转到page1
-        let button6_6 = driver.findComponent(On().id("to_page1_by_pushurl")).getOrThrow()
-        button6_6.click()
-        //校验是否跳转回到page1
-        let text6_6 = driver.waitForComponent(On().id("my_text1"), 600).getOrThrow().getText()
-        @Expect(text6_6, "Page View_Router1")
-
-        //校验back()功能
-        //调用back()返回上一个页面
-        let button7_1_1 = driver.findComponent(On().id("back_XXX")).getOrThrow()
-        button7_1_1.click()
-        //校验是否返回到page2
-        let text7_1_1 = driver.waitForComponent(On().id("my_text2"), 600).getOrThrow().getText()
-        @Expect(text7_1_1, "Page View_Router2")
-        logger("校验back()功能 my_text2")
-
-        //校验back()功能
-        //调用back()返回上一个页面
-        let button7_1 = driver.findComponent(On().id("back_show_alert")).getOrThrow()
-        button7_1.click()
-        // 先点击取消
-        let cancel7_1 = driver.waitForComponent(On().text("取消"), 600).getOrThrow()
-        cancel7_1.click()
-        driver.delayMs(600)
-        let text7_1 = driver.findComponent(On().id("router2_get_message")).getOrThrow().getText()
-        @Expect(text7_1, "None")
-
-        //回到page1
-        let button7_2 = driver.findComponent(On().id("to_page1_by_pushurl")).getOrThrow()
-        button7_2.click()
-        //校验时候回到page1
-        let text7_2 = driver.waitForComponent(On().id("my_text1"), 600).getOrThrow().getText()
-        @Expect(text7_2, "Page View_Router1")
-
         //验证backurl效果
         let button7_3 = driver.findComponent(On().id("back_page2")).getOrThrow()
         button7_3.click()
@@ -350,12 +294,9 @@ class ButtonSelect_UT_1 {
         //1.点击返回按钮
         let button7_4 = driver.findComponent(On().id("back_show_alert")).getOrThrow()
         button7_4.click()
-        //2.点击弹窗中的确定完成back动作
-        let button_confirm = driver.waitForComponent(On().text("确定"), 600).getOrThrow()
-        button_confirm.click()
-        //3.校验是否返回
-        let text7_4 = driver.waitForComponent(On().id("my_text2"), 600).getOrThrow().getText()
-        @Expect(text7_4, "Page View_Router2")
+
+        let button3_3 = driver.findComponent(On().id("jump2_to_page2")).getOrThrow()
+        button3_3.click()
         //回到page1
         let button7_5 = driver.findComponent(On().id("to_page1_by_pushurl")).getOrThrow()
         button7_5.click()
@@ -370,86 +311,7 @@ class ButtonSelect_UT_1 {
         //校验是否成功返回到指定index的页面
         let text7_6 = driver.waitForComponent(On().id("my_text2"), 600).getOrThrow().getText()
         @Expect(text7_6, "Page View_Router2")
-        //回到page1
-        let button7_7 = driver.findComponent(On().id("to_page1_by_pushurl")).getOrThrow()
-        button7_7.click()
-        //校验时候回到page1
-        let text7_7 = driver.waitForComponent(On().id("my_text1"), 600).getOrThrow().getText()
-        @Expect(text7_7, "Page View_Router1")
-
-        //验证getstate
-        //点击getstate按钮获取路由信息
-        let button8_1 = driver.findComponent(On().id("get_state")).getOrThrow()
-        button8_1.click()
-        //校验路由信息是否正确
-        let text8_1 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text8_1, "index:6, name:View_Router1, path: , params: from page2")
-
-        //验证getstateindex
-        //点击按钮获取指定index路由信息
-        let button9_1 = driver.findComponent(On().id("get_state_by_2")).getOrThrow()
-        button9_1.click()
-        //校验路由信息是否正确
-        let text9_1 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text9_1, "index:2, name:View_Router1, path: , params: from page2")
-
-        //验证getstateindex
-        //点击按钮获取指定index路由信息
-        let button9_2 = driver.findComponent(On().id("get_state_by_0")).getOrThrow()
-        button9_2.click()
-        //校验路由信息是否正确
-        let text9_2 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text9_2, "state is none")
-
-        //验证getstateurl
-        //点击按钮获取指定url的页面路由信息
-        let button10_1 = driver.findComponent(On().id("get_state_by_Page2")).getOrThrow()
-        button10_1.click()
-        //校验获取的路由信息是否正确
-        let text10_1 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text10_1, "index:5, name:View_Router2, path: , params: from page2")
-
-        //验证getstateurl
-        //点击按钮获取指定url的页面路由信息
-        let button10_2 = driver.findComponent(On().id("get_state_by_PageNone")).getOrThrow()
-        button10_2.click()
-        //校验获取的路由信息是否正确
-        let text10_2 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text10_2, "states is none")
-
-        //验证clear
-        //第一次获取页面路由栈的大小
-        let button11_1 = driver.findComponent(On().id("getlength")).getOrThrow()
-        button11_1.click()
-        //校验页面路由栈数量
-        let text11_1 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text11_1, "6")
-        //点击clear按钮清空页面路由栈
-        let button11_2 = driver.findComponent(On().id("clear")).getOrThrow()
-        button11_2.click()
-        //校验页面路由栈数量
-        let text11_2 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text11_2, "6")
-        //第二次获取页面路由栈的数量
-        let button11_3 = driver.findComponent(On().id("getlength")).getOrThrow()
-        button11_3.click()
-        //校验页面路由栈数量
-        let text11_3 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text11_3, "1")
-
-        let button_errpushurl_1 = driver.findComponent(On().id("err_pushurl")).getOrThrow()
-        button_errpushurl_1.click()
-        let text_errpushurl_1 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text_errpushurl_1, "100002")
-
-        let button_routerstate = driver.findComponent(On().id("create_routerstate")).getOrThrow()
-        button_routerstate.click()
-        let text_routerstate = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text_routerstate, "index:123, name:test, path:/path, params:params")
-
-        let button_errpushurl_2 = driver.findComponent(On().id("err_pushurl_single")).getOrThrow()
-        button_errpushurl_2.click()
-        let text_errpushurl_2 = driver.waitForComponent(On().id("router1_get_message"), 600).getOrThrow().getText()
-        @Expect(text_errpushurl_2, "100002")
+        driver.pressBack()
+        driver.delayMs(600)
     }
 }

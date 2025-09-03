@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/27
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -20,7 +23,7 @@ import ohos.font.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
@@ -36,7 +39,7 @@ class View_PatternLock2 {
     func build() {
         Column() {
             Text(this.message).textAlign(TextAlign.Center).margin(20).fontSize(20).id("text0")
-            Text("${this.lastDot}").textAlign(TextAlign.Center).margin(20).fontSize(20).id("text1")
+            Text("${this.message}").textAlign(TextAlign.Center).margin(20).fontSize(20).id("text1")
             PatternLock(controller: this.patternLockController)
                 .sideLength(200.vp)
                 .pathStrokeWidth(18.vp)
@@ -72,18 +75,15 @@ class View_PatternLock2 {
                     }
                 )
                 .id("patternLock")
-            Button("Reset PatternLock")
-                .margin(30)
-                .onClick(
-                    {
-                        evt =>
-                        // 重置密码锁
-                        this.patternLockController.reset()
-                        this.passwords = []
-                        this.message = 'Please input password'
-                    }
-                )
-                .id("reset_pattern")
+            Button("Reset PatternLock").margin(30).onClick(
+                {
+                    evt =>
+                    // 重置密码锁
+                    this.patternLockController.reset()
+                    this.passwords = []
+                    this.message = 'Please input password'
+                }
+            ).id("reset_pattern")
             PatternLock()
         }.width(100.percent).height(100.percent)
     }

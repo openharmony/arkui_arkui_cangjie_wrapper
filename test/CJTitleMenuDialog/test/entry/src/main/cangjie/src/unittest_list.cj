@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/13
+ */
 package ohos_app_cangjie_entry
 
 let _ = testsuites()
@@ -48,7 +51,7 @@ let UT1 = ObservedArrayList<String>(
 let UT2 = ObservedArrayList<String>(
     [
         "View_MenuItemGroup",
-        "View_Prompt",
+//        "View_Prompt",
         "View_Accessibility",
         "View_Global"
     ]
