@@ -30,13 +30,13 @@ class View_DragControl {
     @Builder
     func dragPreviewBuilder() {
         Text("dragPreview")
-            .width(150)
-            .height(50)
-            .fontSize(20)
-            .borderRadius(10)
-            .textAlign(TextAlign.Center)
-            .fontColor(Color.Black)
-            .backgroundColor(Color.Red)
+        .width(150)
+        .height(50)
+        .fontSize(20)
+        .borderRadius(10)
+        .textAlign(TextAlign.Center)
+        .fontColor(Color.Black)
+        .backgroundColor(Color.Red)
     }
 
     @Builder
@@ -45,33 +45,31 @@ class View_DragControl {
             Text('Test menu item 1').fontSize(20).width(200).height(50).textAlign(TextAlign.Center)
             Divider().height(10)
             Text('Test menu item 2').fontSize(20).width(200).height(50).textAlign(TextAlign.Center)
-        }.width(200).height(200)
+        }
+        .width(200)
+        .height(200)
     }
 
-    let color = Array<UInt8>(80000, repeat: 100)
-    let opts = InitializationOptions(UniqueImageSize(200, 200))
+    let color = Array<UInt8>(80000, repeat:100)
+    let opts = InitializationOptions( UniqueImageSize(200, 200))
 
     func build() {
         Column {
-            Image(@r(app.media.startIcon))
-                .width(200)
-                .height(200)
-                .id("image1")
-                .dragPreview("")
-                .bindContextMenu(bind(this.MenuBuilder, this), ResponseType.RightClick)
+            Image(@r(app.media.startIcon)).width(200).height(200).id("image1")
+            .dragPreview("")
+            .bindContextMenu(builder: this.MenuBuilder, responseType: ResponseType.RightClick)
 
-            Button("test drag control 1.")
-                .width(200)
-                .height(200)
-                .id("button1")
-                .onDragStart({evt =>})
-                .dragPreview("")
-                .bindContextMenu(bind(this.MenuBuilder, this), ResponseType.RightClick)
+            Button("test drag control 1.").width(200).height(200).id("button1")
+            .onDragStart({ evt =>  })
+            .dragPreview("")
+            .bindContextMenu(builder: this.MenuBuilder, responseType: ResponseType.RightClick)
 
-            Button("test drag control 2.").width(200).height(200).id("button2").dragPreview("button1")
+            Button("test drag control 2.").width(200).height(200).id("button2")
+            .dragPreview("button1")
 
             // defalt
             Image(@r(app.media.startIcon)).width(200).height(200).id("image2")
-        }.width(100.percent)
+        }
+        .width(100.percent)
     }
 }

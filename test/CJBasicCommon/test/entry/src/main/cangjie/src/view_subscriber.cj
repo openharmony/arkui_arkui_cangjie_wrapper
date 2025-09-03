@@ -23,51 +23,53 @@ import std.collection.ArrayList
 
 class TestObserver <: Observer {
     public TestObserver() {
+
     }
 
     public func onStateUpdate(info: String, dependentElmtIds: ArrayList<Int64>): Unit {
+
     }
 
     public func onStateUpdate(info: String): Unit {
+
     }
     public func notifyRead(info: String): Unit {
+
     }
     public func id(): Int64 {
         return 1
     }
     public func aboutToBeDeleted(): Unit {
+
     }
 }
 
 @Entry
 @Component
 class View_Subscriber {
-    @State
-    var size: String = "0"
+
+    @State var size: String = "0"
 
     func build() {
         Column(space: 10) {
             Text(size).width(20.vp).id("show")
 
-            Button("size")
-                .onClick {
-                    e => this.size = SubscriberManager.getInstance().sizeOfManager().toString()
-                }
-                .id("size")
+            Button("size").onClick { e =>
+                this.size = SubscriberManager.getInstance().sizeOfManager().toString()
+            }.id("size")
 
             Button("ShowInfo").onClick {
-                e => SubscriberManager.getInstance().dumpSubscriberInfo()
+                e =>
+                SubscriberManager.getInstance().dumpSubscriberInfo()
             }.id("info")
 
-            Button("get")
-                .onClick {
-                    e =>
-                    let p0 = TestObserver()
-                    SubscriberManager.getInstance().add(p0)
-                    SubscriberManager.getInstance().add(p0)
-                    SubscriberManager.getInstance().get(2)
-                }
-                .id("get")
+            Button("get").onClick {
+                e =>
+                let p0 = TestObserver()
+                SubscriberManager.getInstance().add(p0)
+                SubscriberManager.getInstance().add(p0)
+                SubscriberManager.getInstance().get(2)
+            }.id("get")
         }
     }
 }

@@ -20,7 +20,7 @@ import ohos.arkui.component.*
 import ohos.arkui.component.lazy_for_each.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 public class Student {
     public Student(
@@ -39,11 +39,11 @@ class StudentDataSource <: IDataSource<Student> {
         return data_[index]
     }
 
-    public func onRegisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func registerDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = listener
     }
 
-    public func onUnregisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func unregisterDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = None
     }
 
@@ -53,23 +53,23 @@ class StudentDataSource <: IDataSource<Student> {
     }
 
     public func notifyRemove(index: Int64): Unit {
-        let listener: DataChangeListener = listenerOp.getOrThrow()
-        listener.onDataDelete(index)
+    let listener: DataChangeListener = listenerOp.getOrThrow()
+    listener.onDataDelete(IntNative(index))
     }
 
     public func notifyInsert(index: Int64): Unit {
-        let listener: DataChangeListener = listenerOp.getOrThrow()
-        listener.onDataAdd(index)
+    let listener: DataChangeListener = listenerOp.getOrThrow()
+    listener.onDataAdd(IntNative(index))
     }
 
     public func notifyMove(index1: Int64, index2: Int64): Unit {
-        let listener: DataChangeListener = listenerOp.getOrThrow()
-        listener.onDataMove(index1, index2)
+    let listener: DataChangeListener = listenerOp.getOrThrow()
+    listener.onDataMove(IntNative(index1), IntNative(index2))
     }
 
     public func notifyChange(index: Int64): Unit {
-        let listener: DataChangeListener = listenerOp.getOrThrow()
-        listener.onDataChange(index)
+    let listener: DataChangeListener = listenerOp.getOrThrow()
+    listener.onDataChange(IntNative(index))
     }
 }
 
@@ -92,35 +92,33 @@ public class View_Lazyforeach {
         Column(space: 30) {
             Text("-----------------")
             Column {
-            //                LazyForEach(
-            //                    dataSourceStu,
-            //                    itemGeneratorFunc: {
-            //                        stu: Student, idx: Int64 => Column {
-            //                            Text(stu.name).id("my_text_${idx}")
-            //                        }
-            //                    }
-            //                )
+//                LazyForEach(
+//                    dataSourceStu,
+//                    itemGeneratorFunc: {
+//                        stu: Student, idx: Int64 => Column {
+//                            Text(stu.name).id("my_text_${idx}")
+//                        }
+//                    }
+//                )
             }.height(400.0)
 
-            Text("click to notifyChange")
-                .onClick(
-                    {
-                        evt =>
-                        dataSourceStu.data_.remove(at: 3)
-                        dataSourceStu.notifyRemove(3)
-                        dataSourceStu.data_[5] = Student("Yigao", 10086)
-                        dataSourceStu.notifyChange(5)
-                        dataSourceStu.data_.add(Student("xiaoming", 10086), at: changeID)
-                        dataSourceStu.notifyInsert(changeID)
-                        let temp = dataSourceStu.data_[7]
-                        dataSourceStu.data_[7] = dataSourceStu.data_[8]
-                        dataSourceStu.data_[8] = temp
-                        dataSourceStu.notifyMove(7, 8)
-                        dataSourceStu.notifyChangeAll()
-                        changeID += 1
-                    }
-                )
-                .id("my_text")
+            Text("click to notifyChange").onClick(
+                {
+                    evt =>
+                    dataSourceStu.data_.remove(at: 3)
+                    dataSourceStu.notifyRemove(3)
+                    dataSourceStu.data_[5] =  Student("Yigao", 10086)
+                    dataSourceStu.notifyChange(5)
+                    dataSourceStu.data_.add( Student("xiaoming", 10086), at:changeID)
+                    dataSourceStu.notifyInsert(changeID)
+                    let temp = dataSourceStu.data_[7]
+                    dataSourceStu.data_[7] = dataSourceStu.data_[8]
+                    dataSourceStu.data_[8] = temp
+                    dataSourceStu.notifyMove(7, 8)
+                    dataSourceStu.notifyChangeAll()
+                    changeID += 1
+                }
+            ).id("my_text")
         }
     }
 }

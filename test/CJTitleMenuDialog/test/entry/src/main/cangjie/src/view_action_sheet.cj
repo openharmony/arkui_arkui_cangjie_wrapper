@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/11/19
+ */
 package ohos_app_cangjie_entry
 
 internal import ohos.arkui.component.*

@@ -35,7 +35,7 @@ class CanvasDrawing_UT_2 {
 
     private func ScrollTo(view: String) {
         driver.delayMs(500)
-        Hilog.error(1, "1", "Cangjie-Test", "ScrollTo ${view}")
+        Hilog.error(1,"1","Cangjie-Test", "ScrollTo ${view}")
         var isSuccess = true
         var count = 0
         do {
@@ -45,7 +45,7 @@ class CanvasDrawing_UT_2 {
                 driver.delayMs(500)
                 isSuccess = true
             } catch (e: BusinessException) {
-                Hilog.error(1, "1", "Cangjie-Test", e.message)
+                Hilog.error(1,"1","Cangjie-Test", e.message)
                 driver.pressBack()
                 driver.delayMs(500)
                 count = count + 1
@@ -57,7 +57,7 @@ class CanvasDrawing_UT_2 {
     protected override func beforeAll() {
         driver.delayMs(500)
         let scrollBar = driver.findComponent(On().id("scroller"))
-        Hilog.error(1, "1", "Cangjie-Test", "started")
+        Hilog.error(1,"1","Cangjie-Test", "started")
         scrollBar?.scrollSearch(On().id("Index_UT2"))?.click()
         driver.delayMs(500)
     }
@@ -196,7 +196,7 @@ class CanvasDrawing_UT_2 {
         var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
 
         let commands = attrs.get("commands").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "commands: ${commands}")
+        Hilog.info(1,"1","1","commands: ${commands}")
         @Expect(commands, "\"\"")
 
         var path_2 = getInspectorByKey("path_2")
@@ -204,13 +204,13 @@ class CanvasDrawing_UT_2 {
         var attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
 
         let commands2 = attrs2.get("commands").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "commands2: ${commands2}")
+        Hilog.info(1,"1","1","commands2: ${commands2}")
         @Expect(commands2, "\"\"")
         let width2 = attrs2.get("width").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "width2: ${width2}")
+        Hilog.info(1,"1","1","width2: ${width2}")
         @Expect(width2, "\"600.00vp\"")
         let height2 = attrs2.get("height").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "height2: ${height2}")
+        Hilog.info(1,"1","1","height2: ${height2}")
         @Expect(height2, "\"20.00vp\"")
 
         var path_3 = getInspectorByKey("path_3")
@@ -218,13 +218,13 @@ class CanvasDrawing_UT_2 {
         var attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
 
         let commands3 = attrs3.get("commands").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "commands3: ${commands3}")
+        Hilog.info(1,"1","1","commands3: ${commands3}")
         @Expect(commands3, "\"\"")
         let width3 = attrs3.get("width").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "width3: ${width3}")
+        Hilog.info(1,"1","1","width3: ${width3}")
         @Expect(width3, "\"600.00vp\"")
         let height3 = attrs3.get("height").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "height3: ${height3}")
+        Hilog.info(1,"1","1","height3: ${height3}")
         @Expect(height3, "\"30.00vp\"")
 
         var path_4 = getInspectorByKey("path_4")
@@ -232,13 +232,13 @@ class CanvasDrawing_UT_2 {
         var attrs4 = jsonObject4.get("$attrs").getOrThrow().asObject()
 
         let commands4 = attrs4.get("commands").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "commands4: ${commands4}")
+        Hilog.info(1,"1","1","commands4: ${commands4}")
         @Expect(commands4, "\"\"")
         let width4 = attrs4.get("width").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "width4: ${width4}")
+        Hilog.info(1,"1","1","width4: ${width4}")
         @Expect(width4, "\"600.00vp\"")
         let height4 = attrs4.get("height").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "height4: ${height4}")
+        Hilog.info(1,"1","1","height4: ${height4}")
         @Expect(height4, "\"40.00vp\"")
 
         var path_5 = getInspectorByKey("path_5")
@@ -246,7 +246,7 @@ class CanvasDrawing_UT_2 {
         var attrs5 = jsonObject5.get("$attrs").getOrThrow().asObject()
 
         let commands5 = attrs5.get("commands").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "commands5: ${commands5}")
+        Hilog.info(1,"1","1","commands5: ${commands5}")
         @Expect(commands5, "\"M0 0 L600 0\"")
 
         var path_6 = getInspectorByKey("path_6")
@@ -254,13 +254,13 @@ class CanvasDrawing_UT_2 {
         var attrs6 = jsonObject6.get("$attrs").getOrThrow().asObject()
 
         let commands6 = attrs6.get("commands").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "commands6: ${commands6}")
+        Hilog.info(1,"1","1","commands6: ${commands6}")
         @Expect(commands6, "\"M0 0 L600 0\"")
         let width6 = attrs6.get("width").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "width6: ${width6}")
+        Hilog.info(1,"1","1","width6: ${width6}")
         @Expect(width6, "\"600.00vp\"")
         let height6 = attrs6.get("height").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "height6: ${height6}")
+        Hilog.info(1,"1","1","height6: ${height6}")
         @Expect(height6, "\"20.00vp\"")
 
         var path_7 = getInspectorByKey("path_7")
@@ -268,13 +268,13 @@ class CanvasDrawing_UT_2 {
         var attrs7 = jsonObject7.get("$attrs").getOrThrow().asObject()
 
         let commands7 = attrs7.get("commands").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "commands7: ${commands7}")
+        Hilog.info(1,"1","1","commands7: ${commands7}")
         @Expect(commands7, "\"M0 0 L600 0\"")
         let width7 = attrs7.get("width").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "width7: ${width7}")
+        Hilog.info(1,"1","1","width7: ${width7}")
         @Expect(width7, "\"600.00vp\"")
         let height7 = attrs7.get("height").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "height7: ${height7}")
+        Hilog.info(1,"1","1","height7: ${height7}")
         @Expect(height7, "\"30.00vp\"")
 
         var path_8 = getInspectorByKey("path_8")
@@ -282,13 +282,13 @@ class CanvasDrawing_UT_2 {
         var attrs8 = jsonObject8.get("$attrs").getOrThrow().asObject()
 
         let commands8 = attrs8.get("commands").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "commands8: ${commands8}")
+        Hilog.info(1,"1","1","commands8: ${commands8}")
         @Expect(commands8, "\"M0 0 L600 0\"")
         let width8 = attrs8.get("width").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "width8: ${width8}")
+        Hilog.info(1,"1","1","width8: ${width8}")
         @Expect(width8, "\"600.00vp\"")
         let height8 = attrs8.get("height").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "height8: ${height8}")
+        Hilog.info(1,"1","1","height8: ${height8}")
         @Expect(height8, "\"40.00vp\"")
 
         var path_9 = getInspectorByKey("path_9")
@@ -296,13 +296,13 @@ class CanvasDrawing_UT_2 {
         var attrs9 = jsonObject9.get("$attrs").getOrThrow().asObject()
 
         let commands9 = attrs9.get("commands").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "commands9: ${commands9}")
+        Hilog.info(1,"1","1","commands9: ${commands9}")
         @Expect(commands9, "\"M0 0 L600 0\"")
         let width9 = attrs9.get("width").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "width9: ${width9}")
+        Hilog.info(1,"1","1","width9: ${width9}")
         @Expect(width9, "\"600.00vp\"")
         let height9 = attrs9.get("height").getOrThrow().toString()
-        Hilog.info(1, "1", "1", "height9: ${height9}")
+        Hilog.info(1,"1","1","height9: ${height9}")
         @Expect(height9, "\"20.00vp\"")
     }
 
@@ -358,7 +358,7 @@ class CanvasDrawing_UT_2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+     @Tag[APILevel12, TestLevel0]
     func Test_Size_Length() {
         ScrollTo("View_Shape")
         let GetSurfaceId = driver.findComponent(On().id("SizeLengthTest"))
@@ -377,7 +377,7 @@ class CanvasDrawing_UT_2 {
     func test_shapeClipAttrs1() {
         ScrollTo("View_ShapeClip")
 
-        let inspector = getInspectorByKey("row")
+        let inspector = getInspectorByKey("test_row_1")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let clip = attrs.get("clip").getOrThrow().toString()

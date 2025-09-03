@@ -34,7 +34,7 @@ class View_CheckboxGroup {
                     .selectedColor(0xcc6f21)
                     //                .unselectedColor(Color.Green)
                     //                .mark(strokeColor: Color.Red, size: 40.0.vp, strokeWidth: 10.0.vp)
-                    //                .checkboxShape(CheckBoxShape.ROUNDED_SQUARE)
+                    //                .checkboxShape(CheckBoxShape.RoundedSquare)
                     .selectAll(true)
                     .onChange {
                         val => text = "Clicked"
@@ -92,7 +92,7 @@ class View_CheckboxGroup {
                     .selectedColor(@r(app.color.blue_23C452))
                     .selectAll(true)
                     //                .mark(strokeColor: Color.RED, size: 30.percent, strokeWidth: 20.percent)
-                    //                .checkboxShape(CheckBoxShape.CIRCLE)
+                    //                .checkboxShape(CheckBoxShape.Circle)
                     .responseRegion(Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent))
                     //                .responseRegionArray(
                     //                [Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent),

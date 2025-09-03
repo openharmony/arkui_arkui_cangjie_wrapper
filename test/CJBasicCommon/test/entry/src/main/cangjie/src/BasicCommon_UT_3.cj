@@ -34,17 +34,17 @@ class BasicCommon_UT_3 {
 
     private func ScrollTo(view: String) {
         driver.delayMs(500)
-        Hilog.info(1, "1", "Cangjie-Test", "ScrollTo ${view}")
+        Hilog.info(1,"1","Cangjie-Test", "ScrollTo ${view}")
         var isSuccess = true
         var count = 0
         do {
             try {
-                let scrollBar = driver.findComponent(On().id("scroller"))
-                scrollBar.scrollSearch(On().id(view)).click()
+                let scrollBar = driver.findComponent(On().id("scroller")).getOrThrow()
+                scrollBar.scrollSearch(On().id(view)).getOrThrow().click()
                 driver.delayMs(500)
                 isSuccess = true
             } catch (e: BusinessException) {
-                Hilog.info(1, "1", "Cangjie-Test", e.message)
+                Hilog.info(1,"1","Cangjie-Test", e.message)
                 driver.pressBack()
                 driver.delayMs(500)
                 count = count + 1
@@ -55,9 +55,9 @@ class BasicCommon_UT_3 {
 
     protected override func beforeAll() {
         driver.delayMs(500)
-        let scrollBar = driver.findComponent(On().id("scroller"))
-        Hilog.info(1, "1", "Cangjie-App", "started")
-        scrollBar.scrollSearch(On().id("Index_UT3")).click()
+        let scrollBar = driver.findComponent(On().id("scroller")).getOrThrow()
+        Hilog.info(1,"1","Cangjie-App", "started")
+        scrollBar.scrollSearch(On().id("Index_UT3")).getOrThrow().click()
         driver.delayMs(500)
     }
 
@@ -93,15 +93,15 @@ class BasicCommon_UT_3 {
 
     // MonopolizeEvents
 
+
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_motionPath() {
         ScrollTo("View_MotionPath")
-        let button01 = driver.findComponent(On().id("motionPathButton_id"))
+        let button01 = driver.findComponent(On().id("motionPathButton_id")).getOrThrow()
         button01.click()
     }
 
-    // View_Observable
 
     // Opacity
     @TestCase
@@ -115,6 +115,7 @@ class BasicCommon_UT_3 {
         let opacity_t = attrs.get("opacity").getOrThrow().toString()
         @Expect(opacity_t, "0.700000")
     }
+
 
     // overlay
     @TestCase
@@ -139,10 +140,10 @@ class BasicCommon_UT_3 {
         var jsonObject = JsonValue.fromStr(inspector).asObject()
         var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let width1 = attrs.get("width").getOrThrow().toString()
-        Hilog.info(1, "1", "Cangjie-App", "######### ${width1}")
+        Hilog.info(1,"1","Cangjie-App", "######### ${width1}")
         @Expect(width1, "\"100.00vp\"")
 
-        let pbtn = driver.waitForComponent(On().id("plusBtn"), 500)
+        let pbtn = driver.waitForComponent(On().id("plusBtn"),500).getOrThrow()
         pbtn.click()
 
         driver.delayMs(500)
@@ -151,11 +152,11 @@ class BasicCommon_UT_3 {
 
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let width2 = attrs.get("width").getOrThrow().toString()
-        Hilog.info(1, "1", "Cangjie-App", "######### ${width2}")
+        Hilog.info(1,"1","Cangjie-App", "######### ${width2}")
         @Expect(width2, "\"110.00vp\"")
-        let Per_keys = driver.findComponent(On().id("PersistentStorage_keys"))
+        let Per_keys = driver.findComponent(On().id("PersistentStorage_keys")).getOrThrow()
         Per_keys.click()
-        let Per_deleteProp = driver.findComponent(On().id("PersistentStorage_deleteProp"))
+        let Per_deleteProp = driver.findComponent(On().id("PersistentStorage_deleteProp")).getOrThrow()
         Per_deleteProp.click()
     }
 
@@ -164,13 +165,13 @@ class BasicCommon_UT_3 {
     @Tag[APILevel12, TestLevel0]
     func test_prop() {
         ScrollTo("View_Prop")
-        let button1 = driver.findComponent(On().id("ParentComponent"))
+        let button1 = driver.findComponent(On().id("ParentComponent")).getOrThrow()
         button1.click()
-        let button2 = driver.findComponent(On().id("SubComponent"))
+        let button2 = driver.findComponent(On().id("SubComponent")).getOrThrow()
         button2.click()
-        let button3 = driver.findComponent(On().id("update"))
+        let button3 = driver.findComponent(On().id("update")).getOrThrow()
         button3.click()
-        let button4 = driver.findComponent(On().id("clear"))
+        let button4 = driver.findComponent(On().id("clear")).getOrThrow()
         button4.click()
     }
 
@@ -212,8 +213,8 @@ class BasicCommon_UT_3 {
     @Tag[APILevel12, TestLevel0]
     func Test_Popup_001() {
         ScrollTo("View_Popup")
-        driver.findComponent(On().id("button1")).click()
-        driver.findComponent(On().text("OK")).click()
+        driver.findComponent(On().id("button1")).getOrThrow().click()
+        driver.findComponent(On().text("OK")).getOrThrow().click()
 
         driver.delayMs(500)
         let otherInspector_01 = getInspectorByKey("Test_Text_01")
@@ -238,8 +239,8 @@ class BasicCommon_UT_3 {
     @Tag[APILevel12, TestLevel0]
     func Test_Popup_002() {
         ScrollTo("View_Popup")
-        driver.findComponent(On().id("button2")).click()
-        driver.findComponent(On().id("button2")).click()
+        driver.findComponent(On().id("button2")).getOrThrow().click()
+        driver.findComponent(On().id("button2")).getOrThrow().click()
 
         let otherInspector_04 = getInspectorByKey("Test_Text_04")
         let otherJsonObject_04 = JsonValue.fromStr(otherInspector_04).asObject()

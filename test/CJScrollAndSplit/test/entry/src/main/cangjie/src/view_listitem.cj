@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/7/11
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -44,7 +47,12 @@ class View_ListItem {
     @Builder
     func pixelMapBuilder() { //拖拽过程样式
         Column() {
-            Text(this.text).fontSize(16).backgroundColor(0xF9CF93).width(80).height(80).textAlign(TextAlign.Center)
+            Text(this.text)
+                .fontSize(16)
+                .backgroundColor(0xF9CF93)
+                .width(80)
+                .height(80)
+                .textAlign(TextAlign.Center)
         }
     }
 
@@ -53,7 +61,9 @@ class View_ListItem {
 
     protected override func aboutToAppear() {
         for (i in 1..11) {
-            this.numbers.add("${i}")
+            this
+                .numbers
+                .add("${i}")
         }
     }
 
@@ -62,7 +72,9 @@ class View_ListItem {
         Row() {
             Button("Delete").margin(4.vp)
             Button("Set").margin(4.vp)
-        }.padding(4.vp).justifyContent(FlexAlign.SpaceEvenly)
+        }
+            .padding(4.vp)
+            .justifyContent(FlexAlign.SpaceEvenly)
     }
 
     func changeIndex(index1: Int64, index2: Int64) { //交换数组位置
@@ -78,7 +90,10 @@ class View_ListItem {
     func HeaderBuilder() {
         Row {
             Text("Header").fontSize(20.vp)
-        }.width(100.percent).justifyContent(FlexAlign.Center).margin(top: 10.vp)
+        }
+            .width(100.percent)
+            .justifyContent(FlexAlign.Center)
+            .margin(top: 10.vp)
     }
 
     func build() {
@@ -86,8 +101,9 @@ class View_ListItem {
             Column() {
                 Column() {
                     List(space: 20, initialIndex: 0, scroller: listScroller) {
-                        ListItemGroup(header: bind(this.HeaderBuilder, this), footer: {=> Text("Footer 1")},
-                            space: 10.vp) {
+                        ListItemGroup(
+                            header: bind(this.HeaderBuilder, this), footer: {=> Text("Footer 1")},
+                                space: 10.vp) {
                             ListItem() {
                                 Text("item1")
                                     .width(100.percent)
@@ -97,8 +113,7 @@ class View_ListItem {
                                     .borderRadius(10.5)
                                     .backgroundColor(0xFFFFFF)
                             }
-                                .swipeAction(end: bind(this.itemEnd, this),
-                                    onOffsetChange: {offset: Float64 => Hilog.info(1, "info", "swipeAction ${offset}")})
+                                .swipeAction(end: bind(this.itemEnd, this), onOffsetChange: {offset: Float64 => Hilog.info(1, "info", "swipeAction ${offset}")})
                                 .selectable(true)
                                 .onSelect({select: Bool => this.selected = select})
 
@@ -109,7 +124,10 @@ class View_ListItem {
                                     .textAlign(TextAlign.Center)
                                     .borderRadius(10.5)
                                     .backgroundColor(0xFFFFFF)
-                            }.swipeAction().selectable(true).onSelect({select: Bool => this.selected = select})
+                            }
+                                .swipeAction()
+                                .selectable(true)
+                                .onSelect({select: Bool => this.selected = select})
 
                             ListItem() {
                                 Text("item3")
@@ -126,9 +144,7 @@ class View_ListItem {
                         }
                             .borderRadius(10.vp)
                             .backgroundColor(Color.White)
-                            .divider(
-                                ListDividerOptions(strokeWidth: 2.vp, color: Color(0X808080), startMargin: 10.vp,
-                                    endMargin: 10.vp))
+                            .divider(ListDividerOptions(strokeWidth: 2.vp, color: Color(0X808080), startMargin: 10.vp, endMargin: 10.vp))
                     }
                         .width(80.percent)
                         .scrollBar(BarState.Off)
@@ -139,21 +155,42 @@ class View_ListItem {
                         })
 
                     Row() {
-                        Button("getItem").onClick({
-                            e =>
-                        }).id("getItem")
-                        Button("getInfo").onClick({
-                            e =>
-                        }).id("getInfo")
-                        Button("scrollItem").onClick({
-                            e =>
-                        }).id("scrollItem")
-                        Button("closeSwipe").onClick({
-                            e => this.message = "closeAllSwipeActions 0 1"
-                        }).id("closeSwipe")
+                        Button("getItem")
+                            .onClick(
+                                {
+                                   e =>
+                                }
+                            )
+                            .id("getItem")
+                        Button("getInfo")
+                            .onClick(
+                                {
+                                   e =>
+                                }
+                            )
+                            .id("getInfo")
+                        Button("scrollItem")
+                            .onClick(
+                                {
+                                   e =>
+                                }
+                            )
+                            .id("scrollItem")
+                        Button("closeSwipe")
+                            .onClick(
+                                {
+                                  e =>
+                                    this.message = "closeAllSwipeActions 0 1"
+                                }
+                            )
+                            .id("closeSwipe")
                     }.width(100.percent)
                     Text("${this.message}").id("message")
-                }.width(100.percent).height(460.vp).backgroundColor(0xDCDCDC).padding(top: 5.px)
+                }
+                    .width(100.percent)
+                    .height(460.vp)
+                    .backgroundColor(0xDCDCDC)
+                    .padding(top: 5.px)
                 Text("${this.selected}").id("text")
 
                 Column() {
@@ -179,8 +216,12 @@ class View_ListItem {
                     }
                         .scrollBar(BarState.Off)
                         .width(90.percent)
-                        .nestedScroll(NestedScrollOptions(NestedScrollMode.SELF_FIRST, NestedScrollMode.SELF_FIRST))
-                }.width(100.percent).height(360.vp).backgroundColor(0xDCDCDC).padding(top: 5.px)
+                        .nestedScroll(NestedScrollOptions(NestedScrollMode.SelfFirst, NestedScrollMode.SelfFirst))
+                }
+                    .width(100.percent)
+                    .height(360.vp)
+                    .backgroundColor(0xDCDCDC)
+                    .padding(top: 5.px)
                 Text("${this.selected}").id("text")
 
                 Column() {
@@ -206,8 +247,12 @@ class View_ListItem {
                     }
                         .scrollBar(BarState.Off)
                         .width(90.percent)
-                        .nestedScroll(NestedScrollOptions(NestedScrollMode.SELF_FIRST, NestedScrollMode.SELF_FIRST))
-                }.width(100.percent).height(360.vp).backgroundColor(0xDCDCDC).padding(top: 5.px)
+                        .nestedScroll(NestedScrollOptions(NestedScrollMode.SelfFirst, NestedScrollMode.SelfFirst))
+                }
+                    .width(100.percent)
+                    .height(360.vp)
+                    .backgroundColor(0xDCDCDC)
+                    .padding(top: 5.px)
                 Text("${this.selected}").id("text2")
 
                 Column() {
@@ -233,8 +278,12 @@ class View_ListItem {
                     }
                         .scrollBar(BarState.Off)
                         .width(90.percent)
-                        .nestedScroll(NestedScrollOptions(NestedScrollMode.SELF_FIRST, NestedScrollMode.SELF_FIRST))
-                }.width(100.percent).height(360.vp).backgroundColor(0xDCDCDC).padding(top: 5.px)
+                        .nestedScroll(NestedScrollOptions(NestedScrollMode.SelfFirst, NestedScrollMode.SelfFirst))
+                }
+                    .width(100.percent)
+                    .height(360.vp)
+                    .backgroundColor(0xDCDCDC)
+                    .padding(top: 5.px)
                 Text("${this.selected}").id("text3")
 
                 List() {}
@@ -243,7 +292,7 @@ class View_ListItem {
                     .lanes(minLength: 1.vp, maxLength: 1.vp)
                     .width(90.percent)
                     .friction(1.0)
-                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SELF_FIRST, NestedScrollMode.SELF_FIRST))
+                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SelfFirst, NestedScrollMode.SelfFirst))
                     .enableScrollInteraction(true)
             }
         }

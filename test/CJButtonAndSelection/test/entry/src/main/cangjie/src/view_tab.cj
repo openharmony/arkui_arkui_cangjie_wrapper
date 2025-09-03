@@ -52,7 +52,7 @@ class View_Tab {
                         .id("Button${viewName}")
                         .borderRadius(10)
                         .onClick {
-                            e => Router.push(url: viewName)
+                            e => getUIContext().getRouter().pushUrl(url: viewName)
                         }
                 }
             )

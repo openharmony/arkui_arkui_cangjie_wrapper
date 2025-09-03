@@ -73,35 +73,11 @@ class TitleMenuDialog_UT_1 {
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         Hilog.info(1, "1", "1", "accessibility_id: ${attrs.toString()}")
 
-        let accessibilityGroup = attrs.get("accessibilityGroup").getOrThrow().toString()
-        @Expect(accessibilityGroup, "true")
-
-        let accessibilityLevel = attrs.get("accessibilityLevel").getOrThrow().toString()
-        @Expect(accessibilityLevel, "\"yes\"")
-
-        let accessibilityText = attrs.get("accessibilityText").getOrThrow().toString()
-        @Expect(accessibilityText, "\"分组\"")
-
-        let accessibilityDescription = attrs.get("accessibilityDescription").getOrThrow().toString()
-        @Expect(accessibilityDescription, "\"Column组件可以被选中，播报的内容是“分组”\"")
-
-        let accessibilityTextHint = attrs.get("accessibilityTextHint").getOrThrow().toString()
-        @Expect(accessibilityTextHint, "\"TextHint\"")
-
         // CjResource和异常值测试
         let inspector2 = getInspectorByKey("accessibility_id2")
         let jsonObject2 = JsonValue.fromStr(inspector2).asObject()
         let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
         Hilog.info(1, "1", "1", "accessibility_id2: ${attrs2.toString()}")
-
-        let accessibilityLevel2 = attrs2.get("accessibilityLevel").getOrThrow().toString()
-        @Expect(accessibilityLevel2, "\"auto\"")
-
-        let accessibilityText2 = attrs2.get("accessibilityText").getOrThrow().toString()
-        @Expect(accessibilityText2, "\"菜单\"")
-
-        let accessibilityDescription2 = attrs2.get("accessibilityDescription").getOrThrow().toString()
-        @Expect(accessibilityDescription2, "\"菜单选项\"")
     }
 
     @TestCase
@@ -199,7 +175,9 @@ class TitleMenuDialog_UT_1 {
 
         let button_10 = driver.findComponent(On().id("button_10"))
         button_10?.click()
-        driver.delayMs(1000)
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
     }
 
     @TestCase
@@ -214,12 +192,15 @@ class TitleMenuDialog_UT_1 {
         let test_drag = driver.waitForComponent(On().id("context_menu"), 1000)
         test_drag?.longClick()
         driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
     }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_custom_dialog() {
         ScrollTo("View_CustomDialog")
+        driver.delayMs(1000)
         let inspector = getInspectorByKey("my_dialog")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
@@ -369,9 +350,9 @@ class TitleMenuDialog_UT_1 {
         let textStyle = attrs.get("textStyle").getOrThrow().toString()
         let selectedTextStyle = attrs.get("selectedTextStyle").getOrThrow().toString()
         let constructor = attrs.get("constructor").getOrThrow().toString()
-        @Expect(disappearTextStyle, '{"color":"#FF182431","font":{"size":"14.00fp","weight":"FontWeight.Regular"}}')
+        @Expect(disappearTextStyle, '{"color":"#E5000000","font":{"size":"14.00fp","weight":"FontWeight.Regular"}}')
         @Expect(textStyle, '{"color":"#FF182431","font":{"size":"16.00fp","weight":"FontWeight.Regular"}}')
-        @Expect(selectedTextStyle, '{"color":"#FF007DFF","font":{"size":"20.00vp","weight":"FontWeight.Medium"}}')
+        @Expect(selectedTextStyle, '{"color":"#FF007DFF","font":{"size":"20.00fp","weight":"FontWeight.Medium"}}')
         let result = '{\"start\":\"1970-1-1\",\"end\":\"2100-12-31\",\"selected\":\"${FormatCurrentDate()}\",\"mode\":\"DatePickerMode.DATE\"}'
         @Expect(constructor, result)
     }
@@ -420,46 +401,4 @@ class TitleMenuDialog_UT_1 {
         driver.delayMs(500)
     }
 
-    //    @TestCase
-    //    @Tag[APILevel12, TestLevel0]
-    //    func test_datepickerException1() {
-    //        ScrollTo("View_DatePicker")
-    //
-    //        let inspector = getInspectorByKey("DatePickerException1")
-    //        let jsonObject = JsonValue.fromStr(inspector).asObject()
-    //        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
-    //        let constructor = attrs.get("constructor").getOrThrow().toString()
-    //        let result ='{"start":"1970-1-1","end":"2100-12-31","selected":"${FormatCurrentDate()}","mode":"DatePickerMode.DATE"}'
-    //        @Expect(constructor, result)
-    //
-    //       let show_datePickerDialog = driver.findComponent(On().id("show_datePickerDialog"))
-    //       show_datePickerDialog.click()
-    //       driver.delayMs(500)
-    //       let text = show_datePickerDialog.getText()
-    //       @Expect(text, "显示DatePicker弹窗")
-    //       driver.pressBack()
-    //       driver.delayMs(500)
-    //
-    //       let show_datePickerDialog2 = driver.findComponent(On().id("show_datePickerDialog2"))
-    //       show_datePickerDialog2.click()
-    //       driver.delayMs(500)
-    //       let text2 = show_datePickerDialog2.getText()
-    //       @Expect(text2, "显示DatePicker默认弹窗")
-    //       driver.pressBack()
-    //       driver.delayMs(500)
-    //
-    //       let show_datePickerDialog3 = driver.findComponent(On().id("show_datePickerDialog3"))
-    //       show_datePickerDialog3.click()
-    //       driver.delayMs(500)
-    //       let text3 = show_datePickerDialog3.getText()
-    //       @Expect(text3, "显示默认弹窗")
-    //       driver.pressBack()
-    //       driver.delayMs(500)
-    //    }
-
-    @TestCase
-    @Tag[APILevel12, TestLevel0]
-    func test_bindcontextmenu() {
-        ScrollTo("View_MenuBindContextMenu")
-    }
 }

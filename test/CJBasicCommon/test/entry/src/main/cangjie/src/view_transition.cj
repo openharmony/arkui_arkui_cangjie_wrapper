@@ -39,7 +39,7 @@ class View_Transition {
             Button(this.show)
                 .onClick {
                     evt =>
-                    Hilog.info(1, "1", "Cangjie-App", "Hello Cangjie")
+                    Hilog.info(1,"1","Cangjie-App", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {
@@ -135,7 +135,13 @@ class View_Transition {
             Button("abcc")
                 .width(800.px)
                 .height(400.px)
-                .transition(TransitionEffect.move(TransitionEdge.Bottom).animation(AnimateParam()))
+                .transition(
+                    TransitionEffect
+                        .move(TransitionEdge.Bottom)
+                        .animation(
+                            AnimateParam()
+                        )
+                )
                 .id("my_button8")
         }
     }

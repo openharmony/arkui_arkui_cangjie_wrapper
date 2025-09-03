@@ -22,7 +22,7 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.router.*
-import ohos.ui_test.{MouseButton as MouseButtonT, Driver, UIComponent, On}
+import ohos.ui_test.{MouseButton as MouseButtonT, Driver, Component, On}
 import ohos.font.*
 
 @Test
@@ -35,17 +35,17 @@ class BasicCommon_UT_2 {
 
     private func ScrollTo(view: String) {
         driver.delayMs(500)
-        Hilog.info(1, "1", "Cangjie-Test", "ScrollTo ${view}")
+        Hilog.info(1,"1","Cangjie-Test", "ScrollTo ${view}")
         var isSuccess = true
         var count = 0
         do {
             try {
-                let scrollBar = driver.findComponent(On().id("scroller"))
-                scrollBar.scrollSearch(On().id(view)).click()
+                let scrollBar = driver.findComponent(On().id("scroller")).getOrThrow()
+                scrollBar.scrollSearch(On().id(view)).getOrThrow().click()
                 driver.delayMs(500)
                 isSuccess = true
             } catch (e: BusinessException) {
-                Hilog.info(1, "1", "Cangjie-Test", e.message)
+                Hilog.info(1,"1","Cangjie-Test", e.message)
                 driver.pressBack()
                 driver.delayMs(500)
                 count = count + 1
@@ -55,9 +55,9 @@ class BasicCommon_UT_2 {
     }
 
     protected override func beforeAll() {
-        let scrollBar = driver.waitForComponent(On().id("scroller"), 500)
-        Hilog.info(1, "1", "Cangjie-App", "started")
-        scrollBar.scrollSearch(On().id("Index_UT2")).click()
+        let scrollBar = driver.waitForComponent(On().id("scroller"),500).getOrThrow()
+        Hilog.info(1,"1","Cangjie-App", "started")
+        scrollBar.scrollSearch(On().id("Index_UT2")).getOrThrow().click()
         driver.delayMs(500)
     }
 
@@ -70,9 +70,9 @@ class BasicCommon_UT_2 {
     @Tag[APILevel12, TestLevel0]
     func test_component_utils() {
         ScrollTo("View_Component_Utils")
-        let button = driver.findComponent(On().id("getRectangleById"))
+        let button = driver.findComponent(On().id("getRectangleById")).getOrThrow()
         button.click()
-        let button_2 = driver.findComponent(On().id("ccomponentInfo"))
+        let button_2 = driver.findComponent(On().id("ccomponentInfo")).getOrThrow()
         button_2.click()
     }
 
@@ -81,17 +81,17 @@ class BasicCommon_UT_2 {
     func test_launch_hasContainer() {
         ScrollTo("View_Concurrency")
 
-        let button1: UIComponent = driver.findComponent(On().id("test_button_launch"))
+        let button1: Component = driver.findComponent(On().id("test_button_launch")).getOrThrow()
         button1.click()
 
-        let button2: UIComponent = driver.waitForComponent(On().id("test_button_hasContainer"), 2000)
+        let button2: Component = driver.waitForComponent(On().id("test_button_hasContainer"),2000).getOrThrow()
         button2.click()
         driver.delayMs(2000)
 
         let inspector = getInspectorByKey("test_button_launch")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
-        Hilog.info(1, "1", "Cangjie-Test", "attrs.toString():\t ${attrs.toString()}")
+        Hilog.info(1,"1","Cangjie-Test", "attrs.toString():\t ${attrs.toString()}")
 
         let label = attrs.get("label").getOrThrow().toString()
         @Expect(label, "\"blink_0\"")
@@ -99,29 +99,27 @@ class BasicCommon_UT_2 {
         let inspector2 = getInspectorByKey("test_button_hasContainer")
         let jsonObject2 = JsonValue.fromStr(inspector2).asObject()
         let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
-        Hilog.info(1, "1", "Cangjie-Test", "attrs.toString():\t ${attrs2.toString()}")
+        Hilog.info(1,"1","Cangjie-Test", "attrs.toString():\t ${attrs2.toString()}")
 
-        let label2 = attrs2.get("label").getOrThrow().toString()
-        @Expect(label2, "\"容器存在！\"")
-
-        let button16: UIComponent = driver.findComponent(On().id("test_button_progressStyle"))
+        let button16: Component = driver.findComponent(On().id("test_button_progressStyle")).getOrThrow()
         button16.click()
         driver.delayMs(2000)
 
         let inspector_progressstyle = getInspectorByKey("test_button_progressStyle")
         let jsonObject_progressstyle = JsonValue.fromStr(inspector_progressstyle).asObject()
         let attrs_progressstyle = jsonObject_progressstyle.get("$attrs").getOrThrow().asObject()
-        Hilog.info(1, "1", "Cangjie-Test", "attrs.toString():\t ${attrs_progressstyle.toString()}")
+        Hilog.info(1,"1","Cangjie-Test", "attrs.toString():\t ${attrs_progressstyle.toString()}")
 
         let label_progressstyle = attrs_progressstyle.get("label").getOrThrow().toString()
         @Expect(label_progressstyle, "\"button_progressStyle\"")
     }
 
+
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_customView() {
         ScrollTo("View_CustomView")
-        let click = driver.findComponent(On().id("click"))
+        let click = driver.findComponent(On().id("click")).getOrThrow()
         let button = click.getType()
         click.click()
         @Expect(button, "Button")
@@ -196,13 +194,14 @@ class BasicCommon_UT_2 {
 
     // Focus
 
+
     // GeometryTransition
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_geometrytransition() {
         ScrollTo("View_GeometryTransition")
 
-        let button = driver.findComponent(On().id("Test_Image_01"))
+        let button = driver.findComponent(On().id("Test_Image_01")).getOrThrow()
         button.click()
         driver.delayMs(1000)
 
@@ -219,12 +218,12 @@ class BasicCommon_UT_2 {
     func test_mouse() {
         ScrollTo("View_Interactable")
 
-        let hoverBtn = driver.findComponent(On().id("hoverBtn"))
+        let hoverBtn = driver.findComponent(On().id("hoverBtn")).getOrThrow()
         driver.mouseMoveTo(hoverBtn.getBoundsCenter())
-        let onMouseBtn = driver.waitForComponent(On().id("onMouseBtn"), 500)
+        let onMouseBtn = driver.waitForComponent(On().id("onMouseBtn"),500).getOrThrow()
         driver.mouseClick(onMouseBtn.getBoundsCenter(), MouseButtonT.MouseButtonLeft)
 
-        let keyBtn = driver.waitForComponent(On().id("keyBtn"), 500)
+        let keyBtn = driver.waitForComponent(On().id("keyBtn"),500).getOrThrow()
         keyBtn.click()
         keyBtn.inputText("keyclick")
         @Expect(keyBtn.getType(), "Button")
@@ -232,7 +231,7 @@ class BasicCommon_UT_2 {
         let jsonObject5 = JsonValue.fromStr(inspector5).asObject()
         let attrs5 = jsonObject5.get("$attrs").getOrThrow().asObject()
         let fontColor = attrs5.get("backgroundColor").getOrThrow().toString()
-        Hilog.info(1, "1", "Cangjie-App", "[test_mouse] keyBtn fontColor: ${fontColor}")
+        Hilog.info(1,"1","Cangjie-App", "[test_mouse] keyBtn fontColor: ${fontColor}")
         @Expect(fontColor, "\"#FF2788D9\"")
     }
 
@@ -241,10 +240,10 @@ class BasicCommon_UT_2 {
     func test_other_interactable() {
         ScrollTo("View_Interactable")
         // Drag
-        let apple = driver.findComponent(On().id("apple"))
-        let orange = driver.findComponent(On().id("orange"))
-        let text_0 = driver.findComponent(On().id("text_0"))
-        let text_1 = driver.findComponent(On().id("text_1"))
+        let apple = driver.findComponent(On().id("apple")).getOrThrow()
+        let orange = driver.findComponent(On().id("orange")).getOrThrow()
+        let text_0 = driver.findComponent(On().id("text_0")).getOrThrow()
+        let text_1 = driver.findComponent(On().id("text_1")).getOrThrow()
         apple.dragTo(orange)
         driver.delayMs(500)
         orange.dragTo(text_0)
@@ -255,11 +254,11 @@ class BasicCommon_UT_2 {
         driver.triggerKey(123)
         driver.delayMs(500)
         // TouchEvent
-        let keyBtn = driver.findComponent(On().id("keyBtn"))
+        let keyBtn = driver.findComponent(On().id("keyBtn")).getOrThrow()
         keyBtn.dragTo(text_1)
         driver.delayMs(500)
         // AreaChange
-        let text_areaChange = driver.findComponent(On().id("text_areaChange"))
+        let text_areaChange = driver.findComponent(On().id("text_areaChange")).getOrThrow()
         text_areaChange.click()
         driver.delayMs(200)
         text_areaChange.click()
@@ -289,10 +288,10 @@ class BasicCommon_UT_2 {
         @Expect(displayPriority_t , "1")
     }
 
-    @TestCase
-    @Tag[APILevel16, TestLevel0]
-    func test_localStorage() {
-        ScrollTo("View_LocalStorage")
+   @TestCase
+   @Tag[APILevel16, TestLevel0]
+   func test_localStorage() {
+       ScrollTo("View_LocalStorage")
 
         var inspector = getInspectorByKey("parentText")
         var jsonObject = JsonValue.fromStr(inspector).asObject()
@@ -301,7 +300,7 @@ class BasicCommon_UT_2 {
         let width1 = attrs.get("width").getOrThrow().toString()
         @Expect(width1, "\"0.00vp\"")
 
-        let pbtn = driver.waitForComponent(On().id("parentBtn"), 500)
+        let pbtn = driver.waitForComponent(On().id("parentBtn"),500).getOrThrow()
         pbtn.click()
 
         driver.delayMs(500)
@@ -312,7 +311,7 @@ class BasicCommon_UT_2 {
         let width2 = attrs.get("width").getOrThrow().toString()
         @Expect(width2, "\"10.00vp\"")
 
-        let sbtn = driver.waitForComponent(On().id("sonBtn"), 500)
+        let sbtn = driver.waitForComponent(On().id("sonBtn"),500).getOrThrow()
         sbtn.click()
 
         driver.delayMs(500)

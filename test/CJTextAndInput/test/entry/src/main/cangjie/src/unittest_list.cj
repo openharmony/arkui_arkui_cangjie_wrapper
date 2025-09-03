@@ -13,13 +13,14 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/13
+ */
 package ohos_app_cangjie_entry
-
 let _ = testsuites()
-
-private func testsuites(): Unit {
-    //    registerTestSuite("TextAndInput_UT_1") {TextAndInput_UT_1()}
-    //    registerTestSuite("TextAndInput_UT_2") {TextAndInput_UT_2()}
+private func testsuites():Unit{
+    registerTestSuite("TextAndInput_UT_1") {TextAndInput_UT_1()}
+    registerTestSuite("TextAndInput_UT_2") {TextAndInput_UT_2()}
 }
 
 let UT_views = [
@@ -28,21 +29,13 @@ let UT_views = [
 ]
 let UT1 = [
     "View_Font",
-    "View_Hyperlink",
-    "View_Hyperlink2",
     "View_ImageSpan",
-    "View_Measure",
-    "View_Observer",
-    "View_Observer2",
     "View_RichEditor",
     "View_RichText",
     "View_Search",
-    "View_Search_Enhance",
     "View_Span"
 ]
 let UT2 = [
-    "View_SymbolGlyph",
-    "View_SymbolSpan",
     "View_Text",
     "View_TextContentControllerBase",
     "View_TextArea",

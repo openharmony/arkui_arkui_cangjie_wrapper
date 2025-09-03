@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/27
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -34,9 +37,7 @@ class View_ViewBase {
         Row {
             Column {
                 Text("width_resource")
-                    .bindPopup(true,
-                        CustomPopupOptions(showInSubWindow: false, builder: {=>}, onStateChange: {event =>},
-                            onWillDismiss: {action =>}))
+                        .bindPopup(true, CustomPopupOptions(showInSubWindow: false, builder: { => }, onStateChange: {event => }, onWillDismiss: {action => }))
                     .id("width_resource")
 
                 Text(this.message)
@@ -48,17 +49,16 @@ class View_ViewBase {
                     .borderRadius(topLeft: 1.vp)
 
                 Button("button4")
-                    .keyboardShortcut("keyboardShortcut", [ModifierKey.ALT])
+                    .keyboardShortcut("keyboardShortcut", [ModifierKey.Alt])
                     .borderWidth(EdgeWidths())
                     .backgroundImagePosition(Alignment.TopEnd)
                     .backgroundImagePosition(Alignment.Start)
                     .backgroundImagePosition(Alignment.Center)
-                    .onClick({e => LegalCallCheck.check(this)})
-                    .id("button4")
+                    .onClick({ e => LegalCallCheck.check(this)}).id("button4")
 
                 __Recycle__()
 
-                __Recycle__() {}
+                __Recycle__(){}
             }.width(100.percent)
         }.height(100.percent)
     }

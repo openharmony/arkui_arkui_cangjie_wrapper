@@ -15,6 +15,7 @@
 
 package ohos_app_cangjie_entry
 
+internal import ohos.arkui.state_management.*
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
@@ -27,18 +28,18 @@ class MyView {
     func build() {
         Scroll() {
             Column {
-            //                ForEach(
-            //                    UT_views,
-            //                    itemGeneratorFunc: { viewName: String, _: Int64 =>
-            //                        Button(viewName)
-            //                        .fontSize(16)
-            //                        .width(100.percent)
-            //                        .height(50)
-            //                        .id(viewName)
-            //                        .borderRadius(10)
-            //                        .onClick { e => Router.push(url: viewName) }
-            //                    }
-            //                )
+                ForEach(
+                    UT_views,
+                    itemGeneratorFunc: { viewName: String, _: Int64 =>
+                        Button(viewName)
+                        .fontSize(16)
+                        .width(100.percent)
+                        .height(50)
+                        .id(viewName)
+                        .borderRadius(10)
+                        .onClick { e => getUIContext().getRouter().pushUrl(url: viewName) }
+                    }
+                )
             }.width(100.percent).margin(top: 5)
         }.id("scroller")
     }

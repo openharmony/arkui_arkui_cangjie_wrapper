@@ -19,7 +19,7 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component

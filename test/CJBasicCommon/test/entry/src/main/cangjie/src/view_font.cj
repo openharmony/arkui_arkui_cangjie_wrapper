@@ -13,33 +13,35 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/27
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
-import ohos.font.Font as AFont
+import ohos.arkui.ui_context.*
 import ohos.font.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
 class View_Font {
-    var fontInfo: FontInfo = FontInfo("", "", "", "", "", 1, 1, true, true, true)
 
     protected override func aboutToAppear() {
-        AFont.registerFont(
+        getUIContext().getFont().registerFont(
             familyName: "Deyihei",
             familySrc: "/resources/rawfile/SmileySans-Oblique.ttf"
         )
 
-        AFont.registerFont(
+        getUIContext().getFont().registerFont(
             familyName: @r(app.string.Font_name),
             familySrc: @rawfile("SmileySans-Oblique.ttf")
         )
 
-        AFont.registerFont(
+        getUIContext().getFont().registerFont(
             familyName: @r(app.string.Font_name),
             familySrc: @r(app.string.DEFAULT_FONT)
         )
@@ -51,34 +53,30 @@ class View_Font {
                 Text("HelloWorld").fontFamily("Deyihei")
                 Text("HelloWorld")
 
-                Button("HelloWorld1")
-                    .onClick {
-                        evt =>
-                        let list = AFont.getSystemFontList()
-                        Hilog.info(1, "1", "Cangjie-App", "${list.size}")
-                    }
-                    .id("getSystemFontList")
+                Button("HelloWorld1").onClick {
+                    evt =>
+                    let list = getUIContext().getFont().getSystemFontList()
+                    Hilog.info(1,"1","Cangjie-App", "${list.size}")
+                }.id("getSystemFontList")
 
-                Button("HelloWorld2")
-                    .onClick {
-                        evt =>
-                        let info = AFont.getFontByName("HarmonyOS Sans")
-                        match (info) {
-                            case Some(v) =>
-                                Hilog.info(1, "1", "Cangjie-App", "${v.path}")
-                                Hilog.info(1, "1", "Cangjie-App", "${v.postScriptName}")
-                                Hilog.info(1, "1", "Cangjie-App", "${v.fullName}")
-                                Hilog.info(1, "1", "Cangjie-App", "${v.family}")
-                                Hilog.info(1, "1", "Cangjie-App", "${v.subfamily}")
-                                Hilog.info(1, "1", "Cangjie-App", "${v.weight}")
-                                Hilog.info(1, "1", "Cangjie-App", "${v.width}")
-                                Hilog.info(1, "1", "Cangjie-App", "${v.italic}")
-                                Hilog.info(1, "1", "Cangjie-App", "${v.monoSpace}")
-                                Hilog.info(1, "1", "Cangjie-App", "${v.symbolic}")
-                            case None => Hilog.info(1, "1", "Cangjie-App", "None")
-                        }
+                Button("HelloWorld2").onClick {
+                    evt =>
+                    let info = getUIContext().getFont().getFontByName("HarmonyOS Sans")
+                    match (info) {
+                        case Some(v) =>
+                            Hilog.info(1,"1","Cangjie-App", "${v.path}")
+                            Hilog.info(1,"1","Cangjie-App", "${v.postScriptName}")
+                            Hilog.info(1,"1","Cangjie-App", "${v.fullName}")
+                            Hilog.info(1,"1","Cangjie-App", "${v.family}")
+                            Hilog.info(1,"1","Cangjie-App", "${v.subfamily}")
+                            Hilog.info(1,"1","Cangjie-App", "${v.weight}")
+                            Hilog.info(1,"1","Cangjie-App", "${v.width}")
+                            Hilog.info(1,"1","Cangjie-App", "${v.italic}")
+                            Hilog.info(1,"1","Cangjie-App", "${v.monoSpace}")
+                            Hilog.info(1,"1","Cangjie-App", "${v.symbolic}")
+                        case None => Hilog.info(1,"1","Cangjie-App", "None")
                     }
-                    .id("getFontByName")
+                }.id("getFontByName")
             }.width(100.percent)
         }.height(100.percent)
     }

@@ -32,6 +32,7 @@ class View_BorderImage {
 
             // default
             Text('test borderImage 4.').textAlign(TextAlign.Center).height(50).width(200).id("text4")
+
         }.width(100.percent)
     }
 }

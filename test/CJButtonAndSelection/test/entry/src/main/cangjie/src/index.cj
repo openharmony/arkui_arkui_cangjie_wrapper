@@ -17,7 +17,7 @@ package ohos_app_cangjie_entry
 
 internal import ohos.arkui.component.*
 internal import ohos.arkui.component.loadNativeView
-internal import ohos.router.Router
+
 internal import ohos.base.*
 internal import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.Entry
@@ -41,7 +41,7 @@ class MyView {
                             .id(viewName)
                             .borderRadius(10)
                             .onClick {
-                                e => Router.push(url: viewName)
+                                e => getUIContext().getRouter().pushUrl(url: viewName)
                             }
                     }
                 )

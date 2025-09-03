@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+///**
+// * Created on 2024/6/28
+// */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -58,43 +61,39 @@ class View_Search {
             // 测试文本选中
             Search(value: "", placeholder: "Type to search", controller: controller)
                 .searchButton("SearchBtn")
-                .width(300.00.vp)
+                .width(
+                300.00.vp)
                 .height(35)
-                //                .backgroundColor(0xDDDDDD)
+//                .backgroundColor(0xDDDDDD)
                 .placeholderColor(0x000000)
                 .placeholderFont(weight: FontWeight.W100, family: "serif", style: FontStyle.Normal)
-                .textFont(weight: FontWeight.W100, family: "serif", style: FontStyle.Normal)
+                .textFont(weight: FontWeight.W100,family: "serif", style: FontStyle.Normal)
                 .borderWidth(5)
                 .borderColor(0xAFEEEE)
                 .borderStyle(BorderStyle.Dashed)
                 .borderRadius(10)
                 .copyOption(CopyOptions.None)
                 .onSubmit({
-                    value => submitValue = value
-                })
-                .onChange({
+                value => submitValue = value
+                }).onChange({
                     value => changeValue = value
-                })
-                .onCopy({
+                }).onCopy({
                     value => copyValue = value
-                })
-                .onCut({
+                }).onCut({
                     value => cutValue = value
-                })
-                .onPaste({
+                }).onPaste({
                     value => pasteValue = value
-                })
-                .margin(top: 30)
-                .id("searchComponent")
-                .border(width: 2.px)
-            Text("Editing ${this.isEditing}").id("Search?Editing")
-            Text("caretPosition ${this.caretPosition}").id("Search?Position")
-            Text("Selection ${this.caretPosition}-${this.caretPositionEnd}").id("Search?Selection")
-            Text("ContentScroll ${this.offsetX} - ${this.offsetY}").id("Search?onContentScroll")
-            Search(value: "", icon: @r(app.media.startIcon)).placeholderFont(size: 5.percent).textFont(size: 5.percent)
-            //            Search(value: "", placeholder: "Type to search").width(300.00.vp).height(35).placeholderFont(
-            //                size: 10.percent, weight: FontWeight.W100, family: "serif", style: FontStyle.Normal).textFont(
-            //                size: 10.percent, weight: FontWeight.W100, family: "serif", style: FontStyle.Normal).copyOption(CopyOptions.LocalDevice)
+                }).margin(top: 30).id("searchComponent").border(width: 2.px)
+                Text("Editing ${this.isEditing}").id("Search?Editing")
+                Text("caretPosition ${this.caretPosition}").id("Search?Position")
+                Text("Selection ${this.caretPosition}-${this.caretPositionEnd}").id("Search?Selection")
+                Text("ContentScroll ${this.offsetX} - ${this.offsetY}").id("Search?onContentScroll")
+                Search(value: "", icon: @r(app.media.startIcon))
+                    .placeholderFont(size: 5.percent)
+                    .textFont(size: 5.percent)
+//            Search(value: "", placeholder: "Type to search").width(300.00.vp).height(35).placeholderFont(
+//                size: 10.percent, weight: FontWeight.W100, family: "serif", style: FontStyle.Normal).textFont(
+//                size: 10.percent, weight: FontWeight.W100, family: "serif", style: FontStyle.Normal).copyOption(CopyOptions.LocalDevice)
         }
     }
 }

@@ -14,7 +14,6 @@
  */
 
 package ohos_app_cangjie_entry
-
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import ohos.base.launch
@@ -24,32 +23,27 @@ import std.collection.*
 @Entry
 @Component
 class View_Concurrency {
-    @State
-    var text: String = "begin"
-    @State
-    var text_2: String = "hascontainer"
+    @State var text: String = "begin"
+    @State var text_2: String = "hascontainer"
     func build() {
         Column(space: 30) {
-            Button(text).onClick {
-                evt => changeText({
-                    p: String =>
+            Button(text).onClick { evt =>
+                changeText({ p: String =>
                     // 使用launch表达式在主线程中更新状态变量
                     launch {
                         text = p
                     }
                 })
             }.id("test_button_launch")
-            Button(text_2)
-                .onClick {
-                    evt => onClickButtonHasContainer({
-                        p: String => launch {
-                            text_2 = p
-                        }
-                    })
-                }
-                .id("test_button_hasContainer")
-            Button("button_progressStyle").onClick {
-                e =>
+            Button(text_2).onClick{ evt =>
+                onClickButtonHasContainer({ p: String =>
+                    launch {
+                        text_2 = p
+                    }
+                })
+            }.id("test_button_hasContainer")
+            Button("button_progressStyle").onClick { e =>
+
             }.id("test_button_progressStyle")
         }.width(100.percent)
     }

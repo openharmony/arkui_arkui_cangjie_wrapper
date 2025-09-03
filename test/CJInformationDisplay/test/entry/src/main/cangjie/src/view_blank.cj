@@ -72,17 +72,17 @@ class View_Blank {
             Blank(min: 100)
                 .size(width: @r(app.string.font_size), height: @r(app.string.font_size))
                 .padding(top: @r(app.string.font_size), right: @r(app.string.font_size),
-                    bottom: @r(app.string.font_size), left: @r(app.string.font_size))
+                bottom: @r(app.string.font_size), left: @r(app.string.font_size))
                 .margin(top: @r(app.string.font_size), right: @r(app.string.font_size), bottom: @r(app.string.font_size),
-                    left: @r(app.string.font_size))
+                left: @r(app.string.font_size))
                 .position(x: @r(app.string.font_size), y: @r(app.string.font_size))
                 .markAnchor(x: @r(app.string.font_size), y: @r(app.string.font_size))
                 .offset(x: @r(app.string.font_size), y: @r(app.string.font_size))
                 .scale(x: 1.0, y: 1.0, z: 1.0, centerX: @r(app.string.font_size), centerY: @r(app.string.font_size))
                 .rotate(x: 1.0, y: 1.0, z: 1.0, angle: 1.0, centerX: @r(app.string.font_size),
-                    centerY: @r(app.string.font_size))
+                centerY: @r(app.string.font_size))
                 .translate(x: @r(app.string.font_size), y: @r(app.string.font_size), z: @r(app.string.font_size))
-            Blank(min: 100).expandSafeArea(types: [SafeAreaType.SYSTEM, SafeAreaType.CUTOUT, SafeAreaType.KEYBOARD])
+            Blank(min: 100).expandSafeArea(types: [SafeAreaType.System, SafeAreaType.Cutout, SafeAreaType.Keyboard])
             Text("End")
         }.width(100.percent)
     }

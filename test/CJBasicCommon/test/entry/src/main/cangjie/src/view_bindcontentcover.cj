@@ -23,61 +23,75 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 class View_BindContentCover {
-    @State
-    var isShow: Bool = false
-    @State
-    var message: String = '123'
+    @State var isShow: Bool = false
+    @State var message: String = '123'
 
     public func onAppear() {
-        Hilog.info(1, "1", "Cangjie-Test", "BindContentCover onAppear.")
+        Hilog.info(1,"1","Cangjie-Test", "BindContentCover onAppear.")
         this.message = "BindContentCover onAppear."
     }
     public func onDisappear() {
-        Hilog.info(1, "1", "Cangjie-Test", "BindContentCover onDisappear.")
+        Hilog.info(1,"1","Cangjie-Test", "BindContentCover onDisappear.")
         this.message = "BindContentCover onDisappear."
     }
 
     @Builder
     public func myBuilder() {
         Column() {
-            Button("close modal 1").margin(10).fontSize(20).onClick({
-                e => this.isShow = false
-            }).id("button2")
+            Button("close modal 1")
+            .margin(10)
+            .fontSize(20)
+            .onClick({ e
+              => this.isShow = false;
+            })
+            .id("button2")
 
-            Text(this.message).id("text1")
-        }.width(100.percent).height(100.percent).justifyContent(FlexAlign.Center)
+            Text(this.message)
+            .id("text1")
+        }
+        .width(100.percent)
+        .height(100.percent)
+        .justifyContent(FlexAlign.Center)
     }
     func build() {
         Column {
             Button("transition modal 1")
-                .onClick({
-                    e => this.isShow = true
-                })
-                .fontSize(20)
-                .margin(10)
-                .bindContentCover(
-                    this.isShow,
-                    myBuilder,
-                    options: ContentCoverOptions(modalTransition: ModalTransition.None, backgroundColor: Color.Green,
-                        onAppear: Option.None, onDisappear: Option.None, onWillAppear: Option.None,
-                        onWillDisappear: Option.None)
-                )
-                .bindContentCover(
-                    this.isShow,
-                    myBuilder,
-                    options: ContentCoverOptions(modalTransition: ModalTransition.Default,
-                        transition: TransitionEffect.SLIDE_SWITCH, onAppear: onAppear, onDisappear: onDisappear,
-                        onWillAppear: {=>}, onWillDisappear: {=>}, onWillDismiss: {dismiss =>})
-                )
-                .bindContentCover(
-                    this.isShow,
-                    myBuilder,
-                    options: ContentCoverOptions(modalTransition: ModalTransition.Alpha, backgroundColor: Color.Green,
-                        onAppear: onAppear, onDisappear: onDisappear)
-                )
-                .id("bindContentCover")
+            .onClick({ e
+              => this.isShow = true
+            })
+            .fontSize(20)
+            .margin(10)
+            .bindContentCover(this.isShow, myBuilder, options: ContentCoverOptions(
+                 modalTransition: ModalTransition.None,
+                 backgroundColor: Color.Green,
+                 onAppear: Option.None,
+                 onDisappear: Option.None,
+                 onWillAppear: Option.None,
+                 onWillDisappear: Option.None)
+            )
+            .bindContentCover(this.isShow, myBuilder, options: ContentCoverOptions(
+                 modalTransition: ModalTransition.Default,
+                        transition: TransitionEffect.SLIDE_SWITCH,
+                 onAppear: onAppear,
+                 onDisappear: onDisappear,
+                 onWillAppear: { => },
+                 onWillDisappear: { => },
+                 onWillDismiss: { dismiss => })
+            )
+            .bindContentCover(this.isShow, myBuilder, options: ContentCoverOptions(
+                 modalTransition: ModalTransition.Alpha,
+                 backgroundColor: Color.Green,
+                 onAppear: onAppear,
+                 onDisappear: onDisappear)
+            )
+            .id("bindContentCover")
 
-            Text(this.message).id("text2")
-        }.justifyContent(FlexAlign.Center).backgroundColor(Color.White).width(100.percent).height(100.percent)
+            Text(this.message)
+            .id("text2")
+        }
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor(Color.White)
+        .width(100.percent)
+        .height(100.percent)
     }
 }

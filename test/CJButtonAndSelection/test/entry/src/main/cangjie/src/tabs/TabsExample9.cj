@@ -144,7 +144,7 @@ class TabsExample9 {
 
     func startAnimateTo(duration: Int32, leftMargin: Float64, width: Float64) {
         this.isStartAnimateTo = true
-        animateTo(
+        getUIContext().animateTo(
             AnimateParam(
                 duration: duration, // 动画时长
                 curve: Curve.Linear, // 动画曲线

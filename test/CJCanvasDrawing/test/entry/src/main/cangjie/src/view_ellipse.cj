@@ -19,7 +19,6 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.prompt_action.*
 
 @Entry
 @Component
@@ -28,7 +27,13 @@ class View_Ellipse {
         Column {
             Ellipse(width: 150, height: 80).id("ellipse_1")
             // 绘制一个 150 * 100 、线条为蓝色的椭圆环
-            Ellipse().width(150).height(100).fillOpacity(0.0).stroke(Color.Red).strokeWidth(3).id("ellipse_2")
+            Ellipse()
+                .width(150)
+                .height(100)
+                .fillOpacity(0.0)
+                .stroke(Color.Red)
+                .strokeWidth(3)
+                .id("ellipse_2")
         }
     }
 }

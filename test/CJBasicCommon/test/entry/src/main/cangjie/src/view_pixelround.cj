@@ -25,29 +25,40 @@ import kit.LocalizationKit.*
 @Entry
 @Component
 class View_PixelRound {
-    @State
-    var curWidth: Float64 = 300.0
+    @State var curWidth: Float64 = 300.0
 
     func build() {
         Column() {
-            Button(ButtonOptions()) {
+            Button(ButtonOptions()){
                 Text("${this.curWidth}")
             }
-                .onClick({
-                    e => this.curWidth += 0.1
-                })
-                .height(200)
-                .width(200)
-                .backgroundColor(0xFFD5D5D5)
-                .id("pixelRoundButton")
+            .onClick({ e =>
+                this.curWidth += 0.1
+            })
+            .height(200)
+            .width(200)
+            .backgroundColor(0xFFD5D5D5)
+            .id("pixelRoundButton")
 
             Blank().height(20)
 
             Row() {
                 Row() {
-                    
-                }.width(100.percent).height(100.percent).backgroundColor(0xFFBF00).id("subRow")
-            }.width(this.curWidth.px).height(300.6.px).backgroundColor(0xff0000).id("parentRow")
-        }.id("topColumn").width(100.percent).height(100.percent).backgroundColor(0xffe5e5e5)
+                }
+                .width(100.percent)
+                .height(100.percent)
+                .backgroundColor(0xFFBF00)
+                .id("subRow")
+
+            }
+            .width(this.curWidth.px)
+            .height(300.6.px)
+            .backgroundColor(0xff0000)
+            .id("parentRow")
+        }
+        .id("topColumn")
+        .width(100.percent)
+        .height(100.percent)
+        .backgroundColor(0xffe5e5e5)
     }
 }

@@ -35,15 +35,10 @@ class View_PageTransition2 {
     func build() {
         Column() {
             Text(this.text).id("text2")
-            Image(@r(app.media.app_icon))
-                .width(75.percent)
-                .height(75.percent)
-                .id("Image2")
-                .scale(x: scale1, y: 1.0)
-                .opacity(this.opacity1)
-                .onClick {
-                    e => Router.push(url: "View_PageTransition")
-                }
+            Image(@r(app.media.app_icon)).width(75.percent).height(75.percent).id("Image2").scale(x: scale1, y: 1.0).
+                opacity(this.opacity1).onClick {
+                e => getUIContext().getRouter().pushUrl(url: "View_PageTransition")
+            }
         }
     }
 
