@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.text_area") {
-  sources = [ "cj_textarea.cj" ]
+  sources = [
+    "textarea.cj",
+    "textarea_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

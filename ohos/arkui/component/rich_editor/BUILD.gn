@@ -15,8 +15,9 @@ import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.rich_editor") {
   sources = [
-    "cj_richeditor.cj",
-    "cj_richeditor_controller.cj",
+    "richeditor.cj",
+    "richeditor_controller.cj",
+    "richeditor_attr.cj",
   ]
 
   cj_deps = [

@@ -35,7 +35,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ScrollBar <: ContainerBase {
+public class ScrollBar <: CommonMethodComponent<ScrollBarAttribute> & ScrollBarAttribute {
     /**
     * Define the constructor of the scrollbar component.
     *

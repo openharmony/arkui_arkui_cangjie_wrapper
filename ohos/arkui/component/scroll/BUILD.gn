@@ -14,7 +14,12 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.scroll") {
-  sources = [ "cj_scroll.cj" ]
+  sources = [
+    "scroll.cj",
+    "scroll_attr.cj",
+    "scrollable_common_method.cj",
+    "scrollable_common_component.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

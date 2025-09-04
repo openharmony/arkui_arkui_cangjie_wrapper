@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.qrcode") {
-  sources = [ "qrcode.cj" ]
+  sources = [
+    "qrcode.cj",
+    "qrcode_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

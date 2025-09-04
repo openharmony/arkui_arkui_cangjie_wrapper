@@ -1,0 +1,218 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos.arkui.component.rect
+
+import ohos.arkui.component.common.*
+import ohos.arkui.component.shape.*
+import ohos.arkui.component.util.*
+import ohos.base.*
+import ohos.labels.APILevel
+
+foreign {
+    func FfiOHOSAceFrameworkRectCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
+
+    func FfiOHOSAceFrameworkRectSetRadiusWidth(value: Float64, unit: Int32): Unit
+
+    func FfiOHOSAceFrameworkRectSetRadiusHeight(value: Float64, unit: Int32): Unit
+
+    func FfiOHOSAceFrameworkRectSetRadius(value: Float64, unit: Int32): Unit
+
+    func FfiOHOSAceFrameworkRectSetRadiusArray(arrayValue: VectorFloat64Handle, arrayUnit: VectorInt32Handle): Unit
+
+    func FfiOHOSAceFrameworkRectSetRadiusTupleArray(
+        arrayWidthValue: VectorFloat64Handle,
+        arrayWidthUnit: VectorInt32Handle,
+        arrayHeightValue: VectorFloat64Handle,
+        arrayHeightUnit: VectorInt32Handle
+    ): Unit
+}
+/**
+ * Defines Rect Component.
+ *
+ * @relation declare const Rect: RectInterface
+ */
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
+    /**
+     * Called when a rectangle is created.
+     *
+     * @param { Length } width 
+     * @param { Length } height
+     * @returns { This }
+     * @relation (options?: RectOptions | RoundedRectOptions): RectAttribute
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
+        var width_ = transAppResourceToLength(width)
+        var height_ = transAppResourceToLength(height)
+        unsafe {
+            FfiOHOSAceFrameworkRectCreate(
+                width_.value,
+                width_.unitType.getValue(),
+                height_.value,
+                height_.unitType.getValue()
+            )
+        }
+    }
+    /**
+     * Width of the corner radius.
+     *
+     * @param { Length } value
+     * @returns { This }
+     * @relation radiusWidth(value: Length): RectAttribute
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func radiusWidth(value: Length): This {
+        var value_ = transAppResourceToLength(value)
+        unsafe {
+            FfiOHOSAceFrameworkRectSetRadiusWidth(value_.value, value_.unitType.getValue())
+        }
+        this
+    }
+    /**
+     * Height of the corner radius.
+     *
+     * @param { Length } value
+     * @returns { This }
+     * @relation radiusHeight(value: Length): RectAttribute
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func radiusHeight(value: Length): This {
+        var value_ = transAppResourceToLength(value)
+        unsafe {
+            FfiOHOSAceFrameworkRectSetRadiusHeight(value_.value, value_.unitType.getValue())
+        }
+        this
+    }
+    /**
+     * Called when the fillet size is set.
+     *
+     * @param { Length } value
+     * @returns { This }
+     * @relation radius(value: Length | Array<any>): RectAttribute
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func radius(value: Length): This {
+        var value_ = transAppResourceToLength(value)
+        unsafe {
+            FfiOHOSAceFrameworkRectSetRadius(value_.value, value_.unitType.getValue())
+        }
+        this
+    }
+    /**
+     * Called when the fillet size is set.
+     *
+     * @param { Array<Length> } radiusArray
+     * @returns { This }
+     * @relation radius(value: Length | Array<any>): RectAttribute
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func radius(value: Array<Length>): This {
+        var radiusArray_ = Array<Length>(value.size) {index => (transAppResourceToLength(value[index]))}
+        let vecValueHandle = FFIVectorFloat64(radiusArray_.size)
+        let vecUnitHandle = FFIVectorInt32(radiusArray_.size)
+        for (i in 0..radiusArray_.size) {
+            vecValueHandle.setElement(i, radiusArray_[i].value)
+            vecUnitHandle.setElement(i, radiusArray_[i].unitType.getValue())
+        }
+        unsafe {
+            FfiOHOSAceFrameworkRectSetRadiusArray(vecValueHandle.getNativeHandle(), vecUnitHandle.getNativeHandle())
+        }
+        vecValueHandle.free()
+        vecUnitHandle.free()
+        this
+    }
+    /**
+     * Called when the fillet size is set.
+     *
+     * @param { Array<(Length, Length)> } radiusArray
+     * @returns { This }
+     * @relation radius(value: Length | Array<any>): RectAttribute
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func radius(radiusArray: Array<(Length, Length)>): This {
+        var radiusArray_ = Array<(Length, Length)>(radiusArray.size) {
+            index => (transAppResourceToLength(radiusArray[index][0]), transAppResourceToLength(radiusArray[index][1]))
+        }
+
+        let vecWidthValueHandle = FFIVectorFloat64(radiusArray_.size)
+        let vecWidthUnitHandle = FFIVectorInt32(radiusArray_.size)
+        let vecHeightValueHandle = FFIVectorFloat64(radiusArray_.size)
+        let vecHeightUnitHandle = FFIVectorInt32(radiusArray_.size)
+        for (i in 0..radiusArray_.size) {
+            vecWidthValueHandle.setElement(i, if (radiusArray_[i][0].value < 0.0) {
+                0.0
+            } else {
+                radiusArray_[i][0].value
+            })
+            vecWidthUnitHandle.setElement(i, radiusArray_[i][0].unitType.getValue())
+            vecHeightValueHandle.setElement(i, if (radiusArray_[i][1].value < 0.0) {
+                0.0
+            } else {
+                radiusArray_[i][1].value
+            })
+            vecHeightUnitHandle.setElement(i, radiusArray_[i][1].unitType.getValue())
+        }
+        unsafe {
+            FfiOHOSAceFrameworkRectSetRadiusTupleArray(
+                vecWidthValueHandle.getNativeHandle(),
+                vecWidthUnitHandle.getNativeHandle(),
+                vecHeightValueHandle.getNativeHandle(),
+                vecHeightUnitHandle.getNativeHandle()
+            )
+        }
+        vecWidthValueHandle.free()
+        vecWidthUnitHandle.free()
+        vecHeightValueHandle.free()
+        vecHeightUnitHandle.free()
+        this
+    }
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public override func initial() {}
+}

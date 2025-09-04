@@ -32,7 +32,7 @@ foreign func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Blank <: ViewBase {
+public class Blank <: CommonMethodComponent<BlankAttribute> & BlankAttribute {
     /**
     * Minimum size of the Blank component in the container along the main axis
     * Default value: **0.vp**.
@@ -71,3 +71,4 @@ public class Blank <: ViewBase {
         this
     }
 }
+

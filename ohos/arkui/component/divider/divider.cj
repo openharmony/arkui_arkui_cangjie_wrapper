@@ -42,7 +42,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Divider <: ViewBase {
+public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribute {
     /**
     * Divider constructor.
     *

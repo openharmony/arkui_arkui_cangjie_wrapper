@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.pattern_lock") {
-  sources = [ "cj_pattern_lock.cj" ]
+  sources = [
+    "pattern_lock.cj",
+    "pattern_lock_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

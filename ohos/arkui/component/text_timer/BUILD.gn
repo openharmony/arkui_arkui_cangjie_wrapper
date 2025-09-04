@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.text_timer") {
-  sources = [ "cj_text_timer.cj" ]
+  sources = [
+    "text_timer.cj",
+    "text_timer_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

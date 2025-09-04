@@ -59,7 +59,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Radio <: ViewBase {
+public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
     /**
      * Create a radio box.
      *

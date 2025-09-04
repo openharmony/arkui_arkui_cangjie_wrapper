@@ -29,6 +29,8 @@ ohos_cangjie_shared_library("ohos.arkui.component.common") {
     "cj_view_base.cj",
     "cj_view_typedef.cj",
     "container_base.cj",
+    "common_component.cj",
+    "common_method.cj",
   ]
 
   cj_deps = [

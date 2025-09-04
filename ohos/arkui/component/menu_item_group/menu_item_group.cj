@@ -38,7 +38,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class MenuItemGroup <: ContainerBase {
+public class MenuItemGroup <: CommonMethodComponent<MenuItemGroupAttribute> & MenuItemGroupAttribute {
 
     /**
      * Creates the MenuItem component.

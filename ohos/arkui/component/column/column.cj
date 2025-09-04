@@ -44,7 +44,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Column <: ContainerBase {
+public class Column <: CommonMethodComponent<ColumnAttribute> & ColumnAttribute {
     /**
     * Column constructor.
     *

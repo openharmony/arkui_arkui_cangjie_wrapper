@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.flex") {
-  sources = [ "cj_flex.cj" ]
+  sources = [
+    "flex.cj",
+    "flex_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

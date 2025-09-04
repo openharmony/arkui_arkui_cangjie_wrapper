@@ -640,6 +640,7 @@ public class KeyEvent {
     }
 }
 
+///* TODO: DELETE
 /**
  * Defines the common method of Component.
  *
@@ -1133,3 +1134,4 @@ abstract sealed class InteractableView <: RemoteData {
         super(id)
     }
 }
+//*/

@@ -25,7 +25,7 @@ import ohos.labels.APILevel
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public interface UINodeBase {
-    func initial(): Unit
-    func update(): Unit
+public abstract class UINodeBase {
+    protected func initial(): Unit
+    protected func update(): Unit
 }

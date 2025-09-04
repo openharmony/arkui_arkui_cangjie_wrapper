@@ -89,7 +89,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Slider <: ViewBase {
+public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute {
     /**
     * Defines Slider Component instance.
     *

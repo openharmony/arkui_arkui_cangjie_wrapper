@@ -56,7 +56,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class MenuItem <: ViewBase {
+public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttribute {
 
     /**
      * Creates the MenuItem component.

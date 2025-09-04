@@ -206,6 +206,7 @@ public type CustomBuilder = () -> Unit
 
 public type TransitionFinishCallback = (Bool) -> Unit
 
+// /* TODO: DELETE
 /**
  * Defines the common method of Component.
  *
@@ -216,7 +217,7 @@ public type TransitionFinishCallback = (Bool) -> Unit
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public open class ViewBase <: InteractableView & UINodeBase {
+public open class ViewBase <: InteractableView /*& UINodeBase */ {
     /**
      * Sets the width of the component. By default, the width required to fully hold the
      * component content is used.If the width of the component is greater than that of
@@ -2959,6 +2960,7 @@ public open class ViewBase <: InteractableView & UINodeBase {
     }
 }
 
+// */
 @OverflowWrapping
 func decode(data: Array<UInt8>): Option<Array<UInt8>> {
     var arrLength: Int64 = data.size

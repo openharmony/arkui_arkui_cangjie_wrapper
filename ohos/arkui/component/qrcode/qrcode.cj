@@ -42,8 +42,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class QRCode <: ViewBase {
-
+public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute {
     /**
      * Called when a QR code is set.
      *
