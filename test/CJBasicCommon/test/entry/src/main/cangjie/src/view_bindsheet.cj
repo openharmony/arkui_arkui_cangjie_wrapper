@@ -23,6 +23,13 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 class View_BindSheet {
+        var SheetSize1: SheetSize = SheetSize.Medium
+    var SheetSize2: SheetSize = SheetSize.Large
+    var SheetSize3: SheetSize = SheetSize.FitContent
+    var SheetType1: SheetType = SheetType.Bottom
+    var SheetType3: SheetType = SheetType.Center
+    var SheetType4: SheetType = SheetType.Popup
+
     @State
     var isShow: Bool = false
     @State
