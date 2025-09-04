@@ -421,12 +421,18 @@ class TextAndInput_UT_1 {
         driver.delayMs(1200)
         // 键盘布局同意点
         driver.click(615, 2490)
+        richEditor.clearText()
         driver.delayMs(600)
 
         richEditor.inputText("abcjiushi")
         driver.delayMs(500)
         richEditor.clearText()
+
+        // getSpan Test case: span size == 0
+        let emptySpan = driver.waitForComponent(On().id("getEmptySpan"),500).getOrThrow()
+        emptySpan.click()
         driver.delayMs(500)
+
         richEditor.inputText("success")
         driver.delayMs(500)
 

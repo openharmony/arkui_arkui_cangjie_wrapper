@@ -23,6 +23,9 @@ import ohos.resource_manager.*
 import ohos.arkui.component.CopyOptions as MyCopyOptions
 import std.collection.*
 
+// Test: transResourceStrToString  case _
+class Clazz <: ResourceStr {}
+
 @Entry
 @Component
 class View_Text {
@@ -248,7 +251,11 @@ class View_Text {
                     .id("TextCombine15")
 
                 Text(controller: this.controller).id("TextController")
+
+                // Test: transResourceStrToString  case _
+                Text(Clazz())
             }
         }.height(100.percent).width(100.percent)
     }
+
 }

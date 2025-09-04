@@ -242,8 +242,15 @@ class View_ActionSheet {
     }
 
     func createDefaultSheetOptions1(): ActionSheetOptions {
+        createDefaultSheetOptions2()
         return ActionSheetOptions(title: "ActionSheet title", message: "message", sheets: sheets,
             alignment: DialogAlignment.Bottom, isModal: true, backgroundColor: Color.Transparent,
             backgroundBlurStyle: BlurStyle.ComponentUltraThick)
+    }
+
+    func createDefaultSheetOptions2(): Unit {
+        let top = ActionSheetOptions(title: "ActionSheet title", message: "message", sheets: sheets, alignment: DialogAlignment.Top)
+        let topStart = ActionSheetOptions(title: "ActionSheet title", message: "message", sheets: sheets, alignment: DialogAlignment.TopStart)
+        let topEnd = ActionSheetOptions(title: "ActionSheet title", message: "message", sheets: sheets, alignment: DialogAlignment.TopEnd)
     }
 }
