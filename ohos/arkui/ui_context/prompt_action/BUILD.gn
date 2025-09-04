@@ -13,14 +13,14 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.prompt_action") {
+ohos_cangjie_shared_library("ohos.arkui.ui_context.prompt_action") {
   sources = [ "cj_prompt_action.cj" ]
 
   cj_deps = [
-    "../arkui/component/common:ohos.arkui.component.common",
-    "../arkui/component/native_struct:ohos.arkui.component.native_struct",
-    "../arkui/component/util:ohos.arkui.component.util",
-    "../base:ohos.base",
+    "../../component/common:ohos.arkui.component.common",
+    "../../component/native_struct:ohos.arkui.component.native_struct",
+    "../../component/util:ohos.arkui.component.util",
+    "../../../base:ohos.base",
   ]
 
   cj_external_deps = [

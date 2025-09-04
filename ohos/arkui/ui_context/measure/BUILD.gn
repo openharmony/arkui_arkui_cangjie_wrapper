@@ -13,10 +13,13 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.measure") {
+ohos_cangjie_shared_library("ohos.arkui.ui_context.measure") {
   sources = [ "cj_measure.cj" ]
 
-  cj_deps = []
+  cj_deps = [
+    "../../../base:ohos.base",
+    "../../component/common:ohos.arkui.component.common",
+  ]
 
   cj_external_deps = [
     "cangjie_ark_interop:ohos.ffi",

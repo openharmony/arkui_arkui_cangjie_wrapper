@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-public package ohos.prompt_action
+protected package ohos.arkui.ui_context.prompt_action
 
 import ohos.base.*
 import ohos.business_exception.*
@@ -280,12 +280,7 @@ func CreateCButtons(buttons: Array<ButtonInfo>): Option<CPointer<CButtonInfo>> {
     }
     unsafe {
         for (i in 0..size) {
-            var text = CString(CPointer<UInt8>())
-            try (
-                cText = LibC.mallocCString(transResourceStrToString(buttons[i].text)).asResource()
-            ) {
-                text = cText.value
-            }
+            var text = LibC.mallocCString(transResourceStrToString(buttons[i].text))
             let color = transAppResourceToResourceColor(buttons[i].color)
             let primary = buttons[i].primary
             var cButton = CButtonInfo(text, color, primary)
@@ -1703,12 +1698,13 @@ func parseShowToastOptions(options: ShowToastOptions): NativeShowToastOptions {
     unsafe {
         var cMsg = CString(CPointer<UInt8>())
         var cBottom = CString(CPointer<UInt8>())
-        try(
-            msg = LibC.mallocCString(transResourceStrToString(options.message)).asResource(),
-            btm = LibC.mallocCString(length2String(options.bottom)).asResource()
-        ) {
-            cMsg = msg.value
-            cBottom = btm.value
+        try {
+            cMsg = LibC.mallocCString(transResourceStrToString(options.message))
+            cBottom = LibC.mallocCString(length2String(options.bottom))
+        } catch (e: Exception) {
+            LibC.free(cMsg)
+            LibC.free(cBottom)
+            throw IllegalMemoryException("Failed to allocate memory.")
         }
         return NativeShowToastOptions(
             cMsg,
@@ -1741,12 +1737,13 @@ func parseShowDialogOptions(options: ShowDialogOptions): NativeShowDialogOptions
     unsafe {
         var cTitle = CString(CPointer<UInt8>())
         var cMsg = CString(CPointer<UInt8>())
-        try(
-            title = LibC.mallocCString(transResourceStrToString(options.title)).asResource(),
-            msg = LibC.mallocCString(transResourceStrToString(options.message)).asResource()
-        ) {
-            cTitle = title.value
-            cMsg = msg.value
+        try {
+            cTitle = LibC.mallocCString(transResourceStrToString(options.title))
+            cMsg = LibC.mallocCString(transResourceStrToString(options.message))
+        } catch (e: Exception) {
+            LibC.free(cTitle)
+            LibC.free(cMsg)
+            throw IllegalMemoryException("Failed to allocate memory.")
         }
         return NativeShowDialogOptions(
             cTitle,
@@ -1774,12 +1771,7 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
             => IllegalArgumentException("Fail to create buttons")
         })
     unsafe {
-        var cTitle = CString(CPointer<UInt8>())
-        try(
-            title = LibC.mallocCString(transResourceStrToString(options.title)).asResource()
-        ) {
-            cTitle = title.value
-        }
+        let cTitle = LibC.mallocCString(transResourceStrToString(options.title))
         return NativeActionMenuOptions(
             cTitle,
             pButtons,
@@ -1790,10 +1782,38 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
     }
 }
 
-protected class PromptActionInner {
+/**
+ * class PromptAction
+ *
+ * @relation export declare class PromptAction
+ */
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class PromptAction {
+    private var instanceId_: Int64 = 0
     private static let defaultCallback = {_: Option<BusinessException>, _: Option<Int32> =>}
 
-    protected static func openCustomDialogWithOption(options: CustomDialogOptions, callBack: (Int32) -> Unit): Unit {
+    protected init(instanceId: Int64) {
+        this.instanceId_ = instanceId
+    }
+
+  /**
+   * Open the custom dialog.
+   *
+   * isModal = true and showInSubWindow = true cannot be used at the same time.
+   *
+   * @param { promptAction.CustomDialogOptions } options - Options.
+   * @relation openCustomDialog(options: promptAction.CustomDialogOptions): Promise<number>
+   */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func openCustomDialog(options: CustomDialogOptions, callBack: (Int32) -> Unit): Unit {
         let cOptions = parseCustomDialogOptions(options)
         let callBackLambda = Callback1Param<Int32, Unit>(callBack)
         unsafe {
@@ -1801,13 +1821,35 @@ protected class PromptActionInner {
         }
     }
 
-    protected static func closeCustomDialog(dialogId: Int32): Unit {
+    /**
+     * Close the custom dialog.
+     *
+     * @param { number } dialogId - the dialog id that returned by openCustomDialog.
+     * @relation closeCustomDialog(dialogId: number): void
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func closeCustomDialog(dialogId: Int32): Unit {
         unsafe {
             FfiPromptCloseCustomDialog(dialogId)
         }
     }
 
-    protected static func showToast(option: ShowToastOptions): Unit {
+    /**
+     * Shows a toast in the given settings.
+     *
+     * @param { ShowToastOptions } options - Toast options.
+     * @relation showToast(options: promptAction.ShowToastOptions): void
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func showToast(option: ShowToastOptions): Unit {
         unsafe {
             let cOption = parseShowToastOptions(option)
             FfiPromptShowToastWithOption(cOption)
@@ -1816,16 +1858,29 @@ protected class PromptActionInner {
         }
     }
 
-    protected static func showDialog(option: ShowDialogOptions, callback!: ShowDialogCallBack = defaultCallback) {
+    /**
+     * Shows a dialog box in the given settings. This API uses an asynchronous callback to return the result.
+     *
+     * @param { ShowDialogOptions } options - Dialog box options.
+     * @param { ShowDialogCallBack } callback - Callback used to return the dialog
+     * box response result.
+     * @relation showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback<promptAction.ShowDialogSuccessResponse>): void
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func showDialog(option: ShowDialogOptions, callback!: ShowDialogCallBack = defaultCallback) {
         unsafe {
-            let cOption = parseShowDialogOptions(option);
+            let cOption = parseShowDialogOptions(option)
             let wrapper = {
                 code: Int32, index: Int32 => match (code) {
                     case 0 => callback(Option<BusinessException>.None, Option<Int32>.Some(index))
                     case _ => callback(Option<BusinessException>.Some(BusinessException(code, "")), Option<Int32>.None)
                 }
             }
-            let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper);
+            let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper)
 
             FfiPromptShowDialogWithOption(cOption, lambdaData.getID())
             cOption.title.free()
@@ -1834,16 +1889,29 @@ protected class PromptActionInner {
         }
     }
 
-    protected static func showActionMenu(option: ActionMenuOptions, callback!: ShowActionMenuCallBack = defaultCallback) {
+    /**
+     * Shows an action menu in the given settings. This API uses an asynchronous callback to return the result.
+     *
+     * @param { ActionMenuOptions } options - Action menu options.
+     * @param { ActionMenuSuccessResponse } callback - Callback used to return the action menu
+     * response result.
+     * @relation showActionMenu(options: promptAction.ActionMenuOptions, callback: promptAction.ActionMenuSuccessResponse): void
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func showActionMenu(option: ActionMenuOptions, callback!: ShowActionMenuCallBack = defaultCallback) {
         unsafe {
-            let cOption = parseActionMenuOptions(option);
+            let cOption = parseActionMenuOptions(option)
             let wrapper = {
                 code: Int32, index: Int32 => match (code) {
                     case 0 => callback(Option<BusinessException>.None, Option<Int32>.Some(index))
                     case _ => callback(Option<BusinessException>.Some(BusinessException(code, "")), Option<Int32>.None)
                 }
             }
-            let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper);
+            let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper)
             FfiPromptShowActionMenuWithOption(cOption, lambdaData.getID())
             cOption.title.free()
             DestoryCButtons(cOption.buttons, Int64(cOption.buttonsSize))
