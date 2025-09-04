@@ -22,7 +22,9 @@ let _ = testsuites()
 
 private func testsuites(): Unit {
     registerTestSuite("TitleMenuDialog_UT_1") {TitleMenuDialog_UT_1()}
+    registerTestSuite("TitleMenuDialog_UT_1_1") {TitleMenuDialog_UT_1_1()}
     registerTestSuite("TitleMenuDialog_UT_2") {TitleMenuDialog_UT_2()}
+    registerTestSuite("TitleMenuDialog_UT_2_1") {TitleMenuDialog_UT_2_1()}
 }
 
 let UT_views: ObservedArrayList<String> = ObservedArrayList<String>(
@@ -51,7 +53,7 @@ let UT1 = ObservedArrayList<String>(
 let UT2 = ObservedArrayList<String>(
     [
         "View_MenuItemGroup",
-//        "View_Prompt",
+        "View_Prompt",
         "View_Accessibility",
         "View_Global"
     ]

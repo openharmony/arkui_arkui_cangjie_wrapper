@@ -33,7 +33,7 @@ class View_Menu {
         Menu() {
             MenuItem(startIcon: "", content: "CCCCCC", endIcon: "", labelInfo: "Ctrl+C")
             MenuItem(startIcon: "", content: "DDDDDD", endIcon: "", labelInfo: "Ctrl+C")
-        }.fontColor(0xFF7F50).width(140).font(size: 1.0, weight: W400, style: FontStyle.Normal).id("menuComponent")
+        }.fontColor(0xFF7F50).width(140).font(size: 1.0, weight: W400, style: FontStyle.Normal).id("menuComponent").radius(3.vp)
     }
 
     @Builder
@@ -41,7 +41,7 @@ class View_Menu {
         Menu() {
             MenuItem(startIcon: "", content: "copy", endIcon: "", labelInfo: "Ctrl+C")
             MenuItem(startIcon: "", content: "paste", endIcon: "", labelInfo: "Ctrl+C")
-        }
+        }.radius(BorderRadiuses())
         //        .subMenuExpandingMode(SubMenuExpandingMode.SIDE_EXPAND)
     }
 
@@ -54,7 +54,7 @@ class View_Menu {
                 => MenuItem(startIcon: "", content: "copy", endIcon: "", labelInfo: "Ctrl+C",
                     builder: {=> bind(this.SubMenu, this)()})
             }
-        }
+        }.radius(3.vp)
             //        .menuItemDivider(Option.None)
             //        .menuItemGroupDivider(Option.None)
             //        .subMenuExpandingMode(SubMenuExpandingMode.STACK_EXPAND)
@@ -70,7 +70,7 @@ class View_Menu {
                 => MenuItem(startIcon: "", content: "copy", endIcon: "", labelInfo: "Ctrl+C",
                     builder: {=> bind(this.SubMenu, this)()})
             }
-        }
+        }.radius(BorderRadiuses())
             //        .menuItemDivider(DividerStyleOptions(5.px, Color.Blue, 10.vp, 10.vp))
             //        .menuItemGroupDivider(DividerStyleOptions(5.px, Color.Green, 10.vp, 10.vp))
             //        .subMenuExpandingMode(SubMenuExpandingMode.SIDE_EXPAND)
@@ -82,8 +82,7 @@ class View_Menu {
         Row() {
             Column() {
                 Text("click to show menu").fontSize(50).fontWeight(FontWeight.Bold)
-            }
-            //            .bindMenu(this.MyMenu).width(50.percent)
+            }.bindMenu(builder: this.MyMenu).width(50.percent)
 
             this.MyMenu()
             Row() {

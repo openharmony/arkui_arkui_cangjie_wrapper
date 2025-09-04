@@ -52,6 +52,10 @@ class View_Popup {
     @State
     var text_06: String = ""
     @State
+    var text_07: String = ""
+    @State
+    var text_08: String = ""
+    @State
     var msg1: String = "Popup Wait"
     @State
     var msg2: String = "first button Wait"
@@ -85,6 +89,8 @@ class View_Popup {
             Text(msg3).id("Test_Text_09")
             Text(dismiss).id("Test_Text_10")
             Text(custom).id("Test_Text_11")
+            Text(this.text_07).id("Test_Button5")
+            Text(this.text_08).id("Test_Button6")
 
             Button("BindPopup")
                 .id("button1")
@@ -135,7 +141,8 @@ class View_Popup {
                 .bindPopup(
                     isShowPopupBuilder,
                     CustomPopupOptions(
-                        enableArrow: isenableArrow, showInSubWindow: false,
+                        showInSubWindow: false,
+                        enableArrow: isenableArrow,
                         builder: bind(builder, this),
                         onStateChange: {
                             evt =>
@@ -246,6 +253,16 @@ class View_Popup {
                         }
                     )
                 )
+            Button("EmptyPopupOptions")
+                .id("button5")
+                .onClick { e =>
+                    text_07 = "Button5 Clicked"
+                }
+            Button("DragPreviewMode")
+                .id("button6")
+                .onClick { e =>
+                    text_08 = "Button6 Clicked"
+                }
             Text(this.text_01).id("Test_Text_01").width(100).height(80)
             Text(this.text_03).id("Test_Text_03").width(100).height(80)
             Text(this.text_04).id("Test_Text_04").width(100).height(80)

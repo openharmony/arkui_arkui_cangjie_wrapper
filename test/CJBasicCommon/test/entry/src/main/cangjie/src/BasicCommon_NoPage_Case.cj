@@ -21,19 +21,28 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
+import ohos.arkui.ui_context.*
 import ohos.router.*
 import std.math.MathExtension
 import ohos.ark_interop.*
 import ohos.ui_test.*
 import std.collection.ArrayList
+import ohos.multimedia.image.InitializationOptions
+import ohos.multimedia.image.PixelMapFormat
+import ohos.multimedia.image.PixelMap
+import ohos.multimedia.image.createPixelMap
+import ohos.multimedia.image.Size as UniqueImageSize
+import ohos.display.Orientation as DisplayOrientation
+import ohos.display.*
+import ohos.prompt_action.*
+import ohos.callback_invoke.*
 internal import kit.ArkUI.{isFoldable, getFoldStatus, getFoldDisplayMode, getCurrentFoldCreaseRegion, FoldCreaseRegion,
     getDefaultDisplaySync, getAllDisplays, DisplayState, DisplayOrientation as orientation, DisplayRect,
     WaterfallDisplayAreaRects, CutoutInfo, FoldDisplayMode}
 
-
 import ohos.window.{Window, WindowStage, WindowCallbackType, WindowEventType, WindowStageEventType,
     Size, WindowStatusType, TitleButtonRect, SystemBarProperties, Orientation,createWindow,findWindow,WindowType,getLastWindow,shiftAppWindowFocus,
-    AvoidAreaType,WindowProperties,ColorSpace, Configuration as WindowConfig}
+    AvoidAreaType,WindowProperties,ColorSpace, Configuration as WindowConfig, Rect as WindowRect, AvoidArea}
 
 @Test
 class BasicCommon_NoPage_Case {
@@ -245,6 +254,13 @@ class BasicCommon_NoPage_Case {
         } catch (e: Exception) {
             Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
         }
+
+        try {
+            var lazy = LazyForEach()
+            lazy.update()
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+        }
         Hilog.info(1,"1","Cangjie-Test", "test_lengthProp end")
     }
 
@@ -257,14 +273,14 @@ class BasicCommon_NoPage_Case {
             foreach.create()
             foreach.update()
         } catch (e: Exception) {
-            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_forEach setProperty: ${e.toString()}")
         }
         try {
             var dtcustom = DtTestCustomView(Option.None, LocalStorage())
             var foreach2: ForEach = ForEach(){}
             foreach2.create<String>(1, dtcustom, ObservedArrayList<String>(["1"]), itemGeneratorFunc: {viewName: String, _: Int64 => })
         } catch (e: Exception) {
-            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_forEach setProperty: ${e.toString()}")
         }
         Hilog.info(1,"1","Cangjie-Test", "test_forEach end")
     }
@@ -362,7 +378,7 @@ class BasicCommon_NoPage_Case {
             view.destroy()
         } catch (e: Exception) {
             message = e.toString()
-            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+            Hilog.info(1,"1","Cangjie-Test", "test_view setProperty: ${e.toString()}")
         }
         @Expect(message.contains("NoneValueException"))
         Hilog.info(1,"1","Cangjie-Test", "test_view end")
@@ -378,7 +394,7 @@ class BasicCommon_NoPage_Case {
 //            view.needsUpdate()
 //            view.deletedElmtIdsHaveBeenPurged(ArrayList<Int64>([0]))
 //        } catch (e: Exception) {
-//            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+//            Hilog.info(1,"1","Cangjie-Test", "test_view2 setProperty: ${e.toString()}")
 //        }
 //        var nativeInt = NativeOptionInt64(true, 2)
 //        @Expect(2, nativeInt.value)
@@ -396,7 +412,7 @@ class BasicCommon_NoPage_Case {
 //            var foreach: LazyForEach = LazyForEach()
 //            foreach.update()
 //        } catch (e: Exception) {
-//            Hilog.info(1,"1","Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+//            Hilog.info(1,"1","Cangjie-Test", "test_lazyforEach setProperty: ${e.toString()}")
 //        }
         Hilog.info(1,"1","Cangjie-Test", "test_lazyforEach end")
     }
@@ -657,6 +673,278 @@ class BasicCommon_NoPage_Case {
         @Expect(message, "test_observedProperty success")
         Hilog.info(1,"1","Cangjie-Test", "test_observedProperty end")
     }
+
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_enum() {
+        Hilog.info(1,"1","Cangjie-Test", "test_enum start")
+        var panDirection = PanDirection.None | PanDirection.Left
+        var panDirection2 = PanDirection.Right & PanDirection.Left
+        Hilog.info(1,"1","Cangjie-Test", "test_hitrace end")
+    }
+
+     //add1
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_emptyComponent() {
+        Hilog.info(1, "Cangjie-Test", "test_emptyComponent start")
+        var emptyComponent = EmptyComponent()
+
+        var dPickerResult: DatePickerResult = DatePickerResult(2024, 11, 25)
+
+        var refreshOptions: RefreshOptions = RefreshOptions(refreshing: false)
+
+        var rectA: WindowRect = WindowRect(left: 3, top: 3, width: 3, height: 3)
+        var WindowProperties: WindowProperties = WindowProperties(
+                    windowRect: rectA,
+                    drawableRect: rectA,
+                    winType: WindowType.TypeApp,
+                    isFullScreen: false,
+                    isLayoutFullScreen: false,
+                    focusable: false,
+                    touchable: false,
+                    brightness: 3.0,
+                    isKeepScreenOn: false,
+                    isPrivacyMode: false,
+                    isTransparent: false,
+                    id: 333
+        )
+        Hilog.info(1, "Cangjie-Test", "test_emptyComponent WindowProperties")
+
+        var avoidArea: AvoidArea = AvoidArea(
+                    visible: false,
+                    leftRect: rectA,
+                    topRect: rectA,
+                    rightRect: rectA,
+                    bottomRect: rectA
+        )
+        Hilog.info(1, "Cangjie-Test", "test_emptyComponent AvoidArea")
+
+        var measureOptions: MeasureOptions = MeasureOptions(textContent: "textContent")
+
+        var gridRowOption: GridRowOptions = GridRowOptions(32)
+
+        var reuseParams: ReuseParams = ReuseParams([("a", 3), ("b", 4)])
+        var aaa = reuseParams.get<Int64>("a")
+        @Expect(aaa, 3)
+
+        var testCollectionEx: TestCollectionEx = TestCollectionEx(5)
+        var ttt = testCollectionEx.size
+        @Expect(ttt, 5)
+        testCollectionEx[0] = 5
+        var size = testCollectionEx[0]
+        @Expect(size, 5)
+        Hilog.info(1, "Cangjie-Test", "test_emptyComponent end")
+    }
+
+    @TestCase
+    @Tag[APILevel16, TestLevel0]
+    func test_richeditor() {
+        Hilog.info(1, "Cangjie-Test", "test_richeditor start")
+        var gridColOption = GridColOptions(33)
+
+        let color = Array<UInt8>(96, { i => UInt8(i+1) })
+        let opts = InitializationOptions(UniqueImageSize(4, 6), editable: true, pixelFormat: Rgba8888)
+        let pixelMap = createPixelMap(color, opts)
+        var LeadingMarginPlaceholder = LeadingMarginPlaceholder(pixelMap: pixelMap, size: (3.vp, 3.vp))
+        var richEditorParagraphStyle = RichEditorParagraphStyle(leadingMargin: LeadingMarginPlaceholder)
+
+
+        var dragItemInfo = DragItemInfo(pixelMap, { => },"")
+        var a = dragItemInfo.pixelMap
+        var b = dragItemInfo.builder
+        Hilog.info(1, "Cangjie-Test", "test_richeditor end")
+    }
+
+    @TestCase
+    @Tag[APILevel16, TestLevel0]
+    func test_display() {
+        Hilog.info(1, "Cangjie-Test", "test_display start")
+        try {
+            var display = getDefaultDisplaySync()
+            var cutoutInfo = display.getCutoutInfo()
+            var foldable = isFoldable()
+            var foldStatus = getFoldStatus()
+            var foldDisplayMode = getFoldDisplayMode()
+            Hilog.info(1, "Cangjie-Test", "test_display foldDisplayMode: success")
+            off(ListenerType.ListnerTypeAdd)
+            off(ListenerType.ListnerTypeRemove)
+            off(ListenerType.ListnerTypeChange)
+            off(ListenerType.ListnerTypeFoldAngleChange)
+            off(ListenerType.ListnerTypeCaptureStatusChange)
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_display foldDisplayMode: ${e.toString()}")
+        }
+        try {
+            getCurrentFoldCreaseRegion()
+
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_display getCurrentFoldCreaseRegion: ${e.toString()}")
+        }
+        let aa = FoldStatusCallback()
+        try {
+            on(ListenerType.ListnerTypeFoldStatusChange, aa)
+            off(ListenerType.ListnerTypeFoldStatusChange, aa)
+            off(ListenerType.ListnerTypeFoldStatusChange)
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_display FoldStatusCallback: ${e.toString()}")
+        }
+        let bb = FoldDisplayModeCallback()
+        try {
+            on(ListenerType.ListnerTypeFoldDisplayModeChange, bb)
+            off(ListenerType.ListnerTypeFoldDisplayModeChange, bb)
+            off(ListenerType.ListnerTypeFoldDisplayModeChange)
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_display FoldDisplayModeCallback: ${e.toString()}")
+        }
+        try {
+            var display2 = getDefaultDisplaySync()
+            var orientation: DisplayOrientation = display2.orientation
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_display FoldDisplayModeCallback: ${e.toString()}")
+        }
+        Hilog.info(1, "Cangjie-Test", "test_display end")
+    }
+
+    @TestCase
+    @Tag[APILevel16, TestLevel0]
+    func test_length() {
+        Hilog.info(1, "Cangjie-Test", "test_length start")
+        var lengthType: LengthType = LengthType.vp(3.0)
+        var a = lengthType.value
+        var b = lengthType.unitType
+        Hilog.info(1, "Cangjie-Test", "test_length end")
+    }
+
+    @TestCase
+    @Tag[APILevel16, TestLevel0]
+    func test_PageTransitionEnter() {
+        Hilog.info(1, "Cangjie-Test", "test_PageTransitionEnter start")
+        var pageTransitionEnter1: PageTransitionEnter = PageTransitionEnter()
+        pageTransitionEnter1.onEnter({a, b => })
+        pageTransitionEnter1.slide(SlideEffect.Left)
+        pageTransitionEnter1.slide(SlideEffect.Top)
+        pageTransitionEnter1.slide(SlideEffect.Bottom)
+        Hilog.info(1, "Cangjie-Test", "test_PageTransitionEnter slide")
+        pageTransitionEnter1.translate()
+        Hilog.info(1, "Cangjie-Test", "test_PageTransitionEnter translate")
+        pageTransitionEnter1.scale()
+        Hilog.info(1, "Cangjie-Test", "test_PageTransitionEnter scale")
+        pageTransitionEnter1.opacity(0.5)
+        Hilog.info(1, "Cangjie-Test", "test_PageTransitionEnter opacity")
+
+        var pageTransitionExit: PageTransitionExit = PageTransitionExit()
+        pageTransitionExit.slide(SlideEffect.Right)
+        Hilog.info(1, "Cangjie-Test", "pageTransitionExit slide")
+        pageTransitionExit.onExit({a, b => })
+        Hilog.info(1, "Cangjie-Test", "pageTransitionExit onExit")
+        Hilog.info(1, "Cangjie-Test", "test_PageTransitionEnter end")
+    }
+
+    @TestCase
+    @Tag[APILevel16, TestLevel0]
+    func test_prompt_action() {
+        Hilog.info(1, "Cangjie-Test", "test_prompt_action start")
+        var baseDialogOptions = BaseDialogOptions(maskRect: Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent))
+        Hilog.info(1, "Cangjie-Test", "test_prompt_action BaseDialogOptions")
+        var baseDialogOptions2 = CustomDialogOptions(builder: {=>})
+        var showDialogOptions = ShowDialogOptions()
+        var actionMenuOptions = ActionMenuOptions(buttons: [])
+        var showToastOptions = ShowToastOptions(message: "", shadow: ShadowOptions(radius: 3.0))
+        showToastOptions.shadow.getOrThrow()
+        Hilog.info(1, "Cangjie-Test", "test_prompt_action end")
+    }
+
+    @TestCase
+    @Tag[APILevel16, TestLevel0]
+    func test_text() {
+        Hilog.info(1, "Cangjie-Test", "test_text start")
+        let firstButton = driver.findComponent(On().id("textController")).getOrThrow()
+        firstButton.click()
+        try {
+            var textController = TextController()
+            textController.closeSelectionMenu()
+        }catch (e: Exception) {
+                Hilog.info(1, "Cangjie-Test", "test_text " + e.toString())
+        }
+        Hilog.info(1, "Cangjie-Test", "test_text end")
+    }
+
+    @TestCase
+    @Tag[APILevel16, TestLevel0]
+    func test_window() {
+        Hilog.info(1, "Cangjie-Test", "test_window start")
+        var rectA: WindowRect = WindowRect(left: 3, top: 3, width: 3, height: 3)
+        var avoidArea: AvoidArea = AvoidArea(
+                    visible: false,
+                    leftRect: rectA,
+                    topRect: rectA,
+                    rightRect: rectA,
+                    bottomRect: rectA
+        )
+        Hilog.info(1, "Cangjie-Test", "test_window on AvoidArea")
+
+        let onKeyboardHeightChangeCb = OnKeyboardHeightChangeCallback()
+        var TestSubWindow1 = Global.getMainWindow()
+        Hilog.info(1, "Cangjie-Test", "test_window on TestSubWindow1")
+        try {
+            TestSubWindow1.on(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
+        }catch (e: Exception) {
+                Hilog.info(1, "Cangjie-Test", "test_window on" + e.toString())
+        }
+        try {
+            TestSubWindow1.off(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
+        }catch (e: Exception) {
+                Hilog.info(1, "Cangjie-Test", "test_window off onKeyboardHeightChangeCb" + e.toString())
+        }
+        try {
+            TestSubWindow1.off(WindowCallbackType.KeyboardHeightChange)
+        }catch (e: Exception) {
+                Hilog.info(1, "Cangjie-Test", "test_window off" + e.toString())
+        }
+        Hilog.info(1, "Cangjie-Test", "test_window end")
+    }
+
+    @TestCase
+    @Tag[APILevel16, TestLevel0]
+    func test_window2() {
+        Hilog.info(1, "Cangjie-Test", "test_window2 start")
+        let mainWindow: Window = Global.getMainWindow()
+        try {
+            let property: SystemBarProperties = SystemBarProperties(
+                statusBarColor: '#ff00ff',
+                statusBarContentColor: '#0000ff',
+                navigationBarColor: '#00ff00',
+                navigationBarContentColor: '#ff0000',
+                enableStatusBarAnimation: true,
+                enableNavigationBarAnimation: true
+            )
+            // mainWindow.setWindowSystemBarProperties(property)
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_window2 setWindowSystemBarProperties: ${e.toString()}")
+        }
+        try {
+            mainWindow.resize(20, 20)
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_window2 resize: ${e.toString()}")
+        }
+        try {
+            mainWindow.minimize()
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_window2 minimize: ${e.toString()}")
+        }
+        try {
+            mainWindow.snapshot()
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_window2 snapshot: ${e.toString()}")
+        }
+        try {
+            mainWindow.destroyWindow()
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_window2 destroyWindow: ${e.toString()}")
+        }
+        Hilog.info(1, "Cangjie-Test", "test_window2 end")
+    }
 }
 
 class PersonView <: View {
@@ -755,5 +1043,43 @@ class PersonObservedObject <: ObservedObject {
 
     public func testDt() {
         super.getPublishVar()
+    }
+}
+
+class FoldStatusCallback <: Callback1Argument<FoldStatus> {
+    public init() {}
+    public open func invoke(err: ?BusinessException, event: FoldStatus) {
+        callbackMsg += "\nNoInteractionDetected"
+        Hilog.info(1,"Cangjie-App", callbackMsg)
+    }
+}
+
+class FoldDisplayModeCallback <: Callback1Argument<FoldDisplayMode> {
+    public init() {}
+    public open func invoke(err: ?BusinessException, event: FoldDisplayMode) {
+        callbackMsg += "\nNoInteractionDetected"
+        Hilog.info(1,"Cangjie-App", callbackMsg)
+    }
+}
+
+class TestCollectionEx <: CollectionEx<Int64> {
+    var value: Int64 = -1
+
+    public init(size: Int64) {
+        this.value = size
+    }
+
+    public prop size: Int64 {
+        get() {
+            this.value
+        }
+    }
+
+    public operator func [](idx: Int64, value!: Int64): Unit {
+        this.value = value
+    }
+
+    public operator func [](idx: Int64): Int64 {
+        this.value
     }
 }

@@ -76,7 +76,7 @@ class TabsExample11 {
                             .get("barBackgroundColor")
                             .getOrThrow()
                             .toString()
-                        Hilog.info(1, "1", "barBackgroundColor:${this.barBackgroundColorText}")
+                        Hilog.info(1, "Cangjie-Test", "barBackgroundColor:${this.barBackgroundColorText}")
                     }
                 )
 
@@ -94,7 +94,7 @@ class TabsExample11 {
                             .get("barBackgroundBlurStyle")
                             .getOrThrow()
                             .toString()
-                        Hilog.info(1, "1", "barBackgroundBlurStyle:${this.barBackgroundBlurStyleText}")
+                        Hilog.info(1, "Cangjie-Test", "barBackgroundBlurStyle:${this.barBackgroundBlurStyleText}")
                         this.barBackgroundBlurStyleOptionsText = JsonValue
                             .fromStr(getInspectorByKey('TabsExample11'))
                             .asObject()
@@ -104,7 +104,7 @@ class TabsExample11 {
                             .get("barBackgroundBlurStyleOptions")
                             .getOrThrow()
                             .toString()
-                        Hilog.info(1, "1", "barBackgroundBlurStyleOptions:${this.barBackgroundBlurStyleOptionsText}")
+                        Hilog.info(1, "Cangjie-Test", "barBackgroundBlurStyleOptions:${this.barBackgroundBlurStyleOptionsText}")
                         this.barBackgroundEffectText = JsonValue
                             .fromStr(getInspectorByKey('TabsExample11'))
                             .asObject()
@@ -114,7 +114,7 @@ class TabsExample11 {
                             .get("barBackgroundEffect")
                             .getOrThrow()
                             .toString()
-                        Hilog.info(1, "1", "barBackgroundEffect:${this.barBackgroundEffectText}")
+                        Hilog.info(1, "Cangjie-Test", "barBackgroundEffect:${this.barBackgroundEffectText}")
                     }
                 )
             Text(this.barBackgroundBlurStyleText).id("barBackgroundBlurStyleText")

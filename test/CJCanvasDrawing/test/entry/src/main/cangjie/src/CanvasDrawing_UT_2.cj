@@ -418,4 +418,45 @@ class CanvasDrawing_UT_2 {
         scrollBar?.scrollToBottom(speed: 15000)
         driver.delayMs(3000)
     }
+
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_canvas_2() {
+        ScrollTo("View_Canvas_2")
+
+        var text = driver.findComponent(On().id("height_width1")).getOrThrow().getText()
+        @Expect(text, "136.307692 109.230769")
+
+        text = driver.findComponent(On().id("height_width2")).getOrThrow().getText()
+        @Expect(text, "100.000000 100.000000")
+
+        text = driver.findComponent(On().id("height_color")).getOrThrow().getText()
+        @Expect(text, "325 255")
+
+        text = driver.findComponent(On().id("size")).getOrThrow().getText()
+        @Expect(text, "1.000000 1.000000 -0.500000 0.500000 10.000000 10.000000")
+
+        text = driver.findComponent(On().id("size1")).getOrThrow().getText()
+        @Expect(text, "0.800000 0.800000 0.400000 -0.400000 -12.000000 -4.000000")
+
+        var compont1 = driver.findComponent(On().id("height_width1")).getOrThrow()
+        var compont2 = driver.findComponent(On().id("size1")).getOrThrow()
+        compont2.dragTo(compont1)
+
+        text = driver.waitForComponent(On().id("size2"),1500).getOrThrow().getText()
+        @Expect(text, "1.000000 1.000000 0.000000 0.000000 0.000000 0.000000")
+
+        text = driver.findComponent(On().id("size3")).getOrThrow().getText()
+        @Expect(text, "1.000000 1.000000 0.000000 0.000000 100.000000 100.000000")
+
+        text = driver.findComponent(On().id("size4")).getOrThrow().getText()
+        @Expect(text, "0.500000 0.500000 0.000000 0.000000 100.000000 100.000000")
+
+        text = driver.findComponent(On().id("size5")).getOrThrow().getText()
+        @Expect(text, "0.250230 0.250230 0.432880 -0.432880 99.084454 103.413255")
+
+        compont1 = driver.findComponent(On().id("size5")).getOrThrow()
+        compont2 = driver.findComponent(On().text("Click to set transform")).getOrThrow()
+        compont2.dragTo(compont1)
+    }
 }

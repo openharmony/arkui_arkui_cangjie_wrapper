@@ -92,14 +92,14 @@ public class View_Lazyforeach {
         Column(space: 30) {
             Text("-----------------")
             Column {
-//                LazyForEach(
-//                    dataSourceStu,
-//                    itemGeneratorFunc: {
-//                        stu: Student, idx: Int64 => Column {
-//                            Text(stu.name).id("my_text_${idx}")
-//                        }
-//                    }
-//                )
+                LazyForEach(
+                    dataSourceStu,
+                    itemGeneratorFunc: {
+                        stu: Student, idx: Int64 => Column {
+                            Text(stu.name).id("my_text_${idx}")
+                        }
+                    }
+                )
             }.height(400.0)
 
             Text("click to notifyChange").onClick(

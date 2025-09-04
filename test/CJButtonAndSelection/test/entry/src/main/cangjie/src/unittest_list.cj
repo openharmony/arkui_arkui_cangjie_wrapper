@@ -19,7 +19,9 @@ let _ = testsuite()
 
 func testsuite(): Unit {
     registerTestSuite("ButtonSelect_UT_1") {ButtonSelect_UT_1()}
+    registerTestSuite("ButtonSelect_UT_1_1") {ButtonSelect_UT_1_1()}
     registerTestSuite("ButtonSelect_UT_2") {ButtonSelect_UT_2()}
+    registerTestSuite("ButtonSelect_UT_2_1") {ButtonSelect_UT_2_1()}
 }
 
 let UT_views = [
@@ -27,13 +29,17 @@ let UT_views = [
     "Index_UT2"
 ]
 let UT1 = [
+    "View_Button",
     "View_CheckboxGroup",
+    "View_Checkbox",
     "View_Rating",
     "View_Router1",
     "View_Router2",
+    "View_Radio",
     "View_Select"
 ]
 let UT2 = [
+    "View_Slider",
     "View_Stepper",
     "View_Tab",
     "View_TabContent",

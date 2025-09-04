@@ -173,4 +173,31 @@ class TextAndInput_UT_2_1 {
         Hilog.info(1,"1","Cangjie-Test", "TextInput Enhance Finished")
     }
 
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_textinput_event() {
+        ScrollTo("View_TextInput_Enhance")
+
+        let onSubmit = driver.waitForComponent(On().id("onSubmit"),200).getOrThrow()
+        onSubmit.inputText("0")
+        driver.delayMs(500)
+        onSubmit.click()
+        driver.delayMs(500)
+        driver.click(1158, 2474)
+        driver.delayMs(500)
+        //@Expect(onSubmit.getText(), "onDidInsert success")
+
+        let onSubmitWithEvent = driver.findComponent(On().id("onSubmitWithEvent")).getOrThrow()
+        onSubmitWithEvent.inputText("0.0")
+        driver.delayMs(500)
+        onSubmitWithEvent.click()
+        driver.delayMs(500)
+        driver.click(1158, 2474)
+        driver.delayMs(300)
+        driver.pressBack()
+        driver.delayMs(200)
+//        onSubmitWithEvent.inputText("onDidDelete success")
+//        driver.delayMs(300)
+//        @Expect(onSubmitWithEvent.getText(), "onDidDelete success")
+    }
 }

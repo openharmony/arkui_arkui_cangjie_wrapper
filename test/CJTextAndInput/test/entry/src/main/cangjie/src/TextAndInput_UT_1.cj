@@ -100,6 +100,62 @@ class TextAndInput_UT_1 {
     }
 
     @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_font() {
+        ScrollTo("View_Font")
+
+        let button1 = driver.findComponent(On().id("registerFont1")).getOrThrow()
+        button1.click()
+        let check1 = driver.findComponent(On().id("message")).getOrThrow().getText()
+        @Expect(check1, "1: Amiri")
+
+        let button2 = driver.findComponent(On().id("registerFont2")).getOrThrow()
+        button2.click()
+        let check2 = driver.findComponent(On().id("message")).getOrThrow().getText()
+        @Expect(check2, "1: SmileySans")
+
+        let button3 = driver.findComponent(On().id("getFontByName-sysFontName")).getOrThrow()
+        button3.click()
+        let check3 = driver.findComponent(On().id("check")).getOrThrow().getText()
+        @Expect(check3, "2: /system/fonts/HarmonyOS_Sans_Italic.ttf")
+
+        let button4 = driver.findComponent(On().id("getFontByName-noSysFontName")).getOrThrow()
+        button4.click()
+        let check4 = driver.findComponent(On().id("check")).getOrThrow().getText()
+        @Expect(check4, "2: no value")
+
+        //let button5 = driver.findComponent(On().id("getUIFontConfig")).getOrThrow()
+        //button5.click()
+//        let message = driver.findComponent(On().id("message")).getOrThrow().getText()
+//        @Expect(message, "1: /system/fonts/")
+
+//        let message1 = driver.findComponent(On().id("message1")).getOrThrow().getText()
+//        @Expect(message1, "3: HarmonyOS Sans")
+//
+//        let message2 = driver.findComponent(On().id("message2")).getOrThrow().getText()
+//        @Expect(message2, "4: HarmonyOS-Sans")
+//
+//        let check5 = driver.findComponent(On().id("check2")).getOrThrow().getText()
+//        @Expect(check5, "5: 0")
+//
+//        let message3 = driver.findComponent(On().id("message3")).getOrThrow().getText()
+//        @Expect(message3, "6: 50")
+//        let check6 = driver.findComponent(On().id("check3")).getOrThrow().getText()
+//        @Expect(check6, "7: 100")
+//
+//        let message4 = driver.findComponent(On().id("message4")).getOrThrow().getText()
+//        @Expect(message4, "8: ")
+//
+//        let message5 = driver.findComponent(On().id("message5")).getOrThrow().getText()
+//        @Expect(message5, "9: und-Zsye")
+//        let check7 = driver.findComponent(On().id("check5")).getOrThrow().getText()
+//        @Expect(check7, "10: HMOS Color Emoji")
+
+        let button6 = driver.findComponent(On().id("getFont")).getOrThrow()
+        button6.click()
+    }
+
+    @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_imageSpanInit() {
         ScrollTo("View_ImageSpan")
@@ -235,76 +291,162 @@ class TextAndInput_UT_1 {
         @Expect(text_onerror, "41.000000")
     }
 
-//    @TestCase
-//    @Tag[APILevel12, TestLevel0]
-//    func test_richeditor() {
-//        ScrollTo("View_RichEditor")
-//        let addTextSpan1 = driver.findComponent(On().id("addTextSpan1"))
-//        addTextSpan1?.click()
-//        let getInfo = driver.findComponent(On().id("getInfo"))
-//        getInfo?.click()
-//        let getCaretOffset = driver.findComponent(On().id("getCaretOffset"))
-//        getCaretOffset?.click()
-//        let addTextSpan2 = driver.findComponent(On().id("addTextSpan2"))
-//        addTextSpan2?.click()
-//        let RichEditor01DelSpans = driver.findComponent(On().id("RichEditor01DelSpans")).getOrThrow()
-//        RichEditor01DelSpans?.click()
-//        let setCaretOffset01 = driver.findComponent(On().id("setCaretOffset01"))
-//        setCaretOffset01?.click()
-//        let setCaretOffset02 = driver.findComponent(On().id("setCaretOffset02"))
-//        setCaretOffset02?.click()
-//        let addTextSpan3 = driver.findComponent(On().id("addTextSpan3"))
-//        addTextSpan3?.click()
-//        let addTextSpan4 = driver.findComponent(On().id("addTextSpan4"))
-//        addTextSpan4?.click()
-//        let getSpans = driver.findComponent(On().id("getSpans")).getOrThrow()
-//        let spans = getSpans?.getType()
-//        @Expect(spans, "Button")
-//        let text = getSpans?.getText()
-//        @Expect(text, "getSpans")
-//    }
-//
-//    @TestCase
-//    @Tag[APILevel12, TestLevel0]
-//    func test_richeditor2() {
-//        ScrollTo("View_RichEditor")
-//        let richEditor = driver.findComponent(On().id("RichEditorKey")).getOrThrow()
-//        Hilog.info(1,"1","Cangjie-Test", "test_richeditor2  richEditor.click 3000")
-//        richEditor?.click()
-//        driver.delayMs(1500)
-//
-//        // 输入法弹窗同意点
-//        Hilog.info(1,"1","Cangjie-Test", "test_richeditor2  click.输入法弹窗同意点")
-//        driver.click(966, 2502)
-//        driver.delayMs(1200)
-//        // 键盘布局同意点
-//        driver.click(615, 2490)
-//        driver.delayMs(600)
-//
-//        richEditor?.inputText("abcjiushi")
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_search() {
+        ScrollTo("View_Search")
+
+        let inspector = getInspectorByKey("searchComponent")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+
+        let testWidth = attrs.get("width").getOrThrow().toString()
+        @Expect(testWidth, "\"300.00vp\"")
+
+        let testBackgroundColor = attrs.get("backgroundColor").getOrThrow().toString()
+        @Expect(testBackgroundColor, "\"#0C000000\"")
+
+        let searchItem = driver.findComponent(On().id("searchComponent")).getOrThrow()
+        searchItem.inputText("changeString")
+
+
+        // 光标位置为 3
+        let button4 = driver.waitForComponent(On().id("caretPosition"),500).getOrThrow()
+        button4.click()
+
+        driver.delayMs(500)
+        // CaretPosition
+//        let inspector3 = getInspectorByKey("Search?Position")
+//        let jsonObject3 = JsonValue.fromStr(inspector3).asObject()
+//        let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
+//        let attrs3Text = attrs3.get("content").getOrThrow().toString()
+//        @Expect(attrs3Text,'"caretPosition 3"')
+
+
+        let button5 = driver.waitForComponent(On().id("setSelection"),500).getOrThrow()
+        button5.click()
+
 //        driver.delayMs(500)
-//        richEditor?.clearText()
-//        driver.delayMs(500)
-//        richEditor?.inputText("success")
-//        driver.delayMs(500)
-//
-//        richEditor?.longClick()
-//        let menu: Component = driver.waitForComponent(On().text("全选"), 1000).getOrThrow()
-//
-//        menu.click()
-//        let menu1: Component = driver.waitForComponent(On().text("复制"), 500).getOrThrow()
-//        menu1.click()
-//        driver.delayMs(500)
-//
-//        richEditor?.longClick()
-//        let menu2: Component = driver.waitForComponent(On().text("粘贴"), 600).getOrThrow()
-//        menu2.click()
-//
-//        let GET = driver.waitForComponent(On().id("getSpans"),500)
-//        GET?.click()
-//        let RichEditor01GetSpans = driver.findComponent(On().id("RichEditor01GetSpans")).getOrThrow()
-//        RichEditor01GetSpans?.click()
-//    }
+//        let inspector4 = getInspectorByKey("Search?Selection")
+//        let jsonObject4 = JsonValue.fromStr(inspector4).asObject()
+//        let attrs4 = jsonObject4.get("$attrs").getOrThrow().asObject()
+//        let attrs4Text = attrs4.get("content").getOrThrow().toString()
+//        @Expect(attrs4Text,'"Selection 6-12"')
+
+        driver.delayMs(500)
+
+        // 开始/停止编辑
+        searchItem.click()
+
+//        let inspector5 = getInspectorByKey("Search?Editing")
+//        let jsonObject5 = JsonValue.fromStr(inspector5).asObject()
+//        let attrs5 = jsonObject5.get("$attrs").getOrThrow().asObject()
+//        let attrs5Text = attrs5.get("content").getOrThrow().toString()
+//        @Expect(attrs5Text,'"Editing true"')
+
+
+
+        let button6 = driver.waitForComponent(On().id("stopEditing"),500).getOrThrow()
+        button6.click()
+
+        driver.delayMs(500)
+        let inspector6 = getInspectorByKey("Search?Editing")
+        let jsonObject6 = JsonValue.fromStr(inspector6).asObject()
+        let attrs6 = jsonObject6.get("$attrs").getOrThrow().asObject()
+        let attrs6Text = attrs6.get("content").getOrThrow().toString()
+        @Expect(attrs6Text,'"Editing false"')
+
+        // 滚动 clearText好像没用到 clear
+        searchItem.clearText()
+        driver.delayMs(1000)
+        searchItem.inputText("TextSelectionChange ContentScroll 012345678901234567890123456789")
+        driver.delayMs(1000)
+
+//        let otherInspector = getInspectorByKey("MyText")
+//        let otherJsonObject = JsonValue.fromStr(otherInspector).asObject()
+//        let otherContent = otherJsonObject.get("$attrs").getOrThrow().asObject()
+//        let finalContent = otherContent.get("content")
+//        let optionContent = finalContent.getOrThrow()
+//        let maxContent = optionContent.toString()
+        driver.delayMs(700)
+        searchItem.clearText()
+        driver.pressBack() // 否则执行完search testcase会闪退
+    }
+
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_richeditor() {
+        ScrollTo("View_RichEditor")
+        let addTextSpan1 = driver.findComponent(On().id("addTextSpan1")).getOrThrow()
+        addTextSpan1.click()
+        let getInfo = driver.findComponent(On().id("getInfo")).getOrThrow()
+        getInfo.click()
+        let getCaretOffset = driver.findComponent(On().id("getCaretOffset")).getOrThrow()
+        getCaretOffset.click()
+        let addTextSpan2 = driver.findComponent(On().id("addTextSpan2")).getOrThrow()
+        addTextSpan2.click()
+        let RichEditor01DelSpans = driver.findComponent(On().id("RichEditor01DelSpans")).getOrThrow()
+        RichEditor01DelSpans.click()
+        let setCaretOffset01 = driver.findComponent(On().id("setCaretOffset01")).getOrThrow()
+        setCaretOffset01.click()
+        let setCaretOffset02 = driver.findComponent(On().id("setCaretOffset02")).getOrThrow()
+        setCaretOffset02.click()
+        let addTextSpan3 = driver.findComponent(On().id("addTextSpan3")).getOrThrow()
+        addTextSpan3.click()
+        let addTextSpan4 = driver.findComponent(On().id("addTextSpan4")).getOrThrow()
+        addTextSpan4.click()
+        let getSpans = driver.findComponent(On().id("getSpans")).getOrThrow()
+        let spans = getSpans.getType()
+        @Expect(spans, "Button")
+        let text = getSpans.getText()
+        @Expect(text, "getSpans")
+    }
+
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_richeditor2() {
+        ScrollTo("View_RichEditor")
+        let richEditor = driver.findComponent(On().id("RichEditorKey")).getOrThrow()
+        Hilog.info(1,"Cangjie-Test", "test_richeditor2  richEditor.click 3000")
+        richEditor.click()
+        driver.delayMs(1500)
+
+        // 获取输入框imageSpans
+        let getImages = driver.waitForComponent(On().id("getSpans"),500).getOrThrow()
+        getImages.click()
+
+        // 输入法弹窗同意点
+        Hilog.info(1,"Cangjie-Test", "test_richeditor2  click.输入法弹窗同意点")
+        driver.click(966, 2502)
+        driver.delayMs(1200)
+        // 键盘布局同意点
+        driver.click(615, 2490)
+        driver.delayMs(600)
+
+        richEditor.inputText("abcjiushi")
+        driver.delayMs(500)
+        richEditor.clearText()
+        driver.delayMs(500)
+        richEditor.inputText("success")
+        driver.delayMs(500)
+
+        richEditor.longClick()
+        let menu: Component = driver.waitForComponent(On().text("全选"), 1000).getOrThrow()
+
+        menu.click()
+        let menu1: Component = driver.waitForComponent(On().text("复制"), 500).getOrThrow()
+        menu1.click()
+        driver.delayMs(500)
+
+        richEditor.longClick()
+        let menu2: Component = driver.waitForComponent(On().text("粘贴"), 600).getOrThrow()
+        menu2.click()
+
+        let GET = driver.waitForComponent(On().id("getSpans"),500).getOrThrow()
+        GET.click()
+        let RichEditor01GetSpans = driver.findComponent(On().id("RichEditor01GetSpans")).getOrThrow()
+        RichEditor01GetSpans.click()
+    }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]

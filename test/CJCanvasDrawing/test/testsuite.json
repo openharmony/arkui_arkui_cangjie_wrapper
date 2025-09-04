@@ -6,6 +6,10 @@
       "timeout": 100
     },
     {
+      "name": "CanvasDrawing_UT_1_1",
+      "timeout": 100
+    },
+    {
       "name": "CanvasDrawing_UT_2",
       "timeout": 100
     }

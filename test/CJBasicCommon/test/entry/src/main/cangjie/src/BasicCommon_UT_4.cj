@@ -106,6 +106,22 @@ class BasicCommon_UT_4 {
     }
 
     @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_subscriber() {
+        ScrollTo("View_Subscriber")
+
+        let size = driver.findComponent(On().id("size")).getOrThrow()
+        size.click()
+
+        let info = driver.waitForComponent(On().id("info"),500).getOrThrow()
+        info.click()
+
+        let get = driver.waitForComponent(On().id("get"),500).getOrThrow()
+        get.click()
+        driver.delayMs(500)
+    }
+
+    @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_viewBase() {
         ScrollTo("View_ViewBase")

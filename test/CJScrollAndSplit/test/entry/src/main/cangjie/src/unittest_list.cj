@@ -20,8 +20,9 @@ package ohos_app_cangjie_entry
 
 let _ = testsuites()
 func testsuites(): Unit {
-    registerTestSuite("ScrollSplit_UT1") {ScrollSplit_UT_1()}
-    registerTestSuite("ScrollSplit_UT2") {ScrollSplit_UT_2()}
+    registerTestSuite("ScrollSplit_UT_1") {ScrollSplit_UT_1()}
+    registerTestSuite("ScrollSplit_UT_1_1") {ScrollSplit_UT_1_1()}
+    registerTestSuite("ScrollSplit_UT_2") {ScrollSplit_UT_2()}
 }
 let UT_views = [
     "ScrollSplit_UT1",

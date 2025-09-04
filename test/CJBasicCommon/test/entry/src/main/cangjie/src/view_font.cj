@@ -33,12 +33,12 @@ class View_Font {
     protected override func aboutToAppear() {
         getUIContext().getFont().registerFont(
             familyName: "Deyihei",
-            familySrc: "/resources/rawfile/SmileySans-Oblique.ttf"
+            familySrc: "/resources/rawfile/HarmonyOS_Sans_Condensed.ttf"
         )
 
         getUIContext().getFont().registerFont(
             familyName: @r(app.string.Font_name),
-            familySrc: @rawfile("SmileySans-Oblique.ttf")
+            familySrc: @rawfile("HarmonyOS_Sans_Condensed.ttf")
         )
 
         getUIContext().getFont().registerFont(

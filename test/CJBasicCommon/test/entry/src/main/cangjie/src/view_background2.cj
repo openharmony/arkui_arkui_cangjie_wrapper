@@ -35,7 +35,12 @@ class View_Background2 {
     func build() {
         Row {
             Column {
-                Button("PrintBackgroundAttr").onClick {  e =>
+                // 测试Background
+                Text("测试背景设置backgroundBlurStyle等")
+                    .id("background_id_01")
+                Text("linearGradient Repeat111111")
+
+                Button("PrintBackgroundAttr").onClick { e =>
                     let c_id = "background_id_01"
 
                     let Inspector = getInspectorByKey(c_id)

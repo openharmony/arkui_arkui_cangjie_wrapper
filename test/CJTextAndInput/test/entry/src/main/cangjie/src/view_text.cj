@@ -31,6 +31,7 @@ class View_Text {
     let controller: TextController = TextController()
 //    var editMessage: Array<String> = getResourceStringArray(@r(app.strarray.editMessage))
     @State var color: Color = Color.Black
+    @State var shadowOptionsArray: Array<ShadowOptions> = [ShadowOptions(radius: 10.0, shadowType: ShadowType.Color), ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, color: Color.Red, offsetX: 1.0, offsetY: 1.0, fill: true)]
     @Builder func LongPressTextCustomMenu() {
         Column() {
             Button('LongPress')
@@ -77,6 +78,9 @@ class View_Text {
 
                 Text("Hello")
                     .responseRegion(Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent))
+                    .responseRegion(
+                    [Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent),
+                        Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent)])
 
                 Text('This is the text content with given settings. This is the text content with given settings')
                     .baselineOffset(10)
@@ -97,6 +101,10 @@ class View_Text {
                 Text('This is the text content with given font settings.')
                     .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red, decorationStyle: TextDecorationStyle.Dashed)
                     .textCase(TextCase.UpperCase)
+                    .fontSize(15)
+                    .fontWeight(FontWeight.Bolder)
+                    .fontFamily('HarmonyOS Sans')
+                    .fontStyle(FontStyle.Italic)
                     .id("TextGivenFont")
 
                 Text(@r(app.string.module_desc))
@@ -171,6 +179,19 @@ class View_Text {
                 Text('This is the text content with selection [3,2].')
                     .id("TextBoundaryValue10")
 
+                Text('This is the text content with TextOverflow.MARQUEE line line line line line.')
+                    //.textOverflow(TextOverflow.MARQUEE)
+                    .maxLines(2)
+                    //.copyOption(MyCopyOptions.LocalDevice)
+                    .textAlign(TextAlign.Start)
+                    .id("TextBoundaryValue11")
+
+                Text('TextOverflow.MARQUEE.')
+                    //.textOverflow(TextOverflow.MARQUEE)
+                    .textAlign(TextAlign.End)
+                    .border(width:1).padding(10).width(100.percent)
+                    .id("TextBoundaryValue12")
+
                 Text("textOverflow line line line line line line line line line line line line line line line line line.")
                     .textOverflow(TextOverflow.Ellipsis)
                     .maxLines(1)
@@ -203,6 +224,9 @@ class View_Text {
                 Text('This is the text content with selection and CopyOptions.None.')
                     .id("TextCombine8")
 
+                Text('This is the text content with selection and TextOverflow.MARQUEE.')
+                    .id("TextCombine9")
+
                 Text("wordBreak line line line line line line line line linelinelinelineline")
                     .textOverflow(TextOverflow.Ellipsis).maxLines(1)
                     .id("TextCombine10")
@@ -220,7 +244,10 @@ class View_Text {
                     .id("TextCombine14")
 
                 Text('This is the text content with TextAlign JUSTIFY and WordBreak BreakWord')
+                    .textAlign(TextAlign.Center)
                     .id("TextCombine15")
+
+                Text(controller: this.controller).id("TextController")
             }
         }.height(100.percent).width(100.percent)
     }

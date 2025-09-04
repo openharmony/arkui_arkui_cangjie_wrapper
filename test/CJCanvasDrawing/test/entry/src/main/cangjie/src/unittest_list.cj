@@ -18,10 +18,13 @@
  */
 package ohos_app_cangjie_entry
 
+internal import ohos.business_exception.BusinessException
+
 let _ = testsuite()
 
 func testsuite(): Unit{
     registerTestSuite("CanvasDrawing_UT_1") {CanvasDrawing_UT_1()}
+    registerTestSuite("CanvasDrawing_UT_1_1") {CanvasDrawing_UT_1_1()}
     registerTestSuite("CanvasDrawing_UT_2") {CanvasDrawing_UT_2()}
 }
 let UT_views = [

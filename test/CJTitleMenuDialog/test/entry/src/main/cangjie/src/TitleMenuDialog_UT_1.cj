@@ -26,7 +26,7 @@ import ohos.ui_test.*
 import std.time.*
 
 @Test
-class TitleMenuDialog_UT_1 {
+class TitleMenuDialog_UT_1_1 {
     prop driver: Driver {
         get() {
             OpenHarmonyTestRunner.driver

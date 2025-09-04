@@ -35,12 +35,10 @@ class  View_ClickEffect{
                     .height(50)
                     .width(50)
 
-                Text("LIGHT")
                 Radio(value: '20', group: '数字')
                     .height(50)
                     .width(50)
 
-                Text("HEAVY")
                 Radio(value: '10', group: '数字')
                     .height(50)
                     .width(50)
@@ -54,16 +52,17 @@ class  View_ClickEffect{
                     .width(50)
                     .id("clickEffectId01")
 
-                Text("LIGHT 0.5")
                 Radio(value: '10', group: '数字')
                     .height(50)
                     .width(50)
 
+                // 异常值
                 Radio(value: '10', group: '数字')
                     .height(50)
                     .width(50)
                     .id("clickEffectId02")
 
+                // 异常值
                 Radio(value: '10', group: '数字')
                     .height(50)
                     .width(50)

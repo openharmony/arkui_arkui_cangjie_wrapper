@@ -36,6 +36,10 @@ class View_MenuItemGroup {
             MenuItem(startIcon: " ", endIcon: " ", content: "粘贴", labelInfo: "Ctrl+V").id("Test_Menu_08")
         }
     }
+    @Builder
+    func MenuText() {
+        Text("MenuItemGroup")
+    }
 
     @Builder
     func MyMenu2() {
@@ -96,6 +100,8 @@ class View_MenuItemGroup {
                 ).id("Test_Menu_05").selectIcon(@r(app.string.test_boolean))
             }.id("Test_MenuItemGroup")
 
+            MenuItemGroup(header: bind(this.MenuText, this), footer:  bind(this.MenuText, this))
+
             MenuItemGroup(header: @r(app.string.menuItemGroup_header), footer: @r(app.string.menuItemGroup_footer)) {
                 =>
                 MenuItem(startIcon: "", endIcon: "", content: "菜单选项", labelInfo: "")
@@ -139,7 +145,7 @@ class View_MenuItemGroup {
             .id("Menu")
 
         Menu() {
-            
+
         }
             .font()
             .font(size: 15.vp, weight: FontWeight.Medium, family: @r(app.string.family_desc), style: FontStyle.Italic)
@@ -148,7 +154,7 @@ class View_MenuItemGroup {
             .id("Menu2")
 
         Menu() {
-            
+
         }
             .font(size: @r(app.string.size_desc), weight: FontWeight.Medium, family: "HarmonyOS Sans",
                 style: FontStyle.Italic)
@@ -156,7 +162,7 @@ class View_MenuItemGroup {
             .id("Menu3")
 
         Menu() {
-            
+
         }
             .font(family: @r(app.string.family_desc))
             .font(size: @r(app.string.size_desc), weight: FontWeight.Medium, family: @r(app.string.family_desc),
@@ -164,7 +170,7 @@ class View_MenuItemGroup {
             .id("Menu4")
         Menu() {
             MenuItemGroup(header: {=>}, footer: {=>}) {
-                
+
             }.id("MenuItemGroup1")
         }
     }
@@ -173,8 +179,7 @@ class View_MenuItemGroup {
         Row() {
             Column() {
                 Button("click to show menu").id("showmenu").fontSize(50).fontWeight(FontWeight.Bold).id("button")
-            }
-        //            .bindMenu(builder: this.MyMenu2).width(100.percent)
+            }.bindMenu(builder: this.MyMenu2).width(100.percent)
         }.height(100.percent)
     }
 }
