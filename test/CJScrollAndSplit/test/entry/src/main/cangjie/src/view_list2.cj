@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/14
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -44,13 +47,20 @@ class View_List2 {
     @Builder
     func pixelMapBuilder() { //拖拽过程样式
         Column() {
-            Text(this.text).fontSize(16).backgroundColor(0xF9CF93).width(80).height(80).textAlign(TextAlign.Center)
+            Text(this.text)
+                .fontSize(16)
+                .backgroundColor(0xF9CF93)
+                .width(80)
+                .height(80)
+                .textAlign(TextAlign.Center)
         }
     }
 
     protected override func aboutToAppear() {
         for (i in 1..9) {
-            this.numbers.add("${i}")
+            this
+                .numbers
+                .add("${i}")
         }
     }
 
@@ -81,7 +91,11 @@ class View_List2 {
                             }
                         }
                     )
-                }.width(90.percent).backgroundColor(0xFAEEE0).height(300).lanes(3)
+                }
+                    .width(90.percent)
+                    .backgroundColor(0xFAEEE0)
+                    .height(300)
+                    .lanes(3)
 
                 List(space: 20, initialIndex: 0, scroller: Scroller()) {
                     ForEach(
@@ -94,10 +108,15 @@ class View_List2 {
                                     .width(80)
                                     .height(80)
                                     .textAlign(TextAlign.Center)
-                            }.swipeAction()
+                            }
+                                .swipeAction()
                         }
                     )
-                }.width(90.percent).backgroundColor(0xFAEEE0).height(300).lanes(3)
+                }
+                    .width(90.percent)
+                    .backgroundColor(0xFAEEE0)
+                    .height(300)
+                    .lanes(3)
             }
         }
     }

@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/14
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -31,9 +34,18 @@ class View_Grid_Row {
             GridRow() {
                 GridCol() {
                     Row() {
-                        Text("grid_row_1").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
-                }.borderColor(Color.Blue).borderWidth(2.vp).span(2).order(GridColColumnOption()).order(2)
+                        Text("grid_row_1")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
+                }
+                    .borderColor(Color.Blue)
+                    .borderWidth(2.vp)
+                    .span(2)
+                    .order(GridColOptions())
+                    .order(2)
             }.id("grid_row_1")
 
             GridRow(
@@ -46,13 +58,24 @@ class View_Grid_Row {
             ) {
                 GridCol() {
                     Row() {
-                        Text("grid_row_2").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
-                }.borderColor(Color.Blue).borderWidth(2.vp).span(2).order(GridColColumnOption()).order(2)
-            }.width(100.percent).id("grid_row_2")
+                        Text("grid_row_2")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
+                }
+                    .borderColor(Color.Blue)
+                    .borderWidth(2.vp)
+                    .span(2)
+                    .order(GridColOptions())
+                    .order(2)
+            }
+                .width(100.percent)
+                .id("grid_row_2")
 
             GridRow(
-                columns: GridRowColumnOption(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
+                columns: GridRowOptions(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp], //设置断点位置的单调递增数组。
                     reference: BreakpointsReference.WindowSize
@@ -61,10 +84,21 @@ class View_Grid_Row {
             ) {
                 GridCol() {
                     Row() {
-                        Text("grid_row_3").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
-                }.borderColor(Color.Blue).borderWidth(2.vp).span(2).order(GridColColumnOption()).order(2)
-            }.width(100.percent).id("grid_row_3")
+                        Text("grid_row_3")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
+                }
+                    .borderColor(Color.Blue)
+                    .borderWidth(2.vp)
+                    .span(2)
+                    .order(GridColOptions())
+                    .order(2)
+            }
+                .width(100.percent)
+                .id("grid_row_3")
 
             GridRow(
                 gutter: 2.vp,
@@ -76,14 +110,25 @@ class View_Grid_Row {
             ) {
                 GridCol() {
                     Row() {
-                        Text("grid_row_4").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
-                }.borderColor(Color.Blue).borderWidth(2.vp).span(2).order(GridColColumnOption()).order(2)
-            }.width(100.percent).id("grid_row_4")
+                        Text("grid_row_4")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
+                }
+                    .borderColor(Color.Blue)
+                    .borderWidth(2.vp)
+                    .span(2)
+                    .order(GridColOptions())
+                    .order(2)
+            }
+                .width(100.percent)
+                .id("grid_row_4")
 
             GridRow(
-                gutter: GutterOption(x: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
-                    y: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
+                gutter: GutterOptions(x: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
+                    y: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp], //设置断点位置的单调递增数组。
                     reference: BreakpointsReference.WindowSize
@@ -92,10 +137,21 @@ class View_Grid_Row {
             ) {
                 GridCol() {
                     Row() {
-                        Text("grid_row_5").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
-                }.borderColor(Color.Blue).borderWidth(2.vp).span(2).order(GridColColumnOption()).order(2)
-            }.width(100.percent).id("grid_row_5")
+                        Text("grid_row_5")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
+                }
+                    .borderColor(Color.Blue)
+                    .borderWidth(2.vp)
+                    .span(2)
+                    .order(GridColOptions())
+                    .order(2)
+            }
+                .width(100.percent)
+                .id("grid_row_5")
 
             GridRow(
                 gutter: 2.vp,
@@ -108,14 +164,25 @@ class View_Grid_Row {
             ) {
                 GridCol() {
                     Row() {
-                        Text("grid_row_6").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
-                }.borderColor(Color.Blue).borderWidth(2.vp).span(2).order(GridColColumnOption()).order(2)
-            }.width(100.percent).id("grid_row_6")
+                        Text("grid_row_6")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
+                }
+                    .borderColor(Color.Blue)
+                    .borderWidth(2.vp)
+                    .span(2)
+                    .order(GridColOptions())
+                    .order(2)
+            }
+                .width(100.percent)
+                .id("grid_row_6")
 
             GridRow(
                 gutter: 2.vp,
-                columns: GridRowColumnOption(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
+                columns: GridRowOptions(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp], //设置断点位置的单调递增数组。
                     reference: BreakpointsReference.WindowSize
@@ -124,14 +191,25 @@ class View_Grid_Row {
             ) {
                 GridCol() {
                     Row() {
-                        Text("grid_row_7").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
-                }.borderColor(Color.Blue).borderWidth(2.vp).span(2).order(GridColColumnOption()).order(2)
-            }.width(100.percent).id("grid_row_7")
+                        Text("grid_row_7")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
+                }
+                    .borderColor(Color.Blue)
+                    .borderWidth(2.vp)
+                    .span(2)
+                    .order(GridColOptions())
+                    .order(2)
+            }
+                .width(100.percent)
+                .id("grid_row_7")
 
             GridRow(
-                gutter: GutterOption(x: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
-                    y: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
+                gutter: GutterOptions(x: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
+                    y: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
                 columns: 2,
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp], //设置断点位置的单调递增数组。
@@ -141,15 +219,26 @@ class View_Grid_Row {
             ) {
                 GridCol() {
                     Row() {
-                        Text("grid_row_8").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
-                }.borderColor(Color.Blue).borderWidth(2.vp).span(2).order(GridColColumnOption()).order(2)
-            }.width(100.percent).id("grid_row_8")
+                        Text("grid_row_8")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
+                }
+                    .borderColor(Color.Blue)
+                    .borderWidth(2.vp)
+                    .span(2)
+                    .order(GridColOptions())
+                    .order(2)
+            }
+                .width(100.percent)
+                .id("grid_row_8")
 
             GridRow(
-                gutter: GutterOption(x: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
-                    y: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
-                columns: GridRowColumnOption(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
+                gutter: GutterOptions(x: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
+                    y: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
+                columns: GridRowOptions(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp], //设置断点位置的单调递增数组。
                     reference: BreakpointsReference.WindowSize
@@ -158,14 +247,25 @@ class View_Grid_Row {
             ) {
                 GridCol() {
                     Row() {
-                        Text("grid_row_9").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
-                }.borderColor(Color.Blue).borderWidth(2.vp).span(2).order(GridColColumnOption()).order(2)
-            }.width(100.percent).id("grid_row_9")
+                        Text("grid_row_9")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
+                }
+                    .borderColor(Color.Blue)
+                    .borderWidth(2.vp)
+                    .span(2)
+                    .order(GridColOptions())
+                    .order(2)
+            }
+                .width(100.percent)
+                .id("grid_row_9")
 
             GridRow(
-                gutter: GutterOption(x: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
-                    y: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
+                gutter: GutterOptions(x: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
+                    y: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
                 columns: 2,
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp], //设置断点位置的单调递增数组。
@@ -175,9 +275,18 @@ class View_Grid_Row {
             ) {
                 GridCol() {
                     Row() {
-                        Text("grid_row_attr").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
-                }.borderColor(Color.Blue).borderWidth(2.vp).span(2).order(GridColColumnOption()).order(2)
+                        Text("grid_row_attr")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
+                }
+                    .borderColor(Color.Blue)
+                    .borderWidth(2.vp)
+                    .span(2)
+                    .order(GridColOptions())
+                    .order(2)
             }
                 .width(100.percent)
                 .height(200.vp)
@@ -188,8 +297,8 @@ class View_Grid_Row {
                 .id("grid_row_attr")
 
             GridRow(
-                gutter: GutterOption(x: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
-                    y: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
+                gutter: GutterOptions(x: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
+                    y: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
                 columns: 2,
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp], //设置断点位置的单调递增数组。
@@ -199,31 +308,30 @@ class View_Grid_Row {
             ) {
                 GridCol() {
                     Row() {
-                        Text(currentBp).fontColor(Color.Gray).fontSize(12).id("currentBp")
-                    }.width(100.percent).height(40.vp)
-                }.borderColor(Color.Blue).borderWidth(2.vp).span(2).order(GridColColumnOption()).order(2)
-            }.width(100.percent).onBreakpointChange({
-                bp => currentBp = "onBreakpointChange"
-            }).id("grid_row_event")
-
-            GridRow(columns: 2, direction: GridRowDirection.Row) {
-                GridCol() {
-                    Row() {
-                        Text("grid_row_1")
+                        Text(currentBp)
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                            .id("currentBp")
                     }
+                        .width(100.percent)
+                        .height(40.vp)
                 }
+                    .borderColor(Color.Blue)
+                    .borderWidth(2.vp)
+                    .span(2)
+                    .order(GridColOptions())
+                    .order(2)
             }
+                .width(100.percent)
+                .onBreakpointChange({
+                    bp => currentBp = "onBreakpointChange"
+                })
+                .id("grid_row_event")
 
-            GridRow(columns: GridRowColumnOption(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
+
+            GridRow(
+                columns: 2,
                 direction: GridRowDirection.Row) {
-                GridCol() {
-                    Row() {
-                        Text("grid_row_1")
-                    }
-                }
-            }
-
-            GridRow(gutter: 1.vp, direction: GridRowDirection.Row) {
                 GridCol() {
                     Row() {
                         Text("grid_row_1")
@@ -232,28 +340,7 @@ class View_Grid_Row {
             }
 
             GridRow(
-                gutter: GutterOption(
-                    x: GridRowSizeOption(value: 0.vp),
-                    y: GridRowSizeOption(value: 0.vp)
-                ),
-                direction: GridRowDirection.Row
-            ) {
-                GridCol() {
-                    Row() {
-                        Text("grid_row_1")
-                    }
-                }
-            }
-
-            GridRow(gutter: 1.vp, columns: 1, direction: GridRowDirection.Row) {
-                GridCol() {
-                    Row() {
-                        Text("grid_row_1")
-                    }
-                }
-            }
-
-            GridRow(gutter: 1.vp, columns: GridRowColumnOption(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
+                columns: GridRowOptions(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
                 direction: GridRowDirection.Row) {
                 GridCol() {
                     Row() {
@@ -262,7 +349,9 @@ class View_Grid_Row {
                 }
             }
 
-            GridRow(gutter: GutterOption(x: 1.vp, y: 1.vp), columns: 1, direction: GridRowDirection.Row) {
+            GridRow(
+                gutter: 1.vp,
+                direction: GridRowDirection.Row) {
                 GridCol() {
                     Row() {
                         Text("grid_row_1")
@@ -270,8 +359,57 @@ class View_Grid_Row {
                 }
             }
 
-            GridRow(gutter: GutterOption(x: 1.vp, y: 1.vp),
-                columns: GridRowColumnOption(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
+            GridRow(
+                gutter: GutterOptions(
+                    x: GridRowSizeOptions(0.vp),
+                    y: GridRowSizeOptions(0.vp)
+                ),
+                direction: GridRowDirection.Row) {
+                GridCol() {
+                    Row() {
+                        Text("grid_row_1")
+                    }
+                }
+            }
+
+            GridRow(
+                gutter: 1.vp,
+                columns: 1,
+                direction: GridRowDirection.Row) {
+                GridCol() {
+                    Row() {
+                        Text("grid_row_1")
+                    }
+                }
+            }
+
+            GridRow(
+                gutter: 1.vp,
+                columns: GridRowOptions(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
+                direction: GridRowDirection.Row) {
+                GridCol() {
+                    Row() {
+                        Text("grid_row_1")
+                    }
+                }
+            }
+
+            GridRow(
+                gutter: GutterOptions(x: 1.vp,
+                    y: 1.vp),
+                columns: 1,
+                direction: GridRowDirection.Row) {
+                GridCol() {
+                    Row() {
+                        Text("grid_row_1")
+                    }
+                }
+            }
+
+            GridRow(
+                gutter: GutterOptions(x: 1.vp,
+                    y: 1.vp),
+                columns: GridRowOptions(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
                 direction: GridRowDirection.RowReverse) {
                 GridCol() {
                     Row() {

@@ -21,7 +21,7 @@ import ohos.arkui.component.*
 
 @Entry
 @Component
-class View_ClickEffect {
+class  View_ClickEffect{
     @State
     var toggle: Bool = true
 
@@ -31,31 +31,51 @@ class View_ClickEffect {
                 // 正常值 ，测试Text和Radio组件
 
                 Text("无回弹")
-                Radio(value: '20', group: '数字').height(50).width(50)
+                Radio(value: '20', group: '数字')
+                    .height(50)
+                    .width(50)
 
                 Text("LIGHT")
-                Radio(value: '20', group: '数字').height(50).width(50)
+                Radio(value: '20', group: '数字')
+                    .height(50)
+                    .width(50)
 
                 Text("HEAVY")
-                Radio(value: '10', group: '数字').height(50).width(50)
+                Radio(value: '10', group: '数字')
+                    .height(50)
+                    .width(50)
 
-                Radio(value: '10', group: '数字').height(50).width(50)
+                Radio(value: '10', group: '数字')
+                    .height(50)
+                    .width(50)
 
-                Radio(value: '10', group: '数字').height(50).width(50).id("clickEffectId01")
+                Radio(value: '10', group: '数字')
+                    .height(50)
+                    .width(50)
+                    .id("clickEffectId01")
 
                 Text("LIGHT 0.5")
-                Radio(value: '10', group: '数字').height(50).width(50)
+                Radio(value: '10', group: '数字')
+                    .height(50)
+                    .width(50)
 
-                Radio(value: '10', group: '数字').height(50).width(50).id("clickEffectId02")
+                Radio(value: '10', group: '数字')
+                    .height(50)
+                    .width(50)
+                    .id("clickEffectId02")
 
-                Radio(value: '10', group: '数字').height(50).width(50)
+                Radio(value: '10', group: '数字')
+                    .height(50)
+                    .width(50)
 
                 Text("测试容器组件的回弹")
 
                 Column {
                     Text("LIGHT 0.1")
                 }.backgroundColor(Color.Blue)
-            }.width(100.percent).padding(24.vp)
+            }
+                .width(100.percent)
+                .padding(24.vp)
         }
     }
 }

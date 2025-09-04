@@ -13,17 +13,20 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/24
+ */
 package ohos_app_cangjie_entry
-
+ 
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_RowSplit {
+class View_RowSplit{
     func build() {
         Column() {
             Text("The split line can be dragged")
@@ -32,7 +35,11 @@ class View_RowSplit {
                 Text("row split 2").size(width: 25.percent, height: 200.px).backgroundColor(0xD2B48C).id("row_split_2")
                 Text("row split 3").size(width: 25.percent, height: 200.px).backgroundColor(0xF5DEB3).id("row_split_3")
                 Text("row split 4").size(width: 25.percent, height: 200.px).backgroundColor(0xD2B48C).id("row_split_4")
-            }.resizeable(true).width(100.percent).backgroundColor(0xAFEEEE)
-        }.width(100.percent)
+            }
+            .resizeable(true)
+            .width(100.percent)
+            .backgroundColor(0xAFEEEE)
+        }
+        .width(100.percent)
     }
 }

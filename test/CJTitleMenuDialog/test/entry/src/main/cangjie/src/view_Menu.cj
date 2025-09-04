@@ -71,8 +71,8 @@ class View_Menu {
                     builder: {=> bind(this.SubMenu, this)()})
             }
         }
-            //        .menuItemDivider(DividerStyleOptions(5.px, Color.BLUE, 10.vp, 10.vp))
-            //        .menuItemGroupDivider(DividerStyleOptions(5.px, Color.GREEN, 10.vp, 10.vp))
+            //        .menuItemDivider(DividerStyleOptions(5.px, Color.Blue, 10.vp, 10.vp))
+            //        .menuItemGroupDivider(DividerStyleOptions(5.px, Color.Green, 10.vp, 10.vp))
             //        .subMenuExpandingMode(SubMenuExpandingMode.SIDE_EXPAND)
             //        .subMenuExpandingMode(SubMenuExpandingMode.EMBEDDED_EXPAND)
             .id("testDiy")

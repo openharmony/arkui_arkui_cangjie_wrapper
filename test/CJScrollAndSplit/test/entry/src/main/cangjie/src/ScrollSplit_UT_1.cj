@@ -28,16 +28,16 @@ import std.collection.ArrayList
 import std.math.*
 
 enum CustomSwipeDirection {
-    | Left
-    | Right
-    | Up
-    | Down
+  | Left
+  | Right
+  | Up
+  | Down
 }
 
 @Test
 class ScrollSplit_UT_1 {
     prop driver: Driver {
-        get() {
+        get(){
             OpenHarmonyTestRunner.driver
         }
     }
@@ -66,7 +66,7 @@ class ScrollSplit_UT_1 {
     protected override func beforeAll() {
         driver.delayMs(500)
         let scrollBar = driver.findComponent(On().id("scroller")).getOrThrow()
-        Hilog.error(1, "error", "started")
+        Hilog.error(1, "error","started")
         scrollBar.scrollSearch(On().id("ScrollSplit_UT1")).getOrThrow().click()
         driver.delayMs(500)
     }
@@ -119,6 +119,7 @@ class ScrollSplit_UT_1 {
         let jsContent_1 = attrs_1.get("justifyContent").getOrThrow().toString()
         @Expect(jsContent_1, "\"FlexAlign.Start\"")
 
+
         let inspector_2 = getInspectorByKey("my_col_2")
         let jsonObject_2 = JsonValue.fromStr(inspector_2).asObject()
         let attrs_2 = jsonObject_2.get("$attrs").getOrThrow().asObject()
@@ -129,6 +130,7 @@ class ScrollSplit_UT_1 {
         let horizon_2 = attrs_2.get("alignItems").getOrThrow().toString()
         @Expect(horizon_2, "\"HorizontalAlign.Start\"")
 
+
         let inspector_3 = getInspectorByKey("my_col_3")
         let jsonObject_3 = JsonValue.fromStr(inspector_3).asObject()
         let attrs_3 = jsonObject_3.get("$attrs").getOrThrow().asObject()
@@ -136,12 +138,14 @@ class ScrollSplit_UT_1 {
         let horizon_3 = attrs_3.get("alignItems").getOrThrow().toString()
         @Expect(horizon_3, "\"HorizontalAlign.End\"")
 
+
         let inspector_4 = getInspectorByKey("my_col_4")
         let jsonObject_4 = JsonValue.fromStr(inspector_4).asObject()
         let attrs_4 = jsonObject_4.get("$attrs").getOrThrow().asObject()
 
         let jsContent_4 = attrs_4.get("justifyContent").getOrThrow().toString()
         @Expect(jsContent_4, "\"FlexAlign.Center\"")
+
 
         let inspector_5 = getInspectorByKey("my_col_5")
         let jsonObject_5 = JsonValue.fromStr(inspector_5).asObject()
@@ -198,7 +202,7 @@ class ScrollSplit_UT_1 {
         let rect_4 = fex_4.getBounds()
         Hilog.info(1, "info", "fex_1_left: ${rect_1.left} expect: 0")
         @Expect(rect_1.left, 0)
-        Hilog.info(1, "info", "rect_4.left: ${rect_4.left} expect: ${(rect_1.right - rect_1.left) * 3}")
+         Hilog.info(1, "info", "rect_4.left: ${rect_4.left} expect: ${(rect_1.right - rect_1.left) * 3}")
         @Expect(rect_4.left, (rect_1.right - rect_1.left) * 3)
 
         //多行布局，左端对齐
@@ -214,6 +218,7 @@ class ScrollSplit_UT_1 {
         @Expect(rect_5.left, 0)
         Hilog.info(1, "info", "rect_7.left: ${rect_7.left} expect: 0")
         @Expect(rect_7.left, 0)
+
     }
 
     @TestCase
@@ -336,8 +341,8 @@ class ScrollSplit_UT_1 {
         driver.delayMs(500)
         var pointers2: PointerMatrix = PointerMatrix.create(1, 400)
         var points11: ArrayList<ui_test.Point> = getLongPressPoints(Float64(615), Float64(1405), 200)
-        var points12: ArrayList<ui_test.Point> = getSwipePoints(Float64(points11[199].x), Float64(points11[199].y),
-            1000.0, CustomSwipeDirection.Up, 200)
+        var points12: ArrayList<ui_test.Point> = getSwipePoints(Float64(points11[199].x), Float64(points11[199].y), 1000.0,
+            CustomSwipeDirection.Up, 200)
         for (i in 0..200) {
             pointers2.setPoint(0, Int32(i), points11[i])
         }
@@ -470,10 +475,10 @@ class ScrollSplit_UT_1 {
         Hilog.info(1, "info", "[test_GridCommonAttrs] enableScrollInteraction: ${enableScrollInteraction}")
         @Expect(enableScrollInteraction, "true")
 
-        // @Case18 nestedScroll(NestedScrollOptions(NestedScrollMode.SELF_ONLY, NestedScrollMode.SELF_ONLY))
+        // @Case18 nestedScroll(NestedScrollOptions(NestedScrollMode.SelfOnly, NestedScrollMode.SelfOnly))
         let nestedScroll = attrs_grid04.get("nestedScroll").getOrThrow().toString()
         Hilog.info(1, "info", "[test_GridCommonAttrs] nestedScroll: ${nestedScroll}")
-        @Expect(nestedScroll, "{\"scrollForward\":\"NestedScrollMode.SELF_ONLY\",\"scrollBackward\":\"NestedScrollMode.SELF_ONLY\"}")
+        @Expect(nestedScroll, "{\"scrollForward\":\"NestedScrollMode.SelfOnly\",\"scrollBackward\":\"NestedScrollMode.SelfOnly\"}")
 
         // @Case19 friction(0.8)
         let friction = attrs_grid04.get("friction").getOrThrow().toString()
@@ -486,10 +491,14 @@ class ScrollSplit_UT_1 {
     func test_GridColCtor() {
         ScrollTo("View_Grid_Col")
 
-        let grid_col_1 = driver.findComponent(On().id("grid_col_1")).getOrThrow().getType()
+        let grid_col_1 = driver
+            .findComponent(On().id("grid_col_1")).getOrThrow()
+            .getType()
         @Expect(grid_col_1, "GridCol")
 
-        let grid_col_2 = driver.findComponent(On().id("grid_col_2")).getOrThrow().getType()
+        let grid_col_2 = driver
+            .findComponent(On().id("grid_col_2")).getOrThrow()
+            .getType()
         @Expect(grid_col_2, "GridCol")
     }
 
@@ -499,19 +508,36 @@ class ScrollSplit_UT_1 {
         ScrollTo("View_Grid_Col")
 
         let inspector = getInspectorByKey("grid_col_attr_1")
-        let jsonObject = JsonValue.fromStr(inspector).asObject()
-        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let jsonObject = JsonValue
+            .fromStr(inspector)
+            .asObject()
+        let attrs = jsonObject
+            .get("$attrs")
+            .getOrThrow()
+            .asObject()
 
-        let span = attrs.get("span").getOrThrow().toString()
+        let span = attrs
+            .get("span")
+            .getOrThrow()
+            .toString()
         @Expect(span, "\"2\"")
 
-        let offset = attrs.get("offset").getOrThrow().toString()
+        let offset = attrs
+            .get("offset")
+            .getOrThrow()
+            .toString()
         @Expect(offset, "\"1\"")
 
-        let gridColOffset = attrs.get("gridColOffset").getOrThrow().toString()
+        let gridColOffset = attrs
+            .get("gridColOffset")
+            .getOrThrow()
+            .toString()
         @Expect(gridColOffset, "\"1\"")
 
-        let order = attrs.get("order").getOrThrow().toString()
+        let order = attrs
+            .get("order")
+            .getOrThrow()
+            .toString()
         @Expect(order, "\"0\"")
     }
 
@@ -521,19 +547,36 @@ class ScrollSplit_UT_1 {
         ScrollTo("View_Grid_Col")
 
         let inspector = getInspectorByKey("grid_col_attr_2")
-        let jsonObject = JsonValue.fromStr(inspector).asObject()
-        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let jsonObject = JsonValue
+            .fromStr(inspector)
+            .asObject()
+        let attrs = jsonObject
+            .get("$attrs")
+            .getOrThrow()
+            .asObject()
 
-        let span = attrs.get("span").getOrThrow().toString()
+        let span = attrs
+            .get("span")
+            .getOrThrow()
+            .toString()
         @Expect(span, "\"12\"")
 
-        let offset = attrs.get("offset").getOrThrow().toString()
+        let offset = attrs
+            .get("offset")
+            .getOrThrow()
+            .toString()
         @Expect(offset, "\"12\"")
 
-        let gridColOffset = attrs.get("gridColOffset").getOrThrow().toString()
+        let gridColOffset = attrs
+            .get("gridColOffset")
+            .getOrThrow()
+            .toString()
         @Expect(gridColOffset, "\"12\"")
 
-        let order = attrs.get("order").getOrThrow().toString()
+        let order = attrs
+            .get("order")
+            .getOrThrow()
+            .toString()
         @Expect(order, "\"12\"")
     }
 
@@ -605,31 +648,49 @@ class ScrollSplit_UT_1 {
     func test_GridRowCtor() {
         ScrollTo("View_Grid_Row")
 
-        let grid_row_1 = driver.findComponent(On().id("grid_row_1")).getOrThrow().getType()
+        let grid_row_1 = driver
+            .findComponent(On().id("grid_row_1")).getOrThrow()
+            .getType()
         @Expect(grid_row_1, "GridRow")
 
-        let grid_row_2 = driver.findComponent(On().id("grid_row_2")).getOrThrow().getType()
+        let grid_row_2 = driver
+            .findComponent(On().id("grid_row_2")).getOrThrow()
+            .getType()
         @Expect(grid_row_2, "GridRow")
 
-        let grid_row_3 = driver.findComponent(On().id("grid_row_3")).getOrThrow().getType()
+        let grid_row_3 = driver
+            .findComponent(On().id("grid_row_3")).getOrThrow()
+            .getType()
         @Expect(grid_row_3, "GridRow")
 
-        let grid_row_4 = driver.findComponent(On().id("grid_row_4")).getOrThrow().getType()
+        let grid_row_4 = driver
+            .findComponent(On().id("grid_row_4")).getOrThrow()
+            .getType()
         @Expect(grid_row_4, "GridRow")
 
-        let grid_row_5 = driver.findComponent(On().id("grid_row_5")).getOrThrow().getType()
+        let grid_row_5 = driver
+            .findComponent(On().id("grid_row_5")).getOrThrow()
+            .getType()
         @Expect(grid_row_5, "GridRow")
 
-        let grid_row_6 = driver.findComponent(On().id("grid_row_6")).getOrThrow().getType()
+        let grid_row_6 = driver
+            .findComponent(On().id("grid_row_6")).getOrThrow()
+            .getType()
         @Expect(grid_row_6, "GridRow")
 
-        let grid_row_7 = driver.findComponent(On().id("grid_row_7")).getOrThrow().getType()
+        let grid_row_7 = driver
+            .findComponent(On().id("grid_row_7")).getOrThrow()
+            .getType()
         @Expect(grid_row_7, "GridRow")
 
-        let grid_row_8 = driver.findComponent(On().id("grid_row_8")).getOrThrow().getType()
+        let grid_row_8 = driver
+            .findComponent(On().id("grid_row_8")).getOrThrow()
+            .getType()
         @Expect(grid_row_8, "GridRow")
 
-        let grid_row_9 = driver.findComponent(On().id("grid_row_9")).getOrThrow().getType()
+        let grid_row_9 = driver
+            .findComponent(On().id("grid_row_9")).getOrThrow()
+            .getType()
         @Expect(grid_row_9, "GridRow")
     }
 
@@ -639,13 +700,24 @@ class ScrollSplit_UT_1 {
         ScrollTo("View_Grid_Row")
 
         let inspector = getInspectorByKey("grid_row_attr")
-        let jsonObject = JsonValue.fromStr(inspector).asObject()
-        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let jsonObject = JsonValue
+            .fromStr(inspector)
+            .asObject()
+        let attrs = jsonObject
+            .get("$attrs")
+            .getOrThrow()
+            .asObject()
 
-        let height = attrs.get("height").getOrThrow().toString()
+        let height = attrs
+            .get("height")
+            .getOrThrow()
+            .toString()
         @Expect(height, "\"200.00vp\"")
 
-        let alignItems = attrs.get("alignItems").getOrThrow().toString()
+        let alignItems = attrs
+            .get("alignItems")
+            .getOrThrow()
+            .toString()
         @Expect(alignItems, "\"ItemAlign.Center\"")
     }
 
@@ -670,7 +742,7 @@ class ScrollSplit_UT_1 {
         driver.delayMs(200)
         button1.click()
 
-        let text2 = driver.waitForComponent(On().id("my_text2"), 200).getOrThrow().getText()
+        let text2 = driver.waitForComponent(On().id("my_text2"),200).getOrThrow().getText()
         @Expect(text2, "the flag is false")
 
         let text3 = driver.findComponent(On().id("my_text3")).getOrThrow().getText()
@@ -680,19 +752,19 @@ class ScrollSplit_UT_1 {
         driver.delayMs(200)
         button2.click()
 
-        let text4 = driver.waitForComponent(On().id("my_text4"), 200).getOrThrow().getText()
+        let text4 = driver.waitForComponent(On().id("my_text4"),200).getOrThrow().getText()
         @Expect(text4, "the status is 1")
 
         driver.delayMs(200)
         button2.click()
 
-        let text5 = driver.waitForComponent(On().id("my_text5"), 200).getOrThrow().getText()
+        let text5 = driver.waitForComponent(On().id("my_text5"),200).getOrThrow().getText()
         @Expect(text5, "the status is 2")
 
         driver.delayMs(200)
         button2.click()
 
-        let text6 = driver.waitForComponent(On().id("my_text6"), 200).getOrThrow().getText()
+        let text6 = driver.waitForComponent(On().id("my_text6"),200).getOrThrow().getText()
         @Expect(text6, "error")
     }
 
@@ -735,7 +807,7 @@ class ScrollSplit_UT_1 {
         @Expect(sticky, "\"StickyStyle.None\"")
 
         let divider = attrs.get("divider").getOrThrow().toString()
-        @Expect(divider , "{\"strokeWidth\":\"2.00px\",\"startMargin\":\"0.00vp\",\"endMargin\":\"0.00vp\",\"color\":\"#FF000000\"}")
+         @Expect(divider , "{\"strokeWidth\":\"2.00px\",\"startMargin\":\"0.00vp\",\"endMargin\":\"0.00vp\",\"color\":\"#FF000000\"}")
     }
 
     @TestCase
@@ -745,7 +817,7 @@ class ScrollSplit_UT_1 {
 
         let scrollBar = driver.findComponent(On().id("list")).getOrThrow()
         scrollBar.scrollToBottom()
-        let text1 = driver.waitForComponent(On().id("text"), 3000).getOrThrow().getText()
+        let text1  = driver.waitForComponent(On().id("text"),3000).getOrThrow().getText()
         @Expect(text1, "46")
         let text2 = driver.findComponent(On().id("text2")).getOrThrow().getText()
         @Expect(text2, "truefalse")
@@ -755,6 +827,8 @@ class ScrollSplit_UT_1 {
         @Expect(text4, "0.000000Idle")
     }
 
+
+
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_listitemgroupCommonAttrs() {
@@ -763,7 +837,7 @@ class ScrollSplit_UT_1 {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
 
-        let divider = attrs.get("divider").getOrThrow().toString()
-        @Expect(divider , "{\"strokeWidth\":\"2.00vp\",\"startMargin\":\"10.00vp\",\"endMargin\":\"10.00vp\",\"color\":\"#FF808080\"}")
+         let divider = attrs.get("divider").getOrThrow().toString()
+         @Expect(divider , "{\"strokeWidth\":\"2.00vp\",\"startMargin\":\"10.00vp\",\"endMargin\":\"10.00vp\",\"color\":\"#FF808080\"}")
     }
 }

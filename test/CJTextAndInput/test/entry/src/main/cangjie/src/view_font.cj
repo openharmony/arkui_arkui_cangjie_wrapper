@@ -21,7 +21,6 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.resource_manager.*
-import ohos.font.Font as FontFunction
 import kit.LocalizationKit.*
 
 @Entry
@@ -49,11 +48,11 @@ class View_Font {
     var check5: String = "message5"
 
     protected func aboutToAppear() {
-        FontFunction.registerFont(
+        getUIContext().getFont().registerFont(
             familyName: "Amiri",
             familySrc: "/resources/rawfile/Amiri-Regular.ttf"
         )
-        FontFunction.registerFont(
+        getUIContext().getFont().registerFont(
             familyName: @r(app.string.SmileySans_label),
             familySrc: @rawfile("SmileySans-Oblique.ttf")
         )
@@ -73,66 +72,48 @@ class View_Font {
                 Text("9: ${message5}").id("message5")
                 Text("10: ${check5}").id("check5")
                 // registerFont(str, str)
-                Button("registerFont1")
-                    .onClick {
-                        event => this.message = "Amiri"
-                    }
-                    .fontSize(40)
-                    .height(80)
-                    .fontFamily("Amiri")
-                    .id("registerFont1")
+                Button("registerFont1").onClick { event =>
+                    this.message = "Amiri"
+                }.fontSize(40).height(80).fontFamily("Amiri").id("registerFont1")
                 // registerFont(CJResourse, CJResourse)
-                Button("registerFont2")
-                    .onClick {
-                        event => this.message = "SmileySans"
-                    }
-                    .fontSize(40)
-                    .height(80)
-                    .fontFamily("SmileySans")
-                    .id("registerFont2")
+                Button("registerFont2").onClick{ event =>
+                    this.message = "SmileySans"
+                }.fontSize(40).height(80).fontFamily("SmileySans").id("registerFont2")
                 // getFontByName
-                Button("getFontByName1")
-                    .onClick {
-                        event =>
-                        var fontInfo = FontFunction.getFontByName("HarmonyOS Sans Italic")
-                        try {
-                            let r1: FontInfo = fontInfo.getOrThrow()
-                            this.check = r1.path
-                            this.message = "path: " + r1.path + ",postScriptName: " + r1.postScriptName + ",fullName: " +
-                                r1.fullName + ",family: " + r1.family + ",subfamily: " + r1.subfamily + ",weight: " +
-                                r1.weight.toString() + ",width:" + r1.width.toString() + ",italic: " +
-                                r1.italic.toString() + ",monoSpace: " + r1.monoSpace.toString() + ",symbolic:" +
-                                r1.symbolic.toString()
-                        } catch (e: NoneValueException) {
-                            this.message = "no value"
-                            this.check = "no value"
-                        }
+                Button("getFontByName1").onClick { event =>
+                    var fontInfo =  getUIContext().getFont().getFontByName("HarmonyOS Sans Italic")
+                    try {
+                        let r1: FontInfo = fontInfo.getOrThrow()
+                        this.check = r1.path
+                        this.message = "path: " + r1.path + ",postScriptName: " + r1.postScriptName + ",fullName: " +
+                        r1.fullName + ",family: " + r1.family + ",subfamily: " + r1.subfamily + ",weight: " +
+                        r1.weight.toString() + ",width:" + r1.width.toString() + ",italic: " + r1.italic.toString() +
+                        ",monoSpace: " + r1.monoSpace.toString() + ",symbolic:" + r1.symbolic.toString()
+                    } catch (e: NoneValueException) {
+                        this.message = "no value"
+                        this.check = "no value"
                     }
-                    .id("getFontByName-sysFontName")
-                Button("getFontByName2")
-                    .onClick {
-                        event =>
-                        var fontInfo = FontFunction.getFontByName("Amiri")
-                        try {
-                            let r1: FontInfo = fontInfo.getOrThrow()
-                            this.check = r1.path
-                            this.message = "path: " + r1.path + ",postScriptName: " + r1.postScriptName + ",fullName: " +
-                                r1.fullName + ",family: " + r1.family + ",subfamily: " + r1.subfamily + ",weight: " +
-                                r1.weight.toString() + ",width:" + r1.width.toString() + ",italic: " +
-                                r1.italic.toString() + ",monoSpace: " + r1.monoSpace.toString() + ",symbolic:" +
-                                r1.symbolic.toString()
-                        } catch (e: NoneValueException) {
-                            this.message = "no value"
-                            this.check = "no value"
-                        }
+                }.id("getFontByName-sysFontName")
+                Button("getFontByName2").onClick { event =>
+                    var fontInfo =  getUIContext().getFont().getFontByName("Amiri")
+                    try {
+                        let r1: FontInfo = fontInfo.getOrThrow()
+                        this.check = r1.path
+                        this.message = "path: " + r1.path + ",postScriptName: " + r1.postScriptName + ",fullName: " +
+                        r1.fullName + ",family: " + r1.family + ",subfamily: " + r1.subfamily + ",weight: " +
+                        r1.weight.toString() + ",width:" + r1.width.toString() + ",italic: " + r1.italic.toString() +
+                        ",monoSpace: " + r1.monoSpace.toString() + ",symbolic:" + r1.symbolic.toString()
+                    } catch (e: NoneValueException) {
+                        this.message = "no value"
+                        this.check = "no value"
                     }
-                    .id("getFontByName-noSysFontName")
+                }.id("getFontByName-noSysFontName")
                 // getUIFontConfig
 
-                Button("getFont").onClick {
-                    event =>
-                //                    let font1 = Font()
+                Button("getFont").onClick { event =>
+//                    let font1 = Font()
                 }.id("getFont")
+
             }.width(100.percent)
         }.height(100.percent)
     }

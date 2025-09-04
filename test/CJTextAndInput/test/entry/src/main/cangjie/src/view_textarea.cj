@@ -66,6 +66,9 @@ class View_TextArea {
                 Button("caretposition  3").onClick({
                     evt => controller.caretPosition(3)
                 })
+                TextArea(placeholder: this.placeholder, text: this.name, controller: controller)
+                    .textAlign(TextAlign.Center)
+                    .id("component_1")
 
                 TextArea(text: "size")
                     .size(width: 100.vp, height: 50.vp)
@@ -122,18 +125,18 @@ class View_TextArea {
 
                 TextArea(
                     text: "barState set on,设置为on表示滚动条始终显示，默认状态为auto，表示只有当内容发生滚动时才会显示滚动条." +
-                        "barState set on,设置为on表示滚动条始终显示，默认状态为auto，表示只有当内容发生滚动时才会显示滚动条." +
-                        "barState set on,设置为on表示滚动条始终显示，默认状态为auto，表示只有当内容发生滚动时才会显示滚动条." +
-                        "barState set on,设置为on表示滚动条始终显示，默认状态为auto，表示只有当内容发生滚动时才会显示滚动条.")
+                    "barState set on,设置为on表示滚动条始终显示，默认状态为auto，表示只有当内容发生滚动时才会显示滚动条." +
+                    "barState set on,设置为on表示滚动条始终显示，默认状态为auto，表示只有当内容发生滚动时才会显示滚动条." +
+                    "barState set on,设置为on表示滚动条始终显示，默认状态为auto，表示只有当内容发生滚动时才会显示滚动条."
+                )
                     .width((300))
                     .id("component_26")
                 Text("拖动滚动条会触发onContentScroll事件，偏移值如下：")
                 Text("totalOffsetX:" + this.totalOffsetX.toString())
                 Text("totalOffsetY:" + this.totalOffsetY.toString())
 
-                TextArea()
-                    .id("component_default")
-                    .borderWidth(EdgeWidths(left: 20.px, right: 30.px, top: 40.px, bottom: 10.px))
+                TextArea().id("component_default")
+                .borderWidth(EdgeWidths(left: 20.px, right: 30.px, top: 40.px, bottom: 10.px))
 
                 TextArea(placeholder: "inputfilter only a").inputFilter(value: "a",
                     error: {val => Hilog.info(1, "1", "Cangjie-Test", "TextArea OnError:" + val)})
@@ -155,18 +158,18 @@ class View_TextArea {
                         val => Hilog.info(1, "1", "Cangjie-Test", "TextArea onSubmit")
                     })
                     .onEditChange({
-                        val => Hilog.info(1, "1", "Cangjie-Test", "TextArea onEditChange:" + val.toString())
+                    val => Hilog.info(1, "1", "Cangjie-Test", "TextArea onEditChange:" + val.toString())
                     })
 
-                TextArea(placeholder: @r(app.string.placeholder), text: @r(app.string.text), controller: this.controller)
+                TextArea(placeholder:@r(app.string.placeholder),text:@r(app.string.text),controller:this.controller)
                     .id("component_39")
-                    .enterKeyType(EntrySearch)
+                    .enterKeyType(EnterKeyType.Search)
 
-                TextArea(placeholder: @r(app.string.placeholder), text: "placeholder!: AppResource, text!: String = ")
+                TextArea(placeholder:@r(app.string.placeholder),text:"placeholder!: AppResource, text!: String = ")
                     .id("component_40")
 
-                TextArea(placeholder: "placeholder!: String =  text!: AppResource", text: @r(app.string.text)).id(
-                    "component_41")
+                TextArea(placeholder:"placeholder!: String =  text!: AppResource",text: @r(app.string.text))
+                    .id("component_41")
             }.width(100.percent)
         }
     }

@@ -67,9 +67,9 @@ class View_Stepper {
                         Button("change status: ${this.firstState.value()}")
                             .backgroundColor(0x007dFF)
                             .onClick(
-                                {
+                                { e =>
                                     //每一次点击按钮会在Normal和Skip状态之间切换
-                                    evt => if (this.firstState.toString() == "Skip") {
+                                    if (this.firstState.toString() == "Skip") {
                                         this.firstState = ItemState.Normal
                                     } else {
                                         this.firstState = ItemState.Skip

@@ -22,8 +22,8 @@ internal import ohos.app.ability.ui_ability.UIAbilityContext
 internal import ohos.resource_manager.{AppResource}
 import std.sync.*
 import ohos.window.WindowStage
-import ohos.ability_access_ctrl.AbilityAccessCtrl
-import ohos.ability_access_ctrl.Permissions
+
+
 import ohos.resource_manager.*
 import kit.TestKit.*
 

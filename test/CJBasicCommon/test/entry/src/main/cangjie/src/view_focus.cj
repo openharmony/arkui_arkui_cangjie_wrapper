@@ -22,7 +22,7 @@ import ohos.arkui.state_management.SubscriberManager
 import ohos.arkui.state_management.ObservedProperty
 import ohos.arkui.state_management.LocalStorage
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.{AppResource, __GenerateResource__}
+import kit.LocalizationKit.{AppResource}
 
 @Entry
 @Component
@@ -50,7 +50,7 @@ class View_Focus {
                     // 默认焦点，并且点击可获焦
                     Button("Hello Cangjie A")
                         .onClick {
-                            evt => Hilog.info(1, "1", "Cangjie-App", "Hello Cangjie A")
+                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie A")
                         }
                         .backgroundColor(oneButtonColor)
                         .width(400.px)
@@ -71,7 +71,7 @@ class View_Focus {
                     // 不支持点击获焦，但是默认可获焦
                     Button("Hello Cangjie B")
                         .onClick {
-                            evt => Hilog.info(1, "1", "Cangjie-App", "Hello Cangjie B")
+                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie B")
                         }
                         .backgroundColor(twoButtonColor)
                         .width(400.px)
@@ -93,7 +93,7 @@ class View_Focus {
                     // 不支持获焦
                     Button("Hello Cangjie C")
                         .onClick {
-                            evt => Hilog.info(1, "1", "Cangjie-App", "Hello Cangjie C")
+                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie C")
                         }
                         .backgroundColor(threeButtonColor)
                         .width(400.px)
@@ -113,7 +113,7 @@ class View_Focus {
                     // 可获焦，并且支持点击获焦
                     Button("Hello Cangjie D")
                         .onClick {
-                            evt => Hilog.info(1, "1", "Cangjie-App", "Hello Cangjie D")
+                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie D")
                         }
                         .backgroundColor(fourButtonColor)
                         .width(400.px)
@@ -136,7 +136,7 @@ class View_Focus {
                     // 父级组件获焦时的默认焦点
                     Button("Hello Cangjie E")
                         .onClick {
-                            evt => Hilog.info(1, "1", "Cangjie-App", "Hello Cangjie E")
+                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie E")
                         }
                         .backgroundColor(fiveButtonColor)
                         .width(400.px)
@@ -173,14 +173,13 @@ class View_Focus {
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
-                        .onClick {
-                            e =>
+                        .onClick { e =>
                             let selectId = this.idList[3]
                             let result = FocusControl.requestFocus(selectId)
                             if (result) {
-                                Hilog.info(1, "1", "Cangjie-App", "Request success")
+                                Hilog.info(1,"1","Cangjie-App", "Request success")
                             } else {
-                                Hilog.info(1, "1", "Cangjie-App", "Request failed")
+                                Hilog.info(1,"1","Cangjie-App", "Request failed")
                             }
                         }
                 }
@@ -299,16 +298,16 @@ class View_Focus {
                             Button("Group2").width(165).height(40).fontColor(Color.White).id("b6").key("b6")
                             Row(space: 5) {
                                 Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b7").key("b7")
-                                Button("PRIOR").width(80).height(40).fontColor(Color.White).id("b8").key("b8")
-                            }
-                            Row(space: 5) {
-                                Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b9").key("b9")
-                                Button(ButtonOptions())
+                                Button("PRIOR")
                                     .width(80)
                                     .height(40)
                                     .fontColor(Color.White)
-                                    .id("b10")
-                                    .key("b10")
+                                    .id("b8")
+                                    .key("b8")
+                            }
+                            Row(space: 5) {
+                                Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b9").key("b9")
+                                Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b10").key("b10")
                             }
                         }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
                     }
@@ -324,7 +323,12 @@ class View_Focus {
                             Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b12").key("b12")
                             Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b13").key("b13")
                         }
-                        Button("PREVIOUS").width(165).height(40).fontColor(Color.White).id("b14").key("b14")
+                        Button("PREVIOUS")
+                            .width(165)
+                            .height(40)
+                            .fontColor(Color.White)
+                            .id("b14")
+                            .key("b14")
                         Row(space: 5) {
                             Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b15").key("b15")
                             Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b16").key("b16")
@@ -334,7 +338,10 @@ class View_Focus {
                             Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b18").key("b18")
                             Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b19").key("b19")
                         }
-                    }.borderWidth(2).borderColor(Color.Gray).borderStyle(BorderStyle.Dashed)
+                    }
+                        .borderWidth(2)
+                        .borderColor(Color.Gray)
+                        .borderStyle(BorderStyle.Dashed)
                 }
             }.width(100.percent).margin(top: 20)
         }

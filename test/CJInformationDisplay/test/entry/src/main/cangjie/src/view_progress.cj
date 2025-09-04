@@ -35,12 +35,13 @@ class View_Progress {
     let colorStop1 = ColorStop(Color.Blue, 1.0.vp)
 
     let appResource = AppResource("app", "media", 1)
-    let font1 = Fonts(size: 16.vp, weight: FontWeight.Normal, family: "Deyihei", style: FontStyle.Normal)
-    let font2 = Fonts(size: 16.vp, weight: FontWeight.Normal, family: appResource, style: FontStyle.Normal)
+    let font1= Fonts(size: 16.vp, weight: FontWeight.Normal, family: "Deyihei", style: FontStyle.Normal)
+    let font2= Fonts(size: 16.vp, weight: FontWeight.Normal, family: appResource, style: FontStyle.Normal)
 
     func build() {
         Scroll() {
-            Column(space: 20) {
+            Column(space:20) {
+
                 Text("ScaleRing Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
                 Row(space: 40) {
                     Progress(value: 10.0, progressType: ProgressType.ScaleRing).width(100).id("progress5")
@@ -53,10 +54,7 @@ class View_Progress {
 
                 Text("Ring Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
                 Row(space: 40) {
-                    Progress(value: 10.0, progressType: ProgressType.Ring)
-                        .width(100)
-                        .id("progress9")
-                        .backgroundColor(Color.Gray)
+                    Progress(value: 10.0, progressType: ProgressType.Ring).width(100).id("progress9").backgroundColor(Color.Gray)
                     Progress(value: 20.0, total: 150.0, progressType: ProgressType.Ring)
                         .color(Color.Gray)
                         .value(50.0)

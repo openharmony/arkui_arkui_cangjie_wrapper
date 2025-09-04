@@ -31,17 +31,17 @@ class View_Select {
     var space: Int64 = 8
 
     @State
-    var values1: Array<SelectOption> = [
-        SelectOption(value: "aaa", icon: @r(app.media.app_icon)),
-        SelectOption(value: "bbb", icon: @r(app.media.app_icon)),
-        SelectOption(value: "ccc", icon: @r(app.media.app_icon)),
-        SelectOption(value: "ddd", icon: @r(app.media.app_icon)),
-        SelectOption(value: @r(app.string.selection_option), icon: @r(app.media.app_icon)),
-        SelectOption(value: @r(app.string.selection_option), icon: "text content")
+    var values1: Array<SelectOptions> = [
+        SelectOptions(value: "aaa", icon: @r(app.media.app_icon)),
+        SelectOptions(value: "bbb", icon: @r(app.media.app_icon)),
+        SelectOptions(value: "ccc", icon: @r(app.media.app_icon)),
+        SelectOptions(value: "ddd", icon: @r(app.media.app_icon)),
+        SelectOptions(value: @r(app.string.selection_option), icon: @r(app.media.app_icon)),
+        SelectOptions(value: @r(app.string.selection_option), icon: "text content")
     ]
 
     @State
-    var arrow: ArrowPosition = ArrowPosition.END
+    var arrow: ArrowPosition = ArrowPosition.End
 
     func build() {
         Column {
@@ -53,7 +53,7 @@ class View_Select {
                 .selectedOptionFont()
                 .space(this.space)
                 .arrowPosition(this.arrow)
-                .menuAlign(alignType: MenuAlignType.START, offset: Offset(0, 0))
+                .menuAlign(alignType: MenuAlignType.Start, offset: Offset(0, 0))
                 .optionWidth(200)
                 .optionHeight(300)
                 .onSelect(
@@ -66,15 +66,15 @@ class View_Select {
                     }
                 )
                 .id("my_select")
-                .optionWidth(OptionWidthMode.FIT_TRIGGER)
+                .optionWidth(OptionWidthMode.FitTrigger)
             Select(this.values1)
                 .selected(1)
                 .value(this.text)
                 .font(size: 16.vp, weight: FontWeight.W500)
                 .fontColor(@r(app.color.blue_color))
                 .selectedOptionFont(size: 16.vp, weight: FontWeight.W400)
-                .arrowPosition(ArrowPosition.START)
-                .menuAlign(alignType: MenuAlignType.CENTER, offset: Offset(0.5, 0.5))
+                .arrowPosition(ArrowPosition.Start)
+                .menuAlign(alignType: MenuAlignType.Center, offset: Offset(0.5, 0.5))
                 .optionWidth(200)
                 .optionHeight(@r(app.string.option_height))
                 .onSelect(
@@ -90,7 +90,7 @@ class View_Select {
                 .font(size: 16.vp)
                 .optionFont(size: 16.vp)
                 .space(8.5)
-                .optionWidth(OptionWidthMode.FIT_CONTENT)
+                .optionWidth(OptionWidthMode.FitContent)
             Select(this.values1)
                 .selected(1)
                 .value(this.text)
@@ -99,7 +99,7 @@ class View_Select {
                 .selectedOptionFont(size: 16.vp, weight: FontWeight.W400)
                 .arrowPosition(this.arrow)
                 .menuAlign(
-                    alignType: MenuAlignType.END,
+                    alignType: MenuAlignType.End,
                     offset: Offset(@r(app.integer.test_cjResource), @r(app.integer.test_cjResource))
                 )
                 .optionWidth(@r(app.string.option_height))
@@ -147,7 +147,7 @@ class View_Select {
                 .selectedOptionBgColor(0xEEEEEE)
                 .space(this.space)
                 .arrowPosition(this.arrow)
-                .menuAlign(alignType: MenuAlignType.START, offset: Offset(0, 0))
+                .menuAlign(alignType: MenuAlignType.Start, offset: Offset(0, 0))
                 .optionWidth(200)
                 .optionHeight(300)
                 .onSelect(
@@ -159,7 +159,7 @@ class View_Select {
                         this.text = text
                     }
                 )
-                .optionWidth(OptionWidthMode.FIT_TRIGGER)
+                .optionWidth(OptionWidthMode.FitTrigger)
 
             Text("-------controlSize,divier,size,padding,direction属性设置测试-------").fontSize(20)
 

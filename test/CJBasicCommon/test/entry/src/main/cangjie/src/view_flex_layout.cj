@@ -19,22 +19,31 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Flex_Layout {
-    func build() {
-        Column() {
-            Text("Hello CangJie").flexBasis(100).backgroundColor(0xCCCCCC).id("my_view_flex_layout1")
-
-            Text("Hello CangJie").flexGrow(30).backgroundColor(0xAFEEEE).id("my_view_flex_layout2")
+class View_Flex_Layout{
+    func build(){
+        Column(){
+            Text("Hello CangJie")
+            .flexBasis(100)
+            .backgroundColor(0xCCCCCC)
+            .id("my_view_flex_layout1")
 
             Text("Hello CangJie")
-                .flexShrink(0)
-                .backgroundColor(0x999999)
-                .alignSelf(ItemAlign.Center)
-                .id("my_view_flex_layout3")
-        }.padding(10).width(300).height(500)
+            .flexGrow(30)
+            .backgroundColor(0xAFEEEE)
+            .id("my_view_flex_layout2")
+
+            Text("Hello CangJie")
+            .flexShrink(0)
+            .backgroundColor(0x999999)
+            .alignSelf(ItemAlign.Center)
+            .id("my_view_flex_layout3")
+        }
+        .padding(10)
+        .width(300)
+        .height(500)
     }
 }

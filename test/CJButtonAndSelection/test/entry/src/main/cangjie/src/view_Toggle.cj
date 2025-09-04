@@ -28,7 +28,7 @@ class View_Toggle {
     var isOn: Bool = false
     func build() {
         Column() {
-            Toggle(ToggleType.SwitchType, isOn: isOn)
+            Toggle(ToggleType.Switch, isOn: isOn)
                 .selectedColor(0xed6f21)
                 .switchPointColor(0xe5ffffff)
                 //                .switchStyle(pointRadius: 15.0, unselectedColor: Color.Black, pointColor: Color.Gray, trackBorderRadius: 5.0)
@@ -41,9 +41,9 @@ class View_Toggle {
 
             Text("current state is ${this.isOn}").fontSize(16).fontColor(0x182431).margin(16).id("my_state")
 
-            Toggle(ToggleType.SwitchType, isOn: isOn).id("my_switchtype2_toggle")
+            Toggle(ToggleType.Switch, isOn: isOn).id("my_switchtype2_toggle")
 
-            Toggle(ToggleType.CheckboxType, isOn: isOn)
+            Toggle(ToggleType.Checkbox, isOn: isOn)
                 .width(10.vp)
                 .height(10.vp)
                 .size(width: 30.vp, height: 30.vp)
@@ -51,7 +51,7 @@ class View_Toggle {
                 .borderRadius(5.vp)
                 .id("my_checkboxtype_toggle")
 
-            Toggle(ToggleType.CheckboxType, isOn: isOn)
+            Toggle(ToggleType.Checkbox, isOn: isOn)
                 .width(10.vp)
                 .height(10.vp)
                 .backgroundColor(Color.Gray)
@@ -59,7 +59,7 @@ class View_Toggle {
                 .borderRadius(5.vp)
                 .id("my_checkboxtype2_toggle")
 
-            Toggle(ToggleType.ButtonType, isOn) {
+            Toggle(ToggleType.Button, isOn) {
                 Text("ButtonType")
             }
                 .padding(top: 1.vp, right: 1.vp, bottom: 1.vp, left: 1.vp)

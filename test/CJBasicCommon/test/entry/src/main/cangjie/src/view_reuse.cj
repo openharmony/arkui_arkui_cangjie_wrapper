@@ -38,11 +38,11 @@ class Student1DataSource <: IDataSource<Student1> {
         return data_[index]
     }
 
-    public func onRegisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func registerDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = listener
     }
 
-    public func onUnregisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func unregisterDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = None
     }
 
@@ -53,22 +53,22 @@ class Student1DataSource <: IDataSource<Student1> {
 
     public func notifyRemove(index: Int64): Unit {
         let listener: DataChangeListener = listenerOp.getOrThrow()
-        listener.onDataDelete(index)
+        listener.onDataDelete(IntNative(index))
     }
 
     public func notifyInsert(index: Int64): Unit {
         let listener: DataChangeListener = listenerOp.getOrThrow()
-        listener.onDataAdd(index)
+        listener.onDataAdd(IntNative(index))
     }
 
     public func notifyMove(index1: Int64, index2: Int64): Unit {
         let listener: DataChangeListener = listenerOp.getOrThrow()
-        listener.onDataMove(index1, index2)
+        listener.onDataMove(IntNative(index1), IntNative(index2))
     }
 
     public func notifyChange(index: Int64): Unit {
         let listener: DataChangeListener = listenerOp.getOrThrow()
-        listener.onDataChange(index)
+        listener.onDataChange(IntNative(index))
     }
 }
 
@@ -87,19 +87,19 @@ let dataSourceStu1: Student1DataSource = getDS1()
 @Component
 public class View_Reuse {
     protected override func onDidBuild() {
-        Hilog.info(1, "1", "Cangjie-App", "### onDidBuild")
+        Hilog.info(1,"1","Cangjie-App", "### onDidBuild")
     }
     public func build(): Unit {
         Column() {
             List() {
-                //                LazyForEach(
-                //                    dataSourceStu1,
-                //                    itemGeneratorFunc: {
-                //                        stu: Student1, idx: Int64 => ListItem() {
-                //                            Child(name: "${idx}", idx: idx)
-                //                        }
-                //                    }
-                //                )
+//                LazyForEach(
+//                    dataSourceStu1,
+//                    itemGeneratorFunc: {
+//                        stu: Student1, idx: Int64 => ListItem() {
+//                            Child(name: "${idx}", idx: idx)
+//                        }
+//                    }
+//                )
             }
         }
     }
@@ -108,29 +108,23 @@ public class View_Reuse {
 @Reusable
 @Component
 class Child {
-    @State
-    var name: String = ""
-    @State
-    var idx: Int64 = 0
+    @State var name: String = ""
+    @State var idx: Int64 = 0
     protected override func onDidBuild() {
-        Hilog.info(1, "1", "Cangjie-App", "## onDidBuild")
+        Hilog.info(1,"1","Cangjie-App", "## onDidBuild")
     }
     protected override func aboutToReuse(val: ReuseParams) {
-        if (val.contains("name")) {
-            let nameVal = val.get("name").getOrThrow()
-            this.name = nameVal as String ?? "None"
-            Hilog.info(1, "1", "Cangjie-App", "### aboutToReuse name ${name}")
-        }
-        if (val.contains("idx")) {
-            let idxVal = val.get("idx").getOrThrow()
-            this.idx = idxVal as Int64 ?? 0
-            Hilog.info(1, "1", "Cangjie-App", "### aboutToReuse idx ${idx}")
-        }
+        let nameVal = val.get<String>("name").getOrThrow()
+        this.name = nameVal as String ?? "None"
+        Hilog.info(1,"1","Cangjie-App", "### aboutToReuse name ${name}")
+        let idxVal = val.get<String>("idx").getOrThrow()
+        this.idx = idxVal as Int64 ?? 0
+        Hilog.info(1,"1","Cangjie-App", "### aboutToReuse idx ${idx}")
     }
     protected override func aboutToRecycle() {
-        Hilog.info(1, "1", "Cangjie-App", "### aboutToRecycle")
+        Hilog.info(1,"1","Cangjie-App", "### aboutToRecycle")
     }
-    func build() {
+    func build () {
         Column() {
             Text("name: ${name} idx: ${idx}").fontSize(30)
         }.borderWidth(1).margin(bottom: 10)

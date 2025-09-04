@@ -29,30 +29,24 @@ class View_ResponseRegion {
         Column() {
             Text("x:0,y:0,width:50.percent,height:100.percent")
             // 热区宽度为按钮的一半，点击右侧无响应
-            Button("button1")
-                .responseRegion(Rectangle(x: 0.vp, y: 0.vp, width: 50.percent, height: 100.percent))
-                .onClick({
-                    e => text = "button1 clicked"
-                })
-                .id("responseRegion1")
+            Button("button1").responseRegion(Rectangle(x: 0.vp, y: 0.vp, width: 50.percent, height: 100.percent)).
+                onClick({ e
+                => text = "button1 clicked"
+            }).id("responseRegion1")
 
             // 热区宽度为按钮的一半，且右移一个按钮宽度，点击button2右侧左边，点击事件生效
             Text("x:100.percent,y:0,width:50.percent,height:100.percent")
-            Button("button2")
-                .responseRegion(Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent))
-                .onClick({
-                    e => text = "button2 clicked"
-                })
-                .id("responseRegion2")
+            Button("button2").responseRegion(Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent)).
+                onClick({ e
+                => text = "button2 clicked"
+            }).id("responseRegion2")
 
             // 热区大小为整个按钮，且下移一个按钮高度，点击button3下方按钮大小区域，点击事件生效
             Text("x:0,y:100.percent,width:100.percent,height:100.percent")
-            Button("button3")
-                .responseRegion(Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent))
-                .onClick({
-                    e => text = "button3 clicked"
-                })
-                .id("responseRegion3")
+            Button("button3").responseRegion(Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent)
+            ).onClick({ e
+                => text = "button3 clicked"
+            }).id("responseRegion3")
         }.width(100.percent).margin(top: 5)
     }
 }

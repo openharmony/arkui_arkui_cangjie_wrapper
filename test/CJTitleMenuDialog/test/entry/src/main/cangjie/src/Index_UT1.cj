@@ -20,7 +20,7 @@ internal import ohos.arkui.component.*
 internal import ohos.arkui.component.loadNativeView
 internal import ohos.arkui.state_management.SubscriberManager
 internal import ohos.arkui.state_management.ObservedProperty
-internal import ohos.router.Router
+
 import ohos.arkui.state_macro_manage.Entry
 import ohos.arkui.state_macro_manage.Component
 import ohos.arkui.state_macro_manage.State
@@ -43,7 +43,7 @@ class TitleMenuDialog_UT1 {
                             .borderRadius(4)
                             .margin(2)
                             .onClick {
-                                evt => Router.push(url: viewName)
+                                evt => getUIContext().getRouter().pushUrl(url: viewName)
                             }
                     }
                 )

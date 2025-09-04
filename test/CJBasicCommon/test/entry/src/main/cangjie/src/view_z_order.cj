@@ -13,13 +13,17 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/17
+ */
+
 package ohos_app_cangjie_entry
 
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
@@ -28,23 +32,12 @@ class View_ZOrder {
         Column {
             Stack() {
                 // stack会重叠组件, 默认后定义的在最上面，具有较高zIndex值的元素在zIndex较小的元素前面
-                Text("1, zIndex(2)")
-                    .size(width: 40.percent, height: 30.percent)
-                    .backgroundColor(0xbbb2cb)
-                    .zIndex(2)
-                    .id("Text2")
-                Text("2, default zIndex(1)")
-                    .size(width: 70.percent, height: 50.percent)
-                    .backgroundColor(0xd2cab3)
-                    .align(Alignment.TopStart)
-                    .zIndex(1)
-                    .id("Text1")
-                Text("3, zIndex(0)")
-                    .size(width: 90.percent, height: 80.percent)
-                    .backgroundColor(0xc1cbac)
-                    .align(Alignment.TopStart)
-                    .zIndex(0)
-                    .id("Text0")
+                Text("1, zIndex(2)").size(width: 40.percent, height: 30.percent).backgroundColor(0xbbb2cb).zIndex(2).id(
+                    "Text2")
+                Text("2, default zIndex(1)").size(width: 70.percent, height: 50.percent).backgroundColor(0xd2cab3).align(
+                    Alignment.TopStart).zIndex(1).id("Text1")
+                Text("3, zIndex(0)").size(width: 90.percent, height: 80.percent).backgroundColor(0xc1cbac).align(
+                    Alignment.TopStart).zIndex(0).id("Text0")
             }.width(100.percent).height(200)
         }
     }

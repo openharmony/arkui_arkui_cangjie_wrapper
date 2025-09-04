@@ -13,11 +13,12 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/27
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
-import ohos.measure.*
-import ohos.font.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
@@ -27,7 +28,7 @@ import std.collection.{ArrayList, HashMap}
 class PageRecycle {
     public func build() {
         Button(ButtonOptions()) {
-            
+
         }
     }
 }
@@ -55,10 +56,10 @@ class Hello_Cangjie {
                         try {
                             this.resetRecycleCustomNode()
                         } catch (e: Exception) {
-                            Hilog.info(1, "1", "Cangjie-Test", "test_openView: ${e.toString()}")
+                            Hilog.info(1,"1","Cangjie-Test", "test_openView: ${e.toString()}")
                             message = e.toString()
                         }
-                        Hilog.info(1, "1", "Cangjie-App", "Hello Cangjie")
+                        Hilog.info(1,"1","Cangjie-App", "Hello Cangjie")
                     }
                     .fontSize(40)
                     .height(80)
@@ -66,37 +67,14 @@ class Hello_Cangjie {
                 Button("Recycle Manager")
                     .onClick {
                         e =>
-                        var recycleM = RecycleManager()
-                        recycleM.pushRecycleNode("recycle1", PageRecycle(this))
-                        recycleM.pushRecycleNode("recycle2", PageRecycle(this))
-                        recycleM.popRecycleNode("recycle1")
-                        recycleM.popRecycleNode("recycle1")
-                        recycleM.updateNodeId(1, 2)
-                        recycleM.updateNodeId(1, 1)
-                        recycleM.updateNodeId(2, 1)
-                        recycleM.updateNodeId(2, 2)
-                        recycleM.proxyNodeId(3)
-                        recycleM.proxyNodeId(1)
-                        recycleM.updateNodeId(5, 6)
-                        recycleM.proxyNodeId(6)
-                        recycleM.purgeAllCachedRecycleNode()
-                        Hilog.info(1, "1", "Cangjie-App", "Hello Cangjie")
+                        Hilog.info(1,"1","Cangjie-App", "Hello Cangjie")
                     }
                     .id("RecycleManager")
                 Button("ReuseParams")
                     .onClick {
                         e =>
-                        var reuseParams = ReuseParams()
-                        var reuseParams1 = ReuseParams([])
-                        var reuseParams2 = ReuseParams([("test1", true)])
-                        reuseParams.size
-                        reuseParams.add("test2", "test2")
-                        reuseParams.contains("test2")
-                        reuseParams.get("test2")
-                        reuseParams2.getValue<Bool>("test1")
-                        reuseParams2.getValue<Bool>("test3")
 
-                        Hilog.info(1, "1", "Cangjie-App", "Hello Cangjie")
+                        Hilog.info(1,"1","Cangjie-App", "Hello Cangjie")
                     }
                     .id("ReuseParams")
             }.width(100.percent)

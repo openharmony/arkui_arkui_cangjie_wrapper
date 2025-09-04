@@ -37,7 +37,7 @@ class CanvasDrawing_UT_1 {
 
     private func ScrollTo(view: String) {
         driver.delayMs(500)
-        Hilog.error(1, "1", "Cangjie-Test", "ScrollTo ${view}")
+        Hilog.error(1,"1","Cangjie-Test", "ScrollTo ${view}")
         var isSuccess = true
         var count = 0
         do {
@@ -47,7 +47,7 @@ class CanvasDrawing_UT_1 {
                 driver.delayMs(500)
                 isSuccess = true
             } catch (e: BusinessException) {
-                Hilog.error(1, "1", "Cangjie-Test", e.message)
+                Hilog.error(1,"1","Cangjie-Test", e.message)
                 driver.pressBack()
                 driver.delayMs(500)
                 count = count + 1
@@ -57,8 +57,8 @@ class CanvasDrawing_UT_1 {
     }
 
     protected override func beforeAll() {
-        let scrollBar = driver.waitForComponent(On().id("scroller"), 500)
-        Hilog.error(1, "1", "Cangjie-Test", "started")
+        let scrollBar = driver.waitForComponent(On().id("scroller"),500)
+        Hilog.error(1,"1","Cangjie-Test", "started")
         scrollBar?.scrollSearch(On().id("Index_UT1"))?.click()
         driver.delayMs(500)
     }
@@ -66,6 +66,8 @@ class CanvasDrawing_UT_1 {
     protected override func afterEach() {
         driver.pressBack()
     }
+
+
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
@@ -75,7 +77,7 @@ class CanvasDrawing_UT_1 {
         let inspector = getInspectorByKey("circleComponent1")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
-        Hilog.info(1, "1", "1", "attrs is: " + attrs.toString())
+        Hilog.info(1,"1","1","attrs is: " + attrs.toString())
 
         let circleComponent1 = driver.findComponent(On().id("circleComponent1"))
         circleComponent1?.click()
@@ -98,6 +100,7 @@ class CanvasDrawing_UT_1 {
         @Expect(strokeDashArray,"[\"1.00vp\",\"2.00vp\"]")
         driver.delayMs(1000)
     }
+
 
     func approxEquals(expected: Float32, actualStr: String) {
         let actual = Float32.parse(actualStr)
@@ -142,7 +145,7 @@ class CanvasDrawing_UT_1 {
         let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
 
         let radialGradient3 = attrs3.get("radialGradient").getOrThrow().toString()
-        Hilog.info(0, "0", "CangjieTest", "[test_gradientColorAttrs2] radialGradient3: ${radialGradient3}")
+        Hilog.info(0,"0","CangjieTest","[test_gradientColorAttrs2] radialGradient3: ${radialGradient3}")
         @Expect(radialGradient3, "{\"center\":[\"100.00px\",\"100.00px\"],\"radius\":\"120.00vp\",\"colors\":[[\"#FFFF0000\",\"0.000000\"],[\"#FF0000FF\",\"0.300000\"],[\"#FFFFFF00\",\"1.000000\"]],\"repeating\":\"false\"}")
 
         let inspector4 = getInspectorByKey("row6")
@@ -150,12 +153,13 @@ class CanvasDrawing_UT_1 {
         let attrs4 = jsonObject4.get("$attrs").getOrThrow().asObject()
 
         let radialGradient4 = attrs4.get("radialGradient").getOrThrow().toString()
-        Hilog.info(0, "0", "CangjieTest", "[test_gradientColorAttrs2] radialGradient4: ${radialGradient4}")
+        Hilog.info(0,"0","CangjieTest","[test_gradientColorAttrs2] radialGradient4: ${radialGradient4}")
         @Expect(radialGradient4, "{\"center\":[\"100.00px\",\"100.00px\"],\"radius\":\"120.00vp\",\"colors\":[[\"#FFFF0000\",\"0.000000\"],[\"#FF0000FF\",\"0.300000\"],[\"#FFFFFF00\",\"0.500000\"]],\"repeating\":\"true\"}")
         driver.delayMs(600)
     }
 
     // image unittest
+
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
@@ -163,16 +167,17 @@ class CanvasDrawing_UT_1 {
         ScrollTo("View_Image_Animator")
         let start = driver.findComponent(On().id("start"))
         start?.click()
-        let pause = driver.waitForComponent(On().id("pause"), 5000)
+        let pause = driver.waitForComponent(On().id("pause"),5000)
         pause?.click()
-        let stop = driver.waitForComponent(On().id("stop"), 5000)
+        let stop = driver.waitForComponent(On().id("stop"),5000)
         stop?.click()
-        let reverse = driver.waitForComponent(On().id("reverse"), 5000)
+        let reverse = driver.waitForComponent(On().id("reverse"),5000)
         reverse?.click()
-        let once = driver.waitForComponent(On().id("once"), 5000)
+        let once = driver.waitForComponent(On().id("once"),5000)
         once?.click()
-        let infinite = driver.waitForComponent(On().id("infinite"), 5000)
+        let infinite = driver.waitForComponent(On().id("infinite"),5000)
         infinite?.click()
         driver.delayMs(500)
     }
+
 }

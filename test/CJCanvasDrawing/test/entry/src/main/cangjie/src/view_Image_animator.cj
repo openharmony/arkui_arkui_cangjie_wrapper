@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/27
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -20,7 +23,7 @@ import ohos.font.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
@@ -64,55 +67,31 @@ class View_Image_Animator {
             //                }
             //            )
             Row() {
-                Button("start")
-                    .width(100)
-                    .padding(5)
-                    .fontSize(16.0)
-                    .borderRadius(topLeft: 3.vp, topRight: 3.vp, bottomLeft: 3.vp, bottomRight: 3.vp)
-                    .onClick({
-                        _ =>
-                        //                    this.state = AnimationStatus.Running
-                        Hilog.info(1, "1", "1", "Finish")
-                    })
-                    .margin(5)
-                    .id("start")
-                Button("pause")
-                    .width(100)
-                    .fontColor(@r(app.color.blue_23C452))
-                    .padding(5)
-                    .fontFamily(@r(app.string.DEFAULT_FONT))
-                    .border(width: 1.vp, color: Color.Blue, radius: 3.vp, style: BorderStyle.Dashed)
-                    .onClick({
-                        _ =>
-                        //                    this.state = AnimationStatus.Paused // 显示当前帧图片
-                        Hilog.info(1, "1", "1", "Finish")
-                    })
-                    .margin(5)
-                    .id("pause")
-                Button("stop")
-                    .width(100)
-                    .padding(5)
-                    .fontFamily("HarmonyOS Sans")
-                    .fontSize(@r(app.string.control_Width))
-                    .fontStyle(FontStyle.Normal)
-                    .onClick({
-                        _ =>
-                        //                    this.state = AnimationStatus.Stopped // 显示动画的起始帧图片
-                        Hilog.info(1, "1", "1", "Finish")
-                    })
-                    .margin(5)
-                    .id("stop")
+                Button("start").width(100).padding(5).fontSize(16.0).borderRadius(topLeft: 3.vp, topRight: 3.vp,
+                    bottomLeft: 3.vp, bottomRight: 3.vp).onClick({
+                    _ =>
+                    //                    this.state = AnimationStatus.Running
+                    Hilog.info(1,"1","1","Finish")
+                }).margin(5).id("start")
+                Button("pause").width(100).fontColor(@r(app.color.blue_23C452)).padding(5).fontFamily(
+                    @r(app.string.DEFAULT_FONT)).border(width: 1.vp, color: Color.Blue, radius: 3.vp,
+                    style: BorderStyle.Dashed).onClick({
+                    _ =>
+                    //                    this.state = AnimationStatus.Paused // 显示当前帧图片
+                    Hilog.info(1,"1","1","Finish")
+                }).margin(5).id("pause")
+                Button("stop").width(100).padding(5).fontFamily("HarmonyOS Sans").fontSize(@r(app.string.control_Width)).
+                    fontStyle(FontStyle.Normal).onClick({
+                    _ =>
+                    //                    this.state = AnimationStatus.Stopped // 显示动画的起始帧图片
+                    Hilog.info(1,"1","1","Finish")
+                }).margin(5).id("stop")
             }
 
             Row() {
-                Button("reverse")
-                    .width(100)
-                    .padding(5)
-                    .onClick({
-                        _ => this.reverse = !this.reverse
-                    })
-                    .margin(5)
-                    .id("reverse")
+                Button("reverse").width(100).padding(5).onClick({
+                    _ => this.reverse = !this.reverse
+                }).margin(5).id("reverse")
                 Button("once").width(100).padding(5).onClick({
                     _ => this.iterations = 1
                 }).margin(5).id("once")
@@ -120,7 +99,9 @@ class View_Image_Animator {
                     _ => this.iterations = -1 // 无限循环播放
                 }).margin(5).id("infinite")
 
-                Button("aaaa").size(width: (-1.0).vp, height: (-1.0).vp).width((-1.0).vp).height((-1.0).vp)
+                Button("aaaa").size(width: (-1.0).vp,
+                    height: (-1.0).vp).width((-1.0).vp).height(
+                    (-1.0).vp)
             }
         }.width(100.percent).height(100.percent)
     }

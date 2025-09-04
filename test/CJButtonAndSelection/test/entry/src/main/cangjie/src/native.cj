@@ -890,7 +890,6 @@ let BOOL_FALSE_STRING = "false".toArray()
 let NULL_STRING = "null".toArray()
 const MIN_CAPACITY = 16
 const BLANK: Byte = ' '
-
 class WriteBuffer {
     private var _buffer: Array<Byte>
     private var _size: Int64 = 0

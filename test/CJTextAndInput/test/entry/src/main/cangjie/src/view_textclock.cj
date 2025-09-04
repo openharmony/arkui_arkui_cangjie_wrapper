@@ -36,8 +36,7 @@ class View_TextClock {
         ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 30.0, offsetY: 0.0, color: Color.Blue),
         ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 40.0, offsetY: 0.0, color: Color.Green),
         ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 10.0, offsetY: 0.0, color: 0xFFFFFF),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 40.0, offsetY: 0.0,
-            color: @r(app.color.start_window_background))
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 40.0, offsetY: 0.0, color: @r(app.color.start_window_background))
     ]
     let shwdowOption = ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 10.0, offsetY: 0.0,
         color: Color.Red, fill: false)
@@ -76,9 +75,7 @@ class View_TextClock {
                 .fontSize(30.0)
                 .textShadow(textShadows)
                 .fontColor(0xFFFFFF)
-                .textShadow(
-                    ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 10.0, offsetY: 0.0,
-                        color: @r(app.color.start_window_background)))
+                .textShadow(ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 10.0, offsetY: 0.0, color: @r(app.color.start_window_background)))
                 .fontSize(@r(app.string.size_desc))
                 .id("Text_clock2")
 
@@ -87,9 +84,7 @@ class View_TextClock {
                     value: Int64 => accumulateTime = value
                 })
                 .margin(20)
-                .textShadow(
-                    ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 10.0, offsetY: 0.0,
-                        color: Color.Red))
+                .textShadow(ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 10.0, offsetY: 0.0, color: Color.Red))
                 .id("Text_clock3")
 
             Button("start TextClock").margin(bottom: 10).onClick({
@@ -102,16 +97,8 @@ class View_TextClock {
                 // 停止文本时钟
                 this.controller.stop()
             }).id("stop")
-            TextClock(timeZoneOffset: 1.0)
-                .textShadow(shwdowOption)
-                .format("HH:mm:ss")
-                .fontSize(20.fp)
-                .id("Text_clock4")
-            TextClock(timeZoneOffset: 1.0)
-                .textShadow(shwdowOption1)
-                .format("aa hh:mm:ss")
-                .fontSize(21)
-                .id("Text_clock5")
+            TextClock(timeZoneOffset: 1.0).textShadow(shwdowOption).format("HH:mm:ss").fontSize(20.fp).id("Text_clock4")
+            TextClock(timeZoneOffset: 1.0).textShadow(shwdowOption1).format("aa hh:mm:ss").fontSize(21).id("Text_clock5")
             TextClock(timeZoneOffset: -1.0).textShadow(shadowoptions).format("HH:mm").fontSize(25.0).id("Text_clock6")
             TextClock().fontSize(@r(app.string.size_desc)).fontColor(Color.Red).id("Text_clock7")
             TextClock().fontColor(@r(app.media.app_icon)).id("Text_clock8")
