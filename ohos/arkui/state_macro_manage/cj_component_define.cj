@@ -710,6 +710,9 @@ func handleRender(input: Expr, thisView: Tokens): Tokens {
         // hasChild
         let childComps = generateFuncBody(childs, thisView)
         changeTrailingExpr(input, childComps)
+        if (isContainAnimation(input)) {
+            parseAnimationEntry(input)
+        }
         return thisView + quote(.observeComponentCreation({elmtId, isInitialRender =>
                 $input
             })
@@ -718,6 +721,9 @@ func handleRender(input: Expr, thisView: Tokens): Tokens {
         // noChild
 
         let compName = getTrailingClosureExprValue(input)
+        if (isContainAnimation(input)) {
+            parseAnimationEntry(input)
+        }
         if (stateManageHandler.isContainerComponent(compName) && hasChildInParams(input)) {
             parseChildInParams(input)
             return thisView + quote(.observeComponentCreation({elmtId, isInitialRender =>
