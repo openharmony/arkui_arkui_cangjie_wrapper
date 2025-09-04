@@ -707,4 +707,166 @@ class ScrollSplit_UT_2 {
         clickButton("AppResource")
     }
 
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_swiperCommonAttrs() {
+        ScrollTo("View_Swiper")
+
+        let inspector = getInspectorByKey("my_swipper")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        Hilog.info(1,"1","Cangjie-Test", "[test_swiperCommonAttrs] my_swipper attrs: ${attrs}")
+
+        let index = attrs.get("index").getOrThrow().toString()
+        @Expect(index, "\"0\"")
+
+        let autoPlay = attrs.get("autoPlay").getOrThrow().toString()
+        @Expect(autoPlay, "\"false\"")
+
+        let loop = attrs.get("loop").getOrThrow().toString()
+        @Expect(loop, "\"true\"")
+
+        let duration = attrs.get("duration").getOrThrow().toString()
+        @Expect(duration, "\"400\"")
+
+        let interval = attrs.get("interval").getOrThrow().toString()
+        @Expect(interval, "\"3000\"")
+
+        let vertical = attrs.get("vertical").getOrThrow().toString()
+        @Expect(vertical, "\"true\"")
+
+        let displayMode = attrs.get("displayMode").getOrThrow().toString()
+        @Expect(displayMode, "\"SwiperDisplayMode.Stretch\"")
+
+        clickButton("my_swipper2")
+
+        let buttonPrevious = driver.findComponent(On().id("buttonPrevious")).getOrThrow()
+        buttonPrevious.click()
+
+        let buttonNext = driver.waitForComponent(On().id("buttonNext"),1000).getOrThrow()
+        let text = buttonNext.getText()
+        @Expect(text, "2")
+
+        buttonNext.click()
+        driver.delayMs(1000)
+        let text2 = buttonNext.getText()
+        @Expect(text2, "0")
+
+        // @Case1 SwiperController.changeIndex(2)
+        let changeIndex = driver.findComponent(On().id("changeIndex")).getOrThrow()
+        changeIndex.click()
+        driver.delayMs(1000)
+        let text3 = buttonNext.getText()
+        @Expect(text, "2")
+
+        let finishAnimation = driver.findComponent(On().id("finishAnimation")).getOrThrow()
+        finishAnimation.click()
+
+
+        // @Case2 SwiperController.changeIndex(2, true)
+        let changeIndex2 = driver.waitForComponent(On().id("changeIndex2"),1000).getOrThrow()
+        changeIndex2.click()
+        driver.delayMs(1000)
+        let text4 = buttonNext.getText()
+        @Expect(text, "2")
+
+        // @Case3 SwiperController.finishAnimation(callback: () -> Unit)
+        let finishAnimation2 = driver.findComponent(On().id("finishAnimation2")).getOrThrow()
+        finishAnimation2.click()
+        driver.delayMs(1000)
+
+        let inspector1 = getInspectorByKey("swiper_case1")
+        let jsonObject1 = JsonValue.fromStr(inspector1).asObject()
+        let attrs1 = jsonObject1.get("$attrs").getOrThrow().asObject()
+        Hilog.info(1,"1","Cangjie-Test", "[test_swiperCommonAttrs] swiper_case1 attrs: ${attrs1}")
+
+        let inspector2 = getInspectorByKey("swiper_case2")
+        let jsonObject2 = JsonValue.fromStr(inspector2).asObject()
+        let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
+        Hilog.info(1,"1","Cangjie-Test", "[test_swiperCommonAttrs] swiper_case2 attrs: ${attrs2}")
+
+        let inspector3 = getInspectorByKey("swiper_case3")
+        let jsonObject3 = JsonValue.fromStr(inspector3).asObject()
+        let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
+        Hilog.info(1,"1","Cangjie-Test", "[test_swiperCommonAttrs] swiper_case3 attrs: ${attrs3}")
+
+        let inspector4 = getInspectorByKey("swiper_case4")
+        let jsonObject4 = JsonValue.fromStr(inspector4).asObject()
+        let attrs4 = jsonObject4.get("$attrs").getOrThrow().asObject()
+        Hilog.info(1,"1","Cangjie-Test", "[test_swiperCommonAttrs] swiper_case4 attrs: ${attrs4}")
+
+        let inspector5 = getInspectorByKey("swiper_case5")
+        let jsonObject5 = JsonValue.fromStr(inspector5).asObject()
+        let attrs5 = jsonObject5.get("$attrs").getOrThrow().asObject()
+        Hilog.info(1,"1","Cangjie-Test", "[test_swiperCommonAttrs] swiper_case5 attrs: ${attrs5}")
+
+        // @Case4 indicator(true)
+        let indicator = attrs1.get("indicator").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[Case4] indicator(true) indicator: ${indicator}")
+        @Expect(indicator, "\"true\"")
+
+        // @Case5 indicator(DotIndicator().itemWidth(15).itemHeight(15).selectedItemWidth(15))
+        let dotIndicator = attrs2.get("indicator").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[@Case5 indicator(DotIndicator()] dotIndicator: ${dotIndicator}")
+        @Expect(dotIndicator, "\"true\"")
+
+        // @Case6 indicator(Indicator.digit().top(200).fontColor(Color.Gray).selectedFontColor(Color.Gray))
+        let digitIndicator = attrs3.get("indicator").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[@Case6 indicator(Indicator] digitIndicator: ${digitIndicator}")
+        @Expect(digitIndicator, "\"true\"")
+
+        // @Case7 displayCount(2)
+        let displayCount = attrs2.get("displayCount").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[@Case7 displayCount(2)] displayCount: ${displayCount}")
+        @Expect(displayCount, "2")
+
+        // @Case8 displayCount(2, true)
+        let displayCount2 = attrs3.get("displayCount").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[@Case8 displayCount(2, true)] displayCount2: ${displayCount2}")
+        @Expect(displayCount2, "2")
+
+        // @Case9 displayCount(SwiperAutoFill(150))
+        let displayCount3 = attrs4.get("displayCount").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[@Case9 displayCount(SwiperAutoFill(150))] displayCount3: ${displayCount3}")
+        @Expect(displayCount3, "2")
+
+        // @Case10 displayCount(SwiperAutoFill(150.0), true)
+        let displayCount4 = attrs2.get("displayCount").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[@Case9 displayCount(SwiperAutoFill(150))] displayCount4: ${displayCount4}")
+        @Expect(displayCount4, "2")
+
+        // @Case11 displayArrow(true, isHoverShow: false)
+        let displayArrow = attrs4.get("displayArrow").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[@Case11 displayArrow(true, isHoverShow: false)] displayArrow: ${displayArrow}")
+        @Expect(displayArrow, "\"true\"")
+
+        // @Case12 displayArrow(ArrowStyle, isHoverShow: false)
+        let displayArrow2 = attrs2.get("displayArrow").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[@Case12 displayArrow(ArrowStyle, isHoverShow: false)] displayArrow2: ${displayArrow2}")
+        @Expect(displayArrow2, "\"true\"")
+
+        // @Case13 nextMargin(10.vp, ignoreBlank: true)
+        let nextMargin = attrs1.get("nextMargin").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[@Case13 nextMargin(10.vp, ignoreBlank: true)] nextMargin: ${nextMargin}")
+        @Expect(nextMargin, "\"10.00vp\"")
+
+        // @Case14 prevMargin(10.vp, ignoreBlank: true)
+        let prevMargin = attrs1.get("prevMargin").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[@Case14 prevMargin(10.vp, ignoreBlank: true)] prevMargin: ${prevMargin}")
+        @Expect(prevMargin, "\"10.00vp\"")
+
+        // @Case15 indicatorInteractive(false)
+        let indicatorInteractive = attrs2.get("indicatorInteractive").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[@Case15 indicatorInteractive(false)] indicatorInteractive: ${indicatorInteractive}")
+        @Expect(indicatorInteractive, "\"true\"")
+
+        // @Case16 nestedScroll(SwiperNestedScrollMode.SELF_FIRST)
+        let nestedScroll = attrs2.get("nestedScroll").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "[@Case16 nestedScroll(SwiperNestedScrollMode.SELF_FIRST)] nestedScroll: ${nestedScroll}")
+        @Expect(nestedScroll, "\"SwiperNestedScrollMode.SELF_FIRST\"")
+
+        driver.swipe(100, 200, 400, 200, speed: 1500)
+        driver.delayMs(200)
+    }
+
 }

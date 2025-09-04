@@ -30,14 +30,16 @@ func parseBool(x: Bool): String{
 func parseColor(color: ColorMode): String {
     return match (color) {
         case ColorMode.Light => "Light"
-        case _ => "Dark"
+        case ColorMode.Dark => "Dark"
+        case _ => "Unknown color mode"
     }
 }
 
 func parseLayout(layout: LayoutDirection): String{
     return match (layout) {
         case LayoutDirection.Ltr => "Ltr"
-        case _ => "Rtl"
+        case LayoutDirection.Rtl => "Rtl"
+        case _ => "Unknown layout direction"
     }
 }
 
@@ -123,6 +125,7 @@ class View_Environment {
             Text("InvalidKey => ")
             Text("  SystemProvided: ${this.SysInvalidKey}")
 
+            EnvironmentEnum()
         }
     }
     // 组件渲染前调用的方法
@@ -132,5 +135,35 @@ class View_Environment {
 
     protected override func aboutToDisappear() {
         Environment.aboutToBeDeleted()
+    }
+}
+
+@Component
+class EnvironmentEnum {
+    var clickCount: Int64 = 0
+
+    @State var colorModeInt: Int64 = 0
+    @State var colorModeString: String = "null"
+    @State var layoutDirectionInt: Int64 = 0
+    @State var layoutDirectionString: String = "null"
+    var arrColorMode: Array<ColorMode> = [ColorMode.Light, ColorMode.Dark]
+    var arrLayoutDirection: Array<LayoutDirection> = [LayoutDirection.Ltr, LayoutDirection.Rtl]
+
+    func build() {
+        Column {
+            Text("${colorModeString} ${colorModeInt}").id("parsedColorMode")
+            Text("${layoutDirectionString} ${layoutDirectionInt}").id("parsedLayoutDirection")
+            Button("parseStatus").onClick { e =>
+                var colorMode_ = arrColorMode[clickCount]
+                var layoutDirection_ = arrLayoutDirection[clickCount]
+                colorModeInt = clickCount
+                colorModeString = parseColor(colorMode_)
+                layoutDirectionInt = clickCount
+                layoutDirectionString = parseLayout(layoutDirection_)
+                Environment.envProp<ColorMode>("colorMode", colorMode_)
+                Environment.envProp<LayoutDirection>("layoutDirection", layoutDirection_)
+                clickCount++
+            }.id("parseStatus")
+        }
     }
 }

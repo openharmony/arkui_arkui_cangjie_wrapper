@@ -42,6 +42,67 @@ class TabsExample5 {
 
     func build() {
         Column() {
+            Row() {
+                Button("gridMargin+10 ${this.gridMargin}")
+                .id("gridMarginAdd")
+                .width(47.percent)
+                .height(50)
+                .margin(top: 5)
+                .onClick({e =>
+                    this.gridMargin += 10
+                })
+                .margin(right: 6.percent, bottom: 12.vp)
+                Button("gridMargin-10 ${this.gridMargin}")
+                .id("gridMarginSub")
+                .width(47.percent)
+                .height(50)
+                .margin(top: 5)
+                .onClick({e =>
+                    this.gridMargin -= 10
+                })
+                .margin(bottom: 12.vp)
+            }
+            Row() {
+                Button("gridGutter+10 ${this.gridGutter}")
+                .id("gridGutterAdd")
+                .width(47.percent)
+                .height(50)
+                .margin(top: 5)
+                .onClick({e =>
+                    this.gridGutter += 10
+                })
+                .margin(right: 6.percent, bottom: 12.vp)
+                Button("gridGutter-10 ${this.gridGutter}")
+                .id("gridGutterSub")
+                .width(47.percent)
+                .height(50)
+                .margin(top: 5)
+                .onClick({e =>
+                    this.gridGutter -= 10
+                })
+                .margin(bottom: 12.vp)
+            }
+            Row() {
+                Button("sm+2 ${this.sm}")
+                .id("smAdd")
+                .width(47.percent)
+                .height(50)
+                .margin(top: 5)
+                .onClick({e =>
+                    this.sm += 2
+                })
+                .margin(right: 6.percent, bottom: 12.vp)
+                Button("sm-2 ${this.sm}")
+                .id("smSub")
+                .width(47.percent)
+                .height(50)
+                .margin(top: 5)
+                .onClick({e =>
+                    this.sm -= 2
+                })
+                .margin(bottom: 12.vp)
+            }
+
             Text("点击内容:${this.clickedContent}").width(100.percent).height(100).margin(top: 5)
 
             Tabs(barPosition: BarPosition.End, controller: this.controller) {
@@ -72,7 +133,7 @@ class TabsExample5 {
                             .get("barGridAlign")
                             .getOrThrow()
                             .toString()
-                        Hilog.info(1, "1", "barGridAlign:${this.barGridAlign}")
+                        Hilog.info(1, "Cangjie-Test", "barGridAlign:${this.barGridAlign}")
                     }
                 )
 

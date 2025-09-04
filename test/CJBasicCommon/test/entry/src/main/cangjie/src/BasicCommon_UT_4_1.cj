@@ -79,6 +79,67 @@ class BasicCommon_UT_4_1 {
     }
 
     @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_uiContext() {
+        ScrollTo("View_UiContext")
+
+        let size = driver.findComponent(On().id("click")).getOrThrow()
+        size.click()
+
+        driver.delayMs(500)
+    }
+
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func test_enum() {
+        ScrollTo("View_Enum")
+
+        Hilog.info(1,"1","Cangjie-App", "test_enum start")
+        clickButton("keyTypeBtn1")
+        clickButton("keyTypeBtn2")
+
+        var keyType1: String = getContentFromText("keyType1")
+        @Expect(keyType1, "\"Down\"")
+        var keyType2: String = getContentFromText("keyType2")
+        @Expect(keyType2, "\"Up\"")
+
+        clickButton("richEditor1")
+
+        clickButton("resourceType")
+        clickButton("sliderChangeMode")
+        clickButton("navigationType")
+        clickButton("refreshStatus")
+        clickButton("richEditorDeleteDirection")
+        clickButton("spanType")
+
+        var enumClickCount_: String = getContentFromText("enumClickCount")
+        @Expect(enumClickCount_, "\"6\"")
+    }
+
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_enum2() {
+        ScrollTo("View_Enum2")
+
+        clickButton("panDirection1")
+        clickButton("sourceTool1")
+        // stX,stY,edX,edY,spd
+        driver.drag(1170,1100,1170,1211,speed: 1000)
+        driver.delayMs(200)
+        clickButton("menuPreviewMode")
+        clickButton("panDirection")
+        clickButton("sourceTool")
+        clickButton("scrollSource")
+        clickButton("week")
+        clickButton("titleHeight")
+        clickButton("foldStatus")
+        clickButton("layoutSafeAreaType")
+        clickButton("richEditorResponseType")
+        var enumClickCount_: String = getContentFromText("enumClickCount")
+        @Expect(enumClickCount_, "\"22\"")
+    }
+
+    @TestCase
     @Tag[APILevel12, TestLevel0]
     func Test_Popup_003() {
         ScrollTo("View_Popup")
@@ -171,33 +232,6 @@ class BasicCommon_UT_4_1 {
         let optionContent_11 = finalContent_11.getOrThrow()
         let maxContent_11 = optionContent_11.toString()
         @Expect(maxContent_11, "\"CustomPopup Show\"")
-    }
-
-    @TestCase
-    @Tag[APILevel12, TestLevel0]
-    func test_enum() {
-        ScrollTo("View_Enum")
-
-        Hilog.info(1,"1","Cangjie-App", "test_enum start")
-        clickButton("keyTypeBtn1")
-        clickButton("keyTypeBtn2")
-
-        var keyType1: String = getContentFromText("keyType1")
-        @Expect(keyType1, "\"Down\"")
-        var keyType2: String = getContentFromText("keyType2")
-        @Expect(keyType2, "\"Up\"")
-
-        clickButton("richEditor1")
-
-        clickButton("resourceType")
-        clickButton("sliderChangeMode")
-        clickButton("navigationType")
-        clickButton("refreshStatus")
-        clickButton("richEditorDeleteDirection")
-        clickButton("spanType")
-
-        var enumClickCount_: String = getContentFromText("enumClickCount")
-        @Expect(enumClickCount_, "\"6\"")
     }
 
     @TestCase

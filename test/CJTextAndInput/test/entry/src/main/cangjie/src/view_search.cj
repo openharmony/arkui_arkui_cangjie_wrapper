@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-///**
-// * Created on 2024/6/28
-// */
+/**
+ * Created on 2024/6/28
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -57,6 +57,17 @@ class View_Search {
             Button("caretposition  3").onClick({
                 evt => controller.caretPosition(3)
             }).id("caretPosition")
+            // 设置文本选中
+            Button("selection 6-12").onClick({
+                evt =>
+//                    controller.setTextSelection(1, 3, options: MenuPolicy.Hide)
+//                        controller.setTextSelection(1, 3, options: MenuPolicy.Show)
+//                    controller.setTextSelection(6,12)
+            }).id("setSelection")
+            // 取消选中 停止编辑
+            Button("stopEditing").onClick({
+                evt => //controller.stopEditing()
+            }).id("stopEditing")
 
             // 测试文本选中
             Search(value: "", placeholder: "Type to search", controller: controller)

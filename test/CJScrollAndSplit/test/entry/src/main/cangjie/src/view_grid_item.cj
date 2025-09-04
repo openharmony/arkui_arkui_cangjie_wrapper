@@ -207,7 +207,8 @@ class View_Grid_Item {
                 .height(150)
                 .padding(4.vp)
 
-            Text("scroll")
+            Text(this.message)
+                .id("scroll_text")
                 .fontColor(0xCCCCCC)
                 .fontSize(9)
                 .width(90.percent)

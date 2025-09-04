@@ -198,6 +198,31 @@ class BasicCommon_UT_1 {
         @Expect(backgroundImageSize_t.contains("\\\"width\\\":\\\"97.50px\\\""))
     }
 
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_backgroundSetting2(){
+
+        ScrollTo("View_Background2")
+
+        // 正常值测试
+        let inspector = getInspectorByKey("background_id_01")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        Hilog.info(1,"1","Cangjie-App", "background01: ${attrs.toString()}")
+
+        let backgroundBlurStyle = attrs.get("backgroundBlurStyle").getOrThrow().toString()
+        @Expect(backgroundBlurStyle.replace("\\","").contains('{"value":"BlurStyle.None","options":{"colorMode":"ThemeColorMode.System","adaptiveColor":"AdaptiveColor.Default","policy":"BlurStyleActivePolicy.ALWAYS_ACTIVE","type":"BlurType.WITHIN_WINDOW","inactiveColor":"#00000000","scale":1}}'))
+
+        let backgroundBrightness = attrs.get("BackgroundBrightness").getOrThrow().toString()
+        @Expect(backgroundBrightness.replace("\\","").contains('{"dynamicLightUpRate":4.75,"dynamicLightUpDegree":0.91}'))
+
+        let backgroundEffect = attrs.get("backgroundEffect").getOrThrow().toString()
+        @Expect(backgroundEffect.replace("\\","").contains('{"options":{"radius":5.2,"saturation":45.1,"brightness":1.3,"color":"#FF0000FF","adaptiveColor":"AdaptiveColor.Average","policy":"BlurStyleActivePolicy.FOLLOWS_WINDOW_ACTIVE_STATE","type":"WITHIN_WINDOW","inactiveColor":"#FFFF0000","blurOption":"[24.000000,16.000000]"}}'))
+
+        let backgroundImageResizable = attrs.get("backgroundImageResizable").getOrThrow().toString()
+        @Expect(backgroundImageResizable.replace("\\","").contains('"ImageResizableSlice: {left: 44.00vp, right: 22.00vp, top: 11.00vp, bottom: 33.00vp}"'))
+    }
+
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
@@ -252,6 +277,54 @@ class BasicCommon_UT_1 {
         @Expect(attrs.get("borderWidth").getOrThrow().toString(),"\"5.00vp\"")
         @Expect(attrs.get("borderColor").getOrThrow().toString(),"\"#FFCCCCCC\"")
         @Expect(attrs.get("borderRadius").getOrThrow().toString(), "\"20.00vp\"")
+    }
+
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_borderImage_1() {
+        ScrollTo("View_BorderImage")
+        driver.delayMs(500)
+
+        let inspector = getInspectorByKey("text1")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+
+        let borderImage = attrs.get("borderImage").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "borderImage: " + borderImage)
+        @Expect(
+            borderImage,
+            "\"{\\\"source\\\":\\\"\\\",\\\"slice\\\":\\\"10.00vp\\\",\\\"width\\\":\\\"50.00px\\\",\\\"outset\\\":\\\"10.00vp\\\",\\\"repeat\\\":\\\"RepeatMode.Stretch\\\",\\\"fill\\\":\\\"false\\\"}\""
+        )
+
+        let text2 = getInspectorByKey("text2")
+        let jsonObject2 = JsonValue.fromStr(text2).asObject()
+        let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
+
+        let borderImage2 = attrs2.get("borderImage").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "borderImage2: " + borderImage2)
+        @Expect(borderImage2.contains("resource:///"))
+
+        let text3 = getInspectorByKey("text3")
+        let jsonObject3 = JsonValue.fromStr(text3).asObject()
+        let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
+
+        let borderImage3 = attrs3.get("borderImage").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "borderImage3: " + borderImage3)
+        @Expect(
+            borderImage3,
+            "\"{\\\"source\\\":\\\"image/path\\\",\\\"slice\\\":\\\"10.00vp\\\",\\\"width\\\":\\\"50.00vp\\\",\\\"outset\\\":\\\"10.00vp\\\",\\\"repeat\\\":\\\"RepeatMode.Repeat\\\",\\\"fill\\\":\\\"true\\\"}\""
+        )
+
+        let text4 = getInspectorByKey("text4")
+        let jsonObject4 = JsonValue.fromStr(text4).asObject()
+        let attrs4 = jsonObject4.get("$attrs").getOrThrow().asObject()
+
+        let borderImage4 = attrs4.get("borderImage").getOrThrow().toString()
+        Hilog.info(1,"1","Cangjie-Test", "borderImage4: " + borderImage4)
+        @Expect(
+            borderImage4,
+            "\"{\\\"source\\\":\\\"\\\",\\\"slice\\\":\\\"0.00px\\\",\\\"width\\\":\\\"0.00px\\\",\\\"outset\\\":\\\"0.00px\\\",\\\"repeat\\\":\\\"RepeatMode.Stretch\\\",\\\"fill\\\":\\\"false\\\"}\""
+        )
     }
 
     @TestCase
@@ -323,5 +396,79 @@ class BasicCommon_UT_1 {
         let temp6 = driver.waitForComponent(On().id("expectedFrameRateRangeButton4"),600).getOrThrow()
         temp6.click()
         driver.delayMs(600)
+    }
+
+    // test clickEffect
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_clickEffect() {
+        ScrollTo("View_ClickEffect")
+
+        // 正常值测试
+        let inspector = getInspectorByKey("clickEffectId01")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        Hilog.info(1,"1","Cangjie-App", "clickEffectId01: ${attrs.toString()}")
+
+
+        let button01 = driver.findComponent(On().id("clickEffectId01")).getOrThrow()
+        button01.click()
+
+        // 异常值测试
+        let inspector2 = getInspectorByKey("clickEffectId02")
+        let jsonObject2 = JsonValue.fromStr(inspector2).asObject()
+        let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
+        Hilog.info(1,"1","Cangjie-App", "clickEffectId02: ${attrs2.toString()}")
+    }
+
+    // component snapshot unittest
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_component_snapshot_get() {
+        ScrollTo("View_Component_Snapshot")
+        var button = driver.waitForComponent(On().id("generate_UI_snapshot"),500).getOrThrow()
+        button.click()
+        var text = driver.waitForComponent(On().id("errcode1"),500).getOrThrow().getText()
+        @Expect(text, "0")
+        button = driver.findComponent(On().id("generate_UI_snapshot")).getOrThrow()
+        button.click()
+        text = driver.waitForComponent(On().id("errcode1"),500).getOrThrow().getText()
+        @Expect(text, "100001")
+    }
+
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_component_snapshot_create() {
+        ScrollTo("View_Component_Snapshot")
+        driver.delayMs(500)
+        var button = driver.findComponent(On().id("generate_offscreen_UI_snapshot")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        var text = driver.findComponent(On().id("errcode2")).getOrThrow().getText()
+        @Expect(text, "0")
+        button = driver.findComponent(On().id("generate_offscreen_UI_snapshot")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        text = driver.findComponent(On().id("errcode2")).getOrThrow().getText()
+        @Expect(text, "100001")
+        button = driver.findComponent(On().id("generate_offscreen_UI_snapshot")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        text = driver.findComponent(On().id("errcode2")).getOrThrow().getText()
+        @Expect(text, "160001")
+    }
+
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func test_component_snapshot_getsync() {
+        ScrollTo("View_Component_Snapshot")
+        var button = driver.waitForComponent(On().id("generate_UI_snapshot_synchronously"),500).getOrThrow()
+        button.click()
+        var text = driver.waitForComponent(On().id("errMes"),500).getOrThrow().getText()
+        @Expect(text, "no error")
+        button = driver.findComponent(On().id("generate_UI_snapshot_synchronously")).getOrThrow()
+        button.click()
+        text = driver.waitForComponent(On().id("errMes"),500).getOrThrow().getText()
+        @Expect(text, "Component snapshot getSync failed! code: 100001")
     }
 }

@@ -1,18 +1,3 @@
-/*
- * Copyright (c) 2025 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 /**
  * Created on 2024/7/17
  */
@@ -42,7 +27,6 @@ class View_AlertDialog {
         primaryButton: AlertDialogButtonOptions(value: "", action: {=>}),
         secondaryButton: AlertDialogButtonOptions(value: "", action: {=>}))
 
-    let alert: AlertDialog = AlertDialog()
     func build() {
         Column(space: 5) {
             Button("one dialog shadowstyle")
@@ -88,7 +72,7 @@ class View_AlertDialog {
                                 .animation(AnimateParam(duration: 1000))
                                 .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp)))
                         )
-                        AlertDialog.show(dialog1, ShadowStyle.OuterDefaultLG)
+                        getUIContext().showAlertDialog(dialog1)
                     }
                 )
                 .id("button_1")
@@ -136,7 +120,7 @@ class View_AlertDialog {
                                 .animation(AnimateParam(duration: 1000))
                                 .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp)))
                         )
-                        AlertDialog.show(dialog1, shadow)
+                        getUIContext().showAlertDialog(dialog1)
                     }
                 )
                 .id("button_2")
@@ -184,7 +168,7 @@ class View_AlertDialog {
                                 .animation(AnimateParam(duration: 1000))
                                 .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp)))
                         )
-                        AlertDialog.show(dialog1)
+                        getUIContext().showAlertDialog(dialog1)
                     }
                 )
                 .id("button_3")
@@ -240,7 +224,7 @@ class View_AlertDialog {
                             primaryButton: primaryButton,
                             secondaryButton: secondaryButton
                         )
-                        AlertDialog.show(dialog2, shadow)
+                        getUIContext().showAlertDialog(dialog2)
                     }
                 )
                 .id("button_4")
@@ -296,7 +280,7 @@ class View_AlertDialog {
                             primaryButton: primaryButton,
                             secondaryButton: secondaryButton
                         )
-                        AlertDialog.show(dialog2, ShadowStyle.OuterDefaultLG)
+                        getUIContext().showAlertDialog(dialog2)
                     }
                 )
                 .id("button_5")
@@ -352,7 +336,7 @@ class View_AlertDialog {
                             primaryButton: primaryButton,
                             secondaryButton: secondaryButton
                         )
-                        AlertDialog.show(dialog2)
+                        getUIContext().showAlertDialog(dialog2)
                     }
                 )
                 .id("button_6")
@@ -400,7 +384,7 @@ class View_AlertDialog {
                             buttons: [button1, button2, button3],
                             buttonDirection: DialogButtonDirection.Horizontal
                         )
-                        AlertDialog.show(dialog3)
+                        getUIContext().showAlertDialog(dialog3)
                     }
                 )
                 .id("button_7")
@@ -448,7 +432,7 @@ class View_AlertDialog {
                             buttons: [button1, button2, button3],
                             buttonDirection: DialogButtonDirection.Auto
                         )
-                        AlertDialog.show(dialog3, shadow)
+                        getUIContext().showAlertDialog(dialog3)
                     }
                 )
                 .id("button_8")
@@ -496,7 +480,7 @@ class View_AlertDialog {
                             buttons: [button1, button2, button3],
                             buttonDirection: DialogButtonDirection.Horizontal
                         )
-                        AlertDialog.show(dialog3, ShadowStyle.OuterDefaultLG)
+                        getUIContext().showAlertDialog(dialog3)
                     }
                 )
                 .id("button_9")
@@ -538,7 +522,7 @@ class View_AlertDialog {
                             buttons: [button1, button2, button3],
                             buttonDirection: DialogButtonDirection.Vertical
                         )
-                        AlertDialog.show(dialog4)
+                        getUIContext().showAlertDialog(dialog4)
                     }
                 )
                 .id("button_10")
@@ -585,10 +569,25 @@ class View_AlertDialog {
                             buttons: [button1, button2],
                             buttonDirection: DialogButtonDirection.Vertical
                         )
-                        AlertDialog.show(dialog4)
+                        getUIContext().showAlertDialog(dialog4)
                     }
                 )
                 .id("button_11")
+
+            Button("default_AlertDialogParam")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button12"
+                        let dialog1 = AlertDialogParam(message: "text")
+                        let dialog2 = AlertDialogParamWithConfirm(message: "text")
+                        let dialog3 = AlertDialogParamWithButtons(message: "text",
+                            primaryButton: AlertDialogButtonOptions(value: "", action: {=>}),
+                            secondaryButton: AlertDialogButtonOptions(value: "", action: {=>}))
+                        let dialog4 = AlertDialogParamWithOptions(message: "text", buttons: [])
+                    }
+                )
+                .id("button_12")
 
             Text(this.msg).id("text")
             Text(this.msg1).id("text_1")
@@ -601,6 +600,6 @@ class View_AlertDialog {
             Text(this.msg3).id("text_8")
             Text(this.msg3).id("text_9")
             Text(this.msg3).id("text_11")
-        }.margin(5.percent).id("my_aDialog")
+        }.width(@r(app.string.width_100p)).margin(5.percent).id("my_aDialog")
     }
 }

@@ -50,20 +50,17 @@ class View_Observable {
         arr2.unsubscribeAll()
     }
 
-
     func build() {
         Column {
             Text("arr[0] is ${arr[0]}").id("text1")
             Button("click").onClick { e =>
-                var arr1: ObservedArrayList<Int64> = ObservedArrayList<Int64>([1, 2])
                 arr[0] = 0
-                arr1.isSubscribed(this)
             }.id("click")
-            
+
             Button("click2").onClick{ e =>
                 arr[0] = 0
             }.id("click2")
-            
+
             Text("arr_test3_value[0] is ${arr_test3_value[0]}").id("arr3_value_text")
             Text("arr_test3_index[0] is ${arr_test3[0]}").id("arr3_text")
             Text("arr_test3_size is ${arr_test3_size}").id("arr3_size_text")
@@ -74,7 +71,7 @@ class View_Observable {
                 arr_test3.set(test_array)
             }.id("test_array_setA")
             Button("test_array_setOCA").onClick{ e =>
-                arr_test3.set(tmp_arr.get())
+                arr_test3.set(tmp_arr)
                 
                 store_arr[0] = Store(addre: "store_addre", size: 130)
                 store_arr.set(tmp_store_arr)

@@ -54,7 +54,7 @@ class View_Font {
         )
         getUIContext().getFont().registerFont(
             familyName: @r(app.string.SmileySans_label),
-            familySrc: @rawfile("SmileySans-Oblique.ttf")
+            familySrc: @rawfile("HarmonyOS_Sans_Condensed.ttf")
         )
     }
 
@@ -110,8 +110,8 @@ class View_Font {
                 }.id("getFontByName-noSysFontName")
                 // getUIFontConfig
 
-                Button("getFont").onClick { event =>
-//                    let font1 = Font()
+                Button("getFont").onClick { e =>
+                    let font1 = getUIContext().getFont()
                 }.id("getFont")
 
             }.width(100.percent)

@@ -25,7 +25,9 @@ let _ = testsuite()
 func testsuite(): Unit{
     registerTestSuite("BasicCommon_UT_1") {BasicCommon_UT_1()}
     registerTestSuite("BasicCommon_UT_2") {BasicCommon_UT_2()}
+    registerTestSuite("BasicCommon_UT_2_1") {BasicCommon_UT_2_1()}
     registerTestSuite("BasicCommon_UT_3") {BasicCommon_UT_3()}
+    registerTestSuite("BasicCommon_UT_3_1") {BasicCommon_UT_3_1()}
     registerTestSuite("BasicCommon_UT_4") {BasicCommon_UT_4()}
     registerTestSuite("BasicCommon_UT_4_1") {BasicCommon_UT_4_1()}
     registerTestSuite("BasicCommon_NoPage_Case") {BasicCommon_NoPage_Case()}
@@ -36,9 +38,9 @@ let UT_views = ObservedArrayList<String>([
     "Index_UT2",
     "Index_UT3",
     "Index_UT4",
-    "Hello_Cangjie"
+    "Hello_Cangjie",
 //    "View_Gesture",
-//    "View_DragTest"
+    "View_DragTest"
 ])
 let UT1 = ObservedArrayList<String>([
     "View_Accessibility",
@@ -60,7 +62,7 @@ let UT1 = ObservedArrayList<String>([
 let UT2 = ObservedArrayList<String>([
     "View_Component_Utils",
     "View_Concurrency",
-//    "View_CursorControl",
+    "View_CursorControl",
     "View_CustomView",
     "View_DragControl",
     "View_Enablded",
@@ -103,5 +105,7 @@ let UT4 = ObservedArrayList<String>([
     "View_Window_Listener",
     "View_ZOrder",
     "View_Popup",
-    "View_Enum"
+    "View_UiContext",
+    "View_Enum",
+    "View_Enum2"
 ])

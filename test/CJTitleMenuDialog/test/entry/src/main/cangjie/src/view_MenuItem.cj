@@ -44,9 +44,13 @@ class View_MenuItem {
     func build() {
         Row() {
             Column() {
-                Text("click to show menu").fontSize(50).fontWeight(FontWeight.Bold).id("text")
+                Text("click to show menu")
+                    .fontSize(50)
+                    .fontWeight(FontWeight.Bold)
+                    .id("text")
             }
-            //            .bindMenu(this.MyMenu).width(50.percent)
+                .bindMenu(builder: this.MyMenu)
+                .width(50.percent)
 
             this.MyMenu()
         }.height(100.percent)

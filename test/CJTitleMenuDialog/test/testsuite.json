@@ -6,7 +6,15 @@
       "timeout": 100
     },
     {
+      "name": "TitleMenuDialog_UT_1_1",
+      "timeout": 100
+    },
+    {
       "name": "TitleMenuDialog_UT_2",
+      "timeout": 100
+    },
+    {
+      "name": "TitleMenuDialog_UT_2_1",
       "timeout": 100
     }
   ]

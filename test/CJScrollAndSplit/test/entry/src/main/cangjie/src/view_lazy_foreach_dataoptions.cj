@@ -66,11 +66,11 @@ public class View_Lazyforeach_DataOptions {
         Column(space: 30) {
             Text("-----------------")
             List() {
-//                LazyForEach(datasetSourceStu, itemGeneratorFunc: {stu: Student, idx: Int64 =>
-//                    ListItem {
-//                        Text(stu.name).id("stu ${idx}")
-//                    }
-//                })
+                LazyForEach(datasetSourceStu, itemGeneratorFunc: {stu: Student, idx: Int64 =>
+                    ListItem {
+                        Text(stu.name).id("stu ${idx}")
+                    }
+                })
             }.height(400.px)
 
             Text("click to notifyChange").onClick({ evt =>

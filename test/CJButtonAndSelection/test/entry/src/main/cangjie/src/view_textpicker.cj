@@ -94,6 +94,18 @@ class View_TextPicker {
                 .id("fading_effect")
 
             TextPicker(range: ["string1"], value: "value").opacity(0.3)
+
+            //分割线效果
+            TextPicker(range: this.fruitstypeB).canLoop(true).defaultPickerItemHeight(25.0).onChange({
+                    result, _ => logger("Picker item changed, value: ${result}")
+                })
+                .id("divider_effect")
+
+            //无分割线情况
+            TextPicker(range: this.fruitstypeC).canLoop(true).defaultPickerItemHeight(25.0).onChange({
+                    result, _ => logger("Picker item changed, value: ${result}")
+                })
+
         }.width(100.percent).height(100.percent)
     }
 }

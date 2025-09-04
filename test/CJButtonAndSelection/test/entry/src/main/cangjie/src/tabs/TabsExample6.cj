@@ -36,6 +36,46 @@ class TabsExample6 {
     func build() {
         Column() {
             Row() {
+                Button("scrollMargin+10 ${this.scrollMargin}")
+                .id("scrollMarginAdd")
+                .width(47.percent)
+                .height(50)
+                .margin(top: 5)
+                .onClick({e =>
+                    this.scrollMargin += 10
+                })
+                .margin(right: 6.percent, bottom: 12.vp)
+                Button("scrollMargin-10 ${this.scrollMargin}")
+                .id("scrollMarginSub")
+                .width(47.percent)
+                .height(50)
+                .onClick({e =>
+                    this.scrollMargin -= 10
+                })
+                .margin(bottom: 12.vp)
+            }
+
+            Row() {
+                Button("文本增加")
+                .id("textAdd")
+                .width(47.percent)
+                .height(50)
+                .margin(top: 5)
+                .onClick({e =>
+                    this.text += '文本增加'
+                })
+                .margin(right: 6.percent, bottom: 12.vp)
+                Button("文本重置")
+                .width(47.percent)
+                .height(50)
+                .margin(top: 5)
+                .onClick({e =>
+                    this.text = "文本"
+                })
+                .margin(bottom: 12.vp)
+            }
+
+            Row() {
                 Button("layoutStyle.ALWAYS_CENTER")
                     .id("alwaysCenter")
                     .width(100.percent)

@@ -20,7 +20,10 @@ package ohos_app_cangjie_entry
 let _ = testsuites()
 private func testsuites():Unit{
     registerTestSuite("TextAndInput_UT_1") {TextAndInput_UT_1()}
+    registerTestSuite("TextAndInput_UT_1_1") {TextAndInput_UT_1_1()}
     registerTestSuite("TextAndInput_UT_2") {TextAndInput_UT_2()}
+    registerTestSuite("TextAndInput_UT_2_1") {TextAndInput_UT_2_1()}
+    registerTestSuite("TextAndInput_UT_2_2") {TextAndInput_UT_2_2()}
 }
 
 let UT_views = [
@@ -31,6 +34,7 @@ let UT1 = [
     "View_Font",
     "View_ImageSpan",
     "View_RichEditor",
+    "View_RichEditor2",
     "View_RichText",
     "View_Search",
     "View_Span"

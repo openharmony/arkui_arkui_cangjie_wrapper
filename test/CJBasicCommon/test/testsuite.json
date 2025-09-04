@@ -10,11 +10,23 @@
       "timeout": 100
     },
     {
+      "name": "BasicCommon_UT_2_1",
+      "timeout": 100
+    },
+    {
       "name": "BasicCommon_UT_3",
       "timeout": 100
     },
     {
+      "name": "BasicCommon_UT_3_1",
+      "timeout": 100
+    },
+    {
       "name": "BasicCommon_UT_4",
+      "timeout": 100
+    },
+    {
+      "name": "BasicCommon_UT_4_1",
       "timeout": 100
     },
     {
