@@ -245,6 +245,13 @@ class View_RichEditor {
                 }
             }.id("getSpans")
 
+            Button("getEmptySpan").onClick {
+                evt =>
+                    let array = controller.getSpans(start: 0, end: 0)
+                    Hilog.error(1, "Cangjie-Test", "getEmptySpan: spanSize: ${array.size}")
+                    let test_controller = RichEditorController()
+            }.id("getEmptySpan")
+
             Column() {
                 RichEditor(this.controller).id("RichEditorKey").key("RichEditorKey").onReady(
                     {
@@ -384,24 +391,21 @@ class View_RichEditor {
                         Hilog.error(1,"1","Cangjie-Test", "[loadMedia]: appResour.moduleName. ${appResour.moduleName}")
                         Hilog.error(1,"1","Cangjie-Test", "[loadMedia]: appResour.id. ${appResour.id}")
                         Hilog.error(1,"1","Cangjie-Test", "[loadMedia]: appResour.resType. ${appResour.resType}")
-                        let buffer: Array<UInt8> = Array<UInt8>()
-//                        let buffer: Array<UInt8> = loadMedia(Int32(@r(app.media.startIcon).id),
-//                            globalAbilityContext)
-                        let imageSource = createImageSource(buffer)
-                        let decodeOpts: DecodingOptions = DecodingOptions(
-                            sampleSize: 1,
-                            rotate: 0,
-                            editable: true
-                        )
-                        let pix: PixelMap = imageSource.createPixelMap(options: decodeOpts)
+//                        let buffer: Array<UInt8> = Array<UInt8>()
+////                        let buffer: Array<UInt8> = loadMedia(Int32(@r(app.media.startIcon).id),
+////                            globalAbilityContext)
+//                        let imageSource = createImageSource(buffer)
+//                        let decodeOpts: DecodingOptions = DecodingOptions(
+//                            sampleSize: 1,
+//                            rotate: 0,
+//                            editable: true
+//                        )
+//                        let pix: PixelMap = imageSource.createPixelMap(options: decodeOpts)
 
                         let leadingMarginPlaceholder = LeadingMarginPlaceholder(pixelMap: this.pix, size: (5.vp, 5.vp))
                         controller1.updateParagraphStyle(style: RichEditorParagraphStyle())
                         controller1.updateParagraphStyle(style: RichEditorParagraphStyle(leadingMargin: 1.vp))
                         controller1.updateParagraphStyle(style: RichEditorParagraphStyle(textAlign: TextAlign.Start, leadingMargin: leadingMarginPlaceholder))
-                        controller1.updateParagraphStyle(
-                            style: RichEditorParagraphStyle(
-                            leadingMargin: LeadingMarginPlaceholder(pixelMap: pix, size: (5.vp, 5.vp))))
                         controller1.closeSelectionMenu()
                         Hilog.info(1,"Cangjie-Test", "[View_RichEditor]: leetcode log:  onReady end")
                     }

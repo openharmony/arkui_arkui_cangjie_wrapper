@@ -188,6 +188,10 @@ class View_TextInput {
                 this.text3 = "stopEditing Success"
                 Hilog.info(1,"1","Cangjie-Test", "TextInput onSubmit")
             }).id("textinput")
+
+            TextInput(placeholder: "inlineFilter test")
+                .inputFilter("[a-z]")
+
         }.width(100.percent)
     }
 }
