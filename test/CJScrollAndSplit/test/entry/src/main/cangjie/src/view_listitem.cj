@@ -26,7 +26,7 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_ListItem {
+class ViewListItem {
     let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     @State
     var selected: Bool = false

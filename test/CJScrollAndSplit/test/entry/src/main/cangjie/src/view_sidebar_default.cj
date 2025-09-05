@@ -36,7 +36,7 @@ import ohos.base.*
 
 @Entry
 @Component
-class View_SideBar_Default {
+class ViewSideBarDefault {
     func build() {
         SideBarContainer() {
             Column() {

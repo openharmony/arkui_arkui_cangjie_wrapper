@@ -23,89 +23,88 @@ internal import ohos.business_exception.BusinessException
 let _ = testsuite()
 
 func testsuite(): Unit{
-    registerTestSuite("BasicCommon_UT_1") {BasicCommon_UT_1()}
-    registerTestSuite("BasicCommon_UT_2") {BasicCommon_UT_2()}
-    registerTestSuite("BasicCommon_UT_2_1") {BasicCommon_UT_2_1()}
-    registerTestSuite("BasicCommon_UT_3") {BasicCommon_UT_3()}
-    registerTestSuite("BasicCommon_UT_3_1") {BasicCommon_UT_3_1()}
-    registerTestSuite("BasicCommon_UT_4") {BasicCommon_UT_4()}
-    registerTestSuite("BasicCommon_UT_4_1") {BasicCommon_UT_4_1()}
-    registerTestSuite("BasicCommon_NoPage_Case") {BasicCommon_NoPage_Case()}
-    registerTestSuite("Component_UT_Drag_Event") {Component_UT_Drag_Event()}
+    registerTestSuite("BasicCommonUT1") {BasicCommonUT1()}
+    registerTestSuite("BasicCommonUT2") {BasicCommonUT2()}
+    registerTestSuite("BasicCommonUT21") {BasicCommonUT21()}
+    registerTestSuite("BasicCommonUT3") {BasicCommonUT3()}
+    registerTestSuite("BasicCommonUT31") {BasicCommonUT31()}
+    registerTestSuite("BasicCommonUT4") {BasicCommonUT4()}
+    registerTestSuite("BasicCommonUT41") {BasicCommonUT41()}
+    registerTestSuite("BasicCommonUTHello") {BasicCommonUTHello()}
+    registerTestSuite("BasicCommonUTDragEvent") {BasicCommonUTDragEvent()}
 }
 let UT_views = ObservedArrayList<String>([
-    "Index_UT1",
-    "Index_UT2",
-    "Index_UT3",
-    "Index_UT4",
-    "Hello_Cangjie",
-//    "View_Gesture",
-    "View_DragTest"
+    "BasicCommonIndex1",
+    "BasicCommonIndex2",
+    "BasicCommonIndex3",
+    "BasicCommonIndex4",
+    "ViewHello",
+    "ViewDragTest"
 ])
 let UT1 = ObservedArrayList<String>([
-    "View_Accessibility",
-    "View_Animation",
-    "View_Animator",
-    "View_Appstorage",
-    "View_Background",
-    "View_Background2",
-    "View_Background3",
-    "View_Base",
-    "View_BindContentCover",
-    "View_BindSheet",
-    "View_Border",
-    "View_BorderImage",
-//    "View_CallbackInvoke",
-    "View_ClickEffect",
-    "View_Component_Snapshot"
+    "ViewAccessibility",
+    "ViewAnimation",
+    "ViewAnimator",
+    "ViewAppstorage",
+    "ViewBackground",
+    "ViewBackground2",
+    "ViewBackground3",
+    "ViewBase",
+    "ViewBindContentCover",
+    "ViewBindSheet",
+    "ViewBorder",
+    "ViewBorderImage",
+//    "ViewCallbackInvoke",
+    "ViewClickEffect",
+    "ViewComponentSnapshot"
 ])
 let UT2 = ObservedArrayList<String>([
-    "View_Component_Utils",
-    "View_Concurrency",
-    "View_CursorControl",
-    "View_CustomView",
-    "View_DragControl",
-    "View_Enablded",
-    "View_Environment",
-    "View_Flex_Layout",
-    "View_Focus",
-    "View_Font",
-    "View_ForegroundColor",
-    "View_GeometryTransition",
-    "View_Interactable",
-    "View_Layout_Constraints",
-    "View_LocalStorage"
+    "ViewComponentUtils",
+    "ViewConcurrency",
+    "ViewCursorControl",
+    "ViewCustomView",
+    "ViewDragControl",
+    "ViewEnablded",
+    "ViewEnvironment",
+    "ViewFlexLayout",
+    "ViewFocus",
+    "ViewFont",
+    "ViewForegroundColor",
+    "ViewGeometryTransition",
+    "ViewInteractable",
+    "ViewLayoutConstraints",
+    "ViewLocalStorage"
 ])
 let UT3 = ObservedArrayList<String>([
-    "View_Location",
-    "View_MonopolizeEvents",
-    "View_MotionBlur",
-    "View_MotionPath",
-    "View_Observable",
-    "View_Observable_ArrayList",
-    "View_OnChildTouchTest",
-    "View_Opacity",
-    "View_Outline",
-    "View_Overlay",
-    "View_PersistentStorage",
-    "View_PixelRound",
-    "View_Prop",
-    "View_ResponseRegion",
-    "View_Popup"
+    "ViewLocation",
+    "ViewMonopolizeEvents",
+    "ViewMotionBlur",
+    "ViewMotionPath",
+    "ViewObservable",
+    "ViewObservableArrayList",
+    "ViewOnChildTouchTest",
+    "ViewOpacity",
+    "ViewOutline",
+    "ViewOverlay",
+    "ViewPersistentStorage",
+    "ViewPixelRound",
+    "ViewProp",
+    "ViewResponseRegion",
+    "ViewPopup"
 ])
 let UT4 = ObservedArrayList<String>([
-//    "View_Reuse",
-//    "View_Screenshot",
-    "View_Size",
-    "View_Subscriber",
-    "View_Transition",
-    "View_ViewBase",
-    "View_Visibility",
-    "View_Window_Enhance",
-    "View_Window_Listener",
-    "View_ZOrder",
-    "View_Popup",
-    "View_UiContext",
-    "View_Enum",
-    "View_Enum2"
+//    "ViewReuse",
+//    "ViewScreenshot",
+    "ViewSize",
+    "ViewSubscriber",
+    "ViewTransition",
+    "ViewViewBase",
+    "ViewVisibility",
+    "ViewWindowEnhance",
+    "ViewWindowListener",
+    "ViewZOrder",
+    "ViewPopup",
+    "ViewUiContext",
+    "ViewEnum",
+    "ViewEnum2"
 ])

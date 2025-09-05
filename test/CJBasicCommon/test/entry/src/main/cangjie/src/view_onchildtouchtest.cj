@@ -23,7 +23,7 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_OnChildTouchTest {
+class ViewOnChildTouchTest {
     @State
     var value: Int32 = 1
     @State
@@ -45,10 +45,10 @@ class View_OnChildTouchTest {
                 .scrollBar(BarState.Off)
                 .width(90.percent)
                 .onScrollIndex({first: Int32, last: Int32, a: Int32 =>
-                    Hilog.info(1,"1","Cangjie-App", "first: " + first.toString() + " last: " + last.toString())
+                    Hilog.info(1, "Cangjie-App", "first: " + first.toString() + " last: " + last.toString())
                 })
                 .onScrollFrameBegin({first: Float64, last: ScrollState =>
-                    Hilog.info(1,"1","Cangjie-App", "OnChildTouchTest onScrollFrameBegin")
+                    Hilog.info(1, "Cangjie-App", "OnChildTouchTest onScrollFrameBegin")
                     this.text = "onScrollFrameBegin"
                     return onScrollFrameBeginHandleResult(offsetRemain: first)
                 })

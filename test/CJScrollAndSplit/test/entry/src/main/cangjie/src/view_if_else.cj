@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Ifelse {
+class ViewIfelse {
     @State var flag: Bool = true
     @State var status: Int64 = 0
     func build() {

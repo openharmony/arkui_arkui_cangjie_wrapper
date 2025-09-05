@@ -27,7 +27,7 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 
-class View_AlphabetIndexer {
+class ViewAlphabetIndexer {
     @State
     var arrayA: ObservedArrayList<String> = ObservedArrayList<String>(["An", "Ai"])
     @State

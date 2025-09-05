@@ -85,9 +85,9 @@ let dataSourceStu1: Student1DataSource = getDS1()
 
 @Entry
 @Component
-public class View_Reuse {
+public class ViewReuse {
     protected override func onDidBuild() {
-        Hilog.info(1,"1","Cangjie-App", "### onDidBuild")
+        Hilog.info(1, "Cangjie-App", "### onDidBuild")
     }
     public func build(): Unit {
         Column() {
@@ -111,18 +111,18 @@ class Child {
     @State var name: String = ""
     @State var idx: Int64 = 0
     protected override func onDidBuild() {
-        Hilog.info(1,"1","Cangjie-App", "## onDidBuild")
+        Hilog.info(1, "Cangjie-App", "## onDidBuild")
     }
     protected override func aboutToReuse(val: ReuseParams) {
         let nameVal = val.get<String>("name").getOrThrow()
         this.name = nameVal as String ?? "None"
-        Hilog.info(1,"1","Cangjie-App", "### aboutToReuse name ${name}")
+        Hilog.info(1, "Cangjie-App", "### aboutToReuse name ${name}")
         let idxVal = val.get<String>("idx").getOrThrow()
         this.idx = idxVal as Int64 ?? 0
-        Hilog.info(1,"1","Cangjie-App", "### aboutToReuse idx ${idx}")
+        Hilog.info(1, "Cangjie-App", "### aboutToReuse idx ${idx}")
     }
     protected override func aboutToRecycle() {
-        Hilog.info(1,"1","Cangjie-App", "### aboutToRecycle")
+        Hilog.info(1, "Cangjie-App", "### aboutToRecycle")
     }
     func build () {
         Column() {

@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Animation {
+class ViewAnimation {
     @State
     var widthSize: Length = 250.vp
     @State
@@ -40,7 +40,7 @@ class View_Animation {
         iterations: 3,
         playMode: PlayMode.Normal,
         onFinish: {
-            => Hilog.info(1,"1","Cangjie-App", "onfinish")
+            => Hilog.info(1, "Cangjie-App", "onfinish")
         },
         expectedFrameRateRange: ExpectedFrameRateRange(
             min: 20,

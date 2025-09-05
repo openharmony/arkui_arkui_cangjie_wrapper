@@ -22,7 +22,7 @@ import ohos.resource_manager.{AppResource}
 
 @Entry
 @Component
-class View_Accessibility {
+class ViewAccessibility {
     @Builder
     func customAccessibilityNode() {
         Text("虚拟节点")

@@ -35,7 +35,7 @@ let Colors = [Color(0x98FB98), Color(0x317aff), Color(0xFFD700), Color(0xFFE4E1)
 
 @Entry
 @Component
-class View_Flex {
+class ViewFlex {
     func build() {
         Column() {
             Text("direction:Row")

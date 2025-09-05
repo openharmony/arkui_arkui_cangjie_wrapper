@@ -26,7 +26,7 @@ import kit.LocalizationKit.{AppResource}
 
 @Entry
 @Component
-class View_Focus {
+class ViewFocus {
     @State
     var oneButtonColor: UInt32 = 0xFFC0CB
     @State
@@ -50,7 +50,7 @@ class View_Focus {
                     // 默认焦点，并且点击可获焦
                     Button("Hello Cangjie A")
                         .onClick {
-                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie A")
+                            evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie A")
                         }
                         .backgroundColor(oneButtonColor)
                         .width(400.px)
@@ -71,7 +71,7 @@ class View_Focus {
                     // 不支持点击获焦，但是默认可获焦
                     Button("Hello Cangjie B")
                         .onClick {
-                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie B")
+                            evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie B")
                         }
                         .backgroundColor(twoButtonColor)
                         .width(400.px)
@@ -93,7 +93,7 @@ class View_Focus {
                     // 不支持获焦
                     Button("Hello Cangjie C")
                         .onClick {
-                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie C")
+                            evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie C")
                         }
                         .backgroundColor(threeButtonColor)
                         .width(400.px)
@@ -113,7 +113,7 @@ class View_Focus {
                     // 可获焦，并且支持点击获焦
                     Button("Hello Cangjie D")
                         .onClick {
-                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie D")
+                            evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie D")
                         }
                         .backgroundColor(fourButtonColor)
                         .width(400.px)
@@ -136,7 +136,7 @@ class View_Focus {
                     // 父级组件获焦时的默认焦点
                     Button("Hello Cangjie E")
                         .onClick {
-                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie E")
+                            evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie E")
                         }
                         .backgroundColor(fiveButtonColor)
                         .width(400.px)
@@ -177,9 +177,9 @@ class View_Focus {
                             let selectId = this.idList[3]
                             let result = FocusControl.requestFocus(selectId)
                             if (result) {
-                                Hilog.info(1,"1","Cangjie-App", "Request success")
+                                Hilog.info(1, "Cangjie-App", "Request success")
                             } else {
-                                Hilog.info(1,"1","Cangjie-App", "Request failed")
+                                Hilog.info(1, "Cangjie-App", "Request failed")
                             }
                         }
                 }

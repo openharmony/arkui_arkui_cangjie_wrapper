@@ -31,7 +31,7 @@ internal import ohos.hilog.Hilog
 
 @Entry
 @Component
-class View_Canvas {
+class ViewCanvas {
     @State
     var readyRes: Int64 = 0
     var settings: RenderingContextSettings = RenderingContextSettings(antialias: true)
@@ -156,7 +156,7 @@ class View_Canvas {
                         this.context.lineTo(280.0, 160.0)
                         var measureText: TextMetrics = this.context.measureText("measureText")
 
-                        Hilog.info(1,"1","Cangjie-Test", "width: ${measureText.width}, height: ${measureText.height}")
+                        Hilog.info(1, "Cangjie-Test", "width: ${measureText.width}, height: ${measureText.height}")
 
                         this.context.stroke()
                         this.context.closePath()
@@ -200,7 +200,7 @@ class View_Canvas {
                         let finalContent = otherContent.get("content")
                         let optionContent = finalContent.getOrThrow()
                         let maxContent = optionContent.toString()
-                        Hilog.info(1,"1","Cangjie-Test", "aaaa: " + maxContent)
+                        Hilog.info(1, "Cangjie-Test", "aaaa: " + maxContent)
                     }
                 )
 
@@ -269,16 +269,16 @@ class View_Canvas {
     }
 
 //    public static func loadMedia(resId: Int32): Array<UInt8> {
-//        Hilog.error(1,"1","Cangjie-App", "[loadMedia]: ImageSource start.")
+//        Hilog.error(1, "Cangjie-App", "[loadMedia]: ImageSource start.")
 //        let stageContext = getAbilityContext()
 //        let rm: ResourceManager = stageContext.resourceManager
 //        try {
 //            return rm.getMediaContent(UInt32(resId))
 //        } catch (e: Exception) {
-//            Hilog.error(1,"1","Cangjie-App", "[loadMedia]: getMediaContent failed, err msg=" + e.message)
+//            Hilog.error(1, "Cangjie-App", "[loadMedia]: getMediaContent failed, err msg=" + e.message)
 //            return Array<UInt8>()
 //        }
-//        Hilog.error(1,"1","Cangjie-App", "[loadMedia]: the globalAbilityContext is None.")
+//        Hilog.error(1, "Cangjie-App", "[loadMedia]: the globalAbilityContext is None.")
 //        return Array<UInt8>()
 //    }
 }

@@ -43,7 +43,10 @@ class OnWindowStageEventCallback <: Callback1Argument<WindowStageEventType> {
     public init() {}
     public open func invoke(err: ?BusinessException, event: WindowStageEventType) {
         callbackMsg += "\nWindowStageEvent;"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
@@ -51,7 +54,10 @@ class OnWindowTitleButtonRectChangeCallback <: Callback1Argument<UInt32> {
     public init() {}
     public open func invoke(err: ?BusinessException, rect: UInt32) {
         callbackMsg += "\nWindowTitleButtonRectChange;"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
@@ -59,7 +65,10 @@ class OnSubWindowCloseCallback <: Callback1Argument<UInt32> {
     public init() {}
     public open func invoke(err: ?BusinessException, event: UInt32) {
         callbackMsg += "\nSubWindowClose;"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
@@ -67,7 +76,10 @@ class OnWindowStatusChangeCallback <: Callback1Argument<UInt32> {
     public init() {}
     public open func invoke(err: ?BusinessException, status: UInt32) {
         callbackMsg += "\nWindowStatusChange;"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
@@ -75,7 +87,10 @@ class OnWindowEventCallback <: Callback1Argument<UInt32> {
     public init() {}
     public open func invoke(err: ?BusinessException, event: UInt32) {
         callbackMsg += "\nWindowEvent;"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
@@ -83,7 +98,10 @@ class OnWindowVisibilityChangeCallback <: Callback1Argument<UInt32> {
     public init() {}
     public open func invoke(err: ?BusinessException, visible: UInt32) {
         callbackMsg += "\nWindowVisibilityChange;"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
@@ -91,7 +109,10 @@ class OnKeyboardHeightChangeCallback <: Callback1Argument<UInt32> {
     public init() {}
     public open func invoke(err: ?BusinessException, height: UInt32) {
         callbackMsg += "\nKeyboardHeightChange;"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
@@ -99,7 +120,10 @@ class OnWindowSizeChangeCallback <: Callback1Argument<UInt32> {
     public init() {}
     public open func invoke(err: ?BusinessException, size: UInt32) {
         callbackMsg += "\nWindowSizeChange;"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
@@ -107,7 +131,10 @@ class OnTouchOutsideCallback <: Callback1Argument<UInt32> {
     public init() {}
     public open func invoke(err: ?BusinessException, event: UInt32) {
         callbackMsg += "\touchOutside"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
@@ -115,7 +142,10 @@ class OnDialogTargetTouchCallback <: Callback1Argument<UInt32> {
     public init() {}
     public open func invoke(err: ?BusinessException, event: UInt32) {
         callbackMsg += "\ndialogTargetTouch"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
@@ -123,7 +153,10 @@ class OnScreenCallback <: Callback1Argument<UInt32> {
     public init() {}
     public open func invoke(err: ?BusinessException, height: UInt32) {
         callbackMsg += "\nscreenshot"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
@@ -131,7 +164,10 @@ class OnNoInteractionDetectedCallback <: Callback1Argument<UInt32> {
     public init() {}
     public open func invoke(err: ?BusinessException, event: UInt32) {
         callbackMsg += "\nNoInteractionDetected"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
@@ -139,13 +175,16 @@ class OnKeyboardHeight0ChangeCallback <: Callback1Argument<UInt32> {
     public init() {}
     public open func invoke(err: ?BusinessException, event: UInt32) {
         callbackMsg += "\nKeyboardHeigh0tChange;"
-        Hilog.info(1,"1","Cangjie-App", callbackMsg)
+        if (let Some(v) <- err) {
+            callbackMsg += "error: ${err.toString()}"
+        }
+        Hilog.info(1, "Cangjie-App", callbackMsg)
     }
 }
 
 @Entry
 @Component
-class View_Window_Listener {
+class ViewWindowListener {
     @State
     var message: String = "Hello Cangjie"
     let mainWindow: Window = Global.getMainWindow()
@@ -252,7 +291,7 @@ class View_Window_Listener {
                                         onKeyboardHeightChangeCb0
                                     )
                                 }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_onKeyboardHeight0 " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_onKeyboardHeight0 " + e.toString())
                                 }
                             })
                         .width(40.percent).height(30)
@@ -271,7 +310,7 @@ class View_Window_Listener {
                                         onKeyboardHeightChangeCb0
                                     )
                                 }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_onKeyboardHeight0_error " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_onKeyboardHeight0_error " + e.toString())
                                 }
                             })
                         .width(40.percent).height(30)

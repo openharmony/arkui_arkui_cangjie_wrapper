@@ -23,35 +23,35 @@ internal import ohos.business_exception.BusinessException
 let _ = testsuite()
 
 func testsuite(): Unit{
-    registerTestSuite("CanvasDrawing_UT_1") {CanvasDrawing_UT_1()}
-    registerTestSuite("CanvasDrawing_UT_1_1") {CanvasDrawing_UT_1_1()}
-    registerTestSuite("CanvasDrawing_UT_2") {CanvasDrawing_UT_2()}
+    registerTestSuite("CanvasDrawingUT1") {CanvasDrawingUT1()}
+    registerTestSuite("CanvasDrawingUT11") {CanvasDrawingUT11()}
+    registerTestSuite("CanvasDrawingUT2") {CanvasDrawingUT2()}
 }
 let UT_views = [
-    "Index_UT1",
-    "Index_UT2"
+    "CanvasDrawingIndex1",
+    "CanvasDrawingIndex2"
 ]
 let UT1 = [
-    "View_Canvas",
-    "View_Circle",
-    "View_Curves",
-    "View_Ellipse",
-    "View_GradientColor",
-    "View_Image",
-    "View_Image_Animator",
-    "View_ImageAnimator",
-    "View_ImageEffect",
-    "View_ImageEffect2"
+    "ViewCanvas",
+    "ViewCircle",
+    "ViewCurves",
+    "ViewEllipse",
+    "ViewGradientColor",
+    "ViewImage",
+    "ViewImageAnimator",
+    "ViewImageAnimator",
+    "ViewImageEffect",
+    "ViewImageEffect2"
 ]
 let UT2 = [
-    "View_Line",
-    "View_OffscreenCanvasRenderingContext2D",
-    "View_Path",
-    "View_Polygon",
-    "View_Polyline",
-    "View_Shape",
-    "View_ShapeClip",
-    "View_XComponent",
-    "View_Canvas_2",
-    "View_CanvasRenderingContext2D"
+    "ViewLine",
+    "ViewOffscreenCanvasRenderingContext2D",
+    "ViewPath",
+    "ViewPolygon",
+    "ViewPolyline",
+    "ViewShape",
+    "ViewShapeClip",
+    "ViewXComponent",
+    "ViewCanvas2",
+    "ViewCanvasRenderingContext2D"
 ]

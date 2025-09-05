@@ -23,7 +23,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Layout_Constraints{
+class ViewLayoutConstraints{
     func build(){
         Column(){
             Row()

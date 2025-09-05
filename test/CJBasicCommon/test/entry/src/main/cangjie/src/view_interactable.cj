@@ -28,7 +28,7 @@ import ohos.multimedia.image.ScaleMode
 
 @Entry
 @Component
-class View_Interactable {
+class ViewInteractable {
     @State
     var hoverText: String = "no hover"
     @State
@@ -88,7 +88,7 @@ class View_Interactable {
                 Button("onMouse").id("onMouseBtn").onMouse(
                     {
                         event =>
-                        Hilog.info(1,"1","Cangjie-App", this.mouseText)
+                        Hilog.info(1, "Cangjie-App", this.mouseText)
                     }
                 )
             }
@@ -167,13 +167,13 @@ class View_Interactable {
             Button("Click").backgroundColor(0x2788D9).id("keyBtn").onKeyEvent(
                 {
                     event =>
-                    Hilog.info(1,"1","Cangjie-App", this.text)
+                    Hilog.info(1, "Cangjie-App", this.text)
                     event.stopPropagation()
                 }
             ).onTouch(
                 {
                     event =>
-                    Hilog.info(1,"1","Cangjie-App", this.text)
+                    Hilog.info(1, "Cangjie-App", this.text)
                     event.stopPropagation()
                 }
             ).width(200.px)

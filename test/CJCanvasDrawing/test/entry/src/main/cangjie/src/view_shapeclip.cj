@@ -24,7 +24,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_ShapeClip {
+class ViewShapeClip {
     var array1: Array<(Length, Length)> = [(5,6),(5,6),(8,9),(8,9)]
     var array2: Array<(Length , Length)> = [(5.0,6.0),(5.0,6.0),(8.0,9.0),(8.0,9.0)]
     func build() {

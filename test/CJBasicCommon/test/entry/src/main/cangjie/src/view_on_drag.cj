@@ -30,7 +30,7 @@ import ohos.multimedia.image.Size as UniqueImageSize
 
 @Entry
 @Component
-class View_DragTest {
+class ViewDragTest {
     @State
     var targetImage: String = ""
     @State
@@ -84,10 +84,9 @@ class View_DragTest {
                             {
                                 event: DragInfo =>
 //                                    PromptAction.showToast(message: event.extraParams)
-                                var colors: Array<UInt8> = [80, 2, 4, 8, 40, 2, 4, 8]
-                                var size: UniqueImageSize = UniqueImageSize(4, 3)
-                                let opts = InitializationOptions(size)
-                                let pixelMap = createPixelMap(colors, opts)
+                                let color = Array<UInt8>(96, { i => UInt8(i+1) })
+                                let opts = InitializationOptions(UniqueImageSize(4, 6), editable: true, pixelFormat: Rgba8888)
+                                let pixelMap: PixelMap = createPixelMap(color, opts)
 //                                return DragItemInfo(pixelMap, bind(pixelMapBuilder, this), "ListItem1")
                             }
                         )
@@ -101,14 +100,14 @@ class View_DragTest {
                         .onDragStart(
                             {
                                 event: DragInfo =>
-                                    Hilog.info(1,"1","Cangjie-App", "### extra ${event.extraParams}")
+                                    Hilog.info(1, "Cangjie-App", "### extra ${event.extraParams}")
                                     return bind(pixelMapBuilder, this)
                             })
                         .id("listItem2")
                 }.onDrop(
                     {
                         event: DragInfo =>
-                            Hilog.info(1,"1","Cangjie-App", "### extra ${event.extraParams}")
+                            Hilog.info(1, "Cangjie-App", "### extra ${event.extraParams}")
                     })
                 Text("Start Drag")
                     .fontSize(18)
@@ -125,11 +124,11 @@ class View_DragTest {
                     .onDragStart(
                         {
                             event: DragInfo =>
-                            Hilog.info(1,"1","Cangjie-App", "### extra ${event.extraParams}")
+                            Hilog.info(1, "Cangjie-App", "### extra ${event.extraParams}")
                         }
                     )
                     .onDrop({
-                        event: DragInfo => Hilog.info(1,"1","Cangjie-App", "### onDrop Image onDrop")
+                        event: DragInfo => Hilog.info(1, "Cangjie-App", "### onDrop Image onDrop")
                     })
                     .onDragMove(
                         {
@@ -162,7 +161,7 @@ class View_DragTest {
                 .width(45.percent)
                 .height(100.percent)
                 .onDragLeave({
-                    event: DragInfo => Hilog.info(1,"1","Cangjie-App", "### onDragLeave")
+                    event: DragInfo => Hilog.info(1, "Cangjie-App", "### onDragLeave")
                 })
                 .onDrop({
                     dragEvent: DragInfo => ()
@@ -178,14 +177,14 @@ class View_DragTest {
                     .onDrop(
                         {
                             dragEvent: DragInfo =>
-                            Hilog.info(1,"1","Cangjie-App", "### onDrop")
+                            Hilog.info(1, "Cangjie-App", "### onDrop")
                         }
                     )
                     .onDragEnter({
-                        event: DragInfo => Hilog.info(1,"1","Cangjie-App", "### onDragEnter")
+                        event: DragInfo => Hilog.info(1, "Cangjie-App", "### onDragEnter")
                     })
                     .onDragLeave({
-                        event: DragInfo => Hilog.info(1,"1","Cangjie-App", "### onDragLeave")
+                        event: DragInfo => Hilog.info(1, "Cangjie-App", "### onDragLeave")
                     })
             }
         }

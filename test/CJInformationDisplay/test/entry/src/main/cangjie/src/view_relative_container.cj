@@ -25,7 +25,7 @@ let emptyguideline: Array<GuideLineStyle> = []
 
 @Entry
 @Component
-class View_Relative_Container {
+class ViewRelativeContainer {
     func build() {
         Scroll() {
             Column() {

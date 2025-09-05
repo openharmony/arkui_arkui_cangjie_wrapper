@@ -47,7 +47,7 @@ import ohos.display.FoldCreaseRegion
 
 @Entry
 @Component
-class View_Window_Enhance {
+class ViewWindowEnhance {
     let mainWindow: Window = Global.getMainWindow()
     // let mainId = mainWindow.getWindowProperties().id
     let mainId = 1
@@ -253,7 +253,7 @@ class View_Window_Enhance {
                             try {
                                 var windowName = findWindow("abc")
                             }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-App", "test checkRet " + e.toString())
+                                    Hilog.info(1, "Cangjie-App", "test checkRet " + e.toString())
                             }
                         }
                         .width(20.percent)
@@ -307,7 +307,7 @@ class View_Window_Enhance {
                                 TestSubWindow1.destroyWindow()
                                 TestSubWindow2.destroyWindow()
                             }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_CFwindow " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
                         }
                         .width(20.percent)
@@ -320,31 +320,31 @@ class View_Window_Enhance {
                                 var TestSubWindow1 = Global.getMainWindow()
                                 TestSubWindow1.destroyWindow()
                             }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_CFwindow " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
                             try {
                                 var TestSubWindow2 = Global.getMainWindow()
                                 TestSubWindow2.minimize()
                             }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_CFwindow " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
                             try {
                                 var TestSubWindow3 = Global.getMainWindow()
                                 TestSubWindow3.snapshot()
                             }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_CFwindow " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
                             try {
                                 var TestSubWindow4 = Global.getMainWindow()
                                 TestSubWindow4.resize(10,10)
                             }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_CFwindow " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
                             try {
                                 var TestSubWindow5 = Global.getMainWindow()
                                 TestSubWindow5.moveWindowTo(0,0)
                             }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_CFwindow " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
                     }
                         .width(20.percent)
@@ -357,17 +357,17 @@ class View_Window_Enhance {
                             try {
                                 TestSubWindow1.on(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
                             }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_CFwindow " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
                             try {
                                 TestSubWindow1.off(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
                             }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_CFwindow " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
                             try {
                                 TestSubWindow1.off(WindowCallbackType.KeyboardHeightChange)
                             }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_CFwindow " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
                     }
                         .width(20.percent)
@@ -384,7 +384,7 @@ class View_Window_Enhance {
                             try {
                                 mainWindow.setWindowPrivacyMode(true)
                             }catch (e: Exception) {
-                                Hilog.info(1,"1","Cangjie-Test", "case_setWindowPrivacyMode " + e.toString())
+                                Hilog.info(1, "Cangjie-Test", "case_setWindowPrivacyMode " + e.toString())
                         }
                     }
                         .width(20.percent)
@@ -404,7 +404,7 @@ class View_Window_Enhance {
                                 testClass.setPreferredOrientation(Orientation.PortraitInverted)
                                 testClass.setPreferredOrientation(Orientation.LandscapeInverted)
                             } catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_windowSettingOrientation " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_windowSettingOrientation " + e.toString())
                                 }
                         }
                         .width(20.percent)
@@ -419,7 +419,7 @@ class View_Window_Enhance {
                             try{
                                 shiftAppWindowFocus(0,0)
                             }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_shiftAppWindowFocus " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_shiftAppWindowFocus " + e.toString())
                                 }
                     }
                         .width(20.percent)
@@ -462,7 +462,7 @@ class View_Window_Enhance {
                                 TestSubWindow1.destroyWindow()
                                 TestSubWindow2.destroyWindow()
                             }catch (e: Exception) {
-                                    Hilog.info(1,"1","Cangjie-Test", "case_CFwindow " + e.toString())
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
                         }
                         .width(20.percent)
@@ -480,7 +480,7 @@ class View_Window_Enhance {
                                 var WET4: WindowEventType = WindowEventType.WindowHidden
                                 var WET5: WindowEventType = WindowEventType.WindowDestroyed
                             }catch (e: Exception) {
-                                Hilog.info(1,"1","Cangjie-Test", "case_WindowEventTypeEnum " + e.toString())
+                                Hilog.info(1, "Cangjie-Test", "case_WindowEventTypeEnum " + e.toString())
                             }
                         }
                         .width(20.percent)
@@ -499,7 +499,7 @@ class View_Window_Enhance {
                                 var WSET5: WindowStageEventType = WindowStageEventType.Resumed
                                 var WSET6: WindowStageEventType = WindowStageEventType.Paused
                             }catch (e: Exception) {
-                                Hilog.info(1,"1","Cangjie-Test", "case_WindowStageEventTypeEnum " + e.toString())
+                                Hilog.info(1, "Cangjie-Test", "case_WindowStageEventTypeEnum " + e.toString())
                             }
                         }
                         .width(20.percent)
@@ -519,7 +519,7 @@ class View_Window_Enhance {
                                 var WST5: WindowStatusType = WindowStatusType.SplitScreen
                                 var WST6: WindowStatusType = WindowStatusType.FullScreen
                             }catch (e: Exception) {
-                                Hilog.info(1,"1","Cangjie-Test", "case_WindowStatusTypeEnum " + e.toString())
+                                Hilog.info(1, "Cangjie-Test", "case_WindowStatusTypeEnum " + e.toString())
                             }
                         }
                         .width(20.percent)

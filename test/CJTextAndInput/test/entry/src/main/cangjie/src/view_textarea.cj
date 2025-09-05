@@ -24,7 +24,7 @@ import std.collection.*
 
 @Entry
 @Component
-class View_TextArea {
+class ViewTextArea {
     @State
     var placeholder: String = "please input your name"
     @State

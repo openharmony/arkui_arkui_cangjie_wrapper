@@ -30,7 +30,7 @@ import ohos.arkui.ui_context.*
 
 @Entry
 @Component
-class View_UiContext {
+class ViewUiContext {
     func build() {
         Column(space: 10) {
             Button("test uicontext")

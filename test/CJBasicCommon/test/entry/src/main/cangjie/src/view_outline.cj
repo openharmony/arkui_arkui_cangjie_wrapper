@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Outline {
+class ViewOutline {
     public func build() {
         Column() {
             Row(space: 30) {

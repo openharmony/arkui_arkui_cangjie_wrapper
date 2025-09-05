@@ -31,7 +31,7 @@ import std.collection.ArrayList
 
 @Entry
 @Component
-class View_BindContentCover {
+class ViewBindContentCover {
     var ModalTransition1: ModalTransition = ModalTransition.Alpha
     var ModalTransition2: ModalTransition = ModalTransition.Default
     var ModalTransition3: ModalTransition = ModalTransition.None
@@ -40,11 +40,11 @@ class View_BindContentCover {
     @State var message: String = '123'
 
     public func onAppear() {
-        Hilog.info(1,"1","Cangjie-Test", "BindContentCover onAppear.")
+        Hilog.info(1, "Cangjie-Test", "BindContentCover onAppear.")
         this.message = "BindContentCover onAppear."
     }
     public func onDisappear() {
-        Hilog.info(1,"1","Cangjie-Test", "BindContentCover onDisappear.")
+        Hilog.info(1, "Cangjie-Test", "BindContentCover onDisappear.")
         this.message = "BindContentCover onDisappear."
     }
 

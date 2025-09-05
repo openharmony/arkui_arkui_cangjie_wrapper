@@ -23,13 +23,13 @@ import ohos.router.*
 
 @Entry
 @Component
-class View_Router2 {
+class ViewRouter2 {
     @State
     var message: String = "xxx"
     let routerstate : RouterState = RouterState(index:0,name:"",path:"",params:"")
     func build() {
         Column() {
-            Text("Page View_Router2").fontSize(40.fp).id("my_text2")
+            Text("Page ViewRouter2").fontSize(40.fp).id("my_text2")
 
             Button("page2_jumpBack1").onClick {
                 e => getUIContext().getRouter().back()
@@ -37,16 +37,16 @@ class View_Router2 {
 
             // 覆盖率提升 back  带参url
             Button("page2_jumpBack2").onClick {
-                e => getUIContext().getRouter().back(url: "View_Router1")
+                e => getUIContext().getRouter().back(url: "ViewRouter1")
             }.id("page2_jumpBack2")
 
             // 覆盖率提升 back JsonObject
             Button("page2_jumpBack3").onClick {
-                e => getUIContext().getRouter().back(url: "View_Router1", params: "")
+                e => getUIContext().getRouter().back(url: "ViewRouter1", params: "")
             }.id("page2_jumpBack3")
             Button("to_page1_by_pushurl")
                 .onClick {
-                    e => getUIContext().getRouter().pushUrl(url: "View_Router1", params: "from page2")
+                    e => getUIContext().getRouter().pushUrl(url: "ViewRouter1", params: "from page2")
                 }
                 .id("to_page1_by_pushurl")
 

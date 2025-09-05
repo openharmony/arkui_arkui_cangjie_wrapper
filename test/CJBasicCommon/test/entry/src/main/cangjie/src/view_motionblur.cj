@@ -24,7 +24,7 @@ import kit.LocalizationKit.*
 
 @Entry
 @Component
-class View_MotionBlur {
+class ViewMotionBlur {
     @State var widthSize: Int64 = 400
     @State var heightSize: Int64 = 320
     @State var flag: Bool = true

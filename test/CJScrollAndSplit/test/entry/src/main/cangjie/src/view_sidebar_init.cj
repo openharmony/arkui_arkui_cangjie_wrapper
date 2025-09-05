@@ -51,7 +51,7 @@ func getContext1(): UIAbilityContext {
 
 @Entry
 @Component
-class View_SideBar_Init {
+class ViewSideBarInit {
     var text_source: AppResource = @r(app.string.module_desc)
     var text_media: AppResource = @r(app.media.startIcon)
     var len_px: AppResource = @r(app.string.len_px)

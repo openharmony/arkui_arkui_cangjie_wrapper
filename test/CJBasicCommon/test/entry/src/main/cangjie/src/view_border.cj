@@ -22,7 +22,7 @@ import ohos.base.*
 
 @Entry
 @Component
-class View_Border{
+class ViewBorder{
     func build(){
         Column(){
             Text("Hello CangJie")

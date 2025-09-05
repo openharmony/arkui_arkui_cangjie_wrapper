@@ -26,7 +26,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Stack{
+class ViewStack{
     func build() {
         Stack(alignContent: Alignment.BottomStart) { //子组件底部起始端对齐
             Text("stack bottom").size(width: 100.percent, height: 600.px).backgroundColor(0xF5DEB3).id("stack_bottom")

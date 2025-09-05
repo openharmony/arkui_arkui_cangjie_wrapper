@@ -24,7 +24,7 @@ import ohos.resource_manager.{AppResource}
 
 @Entry
 @Component
-class View_Background3 {
+class ViewBackground3 {
     func build() {
         Column {
             Column {
@@ -101,7 +101,7 @@ class View_Background3 {
                     .asObject()
 
                 let backgroundBlurStyle = getTextFromJSonObj(obj, "backgroundBlurStyle")
-                Hilog.info(1,"1","Cangjie-App", backgroundBlurStyle)
+                Hilog.info(1, "Cangjie-App", backgroundBlurStyle)
 
             }
         }

@@ -24,7 +24,7 @@ import kit.LocalizationKit.*
 
 @Entry
 @Component
-class View_PixelRound {
+class ViewPixelRound {
     @State var curWidth: Float64 = 300.0
 
     func build() {

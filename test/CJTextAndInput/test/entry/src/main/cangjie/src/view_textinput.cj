@@ -48,7 +48,7 @@ extend TouchType {
 
 @Entry
 @Component
-class View_TextInput {
+class ViewTextInput {
     @State var text: String = ""
     @State var text2: String = ""
     @State var text3: String = "Text3_showSubmitState"
@@ -68,7 +68,7 @@ class View_TextInput {
             .inputFilter(
                 "[a-z]",
                 error: {
-                    info: String => Hilog.info(1,"1","Cangjie-Test", "inputFilter error")
+                    info: String => Hilog.info(1, "Cangjie-Test", "inputFilter error")
                 }
             ).onChange({
                 value: String => this.text = value
@@ -153,7 +153,7 @@ class View_TextInput {
                     metaKey: ${event.metaKey.toString()}
                     timestamp: ${event.timestamp.toString()}
 //                """
-                    Hilog.info(1,"1","Cangjie-Test", this.text)
+                    Hilog.info(1, "Cangjie-Test", this.text)
                     event.stopPropagation()
             }).onTouch({ event =>
                     this.text2 = """
@@ -164,29 +164,29 @@ class View_TextInput {
                     Component localPos:(${event.target.area.position.x.value}, ${event.target.area.position.y.value})
                     width: ${event.target.area.width.value} height: ${event.target.area.height.value}
                 """
-                    Hilog.info(1,"1","Cangjie-Test", this.text)
+                    Hilog.info(1, "Cangjie-Test", this.text)
                     event.stopPropagation()
             })
             .onChange({
-                val => Hilog.info(1,"1","Cangjie-Test", "TextInput onChange:" + val)
+                val => Hilog.info(1, "Cangjie-Test", "TextInput onChange:" + val)
             })
             .onPaste({
-                val => Hilog.info(1,"1","Cangjie-Test", "TextInput onPaste:" + val)
+                val => Hilog.info(1, "Cangjie-Test", "TextInput onPaste:" + val)
             })
             .onCut({
-                val => Hilog.info(1,"1","Cangjie-Test", "TextInput onCut:" + val)
+                val => Hilog.info(1, "Cangjie-Test", "TextInput onCut:" + val)
             })
             .onCopy({
-                val => Hilog.info(1,"1","Cangjie-Test", "TextInput onCopy:" + val)
+                val => Hilog.info(1, "Cangjie-Test", "TextInput onCopy:" + val)
             })
             .onEditChange({
-                val => Hilog.info(1,"1","Cangjie-Test", "TextInput onEditChange:" + val.toString())
+                val => Hilog.info(1, "Cangjie-Test", "TextInput onEditChange:" + val.toString())
             })
-            .onSubmit({ val => Hilog.info(1,"1","Cangjie-Test", "TextInput onSubmit")})
+            .onSubmit({ val => Hilog.info(1, "Cangjie-Test", "TextInput onSubmit")})
             .onSubmit({ val =>
                 this.controller.stopEditing()
                 this.text3 = "stopEditing Success"
-                Hilog.info(1,"1","Cangjie-Test", "TextInput onSubmit")
+                Hilog.info(1, "Cangjie-Test", "TextInput onSubmit")
             }).id("textinput")
 
             TextInput(placeholder: "inlineFilter test")

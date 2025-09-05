@@ -37,7 +37,7 @@ enum SpanType {
 
 @Entry
 @Component
-class View_Enum {
+class ViewEnum {
     func build() {
         Column(space: 10) {
             Row(space: 5) {

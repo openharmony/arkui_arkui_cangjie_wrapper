@@ -24,7 +24,7 @@ let ls = LocalStorage()
 let tmp = ls.setOrCreate<Int64>("PropA", 47)
 @Entry[ls]
 @Component
-class View_LocalStorage {
+class ViewLocalStorage {
     @LocalStorageLink["count"]
     var count: Int64 = 0
     func build() {

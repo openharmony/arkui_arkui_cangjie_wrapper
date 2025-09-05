@@ -23,7 +23,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_GeometryTransition {
+class ViewGeometryTransition {
     @State var isShow: Bool = false
     @State var text="文本02"
     func build() {

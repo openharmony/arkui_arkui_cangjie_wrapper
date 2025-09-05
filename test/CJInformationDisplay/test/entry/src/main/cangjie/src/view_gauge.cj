@@ -26,7 +26,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Gauge {
+class ViewGauge {
 
     // Array<(AppResource, Float32)>
     var colorArray_3: Array<(ResourceColor, Float32)> = [(@r(app.color.colorArrayCJResource), 1.0),

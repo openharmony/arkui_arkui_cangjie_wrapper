@@ -2,11 +2,11 @@
   "name": "testsuite_cj_common_test",
   "test_list": [
     {
-      "name": "InformationDisplay_UT_1",
+      "name": "InformationDisplayUT1",
       "timeout": 100
     },
     {
-      "name": "InformationDisplay_UT_2",
+      "name": "InformationDisplayUT2",
       "timeout": 100
     }
   ]

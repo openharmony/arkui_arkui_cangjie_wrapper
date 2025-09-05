@@ -25,7 +25,7 @@ import std.database.sql.Transaction
 
 @Entry
 @Component
-class View_MenuBindContextMenu {
+class ViewMenuBindContextMenu {
     @Builder
     func myBuilder() {
         Row() {

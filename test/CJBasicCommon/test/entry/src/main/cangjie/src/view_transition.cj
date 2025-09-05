@@ -25,7 +25,7 @@ import ohos.arkui.state_macro_manage.Entry
 
 @Entry
 @Component
-class View_Transition {
+class ViewTransition {
     @State
     var flag = true
     @State
@@ -39,7 +39,7 @@ class View_Transition {
             Button(this.show)
                 .onClick {
                     evt =>
-                    Hilog.info(1,"1","Cangjie-App", "Hello Cangjie")
+                    Hilog.info(1, "Cangjie-App", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {

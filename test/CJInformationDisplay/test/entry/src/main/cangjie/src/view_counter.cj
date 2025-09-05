@@ -23,7 +23,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Counter {
+class ViewCounter {
     @State
     var value1: Int64 = 0
     @State

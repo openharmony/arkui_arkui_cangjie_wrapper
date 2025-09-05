@@ -23,7 +23,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Observable {
+class ViewObservable {
     @State var arr: ObservedArrayList<Int64> = ObservedArrayList<Int64>([1, 2])
     @State var arr2: ObservedArrayList<Book> = ObservedArrayList<Book>([Book(title: "myBook", id: 3214324)])
 

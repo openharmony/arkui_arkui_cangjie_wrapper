@@ -23,7 +23,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Foreach {
+class ViewForeach {
     let simpleList: Array<String> = ["one", "two", "three"]
     let colorList: Array<Color> = [Color.Red, Color.Blue, Color.Green]
 

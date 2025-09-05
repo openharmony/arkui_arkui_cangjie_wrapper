@@ -27,7 +27,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Scroll {
+class ViewScroll {
     let scroller = Scroller()
     var arr: ArrayList<String> = ArrayList(["0", "1", "2", "3", "4", "5"])
     let array: ArrayList<Int64> = ArrayList([0, 1, 2, 3, 4])

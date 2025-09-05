@@ -24,7 +24,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Prop {
+class ViewProp {
     @State var count: Int64 = 0
     @State var msg: String = "hello"
     @State var dataSource: ObservedArrayList<String> = ObservedArrayList<String>()

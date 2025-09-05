@@ -29,7 +29,7 @@ import kit.LocalizationKit.*
 
 @Entry
 @Component
-class View_Component_Snapshot {
+class ViewComponentSnapshot {
     @Builder
     func RandomBuilder() {
         Flex(direction: FlexDirection.Column) {

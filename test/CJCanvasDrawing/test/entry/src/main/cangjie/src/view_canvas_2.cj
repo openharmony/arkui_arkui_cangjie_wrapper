@@ -33,7 +33,7 @@ extend Matrix2D {
 
 @Entry
 @Component
-class View_Canvas_2 {
+class ViewCanvas2 {
     var settings: RenderingContextSettings = RenderingContextSettings(antialias: true)
     var context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
     var context2: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)

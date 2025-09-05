@@ -2,15 +2,15 @@
   "name": "testsuite_cj_common_test",
   "test_list": [
     {
-      "name": "CanvasDrawing_UT_1",
+      "name": "CanvasDrawingUT1",
       "timeout": 100
     },
     {
-      "name": "CanvasDrawing_UT_1_1",
+      "name": "CanvasDrawingUT11",
       "timeout": 100
     },
     {
-      "name": "CanvasDrawing_UT_2",
+      "name": "CanvasDrawingUT2",
       "timeout": 100
     }
   ]

@@ -22,7 +22,7 @@ import ohos.resource_manager.{AppResource}
 
 @Entry
 @Component
-class View_Accessibility {
+class ViewAccessibility {
     @Builder
     func customAccessibilityNode() {
         Text("虚拟节点")
@@ -58,13 +58,13 @@ class View_Accessibility {
                     .asObject()
 
                 let des = getTextFromJSonObj(obj, "accessibilityDescription")
-                Hilog.info(1,"1","Cangjie-App", des)
+                Hilog.info(1, "Cangjie-App", des)
 
                 let ttt = getTextFromJSonObj(obj, "accessibilityText")
-                Hilog.info(1,"1","Cangjie-App", ttt)
+                Hilog.info(1, "Cangjie-App", ttt)
 
                 let group = getTextFromJSonObj(obj, "accessibilityGroup")
-                Hilog.info(1,"1","Cangjie-App", group)
+                Hilog.info(1, "Cangjie-App", group)
             }
 
             Button("PrintAccessibilityAttr2").onClick { e =>
@@ -79,13 +79,13 @@ class View_Accessibility {
                     .asObject()
 
                 let accessibilityText = getTextFromJSonObj(obj, "accessibilityText")
-                Hilog.info(1,"1","Cangjie-App", accessibilityText)
+                Hilog.info(1, "Cangjie-App", accessibilityText)
 
                 let des = getTextFromJSonObj(obj, "accessibilityDescription")
-                Hilog.info(1,"1","Cangjie-App", des)
+                Hilog.info(1, "Cangjie-App", des)
 
                 let accessibilityVirtualNode = getTextFromJSonObj(obj, "accessibilityVirtualNode")
-                Hilog.info(1,"1","Cangjie-App", accessibilityVirtualNode)
+                Hilog.info(1, "Cangjie-App", accessibilityVirtualNode)
             }
         }.height(100.percent)
     }

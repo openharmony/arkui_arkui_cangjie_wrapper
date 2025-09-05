@@ -23,7 +23,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Blank {
+class ViewBlank {
     var shape: EllipseShape = EllipseShape()
     var shape2: EllipseShape = EllipseShape(width: 2.0, height: 2.0)
     var ellipse: Ellipse = Ellipse(width: 2.0, height: 2.0)

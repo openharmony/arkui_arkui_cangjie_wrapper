@@ -27,7 +27,7 @@ class Name {
 
 @Entry
 @Component
-class View_Button {
+class ViewButton {
     @Watch[onChanged]
     @State
     var name: Name = Name(title: "myBook")

@@ -25,7 +25,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_ListItemGroup {
+class ViewListItemGroup {
     @Builder
     func HeaderBuilder() {
         Row {

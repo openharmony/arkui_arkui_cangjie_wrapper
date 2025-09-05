@@ -60,7 +60,7 @@ func getDatasetStudent(): StudentDatasetSource
 
 @Entry
 @Component
-public class View_Lazyforeach_DataOptions {
+public class ViewLazyforeachDataOptions {
     @State var msg: String = ""
     public func build(): Unit {
         Column(space: 30) {

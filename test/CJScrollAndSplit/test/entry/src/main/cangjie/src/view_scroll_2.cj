@@ -39,7 +39,7 @@ extend ScrollSource {
 
 @Entry
 @Component
-class View_Scroll_2 {
+class ViewScroll2 {
     @State
     var stopText: String = "is stop?"
     @State

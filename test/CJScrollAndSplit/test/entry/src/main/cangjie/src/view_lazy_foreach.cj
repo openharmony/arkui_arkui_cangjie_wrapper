@@ -87,7 +87,7 @@ var changeID: Int64 = 0
 
 @Entry
 @Component
-public class View_Lazyforeach {
+public class ViewLazyforeach {
     public func build(): Unit {
         Column(space: 30) {
             Text("-----------------")

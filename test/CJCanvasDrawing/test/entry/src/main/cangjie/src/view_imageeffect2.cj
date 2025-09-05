@@ -23,7 +23,7 @@ import ohos.resource_manager.AppResource
 
 @Entry
 @Component
-class View_ImageEffect2 {
+class ViewImageEffect2 {
     public func build() {
         Scroll() {
             Column() {

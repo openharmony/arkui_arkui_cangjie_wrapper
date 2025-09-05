@@ -33,7 +33,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Shape{
+class ViewShape{
     //var ellipsesh = EllipseShape(width: 2.0, height: 2.0)
     //var ellipsetest = EllipseShape(width: 2.0.vp,height:2.0.vp)
     var color: Array<UInt8> = Array<UInt8>(96, {i => UInt8(i + 1)})

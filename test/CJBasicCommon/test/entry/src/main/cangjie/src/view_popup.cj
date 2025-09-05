@@ -25,7 +25,7 @@ import ohos.base.{LengthProp, Length, Color, LengthType}
 
 @Entry
 @Component
-class View_Popup {
+class ViewPopup {
     @State
     var isShowPopup: Bool = false
     @State
@@ -70,7 +70,7 @@ class View_Popup {
     func builder() {
         Column {
             Button("Builder 内容").width(300.px).onClick({
-                evt => Hilog.info(1,"1","Cangjie-App", "Builder 中的按钮被点击")
+                evt => Hilog.info(1, "Cangjie-App", "Builder 中的按钮被点击")
             })
         }.width(300.px)
     }
@@ -106,7 +106,7 @@ class View_Popup {
                             value: "OK",
                             action: {
                                 =>
-                                Hilog.info(1,"1","Cangjie-App", "OK被点击")
+                                Hilog.info(1, "Cangjie-App", "OK被点击")
                                 this.text = "show current state is ${this.isShowPopup}"
                                 isShowPopup = false
                                 this.text_01 = "primaryButton current state is ${this.isShowPopup}"
@@ -117,14 +117,14 @@ class View_Popup {
                             value: "Off",
                             action: {
                                 =>
-                                Hilog.info(1,"1","Cangjie-App", "Cancel被点击")
+                                Hilog.info(1, "Cangjie-App", "Cancel被点击")
                                 isShowPopup = false
                                 this.text_02 = "secondaryButton current state is ${this.isShowPopup}"
                             }
                         ),
                         onStateChange: {
                             evt =>
-                            Hilog.info(1,"1","Cangjie-App", "Bind 1 isVisible: " + evt.isVisible.toString())
+                            Hilog.info(1, "Cangjie-App", "Bind 1 isVisible: " + evt.isVisible.toString())
                             if (!evt.isVisible) {
                                 isShowPopup = false
                                 this.text_03 = "onStateChange current state is ${this.isShowPopup}"
@@ -146,7 +146,7 @@ class View_Popup {
                         builder: bind(builder, this),
                         onStateChange: {
                             evt =>
-                            Hilog.info(1,"1","Cangjie-App", "BindPopup-Custom isVisible: " + evt.isVisible.toString())
+                            Hilog.info(1, "Cangjie-App", "BindPopup-Custom isVisible: " + evt.isVisible.toString())
                             this.text_04 = "show current state is ${this.isShowPopupBuilder}"
                             this.text_05 = "enableArrow current state is ${this.isenableArrow}"
                             if (!evt.isVisible) {

@@ -23,7 +23,7 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_Grid_Col {
+class ViewGridCol {
     func build() {
         Column {
             GridRow() {

@@ -23,7 +23,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Column {
+class ViewColumn {
     func build() {
          Column {
             Text("space")

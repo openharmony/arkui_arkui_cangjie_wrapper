@@ -24,7 +24,7 @@ import ohos.hilog.Hilog
 
 @Entry
 @Component
-class View_DatePickerDialog {
+class ViewDatePickerDialog {
     //    let acceptButtonStyleCase1 = PickerDialogButtonStyle(
     //        `type`: ButtonType.Normal,
     //        style: ButtonStyleMode.NORMAL,

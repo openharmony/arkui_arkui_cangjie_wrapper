@@ -28,7 +28,7 @@ class Clazz <: ResourceStr {}
 
 @Entry
 @Component
-class View_Text {
+class ViewText {
     @State
     var message: String = "Hello"
     let controller: TextController = TextController()
