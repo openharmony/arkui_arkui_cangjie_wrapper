@@ -27,7 +27,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_ZOrder {
+class ViewZOrder {
     func build() {
         Column {
             Stack() {

@@ -25,7 +25,7 @@ let showString: String = "Hello World"
 
 @Entry
 @Component
-class View_Location{
+class ViewLocation{
     func build(){
         Column(){
             Button(ButtonOptions()){

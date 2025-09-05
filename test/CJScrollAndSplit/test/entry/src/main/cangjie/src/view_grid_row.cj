@@ -26,7 +26,7 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_Grid_Row {
+class ViewGridRow {
     @State
     var currentBp: String = ""
     func build() {

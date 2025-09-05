@@ -24,18 +24,18 @@ import ohos.arkui.component_utils.ComponentUtils
 
 @Entry
 @Component
-class View_Component_Utils {
+class ViewComponentUtils {
     @State var message: String = "Hello Cangjie"
     @State var componentUtils_test: ComponentUtils = ComponentUtils()
     func build() {
         Row {
             Column {
                 Button(message).onClick {
-                    evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie")
+                    evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie")
                 }.fontSize(40).height(80)
                 .id("ButtonClick")
                 Button("getRectangleById").onClick { e =>
-                    let info = ComponentUtils.getRectangleById("ButtonClick")
+                    // let info = ComponentUtils.getRectangleById("ButtonClick")
                 }.fontSize(40).height(80).id("getRectangleById")
                 Button("ccomponentInfo").onClick { e =>
                     let transform: Array<Float32> = [1.0, 0.5, 0.0, 0.0, 0.0]

@@ -28,7 +28,7 @@ import ohos.arkui.component.web.*
 
 @Entry
 @Component
-class View_Web {
+class ViewWeb {
     let webController = WebviewController()
     let webCtrl2 = WebviewController()
 

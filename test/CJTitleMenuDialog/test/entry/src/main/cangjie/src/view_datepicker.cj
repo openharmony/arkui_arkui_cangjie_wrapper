@@ -23,7 +23,7 @@ import std.time.*
 
 @Entry
 @Component
-class View_DatePicker {
+class ViewDatePicker {
     @State
     var isLunar: Bool = false
     @State

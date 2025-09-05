@@ -30,7 +30,7 @@ import std.collection.*
 
 @Entry
 @Component
-class View_Enum2 {
+class ViewEnum2 {
     func build() {
         Column(space: 10) {
             EnumSon2()
@@ -101,9 +101,9 @@ class EnumTypes2 {
             }.onWillScroll({
                 v1,v2,v3 =>
                 match(v3) {
-                    case ScrollSource.ScrollBar => Hilog.info(1,"1","Cangjie-App", "scrollSource == SCROLL_BAR")
-                    case ScrollSource.ScrollBarFling => Hilog.info(1,"1","Cangjie-App", "scrollSource == SCROLL_BAR_FLING")
-                    case _ => Hilog.info(1,"1","Cangjie-App", "scrollSource == unmatched type")
+                    case ScrollSource.ScrollBar => Hilog.info(1, "Cangjie-App", "scrollSource == SCROLL_BAR")
+                    case ScrollSource.ScrollBarFling => Hilog.info(1, "Cangjie-App", "scrollSource == SCROLL_BAR_FLING")
+                    case _ => Hilog.info(1, "Cangjie-App", "scrollSource == unmatched type")
                 }
                 ()
             })

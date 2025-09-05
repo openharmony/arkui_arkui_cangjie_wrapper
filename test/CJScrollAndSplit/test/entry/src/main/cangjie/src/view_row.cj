@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Row {
+class ViewRow {
     func build() {
             Column(space: 5) {
             // 设置子组件水平方向的间距为5

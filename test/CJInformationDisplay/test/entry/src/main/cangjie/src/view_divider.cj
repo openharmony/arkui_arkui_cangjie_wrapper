@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Divider {
+class ViewDivider {
     func build() {
         Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween) {
             Text("bravery")

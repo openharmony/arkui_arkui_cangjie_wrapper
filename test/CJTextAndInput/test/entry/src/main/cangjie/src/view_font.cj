@@ -25,7 +25,7 @@ import kit.LocalizationKit.*
 
 @Entry
 @Component
-class View_Font {
+class ViewFont {
     @State
     var message: String = "message"
     @State

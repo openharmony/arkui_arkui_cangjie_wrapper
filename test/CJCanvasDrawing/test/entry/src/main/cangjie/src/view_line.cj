@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Line {
+class ViewLine {
     func build() {
         Column(space: 10) {
             // 线条绘制的起止点坐标均是相对于Line组件本身绘制区域的坐标

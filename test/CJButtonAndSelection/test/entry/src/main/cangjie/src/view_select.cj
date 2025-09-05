@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Select {
+class ViewSelect {
     @State
     var text: String = "TTTTT"
     @State

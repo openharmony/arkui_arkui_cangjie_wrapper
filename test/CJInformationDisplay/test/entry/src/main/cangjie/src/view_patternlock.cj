@@ -21,7 +21,7 @@ import kit.LocalizationKit.*
 
 @Entry
 @Component
-class View_PatternLock {
+class ViewPatternLock {
     @State
     var passwords: Array<Int32> = []
     @State

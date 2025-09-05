@@ -22,7 +22,7 @@ import ohos.base.LengthProp
 
 @Entry
 @Component
-class View_CursorControl {
+class ViewCursorControl {
     @State var enable: Bool = false
     func build() {
         Column() {

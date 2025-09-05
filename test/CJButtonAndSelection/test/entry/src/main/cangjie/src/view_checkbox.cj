@@ -25,7 +25,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Checkbox {
+class ViewCheckbox {
     @State
     var message: String = ""
     //var checkBoxC: CheckBoxConfiguration = CheckBoxConfiguration(name: "CheckBoxConfiguration", selected: true, triggerChange: {isTrigger => })

@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_BindSheet {
+class ViewBindSheet {
         var SheetSize1: SheetSize = SheetSize.Medium
     var SheetSize2: SheetSize = SheetSize.Large
     var SheetSize3: SheetSize = SheetSize.FitContent
@@ -38,11 +38,11 @@ class View_BindSheet {
     var text: String = "123123"
 
     public func onAppear() {
-        Hilog.info(1,"1","Cangjie-Test", "BindSheet onAppear.")
+        Hilog.info(1, "Cangjie-Test", "BindSheet onAppear.")
         this.message = "BindSheet onAppear."
     }
     public func onDisappear() {
-        Hilog.info(1,"1","Cangjie-Test", "BindSheet onDisappear.")
+        Hilog.info(1, "Cangjie-Test", "BindSheet onDisappear.")
         this.message = "BindSheet onDisappear."
     }
 
@@ -136,16 +136,16 @@ class View_BindSheet {
                         onHeightDidChange: {
                             height =>
                             this.text = "onHeightDidChange"
-                            Hilog.info(1,"1","Cangjie-Test", "###ondidchange height change")
+                            Hilog.info(1, "Cangjie-Test", "###ondidchange height change")
                         },
                         onDetentsDidChange: {
-                            dents => Hilog.info(1,"1","Cangjie-Test", "###ondidchange Detents change")
+                            dents => Hilog.info(1, "Cangjie-Test", "###ondidchange Detents change")
                         },
                         onWidthDidChange: {
-                            width => Hilog.info(1,"1","Cangjie-Test", "###ondidchange width change")
+                            width => Hilog.info(1, "Cangjie-Test", "###ondidchange width change")
                         },
                         onTypeDidChange: {
-                            typee => Hilog.info(1,"1","Cangjie-Test", "###ondidchange type change")
+                            typee => Hilog.info(1, "Cangjie-Test", "###ondidchange type change")
                         },
                         width: 400.vp,
                         shadow: ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 10.0, offsetY: 0.0, color: Color.Red),
@@ -153,11 +153,11 @@ class View_BindSheet {
                         enableOutsideInteractive: false,
                         onWillDismiss: {
                             action => match (action.reason) {
-                                case PRESS_BACK => Hilog.info(1,"1","Cangjie-Test", "onWillDismiss: PRESS_BACK")
+                                case PRESS_BACK => Hilog.info(1, "Cangjie-Test", "onWillDismiss: PRESS_BACK")
                                 case TOUCH_OUTSIDE => action.dismiss()
-                                case CLOSE_BUTTON => Hilog.info(1,"1","Cangjie-Test", "onWillDismiss: CLOSE_BUTTON")
-                                case SLIDE_DOWN => Hilog.info(1,"1","Cangjie-Test", "onWillDismiss: SLIDE_DOWN")
-                                case _ => Hilog.info(1,"1","Cangjie-Test", "onWillDismiss: _")
+                                case CLOSE_BUTTON => Hilog.info(1, "Cangjie-Test", "onWillDismiss: CLOSE_BUTTON")
+                                case SLIDE_DOWN => Hilog.info(1, "Cangjie-Test", "onWillDismiss: SLIDE_DOWN")
+                                case _ => Hilog.info(1, "Cangjie-Test", "onWillDismiss: _")
                             }
                         },
                         onWillSpringBackWhenDismiss: {springback =>}

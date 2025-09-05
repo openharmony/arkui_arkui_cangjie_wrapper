@@ -12,7 +12,7 @@ internal import ohos.hilog.Hilog
 
 @Entry
 @Component
-class View_AlertDialog {
+class ViewAlertDialog {
     @State
     var msg: String = "begin"
     @State

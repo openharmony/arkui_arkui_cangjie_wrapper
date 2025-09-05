@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Ellipse {
+class ViewEllipse {
     func build() {
         Column {
             Ellipse(width: 150, height: 80).id("ellipse_1")

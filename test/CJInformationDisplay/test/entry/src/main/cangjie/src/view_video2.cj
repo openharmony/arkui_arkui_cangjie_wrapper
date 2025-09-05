@@ -42,7 +42,7 @@ extend ImageFit {
 
 @Entry
 @Component
-class View_Video2 {
+class ViewVideo2 {
     @State
     var videoSrc: ResourceStr = @rawfile("video.mp4")
     @State

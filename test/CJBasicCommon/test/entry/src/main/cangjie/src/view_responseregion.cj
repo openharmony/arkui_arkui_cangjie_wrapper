@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_ResponseRegion {
+class ViewResponseRegion {
     @State
     var text: String = ""
     func build() {

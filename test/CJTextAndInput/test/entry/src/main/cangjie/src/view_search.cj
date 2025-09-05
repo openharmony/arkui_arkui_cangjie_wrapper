@@ -26,7 +26,7 @@ import ohos.resource_manager.*
 
 @Entry
 @Component
-class View_Search {
+class ViewSearch {
     @State
     var changeValue: String = ""
     @State

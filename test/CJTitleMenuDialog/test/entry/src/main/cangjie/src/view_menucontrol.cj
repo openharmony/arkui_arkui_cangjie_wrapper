@@ -25,7 +25,7 @@ import ohos.base.{LengthProp, Length, Color, LengthType}
 
 @Entry
 @Component
-class View_Menucontrol {
+class ViewMenucontrol {
     @State
     var text: String = ""
     @State

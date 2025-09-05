@@ -35,7 +35,7 @@ extend RefreshStatus {
 
 @Entry
 @Component
-class View_Background {
+class ViewBackground {
     let lengthType1: LengthType = LengthType.parse(2)
     let lengthType2: LengthType = LengthType.parse(3)
     let lengthType3: LengthType = LengthType.parse(4)

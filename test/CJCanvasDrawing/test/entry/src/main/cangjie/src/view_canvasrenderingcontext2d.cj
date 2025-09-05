@@ -25,7 +25,7 @@ import ohos.multimedia.image.*
 
 @Entry
 @Component
-class View_CanvasRenderingContext2D {
+class ViewCanvasRenderingContext2D {
     private let settings: RenderingContextSettings = RenderingContextSettings(antialias: true)
     private let context1: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
     private let context2: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)

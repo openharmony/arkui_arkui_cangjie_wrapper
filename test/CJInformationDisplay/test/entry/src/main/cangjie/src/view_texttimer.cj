@@ -23,7 +23,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_TextTimer {
+class ViewTextTimer {
     var textTimerController: TextTimerController = TextTimerController()
 
     @State

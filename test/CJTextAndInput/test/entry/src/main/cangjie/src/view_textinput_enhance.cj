@@ -24,7 +24,7 @@ import std.collection.*
 
 @Entry
 @Component
-class View_TextInput_Enhance {
+class ViewTextInputEnhance {
 
     var controller: TextInputController = TextInputController()
     @State
@@ -144,7 +144,7 @@ class View_TextInput_Enhance {
             TextInput(text: this.onDidDeleteMsg)
                 .onSubmit({
                     enterKey: EnterKeyType =>
-                    Hilog.info(1,"1","Cangjie-Test", "TextInput_Enhance onSubmitWithEvent")
+                    Hilog.info(1, "Cangjie-Test", "TextInput_Enhance onSubmitWithEvent")
                     if (this.onSubmitText == "test") {
                         this.textError = ""
                     } else {

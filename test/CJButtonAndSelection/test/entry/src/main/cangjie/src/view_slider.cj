@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Slider {
+class ViewSlider {
     @State
     var outSetValue: Float64 = 50.0
 

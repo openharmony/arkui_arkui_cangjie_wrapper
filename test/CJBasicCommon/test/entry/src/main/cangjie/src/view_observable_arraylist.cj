@@ -23,7 +23,7 @@ import std.collection.ArrayList
 
 @Entry
 @Component
-class View_Observable_ArrayList {   
+class ViewObservableArrayList {   
     var arrlist: ArrayList<Book2> = ArrayList<Book2>([Book2(title: "arrlist1", id: 123456), Book2(title: "arrlist2", id: 123456)])
     @State var obs_arrlist: ObservedArrayList<Book2> = ObservedArrayList<Book2>(arrlist)
     var tmp_arrlist: ArrayList<Book2> = ArrayList<Book2>([Book2(title: "tmp_arrlist1", id: 123456), Book2(title: "tmp_arrlist2", id: 123456)])

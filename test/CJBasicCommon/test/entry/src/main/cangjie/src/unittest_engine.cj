@@ -63,7 +63,7 @@ import std.collection.filterMap
 foreign func __gcov_dump(): Unit
 
 public func gcov_dump(coveragePath: String): Unit {
-    Hilog.info(1,"1","Cangjie-Test", "execute test with coverage")
+    Hilog.info(1, "Cangjie-Test", "execute test with coverage")
     Process
         .current
         .setEnv("GCOV_PREFIX", coveragePath)
@@ -108,12 +108,12 @@ public class OpenHarmonyTestRunner <: TestRunner {
             .testSuiteMap
             .keys()
             .toArray(), delimiter: ", ")
-        Hilog.info(1,"1","Cangjie-Test", 
+        Hilog.info(1, "Cangjie-Test",
             "TestClass with name \"${testClassName}\" not found. Available TestClasses are: ${listOfAvailableTestClasses}")
     }
     private func executeTestClass(testClassName: String): Unit {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        Hilog.info(1,"1","Cangjie-Test", "EXECUTE_CLASS_START: \"${testClassName}\"")
+        Hilog.info(1, "Cangjie-Test", "EXECUTE_CLASS_START: \"${testClassName}\"")
         let testSuite = match (OpenHarmonyTestRunner
             .testSuiteMap
             .get(testClassName)) {
@@ -131,18 +131,18 @@ public class OpenHarmonyTestRunner <: TestRunner {
             .Directory
             .readFrom("/data/storage/el1/base/tests") |> filter {fileInfo => fileInfo.name == testReportXmlFileName} |>
             first) {
-            case None => Hilog.info(1,"1","Cangjie-Test", "${testReportXmlFileName} not found.")
+            case None => Hilog.info(1, "Cangjie-Test", "${testReportXmlFileName} not found.")
             case Some(testReportXmlFileInfo) =>
                 let testReportXmlFilePath = testReportXmlFileInfo.path
                 let testReportXmlFileContent = fs
                     .File
                     .readFrom(testReportXmlFilePath)
                 let xmlReport = String.fromUtf8(testReportXmlFileContent)
-                Hilog.info(1,"1","Cangjie-Test", "XML_REPORT_CONTENT_LENGTH: ${xmlReport.size}")
+                Hilog.info(1, "Cangjie-Test", "XML_REPORT_CONTENT_LENGTH: ${xmlReport.size}")
                 xmlReport.split("\n", removeEmpty: true) |> forEach {
-                    line: String => Hilog.info(1,"1","Cangjie-Test", line)
+                    line: String => Hilog.info(1, "Cangjie-Test", line)
                 }
-                Hilog.info(1,"1","Cangjie-Test", "EXECUTE_CLASS_END: \"${testClassName}\"")
+                Hilog.info(1, "Cangjie-Test", "EXECUTE_CLASS_END: \"${testClassName}\"")
         }
     }
     private func executeAllTestClasses(): Unit {
@@ -154,7 +154,7 @@ public class OpenHarmonyTestRunner <: TestRunner {
     }
     private func executeTestCase(testClassName: String, testCaseName: String): Unit {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        Hilog.info(1,"1","Cangjie-Test", "EXECUTE_METHOD_START: \"${testClassName}#${testCaseName}\"")
+        Hilog.info(1, "Cangjie-Test", "EXECUTE_METHOD_START: \"${testClassName}#${testCaseName}\"")
         let testSuite = match (OpenHarmonyTestRunner
             .testSuiteMap
             .get(testClassName)) {
@@ -175,32 +175,32 @@ public class OpenHarmonyTestRunner <: TestRunner {
             .Directory
             .readFrom("/data/storage/el1/base/tests") |> filter {fileInfo => fileInfo.name == testReportXmlFileName} |>
             first) {
-            case None => Hilog.info(1,"1","Cangjie-Test", "${testReportXmlFileName} not found.")
+            case None => Hilog.info(1, "Cangjie-Test", "${testReportXmlFileName} not found.")
             case Some(testReportXmlFileInfo) =>
                 let testReportXmlFilePath = testReportXmlFileInfo.path
                 let testReportXmlFileContent = fs
                     .File
                     .readFrom(testReportXmlFilePath)
                 let xmlReport = String.fromUtf8(testReportXmlFileContent)
-                Hilog.info(1,"1","Cangjie-Test", "XML_REPORT_CONTENT_LENGTH: ${xmlReport.size}")
+                Hilog.info(1, "Cangjie-Test", "XML_REPORT_CONTENT_LENGTH: ${xmlReport.size}")
                 xmlReport.split("\n", removeEmpty: true) |> forEach {
-                    line: String => Hilog.info(1,"1","Cangjie-Test", line)
+                    line: String => Hilog.info(1, "Cangjie-Test", line)
                 }
-                Hilog.info(1,"1","Cangjie-Test", "EXECUTE_METHOD_END: \"${testClassName}#${testCaseName}\"")
+                Hilog.info(1, "Cangjie-Test", "EXECUTE_METHOD_END: \"${testClassName}#${testCaseName}\"")
         }
     }
     public override func onPrepare(): Unit {
-        Hilog.info(1,"1","Cangjie-Test", "OpenHarmonyTestRunner onPrepare")
+        Hilog.info(1, "Cangjie-Test", "OpenHarmonyTestRunner onPrepare")
         for (testClassInstanceGenerator in OpenHarmonyTestRunner.testClassInstanceGenerators) {
             let testClassInstance = try {
                 testClassInstanceGenerator()
             } catch (e: Exception) {
-                Hilog.info(1,"1","Cangjie-Test", "exception occurred during testsuite generation:\n${getDetailedInfoOf(e)}")
+                Hilog.info(1, "Cangjie-Test", "exception occurred during testsuite generation:\n${getDetailedInfoOf(e)}")
                 continue
             }
             let testSuite = testClassInstance.asTestSuite()
             let testSuiteName = testSuite.name
-            Hilog.info(1,"1","Cangjie-Test", "Registering TestSuite ${testSuiteName}")
+            Hilog.info(1, "Cangjie-Test", "Registering TestSuite ${testSuiteName}")
             OpenHarmonyTestRunner
                 .testSuiteMap
                 .add(testSuiteName, testSuite)
@@ -208,7 +208,7 @@ public class OpenHarmonyTestRunner <: TestRunner {
     }
     public override func onRun(): Unit {
         try {
-            Hilog.info(1,"1","Cangjie-Test", "OpenHarmonyTestRunner onRun")
+            Hilog.info(1, "Cangjie-Test", "OpenHarmonyTestRunner onRun")
             let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
             const classFilePath = "/data/storage/el1/base/class.txt"
             const testTypeFilePath = "/data/storage/el1/base/testType.txt"
@@ -231,7 +231,7 @@ public class OpenHarmonyTestRunner <: TestRunner {
                             false
                         }
                     )
-                Hilog.info(1,"1","Cangjie-Test", "dryRun includeTags = ${dryRun}")
+                Hilog.info(1, "Cangjie-Test", "dryRun includeTags = ${dryRun}")
             } else if (let Some(dryRun) <- AbilityDelegatorRegistry
                 .getArguments()
                 .parameters
@@ -306,7 +306,7 @@ public class OpenHarmonyTestRunner <: TestRunner {
                 allTags.add(all: tags)
             }
             let includeTags = String.join(allTags |> collectArray, delimiter: ",")
-            Hilog.info(1,"1","Cangjie-Test", "After argument preprocessing, those tags would be included: ${includeTags} .")
+            Hilog.info(1, "Cangjie-Test", "After argument preprocessing, those tags would be included: ${includeTags} .")
             this
                 .configuration
                 .setByName("includeTags", includeTags)
@@ -324,7 +324,7 @@ public class OpenHarmonyTestRunner <: TestRunner {
                             .File
                             .readFrom(classFilePath))
                         FileIo.unlink(classFilePath)
-                        Hilog.info(1,"1","Cangjie-Test", "text includeTags = ${text}")
+                        Hilog.info(1, "Cangjie-Test", "text includeTags = ${text}")
                         text.split(",", removeEmpty: true) |>
                             forEach {
                             t: String =>
@@ -359,13 +359,13 @@ public class OpenHarmonyTestRunner <: TestRunner {
                         executeAllTestClasses()
                     }
                 } catch (e: Exception) {
-                    Hilog.info(1,"1","Cangjie-Test", "an exception occurred:\n${getDetailedInfoOf(e)}")
+                    Hilog.info(1, "Cangjie-Test", "an exception occurred:\n${getDetailedInfoOf(e)}")
                 }
                 gcov_dump("/data/storage/el1/base/cov")
                 abilityDelegator.finishTest("Test finished.", 0)
             }
         } catch (e: Exception) {
-            Hilog.info(1,"1","Cangjie-Test", "Exception thrown when executing test runner: ${e.stackTrace}")
+            Hilog.info(1, "Cangjie-Test", "Exception thrown when executing test runner: ${e.stackTrace}")
         }
     }
 }
@@ -574,18 +574,18 @@ public class Screen {
 
 public class UiComponentTree {
     public static func findAllUiComponentsWhoseIdEqualsTo(id: String): Array<UiComponent> {
-        Hilog.info(1,"1","Cangjie-Test", "UiComponentTree.findAllUiComponentsWhoseIdEqualsTo(${id})")
+        Hilog.info(1, "Cangjie-Test", "UiComponentTree.findAllUiComponentsWhoseIdEqualsTo(${id})")
         []
     }
     public static func findTheOnlyUiComponentWhoseIdEqualsTo(id: String): Option<UiComponent> {
-        Hilog.info(1,"1","Cangjie-Test", "UiComponentTree.findTheOnlyUiComponentWhoseIdEqualsTo(${id})")
+        Hilog.info(1, "Cangjie-Test", "UiComponentTree.findTheOnlyUiComponentWhoseIdEqualsTo(${id})")
         match (Screen.findTheOnlyUiComponentWhoseIdEqualsTo(id)) {
             case Some(uiComponent) => uiComponent
             case None => UiComponentById(id)
         }
     }
     public static func getTheOnlyUiComponentWhoseIdEqualsTo(id: String): UiComponent {
-        Hilog.info(1,"1","Cangjie-Test", "UiComponentTree.getTheOnlyUiComponentWhoseIdEqualsTo(${id})")
+        Hilog.info(1, "Cangjie-Test", "UiComponentTree.getTheOnlyUiComponentWhoseIdEqualsTo(${id})")
         match (findTheOnlyUiComponentWhoseIdEqualsTo(id)) {
             case Some(uiComponent) => uiComponent
             case None => throw UiComponentNotFoundById(id)
@@ -717,7 +717,7 @@ public interface UiComponent <: Hashable & Equatable<UiComponent> {
             info.append("${attributeName}-${attributeValue}\n")
         }
         info.append("end====${this.id}====\n")
-        Hilog.info(1,"1","Cangjie-Test", info.toString())
+        Hilog.info(1, "Cangjie-Test", info.toString())
     }
     operator func [](attributePath: String): String {
         getAttribute(attributePath)
@@ -858,7 +858,7 @@ public func logEvent(eventName: String, eventContent: String): Unit {
     let timeStamp = DateTime.now()
     let event = Event(timeStamp, eventName, eventContent)
     logManager.appendEvent(event)
-    Hilog.info(1,"1","Cangjie-Test", "[${eventName}]: ${eventContent}")
+    Hilog.info(1, "Cangjie-Test", "[${eventName}]: ${eventContent}")
 }
 
 public func waitForEventWithName(eventName: String, timeOut!: Duration = Duration.Max, processor!: (Event) -> Unit): Unit {

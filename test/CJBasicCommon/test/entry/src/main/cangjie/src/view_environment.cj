@@ -49,7 +49,7 @@ func parseLayout(layout: LayoutDirection): String{
 // 模拟步进测试@StorageProp注解功能
 // 回退
 // fontScale取消注释后报错文件在桌面t.txt
-class View_Environment {
+class ViewEnvironment {
     let d0 = Environment.aboutToBeDeleted()
     // 初始化 清除应用AppStorage
     let d1 = AppStorage.delete("accessibilityEnabled")

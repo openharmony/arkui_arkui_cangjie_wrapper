@@ -39,7 +39,7 @@ let tabs_views = [
 
 @Entry
 @Component
-class View_Tab {
+class ViewTab {
     func build() {
         Column() {
             ForEach(

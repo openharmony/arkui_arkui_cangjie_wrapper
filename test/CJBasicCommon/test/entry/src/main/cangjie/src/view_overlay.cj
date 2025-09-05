@@ -27,7 +27,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Overlay {
+class ViewOverlay {
     func build() {
        Column(space: 10) {
             Column() {

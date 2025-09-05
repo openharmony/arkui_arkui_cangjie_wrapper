@@ -25,7 +25,7 @@ import ohos.multimedia.image.*
 
 @Entry
 @Component
-class View_ImageSpan {
+class ViewImageSpan {
     @State
     var s_width: Float64 = 0.0
     let color = Array<UInt8>(96, repeat: 0)

@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_ForegroundColor {
+class ViewForegroundColor {
     func build() {
         Column(space: 100) {
             Button("ColoringStrategy.Invert").width(100.percent).height(80).fontSize(20)

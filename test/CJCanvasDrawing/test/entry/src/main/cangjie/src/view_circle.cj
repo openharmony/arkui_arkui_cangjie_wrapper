@@ -26,7 +26,7 @@ import ohos.arkui.component.MouseButton as MouseButtonUI
 
 @Entry
 @Component
-class View_Circle {
+class ViewCircle {
     func build() {
         Column(space: 10) {
             // 绘制一个直径为150、线条为红色虚线的圆环（宽高设置不一致时以短边为直径）

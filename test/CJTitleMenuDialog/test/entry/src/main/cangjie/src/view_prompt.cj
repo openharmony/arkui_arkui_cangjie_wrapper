@@ -25,7 +25,7 @@ var customdialogId: Int32 = 0
 
 @Entry
 @Component
-class View_Prompt {
+class ViewPrompt {
     @State
     var index0: Int32 = -1
     @State
@@ -45,7 +45,7 @@ class View_Prompt {
     var baseDialogOptions: BaseDialogOptions = BaseDialogOptions()
     var customDialogOptions2: CustomDialogOptions = CustomDialogOptions(builder: {=>})
     @Builder
-    func CustomDialog() {
+    func customDialog() {
         Column() {
             Text("Hello").height(50.vp)
             Button("CloseDialog").onClick({
@@ -158,7 +158,7 @@ class View_Prompt {
                 .onClick(
                     {
                         evt => getUIContext().getPromptAction().openCustomDialog(
-                            CustomDialogOptions(builder: bind(this.CustomDialog, this)),
+                            CustomDialogOptions(builder: bind(this.customDialog, this)),
                             {
                                 id => customdialogId = id
                             }
@@ -216,7 +216,7 @@ class View_Prompt {
                         try {
                             getUIContext().getPromptAction().showDialog(showDialogOptions)
                         } catch (e: Exception) {
-                            logger("View_Prompt: PromptAction.showDialog error: ${e.message}")
+                            logger("ViewPrompt: PromptAction.showDialog error: ${e.message}")
                         }
                 })
                 .id("showDialog3")
@@ -232,7 +232,7 @@ class View_Prompt {
                         try {
                             getUIContext().getPromptAction().showDialog(showDialogOptions2)
                         } catch (e: Exception) {
-                            logger("View_Prompt: PromptAction.showDialog error: ${e.message}")
+                            logger("ViewPrompt: PromptAction.showDialog error: ${e.message}")
                         }
                         var showDialogOptions3: ShowDialogOptions = ShowDialogOptions(
                             shadow: ShadowOptions(radius: 0.0), buttons: mButtons)

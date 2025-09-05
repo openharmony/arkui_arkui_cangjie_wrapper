@@ -1111,13 +1111,13 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            TapGestureHandler().tag("addGesture")
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Tap_Count_1_Figers_1 onAction")
+//                Hilog.info(1, "Cangjie-App", "Tap_Count_1_Figers_1 onAction")
 //            }), priority: GesturePriority.High
 //        )
 //        event.addParallelGesture(
 //            TapGestureHandler().tag("addParallelGesture")
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Tap_Count_1_Figers_1 onAction")
+//                Hilog.info(1, "Cangjie-App", "Tap_Count_1_Figers_1 onAction")
 //            })
 //        )
 //        event.removeGestureByTag("addParallelGesture")
@@ -1129,7 +1129,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            TapGestureHandler(count: 2, fingers: 1)
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Tap_Count_2_Figers_1 onAction")
+//                Hilog.info(1, "Cangjie-App", "Tap_Count_2_Figers_1 onAction")
 //            })
 //        )
 //    }
@@ -1140,7 +1140,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            TapGestureHandler(count: 1, fingers: 2)
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Tap_Count_1_Figers_2 onAction")
+//                Hilog.info(1, "Cangjie-App", "Tap_Count_1_Figers_2 onAction")
 //            })
 //        )
 //    }
@@ -1192,7 +1192,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            LongPressGestureHandler()
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "LongPress_Default onAction")
+//                Hilog.info(1, "Cangjie-App", "LongPress_Default onAction")
 //            })
 //        )
 //    }
@@ -1203,13 +1203,13 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            LongPressGestureHandler(repeat: true)
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "LongPress_Repeat_True onAction")
+//                Hilog.info(1, "Cangjie-App", "LongPress_Repeat_True onAction")
 //            })
 //            .onActionEnd({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "LongPress_Repeat_True onActionEnd")
+//                Hilog.info(1, "Cangjie-App", "LongPress_Repeat_True onActionEnd")
 //            })
 //            .onActionCancel({ =>
-//                Hilog.info(1,"1","Cangjie-App", "LongPress_Repeat_True onActionCancel")
+//                Hilog.info(1, "Cangjie-App", "LongPress_Repeat_True onActionCancel")
 //            })
 //        )
 //    }
@@ -1220,10 +1220,10 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            LongPressGestureHandler(repeat: false)
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "LongPress_Repeat_True onAction")
+//                Hilog.info(1, "Cangjie-App", "LongPress_Repeat_True onAction")
 //            })
 //            .onActionEnd({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "LongPress_Repeat_True onActionEnd")
+//                Hilog.info(1, "Cangjie-App", "LongPress_Repeat_True onActionEnd")
 //            })
 //        )
 //    }
@@ -1234,10 +1234,10 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            LongPressGestureHandler(duration: 2000)
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "LongPress_Duration_1000 onAction")
+//                Hilog.info(1, "Cangjie-App", "LongPress_Duration_1000 onAction")
 //            })
 //            .onActionEnd({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "LongPress_Duration_1000 onActionEnd")
+//                Hilog.info(1, "Cangjie-App", "LongPress_Duration_1000 onActionEnd")
 //            })
 //        )
 //    }
@@ -1248,10 +1248,10 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            LongPressGestureHandler(duration: -1)
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "LongPress_Duration_Negative1 onAction")
+//                Hilog.info(1, "Cangjie-App", "LongPress_Duration_Negative1 onAction")
 //            })
 //            .onActionEnd({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "LongPress_Duration_Negative1 onActionEnd")
+//                Hilog.info(1, "Cangjie-App", "LongPress_Duration_Negative1 onActionEnd")
 //            })
 //        )
 //    }
@@ -1325,16 +1325,16 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            PanGestureHandler()
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pan_Default onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Pan_Default onActionStart")
 //            })
 //            .onActionUpdate({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pan_Default onActionUpdate")
+//                Hilog.info(1, "Cangjie-App", "Pan_Default onActionUpdate")
 //            })
 //            .onActionEnd({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pan_Default onActionEnd")
+//                Hilog.info(1, "Cangjie-App", "Pan_Default onActionEnd")
 //            })
 //            .onActionCancel({ =>
-//                Hilog.info(1,"1","Cangjie-App", "Pan_Default onActionEnd")
+//                Hilog.info(1, "Cangjie-App", "Pan_Default onActionEnd")
 //            })
 //        )
 //    }
@@ -1345,7 +1345,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            PanGestureHandler(fingers: 2)
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pan_Finger_2 onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Pan_Finger_2 onActionStart")
 //            })
 //        )
 //    }
@@ -1356,7 +1356,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            PanGestureHandler(direction: PanDirection.Horizontal)
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pan_Horizontal onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Pan_Horizontal onActionStart")
 //            })
 //        )
 //    }
@@ -1367,7 +1367,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            PanGestureHandler(direction: PanDirection.Vertical)
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pan_Vertical onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Pan_Vertical onActionStart")
 //            })
 //        )
 //    }
@@ -1378,7 +1378,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            PanGestureHandler(distance: 50.0)
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pan_Distance_50 onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Pan_Distance_50 onActionStart")
 //            })
 //        )
 //    }
@@ -1389,7 +1389,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            PanGestureHandler(distance: -1.0)
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pan_Distance_Negative_1 onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Pan_Distance_Negative_1 onActionStart")
 //            })
 //        )
 //    }
@@ -1474,16 +1474,16 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            PinchGestureHandler()
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pinch_Default onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Pinch_Default onActionStart")
 //            })
 //            .onActionUpdate({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pinch_Default onActionUpdate")
+//                Hilog.info(1, "Cangjie-App", "Pinch_Default onActionUpdate")
 //            })
 //            .onActionEnd({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pinch_Default onActionEnd")
+//                Hilog.info(1, "Cangjie-App", "Pinch_Default onActionEnd")
 //            })
 //            .onActionCancel({ =>
-//                Hilog.info(1,"1","Cangjie-App", "Pinch_Default onActionCancel")
+//                Hilog.info(1, "Cangjie-App", "Pinch_Default onActionCancel")
 //            })
 //        )
 //    }
@@ -1494,7 +1494,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            PinchGestureHandler(fingers: 3)
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pinch_Default onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Pinch_Default onActionStart")
 //            })
 //        )
 //    }
@@ -1505,7 +1505,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            PinchGestureHandler(distance: -1.0)
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pinch_distance_Negative_1 onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Pinch_distance_Negative_1 onActionStart")
 //            })
 //        )
 //    }
@@ -1516,7 +1516,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            PinchGestureHandler(distance: 10.0)
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Pinch_distance_10 onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Pinch_distance_10 onActionStart")
 //            })
 //        )
 //    }
@@ -1579,16 +1579,16 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            RotationGestureHandler()
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Rotation_Default onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Rotation_Default onActionStart")
 //            })
 //            .onActionUpdate({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Rotation_Default onActionUpdate")
+//                Hilog.info(1, "Cangjie-App", "Rotation_Default onActionUpdate")
 //            })
 //            .onActionEnd({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Rotation_Default onActionEnd")
+//                Hilog.info(1, "Cangjie-App", "Rotation_Default onActionEnd")
 //            })
 //            .onActionCancel({ =>
-//                Hilog.info(1,"1","Cangjie-App", "Rotation_Default onActionCancel")
+//                Hilog.info(1, "Cangjie-App", "Rotation_Default onActionCancel")
 //            })
 //        )
 //    }
@@ -1599,7 +1599,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            RotationGestureHandler(fingers: 3)
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Rotation_Fingers_3 onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Rotation_Fingers_3 onActionStart")
 //            })
 //        )
 //    }
@@ -1610,7 +1610,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            RotationGestureHandler(angle: 60.0)
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Rotation_Fingers_3 onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Rotation_Fingers_3 onActionStart")
 //            })
 //        )
 //    }
@@ -1621,7 +1621,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            RotationGestureHandler(angle: -1.0)
 //            .onActionStart({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Rotation_Angle_Negative_1 onActionStart")
+//                Hilog.info(1, "Cangjie-App", "Rotation_Angle_Negative_1 onActionStart")
 //            })
 //        )
 //    }
@@ -1684,7 +1684,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            SwipeGestureHandler()
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Swipe_Default onAction")
+//                Hilog.info(1, "Cangjie-App", "Swipe_Default onAction")
 //            })
 //        )
 //    }
@@ -1695,7 +1695,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            SwipeGestureHandler(fingers: 2)
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Swipe_Default onAction")
+//                Hilog.info(1, "Cangjie-App", "Swipe_Default onAction")
 //            })
 //        )
 //    }
@@ -1706,7 +1706,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            SwipeGestureHandler(direction: SwipeDirection.Horizontal)
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Swipe_Horizontal onAction")
+//                Hilog.info(1, "Cangjie-App", "Swipe_Horizontal onAction")
 //            })
 //        )
 //    }
@@ -1717,7 +1717,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            SwipeGestureHandler(direction: SwipeDirection.Vertical)
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Swipe_Vertical onAction")
+//                Hilog.info(1, "Cangjie-App", "Swipe_Vertical onAction")
 //            })
 //        )
 //    }
@@ -1728,7 +1728,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            SwipeGestureHandler(direction: SwipeDirection.All)
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Swipe_All onAction")
+//                Hilog.info(1, "Cangjie-App", "Swipe_All onAction")
 //            })
 //        )
 //    }
@@ -1739,7 +1739,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            SwipeGestureHandler(speed: 200.0)
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Swipe_Speed_200 onAction")
+//                Hilog.info(1, "Cangjie-App", "Swipe_Speed_200 onAction")
 //            })
 //        )
 //    }
@@ -1750,7 +1750,7 @@ package ohos_app_cangjie_entry
 //        event.addGesture(
 //            SwipeGestureHandler(speed: -1.0)
 //            .onAction({ evt =>
-//                Hilog.info(1,"1","Cangjie-App", "Swipe_Negative_1 onAction")
+//                Hilog.info(1, "Cangjie-App", "Swipe_Negative_1 onAction")
 //            })
 //        )
 //    }
@@ -2065,7 +2065,7 @@ package ohos_app_cangjie_entry
 //
 //@Entry
 //@Component
-//class View_Gesture {
+//class ViewGesture {
 //    @State var currentGesture: Int64 = 0;
 //
 //    func build() {

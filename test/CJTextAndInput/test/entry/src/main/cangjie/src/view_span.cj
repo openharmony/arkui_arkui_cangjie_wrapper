@@ -28,7 +28,7 @@ import kit.LocalizationKit.*
 
 @Entry
 @Component
-class View_Span {
+class ViewSpan {
     @State
     var message: Int32 = 0
     @State
@@ -84,7 +84,7 @@ class View_Span {
                     .fontStyle(FontStyle.Italic)
                     .decoration(decorationType: TextDecorationType.LineThrough,
                         color: @r(app.color.start_window_background))
-                    .onClick({event => Hilog.info(1,"1","Cangjie-Test", text1)})
+                    .onClick({event => Hilog.info(1, "Cangjie-Test", text1)})
             }.id("spanComponent2")
         }.height(100.percent)
     }

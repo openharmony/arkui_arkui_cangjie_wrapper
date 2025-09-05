@@ -2,19 +2,19 @@
   "name": "testsuite_cj_common_test",
   "test_list": [
     {
-      "name": "TitleMenuDialog_UT_1",
+      "name": "TitleMenuDialogUT1",
       "timeout": 100
     },
     {
-      "name": "TitleMenuDialog_UT_1_1",
+      "name": "TitleMenuDialogUT11",
       "timeout": 100
     },
     {
-      "name": "TitleMenuDialog_UT_2",
+      "name": "TitleMenuDialogUT2",
       "timeout": 100
     },
     {
-      "name": "TitleMenuDialog_UT_2_1",
+      "name": "TitleMenuDialogUT21",
       "timeout": 100
     }
   ]

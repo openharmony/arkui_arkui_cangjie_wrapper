@@ -24,7 +24,7 @@ import std.collection.*
 
 @Entry
 @Component
-class View_TextClock {
+class ViewTextClock {
     @State
     var controller: TextClockController = TextClockController()
     @State

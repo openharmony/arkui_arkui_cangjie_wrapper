@@ -12,7 +12,7 @@ import ohos.arkui.state_macro_manage.r
 
 @Entry
 @Component
-class View_ActionSheet {
+class ViewActionSheet {
     var sheets: Array<SheetInfo> = [SheetInfo(title: "apple", action: {=> Hilog.info(1, "1", "1", "apple sheet")},
         icon: @r(app.media.app_icon)), SheetInfo(title: "banana", action: {=> Hilog.info(1, "1", "1", "banana sheet")})]
     var confirm: ActionSheetButtonOptions = ActionSheetButtonOptions(value: "Confirm button",

@@ -25,7 +25,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Base {
+class ViewBase {
     @State
     var isOn: Bool = false
 

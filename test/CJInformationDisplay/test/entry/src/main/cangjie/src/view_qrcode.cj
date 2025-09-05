@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_QRCode {
+class ViewQRCode {
     var value: String = "hello world";
 
     func build() {

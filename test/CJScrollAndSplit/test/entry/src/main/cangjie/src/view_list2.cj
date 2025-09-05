@@ -26,7 +26,7 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_List2 {
+class ViewList2 {
     @State
     var scroller: Scroller = Scroller()
 

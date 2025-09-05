@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_LoadingProgress {
+class ViewLoadingProgress {
 
     func build() {
         Column(space: 5) {

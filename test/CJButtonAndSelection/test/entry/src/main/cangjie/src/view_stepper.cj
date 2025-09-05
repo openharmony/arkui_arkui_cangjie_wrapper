@@ -42,7 +42,7 @@ extend ItemState {
 
 @Entry
 @Component
-class View_Stepper {
+class ViewStepper {
     //响应式状态变量
     @State
     var currentIndex: UInt32 = 0

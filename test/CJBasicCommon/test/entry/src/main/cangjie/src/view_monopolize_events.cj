@@ -24,7 +24,7 @@ import ohos.base.LengthProp
 
 @Entry
 @Component
-class View_MonopolizeEvents {
+class ViewMonopolizeEvents {
     @State var message: String = 'set monopolizeEvents false'
     @State var messageOut: String = ' '
     @State var messageInner: String = ' '

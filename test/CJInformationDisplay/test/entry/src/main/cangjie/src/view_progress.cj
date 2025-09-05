@@ -22,7 +22,7 @@ import ohos.base.*
 
 @Entry
 @Component
-class View_Progress {
+class ViewProgress {
     let ringStyle = RingStyleOptions(strokeWidth: 20.vp, shadow: false, status: ProgressStatus.Progressing,
         enableSmoothEffect: true, enableScanEffect: false)
     let ringStyle2 = RingStyleOptions(strokeWidth: 20.vp, shadow: false, status: ProgressStatus.Loading,

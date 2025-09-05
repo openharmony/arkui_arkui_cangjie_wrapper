@@ -26,7 +26,7 @@ let propmsg = AppStorage.setOrCreate<String>("propmsg","999")
 
 @Entry
 @Component
-class View_Appstorage {
+class ViewAppstorage {
     @State var msgText: String = "111"
     @StorageLink["count"] var count: Int64 = 100
     let linkToMsg1 = AppStorage.link<String>("msg").getOrThrow()

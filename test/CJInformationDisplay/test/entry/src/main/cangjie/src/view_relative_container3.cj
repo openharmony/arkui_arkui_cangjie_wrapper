@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Relative_Container3 {
+class ViewRelativeContainer3 {
     func build() {
         Row() {
             RelativeContainer() {
