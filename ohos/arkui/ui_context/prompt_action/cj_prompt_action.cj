@@ -1680,11 +1680,11 @@ func parseBaseDialogOptions(options: CustomDialogOptions): NativeBaseDialogOptio
 func length2String(value: Length): String {
     let length = transAppResourceToLength(value)
         return match (length.unitType) {
-            case px(v) => "${length.value}px"
-            case vp(v) => "${length.value}vp"
-            case fp(v) => "${length.value}fp"
-            case percent(v) => "${length.value}%"
-            case lpx(v) => "${length.value}lpx"
+            case Px => "${length.value}px"
+            case Vp => "${length.value}vp"
+            case Fp => "${length.value}fp"
+            case Percent => "${length.value}%"
+            case Lpx => "${length.value}lpx"
             case _ => "${length.value}"
         }
 }
