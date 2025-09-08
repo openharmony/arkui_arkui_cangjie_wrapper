@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.animator
+protected package ohos.arkui.ui_context.animator
 
 import ohos.base.*
 import ohos.ffi.*
@@ -299,7 +299,7 @@ public class AnimatorOptions {
     /**
      * Create an animator options.
      *
-     * @param { Int32 } duration - Duration of the animation, in milliseconds. 
+     * @param { Int32 } duration - Duration of the animation, in milliseconds.
      * The default value is 0.
      * @param { String } easing - Time curve of the animation.
      * @param { Int32 } delay - Delay for the animation start. The default value indicates no delay.
@@ -386,7 +386,7 @@ public class AnimatorResult <: RemoteDataLite {
     ~init() {
         releaseFFIData(myDataId)
     }
-    
+
     /**
      * Trigger when vsync callback.
      *
@@ -495,7 +495,7 @@ public class AnimatorResult <: RemoteDataLite {
      * Reset the options for current animator.
      *
      * @param { AnimatorOptions } options
-     * @relation 
+     * @relation
      */
     @!APILevel[
         21,
@@ -539,7 +539,7 @@ public class AnimatorResult <: RemoteDataLite {
 
     /**
      * Ends the animation.
-     * 
+     *
      * @relation finish(): void
      */
     @!APILevel[
@@ -558,7 +558,7 @@ public class AnimatorResult <: RemoteDataLite {
 
     /**
      * Pauses the animation.
-     * 
+     *
      * @relation pause(): void
      */
     @!APILevel[
@@ -577,7 +577,7 @@ public class AnimatorResult <: RemoteDataLite {
 
     /**
      * Cancels the animation.
-     * 
+     *
      * @relation cancel(): void
      */
     @!APILevel[
@@ -597,7 +597,7 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * Plays the animation in reverse direction.
      * Invalid when using interpolating-spring curve.
-     * 
+     *
      * @relation reverse(): void
      */
     @!APILevel[
@@ -633,9 +633,9 @@ public class AnimatorResult <: RemoteDataLite {
 
     /**
      * The expected frame rate of dynamical of rate range.
-     * 
+     *
      * @param { ExpectedFrameRateRange } rateRange
-     * @relation 
+     * @relation
      */
     @!APILevel[
         21,

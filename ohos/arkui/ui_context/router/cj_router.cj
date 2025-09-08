@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.router
+protected package ohos.arkui.ui_context.router
 
 import ohos.base.*
 import ohos.hilog.HilogChannel
@@ -224,14 +224,36 @@ struct RouterStateList {
     }
 }
 
-@!APILevel[
+/**
+ * class Router
+ *
+ * @relation export declare class Router
+ */
+ @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+public class Router {
+    private var instanceId_: Int64 = 0
 
-protected class RouterInner {
-    protected static func push(url!: String, params!: String = "") {
+    protected init(instanceId: Int64) {
+        this.instanceId_ = instanceId
+    }
+
+    /**
+     * Navigates to a specified page in the application.
+     *
+     * @param { String } url
+     * @param { String } params
+     * @relation pushUrl(options: router.RouterOptions): Promise<void>
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func pushUrl(url!: String, params!: String = ""): Unit {
         unsafe {
             try (cUrl = LibC.mallocCString(url).asResource(),
                 cParams = LibC.mallocCString(params).asResource()) {
@@ -240,20 +262,40 @@ protected class RouterInner {
         }
     }
 
-    protected static func back(url!: String, params!: String = "") {
+    /**
+     * Returns to the previous page or a specified page.
+     *
+     * @param { String } url
+     * @param { String } params
+     * @relation back(options?: router.RouterOptions): void
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func back(url!: ?String = None, params!: String = ""): Unit {
         unsafe {
-            try (cUrl = LibC.mallocCString(url).asResource(),
+            try (cUrl = LibC.mallocCString(url ?? "").asResource(),
                 cParams = LibC.mallocCString(params).asResource()) {
                 FfiOHOSAceFrameworkRouterBack(cUrl.value, cParams.value)
             }
         }
     }
 
-    protected static func back() {
-        back(url: "")
-    }
-
-    protected static func back(index!: Int32, params!: String = "") {
+    /**
+     * Returns to the previous page or a specified page.
+     *
+     * @param { Int32 } index
+     * @param { String } params
+     * @relation back(index: number, params?: Object): void;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func back(index!: Int32, params!: String = ""): Unit {
         unsafe {
             try (cParams = LibC.mallocCString(params).asResource()) {
                 FfiOHOSAceFrameworkRouterBackIndex(index, cParams.value)
@@ -261,7 +303,18 @@ protected class RouterInner {
         }
     }
 
-    protected static func getParams(): Option<String> {
+    /**
+     * Obtains information about the current page params.
+     *
+     * @returns { Option<String> } Page params.
+     * @relation getParams(): Object;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func getParams(): Option<String> {
         let paramStr = unsafe { FfiOHOSAceFrameworkRouterGetParams() }
         var res: Option<String> = Option<String>.None
         if (!paramStr.isNull()) {

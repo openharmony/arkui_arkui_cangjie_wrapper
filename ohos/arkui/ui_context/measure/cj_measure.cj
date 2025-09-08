@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.ui_context
+protected package ohos.arkui.ui_context.measure
 
 import ohos.base.*
 import ohos.ffi.*
@@ -232,5 +232,52 @@ protected func measureTextSize(options: MeasureOptions): SizeOptions {
         LibC.free(contextC.fontWeight)
         LibC.free(contextC.fontFamily)
         SizeOptions(width: result.width, height: result.height)
+    }
+}
+
+/**
+ * Defines the Measure interface.
+ *
+ * @relation export default class MeasureText
+ */
+ @!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class MeasureUtils {
+    private var instanceId: Int64
+    protected init(instanceId: Int64) {
+        this.instanceId = instanceId
+    }
+    /**
+     * Displays the textWidth.
+     *
+     * @param  { MeasureOptions } options - Options.
+     * @returns { Float64 }
+     * @relation static measureText(options: MeasureOptions): number;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func measureText(options: MeasureOptions): Float64 {
+        measureText(options)
+    }
+    /**
+     * Displays the text width and height.
+     *
+     * @param { MeasureOptions } options - Options of measure area occupied by text.
+     * @returns { SizeOptions } width and height for text to display
+     * @relation static measureTextSize(options: MeasureOptions): SizeOptions;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func measureTextSize(options: MeasureOptions): SizeOptions {
+        measureTextSize(options)
     }
 }

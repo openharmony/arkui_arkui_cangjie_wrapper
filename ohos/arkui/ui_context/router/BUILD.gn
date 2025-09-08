@@ -13,18 +13,16 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.animator") {
-  sources = [ "cj_animator.cj" ]
+ohos_cangjie_shared_library("ohos.arkui.ui_context.router") {
+  sources = [ "cj_router.cj" ]
 
   cj_deps = [
-    "../arkui/component/common:ohos.arkui.component.common",
-    "../base:ohos.base",
+    "../../../base:ohos.base",
   ]
 
   cj_external_deps = [
     "cangjie_ark_interop:ohos.ffi",
     "cangjie_ark_interop:ohos.labels",
-    "cangjie_ark_interop:ohos.business_exception",
     "hiviewdfx_cangjie_wrapper:ohos.hilog",
   ]
 

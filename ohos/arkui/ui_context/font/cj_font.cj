@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.font
+protected package ohos.arkui.ui_context.font
 
 import ohos.base.*
 import ohos.hilog.HilogChannel
@@ -222,11 +222,39 @@ foreign func FfiFontManagerGetFontByName(fontName: CString): CPointer<NativeFont
 
 foreign func FfiFontManagerGetUIFontConfig(): NativeUIFontConfig
 
-protected class FontInner {
-    protected static func registerFont(familyName!: ResourceStr, familySrc!: ResourceStr): Unit {
+/**
+ * class Font
+ *
+ * @relation export declare class Font
+ */
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class Font {
+    private var instanceId_: Int64 = 0
+
+    protected init(instanceId: Int64) {
+        this.instanceId_ = instanceId
+    }
+
+    /**
+     * Register a customized font in the FontManager.
+     *
+     * @param { ResourceStr } familyName
+     * @param { ResourceStr } familySrc
+     * @relation registerFont(options: font.FontOptions): void
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func registerFont(familyName!: ResourceStr, familySrc!: ResourceStr): Unit {
         var src: String = ""
         match (familySrc) {
-            case res: AppResource => 
+            case res: AppResource =>
                 if (res.resType == RAWFILE_TYPE) {
                     src = getResourceMedia(res)
                 } else if (res.resType == STRING_TYPE) {
@@ -245,7 +273,18 @@ protected class FontInner {
         }
     }
 
-    protected static func getSystemFontList(): Array<String> {
+    /**
+     * Gets a list of fonts supported by system.
+     *
+     * @returns { Array<String> } A list of font names
+     * @relation getSystemFontList(): Array<string>
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func getSystemFontList(): Array<String> {
         unsafe {
             let ffiList = FFIVectorString(FfiFontManagerGetSystemFontList())
             let list = Array<String>(ffiList.getSize(), {
@@ -256,7 +295,19 @@ protected class FontInner {
         }
     }
 
-    protected static func getFontByName(fontName: String): ?FontInfo {
+    /**
+     * Get font details according to the font name.
+     *
+     * @param { String } fontName - font name
+     * @returns { FontInfo } Returns the font info
+     * @relation getFontByName(fontName: string): font.FontInfo
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func getFontByName(fontName: String): ?FontInfo {
         unsafe {
             var result: ?FontInfo = None
             try (name = LibC.mallocCString(fontName).asResource()) {

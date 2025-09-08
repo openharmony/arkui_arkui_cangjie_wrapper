@@ -13,15 +13,15 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.font") {
+ohos_cangjie_shared_library("ohos.arkui.ui_context.font") {
   sources = [
     "cj_font.cj",
     "cj_font_api.cj",
   ]
 
   cj_deps = [
-    "../base:ohos.base",
-    "../arkui/component/util:ohos.arkui.component.util"
+    "../../../base:ohos.base",
+    "../../component/util:ohos.arkui.component.util"
   ]
 
   cj_external_deps = [
