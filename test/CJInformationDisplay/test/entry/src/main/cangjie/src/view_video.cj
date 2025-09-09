@@ -24,8 +24,8 @@ import kit.ArkUI.*
 
 @Entry
 @Component
-class View_Video {
-    var videoSrc: AppResource = @rawfile("videoTest.mp4")
+class ViewVideo {
+    var videoSrc: AppResource = @rawfile("video.mp4")
     var previewUri: AppResource = @r(app.media.icon)
     @State
     var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X

@@ -27,7 +27,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Image_Animator {
+class ViewImageAnimator {
     @State
     var value: Int32 = 1
 

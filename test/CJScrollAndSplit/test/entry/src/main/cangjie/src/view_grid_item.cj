@@ -26,7 +26,7 @@ import std.collection.{ArrayList, HashMap, HashSet}
 
 @Entry
 @Component
-class View_Grid_Item {
+class ViewGridItem {
     let scroller = Scroller()
     @State
     var numbers: ArrayList<String> = ArrayList(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13",
@@ -207,7 +207,8 @@ class View_Grid_Item {
                 .height(150)
                 .padding(4.vp)
 
-            Text("scroll")
+            Text(this.message)
+                .id("scroll_text")
                 .fontColor(0xCCCCCC)
                 .fontSize(9)
                 .width(90.percent)

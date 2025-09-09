@@ -18,25 +18,31 @@ package ohos_app_cangjie_entry
 let _ = testsuite()
 
 func testsuite(): Unit {
-    registerTestSuite("ButtonSelect_UT_1") {ButtonSelect_UT_1()}
-    registerTestSuite("ButtonSelect_UT_2") {ButtonSelect_UT_2()}
+    registerTestSuite("ButtonSelectUT1") {ButtonSelectUT1()}
+    registerTestSuite("ButtonSelectUT11") {ButtonSelectUT11()}
+    registerTestSuite("ButtonSelectUT2") {ButtonSelectUT2()}
+    registerTestSuite("ButtonSelectUT21") {ButtonSelectUT21()}
 }
 
 let UT_views = [
-    "Index_UT1",
-    "Index_UT2"
+    "ButtonSelectIndex1",
+    "ButtonSelectIndex2"
 ]
 let UT1 = [
-    "View_CheckboxGroup",
-    "View_Rating",
-    "View_Router1",
-    "View_Router2",
-    "View_Select"
+    "ViewButton",
+    "ViewCheckboxGroup",
+    "ViewCheckbox",
+    "ViewRating",
+    "ViewRouter1",
+    "ViewRouter2",
+    "ViewRadio",
+    "ViewSelect"
 ]
 let UT2 = [
-    "View_Stepper",
-    "View_Tab",
-    "View_TabContent",
-    "View_TextPicker",
-    "View_Toggle"
+    "ViewSlider",
+    "ViewStepper",
+    "ViewTab",
+    "ViewTabContent",
+    "ViewTextPicker",
+    "ViewToggle"
 ]

@@ -51,7 +51,7 @@ class MyDialog1 {
 
 @Entry
 @Component
-class View_CustomDialog2 {
+class ViewCustomDialog2 {
     @State
     var message: String = "begin"
     var dialogController: CustomDialogController = CustomDialogController(

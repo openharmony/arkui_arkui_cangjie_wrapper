@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Select {
+class ViewSelect {
     @State
     var text: String = "TTTTT"
     @State
@@ -59,8 +59,8 @@ class View_Select {
                 .onSelect(
                     {
                         index: Int32, text: String =>
-                        Hilog.info(1, "1", "1", " ==================  Select ====================: ${index}")
-                        Hilog.info(1, "1", "1", " ==================  text ====================: ${text}")
+                        Hilog.info(1,"Cangjie-App", " ==================  Select ====================: ${index}")
+                        Hilog.info(1,"Cangjie-App", " ==================  text ====================: ${text}")
                         this.index = index
                         this.text = text
                     }
@@ -80,8 +80,8 @@ class View_Select {
                 .onSelect(
                     {
                         index: Int32, text: String =>
-                        Hilog.info(1, "1", "1", " ==================  Select ====================: ${index}")
-                        Hilog.info(1, "1", "1", " ==================  text ====================: ${text}")
+                        Hilog.info(1,"Cangjie-App", " ==================  Select ====================: ${index}")
+                        Hilog.info(1,"Cangjie-App", " ==================  text ====================: ${text}")
                         this.index = index
                         this.text = text
                     }
@@ -107,8 +107,8 @@ class View_Select {
                 .onSelect(
                     {
                         index: Int32, text: String =>
-                        Hilog.info(1, "1", "1", " ==================  Select ====================: ${index}")
-                        Hilog.info(1, "1", "1", " ==================  text ====================: ${text}")
+                        Hilog.info(1,"Cangjie-App", " ==================  Select ====================: ${index}")
+                        Hilog.info(1,"Cangjie-App", " ==================  text ====================: ${text}")
                         this.index = index
                         this.text = text
                     }
@@ -153,8 +153,8 @@ class View_Select {
                 .onSelect(
                     {
                         index: Int32, text: String =>
-                        Hilog.info(1, "1", "1", " ==================  Select ====================: ${index}")
-                        Hilog.info(1, "1", "1", " ==================  text ====================: ${text}")
+                        Hilog.info(1,"Cangjie-App", " ==================  Select ====================: ${index}")
+                        Hilog.info(1,"Cangjie-App", " ==================  text ====================: ${text}")
                         this.index = index
                         this.text = text
                     }

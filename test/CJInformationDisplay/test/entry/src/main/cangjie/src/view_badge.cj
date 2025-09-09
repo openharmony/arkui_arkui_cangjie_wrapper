@@ -27,7 +27,7 @@ import ohos.arkui.state_macro_manage.r
 
 @Entry
 @Component
-class View_Badge {
+class ViewBadge {
     @State
     var badge1Text: String = "numberBadge"
     func build() {

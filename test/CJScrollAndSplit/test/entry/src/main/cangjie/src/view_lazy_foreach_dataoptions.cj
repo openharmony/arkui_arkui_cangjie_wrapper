@@ -60,17 +60,17 @@ func getDatasetStudent(): StudentDatasetSource
 
 @Entry
 @Component
-public class View_Lazyforeach_DataOptions {
+public class ViewLazyforeachDataOptions {
     @State var msg: String = ""
     public func build(): Unit {
         Column(space: 30) {
             Text("-----------------")
             List() {
-//                LazyForEach(datasetSourceStu, itemGeneratorFunc: {stu: Student, idx: Int64 =>
-//                    ListItem {
-//                        Text(stu.name).id("stu ${idx}")
-//                    }
-//                })
+                LazyForEach(datasetSourceStu, itemGeneratorFunc: {stu: Student, idx: Int64 =>
+                    ListItem {
+                        Text(stu.name).id("stu ${idx}")
+                    }
+                })
             }.height(400.px)
 
             Text("click to notifyChange").onClick({ evt =>

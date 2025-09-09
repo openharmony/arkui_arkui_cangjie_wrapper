@@ -27,7 +27,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Enablded {
+class ViewEnablded {
     func build() {
         Flex(justifyContent: FlexAlign.SpaceAround) {
             Button("disable")

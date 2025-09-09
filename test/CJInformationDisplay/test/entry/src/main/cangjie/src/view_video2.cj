@@ -42,9 +42,9 @@ extend ImageFit {
 
 @Entry
 @Component
-class View_Video2 {
+class ViewVideo2 {
     @State
-    var videoSrc: ResourceStr = @rawfile("3_resident_services.mp4")
+    var videoSrc: ResourceStr = @rawfile("video.mp4")
     @State
     var previewUri: ResourceStr = @r(app.media.startIcon)
     @State
@@ -240,7 +240,7 @@ class View_Video2 {
                 ).autoPlay(false).controls(true).height(50).id("video_3")
 
                 Video(
-                    src: @rawfile("3_resident_services.mp4"),
+                    src: @rawfile("video.mp4"),
                     currentProgressRate: PlaybackSpeed.SpeedForward075X,
                     previewUri: @r(app.media.startIcon),
                     controller: this.controller_2

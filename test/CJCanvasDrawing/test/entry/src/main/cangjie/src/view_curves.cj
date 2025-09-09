@@ -26,7 +26,7 @@ import ohos.curves.*
 
 @Entry
 @Component
-class View_Curves {
+class ViewCurves {
     @State
     var message1: String = ""
     @State

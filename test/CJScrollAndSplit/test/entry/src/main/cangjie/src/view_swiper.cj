@@ -23,7 +23,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Swiper {
+class ViewSwiper {
     let DISPLAY_COUNT: Int32 = 2
     let MIN_SCALE: Float64 = 0.75
 

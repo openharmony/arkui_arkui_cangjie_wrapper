@@ -23,7 +23,7 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_TextPicker {
+class ViewTextPicker {
     var select: UInt32 = 1
     @State
     var fruits: Array<String> = ["apple", "banana", "orange", "peach"]
@@ -94,6 +94,19 @@ class View_TextPicker {
                 .id("fading_effect")
 
             TextPicker(range: ["string1"], value: "value").opacity(0.3)
+
+            //分割线效果
+            TextPicker(range: this.fruitstypeB).canLoop(true).defaultPickerItemHeight(25.0).onChange({
+                    result, _ => logger("Picker item changed, value: ${result}")
+                })
+                .id("divider_effect")
+
+            //无分割线情况
+            TextPicker(range: this.fruitstypeC).canLoop(true).defaultPickerItemHeight(25.0).onChange({
+                    result, _ => logger("Picker item changed, value: ${result}")
+                })
+                .id("no_divider_effect")
+
         }.width(100.percent).height(100.percent)
     }
 }

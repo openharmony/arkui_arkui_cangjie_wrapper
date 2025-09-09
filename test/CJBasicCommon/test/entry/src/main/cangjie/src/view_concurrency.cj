@@ -22,7 +22,7 @@ import std.collection.*
 
 @Entry
 @Component
-class View_Concurrency {
+class ViewConcurrency {
     @State var text: String = "begin"
     @State var text_2: String = "hascontainer"
     func build() {

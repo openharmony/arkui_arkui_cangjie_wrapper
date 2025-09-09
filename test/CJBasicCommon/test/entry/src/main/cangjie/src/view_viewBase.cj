@@ -27,11 +27,13 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_ViewBase {
+class ViewViewBase {
     @State
     var message: String = "Hello Cangjie"
 
-    protected override func updateWithJson(json: String): Unit {}
+    protected override func updateWithJson(json: String): Unit {
+        Hilog.error(1,"Cangjie-Test","updateWithJson ${json}")
+    }
 
     func build() {
         Row {

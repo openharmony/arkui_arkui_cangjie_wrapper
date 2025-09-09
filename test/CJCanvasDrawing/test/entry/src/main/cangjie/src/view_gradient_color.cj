@@ -27,7 +27,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_GradientColor {
+class ViewGradientColor {
     func build() {
         Column(){
             Column() {

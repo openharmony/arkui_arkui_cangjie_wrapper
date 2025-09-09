@@ -35,7 +35,7 @@ func parseScrollState(state: ScrollState) {
 
 @Entry
 @Component
-class View_List {
+class ViewList {
     let arr = [0, 1, 2, 3, 4, 5, 6] //, 7, 8, 9,10,11,12,13,14,15,16,17,18
     let arr2 = [0, 1]
     let arr3 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]

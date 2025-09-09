@@ -26,7 +26,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_RowSplit{
+class ViewRowSplit{
     func build() {
         Column() {
             Text("The split line can be dragged")

@@ -25,20 +25,20 @@ import std.collection.ArrayList
 
 @Entry
 @Component
-class View_Router1 {
+class ViewRouter1 {
     @State
     var message: String = "xxx"
 
     func build() {
         Flex(wrap: FlexWrap.Wrap) {
-            Text("Page View_Router1").fontSize(40.fp).id("my_text1")
+            Text("Page ViewRouter1").fontSize(40.fp).id("my_text1")
             Button("jump1_to_page2").onClick {
-                e => getUIContext().getRouter().pushUrl(url: "View_Router2")
+                e => getUIContext().getRouter().pushUrl(url: "ViewRouter2")
             }.id("jump1_to_page2")
 
             // 覆盖率提升 JsonObject
             Button("jump2_to_page2").onClick {
-                e => getUIContext().getRouter().pushUrl(url: "View_Router2", params: "")
+                e => getUIContext().getRouter().pushUrl(url: "ViewRouter2", params: "")
             }.id("jump2_to_page2")
 
             // 覆盖率提升 getParamsObject
@@ -47,18 +47,18 @@ class View_Router1 {
             }.id("getParamsObject")
             Button("to_page2_by_pushurl")
                 .onClick {
-                    e => getUIContext().getRouter().pushUrl(url: "View_Router2", params: "from page1 by pushurl")
+                    e => getUIContext().getRouter().pushUrl(url: "ViewRouter2", params: "from page1 by pushurl")
                 }
                 .id("to_page2_by_pushurl")
             Button("to_page2_by_pushurl_single")
                 .onClick {
-                    e => getUIContext().getRouter().pushUrl(url: "View_Router2", params: "from page1 by pushurl single")
+                    e => getUIContext().getRouter().pushUrl(url: "ViewRouter2", params: "from page1 by pushurl single")
                 }
                 .id("to_page2_by_pushurl_single")
 
             Button("to_page2_by_replace")
                 .onClick {
-                    e => getUIContext().getRouter().back(url: "View_Router2", params: "from page1 by replace")
+                    e => getUIContext().getRouter().back(url: "ViewRouter2", params: "from page1 by replace")
                 }
                 .id("to_page2_by_replace")
 
@@ -75,7 +75,7 @@ class View_Router1 {
 
             Button("back_page2")
                 .onClick {
-                    e => getUIContext().getRouter().back(url: "View_Router2", params: "page1 back to page2")
+                    e => getUIContext().getRouter().back(url: "ViewRouter2", params: "page1 back to page2")
                 }
                 .id("back_page2")
             Button("back_to_4").onClick {

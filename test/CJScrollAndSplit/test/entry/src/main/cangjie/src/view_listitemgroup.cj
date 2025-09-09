@@ -25,7 +25,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_ListItemGroup {
+class ViewListItemGroup {
     @Builder
     func HeaderBuilder() {
         Row {
@@ -84,7 +84,7 @@ class View_ListItemGroup {
                             Text("item 2-3")
                         }.width(90.percent).margin(5.percent)
                     }.id("list_item_group2").borderRadius(10.vp).backgroundColor(Color.White).divider(ListDividerOptions(strokeWidth: 2.vp,
-                        color: @r(app.color.blue_23C452), startMargin: 10.vp, endMargin: 10.vp))
+                        color: @r(app.color.blue_23C452)))
                 }
             }.height(25.percent)
 

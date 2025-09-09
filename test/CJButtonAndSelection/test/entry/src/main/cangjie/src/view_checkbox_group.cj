@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_CheckboxGroup {
+class ViewCheckboxGroup {
     @State
     var text: String = "Select All"
 

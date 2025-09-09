@@ -26,7 +26,7 @@ import ohos.animator.*
 
 @Entry
 @Component
-class View_Animator {
+class ViewAnimator {
     var depCallbackAnimator: ?AnimatorResult = None
     var backAnimator: ?AnimatorResult = None
     var flag = false
@@ -277,7 +277,7 @@ class View_Animator {
                                     )
                                 )
                         } else {
-                            Hilog.info(1,"1","Cangjie-App", "Animation not ended")
+                            Hilog.info(1, "Cangjie-App", "Animation not ended")
                         }
                     }
                     .id("ResetButton1").fontSize(12).width(47.percent).height(30)
@@ -425,7 +425,7 @@ class View_Animator {
                                     )
                                 )
                         } else {
-                            Hilog.info(1,"1","Cangjie-App", "Animation not ended")
+                            Hilog.info(1, "Cangjie-App", "Animation not ended")
                         }
                     }
                     .id("depCbResetButton1").fontSize(12).width(47.percent).height(30)

@@ -25,7 +25,7 @@ import ohos.arkui.state_macro_manage.Entry
 
 @Entry
 @Component
-class View_Visibility {
+class ViewVisibility {
     func build() {
         Column() {
             Row().visibility(Visibility.Hidden).width(90).height(80).backgroundColor(0xAFEEEE).id("my_visibility")

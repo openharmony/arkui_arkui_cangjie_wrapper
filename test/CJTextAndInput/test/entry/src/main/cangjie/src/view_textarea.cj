@@ -24,7 +24,7 @@ import std.collection.*
 
 @Entry
 @Component
-class View_TextArea {
+class ViewTextArea {
     @State
     var placeholder: String = "please input your name"
     @State
@@ -140,6 +140,8 @@ class View_TextArea {
 
                 TextArea(placeholder: "inputfilter only a").inputFilter(value: "a",
                     error: {val => Hilog.info(1, "1", "Cangjie-Test", "TextArea OnError:" + val)})
+
+                TextArea(placeholder: "inputFilter no error branch").inputFilter(value: "b")
 
                 TextArea(placeholder: "TextArea callback")
                     .onChange({

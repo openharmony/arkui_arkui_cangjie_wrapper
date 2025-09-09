@@ -73,7 +73,7 @@ extend RefreshStatus {
 
 @Entry
 @Component
-class View_Refresh {
+class ViewRefresh {
     @State
     var isRefreshing: Bool = false
     @State

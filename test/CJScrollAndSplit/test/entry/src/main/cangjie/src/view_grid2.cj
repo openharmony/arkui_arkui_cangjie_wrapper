@@ -26,7 +26,7 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_Grid2 {
+class ViewGrid2 {
     @State
     var scroller: Scroller = Scroller()
 

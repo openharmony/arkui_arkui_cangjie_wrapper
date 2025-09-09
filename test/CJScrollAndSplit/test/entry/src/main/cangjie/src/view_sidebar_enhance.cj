@@ -39,7 +39,7 @@ import ohos.base.*
 
 @Entry
 @Component
-class View_SideBar_Enhance {
+class ViewSideBarEnhance {
     let dividerProp = DividerStyle(strokeWidth: 2.vp, startMargin: 3.vp, endMargin: 5.vp)
     let ctrlButton: ButtonStyle = ButtonStyle(left: 2.0, top: 10.0, width: 30.0, height: 20.0,
         icons: ButtonIconOptions(shown: @r(app.media.startIcon), hidden: "", switching: @r(app.media.startIcon)))

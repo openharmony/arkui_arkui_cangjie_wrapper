@@ -35,7 +35,7 @@ let Colors = [Color(0x98FB98), Color(0x317aff), Color(0xFFD700), Color(0xFFE4E1)
 
 @Entry
 @Component
-class View_Flex {
+class ViewFlex {
     func build() {
         Column() {
             Text("direction:Row")
@@ -110,11 +110,11 @@ class Direction_PropDataSource <: IDataSource<(String, Direction, String)> {
         return data_[index]
     }
 
-    public func onRegisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func registerDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = listener
     }
 
-    public func onUnregisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func unregisterDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = None
     }
 

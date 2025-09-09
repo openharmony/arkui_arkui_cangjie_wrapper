@@ -23,7 +23,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_TextTimer2 {
+class ViewTextTimer2 {
     var textTimerController: TextTimerController = TextTimerController()
     var shadowoption_arr: Array<ShadowOptions> = [ShadowOptions(radius: 10.0, offsetX: 10.0, offsetY: 0.0, color: Color.Red)]
 

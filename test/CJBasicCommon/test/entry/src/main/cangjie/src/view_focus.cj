@@ -26,7 +26,7 @@ import kit.LocalizationKit.{AppResource}
 
 @Entry
 @Component
-class View_Focus {
+class ViewFocus {
     @State
     var oneButtonColor: UInt32 = 0xFFC0CB
     @State
@@ -45,16 +45,16 @@ class View_Focus {
     func build() {
         Scroll() {
             // button 组件默认可获焦
-            Column(space: 20) {
+            Column(space: 5) {
                 Row() {
                     // 默认焦点，并且点击可获焦
                     Button("Hello Cangjie A")
                         .onClick {
-                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie A")
+                            evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie A")
                         }
                         .backgroundColor(oneButtonColor)
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(5.px)
                         .fontColor(Color.Black)
                         .focusOnTouch(true)
@@ -71,11 +71,11 @@ class View_Focus {
                     // 不支持点击获焦，但是默认可获焦
                     Button("Hello Cangjie B")
                         .onClick {
-                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie B")
+                            evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie B")
                         }
                         .backgroundColor(twoButtonColor)
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .fontColor(Color.Black)
                         .margin(5.px)
                         .focusOnTouch(false)
@@ -93,11 +93,11 @@ class View_Focus {
                     // 不支持获焦
                     Button("Hello Cangjie C")
                         .onClick {
-                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie C")
+                            evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie C")
                         }
                         .backgroundColor(threeButtonColor)
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(5.px)
                         .fontColor(Color.Black)
                         .focusable(false)
@@ -113,11 +113,11 @@ class View_Focus {
                     // 可获焦，并且支持点击获焦
                     Button("Hello Cangjie D")
                         .onClick {
-                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie D")
+                            evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie D")
                         }
                         .backgroundColor(fourButtonColor)
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(5.px)
                         .fontColor(Color.Black)
                         .focusable(true)
@@ -136,11 +136,11 @@ class View_Focus {
                     // 父级组件获焦时的默认焦点
                     Button("Hello Cangjie E")
                         .onClick {
-                            evt => Hilog.info(1,"1","Cangjie-App", "Hello Cangjie E")
+                            evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie E")
                         }
                         .backgroundColor(fiveButtonColor)
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .onFocus({
@@ -169,7 +169,7 @@ class View_Focus {
                     // 点击让D组件获焦
                     Button("RequestFocus-D")
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
@@ -177,16 +177,16 @@ class View_Focus {
                             let selectId = this.idList[3]
                             let result = FocusControl.requestFocus(selectId)
                             if (result) {
-                                Hilog.info(1,"1","Cangjie-App", "Request success")
+                                Hilog.info(1, "Cangjie-App", "Request success")
                             } else {
-                                Hilog.info(1,"1","Cangjie-App", "Request failed")
+                                Hilog.info(1, "Cangjie-App", "Request failed")
                             }
                         }
                 }
                 Row() {
                     Button("Hello Cangjie F")
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
@@ -194,7 +194,7 @@ class View_Focus {
                         .key(this.idList[5])
                     Button("Hello Cangjie G")
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
@@ -202,7 +202,7 @@ class View_Focus {
                         .key(this.idList[6])
                     Button("Hello Cangjie H")
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
@@ -210,7 +210,7 @@ class View_Focus {
                         .key(this.idList[7])
                     Button("Hello Cangjie I")
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
@@ -218,7 +218,7 @@ class View_Focus {
                         .key(this.idList[8])
                     Button("Hello Cangjie J")
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
@@ -226,7 +226,7 @@ class View_Focus {
                         .key(this.idList[9])
                     Button("Hello Cangjie K")
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
@@ -236,16 +236,18 @@ class View_Focus {
                 Row() {
                     Button("Hello Cangjie L")
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
                         .focusOnTouch(true)
                         .id(this.idList[11])
                         .key(this.idList[11])
+                        .onClick { e =>
+                        }
                     Button("Hello Cangjie M2")
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
@@ -256,7 +258,7 @@ class View_Focus {
                 Row() {
                     Button("Hello Cangjie M")
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
@@ -267,7 +269,7 @@ class View_Focus {
                 Row() {
                     Button("Hello Cangjie N")
                         .width(400.px)
-                        .height(150.px)
+                        .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
@@ -275,8 +277,8 @@ class View_Focus {
                         .id(this.idList[13])
                         .key(this.idList[13])
                 }
-                Row(space: 20) {
-                    Column(space: 20) {
+                Row(space: 5) {
+                    Column(space: 5) {
                         Column(space: 5) {
                             Button("Group1")
                                 .width(165)
@@ -286,18 +288,18 @@ class View_Focus {
                                 .key("b1")
                                 .focusOnTouch(true)
                             Row(space: 5) {
-                                Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b2").key("b2")
-                                Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b3").key("b3")
+                                Button(){}.width(80).height(40).fontColor(Color.White).id("b2").key("b2")
+                                Button(){}.width(80).height(40).fontColor(Color.White).id("b3").key("b3")
                             }
                             Row(space: 5) {
-                                Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b4").key("b4")
-                                Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b5").key("b5")
+                                Button(){}.width(80).height(40).fontColor(Color.White).id("b4").key("b4")
+                                Button(){}.width(80).height(40).fontColor(Color.White).id("b5").key("b5")
                             }
                         }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
                         Column(space: 5) {
                             Button("Group2").width(165).height(40).fontColor(Color.White).id("b6").key("b6")
                             Row(space: 5) {
-                                Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b7").key("b7")
+                                Button(){}.width(80).height(40).fontColor(Color.White).id("b7").key("b7")
                                 Button("PRIOR")
                                     .width(80)
                                     .height(40)
@@ -306,8 +308,8 @@ class View_Focus {
                                     .key("b8")
                             }
                             Row(space: 5) {
-                                Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b9").key("b9")
-                                Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b10").key("b10")
+                                Button(){}.width(80).height(40).fontColor(Color.White).id("b9").key("b9")
+                                Button(){}.width(80).height(40).fontColor(Color.White).id("b10").key("b10")
                             }
                         }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
                     }
@@ -320,8 +322,8 @@ class View_Focus {
                             .key("b11")
                             .focusOnTouch(true)
                         Row(space: 5) {
-                            Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b12").key("b12")
-                            Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b13").key("b13")
+                            Button(){}.width(80).height(40).fontColor(Color.White).id("b12").key("b12")
+                            Button(){}.width(80).height(40).fontColor(Color.White).id("b13").key("b13")
                         }
                         Button("PREVIOUS")
                             .width(165)
@@ -330,13 +332,13 @@ class View_Focus {
                             .id("b14")
                             .key("b14")
                         Row(space: 5) {
-                            Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b15").key("b15")
-                            Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b16").key("b16")
+                            Button(){}.width(80).height(40).fontColor(Color.White).id("b15").key("b15")
+                            Button(){}.width(80).height(40).fontColor(Color.White).id("b16").key("b16")
                         }
-                        Button(ButtonOptions()).width(165).height(40).fontColor(Color.White).id("b17").key("b17")
+                        Button(){}.width(165).height(40).fontColor(Color.White).id("b17").key("b17")
                         Row(space: 5) {
-                            Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b18").key("b18")
-                            Button(ButtonOptions()).width(80).height(40).fontColor(Color.White).id("b19").key("b19")
+                            Button(){}.width(80).height(40).fontColor(Color.White).id("b18").key("b18")
+                            Button(){}.width(80).height(40).fontColor(Color.White).id("b19").key("b19")
                         }
                     }
                         .borderWidth(2)

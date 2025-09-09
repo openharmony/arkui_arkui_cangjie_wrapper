@@ -28,17 +28,17 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Font {
+class ViewFont {
 
     protected override func aboutToAppear() {
         getUIContext().getFont().registerFont(
             familyName: "Deyihei",
-            familySrc: "/resources/rawfile/SmileySans-Oblique.ttf"
+            familySrc: "/resources/rawfile/HarmonyOS_Sans_Condensed.ttf"
         )
 
         getUIContext().getFont().registerFont(
             familyName: @r(app.string.Font_name),
-            familySrc: @rawfile("SmileySans-Oblique.ttf")
+            familySrc: @rawfile("HarmonyOS_Sans_Condensed.ttf")
         )
 
         getUIContext().getFont().registerFont(
@@ -56,7 +56,7 @@ class View_Font {
                 Button("HelloWorld1").onClick {
                     evt =>
                     let list = getUIContext().getFont().getSystemFontList()
-                    Hilog.info(1,"1","Cangjie-App", "${list.size}")
+                    Hilog.info(1, "Cangjie-App", "${list.size}")
                 }.id("getSystemFontList")
 
                 Button("HelloWorld2").onClick {
@@ -64,17 +64,17 @@ class View_Font {
                     let info = getUIContext().getFont().getFontByName("HarmonyOS Sans")
                     match (info) {
                         case Some(v) =>
-                            Hilog.info(1,"1","Cangjie-App", "${v.path}")
-                            Hilog.info(1,"1","Cangjie-App", "${v.postScriptName}")
-                            Hilog.info(1,"1","Cangjie-App", "${v.fullName}")
-                            Hilog.info(1,"1","Cangjie-App", "${v.family}")
-                            Hilog.info(1,"1","Cangjie-App", "${v.subfamily}")
-                            Hilog.info(1,"1","Cangjie-App", "${v.weight}")
-                            Hilog.info(1,"1","Cangjie-App", "${v.width}")
-                            Hilog.info(1,"1","Cangjie-App", "${v.italic}")
-                            Hilog.info(1,"1","Cangjie-App", "${v.monoSpace}")
-                            Hilog.info(1,"1","Cangjie-App", "${v.symbolic}")
-                        case None => Hilog.info(1,"1","Cangjie-App", "None")
+                            Hilog.info(1, "Cangjie-App", "${v.path}")
+                            Hilog.info(1, "Cangjie-App", "${v.postScriptName}")
+                            Hilog.info(1, "Cangjie-App", "${v.fullName}")
+                            Hilog.info(1, "Cangjie-App", "${v.family}")
+                            Hilog.info(1, "Cangjie-App", "${v.subfamily}")
+                            Hilog.info(1, "Cangjie-App", "${v.weight}")
+                            Hilog.info(1, "Cangjie-App", "${v.width}")
+                            Hilog.info(1, "Cangjie-App", "${v.italic}")
+                            Hilog.info(1, "Cangjie-App", "${v.monoSpace}")
+                            Hilog.info(1, "Cangjie-App", "${v.symbolic}")
+                        case None => Hilog.info(1, "Cangjie-App", "None")
                     }
                 }.id("getFontByName")
             }.width(100.percent)

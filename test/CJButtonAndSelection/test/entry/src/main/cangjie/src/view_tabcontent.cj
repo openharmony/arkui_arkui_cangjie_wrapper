@@ -25,7 +25,7 @@ import kit.LocalizationKit.*
 
 @Entry
 @Component
-class View_TabContent {
+class ViewTabContent {
     var controller: TabsController = TabsController()
 
     @State

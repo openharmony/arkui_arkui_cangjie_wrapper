@@ -25,7 +25,7 @@ import ohos.base.{LengthProp, Length, Color, LengthType}
 
 @Entry
 @Component
-class View_Popup {
+class ViewPopup {
     @State
     var isShowPopup: Bool = false
     @State
@@ -52,6 +52,10 @@ class View_Popup {
     @State
     var text_06: String = ""
     @State
+    var text_07: String = ""
+    @State
+    var text_08: String = ""
+    @State
     var msg1: String = "Popup Wait"
     @State
     var msg2: String = "first button Wait"
@@ -66,7 +70,7 @@ class View_Popup {
     func builder() {
         Column {
             Button("Builder 内容").width(300.px).onClick({
-                evt => Hilog.info(1,"1","Cangjie-App", "Builder 中的按钮被点击")
+                evt => Hilog.info(1, "Cangjie-App", "Builder 中的按钮被点击")
             })
         }.width(300.px)
     }
@@ -85,6 +89,8 @@ class View_Popup {
             Text(msg3).id("Test_Text_09")
             Text(dismiss).id("Test_Text_10")
             Text(custom).id("Test_Text_11")
+            Text(this.text_07).id("Test_Button5")
+            Text(this.text_08).id("Test_Button6")
 
             Button("BindPopup")
                 .id("button1")
@@ -100,7 +106,7 @@ class View_Popup {
                             value: "OK",
                             action: {
                                 =>
-                                Hilog.info(1,"1","Cangjie-App", "OK被点击")
+                                Hilog.info(1, "Cangjie-App", "OK被点击")
                                 this.text = "show current state is ${this.isShowPopup}"
                                 isShowPopup = false
                                 this.text_01 = "primaryButton current state is ${this.isShowPopup}"
@@ -111,14 +117,14 @@ class View_Popup {
                             value: "Off",
                             action: {
                                 =>
-                                Hilog.info(1,"1","Cangjie-App", "Cancel被点击")
+                                Hilog.info(1, "Cangjie-App", "Cancel被点击")
                                 isShowPopup = false
                                 this.text_02 = "secondaryButton current state is ${this.isShowPopup}"
                             }
                         ),
                         onStateChange: {
                             evt =>
-                            Hilog.info(1,"1","Cangjie-App", "Bind 1 isVisible: " + evt.isVisible.toString())
+                            Hilog.info(1, "Cangjie-App", "Bind 1 isVisible: " + evt.isVisible.toString())
                             if (!evt.isVisible) {
                                 isShowPopup = false
                                 this.text_03 = "onStateChange current state is ${this.isShowPopup}"
@@ -135,11 +141,12 @@ class View_Popup {
                 .bindPopup(
                     isShowPopupBuilder,
                     CustomPopupOptions(
-                        enableArrow: isenableArrow, showInSubWindow: false,
+                        showInSubWindow: false,
+                        enableArrow: isenableArrow,
                         builder: bind(builder, this),
                         onStateChange: {
                             evt =>
-                            Hilog.info(1,"1","Cangjie-App", "BindPopup-Custom isVisible: " + evt.isVisible.toString())
+                            Hilog.info(1, "Cangjie-App", "BindPopup-Custom isVisible: " + evt.isVisible.toString())
                             this.text_04 = "show current state is ${this.isShowPopupBuilder}"
                             this.text_05 = "enableArrow current state is ${this.isenableArrow}"
                             if (!evt.isVisible) {
@@ -246,6 +253,16 @@ class View_Popup {
                         }
                     )
                 )
+            Button("EmptyPopupOptions")
+                .id("button5")
+                .onClick { e =>
+                    text_07 = "Button5 Clicked"
+                }
+            Button("DragPreviewMode")
+                .id("button6")
+                .onClick { e =>
+                    text_08 = "Button6 Clicked"
+                }
             Text(this.text_01).id("Test_Text_01").width(100).height(80)
             Text(this.text_03).id("Test_Text_03").width(100).height(80)
             Text(this.text_04).id("Test_Text_04").width(100).height(80)

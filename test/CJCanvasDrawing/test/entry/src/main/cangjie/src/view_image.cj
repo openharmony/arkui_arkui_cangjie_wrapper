@@ -31,7 +31,7 @@ import ohos.multimedia.image.Size as UniqueImageSize
 
 @Entry
 @Component
-class View_Image {
+class ViewImage {
     let color = Array<UInt8>(96, { i => UInt8(i+1) })
     let opts = InitializationOptions(UniqueImageSize(4, 6), editable: true, pixelFormat: Rgba8888)
     let pixelMap = createPixelMap(color, opts)

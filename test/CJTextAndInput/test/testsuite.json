@@ -2,11 +2,23 @@
   "name": "testsuite_cj_common_test",
   "test_list": [
     {
-      "name": "TextAndInput_UT_1",
+      "name": "TextAndInputUT1",
       "timeout": 100
     },
     {
-      "name": "TextAndInput_UT_2",
+      "name": "TextAndInputUT11",
+      "timeout": 100
+    },
+    {
+      "name": "TextAndInputUT2",
+      "timeout": 100
+    },
+    {
+      "name": "TextAndInputUT21",
+      "timeout": 100
+    },
+    {
+      "name": "TextAndInputUT22",
       "timeout": 100
     }
   ]

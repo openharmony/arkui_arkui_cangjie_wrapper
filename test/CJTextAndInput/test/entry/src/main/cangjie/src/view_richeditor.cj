@@ -21,18 +21,27 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
+import ohos.multimedia.image.PixelMap
+import ohos.multimedia.image.createPixelMap
+import ohos.multimedia.image.InitializationOptions
+import ohos.multimedia.image.createImageSource
+import ohos.multimedia.image.DecodingOptions
+import ohos.multimedia.image.Size
 import std.collection.{ ArrayList, HashMap }
 import ohos.resource_manager.*
 import ohos.bundle.bundle_manager.*
-import ohos.multimedia.image.*
-import ohos.app.ability.ui_ability.*
+import ohos.multimedia.image.ImageInfo
+import ohos.business_exception.*
+
 
 @Entry
 @Component
-class View_RichEditor {
+class ViewRichEditor {
     let controller: RichEditorController = RichEditorController()
     var start: Int32 = -1
     var end: Int32 = -1
+    var imageCount = 0
+    var textCount = 0
     @State
     var message: String = "[-1, -1]"
     @State
@@ -104,25 +113,27 @@ class View_RichEditor {
             }.borderWidth(1).borderColor(Color.Red)
 
             Row() {
-                Button("获取选择内容").id("RichEditor01GetSpans").onClick { event =>
+                Button("获取选择内容").id("RichEditor01GetSpans").onClick {
+                    e =>
                     this.content = ""
                     for (item in this.controller.getSpans(start: this.start, end: this.end)) {
                         match (item) {
                             case RichEditorImageSpanResult => ()
                             case RichEditorTextSpanResult =>
-                                Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: text:" + (item as RichEditorTextSpanResult).getOrThrow().value.toString())
+                                Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: text:" + (item as RichEditorTextSpanResult).getOrThrow().value.toString())
                             case _ => ()
                         }
                     }
                 }
-                Button("删除选择内容").id("RichEditor01DelSpans").onClick { event =>
+                Button("删除选择内容").id("RichEditor01DelSpans").onClick {
+                    e =>
                     this.controller.deleteSpans(start: 0, end: 1)
                     this.start = -1
                     this.end = -1
                     this.message = "[" + this.start.toString() + ", " + this.end.toString() + "]"
                 }
-                Button("添加中英特殊字符").id("addTextSpan1").onClick { event =>
-                    controller.addTextSpan(
+                Button("添加中英特殊字符").id("addTextSpan1").onClick {
+                    evt => controller.addTextSpan(
                         value: "你好,Cangjie!@#&%",
                         options: RichEditorTextSpanOptions(
                             style: RichEditorTextStyle(
@@ -140,15 +151,16 @@ class View_RichEditor {
             }.borderWidth(1).borderColor(Color.Red).width(100.percent).height(5.percent)
 
             Row() {
-                Button("获取组件信息").onClick { event =>
+                Button("获取组件信息").onClick {
+                    e =>
                     let strJson = getInspectorByKey("RichEditorKey")
-                    Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: text: ${strJson}")
+                    Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: text: ${strJson}")
                 }.key("getInfo")
-                Button("获取光标位置").onClick { event =>
-                    this.content = this.controller.getCaretOffset().toString() + ""
+                Button("获取光标位置").onClick {
+                    e => this.content = this.controller.getCaretOffset().toString() + ""
                 }.key("getCaretOffset")
-                Button("插入多行中英字符").id("addTextSpan2").onClick { event =>
-                    controller.addTextSpan(
+                Button("插入多行中英字符").id("addTextSpan2").onClick {
+                    evt => controller.addTextSpan(
                         value: """
                             你好,Cangjie!@#&%
                             """,
@@ -168,11 +180,11 @@ class View_RichEditor {
             }.borderWidth(1).borderColor(Color.Red).width(100.percent).height(5.percent)
 
             Row() {
-                Button("设置光标位置1").id("setCaretOffset01").onClick { event =>
-                    this.content = this.controller.setCaretOffset(1).toString() + ""
+                Button("设置光标位置1").id("setCaretOffset01").onClick {
+                    e => this.content = this.controller.setCaretOffset(1).toString() + ""
                 }
-                Button("设置光标位置100").id("setCaretOffset02").onClick { event =>
-                    this.content = this.controller.setCaretOffset(100).toString() + ""
+                Button("设置光标位置100").id("setCaretOffset02").onClick {
+                    e => this.content = this.controller.setCaretOffset(100).toString() + ""
                 }
             }.borderWidth(1).borderColor(Color.Red).width(100.percent).height(5.percent)
 
@@ -216,13 +228,29 @@ class View_RichEditor {
                 let array = controller.getSpans(start: 0, end: 20)
                 for (i in 0..array.size) {
                     match (array[i]) {
-                        case RichEditorImageSpanResult => ()
+                        case RichEditorImageSpanResult =>
+                            //Hilog.error(1, "Cangjie-Test", "getSpans: RichEditorImageSpanResult")
+                            // 现在没法正确match case，临时解决办法, 加count为了不重复构造
+                            if (imageCount == 0) {
+                                testBuildRichEditorImageSpanResult((array[i] as RichEditorImageSpanResult).getOrThrow())
+                                imageCount++
+                            }
+                            //Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: Image:" + (array[i] as RichEditorImageSpanResult).getOrThrow().value.toString())
                         case RichEditorTextSpanResult =>
-                            Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: text:" + (array[i] as RichEditorTextSpanResult).getOrThrow().value.toString())
-                        case _ => ()
+                            Hilog.error(1, "Cangjie-Test", "getSpans: RichEditorTextSpanResult")
+                            //Hilog.error(1,"Cangjie-Test", "[ViewRichEditor]: text:" + (array[i] as RichEditorTextSpanResult).getOrThrow().value.toString())
+                        case _ =>
+                            Hilog.error(1, "Cangjie-Test", "[ViewRichEditor] getSpans empty")
                     }
                 }
             }.id("getSpans")
+
+            Button("getEmptySpan").onClick {
+                evt =>
+                    let array = controller.getSpans(start: 0, end: 0)
+                    Hilog.error(1, "Cangjie-Test", "getEmptySpan: spanSize: ${array.size}")
+                    let test_controller = RichEditorController()
+            }.id("getEmptySpan")
 
             Column() {
                 RichEditor(this.controller).id("RichEditorKey").key("RichEditorKey").onReady(
@@ -255,12 +283,12 @@ class View_RichEditor {
                 ).bindSelectionMenu(
                     spantype: RichEditorSpanType.Image,
                     content: bind(builder, this),
-                    options: SelectionMenuOptions(onAppear: {=> Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: SelectionMenuOptions onAppear")},
-                        onDisappear: {=> Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: SelectionMenuOptions onDisappear")})
+                    options: SelectionMenuOptions(onAppear: {=> Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: SelectionMenuOptions onAppear")},
+                        onDisappear: {=> Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: SelectionMenuOptions onDisappear")})
                 ).onSelect(
                     {
                         value =>
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: ---------------------- onSelect ----------------------")
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: ---------------------- onSelect ----------------------")
                         this.start = value.selection[0]
                         this.end = value.selection[1]
                         this.message = "[" + this.start.toString() + ", " + this.end.toString() + "]"
@@ -269,9 +297,9 @@ class View_RichEditor {
                 ).aboutToIMEInput(
                     {
                         value =>
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: ---------------------- aboutToIMEInput ----------------------")
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: insertOffset: ${value.insertOffset}")
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: insertValue: ${value.insertValue}")
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: ---------------------- aboutToIMEInput ----------------------")
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: insertOffset: ${value.insertOffset}")
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: insertValue: ${value.insertValue}")
                         this.insertOffset = value.insertOffset.toString() + ""
                         this.insertValue = value.insertValue.toString() + ""
                         return true
@@ -279,21 +307,26 @@ class View_RichEditor {
                 ).onIMEInputComplete(
                     {
                         value =>
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: ---------------------- onIMEInputComplete ---------------------")
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: spanIndex: ${value.spanPosition.spanIndex}")
-                        Hilog.info(1,"1","Cangjie-Test",
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: ---------------------- onIMEInputComplete ---------------------")
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: spanIndex: ${value.spanPosition.spanIndex}")
+                        Hilog.info(1,"Cangjie-Test",
                             "spanRange:[ ${value.spanPosition.spanRange[0]}, ${value.spanPosition.spanRange[1]} ]")
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: offsetInSpan:[ ${value.offsetInSpan[0]}, ${value.offsetInSpan[1]} ]")
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: value:" + value.value)
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: offsetInSpan:[ ${value.offsetInSpan[0]}, ${value.offsetInSpan[1]} ]")
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: value:" + value.value)
+                        // 现在没法正确match case，临时解决办法，加count为了不重复构造
+                        if (textCount == 0) {
+                            testBuildRichEditorTextSpanResult(value)
+                            textCount++
+                        }
                         this.content = "${value.spanPosition.spanIndex}, ${value.value}, ${value.spanPosition.spanRange[0]}, ${value.spanPosition.spanRange[1]}, ${value.offsetInSpan[0]}, ${value.offsetInSpan[1]}, ${value.textStyle.fontSize}"
                     }
                 ).aboutToDelete(
                     {
                         value =>
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: ---------------------- aboutToDelete --------------------------")
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: ---------------------- aboutToDelete --------------------------")
                         this.content = "aboutToDelete"
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: RichEditor RichEditorDeleteValue.offset ${value.offset}")
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: offset:" + value.offset.toString())
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: RichEditor RichEditorDeleteValue.offset ${value.offset}")
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: offset:" + value.offset.toString())
                         var direction = match (value.direction) {
                             case BACKWARD => "BACKWARD"
                             case FORWARD => "FORWARD"
@@ -302,9 +335,14 @@ class View_RichEditor {
 
                         for (item in value.richEditorDeleteSpans) {
                             match (item) {
-                                case RichEditorImageSpanResult => ()
+                                case RichEditorImageSpanResult =>
+                                    try {
+                                    } catch (e: BusinessException) {
+                                        Hilog.error(1,"Cangjie-Test", "[ViewRichEditor]: image error")
+                                    }
+
                                 case RichEditorTextSpanResult =>
-                                    Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: text:" + (item as RichEditorTextSpanResult).getOrThrow().value.toString())
+                                    Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: text:" + (item as RichEditorTextSpanResult).getOrThrow().value.toString())
                                 case _ => ()
                             }
                         }
@@ -313,10 +351,10 @@ class View_RichEditor {
                 ).onPaste(
                     {
                     paste =>
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: ---------------------- onPaste --------------------------")
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: ---------------------- onPaste --------------------------")
                         paste.preventDefault()
                 }).onDeleteComplete({
-                    => Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: ---------------------- onDeleteComplete ------------------------")
+                    => Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: ---------------------- onDeleteComplete ------------------------")
                 }).onDidChange(
                     {
                         t1, t2 =>
@@ -330,12 +368,12 @@ class View_RichEditor {
                     spantype: RichEditorSpanType.Text,
                     content: bind(builder, this),
                     responseType: ResponseType.LongPress,
-                    options: SelectionMenuOptions(onAppear: {=> Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: SelectionMenuOptions onAppear")},
-                        onDisappear: {=> Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: SelectionMenuOptions onDisappear")})
+                    options: SelectionMenuOptions(onAppear: {=> Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: SelectionMenuOptions onAppear")},
+                        onDisappear: {=> Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: SelectionMenuOptions onDisappear")})
                 ).onReady(
                     {
                         =>
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: leetcode log:  onReady start")
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: leetcode log:  onReady start")
                         controller1.updateSpanStyle(
                             textStyle: RichEditorTextStyle(
                                 fontColor: Color.Red
@@ -349,27 +387,30 @@ class View_RichEditor {
                             )
                         )
                         var appResour = @r(app.media.background)
-                        Hilog.error(1,"1","Cangjie-Test", "[loadMedia]: appResour.bundleName. ${appResour.bundleName}")
-                        Hilog.error(1,"1","Cangjie-Test", "[loadMedia]: appResour.moduleName. ${appResour.moduleName}")
-                        Hilog.error(1,"1","Cangjie-Test", "[loadMedia]: appResour.id. ${appResour.id}")
-                        Hilog.error(1,"1","Cangjie-Test", "[loadMedia]: appResour.resType. ${appResour.resType}")
-                        let buffer: Array<UInt8> = Array<UInt8>()
+                        Hilog.error(1, "Cangjie-Test", "[loadMedia]: appResour.bundleName. ${appResour.bundleName}")
+                        Hilog.error(1, "Cangjie-Test", "[loadMedia]: appResour.moduleName. ${appResour.moduleName}")
+                        Hilog.error(1, "Cangjie-Test", "[loadMedia]: appResour.id. ${appResour.id}")
+                        Hilog.error(1, "Cangjie-Test", "[loadMedia]: appResour.resType. ${appResour.resType}")
+
 //                        let buffer: Array<UInt8> = loadMedia(Int32(@r(app.media.startIcon).id),
 //                            globalAbilityContext)
-                        let imageSource = createImageSource(buffer)
-                        let decodeOpts: DecodingOptions = DecodingOptions(
-                            sampleSize: 1,
-                            rotate: 0,
-                            editable: true
-                        )
-                        let pix: PixelMap = imageSource.createPixelMap(options: decodeOpts)
+//                        let imageSource = createImageSource(buffer)
+//                        let decodeOpts: DecodingOptions = DecodingOptions(
+//                            sampleSize: 1,
+//                            rotate: 0,
+//                            editable: true
+//                        )
+//                        let pix: PixelMap = imageSource.createPixelMap(options: decodeOpts)
+                        let color = Array<UInt8>(96, { i => UInt8(i+1) })
+                        let opts = InitializationOptions(Size(4, 6), editable: true, pixelFormat: Rgba8888)
+                        let pix: PixelMap = createPixelMap(color, opts)
+
+                        let leadingMarginPlaceholder = LeadingMarginPlaceholder(pixelMap: this.pix, size: (5.vp, 5.vp))
                         controller1.updateParagraphStyle(style: RichEditorParagraphStyle())
                         controller1.updateParagraphStyle(style: RichEditorParagraphStyle(leadingMargin: 1.vp))
-                        controller1.updateParagraphStyle(
-                            style: RichEditorParagraphStyle(
-                            leadingMargin: LeadingMarginPlaceholder(pixelMap: pix, size: (5.vp, 5.vp))))
+                        controller1.updateParagraphStyle(style: RichEditorParagraphStyle(textAlign: TextAlign.Start, leadingMargin: leadingMarginPlaceholder))
                         controller1.closeSelectionMenu()
-                        Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: leetcode log:  onReady end")
+                        Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: leetcode log:  onReady end")
                     }
                 ).customKeyboard(value: bind(builder, this)).copyOptions(CopyOptions.InApp).onPaste(
                     {
@@ -379,8 +420,8 @@ class View_RichEditor {
                 RichEditor(RichEditorController()).bindSelectionMenu(
                     spantype: RichEditorSpanType.Mixed,
                     content: bind(builder, this),
-                    options: SelectionMenuOptions(onAppear: {=> Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: SelectionMenuOptions onAppear")},
-                        onDisappear: {=> Hilog.info(1,"1","Cangjie-Test", "[View_RichEditor]: SelectionMenuOptions onDisappear")})
+                    options: SelectionMenuOptions(onAppear: {=> Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: SelectionMenuOptions onAppear")},
+                        onDisappear: {=> Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: SelectionMenuOptions onDisappear")})
                 )
 
             }.borderWidth(1).borderColor(Color.Red).width(100.percent).height(70.percent)
@@ -388,17 +429,61 @@ class View_RichEditor {
     }
 
     public static func loadMedia(resId: Int32, context: Option<UIAbilityContext>): Array<UInt8> {
-        Hilog.error(1,"1","Cangjie-Test", "[loadMedia]: ImageSource start.")
+        Hilog.error(1,"Cangjie-Test", "[loadMedia]: ImageSource start.")
 //        if (let Some(v) <- context) {
-//            let rm: ResourceManager = Context.resourceManager
+//            let stageContext = getStageContext(v)
+//            let rm: ResourceManager = ResourceManager.getResourceManager(stageContext)
 //            try {
-//                return rm.getMediaContent(UInt32(resId), density: 0)
+//                return rm.getMediaContent(Int32(resId), 0)
 //            } catch (e: Exception) {
-//                Hilog.error(1,"1","Cangjie-Test", "[loadMedia]: getMediaContent failed, err msg=" + e.message)
+//                Hilog.error(1,"Cangjie-Test", "[loadMedia]: getMediaContent failed, err msg=" + e.message)
 //                return Array<UInt8>()
 //            }
 //        }
-        Hilog.error(1,"1","Cangjie-Test", "[loadMedia]: the globalAbilityContext is None.")
+
+        Hilog.error(1,"Cangjie-Test", "[loadMedia]: the globalAbilityContext is None.")
         return Array<UInt8>()
+    }
+
+    // Test function: invoke RichEditorTextSpanResult constructor
+    func testBuildRichEditorTextSpanResult(src: RichEditorTextSpanResult): Unit {
+        Hilog.error(1,"Cangjie-Test", "build RichEditorTextSpanResult")
+        let des = RichEditorTextSpanResult(
+            src.spanPosition,
+            src.value,
+            src.textStyle,
+            src.offsetInSpan
+        )
+        Hilog.error(1,"Cangjie-Test", "build RichEditorTextSpanResult completed")
+    }
+
+    // Test function: invoke RichEditorImageSpanResult constructor
+    func testBuildRichEditorImageSpanResult(src: RichEditorImageSpanResult): Unit {
+        Hilog.error(1,"Cangjie-Test", "build RichEditorImageSpanResult")
+        let des = RichEditorImageSpanResult(
+            src.spanPosition,
+            src.valuePixelMap,
+            src.valueResourceStr,
+            src.imageStyle,
+            src.offsetInSpan
+        )
+        Hilog.error(1,"Cangjie-Test", "build RichEditorImageSpanResult completed")
+
+        // invoke RichEditorImageSpanStyleResult member variables
+        let imageStyle = des.imageStyle
+        imageStyle.size
+        imageStyle.verticalAlign
+        imageStyle.objectFit
+        imageStyle.layoutStyle
+        testBuildRichEditorLayoutStyle(imageStyle.layoutStyle)
+        imageCount++
+    }
+
+    // Test function: invoke RichEditorLayoutStyle constructor
+    func testBuildRichEditorLayoutStyle(src: RichEditorLayoutStyle): Unit {
+        Hilog.error(1,"Cangjie-Test", "build RichEditorLayoutStyle")
+        let des1 = RichEditorLayoutStyle(margin: src.margin, borderRadius: src.borderRadius)
+        let des2 = RichEditorLayoutStyle(margin: 16.fp, borderRadius: 16.fp)
+        Hilog.error(1,"Cangjie-Test", "build RichEditorLayoutStyle completed")
     }
 }

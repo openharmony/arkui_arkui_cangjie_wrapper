@@ -23,7 +23,7 @@ import ohos.arkui.state_macro_manage.r
 import ohos.base.*
 @Entry
 @Component
-class View_DataPanel {
+class ViewDataPanel {
     var valueArr: Array<Float64> = [10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0]
 
     var values1: Array<Float64> = [20.0, 20.0, 20.0, 20.0]

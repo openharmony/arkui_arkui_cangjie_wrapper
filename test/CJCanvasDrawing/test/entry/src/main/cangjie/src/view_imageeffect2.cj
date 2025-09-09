@@ -23,7 +23,7 @@ import ohos.resource_manager.AppResource
 
 @Entry
 @Component
-class View_ImageEffect2 {
+class ViewImageEffect2 {
     public func build() {
         Scroll() {
             Column() {
@@ -60,8 +60,168 @@ class View_ImageEffect2 {
                     .height(100.vp)
                     }
 
+                Text("pixelStretchEffect").margin(5)
+                Column() {
+                    Text('This is the text content with letterSpacing 0.')
+                        .fontSize(12)
+                        .borderWidth(1.vp)
+                        .padding(10.vp)
+                        .width(50.percent)
+                        .id("test_pixelStretchEffect")
+                }
+                    .width(200.vp)
+                    .height(110.vp)
+                Column() {
+                    Text('This is the text content with letterSpacing 0.')
+                        .fontSize(12)
+                        .borderWidth(1.vp)
+                        .padding(10.vp)
+                        .width(50.percent)
+                }
+                    .width(200.vp)
+                    .height(110.vp)
+
 //                1. image： 设置src，也有效果
 //                2. 离屏效果可以参考示例 1/2，呈现效果不一致
+                Text("blendMode")
+                Column() {
+                    Column() {
+                        Text("Blue")
+                            .width(40)
+                            .height(40)
+                            .backgroundColor(Color.Blue)
+                        Text("red")
+                            .width(40)
+                            .height(40)
+                            .backgroundColor(Color.Red)
+                            .position(x: 20, y: 20)
+                    }
+                        .height(80)
+                        .width(100)
+                        .id("test_blendMode")
+                }
+                    .height(90)
+                    .width(200)
+                    .backgroundImage(@r(app.media.background), ImageRepeat.X)
+
+                Column() {
+                    Column() {
+                        Text("Blue")
+                            .width(40)
+                            .height(40)
+                            .backgroundColor(Color.Blue)
+                        Text("red")
+                            .width(40)
+                            .height(40)
+                            .backgroundColor(Color.Red)
+                            .position(x: 20, y: 20)
+                    }
+                        .height(80)
+                        .width(100)
+                }
+                    .height(90)
+                    .width(200)
+                    .backgroundImage(@r(app.media.background), ImageRepeat.X)
+
+                Column() {
+                    Column() {
+                        Text("Blue")
+                            .width(40)
+                            .height(40)
+                            .backgroundColor(Color.Blue)
+                        Text("red")
+                            .width(40)
+                            .height(40)
+                            .backgroundColor(Color.Red)
+                            .position(x: 20, y: 20)
+                    }
+                        .height(80)
+                        .width(100)
+                }
+                    .height(90)
+                    .width(200)
+                    .backgroundImage(@r(app.media.background), ImageRepeat.X)
+
+                Column() {
+                    Column() {
+                        Image(@r(app.media.media1))
+                            .width(40)
+                            .height(40)
+                        Image(@r(app.media.media2))
+                            .width(40)
+                            .height(40)
+                            .position(x: 20, y: 20)
+                    }
+                        .height(80)
+                        .width(100)
+                }
+                    .height(90)
+                    .width(200)
+                    .backgroundImage(@r(app.media.background), ImageRepeat.X)
+
+                Text("lightUpEffect")
+                Text('This is the text content with letterSpacing 0.')
+                    .borderWidth(1)
+                    .padding(10)
+                    .width(100)
+                    .id("test_lightUpEffect")
+
+                Text("sphericalEffect")
+                TextInput(placeholder: "请输入变化范围百分比（[0%,100%]）")
+                    .width(200)
+                    .height(35)
+                    .caretColor(Color.Red)
+                    .placeholderColor(Color.Blue)
+                    .placeholderFont(size: 20.vp)
+                    .id("test_sphericalEffect")
+
+                Text("renderGroup")
+                Column() {
+                    Row() {
+                        Row() {
+                            Row()
+                                .backgroundColor(Color.Black)
+                                .width(100.vp)
+                                .height(100.vp)
+                                .opacity(1.0)
+                        }
+                            .backgroundColor(Color.White)
+                            .width(150.vp)
+                            .height(150.vp)
+                            .justifyContent(FlexAlign.Center)
+                            .opacity(0.6)
+                    }
+                        .backgroundColor(Color.Black)
+                        .width(200)
+                        .height(200)
+                        .justifyContent(FlexAlign.Center)
+                        .opacity(1.0)
+                        .margin(20.vp)
+
+                    Row() {
+                        Row() {
+                            Row()
+                                .backgroundColor(Color.Black)
+                                .width(100.vp)
+                                .height(100.vp)
+                                .opacity(1.0)
+                        }
+                            .backgroundColor(Color.White)
+                            .width(150.vp)
+                            .height(150.vp)
+                            .justifyContent(FlexAlign.Center)
+                            .opacity(0.6)
+                            .id("test_renderGroup")
+                    }
+                        .backgroundColor(Color.Black)
+                        .width(200)
+                        .height(200)
+                        .justifyContent(FlexAlign.Center)
+                        .opacity(1.0)
+                        .margin(20.vp)
+                }
+                    .width(380.vp)
+                    .height(500.vp)
 
                 Text("systemBarEffect")
                 Stack() {
@@ -88,6 +248,31 @@ class View_ImageEffect2 {
                         .borderRadius(5)
                         .margin(bottom: 20)
                 }
+
+                Column() {
+                    Column() {
+
+                    }
+                        .width(200)
+                        .height(30)
+                        .margin(top: 5)
+                        .backgroundColor(0xFFE4C4)
+                        .shadow(radius: 120.0, color: Color.Green, offsetX: 0.0, offsetY: 0.0)
+
+                    Column() {
+
+                    }
+                        .width(200)
+                        .height(30)
+                        .margin(top: 5)
+                        .backgroundColor(0xFFE4C4)
+                        .shadow(radius: 120.0, color: Color.Red, offsetX: 0.0, offsetY: 0.0)
+                        .backgroundColor(Color.White)
+                }
+                    .borderWidth(1)
+                    .width(300)
+                    .height(100)
+                    .id("test_useShadowBatching")
 
                 Column() {
                     Column() {

@@ -30,7 +30,7 @@ package ohos_app_cangjie_entry
 //
 //@Entry
 //@Component
-//class View_CallbackInvoke {
+//class ViewCallbackInvoke {
 //    func build() {
 //        Row {
 //            Column {

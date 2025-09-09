@@ -23,7 +23,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Opacity {
+class ViewOpacity {
     func build() {
         Column() {
             Text("Hello Cangjie").width(90).height(50).opacity(0.7).backgroundColor(0xAFEEEE).id("my_opacity")

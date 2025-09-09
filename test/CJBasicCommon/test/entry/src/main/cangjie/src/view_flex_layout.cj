@@ -23,7 +23,7 @@ import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Flex_Layout{
+class ViewFlexLayout{
     func build(){
         Column(){
             Text("Hello CangJie")

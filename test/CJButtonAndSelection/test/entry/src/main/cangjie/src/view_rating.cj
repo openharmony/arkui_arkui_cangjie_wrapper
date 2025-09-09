@@ -23,7 +23,7 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_Rating {
+class ViewRating {
     @State
     var rating: Float64 = 3.5
     @State

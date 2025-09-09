@@ -24,7 +24,7 @@ import std.collection.ArrayList
 
 @Entry
 @Component
-class View_Scrollbar {
+class ViewScrollbar {
     var arr1: ArrayList<Int64> = ArrayList<Int64>([0, 1, 2 , 3 , 4 ,5])
     var arr2: ArrayList<Int64> = ArrayList<Int64>([5, 6, 7, 8 , 9 ,10])
     var arr3: ArrayList<Int64> = ArrayList<Int64>([10, 11, 12 , 13 , 14, 15])

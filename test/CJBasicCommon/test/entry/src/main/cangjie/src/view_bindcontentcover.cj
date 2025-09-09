@@ -19,19 +19,32 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
+import ohos.arkui.component.common.*
+import std.unittest.testmacro.*
+import std.unittest.*
+import ohos.base.*
+import ohos.router.*
+import std.math.MathExtension
+import ohos.ark_interop.*
+import ohos.ui_test.*
+import std.collection.ArrayList
 
 @Entry
 @Component
-class View_BindContentCover {
+class ViewBindContentCover {
+    var ModalTransition1: ModalTransition = ModalTransition.Alpha
+    var ModalTransition2: ModalTransition = ModalTransition.Default
+    var ModalTransition3: ModalTransition = ModalTransition.None
+
     @State var isShow: Bool = false
     @State var message: String = '123'
 
     public func onAppear() {
-        Hilog.info(1,"1","Cangjie-Test", "BindContentCover onAppear.")
+        Hilog.info(1, "Cangjie-Test", "BindContentCover onAppear.")
         this.message = "BindContentCover onAppear."
     }
     public func onDisappear() {
-        Hilog.info(1,"1","Cangjie-Test", "BindContentCover onDisappear.")
+        Hilog.info(1, "Cangjie-Test", "BindContentCover onDisappear.")
         this.message = "BindContentCover onDisappear."
     }
 

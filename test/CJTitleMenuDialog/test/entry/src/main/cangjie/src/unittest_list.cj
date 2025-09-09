@@ -21,38 +21,40 @@ package ohos_app_cangjie_entry
 let _ = testsuites()
 
 private func testsuites(): Unit {
-    registerTestSuite("TitleMenuDialog_UT_1") {TitleMenuDialog_UT_1()}
-    registerTestSuite("TitleMenuDialog_UT_2") {TitleMenuDialog_UT_2()}
+    registerTestSuite("TitleMenuDialogUT1") {TitleMenuDialogUT1()}
+    registerTestSuite("TitleMenuDialogUT11") {TitleMenuDialogUT11()}
+    registerTestSuite("TitleMenuDialogUT2") {TitleMenuDialogUT2()}
+    registerTestSuite("TitleMenuDialogUT21") {TitleMenuDialogUT21()}
 }
 
 let UT_views: ObservedArrayList<String> = ObservedArrayList<String>(
     [
-        "TitleMenuDialog_UT1",
-        "TitleMenuDialog_UT2"
+        "TitleMenuDialogIndex1",
+        "TitleMenuDialogIndex2"
     ]
 )
 let UT1 = ObservedArrayList<String>(
     [
-        "View_Accessibility",
-        "View_ActionSheet",
-        "View_AlertDialog",
-        "View_DatePickerDialog",
-        "View_ContextMenu",
-        "View_CustomDialog",
-        "View_CustomDialog2",
-        "View_DatePicker",
-        "View_Menu",
-        "View_MenuBindContextMenu",
-        "View_MenuBindMenu",
-        "View_Menucontrol",
-        "View_MenuItem"
+        "ViewAccessibility",
+        "ViewActionSheet",
+        "ViewAlertDialog",
+        "ViewDatePickerDialog",
+        "ViewContextMenu",
+        "ViewCustomDialog",
+        "ViewCustomDialog2",
+        "ViewDatePicker",
+        "ViewMenu",
+        "ViewMenuBindContextMenu",
+        "ViewMenuBindMenu",
+        "ViewMenucontrol",
+        "ViewMenuItem"
     ]
 )
 let UT2 = ObservedArrayList<String>(
     [
-        "View_MenuItemGroup",
-//        "View_Prompt",
-        "View_Accessibility",
-        "View_Global"
+        "ViewMenuItemGroup",
+        "ViewPrompt",
+        "ViewAccessibility",
+        "ViewGlobal"
     ]
 )

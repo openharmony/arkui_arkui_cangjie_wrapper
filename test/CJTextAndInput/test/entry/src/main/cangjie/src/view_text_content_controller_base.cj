@@ -23,7 +23,7 @@ import ohos.resource_manager.*
 
 @Entry
 @Component
-class View_TextContentControllerBase {
+class ViewTextContentControllerBase {
     @State
     var message: String = "Hello Cangjie"
 

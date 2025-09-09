@@ -33,7 +33,7 @@ extend Matrix2D {
 
 @Entry
 @Component
-class View_Canvas_2 {
+class ViewCanvas2 {
     var settings: RenderingContextSettings = RenderingContextSettings(antialias: true)
     var context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
     var context2: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
@@ -52,7 +52,6 @@ class View_Canvas_2 {
     var path: Path2D = Path2D("M250 150 L150 350 L350 350 Z")
     var path2: Path2D = Path2D()
     var pattern: CanvasPattern = this.context.createPattern(this.img3, Repetition.NoRepeat)
-
 
     @State
     var height_width1: String = ""
@@ -100,6 +99,20 @@ class View_Canvas_2 {
                         {
                             =>
                             this.context2.drawImage(this.img2, 10.0, 10.0)
+                        }
+                    )
+
+                Text(this.height_width2).id("height_width2")
+
+                Canvas(this.context3)
+                    .width(100.percent)
+                    .height(25.percent)
+                    .backgroundColor(0xffff00)
+                    .onReady(
+                        {
+                            =>
+                            this.context3.fillStyle(0x00fff00)
+                            this.context3.fillRect(0.0, 0.0, 100.0, 100.0)
                         }
                     )
 

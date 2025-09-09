@@ -46,7 +46,7 @@ class TestObserver <: Observer {
 
 @Entry
 @Component
-class View_Subscriber {
+class ViewSubscriber {
 
     @State var size: String = "0"
 

@@ -31,7 +31,7 @@ import ohos.base.{Length, Color}
 
 @Entry
 @Component
-class View_ImageEffect {
+class ViewImageEffect {
     @State
     var cnt: Int64 = 0
 
