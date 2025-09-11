@@ -107,6 +107,9 @@ class ViewBindSheet {
                     options: SheetOptions(borderWidth: Option.None, borderColor: Option.None, borderStyle: Option.None,
                         mode: Option.None, scrollSizeMode: Option.None))
                 .bindSheet(this.isShow, myBuilder,
+                    options: SheetOptions(borderColor: Option.None,
+                        mode: Option.None, scrollSizeMode: Option.None))
+                .bindSheet(this.isShow, myBuilder,
                     options: SheetOptions(onAppear: onAppear, onDisappear: onDisappear, height: SheetSize.Large,
                         preferType: SheetType.Center))
                 .bindSheet(this.isShow, myBuilder,
