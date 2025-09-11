@@ -66,10 +66,10 @@ class ViewTextInput {
             .fontSize(14)
             .fontColor(Color.Black)
             .inputFilter(
-                "[a-z]",
-                error: {
-                    info: String => Hilog.info(1, "Cangjie-Test", "inputFilter error")
-                }
+                "[a-z]"
+                // error: {
+                //     info: String => Hilog.info(1, "Cangjie-Test", "inputFilter error")
+                // }
             ).onChange({
                 value: String => this.text = value
             }).id("component_1")
@@ -189,8 +189,7 @@ class ViewTextInput {
                 Hilog.info(1, "Cangjie-Test", "TextInput onSubmit")
             }).id("textinput")
 
-            TextInput(placeholder: "inlineFilter test")
-                .inputFilter("[a-z]")
+            TextInput(placeholder: "borderRadiusTest").borderRadius()
 
         }.width(100.percent)
     }

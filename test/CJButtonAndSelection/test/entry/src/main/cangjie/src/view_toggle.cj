@@ -67,9 +67,9 @@ class ViewToggle {
                 .borderRadius(5.vp)
                 .id("my_buttontype_toggle")
                 .responseRegion(Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent))
-        //                .responseRegionArray(
-        //                [Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent),
-        //                    Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent)])
+                       .responseRegion(
+                       [Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent),
+                           Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent)])
         }.width(100.percent).padding(24)
     }
 }
