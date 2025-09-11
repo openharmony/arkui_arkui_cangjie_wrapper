@@ -108,3 +108,4 @@ public import ohos.arkui.component.save_button.*
 public import ohos.arkui.component.search.*
 public import ohos.arkui.component.ifcomponent.*
 public import ohos.arkui.component.empty_component.*
+public import ohos.arkui.component.navigation.*
