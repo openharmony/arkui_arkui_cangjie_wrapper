@@ -361,7 +361,7 @@ class ViewGridRow {
 
             GridRow(
                 gutter: GutterOptions(
-                    x: GridRowSizeOptions(0.vp),
+                    x: GridRowSizeOptions(),
                     y: GridRowSizeOptions(0.vp)
                 ),
                 direction: GridRowDirection.Row) {
