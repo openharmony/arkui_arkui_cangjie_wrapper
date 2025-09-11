@@ -68,6 +68,7 @@ class ViewTextArea {
                 })
                 TextArea(placeholder: this.placeholder, text: this.name, controller: controller)
                     .textAlign(TextAlign.Center)
+                    .inputFilter(value: "A")
                     .id("component_1")
 
                 TextArea(text: "size")
@@ -140,8 +141,6 @@ class ViewTextArea {
 
                 TextArea(placeholder: "inputfilter only a").inputFilter(value: "a",
                     error: {val => Hilog.info(1, "1", "Cangjie-Test", "TextArea OnError:" + val)})
-
-                TextArea(placeholder: "inputFilter no error branch").inputFilter(value: "b")
 
                 TextArea(placeholder: "TextArea callback")
                     .onChange({

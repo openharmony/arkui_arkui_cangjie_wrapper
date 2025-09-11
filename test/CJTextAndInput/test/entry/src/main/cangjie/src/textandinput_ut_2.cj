@@ -108,6 +108,9 @@ class TextAndInputUT2 {
         let textAlign = attrs.get("textAlign").getOrThrow().toString()
         Hilog.error(1, "Cangjie-Test", textAlign)
         @Expect(textAlign, "\"TextAlign.Center\"")
+
+        let textArea = driver.waitForComponent(On().id("component_1"),500)
+        textArea?.inputText("1")
     }
 
     @TestCase
@@ -353,6 +356,9 @@ class TextAndInputUT2 {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         Hilog.info(1, "Cangjie-Test", "textinput:\t ${attrs.getFields()}")
+
+        let textinputComp = driver.waitForComponent(On().id("component_1"),500)
+        textinputComp?.inputText("1")
 
         let textinput = driver.waitForComponent(On().id("stopEditing"),500)
         textinput?.click()
