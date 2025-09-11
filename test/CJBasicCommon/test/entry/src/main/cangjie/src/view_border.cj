@@ -31,11 +31,8 @@ class ViewBorder{
             .borderRadius(20)
             .id("my_border")
 
-            Text("test_appear").onAppear({ => }).onDisAppear({ => })
-        }
-        Column(){
-            Text("Hello CangJie")
-            .borderWidth(5.vpß)
+            Text("Hello CangJie2")
+            .borderWidth(5.vp)
             .borderColor(0xCCCCCC)
             .borderRadius(20)
             .id("my_border")
