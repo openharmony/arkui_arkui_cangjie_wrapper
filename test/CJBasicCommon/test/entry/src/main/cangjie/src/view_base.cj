@@ -94,10 +94,7 @@ class ViewBase {
                     backgroundImageSize(ImageSize.Auto).backgroundImagePosition(x: @r(app.integer.test_cjResource),
                     y: @r(app.integer.test_cjResource)).keyboardShortcut(FunctionKey.F10, [ModifierKey.Alt]).renderFit(
                     RenderFit.ResizeCoverBottomRight)
-                Text("add image usages").backgroundImage(1, ImageRepeat.X).
-                    backgroundImageSize(ImageSize.Auto).backgroundImagePosition(x: @r(app.integer.test_cjResource),
-                    y: @r(app.integer.test_cjResource)).keyboardShortcut(FunctionKey.F10, [ModifierKey.Alt]).renderFit(
-                    RenderFit.ResizeCoverBottomRight)
+
                 Text("add image usages").backgroundImage(@r(app.media.icon), ImageRepeat.X).
                     backgroundImageSize(ImageSize.Auto).backgroundImagePosition(x: @r(app.integer.test_cjResource),
                     y: @r(app.integer.test_cjResource)).keyboardShortcut(FunctionKey.F10, [ModifierKey.Alt]).renderFit(
