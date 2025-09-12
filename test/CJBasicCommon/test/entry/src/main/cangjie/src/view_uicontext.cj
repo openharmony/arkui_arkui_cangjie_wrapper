@@ -51,13 +51,9 @@ class ViewUiContext {
 //                    var sizeOptions  = getUIContext().getMeasureUtils().measureTextSize(MeasureOptions(textContent: "textContent"))
 
                     var vp2px  = getUIContext().vp2px(2.vp).getOrThrow()
-                    var vp2px1  = getUIContext().vp2px(2.px).getOrThrow()
+
                     Hilog.info(1, "Cangjie-Test", "getUIContext().vp2px: ${vp2px.value}")
-                    var px2vp1  = getUIContext().px2vp(2.vp).getOrThrow()
-                    var fp2px1  = getUIContext().fp2px(2.px).getOrThrow()
-                    var px2fp1  = getUIContext().px2fp(2.fp).getOrThrow()
-                    var lpx2px1  = getUIContext().lpx2px(2.px).getOrThrow()
-                    var px2lpx1  = getUIContext().px2lpx(2.lpx).getOrThrow()
+
                     var px2vp  = getUIContext().px2vp(2.px).getOrThrow()
                     var fp2px  = getUIContext().fp2px(2.fp).getOrThrow()
                     var px2fp  = getUIContext().px2fp(2.px).getOrThrow()
