@@ -568,29 +568,11 @@ public class RichEditorImageSpanStyle {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        size!: (Length, Length),
+        size!: Option<(Length, Length)> = Option.None,
         verticalAlign!: ImageSpanAlignment = ImageSpanAlignment.Baseline,
         objectFit!: ImageFit = ImageFit.Cover
     ) {
         this.size = size
-        this.verticalAlign = verticalAlign
-        this.objectFit = objectFit
-        this.layoutStyle = RichEditorLayoutStyle()
-    }
-
-    /**
-     * RichEditorImageSpanStyle constructor
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(
-        verticalAlign!: ImageSpanAlignment = ImageSpanAlignment.Baseline,
-        objectFit!: ImageFit = ImageFit.Cover
-    ) {
-        this.size = Option.None
         this.verticalAlign = verticalAlign
         this.objectFit = objectFit
         this.layoutStyle = RichEditorLayoutStyle()
@@ -993,7 +975,7 @@ public open class RichEditorBaseController <: RemoteDataLite {
     /**
      * Get caret offset from controller.
      *
-     * @returns { Int64 }
+     * @returns { Int32 }
      * @relation getCaretOffset(): number
      */
     @!APILevel[
@@ -1001,9 +983,9 @@ public open class RichEditorBaseController <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func getCaretOffset(): Int64 {
-        let result: Int64 = unsafe {
-            FfiOHOSAceFrameworkRichEditorControllerGetCaretOffset(this.getID())
+    public func getCaretOffset(): Int32 {
+        let result: Int32 = unsafe {
+            Int32(FfiOHOSAceFrameworkRichEditorControllerGetCaretOffset(this.getID()))
         }
         return result
     }
@@ -1011,7 +993,7 @@ public open class RichEditorBaseController <: RemoteDataLite {
     /**
      * Set caret offset.
      *
-     * @param { Int64 } offset
+     * @param { Int32 } offset
      * @returns { Bool }
      * @relation setCaretOffset(offset: number): boolean
      */
@@ -1020,9 +1002,9 @@ public open class RichEditorBaseController <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setCaretOffset(offset: Int64): Bool {
+    public func setCaretOffset(offset: Int32): Bool {
         let result: Bool = unsafe {
-            FfiOHOSAceFrameworkRichEditorControllerSetCaretOffset(this.getID(), offset)
+            FfiOHOSAceFrameworkRichEditorControllerSetCaretOffset(this.getID(), Int64(offset))
         }
         return result
     }
@@ -1067,9 +1049,9 @@ public class RichEditorController <: RichEditorBaseController {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func addTextSpan(value!: ResourceStr, options!: RichEditorTextSpanOptions = RichEditorTextSpanOptions()): Int32 {
+    public func addTextSpan(content!: ResourceStr, options!: RichEditorTextSpanOptions = RichEditorTextSpanOptions()): Int32 {
         let params = parseRichEditorTextSpanOptions(options)
-        let valueString = transResourceStrToString(value)
+        let valueString = transResourceStrToString(content)
 
         var result: Int32 = 0
         unsafe {

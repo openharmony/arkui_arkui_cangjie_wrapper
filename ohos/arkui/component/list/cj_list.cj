@@ -16,6 +16,7 @@
 package ohos.arkui.component.list
 
 import ohos.arkui.component.common.*
+import ohos.arkui.component.list_item_group.*
 import ohos.arkui.component.native_struct.*
 import ohos.arkui.component.scroll.*
 import ohos.arkui.component.util.*
@@ -182,7 +183,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class List <: ScrollableBase {
+public class List <: ScrollableCommonMethod {
 
     /**
      * Called when interface data is called.
@@ -267,23 +268,26 @@ public class List <: ScrollableBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func divider(strokeWidth!: Length, color!: ResourceColor = Color.Black, startMargin!: Length = 0.vp,
-        endMargin!: Length = 0.vp): This {
-        var strokeWidth_ = transAppResourceToLength(strokeWidth)
-        var startMargin_ = transAppResourceToLength(startMargin)
-        var endMargin_ = transAppResourceToLength(endMargin)
-        unsafe {
-            FfiOHOSAceFrameworkListSetDivider(
-                DividerParams(
-                    strokeWidth_.value,
-                    strokeWidth_.unitType.getValue(),
-                    transAppResourceToResourceColor(color),
-                    startMargin_.value,
-                    startMargin_.unitType.getValue(),
-                    endMargin_.value,
-                    endMargin_.unitType.getValue(),
-                )
-            )
+public func divider(value: Option<ListDividerOptions>): This {
+        match (value) {
+            case Some(v) =>
+                var strokeWidth_ = transAppResourceToLength(v.strokeWidth)
+                var startMargin_ = transAppResourceToLength(v.startMargin)
+                var endMargin_ = transAppResourceToLength(v.endMargin)
+                unsafe {
+                    FfiOHOSAceFrameworkListSetDivider(
+                        DividerParams(
+                            strokeWidth_.value,
+                            strokeWidth_.unitType.getValue(),
+                            transAppResourceToResourceColor(v.color),
+                            startMargin_.value,
+                            startMargin_.unitType.getValue(),
+                            endMargin_.value,
+                            endMargin_.unitType.getValue(),
+                        )
+                    )
+                }
+            case None => ()
         }
         this
     }

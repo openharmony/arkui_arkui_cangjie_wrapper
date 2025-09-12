@@ -69,9 +69,13 @@ public class CanvasPattern <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setTransform(transform: Matrix2D): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkCanvasPatternSetTransform(this.getID(), transform.getID())
+    public func setTransform(transform: Option<Matrix2D>): Unit {
+        match (transform) {
+            case Some(v) =>
+                unsafe {
+                    FfiOHOSAceFrameworkCanvasPatternSetTransform(this.getID(), v.getID())
+                }
+            case None => ()
         }
     }
 }

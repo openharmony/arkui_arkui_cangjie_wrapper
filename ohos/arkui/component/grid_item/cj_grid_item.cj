@@ -100,9 +100,9 @@ public open class GridItem <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func columnStart(columnStart: Int32): This {
+    public func columnStart(value: Int32): This {
         unsafe {
-            FfiOHOSAceFrameworkGridItemSetColumnStart(columnStart)
+            FfiOHOSAceFrameworkGridItemSetColumnStart(value)
         }
         this
     }
@@ -119,9 +119,9 @@ public open class GridItem <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func columnEnd(columnEnd: Int32): This {
+    public func columnEnd(value: Int32): This {
         unsafe {
-            FfiOHOSAceFrameworkGridItemSetColumnEnd(columnEnd)
+            FfiOHOSAceFrameworkGridItemSetColumnEnd(value)
         }
         this
     }
@@ -138,9 +138,9 @@ public open class GridItem <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func rowStart(rowStart: Int32): This {
+    public func rowStart(value: Int32): This {
         unsafe {
-            FfiOHOSAceFrameworkGridItemSetRowStart(rowStart)
+            FfiOHOSAceFrameworkGridItemSetRowStart(value)
         }
         this
     }
@@ -157,9 +157,9 @@ public open class GridItem <: ContainerBase {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func rowEnd(rowEnd: Int32): This {
+    public func rowEnd(value: Int32): This {
         unsafe {
-            FfiOHOSAceFrameworkGridItemSetRowEnd(rowEnd)
+            FfiOHOSAceFrameworkGridItemSetRowEnd(value)
         }
         this
     }

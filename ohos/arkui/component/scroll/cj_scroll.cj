@@ -719,7 +719,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public abstract class ScrollableBase <: ContainerBase {
+public abstract class ScrollableCommonMethod <: ContainerBase {
     /**
      * Sets the scrollbar state.
      *
@@ -1157,7 +1157,7 @@ public abstract class ScrollableBase <: ContainerBase {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Scroll <: ScrollableBase {
+public class Scroll <: ScrollableCommonMethod {
 
     /**
      * Constructs a scroll component.
@@ -1694,7 +1694,7 @@ public class Scroller {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func currentOffset(): OffsetResult {
+    public func currentOffset(): Option<OffsetResult> {
         unsafe {
             FfiOHOSAceFrameworkScrollerCurrentOffset(this.handler.getID()).parseToCJ()
         }

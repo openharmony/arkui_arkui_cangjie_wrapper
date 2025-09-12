@@ -100,9 +100,9 @@ public class Path <: ShapeComponent {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func commands(commands: ResourceStr): This {
+    public func commands(value: ResourceStr): This {
         unsafe {
-            let commandsValue = transResourceStrToString(commands)
+            let commandsValue = transResourceStrToString(value)
             try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
                 FfiOHOSAceFrameworkPathSetCommands(unsafeContent.value)
             }

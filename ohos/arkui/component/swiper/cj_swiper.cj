@@ -227,59 +227,6 @@ struct CJSwiperContentTransitionProxy {
 }
 
 /**
- * Defines the font used for text.
- *
- * @relation interface Font
- */
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class FontOptions {
-    /**
-     * font size.
-     *
-     * @relation size?: Length
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var size: Length
-
-    /**
-     * font weight.
-     *
-     * @relaiton weight?: FontWeight | number | string
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var weight: FontWeight
-
-    /**
-     * FontOptions constructor.
-     *
-     * @param { Length } size
-     * @param { FontWeight } weight
-     * @returns { FontOptions }
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public init(size!: Length = 14.vp, weight!: FontWeight = FontWeight.Normal) {
-        this.size = transAppResourceToLength(size)
-        this.weight = weight
-    }
-}
-
-/**
  * Defines the indicator class.
  *
  * @relation class Indicator<T>
@@ -682,8 +629,8 @@ public class DotIndicator <: Indicator {
 public class DigitIndicator <: Indicator {
     private var mFontColor: UInt32
     private var mSelectedFontColor: UInt32
-    private var mDigitFont: FontOptions
-    private var mSelectedDigitFont: FontOptions
+    private var mDigitFont: Font
+    private var mSelectedDigitFont: Font
 
     /**
      * DigitIndicator constructor.
@@ -699,14 +646,14 @@ public class DigitIndicator <: Indicator {
     public init() {
         this.mFontColor = Color(0xff182431).toUInt32()
         this.mSelectedFontColor = Color(0xff182431).toUInt32()
-        this.mDigitFont = FontOptions()
-        this.mSelectedDigitFont = FontOptions()
+        this.mDigitFont = Font()
+        this.mSelectedDigitFont = Font()
     }
 
     /**
     * Sets the font color of the digit-style navigation indicator.
     *
-    * @param { ResourceColor } value - Font color of the digit-style navigation indicator.
+    * @param { ResourceColor } value - Font color of the digit-style navigation indicator. Default value is #ff182431.
     * @returns { This }
     * @relaiton fontColor(value: ResourceColor): DigitIndicator
     */
@@ -747,8 +694,8 @@ public class DigitIndicator <: Indicator {
      * <brSetting family and style has no effect.
      * </p>
      *
-     * @param { FontOptions } value - Font style of the digit-style navigation indicator.
-     * Default value is FontOptions(14.vp, FontWeight.Normal).
+     * @param { Font } value - Font style of the digit-style navigation indicator.
+     * Default value is Font(14.vp, FontWeight.Normal).
      * @returns { This }
      * @relation digitFont(value: Font): DigitIndicator
      */
@@ -757,7 +704,7 @@ public class DigitIndicator <: Indicator {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func digitFont(value: FontOptions): This {
+    public func digitFont(value: Font): This {
         this.mDigitFont = value
         this
     }
@@ -765,8 +712,8 @@ public class DigitIndicator <: Indicator {
     /**
      * Sets the font style of the selected digit in the digit-style navigation indicator.
      *
-     * @param { FontOptions } value - Font style of the selected digit in the digit-style navigation indicator.
-     * Default value is FontOptions(14.vp, FontWeight.Normal).
+     * @param { Font } value - Font style of the selected digit in the digit-style navigation indicator.
+     * Default value is Font(14.vp, FontWeight.Normal).
      * @returns { This }
      * @relaiton selectedDigitFont(value: Font): DigitIndicator
      */
@@ -775,7 +722,7 @@ public class DigitIndicator <: Indicator {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedDigitFont(value: FontOptions): This {
+    public func selectedDigitFont(value: Font): This {
         this.mSelectedDigitFont = value
         this
     }
@@ -784,8 +731,8 @@ public class DigitIndicator <: Indicator {
         var mDigitFontWeight: ?CString = None
         var mSelectedDigitFontWeight: ?CString = None
         try {
-            mDigitFontWeight = unsafe { LibC.mallocCString(mDigitFont.weight.getValue()) }
-            mSelectedDigitFontWeight = unsafe { LibC.mallocCString(mSelectedDigitFont.weight.getValue()) }
+            mDigitFontWeight = unsafe { LibC.mallocCString(mDigitFont.weight.getOrDefault({ => FontWeight.Normal}).getValue()) }
+            mSelectedDigitFontWeight = unsafe { LibC.mallocCString(mSelectedDigitFont.weight.getOrDefault({ => FontWeight.Normal}).getValue()) }
         } catch (e: Exception) {
             mDigitFontWeight?.free()
             mSelectedDigitFontWeight?.free()
@@ -794,11 +741,11 @@ public class DigitIndicator <: Indicator {
         return CJDigitIndicator(
             mFontColor,
             mSelectedFontColor,
-            mDigitFont.size.value,
-            mDigitFont.size.unitType.getValue(),
+            mDigitFont.size.getOrDefault({ =>16.fp}).value,
+            mDigitFont.size.getOrDefault({ =>16.fp}).unitType.getValue(),
             mDigitFontWeight.getOrThrow(),
-            mSelectedDigitFont.size.value,
-            mSelectedDigitFont.size.unitType.getValue(),
+            mSelectedDigitFont.size.getOrDefault({ =>16.fp}).value,
+            mSelectedDigitFont.size.getOrDefault({ =>16.fp}).unitType.getValue(),
             mSelectedDigitFontWeight.getOrThrow(),
             super.parseToNative()
         )

@@ -700,6 +700,14 @@ public enum FontStyle {
             case _ => Normal
         }
     }
+
+    protected static func parseFromString(value: String): FontStyle {
+        match (value) {
+            case "italic" => Normal
+            case "normal" => Italic
+            case _ => Normal
+        }
+    }
 }
 
 /**
@@ -3467,12 +3475,7 @@ public enum LineJoinStyle {
  * @relation type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
  */
 @Derive[Equatable]
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public enum CanvasTextAlign {
+protected enum CanvasTextAlign {
     /**
      * (Default) The text is left-aligned.
      *
@@ -3559,12 +3562,7 @@ public enum CanvasTextAlign {
  * @relation type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top"
  */
 @Derive[Equatable]
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public enum CanvasTextBaseline {
+protected enum CanvasTextBaseline {
     /**
      * (Default) The text baseline is the standard letter baseline.
      *
@@ -3664,12 +3662,7 @@ public enum CanvasTextBaseline {
  * @relation globalCompositeOperation: string
  */
 @Derive[Equatable]
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public enum GlobalCompositeOperation {
+protected enum GlobalCompositeOperation {
     /**
      * (Default) Draws a new drawing on top of an existing canvas context.
      */
@@ -3807,12 +3800,6 @@ public enum GlobalCompositeOperation {
  *
  * @relation type ImageSmoothingQuality = "high" | "low" | "medium"
  */
-@Derive[Equatable]
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 public enum ImageSmoothingQuality {
     /**
      * (default)low
@@ -8937,12 +8924,7 @@ public enum CanvasFillRule {
  * Image format.
  */
 @Derive[Equatable]
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public enum ImageType {
+protected enum ImageType {
     /**
      * Image format png.
      */
