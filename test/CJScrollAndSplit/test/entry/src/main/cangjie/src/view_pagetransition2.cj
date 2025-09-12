@@ -42,7 +42,7 @@ class ViewPageTransition2 {
         }
     }
 
-    protected func onTransition(): Unit {
+    protected func pageTransition(): Unit {
         PageTransitionEnter(duration: 1200, curve: Curve.Linear).onEnter {
             ty: RouteType, progress: Float64 =>
             match (ty) {

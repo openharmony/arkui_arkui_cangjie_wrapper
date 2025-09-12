@@ -203,6 +203,7 @@ class ViewCanvasRenderingContext2D {
                 Canvas(this.context14).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
                         let imageDataNum = this.context14.createImageData(100.0, 100.0)
+                        let imageDataNum1 = this.context14.createImageData(imageDataNum)
                         var s = imageDataNum.data
                         for( i in 0..s.size where i % 4 == 0){
                             s[i + 0] = 255

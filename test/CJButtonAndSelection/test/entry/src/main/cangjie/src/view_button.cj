@@ -40,6 +40,7 @@ class ViewButton {
         Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start,
             justifyContent: FlexAlign.SpaceBetween) {
             Flex(alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween) {
+            Button()
             Button("Ok").shape(ButtonType.Normal).stateEffect(true).borderRadius(8).fontSize(12).fontColor(0xffffff).
                 backgroundColor(0x317aff).width(90).id("Testbutton").padding(top: 0, right: 0, bottom: 0, left: 1).
                 fontWeight(FontWeight.W300)

@@ -802,6 +802,8 @@ class BasicCommonUTHello {
         Hilog.info(1, "Cangjie-Test", "test_PageTransitionEnter opacity")
 
         var pageTransitionExit: PageTransitionExit = PageTransitionExit()
+        var pageTransitionExit1: PageTransitionExit = PageTransitionExit(routeType: RouteType.Push)
+        var pageTransitionExit2: PageTransitionExit = PageTransitionExit(routeType: RouteType.Pop)
         pageTransitionExit.slide(SlideEffect.Right)
         Hilog.info(1, "Cangjie-Test", "pageTransitionExit slide")
         pageTransitionExit.onExit({a, b => })

@@ -48,6 +48,6 @@ class ViewSideBarDefault {
             }
         }
             .id("SideBarDefault")
-            .divider(DividerStyle(strokeWidth: 0))
+            .divider(DividerStyle(strokeWidth: 0, color: Option.None))
     }
 }
