@@ -18,7 +18,7 @@ package ohos.arkui.component.canvas
 import ohos.arkui.component.common.*
 import ohos.arkui.component.path_2d.*
 import ohos.arkui.component.util.*
-import ohos.font.*
+import ohos.arkui.ui_context.font.Font as FontApi
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
@@ -333,11 +333,11 @@ foreign {
 
 func parseLength2Vp(origin: Length): Float64 {
     match(origin.unitType) {
-        case px(v) => px2vpInner(v).getOrDefault({ => origin}).value
-        case vp(v) => origin.value
-        case fp(v) => px2vpInner(fp2pxInner(v).getOrDefault({ => origin})).getOrDefault({ => origin}).value
-        case percent(v) => origin.value
-        case lpx(v) => px2vpInner(lpx2pxInner(v).getOrDefault({ => origin})).getOrDefault({ => origin}).value
+        case LengthUnit.Px => px2vpInner(origin.value).getOrDefault({ => origin}).value
+        case LengthUnit.Vp => origin.value
+        case LengthUnit.Fp => px2vpInner(fp2pxInner(origin.value).getOrDefault({ => origin})).getOrDefault({ => origin}).value
+        case LengthUnit.Percent => origin.value
+        case LengthUnit.Lpx => px2vpInner(lpx2pxInner(origin.value).getOrDefault({ => origin})).getOrDefault({ => origin}).value
         case _ => origin.value
     }
 }
@@ -357,7 +357,7 @@ func parseFontValue(origin: String): (FontStyle, String, Length, String) {
             style = FontStyle.parseFromString(current)
         } else if (current.contains("vp") || current.contains("px")) {
             size = parseLengthFromString(current).getOrDefault({ => 14.px})
-        } else if (FontFamilys.contains(current) || FontInner.getSystemFontList().contains(current)) {
+        } else if (FontFamilys.contains(current) || FontApi(0).getSystemFontList().contains(current)) {
             family = current
         }
     }

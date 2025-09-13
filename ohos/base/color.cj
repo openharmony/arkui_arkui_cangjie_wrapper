@@ -18,6 +18,8 @@ package ohos.base
 import ohos.labels.APILevel
 import ohos.business_exception.*
 
+let COLOR_TRANSPARENT_VALUE: UInt32 = 0X00000000
+
 /**
  * Defines the color which can use resource.
  *
@@ -214,10 +216,13 @@ public class Color <: ResourceColor {
 
     protected static func alphaAdapt(origin: UInt32): UInt32 {
         var result: UInt32 = origin
+        if (origin == COLOR_TRANSPARENT_VALUE) {
+            return result
+        }
         if ((origin >> 24) == 0) {
             result = origin | 0xff000000
         }
-        result
+        return result
     }
 
     public func toUInt32(): UInt32 {

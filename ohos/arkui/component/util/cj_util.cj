@@ -59,9 +59,9 @@ protected func transAppResourceToResourceColor(value: ResourceColor): UInt32 {
 
 protected func getLengthUnitOrFp(value: Length): LengthUnit {
     if (value is Float64) {
-        LengthType.Fp
+        LengthUnit.Fp
     } else if (value is Int64) {
-        LengthType.Fp
+        LengthUnit.Fp
     } else {
         value.unitType
     }
