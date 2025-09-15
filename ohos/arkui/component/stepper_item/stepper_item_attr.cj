@@ -17,7 +17,6 @@ package ohos.arkui.component.stepper_item
 
 import ohos.arkui.component.common.*
 import ohos.base.*
-import ohos.labels.APILevel
 
 sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
 

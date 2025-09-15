@@ -18,9 +18,7 @@ package ohos.arkui.component.web
 import ohos.arkui.component.common.*
 import ohos.base.*
 import ohos.resource.*
-import ohos.labels.APILevel
 import ohos.web.webview.*
-import std.collection.ArrayList
 
 sealed interface WebAttribute <: CommonMethod<WebAttribute> {
 

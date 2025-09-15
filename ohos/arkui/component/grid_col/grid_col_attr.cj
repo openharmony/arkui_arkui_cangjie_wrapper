@@ -16,8 +16,6 @@
 package ohos.arkui.component.grid_col
 
 import ohos.arkui.component.common.*
-import ohos.base.*
-import ohos.labels.APILevel
 
 sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     func span(value: Int32): GridColAttribute

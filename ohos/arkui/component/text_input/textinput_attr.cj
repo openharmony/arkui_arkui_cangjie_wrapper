@@ -19,7 +19,6 @@ import ohos.arkui.component.common.*
 import ohos.arkui.component.text_field.*
 import ohos.base.*
 import ohos.resource.*
-import ohos.labels.APILevel
 
 sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
 

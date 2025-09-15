@@ -16,11 +16,7 @@
 package ohos.arkui.component.checkbox
 
 import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
 import ohos.base.*
-import ohos.ffi.*
-import ohos.labels.APILevel
 
 sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
     func select(value: Bool): CheckboxAttribute

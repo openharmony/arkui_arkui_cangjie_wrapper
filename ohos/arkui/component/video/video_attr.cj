@@ -18,8 +18,6 @@ package ohos.arkui.component.video
 import ohos.arkui.component.common.*
 import ohos.base.*
 import ohos.resource.*
-import ohos.labels.APILevel
-import std.convert.*
 
 sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
 

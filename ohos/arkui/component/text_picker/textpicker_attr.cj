@@ -17,7 +17,6 @@ package ohos.arkui.component.text_picker
 
 import ohos.arkui.component.common.*
 import ohos.base.*
-import ohos.labels.APILevel
 
 sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
 

@@ -18,7 +18,6 @@ package ohos.arkui.component.text_timer
 import ohos.arkui.component.common.*
 import ohos.base.*
 import ohos.resource.*
-import ohos.labels.APILevel
 
 sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
 

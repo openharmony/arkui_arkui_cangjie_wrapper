@@ -17,7 +17,6 @@ package ohos.arkui.component.search
 
 import ohos.arkui.component.common.*
 import ohos.base.*
-import ohos.labels.APILevel
 
 sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
 

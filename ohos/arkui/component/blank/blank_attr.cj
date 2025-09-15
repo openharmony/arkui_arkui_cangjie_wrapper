@@ -18,7 +18,6 @@ package ohos.arkui.component.blank
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
 import ohos.base.*
-import ohos.labels.APILevel
 
 sealed interface BlankAttribute <: CommonMethod<BlankAttribute> {
     func color(value: ResourceColor): BlankAttribute

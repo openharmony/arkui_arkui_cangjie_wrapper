@@ -17,8 +17,6 @@ package ohos.arkui.component.counter
 
 import ohos.arkui.component.common.*
 import ohos.base.*
-import ohos.ffi.*
-import ohos.labels.APILevel
 
 sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
 

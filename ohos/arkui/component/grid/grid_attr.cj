@@ -18,7 +18,6 @@ package ohos.arkui.component.grid
 import ohos.arkui.component.common.*
 import ohos.base.*
 import ohos.arkui.component.scroll.*
-import ohos.labels.APILevel
 
 sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
 

@@ -16,9 +16,7 @@
 package ohos.arkui.component.canvas
 
 import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
 import ohos.base.*
-import ohos.labels.APILevel
 
 sealed interface CanvasAttribute <: CommonMethod<CanvasAttribute> {
     func onReady(callback: () -> Unit): CanvasAttribute

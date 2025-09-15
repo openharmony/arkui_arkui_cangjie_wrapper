@@ -16,7 +16,6 @@
 package ohos.arkui.component.grid_item
 
 import ohos.arkui.component.common.*
-import ohos.labels.APILevel
 
 sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
 
