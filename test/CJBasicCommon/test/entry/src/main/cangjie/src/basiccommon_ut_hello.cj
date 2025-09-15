@@ -978,6 +978,8 @@ class PersonObservable <: Observable {
         var customview = DtTestCustomView(Option.None, Option.None)
         super.subscribe(customview)
         var isTrue = super.isSubscribed(customview)
+        var customview1 = DtTestCustomView(Option.None, Option.None)
+        var isTrue1 = super.isSubscribed(customview1)
         super.notifyChangesInner("Name", ArrayList<Int64>())
     }
 }

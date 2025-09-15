@@ -255,6 +255,12 @@ class ViewAnimator {
                         this.backAnimator?.play()
                     }
                     .id("PlayButton").fontSize(12).width(47.percent).height(30)
+                Button("Play1")
+                    .fontSize(20)
+                    .fontColor(Color.Black)
+                    .onClick { e =>
+                    }
+                    .id("PlayButton").fontSize(12).width(Option<Length>.None).height(Option<Length>.None)
                 Button("reset1")
                     .fontSize(20)
                     .fontColor(Color.Black)
