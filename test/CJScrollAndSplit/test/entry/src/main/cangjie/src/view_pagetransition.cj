@@ -42,7 +42,7 @@ class ViewPageTransition {
         }
     }
 
-    protected func onTransition(): Unit {
+    protected func pageTransition(): Unit {
         PageTransitionEnter(duration: 500, curve: Curve.Linear).opacity(1.0).scale(x: 1.0, y: 1.0,
             z: 1.0, centerX: @r(app.string.size_desc), centerY: @r(app.string.size_desc)).translate(x: 0).slide(
             SlideEffect.Left).slide(SlideEffect.Right).slide(SlideEffect.Top).onEnter {

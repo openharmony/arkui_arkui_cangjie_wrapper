@@ -117,9 +117,9 @@ class ViewCanvas {
 
 
                         this.context.font(size: 85.px, family: "sans-serif")
-                        this.context.fillText("Hello World!", 20.0, 100.0)
+                        this.context.fillText("Hello World!", 20.0, 100.0, maxWidth: 100.0)
                         this.context.font()
-                        this.context.strokeText("Hello World!", 20.0, 60.0)
+                        this.context.strokeText("Hello World!", 20.0, 60.0, maxWidth: 100.0)
                         //创建一个蓝色圆形渐变效果
                         this.context.beginPath()
                         this.context.lineWidth = 6.0
@@ -210,6 +210,7 @@ class ViewCanvas {
                     {
                         =>
                         this.path2Db.addPath(this.path2Da)
+                        this.path2Db.setTransform(1.0, -0.5, 0.5, 1.0, 10.0, 10.0)
                         this.context2.stroke(this.path2Db)
 
                         this.path2Db.moveTo(200.0, 100.0)
@@ -241,9 +242,9 @@ class ViewCanvas {
                     }
                 )
 
-//                Canvas(this.context).width(50.00.vp).height(30.00.vp).backgroundColor(0xffff00).onReady(
-//                    {
-//                        =>
+                Canvas(this.context).width(50.00.vp).height(30.00.vp).backgroundColor(0xffff00).onReady(
+                   {
+                        =>
 //                        let buffer: Array<UInt8> = loadMedia(Int32(@r(app.media.startIcon).id))
 //                        let imageSource = createImageSource(buffer)
 //                        let decodeOpts: DecodingOptions = DecodingOptions(
@@ -251,19 +252,19 @@ class ViewCanvas {
 //                            rotate: 0,
 //                            editable: true
 //                        )
-//                        let pixelmap: PixelMap = imageSource.createPixelMap(options: decodeOpts)
-//                        let imageInfo: ImageInfo = pixelmap.getImageInfo()
+                        let pixelmap: PixelMap = this.context.getPixelMap(150.0, 150.0, 130.0, 130.0)
+                        let imageInfo: ImageInfo = pixelmap.getImageInfo()
 //                        imageSource.release()
-//
-//                        this.context.drawImage(pixelmap, 0.0, 200.0)
-//                        this.context.drawImage(pixelmap, 0.0, 0.0, 200.0, 200.0)
-//                        this.context.drawImage(pixelmap, 0.0, 0.0, 200.0, 200.0, 0.0, 0.0, 200.0, 200.0)
-//
-//                        this.context.drawImage(imageBitmap, 0.0, 200.0)
-//                        this.context.drawImage(imageBitmap, 0.0, 0.0, 200.0, 200.0)
-//                        this.context.drawImage(imageBitmap, 0.0, 0.0, 200.0, 200.0, 0.0, 0.0, 200.0, 200.0)
-//                    }
-//                )
+
+                        this.context.drawImage(pixelmap, 0.0, 200.0)
+                        this.context.drawImage(pixelmap, 0.0, 0.0, 200.0, 200.0)
+                        this.context.drawImage(pixelmap, 0.0, 0.0, 200.0, 200.0, 0.0, 0.0, 200.0, 200.0)
+
+                        this.context.drawImage(imageBitmap, 0.0, 200.0)
+                        this.context.drawImage(imageBitmap, 0.0, 0.0, 200.0, 200.0)
+                        this.context.drawImage(imageBitmap, 0.0, 0.0, 200.0, 200.0, 0.0, 0.0, 200.0, 200.0)
+                    }
+                )
             }
         }.id("scroller")
     }

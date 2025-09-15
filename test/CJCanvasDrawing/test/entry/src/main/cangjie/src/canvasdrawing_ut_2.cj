@@ -400,6 +400,9 @@ class CanvasDrawingUT2 {
         let attrs4 = jsonObject4.get("$attrs").getOrThrow().asObject()
         let mask4 = attrs4.get("mask").getOrThrow().toString()
         @Expect(mask4, "{\"shape\":\"Circle\"}")
+
+        let scrollBar = driver.findComponent(On().id("scroller"))
+        scrollBar?.scrollToBottom(speed:15000)
     }
 
     // 获取文本内容

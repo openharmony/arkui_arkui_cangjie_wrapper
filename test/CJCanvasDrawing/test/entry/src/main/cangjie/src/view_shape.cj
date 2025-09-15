@@ -83,7 +83,7 @@ class ViewShape{
                   .strokeWidth(10)
             .id('OffsetTest')
             Shape() {
-                    Rect().width(30).height(50)
+                    Rect().width(30).height(50).radius([(1,1),(2,2),(3,3)])
                   }
                   .width(30)
                   .height(80)

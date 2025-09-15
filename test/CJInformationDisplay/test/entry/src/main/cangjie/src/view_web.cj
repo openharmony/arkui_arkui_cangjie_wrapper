@@ -26,6 +26,9 @@ import ohos.arkui.state_macro_manage.State
 import ohos.arkui.state_macro_manage.r
 import ohos.arkui.component.web.*
 
+// Test: transResourceMediaToString  case _
+class Clazz <: ResourceStr {}
+
 @Entry
 @Component
 class ViewWeb {
@@ -100,6 +103,9 @@ class ViewWeb {
                         controller: this.webController)
                     .darkMode(WebDarkMode.On)
                     .mixedMode(MixedMode.All)
+
+                    // Test: transResourceMediaToString  case _
+                    Web(src: Clazz(), controller: webController)
             }.height(30.percent)
             Column() {
                 Text(this.outter)

@@ -40,7 +40,8 @@ class TabsExample1 {
     var edgeEffectText: String = "edgeEffect"
     @State
     var animationModeText: String = "animationMode";
-
+    let child: () -> Unit = { => Hilog.error(1, "cangjie-test", "Tabs.child")}
+    
     func getFontColor(index: Int32): UInt32 {
         if (this.selectedIndex == index) {
             return this.selectedFontColor
