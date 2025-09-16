@@ -896,7 +896,6 @@ class BasicCommonUTHello {
                 enableStatusBarAnimation: true,
                 enableNavigationBarAnimation: true
             )
-            let property1: SystemBarProperties = SystemBarProperties(property)
             // mainWindow.setWindowSystemBarProperties(property)
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_window2 setWindowSystemBarProperties: ${e.toString()}")
