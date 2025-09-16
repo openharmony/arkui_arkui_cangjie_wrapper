@@ -286,7 +286,7 @@ class BasicCommonUT1 {
         bindSheet4.click()
         driver.delayMs(1000)
 
-        let bindSheet3: Component = driver.findComponent(On().id("bindSheet3")).getOrThrow()
+        let bindSheet3: Component = driver.findComponent(On().id("bindsheet3")).getOrThrow()
         bindSheet3.click()
         driver.delayMs(1000)
         let text_3 = driver.findComponent(On().id("text3")).getOrThrow()
