@@ -120,6 +120,7 @@ class ViewCanvas {
                         this.context.fillText("Hello World!", 20.0, 100.0, maxWidth: 100.0)
                         this.context.font()
                         this.context.strokeText("Hello World!", 20.0, 60.0, maxWidth: 100.0)
+                        this.context.setLineDash([0.0,0.0,0.0,0.0])
                         //创建一个蓝色圆形渐变效果
                         this.context.beginPath()
                         this.context.lineWidth = 6.0
