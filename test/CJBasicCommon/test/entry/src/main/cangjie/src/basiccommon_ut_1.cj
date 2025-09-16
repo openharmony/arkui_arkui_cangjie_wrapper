@@ -278,12 +278,20 @@ class BasicCommonUT1 {
         let text2 = text_2.getText().toString()
         @Expect(text2, "BindSheet onDisappear.")
 
+        let bindsheet2: Component = driver.findComponent(On().id("bindsheet2")).getOrThrow()
+        bindsheet2.click()
+        driver.delayMs(1000)
+
+        let bindSheet4: Component = driver.findComponent(On().id("bindSheet4")).getOrThrow()
+        bindSheet4.click()
+        driver.delayMs(1000)
+
         let bindSheet3: Component = driver.findComponent(On().id("bindSheet3")).getOrThrow()
         bindSheet3.click()
         driver.delayMs(1000)
-        let text_3 = driver.findComponent(On().id("text2")).getOrThrow()
+        let text_3 = driver.findComponent(On().id("text3")).getOrThrow()
         let text3 = text_3.getText().toString()
-        @Expect(text2, "BindSheet onDisappear.")
+        @Expect(text3, "onHeightDidChange")
 
         let button3: Component = driver.findComponent(On().id("button3")).getOrThrow()
         button3.click()
