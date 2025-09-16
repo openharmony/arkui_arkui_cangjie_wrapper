@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.web") {
-  sources = [ "cj_web.cj" ]
+  sources = [
+    "web.cj",
+    "web_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

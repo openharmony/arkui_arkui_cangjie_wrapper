@@ -38,7 +38,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Line <: ShapeComponent {
+public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
     /**
      * Create a Line.
      *

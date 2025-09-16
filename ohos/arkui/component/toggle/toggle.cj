@@ -66,7 +66,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Toggle <: ContainerBase {
+public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute {
 
     /**
      * Set parameters to obtain the toggle.

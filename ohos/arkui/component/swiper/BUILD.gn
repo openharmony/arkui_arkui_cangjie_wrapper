@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.swiper") {
-  sources = [ "cj_swiper.cj" ]
+  sources = [
+    "swiper.cj",
+    "swiper_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

@@ -42,7 +42,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Counter <: ContainerBase {
+public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribute {
 
     /**
      * Return Counter.

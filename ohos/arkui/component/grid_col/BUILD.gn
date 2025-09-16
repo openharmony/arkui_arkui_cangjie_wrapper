@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.grid_col") {
-  sources = [ "cj_grid_col.cj" ]
+  sources = [
+    "grid_col.cj",
+    "grid_col_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

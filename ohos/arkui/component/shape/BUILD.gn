@@ -14,7 +14,12 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.shape") {
-  sources = [ "shape.cj" ]
+  sources = [
+    "shape.cj",
+    "shape_attr.cj",
+    "common_shape_method.cj",
+    "common_shape_component.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

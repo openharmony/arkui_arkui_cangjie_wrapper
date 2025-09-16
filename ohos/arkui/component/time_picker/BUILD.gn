@@ -14,7 +14,7 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.time_picker") {
-  sources = [ "cj_timepicker.cj" ]
+  sources = [ "timepicker.cj" ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"

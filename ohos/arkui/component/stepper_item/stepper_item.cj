@@ -39,7 +39,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class StepperItem <: ContainerBase {
+public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & StepperItemAttribute {
 
     /**
      * Constructs a StepperItem component.

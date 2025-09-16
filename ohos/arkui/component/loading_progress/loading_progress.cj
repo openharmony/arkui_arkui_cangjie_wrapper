@@ -43,7 +43,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class LoadingProgress <: ViewBase {
+public class LoadingProgress <: CommonMethodComponent<LoadingProgressAttribute> & LoadingProgressAttribute {
     /**
      * Create a LoadingProgress
      *

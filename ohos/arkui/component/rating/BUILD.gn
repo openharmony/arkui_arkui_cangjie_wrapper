@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.rating") {
-  sources = [ "rating.cj" ]
+  sources = [
+    "rating.cj",
+    "rating_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

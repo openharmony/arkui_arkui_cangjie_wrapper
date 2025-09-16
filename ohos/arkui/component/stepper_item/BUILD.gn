@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.stepper_item") {
-  sources = [ "stepper_item.cj" ]
+  sources = [
+    "stepper_item.cj",
+    "stepper_item_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

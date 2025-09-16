@@ -14,7 +14,7 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.custom_dialog") {
-  sources = [ "cj_custom_dialog.cj" ]
+  sources = [ "custom_dialog.cj" ]
 
   cj_deps = [
     "../../../base:ohos.base",

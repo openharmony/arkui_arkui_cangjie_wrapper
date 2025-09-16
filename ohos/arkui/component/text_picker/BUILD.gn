@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.text_picker") {
-  sources = [ "cj_textpicker.cj" ]
+  sources = [
+    "textpicker.cj",
+    "textpicker_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

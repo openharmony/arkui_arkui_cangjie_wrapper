@@ -44,7 +44,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Row <: ContainerBase {
+public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
     /**
     * Defines the constructor of Row.
     *

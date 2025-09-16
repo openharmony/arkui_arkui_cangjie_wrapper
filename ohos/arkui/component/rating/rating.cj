@@ -48,7 +48,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Rating <: ViewBase {
+public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute {
     /**
      * Create a Rating.
      *

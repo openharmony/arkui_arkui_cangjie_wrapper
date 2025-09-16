@@ -39,7 +39,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class RowSplit <: ContainerBase {
+public class RowSplit <: CommonMethodComponent<RowSplitAttribute> & RowSplitAttribute {
     /**
     * Called when the layout along the vertical direction is set.
     *

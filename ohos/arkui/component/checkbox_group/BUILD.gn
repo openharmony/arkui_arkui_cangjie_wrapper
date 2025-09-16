@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.checkbox_group") {
-  sources = [ "cj_checkbox_group.cj" ]
+  sources = [
+    "checkbox_group.cj",
+    "checkbox_group_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

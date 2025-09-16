@@ -15,46 +15,4 @@
 
 package ohos.arkui.component.common
 
-internal import ohos.labels.APILevel
-internal import ohos.base.*
-internal import ohos.ffi.*
-internal import std.collection.*
-internal import ohos.resource.*
-
 foreign func FfiOHOSAceFrameworkContainerBasePop(): Unit
-
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public abstract class ContainerBase <: ViewBase {
-    protected var child: () -> Unit = {=>}
-
-    protected open override func pop(): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkContainerBasePop()
-        }
-    }
-
-    protected open func genChild(): Unit {
-        child()
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public open override func initial() {
-        genChild()
-        pop()
-    }
-
-    protected init() {
-        super()
-    }
-    protected init(id: Int64) {
-        super(id)
-    }
-}

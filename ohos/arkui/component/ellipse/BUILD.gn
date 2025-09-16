@@ -14,7 +14,10 @@
 import("//build/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.ellipse") {
-  sources = [ "cj_ellipse.cj" ]
+  sources = [
+    "ellipse.cj",
+    "ellipse_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",
