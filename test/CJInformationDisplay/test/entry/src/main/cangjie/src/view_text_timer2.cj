@@ -51,7 +51,7 @@ class ViewTextTimer2 {
                 .fontStyle(FontStyle.Italic)
                 .fontWeight(FontWeight.Bold)
                 .fontFamily("HarmonyOS Sans")
-//                .textShadow(ShadowOptions(radius: 10.0, offsetX: 10.0, offsetY: 0.0, color: @r(app.color.start_window_background)))
+                .textShadow(ShadowOptions(radius: 10.0, offsetX: 10.0, offsetY: 0.0, color: @r(app.color.start_window_background)))
                 .onTimer({
                     utc, elapsedTime => onTimerText = "Time Change"
                 })

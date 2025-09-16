@@ -452,6 +452,7 @@ class TextAndInputUT1 {
         GET.click()
         let RichEditor01GetSpans = driver.findComponent(On().id("RichEditor01GetSpans")).getOrThrow()
         RichEditor01GetSpans.click()
+        driver.pressBack() // 需要多回退一次，否则执行完testcase会闪退
     }
 
     @TestCase
