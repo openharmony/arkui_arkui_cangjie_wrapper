@@ -73,9 +73,10 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func vertical(value: Bool): This {
+    public func vertical(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkDividerSetVertical(value)
+            FfiOHOSAceFrameworkDividerSetVertical(tmpValue)
         }
         this
     }
@@ -92,9 +93,10 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(value: ResourceColor): This {
+    public func color(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkDividerSetDividerColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkDividerSetDividerColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -111,8 +113,9 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeWidth(value: Length): This {
-        var width_ = transAppResourceToLength(value)
+    public func strokeWidth(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var width_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkDividerSetStrokeWidth(width_.value, width_.unitType.getValue())
         }
@@ -131,9 +134,10 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lineCap(value: LineCapStyle): This {
+    public func lineCap(value: ?LineCapStyle): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkDividerSetLineCap(value.getValue())
+            FfiOHOSAceFrameworkDividerSetLineCap(tmpValue.getValue())
         }
         this
     }

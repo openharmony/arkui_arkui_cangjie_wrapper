@@ -21,25 +21,25 @@ import ohos.resource.*
 
 sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttribute> {
 
-    func showSideBar(value: Bool): SideBarContainerAttribute
+    func showSideBar(value: ?Bool): SideBarContainerAttribute
 
-    func controlButton(value: ButtonStyle): SideBarContainerAttribute
+    func controlButton(value: ?ButtonStyle): SideBarContainerAttribute
 
-    func showControlButton(value: Bool): SideBarContainerAttribute
+    func showControlButton(value: ?Bool): SideBarContainerAttribute
 
-    func onChange(callback: (Bool) -> Unit): SideBarContainerAttribute
+    func onChange(callback: ?(Bool) -> Unit): SideBarContainerAttribute
 
-    func sideBarWidth(value: Length): SideBarContainerAttribute
+    func sideBarWidth(value: ?Length): SideBarContainerAttribute
 
-    func minSideBarWidth(value: Length): SideBarContainerAttribute
+    func minSideBarWidth(value: ?Length): SideBarContainerAttribute
 
-    func maxSideBarWidth(value: Length): SideBarContainerAttribute
+    func maxSideBarWidth(value: ?Length): SideBarContainerAttribute
 
-    func autoHide(value: Bool): SideBarContainerAttribute
+    func autoHide(value: ?Bool): SideBarContainerAttribute
 
-    func sideBarPosition(value: SideBarPosition): SideBarContainerAttribute
+    func sideBarPosition(value: ?SideBarPosition): SideBarContainerAttribute
 
     func divider(value: ?DividerStyle): SideBarContainerAttribute
 
-    func minContentWidth(value: Length): SideBarContainerAttribute
+    func minContentWidth(value: ?Length): SideBarContainerAttribute
 }

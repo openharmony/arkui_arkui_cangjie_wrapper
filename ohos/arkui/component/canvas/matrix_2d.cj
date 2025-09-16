@@ -81,9 +81,10 @@ public class Matrix2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(unit!: LengthMetricsUnit = LengthMetricsUnit.Default) {
+    public init(unit!: ?LengthMetricsUnit = None) {
         super(unsafe {
-            let id = FfiOHOSAceFrameworkCanvasMatrixCtor(unit.getValue())
+            let tmpUnit = unit ?? LengthMetricsUnit.Default
+            let id = FfiOHOSAceFrameworkCanvasMatrixCtor(tmpUnit.getValue())
             id
         })
     }
@@ -111,15 +112,19 @@ public class Matrix2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public mut prop scaleX: Float64 {
+    public mut prop scaleX: ?Float64 {
         get() {
             unsafe {
                 FfiOHOSAceFrameworkCanvasMatrixGetScaleX(this.getID())
             }
         }
         set(value) {
-            unsafe {
-                FfiOHOSAceFrameworkCanvasMatrixSetScaleX(this.getID(), value)
+            match (value) {
+                case Some(v) => 
+                    unsafe {
+                        FfiOHOSAceFrameworkCanvasMatrixSetScaleX(this.getID(), v)
+                    }
+                case None => ()
             }
         }
     }
@@ -134,15 +139,19 @@ public class Matrix2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public mut prop scaleY: Float64 {
+    public mut prop scaleY: ?Float64 {
         get() {
             unsafe {
                 FfiOHOSAceFrameworkCanvasMatrixGetScaleY(this.getID())
             }
         }
         set(value) {
-            unsafe {
-                FfiOHOSAceFrameworkCanvasMatrixSetScaleY(this.getID(), value)
+            match (value) {
+                case Some(v) => 
+                    unsafe {
+                        FfiOHOSAceFrameworkCanvasMatrixSetScaleY(this.getID(), v)
+                    }
+                case None => ()
             }
         }
     }
@@ -157,15 +166,19 @@ public class Matrix2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public mut prop rotateX: Float64 {
+    public mut prop rotateX: ?Float64 {
         get() {
             unsafe {
                 FfiOHOSAceFrameworkCanvasMatrixGetRotateX(this.getID())
             }
         }
         set(value) {
-            unsafe {
-                FfiOHOSAceFrameworkCanvasMatrixSetRotateX(this.getID(), value)
+            match (value) {
+                case Some(v) => 
+                    unsafe {
+                        FfiOHOSAceFrameworkCanvasMatrixSetRotateX(this.getID(), v)
+                    }
+                case None => ()
             }
         }
     }
@@ -180,15 +193,19 @@ public class Matrix2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public mut prop rotateY: Float64 {
+    public mut prop rotateY: ?Float64 {
         get() {
             unsafe {
                 FfiOHOSAceFrameworkCanvasMatrixGetRotateY(this.getID())
             }
         }
         set(value) {
-            unsafe {
-                FfiOHOSAceFrameworkCanvasMatrixSetRotateY(this.getID(), value)
+            match (value) {
+                case Some(v) => 
+                    unsafe {
+                        FfiOHOSAceFrameworkCanvasMatrixSetRotateY(this.getID(), v)
+                    }
+                case None => ()
             }
         }
     }
@@ -203,15 +220,19 @@ public class Matrix2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public mut prop translateX: Float64 {
+    public mut prop translateX: ?Float64 {
         get() {
             unsafe {
                 FfiOHOSAceFrameworkCanvasMatrixGetTranslateX(this.getID())
             }
         }
         set(value) {
-            unsafe {
-                FfiOHOSAceFrameworkCanvasMatrixSetTranslateX(this.getID(), value)
+            match (value) {
+                case Some(v) => 
+                    unsafe {
+                        FfiOHOSAceFrameworkCanvasMatrixSetTranslateX(this.getID(), v)
+                    }
+                case None => ()
             }
         }
     }
@@ -226,15 +247,19 @@ public class Matrix2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public mut prop translateY: Float64 {
+    public mut prop translateY: ?Float64 {
         get() {
             unsafe {
                 FfiOHOSAceFrameworkCanvasMatrixGetTranslateY(this.getID())
             }
         }
         set(value) {
-            unsafe {
-                FfiOHOSAceFrameworkCanvasMatrixSetTranslateY(this.getID(), value)
+            match (value) {
+                case Some(v) => 
+                    unsafe {
+                        FfiOHOSAceFrameworkCanvasMatrixSetTranslateY(this.getID(), v)
+                    }
+                case None => ()
             }
         }
     }
@@ -291,9 +316,10 @@ public class Matrix2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func rotate(degree: Float64, rx!: Float64 = 0.0, ry!: Float64 = 0.0): This {
+    public func rotate(degree: ?Float64, rx!: ?Float64 = None, ry!: ?Float64 = None): This {
+        let tmpDegree = degree ?? throw IllegalArgumentException("The type now is not supported.")        
         unsafe {
-            FfiOHOSAceFrameworkCanvasMatrixRotate(this.getID(), degree, rx, ry);
+            FfiOHOSAceFrameworkCanvasMatrixRotate(this.getID(), tmpDegree, rx ?? 0.0, ry ?? 0.0);
         }
         this
     }
@@ -311,9 +337,9 @@ public class Matrix2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func translate(tx!: Float64 = 0.0, ty!: Float64 = 0.0): This {
+    public func translate(tx!: ?Float64 = None, ty!: ?Float64 = None): This {
         unsafe {
-            FfiOHOSAceFrameworkCanvasMatrixTranslate(this.getID(), tx, ty);
+            FfiOHOSAceFrameworkCanvasMatrixTranslate(this.getID(), tx ?? 0.0, ty ?? 0.0);
         }
         this
     }
@@ -331,9 +357,9 @@ public class Matrix2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scale(sx!: Float64 = 1.0, sy!: Float64 = 1.0): This {
+    public func scale(sx!: ?Float64 = None, sy!: ?Float64 = None): This {
         unsafe {
-            FfiOHOSAceFrameworkCanvasMatrixScale(this.getID(), sx, sy);
+            FfiOHOSAceFrameworkCanvasMatrixScale(this.getID(), sx ?? 1.0, sy ?? 1.0);
         }
         this
     }

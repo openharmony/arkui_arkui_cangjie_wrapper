@@ -51,9 +51,9 @@ public class Circle <: CommonShapeMethodComponent<CircleAttribute> & CircleAttri
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
+    public init(width!: ?Length = None, height!: ?Length = None) {
+        var width_ = transAppResourceToLength(width ?? 0.vp)
+        var height_ = transAppResourceToLength(height ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkCircleCreate(
                 width_.value,

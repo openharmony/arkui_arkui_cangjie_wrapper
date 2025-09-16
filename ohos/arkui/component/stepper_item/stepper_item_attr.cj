@@ -20,9 +20,9 @@ import ohos.base.*
 
 sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
 
-    func prevLabel(value: String): StepperItemAttribute
+    func prevLabel(value: ?String): StepperItemAttribute
 
-    func nextLabel(value: String): StepperItemAttribute
+    func nextLabel(value: ?String): StepperItemAttribute
 
-    func status(status!: ItemState): StepperItemAttribute
+    func status(status!: ?ItemState): StepperItemAttribute
 }

@@ -53,15 +53,15 @@ struct LanesParams {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class onScrollFrameBeginHandleResult {
-    public var offsetRemain: Float64
+    public var offsetRemain: ?Float64
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(offsetRemain!: Float64) {
-        this.offsetRemain = offsetRemain
+    public init(offsetRemain!: ?Float64) {
+        this.offsetRemain = offsetRemain ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -201,8 +201,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        space!: Int64 = 0,
-        initialIndex!: Int32 = 0,
+        space!: ?Int64 = None,
+        initialIndex!: ?Int32 = None,
         scroller!: ?Scroller = Option<Scroller>.None,
         child!: () -> Unit
     ) {
@@ -211,7 +211,7 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
             case _ => -1
         }
         unsafe {
-            FfiOHOSAceFrameworkListCreate(Float64(space), LENGTH_VP, initialIndex, scrollerID)
+            FfiOHOSAceFrameworkListCreate(Float64(space ?? 0), LENGTH_VP, initialIndex ?? 0, scrollerID)
         }
         this.child = child
     }
@@ -244,9 +244,10 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func listDirection(value: Axis): This {
+    public func listDirection(value: ?Axis): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetDirection(value.getValue())
+            FfiOHOSAceFrameworkListSetDirection(tmpValue.getValue())
         }
         this
     }
@@ -268,18 +269,18 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-public func divider(value: Option<ListDividerOptions>): This {
+    public func divider(value: Option<ListDividerOptions>): This {
         match (value) {
             case Some(v) =>
-                var strokeWidth_ = transAppResourceToLength(v.strokeWidth)
-                var startMargin_ = transAppResourceToLength(v.startMargin)
-                var endMargin_ = transAppResourceToLength(v.endMargin)
+                var strokeWidth_ = transAppResourceToLength(v.strokeWidth ?? throw IllegalArgumentException("The type now is not supported."))
+                var startMargin_ = transAppResourceToLength(v.startMargin ?? 0.vp)
+                var endMargin_ = transAppResourceToLength(v.endMargin ?? 0.vp)
                 unsafe {
                     FfiOHOSAceFrameworkListSetDivider(
                         DividerParams(
                             strokeWidth_.value,
                             strokeWidth_.unitType.getValue(),
-                            transAppResourceToResourceColor(v.color),
+                            transAppResourceToResourceColor(v.color ?? Color.Black),
                             startMargin_.value,
                             startMargin_.unitType.getValue(),
                             endMargin_.value,
@@ -304,9 +305,10 @@ public func divider(value: Option<ListDividerOptions>): This {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func edgeEffect(value: EdgeEffect): This {
+    public func edgeEffect(value: ?EdgeEffect): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetEdgeEffect(value.getValue())
+            FfiOHOSAceFrameworkListSetEdgeEffect(tmpValue.getValue())
         }
         this
     }
@@ -324,9 +326,10 @@ public func divider(value: Option<ListDividerOptions>): This {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func chainAnimation(value: Bool): This {
+    public func chainAnimation(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetChainAnimation(value)
+            FfiOHOSAceFrameworkListSetChainAnimation(tmpValue)
         }
         this
     }
@@ -343,9 +346,10 @@ public func divider(value: Option<ListDividerOptions>): This {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func cachedCount(value: Int32): This {
+    public func cachedCount(value: ?Int32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetCachedCount(value)
+            FfiOHOSAceFrameworkListSetCachedCount(tmpValue)
         }
         this
     }
@@ -362,9 +366,10 @@ public func divider(value: Option<ListDividerOptions>): This {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func multiSelectable(value: Bool): This {
+    public func multiSelectable(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetMultiSelectable(value)
+            FfiOHOSAceFrameworkListSetMultiSelectable(tmpValue)
         }
         this
     }
@@ -382,9 +387,10 @@ public func divider(value: Option<ListDividerOptions>): This {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lanes(value: Int32): This {
+    public func lanes(value: ?Int32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetLanes(value)
+            FfiOHOSAceFrameworkListSetLanes(tmpValue)
         }
         this
     }
@@ -403,9 +409,11 @@ public func divider(value: Option<ListDividerOptions>): This {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lanes(minLength!: Length, maxLength!: Length): This {
-        var minLength_ = transAppResourceToLength(minLength)
-        var maxLength_ = transAppResourceToLength(maxLength)
+    public func lanes(minLength!: ?Length, maxLength!: ?Length): This {
+        let tmpMinLength = minLength ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpMaxLength = maxLength ?? throw IllegalArgumentException("The type now is not supported.")
+        var minLength_ = transAppResourceToLength(tmpMinLength)
+        var maxLength_ = transAppResourceToLength(tmpMaxLength)
         unsafe {
             FfiOHOSAceFrameworkListSetLanesByLengthConstrain(
                 minLength_.value,
@@ -430,9 +438,10 @@ public func divider(value: Option<ListDividerOptions>): This {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alignListItem(value: ListItemAlign): This {
+    public func alignListItem(value: ?ListItemAlign): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetAlignListItem(value.getValue())
+            FfiOHOSAceFrameworkListSetAlignListItem(tmpValue.getValue())
         }
         this
     }
@@ -449,9 +458,10 @@ public func divider(value: Option<ListDividerOptions>): This {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func sticky(value: StickyStyle): This {
+    public func sticky(value: ?StickyStyle): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetSticky(value.getValue())
+            FfiOHOSAceFrameworkListSetSticky(tmpValue.getValue())
         }
         this
     }
@@ -507,8 +517,8 @@ public func divider(value: Option<ListDividerOptions>): This {
     }
 
     protected func nestedScrollInner(value: NestedScrollOptions): This {
-        let localScrollForward = value.scrollForward.getValue()
-        let localScrollBackward = value.scrollBackward.getValue()
+        let localScrollForward = (value.scrollForward ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+        let localScrollBackward = (value.scrollBackward ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
         unsafe {
             FfiOHOSAceFrameworkListSetNestedScroll(localScrollForward, localScrollBackward)
         }
@@ -527,8 +537,9 @@ public func divider(value: Option<ListDividerOptions>): This {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollIndex(event: (Int32, Int32, Int32) -> Unit): This {
-        let lambdaData = Callback3Param<Int32, Int32, Int32, Unit>(event);
+    public func onScrollIndex(event: ?(Int32, Int32, Int32) -> Unit): This {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = Callback3Param<Int32, Int32, Int32, Unit>(tmpEvent);
         unsafe {
             FfiOHOSAceFrameworkListSetOnScrollIndexCallback(lambdaData.getID())
         }
@@ -547,10 +558,11 @@ public func divider(value: Option<ListDividerOptions>): This {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollFrameBegin(event: (Float64, ScrollState) -> onScrollFrameBeginHandleResult): This {
+    public func onScrollFrameBegin(event: ?(Float64, ScrollState) -> onScrollFrameBeginHandleResult): This {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = { offset: Float64, state: Int32 =>
-            let res = event(offset, ScrollState.parseValue(state))
-            res.offsetRemain
+            let res = tmpEvent(offset, ScrollState.parseValue(state))
+            res.offsetRemain ?? throw IllegalArgumentException("The type now is not supported.")
         }
         let lambdaData = Callback2Param<Float64, Int32, Float64>(wrapper)
         unsafe {

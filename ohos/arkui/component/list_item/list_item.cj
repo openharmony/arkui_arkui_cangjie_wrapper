@@ -118,9 +118,10 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectable(value: Bool): This {
+    public func selectable(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListItemSetSelectable(value)
+            FfiOHOSAceFrameworkListItemSetSelectable(tmpValue)
         }
         this
     }
@@ -141,17 +142,18 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func swipeAction(
-        start!: CustomBuilder = {=>},
-        end!: CustomBuilder = {=>},
-        edgeEffect!: SwipeEdgeEffect = SwipeEdgeEffect.Spring,
-        onOffsetChange!: (Float64) -> Unit = {_: Float64 =>}
+        start!: ?CustomBuilder = None,
+        end!: ?CustomBuilder = None,
+        edgeEffect!: ?SwipeEdgeEffect = Option.None,
+        onOffsetChange!: ?(Float64) -> Unit = None
     ): This {
-        let startLambda = Callback0Param<Unit>(start)
-        let endLambda = Callback0Param<Unit>(end)
-        let onOffsetLambda = Callback1Param<Float64, Unit>(onOffsetChange)
+        let tmpEdgeEffect = edgeEffect ?? SwipeEdgeEffect.Spring
+        let startLambda = Callback0Param<Unit>(start ?? {=>})
+        let endLambda = Callback0Param<Unit>(end ?? {=>})
+        let onOffsetLambda = Callback1Param<Float64, Unit>(onOffsetChange ?? {_: Float64 =>})
 
         unsafe {
-            FfiOHOSAceFrameworkListItemSetSwipeAction2(startLambda.getID(), endLambda.getID(), edgeEffect.getValue(),
+            FfiOHOSAceFrameworkListItemSetSwipeAction2(startLambda.getID(), endLambda.getID(), tmpEdgeEffect.getValue(),
                 onOffsetLambda.getID())
         }
         this
@@ -169,8 +171,9 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onSelect(event: (Bool) -> Unit): This {
-        let lambdaData = Callback1Param<Bool, Unit>(event)
+    public func onSelect(event: ?(Bool) -> Unit): This {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = Callback1Param<Bool, Unit>(tmpEvent)
         unsafe {
             FfiOHOSAceFrameworkListItemSetOnSelect(lambdaData.getID())
         }

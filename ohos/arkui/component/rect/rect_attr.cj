@@ -21,13 +21,13 @@ import ohos.base.*
 
 sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {	
 
-    func radiusWidth(value: Length): RectAttribute	
+    func radiusWidth(value: ?Length): RectAttribute
 
-    func radiusHeight(value: Length): RectAttribute
+    func radiusHeight(value: ?Length): RectAttribute
 
-    func radius(value: Length): RectAttribute
+    func radius(value: ?Length): RectAttribute
 
-    func radius(value: Array<Length>): RectAttribute
+    func radius(value: ?Array<Length>): RectAttribute
 
-    func radius(radiusArray: Array<(Length, Length)>): RectAttribute
+    func radius(radiusArray: ?Array<(Length, Length)>): RectAttribute
 }

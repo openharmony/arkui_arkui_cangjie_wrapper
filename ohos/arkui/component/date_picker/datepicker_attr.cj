@@ -23,14 +23,14 @@ import std.time.*
 
 sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
 
-    public func lunar(value: Bool): DatePickerAttribute
+    public func lunar(value: ?Bool): DatePickerAttribute
 
-    public func onDateChange(callback: Callback<DateTime, Unit>): DatePickerAttribute
+    public func onDateChange(callback: ?Callback<DateTime, Unit>): DatePickerAttribute
 
-    public func disappearTextStyle(value: PickerTextStyle): DatePickerAttribute
+    public func disappearTextStyle(value: ?PickerTextStyle): DatePickerAttribute
 
-    public func textStyle(value: PickerTextStyle): DatePickerAttribute
+    public func textStyle(value: ?PickerTextStyle): DatePickerAttribute
 
-    public func selectedTextStyle(value: PickerTextStyle): DatePickerAttribute
+    public func selectedTextStyle(value: ?PickerTextStyle): DatePickerAttribute
 }
 

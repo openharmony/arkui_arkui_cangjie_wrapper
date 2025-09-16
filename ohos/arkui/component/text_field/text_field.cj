@@ -317,14 +317,14 @@ protected class TextField {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBorderWidthWithCJEdge(
                 CJEdge(
-                    edgeWidths.top.value,
-                    edgeWidths.top.unitType.getValue(),
-                    edgeWidths.right.value,
-                    edgeWidths.right.unitType.getValue(),
-                    edgeWidths.bottom.value,
-                    edgeWidths.bottom.unitType.getValue(),
-                    edgeWidths.left.value,
-                    edgeWidths.left.unitType.getValue()
+                    (edgeWidths.top ?? 0.vp).value,
+                    (edgeWidths.top ?? 0.vp).unitType.getValue(),
+                    (edgeWidths.right ?? 0.vp).value,
+                    (edgeWidths.right ?? 0.vp).unitType.getValue(),
+                    (edgeWidths.bottom ?? 0.vp).value,
+                    (edgeWidths.bottom ?? 0.vp).unitType.getValue(),
+                    (edgeWidths.left ?? 0.vp).value,
+                    (edgeWidths.left ?? 0.vp).unitType.getValue()
                 )
             )
         }

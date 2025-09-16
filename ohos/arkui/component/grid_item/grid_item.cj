@@ -91,7 +91,7 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
     /**
      * This parameter specifies the start column number of the current element.
      *
-     * @param { Int32 } columnStart
+     * @param { Int32 } value
      * @returns { This }
      * @relation columnStart(value: number): GridItemAttribute
      */
@@ -100,9 +100,10 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func columnStart(value: Int32): This {
+    public func columnStart(value: ?Int32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridItemSetColumnStart(value)
+            FfiOHOSAceFrameworkGridItemSetColumnStart(tmpValue)
         }
         this
     }
@@ -119,9 +120,10 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func columnEnd(value: Int32): This {
+    public func columnEnd(value: ?Int32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridItemSetColumnEnd(value)
+            FfiOHOSAceFrameworkGridItemSetColumnEnd(tmpValue)
         }
         this
     }
@@ -138,9 +140,10 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func rowStart(value: Int32): This {
+    public func rowStart(value: ?Int32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridItemSetRowStart(value)
+            FfiOHOSAceFrameworkGridItemSetRowStart(tmpValue)
         }
         this
     }
@@ -148,7 +151,7 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
     /**
      * Specifies the end line number of the current element.
      *
-     * @param { Int32 } rowEnd
+     * @param { Int32 } value
      * @returns { This }
      * @relation rowEnd(value: number): GridItemAttribute
      */
@@ -157,9 +160,10 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func rowEnd(value: Int32): This {
+    public func rowEnd(value: ?Int32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridItemSetRowEnd(value)
+            FfiOHOSAceFrameworkGridItemSetRowEnd(tmpValue)
         }
         this
     }

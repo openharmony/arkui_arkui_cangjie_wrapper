@@ -20,14 +20,14 @@ import ohos.base.*
 
 sealed interface ListItemAttribute <: CommonMethod<ListItemAttribute> {
 
-    func selectable(value: Bool): ListItemAttribute
+    func selectable(value: ?Bool): ListItemAttribute
 
     func swipeAction(
-        start!: CustomBuilder,
-        end!: CustomBuilder,
-        edgeEffect!: SwipeEdgeEffect,
-        onOffsetChange!: (Float64) -> Unit
+        start!: ?CustomBuilder,
+        end!: ?CustomBuilder,
+        edgeEffect!: ?SwipeEdgeEffect,
+        onOffsetChange!: ?(Float64) -> Unit
     ): ListItemAttribute
 
-    func onSelect(event: (Bool) -> Unit): ListItemAttribute
+    func onSelect(event: ?(Bool) -> Unit): ListItemAttribute
 }

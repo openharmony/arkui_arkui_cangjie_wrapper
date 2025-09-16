@@ -20,11 +20,11 @@ import ohos.base.*
 
 sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
 
-    func vertical(value: Bool): DividerAttribute
+    func vertical(value: ?Bool): DividerAttribute
 
-    func color(value: ResourceColor): DividerAttribute
+    func color(value: ?ResourceColor): DividerAttribute
 
-    func strokeWidth(value: Length): DividerAttribute
+    func strokeWidth(value: ?Length): DividerAttribute
 
-    func lineCap(value: LineCapStyle): DividerAttribute
+    func lineCap(value: ?LineCapStyle): DividerAttribute
 }

@@ -76,12 +76,12 @@ struct CJTouchInfo {
     let localY: Float64
 
     init(touchObject: TouchObject) {
-        touchType = touchObject.touchType.getValue()
-        fingerId = touchObject.id
-        globalX = touchObject.screenX
-        globalY = touchObject.screenY
-        localX = touchObject.x
-        localY = touchObject.y
+        touchType = (touchObject.touchType ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+        fingerId = touchObject.id ?? throw IllegalArgumentException("The type now is not supported.")
+        globalX = touchObject.screenX ?? throw IllegalArgumentException("The type now is not supported.")
+        globalY = touchObject.screenY ?? throw IllegalArgumentException("The type now is not supported.")
+        localX = touchObject.x ?? throw IllegalArgumentException("The type now is not supported.")
+        localY = touchObject.y ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -110,13 +110,13 @@ struct CJKeyEvent {
     let timestamp: Int64
 
     init(kv: KeyEvent) {
-        keyText =  unsafe { LibC.mallocCString(kv.keyText) }
-        keyType = kv.keyType.getValue()
-        keyCode = kv.keyCode
-        keySource = kv.keySource.getValue()
-        metaKey = kv.metaKey
-        deviceId = kv.deviceId
-        timestamp = kv.timestamp
+        keyText =  unsafe { LibC.mallocCString(kv.keyText ?? throw IllegalArgumentException("The type now is not supported.")) }
+        keyType = (kv.keyType ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+        keyCode = kv.keyCode ?? throw IllegalArgumentException("The type now is not supported.")
+        keySource = (kv.keySource ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+        metaKey = kv.metaKey ?? throw IllegalArgumentException("The type now is not supported.")
+        deviceId = kv.deviceId ?? throw IllegalArgumentException("The type now is not supported.")
+        timestamp = kv.timestamp ?? throw IllegalArgumentException("The type now is not supported.")
     }
 
     func free() {
@@ -137,13 +137,13 @@ struct CJMouseEvent {
     let action: Int32
 
     init(mouseEvent: MouseEvent) {
-        timestamp = mouseEvent.timestamp
-        screenX = mouseEvent.screenX
-        screenY = mouseEvent.screenY
-        x = mouseEvent.x
-        y = mouseEvent.y
-        button = mouseEvent.button.getValue()
-        action = mouseEvent.action.getValue()
+        timestamp = mouseEvent.timestamp ?? throw IllegalArgumentException("The type now is not supported.")
+        screenX = mouseEvent.screenX ?? throw IllegalArgumentException("The type now is not supported.")
+        screenY = mouseEvent.screenY ?? throw IllegalArgumentException("The type now is not supported.")
+        x = mouseEvent.x ?? throw IllegalArgumentException("The type now is not supported.")
+        y = mouseEvent.y ?? throw IllegalArgumentException("The type now is not supported.")
+        button = (mouseEvent.button ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+        action = (mouseEvent.action ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
     }
 }
 

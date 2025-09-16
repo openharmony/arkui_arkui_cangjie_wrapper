@@ -149,9 +149,10 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: Float64, min!: Float64 = 0.0, max!: Float64 = 100.0, child!: () -> Unit = { => }) {
+    public init(value!: ?Float64, min!: ?Float64 = None, max!: ?Float64 = None, child!: () -> Unit = { => }) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGaugeCreate(value, min, max)
+            FfiOHOSAceFrameworkGaugeCreate(tmpValue, min ?? 0.0, max ?? 100.0)
         }
         this.child = child
     }
@@ -168,9 +169,10 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func value(value: Float32): This {
+    public func value(value: ?Float32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetValue(Float64(value))
+            FfiOHOSAceFrameworkGaugeSetValue(Float64(tmpValue))
         }
         this
     }
@@ -187,9 +189,10 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func startAngle(angle: Float64): This {
+    public func startAngle(angle: ?Float64): This {
+        let tmpAngle = angle ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetStartAngle(angle)
+            FfiOHOSAceFrameworkGaugeSetStartAngle(tmpAngle)
         }
         this
     }
@@ -206,9 +209,10 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func endAngle(angle: Float64): This {
+    public func endAngle(angle: ?Float64): This {
+        let tmpAngle = angle ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetEndAngle(angle)
+            FfiOHOSAceFrameworkGaugeSetEndAngle(tmpAngle)
         }
         this
     }
@@ -225,15 +229,16 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(value: Array<(ResourceColor, Float32)>): This {
-        let colors = FFIVectorUInt32(value.size)
-        let weights = FFIVectorFloat32(value.size)
-        for (i in 0..value.size) {
-            colors.setElement(i, transAppResourceToResourceColor(value[i][0]))
-            if (value[i][1] < 0.0) {
+    public func colors(value: ?Array<(ResourceColor, Float32)>): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let colors = FFIVectorUInt32(tmpValue.size)
+        let weights = FFIVectorFloat32(tmpValue.size)
+        for (i in 0..tmpValue.size) {
+            colors.setElement(i, transAppResourceToResourceColor(tmpValue[i][0]))
+            if (tmpValue[i][1] < 0.0) {
                 weights.setElement(i, 0.0)
             } else {
-                weights.setElement(i, value[i][1])
+                weights.setElement(i, tmpValue[i][1])
             }
         }
         unsafe {
@@ -256,8 +261,9 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(value: Array<(LinearGradient, Float32)>): This {
-        var maxSize = value.size;
+    public func colors(value: ?Array<(LinearGradient, Float32)>): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var maxSize = tmpValue.size;
         if (maxSize > 9) {
             maxSize = 9
         }
@@ -265,20 +271,21 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         var weights = FFIVectorFloat32(maxSize)
 
         for (i in 0..maxSize) {
-            var curColorStops = value[i][0].colorStops
+            var curColorStops = tmpValue[i][0].colorStops
             var vecColorStop = FFIVectorColorStops(curColorStops.size)
             for (j in 0..curColorStops.size) {
-                if (curColorStops[j].offset.value >= 0.0) {
-                    vecColorStop.setElement(j, GaugeColorStop(curColorStops[j].color.toUInt32(), curColorStops[j].offset.value))
+                if ((curColorStops[j].offset ?? throw IllegalArgumentException("The type now is not supported.")).value >= 0.0) {
+                    vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color ?? throw IllegalArgumentException("The type now is not supported.")).toUInt32(), 
+                    (curColorStops[j].offset ?? throw IllegalArgumentException("The type now is not supported.")).value))
                 } else {
-                    vecColorStop.setElement(j, GaugeColorStop(curColorStops[j].color.toUInt32(), 0.0))
+                    vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color ?? throw IllegalArgumentException("The type now is not supported.")).toUInt32(), 0.0))
                 }
             }
             vecValueHandle.setElement(i, vecColorStop.getNativeHandle())
-            if (value[i][1] < 0.0) {
+            if (tmpValue[i][1] < 0.0) {
                 weights.setElement(i, 0.0)
             } else {
-                weights.setElement(i, value[i][1])
+                weights.setElement(i, tmpValue[i][1])
             }
         }
         unsafe {
@@ -301,8 +308,9 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(value: ResourceColor): This {
-        let array: Array<(ResourceColor, Float32)> = [(value, 1.0)]
+    public func colors(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let array: Array<(ResourceColor, Float32)> = [(tmpValue, 1.0)]
         colors(array)
         this
     }
@@ -319,8 +327,9 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(value: LinearGradient): This {
-        let array: Array<(LinearGradient, Float32)> = [(value, 1.0)]
+    public func colors(value: ?LinearGradient): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let array: Array<(LinearGradient, Float32)> = [(tmpValue, 1.0)]
         colors(array)
         this
     }
@@ -337,8 +346,9 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeWidth(length: Length): This {
-        var value_ = transAppResourceToLength(length)
+    public func strokeWidth(length: ?Length): This {
+        let tmpLength = length ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpLength)
         unsafe {
             FfiOHOSAceFrameworkGaugeSetStrokeWidth(value_.value, value_.unitType.getValue())
         }
@@ -359,9 +369,9 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func trackShadow(radius!: Float64 = 20.0, offsetX!: Float64 = 5.0, offsetY!: Float64 = 5.0): This {
+    public func trackShadow(radius!: ?Float64 = None, offsetX!: ?Float64 = None, offsetY!: ?Float64 = None): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetShadowOptions(radius, offsetX, offsetY)
+            FfiOHOSAceFrameworkGaugeSetShadowOptions(radius ?? 20.0, offsetX ?? 5.0, offsetY ?? 5.0)
         }
         this
     }
@@ -379,9 +389,9 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func indicator(icon!: ResourceStr = "default", space!: Length = 8.0.vp): This {
-        let icon_ = transResourceStrToString(icon)
-        let space_ = transAppResourceToLength(space)
+    public func indicator(icon!: ?ResourceStr = None, space!: ?Length = None): This {
+        let icon_ = transResourceStrToString(icon ?? "default")
+        let space_ = transAppResourceToLength(space ?? 8.0.vp)
         unsafe {
             try (iconCString = LibC.mallocCString(icon_).asResource()) {
                 FfiOHOSAceFrameworkGaugeSetIndicator(iconCString.value, space_.value)
@@ -402,9 +412,10 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func description(builder: () -> Unit): This {
+    public func description(builder: ?() -> Unit): This {
+        let tmpBuilder = builder ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetDescription(Callback0Param<Unit>(builder).getID())
+            FfiOHOSAceFrameworkGaugeSetDescription(Callback0Param<Unit>(tmpBuilder).getID())
         }
         this
     }

@@ -20,5 +20,5 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 
 sealed interface BlankAttribute <: CommonMethod<BlankAttribute> {
-    func color(value: ResourceColor): BlankAttribute
+    func color(value: ?ResourceColor): BlankAttribute
 }

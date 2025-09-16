@@ -75,7 +75,6 @@ foreign {
 
     func FfiOHOSAceFrameworkShapeSetSize(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
 }
-
 /**
  * Defines Shape Component.
  *
@@ -117,9 +116,10 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: PixelMap) {
+    public init(value!: ?PixelMap) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkShapeCreateWithPixelMap(value.getID())
+            FfiOHOSAceFrameworkShapeCreateWithPixelMap(tmpValue.getID())
         }
     }
     /**
@@ -139,15 +139,15 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func viewPort(
-        x!: Length = 0.vp,
-        y!: Length = 0.vp,
-        width!: Length = 0.vp,
-        height!: Length = 0.vp
+        x!: ?Length = None,
+        y!: ?Length = None,
+        width!: ?Length = None,
+        height!: ?Length = None
     ): This {
-        var x_ = transAppResourceToLength(x)
-        var y_ = transAppResourceToLength(y)
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
+        var x_ = transAppResourceToLength(x ?? 0.vp)
+        var y_ = transAppResourceToLength(y ?? 0.vp)
+        var width_ = transAppResourceToLength(width ?? 0.vp)
+        var height_ = transAppResourceToLength(height ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkShapeSetViewPort(
                 FFIAtCViewPort(
@@ -178,13 +178,16 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func mesh(array: Array<Float64>, column: UInt32, row: UInt32): This {
-        let vecValueHandle = FFIVectorFloat64(array.size)
-        for (i in 0..array.size) {
-            vecValueHandle.setElement(i, array[i])
+    public func mesh(array: ?Array<Float64>, column: ?UInt32, row: ?UInt32): This {
+        let tmpArray = array ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpColumn = column ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpRow = row ?? throw IllegalArgumentException("The type now is not supported.")
+        let vecValueHandle = FFIVectorFloat64(tmpArray.size)
+        for (i in 0..tmpArray.size) {
+            vecValueHandle.setElement(i, tmpArray[i])
         }
         unsafe {
-            FfiOHOSAceFrameworkShapeSetMesh(vecValueHandle.getNativeHandle(), column, row)
+            FfiOHOSAceFrameworkShapeSetMesh(vecValueHandle.getNativeHandle(), tmpColumn, tmpRow)
         }
         vecValueHandle.free()
         this

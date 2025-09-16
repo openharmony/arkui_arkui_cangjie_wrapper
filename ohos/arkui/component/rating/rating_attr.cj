@@ -20,11 +20,11 @@ import ohos.base.*
 
 sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
 
-    func stars(starCount: Int32): RatingAttribute
+    func stars(starCount: ?Int32): RatingAttribute
 
-    func stepSize(size: Float64): RatingAttribute
+    func stepSize(size: ?Float64): RatingAttribute
 
-    func starStyle(backgroundUri!: ResourceStr, foregroundUri!: ResourceStr, secondaryUri!: ResourceStr): RatingAttribute
+    func starStyle(backgroundUri!: ?ResourceStr, foregroundUri!: ?ResourceStr, secondaryUri!: ?ResourceStr): RatingAttribute
 
-    func onChange(callback: (Float64) -> Unit): RatingAttribute
+    func onChange(callback: ?(Float64) -> Unit): RatingAttribute
 }

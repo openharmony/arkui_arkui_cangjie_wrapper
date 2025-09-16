@@ -20,21 +20,21 @@ import ohos.base.*
 
 sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
 
-    func selectedColor(value: ResourceColor): PatternLockAttribute
+    func selectedColor(value: ?ResourceColor): PatternLockAttribute
 
-    func pathColor(value: ResourceColor): PatternLockAttribute
+    func pathColor(value: ?ResourceColor): PatternLockAttribute
 
-    func activeColor(value: ResourceColor): PatternLockAttribute
+    func activeColor(value: ?ResourceColor): PatternLockAttribute
 
-    func regularColor(value: ResourceColor): PatternLockAttribute
+    func regularColor(value: ?ResourceColor): PatternLockAttribute
 
-    func autoReset(value: Bool): PatternLockAttribute
+    func autoReset(value: ?Bool): PatternLockAttribute
 
-    func circleRadius(value: Length): PatternLockAttribute
+    func circleRadius(value: ?Length): PatternLockAttribute
 
-    func sideLength(value: Length): PatternLockAttribute
+    func sideLength(value: ?Length): PatternLockAttribute
 
-    func pathStrokeWidth(value: Length): PatternLockAttribute
+    func pathStrokeWidth(value: ?Length): PatternLockAttribute
 
-    func onPatternComplete(callback: (Array<Int32>) -> Unit): PatternLockAttribute
+    func onPatternComplete(callback: ?(Array<Int32>) -> Unit): PatternLockAttribute
 }

@@ -20,13 +20,13 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 
 sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
-    func closeEffect(value: Bool): DataPanelAttribute
+    func closeEffect(value: ?Bool): DataPanelAttribute
 
-    func valueColors(value: Array<LinearGradient>): DataPanelAttribute
+    func valueColors(value: ?Array<LinearGradient>): DataPanelAttribute
 
-    func trackBackgroundColor(value: ResourceColor): DataPanelAttribute
+    func trackBackgroundColor(value: ?ResourceColor): DataPanelAttribute
 
-    func strokeWidth(value: Length): DataPanelAttribute
+    func strokeWidth(value: ?Length): DataPanelAttribute
 
-    func trackShadow(value: DataPanelShadowOptions): DataPanelAttribute
+    func trackShadow(value: ?DataPanelShadowOptions): DataPanelAttribute
 }

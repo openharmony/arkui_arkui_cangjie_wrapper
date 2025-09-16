@@ -23,31 +23,31 @@ import ohos.multimedia.image.PixelMap
 
 sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
 
-    func alt(src: ResourceStr): ImageAttribute
+    func alt(src: ?ResourceStr): ImageAttribute
 
-    func objectFit(value: ImageFit): ImageAttribute
+    func objectFit(value: ?ImageFit): ImageAttribute
 
-    func objectRepeat(value: ImageRepeat): ImageAttribute
+    func objectRepeat(value: ?ImageRepeat): ImageAttribute
 
-    func interpolation(value: ImageInterpolation): ImageAttribute
+    func interpolation(value: ?ImageInterpolation): ImageAttribute
 
-    func renderMode(value: ImageRenderMode): ImageAttribute
+    func renderMode(value: ?ImageRenderMode): ImageAttribute
 
-    func sourceSize(width: Length, height: Length): ImageAttribute
+    func sourceSize(width: ?Length, height: ?Length): ImageAttribute
 
-    func syncLoad(value: Bool): ImageAttribute
+    func syncLoad(value: ?Bool): ImageAttribute
 
-    func fillColor(value: ResourceColor): ImageAttribute
+    func fillColor(value: ?ResourceColor): ImageAttribute
 
-    func autoResize(value: Bool): ImageAttribute
+    func autoResize(value: ?Bool): ImageAttribute
 
-    func matchTextDirection(value: Bool): ImageAttribute
+    func matchTextDirection(value: ?Bool): ImageAttribute
 
-    func fitOriginalSize(value: Bool): ImageAttribute
+    func fitOriginalSize(value: ?Bool): ImageAttribute
 
-    func onComplete(callback: ImageCompleteCallback): ImageAttribute
+    func onComplete(callback: ?ImageCompleteCallback): ImageAttribute
 
-    func onError(callback: ImageErrorCallback): ImageAttribute
+    func onError(callback: ?ImageErrorCallback): ImageAttribute
 
-    func onFinish(event: () -> Unit): ImageAttribute
+    func onFinish(event: ?() -> Unit): ImageAttribute
 }

@@ -21,12 +21,12 @@ import ohos.resource.*
 
 sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
     func viewPort(
-        x!: Length,
-        y!: Length,
-        width!: Length,
-        height!: Length
+        x!: ?Length,
+        y!: ?Length,
+        width!: ?Length,
+        height!: ?Length
     ): ShapeAttribute
 
 
-    func mesh(array: Array<Float64>, column: UInt32, row: UInt32): ShapeAttribute
+    func mesh(array: ?Array<Float64>, column: ?UInt32, row: ?UInt32): ShapeAttribute
 }

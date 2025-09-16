@@ -20,7 +20,7 @@ import ohos.base.*
 
 sealed interface ColumnAttribute <: CommonMethod<ColumnAttribute> {
 
-    func alignItems(value: HorizontalAlign): ColumnAttribute
+    func alignItems(value: ?HorizontalAlign): ColumnAttribute
 
-    func justifyContent(value: FlexAlign): ColumnAttribute
+    func justifyContent(value: ?FlexAlign): ColumnAttribute
 }

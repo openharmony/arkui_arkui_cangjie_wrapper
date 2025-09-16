@@ -46,8 +46,8 @@ public class Blank <: CommonMethodComponent<BlankAttribute> & BlankAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(min!: Length = 0.vp) {
-        var min_ = transAppResourceToLength(min)
+    public init(min!: ?Length = None) {
+        var min_ = transAppResourceToLength(min ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkBlankCreate(min_.value, min_.unitType.getValue())
         }
@@ -66,8 +66,9 @@ public class Blank <: CommonMethodComponent<BlankAttribute> & BlankAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(value: ResourceColor): This {
-        backgroundColor(transAppResourceToResourceColor(value))
+    public func color(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        backgroundColor(transAppResourceToResourceColor(tmpValue))
         this
     }
 }

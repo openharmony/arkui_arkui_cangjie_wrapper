@@ -180,7 +180,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var strokeWidth: Length
+    public var strokeWidth: ?Length
 
     /**
      * Enables progress shadow.
@@ -193,7 +193,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var shadow: Bool
+    public var shadow: ?Bool
 
     /**
      * The status of progress, default is PROGRESSING. Set to LOADING status will trigger the loading animation.
@@ -206,7 +206,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var status: ProgressStatus
+    public var status: ?ProgressStatus
 
     /**
      * Enable smooth effect.
@@ -220,7 +220,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var enableSmoothEffect: Bool
+    public var enableSmoothEffect: ?Bool
 
     /**
      * Enable scan effect.
@@ -234,7 +234,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var enableScanEffect: Bool
+    public var enableScanEffect: ?Bool
 
     /**
      * Constructor the ring style Options.
@@ -250,14 +250,14 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(strokeWidth!: Length = 4.vp, shadow!: Bool = false,
-        status!: ProgressStatus = ProgressStatus.Progressing, enableSmoothEffect!: Bool = true,
-        enableScanEffect!: Bool = false) {
-        this.strokeWidth = transAppResourceToLength(strokeWidth)
-        this.shadow = shadow
-        this.status = status
-        this.enableSmoothEffect = enableSmoothEffect
-        this.enableScanEffect = enableScanEffect
+    public init(strokeWidth!: ?Length = None, shadow!: ?Bool = None,
+        status!: ?ProgressStatus = None, enableSmoothEffect!: ?Bool = None,
+        enableScanEffect!: ?Bool = None) {
+        this.strokeWidth = transAppResourceToLength(strokeWidth ?? 4.vp)
+        this.shadow = shadow ?? false
+        this.status = status ?? ProgressStatus.Progressing
+        this.enableSmoothEffect = enableSmoothEffect ?? true
+        this.enableScanEffect = enableScanEffect ?? false
     }
 }
 
@@ -286,9 +286,12 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: Float64, total!: Float64 = 100.0, progressType!: ProgressType = ProgressType.Linear) {
+    public init(value!: ?Float64, total!: ?Float64 = None, progressType!: ?ProgressType = None) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpProgressType = progressType ?? ProgressType.Linear
+        
         unsafe {
-            FfiOHOSAceFrameworkProgressCreate(value, total, progressType.getValue())
+            FfiOHOSAceFrameworkProgressCreate(tmpValue, total ?? 100.0, tmpProgressType.getValue())
         }
     }
 
@@ -304,9 +307,10 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func value(value: Float64): This {
+    public func value(value: ?Float64): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkProgressSetValue(value)
+            FfiOHOSAceFrameworkProgressSetValue(tmpValue)
         }
         this
     }
@@ -323,9 +327,10 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(value: ResourceColor): This {
+    public func color(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkProgressSetColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkProgressSetColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -351,12 +356,12 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func style(strokeWidth!: Length = 10.vp, scaleCount!: Int32 = 120, scaleWidth!: Length = 2.vp): This {
-        var strokeWidth_ = transAppResourceToLength(strokeWidth)
-        var scaleWidth_ = transAppResourceToLength(scaleWidth)
+    public func style(strokeWidth!: ?Length = None, scaleCount!: ?Int32 = None, scaleWidth!: ?Length = None): This {
+        var strokeWidth_ = transAppResourceToLength(strokeWidth ?? 10.vp)
+        var scaleWidth_ = transAppResourceToLength(scaleWidth ?? 2.vp)
         unsafe {
-            FfiOHOSAceFrameworkProgressSetStyle(strokeWidth_.value, strokeWidth_.unitType.getValue(), scaleCount,
-                scaleWidth_.value, scaleWidth.unitType.getValue())
+            FfiOHOSAceFrameworkProgressSetStyle(strokeWidth_.value, strokeWidth_.unitType.getValue(), scaleCount ?? 120,
+                scaleWidth_.value, scaleWidth_.unitType.getValue())
         }
         this
     }
@@ -376,11 +381,12 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func style(value: RingStyleOptions): This {
+    public func style(value: ?RingStyleOptions): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkProgressSetRingStyle(
-                RingStyle(value.strokeWidth.value, value.strokeWidth.unitType.getValue(), value.shadow,
-                    value.status.getValue(), value.enableSmoothEffect, value.enableScanEffect))
+                RingStyle((tmpValue.strokeWidth ?? 4.vp).value, (tmpValue.strokeWidth ?? 4.vp).unitType.getValue(), tmpValue.shadow ?? false,
+                    (tmpValue.status ?? ProgressStatus.Progressing).getValue(), tmpValue.enableSmoothEffect ?? true, tmpValue.enableScanEffect ?? false))
         }
         this
     }

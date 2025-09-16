@@ -83,21 +83,21 @@ public class TextDecorationOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var decorationType: TextDecorationType
+    public var decorationType: ?TextDecorationType
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var color: ResourceColor
+    public var color: ?ResourceColor
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(decorationType!: TextDecorationType, color!: ResourceColor = Color.Black) {
-        this.decorationType = decorationType
-        this.color = transAppResourceToResourceColor(color)
+    public init(decorationType!: ?TextDecorationType, color!: ?ResourceColor = None) {
+        this.decorationType = decorationType ?? throw IllegalArgumentException("The type now is not supported.")
+        this.color = transAppResourceToResourceColor(color ?? Color.Black)
     }
 }
 
@@ -156,7 +156,7 @@ public class SelectionMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var onAppear: VoidCallback
+    public var onAppear: ?VoidCallback
 
     /**
      * Callback function when the selection menu disappears.
@@ -169,7 +169,7 @@ public class SelectionMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var onDisappear: VoidCallback
+    public var onDisappear: ?VoidCallback
 
     /**
      * SelectionMenuOptions constructor
@@ -179,9 +179,9 @@ public class SelectionMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(onAppear!: () -> Unit = {=>}, onDisappear!: () -> Unit = {=>}) {
-        this.onAppear = onAppear
-        this.onDisappear = onDisappear
+    public init(onAppear!: ?() -> Unit = None, onDisappear!: ?() -> Unit = None) {
+        this.onAppear = onAppear ?? {=>}
+        this.onDisappear = onDisappear ?? {=>}
     }
 }
 
@@ -208,7 +208,7 @@ public class RichEditorTextStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontColor: ResourceColor
+    public var fontColor: ?ResourceColor
 
     /**
      * font size.
@@ -221,7 +221,7 @@ public class RichEditorTextStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontSize: Length
+    public var fontSize: ?Length
 
     /**
      * font style.
@@ -234,7 +234,7 @@ public class RichEditorTextStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontStyle: FontStyle
+    public var fontStyle: ?FontStyle
 
     /**
      * font weight.
@@ -247,7 +247,7 @@ public class RichEditorTextStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontWeight: FontWeight
+    public var fontWeight: ?FontWeight
 
     /**
      * font family.
@@ -260,7 +260,7 @@ public class RichEditorTextStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontFamily: ResourceStr
+    public var fontFamily: ?ResourceStr
 
     /**
      * font decoration.
@@ -273,7 +273,7 @@ public class RichEditorTextStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var decoration: TextDecorationOptions
+    public var decoration: ?TextDecorationOptions
 
     /**
      * RichEditorTextStyle constructor
@@ -284,19 +284,19 @@ public class RichEditorTextStyle {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        fontColor!: ResourceColor = Color.Black,
-        fontSize!: Length = 16.vp,
-        fontStyle!: FontStyle = FontStyle.Normal,
-        fontWeight!: FontWeight = FontWeight.Normal,
-        fontFamily!: ResourceStr = DEFAULT_FONT,
-        decoration!: TextDecorationOptions = TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)
-    ) {
-        this.fontColor = transAppResourceToResourceColor(fontColor)
-        this.fontSize = transAppResourceToLength(fontSize)
-        this.fontStyle = fontStyle
-        this.fontWeight = fontWeight
-        this.fontFamily = transResourceStrToString(fontFamily)
-        this.decoration = decoration
+        fontColor!: ?ResourceColor = None,
+        fontSize!: ?Length = None,
+        fontStyle!: ?FontStyle = None,
+        fontWeight!: ?FontWeight = None,
+        fontFamily!: ?ResourceStr = None,
+        decoration!: ?TextDecorationOptions = None
+    ) {  
+        this.fontColor = transAppResourceToResourceColor(fontColor ?? Color.Black)
+        this.fontSize = transAppResourceToLength(fontSize ?? 16.vp)
+        this.fontStyle = fontStyle ?? FontStyle.Normal
+        this.fontWeight = fontWeight ?? FontWeight.Normal
+        this.fontFamily = transResourceStrToString(fontFamily ?? DEFAULT_FONT)
+        this.decoration = decoration ?? TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)
     }
 }
 
@@ -323,7 +323,7 @@ public class RichEditorTextSpanOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offset: Int32
+    public var offset: ?Int32
 
     /**
      * text style.
@@ -336,7 +336,7 @@ public class RichEditorTextSpanOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var style: RichEditorTextStyle
+    public var style: ?RichEditorTextStyle
 
     /**
      * RichEditorTextSpanOptions constructor
@@ -346,22 +346,23 @@ public class RichEditorTextSpanOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(offset!: Int32 = Int32.Max, style!: RichEditorTextStyle = RichEditorTextStyle()) {
-        this.offset = offset
-        this.style = style
+    public init(offset!: ?Int32 = None, style!: ?RichEditorTextStyle = None) {
+        this.offset = offset ?? Int32.Max
+        this.style = style ?? RichEditorTextStyle()
     }
 }
 
 func parseRichEditorTextStyle(value: RichEditorTextStyle): NativeRichEditorTextStyle {
-    let decoration = value.decoration
-    let nativeTextDecoration = NativeTextDecoration(decoration.decorationType.getValue(), decoration.color.toUInt32())
-    let familyString = transResourceStrToString(value.fontFamily)
+    let decoration = value.decoration ?? TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)
+    let nativeTextDecoration = NativeTextDecoration((decoration.decorationType ?? TextDecorationType.None).getValue(),
+        (decoration.color ?? Color.Black).toUInt32())
+    let familyString = transResourceStrToString(value.fontFamily ?? DEFAULT_FONT)
 
     let result = unsafe {
         var fontWeight: ?CString = None
         var fontFamily: ?CString = None
         try {
-            fontWeight = LibC.mallocCString(value.fontWeight.getValue())
+            fontWeight = LibC.mallocCString((value.fontWeight ?? FontWeight.Normal).getValue())
             fontFamily = LibC.mallocCString(familyString)
         } catch (e: Exception) {
             fontWeight?.free()
@@ -369,10 +370,10 @@ func parseRichEditorTextStyle(value: RichEditorTextStyle): NativeRichEditorTextS
             throw e
         }
         NativeRichEditorTextStyle(
-            value.fontColor.toUInt32(),
-            value.fontSize.value,
-            value.fontSize.unitType.getValue(),
-            value.fontStyle.getValue(),
+            (value.fontColor ?? Color.Black).toUInt32(),
+            (value.fontSize ?? 16.vp).value,
+            (value.fontSize ?? 16.vp).unitType.getValue(),
+            (value.fontStyle ?? FontStyle.Normal).getValue(),
             fontWeight.getOrThrow(),
             fontFamily.getOrThrow(),
             nativeTextDecoration
@@ -382,8 +383,8 @@ func parseRichEditorTextStyle(value: RichEditorTextStyle): NativeRichEditorTextS
 }
 
 func parseRichEditorTextSpanOptions(value: RichEditorTextSpanOptions): NativeRichEditorTextSpanOptions {
-    let nativeRichEditorTextStyle = parseRichEditorTextStyle(value.style)
-    return NativeRichEditorTextSpanOptions(value.offset, nativeRichEditorTextStyle)
+    let nativeRichEditorTextStyle = parseRichEditorTextStyle(value.style ?? RichEditorTextStyle())
+    return NativeRichEditorTextSpanOptions(value.offset ?? Int32.Max, nativeRichEditorTextStyle)
 }
 
 
@@ -448,8 +449,8 @@ struct NativeRichEditorImageSpanOptions {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorLayoutStyle {
-    public var margin: Margin
-    public var borderRadius: BorderRadiuses
+    public var margin: ?Margin
+    public var borderRadius: ?BorderRadiuses
 
     /**
      * RichEditorLayoutStyle constructor
@@ -459,9 +460,9 @@ public class RichEditorLayoutStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(margin!: Margin = Margin(), borderRadius!: BorderRadiuses = BorderRadiuses()) {
-        this.margin = margin
-        this.borderRadius = borderRadius
+    public init(margin!: ?Margin = None, borderRadius!: ?BorderRadiuses = None) {
+        this.margin = margin ?? Margin()
+        this.borderRadius = borderRadius ?? BorderRadiuses()
     }
 
     /**
@@ -472,10 +473,12 @@ public class RichEditorLayoutStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(margin!: Length, borderRadius!: Length) {
-        this.margin = Margin(left: margin, right: margin, top: margin, bottom: margin)
-        this.borderRadius = BorderRadiuses(topLeft: borderRadius, topRight: borderRadius,
-            bottomLeft: borderRadius, bottomRight: borderRadius)
+    public init(margin!: ?Length, borderRadius!: ?Length) {
+        let tmpMargin = margin ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpBorderRadius = borderRadius ?? throw IllegalArgumentException("The type now is not supported.")
+        this.margin = Margin(left: tmpMargin, right: tmpMargin, top: tmpMargin, bottom: tmpMargin)
+        this.borderRadius = BorderRadiuses(topLeft: tmpBorderRadius, topRight: tmpBorderRadius,
+            bottomLeft: tmpBorderRadius, bottomRight: tmpBorderRadius)
     }
 
     init(origin: NativeRichEditorLayoutStyleResult) {
@@ -531,7 +534,7 @@ public class RichEditorImageSpanStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var verticalAlign: ImageSpanAlignment
+    public var verticalAlign: ?ImageSpanAlignment
 
     /**
      * image fit.
@@ -544,19 +547,8 @@ public class RichEditorImageSpanStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var objectFit: ImageFit
+    public var objectFit: ?ImageFit
 
-    /**
-     * RichEditor ImageSpan Layout Style.
-     *
-     * @type { RichEditorLayoutStyle }
-     * @relation layoutStyle?: RichEditorLayoutStyle
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     let layoutStyle: RichEditorLayoutStyle
 
     /**
@@ -569,12 +561,12 @@ public class RichEditorImageSpanStyle {
     ]
     public init(
         size!: Option<(Length, Length)> = Option.None,
-        verticalAlign!: ImageSpanAlignment = ImageSpanAlignment.Baseline,
-        objectFit!: ImageFit = ImageFit.Cover
+        verticalAlign!: ?ImageSpanAlignment = Option.None,
+        objectFit!: ?ImageFit = Option.None
     ) {
-        this.size = size
-        this.verticalAlign = verticalAlign
-        this.objectFit = objectFit
+        this.size = size ?? throw IllegalArgumentException("The type now is not supported.")
+        this.verticalAlign = verticalAlign ?? ImageSpanAlignment.Baseline
+        this.objectFit = objectFit ?? ImageFit.Cover
         this.layoutStyle = RichEditorLayoutStyle()
     }
 }
@@ -602,7 +594,7 @@ public class RichEditorImageSpanOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offset: Int32
+    public var offset: ?Int32
 
     /**
      * image style.
@@ -615,7 +607,7 @@ public class RichEditorImageSpanOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var imageStyle: RichEditorImageSpanStyle
+    public var imageStyle: ?RichEditorImageSpanStyle
 
     /**
      * RichEditorImageSpanOptions constructor
@@ -626,18 +618,18 @@ public class RichEditorImageSpanOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        offset!: Int32 = Int32.Max,
-        imageStyle!: RichEditorImageSpanStyle = RichEditorImageSpanStyle()
+        offset!: ?Int32 = None,
+        imageStyle!: ?RichEditorImageSpanStyle = None
     ) {
-        this.offset = offset
-        this.imageStyle = imageStyle
+        this.offset = offset ?? Int32.Max
+        this.imageStyle = imageStyle ?? RichEditorImageSpanStyle()
     }
 }
 
 func parseRichEditorImageSpanStyle(value: RichEditorImageSpanStyle): NativeRichEditorImageSpanStyle {
     let layoutStyle = value.layoutStyle
 
-    let margin = layoutStyle.margin
+    let margin = layoutStyle.margin ?? Margin()
     let nativeMargin = NativeMargin(
         margin.top.value,
         margin.top.unitType.getValue(),
@@ -649,16 +641,16 @@ func parseRichEditorImageSpanStyle(value: RichEditorImageSpanStyle): NativeRichE
         margin.left.unitType.getValue(),
     )
 
-    let borderRadius = layoutStyle.borderRadius
+    let borderRadius = layoutStyle.borderRadius ?? BorderRadiuses()
     let nativeBorderRadiuses = NativeBorderRadiuses(
-        borderRadius.topLeft.value,
-        borderRadius.topLeft.unitType.getValue(),
-        borderRadius.topRight.value,
-        borderRadius.topRight.unitType.getValue(),
-        borderRadius.bottomLeft.value,
-        borderRadius.bottomLeft.unitType.getValue(),
-        borderRadius.bottomRight.value,
-        borderRadius.bottomRight.unitType.getValue(),
+        (borderRadius.topLeft ?? 0.vp).value,
+        (borderRadius.topLeft ?? 0.vp).unitType.getValue(),
+        (borderRadius.topRight ?? 0.vp).value,
+        (borderRadius.topRight ?? 0.vp).unitType.getValue(),
+        (borderRadius.bottomLeft ?? 0.vp).value,
+        (borderRadius.bottomLeft ?? 0.vp).unitType.getValue(),
+        (borderRadius.bottomRight ?? 0.vp).value,
+        (borderRadius.bottomRight ?? 0.vp).unitType.getValue(),
     )
 
     let nativeLayoutStyle = NativeLayoutStyle(nativeMargin, nativeBorderRadiuses)
@@ -677,8 +669,8 @@ func parseRichEditorImageSpanStyle(value: RichEditorImageSpanStyle): NativeRichE
         NativeRichEditorImageSpanStyle(
             width,
             height,
-            value.verticalAlign.getValue(),
-            value.objectFit.getValue(),
+            (value.verticalAlign ?? ImageSpanAlignment.Baseline).getValue(),
+            (value.objectFit ?? ImageFit.Cover).getValue(),
             nativeLayoutStyle
         )
     }
@@ -687,8 +679,8 @@ func parseRichEditorImageSpanStyle(value: RichEditorImageSpanStyle): NativeRichE
 }
 
 func parseRichEditorImageSpanOptions(value: RichEditorImageSpanOptions): NativeRichEditorImageSpanOptions {
-    let nativeRichEditorImageSpanStyle = parseRichEditorImageSpanStyle(value.imageStyle)
-    return NativeRichEditorImageSpanOptions(value.offset, nativeRichEditorImageSpanStyle)
+    let nativeRichEditorImageSpanStyle = parseRichEditorImageSpanStyle(value.imageStyle ?? RichEditorImageSpanStyle())
+    return NativeRichEditorImageSpanOptions(value.offset ?? Int32.Max, nativeRichEditorImageSpanStyle)
 }
 
 @C
@@ -740,7 +732,7 @@ public class LeadingMarginPlaceholder {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var pixelMap: PixelMap
+    public var pixelMap: ?PixelMap
 
     /**
      * Placeholder size.
@@ -756,7 +748,7 @@ public class LeadingMarginPlaceholder {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var size: (Length, Length)
+    public var size: ?(Length, Length)
 
     /**
      * LeadingMarginPlaceholder constructor
@@ -766,19 +758,19 @@ public class LeadingMarginPlaceholder {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(pixelMap!: PixelMap, size!: (Length, Length)) {
-        this.pixelMap = pixelMap
-        this.size = size
+    public init(pixelMap!: ?PixelMap, size!: ?(Length, Length)) {
+        this.pixelMap = pixelMap ?? throw IllegalArgumentException("The type now is not supported.")
+        this.size = size ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
 func parseLeadingMarginPlaceholder(value: LeadingMarginPlaceholder): NativeLeadingMarginPlaceholder {
     return NativeLeadingMarginPlaceholder(
-        value.pixelMap.getID(),
-        value.size[0].value,
-        value.size[0].unitType.getValue(),
-        value.size[1].value,
-        value.size[1].unitType.getValue(),
+        (value.pixelMap ?? throw IllegalArgumentException("The type now is not supported.")).getID(),
+        (value.size ?? throw IllegalArgumentException("The type now is not supported."))[0].value,
+        (value.size ?? throw IllegalArgumentException("The type now is not supported."))[0].unitType.getValue(),
+        (value.size ?? throw IllegalArgumentException("The type now is not supported."))[1].value,
+        (value.size ?? throw IllegalArgumentException("The type now is not supported."))[1].unitType.getValue(),
     )
 }
 
@@ -827,7 +819,7 @@ public class RichEditorParagraphStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var textAlign: TextAlign
+    public var textAlign: ?TextAlign
 
     /**
      * Leading margin.
@@ -840,7 +832,7 @@ public class RichEditorParagraphStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var leadingMargin: LeadingMarginType
+    public var leadingMargin: ?LeadingMarginType
 
     /**
      * RichEditorParagraphStyle constructor
@@ -850,8 +842,8 @@ public class RichEditorParagraphStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(textAlign!: TextAlign = TextAlign.Start) {
-        this.textAlign = textAlign
+    public init(textAlign!: ?TextAlign = None) {
+        this.textAlign = textAlign ?? TextAlign.Start
         this.leadingMargin = LeadingMarginType.None
     }
 
@@ -863,9 +855,10 @@ public class RichEditorParagraphStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: Length) {
-        this.textAlign = textAlign
-        this.leadingMargin = LeadingMarginType.LengthType(leadingMargin)
+    public init(textAlign!: ?TextAlign = None, leadingMargin!: ?Length) {
+        let tmpLeadingMargin = leadingMargin ?? throw IllegalArgumentException("The type now is not supported.")
+        this.textAlign = textAlign ?? TextAlign.Start
+        this.leadingMargin = LeadingMarginType.LengthType(tmpLeadingMargin)
     }
 
     /**
@@ -876,38 +869,39 @@ public class RichEditorParagraphStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: LeadingMarginPlaceholder) {
-        this.textAlign = textAlign
-        this.leadingMargin = LeadingMarginType.PlaceholderType(leadingMargin)
+    public init(textAlign!: ?TextAlign = None, leadingMargin!: ?LeadingMarginPlaceholder) {
+        this.textAlign = textAlign ?? TextAlign.Start
+        let tmpLeadingMargin = leadingMargin ?? throw IllegalArgumentException("The type now is not supported.")
+        this.leadingMargin = LeadingMarginType.PlaceholderType(tmpLeadingMargin)
     }
 }
 
 func parseRichEditorParagraphStyle(value: RichEditorParagraphStyle) {
-    match (value.leadingMargin) {
+    match (value.leadingMargin ?? LeadingMarginType.None) {
         case LeadingMarginType.None => return NativeRichEditorParagraphStyle(
-            value.textAlign.getValue(),
-            value.leadingMargin.getValue(),
+            (value.textAlign ?? TextAlign.Start).getValue(),
+            (value.leadingMargin ?? LeadingMarginType.None).getValue(),
             0.0,
             0,
             NativeLeadingMarginPlaceholder(0, 0.0, 0, 0.0, 0)
         )
         case LeadingMarginType.LengthType(v) => return NativeRichEditorParagraphStyle(
-            value.textAlign.getValue(),
-            value.leadingMargin.getValue(),
+            (value.textAlign ?? TextAlign.Start).getValue(),
+            (value.leadingMargin ?? LeadingMarginType.None).getValue(),
             v.value,
             v.unitType.getValue(),
             NativeLeadingMarginPlaceholder(0, 0.0, 0, 0.0, 0)
         )
         case LeadingMarginType.PlaceholderType(v) => return NativeRichEditorParagraphStyle(
-            value.textAlign.getValue(),
-            value.leadingMargin.getValue(),
+            (value.textAlign ?? TextAlign.Start).getValue(),
+            (value.leadingMargin ?? LeadingMarginType.None).getValue(),
             0.0,
             0,
             parseLeadingMarginPlaceholder(v)
         )
         case _ => return NativeRichEditorParagraphStyle(
-            value.textAlign.getValue(),
-            value.leadingMargin.getValue(),
+            (value.textAlign ?? TextAlign.Start).getValue(),
+            (value.leadingMargin ?? LeadingMarginType.None).getValue(),
             0.0,
             0,
             NativeLeadingMarginPlaceholder(0, 0.0, 0, 0.0, 0)
@@ -1002,9 +996,10 @@ public open class RichEditorBaseController <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setCaretOffset(offset: Int32): Bool {
+    public func setCaretOffset(offset: ?Int32): Bool {
+        let tmpOffset = offset ?? throw IllegalArgumentException("The type now is not supported.")
         let result: Bool = unsafe {
-            FfiOHOSAceFrameworkRichEditorControllerSetCaretOffset(this.getID(), Int64(offset))
+            FfiOHOSAceFrameworkRichEditorControllerSetCaretOffset(this.getID(), Int64(tmpOffset))
         }
         return result
     }
@@ -1049,9 +1044,10 @@ public class RichEditorController <: RichEditorBaseController {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func addTextSpan(content!: ResourceStr, options!: RichEditorTextSpanOptions = RichEditorTextSpanOptions()): Int32 {
-        let params = parseRichEditorTextSpanOptions(options)
-        let valueString = transResourceStrToString(content)
+    public func addTextSpan(content!: ?ResourceStr, options!: ?RichEditorTextSpanOptions = None): Int32 {
+        let tmpContent = content ?? throw IllegalArgumentException("The type now is not supported.")
+        let params = parseRichEditorTextSpanOptions(options ?? RichEditorTextSpanOptions())
+        let valueString = transResourceStrToString(tmpContent)
 
         var result: Int32 = 0
         unsafe {
@@ -1076,11 +1072,12 @@ public class RichEditorController <: RichEditorBaseController {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func addImageSpan(value!: String, options!: RichEditorImageSpanOptions = RichEditorImageSpanOptions()): Int32 {
-        let params = unsafe { parseRichEditorImageSpanOptions(options) }
+    public func addImageSpan(value!: ?String, options!: ?RichEditorImageSpanOptions = None): Int32 {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let params = unsafe { parseRichEditorImageSpanOptions(options ?? RichEditorImageSpanOptions()) }
         var result: Int32 = 0
         unsafe {
-            try (valueCString = LibC.mallocCString(value).asResource()) {
+            try (valueCString = LibC.mallocCString(tmpValue).asResource()) {
                 result = FfiOHOSAceFrameworkRichEditorControllerAddImageSpan(this.getID(), valueCString.value, params)
             }
         }
@@ -1100,11 +1097,12 @@ public class RichEditorController <: RichEditorBaseController {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func addImageSpan(value!: AppResource, options!: RichEditorImageSpanOptions = RichEditorImageSpanOptions()): Int32 {
-        let params = unsafe { parseRichEditorImageSpanOptions(options) }
+    public func addImageSpan(value!: ?AppResource, options!: ?RichEditorImageSpanOptions = None): Int32 {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let params = unsafe { parseRichEditorImageSpanOptions(options ?? RichEditorImageSpanOptions()) }
         var result: Int32 = 0
         unsafe {
-            try (valueCString = LibC.mallocCString(getResourceMedia(value)).asResource()) {
+            try (valueCString = LibC.mallocCString(getResourceMedia(tmpValue)).asResource()) {
                 result = FfiOHOSAceFrameworkRichEditorControllerAddImageSpan(this.getID(), valueCString.value, params)
             }
         }
@@ -1124,11 +1122,12 @@ public class RichEditorController <: RichEditorBaseController {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func updateSpanStyle(start!: Int32 = 0, end!: Int32 = Int32.Max, textStyle!: RichEditorTextStyle): Unit {
-        let params = unsafe { parseRichEditorTextStyle(textStyle) }
+    public func updateSpanStyle(start!: ?Int32 = None, end!: ?Int32 = None, textStyle!: ?RichEditorTextStyle): Unit {
+        let tmpTextStyle = textStyle ?? throw IllegalArgumentException("The type now is not supported.")
+        let params = unsafe { parseRichEditorTextStyle(tmpTextStyle) }
 
         unsafe {
-            FfiOHOSAceFrameworkRichEditorControllerUpdateSpanStyleText(this.getID(), start, end, params)
+            FfiOHOSAceFrameworkRichEditorControllerUpdateSpanStyleText(this.getID(), start ?? 0, end ?? Int32.Max, params)
             params.free()
         }
     }
@@ -1146,11 +1145,12 @@ public class RichEditorController <: RichEditorBaseController {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func updateSpanStyle(start!: Int32 = 0, end!: Int32 = Int32.Max, imageStyle!: RichEditorImageSpanStyle): Unit {
-        let params = unsafe { parseRichEditorImageSpanStyle(imageStyle) }
+    public func updateSpanStyle(start!: ?Int32 = None, end!: ?Int32 = None, imageStyle!: ?RichEditorImageSpanStyle): Unit {
+        let tmpImageStyle = imageStyle ?? throw IllegalArgumentException("The type now is not supported.")
+        let params = unsafe { parseRichEditorImageSpanStyle(tmpImageStyle) }
 
         unsafe {
-            FfiOHOSAceFrameworkRichEditorControllerUpdateSpanStyleImage(this.getID(), start, end, params)
+            FfiOHOSAceFrameworkRichEditorControllerUpdateSpanStyleImage(this.getID(), start ?? 0, end ?? Int32.Max, params)
         }
     }
 
@@ -1166,9 +1166,9 @@ public class RichEditorController <: RichEditorBaseController {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func deleteSpans(start!: Int32 = 0, end!: Int32 = Int32.Max): Unit {
+    public func deleteSpans(start!: ?Int32 = None, end!: ?Int32 = None): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRichEditorControllerDeleteSpans(this.getID(), start, end)
+            FfiOHOSAceFrameworkRichEditorControllerDeleteSpans(this.getID(), start ?? 0, end ?? Int32.Max)
         }
     }
 
@@ -1201,10 +1201,11 @@ public class RichEditorController <: RichEditorBaseController {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func updateParagraphStyle(start!: Int32 = 0, end!: Int32 = -1, style!: RichEditorParagraphStyle): Unit {
-        let nativeStyle = parseRichEditorParagraphStyle(style)
+    public func updateParagraphStyle(start!: ?Int32 = None, end!: ?Int32 = None, style!: ?RichEditorParagraphStyle): Unit {
+        let tmpStyle = style ?? throw IllegalArgumentException("The type now is not supported.")
+        let nativeStyle = parseRichEditorParagraphStyle(tmpStyle)
         unsafe {
-            FfiOHOSAceFrameworkRichEditorControllerUpdateParagraphStyle(this.getID(), start, end, nativeStyle)
+            FfiOHOSAceFrameworkRichEditorControllerUpdateParagraphStyle(this.getID(), start ?? 0, end ?? -1, nativeStyle)
         }
     }
 
@@ -1221,10 +1222,10 @@ public class RichEditorController <: RichEditorBaseController {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func getSpans(start!: Int32 = -1, end!: Int32 = -1): ArrayList<RichEditorSpanResult> {
+    public func getSpans(start!: ?Int32 = None, end!: ?Int32 = None): ArrayList<RichEditorSpanResult> {
         let array = ArrayList<RichEditorSpanResult>()
         let result = unsafe {
-            FfiOHOSAceFrameworkRichEditorControllerGetSpans12(this.getID(), start, end)
+            FfiOHOSAceFrameworkRichEditorControllerGetSpans12(this.getID(), start ?? -1, end ?? -1)
         }
         if (result.size == 0) {
             return array

@@ -72,9 +72,10 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgressAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(value: ResourceColor): This {
+    public func color(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkLoadingProgressSetColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkLoadingProgressSetColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }

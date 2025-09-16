@@ -21,16 +21,16 @@ import ohos.base.*
 sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
 
     func font(
-        size!: Length,
-        weight!: FontWeight,
-        family!: ResourceStr,
-        style!: FontStyle
+        size!: ?Length,
+        weight!: ?FontWeight,
+        family!: ?ResourceStr,
+        style!: ?FontStyle
     ): MenuAttribute
 
-    func fontColor(value: ResourceColor): MenuAttribute
+    func fontColor(value: ?ResourceColor): MenuAttribute
 
-    func radius(value: Length): MenuAttribute
+    func radius(value: ?Length): MenuAttribute
 
-    func radius(value: BorderRadiuses): MenuAttribute
+    func radius(value: ?BorderRadiuses): MenuAttribute
 
 }

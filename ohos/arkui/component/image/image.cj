@@ -107,7 +107,7 @@ public class ImageError {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var componentWidth: Float64 = 0.0
+    public var componentWidth: ?Float64
     /**
      * Component height.
      *
@@ -119,7 +119,7 @@ public class ImageError {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var componentHeight: Float64 = 0.0
+    public var componentHeight: ?Float64
     /**
      * Message.
      *
@@ -130,7 +130,7 @@ public class ImageError {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var message: String = ""
+    public var message: ?String
 
     protected init(
         componentWidth: Float64,
@@ -165,7 +165,7 @@ public class ImageLoadResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var width: Float64 = 0.0
+    public var width: ?Float64
     /**
      * The height of the image source.
      *
@@ -177,7 +177,7 @@ public class ImageLoadResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var height: Float64 = 0.0
+    public var height: ?Float64
     /**
      * The width of the component source.
      *
@@ -189,7 +189,7 @@ public class ImageLoadResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var componentWidth: Float64 = 0.0
+    public var componentWidth: ?Float64
     /**
      * The height of the component source.
      *
@@ -201,7 +201,7 @@ public class ImageLoadResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var componentHeight: Float64 = 0.0
+    public var componentHeight: ?Float64
     /**
      * The value of the status of the image being loaded successfully.
      * If the returned status value is 0, the image data is successfully loaded.
@@ -215,7 +215,7 @@ public class ImageLoadResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var loadingStatus: Int32 = 0
+    public var loadingStatus: ?Int32
     /**
      * The width of the picture that is actually drawn.
      *
@@ -226,7 +226,7 @@ public class ImageLoadResult {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var contentWidth: Float64 = 0.0
+    public var contentWidth: ?Float64
     /**
      * The height of the picture that is actually drawn.
      *
@@ -237,7 +237,7 @@ public class ImageLoadResult {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var contentHeight: Float64 = 0.0
+    public var contentHeight: ?Float64
     /**
      * The offset between image content and image component on the X-axis.
      *
@@ -248,7 +248,7 @@ public class ImageLoadResult {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var contentOffsetX: Float64 = 0.0
+    public var contentOffsetX: ?Float64
     /**
      * The offset between image content and image component on the Y-axis.
      *
@@ -259,7 +259,7 @@ public class ImageLoadResult {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var contentOffsetY: Float64 = 0.0
+    public var contentOffsetY: ?Float64
 
     protected init(
         width: Float64,
@@ -384,11 +384,12 @@ public class ColorFilter {
         form: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: Array<Float32>) {
-        if (value.size != 20) {
+    public init(value: ?Array<Float32>) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        if (tmpValue.size != 20) {
             matrix = defaultMatrix
         } else {
-            matrix = value
+            matrix = tmpValue
         }
     }
 }
@@ -421,8 +422,9 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(src: ResourceStr) {
-        let content = match (src) {
+    public init(src: ?ResourceStr) {
+        let tmpSrc = src ?? throw IllegalArgumentException("The type now is not supported.")
+        let content = match (tmpSrc) {
             case v: AppResource => getResourceMedia(v)
             case v: String => v
             case _ => ""
@@ -446,9 +448,10 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(src: PixelMap) {
+    public init(src: ?PixelMap) {
+        let tmpSrc = src ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageCreateWithPixelMap(src.getID())
+            FfiOHOSAceFrameworkImageCreateWithPixelMap(tmpSrc.getID())
         }
     }
 
@@ -468,8 +471,9 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alt(src: ResourceStr): This {
-        var content = match (src) {
+    public func alt(src: ?ResourceStr): This {
+        let tmpSrc = src ?? throw IllegalArgumentException("The type now is not supported.")
+        var content = match (tmpSrc) {
             case v: AppResource => getResourceMedia(v)
             case v: String => v
             case _ => ""
@@ -494,9 +498,10 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func objectFit(value: ImageFit): This {
+    public func objectFit(value: ?ImageFit): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetObjectFit(value.getValue())
+            FfiOHOSAceFrameworkImageSetObjectFit(tmpValue.getValue())
         }
         this
     }
@@ -518,9 +523,10 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func objectRepeat(value: ImageRepeat): This {
+    public func objectRepeat(value: ?ImageRepeat): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetObjectRepeat(value.getValue())
+            FfiOHOSAceFrameworkImageSetObjectRepeat(tmpValue.getValue())
         }
         this
     }
@@ -542,9 +548,10 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func interpolation(value: ImageInterpolation): This {
+    public func interpolation(value: ?ImageInterpolation): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetInterpolation(value.getValue())
+            FfiOHOSAceFrameworkImageSetInterpolation(tmpValue.getValue())
         }
         this
     }
@@ -567,9 +574,10 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func renderMode(value: ImageRenderMode): This {
+    public func renderMode(value: ?ImageRenderMode): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetRenderMode(value.getValue())
+            FfiOHOSAceFrameworkImageSetRenderMode(tmpValue.getValue())
         }
         this
     }
@@ -629,9 +637,11 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func sourceSize(width: Length, height: Length): This {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
+    public func sourceSize(width: ?Length, height: ?Length): This {
+        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
+        var width_ = transAppResourceToLength(tmpWidth)
+        var height_ = transAppResourceToLength(tmpHeight)
         unsafe {
             FfiOHOSAceFrameworkImageSetSourceSize(width_.value, width_.unitType.getValue(), height_.value,
                 height_.unitType.getValue())
@@ -655,9 +665,10 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func syncLoad(value: Bool): This {
+    public func syncLoad(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetSyncLoad(value)
+            FfiOHOSAceFrameworkImageSetSyncLoad(tmpValue)
         }
         this
     }
@@ -681,9 +692,10 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fillColor(value: ResourceColor): This {
+    public func fillColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetImageFill(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkImageSetImageFill(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -706,9 +718,10 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func autoResize(value: Bool): This {
+    public func autoResize(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetAutoResize(value)
+            FfiOHOSAceFrameworkImageSetAutoResize(tmpValue)
         }
         this
     }
@@ -729,9 +742,10 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func matchTextDirection(value: Bool): This {
+    public func matchTextDirection(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetMatchTextDirection(value)
+            FfiOHOSAceFrameworkImageSetMatchTextDirection(tmpValue)
         }
         this
     }
@@ -752,9 +766,10 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fitOriginalSize(value: Bool): This {
+    public func fitOriginalSize(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetFitOriginalSize(value)
+            FfiOHOSAceFrameworkImageSetFitOriginalSize(tmpValue)
         }
         this
     }
@@ -776,8 +791,9 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onComplete(callback: ImageCompleteCallback): This {
-        let lambdaData = CallbackImageLoadResult(callback)
+    public func onComplete(callback: ?ImageCompleteCallback): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = CallbackImageLoadResult(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkImageOnCompleteV2(lambdaData.getID())
         }
@@ -801,8 +817,9 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onError(callback: ImageErrorCallback): This {
-        let lambdaData = CallbackImageError(callback)
+    public func onError(callback: ?ImageErrorCallback): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = CallbackImageError(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkImageOnErrorV2(lambdaData.getID())
         }
@@ -827,8 +844,9 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onFinish(event: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(event)
+    public func onFinish(event: ?() -> Unit): This {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = Callback0Param<Unit>(tmpEvent)
         unsafe {
             FfiOHOSAceFrameworkImageOnFinish(lambdaData.getID())
         }

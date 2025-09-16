@@ -54,10 +54,10 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroupAttribute> & Me
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(header!: ResourceStr = "", footer!: ResourceStr = "", child!: () -> Unit = {=>}) {
+    public init(header!: ?ResourceStr = None, footer!: ?ResourceStr = None, child!: () -> Unit = {=>}) {
         unsafe {
-            try (cheader = LibC.mallocCString(transResourceStrToString(header)).asResource(),
-                cfooter = LibC.mallocCString(transResourceStrToString(footer)).asResource()) {
+            try (cheader = LibC.mallocCString(transResourceStrToString(header ?? "")).asResource(),
+                cfooter = LibC.mallocCString(transResourceStrToString(footer ?? "")).asResource()) {
                 FfiOHOSAceFrameworkMenuItemGroupCreateByString(cheader.value, cfooter.value)
             }
         }

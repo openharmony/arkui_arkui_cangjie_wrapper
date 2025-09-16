@@ -22,42 +22,42 @@ import ohos.resource.*
 import ohos.arkui.shape.*
 
 public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
-    func scrollBar(barState: BarState): T
+    func scrollBar(barState: ?BarState): T
 
-    func scrollBarColor(color: ResourceColor): T
+    func scrollBarColor(color: ?ResourceColor): T
 
-    func scrollBarWidth(value: Length): T
+    func scrollBarWidth(value: ?Length): T
 
-    func nestedScroll(value: NestedScrollOptions): T
+    func nestedScroll(value: ?NestedScrollOptions): T
 
-    func enableScrollInteraction(value: Bool): T
+    func enableScrollInteraction(value: ?Bool): T
 
-    func friction(value: Float64): T
+    func friction(value: ?Float64): T
 
-    func friction(value: AppResource): T
+    func friction(value: ?AppResource): T
 
-    func onReachStart(event: () -> Unit): T
+    func onReachStart(event: ?() -> Unit): T
 
-    func onReachEnd(event: () -> Unit): T
+    func onReachEnd(event: ?() -> Unit): T
 
-    func onScrollStart(event: () -> Unit): T
+    func onScrollStart(event: ?() -> Unit): T
 
-    func onScrollStop(event: () -> Unit): T
+    func onScrollStop(event: ?() -> Unit): T
 
-    func flingSpeedLimit(speedLimit: Float64): T
+    func flingSpeedLimit(speedLimit: ?Float64): T
 
     func fadingEdge(enabled: Option<Bool>): T
 
-    func fadingEdge(enabled: Option<Bool>, options: FadingEdgeOptions): T
+    func fadingEdge(enabled: Option<Bool>, options: ?FadingEdgeOptions): T
 
-    func clipContent(clip: ContentClipMode): T
+    func clipContent(clip: ?ContentClipMode): T
 
-    func clipContent(clip: RectShape): T
+    func clipContent(clip: ?RectShape): T
 
     func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) -> ScrollResult>): T
 
     func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) -> Unit>): T
 
-    func onDidScroll(handler: OnScrollCallBack): T
+    func onDidScroll(handler: ?OnScrollCallBack): T
 
 }

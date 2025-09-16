@@ -84,7 +84,7 @@ public class ColorStop {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var color: ResourceColor
+    public var color: ?ResourceColor
 
     /**
      * Offset property.
@@ -96,7 +96,7 @@ public class ColorStop {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offset: Length
+    public var offset: ?Length
 
     /**
      * ColorStop constructor
@@ -106,9 +106,10 @@ public class ColorStop {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(color: ResourceColor, offset: Length) {
-        this.color = color
-        this.offset = transAppResourceToLength(offset)
+    public init(color: ?ResourceColor, offset: ?Length) {
+        let tmpOffset = offset ?? throw IllegalArgumentException("The type now is not supported.")
+        this.color = color ?? throw IllegalArgumentException("The type now is not supported.")
+        this.offset = transAppResourceToLength(tmpOffset)
     }
 }
 
@@ -135,8 +136,8 @@ public class LinearGradient {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(colorStops: Array<ColorStop>) {
-        this.colorStops = colorStops
+    public init(colorStops: ?Array<ColorStop>) {
+        this.colorStops = colorStops ?? throw IllegalArgumentException("The type now is not supported.")
     }
 
     /**
@@ -149,17 +150,18 @@ public class LinearGradient {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(color: ResourceColor) {
-        var color_ = transAppResourceToResourceColor(color)
+    public init(color: ?ResourceColor) {
+        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
+        var color_ = transAppResourceToResourceColor(tmpColor)
         this.colorStops = [ColorStop(color_, 0), ColorStop(color_, 1)]
     }
 
     func parseToNative(): NativeLinearGradient {
         return NativeLinearGradient(
-            colorStops[0].color.toUInt32(),
-            colorStops[0].offset.value,
-            colorStops[1].color.toUInt32(),
-            colorStops[1].offset.value
+            (colorStops[0].color ?? throw IllegalArgumentException("The type now is not supported.")).toUInt32(),
+            (colorStops[0].offset ?? throw IllegalArgumentException("The type now is not supported.")).value,
+            (colorStops[1].color ?? throw IllegalArgumentException("The type now is not supported.")).toUInt32(),
+            (colorStops[1].offset ?? throw IllegalArgumentException("The type now is not supported.")).value
         )
     }
 }
@@ -214,7 +216,7 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var colors: Array<LinearGradient>
+    public var colors: ?Array<LinearGradient>
 
     /**
      * DataPanelShadowOptions Constructor.
@@ -229,9 +231,9 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(radius!: Length = 20.vp, colors!: Array<LinearGradient> = [], offsetX!: Length = 5.vp, offsetY!: Length = 5.vp) {
-        super(radius, offsetX, offsetY)
-        this.colors = colors
+    public init(radius!: ?Length = None, colors!: ?Array<LinearGradient> = None, offsetX!: ?Length = None, offsetY!: ?Length = None) {
+        super(radius ?? 20.vp, offsetX ?? 5.vp, offsetY ?? 5.vp)
+        this.colors = colors ?? []
     }
 }
 
@@ -260,13 +262,16 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPanelType = DataPanelType.Circle) {
-        let vecValueHandle = FFIVectorFloat64(values.size)
-        for (i in 0..values.size) {
-            vecValueHandle.setElement(i, values[i])
+    public init(values!: ?Array<Float64>, max!: ?Float64 = None, panelType!: ?DataPanelType = None) {
+        let tmpValues = values ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpPanelType = panelType ?? DataPanelType.Circle
+        
+        let vecValueHandle = FFIVectorFloat64(tmpValues.size)
+        for (i in 0..tmpValues.size) {
+            vecValueHandle.setElement(i, tmpValues[i])
         }
         unsafe {
-            FfiOHOSAceFrameworkDataPanelCreate(vecValueHandle.getNativeHandle(), max, panelType.getValue())
+            FfiOHOSAceFrameworkDataPanelCreate(vecValueHandle.getNativeHandle(), max ?? 100.0, tmpPanelType.getValue())
         }
         vecValueHandle.free()
     }
@@ -283,9 +288,10 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func closeEffect(value: Bool): This {
+    public func closeEffect(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkDataPanelSetCloseEffect(value)
+            FfiOHOSAceFrameworkDataPanelSetCloseEffect(tmpValue)
         }
         this
     }
@@ -302,10 +308,11 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func valueColors(value: Array<LinearGradient>): This {
-        let vecValueHandle = FFIVectorNativeLinearGradient(value.size)
-        for (i in 0..value.size) {
-            vecValueHandle.setElement(i, value[i].parseToNative())
+    public func valueColors(value: ?Array<LinearGradient>): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let vecValueHandle = FFIVectorNativeLinearGradient(tmpValue.size)
+        for (i in 0..tmpValue.size) {
+            vecValueHandle.setElement(i, tmpValue[i].parseToNative())
         }
         unsafe {
             FfiOHOSAceFrameworkDataPanelSetValueColors(vecValueHandle.getNativeHandle())
@@ -326,9 +333,10 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func trackBackgroundColor(value: ResourceColor): This {
+    public func trackBackgroundColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkDataPanelSetTrackBackgroundColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkDataPanelSetTrackBackgroundColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -345,8 +353,9 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeWidth(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func strokeWidth(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkDataPanelSetStrokeWidth(value_.value, value_.unitType.getValue())
         }
@@ -365,8 +374,9 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func trackShadow(value: DataPanelShadowOptions): This {
-        let colors = value.colors
+    public func trackShadow(value: ?DataPanelShadowOptions): This {
+        let tmpValue = value ?? DataPanelShadowOptions()
+        let colors = tmpValue.colors ?? []
         let vecValueHandle = FFIVectorNativeLinearGradient(colors.size)
         for (i in 0..colors.size) {
             vecValueHandle.setElement(i, colors[i].parseToNative())
@@ -374,9 +384,9 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
         unsafe {
             FfiOHOSAceFrameworkDataPanelSetTrackShadow(
                 NativeDataPanelShadow(
-                    transAppResourceToLength(value.radius).value,
-                    transAppResourceToLength(value.offsetX).value,
-                    transAppResourceToLength(value.offsetY).value,
+                    transAppResourceToLength(tmpValue.radius ?? 20.vp).value,
+                    transAppResourceToLength(tmpValue.offsetX ?? 5.vp).value,
+                    transAppResourceToLength(tmpValue.offsetY ?? 5.vp).value,
                     vecValueHandle.getNativeHandle()
                 )
             )

@@ -66,39 +66,39 @@ struct CJAlignRuleOption {
     init(option: AlignRuleOptions) {
         try {
             if (let Some(v) <- option.left) {
-                leftAnchor = unsafe { LibC.mallocCString(v.anchor) }
-                leftHorizontalAlign = v.align.getValue()
+                leftAnchor = unsafe { LibC.mallocCString(v.anchor ?? throw IllegalArgumentException("The type now is not supported.")) }
+                leftHorizontalAlign = (v.align ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
             }
             if (let Some(v) <- option.right) {
-                rightAnchor = unsafe { LibC.mallocCString(v.anchor) }
-                rightHorizontalAlign = v.align.getValue()
+                rightAnchor = unsafe { LibC.mallocCString(v.anchor ?? throw IllegalArgumentException("The type now is not supported.")) }
+                rightHorizontalAlign = (v.align ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
             }
             if (let Some(v) <- option.middle) {
-                middleAnchor = unsafe { LibC.mallocCString(v.anchor) }
-                middleHorizontalAlign = v.align.getValue()
+                middleAnchor = unsafe { LibC.mallocCString(v.anchor ?? throw IllegalArgumentException("The type now is not supported.")) }
+                middleHorizontalAlign = (v.align ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
             }
             if (let Some(v) <- option.top) {
-                topAnchor = unsafe { LibC.mallocCString(v.anchor) }
-                topVerticalAlign = v.align.getValue()
+                topAnchor = unsafe { LibC.mallocCString(v.anchor ?? throw IllegalArgumentException("The type now is not supported.")) }
+                topVerticalAlign = (v.align ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
             }
             if (let Some(v) <- option.bottom) {
-                bottomAnchor = unsafe { LibC.mallocCString(v.anchor) }
-                bottomVerticalAlign = v.align.getValue()
+                bottomAnchor = unsafe { LibC.mallocCString(v.anchor ?? throw IllegalArgumentException("The type now is not supported.")) }
+                bottomVerticalAlign = (v.align ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
             }
             if (let Some(v) <- option.center) {
-                centerAnchor = unsafe { LibC.mallocCString(v.anchor) }
-                centerVerticalAlign = v.align.getValue()
+                centerAnchor = unsafe { LibC.mallocCString(v.anchor ?? throw IllegalArgumentException("The type now is not supported.")) }
+                centerVerticalAlign = (v.align ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
             }
             horizontalBias = unsafe { LibC.malloc<Float32>() }
             if (horizontalBias.isNull()) {
                 throw IllegalMemoryException("memory malloc failed.")
             }
-            unsafe { horizontalBias.write(option.bias.horizontal) }
+            unsafe { horizontalBias.write((option.bias ?? Bias()).horizontal ?? 0.5) }
             verticalBias = unsafe { LibC.malloc<Float32>() }
             if (verticalBias.isNull()) {
                 throw IllegalMemoryException("memory malloc failed.")
             }
-            unsafe { verticalBias.write(option.bias.vertical) }
+            unsafe { verticalBias.write((option.bias ?? Bias()).vertical ?? 0.5) }
         } catch (e: Exception) {
             free()
             throw e
@@ -129,11 +129,11 @@ protected struct CTranslateOptions {
     let zType: UInt32
 
     init(options: TranslateOptions) {
-        x = options.x.value
-        xType = UInt32(options.x.unitType.getValue())
-        y = options.y.value
-        yType = UInt32(options.y.unitType.getValue())
-        z = options.z.value
-        zType = UInt32(options.z.unitType.getValue())
+        x = (options.x ?? 0.vp).value
+        xType = UInt32((options.x ?? 0.vp).unitType.getValue())
+        y = (options.y ?? 0.vp).value
+        yType = UInt32((options.y ?? 0.vp).unitType.getValue())
+        z = (options.z ?? 0.vp).value
+        zType = UInt32((options.z ?? 0.vp).unitType.getValue())
     }
 }

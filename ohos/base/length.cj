@@ -240,8 +240,9 @@ public enum LengthUnit {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func parse(value: Int32): LengthUnit {
-        match (value) {
+    public static func parse(value: ?Int32): LengthUnit {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        match (tmpValue) {
             case 0 => LengthUnit.Px
             case 1 => LengthUnit.Vp
             case 2 => LengthUnit.Fp

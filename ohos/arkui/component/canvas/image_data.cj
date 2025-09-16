@@ -115,16 +115,20 @@ public class ImageData <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width: Float64, height: Float64, data!: Array<UInt8>,
-        unit!: LengthMetricsUnit = LengthMetricsUnit.Default) {
+    public init(width: ?Float64, height: ?Float64, data!: ?Array<UInt8>,
+        unit!: ?LengthMetricsUnit = None) {
         super(
             unsafe {
-                var vecValueHandle = FFIVectorUInt8(data.size)
-                for (i in 0..data.size) {
-                    vecValueHandle.setElement(i, data[i])
+                let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
+                let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
+                let tmpData = data ?? throw IllegalArgumentException("The type now is not supported.")
+                let tmpUnit = unit ?? LengthMetricsUnit.Default
+                var vecValueHandle = FFIVectorUInt8(tmpData.size)
+                for (i in 0..tmpData.size) {
+                    vecValueHandle.setElement(i, tmpData[i])
                 }
-                let id = FfiOHOSAceFrameworkCanvasImageDataCtor(width, height, vecValueHandle.getNativeHandle(),
-                    unit.getValue())
+                let id = FfiOHOSAceFrameworkCanvasImageDataCtor(tmpWidth, tmpHeight, vecValueHandle.getNativeHandle(),
+                    tmpUnit.getValue())
                 vecValueHandle.free()
                 id
             })
@@ -144,10 +148,15 @@ public class ImageData <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width: Float64, height: Float64, unit!: LengthMetricsUnit = LengthMetricsUnit.Default) {
-        super(unsafe {
-            let id = FfiOHOSAceFrameworkCanvasImageDataCtorWithNoData(width, height, unit.getValue())
-            id
+    public init(width: ?Float64, height: ?Float64, unit!: ?LengthMetricsUnit = None) {
+        
+        super(
+            unsafe {
+                let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
+                let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
+                let tmpUnit = unit ?? LengthMetricsUnit.Default
+                let id = FfiOHOSAceFrameworkCanvasImageDataCtorWithNoData(tmpWidth, tmpHeight, tmpUnit.getValue())
+                id
         })
     }
 

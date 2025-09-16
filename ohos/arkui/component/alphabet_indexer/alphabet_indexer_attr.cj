@@ -22,50 +22,50 @@ import ohos.resource.*
 
 sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribute> {
 
-    func color(value: ResourceColor): AlphabetIndexerAttribute
+    func color(value: ?ResourceColor): AlphabetIndexerAttribute
 
-    func selectedColor(value: ResourceColor): AlphabetIndexerAttribute
+    func selectedColor(value: ?ResourceColor): AlphabetIndexerAttribute
 
-    func popupColor(value: ResourceColor): AlphabetIndexerAttribute
+    func popupColor(value: ?ResourceColor): AlphabetIndexerAttribute
 
-    func selectedBackgroundColor(value: ResourceColor): AlphabetIndexerAttribute
+    func selectedBackgroundColor(value: ?ResourceColor): AlphabetIndexerAttribute
 
-    func popupBackground(value: ResourceColor): AlphabetIndexerAttribute
+    func popupBackground(value: ?ResourceColor): AlphabetIndexerAttribute
 
-    func usingPopup(value: Bool): AlphabetIndexerAttribute
+    func usingPopup(value: ?Bool): AlphabetIndexerAttribute
 
     func selectedFont(
-        size!: Length,
-        weight!: FontWeight,
-        family!: ResourceStr,
-        style!: FontStyle
+        size!: ?Length,
+        weight!: ?FontWeight,
+        family!: ?ResourceStr,
+        style!: ?FontStyle
     ): AlphabetIndexerAttribute
 
     func popupFont(
-        size!: Length,
-        weight!: FontWeight,
-        family!: ResourceStr,
-        style!: FontStyle
+        size!: ?Length,
+        weight!: ?FontWeight,
+        family!: ?ResourceStr,
+        style!: ?FontStyle
     ): AlphabetIndexerAttribute
 
     func font(
-        size!: Length,
-        weight!: FontWeight,
-        family!: ResourceStr,
-        style!: FontStyle
+        size!: ?Length,
+        weight!: ?FontWeight,
+        family!: ?ResourceStr,
+        style!: ?FontStyle
     ): AlphabetIndexerAttribute
 
-    func itemSize(size: Length): AlphabetIndexerAttribute
+    func itemSize(size: ?Length): AlphabetIndexerAttribute
 
-    func alignStyle(value: IndexerAlign): AlphabetIndexerAttribute
+    func alignStyle(value: ?IndexerAlign): AlphabetIndexerAttribute
 
-    func selected(index: Int32): AlphabetIndexerAttribute
+    func selected(index: ?Int32): AlphabetIndexerAttribute
 
-    func popupPosition(x!: Length, y!: Length): AlphabetIndexerAttribute
+    func popupPosition(x!: ?Length, y!: ?Length): AlphabetIndexerAttribute
 
-    func onSelect(callback: OnAlphabetIndexerSelectCallback): AlphabetIndexerAttribute
+    func onSelect(callback: ?OnAlphabetIndexerSelectCallback): AlphabetIndexerAttribute
 
-    func onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback): AlphabetIndexerAttribute
+    func onRequestPopupData(callback: ?OnAlphabetIndexerRequestPopupDataCallback): AlphabetIndexerAttribute
 
-    func onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback): AlphabetIndexerAttribute
+    func onPopupSelect(callback: ?OnAlphabetIndexerPopupSelectCallback): AlphabetIndexerAttribute
 }

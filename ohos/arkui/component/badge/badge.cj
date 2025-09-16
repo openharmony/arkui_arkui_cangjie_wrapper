@@ -101,7 +101,7 @@ public class BadgeStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var color: ResourceColor
+    public var color: ?ResourceColor
     /**
      * Font size.
      * For the string type, only numeric string values with optional units.
@@ -121,7 +121,7 @@ public class BadgeStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontSize: Length
+    public var fontSize: ?Length
     /**
      * Badge size.
      * For the string type, numeric string values with optional units.
@@ -142,7 +142,7 @@ public class BadgeStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var badgeSize: Length
+    public var badgeSize: ?Length
     /**
      * Badge color.
      *
@@ -155,7 +155,7 @@ public class BadgeStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var badgeColor: ResourceColor
+    public var badgeColor: ?ResourceColor
     /**
      * Font weight of the text.
      * For the number type, the value ranges from 100 to 900, at an interval of 100. Default value: 400
@@ -174,7 +174,7 @@ public class BadgeStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontWeight: FontWeight
+    public var fontWeight: ?FontWeight
     /**
      * Border color of the background.
      *
@@ -187,7 +187,7 @@ public class BadgeStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderColor: ResourceColor
+    public var borderColor: ?ResourceColor
     /**
      * Border width of the background.
      * This parameter cannot be set in percentage.
@@ -202,7 +202,7 @@ public class BadgeStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderWidth: Length
+    public var borderWidth: ?Length
 
     /**
      * BadgeStyle constructor
@@ -212,17 +212,16 @@ public class BadgeStyle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(color!: ResourceColor = Color.White, fontSize!: Length = 10.fp, badgeSize!: Length = 16.vp,
-        badgeColor!: ResourceColor = Color.Red, fontWeight!: FontWeight = FontWeight.Normal,
-        borderColor!: ResourceColor = Color.Red, borderWidth!: Length = 1.vp) {
-        this.color = color
-        this.fontSize = fontSize
-        this.badgeSize = badgeSize
-        this.badgeColor = badgeColor
-        this.fontWeight = fontWeight
-        this.borderColor = borderColor
-
-        var borderWidth_ = transAppResourceToLength(borderWidth)
+    public init(color!: ?ResourceColor = None, fontSize!: ?Length = None, badgeSize!: ?Length = None,
+        badgeColor!: ?ResourceColor = None, fontWeight!: ?FontWeight = None,
+        borderColor!: ?ResourceColor = None, borderWidth!: ?Length = None) {
+        this.color = color ?? Color.White
+        this.fontSize = fontSize ?? 10.fp
+        this.badgeSize = badgeSize ?? 16.vp
+        this.badgeColor = badgeColor ?? Color.Red
+        this.fontWeight = fontWeight ?? FontWeight.Normal
+        this.borderColor = borderColor ?? Color.Red
+        var borderWidth_ = transAppResourceToLength(borderWidth ?? 1.vp)
         this.borderWidth = borderWidth_
     }
 }
@@ -268,16 +267,18 @@ public class Badge <: CommonMethodComponent<BadgeAttribute> & BadgeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(count!: Int32, style!: BadgeStyle, position!: BadgePosition = BadgePosition.RightTop,
-        maxCount!: Int32 = 99, child!: () -> Unit) {
+    public init(count!: ?Int32, style!: ?BadgeStyle, position!: ?BadgePosition = None,
+        maxCount!: ?Int32 = None, child!: () -> Unit) {
+        let tmpStyle = style ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpPosition = position ?? BadgePosition.RightTop
         unsafe {
             FfiOHOSAceFrameworkBadgeCreateV2(
-                count,
-                CJBadgeStyleV2(transAppResourceToResourceColor(style.color), Float64(style.fontSize.value), Float64(style.badgeSize.value),
-                    transAppResourceToResourceColor(style.badgeColor), style.fontWeight.getValueInt(), transAppResourceToResourceColor(style.borderColor),
-                    style.borderWidth.value, style.borderWidth.unitType.getValue()),
-                position.getValue(),
-                maxCount
+                count ?? throw IllegalArgumentException("The type now is not supported."),
+                CJBadgeStyleV2(transAppResourceToResourceColor(tmpStyle.color ?? Color.White), Float64((tmpStyle.fontSize ?? 10.fp).value), Float64((tmpStyle.badgeSize ?? 16.vp).value),
+                    transAppResourceToResourceColor(tmpStyle.badgeColor ?? Color.Red), (tmpStyle.fontWeight ?? FontWeight.Normal).getValueInt(), transAppResourceToResourceColor((tmpStyle.borderColor ?? Color.Red)),
+                    (tmpStyle.borderWidth ?? 1.vp).value, (tmpStyle.borderWidth ?? 1.vp).unitType.getValue()),
+                tmpPosition.getValue(),
+                maxCount ?? 99
             )
         }
         this.child = child
@@ -299,15 +300,19 @@ public class Badge <: CommonMethodComponent<BadgeAttribute> & BadgeAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: String, style!: BadgeStyle, position!: BadgePosition = BadgePosition.RightTop, child!: () -> Unit) {
+    public init(value!: ?String, style!: ?BadgeStyle, position!: ?BadgePosition = None, child!: () -> Unit) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpStyle = style ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpPosition = position ?? BadgePosition.RightTop
+        
         unsafe {
-            try (textValue = LibC.mallocCString(value).asResource()) {
+            try (textValue = LibC.mallocCString(tmpValue).asResource()) {
                 FfiOHOSAceFrameworkBadgeCreateTextV2(
                     textValue.value,
-                    CJBadgeStyleV2(transAppResourceToResourceColor(style.color), Float64(style.fontSize.value), Float64(style.badgeSize.value),
-                        transAppResourceToResourceColor(style.badgeColor), style.fontWeight.getValueInt(), transAppResourceToResourceColor(style.borderColor),
-                        style.borderWidth.value, style.borderWidth.unitType.getValue()),
-                    position.getValue()
+                    CJBadgeStyleV2(transAppResourceToResourceColor(tmpStyle.color ?? Color.White), Float64((tmpStyle.fontSize ?? 10.fp).value), Float64((tmpStyle.badgeSize ?? 16.vp).value),
+                        transAppResourceToResourceColor(tmpStyle.badgeColor ?? Color.Red), (tmpStyle.fontWeight ?? FontWeight.Normal).getValueInt(), transAppResourceToResourceColor(tmpStyle.borderColor ?? Color.Red),
+                        (tmpStyle.borderWidth ?? 1.vp).value, (tmpStyle.borderWidth ?? 1.vp).unitType.getValue()),
+                    tmpPosition.getValue()
                 )
             }
         }

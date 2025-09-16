@@ -21,15 +21,15 @@ import ohos.resource.*
 
 sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
 
-    func scrollable(scrollDirection: ScrollDirection): ScrollAttribute
+    func scrollable(scrollDirection: ?ScrollDirection): ScrollAttribute
 
-    func onWillScroll(handler: (Float64, Float64, ScrollState, ScrollSource) -> OffsetResult): ScrollAttribute
+    func onWillScroll(handler: ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult): ScrollAttribute
 
-    func onWillScroll(handler: (Float64, Float64, ScrollState, ScrollSource) -> Unit): ScrollAttribute
+    func onWillScroll(handler: ?(Float64, Float64, ScrollState, ScrollSource) -> Unit): ScrollAttribute
 
-    func onDidScroll(callback: ScrollOnScrollCallback): ScrollAttribute
+    func onDidScroll(callback: ?ScrollOnScrollCallback): ScrollAttribute
 
-    func onScrollFrameBegin(event: OnScrollFrameBeginCallback): ScrollAttribute
+    func onScrollFrameBegin(event: ?OnScrollFrameBeginCallback): ScrollAttribute
 
-    func onScrollEdge(event: OnScrollEdgeCallback): ScrollAttribute
+    func onScrollEdge(event: ?OnScrollEdgeCallback): ScrollAttribute
 }

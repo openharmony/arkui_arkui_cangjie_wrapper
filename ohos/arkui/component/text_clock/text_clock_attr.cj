@@ -21,21 +21,21 @@ import ohos.resource.*
 
 sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
 
-    func onDateChange(callback: (Int64) -> Unit): TextClockAttribute
+    func onDateChange(callback: ?(Int64) -> Unit): TextClockAttribute
 
-    func format(value: ResourceStr): TextClockAttribute
+    func format(value: ?ResourceStr): TextClockAttribute
 
-    func fontSize(value: Length): TextClockAttribute
+    func fontSize(value: ?Length): TextClockAttribute
 
-    func fontColor(value: ResourceColor): TextClockAttribute
+    func fontColor(value: ?ResourceColor): TextClockAttribute
 
-    func fontStyle(value: FontStyle): TextClockAttribute
+    func fontStyle(value: ?FontStyle): TextClockAttribute
 
-    func fontWeight(value: FontWeight): TextClockAttribute
+    func fontWeight(value: ?FontWeight): TextClockAttribute
 
-    func fontFamily(value: ResourceStr): TextClockAttribute
+    func fontFamily(value: ?ResourceStr): TextClockAttribute
 
-    func textShadow(values: Array<ShadowOptions>): TextClockAttribute
+    func textShadow(values: ?Array<ShadowOptions>): TextClockAttribute
 
-    func textShadow(value: ShadowOptions): TextClockAttribute
+    func textShadow(value: ?ShadowOptions): TextClockAttribute
 }

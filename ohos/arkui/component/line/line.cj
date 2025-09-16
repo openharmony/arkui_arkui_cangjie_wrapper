@@ -52,9 +52,9 @@ public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
+    public init(width!: ?Length = None, height!: ?Length = None) {
+        var width_ = transAppResourceToLength(width ?? 0.vp)
+        var height_ = transAppResourceToLength(height ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkLineCreate(
                 width_.value,
@@ -77,9 +77,10 @@ public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func startPoint(value: (Float64, Float64)): This {
+    public func startPoint(value: ?(Float64, Float64)): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkLineSetStart(value[0], value[1])
+            FfiOHOSAceFrameworkLineSetStart(tmpValue[0], tmpValue[1])
         }
         this
     }
@@ -96,9 +97,10 @@ public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func endPoint(value: (Float64, Float64)): This {
+    public func endPoint(value: ?(Float64, Float64)): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkLineSetEnd(value[0], value[1])
+            FfiOHOSAceFrameworkLineSetEnd(tmpValue[0], tmpValue[1])
         }
         this
     }

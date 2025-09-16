@@ -99,9 +99,10 @@ public class Span <: BaseSpan {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: ResourceStr) {
+    public init(value: ?ResourceStr) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            var unsafeContent = LibC.mallocCString(transResourceStrToString(value))
+            var unsafeContent = LibC.mallocCString(transResourceStrToString(tmpValue))
             FfiOHOSAceFrameworkSpanCreate(unsafeContent)
             LibC.free(unsafeContent)
         }
@@ -119,8 +120,9 @@ public class Span <: BaseSpan {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontSize(value: Length): This {
-        var v = transAppResourceToLength(value)
+    public func fontSize(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkSpanSetFontSize(v.value, getLengthUnitOrFp(v).getValue())
         }
@@ -139,9 +141,10 @@ public class Span <: BaseSpan {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontColor(value: ResourceColor): This {
+    public func fontColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSpanSetFontColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSpanSetFontColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -158,9 +161,10 @@ public class Span <: BaseSpan {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontStyle(value: FontStyle): This {
+    public func fontStyle(value: ?FontStyle): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSpanSetFontStyle(value.getValue())
+            FfiOHOSAceFrameworkSpanSetFontStyle(tmpValue.getValue())
         }
         this
     }
@@ -177,9 +181,10 @@ public class Span <: BaseSpan {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontWeight(value: FontWeight): This {
+    public func fontWeight(value: ?FontWeight): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (unsafeFontWeight = LibC.mallocCString(value.getValue()).asResource()) {
+            try (unsafeFontWeight = LibC.mallocCString(tmpValue.getValue()).asResource()) {
                 FfiOHOSAceFrameworkSpanSetFontWeight(unsafeFontWeight.value)
             }
         }
@@ -198,9 +203,10 @@ public class Span <: BaseSpan {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontFamily(value: ResourceStr): This {
+    public func fontFamily(value: ?ResourceStr): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (unsafeFontWeight = LibC.mallocCString(transResourceStrToString(value)).asResource()) {
+            try (unsafeFontWeight = LibC.mallocCString(transResourceStrToString(tmpValue)).asResource()) {
                 FfiOHOSAceFrameworkSpanSetFontFamily(unsafeFontWeight.value)
             }
         }
@@ -220,12 +226,13 @@ public class Span <: BaseSpan {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func decoration(decorationType!: TextDecorationType, color!: ?ResourceColor = None): This {
+    public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor = None): This {
+        let tmpDecorationType = decorationType ?? throw IllegalArgumentException("The type now is not supported.")
         var colorValue = if (let Some(v) <- color) {
             v
         } else { Color.Black }
         unsafe {
-            FfiOHOSAceFrameworkSpanSetDecoration(decorationType.getValue(), transAppResourceToResourceColor(colorValue))
+            FfiOHOSAceFrameworkSpanSetDecoration(tmpDecorationType.getValue(), transAppResourceToResourceColor(colorValue))
         }
         this
     }
@@ -242,8 +249,9 @@ public class Span <: BaseSpan {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func letterSpacing(value: Length): This {
-        var v = transAppResourceToLength(value)
+    public func letterSpacing(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkSpanSetLetterSpacing(v.value, v.unitType.getValue())
         }
@@ -262,9 +270,10 @@ public class Span <: BaseSpan {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textCase(value: TextCase): This {
+    public func textCase(value: ?TextCase): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSpanSetTextCase(value.getValue())
+            FfiOHOSAceFrameworkSpanSetTextCase(tmpValue.getValue())
         }
         this
     }
@@ -281,9 +290,10 @@ public class Span <: BaseSpan {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onClick(callback: (ClickEvent) -> Unit): This {
+    public func onClick(event: ?(ClickEvent) -> Unit): This {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            evt: CJClickEvent => callback(parseCJClickEvent(evt))
+            evt: CJClickEvent => tmpEvent(parseCJClickEvent(evt))
         }
         let lambdaData = CallbackCJClickEvent(wrapper);
         unsafe {

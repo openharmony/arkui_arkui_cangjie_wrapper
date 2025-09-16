@@ -75,9 +75,10 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func enableInc(value: Bool): This {
+    public func enableInc(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCounterEnableInc(value);
+            FfiOHOSAceFrameworkCounterEnableInc(tmpValue);
         }
         this
     }
@@ -94,9 +95,10 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func enableDec(value: Bool): This {
+    public func enableDec(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCounterEnableDec(value);
+            FfiOHOSAceFrameworkCounterEnableDec(tmpValue);
         }
         this
     }
@@ -113,9 +115,10 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onInc(event: VoidCallback): This {
+    public func onInc(event: ?VoidCallback): This {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCounterSetOnInc(Callback0Param<Unit>(event).getID());
+            FfiOHOSAceFrameworkCounterSetOnInc(Callback0Param<Unit>(tmpEvent).getID());
         }
         this
     }
@@ -132,9 +135,10 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDec(event: VoidCallback): This {
+    public func onDec(event: ?VoidCallback): This {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCounterSetOnDec(Callback0Param<Unit>(event).getID());
+            FfiOHOSAceFrameworkCounterSetOnDec(Callback0Param<Unit>(tmpEvent).getID());
         }
         this
     }

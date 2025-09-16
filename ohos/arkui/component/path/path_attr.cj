@@ -21,5 +21,5 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 
 sealed interface PathAttribute <: CommonShapeMethod<PathAttribute> {
-    func commands(commands: ResourceStr): PathAttribute
+    func commands(commands: ?ResourceStr): PathAttribute
 }

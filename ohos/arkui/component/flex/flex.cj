@@ -87,17 +87,22 @@ public class Flex <: CommonMethodComponent<FlexAttribute> & FlexAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(direction!: FlexDirection = FlexDirection.Row, wrap!: FlexWrap = FlexWrap.NoWrap,
-        justifyContent!: FlexAlign = FlexAlign.Start, alignItems!: ItemAlign = ItemAlign.Start,
-        alignContent!: FlexAlign = FlexAlign.Start, child!: () -> Unit = {=>}) {
+    public init(direction!: ?FlexDirection = None, wrap!: ?FlexWrap = None,
+        justifyContent!: ?FlexAlign = None, alignItems!: ?ItemAlign = None,
+        alignContent!: ?FlexAlign = None, child!: () -> Unit = {=>}) {
+        let tmpDirection = direction ?? FlexDirection.Row
+        let tmpWrap = wrap ?? FlexWrap.NoWrap
+        let tmpJustifyContent = justifyContent ?? FlexAlign.Start
+        let tmpAlignItems = alignItems ?? ItemAlign.Start
+        let tmpAlignContent = alignContent ?? FlexAlign.Start
         unsafe {
             FfiOHOSAceFrameworkFlexCreateWithParams(
                 CJFlexParams(
-                    direction.getValue(),
-                    wrap.getValue(),
-                    justifyContent.getValue(),
-                    alignItems.getValue(),
-                    alignContent.getValue()
+                    tmpDirection.getValue(),
+                    tmpWrap.getValue(),
+                    tmpJustifyContent.getValue(),
+                    tmpAlignItems.getValue(),
+                    tmpAlignContent.getValue()
                 )
             )
         }

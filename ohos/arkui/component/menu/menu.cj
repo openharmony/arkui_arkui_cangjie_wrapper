@@ -92,17 +92,19 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func font(
-        size!: Length = 16.vp,
-        weight!: FontWeight = FontWeight.Normal,
-        family!: ResourceStr = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        family!: ?ResourceStr = None,
+        style!: ?FontStyle = None
     ): This {
+        let tmpWeight = weight ?? FontWeight.Normal
+        let tmpStyle = style ?? FontStyle.Normal
         unsafe {
-            try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
-                FfiOHOSAceFrameworkMenuFont(transAppResourceToLength(size).value,
-                    transAppResourceToLength(size).unitType.getValue(), weightCString.value, fontFamilyCString.value,
-                    style.getValue())
+            try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
+                FfiOHOSAceFrameworkMenuFont(transAppResourceToLength(size ?? 16.vp).value,
+                    transAppResourceToLength(size ?? 16.vp).unitType.getValue(), weightCString.value, fontFamilyCString.value,
+                    tmpStyle.getValue())
             }
         }
         this
@@ -120,9 +122,10 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontColor(value: ResourceColor): This {
+    public func fontColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkMenuSetFontColor(transAppResourceToResourceColor(value));
+            FfiOHOSAceFrameworkMenuSetFontColor(transAppResourceToResourceColor(tmpValue));
         }
         this
     }
@@ -140,8 +143,9 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func radius(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func radius(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         if (value_.value < 0.0f64) {
             return this
         }
@@ -164,9 +168,10 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func radius(value: BorderRadiuses): This {
+    public func radius(value: ?BorderRadiuses): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkMenuSetRadiusByBorderRadiuses(value.toCBorderRadiuses());
+            FfiOHOSAceFrameworkMenuSetRadiusByBorderRadiuses(tmpValue.toCBorderRadiuses());
         }
         this
     }

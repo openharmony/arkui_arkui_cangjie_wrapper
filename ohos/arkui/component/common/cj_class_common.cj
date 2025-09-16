@@ -43,7 +43,7 @@ public class EventTarget {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var area: Area
+    public var area: ?Area
 
     /**
      * constructor
@@ -53,8 +53,8 @@ public class EventTarget {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(area: Area) {
-        this.area = area
+    public init(area: ?Area) {
+        this.area = area ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -74,28 +74,28 @@ public class Area {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var width: Length
+    public var width: ?Length
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var height: Length
+    public var height: ?Length
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var position: Position
+    public var position: ?Position
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var globalPosition: Position
+    public var globalPosition: ?Position
 
     @!APILevel[
         21,
@@ -103,15 +103,15 @@ public class Area {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        width: Length,
-        height: Length,
-        position: Position,
-        globalPosition: Position
+        width: ?Length,
+        height: ?Length,
+        position: ?Position,
+        globalPosition: ?Position
     ) {
-        this.width = width
-        this.height = height
-        this.position = position
-        this.globalPosition = globalPosition
+        this.width = width ?? throw IllegalArgumentException("The type now is not supported.")
+        this.height = height ?? throw IllegalArgumentException("The type now is not supported.")
+        this.position = position ?? throw IllegalArgumentException("The type now is not supported.")
+        this.globalPosition = globalPosition ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -126,23 +126,23 @@ public class Position {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: Length
+    public var x: ?Length
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: Length
+    public var y: ?Length
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: Length = 0, y!: Length = 0) {
-        this.x = x
-        this.y = y
+    public init(x!: ?Length = None, y!: ?Length = None) {
+        this.x = x ?? 0
+        this.y = y ?? 0
     }
 }
 
@@ -157,25 +157,25 @@ public class MotionPathOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var path: String
+    public var path: ?String
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var from: Float64 = 0.0
+    public var from: ?Float64
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var to: Float64 = 1.0
+    public var to: ?Float64
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var rotatable: Bool = false
+    public var rotatable: ?Bool
 
     @!APILevel[
         21,
@@ -183,15 +183,15 @@ public class MotionPathOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        path!: String,
-        from!: Float64 = 0.0,
-        to!: Float64 = 1.0,
-        rotatable!: Bool = false
+        path!: ?String,
+        from!: ?Float64 = None,
+        to!: ?Float64 = None,
+        rotatable!: ?Bool = None
     ) {
-        this.path = path
-        this.from = from
-        this.to = to
-        this.rotatable = rotatable
+        this.path = path ?? throw IllegalArgumentException("The type now is not supported.")
+        this.from = from ?? 0.0
+        this.to = to ?? 1.0
+        this.rotatable = rotatable ?? false
     }
 }
 
@@ -206,37 +206,37 @@ public class SharedTransitionOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var duration: Int32 = 1000
+    public var duration: ?Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var curve: Curve = Curve.Linear
+    public var curve: ?Curve
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var delay: Int32 = 0
+    public var delay: ?Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var motionPath: MotionPathOptions = MotionPathOptions(path: "")
+    public var motionPath: ?MotionPathOptions
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var zIndex: Int32 = 0
+    public var zIndex: ?Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var effectType: SharedTransitionEffectType = SharedTransitionEffectType.Exchange
+    public var effectType: ?SharedTransitionEffectType
 
     @!APILevel[
         21,
@@ -244,19 +244,19 @@ public class SharedTransitionOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        duration!: Int32 = 1000,
-        curve!: Curve = Curve.Linear,
-        delay!: Int32 = 0,
-        motionPath!: MotionPathOptions = MotionPathOptions(path: ""),
-        zIndex!: Int32 = 0,
-        effectType!: SharedTransitionEffectType = SharedTransitionEffectType.Exchange
+        duration!: ?Int32 = None,
+        curve!: ?Curve = None,
+        delay!: ?Int32 = None,
+        motionPath!: ?MotionPathOptions = None,
+        zIndex!: ?Int32 = None,
+        effectType!: ?SharedTransitionEffectType = None
     ) {
-        this.duration = duration
-        this.curve = curve
-        this.delay = delay
-        this.motionPath = motionPath
-        this.zIndex = zIndex
-        this.effectType = effectType
+        this.duration = duration ?? 1000
+        this.curve = curve ?? Curve.Linear
+        this.delay = delay ?? 0
+        this.motionPath = motionPath ?? MotionPathOptions(path: "")
+        this.zIndex = zIndex ?? 0
+        this.effectType = effectType ?? SharedTransitionEffectType.Exchange
     }
 }
 
@@ -271,37 +271,37 @@ public class AnimateParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var duration: Int32
+    public var duration: ?Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var tempo: Float32
+    public var tempo: ?Float32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var curve: Curve
+    public var curve: ?Curve
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var delay: Int32
+    public var delay: ?Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var iterations: Int32
+    public var iterations: ?Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var playMode: PlayMode
+    public var playMode: ?PlayMode
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -313,7 +313,7 @@ public class AnimateParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var finishCallbackType: FinishCallbackType
+    public var finishCallbackType: ?FinishCallbackType
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -327,24 +327,24 @@ public class AnimateParam {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        duration!: Int32 = 1000,
-        tempo!: Float32 = 1.0,
-        curve!: Curve = Curve.EaseInOut,
-        delay!: Int32 = 0,
-        iterations!: Int32 = 1,
-        playMode!: PlayMode = PlayMode.Normal,
+        duration!: ?Int32 = None,
+        tempo!: ?Float32 = None,
+        curve!: ?Curve = None,
+        delay!: ?Int32 = None,
+        iterations!: ?Int32 = None,
+        playMode!: ?PlayMode = None,
         onFinish!: Option<() -> Unit> = Option.None,
-        finishCallbackType!: FinishCallbackType = FinishCallbackType.Removed,
+        finishCallbackType!: ?FinishCallbackType = None,
         expectedFrameRateRange!: Option<ExpectedFrameRateRange> = Option.None
     ) {
-        this.duration = duration
-        this.tempo = tempo
-        this.curve = curve
-        this.delay = delay
-        this.iterations = iterations
-        this.playMode = playMode
+        this.duration = duration ?? 1000
+        this.tempo = tempo ?? 1.0
+        this.curve = curve ?? Curve.EaseInOut
+        this.delay = delay ?? 0
+        this.iterations = iterations ?? 1
+        this.playMode = playMode ?? PlayMode.Normal
         this.onFinish = onFinish
-        this.finishCallbackType = finishCallbackType
+        this.finishCallbackType = finishCallbackType ?? FinishCallbackType.Removed
         this.expectedFrameRateRange = expectedFrameRateRange
     }
 }
@@ -366,7 +366,7 @@ public class HorizontalAlignment {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var anchor: String
+    public var anchor: ?String
 
     /*
      * alignment mode relative to the anchor component.
@@ -376,7 +376,7 @@ public class HorizontalAlignment {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var align: HorizontalAlign
+    public var align: ?HorizontalAlign
 
     /**
     * Defines the constructor of HorizontalAlignment.
@@ -390,9 +390,9 @@ public class HorizontalAlignment {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(anchor: String, align: HorizontalAlign) {
-        this.anchor = anchor
-        this.align = align
+    public init(anchor: ?String, align: ?HorizontalAlign) {
+        this.anchor = anchor ?? throw IllegalArgumentException("The type now is not supported.")
+        this.align = align ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -413,7 +413,7 @@ public class VerticalAlignment {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var anchor: String
+    public var anchor: ?String
 
     /*
      * alignment mode relative to the anchor component.
@@ -423,7 +423,7 @@ public class VerticalAlignment {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var align: VerticalAlign
+    public var align: ?VerticalAlign
 
     /**
     * Defines the constructor of VerticalAlignment.
@@ -437,9 +437,9 @@ public class VerticalAlignment {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(anchor: String, align: VerticalAlign) {
-        this.anchor = anchor
-        this.align = align
+    public init(anchor: ?String, align: ?VerticalAlign) {
+        this.anchor = anchor ?? throw IllegalArgumentException("The type now is not supported.")
+        this.align = align ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -466,7 +466,7 @@ public class Bias {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var horizontal: Float32
+    public var horizontal: ?Float32
 
     /**
      * Vertical ratio of the Bias, it must be >= 0.
@@ -479,7 +479,7 @@ public class Bias {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var vertical: Float32
+    public var vertical: ?Float32
 
     /**
     * Defines the constructor of Bias.
@@ -493,9 +493,9 @@ public class Bias {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(horizontal!: Float32 = 0.5, vertical!: Float32 = 0.5) {
-        this.horizontal = horizontal
-        this.vertical = vertical
+    public init(horizontal!: ?Float32 = None, vertical!: ?Float32 = None) {
+        this.horizontal = horizontal ?? 0.5
+        this.vertical = vertical ?? 0.5
     }
 }
 
@@ -520,7 +520,7 @@ public class Fonts {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var size: Length
+    public var size: ?Length
 
     /**
      * font weight.
@@ -532,7 +532,7 @@ public class Fonts {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var weight: FontWeight
+    public var weight: ?FontWeight
 
     /**
      * font family.
@@ -544,7 +544,7 @@ public class Fonts {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var family: String
+    public var family: ?String
 
     /**
      * font style.
@@ -556,7 +556,7 @@ public class Fonts {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var style: FontStyle
+    public var style: ?FontStyle
 
     /**
      * constructor
@@ -566,12 +566,12 @@ public class Fonts {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(size!: Length = 16.fp, weight!: FontWeight = FontWeight.Normal, family!: ResourceStr = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal) {
-        this.size = transAppResourceToLength(size)
-        this.weight = weight
-        this.family = transResourceStrToString(family)
-        this.style = style
+    public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?ResourceStr = None,
+        style!: ?FontStyle = None ) {
+        this.size = transAppResourceToLength(size ?? 16.fp)
+        this.weight = weight ?? FontWeight.Normal
+        this.family = transResourceStrToString(family ?? "HarmonyOS Sans")
+        this.style = style ?? FontStyle.Normal
     }
 }
 
@@ -590,44 +590,44 @@ public class BorderRadiuses {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var topLeft: Length
+    public var topLeft: ?Length
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var topRight: Length
+    public var topRight: ?Length
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var bottomLeft: Length
+    public var bottomLeft: ?Length
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var bottomRight: Length
+    public var bottomRight: ?Length
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(topLeft!: Length = 0.vp, topRight!: Length = 0.vp, bottomLeft!: Length = 0.vp,
-        bottomRight!: Length = 0.vp) {
-        this.topLeft = transAppResourceToLength(topLeft)
-        this.topRight = transAppResourceToLength(topRight)
-        this.bottomLeft = transAppResourceToLength(bottomLeft)
-        this.bottomRight = transAppResourceToLength(bottomRight)
+    public init(topLeft!: ?Length = None, topRight!: ?Length = None, bottomLeft!: ?Length = None,
+        bottomRight!: ?Length = None) {
+        this.topLeft = transAppResourceToLength(topLeft ?? 0.vp)
+        this.topRight = transAppResourceToLength(topRight ?? 0.vp)
+        this.bottomLeft = transAppResourceToLength(bottomLeft ?? 0.vp)
+        this.bottomRight = transAppResourceToLength(bottomRight ?? 0.vp)
     }
 
     protected func toCBorderRadiuses(): CBorderRadiuses {
-        return CBorderRadiuses(topLeft, topRight, bottomLeft, bottomRight)
+        return CBorderRadiuses(topLeft ?? 0.vp, topRight ?? 0.vp, bottomLeft ?? 0.vp, bottomRight ?? 0.vp)
     }
 
     protected static func parseFromString(value: String): Option<BorderRadiuses> {
@@ -679,11 +679,11 @@ public class Margin {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp) {
-        this.top = transAppResourceToLength(top)
-        this.right = transAppResourceToLength(right)
-        this.bottom = transAppResourceToLength(bottom)
-        this.left = transAppResourceToLength(left)
+    public init(top!: ?Length = None, right!: ?Length = None, bottom!: ?Length = None, left!: ?Length = None) {
+        this.top = transAppResourceToLength(top ?? 0.vp)
+        this.right = transAppResourceToLength(right ?? 0.vp)
+        this.bottom = transAppResourceToLength(bottom ?? 0.vp)
+        this.left = transAppResourceToLength(left ?? 0.vp)
     }
 
     protected static func parseFromString(value: String): Option<Margin> {
@@ -729,37 +729,37 @@ public class ShadowOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var radius: Float64
+    public var radius: ?Float64
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var shadowType: ShadowType
+    public var shadowType: ?ShadowType
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var color: ResourceColor
+    public var color: ?ResourceColor
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offsetX: Float64
+    public var offsetX: ?Float64
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offsetY: Float64
+    public var offsetY: ?Float64
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fill: Bool
+    public var fill: ?Bool
 
     @!APILevel[
         21,
@@ -767,38 +767,38 @@ public class ShadowOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        radius!: Float64,
-        shadowType!: ShadowType = ShadowType.Color,
-        color!: ResourceColor = Color.Black,
-        offsetX!: Float64 = 0.0,
-        offsetY!: Float64 = 0.0,
-        fill!: Bool = false
+        radius!: ?Float64,
+        shadowType!: ?ShadowType = None,
+        color!: ?ResourceColor = None,
+        offsetX!: ?Float64 = None,
+        offsetY!: ?Float64 = None,
+        fill!: ?Bool = None
     ) {
-        this.radius = radius
-        this.shadowType = shadowType
-        this.color = color
-        this.offsetX = offsetX
-        this.offsetY = offsetY
-        this.fill = fill
+        this.radius = radius ?? throw IllegalArgumentException("The type now is not supported.")
+        this.shadowType = shadowType ?? ShadowType.Color
+        this.color = color ?? Color.Black
+        this.offsetX = offsetX ?? 0.0
+        this.offsetY = offsetY ?? 0.0
+        this.fill = fill ?? false
     }
     protected func toActionSheetShadowNative(): NativeActionSheetShadowOptions {
         return NativeActionSheetShadowOptions(
-            this.radius,
-            Int32(this.shadowType.getValue()),
-            transAppResourceToResourceColor(this.color),
-            this.offsetX,
-            this.offsetY,
-            this.fill
+            this.radius ?? throw IllegalArgumentException("The type now is not supported."),
+            Int32((this.shadowType ?? ShadowType.Color).getValue()),
+            transAppResourceToResourceColor(this.color ?? Color.Black),
+            this.offsetX ?? 0.0,
+            this.offsetY ?? 0.0,
+            this.fill ?? false
         )
     }
     protected func toNative(): NativeTextShadowV2 {
         return NativeTextShadowV2(
-            this.radius,
-            this.offsetX,
-            this.offsetY,
-            transAppResourceToResourceColor(this.color),
-            this.fill,
-            this.shadowType.getValue()
+            this.radius ?? throw IllegalArgumentException("The type now is not supported."),
+            this.offsetX ?? 0.0,
+            this.offsetY ?? 0.0,
+            transAppResourceToResourceColor(this.color ?? Color.Black),
+            this.fill ?? false,
+            (this.shadowType ?? ShadowType.Color).getValue()
         )
     }
 }
@@ -850,12 +850,12 @@ protected func parseLengthFromString(value: String): Option<Length> {
 }
 
 protected func parseAnimateParam(params: AnimateParam): NativeAnimateParam {
-    let duration = NativeOptionInt32(true, params.duration)
-    let tempo = NativeOptionFloat32(true, params.tempo)
-    let delay = NativeOptionInt32(true, params.delay)
-    let iterations = NativeOptionInt32(true, params.iterations)
-    let playMode = NativeOptionInt32(true, params.playMode.getValue())
-    let finishCallbackType = NativeOptionInt32(true, params.finishCallbackType.getValue())
+    let duration = NativeOptionInt32(true, params.duration ?? 1000)
+    let tempo = NativeOptionFloat32(true, params.tempo ?? 1.0)
+    let delay = NativeOptionInt32(true, params.delay ?? 0)
+    let iterations = NativeOptionInt32(true, params.iterations ?? 1)
+    let playMode = NativeOptionInt32(true, (params.playMode ?? PlayMode.Normal).getValue())
+    let finishCallbackType = NativeOptionInt32(true, (params.finishCallbackType ?? FinishCallbackType.Removed).getValue())
     let onFinish = if (let Some(value) <- params.onFinish) {
         NativeOptionCallBack(true, Callback0Param<Unit>(value).getID())
     } else {
@@ -863,24 +863,24 @@ protected func parseAnimateParam(params: AnimateParam): NativeAnimateParam {
     }
 
     let min = if (let Some(value) <- params.expectedFrameRateRange) {
-        NativeOptionInt32(true, value.min)
+        NativeOptionInt32(true, (value.min ?? throw IllegalArgumentException("The type now is not supported.")))
     } else {
         NativeOptionInt32(false, 0)
     }
 
     let max = if (let Some(value) <- params.expectedFrameRateRange) {
-        NativeOptionInt32(true, value.max)
+        NativeOptionInt32(true, (value.max ?? throw IllegalArgumentException("The type now is not supported.")))
     } else {
         NativeOptionInt32(false, 0)
     }
 
     let expected = if (let Some(value) <- params.expectedFrameRateRange) {
-        NativeOptionInt32(true, value.expected)
+        NativeOptionInt32(true, (value.expected ?? throw IllegalArgumentException("The type now is not supported.")))
     } else {
         NativeOptionInt32(false, 0)
     }
 
-    let curveCStrng = unsafe { NativeOptionCString(true, LibC.mallocCString(params.curve.getValue())) }
+    let curveCStrng = unsafe { NativeOptionCString(true, LibC.mallocCString((params.curve ?? Curve.EaseInOut).getValue())) }
 
     return NativeAnimateParam(
         duration,
@@ -913,33 +913,35 @@ public class Offset {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var dx: Length
+    public var dx: ?Length
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var dy: Length
+    public var dy: ?Length
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(dx: Length, dy: Length) {
-        this.dx = transAppResourceToLength(dx)
-        this.dy = transAppResourceToLength(dy)
+    public init(dx: ?Length, dy: ?Length) {
+        let tmpDx = dx ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpDy = dy ?? throw IllegalArgumentException("The type now is not supported.")
+        this.dx = transAppResourceToLength(tmpDx)
+        this.dy = transAppResourceToLength(tmpDy)
     }
 }
 
 protected func parseOffset(offset: Offset): NativeOffset {
     return NativeOffset(
         NativeLength(
-            offset.dx.value,
-            offset.dx.unitType.getValue()
+            (offset.dx ?? throw IllegalArgumentException("The type now is not supported.")).value,
+            (offset.dx ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue()
         ),
         NativeLength(
-            offset.dy.value,
-            offset.dy.unitType.getValue()
+            (offset.dy ?? throw IllegalArgumentException("The type now is not supported.")).value,
+            (offset.dy ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue()
         )
     )
 }
@@ -955,19 +957,19 @@ public class ExpectedFrameRateRange {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var min: Int32
+    public var min: ?Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var max: Int32
+    public var max: ?Int32
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var expected: Int32
+    public var expected: ?Int32
 
     @!APILevel[
         21,
@@ -975,13 +977,13 @@ public class ExpectedFrameRateRange {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        min!: Int32,
-        max!: Int32,
-        expected!: Int32
+        min!: ?Int32,
+        max!: ?Int32,
+        expected!: ?Int32
     ) {
-        this.min = min
-        this.max = max
-        this.expected = expected
+        this.min = min ?? throw IllegalArgumentException("The type now is not supported.")
+        this.max = max ?? throw IllegalArgumentException("The type now is not supported.")
+        this.expected = expected ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -1098,7 +1100,7 @@ public class AlignRuleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var bias: Bias
+    public var bias: ?Bias
 
     /**
     * Defines the constructor of AlignRuleOptions.
@@ -1120,7 +1122,7 @@ public class AlignRuleOptions {
     public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = None,
         middle!: ?HorizontalAlignment = None, top!: ?VerticalAlignment = None,
         bottom!: ?VerticalAlignment = None, center!: ?VerticalAlignment = None,
-        bias!: Bias = Bias()
+        bias!: ?Bias = None
     ) {
         this.left = left
         this.right = right
@@ -1128,7 +1130,7 @@ public class AlignRuleOptions {
         this.top = top
         this.bottom = bottom
         this.center = center
-        this.bias = bias
+        this.bias = bias ?? Bias()
     }
 }
 
@@ -1143,25 +1145,25 @@ public class EdgeStyles {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var top: BorderStyle
+    public var top: ?BorderStyle
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var right: BorderStyle
+    public var right: ?BorderStyle
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var bottom: BorderStyle
+    public var bottom: ?BorderStyle
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var left: BorderStyle
+    public var left: ?BorderStyle
 
     @!APILevel[
         21,
@@ -1169,23 +1171,23 @@ public class EdgeStyles {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        top!: BorderStyle = BorderStyle.Solid,
-        right!: BorderStyle = BorderStyle.Solid,
-        bottom!: BorderStyle = BorderStyle.Solid,
-        left!: BorderStyle = BorderStyle.Solid
+        top!: ?BorderStyle = None,
+        right!: ?BorderStyle = None,
+        bottom!: ?BorderStyle = None,
+        left!: ?BorderStyle = None
     ) {
-        this.top = top
-        this.right = right
-        this.bottom = bottom
-        this.left = left
+        this.top = top ?? BorderStyle.Solid
+        this.right = right ?? BorderStyle.Solid
+        this.bottom = bottom ?? BorderStyle.Solid
+        this.left = left ?? BorderStyle.Solid
     }
 
     protected func toNative(): NativeEdgeStyles {
         return NativeEdgeStyles(
-            top.getValue(),
-            right.getValue(),
-            bottom.getValue(),
-            left.getValue()
+            (top ?? BorderStyle.Solid).getValue(),
+            (right ?? BorderStyle.Solid).getValue(),
+            (bottom ?? BorderStyle.Solid).getValue(),
+            (left ?? BorderStyle.Solid).getValue()
         )
     }
 }
@@ -1218,7 +1220,7 @@ public open class MultiShadowOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var radius: Length = 20.vp
+    public var radius: ?Length
     /**
      * Offset on the x-axis.
      * Unit: vp.
@@ -1231,7 +1233,7 @@ public open class MultiShadowOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offsetX: Length = 5.vp
+    public var offsetX: ?Length
     /**
      * Offset on the y-axis.
      * Unit: vp.
@@ -1244,12 +1246,12 @@ public open class MultiShadowOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offsetY: Length = 5.vp
+    public var offsetY: ?Length
 
-    protected init(radius: Length, offsetX: Length, offsetY: Length) {
-        this.radius = radius
-        this.offsetX = offsetX
-        this.offsetY = offsetY
+    protected init(radius: ?Length, offsetX: ?Length, offsetY: ?Length) {
+        this.radius = radius ?? 20.vp
+        this.offsetX = offsetX ?? 5.vp
+        this.offsetY = offsetY ?? 5.vp
     }
 }
 
@@ -1372,11 +1374,12 @@ public class Font {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?ResourceStr = None, style!: ?FontStyle = None) {
-        this.size = size
-        this.weight = weight
-        this.family = family
-        this.style = style
+    public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?ResourceStr = None,
+        style!: ?FontStyle = None) {
+        this.size = transAppResourceToLength(size ?? 16.fp)
+        this.weight = weight ?? FontWeight.Normal
+        this.family = transResourceStrToString(family ?? "HarmonyOS Sans")
+        this.style = style ?? FontStyle.Normal
     }
 }
 

@@ -19,5 +19,5 @@ import ohos.arkui.component.common.*
 import ohos.base.*
 
 sealed interface LoadingProgressAttribute <: CommonMethod<LoadingProgressAttribute> {
-    func color(value: ResourceColor): LoadingProgressAttribute
+    func color(value: ?ResourceColor): LoadingProgressAttribute
 }

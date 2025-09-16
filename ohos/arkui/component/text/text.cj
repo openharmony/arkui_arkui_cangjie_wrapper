@@ -281,10 +281,13 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(content: ResourceStr, controller!: TextController = TextController(), child!: () -> Unit = { =>}) {
+    public init(content: ?ResourceStr, controller!: ?TextController = None, child!: () -> Unit = { =>}) {
+        let tmpContent = content ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpController = controller ?? TextController()
+        
         unsafe {
-            try (unsafeContent = LibC.mallocCString(transResourceStrToString(content)).asResource()) {
-                FfiOHOSAceFrameworkTextCreateWithController(unsafeContent.value, controller.getID())
+            try (unsafeContent = LibC.mallocCString(transResourceStrToString(tmpContent)).asResource()) {
+                FfiOHOSAceFrameworkTextCreateWithController(unsafeContent.value, tmpController.getID())
             }
         }
         this.child = child
@@ -300,9 +303,9 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(controller!: TextController = TextController(), child!: () -> Unit) {
-        this("", controller: controller, child: child)
-    }
+    public init(controller!: ?TextController = None, child!: () -> Unit) {
+        this("", controller: controller ?? TextController(), child: child)	
+    }	
 
     /**
      * Called when writing text.
@@ -314,8 +317,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(controller!: TextController = TextController()) {
-        this("", controller: controller)
+    public init(controller!: ?TextController = None) {
+        this("", controller: controller ?? TextController())
     }
 
     protected override func widthInner(value: Length): This {
@@ -346,8 +349,9 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lineSpacing(value: Length): This {
-        var v = transAppResourceToLength(value)
+    public func lineSpacing(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextSetLineSpacing(v.value, v.unitType.getValue())
         }
@@ -366,8 +370,9 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontSize(value: Length): This {
-        var v = transAppResourceToLength(value)
+    public func fontSize(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextSetFontSize(v.value, getLengthUnitOrFp(v).getValue())
         }
@@ -386,8 +391,9 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func maxFontSize(value: Length): This {
-        var v = transAppResourceToLength(value)
+    public func maxFontSize(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextSetMaxFontSize(v.value, v.unitType.getValue())
         }
@@ -406,8 +412,9 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func minFontSize(value: Length): This {
-        var v = transAppResourceToLength(value)
+    public func minFontSize(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextSetMinFontSize(v.value, v.unitType.getValue())
         }
@@ -426,9 +433,10 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontColor(value: ResourceColor): This {
+    public func fontColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextSetFontColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkTextSetFontColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -445,9 +453,10 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontStyle(value: FontStyle): This {
+    public func fontStyle(value: ?FontStyle): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextSetFontStyle(value.getValue())
+            FfiOHOSAceFrameworkTextSetFontStyle(tmpValue.getValue())
         }
         this
     }
@@ -464,9 +473,10 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontWeight(value: FontWeight): This {
+    public func fontWeight(value: ?FontWeight): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            var unsafeFontWeight = LibC.mallocCString(value.getValue())
+            var unsafeFontWeight = LibC.mallocCString(tmpValue.getValue())
             FfiOHOSAceFrameworkTextSetFontWeight(unsafeFontWeight)
             unsafeFontWeight.free()
         }
@@ -485,9 +495,10 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontFamily(value: ResourceStr): This {
+    public func fontFamily(value: ?ResourceStr): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (unsafeFontFamily = LibC.mallocCString(transResourceStrToString(value)).asResource()) {
+            try (unsafeFontFamily = LibC.mallocCString(transResourceStrToString(tmpValue)).asResource()) {
                 FfiOHOSAceFrameworkTextSetFontFamily(unsafeFontFamily.value)
             }
         }
@@ -506,9 +517,10 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textAlign(value: TextAlign): This {
+    public func textAlign(value: ?TextAlign): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextSetTextAlign(value.getValue())
+            FfiOHOSAceFrameworkTextSetTextAlign(tmpValue.getValue())
         }
         this
     }
@@ -525,9 +537,10 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textOverflow(value: TextOverflow): This {
+    public func textOverflow(value: ?TextOverflow): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextSetTextOverflowNew(value.getValue())
+            FfiOHOSAceFrameworkTextSetTextOverflowNew(tmpValue.getValue())
         }
         this
     }
@@ -546,9 +559,10 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func maxLines(value: Int32): This {
+    public func maxLines(value: ?Int32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextSetMaxLines(value)
+            FfiOHOSAceFrameworkTextSetMaxLines(tmpValue)
         }
         this
     }
@@ -568,8 +582,9 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lineHeight(value: Length): This {
-        var v = transAppResourceToLength(value)
+    public func lineHeight(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextSetLineHeight(v.value, v.unitType.getValue())
         }
@@ -590,11 +605,15 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func decoration(decorationType!: TextDecorationType, color!: ResourceColor,
-        decorationStyle!: TextDecorationStyle = TextDecorationStyle.Solid): This {
+    public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor,
+        decorationStyle!: ?TextDecorationStyle = None): This {
+        let tmpDecorationType = decorationType ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpDecorationStyle = decorationStyle ?? TextDecorationStyle.Solid
+        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
+        
         unsafe {
-            FfiOHOSAceFrameworkTextSetDecorationNew(decorationType.getValue(), transAppResourceToResourceColor(color),
-                decorationStyle.getValue())
+            FfiOHOSAceFrameworkTextSetDecorationNew(tmpDecorationType.getValue(), transAppResourceToResourceColor(tmpColor),
+                tmpDecorationStyle.getValue())
         }
         this
     }
@@ -611,8 +630,9 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func baselineOffset(value: Length): This {
-        var v = transAppResourceToLength(value)
+    public func baselineOffset(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextSetBaselineOffset(v.value, v.unitType.getValue())
         }
@@ -631,9 +651,10 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textCase(value: TextCase): This {
+    public func textCase(value: ?TextCase): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextSetTextCase(value.getValue())
+            FfiOHOSAceFrameworkTextSetTextCase(tmpValue.getValue())
         }
         this
     }

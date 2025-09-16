@@ -377,7 +377,7 @@ public class OnPageBeginEvent {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public var url: String
+    public var url: ?String
     /**
     * Defines OnPageBeginEvent Component instance.
     * 
@@ -390,8 +390,8 @@ public class OnPageBeginEvent {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public init(url: String) {
-        this.url = url
+    public init(url: ?String) {
+        this.url = url ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 /**
@@ -415,7 +415,7 @@ public class OnPageEndEvent {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public var url: String
+    public var url: ?String
     /**
     * Defines OnPageEndEvent Component instance.
     * 
@@ -428,8 +428,8 @@ public class OnPageEndEvent {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public init(url: String) {
-        this.url = url
+    public init(url: ?String) {
+        this.url = url ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 /**
@@ -453,7 +453,7 @@ public class OnLoadInterceptEvent {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var data: WebResourceRequest
+    public var data: ?WebResourceRequest
     /**
     * Defines OnLoadInterceptEvent Component instance.
     * 
@@ -466,8 +466,8 @@ public class OnLoadInterceptEvent {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(data: WebResourceRequest) {
-        this.data = data
+    public init(data: ?WebResourceRequest) {
+        this.data = data ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 /**
@@ -491,7 +491,7 @@ public class Header {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public var headerKey: String
+    public var headerKey: ?String
     /**
     * Gets the value of the request/response header.
     *
@@ -502,7 +502,7 @@ public class Header {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public var headerValue: String
+    public var headerValue: ?String
 
     init(
         headerKey: String,
@@ -697,7 +697,7 @@ public class OnPermissionRequestEvent {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public var request: PermissionRequest
+    public var request: ?PermissionRequest
     /**
     * Defines OnPermissionRequestEvent Component instance.
     * 
@@ -888,13 +888,15 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public init(
-        src!: ResourceStr,
-        controller!: WebviewController
+        src!: ?ResourceStr,
+        controller!: ?WebviewController
     ) {
+        let tmpSrc = src ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpController = controller ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkWebSetCallback(FfiOHOSAbilityAccessCtrlRequestPermissionsFromUserCallBack)
-            try (srcStr = LibC.mallocCString(transResourceMediaToString(src)).asResource()) {
-                FfiOHOSAceFrameworkWebCreate(srcStr.value, controller.getID(), WebType.Surface.getValue(), false)
+            try (srcStr = LibC.mallocCString(transResourceMediaToString(tmpSrc)).asResource()) {
+                FfiOHOSAceFrameworkWebCreate(srcStr.value, tmpController.getID(), WebType.Surface.getValue(), false)
             }
         }
     }
@@ -910,9 +912,10 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func fileAccess(fileAccess: Bool): This {
+    public func fileAccess(fileAccess: ?Bool): This {
+        let tmpFileAccess = fileAccess ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkWebFileAccessEnabled(fileAccess)
+            FfiOHOSAceFrameworkWebFileAccessEnabled(tmpFileAccess)
         }
         this
     }
@@ -928,9 +931,10 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func domStorageAccess(domStorageAccess: Bool): This {
+    public func domStorageAccess(domStorageAccess: ?Bool): This {
+        let tmpDomStorageAccess = domStorageAccess ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkWebDomStorageAccessEnabled(domStorageAccess)
+            FfiOHOSAceFrameworkWebDomStorageAccessEnabled(tmpDomStorageAccess)
         }
         this
     }
@@ -946,9 +950,10 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func imageAccess(imageAccess: Bool): This {
+    public func imageAccess(imageAccess: ?Bool): This {
+        let tmpImageAccess = imageAccess ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkWebImageAccessEnabled(imageAccess)
+            FfiOHOSAceFrameworkWebImageAccessEnabled(tmpImageAccess)
         }
         this
     }
@@ -964,9 +969,10 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func onlineImageAccess(onlineImageAccess: Bool): This {
+    public func onlineImageAccess(onlineImageAccess: ?Bool): This {
+        let tmpOnlineImageAccess = onlineImageAccess ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkWebOnlineImageAccessEnabled(onlineImageAccess)
+            FfiOHOSAceFrameworkWebOnlineImageAccessEnabled(tmpOnlineImageAccess)
         }
         this
     }
@@ -983,9 +989,10 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func mixedMode(mixedMode: MixedMode): This {
+    public func mixedMode(mixedMode: ?MixedMode): This {
+        let tmpMixedMode = mixedMode ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkWebMixedMode(mixedMode.getValue())
+            FfiOHOSAceFrameworkWebMixedMode(tmpMixedMode.getValue())
         }
         this
     }
@@ -1001,9 +1008,10 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func zoomAccess(zoomAccess: Bool): This {
+    public func zoomAccess(zoomAccess: ?Bool): This {
+        let tmpZoomAccess = zoomAccess ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkWebZoomAccessEnabled(zoomAccess)
+            FfiOHOSAceFrameworkWebZoomAccessEnabled(tmpZoomAccess)
         }
         this
     }
@@ -1020,9 +1028,10 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func geolocationAccess(geolocationAccess: Bool): This {
+    public func geolocationAccess(geolocationAccess: ?Bool): This {
+        let tmpGeolocationAccess = geolocationAccess ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkWebGeolocationAccessEnabled(geolocationAccess)
+            FfiOHOSAceFrameworkWebGeolocationAccessEnabled(tmpGeolocationAccess)
         }
         this
     }
@@ -1038,9 +1047,10 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func verticalScrollBarAccess(verticalScrollBar: Bool): This {
+    public func verticalScrollBarAccess(verticalScrollBar: ?Bool): This {
+        let tmpVerticalScrollBar = verticalScrollBar ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkWebVerticalScrollBarAccessEnabled(verticalScrollBar)
+            FfiOHOSAceFrameworkWebVerticalScrollBarAccessEnabled(tmpVerticalScrollBar)
         }
         this
     }
@@ -1057,11 +1067,13 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func nestedScroll(
-        scrollForward!: NestedScrollMode,
-        scrollBackward!: NestedScrollMode
+        scrollForward!: ?NestedScrollMode,
+        scrollBackward!: ?NestedScrollMode
     ): This {
+        let tmpScrollForward = scrollForward ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpScrollBackward = scrollBackward ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkNestedScroll(scrollForward.getValue(), scrollBackward.getValue())
+            FfiOHOSAceFrameworkNestedScroll(tmpScrollForward.getValue(), tmpScrollBackward.getValue())
         }
         this
     }
@@ -1077,7 +1089,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func onLoadIntercept(callback: Callback<OnLoadInterceptEvent, Bool>): This {
+    public func onLoadIntercept(callback: ?Callback<OnLoadInterceptEvent, Bool>): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             let wrapper = {
                 ffiRequest: FfiWebResourceRequest =>
@@ -1089,7 +1102,7 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
                     ffiRequest.requestMethod.toString(),
                     ffiRequest.ffiHeaders.read()
                 )
-                return callback(OnLoadInterceptEvent(event))
+                return tmpCallback(OnLoadInterceptEvent(event))
             }
             let lambdaData = CallbackCJWebResourceRequest(wrapper)
             FfiOHOSAceFrameworkWebOnLoadIntercept(lambdaData.getID())
@@ -1108,11 +1121,12 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func onPageBegin(callback: Callback<OnPageBeginEvent, Unit>): This {
+    public func onPageBegin(callback: ?Callback<OnPageBeginEvent, Unit>): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
             url: CString =>
             let event = OnPageBeginEvent(url.toString())
-            callback(event)
+            tmpCallback(event)
         }
 
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
@@ -1134,11 +1148,12 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func onPageEnd(callback: Callback<OnPageEndEvent, Unit>): This {
+    public func onPageEnd(callback: ?Callback<OnPageEndEvent, Unit>): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
             url: CString =>
             let event = OnPageEndEvent(url.toString())
-            callback(event)
+            tmpCallback(event)
         }
 
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
@@ -1163,21 +1178,25 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func javaScriptProxy(funcList!: Array<(String) -> String>, name!: String, methodList!: Array<String>,
-        controller!: WebviewController): This {
+    public func javaScriptProxy(funcList!: ?Array<(String) -> String>, name!: ?String, methodList!: ?Array<String>,
+        controller!: ?WebviewController): This {
+        let tmpFuncList = funcList ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpName = name ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpMethodList = methodList ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpController = controller ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try(cname = LibC.mallocCString(name).asResource()) {
-                let vecFfi = FFIVectorString(methodList.size)
-                for (i in 0..methodList.size) {
-                    vecFfi.setElement(i, methodList[i])
+            try(cname = LibC.mallocCString(tmpName).asResource()) {
+                let vecFfi = FFIVectorString(tmpMethodList.size)
+                for (i in 0..tmpMethodList.size) {
+                    vecFfi.setElement(i, tmpMethodList[i])
                 }
 
-                let funcVec = FFIVectorInt64(funcList.size)
-                for (i in 0..funcList.size) {
+                let funcVec = FFIVectorInt64(tmpFuncList.size)
+                for (i in 0..tmpFuncList.size) {
                     let wrapper = {
                         p: CString =>
                         let data = p.toString()
-                        let str = funcList[i](data)
+                        let str = tmpFuncList[i](data)
                         LibC.free(p)
                         let cstr = LibC.mallocCString(str)
                         return cstr
@@ -1187,7 +1206,7 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
                 }
 
                 FfiOHOSAceFrameworkWebJavaScriptProxy(funcVec.getNativeHandle(), cname.value, 
-                    vecFfi.getNativeHandle(), controller.getID())
+                    vecFfi.getNativeHandle(), tmpController.getID())
                 vecFfi.free()
                 funcVec.free()
             }
@@ -1216,9 +1235,10 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func darkMode(mode: WebDarkMode): This {
+    public func darkMode(mode: ?WebDarkMode): This {
+        let tmpMode = mode ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkWebDarkMode(mode.getValue())
+            FfiOHOSAceFrameworkWebDarkMode(tmpMode.getValue())
         }
         this
     }
@@ -1235,9 +1255,10 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public func forceDarkAccess(access: Bool): This {
+    public func forceDarkAccess(access: ?Bool): This {
+        let tmpAccess = access ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkWebForceDarkAccess(access)
+            FfiOHOSAceFrameworkWebForceDarkAccess(tmpAccess)
         }
         this
     }

@@ -201,9 +201,10 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func caretPosition(value: Int32): Unit {
+    public func caretPosition(value: ?Int32): Unit {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSearchCaretPosition(this.getID(), value)
+            FfiOHOSAceFrameworkSearchCaretPosition(this.getID(), tmpValue)
         }
     }
 }
@@ -234,18 +235,18 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        value!: ResourceStr = "",
-        placeholder!: ResourceStr = "",
-        icon!: Option<AppResource> = Option.None,
-        controller!: Option<SearchController> = Option.None
+        value!: ?ResourceStr = None,
+        placeholder!: ?ResourceStr = None,
+        icon!: Option<AppResource> = None,
+        controller!: Option<SearchController> = None
     ) {
         var iconUrl: String = if (let Some(v) <- icon) {
             getResourceMedia(v)
         } else {
             ""
         }
-        var valueStr = transResourceStrToString(value)
-        var placeholderStr = transResourceStrToString(placeholder)
+        var valueStr = transResourceStrToString(value ?? "")
+        var placeholderStr = transResourceStrToString(placeholder ?? "")
         unsafe {
             var unsafeIconUrl: ?CString = None
             try (unsafeValue = LibC.mallocCString(valueStr).asResource(), unsafePlaceholder = LibC
@@ -276,8 +277,9 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func searchButton(value: ResourceStr): This {
-        var valueStr = transResourceStrToString(value)
+    public func searchButton(value: ?ResourceStr): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var valueStr = transResourceStrToString(tmpValue)
         unsafe {
             try (unsafeValue = LibC.mallocCString(valueStr).asResource()) {
                 FfiOHOSAceFrameworkSearchSetSearchButton(unsafeValue.value)
@@ -298,9 +300,10 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func placeholderColor(value: ResourceColor): This {
+    public func placeholderColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSearchSetPlaceholderColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSearchSetPlaceholderColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -321,16 +324,18 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderFont(
-        size!: Length = 16.fp,
-        weight!: FontWeight = FontWeight.W400,
-        style!: FontStyle = FontStyle.Normal,
-        family!: ResourceStr = ""
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        style!: ?FontStyle = None,
+        family!: ?ResourceStr = None
     ): This {
-        var sizeValue = transAppResourceToLength(size)
-        var familyStr = transResourceStrToString(family)
+        let tmpWeight = weight ?? FontWeight.W400
+        let tmpStyle = style ?? FontStyle.Normal
+        var sizeValue = transAppResourceToLength(size ?? 16.fp)
+        var familyStr = transResourceStrToString(family ?? "")
         unsafe {
             try (unsafeFontFamily = LibC.mallocCString(familyStr).asResource(), unsafeFontWeight = LibC
-                .mallocCString(weight.getValue())
+                .mallocCString(tmpWeight.getValue())
                 .asResource()) {
                 var unit = sizeValue.unitType.getValue()
                 var value = if (unit == LENGTH_PERCENT) {
@@ -343,7 +348,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
                     value,
                     unit,
                     unsafeFontWeight.value,
-                    style.getValue(),
+                    tmpStyle.getValue(),
                     unsafeFontFamily.value
                 )
             }
@@ -367,16 +372,18 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textFont(
-        size!: Length = 16.fp,
-        weight!: FontWeight = FontWeight.W400,
-        style!: FontStyle = FontStyle.Normal,
-        family!: ResourceStr = ""
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        style!: ?FontStyle = None,
+        family!: ?ResourceStr = None
     ): This {
-        var sizeValue = transAppResourceToLength(size)
-        var familyStr = transResourceStrToString(family)
+        let tmpWeight = weight ?? FontWeight.W400
+        let tmpStyle = style ?? FontStyle.Normal
+        var sizeValue = transAppResourceToLength(size ?? 16.fp)
+        var familyStr = transResourceStrToString(family ?? "")
         unsafe {
             try (unsafeFontFamily = LibC.mallocCString(familyStr).asResource(), unsafeFontWeight = LibC
-                .mallocCString(weight.getValue())
+                .mallocCString(tmpWeight.getValue())
                 .asResource()) {
                 var unit = sizeValue.unitType.getValue()
                 var value = if (unit == LENGTH_PERCENT) {
@@ -389,7 +396,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
                     value,
                     unit,
                     unsafeFontWeight.value,
-                    style.getValue(),
+                    tmpStyle.getValue(),
                     unsafeFontFamily.value
                 )
             }
@@ -412,9 +419,10 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func copyOption(value: CopyOptions): This {
+    public func copyOption(value: ?CopyOptions): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSearchSetCopyOption(value.getValue())
+            FfiOHOSAceFrameworkSearchSetCopyOption(tmpValue.getValue())
         }
         this
     }
@@ -431,9 +439,10 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onSubmit(callback: (String) -> Unit): This {
+    public func onSubmit(callback: ?(String) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            value: CString => callback(value.toString())
+            value: CString => tmpCallback(value.toString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -456,9 +465,10 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (String) -> Unit): This {
+    public func onChange(callback: ?(String) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            value: CString => callback(value.toString())
+            value: CString => tmpCallback(value.toString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -479,9 +489,10 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onCopy(callback: (String) -> Unit): This {
+    public func onCopy(callback: ?(String) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            value: CString => callback(value.toString())
+            value: CString => tmpCallback(value.toString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -502,9 +513,10 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onCut(callback: (String) -> Unit): This {
+    public func onCut(callback: ?(String) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            value: CString => callback(value.toString())
+            value: CString => tmpCallback(value.toString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -525,9 +537,10 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onPaste(callback: (String) -> Unit): This {
+    public func onPaste(callback: ?(String) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            value: CString => callback(value.toString())
+            value: CString => tmpCallback(value.toString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {

@@ -58,9 +58,9 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(index!: UInt32 = 0, child!: () -> Unit = {=>}) {
+    public init(index!: ?UInt32 = None, child!: () -> Unit = {=>}) {
         unsafe {
-            FfiOHOSAceFrameworkStepperCreate(index)
+            FfiOHOSAceFrameworkStepperCreate(index ?? 0)
         }
         this.child = child
     }
@@ -77,8 +77,9 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onFinish(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback);
+    public func onFinish(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = Callback0Param<Unit>(tmpCallback);
         unsafe {
             FfiOHOSAceFrameworkStepperOnFinish(lambdaData.getID())
         }
@@ -97,8 +98,9 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onSkip(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback);
+    public func onSkip(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = Callback0Param<Unit>(tmpCallback);
         unsafe {
             FfiOHOSAceFrameworkStepperOnSkip(lambdaData.getID())
         }
@@ -117,9 +119,10 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (UInt32, UInt32) -> Unit): This {
+    public func onChange(callback: ?(UInt32, UInt32) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            prevIndex: Int32, index: Int32 => callback(UInt32(prevIndex), UInt32(index))
+            prevIndex: Int32, index: Int32 => tmpCallback(UInt32(prevIndex), UInt32(index))
         }
         let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper)
         unsafe {
@@ -140,9 +143,10 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onNext(callback: (UInt32, UInt32) -> Unit): This {
+    public func onNext(callback: ?(UInt32, UInt32) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            index: Int32, pendingIndex: Int32 => callback(UInt32(index), UInt32(pendingIndex))
+            index: Int32, pendingIndex: Int32 => tmpCallback(UInt32(index), UInt32(pendingIndex))
         }
         let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper)
         unsafe {
@@ -163,9 +167,10 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onPrevious(callback: (UInt32, UInt32) -> Unit): This {
+    public func onPrevious(callback: ?(UInt32, UInt32) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            index: Int32, pendingIndex: Int32 => callback(UInt32(index), UInt32(pendingIndex))
+            index: Int32, pendingIndex: Int32 => tmpCallback(UInt32(index), UInt32(pendingIndex))
         }
         let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper)
         unsafe {

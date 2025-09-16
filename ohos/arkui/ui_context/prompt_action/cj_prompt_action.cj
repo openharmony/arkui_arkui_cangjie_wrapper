@@ -1572,56 +1572,56 @@ public class ShowToastOptions {
 
 func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadowOptions {
     return NativeShadowOptions(
-        shadowOptions.radius,
-        shadowOptions.shadowType.getValue(),
-        transAppResourceToResourceColor(shadowOptions.color),
-        shadowOptions.offsetX,
-        shadowOptions.offsetY,
-        shadowOptions.fill
+        shadowOptions.radius ?? throw IllegalArgumentException("The type now is not supported."),
+        (shadowOptions.shadowType ?? ShadowType.Color).getValue(),
+        transAppResourceToResourceColor(shadowOptions.color ?? Color.Black),
+        shadowOptions.offsetX ?? 0.0,
+        shadowOptions.offsetY ?? 0.0,
+        shadowOptions.fill ?? false
     )
 }
 
 func parseBorderRadiuses(borderRadiuses: BorderRadiuses): CBorderRadiuses {
     return CBorderRadiuses(
-        borderRadiuses.topLeft,
-        borderRadiuses.topRight,
-        borderRadiuses.bottomLeft,
-        borderRadiuses.bottomRight
+        borderRadiuses.topLeft ?? 0.vp,
+        borderRadiuses.topRight ?? 0.vp,
+        borderRadiuses.bottomLeft ?? 0.vp,
+        borderRadiuses.bottomRight ?? 0.vp
     )
 }
 
 func parseEdgeWidths(edgeWidths: EdgeWidths): CJEdge {
     return CJEdge(
-        edgeWidths.top,
-        edgeWidths.right,
-        edgeWidths.bottom,
-        edgeWidths.left
+        edgeWidths.top ?? 0.vp,
+        edgeWidths.right ?? 0.vp,
+        edgeWidths.bottom ?? 0.vp,
+        edgeWidths.left ?? 0.vp
     )
 }
 
 func parseOffset(offset: Offset): NativeOffset {
     return NativeOffset(
         NativeLength(
-            offset.dx.value,
-            offset.dx.unitType.getValue()
+            (offset.dx ?? throw IllegalArgumentException("The type now is not supported.")).value,
+            (offset.dx ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue()
         ),
         NativeLength(
-            offset.dy.value,
-            offset.dy.unitType.getValue()
+            (offset.dy ?? throw IllegalArgumentException("The type now is not supported.")).value,
+            (offset.dy ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue()
         )
     )
 }
 
 func parseRectangle(rectangle: Rectangle): NativeRectangle {
     return NativeRectangle(
-        rectangle.x.value,
-        rectangle.x.unitType.getValue(),
-        rectangle.y.value,
-        rectangle.y.unitType.getValue(),
-        rectangle.width.value,
-        rectangle.width.unitType.getValue(),
-        rectangle.height.value,
-        rectangle.height.unitType.getValue()
+        (rectangle.x ?? 0.vp).value,
+        (rectangle.x ?? 0.vp).unitType.getValue(),
+        (rectangle.y ?? 0.vp).value,
+        (rectangle.y ?? 0.vp).unitType.getValue(),
+        (rectangle.width ?? 100.percent).value,
+        (rectangle.width ?? 100.percent).unitType.getValue(),
+        (rectangle.height ?? 100.percent).value,
+        (rectangle.height ?? 100.percent).unitType.getValue()
     )
 }
 

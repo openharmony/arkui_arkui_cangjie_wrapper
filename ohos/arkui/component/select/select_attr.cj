@@ -20,56 +20,56 @@ import ohos.base.*
 
 sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
 
-    func selected(value: Int32): SelectAttribute
+    func selected(value: ?Int32): SelectAttribute
 
-    func value(value: ResourceStr): SelectAttribute
+    func value(value: ?ResourceStr): SelectAttribute
 
     func font(
-        style!: FontStyle,
-        weight!: FontWeight,
-        size!: Length,
-        family!: ResourceStr
+        style!: ?FontStyle,
+        weight!: ?FontWeight,
+        size!: ?Length,
+        family!: ?ResourceStr
     ): SelectAttribute
 
-    func fontColor(value: ResourceColor): SelectAttribute
+    func fontColor(value: ?ResourceColor): SelectAttribute
 
-    func selectedOptionBgColor(value: ResourceColor): SelectAttribute
+    func selectedOptionBgColor(value: ?ResourceColor): SelectAttribute
 
     public func selectedOptionFont(
-        style!: FontStyle,
-        weight!: FontWeight,
-        size!: Length,
-        family!: String
+        style!: ?FontStyle,
+        weight!: ?FontWeight,
+        size!: ?Length,
+        family!: ?String
     ): SelectAttribute
 
-    func selectedOptionFontColor(value: ResourceColor): SelectAttribute
+    func selectedOptionFontColor(value: ?ResourceColor): SelectAttribute
 
-    func optionBgColor(value: ResourceColor): SelectAttribute
+    func optionBgColor(value: ?ResourceColor): SelectAttribute
 
     func optionFont(
-        style!: FontStyle,
-        weight!: FontWeight,
-        size!: Length,
-        family!: ResourceStr
+        style!: ?FontStyle,
+        weight!: ?FontWeight,
+        size!: ?Length,
+        family!: ?ResourceStr
     ): SelectAttribute
 
-    func optionFontColor(value: ResourceColor): SelectAttribute
+    func optionFontColor(value: ?ResourceColor): SelectAttribute
 
-    func space(value: Length): SelectAttribute
+    func space(value: ?Length): SelectAttribute
 
-    func arrowPosition(value: ArrowPosition): SelectAttribute
+    func arrowPosition(value: ?ArrowPosition): SelectAttribute
 
-    func menuAlign(alignType!: MenuAlignType, offset!: Offset): SelectAttribute
+    func menuAlign(alignType!: ?MenuAlignType, offset!: ?Offset): SelectAttribute
 
-    func optionWidth(value: OptionWidthMode): SelectAttribute
+    func optionWidth(value: ?OptionWidthMode): SelectAttribute
 
-    func optionWidth(value: Length): SelectAttribute
+    func optionWidth(value: ?Length): SelectAttribute
 
-    func optionHeight(value: Length): SelectAttribute
+    func optionHeight(value: ?Length): SelectAttribute
 
-    func menuBackgroundColor(value: ResourceColor): SelectAttribute
+    func menuBackgroundColor(value: ?ResourceColor): SelectAttribute
 
-    func menuBackgroundBlurStyle(value: BlurStyle): SelectAttribute
+    func menuBackgroundBlurStyle(value: ?BlurStyle): SelectAttribute
 
-    func onSelect(callback: OnSelectCallback): SelectAttribute
+    func onSelect(callback: ?OnSelectCallback): SelectAttribute
 }

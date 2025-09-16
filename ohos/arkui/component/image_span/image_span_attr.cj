@@ -22,13 +22,13 @@ import ohos.resource.*
 import ohos.multimedia.image.PixelMap
 
 sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
-    func verticalAlign(value: ImageSpanAlignment): ImageSpanAttribute
+    func verticalAlign(value: ?ImageSpanAlignment): ImageSpanAttribute
 
-    func objectFit(value: ImageFit): ImageSpanAttribute
+    func objectFit(value: ?ImageFit): ImageSpanAttribute
 
-    func colorFilter(filter: ColorFilter): ImageSpanAttribute
+    func colorFilter(filter: ?ColorFilter): ImageSpanAttribute
 
-    func onComplete(callback: ImageCompleteCallback): ImageSpanAttribute
+    func onComplete(callback: ?ImageCompleteCallback): ImageSpanAttribute
 
-    func onError(callback: ImageErrorCallback): ImageSpanAttribute
+    func onError(callback: ?ImageErrorCallback): ImageSpanAttribute
 }

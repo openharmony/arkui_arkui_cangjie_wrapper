@@ -52,13 +52,17 @@ public class ScrollBar <: CommonMethodComponent<ScrollBarAttribute> & ScrollBarA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        scroller!: Scroller,
-        direction!: ScrollBarDirection = ScrollBarDirection.Vertical,
-        state!: BarState  = BarState.Auto,
-        child!: () -> Unit = { => }
+        scroller!: ?Scroller,
+        direction!: ?ScrollBarDirection = None,
+        state!: ?BarState = None,
+        child!: () -> Unit
     ){
+        let tmpScroller = scroller ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpDirection = direction ?? ScrollBarDirection.Vertical
+        let tmpState = state ?? BarState.Auto
+        
         unsafe {
-            FfiOHOSAceFrameworkScrollBarCreate(scroller.getID(), direction.getValue(), state.getValue())
+            FfiOHOSAceFrameworkScrollBarCreate(tmpScroller.getID(), tmpDirection.getValue(), tmpState.getValue())
         }
         this.child = child
     }

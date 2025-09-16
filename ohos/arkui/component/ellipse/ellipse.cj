@@ -47,9 +47,9 @@ public class Ellipse <: CommonShapeMethodComponent<EllipseAttribute> & EllipseAt
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
+    public init(width!: ?Length = None, height!: ?Length = None) {
+        var width_ = transAppResourceToLength(width ?? 0.vp)
+        var height_ = transAppResourceToLength(height ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkEllipseCreate(width_.value, width_.unitType.getValue(), height_.value,
                 height_.unitType.getValue())

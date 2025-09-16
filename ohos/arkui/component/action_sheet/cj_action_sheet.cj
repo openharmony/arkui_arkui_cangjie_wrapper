@@ -158,7 +158,7 @@ public class SheetInfo {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var title: ResourceStr
+    public var title: ?ResourceStr
     /**
      * Callback when the sheet is selected.
      * Anonymous Object Rectification.
@@ -171,7 +171,7 @@ public class SheetInfo {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var action: VoidCallback
+    public var action: ?VoidCallback
     /**
      * Sheet icon. By default, no icon is displayed.
      *
@@ -199,17 +199,17 @@ public class SheetInfo {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        title!: ResourceStr,
-        action!: VoidCallback,
+        title!: ?ResourceStr,
+        action!: ?VoidCallback,
         icon!: ?ResourceStr = None
     ) {
-        this.title = title
-        this.action = action
+        this.title = title ?? throw IllegalArgumentException("The type now is not supported.")
+        this.action = action ?? throw IllegalArgumentException("The type now is not supported.")
         this.icon = icon
     }
 
     func toNative(): NativeSheetInfo {
-        let cTitle: CString = unsafe { LibC.mallocCString(transResourceStrToString(title)) }
+        let cTitle: CString = unsafe { LibC.mallocCString(transResourceStrToString(title ?? throw IllegalArgumentException("The type now is not supported."))) }
         let cIcon = match (icon) {
             case Some(value) => unsafe { LibC.mallocCString(transResourceMediaToString(value)) }
             case None => unsafe { LibC.mallocCString("") }
@@ -217,7 +217,7 @@ public class SheetInfo {
         var ret = NativeSheetInfo(
             cTitle,
             cIcon,
-            Callback0Param<Unit>(action).getID()
+            Callback0Param<Unit>(action ?? throw IllegalArgumentException("The type now is not supported.")).getID()
         )
         ret
     }
@@ -245,7 +245,7 @@ public class ActionSheetButtonOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var value: ResourceStr
+    public var value: ?ResourceStr
     /**
      * Callback invoked when the button is selected.
      *
@@ -257,7 +257,7 @@ public class ActionSheetButtonOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var action: VoidCallback
+    public var action: ?VoidCallback
     /**
      * Whether to respond when the button is clicked. The value true means to respond when the button is clicked,
      * and false means the opposite.
@@ -271,7 +271,7 @@ public class ActionSheetButtonOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var enabled: Bool
+    public var enabled: ?Bool
     /**
      * Whether the button is the default focus. The value true means that the button is the default focus,
      * and false means the opposite.
@@ -285,7 +285,7 @@ public class ActionSheetButtonOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var defaultFocus: Bool
+    public var defaultFocus: ?Bool
     /**
      * Button style.
      *
@@ -298,7 +298,7 @@ public class ActionSheetButtonOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var style: DialogButtonStyle
+    public var style: ?DialogButtonStyle
     /**
      * Constructor of ActionSheetButtonOptions
      *
@@ -316,27 +316,27 @@ public class ActionSheetButtonOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        value!: ResourceStr,
-        action!: VoidCallback,
-        enabled!: Bool = true,
-        defaultFocus!: Bool = false,
-        style!: DialogButtonStyle = DialogButtonStyle.Default
+        value!: ?ResourceStr,
+        action!: ?VoidCallback,
+        enabled!: ?Bool = None,
+        defaultFocus!: ?Bool = None,
+        style!: ?DialogButtonStyle = None
     ) {
-        this.value = value
-        this.action = action
-        this.enabled = enabled
-        this.defaultFocus = defaultFocus
-        this.style = style
+        this.value = value ?? throw IllegalArgumentException("The type now is not supported.")
+        this.action = action ?? throw IllegalArgumentException("The type now is not supported.")
+        this.enabled = enabled ?? true
+        this.defaultFocus = defaultFocus ?? false
+        this.style = style ?? DialogButtonStyle.Default
     }
 
     func toNative(): NativeConfirm {
-        let cValue: CString = unsafe { LibC.mallocCString(transResourceStrToString(value)) }
+        let cValue: CString = unsafe { LibC.mallocCString(transResourceStrToString(value ?? throw IllegalArgumentException("The type now is not supported."))) }
         var ret = NativeConfirm(
             cValue,
-            Callback0Param<Unit>(action).getID(),
-            enabled,
-            defaultFocus,
-            style.getValue()
+            Callback0Param<Unit>(action ?? throw IllegalArgumentException("The type now is not supported.")).getID(),
+            enabled ?? true,
+            defaultFocus ?? false,
+            (style ?? DialogButtonStyle.Default).getValue()
         )
         ret
     }
@@ -365,7 +365,7 @@ public class DismissDialogAction {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var reason: DismissReason
+    public var reason: ?DismissReason
     /**
      * Constructor of DismissDialogAction
 
@@ -378,8 +378,8 @@ public class DismissDialogAction {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(reason: DismissReason) {
-        this.reason = reason
+    public init(reason: ?DismissReason) {
+        this.reason = reason ?? throw IllegalArgumentException("The type now is not supported.")
     }
     /**
      * Defines dialog dismiss function.
@@ -425,7 +425,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var title: ResourceStr
+    public var title: ?ResourceStr
     /**
      * Content of the dialog box.
      *
@@ -437,7 +437,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var message: ResourceStr
+    public var message: ?ResourceStr
     /**
      * Options in the dialog box. Each option supports the image, text, and callback.
      *
@@ -449,7 +449,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var sheets: Array<SheetInfo>
+    public var sheets: ?Array<SheetInfo>
     /**
      * Subtitle of the dialog box.
      * @type { ResourceStr }
@@ -460,7 +460,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var subtitle: ResourceStr
+    public var subtitle: ?ResourceStr
     /**
      * Information about the confirm button. When the dialog box has focus and focus has not been shifted using the Tab
      * key, the button responds to the Enter key by default, and multiple dialog boxes can gain focus consecutively
@@ -474,7 +474,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var confirm: ActionSheetButtonOptions
+    public var confirm: ?ActionSheetButtonOptions
     /**
      * Whether to close the dialog box when the overlay is clicked.
      *
@@ -488,7 +488,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var autoCancel: Bool
+    public var autoCancel: ?Bool
     /**
      * Callback invoked when the dialog box is closed after the overlay is clicked.
      * Anonymous Object Rectification.
@@ -501,7 +501,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var cancel: VoidCallback
+    public var cancel: ?VoidCallback
     /**
      * Alignment mode of the dialog box in the vertical direction.
      * <p><strong>NOTE</strong>:
@@ -518,7 +518,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var alignment: DialogAlignment
+    public var alignment: ?DialogAlignment
     /**
      * Offset of the dialog box relative to the alignment position.
      * <br>When alignment is set to Top, TopStart, or TopEnd: {dx: 0,dy: "40vp"}
@@ -532,7 +532,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offset: ActionSheetOffset
+    public var offset: ?ActionSheetOffset
     /**
      * Mask area of the dialog box. Events outside the mask area are transparently transmitted,
      * and events within the mask area are not.
@@ -549,7 +549,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var maskRect: Rectangle
+    public var maskRect: ?Rectangle
     /**
      * Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window.
      * <p><strong>NOTE</strong>:
@@ -566,7 +566,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var showInSubWindow: Bool
+    public var showInSubWindow: ?Bool
     /**
      * Whether the dialog box is a modal. A modal dialog box has a mask applied, while a non-modal dialog box does not.
      * @type { Bool }
@@ -578,7 +578,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var isModal: Bool
+    public var isModal: ?Bool
     /**
      * Background color of the dialog box.
      * <p><strong>NOTE</strong>:
@@ -595,7 +595,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundColor: ResourceColor
+    public var backgroundColor: ?ResourceColor
     /**
      * Background blur style of the dialog box.
      * <p><strong>NOTE</strong>:
@@ -613,7 +613,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: BlurStyle
+    public var backgroundBlurStyle: ?BlurStyle
     /**
      * Callback for interactive closure of the dialog box.
      * <p><strong>NOTE</strong>:
@@ -648,7 +648,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var cornerRadius: BorderRadiuses
+    public var cornerRadius: ?BorderRadiuses
     /**
      * Border width of the dialog box.
      * You can set the width for all four sides or set separate widths for individual sides.
@@ -664,7 +664,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderWidth: Length
+    public var borderWidth: ?Length
    /**
     * Border color of the dialog box.
     * <p><strong>NOTE</strong>:
@@ -681,7 +681,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderColor: ResourceColor
+    public var borderColor: ?ResourceColor
    /**
     * Border style of the dialog box.
     *
@@ -694,7 +694,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderStyle: EdgeStyles
+    public var borderStyle: ?EdgeStyles
    /**
     * Width of the dialog box.
     *
@@ -736,7 +736,7 @@ public class ActionSheetOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var shadow: ShadowOptions
+    public var shadow: ?ShadowOptions
     /**
      * Transition effect for the entrance and exit of the dialog box.
      * <p><strong>NOTE</strong>:
@@ -790,95 +790,96 @@ public class ActionSheetOptions {
      * @relation interface ActionSheetOptions
      */
     public init(
-        title!: ResourceStr,
-        message!: ResourceStr,
-        sheets!: Array<SheetInfo>,
-        subtitle!: ResourceStr = "",
-        confirm!: ActionSheetButtonOptions = ActionSheetButtonOptions(value: "", action: {=>}),
-        autoCancel!: Bool = true,
-        cancel!: VoidCallback = {=>},
-        alignment!: DialogAlignment = DialogAlignment.Bottom,
+        title!: ?ResourceStr,
+        message!: ?ResourceStr,
+        sheets!: ?Array<SheetInfo>,
+        subtitle!: ?ResourceStr = None,
+        confirm!: ?ActionSheetButtonOptions = None,
+        autoCancel!: ?Bool = None,
+        cancel!: ?VoidCallback = None,
+        alignment!: ?DialogAlignment = None,
         offset!: ?ActionSheetOffset = None,
-        maskRect!: Rectangle = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
-        showInSubWindow!: Bool = false,
-        isModal!: Bool = true,
-        backgroundColor!: ResourceColor = Color.Transparent,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
+        maskRect!: ?Rectangle = None,
+        showInSubWindow!: ?Bool = None,
+        isModal!: ?Bool = None,
+        backgroundColor!: ?ResourceColor = None,
+        backgroundBlurStyle!: ?BlurStyle = None,
         onWillDismiss!: ?Callback<DismissDialogAction, Unit> = None,
-        cornerRadius!: BorderRadiuses = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp,
-            bottomLeft: 32.vp, bottomRight: 32.vp),
-        borderWidth!: Length = 0.vp,
-        borderColor!: ResourceColor = Color.Black,
-        borderStyle!: EdgeStyles = EdgeStyles(),
+        cornerRadius!: ?BorderRadiuses = None,
+        borderWidth!: ?Length = None,
+        borderColor!: ?ResourceColor = None,
+        borderStyle!: ?EdgeStyles = None,
         width!: ?Length = None,
         height!: ?Length = None,
-        shadow!: ShadowOptions = ShadowOptions(radius: 0.0),
+        shadow!: ?ShadowOptions = None,
         transition!: ?TransitionEffect = None
     ) {
-        this.title = title
-        this.message = message
-        this.sheets = sheets
-        this.subtitle = subtitle
-        this.confirm = confirm
-        this.autoCancel = autoCancel
-        this.cancel = cancel
-        this.alignment = alignment
+        let tmpAlignment = alignment ?? throw IllegalArgumentException("The type now is not supported.")
+        this.title = title ?? throw IllegalArgumentException("The type now is not supported.")
+        this.message = message ?? throw IllegalArgumentException("The type now is not supported.")
+        this.sheets = sheets ?? throw IllegalArgumentException("The type now is not supported.")
+        this.subtitle = subtitle ?? ""
+        this.confirm = confirm ?? ActionSheetButtonOptions(value: "", action: {=>})
+        this.autoCancel = autoCancel ?? true
+        this.cancel = cancel ?? {=>}
+        this.alignment = tmpAlignment
         this.offset = offset.getOrDefault({ =>
-            match(alignment) {
+            match(tmpAlignment) {
                 case DialogAlignment.Top => ActionSheetOffset(dx: 0.vp, dy: 40.vp)
                 case DialogAlignment.TopStart => ActionSheetOffset(dx: 0.vp, dy: 40.vp)
                 case DialogAlignment.TopEnd => ActionSheetOffset(dx: 0.vp, dy: 40.vp)
                 case _ => ActionSheetOffset(dx: 0.vp, dy: (-40).vp)
             }
         })
-        this.maskRect = maskRect
-        this.showInSubWindow = showInSubWindow
-        this.isModal = isModal
-        this.backgroundColor = backgroundColor
-        this.backgroundBlurStyle = backgroundBlurStyle
+        this.maskRect = maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)
+        this.showInSubWindow = showInSubWindow ?? false
+        this.isModal = isModal ?? true
+        this.backgroundColor = backgroundColor ?? Color.Transparent
+        this.backgroundBlurStyle = backgroundBlurStyle ?? BlurStyle.ComponentUltraThick
         this.onWillDismiss = onWillDismiss
-        this.cornerRadius = cornerRadius
-        this.borderWidth = borderWidth
-        this.borderColor = borderColor
-        this.borderStyle = borderStyle
+        this.cornerRadius = cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp,
+            bottomLeft: 32.vp, bottomRight: 32.vp)
+        this.borderWidth = borderWidth ?? 0.vp
+        this.borderColor = borderColor ?? Color.Black
+        this.borderStyle = borderStyle ?? EdgeStyles()
         this.width = width
         this.height = height
-        this.shadow = shadow
+        this.shadow = shadow ?? ShadowOptions(radius: 0.0)
         this.transition = transition
     }
 
     func getNativeParam(): NativeActionSheetOptions {
         let cTitle: CString = try {
-            unsafe { LibC.mallocCString(transResourceStrToString(title)) }
+            unsafe { LibC.mallocCString(transResourceStrToString(title ?? throw IllegalArgumentException("The type now is not supported."))) }
         } catch (e: Exception) {
             throw IllegalMemoryException("malloc memory")
         }
 
         let cMessage: CString = try {
-            unsafe { LibC.mallocCString(transResourceStrToString(message)) }
+            unsafe { LibC.mallocCString(transResourceStrToString(message ?? throw IllegalArgumentException("The type now is not supported."))) }
         } catch (e: Exception) {
             unsafe { LibC.free(cTitle) }
             throw IllegalMemoryException("malloc memory")
         }
 
         let cStr: CString = try {
-            unsafe { LibC.mallocCString(transResourceStrToString(subtitle)) }
+            unsafe { LibC.mallocCString(transResourceStrToString(subtitle ?? "")) }
         } catch (e: Exception) {
             unsafe { LibC.free(cTitle) }
             unsafe { LibC.free(cMessage) }
             throw IllegalMemoryException("malloc memory")
         }
         let nativeSubtitle = NativeOptionCString(true, cStr)
-        let nativeConfirm = NativeOptionConfirm(true, confirm.toNative())
-        let nativeAutoCancel = NativeOptionBool(true, autoCancel)
-        let nativeCancel = NativeOptionCallBack(true, Callback0Param<Unit>(cancel).getID())
-        let nativeAlignment = NativeOptionInt32(true, alignment.getValue())
-        let nativeOffset = NativeOptionOffset(true, offset.toNative())
-        let nativeMaskRect = NativeOptionRectangle(true, maskRect.parseToNative())
-        let nativeShowInSubWindow = NativeOptionBool(true, showInSubWindow)
-        let nativeIsModal = NativeOptionBool(true, isModal)
-        let nativeBackgroundColor = NativeOptionUInt32(true, backgroundColor.toUInt32())
-        let nativeBackgroundBlurStyle = NativeOptionInt32(true, backgroundBlurStyle.getValue())
+        let nativeConfirm = NativeOptionConfirm(true, (confirm ?? ActionSheetButtonOptions(value: "", action: {=>})).toNative())
+        let nativeAutoCancel = NativeOptionBool(true, autoCancel ?? true)
+        let nativeCancel = NativeOptionCallBack(true, Callback0Param<Unit>(cancel ?? {=>}).getID())
+        let nativeAlignment = NativeOptionInt32(true, (alignment ?? throw IllegalArgumentException("The type now is not supported.")).getValue())
+        let nativeOffset = NativeOptionOffset(true, (offset ?? throw IllegalArgumentException("The type now is not supported.")).toNative())
+        let nativeMaskRect = NativeOptionRectangle(true, (maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)).parseToNative())
+        let nativeShowInSubWindow = NativeOptionBool(true, showInSubWindow ?? false)
+        let nativeIsModal = NativeOptionBool(true, isModal ?? true)
+        let nativeBackgroundColor = NativeOptionUInt32(true, (backgroundColor ?? Color.Transparent).toUInt32())
+        let nativeBackgroundBlurStyle = NativeOptionInt32(true, (backgroundBlurStyle ?? BlurStyle.ComponentUltraThick).getValue())
         let nativeOnWillDismiss = match (onWillDismiss) {
             case Some(value) =>
                 let wrapper = {
@@ -888,11 +889,12 @@ public class ActionSheetOptions {
                 NativeOptionCallBack(true, lambdaData.getID())
             case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
         }
-        let nativeCornerRadius = NativeOptionRadius(true, cornerRadius.toCBorderRadiuses())
-        let value_ = transAppResourceToLength(borderWidth)
+        let nativeCornerRadius = NativeOptionRadius(true, (cornerRadius?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp,
+            bottomLeft: 32.vp, bottomRight: 32.vp)).toCBorderRadiuses())
+        let value_ = transAppResourceToLength(borderWidth ?? 0.vp)
         let nativeBorderWidth = NativeOptionLength(true, NativeLength(value_.value, value_.unitType.getValue()))
-        let nativeBorderColor = NativeOptionUInt32(true, borderColor.toUInt32())
-        let nativeBorderStyle = NativeOptionEdgeStyle(true, borderStyle.toNative())
+        let nativeBorderColor = NativeOptionUInt32(true, (borderColor ?? Color.Black).toUInt32())
+        let nativeBorderStyle = NativeOptionEdgeStyle(true, (borderStyle ?? EdgeStyles()).toNative())
         let nativeWidth = match (width) {
             case Some(value) =>
                 var value_ = transAppResourceToLength(value)
@@ -912,7 +914,7 @@ public class ActionSheetOptions {
         var nativeActionSheetOptions = NativeActionSheetOptions(
             cTitle,
             cMessage,
-            NativeSheetInfoArray(sheets),
+            NativeSheetInfoArray(sheets ?? throw IllegalArgumentException("The type now is not supported.")),
             nativeSubtitle,
             nativeConfirm,
             nativeAutoCancel,
@@ -961,7 +963,7 @@ public class ActionSheetOffset {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var dx: Length
+    public var dx: ?Length
    /**
     * Offset of the action sheet along the y-axis relative to the alignment position.
     * Anonymous Object Rectification.
@@ -974,7 +976,7 @@ public class ActionSheetOffset {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var dy: Length
+    public var dy: ?Length
     /**
      * Constructor of ActionSheetOffset
      *
@@ -989,22 +991,24 @@ public class ActionSheetOffset {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        dx!: Length,
-        dy!: Length
+        dx!: ?Length,
+        dy!: ?Length
     ) {
-        this.dx = transAppResourceToLength(dx)
-        this.dy = transAppResourceToLength(dy)
+        let tmpDx = dx ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpDy = dy ?? throw IllegalArgumentException("The type now is not supported.")
+        this.dx = transAppResourceToLength(tmpDx)
+        this.dy = transAppResourceToLength(tmpDy)
     }
 
     protected func toNative(): NativeOffset {
         return NativeOffset(
             NativeLength(
-                this.dx.value,
-                this.dx.unitType.getValue()
+                (this.dx ?? throw IllegalArgumentException("The type now is not supported.")).value,
+                (this.dx ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue()
             ),
             NativeLength(
-                this.dy.value,
-                this.dy.unitType.getValue()
+                (this.dy ?? throw IllegalArgumentException("The type now is not supported.")).value,
+                (this.dy ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue()
             )
         )
     }
@@ -1014,8 +1018,8 @@ protected class ActionSheetInner {
     protected static func show(value: ActionSheetOptions): Unit {
         let nativeOptions = value.getNativeParam()
         unsafe {
-            FfiOHOSAceFrameworkActionSheetShowWithShadowOptions(nativeOptions, value.shadow.toActionSheetShadowNative())
-            nativeOptions.free(value.sheets.size)
+            FfiOHOSAceFrameworkActionSheetShowWithShadowOptions(nativeOptions, (value.shadow ?? ShadowOptions(radius: 0.0)).toActionSheetShadowNative())
+            nativeOptions.free((value.sheets ?? throw IllegalArgumentException("The type now is not supported.")).size)
         }
         return
     }
@@ -1024,7 +1028,7 @@ protected class ActionSheetInner {
         let nativeOptions = value.getNativeParam()
         unsafe {
             FfiOHOSAceFrameworkActionSheetShowWithShadowStyle(nativeOptions, shadow.getValue())
-            nativeOptions.free(value.sheets.size)
+            nativeOptions.free((value.sheets ?? throw IllegalArgumentException("The type now is not supported.")).size)
         }
         return
     }

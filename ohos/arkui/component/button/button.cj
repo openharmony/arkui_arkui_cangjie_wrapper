@@ -288,7 +288,7 @@ public class ButtonOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var shape: ButtonType
+    public var shape: ?ButtonType
     /**
      * Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
      *
@@ -300,7 +300,7 @@ public class ButtonOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var stateEffect: Bool
+    public var stateEffect: ?Bool
     /**
      * Describes the button style.
      *
@@ -313,7 +313,7 @@ public class ButtonOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var buttonStyle: ButtonStyleMode
+    public var buttonStyle: ?ButtonStyleMode
     /**
      * Describes the button size.
      *
@@ -326,7 +326,7 @@ public class ButtonOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var controlSize: ControlSize
+    public var controlSize: ?ControlSize
     /**
      * Describes the button role.
      *
@@ -339,7 +339,7 @@ public class ButtonOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var role: ButtonRole
+    public var role: ?ButtonRole
 
     /**
      * ButtonOptions constructor
@@ -350,17 +350,17 @@ public class ButtonOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        shape!: ButtonType = ButtonType.Capsule,
-        stateEffect!: Bool = true,
-        buttonStyle!: ButtonStyleMode = ButtonStyleMode.Emphasized,
-        controlSize!: ControlSize = ControlSize.Normal,
-        role!: ButtonRole = ButtonRole.Normal
+        shape!: ?ButtonType = None,
+        stateEffect!: ?Bool = None,
+        buttonStyle!: ?ButtonStyleMode = None,
+        controlSize!: ?ControlSize = None,
+        role!: ?ButtonRole = None
     ) {
-        this.shape = shape
-        this.stateEffect = stateEffect
-        this.buttonStyle = buttonStyle
-        this.controlSize = controlSize
-        this.role = role
+        this.shape = shape ?? ButtonType.Capsule
+        this.stateEffect = stateEffect ?? true
+        this.buttonStyle = buttonStyle ?? ButtonStyleMode.Emphasized
+        this.controlSize = controlSize ?? ControlSize.Normal
+        this.role = role ?? ButtonRole.Normal
     }
 }
 
@@ -423,8 +423,9 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(label: ResourceStr) {
-        let content = transResourceStrToString(label)
+    public init(label: ?ResourceStr) {
+        let tmpLabel = label ?? throw IllegalArgumentException("The type now is not supported.")
+        let content = transResourceStrToString(tmpLabel)
         unsafe {
             try (unsafeContent = LibC.mallocCString(content).asResource()) {
                 FfiOHOSAceFrameworkButtonCreateWithLabel(unsafeContent.value)
@@ -444,15 +445,16 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(options: ButtonOptions) {
+    public init(options: ?ButtonOptions) {
+        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkButtonCreateWithButtonOptions(
                 ButtonOptional(
-                    options.shape.getValue(),
-                    options.stateEffect,
-                    options.buttonStyle.getValue(),
-                    options.controlSize.getValue(),
-                    options.role.getValue()
+                    (tmpOptions.shape ?? ButtonType.Capsule).getValue(),
+                    tmpOptions.stateEffect ?? true,
+                    (tmpOptions.buttonStyle ?? ButtonStyleMode.Emphasized).getValue(),
+                    (tmpOptions.controlSize ?? ControlSize.Normal).getValue(),
+                    (tmpOptions.role ?? ButtonRole.Normal).getValue()
                 )
             )
         }
@@ -471,15 +473,16 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(options: ButtonOptions, child: () -> Unit) {
+    public init(options: ?ButtonOptions, child: () -> Unit) {
+        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkButtonCreateWithChildAndOptions(
                 ButtonOptional(
-                    options.shape.getValue(),
-                    options.stateEffect,
-                    options.buttonStyle.getValue(),
-                    options.controlSize.getValue(),
-                    options.role.getValue()
+                    (tmpOptions.shape ?? ButtonType.Capsule).getValue(),
+                    tmpOptions.stateEffect ?? true,
+                    (tmpOptions.buttonStyle ?? ButtonStyleMode.Emphasized).getValue(),
+                    (tmpOptions.controlSize ?? ControlSize.Normal).getValue(),
+                    (tmpOptions.role ?? ButtonRole.Normal).getValue()
                 )
             )
         }
@@ -499,18 +502,20 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(label: ResourceStr, options: ButtonOptions) {
-        let content = transResourceStrToString(label)
+    public init(label: ?ResourceStr, options: ?ButtonOptions) {
+        let tmpLabel = label ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
+        let content = transResourceStrToString(tmpLabel)
         unsafe {
             try (unsafeContent = LibC.mallocCString(content).asResource()) {
                 FfiOHOSAceFrameworkButtonCreateWithLabelAndOptions(
                     unsafeContent.value,
                     ButtonOptional(
-                        options.shape.getValue(),
-                        options.stateEffect,
-                        options.buttonStyle.getValue(),
-                        options.controlSize.getValue(),
-                        options.role.getValue()
+                        (tmpOptions.shape ?? ButtonType.Capsule).getValue(),
+                        tmpOptions.stateEffect ?? true,
+                        (tmpOptions.buttonStyle ?? ButtonStyleMode.Emphasized).getValue(),
+                        (tmpOptions.controlSize ?? ControlSize.Normal).getValue(),
+                        (tmpOptions.role ?? ButtonRole.Normal).getValue()
                     )
                 )
             }
@@ -529,8 +534,9 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontSize(value: Length): This {
-        var size = transAppResourceToLength(value)
+    public func fontSize(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var size = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkButtonSetFontSize(size.value, getLengthUnitOrFp(size).getValue())
         }
@@ -549,9 +555,10 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontWeight(value: FontWeight): This {
+    public func fontWeight(value: ?FontWeight): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let unsafeContent = LibC.mallocCString(value.getValue())
+            let unsafeContent = LibC.mallocCString(tmpValue.getValue())
             FfiOHOSAceFrameworkButtonSetFontWeight(unsafeContent)
             LibC.free(unsafeContent)
         }
@@ -570,9 +577,10 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontColor(color: ResourceColor): This {
+    public func fontColor(color: ?ResourceColor): This {
+        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkButtonSetFontColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkButtonSetFontColor(transAppResourceToResourceColor(tmpColor))
         }
         this
     }
@@ -633,9 +641,10 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontStyle(value: FontStyle): This {
+    public func fontStyle(value: ?FontStyle): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkButtonSetFontStyle(value.getValue())
+            FfiOHOSAceFrameworkButtonSetFontStyle(tmpValue.getValue())
         }
         this
     }
@@ -652,8 +661,9 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontFamily(value: ResourceStr): This {
-        let content = transResourceStrToString(value)
+    public func fontFamily(value: ?ResourceStr): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let content = transResourceStrToString(tmpValue)
         unsafe {
             try (contentCString = LibC.mallocCString(content).asResource()) {
                 FfiOHOSAceFrameworkButtonSetFontFamily(contentCString.value)
@@ -674,9 +684,10 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func shape(value: ButtonType): This {
+    public func shape(value: ?ButtonType): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkButtonSetType(value.getValue())
+            FfiOHOSAceFrameworkButtonSetType(tmpValue.getValue())
         }
         this
     }
@@ -746,9 +757,10 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func stateEffect(value: Bool): This {
+    public func stateEffect(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkButtonSetStateEffect(value)
+            FfiOHOSAceFrameworkButtonSetStateEffect(tmpValue)
         }
         this
     }
@@ -827,9 +839,10 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func buttonStyle(value: ButtonStyleMode): This {
+    public func buttonStyle(value: ?ButtonStyleMode): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkButtonSetButtonStyle(value.getValue())
+            FfiOHOSAceFrameworkButtonSetButtonStyle(tmpValue.getValue())
         }
         this
     }

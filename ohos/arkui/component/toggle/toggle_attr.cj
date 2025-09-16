@@ -20,9 +20,9 @@ import ohos.base.*
 
 sealed interface ToggleAttribute <: CommonMethod<ToggleAttribute> {
 
-    func selectedColor(value: ResourceColor): ToggleAttribute
+    func selectedColor(value: ?ResourceColor): ToggleAttribute
 
-    func switchPointColor(color: ResourceColor): ToggleAttribute
+    func switchPointColor(color: ?ResourceColor): ToggleAttribute
 
-    func onChange(callback: (Bool) -> Unit): ToggleAttribute
+    func onChange(callback: ?(Bool) -> Unit): ToggleAttribute
 }

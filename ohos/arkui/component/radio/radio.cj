@@ -73,9 +73,11 @@ public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: String, group!: String) {
+    public init(value!: ?String, group!: ?String) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpGroup = group ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (groupStr = LibC.mallocCString(group).asResource(), valStr = LibC.mallocCString(value).asResource()) {
+            try (groupStr = LibC.mallocCString(tmpGroup).asResource(), valStr = LibC.mallocCString(tmpValue).asResource()) {
                 FfiOHOSAceFrameworkRadioCreate(groupStr.value, valStr.value)
             }
         }
@@ -93,9 +95,10 @@ public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func checked(value: Bool): This {
+    public func checked(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRadioChecked(value)
+            FfiOHOSAceFrameworkRadioChecked(tmpValue)
         }
         this
     }
@@ -156,8 +159,9 @@ public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (Bool) -> Unit): This {
-        let lambdaData = Callback1Param<Bool, Unit>(callback)
+    public func onChange(callback: ?(Bool) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = Callback1Param<Bool, Unit>(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkRadioOnChange(lambdaData.getID())
         }

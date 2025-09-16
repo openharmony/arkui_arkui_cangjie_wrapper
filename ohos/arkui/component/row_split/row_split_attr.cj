@@ -19,5 +19,5 @@ import ohos.arkui.component.common.*
 import ohos.base.*
 
 sealed interface RowSplitAttribute <: CommonMethod<RowSplitAttribute> {
-    func resizeable(value: Bool): RowSplitAttribute
+    func resizeable(value: ?Bool): RowSplitAttribute
 }

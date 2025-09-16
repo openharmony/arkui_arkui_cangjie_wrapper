@@ -95,11 +95,12 @@ public class Path2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(path: String) {
+    public init(path: ?String) {
         super(
             unsafe {
+                let tmpPath = path ?? throw IllegalArgumentException("The type now is not supported.")
                 var id = 0
-                try (pathString = LibC.mallocCString(path).asResource()) {
+                try (pathString = LibC.mallocCString(tmpPath).asResource()) {
                     id = FfiOHOSAceFrameworkCanvasPathCtorWithPath(pathString.value)
                 }
                 id
@@ -121,9 +122,10 @@ public class Path2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func addPath(path2D: Path2D): Unit {
+    public func addPath(path2D: ?Path2D): Unit {
+        let tmpPath2D = path2D ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCanvasPathAddPath(this.getID(), path2D.getID());
+            FfiOHOSAceFrameworkCanvasPathAddPath(this.getID(), tmpPath2D.getID());
         }
     }
 
@@ -145,17 +147,23 @@ public class Path2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTransform(
-        scaleX: Float64,
-        skewX: Float64,
-        skewY: Float64,
-        scaleY: Float64,
-        translateX: Float64,
-        translateY: Float64
+        scaleX: ?Float64,
+        skewX: ?Float64,
+        skewY: ?Float64,
+        scaleY: ?Float64,
+        translateX: ?Float64,
+        translateY: ?Float64
     ): Unit {
+        let tmpScaleX = scaleX ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpSkewX = skewX ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpSkewY = skewY ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpScaleY = scaleY ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpTranslateX = translateX ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpTranslateY = translateY ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkCanvasPathSetTransform(
                 this.getID(),
-                TransformParams(scaleX, skewX, skewY, scaleY, translateX, translateY)
+                TransformParams(tmpScaleX, tmpSkewX, tmpSkewY, tmpScaleY, tmpTranslateX, tmpTranslateY)
             );
         }
     }
@@ -172,9 +180,11 @@ public class Path2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func moveTo(x: Float64, y: Float64): Unit {
+    public func moveTo(x: ?Float64, y: ?Float64): Unit {
+        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCanvasPathMoveTo(this.getID(), x, y);
+            FfiOHOSAceFrameworkCanvasPathMoveTo(this.getID(), tmpX, tmpY);
         }
     }
 
@@ -190,9 +200,11 @@ public class Path2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lineTo(x: Float64, y: Float64): Unit {
+    public func lineTo(x: ?Float64, y: ?Float64): Unit {
+        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCanvasPathLineTo(this.getID(), x, y);
+            FfiOHOSAceFrameworkCanvasPathLineTo(this.getID(), tmpX, tmpY);
         }
     }
 
@@ -213,15 +225,21 @@ public class Path2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arc(
-        x: Float64,
-        y: Float64,
-        radius: Float64,
-        startAngle: Float64,
-        endAngle: Float64,
-        counterclockwise!: Bool = false
+        x: ?Float64,
+        y: ?Float64,
+        radius: ?Float64,
+        startAngle: ?Float64,
+        endAngle: ?Float64,
+        counterclockwise!: ?Bool = None
     ): Unit {
+        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpRadius = radius ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpStartAngle = startAngle ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEndAngle = endAngle ?? throw IllegalArgumentException("The type now is not supported.")
+        
         unsafe {
-            FfiOHOSAceFrameworkCanvasPathArc(this.getID(), ArcParams(x, y, radius, startAngle, endAngle), counterclockwise);
+            FfiOHOSAceFrameworkCanvasPathArc(this.getID(), ArcParams(tmpX, tmpY, tmpRadius, tmpStartAngle, tmpEndAngle), counterclockwise ?? false);
         }
     }
 
@@ -241,14 +259,19 @@ public class Path2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arcTo(
-        x1: Float64,
-        y1: Float64,
-        x2: Float64,
-        y2: Float64,
-        radius: Float64
+        x1: ?Float64,
+        y1: ?Float64,
+        x2: ?Float64,
+        y2: ?Float64,
+        radius: ?Float64
     ): Unit {
+        let tmpX1 = x1 ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY1 = y1 ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpX2 = x2 ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY2 = y2 ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpRadius = radius ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCanvasPathArcTo(this.getID(), ArcToParams(x1, y1, x2, y2, radius));
+            FfiOHOSAceFrameworkCanvasPathArcTo(this.getID(), ArcToParams(tmpX1, tmpY1, tmpX2, tmpY2, tmpRadius));
         }
     }
 
@@ -267,13 +290,17 @@ public class Path2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func quadraticCurveTo(
-        cpx: Float64,
-        cpy: Float64,
-        x: Float64,
-        y: Float64
+        cpx: ?Float64,
+        cpy: ?Float64,
+        x: ?Float64,
+        y: ?Float64
     ): Unit {
+        let tmpCpx = cpx ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCpy = cpy ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCanvasPathQuadraticCurveTo(this.getID(), QuadraticCurveToParams(cpx, cpy, x, y));
+            FfiOHOSAceFrameworkCanvasPathQuadraticCurveTo(this.getID(), QuadraticCurveToParams(tmpCpx, tmpCpy, tmpX, tmpY));
         }
     }
 
@@ -294,15 +321,21 @@ public class Path2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bezierCurveTo(
-        cp1x: Float64,
-        cp1y: Float64,
-        cp2x: Float64,
-        cp2y: Float64,
-        x: Float64,
-        y: Float64
+        cp1x: ?Float64,
+        cp1y: ?Float64,
+        cp2x: ?Float64,
+        cp2y: ?Float64,
+        x: ?Float64,
+        y: ?Float64
     ): Unit {
+        let tmpCp1x = cp1x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCp1y = cp1y ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCp2x = cp2x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCp2y = cp2y ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCanvasPathBezierCurveTo(this.getID(), BezierCurveToParams(cp1x, cp1y, cp2x, cp2y, x, y));
+            FfiOHOSAceFrameworkCanvasPathBezierCurveTo(this.getID(), BezierCurveToParams(tmpCp1x, tmpCp1y, tmpCp2x, tmpCp2y, tmpX, tmpY));
         }
     }
 
@@ -334,20 +367,28 @@ public class Path2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func ellipse(
-        x: Float64,
-        y: Float64,
-        radiusX: Float64,
-        radiusY: Float64,
-        rotation: Float64,
-        startAngle: Float64,
-        endAngle: Float64,
-        counterclockwise!: Bool = false
+        x: ?Float64,
+        y: ?Float64,
+        radiusX: ?Float64,
+        radiusY: ?Float64,
+        rotation: ?Float64,
+        startAngle: ?Float64,
+        endAngle: ?Float64,
+        counterclockwise!: ?Bool = None
     ): Unit {
+        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpRadiusX = radiusX ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpRadiusY = radiusY ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpRotation = rotation ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpStartAngle = startAngle ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEndAngle = endAngle ?? throw IllegalArgumentException("The type now is not supported.")
+        
         unsafe {
             FfiOHOSAceFrameworkCanvasPathEllipse(
                 this.getID(),
-                EllipseParams(x, y, radiusX, radiusY, rotation, startAngle, endAngle),
-                counterclockwise
+                EllipseParams(tmpX, tmpY, tmpRadiusX, tmpRadiusY, tmpRotation, tmpStartAngle, tmpEndAngle),
+                counterclockwise ?? false
             );
         }
     }
@@ -366,9 +407,13 @@ public class Path2D <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func rect(x: Float64, y: Float64, width: Float64, height: Float64): Unit {
+    public func rect(x: ?Float64, y: ?Float64, width: ?Float64, height: ?Float64): Unit {
+        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCanvasPathRect(this.getID(), RectParams(x, y, x + width, y + height));
+            FfiOHOSAceFrameworkCanvasPathRect(this.getID(), RectParams(tmpX, tmpY, tmpX + tmpWidth, tmpY + tmpHeight));
         }
     }
 

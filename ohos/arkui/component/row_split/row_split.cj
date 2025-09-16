@@ -71,9 +71,10 @@ public class RowSplit <: CommonMethodComponent<RowSplitAttribute> & RowSplitAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func resizeable(value: Bool): This {
+    public func resizeable(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRowSplitResizeable(value)
+            FfiOHOSAceFrameworkRowSplitResizeable(tmpValue)
         }
         this
     }

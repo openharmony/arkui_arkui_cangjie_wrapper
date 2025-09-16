@@ -101,7 +101,7 @@ public class ListDividerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var strokeWidth: Length
+    public var strokeWidth: ?Length
 
     /**
      * Set the color of the dividing line.
@@ -114,7 +114,7 @@ public class ListDividerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var color: ResourceColor = Color(0X08000000)
+    public var color: ?ResourceColor
 
     /**
      * Set the distance between the dividing line and the starting end of the side of the list.
@@ -127,7 +127,7 @@ public class ListDividerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var startMargin: Length = 0.vp
+    public var startMargin: ?Length
 
     /**
      * Set the distance between the dividing line and the end of the side of the list.
@@ -140,7 +140,7 @@ public class ListDividerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var endMargin: Length = 0.vp
+    public var endMargin: ?Length
 
     /**
      * ListDividerOptions constructor
@@ -151,15 +151,15 @@ public class ListDividerOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        strokeWidth!: Length,
-        color!: ResourceColor = Color.Black,
-        startMargin!: Length = 0.vp,
-        endMargin!: Length = 0.vp
+        strokeWidth!: ?Length,
+        color!: ?ResourceColor = None,
+        startMargin!: ?Length = None,
+        endMargin!: ?Length = None
     ) {
-        this.strokeWidth = strokeWidth
-        this.color = color
-        this.startMargin = startMargin
-        this.endMargin = endMargin
+        this.strokeWidth = strokeWidth ?? throw IllegalArgumentException("The type now is not supported.")
+        this.color = color ?? Color.Black
+        this.startMargin = startMargin ?? 0.vp
+        this.endMargin = endMargin ?? 0.vp
     }
 }
 
@@ -192,18 +192,20 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroupAttribute> & Li
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        header!: CustomBuilder = {=>},
-        footer!: CustomBuilder = {=>},
-        space!: Length = 0.vp,
-        style!: ListItemGroupStyle = ListItemGroupStyle.None,
+        header!: ?CustomBuilder = None,
+        footer!: ?CustomBuilder = None,
+        space!: ?Length = None,
+        style!: ?ListItemGroupStyle = Option.None,
         child!: () -> Unit
     ) {
-        let headerLambda = Callback0Param<Unit>(header)
-        let footerLambda = Callback0Param<Unit>(footer)
+        let tmpSpace = space ?? 0.vp
+        let tmpStyle = style ?? ListItemGroupStyle.None
+        let headerLambda = Callback0Param<Unit>(header ?? {=>})
+        let footerLambda = Callback0Param<Unit>(footer ?? {=>})
 
         unsafe {
-            FfiOHOSAceFrameworkListItemGroupCreate2(headerLambda.getID(), footerLambda.getID(), space.value,
-                space.unitType.getValue(), style.getValue())
+            FfiOHOSAceFrameworkListItemGroupCreate2(headerLambda.getID(), footerLambda.getID(), tmpSpace.value,
+                tmpSpace.unitType.getValue(), tmpStyle.getValue())
         }
         this.child = child
     }
@@ -225,15 +227,15 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroupAttribute> & Li
     public func divider(value: Option<ListDividerOptions>): This {
         match (value) {
             case Some(v) =>
-                var strokeWidth_ = transAppResourceToLength(v.strokeWidth)
-                var startMargin_ = transAppResourceToLength(v.startMargin)
-                var endMargin_ = transAppResourceToLength(v.endMargin)
+                var strokeWidth_ = transAppResourceToLength(v.strokeWidth ?? throw IllegalArgumentException("The type now is not supported."))
+                var startMargin_ = transAppResourceToLength(v.startMargin ?? 0.vp)
+                var endMargin_ = transAppResourceToLength(v.endMargin ?? 0.vp)
                 unsafe {
                     FfiOHOSAceFrameworkListItemGroupSetDivider(
                         DividerParams(
                             strokeWidth_.value,
                             strokeWidth_.unitType.getValue(),
-                            transAppResourceToResourceColor(v.color),
+                            transAppResourceToResourceColor(v.color ?? Color.Black),
                             startMargin_.value,
                             startMargin_.unitType.getValue(),
                             endMargin_.value,

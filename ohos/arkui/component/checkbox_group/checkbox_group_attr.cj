@@ -19,9 +19,9 @@ import ohos.arkui.component.common.*
 import ohos.base.*
 
 sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> {
-    func selectAll(value: Bool): CheckboxGroupAttribute
+    func selectAll(value: ?Bool): CheckboxGroupAttribute
 
-    func selectedColor(value: ResourceColor): CheckboxGroupAttribute
+    func selectedColor(value: ?ResourceColor): CheckboxGroupAttribute
 
-    func onChange(callback: OnCheckboxGroupChangeCallback): CheckboxGroupAttribute
+    func onChange(callback: ?OnCheckboxGroupChangeCallback): CheckboxGroupAttribute
 }

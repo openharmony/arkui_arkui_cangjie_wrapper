@@ -110,7 +110,7 @@ public class CheckboxGroupResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var status: SelectStatus
+    public var status: ?SelectStatus
     /**
      * Checkbox name.
      *
@@ -122,7 +122,7 @@ public class CheckboxGroupResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var name: Array<String>
+    public var name: ?Array<String>
 
     /**
      * CheckboxGroupResult constructor.
@@ -133,11 +133,11 @@ public class CheckboxGroupResult {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        status: SelectStatus,
-        name: Array<String>
+        status: ?SelectStatus,
+        name: ?Array<String>
     ) {
-        this.status = status
-        this.name = name
+        this.status = status ?? throw IllegalArgumentException("The type now is not supported.")
+        this.name = name ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -183,9 +183,9 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(group!: String = "") {
+    public init(group!: ?String = None) {
         unsafe {
-            try (groupCString = LibC.mallocCString(group).asResource()) {
+            try (groupCString = LibC.mallocCString(group ?? "").asResource()) {
                 FfiOHOSAceFrameworkCheckBoxGroupCreate(groupCString.value)
             }
         }
@@ -203,9 +203,10 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectAll(value: Bool): This {
+    public func selectAll(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCheckBoxGroupSelectAll(value)
+            FfiOHOSAceFrameworkCheckBoxGroupSelectAll(tmpValue)
         }
         this
     }
@@ -222,9 +223,10 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(value: ResourceColor): This {
+    public func selectedColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCheckBoxGroupSetSelectedColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkCheckBoxGroupSetSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -332,11 +334,12 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: OnCheckboxGroupChangeCallback): This {
+    public func onChange(callback: ?OnCheckboxGroupChangeCallback): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
             value: FFiCheckboxGroupResult =>
             var resolved = parseCheckboxGroupResult(value)
-            callback(resolved)
+            tmpCallback(resolved)
         }
         let lambdaData = CallbackFFiCheckboxGroupResult(wrapper)
         unsafe {

@@ -67,7 +67,7 @@ public class TranslateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: Length
+    public var x: ?Length
 
     /**
      * Translation distance along the y-axis.
@@ -82,7 +82,7 @@ public class TranslateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: Length
+    public var y: ?Length
 
     /**
      * Distance to translate along the z-axis. The value is a floating
@@ -96,7 +96,7 @@ public class TranslateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var z: Length
+    public var z: ?Length
 
     /**
      * TranslateOptions constructor
@@ -106,10 +106,10 @@ public class TranslateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: Length = 0.0.vp, y!: Length = 0.0.vp, z!: Length = 0.0.vp) {
-        this.x = transAppResourceToLength(x)
-        this.y = transAppResourceToLength(y)
-        this.z = transAppResourceToLength(z)
+    public init(x!: ?Length = None, y!: ?Length = None, z!: ?Length = None) {
+        this.x = transAppResourceToLength(x ?? 0.0.vp)
+        this.y = transAppResourceToLength(y ?? 0.0.vp)
+        this.z = transAppResourceToLength(z ?? 0.0.vp)
     }
 }
 
@@ -139,7 +139,7 @@ public class ScaleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: Float32
+    public var x: ?Float32
 
     /**
      * Scale ratio along the y-axis.
@@ -155,7 +155,7 @@ public class ScaleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: Float32
+    public var y: ?Float32
 
     /**
      * Scale ratio along the z-axis. z > 1: The component is scaled up along the z-axis.
@@ -170,7 +170,7 @@ public class ScaleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var z: Float32
+    public var z: ?Float32
 
     /**
      * X coordinate of the transformation center point (anchor). Unit is vp.
@@ -183,7 +183,7 @@ public class ScaleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var centerX: Length
+    public var centerX: ?Length
 
     /**
      * Y coordinate of the transformation center point (anchor). Unit is vp.
@@ -196,7 +196,7 @@ public class ScaleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var centerY: Length
+    public var centerY: ?Length
 
     /**
      * ScaleOptions constructor
@@ -206,13 +206,13 @@ public class ScaleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: Length = 50.percent,
-        centerY!: Length = 50.percent) {
-        this.x = x
-        this.y = y
-        this.z = z
-        this.centerX = transAppResourceToLength(centerX)
-        this.centerY = transAppResourceToLength(centerY)
+    public init(x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, centerX!: ?Length = None,
+        centerY!: ?Length = None) {
+        this.x = x ?? 1.0
+        this.y = y ?? 1.0
+        this.z = z ?? 1.0
+        this.centerX = transAppResourceToLength(centerX ?? 50.percent)
+        this.centerY = transAppResourceToLength(centerY ?? 50.percent)
     }
 }
 
@@ -227,13 +227,13 @@ struct CScaleOptions {
     let centerYType: UInt32
 
     CScaleOptions(options: ScaleOptions) {
-        x = options.x
-        y = options.y
-        z = options.z
-        centerX = options.centerX.value
-        centerXType = UInt32(options.centerX.unitType.getValue())
-        centerY = options.centerY.value
-        centerYType = UInt32(options.centerY.unitType.getValue())
+        x = options.x ?? 1.0
+        y = options.y ?? 1.0
+        z = options.z ?? 1.0
+        centerX = (options.centerX ?? 50.percent).value
+        centerXType = UInt32((options.centerX ?? 50.percent).unitType.getValue())
+        centerY = (options.centerY ?? 50.percent).value
+        centerYType = UInt32((options.centerY ?? 50.percent).unitType.getValue())
     }
 }
 
@@ -260,7 +260,7 @@ public class RotateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var angle: Float32
+    public var angle: ?Float32
 
     /**
      * X coordinate of the rotation axis vector.
@@ -273,7 +273,7 @@ public class RotateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: Float32
+    public var x: ?Float32
 
     /**
      * Y coordinate of the rotation axis vector.
@@ -286,7 +286,7 @@ public class RotateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: Float32
+    public var y: ?Float32
 
     /**
      * Z coordinate of the rotation axis vector.
@@ -299,7 +299,7 @@ public class RotateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var z: Float32
+    public var z: ?Float32
 
     /**
      * X coordinate of the transformation center point (anchor). Unit is vp.
@@ -312,7 +312,7 @@ public class RotateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var centerX: Length
+    public var centerX: ?Length
 
     /**
      * Y coordinate of the transformation center point (anchor). Unit is vp.
@@ -325,7 +325,7 @@ public class RotateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var centerY: Length
+    public var centerY: ?Length
 
     /**
      * Z-axis anchor, that is, the z-component of the 3D rotation center point.
@@ -338,7 +338,7 @@ public class RotateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var centerZ: Length
+    public var centerZ: ?Length
 
     /**
      * Distance from the user to the z=0 plane.
@@ -353,7 +353,7 @@ public class RotateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var perspective: Float32
+    public var perspective: ?Float32
 
     /**
      * RotateOptions constructor
@@ -363,16 +363,16 @@ public class RotateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(angle: Float32, x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 0.0, centerX!: Length = 50.percent,
-        centerY!: Length = 50.percent, centerZ!: Length = 0, perspective!: Float32 = 0.0) {
-        this.angle = angle
-        this.x = x
-        this.y = y
-        this.z = z
-        this.centerX = transAppResourceToLength(centerX)
-        this.centerY = transAppResourceToLength(centerY)
-        this.centerZ = transAppResourceToLength(centerZ)
-        this.perspective = perspective
+    public init(angle: ?Float32, x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, centerX!: ?Length = None,
+        centerY!: ?Length = None, centerZ!: ?Length = None, perspective!: ?Float32 = None) {
+        this.angle = angle ?? throw IllegalArgumentException("The type now is not supported.")
+        this.x = x ?? 0.0
+        this.y = y ?? 0.0
+        this.z = z ?? 0.0
+        this.centerX = transAppResourceToLength(centerX ?? 50.percent)
+        this.centerY = transAppResourceToLength(centerY ?? 50.percent)
+        this.centerZ = transAppResourceToLength(centerZ ?? 0)
+        this.perspective = perspective ?? 0.0
     }
 }
 
@@ -391,17 +391,17 @@ struct CRotateOptions {
     let perspective: Float32
 
     init(options: RotateOptions) {
-        angle = options.angle
-        x = options.x
-        y = options.y
-        z = options.z
-        centerX = options.centerX.value
-        centerXType = UInt32(options.centerX.unitType.getValue())
-        centerY = options.centerY.value
-        centerYType = UInt32(options.centerY.unitType.getValue())
-        centerZ = options.centerZ.value
-        centerZType = UInt32(options.centerZ.unitType.getValue())
-        perspective = options.perspective
+        angle = options.angle ?? throw IllegalArgumentException("The type now is not supported.")
+        x = options.x ?? 0.0
+        y = options.y ?? 0.0
+        z = options.z ?? 0.0
+        centerX = (options.centerX ?? 50.percent).value
+        centerXType = UInt32((options.centerX ?? 50.percent).unitType.getValue())
+        centerY = (options.centerY ?? 50.percent).value
+        centerYType = UInt32((options.centerY ?? 50.percent).unitType.getValue())
+        centerZ = (options.centerZ ?? 0).value
+        centerZType = UInt32((options.centerZ ?? 0).unitType.getValue())
+        perspective = options.perspective ?? 0.0
     }
 }
 
@@ -507,9 +507,10 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func opacity(alpha: Float64): TransitionEffect {
+    public static func opacity(alpha: ?Float64): TransitionEffect {
+        let tmpAlpha = alpha ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectOpacity(alpha))
+            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectOpacity(tmpAlpha))
         }
     }
 
@@ -525,9 +526,10 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func translate(options: TranslateOptions): TransitionEffect {
+    public static func translate(options: ?TranslateOptions): TransitionEffect {
+        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectTranslate(CTranslateOptions(options)))
+            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectTranslate(CTranslateOptions(tmpOptions)))
         }
     }
 
@@ -543,9 +545,10 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func scale(options: ScaleOptions): TransitionEffect {
+    public static func scale(options: ?ScaleOptions): TransitionEffect {
+        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectScale(CScaleOptions(options)))
+            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectScale(CScaleOptions(tmpOptions)))
         }
     }
 
@@ -561,9 +564,10 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func rotate(options: RotateOptions): TransitionEffect {
+    public static func rotate(options: ?RotateOptions): TransitionEffect {
+        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectRotate(CRotateOptions(options)))
+            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectRotate(CRotateOptions(tmpOptions)))
         }
     }
 
@@ -579,9 +583,10 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func move(edge: TransitionEdge): TransitionEffect {
+    public static func move(edge: ?TransitionEdge): TransitionEffect {
+        let tmpEdge = edge ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectMove(edge.getValue()))
+            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectMove(tmpEdge.getValue()))
         }
     }
 
@@ -598,9 +603,11 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect {
+    public static func asymmetric(appear: ?TransitionEffect, disappear: ?TransitionEffect): TransitionEffect {
+        let tmpAppear = appear ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpDisappear = disappear ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectAsymmetric(appear.getID(), disappear.getID()))
+            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectAsymmetric(tmpAppear.getID(), tmpDisappear.getID()))
         }
     }
 
@@ -616,9 +623,10 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func combine(transitionEffect: TransitionEffect): TransitionEffect {
+    public func combine(transitionEffect: ?TransitionEffect): TransitionEffect {
+        let tmpTransitionEffect = transitionEffect ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTransitionEffectCombine(this.getID(), transitionEffect.getID())
+            FfiOHOSAceFrameworkTransitionEffectCombine(this.getID(), tmpTransitionEffect.getID())
         }
         return this
     }
@@ -636,9 +644,10 @@ public class TransitionEffect <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func animation(value: AnimateParam): TransitionEffect {
+    public func animation(value: ?AnimateParam): TransitionEffect {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let nativeParam = parseAnimateParam(value)
+            let nativeParam = parseAnimateParam(tmpValue)
             FfiOHOSAceFrameworkTransitionEffectAnimation(this.getID(), nativeParam)
             nativeParam.free()
         }

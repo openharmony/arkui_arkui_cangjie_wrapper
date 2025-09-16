@@ -19,11 +19,11 @@ import ohos.arkui.component.common.*
 import ohos.base.*
 
 sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
-    func select(value: Bool): CheckboxAttribute
+    func select(value: ?Bool): CheckboxAttribute
 
-    func selectedColor(value: ResourceColor): CheckboxAttribute
+    func selectedColor(value: ?ResourceColor): CheckboxAttribute
 
-    func onChange(callback: OnCheckboxChangeCallback): CheckboxAttribute
+    func onChange(callback: ?OnCheckboxChangeCallback): CheckboxAttribute
 
-    func shape(value: CheckBoxShape): CheckboxAttribute
+    func shape(value: ?CheckBoxShape): CheckboxAttribute
 }

@@ -38,10 +38,10 @@ public class PathShape <: BaseShape {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(commands!: ResourceStr = "") {
+    public init(commands!: ?ResourceStr = None) {
         super(
             unsafe {
-                let commandsValue = transResourceStrToString(commands)
+                let commandsValue = transResourceStrToString(commands ?? "")
                 var id: Int64 = 0
                 try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
                     id = FfiOHOSAceFrameworkPathInsCreate(unsafeContent.value)
@@ -55,21 +55,20 @@ public class PathShape <: BaseShape {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length, height!: Length, commands!: ResourceStr = "") {
+    public init(width!: ?Length, height!: ?Length, commands!: ?ResourceStr = None) {
         super(
             unsafe {
-                var width_ = transAppResourceToLength(width)
-                var height_ = transAppResourceToLength(height)
-                let commandsValue = transResourceStrToString(commands)
+                let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
+                let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
+                var width_ = transAppResourceToLength(tmpWidth)
+                var height_ = transAppResourceToLength(tmpHeight)
+                let commandsValue = transResourceStrToString(commands ?? "")
                 var id: Int64 = 0
                 try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
                     id = FfiOHOSAceFrameworkPathInsCreateWithSize(
-                        width_.value,
-                        width_.unitType.getValue(),
-                        height_.value,
-                        height_.unitType.getValue(),
-                        unsafeContent.value
-                    )
+                        width_.value, width_.unitType.getValue(),
+                        height_.value, height_.unitType.getValue(),
+                        unsafeContent.value)
                 }
                 id
             })

@@ -133,14 +133,16 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(arrayValue!: Array<String>, selected!: UInt32) {
-        let vecFfi = FFIVectorString(arrayValue.size)
-        for (i in 0..arrayValue.size) {
-            vecFfi.setElement(i, arrayValue[i])
+    public init(arrayValue!: ?Array<String>, selected!: ?UInt32) {
+        let tmpArrayValue = arrayValue ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpSelected = selected ?? throw IllegalArgumentException("The type now is not supported.")
+        let vecFfi = FFIVectorString(tmpArrayValue.size)
+        for (i in 0..tmpArrayValue.size) {
+            vecFfi.setElement(i, tmpArrayValue[i])
         }
         var actualIdx: UInt32 = 0
-        if (Int64(selected) < arrayValue.size) {
-            actualIdx = selected
+        if (Int64(tmpSelected) < tmpArrayValue.size) {
+            actualIdx = tmpSelected
         }
         unsafe { FfiOHOSAceFrameworkAlphabetIndexerCreate(vecFfi.getNativeHandle(), actualIdx) }
         vecFfi.free()
@@ -157,9 +159,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(value: ResourceColor): This {
+    public func color(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkAlphabetIndexerColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -176,9 +179,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(value: ResourceColor): This {
+    public func selectedColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerSelectedColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkAlphabetIndexerSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -195,9 +199,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func popupColor(value: ResourceColor): This {
+    public func popupColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerPopupColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkAlphabetIndexerPopupColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -214,9 +219,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedBackgroundColor(value: ResourceColor): This {
+    public func selectedBackgroundColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerSelectedBackgroundColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkAlphabetIndexerSelectedBackgroundColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -233,9 +239,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func popupBackground(value: ResourceColor): This {
+    public func popupBackground(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerPopupBackground(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkAlphabetIndexerPopupBackground(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -252,9 +259,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func usingPopup(value: Bool): This {
+    public func usingPopup(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerUsingPopup(value)
+            FfiOHOSAceFrameworkAlphabetIndexerUsingPopup(tmpValue)
         }
         this
     }
@@ -275,21 +283,23 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedFont(
-        size!: Length = 10.vp,
-        weight!: FontWeight = FontWeight.Normal,
-        family!: ResourceStr = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        family!: ?ResourceStr = None,
+        style!: ?FontStyle = None
     ): This {
-        var size_ = transAppResourceToLength(size)
+        let tmpWeight = weight ?? FontWeight.Normal
+        let tmpStyle = style ?? FontStyle.Normal
+        var size_ = transAppResourceToLength(size ?? 10.vp)
         unsafe {
-            try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
+            try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkAlphabetIndexerSelectedFont(
                     size_.value,
                     size_.unitType.getValue(),
                     weightCString.value,
                     fontFamilyCString.value,
-                    style.getValue()
+                    tmpStyle.getValue()
                 )
             }
         }
@@ -312,21 +322,23 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func popupFont(
-        size!: Length = 24.vp,
-        weight!: FontWeight = FontWeight.Normal,
-        family!: ResourceStr = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        family!: ?ResourceStr = None,
+        style!: ?FontStyle = None
     ): This {
-        var size_ = transAppResourceToLength(size)
+        let tmpWeight = weight ?? FontWeight.Normal
+        let tmpStyle = style ?? FontStyle.Normal
+        var size_ = transAppResourceToLength(size ?? 24.vp)
         unsafe {
-            try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
+            try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkAlphabetIndexerPopupFont(
                     size_.value,
                     size_.unitType.getValue(),
                     weightCString.value,
                     fontFamilyCString.value,
-                    style.getValue()
+                    tmpStyle.getValue()
                 )
             }
         }
@@ -349,21 +361,23 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func font(
-        size!: Length = 10.vp,
-        weight!: FontWeight = FontWeight.Normal,
-        family!: ResourceStr = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        family!: ?ResourceStr = None,
+        style!: ?FontStyle = None
     ): This {
-        var size_ = transAppResourceToLength(size)
+        let tmpWeight = weight ?? FontWeight.Normal
+        let tmpStyle = style ?? FontStyle.Normal
+        var size_ = transAppResourceToLength(size ?? 10.vp)
         unsafe {
-            try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
+            try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkAlphabetIndexerFont(
                     size_.value,
                     size_.unitType.getValue(),
                     weightCString.value,
                     fontFamilyCString.value,
-                    style.getValue()
+                    tmpStyle.getValue()
                 )
             }
         }
@@ -382,8 +396,9 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func itemSize(size: Length): This {
-        var size_ = transAppResourceToLength(size)
+    public func itemSize(size: ?Length): This {
+        let tmpSize = size ?? throw IllegalArgumentException("The type now is not supported.")
+        var size_ = transAppResourceToLength(tmpSize)
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerItemSize(size_.value, size_.unitType.getValue())
         }
@@ -403,9 +418,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alignStyle(value: IndexerAlign): This {
+    public func alignStyle(value: ?IndexerAlign): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerAlignStyle(value.getValue())
+            FfiOHOSAceFrameworkAlphabetIndexerAlignStyle(tmpValue.getValue())
         }
         this
     }
@@ -422,9 +438,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selected(index: Int32): This {
+    public func selected(index: ?Int32): This {
+        let tmpIndex = index ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerSelected(index)
+            FfiOHOSAceFrameworkAlphabetIndexerSelected(tmpIndex)
         }
         this
     }
@@ -442,9 +459,9 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func popupPosition(x!: Length = 60.vp, y!: Length = 48.vp): This {
-        var x_ = transAppResourceToLength(x)
-        var y_ = transAppResourceToLength(y)
+    public func popupPosition(x!: ?Length = None, y!: ?Length = None): This {
+        var x_ = transAppResourceToLength(x ?? 60.vp)
+        var y_ = transAppResourceToLength(y ?? 48.vp)
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerPopupPositionWithUnit(x_.value, x_.unitType.getValue(), y_.value,
                 y_.unitType.getValue())
@@ -465,9 +482,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onSelect(callback: OnAlphabetIndexerSelectCallback): This {
+    public func onSelect(callback: ?OnAlphabetIndexerSelectCallback): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            value: Int32 => callback(Int64(value))
+            value: Int32 => tmpCallback(Int64(value))
         }
         let lambdaData = Callback1Param<Int32, Unit>(wrapper)
         unsafe {
@@ -489,10 +507,11 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback): This {
+    public func onRequestPopupData(callback: ?OnAlphabetIndexerRequestPopupDataCallback): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
             value: Int32 =>
-            let arr = callback(Int64(value))
+            let arr = tmpCallback(Int64(value))
             let vecFfi = FFIVectorString(arr.size)
             for (i in 0..arr.size) {
                 vecFfi.setElement(i, arr[i])
@@ -519,9 +538,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback): This {
+    public func onPopupSelect(callback: ?OnAlphabetIndexerPopupSelectCallback): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            value: Int32 => callback(Int64(value))
+            value: Int32 => tmpCallback(Int64(value))
         }
         let lambdaData = Callback1Param<Int32, Unit>(wrapper)
         unsafe {

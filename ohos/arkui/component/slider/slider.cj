@@ -109,35 +109,42 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        min!: Float64 = 0.0,
-        max!: Float64 = 100.0,
-        step!: Float64 = 1.0,
-        value!: Float64 = min,
-        style!: SliderStyle = SliderStyle.OutSet,
-        direction!: Axis = Axis.Horizontal,
-        reverse!: Bool = false
+        min!: ?Float64 = None,
+        max!: ?Float64 = None,
+        step!: ?Float64 = None,
+        value!: ?Float64 = None,
+        style!: ?SliderStyle = None,
+        direction!: ?Axis = None,
+        reverse!: ?Bool = None
     ) {
+        let tmpMin = min ?? 0.0
+        let tmpMax = max ?? 100.0
+        let tmpStep = step ?? 1.0
+        let tmpValue = value ?? tmpMin
+        let tmpStyle = style ?? SliderStyle.OutSet
+        let tmpDirection = direction ?? Axis.Horizontal
+        
         unsafe {
-            var minValue = min;
-            var maxValue = max;
-            var stepValue = step;
-            var valueValue = value;
-            if (min >= max) {
+            var minValue = tmpMin;
+            var maxValue = tmpMax;
+            var stepValue = tmpStep;
+            var valueValue = tmpValue;
+            if (tmpMin >= tmpMax) {
                 minValue = 0.0
                 maxValue = 100.0
             }
-            if (step < 0.0 || step > (maxValue - minValue)) {
+            if (tmpStep < 0.0 || tmpStep > (maxValue - minValue)) {
                 stepValue = 1.0
             }
-            if (value < minValue) {
+            if (tmpValue < minValue) {
                 valueValue = minValue
             }
-            if (value > maxValue) {
+            if (tmpValue > maxValue) {
                 valueValue = maxValue
             }
             FfiOHOSAceFrameworkSliderCreate(
-                CJSliderCreate(valueValue, minValue, maxValue, stepValue, style.getValue(), direction.getValue(),
-                    reverse))
+                CJSliderCreate(valueValue, minValue, maxValue, stepValue, tmpStyle.getValue(), tmpDirection.getValue(),
+                    reverse ?? false))
         }
     }
     /**
@@ -152,9 +159,10 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func blockColor(value: ResourceColor): This {
+    public func blockColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSliderBlockColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSliderBlockColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -170,9 +178,10 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func trackColor(value: ResourceColor): This {
+    public func trackColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSliderTrackColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSliderTrackColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -188,9 +197,10 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(value: ResourceColor): This {
+    public func selectedColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSliderSelectedColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSliderSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -206,9 +216,10 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func showSteps(value: Bool): This {
+    public func showSteps(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSliderShowSteps(value)
+            FfiOHOSAceFrameworkSliderShowSteps(tmpValue)
         }
         this
     }
@@ -225,7 +236,8 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func showTips(value: Bool, content!: ?ResourceStr = None): This {
+    public func showTips(value: ?Bool, content!: ?ResourceStr = None): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             var contentValue = ""
             var contentExist = false
@@ -234,7 +246,7 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
                 contentValue = transResourceStrToString(v)
             }
             try (contentCString = LibC.mallocCString(contentValue).asResource()) {
-                FfiOHOSAceFrameworkSliderShowTipsNew(value, contentCString.value, contentExist)
+                FfiOHOSAceFrameworkSliderShowTipsNew(tmpValue, contentCString.value, contentExist)
             }
         }
         this
@@ -251,8 +263,9 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func trackThickness(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func trackThickness(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkSliderTrackThickness(value_.value, value_.unitType.getValue())
         }
@@ -270,14 +283,15 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (Float64, SliderChangeMode) -> Unit): This {
+    public func onChange(callback: ?(Float64, SliderChangeMode) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkSliderOnChange(
                 Callback2Param<Float64, Int32, Unit>(
                     {
                         value, modeID =>
                         let mode = SliderChangeMode.setValue(modeID)
-                        callback(value, mode)
+                        tmpCallback(value, mode)
                     }
                 ).getID())
         }
@@ -295,9 +309,10 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func blockBorderColor(value: ResourceColor): This {
+    public func blockBorderColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSliderBlockBorderColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSliderBlockBorderColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }

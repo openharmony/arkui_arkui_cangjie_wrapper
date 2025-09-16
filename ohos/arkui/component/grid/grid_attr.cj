@@ -21,15 +21,15 @@ import ohos.arkui.component.scroll.*
 
 sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
 
-    func columnsTemplate(value: String): GridAttribute
+    func columnsTemplate(value: ?String): GridAttribute
 
-    func rowsTemplate(value: String): GridAttribute
+    func rowsTemplate(value: ?String): GridAttribute
 
-    func columnsGap(value: Length): GridAttribute
+    func columnsGap(value: ?Length): GridAttribute
 
-    func rowsGap(value: Length): GridAttribute
+    func rowsGap(value: ?Length): GridAttribute
 
-    func cachedCount(count: Int32): GridAttribute
+    func cachedCount(count: ?Int32): GridAttribute
 
-    func cachedCount(count: Int32, show: Bool): GridAttribute
+    func cachedCount(count: ?Int32, show: ?Bool): GridAttribute
 }

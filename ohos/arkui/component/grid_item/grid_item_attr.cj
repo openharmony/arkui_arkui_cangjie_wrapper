@@ -19,11 +19,11 @@ import ohos.arkui.component.common.*
 
 sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
 
-    func columnStart(columnStart: Int32): GridItemAttribute
+    func columnStart(columnStart: ?Int32): GridItemAttribute
 
-    func columnEnd(columnEnd: Int32): GridItemAttribute
+    func columnEnd(columnEnd: ?Int32): GridItemAttribute
 
-    func rowStart(rowStart: Int32): GridItemAttribute
+    func rowStart(rowStart: ?Int32): GridItemAttribute
 
-    func rowEnd(rowEnd: Int32): GridItemAttribute
+    func rowEnd(rowEnd: ?Int32): GridItemAttribute
 }

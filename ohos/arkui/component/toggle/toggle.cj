@@ -81,9 +81,10 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(toggleType: ToggleType, isOn!: Bool = false) {
+    public init(toggleType: ?ToggleType, isOn!: ?Bool = None) {
+        let tmpToggleType = toggleType ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkToggleCreate(toggleType.getValue(), isOn)
+            FfiOHOSAceFrameworkToggleCreate(tmpToggleType.getValue(), isOn ?? false)
         }
     }
 
@@ -162,9 +163,10 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(value: ResourceColor): This {
+    public func selectedColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkToggleSelectedColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkToggleSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -181,9 +183,10 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func switchPointColor(color: ResourceColor): This {
+    public func switchPointColor(color: ?ResourceColor): This {
+        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkToggleSwitchPointColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkToggleSwitchPointColor(transAppResourceToResourceColor(tmpColor))
         }
         this
     }
@@ -234,9 +237,10 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (Bool) -> Unit): This {
+    public func onChange(callback: ?(Bool) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkToggleOnChange(Callback1Param<Bool, Unit>(callback).getID())
+            FfiOHOSAceFrameworkToggleOnChange(Callback1Param<Bool, Unit>(tmpCallback).getID())
         }
         this
     }
