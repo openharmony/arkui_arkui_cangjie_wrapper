@@ -271,16 +271,19 @@ class BasicCommonUT1 {
     func testBindSheet() {
         scrollTo("ViewBindSheet")
 
-        let bindContentCover: Component = driver.findComponent(On().id("bindSheet")).getOrThrow()
-        bindContentCover.click()
+        let bindSheet: Component = driver.findComponent(On().id("bindSheet")).getOrThrow()
+        bindSheet.click()
         driver.delayMs(1000)
         let text_2 = driver.findComponent(On().id("text2")).getOrThrow()
         let text2 = text_2.getText().toString()
-        @Expect(text2, "BindSheet onAppear")
+        @Expect(text2, "BindSheet onDisappear.")
 
-        let text_3 = driver.findComponent(On().id("text3")).getOrThrow()
+        let bindSheet3: Component = driver.findComponent(On().id("bindSheet3")).getOrThrow()
+        bindSheet3.click()
+        driver.delayMs(1000)
+        let text_3 = driver.findComponent(On().id("text2")).getOrThrow()
         let text3 = text_3.getText().toString()
-        @Expect(text2, "onHeightDidChange")
+        @Expect(text2, "BindSheet onDisappear.")
 
         let button3: Component = driver.findComponent(On().id("button3")).getOrThrow()
         button3.click()
