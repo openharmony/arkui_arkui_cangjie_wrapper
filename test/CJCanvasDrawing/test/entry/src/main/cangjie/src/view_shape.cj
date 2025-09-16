@@ -59,6 +59,7 @@ class ViewShape{
                     .radiusWidth(3)
                     .radiusHeight(5)
                     .radius(3)
+                    .clipShape(CircleShape(width: 280, height: 280))
             }
                 .width(350)
                 .height(80)
@@ -95,7 +96,7 @@ class ViewShape{
                   .strokeOpacity(2.0)
             .id('OffsetLengthTest')
             Shape() {
-                    Rect().width(30).height(50)
+                    Rect().width(30).height(50).maskShape(RectShape(width: 200.0, height: 100.0).radiusWidth(8.0).radiusHeight(8.0).radius(3.0).fill(0xff0000))
                   }
                   .width(30)
                   .height(80)
