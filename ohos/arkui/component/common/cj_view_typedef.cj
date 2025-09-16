@@ -21,6 +21,8 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 import std.deriving.Derive
+import std.collection.HashMap
+import std.collection.forEach
 
 protected const INVALID_CALLBACK_ID = 0
 

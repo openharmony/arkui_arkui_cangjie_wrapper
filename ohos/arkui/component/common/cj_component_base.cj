@@ -16,6 +16,7 @@
 package ohos.arkui.component.common
 
 import ohos.labels.APILevel
+import ohos.ffi.*
 
 /**
  * Defines the base type of Component.
@@ -25,7 +26,15 @@ import ohos.labels.APILevel
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public abstract class UINodeBase {
+public abstract class UINodeBase <: RemoteData {
+    protected init(id: Int64){
+        super(id)
+    }
+
+    protected init(){
+        super()
+    }
+
     protected func initial(): Unit
     protected func update(): Unit
 }

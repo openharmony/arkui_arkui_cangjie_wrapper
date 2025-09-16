@@ -645,7 +645,7 @@ public class NavPathStack <: RemoteData {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Navigation <: ContainerBase {
+public class Navigation <: CommonMethodComponent<NavigationAttribute> & NavigationAttribute {
     /**
      * Constructor of Navigation
      *

@@ -11,10 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/cangjie/cjc.gni")
+import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.stack") {
-  sources = [ "stack.cj" ]
+  sources = [ 
+    "stack.cj",
+    "stack_attr.cj"
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

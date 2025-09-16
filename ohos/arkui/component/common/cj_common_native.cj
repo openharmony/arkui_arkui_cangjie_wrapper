@@ -15,6 +15,8 @@
 
 package ohos.arkui.component.common
 
+import ohos.base.*
+
 @C
 struct CJContentCoverOptionsV2 {
     CJContentCoverOptionsV2(

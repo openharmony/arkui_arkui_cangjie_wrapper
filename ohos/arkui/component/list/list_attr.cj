@@ -17,14 +17,14 @@ package ohos.arkui.component.list
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.scroll.*
+import ohos.arkui.component.list_item_group.*
 import ohos.base.*
 
 sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
 
     func listDirection(value: Axis): ListAttribute
 
-    func divider(strokeWidth!: Length, color!: ResourceColor, startMargin!: Length,
-        endMargin!: Length): ListAttribute
+    func divider(value: Option<ListDividerOptions>): ListAttribute
 
     func edgeEffect(value: EdgeEffect): ListAttribute
 

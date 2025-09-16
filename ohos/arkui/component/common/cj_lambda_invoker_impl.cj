@@ -17,6 +17,8 @@ package ohos.arkui.component.common
 
 import ohos.arkui.component.native_struct.*
 import ohos.labels.APILevel
+import ohos.base.*
+import ohos.ffi.*
 
 protected class CallbackCJClickEvent <: BaseCallBack {
     protected CallbackCJClickEvent(let closure: (CJClickEvent) -> Unit) {

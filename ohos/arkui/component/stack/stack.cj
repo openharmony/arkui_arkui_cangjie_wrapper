@@ -46,7 +46,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Stack <: ContainerBase {
+public class Stack <: CommonMethodComponent<StackAttribute> & StackAttribute {
     /**
     * Defines the constructor of Stack.
     *

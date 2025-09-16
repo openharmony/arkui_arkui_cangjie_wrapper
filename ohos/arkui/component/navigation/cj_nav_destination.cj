@@ -89,7 +89,7 @@ public class NavDestinationContext {
  * @class NavDestinationContext
  * @relation declare interface NavDestinationContext
  */
-public class NavDestination <: ContainerBase {
+public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & NavDestinationAttribute {
     /**
      * The construct function of NavDestination.
      *

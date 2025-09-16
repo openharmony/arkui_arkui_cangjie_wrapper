@@ -13,18 +13,11 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.divider
+package ohos.arkui.component.stack
 
 import ohos.arkui.component.common.*
-import ohos.base.*
 
-sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
+sealed interface StackAttribute <: CommonMethod<StackAttribute> {
 
-    func vertical(value: Bool): DividerAttribute
-
-    func color(value: ResourceColor): DividerAttribute
-
-    func strokeWidth(value: Length): DividerAttribute
-
-    func lineCap(value: LineCapStyle): DividerAttribute
+    func alignContent(value: Alignment): StackAttribute
 }
