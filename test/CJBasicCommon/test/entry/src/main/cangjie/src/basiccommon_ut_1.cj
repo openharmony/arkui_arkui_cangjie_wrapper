@@ -211,16 +211,16 @@ class BasicCommonUT1 {
         Hilog.info(1, "Cangjie-App", "background01: ${attrs.toString()}")
 
         let backgroundBlurStyle = attrs.get("backgroundBlurStyle").getOrThrow().toString()
-        //@Expect(backgroundBlurStyle.replace("\\","").contains('{"value":"BlurStyle.None","options":{"colorMode":"ThemeColorMode.System","adaptiveColor":"AdaptiveColor.Default","policy":"BlurStyleActivePolicy.ALWAYS_ACTIVE","type":"BlurType.WITHIN_WINDOW","inactiveColor":"#00000000","scale":1}}'))
+        @Expect(backgroundBlurStyle.replace("\\","").contains('{"value":"BlurStyle.None","options":{"colorMode":"ThemeColorMode.System","adaptiveColor":"AdaptiveColor.Default","policy":"BlurStyleActivePolicy.ALWAYS_ACTIVE","type":"BlurType.WITHIN_WINDOW","inactiveColor":"#00000000","scale":1}}'))
 
         let backgroundBrightness = attrs.get("BackgroundBrightness").getOrThrow().toString()
-        @Expect(backgroundBrightness.replace("\\","").contains('{"dynamicLightUpRate":0,"dynamicLightUpDegree":0}'))
+        @Expect(backgroundBrightness.replace("\\","").contains('{"dynamicLightUpRate":4.75,"dynamicLightUpDegree":0.91}'))
 
         let backgroundEffect = attrs.get("backgroundEffect").getOrThrow().toString()
-        @Expect(backgroundEffect.replace("\\","").contains('{"options":{"radius":0,"saturation":1,"brightness":1,"color":"#00000000","adaptiveColor":"AdaptiveColor.Default","policy":"BlurStyleActivePolicy.ALWAYS_ACTIVE","type":"WITHIN_WINDOW","inactiveColor":"#00000000","blurOption":"[0,0]"}}'))
+        @Expect(backgroundEffect.replace("\\","").contains('{"options":{"radius":5.2,"saturation":45.1,"brightness":1.3,"color":"#FF0000FF","adaptiveColor":"AdaptiveColor.Average","policy":"BlurStyleActivePolicy.FOLLOWS_WINDOW_ACTIVE_STATE","type":"WITHIN_WINDOW","inactiveColor":"#FFFF0000","blurOption":"[24.000000,16.000000]"}}'))
 
-        // let backgroundImageResizable = attrs.get("backgroundImageResizable").getOrThrow().toString()
-        // @Expect(backgroundImageResizable.replace("\\","").contains('"ImageResizableSlice: {left: 0.00vp, right: 0.00vp, top: 0.00vp, bottom: 0.00vp}"'))
+        let backgroundImageResizable = attrs.get("backgroundImageResizable").getOrThrow().toString()
+        @Expect(backgroundImageResizable.replace("\\","").contains('"ImageResizableSlice: {left: 44.00vp, right: 22.00vp, top: 11.00vp, bottom: 33.00vp}"'))
     }
 
 
@@ -265,6 +265,35 @@ class BasicCommonUT1 {
     }
 
 
+    // BindSheet
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func testBindSheet() {
+        scrollTo("ViewBindSheet")
+
+        let bindSheet: Component = driver.findComponent(On().id("bindSheet")).getOrThrow()
+        bindSheet.click()
+        driver.delayMs(1000)
+        let text_2 = driver.findComponent(On().id("text2")).getOrThrow()
+        let text2 = text_2.getText().toString()
+        @Expect(text2, "BindSheet onDisappear.")
+
+        let bindSheet3: Component = driver.findComponent(On().id("bindSheet3")).getOrThrow()
+        bindSheet3.click()
+        driver.delayMs(1000)
+        let text_3 = driver.findComponent(On().id("text2")).getOrThrow()
+        let text3 = text_3.getText().toString()
+        @Expect(text2, "BindSheet onDisappear.")
+
+        let button3: Component = driver.findComponent(On().id("button3")).getOrThrow()
+        button3.click()
+        driver.delayMs(1000)
+        let text_1 = driver.findComponent(On().id("text2")).getOrThrow()
+        let text1 = text_1.getText().toString()
+        @Expect(text1, "BindSheet onDisappear.")
+    }
+
+
     // border
     @TestCase
     @Tag[APILevel12, TestLevel0]
@@ -279,53 +308,53 @@ class BasicCommonUT1 {
         @Expect(attrs.get("borderRadius").getOrThrow().toString(), "\"20.00vp\"")
     }
 
-    // @TestCase
-    // @Tag[APILevel19, TestLevel0]
-    // func testBorderImage1() {
-    //     scrollTo("ViewBorderImage")
-    //     driver.delayMs(500)
+    @TestCase
+    @Tag[APILevel19, TestLevel0]
+    func testBorderImage1() {
+        scrollTo("ViewBorderImage")
+        driver.delayMs(500)
 
-    //     let inspector = getInspectorByKey("text1")
-    //     let jsonObject = JsonValue.fromStr(inspector).asObject()
-    //     let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let inspector = getInspectorByKey("text1")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
 
-    //     let borderImage = attrs.get("borderImage").getOrThrow().toString()
-    //     Hilog.info(1, "Cangjie-Test", "borderImage: " + borderImage)
-    //     @Expect(
-    //         borderImage,
-    //         "\"{\\\"source\\\":\\\"\\\",\\\"slice\\\":\\\"10.00vp\\\",\\\"width\\\":\\\"50.00px\\\",\\\"outset\\\":\\\"10.00vp\\\",\\\"repeat\\\":\\\"RepeatMode.Stretch\\\",\\\"fill\\\":\\\"false\\\"}\""
-    //     )
+        let borderImage = attrs.get("borderImage").getOrThrow().toString()
+        Hilog.info(1, "Cangjie-Test", "borderImage: " + borderImage)
+        @Expect(
+            borderImage,
+            "\"{\\\"source\\\":\\\"\\\",\\\"slice\\\":\\\"10.00vp\\\",\\\"width\\\":\\\"50.00px\\\",\\\"outset\\\":\\\"10.00vp\\\",\\\"repeat\\\":\\\"RepeatMode.Stretch\\\",\\\"fill\\\":\\\"false\\\"}\""
+        )
 
-    //     let text2 = getInspectorByKey("text2")
-    //     let jsonObject2 = JsonValue.fromStr(text2).asObject()
-    //     let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
+        let text2 = getInspectorByKey("text2")
+        let jsonObject2 = JsonValue.fromStr(text2).asObject()
+        let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
 
-    //     let borderImage2 = attrs2.get("borderImage").getOrThrow().toString()
-    //     Hilog.info(1, "Cangjie-Test", "borderImage2: " + borderImage2)
-    //     @Expect(borderImage2.contains("resource:///"))
+        let borderImage2 = attrs2.get("borderImage").getOrThrow().toString()
+        Hilog.info(1, "Cangjie-Test", "borderImage2: " + borderImage2)
+        @Expect(borderImage2.contains("resource:///"))
 
-    //     let text3 = getInspectorByKey("text3")
-    //     let jsonObject3 = JsonValue.fromStr(text3).asObject()
-    //     let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
+        let text3 = getInspectorByKey("text3")
+        let jsonObject3 = JsonValue.fromStr(text3).asObject()
+        let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
 
-    //     let borderImage3 = attrs3.get("borderImage").getOrThrow().toString()
-    //     Hilog.info(1, "Cangjie-Test", "borderImage3: " + borderImage3)
-    //     @Expect(
-    //         borderImage3,
-    //         "\"{\\\"source\\\":\\\"image/path\\\",\\\"slice\\\":\\\"10.00vp\\\",\\\"width\\\":\\\"50.00vp\\\",\\\"outset\\\":\\\"10.00vp\\\",\\\"repeat\\\":\\\"RepeatMode.Repeat\\\",\\\"fill\\\":\\\"true\\\"}\""
-    //     )
+        let borderImage3 = attrs3.get("borderImage").getOrThrow().toString()
+        Hilog.info(1, "Cangjie-Test", "borderImage3: " + borderImage3)
+        @Expect(
+            borderImage3,
+            "\"{\\\"source\\\":\\\"image/path\\\",\\\"slice\\\":\\\"10.00vp\\\",\\\"width\\\":\\\"50.00vp\\\",\\\"outset\\\":\\\"10.00vp\\\",\\\"repeat\\\":\\\"RepeatMode.Repeat\\\",\\\"fill\\\":\\\"true\\\"}\""
+        )
 
-    //     let text4 = getInspectorByKey("text4")
-    //     let jsonObject4 = JsonValue.fromStr(text4).asObject()
-    //     let attrs4 = jsonObject4.get("$attrs").getOrThrow().asObject()
+        let text4 = getInspectorByKey("text4")
+        let jsonObject4 = JsonValue.fromStr(text4).asObject()
+        let attrs4 = jsonObject4.get("$attrs").getOrThrow().asObject()
 
-    //     let borderImage4 = attrs4.get("borderImage").getOrThrow().toString()
-    //     Hilog.info(1, "Cangjie-Test", "borderImage4: " + borderImage4)
-    //     @Expect(
-    //         borderImage4,
-    //         "\"{\\\"source\\\":\\\"\\\",\\\"slice\\\":\\\"0.00px\\\",\\\"width\\\":\\\"0.00px\\\",\\\"outset\\\":\\\"0.00px\\\",\\\"repeat\\\":\\\"RepeatMode.Stretch\\\",\\\"fill\\\":\\\"false\\\"}\""
-    //     )
-    // }
+        let borderImage4 = attrs4.get("borderImage").getOrThrow().toString()
+        Hilog.info(1, "Cangjie-Test", "borderImage4: " + borderImage4)
+        @Expect(
+            borderImage4,
+            "\"{\\\"source\\\":\\\"\\\",\\\"slice\\\":\\\"0.00px\\\",\\\"width\\\":\\\"0.00px\\\",\\\"outset\\\":\\\"0.00px\\\",\\\"repeat\\\":\\\"RepeatMode.Stretch\\\",\\\"fill\\\":\\\"false\\\"}\""
+        )
+    }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
@@ -433,7 +462,7 @@ class BasicCommonUT1 {
         button = driver.findComponent(On().id("generate_UI_snapshot")).getOrThrow()
         button.click()
         text = driver.waitForComponent(On().id("errcode1"),500).getOrThrow().getText()
-        //@Expect(text, "100001")
+        @Expect(text, "100001")
     }
 
     @TestCase
@@ -450,12 +479,12 @@ class BasicCommonUT1 {
         button.click()
         driver.delayMs(500)
         text = driver.findComponent(On().id("errcode2")).getOrThrow().getText()
-        //@Expect(text, "100001")
+        @Expect(text, "100001")
         button = driver.findComponent(On().id("generate_offscreen_UI_snapshot")).getOrThrow()
         button.click()
         driver.delayMs(500)
         text = driver.findComponent(On().id("errcode2")).getOrThrow().getText()
-        //@Expect(text, "160001")
+        @Expect(text, "160001")
     }
 
     @TestCase
@@ -469,6 +498,6 @@ class BasicCommonUT1 {
         button = driver.findComponent(On().id("generate_UI_snapshot_synchronously")).getOrThrow()
         button.click()
         text = driver.waitForComponent(On().id("errMes"),500).getOrThrow().getText()
-        //@Expect(text, "Component snapshot getSync failed! code: 100001")
+        @Expect(text, "Component snapshot getSync failed! code: 100001")
     }
 }
