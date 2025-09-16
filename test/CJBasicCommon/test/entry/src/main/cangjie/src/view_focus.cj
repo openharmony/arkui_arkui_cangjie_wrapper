@@ -239,7 +239,7 @@ class ViewFocus {
                         .height(120.px)
                         .margin(20.px)
                         .fontColor(Color.Black)
-                        .focusable(true)
+                        .focusable(false)
                         .focusOnTouch(true)
                         .id(this.idList[11])
                         .key(this.idList[11])

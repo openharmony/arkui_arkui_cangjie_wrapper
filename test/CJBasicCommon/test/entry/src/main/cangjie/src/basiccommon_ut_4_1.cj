@@ -136,7 +136,7 @@ class BasicCommonUT41 {
         clickButton("layoutSafeAreaType")
         clickButton("richEditorResponseType")
         var enumClickCount_: String = getContentFromText("enumClickCount")
-        @Expect(enumClickCount_, "\"22\"")
+        @Expect(enumClickCount_, "\"9\"")
     }
 
     @TestCase

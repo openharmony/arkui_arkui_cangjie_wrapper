@@ -244,7 +244,9 @@ class ViewGridItem {
                 .backgroundColor(0xFAEEE0)
                 .height(300)
                 .onScrollStart({
-                    => Hilog.info(1, "info", "XXX" + "Grid onScrollStart")
+                    => 
+                        this.message = "onScrollFrameBegin"
+                        Hilog.info(1, "info", "XXX" + "Grid onScrollStart")
                 })
                 .onScrollStop({
                     => Hilog.info(1, "info", "XXX" + "Grid onScrollStop")

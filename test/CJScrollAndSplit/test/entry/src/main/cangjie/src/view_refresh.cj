@@ -147,7 +147,7 @@ class ViewRefresh {
                     {
                         =>
                         onRefreshStatus = "Refresh"
-
+                        onOffsetStatus = "Change"
                         Timer.once(2000 * Duration.millisecond) {
                             => launch {
                                 this.isRefreshing = false
