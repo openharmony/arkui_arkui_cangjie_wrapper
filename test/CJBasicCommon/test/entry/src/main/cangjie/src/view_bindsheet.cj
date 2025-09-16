@@ -114,7 +114,7 @@ class ViewBindSheet {
                         preferType: SheetType.Center))
                 .bindSheet(this.isShow, myBuilder,
                     options: SheetOptions(onAppear: onAppear, onDisappear: onDisappear, height: SheetSize.FitContent,
-                        preferType: SheetType.Popup, shouldDismiss: { sheet => }, onWillDismiss: { dismiss => }, mode: SheetMode.Embedded))
+                        preferType: SheetType.Popup, shouldDismiss: { sheet => }, onWillDismiss: { dismiss => }, mode: SheetMode.Embedded)).id("bindSheet4")
 
             Button("transition modal 2")
                 .onClick({ e
