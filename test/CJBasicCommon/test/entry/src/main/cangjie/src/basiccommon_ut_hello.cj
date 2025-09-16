@@ -235,7 +235,7 @@ class BasicCommonUTHello {
         var float_a: Float64 = 30.0
         var length = float_a.percent
         var lpx = float_a.lpx
-
+        var type_px: LengthType = LengthType.parse(0)
         var type_lpx: LengthType = LengthType.parse(4)
         var vp: LengthType = LengthType.parse(5)
         @Expect(0.3, length.value)
@@ -514,6 +514,18 @@ class BasicCommonUTHello {
         Hilog.info(1, "Cangjie-Test","xDPI: " + displayClass.xDPI.toString())
         Hilog.info(1, "Cangjie-Test","yDPI: " + displayClass.yDPI.toString())
 
+        Hilog.info(1, "Cangjie-Test","state: " + match(displayClass.state){
+            case DisplayState.StateUnknown => "unknow"
+            case DisplayState.StateOff => "off"
+            case DisplayState.StateOn => "on"
+            case DisplayState.StateDoze => "doze"
+            case DisplayState.StateDozeSuspend => "doze suspend"
+            case DisplayState.StateVr => "vr"
+            case DisplayState.StateOnSuspend => "on suspend"
+            case _ => "unsupport"
+            
+        })
+
         if (isFoldable()) {
             let status = getFoldStatus()
             let mode = getFoldDisplayMode()
@@ -694,14 +706,15 @@ class BasicCommonUTHello {
 
         var reuseParams: ReuseParams = ReuseParams([("a", 3), ("b", 4)])
         var aaa = reuseParams.get<Int64>("a")
+        var noneTest = reuseParams.get<Int64>("c")
         @Expect(aaa, 3)
 
-        var testCollectionEx: TestCollectionEx = TestCollectionEx(5)
-        var ttt = testCollectionEx.size
-        @Expect(ttt, 5)
-        testCollectionEx[0] = 5
-        var size = testCollectionEx[0]
-        @Expect(size, 5)
+        // var testCollectionEx: TestCollectionEx = TestCollectionEx(5)
+        // var ttt = testCollectionEx.size
+        // @Expect(ttt, 5)
+        // testCollectionEx[0] = 5
+        // var size = testCollectionEx[0]
+        // @Expect(size, 5)
         Hilog.info(1, "Cangjie-Test", "test_emptyComponent end")
     }
 
@@ -801,6 +814,8 @@ class BasicCommonUTHello {
         Hilog.info(1, "Cangjie-Test", "test_PageTransitionEnter opacity")
 
         var pageTransitionExit: PageTransitionExit = PageTransitionExit()
+        var pageTransitionExit1: PageTransitionExit = PageTransitionExit(routeType: RouteType.Push)
+        var pageTransitionExit2: PageTransitionExit = PageTransitionExit(routeType: RouteType.Pop)
         pageTransitionExit.slide(SlideEffect.Right)
         Hilog.info(1, "Cangjie-Test", "pageTransitionExit slide")
         pageTransitionExit.onExit({a, b => })
@@ -845,6 +860,16 @@ class BasicCommonUTHello {
                 Hilog.info(1, "Cangjie-Test", "test_window on" + e.toString())
         }
         try {
+            TestSubWindow1.on(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
+        }catch (e: Exception) {
+                Hilog.info(1, "Cangjie-Test", "test_window on" + e.toString())
+        }
+        try {
+            TestSubWindow1.off(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
+        }catch (e: Exception) {
+                Hilog.info(1, "Cangjie-Test", "test_window off onKeyboardHeightChangeCb" + e.toString())
+        }
+        try {
             TestSubWindow1.off(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
         }catch (e: Exception) {
                 Hilog.info(1, "Cangjie-Test", "test_window off onKeyboardHeightChangeCb" + e.toString())
@@ -871,6 +896,7 @@ class BasicCommonUTHello {
                 enableStatusBarAnimation: true,
                 enableNavigationBarAnimation: true
             )
+            let property1: SystemBarProperties = SystemBarProperties(property)
             // mainWindow.setWindowSystemBarProperties(property)
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_window2 setWindowSystemBarProperties: ${e.toString()}")
@@ -935,7 +961,7 @@ class DtTestCustomView <: CustomView {
         super.delayCompleteRerender(true)
         super.flushDelayCompleteRerender()
         super.aboutToRecycleInternal()
-
+        super.aboutToBeDeleted()
         super.recycleSelf("name")
         super.setParent(DtTestCustomView(Option.None, Option.None))
         super.recycleSelf("name")

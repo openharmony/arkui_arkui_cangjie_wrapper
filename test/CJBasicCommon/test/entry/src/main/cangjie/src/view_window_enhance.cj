@@ -454,8 +454,10 @@ class ViewWindowEnhance {
                             try {
                                 var config1 = Configuration(name: "TestSubWindow1", windowType: WindowType.TypeDialog, ctx: stageContext,displayId: 1, parentId: Int64(mainId))
                                 var config2 = Configuration(name: "TestSubWindow2", windowType: WindowType.TypeFloat, ctx: stageContext,displayId: 2, parentId: Int64(mainId))
+                                var config3 = Configuration(name: "", windowType: WindowType.TypeFloat, ctx: stageContext,displayId: 2, parentId: Int64(mainId))
                                 var TestSubWindow1 = createWindow(config1)
                                 var TestSubWindow2 = createWindow(config2)
+                                var TestSubWindow3 = createWindow(config3)
                                 TestSubWindow1.resize(500,500)
                                 shiftAppWindowFocus(1,2)
                                 TestSubWindow1.minimize()
