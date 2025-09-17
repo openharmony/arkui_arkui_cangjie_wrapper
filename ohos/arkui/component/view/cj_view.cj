@@ -69,7 +69,7 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public open class View <: ViewBase {
+public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -260,3 +260,5 @@ public open class View <: ViewBase {
         }
     }
 }
+
+sealed interface ViewAttribute <: CommonMethod<ViewAttribute> {}

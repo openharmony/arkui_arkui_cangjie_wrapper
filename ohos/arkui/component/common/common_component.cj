@@ -18,6 +18,8 @@ package ohos.arkui.component.common
 import ohos.arkui.component.native_struct.*
 import ohos.arkui.component.util.*
 import ohos.base.*
+import ohos.ffi.*
+import ohos.resource.*
 import ohos.hi_trace_meter.*
 import ohos.labels.APILevel
 import ohos.arkui.shape.*
@@ -26,6 +28,14 @@ import std.math.*
 import std.convert.*
 
 protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
+    protected init(id: Int64){
+        super(id)
+    }
+
+    protected init(){
+        super()
+    }
+
     protected var child: ?() -> Unit = None
 
     protected open func pop(): Unit {

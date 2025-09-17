@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/cangjie/cjc.gni")
+import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.curves") {
   sources = [ "cj_curves.cj" ]

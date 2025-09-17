@@ -17,6 +17,7 @@ package ohos.arkui.component.common
 
 import ohos.arkui.component.util.*
 import ohos.arkui.shape.*
+import ohos.base.*
 
 public interface CommonMethod<T> {
     // Common Event

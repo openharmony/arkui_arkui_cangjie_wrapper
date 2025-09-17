@@ -30,6 +30,14 @@ import ohos.multimedia.image.PixelMap
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> & CommonShapeMethod<T> {
+    protected init(id: Int64){
+        super(id)
+    }
+
+    protected init(){
+        super()
+    }
+
     protected open func initial(): Unit {
         super.initial()
     }
