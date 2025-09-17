@@ -81,9 +81,10 @@ public class TextAreaController <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func caretPosition(value: Int32): Unit {
+    public func caretPosition(value: ?Int32): Unit {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextAreaControllerCaretPosition(this.getID(), value)
+            FfiOHOSAceFrameworkTextAreaControllerCaretPosition(this.getID(), tmpValue)
         }
     }
 }
@@ -112,21 +113,25 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(placeholder!: ResourceStr = "", text!: ResourceStr = "",
-        controller!: TextAreaController = TextAreaController()) {
-        var placeHolder = match (placeholder) {
+    public init(placeholder!: ?ResourceStr = None, text!: ?ResourceStr = None,
+        controller!: ?TextAreaController = None) {
+        let tmpPlaceholder = placeholder ?? ""
+        let tmpText = text ?? ""
+        let tmpController = controller ?? TextAreaController()
+        
+        var placeHolder = match (tmpPlaceholder) {
             case res: AppResource => getResourceString(res)
-            case _ => (placeholder as String) ?? ""
+            case _ => (tmpPlaceholder as String) ?? ""
         }
-        var textStr = match (text) {
+        var textStr = match (tmpText) {
             case res: AppResource => getResourceString(res)
-            case _ => (text as String) ?? ""
+            case _ => (tmpText as String) ?? ""
         }
         unsafe {
             try (placeholderCString = LibC.mallocCString(placeHolder).asResource(), textCString = LibC
                 .mallocCString(textStr)
                 .asResource()) {
-                FfiOHOSAceFrameworkTextAreaCreate(placeholderCString.value, textCString.value, controller.getID())
+                FfiOHOSAceFrameworkTextAreaCreate(placeholderCString.value, textCString.value, tmpController.getID())
             }
         }
     }
@@ -143,8 +148,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func caretColor(value: ResourceColor): This {
-        TextField.caretColor(value)
+    public func caretColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.caretColor(tmpValue)
         this
     }
 
@@ -160,9 +166,10 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func placeholderFont(size!: Length, weight!: FontWeight = FontWeight.W400, family!: String = "",
-        style!: FontStyle = FontStyle.Normal): This {
-        TextField.placeholderFont(size: size, weight: weight, family: family, style: style)
+    public func placeholderFont(size!: ?Length, weight!: ?FontWeight = None, family!: ?String = None,
+        style!: ?FontStyle = None): This {
+        let tmpSize = size ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.placeholderFont(size: tmpSize, weight: weight ?? FontWeight.W400, family: family ?? "", style: style ?? FontStyle.Normal)
         this
     }
 
@@ -184,8 +191,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textAlign(value: TextAlign): This {
-        TextField.textAlign(value)
+    public func textAlign(value: ?TextAlign): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.textAlign(tmpValue)
         this
     }
 
@@ -201,8 +209,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontSize(value: Length): This {
-        TextField.fontSize(value)
+    public func fontSize(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.fontSize(tmpValue)
         this
     }
 
@@ -217,8 +226,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontColor(value: ResourceColor): This {
-        TextField.fontColor(value)
+    public func fontColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.fontColor(tmpValue)
         this
     }
 
@@ -234,8 +244,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontWeight(value: FontWeight): This {
-        TextField.fontWeight(value)
+    public func fontWeight(value: ?FontWeight): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.fontWeight(tmpValue)
         this
     }
 
@@ -251,8 +262,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontStyle(value: FontStyle): This {
-        TextField.fontStyle(value)
+    public func fontStyle(value: ?FontStyle): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.fontStyle(tmpValue)
         this
     }
 
@@ -271,8 +283,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontFamily(value: ResourceStr): This {
-        TextField.fontFamily(transResourceStrToString(value))
+    public func fontFamily(value: ?ResourceStr): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.fontFamily(transResourceStrToString(tmpValue))
         this
     }
 
@@ -288,8 +301,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func enterKeyType(value: EnterKeyType): This {
-        TextField.enterKeyType(value)
+    public func enterKeyType(value: ?EnterKeyType): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.enterKeyType(tmpValue)
         this
     }
 
@@ -306,13 +320,14 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func inputFilter(value!: ResourceStr, error!: ?(String) -> Unit = None): This {
+    public func inputFilter(value!: ?ResourceStr, error!: ?(String) -> Unit = None): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         let errorCallBack = if (let Some(v) <- error) {
             v
         } else {
             {_: String =>}
         }
-        TextField.inputFilter(value: transResourceStrToString(value), error: errorCallBack)
+        TextField.inputFilter(value: transResourceStrToString(tmpValue), error: errorCallBack)
         this
     }
 
@@ -331,8 +346,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func maxLength(value: UInt32): This {
-        TextField.maxLength(value)
+    public func maxLength(value: ?UInt32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.maxLength(tmpValue)
         this
     }
 
@@ -348,8 +364,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func placeholderColor(value: ResourceColor): This {
-        TextField.placeholderColor(value)
+    public func placeholderColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.placeholderColor(tmpValue)
         this
     }
 
@@ -365,8 +382,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onSubmit(callback: (EnterKeyType) -> Unit): This {
-        TextField.onSubmit(callback)
+    public func onSubmit(callback: ?(EnterKeyType) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.onSubmit(tmpCallback)
         this
     }
 
@@ -382,8 +400,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (String) -> Unit): This {
-        TextField.onChange(callback)
+    public func onChange(callback: ?(String) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.onChange(tmpCallback)
         this
     }
 
@@ -399,8 +418,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onCopy(callback: (String) -> Unit): This {
-        TextField.onCopy(callback)
+    public func onCopy(callback: ?(String) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.onCopy(tmpCallback)
         this
     }
 
@@ -416,8 +436,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onCut(callback: (String) -> Unit): This {
-        TextField.onCut(callback)
+    public func onCut(callback: ?(String) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.onCut(tmpCallback)
         this
     }
 
@@ -433,8 +454,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onPaste(callback: (String) -> Unit): This {
-        TextField.onPaste(callback)
+    public func onPaste(callback: ?(String) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.onPaste(tmpCallback)
         this
     }
 
@@ -451,8 +473,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onEditChange(callback: (Bool) -> Unit): This {
-        TextField.onEditChange(callback)
+    public func onEditChange(callback: ?(Bool) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        TextField.onEditChange(tmpCallback)
         this
     }
 

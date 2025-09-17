@@ -143,7 +143,7 @@ public class SelectOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var value: ResourceStr
+    public var value: ?ResourceStr
     /**
      * Option icon.
      *
@@ -155,7 +155,7 @@ public class SelectOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var icon: ResourceStr
+    public var icon: ?ResourceStr
 
     /**
      * Constructor selectOption.
@@ -168,9 +168,9 @@ public class SelectOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: ResourceStr, icon!: ResourceStr) {
-        this.value = value
-        this.icon = icon
+    public init(value!: ?ResourceStr, icon!: ?ResourceStr) {
+        this.value = value ?? throw IllegalArgumentException("The type now is not supported.")
+        this.icon = icon ?? throw IllegalArgumentException("The type now is not supported.")
     }
 
     func parseToNative(): NativeSelectOption {
@@ -249,18 +249,19 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(options: Array<SelectOptions>) {
-        let vecValueHandle = FFIVectorNativeSelectOption(options.size)
-        let elements: Array<NativeSelectOption> = Array(options.size) {
-            i => options[i].parseToNative()
+    public init(options: ?Array<SelectOptions>) {
+        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
+        let vecValueHandle = FFIVectorNativeSelectOption(tmpOptions.size)
+        let elements: Array<NativeSelectOption> = Array(tmpOptions.size) {
+            i => tmpOptions[i].parseToNative()
         }
-        for (i in 0..options.size) {
+        for (i in 0..tmpOptions.size) {
             vecValueHandle.setElement(i, elements[i])
         }
         unsafe {
             FfiOHOSAceFrameworkSelectCreate(vecValueHandle.getNativeHandle())
         }
-        for (i in 0..options.size) {
+        for (i in 0..tmpOptions.size) {
             let element = elements[i]
             unsafe {
                 element.value.free()
@@ -282,9 +283,10 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selected(value: Int32): This {
+    public func selected(value: ?Int32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSelectSetSelected(value)
+            FfiOHOSAceFrameworkSelectSetSelected(tmpValue)
         }
         this
     }
@@ -301,8 +303,9 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func value(value: ResourceStr): This {
-        let content = transResourceStrToString(value)
+    public func value(value: ?ResourceStr): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let content = transResourceStrToString(tmpValue)
         unsafe {
             try (unsafeContent = LibC.mallocCString(content).asResource()) {
                 FfiOHOSAceFrameworkSelectSetValue(unsafeContent.value)
@@ -327,18 +330,20 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func font(
-        style!: FontStyle = FontStyle.Normal,
-        weight!: FontWeight = FontWeight.Medium,
-        size!: Length = 16.vp,
-        family!: ResourceStr = "sans-serif"
+        style!: ?FontStyle = None,
+        weight!: ?FontWeight = None,
+        size!: ?Length = None,
+        family!: ?ResourceStr = None
     ): This {
-        var size_ = transAppResourceToLength(size)
-        var family_ = transResourceStrToString(family)
+        let tmpStyle = style ?? FontStyle.Normal
+        let tmpWeight = weight ?? FontWeight.Medium
+        var size_ = transAppResourceToLength(size ?? 16.vp)
+        var family_ = transResourceStrToString(family ?? "sans-serif")
         unsafe {
-            try (weightValue = LibC.mallocCString(weight.getValue()).asResource(),
+            try (weightValue = LibC.mallocCString(tmpWeight.getValue()).asResource(),
                 familyValue = LibC.mallocCString(family_).asResource()) {
                 FfiOHOSAceFrameworkSelectSetFont(
-                    style.getValue(),
+                    tmpStyle.getValue(),
                     weightValue.value,
                     size_.value,
                     size_.unitType.getValue(),
@@ -361,9 +366,10 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontColor(value: ResourceColor): This {
+    public func fontColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSelectSetFontColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSelectSetFontColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -380,9 +386,10 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedOptionBgColor(value: ResourceColor): This {
+    public func selectedOptionBgColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSelectSetSelectedOptionBgColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSelectSetSelectedOptionBgColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -403,17 +410,19 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedOptionFont(
-        style!: FontStyle = FontStyle.Normal,
-        weight!: FontWeight = FontWeight.Medium,
-        size!: Length = 16.vp,
-        family!: String = "sans-serif"
+        style!: ?FontStyle = None,
+        weight!: ?FontWeight = None,
+        size!: ?Length = None,
+        family!: ?String = None
     ): This {
-        var size_ = transAppResourceToLength(size)
+        let tmpStyle = style ?? FontStyle.Normal
+        let tmpWeight = weight ?? FontWeight.Medium
+        var size_ = transAppResourceToLength(size ?? 16.vp)
         unsafe {
-            try (weightValue = LibC.mallocCString(weight.getValue()).asResource(),
-                familyValue = LibC.mallocCString(family).asResource()) {
+            try (weightValue = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+                familyValue = LibC.mallocCString(family ?? "sans-serif").asResource()) {
                 FfiOHOSAceFrameworkSelectSetSelectedOptionFont(
-                    style.getValue(),
+                    tmpStyle.getValue(),
                     weightValue.value,
                     size_.value,
                     size_.unitType.getValue(),
@@ -436,9 +445,10 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedOptionFontColor(value: ResourceColor): This {
+    public func selectedOptionFontColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSelectSetSelectedOptionFontColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSelectSetSelectedOptionFontColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -455,9 +465,10 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func optionBgColor(value: ResourceColor): This {
+    public func optionBgColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSelectSetOptionBgColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSelectSetOptionBgColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -478,18 +489,20 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionFont(
-        style!: FontStyle = FontStyle.Normal,
-        weight!: FontWeight = FontWeight.Medium,
-        size!: Length = 16.vp,
-        family!: ResourceStr = "sans-serif"
+        style!: ?FontStyle = None,
+        weight!: ?FontWeight = None,
+        size!: ?Length = None,
+        family!: ?ResourceStr = None
     ): This {
-        var size_ = transAppResourceToLength(size)
-        var family_ = transResourceStrToString(family)
+        let tmpStyle = style ?? FontStyle.Normal
+        let tmpWeight = weight ?? FontWeight.Medium
+        var size_ = transAppResourceToLength(size ?? 16.vp)
+        var family_ = transResourceStrToString(family ?? "sans-serif")
         unsafe {
-            try (weightValue = LibC.mallocCString(weight.getValue()).asResource(),
+            try (weightValue = LibC.mallocCString(tmpWeight.getValue()).asResource(),
                 familyValue = LibC.mallocCString(family_).asResource()) {
                 FfiOHOSAceFrameworkSelectSetOptionFont(
-                    style.getValue(),
+                    tmpStyle.getValue(),
                     weightValue.value,
                     size_.value,
                     size_.unitType.getValue(),
@@ -512,9 +525,10 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func optionFontColor(value: ResourceColor): This {
+    public func optionFontColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSelectSetOptionFontColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSelectSetOptionFontColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -531,8 +545,9 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func space(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func space(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkSelectSetSpace(value_.value, value_.unitType.getValue())
         }
@@ -551,9 +566,10 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func arrowPosition(value: ArrowPosition): This {
+    public func arrowPosition(value: ?ArrowPosition): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSelectSetArrowPosition(value.getValue())
+            FfiOHOSAceFrameworkSelectSetArrowPosition(tmpValue.getValue())
         }
         this
     }
@@ -571,11 +587,13 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func menuAlign(alignType!: MenuAlignType, offset!: Offset): This {
+    public func menuAlign(alignType!: ?MenuAlignType, offset!: ?Offset): This {
+        let tmpAlignType = alignType ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpOffset = offset ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let dx = offset.dx
-            let dy = offset.dy
-            FfiOHOSAceFrameworkSelectSetMenuAlign(alignType.getValue(), dx.value, dx.unitType.getValue(), dy.value,
+            let dx = tmpOffset.dx ?? throw IllegalArgumentException("The type now is not supported.")
+            let dy = tmpOffset.dy ?? throw IllegalArgumentException("The type now is not supported.")
+            FfiOHOSAceFrameworkSelectSetMenuAlign(tmpAlignType.getValue(), dx.value, dx.unitType.getValue(), dy.value,
                 dy.unitType.getValue())
         }
         this
@@ -593,9 +611,10 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func optionWidth(value: OptionWidthMode): This {
+    public func optionWidth(value: ?OptionWidthMode): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (optionWidth = LibC.mallocCString(value.getValue()).asResource()) {
+            try (optionWidth = LibC.mallocCString(tmpValue.getValue()).asResource()) {
                 FfiOHOSAceFrameworkSelectSetOptionWidthWithMode(optionWidth.value)
             }
         }
@@ -614,8 +633,9 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func optionWidth(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func optionWidth(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkSelectSetOptionWidth(value_.value, value_.unitType.getValue())
         }
@@ -634,8 +654,9 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func optionHeight(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func optionHeight(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkSelectSetOptionHeight(value_.value, value_.unitType.getValue())
         }
@@ -654,9 +675,10 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func menuBackgroundColor(value: ResourceColor): This {
+    public func menuBackgroundColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSelectSetMenuBackgroundColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSelectSetMenuBackgroundColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -673,9 +695,10 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func menuBackgroundBlurStyle(value: BlurStyle): This {
+    public func menuBackgroundBlurStyle(value: ?BlurStyle): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSelectSetMenuBackgroundBlurStyle(value.getValue())
+            FfiOHOSAceFrameworkSelectSetMenuBackgroundBlurStyle(tmpValue.getValue())
         }
         this
     }
@@ -726,9 +749,10 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onSelect(callback: OnSelectCallback): This {
+    public func onSelect(callback: ?OnSelectCallback): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            index: Int32, value: CString => callback(index, value.toString())
+            index: Int32, value: CString => tmpCallback(index, value.toString())
         }
         let lambdaData = Callback2Param<Int32, CString, Unit>(wrapper)
         unsafe {

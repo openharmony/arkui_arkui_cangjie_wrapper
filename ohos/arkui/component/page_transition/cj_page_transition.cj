@@ -229,9 +229,10 @@ sealed abstract class CommonTransition {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func slide(value: SlideEffect): This {
+    public func slide(value: ?SlideEffect): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiPageTransitionSlideEffect(value.getValue())
+            FfiPageTransitionSlideEffect(tmpValue.getValue())
         }
         this
     }
@@ -249,10 +250,10 @@ sealed abstract class CommonTransition {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func translate(x!: Length = 0.vp, y!: Length = 0.vp, z!: Length = 0.vp): This {
-        var x_ = transAppResourceToLength(x)
-        var y_ = transAppResourceToLength(y)
-        var z_ = transAppResourceToLength(z)
+    public func translate(x!: ?Length = None, y!: ?Length = None, z!: ?Length = None): This {
+        var x_ = transAppResourceToLength(x ?? 0.vp)
+        var y_ = transAppResourceToLength(y ?? 0.vp)
+        var z_ = transAppResourceToLength(z ?? 0.vp)
         unsafe {
             FfiPageTransitionTranslate(x_.value, y_.value, z_.value)
         }
@@ -275,15 +276,15 @@ sealed abstract class CommonTransition {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scale(
-        x!: Float32 = 1.0,
-        y!: Float32 = 1.0,
-        z!: Float32 = 1.0,
-        centerX!: Length = 50.percent,
-        centerY!: Length = 50.percent
+        x!: ?Float32 = None,
+        y!: ?Float32 = None,
+        z!: ?Float32 = None,
+        centerX!: ?Length = None,
+        centerY!: ?Length = None
     ): This {
         unsafe {
-            FfiPageTransitionScalePointer(Float64(x), Float64(y), Float64(z), transAppResourceToLength(centerX).value,
-                transAppResourceToLength(centerY).value)
+            FfiPageTransitionScalePointer(Float64(x ?? 1.0), Float64(y ?? 1.0), Float64(z ?? 1.0), 
+                transAppResourceToLength(centerX ?? 50.percent).value, transAppResourceToLength(centerY ?? 50.percent).value)
         }
         this
     }
@@ -299,9 +300,10 @@ sealed abstract class CommonTransition {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func opacity(value: Float64): This {
+    public func opacity(value: ?Float64): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiPageTransitionSetOpacity(value)
+            FfiPageTransitionSetOpacity(tmpValue)
         }
         this
     }
@@ -333,14 +335,16 @@ public class PageTransitionEnter <: CommonTransition {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        routeType!: RouteType = RouteType.None,
-        duration!: Int32 = 1000,
-        curve!: Curve = Curve.Linear,
-        delay!: Int32 = 0
+        routeType!: ?RouteType = Option.None,
+        duration!: ?Int32 = None,
+        curve!: ?Curve = None,
+        delay!: ?Int32 = None
     ) {
+        let tmpRouteType = routeType ?? RouteType.None
+        let tmpCurve = curve ?? Curve.Linear
         unsafe {
-            try (cCurve = LibC.mallocCString(curve.getValue()).asResource()) {
-                FfiPageTransitionEnterCreate(routeType.getValue(), duration, cCurve.value, delay)
+            try (cCurve = LibC.mallocCString(tmpCurve.getValue()).asResource()) {
+                FfiPageTransitionEnterCreate(tmpRouteType.getValue(), duration ?? 1000, cCurve.value, delay ?? 0)
             }
         }
     }
@@ -357,9 +361,10 @@ public class PageTransitionEnter <: CommonTransition {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onEnter(event: PageTransitionCallback) {
+    public func onEnter(event: ?PageTransitionCallback) {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            ty: Int32, progress: Float64 => event(RouteType.parse(ty), progress)
+            ty: Int32, progress: Float64 => tmpEvent(RouteType.parse(ty), progress)
         }
         let lambdaData = CallbackCJTransitionEvent(wrapper)
         unsafe {
@@ -395,14 +400,16 @@ public class PageTransitionExit <: CommonTransition {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        routeType!: RouteType = RouteType.None,
-        duration!: Int32 = 1000,
-        curve!: Curve = Curve.Linear,
-        delay!: Int32 = 0
+        routeType!: ?RouteType = Option.None,
+        duration!: ?Int32 = None,
+        curve!: ?Curve = None,
+        delay!: ?Int32 = None
     ) {
+        let tmpRouteType = routeType ?? RouteType.None
+        let tmpCurve = curve ?? Curve.Linear
         unsafe {
-            try (cCurve = LibC.mallocCString(curve.getValue()).asResource()) {
-                FfiPageTransitionExitCreate(routeType.getValue(), duration, cCurve.value, delay)
+            try (cCurve = LibC.mallocCString(tmpCurve.getValue()).asResource()) {
+                FfiPageTransitionExitCreate(tmpRouteType.getValue(), duration ?? 1000, cCurve.value, delay ?? 0)
             }
         }
     }
@@ -419,9 +426,10 @@ public class PageTransitionExit <: CommonTransition {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onExit(event: PageTransitionCallback) {
+    public func onExit(event: ?PageTransitionCallback) {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            ty: Int32, progress: Float64 => event(RouteType.parse(ty), progress)
+            ty: Int32, progress: Float64 => tmpEvent(RouteType.parse(ty), progress)
         }
         let lambdaData = CallbackCJTransitionEvent(wrapper)
         unsafe {

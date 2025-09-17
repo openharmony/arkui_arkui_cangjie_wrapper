@@ -20,7 +20,7 @@ import ohos.base.*
 
 sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
 
-    func alignItems(value: ItemAlign): GridRowAttribute
+    func alignItems(value: ?ItemAlign): GridRowAttribute
 
-    func onBreakpointChange(callback: (String) -> Unit): GridRowAttribute
+    func onBreakpointChange(callback: ?(String) -> Unit): GridRowAttribute
 }

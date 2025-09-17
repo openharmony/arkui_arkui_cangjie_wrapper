@@ -52,8 +52,8 @@ foreign {
 @C
 struct NativeTextMetrics {
     NativeTextMetrics(
-        public var width: Float64,
-        public var height: Float64
+        var width: Float64,
+        var height: Float64
     ) {}
 
     func parseToCJ(): TextMetrics {
@@ -106,15 +106,15 @@ public class RenderingContextSettings {
      *
      * @relation antialias?: boolean
      */
-    public var antialias: Bool
+    public var antialias: ?Bool
 
     /**
      * Create an RenderingContextSettings object based on the antialias and alpha.
      *
      * @relation constructor(antialias?: boolean)
      */
-    public init(antialias!: Bool = false) {
-        this.antialias = antialias
+    public init(antialias!: ?Bool = None) {
+        this.antialias = antialias ?? false
     }
 }
 
@@ -202,9 +202,10 @@ public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onReady(callback: () -> Unit): This {
+    public func onReady(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCanvasOnReady(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkCanvasOnReady(Callback0Param<Unit>(tmpCallback).getID())
         }
         this
     }
@@ -254,9 +255,11 @@ public class CanvasGradient <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func addColorStop(offset: Float64, color: ResourceColor): Unit {
+    public func addColorStop(offset: ?Float64, color: ?ResourceColor): Unit {
+        let tmpOffset = offset ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCanvasGradientAddColorStop(this.getID(), offset, transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkCanvasGradientAddColorStop(this.getID(), tmpOffset, transAppResourceToResourceColor(tmpColor))
         }
     }
 }

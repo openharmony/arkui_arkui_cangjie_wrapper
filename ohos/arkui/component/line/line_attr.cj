@@ -20,7 +20,7 @@ import ohos.base.*
 
 public interface LineAttribute <: CommonShapeMethod<LineAttribute> {
 
-    func startPoint(value: (Float64, Float64)): LineAttribute
+    func startPoint(value: ?(Float64, Float64)): LineAttribute
 
-    func endPoint(value: (Float64, Float64)): LineAttribute
+    func endPoint(value: ?(Float64, Float64)): LineAttribute
 }

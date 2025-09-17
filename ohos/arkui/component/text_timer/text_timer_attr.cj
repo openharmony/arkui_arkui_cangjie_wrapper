@@ -21,21 +21,21 @@ import ohos.resource.*
 
 sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
 
-    func format(value: String): TextTimerAttribute
+    func format(value: ?String): TextTimerAttribute
 
-    func onTimer(event: (Int64, Int64) -> Unit): TextTimerAttribute
+    func onTimer(event: ?(Int64, Int64) -> Unit): TextTimerAttribute
 
-    func fontSize(value: Length): TextTimerAttribute
+    func fontSize(value: ?Length): TextTimerAttribute
 
-    func fontColor(value: ResourceColor): TextTimerAttribute
+    func fontColor(value: ?ResourceColor): TextTimerAttribute
 
-    func fontStyle(value: FontStyle): TextTimerAttribute
+    func fontStyle(value: ?FontStyle): TextTimerAttribute
 
-    func fontWeight(value: FontWeight): TextTimerAttribute
+    func fontWeight(value: ?FontWeight): TextTimerAttribute
 
-    func fontFamily(value: ResourceStr): TextTimerAttribute
+    func fontFamily(value: ?ResourceStr): TextTimerAttribute
 
-    func textShadow(value: Array<ShadowOptions>): TextTimerAttribute
+    func textShadow(value: ?Array<ShadowOptions>): TextTimerAttribute
 
-    func textShadow(value: ShadowOptions): TextTimerAttribute
+    func textShadow(value: ?ShadowOptions): TextTimerAttribute
 }

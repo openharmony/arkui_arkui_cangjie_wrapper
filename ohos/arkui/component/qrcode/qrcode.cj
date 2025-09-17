@@ -55,8 +55,9 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: ResourceStr) {
-        let value_ = transResourceStrToString(value)
+    public init(value: ?ResourceStr) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let value_ = transResourceStrToString(tmpValue)
         unsafe {
             try (str = LibC.mallocCString(value_).asResource()) {
                 FfiOHOSAceFrameworkQRCodeCreate(str.value)
@@ -76,9 +77,10 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(value: ResourceColor): This {
+    public func color(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkQRCodeSetQRCodeColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkQRCodeSetQRCodeColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -102,9 +104,10 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func contentOpacity(value: Float64): This {
+    public func contentOpacity(value: ?Float64): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkQRCodeSetContentOpacity(value)
+            FfiOHOSAceFrameworkQRCodeSetContentOpacity(tmpValue)
         }
         this
     }
@@ -121,8 +124,9 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func contentOpacity(value: AppResource): This {
-        var dimension: Length = getResourceLength(value)
+    public func contentOpacity(value: ?AppResource): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var dimension: Length = getResourceLength(tmpValue)
         contentOpacity(dimension.value)
     }
 }

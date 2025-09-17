@@ -57,8 +57,8 @@ public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(space!: Length = 0.vp, child!: () -> Unit = {=>}) {
-        var space_ = transAppResourceToLength(space)
+    public init(space!: ?Length = None, child!: () -> Unit = {=>}) {
+        var space_ = transAppResourceToLength(space ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkRowCreateWithSpace(space_.value, space_.unitType.getValue())
         }
@@ -77,9 +77,10 @@ public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alignItems(value: VerticalAlign): This {
+    public func alignItems(value: ?VerticalAlign): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRowSetAlignItems(value.getValue())
+            FfiOHOSAceFrameworkRowSetAlignItems(tmpValue.getValue())
         }
         this
     }
@@ -96,9 +97,10 @@ public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func justifyContent(value: FlexAlign): This {
+    public func justifyContent(value: ?FlexAlign): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRowSetJustifyContent(value.getValue())
+            FfiOHOSAceFrameworkRowSetJustifyContent(tmpValue.getValue())
         }
         this
     }

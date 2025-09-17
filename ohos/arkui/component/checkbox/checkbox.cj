@@ -93,10 +93,10 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(name!: String = "", group!: String = "", indicatorBuilder!: ?CustomBuilder = None) {
+    public init(name!: ?String = None, group!: ?String = None, indicatorBuilder!: ?CustomBuilder = None) {
         unsafe {
-            try (nameCString = LibC.mallocCString(name).asResource(),
-                 groupCString = LibC.mallocCString(group).asResource()) {
+            try (nameCString = LibC.mallocCString(name ?? "").asResource(),
+                 groupCString = LibC.mallocCString(group ?? "").asResource()) {
                 if (let Some(v) <- indicatorBuilder) {
                     FfiCheckBoxCreateWithIndicator(nameCString.value, groupCString.value, Callback0Param<Unit>(v).getID())
                 } else {
@@ -118,9 +118,10 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func select(value: Bool): This {
+    public func select(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCheckBoxSelect(value)
+            FfiOHOSAceFrameworkCheckBoxSelect(tmpValue)
         }
         this
     }
@@ -137,9 +138,10 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(value: ResourceColor): This {
+    public func selectedColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCheckBoxSetSelectedColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkCheckBoxSetSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -213,8 +215,9 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: OnCheckboxChangeCallback): This {
-        let lambdaData = Callback1Param<Bool, Unit>(callback)
+    public func onChange(callback: ?OnCheckboxChangeCallback): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = Callback1Param<Bool, Unit>(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxSetOnChange(lambdaData.getID())
         }
@@ -233,9 +236,10 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func shape(value: CheckBoxShape): This {
+    public func shape(value: ?CheckBoxShape): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCheckBoxSetCheckboxStyle(value.getValue())
+            FfiOHOSAceFrameworkCheckBoxSetCheckboxStyle(tmpValue.getValue())
         }
         this
     }

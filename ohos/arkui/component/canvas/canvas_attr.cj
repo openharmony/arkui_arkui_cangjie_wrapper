@@ -19,5 +19,5 @@ import ohos.arkui.component.common.*
 import ohos.base.*
 
 sealed interface CanvasAttribute <: CommonMethod<CanvasAttribute> {
-    func onReady(callback: () -> Unit): CanvasAttribute
+    func onReady(callback: ?() -> Unit): CanvasAttribute
 }

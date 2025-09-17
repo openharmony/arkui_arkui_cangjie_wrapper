@@ -20,9 +20,9 @@ import ohos.base.*
 
 sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
 
-    func defaultPickerItemHeight(value: Length): TextPickerAttribute
+    func defaultPickerItemHeight(value: ?Length): TextPickerAttribute
 
-    func canLoop(value: Bool): TextPickerAttribute
+    func canLoop(value: ?Bool): TextPickerAttribute
 
-    func onChange(callback: OnTextPickerChangeCallback): TextPickerAttribute
+    func onChange(callback: ?OnTextPickerChangeCallback): TextPickerAttribute
 }

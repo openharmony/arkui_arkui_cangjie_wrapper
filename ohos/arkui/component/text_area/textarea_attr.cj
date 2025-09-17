@@ -22,40 +22,40 @@ import ohos.resource.*
 
 sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
 
-    func caretColor(value: ResourceColor): TextAreaAttribute
+    func caretColor(value: ?ResourceColor): TextAreaAttribute
 
-    func placeholderFont(size!: Length, weight!: FontWeight, family!: String,
-        style!: FontStyle): TextAreaAttribute
+    func placeholderFont(size!: ?Length, weight!: ?FontWeight, family!: ?String,
+        style!: ?FontStyle): TextAreaAttribute
 
-    func textAlign(value: TextAlign): TextAreaAttribute
+    func textAlign(value: ?TextAlign): TextAreaAttribute
 
-    func fontSize(value: Length): TextAreaAttribute
+    func fontSize(value: ?Length): TextAreaAttribute
 
-    func fontColor(value: ResourceColor): TextAreaAttribute
+    func fontColor(value: ?ResourceColor): TextAreaAttribute
 
-    func fontWeight(value: FontWeight): TextAreaAttribute
+    func fontWeight(value: ?FontWeight): TextAreaAttribute
 
-    func fontStyle(value: FontStyle): TextAreaAttribute
+    func fontStyle(value: ?FontStyle): TextAreaAttribute
 
-    func fontFamily(value: ResourceStr): TextAreaAttribute
+    func fontFamily(value: ?ResourceStr): TextAreaAttribute
 
-    func enterKeyType(value: EnterKeyType): TextAreaAttribute
+    func enterKeyType(value: ?EnterKeyType): TextAreaAttribute
 
-    func inputFilter(value!: ResourceStr, error!: ?(String) -> Unit): TextAreaAttribute
+    func inputFilter(value!: ?ResourceStr, error!: ?(String) -> Unit): TextAreaAttribute
 
-    func maxLength(value: UInt32): TextAreaAttribute
+    func maxLength(value: ?UInt32): TextAreaAttribute
 
-    func placeholderColor(value: ResourceColor): TextAreaAttribute
+    func placeholderColor(value: ?ResourceColor): TextAreaAttribute
 
-    func onSubmit(callback: (EnterKeyType) -> Unit): TextAreaAttribute
+    func onSubmit(callback: ?(EnterKeyType) -> Unit): TextAreaAttribute
 
-    func onChange(callback: (String) -> Unit): TextAreaAttribute
+    func onChange(callback: ?(String) -> Unit): TextAreaAttribute
 
-    func onCopy(callback: (String) -> Unit): TextAreaAttribute
+    func onCopy(callback: ?(String) -> Unit): TextAreaAttribute
 
-    func onCut(callback: (String) -> Unit): TextAreaAttribute
+    func onCut(callback: ?(String) -> Unit): TextAreaAttribute
 
-    func onPaste(callback: (String) -> Unit): TextAreaAttribute
+    func onPaste(callback: ?(String) -> Unit): TextAreaAttribute
 
-    func onEditChange(callback: (Bool) -> Unit): TextAreaAttribute
+    func onEditChange(callback: ?(Bool) -> Unit): TextAreaAttribute
 }

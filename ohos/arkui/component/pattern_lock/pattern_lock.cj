@@ -152,9 +152,10 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(value: ResourceColor): This {
+    public func selectedColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkPatternLockSelectedColor(value.toUInt32())
+            FfiOHOSAceFrameworkPatternLockSelectedColor(tmpValue.toUInt32())
         }
         this
     }
@@ -171,9 +172,10 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func pathColor(value: ResourceColor): This {
+    public func pathColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkPatternLockPathColor(value.toUInt32())
+            FfiOHOSAceFrameworkPatternLockPathColor(tmpValue.toUInt32())
         }
         this
     }
@@ -190,9 +192,10 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func activeColor(value: ResourceColor): This {
+    public func activeColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkPatternLockActiveColor(value.toUInt32())
+            FfiOHOSAceFrameworkPatternLockActiveColor(tmpValue.toUInt32())
         }
         this
     }
@@ -209,9 +212,10 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func regularColor(value: ResourceColor): This {
+    public func regularColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkPatternLockRegularColor(value.toUInt32())
+            FfiOHOSAceFrameworkPatternLockRegularColor(tmpValue.toUInt32())
         }
         this
     }
@@ -230,9 +234,10 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func autoReset(value: Bool): This {
+    public func autoReset(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkPatternLockAutoReset(value)
+            FfiOHOSAceFrameworkPatternLockAutoReset(tmpValue)
         }
         this
     }
@@ -253,10 +258,11 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func circleRadius(value: Length): This {
+    public func circleRadius(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkPatternLockCircleRadius(transAppResourceToLength(value).value,
-                transAppResourceToLength(value).unitType.getValue())
+            FfiOHOSAceFrameworkPatternLockCircleRadius(transAppResourceToLength(tmpValue).value,
+                transAppResourceToLength(tmpValue).unitType.getValue())
         }
         this
     }
@@ -277,10 +283,11 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func sideLength(value: Length): This {
+    public func sideLength(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkPatternLockSideLength(transAppResourceToLength(value).value,
-                transAppResourceToLength(value).unitType.getValue())
+            FfiOHOSAceFrameworkPatternLockSideLength(transAppResourceToLength(tmpValue).value,
+                transAppResourceToLength(tmpValue).unitType.getValue())
         }
         this
     }
@@ -301,10 +308,11 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func pathStrokeWidth(value: Length): This {
+    public func pathStrokeWidth(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkPatternLockStrokeWidth(transAppResourceToLength(value).value,
-                transAppResourceToLength(value).unitType.getValue())
+            FfiOHOSAceFrameworkPatternLockStrokeWidth(transAppResourceToLength(tmpValue).value,
+                transAppResourceToLength(tmpValue).unitType.getValue())
         }
         this
     }
@@ -321,14 +329,15 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onPatternComplete(callback: (Array<Int32>) -> Unit): This {
+    public func onPatternComplete(callback: ?(Array<Int32>) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
             ffiVector: VectorInt32Handle =>
             let handle = FFIVectorInt32(ffiVector)
             var arr: Array<Int32> = Array<Int32>(handle.getSize()) {
                 idx => handle.getElement(idx)
             }
-            callback(arr)
+            tmpCallback(arr)
         }
         let lambdaData = Callback1Param<VectorInt32Handle, Unit>(wrapper)
         unsafe {

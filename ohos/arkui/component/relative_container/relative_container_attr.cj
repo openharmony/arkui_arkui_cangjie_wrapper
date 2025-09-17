@@ -20,7 +20,7 @@ import ohos.base.*
 
 sealed interface RelativeContainerAttribute <: CommonMethod<RelativeContainerAttribute> {
 
-    func guideLine(value: Array<GuideLineStyle>): RelativeContainerAttribute
+    func guideLine(value: ?Array<GuideLineStyle>): RelativeContainerAttribute
 
-    func barrier(value: Array<BarrierStyle>): RelativeContainerAttribute
+    func barrier(value: ?Array<BarrierStyle>): RelativeContainerAttribute
 }

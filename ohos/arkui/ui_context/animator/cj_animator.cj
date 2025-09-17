@@ -615,16 +615,18 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     func checkExpectedFrameRateRange(framerateRange: ExpectedFrameRateRange): ExpectedFrameRateRange {
-        if (framerateRange.min > framerateRange.max || framerateRange.min > framerateRange.expected ||
-            framerateRange.expected > framerateRange.max) {
+        let tmpMin = framerateRange.min ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpMax = framerateRange.max ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpExpected = framerateRange.expected ?? throw IllegalArgumentException("The type now is not supported.")
+        if (tmpMin > tmpMax || tmpMin > tmpExpected || tmpExpected > tmpMax) {
             let framerateRangeFault: ExpectedFrameRateRange = ExpectedFrameRateRange(min: 60, max: 120, expected: 60)
             return framerateRangeFault
         }
-        if (framerateRange.min <= 0 || framerateRange.max <= 0 || framerateRange.expected <= 0) {
+        if (tmpMin <= 0 || tmpMax <= 0 || tmpExpected <= 0) {
             let framerateRangeFault: ExpectedFrameRateRange = ExpectedFrameRateRange(min: 60, max: 120, expected: 60)
             return framerateRangeFault
         }
-        if (framerateRange.min > 144 || framerateRange.max > 144 || framerateRange.expected > 144) {
+        if (tmpMin > 144 || tmpMax > 144 || tmpExpected > 144) {
             let framerateRangeFault: ExpectedFrameRateRange = ExpectedFrameRateRange(min: 60, max: 120, expected: 60)
             return framerateRangeFault
         }
@@ -645,8 +647,9 @@ public class AnimatorResult <: RemoteDataLite {
     public func setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): Unit {
         let checkFrameRateRange = checkExpectedFrameRateRange(rateRange)
         unsafe {
-            let errCode = FfiAnimatorSetExpectedFrameRateRange(getID(), checkFrameRateRange.min, checkFrameRateRange.max,
-                checkFrameRateRange.expected)
+            let errCode = FfiAnimatorSetExpectedFrameRateRange(getID(), checkFrameRateRange.min ?? throw IllegalArgumentException("The type now is not supported."),
+                checkFrameRateRange.max ?? throw IllegalArgumentException("The type now is not supported."),
+                checkFrameRateRange.expected ?? throw IllegalArgumentException("The type now is not supported."))
             if (errCode != 0) {
                 throw BusinessException(errCode, "AnimatorResult setFramerate failed: Internal error.")
             }

@@ -20,30 +20,30 @@ import ohos.base.*
 
 sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
 
-    func customKeyboard(value!: CustomBuilder): RichEditorAttribute
+    func customKeyboard(value!: ?CustomBuilder): RichEditorAttribute
 
     func bindSelectionMenu(
-        spantype!: RichEditorSpanType,
-        content!: CustomBuilder,
-        responseType!: ResponseType,
-        options!: SelectionMenuOptions
+        spantype!: ?RichEditorSpanType,
+        content!: ?CustomBuilder,
+        responseType!: ?ResponseType,
+        options!: ?SelectionMenuOptions
     ): RichEditorAttribute
 
-    func copyOptions(value: CopyOptions): RichEditorAttribute
+    func copyOptions(value: ?CopyOptions): RichEditorAttribute
 
-    func onReady(callback: VoidCallback): RichEditorAttribute
+    func onReady(callback: ?VoidCallback): RichEditorAttribute
 
-    func aboutToIMEInput(callback: Callback<RichEditorInsertValue, Bool>): RichEditorAttribute
+    func aboutToIMEInput(callback: ?Callback<RichEditorInsertValue, Bool>): RichEditorAttribute
 
-    func onIMEInputComplete(callback: Callback<RichEditorTextSpanResult, Unit>): RichEditor
+    func onIMEInputComplete(callback: ?Callback<RichEditorTextSpanResult, Unit>): RichEditor
 
-    func onDeleteComplete(callback: VoidCallback): RichEditorAttribute
+    func onDeleteComplete(callback: ?VoidCallback): RichEditorAttribute
 
-    func aboutToDelete(callback: Callback<RichEditorDeleteValue, Bool>): RichEditorAttribute
+    func aboutToDelete(callback: ?Callback<RichEditorDeleteValue, Bool>): RichEditorAttribute
 
-    func onSelect(callback: Callback<RichEditorSelection, Unit>): RichEditorAttribute
+    func onSelect(callback: ?Callback<RichEditorSelection, Unit>): RichEditorAttribute
 
-    func onPaste(callback: PasteEventCallback): RichEditorAttribute
+    func onPaste(callback: ?PasteEventCallback): RichEditorAttribute
 
-    func onDidChange(callback: OnDidChangeCallback): RichEditorAttribute
+    func onDidChange(callback: ?OnDidChangeCallback): RichEditorAttribute
 }

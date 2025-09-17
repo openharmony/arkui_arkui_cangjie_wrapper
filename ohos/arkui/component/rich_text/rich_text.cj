@@ -41,10 +41,11 @@ public class RichText <: CommonMethodComponent<RichTextAttribute> & RichTextAttr
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(content: ResourceStr) {
-        var value = match (content) {
+    public init(content: ?ResourceStr) {
+        let tmpContent = content ?? throw IllegalArgumentException("The type now is not supported.")
+        var value = match (tmpContent) {
             case res: AppResource => getResourceString(res)
-            case _ => (content as String) ?? ""
+            case _ => (tmpContent as String) ?? ""
         }
         unsafe {
             try (cString = LibC.mallocCString(value).asResource()) {
@@ -64,8 +65,9 @@ public class RichText <: CommonMethodComponent<RichTextAttribute> & RichTextAttr
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onStart(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback)
+    public func onStart(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = Callback0Param<Unit>(tmpCallback)
         unsafe { FfiOHOSAceFrameworkRichTextOnStart(lambdaData.getID()) }
         this
     }
@@ -81,8 +83,9 @@ public class RichText <: CommonMethodComponent<RichTextAttribute> & RichTextAttr
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onComplete(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback)
+    public func onComplete(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = Callback0Param<Unit>(tmpCallback)
         unsafe { FfiOHOSAceFrameworkRichTextOnComplete(lambdaData.getID()) }
         this
     }

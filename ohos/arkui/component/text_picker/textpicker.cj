@@ -140,27 +140,28 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        range!: Array<String>,
+        range!: ?Array<String>,
         selected!: ?UInt32 = Option.None,
         value!: ?String = Option.None
     ) {
-        let vecFFi = FFIVectorString(range.size)
-        for (i in 0..range.size) {
-            vecFFi.setElement(i, range[i])
+        let tmpRange = range ?? throw IllegalArgumentException("The type now is not supported.")
+        let vecFFi = FFIVectorString(tmpRange.size)
+        for (i in 0..tmpRange.size) {
+            vecFFi.setElement(i, tmpRange[i])
         }
 
         var getSelected: UInt32 = 0
         match (selected) {
             case None => match (value) {
                 case None => getSelected = 0
-                case Some(v) => getSelected = checkSelect(range, v)
+                case Some(v) => getSelected = checkSelect(tmpRange, v)
             }
             case Some(v) => getSelected = v
         }
 
         var defValue: String = ""
         match (value) {
-            case None => defValue = range[0]
+            case None => defValue = tmpRange[0]
             case Some(v) => defValue = v
         }
         unsafe {
@@ -186,8 +187,9 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func defaultPickerItemHeight(value: Length): This {
-        var height = transAppResourceToLength(value)
+    public func defaultPickerItemHeight(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var height = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextPickerSetDefaultPickerItemHeight(height.value, height.unitType.getValue())
         }
@@ -207,9 +209,10 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func canLoop(value: Bool): This {
+    public func canLoop(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextPickerSetCanLoop(value)
+            FfiOHOSAceFrameworkTextPickerSetCanLoop(tmpValue)
         }
         this
     }
@@ -229,12 +232,13 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: OnTextPickerChangeCallback): This {
+    public func onChange(callback: ?OnTextPickerChangeCallback): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
             data: TextPickerResult =>
             let value = data.value.toString()
             let index = data.index
-            callback(value.toString(), index)
+            tmpCallback(value.toString(), index)
         }
         let lambdaData = CallbackTextPickerResult(wrapper);
         unsafe {

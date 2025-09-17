@@ -57,9 +57,10 @@ public class If <: UINodeBase {
         crossplatform: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func branchId(value: Int32): Unit {
+    public static func branchId(value: ?Int32): Unit {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkIfElseSetBranchId(value)
+            FfiOHOSAceFrameworkIfElseSetBranchId(tmpValue)
         }
     }
 

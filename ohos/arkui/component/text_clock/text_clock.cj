@@ -83,7 +83,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var locale: String
+    public var locale: ?String
 
     /**
      * Date display format. The value can be: "long", "short", "medium", "full", or "auto".
@@ -96,7 +96,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var dateStyle: String
+    public var dateStyle: ?String
 
     /**
      * Time display format. The value can be: "long", "short", "medium", "full", or "auto".
@@ -109,7 +109,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var timeStyle: String
+    public var timeStyle: ?String
 
     /**
      * Hour cycle. The value can be: "h11", "h12", "h23", or "h24".
@@ -122,7 +122,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var hourCycle: String
+    public var hourCycle: ?String
 
     /**
      * Time zone in use. The value is a valid IANA time zone ID.
@@ -135,7 +135,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var timeZone: String
+    public var timeZone: ?String
 
     /**
      * Numbering system. The value can be: "adlm", "ahom", "arab", "arabext", "bali", "beng", "bhks",
@@ -153,7 +153,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var numberingSystem: String
+    public var numberingSystem: ?String
 
     /**
      * Whether to use the 12-hour clock. The value true means to use the 12-hour clock, and the value false means the
@@ -168,7 +168,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var hour12: Bool
+    public var hour12: ?Bool
 
     /**
      * Week display format. The value can be: "long", "short", "narrow", or "auto".
@@ -181,7 +181,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var weekday: String
+    public var weekday: ?String
 
     /**
      * Epoch display format. The value can be: "long", "short", "narrow", or "auto".
@@ -194,7 +194,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var era: String
+    public var era: ?String
 
     /**
      * Year display format. The value can be: "numeric" or "2-digit".
@@ -207,7 +207,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var year: String
+    public var year: ?String
 
     /**
      * Month display format. The value can be: "numeric", "2-digit", "long", "short", "narrow", or "auto".
@@ -220,7 +220,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var month: String
+    public var month: ?String
 
     /**
      * Day display format. The value can be: "numeric" or "2-digit".
@@ -233,7 +233,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var day: String
+    public var day: ?String
 
     /**
      * Hour display format. The value can be: "numeric" or "2-digit".
@@ -246,7 +246,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var hour: String
+    public var hour: ?String
 
     /**
      * Minute display format. The value can be: "numeric" or "2-digit".
@@ -259,7 +259,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var minute: String
+    public var minute: ?String
 
     /**
      * Second display format. The value can be: "numeric" or "2-digit".
@@ -272,7 +272,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var second: String
+    public var second: ?String
 
     /**
      * Localized representation of a time zone name. The value can be: "long", "short", or "auto".
@@ -285,7 +285,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var timeZoneName: String
+    public var timeZoneName: ?String
 
     /**
      * Time period display format. The value can be: "long", "short", "narrow", or "auto".
@@ -298,7 +298,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var dayPeriod: String
+    public var dayPeriod: ?String
 
     /**
      * Locale matching algorithm. The value can be:
@@ -313,7 +313,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var localeMatcher: String
+    public var localeMatcher: ?String
 
     /**
      * Format matching algorithm. The value can be:
@@ -328,7 +328,7 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var formatMatcher: String
+    public var formatMatcher: ?String
 
     /**
      * DateTimeOptions Constructor.
@@ -338,31 +338,32 @@ public class DateTimeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(locale!: String = "zh-Hans-CN", dateStyle!: String = "long", timeStyle!: String = "long",
-        hourCycle!: String = "h11", timeZone!: String = "", numberingSystem!: String = "adlm", hour12!: Bool = false,
-        weekday!: String = "long", era!: String = "long", year!: String = "numeric", month!: String = "numeric",
-        day!: String = "numeric", hour!: String = "numeric", minute!: String = "numeric", second!: String = "numeric",
-        timeZoneName!: String = "long", dayPeriod!: String = "long", localeMatcher!: String = "lookup",
-        formatMatcher!: String = "basic") {
-        this.locale = locale
-        this.dateStyle = dateStyle
-        this.timeStyle = timeStyle
-        this.hourCycle = hourCycle
-        this.timeZone = timeZone
-        this.numberingSystem = numberingSystem
-        this.hour12 = hour12
-        this.weekday = weekday
-        this.era = era
-        this.year = year
-        this.month = month
-        this.day = day
-        this.hour = hour
-        this.minute = minute
-        this.second = second
-        this.timeZoneName = timeZoneName
-        this.dayPeriod = dayPeriod
-        this.localeMatcher = localeMatcher
-        this.formatMatcher = formatMatcher
+    public init(locale!: ?String = None, dateStyle!: ?String = None, timeStyle!: ?String = None,
+        hourCycle!: ?String = None, timeZone!: ?String = None, numberingSystem!: ?String = None, hour12!: ?Bool = None,
+        weekday!: ?String = None, era!: ?String = None, year!: ?String = None, month!: ?String = None,
+        day!: ?String = None, hour!: ?String = None, minute!: ?String = None, second!: ?String = None,
+        timeZoneName!: ?String = None, dayPeriod!: ?String = None, localeMatcher!: ?String = None,
+        formatMatcher!: ?String = None) {
+
+        this.locale = locale ?? "zh-Hans-CN"
+        this.dateStyle = dateStyle ?? "long"
+        this.timeStyle = timeStyle ?? "long"
+        this.hourCycle = hourCycle ?? "h11"
+        this.timeZone = timeZone ?? ""
+        this.numberingSystem = numberingSystem ?? "adlm"
+        this.hour12 = hour12 ?? false
+        this.weekday = weekday ?? "long"
+        this.era = era ?? "long"
+        this.year = year ?? "numeric"
+        this.month = month ?? "numeric"
+        this.day = day ?? "numeric"
+        this.hour = hour ?? "numeric"
+        this.minute = minute ?? "numeric"
+        this.second = second ?? "numeric"
+        this.timeZoneName = timeZoneName ?? "long"
+        this.dayPeriod = dayPeriod ?? "long"
+        this.localeMatcher = localeMatcher ?? "lookup"
+        this.formatMatcher = formatMatcher ?? "basic"
     }
 }
 
@@ -490,13 +491,14 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(timeZoneOffset!: ?Float32 = None, controller!: TextClockController = TextClockController()) {
+    public init(timeZoneOffset!: ?Float32 = None, controller!: ?TextClockController = None) {
+        let tmpController = controller ?? TextClockController()
         unsafe {
             match (timeZoneOffset) {
                 case Some(v) =>
-                    FfiOHOSAceFrameworkTextClockCreateV2(v, controller.getID())
+                    FfiOHOSAceFrameworkTextClockCreateV2(v, tmpController.getID())
                 case _ =>
-                    FfiOHOSAceFrameworkTextClockCreateSimple(controller.getID())
+                    FfiOHOSAceFrameworkTextClockCreateSimple(tmpController.getID())
             }
         }
     }
@@ -520,8 +522,9 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDateChange(callback: (Int64) -> Unit): This {
-        let lambdaData = Callback1Param<Int64, Unit>(callback)
+    public func onDateChange(callback: ?(Int64) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = Callback1Param<Int64, Unit>(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkTextClockOnChange(lambdaData.getID())
         }
@@ -546,8 +549,9 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func format(value: ResourceStr): This {
-        let value_ = transResourceStrToString(value)
+    public func format(value: ?ResourceStr): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let value_ = transResourceStrToString(tmpValue)
         unsafe {
             try (valueCString = LibC.mallocCString(value_).asResource()) {
                 FfiOHOSAceFrameworkTextClockFormat(valueCString.value)
@@ -568,8 +572,9 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontSize(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func fontSize(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextClockFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
         }
@@ -588,9 +593,10 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontColor(value: ResourceColor): This {
+    public func fontColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextClockTextColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkTextClockTextColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -607,9 +613,10 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontStyle(value: FontStyle): This {
+    public func fontStyle(value: ?FontStyle): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextClockFontStyle(value.getValue())
+            FfiOHOSAceFrameworkTextClockFontStyle(tmpValue.getValue())
         }
         this
     }
@@ -626,9 +633,10 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontWeight(value: FontWeight): This {
+    public func fontWeight(value: ?FontWeight): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            var unsafeFontWeight = LibC.mallocCString(value.getValue())
+            var unsafeFontWeight = LibC.mallocCString(tmpValue.getValue())
             FfiOHOSAceFrameworkTextClockFontWeight(unsafeFontWeight)
             LibC.free(unsafeFontWeight)
         }
@@ -647,8 +655,9 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontFamily(value: ResourceStr): This {
-        let value_ = transResourceStrToString(value)
+    public func fontFamily(value: ?ResourceStr): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let value_ = transResourceStrToString(tmpValue)
         unsafe {
             try (unsafeFontFamily = LibC.mallocCString(value_).asResource()) {
                 FfiOHOSAceFrameworkTextClockFontFamily(unsafeFontFamily.value)
@@ -669,10 +678,11 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textShadow(values: Array<ShadowOptions>): This {
-        let vecValueHandle = CJVectorNativeTextShadow(values.size)
-        for (i in 0..values.size) {
-            vecValueHandle.setElement(i, values[i].toNative())
+    public func textShadow(values: ?Array<ShadowOptions>): This {
+        let tmpValues = values ?? throw IllegalArgumentException("The type now is not supported.")
+        let vecValueHandle = CJVectorNativeTextShadow(tmpValues.size)
+        for (i in 0..tmpValues.size) {
+            vecValueHandle.setElement(i, tmpValues[i].toNative())
         }
         unsafe {
             FfiOHOSAceFrameworkTextClockTextShadowV2(vecValueHandle.getNativeHandle())
@@ -693,9 +703,11 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textShadow(value: ShadowOptions): This {
-        let thisShadow: NativeTextShadowV2 = NativeTextShadowV2(value.radius, value.offsetX, value.offsetY,
-            transAppResourceToResourceColor(value.color), value.fill, value.shadowType.getValue())
+    public func textShadow(value: ?ShadowOptions): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let thisShadow: NativeTextShadowV2 = NativeTextShadowV2(tmpValue.radius ?? throw IllegalArgumentException("The type now is not supported."),
+            tmpValue.offsetX ?? 0.0, tmpValue.offsetY ?? 0.0,
+            transAppResourceToResourceColor(tmpValue.color ?? Color.Black), tmpValue.fill ?? false, (tmpValue.shadowType ?? ShadowType.Color).getValue())
         let vecValueHandle = CJVectorNativeTextShadow(1)
         vecValueHandle.setElement(0, thisShadow)
         unsafe {

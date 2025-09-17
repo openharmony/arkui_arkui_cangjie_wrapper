@@ -21,9 +21,9 @@ import ohos.resource.*
 
 sealed interface QRCodeAttribute <: CommonMethod<QRCodeAttribute> {
 
-    func color(value: ResourceColor): QRCodeAttribute
+    func color(value: ?ResourceColor): QRCodeAttribute
 
-    func contentOpacity(value: Float64): QRCodeAttribute
+    func contentOpacity(value: ?Float64): QRCodeAttribute
 
-    func contentOpacity(value: AppResource): QRCodeAttribute
+    func contentOpacity(value: ?AppResource): QRCodeAttribute
 }

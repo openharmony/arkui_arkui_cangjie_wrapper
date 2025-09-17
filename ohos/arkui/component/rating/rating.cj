@@ -62,16 +62,17 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(rating!: Float64, indicator!: Bool = false) {
+    public init(rating!: ?Float64, indicator!: ?Bool = None) {
+        let tmpRating = rating ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRatingCreate(rating, indicator)
+            FfiOHOSAceFrameworkRatingCreate(tmpRating, indicator ?? false)
         }
     }
 
     /**
      * Called when the total number of stars is set.
      * 
-     * @param { Int32 } starCount
+     * @param { Int32 } value
      * @returns { This }
      * @relation stars(value: number): RatingAttribute
      */
@@ -80,9 +81,10 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func stars(starCount: Int32): This {
+    public func stars(value: ?Int32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRatingSetStars(starCount)
+            FfiOHOSAceFrameworkRatingSetStars(tmpValue)
         }
         this
     }
@@ -99,13 +101,14 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func stepSize(size: Float64): This {
+    public func stepSize(size: ?Float64): This {
+        let tmpSize = size ?? throw IllegalArgumentException("The type now is not supported.")
         // When the parameter value is less than or equal to 0, use the default value of 0.5
-        if (size <= 0.0) {
+        if (tmpSize <= 0.0) {
             return this
         }
         unsafe {
-            FfiOHOSAceFrameworkRatingSetStepSize(size)
+            FfiOHOSAceFrameworkRatingSetStepSize(tmpSize)
         }
         this
     }
@@ -124,10 +127,12 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func starStyle(backgroundUri!: ResourceStr, foregroundUri!: ResourceStr, secondaryUri!: ResourceStr = backgroundUri): This {
-        let backgroundUri_ = transResourceStrToString(backgroundUri)
-        let foregroundUri_ = transResourceStrToString(foregroundUri)
-        let secondaryUri_ = transResourceStrToString(secondaryUri)
+    public func starStyle(backgroundUri!: ?ResourceStr, foregroundUri!: ?ResourceStr, secondaryUri!: ?ResourceStr = None): This {
+        let tmpBackgroundUri = backgroundUri ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpForegroundUri = foregroundUri ?? throw IllegalArgumentException("The type now is not supported.")
+        let backgroundUri_ = transResourceStrToString(tmpBackgroundUri)
+        let foregroundUri_ = transResourceStrToString(tmpForegroundUri)
+        let secondaryUri_ = transResourceStrToString(secondaryUri ?? tmpBackgroundUri)
         unsafe {
             try (unsafeBackgroundUri = LibC.mallocCString(backgroundUri_).asResource(),
                 unsafeForegroundUri = LibC.mallocCString(backgroundUri_).asResource(),
@@ -151,9 +156,10 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (Float64) -> Unit): This {
+    public func onChange(callback: ?(Float64) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRatingSetOnChange(Callback1Param<Float64, Unit>(callback).getID())
+            FfiOHOSAceFrameworkRatingSetOnChange(Callback1Param<Float64, Unit>(tmpCallback).getID())
         }
         this
     }

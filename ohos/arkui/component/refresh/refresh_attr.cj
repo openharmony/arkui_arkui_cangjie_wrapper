@@ -20,7 +20,7 @@ import ohos.base.*
 
 sealed interface RefreshAttribute <: CommonMethod<RefreshAttribute> {
 
-    func onStateChange(callback: (RefreshStatus) -> Unit): RefreshAttribute
+    func onStateChange(callback: ?(RefreshStatus) -> Unit): RefreshAttribute
 
-    func onRefreshing(callback: () -> Unit): RefreshAttribute
+    func onRefreshing(callback: ?() -> Unit): RefreshAttribute
 }

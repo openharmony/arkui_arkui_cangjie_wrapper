@@ -85,7 +85,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var cancel: VoidCallback
+    public var cancel: ?VoidCallback
     /**
     * Defines if use auto cancel when click on the outside of the dialog.
     *
@@ -96,7 +96,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var autoCancel: Bool
+    public var autoCancel: ?Bool
     /**
     * Defines the dialog alignment of the screen.
     *
@@ -107,7 +107,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var alignment: DialogAlignment
+    public var alignment: ?DialogAlignment
     /**
     * Defines the dialog offset.
     *
@@ -118,7 +118,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offset: Offset
+    public var offset: ?Offset
     /**
     * Defines if use custom style.
     *
@@ -129,7 +129,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var customStyle: Bool
+    public var customStyle: ?Bool
     /**
     * Grid count of dialog.
     *
@@ -151,7 +151,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var maskColor: ResourceColor
+    public var maskColor: ?ResourceColor
     /**
     * Mask Region of dialog. The size cannot exceed the main window.
     *
@@ -162,7 +162,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var maskRect: Rectangle
+    public var maskRect: ?Rectangle
     /**
     * Animation parameters of dialog opening.
     *
@@ -195,7 +195,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var showInSubWindow: Bool
+    public var showInSubWindow: ?Bool
     /**
     * Background color of dialog.
     *
@@ -206,7 +206,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundColor: ResourceColor
+    public var backgroundColor: ?ResourceColor
     /**
     * Corner radius of dialog.
     *
@@ -217,7 +217,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var cornerRadius: Length
+    public var cornerRadius: ?Length
     /**
     * Whether it is a modal dialog
     *
@@ -228,7 +228,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var isModal: Bool
+    public var isModal: ?Bool
     /**
     * Callback function when the CustomDialog interactive dismiss.
     *
@@ -250,7 +250,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderWidth: Length
+    public var borderWidth: ?Length
     /**
     * Defines the custom dialog's border color.
     *
@@ -261,7 +261,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderColor: ResourceColor
+    public var borderColor: ?ResourceColor
     /**
     * Defines the custom dialog's border style.
     *
@@ -272,7 +272,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderStyle: EdgeStyles
+    public var borderStyle: ?EdgeStyles
     /**
     * Defines the custom dialog's width.
     *
@@ -316,7 +316,7 @@ public class CustomDialogControllerOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: BlurStyle
+    public var backgroundBlurStyle: ?BlurStyle
     /**
     * Defines the options of CustomDialogController.
     *
@@ -350,62 +350,62 @@ public class CustomDialogControllerOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        cancel!: VoidCallback = {=>},
-        autoCancel!: Bool = true,
-        alignment!: DialogAlignment = DialogAlignment.Default,
-        offset!: Offset = Offset(0.vp, 0.vp),
-        customStyle!: Bool = false,
+        cancel!: ?VoidCallback = None,
+        autoCancel!: ?Bool = None,
+        alignment!: ?DialogAlignment = None,
+        offset!: ?Offset = None,
+        customStyle!: ?Bool = None,
         gridCount!: ?UInt32 = None,
-        maskColor!: ResourceColor = Color(0x33000000),
-        maskRect!: Rectangle = Rectangle(),
+        maskColor!: ?ResourceColor = None,
+        maskRect!: ?Rectangle = None,
         openAnimation!: ?AnimateParam = None,
         closeAnimation!: ?AnimateParam = None,
-        showInSubWindow!: Bool = false,
-        backgroundColor!: ResourceColor = Color.Transparent,
-        cornerRadius!: Length = 32.vp,
-        isModal!: Bool = true,
+        showInSubWindow!: ?Bool = None,
+        backgroundColor!: ?ResourceColor = None,
+        cornerRadius!: ?Length = None,
+        isModal!: ?Bool = None,
         onWillDismiss!: ?Callback<DismissDialogAction, Unit> = None,
-        borderWidth!: Length = 0.vp,
-        borderColor!: ResourceColor = Color.Black,
-        borderStyle!: EdgeStyles = EdgeStyles(),
+        borderWidth!: ?Length = None,
+        borderColor!: ?ResourceColor = None,
+        borderStyle!: ?EdgeStyles = None,
         width!: ?Length = None,
         height!: ?Length = None,
         shadow!: ?ShadowOptions = None,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick
+        backgroundBlurStyle!: ?BlurStyle = None
     ) {
-        this.cancel = cancel
-        this.autoCancel = autoCancel
-        this.alignment = alignment
-        this.offset = offset
-        this.customStyle = customStyle
+        this.cancel = cancel ?? {=>}
+        this.autoCancel = autoCancel ?? true
+        this.alignment = alignment ?? DialogAlignment.Default
+        this.offset = offset ?? Offset(0.vp, 0.vp)
+        this.customStyle = customStyle ?? false
         this.gridCount = gridCount
-        this.maskColor = maskColor
-        this.maskRect = maskRect
+        this.maskColor = maskColor ?? Color(0x33000000)
+        this.maskRect = maskRect ?? Rectangle()
         this.openAnimation = openAnimation
         this.closeAnimation = closeAnimation
-        this.showInSubWindow = showInSubWindow
-        this.backgroundColor = backgroundColor
-        this.cornerRadius = cornerRadius
-        this.isModal = isModal
+        this.showInSubWindow = showInSubWindow ?? false
+        this.backgroundColor = backgroundColor ?? Color.Transparent
+        this.cornerRadius = cornerRadius ?? 32.vp
+        this.isModal = isModal ?? true
         this.onWillDismiss = onWillDismiss
         this.width = width
         this.height = height
-        this.borderWidth = borderWidth
-        this.borderColor = borderColor
-        this.borderStyle = borderStyle
+        this.borderWidth = borderWidth ?? 0.vp
+        this.borderColor = borderColor ?? Color.Black
+        this.borderStyle = borderStyle ?? EdgeStyles()
         this.shadow = shadow
-        this.backgroundBlurStyle = backgroundBlurStyle
+        this.backgroundBlurStyle = backgroundBlurStyle ?? BlurStyle.ComponentUltraThick
     }
 }
 
 func parseNativeShadowOptions(shadowOptions: ShadowOptions): NativeShadowOptions {
     return NativeShadowOptions(
-        shadowOptions.radius,
-        shadowOptions.shadowType.getValue(),
-        shadowOptions.color.toUInt32(),
-        shadowOptions.offsetX,
-        shadowOptions.offsetY,
-        shadowOptions.fill
+        shadowOptions.radius ?? throw IllegalArgumentException("The type now is not supported."),
+        (shadowOptions.shadowType ?? ShadowType.Color).getValue(),
+        (shadowOptions.color ?? Color.Black).toUInt32(),
+        shadowOptions.offsetX ?? 0.0,
+        shadowOptions.offsetY ?? 0.0,
+        shadowOptions.fill ?? false
     )
 }
 
@@ -440,7 +440,7 @@ public class CustomDialogController <: RemoteDataLite {
             case None => NativeOptionInt32(false, 0)
         }
 
-        let nativeBackgroundColor = NativeOptionUInt32(true, transAppResourceToResourceColor(options.backgroundColor))
+        let nativeBackgroundColor = NativeOptionUInt32(true, transAppResourceToResourceColor(options.backgroundColor ?? Color.Transparent))
 
         let openAnimation = match (options.openAnimation) {
             case Some(value) => NativeOptionAnimateParam(true, parseAnimateParam(value))
@@ -461,7 +461,7 @@ public class CustomDialogController <: RemoteDataLite {
                 NativeOptionCallBack(true, lambdaData.getID())
             case None => NativeOptionCallBack(false, 0)
         }
-        let nativeIsModal = NativeOptionBool(true, options.isModal)
+        let nativeIsModal = NativeOptionBool(true, options.isModal ?? true)
         let nativeWidth = match (options.width) {
             case Some(value) =>
                 var value_ = transAppResourceToLength(value)
@@ -474,33 +474,33 @@ public class CustomDialogController <: RemoteDataLite {
                 NativeOptionLength(true, NativeLength(value_.value, value_.unitType.getValue()))
             case None => NativeOptionLength(false, NativeLength(0.0, 0))
         }
-        var value_ = transAppResourceToLength(options.borderWidth)
+        var value_ = transAppResourceToLength(options.borderWidth ?? 0.vp)
         let nativeBorderWidth = NativeOptionLength(true, NativeLength(value_.value, value_.unitType.getValue()))
-        let nativeBorderColor = NativeOptionUInt32(true, transAppResourceToResourceColor(options.borderColor))
-        let nativeBorderStyle = NativeOptionEdgeStyle(true, options.borderStyle.toNative())
-        let nativeBackgroundBlurStyle = NativeOptionInt32(true, options.backgroundBlurStyle.getValue())
+        let nativeBorderColor = NativeOptionUInt32(true, transAppResourceToResourceColor(options.borderColor ?? Color.Black))
+        let nativeBorderStyle = NativeOptionEdgeStyle(true, (options.borderStyle ?? EdgeStyles()).toNative())
+        let nativeBackgroundBlurStyle = NativeOptionInt32(true, (options.backgroundBlurStyle ?? BlurStyle.ComponentUltraThick).getValue())
         let nativeOptionShadow = match (options.shadow) {
             case Some(value) => NativeOptionShadow(true, parseNativeShadowOptions(value))
             case None => NativeOptionShadow(false, parseNativeShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.Color)))
         }
-        let cancelLambda = Callback0Param<Unit>(options.cancel)
+        let cancelLambda = Callback0Param<Unit>(options.cancel ?? {=>})
         this.ffiCancel_ = cancelLambda
         return NativeCustomDialogControllerOptions(
             cancelLambda.getID(),
-            options.autoCancel,
-            options.alignment.getValue(),
-            parseOffset(options.offset),
-            options.customStyle,
+            options.autoCancel ?? true,
+            (options.alignment ?? DialogAlignment.Default).getValue(),
+            parseOffset(options.offset ?? Offset(0.vp, 0.vp)),
+            options.customStyle ?? false,
             nativeGridCount,
-            transAppResourceToResourceColor(options.maskColor),
-            options.maskRect.parseToNative(),
+            transAppResourceToResourceColor(options.maskColor ?? Color(0x33000000)),
+            (options.maskRect ?? Rectangle()).parseToNative(),
             openAnimation,
             closeAnimation,
-            options.showInSubWindow,
+            options.showInSubWindow ?? false,
             nativeBackgroundColor,
             NativeLength(
-                options.cornerRadius.value,
-                options.cornerRadius.unitType.getValue()
+                (options.cornerRadius ?? 32.vp).value,
+                (options.cornerRadius ?? 32.vp).unitType.getValue()
             ),
             nativeIsModal,
             nativeOnWillDismiss,
@@ -525,10 +525,11 @@ public class CustomDialogController <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: CustomDialogControllerOptions) {
+    public init(value: ?CustomDialogControllerOptions) {
         super(
             unsafe {
-                let nativeOptions = parseCustomDialogControllerOptions(value)
+                let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+                let nativeOptions = parseCustomDialogControllerOptions(tmpValue)
                 let id = FfiOHOSAceFrameworkCustomDialogControllerCtorV2(nativeOptions)
                 nativeOptions.free()
                 id
@@ -551,9 +552,10 @@ public class CustomDialogController <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func bindView(view: CustomView) {
+    public func bindView(view: ?CustomView) {
+        let tmpView = view ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCustomDialogControllerBindView(this.getID(), view.getView().getID())
+            FfiOHOSAceFrameworkCustomDialogControllerBindView(this.getID(), tmpView.getView().getID())
         }
     }
 

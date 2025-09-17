@@ -20,19 +20,19 @@ import ohos.base.*
 
 sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
 
-    func blockColor(value: ResourceColor): SliderAttribute
+    func blockColor(value: ?ResourceColor): SliderAttribute
 
-    func trackColor(value: ResourceColor): SliderAttribute
+    func trackColor(value: ?ResourceColor): SliderAttribute
 
-    func selectedColor(value: ResourceColor): SliderAttribute
+    func selectedColor(value: ?ResourceColor): SliderAttribute
 
-    func showSteps(value: Bool): SliderAttribute
+    func showSteps(value: ?Bool): SliderAttribute
 
-    func showTips(value: Bool, content!: ?ResourceStr): SliderAttribute
+    func showTips(value: ?Bool, content!: ?ResourceStr): SliderAttribute
 
-    func trackThickness(value: Length): SliderAttribute
+    func trackThickness(value: ?Length): SliderAttribute
 
-    func onChange(callback: (Float64, SliderChangeMode) -> Unit): SliderAttribute
+    func onChange(callback: ?(Float64, SliderChangeMode) -> Unit): SliderAttribute
 
-    func blockBorderColor(value: ResourceColor): SliderAttribute
+    func blockBorderColor(value: ?ResourceColor): SliderAttribute
 }

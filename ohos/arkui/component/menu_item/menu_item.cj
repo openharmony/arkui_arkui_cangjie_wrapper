@@ -92,18 +92,22 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(startIcon!: ResourceStr, content!: ResourceStr, endIcon!: ResourceStr, labelInfo!: ResourceStr,
+    public init(startIcon!: ?ResourceStr, content!: ?ResourceStr, endIcon!: ?ResourceStr, labelInfo!: ?ResourceStr,
         builder!: Option<() -> Unit> = None) {
+        let tmpStartIcon = startIcon ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpContent = content ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEndIcon = endIcon ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpLabelInfo = labelInfo ?? throw IllegalArgumentException("The type now is not supported.")
         let builderId = if (let Some(fn) <- builder) {
             Callback0Param<Unit>(fn).getID()
         } else {
             0
         }
         unsafe {
-            try (cstartIcon = LibC.mallocCString(transResourceMediaToString(startIcon)).asResource(),
-                ccontent = LibC.mallocCString(transResourceStrToString(content)).asResource(),
-                cendIcon = LibC.mallocCString(transResourceMediaToString(endIcon)).asResource(),
-                clabelInfo = LibC.mallocCString(transResourceStrToString(labelInfo)).asResource()) {
+            try (cstartIcon = LibC.mallocCString(transResourceMediaToString(tmpStartIcon)).asResource(),
+                ccontent = LibC.mallocCString(transResourceStrToString(tmpContent)).asResource(),
+                cendIcon = LibC.mallocCString(transResourceMediaToString(tmpEndIcon)).asResource(),
+                clabelInfo = LibC.mallocCString(transResourceStrToString(tmpLabelInfo)).asResource()) {
                 FfiOHOSAceFrameworkMenuItemCreateByOption(
                     cstartIcon.value,
                     ccontent.value,
@@ -127,9 +131,10 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selected(value: Bool): This {
+    public func selected(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkMenuItemIsSelected(value)
+            FfiOHOSAceFrameworkMenuItemIsSelected(tmpValue)
         }
         this
     }
@@ -146,9 +151,10 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectIcon(value: Bool): This {
+    public func selectIcon(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkMenuItemSelectIconByBool(value)
+            FfiOHOSAceFrameworkMenuItemSelectIconByBool(tmpValue)
         }
         this
     }
@@ -165,9 +171,10 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectIcon(value: ResourceStr): This {
+    public func selectIcon(value: ?ResourceStr): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (icon = LibC.mallocCString(transResourceMediaToString(value)).asResource()) {
+            try (icon = LibC.mallocCString(transResourceMediaToString(tmpValue)).asResource()) {
                 FfiOHOSAceFrameworkMenuItemSelectIconByResource(icon.value)
             }
         }
@@ -190,20 +197,22 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentFont(
-        size!: Length = 16.vp,
-        weight!: FontWeight = FontWeight.Normal,
-        family!: ResourceStr = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        family!: ?ResourceStr = None,
+        style!: ?FontStyle = None
     ): This {
+        let tmpWeight = weight ?? FontWeight.Normal
+        let tmpStyle = style ?? FontStyle.Normal
         unsafe {
-            try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
+            try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkMenuItemContentFont(
-                    transAppResourceToLength(size).value,
-                    transAppResourceToLength(size).unitType.getValue(),
+                    transAppResourceToLength(size ?? 16.vp).value,
+                    transAppResourceToLength(size ?? 16.vp).unitType.getValue(),
                     weightCString.value,
                     fontFamilyCString.value,
-                    style.getValue()
+                    tmpStyle.getValue()
                 )
             }
         }
@@ -222,9 +231,10 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func contentFontColor(value: ResourceColor): This {
+    public func contentFontColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let color = transAppResourceToResourceColor(value)
+            let color = transAppResourceToResourceColor(tmpValue)
             FfiOHOSAceFrameworkMenuItemContentFontColor(color.toUInt32())
         }
         this
@@ -246,20 +256,22 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func labelFont(
-        size!: Length = 16.vp,
-        weight!: FontWeight = FontWeight.Normal,
-        family!: ResourceStr = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        family!: ?ResourceStr = None,
+        style!: ?FontStyle = None
     ): This {
+        let tmpWeight = weight ?? FontWeight.Normal
+        let tmpStyle = style ?? FontStyle.Normal
         unsafe {
-            try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
+            try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkMenuItemLabelFont(
-                    transAppResourceToLength(size).value,
-                    transAppResourceToLength(size).unitType.getValue(),
+                    transAppResourceToLength(size ?? 16.vp).value,
+                    transAppResourceToLength(size ?? 16.vp).unitType.getValue(),
                     weightCString.value,
                     fontFamilyCString.value,
-                    style.getValue()
+                    tmpStyle.getValue()
                 )
             }
         }
@@ -278,9 +290,10 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func labelFontColor(value: ResourceColor): This {
+    public func labelFontColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let color = transAppResourceToResourceColor(value)
+            let color = transAppResourceToResourceColor(tmpValue)
             FfiOHOSAceFrameworkMenuItemLabelFontColor(color.toUInt32())
         }
         this
@@ -298,8 +311,9 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (Bool) -> Unit): This {
-        let lambdaData = Callback1Param<Bool, Unit>(callback)
+    public func onChange(callback: ?(Bool) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = Callback1Param<Bool, Unit>(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkMenuItemOnChange(lambdaData.getID())
         }

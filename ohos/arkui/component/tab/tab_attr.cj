@@ -21,27 +21,27 @@ import ohos.resource.*
 
 sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
 
-    func barWidth(value: Length): TabsAttribute
+    func barWidth(value: ?Length): TabsAttribute
 
-    func barHeight(value: Length): TabsAttribute
+    func barHeight(value: ?Length): TabsAttribute
 
-    func vertical(value: Bool): TabsAttribute
+    func vertical(value: ?Bool): TabsAttribute
 
-    func scrollable(value: Bool): TabsAttribute
+    func scrollable(value: ?Bool): TabsAttribute
 
-    func barMode(value: BarMode): TabsAttribute
+    func barMode(value: ?BarMode): TabsAttribute
 
-    func animationDuration(value: Float32): TabsAttribute
+    func animationDuration(value: ?Float32): TabsAttribute
 
-    func onChange(event: Callback<Int32, Unit>): TabsAttribute
+    func onChange(event: ?Callback<Int32, Unit>): TabsAttribute
 }
 
 
 sealed interface TabContentAttribute <: CommonMethod<TabContentAttribute> {
 
-    func tabBar(content: ResourceStr): TabContentAttribute
+    func tabBar(content: ?ResourceStr): TabContentAttribute
 
-    func tabBar(icon!: ResourceStr, text!: ResourceStr): TabContentAttribute
+    func tabBar(icon!: ?ResourceStr, text!: ?ResourceStr): TabContentAttribute
 
-    func tabBar(content: CustomBuilder): TabContentAttribute
+    func tabBar(content: ?CustomBuilder): TabContentAttribute
 }

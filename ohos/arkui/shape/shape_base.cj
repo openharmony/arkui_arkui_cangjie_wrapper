@@ -61,9 +61,10 @@ public abstract class BaseShape <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fill(color: ResourceColor): This {
+    public func fill(color: ?ResourceColor): This {
+        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkShapeSetInsFill(getID(), transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkShapeSetInsFill(getID(), transAppResourceToResourceColor(tmpColor))
         }
         this
     }
@@ -80,8 +81,9 @@ public abstract class BaseShape <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func width(width: Length): This {
-        var value_ = transAppResourceToLength(width)
+    public func width(width: ?Length): This {
+        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpWidth)
         unsafe {
             FfiOHOSAceFrameworkShapeSetInsWidth(getID(), value_.value, value_.unitType.getValue())
         }
@@ -100,8 +102,9 @@ public abstract class BaseShape <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func height(height: Length): This {
-        var value_ = transAppResourceToLength(height)
+    public func height(height: ?Length): This {
+        let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpHeight)
         unsafe {
             FfiOHOSAceFrameworkShapeSetInsHeight(getID(), value_.value, value_.unitType.getValue())
         }
@@ -121,9 +124,11 @@ public abstract class BaseShape <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func size(width!: Length, height!: Length): This {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
+    public func size(width!: ?Length, height!: ?Length): This {
+        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
+        var width_ = transAppResourceToLength(tmpWidth)
+        var height_ = transAppResourceToLength(tmpHeight)
         unsafe {
             FfiOHOSAceFrameworkShapeSetInsSize(getID(), width_.value, width_.unitType.getValue(), height_.value,
                 height_.unitType.getValue())
@@ -144,9 +149,11 @@ public abstract class BaseShape <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func offset(x!: Length, y!: Length): This {
-        var x_ = transAppResourceToLength(x)
-        var y_ = transAppResourceToLength(y)
+    public func offset(x!: ?Length, y!: ?Length): This {
+        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+        var x_ = transAppResourceToLength(tmpX)
+        var y_ = transAppResourceToLength(tmpY)
         unsafe {
             FfiOHOSAceFrameworkShapeSetInsOffset(getID(), x_.value, x_.unitType.getValue(), y_.value,
                 y_.unitType.getValue())

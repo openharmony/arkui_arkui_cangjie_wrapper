@@ -21,31 +21,31 @@ import ohos.resource.*
 
 sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
 
-    func muted(value: Bool): VideoAttribute
+    func muted(value: ?Bool): VideoAttribute
 
-    func autoPlay(value: Bool): VideoAttribute
+    func autoPlay(value: ?Bool): VideoAttribute
 
-    func controls(value: Bool): VideoAttribute
+    func controls(value: ?Bool): VideoAttribute
 
-    func objectFit(value: ImageFit): VideoAttribute
+    func objectFit(value: ?ImageFit): VideoAttribute
 
-    func loop(value: Bool): VideoAttribute
+    func loop(value: ?Bool): VideoAttribute
 
-    func onStart(event: VoidCallback): VideoAttribute
+    func onStart(event: ?VoidCallback): VideoAttribute
 
-    func onPause(event: VoidCallback): VideoAttribute
+    func onPause(event: ?VoidCallback): VideoAttribute
 
-    func onFinish(event: () -> Unit): VideoAttribute
+    func onFinish(event: ?() -> Unit): VideoAttribute
 
-    func onError(event: VoidCallback): VideoAttribute
+    func onError(event: ?VoidCallback): VideoAttribute
 
-    func onPrepared(callback: Callback<PreparedInfo, Unit>): VideoAttribute
+    func onPrepared(callback: ?Callback<PreparedInfo, Unit>): VideoAttribute
 
-    func onSeeking(callback: Callback<PlaybackInfo, Unit>): VideoAttribute
+    func onSeeking(callback: ?Callback<PlaybackInfo, Unit>): VideoAttribute
 
-    func onSeeked(callback: Callback<PlaybackInfo, Unit>): VideoAttribute
+    func onSeeked(callback: ?Callback<PlaybackInfo, Unit>): VideoAttribute
 
-    func onUpdate(callback: Callback<PlaybackInfo, Unit>): VideoAttribute
+    func onUpdate(callback: ?Callback<PlaybackInfo, Unit>): VideoAttribute
 
-    func onFullscreenChange(callback: Callback<FullscreenInfo, Unit>): VideoAttribute
+    func onFullscreenChange(callback: ?Callback<FullscreenInfo, Unit>): VideoAttribute
 }

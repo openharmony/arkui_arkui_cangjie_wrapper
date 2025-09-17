@@ -58,9 +58,10 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fill(value: ResourceColor): T {
+    public func fill(value: ?ResourceColor): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkShapeSetFill(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkShapeSetFill(transAppResourceToResourceColor(tmpValue))
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -77,9 +78,10 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fillOpacity(value: Float64): T {
+    public func fillOpacity(value: ?Float64): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkShapeSetFillOpacity(value)
+            FfiOHOSAceFrameworkShapeSetFillOpacity(tmpValue)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -95,8 +97,9 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fillOpacity(value: AppResource): T {
-        var dimension: Length = getResourceLength(value)
+    public func fillOpacity(value: ?AppResource): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var dimension: Length = getResourceLength(tmpValue)
         fillOpacity(dimension.value)
     }
 
@@ -112,9 +115,10 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func stroke(value: ResourceColor): T {
+    public func stroke(value: ?ResourceColor): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkShapeSetStroke(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkShapeSetStroke(transAppResourceToResourceColor(tmpValue))
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -131,12 +135,13 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeDashArray(value: Array<Length>): T {
-        let vecValueHandle = FFIVectorFloat64(value.size)
-        let vecUnitHandle = FFIVectorInt32(value.size)
-        for (i in 0..value.size) {
-            vecValueHandle.setElement(i, value[i].value)
-            vecUnitHandle.setElement(i, value[i].unitType.getValue())
+    public func strokeDashArray(value: ?Array<Length>): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let vecValueHandle = FFIVectorFloat64(tmpValue.size)
+        let vecUnitHandle = FFIVectorInt32(tmpValue.size)
+        for (i in 0..tmpValue.size) {
+            vecValueHandle.setElement(i, tmpValue[i].value)
+            vecUnitHandle.setElement(i, tmpValue[i].unitType.getValue())
         }
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeDashArray(
@@ -161,8 +166,9 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeDashOffset(value: Length): T {
-        var dashOffset_ = transAppResourceToLength(value)
+    public func strokeDashOffset(value: ?Length): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var dashOffset_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeDashOffset(dashOffset_.value, dashOffset_.unitType.getValue())
         }
@@ -181,9 +187,10 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeLineCap(value: LineCapStyle): T {
+    public func strokeLineCap(value: ?LineCapStyle): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkShapeSetStrokeLineCap(value.getValue())
+            FfiOHOSAceFrameworkShapeSetStrokeLineCap(tmpValue.getValue())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -200,9 +207,10 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeLineJoin(value: LineJoinStyle): T {
+    public func strokeLineJoin(value: ?LineJoinStyle): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkShapeSetStrokeLineJoin(value.getValue())
+            FfiOHOSAceFrameworkShapeSetStrokeLineJoin(tmpValue.getValue())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -219,9 +227,10 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeMiterLimit(miterLimit: Float64): T {
+    public func strokeMiterLimit(miterLimit: ?Float64): T {
+        let tmpMiterLimit = miterLimit ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkShapeSetStrokeMiterLimit(miterLimit)
+            FfiOHOSAceFrameworkShapeSetStrokeMiterLimit(tmpMiterLimit)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -238,9 +247,10 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeOpacity(value: Float64): T {
+    public func strokeOpacity(value: ?Float64): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkShapeSetStrokeOpacity(value)
+            FfiOHOSAceFrameworkShapeSetStrokeOpacity(tmpValue)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -256,8 +266,9 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeOpacity(value: AppResource): T {
-        var dimension: Length = getResourceLength(value)
+    public func strokeOpacity(value: ?AppResource): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var dimension: Length = getResourceLength(tmpValue)
         strokeOpacity(dimension.value)
     }
 
@@ -273,8 +284,9 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeWidth(value: Length): T {
-        var value_ = transAppResourceToLength(value)
+    public func strokeWidth(value: ?Length): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeWidth(value_.value, value_.unitType.getValue())
         }
@@ -293,9 +305,10 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func antiAlias(value: Bool): T {
+    public func antiAlias(value: ?Bool): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkShapeSetAntiAlias(value)
+            FfiOHOSAceFrameworkShapeSetAntiAlias(tmpValue)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }

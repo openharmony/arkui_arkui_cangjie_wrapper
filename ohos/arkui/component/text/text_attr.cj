@@ -21,34 +21,34 @@ import ohos.resource.*
 
 sealed interface TextAttribute <: CommonMethod<TextAttribute> {
 
-    func lineSpacing(value: Length): TextAttribute
+    func lineSpacing(value: ?Length): TextAttribute
 
-    func fontSize(value: Length): TextAttribute
+    func fontSize(value: ?Length): TextAttribute
 
-    func maxFontSize(value: Length): TextAttribute
+    func maxFontSize(value: ?Length): TextAttribute
 
-    func minFontSize(value: Length): TextAttribute
+    func minFontSize(value: ?Length): TextAttribute
 
-    func fontColor(value: ResourceColor): TextAttribute
+    func fontColor(value: ?ResourceColor): TextAttribute
 
-    func fontStyle(value: FontStyle): TextAttribute
+    func fontStyle(value: ?FontStyle): TextAttribute
 
-    func fontWeight(value: FontWeight): TextAttribute
+    func fontWeight(value: ?FontWeight): TextAttribute
 
-    func fontFamily(value: ResourceStr): TextAttribute
+    func fontFamily(value: ?ResourceStr): TextAttribute
 
-    func textAlign(value: TextAlign): TextAttribute
+    func textAlign(value: ?TextAlign): TextAttribute
 
-    func textOverflow(value: TextOverflow): TextAttribute
+    func textOverflow(value: ?TextOverflow): TextAttribute
 
-    func maxLines(value: Int32): TextAttribute
+    func maxLines(value: ?Int32): TextAttribute
 
-    func lineHeight(value: Length): TextAttribute
+    func lineHeight(value: ?Length): TextAttribute
 
-    func decoration(decorationType!: TextDecorationType, color!: ResourceColor,
-        decorationStyle!: TextDecorationStyle): TextAttribute
+    func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor,
+        decorationStyle!: ?TextDecorationStyle): TextAttribute
 
-    func baselineOffset(value: Length): TextAttribute
+    func baselineOffset(value: ?Length): TextAttribute
 
-    func textCase(value: TextCase): TextAttribute
+    func textCase(value: ?TextCase): TextAttribute
 }

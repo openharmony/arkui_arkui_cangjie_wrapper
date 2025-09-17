@@ -188,15 +188,20 @@ public class Color <: ResourceColor {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(red: UInt8, green: UInt8, blue: UInt8, alpha!: Float32 = 1.0) {
+    public init(red: ?UInt8, green: ?UInt8, blue: ?UInt8, alpha!: ?Float32 = None) {
+        let tmpRed = red ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpGreen = green ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpBlue = blue ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpAlpha = alpha ?? 1.0
+        
         let a: UInt32 = match {
-            case alpha > 1.0 => 0xff
-            case alpha < 0.0 => 0
-            case _ => UInt32(alpha * Float32(0xff))
+            case tmpAlpha > 1.0 => 0xff
+            case tmpAlpha < 0.0 => 0
+            case _ => UInt32(tmpAlpha * Float32(0xff))
         } << 24
-        let r: UInt32 = UInt32(red) << 16
-        let g: UInt32 = UInt32(green) << 8
-        let b: UInt32 = UInt32(blue)
+        let r: UInt32 = UInt32(tmpRed) << 16
+        let g: UInt32 = UInt32(tmpGreen) << 8
+        let b: UInt32 = UInt32(tmpBlue)
         this.value_ = a + r + g + b
     }
 
@@ -210,8 +215,9 @@ public class Color <: ResourceColor {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: UInt32) {
-        this.value_ = alphaAdapt(value)
+    public init(value: ?UInt32) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        this.value_ = alphaAdapt(tmpValue)
     }
 
     protected static func alphaAdapt(origin: UInt32): UInt32 {

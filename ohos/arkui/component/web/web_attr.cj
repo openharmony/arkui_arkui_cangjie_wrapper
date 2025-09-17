@@ -22,37 +22,37 @@ import ohos.web.webview.*
 
 sealed interface WebAttribute <: CommonMethod<WebAttribute> {
 
-    func fileAccess(fileAccess: Bool): WebAttribute
+    func fileAccess(fileAccess: ?Bool): WebAttribute
 
-    func domStorageAccess(domStorageAccess: Bool): WebAttribute
+    func domStorageAccess(domStorageAccess: ?Bool): WebAttribute
 
-    func imageAccess(imageAccess: Bool): WebAttribute
+    func imageAccess(imageAccess: ?Bool): WebAttribute
 
-    func onlineImageAccess(onlineImageAccess: Bool): WebAttribute
+    func onlineImageAccess(onlineImageAccess: ?Bool): WebAttribute
 
-    func mixedMode(mixedMode: MixedMode): WebAttribute
+    func mixedMode(mixedMode: ?MixedMode): WebAttribute
 
-    func zoomAccess(zoomAccess: Bool): WebAttribute
+    func zoomAccess(zoomAccess: ?Bool): WebAttribute
 
-    func geolocationAccess(geolocationAccess: Bool): WebAttribute
+    func geolocationAccess(geolocationAccess: ?Bool): WebAttribute
 
-    func verticalScrollBarAccess(verticalScrollBar: Bool): WebAttribute
+    func verticalScrollBarAccess(verticalScrollBar: ?Bool): WebAttribute
 
     func nestedScroll(
-        scrollForward!: NestedScrollMode,
-        scrollBackward!: NestedScrollMode
+        scrollForward!: ?NestedScrollMode,
+        scrollBackward!: ?NestedScrollMode
     ): WebAttribute
 
-    func onLoadIntercept(callback: Callback<OnLoadInterceptEvent, Bool>): WebAttribute
+    func onLoadIntercept(callback: ?Callback<OnLoadInterceptEvent, Bool>): WebAttribute
 
-    func onPageBegin(callback: Callback<OnPageBeginEvent, Unit>): WebAttribute
+    func onPageBegin(callback: ?Callback<OnPageBeginEvent, Unit>): WebAttribute
 
-    func onPageEnd(callback: Callback<OnPageEndEvent, Unit>): WebAttribute
+    func onPageEnd(callback: ?Callback<OnPageEndEvent, Unit>): WebAttribute
 
-    func javaScriptProxy(funcList!: Array<(String) -> String>, name!: String, methodList!: Array<String>,
-        controller!: WebviewController): WebAttribute
+    func javaScriptProxy(funcList!: ?Array<(String) -> String>, name!: ?String, methodList!: ?Array<String>,
+        controller!: ?WebviewController): WebAttribute
 
-    func darkMode(mode: WebDarkMode): WebAttribute
+    func darkMode(mode: ?WebDarkMode): WebAttribute
 
-    func forceDarkAccess(access: Bool): WebAttribute
+    func forceDarkAccess(access: ?Bool): WebAttribute
 }

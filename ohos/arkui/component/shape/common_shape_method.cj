@@ -25,29 +25,29 @@ import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 
 public interface CommonShapeMethod<T> <: CommonMethod<T> {
-    func fill(value: ResourceColor): T
+    func fill(value: ?ResourceColor): T
 
-    func fillOpacity(value: Float64): T
+    func fillOpacity(value: ?Float64): T
 
-    func fillOpacity(value: AppResource): T
+    func fillOpacity(value: ?AppResource): T
 
-    func stroke(value: ResourceColor): T
+    func stroke(value: ?ResourceColor): T
 
-    func strokeDashArray(value: Array<Length>): T
+    func strokeDashArray(value: ?Array<Length>): T
 
-    func strokeDashOffset(value: Length): T
+    func strokeDashOffset(value: ?Length): T
 
-    func strokeLineCap(value: LineCapStyle): T
+    func strokeLineCap(value: ?LineCapStyle): T
 
-    func strokeLineJoin(value: LineJoinStyle): T
+    func strokeLineJoin(value: ?LineJoinStyle): T
 
-    func strokeMiterLimit(miterLimit: Float64): T
+    func strokeMiterLimit(miterLimit: ?Float64): T
 
-    func strokeOpacity(value: Float64): T
+    func strokeOpacity(value: ?Float64): T
 
-    func strokeOpacity(value: AppResource): T
+    func strokeOpacity(value: ?AppResource): T
 
-    func strokeWidth(value: Length): T
+    func strokeWidth(value: ?Length): T
 
-    func antiAlias(value: Bool): T
+    func antiAlias(value: ?Bool): T
 }

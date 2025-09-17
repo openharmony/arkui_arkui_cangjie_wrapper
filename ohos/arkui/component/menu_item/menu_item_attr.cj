@@ -21,29 +21,29 @@ import ohos.resource.*
 
 sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
 
-    func selected(value: Bool): MenuItemAttribute
+    func selected(value: ?Bool): MenuItemAttribute
 
-    func selectIcon(value: Bool): MenuItemAttribute
+    func selectIcon(value: ?Bool): MenuItemAttribute
 
-    func selectIcon(value: ResourceStr): MenuItemAttribute
+    func selectIcon(value: ?ResourceStr): MenuItemAttribute
 
     func contentFont(
-        size!: Length,
-        weight!: FontWeight,
-        family!: ResourceStr,
-        style!: FontStyle
+        size!: ?Length,
+        weight!: ?FontWeight,
+        family!: ?ResourceStr,
+        style!: ?FontStyle
     ): MenuItemAttribute
 
-    func contentFontColor(value: ResourceColor): MenuItemAttribute
+    func contentFontColor(value: ?ResourceColor): MenuItemAttribute
 
     func labelFont(
-        size!: Length,
-        weight!: FontWeight,
-        family!: ResourceStr,
-        style!: FontStyle
+        size!: ?Length,
+        weight!: ?FontWeight,
+        family!: ?ResourceStr,
+        style!: ?FontStyle
     ): MenuItemAttribute
 
-    func labelFontColor(value: ResourceColor): MenuItemAttribute
+    func labelFontColor(value: ?ResourceColor): MenuItemAttribute
 
-    func onChange(callback: (Bool) -> Unit): MenuItemAttribute
+    func onChange(callback: ?(Bool) -> Unit): MenuItemAttribute
 }

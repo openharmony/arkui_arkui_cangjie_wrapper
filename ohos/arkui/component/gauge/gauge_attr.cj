@@ -21,25 +21,25 @@ import ohos.base.*
 
 sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
 
-    func value(value: Float32): GaugeAttribute
+    func value(value: ?Float32): GaugeAttribute
 
-    func startAngle(angle: Float64): GaugeAttribute
+    func startAngle(angle: ?Float64): GaugeAttribute
 
-    func endAngle(angle: Float64): GaugeAttribute
+    func endAngle(angle: ?Float64): GaugeAttribute
 
-    func colors(value: Array<(ResourceColor, Float32)>): GaugeAttribute
+    func colors(value: ?Array<(ResourceColor, Float32)>): GaugeAttribute
 
-    func colors(value: Array<(LinearGradient, Float32)>): GaugeAttribute
+    func colors(value: ?Array<(LinearGradient, Float32)>): GaugeAttribute
 
-    func colors(value: ResourceColor): GaugeAttribute
+    func colors(value: ?ResourceColor): GaugeAttribute
 
-    func colors(value: LinearGradient): GaugeAttribute
+    func colors(value: ?LinearGradient): GaugeAttribute
 
-    func strokeWidth(length: Length): GaugeAttribute
+    func strokeWidth(length: ?Length): GaugeAttribute
 
-    func trackShadow(radius!: Float64, offsetX!: Float64, offsetY!: Float64): GaugeAttribute
+    func trackShadow(radius!: ?Float64, offsetX!: ?Float64, offsetY!: ?Float64): GaugeAttribute
 
-    func indicator(icon!: ResourceStr, space!: Length): GaugeAttribute
+    func indicator(icon!: ?ResourceStr, space!: ?Length): GaugeAttribute
 
-    func description(builder: () -> Unit): GaugeAttribute
+    func description(builder: ?() -> Unit): GaugeAttribute
 }

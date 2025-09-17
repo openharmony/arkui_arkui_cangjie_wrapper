@@ -351,7 +351,7 @@ public class NavigationOptions {
      * @type { LaunchMode }
      * @relation launchMode?: LaunchMode
      */
-    public var launchMode: LaunchMode
+    public var launchMode: ?LaunchMode
 
     /**
      * Whether to support transition animation.
@@ -362,7 +362,7 @@ public class NavigationOptions {
      * @type { Bool }
      * @relation animated?: boolean
      */
-    public var animated: Bool
+    public var animated: ?Bool
     /**
      * Constructor of NavigationOptions
      * @param { ?LaunchMode } launchMode
@@ -374,8 +374,8 @@ public class NavigationOptions {
     }
     func getNative(): CJNavOptions {
         return CJNavOptions(
-            launchMode.getValue(),
-            animated
+            (launchMode ?? LaunchMode.Standard).getValue(),
+            animated ?? true
         )
     }
 }
@@ -450,7 +450,7 @@ public class NavPathInfo <: FFIData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var name: String
+    public var name: ?String
     /**
      * Detailed parameters of the navigation destination page.
      *
@@ -462,7 +462,7 @@ public class NavPathInfo <: FFIData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var param: String
+    public var param: ?String
 
     public var onPop: ?Callback<PopInfo, Unit> = None
     /**
@@ -477,9 +477,9 @@ public class NavPathInfo <: FFIData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(name!: String, param!: String, onPop!: ?Callback<PopInfo, Unit> = None) {
-        this.name = name
-        this.param = param
+    public init(name!: ?String, param!: ?String, onPop!: ?Callback<PopInfo, Unit> = None) {
+        this.name = name ?? throw IllegalArgumentException("The type now is not supported.")
+        this.param = param ?? throw IllegalArgumentException("The type now is not supported.")
         this.onPop = onPop
         registerSelf()
     }
@@ -503,8 +503,8 @@ public class NavPathInfo <: FFIData {
 
             return CJNavPathInfo(
                 this.getID(),
-                LibC.mallocCString(name),
-                LibC.mallocCString(param),
+                LibC.mallocCString(name ?? throw IllegalArgumentException("The type now is not supported.")),
+                LibC.mallocCString(param ?? throw IllegalArgumentException("The type now is not supported.")),
                 onPopId,
                 onPopValid,
                 -1,
@@ -578,8 +578,9 @@ public class NavPathStack <: RemoteData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func pushPath(info: NavPathInfo, animated!: ?Bool = None) {
-        pushPath(info, options: NavigationOptions(animated: animated ?? true))
+    public func pushPath(info: ?NavPathInfo, animated!: ?Bool = None) {
+        let tmpInfo = info ?? throw IllegalArgumentException("The type now is not supported.")
+        pushPath(tmpInfo, options: NavigationOptions(animated: animated ?? true))
     }
 
     public func pushPath(info: NavPathInfo, options!: NavigationOptions): Unit {
@@ -600,8 +601,10 @@ public class NavPathStack <: RemoteData {
      * <br>**true**: The transition animation is supported. **false**: The transition animation is not supported.
      * @relation pushPathByName(name: string, param: unknown, animated?: boolean): void
      */
-    public func pushPathByName(name: String, param: String, animated!: ?Bool = None) {
-        pushPath(NavPathInfo(name: name, param: param), animated: animated)
+    public func pushPathByName(name: ?String, param: ?String, animated!: ?Bool = None) {
+        let tmpName = name ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpParam = param ?? throw IllegalArgumentException("The type now is not supported.")
+        pushPath(NavPathInfo(name: tmpName, param: tmpParam), animated: animated)
     }
 
     /**
@@ -676,9 +679,10 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(pathInfos: NavPathStack, child!: () -> Unit = { => }) {
+    public init(pathInfos: ?NavPathStack, child!: () -> Unit = { => }) {
+        let tmpPathInfos = pathInfos ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkNavigationCreateWithPathInfos(pathInfos.getID())
+            FfiOHOSAceFrameworkNavigationCreateWithPathInfos(tmpPathInfos.getID())
         }
         this.child = child
     }
@@ -690,9 +694,10 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
      * @returns { Navigation } Returns the instance of the Navigation.
      * @relation navDestination(builder: (name: string, param: unknown) => void): NavigationAttribute
      */
-    public func navDestination(builder: (String) -> Unit): This {
+    public func navDestination(builder: ?(String) -> Unit): This {
+        let tmpBuilder = builder ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = { value: CString =>
-            builder(value.toString())
+            tmpBuilder(value.toString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -708,7 +713,8 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
      * @returns { Navigation }
      * @relation title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions): NavigationAttribute
      */
-    public func title(value: ResourceStr, options!: ?NavigationTitleOptions = None): This {
+    public func title(value: ?ResourceStr, options!: ?NavigationTitleOptions = None): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         var opt = CJNavigationTitleOptions()
         var withOpt = false
         if (let Some(v) <- options) {
@@ -716,7 +722,7 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
             withOpt = true
         }
         unsafe {
-            try (cTitle = LibC.mallocCString(transResourceStrToString(value)).asResource()) {
+            try (cTitle = LibC.mallocCString(transResourceStrToString(tmpValue)).asResource()) {
                 FfiOHOSAceFrameworkNavigationSetTitleWithOptions(cTitle.value, withOpt, opt)
             }
         }
@@ -731,7 +737,8 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
      * @returns { Navigation }
      * @relation title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions): NavigationAttribute
      */
-    public func title(value: CustomBuilder, options!: ?NavigationTitleOptions = None): This {
+    public func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions = None): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         var opt = CJNavigationTitleOptions()
         var withOpt = false
         if (let Some(v) <- options) {
@@ -740,7 +747,7 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
         }
         unsafe {
             FfiOHOSAceFrameworkNavigationSetTitleWithBuilderWithOptions(
-                Callback0Param<Unit>(value).getID(), withOpt, opt)
+                Callback0Param<Unit>(tmpValue).getID(), withOpt, opt)
         }
         this
     }
@@ -755,9 +762,10 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
      * @returns { NavigationAttribute }
      * @relation hideTitleBar(hide: boolean, animated: boolean): NavigationAttribute
      */
-    public func hideTitleBar(hide: Bool, animated!: ?Bool = None): This {
+    public func hideTitleBar(hide: ?Bool, animated!: ?Bool = None): This {
+        let tmpHide = hide ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkNavigationSetHideTitleBarWithAnimated(hide, animated ?? false)
+            FfiOHOSAceFrameworkNavigationSetHideTitleBarWithAnimated(tmpHide, animated ?? false)
         }
         this
     }

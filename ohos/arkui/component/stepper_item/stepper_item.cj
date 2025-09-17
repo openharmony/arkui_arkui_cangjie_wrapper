@@ -72,9 +72,10 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func prevLabel(value: String): This {
+    public func prevLabel(value: ?String): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (valueCString = LibC.mallocCString(value).asResource()) {
+            try (valueCString = LibC.mallocCString(tmpValue).asResource()) {
                 FfiOHOSAceFrameworkStepperItemSetPrevLabel(valueCString.value)
             }
         }
@@ -93,9 +94,10 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func nextLabel(value: String): This {
+    public func nextLabel(value: ?String): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (valueCString = LibC.mallocCString(value).asResource()) {
+            try (valueCString = LibC.mallocCString(tmpValue).asResource()) {
                 FfiOHOSAceFrameworkStepperItemSetNextLabel(valueCString.value)
             }
         }
@@ -114,9 +116,10 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func status(status!: ItemState = ItemState.Normal): This {
+    public func status(status!: ?ItemState = None): This {
+        let tmpStatus = status ?? ItemState.Normal
         unsafe {
-            FfiOHOSAceFrameworkStepperItemSetStatus(status.getValue())
+            FfiOHOSAceFrameworkStepperItemSetStatus(tmpStatus.getValue())
         }
         this
     }

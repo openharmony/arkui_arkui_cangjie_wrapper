@@ -89,8 +89,9 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: ResourceStr) {
-        let content = match(value) {
+    public init(value: ?ResourceStr) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let content = match(tmpValue) {
             case v: AppResource => getResourceMedia(v)
             case v: String => v
             case _ => ""
@@ -114,9 +115,10 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: PixelMap) {
+    public init(value: ?PixelMap) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSpanCreateWithPixelMap(value.getID())
+            FfiOHOSAceFrameworkImageSpanCreateWithPixelMap(tmpValue.getID())
         }
     }
 
@@ -132,9 +134,10 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func verticalAlign(value: ImageSpanAlignment): This {
+    public func verticalAlign(value: ?ImageSpanAlignment): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSpanVerticalAlign(value.getValue())
+            FfiOHOSAceFrameworkImageSpanVerticalAlign(tmpValue.getValue())
         }
         return this
     }
@@ -151,9 +154,10 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func objectFit(value: ImageFit): This {
+    public func objectFit(value: ?ImageFit): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSpanObjectFit(value.getValue())
+            FfiOHOSAceFrameworkImageSpanObjectFit(tmpValue.getValue())
         }
         return this
     }
@@ -169,10 +173,11 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colorFilter(filter: ColorFilter): This {
-        let vecFfi = FFIVectorFloat32(filter.matrix.size)
-        for (i in 0..filter.matrix.size) {
-            vecFfi.setElement(i, filter.matrix[i])
+    public func colorFilter(filter: ?ColorFilter): This {
+        let tmpFilter = filter ?? throw IllegalArgumentException("The type now is not supported.")
+        let vecFfi = FFIVectorFloat32(tmpFilter.matrix.size)
+        for (i in 0..tmpFilter.matrix.size) {
+            vecFfi.setElement(i, tmpFilter.matrix[i])
         }
         unsafe {
             FfiOHOSAceFrameworkImageSpanSetColorFilter(vecFfi.getNativeHandle())
@@ -193,9 +198,10 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onComplete(callback: ImageCompleteCallback): This {
+    public func onComplete(callback: ?ImageCompleteCallback): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            value: CImageLoadResult => callback(parseCImageLoadResult(value))
+            value: CImageLoadResult => tmpCallback(parseCImageLoadResult(value))
         }
         let lambdaData = Callback1Param<CImageLoadResult, Unit>(wrapper)
         unsafe {
@@ -216,12 +222,13 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onError(callback: ImageErrorCallback): This {
+    public func onError(callback: ?ImageErrorCallback): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
             value: CImageError =>
             let error = ImageError(
                 value.componentWidth, value.componentHeight, value.message.toString())
-            callback(error)
+            tmpCallback(error)
         }
         let lambdaData = Callback1Param<CImageError, Unit>(wrapper)
         unsafe {

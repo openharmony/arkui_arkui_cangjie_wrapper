@@ -64,8 +64,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollBar(barState: BarState): T {
-        scrollBarInner(barState)
+    public func scrollBar(barState: ?BarState): T {
+        let tmpBarState = barState ?? throw IllegalArgumentException("The type now is not supported.")
+        scrollBarInner(tmpBarState)
     }
 
     protected func scrollBarInner(barState: BarState): T
@@ -82,8 +83,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollBarColor(color: ResourceColor): T {
-        scrollBarColorInner(color)
+    public func scrollBarColor(color: ?ResourceColor): T {
+        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
+        scrollBarColorInner(tmpColor)
     }
 
     protected func scrollBarColorInner(color: ResourceColor): T
@@ -100,8 +102,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollBarWidth(value: Length): T {
-        scrollBarWidthInner(value)
+    public func scrollBarWidth(value: ?Length): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        scrollBarWidthInner(tmpValue)
     }
 
     protected func scrollBarWidthInner(value: Length): T
@@ -119,8 +122,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func nestedScroll(value: NestedScrollOptions): T {
-        nestedScrollInner(value)
+    public func nestedScroll(value: ?NestedScrollOptions): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        nestedScrollInner(tmpValue)
     }
 
     protected func nestedScrollInner(value: NestedScrollOptions): T
@@ -138,8 +142,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func enableScrollInteraction(value: Bool): T {
-        enableScrollInteractionInner(value)
+    public func enableScrollInteraction(value: ?Bool): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        enableScrollInteractionInner(tmpValue)
     }
 
     protected func enableScrollInteractionInner(value: Bool): T
@@ -158,8 +163,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func friction(value: Float64): T {
-        frictionInner(value)
+    public func friction(value: ?Float64): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        frictionInner(tmpValue)
     }
 
     protected func frictionInner(value: Float64): T
@@ -178,8 +184,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func friction(value: AppResource): T {
-        frictionInner(value)
+    public func friction(value: ?AppResource): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        frictionInner(tmpValue)
     }
 
     protected func frictionInner(value: AppResource): T
@@ -195,8 +202,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onReachStart(event: () -> Unit): T {
-        onReachStartInner(event)
+    public func onReachStart(event: ?() -> Unit): T {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        onReachStartInner(tmpEvent)
     }
 
     protected func onReachStartInner(event: () -> Unit): T
@@ -212,8 +220,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onReachEnd(event: () -> Unit): T {
-        onReachEndInner(event)
+    public func onReachEnd(event: ?() -> Unit): T {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        onReachEndInner(tmpEvent)
     }
 
     protected func onReachEndInner(event: () -> Unit): T
@@ -231,8 +240,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollStart(event: () -> Unit): T {
-        onScrollStartInner(event)
+    public func onScrollStart(event: ?() -> Unit): T {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        onScrollStartInner(tmpEvent)
     }
 
     protected func onScrollStartInner(event: () -> Unit): T
@@ -250,8 +260,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollStop(event: () -> Unit): T {
-        onScrollStopInner(event)
+    public func onScrollStop(event: ?() -> Unit): T {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        onScrollStopInner(tmpEvent)
     }
 
     protected func onScrollStopInner(event: () -> Unit): T
@@ -267,8 +278,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func flingSpeedLimit(speedLimit: Float64): T {
-        flingSpeedLimitInner(speedLimit)
+    public func flingSpeedLimit(speedLimit: ?Float64): T {
+        let tmpSpeedLimit = speedLimit ?? throw IllegalArgumentException("The type now is not supported.")
+        flingSpeedLimitInner(tmpSpeedLimit)
     }
 
     protected func flingSpeedLimitInner(speedLimit: Float64): T {
@@ -316,14 +328,15 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fadingEdge(enabled: Option<Bool>, options: FadingEdgeOptions): T {
-        fadingEdgeInner(enabled, options)
+    public func fadingEdge(enabled: Option<Bool>, options: ?FadingEdgeOptions): T {
+        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
+        fadingEdgeInner(enabled, tmpOptions)
     }
 
     protected func fadingEdgeInner(enabled: Option<Bool>, options: FadingEdgeOptions): T {
         match (enabled) {
             case Some(v) =>
-                var fadingEdge = transAppResourceToLength(options.fadingEdgeLength)
+                var fadingEdge = transAppResourceToLength(options.fadingEdgeLength ?? 32.vp)
                 unsafe {
                     FfiOHOSAceFrameworkScrollableBaseFadingEdgeOptions(
                         v,
@@ -347,8 +360,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func clipContent(clip: ContentClipMode): T {
-        clipContentInner(clip)
+    public func clipContent(clip: ?ContentClipMode): T {
+        let tmpClip = clip ?? throw IllegalArgumentException("The type now is not supported.")
+        clipContentInner(tmpClip)
     }
 
     protected func clipContentInner(clip: ContentClipMode): T {
@@ -369,8 +383,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func clipContent(clip: RectShape): T {
-        clipContentInner(clip)
+    public func clipContent(clip: ?RectShape): T {
+        let tmpClip = clip ?? throw IllegalArgumentException("The type now is not supported.")
+        clipContentInner(tmpClip)
     }
 
     protected func clipContentInner(clip: RectShape): T {
@@ -404,7 +419,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
             case Some(v) =>
                 let wrapper = { scrollOffset: Float64, scrollState: Int32, scrollSource: Int32 =>
                     let res = v(scrollOffset, ScrollState.parseValue(scrollState), ScrollSource.parseValue(scrollSource))
-                    return res.offsetRemain
+                    return res.offsetRemain ?? throw IllegalArgumentException("The type now is not supported.")
                 }
                 let lambdaData = Callback3Param<Float64, Int32, Int32, Float64>(wrapper)
 
@@ -464,8 +479,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDidScroll(handler: OnScrollCallBack): T {
-        onDidScrollInner(handler)
+    public func onDidScroll(handler: ?OnScrollCallBack): T {
+        let tmpHandler = handler ?? throw IllegalArgumentException("The type now is not supported.")
+        onDidScrollInner(tmpHandler)
     }
 
     protected func onDidScrollInner(handler: OnScrollCallBack): T {

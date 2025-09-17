@@ -20,24 +20,24 @@ import ohos.base.*
 
 sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
 
-    func navDestination(builder: (String) -> Unit): NavigationAttribute
+    func navDestination(builder: ?(String) -> Unit): NavigationAttribute
 
-    func title(value: ResourceStr, options!: ?NavigationTitleOptions): NavigationAttribute
+    func title(value: ?ResourceStr, options!: ?NavigationTitleOptions): NavigationAttribute
 
-    func title(value: CustomBuilder, options!: ?NavigationTitleOptions): NavigationAttribute
+    func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions): NavigationAttribute
 
-    func hideTitleBar(hide: Bool, animated!: ?Bool): NavigationAttribute
+    func hideTitleBar(hide: ?Bool, animated!: ?Bool): NavigationAttribute
 }
 
 sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute> {
 
-    func onBackPressed(callback: () -> Bool): NavDestinationAttribute
+    func onBackPressed(callback: ?() -> Bool): NavDestinationAttribute
 
-    func onReady(callback: Callback<NavDestinationContext, Unit>): NavDestinationAttribute
+    func onReady(callback: ?Callback<NavDestinationContext, Unit>): NavDestinationAttribute
 
-    func title(value: ResourceStr, options!: ?NavigationTitleOptions): NavDestinationAttribute
+    func title(value: ?ResourceStr, options!: ?NavigationTitleOptions): NavDestinationAttribute
 
-    func title(value: CustomBuilder, options!: ?NavigationTitleOptions): NavDestinationAttribute
+    func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions): NavDestinationAttribute
 
-    func hideTitleBar(value: Bool): NavDestinationAttribute
+    func hideTitleBar(value: ?Bool): NavDestinationAttribute
 }

@@ -215,7 +215,7 @@ public class BlurOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var grayscale: VArray<Float32, $2>
+    public var grayscale: ?VArray<Float32, $2>
 
     /**
      * constructor
@@ -225,8 +225,8 @@ public class BlurOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(grayscale: VArray<Float32, $2>) {
-        this.grayscale = grayscale
+    public init(grayscale: ?VArray<Float32, $2>) {
+        this.grayscale = grayscale ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -252,7 +252,7 @@ public class ForegroundBlurStyleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var colorMode: ThemeColorMode = ThemeColorMode.System
+    public var colorMode: ?ThemeColorMode
 
     /**
      * Adaptive color mode.
@@ -265,7 +265,7 @@ public class ForegroundBlurStyleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var adaptiveColor: AdaptiveColor = AdaptiveColor.Default
+    public var adaptiveColor: ?AdaptiveColor
 
     /**
      * Defines the options of blur
@@ -277,7 +277,7 @@ public class ForegroundBlurStyleOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var blurOptions: BlurOptions = BlurOptions([0.0, 0.0])
+    public var blurOptions: ?BlurOptions
 
     /**
      * Foreground blur scale.
@@ -290,7 +290,7 @@ public class ForegroundBlurStyleOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var scale: Float32 = 1.0
+    public var scale: ?Float32
 
     /**
      * constructor
@@ -300,15 +300,15 @@ public class ForegroundBlurStyleOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        colorMode!: ThemeColorMode = ThemeColorMode.System,
-        adaptiveColor!: AdaptiveColor = AdaptiveColor.Default,
-        blurOptions!: BlurOptions = BlurOptions([0.0, 0.0]),
-        scale!: Float32 = 1.0
+        colorMode!: ?ThemeColorMode = None,
+        adaptiveColor!: ?AdaptiveColor = None,
+        blurOptions!: ?BlurOptions = None,
+        scale!: ?Float32 = None
     ) {
-        this.colorMode = colorMode
-        this.adaptiveColor = adaptiveColor
-        this.blurOptions = blurOptions
-        this.scale = scale
+        this.colorMode = colorMode ?? ThemeColorMode.System
+        this.adaptiveColor = adaptiveColor ?? AdaptiveColor.Default
+        this.blurOptions = blurOptions ?? BlurOptions([0.0, 0.0])
+        this.scale = scale ?? 1.0
     }
 }
 
@@ -337,8 +337,8 @@ public class PopupButton {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: String, action!: () -> Unit) {
-        this.value = value
+    public init(value!: ?String, action!: () -> Unit) {
+        this.value = value ?? throw IllegalArgumentException("The type now is not supported.")
         this.action = action
     }
 }
@@ -365,7 +365,7 @@ public class PopupStateChangeParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var isVisible: Bool
+    public var isVisible: ?Bool
 
     /**
      * constructor
@@ -377,8 +377,8 @@ public class PopupStateChangeParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: Bool) {
-        this.isVisible = value
+    public init(value: ?Bool) {
+        this.isVisible = value ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -401,7 +401,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var message: String = ""
+    public var message: ?String
 
     /**
      * The first button.
@@ -413,7 +413,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var primaryButton: PopupButton = PopupButton(value: "", action: {=>})
+    public var primaryButton: ?PopupButton
 
     /**
      * The second button.
@@ -425,7 +425,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var secondaryButton: PopupButton = PopupButton(value: "", action: {=>})
+    public var secondaryButton: ?PopupButton
 
     /**
      * on State Change
@@ -436,7 +436,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var onStateChange: ?(PopupStateChangeParam) -> Unit = Option.None
+    public var onStateChange: ?(PopupStateChangeParam) -> Unit
 
     /**
      * Parameters of the popup message
@@ -447,7 +447,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var messageOptions: PopupMessageOptions = PopupMessageOptions()
+    public var messageOptions: ?PopupMessageOptions
 
     /**
      * The offset of the sharp corner of popup.
@@ -458,7 +458,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var arrowOffset: Length = 0.vp
+    public var arrowOffset: ?Length
 
     /**
      * Whether to display in the sub window.
@@ -469,7 +469,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var showInSubWindow: Bool = false
+    public var showInSubWindow: ?Bool
 
     /**
      * Whether to apply a mask to the popup.
@@ -481,7 +481,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var mask: ResourceColor = Color(0x1000000)
+    public var mask: ?ResourceColor
 
     /**
      * Sets the space of between the popup and target.
@@ -492,7 +492,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var targetSpace: Length = 0.vp
+    public var targetSpace: ?Length
 
     /**
      * The placement of popup.
@@ -504,7 +504,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var placement: Placement = Placement.BottomLeft
+    public var placement: ?Placement
 
     /**
      * Sets the position offset of the popup.
@@ -515,7 +515,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offset: Position = Position(x: 0.0,y: 0.0)
+    public var offset: ?Position
 
     /**
      * whether show arrow
@@ -526,7 +526,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var enableArrow: Bool = true
+    public var enableArrow: ?Bool
 
     /**
      * Sets the position offset of the popup.
@@ -537,7 +537,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var popupColor: ResourceColor = Color(0x1000000)
+    public var popupColor: ?ResourceColor
 
     /**
      * Whether hide popup when click mask.
@@ -548,7 +548,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var autoCancel: Bool = true
+    public var autoCancel: ?Bool
 
     /**
      * Set the width of the popup.
@@ -559,7 +559,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var width: Length = 0.vp
+    public var width: ?Length
 
     /**
      * The position of the sharp corner of popup.
@@ -570,7 +570,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var arrowPointPosition: Option<ArrowPointPosition> = None
+    public var arrowPointPosition: Option<ArrowPointPosition>
 
     /**
      * The width of the arrow.
@@ -581,7 +581,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var arrowWidth: Length = 16.0.vp
+    public var arrowWidth: ?Length
 
     /**
      * The height of the arrow.
@@ -592,7 +592,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var arrowHeight: Length = 8.0.vp
+    public var arrowHeight: ?Length
 
     /**
      * The round corners of the popup.
@@ -603,7 +603,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var radius: Length = 20.0.vp
+    public var radius: ?Length
 
     /**
      * The style of popup Shadow.
@@ -614,7 +614,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var shadow: ShadowStyle = ShadowStyle.OuterDefaultMD
+    public var shadow: ?ShadowStyle
 
     /**
      * Defines popup background blur Style
@@ -625,7 +625,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
+    public var backgroundBlurStyle: ?BlurStyle
     /**
      * Defines the transition effect of popup opening and closing
      *
@@ -635,7 +635,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var transition: ?TransitionEffect = Option.None
+    public var transition: ?TransitionEffect
 
     /**
      * Callback function when the popup interactive dismiss
@@ -646,7 +646,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var onWillDismiss: ?(DismissPopupAction) -> Unit = None
+    public var onWillDismiss: ?(DismissPopupAction) -> Unit
 
     /**
      * Determine if popup can follow the target node when it has rotation or scale
@@ -657,7 +657,7 @@ public class PopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var followTransformOfTarget: Bool = false
+    public var followTransformOfTarget: ?Bool
 
     /**
      * constructor
@@ -667,55 +667,55 @@ public class PopupOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        message!: String,
-        primaryButton!: PopupButton = PopupButton(value: "", action: {=>}),
-        secondaryButton!: PopupButton = PopupButton(value: "", action: {=>}),
+        message!: ?String,
+        primaryButton!: ?PopupButton = None,
+        secondaryButton!: ?PopupButton = None,
         onStateChange!: Option<(PopupStateChangeParam) -> Unit> = Option.None,
-        arrowOffset!: Length = 0.vp,
-        showInSubWindow!: Bool,
-        messageOptions!: PopupMessageOptions = PopupMessageOptions(),
-        mask!: Color = Color(0x1000000),
-        targetSpace!: Length = 0.vp,
-        placement!: Placement = Placement.BottomLeft,
-        offset!: Position = Position(x:0.0, y: 0.0),
-        enableArrow!: Bool = true,
-        popupColor!: Color = Color(0x1000000),
-        autoCancel!: Bool = true,
-        width!: Length = 0.vp,
+        arrowOffset!: ?Length = None,
+        showInSubWindow!: ?Bool,
+        messageOptions!: ?PopupMessageOptions = None,
+        mask!: ?Color = None,
+        targetSpace!: ?Length = None,
+        placement!: ?Placement = Option.None,
+        offset!: ?Position = None,
+        enableArrow!: ?Bool = None,
+        popupColor!: ?Color = None,
+        autoCancel!: ?Bool = None,
+        width!: ?Length = None,
         arrowPointPosition!: ?ArrowPointPosition = None,
-        arrowWidth!: Length = 16.vp,
-        arrowHeight!: Length = 8.vp,
-        radius!: Length = 20.vp,
-        shadow!: ShadowStyle = ShadowStyle.OuterDefaultMD,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
+        arrowWidth!: ?Length = None,
+        arrowHeight!: ?Length = None,
+        radius!: ?Length = None,
+        shadow!: ?ShadowStyle = None,
+        backgroundBlurStyle!: ?BlurStyle = Option.None,
         transition!: ?TransitionEffect = Option.None,
         onWillDismiss!: Option<(DismissPopupAction) -> Unit> = None,
-        followTransformOfTarget!: Bool = false
+        followTransformOfTarget!: ?Bool = None
     ) {
-        this.message = message
-        this.primaryButton = primaryButton
-        this.secondaryButton = secondaryButton
+        this.message = message ?? throw IllegalArgumentException("The type now is not supported.")
+        this.primaryButton = primaryButton ?? PopupButton(value: "", action: {=>})
+        this.secondaryButton = secondaryButton ?? PopupButton(value: "", action: {=>})
         this.onStateChange = onStateChange
-        this.messageOptions = messageOptions
-        this.arrowOffset = arrowOffset
-        this.showInSubWindow = showInSubWindow
-        this.mask = mask
-        this.targetSpace = targetSpace
-        this.placement = placement
-        this.offset = offset
-        this.enableArrow = enableArrow
-        this.popupColor = popupColor
-        this.autoCancel = autoCancel
-        this.width = width
+        this.messageOptions = messageOptions ?? PopupMessageOptions()
+        this.arrowOffset = arrowOffset ?? 0.vp
+        this.showInSubWindow = showInSubWindow ?? throw IllegalArgumentException("The type now is not supported.")
+        this.mask = mask ?? Color(0x1000000)
+        this.targetSpace = targetSpace ?? 0.vp
+        this.placement = placement ?? Placement.BottomLeft
+        this.offset = offset ?? Position(x:0.0, y: 0.0)
+        this.enableArrow = enableArrow ?? true
+        this.popupColor = popupColor ?? Color(0x1000000)
+        this.autoCancel = autoCancel ?? true
+        this.width = width ?? 0.vp
         this.arrowPointPosition = arrowPointPosition
-        this.arrowWidth = arrowWidth
-        this.arrowHeight = arrowHeight
-        this.radius = radius
-        this.shadow = shadow
-        this.backgroundBlurStyle = backgroundBlurStyle
+        this.arrowWidth = arrowWidth ?? 16.vp
+        this.arrowHeight = arrowHeight ?? 8.vp
+        this.radius = radius ?? 20.vp
+        this.shadow = shadow ?? ShadowStyle.OuterDefaultMD
+        this.backgroundBlurStyle = backgroundBlurStyle ?? BlurStyle.ComponentUltraThick
         this.transition = transition
         this.onWillDismiss = onWillDismiss
-        this.followTransformOfTarget = followTransformOfTarget
+        this.followTransformOfTarget = followTransformOfTarget ?? false
     }
 }
 
@@ -741,8 +741,9 @@ public class MenuElement {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: ResourceStr, action!: () -> Unit) {
-        this.value = transResourceStrToString(value)
+    public init(value!: ?ResourceStr, action!: () -> Unit) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        this.value = transResourceStrToString(tmpValue)
         this.action = action
     }
 }
@@ -773,7 +774,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var builder: CustomBuilder = {=>}
+    public var builder: ?CustomBuilder
 
     /**
      * Preferred position of the popup. If the set position is insufficient for holding the popup,
@@ -785,7 +786,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var placement: Placement = Placement.Bottom
+    public var placement: ?Placement
 
     /**
      * mask color of popup
@@ -796,13 +797,13 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var maskColor: ResourceColor = Color(0x1000000)
+    public var maskColor: ?ResourceColor
 
     @!APILevel[
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundColor: Color = Color(0x1000000)
+    public var backgroundColor: ?Color
 
     /**
      * whether show arrow
@@ -813,7 +814,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var enableArrow: Bool = true
+    public var enableArrow: ?Bool
 
     /**
      * Whether to automatically dismiss the popup when an operation is performed on the page.
@@ -827,7 +828,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var autoCancel: Bool = true
+    public var autoCancel: ?Bool
     /**
      * on State Change
      *
@@ -837,7 +838,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var onStateChange: Option<(PopupStateChangeParam) -> Unit> = Option.None
+    public var onStateChange: Option<(PopupStateChangeParam) -> Unit>
     /**
      * Color of the popup. To remove the background blur, set backgroundBlurStyle to BlurStyle.NONE.
      *
@@ -847,7 +848,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var popupColor: ?Color = None
+    public var popupColor: ?Color
     /**
      * The offset of the sharp corner of popup.
      *
@@ -864,7 +865,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var arrowOffset: Length = 0.vp
+    public var arrowOffset: ?Length
 
     /**
      * Whether to display in the sub window.
@@ -875,7 +876,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var showInSubWindow: Bool = false
+    public var showInSubWindow: ?Bool
     /**
      * Whether to apply a mask to the popup.
      *
@@ -885,7 +886,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var mask: ?Color = None
+    public var mask: ?Color
     /**
      * Sets the space of between the popup and target.
      *
@@ -895,7 +896,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var targetSpace: Length = 0.vp
+    public var targetSpace: ?Length
     /**
      * Sets the position offset of the popup.
      *
@@ -905,7 +906,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offset: Position = Position(x: 0.0, y: 0.0)
+    public var offset: ?Position
     /**
      * Set the width of the popup.
      *
@@ -915,7 +916,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var width: Length = 0.vp
+    public var width: ?Length
     /**
      * Position of the popup arrow relative to its parent component. Available positions are Start, Center, and End,
      * in both vertical and horizontal directions. All these positions are within the parent component area.
@@ -927,7 +928,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var arrowPointPosition: Option<ArrowPointPosition> = None
+    public var arrowPointPosition: Option<ArrowPointPosition>
     /**
      * Arrow thickness. If the arrow thickness exceeds the length of the edge minus twice the size of the popup
      * rounded corner, the arrow is not drawn.
@@ -939,7 +940,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var arrowWidth: Length = 16.vp
+    public var arrowWidth: ?Length
     /**
      * The height of the arrow.
      *
@@ -950,7 +951,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var arrowHeight: Length = 8.vp
+    public var arrowHeight: ?Length
     /**
      * The round corners of the popup.
      *
@@ -961,7 +962,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var radius: Length = 20.vp
+    public var radius: ?Length
     /**
      * The style of popup Shadow.
      * @type { ShadowStyle }
@@ -971,7 +972,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var shadow: ShadowStyle = ShadowStyle.OuterDefaultMD
+    public var shadow: ?ShadowStyle
     /**
      * Background blur style of the popup.
      * @type { BlurStyle }
@@ -981,7 +982,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
+    public var backgroundBlurStyle: ?BlurStyle
     /**
      * Set popup focusable
      * @type { Bool }
@@ -991,7 +992,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var focusable: Bool = false
+    public var focusable: ?Bool
     /**
      * Defines the transition effect of popup opening and closing
      *
@@ -1002,7 +1003,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var transition: Option<TransitionEffect> = Option.None
+    public var transition: Option<TransitionEffect>
     /**
      * * Whether to perform dismissal event interception and interception callback.
      * 1. If this parameter is set to false, the system does not respond to the dismissal event initiated by
@@ -1018,7 +1019,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var onWillDismiss: Option<(DismissPopupAction) -> Unit> = None
+    public var onWillDismiss: Option<(DismissPopupAction) -> Unit>
     /**
      * Determine if popup can follow the target node when it has rotation or scale.
      *
@@ -1030,7 +1031,7 @@ public class CustomPopupOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var followTransformOfTarget: Bool = false
+    public var followTransformOfTarget: ?Bool
     /**
      * constructor
      */
@@ -1039,55 +1040,55 @@ public class CustomPopupOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        builder!: () -> Unit,
-        placement!: Placement = Placement.Bottom,
-        maskColor!: Color = Color(0x1000000),
-        popupColor!: Color = Color(0x1000000),
-        enableArrow!: Bool = true,
-        autoCancel!: Bool = true,
+        builder!: ?() -> Unit,
+        placement!: ?Placement = Option.None,
+        maskColor!: ?Color = None,
+        popupColor!: ?Color = None,
+        enableArrow!: ?Bool = None,
+        autoCancel!: ?Bool = None,
         onStateChange!: Option<(PopupStateChangeParam) -> Unit> = Option.None,
-        showInSubWindow!: Bool = false,
-        backgroundColor!: Color = Color(0x1000000),
-        arrowOffset!: Length = 0.vp,
+        showInSubWindow!: ?Bool = None,
+        backgroundColor!: ?Color = None,
+        arrowOffset!: ?Length = None,
         mask!: ?Color = None,
-        targetSpace!: Length = 0.vp,
-        offset!: Position = Position(x: 0.0, y: 0.0),
-        width!: Length = 0.vp,
+        targetSpace!: ?Length = None,
+        offset!: ?Position = None,
+        width!: ?Length = None,
         arrowPointPosition!: ?ArrowPointPosition = None,
-        arrowWidth!: Length = 16.vp,
-        arrowHeight!: Length = 16.vp,
-        radius!: Length = 20.vp,
-        shadow!: ShadowStyle = ShadowStyle.OuterDefaultMD,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
-        focusable!: Bool = false,
+        arrowWidth!: ?Length = None,
+        arrowHeight!: ?Length = None,
+        radius!: ?Length = None,
+        shadow!: ?ShadowStyle = None,
+        backgroundBlurStyle!: ?BlurStyle = Option.None,
+        focusable!: ?Bool = None,
         transition!: Option<TransitionEffect> = Option.None,
         onWillDismiss!: Option<(DismissPopupAction) -> Unit> = None,
-        followTransformOfTarget!: Bool = false
+        followTransformOfTarget!: ?Bool = None
     ) {
-        this.builder = builder
-        this.placement = placement
-        this.maskColor = maskColor
-        this.popupColor = popupColor
-        this.enableArrow = enableArrow
-        this.autoCancel = autoCancel
+        this.builder = builder ?? throw IllegalArgumentException("The type now is not supported.")
+        this.placement = placement ?? Placement.Bottom
+        this.maskColor = maskColor ?? Color(0x1000000)
+        this.popupColor = popupColor ?? Color(0x1000000)
+        this.enableArrow = enableArrow ?? true
+        this.autoCancel = autoCancel ?? true
         this.onStateChange = onStateChange
-        this.backgroundColor = backgroundColor
-        this.arrowOffset = arrowOffset
-        this.showInSubWindow = showInSubWindow
+        this.backgroundColor = backgroundColor ?? Color(0x1000000)
+        this.arrowOffset = arrowOffset ?? 0.vp
+        this.showInSubWindow = showInSubWindow ?? false
         this.mask = mask
-        this.targetSpace = targetSpace
-        this.offset = offset
-        this.width = width
+        this.targetSpace = targetSpace ?? 0.vp
+        this.offset = offset ?? Position(x: 0.0, y: 0.0)
+        this.width = width ?? 0.vp
         this.arrowPointPosition = arrowPointPosition
-        this.arrowWidth = arrowWidth
-        this.arrowHeight = arrowHeight
-        this.radius = radius
-        this.shadow = shadow
-        this.backgroundBlurStyle = backgroundBlurStyle
-        this.focusable = focusable
+        this.arrowWidth = arrowWidth ?? 16.vp
+        this.arrowHeight = arrowHeight ?? 16.vp
+        this.radius = radius ?? 20.vp
+        this.shadow = shadow ?? ShadowStyle.OuterDefaultMD
+        this.backgroundBlurStyle = backgroundBlurStyle ?? BlurStyle.ComponentUltraThick
+        this.focusable = focusable ?? false
         this.transition = transition
         this.onWillDismiss = onWillDismiss
-        this.followTransformOfTarget = followTransformOfTarget
+        this.followTransformOfTarget = followTransformOfTarget ?? false
     }
 }
 
@@ -1111,7 +1112,7 @@ public class PopupMessageOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var textColor: ResourceColor
+    public var textColor: ?ResourceColor
     /**
      * Sets the color of popup text.
      *
@@ -1122,7 +1123,7 @@ public class PopupMessageOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var font: Font
+    public var font: ?Font
     /**
      * constructor
      */
@@ -1130,9 +1131,9 @@ public class PopupMessageOptions {
         21,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(textColor!: ResourceColor = Color(0x000000), font!: Font = Font()) {
-        this.textColor = textColor
-        this.font = font
+    public init(textColor!: ?ResourceColor = None, font!: ?Font = None) {
+        this.textColor = textColor ?? Color(0x000000)
+        this.font = font ?? Font()
     }
 }
 
@@ -1158,7 +1159,7 @@ public class OverlayOffset {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: Float64
+    public var x: ?Float64
     /**
      * Defines x.
      *
@@ -1170,7 +1171,7 @@ public class OverlayOffset {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: Float64
+    public var y: ?Float64
 
     /**
      * constructor
@@ -1180,9 +1181,9 @@ public class OverlayOffset {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: Float64 = 0.0, y!: Float64 = 0.0) {
-        this.x = x
-        this.y = y
+    public init(x!: ?Float64 = None, y!: ?Float64 = None) {        
+        this.x = x ?? 0.0
+        this.y = y ?? 0.0
     }
 }
 
@@ -1208,7 +1209,7 @@ public class EdgeWidths {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var top: Length
+    public var top: ?Length
     /**
      * right property.
      *
@@ -1220,7 +1221,7 @@ public class EdgeWidths {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var right: Length
+    public var right: ?Length
     /**
      * bottom property.
      *
@@ -1232,7 +1233,7 @@ public class EdgeWidths {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var bottom: Length
+    public var bottom: ?Length
     /**
      * left property.
      *
@@ -1244,7 +1245,7 @@ public class EdgeWidths {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var left: Length
+    public var left: ?Length
     /**
      * constructor
      */
@@ -1253,15 +1254,15 @@ public class EdgeWidths {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp) {
-        this.top = transAppResourceToLength(top)
-        this.right = transAppResourceToLength(right)
-        this.bottom = transAppResourceToLength(bottom)
-        this.left = transAppResourceToLength(left)
+    public init(top!: ?Length = None, right!: ?Length = None, bottom!: ?Length = None, left!: ?Length = None) {
+        this.top = transAppResourceToLength(top ?? 0.vp)
+        this.right = transAppResourceToLength(right ?? 0.vp)
+        this.bottom = transAppResourceToLength(bottom ?? 0.vp)
+        this.left = transAppResourceToLength(left ?? 0.vp)
     }
 
     func toCJEdge(): CJEdge {
-        return CJEdge(top, right, bottom, left)
+        return CJEdge(top ?? 0.vp, right ?? 0.vp, bottom ?? 0.vp, left ?? 0.vp)
     }
 }
 
@@ -1296,9 +1297,9 @@ public open class BindOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(backgroundColor!: ?ResourceColor = Option.None, onAppear!: ?() -> Unit = Option.None,
-        onDisappear!: ?() -> Unit = Option.None, onWillAppear!: ?() -> Unit = Option.None,
-        onWillDisappear!: ?() -> Unit = Option.None) {
+    public init(backgroundColor!: ?ResourceColor = None, onAppear!: ?() -> Unit = None,
+        onDisappear!: ?() -> Unit = None, onWillAppear!: ?() -> Unit = None,
+        onWillDisappear!: ?() -> Unit = None) {
         this.backgroundColor = backgroundColor
         this.onAppear = onAppear
         this.onDisappear = onDisappear
@@ -1360,7 +1361,7 @@ public class ContentCoverOptions <: BindOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        modalTransition!: ModalTransition = ModalTransition.Default,
+        modalTransition!: ?ModalTransition = Option.None,
         onWillDismiss!: ?(DismissContentCoverAction) -> Unit = Option.None,
         transition!: ?TransitionEffect = Option.None,
         backgroundColor!: ?ResourceColor = Option.None,
@@ -1371,7 +1372,7 @@ public class ContentCoverOptions <: BindOptions {
     ) {
         super(backgroundColor: backgroundColor, onAppear: onAppear, onDisappear: onDisappear, onWillAppear: onWillAppear,
             onWillDisappear: onWillDisappear)
-        this.modalTransition = modalTransition
+        this.modalTransition = modalTransition ?? ModalTransition.Default
         this.onWillDismiss = onWillDismiss
         this.transition = transition
     }
@@ -1585,12 +1586,12 @@ func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadow {
     NativeShadow(
         true,
         NativeShadowOptions(
-            shadowOptions.radius,
-            shadowOptions.shadowType.getValue(),
-            transAppResourceToResourceColor(shadowOptions.color),
-            shadowOptions.offsetX,
-            shadowOptions.offsetY,
-            shadowOptions.fill
+            shadowOptions.radius ?? throw IllegalArgumentException("The type now is not supported."),
+            (shadowOptions.shadowType ?? ShadowType.Color).getValue(),
+            transAppResourceToResourceColor(shadowOptions.color ?? Color.Black),
+            shadowOptions.offsetX ?? 0.0,
+            shadowOptions.offsetY ?? 0.0,
+            shadowOptions.fill ?? false
         )
     )
 }
@@ -1635,7 +1636,7 @@ public class SheetOptions <: BindOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        backgroundColor!: Option<ResourceColor> = Color.White,
+        backgroundColor!: Option<ResourceColor> = Option.None,
         onAppear!: Option<() -> Unit> = Option.None,
         onDisappear!: Option<() -> Unit> = Option.None,
         onWillAppear!: Option<() -> Unit> = Option.None,
@@ -1656,15 +1657,15 @@ public class SheetOptions <: BindOptions {
         onDetentsDidChange!: Option<(Float32) -> Unit> = Option.None,
         onWidthDidChange!: Option<(Float32) -> Unit> = Option.None,
         onTypeDidChange!: Option<(Float32) -> Unit> = Option.None,
-        borderWidth!: Option<Length> = 0.vp,
-        borderColor!: Option<Color> = Color.Black,
-        borderStyle!: Option<EdgeStyles> = EdgeStyles(),
-        width!: Option<Length> = Option.None,
-        shadow!: Option<ShadowOptions> = Option.None,
-        mode!: Option<SheetMode> = SheetMode.Overlay,
-        scrollSizeMode!: Option<ScrollSizeMode> = ScrollSizeMode.FollowDetent
+        borderWidth!:  Option<Length> = None,
+        borderColor!: Option<Color> = None,
+        borderStyle!: Option<EdgeStyles> = None,
+        width!: Option<Length> = None,
+        shadow!: Option<ShadowOptions> = None,
+        mode!: Option<SheetMode> = None,
+        scrollSizeMode!: Option<ScrollSizeMode> = None
     ) {
-        super(backgroundColor: backgroundColor, onAppear: onAppear, onDisappear: onDisappear, onWillAppear: onWillAppear,
+        super(backgroundColor: backgroundColor ?? Color.White, onAppear: onAppear, onDisappear: onDisappear, onWillAppear: onWillAppear,	
             onWillDisappear: onWillDisappear)
         this.height = height
         this.detents = detents
@@ -1682,13 +1683,13 @@ public class SheetOptions <: BindOptions {
         this.onDetentsDidChange = onDetentsDidChange
         this.onWidthDidChange = onWidthDidChange
         this.onTypeDidChange = onTypeDidChange
-        this.borderWidth = borderWidth
-        this.borderColor = borderColor
-        this.borderStyle = borderStyle
+        this.borderWidth = borderWidth ?? 0.vp
+        this.borderColor = borderColor ?? Color.Black
+        this.borderStyle = borderStyle ?? EdgeStyles()
         this.width = width
         this.shadow = shadow
-        this.mode = mode
-        this.scrollSizeMode = scrollSizeMode
+        this.mode = mode ?? SheetMode.Overlay
+        this.scrollSizeMode = scrollSizeMode ?? ScrollSizeMode.FollowDetent
     }
 
     static func parse(sheetOption: SheetOptions): CSheetOptionsV2 {
@@ -1874,7 +1875,7 @@ public class Rectangle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: Length
+    public var x: ?Length
 
     /**
      * y:Vertical axis coordinate.
@@ -1887,7 +1888,7 @@ public class Rectangle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: Length
+    public var y: ?Length
 
     /**
      * Sets the width of the current touchRect.
@@ -1900,7 +1901,7 @@ public class Rectangle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var width: Length
+    public var width: ?Length
 
     /**
      * Sets the height of the current touchRect.
@@ -1913,7 +1914,7 @@ public class Rectangle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var height: Length
+    public var height: ?Length
 
     /**
      * constructor
@@ -1923,23 +1924,23 @@ public class Rectangle {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: Length = 0.vp, y!: Length = 0.vp, width!: Length = 100.percent, height!: Length = 100.percent) {
-        this.x = transAppResourceToLength(x)
-        this.y = transAppResourceToLength(y)
-        this.width = transAppResourceToLength(width)
-        this.height = transAppResourceToLength(height)
+    public init(x!: ?Length = None, y!: ?Length = None, width!: ?Length = None, height!: ?Length = None) {
+        this.x = transAppResourceToLength(x ?? 0.vp)
+        this.y = transAppResourceToLength(y ?? 0.vp)
+        this.width = transAppResourceToLength(width ?? 100.percent)
+        this.height = transAppResourceToLength(height ?? 100.percent)
     }
 
     protected func parseToNative(): NativeRectangle {
         return NativeRectangle(
-            x.value,
-            x.unitType.getValue(),
-            y.value,
-            y.unitType.getValue(),
-            width.value,
-            width.unitType.getValue(),
-            height.value,
-            height.unitType.getValue()
+            (x ?? 0.vp).value,
+            (x ?? 0.vp).unitType.getValue(),
+            (y ?? 0.vp).value,
+            (y ?? 0.vp).unitType.getValue(),
+            (width ?? 100.percent).value,
+            (width ?? 100.percent).unitType.getValue(),
+            (height ?? 100.percent).value,
+            (height ?? 100.percent).unitType.getValue()
         )
     }
 }
@@ -2019,7 +2020,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offset: Position = Position(x: 0.0, y: 0.0)
+    public var offset: ?Position
 
     /**
      * Preferred position of the context menu. If the set position is insufficient for holding the component, it will be
@@ -2033,7 +2034,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var placement: Option<Placement> = Option.None
+    public var placement: Option<Placement>
 
     /**
      * whether show arrow belong to the menu.
@@ -2046,7 +2047,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var enableArrow: Bool = false
+    public var enableArrow: ?Bool
 
     /**
      * The horizontal offset to the left of menu or vertical offset to the top of menu
@@ -2059,7 +2060,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var arrowOffset: Length = 0.vp
+    public var arrowOffset: ?Length
 
     /**
     * The preview content of context menu.
@@ -2072,7 +2073,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var preview: ?CustomBuilder = Option.None
+    public var preview: ?CustomBuilder
 
     /**
      * The preview animator options.
@@ -2085,7 +2086,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var previewAnimationOptions: ?ContextMenuAnimationOptions = None
+    public var previewAnimationOptions: ?ContextMenuAnimationOptions
 
     /**
      * Callback triggered when the menu is displayed.
@@ -2098,7 +2099,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var onAppear: ?() -> Unit = None
+    public var onAppear: ?() -> Unit
 
     /**
      * Callback function when the context menu disappear.
@@ -2111,7 +2112,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var onDisappear: ?() -> Unit = None
+    public var onDisappear: ?() -> Unit
 
     /**
      * Callback triggered when the menu is about to appear.
@@ -2124,7 +2125,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var aboutToAppear: ?() -> Unit = None
+    public var aboutToAppear: ?() -> Unit
 
     /**
      * Callback triggered when the menu is about to disappear.
@@ -2137,7 +2138,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var aboutToDisappear: ?() -> Unit = None
+    public var aboutToDisappear: ?() -> Unit
 
     /**
      * Background color of the menu.
@@ -2150,7 +2151,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundColor: ResourceColor = Color.Transparent
+    public var backgroundColor: ?ResourceColor
 
     /**
      * Background blur style of the menu.
@@ -2163,7 +2164,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
+    public var backgroundBlurStyle: ?BlurStyle
 
     /**
      * Defines the transition effect of menu opening and closing.
@@ -2176,7 +2177,7 @@ public class ContextMenuOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var transition: ?TransitionEffect = None
+    public var transition: ?TransitionEffect
 
     var borderRadius: ?BorderRadiuses = None
     var layoutRegionMargin: ?Margin = None
@@ -2190,32 +2191,34 @@ public class ContextMenuOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        offset!: Position = Position(),
+        offset!: ?Position = None,
         placement!: Option<Placement> = Option.None,
-        enableArrow!: Bool = false,
-        arrowOffset!: Length = 0.vp,
+        enableArrow!: ?Bool = None,
+        arrowOffset!: ?Length = None,
         preview!: Option<() -> Unit> = Option.None,
+        previewAnimationOptions!: ?ContextMenuAnimationOptions = None,
         onAppear!: ?() -> Unit = None,
         onDisappear!: ?() -> Unit = None,
         aboutToAppear!: ?() -> Unit = None,
         aboutToDisappear!: ?() -> Unit = None,
-        backgroundColor!: ResourceColor = Color.Transparent,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
+        backgroundColor!: ?ResourceColor = None,
+        backgroundBlurStyle!: ?BlurStyle = Option.None,
         transition!: ?TransitionEffect = None,
         borderRadius!: ?BorderRadiuses = None,
         layoutRegionMargin!: ?Margin = None
     ) {
-        this.offset = offset
+        this.offset = offset ?? Position()
         this.placement = placement
-        this.enableArrow = enableArrow
-        this.arrowOffset = arrowOffset
+        this.enableArrow = enableArrow ?? false
+        this.arrowOffset = arrowOffset ?? 0.vp
         this.preview = preview
+        this.previewAnimationOptions = previewAnimationOptions
         this.onAppear = onAppear
         this.onDisappear = onDisappear
         this.aboutToAppear = aboutToAppear
         this.aboutToDisappear = aboutToDisappear
-        this.backgroundColor = backgroundColor
-        this.backgroundBlurStyle = backgroundBlurStyle
+        this.backgroundColor = backgroundColor ?? Color.Transparent
+        this.backgroundBlurStyle = backgroundBlurStyle ?? BlurStyle.ComponentUltraThick
         this.transition = transition
         this.borderRadius = borderRadius
         this.layoutRegionMargin = layoutRegionMargin
@@ -2223,19 +2226,19 @@ public class ContextMenuOptions {
 
     func parseContextMenuOptions(): CJContextMenuOptions {
         CJContextMenuOptions(
-            NativePosition(offset.x.value, offset.y.value),
+            NativePosition(((offset ?? Position()).x ?? 0).value, ((offset ?? Position()).y ?? 0).value),
             unsafe { parsePlacement(placement) },
-            enableArrow,
-            NativeLength(transAppResourceToLength(arrowOffset).value,
-                transAppResourceToLength(arrowOffset).unitType.getValue()),
+            enableArrow ?? false,
+            NativeLength(transAppResourceToLength(arrowOffset ?? 0.vp).value,
+                transAppResourceToLength(arrowOffset ?? 0.vp).unitType.getValue()),
             unsafe { parseCallBack(preview) },
             unsafe { parsePreviewAnimationOptions(previewAnimationOptions) },
             unsafe { parseCallBack(onAppear) },
             unsafe { parseCallBack(onDisappear) },
             unsafe { parseCallBack(aboutToAppear) },
             unsafe { parseCallBack(aboutToDisappear) },
-            transAppResourceToResourceColor(backgroundColor),
-            backgroundBlurStyle.getValue(),
+            transAppResourceToResourceColor(backgroundColor ?? Color.Transparent),
+            (backgroundBlurStyle ?? BlurStyle.ComponentUltraThick).getValue(),
             unsafe { parseTransition(transition) },
             unsafe { parseBorderRadius(borderRadius) },
             unsafe { parseLayoutRegionMargin(layoutRegionMargin) }
@@ -2306,21 +2309,21 @@ public class ContextMenuAnimationOptions {
      * @type { ?VArray<Float64, $2> }
      * @relation scale?: AnimationRange<number>;
      */
-    public var scale: ?VArray<Float64, $2> = None
+    public var scale: ?VArray<Float64, $2>
     /**
      * Defines the transition effect of menu preview opening and closing.
      *
      * @type { ?TransitionEffect }
      * @relation transition?: TransitionEffect;
      */
-    public var transition: ?TransitionEffect = None
+    public var transition: ?TransitionEffect
     /**
      * Sets the scale start and end animator of the image displayed before the custom builder preview is displayed.
      *
      * @type { ?VArray<Float64, $2>  }
      * @relation hoverScale?: AnimationRange<number>;
      */
-    public var hoverScale: ?VArray<Float64, $2> = None
+    public var hoverScale: ?VArray<Float64, $2>
 
     /**
      * constructor
@@ -2393,7 +2396,7 @@ public class DismissSheetAction {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var reason: DismissReason
+    public var reason: ?DismissReason
     @!APILevel[
         21,
         stagemodelonly: true,

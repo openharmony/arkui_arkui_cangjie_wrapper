@@ -20,33 +20,33 @@ import ohos.base.*
 
 sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
 
-    func searchButton(value: ResourceStr): SearchAttribute
+    func searchButton(value: ?ResourceStr): SearchAttribute
 
-    func placeholderColor(value: ResourceColor): SearchAttribute
+    func placeholderColor(value: ?ResourceColor): SearchAttribute
 
     func placeholderFont(
-        size!: Length,
-        weight!: FontWeight,
-        style!: FontStyle,
-        family!: ResourceStr
+        size!: ?Length,
+        weight!: ?FontWeight,
+        style!: ?FontStyle,
+        family!: ?ResourceStr
     ): SearchAttribute
 
     func textFont(
-        size!: Length,
-        weight!: FontWeight,
-        style!: FontStyle,
-        family!: ResourceStr
+        size!: ?Length,
+        weight!: ?FontWeight,
+        style!: ?FontStyle,
+        family!: ?ResourceStr
     ): SearchAttribute
 
-    func copyOption(value: CopyOptions): SearchAttribute
+    func copyOption(value: ?CopyOptions): SearchAttribute
 
-    func onSubmit(callback: (String) -> Unit): SearchAttribute
+    func onSubmit(callback: ?(String) -> Unit): SearchAttribute
 
-    func onChange(callback: (String) -> Unit): SearchAttribute
+    func onChange(callback: ?(String) -> Unit): SearchAttribute
 
-    func onCopy(callback: (String) -> Unit): SearchAttribute
+    func onCopy(callback: ?(String) -> Unit): SearchAttribute
 
-    func onCut(callback: (String) -> Unit): SearchAttribute
+    func onCut(callback: ?(String) -> Unit): SearchAttribute
 
-    func onPaste(callback: (String) -> Unit): SearchAttribute
+    func onPaste(callback: ?(String) -> Unit): SearchAttribute
 }

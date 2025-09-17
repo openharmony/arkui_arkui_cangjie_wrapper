@@ -60,7 +60,7 @@ public class GridColOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var xs: Int32
+    public var xs: ?Int32
 
     /**
     * Grid Col Column Option sm
@@ -73,7 +73,7 @@ public class GridColOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var sm: Int32
+    public var sm: ?Int32
 
     /**
     * Grid Col Column Option md
@@ -86,7 +86,7 @@ public class GridColOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var md: Int32
+    public var md: ?Int32
 
     /**
     * Grid Col Column Option lg
@@ -99,7 +99,7 @@ public class GridColOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var lg: Int32
+    public var lg: ?Int32
 
     /**
     * Grid Col Column Option xl
@@ -112,7 +112,7 @@ public class GridColOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var xl: Int32
+    public var xl: ?Int32
 
     /**
     * Grid Col Column Option xxl
@@ -125,7 +125,7 @@ public class GridColOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var xxl: Int32
+    public var xxl: ?Int32
 
     /**
     * Defines the constructor of GridColOptions.
@@ -143,19 +143,19 @@ public class GridColOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        xs!: Int32 = 12,
-        sm!: Int32 = 12,
-        md!: Int32 = 12,
-        lg!: Int32 = 12,
-        xl!: Int32 = 12,
-        xxl!: Int32 = 12
+        xs!: ?Int32 = None,
+        sm!: ?Int32 = None,
+        md!: ?Int32 = None,
+        lg!: ?Int32 = None,
+        xl!: ?Int32 = None,
+        xxl!: ?Int32 = None
     ) {
-        this.xs = xs
-        this.sm = sm
-        this.md = md
-        this.lg = lg
-        this.xl = xl
-        this.xxl = xxl
+        this.xs = xs ?? 12
+        this.sm = sm ?? 12
+        this.md = md ?? 12
+        this.lg = lg ?? 12
+        this.xl = xl ?? 12
+        this.xxl = xxl ?? 12
     }
 
     /**
@@ -168,18 +168,19 @@ public class GridColOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: Int32) {
-        this.xs = value
-        this.sm = value
-        this.md = value
-        this.lg = value
-        this.xl = value
-        this.xxl = value
+    public init(value: ?Int32) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        this.xs = tmpValue
+        this.sm = tmpValue
+        this.md = tmpValue
+        this.lg = tmpValue
+        this.xl = tmpValue
+        this.xxl = tmpValue
     }
 
     func parseToNative(): NativeGridColColumnOption {
-        NativeGridColColumnOption(this.xs, this.sm, this.md,
-            this.lg, this.xl, this.xxl)
+        NativeGridColColumnOption(this.xs ?? 12, this.sm ?? 12, this.md ?? 12,
+            this.lg ?? 12, this.xl ?? 12, this.xxl ?? 12)
     }
 }
 
@@ -229,9 +230,9 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(span!: Int32 = 1, offset!: Int32 = 0, order!: Int32 = 0, child!: () -> Unit = {=>}) {
+    public init(span!: ?Int32 = None, offset!: ?Int32 = None, order!: ?Int32 = None, child!: () -> Unit = {=>}) {
         unsafe {
-            FfiOHOSAceFrameworkGridColCreateWithInt32(span, offset, order)
+            FfiOHOSAceFrameworkGridColCreateWithInt32(span ?? 1, offset ?? 0, order ?? 0)
         }
         this.child = child
     }
@@ -251,15 +252,18 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        span!: GridColOptions,
-        offset!: GridColOptions,
-        order!: GridColOptions,
+        span!: ?GridColOptions,
+        offset!: ?GridColOptions,
+        order!: ?GridColOptions,
         child!: () -> Unit = {=>}
     ) {
+        let tmpSpan = span ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpOffset = offset ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpOrder = order ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let nativeSpan = span.parseToNative()
-            let nativeOffset = offset.parseToNative()
-            let nativeOrder = order.parseToNative()
+            let nativeSpan = tmpSpan.parseToNative()
+            let nativeOffset = tmpOffset.parseToNative()
+            let nativeOrder = tmpOrder.parseToNative()
             FfiOHOSAceFrameworkGridColCreateWithOption(nativeSpan, nativeOffset, nativeOrder)
         }
         this.child = child
@@ -277,9 +281,10 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func span(value: Int32): This {
+    public func span(value: ?Int32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridColSetSpan(value)
+            FfiOHOSAceFrameworkGridColSetSpan(tmpValue)
         }
         this
     }
@@ -296,9 +301,10 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func span(value: GridColOptions): This {
+    public func span(value: ?GridColOptions): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let nativeValue = value.parseToNative()
+            let nativeValue = tmpValue.parseToNative()
             FfiOHOSAceFrameworkGridColSetSpanWithOption(nativeValue)
         }
         this
@@ -315,9 +321,10 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func gridColOffset(value: Int32): This {
+    public func gridColOffset(value: ?Int32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridColSetOffset(value)
+            FfiOHOSAceFrameworkGridColSetOffset(tmpValue)
         }
         this
     }
@@ -333,9 +340,10 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func gridColOffset(value: GridColOptions): This {
+    public func gridColOffset(value: ?GridColOptions): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let nativeValue = value.parseToNative()
+            let nativeValue = tmpValue.parseToNative()
             FfiOHOSAceFrameworkGridColSetOffsetWithOption(nativeValue)
         }
         this
@@ -353,9 +361,10 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func order(value: Int32): This {
+    public func order(value: ?Int32): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridColSetOrder(value)
+            FfiOHOSAceFrameworkGridColSetOrder(tmpValue)
         }
         this
     }
@@ -372,9 +381,10 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func order(value: GridColOptions): This {
+    public func order(value: ?GridColOptions): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let nativeValue = value.parseToNative()
+            let nativeValue = tmpValue.parseToNative()
             FfiOHOSAceFrameworkGridColSetOrderWithOption(nativeValue)
         }
         this

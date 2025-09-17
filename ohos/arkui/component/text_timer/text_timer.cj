@@ -35,7 +35,8 @@ foreign {
 
 extend ShadowOptions {
     func optionToNativeTextTimerShadow(): NativeTextTimerShadow {
-        return NativeTextTimerShadow(this.radius, this.offsetX, this.offsetY, this.color.toUInt32(), this.fill, this.shadowType.getValue())
+        return NativeTextTimerShadow(this.radius ?? throw IllegalArgumentException("The type now is not supported."), 
+            this.offsetX ?? 0.0, this.offsetY ?? 0.0, (this.color ?? Color.Black).toUInt32(), this.fill ?? false, (this.shadowType ?? ShadowType.Color).getValue())
     }
 }
 
@@ -210,10 +211,11 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(isCountDown!: Bool = false, count!: Int64 = 60000,
-        controller!: TextTimerController = TextTimerController()) {
+    public init(isCountDown!: ?Bool = None, count!: ?Int64 = None,
+        controller!: ?TextTimerController = None) {
+        let tmpController = controller ?? TextTimerController()
         unsafe {
-            FfiOHOSAceFrameworkTextTimerCreate(isCountDown, count, controller.getID())
+            FfiOHOSAceFrameworkTextTimerCreate(isCountDown ?? false, count ?? 60000, tmpController.getID())
         }
     }
 
@@ -234,9 +236,10 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func format(value: String): This {
+    public func format(value: ?String): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let valueCString = LibC.mallocCString(value)
+            let valueCString = LibC.mallocCString(tmpValue)
             FfiOHOSAceFrameworkTextTimerSetFormat(valueCString)
             LibC.free(valueCString)
         }
@@ -257,8 +260,9 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onTimer(event: (Int64, Int64) -> Unit): This {
-        let lambdaData = Callback2Param<Int64, Int64, Unit>(event)
+    public func onTimer(event: ?(Int64, Int64) -> Unit): This {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let lambdaData = Callback2Param<Int64, Int64, Unit>(tmpEvent)
         unsafe {
             FfiOHOSAceFrameworkTextTimerSetOnTimer(lambdaData.getID())
         }
@@ -279,8 +283,9 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontSize(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func fontSize(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextTimerSetFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
         }
@@ -299,9 +304,10 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontColor(value: ResourceColor): This {
+    public func fontColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextTimerSetFontColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkTextTimerSetFontColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -318,9 +324,10 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontStyle(value: FontStyle): This {
+    public func fontStyle(value: ?FontStyle): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextTimerSetFontStyle(value.getValue())
+            FfiOHOSAceFrameworkTextTimerSetFontStyle(tmpValue.getValue())
         }
         this
     }
@@ -344,9 +351,10 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontWeight(value: FontWeight): This {
+    public func fontWeight(value: ?FontWeight): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            var unsafeFontWeight = LibC.mallocCString(value.getValue())
+            var unsafeFontWeight = LibC.mallocCString(tmpValue.getValue())
             FfiOHOSAceFrameworkTextTimerSetFontWeight(unsafeFontWeight)
             LibC.free(unsafeFontWeight)
         }
@@ -365,8 +373,9 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fontFamily(value: ResourceStr): This {
-        let value_ = transResourceStrToString(value)
+    public func fontFamily(value: ?ResourceStr): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let value_ = transResourceStrToString(tmpValue)
         unsafe {
             try (unsafeFontFamily = LibC.mallocCString(value_).asResource()) {
                 FfiOHOSAceFrameworkTextTimerSetFontFamily(unsafeFontFamily.value)
@@ -389,10 +398,11 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textShadow(value: Array<ShadowOptions>): This {
-        let vecValueHandle = TextTimerVectorNativeTextShadow(value.size)
-        for (i in 0..value.size) {
-            vecValueHandle.setElement(i, value[i].optionToNativeTextTimerShadow())
+    public func textShadow(value: ?Array<ShadowOptions>): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let vecValueHandle = TextTimerVectorNativeTextShadow(tmpValue.size)
+        for (i in 0..tmpValue.size) {
+            vecValueHandle.setElement(i, tmpValue[i].optionToNativeTextTimerShadow())
         }
         unsafe {
             FfiOHOSAceFrameworkTextTimerSetTextShadow(vecValueHandle.getNativeHandle())
@@ -415,9 +425,11 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textShadow(value: ShadowOptions): This {
-        let thisShadow: NativeTextTimerShadow = NativeTextTimerShadow(value.radius, value.offsetX, value.offsetY, transAppResourceToResourceColor(value.color), value.fill,
-            value.shadowType.getValue())
+    public func textShadow(value: ?ShadowOptions): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let thisShadow: NativeTextTimerShadow = NativeTextTimerShadow(tmpValue.radius ?? throw IllegalArgumentException("The type now is not supported."),
+            tmpValue.offsetX ?? 0.0, tmpValue.offsetY ?? 0.0, transAppResourceToResourceColor(tmpValue.color ?? Color.Black), tmpValue.fill ?? false,
+            (tmpValue.shadowType ?? ShadowType.Color).getValue())
         let vecValueHandle = TextTimerVectorNativeTextShadow(1)
         vecValueHandle.setElement(0, thisShadow)
         unsafe {

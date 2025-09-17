@@ -22,27 +22,27 @@ import ohos.base.*
 
 sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
 
-    func listDirection(value: Axis): ListAttribute
+    func listDirection(value: ?Axis): ListAttribute
 
     func divider(value: Option<ListDividerOptions>): ListAttribute
 
-    func edgeEffect(value: EdgeEffect): ListAttribute
+    func edgeEffect(value: ?EdgeEffect): ListAttribute
 
-    func chainAnimation(value: Bool): ListAttribute
+    func chainAnimation(value: ?Bool): ListAttribute
 
-    func cachedCount(value: Int32): ListAttribute
+    func cachedCount(value: ?Int32): ListAttribute
 
-    func multiSelectable(value: Bool): ListAttribute
+    func multiSelectable(value: ?Bool): ListAttribute
 
-    func lanes(value: Int32): ListAttribute
+    func lanes(value: ?Int32): ListAttribute
 
-    func lanes(minLength!: Length, maxLength!: Length): ListAttribute
+    func lanes(minLength!: ?Length, maxLength!: ?Length): ListAttribute
 
-    func alignListItem(value: ListItemAlign): ListAttribute
+    func alignListItem(value: ?ListItemAlign): ListAttribute
 
-    func sticky(value: StickyStyle): ListAttribute
+    func sticky(value: ?StickyStyle): ListAttribute
 
-    func onScrollIndex(event: (Int32, Int32, Int32) -> Unit): ListAttribute
+    func onScrollIndex(event: ?(Int32, Int32, Int32) -> Unit): ListAttribute
 
-    func onScrollFrameBegin(event: (Float64, ScrollState) -> onScrollFrameBeginHandleResult): ListAttribute
+    func onScrollFrameBegin(event: ?(Float64, ScrollState) -> onScrollFrameBeginHandleResult): ListAttribute
 }

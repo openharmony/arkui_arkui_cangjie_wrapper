@@ -20,7 +20,7 @@ import ohos.base.*
 
 sealed interface RichTextAttribute <: CommonMethod<RichTextAttribute> {
 
-    func onStart(callback: () -> Unit): RichTextAttribute
+    func onStart(callback: ?() -> Unit): RichTextAttribute
 
-    func onComplete(callback: () -> Unit): RichTextAttribute
+    func onComplete(callback: ?() -> Unit): RichTextAttribute
 }

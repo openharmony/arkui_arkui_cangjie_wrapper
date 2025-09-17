@@ -52,7 +52,7 @@ public class DatePickerResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var year: Int64
+    public var year: ?Int64
     /**
      * Month index of the selected date.
      * The index is zero-based. 0 indicates January, and 11 indicates December.
@@ -69,7 +69,7 @@ public class DatePickerResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var month: Int64
+    public var month: ?Int64
     /**
      * Day of the selected date.
      *
@@ -85,7 +85,7 @@ public class DatePickerResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var day: Int64
+    public var day: ?Int64
 
     /**
      * DatePickerResult constructor.
@@ -100,13 +100,13 @@ public class DatePickerResult {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        year: Int64,
-        month: Int64,
-        day: Int64
+        year: ?Int64,
+        month: ?Int64,
+        day: ?Int64
     ) {
-        this.year = year
-        this.month = month
-        this.day = day
+        this.year = year ?? throw IllegalArgumentException("The type now is not supported.")
+        this.month = month ?? throw IllegalArgumentException("The type now is not supported.")
+        this.day = day ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -193,13 +193,13 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        start!: DateTime = DateTime.of(year: 1970, month: Month.of(1), dayOfMonth: 1),
-        end!: DateTime = DateTime.of(year: 2100, month: Month.of(12), dayOfMonth: 31),
-        selected!: DateTime = DateTime.now()
+        start!: ?DateTime = None,
+        end!: ?DateTime = None,
+        selected!: ?DateTime = None
     ) {
-        let ffiStart = convertTimeToFfiTime(start)
-        let ffiEnd = convertTimeToFfiTime(end)
-        let ffiSelected = convertTimeToFfiTime(selected)
+        let ffiStart = convertTimeToFfiTime(start ?? DateTime.of(year: 1970, month: Month.of(1), dayOfMonth: 1))
+        let ffiEnd = convertTimeToFfiTime(end ?? DateTime.of(year: 2100, month: Month.of(12), dayOfMonth: 31))
+        let ffiSelected = convertTimeToFfiTime(selected ?? DateTime.now())
 
         unsafe {
             FfiOHOSAceFrameworkDatePickerCreate(ffiStart, ffiEnd, ffiSelected)
@@ -221,9 +221,10 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lunar(value: Bool): This {
+    public func lunar(value: ?Bool): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkDatePickerSetLunar(value)
+            FfiOHOSAceFrameworkDatePickerSetLunar(tmpValue)
         }
         this
     }
@@ -241,9 +242,10 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDateChange(callback: Callback<DateTime, Unit>): This {
+    public func onDateChange(callback: ?Callback<DateTime, Unit>): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            y: Int64, m: Int64, d: Int64 => callback(DateTime.of(year: y, month: Month.of(m), dayOfMonth: d))
+            y: Int64, m: Int64, d: Int64 => tmpCallback(DateTime.of(year: y, month: Month.of(m), dayOfMonth: d))
         }
         let lambdaData = Callback3Param<Int64, Int64, Int64, Unit>(wrapper)
         unsafe {
@@ -265,18 +267,19 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func disappearTextStyle(value: PickerTextStyle): This {
+    public func disappearTextStyle(value: ?PickerTextStyle): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         var color: UInt32 = 0xff182431
         var size: Length = 14.fp
         var weight: FontWeight = FontWeight.Regular
         var family: String = "HarmonyOS Sans"
         var style: FontStyle = FontStyle.Normal
 
-        if (let Some(v) <- value.color) {
+        if (let Some(v) <- tmpValue.color) {
             color = transAppResourceToResourceColor(v)
         }
 
-        if (let Some(font) <- value.font) {
+        if (let Some(font) <- tmpValue.font) {
             if (let Some(v) <- font.size) {
                 size = transAppResourceToLength(v)
             }
@@ -315,18 +318,19 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func textStyle(value: PickerTextStyle): This {
+    public func textStyle(value: ?PickerTextStyle): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         var color: UInt32 = 0xff182431
         var size: Length = 16.fp
         var weight: FontWeight = FontWeight.Regular
         var family: String = "HarmonyOS Sans"
         var style: FontStyle = FontStyle.Normal
 
-        if (let Some(v) <- value.color) {
+        if (let Some(v) <- tmpValue.color) {
             color = transAppResourceToResourceColor(v)
         }
 
-        if (let Some(font) <- value.font) {
+        if (let Some(font) <- tmpValue.font) {
             if (let Some(v) <- font.size) {
                 size = transAppResourceToLength(v)
             }
@@ -365,18 +369,19 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedTextStyle(value: PickerTextStyle): This {
+    public func selectedTextStyle(value: ?PickerTextStyle): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         var color: UInt32 = 0xff007dff
         var size: Length = 20.fp
         var weight: FontWeight = FontWeight.Medium
         var family: String = "HarmonyOS Sans"
         var style: FontStyle = FontStyle.Normal
 
-        if (let Some(v) <- value.color) {
+        if (let Some(v) <- tmpValue.color) {
             color = transAppResourceToResourceColor(v)
         }
 
-        if (let Some(font) <- value.font) {
+        if (let Some(font) <- tmpValue.font) {
             if (let Some(v) <- font.size) {
                 size = transAppResourceToLength(v)
             }

@@ -18,15 +18,15 @@ package ohos.arkui.component.grid_col
 import ohos.arkui.component.common.*
 
 sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
-    func span(value: Int32): GridColAttribute
+    func span(value: ?Int32): GridColAttribute
 
-    func span(value: GridColOptions): GridColAttribute
+    func span(value: ?GridColOptions): GridColAttribute
 
-    func gridColOffset(value: Int32): GridColAttribute
+    func gridColOffset(value: ?Int32): GridColAttribute
 
-    func gridColOffset(value: GridColOptions): GridColAttribute
+    func gridColOffset(value: ?GridColOptions): GridColAttribute
 
-    func order(value: Int32): GridColAttribute
+    func order(value: ?Int32): GridColAttribute
 
-    func order(value: GridColOptions): GridColAttribute
+    func order(value: ?GridColOptions): GridColAttribute
 }

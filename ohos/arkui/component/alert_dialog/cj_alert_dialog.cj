@@ -219,7 +219,7 @@ public open class AlertDialogButtonBaseOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var enabled: Bool
+    public var enabled: ?Bool
    /**
     * Default focus switch of button.
     *
@@ -232,7 +232,7 @@ public open class AlertDialogButtonBaseOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var defaultFocus: Bool
+    public var defaultFocus: ?Bool
    /**
     * Style of button.
     *
@@ -245,7 +245,7 @@ public open class AlertDialogButtonBaseOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var style: DialogButtonStyle
+    public var style: ?DialogButtonStyle
     /**
      * Text content of button.
      *
@@ -257,7 +257,7 @@ public open class AlertDialogButtonBaseOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var value: ResourceStr
+    public var value: ?ResourceStr
     /**
      * Text color of button.
      *
@@ -293,7 +293,7 @@ public open class AlertDialogButtonBaseOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var action: VoidCallback
+    public var action: ?VoidCallback
     /**
      * Constructor of AlertDialogButtonBaseOptions
      *
@@ -313,21 +313,21 @@ public open class AlertDialogButtonBaseOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        enabled!: Bool = true,
-        defaultFocus!: Bool = false,
-        style!: DialogButtonStyle = DialogButtonStyle.Default,
-        value!: ResourceStr,
+        enabled!: ?Bool = None,
+        defaultFocus!: ?Bool = None,
+        style!: ?DialogButtonStyle = None,
+        value!: ?ResourceStr,
         fontColor!: ?ResourceColor = None,
         backgroundColor!: ?ResourceColor = None,
-        action!: VoidCallback
+        action!: ?VoidCallback
     ) {
-        this.enabled = enabled
-        this.defaultFocus = defaultFocus
-        this.style = style
-        this.value = value
+        this.enabled = enabled ?? true
+        this.defaultFocus = defaultFocus ?? false
+        this.style = style ?? DialogButtonStyle.Default
+        this.value = value ?? throw IllegalArgumentException("The type now is not supported.")
         this.fontColor = fontColor
         this.backgroundColor = backgroundColor
-        this.action = action
+        this.action = action ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -355,7 +355,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var primary: Bool
+    public var primary: ?Bool
 
     /**
      * Constructor of AlertDialogButtonOptions
@@ -377,30 +377,30 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        enabled!: Bool = true,
-        defaultFocus!: Bool = false,
-        style!: DialogButtonStyle = DialogButtonStyle.Default,
-        value!: ResourceStr,
+        enabled!: ?Bool = None,
+        defaultFocus!: ?Bool = None,
+        style!: ?DialogButtonStyle = None,
+        value!: ?ResourceStr,
         fontColor!: ?ResourceColor = None,
         backgroundColor!: ?ResourceColor = None,
-        action!: VoidCallback,
-        primary!: Bool = false
+        action!: ?VoidCallback,
+        primary!: ?Bool = None
     ) {
         super(
-            enabled: enabled,
-            defaultFocus: defaultFocus,
-            style: style,
-            value: value,
+            enabled: enabled ?? true,
+            defaultFocus: defaultFocus ?? false,
+            style: style ?? DialogButtonStyle.Default,
+            value: value ?? throw IllegalArgumentException("The type now is not supported."),
             fontColor: fontColor,
             backgroundColor: backgroundColor,
-            action: action
+            action: action ?? throw IllegalArgumentException("The type now is not supported.")
         )
-        this.primary = primary
+        this.primary = primary ?? false
     }
 
     func toNative(): NativeAlertDialogButtonOptionsV2 {
         var cValue: CString = try {
-            unsafe { LibC.mallocCString(transResourceStrToString(value)) }
+            unsafe { LibC.mallocCString(transResourceStrToString(value ?? throw IllegalArgumentException("The type now is not supported."))) }
         } catch (e: Exception) {
             throw IllegalMemoryException("malloc memory")
         }
@@ -412,7 +412,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
                 unsafe { LibC.free(cValue) }
                 throw IllegalMemoryException("malloc memory")
             }
-            cStyle.write(style.getValue())
+            cStyle.write((style ?? DialogButtonStyle.Default).getValue())
         }
 
         var cFontColor = CPointer<UInt32>()
@@ -441,14 +441,14 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
             }
         }
         NativeAlertDialogButtonOptionsV2(
-            enabled,
-            defaultFocus,
+            enabled ?? true,
+            defaultFocus ?? false,
             cStyle,
             cValue,
             cFontColor,
             cBackgroundColor,
-            Callback0Param<Unit>(action).getID(),
-            primary
+            Callback0Param<Unit>(action ?? throw IllegalArgumentException("The type now is not supported.")).getID(),
+            primary ?? false
         )
     }
 }
@@ -476,7 +476,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var title: ResourceStr
+    public var title: ?ResourceStr
     /**
      * Subtitle Properties
      * @type { ResourceStr }
@@ -487,7 +487,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var subtitle: ResourceStr
+    public var subtitle: ?ResourceStr
     /**
      * message Properties
      *
@@ -499,7 +499,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var message: ResourceStr
+    public var message: ?ResourceStr
     /**
      * Allows users to click the mask layer to exit.
      *
@@ -511,7 +511,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var autoCancel: Bool
+    public var autoCancel: ?Bool
     /**
      * Execute Cancel Function.
      *
@@ -523,7 +523,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var cancel: VoidCallback
+    public var cancel: ?VoidCallback
     /**
      * Alignment in the vertical direction.
      *
@@ -535,7 +535,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var alignment: DialogAlignment
+    public var alignment: ?DialogAlignment
     /**
      * Offset of the pop-up window relative to the alignment position.
      *
@@ -547,7 +547,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offset: Offset
+    public var offset: ?Offset
     /**
       * Grid count of dialog.
       *
@@ -559,7 +559,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var gridCount: UInt32
+    public var gridCount: ?UInt32
     /**
      * Mask Region of dialog. The size cannot exceed the main window.
      *
@@ -571,7 +571,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var maskRect: Rectangle
+    public var maskRect: ?Rectangle
    /**
     * Whether to display in the sub window.
     *
@@ -584,7 +584,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var showInSubWindow: Bool
+    public var showInSubWindow: ?Bool
     /**
      * Whether it is a modal dialog
      * @type { Bool }
@@ -596,7 +596,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var isModal: Bool
+    public var isModal: ?Bool
     /**
      * Defines the alertDialog's background color
      *
@@ -609,7 +609,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundColor: ResourceColor
+    public var backgroundColor: ?ResourceColor
     /**
      * Defines the alertDialog's background blur Style
      *
@@ -622,7 +622,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var backgroundBlurStyle: BlurStyle
+    public var backgroundBlurStyle: ?BlurStyle
     /**
      * Callback function when the dialog interactive dismiss
      *
@@ -647,7 +647,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var cornerRadius: BorderRadiuses
+    public var cornerRadius: ?BorderRadiuses
     /**
      * Transition parameters of opening/closing AlertDialog.
      *
@@ -695,7 +695,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderWidth: Length
+    public var borderWidth: ?Length
     /**
      * Defines the alertDialog's border color.
      *
@@ -707,7 +707,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderColor: ResourceColor
+    public var borderColor: ?ResourceColor
     /**
      * Defines the alertDialog's border style.
      *
@@ -719,7 +719,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderStyle: EdgeStyles
+    public var borderStyle: ?EdgeStyles
 
     /**
      * Defines the alertDialog's shadow.
@@ -732,7 +732,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var shadow: ShadowOptions
+    public var shadow: ?ShadowOptions
     /**
      * Set the alertDialog's textStyle.
      *
@@ -744,7 +744,7 @@ public open class AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var textStyle: WordBreak
+    public var textStyle: ?WordBreak
 
     /**
      * Constructor of AlertDialogParam.
@@ -781,70 +781,70 @@ public open class AlertDialogParam {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        title!: ResourceStr = "",
-        subtitle!:ResourceStr = "",
-        message!: ResourceStr,
-        autoCancel!: Bool = true,
-        cancel!: VoidCallback = {=>},
-        alignment!: DialogAlignment = DialogAlignment.Default,
-        offset!: Offset = Offset(0, 0),
-        gridCount!: UInt32 = 4,
-        maskRect!: Rectangle = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
-        showInSubWindow!: Bool = false,
-        isModal!: Bool = true,
-        backgroundColor!: ResourceColor = Color.Transparent,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
+        title!: ?ResourceStr = None,
+        subtitle!: ?ResourceStr = None,
+        message!: ?ResourceStr,
+        autoCancel!: ?Bool = None,
+        cancel!: ?VoidCallback = None,
+        alignment!: ?DialogAlignment = None,
+        offset!: ?Offset = None,
+        gridCount!: ?UInt32 = None,
+        maskRect!: ?Rectangle = None,
+        showInSubWindow!: ?Bool = None,
+        isModal!: ?Bool = None,
+        backgroundColor!: ?ResourceColor = None,
+        backgroundBlurStyle!: ?BlurStyle = None,
         onWillDismiss!: ?Callback<DismissDialogAction, Unit> = None,
-        cornerRadius!: BorderRadiuses = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
-            bottomRight: 32.vp),
+        cornerRadius!: ?BorderRadiuses = None,
         transition!: ?TransitionEffect = None,
         width!: ?Length = None,
         height!: ?Length = None,
-        borderWidth!: Length = 0,
-        borderColor!: ResourceColor = Color.Black,
-        borderStyle!: EdgeStyles = EdgeStyles(),
-        shadow!: ShadowOptions = ShadowOptions(radius: 0.0),
-        textStyle!: WordBreak = WordBreak.BreakAll
+        borderWidth!: ?Length = None,
+        borderColor!: ?ResourceColor = None,
+        borderStyle!: ?EdgeStyles = None,
+        shadow!: ?ShadowOptions = None,
+        textStyle!: ?WordBreak = None
     ) {
-        this.message = message
-        this.title = title
-        this.subtitle = subtitle
-        this.autoCancel = autoCancel
-        this.cancel = cancel
-        this.alignment = alignment
-        this.offset = offset
-        this.gridCount = gridCount
-        this.maskRect = maskRect
-        this.showInSubWindow = showInSubWindow
-        this.isModal = isModal
-        this.backgroundColor = backgroundColor
-        this.backgroundBlurStyle = backgroundBlurStyle
+        this.message = message ?? throw IllegalArgumentException("The type now is not supported.")
+        this.title = title ?? ""
+        this.subtitle = subtitle ?? ""
+        this.autoCancel = autoCancel ?? true
+        this.cancel = cancel ?? {=>}
+        this.alignment = alignment ?? DialogAlignment.Default
+        this.offset = offset ?? Offset(0, 0)
+        this.gridCount = gridCount ?? 4
+        this.maskRect = maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)
+        this.showInSubWindow = showInSubWindow ?? false
+        this.isModal = isModal ?? true
+        this.backgroundColor = backgroundColor ?? Color.Transparent
+        this.backgroundBlurStyle = backgroundBlurStyle ?? BlurStyle.ComponentUltraThick
         this.onWillDismiss = onWillDismiss
-        this.cornerRadius = cornerRadius
+        this.cornerRadius = cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp,
+            bottomLeft: 32.vp, bottomRight: 32.vp)
         this.transition = transition
         this.width = width
         this.height = height
-        this.borderWidth = borderWidth
-        this.borderColor = borderColor
-        this.borderStyle = borderStyle
-        this.shadow = shadow
-        this.textStyle = textStyle
+        this.borderWidth = borderWidth ?? 0
+        this.borderColor = borderColor ?? Color.Black
+        this.borderStyle = borderStyle ?? EdgeStyles()
+        this.shadow = shadow ?? ShadowOptions(radius: 0.0)
+        this.textStyle = textStyle ?? WordBreak.BreakAll
     }
 
     func getNativeParam(): NativeAlertDialogParamV2 {
-        let nativeMsg: CString = unsafe { LibC.mallocCString(transResourceStrToString(message)) }
-        let nativeTitle: CString = unsafe { LibC.mallocCString(transResourceStrToString(title)) }
-        let nativeSubtitle: CString = unsafe { LibC.mallocCString(transResourceStrToString(subtitle)) }
-        let nativeAutoCancel = NativeOptionBool(true, autoCancel)
-        let nativeCancel = NativeOptionCallBack(true, Callback0Param<Unit>(cancel).getID())
-        let nativeAlignment = NativeOptionInt32(true, alignment.getValue())
-        let nativeOffset = NativeOptionOffset(true, parseOffset(offset))
-        let nativeGridCount = NativeOptionUInt32(true, gridCount.toUInt32())
-        let nativeMaskRect = NativeOptionRectangle(true, maskRect.parseToNative())
-        let nativeShowInSubWindow = NativeOptionBool(true, showInSubWindow)
-        let nativeIsModal = NativeOptionBool(true, isModal)
-        let nativeBackgroundColor = NativeOptionUInt32(true, transAppResourceToResourceColor(backgroundColor))
-        let nativeBackgroundBlurStyle = NativeOptionInt32(true, backgroundBlurStyle.getValue())
+        let nativeMsg: CString = unsafe { LibC.mallocCString(transResourceStrToString(message ?? throw IllegalArgumentException("The type now is not supported."))) }
+        let nativeTitle: CString = unsafe { LibC.mallocCString(transResourceStrToString(title ?? "")) }
+        let nativeSubtitle: CString = unsafe { LibC.mallocCString(transResourceStrToString(subtitle ?? "")) }
+        let nativeAutoCancel = NativeOptionBool(true, autoCancel ?? true)
+        let nativeCancel = NativeOptionCallBack(true, Callback0Param<Unit>(cancel ?? {=>}).getID())
+        let nativeAlignment = NativeOptionInt32(true, (alignment ?? DialogAlignment.Default).getValue())
+        let nativeOffset = NativeOptionOffset(true, parseOffset(offset ?? Offset(0, 0)))
+        let nativeGridCount = NativeOptionUInt32(true, (gridCount ?? 4).toUInt32())
+        let nativeMaskRect = NativeOptionRectangle(true, (maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)).parseToNative())
+        let nativeShowInSubWindow = NativeOptionBool(true, showInSubWindow ?? false)
+        let nativeIsModal = NativeOptionBool(true, isModal ?? true)
+        let nativeBackgroundColor = NativeOptionUInt32(true, transAppResourceToResourceColor(backgroundColor ?? Color.Transparent))
+        let nativeBackgroundBlurStyle = NativeOptionInt32(true, (backgroundBlurStyle ?? BlurStyle.ComponentUltraThick).getValue())
         let nativeOnWillDismiss = match (onWillDismiss) {
             case Some(value) =>
                 let wrapper = {
@@ -854,11 +854,12 @@ public open class AlertDialogParam {
                 NativeOptionCallBack(true, lambdaData.getID())
             case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
         }
-        let nativeCornerRadius = NativeOptionRadius(true, cornerRadius.toCBorderRadiuses())
-        var value_ = transAppResourceToLength(borderWidth)
+        let nativeCornerRadius = NativeOptionRadius(true, (cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp,
+            bottomLeft: 32.vp, bottomRight: 32.vp)).toCBorderRadiuses())
+        var value_ = transAppResourceToLength(borderWidth ?? 0)
         let nativeBorderWidth = NativeOptionLength(true, NativeLength(value_.value, value_.unitType.getValue()))
-        let nativeBorderColor = NativeOptionUInt32(true, transAppResourceToResourceColor(borderColor))
-        let nativeBorderStyle = NativeOptionEdgeStyle(true, borderStyle.toNative())
+        let nativeBorderColor = NativeOptionUInt32(true, transAppResourceToResourceColor(borderColor ?? Color.Black))
+        let nativeBorderStyle = NativeOptionEdgeStyle(true, (borderStyle ?? EdgeStyles()).toNative())
 
         let nativeWidth = match (width) {
             case Some(value) =>
@@ -876,7 +877,7 @@ public open class AlertDialogParam {
             case Some(value) => NativeOptionInt64(true, value.getID())
             case None => NativeOptionInt64(false, 0)
         }
-        let nativeTextStyle = NativeOptionInt32(true, textStyle.getValue())
+        let nativeTextStyle = NativeOptionInt32(true, (textStyle ?? WordBreak.BreakAll).getValue())
 
         NativeAlertDialogParamV2(
             nativeMsg,
@@ -930,7 +931,7 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var confirm: AlertDialogButtonBaseOptions
+    public var confirm: ?AlertDialogButtonBaseOptions
     /**
      * Constructor of AlertDialogParamWithConfirm.
      *
@@ -967,58 +968,57 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        title!: ResourceStr = "",
-        subtitle!:ResourceStr = "",
-        message!: ResourceStr,
-        autoCancel!: Bool = true,
-        cancel!: VoidCallback = {=>},
-        alignment!: DialogAlignment = DialogAlignment.Default,
-        offset!: Offset = Offset(0, 0),
-        gridCount!: UInt32 = 4,
-        maskRect!: Rectangle = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
-        showInSubWindow!: Bool = false,
-        isModal!: Bool = true,
-        backgroundColor!: ResourceColor = Color.Transparent,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
+        title!: ?ResourceStr = None,
+        subtitle!: ?ResourceStr = None,
+        message!: ?ResourceStr,
+        autoCancel!: ?Bool = None,
+        cancel!: ?VoidCallback = None,
+        alignment!: ?DialogAlignment = None,
+        offset!: ?Offset = None,
+        gridCount!: ?UInt32 = None,
+        maskRect!: ?Rectangle = None,
+        showInSubWindow!: ?Bool = None,
+        isModal!: ?Bool = None,
+        backgroundColor!: ?ResourceColor = None,
+        backgroundBlurStyle!: ?BlurStyle = None,
         onWillDismiss!: ?Callback<DismissDialogAction, Unit> = None,
-        cornerRadius!: BorderRadiuses = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
-            bottomRight: 32.vp),
+        cornerRadius!: ?BorderRadiuses = None,
         transition!: ?TransitionEffect = None,
         width!: ?Length = None,
         height!: ?Length = None,
-        borderWidth!: Length = 0,
-        borderColor!: ResourceColor = Color.Black,
-        borderStyle!: EdgeStyles = EdgeStyles(),
-        shadow!: ShadowOptions = ShadowOptions(radius: 0.0),
-        textStyle!: WordBreak = WordBreak.BreakAll,
-        confirm!: AlertDialogButtonBaseOptions = AlertDialogButtonOptions(value: "", action: {=>})
+        borderWidth!: ?Length = None,
+        borderColor!: ?ResourceColor = None,
+        borderStyle!: ?EdgeStyles = None,
+        shadow!: ?ShadowOptions = None,
+        textStyle!: ?WordBreak = None,
+        confirm!: ?AlertDialogButtonBaseOptions = None
     ) {
         super(
-            title: title,
-            subtitle: subtitle,
-            message: message,
-            autoCancel: autoCancel,
-            cancel: cancel,
-            alignment: alignment,
-            offset: offset,
-            gridCount: gridCount,
-            maskRect: maskRect,
-            showInSubWindow: showInSubWindow,
-            isModal: isModal,
-            backgroundColor: backgroundColor,
-            backgroundBlurStyle: backgroundBlurStyle,
+            title: title ?? "",
+            subtitle: subtitle ?? "",
+            message: message ?? throw IllegalArgumentException("The type now is not supported."),
+            autoCancel: autoCancel ?? true,
+            cancel: cancel ?? {=>},
+            alignment: alignment ?? DialogAlignment.Default,
+            offset: offset ?? Offset(0, 0),
+            gridCount: gridCount ?? 4,
+            maskRect: maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
+            showInSubWindow: showInSubWindow ?? false,
+            isModal: isModal ?? true,
+            backgroundColor: backgroundColor ?? Color.Transparent,
+            backgroundBlurStyle: backgroundBlurStyle ?? BlurStyle.ComponentUltraThick,
             onWillDismiss: onWillDismiss,
-            cornerRadius: cornerRadius,
+            cornerRadius: cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp),
             transition: transition,
             width: width,
             height: height,
-            borderWidth: borderWidth,
-            borderColor: borderColor,
-            borderStyle: borderStyle,
-            shadow: shadow,
-            textStyle: textStyle
+            borderWidth: borderWidth ?? 0,
+            borderColor: borderColor ?? Color.Black,
+            borderStyle: borderStyle ?? EdgeStyles(),
+            shadow: shadow ?? ShadowOptions(radius: 0.0),
+            textStyle: textStyle ?? WordBreak.BreakAll
         )
-        this.confirm = confirm
+        this.confirm = confirm ?? AlertDialogButtonOptions(value: "", action: {=>})
     }
 }
 
@@ -1046,7 +1046,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var primaryButton: AlertDialogButtonBaseOptions
+    public var primaryButton: ?AlertDialogButtonBaseOptions
     /**
      * Second button.
      *
@@ -1058,7 +1058,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var secondaryButton: AlertDialogButtonBaseOptions
+    public var secondaryButton: ?AlertDialogButtonBaseOptions
     /**
      * Constructor of AlertDialogParamWithButtons.
      *
@@ -1096,60 +1096,59 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        title!: ResourceStr = "",
-        subtitle!:ResourceStr = "",
-        message!: ResourceStr,
-        autoCancel!: Bool = true,
-        cancel!: VoidCallback = {=>},
-        alignment!: DialogAlignment = DialogAlignment.Default,
-        offset!: Offset = Offset(0, 0),
-        gridCount!: UInt32 = 4,
-        maskRect!: Rectangle = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
-        showInSubWindow!: Bool = false,
-        isModal!: Bool = true,
-        backgroundColor!: ResourceColor = Color.Transparent,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
+        title!: ?ResourceStr = None,
+        subtitle!: ?ResourceStr = None,
+        message!: ?ResourceStr,
+        autoCancel!: ?Bool = None,
+        cancel!: ?VoidCallback = None,
+        alignment!: ?DialogAlignment = None,
+        offset!: ?Offset = None,
+        gridCount!: ?UInt32 = None,
+        maskRect!: ?Rectangle = None,
+        showInSubWindow!: ?Bool = None,
+        isModal!: ?Bool = None,
+        backgroundColor!: ?ResourceColor = None,
+        backgroundBlurStyle!: ?BlurStyle = None,
         onWillDismiss!: ?Callback<DismissDialogAction, Unit> = None,
-        cornerRadius!: BorderRadiuses = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
-            bottomRight: 32.vp),
+        cornerRadius!: ?BorderRadiuses = None,
         transition!: ?TransitionEffect = None,
         width!: ?Length = None,
         height!: ?Length = None,
-        borderWidth!: Length = 0,
-        borderColor!: ResourceColor = Color.Black,
-        borderStyle!: EdgeStyles = EdgeStyles(),
-        shadow!: ShadowOptions = ShadowOptions(radius: 0.0),
-        textStyle!: WordBreak = WordBreak.BreakAll,
-        primaryButton!: AlertDialogButtonBaseOptions,
-        secondaryButton!: AlertDialogButtonBaseOptions
+        borderWidth!: ?Length = None,
+        borderColor!: ?ResourceColor = None,
+        borderStyle!: ?EdgeStyles = None,
+        shadow!: ?ShadowOptions = None,
+        textStyle!: ?WordBreak = None,
+        primaryButton!: ?AlertDialogButtonBaseOptions,
+        secondaryButton!: ?AlertDialogButtonBaseOptions
     ) {
         super(
-            title: title,
-            subtitle: subtitle,
-            message: message,
-            autoCancel: autoCancel,
-            cancel: cancel,
-            alignment: alignment,
-            offset: offset,
-            gridCount: gridCount,
-            maskRect: maskRect,
-            showInSubWindow: showInSubWindow,
-            isModal: isModal,
-            backgroundColor: backgroundColor,
-            backgroundBlurStyle: backgroundBlurStyle,
+            title: title ?? "",
+            subtitle: subtitle ?? "",
+            message: message ?? throw IllegalArgumentException("The type now is not supported."),
+            autoCancel: autoCancel ?? true,
+            cancel: cancel ?? {=>},
+            alignment: alignment ?? DialogAlignment.Default,
+            offset: offset ?? Offset(0, 0),
+            gridCount: gridCount ?? 4,
+            maskRect: maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
+            showInSubWindow: showInSubWindow ?? false,
+            isModal: isModal ?? true,
+            backgroundColor: backgroundColor ?? Color.Transparent,
+            backgroundBlurStyle: backgroundBlurStyle ?? BlurStyle.ComponentUltraThick,
             onWillDismiss: onWillDismiss,
-            cornerRadius: cornerRadius,
+            cornerRadius: cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp),
             transition: transition,
             width: width,
             height: height,
-            borderWidth: borderWidth,
-            borderColor: borderColor,
-            borderStyle: borderStyle,
-            shadow: shadow,
-            textStyle: textStyle
+            borderWidth: borderWidth ?? 0,
+            borderColor: borderColor ?? Color.Black,
+            borderStyle: borderStyle ?? EdgeStyles(),
+            shadow: shadow ?? ShadowOptions(radius: 0.0),
+            textStyle: textStyle ?? WordBreak.BreakAll
         )
-        this.primaryButton = primaryButton
-        this.secondaryButton = secondaryButton
+        this.primaryButton = primaryButton ?? throw IllegalArgumentException("The type now is not supported.")
+        this.secondaryButton = secondaryButton ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -1176,7 +1175,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var buttons: Array<AlertDialogButtonOptions>
+    public var buttons: ?Array<AlertDialogButtonOptions>
 
     /**
      * The arrangement of buttons.
@@ -1189,7 +1188,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var buttonDirection: DialogButtonDirection
+    public var buttonDirection: ?DialogButtonDirection
     /**
      * Constructor of AlertDialogParamWithOptions.
      *
@@ -1226,60 +1225,60 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        title!: ResourceStr = "",
-        subtitle!:ResourceStr = "",
-        message!: ResourceStr,
-        autoCancel!: Bool = true,
-        cancel!: VoidCallback = {=>},
-        alignment!: DialogAlignment = DialogAlignment.Default,
-        offset!: Offset = Offset(0, 0),
-        gridCount!: UInt32 = 4,
-        maskRect!: Rectangle = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
-        showInSubWindow!: Bool = false,
-        isModal!: Bool = true,
-        backgroundColor!: ResourceColor = Color.Transparent,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
+        title!: ?ResourceStr = None,
+        subtitle!: ?ResourceStr = None,
+        message!: ?ResourceStr,
+        autoCancel!: ?Bool = None,
+        cancel!: ?VoidCallback = None,
+        alignment!: ?DialogAlignment = None,
+        offset!: ?Offset = None,
+        gridCount!: ?UInt32 = None,
+        maskRect!: ?Rectangle = None,
+        showInSubWindow!: ?Bool = None,
+        isModal!: ?Bool = None,
+        backgroundColor!: ?ResourceColor = None,
+        backgroundBlurStyle!: ?BlurStyle = None,
         onWillDismiss!: ?Callback<DismissDialogAction, Unit> = None,
-        cornerRadius!: BorderRadiuses = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
-            bottomRight: 32.vp),
+        cornerRadius!: ?BorderRadiuses = None,
         transition!: ?TransitionEffect = None,
         width!: ?Length = None,
         height!: ?Length = None,
-        borderWidth!: Length = 0,
-        borderColor!: ResourceColor = Color.Black,
-        borderStyle!: EdgeStyles = EdgeStyles(),
-        shadow!: ShadowOptions = ShadowOptions(radius: 0.0),
-        textStyle!: WordBreak = WordBreak.BreakAll,
-        buttons!: Array<AlertDialogButtonOptions>,
-        buttonDirection!: DialogButtonDirection = DialogButtonDirection.Auto
+        borderWidth!: ?Length = None,
+        borderColor!: ?ResourceColor = None,
+        borderStyle!: ?EdgeStyles = None,
+        shadow!: ?ShadowOptions = None,
+        textStyle!: ?WordBreak = None,
+        buttons!: ?Array<AlertDialogButtonOptions>,
+        buttonDirection!: ?DialogButtonDirection = None
     ) {
         super(
-            title: title,
-            subtitle: subtitle,
-            message: message,
-            autoCancel: autoCancel,
-            cancel: cancel,
-            alignment: alignment,
-            offset: offset,
-            gridCount: gridCount,
-            maskRect: maskRect,
-            showInSubWindow: showInSubWindow,
-            isModal: isModal,
-            backgroundColor: backgroundColor,
-            backgroundBlurStyle: backgroundBlurStyle,
+            title: title ?? "",
+            subtitle: subtitle ?? "",
+            message: message ?? throw IllegalArgumentException("The type now is not supported."),
+            autoCancel: autoCancel ?? true,
+            cancel: cancel ?? {=>},
+            alignment: alignment ?? DialogAlignment.Default,
+            offset: offset ?? Offset(0, 0),
+            gridCount: gridCount ?? 4,
+            maskRect: maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
+            showInSubWindow: showInSubWindow ?? false,
+            isModal: isModal ?? true,
+            backgroundColor: backgroundColor ?? Color.Transparent,
+            backgroundBlurStyle: backgroundBlurStyle ?? BlurStyle.ComponentUltraThick,
             onWillDismiss: onWillDismiss,
-            cornerRadius: cornerRadius,
+            cornerRadius: cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp,
+                bottomLeft: 32.vp, bottomRight: 32.vp),
             transition: transition,
             width: width,
             height: height,
-            borderWidth: borderWidth,
-            borderColor: borderColor,
-            borderStyle: borderStyle,
-            shadow: shadow,
-            textStyle: textStyle
+            borderWidth: borderWidth ?? 0,
+            borderColor: borderColor ?? Color.Black,
+            borderStyle: borderStyle ?? EdgeStyles(),
+            shadow: shadow ?? ShadowOptions(radius: 0.0),
+            textStyle: textStyle ?? WordBreak.BreakAll
         )
-        this.buttons = buttons
-        this.buttonDirection = buttonDirection
+        this.buttons = buttons ?? throw IllegalArgumentException("The type now is not supported.")
+        this.buttonDirection = buttonDirection ?? DialogButtonDirection.Auto
     }
 }
 
@@ -1292,7 +1291,7 @@ protected class AlertDialogInner {
         }
         unsafe {
             FfiOHOSShowAlertDialogParamWithConfirmShadowOptions(
-                nativeDialog, nativeConfirm, value.shadow.toActionSheetShadowNative())
+                nativeDialog, nativeConfirm, (value.shadow ?? ShadowOptions(radius: 0.0)).toActionSheetShadowNative())
             nativeDialog.free()
             freeButton(nativeConfirm)
         }
@@ -1325,7 +1324,7 @@ protected class AlertDialogInner {
         }
         unsafe {
             FfiOHOSShowAlertDialogParamWithButtonsShadowOptions(nativeDialog, nativePrimaryButton, nativeSecondaryButton,
-                value.shadow.toActionSheetShadowNative())
+                (value.shadow ?? ShadowOptions(radius: 0.0)).toActionSheetShadowNative())
             nativeDialog.free()
             freeButton(nativePrimaryButton)
             freeButton(nativeSecondaryButton)
@@ -1360,7 +1359,7 @@ protected class AlertDialogInner {
     ]
     public static func show(value: AlertDialogParamWithOptions): Unit {
         let nativeDialog = value.getNativeParam()
-        let buttons = value.buttons
+        let buttons = value.buttons ?? throw IllegalArgumentException("The type now is not supported.")
         let buttonSize = buttons.size
         let buttonsArr = Array<NativeAlertDialogButtonOptionsV2>(buttonSize, {index =>
             let res = match(buttons[index] as AlertDialogButtonOptions) {
@@ -1385,8 +1384,8 @@ protected class AlertDialogInner {
             FfiOHOSShowAlertDialogParamWithOptionsShadowOptions(
                 nativeDialog,
                 nativeButtons,
-                value.shadow.toActionSheetShadowNative(),
-                value.buttonDirection.getValue())
+                (value.shadow ?? ShadowOptions(radius: 0.0)).toActionSheetShadowNative(),
+                (value.buttonDirection ?? DialogButtonDirection.Auto).getValue())
             nativeDialog.free()
             freeButtonsArr(nativeButtons)
         }
@@ -1395,7 +1394,7 @@ protected class AlertDialogInner {
 
     protected static func show(value: AlertDialogParamWithOptions, shadow: ShadowStyle): Unit {
         let nativeDialog = value.getNativeParam()
-        let buttons = value.buttons
+        let buttons = value.buttons ?? throw IllegalArgumentException("The type now is not supported.")
         let buttonSize = buttons.size
         let buttonsArr = Array<NativeAlertDialogButtonOptionsV2>(buttonSize, {index =>
             let res = match(buttons[index] as AlertDialogButtonOptions) {
@@ -1418,7 +1417,7 @@ protected class AlertDialogInner {
         let nativeButtons = CArrNativeAlertDialogButtonOptionsV2(arr, buttonSize)
         unsafe {
             FfiOHOSShowAlertDialogParamWithOptionsShadowStyle(nativeDialog, nativeButtons, shadow.getValue(),
-                value.buttonDirection.getValue())
+                (value.buttonDirection ?? DialogButtonDirection.Auto).getValue())
             nativeDialog.free()
             freeButtonsArr(nativeButtons)
         }

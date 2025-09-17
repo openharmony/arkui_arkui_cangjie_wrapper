@@ -74,8 +74,9 @@ public class DataChangeListener <: RemoteData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDataAdd(index: IntNative): Unit {
-        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataAdded(getID(), Int64(index)) }
+    public func onDataAdd(index: ?IntNative): Unit {
+        let tmpIndex = index ?? throw IllegalArgumentException("The type now is not supported.")
+        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataAdded(getID(), Int64(tmpIndex)) }
     }
 
     @!APILevel[
@@ -85,8 +86,9 @@ public class DataChangeListener <: RemoteData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDataDelete(index: IntNative): Unit {
-        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataDeleted(getID(), Int64(index)) }
+    public func onDataDelete(index: ?IntNative): Unit {
+        let tmpIndex = index ?? throw IllegalArgumentException("The type now is not supported.")
+        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataDeleted(getID(), Int64(tmpIndex)) }
     }
 
     @!APILevel[
@@ -96,8 +98,9 @@ public class DataChangeListener <: RemoteData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDataChange(index: IntNative): Unit {
-        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataChanged(getID(), Int64(index)) }
+    public func onDataChange(index: ?IntNative): Unit {
+        let tmpIndex = index ?? throw IllegalArgumentException("The type now is not supported.")
+        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataChanged(getID(), Int64(tmpIndex)) }
     }
 
     @!APILevel[
@@ -107,7 +110,9 @@ public class DataChangeListener <: RemoteData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDataMove(from: IntNative, to: IntNative): Unit {
-        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataMoved(getID(), Int64(from), Int64(to)) }
+    public func onDataMove(from: ?IntNative, to: ?IntNative): Unit {
+        let tmpFrom = from ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpTo = to ?? throw IllegalArgumentException("The type now is not supported.")
+        unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataMoved(getID(), Int64(tmpFrom), Int64(tmpTo)) }
     }
 }

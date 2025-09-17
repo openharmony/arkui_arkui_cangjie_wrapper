@@ -58,7 +58,7 @@ public class ScrollResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offsetRemain: Float64
+    public var offsetRemain: ?Float64
 
     /**
      * Constructs a scroll result.
@@ -71,8 +71,8 @@ public class ScrollResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(offsetRemain!: Float64) {
-        this.offsetRemain = offsetRemain
+    public init(offsetRemain!: ?Float64) {
+        this.offsetRemain = offsetRemain ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -99,7 +99,7 @@ public class OffsetResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var xOffset: Float64
+    public var xOffset: ?Float64
 
     /**
      * Vertical scrolling offset.
@@ -112,7 +112,7 @@ public class OffsetResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var yOffset: Float64
+    public var yOffset: ?Float64
 
     /**
      * Constructs an offset result.
@@ -126,9 +126,9 @@ public class OffsetResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(xOffset: Float64, yOffset: Float64) {
-        this.xOffset = xOffset
-        this.yOffset = yOffset
+    public init(xOffset: ?Float64, yOffset: ?Float64) {
+        this.xOffset = xOffset ?? throw IllegalArgumentException("The type now is not supported.")
+        this.yOffset = yOffset ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -199,7 +199,7 @@ public class RectResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: Float64
+    public var x: ?Float64
 
     /**
      * Representing the y in the rect values
@@ -211,7 +211,7 @@ public class RectResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: Float64
+    public var y: ?Float64
 
     /**
      * Representing the width in the rect values
@@ -223,7 +223,7 @@ public class RectResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var width: Float64
+    public var width: ?Float64
 
     /**
      * Representing the height in the rect values
@@ -235,7 +235,7 @@ public class RectResult {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var height: Float64
+    public var height: ?Float64
 
     init(params: RectResultParams) {
         this.x = params.x
@@ -258,15 +258,15 @@ public class RectResult {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        x: Float64,
-        y: Float64,
-        width: Float64,
-        height: Float64
+        x: ?Float64,
+        y: ?Float64,
+        width: ?Float64,
+        height: ?Float64
     ) {
-        this.x = x
-        this.y = y
-        this.width = width
-        this.height = height
+        this.x = x ?? throw IllegalArgumentException("The type now is not supported.")
+        this.y = y ?? throw IllegalArgumentException("The type now is not supported.")
+        this.width = width ?? throw IllegalArgumentException("The type now is not supported.")
+        this.height = height ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -292,7 +292,7 @@ public class ScrollAnimationOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var duration: Float64
+    public var duration: ?Float64
 
     /**
      * Scrolling curve.
@@ -305,7 +305,7 @@ public class ScrollAnimationOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var curve: Curve
+    public var curve: ?Curve
 
     /**
      * Whether to enable overscroll.
@@ -319,7 +319,7 @@ public class ScrollAnimationOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var canOverScroll: Bool
+    public var canOverScroll: ?Bool
 
     /**
      * Constructs a customizing scroll animations
@@ -335,13 +335,13 @@ public class ScrollAnimationOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        duration!: Float64 = 1000.0,
-        curve!: Curve = Curve.Ease,
-        canOverScroll!: Bool = false
+        duration!: ?Float64 = None,
+        curve!: ?Curve = None,
+        canOverScroll!: ?Bool = None
     ) {
-        this.duration = duration
-        this.curve = curve
-        this.canOverScroll = canOverScroll
+        this.duration = duration ?? 1000.0
+        this.curve = curve ?? Curve.Ease
+        this.canOverScroll = canOverScroll ?? false
     }
 }
 
@@ -438,7 +438,7 @@ public class NestedScrollOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var scrollForward: NestedScrollMode
+    public var scrollForward: ?NestedScrollMode
 
     /**
     * Representing the backward in the customizing scroll nested.
@@ -450,7 +450,7 @@ public class NestedScrollOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var scrollBackward: NestedScrollMode
+    public var scrollBackward: ?NestedScrollMode
 
     /**
      * Provides parameters for customizing scroll nested.
@@ -460,9 +460,9 @@ public class NestedScrollOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(scrollForward: NestedScrollMode, scrollBackward: NestedScrollMode) {
-        this.scrollForward = scrollForward
-        this.scrollBackward = scrollBackward
+    public init(scrollForward: ?NestedScrollMode, scrollBackward: ?NestedScrollMode) {
+        this.scrollForward = scrollForward ?? throw IllegalArgumentException("The type now is not supported.")
+        this.scrollBackward = scrollBackward ?? throw IllegalArgumentException("The type now is not supported.")
     }
 }
 
@@ -486,7 +486,7 @@ public class FadingEdgeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fadingEdgeLength: Length
+    public var fadingEdgeLength: ?Length
 
     /**
      * Constructs a customizing fading edge.
@@ -499,8 +499,8 @@ public class FadingEdgeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(fadingEdgeLength!: Length = 32.vp) {
-        this.fadingEdgeLength = fadingEdgeLength
+    public init(fadingEdgeLength!: ?Length = None) {
+        this.fadingEdgeLength = fadingEdgeLength ?? 32.vp
     }
 }
 
@@ -576,15 +576,15 @@ public class ScrollEdgeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var velocity: Float32 = 0.0
+    public var velocity: ?Float32
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(velocity!: Float32 = 0.0) {
-        this.velocity = velocity
+    public init(velocity!: ?Float32 = None) {
+        this.velocity = velocity ?? 0.0
     }
 }
 
@@ -599,15 +599,15 @@ public class ScrollToIndexOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var extraOffset: Length = 0.vp
+    public var extraOffset: ?Length
 
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(extraOffset!: Length = 0.vp) {
-        this.extraOffset = extraOffset
+    public init(extraOffset!: ?Length = None) {
+        this.extraOffset = extraOffset ?? 0.vp
     }
 }
 
@@ -767,9 +767,10 @@ public class Scroll <: ScrollableCommonMethodComponent<ScrollAttribute> & Scroll
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(scroller: Scroller, child: () -> Unit) {
+    public init(scroller: ?Scroller, child: () -> Unit) {
+        let tmpScroller = scroller ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkScrollCreate(scroller.getID())
+            FfiOHOSAceFrameworkScrollCreate(tmpScroller.getID())
         }
         this.child = child
     }
@@ -813,9 +814,10 @@ public class Scroll <: ScrollableCommonMethodComponent<ScrollAttribute> & Scroll
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollable(scrollDirection: ScrollDirection): This {
+    public func scrollable(scrollDirection: ?ScrollDirection): This {
+        let tmpScrollDirection = scrollDirection ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkScrollScrollable(scrollDirection.getValue())
+            FfiOHOSAceFrameworkScrollScrollable(tmpScrollDirection.getValue())
         }
         this
     }
@@ -843,8 +845,8 @@ public class Scroll <: ScrollableCommonMethodComponent<ScrollAttribute> & Scroll
     }
 
     protected func nestedScrollInner(value: NestedScrollOptions): This {
-        let localScrollForward = value.scrollForward.getValue()
-        let localScrollBackward = value.scrollBackward.getValue()
+        let localScrollForward = (value.scrollForward ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+        let localScrollBackward = (value.scrollBackward ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
         unsafe {
             FfiOHOSAceFrameworkScrollNestedScroll(localScrollForward, localScrollBackward)
         }
@@ -880,14 +882,16 @@ public class Scroll <: ScrollableCommonMethodComponent<ScrollAttribute> & Scroll
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onWillScroll(handler: (Float64, Float64, ScrollState, ScrollSource) -> OffsetResult): This {
+    public func onWillScroll(handler: ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult): This {
+        let tmpHandler = handler ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = { xOffset: Float64, yOffset: Float64, scrollState: Int32, scrollSource: Int32 =>
-            let res = handler(
+            let res = tmpHandler(
                 xOffset, yOffset,
                 ScrollState.parseValue(scrollState),
                 ScrollSource.parseValue(scrollSource)
             )
-            NativeOffsetResult(res.xOffset, res.yOffset)
+            NativeOffsetResult(res.xOffset ?? throw IllegalArgumentException("The type now is not supported."),
+                res.yOffset ?? throw IllegalArgumentException("The type now is not supported."))
         }
         let lambdaData = Callback4Param<Float64, Float64, Int32, Int32, NativeOffsetResult>(wrapper)
 
@@ -912,10 +916,11 @@ public class Scroll <: ScrollableCommonMethodComponent<ScrollAttribute> & Scroll
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onWillScroll(handler: (Float64, Float64, ScrollState, ScrollSource) -> Unit): This {
+    public func onWillScroll(handler: ?(Float64, Float64, ScrollState, ScrollSource) -> Unit): This {
+        let tmpHandler = handler ?? throw IllegalArgumentException("The type now is not supported.")
         let callbackWithRet: (Float64, Float64, ScrollState, ScrollSource) -> OffsetResult = {
             xOffset: Float64, yOffset: Float64, scrollState: ScrollState, scrollSource: ScrollSource =>
-            handler(xOffset, yOffset, scrollState, scrollSource)
+            tmpHandler(xOffset, yOffset, scrollState, scrollSource)
             return OffsetResult(xOffset, yOffset)
         }
         onWillScroll(callbackWithRet)
@@ -936,9 +941,10 @@ public class Scroll <: ScrollableCommonMethodComponent<ScrollAttribute> & Scroll
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDidScroll(callback: ScrollOnScrollCallback): This {
+    public func onDidScroll(callback: ?ScrollOnScrollCallback): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            xOffset: Float64, yOffset: Float64, scrollState: Int32 => callback(xOffset, yOffset,
+            xOffset: Float64, yOffset: Float64, scrollState: Int32 => tmpCallback(xOffset, yOffset,
                 ScrollState.parseValue(scrollState))
         }
         let lambdaData = Callback3Param<Float64, Float64, Int32, Unit>(wrapper)
@@ -976,9 +982,10 @@ public class Scroll <: ScrollableCommonMethodComponent<ScrollAttribute> & Scroll
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollFrameBegin(event: OnScrollFrameBeginCallback): This {
+    public func onScrollFrameBegin(event: ?OnScrollFrameBeginCallback): This {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            offset: Float64, state: Int32 => event(offset, ScrollState.parseValue(state))
+            offset: Float64, state: Int32 => tmpEvent(offset, ScrollState.parseValue(state))
         }
         let lambdaData = Callback2Param<Float64, Int32, Float64>(wrapper)
         unsafe {
@@ -1003,14 +1010,15 @@ public class Scroll <: ScrollableCommonMethodComponent<ScrollAttribute> & Scroll
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollEdge(event: OnScrollEdgeCallback): This {
+    public func onScrollEdge(event: ?OnScrollEdgeCallback): This {
+        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkScrollOnScrollEdge(
                 Callback1Param<Int32, Unit>(
                     {
                         value =>
                         let edge = Edge.setValue(value)
-                        event(edge)
+                        tmpEvent(edge)
                     }
                 ).getID())
         }
@@ -1077,9 +1085,11 @@ public class Scroller {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollTo(xOffset!: Length, yOffset!: Length): Unit {
-        var xOffset_ = transAppResourceToLength(xOffset)
-        var yOffset_ = transAppResourceToLength(yOffset)
+    public func scrollTo(xOffset!: ?Length, yOffset!: ?Length): Unit {
+        let tmpXOffset = xOffset ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpYOffset = yOffset ?? throw IllegalArgumentException("The type now is not supported.")
+        var xOffset_ = transAppResourceToLength(tmpXOffset)
+        var yOffset_ = transAppResourceToLength(tmpYOffset)
         unsafe {
             FfiOHOSAceFrameworkScrollerScrollTo(this.handler.getID(), xOffset_.value, xOffset_.unitType.getValue(),
                 yOffset_.value, yOffset_.unitType.getValue())
@@ -1099,14 +1109,17 @@ public class Scroller {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollTo(xOffset!: Length, yOffset!: Length, animation!: ScrollAnimationOptions): Unit {
-        var xOffset_ = transAppResourceToLength(xOffset)
-        var yOffset_ = transAppResourceToLength(yOffset)
+    public func scrollTo(xOffset!: ?Length, yOffset!: ?Length, animation!: ?ScrollAnimationOptions): Unit {
+        let tmpXOffset = xOffset ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpYOffset = yOffset ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpAnimation = animation ?? throw IllegalArgumentException("The type now is not supported.")
+        var xOffset_ = transAppResourceToLength(tmpXOffset)
+        var yOffset_ = transAppResourceToLength(tmpYOffset)
         unsafe {
-            try (curveResource = LibC.mallocCString(animation.curve.getValue()).asResource()) {
+            try (curveResource = LibC.mallocCString((tmpAnimation.curve ?? Curve.Ease).getValue()).asResource()) {
                 FfiOHOSAceFrameworkScrollerScrollToAnimationOptions(this.handler.getID(), xOffset_.value,
-                    xOffset_.unitType.getValue(), yOffset_.value, yOffset_.unitType.getValue(), animation.duration,
-                    curveResource.value, animation.canOverScroll)
+                    xOffset_.unitType.getValue(), yOffset_.value, yOffset_.unitType.getValue(), tmpAnimation.duration ?? 1000.0,
+                    curveResource.value, tmpAnimation.canOverScroll ?? false)
             }
         }
     }
@@ -1124,12 +1137,15 @@ public class Scroller {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollTo(xOffset!: Length, yOffset!: Length, animation!: Bool): Unit {
-        var xOffset_ = transAppResourceToLength(xOffset)
-        var yOffset_ = transAppResourceToLength(yOffset)
+    public func scrollTo(xOffset!: ?Length, yOffset!: ?Length, animation!: ?Bool): Unit {
+        let tmpXOffset = xOffset ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpYOffset = yOffset ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpAnimation = animation ?? throw IllegalArgumentException("The type now is not supported.")
+        var xOffset_ = transAppResourceToLength(tmpXOffset)
+        var yOffset_ = transAppResourceToLength(tmpYOffset)
         unsafe {
             FfiOHOSAceFrameworkScrollerScrollToAnimation(this.handler.getID(), xOffset_.value, xOffset_.unitType.getValue(),
-                yOffset_.value, yOffset_.unitType.getValue(), animation)
+                yOffset_.value, yOffset_.unitType.getValue(), tmpAnimation)
         }
     }
 
@@ -1145,9 +1161,11 @@ public class Scroller {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollBy(xOffset!: Length, yOffset!: Length): Unit {
-        var xOffset_ = transAppResourceToLength(xOffset)
-        var yOffset_ = transAppResourceToLength(yOffset)
+    public func scrollBy(xOffset!: ?Length, yOffset!: ?Length): Unit {
+        let tmpXOffset = xOffset ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpYOffset = yOffset ?? throw IllegalArgumentException("The type now is not supported.")
+        var xOffset_ = transAppResourceToLength(tmpXOffset)
+        var yOffset_ = transAppResourceToLength(tmpYOffset)
         unsafe {
             FfiOHOSAceFrameworkScrollerScrollBy(this.handler.getID(), xOffset_.value, xOffset_.unitType.getValue(),
                 yOffset_.value, yOffset_.unitType.getValue())
@@ -1165,9 +1183,10 @@ public class Scroller {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollEdge(value: Edge): Unit {
+    public func scrollEdge(value: ?Edge): Unit {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollEdge(this.handler.getID(), value.getValue())
+            FfiOHOSAceFrameworkScrollerScrollEdge(this.handler.getID(), tmpValue.getValue())
         }
     }
 
@@ -1183,9 +1202,11 @@ public class Scroller {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollEdge(value: Edge, options: ScrollEdgeOptions): Unit {
+    public func scrollEdge(value: ?Edge, options: ?ScrollEdgeOptions): Unit {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollEdgeWithVelocity(this.handler.getID(), value.getValue(), options.velocity)
+            FfiOHOSAceFrameworkScrollerScrollEdgeWithVelocity(this.handler.getID(), tmpValue.getValue(), tmpOptions.velocity ?? 0.0)
         }
     }
 
@@ -1204,16 +1225,17 @@ public class Scroller {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fling(velocity: Float64): Unit {
+    public func fling(velocity: ?Float64): Unit {
+        let tmpVelocity = velocity ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollFling(this.handler.getID(), velocity)
+            FfiOHOSAceFrameworkScrollerScrollFling(this.handler.getID(), tmpVelocity)
         }
     }
 
     /**
      * Called when page turning mode is set.
      *
-     * @param { Bool } next
+     * @param { Bool } value
      * @relation scrollPage(value: ScrollPageOptions): void;
      */
     @!APILevel[
@@ -1221,9 +1243,10 @@ public class Scroller {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollPage(next: Bool): Unit {
+    public func scrollPage(value: ?Bool): Unit {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollPage(this.handler.getID(), next)
+            FfiOHOSAceFrameworkScrollerScrollPage(this.handler.getID(), tmpValue)
         }
     }
 
@@ -1239,9 +1262,10 @@ public class Scroller {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scrollPage(next: Bool, animation!: Bool = false): Unit {
+    public func scrollPage(next: ?Bool, animation!: ?Bool = None): Unit {
+        let tmpNext = next ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkScrollerScrollPageWithAnimation(this.handler.getID(), next, animation)
+            FfiOHOSAceFrameworkScrollerScrollPageWithAnimation(this.handler.getID(), tmpNext, animation ?? false)
         }
     }
 
@@ -1279,15 +1303,19 @@ public class Scroller {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollToIndex(
-        index: Int32,
-        smooth!: Bool = false,
-        align!: ScrollAlign = ScrollAlign.Start,
-        options!: ScrollToIndexOptions = ScrollToIndexOptions()
+        index: ?Int32,
+        smooth!: ?Bool = None,
+        align!: ?ScrollAlign = None,
+        options!: ?ScrollToIndexOptions = None
     ): This {
-        var extraOffset_ = transAppResourceToLength(options.extraOffset)
+        let tmpIndex = index ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpAlign = align ?? ScrollAlign.Start
+        let tmpOptions = options ?? ScrollToIndexOptions()
+        
+        var extraOffset_ = transAppResourceToLength(tmpOptions.extraOffset ?? 0.vp)
         unsafe {
-            if (index >= 0) {
-                FfiOHOSAceFrameworkScrollerScrollToIndexWithUnit(this.handler.getID(), index, smooth, align.getValue(),
+            if (tmpIndex >= 0) {
+                FfiOHOSAceFrameworkScrollerScrollToIndexWithUnit(this.handler.getID(), tmpIndex, smooth ?? false, tmpAlign.getValue(),
                     extraOffset_.value, extraOffset_.unitType.getValue())
             }
         }
@@ -1330,9 +1358,10 @@ public class Scroller {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func getItemRect(index: Int32): RectResult {
+    public func getItemRect(index: ?Int32): RectResult {
+        let tmpIndex = index ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            RectResult(FfiOHOSAceFrameworkScrollerGetItemRect(this.handler.getID(), index))
+            RectResult(FfiOHOSAceFrameworkScrollerGetItemRect(this.handler.getID(), tmpIndex))
         }
     }
 
@@ -1353,9 +1382,11 @@ public class Scroller {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func getItemIndex(x: Float64, y: Float64): Int32 {
-        var x_ = transAppResourceToLength(x.vp)
-        var y_ = transAppResourceToLength(y.vp)
+    public func getItemIndex(x: ?Float64, y: ?Float64): Int32 {
+        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+        var x_ = transAppResourceToLength(tmpX.vp)
+        var y_ = transAppResourceToLength(tmpY.vp)
         unsafe {
             FfiOHOSAceFrameworkScrollerGetItemIndex(this.handler.getID(), x_.value, x_.unitType.getValue(), y_.value,
                 y_.unitType.getValue())

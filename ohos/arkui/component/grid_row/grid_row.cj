@@ -183,7 +183,7 @@ public class GridRowSizeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var xs: Length
+    public var xs: ?Length
     /**
     * Grid Row Size Option sm, select sm gutter size based on gridRow current breakpoint
     *
@@ -195,7 +195,7 @@ public class GridRowSizeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var sm: Length
+    public var sm: ?Length
     /**
     * Grid Row Size Option md, select md gutter size based on gridRow current breakpoint
     *
@@ -207,7 +207,7 @@ public class GridRowSizeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var md: Length
+    public var md: ?Length
     /**
     * Grid Row Size Option lg, select lg gutter size based on gridRow current breakpoint
     *
@@ -219,7 +219,7 @@ public class GridRowSizeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var lg: Length
+    public var lg: ?Length
     /**
     * Grid Row Size Option xl, select xl gutter size based on gridRow current breakpoint
     *
@@ -231,7 +231,7 @@ public class GridRowSizeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var xl: Length
+    public var xl: ?Length
     /**
     * Grid Row Size Option xxl, select xxl gutter size based on gridRow current breakpoint
     *
@@ -243,7 +243,7 @@ public class GridRowSizeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var xxl: Length
+    public var xxl: ?Length
 
     /**
     * Defines the constructor of GridRowSizeOptions.
@@ -262,19 +262,19 @@ public class GridRowSizeOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        xs!: Length = 0.vp,
-        sm!: Length = 0.vp,
-        md!: Length = 0.vp,
-        lg!: Length = 0.vp,
-        xl!: Length = 0.vp,
-        xxl!: Length = 0.vp
+        xs!: ?Length = None,
+        sm!: ?Length = None,
+        md!: ?Length = None,
+        lg!: ?Length = None,
+        xl!: ?Length = None,
+        xxl!: ?Length = None
     ) {
-        this.xs = transAppResourceToLength(xs)
-        this.sm = transAppResourceToLength(sm)
-        this.md = transAppResourceToLength(md)
-        this.lg = transAppResourceToLength(lg)
-        this.xl = transAppResourceToLength(xl)
-        this.xxl = transAppResourceToLength(xxl)
+        this.xs = transAppResourceToLength(xs ?? 0.vp)
+        this.sm = transAppResourceToLength(sm ?? 0.vp)
+        this.md = transAppResourceToLength(md ?? 0.vp)
+        this.lg = transAppResourceToLength(lg ?? 0.vp)
+        this.xl = transAppResourceToLength(xl ?? 0.vp)
+        this.xxl = transAppResourceToLength(xxl ?? 0.vp)
     }
 
     /**
@@ -288,29 +288,30 @@ public class GridRowSizeOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: Length) {
-        this.xs = transAppResourceToLength(value)
-        this.sm = transAppResourceToLength(value)
-        this.md = transAppResourceToLength(value)
-        this.lg = transAppResourceToLength(value)
-        this.xl = transAppResourceToLength(value)
-        this.xxl = transAppResourceToLength(value)
+    public init(value: ?Length) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        this.xs = transAppResourceToLength(tmpValue)
+        this.sm = transAppResourceToLength(tmpValue)
+        this.md = transAppResourceToLength(tmpValue)
+        this.lg = transAppResourceToLength(tmpValue)
+        this.xl = transAppResourceToLength(tmpValue)
+        this.xxl = transAppResourceToLength(tmpValue)
     }
 
     func toAtC(): AtCGridRowSizeOption {
         AtCGridRowSizeOption(
-            xs.value,
-            xs.unitType.getValue(),
-            sm.value,
-            sm.unitType.getValue(),
-            md.value,
-            md.unitType.getValue(),
-            lg.value,
-            lg.unitType.getValue(),
-            xl.value,
-            xl.unitType.getValue(),
-            xxl.value,
-            xxl.unitType.getValue()
+            (xs ?? 0.vp).value,
+            (xs ?? 0.vp).unitType.getValue(),
+            (sm ?? 0.vp).value,
+            (sm ?? 0.vp).unitType.getValue(),
+            (md ?? 0.vp).value,
+            (md ?? 0.vp).unitType.getValue(),
+            (lg ?? 0.vp).value,
+            (lg ?? 0.vp).unitType.getValue(),
+            (xl ?? 0.vp).value,
+            (xl ?? 0.vp).unitType.getValue(),
+            (xxl ?? 0.vp).value,
+            (xxl ?? 0.vp).unitType.getValue()
         )
     }
 }
@@ -374,7 +375,7 @@ public class GridRowOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var xs: Int32
+    public var xs: ?Int32
 
     /**
      * Grid Row Column Option sm, select sm column num based on gridRow current breakpoint
@@ -387,7 +388,7 @@ public class GridRowOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var sm: Int32
+    public var sm: ?Int32
 
     /**
     * Grid Row Column Option md, select md column num based on gridRow current breakpoint
@@ -400,7 +401,7 @@ public class GridRowOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var md: Int32
+    public var md: ?Int32
 
     /**
     * Grid Row Column Option lg, select lg column num based on gridRow current breakpoint
@@ -413,7 +414,7 @@ public class GridRowOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var lg: Int32
+    public var lg: ?Int32
 
     /**
     * Grid Row Column Option xl, select xl column num based on gridRow current breakpoint
@@ -426,7 +427,7 @@ public class GridRowOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var xl: Int32
+    public var xl: ?Int32
 
     /**
     * Grid Row Column Option xxl, select xxl column num based on gridRow current breakpoint
@@ -439,7 +440,7 @@ public class GridRowOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var xxl: Int32
+    public var xxl: ?Int32
 
     /**
     * Defines the constructor of GridRowOptions.
@@ -458,19 +459,19 @@ public class GridRowOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        xs!: Int32 = 2,
-        sm!: Int32 = 4,
-        md!: Int32 = 8,
-        lg!: Int32 = 12,
-        xl!: Int32 = 12,
-        xxl!: Int32 = 12
+        xs!: ?Int32 = None,
+        sm!: ?Int32 = None,
+        md!: ?Int32 = None,
+        lg!: ?Int32 = None,
+        xl!: ?Int32 = None,
+        xxl!: ?Int32 = None
     ) {
-        this.xs = xs
-        this.sm = sm
-        this.md = md
-        this.lg = lg
-        this.xl = xl
-        this.xxl = xxl
+        this.xs = xs ?? 2
+        this.sm = sm ?? 4
+        this.md = md ?? 8
+        this.lg = lg ?? 12
+        this.xl = xl ?? 12
+        this.xxl = xxl ?? 12
     }
 
     /**
@@ -484,18 +485,19 @@ public class GridRowOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: Int32) {
-        this.xs = value
-        this.sm = value
-        this.md = value
-        this.lg = value
-        this.xl = value
-        this.xxl = value
+    public init(value: ?Int32) {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        this.xs = tmpValue
+        this.sm = tmpValue
+        this.md = tmpValue
+        this.lg = tmpValue
+        this.xl = tmpValue
+        this.xxl = tmpValue
     }
 
     func parseToNative(): NativeGridRowColumnOption {
-        NativeGridRowColumnOption(this.xs, this.sm, this.md,
-            this.lg, this.xl, this.xxl)
+        NativeGridRowColumnOption(this.xs ?? 2, this.sm ?? 4, this.md ?? 8,
+            this.lg ?? 12, this.xl ?? 12, this.xxl ?? 12)
     }
 }
 
@@ -523,8 +525,10 @@ public class GutterOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: Length, y!: Length) {
-        this.data = GridRowGutter.GUTTERLENGTH(GutterLength(x, y))
+    public init(x!: ?Length, y!: ?Length) {
+        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+        this.data = GridRowGutter.GUTTERLENGTH(GutterLength(tmpX, tmpY))
     }
 
     /**
@@ -539,8 +543,10 @@ public class GutterOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: GridRowSizeOptions, y!: GridRowSizeOptions) {
-        this.data = GridRowGutter.GUTTEROPTION(GutterSizeOption(x, y))
+    public init(x!: ?GridRowSizeOptions, y!: ?GridRowSizeOptions) {
+        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+        this.data = GridRowGutter.GUTTEROPTION(GutterSizeOption(tmpX, tmpY))
     }
 }
 
@@ -566,7 +572,7 @@ public class BreakPoints {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var value: Array<Length>
+    public var value: ?Array<Length>
 
     /**
     * Set breakpoint reference
@@ -579,7 +585,7 @@ public class BreakPoints {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var reference: BreakpointsReference
+    public var reference: ?BreakpointsReference
 
     /**
     * BreakPoints constructor.
@@ -592,11 +598,10 @@ public class BreakPoints {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: Array<Length> = [320.vp, 600.vp, 840.vp],
-        reference!: BreakpointsReference = BreakpointsReference.WindowSize
-    ) {
-        this.value = value
-        this.reference = reference
+    public init(value!: ?Array<Length> = None,
+        reference!: ?BreakpointsReference = None ) {
+        this.value = value ?? [320.vp, 600.vp, 840.vp]
+        this.reference = reference ?? BreakpointsReference.WindowSize
     }
 }
 
@@ -709,29 +714,33 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        columns!: Int32 = 12,
-        gutter!: Length = 0.vp,
-        breakpoints!: BreakPoints = BreakPoints(),
-        direction!: GridRowDirection = GridRowDirection.Row,
+        columns!: ?Int32 = None,
+        gutter!: ?Length = None,
+        breakpoints!: ?BreakPoints = Option.None,
+        direction!: ?GridRowDirection = Option.None,
         child!: () -> Unit = {=>}
     ) {
-        var gutter_ = transAppResourceToLength(gutter)
-        let valuesHandle = FFIVectorFloat64(breakpoints.value.size)
-        let unitsHandle = FFIVectorInt32(breakpoints.value.size)
-        for (i in 0..breakpoints.value.size) {
-            valuesHandle.setElement(i, breakpoints.value[i].value)
-            unitsHandle.setElement(i, breakpoints.value[i].unitType.getValue())
+        let tmpBreakpoints = breakpoints ?? BreakPoints()
+        let tmpBreakpointsValue = tmpBreakpoints.value ?? [320.vp, 600.vp, 840.vp]
+        let tmpDirection = direction ?? GridRowDirection.Row
+
+        var gutter_ = transAppResourceToLength(gutter ?? 0.vp)
+        let valuesHandle = FFIVectorFloat64(tmpBreakpointsValue.size)
+        let unitsHandle = FFIVectorInt32(tmpBreakpointsValue.size)
+        for (i in 0..tmpBreakpointsValue.size) {
+            valuesHandle.setElement(i, tmpBreakpointsValue[i].value)
+            unitsHandle.setElement(i, tmpBreakpointsValue[i].unitType.getValue())
         }
         unsafe {
             FfiOHOSAceFrameworkGridRowCreateWithFloat64Int32(
                 GridRowCreateWithFloat64Int32(
                     gutter_.value,
                     gutter_.unitType.getValue(),
-                    columns,
+                    columns ?? 12,
                     valuesHandle.getNativeHandle(),
                     unitsHandle.getNativeHandle(),
-                    breakpoints.reference.getValue(),
-                    direction.getValue()
+                    (tmpBreakpoints.reference ?? BreakpointsReference.WindowSize).getValue(),
+                    tmpDirection.getValue()
                 )
             )
             valuesHandle.free()
@@ -756,21 +765,26 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        columns!: GridRowOptions,
-        gutter!: Length = 0.vp,
-        breakpoints!: BreakPoints = BreakPoints(),
-        direction!: GridRowDirection = GridRowDirection.Row,
+        columns!: ?GridRowOptions,
+        gutter!: ?Length = None,
+        breakpoints!: ?BreakPoints = Option.None,
+        direction!: ?GridRowDirection = Option.None,
         child!: () -> Unit = {=>}
     ) {
-        var gutter_ = transAppResourceToLength(gutter)
-        let valuesHandle = FFIVectorFloat64(breakpoints.value.size)
-        let unitsHandle = FFIVectorInt32(breakpoints.value.size)
-        for (i in 0..breakpoints.value.size) {
-            valuesHandle.setElement(i, breakpoints.value[i].value)
-            unitsHandle.setElement(i, breakpoints.value[i].unitType.getValue())
+        let tmpColumns = columns ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpBreakpoints = breakpoints ?? BreakPoints()
+        let tmpBreakpointsValue = tmpBreakpoints.value ?? [320.vp, 600.vp, 840.vp]
+        let tmpDirection = direction ?? GridRowDirection.Row
+
+        var gutter_ = transAppResourceToLength(gutter ?? 0.vp)
+        let valuesHandle = FFIVectorFloat64(tmpBreakpointsValue.size)
+        let unitsHandle = FFIVectorInt32(tmpBreakpointsValue.size)
+        for (i in 0..tmpBreakpointsValue.size) {
+            valuesHandle.setElement(i, tmpBreakpointsValue[i].value)
+            unitsHandle.setElement(i, tmpBreakpointsValue[i].unitType.getValue())
         }
         unsafe {
-            let nativeColumns = columns.parseToNative()
+            let nativeColumns = tmpColumns.parseToNative()
             FfiOHOSAceFrameworkGridRowCreateWithFloat64ColumnOption(
                 GridRowCreateWithFloat64ColumnOption(
                     gutter_.value,
@@ -778,8 +792,8 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
                     nativeColumns,
                     valuesHandle.getNativeHandle(),
                     unitsHandle.getNativeHandle(),
-                    breakpoints.reference.getValue(),
-                    direction.getValue()
+                    (tmpBreakpoints.reference ?? BreakpointsReference.WindowSize).getValue(),
+                    tmpDirection.getValue()
                 )
             )
             valuesHandle.free()
@@ -804,19 +818,24 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        columns!: Int32 = 12,
-        gutter!: GutterOptions,
-        breakpoints!: BreakPoints = BreakPoints(),
-        direction!: GridRowDirection = GridRowDirection.Row,
+        columns!: ?Int32 = None,
+        gutter!: ?GutterOptions,
+        breakpoints!: ?BreakPoints = Option.None,
+        direction!: ?GridRowDirection = Option.None,
         child!: () -> Unit = {=>}
     ) {
-        let valuesHandle = FFIVectorFloat64(breakpoints.value.size)
-        let unitsHandle = FFIVectorInt32(breakpoints.value.size)
-        for (i in 0..breakpoints.value.size) {
-            valuesHandle.setElement(i, breakpoints.value[i].value)
-            unitsHandle.setElement(i, breakpoints.value[i].unitType.getValue())
+        let tmpGutter = gutter ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpBreakpoints = breakpoints ?? BreakPoints()
+        let tmpBreakpointsValue = tmpBreakpoints.value ?? [320.vp, 600.vp, 840.vp]
+        let tmpDirection = direction ?? GridRowDirection.Row
+
+        let valuesHandle = FFIVectorFloat64(tmpBreakpointsValue.size)
+        let unitsHandle = FFIVectorInt32(tmpBreakpointsValue.size)
+        for (i in 0..tmpBreakpointsValue.size) {
+            valuesHandle.setElement(i, tmpBreakpointsValue[i].value)
+            unitsHandle.setElement(i, tmpBreakpointsValue[i].unitType.getValue())
         }
-        match (gutter.data) {
+        match (tmpGutter.data) {
             case GUTTERLENGTH(gutterValue) => unsafe {
                 FfiOHOSAceFrameworkGridRowCreateWithFloat64OptionInt32(
                     GridRowCreateWithFloat64OptionInt32(
@@ -824,11 +843,11 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
                         gutterValue.x.unitType.getValue(),
                         gutterValue.y.value,
                         gutterValue.y.unitType.getValue(),
-                        columns,
+                        columns ?? 12,
                         valuesHandle.getNativeHandle(),
                         unitsHandle.getNativeHandle(),
-                        breakpoints.reference.getValue(),
-                        direction.getValue()
+                        (tmpBreakpoints.reference ?? BreakpointsReference.WindowSize).getValue(),
+                        tmpDirection.getValue()
                     )
                 )
                 valuesHandle.free()
@@ -839,11 +858,11 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
                     GridRowCreateWithSizeOptionInt32(
                         gutterValue.x.toAtC(),
                         gutterValue.y.toAtC(),
-                        columns,
+                        columns ?? 12,
                         valuesHandle.getNativeHandle(),
                         unitsHandle.getNativeHandle(),
-                        breakpoints.reference.getValue(),
-                        direction.getValue()
+                        (tmpBreakpoints.reference ?? BreakpointsReference.WindowSize).getValue(),
+                        tmpDirection.getValue()
                     )
                 )
                 valuesHandle.free()
@@ -869,22 +888,27 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        columns!: GridRowOptions,
-        gutter!: GutterOptions,
-        breakpoints!: BreakPoints = BreakPoints(),
-        direction!: GridRowDirection = GridRowDirection.Row,
+        columns!: ?GridRowOptions,
+        gutter!: ?GutterOptions,
+        breakpoints!: ?BreakPoints = Option.None,
+        direction!: ?GridRowDirection = Option.None,
         child!: () -> Unit = {=>}
     ) {
+        let tmpColumns = columns ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpGutter = gutter ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpBreakpoints = breakpoints ?? BreakPoints()
+        let tmpBreakpointsValue = tmpBreakpoints.value ?? [320.vp, 600.vp, 840.vp]
+        let tmpDirection = direction ?? GridRowDirection.Row
 
-        let valuesHandle = FFIVectorFloat64(breakpoints.value.size)
-        let unitsHandle = FFIVectorInt32(breakpoints.value.size)
-        for (i in 0..breakpoints.value.size) {
-            valuesHandle.setElement(i, breakpoints.value[i].value)
-            unitsHandle.setElement(i, breakpoints.value[i].unitType.getValue())
+        let valuesHandle = FFIVectorFloat64(tmpBreakpointsValue.size)
+        let unitsHandle = FFIVectorInt32(tmpBreakpointsValue.size)
+        for (i in 0..tmpBreakpointsValue.size) {
+            valuesHandle.setElement(i, tmpBreakpointsValue[i].value)
+            unitsHandle.setElement(i, tmpBreakpointsValue[i].unitType.getValue())
         }
-        match (gutter.data) {
+        match (tmpGutter.data) {
             case GUTTERLENGTH(gutterValue) => unsafe {
-                let nativeColumns = columns.parseToNative()
+                let nativeColumns = tmpColumns.parseToNative()
                 FfiOHOSAceFrameworkGridRowCreateWithFloat64OptionColumnOption(
                     GridRowCreateWithFloat64OptionColumnOption(
                         gutterValue.x.value,
@@ -894,15 +918,15 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
                         nativeColumns,
                         valuesHandle.getNativeHandle(),
                         unitsHandle.getNativeHandle(),
-                        breakpoints.reference.getValue(),
-                        direction.getValue()
+                        (tmpBreakpoints.reference ?? BreakpointsReference.WindowSize).getValue(),
+                        tmpDirection.getValue()
                     )
                 )
                 valuesHandle.free()
                 unitsHandle.free()
             }
             case GUTTEROPTION(gutterValue) => unsafe {
-                let nativeColumns = columns.parseToNative()
+                let nativeColumns = tmpColumns.parseToNative()
                 FfiOHOSAceFrameworkGridRowCreateWithSizeOptionColumnOption(
                     GridRowCreateWithSizeOptionColumnOption(
                         gutterValue.x.toAtC(),
@@ -910,8 +934,8 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
                         nativeColumns,
                         valuesHandle.getNativeHandle(),
                         unitsHandle.getNativeHandle(),
-                        breakpoints.reference.getValue(),
-                        direction.getValue()
+                        (tmpBreakpoints.reference ?? BreakpointsReference.WindowSize).getValue(),
+                        tmpDirection.getValue()
                     )
                 )
                 valuesHandle.free()
@@ -941,9 +965,10 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alignItems(value: ItemAlign): This {
+    public func alignItems(value: ?ItemAlign): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridRowAlignItem(value.getValue())
+            FfiOHOSAceFrameworkGridRowAlignItem(tmpValue.getValue())
         }
         this
     }
@@ -960,9 +985,10 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onBreakpointChange(callback: (String) -> Unit): This {
+    public func onBreakpointChange(callback: ?(String) -> Unit): This {
+        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = {
-            value: CString => callback(value.toString())
+            value: CString => tmpCallback(value.toString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {

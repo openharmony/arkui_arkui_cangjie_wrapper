@@ -104,12 +104,13 @@ public class ImageBitmap <: RemoteData {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(src: String) {
+    public init(src: ?String) {
         super(
             unsafe {
+                let tmpSrc = src ?? throw IllegalArgumentException("The type now is not supported.")
                 var id = 0
-                this.src = src
-                try (srcResouce = LibC.mallocCString(src).asResource()) {
+                this.src = tmpSrc
+                try (srcResouce = LibC.mallocCString(tmpSrc).asResource()) {
                     id = FfiOHOSAceFrameworkImageBitMapCtor(srcResouce.value, this.unit)
                 }
                 id

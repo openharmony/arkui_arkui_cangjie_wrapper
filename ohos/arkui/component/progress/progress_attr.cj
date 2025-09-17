@@ -19,11 +19,11 @@ import ohos.arkui.component.common.*
 import ohos.base.*
 
 sealed interface ProgressAttribute <: CommonMethod<ProgressAttribute> {
-    func value(value: Float64): ProgressAttribute
+    func value(value: ?Float64): ProgressAttribute
 
-    func color(value: ResourceColor): ProgressAttribute
+    func color(value: ?ResourceColor): ProgressAttribute
 
-    func style(strokeWidth!: Length, scaleCount!: Int32, scaleWidth!: Length): ProgressAttribute
+    func style(strokeWidth!: ?Length, scaleCount!: ?Int32, scaleWidth!: ?Length): ProgressAttribute
 
-    func style(value: RingStyleOptions): ProgressAttribute
+    func style(value: ?RingStyleOptions): ProgressAttribute
 }

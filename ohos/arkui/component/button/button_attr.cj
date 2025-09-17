@@ -20,19 +20,19 @@ import ohos.base.*
 import ohos.resource.*
 
 sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
-    func fontSize(value: Length): ButtonAttribute
+    func fontSize(value: ?Length): ButtonAttribute
 
-    func fontWeight(value: FontWeight): ButtonAttribute
+    func fontWeight(value: ?FontWeight): ButtonAttribute
 
-    func fontColor(color: ResourceColor): ButtonAttribute
+    func fontColor(color: ?ResourceColor): ButtonAttribute
 
-    func fontStyle(value: FontStyle): ButtonAttribute
+    func fontStyle(value: ?FontStyle): ButtonAttribute
 
-    func fontFamily(value: ResourceStr): ButtonAttribute
+    func fontFamily(value: ?ResourceStr): ButtonAttribute
 
-    func shape(value: ButtonType): ButtonAttribute
+    func shape(value: ?ButtonType): ButtonAttribute
 
-    func stateEffect(value: Bool): ButtonAttribute
+    func stateEffect(value: ?Bool): ButtonAttribute
 
-    func buttonStyle(value: ButtonStyleMode): ButtonAttribute
+    func buttonStyle(value: ?ButtonStyleMode): ButtonAttribute
 }

@@ -60,9 +60,10 @@ public class Stack <: CommonMethodComponent<StackAttribute> & StackAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(alignContent!: Alignment = Alignment.Center, child!: () -> Unit = {=>}) {
+    public init(alignContent!: ?Alignment = None, child!: () -> Unit = {=>}) {
+        let tmpAlignContent = alignContent ?? Alignment.Center
         unsafe {
-            FfiOHOSAceFrameworkStackCreate(alignContent.getValue())
+            FfiOHOSAceFrameworkStackCreate(tmpAlignContent.getValue())
         }
         this.child = child
     }
@@ -105,9 +106,10 @@ public class Stack <: CommonMethodComponent<StackAttribute> & StackAttribute {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alignContent(value: Alignment): This {
+    public func alignContent(value: ?Alignment): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkStackSetAlignment(value.getValue())
+            FfiOHOSAceFrameworkStackSetAlignment(tmpValue.getValue())
         }
         this
     }

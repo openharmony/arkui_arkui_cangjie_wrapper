@@ -47,10 +47,11 @@ public class FocusControl {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func requestFocus(value: String): Bool {
+    public static func requestFocus(value: ?String): Bool {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         var result: Bool = false
         unsafe {
-            try (inspectorKey = LibC.mallocCString(value).asResource()) {
+            try (inspectorKey = LibC.mallocCString(tmpValue).asResource()) {
                 result = FFIOHOSAceFrameworkRequestFocus(inspectorKey.value)
             }
         }

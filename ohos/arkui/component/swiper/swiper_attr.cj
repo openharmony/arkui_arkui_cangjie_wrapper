@@ -20,37 +20,37 @@ import ohos.base.*
 
 sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
 
-    func autoPlay(value: Bool): SwiperAttribute
+    func autoPlay(value: ?Bool): SwiperAttribute
 
-    func duration(value: UInt32): SwiperAttribute
+    func duration(value: ?UInt32): SwiperAttribute
 
-    func index(value: UInt32): SwiperAttribute
+    func index(value: ?UInt32): SwiperAttribute
 
-    func interval(value: UInt32): SwiperAttribute
+    func interval(value: ?UInt32): SwiperAttribute
 
-    func loop(value: Bool): SwiperAttribute
+    func loop(value: ?Bool): SwiperAttribute
 
-    func vertical(value: Bool): SwiperAttribute
+    func vertical(value: ?Bool): SwiperAttribute
 
-    func indicator(indicator: Bool): SwiperAttribute
+    func indicator(indicator: ?Bool): SwiperAttribute
 
-    func indicator(indicator: DotIndicator): SwiperAttribute
+    func indicator(indicator: ?DotIndicator): SwiperAttribute
 
-    func indicator(indicator: DigitIndicator): SwiperAttribute
+    func indicator(indicator: ?DigitIndicator): SwiperAttribute
 
-    func itemSpace(value: Length): SwiperAttribute
+    func itemSpace(value: ?Length): SwiperAttribute
 
-    func displayMode(value: SwiperDisplayMode): SwiperAttribute
+    func displayMode(value: ?SwiperDisplayMode): SwiperAttribute
 
-    func effectMode(value: EdgeEffect): SwiperAttribute
+    func effectMode(value: ?EdgeEffect): SwiperAttribute
 
-    func displayCount(value: Int32, swipeByGroup!: Bool): SwiperAttribute
+    func displayCount(value: ?Int32, swipeByGroup!: ?Bool): SwiperAttribute
 
-    func cachedCount(value: Int32): SwiperAttribute
+    func cachedCount(value: ?Int32): SwiperAttribute
 
-    func disableSwipe(value: Bool): SwiperAttribute
+    func disableSwipe(value: ?Bool): SwiperAttribute
 
-    func curve(value: Curve): SwiperAttribute
+    func curve(value: ?Curve): SwiperAttribute
 
-    func onChange(callback: (Int32) -> Unit): SwiperAttribute
+    func onChange(callback: ?(Int32) -> Unit): SwiperAttribute
 }

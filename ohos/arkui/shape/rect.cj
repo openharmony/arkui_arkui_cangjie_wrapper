@@ -41,11 +41,11 @@ public class RectShape <: BaseShape {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
+    public init(width!: ?Length = None, height!: ?Length = None) {
         super(
             unsafe {
-                var width_ = transAppResourceToLength(width)
-                var height_ = transAppResourceToLength(height)
+                var width_ = transAppResourceToLength(width ?? 0.vp)
+                var height_ = transAppResourceToLength(height ?? 0.vp)
                 FfiOHOSAceFrameworkRectInsCreate(
                     width_.value,
                     width_.unitType.getValue(),
@@ -60,8 +60,9 @@ public class RectShape <: BaseShape {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func radiusWidth(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func radiusWidth(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkRectSetInsRadiusWidth(getID(), value_.value, value_.unitType.getValue())
         }
@@ -73,8 +74,9 @@ public class RectShape <: BaseShape {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func radiusHeight(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func radiusHeight(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkRectSetInsRadiusHeight(getID(), value_.value, value_.unitType.getValue())
         }
@@ -86,8 +88,9 @@ public class RectShape <: BaseShape {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func radius(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func radius(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkRectSetInsRadius(getID(), value_.value, value_.unitType.getValue())
         }

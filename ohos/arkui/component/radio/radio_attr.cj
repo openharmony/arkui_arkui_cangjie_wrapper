@@ -19,7 +19,7 @@ import ohos.arkui.component.common.*
 import ohos.base.*
 
 sealed interface RadioAttribute <: CommonMethod<RadioAttribute> {
-    func checked(value: Bool): RadioAttribute
+    func checked(value: ?Bool): RadioAttribute
 
-    func onChange(callback: (Bool) -> Unit): RadioAttribute
+    func onChange(callback: ?(Bool) -> Unit): RadioAttribute
 }

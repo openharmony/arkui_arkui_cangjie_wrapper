@@ -20,11 +20,11 @@ import ohos.base.*
 
 sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
 
-    func enableInc(value: Bool): CounterAttribute
+    func enableInc(value: ?Bool): CounterAttribute
 
-    func enableDec(value: Bool): CounterAttribute
+    func enableDec(value: ?Bool): CounterAttribute
 
-    func onInc(event: VoidCallback): CounterAttribute
+    func onInc(event: ?VoidCallback): CounterAttribute
 
-    func onDec(event: VoidCallback): CounterAttribute
+    func onDec(event: ?VoidCallback): CounterAttribute
 }

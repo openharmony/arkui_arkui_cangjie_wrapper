@@ -20,13 +20,13 @@ import ohos.base.*
 
 sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
 
-    func onFinish(callback: () -> Unit): StepperAttribute
+    func onFinish(callback: ?() -> Unit): StepperAttribute
 
-    func onSkip(callback: () -> Unit): StepperAttribute
+    func onSkip(callback: ?() -> Unit): StepperAttribute
 
-    func onChange(callback: (UInt32, UInt32) -> Unit): StepperAttribute
+    func onChange(callback: ?(UInt32, UInt32) -> Unit): StepperAttribute
 
-    func onNext(callback: (UInt32, UInt32) -> Unit): StepperAttribute
+    func onNext(callback: ?(UInt32, UInt32) -> Unit): StepperAttribute
 
-    func onPrevious(callback: (UInt32, UInt32) -> Unit): StepperAttribute
+    func onPrevious(callback: ?(UInt32, UInt32) -> Unit): StepperAttribute
 }

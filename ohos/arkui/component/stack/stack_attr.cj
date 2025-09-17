@@ -19,5 +19,5 @@ import ohos.arkui.component.common.*
 
 sealed interface StackAttribute <: CommonMethod<StackAttribute> {
 
-    func alignContent(value: Alignment): StackAttribute
+    func alignContent(value: ?Alignment): StackAttribute
 }
