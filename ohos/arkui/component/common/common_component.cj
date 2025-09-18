@@ -999,8 +999,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignRules(value: ?AlignRuleOptions): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        alignRulesInner(tmpValue)
+        alignRulesInner(value ?? AlignRuleOptions())
     }
 
     protected open func alignRulesInner(value: AlignRuleOptions): T {

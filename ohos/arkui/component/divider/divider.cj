@@ -32,6 +32,8 @@ foreign {
     func FfiOHOSAceFrameworkDividerSetStrokeWidth(width: Float64, unit: Int32): Unit
 }
 
+let defaultDivierColor = 0x33182431
+
 /**
  * Defines Divider Component.
  *
@@ -74,9 +76,8 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func vertical(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkDividerSetVertical(tmpValue)
+            FfiOHOSAceFrameworkDividerSetVertical(value ?? false)
         }
         this
     }
@@ -94,9 +95,8 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkDividerSetDividerColor(transAppResourceToResourceColor(tmpValue))
+            FfiOHOSAceFrameworkDividerSetDividerColor(transAppResourceToResourceColor(value ?? defaultDivierColor))
         }
         this
     }
@@ -114,8 +114,7 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeWidth(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var width_ = transAppResourceToLength(tmpValue)
+        var width_ = transAppResourceToLength(value ?? 1.0.px)
         unsafe {
             FfiOHOSAceFrameworkDividerSetStrokeWidth(width_.value, width_.unitType.getValue())
         }
@@ -135,9 +134,8 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineCap(value: ?LineCapStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkDividerSetLineCap(tmpValue.getValue())
+            FfiOHOSAceFrameworkDividerSetLineCap((value ?? LineCapStyle.Butt).getValue())
         }
         this
     }

@@ -67,8 +67,7 @@ public class Blank <: CommonMethodComponent<BlankAttribute> & BlankAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        backgroundColor(transAppResourceToResourceColor(tmpValue))
+        backgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
         this
     }
 }

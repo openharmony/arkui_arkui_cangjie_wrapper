@@ -78,9 +78,8 @@ public class Column <: CommonMethodComponent<ColumnAttribute> & ColumnAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignItems(value: ?HorizontalAlign): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkColumnSetAlignItems(tmpValue.getValue())
+            FfiOHOSAceFrameworkColumnSetAlignItems((value ?? HorizontalAlign.Center).getValue())
         }
         this
     }
@@ -98,9 +97,8 @@ public class Column <: CommonMethodComponent<ColumnAttribute> & ColumnAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func justifyContent(value: ?FlexAlign): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkColumnSetJustifyContent(tmpValue.getValue())
+            FfiOHOSAceFrameworkColumnSetJustifyContent((value ?? FlexAlign.Start).getValue())
         }
         this
     }
