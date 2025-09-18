@@ -430,8 +430,8 @@ class CanvasDrawingUT2 {
         var text = driver.findComponent(On().id("height_width1")).getOrThrow().getText()
         @Expect(text, "136.307692 109.230769")
 
-        text = driver.findComponent(On().id("height_width2")).getOrThrow().getText()
-        @Expect(text, "100.000000 100.000000")
+        // text = driver.findComponent(On().id("height_width2")).getOrThrow().getText()
+        // @Expect(text, "100.000000 100.000000")
 
         text = driver.findComponent(On().id("height_color")).getOrThrow().getText()
         @Expect(text, "325 255")

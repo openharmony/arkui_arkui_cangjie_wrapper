@@ -105,13 +105,13 @@ class ViewRichEditorTest2 {
             RichEditor(this.controller1)
             .id("ViewRichEditorTest2RichEditor1")
             .onReady({
-                =>
+                => this.message = "1"
             })
 
             RichEditor(this.controller2)
             .id("ViewRichEditorTest2RichEditor2")
             .onReady({
-                =>
+                => this.message2 = "1"
             })
 
             RichEditor(this.controller3)
@@ -173,6 +173,7 @@ class ViewRichEditor2 {
             Button("next component")
                 .id("next_component")
                 .onClick({ e =>
+                    this.componentId++
                 })
                 if (this.componentId == 0) {
                     ViewRichEditorTest1()

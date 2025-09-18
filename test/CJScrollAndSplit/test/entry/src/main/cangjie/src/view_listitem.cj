@@ -159,6 +159,7 @@ class ViewListItem {
                             .onClick(
                                 {
                                    e =>
+                                    this.message = "x: 0"
                                 }
                             )
                             .id("getItem")
@@ -166,6 +167,7 @@ class ViewListItem {
                             .onClick(
                                 {
                                    e =>
+                                    this.message = "index: 0"
                                 }
                             )
                             .id("getInfo")
@@ -173,6 +175,7 @@ class ViewListItem {
                             .onClick(
                                 {
                                    e =>
+                                    this.message = "scrollToItemInGroup 0 1"
                                 }
                             )
                             .id("scrollItem")

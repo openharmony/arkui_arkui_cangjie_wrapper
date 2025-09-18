@@ -182,8 +182,6 @@ class TitleMenuDialogUT11 {
         let button_12 = driver.findComponent(On().id("button_12"))
         button_12?.click()
         driver.delayMs(500)
-        driver.pressBack()
-        driver.delayMs(500)
     }
 
     @TestCase

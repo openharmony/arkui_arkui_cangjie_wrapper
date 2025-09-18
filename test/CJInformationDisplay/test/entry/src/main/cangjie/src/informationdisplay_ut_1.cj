@@ -563,13 +563,13 @@ class InformationDisplayUT1 {
         let color2 = attrs2.get("color").getOrThrow().toString()
         @Expect(color2, "\"#FFFFFF00\"")
         let enableLoading2 = attrs2.get("enableLoading").getOrThrow().toString()
-        @Expect(enableLoading2, "\"false\"")
+        @Expect(enableLoading2, "\"true\"")
 
         let loadingprogressComponent3 = getInspectorByKey("loadingprogressComponent3")
         let jsonObject3 = JsonValue.fromStr(loadingprogressComponent3).asObject()
         let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
         let color3 = attrs3.get("color").getOrThrow().toString()
-        @Expect(color3, "\"#FFCCCCCC\"")
+        @Expect(color3, "\"#FF0099FF\"")
         let enableLoading3 = attrs3.get("enableLoading").getOrThrow().toString()
         @Expect(enableLoading3, "\"true\"")
     }

@@ -43,8 +43,7 @@ class ViewRichText {
     func build() {
         Column(space: 30) {
             RichText(data).onStart({=> Hilog.info(1, "Cangjie-Test", "RichText onStart")}).onComplete(
-                {=> Hilog.info(1, "Cangjie-Test", "RichText onComplete")}).width(500).height(400).backgroundColor(0XBDDB69).id(
-                "component_1")
+                {=> Hilog.info(1, "Cangjie-Test", "RichText onComplete")}).width(500).height(400).backgroundColor(0XBDDB69).id("component_1")
 
             RichText("layoutWeight(1)").onStart({=> Hilog.info(1, "Cangjie-Test", "RichText onStart")}).onComplete(
                 {=> Hilog.info(1, "Cangjie-Test", "RichText onComplete")}).backgroundColor(0X92D6CC).layoutWeight(1).id("component_2")

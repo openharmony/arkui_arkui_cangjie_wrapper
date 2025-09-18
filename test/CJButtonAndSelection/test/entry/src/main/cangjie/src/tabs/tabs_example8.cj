@@ -71,7 +71,7 @@ class TabsExample8 {
                     }.width(100.percent).height(100.percent).backgroundColor(0xE67C92).justifyContent(FlexAlign.Center)
                 }.tabBar({=> bind(this.tabBuilder, this)('我的', 3)})
             }
-                .id("TabsExample9")
+                .id("TabsExample8")
                 .vertical(false)
                 .barMode(BarMode.Fixed)
                 .barWidth(360)
