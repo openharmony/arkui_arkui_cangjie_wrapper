@@ -45,7 +45,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute {
@@ -59,7 +58,6 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(rating!: ?Float64, indicator!: ?Bool = None) {
@@ -78,7 +76,6 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stars(value: ?Int32): This {
@@ -98,7 +95,6 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stepSize(size: ?Float64): This {
@@ -124,7 +120,6 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func starStyle(backgroundUri!: ?ResourceStr, foregroundUri!: ?ResourceStr, secondaryUri!: ?ResourceStr = None): This {
@@ -153,7 +148,6 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Float64) -> Unit): This {

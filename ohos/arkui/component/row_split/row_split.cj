@@ -36,7 +36,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RowSplit <: CommonMethodComponent<RowSplitAttribute> & RowSplitAttribute {
@@ -49,7 +48,6 @@ public class RowSplit <: CommonMethodComponent<RowSplitAttribute> & RowSplitAttr
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -68,7 +66,6 @@ public class RowSplit <: CommonMethodComponent<RowSplitAttribute> & RowSplitAttr
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func resizeable(value: ?Bool): This {

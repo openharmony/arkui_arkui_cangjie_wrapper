@@ -41,7 +41,6 @@ struct CSize {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Size {
@@ -52,7 +51,6 @@ public class Size {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: Float32
@@ -64,7 +62,6 @@ public class Size {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: Float32
@@ -74,7 +71,6 @@ public class Size {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width: Float32, height: Float32) {
@@ -99,7 +95,6 @@ struct COffset {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Offset {
@@ -110,7 +105,6 @@ public class Offset {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float32
@@ -122,7 +116,6 @@ public class Offset {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float32
@@ -132,7 +125,6 @@ public class Offset {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x: Float32, y: Float32) {
@@ -161,7 +153,6 @@ struct CTranslateResult {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TranslateResult {
@@ -172,7 +163,6 @@ public class TranslateResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float64
@@ -184,7 +174,6 @@ public class TranslateResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float64
@@ -196,7 +185,6 @@ public class TranslateResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var z: Float64
@@ -206,7 +194,6 @@ public class TranslateResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x: Float64, y: Float64, z: Float64) {
@@ -232,7 +219,6 @@ struct CScaleResult {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScaleResult {
@@ -243,7 +229,6 @@ public class ScaleResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float64
@@ -255,7 +240,6 @@ public class ScaleResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float64
@@ -267,7 +251,6 @@ public class ScaleResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var z: Float64
@@ -279,7 +262,6 @@ public class ScaleResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerX: Float64
@@ -291,7 +273,6 @@ public class ScaleResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerY: Float64
@@ -301,7 +282,6 @@ public class ScaleResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x: Float64, y: Float64, z: Float64, centerX: Float64, centerY: Float64) {
@@ -336,7 +316,6 @@ struct CRotateResult {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RotateResult {
@@ -347,7 +326,6 @@ public class RotateResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float64
@@ -359,7 +337,6 @@ public class RotateResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float64
@@ -371,7 +348,6 @@ public class RotateResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var z: Float64
@@ -383,7 +359,6 @@ public class RotateResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerX: Float64
@@ -395,7 +370,6 @@ public class RotateResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerY: Float64
@@ -407,13 +381,11 @@ public class RotateResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var angle: Float64
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     /**
@@ -468,7 +440,6 @@ struct CComponentInfo {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ComponentInfo {
@@ -479,7 +450,6 @@ public class ComponentInfo {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var size: Size
@@ -491,7 +461,6 @@ public class ComponentInfo {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var localOffset: Offset
@@ -503,7 +472,6 @@ public class ComponentInfo {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var windowOffset: Offset
@@ -515,7 +483,6 @@ public class ComponentInfo {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenOffset: Offset
@@ -527,7 +494,6 @@ public class ComponentInfo {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var translate: TranslateResult
@@ -539,7 +505,6 @@ public class ComponentInfo {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var scale: ScaleResult
@@ -551,7 +516,6 @@ public class ComponentInfo {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var rotate: RotateResult
@@ -563,7 +527,6 @@ public class ComponentInfo {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transform: VArray<Float32, $16>
@@ -573,7 +536,6 @@ public class ComponentInfo {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(size: Size, localOffset: Offset, windowOffset: Offset, screenOffset: Offset, translate: TranslateResult,
@@ -596,7 +558,6 @@ public class ComponentInfo {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ComponentUtils {
@@ -608,7 +569,6 @@ public class ComponentUtils {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getRectangleById(id: String): ComponentInfo {

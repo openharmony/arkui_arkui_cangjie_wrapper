@@ -106,7 +106,6 @@ struct CJPopInfo {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavigationTitleOptions {
@@ -118,7 +117,6 @@ public class NavigationTitleOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -131,7 +129,6 @@ public class NavigationTitleOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -144,7 +141,6 @@ public class NavigationTitleOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var barStyle: ?BarStyle
@@ -156,7 +152,6 @@ public class NavigationTitleOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var paddingStart: ?Length
@@ -168,13 +163,11 @@ public class NavigationTitleOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var paddingEnd: ?Length
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     /**
@@ -268,7 +261,6 @@ struct CJNavigationTitleOptions {
 @Derive[Equatable]
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LaunchMode {
@@ -281,7 +273,6 @@ public enum LaunchMode {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Standard
@@ -294,7 +285,6 @@ public enum LaunchMode {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     MoveToTopSingleTon
@@ -307,7 +297,6 @@ public enum LaunchMode {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PopToSingleTon
@@ -320,7 +309,6 @@ public enum LaunchMode {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NewInstance
@@ -389,7 +377,6 @@ public class NavigationOptions {
 @Derive[Equatable]
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BarStyle {
@@ -400,7 +387,6 @@ public enum BarStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Standard
@@ -412,7 +398,6 @@ public enum BarStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Stack
@@ -435,7 +420,6 @@ public enum BarStyle {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavPathInfo <: FFIData {
@@ -447,7 +431,6 @@ public class NavPathInfo <: FFIData {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var name: ?String
@@ -459,7 +442,6 @@ public class NavPathInfo <: FFIData {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var param: ?String
@@ -474,7 +456,6 @@ public class NavPathInfo <: FFIData {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(name!: ?String, param!: ?String, onPop!: ?Callback<PopInfo, Unit> = None) {
@@ -537,7 +518,6 @@ func freePathInfo(info: CJNavPathInfo): Unit {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavPathStack <: RemoteData {
@@ -549,7 +529,6 @@ public class NavPathStack <: RemoteData {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -575,7 +554,6 @@ public class NavPathStack <: RemoteData {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pushPath(info: ?NavPathInfo, animated!: ?Bool = None) {
@@ -616,7 +594,6 @@ public class NavPathStack <: RemoteData {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pop(animated!: ?Bool = None): ?NavPathInfo {
@@ -645,7 +622,6 @@ public class NavPathStack <: RemoteData {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Navigation <: CommonMethodComponent<NavigationAttribute> & NavigationAttribute {
@@ -657,7 +633,6 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = { => }) {
@@ -676,7 +651,6 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(pathInfos: ?NavPathStack, child!: () -> Unit = { => }) {

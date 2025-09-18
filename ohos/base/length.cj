@@ -24,13 +24,11 @@ import std.deriving.Derive
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface Length {
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop value: Float64 {
@@ -40,7 +38,6 @@ public interface Length {
     }
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop unitType: LengthUnit {
@@ -55,7 +52,6 @@ public interface Length {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface LengthProp {
@@ -66,7 +62,6 @@ public interface LengthProp {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop px: Length
@@ -77,7 +72,6 @@ public interface LengthProp {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop vp: Length
@@ -88,7 +82,6 @@ public interface LengthProp {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop fp: Length
@@ -99,7 +92,6 @@ public interface LengthProp {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop percent: Length
@@ -110,7 +102,6 @@ public interface LengthProp {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop lpx: Length
@@ -118,7 +109,6 @@ public interface LengthProp {
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LengthMetrics <: Length {
@@ -158,7 +148,6 @@ public class LengthMetrics <: Length {
 @Derive[Equatable]
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LengthUnit {
@@ -169,7 +158,6 @@ public enum LengthUnit {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Px
@@ -180,7 +168,6 @@ public enum LengthUnit {
      */
     | @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vp
@@ -191,7 +178,6 @@ public enum LengthUnit {
      */
     | @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fp
@@ -202,7 +188,6 @@ public enum LengthUnit {
      */
     | @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Percent
@@ -213,7 +198,6 @@ public enum LengthUnit {
      */
     | @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Lpx
@@ -221,7 +205,6 @@ public enum LengthUnit {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getValue(): Int32 {
@@ -237,7 +220,6 @@ public enum LengthUnit {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func parse(value: ?Int32): LengthUnit {
@@ -260,7 +242,6 @@ public enum LengthUnit {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 extend Float64 <: LengthProp & Length {
@@ -271,7 +252,6 @@ extend Float64 <: LengthProp & Length {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop px: Length {
@@ -287,7 +267,6 @@ extend Float64 <: LengthProp & Length {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop vp: Length {
@@ -303,7 +282,6 @@ extend Float64 <: LengthProp & Length {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop fp: Length {
@@ -319,7 +297,6 @@ extend Float64 <: LengthProp & Length {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop percent: Length {
@@ -335,7 +312,6 @@ extend Float64 <: LengthProp & Length {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop lpx: Length {
@@ -345,7 +321,6 @@ extend Float64 <: LengthProp & Length {
     }
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop value: Float64 {
@@ -355,7 +330,6 @@ extend Float64 <: LengthProp & Length {
     }
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop unitType: LengthUnit {
@@ -372,7 +346,6 @@ extend Float64 <: LengthProp & Length {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 extend Int64 <: LengthProp & Length {
@@ -383,7 +356,6 @@ extend Int64 <: LengthProp & Length {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop px: Length {
@@ -398,7 +370,6 @@ extend Int64 <: LengthProp & Length {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop vp: Length {
@@ -413,7 +384,6 @@ extend Int64 <: LengthProp & Length {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop fp: Length {
@@ -428,7 +398,6 @@ extend Int64 <: LengthProp & Length {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop percent: Length {
@@ -443,7 +412,6 @@ extend Int64 <: LengthProp & Length {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop lpx: Length {
@@ -453,7 +421,6 @@ extend Int64 <: LengthProp & Length {
     }
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop value: Float64 {
@@ -463,7 +430,6 @@ extend Int64 <: LengthProp & Length {
     }
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop unitType: LengthUnit {

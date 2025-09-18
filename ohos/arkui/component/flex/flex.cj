@@ -67,7 +67,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Flex <: CommonMethodComponent<FlexAttribute> & FlexAttribute {
@@ -84,7 +83,6 @@ public class Flex <: CommonMethodComponent<FlexAttribute> & FlexAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(direction!: ?FlexDirection = None, wrap!: ?FlexWrap = None,

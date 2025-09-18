@@ -5,7 +5,6 @@ import ohos.labels.APILevel
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ReuseParams {
@@ -13,7 +12,6 @@ public class ReuseParams {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(arr: Array<(String, Any)>) {
@@ -30,7 +28,6 @@ public class ReuseParams {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get<T>(key: String): ?T {

@@ -20,8 +20,6 @@ import ohos.labels.APILevel
 
 @!APILevel[
     21,
-    atomicservice: true,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ObservedObject <: ObservedComplexAbstract {
@@ -29,8 +27,6 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addPublishVar(publishVar: ObservedPropertyAbstract) {
@@ -39,8 +35,6 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getPublishVar(): ArrayList<ObservedPropertyAbstract> {
@@ -49,8 +43,6 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func subscribeInner(observer: Observer): Unit {
@@ -61,8 +53,6 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func unsubscribeInner(observer: Observer): Unit {

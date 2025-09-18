@@ -86,7 +86,6 @@ func freeButtonsArr(nativeButtons: CArrNativeAlertDialogButtonOptionsV2) {
 @Derive[Equatable]
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum DialogButtonDirection {
@@ -97,7 +96,6 @@ public enum DialogButtonDirection {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -109,7 +107,6 @@ public enum DialogButtonDirection {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Horizontal
@@ -121,7 +118,6 @@ public enum DialogButtonDirection {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vertical
@@ -203,7 +199,6 @@ struct NativeAlertDialogParamV2 {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class AlertDialogButtonBaseOptions {
@@ -216,7 +211,6 @@ public open class AlertDialogButtonBaseOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enabled: ?Bool
@@ -229,7 +223,6 @@ public open class AlertDialogButtonBaseOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var defaultFocus: ?Bool
@@ -242,7 +235,6 @@ public open class AlertDialogButtonBaseOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var style: ?DialogButtonStyle
@@ -254,7 +246,6 @@ public open class AlertDialogButtonBaseOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var value: ?ResourceStr
@@ -266,7 +257,6 @@ public open class AlertDialogButtonBaseOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontColor: ?ResourceColor
@@ -278,7 +268,6 @@ public open class AlertDialogButtonBaseOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -290,7 +279,6 @@ public open class AlertDialogButtonBaseOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var action: ?VoidCallback
@@ -309,7 +297,6 @@ public open class AlertDialogButtonBaseOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -340,7 +327,6 @@ public open class AlertDialogButtonBaseOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
@@ -352,7 +338,6 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var primary: ?Bool
@@ -373,7 +358,6 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -461,7 +445,6 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class AlertDialogParam {
@@ -473,7 +456,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var title: ?ResourceStr
@@ -484,7 +466,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var subtitle: ?ResourceStr
@@ -496,7 +477,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var message: ?ResourceStr
@@ -508,7 +488,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: ?Bool
@@ -520,7 +499,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cancel: ?VoidCallback
@@ -532,7 +510,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var alignment: ?DialogAlignment
@@ -544,7 +521,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Offset
@@ -556,7 +532,6 @@ public open class AlertDialogParam {
       */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var gridCount: ?UInt32
@@ -568,7 +543,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskRect: ?Rectangle
@@ -581,7 +555,6 @@ public open class AlertDialogParam {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: ?Bool
@@ -593,7 +566,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isModal: ?Bool
@@ -606,7 +578,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -619,7 +590,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -631,7 +601,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
@@ -644,7 +613,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cornerRadius: ?BorderRadiuses
@@ -656,7 +624,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: ?TransitionEffect
@@ -668,7 +635,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
@@ -680,7 +646,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Length
@@ -692,7 +657,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: ?Length
@@ -704,7 +668,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: ?ResourceColor
@@ -716,7 +679,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderStyle: ?EdgeStyles
@@ -729,7 +691,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowOptions
@@ -741,7 +702,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var textStyle: ?WordBreak
@@ -777,7 +737,6 @@ public open class AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -915,7 +874,6 @@ public open class AlertDialogParam {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AlertDialogParamWithConfirm <: AlertDialogParam {
@@ -928,7 +886,6 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var confirm: ?AlertDialogButtonBaseOptions
@@ -964,7 +921,6 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1031,7 +987,6 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AlertDialogParamWithButtons <: AlertDialogParam {
@@ -1043,7 +998,6 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var primaryButton: ?AlertDialogButtonBaseOptions
@@ -1055,7 +1009,6 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var secondaryButton: ?AlertDialogButtonBaseOptions
@@ -1092,7 +1045,6 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1161,7 +1113,6 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AlertDialogParamWithOptions <: AlertDialogParam {
@@ -1172,7 +1123,6 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var buttons: ?Array<AlertDialogButtonOptions>
@@ -1185,7 +1135,6 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var buttonDirection: ?DialogButtonDirection
@@ -1221,7 +1170,6 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1354,7 +1302,6 @@ protected class AlertDialogInner {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func show(value: AlertDialogParamWithOptions): Unit {

@@ -38,25 +38,21 @@ struct NativeTextDecoration {
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LeadingMarginType {
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LengthType(Length)
     | @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PlaceholderType(LeadingMarginPlaceholder)
     | @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -74,25 +70,21 @@ public enum LeadingMarginType {
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextDecorationOptions {
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var decorationType: ?TextDecorationType
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ?ResourceColor
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(decorationType!: ?TextDecorationType, color!: ?ResourceColor = None) {
@@ -140,7 +132,6 @@ struct NativeRichEditorTextSpanOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SelectionMenuOptions {
@@ -153,7 +144,6 @@ public class SelectionMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onAppear: ?VoidCallback
@@ -166,7 +156,6 @@ public class SelectionMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onDisappear: ?VoidCallback
@@ -176,7 +165,6 @@ public class SelectionMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(onAppear!: ?() -> Unit = None, onDisappear!: ?() -> Unit = None) {
@@ -192,7 +180,6 @@ public class SelectionMenuOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorTextStyle {
@@ -205,7 +192,6 @@ public class RichEditorTextStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontColor: ?ResourceColor
@@ -218,7 +204,6 @@ public class RichEditorTextStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontSize: ?Length
@@ -231,7 +216,6 @@ public class RichEditorTextStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontStyle: ?FontStyle
@@ -244,7 +228,6 @@ public class RichEditorTextStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontWeight: ?FontWeight
@@ -257,7 +240,6 @@ public class RichEditorTextStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontFamily: ?ResourceStr
@@ -270,7 +252,6 @@ public class RichEditorTextStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var decoration: ?TextDecorationOptions
@@ -280,7 +261,6 @@ public class RichEditorTextStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -307,7 +287,6 @@ public class RichEditorTextStyle {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorTextSpanOptions {
@@ -320,7 +299,6 @@ public class RichEditorTextSpanOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Int32
@@ -333,7 +311,6 @@ public class RichEditorTextSpanOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var style: ?RichEditorTextStyle
@@ -343,7 +320,6 @@ public class RichEditorTextSpanOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(offset!: ?Int32 = None, style!: ?RichEditorTextStyle = None) {
@@ -445,7 +421,6 @@ struct NativeRichEditorImageSpanOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorLayoutStyle {
@@ -457,7 +432,6 @@ public class RichEditorLayoutStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(margin!: ?Margin = None, borderRadius!: ?BorderRadiuses = None) {
@@ -470,7 +444,6 @@ public class RichEditorLayoutStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(margin!: ?Length, borderRadius!: ?Length) {
@@ -502,7 +475,6 @@ public class RichEditorLayoutStyle {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorImageSpanStyle {
@@ -518,7 +490,6 @@ public class RichEditorImageSpanStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var size: Option<(Length, Length)>
@@ -531,7 +502,6 @@ public class RichEditorImageSpanStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var verticalAlign: ?ImageSpanAlignment
@@ -544,7 +514,6 @@ public class RichEditorImageSpanStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var objectFit: ?ImageFit
@@ -556,7 +525,6 @@ public class RichEditorImageSpanStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -578,7 +546,6 @@ public class RichEditorImageSpanStyle {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorImageSpanOptions {
@@ -591,7 +558,6 @@ public class RichEditorImageSpanOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Int32
@@ -604,7 +570,6 @@ public class RichEditorImageSpanOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var imageStyle: ?RichEditorImageSpanStyle
@@ -614,7 +579,6 @@ public class RichEditorImageSpanOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -716,7 +680,6 @@ struct NativeLeadingMarginPlaceholder {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LeadingMarginPlaceholder {
@@ -729,7 +692,6 @@ public class LeadingMarginPlaceholder {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var pixelMap: ?PixelMap
@@ -745,7 +707,6 @@ public class LeadingMarginPlaceholder {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var size: ?(Length, Length)
@@ -755,7 +716,6 @@ public class LeadingMarginPlaceholder {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(pixelMap!: ?PixelMap, size!: ?(Length, Length)) {
@@ -803,7 +763,6 @@ struct NativeRichEditorParagraphStyle {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorParagraphStyle {
@@ -816,7 +775,6 @@ public class RichEditorParagraphStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var textAlign: ?TextAlign
@@ -829,7 +787,6 @@ public class RichEditorParagraphStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var leadingMargin: ?LeadingMarginType
@@ -839,7 +796,6 @@ public class RichEditorParagraphStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(textAlign!: ?TextAlign = None) {
@@ -852,7 +808,6 @@ public class RichEditorParagraphStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(textAlign!: ?TextAlign = None, leadingMargin!: ?Length) {
@@ -866,7 +821,6 @@ public class RichEditorParagraphStyle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(textAlign!: ?TextAlign = None, leadingMargin!: ?LeadingMarginPlaceholder) {
@@ -958,7 +912,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class RichEditorBaseController <: RemoteDataLite {
@@ -974,7 +927,6 @@ public open class RichEditorBaseController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getCaretOffset(): Int32 {
@@ -993,7 +945,6 @@ public open class RichEditorBaseController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setCaretOffset(offset: ?Int32): Bool {
@@ -1012,13 +963,11 @@ public open class RichEditorBaseController <: RemoteDataLite {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorController <: RichEditorBaseController {
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -1041,7 +990,6 @@ public class RichEditorController <: RichEditorBaseController {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addTextSpan(content!: ?ResourceStr, options!: ?RichEditorTextSpanOptions = None): Int32 {
@@ -1069,7 +1017,6 @@ public class RichEditorController <: RichEditorBaseController {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addImageSpan(value!: ?String, options!: ?RichEditorImageSpanOptions = None): Int32 {
@@ -1094,7 +1041,6 @@ public class RichEditorController <: RichEditorBaseController {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addImageSpan(value!: ?AppResource, options!: ?RichEditorImageSpanOptions = None): Int32 {
@@ -1119,7 +1065,6 @@ public class RichEditorController <: RichEditorBaseController {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func updateSpanStyle(start!: ?Int32 = None, end!: ?Int32 = None, textStyle!: ?RichEditorTextStyle): Unit {
@@ -1142,7 +1087,6 @@ public class RichEditorController <: RichEditorBaseController {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func updateSpanStyle(start!: ?Int32 = None, end!: ?Int32 = None, imageStyle!: ?RichEditorImageSpanStyle): Unit {
@@ -1163,7 +1107,6 @@ public class RichEditorController <: RichEditorBaseController {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func deleteSpans(start!: ?Int32 = None, end!: ?Int32 = None): Unit {
@@ -1179,7 +1122,6 @@ public class RichEditorController <: RichEditorBaseController {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closeSelectionMenu(): Unit {
@@ -1198,7 +1140,6 @@ public class RichEditorController <: RichEditorBaseController {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func updateParagraphStyle(start!: ?Int32 = None, end!: ?Int32 = None, style!: ?RichEditorParagraphStyle): Unit {
@@ -1219,7 +1160,6 @@ public class RichEditorController <: RichEditorBaseController {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getSpans(start!: ?Int32 = None, end!: ?Int32 = None): ArrayList<RichEditorSpanResult> {

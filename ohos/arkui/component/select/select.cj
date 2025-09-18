@@ -128,7 +128,6 @@ public type OnSelectCallback = (Int32, String) -> Unit;
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SelectOptions {
@@ -140,7 +139,6 @@ public class SelectOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var value: ?ResourceStr
@@ -152,7 +150,6 @@ public class SelectOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var icon: ?ResourceStr
@@ -165,7 +162,6 @@ public class SelectOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?ResourceStr, icon!: ?ResourceStr) {
@@ -233,7 +229,6 @@ class FFIVectorNativeSelectOption {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute {
@@ -246,7 +241,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(options: ?Array<SelectOptions>) {
@@ -280,7 +274,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selected(value: ?Int32): This {
@@ -300,7 +293,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func value(value: ?ResourceStr): This {
@@ -326,7 +318,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func font(
@@ -363,7 +354,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -383,7 +373,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedOptionBgColor(value: ?ResourceColor): This {
@@ -406,7 +395,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedOptionFont(
@@ -442,7 +430,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedOptionFontColor(value: ?ResourceColor): This {
@@ -462,7 +449,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionBgColor(value: ?ResourceColor): This {
@@ -485,7 +471,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionFont(
@@ -522,7 +507,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionFontColor(value: ?ResourceColor): This {
@@ -542,7 +526,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func space(value: ?Length): This {
@@ -563,7 +546,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arrowPosition(value: ?ArrowPosition): This {
@@ -584,7 +566,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func menuAlign(alignType!: ?MenuAlignType, offset!: ?Offset): This {
@@ -608,7 +589,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionWidth(value: ?OptionWidthMode): This {
@@ -630,7 +610,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionWidth(value: ?Length): This {
@@ -651,7 +630,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionHeight(value: ?Length): This {
@@ -672,7 +650,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func menuBackgroundColor(value: ?ResourceColor): This {
@@ -692,7 +669,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func menuBackgroundBlurStyle(value: ?BlurStyle): This {
@@ -727,7 +703,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected override func directionInner(value: Direction): This {
@@ -746,7 +721,6 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSelect(callback: ?OnSelectCallback): This {

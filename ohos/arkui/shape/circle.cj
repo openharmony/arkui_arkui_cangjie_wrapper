@@ -24,13 +24,11 @@ foreign func FfiOHOSAceFrameworkCircleInsCreate(width: Float64, widthUnit: Int32
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CircleShape <: BaseShape {
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {

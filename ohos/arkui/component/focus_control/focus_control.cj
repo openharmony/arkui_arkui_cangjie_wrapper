@@ -26,7 +26,6 @@ foreign func FFIOHOSAceFrameworkRequestFocus(inspectorKey: CString): Bool
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class FocusControl {
@@ -44,7 +43,6 @@ public class FocusControl {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func requestFocus(value: ?String): Bool {

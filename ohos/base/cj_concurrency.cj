@@ -29,7 +29,6 @@ foreign func FfiOHOSAceFrameworkHasContainer(): Bool
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func launch(task: () -> Unit): Unit {

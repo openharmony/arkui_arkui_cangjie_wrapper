@@ -21,7 +21,6 @@ import ohos.labels.APILevel
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ViewBuilder {
@@ -30,7 +29,6 @@ public class ViewBuilder {
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView) {
@@ -39,7 +37,6 @@ public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView) {
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func bind<T1>(builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder, thisView: CustomView) {
@@ -48,7 +45,6 @@ public func bind<T1>(builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder,
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func bind<T1, T2>(
@@ -60,7 +56,6 @@ public func bind<T1, T2>(
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func bind<T1, T2, T3>(
@@ -75,7 +70,6 @@ public func bind<T1, T2, T3>(
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LegalCallCheck {

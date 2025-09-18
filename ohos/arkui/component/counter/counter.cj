@@ -39,7 +39,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribute {
@@ -53,7 +52,6 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(content: () -> Unit) {
@@ -72,7 +70,6 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableInc(value: ?Bool): This {
@@ -92,7 +89,6 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableDec(value: ?Bool): This {
@@ -112,7 +108,6 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onInc(event: ?VoidCallback): This {
@@ -132,7 +127,6 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDec(event: ?VoidCallback): This {

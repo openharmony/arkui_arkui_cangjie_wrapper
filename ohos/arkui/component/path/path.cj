@@ -37,7 +37,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Path <: CommonShapeMethodComponent<PathAttribute> & PathAttribute {
@@ -50,7 +49,6 @@ public class Path <: CommonShapeMethodComponent<PathAttribute> & PathAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(commands!: ?ResourceStr = None) {
@@ -73,7 +71,6 @@ public class Path <: CommonShapeMethodComponent<PathAttribute> & PathAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length, height!: ?Length, commands!: ?ResourceStr = None) {
@@ -99,7 +96,6 @@ public class Path <: CommonShapeMethodComponent<PathAttribute> & PathAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func commands(value: ?ResourceStr): This {
@@ -115,7 +111,6 @@ public class Path <: CommonShapeMethodComponent<PathAttribute> & PathAttribute {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func initial() {}

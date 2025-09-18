@@ -34,7 +34,6 @@ protected const INVALID_CALLBACK_ID = 0
 @Derive[Equatable]
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ModalTransition {
@@ -45,7 +44,6 @@ public enum ModalTransition {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default |
@@ -56,7 +54,6 @@ public enum ModalTransition {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None |
@@ -67,7 +64,6 @@ public enum ModalTransition {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Alpha |
@@ -90,7 +86,6 @@ public enum ModalTransition {
 @Derive[Equatable]
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SheetSize {
@@ -101,7 +96,6 @@ public enum SheetSize {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Medium |
@@ -112,7 +106,6 @@ public enum SheetSize {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Large |
@@ -123,7 +116,6 @@ public enum SheetSize {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FitContent
@@ -146,7 +138,6 @@ public enum SheetSize {
 @Derive[Equatable]
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SheetType {
@@ -157,7 +148,6 @@ public enum SheetType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom |
@@ -168,7 +158,6 @@ public enum SheetType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center |
@@ -179,7 +168,6 @@ public enum SheetType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Popup
@@ -201,7 +189,6 @@ public enum SheetType {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BlurOptions {
@@ -212,7 +199,6 @@ public class BlurOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var grayscale: ?VArray<Float32, $2>
@@ -222,7 +208,6 @@ public class BlurOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(grayscale: ?VArray<Float32, $2>) {
@@ -237,7 +222,6 @@ public class BlurOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ForegroundBlurStyleOptions {
@@ -249,7 +233,6 @@ public class ForegroundBlurStyleOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var colorMode: ?ThemeColorMode
@@ -262,7 +245,6 @@ public class ForegroundBlurStyleOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var adaptiveColor: ?AdaptiveColor
@@ -274,7 +256,6 @@ public class ForegroundBlurStyleOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var blurOptions: ?BlurOptions
@@ -319,7 +300,6 @@ public class ForegroundBlurStyleOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PopupButton {
@@ -334,7 +314,6 @@ public class PopupButton {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?String, action!: () -> Unit) {
@@ -350,7 +329,6 @@ public class PopupButton {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PopupStateChangeParam {
@@ -362,7 +340,6 @@ public class PopupStateChangeParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isVisible: ?Bool
@@ -374,7 +351,6 @@ public class PopupStateChangeParam {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?Bool) {
@@ -738,7 +714,6 @@ public class MenuElement {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?ResourceStr, action!: () -> Unit) {
@@ -755,7 +730,6 @@ public class MenuElement {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomPopupOptions {
@@ -1144,7 +1118,6 @@ public class PopupMessageOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class OverlayOffset {
@@ -1156,7 +1129,6 @@ public class OverlayOffset {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Float64
@@ -1168,7 +1140,6 @@ public class OverlayOffset {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Float64
@@ -1178,7 +1149,6 @@ public class OverlayOffset {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x!: ?Float64 = None, y!: ?Float64 = None) {        
@@ -1194,7 +1164,6 @@ public class OverlayOffset {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EdgeWidths {
@@ -1206,7 +1175,6 @@ public class EdgeWidths {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var top: ?Length
@@ -1218,7 +1186,6 @@ public class EdgeWidths {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var right: ?Length
@@ -1230,7 +1197,6 @@ public class EdgeWidths {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bottom: ?Length
@@ -1242,7 +1208,6 @@ public class EdgeWidths {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var left: ?Length
@@ -1251,7 +1216,6 @@ public class EdgeWidths {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(top!: ?Length = None, right!: ?Length = None, bottom!: ?Length = None, left!: ?Length = None) {
@@ -1273,7 +1237,6 @@ public class EdgeWidths {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class BindOptions {
@@ -1294,7 +1257,6 @@ public open class BindOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(backgroundColor!: ?ResourceColor = None, onAppear!: ?() -> Unit = None,
@@ -1336,7 +1298,6 @@ public open class BindOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ContentCoverOptions <: BindOptions {
@@ -1357,7 +1318,6 @@ public class ContentCoverOptions <: BindOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1603,7 +1563,6 @@ func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadow {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SheetOptions <: BindOptions {
@@ -1632,7 +1591,6 @@ public class SheetOptions <: BindOptions {
     let scrollSizeMode: Option<ScrollSizeMode>
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1860,7 +1818,6 @@ public class SheetOptions <: BindOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Rectangle {
@@ -1872,7 +1829,6 @@ public class Rectangle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Length
@@ -1885,7 +1841,6 @@ public class Rectangle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Length
@@ -1898,7 +1853,6 @@ public class Rectangle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
@@ -1911,7 +1865,6 @@ public class Rectangle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Length
@@ -1921,7 +1874,6 @@ public class Rectangle {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x!: ?Length = None, y!: ?Length = None, width!: ?Length = None, height!: ?Length = None) {
@@ -1969,7 +1921,6 @@ class MenuActionData <: FFIData {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DismissPopupAction {
@@ -1988,7 +1939,6 @@ public class DismissPopupAction {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func dismiss(): Unit {
@@ -2005,7 +1955,6 @@ public class DismissPopupAction {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ContextMenuOptions {
@@ -2017,7 +1966,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Position
@@ -2031,7 +1979,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var placement: Option<Placement>
@@ -2044,7 +1991,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enableArrow: ?Bool
@@ -2057,7 +2003,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowOffset: ?Length
@@ -2070,7 +2015,6 @@ public class ContextMenuOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var preview: ?CustomBuilder
@@ -2083,7 +2027,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var previewAnimationOptions: ?ContextMenuAnimationOptions
@@ -2096,7 +2039,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onAppear: ?() -> Unit
@@ -2109,7 +2051,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onDisappear: ?() -> Unit
@@ -2122,7 +2063,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var aboutToAppear: ?() -> Unit
@@ -2135,7 +2075,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var aboutToDisappear: ?() -> Unit
@@ -2148,7 +2087,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -2161,7 +2099,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -2174,7 +2111,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: ?TransitionEffect
@@ -2187,7 +2123,6 @@ public class ContextMenuOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -2253,7 +2188,6 @@ public class ContextMenuOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DismissContentCoverAction {
@@ -2264,7 +2198,6 @@ public class DismissContentCoverAction {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let reason: DismissReason
@@ -2282,7 +2215,6 @@ public class DismissContentCoverAction {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func dismiss(): Unit {
@@ -2299,7 +2231,6 @@ public class DismissContentCoverAction {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ContextMenuAnimationOptions {
@@ -2330,7 +2261,6 @@ public class ContextMenuAnimationOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(scale!: ?VArray<Float64, $2> = None, transition!: ?TransitionEffect = None,
@@ -2382,7 +2312,6 @@ public class ContextMenuAnimationOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DismissSheetAction {
@@ -2393,13 +2322,11 @@ public class DismissSheetAction {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var reason: ?DismissReason
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     init(reason: DismissReason) {
@@ -2413,7 +2340,6 @@ public class DismissSheetAction {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func dismiss(): Unit {

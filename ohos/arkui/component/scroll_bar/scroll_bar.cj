@@ -32,7 +32,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScrollBar <: CommonMethodComponent<ScrollBarAttribute> & ScrollBarAttribute {
@@ -48,7 +47,6 @@ public class ScrollBar <: CommonMethodComponent<ScrollBarAttribute> & ScrollBarA
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(

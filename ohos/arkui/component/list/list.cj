@@ -49,7 +49,6 @@ struct LanesParams {
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class onScrollFrameBeginHandleResult {
@@ -57,7 +56,6 @@ public class onScrollFrameBeginHandleResult {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(offsetRemain!: ?Float64) {
@@ -180,7 +178,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttribute {
@@ -197,7 +194,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -241,7 +237,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func listDirection(value: ?Axis): This {
@@ -266,7 +261,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func divider(value: Option<ListDividerOptions>): This {
@@ -302,7 +296,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func edgeEffect(value: ?EdgeEffect): This {
@@ -323,7 +316,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func chainAnimation(value: ?Bool): This {
@@ -343,7 +335,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(value: ?Int32): This {
@@ -363,7 +354,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func multiSelectable(value: ?Bool): This {
@@ -384,7 +374,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lanes(value: ?Int32): This {
@@ -406,7 +395,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lanes(minLength!: ?Length, maxLength!: ?Length): This {
@@ -435,7 +423,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignListItem(value: ?ListItemAlign): This {
@@ -455,7 +442,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sticky(value: ?StickyStyle): This {
@@ -534,7 +520,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onScrollIndex(event: ?(Int32, Int32, Int32) -> Unit): This {
@@ -555,7 +540,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onScrollFrameBegin(event: ?(Float64, ScrollState) -> onScrollFrameBeginHandleResult): This {

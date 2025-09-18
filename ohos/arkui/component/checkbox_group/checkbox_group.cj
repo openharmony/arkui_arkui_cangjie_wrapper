@@ -95,7 +95,6 @@ class CallbackFFiCheckboxGroupResult <: BaseCallBack {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CheckboxGroupResult {
@@ -107,7 +106,6 @@ public class CheckboxGroupResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var status: ?SelectStatus
@@ -119,7 +117,6 @@ public class CheckboxGroupResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var name: ?Array<String>
@@ -129,7 +126,6 @@ public class CheckboxGroupResult {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -167,7 +163,6 @@ func parseCheckboxGroupResult(event: FFiCheckboxGroupResult): CheckboxGroupResul
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & CheckboxGroupAttribute {
@@ -180,7 +175,6 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(group!: ?String = None) {
@@ -200,7 +194,6 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectAll(value: ?Bool): This {
@@ -220,7 +213,6 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
@@ -331,7 +323,6 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?OnCheckboxGroupChangeCallback): This {

@@ -110,7 +110,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttribute {
@@ -125,7 +124,6 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(scroller!: Option<Scroller> = Option.None, child!: () -> Unit = {=>}) {
@@ -151,7 +149,6 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnsTemplate(value: ?String): This {
@@ -173,7 +170,6 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowsTemplate(value: ?String): This {
@@ -195,7 +191,6 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnsGap(value: ?Length): This {
@@ -227,7 +222,6 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowsGap(value: ?Length): This {
@@ -259,7 +253,6 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(value: ?Int32): This {
@@ -277,7 +270,6 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(count: ?Int32, show: ?Bool): This {

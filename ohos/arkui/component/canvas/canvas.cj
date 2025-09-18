@@ -97,7 +97,6 @@ enum CanvasImageType {
  */
 @!APILevel[
     12,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RenderingContextSettings {
@@ -125,7 +124,6 @@ public class RenderingContextSettings {
  */
 @!APILevel[
     12,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextMetrics {
@@ -136,7 +134,6 @@ public class TextMetrics {
      */
     @!APILevel[
         12,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let width: Float64
@@ -147,7 +144,6 @@ public class TextMetrics {
      */
     @!APILevel[
         12,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let height: Float64
@@ -165,7 +161,6 @@ public class TextMetrics {
  */
 @!APILevel[
     12,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute {
@@ -178,7 +173,6 @@ public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute 
      */
     @!APILevel[
         12,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(context: Option<CanvasRenderingContext2D>) {
@@ -199,7 +193,6 @@ public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute 
      */
     @!APILevel[
         12,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReady(callback: ?() -> Unit): This {
@@ -218,7 +211,6 @@ public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute 
  */
 @!APILevel[
     12,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CanvasGradient <: RemoteDataLite {
@@ -252,7 +244,6 @@ public class CanvasGradient <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addColorStop(offset: ?Float64, color: ?ResourceColor): Unit {

@@ -34,7 +34,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Circle <: CommonShapeMethodComponent<CircleAttribute> & CircleAttribute {
@@ -48,7 +47,6 @@ public class Circle <: CommonShapeMethodComponent<CircleAttribute> & CircleAttri
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {
@@ -66,7 +64,6 @@ public class Circle <: CommonShapeMethodComponent<CircleAttribute> & CircleAttri
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func initial() {}

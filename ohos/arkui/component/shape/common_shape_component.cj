@@ -26,7 +26,6 @@ import ohos.multimedia.image.PixelMap
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> & CommonShapeMethod<T> {
@@ -55,7 +54,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fill(value: ?ResourceColor): T {
@@ -75,7 +73,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fillOpacity(value: ?Float64): T {
@@ -94,7 +91,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fillOpacity(value: ?AppResource): T {
@@ -112,7 +108,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stroke(value: ?ResourceColor): T {
@@ -132,7 +127,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeDashArray(value: ?Array<Length>): T {
@@ -163,7 +157,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeDashOffset(value: ?Length): T {
@@ -184,7 +177,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeLineCap(value: ?LineCapStyle): T {
@@ -204,7 +196,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeLineJoin(value: ?LineJoinStyle): T {
@@ -224,7 +215,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeMiterLimit(miterLimit: ?Float64): T {
@@ -244,7 +234,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeOpacity(value: ?Float64): T {
@@ -263,7 +252,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeOpacity(value: ?AppResource): T {
@@ -281,7 +269,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeWidth(value: ?Length): T {
@@ -302,7 +289,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func antiAlias(value: ?Bool): T {

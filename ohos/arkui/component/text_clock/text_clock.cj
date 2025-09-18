@@ -68,7 +68,6 @@ class CJVectorNativeTextShadow {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DateTimeOptions {
@@ -80,7 +79,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var locale: ?String
@@ -93,7 +91,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dateStyle: ?String
@@ -106,7 +103,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timeStyle: ?String
@@ -119,7 +115,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hourCycle: ?String
@@ -132,7 +127,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timeZone: ?String
@@ -150,7 +144,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var numberingSystem: ?String
@@ -165,7 +158,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hour12: ?Bool
@@ -178,7 +170,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var weekday: ?String
@@ -191,7 +182,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var era: ?String
@@ -204,7 +194,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var year: ?String
@@ -217,7 +206,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var month: ?String
@@ -230,7 +218,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var day: ?String
@@ -243,7 +230,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hour: ?String
@@ -256,7 +242,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var minute: ?String
@@ -269,7 +254,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var second: ?String
@@ -282,7 +266,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timeZoneName: ?String
@@ -295,7 +278,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dayPeriod: ?String
@@ -310,7 +292,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var localeMatcher: ?String
@@ -325,7 +306,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var formatMatcher: ?String
@@ -335,7 +315,6 @@ public class DateTimeOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(locale!: ?String = None, dateStyle!: ?String = None, timeStyle!: ?String = None,
@@ -408,7 +387,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextClockController <: RemoteDataLite {
@@ -419,7 +397,6 @@ public class TextClockController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -438,7 +415,6 @@ public class TextClockController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func start(): Unit {
@@ -453,7 +429,6 @@ public class TextClockController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stop(): Unit {
@@ -470,7 +445,6 @@ public class TextClockController <: RemoteDataLite {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockAttribute {
@@ -488,7 +462,6 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(timeZoneOffset!: ?Float32 = None, controller!: ?TextClockController = None) {
@@ -519,7 +492,6 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDateChange(callback: ?(Int64) -> Unit): This {
@@ -546,7 +518,6 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func format(value: ?ResourceStr): This {
@@ -569,7 +540,6 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -590,7 +560,6 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -610,7 +579,6 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -630,7 +598,6 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -652,7 +619,6 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -675,7 +641,6 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(values: ?Array<ShadowOptions>): This {
@@ -700,7 +665,6 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(value: ?ShadowOptions): This {

@@ -39,7 +39,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageData <: RemoteDataLite {
@@ -50,7 +49,6 @@ public class ImageData <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop width: Int32 {
@@ -68,7 +66,6 @@ public class ImageData <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop height: Int32 {
@@ -86,7 +83,6 @@ public class ImageData <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop data: Array<UInt8> {
@@ -112,7 +108,6 @@ public class ImageData <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width: ?Float64, height: ?Float64, data!: ?Array<UInt8>,
@@ -145,7 +140,6 @@ public class ImageData <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width: ?Float64, height: ?Float64, unit!: ?LengthMetricsUnit = None) {

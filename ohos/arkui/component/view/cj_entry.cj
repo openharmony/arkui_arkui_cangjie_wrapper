@@ -32,7 +32,6 @@ import std.collection.HashMap
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CJEntry {
@@ -48,7 +47,6 @@ public class CJEntry {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getInstance(): CJEntry {
@@ -64,7 +62,6 @@ public class CJEntry {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func registerEntry(name: String, call: () -> Bool): Unit {

@@ -61,7 +61,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Path2D <: RemoteDataLite {
@@ -74,7 +73,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -92,7 +90,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(path: ?String) {
@@ -119,7 +116,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addPath(path2D: ?Path2D): Unit {
@@ -143,7 +139,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTransform(
@@ -177,7 +172,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func moveTo(x: ?Float64, y: ?Float64): Unit {
@@ -197,7 +191,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineTo(x: ?Float64, y: ?Float64): Unit {
@@ -221,7 +214,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arc(
@@ -255,7 +247,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arcTo(
@@ -286,7 +277,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func quadraticCurveTo(
@@ -317,7 +307,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bezierCurveTo(
@@ -363,7 +352,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func ellipse(
@@ -404,7 +392,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rect(x: ?Float64, y: ?Float64, width: ?Float64, height: ?Float64): Unit {
@@ -424,7 +411,6 @@ public class Path2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closePath(): Unit {

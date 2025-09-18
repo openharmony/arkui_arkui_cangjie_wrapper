@@ -41,7 +41,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ColorMode {
@@ -52,7 +51,6 @@ public enum ColorMode {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Light
@@ -64,7 +62,6 @@ public enum ColorMode {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Dark
@@ -94,7 +91,6 @@ public enum ColorMode {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LayoutDirection {
@@ -105,7 +101,6 @@ public enum LayoutDirection {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ltr
@@ -117,7 +112,6 @@ public enum LayoutDirection {
      */
     @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Rtl
@@ -129,7 +123,6 @@ public enum LayoutDirection {
      */
     @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -151,7 +144,6 @@ public enum LayoutDirection {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Environment {
@@ -172,7 +164,6 @@ public class Environment {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func aboutToBeDeleted(): Unit {
@@ -191,7 +182,6 @@ public class Environment {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func keys(): Array<String> {
@@ -211,7 +201,6 @@ public class Environment {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func envProp<T>(key: String, defaultValue: T): Bool {

@@ -23,7 +23,6 @@ import ohos.ffi.*
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class UINodeBase <: RemoteData {

@@ -71,7 +71,6 @@ struct NativeCustomDialogControllerOptions {
 */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomDialogControllerOptions {
@@ -82,7 +81,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cancel: ?VoidCallback
@@ -93,7 +91,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: ?Bool
@@ -104,7 +101,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var alignment: ?DialogAlignment
@@ -115,7 +111,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Offset
@@ -126,7 +121,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var customStyle: ?Bool
@@ -137,7 +131,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var gridCount: ?UInt32
@@ -148,7 +141,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskColor: ?ResourceColor
@@ -159,7 +151,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskRect: ?Rectangle
@@ -170,7 +161,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var openAnimation: ?AnimateParam
@@ -181,7 +171,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var closeAnimation: ?AnimateParam
@@ -192,7 +181,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: ?Bool
@@ -203,7 +191,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -214,7 +201,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cornerRadius: ?Length
@@ -225,7 +211,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isModal: ?Bool
@@ -236,7 +221,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
@@ -247,7 +231,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: ?Length
@@ -258,7 +241,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: ?ResourceColor
@@ -269,7 +251,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderStyle: ?EdgeStyles
@@ -280,7 +261,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
@@ -291,7 +271,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Length
@@ -302,7 +281,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowOptions
@@ -313,7 +291,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -346,7 +323,6 @@ public class CustomDialogControllerOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -427,7 +403,6 @@ foreign {
 */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomDialogController <: RemoteDataLite {
@@ -522,7 +497,6 @@ public class CustomDialogController <: RemoteDataLite {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?CustomDialogControllerOptions) {
@@ -538,7 +512,6 @@ public class CustomDialogController <: RemoteDataLite {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setBuilder(builder: () -> Unit) {
@@ -549,7 +522,6 @@ public class CustomDialogController <: RemoteDataLite {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindView(view: ?CustomView) {
@@ -561,7 +533,6 @@ public class CustomDialogController <: RemoteDataLite {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func openDialog() {
@@ -572,7 +543,6 @@ public class CustomDialogController <: RemoteDataLite {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closeDialog() {
@@ -583,7 +553,6 @@ public class CustomDialogController <: RemoteDataLite {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func releaseSelf(): Unit {

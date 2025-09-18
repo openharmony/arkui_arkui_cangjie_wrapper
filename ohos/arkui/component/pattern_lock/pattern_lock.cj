@@ -72,7 +72,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PatternLockController <: RemoteDataLite {
@@ -83,7 +82,6 @@ public class PatternLockController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -101,7 +99,6 @@ public class PatternLockController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func reset(): Unit {
@@ -118,7 +115,6 @@ public class PatternLockController <: RemoteDataLite {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & PatternLockAttribute {
@@ -131,7 +127,6 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(controller!: ?PatternLockController = None) {
@@ -149,7 +144,6 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
@@ -169,7 +163,6 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pathColor(value: ?ResourceColor): This {
@@ -189,7 +182,6 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func activeColor(value: ?ResourceColor): This {
@@ -209,7 +201,6 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func regularColor(value: ?ResourceColor): This {
@@ -231,7 +222,6 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoReset(value: ?Bool): This {
@@ -255,7 +245,6 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func circleRadius(value: ?Length): This {
@@ -280,7 +269,6 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sideLength(value: ?Length): This {
@@ -305,7 +293,6 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pathStrokeWidth(value: ?Length): This {
@@ -326,7 +313,6 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPatternComplete(callback: ?(Array<Int32>) -> Unit): This {

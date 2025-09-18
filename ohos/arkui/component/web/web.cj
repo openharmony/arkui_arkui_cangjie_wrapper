@@ -363,7 +363,6 @@ class CallbackCJWebEvent <: BaseCallBack {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class OnPageBeginEvent {
@@ -374,7 +373,6 @@ public class OnPageBeginEvent {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public var url: ?String
@@ -387,7 +385,6 @@ public class OnPageBeginEvent {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public init(url: ?String) {
@@ -401,7 +398,6 @@ public class OnPageBeginEvent {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class OnPageEndEvent {
@@ -412,7 +408,6 @@ public class OnPageEndEvent {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public var url: ?String
@@ -425,7 +420,6 @@ public class OnPageEndEvent {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public init(url: ?String) {
@@ -439,7 +433,6 @@ public class OnPageEndEvent {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class OnLoadInterceptEvent {
@@ -450,7 +443,6 @@ public class OnLoadInterceptEvent {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var data: ?WebResourceRequest
@@ -463,7 +455,6 @@ public class OnLoadInterceptEvent {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(data: ?WebResourceRequest) {
@@ -477,7 +468,6 @@ public class OnLoadInterceptEvent {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class Header {
@@ -488,7 +478,6 @@ public class Header {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public var headerKey: ?String
@@ -499,7 +488,6 @@ public class Header {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public var headerValue: ?String
@@ -562,7 +550,6 @@ struct FfiOnDownloadStartEvent {
 */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class WebResourceRequest {
@@ -582,7 +569,6 @@ public class WebResourceRequest {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func getRequestHeader(): Array<Header> {
@@ -612,7 +598,6 @@ public class WebResourceRequest {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func getRequestUrl(): String {
@@ -626,7 +611,6 @@ public class WebResourceRequest {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func isMainFrame(): Bool {
@@ -640,7 +624,6 @@ public class WebResourceRequest {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func isRedirect(): Bool {
@@ -654,7 +637,6 @@ public class WebResourceRequest {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func isRequestGesture(): Bool {
@@ -668,7 +650,6 @@ public class WebResourceRequest {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func getRequestMethod(): String {
@@ -683,7 +664,6 @@ public class WebResourceRequest {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class OnPermissionRequestEvent {
@@ -694,7 +674,6 @@ public class OnPermissionRequestEvent {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public var request: ?PermissionRequest
@@ -707,7 +686,6 @@ public class OnPermissionRequestEvent {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public init(request: PermissionRequest) {
@@ -722,9 +700,6 @@ public class OnPermissionRequestEvent {
  */
 @!APILevel[
     21,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class PermissionRequest {
@@ -742,9 +717,6 @@ public class PermissionRequest {
     */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func deny(): Unit {
@@ -760,9 +732,6 @@ public class PermissionRequest {
     */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func getOrigin(): String {
@@ -781,9 +750,6 @@ public class PermissionRequest {
     */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func getAccessibleResource(): Array<String> {
@@ -805,9 +771,6 @@ public class PermissionRequest {
     */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func grant(resources: Array<String>): Unit {
@@ -878,13 +841,11 @@ func parsePermissionRequestEvent(event: COnPermissionRequestEvent): OnPermission
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public init(
@@ -909,7 +870,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func fileAccess(fileAccess: ?Bool): This {
@@ -928,7 +888,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func domStorageAccess(domStorageAccess: ?Bool): This {
@@ -947,7 +906,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func imageAccess(imageAccess: ?Bool): This {
@@ -966,7 +924,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func onlineImageAccess(onlineImageAccess: ?Bool): This {
@@ -986,7 +943,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func mixedMode(mixedMode: ?MixedMode): This {
@@ -1005,7 +961,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func zoomAccess(zoomAccess: ?Bool): This {
@@ -1025,7 +980,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func geolocationAccess(geolocationAccess: ?Bool): This {
@@ -1044,7 +998,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func verticalScrollBarAccess(verticalScrollBar: ?Bool): This {
@@ -1063,7 +1016,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func nestedScroll(
@@ -1086,7 +1038,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func onLoadIntercept(callback: ?Callback<OnLoadInterceptEvent, Bool>): This {
@@ -1118,7 +1069,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func onPageBegin(callback: ?Callback<OnPageBeginEvent, Unit>): This {
@@ -1145,7 +1095,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func onPageEnd(callback: ?Callback<OnPageEndEvent, Unit>): This {
@@ -1175,7 +1124,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func javaScriptProxy(funcList!: ?Array<(String) -> String>, name!: ?String, methodList!: ?Array<String>,
@@ -1232,7 +1180,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func darkMode(mode: ?WebDarkMode): This {
@@ -1252,7 +1199,6 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func forceDarkAccess(access: ?Bool): This {

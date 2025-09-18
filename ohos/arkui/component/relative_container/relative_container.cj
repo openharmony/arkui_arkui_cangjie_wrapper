@@ -194,7 +194,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BarrierStyle {
@@ -206,7 +205,6 @@ public class BarrierStyle {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var id: ?String
@@ -219,7 +217,6 @@ public class BarrierStyle {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var direction: ?BarrierDirection
@@ -232,7 +229,6 @@ public class BarrierStyle {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var referencedId: ?Array<String>
@@ -247,7 +243,6 @@ public class BarrierStyle {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(id: ?String, direction: ?BarrierDirection, referencedId: ?Array<String>) {
@@ -264,7 +259,6 @@ public class BarrierStyle {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GuideLinePosition {
@@ -276,7 +270,6 @@ public class GuideLinePosition {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var start: ?Length
@@ -289,7 +282,6 @@ public class GuideLinePosition {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var end: ?Length
@@ -303,7 +295,6 @@ public class GuideLinePosition {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(start!: ?Length = None, end!: ?Length = None) {
@@ -319,7 +310,6 @@ public class GuideLinePosition {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GuideLineStyle {
@@ -331,7 +321,6 @@ public class GuideLineStyle {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var id: ?String
@@ -344,7 +333,6 @@ public class GuideLineStyle {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var direction: ?Axis
@@ -357,7 +345,6 @@ public class GuideLineStyle {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var position: ?GuideLinePosition
@@ -371,7 +358,6 @@ public class GuideLineStyle {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(id: ?String, direction: ?Axis, position: ?GuideLinePosition) {
@@ -388,7 +374,6 @@ public class GuideLineStyle {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribute> & RelativeContainerAttribute {
@@ -400,7 +385,6 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = {=>}) {
@@ -417,7 +401,6 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func guideLine(value: ?Array<GuideLineStyle>): This {
@@ -437,7 +420,6 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func barrier(value: ?Array<BarrierStyle>): This {

@@ -39,7 +39,6 @@ foreign func FfiOHOSAceFrameworkComponentIdSendMouseEvent(cJMouseEvent: CJMouseE
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func getInspectorByKey(id: String): String {
@@ -62,7 +61,6 @@ public func getInspectorByKey(id: String): String {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func getInspectorTree(): String {
@@ -85,7 +83,6 @@ public func getInspectorTree(): String {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func sendEventByKey(id: String, action: IntNative, params: String): Bool {
@@ -107,7 +104,6 @@ public func sendEventByKey(id: String, action: IntNative, params: String): Bool 
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func sendTouchEvent(event: TouchObject): Bool {
@@ -125,7 +121,6 @@ public func sendTouchEvent(event: TouchObject): Bool {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func sendKeyEvent(event: KeyEvent): Bool {
@@ -146,7 +141,6 @@ public func sendKeyEvent(event: KeyEvent): Bool {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func sendMouseEvent(event: MouseEvent): Bool {

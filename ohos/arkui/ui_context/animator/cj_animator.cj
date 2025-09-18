@@ -76,7 +76,6 @@ protected class Animator {
 @Derive[Equatable]
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum AnimatorFill {
@@ -85,7 +84,6 @@ public enum AnimatorFill {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -94,19 +92,16 @@ public enum AnimatorFill {
      */
     | @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Forwards
     | @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Backwards
     | @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Both
@@ -132,31 +127,26 @@ public enum AnimatorFill {
 @Derive[Equatable]
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum AnimatorDirection {
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
     | @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Reverse
     | @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Alternate
     | @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     AlternateReverse
@@ -180,7 +170,6 @@ public enum AnimatorDirection {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AnimatorOptions {
@@ -192,7 +181,6 @@ public class AnimatorOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var duration: Int32
@@ -221,7 +209,6 @@ public class AnimatorOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var easing: String
@@ -233,7 +220,6 @@ public class AnimatorOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var delay: Int32
@@ -244,7 +230,6 @@ public class AnimatorOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fill: AnimatorFill
@@ -255,7 +240,6 @@ public class AnimatorOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var direction: AnimatorDirection
@@ -267,7 +251,6 @@ public class AnimatorOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var iterations: Int32
@@ -279,7 +262,6 @@ public class AnimatorOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var begin: Float64
@@ -291,7 +273,6 @@ public class AnimatorOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var end: Float64
@@ -316,7 +297,6 @@ public class AnimatorOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -347,7 +327,6 @@ public class AnimatorOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AnimatorResult <: RemoteDataLite {
@@ -358,7 +337,6 @@ public class AnimatorResult <: RemoteDataLite {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     init(options: AnimatorOptions) {
@@ -394,7 +372,6 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop onFrame: (Float64) -> Unit {
@@ -420,7 +397,6 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop onFinish: () -> Unit {
@@ -446,7 +422,6 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop onCancel: () -> Unit {
@@ -472,7 +447,6 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop onRepeat: () -> Unit {
@@ -499,7 +473,6 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func reset(options: AnimatorOptions): Unit {
@@ -525,7 +498,6 @@ public class AnimatorResult <: RemoteDataLite {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func play(): Unit {
@@ -544,7 +516,6 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func finish(): Unit {
@@ -563,7 +534,6 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pause(): Unit {
@@ -582,7 +552,6 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cancel(): Unit {
@@ -602,7 +571,6 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func reverse(): Unit {
@@ -641,7 +609,6 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): Unit {

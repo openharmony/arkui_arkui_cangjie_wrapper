@@ -63,7 +63,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MeasureOptions {
@@ -89,7 +88,6 @@ public class MeasureOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -186,7 +184,6 @@ func parseCJMeasureContext(context: MeasureOptions): CJMeasureContextToC {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SizeOptions {
@@ -242,7 +239,6 @@ protected func measureTextSize(options: MeasureOptions): SizeOptions {
  */
  @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MeasureUtils {
@@ -259,7 +255,6 @@ public class MeasureUtils {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func measureText(options: MeasureOptions): Float64 {
@@ -274,7 +269,6 @@ public class MeasureUtils {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func measureTextSize(options: MeasureOptions): SizeOptions {

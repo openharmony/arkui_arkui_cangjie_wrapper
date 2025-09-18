@@ -164,7 +164,6 @@ let DEFAULT_SIZE = 16.0
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SearchController <: RemoteDataLite & TextContentControllerBase{
@@ -176,7 +175,6 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -198,7 +196,6 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretPosition(value: ?Int32): Unit {
@@ -216,7 +213,6 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute {
@@ -231,7 +227,6 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -274,7 +269,6 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func searchButton(value: ?ResourceStr): This {
@@ -297,7 +291,6 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderColor(value: ?ResourceColor): This {
@@ -320,7 +313,6 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderFont(
@@ -368,7 +360,6 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textFont(
@@ -416,7 +407,6 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func copyOption(value: ?CopyOptions): This {
@@ -436,7 +426,6 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSubmit(callback: ?(String) -> Unit): This {
@@ -462,7 +451,6 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(String) -> Unit): This {
@@ -486,7 +474,6 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCopy(callback: ?(String) -> Unit): This {
@@ -510,7 +497,6 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCut(callback: ?(String) -> Unit): This {
@@ -534,7 +520,6 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPaste(callback: ?(String) -> Unit): This {

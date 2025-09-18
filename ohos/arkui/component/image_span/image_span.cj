@@ -86,7 +86,6 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?ResourceStr) {
@@ -112,7 +111,6 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?PixelMap) {
@@ -131,7 +129,6 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func verticalAlign(value: ?ImageSpanAlignment): This {
@@ -151,7 +148,6 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func objectFit(value: ?ImageFit): This {

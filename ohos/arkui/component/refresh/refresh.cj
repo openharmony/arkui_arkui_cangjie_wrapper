@@ -47,7 +47,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RefreshOptions {
@@ -58,7 +57,6 @@ public class RefreshOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var refreshing: ?Bool
@@ -69,7 +67,6 @@ public class RefreshOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var changeEvent: ?(Bool) -> Unit
@@ -82,7 +79,6 @@ public class RefreshOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(refreshing!: ?Bool) {
@@ -98,7 +94,6 @@ public class RefreshOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(refreshing!: ?(Bool, (Bool) -> Unit)) {
@@ -114,7 +109,6 @@ public class RefreshOptions {
 */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribute {
@@ -128,7 +122,6 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?RefreshOptions, child: () -> Unit) {
@@ -160,7 +153,6 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStateChange(callback: ?(RefreshStatus) -> Unit): This {
@@ -183,7 +175,6 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onRefreshing(callback: ?() -> Unit): This {

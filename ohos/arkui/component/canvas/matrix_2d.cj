@@ -65,7 +65,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Matrix2D <: RemoteDataLite {
@@ -78,7 +77,6 @@ public class Matrix2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(unit!: ?LengthMetricsUnit = None) {
@@ -109,7 +107,6 @@ public class Matrix2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop scaleX: ?Float64 {
@@ -136,7 +133,6 @@ public class Matrix2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop scaleY: ?Float64 {
@@ -163,7 +159,6 @@ public class Matrix2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop rotateX: ?Float64 {
@@ -190,7 +185,6 @@ public class Matrix2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop rotateY: ?Float64 {
@@ -217,7 +211,6 @@ public class Matrix2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop translateX: ?Float64 {
@@ -244,7 +237,6 @@ public class Matrix2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop translateY: ?Float64 {
@@ -273,7 +265,6 @@ public class Matrix2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func identity(): This {
@@ -292,7 +283,6 @@ public class Matrix2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func invert(): This {
@@ -313,7 +303,6 @@ public class Matrix2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rotate(degree: ?Float64, rx!: ?Float64 = None, ry!: ?Float64 = None): This {
@@ -334,7 +323,6 @@ public class Matrix2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func translate(tx!: ?Float64 = None, ty!: ?Float64 = None): This {
@@ -354,7 +342,6 @@ public class Matrix2D <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scale(sx!: ?Float64 = None, sy!: ?Float64 = None): This {

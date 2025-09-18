@@ -49,7 +49,6 @@ foreign func FfiOHOSAceFrameworkCurvesInterpolate(id: Int64, fraction: Float32):
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Curves {
@@ -64,7 +63,6 @@ public class Curves {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func stepsCurve(count: Int32, end: Bool): ICurve {
@@ -83,7 +81,6 @@ public class Curves {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func cubicBezierCurve(x1: Float32, y1: Float32, x2: Float32, y2: Float32): ICurve {
@@ -102,7 +99,6 @@ public class Curves {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func springCurve(velocity: Float32, mass: Float32, stiffness: Float32, damping: Float32): ICurve {
@@ -121,7 +117,6 @@ public class Curves {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func springMotion(response!: Float32 = 0.55, dampingFraction!: Float32 = 0.825,
@@ -141,7 +136,6 @@ public class Curves {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func responsiveSpringMotion(response!: Float32 = 0.15, dampingFraction!: Float32 = 0.86,
@@ -164,7 +158,6 @@ public class Curves {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func interpolatingSpring(velocity: Float32, mass: Float32, stiffness: Float32, damping: Float32): ICurve {
@@ -181,7 +174,6 @@ public class Curves {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func initCurve(curve!: Curve = Curve.Linear): ICurve {
@@ -203,7 +195,6 @@ public class Curves {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func customCurve(interpolate: (Float32) -> Float32): ICurve {
@@ -238,7 +229,6 @@ public class Curves {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ICurve <: RemoteDataLite {
@@ -261,7 +251,6 @@ public class ICurve <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func interpolate(fraction: Float32): Float32 {

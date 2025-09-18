@@ -35,7 +35,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MenuItemGroup <: CommonMethodComponent<MenuItemGroupAttribute> & MenuItemGroupAttribute {
@@ -51,7 +50,6 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroupAttribute> & Me
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(header!: ?ResourceStr = None, footer!: ?ResourceStr = None, child!: () -> Unit = {=>}) {
@@ -75,7 +73,6 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroupAttribute> & Me
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(header!: CustomBuilder, footer!: CustomBuilder, child!: () -> Unit = {=>}) {

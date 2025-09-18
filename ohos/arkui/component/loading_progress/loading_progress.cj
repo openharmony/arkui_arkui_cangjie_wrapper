@@ -40,7 +40,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LoadingProgress <: CommonMethodComponent<LoadingProgressAttribute> & LoadingProgressAttribute {
@@ -52,7 +51,6 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgressAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -69,7 +67,6 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgressAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {

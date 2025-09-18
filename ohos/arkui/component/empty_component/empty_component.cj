@@ -20,13 +20,11 @@ import ohos.labels.APILevel
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EmptyComponent <: CommonMethodComponent<EmptyComponentAttribute> & EmptyComponentAttribute {
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {}

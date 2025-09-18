@@ -221,7 +221,6 @@ class FFIVectorFfiTextMenuItem {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextController <: RemoteDataLite {
@@ -230,7 +229,6 @@ public class TextController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -250,7 +248,6 @@ public class TextController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closeSelectionMenu(): Unit {
@@ -267,7 +264,6 @@ public class TextController <: RemoteDataLite {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
@@ -278,7 +274,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(content: ?ResourceStr, controller!: ?TextController = None, child!: () -> Unit = { =>}) {
@@ -300,7 +295,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(controller!: ?TextController = None, child!: () -> Unit) {
@@ -314,7 +308,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(controller!: ?TextController = None) {
@@ -346,7 +339,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineSpacing(value: ?Length): This {
@@ -367,7 +359,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -388,7 +379,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxFontSize(value: ?Length): This {
@@ -409,7 +399,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func minFontSize(value: ?Length): This {
@@ -430,7 +419,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -450,7 +438,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -470,7 +457,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -492,7 +478,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -514,7 +499,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textAlign(value: ?TextAlign): This {
@@ -534,7 +518,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textOverflow(value: ?TextOverflow): This {
@@ -556,7 +539,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxLines(value: ?Int32): This {
@@ -579,7 +561,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineHeight(value: ?Length): This {
@@ -602,7 +583,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor,
@@ -627,7 +607,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func baselineOffset(value: ?Length): This {
@@ -648,7 +627,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
    */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textCase(value: ?TextCase): This {

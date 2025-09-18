@@ -130,7 +130,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(arrayValue!: ?Array<String>, selected!: ?UInt32) {
@@ -156,7 +155,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
@@ -176,7 +174,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
@@ -196,7 +193,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func popupColor(value: ?ResourceColor): This {
@@ -216,7 +212,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedBackgroundColor(value: ?ResourceColor): This {
@@ -236,7 +231,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func popupBackground(value: ?ResourceColor): This {
@@ -256,7 +250,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func usingPopup(value: ?Bool): This {
@@ -279,7 +272,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedFont(
@@ -318,7 +310,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func popupFont(
@@ -357,7 +348,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func font(
@@ -393,7 +383,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func itemSize(size: ?Length): This {
@@ -415,7 +404,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignStyle(value: ?IndexerAlign): This {
@@ -435,7 +423,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selected(index: ?Int32): This {
@@ -456,7 +443,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func popupPosition(x!: ?Length = None, y!: ?Length = None): This {
@@ -479,7 +465,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSelect(callback: ?OnAlphabetIndexerSelectCallback): This {
@@ -504,7 +489,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onRequestPopupData(callback: ?OnAlphabetIndexerRequestPopupDataCallback): This {
@@ -535,7 +519,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPopupSelect(callback: ?OnAlphabetIndexerPopupSelectCallback): This {

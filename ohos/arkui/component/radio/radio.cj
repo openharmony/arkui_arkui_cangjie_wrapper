@@ -56,7 +56,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
@@ -70,7 +69,6 @@ public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?String, group!: ?String) {
@@ -92,7 +90,6 @@ public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func checked(value: ?Bool): This {
@@ -156,7 +153,6 @@ public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Bool) -> Unit): This {

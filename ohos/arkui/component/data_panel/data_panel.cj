@@ -70,7 +70,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ColorStop {
@@ -81,7 +80,6 @@ public class ColorStop {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ?ResourceColor
@@ -93,7 +91,6 @@ public class ColorStop {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Length
@@ -103,7 +100,6 @@ public class ColorStop {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(color: ?ResourceColor, offset: ?Length) {
@@ -120,7 +116,6 @@ public class ColorStop {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LinearGradient {
@@ -133,7 +128,6 @@ public class LinearGradient {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(colorStops: ?Array<ColorStop>) {
@@ -147,7 +141,6 @@ public class LinearGradient {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(color: ?ResourceColor) {
@@ -200,7 +193,6 @@ class FFIVectorNativeLinearGradient {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DataPanelShadowOptions <: MultiShadowOptions {
@@ -213,7 +205,6 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var colors: ?Array<LinearGradient>
@@ -228,7 +219,6 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(radius!: ?Length = None, colors!: ?Array<LinearGradient> = None, offsetX!: ?Length = None, offsetY!: ?Length = None) {
@@ -244,7 +234,6 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelAttribute {
@@ -259,7 +248,6 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(values!: ?Array<Float64>, max!: ?Float64 = None, panelType!: ?DataPanelType = None) {
@@ -285,7 +273,6 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closeEffect(value: ?Bool): This {
@@ -305,7 +292,6 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func valueColors(value: ?Array<LinearGradient>): This {
@@ -330,7 +316,6 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func trackBackgroundColor(value: ?ResourceColor): This {
@@ -350,7 +335,6 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeWidth(value: ?Length): This {
@@ -371,7 +355,6 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func trackShadow(value: ?DataPanelShadowOptions): This {

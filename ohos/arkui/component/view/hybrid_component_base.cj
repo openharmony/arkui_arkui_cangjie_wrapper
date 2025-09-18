@@ -23,14 +23,12 @@ import ohos.labels.APILevel
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CJPageEntry {
     private static let instance_ = CJPageEntry()
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getInstance(): CJPageEntry {
@@ -40,7 +38,6 @@ public class CJPageEntry {
     private let entries_ = HashMap<String, CustomView>()
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func registerHybridPage(name: String, cjPage: CustomView): Unit {
@@ -49,7 +46,6 @@ public class CJPageEntry {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func removeHybridPage(name: String): Unit {
@@ -75,7 +71,6 @@ public class CJPageEntry {
 
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class HybridComponentBase <: SharedObject {

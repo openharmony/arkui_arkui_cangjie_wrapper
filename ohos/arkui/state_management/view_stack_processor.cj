@@ -104,8 +104,6 @@ public class ViewStackProcessor {
      */
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func ImplicitPopBeforeContinue(): Unit {

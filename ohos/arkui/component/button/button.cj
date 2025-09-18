@@ -229,7 +229,6 @@ public enum ButtonStyleMode {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal |
@@ -240,7 +239,6 @@ public enum ButtonStyleMode {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Emphasized |
@@ -251,7 +249,6 @@ public enum ButtonStyleMode {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Textual
@@ -285,7 +282,6 @@ public class ButtonOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shape: ?ButtonType
@@ -297,7 +293,6 @@ public class ButtonOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var stateEffect: ?Bool
@@ -310,7 +305,6 @@ public class ButtonOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var buttonStyle: ?ButtonStyleMode
@@ -323,7 +317,6 @@ public class ButtonOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var controlSize: ?ControlSize
@@ -336,7 +329,6 @@ public class ButtonOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var role: ?ButtonRole
@@ -346,7 +338,6 @@ public class ButtonOptions {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -381,7 +372,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -401,7 +391,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -420,7 +409,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(label: ?ResourceStr) {
@@ -442,7 +430,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(options: ?ButtonOptions) {
@@ -470,7 +457,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(options: ?ButtonOptions, child: () -> Unit) {
@@ -499,7 +485,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(label: ?ResourceStr, options: ?ButtonOptions) {
@@ -531,7 +516,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -552,7 +536,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -574,7 +557,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(color: ?ResourceColor): This {
@@ -596,7 +578,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected override func heightInner(value: Length): This {
@@ -618,7 +599,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected override func widthInner(value: Length): This {
@@ -638,7 +618,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -658,7 +637,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -681,7 +659,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func shape(value: ?ButtonType): This {
@@ -701,7 +678,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected override func paddingInner(value: Length): This {
@@ -732,7 +708,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected override func sizeInner(width: Length, height: Length): This {
@@ -754,7 +729,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stateEffect(value: ?Bool): This {
@@ -836,7 +810,6 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func buttonStyle(value: ?ButtonStyleMode): This {

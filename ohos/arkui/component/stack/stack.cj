@@ -43,7 +43,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Stack <: CommonMethodComponent<StackAttribute> & StackAttribute {
@@ -57,7 +56,6 @@ public class Stack <: CommonMethodComponent<StackAttribute> & StackAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(alignContent!: ?Alignment = None, child!: () -> Unit = {=>}) {
@@ -103,7 +101,6 @@ public class Stack <: CommonMethodComponent<StackAttribute> & StackAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignContent(value: ?Alignment): This {

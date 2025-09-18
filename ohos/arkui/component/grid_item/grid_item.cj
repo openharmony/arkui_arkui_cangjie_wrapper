@@ -47,7 +47,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttribute {
@@ -60,7 +59,6 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -78,7 +76,6 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -97,7 +94,6 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnStart(value: ?Int32): This {
@@ -117,7 +113,6 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnEnd(value: ?Int32): This {
@@ -137,7 +132,6 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowStart(value: ?Int32): This {
@@ -157,7 +151,6 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowEnd(value: ?Int32): This {

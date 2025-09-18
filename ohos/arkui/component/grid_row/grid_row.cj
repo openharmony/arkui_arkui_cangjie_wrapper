@@ -77,7 +77,6 @@ struct GutterSizeOption {
 @Derive[Equatable]
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum GridRowDirection {
@@ -88,7 +87,6 @@ public enum GridRowDirection {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Row
@@ -100,7 +98,6 @@ public enum GridRowDirection {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RowReverse
@@ -123,7 +120,6 @@ public enum GridRowDirection {
 @Derive[Equatable]
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BreakpointsReference {
@@ -134,7 +130,6 @@ public enum BreakpointsReference {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     WindowSize
@@ -146,7 +141,6 @@ public enum BreakpointsReference {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ComponentSize
@@ -168,7 +162,6 @@ public enum BreakpointsReference {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GridRowSizeOptions {
@@ -180,7 +173,6 @@ public class GridRowSizeOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xs: ?Length
@@ -192,7 +184,6 @@ public class GridRowSizeOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var sm: ?Length
@@ -204,7 +195,6 @@ public class GridRowSizeOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var md: ?Length
@@ -216,7 +206,6 @@ public class GridRowSizeOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var lg: ?Length
@@ -228,7 +217,6 @@ public class GridRowSizeOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xl: ?Length
@@ -240,7 +228,6 @@ public class GridRowSizeOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xxl: ?Length
@@ -258,7 +245,6 @@ public class GridRowSizeOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -285,7 +271,6 @@ public class GridRowSizeOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?Length) {
@@ -360,7 +345,6 @@ struct NativeGridRowColumnOption {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GridRowOptions {
@@ -372,7 +356,6 @@ public class GridRowOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xs: ?Int32
@@ -385,7 +368,6 @@ public class GridRowOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var sm: ?Int32
@@ -398,7 +380,6 @@ public class GridRowOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var md: ?Int32
@@ -411,7 +392,6 @@ public class GridRowOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var lg: ?Int32
@@ -424,7 +404,6 @@ public class GridRowOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xl: ?Int32
@@ -437,7 +416,6 @@ public class GridRowOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xxl: ?Int32
@@ -455,7 +433,6 @@ public class GridRowOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -482,7 +459,6 @@ public class GridRowOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?Int32) {
@@ -508,7 +484,6 @@ public class GridRowOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GutterOptions {
@@ -522,7 +497,6 @@ public class GutterOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x!: ?Length, y!: ?Length) {
@@ -540,7 +514,6 @@ public class GutterOptions {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x!: ?GridRowSizeOptions, y!: ?GridRowSizeOptions) {
@@ -557,7 +530,6 @@ public class GutterOptions {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BreakPoints {
@@ -569,7 +541,6 @@ public class BreakPoints {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var value: ?Array<Length>
@@ -582,7 +553,6 @@ public class BreakPoints {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var reference: ?BreakpointsReference
@@ -595,7 +565,6 @@ public class BreakPoints {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?Array<Length> = None,
@@ -694,7 +663,6 @@ struct GridRowCreateWithSizeOptionInt32 {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribute {
@@ -710,7 +678,6 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -761,7 +728,6 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -814,7 +780,6 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -884,7 +849,6 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -962,7 +926,6 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignItems(value: ?ItemAlign): This {
@@ -982,7 +945,6 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onBreakpointChange(callback: ?(String) -> Unit): This {

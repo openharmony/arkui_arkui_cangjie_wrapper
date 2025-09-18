@@ -41,7 +41,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
@@ -54,7 +53,6 @@ public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(space!: ?Length = None, child!: () -> Unit = {=>}) {
@@ -74,7 +72,6 @@ public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignItems(value: ?VerticalAlign): This {
@@ -94,7 +91,6 @@ public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
     */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func justifyContent(value: ?FlexAlign): This {

@@ -35,7 +35,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
@@ -49,7 +48,6 @@ public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {
@@ -74,7 +72,6 @@ public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func startPoint(value: ?(Float64, Float64)): This {
@@ -94,7 +91,6 @@ public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func endPoint(value: ?(Float64, Float64)): This {
@@ -107,7 +103,6 @@ public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
 
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func initial() {}

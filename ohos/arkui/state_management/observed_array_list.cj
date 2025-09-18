@@ -21,8 +21,6 @@ import std.collection.*
 
 @!APILevel[
     21,
-    atomicservice: true,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
@@ -30,8 +28,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(initValue: ArrayList<T>) {
@@ -40,8 +36,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(initValue: Array<T>) {
@@ -67,8 +61,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func subscribeInner(observer: Observer): Unit {
@@ -86,8 +78,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func unsubscribeInner(observer: Observer): Unit {
@@ -103,8 +93,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get(): ArrayList<T> {
@@ -114,8 +102,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set(newValue: ArrayList<T>): Unit {
@@ -125,8 +111,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set(newValue: Array<T>): Unit {
@@ -136,8 +120,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set(newValue: ObservedComplexAbstract): Unit {
@@ -152,8 +134,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public operator func [](index: Int64): T {
@@ -163,8 +143,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public operator func [](index: Int64, value!: T): Unit {
@@ -182,8 +160,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop size: Int64 {
@@ -194,8 +170,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func isEmpty(): Bool {
@@ -204,8 +178,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clone(): ObservedArrayList<T> {
@@ -214,8 +186,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clear(): Unit {
@@ -235,8 +205,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func append(element: T): Unit {
@@ -247,8 +215,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func appendAll(elements: Collection<T>): Unit {
@@ -264,8 +230,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func insert(index: Int64, element: T): Unit {
@@ -276,8 +240,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func insertAll(index: Int64, elements: Collection<T>): Unit {
@@ -293,8 +255,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func prepend(element: T): Unit {
@@ -305,8 +265,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func prependAll(elements: Collection<T>): Unit {
@@ -322,8 +280,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func remove(index: Int64): T {
@@ -334,8 +290,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func remove(range: Range<Int64>): Unit {
@@ -345,8 +299,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func removeIf(predicate: (T) -> Bool): Unit {

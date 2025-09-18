@@ -20,8 +20,6 @@ import ohos.labels.APILevel
 
 @!APILevel[
     21,
-    atomicservice: true,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class Observable {
@@ -34,8 +32,6 @@ public open class Observable {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func subscribe(observer: Observer): Unit {
@@ -45,8 +41,6 @@ public open class Observable {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func unsubscribe(observer: Observer): Unit {
@@ -57,8 +51,6 @@ public open class Observable {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func isSubscribed(observer: Observer): Bool {
@@ -72,8 +64,6 @@ public open class Observable {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func numberOfSubscribers(): Int64 {
@@ -82,8 +72,6 @@ public open class Observable {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func unsubscribeAll(): Unit {

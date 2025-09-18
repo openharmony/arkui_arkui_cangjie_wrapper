@@ -24,8 +24,6 @@ func isEqual<T>(value: T, newValue: T): Bool {
 
 @!APILevel[
     21,
-    atomicservice: true,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class ObservedProperty<T> <: ObservedPropertyAbstract {
@@ -34,8 +32,6 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(info: String, initValue: T) {
@@ -60,8 +56,6 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get(): T {
@@ -71,8 +65,6 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getInner(): T {
@@ -81,8 +73,6 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func set(newValue: T): Unit {
@@ -98,8 +88,6 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func subscribeEx(observer: Observer) {
@@ -115,8 +103,6 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func unsubscribeEx(observer: Observer) {
@@ -131,8 +117,6 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
     @!APILevel[
         21,
-        atomicservice: true,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createProp(info: String): ObservedProperty<T> {

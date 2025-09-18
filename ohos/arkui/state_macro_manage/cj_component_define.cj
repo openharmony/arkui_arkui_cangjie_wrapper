@@ -227,15 +227,6 @@ func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
 }
 
 extend<T> ArrayList<T> {
-    /*
-    @APILevel[
-        16,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-     */
     public func append(elements: ArrayList<T>): Unit {
         for (element in elements) {
             add(element)

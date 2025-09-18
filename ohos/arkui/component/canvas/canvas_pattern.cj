@@ -33,7 +33,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CanvasPattern <: RemoteDataLite {
@@ -66,7 +65,6 @@ public class CanvasPattern <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTransform(transform: Option<Matrix2D>): Unit {

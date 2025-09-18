@@ -82,7 +82,6 @@ foreign {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PreparedInfo {
@@ -107,7 +106,6 @@ public class PreparedInfo {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PlaybackInfo {
@@ -132,7 +130,6 @@ public class PlaybackInfo {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class FullscreenInfo {
@@ -157,7 +154,6 @@ public class FullscreenInfo {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class VideoController <: RemoteDataLite {
@@ -168,7 +164,6 @@ public class VideoController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -186,7 +181,6 @@ public class VideoController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func start(): Unit {
@@ -200,7 +194,6 @@ public class VideoController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pause(): Unit {
@@ -214,7 +207,6 @@ public class VideoController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stop(): Unit {
@@ -230,7 +222,6 @@ public class VideoController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setCurrentTime(value: ?Int32, seekMode: ?SeekMode): Unit {
@@ -249,7 +240,6 @@ public class VideoController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func requestFullscreen(value: ?Bool): Unit {
@@ -266,7 +256,6 @@ public class VideoController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func exitFullscreen(): Unit {
@@ -283,7 +272,6 @@ public class VideoController <: RemoteDataLite {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
@@ -299,7 +287,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -330,7 +317,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func muted(value: ?Bool): This {
@@ -350,7 +336,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoPlay(value: ?Bool): This {
@@ -370,7 +355,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func controls(value: ?Bool): This {
@@ -390,7 +374,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func objectFit(value: ?ImageFit): This {
@@ -410,7 +393,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func loop(value: ?Bool): This {
@@ -431,7 +413,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStart(event: ?VoidCallback): This {
@@ -456,7 +437,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPause(event: ?VoidCallback): This {
@@ -481,7 +461,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onFinish(event: ?() -> Unit): This {
@@ -505,7 +484,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onError(event: ?VoidCallback): This {
@@ -530,7 +508,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPrepared(callback: ?Callback<PreparedInfo, Unit>): This {
@@ -555,7 +532,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSeeking(callback: ?Callback<PlaybackInfo, Unit>): This {
@@ -580,7 +556,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSeeked(callback: ?Callback<PlaybackInfo, Unit>): This {
@@ -605,7 +580,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onUpdate(callback: ?Callback<PlaybackInfo, Unit>): This {
@@ -630,7 +604,6 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onFullscreenChange(callback: ?Callback<FullscreenInfo, Unit>): This {
