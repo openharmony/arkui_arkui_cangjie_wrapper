@@ -35,7 +35,7 @@ foreign {
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class BaseShape <: RemoteDataLite {
@@ -56,7 +56,7 @@ public abstract class BaseShape <: RemoteDataLite {
      * @since 11
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fill(color: ?ResourceColor): This {
@@ -75,7 +75,7 @@ public abstract class BaseShape <: RemoteDataLite {
      * @since 11
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func width(width: ?Length): This {
@@ -95,7 +95,7 @@ public abstract class BaseShape <: RemoteDataLite {
      * @since 11
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func height(height: ?Length): This {
@@ -116,7 +116,7 @@ public abstract class BaseShape <: RemoteDataLite {
      * @since 11
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func size(width!: ?Length, height!: ?Length): This {
@@ -140,7 +140,7 @@ public abstract class BaseShape <: RemoteDataLite {
      * @since 11
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func offset(x!: ?Length, y!: ?Length): This {

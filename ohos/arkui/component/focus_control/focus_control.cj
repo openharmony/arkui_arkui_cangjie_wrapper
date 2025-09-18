@@ -25,7 +25,7 @@ foreign func FFIOHOSAceFrameworkRequestFocus(inspectorKey: CString): Bool
  * @relation declare namespace focusControl
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class FocusControl {
@@ -42,7 +42,7 @@ public class FocusControl {
      * @relation function requestFocus(value: string): boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func requestFocus(value: ?String): Bool {

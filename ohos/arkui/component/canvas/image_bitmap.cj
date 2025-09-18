@@ -47,7 +47,7 @@ foreign {
  * @relation declare class ImageBitmap
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageBitmap <: RemoteData {
@@ -57,7 +57,7 @@ public class ImageBitmap <: RemoteData {
      * @relation readonly width: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop width: Float64 {
@@ -74,7 +74,7 @@ public class ImageBitmap <: RemoteData {
      * @relation readonly height: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop height: Float64 {
@@ -97,7 +97,7 @@ public class ImageBitmap <: RemoteData {
      * @relation constructor(src: string)
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(src: ?String) {

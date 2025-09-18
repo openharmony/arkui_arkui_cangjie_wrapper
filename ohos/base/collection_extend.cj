@@ -19,35 +19,35 @@ import std.collection.*
 import ohos.labels.APILevel
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface CollectionEx<T> {
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop size: Int64
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     operator func [](idx: Int64, value!: T): Unit
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     operator func [](idx: Int64): T
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 extend<T> Array<T> <: CollectionEx<T> {}
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 extend<T> ArrayList<T> <: CollectionEx<T> {}

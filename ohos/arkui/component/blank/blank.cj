@@ -28,7 +28,7 @@ foreign func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
  * @relation const Blank: BlankAttribute
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Blank <: CommonMethodComponent<BlankAttribute> & BlankAttribute {
@@ -41,7 +41,7 @@ public class Blank <: CommonMethodComponent<BlankAttribute> & BlankAttribute {
     * @relation (min?: number | string): BlankAttribute
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(min!: ?Length = None) {
@@ -60,7 +60,7 @@ public class Blank <: CommonMethodComponent<BlankAttribute> & BlankAttribute {
     * @relation color(value: ResourceColor): BlankAttribute
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {

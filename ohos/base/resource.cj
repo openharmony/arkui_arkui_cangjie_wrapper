@@ -18,7 +18,7 @@ package ohos.base
 import ohos.labels.APILevel
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface ResourceStr {}

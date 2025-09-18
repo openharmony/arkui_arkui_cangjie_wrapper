@@ -44,7 +44,7 @@ foreign {
  * @relation declare class TextInputController extends TextContentControllerBase
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextInputController <: RemoteDataLite {
@@ -54,7 +54,7 @@ public class TextInputController <: RemoteDataLite {
      * @relation constructor();
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -76,7 +76,7 @@ public class TextInputController <: RemoteDataLite {
      * @relation caretPosition(value: number): void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretPosition(value: ?Int32): Unit {
@@ -98,7 +98,7 @@ public class TextInputController <: RemoteDataLite {
      * @relation setTextSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTextSelection(selectionStart: ?Int32, selectionEnd: ?Int32, options!: ?MenuPolicy = None): Unit {
@@ -118,7 +118,7 @@ public class TextInputController <: RemoteDataLite {
      * @relation stopEditing(): void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stopEditing(): Unit {
@@ -129,7 +129,7 @@ public class TextInputController <: RemoteDataLite {
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputAttribute {
@@ -142,7 +142,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation (value?: TextInputOptions): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(placeholder!: ?ResourceStr = None, text!: ?ResourceStr = None, controller!: ?TextInputController = None) {
@@ -257,7 +257,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation enterKeyType(value: EnterKeyType): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enterKeyType(value: ?EnterKeyType): This {
@@ -279,7 +279,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation textAlign(value: TextAlign): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textAlign(value: ?TextAlign): This {
@@ -296,7 +296,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation placeholderColor(value: ResourceColor): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderColor(value: ?ResourceColor): This {
@@ -313,7 +313,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation caretColor(value: ResourceColor): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretColor(value: ?ResourceColor): This {
@@ -329,7 +329,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation placeholderFont(value?: Font): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderFont(size!: ?Length, weight!: ?FontWeight = None, family!: ?String = None,
@@ -347,7 +347,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation maxLength(value: number): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxLength(value: ?UInt32): This {
@@ -368,7 +368,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation fontSize(value: Length): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -384,7 +384,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation fontColor(value: ResourceColor): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -401,7 +401,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation fontWeight(value: number | FontWeight | ResourceStr): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -418,7 +418,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation fontStyle(value: FontStyle): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -438,7 +438,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation fontFamily(value: ResourceStr): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -456,7 +456,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation inputFilter(value: ResourceStr, error?: Callback<string>): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func inputFilter(value: ?ResourceStr, error!: ?(String) -> Unit = None): This {
@@ -478,7 +478,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation onSubmit(callback: OnSubmitCallback): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSubmit(callback: ?(EnterKeyType) -> Unit): This {
@@ -495,7 +495,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation onSubmit(callback: OnSubmitCallback): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCopy(callback: ?(String) -> Unit): This {
@@ -512,7 +512,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation onCut(callback: Callback<string>): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCut(callback: ?(String) -> Unit): This {
@@ -529,7 +529,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation onChange(callback: EditableTextOnChangeCallback): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(String) -> Unit): This {
@@ -546,7 +546,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation onPaste(callback: OnPasteCallback): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPaste(callback: ?(String) -> Unit): This {
@@ -563,7 +563,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation onEditChange(callback: Callback<boolean>): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onEditChange(callback: ?(Bool) -> Unit): This {
@@ -581,7 +581,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation customKeyboard(value: CustomBuilder, options?: KeyboardOptions): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func customKeyboard(value: ?CustomBuilder, supportAvoidance!: ?Bool = None): This {
@@ -600,7 +600,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation style(value: TextInputStyle | TextContentStyle): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func style(value: ?TextInputStyle): This {
@@ -617,7 +617,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation enableKeyboardOnFocus(value: boolean): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableKeyboardOnFocus(value: ?Bool): This {
@@ -634,7 +634,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation selectionMenuHidden(value: boolean): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectionMenuHidden(value: ?Bool): This {
@@ -651,7 +651,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation showUnderline(value: boolean): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showUnderline(value: ?Bool): This {
@@ -668,7 +668,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @relation maxLines(value: number): TextInputAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxLines(value: ?Int32): This {

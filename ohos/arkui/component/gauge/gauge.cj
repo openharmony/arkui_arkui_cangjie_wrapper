@@ -128,7 +128,7 @@ class FFIVectorColorStops {
  * @relation declare const Gauge: GaugeInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
@@ -144,7 +144,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
      * @relation (options: GaugeOptions): GaugeAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?Float64, min!: ?Float64 = None, max!: ?Float64 = None, child!: () -> Unit = { => }) {
@@ -163,7 +163,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
      * @relation value(value: number): GaugeAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func value(value: ?Float32): This {
@@ -182,7 +182,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
      * @relation startAngle(angle: number): GaugeAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func startAngle(angle: ?Float64): This {
@@ -201,7 +201,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
      * @relation endAngle(angle: number): GaugeAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func endAngle(angle: ?Float64): This {
@@ -220,7 +220,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
      * @relation colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colors(value: ?Array<(ResourceColor, Float32)>): This {
@@ -251,7 +251,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
      * @relation colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colors(value: ?Array<(LinearGradient, Float32)>): This {
@@ -297,7 +297,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
      * @relation colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colors(value: ?ResourceColor): This {
@@ -315,7 +315,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
      * @relation colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colors(value: ?LinearGradient): This {
@@ -333,7 +333,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
      * @relation strokeWidth(length: Length): GaugeAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeWidth(length: ?Length): This {
@@ -355,7 +355,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
      * @relation trackShadow(value: GaugeShadowOptions): GaugeAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func trackShadow(radius!: ?Float64 = None, offsetX!: ?Float64 = None, offsetY!: ?Float64 = None): This {
@@ -374,7 +374,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
      * @relation indicator(value: GaugeIndicatorOptions): GaugeAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func indicator(icon!: ?ResourceStr = None, space!: ?Length = None): This {
@@ -396,7 +396,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
      * @relation description(value: CustomBuilder): GaugeAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func description(builder: ?() -> Unit): This {

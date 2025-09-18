@@ -39,7 +39,7 @@ foreign {
  * @relation declare const LoadingProgress: LoadingProgressInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LoadingProgress <: CommonMethodComponent<LoadingProgressAttribute> & LoadingProgressAttribute {
@@ -50,7 +50,7 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgressAttribute> 
      * @relation (): LoadingProgressAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -66,7 +66,7 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgressAttribute> 
      * @relation color(value: ResourceColor): LoadingProgressAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {

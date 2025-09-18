@@ -30,7 +30,7 @@ import std.collection.*
  * @relation declare class LocalStorage
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LocalStorage {
@@ -44,7 +44,7 @@ public class LocalStorage {
      * @relation constructor(initializingProperties?: Object)
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -52,7 +52,7 @@ public class LocalStorage {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func aboutToBeDeleted(): Bool {
@@ -69,7 +69,7 @@ public class LocalStorage {
      * @relation has(propName: string): boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func has(propName: String): Bool {
@@ -84,7 +84,7 @@ public class LocalStorage {
      * @relation keys(): IterableIterator<string>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keys(): EquatableCollection<String> {
@@ -99,7 +99,7 @@ public class LocalStorage {
      * @relation size(): number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func size(): Int64 {
@@ -115,7 +115,7 @@ public class LocalStorage {
      * @relation get<T>(propName: string): T | undefined;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get<T>(propName: String): ?T {
@@ -140,7 +140,7 @@ public class LocalStorage {
      * @relation set<T>(propName: string, newValue: T): boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set<T>(propName: String, newValue: T): Bool {
@@ -167,7 +167,7 @@ public class LocalStorage {
      * @relation setOrCreate<T>(propName: string, newValue: T): boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setOrCreate<T>(propName: String, newValue: T): Bool {
@@ -194,7 +194,7 @@ public class LocalStorage {
      * @relation link<T>(propName: string): SubscribedAbstractProperty<T>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func link<T>(propName: String): ?ObservedProperty<T> {
@@ -219,7 +219,7 @@ public class LocalStorage {
      * @relation setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setAndLink<T>(propName: String, defaultValue: T): ObservedProperty<T> {
@@ -239,7 +239,7 @@ public class LocalStorage {
      * @relation  prop<S>(propName: string): SubscribedAbstractProperty<S>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func `prop`<T>(propName: String): ?ObservedProperty<T> {
@@ -263,7 +263,7 @@ public class LocalStorage {
      * @relation  prop<S>(propName: string): SubscribedAbstractProperty<S>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setAndProp<T>(propName: String, defaultValue: T): ObservedProperty<T> {
@@ -294,7 +294,7 @@ public class LocalStorage {
      * @relation delete(propName: string): boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func delete(propName: String): Bool {
@@ -321,7 +321,7 @@ public class LocalStorage {
      * @relation clear(): boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clear(): Bool {

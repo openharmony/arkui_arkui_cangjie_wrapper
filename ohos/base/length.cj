@@ -23,12 +23,12 @@ import std.deriving.Derive
  * Defines the length property.
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface Length {
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop value: Float64 {
@@ -37,7 +37,7 @@ public interface Length {
         }
     }
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop unitType: LengthUnit {
@@ -51,7 +51,7 @@ public interface Length {
  * Defines the length property.
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface LengthProp {
@@ -61,7 +61,7 @@ public interface LengthProp {
      * @relation declare type PX = `${number}px`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop px: Length
@@ -71,7 +71,7 @@ public interface LengthProp {
      * @relation declare type VP = `${number}vp` | number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop vp: Length
@@ -81,7 +81,7 @@ public interface LengthProp {
      * @relation declare type FP = `${number}fp`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop fp: Length
@@ -91,7 +91,7 @@ public interface LengthProp {
      * @relation declare type Percentage = `${number}%`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop percent: Length
@@ -101,14 +101,14 @@ public interface LengthProp {
      * @relation declare type LPX = `${number}lpx`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop lpx: Length
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LengthMetrics <: Length {
@@ -121,7 +121,7 @@ public class LengthMetrics <: Length {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop value: Float64 {
@@ -131,7 +131,7 @@ public class LengthMetrics <: Length {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop unitType: LengthUnit {
@@ -147,7 +147,7 @@ public class LengthMetrics <: Length {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LengthUnit {
@@ -157,7 +157,7 @@ public enum LengthUnit {
      * @relation declare type PX = `${number}px`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Px
@@ -167,7 +167,7 @@ public enum LengthUnit {
      * @relation declare type VP = `${number}vp` | number
      */
     | @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vp
@@ -177,7 +177,7 @@ public enum LengthUnit {
      * @relation declare type FP = `${number}fp`
      */
     | @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fp
@@ -187,7 +187,7 @@ public enum LengthUnit {
      * @relation declare type Percentage = `${number}%`
      */
     | @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Percent
@@ -197,14 +197,14 @@ public enum LengthUnit {
      * @relation declare type LPX = `${number}lpx`
      */
     | @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Lpx
     | ...
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getValue(): Int32 {
@@ -219,7 +219,7 @@ public enum LengthUnit {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func parse(value: ?Int32): LengthUnit {
@@ -241,7 +241,7 @@ public enum LengthUnit {
  * @relation declare type Length = string | number | Resource
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 extend Float64 <: LengthProp & Length {
@@ -251,7 +251,7 @@ extend Float64 <: LengthProp & Length {
      * @relation declare type PX = `${number}px`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop px: Length {
@@ -266,7 +266,7 @@ extend Float64 <: LengthProp & Length {
      * @relation declare type VP = `${number}vp` | number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop vp: Length {
@@ -281,7 +281,7 @@ extend Float64 <: LengthProp & Length {
      * @relation declare type FP = `${number}fp`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop fp: Length {
@@ -296,7 +296,7 @@ extend Float64 <: LengthProp & Length {
      * @relation declare type Percentage = `${number}%`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop percent: Length {
@@ -311,7 +311,7 @@ extend Float64 <: LengthProp & Length {
      * @relation declare type LPX = `${number}lpx`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop lpx: Length {
@@ -320,7 +320,7 @@ extend Float64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop value: Float64 {
@@ -329,7 +329,7 @@ extend Float64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop unitType: LengthUnit {
@@ -345,7 +345,7 @@ extend Float64 <: LengthProp & Length {
  * @relation declare type Length = string | number | Resource
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 extend Int64 <: LengthProp & Length {
@@ -355,7 +355,7 @@ extend Int64 <: LengthProp & Length {
      * @relation declare type PX = `${number}px`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop px: Length {
@@ -369,7 +369,7 @@ extend Int64 <: LengthProp & Length {
      * @relation declare type VP = `${number}vp` | number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop vp: Length {
@@ -383,7 +383,7 @@ extend Int64 <: LengthProp & Length {
      * @relation declare type FP = `${number}fp`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop fp: Length {
@@ -397,7 +397,7 @@ extend Int64 <: LengthProp & Length {
      * @relation declare type Percentage = `${number}%`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop percent: Length {
@@ -411,7 +411,7 @@ extend Int64 <: LengthProp & Length {
      * @relation declare type LPX = `${number}lpx`
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop lpx: Length {
@@ -420,7 +420,7 @@ extend Int64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop value: Float64 {
@@ -429,7 +429,7 @@ extend Int64 <: LengthProp & Length {
         }
     }
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop unitType: LengthUnit {

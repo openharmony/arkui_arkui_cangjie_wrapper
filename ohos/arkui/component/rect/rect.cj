@@ -45,7 +45,7 @@ foreign {
  * @relation declare const Rect: RectInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
@@ -58,7 +58,7 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
      * @relation (options?: RectOptions | RoundedRectOptions): RectAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {
@@ -81,7 +81,7 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
      * @relation radiusWidth(value: Length): RectAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radiusWidth(value: ?Length): This {
@@ -100,7 +100,7 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
      * @relation radiusHeight(value: Length): RectAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radiusHeight(value: ?Length): This {
@@ -119,7 +119,7 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
      * @relation radius(value: Length | Array<any>): RectAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Length): This {
@@ -138,7 +138,7 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
      * @relation radius(value: Length | Array<any>): RectAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Array<Length>): This {
@@ -165,7 +165,7 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
      * @relation radius(value: Length | Array<any>): RectAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Array<(Length, Length)>): This {
@@ -208,7 +208,7 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func initial() {}

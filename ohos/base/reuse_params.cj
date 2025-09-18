@@ -4,14 +4,14 @@ import std.collection.HashMap
 import ohos.labels.APILevel
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ReuseParams {
     private var maps: HashMap<String, Any>
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(arr: Array<(String, Any)>) {
@@ -27,7 +27,7 @@ public class ReuseParams {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get<T>(key: String): ?T {

@@ -73,7 +73,7 @@ foreign {
  * @relation const ImageSpan: ImageSpanInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanAttribute {
@@ -85,7 +85,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      * @relation (value: ResourceStr | PixelMap): ImageSpanAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?ResourceStr) {
@@ -110,7 +110,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      * @relation (value: ResourceStr | PixelMap): ImageSpanAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?PixelMap) {
@@ -128,7 +128,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      * @relation verticalAlign(value: ImageSpanAlignment): ImageSpanAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func verticalAlign(value: ?ImageSpanAlignment): This {
@@ -147,7 +147,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      * @relation objectFit(value: ImageFit): ImageSpanAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func objectFit(value: ?ImageFit): This {
@@ -166,7 +166,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      * @relation colorFilter(filter: ColorFilter | DrawingColorFilter): ImageSpanAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colorFilter(filter: ?ColorFilter): This {
@@ -191,7 +191,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      * @relation onComplete(callback: ImageCompleteCallback): ImageSpanAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onComplete(callback: ?ImageCompleteCallback): This {
@@ -215,7 +215,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      * @relation onError(callback: ImageErrorCallback): ImageSpanAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onError(callback: ?ImageErrorCallback): This {

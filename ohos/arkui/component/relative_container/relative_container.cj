@@ -193,7 +193,7 @@ foreign {
  * @relation interface BarrierStyle
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BarrierStyle {
@@ -204,7 +204,7 @@ public class BarrierStyle {
     * @relation id : string
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var id: ?String
@@ -216,7 +216,7 @@ public class BarrierStyle {
     * @relation direction : BarrierDirection
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var direction: ?BarrierDirection
@@ -228,7 +228,7 @@ public class BarrierStyle {
     * @relation referencedId : Array<string>
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var referencedId: ?Array<String>
@@ -242,7 +242,7 @@ public class BarrierStyle {
     * @returns { This }
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(id: ?String, direction: ?BarrierDirection, referencedId: ?Array<String>) {
@@ -258,7 +258,7 @@ public class BarrierStyle {
  * @relation interface GuideLinePosition
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GuideLinePosition {
@@ -269,7 +269,7 @@ public class GuideLinePosition {
     * @relation start? : Dimension
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var start: ?Length
@@ -281,7 +281,7 @@ public class GuideLinePosition {
     * @relation end? : Dimension
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var end: ?Length
@@ -294,7 +294,7 @@ public class GuideLinePosition {
     * @returns { This }
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(start!: ?Length = None, end!: ?Length = None) {
@@ -309,7 +309,7 @@ public class GuideLinePosition {
  * @relation interface GuideLineStyle
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GuideLineStyle {
@@ -320,7 +320,7 @@ public class GuideLineStyle {
     * @relation id : string
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var id: ?String
@@ -332,7 +332,7 @@ public class GuideLineStyle {
     * @relation direction : Axis
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var direction: ?Axis
@@ -344,7 +344,7 @@ public class GuideLineStyle {
     * @relation position : GuideLinePosition
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var position: ?GuideLinePosition
@@ -357,7 +357,7 @@ public class GuideLineStyle {
     * @returns { This }
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(id: ?String, direction: ?Axis, position: ?GuideLinePosition) {
@@ -373,7 +373,7 @@ public class GuideLineStyle {
  * @relation const RelativeContainer: RelativeContainerInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribute> & RelativeContainerAttribute {
@@ -384,7 +384,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     * @returns { This }
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = {=>}) {
@@ -400,7 +400,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     * @relation guideLine(value: Array<GuideLineStyle>): RelativeContainerAttribute
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func guideLine(value: ?Array<GuideLineStyle>): This {
@@ -419,7 +419,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     * @relation barrier(value: Array<BarrierStyle>): RelativeContainerAttribute
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func barrier(value: ?Array<BarrierStyle>): This {

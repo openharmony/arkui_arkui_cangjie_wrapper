@@ -65,12 +65,12 @@ foreign {
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func create(view: View): Unit {
@@ -79,7 +79,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
         }
     }
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func create(remoteId: Int64): View {
@@ -90,7 +90,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func createRecycle(componentCall: View, isRecycling: Bool, reuseId: String, callback: () -> Unit) {
@@ -109,7 +109,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func markNeedUpdate(): Unit {
@@ -119,7 +119,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func needsUpdate(): Bool {
@@ -129,7 +129,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func markStatic(): Unit {
@@ -139,7 +139,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func isStatic(): Bool {
@@ -149,7 +149,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func destroy(): Unit {
@@ -159,7 +159,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func syncInstanceId(): Unit {
@@ -169,7 +169,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func restoreInstanceId(): Unit {
@@ -179,7 +179,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func finishUpdateFunc(elmtId: Int64): Unit {
@@ -189,7 +189,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getDeletedElemtIds(): ArrayList<Int64> {
@@ -208,7 +208,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func deletedElmtIdsHaveBeenPurged(elmtIds: ArrayList<Int64>): Unit {
@@ -225,7 +225,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func isFirstRender(): Bool {
@@ -235,7 +235,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func resetRecycleCustomNode() {

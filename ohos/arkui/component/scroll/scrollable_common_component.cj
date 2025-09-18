@@ -31,7 +31,7 @@ import std.deriving.Derive
  * Provides functions for scroll able Base.
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponent<T> {
@@ -59,7 +59,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @relation scrollBar(barState: BarState): ScrollAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollBar(barState: ?BarState): T {
@@ -77,7 +77,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @relation scrollBarColor(color: Color | number | string): ScrollAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollBarColor(color: ?ResourceColor): T {
@@ -95,7 +95,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @relation scrollBarWidth(value: number | string): ScrollAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollBarWidth(value: ?Length): T {
@@ -114,7 +114,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @relation nestedScroll(value: NestedScrollOptions): ScrollAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func nestedScroll(value: ?NestedScrollOptions): T {
@@ -133,7 +133,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @relation enableScrollInteraction(value: boolean): ScrollAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableScrollInteraction(value: ?Bool): T {
@@ -153,7 +153,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @relation friction(value: number | Resource): ScrollAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func friction(value: ?Float64): T {
@@ -173,7 +173,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @relation friction(value: number | Resource): ScrollAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func friction(value: ?AppResource): T {
@@ -190,7 +190,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReachStart(event: ?() -> Unit): T {
@@ -207,7 +207,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReachEnd(event: ?() -> Unit): T {
@@ -226,7 +226,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @relation onScrollStart(event: VoidCallback): ScrollAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onScrollStart(event: ?() -> Unit): T {
@@ -245,7 +245,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @relation onScrollStop(event: VoidCallback): ScrollAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onScrollStop(event: ?() -> Unit): T {
@@ -262,7 +262,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flingSpeedLimit(speedLimit: ?Float64): T {
@@ -284,7 +284,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fadingEdge(enabled: Option<Bool>): T {
@@ -310,7 +310,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fadingEdge(enabled: Option<Bool>, options: ?FadingEdgeOptions): T {
@@ -341,7 +341,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clipContent(clip: ?ContentClipMode): T {
@@ -363,7 +363,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clipContent(clip: ?RectShape): T {
@@ -389,7 +389,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @relation onWillScroll(handler: ScrollOnWillScrollCallback): ScrollAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) -> ScrollResult>): T {
@@ -424,7 +424,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @relation onWillScroll(handler: ScrollOnWillScrollCallback): ScrollAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) -> Unit>): T {
@@ -456,7 +456,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @relation onDidScroll(handler: ScrollOnScrollCallback): ScrollAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDidScroll(handler: ?OnScrollCallBack): T {

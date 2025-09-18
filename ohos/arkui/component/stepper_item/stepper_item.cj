@@ -35,7 +35,7 @@ foreign {
  * @relation declare const StepperItem: StepperItemInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & StepperItemAttribute {
@@ -48,7 +48,7 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
      * @relation (): StepperItemAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -66,7 +66,7 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
      * @relation prevLabel(value: string): StepperItemAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func prevLabel(value: ?String): This {
@@ -87,7 +87,7 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
      * @relation nextLabel(value: string): StepperItemAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func nextLabel(value: ?String): This {
@@ -108,7 +108,7 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
      * @relation status(value?: ItemState): StepperItemAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func status(status!: ?ItemState = None): This {

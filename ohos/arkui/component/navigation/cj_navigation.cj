@@ -105,7 +105,7 @@ struct CJPopInfo {
  * @realtion declare interface NavigationTitleOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavigationTitleOptions {
@@ -116,7 +116,7 @@ public class NavigationTitleOptions {
      * @relation backgroundColor?: ResourceColor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -128,7 +128,7 @@ public class NavigationTitleOptions {
      * @relation backgroundBlurStyle?: BlurStyle
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -140,7 +140,7 @@ public class NavigationTitleOptions {
      * @relation barStyle?: BarStyle
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var barStyle: ?BarStyle
@@ -151,7 +151,7 @@ public class NavigationTitleOptions {
      * @relation paddingStart?: LengthMetrics
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var paddingStart: ?Length
@@ -162,12 +162,12 @@ public class NavigationTitleOptions {
      * @relation paddingEnd?: LengthMetrics
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var paddingEnd: ?Length
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     /**
@@ -260,7 +260,7 @@ struct CJNavigationTitleOptions {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LaunchMode {
@@ -272,7 +272,7 @@ public enum LaunchMode {
      * @relation STANDARD = 0
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Standard
@@ -284,7 +284,7 @@ public enum LaunchMode {
      * @relation MOVE_TO_TOP_SINGLETON = 1
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     MoveToTopSingleTon
@@ -296,7 +296,7 @@ public enum LaunchMode {
      * @relation POP_TO_SINGLETON = 2
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PopToSingleTon
@@ -308,7 +308,7 @@ public enum LaunchMode {
      * @relation NEW_INSTANCE = 3
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NewInstance
@@ -376,7 +376,7 @@ public class NavigationOptions {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BarStyle {
@@ -386,7 +386,7 @@ public enum BarStyle {
      * @relation STANDARD = 0
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Standard
@@ -397,7 +397,7 @@ public enum BarStyle {
      * @relation STACK = 1
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Stack
@@ -419,7 +419,7 @@ public enum BarStyle {
  * @relation declare class NavPathInfo
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavPathInfo <: FFIData {
@@ -430,7 +430,7 @@ public class NavPathInfo <: FFIData {
      * @relation name: string
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var name: ?String
@@ -441,7 +441,7 @@ public class NavPathInfo <: FFIData {
      * @relation param?: unknown
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var param: ?String
@@ -455,7 +455,7 @@ public class NavPathInfo <: FFIData {
      * @relation constructor(name: string, param: Object | null | undefined, onPop?: Callback<PopInfo>, isEntry?: boolean)
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(name!: ?String, param!: ?String, onPop!: ?Callback<PopInfo, Unit> = None) {
@@ -517,7 +517,7 @@ func freePathInfo(info: CJNavPathInfo): Unit {
  * @relation declare class NavPathStack
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavPathStack <: RemoteData {
@@ -528,7 +528,7 @@ public class NavPathStack <: RemoteData {
      * @relation constructor()
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -553,7 +553,7 @@ public class NavPathStack <: RemoteData {
      * @relation pushPath(info: NavPathInfo, animated?: boolean): void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pushPath(info: ?NavPathInfo, animated!: ?Bool = None) {
@@ -593,7 +593,7 @@ public class NavPathStack <: RemoteData {
      * @relation pop(animated?: boolean): NavPathInfo | undefined
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pop(animated!: ?Bool = None): ?NavPathInfo {
@@ -621,7 +621,7 @@ public class NavPathStack <: RemoteData {
  * @relation declare const Navigation: NavigationInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Navigation <: CommonMethodComponent<NavigationAttribute> & NavigationAttribute {
@@ -632,7 +632,7 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
      * @returns { Navigation }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = { => }) {
@@ -650,7 +650,7 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
      * @returns { Navigation }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(pathInfos: ?NavPathStack, child!: () -> Unit = { => }) {

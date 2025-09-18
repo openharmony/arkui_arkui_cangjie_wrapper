@@ -209,7 +209,7 @@ public type ShowActionMenuCallBack = AsyncCallback<Int32>
  * Provides a ButtonInfo component..
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ButtonInfo {
@@ -220,7 +220,7 @@ public class ButtonInfo {
      * @relation text: string | Resource;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var text: ResourceStr
@@ -232,7 +232,7 @@ public class ButtonInfo {
      * @relation color: string | Resource;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ResourceColor
@@ -244,7 +244,7 @@ public class ButtonInfo {
      * @relation color: primary?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var primary: Bool
@@ -257,7 +257,7 @@ public class ButtonInfo {
      * @param { Bool } primary: Whether the button responds to the Enter/Space key by default.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(text!: ResourceStr, color!: ResourceColor, primary!: Bool = false) {
@@ -300,7 +300,7 @@ unsafe func DestoryCButtons(pButtons: CPointer<CButtonInfo>, size: Int64) {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ToastShowMode {
@@ -310,7 +310,7 @@ public enum ToastShowMode {
      * @relation DEFAULT = 0,
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default
@@ -321,7 +321,7 @@ public enum ToastShowMode {
      * @relation TOP_MOST = 1,
      */
     | @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopMost
@@ -340,7 +340,7 @@ public enum ToastShowMode {
  * Provides a EdgeColor component.
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EdgeColors {
@@ -351,7 +351,7 @@ public class EdgeColors {
      * @type { ResourceColor }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var top: ResourceColor
@@ -362,7 +362,7 @@ public class EdgeColors {
      * @type { ResourceColor }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var right: ResourceColor
@@ -373,7 +373,7 @@ public class EdgeColors {
      * @type { ResourceColor }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bottom: ResourceColor
@@ -384,7 +384,7 @@ public class EdgeColors {
      * @type { ResourceColor }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var left: ResourceColor
@@ -399,7 +399,7 @@ public class EdgeColors {
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -431,7 +431,7 @@ public class EdgeColors {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum HoverModeAreaType {
@@ -440,7 +440,7 @@ public enum HoverModeAreaType {
      * TopScreen HoverModeAreaType.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopScreen
@@ -449,7 +449,7 @@ public enum HoverModeAreaType {
      * BottomScreen HoverModeAreaType.
      */
     | @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomScreen
@@ -471,7 +471,7 @@ public enum HoverModeAreaType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum KeyboardAvoidMode {
@@ -479,7 +479,7 @@ public enum KeyboardAvoidMode {
      * Default KeyboardAvoidMode.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default
@@ -488,7 +488,7 @@ public enum KeyboardAvoidMode {
      * None KeyboardAvoidMode.
      */
     | @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -509,7 +509,7 @@ public enum KeyboardAvoidMode {
  * @relation interface BaseDialogOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class BaseDialogOptions {
@@ -521,7 +521,7 @@ public open class BaseDialogOptions {
      * @relation maskRect?: Rectangle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskRect: Rectangle
@@ -533,7 +533,7 @@ public open class BaseDialogOptions {
      * @relation alignment?: DialogAlignment;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var alignment: DialogAlignment
@@ -545,7 +545,7 @@ public open class BaseDialogOptions {
      * @relation offset?: Offset;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: Offset
@@ -556,7 +556,7 @@ public open class BaseDialogOptions {
      * @relation isModal?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isModal: Bool
@@ -567,7 +567,7 @@ public open class BaseDialogOptions {
      * @relation showInSubWindow?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: Bool
@@ -579,7 +579,7 @@ public open class BaseDialogOptions {
      * @relation autoCancel?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: Bool
@@ -591,7 +591,7 @@ public open class BaseDialogOptions {
      * @relation maskColor?: ResourceColor;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskColor: ResourceColor
@@ -603,7 +603,7 @@ public open class BaseDialogOptions {
      * @relation transition?: TransitionEffect;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: TransitionEffect
@@ -615,7 +615,7 @@ public open class BaseDialogOptions {
      * @relation onDidAppear?: () => void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onDidAppear: () -> Unit
@@ -627,7 +627,7 @@ public open class BaseDialogOptions {
      * @relation onDidDisappear?: () => void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onDidDisappear: () -> Unit
@@ -639,7 +639,7 @@ public open class BaseDialogOptions {
      * @relation onWillAppear?: () => void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillAppear: () -> Unit
@@ -651,7 +651,7 @@ public open class BaseDialogOptions {
      * @relation onWillDisappear?: () => void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDisappear: () -> Unit
@@ -663,7 +663,7 @@ public open class BaseDialogOptions {
      * @relation keyboardAvoidMode?: KeyboardAvoidMode;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keyboardAvoidMode: KeyboardAvoidMode
@@ -675,7 +675,7 @@ public open class BaseDialogOptions {
      * @relation enableHoverMode?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enableHoverMode: Bool
@@ -687,7 +687,7 @@ public open class BaseDialogOptions {
      * @relation hoverModeArea?: HoverModeAreaType;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hoverModeArea: HoverModeAreaType
@@ -713,7 +713,7 @@ public open class BaseDialogOptions {
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -757,7 +757,7 @@ public open class BaseDialogOptions {
  * @relation interface CustomDialogOptions extends BaseDialogOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomDialogOptions <: BaseDialogOptions {
@@ -769,7 +769,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * @relation builder: CustomBuilder;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var builder: () -> Unit
@@ -781,7 +781,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * @relation backgroundColor?: ResourceColor;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ResourceColor
@@ -793,7 +793,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * @relation cornerRadius?: Dimension | BorderRadiuses;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cornerRadius: BorderRadiuses
@@ -805,7 +805,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * @relation borderWidth?: Dimension | EdgeWidths;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: EdgeWidths
@@ -817,7 +817,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * @relation borderColor?: ResourceColor | EdgeColors;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: EdgeColors
@@ -829,7 +829,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * @relation borderStyle?: BorderStyle | EdgeStyles;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderStyle: EdgeStyles
@@ -841,7 +841,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * @relation width?: Dimension;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: Length
@@ -853,7 +853,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * @relation height?: Dimension;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: Length
@@ -865,7 +865,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * @relation shadow?: ShadowOptions | ShadowStyle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowOptions
@@ -877,7 +877,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * @relation backgroundBlurStyle?: BlurStyle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: BlurStyle
@@ -913,7 +913,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -980,7 +980,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
  * @relation interface ShowDialogOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class ShowDialogOptions {
@@ -993,7 +993,7 @@ public open class ShowDialogOptions {
      * @relation title?: string | Resource;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var title: ResourceStr
@@ -1005,7 +1005,7 @@ public open class ShowDialogOptions {
      * @relation message?: string | Resource;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var message: ResourceStr
@@ -1017,7 +1017,7 @@ public open class ShowDialogOptions {
      * @relation buttons?: Array<Button>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var buttons: Array<ButtonInfo>
@@ -1029,7 +1029,7 @@ public open class ShowDialogOptions {
      * @relation alignment?: DialogAlignment;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var alignment: DialogAlignment
@@ -1041,7 +1041,7 @@ public open class ShowDialogOptions {
      * @relation offset?: Offset;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: Offset
@@ -1053,7 +1053,7 @@ public open class ShowDialogOptions {
      * @relation maskRect?: Rectangle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskRect: Rectangle
@@ -1065,7 +1065,7 @@ public open class ShowDialogOptions {
      * @relation showInSubWindow?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: Bool
@@ -1076,7 +1076,7 @@ public open class ShowDialogOptions {
      * @relation isModal?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isModal: Bool
@@ -1088,7 +1088,7 @@ public open class ShowDialogOptions {
      * @relation backgroundColor?: ResourceColor;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ResourceColor
@@ -1100,7 +1100,7 @@ public open class ShowDialogOptions {
      * @relation backgroundBlurStyle?: BlurStyle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: BlurStyle
@@ -1112,7 +1112,7 @@ public open class ShowDialogOptions {
      * @relation shadow?: ShadowOptions | ShadowStyle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowOptions
@@ -1124,7 +1124,7 @@ public open class ShowDialogOptions {
      * @relation enableHoverMode?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enableHoverMode: Bool
@@ -1136,7 +1136,7 @@ public open class ShowDialogOptions {
      * @relation hoverModeArea?: HoverModeAreaType;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hoverModeArea: HoverModeAreaType
@@ -1160,7 +1160,7 @@ public open class ShowDialogOptions {
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1201,7 +1201,7 @@ public open class ShowDialogOptions {
  * @relation interface ActionMenuOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class ActionMenuOptions {
@@ -1214,7 +1214,7 @@ public open class ActionMenuOptions {
      * @relation title?: string | Resource;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var title: ResourceStr
@@ -1227,7 +1227,7 @@ public open class ActionMenuOptions {
      * @relation buttons: [Button, Button?, Button?, Button?, Button?, Button?];
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var buttons: Array<ButtonInfo>
@@ -1239,7 +1239,7 @@ public open class ActionMenuOptions {
      * @relation showInSubWindow?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: Bool
@@ -1250,7 +1250,7 @@ public open class ActionMenuOptions {
      * @relation isModal?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isModal: Bool
@@ -1265,7 +1265,7 @@ public open class ActionMenuOptions {
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1288,7 +1288,7 @@ public open class ActionMenuOptions {
  * @relation interface ShowToastOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ShowToastOptions {
@@ -1300,7 +1300,7 @@ public class ShowToastOptions {
      * @relation message: string | Resource;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var message: ResourceStr
@@ -1311,7 +1311,7 @@ public class ShowToastOptions {
      * @relation duration?: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var duration: UInt32
@@ -1323,7 +1323,7 @@ public class ShowToastOptions {
      * @relation bottom?: string | number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bottom: Length
@@ -1335,7 +1335,7 @@ public class ShowToastOptions {
      * @relation showMode?: ToastShowMode;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showMode: ToastShowMode
@@ -1347,7 +1347,7 @@ public class ShowToastOptions {
      * @relation alignment?: Alignment;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var alignment: Alignment
@@ -1359,7 +1359,7 @@ public class ShowToastOptions {
      * @relation offset?: Offset;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: Offset
@@ -1371,7 +1371,7 @@ public class ShowToastOptions {
      * @relation backgroundColor?: ResourceColor;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ResourceColor
@@ -1383,7 +1383,7 @@ public class ShowToastOptions {
      * @relation textColor?: ResourceColor;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var textColor: ResourceColor
@@ -1395,7 +1395,7 @@ public class ShowToastOptions {
      * @relation backgroundBlurStyle?: BlurStyle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: BlurStyle
@@ -1407,7 +1407,7 @@ public class ShowToastOptions {
      * @relation shadow?: ShadowOptions | ShadowStyle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowOptions = None
@@ -1419,7 +1419,7 @@ public class ShowToastOptions {
      * @relation enableHoverMode?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enableHoverMode: Bool
@@ -1431,7 +1431,7 @@ public class ShowToastOptions {
      * @relation hoverModeArea?: HoverModeAreaType;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hoverModeArea: HoverModeAreaType
@@ -1454,7 +1454,7 @@ public class ShowToastOptions {
      * @returns { This }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1704,7 +1704,7 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
  * @relation export declare class PromptAction
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PromptAction {
@@ -1724,7 +1724,7 @@ public class PromptAction {
    * @relation openCustomDialog(options: promptAction.CustomDialogOptions): Promise<number>
    */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func openCustomDialog(options: CustomDialogOptions, callBack: (Int32) -> Unit): Unit {
@@ -1742,7 +1742,7 @@ public class PromptAction {
      * @relation closeCustomDialog(dialogId: number): void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closeCustomDialog(dialogId: Int32): Unit {
@@ -1758,7 +1758,7 @@ public class PromptAction {
      * @relation showToast(options: promptAction.ShowToastOptions): void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showToast(option: ShowToastOptions): Unit {
@@ -1779,7 +1779,7 @@ public class PromptAction {
      * @relation showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback<promptAction.ShowDialogSuccessResponse>): void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showDialog(option: ShowDialogOptions, callback!: ShowDialogCallBack = defaultCallback) {
@@ -1809,7 +1809,7 @@ public class PromptAction {
      * @relation showActionMenu(options: promptAction.ActionMenuOptions, callback: promptAction.ActionMenuSuccessResponse): void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showActionMenu(option: ActionMenuOptions, callback!: ShowActionMenuCallBack = defaultCallback) {

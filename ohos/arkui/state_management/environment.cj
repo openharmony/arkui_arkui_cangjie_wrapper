@@ -40,7 +40,7 @@ foreign {
  * @relation declare enum ColorMode
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ColorMode {
@@ -50,7 +50,7 @@ public enum ColorMode {
      * @relation LIGHT = 0
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Light
@@ -61,7 +61,7 @@ public enum ColorMode {
      * @relation DARK
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Dark
@@ -90,7 +90,7 @@ public enum ColorMode {
  * @relation declare enum LayoutDirection
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LayoutDirection {
@@ -100,7 +100,7 @@ public enum LayoutDirection {
      * @relation LTR
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ltr
@@ -111,7 +111,7 @@ public enum LayoutDirection {
      * @relation RTL
      */
     @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Rtl
@@ -122,7 +122,7 @@ public enum LayoutDirection {
      * @relation Auto
      */
     @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -143,7 +143,7 @@ public enum LayoutDirection {
  * @relation declare class Environment
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Environment {
@@ -163,7 +163,7 @@ public class Environment {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func aboutToBeDeleted(): Unit {
@@ -181,7 +181,7 @@ public class Environment {
      * @relation static keys(): Array<string>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func keys(): Array<String> {
@@ -200,7 +200,7 @@ public class Environment {
      * @relation static envProp<S>(key: string, value: S): boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func envProp<T>(key: String, defaultValue: T): Bool {

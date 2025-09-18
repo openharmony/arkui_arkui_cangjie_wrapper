@@ -232,7 +232,7 @@ struct CJSwiperContentTransitionProxy {
  * @relation class Indicator<T>
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class Indicator {
@@ -252,7 +252,7 @@ public open class Indicator {
      * @relation static dot(): DotIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func dot(): DotIndicator {
@@ -266,7 +266,7 @@ public open class Indicator {
      * @relation static digit(): DigitIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func digit(): DigitIndicator {
@@ -281,7 +281,7 @@ public open class Indicator {
      * @relaiton left(value: Length): T
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func left(value: ?Length): This {
@@ -298,7 +298,7 @@ public open class Indicator {
      * @relation top(value: Length): T
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func top(value: ?Length): This {
@@ -315,7 +315,7 @@ public open class Indicator {
      * @relation right(value: Length): T
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func right(value: ?Length): This {
@@ -332,7 +332,7 @@ public open class Indicator {
      * @relation bottom(value: Length): T
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bottom(value: ?Length): This {
@@ -350,7 +350,7 @@ public open class Indicator {
      * @relation start(value: LengthMetrics): T
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func start(value: ?Length): This {
@@ -368,7 +368,7 @@ public open class Indicator {
      * @relation end(value: LengthMetrics): T
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func end(value: ?Length): This {
@@ -415,7 +415,7 @@ public open class Indicator {
  * @relation class DotIndicator extends Indicator<DotIndicator>
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DotIndicator <: Indicator {
@@ -435,7 +435,7 @@ public class DotIndicator <: Indicator {
      * @relation constructor()
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -458,7 +458,7 @@ public class DotIndicator <: Indicator {
      * @relation itemWidth(value: Length): DotIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func itemWidth(value: ?Length): This {
@@ -476,7 +476,7 @@ public class DotIndicator <: Indicator {
      * @relation itemHeight(value: Length): DotIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func itemHeight(value: ?Length): This {
@@ -494,7 +494,7 @@ public class DotIndicator <: Indicator {
      * @relaiton selectedItemWidth(value: Length): DotIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedItemWidth(value: ?Length): This {
@@ -512,7 +512,7 @@ public class DotIndicator <: Indicator {
      * @relaiton selectedItemHeight(value: Length): DotIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedItemHeight(value: ?Length): This {
@@ -530,7 +530,7 @@ public class DotIndicator <: Indicator {
      * @relation mask(value: boolean): DotIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func mask(value: ?Bool): This {
@@ -548,7 +548,7 @@ public class DotIndicator <: Indicator {
      * @relation color(value: ResourceColor): DotIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
@@ -566,7 +566,7 @@ public class DotIndicator <: Indicator {
      * @relation selectedColor(value: ResourceColor): DotIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
@@ -583,7 +583,7 @@ public class DotIndicator <: Indicator {
      * @relation maxDisplayCount(maxDisplayCount: number): DotIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxDisplayCount(value: ?UInt32): This {
@@ -617,7 +617,7 @@ public class DotIndicator <: Indicator {
  * @relation class DigitIndicator extends Indicator<DigitIndicator>
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DigitIndicator <: Indicator {
@@ -633,7 +633,7 @@ public class DigitIndicator <: Indicator {
      * @relation constructor()
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -651,7 +651,7 @@ public class DigitIndicator <: Indicator {
     * @relaiton fontColor(value: ResourceColor): DigitIndicator
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -669,7 +669,7 @@ public class DigitIndicator <: Indicator {
      * @relation selectedFontColor(value: ResourceColor): DigitIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedFontColor(value: ?ResourceColor): This {
@@ -693,7 +693,7 @@ public class DigitIndicator <: Indicator {
      * @relation digitFont(value: Font): DigitIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func digitFont(value: ?Font): This {
@@ -710,7 +710,7 @@ public class DigitIndicator <: Indicator {
      * @relaiton selectedDigitFont(value: Font): DigitIndicator
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedDigitFont(value: ?Font): This {
@@ -749,7 +749,7 @@ public class DigitIndicator <: Indicator {
  * @relation class SwiperController
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SwiperController <: RemoteDataLite {
@@ -760,7 +760,7 @@ public class SwiperController <: RemoteDataLite {
      * @relation constructor()
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -779,7 +779,7 @@ public class SwiperController <: RemoteDataLite {
      * @relation showNext(): void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showNext(): Unit {
@@ -794,7 +794,7 @@ public class SwiperController <: RemoteDataLite {
      * @relation showPrevious(): void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showPrevious(): Unit {
@@ -809,7 +809,7 @@ public class SwiperController <: RemoteDataLite {
      * @relation finishAnimation(callback?: VoidCallback): void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func finishAnimation(): Unit {
@@ -825,7 +825,7 @@ public class SwiperController <: RemoteDataLite {
      * @relation finishAnimation(callback?: VoidCallback): void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func finishAnimation(callback: ?VoidCallback): Unit {
@@ -843,7 +843,7 @@ public class SwiperController <: RemoteDataLite {
  * @relation declare const Swiper: SwiperInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute {
@@ -858,7 +858,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation (controller?: SwiperController): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(controller!: ?SwiperController = Option.None, child!: () -> Unit) {
@@ -890,7 +890,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation autoPlay(value: boolean): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoPlay(value: ?Bool): This {
@@ -909,7 +909,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation duration(value: number): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func duration(value: ?UInt32): This {
@@ -928,7 +928,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation index(value: number): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func index(value: ?UInt32): This {
@@ -947,7 +947,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation interval(value: number): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func interval(value: ?UInt32): This {
@@ -966,7 +966,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relaiton loop(value: boolean): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func loop(value: ?Bool): This {
@@ -985,7 +985,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation vertical(value: boolean): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func vertical(value: ?Bool): This {
@@ -1005,7 +1005,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation indicator(value: DotIndicator | DigitIndicator | boolean): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func indicator(indicator: ?Bool): This {
@@ -1024,7 +1024,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation indicator(value: DotIndicator | DigitIndicator | boolean): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func indicator(indicator: ?DotIndicator): This {
@@ -1043,7 +1043,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation indicator(value: DotIndicator | DigitIndicator | boolean): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func indicator(indicator: ?DigitIndicator): This {
@@ -1071,7 +1071,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation itemSpace(value: number | string): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func itemSpace(value: ?Length): This {
@@ -1093,7 +1093,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation displayMode(value: SwiperDisplayMode): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func displayMode(value: ?SwiperDisplayMode): This {
@@ -1117,7 +1117,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation effectMode(value: EdgeEffect): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func effectMode(value: ?EdgeEffect): This {
@@ -1144,7 +1144,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func displayCount(value: ?Int32, swipeByGroup!: ?Bool = None): This {
@@ -1169,7 +1169,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation cachedCount(value: number): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(value: ?Int32): This {
@@ -1188,7 +1188,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation disableSwipe(value: boolean): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func disableSwipe(value: ?Bool): This {
@@ -1208,7 +1208,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation curve(value: Curve | string | ICurve): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func curve(value: ?Curve): This {
@@ -1222,7 +1222,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func digital(value: Bool): This {
@@ -1277,7 +1277,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * @relation onChange(event: Callback<number>): SwiperAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(event: ?(Int32) -> Unit): This {

@@ -120,7 +120,7 @@ public type OnTextPickerChangeCallback = (String, UInt32) -> Unit
  * @relation const TextPicker: TextPickerInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPickerAttribute {
@@ -134,7 +134,7 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
      * @relation (options?: TextPickerOptions): TextPickerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -181,7 +181,7 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
      * @relation defaultPickerItemHeight(value: number | string): TextPickerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func defaultPickerItemHeight(value: ?Length): This {
@@ -202,7 +202,7 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
      * @relation canLoop(value: boolean): TextPickerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func canLoop(value: ?Bool): This {
@@ -224,7 +224,7 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
      * @relation onChange(callback: (value: string | string[], index: number | number[]) => void): TextPickerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?OnTextPickerChangeCallback): This {

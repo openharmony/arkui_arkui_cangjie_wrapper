@@ -19,14 +19,14 @@ import std.collection.ArrayList
 import ohos.labels.APILevel
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ObservedObject <: ObservedComplexAbstract {
     private let publishVars: ArrayList<ObservedPropertyAbstract> = ArrayList<ObservedPropertyAbstract>()
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addPublishVar(publishVar: ObservedPropertyAbstract) {
@@ -34,7 +34,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getPublishVar(): ArrayList<ObservedPropertyAbstract> {
@@ -42,7 +42,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func subscribeInner(observer: Observer): Unit {
@@ -52,7 +52,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func unsubscribeInner(observer: Observer): Unit {

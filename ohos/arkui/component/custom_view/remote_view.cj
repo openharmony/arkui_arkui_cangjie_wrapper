@@ -22,12 +22,12 @@ import std.collection.HashMap
 import std.collection.ArrayList
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class RemoteView <: FFIData {
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -35,19 +35,19 @@ public abstract class RemoteView <: FFIData {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func build(): Unit // abstract
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func rerender(): Unit {} // abstract
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func purgeVariableDependenciesOnElmtId(_: Int64): Unit {} // abstract
@@ -64,7 +64,7 @@ public abstract class RemoteView <: FFIData {
     protected open func aboutToDisappear(): Unit {}
     protected open func onAboutToBeDeleted(): Unit {}
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func forceCompleteRerender(deep: Bool): Unit {}

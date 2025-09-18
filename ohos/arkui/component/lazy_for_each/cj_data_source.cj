@@ -31,7 +31,7 @@ foreign {
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface IDataSource<T> {
@@ -42,7 +42,7 @@ public interface IDataSource<T> {
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DataChangeListener <: RemoteData {
@@ -51,7 +51,7 @@ public class DataChangeListener <: RemoteData {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataReloaded(): Unit {
@@ -59,7 +59,7 @@ public class DataChangeListener <: RemoteData {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataAdd(index: ?IntNative): Unit {
@@ -68,7 +68,7 @@ public class DataChangeListener <: RemoteData {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataDelete(index: ?IntNative): Unit {
@@ -77,7 +77,7 @@ public class DataChangeListener <: RemoteData {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataChange(index: ?IntNative): Unit {
@@ -86,7 +86,7 @@ public class DataChangeListener <: RemoteData {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataMove(from: ?IntNative, to: ?IntNative): Unit {

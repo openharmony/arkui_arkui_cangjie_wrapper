@@ -31,7 +31,7 @@ foreign {
  * @relation const ScrollBar: ScrollBarInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScrollBar <: CommonMethodComponent<ScrollBarAttribute> & ScrollBarAttribute {
@@ -46,7 +46,7 @@ public class ScrollBar <: CommonMethodComponent<ScrollBarAttribute> & ScrollBarA
     * @relation (value: ScrollBarOptions): ScrollBarAttribute;
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(

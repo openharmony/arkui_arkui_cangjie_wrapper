@@ -62,7 +62,7 @@ foreign {
  * @relation declare const Toggle: ToggleInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute {
@@ -76,7 +76,7 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
      * @relation (options: ToggleOptions): ToggleAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(toggleType: ?ToggleType, isOn!: ?Bool = None) {
@@ -96,7 +96,7 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
      * @relation (options: ToggleOptions): ToggleAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(toggleType: ToggleType, isOn: Bool, subcomponent: () -> Unit) {
@@ -156,7 +156,7 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
      * @relation selectedColor(value: ResourceColor): ToggleAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
@@ -175,7 +175,7 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
      * @relation switchPointColor(color: ResourceColor): ToggleAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func switchPointColor(color: ?ResourceColor): This {
@@ -228,7 +228,7 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
      * @relation onChange(callback: (isOn: boolean) => void): ToggleAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Bool) -> Unit): This {

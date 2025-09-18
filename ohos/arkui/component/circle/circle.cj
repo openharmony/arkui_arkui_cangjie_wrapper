@@ -33,7 +33,7 @@ foreign {
  * @relation declare const Circle: CircleInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Circle <: CommonShapeMethodComponent<CircleAttribute> & CircleAttribute {
@@ -46,7 +46,7 @@ public class Circle <: CommonShapeMethodComponent<CircleAttribute> & CircleAttri
      * @relation (value?: CircleOptions): CircleAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {
@@ -63,7 +63,7 @@ public class Circle <: CommonShapeMethodComponent<CircleAttribute> & CircleAttri
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func initial() {}

@@ -246,7 +246,7 @@ class CallbackCJDragInfoVCDragItemInfo <: BaseCallBack {
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 protected class CallbackCJWebResourceRequest <: BaseCallBack {
@@ -255,7 +255,7 @@ protected class CallbackCJWebResourceRequest <: BaseCallBack {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, res: CPointer<Unit>): Unit {

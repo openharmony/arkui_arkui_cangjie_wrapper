@@ -26,7 +26,7 @@ import std.collection.*
  * @relation declare class AppStorage
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AppStorage {
@@ -50,7 +50,7 @@ public class AppStorage {
      * @relation static link<T>(propName: string): SubscribedAbstractProperty<T>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func link<T>(propName: String): ?ObservedProperty<T> {
@@ -68,7 +68,7 @@ public class AppStorage {
      * @relation static setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func setAndLink<T>(propName: String, defaultValue: T): ObservedProperty<T> {
@@ -83,7 +83,7 @@ public class AppStorage {
      * @relation static prop<T>(propName: string): SubscribedAbstractProperty<T>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func `prop`<T>(propName: String): ?ObservedProperty<T> {
@@ -101,7 +101,7 @@ public class AppStorage {
      * @relation static setAndProp<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func setAndProp<T>(propName: String, defaultValue: T): ObservedProperty<T> {
@@ -119,7 +119,7 @@ public class AppStorage {
      * @relation static has(propName: string): boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func has(propName: String): Bool {
@@ -135,7 +135,7 @@ public class AppStorage {
      * @relation static get<T>(propName: string): T | undefined;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func get<T>(propName: String): ?T {
@@ -153,7 +153,7 @@ public class AppStorage {
      * @relation static set<T>(propName: string, newValue: T): boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func set<T>(propName: String, newValue: T): Bool {
@@ -171,7 +171,7 @@ public class AppStorage {
      * @relation static setOrCreate<T>(propName: string, newValue: T): void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func setOrCreate<T>(propName: String, newValue: T): Unit {
@@ -198,7 +198,7 @@ public class AppStorage {
      * @relation static delete(propName: string): boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func delete(propName: String): Bool {
@@ -214,7 +214,7 @@ public class AppStorage {
      * @relation static keys(): IterableIterator<string>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func keys(): EquatableCollection<String> {
@@ -228,7 +228,7 @@ public class AppStorage {
      * @relation static size(): number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func size(): Int64 {
@@ -243,7 +243,7 @@ public class AppStorage {
      * @relation static clear(): boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func clear(): Bool {

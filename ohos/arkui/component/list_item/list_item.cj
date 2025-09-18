@@ -53,7 +53,7 @@ foreign {
  * @relation declare const ListItem: ListItemInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttribute {
@@ -67,7 +67,7 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
      * @relation (value?: ListItemOptions): ListItemAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -112,7 +112,7 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
      * @relation selectable(value: boolean): ListItemAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectable(value: ?Bool): This {
@@ -134,7 +134,7 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
      * @relation swipeAction(value: SwipeActionOptions): ListItemAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func swipeAction(
@@ -163,7 +163,7 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
      * @relation onSelect(event: (isSelected: boolean) => void): ListItemAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSelect(event: ?(Bool) -> Unit): This {

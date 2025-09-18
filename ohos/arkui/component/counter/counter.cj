@@ -38,7 +38,7 @@ foreign {
  * @relation declare const Counter: CounterInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribute {
@@ -51,7 +51,7 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
      * @relation (): CounterAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(content: () -> Unit) {
@@ -69,7 +69,7 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
      * @relation enableInc(value: boolean): CounterAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableInc(value: ?Bool): This {
@@ -88,7 +88,7 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
      * @relation enableDec(value: boolean): CounterAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableDec(value: ?Bool): This {
@@ -107,7 +107,7 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
      * @relation onInc(event: VoidCallback): CounterAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onInc(event: ?VoidCallback): This {
@@ -126,7 +126,7 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
      * @relation onDec(event: VoidCallback): CounterAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDec(event: ?VoidCallback): This {

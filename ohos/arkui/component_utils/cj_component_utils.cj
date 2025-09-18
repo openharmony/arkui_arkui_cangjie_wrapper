@@ -40,7 +40,7 @@ struct CSize {
  * @relation export interface Size
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Size {
@@ -50,7 +50,7 @@ public class Size {
      * @relation width: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: Float32
@@ -61,7 +61,7 @@ public class Size {
      * @relation height: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: Float32
@@ -70,7 +70,7 @@ public class Size {
      * Create an Object of Size.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width: Float32, height: Float32) {
@@ -94,7 +94,7 @@ struct COffset {
  * @relation export interface Offset
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Offset {
@@ -104,7 +104,7 @@ public class Offset {
      * @relation x: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float32
@@ -115,7 +115,7 @@ public class Offset {
      * @relation y: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float32
@@ -124,7 +124,7 @@ public class Offset {
      * Create an Object of Offset.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x: Float32, y: Float32) {
@@ -152,7 +152,7 @@ struct CTranslateResult {
  * @relation export interface TranslateResult
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TranslateResult {
@@ -162,7 +162,7 @@ public class TranslateResult {
      * @relation x: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float64
@@ -173,7 +173,7 @@ public class TranslateResult {
      * @relation y: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float64
@@ -184,7 +184,7 @@ public class TranslateResult {
      * @relation z: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var z: Float64
@@ -193,7 +193,7 @@ public class TranslateResult {
      * Create an Object of Offset.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x: Float64, y: Float64, z: Float64) {
@@ -218,7 +218,7 @@ struct CScaleResult {
  * @relation export interface ScaleResult
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScaleResult {
@@ -228,7 +228,7 @@ public class ScaleResult {
      * @relation x: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float64
@@ -239,7 +239,7 @@ public class ScaleResult {
      * @relation z: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float64
@@ -250,7 +250,7 @@ public class ScaleResult {
      * @relation z: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var z: Float64
@@ -261,7 +261,7 @@ public class ScaleResult {
      * @relation centerX: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerX: Float64
@@ -272,7 +272,7 @@ public class ScaleResult {
      * @relation centerY: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerY: Float64
@@ -281,7 +281,7 @@ public class ScaleResult {
      * Defines ScaleResult Type.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x: Float64, y: Float64, z: Float64, centerX: Float64, centerY: Float64) {
@@ -315,7 +315,7 @@ struct CRotateResult {
  * @relation export interface RotateResult
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RotateResult {
@@ -325,7 +325,7 @@ public class RotateResult {
      * @relation x: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float64
@@ -336,7 +336,7 @@ public class RotateResult {
      * @relation y: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float64
@@ -347,7 +347,7 @@ public class RotateResult {
      * @relation z: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var z: Float64
@@ -358,7 +358,7 @@ public class RotateResult {
      * @relation centerX: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerX: Float64
@@ -369,7 +369,7 @@ public class RotateResult {
      * @relation centerY: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerY: Float64
@@ -380,12 +380,12 @@ public class RotateResult {
      * @relation angle: number
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var angle: Float64
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     /**
@@ -439,7 +439,7 @@ struct CComponentInfo {
  * @relation export interface ComponentInfo
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ComponentInfo {
@@ -449,7 +449,7 @@ public class ComponentInfo {
      * @relation size: Size
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var size: Size
@@ -460,7 +460,7 @@ public class ComponentInfo {
      * @relation localOffset: Offset
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var localOffset: Offset
@@ -471,7 +471,7 @@ public class ComponentInfo {
      * @relation windowOffset: Offset
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var windowOffset: Offset
@@ -482,7 +482,7 @@ public class ComponentInfo {
      * @relation screenOffset: Offset
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenOffset: Offset
@@ -493,7 +493,7 @@ public class ComponentInfo {
      * @relation translate: TranslateResult
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var translate: TranslateResult
@@ -504,7 +504,7 @@ public class ComponentInfo {
      * @relation scale: ScaleResult
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var scale: ScaleResult
@@ -515,7 +515,7 @@ public class ComponentInfo {
      * @relation rotate: RotateResult
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var rotate: RotateResult
@@ -526,7 +526,7 @@ public class ComponentInfo {
      * @relation transform: Matrix4Result
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transform: VArray<Float32, $16>
@@ -535,7 +535,7 @@ public class ComponentInfo {
      * constructor.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(size: Size, localOffset: Offset, windowOffset: Offset, screenOffset: Offset, translate: TranslateResult,
@@ -557,7 +557,7 @@ public class ComponentInfo {
  * @relation declare namespace componentUtils
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ComponentUtils {
@@ -568,7 +568,7 @@ public class ComponentUtils {
      * @relation unction getRectangleById(id: string): ComponentInfo;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getRectangleById(id: String): ComponentInfo {

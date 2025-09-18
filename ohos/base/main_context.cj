@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 foreign func FfiOHOSBaseGetUISchedulerHandle(): CPointer<Unit>
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MainThreadContext <: ThreadContext {
@@ -41,13 +41,13 @@ public class MainThreadContext <: ThreadContext {
     static let instance_: MainThreadContext = MainThreadContext()
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func end(): Unit {}
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func hasEnded(): Bool {
@@ -56,7 +56,7 @@ public class MainThreadContext <: ThreadContext {
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public let Main: MainThreadContext = MainThreadContext.instance_

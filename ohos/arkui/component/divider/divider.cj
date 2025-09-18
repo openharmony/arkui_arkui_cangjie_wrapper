@@ -38,7 +38,7 @@ foreign {
  * @relation const Divider: DividerInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribute {
@@ -49,7 +49,7 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
     * @relation (): DividerAttribute
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -67,7 +67,7 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
     * @relation vertical(value: boolean): DividerAttribute
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func vertical(value: ?Bool): This {
@@ -86,7 +86,7 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
     * @relation color(value: ResourceColor): DividerAttribute
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
@@ -105,7 +105,7 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
     * @relation strokeWidth(value: number | string): DividerAttribute;
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeWidth(value: ?Length): This {
@@ -125,7 +125,7 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
     * @relation lineCap(value: LineCapStyle): DividerAttribute;
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineCap(value: ?LineCapStyle): This {

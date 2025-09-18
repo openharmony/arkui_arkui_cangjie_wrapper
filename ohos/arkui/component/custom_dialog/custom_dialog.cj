@@ -70,7 +70,7 @@ struct NativeCustomDialogControllerOptions {
 * @relation declare interface CustomDialogControllerOptions
 */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomDialogControllerOptions {
@@ -80,7 +80,7 @@ public class CustomDialogControllerOptions {
     * @relation cancel?: () => void
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cancel: ?VoidCallback
@@ -90,7 +90,7 @@ public class CustomDialogControllerOptions {
     * @relation autoCancel?: boolean
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: ?Bool
@@ -100,7 +100,7 @@ public class CustomDialogControllerOptions {
     * @relation alignment?: DialogAlignment
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var alignment: ?DialogAlignment
@@ -110,7 +110,7 @@ public class CustomDialogControllerOptions {
     * @relation offset?: Offset
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Offset
@@ -120,7 +120,7 @@ public class CustomDialogControllerOptions {
     * @relation customStyle?: boolean
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var customStyle: ?Bool
@@ -130,7 +130,7 @@ public class CustomDialogControllerOptions {
     * @relation gridCount?: number
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var gridCount: ?UInt32
@@ -140,7 +140,7 @@ public class CustomDialogControllerOptions {
     * @relation maskColor?: ResourceColor
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskColor: ?ResourceColor
@@ -150,7 +150,7 @@ public class CustomDialogControllerOptions {
     * @relation maskRect?: Rectangle
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskRect: ?Rectangle
@@ -160,7 +160,7 @@ public class CustomDialogControllerOptions {
     * @relation openAnimation?: AnimateParam
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var openAnimation: ?AnimateParam
@@ -170,7 +170,7 @@ public class CustomDialogControllerOptions {
     * @relation closeAnimation?: AnimateParam
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var closeAnimation: ?AnimateParam
@@ -180,7 +180,7 @@ public class CustomDialogControllerOptions {
     * @relation showInSubWindow?: boolean
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: ?Bool
@@ -190,7 +190,7 @@ public class CustomDialogControllerOptions {
     * @relation backgroundColor?: ResourceColor
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -200,7 +200,7 @@ public class CustomDialogControllerOptions {
     * @relation cornerRadius?: Dimension | BorderRadiuses
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cornerRadius: ?Length
@@ -210,7 +210,7 @@ public class CustomDialogControllerOptions {
     * @relation isModal?: boolean
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isModal: ?Bool
@@ -220,7 +220,7 @@ public class CustomDialogControllerOptions {
     * @relation onWillDismiss?: Callback<DismissDialogAction>
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
@@ -230,7 +230,7 @@ public class CustomDialogControllerOptions {
     * @relation borderWidth?: Dimension | EdgeWidths
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: ?Length
@@ -240,7 +240,7 @@ public class CustomDialogControllerOptions {
     * @relation borderColor?: ResourceColor | EdgeColors
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: ?ResourceColor
@@ -250,7 +250,7 @@ public class CustomDialogControllerOptions {
     * @relation borderStyle?: BorderStyle | EdgeStyles
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderStyle: ?EdgeStyles
@@ -260,7 +260,7 @@ public class CustomDialogControllerOptions {
     * @relation width?: Dimension
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
@@ -270,7 +270,7 @@ public class CustomDialogControllerOptions {
     * @relation height?: Dimension
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Length
@@ -280,7 +280,7 @@ public class CustomDialogControllerOptions {
     * @relation shadow?: ShadowOptions | ShadowStyle
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowOptions
@@ -290,7 +290,7 @@ public class CustomDialogControllerOptions {
     * @relation backgroundBlurStyle?: BlurStyle
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -322,7 +322,7 @@ public class CustomDialogControllerOptions {
     * @relation constructor(value: CustomDialogControllerOptions)
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -402,7 +402,7 @@ foreign {
 * @relation declare class CustomDialogController
 */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomDialogController <: RemoteDataLite {
@@ -496,7 +496,7 @@ public class CustomDialogController <: RemoteDataLite {
     * @relation constructor(value: CustomDialogControllerOptions)
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?CustomDialogControllerOptions) {
@@ -511,7 +511,7 @@ public class CustomDialogController <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setBuilder(builder: () -> Unit) {
@@ -521,7 +521,7 @@ public class CustomDialogController <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindView(view: ?CustomView) {
@@ -532,7 +532,7 @@ public class CustomDialogController <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func openDialog() {
@@ -542,7 +542,7 @@ public class CustomDialogController <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closeDialog() {
@@ -552,7 +552,7 @@ public class CustomDialogController <: RemoteDataLite {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func releaseSelf(): Unit {

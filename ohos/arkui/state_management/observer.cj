@@ -19,7 +19,7 @@ import ohos.labels.APILevel
 import std.collection.*
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface Observer {

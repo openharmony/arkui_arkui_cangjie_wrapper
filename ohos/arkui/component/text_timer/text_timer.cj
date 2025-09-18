@@ -111,7 +111,7 @@ foreign {
  * @relation class TextTimerController
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextTimerController <: RemoteDataLite {
@@ -122,7 +122,7 @@ public class TextTimerController <: RemoteDataLite {
      * @relation constructor()
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -141,7 +141,7 @@ public class TextTimerController <: RemoteDataLite {
      * @relation start():void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func start(): Unit {
@@ -156,7 +156,7 @@ public class TextTimerController <: RemoteDataLite {
      * @relation pause():void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pause(): Unit {
@@ -171,7 +171,7 @@ public class TextTimerController <: RemoteDataLite {
      * @relation reset():void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func reset(): Unit {
@@ -187,7 +187,7 @@ public class TextTimerController <: RemoteDataLite {
  * @relation const TextTimer: TextTimerInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerAttribute {
@@ -201,7 +201,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * @relation (options?: TextTimerOptions): TextTimerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(isCountDown!: ?Bool = None, count!: ?Int64 = None,
@@ -225,7 +225,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * @relation format(value: string): TextTimerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func format(value: ?String): This {
@@ -248,7 +248,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * @relation onTimer(event: (utc: number, elapsedTime: number) => void): TextTimerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onTimer(event: ?(Int64, Int64) -> Unit): This {
@@ -270,7 +270,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * @relation fontSize(value: Length): TextTimerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -290,7 +290,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * @relation fontColor(value: ResourceColor): TextTimerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -309,7 +309,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * @relation fontStyle(value: FontStyle): TextTimerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -335,7 +335,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * @relation fontWeight(value: number | FontWeight | ResourceStr): TextTimerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -356,7 +356,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * @relation fontFamily(value: ResourceStr): TextTimerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -380,7 +380,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * @relation textShadow(value: ShadowOptions | Array<ShadowOptions>): TextTimerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(value: ?Array<ShadowOptions>): This {
@@ -406,7 +406,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * @relation textShadow(value: ShadowOptions | Array<ShadowOptions>): TextTimerAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(value: ?ShadowOptions): This {

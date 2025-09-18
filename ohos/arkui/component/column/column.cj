@@ -40,7 +40,7 @@ foreign {
  * @relation const Column: ColumnInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Column <: CommonMethodComponent<ColumnAttribute> & ColumnAttribute {
@@ -52,7 +52,7 @@ public class Column <: CommonMethodComponent<ColumnAttribute> & ColumnAttribute 
     * @returns { This }
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(space!: ?Length = None, child!: () -> Unit = {=>}) {
@@ -71,7 +71,7 @@ public class Column <: CommonMethodComponent<ColumnAttribute> & ColumnAttribute 
     * @relation alignItems(value: HorizontalAlign): ColumnAttribute
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignItems(value: ?HorizontalAlign): This {
@@ -90,7 +90,7 @@ public class Column <: CommonMethodComponent<ColumnAttribute> & ColumnAttribute 
     * @relation justifyContent(value: FlexAlign): ColumnAttribute
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func justifyContent(value: ?FlexAlign): This {

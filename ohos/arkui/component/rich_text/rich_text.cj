@@ -33,12 +33,12 @@ foreign {
  * @relation interface RichTextInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichText <: CommonMethodComponent<RichTextAttribute> & RichTextAttribute {
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(content: ?ResourceStr) {
@@ -62,7 +62,7 @@ public class RichText <: CommonMethodComponent<RichTextAttribute> & RichTextAttr
      * @relation onStart(callback: () => void): RichTextAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStart(callback: ?() -> Unit): This {
@@ -80,7 +80,7 @@ public class RichText <: CommonMethodComponent<RichTextAttribute> & RichTextAttr
      * @relation onComplete(callback: () => void): RichTextAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onComplete(callback: ?() -> Unit): This {

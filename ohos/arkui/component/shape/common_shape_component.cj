@@ -25,7 +25,7 @@ import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> & CommonShapeMethod<T> {
@@ -53,7 +53,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation fill(value: ResourceColor): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fill(value: ?ResourceColor): T {
@@ -72,7 +72,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation fillOpacity(value: number | string | Resource): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fillOpacity(value: ?Float64): T {
@@ -90,7 +90,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation fillOpacity(value: number | string | Resource): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fillOpacity(value: ?AppResource): T {
@@ -107,7 +107,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation stroke(value: ResourceColor): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stroke(value: ?ResourceColor): T {
@@ -126,7 +126,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation strokeDashArray(value: Array<any>): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeDashArray(value: ?Array<Length>): T {
@@ -156,7 +156,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation strokeDashOffset(value: Length): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeDashOffset(value: ?Length): T {
@@ -176,7 +176,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation strokeLineCap(value: LineCapStyle): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeLineCap(value: ?LineCapStyle): T {
@@ -195,7 +195,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation strokeLineJoin(value: LineJoinStyle): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeLineJoin(value: ?LineJoinStyle): T {
@@ -214,7 +214,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation strokeMiterLimit(value: Length): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeMiterLimit(miterLimit: ?Float64): T {
@@ -233,7 +233,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation strokeOpacity(value: number | string | Resource): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeOpacity(value: ?Float64): T {
@@ -251,7 +251,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation strokeOpacity(value: number | string | Resource): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeOpacity(value: ?AppResource): T {
@@ -268,7 +268,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation strokeWidth(value: Length): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeWidth(value: ?Length): T {
@@ -288,7 +288,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * @relation antiAlias(value: boolean): ShapeAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func antiAlias(value: ?Bool): T {

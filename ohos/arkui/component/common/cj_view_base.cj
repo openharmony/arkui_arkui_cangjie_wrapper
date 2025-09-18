@@ -189,13 +189,13 @@ foreign {
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public const MAX_CHANNEL_VALUE: UInt8 = 0xff
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public const MAX_ALPHA_VALUE: Float32 = 1.0

@@ -39,7 +39,7 @@ foreign {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ListItemGroupStyle {
@@ -50,7 +50,7 @@ public enum ListItemGroupStyle {
      * @relation NONE
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None |
@@ -60,7 +60,7 @@ public enum ListItemGroupStyle {
      * @relation CARD
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Card | 
@@ -81,7 +81,7 @@ public enum ListItemGroupStyle {
  * @relation declare class ListItemGroupAttribute extends CommonMethod<ListItemGroupAttribute>
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ListDividerOptions {
@@ -93,7 +93,7 @@ public class ListDividerOptions {
      * @relation strokeWidth: Length
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var strokeWidth: ?Length
@@ -105,7 +105,7 @@ public class ListDividerOptions {
      * @relation color?: ResourceColor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ?ResourceColor
@@ -117,7 +117,7 @@ public class ListDividerOptions {
      * @relation startMargin?: Length
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var startMargin: ?Length
@@ -129,7 +129,7 @@ public class ListDividerOptions {
      * @relation endMargin?: Length
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var endMargin: ?Length
@@ -138,7 +138,7 @@ public class ListDividerOptions {
      * ListDividerOptions constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -160,7 +160,7 @@ public class ListDividerOptions {
  * @relation declare const ListItemGroup: ListItemGroupInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ListItemGroup <: CommonMethodComponent<ListItemGroupAttribute> & ListItemGroupAttribute {
@@ -177,7 +177,7 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroupAttribute> & Li
      * @relation (options?: ListItemGroupOptions): ListItemGroupAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -209,7 +209,7 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroupAttribute> & Li
                  ): ListItemGroupAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func divider(value: Option<ListDividerOptions>): This {

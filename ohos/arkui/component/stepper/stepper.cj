@@ -39,7 +39,7 @@ foreign {
  * @relation const Stepper: StepperInterface;
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribute {
@@ -53,7 +53,7 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
      * @relation (value?: StepperOptions): StepperAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(index!: ?UInt32 = None, child!: () -> Unit = {=>}) {
@@ -71,7 +71,7 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
      * @relation onFinish(callback: () => void): StepperAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onFinish(callback: ?() -> Unit): This {
@@ -91,7 +91,7 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
      * @relation onSkip(callback: () => void): StepperAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSkip(callback: ?() -> Unit): This {
@@ -111,7 +111,7 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
      * @relation onChange(callback: (prevIndex: number, index: number) => void): StepperAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(UInt32, UInt32) -> Unit): This {
@@ -134,7 +134,7 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
      * @relation onNext(callback: (index: number, pendingIndex: number) => void): StepperAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onNext(callback: ?(UInt32, UInt32) -> Unit): This {
@@ -157,7 +157,7 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
      * @relation onPrevious(callback: (index: number, pendingIndex: number) => void): StepperAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPrevious(callback: ?(UInt32, UInt32) -> Unit): This {

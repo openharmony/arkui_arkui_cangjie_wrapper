@@ -30,14 +30,14 @@ foreign {
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class If <: UINodeBase {
     var child: () -> Unit = {=>}
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(subcomponent: () -> Unit) {
@@ -48,7 +48,7 @@ public class If <: UINodeBase {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func branchId(value: ?Int32): Unit {
@@ -59,7 +59,7 @@ public class If <: UINodeBase {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getBranchId(): Int32 {
@@ -75,7 +75,7 @@ public class If <: UINodeBase {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func initial(): Unit {
@@ -84,7 +84,7 @@ public class If <: UINodeBase {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func update(): Unit {

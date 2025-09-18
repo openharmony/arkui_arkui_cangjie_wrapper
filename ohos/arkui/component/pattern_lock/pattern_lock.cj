@@ -71,7 +71,7 @@ foreign {
  * @relation class PatternLockController
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PatternLockController <: RemoteDataLite {
@@ -81,7 +81,7 @@ public class PatternLockController <: RemoteDataLite {
      * @relation constructor()
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -98,7 +98,7 @@ public class PatternLockController <: RemoteDataLite {
      * @relation reset(): void
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func reset(): Unit {
@@ -114,7 +114,7 @@ public class PatternLockController <: RemoteDataLite {
  * @relation const PatternLock: PatternLockInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & PatternLockAttribute {
@@ -126,7 +126,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * @relation (controller?: PatternLockController): PatternLockAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(controller!: ?PatternLockController = None) {
@@ -143,7 +143,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * @relation selectedColor(value: ResourceColor): PatternLockAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
@@ -162,7 +162,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * @relation pathColor(value: ResourceColor): PatternLockAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pathColor(value: ?ResourceColor): This {
@@ -181,7 +181,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * @relation activeColor(value: ResourceColor): PatternLockAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func activeColor(value: ?ResourceColor): This {
@@ -200,7 +200,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * @relation regularColor(value: ResourceColor): PatternLockAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func regularColor(value: ?ResourceColor): This {
@@ -221,7 +221,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * @relation autoReset(value: boolean): PatternLockAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoReset(value: ?Bool): This {
@@ -244,7 +244,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * @relation circleRadius(value: Length): PatternLockAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func circleRadius(value: ?Length): This {
@@ -268,7 +268,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * @relation sideLength(value: Length): PatternLockAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sideLength(value: ?Length): This {
@@ -292,7 +292,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * @relation pathStrokeWidth(value: number | string): PatternLockAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pathStrokeWidth(value: ?Length): This {
@@ -312,7 +312,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * @relation onPatternComplete(callback: (input: Array<number>) => void): PatternLockAttribute
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPatternComplete(callback: ?(Array<Int32>) -> Unit): This {

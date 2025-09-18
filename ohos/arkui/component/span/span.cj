@@ -70,7 +70,7 @@ foreign {
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class BaseSpan <: UINodeBase {
@@ -82,7 +82,7 @@ public abstract class BaseSpan <: UINodeBase {
  * @relation declare const Span: SpanInterface;
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Span <: BaseSpan {
@@ -93,7 +93,7 @@ public class Span <: BaseSpan {
      * @relation (value: string | Resource): SpanAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?ResourceStr) {
@@ -113,7 +113,7 @@ public class Span <: BaseSpan {
      * @relation fontSize(value: number | string | Resource): SpanAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -133,7 +133,7 @@ public class Span <: BaseSpan {
      * @relation fontColor(value: ResourceColor): SpanAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -152,7 +152,7 @@ public class Span <: BaseSpan {
      * @relation fontStyle(value: FontStyle): SpanAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -171,7 +171,7 @@ public class Span <: BaseSpan {
      * @relation fontWeight(value: number | FontWeight | ResourceStr): SpanAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -192,7 +192,7 @@ public class Span <: BaseSpan {
      * @relation fontFamily(value: string | Resource): SpanAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -214,7 +214,7 @@ public class Span <: BaseSpan {
      * @relation decoration(value: DecorationStyleInterface): SpanAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor = None): This {
@@ -236,7 +236,7 @@ public class Span <: BaseSpan {
      * @relation letterSpacing(value: number | ResourceStr): SpanAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func letterSpacing(value: ?Length): This {
@@ -256,7 +256,7 @@ public class Span <: BaseSpan {
      * @relation textCase(value: TextCase): SpanAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textCase(value: ?TextCase): This {
@@ -275,7 +275,7 @@ public class Span <: BaseSpan {
      * @relation onClick(event: (event: ClickEvent) => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onClick(event: ?(ClickEvent) -> Unit): This {

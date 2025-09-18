@@ -33,7 +33,7 @@ protected const INVALID_CALLBACK_ID = 0
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ModalTransition {
@@ -43,7 +43,7 @@ public enum ModalTransition {
      * @relation DEFAULT
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default |
@@ -53,7 +53,7 @@ public enum ModalTransition {
      * @relation NONE
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None |
@@ -63,7 +63,7 @@ public enum ModalTransition {
      * @relation ALPHA
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Alpha |
@@ -85,7 +85,7 @@ public enum ModalTransition {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SheetSize {
@@ -95,7 +95,7 @@ public enum SheetSize {
      * @relation MEDIUM
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Medium |
@@ -105,7 +105,7 @@ public enum SheetSize {
      * @relation LARGE
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Large |
@@ -115,7 +115,7 @@ public enum SheetSize {
      * @relation FIT_CONTENT
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FitContent
@@ -137,7 +137,7 @@ public enum SheetSize {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SheetType {
@@ -147,7 +147,7 @@ public enum SheetType {
      * @relation BOTTOM = 0
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom |
@@ -157,7 +157,7 @@ public enum SheetType {
      * @relation CENTER = 1
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center |
@@ -167,7 +167,7 @@ public enum SheetType {
      * @relation POPUP = 2
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Popup
@@ -188,7 +188,7 @@ public enum SheetType {
  * @relation declare interface BlurOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BlurOptions {
@@ -198,7 +198,7 @@ public class BlurOptions {
      * @relation grayscale: [number, number]
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var grayscale: ?VArray<Float32, $2>
@@ -207,7 +207,7 @@ public class BlurOptions {
      * constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(grayscale: ?VArray<Float32, $2>) {
@@ -221,7 +221,7 @@ public class BlurOptions {
  * @relation declare interface ForegroundBlurStyleOptions extends BlurStyleOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ForegroundBlurStyleOptions {
@@ -232,7 +232,7 @@ public class ForegroundBlurStyleOptions {
      * @relation colorMode?: ThemeColorMode;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var colorMode: ?ThemeColorMode
@@ -244,7 +244,7 @@ public class ForegroundBlurStyleOptions {
      * @relation colorMode?: ThemeColorMode;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var adaptiveColor: ?AdaptiveColor
@@ -255,7 +255,7 @@ public class ForegroundBlurStyleOptions {
      * @relation blurOptions?: BlurOptions;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var blurOptions: ?BlurOptions
@@ -268,7 +268,7 @@ public class ForegroundBlurStyleOptions {
      * @relation scale?: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var scale: ?Float32
@@ -277,7 +277,7 @@ public class ForegroundBlurStyleOptions {
      * constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -299,7 +299,7 @@ public class ForegroundBlurStyleOptions {
  * @relation declare interface PopupButton
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PopupButton {
@@ -313,7 +313,7 @@ public class PopupButton {
      * @param { () -> Unit } action - action
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?String, action!: () -> Unit) {
@@ -328,7 +328,7 @@ public class PopupButton {
  * @relation declare interface PopupStateChangeParam
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PopupStateChangeParam {
@@ -339,7 +339,7 @@ public class PopupStateChangeParam {
      * @relation isVisible: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isVisible: ?Bool
@@ -350,7 +350,7 @@ public class PopupStateChangeParam {
      * @param {Bool} value
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?Bool) {
@@ -364,7 +364,7 @@ public class PopupStateChangeParam {
  * @relation declare interface PopupOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PopupOptions {
@@ -374,7 +374,7 @@ public class PopupOptions {
      * @relation message: string;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var message: ?String
@@ -386,7 +386,7 @@ public class PopupOptions {
      * @relation primaryButton?: PopupButton;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var primaryButton: ?PopupButton
@@ -398,7 +398,7 @@ public class PopupOptions {
      * @relation secondaryButton?:PopupButton
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var secondaryButton: ?PopupButton
@@ -409,7 +409,7 @@ public class PopupOptions {
      * @relation onStateChange?: PopupStateChangeCallback;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onStateChange: ?(PopupStateChangeParam) -> Unit
@@ -420,7 +420,7 @@ public class PopupOptions {
      * @relation messageOptions?: PopupMessageOptions
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var messageOptions: ?PopupMessageOptions
@@ -431,7 +431,7 @@ public class PopupOptions {
      * @relation arrowOffset?: Length;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowOffset: ?Length
@@ -442,7 +442,7 @@ public class PopupOptions {
      * @relation showInSubWindow?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: ?Bool
@@ -454,7 +454,7 @@ public class PopupOptions {
      * @relation mask?: boolean | { color: ResourceColor };
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var mask: ?ResourceColor
@@ -465,7 +465,7 @@ public class PopupOptions {
      * @relation targetSpace?: Length
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var targetSpace: ?Length
@@ -477,7 +477,7 @@ public class PopupOptions {
      * @relation placement?: Placement;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var placement: ?Placement
@@ -488,7 +488,7 @@ public class PopupOptions {
      * @relation offset?: Position
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Position
@@ -499,7 +499,7 @@ public class PopupOptions {
      * @relation enableArrow?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enableArrow: ?Bool
@@ -510,7 +510,7 @@ public class PopupOptions {
      * @relation popupColor?: Color | string | Resource | number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var popupColor: ?ResourceColor
@@ -521,7 +521,7 @@ public class PopupOptions {
      * @relation autoCancel?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: ?Bool
@@ -532,7 +532,7 @@ public class PopupOptions {
      * @relation width?: Dimension;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
@@ -543,7 +543,7 @@ public class PopupOptions {
      * @relation arrowPointPosition?: ArrowPointPosition;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowPointPosition: Option<ArrowPointPosition>
@@ -554,7 +554,7 @@ public class PopupOptions {
      * @relation arrowWidth?: Dimension;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowWidth: ?Length
@@ -565,7 +565,7 @@ public class PopupOptions {
      * @relation arrowWidth?: Dimension;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowHeight: ?Length
@@ -576,7 +576,7 @@ public class PopupOptions {
      * @relation adius?: Dimension;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var radius: ?Length
@@ -587,7 +587,7 @@ public class PopupOptions {
      * @relation shadow?: ShadowOptions | ShadowStyle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowStyle
@@ -598,7 +598,7 @@ public class PopupOptions {
      * @relation backgroundBlurStyle?: BlurStyle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -608,7 +608,7 @@ public class PopupOptions {
      * @relation transition?: TransitionEffect;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: ?TransitionEffect
@@ -619,7 +619,7 @@ public class PopupOptions {
      * @relation onWillDismiss?: boolean | Callback<DismissPopupAction>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDismiss: ?(DismissPopupAction) -> Unit
@@ -630,7 +630,7 @@ public class PopupOptions {
      * @relation followTransformOfTarget?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var followTransformOfTarget: ?Bool
@@ -639,7 +639,7 @@ public class PopupOptions {
      * constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -713,7 +713,7 @@ public class MenuElement {
      * @param { () -> Unit } action - action
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?ResourceStr, action!: () -> Unit) {
@@ -729,7 +729,7 @@ public class MenuElement {
  * @relation declare interface CustomPopupOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomPopupOptions {
@@ -745,7 +745,7 @@ public class CustomPopupOptions {
      * @relation builder: CustomBuilder;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var builder: ?CustomBuilder
@@ -757,7 +757,7 @@ public class CustomPopupOptions {
      * @relation placement?: Placement;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var placement: ?Placement
@@ -768,13 +768,13 @@ public class CustomPopupOptions {
      * @relation maskColor?: Color | string | Resource | number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskColor: ?ResourceColor
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?Color
@@ -785,7 +785,7 @@ public class CustomPopupOptions {
      * @relation enableArrow?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enableArrow: ?Bool
@@ -799,7 +799,7 @@ public class CustomPopupOptions {
      * @relation autoCancel?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: ?Bool
@@ -809,7 +809,7 @@ public class CustomPopupOptions {
      * @relation onStateChange?: PopupStateChangeCallback;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onStateChange: Option<(PopupStateChangeParam) -> Unit>
@@ -819,7 +819,7 @@ public class CustomPopupOptions {
      * @relation popupColor?: Color | string | Resource | number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var popupColor: ?Color
@@ -836,7 +836,7 @@ public class CustomPopupOptions {
      * @relation arrowOffset?: Length;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowOffset: ?Length
@@ -847,7 +847,7 @@ public class CustomPopupOptions {
      * @relation showInSubWindow?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: ?Bool
@@ -857,7 +857,7 @@ public class CustomPopupOptions {
      * @relation mask?: boolean | { color: ResourceColor };
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var mask: ?Color
@@ -867,7 +867,7 @@ public class CustomPopupOptions {
      * @relation targetSpace?: Length
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var targetSpace: ?Length
@@ -877,7 +877,7 @@ public class CustomPopupOptions {
      * @relation offset?: Position
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Position
@@ -887,7 +887,7 @@ public class CustomPopupOptions {
      * @relation width?: Dimension;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
@@ -899,7 +899,7 @@ public class CustomPopupOptions {
      * @relation arrowPointPosition?: ArrowPointPosition;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowPointPosition: Option<ArrowPointPosition>
@@ -911,7 +911,7 @@ public class CustomPopupOptions {
      * @relation arrowWidth?: Dimension;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowWidth: ?Length
@@ -922,7 +922,7 @@ public class CustomPopupOptions {
      * @relation arrowHeight?: Dimension;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowHeight: ?Length
@@ -933,7 +933,7 @@ public class CustomPopupOptions {
      * @relation radius?: Dimension;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var radius: ?Length
@@ -943,7 +943,7 @@ public class CustomPopupOptions {
      * @relation shadow?: ShadowOptions | ShadowStyle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowStyle
@@ -953,7 +953,7 @@ public class CustomPopupOptions {
      * @relation backgroundBlurStyle?: BlurStyle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -963,7 +963,7 @@ public class CustomPopupOptions {
      * @relation focusable?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var focusable: ?Bool
@@ -974,7 +974,7 @@ public class CustomPopupOptions {
      * @relation transition?: TransitionEffect;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: Option<TransitionEffect>
@@ -990,7 +990,7 @@ public class CustomPopupOptions {
      * @relation onWillDismiss?: boolean | Callback<DismissPopupAction>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDismiss: Option<(DismissPopupAction) -> Unit>
@@ -1002,7 +1002,7 @@ public class CustomPopupOptions {
      * @relation followTransformOfTarget?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var followTransformOfTarget: ?Bool
@@ -1010,7 +1010,7 @@ public class CustomPopupOptions {
      * constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1072,7 +1072,7 @@ public class CustomPopupOptions {
  * @relation declare interface PopupMessageOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PopupMessageOptions {
@@ -1083,7 +1083,7 @@ public class PopupMessageOptions {
      * @relation textColor?: ResourceColor;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var textColor: ?ResourceColor
@@ -1094,7 +1094,7 @@ public class PopupMessageOptions {
      * @relation font?: Font;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var font: ?Font
@@ -1102,7 +1102,7 @@ public class PopupMessageOptions {
      * constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(textColor!: ?ResourceColor = None, font!: ?Font = None) {
@@ -1117,7 +1117,7 @@ public class PopupMessageOptions {
  * @relation declare interface OverlayOffset
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class OverlayOffset {
@@ -1128,7 +1128,7 @@ public class OverlayOffset {
      * @relation x?: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Float64
@@ -1139,7 +1139,7 @@ public class OverlayOffset {
      * @relation y?: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Float64
@@ -1148,7 +1148,7 @@ public class OverlayOffset {
      * constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x!: ?Float64 = None, y!: ?Float64 = None) {        
@@ -1163,7 +1163,7 @@ public class OverlayOffset {
  * @relation declare interface EdgeWidths
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EdgeWidths {
@@ -1174,7 +1174,7 @@ public class EdgeWidths {
      * @relation top?: Length;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var top: ?Length
@@ -1185,7 +1185,7 @@ public class EdgeWidths {
      * @relation right?: Length;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var right: ?Length
@@ -1196,7 +1196,7 @@ public class EdgeWidths {
      * @relation bottom?: Length;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bottom: ?Length
@@ -1207,7 +1207,7 @@ public class EdgeWidths {
      * @relation left?: Length;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var left: ?Length
@@ -1215,7 +1215,7 @@ public class EdgeWidths {
      * constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(top!: ?Length = None, right!: ?Length = None, bottom!: ?Length = None, left!: ?Length = None) {
@@ -1236,7 +1236,7 @@ public class EdgeWidths {
  * @relation declare interface BindOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class BindOptions {
@@ -1256,7 +1256,7 @@ public open class BindOptions {
      * @param {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(backgroundColor!: ?ResourceColor = None, onAppear!: ?() -> Unit = None,
@@ -1297,7 +1297,7 @@ public open class BindOptions {
  * @relation declare interface ContentCoverOptions extends BindOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ContentCoverOptions <: BindOptions {
@@ -1317,7 +1317,7 @@ public class ContentCoverOptions <: BindOptions {
      * @param {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1381,7 +1381,7 @@ public class ContentCoverOptions <: BindOptions {
  * @relation declare interface SheetDismiss
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SheetDismiss {
@@ -1393,7 +1393,7 @@ public class SheetDismiss {
      * @relation dismiss: VoidCallback;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func dismiss(): Unit {
@@ -1409,7 +1409,7 @@ public class SheetDismiss {
  * @relation declare interface SpringBackAction
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SpringBackAction {
@@ -1421,7 +1421,7 @@ public class SpringBackAction {
      * @relation springBack: Callback<void>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func springBack() {
@@ -1438,7 +1438,7 @@ public class SpringBackAction {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SheetMode {
@@ -1449,7 +1449,7 @@ public enum SheetMode {
      * @relation OVERLAY
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Overlay
@@ -1460,7 +1460,7 @@ public enum SheetMode {
          * @relation EMBEDDED = 1,
          */
         @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Embedded
@@ -1492,7 +1492,7 @@ public enum SheetMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ScrollSizeMode {
@@ -1502,7 +1502,7 @@ public enum ScrollSizeMode {
      * @relation OLLOW_DETENT = 0,
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FollowDetent
@@ -1513,7 +1513,7 @@ public enum ScrollSizeMode {
          * @relation CONTINUOUS = 1,
          */
         @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Continuous
@@ -1562,7 +1562,7 @@ func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadow {
  * @relation declare interface SheetOptions extends BindOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SheetOptions <: BindOptions {
@@ -1590,7 +1590,7 @@ public class SheetOptions <: BindOptions {
     let mode: Option<SheetMode>
     let scrollSizeMode: Option<ScrollSizeMode>
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1817,7 +1817,7 @@ public class SheetOptions <: BindOptions {
  * @relation declare interface Rectangle
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Rectangle {
@@ -1828,7 +1828,7 @@ public class Rectangle {
      * @relation x?: Length;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Length
@@ -1840,7 +1840,7 @@ public class Rectangle {
      * @relation y?: Length;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Length
@@ -1852,7 +1852,7 @@ public class Rectangle {
      * @relation width?: Length;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
@@ -1864,7 +1864,7 @@ public class Rectangle {
      * @relation height?: Length;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Length
@@ -1873,7 +1873,7 @@ public class Rectangle {
      * constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x!: ?Length = None, y!: ?Length = None, width!: ?Length = None, height!: ?Length = None) {
@@ -1920,7 +1920,7 @@ class MenuActionData <: FFIData {
  * @relation declare interface DismissPopupAction
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DismissPopupAction {
@@ -1938,7 +1938,7 @@ public class DismissPopupAction {
      * @relation dismiss(): void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func dismiss(): Unit {
@@ -1954,7 +1954,7 @@ public class DismissPopupAction {
  * @relation declare interface ContextMenuOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ContextMenuOptions {
@@ -1965,7 +1965,7 @@ public class ContextMenuOptions {
      * @relation offset?: Position;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Position
@@ -1978,7 +1978,7 @@ public class ContextMenuOptions {
      * @relation placement?: Placement;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var placement: Option<Placement>
@@ -1990,7 +1990,7 @@ public class ContextMenuOptions {
      * @relation enableArrow?: boolean;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enableArrow: ?Bool
@@ -2002,7 +2002,7 @@ public class ContextMenuOptions {
      * @relation arrowOffset?: Length;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowOffset: ?Length
@@ -2014,7 +2014,7 @@ public class ContextMenuOptions {
     * @relation preview?: MenuPreviewMode | CustomBuilder;
     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var preview: ?CustomBuilder
@@ -2026,7 +2026,7 @@ public class ContextMenuOptions {
      * @relation previewAnimationOptions?: ContextMenuAnimationOptions;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var previewAnimationOptions: ?ContextMenuAnimationOptions
@@ -2038,7 +2038,7 @@ public class ContextMenuOptions {
      * @relation onAppear?: () => void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onAppear: ?() -> Unit
@@ -2050,7 +2050,7 @@ public class ContextMenuOptions {
      * @relation onDisappear?: () => void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onDisappear: ?() -> Unit
@@ -2062,7 +2062,7 @@ public class ContextMenuOptions {
      * @relation aboutToAppear?: () => void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var aboutToAppear: ?() -> Unit
@@ -2074,7 +2074,7 @@ public class ContextMenuOptions {
      * @relation aboutToDisappear?: () => void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var aboutToDisappear: ?() -> Unit
@@ -2086,7 +2086,7 @@ public class ContextMenuOptions {
      * @relation backgroundColor?: ResourceColor;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -2098,7 +2098,7 @@ public class ContextMenuOptions {
      * @relation backgroundBlurStyle?: BlurStyle;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -2110,7 +2110,7 @@ public class ContextMenuOptions {
      * @relation transition?: TransitionEffect;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: ?TransitionEffect
@@ -2122,7 +2122,7 @@ public class ContextMenuOptions {
      * constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -2187,7 +2187,7 @@ public class ContextMenuOptions {
  * @relation declare interface DismissContentCoverAction
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DismissContentCoverAction {
@@ -2197,7 +2197,7 @@ public class DismissContentCoverAction {
      * @relation reason: DismissReason;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let reason: DismissReason
@@ -2214,7 +2214,7 @@ public class DismissContentCoverAction {
      * @relation dismiss: Callback<void>;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func dismiss(): Unit {
@@ -2230,7 +2230,7 @@ public class DismissContentCoverAction {
  * @relation interface ContextMenuAnimationOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ContextMenuAnimationOptions {
@@ -2260,7 +2260,7 @@ public class ContextMenuAnimationOptions {
      * constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(scale!: ?VArray<Float64, $2> = None, transition!: ?TransitionEffect = None,
@@ -2311,7 +2311,7 @@ public class ContextMenuAnimationOptions {
  * @relation declare interface DismissSheetAction
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DismissSheetAction {
@@ -2321,12 +2321,12 @@ public class DismissSheetAction {
      * @relation reason: DismissReason;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var reason: ?DismissReason
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     init(reason: DismissReason) {
@@ -2339,7 +2339,7 @@ public class DismissSheetAction {
      * @relation reason: DismissReason;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func dismiss(): Unit {

@@ -68,7 +68,7 @@ type ItemGenFuncType<T> = (T, Int64) -> Unit
  * @relation declare class ForEachAttribute extends DynamicNode<ForEachAttribute>
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ForEach <: UINodeBase {
@@ -78,7 +78,7 @@ public class ForEach <: UINodeBase {
      * Set the value, array, and key.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func create<T>(viewID: Int64, parentView: CustomView, dataSource: CollectionEx<T>,
@@ -111,7 +111,7 @@ public class ForEach <: UINodeBase {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func create() {
@@ -121,7 +121,7 @@ public class ForEach <: UINodeBase {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(subcomponent: () -> Unit) {
@@ -132,7 +132,7 @@ public class ForEach <: UINodeBase {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pop(): Unit {
@@ -140,7 +140,7 @@ public class ForEach <: UINodeBase {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func initial(): Unit {
@@ -149,7 +149,7 @@ public class ForEach <: UINodeBase {
     }
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func update(): Unit {
