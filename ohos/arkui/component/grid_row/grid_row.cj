@@ -289,13 +289,12 @@ public class GridRowSizeOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?Length) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.xs = transAppResourceToLength(tmpValue)
-        this.sm = transAppResourceToLength(tmpValue)
-        this.md = transAppResourceToLength(tmpValue)
-        this.lg = transAppResourceToLength(tmpValue)
-        this.xl = transAppResourceToLength(tmpValue)
-        this.xxl = transAppResourceToLength(tmpValue)
+        this.xs = transAppResourceToLength(value ?? 0.vp)
+        this.sm = transAppResourceToLength(value ?? 0.vp)
+        this.md = transAppResourceToLength(value ?? 0.vp)
+        this.lg = transAppResourceToLength(value ?? 0.vp)
+        this.xl = transAppResourceToLength(value ?? 0.vp)
+        this.xxl = transAppResourceToLength(value ?? 0.vp)
     }
 
     func toAtC(): AtCGridRowSizeOption {
@@ -486,13 +485,12 @@ public class GridRowOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?Int32) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.xs = tmpValue
-        this.sm = tmpValue
-        this.md = tmpValue
-        this.lg = tmpValue
-        this.xl = tmpValue
-        this.xxl = tmpValue
+        this.xs = value ?? 12
+        this.sm = value ?? 12
+        this.md = value ?? 12
+        this.lg = value ?? 12
+        this.xl = value ?? 12
+        this.xxl = value ?? 12
     }
 
     func parseToNative(): NativeGridRowColumnOption {
@@ -525,10 +523,8 @@ public class GutterOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: ?Length, y!: ?Length) {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
-        this.data = GridRowGutter.GUTTERLENGTH(GutterLength(tmpX, tmpY))
+    public init(x!: ?Length = None, y!: ?Length = None) {
+        this.data = GridRowGutter.GUTTERLENGTH(GutterLength(x ?? 0.vp, y ?? 0.vp))
     }
 
     /**
@@ -544,9 +540,7 @@ public class GutterOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x!: ?GridRowSizeOptions, y!: ?GridRowSizeOptions) {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
-        this.data = GridRowGutter.GUTTEROPTION(GutterSizeOption(tmpX, tmpY))
+        this.data = GridRowGutter.GUTTEROPTION(GutterSizeOption(x ?? GridRowSizeOptions(), y ?? GridRowSizeOptions()))
     }
 }
 
@@ -714,7 +708,7 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        columns!: ?Int32 = None,
+        columns!: ?Int32,
         gutter!: ?Length = None,
         breakpoints!: ?BreakPoints = Option.None,
         direction!: ?GridRowDirection = Option.None,
@@ -765,13 +759,13 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        columns!: ?GridRowOptions,
+        columns!: ?GridRowOptions = None,
         gutter!: ?Length = None,
         breakpoints!: ?BreakPoints = Option.None,
         direction!: ?GridRowDirection = Option.None,
         child!: () -> Unit = {=>}
     ) {
-        let tmpColumns = columns ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpColumns = columns ?? GridRowOptions()
         let tmpBreakpoints = breakpoints ?? BreakPoints()
         let tmpBreakpointsValue = tmpBreakpoints.value ?? [320.vp, 600.vp, 840.vp]
         let tmpDirection = direction ?? GridRowDirection.Row
@@ -818,13 +812,13 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        columns!: ?Int32 = None,
+        columns!: ?Int32,
         gutter!: ?GutterOptions,
         breakpoints!: ?BreakPoints = Option.None,
         direction!: ?GridRowDirection = Option.None,
         child!: () -> Unit = {=>}
     ) {
-        let tmpGutter = gutter ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpGutter = gutter ?? GutterOptions()
         let tmpBreakpoints = breakpoints ?? BreakPoints()
         let tmpBreakpointsValue = tmpBreakpoints.value ?? [320.vp, 600.vp, 840.vp]
         let tmpDirection = direction ?? GridRowDirection.Row
@@ -888,14 +882,14 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        columns!: ?GridRowOptions,
+        columns!: ?GridRowOptions = None,
         gutter!: ?GutterOptions,
         breakpoints!: ?BreakPoints = Option.None,
         direction!: ?GridRowDirection = Option.None,
         child!: () -> Unit = {=>}
     ) {
-        let tmpColumns = columns ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpGutter = gutter ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpColumns = columns ?? GridRowOptions()
+        let tmpGutter = gutter ?? GutterOptions()
         let tmpBreakpoints = breakpoints ?? BreakPoints()
         let tmpBreakpointsValue = tmpBreakpoints.value ?? [320.vp, 600.vp, 840.vp]
         let tmpDirection = direction ?? GridRowDirection.Row
@@ -966,9 +960,8 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignItems(value: ?ItemAlign): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridRowAlignItem(tmpValue.getValue())
+            FfiOHOSAceFrameworkGridRowAlignItem((value ?? ItemAlign.Start) .getValue())
         }
         this
     }
@@ -986,7 +979,7 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onBreakpointChange(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { res: String => }
         let wrapper = {
             value: CString => tmpCallback(value.toString())
         }

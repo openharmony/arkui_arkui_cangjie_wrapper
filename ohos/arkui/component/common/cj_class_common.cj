@@ -391,8 +391,8 @@ public class HorizontalAlignment {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(anchor: ?String, align: ?HorizontalAlign) {
-        this.anchor = anchor ?? throw IllegalArgumentException("The type now is not supported.")
-        this.align = align ?? throw IllegalArgumentException("The type now is not supported.")
+        this.anchor = anchor ?? ""
+        this.align = align ?? HorizontalAlign.Start
     }
 }
 
@@ -438,8 +438,8 @@ public class VerticalAlignment {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(anchor: ?String, align: ?VerticalAlign) {
-        this.anchor = anchor ?? throw IllegalArgumentException("The type now is not supported.")
-        this.align = align ?? throw IllegalArgumentException("The type now is not supported.")
+        this.anchor = anchor ?? ""
+        this.align = align ?? VerticalAlign.Top
     }
 }
 

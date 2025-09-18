@@ -90,19 +90,14 @@ public class Flex <: CommonMethodComponent<FlexAttribute> & FlexAttribute {
     public init(direction!: ?FlexDirection = None, wrap!: ?FlexWrap = None,
         justifyContent!: ?FlexAlign = None, alignItems!: ?ItemAlign = None,
         alignContent!: ?FlexAlign = None, child!: () -> Unit = {=>}) {
-        let tmpDirection = direction ?? FlexDirection.Row
-        let tmpWrap = wrap ?? FlexWrap.NoWrap
-        let tmpJustifyContent = justifyContent ?? FlexAlign.Start
-        let tmpAlignItems = alignItems ?? ItemAlign.Start
-        let tmpAlignContent = alignContent ?? FlexAlign.Start
         unsafe {
             FfiOHOSAceFrameworkFlexCreateWithParams(
                 CJFlexParams(
-                    tmpDirection.getValue(),
-                    tmpWrap.getValue(),
-                    tmpJustifyContent.getValue(),
-                    tmpAlignItems.getValue(),
-                    tmpAlignContent.getValue()
+                    (direction ?? FlexDirection.Row).getValue(),
+                    (wrap ?? FlexWrap.NoWrap).getValue(),
+                    (justifyContent ?? FlexAlign.Start).getValue(),
+                    (alignItems ?? ItemAlign.Start).getValue(),
+                    (alignContent ?? FlexAlign.Start).getValue()
                 )
             )
         }

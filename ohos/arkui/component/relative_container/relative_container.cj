@@ -57,9 +57,9 @@ struct CGuideLineStyle {
     ) {}
 
     init(guideline: GuideLineStyle) {
-        this.id = unsafe { LibC.mallocCString(guideline.id ?? throw IllegalArgumentException("The type now is not supported.")) }
-        this.direction = (guideline.direction ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
-        this.position = CGuideLinePosition(guideline.position ?? throw IllegalArgumentException("The type now is not supported."))
+        this.id = unsafe { LibC.mallocCString(guideline.id ?? "") }
+        this.direction = (guideline.direction ?? Axis.Vertical).getValue()
+        this.position = CGuideLinePosition(guideline.position ?? GuideLinePosition(start: 0))
     }
 
     func free(): Unit {
@@ -118,9 +118,9 @@ struct CBarrierStyle {
 
     init(barrier: BarrierStyle) {
         try {
-            this.id = unsafe { LibC.mallocCString(barrier.id ?? throw IllegalArgumentException("The type now is not supported.")) }
-            this.direction = (barrier.direction ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
-            let  tmpReferencedId = barrier.referencedId ?? throw IllegalArgumentException("The type now is not supported.")
+            this.id = unsafe { LibC.mallocCString(barrier.id ?? "") }
+            this.direction = (barrier.direction ?? BarrierDirection.Left).getValue()
+            let tmpReferencedId = barrier.referencedId ?? []
             let size = tmpReferencedId.size
             this.referencedId = if (size == 0) {
                 CArrString(CPointer<CString>(), 0)
@@ -251,9 +251,9 @@ public class BarrierStyle {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(id: ?String, direction: ?BarrierDirection, referencedId: ?Array<String>) {
-        this.id = id ?? throw IllegalArgumentException("The type now is not supported.")
-        this.direction = direction ?? throw IllegalArgumentException("The type now is not supported.")
-        this.referencedId = referencedId ?? throw IllegalArgumentException("The type now is not supported.")
+        this.id = id ?? ""
+        this.direction = direction ?? BarrierDirection.Left
+        this.referencedId = referencedId ?? []
     }
 }
 
@@ -375,9 +375,9 @@ public class GuideLineStyle {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(id: ?String, direction: ?Axis, position: ?GuideLinePosition) {
-        this.id = id ?? throw IllegalArgumentException("The type now is not supported.")
-        this.direction = direction ?? throw IllegalArgumentException("The type now is not supported.")
-        this.position = position ?? throw IllegalArgumentException("The type now is not supported.")
+        this.id = id ?? ""
+        this.direction = direction ?? Axis.Vertical
+        this.position = position ?? GuideLinePosition(start: 0)
     }
 }
 
@@ -421,8 +421,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func guideLine(value: ?Array<GuideLineStyle>): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let cGuideLine = CGuideLineInfos(tmpValue)
+        let cGuideLine = CGuideLineInfos(value ?? [])
         unsafe { FfiOHOSAceFrameworkReletiveContainerGuideLine(cGuideLine) }
         cGuideLine.free()
         this
@@ -441,8 +440,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func barrier(value: ?Array<BarrierStyle>): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let cBarrier = CBarrierInfos(tmpValue)
+        let cBarrier = CBarrierInfos(value ?? [])
         unsafe { FfiOHOSAceFrameworkReletiveContainerBarrier(cBarrier) }
         cBarrier.free()
         this

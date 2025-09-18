@@ -107,9 +107,8 @@ public class Stack <: CommonMethodComponent<StackAttribute> & StackAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignContent(value: ?Alignment): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkStackSetAlignment(tmpValue.getValue())
+            FfiOHOSAceFrameworkStackSetAlignment((value ?? Alignment.Center).getValue())
         }
         this
     }

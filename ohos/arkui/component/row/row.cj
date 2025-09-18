@@ -78,9 +78,8 @@ public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignItems(value: ?VerticalAlign): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRowSetAlignItems(tmpValue.getValue())
+            FfiOHOSAceFrameworkRowSetAlignItems((value ?? VerticalAlign.Center).getValue())
         }
         this
     }
@@ -98,9 +97,8 @@ public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func justifyContent(value: ?FlexAlign): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRowSetJustifyContent(tmpValue.getValue())
+            FfiOHOSAceFrameworkRowSetJustifyContent((value ?? FlexAlign.Start).getValue())
         }
         this
     }
