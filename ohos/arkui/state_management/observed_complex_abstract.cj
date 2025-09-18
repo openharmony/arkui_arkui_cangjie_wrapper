@@ -27,17 +27,9 @@ public abstract class ObservedComplexAbstract <: Observable {
     protected var info: String = ""
     protected var propsInfo: ArrayList<String> = ArrayList<String>()
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func subscribeInner(observer: Observer): Unit
+    protected func subscribeInner(observer: Observer): Unit
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func unsubscribeInner(observer: Observer): Unit
+    protected func unsubscribeInner(observer: Observer): Unit
 
     @!APILevel[
         22,
@@ -45,21 +37,13 @@ public abstract class ObservedComplexAbstract <: Observable {
     ]
     public func set(v: ObservedComplexAbstract): Unit
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func inheritObservers(newObservers: ArrayList<Observer>) {
+    protected func inheritObservers(newObservers: ArrayList<Observer>) {
         for (observer in newObservers) {
             subscribeInner(observer)
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setDependentElementIds(dependentElementIds: ArrayList<Int64>) {
+    protected func setDependentElementIds(dependentElementIds: ArrayList<Int64>) {
         this.dependentElementIds_ = dependentElementIds
     }
 
@@ -72,27 +56,15 @@ public abstract class ObservedComplexAbstract <: Observable {
         ()
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getInfo(): String {
+    protected func getInfo(): String {
         return this.info
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setInfo(info: String) {
+    protected func setInfo(info: String) {
         this.info = info
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getPropsInfo(): ArrayList<String> {
+    protected func getPropsInfo(): ArrayList<String> {
         return propsInfo
     }
 
@@ -104,11 +76,7 @@ public abstract class ObservedComplexAbstract <: Observable {
         propsInfo.add(info)
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func notifyChanges() {
+    protected func notifyChanges() {
         notifyChangesInner(info, dependentElementIds_)
     }
 }

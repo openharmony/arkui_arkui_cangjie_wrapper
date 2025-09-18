@@ -30,30 +30,18 @@ public open class Observable {
         return this.observers
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func subscribe(observer: Observer): Unit {
+    protected func subscribe(observer: Observer): Unit {
         // Add to observer list.
         observers.add(observer)
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func unsubscribe(observer: Observer): Unit {
+    protected func unsubscribe(observer: Observer): Unit {
         observers.removeIf {
             o => o.id() == observer.id()
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func isSubscribed(observer: Observer): Bool {
+    protected func isSubscribed(observer: Observer): Bool {
         for (o in observers) {
             if (o.id() == observer.id()) {
                 return true
@@ -62,19 +50,11 @@ public open class Observable {
         return false
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func numberOfSubscribers(): Int64 {
+    protected func numberOfSubscribers(): Int64 {
         return this.observers.size
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func unsubscribeAll(): Unit {
+    protected func unsubscribeAll(): Unit {
         observers.clear()
     }
 

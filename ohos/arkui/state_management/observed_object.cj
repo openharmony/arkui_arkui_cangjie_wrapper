@@ -41,21 +41,13 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
         return publishVars
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func subscribeInner(observer: Observer): Unit {
+    protected func subscribeInner(observer: Observer): Unit {
         for (publishVar in publishVars) {
             publishVar.subscribeEx(observer)
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func unsubscribeInner(observer: Observer): Unit {
+    protected func unsubscribeInner(observer: Observer): Unit {
         for (publishVar in publishVars) {
             publishVar.unsubscribeEx(observer)
         }

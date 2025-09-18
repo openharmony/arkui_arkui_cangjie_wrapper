@@ -37,11 +37,7 @@ public class SubscriberManager {
         instance
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func makeId(): Int64 {
+    protected func makeId(): Int64 {
         var now = this.nextStateId
         this.nextStateId++
         return now
@@ -85,19 +81,11 @@ public class SubscriberManager {
         return true
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func sizeOfManager(): Int64 {
+    protected func sizeOfManager(): Int64 {
         this.subscriberById.size
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func dumpSubscriberInfo(): Unit {
+    protected func dumpSubscriberInfo(): Unit {
         print("Dump of SubscriberManager +++ (sart) \n")
         print("Current Size: ${subscriberById.size}\n")
         for (idx in subscriberById.keys()) {

@@ -63,11 +63,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         this.internalValue
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getInner(): T {
+    protected func getInner(): T {
         this.internalValue
     }
 
