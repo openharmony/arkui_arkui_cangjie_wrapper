@@ -50,8 +50,7 @@ let LENGTH_TYPE_LNVALID: Int32 = -2
  * @relation declare const Menu: MenuInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
@@ -64,8 +63,7 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
      * @relation (): MenuAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = {=>}) {
@@ -87,8 +85,7 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
      * @relation font(value: Font): MenuAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func font(
@@ -118,8 +115,7 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
      * @relation fontColor(value: ResourceColor): MenuAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -139,8 +135,7 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
      * @relation radius(value: Dimension | BorderRadiuses): MenuAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Length): This {
@@ -164,8 +159,7 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
      * @relation radius(value: Dimension | BorderRadiuses): MenuAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?BorderRadiuses): This {

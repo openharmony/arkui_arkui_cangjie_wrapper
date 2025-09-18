@@ -73,8 +73,7 @@ public type OnCheckboxChangeCallback = (Bool) -> Unit
  * @relation const Checkbox: CheckboxInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttribute {
@@ -89,8 +88,7 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
      * @relation (options?: CheckboxOptions): CheckboxAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(name!: ?String = None, group!: ?String = None, indicatorBuilder!: ?CustomBuilder = None) {
@@ -114,8 +112,7 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
      * @relation select(value: boolean): CheckboxAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func select(value: ?Bool): This {
@@ -134,8 +131,7 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
      * @relation selectedColor(value: ResourceColor): CheckboxAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
@@ -211,8 +207,7 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
      * @relation onChange(callback: OnCheckboxChangeCallback): CheckboxAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?OnCheckboxChangeCallback): This {
@@ -232,8 +227,7 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
      * @relation shape(value: CheckBoxShape): CheckboxAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func shape(value: ?CheckBoxShape): This {

@@ -28,8 +28,7 @@ let COLOR_TRANSPARENT_VALUE: UInt32 = 0X00000000
  * @relation declare type ResourceColor = Color | number | string | Resource
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface ResourceColor {
@@ -39,16 +38,12 @@ public interface ResourceColor {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 extend Int64 <: ResourceColor {
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @OverflowWrapping
@@ -58,16 +53,12 @@ extend Int64 <: ResourceColor {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 extend UInt32 <: ResourceColor {
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func toUInt32(): UInt32 {
@@ -83,8 +74,7 @@ extend UInt32 <: ResourceColor {
  * @relation declare enum Color
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Color <: ResourceColor {
@@ -97,8 +87,7 @@ public class Color <: ResourceColor {
      * @relation Black
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Black: Color = Color(0xff000000)
@@ -109,8 +98,7 @@ public class Color <: ResourceColor {
      * @relation Blue
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Blue: Color = Color(0xff0000ff)
@@ -121,8 +109,7 @@ public class Color <: ResourceColor {
      * @relation Gray
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Gray: Color = Color(0xff808080)
@@ -133,8 +120,7 @@ public class Color <: ResourceColor {
      * @relation Green
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Green: Color = Color(0xff008000)
@@ -145,8 +131,7 @@ public class Color <: ResourceColor {
      * @relation Red
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Red: Color = Color(0xffff0000)
@@ -157,8 +142,7 @@ public class Color <: ResourceColor {
      * @relation White
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let White: Color = Color(0xffffffff)
@@ -169,8 +153,7 @@ public class Color <: ResourceColor {
      * @relation Transparent
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Transparent: Color = Color(0, 0, 0, alpha: 0.0)
@@ -184,8 +167,7 @@ public class Color <: ResourceColor {
      * @returns { Color }
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(red: ?UInt8, green: ?UInt8, blue: ?UInt8, alpha!: ?Float32 = None) {
@@ -211,8 +193,7 @@ public class Color <: ResourceColor {
      * @returns { Color }
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?UInt32) {

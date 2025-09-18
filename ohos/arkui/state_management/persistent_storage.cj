@@ -96,8 +96,7 @@ func notifyCallbackBool(key: CString, value: Bool): Unit {
  * @relation declare class PersistentStorage
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PersistentStorage <: Observer {
@@ -112,8 +111,7 @@ public class PersistentStorage <: Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStateUpdate(_: String, _: ArrayList<Int64>): Unit {
@@ -121,15 +119,13 @@ public class PersistentStorage <: Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func notifyRead(_: String): Unit {}
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func id(): Int64 {
@@ -137,8 +133,7 @@ public class PersistentStorage <: Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func aboutToBeDeleted(): Unit {
@@ -166,8 +161,7 @@ public class PersistentStorage <: Observer {
      * @relation static PersistProp<T>(key: string, defaultValue: T): void;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func persistProp<T>(key: String, defaultValue: T): Unit {
@@ -183,8 +177,7 @@ public class PersistentStorage <: Observer {
      * @relation static persistProps(props: PersistPropsOptions[]): void;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func persistProps<T>(props: Array<(String, T)>): Unit {
@@ -198,8 +191,7 @@ public class PersistentStorage <: Observer {
     * @relation static deleteProp(key: string): void;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func deleteProp(key: String): Unit {
@@ -213,8 +205,7 @@ public class PersistentStorage <: Observer {
      * @relation static keys(): Array<string>;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func keys(): Array<String> {

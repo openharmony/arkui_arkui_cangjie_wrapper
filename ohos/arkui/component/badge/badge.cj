@@ -34,7 +34,7 @@ foreign {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BadgePosition {
@@ -43,8 +43,7 @@ public enum BadgePosition {
      * @relation RightTop
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RightTop |
@@ -53,7 +52,7 @@ public enum BadgePosition {
      * @relation Right
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right |
@@ -62,7 +61,7 @@ public enum BadgePosition {
      * @relation Left
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -85,7 +84,7 @@ public enum BadgePosition {
  * @relation interface BadgeStyle
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BadgeStyle {
@@ -97,8 +96,7 @@ public class BadgeStyle {
      * @relation color?: ResourceColor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ?ResourceColor
@@ -117,8 +115,7 @@ public class BadgeStyle {
      * @relation fontSize?: number | ResourceStr
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontSize: ?Length
@@ -138,8 +135,7 @@ public class BadgeStyle {
      * @relation badgeSize?: number | ResourceStr
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var badgeSize: ?Length
@@ -151,8 +147,7 @@ public class BadgeStyle {
      * @relation badgeColor?: ResourceColor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var badgeColor: ?ResourceColor
@@ -170,8 +165,7 @@ public class BadgeStyle {
      * @relation fontWeight?: number | FontWeight | ResourceStr
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontWeight: ?FontWeight
@@ -183,8 +177,7 @@ public class BadgeStyle {
      * @relation borderColor?: ResourceColor;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: ?ResourceColor
@@ -198,8 +191,7 @@ public class BadgeStyle {
      * @relation borderWidth?: Length
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: ?Length
@@ -208,8 +200,7 @@ public class BadgeStyle {
      * BadgeStyle constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(color!: ?ResourceColor = None, fontSize!: ?Length = None, badgeSize!: ?Length = None,
@@ -244,8 +235,7 @@ struct CJBadgeStyleV2 {
  * Defines Badge Component.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Badge <: CommonMethodComponent<BadgeAttribute> & BadgeAttribute {
@@ -263,8 +253,7 @@ public class Badge <: CommonMethodComponent<BadgeAttribute> & BadgeAttribute {
      * @returns { Badge }
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(count!: ?Int32, style!: ?BadgeStyle, position!: ?BadgePosition = None,
@@ -296,8 +285,7 @@ public class Badge <: CommonMethodComponent<BadgeAttribute> & BadgeAttribute {
      * @returns { Badge }
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?String, style!: ?BadgeStyle, position!: ?BadgePosition = None, child!: () -> Unit) {

@@ -370,8 +370,7 @@ func parseFontValue(origin: String): (FontStyle, String, Length, String) {
  * @relation string | number | CanvasGradient | CanvasPattern
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface FillStyle {}
@@ -392,8 +391,7 @@ extend CanvasPattern <: FillStyle {}
  * @relation string | number | CanvasGradient | CanvasPattern
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface StrokeStyle {}
@@ -414,8 +412,7 @@ extend CanvasPattern <: StrokeStyle {}
  * @relation declare class CanvasRenderingContext2D extends CanvasRenderer
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CanvasRenderingContext2D <: RemoteDataLite {
@@ -425,8 +422,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation constructor(settings?: RenderingContextSettings);
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(settings: Option<RenderingContextSettings>) {
@@ -451,8 +447,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation set fillStyle(fillStyle: string | number | CanvasGradient | CanvasPattern)
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop fillStyle: Option<FillStyle> {
@@ -486,8 +481,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation lineWidth: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop lineWidth: Option<Float64> {
@@ -510,8 +504,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation set strokeStyle(strokeStyle: string | number | CanvasGradient | CanvasPattern)
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop strokeStyle: Option<StrokeStyle> {
@@ -545,8 +538,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation lineCap: CanvasLineCap
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop lineCap: Option<String> {
@@ -574,8 +566,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation lineJoin: CanvasLineJoin
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop lineJoin: Option<String> {
@@ -603,8 +594,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation miterLimit: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop miterLimit: Option<Float64> {
@@ -630,8 +620,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation set font(font: string)
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop font: Option<String> {
@@ -667,8 +656,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation textAlign: CanvasTextAlign
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop textAlign: Option<String> {
@@ -698,8 +686,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation textBaseline: CanvasTextBaseline
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop textBaseline: Option<String> {
@@ -732,8 +719,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation globalAlpha: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop globalAlpha: Option<Float64> {
@@ -758,8 +744,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation setLineDash(segments: number[]): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setLineDash(dashArr: ?Array<Float64>): Unit {
@@ -783,8 +768,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation lineDashOffset: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop lineDashOffset: Option<Float64> {
@@ -806,8 +790,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation globalCompositeOperation: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop globalCompositeOperation: Option<String> {
@@ -844,8 +827,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation shadowBlur: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop shadowBlur: Option<Float64> {
@@ -867,8 +849,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation shadowColor: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop shadowColor: Option<ResourceColor> {
@@ -890,8 +871,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation shadowOffsetX: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop shadowOffsetX: Option<Float64> {
@@ -913,8 +893,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation shadowOffsetY: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop shadowOffsetY: Option<Float64> {
@@ -937,8 +916,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation imageSmoothingEnabled: boolean
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop imageSmoothingEnabled: Option<Bool> {
@@ -960,8 +938,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation imageSmoothingQuality: ImageSmoothingQuality
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop imageSmoothingQuality: Option<String> {
@@ -991,8 +968,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation direction: CanvasDirection
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop direction: Option<String> {
@@ -1039,8 +1015,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop filter: Option<String> {
@@ -1068,8 +1043,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation fillRect(x: number, y: number, w: number, h: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fillRect(x: ?Float64, y: ?Float64, width: ?Float64, height: ?Float64): Unit {
@@ -1092,8 +1066,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation strokeRect(x: number, y: number, w: number, h: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeRect(x: ?Float64, y: ?Float64, width: ?Float64, height: ?Float64): Unit {
@@ -1116,8 +1089,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation clearRect(x: number, y: number, w: number, h: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clearRect(x: ?Float64, y: ?Float64, width: ?Float64, height: ?Float64): Unit {
@@ -1140,8 +1112,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation fillText(text: string, x: number, y: number, maxWidth?: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fillText(text: ?String, x: ?Float64, y: ?Float64, maxWidth!: Option<Float64> = Option.None): Unit {
@@ -1174,8 +1145,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation strokeText(text: string, x: number, y: number, maxWidth?: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeText(text: ?String, x: ?Float64, y: ?Float64, maxWidth!: Option<Float64> = Option.None): Unit {
@@ -1205,8 +1175,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation measureText(text: string): TextMetrics
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func measureText(text: ?String): TextMetrics {
@@ -1227,8 +1196,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation stroke(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stroke(): Unit {
@@ -1244,8 +1212,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation stroke(path: Path2D): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stroke(path2D: ?Path2D): Unit {
@@ -1261,8 +1228,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation beginPath(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func beginPath(): Unit {
@@ -1279,8 +1245,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
    * @relation moveTo(x: number, y: number): void
    */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func moveTo(x: ?Float64, y: ?Float64): Unit {
@@ -1299,8 +1264,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation lineTo(x: number, y: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineTo(x: ?Float64, y: ?Float64): Unit {
@@ -1317,8 +1281,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation closePath(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closePath(): Unit {
@@ -1335,8 +1298,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | null
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createPattern(image: ?ImageBitmap, repetition: Option<Repetition>): Option<CanvasPattern> {
@@ -1359,8 +1321,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bezierCurveTo(cp1x: ?Float64, cp1y: ?Float64, cp2x: ?Float64, cp2y: ?Float64, x: ?Float64, y: ?Float64): Unit {
@@ -1385,8 +1346,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func quadraticCurveTo(cpx: ?Float64, cpy: ?Float64, x: ?Float64, y: ?Float64): Unit {
@@ -1412,8 +1372,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
    * @relation arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void
    */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arc(
@@ -1445,8 +1404,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arcTo(x1: ?Float64, y1: ?Float64, x2: ?Float64, y2: ?Float64, radius: ?Float64): Unit {
@@ -1475,8 +1433,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *    the ellipse is drawn clockwise. The default value is false.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func ellipse(
@@ -1514,8 +1471,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation rect(x: number, y: number, w: number, h: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rect(x: ?Float64, y: ?Float64, width: ?Float64, height: ?Float64): Unit {
@@ -1535,8 +1491,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation fill(fillRule?: CanvasFillRule): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fill(fillRule!: ?CanvasFillRule = None): Unit {
@@ -1556,8 +1511,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation fill(path: Path2D, fillRule?: CanvasFillRule): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fill(path: ?Path2D, fillRule!: ?CanvasFillRule = None): Unit {
@@ -1577,8 +1531,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation clip(fillRule?: CanvasFillRule): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clip(fillRule!: ?CanvasFillRule = None): Unit {
@@ -1598,8 +1551,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation clip(path: Path2D, fillRule?: CanvasFillRule): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clip(path: ?Path2D, fillRule!: ?CanvasFillRule = None): Unit {
@@ -1620,8 +1572,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation rotate(angle: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rotate(angle: ?Float64): Unit {
@@ -1639,8 +1590,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation scale(x: number, y: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scale(x: ?Float64, y: ?Float64): Unit {
@@ -1664,8 +1614,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation transform(a: number, b: number, c: number, d: number, e: number, f: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func transform(
@@ -1701,8 +1650,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation transform(a: number, b: number, c: number, d: number, e: number, f: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTransform(
@@ -1734,8 +1682,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation setTransform(transform?: Matrix2D): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTransform(matrix: Option<Matrix2D>): Unit {
@@ -1756,8 +1703,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation translate(x: number, y: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func translate(x: ?Float64, y: ?Float64): Unit {
@@ -1774,8 +1720,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation restore(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func restore(): Unit {
@@ -1790,8 +1735,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation save(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func save(): Unit {
@@ -1811,8 +1755,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createLinearGradient(x0: ?Float64, y0: ?Float64, x1: ?Float64, y1: ?Float64): CanvasGradient {
@@ -1836,8 +1779,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createRadialGradient(x0: ?Float64, y0: ?Float64, r0: ?Float64, x1: ?Float64, y1: ?Float64, r1: ?Float64): CanvasGradient {
@@ -1861,8 +1803,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation createConicGradient(startAngle: number, x: number, y: number): CanvasGradient
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createConicGradient(startAngle: ?Float64, x: ?Float64, y: ?Float64): CanvasGradient {
@@ -1884,8 +1825,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func drawImage(image: ?ImageBitmap, dx: ?Float64, dy: ?Float64): Unit {
@@ -1913,8 +1853,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func drawImage(image: ?ImageBitmap, dx: ?Float64, dy: ?Float64, dWidth: ?Float64, dHeight: ?Float64): Unit {
@@ -1947,8 +1886,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation drawImage(image: ImageBitmap | PixelMap, sx: number, sy: number,sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func drawImage(
@@ -1991,8 +1929,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func drawImage(image: ?PixelMap, dx: ?Float64, dy: ?Float64): Unit {
@@ -2019,8 +1956,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func drawImage(image: ?PixelMap, dx: ?Float64, dy: ?Float64, dWidth: ?Float64, dHeight: ?Float64): Unit {
@@ -2053,8 +1989,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation drawImage(image: ImageBitmap | PixelMap, sx: number, sy: number,sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func drawImage(
@@ -2099,8 +2034,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getPixelMap(sx: ?Float64, sy: ?Float64, sw: ?Float64, sh: ?Float64): PixelMap {
@@ -2122,8 +2056,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation reset(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func reset(): Unit {
@@ -2138,8 +2071,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation saveLayer(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func saveLayer(): Unit {
@@ -2154,8 +2086,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation restoreLayer(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func restoreLayer(): Unit {
@@ -2170,8 +2101,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation resetTransform(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func resetTransform(): Unit {
@@ -2187,8 +2117,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation getTransform(): Matrix2D
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getTransform(): Matrix2D {
@@ -2205,8 +2134,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation transferFromImageBitmap(bitmap: ImageBitmap): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func transferFromImageBitmap(bitmap: ?ImageBitmap): Unit {
@@ -2222,8 +2150,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation readonly height: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop height: Float64 {
@@ -2240,8 +2167,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation readonly width: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop width: Float64 {
@@ -2259,8 +2185,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation setPixelMap(value?: PixelMap): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setPixelMap(value: Option<PixelMap>): Unit {
@@ -2283,8 +2208,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation getLineDash(): number[]
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getLineDash(): Array<Float64> {
@@ -2306,8 +2230,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation toDataURL(type?: string, quality?: any): string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func toDataURL(imageType!: ?String = None, quality!: ?Float64 = None): String {
@@ -2349,8 +2272,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
    * @relation createImageData(sw: number, sh: number): ImageData
    */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createImageData(sw: ?Float64, sh: ?Float64): ImageData {
@@ -2371,8 +2293,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation createImageData(imagedata: ImageData): ImageData
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createImageData(imageData: ?ImageData): ImageData {
@@ -2395,8 +2316,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getImageData(sx: ?Float64, sy: ?Float64, sw: ?Float64, sh: ?Float64): ImageData {
@@ -2419,8 +2339,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation putImageData(imagedata: ImageData, dx: number | string, dy: number | string): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func putImageData(imageData: ImageData, dx: Length, dy: Length): Unit {
@@ -2450,8 +2369,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @relation putImageData(imagedata: ImageData, dx: number | string, dy: number | string, dirtyX: number | string, dirtyY: number | string, dirtyWidth: number | string, dirtyHeight: number | string): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func putImageData(

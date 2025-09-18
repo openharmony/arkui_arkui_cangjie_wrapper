@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package kit.ArkUI
+package ArkUI
 
 public import ohos.display.*
 public import ohos.display.Rect as DisplayRect

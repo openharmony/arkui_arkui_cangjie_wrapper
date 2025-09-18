@@ -142,8 +142,7 @@ struct NativeOptionConfirm {
  * @relation interface SheetInfo
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SheetInfo {
@@ -154,8 +153,7 @@ public class SheetInfo {
      * @relation title: string | Resource
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var title: ?ResourceStr
@@ -167,8 +165,7 @@ public class SheetInfo {
      * @relation action: VoidCallback
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var action: ?VoidCallback
@@ -179,8 +176,7 @@ public class SheetInfo {
      * @relation icon?: string | Resource
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var icon: ?ResourceStr
@@ -194,8 +190,7 @@ public class SheetInfo {
      * @relation interface SheetInfo
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -229,8 +224,7 @@ public class SheetInfo {
  * @relation interface ActionSheetButtonOptions
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ActionSheetButtonOptions {
@@ -241,8 +235,7 @@ public class ActionSheetButtonOptions {
      * @relation value: string | Resource
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var value: ?ResourceStr
@@ -253,8 +246,7 @@ public class ActionSheetButtonOptions {
      * @relation action: VoidCallback
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var action: ?VoidCallback
@@ -267,8 +259,7 @@ public class ActionSheetButtonOptions {
      * @relation enabled?: boolean
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enabled: ?Bool
@@ -281,8 +272,7 @@ public class ActionSheetButtonOptions {
      * @relation defaultFocus?: boolean
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var defaultFocus: ?Bool
@@ -294,8 +284,7 @@ public class ActionSheetButtonOptions {
      * @relation style?: DialogButtonStyle
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var style: ?DialogButtonStyle
@@ -311,8 +300,7 @@ public class ActionSheetButtonOptions {
      * @relation interface ActionSheetButtonOptions
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -348,8 +336,7 @@ public class ActionSheetButtonOptions {
  * @relation declare interface DismissDialogAction
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DismissDialogAction {
@@ -361,8 +348,7 @@ public class DismissDialogAction {
      * @relation reason: DismissReason
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var reason: ?DismissReason
@@ -374,8 +360,7 @@ public class DismissDialogAction {
      * @relation declare interface DismissDialogAction
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(reason: ?DismissReason) {
@@ -387,8 +372,7 @@ public class DismissDialogAction {
      * @relation dismiss(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func dismiss(): Unit {
@@ -409,8 +393,7 @@ protected func parseToDismissDialogAction(reason: Int32): DismissDialogAction {
  * @relation interface ActionSheetOptions
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ActionSheetOptions {
@@ -421,8 +404,7 @@ public class ActionSheetOptions {
      * @relation title: string | Resource
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var title: ?ResourceStr
@@ -433,8 +415,7 @@ public class ActionSheetOptions {
      * @relation message: string | Resource
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var message: ?ResourceStr
@@ -445,8 +426,7 @@ public class ActionSheetOptions {
      * @relation sheets: Array<SheetInfo>
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var sheets: ?Array<SheetInfo>
@@ -456,8 +436,7 @@ public class ActionSheetOptions {
      * @relation subtitle?: ResourceStr
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var subtitle: ?ResourceStr
@@ -470,8 +449,7 @@ public class ActionSheetOptions {
      * @relation confirm?: ActionSheetButtonOptions
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var confirm: ?ActionSheetButtonOptions
@@ -484,8 +462,7 @@ public class ActionSheetOptions {
      * @relation autoCancel?: boolean
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: ?Bool
@@ -497,8 +474,7 @@ public class ActionSheetOptions {
      * @relation cancel?: VoidCallback
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cancel: ?VoidCallback
@@ -514,8 +490,7 @@ public class ActionSheetOptions {
      * @relation alignment?: DialogAlignment
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var alignment: ?DialogAlignment
@@ -528,8 +503,7 @@ public class ActionSheetOptions {
      * @relation offset?: ActionSheetOffset
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?ActionSheetOffset
@@ -545,8 +519,7 @@ public class ActionSheetOptions {
      * @relation maskRect?: Rectangle
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskRect: ?Rectangle
@@ -562,8 +535,7 @@ public class ActionSheetOptions {
      * @relation showInSubWindow?: boolean
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: ?Bool
@@ -574,8 +546,7 @@ public class ActionSheetOptions {
      * @relation isModal?: boolean
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isModal: ?Bool
@@ -591,8 +562,7 @@ public class ActionSheetOptions {
      * @relation backgroundColor?: ResourceColor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -609,8 +579,7 @@ public class ActionSheetOptions {
      * @relation backgroundBlurStyle?: BlurStyle
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -628,8 +597,7 @@ public class ActionSheetOptions {
      * @relation onWillDismiss?: Callback<DismissDialogAction>
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
@@ -644,8 +612,7 @@ public class ActionSheetOptions {
     * @relation cornerRadius?: Dimension | BorderRadiuses | LocalizedBorderRadiuses
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cornerRadius: ?BorderRadiuses
@@ -660,8 +627,7 @@ public class ActionSheetOptions {
      * @relation borderWidth?: Dimension | EdgeWidths | LocalizedEdgeWidths
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: ?Length
@@ -677,8 +643,7 @@ public class ActionSheetOptions {
     * @relation borderColor?: ResourceColor | EdgeColors | LocalizedEdgeColors
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: ?ResourceColor
@@ -690,8 +655,7 @@ public class ActionSheetOptions {
     * @relation borderStyle?: BorderStyle | EdgeStyles
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderStyle: ?EdgeStyles
@@ -705,8 +669,7 @@ public class ActionSheetOptions {
     * @relation width?: Dimension
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
@@ -720,8 +683,7 @@ public class ActionSheetOptions {
      * @relation height?: Dimension
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Length
@@ -732,8 +694,7 @@ public class ActionSheetOptions {
      * @relation shadow?: ShadowOptions | ShadowStyle
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowOptions
@@ -751,14 +712,12 @@ public class ActionSheetOptions {
      * @relation transition?: TransitionEffect
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: ?TransitionEffect
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     /**
@@ -946,8 +905,7 @@ public class ActionSheetOptions {
  * @relation interface ActionSheetOffset
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ActionSheetOffset {
@@ -959,8 +917,7 @@ public class ActionSheetOffset {
     * @relation dx: number | string | Resource
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dx: ?Length
@@ -972,8 +929,7 @@ public class ActionSheetOffset {
     * @relation dy: number | string | Resource
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dy: ?Length
@@ -986,8 +942,7 @@ public class ActionSheetOffset {
      * @relation interface ActionSheetOffset
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(

@@ -67,8 +67,7 @@ class CJVectorNativeTextShadow {
  * @relation interface DateTimeOptions
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DateTimeOptions {
@@ -79,8 +78,7 @@ public class DateTimeOptions {
      * @relation locale?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var locale: ?String
@@ -92,8 +90,7 @@ public class DateTimeOptions {
      * @relation dateStyle?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dateStyle: ?String
@@ -105,8 +102,7 @@ public class DateTimeOptions {
      * @relation timeStyle?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timeStyle: ?String
@@ -118,8 +114,7 @@ public class DateTimeOptions {
      * @relation hourCycle?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hourCycle: ?String
@@ -131,8 +126,7 @@ public class DateTimeOptions {
      * @relation timeZone?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timeZone: ?String
@@ -149,8 +143,7 @@ public class DateTimeOptions {
      * @relation numberingSystem?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var numberingSystem: ?String
@@ -164,8 +157,7 @@ public class DateTimeOptions {
      * @relation hour12?: boolean
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hour12: ?Bool
@@ -177,8 +169,7 @@ public class DateTimeOptions {
      * @relation weekday?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var weekday: ?String
@@ -190,8 +181,7 @@ public class DateTimeOptions {
      * @relation era?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var era: ?String
@@ -203,8 +193,7 @@ public class DateTimeOptions {
      * @relation year?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var year: ?String
@@ -216,8 +205,7 @@ public class DateTimeOptions {
      * @relation month?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var month: ?String
@@ -229,8 +217,7 @@ public class DateTimeOptions {
      * @relation day?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var day: ?String
@@ -242,8 +229,7 @@ public class DateTimeOptions {
      * @relation hour?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hour: ?String
@@ -255,8 +241,7 @@ public class DateTimeOptions {
      * @relation minute?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var minute: ?String
@@ -268,8 +253,7 @@ public class DateTimeOptions {
      * @relation second?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var second: ?String
@@ -281,8 +265,7 @@ public class DateTimeOptions {
      * @relation timeZoneName?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timeZoneName: ?String
@@ -294,8 +277,7 @@ public class DateTimeOptions {
      * @relation dayPeriod?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dayPeriod: ?String
@@ -309,8 +291,7 @@ public class DateTimeOptions {
      * @relation localeMatcher?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var localeMatcher: ?String
@@ -324,8 +305,7 @@ public class DateTimeOptions {
      * @relation formatMatcher?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var formatMatcher: ?String
@@ -334,8 +314,7 @@ public class DateTimeOptions {
      * DateTimeOptions Constructor.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(locale!: ?String = None, dateStyle!: ?String = None, timeStyle!: ?String = None,
@@ -407,8 +386,7 @@ foreign {
  * @relation class TextClockController
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextClockController <: RemoteDataLite {
@@ -418,8 +396,7 @@ public class TextClockController <: RemoteDataLite {
      * @relation constructor()
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -437,8 +414,7 @@ public class TextClockController <: RemoteDataLite {
      * @relation start(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func start(): Unit {
@@ -452,8 +428,7 @@ public class TextClockController <: RemoteDataLite {
      * @relation stop(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stop(): Unit {
@@ -469,8 +444,7 @@ public class TextClockController <: RemoteDataLite {
  * @relation const TextClock: TextClockInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockAttribute {
@@ -487,8 +461,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * @relation (options?: TextClockOptions): TextClockAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(timeZoneOffset!: ?Float32 = None, controller!: ?TextClockController = None) {
@@ -518,8 +491,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * @relation onDateChange(event: (value: number) => void): TextClockAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDateChange(callback: ?(Int64) -> Unit): This {
@@ -545,8 +517,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * @relation format(value: ResourceStr): TextClockAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func format(value: ?ResourceStr): This {
@@ -568,8 +539,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * @relation fontSize(value: Length): TextClockAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -589,8 +559,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * @relation fontColor(value: ResourceColor): TextClockAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -609,8 +578,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * @relation fontStyle(value: FontStyle): TextClockAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -629,8 +597,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * @relation fontWeight(value: number | FontWeight | string): TextClockAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -651,8 +618,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * @relation fontFamily(value: ResourceStr): TextClockAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -674,8 +640,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * @relation textShadow(value: ShadowOptions | Array<ShadowOptions>): TextClockAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(values: ?Array<ShadowOptions>): This {
@@ -699,8 +664,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * @relation textShadow(value: ShadowOptions | Array<ShadowOptions>): TextClockAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(value: ?ShadowOptions): This {

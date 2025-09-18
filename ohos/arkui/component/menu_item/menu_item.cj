@@ -52,8 +52,7 @@ foreign {
  * @relation declare const MenuItem: MenuItemInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttribute {
@@ -66,8 +65,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
      * @relation (value?: MenuItemOptions | CustomBuilder): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = {=>}) {
@@ -88,8 +86,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
      * @relation (value?: MenuItemOptions | CustomBuilder): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(startIcon!: ?ResourceStr, content!: ?ResourceStr, endIcon!: ?ResourceStr, labelInfo!: ?ResourceStr,
@@ -127,8 +124,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
      * @relation selected(value: boolean): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selected(value: ?Bool): This {
@@ -147,8 +143,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
      * @relation selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectIcon(value: ?Bool): This {
@@ -167,8 +162,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
      * @relation selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectIcon(value: ?ResourceStr): This {
@@ -192,8 +186,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
      * @relation contentFont(value: Font): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentFont(
@@ -227,8 +220,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
      * @relation contentFontColor(value: ResourceColor): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentFontColor(value: ?ResourceColor): This {
@@ -251,8 +243,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
      * @relation labelFont(value: Font): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func labelFont(
@@ -286,8 +277,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
      * @relation labelFontColor(value: ResourceColor): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func labelFontColor(value: ?ResourceColor): This {
@@ -307,8 +297,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
      * @relation onChange(callback: (selected: boolean) => void): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Bool) -> Unit): This {

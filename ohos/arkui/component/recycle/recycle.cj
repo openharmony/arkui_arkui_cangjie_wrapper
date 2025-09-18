@@ -26,12 +26,12 @@ foreign {
 }
 
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class __Recycle__ <: CommonMethodComponent<RecycleAttribute> & RecycleAttribute {
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -40,7 +40,7 @@ public class __Recycle__ <: CommonMethodComponent<RecycleAttribute> & RecycleAtt
         }
     }
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -50,7 +50,7 @@ public class __Recycle__ <: CommonMethodComponent<RecycleAttribute> & RecycleAtt
         this.child = child
     }
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func pop() {

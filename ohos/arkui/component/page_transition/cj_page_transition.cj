@@ -84,8 +84,7 @@ public type PageTransitionCallback = (RouteType, Float64) -> Unit
 */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RouteType {
@@ -95,8 +94,7 @@ public enum RouteType {
     * @relation None
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -106,8 +104,7 @@ public enum RouteType {
     * @relation Push
     */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Push
@@ -117,8 +114,7 @@ public enum RouteType {
     * @relation Pop
     */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Pop
@@ -149,8 +145,7 @@ public enum RouteType {
 */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SlideEffect {
@@ -160,8 +155,7 @@ public enum SlideEffect {
     * @relation Left
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -171,8 +165,7 @@ public enum SlideEffect {
     * @relation Right
     */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
@@ -182,8 +175,7 @@ public enum SlideEffect {
     * @relation Top
     */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -193,8 +185,7 @@ public enum SlideEffect {
     * @relation Bottom
     */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -212,8 +203,7 @@ public enum SlideEffect {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed abstract class CommonTransition {
@@ -225,8 +215,7 @@ sealed abstract class CommonTransition {
     * @relation slide(value: SlideEffect): T
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func slide(value: ?SlideEffect): This {
@@ -246,8 +235,7 @@ sealed abstract class CommonTransition {
     * @relation translate(value: TranslateOptions): T
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func translate(x!: ?Length = None, y!: ?Length = None, z!: ?Length = None): This {
@@ -271,8 +259,7 @@ sealed abstract class CommonTransition {
     * @relation scale(value: ScaleOptions): T
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scale(
@@ -296,8 +283,7 @@ sealed abstract class CommonTransition {
     * @relation opacity(value: number): T
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func opacity(value: ?Float64): This {
@@ -314,8 +300,7 @@ sealed abstract class CommonTransition {
 * @relation declare const PageTransitionEnter: PageTransitionEnterInterface
 */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PageTransitionEnter <: CommonTransition {
@@ -330,8 +315,7 @@ public class PageTransitionEnter <: CommonTransition {
     * @relation (value: PageTransitionOptions): PageTransitionEnterInterface
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -357,8 +341,7 @@ public class PageTransitionEnter <: CommonTransition {
     * @relation onEnter(event: PageTransitionCallback): PageTransitionEnterInterface
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onEnter(event: ?PageTransitionCallback) {
@@ -379,8 +362,7 @@ public class PageTransitionEnter <: CommonTransition {
 * @relation declare const PageTransitionExit: PageTransitionExitInterface
 */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PageTransitionExit <: CommonTransition {
@@ -395,8 +377,7 @@ public class PageTransitionExit <: CommonTransition {
     * @relation (value: PageTransitionOptions): PageTransitionEnterInterface
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -422,8 +403,7 @@ public class PageTransitionExit <: CommonTransition {
     * @relation onExit(event: PageTransitionCallback): PageTransitionExitInterface
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onExit(event: ?PageTransitionCallback) {

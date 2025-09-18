@@ -19,9 +19,7 @@ import ohos.labels.APILevel
 import std.collection.*
 
 @!APILevel[
-    21,
-    atomicservice: true,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ObservedPropertyAbstract <: Observable {
@@ -29,9 +27,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
     protected let dependentElementIds_: ArrayList<Int64> = ArrayList<Int64>()
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(info: String) {
@@ -39,9 +35,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getInfo(): String {
@@ -49,25 +43,19 @@ public abstract class ObservedPropertyAbstract <: Observable {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func subscribeEx(observer: Observer): Unit
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func unsubscribeEx(observer: Observer): Unit
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func notifyChanges() {
@@ -84,9 +72,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func purgeDependencyOnElmtId(rmElmtId: Int64): Unit {

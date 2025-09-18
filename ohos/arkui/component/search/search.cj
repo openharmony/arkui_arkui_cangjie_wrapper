@@ -163,8 +163,7 @@ let DEFAULT_SIZE = 16.0
  * @relation declare class SearchController extends TextContentControllerBase
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SearchController <: RemoteDataLite & TextContentControllerBase{
@@ -175,8 +174,7 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
      * @relation constructor();
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -197,8 +195,7 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
      * @relation caretPosition(value: number): void;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretPosition(value: ?Int32): Unit {
@@ -215,8 +212,7 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
  * @relation interface SearchInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute {
@@ -230,8 +226,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      * @relation (options?: SearchOptions): SearchAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -273,8 +268,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      * @relation searchButton(value: ResourceStr, option?: SearchButtonOptions): SearchAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func searchButton(value: ?ResourceStr): This {
@@ -296,8 +290,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      * @relation placeholderColor(value: ResourceColor): SearchAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderColor(value: ?ResourceColor): This {
@@ -319,8 +312,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      * @relation placeholderFont(value?: Font): SearchAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderFont(
@@ -367,8 +359,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      * @relation textFont(value?: Font): SearchAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textFont(
@@ -415,8 +406,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      * @relation copyOption(value: CopyOptions): SearchAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func copyOption(value: ?CopyOptions): This {
@@ -435,8 +425,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      * @relation onSubmit(callback: Callback<string>): SearchAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSubmit(callback: ?(String) -> Unit): This {
@@ -461,8 +450,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      * @relation onChange(callback: EditableTextOnChangeCallback): SearchAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(String) -> Unit): This {
@@ -485,8 +473,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      * @relation onCopy(callback: Callback<string>): SearchAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCopy(callback: ?(String) -> Unit): This {
@@ -509,8 +496,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      * @relation onCut(callback: Callback<string>): SearchAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCut(callback: ?(String) -> Unit): This {
@@ -533,8 +519,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
      * @relation onPaste(callback: OnPasteCallback): SearchAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPaste(callback: ?(String) -> Unit): This {

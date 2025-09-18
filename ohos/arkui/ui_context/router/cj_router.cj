@@ -57,8 +57,7 @@ foreign {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RouterMode {
@@ -69,8 +68,7 @@ public enum RouterMode {
      * @relation Standard,
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Standard
@@ -84,8 +82,7 @@ public enum RouterMode {
      * @relation Single,
      */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Single
@@ -106,8 +103,7 @@ public enum RouterMode {
  * @relation enum RouterState
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RouterState {
@@ -120,8 +116,7 @@ public class RouterState {
      * @relation index: number;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var index: Int32
@@ -133,8 +128,7 @@ public class RouterState {
      * @relation name: string;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var name: String
@@ -146,8 +140,7 @@ public class RouterState {
      * @relation name: string;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var path: String
@@ -159,8 +152,7 @@ public class RouterState {
      * @relation params: Object;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var params: String
@@ -175,8 +167,7 @@ public class RouterState {
      * @returns { This }
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -230,8 +221,7 @@ struct RouterStateList {
  * @relation export declare class Router
  */
  @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Router {
@@ -249,8 +239,7 @@ public class Router {
      * @relation pushUrl(options: router.RouterOptions): Promise<void>
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pushUrl(url!: String, params!: String = ""): Unit {
@@ -270,8 +259,7 @@ public class Router {
      * @relation back(options?: router.RouterOptions): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func back(url!: ?String = None, params!: String = ""): Unit {
@@ -291,8 +279,7 @@ public class Router {
      * @relation back(index: number, params?: Object): void;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func back(index!: Int32, params!: String = ""): Unit {
@@ -310,8 +297,7 @@ public class Router {
      * @relation getParams(): Object;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getParams(): Option<String> {

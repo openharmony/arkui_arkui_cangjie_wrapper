@@ -115,9 +115,7 @@ class LocalStorageInterOp {
     protected static var instance_: ?LocalStorageInterOp = None
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getOrCreate(): LocalStorageInterOp {
@@ -138,9 +136,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func aboutToBeDeleted(): Bool {
@@ -148,11 +144,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func has(propName: String): Bool {
@@ -161,11 +153,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keys() {
@@ -183,11 +171,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func size(): Int64 {
@@ -195,11 +179,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get<T>(propName: String): T where T <: JSInteropType<T> {
@@ -213,11 +193,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set<T>(propName: String, value: T): Bool where T <: JSInteropType<T> {
@@ -232,11 +208,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setOrCreate<T>(propName: String, value: T): Bool where T <: JSInteropType<T> {
@@ -251,11 +223,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func link<T>(propName: String): ObservedProperty<T> where T <: JSInteropType<T> {
@@ -263,11 +231,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setAndLink<T>(propName: String, value: T): ObservedProperty<T> where T <: JSInteropType<T> {
@@ -275,11 +239,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func `prop`<T>(propName: String): ObservedProperty<T> where T <: JSInteropType<T> {
@@ -287,11 +247,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setAndProp<T>(propName: String, value: T): ObservedProperty<T> where T <: JSInteropType<T> {
@@ -335,11 +291,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func delete(propName: String): Bool {
@@ -348,11 +300,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clear(): Bool {
@@ -360,9 +308,7 @@ class LocalStorageInterOp {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func hasChanged(context: JSContext, callInfo: JSCallInfo): JSValue {

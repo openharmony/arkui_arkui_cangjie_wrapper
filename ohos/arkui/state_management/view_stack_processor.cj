@@ -34,7 +34,7 @@ foreign func FfiOHOSAceFrameworkImplicitPopBeforeContinue(): Unit
  * all definitions in this file are framework internal
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ViewStackProcessor {
@@ -43,7 +43,7 @@ public class ViewStackProcessor {
      *
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func AllocateNewElmetIdForNextComponent(): Int64 {
@@ -57,7 +57,7 @@ public class ViewStackProcessor {
      *
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func StartGetAccessRecordingFor(elmtId: Int64): Unit {
@@ -73,7 +73,7 @@ public class ViewStackProcessor {
      * returns the elmtId given by StartGetAccessRecordingFor -1 no access recording
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func GetElmtIdToAccountFor(): Int64 {
@@ -87,7 +87,7 @@ public class ViewStackProcessor {
      * also invalidates any reserved but unclaimed elmtId for Component creation.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func StopGetAccessRecording(): Unit {
@@ -103,9 +103,7 @@ public class ViewStackProcessor {
      * and before read ViewStackProcessor.GetTopMostElementId();
      */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func ImplicitPopBeforeContinue(): Unit {

@@ -125,28 +125,24 @@ struct NativeDecorationStyleResult {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DecorationStyleResult {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var decorationType: ?TextDecorationType
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ?ResourceColor
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -168,27 +164,23 @@ struct NativeRichEditorInsertValue {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorInsertValue {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var insertOffset: ?Int32
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var insertValue: ?String
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -224,8 +216,7 @@ struct NativeRichEditorSpanPosition {
  * @relation declare interface RichEditorSpanPosition
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorSpanPosition {
@@ -237,8 +228,7 @@ public class RichEditorSpanPosition {
      * @relation spanIndex: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var spanIndex: ?Int32
@@ -253,8 +243,7 @@ public class RichEditorSpanPosition {
                  ];
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var spanRange: ?(Int32, Int32)
@@ -263,8 +252,7 @@ public class RichEditorSpanPosition {
      * RichEditorSpanPosition constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -310,8 +298,7 @@ struct NativeRichEditorTextStyleResult {
  * @relation declare interface RichEditorTextStyleResult
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorTextStyleResult {
@@ -323,8 +310,7 @@ public class RichEditorTextStyleResult {
      * @relation fontColor: ResourceColor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontColor: ?String
@@ -336,8 +322,7 @@ public class RichEditorTextStyleResult {
      * @relation fontSize: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontSize: ?Float64
@@ -349,8 +334,7 @@ public class RichEditorTextStyleResult {
      * @relation fontStyle: FontStyle
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontStyle: ?FontStyle
@@ -362,8 +346,7 @@ public class RichEditorTextStyleResult {
      * @relation fontWeight: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontWeight: ?Int32
@@ -375,8 +358,7 @@ public class RichEditorTextStyleResult {
      * @relation fontFamily: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontFamily: ?String
@@ -388,8 +370,7 @@ public class RichEditorTextStyleResult {
      * @relation decoration: DecorationStyleResult
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var decoration: ?DecorationStyleResult
@@ -398,8 +379,7 @@ public class RichEditorTextStyleResult {
      * RichEditorTextStyleResult constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -456,9 +436,7 @@ struct NativeRichEditorImageSpanStyleResult {
  * @relation declare interface RichEditorImageSpanStyleResult
  */
 @!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorImageSpanStyleResult {
@@ -473,9 +451,7 @@ public class RichEditorImageSpanStyleResult {
                  ];
      */
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var size: ?(Float64, Float64)
@@ -487,9 +463,7 @@ public class RichEditorImageSpanStyleResult {
      * @relation verticalAlign: ImageSpanAlignment
      */
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var verticalAlign: ?ImageSpanAlignment
@@ -501,9 +475,7 @@ public class RichEditorImageSpanStyleResult {
      * @relation objectFit: ImageFit
      */
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var objectFit: ?ImageFit
@@ -515,9 +487,7 @@ public class RichEditorImageSpanStyleResult {
      * @relation layoutStyle?: RichEditorLayoutStyle
      */
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var layoutStyle: ?RichEditorLayoutStyle
@@ -562,8 +532,7 @@ struct NativeRichEditorTextSpanResult {
  * @relation declare interface RichEditorTextSpanResult
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorTextSpanResult <: RichEditorSpanResult {
@@ -575,8 +544,7 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
      * @relation spanPosition: RichEditorSpanPosition
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var spanPosition: ?RichEditorSpanPosition
@@ -588,8 +556,7 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
      * @relation value: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var value: ?String
@@ -601,8 +568,7 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
      * @relation textStyle?: RichEditorTextStyle
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var textStyle: ?RichEditorTextStyleResult
@@ -617,8 +583,7 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
                  ]
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offsetInSpan: ?(Int32, Int32)
@@ -627,8 +592,7 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
      * RichEditorTextSpanResult constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -662,8 +626,7 @@ struct NativeRichEditorImageSpanResult {
  * @relation declare interface RichEditorImageSpanResult
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorImageSpanResult <: RichEditorSpanResult {
@@ -675,8 +638,7 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
      * @relation spanPosition: RichEditorSpanPosition
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var spanPosition: ?RichEditorSpanPosition
@@ -688,8 +650,7 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
      * @relation valuePixelMap?: PixelMap
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var valuePixelMap: Option<PixelMap>
@@ -701,8 +662,7 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
      * @relation valueResourceStr?: ResourceStr
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var valueResourceStr: ?String
@@ -714,8 +674,7 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
      * @relation imageStyle: RichEditorImageSpanStyleResult
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var imageStyle: ?RichEditorImageSpanStyleResult
@@ -730,8 +689,7 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
                  ]
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offsetInSpan: ?(Int32, Int32)
@@ -740,8 +698,7 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
      * RichEditorImageSpanResult constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -886,8 +843,7 @@ struct NativeRichEditorSpanResult {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface RichEditorSpanResult {}
@@ -924,8 +880,7 @@ struct NativeRichEditorRange {
  * @relation declare interface RichEditorSelection
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorSelection {
@@ -940,8 +895,7 @@ public class RichEditorSelection {
                  ]
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var selection: ?(Int32, Int32)
@@ -953,8 +907,7 @@ public class RichEditorSelection {
      * @relation spans: Array<RichEditorTextSpanResult | RichEditorImageSpanResult>
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var spans: ?ArrayList<RichEditorSpanResult>
@@ -963,8 +916,7 @@ public class RichEditorSelection {
      * RichEditorSelection constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(selection: ?(Int32, Int32), spans: ?ArrayList<RichEditorSpanResult>) {
@@ -990,8 +942,7 @@ struct NativeRichEditorDeleteValue {
  * @relation declare interface RichEditorDeleteValue
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorDeleteValue {
@@ -1003,8 +954,7 @@ public class RichEditorDeleteValue {
      * @relation offset: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Int32
@@ -1016,8 +966,7 @@ public class RichEditorDeleteValue {
      * @relation direction: RichEditorDeleteDirection
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var direction: ?RichEditorDeleteDirection
@@ -1029,8 +978,7 @@ public class RichEditorDeleteValue {
      * @relation length: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var length: ?Int32
@@ -1042,8 +990,7 @@ public class RichEditorDeleteValue {
      * @relation richEditorDeleteSpans: Array<RichEditorTextSpanResult | RichEditorImageSpanResult>
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var richEditorDeleteSpans: ?ArrayList<RichEditorSpanResult>
@@ -1052,8 +999,7 @@ public class RichEditorDeleteValue {
      * RichEditorDeleteValue constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1098,8 +1044,7 @@ func parseNativeRichEditorDeleteValue(value: NativeRichEditorDeleteValue): RichE
  * @relation declare interface TextRange
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextRange {
@@ -1111,8 +1056,7 @@ public class TextRange {
      * @relation start?: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var start: ?Int32
@@ -1124,8 +1068,7 @@ public class TextRange {
      * @relation end?: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var end: ?Int32
@@ -1134,8 +1077,7 @@ public class TextRange {
      * TextRange constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(start: ?Int32, end: ?Int32) {
@@ -1150,8 +1092,7 @@ public class TextRange {
  * @relation declare interface PasteEvent
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PasteEvent <: RemoteDataLite {
@@ -1169,8 +1110,7 @@ public class PasteEvent <: RemoteDataLite {
      * @relation preventDefault?: Callback<void>
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func preventDefault(): Unit {
@@ -1188,8 +1128,7 @@ public type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange
  * @relation declare const RichEditor: RichEditorInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEditorAttribute {
@@ -1202,8 +1141,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
      * @relation (value: RichEditorOptions): RichEditorAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(controller: ?RichEditorController) {
@@ -1221,8 +1159,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
      * @relation customKeyboard(value: CustomBuilder, options?: KeyboardOptions): RichEditorAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func customKeyboard(value!: ?CustomBuilder): This {
@@ -1244,8 +1181,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
      * @relation bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, responseType: ResponseType | RichEditorResponseType, options?: SelectionMenuOptions): RichEditorAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindSelectionMenu(
@@ -1277,8 +1213,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
      * @relation copyOptions(value: CopyOptions): RichEditorAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func copyOptions(value: ?CopyOptions): This {
@@ -1297,8 +1232,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
      * @relation onReady(callback: Callback<void>): RichEditorAttribute
      */
     @!APILevel[
-        21,
-        crossplatform: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReady(callback: ?VoidCallback): This {
@@ -1317,8 +1251,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
      * @relation aboutToIMEInput(callback: Callback<RichEditorInsertValue, boolean>): RichEditorAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func aboutToIMEInput(callback: ?Callback<RichEditorInsertValue, Bool>): This {
@@ -1341,8 +1274,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
      * @relation onIMEInputComplete(callback: Callback<RichEditorTextSpanResult>): RichEditorAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onIMEInputComplete(callback: ?Callback<RichEditorTextSpanResult, Unit>): RichEditor {
@@ -1365,8 +1297,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
      * @relation onDeleteComplete(callback: Callback<void>): RichEditorAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDeleteComplete(callback: ?VoidCallback): This {
@@ -1385,8 +1316,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
      * @relation aboutToDelete(callback: Callback<RichEditorDeleteValue, boolean>): RichEditorAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func aboutToDelete(callback: ?Callback<RichEditorDeleteValue, Bool>): This {
@@ -1409,8 +1339,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
      * @relation onSelect(callback: Callback<RichEditorSelection>): RichEditorAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSelect(callback: ?Callback<RichEditorSelection, Unit>): This {
@@ -1432,8 +1361,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
      * @relation onPaste(callback: PasteEventCallback): RichEditorAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPaste(callback: ?PasteEventCallback): This {
@@ -1455,8 +1383,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
      * @relation onDidChange(callback: OnDidChangeCallback): RichEditorAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDidChange(callback: ?OnDidChangeCallback): This {

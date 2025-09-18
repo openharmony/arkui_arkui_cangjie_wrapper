@@ -96,8 +96,7 @@ enum CanvasImageType {
  * @relation declare class RenderingContextSettings
  */
 @!APILevel[
-    12,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RenderingContextSettings {
@@ -124,8 +123,7 @@ public class RenderingContextSettings {
  * @relation declare interface TextMetrics
  */
 @!APILevel[
-    12,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextMetrics {
@@ -135,8 +133,7 @@ public class TextMetrics {
      * @relation readonly width: number
      */
     @!APILevel[
-        12,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let width: Float64
@@ -146,8 +143,7 @@ public class TextMetrics {
      * @relation readonly height: number
      */
     @!APILevel[
-        12,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let height: Float64
@@ -164,8 +160,7 @@ public class TextMetrics {
  * @relation declare const Canvas: CanvasInterface
  */
 @!APILevel[
-    12,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute {
@@ -177,8 +172,7 @@ public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute 
      * @relation (context?: CanvasRenderingContext2D | DrawingRenderingContext): CanvasAttribute
      */
     @!APILevel[
-        12,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(context: Option<CanvasRenderingContext2D>) {
@@ -198,8 +192,7 @@ public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute 
      * @relation onReady(event: VoidCallback): CanvasAttribute
      */
     @!APILevel[
-        12,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReady(callback: ?() -> Unit): This {
@@ -217,8 +210,7 @@ public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute 
  * @relation declare class CanvasGradient
  */
 @!APILevel[
-    12,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CanvasGradient <: RemoteDataLite {
@@ -251,8 +243,7 @@ public class CanvasGradient <: RemoteDataLite {
      * @relation addColorStop(offset: number, color: string): void
      */
     @!APILevel[
-        12,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addColorStop(offset: ?Float64, color: ?ResourceColor): Unit {

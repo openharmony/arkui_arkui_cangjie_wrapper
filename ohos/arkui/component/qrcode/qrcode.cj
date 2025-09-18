@@ -38,8 +38,7 @@ foreign {
  * @relation declare const QRCode: QRCodeInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute {
@@ -51,8 +50,7 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
      * @relation (value: ResourceStr): QRCodeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?ResourceStr) {
@@ -73,8 +71,7 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
      * @relation color(value: ResourceColor): QRCodeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
@@ -100,8 +97,7 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
      * @relation contentOpacity(value: number | Resource): QRCodeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentOpacity(value: ?Float64): This {
@@ -120,8 +116,7 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
      * @relation contentOpacity(value: number | Resource): QRCodeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentOpacity(value: ?AppResource): This {

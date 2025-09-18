@@ -55,8 +55,7 @@ foreign {
  * @relation declare const Radio: RadioInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
@@ -69,8 +68,7 @@ public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
      * @relation (options: RadioOptions): RadioAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?String, group!: ?String) {
@@ -91,8 +89,7 @@ public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
      * @relation checked(value: boolean): RadioAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func checked(value: ?Bool): This {
@@ -155,8 +152,7 @@ public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
      * @relation onChange(callback: (isChecked: boolean) => void): RadioAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Bool) -> Unit): This {

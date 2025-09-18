@@ -45,8 +45,7 @@ foreign {
  * @relation interface ButtonIconOptions
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ButtonIconOptions {
@@ -58,8 +57,7 @@ public class ButtonIconOptions {
      * @relation shown: string | PixelMap | Resource;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shown: ?ResourceStr
@@ -72,8 +70,7 @@ public class ButtonIconOptions {
      * @relation hidden: string | PixelMap | Resource;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hidden: ?ResourceStr
@@ -86,8 +83,7 @@ public class ButtonIconOptions {
      * @relation switching?: string | PixelMap | Resource;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var switching: ?ResourceStr
@@ -101,8 +97,7 @@ public class ButtonIconOptions {
      * @returns { This }
      */ 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(shown!: ?ResourceStr, hidden!: ?ResourceStr, switching!: ?ResourceStr = None) {
@@ -129,8 +124,7 @@ struct CJSideBarButtonStyle {
  * @relation interface ButtonStyle
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ButtonStyle {
@@ -141,8 +135,7 @@ public class ButtonStyle {
      * @relation left?: number;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var left: ?Float64
@@ -154,8 +147,7 @@ public class ButtonStyle {
      * @relation top?: number;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var top: ?Float64
@@ -167,8 +159,7 @@ public class ButtonStyle {
      * @relation width?: number;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Float64
@@ -180,8 +171,7 @@ public class ButtonStyle {
      * @relation height?: number;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Float64
@@ -194,8 +184,7 @@ public class ButtonStyle {
      * @relation icons?: ButtonIconOptions;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var icons: ?ButtonIconOptions
@@ -211,8 +200,7 @@ public class ButtonStyle {
      * @returns { This }
      */ 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -250,8 +238,7 @@ struct CJDividerStyle {
  * @relation interface DividerStyle
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DividerStyle {
@@ -262,8 +249,7 @@ public class DividerStyle {
      * @relation strokeWidth: Length;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var strokeWidth: ?Length
@@ -275,8 +261,7 @@ public class DividerStyle {
      * @relation color?: ResourceColor;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ?ResourceColor
@@ -288,8 +273,7 @@ public class DividerStyle {
      * @relation startMargin?: Length;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var startMargin: ?Length
@@ -301,8 +285,7 @@ public class DividerStyle {
      * @relation endMargin?: Length;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var endMargin: ?Length
@@ -317,8 +300,7 @@ public class DividerStyle {
      * @returns { This }
      */ 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(strokeWidth!: ?Length, color!: ?ResourceColor = None, startMargin!: ?Length = None,
@@ -379,8 +361,7 @@ foreign {
  * @relation declare const SideBarContainer: SideBarContainerInterface;
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute> & SideBarContainerAttribute {
@@ -392,8 +373,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
      * @returns { This }
      */ 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(sideBarType!: ?SideBarContainerType = None, child!: () -> Unit = {=>}) {
@@ -413,8 +393,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
      * @relation showSideBar(value: boolean): SideBarContainerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showSideBar(value: ?Bool): This {
@@ -433,8 +412,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
      * @relation controlButton(value: ButtonStyle): SideBarContainerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func controlButton(value: ?ButtonStyle): This {
@@ -469,8 +447,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
      * @relation showControlButton(value: boolean): SideBarContainerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showControlButton(value: ?Bool): This {
@@ -489,8 +466,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
      * @relation onChange(callback: (value: boolean) => void): SideBarContainerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Bool) -> Unit): This {
@@ -510,8 +486,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
      * @relation sideBarWidth(value: Length): SideBarContainerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sideBarWidth(value: ?Length): This {
@@ -531,8 +506,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
      * @relation minSideBarWidth(value: Length): SideBarContainerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func minSideBarWidth(value: ?Length): This {
@@ -552,8 +526,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
      * @relation maxSideBarWidth(value: Length): SideBarContainerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxSideBarWidth(value: ?Length): This {
@@ -573,8 +546,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
      * @relation autoHide(value: boolean): SideBarContainerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoHide(value: ?Bool): This {
@@ -593,8 +565,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
      * @relation sideBarPosition(value: SideBarPosition): SideBarContainerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sideBarPosition(value: ?SideBarPosition): This {
@@ -613,8 +584,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
      * @relation divider(value: DividerStyle | null): SideBarContainerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func divider(value: ?DividerStyle): This {
@@ -636,8 +606,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
      * @relation minContentWidth(value: Dimension): SideBarContainerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func minContentWidth(value: ?Length): This {

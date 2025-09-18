@@ -32,8 +32,7 @@ foreign {
  * @relation interface CanvasPattern
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CanvasPattern <: RemoteDataLite {
@@ -65,8 +64,7 @@ public class CanvasPattern <: RemoteDataLite {
      * @relation setTransform(transform?: Matrix2D): void;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTransform(transform: Option<Matrix2D>): Unit {

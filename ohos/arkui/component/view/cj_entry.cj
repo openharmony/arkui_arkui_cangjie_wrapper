@@ -31,8 +31,7 @@ import std.collection.HashMap
  *   4. provide native method to throw CJ error
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CJEntry {
@@ -47,8 +46,7 @@ public class CJEntry {
      * @return { CJEntry }
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getInstance(): CJEntry {
@@ -63,8 +61,7 @@ public class CJEntry {
      * @return { CJEntry }
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func registerEntry(name: String, call: () -> Bool): Unit {

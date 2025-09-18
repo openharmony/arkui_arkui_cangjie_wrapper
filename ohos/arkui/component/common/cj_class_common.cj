@@ -28,8 +28,7 @@ import std.convert.*
  * @relation declare interface EventTarget
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EventTarget {
@@ -39,8 +38,7 @@ public class EventTarget {
      * @relation area: Area;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var area: ?Area
@@ -49,8 +47,7 @@ public class EventTarget {
      * constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(area: ?Area) {
@@ -64,42 +61,36 @@ public class EventTarget {
  * @relation declare interface Area
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Area {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Length
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var position: ?Position
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var globalPosition: ?Position
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -116,28 +107,24 @@ public class Area {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Position {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Length
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Length
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x!: ?Length = None, y!: ?Length = None) {
@@ -147,39 +134,33 @@ public class Position {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MotionPathOptions {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var path: ?String
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var from: ?Float64
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var to: ?Float64
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var rotatable: ?Bool
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -196,51 +177,43 @@ public class MotionPathOptions {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SharedTransitionOptions {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var duration: ?Int32
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var curve: ?Curve
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var delay: ?Int32
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var motionPath: ?MotionPathOptions
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var zIndex: ?Int32
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var effectType: ?SharedTransitionEffectType
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -261,69 +234,58 @@ public class SharedTransitionOptions {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AnimateParam {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var duration: ?Int32
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var tempo: ?Float32
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var curve: ?Curve
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var delay: ?Int32
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var iterations: ?Int32
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var playMode: ?PlayMode
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onFinish: Option<() -> Unit>
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var finishCallbackType: ?FinishCallbackType
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var expectedFrameRateRange: Option<ExpectedFrameRateRange>
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -353,8 +315,7 @@ public class AnimateParam {
  * Defines the HorizontalAlignment.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class HorizontalAlignment {
@@ -362,8 +323,7 @@ public class HorizontalAlignment {
      * ID of the component that functions as the anchor point.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var anchor: ?String
@@ -372,8 +332,7 @@ public class HorizontalAlignment {
      * alignment mode relative to the anchor component.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var align: ?HorizontalAlign
@@ -386,8 +345,7 @@ public class HorizontalAlignment {
     * @returns { This }
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(anchor: ?String, align: ?HorizontalAlign) {
@@ -400,8 +358,7 @@ public class HorizontalAlignment {
  * Defines the VerticalAlignment.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class VerticalAlignment {
@@ -409,8 +366,7 @@ public class VerticalAlignment {
      * ID of the component that functions as the anchor point.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var anchor: ?String
@@ -419,8 +375,7 @@ public class VerticalAlignment {
      * alignment mode relative to the anchor component.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var align: ?VerticalAlign
@@ -433,8 +388,7 @@ public class VerticalAlignment {
     * @returns { This }
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(anchor: ?String, align: ?VerticalAlign) {
@@ -449,8 +403,7 @@ public class VerticalAlignment {
  * @relation interface Bias
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Bias {
@@ -462,8 +415,7 @@ public class Bias {
      * @default 0.5
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var horizontal: ?Float32
@@ -475,8 +427,7 @@ public class Bias {
      * @default 0.5
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var vertical: ?Float32
@@ -489,8 +440,7 @@ public class Bias {
     * @returns { This }
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(horizontal!: ?Float32 = None, vertical!: ?Float32 = None) {
@@ -505,8 +455,7 @@ public class Bias {
  * @relation declare interface Font
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Fonts {
@@ -516,8 +465,7 @@ public class Fonts {
     * @relation size?: Length;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var size: ?Length
@@ -528,8 +476,7 @@ public class Fonts {
      * @relation weight?: FontWeight | number | string;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var weight: ?FontWeight
@@ -540,8 +487,7 @@ public class Fonts {
      * @relation family?: string | Resource;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var family: ?String
@@ -552,8 +498,7 @@ public class Fonts {
      * @relation style?: FontStyle;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var style: ?FontStyle
@@ -562,8 +507,7 @@ public class Fonts {
      * constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?ResourceStr = None,
@@ -580,42 +524,36 @@ public class Fonts {
  *
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BorderRadiuses {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var topLeft: ?Length
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var topRight: ?Length
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bottomLeft: ?Length
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bottomRight: ?Length
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(topLeft!: ?Length = None, topRight!: ?Length = None, bottomLeft!: ?Length = None,
@@ -664,8 +602,7 @@ public class BorderRadiuses {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Margin {
@@ -675,8 +612,7 @@ public class Margin {
     protected let left: Length
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(top!: ?Length = None, right!: ?Length = None, bottom!: ?Length = None, left!: ?Length = None) {
@@ -719,51 +655,43 @@ public class Margin {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ShadowOptions {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var radius: ?Float64
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadowType: ?ShadowType
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ?ResourceColor
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offsetX: ?Float64
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offsetY: ?Float64
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fill: ?Bool
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -903,26 +831,22 @@ protected func parseAnimateParam(params: AnimateParam): NativeAnimateParam {
  * @relation declare interface Offset
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Offset {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dx: ?Length
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dy: ?Length
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(dx: ?Length, dy: ?Length) {
@@ -947,33 +871,28 @@ protected func parseOffset(offset: Offset): NativeOffset {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ExpectedFrameRateRange {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var min: ?Int32
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var max: ?Int32
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var expected: ?Int32
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -993,8 +912,7 @@ public class ExpectedFrameRateRange {
  * @relation interface AlignRuleOption
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AlignRuleOptions {
@@ -1007,8 +925,7 @@ public class AlignRuleOptions {
     * @relation left?: { anchor: string, align: HorizontalAlign }
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var left: ?HorizontalAlignment
@@ -1022,8 +939,7 @@ public class AlignRuleOptions {
     * @relation right?: { anchor: string, align: HorizontalAlign }
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var right: ?HorizontalAlignment
@@ -1037,8 +953,7 @@ public class AlignRuleOptions {
     * @relation middle?: { anchor: string, align: HorizontalAlign }
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var middle: ?HorizontalAlignment
@@ -1052,8 +967,7 @@ public class AlignRuleOptions {
     * @relation top?: { anchor: string, align: VerticalAlign }
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var top: ?VerticalAlignment
@@ -1067,8 +981,7 @@ public class AlignRuleOptions {
     * @relation bottom?: { anchor: string, align: VerticalAlign }
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bottom: ?VerticalAlignment
@@ -1082,8 +995,7 @@ public class AlignRuleOptions {
     * @relation center?: { anchor: string, align: VerticalAlign }
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var center: ?VerticalAlignment
@@ -1096,8 +1008,7 @@ public class AlignRuleOptions {
     * @relation bias?: Bias
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bias: ?Bias
@@ -1115,8 +1026,7 @@ public class AlignRuleOptions {
     * @returns { This }
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = None,
@@ -1135,39 +1045,33 @@ public class AlignRuleOptions {
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EdgeStyles {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var top: ?BorderStyle
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var right: ?BorderStyle
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bottom: ?BorderStyle
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var left: ?BorderStyle
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1200,7 +1104,7 @@ protected class MultiShadowOptionsImpl {}
  * @relation interface MultiShadowOptions
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class MultiShadowOptions {
@@ -1217,7 +1121,7 @@ public open class MultiShadowOptions {
      * @relation radius?: number | Resource
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var radius: ?Length
@@ -1230,7 +1134,7 @@ public open class MultiShadowOptions {
      * @relation offsetX?: number | Resource
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offsetX: ?Length
@@ -1243,7 +1147,7 @@ public open class MultiShadowOptions {
      * @relation offsetY?: number | Resource
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offsetY: ?Length
@@ -1262,7 +1166,7 @@ public open class MultiShadowOptions {
  * @relation interface PickerTextStyle
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PickerTextStyle {
@@ -1273,7 +1177,7 @@ public class PickerTextStyle {
      * @relation color?: ResourceColor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ?ResourceColor
@@ -1285,7 +1189,7 @@ public class PickerTextStyle {
      * @relation font?: Font
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var font: ?Font
@@ -1297,7 +1201,7 @@ public class PickerTextStyle {
      * @param { ?Font } font
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(color!: ?ResourceColor = None, font!: ?Font = None) {
@@ -1313,7 +1217,7 @@ public class PickerTextStyle {
  * @relation interface PickerTextStyle
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Font {
@@ -1324,7 +1228,7 @@ public class Font {
      * @relation size?: Length
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var size: ?Length
@@ -1335,7 +1239,7 @@ public class Font {
      * @relation weight?: FontWeight | number | string
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var weight: ?FontWeight
@@ -1346,7 +1250,7 @@ public class Font {
      * @relation family?: string | Resource
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var family: ?ResourceStr
@@ -1357,7 +1261,7 @@ public class Font {
      * @relation style?: FontStyle
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var style: ?FontStyle
@@ -1371,7 +1275,7 @@ public class Font {
      * @param { ?FontStyle } style
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?ResourceStr = None,

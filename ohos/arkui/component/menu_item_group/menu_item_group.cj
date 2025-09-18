@@ -34,8 +34,7 @@ foreign {
  * @relation declare const MenuItemGroup: MenuItemGroupInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MenuItemGroup <: CommonMethodComponent<MenuItemGroupAttribute> & MenuItemGroupAttribute {
@@ -50,8 +49,7 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroupAttribute> & Me
      * @relation (value?: MenuItemGroupOptions): MenuItemGroupAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(header!: ?ResourceStr = None, footer!: ?ResourceStr = None, child!: () -> Unit = {=>}) {
@@ -74,8 +72,7 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroupAttribute> & Me
      * @relation (value?: MenuItemGroupOptions): MenuItemGroupAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(header!: CustomBuilder, footer!: CustomBuilder, child!: () -> Unit = {=>}) {

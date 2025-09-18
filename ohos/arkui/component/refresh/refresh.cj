@@ -46,8 +46,7 @@ foreign {
  * @relation interface RefreshOptions
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RefreshOptions {
@@ -57,8 +56,7 @@ public class RefreshOptions {
     * @relation refreshing: boolean
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var refreshing: ?Bool
@@ -68,8 +66,7 @@ public class RefreshOptions {
     * @relation changeEvent: boolean
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var changeEvent: ?(Bool) -> Unit
@@ -81,8 +78,7 @@ public class RefreshOptions {
     * @relation (value: RefreshOptions): RefreshAttribute
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(refreshing!: ?Bool) {
@@ -97,8 +93,7 @@ public class RefreshOptions {
     * @relation (value: RefreshOptions): RefreshAttribute
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(refreshing!: ?(Bool, (Bool) -> Unit)) {
@@ -113,8 +108,7 @@ public class RefreshOptions {
 * @relation declare const Refresh: RefreshInterface
 */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribute {
@@ -127,8 +121,7 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
     * @relation (value: RefreshOptions): RefreshAttribute
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?RefreshOptions, child: () -> Unit) {
@@ -159,8 +152,7 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
     * @relation onStateChange(callback: (state: RefreshStatus) => void): RefreshAttribute
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStateChange(callback: ?(RefreshStatus) -> Unit): This {
@@ -182,8 +174,7 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
     * @relation onRefreshing(callback: () => void): RefreshAttribute
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onRefreshing(callback: ?() -> Unit): This {

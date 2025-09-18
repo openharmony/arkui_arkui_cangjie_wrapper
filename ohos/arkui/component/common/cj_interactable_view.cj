@@ -31,7 +31,7 @@ sealed abstract class BaseEvent {
      * @relation target: EventTarget;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var target: ?EventTarget
@@ -42,7 +42,7 @@ sealed abstract class BaseEvent {
      * @relation timestamp: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timestamp: ?Int64
@@ -53,7 +53,7 @@ sealed abstract class BaseEvent {
      * @relation source: SourceType;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var source: ?SourceType
@@ -64,7 +64,7 @@ sealed abstract class BaseEvent {
      * @relation deviceId: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var deviceId: ?Int64
@@ -92,7 +92,7 @@ sealed abstract class BaseEvent {
  * @relation declare interface TouchObject
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TouchObject {
@@ -102,7 +102,7 @@ public class TouchObject {
      * @relation type: TouchType;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var touchType: ?TouchType
@@ -113,7 +113,7 @@ public class TouchObject {
      * @relation id: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var id: ?Int32
@@ -124,7 +124,7 @@ public class TouchObject {
      * @relation globalDisplayX?: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenX: ?Float64
@@ -135,7 +135,7 @@ public class TouchObject {
      * @relation globalDisplayY?: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenY: ?Float64
@@ -146,7 +146,7 @@ public class TouchObject {
      * @relation x: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Float64
@@ -157,7 +157,7 @@ public class TouchObject {
      * @relation y: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Float64
@@ -181,7 +181,7 @@ public class TouchObject {
  * @relation declare interface ClickEvent extends BaseEvent
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ClickEvent <: BaseEvent {
@@ -191,7 +191,7 @@ public class ClickEvent <: BaseEvent {
      * @relation x: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Float64
@@ -201,7 +201,7 @@ public class ClickEvent <: BaseEvent {
      * @relation y: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Float64
@@ -212,7 +212,7 @@ public class ClickEvent <: BaseEvent {
      * @relation windowX: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var windowX: ?Float64
@@ -222,7 +222,7 @@ public class ClickEvent <: BaseEvent {
      * @relation windowY: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var windowY: ?Float64
@@ -232,7 +232,7 @@ public class ClickEvent <: BaseEvent {
      * @relation displayX: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var displayX: ?Float64
@@ -242,7 +242,7 @@ public class ClickEvent <: BaseEvent {
      * @relation displayY: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var displayY: ?Float64
@@ -265,7 +265,7 @@ public class ClickEvent <: BaseEvent {
  * @relation interface DragInfo
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DragInfo {
@@ -275,7 +275,7 @@ public class DragInfo {
      * @relation extraParams?: string;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var extraParams: ?String
@@ -285,7 +285,7 @@ public class DragInfo {
      * @relation touchPoint?: TouchPoint;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var touchPoint: ?Position
@@ -302,7 +302,7 @@ public class DragInfo {
  * @relation declare interface DragItemInfo
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DragItemInfo {
@@ -312,7 +312,7 @@ public class DragItemInfo {
      * @relation pixelMap?: PixelMap;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var pixelMap: ?PixelMap
@@ -323,7 +323,7 @@ public class DragItemInfo {
      * @relation builder?: CustomBuilder;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var builder: ?CustomBuilder
@@ -334,7 +334,7 @@ public class DragItemInfo {
      * @relation extraInfo?: string;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var extraInfo: ?String
@@ -355,7 +355,7 @@ public class DragItemInfo {
  * @relation declare interface MouseEvent extends BaseEvent
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MouseEvent <: BaseEvent {
@@ -366,7 +366,7 @@ public class MouseEvent <: BaseEvent {
      * @relation screenX: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenX: ?Float64
@@ -378,7 +378,7 @@ public class MouseEvent <: BaseEvent {
      * @relation screenX: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenY: ?Float64
@@ -389,7 +389,7 @@ public class MouseEvent <: BaseEvent {
      * @relation x: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Float64
@@ -400,7 +400,7 @@ public class MouseEvent <: BaseEvent {
      * @relation y: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Float64
@@ -411,7 +411,7 @@ public class MouseEvent <: BaseEvent {
      * @relation button: MouseButton;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var button: ?MouseButton
@@ -422,7 +422,7 @@ public class MouseEvent <: BaseEvent {
      * @relation action: MouseAction;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var action: ?MouseAction
@@ -431,7 +431,7 @@ public class MouseEvent <: BaseEvent {
      * constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(timestamp: ?Int64, screenX: ?Float64, screenY: ?Float64, x: ?Float64, y: ?Float64, button: ?MouseButton,
@@ -452,7 +452,7 @@ public class MouseEvent <: BaseEvent {
  * @relation declare interface TouchEvent extends BaseEvent
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TouchEvent <: BaseEvent {
@@ -464,7 +464,7 @@ public class TouchEvent <: BaseEvent {
      * @relation type: TouchType;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var eventType: ?TouchType
@@ -475,7 +475,7 @@ public class TouchEvent <: BaseEvent {
      * @relation touches: TouchObject[];
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var touches: ?Array<TouchObject>
@@ -486,13 +486,13 @@ public class TouchEvent <: BaseEvent {
      * @relation touches: TouchObject[];
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var changedTouches: ?Array<TouchObject>
 
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     init(eventType: TouchType, touches: Array<TouchObject>, changedTouches: Array<TouchObject>, timestamp: Int64,
@@ -509,7 +509,7 @@ public class TouchEvent <: BaseEvent {
      * @relation stopPropagation: () => void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stopPropagation(): Unit {
@@ -523,7 +523,7 @@ public class TouchEvent <: BaseEvent {
  * @relation declare interface KeyEvent
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class KeyEvent {
@@ -535,7 +535,7 @@ public class KeyEvent {
      * @relation keyText: string;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keyText: ?String
@@ -546,7 +546,7 @@ public class KeyEvent {
      * @relation type: KeyType;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keyType: ?KeyType
@@ -557,7 +557,7 @@ public class KeyEvent {
      * @relation keyCode: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keyCode: ?Int32
@@ -568,7 +568,7 @@ public class KeyEvent {
      * @relation keySource: KeySource;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keySource: ?KeySource
@@ -581,7 +581,7 @@ public class KeyEvent {
      * @relation metaKey: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var metaKey: ?Int32
@@ -592,7 +592,7 @@ public class KeyEvent {
      * @relation timestamp: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timestamp: ?Int64
@@ -603,7 +603,7 @@ public class KeyEvent {
      * @relation deviceId: number;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var deviceId: ?Int64
@@ -612,7 +612,7 @@ public class KeyEvent {
      * constructor
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(keyText: ?String, keyType: ?KeyType, keyCode: ?Int32, keySource: ?KeySource, metaKey: ?Int32,
@@ -632,7 +632,7 @@ public class KeyEvent {
      * @relation stopPropagation: () => void;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stopPropagation(): Unit {

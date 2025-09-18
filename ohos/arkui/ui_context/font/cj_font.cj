@@ -54,8 +54,7 @@ struct NativeOptionFontInfo {
  * @relation FontInfo
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class FontInfo {
@@ -66,8 +65,7 @@ public class FontInfo {
      * @relation path: string;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var path: String
@@ -79,8 +77,7 @@ public class FontInfo {
      * @relation postScriptName: string;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var postScriptName: String
@@ -92,8 +89,7 @@ public class FontInfo {
      * @relation fullName: string;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fullName: String
@@ -105,8 +101,7 @@ public class FontInfo {
      * @relation family: string;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var family: String
@@ -118,8 +113,7 @@ public class FontInfo {
      * @relation subfamily: string;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var subfamily: String
@@ -131,8 +125,7 @@ public class FontInfo {
      * @relation weight: number;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var weight: UInt32
@@ -144,8 +137,7 @@ public class FontInfo {
      * @relation width: number;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: UInt32
@@ -157,8 +149,7 @@ public class FontInfo {
      * @relation italic: boolean;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var italic: Bool
@@ -170,8 +161,7 @@ public class FontInfo {
      * @relation monoSpace: boolean;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var monoSpace: Bool
@@ -183,8 +173,7 @@ public class FontInfo {
      * @relation symbolic: boolean;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var symbolic: Bool
@@ -228,8 +217,7 @@ foreign func FfiFontManagerGetUIFontConfig(): NativeUIFontConfig
  * @relation export declare class Font
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Font {
@@ -247,8 +235,7 @@ public class Font {
      * @relation registerFont(options: font.FontOptions): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func registerFont(familyName!: ResourceStr, familySrc!: ResourceStr): Unit {
@@ -280,8 +267,7 @@ public class Font {
      * @relation getSystemFontList(): Array<string>
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getSystemFontList(): Array<String> {
@@ -303,8 +289,7 @@ public class Font {
      * @relation getFontByName(fontName: string): font.FontInfo
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getFontByName(fontName: String): ?FontInfo {

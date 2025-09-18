@@ -81,8 +81,7 @@ foreign {
  * @relation const Shape: ShapeInterface;
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribute {
@@ -94,8 +93,7 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
     * relation (value?: PixelMap): ShapeAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = { => }) {
@@ -112,8 +110,7 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
     * relation (value?: PixelMap): ShapeAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?PixelMap) {
@@ -134,8 +131,7 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
     * @relation viewPort(value: ViewportRect): ShapeAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func viewPort(
@@ -174,8 +170,7 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
     * @relation mesh(value: Array<any>, column: number, row: number): ShapeAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func mesh(array: ?Array<Float64>, column: ?UInt32, row: ?UInt32): This {

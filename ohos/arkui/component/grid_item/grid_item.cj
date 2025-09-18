@@ -46,8 +46,7 @@ foreign {
  * @relation declare const GridItem: GridItemInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttribute {
@@ -59,8 +58,7 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      * @relation (value?: GridItemOptions): GridItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -77,8 +75,7 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      * @relation (value?: GridItemOptions): GridItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -96,8 +93,7 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      * @relation columnStart(value: number): GridItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnStart(value: ?Int32): This {
@@ -116,8 +112,7 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      * @relation columnEnd(value: number): GridItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnEnd(value: ?Int32): This {
@@ -136,8 +131,7 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      * @relation rowStart(value: number): GridItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowStart(value: ?Int32): This {
@@ -156,8 +150,7 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      * @relation rowEnd(value: number): GridItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowEnd(value: ?Int32): This {

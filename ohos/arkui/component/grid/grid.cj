@@ -109,8 +109,7 @@ foreign {
  * @relation declare const Grid: GridInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttribute {
@@ -124,8 +123,7 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      * @relation (scroller?: Scroller, layoutOptions?: GridLayoutOptions): GridAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(scroller!: Option<Scroller> = Option.None, child!: () -> Unit = {=>}) {
@@ -150,8 +148,7 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      * @relation columnsTemplate(value: string): GridAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnsTemplate(value: ?String): This {
@@ -172,8 +169,7 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      * @relation rowsTemplate(value: string): GridAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowsTemplate(value: ?String): This {
@@ -194,8 +190,7 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      * @relation columnsGap(value: Length): GridAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnsGap(value: ?Length): This {
@@ -226,8 +221,7 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      * @relation rowsGap(value: Length): GridAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowsGap(value: ?Length): This {
@@ -258,8 +252,7 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      * @relation cachedCount(value: number): GridAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(value: ?Int32): This {
@@ -276,8 +269,7 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
      * @relation cachedCount(count: number, show: boolean): GridAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(count: ?Int32, show: ?Bool): This {

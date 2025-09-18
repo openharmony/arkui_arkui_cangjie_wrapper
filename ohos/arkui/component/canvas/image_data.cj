@@ -38,8 +38,7 @@ foreign {
  * @relation declare class ImageData
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageData <: RemoteDataLite {
@@ -49,8 +48,7 @@ public class ImageData <: RemoteDataLite {
      * @relation readonly height: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop width: Int32 {
@@ -67,8 +65,7 @@ public class ImageData <: RemoteDataLite {
      * @relation readonly height(): number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop height: Int32 {
@@ -85,8 +82,7 @@ public class ImageData <: RemoteDataLite {
      * @relation readonly data: Uint8ClampedArray
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop data: Array<UInt8> {
@@ -111,8 +107,7 @@ public class ImageData <: RemoteDataLite {
      * @relation constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width: ?Float64, height: ?Float64, data!: ?Array<UInt8>,
@@ -144,8 +139,7 @@ public class ImageData <: RemoteDataLite {
      * @relation constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width: ?Float64, height: ?Float64, unit!: ?LengthMetricsUnit = None) {

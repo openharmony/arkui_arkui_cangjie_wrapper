@@ -72,7 +72,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onClick(event: (event: ClickEvent) => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onClick(event: ?(ClickEvent) -> Unit): T {
@@ -99,7 +99,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onAppear(event: () => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onAppear(event: ?() -> Unit): T {
@@ -122,7 +122,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onDisAppear(event: () => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDisAppear(event: ?() -> Unit): T {
@@ -145,7 +145,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onTouch(event: (event: TouchEvent) => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onTouch(event: ?(TouchEvent) -> Unit): T {
@@ -174,7 +174,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onHover(event: (isHover: boolean, event: HoverEvent) => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onHover(event: ?(Bool) -> Unit): T {
@@ -197,7 +197,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onAreaChange(event: (oldValue: Area, newValue: Area) => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onAreaChange(event: ?(Area, Area) -> Unit): T {
@@ -223,7 +223,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onVisibleAreaChange(raitos: ?Array<Float64>, event: ?(Bool, Float64) -> Unit): T {
@@ -256,7 +256,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onMouse(event: (event: MouseEvent) => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onMouse(event: ?(MouseEvent) -> Unit): T {
@@ -284,7 +284,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onKeyEvent(event: (event: KeyEvent) => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onKeyEvent(event: ?(KeyEvent) -> Unit): T {
@@ -313,7 +313,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onFocus(event: () => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onFocus(event: ?() -> Unit): T {
@@ -336,7 +336,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onBlur(event: () => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onBlur(event: ?() -> Unit): T {
@@ -359,7 +359,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragStart(event: ?(DragInfo) -> DragItemInfo): T {
@@ -395,7 +395,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragStart(event: ?(DragInfo) -> CustomBuilder): T {
@@ -425,7 +425,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragStart(event: ?(DragInfo) -> Unit): T {
@@ -455,7 +455,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragEnter(event: ?(DragInfo) -> Unit): T {
@@ -483,7 +483,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onDragMove(event: (event: DragEvent, extraParams?: string) => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragMove(event: ?(DragInfo) -> Unit): T {
@@ -510,7 +510,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragLeave(event: ?(DragInfo) -> Unit): T {
@@ -538,7 +538,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation onDrop(event: (event: DragEvent, extraParams?: string) => void): T;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDrop(event: ?(DragInfo) -> Unit): T {
@@ -569,8 +569,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation width(value: Length): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func width(value: Option<Length>): T {
@@ -604,8 +603,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation height(value: Length): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func height(value: Option<Length>): T {
@@ -638,8 +636,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation size(value: SizeOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func size(width!: ?Length, height!: ?Length): T {
@@ -665,8 +662,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation padding(value: Padding | Length | LocalizedPadding): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func padding(value: ?Length): T {
@@ -690,8 +686,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation padding(value: Padding | Length | LocalizedPadding): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func padding(top!: ?Length = None, right!: ?Length = None, bottom!: ?Length = None, left!: ?Length = None): T {
@@ -728,8 +723,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation margin(value: Margin | Length | LocalizedMargin): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func margin(value: ?Length): T {
@@ -753,8 +747,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation margin(value: Margin | Length | LocalizedMargin): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func margin(top!: ?Length = None, right!: ?Length = None, bottom!: ?Length = None, left!: ?Length = None): T {
@@ -791,8 +784,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation layoutWeight(value: number | string): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func layoutWeight(value: ?Int32): T {
@@ -816,8 +808,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation constraintSize(value: ConstraintSizeOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func constraintSize(minWidth!: ?Length = None, maxWidth!: ?Length = None,
@@ -856,8 +847,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation align(value: Alignment): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func align(value: ?Alignment): T {
@@ -881,8 +871,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation direction(value: Direction): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func direction(value: ?Direction): T {
@@ -907,8 +896,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation position(value: Position | Edges | LocalizedEdges): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func position(x!: ?Length, y!: ?Length): T {
@@ -936,8 +924,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation markAnchor(value: Position | LocalizedPosition): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func markAnchor(x!: ?Length, y!: ?Length): T {
@@ -966,8 +953,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation offset(value: Position | Edges | LocalizedEdges): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func offset(x!: ?Length, y!: ?Length): T {
@@ -994,8 +980,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation alignRules(value: AlignRuleOption): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignRules(value: ?AlignRuleOptions): T {
@@ -1019,8 +1004,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation aspectRatio(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func aspectRatio(value: ?Float64): T {
@@ -1042,8 +1026,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation displayPriority(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func displayPriority(value: ?Int32): T {
@@ -1064,8 +1047,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation flexBasis(value: number | string): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flexBasis(value: ?Length): T {
@@ -1088,8 +1070,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation flexGrow(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flexGrow(value: ?Float64): T {
@@ -1104,8 +1085,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation flexGrow(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flexGrow(value: ?Int64): T {
@@ -1127,8 +1107,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation flexShrink(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flexShrink(value: ?Float64): T {
@@ -1143,8 +1122,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation flexShrink(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flexShrink(value: ?Int64): T {
@@ -1168,8 +1146,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation flexShrink(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignSelf(value: ?ItemAlign): T {
@@ -1192,8 +1169,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation responseRegion(value: Array<Rectangle> | Rectangle): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func responseRegion(value: ?Rectangle): T {
@@ -1228,8 +1204,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation responseRegion(value: Array<Rectangle> | Rectangle): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func responseRegion(value: ?Array<Rectangle>): T {
@@ -1263,8 +1238,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation border(value: BorderOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func border(width!: ?Length, color!: ?ResourceColor = None, radius!: ?Length = None,
@@ -1294,8 +1268,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func borderWidth(value: ?Length): T {
@@ -1322,8 +1295,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func borderWidth(value: ?EdgeWidths): T {
@@ -1350,8 +1322,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func borderColor(value: ?ResourceColor): T {
@@ -1378,8 +1349,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func borderRadius(topLeft!: ?Length = None, topRight!: ?Length = None, bottomLeft!: ?Length = None,
@@ -1417,8 +1387,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func borderRadius(value: ?Length): T {
@@ -1443,8 +1412,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation borderStyle(value: BorderStyle | EdgeStyles): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func borderStyle(value: ?BorderStyle): T {
@@ -1467,8 +1435,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation foregroundBlurStyle(value: BlurStyle, options?: ForegroundBlurStyleOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func foregroundBlurStyle(value: ?BlurStyle): T {
@@ -1485,8 +1452,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation foregroundBlurStyle(value: BlurStyle, options?: ForegroundBlurStyleOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func foregroundBlurStyle(value: ?BlurStyle, options: ?ForegroundBlurStyleOptions): T {
@@ -1517,8 +1483,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation foregroundColor(value: ResourceColor | ColoringStrategy): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func foregroundColor(value: ?ColoringStrategy): T {
@@ -1535,8 +1500,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation foregroundColor(value: ResourceColor | ColoringStrategy): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func foregroundColor(value: ?ResourceColor): T {
@@ -1568,8 +1532,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation backgroundColor(value: ResourceColor): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundColor(value: ?ResourceColor): T {
@@ -1592,8 +1555,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation backgroundImage(src: ResourceStr | PixelMap, options?: BackgroundImageOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundImage(src: ?ResourceStr): T {
@@ -1609,8 +1571,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation backgroundImage(src: ResourceStr | PixelMap, options?: BackgroundImageOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundImage(src: ?ResourceStr, repeat: ?ImageRepeat): T {
@@ -1647,8 +1608,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation backgroundImageSize(value: SizeOptions | ImageSize): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundImageSize(value: ?ImageSize): T {
@@ -1665,8 +1625,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation backgroundImageSize(value: SizeOptions | ImageSize): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundImageSize(width!: ?Length = None, height!: ?Length = None): T {
@@ -1700,8 +1659,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation backgroundImagePosition(value: Position | Alignment): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundImagePosition(value: ?Alignment): T {
@@ -1720,8 +1678,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation backgroundImagePosition(value: Position | Alignment): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundImagePosition(x!: ?Length = None, y!: ?Length = None): T {
@@ -1760,8 +1717,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation scale(value: ScaleOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scale(x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, centerX!: ?Length = None,
@@ -1787,8 +1743,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation opacity(value: number | Resource): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func opacity(value: ?Float64): T {
@@ -1809,8 +1764,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation rotate(value: RotateOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rotate(x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, angle!: ?Float32 = None,
@@ -1834,8 +1788,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation translate(value: TranslateOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func translate(x!: ?Length = None, y!: ?Length = None, z!: ?Length = None): T {
@@ -1863,8 +1816,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation enabled(value: boolean): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enabled(value: ?Bool): T {
@@ -1888,8 +1840,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation sharedTransition(id: string, options?: sharedTransitionOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sharedTransition(id: ?String, options!: ?SharedTransitionOptions = None): T {
@@ -1926,8 +1877,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation geometryTransition(id: string, options?: GeometryTransitionOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func geometryTransition(id: ?String, followWithoutTransition!: ?Bool = None): T {
@@ -1954,8 +1904,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation blur(value: number, options?: BlurOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func blur(value: ?Float64): T {
@@ -1978,8 +1927,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation colorBlend(value: Color | string | Resource): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colorBlend(value: ?ResourceColor): T {
@@ -2002,8 +1950,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation backdropBlur(value: number, options?: BlurOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backdropBlur(value: ?Float64): T {
@@ -2024,8 +1971,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation shadow(value: ShadowOptions | ShadowStyle): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func shadow(radius!: ?Float64, color!: ?ResourceColor = None, offsetX!: ?Float64 = None,
@@ -2049,8 +1995,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation grayscale(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func grayscale(value: ?Float64): T {
@@ -2073,8 +2018,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation grayscale(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func brightness(value: ?Float64): T {
@@ -2097,8 +2041,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation saturate(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func saturate(value: ?Float64): T {
@@ -2121,8 +2064,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation saturate(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contrast(value: ?Float64): T {
@@ -2146,8 +2088,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation invert(value: number | InvertOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func invert(value: ?Float64): T {
@@ -2174,8 +2115,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation invert(value: number | InvertOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func invert(low!: ?Float64, high!: ?Float64, threshold!: ?Float64, thresholdRange!: ?Float64): T {
@@ -2280,8 +2220,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation sepia(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sepia(value: ?Float64): T {
@@ -2290,8 +2229,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected open func sepiaInner(value: Float64): T {
@@ -2309,8 +2247,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation hueRotate(value: number | string): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func hueRotate(value: ?Float32): T {
@@ -2333,8 +2270,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation zIndex(value: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func zIndex(value: ?Int32): T {
@@ -2357,8 +2293,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation visibility(value: Visibility): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func visibility(value: ?Visibility): T {
@@ -2382,8 +2317,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation clip(value: boolean): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clip(value: ?Bool): T {
@@ -2406,8 +2340,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clipShape(value: ?BaseShape): T {
@@ -2423,8 +2356,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maskShape(value: ?BaseShape): T {
@@ -2452,8 +2384,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func overlay(value!: ?String, align!: ?Alignment = Option.None,
@@ -2548,8 +2479,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindPopup(show: ?Bool, popup: ?PopupOptions): T {
@@ -2606,8 +2536,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindPopup(show: ?Bool, popup: ?CustomPopupOptions): T {
@@ -2661,8 +2590,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation bindMenu(content: Array<MenuElement> | CustomBuilder, options?: MenuOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindMenu(content: ?Array<MenuElement>): T {
@@ -2697,8 +2625,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation bindMenu(content: Array<MenuElement> | CustomBuilder, options?: MenuOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindMenu(builder!: ?CustomBuilder): T {
@@ -2719,8 +2646,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindContextMenu(builder!: ?CustomBuilder, responseType!: ?ResponseType,
@@ -2754,8 +2680,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation linearGradient(value: LinearGradientOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func linearGradient(angle!: ?Float64 = None, direction!: ?GradientDirection = Option.None,
@@ -2787,8 +2712,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation sweepGradient(value: SweepGradientOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sweepGradient(center: ?(Length, Length), start!: ?Float64 = None, end!: ?Float64 = None,
@@ -2817,8 +2741,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation radialGradient(value: RadialGradientOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radialGradient(center: ?(Length, Length), radius: ?Length, colors: ?Array<(ResourceColor, Float64)>,
@@ -2870,8 +2793,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?: () => void): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>): T {
@@ -2886,8 +2808,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?: () => void): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keyboardShortcut(value: ?String, keys: ?Array<ModifierKey>): T {
@@ -2902,8 +2823,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?: () => void): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>, action: ?() -> Unit): T {
@@ -2919,8 +2839,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?: () => void): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keyboardShortcut(value: ?String, keys: ?Array<ModifierKey>, action: ?() -> Unit): T {
@@ -2968,8 +2887,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation key(value: string): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func key(value: ?String): T {
@@ -2992,8 +2910,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation renderFit(fitMode: RenderFit): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func renderFit(fitMode: ?RenderFit): T {
@@ -3014,8 +2931,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation id(value: string): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func id(value: ?String): T {
@@ -3038,8 +2954,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation expandSafeArea(types?: Array<SafeAreaType>, edges?: Array<SafeAreaEdge>): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func expandSafeArea(types!: ?Array<SafeAreaType> = None, edges!: ?Array<SafeAreaEdge> = None): T {
@@ -3077,8 +2992,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCoverOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindContentCover(isShow: ?Bool, builder: ?CustomBuilder,
@@ -3102,8 +3016,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation animation(value: AnimateParam): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func animationStart(value: ?AnimateParam): T {
@@ -3126,8 +3039,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation animation(value: AnimateParam): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func animationEnd(): T {
@@ -3149,8 +3061,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation transition(value: TransitionEffect): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func transition(value: ?TransitionEffect): T {
@@ -3164,8 +3075,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation transition(value: TransitionEffect): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func transition(value: ?TransitionEffect, onFinish: ?TransitionFinishCallback): T {
@@ -3201,8 +3111,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation focusable(value: boolean): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func focusable(value: ?Bool): T {
@@ -3224,8 +3133,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation tabIndex(index: number): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func tabIndex(index: ?Int32): T {
@@ -3246,8 +3154,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation defaultFocus(value: boolean): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func defaultFocus(value: ?Bool): T {
@@ -3268,8 +3175,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation groupDefaultFocus(value: boolean): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func groupDefaultFocus(value: ?Bool): T {
@@ -3292,8 +3198,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation focusOnTouch(value: boolean): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func focusOnTouch(value: ?Bool): T {
@@ -3318,8 +3223,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindSheet(isShow: ?Bool, builder: ?CustomBuilder, options!: ?SheetOptions = None): T {
@@ -3348,8 +3252,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @relation dragPreview(value: CustomBuilder | DragItemInfo | string): T;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func dragPreview(value: ?String): T {

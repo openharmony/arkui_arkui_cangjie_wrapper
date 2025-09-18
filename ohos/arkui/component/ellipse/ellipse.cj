@@ -29,8 +29,7 @@ foreign func FfiOHOSAceFrameworkEllipseCreate(width: Float64, widthUnit: Int32, 
  * @relation declare const Ellipse: EllipseInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Ellipse <: CommonShapeMethodComponent<EllipseAttribute> & EllipseAttribute {
@@ -43,8 +42,7 @@ public class Ellipse <: CommonShapeMethodComponent<EllipseAttribute> & EllipseAt
      * @relation (options?: EllipseOptions): EllipseAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {
@@ -57,8 +55,7 @@ public class Ellipse <: CommonShapeMethodComponent<EllipseAttribute> & EllipseAt
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func initial() {}

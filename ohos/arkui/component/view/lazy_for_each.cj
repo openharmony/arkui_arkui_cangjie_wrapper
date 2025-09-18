@@ -163,8 +163,7 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
  * @realtion interface LazyForEachInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LazyForEach <: UINodeBase {
@@ -176,8 +175,7 @@ public class LazyForEach <: UINodeBase {
      *
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {}
@@ -187,8 +185,7 @@ public class LazyForEach <: UINodeBase {
      *
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func create<T>(viewID: Int64, parentView: CustomView, dataSource: IDataSource<T>,
@@ -214,8 +211,7 @@ public class LazyForEach <: UINodeBase {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func initial(): Unit {
@@ -224,8 +220,7 @@ public class LazyForEach <: UINodeBase {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func update(): Unit {

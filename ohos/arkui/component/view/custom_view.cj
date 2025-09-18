@@ -33,8 +33,7 @@ foreign func FfiOHOSAceFrameworkLoadNativeView(view: Int64): Bool
 foreign func FfiOHOSAceFrameworkProcessViewId(view: Int64): ExternalString
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func loadNativeView(view: CustomView): Bool {
@@ -49,14 +48,12 @@ type UpdateFuncNew = (Int64, Bool) -> UINodeBase
 type RecycleUpdateFunc = (Int64, Bool, ?CustomView) -> UINodeBase
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class CustomView <: RemoteView & Observer {
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let nativeView: View
@@ -88,8 +85,7 @@ public abstract class CustomView <: RemoteView & Observer {
     private var runReuse_: Bool = false
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(parent: Option<CustomView>, localStorage: Option<LocalStorage>) {
@@ -102,8 +98,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getLocalStorage(): LocalStorage {
@@ -117,8 +112,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func declareWatch<T>(propMember: ObservedProperty<T>, callBack: () -> Unit) {
@@ -139,8 +133,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func build(): Unit
@@ -159,8 +152,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func forceCompleteRerender(deep: Bool): Unit {
@@ -192,8 +184,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func updateElement(elmtId: Int64): Unit {
@@ -211,8 +202,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func updateDirtyElements() {
@@ -246,8 +236,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func purgeDeletedElmtIds(rmElmtIds: ArrayList<Int64>) {
@@ -269,8 +258,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func forEachUpdateFunction<T>(
@@ -299,8 +287,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func observeComponentCreation(compilerAssignedUpdateFunc: UpdateFuncNew): Unit {
@@ -313,8 +300,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func observeRecycleComponentCreation(name: String, recycleUpdateFunc: RecycleUpdateFunc) {
@@ -344,8 +330,7 @@ public abstract class CustomView <: RemoteView & Observer {
     protected open func aboutToRecycle(): Unit {}
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func aboutToReuseInternal(param: ReuseParams): Unit {
@@ -361,8 +346,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func aboutToRecycleInternal(): Unit {
@@ -414,8 +398,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func delayCompleteRerender(deep: Bool) {
@@ -424,8 +407,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flushDelayCompleteRerender() {
@@ -434,8 +416,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func resetRecycleCustomNode() {
@@ -443,8 +424,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func createRecycle(view: CustomView, isRecycling: Bool, name: String, callback: () -> Unit) {
@@ -452,8 +432,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func create(view: CustomView) {
@@ -461,8 +440,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addProvideVar(value: ObservedPropertyAbstract, name: String) {
@@ -470,8 +448,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func initializeConsume(name: String): ObservedPropertyAbstract {
@@ -482,8 +459,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func notifyRead(stateInfo: String): Unit {
@@ -493,8 +469,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStateUpdate(stateInfo: String, dependentElmtIds: ArrayList<Int64>): Unit {
@@ -520,8 +495,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func id(): Int64 {
@@ -529,8 +503,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func markLazyForEachProcess(groupId: String): Unit {
@@ -542,8 +515,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func resetLazyForEachProcess(): Unit {
@@ -551,8 +523,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func removeChildGroupById(groupId: String): Bool {
@@ -588,8 +559,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addChildById(id: Int64, child: CustomView): Unit {
@@ -597,8 +567,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func removeChildById(id: Int64): Bool {
@@ -615,8 +584,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setParent(parent: Option<CustomView>): Unit {
@@ -624,8 +592,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func aboutToBeDeleted(): Unit
@@ -646,8 +613,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func ifElseBranchUpdateFunction(branchId: Int32, branchFunc: () -> Unit) {
@@ -663,8 +629,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getUIContext(): UIContext {

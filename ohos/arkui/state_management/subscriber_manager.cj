@@ -20,9 +20,7 @@ import ohos.base.*
 import ohos.labels.APILevel
 
 @!APILevel[
-    21,
-    atomicservice: true,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SubscriberManager {
@@ -32,9 +30,7 @@ public class SubscriberManager {
     private var subscriberById: HashMap<Int64, Observer> = HashMap<Int64, Observer>()
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getInstance(): SubscriberManager {
@@ -42,9 +38,7 @@ public class SubscriberManager {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func makeId(): Int64 {
@@ -54,9 +48,7 @@ public class SubscriberManager {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func has(id: Int64): Bool {
@@ -64,9 +56,7 @@ public class SubscriberManager {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get(id: Int64): Option<Observer> {
@@ -74,9 +64,7 @@ public class SubscriberManager {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func delete(value: Observer): Unit {
@@ -84,9 +72,7 @@ public class SubscriberManager {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func add(value: Observer): Bool {
@@ -100,9 +86,7 @@ public class SubscriberManager {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sizeOfManager(): Int64 {
@@ -110,9 +94,7 @@ public class SubscriberManager {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func dumpSubscriberInfo(): Unit {

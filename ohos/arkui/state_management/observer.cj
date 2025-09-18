@@ -19,9 +19,7 @@ import ohos.labels.APILevel
 import std.collection.*
 
 @!APILevel[
-    21,
-    atomicservice: true,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface Observer {

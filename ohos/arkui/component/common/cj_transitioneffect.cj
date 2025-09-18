@@ -48,8 +48,7 @@ foreign func FfiOHOSAceFrameworkTransitionEffectSlideSwitch(): Int64
  * @relation declare interface TranslateOptions
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TranslateOptions {
@@ -63,8 +62,7 @@ public class TranslateOptions {
      * @relation x?: number | string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Length
@@ -78,8 +76,7 @@ public class TranslateOptions {
      * @relation y?: number | string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Length
@@ -92,8 +89,7 @@ public class TranslateOptions {
      * @relation z?: number | string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var z: ?Length
@@ -102,8 +98,7 @@ public class TranslateOptions {
      * TranslateOptions constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x!: ?Length = None, y!: ?Length = None, z!: ?Length = None) {
@@ -119,8 +114,7 @@ public class TranslateOptions {
  * @relation declare interface ScaleOptions
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScaleOptions {
@@ -135,8 +129,7 @@ public class ScaleOptions {
      * @relation x?: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Float32
@@ -151,8 +144,7 @@ public class ScaleOptions {
      * @relation y?: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Float32
@@ -166,8 +158,7 @@ public class ScaleOptions {
      * @relation z?: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var z: ?Float32
@@ -179,8 +170,7 @@ public class ScaleOptions {
      * @relation centerX?: number | string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerX: ?Length
@@ -192,8 +182,7 @@ public class ScaleOptions {
      * @relation centerY?: number | string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerY: ?Length
@@ -202,8 +191,7 @@ public class ScaleOptions {
      * ScaleOptions constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, centerX!: ?Length = None,
@@ -243,8 +231,7 @@ struct CScaleOptions {
  * @relation declare interface RotateOptions
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RotateOptions {
@@ -256,8 +243,7 @@ public class RotateOptions {
      * @relation angle: number | string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var angle: ?Float32
@@ -269,8 +255,7 @@ public class RotateOptions {
      * @relation x?: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Float32
@@ -282,8 +267,7 @@ public class RotateOptions {
      * @relation y?: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Float32
@@ -295,8 +279,7 @@ public class RotateOptions {
      * @relation z?: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var z: ?Float32
@@ -308,8 +291,7 @@ public class RotateOptions {
      * @relation centerX?: number | string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerX: ?Length
@@ -321,8 +303,7 @@ public class RotateOptions {
      * @relation centerY?: number | string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerY: ?Length
@@ -334,8 +315,7 @@ public class RotateOptions {
      * @relation centerZ?: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerZ: ?Length
@@ -349,8 +329,7 @@ public class RotateOptions {
      * @relation perspective?: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var perspective: ?Float32
@@ -359,8 +338,7 @@ public class RotateOptions {
      * RotateOptions constructor
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(angle: ?Float32, x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, centerX!: ?Length = None,
@@ -412,8 +390,7 @@ struct CRotateOptions {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TransitionEdge {
@@ -423,8 +400,7 @@ public enum TransitionEdge {
      * @relation TOP
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top |
@@ -434,8 +410,7 @@ public enum TransitionEdge {
      * @relation BOTTOM
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom |
@@ -446,8 +421,7 @@ public enum TransitionEdge {
      * @relation START
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start |
@@ -458,8 +432,7 @@ public enum TransitionEdge {
      * @relation END
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End |
@@ -482,8 +455,7 @@ public enum TransitionEdge {
  * @relation declare class TransitionEffect 
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TransitionEffect <: RemoteDataLite {
@@ -503,8 +475,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @relation static opacity(alpha: number): TransitionEffect;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func opacity(alpha: ?Float64): TransitionEffect {
@@ -522,8 +493,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @relation static translate(options: TranslateOptions): TransitionEffect;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func translate(options: ?TranslateOptions): TransitionEffect {
@@ -541,8 +511,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @relation static scale(options: ScaleOptions): TransitionEffect;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func scale(options: ?ScaleOptions): TransitionEffect {
@@ -560,8 +529,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @relation static rotate(options: RotateOptions): TransitionEffect;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func rotate(options: ?RotateOptions): TransitionEffect {
@@ -579,8 +547,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @relation static move(edge: TransitionEdge): TransitionEffect;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func move(edge: ?TransitionEdge): TransitionEffect {
@@ -599,8 +566,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @relation static asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func asymmetric(appear: ?TransitionEffect, disappear: ?TransitionEffect): TransitionEffect {
@@ -619,8 +585,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @relation combine(transitionEffect: TransitionEffect): TransitionEffect;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func combine(transitionEffect: ?TransitionEffect): TransitionEffect {
@@ -640,8 +605,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @relation animation(value: AnimateParam): TransitionEffect;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func animation(value: ?AnimateParam): TransitionEffect {
@@ -660,8 +624,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @relation static get IDENTITY(): TransitionEffect;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let IDENTITY: TransitionEffect = unsafe {
@@ -674,8 +637,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @relation static get OPACITY(): TransitionEffect;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let OPACITY: TransitionEffect = TransitionEffect.opacity(0.0)
@@ -686,8 +648,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @relation static get SLIDE(): TransitionEffect;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let SLIDE: TransitionEffect = 
@@ -703,8 +664,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @relation static get SLIDE_SWITCH(): TransitionEffect;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let SLIDE_SWITCH: TransitionEffect = unsafe {

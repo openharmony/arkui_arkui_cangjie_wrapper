@@ -19,9 +19,7 @@ import std.collection.ArrayList
 import ohos.labels.APILevel
 
 @!APILevel[
-    21,
-    atomicservice: true,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ObservedComplexAbstract <: Observable {
@@ -30,33 +28,25 @@ public abstract class ObservedComplexAbstract <: Observable {
     protected var propsInfo: ArrayList<String> = ArrayList<String>()
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func subscribeInner(observer: Observer): Unit
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func unsubscribeInner(observer: Observer): Unit
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set(v: ObservedComplexAbstract): Unit
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func inheritObservers(newObservers: ArrayList<Observer>) {
@@ -66,9 +56,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setDependentElementIds(dependentElementIds: ArrayList<Int64>) {
@@ -85,9 +73,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getInfo(): String {
@@ -95,9 +81,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setInfo(info: String) {
@@ -105,9 +89,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getPropsInfo(): ArrayList<String> {
@@ -115,9 +97,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addPropsInfo(info: String): Unit {
@@ -125,9 +105,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func notifyChanges() {

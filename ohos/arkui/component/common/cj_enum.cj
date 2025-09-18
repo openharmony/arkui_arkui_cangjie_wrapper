@@ -25,8 +25,7 @@ import std.deriving.Derive
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum IndexerAlign {
@@ -36,8 +35,7 @@ public enum IndexerAlign {
      * @relation enum Left
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -48,8 +46,7 @@ public enum IndexerAlign {
      * @relation enum Right
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
@@ -71,8 +68,7 @@ public enum IndexerAlign {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum InputType {
@@ -82,8 +78,7 @@ public enum InputType {
      * @relation Normal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
@@ -94,8 +89,7 @@ public enum InputType {
      * @relation Number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Number
@@ -111,8 +105,7 @@ public enum InputType {
      * @relation Email
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Email
@@ -131,8 +124,7 @@ public enum InputType {
      * @relation Password
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Password
@@ -143,8 +135,7 @@ public enum InputType {
      * @relation PhoneNumber
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PhoneNumber
@@ -169,8 +160,7 @@ public enum InputType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum EnterKeyType {
@@ -180,8 +170,7 @@ public enum EnterKeyType {
      * @relation Go = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Go |
@@ -191,8 +180,7 @@ public enum EnterKeyType {
      * @relation Search = 3
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Search |
@@ -202,8 +190,7 @@ public enum EnterKeyType {
      * @relation Send = 4
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Send |
@@ -213,8 +200,7 @@ public enum EnterKeyType {
      * @relation Next = 5
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Next |
@@ -224,8 +210,7 @@ public enum EnterKeyType {
      * @relation Done = 6
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Done |
@@ -235,8 +220,7 @@ public enum EnterKeyType {
      * @relation PREVIOUS = 7
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Previous |
@@ -246,8 +230,7 @@ public enum EnterKeyType {
      * @relation NEW_LINE = 8
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NewLine | ...
@@ -273,8 +256,7 @@ public enum EnterKeyType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FlexDirection {
@@ -284,8 +266,7 @@ public enum FlexDirection {
      * @relation Row
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Row |
@@ -295,8 +276,7 @@ public enum FlexDirection {
      * @relation Column
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Column |
@@ -306,8 +286,7 @@ public enum FlexDirection {
      * @relation RowReverse
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RowReverse |
@@ -317,8 +296,7 @@ public enum FlexDirection {
      * @relation ColumnReverse
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ColumnReverse |
@@ -342,8 +320,7 @@ public enum FlexDirection {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FlexWrap {
@@ -353,8 +330,7 @@ public enum FlexWrap {
      * @relation NoWrap
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NoWrap |
@@ -364,8 +340,7 @@ public enum FlexWrap {
      * @relation Wrap
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Wrap |
@@ -375,8 +350,7 @@ public enum FlexWrap {
      * @relation WrapReverse
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     WrapReverse |
@@ -399,8 +373,7 @@ public enum FlexWrap {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FlexAlign {
@@ -411,8 +384,7 @@ public enum FlexAlign {
      * @relation Start
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start |
@@ -423,8 +395,7 @@ public enum FlexAlign {
      * @relation Center
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center |
@@ -435,8 +406,7 @@ public enum FlexAlign {
      * @relation End
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End |
@@ -448,8 +418,7 @@ public enum FlexAlign {
      * @relation SpaceBetween
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SpaceBetween |
@@ -461,8 +430,7 @@ public enum FlexAlign {
      * @relation SpaceAround
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SpaceAround |
@@ -474,8 +442,7 @@ public enum FlexAlign {
      * @relation SpaceEvenly
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SpaceEvenly | ...
@@ -500,8 +467,7 @@ public enum FlexAlign {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ItemAlign {
@@ -511,8 +477,7 @@ public enum ItemAlign {
      * @relation Auto
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -523,8 +488,7 @@ public enum ItemAlign {
      * @relation Start
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -535,8 +499,7 @@ public enum ItemAlign {
      * @relation Center
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -547,8 +510,7 @@ public enum ItemAlign {
      * @relation End
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -559,8 +521,7 @@ public enum ItemAlign {
      * @relation Stretch
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Stretch
@@ -571,8 +532,7 @@ public enum ItemAlign {
      * @relation Baseline
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Baseline
@@ -598,8 +558,7 @@ public enum ItemAlign {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ToggleType {
@@ -609,8 +568,7 @@ public enum ToggleType {
      * @relation Checkbox
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Checkbox |
@@ -620,8 +578,7 @@ public enum ToggleType {
      * @relation Switch
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Switch |
@@ -631,8 +588,7 @@ public enum ToggleType {
      * @relation Button
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Button |
@@ -655,8 +611,7 @@ public enum ToggleType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FontStyle {
@@ -666,8 +621,7 @@ public enum FontStyle {
      * @relation Normal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
@@ -678,8 +632,7 @@ public enum FontStyle {
      * @relation Italic
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Italic
@@ -717,8 +670,7 @@ public enum FontStyle {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Alignment {
@@ -728,8 +680,7 @@ public enum Alignment {
      * @relation TopStart
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopStart
@@ -740,8 +691,7 @@ public enum Alignment {
      * @relation Top
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -752,8 +702,7 @@ public enum Alignment {
      * @relation TopEnd
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopEnd
@@ -764,8 +713,7 @@ public enum Alignment {
      * @relation Start
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -776,8 +724,7 @@ public enum Alignment {
      * @relation Center
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -788,8 +735,7 @@ public enum Alignment {
      * @relation End
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -800,8 +746,7 @@ public enum Alignment {
      * @relation BottomStart
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomStart
@@ -812,8 +757,7 @@ public enum Alignment {
      * @relation Bottom
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -824,8 +768,7 @@ public enum Alignment {
      * @relation BottomEnd
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomEnd
@@ -854,8 +797,7 @@ public enum Alignment {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum HorizontalAlign {
@@ -865,8 +807,7 @@ public enum HorizontalAlign {
      * @relation Start
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -877,8 +818,7 @@ public enum HorizontalAlign {
      * @relation Center
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -889,8 +829,7 @@ public enum HorizontalAlign {
      * @relation End
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -913,8 +852,7 @@ public enum HorizontalAlign {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum VerticalAlign {
@@ -924,8 +862,7 @@ public enum VerticalAlign {
      * @relation Top
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -936,8 +873,7 @@ public enum VerticalAlign {
      * @relation Center
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -948,8 +884,7 @@ public enum VerticalAlign {
      * @relation Bottom
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -972,8 +907,7 @@ public enum VerticalAlign {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FontWeight {
@@ -983,8 +917,7 @@ public enum FontWeight {
      * @relation enum Normal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
@@ -995,8 +928,7 @@ public enum FontWeight {
      * @relation enum Bold
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bold
@@ -1007,8 +939,7 @@ public enum FontWeight {
      * @relation enum Bolder
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bolder
@@ -1019,8 +950,7 @@ public enum FontWeight {
      * @relation enum Lighter
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Lighter
@@ -1031,8 +961,7 @@ public enum FontWeight {
      * @relation enum Medium
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Medium
@@ -1043,8 +972,7 @@ public enum FontWeight {
      * @relation enum Regular
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Regular
@@ -1053,8 +981,7 @@ public enum FontWeight {
      * Defines a FontWeight value W100.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     W100
@@ -1063,8 +990,7 @@ public enum FontWeight {
      * Defines a FontWeight value W200.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     W200
@@ -1073,8 +999,7 @@ public enum FontWeight {
      * Defines a FontWeight value W300.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     W300
@@ -1083,8 +1008,7 @@ public enum FontWeight {
      * Defines a FontWeight value W400.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     W400
@@ -1093,8 +1017,7 @@ public enum FontWeight {
      * Defines a FontWeight value W500.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     W500
@@ -1103,8 +1026,7 @@ public enum FontWeight {
      * Defines a FontWeight value W600.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     W600
@@ -1113,8 +1035,7 @@ public enum FontWeight {
      * Defines a FontWeight value W700.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     W700
@@ -1123,8 +1044,7 @@ public enum FontWeight {
      * Defines a FontWeight value W800.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     W800
@@ -1133,8 +1053,7 @@ public enum FontWeight {
      * Defines a FontWeight value W900.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     W900
@@ -1231,8 +1150,7 @@ public enum FontWeight {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BarPosition {
@@ -1242,8 +1160,7 @@ public enum BarPosition {
      * @relation Start
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start |
@@ -1253,8 +1170,7 @@ public enum BarPosition {
      * @relation End
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End |
@@ -1276,8 +1192,7 @@ public enum BarPosition {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BarMode {
@@ -1288,8 +1203,7 @@ public enum BarMode {
      * @relation Fixed = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fixed
@@ -1302,8 +1216,7 @@ public enum BarMode {
      * @relation Scrollable = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Scrollable
@@ -1325,8 +1238,7 @@ public enum BarMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ShadowType {
@@ -1336,8 +1248,7 @@ public enum ShadowType {
      * @relation enum COLOR
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Color |
@@ -1347,8 +1258,7 @@ public enum ShadowType {
      * @relation enum BLUR
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Blur |
@@ -1370,8 +1280,7 @@ public enum ShadowType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextDecorationType {
@@ -1381,8 +1290,7 @@ public enum TextDecorationType {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -1393,8 +1301,7 @@ public enum TextDecorationType {
      * @relation Underline
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Underline
@@ -1405,8 +1312,7 @@ public enum TextDecorationType {
      * @relation Overline
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Overline
@@ -1417,8 +1323,7 @@ public enum TextDecorationType {
      * @relation LineThrough
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LineThrough
@@ -1452,8 +1357,7 @@ public enum TextDecorationType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextAlign {
@@ -1463,8 +1367,7 @@ public enum TextAlign {
      * @relation Start
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -1475,8 +1378,7 @@ public enum TextAlign {
      * @relation Center
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -1487,8 +1389,7 @@ public enum TextAlign {
      * @relation End
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -1520,8 +1421,7 @@ public enum TextAlign {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextOverflow {
@@ -1531,8 +1431,7 @@ public enum TextOverflow {
      * @relation Clip
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Clip
@@ -1543,8 +1442,7 @@ public enum TextOverflow {
      * @relation Ellipsis
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ellipsis
@@ -1555,8 +1453,7 @@ public enum TextOverflow {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -1579,8 +1476,7 @@ public enum TextOverflow {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum WordBreak {
@@ -1590,8 +1486,7 @@ public enum WordBreak {
      * @relation NORMAL = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
@@ -1602,8 +1497,7 @@ public enum WordBreak {
      * @relation BREAK_ALL = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BreakAll
@@ -1615,8 +1509,7 @@ public enum WordBreak {
      * @relation BREAK_WORD = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BreakWord
@@ -1648,8 +1541,7 @@ public enum WordBreak {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageRepeat {
@@ -1659,8 +1551,7 @@ public enum ImageRepeat {
      * @relation NoRepeat
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NoRepeat
@@ -1671,8 +1562,7 @@ public enum ImageRepeat {
      * @relation X
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     X
@@ -1683,8 +1573,7 @@ public enum ImageRepeat {
      * @relation Y
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Y
@@ -1695,8 +1584,7 @@ public enum ImageRepeat {
      * @relation XY
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     XY
@@ -1720,8 +1608,7 @@ public enum ImageRepeat {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageSize {
@@ -1731,8 +1618,7 @@ public enum ImageSize {
      * @relation Contain
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Contain
@@ -1743,8 +1629,7 @@ public enum ImageSize {
      * @relation Cover
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Cover
@@ -1755,8 +1640,7 @@ public enum ImageSize {
      * @relation Auto
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -1779,8 +1663,7 @@ public enum ImageSize {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ShadowStyle {
@@ -1790,8 +1673,7 @@ public enum ShadowStyle {
      * @relation OUTER_DEFAULT_XS
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OuterDefaultXS
@@ -1802,8 +1684,7 @@ public enum ShadowStyle {
      * @relation OUTER_DEFAULT_SM
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OuterDefaultSM
@@ -1814,8 +1695,7 @@ public enum ShadowStyle {
      * @relation OUTER_DEFAULT_MD
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OuterDefaultMD
@@ -1826,8 +1706,7 @@ public enum ShadowStyle {
      * @relation OUTER_DEFAULT_LG
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OuterDefaultLG
@@ -1838,8 +1717,7 @@ public enum ShadowStyle {
      * @relation OUTER_FLOATING_SM
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OuterFloatingSM
@@ -1850,8 +1728,7 @@ public enum ShadowStyle {
      * @relation OUTER_FLOATING_MD
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OuterFloatingMD
@@ -1877,8 +1754,7 @@ public enum ShadowStyle {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextCase {
@@ -1888,8 +1764,7 @@ public enum TextCase {
      * @relation Normal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
@@ -1900,8 +1775,7 @@ public enum TextCase {
      * @relation LowerCase
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LowerCase
@@ -1912,8 +1786,7 @@ public enum TextCase {
      * @relation UpperCase
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     UpperCase
@@ -1936,8 +1809,7 @@ public enum TextCase {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BorderStyle {
@@ -1947,8 +1819,7 @@ public enum BorderStyle {
      * @relation Solid
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Solid
@@ -1959,8 +1830,7 @@ public enum BorderStyle {
      * @relation Dashed
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Dashed
@@ -1971,8 +1841,7 @@ public enum BorderStyle {
      * @relation Dotted
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Dotted
@@ -1995,8 +1864,7 @@ public enum BorderStyle {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageFit {
@@ -2006,8 +1874,7 @@ public enum ImageFit {
      * @relation Fill
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fill
@@ -2018,8 +1885,7 @@ public enum ImageFit {
      * @relation Contain
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Contain
@@ -2030,8 +1896,7 @@ public enum ImageFit {
      * @relation Cover
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Cover
@@ -2042,8 +1907,7 @@ public enum ImageFit {
      * @relation Auto
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -2054,8 +1918,7 @@ public enum ImageFit {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -2066,8 +1929,7 @@ public enum ImageFit {
      * @relation ScaleDown
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ScaleDown
@@ -2105,8 +1967,7 @@ public enum ImageFit {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Direction {
@@ -2116,8 +1977,7 @@ public enum Direction {
      * @relation Ltr
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ltr
@@ -2128,8 +1988,7 @@ public enum Direction {
      * @relation Rtl
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Rtl
@@ -2140,8 +1999,7 @@ public enum Direction {
      * @relation Auto
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -2164,8 +2022,7 @@ public enum Direction {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ScrollDirection {
@@ -2175,8 +2032,7 @@ public enum ScrollDirection {
      * @relation Vertical
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vertical
@@ -2187,8 +2043,7 @@ public enum ScrollDirection {
      * @relation Horizontal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Horizontal
@@ -2210,8 +2065,7 @@ public enum ScrollDirection {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ScrollBarDirection {
@@ -2221,8 +2075,7 @@ public enum ScrollBarDirection {
      * @relation Vertical
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vertical
@@ -2233,8 +2086,7 @@ public enum ScrollBarDirection {
      * @relation Horizontal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Horizontal
@@ -2256,8 +2108,7 @@ public enum ScrollBarDirection {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SliderChangeMode {
@@ -2267,8 +2118,7 @@ public enum SliderChangeMode {
      * @relation Begin
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Begin
@@ -2279,8 +2129,7 @@ public enum SliderChangeMode {
      * @relation Moving
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Moving
@@ -2295,8 +2144,7 @@ public enum SliderChangeMode {
      * @relation End
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -2307,8 +2155,7 @@ public enum SliderChangeMode {
      * @relation Click
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Click
@@ -2341,8 +2188,7 @@ public enum SliderChangeMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SliderStyle {
@@ -2352,8 +2198,7 @@ public enum SliderStyle {
      * @relation OutSet
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OutSet
@@ -2364,8 +2209,7 @@ public enum SliderStyle {
      * @relation InSet
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     InSet
@@ -2413,8 +2257,7 @@ enum WindowBlurStyle {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageInterpolation {
@@ -2424,8 +2267,7 @@ public enum ImageInterpolation {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -2436,8 +2278,7 @@ public enum ImageInterpolation {
      * @relation High
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     High
@@ -2448,8 +2289,7 @@ public enum ImageInterpolation {
      * @relation Medium
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Medium
@@ -2460,8 +2300,7 @@ public enum ImageInterpolation {
      * @relation Low
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Low
@@ -2485,8 +2324,7 @@ public enum ImageInterpolation {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BarState {
@@ -2496,8 +2334,7 @@ public enum BarState {
      * @relation Off
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Off
@@ -2508,8 +2345,7 @@ public enum BarState {
      * @relation Auto
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -2520,8 +2356,7 @@ public enum BarState {
      * @relation On
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     On
@@ -2544,8 +2379,7 @@ public enum BarState {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Visibility {
@@ -2555,8 +2389,7 @@ public enum Visibility {
      * @relation Visible
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Visible
@@ -2567,8 +2400,7 @@ public enum Visibility {
      * @relation Hidden
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Hidden
@@ -2579,8 +2411,7 @@ public enum Visibility {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -2603,8 +2434,7 @@ public enum Visibility {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LineCapStyle {
@@ -2614,8 +2444,7 @@ public enum LineCapStyle {
      * @relation Butt
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Butt
@@ -2626,8 +2455,7 @@ public enum LineCapStyle {
      * @relation Round
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Round
@@ -2638,8 +2466,7 @@ public enum LineCapStyle {
      * @relation Square
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Square
@@ -2662,8 +2489,7 @@ public enum LineCapStyle {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ProgressType {
@@ -2673,8 +2499,7 @@ public enum ProgressType {
      * @relation Linear = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Linear
@@ -2685,8 +2510,7 @@ public enum ProgressType {
      * @relation Ring = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ring
@@ -2697,8 +2521,7 @@ public enum ProgressType {
      * @relation Eclipse = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Eclipse
@@ -2709,8 +2532,7 @@ public enum ProgressType {
      * @relation ScaleRing = 3
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ScaleRing
@@ -2721,8 +2543,7 @@ public enum ProgressType {
      * @relation Capsule = 4
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Capsule
@@ -2747,8 +2568,7 @@ public enum ProgressType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageRenderMode {
@@ -2758,8 +2578,7 @@ public enum ImageRenderMode {
      * @relation Original
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Original
@@ -2770,8 +2589,7 @@ public enum ImageRenderMode {
      * @relation Template
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Template
@@ -2793,8 +2611,7 @@ public enum ImageRenderMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum NavigationType {
@@ -2804,8 +2621,7 @@ public enum NavigationType {
      * @relation Push
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Push
@@ -2816,8 +2632,7 @@ public enum NavigationType {
      * @relation Replace
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Replace
@@ -2828,8 +2643,7 @@ public enum NavigationType {
      * @relation Back
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Back
@@ -2852,8 +2666,7 @@ public enum NavigationType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SwiperDisplayMode {
@@ -2863,8 +2676,7 @@ public enum SwiperDisplayMode {
      * @relation Stretch
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Stretch
@@ -2885,8 +2697,7 @@ public enum SwiperDisplayMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Curve {
@@ -2896,8 +2707,7 @@ public enum Curve {
      * @relation Linear
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Linear
@@ -2908,8 +2718,7 @@ public enum Curve {
      * @relation Ease
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ease
@@ -2920,8 +2729,7 @@ public enum Curve {
      * @relation EaseIn
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EaseIn
@@ -2932,8 +2740,7 @@ public enum Curve {
      * @relation EaseOut
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EaseOut
@@ -2944,8 +2751,7 @@ public enum Curve {
      * @relation EaseInOut
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EaseInOut
@@ -2956,8 +2762,7 @@ public enum Curve {
      * @relation FastOutSlowIn
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FastOutSlowIn
@@ -2968,8 +2773,7 @@ public enum Curve {
      * @relation LinearOutSlowIn
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LinearOutSlowIn
@@ -2980,8 +2784,7 @@ public enum Curve {
      * @relation FastOutLinearIn
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FastOutLinearIn
@@ -2992,8 +2795,7 @@ public enum Curve {
      * @relation ExtremeDeceleration
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ExtremeDeceleration
@@ -3004,8 +2806,7 @@ public enum Curve {
      * @relation Sharp
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Sharp
@@ -3016,8 +2817,7 @@ public enum Curve {
      * @relation Rhythm
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Rhythm
@@ -3028,8 +2828,7 @@ public enum Curve {
      * @relation Smooth
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Smooth
@@ -3040,8 +2839,7 @@ public enum Curve {
      * @relation Friction
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Friction
@@ -3074,8 +2872,7 @@ public enum Curve {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum EdgeEffect {
@@ -3085,8 +2882,7 @@ public enum EdgeEffect {
      * @relation Spring
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Spring
@@ -3097,8 +2893,7 @@ public enum EdgeEffect {
      * @relation Fade
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fade
@@ -3109,8 +2904,7 @@ public enum EdgeEffect {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -3133,8 +2927,7 @@ public enum EdgeEffect {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Edge {
@@ -3144,8 +2937,7 @@ public enum Edge {
      * @relation Top
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -3156,8 +2948,7 @@ public enum Edge {
      * @relation Start
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -3168,8 +2959,7 @@ public enum Edge {
      * @relation Bottom
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -3180,8 +2970,7 @@ public enum Edge {
      * @relation End
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -3220,8 +3009,7 @@ public enum Edge {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Placement {
@@ -3231,8 +3019,7 @@ public enum Placement {
      * @relation Left
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -3243,8 +3030,7 @@ public enum Placement {
      * @relation Right
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
@@ -3255,8 +3041,7 @@ public enum Placement {
      * @relation Top
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -3267,8 +3052,7 @@ public enum Placement {
      * @relation Bottom
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -3279,8 +3063,7 @@ public enum Placement {
      * @relation TopLeft
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopLeft
@@ -3291,8 +3074,7 @@ public enum Placement {
      * @relation TopRight
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopRight
@@ -3303,8 +3085,7 @@ public enum Placement {
      * @relation BottomLeft
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomLeft
@@ -3315,8 +3096,7 @@ public enum Placement {
      * @relation BottomRight
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomRight
@@ -3327,8 +3107,7 @@ public enum Placement {
      * @relation LeftTop
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LeftTop
@@ -3339,8 +3118,7 @@ public enum Placement {
      * @relation LeftBottom
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LeftBottom
@@ -3351,8 +3129,7 @@ public enum Placement {
      * @relation RightTop
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RightTop
@@ -3363,8 +3140,7 @@ public enum Placement {
      * @relation RightBottom
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RightBottom
@@ -3373,8 +3149,7 @@ public enum Placement {
      * None placementW
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -3412,8 +3187,7 @@ public enum Placement {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LineJoinStyle {
@@ -3423,8 +3197,7 @@ public enum LineJoinStyle {
      * @relation Miter
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Miter
@@ -3435,8 +3208,7 @@ public enum LineJoinStyle {
      * @relation Round
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Round
@@ -3447,8 +3219,7 @@ public enum LineJoinStyle {
      * @relation Bevel
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bevel
@@ -3482,8 +3253,7 @@ protected enum CanvasTextAlign {
      * @relation type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -3494,8 +3264,7 @@ protected enum CanvasTextAlign {
      * @relation type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
@@ -3506,8 +3275,7 @@ protected enum CanvasTextAlign {
      * @relation type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -3519,8 +3287,7 @@ protected enum CanvasTextAlign {
      * @relation type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -3532,8 +3299,7 @@ protected enum CanvasTextAlign {
      * @relation type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -3569,8 +3335,7 @@ protected enum CanvasTextBaseline {
      * @relation type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Alphabetic
@@ -3582,8 +3347,7 @@ protected enum CanvasTextBaseline {
      * @relation type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ideographic
@@ -3594,8 +3358,7 @@ protected enum CanvasTextBaseline {
      * @relation type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -3607,8 +3370,7 @@ protected enum CanvasTextBaseline {
      * @relation type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -3619,8 +3381,7 @@ protected enum CanvasTextBaseline {
      * @relation type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Middle
@@ -3631,8 +3392,7 @@ protected enum CanvasTextBaseline {
      * @relation type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Hanging
@@ -3667,8 +3427,7 @@ protected enum GlobalCompositeOperation {
      * (Default) Draws a new drawing on top of an existing canvas context.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SourceOver
@@ -3678,8 +3437,7 @@ protected enum GlobalCompositeOperation {
      *
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SourceAtop
@@ -3689,8 +3447,7 @@ protected enum GlobalCompositeOperation {
      * Everything else is transparent.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SourceIn
@@ -3699,8 +3456,7 @@ protected enum GlobalCompositeOperation {
      * Draws a new drawing where it does not overlap with the existing canvas content.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SourceOut
@@ -3709,8 +3465,7 @@ protected enum GlobalCompositeOperation {
      * Draws a new graphic behind the existing canvas content.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DestinationOver
@@ -3719,8 +3474,7 @@ protected enum GlobalCompositeOperation {
      * The existing canvas retains only the part that overlaps with the new drawing,
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DestinationAtop
@@ -3730,8 +3484,7 @@ protected enum GlobalCompositeOperation {
      * Everything else is transparent.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DestinationIn
@@ -3740,8 +3493,7 @@ protected enum GlobalCompositeOperation {
      * Existing content remains where the new drawing does not overlap.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DestinationOut
@@ -3750,8 +3502,7 @@ protected enum GlobalCompositeOperation {
      * The color of two overlapping shapes is determined by adding the color values.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Lighter
@@ -3760,8 +3511,7 @@ protected enum GlobalCompositeOperation {
      * Only new graphics are displayed.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Copy
@@ -3770,8 +3520,7 @@ protected enum GlobalCompositeOperation {
      * In the image, those overlaps and other places outside of the normal drawing are transparent.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Xor
@@ -3807,8 +3556,7 @@ public enum ImageSmoothingQuality {
      * @relation type ImageSmoothingQuality = "high" | "low" | "medium"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Low
@@ -3819,8 +3567,7 @@ public enum ImageSmoothingQuality {
      * @relation type ImageSmoothingQuality = "high" | "low" | "medium"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Medium
@@ -3831,8 +3578,7 @@ public enum ImageSmoothingQuality {
      * @relation type ImageSmoothingQuality = "high" | "low" | "medium"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     High
@@ -3855,8 +3601,7 @@ public enum ImageSmoothingQuality {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum GestureMask {
@@ -3866,8 +3611,7 @@ public enum GestureMask {
      * @relation Normal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
@@ -3878,8 +3622,7 @@ public enum GestureMask {
      * @relation IgnoreInternal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     IgnoreInternal
@@ -3901,8 +3644,7 @@ public enum GestureMask {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SwipeDirection {
@@ -3912,8 +3654,7 @@ public enum SwipeDirection {
      * @relation Horizontal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Horizontal
@@ -3924,8 +3665,7 @@ public enum SwipeDirection {
      * @relation Vertical
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vertical
@@ -3936,8 +3676,7 @@ public enum SwipeDirection {
      * @relation All
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     All
@@ -3960,8 +3699,7 @@ public enum SwipeDirection {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum PanDirection {
@@ -3971,8 +3709,7 @@ public enum PanDirection {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -3983,8 +3720,7 @@ public enum PanDirection {
      * @relation Left
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -3995,8 +3731,7 @@ public enum PanDirection {
      * @relation Right
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
@@ -4007,8 +3742,7 @@ public enum PanDirection {
      * @relation Horizontal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Horizontal
@@ -4019,8 +3753,7 @@ public enum PanDirection {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Up
@@ -4031,8 +3764,7 @@ public enum PanDirection {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Down
@@ -4043,8 +3775,7 @@ public enum PanDirection {
      * @relation Vertical
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vertical
@@ -4055,8 +3786,7 @@ public enum PanDirection {
      * @relation All
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     All
@@ -4065,8 +3795,7 @@ public enum PanDirection {
      * Supports logical AND and logical OR operations.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Computed(UInt32)
@@ -4091,8 +3820,7 @@ public enum PanDirection {
      * Perform a logical OR(|) operation on PanDirection.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public operator func |(right: PanDirection): PanDirection {
@@ -4103,8 +3831,7 @@ public enum PanDirection {
      * Perform a logical AND(&) operation on PanDirection.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public operator func &(right: PanDirection): PanDirection {
@@ -4119,8 +3846,7 @@ public enum PanDirection {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum GestureMode {
@@ -4130,8 +3856,7 @@ public enum GestureMode {
      * @relation Sequence
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Sequence
@@ -4142,8 +3867,7 @@ public enum GestureMode {
      * @relation Parallel
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Parallel
@@ -4154,8 +3878,7 @@ public enum GestureMode {
      * @relation Exclusive
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Exclusive
@@ -4183,8 +3906,7 @@ public enum GestureMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Axis {
@@ -4194,8 +3916,7 @@ public enum Axis {
      * @relation Vertical
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vertical
@@ -4206,8 +3927,7 @@ public enum Axis {
      * @relation Horizontal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Horizontal
@@ -4229,8 +3949,7 @@ public enum Axis {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ResponseType {
@@ -4240,8 +3959,7 @@ public enum ResponseType {
      * @relation RightClick
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RightClick
@@ -4252,8 +3970,7 @@ public enum ResponseType {
      * @relation LongPress
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LongPress
@@ -4275,8 +3992,7 @@ public enum ResponseType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum CopyOptions {
@@ -4286,8 +4002,7 @@ public enum CopyOptions {
      * @relation None = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -4298,8 +4013,7 @@ public enum CopyOptions {
      * @relation InApp = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     InApp
@@ -4310,8 +4024,7 @@ public enum CopyOptions {
      * @relation LocalDevice = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LocalDevice
@@ -4334,8 +4047,7 @@ public enum CopyOptions {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TouchType {
@@ -4345,8 +4057,7 @@ public enum TouchType {
      * @relation Down
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Down
@@ -4357,8 +4068,7 @@ public enum TouchType {
      * @relation Up
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Up
@@ -4369,8 +4079,7 @@ public enum TouchType {
      * @relation Move
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Move
@@ -4381,8 +4090,7 @@ public enum TouchType {
      * @relation Cancel
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Cancel
@@ -4391,8 +4099,7 @@ public enum TouchType {
      * Unknown TouchType.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Unknown
@@ -4447,8 +4154,7 @@ enum DragComponent {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SideBarContainerType {
@@ -4458,8 +4164,7 @@ public enum SideBarContainerType {
      * @relation Embed
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Embed
@@ -4470,8 +4175,7 @@ public enum SideBarContainerType {
      * @relation Overlay
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Overlay
@@ -4482,8 +4186,7 @@ public enum SideBarContainerType {
      * @relation AUTO
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -4506,8 +4209,7 @@ public enum SideBarContainerType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SideBarPosition {
@@ -4517,8 +4219,7 @@ public enum SideBarPosition {
      * @relation Start
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -4529,8 +4230,7 @@ public enum SideBarPosition {
      * @relation End
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -4552,8 +4252,7 @@ public enum SideBarPosition {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SourceType {
@@ -4563,8 +4262,7 @@ public enum SourceType {
      * @relation Unknown
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Unknown
@@ -4575,8 +4273,7 @@ public enum SourceType {
      * @relation Mouse
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Mouse
@@ -4587,8 +4284,7 @@ public enum SourceType {
      * @relation TouchScreen
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TouchScreen
@@ -4620,8 +4316,7 @@ public enum SourceType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum MouseButton {
@@ -4631,8 +4326,7 @@ public enum MouseButton {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -4643,8 +4337,7 @@ public enum MouseButton {
      * @relation Left
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -4655,8 +4348,7 @@ public enum MouseButton {
      * @relation Right
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
@@ -4667,8 +4359,7 @@ public enum MouseButton {
      * @relation Middle
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Middle
@@ -4679,8 +4370,7 @@ public enum MouseButton {
      * @relation Back
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Back
@@ -4691,8 +4381,7 @@ public enum MouseButton {
      * @relation Forward
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Forward
@@ -4730,8 +4419,7 @@ public enum MouseButton {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum MouseAction {
@@ -4739,8 +4427,7 @@ public enum MouseAction {
      * None MouseAction
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -4751,8 +4438,7 @@ public enum MouseAction {
      * @relation Press
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Press
@@ -4763,8 +4449,7 @@ public enum MouseAction {
      * @relation Release
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Release
@@ -4775,8 +4460,7 @@ public enum MouseAction {
      * @relation Move
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Move
@@ -4787,8 +4471,7 @@ public enum MouseAction {
      * @relation Hover
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Hover
@@ -4823,8 +4506,7 @@ public enum MouseAction {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum KeySource {
@@ -4834,8 +4516,7 @@ public enum KeySource {
      * @relation Unknown
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Unknown
@@ -4846,8 +4527,7 @@ public enum KeySource {
      * @relation Keyboard
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Keyboard
@@ -4876,8 +4556,7 @@ public enum KeySource {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum KeyType {
@@ -4885,8 +4564,7 @@ public enum KeyType {
      * Unknown KeyType.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Unknown
@@ -4897,8 +4575,7 @@ public enum KeyType {
      * @relation Down
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Down
@@ -4909,8 +4586,7 @@ public enum KeyType {
      * @relation Up
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Up
@@ -4942,8 +4618,7 @@ public enum KeyType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ModifierKey {
@@ -4953,8 +4628,7 @@ public enum ModifierKey {
      * @relation CTRL
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ctrl
@@ -4965,8 +4639,7 @@ public enum ModifierKey {
      * @relation SHIFT
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Shift
@@ -4977,8 +4650,7 @@ public enum ModifierKey {
      * @relation ALT
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Alt
@@ -5001,8 +4673,7 @@ public enum ModifierKey {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FunctionKey {
@@ -5012,8 +4683,7 @@ public enum FunctionKey {
      * @relation ESC
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Esc
@@ -5024,8 +4694,7 @@ public enum FunctionKey {
      * @relation F1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F1
@@ -5036,8 +4705,7 @@ public enum FunctionKey {
      * @relation F2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F2
@@ -5048,8 +4716,7 @@ public enum FunctionKey {
      * @relation F3
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F3
@@ -5060,8 +4727,7 @@ public enum FunctionKey {
      * @relation F4
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F4
@@ -5072,8 +4738,7 @@ public enum FunctionKey {
      * @relation F5
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F5
@@ -5084,8 +4749,7 @@ public enum FunctionKey {
      * @relation F6
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F6
@@ -5096,8 +4760,7 @@ public enum FunctionKey {
      * @relation F7
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F7
@@ -5108,8 +4771,7 @@ public enum FunctionKey {
      * @relation F8
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F8
@@ -5120,8 +4782,7 @@ public enum FunctionKey {
      * @relation F9
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F9
@@ -5132,8 +4793,7 @@ public enum FunctionKey {
      * @relation F10
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F10
@@ -5144,8 +4804,7 @@ public enum FunctionKey {
      * @relation F11
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F11
@@ -5156,8 +4815,7 @@ public enum FunctionKey {
      * @relation F12
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     F12
@@ -5168,8 +4826,7 @@ public enum FunctionKey {
      * @relation TAB
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Tab
@@ -5203,8 +4860,7 @@ public enum FunctionKey {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum DataPanelType {
@@ -5214,8 +4870,7 @@ public enum DataPanelType {
      * @relation Circle
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Circle
@@ -5226,8 +4881,7 @@ public enum DataPanelType {
      * @relation Line
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Line
@@ -5249,8 +4903,7 @@ public enum DataPanelType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ItemState {
@@ -5260,8 +4913,7 @@ public enum ItemState {
      * @relation Normal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
@@ -5272,8 +4924,7 @@ public enum ItemState {
      * @relation Disabled
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Disabled
@@ -5284,8 +4935,7 @@ public enum ItemState {
      * @relation Waiting
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Waiting
@@ -5296,8 +4946,7 @@ public enum ItemState {
      * @relation Skip
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Skip
@@ -5321,8 +4970,7 @@ public enum ItemState {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RefreshStatus {
@@ -5332,8 +4980,7 @@ public enum RefreshStatus {
      * @relation Inactive
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Inactive
@@ -5344,8 +4991,7 @@ public enum RefreshStatus {
      * @relation Drag
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Drag
@@ -5356,8 +5002,7 @@ public enum RefreshStatus {
      * @relation OverDrag
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OverDrag
@@ -5368,8 +5013,7 @@ public enum RefreshStatus {
      * @relation Refresh
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Refresh
@@ -5380,8 +5024,7 @@ public enum RefreshStatus {
      * @relation Done
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Done
@@ -5417,8 +5060,7 @@ public enum RefreshStatus {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SeekMode {
@@ -5428,8 +5070,7 @@ public enum SeekMode {
      * @relation PreviousKeyframe
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PreviousKeyframe
@@ -5440,8 +5081,7 @@ public enum SeekMode {
      * @relation NextKeyframe
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NextKeyframe
@@ -5452,8 +5092,7 @@ public enum SeekMode {
      * @relation ClosestKeyframe
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ClosestKeyframe
@@ -5464,8 +5103,7 @@ public enum SeekMode {
      * @relation Accurate
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Accurate
@@ -5489,8 +5127,7 @@ public enum SeekMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum PlaybackSpeed {
@@ -5500,8 +5137,7 @@ public enum PlaybackSpeed {
      * @relation Speed_Forward_0_75_X
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SpeedForward075X
@@ -5512,8 +5148,7 @@ public enum PlaybackSpeed {
      * @relation Speed_Forward_1_00_X
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SpeedForward100X
@@ -5524,8 +5159,7 @@ public enum PlaybackSpeed {
      * @relation Speed_Forward_1_25_X
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SpeedForward125X
@@ -5536,8 +5170,7 @@ public enum PlaybackSpeed {
      * @relation Speed_Forward_1_75_X
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SpeedForward175X
@@ -5548,8 +5181,7 @@ public enum PlaybackSpeed {
      * @relation Speed_Forward_2_00_X
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SpeedForward200X
@@ -5574,8 +5206,7 @@ public enum PlaybackSpeed {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SelectStatus {
@@ -5585,8 +5216,7 @@ public enum SelectStatus {
      * @relation All
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     All
@@ -5597,8 +5227,7 @@ public enum SelectStatus {
      * @relation Part
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Part
@@ -5609,8 +5238,7 @@ public enum SelectStatus {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -5642,8 +5270,7 @@ public enum SelectStatus {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum AnimationStatus {
@@ -5653,8 +5280,7 @@ public enum AnimationStatus {
      * @relation Initial
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Initial
@@ -5665,8 +5291,7 @@ public enum AnimationStatus {
      * @relation Running
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Running
@@ -5677,8 +5302,7 @@ public enum AnimationStatus {
      * @relation Paused
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Paused
@@ -5689,8 +5313,7 @@ public enum AnimationStatus {
      * @relation Stopped
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Stopped
@@ -5714,8 +5337,7 @@ public enum AnimationStatus {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FillMode {
@@ -5725,8 +5347,7 @@ public enum FillMode {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -5737,8 +5358,7 @@ public enum FillMode {
      * @relation Forwards
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Forwards
@@ -5749,8 +5369,7 @@ public enum FillMode {
      * @relation Backwards
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Backwards
@@ -5761,8 +5380,7 @@ public enum FillMode {
      * @relation Both
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Both
@@ -5786,8 +5404,7 @@ public enum FillMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SwipeEdgeEffect {
@@ -5797,8 +5414,7 @@ public enum SwipeEdgeEffect {
      * @relation Spring
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Spring
@@ -5809,8 +5425,7 @@ public enum SwipeEdgeEffect {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -5832,8 +5447,7 @@ public enum SwipeEdgeEffect {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SharedTransitionEffectType {
@@ -5844,8 +5458,7 @@ public enum SharedTransitionEffectType {
      * @relation Static
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Static
@@ -5856,8 +5469,7 @@ public enum SharedTransitionEffectType {
      * @relation Exchange
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Exchange
@@ -5879,8 +5491,7 @@ public enum SharedTransitionEffectType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ScrollState {
@@ -5890,8 +5501,7 @@ public enum ScrollState {
      * @relation Idle
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Idle
@@ -5902,8 +5512,7 @@ public enum ScrollState {
      * @relation Scrolling
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Scrolling
@@ -5914,8 +5523,7 @@ public enum ScrollState {
      * @relation Fling
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fling
@@ -5947,8 +5555,7 @@ public enum ScrollState {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ListItemAlign {
@@ -5958,8 +5565,7 @@ public enum ListItemAlign {
      * @relation Start
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -5970,8 +5576,7 @@ public enum ListItemAlign {
      * @relation Center
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -5982,8 +5587,7 @@ public enum ListItemAlign {
      * @relation End
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -6006,8 +5610,7 @@ public enum ListItemAlign {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum StickyStyle {
@@ -6018,8 +5621,7 @@ public enum StickyStyle {
      * @relation None = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -6031,8 +5633,7 @@ public enum StickyStyle {
      * @relation Header = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Header
@@ -6044,8 +5645,7 @@ public enum StickyStyle {
      * @relation Footer = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Footer
@@ -6068,8 +5668,7 @@ public enum StickyStyle {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RichEditorSpanType {
@@ -6079,8 +5678,7 @@ public enum RichEditorSpanType {
      * @relation TEXT = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Text
@@ -6091,8 +5689,7 @@ public enum RichEditorSpanType {
      * @relation IMAGE = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Image
@@ -6103,8 +5700,7 @@ public enum RichEditorSpanType {
      * @relation MIXED = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Mixed
@@ -6127,8 +5723,7 @@ public enum RichEditorSpanType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ImageSpanAlignment {
@@ -6138,8 +5733,7 @@ public enum ImageSpanAlignment {
      * @relation TOP
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -6150,8 +5744,7 @@ public enum ImageSpanAlignment {
      * @relation CENTER
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -6162,8 +5755,7 @@ public enum ImageSpanAlignment {
      * @relation BOTTOM
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -6174,8 +5766,7 @@ public enum ImageSpanAlignment {
      * @relation BASELINE
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Baseline
@@ -6209,8 +5800,7 @@ public enum ImageSpanAlignment {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RichEditorDeleteDirection {
@@ -6220,8 +5810,7 @@ public enum RichEditorDeleteDirection {
      * @relation BACKWARD
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Backward
@@ -6232,8 +5821,7 @@ public enum RichEditorDeleteDirection {
      * @relation FORWARD
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Forward
@@ -6263,8 +5851,7 @@ public enum RichEditorDeleteDirection {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum MixedMode {
@@ -6274,8 +5861,7 @@ public enum MixedMode {
      * @relation All = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     All
@@ -6286,8 +5872,7 @@ public enum MixedMode {
      * @relation Compatible = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Compatible
@@ -6298,8 +5883,7 @@ public enum MixedMode {
      * @relation None = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -6322,8 +5906,7 @@ public enum MixedMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum PlayMode {
@@ -6333,8 +5916,7 @@ public enum PlayMode {
      * @relation Normal
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
@@ -6345,8 +5927,7 @@ public enum PlayMode {
      * @relation Reverse
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Reverse
@@ -6357,8 +5938,7 @@ public enum PlayMode {
      * @relation Alternate
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Alternate
@@ -6369,8 +5949,7 @@ public enum PlayMode {
      * @relation AlternateReverse
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     AlternateReverse
@@ -6394,8 +5973,7 @@ public enum PlayMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum GradientDirection {
@@ -6405,8 +5983,7 @@ public enum GradientDirection {
      * @relation Left
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -6417,8 +5994,7 @@ public enum GradientDirection {
      * @relation Top
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -6429,8 +6005,7 @@ public enum GradientDirection {
      * @relation Right
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
@@ -6441,8 +6016,7 @@ public enum GradientDirection {
      * @relation Bottom
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -6453,8 +6027,7 @@ public enum GradientDirection {
      * @relation LeftTop
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LeftTop
@@ -6465,8 +6038,7 @@ public enum GradientDirection {
      * @relation LeftBottom
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LeftBottom
@@ -6477,8 +6049,7 @@ public enum GradientDirection {
      * @relation RightTop
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RightTop
@@ -6489,8 +6060,7 @@ public enum GradientDirection {
      * @relation RightBottom
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RightBottom
@@ -6501,8 +6071,7 @@ public enum GradientDirection {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -6531,8 +6100,7 @@ public enum GradientDirection {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RenderFit {
@@ -6542,8 +6110,7 @@ public enum RenderFit {
      * @relation CENTER = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -6554,8 +6121,7 @@ public enum RenderFit {
      * @relation TOP = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -6566,8 +6132,7 @@ public enum RenderFit {
      * @relation BOTTOM = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -6578,8 +6143,7 @@ public enum RenderFit {
      * @relation LEFT = 3
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -6590,8 +6154,7 @@ public enum RenderFit {
      * @relation RIGHT = 4
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
@@ -6602,8 +6165,7 @@ public enum RenderFit {
      * @relation TOP_LEFT = 5
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopLeft
@@ -6614,8 +6176,7 @@ public enum RenderFit {
      * @relation TOP_RIGHT = 6
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopRight
@@ -6626,8 +6187,7 @@ public enum RenderFit {
      * @relation BOTTOM_LEFT = 7
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomLeft
@@ -6638,8 +6198,7 @@ public enum RenderFit {
      * @relation BOTTOM_RIGHT = 8
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomRight
@@ -6650,8 +6209,7 @@ public enum RenderFit {
      * @relation RESIZE_FILL = 9
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ResizeFill
@@ -6664,8 +6222,7 @@ public enum RenderFit {
      * @relation RESIZE_CONTAIN = 10
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ResizeContain
@@ -6680,8 +6237,7 @@ public enum RenderFit {
      * @relation RESIZE_CONTAIN_TOP_LEFT = 11
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ResizeContainTopLeft
@@ -6696,8 +6252,7 @@ public enum RenderFit {
      * @relation RESIZE_CONTAIN_BOTTOM_RIGHT = 12
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ResizeContainBottomRight
@@ -6710,8 +6265,7 @@ public enum RenderFit {
      * @relation RESIZE_COVER = 13
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ResizeCover
@@ -6726,8 +6280,7 @@ public enum RenderFit {
      * @relation RESIZE_COVER_TOP_LEFT = 14
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ResizeCoverTopLeft
@@ -6742,8 +6295,7 @@ public enum RenderFit {
      * @relation RESIZE_COVER_BOTTOM_RIGHT = 15
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ResizeCoverBottomRight
@@ -6779,8 +6331,7 @@ public enum RenderFit {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum DialogAlignment {
@@ -6790,8 +6341,7 @@ public enum DialogAlignment {
      * @relation Top
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -6802,8 +6352,7 @@ public enum DialogAlignment {
      * @relation Center
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -6814,8 +6363,7 @@ public enum DialogAlignment {
      * @relation Bottom
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -6826,8 +6374,7 @@ public enum DialogAlignment {
      * @relation Default
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default
@@ -6838,8 +6385,7 @@ public enum DialogAlignment {
      * @relation TopStart
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopStart
@@ -6850,8 +6396,7 @@ public enum DialogAlignment {
      * @relation TopEnd
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TopEnd
@@ -6862,8 +6407,7 @@ public enum DialogAlignment {
      * @relation CenterStart
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CenterStart
@@ -6874,8 +6418,7 @@ public enum DialogAlignment {
      * @relation CenterEnd
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CenterEnd
@@ -6886,8 +6429,7 @@ public enum DialogAlignment {
      * @relation BottomStart
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomStart
@@ -6898,8 +6440,7 @@ public enum DialogAlignment {
      * @relation BottomEnd
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BottomEnd
@@ -6929,8 +6470,7 @@ public enum DialogAlignment {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BarrierDirection {
@@ -6940,8 +6480,7 @@ public enum BarrierDirection {
      * @relation LEFT
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -6952,8 +6491,7 @@ public enum BarrierDirection {
      * @relation RIGHT
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
@@ -6964,8 +6502,7 @@ public enum BarrierDirection {
      * @relation TOP
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -6976,8 +6513,7 @@ public enum BarrierDirection {
      * @relation BOTTOM
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -7001,8 +6537,7 @@ public enum BarrierDirection {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SafeAreaType {
@@ -7012,8 +6547,7 @@ public enum SafeAreaType {
      * @relation SYSTEM
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     System
@@ -7024,8 +6558,7 @@ public enum SafeAreaType {
      * @relation CUTOUT
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Cutout
@@ -7036,8 +6569,7 @@ public enum SafeAreaType {
      * @relation KEYBOARD
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Keyboard
@@ -7060,8 +6592,7 @@ public enum SafeAreaType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SafeAreaEdge {
@@ -7071,8 +6602,7 @@ public enum SafeAreaEdge {
      * @relation TOP
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -7083,8 +6613,7 @@ public enum SafeAreaEdge {
      * @relation BOTTOM
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -7095,8 +6624,7 @@ public enum SafeAreaEdge {
      * @relation START
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -7107,8 +6635,7 @@ public enum SafeAreaEdge {
      * @relation END
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -7132,8 +6659,7 @@ public enum SafeAreaEdge {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ColoringStrategy {
@@ -7143,8 +6669,7 @@ public enum ColoringStrategy {
      * @relation INVERT = 'invert'
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Invert
@@ -7165,8 +6690,7 @@ public enum ColoringStrategy {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum NestedScrollMode {
@@ -7176,8 +6700,7 @@ public enum NestedScrollMode {
      * @relation SELF_ONLY
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SelfOnly
@@ -7188,8 +6711,7 @@ public enum NestedScrollMode {
      * @relation SELF_FIRST
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SelfFirst
@@ -7200,8 +6722,7 @@ public enum NestedScrollMode {
      * @relation PARENT_FIRST
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ParentFirst
@@ -7212,8 +6733,7 @@ public enum NestedScrollMode {
      * @relation PARALLEL
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Parallel
@@ -7237,8 +6757,7 @@ public enum NestedScrollMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ThemeColorMode {
@@ -7248,8 +6767,7 @@ public enum ThemeColorMode {
      * @relation SYSTEM
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     System
@@ -7260,8 +6778,7 @@ public enum ThemeColorMode {
      * @relation LIGHT
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Light
@@ -7272,8 +6789,7 @@ public enum ThemeColorMode {
      * @relation DARK
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Dark
@@ -7296,8 +6812,7 @@ public enum ThemeColorMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum AdaptiveColor {
@@ -7308,8 +6823,7 @@ public enum AdaptiveColor {
      * @relation DEFAULT
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default
@@ -7320,8 +6834,7 @@ public enum AdaptiveColor {
      * @relation AVERAGE
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Average
@@ -7343,8 +6856,7 @@ public enum AdaptiveColor {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ControlSize {
@@ -7354,8 +6866,7 @@ public enum ControlSize {
      * @relation SMALL = 'small'
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Small
@@ -7366,8 +6877,7 @@ public enum ControlSize {
      * @relation NORMAL = 'normal'
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
@@ -7389,8 +6899,7 @@ public enum ControlSize {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum OptionWidthMode {
@@ -7400,8 +6909,7 @@ public enum OptionWidthMode {
      * @relation FIT_CONTENT = 'fit_content'
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FitContent
@@ -7412,8 +6920,7 @@ public enum OptionWidthMode {
      * @relation FIT_TRIGGER = 'fit_trigger'
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FitTrigger
@@ -7435,8 +6942,7 @@ public enum OptionWidthMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ArrowPosition {
@@ -7446,8 +6952,7 @@ public enum ArrowPosition {
      * @relation END = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -7458,8 +6963,7 @@ public enum ArrowPosition {
      * @relation START = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -7481,8 +6985,7 @@ public enum ArrowPosition {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum MenuAlignType {
@@ -7492,8 +6995,7 @@ public enum MenuAlignType {
      * @relation START
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -7504,8 +7006,7 @@ public enum MenuAlignType {
      * @relation CENTER
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -7516,8 +7017,7 @@ public enum MenuAlignType {
      * @relation END
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -7540,8 +7040,7 @@ public enum MenuAlignType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum WebDarkMode {
@@ -7551,8 +7050,7 @@ public enum WebDarkMode {
      * @relation Off = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Off
@@ -7563,8 +7061,7 @@ public enum WebDarkMode {
      * @relation On = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     On
@@ -7575,8 +7072,7 @@ public enum WebDarkMode {
      * @relation Auto = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -7599,8 +7095,7 @@ public enum WebDarkMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SourceTool {
@@ -7610,8 +7105,7 @@ public enum SourceTool {
      * @relation Unknown
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Unknown
@@ -7622,8 +7116,7 @@ public enum SourceTool {
      * @relation Finger
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Finger
@@ -7634,8 +7127,7 @@ public enum SourceTool {
      * @relation Pen
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Pen
@@ -7646,8 +7138,7 @@ public enum SourceTool {
      * @relation MOUSE
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Mouse
@@ -7658,8 +7149,7 @@ public enum SourceTool {
      * @relation TOUCHPAD
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Touchpad
@@ -7670,8 +7160,7 @@ public enum SourceTool {
      * @relation JOYSTICK
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Joystick
@@ -7695,8 +7184,7 @@ public enum SourceTool {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum Repetition {
@@ -7704,8 +7192,7 @@ public enum Repetition {
      * The repeat method of image repetition.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Repeat
@@ -7714,8 +7201,7 @@ public enum Repetition {
      * The repeat-x method of image repetition.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RepeatX
@@ -7724,8 +7210,7 @@ public enum Repetition {
      * The repeat-y method of image repetition.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RepeatY
@@ -7734,8 +7219,7 @@ public enum Repetition {
      * The no-repeat method of image repetition.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NoRepeat
@@ -7744,8 +7228,7 @@ public enum Repetition {
      * The clamp method of image repetition.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Clamp
@@ -7754,8 +7237,7 @@ public enum Repetition {
      * The mirror method of image repetition.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Mirror
@@ -7781,8 +7263,7 @@ public enum Repetition {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ScrollSource {
@@ -7792,8 +7273,7 @@ public enum ScrollSource {
      * @relation DRAG = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Drag
@@ -7804,8 +7284,7 @@ public enum ScrollSource {
      * @relation enum FLING
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fling
@@ -7816,8 +7295,7 @@ public enum ScrollSource {
      * @relation EDGE_EFFECT
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EdgeEffect
@@ -7828,8 +7306,7 @@ public enum ScrollSource {
      * @relation OTHER_USER_INPUT
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     OtherUserInput
@@ -7840,8 +7317,7 @@ public enum ScrollSource {
      * @relation SCROLL_BAR
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ScrollBar
@@ -7852,8 +7328,7 @@ public enum ScrollSource {
      * @relation SCROLL_BAR_FLING
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ScrollBarFling
@@ -7864,8 +7339,7 @@ public enum ScrollSource {
      * @relation SCROLLER
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Scroller
@@ -7876,8 +7350,7 @@ public enum ScrollSource {
      * @relation SCROLLER_ANIMATION
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ScrollerAnimation
@@ -7919,8 +7392,7 @@ public enum ScrollSource {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ContentType {
@@ -7931,8 +7403,7 @@ public enum ContentType {
      * @relation USER_NAME = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     UserName
@@ -7944,8 +7415,7 @@ public enum ContentType {
      * @relation PASSWORD = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Password
@@ -7957,8 +7427,7 @@ public enum ContentType {
      * @relation NEW_PASSWORD = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NewPassword
@@ -7971,8 +7440,7 @@ public enum ContentType {
      * @relation FULL_STREET_ADDRESS = 3
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FullStreetAddress
@@ -7985,8 +7453,7 @@ public enum ContentType {
      * @relation HOUSE_NUMBER = 4
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     HouseNumber
@@ -7999,8 +7466,7 @@ public enum ContentType {
      * @relation DISTRICT_ADDRESS = 5
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DistrictAddress
@@ -8013,8 +7479,7 @@ public enum ContentType {
      * @relation CITY_ADDRESS = 6
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CityAddress
@@ -8027,8 +7492,7 @@ public enum ContentType {
      * @relation PROVINCE_ADDRESS = 7
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ProvinceAddress
@@ -8041,8 +7505,7 @@ public enum ContentType {
      * @relation COUNTRY_ADDRESS = 8
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CountryAddress
@@ -8055,8 +7518,7 @@ public enum ContentType {
      * @relation PERSON_FULL_NAME = 9
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PersonFullName
@@ -8069,8 +7531,7 @@ public enum ContentType {
      * @relation PERSON_LAST_NAME = 10
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PersonLastName
@@ -8083,8 +7544,7 @@ public enum ContentType {
      * @relation PERSON_FIRST_NAME = 11
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PersonFirstName
@@ -8097,8 +7557,7 @@ public enum ContentType {
      * @relation PHONE_NUMBER = 12
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PhoneNumber
@@ -8111,8 +7570,7 @@ public enum ContentType {
      * @relation PHONE_COUNTRY_CODE = 13
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PhoneCountryCode
@@ -8125,8 +7583,7 @@ public enum ContentType {
      * @relation FULL_PHONE_NUMBER = 14
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FullPhoneNumber
@@ -8139,8 +7596,7 @@ public enum ContentType {
      * @relation EMAIL_ADDRESS = 15
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EmailAddress
@@ -8153,8 +7609,7 @@ public enum ContentType {
      * @relation BANK_CARD_NUMBER = 16
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BankCardNumber
@@ -8167,8 +7622,7 @@ public enum ContentType {
      * @relation ID_CARD_NUMBER = 17
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     IdCardNumber
@@ -8181,8 +7635,7 @@ public enum ContentType {
      * @relation NICKNAME = 23
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Nickname
@@ -8195,8 +7648,7 @@ public enum ContentType {
      * @relation DETAIL_INFO_WITHOUT_STREET = 24
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     DetailInfoWithoutStreet
@@ -8209,8 +7661,7 @@ public enum ContentType {
      * @relation FORMAT_ADDRESS = 25
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FormatAddress
@@ -8251,8 +7702,7 @@ public enum ContentType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum MenuPolicy {
@@ -8262,8 +7712,7 @@ public enum MenuPolicy {
      * @relation DEFAULT = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default
@@ -8274,8 +7723,7 @@ public enum MenuPolicy {
      * @relation HIDE = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Hide
@@ -8286,8 +7734,7 @@ public enum MenuPolicy {
      * @relation SHOW = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Show
@@ -8310,8 +7757,7 @@ public enum MenuPolicy {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextDecorationStyle {
@@ -8321,8 +7767,7 @@ public enum TextDecorationStyle {
      * @relation SOLID = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Solid
@@ -8333,8 +7778,7 @@ public enum TextDecorationStyle {
      * @relation DOUBLE = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Double
@@ -8345,8 +7789,7 @@ public enum TextDecorationStyle {
      * @relation DOTTED = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Dotted
@@ -8357,8 +7800,7 @@ public enum TextDecorationStyle {
      * @relation DASHED = 3
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Dashed
@@ -8369,8 +7811,7 @@ public enum TextDecorationStyle {
      * @relation WAVY = 4
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Wavy
@@ -8395,8 +7836,7 @@ public enum TextDecorationStyle {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LineBreakStrategy {
@@ -8407,8 +7847,7 @@ public enum LineBreakStrategy {
      * @relation GREEDY = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Greedy
@@ -8420,8 +7859,7 @@ public enum LineBreakStrategy {
      * @relation HIGH_QUALITY  = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     HighQuality
@@ -8433,8 +7871,7 @@ public enum LineBreakStrategy {
      * @relation BALANCED  = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Balanced
@@ -8466,8 +7903,7 @@ public enum LineBreakStrategy {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextContentStyle {
@@ -8477,8 +7913,7 @@ public enum TextContentStyle {
      * @relation DEFAULT
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default
@@ -8489,8 +7924,7 @@ public enum TextContentStyle {
      * @relation INLINE
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Inline
@@ -8512,8 +7946,7 @@ public enum TextContentStyle {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum CheckBoxShape {
@@ -8523,8 +7956,7 @@ public enum CheckBoxShape {
      * @relation CIRCLE = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Circle
@@ -8535,8 +7967,7 @@ public enum CheckBoxShape {
      * @relation ROUNDED_SQUARE = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RoundedSquare
@@ -8558,8 +7989,7 @@ public enum CheckBoxShape {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextHeightAdaptivePolicy {
@@ -8571,8 +8001,7 @@ public enum TextHeightAdaptivePolicy {
      * @relation MAX_LINES_FIRST
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     MaxLinesFirst
@@ -8585,8 +8014,7 @@ public enum TextHeightAdaptivePolicy {
      * @relation MIN_FONT_SIZE_FIRST
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     MinFontSizeFirst
@@ -8600,8 +8028,7 @@ public enum TextHeightAdaptivePolicy {
      * @relation LAYOUT_CONSTRAINT_FIRST
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LayoutConstraintFirst
@@ -8624,8 +8051,7 @@ public enum TextHeightAdaptivePolicy {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ArrowPointPosition {
@@ -8635,8 +8061,7 @@ public enum ArrowPointPosition {
      * @relation START = 'Start'
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -8647,8 +8072,7 @@ public enum ArrowPointPosition {
      * @relation CENTER = 'Center'
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -8659,8 +8083,7 @@ public enum ArrowPointPosition {
      * @relation END = 'End'
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -8683,8 +8106,7 @@ public enum ArrowPointPosition {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TitleHeight {
@@ -8694,8 +8116,7 @@ public enum TitleHeight {
      * @relation MainOnly
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     MainOnly
@@ -8706,8 +8127,7 @@ public enum TitleHeight {
      * @relation MainWithSub
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     MainWithSub
@@ -8729,8 +8149,7 @@ public enum TitleHeight {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum DialogButtonStyle {
@@ -8740,8 +8159,7 @@ public enum DialogButtonStyle {
      * @relation DEFAULT = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default
@@ -8752,8 +8170,7 @@ public enum DialogButtonStyle {
      * @relation HIGHLIGHT = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Highlight
@@ -8775,8 +8192,7 @@ public enum DialogButtonStyle {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LengthMetricsUnit {
@@ -8786,8 +8202,7 @@ public enum LengthMetricsUnit {
      * @relation DEFAULT = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default
@@ -8798,8 +8213,7 @@ public enum LengthMetricsUnit {
      * @relation PX = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Px
@@ -8821,8 +8235,7 @@ public enum LengthMetricsUnit {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum CanvasDirection {
@@ -8832,8 +8245,7 @@ public enum CanvasDirection {
      * @relation type CanvasDirection = "inherit" | "ltr" | "rtl"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Inherit
@@ -8844,8 +8256,7 @@ public enum CanvasDirection {
      * @relation type CanvasDirection = "inherit" | "ltr" | "rtl"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ltr
@@ -8856,8 +8267,7 @@ public enum CanvasDirection {
      * @relation type CanvasDirection = "inherit" | "ltr" | "rtl"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Rtl
@@ -8881,8 +8291,7 @@ public enum CanvasDirection {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum CanvasFillRule {
@@ -8892,8 +8301,7 @@ public enum CanvasFillRule {
      * @relation type CanvasFillRule = "evenodd" | "nonzero"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     EvenOdd
@@ -8904,8 +8312,7 @@ public enum CanvasFillRule {
      * @relation type CanvasFillRule = "evenodd" | "nonzero"
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NonZero
@@ -8929,8 +8336,7 @@ protected enum ImageType {
      * Image format png.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Png
@@ -8939,8 +8345,7 @@ protected enum ImageType {
      * Image format jpeg.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Jpeg
@@ -8949,8 +8354,7 @@ protected enum ImageType {
      * Image format webp.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Webp
@@ -8973,8 +8377,7 @@ protected enum ImageType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum FinishCallbackType {
@@ -8984,8 +8387,7 @@ public enum FinishCallbackType {
      * @relation REMOVED = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Removed
@@ -8997,8 +8399,7 @@ public enum FinishCallbackType {
      * @relation LOGICALLY = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Logically
@@ -9020,8 +8421,7 @@ public enum FinishCallbackType {
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BlurStyle {
@@ -9031,8 +8431,7 @@ public enum BlurStyle {
      * @relation Thin
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Thin
@@ -9043,8 +8442,7 @@ public enum BlurStyle {
      * @relation Regular
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Regular
@@ -9055,8 +8453,7 @@ public enum BlurStyle {
      * @relation Thick
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Thick
@@ -9067,8 +8464,7 @@ public enum BlurStyle {
      * @relation BackgroundThin
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BackgroundThin
@@ -9079,8 +8475,7 @@ public enum BlurStyle {
      * @relation BackgroundRegular
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BackgroundRegular
@@ -9091,8 +8486,7 @@ public enum BlurStyle {
      * @relation BackgroundThick
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BackgroundThick
@@ -9103,8 +8497,7 @@ public enum BlurStyle {
      * @relation BackgroundUltraThick
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BackgroundUltraThick
@@ -9115,8 +8508,7 @@ public enum BlurStyle {
      * @relation None
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -9127,8 +8519,7 @@ public enum BlurStyle {
      * @relation ComponentUltraThin
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ComponentUltraThin
@@ -9139,8 +8530,7 @@ public enum BlurStyle {
      * @relation ComponentThin
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ComponentThin
@@ -9151,8 +8541,7 @@ public enum BlurStyle {
      * @relation ComponentRegular
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ComponentRegular
@@ -9163,8 +8552,7 @@ public enum BlurStyle {
      * @relation ComponentThick
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ComponentThick
@@ -9175,8 +8563,7 @@ public enum BlurStyle {
      * @relation ComponentUltraThick
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ComponentUltraThick
@@ -9208,8 +8595,7 @@ public enum BlurStyle {
  * @relation enum DismissReason
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum DismissReason {
@@ -9219,8 +8605,7 @@ public enum DismissReason {
      * @relation PRESS_BACK = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PressBack
@@ -9231,8 +8616,7 @@ public enum DismissReason {
      * @relation TOUCH_OUTSIDE = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TouchOutside
@@ -9243,8 +8627,7 @@ public enum DismissReason {
      * @relation CLOSE_BUTTON = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     CloseButton
@@ -9258,8 +8641,7 @@ public enum DismissReason {
      * @relation SLIDE_DOWN = 3
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SlideDown
@@ -9296,8 +8678,7 @@ public enum DismissReason {
  * @relation enum TextInputStyle
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextInputStyle {
@@ -9311,8 +8692,7 @@ public enum TextInputStyle {
      * @relation Default
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Default
@@ -9329,8 +8709,7 @@ public enum TextInputStyle {
      * @relation Inline
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Inline
@@ -9351,8 +8730,7 @@ public enum TextInputStyle {
  * @relation enum TextAreaType
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TextAreaType {
@@ -9363,8 +8741,7 @@ public enum TextAreaType {
      * @relation NORMAL = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
@@ -9375,8 +8752,7 @@ public enum TextAreaType {
      * @relation NUMBER = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Number
@@ -9389,8 +8765,7 @@ public enum TextAreaType {
      * @relation PhoneNumber = 3
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PhoneNumber
@@ -9403,8 +8778,7 @@ public enum TextAreaType {
      * @relation EMAIL = 5
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Email
@@ -9416,8 +8790,7 @@ public enum TextAreaType {
      * @relation NUMBER_DECIMAL = 12
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NumberDecimal
@@ -9428,8 +8801,7 @@ public enum TextAreaType {
      * @relation URL = 13
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Url

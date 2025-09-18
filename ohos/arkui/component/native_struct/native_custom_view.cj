@@ -22,8 +22,7 @@ import ohos.labels.APILevel
 
 @C
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 protected func OHOSAceFrameworkRemoteViewForceCompleteRerender(id: Int64, deep: Bool): Unit {
