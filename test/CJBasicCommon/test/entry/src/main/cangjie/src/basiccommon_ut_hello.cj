@@ -514,6 +514,18 @@ class BasicCommonUTHello {
         Hilog.info(1, "Cangjie-Test","xDPI: " + displayClass.xDPI.toString())
         Hilog.info(1, "Cangjie-Test","yDPI: " + displayClass.yDPI.toString())
 
+        Hilog.info(1, "Cangjie-Test","state: " + match(displayClass.state){
+            case DisplayState.StateUnknown => "unknow"
+            case DisplayState.StateOff => "off"
+            case DisplayState.StateOn => "on"
+            case DisplayState.StateDoze => "doze"
+            case DisplayState.StateDozeSuspend => "doze suspend"
+            case DisplayState.StateVr => "vr"
+            case DisplayState.StateOnSuspend => "on suspend"
+            case _ => "unsupport"
+            
+        })
+
         if (isFoldable()) {
             let status = getFoldStatus()
             let mode = getFoldDisplayMode()
@@ -846,6 +858,16 @@ class BasicCommonUTHello {
             TestSubWindow1.on(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
         }catch (e: Exception) {
                 Hilog.info(1, "Cangjie-Test", "test_window on" + e.toString())
+        }
+        try {
+            TestSubWindow1.on(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
+        }catch (e: Exception) {
+                Hilog.info(1, "Cangjie-Test", "test_window on" + e.toString())
+        }
+        try {
+            TestSubWindow1.off(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
+        }catch (e: Exception) {
+                Hilog.info(1, "Cangjie-Test", "test_window off onKeyboardHeightChangeCb" + e.toString())
         }
         try {
             TestSubWindow1.off(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)

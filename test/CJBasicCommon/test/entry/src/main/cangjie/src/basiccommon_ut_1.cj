@@ -265,6 +265,43 @@ class BasicCommonUT1 {
     }
 
 
+    // BindSheet
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func testBindSheet() {
+        scrollTo("ViewBindSheet")
+
+        let bindSheet: Component = driver.findComponent(On().id("bindSheet")).getOrThrow()
+        bindSheet.click()
+        driver.delayMs(1000)
+        let text_2 = driver.findComponent(On().id("text2")).getOrThrow()
+        let text2 = text_2.getText().toString()
+        @Expect(text2, "BindSheet onDisappear.")
+
+        let bindsheet2: Component = driver.findComponent(On().id("bindsheet2")).getOrThrow()
+        bindsheet2.click()
+        driver.delayMs(1000)
+
+        let bindSheet4: Component = driver.findComponent(On().id("bindSheet4")).getOrThrow()
+        bindSheet4.click()
+        driver.delayMs(1000)
+
+        let bindSheet3: Component = driver.findComponent(On().id("bindsheet3")).getOrThrow()
+        bindSheet3.click()
+        driver.delayMs(1000)
+        let text_3 = driver.findComponent(On().id("text3")).getOrThrow()
+        let text3 = text_3.getText().toString()
+        @Expect(text3, "onHeightDidChange")
+
+        let button3: Component = driver.findComponent(On().id("button3")).getOrThrow()
+        button3.click()
+        driver.delayMs(1000)
+        let text_1 = driver.findComponent(On().id("text2")).getOrThrow()
+        let text1 = text_1.getText().toString()
+        @Expect(text1, "BindSheet onDisappear.")
+    }
+
+
     // border
     @TestCase
     @Tag[APILevel12, TestLevel0]

@@ -186,6 +186,7 @@ class BasicCommonUT4 {
         clickButton("onKeyboardHeight0_error")
         clickButton("OldOnKeyboardHei")
         clickButton("OldOffKeyboardHei")
+        clickButton("CreateSubWindow")
     }
 
     // zorder
