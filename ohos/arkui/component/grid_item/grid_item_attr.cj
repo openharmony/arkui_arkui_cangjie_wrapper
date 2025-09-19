@@ -17,13 +17,33 @@ package ohos.arkui.component.grid_item
 
 import ohos.arkui.component.common.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func columnStart(columnStart: ?Int32): GridItemAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func columnEnd(columnEnd: ?Int32): GridItemAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func rowStart(rowStart: ?Int32): GridItemAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func rowEnd(rowEnd: ?Int32): GridItemAttribute
 }

@@ -424,7 +424,16 @@ struct NativeRichEditorImageSpanOptions {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorLayoutStyle {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var margin: ?Margin
+
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var borderRadius: ?BorderRadiuses
 
     /**

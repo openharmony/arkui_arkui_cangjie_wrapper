@@ -19,20 +19,56 @@ import ohos.arkui.component.common.*
 import ohos.base.*
 import ohos.resource.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fontSize(value: ?Length): ButtonAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fontWeight(value: ?FontWeight): ButtonAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fontColor(color: ?ResourceColor): ButtonAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fontStyle(value: ?FontStyle): ButtonAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fontFamily(value: ?ResourceStr): ButtonAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func shape(value: ?ButtonType): ButtonAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func stateEffect(value: ?Bool): ButtonAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func buttonStyle(value: ?ButtonStyleMode): ButtonAttribute
 }

@@ -18,26 +18,68 @@ package ohos.arkui.component.navigation
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func navDestination(builder: ?(String) -> Unit): NavigationAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func title(value: ?ResourceStr, options!: ?NavigationTitleOptions): NavigationAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions): NavigationAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func hideTitleBar(hide: ?Bool, animated!: ?Bool): NavigationAttribute
 }
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onBackPressed(callback: ?() -> Bool): NavDestinationAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onReady(callback: ?Callback<NavDestinationContext, Unit>): NavDestinationAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func title(value: ?ResourceStr, options!: ?NavigationTitleOptions): NavDestinationAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions): NavDestinationAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func hideTitleBar(value: ?Bool): NavDestinationAttribute
 }

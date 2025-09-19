@@ -18,21 +18,56 @@ package ohos.arkui.component.slider
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func blockColor(value: ?ResourceColor): SliderAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func trackColor(value: ?ResourceColor): SliderAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func selectedColor(value: ?ResourceColor): SliderAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func showSteps(value: ?Bool): SliderAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func showTips(value: ?Bool, content!: ?ResourceStr): SliderAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func trackThickness(value: ?Length): SliderAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onChange(callback: ?(Float64, SliderChangeMode) -> Unit): SliderAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func blockBorderColor(value: ?ResourceColor): SliderAttribute
 }

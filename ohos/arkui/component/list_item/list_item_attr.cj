@@ -18,10 +18,22 @@ package ohos.arkui.component.list_item
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface ListItemAttribute <: CommonMethod<ListItemAttribute> {
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func selectable(value: ?Bool): ListItemAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func swipeAction(
         start!: ?CustomBuilder,
         end!: ?CustomBuilder,
@@ -29,5 +41,9 @@ sealed interface ListItemAttribute <: CommonMethod<ListItemAttribute> {
         onOffsetChange!: ?(Float64) -> Unit
     ): ListItemAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onSelect(event: ?(Bool) -> Unit): ListItemAttribute
 }

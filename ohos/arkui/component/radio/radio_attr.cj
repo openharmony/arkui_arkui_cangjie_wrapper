@@ -18,8 +18,20 @@ package ohos.arkui.component.radio
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface RadioAttribute <: CommonMethod<RadioAttribute> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func checked(value: ?Bool): RadioAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onChange(callback: ?(Bool) -> Unit): RadioAttribute
 }

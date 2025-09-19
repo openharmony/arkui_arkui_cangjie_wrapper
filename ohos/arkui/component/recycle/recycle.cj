@@ -60,4 +60,8 @@ public class __Recycle__ <: CommonMethodComponent<RecycleAttribute> & RecycleAtt
     }
 }
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface RecycleAttribute <: CommonMethod<RecycleAttribute> {}

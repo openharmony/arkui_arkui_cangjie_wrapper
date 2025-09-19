@@ -20,6 +20,14 @@ import ohos.arkui.component.shape.*
 import ohos.arkui.component.util.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface PathAttribute <: CommonShapeMethod<PathAttribute> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func commands(commands: ?ResourceStr): PathAttribute
 }

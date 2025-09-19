@@ -73,6 +73,15 @@ public func bind<T1, T2, T3>(
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LegalCallCheck {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public static func check(_: ViewBuilder) {}
+
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public static func check(_: CustomView) {}
 }

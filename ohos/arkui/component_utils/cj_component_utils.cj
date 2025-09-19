@@ -391,6 +391,10 @@ public class RotateResult {
     /**
      * Defines RotateResult Type.
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(x: Float64, y: Float64, z: Float64, centerX: Float64, centerY: Float64, angle: Float64) {
         this.x = x
         this.y = y

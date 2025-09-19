@@ -19,17 +19,45 @@ import ohos.arkui.component.common.*
 import ohos.base.*
 import ohos.arkui.component.scroll.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func columnsTemplate(value: ?String): GridAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func rowsTemplate(value: ?String): GridAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func columnsGap(value: ?Length): GridAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func rowsGap(value: ?Length): GridAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func cachedCount(count: ?Int32): GridAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func cachedCount(count: ?Int32, show: ?Bool): GridAttribute
 }

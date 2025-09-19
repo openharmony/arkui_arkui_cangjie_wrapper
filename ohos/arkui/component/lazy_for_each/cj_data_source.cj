@@ -35,9 +35,28 @@ foreign {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface IDataSource<T> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func totalCount(): Int64
+    
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func getData(index: Int64): T
+    
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func registerDataChangeListener(listener: DataChangeListener): Unit
+    
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func unregisterDataChangeListener(listener: DataChangeListener): Unit
 }
 

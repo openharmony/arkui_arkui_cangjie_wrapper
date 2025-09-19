@@ -18,10 +18,26 @@ package ohos.arkui.component.checkbox_group
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func selectAll(value: ?Bool): CheckboxGroupAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func selectedColor(value: ?ResourceColor): CheckboxGroupAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onChange(callback: ?OnCheckboxGroupChangeCallback): CheckboxGroupAttribute
 }

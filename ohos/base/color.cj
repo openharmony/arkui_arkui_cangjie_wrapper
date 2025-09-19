@@ -32,6 +32,10 @@ let COLOR_TRANSPARENT_VALUE: UInt32 = 0X00000000
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface ResourceColor {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func toUInt32(): UInt32 {
         throw BusinessException(10000, "AppResource can not get 'UInt32' value from ResourceColor")
     }
@@ -77,7 +81,7 @@ extend UInt32 <: ResourceColor {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Color <: ResourceColor {
+public class Color <:   {
     private var value_: UInt32 = 0
 
     /**
@@ -212,6 +216,10 @@ public class Color <: ResourceColor {
         return result
     }
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func toUInt32(): UInt32 {
         this.value_
     }

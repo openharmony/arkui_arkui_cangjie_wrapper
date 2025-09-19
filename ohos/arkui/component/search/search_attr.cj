@@ -18,12 +18,27 @@ package ohos.arkui.component.search
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func searchButton(value: ?ResourceStr): SearchAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func placeholderColor(value: ?ResourceColor): SearchAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func placeholderFont(
         size!: ?Length,
         weight!: ?FontWeight,
@@ -31,6 +46,10 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
         family!: ?ResourceStr
     ): SearchAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func textFont(
         size!: ?Length,
         weight!: ?FontWeight,
@@ -38,15 +57,39 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
         family!: ?ResourceStr
     ): SearchAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func copyOption(value: ?CopyOptions): SearchAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onSubmit(callback: ?(String) -> Unit): SearchAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onChange(callback: ?(String) -> Unit): SearchAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onCopy(callback: ?(String) -> Unit): SearchAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onCut(callback: ?(String) -> Unit): SearchAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onPaste(callback: ?(String) -> Unit): SearchAttribute
 }

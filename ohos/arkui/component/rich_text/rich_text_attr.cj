@@ -18,9 +18,20 @@ package ohos.arkui.component.rich_text
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface RichTextAttribute <: CommonMethod<RichTextAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onStart(callback: ?() -> Unit): RichTextAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onComplete(callback: ?() -> Unit): RichTextAttribute
 }

@@ -19,11 +19,26 @@ import ohos.arkui.component.common.*
 import ohos.base.*
 import ohos.resource.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface QRCodeAttribute <: CommonMethod<QRCodeAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func color(value: ?ResourceColor): QRCodeAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func contentOpacity(value: ?Float64): QRCodeAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func contentOpacity(value: ?AppResource): QRCodeAttribute
 }

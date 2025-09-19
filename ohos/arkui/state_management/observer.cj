@@ -23,8 +23,27 @@ import std.collection.*
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface Observer {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onStateUpdate(info: String, dependentElmtIds: ArrayList<Int64>): Unit
+    
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func notifyRead(info: String): Unit
+    
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func id(): Int64
+    
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func aboutToBeDeleted(): Unit
 }

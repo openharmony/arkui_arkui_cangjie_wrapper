@@ -245,4 +245,8 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
     }
 }
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface ViewAttribute <: CommonMethod<ViewAttribute> {}

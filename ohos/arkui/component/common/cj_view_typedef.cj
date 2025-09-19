@@ -700,6 +700,10 @@ public class PopupOptions {
  *
  * @relation declare interface MenuElement
  */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 public class MenuElement {
     let value: String
     let action: () -> Unit
@@ -1928,6 +1932,10 @@ public class DismissPopupAction {
      * Defines popup dismiss reason
      * @relation reason: DismissReason;
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public let reason: DismissReason
     init(reason!: DismissReason) {
         this.reason = reason
@@ -2240,6 +2248,10 @@ public class ContextMenuAnimationOptions {
      * @type { ?VArray<Float64, $2> }
      * @relation scale?: AnimationRange<number>;
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var scale: ?VArray<Float64, $2>
     /**
      * Defines the transition effect of menu preview opening and closing.
@@ -2247,6 +2259,10 @@ public class ContextMenuAnimationOptions {
      * @type { ?TransitionEffect }
      * @relation transition?: TransitionEffect;
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var transition: ?TransitionEffect
     /**
      * Sets the scale start and end animator of the image displayed before the custom builder preview is displayed.
@@ -2254,6 +2270,10 @@ public class ContextMenuAnimationOptions {
      * @type { ?VArray<Float64, $2>  }
      * @relation hoverScale?: AnimationRange<number>;
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var hoverScale: ?VArray<Float64, $2>
 
     /**

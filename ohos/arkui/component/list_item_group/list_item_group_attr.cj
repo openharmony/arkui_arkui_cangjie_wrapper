@@ -18,7 +18,14 @@ package ohos.arkui.component.list_item_group
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface ListItemGroupAttribute <: CommonMethod<ListItemGroupAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func divider(value: Option<ListDividerOptions>): ListItemGroupAttribute
 }

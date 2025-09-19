@@ -18,11 +18,26 @@ package ohos.arkui.component.text_picker
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func defaultPickerItemHeight(value: ?Length): TextPickerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func canLoop(value: ?Bool): TextPickerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onChange(callback: ?OnTextPickerChangeCallback): TextPickerAttribute
 }

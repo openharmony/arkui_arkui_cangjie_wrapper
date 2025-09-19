@@ -21,16 +21,39 @@ import ohos.base.*
 import ohos.resource.*
 import std.time.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func lunar(value: ?Bool): DatePickerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func onDateChange(callback: ?Callback<DateTime, Unit>): DatePickerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func disappearTextStyle(value: ?PickerTextStyle): DatePickerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func textStyle(value: ?PickerTextStyle): DatePickerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func selectedTextStyle(value: ?PickerTextStyle): DatePickerAttribute
 }
 

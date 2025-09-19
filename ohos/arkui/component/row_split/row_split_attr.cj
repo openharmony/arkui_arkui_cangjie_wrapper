@@ -18,6 +18,14 @@ package ohos.arkui.component.row_split
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface RowSplitAttribute <: CommonMethod<RowSplitAttribute> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func resizeable(value: ?Bool): RowSplitAttribute
 }

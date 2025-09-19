@@ -18,9 +18,20 @@ package ohos.arkui.component.refresh
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface RefreshAttribute <: CommonMethod<RefreshAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onStateChange(callback: ?(RefreshStatus) -> Unit): RefreshAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onRefreshing(callback: ?() -> Unit): RefreshAttribute
 }

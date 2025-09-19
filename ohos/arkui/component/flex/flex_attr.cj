@@ -18,4 +18,8 @@ package ohos.arkui.component.flex
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface FlexAttribute <: CommonMethod<FlexAttribute> {}

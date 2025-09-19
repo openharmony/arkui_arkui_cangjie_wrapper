@@ -18,10 +18,21 @@ package ohos.arkui.component.rich_editor
 import ohos.arkui.component.common.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func customKeyboard(value!: ?CustomBuilder): RichEditorAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func bindSelectionMenu(
         spantype!: ?RichEditorSpanType,
         content!: ?CustomBuilder,
@@ -29,21 +40,57 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
         options!: ?SelectionMenuOptions
     ): RichEditorAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func copyOptions(value: ?CopyOptions): RichEditorAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onReady(callback: ?VoidCallback): RichEditorAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func aboutToIMEInput(callback: ?Callback<RichEditorInsertValue, Bool>): RichEditorAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onIMEInputComplete(callback: ?Callback<RichEditorTextSpanResult, Unit>): RichEditor
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onDeleteComplete(callback: ?VoidCallback): RichEditorAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func aboutToDelete(callback: ?Callback<RichEditorDeleteValue, Bool>): RichEditorAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onSelect(callback: ?Callback<RichEditorSelection, Unit>): RichEditorAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onPaste(callback: ?PasteEventCallback): RichEditorAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onDidChange(callback: ?OnDidChangeCallback): RichEditorAttribute
 }

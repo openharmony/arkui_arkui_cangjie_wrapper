@@ -30,4 +30,8 @@ public class EmptyComponent <: CommonMethodComponent<EmptyComponentAttribute> & 
     public init() {}
 }
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface EmptyComponentAttribute <: CommonMethod<EmptyComponentAttribute> {}

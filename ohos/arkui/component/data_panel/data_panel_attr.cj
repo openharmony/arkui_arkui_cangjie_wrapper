@@ -19,14 +19,38 @@ import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func closeEffect(value: ?Bool): DataPanelAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func valueColors(value: ?Array<LinearGradient>): DataPanelAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func trackBackgroundColor(value: ?ResourceColor): DataPanelAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func strokeWidth(value: ?Length): DataPanelAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func trackShadow(value: ?DataPanelShadowOptions): DataPanelAttribute
 }

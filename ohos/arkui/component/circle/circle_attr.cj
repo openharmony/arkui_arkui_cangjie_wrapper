@@ -18,4 +18,8 @@ package ohos.arkui.component.circle
 import ohos.arkui.component.common.*
 import ohos.arkui.component.shape.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface CircleAttribute <: CommonShapeMethod<CircleAttribute> {}

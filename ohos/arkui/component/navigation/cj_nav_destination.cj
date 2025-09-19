@@ -47,6 +47,10 @@ struct CJNavDestinationContext {
  * @class NavDestinationContext
  * @relation declare interface NavDestinationContext
  */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 public class NavDestinationContext {
     /**
      * Path information of the navigation destination page.
@@ -54,6 +58,10 @@ public class NavDestinationContext {
      * @type { NavPathInfo }
      * @relation pathInfo: NavPathInfo
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var pathInfo: ?NavPathInfo
 
     /**
@@ -62,6 +70,10 @@ public class NavDestinationContext {
      * @type { NavPathStack }
      * @relation pathStack: NavPathStack
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var pathStack: ?NavPathStack
 
     /**
@@ -71,7 +83,12 @@ public class NavDestinationContext {
      * @type { ?string }
      * @relation navDestinationId?: string
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var navDestinationId: ?String
+
     init(
         pathInfo: NavPathInfo,
         pathStack: NavPathStack,
@@ -89,6 +106,10 @@ public class NavDestinationContext {
  * @class NavDestinationContext
  * @relation declare interface NavDestinationContext
  */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & NavDestinationAttribute {
     /**
      * The construct function of NavDestination.
@@ -96,6 +117,10 @@ public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & 
      * @param { () -> Unit } child
      * @relation declare interface NavDestinationInterface
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(child!: () -> Unit = { => }) {
         unsafe {
             FfiOHOSAceFrameworkNavdestinationCreate()
@@ -110,6 +135,10 @@ public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & 
      * @returns { NavDestination }
      * @relation onBackPressed(callback: () => boolean): NavDestinationAttribute
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func onBackPressed(callback: ?() -> Bool): This {
         let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
@@ -128,6 +157,10 @@ public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & 
      * @returns { NavDestinationAttribute }
      * @relation onReady(callback: Callback<NavDestinationContext>): NavDestinationAttribute
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func onReady(callback: ?Callback<NavDestinationContext, Unit>): This {
         let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
@@ -167,6 +200,10 @@ public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & 
      * @relation title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestinationCustomTitle | Resource,
      * options?: NavigationTitleOptions): NavDestinationAttribut
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func title(value: ?ResourceStr, options!: ?NavigationTitleOptions = None): This {
         let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
@@ -195,6 +232,10 @@ public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & 
      * @relation title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestinationCustomTitle | Resource,
      * options?: NavigationTitleOptions): NavDestinationAttribut
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions = None): This {
         let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
@@ -216,6 +257,10 @@ public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & 
      * @returns { NavDestination }
      * @relation hideTitleBar(value: boolean): NavDestinationAttribute
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func hideTitleBar(value: ?Bool): This {
         let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {

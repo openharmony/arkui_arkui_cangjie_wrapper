@@ -227,7 +227,7 @@ func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
 }
 
 extend<T> ArrayList<T> {
-    public func append(elements: ArrayList<T>): Unit {
+    protected func append(elements: ArrayList<T>): Unit {
         for (element in elements) {
             add(element)
         }

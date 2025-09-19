@@ -716,10 +716,6 @@ public class ActionSheetOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: ?TransitionEffect
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     /**
      * Constructor of ActionSheetOptions
      *
@@ -748,6 +744,10 @@ public class ActionSheetOptions {
      * @returns { ActionSheetOptions }
      * @relation interface ActionSheetOptions
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(
         title!: ?ResourceStr,
         message!: ?ResourceStr,
