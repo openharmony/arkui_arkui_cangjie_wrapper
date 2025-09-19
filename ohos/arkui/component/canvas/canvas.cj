@@ -105,6 +105,10 @@ public class RenderingContextSettings {
      *
      * @relation antialias?: boolean
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var antialias: ?Bool
 
     /**
@@ -112,6 +116,10 @@ public class RenderingContextSettings {
      *
      * @relation constructor(antialias?: boolean)
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(antialias!: ?Bool = None) {
         this.antialias = antialias ?? false
     }

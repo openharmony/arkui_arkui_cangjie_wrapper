@@ -16,41 +16,113 @@
 package ohos.arkui.component.swiper
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func autoPlay(value: ?Bool): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func duration(value: ?UInt32): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func index(value: ?UInt32): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func interval(value: ?UInt32): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func loop(value: ?Bool): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func vertical(value: ?Bool): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func indicator(indicator: ?Bool): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func indicator(indicator: ?DotIndicator): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func indicator(indicator: ?DigitIndicator): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func itemSpace(value: ?Length): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func displayMode(value: ?SwiperDisplayMode): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func effectMode(value: ?EdgeEffect): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func displayCount(value: ?Int32, swipeByGroup!: ?Bool): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func cachedCount(value: ?Int32): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func disableSwipe(value: ?Bool): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func curve(value: ?Curve): SwiperAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onChange(callback: ?(Int32) -> Unit): SwiperAttribute
 }

@@ -16,15 +16,35 @@
 package ohos.arkui.component.divider
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func vertical(value: ?Bool): DividerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func color(value: ?ResourceColor): DividerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func strokeWidth(value: ?Length): DividerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func lineCap(value: ?LineCapStyle): DividerAttribute
 }

@@ -75,7 +75,7 @@ class CallbackTextPickerResult <: BaseCallBack {
         registerSelf()
     }
 
-    public func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
+    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw InvalidArgsException()
         }

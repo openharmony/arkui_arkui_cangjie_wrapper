@@ -17,8 +17,17 @@ package ohos.arkui.component.blank
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface BlankAttribute <: CommonMethod<BlankAttribute> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func color(value: ?ResourceColor): BlankAttribute
 }

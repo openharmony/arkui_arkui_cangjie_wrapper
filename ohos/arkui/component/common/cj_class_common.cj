@@ -1292,6 +1292,10 @@ public class Font {
  *
  * @relation declare abstract class TextContentControllerBase
  */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 public interface TextContentControllerBase {
 
 }

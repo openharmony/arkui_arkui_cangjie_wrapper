@@ -151,6 +151,10 @@ public enum ProgressStatus {
  * @interface CommonProgressStyleOptions
  * @relation interface CommonProgressStyleOptions
  */
+ @!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface CommonProgressStyleOptions {}
 
 /**

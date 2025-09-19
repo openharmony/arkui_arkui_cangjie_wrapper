@@ -16,15 +16,35 @@
 package ohos.arkui.component.counter
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func enableInc(value: ?Bool): CounterAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func enableDec(value: ?Bool): CounterAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onInc(event: ?VoidCallback): CounterAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onDec(event: ?VoidCallback): CounterAttribute
 }

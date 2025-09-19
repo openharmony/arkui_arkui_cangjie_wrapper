@@ -16,11 +16,23 @@
 package ohos.arkui.component.relative_container
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface RelativeContainerAttribute <: CommonMethod<RelativeContainerAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func guideLine(value: ?Array<GuideLineStyle>): RelativeContainerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func barrier(value: ?Array<BarrierStyle>): RelativeContainerAttribute
 }

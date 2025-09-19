@@ -16,8 +16,16 @@
 package ohos.arkui.component.stack
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface StackAttribute <: CommonMethod<StackAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func alignContent(value: ?Alignment): StackAttribute
 }

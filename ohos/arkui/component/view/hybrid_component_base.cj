@@ -108,6 +108,10 @@ public open class HybridComponentBase <: SharedObject {
         JSModule.registerFunc(handleName, hd)
     }
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public static func registerHybridComponent(compName: String, loadHandle: () -> CPointer<Unit>,
         unloadHandle: () -> Unit) {
         registerLoadHandle(compName + "_load", loadHandle)

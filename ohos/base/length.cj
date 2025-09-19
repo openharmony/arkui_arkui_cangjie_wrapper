@@ -115,6 +115,10 @@ public class LengthMetrics <: Length {
     let realValue: Float64
     let realUnit: LengthUnit
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(value: Float64, unit!: LengthUnit = LengthUnit.Vp) {
         this.realValue = value
         this.realUnit = unit

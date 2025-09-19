@@ -77,6 +77,10 @@ public abstract class CustomView <: RemoteView & Observer {
     private var localStorage_: Option<LocalStorage> = None
     private var parent_: Option<CustomView> = None
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var isReusable: Bool = false
     private var recycleManager_: ?RecycleManager = None
     private var hasBeenRecycled_: Bool = false

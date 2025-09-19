@@ -16,7 +16,6 @@ group("arkui_cangjie_wrapper_package") {
     "ohos:ohos",
     "ohos/arkui:ohos.arkui",
     "ohos/arkui/component:ohos.arkui.component",
-    "ohos/arkui/component_snapshot:ohos.arkui.component_snapshot",
     "ohos/arkui/component_utils:ohos.arkui.component_utils",
     "ohos/arkui/shape:ohos.arkui.shape",
     "ohos/arkui/state_management:ohos.arkui.state_management",

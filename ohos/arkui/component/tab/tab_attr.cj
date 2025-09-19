@@ -16,32 +16,78 @@
 package ohos.arkui.component.tab
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func barWidth(value: ?Length): TabsAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func barHeight(value: ?Length): TabsAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func vertical(value: ?Bool): TabsAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func scrollable(value: ?Bool): TabsAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func barMode(value: ?BarMode): TabsAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func animationDuration(value: ?Float32): TabsAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onChange(event: ?Callback<Int32, Unit>): TabsAttribute
 }
 
-
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface TabContentAttribute <: CommonMethod<TabContentAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func tabBar(content: ?ResourceStr): TabContentAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func tabBar(icon!: ?ResourceStr, text!: ?ResourceStr): TabContentAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func tabBar(content: ?CustomBuilder): TabContentAttribute
 }

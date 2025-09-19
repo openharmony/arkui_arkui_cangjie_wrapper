@@ -16,8 +16,17 @@
 package ohos.arkui.component.loading_progress
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface LoadingProgressAttribute <: CommonMethod<LoadingProgressAttribute> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func color(value: ?ResourceColor): LoadingProgressAttribute
 }

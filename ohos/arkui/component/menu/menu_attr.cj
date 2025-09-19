@@ -16,10 +16,18 @@
 package ohos.arkui.component.menu
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func font(
         size!: ?Length,
         weight!: ?FontWeight,
@@ -27,10 +35,22 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
         style!: ?FontStyle
     ): MenuAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fontColor(value: ?ResourceColor): MenuAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func radius(value: ?Length): MenuAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func radius(value: ?BorderRadiuses): MenuAttribute
 
 }

@@ -16,6 +16,11 @@
 package ohos.arkui.component.scroll_bar
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface ScrollBarAttribute <: CommonMethod<ScrollBarAttribute> {}

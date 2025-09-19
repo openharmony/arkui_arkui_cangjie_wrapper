@@ -16,17 +16,46 @@
 package ohos.arkui.component.grid_col
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func span(value: ?Int32): GridColAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func span(value: ?GridColOptions): GridColAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func gridColOffset(value: ?Int32): GridColAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func gridColOffset(value: ?GridColOptions): GridColAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func order(value: ?Int32): GridColAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func order(value: ?GridColOptions): GridColAttribute
 }

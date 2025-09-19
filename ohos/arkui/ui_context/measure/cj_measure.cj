@@ -193,6 +193,10 @@ public class SizeOptions {
      * @type { Length }
      * @relation width?: Length;
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var width: Length = 0
     /**
      * Defines the height.
@@ -200,10 +204,18 @@ public class SizeOptions {
      * @type { Length }
      * @relation height?: Length;
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var height: Length = 0
     /*
      * constructor
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(width!: Length = 0, height!: Length = 0) {
         this.width = width
         this.height = height

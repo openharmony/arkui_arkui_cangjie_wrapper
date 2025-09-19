@@ -92,6 +92,10 @@ public class PreparedInfo {
      * @type { Int32 }
      * @relation duration: number
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var duration: ?Int32
 
     init(duration: Int32) {
@@ -116,6 +120,10 @@ public class PlaybackInfo {
      * @type { Int32 }
      * @relation time: number
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var time: ?Int32
 
     init(time: Int32) {
@@ -140,6 +148,10 @@ public class FullscreenInfo {
      * @type { Bool }
      * @relation fullscreen: boolean
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var fullscreen: ?Bool
 
     init(fullscreen: ?Bool) {

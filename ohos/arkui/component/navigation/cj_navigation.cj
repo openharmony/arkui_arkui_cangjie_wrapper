@@ -72,9 +72,23 @@ struct CJNavOptions {
     ) {}
 }
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 public class PopInfo {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public let info: NavPathInfo
+
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public let result: String
+
     init(info: NavPathInfo, result: String) {
         this.info = info
         this.result = result
@@ -166,10 +180,7 @@ public class NavigationTitleOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var paddingEnd: ?Length
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
+
     /**
      * Constructor of NavigationTitleOptions
      * @param { ?ResourceColor } backgroundColor
@@ -178,6 +189,10 @@ public class NavigationTitleOptions {
      * @param { ?Length } paddingStart
      * @param { ?Length } paddingEnd
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(
         backgroundColor!: ?ResourceColor = None,
         backgroundBlurStyle!: ?BlurStyle = None,
@@ -331,6 +346,10 @@ public enum LaunchMode {
  * @class NavigationOptions
  * @relation declare interface NavigationOptions
  */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 public class NavigationOptions {
     /**
      * Navigation stack operation mode.
@@ -339,6 +358,10 @@ public class NavigationOptions {
      * @type { LaunchMode }
      * @relation launchMode?: LaunchMode
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var launchMode: ?LaunchMode
 
     /**
@@ -350,16 +373,25 @@ public class NavigationOptions {
      * @type { Bool }
      * @relation animated?: boolean
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var animated: ?Bool
     /**
      * Constructor of NavigationOptions
      * @param { ?LaunchMode } launchMode
      * @param { ?Bool } animated
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(launchMode!: ?LaunchMode = None, animated!: ?Bool = None) {
         this.launchMode = launchMode ?? LaunchMode.Standard
         this.animated = animated ?? true
     }
+
     func getNative(): CJNavOptions {
         return CJNavOptions(
             (launchMode ?? LaunchMode.Standard).getValue(),
@@ -446,6 +478,10 @@ public class NavPathInfo <: FFIData {
     ]
     public var param: ?String
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var onPop: ?Callback<PopInfo, Unit> = None
     /**
      * Creates an instance of NavPathInfo.
@@ -561,6 +597,10 @@ public class NavPathStack <: RemoteData {
         pushPath(tmpInfo, options: NavigationOptions(animated: animated ?? true))
     }
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func pushPath(info: NavPathInfo, options!: NavigationOptions): Unit {
         unsafe {
             let cInfo = info.getNative()
@@ -579,6 +619,10 @@ public class NavPathStack <: RemoteData {
      * <br>**true**: The transition animation is supported. **false**: The transition animation is not supported.
      * @relation pushPathByName(name: string, param: unknown, animated?: boolean): void
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func pushPathByName(name: ?String, param: ?String, animated!: ?Bool = None) {
         let tmpName = name ?? throw IllegalArgumentException("The type now is not supported.")
         let tmpParam = param ?? throw IllegalArgumentException("The type now is not supported.")
@@ -668,6 +712,10 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
      * @returns { Navigation } Returns the instance of the Navigation.
      * @relation navDestination(builder: (name: string, param: unknown) => void): NavigationAttribute
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func navDestination(builder: ?(String) -> Unit): This {
         let tmpBuilder = builder ?? throw IllegalArgumentException("The type now is not supported.")
         let wrapper = { value: CString =>
@@ -687,6 +735,10 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
      * @returns { Navigation }
      * @relation title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions): NavigationAttribute
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func title(value: ?ResourceStr, options!: ?NavigationTitleOptions = None): This {
         let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         var opt = CJNavigationTitleOptions()
@@ -711,6 +763,10 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
      * @returns { Navigation }
      * @relation title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions): NavigationAttribute
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions = None): This {
         let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         var opt = CJNavigationTitleOptions()
@@ -736,6 +792,10 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
      * @returns { NavigationAttribute }
      * @relation hideTitleBar(hide: boolean, animated: boolean): NavigationAttribute
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public func hideTitleBar(hide: ?Bool, animated!: ?Bool = None): This {
         let tmpHide = hide ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {

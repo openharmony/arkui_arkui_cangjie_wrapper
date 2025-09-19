@@ -16,11 +16,23 @@
 package ohos.arkui.component.line
 
 import ohos.arkui.component.shape.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 public interface LineAttribute <: CommonShapeMethod<LineAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func startPoint(value: ?(Float64, Float64)): LineAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func endPoint(value: ?(Float64, Float64)): LineAttribute
 }

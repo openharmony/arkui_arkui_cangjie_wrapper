@@ -16,14 +16,35 @@
 package ohos.arkui.component.checkbox
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func select(value: ?Bool): CheckboxAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func selectedColor(value: ?ResourceColor): CheckboxAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onChange(callback: ?OnCheckboxChangeCallback): CheckboxAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func shape(value: ?CheckBoxShape): CheckboxAttribute
 }

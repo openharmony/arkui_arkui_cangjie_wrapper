@@ -16,6 +16,11 @@
 package ohos.arkui.component.menu_item_group
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface MenuItemGroupAttribute <: CommonMethod<MenuItemGroupAttribute> {}

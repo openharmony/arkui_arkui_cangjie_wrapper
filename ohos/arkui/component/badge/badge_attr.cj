@@ -16,6 +16,11 @@
 package ohos.arkui.component.badge
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface BadgeAttribute <: CommonMethod<BadgeAttribute> {}
 

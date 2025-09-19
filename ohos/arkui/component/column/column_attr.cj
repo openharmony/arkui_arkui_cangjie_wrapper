@@ -16,11 +16,23 @@
 package ohos.arkui.component.column
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface ColumnAttribute <: CommonMethod<ColumnAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func alignItems(value: ?HorizontalAlign): ColumnAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func justifyContent(value: ?FlexAlign): ColumnAttribute
 }

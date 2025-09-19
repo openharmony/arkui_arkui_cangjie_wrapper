@@ -16,11 +16,23 @@
 package ohos.arkui.component.grid_row
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func alignItems(value: ?ItemAlign): GridRowAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onBreakpointChange(callback: ?(String) -> Unit): GridRowAttribute
 }

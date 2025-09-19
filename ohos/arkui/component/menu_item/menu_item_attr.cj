@@ -16,17 +16,38 @@
 package ohos.arkui.component.menu_item
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func selected(value: ?Bool): MenuItemAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func selectIcon(value: ?Bool): MenuItemAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func selectIcon(value: ?ResourceStr): MenuItemAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func contentFont(
         size!: ?Length,
         weight!: ?FontWeight,
@@ -34,8 +55,16 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
         style!: ?FontStyle
     ): MenuItemAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func contentFontColor(value: ?ResourceColor): MenuItemAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func labelFont(
         size!: ?Length,
         weight!: ?FontWeight,
@@ -43,7 +72,15 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
         style!: ?FontStyle
     ): MenuItemAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func labelFontColor(value: ?ResourceColor): MenuItemAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onChange(callback: ?(Bool) -> Unit): MenuItemAttribute
 }

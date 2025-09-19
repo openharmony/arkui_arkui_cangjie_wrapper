@@ -16,12 +16,24 @@
 package ohos.arkui.component.row
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface RowAttribute <: CommonMethod<RowAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func alignItems(value: ?VerticalAlign): RowAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func justifyContent(value: ?FlexAlign): RowAttribute
 
 }

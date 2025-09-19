@@ -16,26 +16,66 @@
 package ohos.arkui.component.text_timer
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func format(value: ?String): TextTimerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onTimer(event: ?(Int64, Int64) -> Unit): TextTimerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fontSize(value: ?Length): TextTimerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fontColor(value: ?ResourceColor): TextTimerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fontStyle(value: ?FontStyle): TextTimerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fontWeight(value: ?FontWeight): TextTimerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fontFamily(value: ?ResourceStr): TextTimerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func textShadow(value: ?Array<ShadowOptions>): TextTimerAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func textShadow(value: ?ShadowOptions): TextTimerAttribute
 }

@@ -17,18 +17,43 @@ package ohos.arkui.component.image_span
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.image.*
+import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 import ohos.multimedia.image.PixelMap
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func verticalAlign(value: ?ImageSpanAlignment): ImageSpanAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func objectFit(value: ?ImageFit): ImageSpanAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func colorFilter(filter: ?ColorFilter): ImageSpanAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onComplete(callback: ?ImageCompleteCallback): ImageSpanAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onError(callback: ?ImageErrorCallback): ImageSpanAttribute
 }

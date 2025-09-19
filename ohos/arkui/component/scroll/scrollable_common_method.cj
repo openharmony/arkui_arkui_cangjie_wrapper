@@ -17,47 +17,127 @@ package ohos.arkui.component.scroll
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.rect.*
+import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 import ohos.arkui.shape.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func scrollBar(barState: ?BarState): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func scrollBarColor(color: ?ResourceColor): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func scrollBarWidth(value: ?Length): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func nestedScroll(value: ?NestedScrollOptions): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func enableScrollInteraction(value: ?Bool): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func friction(value: ?Float64): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func friction(value: ?AppResource): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onReachStart(event: ?() -> Unit): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onReachEnd(event: ?() -> Unit): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onScrollStart(event: ?() -> Unit): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onScrollStop(event: ?() -> Unit): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func flingSpeedLimit(speedLimit: ?Float64): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fadingEdge(enabled: Option<Bool>): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fadingEdge(enabled: Option<Bool>, options: ?FadingEdgeOptions): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func clipContent(clip: ?ContentClipMode): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func clipContent(clip: ?RectShape): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) -> ScrollResult>): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) -> Unit>): T
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onDidScroll(handler: ?OnScrollCallBack): T
-
 }

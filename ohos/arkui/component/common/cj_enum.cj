@@ -3549,6 +3549,10 @@ protected enum GlobalCompositeOperation {
  *
  * @relation type ImageSmoothingQuality = "high" | "low" | "medium"
  */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 public enum ImageSmoothingQuality {
     /**
      * (default)low

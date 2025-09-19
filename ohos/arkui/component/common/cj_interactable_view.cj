@@ -165,6 +165,10 @@ public class TouchObject {
     /**
      * constructor
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(touchType: ?TouchType, id: ?Int32, screenX: ?Float64, screenY: ?Float64, x: ?Float64, y: ?Float64) {
         this.touchType = touchType ?? throw IllegalArgumentException("The type now is not supported.")
         this.id = id ?? throw IllegalArgumentException("The type now is not supported.")
@@ -342,6 +346,10 @@ public class DragItemInfo {
     /**
      * constructor
      */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public init(pixelMap: ?PixelMap, builder: ?CustomBuilder, extraInfo: ?String) {
         this.pixelMap = pixelMap ?? PixelMap(0)
         this.builder = builder ?? {=>}

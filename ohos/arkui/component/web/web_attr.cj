@@ -16,43 +16,107 @@
 package ohos.arkui.component.web
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 import ohos.web.webview.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface WebAttribute <: CommonMethod<WebAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func fileAccess(fileAccess: ?Bool): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func domStorageAccess(domStorageAccess: ?Bool): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func imageAccess(imageAccess: ?Bool): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onlineImageAccess(onlineImageAccess: ?Bool): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func mixedMode(mixedMode: ?MixedMode): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func zoomAccess(zoomAccess: ?Bool): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func geolocationAccess(geolocationAccess: ?Bool): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func verticalScrollBarAccess(verticalScrollBar: ?Bool): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func nestedScroll(
         scrollForward!: ?NestedScrollMode,
         scrollBackward!: ?NestedScrollMode
     ): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onLoadIntercept(callback: ?Callback<OnLoadInterceptEvent, Bool>): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onPageBegin(callback: ?Callback<OnPageBeginEvent, Unit>): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onPageEnd(callback: ?Callback<OnPageEndEvent, Unit>): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func javaScriptProxy(funcList!: ?Array<(String) -> String>, name!: ?String, methodList!: ?Array<String>,
         controller!: ?WebviewController): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func darkMode(mode: ?WebDarkMode): WebAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func forceDarkAccess(access: ?Bool): WebAttribute
 }

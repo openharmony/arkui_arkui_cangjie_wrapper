@@ -33,7 +33,6 @@ public import ohos.arkui.component.list_item.*
 public import ohos.arkui.component.stack.*
 public import ohos.arkui.component.date_picker.*
 public import ohos.arkui.component.rating.*
-public import ohos.arkui.component.marquee.*
 public import ohos.arkui.component.alphabet_indexer.*
 public import ohos.arkui.component.menu_item.*
 public import ohos.arkui.component.recycle.*
@@ -41,7 +40,6 @@ public import ohos.arkui.component.menu.*
 public import ohos.arkui.component.grid_row.*
 public import ohos.arkui.component.path.*
 public import ohos.arkui.component.blank.*
-public import ohos.arkui.component.symbol_span.*
 public import ohos.arkui.component.text_timer.*
 public import ohos.arkui.component.progress.*
 public import ohos.arkui.component.web.*
@@ -55,9 +53,7 @@ public import ohos.arkui.component.data_panel.*
 public import ohos.arkui.component.circle.*
 public import ohos.arkui.component.image.*
 public import ohos.arkui.component.video.*
-public import ohos.arkui.component.symbol_glyph.*
 public import ohos.arkui.component.slider.*
-public import ohos.arkui.component.time_picker.*
 public import ohos.arkui.component.span.*
 public import ohos.arkui.component.custom_dialog.*
 public import ohos.arkui.component.scroll.*
@@ -95,11 +91,8 @@ public import ohos.arkui.component.loading_progress.*
 public import ohos.arkui.component.badge.*
 public import ohos.arkui.component.rich_text.*
 public import ohos.arkui.component.list.*
-public import ohos.arkui.component.progress_mask.*
 public import ohos.arkui.component.toggle.*
 public import ohos.arkui.component.list_item_group.*
-public import ohos.arkui.component.image_animator.*
-public import ohos.arkui.component.save_button.*
 public import ohos.arkui.component.search.*
 public import ohos.arkui.component.ifcomponent.*
 public import ohos.arkui.component.empty_component.*

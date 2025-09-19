@@ -17,29 +17,77 @@ package ohos.arkui.component.gauge
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.data_panel.*
+import ohos.labels.APILevel
 import ohos.base.*
 
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
-
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func value(value: ?Float32): GaugeAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func startAngle(angle: ?Float64): GaugeAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func endAngle(angle: ?Float64): GaugeAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func colors(value: ?Array<(ResourceColor, Float32)>): GaugeAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func colors(value: ?Array<(LinearGradient, Float32)>): GaugeAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func colors(value: ?ResourceColor): GaugeAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func colors(value: ?LinearGradient): GaugeAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func strokeWidth(length: ?Length): GaugeAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func trackShadow(radius!: ?Float64, offsetX!: ?Float64, offsetY!: ?Float64): GaugeAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func indicator(icon!: ?ResourceStr, space!: ?Length): GaugeAttribute
 
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func description(builder: ?() -> Unit): GaugeAttribute
 }
