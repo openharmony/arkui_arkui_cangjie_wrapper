@@ -16,6 +16,7 @@
 package ohos.arkui.component.web
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 import ohos.web.webview.*

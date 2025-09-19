@@ -81,7 +81,7 @@ extend UInt32 <: ResourceColor {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Color <:   {
+public class Color <: ResourceColor {
     private var value_: UInt32 = 0
 
     /**

@@ -16,6 +16,7 @@
 package ohos.arkui.component.line
 
 import ohos.arkui.component.shape.*
+import ohos.labels.APILevel
 import ohos.base.*
 
 @!APILevel[

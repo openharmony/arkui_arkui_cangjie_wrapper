@@ -17,6 +17,7 @@ package ohos.arkui.component.alphabet_indexer
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
+import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 

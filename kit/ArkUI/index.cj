@@ -32,5 +32,3 @@ public import ohos.arkui.state_management.*
 // curves
 public import ohos.curves.*
 
-// component snapshot
-public import ohos.arkui.component_snapshot.*

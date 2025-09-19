@@ -19,7 +19,6 @@ ohos_cangjie_shared_library("ArkUI") {
 
   cj_deps = [
     "../../ohos/arkui/component:ohos.arkui.component",
-    "../../ohos/arkui/component_snapshot:ohos.arkui.component_snapshot",
     "../../ohos/arkui/component_utils:ohos.arkui.component_utils",
     "../../ohos/arkui/state_management:ohos.arkui.state_management",
     "../../ohos/base:ohos.base",

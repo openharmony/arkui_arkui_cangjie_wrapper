@@ -18,6 +18,7 @@ package ohos.arkui.component.list
 import ohos.arkui.component.common.*
 import ohos.arkui.component.scroll.*
 import ohos.arkui.component.list_item_group.*
+import ohos.labels.APILevel
 import ohos.base.*
 
 @!APILevel[

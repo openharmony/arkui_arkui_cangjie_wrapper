@@ -17,6 +17,7 @@ package ohos.arkui.component.date_picker
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.text_clock.*
+import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 import std.time.*

@@ -16,6 +16,7 @@
 package ohos.arkui.component.image
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 import ohos.ffi.*
 import ohos.resource.*

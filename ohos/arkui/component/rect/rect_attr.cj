@@ -17,6 +17,7 @@ package ohos.arkui.component.rect
 
 import ohos.arkui.component.common.*	
 import ohos.arkui.component.shape.*
+import ohos.labels.APILevel
 import ohos.base.*
 
 @!APILevel[

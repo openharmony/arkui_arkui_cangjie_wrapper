@@ -16,6 +16,7 @@
 package ohos.arkui.component.badge
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 
 @!APILevel[
     22,

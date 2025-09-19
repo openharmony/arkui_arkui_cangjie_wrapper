@@ -16,6 +16,7 @@
 package ohos.arkui.component.grid
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 import ohos.arkui.component.scroll.*
 

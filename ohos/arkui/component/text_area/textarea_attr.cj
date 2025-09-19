@@ -17,6 +17,7 @@ package ohos.arkui.component.text_area
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.text_field.*
+import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 

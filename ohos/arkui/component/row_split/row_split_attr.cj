@@ -16,6 +16,7 @@
 package ohos.arkui.component.row_split
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
 @!APILevel[

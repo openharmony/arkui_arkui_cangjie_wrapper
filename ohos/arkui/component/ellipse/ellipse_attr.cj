@@ -17,6 +17,7 @@ package ohos.arkui.component.ellipse
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.shape.*
+import ohos.labels.APILevel
 
 @!APILevel[
     22,

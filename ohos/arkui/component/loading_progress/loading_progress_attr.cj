@@ -16,6 +16,7 @@
 package ohos.arkui.component.loading_progress
 
 import ohos.arkui.component.common.*
+import ohos.labels.APILevel
 import ohos.base.*
 
 @!APILevel[
