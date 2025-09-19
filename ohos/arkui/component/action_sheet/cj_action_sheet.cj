@@ -124,11 +124,6 @@ struct NativeSheetInfoArray {
 }
 
 @C
-struct NativeDismissDialogAction {
-    NativeDismissDialogAction(let reason: Int32) {}
-}
-
-@C
 struct NativeOptionConfirm {
     NativeOptionConfirm(
         let hasValue: Bool,
@@ -198,13 +193,13 @@ public class SheetInfo {
         action!: ?VoidCallback,
         icon!: ?ResourceStr = None
     ) {
-        this.title = title ?? throw IllegalArgumentException("The type now is not supported.")
-        this.action = action ?? throw IllegalArgumentException("The type now is not supported.")
+        this.title = title ?? ""
+        this.action = action ?? { => }
         this.icon = icon
     }
 
     func toNative(): NativeSheetInfo {
-        let cTitle: CString = unsafe { LibC.mallocCString(transResourceStrToString(title ?? throw IllegalArgumentException("The type now is not supported."))) }
+        let cTitle: CString = unsafe { LibC.mallocCString(transResourceStrToString(title ?? "")) }
         let cIcon = match (icon) {
             case Some(value) => unsafe { LibC.mallocCString(transResourceMediaToString(value)) }
             case None => unsafe { LibC.mallocCString("") }
@@ -212,7 +207,7 @@ public class SheetInfo {
         var ret = NativeSheetInfo(
             cTitle,
             cIcon,
-            Callback0Param<Unit>(action ?? throw IllegalArgumentException("The type now is not supported.")).getID()
+            Callback0Param<Unit>(action ?? { => }).getID()
         )
         ret
     }
@@ -310,18 +305,18 @@ public class ActionSheetButtonOptions {
         defaultFocus!: ?Bool = None,
         style!: ?DialogButtonStyle = None
     ) {
-        this.value = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.action = action ?? throw IllegalArgumentException("The type now is not supported.")
+        this.value = value ?? ""
+        this.action = action ?? { => }
         this.enabled = enabled ?? true
         this.defaultFocus = defaultFocus ?? false
         this.style = style ?? DialogButtonStyle.Default
     }
 
     func toNative(): NativeConfirm {
-        let cValue: CString = unsafe { LibC.mallocCString(transResourceStrToString(value ?? throw IllegalArgumentException("The type now is not supported."))) }
+        let cValue: CString = unsafe { LibC.mallocCString(transResourceStrToString(value ?? "")) }
         var ret = NativeConfirm(
             cValue,
-            Callback0Param<Unit>(action ?? throw IllegalArgumentException("The type now is not supported.")).getID(),
+            Callback0Param<Unit>(action ?? { => }).getID(),
             enabled ?? true,
             defaultFocus ?? false,
             (style ?? DialogButtonStyle.Default).getValue()
@@ -364,7 +359,7 @@ public class DismissDialogAction {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(reason: ?DismissReason) {
-        this.reason = reason ?? throw IllegalArgumentException("The type now is not supported.")
+        this.reason = reason
     }
     /**
      * Defines dialog dismiss function.
@@ -773,17 +768,16 @@ public class ActionSheetOptions {
         shadow!: ?ShadowOptions = None,
         transition!: ?TransitionEffect = None
     ) {
-        let tmpAlignment = alignment ?? throw IllegalArgumentException("The type now is not supported.")
-        this.title = title ?? throw IllegalArgumentException("The type now is not supported.")
-        this.message = message ?? throw IllegalArgumentException("The type now is not supported.")
-        this.sheets = sheets ?? throw IllegalArgumentException("The type now is not supported.")
+        this.title = title ?? ""
+        this.message = message ?? ""
+        this.sheets = sheets ?? []
         this.subtitle = subtitle ?? ""
         this.confirm = confirm ?? ActionSheetButtonOptions(value: "", action: {=>})
         this.autoCancel = autoCancel ?? true
         this.cancel = cancel ?? {=>}
-        this.alignment = tmpAlignment
+        this.alignment = alignment ?? DialogAlignment.Bottom
         this.offset = offset.getOrDefault({ =>
-            match(tmpAlignment) {
+            match(alignment ?? DialogAlignment.Bottom) {
                 case DialogAlignment.Top => ActionSheetOffset(dx: 0.vp, dy: 40.vp)
                 case DialogAlignment.TopStart => ActionSheetOffset(dx: 0.vp, dy: 40.vp)
                 case DialogAlignment.TopEnd => ActionSheetOffset(dx: 0.vp, dy: 40.vp)
@@ -809,13 +803,13 @@ public class ActionSheetOptions {
 
     func getNativeParam(): NativeActionSheetOptions {
         let cTitle: CString = try {
-            unsafe { LibC.mallocCString(transResourceStrToString(title ?? throw IllegalArgumentException("The type now is not supported."))) }
+            unsafe { LibC.mallocCString(transResourceStrToString(title ?? "")) }
         } catch (e: Exception) {
             throw IllegalMemoryException("malloc memory")
         }
 
         let cMessage: CString = try {
-            unsafe { LibC.mallocCString(transResourceStrToString(message ?? throw IllegalArgumentException("The type now is not supported."))) }
+            unsafe { LibC.mallocCString(transResourceStrToString(message ?? "")) }
         } catch (e: Exception) {
             unsafe { LibC.free(cTitle) }
             throw IllegalMemoryException("malloc memory")
@@ -832,8 +826,8 @@ public class ActionSheetOptions {
         let nativeConfirm = NativeOptionConfirm(true, (confirm ?? ActionSheetButtonOptions(value: "", action: {=>})).toNative())
         let nativeAutoCancel = NativeOptionBool(true, autoCancel ?? true)
         let nativeCancel = NativeOptionCallBack(true, Callback0Param<Unit>(cancel ?? {=>}).getID())
-        let nativeAlignment = NativeOptionInt32(true, (alignment ?? throw IllegalArgumentException("The type now is not supported.")).getValue())
-        let nativeOffset = NativeOptionOffset(true, (offset ?? throw IllegalArgumentException("The type now is not supported.")).toNative())
+        let nativeAlignment = NativeOptionInt32(true, (alignment ?? DialogAlignment.Bottom).getValue())
+        let nativeOffset = NativeOptionOffset(true, (offset ?? ActionSheetOffset(dx: 0.vp, dy: 40.vp)).toNative())
         let nativeMaskRect = NativeOptionRectangle(true, (maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)).parseToNative())
         let nativeShowInSubWindow = NativeOptionBool(true, showInSubWindow ?? false)
         let nativeIsModal = NativeOptionBool(true, isModal ?? true)
@@ -873,7 +867,7 @@ public class ActionSheetOptions {
         var nativeActionSheetOptions = NativeActionSheetOptions(
             cTitle,
             cMessage,
-            NativeSheetInfoArray(sheets ?? throw IllegalArgumentException("The type now is not supported.")),
+            NativeSheetInfoArray(sheets ?? []),
             nativeSubtitle,
             nativeConfirm,
             nativeAutoCancel,
@@ -949,8 +943,8 @@ public class ActionSheetOffset {
         dx!: ?Length,
         dy!: ?Length
     ) {
-        let tmpDx = dx ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDy = dy ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpDx = dx ?? 0.vp
+        let tmpDy = dy ?? 0.vp
         this.dx = transAppResourceToLength(tmpDx)
         this.dy = transAppResourceToLength(tmpDy)
     }
@@ -958,12 +952,12 @@ public class ActionSheetOffset {
     protected func toNative(): NativeOffset {
         return NativeOffset(
             NativeLength(
-                (this.dx ?? throw IllegalArgumentException("The type now is not supported.")).value,
-                (this.dx ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue()
+                (this.dx ?? 0.vp).value,
+                (this.dx ?? 0.vp).unitType.getValue()
             ),
             NativeLength(
-                (this.dy ?? throw IllegalArgumentException("The type now is not supported.")).value,
-                (this.dy ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue()
+                (this.dy ?? 0.vp).value,
+                (this.dy ?? 0.vp).unitType.getValue()
             )
         )
     }
@@ -974,16 +968,7 @@ protected class ActionSheetInner {
         let nativeOptions = value.getNativeParam()
         unsafe {
             FfiOHOSAceFrameworkActionSheetShowWithShadowOptions(nativeOptions, (value.shadow ?? ShadowOptions(radius: 0.0)).toActionSheetShadowNative())
-            nativeOptions.free((value.sheets ?? throw IllegalArgumentException("The type now is not supported.")).size)
-        }
-        return
-    }
-
-    protected static func show(value: ActionSheetOptions, shadow: ShadowStyle): Unit {
-        let nativeOptions = value.getNativeParam()
-        unsafe {
-            FfiOHOSAceFrameworkActionSheetShowWithShadowStyle(nativeOptions, shadow.getValue())
-            nativeOptions.free((value.sheets ?? throw IllegalArgumentException("The type now is not supported.")).size)
+            nativeOptions.free((value.sheets ?? []).size)
         }
         return
     }

@@ -1976,8 +1976,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func shadow(radius!: ?Float64, color!: ?ResourceColor = None, offsetX!: ?Float64 = None,
         offsetY!: ?Float64 = None): T {
-        let tmpRadius = radius ?? throw IllegalArgumentException("The type now is not supported.")
-        shadowInner(tmpRadius, color ?? Color(0x666666), offsetX ?? 0.0, offsetY ?? 0.0)
+        shadowInner(radius ?? 0.0, color ?? Color(0x666666), offsetX ?? 0.0, offsetY ?? 0.0)
     }
 
     protected open func shadowInner(radius: Float64, color: ResourceColor, offsetX: Float64, offsetY: Float64): T {

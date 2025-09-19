@@ -1546,7 +1546,7 @@ func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadow {
     NativeShadow(
         true,
         NativeShadowOptions(
-            shadowOptions.radius ?? throw IllegalArgumentException("The type now is not supported."),
+            shadowOptions.radius ?? 0.0,
             (shadowOptions.shadowType ?? ShadowType.Color).getValue(),
             transAppResourceToResourceColor(shadowOptions.color ?? Color.Black),
             shadowOptions.offsetX ?? 0.0,

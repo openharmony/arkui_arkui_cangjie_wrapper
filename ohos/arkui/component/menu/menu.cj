@@ -94,14 +94,12 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
         family!: ?ResourceStr = None,
         style!: ?FontStyle = None
     ): This {
-        let tmpWeight = weight ?? FontWeight.Normal
-        let tmpStyle = style ?? FontStyle.Normal
         unsafe {
-            try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+            try (weightCString = LibC.mallocCString((weight ?? FontWeight.Normal).getValue()).asResource(),
                 fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkMenuFont(transAppResourceToLength(size ?? 16.vp).value,
                     transAppResourceToLength(size ?? 16.vp).unitType.getValue(), weightCString.value, fontFamilyCString.value,
-                    tmpStyle.getValue())
+                    (style ?? FontStyle.Normal).getValue())
             }
         }
         this
@@ -119,9 +117,8 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkMenuSetFontColor(transAppResourceToResourceColor(tmpValue));
+            FfiOHOSAceFrameworkMenuSetFontColor(transAppResourceToResourceColor(value ?? 0x99000000));
         }
         this
     }

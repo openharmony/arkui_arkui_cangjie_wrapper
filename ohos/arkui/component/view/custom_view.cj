@@ -548,16 +548,6 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
-    private func processViewId(id: Int64): String {
-        let unsafeStr = unsafe {
-            FfiOHOSAceFrameworkProcessViewId(id)
-        }
-
-        var res = unsafeStr.toString()
-        unsafe { unsafeStr.free() }
-        res
-    }
-
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

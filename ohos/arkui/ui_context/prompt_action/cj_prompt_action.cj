@@ -36,17 +36,6 @@ struct CButtonInfo {
 }
 
 @C
-struct NativeBaseDialogOptions {
-    NativeBaseDialogOptions(
-        let maskRect: NativeRectangle,
-        let alignment: Int32,
-        let offset: NativeOffset,
-        let isModal: Bool,
-        let showInSubWindow: Bool
-    ) {}
-}
-
-@C
 struct NativeCustomDialogOptions {
     NativeCustomDialogOptions(
         let maskRect: NativeRectangle,
@@ -185,8 +174,6 @@ foreign {
         callback: Int64): Unit
 
     func FfiPromptShowActionMenu(title: CString, size: Int32, buttonsInfo: CPointer<CButtonInfo>, callback: Int64): Unit
-
-    func FfiPromptOpenCustomDialog(builder: Int64, options: NativeBaseDialogOptions, callBack: Int64): Unit
 
     func FfiPromptCloseCustomDialog(id: Int32): Unit
 
@@ -1488,7 +1475,7 @@ public class ShowToastOptions {
 
 func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadowOptions {
     return NativeShadowOptions(
-        shadowOptions.radius ?? throw IllegalArgumentException("The type now is not supported."),
+        shadowOptions.radius ?? 0.0,
         (shadowOptions.shadowType ?? ShadowType.Color).getValue(),
         transAppResourceToResourceColor(shadowOptions.color ?? Color.Black),
         shadowOptions.offsetX ?? 0.0,
@@ -1518,12 +1505,12 @@ func parseEdgeWidths(edgeWidths: EdgeWidths): CJEdge {
 func parseOffset(offset: Offset): NativeOffset {
     return NativeOffset(
         NativeLength(
-            (offset.dx ?? throw IllegalArgumentException("The type now is not supported.")).value,
-            (offset.dx ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue()
+            (offset.dx ?? 0.vp).value,
+            (offset.dx ?? 0.vp).unitType.getValue()
         ),
         NativeLength(
-            (offset.dy ?? throw IllegalArgumentException("The type now is not supported.")).value,
-            (offset.dy ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue()
+            (offset.dy ?? 0.vp).value,
+            (offset.dy ?? 0.vp).unitType.getValue()
         )
     )
 }
@@ -1580,16 +1567,6 @@ func parseCustomDialogOptions(options: CustomDialogOptions): NativeCustomDialogO
         shadowOption,
         shadowStyle,
         options.backgroundBlurStyle.getValue()
-    )
-}
-
-func parseBaseDialogOptions(options: CustomDialogOptions): NativeBaseDialogOptions {
-    return NativeBaseDialogOptions(
-        parseRectangle(options.maskRect),
-        options.alignment.getValue(),
-        parseOffset(options.offset),
-        options.isModal,
-        options.showInSubWindow
     )
 }
 

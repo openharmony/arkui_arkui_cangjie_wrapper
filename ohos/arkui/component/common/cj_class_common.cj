@@ -702,7 +702,7 @@ public class ShadowOptions {
         offsetY!: ?Float64 = None,
         fill!: ?Bool = None
     ) {
-        this.radius = radius ?? throw IllegalArgumentException("The type now is not supported.")
+        this.radius = radius ?? 0.0
         this.shadowType = shadowType ?? ShadowType.Color
         this.color = color ?? Color.Black
         this.offsetX = offsetX ?? 0.0
@@ -711,7 +711,7 @@ public class ShadowOptions {
     }
     protected func toActionSheetShadowNative(): NativeActionSheetShadowOptions {
         return NativeActionSheetShadowOptions(
-            this.radius ?? throw IllegalArgumentException("The type now is not supported."),
+            this.radius ?? 0.0,
             Int32((this.shadowType ?? ShadowType.Color).getValue()),
             transAppResourceToResourceColor(this.color ?? Color.Black),
             this.offsetX ?? 0.0,
@@ -721,7 +721,7 @@ public class ShadowOptions {
     }
     protected func toNative(): NativeTextShadowV2 {
         return NativeTextShadowV2(
-            this.radius ?? throw IllegalArgumentException("The type now is not supported."),
+            this.radius ?? 0.0,
             this.offsetX ?? 0.0,
             this.offsetY ?? 0.0,
             transAppResourceToResourceColor(this.color ?? Color.Black),

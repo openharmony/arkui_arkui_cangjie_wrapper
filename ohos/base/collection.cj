@@ -169,23 +169,14 @@ protected class FFIVectorInt32 {
 
 protected class FFIVectorInt64 {
     private let vecHandle: VectorInt64Handle
-    protected init(vec: VectorInt64Handle) {
-        vecHandle = vec
-    }
     protected init(size: Int64) {
         vecHandle = unsafe { FFICJCommonCreateVectorInt64(size) }
     }
     protected func setElement(index: Int64, value: Int64): Unit {
         unsafe { FFICJCommonVectorInt64SetElement(vecHandle, index, value) }
     }
-    protected func getElement(index: Int64): Int64 {
-        unsafe { FFICJCommonVectorInt64GetElement(vecHandle, index) }
-    }
     protected func free(): Unit {
         unsafe { FFICJCommonVectorInt64Delete(vecHandle) }
-    }
-    protected func getSize(): Int64 {
-        unsafe { FFICJCommonVectorInt64GetSize(vecHandle) }
     }
     protected func getNativeHandle(): VectorInt64Handle {
         vecHandle
@@ -219,23 +210,14 @@ protected class FFIVectorUInt8 {
 
 protected class FFIVectorUInt32 {
     private let vecHandle: VectorUInt32Handle
-    protected init(vec: VectorUInt32Handle) {
-        vecHandle = vec
-    }
     protected init(size: Int64) {
         vecHandle = unsafe { FFICJCommonCreateVectorUInt32(size) }
     }
     protected func setElement(index: Int64, value: UInt32): Unit {
         unsafe { FFICJCommonVectorUInt32SetElement(vecHandle, index, value) }
     }
-    protected func getElement(index: Int64): UInt32 {
-        unsafe { FFICJCommonVectorUInt32GetElement(vecHandle, index) }
-    }
     protected func free(): Unit {
         unsafe { FFICJCommonVectorUInt32Delete(vecHandle) }
-    }
-    protected func getSize(): Int64 {
-        unsafe { FFICJCommonVectorUInt32GetSize(vecHandle) }
     }
     protected func getNativeHandle(): VectorUInt32Handle {
         vecHandle
@@ -244,23 +226,14 @@ protected class FFIVectorUInt32 {
 
 protected class FFIVectorFloat32 {
     private let vecHandle: VectorFloat32Handle
-    protected init(vec: VectorFloat32Handle) {
-        vecHandle = vec
-    }
     protected init(size: Int64) {
         vecHandle = unsafe { FFICJCommonCreateVectorFloat32(size) }
     }
     protected func setElement(index: Int64, value: Float32): Unit {
         unsafe { FFICJCommonVectorFloat32SetElement(vecHandle, index, value) }
     }
-    protected func getElement(index: Int64): Float32 {
-        unsafe { FFICJCommonVectorFloat32GetElement(vecHandle, index) }
-    }
     protected func free(): Unit {
         unsafe { FFICJCommonVectorFloat32Delete(vecHandle) }
-    }
-    protected func getSize(): Int64 {
-        unsafe { FFICJCommonVectorFloat32GetSize(vecHandle) }
     }
     protected func getNativeHandle(): VectorFloat32Handle {
         vecHandle
@@ -288,31 +261,6 @@ protected class FFIVectorFloat64 {
         unsafe { FFICJCommonVectorFloat64GetSize(vecHandle) }
     }
     protected func getNativeHandle(): VectorFloat64Handle {
-        vecHandle
-    }
-}
-
-protected class FFIVectorBool {
-    private let vecHandle: VectorBoolHandle
-    protected init(vec: VectorBoolHandle) {
-        vecHandle = vec
-    }
-    protected init(size: Int64) {
-        vecHandle = unsafe { FFICJCommonCreateVectorBool(size) }
-    }
-    protected func setElement(index: Int64, value: Bool): Unit {
-        unsafe { FFICJCommonVectorBoolSetElement(vecHandle, index, value) }
-    }
-    protected func getElement(index: Int64): Bool {
-        unsafe { FFICJCommonVectorBoolGetElement(vecHandle, index) }
-    }
-    protected func free(): Unit {
-        unsafe { FFICJCommonVectorBoolDelete(vecHandle) }
-    }
-    protected func getSize(): Int64 {
-        unsafe { FFICJCommonVectorBoolGetSize(vecHandle) }
-    }
-    protected func getNativeHandle(): VectorBoolHandle {
         vecHandle
     }
 }

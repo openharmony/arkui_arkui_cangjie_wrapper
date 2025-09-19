@@ -75,10 +75,10 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroupAttribute> & Me
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(header!: CustomBuilder, footer!: CustomBuilder, child!: () -> Unit = {=>}) {
+    public init(header!: ?CustomBuilder, footer!: ?CustomBuilder, child!: () -> Unit = {=>}) {
         unsafe {
-            FfiOHOSAceFrameworkMenuItemGroupCreateByBuilder(Callback0Param<Unit>(header).getID(),
-                Callback0Param<Unit>(footer).getID())
+            FfiOHOSAceFrameworkMenuItemGroupCreateByBuilder(Callback0Param<Unit>(header ?? { => }).getID(),
+                Callback0Param<Unit>(footer ?? { => }).getID())
         }
         this.child = child
     }

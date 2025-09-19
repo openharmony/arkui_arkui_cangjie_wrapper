@@ -311,10 +311,10 @@ public open class AlertDialogButtonBaseOptions {
         this.enabled = enabled ?? true
         this.defaultFocus = defaultFocus ?? false
         this.style = style ?? DialogButtonStyle.Default
-        this.value = value ?? throw IllegalArgumentException("The type now is not supported.")
+        this.value = value ?? ""
         this.fontColor = fontColor
         this.backgroundColor = backgroundColor
-        this.action = action ?? throw IllegalArgumentException("The type now is not supported.")
+        this.action = action ?? { => }
     }
 }
 
@@ -374,17 +374,17 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
             enabled: enabled ?? true,
             defaultFocus: defaultFocus ?? false,
             style: style ?? DialogButtonStyle.Default,
-            value: value ?? throw IllegalArgumentException("The type now is not supported."),
+            value: value ?? "",
             fontColor: fontColor,
             backgroundColor: backgroundColor,
-            action: action ?? throw IllegalArgumentException("The type now is not supported.")
+            action: action ?? { =>}
         )
         this.primary = primary ?? false
     }
 
     func toNative(): NativeAlertDialogButtonOptionsV2 {
         var cValue: CString = try {
-            unsafe { LibC.mallocCString(transResourceStrToString(value ?? throw IllegalArgumentException("The type now is not supported."))) }
+            unsafe { LibC.mallocCString(transResourceStrToString(value ?? "")) }
         } catch (e: Exception) {
             throw IllegalMemoryException("malloc memory")
         }
@@ -431,7 +431,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
             cValue,
             cFontColor,
             cBackgroundColor,
-            Callback0Param<Unit>(action ?? throw IllegalArgumentException("The type now is not supported.")).getID(),
+            Callback0Param<Unit>(action ?? { => }).getID(),
             primary ?? false
         )
     }
@@ -686,7 +686,7 @@ public open class AlertDialogParam {
     /**
      * Defines the alertDialog's shadow.
      *
-     * @type { (ShadowOptions }
+     * @type { ShadowOptions }
      * @relation shadow?: ShadowOptions | ShadowStyle
      */
     @!APILevel[
@@ -764,7 +764,7 @@ public open class AlertDialogParam {
         shadow!: ?ShadowOptions = None,
         textStyle!: ?WordBreak = None
     ) {
-        this.message = message ?? throw IllegalArgumentException("The type now is not supported.")
+        this.message = message ?? ""
         this.title = title ?? ""
         this.subtitle = subtitle ?? ""
         this.autoCancel = autoCancel ?? true
@@ -791,7 +791,7 @@ public open class AlertDialogParam {
     }
 
     func getNativeParam(): NativeAlertDialogParamV2 {
-        let nativeMsg: CString = unsafe { LibC.mallocCString(transResourceStrToString(message ?? throw IllegalArgumentException("The type now is not supported."))) }
+        let nativeMsg: CString = unsafe { LibC.mallocCString(transResourceStrToString(message ?? "")) }
         let nativeTitle: CString = unsafe { LibC.mallocCString(transResourceStrToString(title ?? "")) }
         let nativeSubtitle: CString = unsafe { LibC.mallocCString(transResourceStrToString(subtitle ?? "")) }
         let nativeAutoCancel = NativeOptionBool(true, autoCancel ?? true)
@@ -952,7 +952,7 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
         super(
             title: title ?? "",
             subtitle: subtitle ?? "",
-            message: message ?? throw IllegalArgumentException("The type now is not supported."),
+            message: message ?? "",
             autoCancel: autoCancel ?? true,
             cancel: cancel ?? {=>},
             alignment: alignment ?? DialogAlignment.Default,
@@ -1077,7 +1077,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
         super(
             title: title ?? "",
             subtitle: subtitle ?? "",
-            message: message ?? throw IllegalArgumentException("The type now is not supported."),
+            message: message ?? "",
             autoCancel: autoCancel ?? true,
             cancel: cancel ?? {=>},
             alignment: alignment ?? DialogAlignment.Default,
@@ -1099,8 +1099,8 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
             shadow: shadow ?? ShadowOptions(radius: 0.0),
             textStyle: textStyle ?? WordBreak.BreakAll
         )
-        this.primaryButton = primaryButton ?? throw IllegalArgumentException("The type now is not supported.")
-        this.secondaryButton = secondaryButton ?? throw IllegalArgumentException("The type now is not supported.")
+        this.primaryButton = primaryButton ?? AlertDialogButtonBaseOptions(value: "", action: {=>})
+        this.secondaryButton = secondaryButton ?? AlertDialogButtonBaseOptions(value: "", action: {=>})
     }
 }
 
@@ -1202,7 +1202,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
         super(
             title: title ?? "",
             subtitle: subtitle ?? "",
-            message: message ?? throw IllegalArgumentException("The type now is not supported."),
+            message: message ?? "",
             autoCancel: autoCancel ?? true,
             cancel: cancel ?? {=>},
             alignment: alignment ?? DialogAlignment.Default,
@@ -1225,7 +1225,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
             shadow: shadow ?? ShadowOptions(radius: 0.0),
             textStyle: textStyle ?? WordBreak.BreakAll
         )
-        this.buttons = buttons ?? throw IllegalArgumentException("The type now is not supported.")
+        this.buttons = buttons ?? []
         this.buttonDirection = buttonDirection ?? DialogButtonDirection.Auto
     }
 }
@@ -1240,20 +1240,6 @@ protected class AlertDialogInner {
         unsafe {
             FfiOHOSShowAlertDialogParamWithConfirmShadowOptions(
                 nativeDialog, nativeConfirm, (value.shadow ?? ShadowOptions(radius: 0.0)).toActionSheetShadowNative())
-            nativeDialog.free()
-            freeButton(nativeConfirm)
-        }
-        return
-    }
-
-    protected static func show(value: AlertDialogParamWithConfirm, shadow: ShadowStyle): Unit {
-        let nativeDialog = value.getNativeParam()
-        let nativeConfirm = match (value.confirm as AlertDialogButtonOptions) {
-            case Some(v) => v.toNative()
-            case None => AlertDialogButtonOptions(value: "", action: {=>}).toNative()
-        }
-        unsafe {
-            FfiOHOSShowAlertDialogParamWithConfirmShadowStyle(nativeDialog, nativeConfirm, shadow.getValue())
             nativeDialog.free()
             freeButton(nativeConfirm)
         }
@@ -1280,33 +1266,9 @@ protected class AlertDialogInner {
         return
     }
 
-    protected static func show(value: AlertDialogParamWithButtons, shadow: ShadowStyle): Unit {
+    protected static func show(value: AlertDialogParamWithOptions): Unit {
         let nativeDialog = value.getNativeParam()
-        let nativePrimaryButton = match (value.primaryButton as AlertDialogButtonOptions) {
-            case Some(v) => v.toNative()
-            case None => AlertDialogButtonOptions(value: "", action: {=>}).toNative()
-        }
-        let nativeSecondaryButton = match (value.secondaryButton as AlertDialogButtonOptions) {
-            case Some(v) => v.toNative()
-            case None => AlertDialogButtonOptions(value: "", action: {=>}).toNative()
-        }
-        unsafe {
-            FfiOHOSShowAlertDialogParamWithButtonsShadowStyle(nativeDialog, nativePrimaryButton, nativeSecondaryButton,
-                shadow.getValue())
-            nativeDialog.free()
-            freeButton(nativePrimaryButton)
-            freeButton(nativeSecondaryButton)
-        }
-        return
-    }
-
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func show(value: AlertDialogParamWithOptions): Unit {
-        let nativeDialog = value.getNativeParam()
-        let buttons = value.buttons ?? throw IllegalArgumentException("The type now is not supported.")
+        let buttons = value.buttons ?? []
         let buttonSize = buttons.size
         let buttonsArr = Array<NativeAlertDialogButtonOptionsV2>(buttonSize, {index =>
             let res = match(buttons[index] as AlertDialogButtonOptions) {
@@ -1332,38 +1294,6 @@ protected class AlertDialogInner {
                 nativeDialog,
                 nativeButtons,
                 (value.shadow ?? ShadowOptions(radius: 0.0)).toActionSheetShadowNative(),
-                (value.buttonDirection ?? DialogButtonDirection.Auto).getValue())
-            nativeDialog.free()
-            freeButtonsArr(nativeButtons)
-        }
-        return
-    }
-
-    protected static func show(value: AlertDialogParamWithOptions, shadow: ShadowStyle): Unit {
-        let nativeDialog = value.getNativeParam()
-        let buttons = value.buttons ?? throw IllegalArgumentException("The type now is not supported.")
-        let buttonSize = buttons.size
-        let buttonsArr = Array<NativeAlertDialogButtonOptionsV2>(buttonSize, {index =>
-            let res = match(buttons[index] as AlertDialogButtonOptions) {
-                case Some(v) => v.toNative()
-                case None => AlertDialogButtonOptions(value: "", action: {=>}).toNative()
-            }
-            return res
-        })
-        let arr: CPointer<NativeAlertDialogButtonOptionsV2> = unsafe {
-            LibC.malloc<NativeAlertDialogButtonOptionsV2>(count: buttonSize)
-        }
-        if (arr.isNull()) {
-            throw IllegalMemoryException("malloc memory")
-        }
-        for (i in 0..buttonSize) {
-            unsafe {
-                arr.write(i, buttonsArr[i])
-            }
-        }
-        let nativeButtons = CArrNativeAlertDialogButtonOptionsV2(arr, buttonSize)
-        unsafe {
-            FfiOHOSShowAlertDialogParamWithOptionsShadowStyle(nativeDialog, nativeButtons, shadow.getValue(),
                 (value.buttonDirection ?? DialogButtonDirection.Auto).getValue())
             nativeDialog.free()
             freeButtonsArr(nativeButtons)

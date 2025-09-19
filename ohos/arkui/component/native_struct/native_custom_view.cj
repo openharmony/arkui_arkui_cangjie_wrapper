@@ -30,14 +30,6 @@ protected func OHOSAceFrameworkRemoteViewForceCompleteRerender(id: Int64, deep: 
 }
 
 @C
-protected struct OHOSAceFrameworkRemoteViewUpdateWithJsonParams {
-    OHOSAceFrameworkRemoteViewUpdateWithJsonParams(
-        let self: Int64,
-        let json: CString
-    ) {}
-}
-
-@C
 protected func OHOSAceFrameworkRemoteViewRender(id: Int64): Int64 {
     getRemoteViewOrThrow(id).build()
     0
