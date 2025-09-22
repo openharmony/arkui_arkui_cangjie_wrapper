@@ -114,9 +114,12 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?PixelMap) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkShapeCreateWithPixelMap(tmpValue.getID())
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkShapeCreateWithPixelMap(v.getID())
+            }
+        } else {
+            Shape()
         }
     }
     /**
@@ -173,13 +176,13 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func mesh(array: ?Array<Float64>, column: ?UInt32, row: ?UInt32): This {
-        let tmpArray = array ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpColumn = column ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpRow = row ?? throw IllegalArgumentException("The type now is not supported.")
-        let vecValueHandle = FFIVectorFloat64(tmpArray.size)
-        for (i in 0..tmpArray.size) {
-            vecValueHandle.setElement(i, tmpArray[i])
+    public func mesh(value: ?Array<Float64>, column: ?UInt32, row: ?UInt32): This {
+        let tmpValue = value ?? []
+        let tmpColumn = column ?? 0
+        let tmpRow = row ?? 0
+        let vecValueHandle = FFIVectorFloat64(tmpValue.size)
+        for (i in 0..tmpValue.size) {
+            vecValueHandle.setElement(i, tmpValue[i])
         }
         unsafe {
             FfiOHOSAceFrameworkShapeSetMesh(vecValueHandle.getNativeHandle(), tmpColumn, tmpRow)

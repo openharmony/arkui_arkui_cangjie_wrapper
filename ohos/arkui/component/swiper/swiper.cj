@@ -285,8 +285,7 @@ public open class Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func left(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mLeft = transAppResourceToLength(tmpValue)
+        this.mLeft = transAppResourceToLength(value ?? 0.0.px)
         this
     }
 
@@ -302,8 +301,7 @@ public open class Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func top(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mTop = transAppResourceToLength(tmpValue)
+        this.mTop = transAppResourceToLength(value ?? 0.0.px)
         this
     }
 
@@ -319,8 +317,7 @@ public open class Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func right(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mRight = transAppResourceToLength(tmpValue)
+        this.mRight = transAppResourceToLength(value ?? 0.0.px)
         this
     }
 
@@ -336,8 +333,7 @@ public open class Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bottom(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mBottom = transAppResourceToLength(tmpValue)
+        this.mBottom = transAppResourceToLength(value ?? 0.0.px)
         this
     }
 
@@ -354,8 +350,7 @@ public open class Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func start(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mStart = transAppResourceToLength(tmpValue)
+        this.mStart = transAppResourceToLength(value ?? 0.vp)
         this
     }
 
@@ -372,8 +367,7 @@ public open class Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func end(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mEnd = transAppResourceToLength(tmpValue)
+        this.mEnd = transAppResourceToLength(value ?? 0.vp)
         this
     }
 
@@ -462,8 +456,7 @@ public class DotIndicator <: Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func itemWidth(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mItemWidth = transAppResourceToLength(tmpValue)
+        this.mItemWidth = transAppResourceToLength(value ?? 6.vp)
         this
     }
 
@@ -480,8 +473,7 @@ public class DotIndicator <: Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func itemHeight(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mItemHeight = transAppResourceToLength(tmpValue)
+        this.mItemHeight = transAppResourceToLength(value ?? 6.vp)
         this
     }
 
@@ -498,8 +490,7 @@ public class DotIndicator <: Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedItemWidth(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mSelectedItemWidth = transAppResourceToLength(tmpValue)
+        this.mSelectedItemWidth = transAppResourceToLength(value ?? 6.vp)
         this
     }
 
@@ -516,8 +507,7 @@ public class DotIndicator <: Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedItemHeight(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mSelectedItemHeight = transAppResourceToLength(tmpValue)
+        this.mSelectedItemHeight = transAppResourceToLength(value ?? 6.vp)
         this
     }
 
@@ -534,8 +524,7 @@ public class DotIndicator <: Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func mask(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mMask = tmpValue
+        this.mMask = value ?? false
         this
     }
 
@@ -552,7 +541,7 @@ public class DotIndicator <: Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? 0x1A182431
         this.mColor = transAppResourceToResourceColor(tmpValue)
         this
     }
@@ -570,7 +559,7 @@ public class DotIndicator <: Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? 0xFF007DFF
         this.mSelectedColor = transAppResourceToResourceColor(tmpValue)
         this
     }
@@ -586,9 +575,8 @@ public class DotIndicator <: Indicator {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func maxDisplayCount(value: ?UInt32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mMaxDisplayCount = tmpValue
+    public func maxDisplayCount(value: UInt32): This {
+        this.mMaxDisplayCount = value
         this
     }
 
@@ -655,8 +643,7 @@ public class DigitIndicator <: Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mFontColor = transAppResourceToResourceColor(tmpValue)
+        this.mFontColor = transAppResourceToResourceColor(value ?? 0xff182431)
         this
     }
 
@@ -673,8 +660,7 @@ public class DigitIndicator <: Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedFontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.mSelectedFontColor = transAppResourceToResourceColor(tmpValue)
+        this.mSelectedFontColor = transAppResourceToResourceColor(value ?? 0xff182431)
         this
     }
 
@@ -697,7 +683,7 @@ public class DigitIndicator <: Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func digitFont(value: ?Font): This {
-        this.mDigitFont = value ?? throw IllegalArgumentException("The type now is not supported.")
+        this.mDigitFont = value ?? Font(size: 14.vp, weight: FontWeight.Normal)
         this
     }
 
@@ -714,7 +700,7 @@ public class DigitIndicator <: Indicator {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedDigitFont(value: ?Font): This {
-        this.mSelectedDigitFont = value ?? throw IllegalArgumentException("The type now is not supported.")
+        this.mSelectedDigitFont = value ?? Font(size: 14.vp, weight: FontWeight.Normal)
         this
     }
 
@@ -829,7 +815,7 @@ public class SwiperController <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func finishAnimation(callback: ?VoidCallback): Unit {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { => }
         unsafe {
             FfiOHOSAceFrameworkSwiperControllerFinishAnimationWithCallback(this.getID(),
                 Callback0Param<Unit>(tmpCallback).getID())
@@ -894,9 +880,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoPlay(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetAutoplay(tmpValue)
+            FfiOHOSAceFrameworkSwiperSetAutoplay(value ?? false)
         }
         this
     }
@@ -913,9 +898,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func duration(value: ?UInt32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetDuration(tmpValue)
+            FfiOHOSAceFrameworkSwiperSetDuration(value ?? 400)
         }
         this
     }
@@ -932,9 +916,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func index(value: ?UInt32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetIndex(tmpValue)
+            FfiOHOSAceFrameworkSwiperSetIndex(value ?? 0)
         }
         this
     }
@@ -951,9 +934,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func interval(value: ?UInt32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetInterval(tmpValue)
+            FfiOHOSAceFrameworkSwiperSetInterval(value ?? 3000)
         }
         this
     }
@@ -970,9 +952,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func loop(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetLoop(tmpValue)
+            FfiOHOSAceFrameworkSwiperSetLoop(value ?? true)
         }
         this
     }
@@ -989,9 +970,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func vertical(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetVertical(tmpValue)
+            FfiOHOSAceFrameworkSwiperSetVertical(value ?? false)
         }
         this
     }
@@ -1009,9 +989,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func indicator(indicator: ?Bool): This {
-        let tmpIndicator = indicator ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetIndicator(tmpIndicator)
+            FfiOHOSAceFrameworkSwiperSetIndicator(indicator ?? true)
         }
         this
     }
@@ -1028,7 +1007,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func indicator(indicator: ?DotIndicator): This {
-        let tmpIndicator = indicator ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpIndicator = indicator ?? DotIndicator()
         unsafe {
             FfiOHOSAceFrameworkSwiperSetIndicatorWithDot(tmpIndicator.parseCJDot())
         }
@@ -1047,7 +1026,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func indicator(indicator: ?DigitIndicator): This {
-        let tmpIndicator = indicator ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpIndicator = indicator ?? DigitIndicator()
         unsafe {
             let cjDigit = tmpIndicator.parseCJDigit()
             FfiOHOSAceFrameworkSwiperSetIndicatorWithDit(cjDigit)
@@ -1075,8 +1054,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func itemSpace(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkSwiperSetItemSpace(value_.value, value_.unitType.getValue())
         }
@@ -1097,9 +1075,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func displayMode(value: ?SwiperDisplayMode): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetDisplayMode(tmpValue.getValue())
+            FfiOHOSAceFrameworkSwiperSetDisplayMode((value ?? SwiperDisplayMode.Stretch).getValue())
         }
         this
     }
@@ -1121,9 +1098,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func effectMode(value: ?EdgeEffect): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetEffectMode(tmpValue.getValue())
+            FfiOHOSAceFrameworkSwiperSetEffectMode((value ?? EdgeEffect.Spring).getValue())
         }
         this
     }
@@ -1148,9 +1124,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func displayCount(value: ?Int32, swipeByGroup!: ?Bool = None): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetDisplayCountByGroup(tmpValue, swipeByGroup ?? false)
+            FfiOHOSAceFrameworkSwiperSetDisplayCountByGroup(value ?? 1, swipeByGroup ?? false)
         }
         this
     }
@@ -1173,9 +1148,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(value: ?Int32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetCachedCount(tmpValue)
+            FfiOHOSAceFrameworkSwiperSetCachedCount(value ?? 1)
         }
         this
     }
@@ -1192,9 +1166,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func disableSwipe(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetDisableSwipe(tmpValue)
+            FfiOHOSAceFrameworkSwiperSetDisableSwipe(value ?? false)
         }
         this
     }
@@ -1212,9 +1185,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func curve(value: ?Curve): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (content = LibC.mallocCString(tmpValue.getValue()).asResource()) {
+            try (content = LibC.mallocCString((value ?? Curve.Linear).getValue()).asResource()) {
                 FfiOHOSAceFrameworkSwiperSetCurve(content.value)
             }
         }
@@ -1281,7 +1253,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(event: ?(Int32) -> Unit): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { res: Int32 => }
         unsafe {
             FfiOHOSAceFrameworkSwiperSetOnChange(Callback1Param<Int32, Unit>(tmpEvent).getID())
         }

@@ -97,9 +97,8 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnStart(value: ?Int32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridItemSetColumnStart(tmpValue)
+            FfiOHOSAceFrameworkGridItemSetColumnStart(value ?? 0)
         }
         this
     }
@@ -116,9 +115,8 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnEnd(value: ?Int32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridItemSetColumnEnd(tmpValue)
+            FfiOHOSAceFrameworkGridItemSetColumnEnd(value ?? 0)
         }
         this
     }
@@ -135,9 +133,8 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowStart(value: ?Int32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridItemSetRowStart(tmpValue)
+            FfiOHOSAceFrameworkGridItemSetRowStart(value ?? 0)
         }
         this
     }
@@ -154,9 +151,8 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowEnd(value: ?Int32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridItemSetRowEnd(tmpValue)
+            FfiOHOSAceFrameworkGridItemSetRowEnd(value ?? 0)
         }
         this
     }

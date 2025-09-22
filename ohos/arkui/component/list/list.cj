@@ -20,6 +20,7 @@ import ohos.arkui.component.list_item_group.*
 import ohos.arkui.component.native_struct.*
 import ohos.arkui.component.scroll.*
 import ohos.arkui.component.util.*
+import ohos.arkui.shape.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
@@ -52,6 +53,10 @@ struct LanesParams {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class onScrollFrameBeginHandleResult {
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     public var offsetRemain: ?Float64
 
     @!APILevel[
@@ -59,7 +64,7 @@ public class onScrollFrameBeginHandleResult {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(offsetRemain!: ?Float64) {
-        this.offsetRemain = offsetRemain ?? throw IllegalArgumentException("The type now is not supported.")
+        this.offsetRemain = offsetRemain ?? 0.0
     }
 }
 
@@ -169,6 +174,8 @@ foreign {
         listScrollerId: Int64,
         onFinishCallback: Int64
     ): Unit
+
+    func FfiOHOSAceFrameworkScrollableBaseClipMode(clip: Int32): Unit
 }
 
 /**
@@ -240,9 +247,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func listDirection(value: ?Axis): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetDirection(tmpValue.getValue())
+            FfiOHOSAceFrameworkListSetDirection((value ?? Axis.Vertical).getValue())
         }
         this
     }
@@ -266,7 +272,7 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
     public func divider(value: Option<ListDividerOptions>): This {
         match (value) {
             case Some(v) =>
-                var strokeWidth_ = transAppResourceToLength(v.strokeWidth ?? throw IllegalArgumentException("The type now is not supported."))
+                var strokeWidth_ = transAppResourceToLength(v.strokeWidth ?? 0.vp)
                 var startMargin_ = transAppResourceToLength(v.startMargin ?? 0.vp)
                 var endMargin_ = transAppResourceToLength(v.endMargin ?? 0.vp)
                 unsafe {
@@ -274,7 +280,7 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
                         DividerParams(
                             strokeWidth_.value,
                             strokeWidth_.unitType.getValue(),
-                            transAppResourceToResourceColor(v.color ?? Color.Black),
+                            transAppResourceToResourceColor(v.color ?? 0x08000000),
                             startMargin_.value,
                             startMargin_.unitType.getValue(),
                             endMargin_.value,
@@ -299,9 +305,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func edgeEffect(value: ?EdgeEffect): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetEdgeEffect(tmpValue.getValue())
+            FfiOHOSAceFrameworkListSetEdgeEffect((value ?? EdgeEffect.Spring).getValue())
         }
         this
     }
@@ -319,9 +324,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func chainAnimation(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetChainAnimation(tmpValue)
+            FfiOHOSAceFrameworkListSetChainAnimation(value ?? false)
         }
         this
     }
@@ -338,9 +342,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(value: ?Int32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetCachedCount(tmpValue)
+            FfiOHOSAceFrameworkListSetCachedCount(value ?? 1)
         }
         this
     }
@@ -357,9 +360,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func multiSelectable(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetMultiSelectable(tmpValue)
+            FfiOHOSAceFrameworkListSetMultiSelectable(value ?? false)
         }
         this
     }
@@ -377,9 +379,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lanes(value: ?Int32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetLanes(tmpValue)
+            FfiOHOSAceFrameworkListSetLanes(value ?? 1)
         }
         this
     }
@@ -398,10 +399,14 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lanes(minLength!: ?Length, maxLength!: ?Length): This {
-        let tmpMinLength = minLength ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpMaxLength = maxLength ?? throw IllegalArgumentException("The type now is not supported.")
-        var minLength_ = transAppResourceToLength(tmpMinLength)
-        var maxLength_ = transAppResourceToLength(tmpMaxLength)
+        var flag = false
+        if (minLength.isNone() || maxLength.isNone()) {
+            unsafe {
+                FfiOHOSAceFrameworkListSetLanes(1)
+            }
+        }
+        var minLength_ = transAppResourceToLength(minLength ?? (-1.0).vp)
+        var maxLength_ = transAppResourceToLength(maxLength ?? (-1.0).vp)
         unsafe {
             FfiOHOSAceFrameworkListSetLanesByLengthConstrain(
                 minLength_.value,
@@ -426,9 +431,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignListItem(value: ?ListItemAlign): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListSetAlignListItem(tmpValue.getValue())
+            FfiOHOSAceFrameworkListSetAlignListItem((value ?? ListItemAlign.Start).getValue())
         }
         this
     }
@@ -445,7 +449,7 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sticky(value: ?StickyStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? StickyStyle.None
         unsafe {
             FfiOHOSAceFrameworkListSetSticky(tmpValue.getValue())
         }
@@ -485,6 +489,14 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         this
     }
 
+    protected func clipContentInner(clip: ?ContentClipMode): This {
+        unsafe {
+            FfiOHOSAceFrameworkScrollableBaseClipMode((clip ?? ContentClipMode.ContentOnly).getValue())
+        }
+        this
+    }
+
+
     protected func frictionInner(value: AppResource): This {
         var realValue: Float64 = 0.0
         let t = Float64.tryParse(getResourceString(value))
@@ -503,8 +515,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
     }
 
     protected func nestedScrollInner(value: NestedScrollOptions): This {
-        let localScrollForward = (value.scrollForward ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
-        let localScrollBackward = (value.scrollBackward ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+        let localScrollForward = (value.scrollForward ?? NestedScrollMode.SelfOnly).getValue()
+        let localScrollBackward = (value.scrollBackward ?? NestedScrollMode.SelfOnly).getValue()
         unsafe {
             FfiOHOSAceFrameworkListSetNestedScroll(localScrollForward, localScrollBackward)
         }
@@ -523,7 +535,7 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onScrollIndex(event: ?(Int32, Int32, Int32) -> Unit): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { _, _, _ => }
         let lambdaData = Callback3Param<Int32, Int32, Int32, Unit>(tmpEvent);
         unsafe {
             FfiOHOSAceFrameworkListSetOnScrollIndexCallback(lambdaData.getID())
@@ -543,10 +555,10 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onScrollFrameBegin(event: ?(Float64, ScrollState) -> onScrollFrameBeginHandleResult): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { _, _ => onScrollFrameBeginHandleResult(offsetRemain: 0.0) }
         let wrapper = { offset: Float64, state: Int32 =>
             let res = tmpEvent(offset, ScrollState.parseValue(state))
-            res.offsetRemain ?? throw IllegalArgumentException("The type now is not supported.")
+            res.offsetRemain ?? 0.0
         }
         let lambdaData = Callback2Param<Float64, Int32, Float64>(wrapper)
         unsafe {

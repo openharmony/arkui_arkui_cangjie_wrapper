@@ -147,8 +147,8 @@ public class ListDividerOptions {
         startMargin!: ?Length = None,
         endMargin!: ?Length = None
     ) {
-        this.strokeWidth = strokeWidth ?? throw IllegalArgumentException("The type now is not supported.")
-        this.color = color ?? Color.Black
+        this.strokeWidth = strokeWidth ?? 0.vp
+        this.color = color ?? 0x08000000
         this.startMargin = startMargin ?? 0.vp
         this.endMargin = endMargin ?? 0.vp
     }
@@ -215,7 +215,7 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroupAttribute> & Li
     public func divider(value: Option<ListDividerOptions>): This {
         match (value) {
             case Some(v) =>
-                var strokeWidth_ = transAppResourceToLength(v.strokeWidth ?? throw IllegalArgumentException("The type now is not supported."))
+                var strokeWidth_ = transAppResourceToLength(v.strokeWidth ?? 0.vp)
                 var startMargin_ = transAppResourceToLength(v.startMargin ?? 0.vp)
                 var endMargin_ = transAppResourceToLength(v.endMargin ?? 0.vp)
                 unsafe {
@@ -223,7 +223,7 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroupAttribute> & Li
                         DividerParams(
                             strokeWidth_.value,
                             strokeWidth_.unitType.getValue(),
-                            transAppResourceToResourceColor(v.color ?? Color.Black),
+                            transAppResourceToResourceColor(v.color ?? 0x08000000),
                             startMargin_.value,
                             startMargin_.unitType.getValue(),
                             endMargin_.value,

@@ -66,28 +66,28 @@ struct CJAlignRuleOption {
     init(option: AlignRuleOptions) {
         try {
             if (let Some(v) <- option.left) {
-                leftAnchor = unsafe { LibC.mallocCString(v.anchor ?? throw IllegalArgumentException("The type now is not supported.")) }
-                leftHorizontalAlign = (v.align ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+                leftAnchor = unsafe { LibC.mallocCString(v.anchor ?? "") }
+                leftHorizontalAlign = (v.align ?? HorizontalAlign.Start).getValue()
             }
             if (let Some(v) <- option.right) {
-                rightAnchor = unsafe { LibC.mallocCString(v.anchor ?? throw IllegalArgumentException("The type now is not supported.")) }
-                rightHorizontalAlign = (v.align ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+                rightAnchor = unsafe { LibC.mallocCString(v.anchor ?? "") }
+                rightHorizontalAlign = (v.align ?? HorizontalAlign.Start).getValue()
             }
             if (let Some(v) <- option.middle) {
-                middleAnchor = unsafe { LibC.mallocCString(v.anchor ?? throw IllegalArgumentException("The type now is not supported.")) }
-                middleHorizontalAlign = (v.align ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+                middleAnchor = unsafe { LibC.mallocCString(v.anchor ?? "") }
+                middleHorizontalAlign = (v.align ?? HorizontalAlign.Start).getValue()
             }
             if (let Some(v) <- option.top) {
-                topAnchor = unsafe { LibC.mallocCString(v.anchor ?? throw IllegalArgumentException("The type now is not supported.")) }
-                topVerticalAlign = (v.align ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+                topAnchor = unsafe { LibC.mallocCString(v.anchor ?? "") }
+                topVerticalAlign = (v.align ?? VerticalAlign.Top).getValue()
             }
             if (let Some(v) <- option.bottom) {
-                bottomAnchor = unsafe { LibC.mallocCString(v.anchor ?? throw IllegalArgumentException("The type now is not supported.")) }
-                bottomVerticalAlign = (v.align ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+                bottomAnchor = unsafe { LibC.mallocCString(v.anchor ?? "") }
+                bottomVerticalAlign = (v.align ?? VerticalAlign.Top).getValue()
             }
             if (let Some(v) <- option.center) {
-                centerAnchor = unsafe { LibC.mallocCString(v.anchor ?? throw IllegalArgumentException("The type now is not supported.")) }
-                centerVerticalAlign = (v.align ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+                centerAnchor = unsafe { LibC.mallocCString(v.anchor ?? "") }
+                centerVerticalAlign = (v.align ?? VerticalAlign.Top).getValue()
             }
             horizontalBias = unsafe { LibC.malloc<Float32>() }
             if (horizontalBias.isNull()) {

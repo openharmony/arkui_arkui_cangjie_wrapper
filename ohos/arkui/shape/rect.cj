@@ -58,8 +58,7 @@ public class RectShape <: BaseShape {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radiusWidth(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkRectSetInsRadiusWidth(getID(), value_.value, value_.unitType.getValue())
         }
@@ -71,8 +70,7 @@ public class RectShape <: BaseShape {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radiusHeight(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkRectSetInsRadiusHeight(getID(), value_.value, value_.unitType.getValue())
         }
@@ -84,8 +82,7 @@ public class RectShape <: BaseShape {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkRectSetInsRadius(getID(), value_.value, value_.unitType.getValue())
         }

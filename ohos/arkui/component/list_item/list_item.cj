@@ -116,9 +116,8 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectable(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkListItemSetSelectable(tmpValue)
+            FfiOHOSAceFrameworkListItemSetSelectable(value ?? true)
         }
         this
     }
@@ -167,7 +166,7 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSelect(event: ?(Bool) -> Unit): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { res: Bool => }
         let lambdaData = Callback1Param<Bool, Unit>(tmpEvent)
         unsafe {
             FfiOHOSAceFrameworkListItemSetOnSelect(lambdaData.getID())

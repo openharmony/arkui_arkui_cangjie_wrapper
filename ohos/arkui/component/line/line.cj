@@ -75,7 +75,7 @@ public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func startPoint(value: ?(Float64, Float64)): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? (0.0, 0.0)
         unsafe {
             FfiOHOSAceFrameworkLineSetStart(tmpValue[0], tmpValue[1])
         }
@@ -94,7 +94,7 @@ public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func endPoint(value: ?(Float64, Float64)): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? (0.0, 0.0)
         unsafe {
             FfiOHOSAceFrameworkLineSetEnd(tmpValue[0], tmpValue[1])
         }

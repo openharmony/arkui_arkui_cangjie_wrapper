@@ -204,9 +204,8 @@ public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReady(callback: ?() -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCanvasOnReady(Callback0Param<Unit>(tmpCallback).getID())
+            FfiOHOSAceFrameworkCanvasOnReady(Callback0Param<Unit>(callback ?? { => }).getID())
         }
         this
     }
@@ -254,11 +253,9 @@ public class CanvasGradient <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func addColorStop(offset: ?Float64, color: ?ResourceColor): Unit {
-        let tmpOffset = offset ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
+    public func addColorStop(offset: Float64, color: ?ResourceColor): Unit {
         unsafe {
-            FfiOHOSAceFrameworkCanvasGradientAddColorStop(this.getID(), tmpOffset, transAppResourceToResourceColor(tmpColor))
+            FfiOHOSAceFrameworkCanvasGradientAddColorStop(this.getID(), offset, transAppResourceToResourceColor(color ?? Color.White))
         }
     }
 }

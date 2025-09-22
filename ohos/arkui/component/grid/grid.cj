@@ -152,9 +152,8 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnsTemplate(value: ?String): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (unsafeValue = LibC.mallocCString(tmpValue).asResource()) {
+            try (unsafeValue = LibC.mallocCString(value ?? "1fr").asResource()) {
                 FfiOHOSAceFrameworkGridColumnsTemplate(unsafeValue.value)
             }
         }
@@ -173,9 +172,8 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowsTemplate(value: ?String): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (unsafeValue = LibC.mallocCString(tmpValue).asResource()) {
+            try (unsafeValue = LibC.mallocCString(value ?? "1fr").asResource()) {
                 FfiOHOSAceFrameworkGridRowsTemplate(unsafeValue.value)
             }
         }
@@ -194,8 +192,7 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnsGap(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 0.vp)
         var valueString: String = match (value_.unitType.getValue()) {
             case 0 => "${value_.value}px"
             case 1 => "${value_.value}vp"
@@ -225,8 +222,7 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowsGap(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 0.vp)
         var valueString: String = match (value_.unitType.getValue()) {
             case 0 => "${value_.value}px"
             case 1 => "${value_.value}vp"
@@ -256,8 +252,7 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(value: ?Int32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        cachedCount(tmpValue, false)
+        cachedCount(value ?? 1, false)
     }
 
     /**
@@ -273,10 +268,8 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(count: ?Int32, show: ?Bool): This {
-        let tmpCount = count ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpShow = show ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGridCachedCount(tmpCount, tmpShow)
+            FfiOHOSAceFrameworkGridCachedCount(count ?? 1, show ?? false)
         }
         this
     }
@@ -311,8 +304,8 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
     }
 
     protected func nestedScrollInner(value: NestedScrollOptions): This {
-        let localScrollForward = (value.scrollForward ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
-        let localScrollBackward = (value.scrollBackward ?? throw IllegalArgumentException("The type now is not supported.")).getValue()
+        let localScrollForward = (value.scrollForward ?? NestedScrollMode.SelfOnly).getValue()
+        let localScrollBackward = (value.scrollBackward ?? NestedScrollMode.SelfOnly).getValue()
         unsafe {
             FfiOHOSAceFrameworkGridNestedScroll(localScrollForward, localScrollBackward)
         }

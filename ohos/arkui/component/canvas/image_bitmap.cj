@@ -103,10 +103,9 @@ public class ImageBitmap <: RemoteData {
     public init(src: ?String) {
         super(
             unsafe {
-                let tmpSrc = src ?? throw IllegalArgumentException("The type now is not supported.")
                 var id = 0
-                this.src = tmpSrc
-                try (srcResouce = LibC.mallocCString(tmpSrc).asResource()) {
+                this.src = src ?? ""
+                try (srcResouce = LibC.mallocCString(src ?? "").asResource()) {
                     id = FfiOHOSAceFrameworkImageBitMapCtor(srcResouce.value, this.unit)
                 }
                 id

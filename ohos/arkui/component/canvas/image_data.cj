@@ -114,9 +114,9 @@ public class ImageData <: RemoteDataLite {
         unit!: ?LengthMetricsUnit = None) {
         super(
             unsafe {
-                let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
-                let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
-                let tmpData = data ?? throw IllegalArgumentException("The type now is not supported.")
+                let tmpWidth = width ?? 0.0
+                let tmpHeight = height ?? 0.0
+                let tmpData = data ?? []
                 let tmpUnit = unit ?? LengthMetricsUnit.Default
                 var vecValueHandle = FFIVectorUInt8(tmpData.size)
                 for (i in 0..tmpData.size) {
@@ -143,13 +143,10 @@ public class ImageData <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width: ?Float64, height: ?Float64, unit!: ?LengthMetricsUnit = None) {
-        
         super(
             unsafe {
-                let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
-                let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
-                let tmpUnit = unit ?? LengthMetricsUnit.Default
-                let id = FfiOHOSAceFrameworkCanvasImageDataCtorWithNoData(tmpWidth, tmpHeight, tmpUnit.getValue())
+                let id = FfiOHOSAceFrameworkCanvasImageDataCtorWithNoData(width ?? 0.0, height ?? 0.0,
+                    (unit ?? LengthMetricsUnit.Default).getValue())
                 id
         })
     }
