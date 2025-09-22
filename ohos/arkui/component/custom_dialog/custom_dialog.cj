@@ -376,7 +376,7 @@ public class CustomDialogControllerOptions {
 
 func parseNativeShadowOptions(shadowOptions: ShadowOptions): NativeShadowOptions {
     return NativeShadowOptions(
-        shadowOptions.radius ?? throw IllegalArgumentException("The type now is not supported."),
+        shadowOptions.radius ?? 0.0,
         (shadowOptions.shadowType ?? ShadowType.Color).getValue(),
         (shadowOptions.color ?? Color.Black).toUInt32(),
         shadowOptions.offsetX ?? 0.0,
@@ -406,7 +406,6 @@ foreign {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomDialogController <: RemoteDataLite {
-    private var ffiBuilder_: Option<FFIData> = Option.None
     private var ffiCancel_: Option<FFIData> = Option.None
 
     func parseCustomDialogControllerOptions(options: CustomDialogControllerOptions): NativeCustomDialogControllerOptions {
@@ -499,11 +498,10 @@ public class CustomDialogController <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: ?CustomDialogControllerOptions) {
+    public init(value: CustomDialogControllerOptions) {
         super(
             unsafe {
-                let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-                let nativeOptions = parseCustomDialogControllerOptions(tmpValue)
+                let nativeOptions = parseCustomDialogControllerOptions(value)
                 let id = FfiOHOSAceFrameworkCustomDialogControllerCtorV2(nativeOptions)
                 nativeOptions.free()
                 id
@@ -524,10 +522,9 @@ public class CustomDialogController <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func bindView(view: ?CustomView) {
-        let tmpView = view ?? throw IllegalArgumentException("The type now is not supported.")
+    public func bindView(view: CustomView) {
         unsafe {
-            FfiOHOSAceFrameworkCustomDialogControllerBindView(this.getID(), tmpView.getView().getID())
+            FfiOHOSAceFrameworkCustomDialogControllerBindView(this.getID(), view.getView().getID())
         }
     }
 
@@ -556,11 +553,6 @@ public class CustomDialogController <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func releaseSelf(): Unit {
-        if (let Some(v) <- ffiBuilder_) {
-            FFIDataManager.getInstance().releaseData(v.getID())
-            this.ffiBuilder_ = Option.None
-        }
-
         if (let Some(v) <- ffiCancel_) {
             FFIDataManager.getInstance().releaseData(v.getID())
             this.ffiCancel_ = Option.None

@@ -20,14 +20,6 @@ import ohos.labels.APILevel
 foreign func free(src: CString): Unit
 
 @C
-struct RetDimension {
-    RetDimension(
-        let value: Float64,
-        let unit: Int32
-    ) {}
-}
-
-@C
 protected struct ExternalString {
     let value_: CString
     let free_: CFunc<(CString) -> Unit>

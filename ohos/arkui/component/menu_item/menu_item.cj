@@ -46,6 +46,9 @@ foreign {
     func FfiOHOSAceFrameworkMenuItemOnChange(callback: Int64): Unit
 }
 
+let defaultMenuItemFontColor = 0x99000000
+let defaultMenuItemContentFontColor = 0xE5000000
+
 /**
  * Defines MenuItem Component.
  *
@@ -91,20 +94,16 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
     ]
     public init(startIcon!: ?ResourceStr, content!: ?ResourceStr, endIcon!: ?ResourceStr, labelInfo!: ?ResourceStr,
         builder!: Option<() -> Unit> = None) {
-        let tmpStartIcon = startIcon ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpContent = content ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpEndIcon = endIcon ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpLabelInfo = labelInfo ?? throw IllegalArgumentException("The type now is not supported.")
         let builderId = if (let Some(fn) <- builder) {
             Callback0Param<Unit>(fn).getID()
         } else {
             0
         }
         unsafe {
-            try (cstartIcon = LibC.mallocCString(transResourceMediaToString(tmpStartIcon)).asResource(),
-                ccontent = LibC.mallocCString(transResourceStrToString(tmpContent)).asResource(),
-                cendIcon = LibC.mallocCString(transResourceMediaToString(tmpEndIcon)).asResource(),
-                clabelInfo = LibC.mallocCString(transResourceStrToString(tmpLabelInfo)).asResource()) {
+            try (cstartIcon = LibC.mallocCString(transResourceMediaToString(startIcon ?? "")).asResource(),
+                ccontent = LibC.mallocCString(transResourceStrToString(content ?? "")).asResource(),
+                cendIcon = LibC.mallocCString(transResourceMediaToString(endIcon ?? "")).asResource(),
+                clabelInfo = LibC.mallocCString(transResourceStrToString(labelInfo ?? "")).asResource()) {
                 FfiOHOSAceFrameworkMenuItemCreateByOption(
                     cstartIcon.value,
                     ccontent.value,
@@ -128,7 +127,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selected(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? false
         unsafe {
             FfiOHOSAceFrameworkMenuItemIsSelected(tmpValue)
         }
@@ -147,7 +146,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectIcon(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? false
         unsafe {
             FfiOHOSAceFrameworkMenuItemSelectIconByBool(tmpValue)
         }
@@ -166,7 +165,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectIcon(value: ?ResourceStr): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? ""
         unsafe {
             try (icon = LibC.mallocCString(transResourceMediaToString(tmpValue)).asResource()) {
                 FfiOHOSAceFrameworkMenuItemSelectIconByResource(icon.value)
@@ -224,9 +223,8 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentFontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let color = transAppResourceToResourceColor(tmpValue)
+            let color = transAppResourceToResourceColor(value ?? defaultMenuItemContentFontColor)
             FfiOHOSAceFrameworkMenuItemContentFontColor(color.toUInt32())
         }
         this
@@ -252,17 +250,15 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         family!: ?ResourceStr = None,
         style!: ?FontStyle = None
     ): This {
-        let tmpWeight = weight ?? FontWeight.Normal
-        let tmpStyle = style ?? FontStyle.Normal
         unsafe {
-            try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+            try (weightCString = LibC.mallocCString((weight ?? FontWeight.Normal).getValue()).asResource(),
                 fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkMenuItemLabelFont(
                     transAppResourceToLength(size ?? 16.vp).value,
                     transAppResourceToLength(size ?? 16.vp).unitType.getValue(),
                     weightCString.value,
                     fontFamilyCString.value,
-                    tmpStyle.getValue()
+                    (style ?? FontStyle.Normal).getValue()
                 )
             }
         }
@@ -281,9 +277,8 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func labelFontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let color = transAppResourceToResourceColor(tmpValue)
+            let color = transAppResourceToResourceColor(value ?? defaultMenuItemFontColor)
             FfiOHOSAceFrameworkMenuItemLabelFontColor(color.toUInt32())
         }
         this
@@ -301,7 +296,7 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Bool) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { res: Bool => }
         let lambdaData = Callback1Param<Bool, Unit>(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkMenuItemOnChange(lambdaData.getID())

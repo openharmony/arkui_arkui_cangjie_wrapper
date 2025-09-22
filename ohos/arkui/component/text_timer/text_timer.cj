@@ -35,7 +35,7 @@ foreign {
 
 extend ShadowOptions {
     func optionToNativeTextTimerShadow(): NativeTextTimerShadow {
-        return NativeTextTimerShadow(this.radius ?? throw IllegalArgumentException("The type now is not supported."), 
+        return NativeTextTimerShadow(this.radius ?? 0.0, 
             this.offsetX ?? 0.0, this.offsetY ?? 0.0, (this.color ?? Color.Black).toUInt32(), this.fill ?? false, (this.shadowType ?? ShadowType.Color).getValue())
     }
 }
@@ -411,7 +411,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
     ]
     public func textShadow(value: ?ShadowOptions): This {
         let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let thisShadow: NativeTextTimerShadow = NativeTextTimerShadow(tmpValue.radius ?? throw IllegalArgumentException("The type now is not supported."),
+        let thisShadow: NativeTextTimerShadow = NativeTextTimerShadow(tmpValue.radius ?? 0.0,
             tmpValue.offsetX ?? 0.0, tmpValue.offsetY ?? 0.0, transAppResourceToResourceColor(tmpValue.color ?? Color.Black), tmpValue.fill ?? false,
             (tmpValue.shadowType ?? ShadowType.Color).getValue())
         let vecValueHandle = TextTimerVectorNativeTextShadow(1)

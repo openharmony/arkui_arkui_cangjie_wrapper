@@ -669,7 +669,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
     ]
     public func textShadow(value: ?ShadowOptions): This {
         let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let thisShadow: NativeTextShadowV2 = NativeTextShadowV2(tmpValue.radius ?? throw IllegalArgumentException("The type now is not supported."),
+        let thisShadow: NativeTextShadowV2 = NativeTextShadowV2(tmpValue.radius ?? 0.0,
             tmpValue.offsetX ?? 0.0, tmpValue.offsetY ?? 0.0,
             transAppResourceToResourceColor(tmpValue.color ?? Color.Black), tmpValue.fill ?? false, (tmpValue.shadowType ?? ShadowType.Color).getValue())
         let vecValueHandle = CJVectorNativeTextShadow(1)
