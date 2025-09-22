@@ -28,30 +28,61 @@ The source code of the framework is stored in  **foundation/arkui/arkui\_cangjie
 
 ```
 foundation/arkui/arkui_cangjie_wrapper
-├── figures                    # Architectural diagram
-├── kit                        # Cangjie ArkUI Kit libraries
-├── ohos                       # Cangjie ArkUI Basic libraries
-|   |── animator               # Animator interface
-|   |── arkui                  # Cangjie UI components
-|   |── base                   # Base type
-|   |── curves                 # Curves interface
-|   |── font                   # Custom font interface
-|   |── measure                # Text measure interface
-|   |── prompt_action          # Prompt dialog interface
-|   |── router                 # Router interface
-├── test                       # Test case for ArkUI Cangjie API
+├── figures                    # Architectural diagrams for README
+├── kit                        # Cangjie ArkUI Kit interface
+│   └── ArkUI                  # ArkUI Kit module
+├── ohos                       # Cangjie ArkUI framework interface layer implementation
+│   ├── animator               # Animation interfaces
+│   ├── arkui                  # Cangjie ArkUI component interfaces
+│   │   ├── component          # UI components
+│   │   ├── component_snapshot # Component snapshot
+│   │   ├── component_utils    # Component utility classes
+│   │   ├── shape              # Shape drawing components
+│   │   ├── state_macro_manage # State management macros
+│   │   ├── state_management   # State management framework
+│   │   └── ui_context         # UI context library
+│   ├── base                   # Base type definitions
+│   ├── curves                 # Animation curves
+│   ├── font                   # Custom font management
+│   ├── measure                # Text measurement calculations
+│   ├── prompt_action          # Prompt dialog operations
+│   └── router                 # Page routing
+└── test                       # Test cases directory
 ```
 
 ## When to Use<a name="section171384529150"></a>
 
-Cangjie UI framework provides various UI components with rich functionalities and style definitions. You can use and reuse any component anywhere as needed. You can customize new components by combining existing ones to simplify development.
+Cangjie ArkUI framework provides various UI components with rich functionalities and style definitions. You can use and reuse any component anywhere as needed. You can customize new components by combining existing ones to simplify development.
 
-The following features are provided:
-- Basic Component: General Event, General Attibutes, Render Components
-- Custom Component：LifeCycle of Custom Component
-- StateManage： Component Layer State, Application Layer State
+The provided capabilities include:
+- Built-in components: General events, general attributes, container components, drawing components
+- Custom components: Custom component lifecycle, component nesting and combination
+- State management: Component-level variable state management, application-level variable state management
 
-The following features are not provided yet:
+**Basic Usage Example**
+
+```cangjie  
+@Component
+class EntryView {
+    @State var message: String = "Hello, Cangjie ArkUI!"
+    
+    func build() {
+        Column {
+            Text(this.message)
+                .fontSize(20)
+                .fontColor(Color.Blue)
+            
+            Button("Click Me")
+                .onClick(() => {
+                    this.message = "Button Clicked!"
+                })
+        }
+        .justifyContent(FlexAlign.Center)
+    }
+}
+```
+
+Compared to ArkTS, the following features are not supported yet:
 - State Management V2
 - Custom Node capabilitiese: include FrameNode，RenderNode, BuildNode, pelease refer to [Custom Node Overview](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/arkts-user-defined-node.md)
 
