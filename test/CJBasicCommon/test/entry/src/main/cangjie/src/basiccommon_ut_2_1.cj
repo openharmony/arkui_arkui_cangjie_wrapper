@@ -21,10 +21,8 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.router.*
 import ohos.ui_test.*
 import ohos.arkui.ui_context.*
-import ohos.font.*
 
 @Test
 class BasicCommonUT21 {

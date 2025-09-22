@@ -22,7 +22,6 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.arkui.ui_context.*
-import ohos.router.*
 import std.math.MathExtension
 import ohos.ark_interop.*
 import ohos.ui_test.*
@@ -34,7 +33,6 @@ import ohos.multimedia.image.createPixelMap
 import ohos.multimedia.image.Size as UniqueImageSize
 import ohos.display.Orientation as DisplayOrientation
 import ohos.display.*
-import ohos.prompt_action.*
 import ohos.callback_invoke.*
 internal import kit.ArkUI.{isFoldable, getFoldStatus, getFoldDisplayMode, getCurrentFoldCreaseRegion, FoldCreaseRegion,
     getDefaultDisplaySync, getAllDisplays, DisplayState, DisplayOrientation as orientation, DisplayRect,
@@ -235,9 +233,13 @@ class BasicCommonUTHello {
         var float_a: Float64 = 30.0
         var length = float_a.percent
         var lpx = float_a.lpx
-        var type_px: LengthType = LengthType.parse(0)
-        var type_lpx: LengthType = LengthType.parse(4)
-        var vp: LengthType = LengthType.parse(5)
+        var type_px: LengthUnit = LengthUnit.parse(0)
+        var type_lpx: LengthUnit = LengthUnit.parse(4)
+        try {
+            var vp: LengthUnit = LengthUnit.parse(5)
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+        }
         @Expect(0.3, length.value)
 
         try {
@@ -523,7 +525,7 @@ class BasicCommonUTHello {
             case DisplayState.StateVr => "vr"
             case DisplayState.StateOnSuspend => "on suspend"
             case _ => "unsupport"
-            
+
         })
 
         if (isFoldable()) {
@@ -790,9 +792,15 @@ class BasicCommonUTHello {
     @Tag[APILevel16, TestLevel0]
     func testLength() {
         Hilog.info(1, "Cangjie-Test", "test_length start")
-        var lengthType: LengthType = LengthType.vp(3.0)
-        var a = lengthType.value
-        var b = lengthType.unitType
+        var px1 = LengthUnit.Px.getValue()
+        var vp1 = LengthUnit.Vp.getValue()
+        var fp1 = LengthUnit.Fp.getValue()
+        var percent1 = LengthUnit.Percent.getValue()
+        var lpx1 = LengthUnit.Lpx.getValue()
+        var lengthType1: LengthUnit = LengthUnit.parse(3)
+        var lengthMetrics: LengthMetrics = LengthMetrics(3.0)
+        var a = lengthMetrics.value
+        var b = lengthMetrics.unitType
         Hilog.info(1, "Cangjie-Test", "test_length end")
     }
 
@@ -896,7 +904,7 @@ class BasicCommonUTHello {
                 enableStatusBarAnimation: true,
                 enableNavigationBarAnimation: true
             )
-            // mainWindow.setWindowSystemBarProperties(property)
+             mainWindow.setWindowSystemBarProperties(property)
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_window2 setWindowSystemBarProperties: ${e.toString()}")
         }
@@ -960,7 +968,7 @@ class DtTestCustomView <: CustomView {
         super.delayCompleteRerender(true)
         super.flushDelayCompleteRerender()
         super.aboutToRecycleInternal()
-        super.aboutToBeDeleted()
+//        super.aboutToBeDeleted()
         super.recycleSelf("name")
         super.setParent(DtTestCustomView(Option.None, Option.None))
         super.recycleSelf("name")

@@ -134,7 +134,7 @@ class ViewRichEditor {
                 }
                 Button("添加中英特殊字符").id("addTextSpan1").onClick {
                     evt => controller.addTextSpan(
-                        value: "你好,Cangjie!@#&%",
+                        content: "你好,Cangjie!@#&%",
                         options: RichEditorTextSpanOptions(
                             style: RichEditorTextStyle(
                                 fontColor: Color(0XFF1298),
@@ -161,7 +161,7 @@ class ViewRichEditor {
                 }.key("getCaretOffset")
                 Button("插入多行中英字符").id("addTextSpan2").onClick {
                     evt => controller.addTextSpan(
-                        value: """
+                        content: """
                             你好,Cangjie!@#&%
                             """,
                         options: RichEditorTextSpanOptions(
@@ -191,7 +191,7 @@ class ViewRichEditor {
             Row() {
                 Button("添加空字符").id("addTextSpan3").onClick {
                     evt => controller.addTextSpan(
-                        value: "",
+                        content: "",
                         options: RichEditorTextSpanOptions(
                             style: RichEditorTextStyle(
                                 fontColor: Color(0XFF1298),
@@ -207,7 +207,7 @@ class ViewRichEditor {
                 }
                 Button("插入转义字符").id("addTextSpan4").onClick {
                     evt => controller.addTextSpan(
-                        value: "\n你好，仓颉\t",
+                        content: "\n你好，仓颉\t",
                         options: RichEditorTextSpanOptions(
                             style: RichEditorTextStyle(
                                 fontColor: Color(0XFF1298),

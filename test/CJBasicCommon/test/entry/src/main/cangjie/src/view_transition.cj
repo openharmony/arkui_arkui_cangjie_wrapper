@@ -17,7 +17,6 @@ package ohos_app_cangjie_entry
 
 import ohos.base.*
 import ohos.arkui.component.*
-import ohos.router.*
 import ohos.arkui.state_management.SubscriberManager
 import ohos.arkui.state_management.ObservedProperty
 import ohos.arkui.state_macro_manage.*

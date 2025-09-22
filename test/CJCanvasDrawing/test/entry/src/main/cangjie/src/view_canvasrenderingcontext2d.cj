@@ -90,7 +90,7 @@ class ViewCanvasRenderingContext2D {
             Column() {
                 Canvas(this.context1).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
-                        this.context1.fillStyle(0x0000ff)
+                        this.context1.fillStyle = 0x0000ff
                         this.context1.fillRect(20.0, 20.0, 150.0, 100.0)
                    })
                 Canvas(this.context2).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
@@ -99,7 +99,7 @@ class ViewCanvasRenderingContext2D {
                    })
                 Canvas(this.context3).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
-                        this.context3.strokeStyle(0x0000ff)
+                        this.context3.strokeStyle = 0x0000ff
                         this.context3.strokeRect(25.0, 25.0, 155.0, 105.0)
                    })
                 Canvas(this.context5).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
@@ -114,7 +114,7 @@ class ViewCanvasRenderingContext2D {
                    .onReady({=>
                         // 切线
                         this.context7.beginPath()
-                        this.context7.strokeStyle(0x808080)
+                        this.context7.strokeStyle = 0x808080
                         this.context7.moveTo(360.0, 20.0)
                         this.context7.lineTo(360.0, 170.0)
                         this.context7.lineTo(110.0, 170.0)
@@ -122,20 +122,20 @@ class ViewCanvasRenderingContext2D {
 
                         // 圆弧
                         this.context7.beginPath()
-                        this.context7.strokeStyle(0x000000)
+                        this.context7.strokeStyle = 0x000000
                         this.context7.moveTo(360.0, 20.0)
                         this.context7.arcTo(360.0, 170.0, 110.0, 170.0, 150.0)
                         this.context7.stroke()
 
                         // 起始点
                         this.context7.beginPath()
-                        this.context7.fillStyle(0x00ff00)
+                        this.context7.fillStyle = 0x0000ff
                         this.context7.arc(360.0, 20.0, 4.0, 0.0, 6.28)
                         this.context7.fill()
 
                         // 控制点
                         this.context7.beginPath()
-                        this.context7.fillStyle(0xff0000)
+                        this.context7.fillStyle = 0xff0000
                         this.context7.arc(360.0, 170.0, 4.0, 0.0, 6.28)
                         this.context7.arc(110.0, 170.0, 4.0, 0.0, 6.28)
                         this.context7.fill()
@@ -164,7 +164,7 @@ class ViewCanvasRenderingContext2D {
                         this.context10.stroke()
                         this.context10.clip(fillRule: CanvasFillRule.NonZero)
                         this.context10.clip(fillRule: CanvasFillRule.EvenOdd)
-                        this.context10.fillStyle(0xff0000)
+                        this.context10.fillStyle = 0xff0000
                         this.context10.fillRect(0.0, 0.0, 200.0, 200.0)
                    })
                 Canvas(this.context11).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
@@ -179,7 +179,7 @@ class ViewCanvasRenderingContext2D {
                         region.closePath()
                         region.closePath()
                         this.context11.clip(region,fillRule: CanvasFillRule.EvenOdd)
-                        this.context11.fillStyle(0x00ff00)
+                        this.context11.fillStyle = 0x0000ff
                         this.context11.fillRect(0.0, 0.0, 600.0, 600.0)
                    })
                 Canvas(this.context12).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
@@ -197,7 +197,7 @@ class ViewCanvasRenderingContext2D {
                         grad.addColorStop(0.0, 0xff0000)
                         grad.addColorStop(0.5, 0xffffff)
                         grad.addColorStop(1.0, 0x00ff00)
-                        this.context13.fillStyle(grad)
+                        this.context13.fillStyle = grad
                         this.context13.fillRect(0.0, 30.0, 100.0, 100.0)
                    })
                 Canvas(this.context14).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
@@ -221,15 +221,15 @@ class ViewCanvasRenderingContext2D {
                         grad.addColorStop(0.0, 0xff0000)
                         grad.addColorStop(0.5, 0xffffff)
                         grad.addColorStop(1.0, 0x00ff00)
-                        this.context15.fillStyle(grad)
+                        this.context15.fillStyle = grad
                         this.context15.fillRect(0.0, 0.0, 400.0, 400.0)
                    })
                 Canvas(this.context16).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
                         let pattern = this.context16.createPattern(this.img, Repeat)
-                        this.context16.fillStyle(pattern)
+                        this.context16.fillStyle = pattern.getOrThrow()
                         this.context16.fillRect(0.0, 0.0, 200.0, 200.0)
-                        this.context16.strokeStyle(pattern)
+                        this.context16.strokeStyle = pattern.getOrThrow()
                         this.context16.stroke()
                    })
                 Canvas(this.context17).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
@@ -238,7 +238,7 @@ class ViewCanvasRenderingContext2D {
                         grad.addColorStop(0.0, 0xff0000)
                         grad.addColorStop(0.5, 0xffffff)
                         grad.addColorStop(1.0, 0x00ff00)
-                        this.context17.fillStyle(grad)
+                        this.context17.fillStyle = grad
                         this.context17.fillRect(0.0, 0.0, 440.0, 440.0)
                    })
 
@@ -273,17 +273,17 @@ class ViewCanvasRenderingContext2D {
                         region.lineTo(270.0, 90.0)
                         region.closePath()
                         // Fill path
-                        this.context22.fillStyle(0x00ff00)
+                        this.context22.fillStyle = 0x0000ff
                         this.context22.fill(region, fillRule: CanvasFillRule.EvenOdd)
                    })
                 Canvas(this.context23).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
-                        this.context23.font(size: 50.px, family: "sans-serif")
+                        this.context23.font = "normal normal 50px sans-serif"
                         this.context23.fillText("Hello World!", 20.0, 100.0)
                         let withstr = "width:" + this.context23.measureText("Hello World!").width.toString()
                         this.context23.fillText(withstr, 20.0, 200.0)
 
-                        this.context23.font(size: 55.px, family: "sans-serif")
+                        this.context23.font = "normal normal 55px sans-serif"
                         this.context23.strokeText("Hello World!", 20.0, 300.0)
                         this.context23.strokeText("???", 20.0, 400.0)
                    })
@@ -305,9 +305,9 @@ class ViewCanvasRenderingContext2D {
                    })
                 Canvas(this.context25).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
-                        this.context25.font(size: 30.px, family:"sans-serif")
+                        this.context25.font = "normal normal 30px sans-serif"
                         this.context25.fillText("Hello px", 20.0, 60.0)
-                        this.context25.font(size: 30.vp, family:"sans-serif")
+                        this.context25.font = "normal normal 30px sans-serif"
                         this.context25.fillText("Hello vp", 20.0, 100.0)
                    })
                 Canvas(this.context26).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
@@ -338,13 +338,13 @@ class ViewCanvasRenderingContext2D {
                    })
                 Canvas(this.context31).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
-                        this.context31.fillStyle(0xff0000)
+                        this.context31.fillStyle = 0xff0000
                         this.context31.fillRect(20.0, 20.0, 50.0, 50.0)
-                        this.context31.fillStyle(0x0000ff)
+                        this.context31.fillStyle = 0x0000ff
                         this.context31.fillRect(50.0, 50.0, 50.0, 50.0)
-                        this.context31.fillStyle(0xff0000)
+                        this.context31.fillStyle = 0xff0000
                         this.context31.fillRect(120.0, 20.0, 50.0, 50.0)
-                        this.context31.fillStyle(0x0000ff)
+                        this.context31.fillStyle = 0x0000ff
                         this.context31.fillRect(150.0, 50.0, 50.0, 50.0)
                    })
                 Canvas(this.context34).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
@@ -361,7 +361,7 @@ class ViewCanvasRenderingContext2D {
                    })
                 Canvas(this.context36).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
-                        this.context36.fillStyle(0x0000ff)
+                        this.context36.fillStyle = 0x0000ff
                         this.context36.fillRect(20.0, 20.0, 150.0, 100.0)
                         this.context36.reset()
                         this.context36.fillRect(20.0, 150.0, 150.0, 100.0)
@@ -369,16 +369,16 @@ class ViewCanvasRenderingContext2D {
                 Canvas(this.context37).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
                         this.context37.setTransform(1.0, -0.5, 0.5, 1.0, 10.0, 10.0)
-                        this.context37.fillStyle (0x0000ff)
+                        this.context37.fillStyle = 0x0000ff
                         this.context37.fillRect(0.0, 0.0, 100.0, 100.0)
                         this.context37.resetTransform()
-                        this.context37.fillStyle(0xff0000)
+                        this.context37.fillStyle = 0xff0000
                         this.context37.fillRect(0.0, 0.0, 100.0, 100.0)
                    })
                 Canvas(this.context38).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
                         this.context38.save() // save the default state
-                        this.context38.fillStyle(0x00ff00)
+                        this.context38.fillStyle = 0x0000ff
                         this.context38.fillRect(20.0, 20.0, 100.0, 100.0)
                         this.context38.restore() // restore to the default state
                         this.context38.fillRect(150.0, 75.0, 100.0, 100.0)
@@ -390,14 +390,14 @@ class ViewCanvasRenderingContext2D {
                    })
                 Canvas(this.context40).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
-                        this.context40.fillStyle(0x0000ff)
+                        this.context40.fillStyle = 0x0000ff
                         this.context40.fillRect(50.0,100.0,300.0,100.0)
-                        this.context40.fillStyle(0x00ffff)
+                        this.context40.fillStyle = 0x00ffff
                         this.context40.fillRect(50.0,150.0,300.0,100.0)
                         this.context40.saveLayer()
-                        this.context40.fillStyle(0xff0000)
+                        this.context40.fillStyle = 0xff0000
                         this.context40.fillRect(100.0,50.0,100.0,300.0)
-                        this.context40.fillStyle(0x00ff00)
+                        this.context40.fillStyle = 0x0000ff
                         this.context40.fillRect(150.0,50.0,100.0,300.0)
                         this.context40.restoreLayer()
                    })
@@ -422,7 +422,7 @@ class ViewCanvasRenderingContext2D {
                    })
                 Canvas(this.context44).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
-                        this.context44.fillStyle(0xff0000)
+                        this.context44.fillStyle = 0xff0000
                         this.context44.fillRect(20.0, 20.0, 100.0, 80.0)
                    })
                 Canvas(this.context45).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
@@ -431,7 +431,7 @@ class ViewCanvasRenderingContext2D {
                         this.context45.lineTo(125.0, 105.0)
                         this.context45.lineTo(175.0, 105.0)
                         this.context45.lineTo(175.0, 25.0)
-                        this.context45.strokeStyle(0xff0000)
+                        this.context45.strokeStyle = 0xff0000
                         this.context45.stroke()
                    })
                 Canvas(this.context46).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
@@ -441,7 +441,7 @@ class ViewCanvasRenderingContext2D {
                         path2Da.lineTo(25.0, 105.0)
                         path2Da.lineTo(75.0, 105.0)
                         path2Da.lineTo(75.0, 25.0)
-                        this.context46.strokeStyle(0xff0000)
+                        this.context46.strokeStyle =0xff0000
                         this.context46.stroke(path2Da)
                    })
                 Canvas(this.context47).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
@@ -449,7 +449,7 @@ class ViewCanvasRenderingContext2D {
                         this.context47.moveTo(140.0, 10.0)
                         this.context47.lineTo(140.0, 160.0)
                         this.context47.stroke()
-                        this.context47.font(size: 18.px, family: "sans-serif")
+                        this.context47.font = "normal normal 18px sans-serif"
                         this.context47.fillText('textAlign=start', 140.0, 60.0)
                         this.context47.fillText('textAlign=end', 140.0, 80.0)
                         this.context47.fillText('textAlign=left', 140.0, 100.0)
@@ -458,11 +458,11 @@ class ViewCanvasRenderingContext2D {
                    })
                 Canvas(this.context48).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
-                        this.context48.strokeStyle(0x0000ff)
+                        this.context48.strokeStyle = 0x0000ff
                         this.context48.moveTo(0.0, 120.0)
                         this.context48.lineTo(400.0, 120.0)
                         this.context48.stroke()
-                        this.context48.font(size: 20.px, family: "sans-serif")
+                        this.context48.font = "normal normal 20px sans-serif"
                         this.context48.fillText('Top', 10.0, 120.0)
                         this.context48.fillText('Bottom', 55.0, 120.0)
                         this.context48.fillText('Middle', 125.0, 120.0)
@@ -471,23 +471,23 @@ class ViewCanvasRenderingContext2D {
                    })
                 Canvas(this.context49).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
-                        this.context49.fillStyle(0xff0000)
+                        this.context49.fillStyle = 0xff0000
                         this.context49.fillRect(0.0,0.0,100.0,100.0)
                         let toDataUrl = this.context49.toDataURL()
-                        this.context49.font(size: 48.px, family: "serif")
+                        this.context49.font = "normal normal 48px sans-serif"
                         this.context49.fillText(toDataUrl, 0.0, 150.0)
-                        this.context49.toDataURL(imageType: ImageType.Jpeg)
-                        this.context49.toDataURL(imageType: ImageType.Webp, quality: -1.0)
+                        this.context49.toDataURL(imageType: "image/jpeg")
+                        this.context49.toDataURL(imageType: "image/webp", quality: -1.0)
                    })
                 Canvas(this.context50).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                    .onReady({=>
-                        this.context50.fillStyle(0x000000)
+                        this.context50.fillStyle = 0x000000
                         this.context50.fillRect(0.0, 0.0, 100.0, 100.0)
                         this.context50.transform(1.0, 0.5, -0.5, 1.0, 10.0, 10.0)
-                        this.context50.fillStyle(0xff0000)
+                        this.context50.fillStyle = 0xff0000
                         this.context50.fillRect(0.0, 0.0, 100.0, 100.0)
                         this.context50.transform(1.0, 0.5, -0.5, 1.0, 10.0, 10.0)
-                        this.context50.fillStyle(0x0000ff)
+                        this.context50.fillStyle = 0x0000ff
                         this.context50.fillRect(0.0, 0.0, 100.0, 100.0)
                    })
                 Canvas(this.context51).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)

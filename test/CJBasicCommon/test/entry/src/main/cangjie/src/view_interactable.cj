@@ -149,8 +149,8 @@ class ViewInteractable {
                         )
                     }
                 )
-            }.height(20.percent).width(90.percent).border(width: 1.px).divider(strokeWidth: 2.px,
-                color: Color.Red, startMargin: 20.px, endMargin: 20.px).onDragEnter(
+            }.height(20.percent).width(90.percent).border(width: 1.px).divider(ListDividerOptions(strokeWidth: 2.px,
+                color: Color.Red, startMargin: 20.px, endMargin: 20.px)).onDragEnter(
                 {
                 evt =>
             }).onDragMove(

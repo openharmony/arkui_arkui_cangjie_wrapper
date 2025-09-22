@@ -23,7 +23,6 @@ import ohos.arkui.component.common.*
 import std.unittest.testmacro.*
 import std.unittest.*
 import ohos.base.*
-import ohos.router.*
 import std.math.MathExtension
 import ohos.ark_interop.*
 import ohos.ui_test.*

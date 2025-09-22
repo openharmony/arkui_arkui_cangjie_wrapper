@@ -36,10 +36,10 @@ extend RefreshStatus {
 @Entry
 @Component
 class ViewBackground {
-    let lengthType1: LengthType = LengthType.parse(2)
-    let lengthType2: LengthType = LengthType.parse(3)
-    let lengthType3: LengthType = LengthType.parse(4)
-    let lengthType4: LengthType = LengthType.parse(5)
+    let lengthType1: LengthUnit = LengthUnit.parse(2)
+    let lengthType2: LengthUnit = LengthUnit.parse(3)
+    let lengthType3: LengthUnit = LengthUnit.parse(4)
+    let lengthType4: LengthUnit = LengthUnit.parse(0)
 
     func build() {
         Column() {

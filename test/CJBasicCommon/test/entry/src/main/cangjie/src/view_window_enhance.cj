@@ -78,7 +78,7 @@ class ViewWindowEnhance {
                                 enableStatusBarAnimation: true,
                                 enableNavigationBarAnimation: true
                             )
-                            // mainWindow.setWindowSystemBarProperties(property)
+                             mainWindow.setWindowSystemBarProperties(property)
                         }
                         .width(20.percent)
                         .height(20)

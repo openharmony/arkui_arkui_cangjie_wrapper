@@ -89,7 +89,7 @@ class ViewList {
                     .chainAnimation(false)
                     .scrollBar(BarState.Auto)
                     .cachedCount(0)
-                    .divider(strokeWidth: 2.px) // 每行之间的分界线
+                    .divider(ListDividerOptions(strokeWidth: 2.px)) // 每行之间的分界线
                     .multiSelectable(true)
                     .lanes(1)
                     .alignListItem(ListItemAlign.Start)
@@ -173,7 +173,7 @@ class ViewList {
                 }
                     .id("list2")
                     .nestedScroll(NestedScrollOptions(NestedScrollMode.ParentFirst, NestedScrollMode.Parallel))
-                    .divider(strokeWidth: 3.px, color: @r(app.color.blue_23C452), startMargin: 2.vp, endMargin: 2.vp)
+                    .divider(ListDividerOptions(strokeWidth: 3.px, color: @r(app.color.blue_23C452), startMargin: 2.vp, endMargin: 2.vp))
             }
                 .width(100.percent)
                 .height(20.percent)
@@ -199,8 +199,8 @@ class ViewList {
                 }
                     .id("list3")
                     .sticky(StickyStyle.Header)
-                    .divider(strokeWidth: @r(app.string.control_Width), color: Color.Blue,
-                        startMargin: @r(app.string.control_Width), endMargin: @r(app.string.control_Width))
+                    .divider(ListDividerOptions(strokeWidth: @r(app.string.control_Width), color: Color.Blue,
+                        startMargin: @r(app.string.control_Width), endMargin: @r(app.string.control_Width)))
                     .lanes(minLength: 30.vp, maxLength: 30.vp)
             }
                 .width(100.percent)
@@ -228,8 +228,8 @@ class ViewList {
                     .id("list4")
                     .edgeEffect(EdgeEffect.None)
                     .sticky(StickyStyle.Header)
-                    .divider(strokeWidth: @r(app.string.control_Width), color: @r(app.color.blue_23C452),
-                        startMargin: @r(app.string.control_Width), endMargin: @r(app.string.control_Width))
+                    .divider(ListDividerOptions(strokeWidth: @r(app.string.control_Width), color: @r(app.color.blue_23C452),
+                        startMargin: @r(app.string.control_Width), endMargin: @r(app.string.control_Width)))
             }
                 .width(100.percent)
                 .height(20.percent)

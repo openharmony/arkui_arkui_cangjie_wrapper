@@ -15,13 +15,13 @@
 
 package ohos_app_cangjie_entry
 
-import ohos.font.*
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.resource_manager.*
 import kit.LocalizationKit.*
+import ohos.arkui.ui_context.*
 
 @Entry
 @Component

@@ -19,7 +19,6 @@
 package ohos_app_cangjie_entry
 
 import ohos.base.*
-import ohos.font.*
 import ohos.curves.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*

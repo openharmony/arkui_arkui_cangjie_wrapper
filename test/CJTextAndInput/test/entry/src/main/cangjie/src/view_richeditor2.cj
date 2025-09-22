@@ -56,7 +56,7 @@ class ViewRichEditorTest1 {
                 .id("RichEditor_Test1_RichEditor4")
                 .onReady({
                     =>
-                    this.controller4.addTextSpan(value: "divide")
+                    this.controller4.addTextSpan(content: "divide")
                 })
 
                 RichEditor(this.controller1)
@@ -149,7 +149,7 @@ class ViewRichEditorTest3 {
             .id("ViewRichEditorTest3RichEditor2")
             .onReady({
                 =>
-                this.controller2.addTextSpan(value: "ViewRichEditorTest3RichEditor2")
+                this.controller2.addTextSpan(content: "ViewRichEditorTest3RichEditor2")
             })
 
             Text(this.message1).id("ViewRichEditorTest3Text1")
