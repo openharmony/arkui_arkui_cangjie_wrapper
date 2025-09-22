@@ -19,6 +19,7 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 import std.collection.*
+import std.deriving.Derive
 
 foreign {
     func FfiOHOSAceFrameworkEnvironmentGetAccessibilityEnabled(): NativeOptionBool
@@ -39,6 +40,7 @@ foreign {
  *
  * @relation declare enum ColorMode
  */
+@Derive[Equatable]
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -89,6 +91,7 @@ public enum ColorMode {
  *
  * @relation declare enum LayoutDirection
  */
+@Derive[Equatable]
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
