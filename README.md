@@ -84,7 +84,8 @@ class EntryView {
 
 Compared to ArkTS, the following features are not supported yet:
 - State Management V2
-- Custom Node capabilitiese: include FrameNode，RenderNode, BuildNode, pelease refer to [Custom Node Overview](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/arkts-user-defined-node.md)
+- Custom Node capabilities: include FrameNode，RenderNode, BuildNode, pelease refer to [Custom Node Overview](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/arkts-user-defined-node.md)
+- Custom Extend capabilities: includ AttributeModifier, AttributeUpdater, pelease refer to [Custom Extend Overview](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/arkts-user-defined-modifier.md)
 
 ## Developer Document<a name="section171384529152"></a>
 
@@ -98,7 +99,7 @@ Developers are welcome to contribute code, documentation, etc. For specific cont
 
 ## Repositories Involved<a name="section1447164910172"></a>
 
-[arkui_ace_engine](https://gitee.com/openharmony/arkui_ace_engine)
+[arkui_ace_engine](https://gitcode.com/openharmony/arkui_ace_engine)
 
 [arkcompiler_cangjie_ark_interop](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop)
 
@@ -110,4 +111,4 @@ Developers are welcome to contribute code, documentation, etc. For specific cont
 
 [arkweb_arkweb_cangjie_wrapper](https://gitcode.com/openharmony-sig/arkweb_arkweb_cangjie_wrapper)
 
-[security_access_token](https://gitee.com/openharmony/security_access_token)
+[security_access_token](https://gitcode.com/openharmony/security_access_token)
