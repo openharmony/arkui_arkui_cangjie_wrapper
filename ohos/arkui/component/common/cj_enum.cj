@@ -2224,32 +2224,6 @@ public enum SliderStyle {
     }
 }
 
-enum WindowBlurStyle {
-    SmallLight
-    | MediumLight
-    | LargeLight
-    | XLargeLight
-    | SmallDark
-    | MediumDark
-    | LargeDark
-    | XLargeDark
-    | ...
-
-    protected func getValue(): Int32 {
-        match (this) {
-            case SmallLight => 0
-            case MediumLight => 1
-            case LargeLight => 2
-            case XLargeLight => 3
-            case SmallDark => 4
-            case MediumDark => 5
-            case LargeDark => 6
-            case XLargeDark => 7
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-}
-
 /**
  * The interpolation effect of the image.
  *
@@ -3549,6 +3523,7 @@ protected enum GlobalCompositeOperation {
  *
  * @relation type ImageSmoothingQuality = "high" | "low" | "medium"
  */
+@Derive[Equatable]
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -8598,6 +8573,7 @@ public enum BlurStyle {
  *
  * @relation enum DismissReason
  */
+@Derive[Equatable]
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -8681,6 +8657,7 @@ public enum DismissReason {
  *
  * @relation enum TextInputStyle
  */
+@Derive[Equatable]
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -8733,6 +8710,7 @@ public enum TextInputStyle {
  *
  * @relation enum TextAreaType
  */
+@Derive[Equatable]
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
