@@ -85,6 +85,7 @@ class EntryView {
 与ArkTS相比，暂不支持以下功能：
 - 状态管理V2
 - 自定义节点能力：包括自定义组件节点(FrameNode)，自定义渲染节点(RenderNode)，自定义声明式节点(BuilderNode)，详细介绍请参考[自定义节点概述](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/ui/arkts-user-defined-node.md)
+- 自定义扩展能力：包括属性修改器(AttributeModifier)，属性更新器(AttributeUpdater)，详细介绍请参考[自定义扩展概述](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/ui/arkts-user-defined-modifier.md)
 
 ## 开发者文档<a name="section171384529152"></a>
 
@@ -98,7 +99,7 @@ class EntryView {
 
 ## 相关仓<a name="section1447164910172"></a>
 
-[arkui_ace_engine](https://gitee.com/openharmony/arkui_ace_engine)
+[arkui_ace_engine](https://gitcode.com/openharmony/arkui_ace_engine)
 
 [arkcompiler_cangjie_ark_interop](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop)
 
@@ -110,4 +111,4 @@ class EntryView {
 
 [arkweb_arkweb_cangjie_wrapper](https://gitcode.com/openharmony-sig/arkweb_arkweb_cangjie_wrapper)
 
-[security_access_token](https://gitee.com/openharmony/security_access_token)
+[security_access_token](https://gitcode.com/openharmony/security_access_token)
