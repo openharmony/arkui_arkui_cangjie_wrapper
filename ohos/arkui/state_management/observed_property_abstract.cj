@@ -34,11 +34,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
         this.info = info
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getInfo(): String {
+    protected func getInfo(): String {
         return this.info
     }
 
@@ -54,11 +50,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
     ]
     public func unsubscribeEx(observer: Observer): Unit
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func notifyChanges() {
+    protected func notifyChanges() {
         notifyChangesInner(info, dependentElementIds_)
     }
 

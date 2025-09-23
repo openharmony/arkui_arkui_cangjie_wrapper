@@ -59,11 +59,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func subscribeInner(observer: Observer): Unit {
+    protected func subscribeInner(observer: Observer): Unit {
         subscribe(observer)
         for (arrItem in internalValue) {
             let observedItem = arrItem as ObservedComplexAbstract
@@ -76,11 +72,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func unsubscribeInner(observer: Observer): Unit {
+    protected func unsubscribeInner(observer: Observer): Unit {
         unsubscribe(observer)
         for (arrItem in internalValue) {
             let observedItem = arrItem as ObservedComplexAbstract
