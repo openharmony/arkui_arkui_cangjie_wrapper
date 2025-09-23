@@ -22,6 +22,15 @@ ArkUI开发框架仓颉接口是在OpenHarmony上基于ArkUI开发框架封装�
 - 状态管理：提供状态监听能力，包括状态变化驱动UI界面刷新，相关API请参考[状态管理](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md)。
 - 前端桥接层：提供仓颉UI前端和ArkUI引擎层桥接的能力，包括基础组件以及自定义组件等的对接。
 
+架构图中依赖部件引入说明：
+- ace_engine：arkui_cangjie_wrapper依赖ArkUI框架引擎提供的UI组件，动画，交互事件能力。
+- access_token：Web组件依赖访问控制部件提供的授权与鉴权能力。
+- cangjie_ark_interop：依赖仓颉互操作部件提供的APILevel能力进行API管理。
+- global_cangjie_wrapper：依赖全球化仓颉部件提供的资源管理仓颉接口。
+- multimedia_cangjie_wrapper：Image组件依赖多媒体仓颉部件提供的PixelMap接口。
+- arkweb_cangjie_wrapper：Web组件依赖Web仓颉部件提供的WebView接口。
+- hiviewdfx_cangjie_wrapper：依赖DFX仓颉部件提供的Hilog接口。
+
 ## 目录<a name="section1791423143211"></a>
 
 ArkUI开发框架仓颉接口源代码在foundation/arkui/arkui\_cangjie\_wrapper下，目录结构如下图所示：

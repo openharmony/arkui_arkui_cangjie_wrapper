@@ -22,6 +22,16 @@ As shown in the architecture:
 - StateManagment: provide state subscribe mechanism, include states change drive UI update, please refer to [StateManage](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md).
 - Declarative Frontend Bridge Layer：provide Bridge Layer for interact between Cangjie Declarative Frontend and ArkUI Engine.
 
+Dependency Components Introduction in Architecture:
+
+- ace_engine: arkui_cangjie_wrapper relies on the UI components, animations, and interactive event capabilities provided by the ArkUI framework engine.
+- access_token: Web component relies on the authorization and authentication capabilities provided by the access control module.
+- cangjie_ark_interop: API management is facilitated by the API Level capability offered by cangjie_ark_interop.
+- global_cangjie_wrapper: relies on the resource management capability of global_cangjie_wrapper.
+- multimedia_cangjie_wrapper: The PixelMap interface, provided by multimedia_cangjie_wrapper, is utilized by Image component.
+- arkweb_cangjie_wrapper: The WebView interface, offered by arkweb_cangjie_wrapper, is utilized by Web component.
+- hiviewdfx_cangjie_wrapper: Logging is facilitated by the Hilog interface offered by hiviewdfx_cangjie_wrapper.
+
 ## Directory Structure<a name="section1791423143211"></a>
 
 The source code of the framework is stored in  **foundation/arkui/arkui\_cangjie\_api**. The following shows the directory structure.
