@@ -55,10 +55,8 @@ public class PathShape <: BaseShape {
     public init(width!: ?Length, height!: ?Length, commands!: ?ResourceStr = None) {
         super(
             unsafe {
-                let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
-                let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
-                var width_ = transAppResourceToLength(tmpWidth)
-                var height_ = transAppResourceToLength(tmpHeight)
+                var width_ = transAppResourceToLength(width ?? 0.vp)
+                var height_ = transAppResourceToLength(height ?? 0.vp)
                 let commandsValue = transResourceStrToString(commands ?? "")
                 var id: Int64 = 0
                 try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {

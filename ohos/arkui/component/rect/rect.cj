@@ -85,8 +85,7 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radiusWidth(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkRectSetRadiusWidth(value_.value, value_.unitType.getValue())
         }
@@ -104,8 +103,7 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radiusHeight(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkRectSetRadiusHeight(value_.value, value_.unitType.getValue())
         }
@@ -123,8 +121,7 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkRectSetRadius(value_.value, value_.unitType.getValue())
         }
@@ -142,7 +139,7 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Array<Length>): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? []
         var radiusArray_ = Array<Length>(tmpValue.size) {index => (transAppResourceToLength(tmpValue[index]))}
         let vecValueHandle = FFIVectorFloat64(radiusArray_.size)
         let vecUnitHandle = FFIVectorInt32(radiusArray_.size)
@@ -169,7 +166,7 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Array<(Length, Length)>): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? []
         var radiusArray_ = Array<(Length, Length)>(tmpValue.size) {
             index => (transAppResourceToLength(tmpValue[index][0]), transAppResourceToLength(tmpValue[index][1]))
         }

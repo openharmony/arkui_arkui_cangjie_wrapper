@@ -306,9 +306,8 @@ public class Matrix2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rotate(degree: ?Float64, rx!: ?Float64 = None, ry!: ?Float64 = None): This {
-        let tmpDegree = degree ?? throw IllegalArgumentException("The type now is not supported.")        
         unsafe {
-            FfiOHOSAceFrameworkCanvasMatrixRotate(this.getID(), tmpDegree, rx ?? 0.0, ry ?? 0.0);
+            FfiOHOSAceFrameworkCanvasMatrixRotate(this.getID(), degree ?? 0.0, rx ?? 0.0, ry ?? 0.0);
         }
         this
     }

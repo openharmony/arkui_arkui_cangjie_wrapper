@@ -82,7 +82,7 @@ public class RefreshOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(refreshing!: ?Bool) {
-        this.refreshing = refreshing ?? throw IllegalArgumentException("The type now is not supported.")
+        this.refreshing = refreshing ?? false
         this.changeEvent = {_ =>}
     }
     /**
@@ -97,7 +97,7 @@ public class RefreshOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(refreshing!: ?(Bool, (Bool) -> Unit)) {
-        let tmpRefreshing = refreshing ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpRefreshing = refreshing ?? (false, {_ =>})
         this.refreshing = tmpRefreshing[0]
         this.changeEvent = tmpRefreshing[1]
     }
@@ -125,7 +125,7 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?RefreshOptions, child: () -> Unit) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? RefreshOptions(refreshing: false)
         var offset: Length = 16.vp
         var friction: Int32 = 62
         let wrapper = {
@@ -135,7 +135,7 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
         let lambdaData = Callback1Param<Bool, Unit>(wrapper)
         unsafe {
             FfiOHOSAceFrameworkRefreshCreateWithChangeEvent(
-                (tmpValue.refreshing ?? throw IllegalArgumentException("The type now is not supported.")),
+                (tmpValue.refreshing ?? false),
                 offset.value,
                 offset.unitType.getValue(),
                 friction,
@@ -156,7 +156,7 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStateChange(callback: ?(RefreshStatus) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { res: RefreshStatus => }
         let wrapper = {
             value: Int32 => tmpCallback(RefreshStatus.parseValue(value))
         }
@@ -178,8 +178,7 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onRefreshing(callback: ?() -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
-        let lambdaData = Callback0Param<Unit>(tmpCallback)
+        let lambdaData = Callback0Param<Unit>(callback ?? { => })
         unsafe {
             FfiOHOSAceFrameworkRefreshOnRefreshing(lambdaData.getID())
         }

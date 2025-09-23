@@ -74,10 +74,8 @@ public class Path <: CommonShapeMethodComponent<PathAttribute> & PathAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length, height!: ?Length, commands!: ?ResourceStr = None) {
-        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
-        var width_ = transAppResourceToLength(tmpWidth)
-        var height_ = transAppResourceToLength(tmpHeight)
+        var width_ = transAppResourceToLength(width ?? 0.0)
+        var height_ = transAppResourceToLength(height ?? 0.0)
         unsafe {
             let commandsValue = transResourceStrToString(commands ?? "")
             try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
@@ -99,9 +97,8 @@ public class Path <: CommonShapeMethodComponent<PathAttribute> & PathAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func commands(value: ?ResourceStr): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let commandsValue = transResourceStrToString(tmpValue)
+            let commandsValue = transResourceStrToString(value ?? "undefined")
             try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
                 FfiOHOSAceFrameworkPathSetCommands(unsafeContent.value)
             }

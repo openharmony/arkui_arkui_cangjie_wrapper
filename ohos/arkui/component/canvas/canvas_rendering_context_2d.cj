@@ -748,7 +748,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setLineDash(dashArr: ?Array<Float64>): Unit {
-        let tmpDashArr = dashArr ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpDashArr = dashArr ?? []
         let vecFFi = FFIVectorFloat64(tmpDashArr.size)
         var index = 0
         for (i in tmpDashArr) {
@@ -1046,13 +1046,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fillRect(x: ?Float64, y: ?Float64, width: ?Float64, height: ?Float64): Unit {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
+    public func fillRect(x: Float64, y: Float64, w: Float64, h: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextFillRect(this.getID(), tmpX, tmpY, tmpWidth, tmpHeight)
+            FfiOHOSAceFrameworkRenderingContextFillRect(this.getID(), x, y, w, h)
         }
     }
 
@@ -1069,13 +1065,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeRect(x: ?Float64, y: ?Float64, width: ?Float64, height: ?Float64): Unit {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
+    public func strokeRect(x: Float64, y: Float64, w: Float64, h: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextStrokeRect(this.getID(), tmpX, tmpY, tmpWidth, tmpHeight)
+            FfiOHOSAceFrameworkRenderingContextStrokeRect(this.getID(), x, y, w, h)
         }
     }
 
@@ -1092,13 +1084,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func clearRect(x: ?Float64, y: ?Float64, width: ?Float64, height: ?Float64): Unit {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
+    public func clearRect(x: Float64, y: Float64, w: Float64, h: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextClearRect(this.getID(), tmpX, tmpY, tmpWidth, tmpHeight)
+            FfiOHOSAceFrameworkRenderingContextClearRect(this.getID(), x, y, w, h)
         }
     }
 
@@ -1115,21 +1103,18 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fillText(text: ?String, x: ?Float64, y: ?Float64, maxWidth!: Option<Float64> = Option.None): Unit {
-        let tmpText = text ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+    public func fillText(text: String, x: Float64, y: Float64, maxWidth!: Option<Float64> = Option.None): Unit {
         match (maxWidth) {
             case Some(v) =>
                 unsafe {
-                    try (content = LibC.mallocCString(tmpText).asResource()) {
-                        FfiOHOSAceFrameworkRenderingContextFillTextWithMaxWidth(this.getID(), tmpX, tmpY, content.value, v)
+                    try (content = LibC.mallocCString(text).asResource()) {
+                        FfiOHOSAceFrameworkRenderingContextFillTextWithMaxWidth(this.getID(), x, y, content.value, v)
                     }
                 }
             case None =>
                 unsafe {
-                    try (content = LibC.mallocCString(tmpText).asResource()) {
-                        FfiOHOSAceFrameworkRenderingContextFillText(this.getID(), tmpX, tmpY, content.value)
+                    try (content = LibC.mallocCString(text).asResource()) {
+                        FfiOHOSAceFrameworkRenderingContextFillText(this.getID(), x, y, content.value)
                     }
                 }
         }
@@ -1148,21 +1133,18 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeText(text: ?String, x: ?Float64, y: ?Float64, maxWidth!: Option<Float64> = Option.None): Unit {
-        let tmpText = text ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+    public func strokeText(text: String, x: Float64, y: Float64, maxWidth!: Option<Float64> = Option.None): Unit {
         match (maxWidth) {
             case Some(v) =>
                 unsafe {
-                    try (content = LibC.mallocCString(tmpText).asResource()) {
-                        FfiOHOSAceFrameworkRenderingContextStrokeTextWithMaxWidth(this.getID(), tmpX, tmpY, content.value, v)
+                    try (content = LibC.mallocCString(text).asResource()) {
+                        FfiOHOSAceFrameworkRenderingContextStrokeTextWithMaxWidth(this.getID(), x, y, content.value, v)
                     }
                 }
             case None =>
                 unsafe {
-                    try (content = LibC.mallocCString(tmpText).asResource()) {
-                        FfiOHOSAceFrameworkRenderingContextStrokeText(this.getID(), tmpX, tmpY, content.value)
+                    try (content = LibC.mallocCString(text).asResource()) {
+                        FfiOHOSAceFrameworkRenderingContextStrokeText(this.getID(), x, y, content.value)
                     }
                 }
         }
@@ -1179,10 +1161,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func measureText(text: ?String): TextMetrics {
-        let tmpText = text ?? throw IllegalArgumentException("The type now is not supported.")
         var metrics = TextMetrics(0.0, 0.0)
         unsafe {
-            try (content = LibC.mallocCString(tmpText).asResource()) {
+            try (content = LibC.mallocCString(text ?? "undefined").asResource()) {
                 let nativeMetrics: NativeTextMetrics = FfiOHOSAceFrameworkRenderingContextMeasureText(this.getID(), content.value)
                 metrics = nativeMetrics.parseToCJ()
             }
@@ -1215,10 +1196,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func stroke(path2D: ?Path2D): Unit {
-        let tmpPath2D = path2D ?? throw IllegalArgumentException("The type now is not supported.")
+    public func stroke(path2D: Path2D): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextStrokeWithPath(this.getID(), tmpPath2D.getID())
+            FfiOHOSAceFrameworkRenderingContextStrokeWithPath(this.getID(), path2D.getID())
         }
     }
 
@@ -1248,11 +1228,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func moveTo(x: ?Float64, y: ?Float64): Unit {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+    public func moveTo(x: Float64, y: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextMoveTo(this.getID(), tmpX, tmpY)
+            FfiOHOSAceFrameworkRenderingContextMoveTo(this.getID(), x, y)
         }
     }
 
@@ -1267,11 +1245,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lineTo(x: ?Float64, y: ?Float64): Unit {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+    public func lineTo(x: Float64, y: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextLineTo(this.getID(), tmpX, tmpY)
+            FfiOHOSAceFrameworkRenderingContextLineTo(this.getID(), x, y)
         }
     }
 
@@ -1302,7 +1278,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createPattern(image: ?ImageBitmap, repetition: Option<Repetition>): Option<CanvasPattern> {
-        let tmpImage = image ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpImage = image ?? ImageBitmap("")
         match (repetition) {
             case Some(v) => return CanvasPattern(this.getID(), tmpImage, v)
             case None => return CanvasPattern(this.getID(), tmpImage, Repetition.NoRepeat)
@@ -1324,15 +1300,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func bezierCurveTo(cp1x: ?Float64, cp1y: ?Float64, cp2x: ?Float64, cp2y: ?Float64, x: ?Float64, y: ?Float64): Unit {
-        let tmpCp1x = cp1x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpCp1y = cp1y ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpCp2x = cp2x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpCp2y = cp2y ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+    public func bezierCurveTo(cp1x: Float64, cp1y: Float64, cp2x: Float64, cp2y: Float64, x: Float64, y: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextBezierCurveTo(this.getID(), tmpCp1x, tmpCp1y, tmpCp2x, tmpCp2y, tmpX, tmpY)
+            FfiOHOSAceFrameworkRenderingContextBezierCurveTo(this.getID(), cp1x, cp1y, cp2x, cp2y, x, y)
         }
     }
 
@@ -1349,13 +1319,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func quadraticCurveTo(cpx: ?Float64, cpy: ?Float64, x: ?Float64, y: ?Float64): Unit {
-        let tmpCpx = cpx ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpCpy = cpy ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+    public func quadraticCurveTo(cpx: Float64, cpy: Float64, x: Float64, y: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextQuadraticCurveTo(this.getID(), tmpCpx, tmpCpy, tmpX, tmpY)
+            FfiOHOSAceFrameworkRenderingContextQuadraticCurveTo(this.getID(), cpx, cpy, x, y)
         }
     }
 
@@ -1376,20 +1342,15 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arc(
-        x: ?Float64,
-        y: ?Float64,
-        radius: ?Float64,
-        startAngle: ?Float64,
-        endAngle: ?Float64,
+        x: Float64,
+        y: Float64,
+        radius: Float64,
+        startAngle: Float64,
+        endAngle: Float64,
         counterclockwise!: ?Bool = None
     ): Unit {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpRadius = radius ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpStartAngle = startAngle ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpEndAngle = endAngle ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextArc(this.getID(), tmpX, tmpY, tmpRadius, tmpStartAngle, tmpEndAngle, counterclockwise ?? false)
+            FfiOHOSAceFrameworkRenderingContextArc(this.getID(), x, y, radius, startAngle, endAngle, counterclockwise ?? false)
         }
     }
 
@@ -1407,14 +1368,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func arcTo(x1: ?Float64, y1: ?Float64, x2: ?Float64, y2: ?Float64, radius: ?Float64): Unit {
-        let tmpX1 = x1 ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY1 = y1 ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpX2 = x2 ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY2 = y2 ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpRadius = radius ?? throw IllegalArgumentException("The type now is not supported.")
+    public func arcTo(x1: Float64, y1: Float64, x2: Float64, y2: Float64, radius: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextArcTo(this.getID(), tmpX1, tmpY1, tmpX2, tmpY2, tmpRadius)
+            FfiOHOSAceFrameworkRenderingContextArcTo(this.getID(), x1, y1, x2, y2, radius)
         }
     }
 
@@ -1437,25 +1393,25 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func ellipse(
-        x: ?Float64,
-        y: ?Float64,
-        radiusX: ?Float64,
-        radiusY: ?Float64,
-        rotation: ?Float64,
-        startAngle: ?Float64,
-        endAngle: ?Float64,
+        x: Float64,
+        y: Float64,
+        radiusX: Float64,
+        radiusY: Float64,
+        rotation: Float64,
+        startAngle: Float64,
+        endAngle: Float64,
         counterclockwise!: ?Bool = None
     ): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextEllipse(
                 this.getID(),
-                x ?? throw IllegalArgumentException("The type now is not supported."),
-                y ?? throw IllegalArgumentException("The type now is not supported."),
-                radiusX ?? throw IllegalArgumentException("The type now is not supported."),
-                radiusY ?? throw IllegalArgumentException("The type now is not supported."),
-                rotation ?? throw IllegalArgumentException("The type now is not supported."),
-                startAngle ?? throw IllegalArgumentException("The type now is not supported."),
-                endAngle ?? throw IllegalArgumentException("The type now is not supported."),
+                x,
+                y,
+                radiusX,
+                radiusY,
+                rotation,
+                startAngle,
+                endAngle,
                 counterclockwise ?? false
             )
         }
@@ -1474,13 +1430,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func rect(x: ?Float64, y: ?Float64, width: ?Float64, height: ?Float64): Unit {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
+    public func rect(x: Float64, y: Float64, width: Float64, height: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextRect(this.getID(), tmpX, tmpY, tmpWidth, tmpHeight)
+            FfiOHOSAceFrameworkRenderingContextRect(this.getID(), x, y, width, height)
         }
     }
 
@@ -1515,7 +1467,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fill(path: ?Path2D, fillRule!: ?CanvasFillRule = None): Unit {
-        let tmpPath = path ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpPath = path ?? Path2D()
         let tmpFillRule = fillRule ?? CanvasFillRule.NonZero
         unsafe {
             try (ruleStr = LibC.mallocCString(tmpFillRule.getValue()).asResource()) {
@@ -1555,7 +1507,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clip(path: ?Path2D, fillRule!: ?CanvasFillRule = None): Unit {
-        let tmpPath = path ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpPath = path ?? Path2D()
         let tmpFillRule = fillRule ?? CanvasFillRule.NonZero
         unsafe {
             try (ruleStr = LibC.mallocCString(tmpFillRule.getValue()).asResource()) {
@@ -1575,10 +1527,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func rotate(angle: ?Float64): Unit {
-        let tmpAngle = angle ?? throw IllegalArgumentException("The type now is not supported.")
+    public func rotate(angle: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextRotate(this.getID(), tmpAngle)
+            FfiOHOSAceFrameworkRenderingContextRotate(this.getID(), angle)
         }
     }
 
@@ -1593,11 +1544,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func scale(x: ?Float64, y: ?Float64): Unit {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+    public func scale(x: Float64, y: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextScale(this.getID(), tmpX, tmpY)
+            FfiOHOSAceFrameworkRenderingContextScale(this.getID(), x, y)
         }
     }
 
@@ -1618,22 +1567,22 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func transform(
-        a: ?Float64,
-        b: ?Float64,
-        c: ?Float64,
-        d: ?Float64,
-        e: ?Float64,
-        f: ?Float64
+        a: Float64,
+        b: Float64,
+        c: Float64,
+        d: Float64,
+        e: Float64,
+        f: Float64
     ): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextTransform(
                 this.getID(),
-                a ?? throw IllegalArgumentException("The type now is not supported."),
-                b ?? throw IllegalArgumentException("The type now is not supported."),
-                c ?? throw IllegalArgumentException("The type now is not supported."),
-                d ?? throw IllegalArgumentException("The type now is not supported."),
-                e ?? throw IllegalArgumentException("The type now is not supported."),
-                f ?? throw IllegalArgumentException("The type now is not supported.")
+                a,
+                b,
+                c,
+                d,
+                e,
+                f
             )
         }
     }
@@ -1654,22 +1603,22 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTransform(
-        a: ?Float64,
-        b: ?Float64,
-        c: ?Float64,
-        d: ?Float64,
-        e: ?Float64,
-        f: ?Float64
+        a: Float64,
+        b: Float64,
+        c: Float64,
+        d: Float64,
+        e: Float64,
+        f: Float64
     ): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextSetTransform(
                 this.getID(),
-                a ?? throw IllegalArgumentException("The type now is not supported."),
-                b ?? throw IllegalArgumentException("The type now is not supported."),
-                c ?? throw IllegalArgumentException("The type now is not supported."),
-                d ?? throw IllegalArgumentException("The type now is not supported."),
-                e ?? throw IllegalArgumentException("The type now is not supported."),
-                f ?? throw IllegalArgumentException("The type now is not supported.")
+                a,
+                b,
+                c,
+                d,
+                e,
+                f
             )
         }
     }
@@ -1706,11 +1655,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func translate(x: ?Float64, y: ?Float64): Unit {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
+    public func translate(x: Float64, y: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextTranslate(this.getID(), tmpX, tmpY)
+            FfiOHOSAceFrameworkRenderingContextTranslate(this.getID(), x, y)
         }
     }
 
@@ -1758,12 +1705,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func createLinearGradient(x0: ?Float64, y0: ?Float64, x1: ?Float64, y1: ?Float64): CanvasGradient {
-        let tmpX0 = x0 ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY0 = y0 ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpX1 = x1 ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY1 = y1 ?? throw IllegalArgumentException("The type now is not supported.")
-        return CanvasGradient(this.getID(), tmpX0, tmpY0, tmpX1, tmpY1)
+    public func createLinearGradient(x0: Float64, y0: Float64, x1: Float64, y1: Float64): CanvasGradient {
+        return CanvasGradient(this.getID(), x0, y0, x1, y1)
     }
 
     /**
@@ -1782,14 +1725,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func createRadialGradient(x0: ?Float64, y0: ?Float64, r0: ?Float64, x1: ?Float64, y1: ?Float64, r1: ?Float64): CanvasGradient {
-        let tmpX0 = x0 ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY0 = y0 ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpX1 = x1 ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY1 = y1 ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpR0 = r0 ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpR1 = r1 ?? throw IllegalArgumentException("The type now is not supported.")
-        return CanvasGradient(this.getID(), tmpX0, tmpY0, tmpR0, tmpX1, tmpY1, tmpR1)
+    public func createRadialGradient(x0: Float64, y0: Float64, r0: Float64, x1: Float64, y1: Float64, r1: Float64): CanvasGradient {
+        return CanvasGradient(this.getID(), x0, y0, r0, x1, y1, r1)
     }
 
     /**
@@ -1807,11 +1744,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createConicGradient(startAngle: ?Float64, x: ?Float64, y: ?Float64): CanvasGradient {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpStartAngle = startAngle ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let gradientId = FfiOHOSAceFrameworkRenderingContextCreateConicGradient(this.getID(), tmpStartAngle, tmpX, tmpY)
+            let gradientId = FfiOHOSAceFrameworkRenderingContextCreateConicGradient(this.getID(), startAngle ?? 0.0, x ?? 0.0, y ?? 0.0)
             return CanvasGradient(gradientId)
         }
     }
@@ -1828,16 +1762,13 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func drawImage(image: ?ImageBitmap, dx: ?Float64, dy: ?Float64): Unit {
-        let tmpDx = dx ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDy = dy ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpImage = image ?? throw IllegalArgumentException("The type now is not supported.")
+    public func drawImage(image: ImageBitmap, dx: ?Float64, dy: ?Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithImageBitMap(
                 this.getID(),
-                tmpImage.getID(),
-                ImageInfo(CanvasImageType.CoordinatesOnly.getValue(), 0.0, 0.0, 0.0, 0.0, tmpDx, tmpDy, tmpImage.width,
-                    tmpImage.height)
+                image.getID(),
+                ImageInfo(CanvasImageType.CoordinatesOnly.getValue(), 0.0, 0.0, 0.0, 0.0, dx ?? 0.0, dy ?? 0.0, image.width,
+                    image.height)
             )
         }
     }
@@ -1856,17 +1787,12 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func drawImage(image: ?ImageBitmap, dx: ?Float64, dy: ?Float64, dWidth: ?Float64, dHeight: ?Float64): Unit {
-        let tmpDx = dx ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDy = dy ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpImage = image ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDWidth = dWidth ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDHeight = dHeight ?? throw IllegalArgumentException("The type now is not supported.")
+    public func drawImage(image: ImageBitmap, dx: ?Float64, dy: ?Float64, dw: ?Float64, dh: ?Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithImageBitMap(
                 this.getID(),
-                tmpImage.getID(),
-                ImageInfo(CanvasImageType.CoordinatesAndSize.getValue(), 0.0, 0.0, 0.0, 0.0, tmpDx, tmpDy, tmpDWidth, tmpDHeight)
+                image.getID(),
+                ImageInfo(CanvasImageType.CoordinatesAndSize.getValue(), 0.0, 0.0, 0.0, 0.0, dx ?? 0.0, dy ?? 0.0, dw ?? 0.0, dh ?? 0.0)
             )
         }
     }
@@ -1890,31 +1816,30 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func drawImage(
-        image: ?ImageBitmap,
+        image: ImageBitmap,
         sx: ?Float64,
         sy: ?Float64,
-        sWidth: ?Float64,
-        sHeight: ?Float64,
+        sw: ?Float64,
+        sd: ?Float64,
         dx: ?Float64,
         dy: ?Float64,
-        dWidth: ?Float64,
-        dHeight: ?Float64
+        dw: ?Float64,
+        dh: ?Float64
     ): Unit {
-        let tmpImage = image ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithImageBitMap(
                 this.getID(),
-                tmpImage.getID(),
+                image.getID(),
                 ImageInfo(
                     CanvasImageType.CoordinatesAndSizeWithSource.getValue(),
-                    sx ?? throw IllegalArgumentException("The type now is not supported."),
-                    sy ?? throw IllegalArgumentException("The type now is not supported."),
-                    sWidth ?? throw IllegalArgumentException("The type now is not supported."),
-                    sHeight ?? throw IllegalArgumentException("The type now is not supported."),
-                    dx ?? throw IllegalArgumentException("The type now is not supported."),
-                    dy ?? throw IllegalArgumentException("The type now is not supported."),
-                    dWidth ?? throw IllegalArgumentException("The type now is not supported."),
-                    dHeight ?? throw IllegalArgumentException("The type now is not supported.")
+                    sx ?? 0.0,
+                    sy ?? 0.0,
+                    sw ?? 0.0,
+                    sd ?? 0.0,
+                    dx ?? 0.0,
+                    dy ?? 0.0,
+                    dw ?? 0.0,
+                    dh ?? 0.0
                 )
             )
         }
@@ -1932,15 +1857,12 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func drawImage(image: ?PixelMap, dx: ?Float64, dy: ?Float64): Unit {
-        let tmpDx = dx ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDy = dy ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpImage = image ?? throw IllegalArgumentException("The type now is not supported.")
+    public func drawImage(image: PixelMap, dx: ?Float64, dy: ?Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithPixelMap(
                 this.getID(),
-                tmpImage.getID(),
-                ImageInfo(CanvasImageType.CoordinatesOnly.getValue(), 0.0, 0.0, 0.0, 0.0, tmpDx, tmpDy, 0.0, 0.0)
+                image.getID(),
+                ImageInfo(CanvasImageType.CoordinatesOnly.getValue(), 0.0, 0.0, 0.0, 0.0, dx ?? 0.0, dy ?? 0.0, 0.0, 0.0)
             )
         }
     }
@@ -1959,17 +1881,12 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func drawImage(image: ?PixelMap, dx: ?Float64, dy: ?Float64, dWidth: ?Float64, dHeight: ?Float64): Unit {
-        let tmpDx = dx ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDy = dy ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpImage = image ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDWidth = dWidth ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDHeight = dHeight ?? throw IllegalArgumentException("The type now is not supported.")
+    public func drawImage(image: PixelMap, dx: ?Float64, dy: ?Float64, dw: ?Float64, dh: ?Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithPixelMap(
                 this.getID(),
-                tmpImage.getID(),
-                ImageInfo(CanvasImageType.CoordinatesAndSize.getValue(), 0.0, 0.0, 0.0, 0.0, tmpDx, tmpDy, tmpDWidth, tmpDHeight)
+                image.getID(),
+                ImageInfo(CanvasImageType.CoordinatesAndSize.getValue(), 0.0, 0.0, 0.0, 0.0, dx ?? 0.0, dy ?? 0.0, dw ?? 0.0, dh ?? 0.0)
             )
         }
     }
@@ -1993,31 +1910,30 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func drawImage(
-        image: ?PixelMap,
+        image: PixelMap,
         sx: ?Float64,
         sy: ?Float64,
-        sWidth: ?Float64,
-        sHeight: ?Float64,
+        sw: ?Float64,
+        sd: ?Float64,
         dx: ?Float64,
         dy: ?Float64,
-        dWidth: ?Float64,
-        dHeight: ?Float64
+        dw: ?Float64,
+        dh: ?Float64
     ): Unit {
-        let tmpImage = image ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithPixelMap(
                 this.getID(),
-                tmpImage.getID(),
+                image.getID(),
                 ImageInfo(
                     CanvasImageType.CoordinatesAndSizeWithSource.getValue(),
-                    sx ?? throw IllegalArgumentException("The type now is not supported."),
-                    sy ?? throw IllegalArgumentException("The type now is not supported."),
-                    sWidth ?? throw IllegalArgumentException("The type now is not supported."),
-                    sHeight ?? throw IllegalArgumentException("The type now is not supported."),
-                    dx ?? throw IllegalArgumentException("The type now is not supported."),
-                    dy ?? throw IllegalArgumentException("The type now is not supported."),
-                    dWidth ?? throw IllegalArgumentException("The type now is not supported."),
-                    dHeight ?? throw IllegalArgumentException("The type now is not supported.")
+                    sx ?? 0.0,
+                    sy ?? 0.0,
+                    sw ?? 0.0,
+                    sd ?? 0.0,
+                    dx ?? 0.0,
+                    dy ?? 0.0,
+                    dw ?? 0.0,
+                    dh ?? 0.0
                 )
             )
         }
@@ -2041,10 +1957,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         let id = unsafe {
             FfiOHOSAceFrameworkRenderingContextGetPixelMap(
                 this.getID(),
-                sx ?? throw IllegalArgumentException("The type now is not supported."),
-                sy ?? throw IllegalArgumentException("The type now is not supported."),
-                sw ?? throw IllegalArgumentException("The type now is not supported."),
-                sh ?? throw IllegalArgumentException("The type now is not supported.")
+                sx ?? 0.0,
+                sy ?? 0.0,
+                sw ?? 0.0,
+                sh ?? 0.0
             )
         }
         return PixelMap(id)
@@ -2138,7 +2054,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func transferFromImageBitmap(bitmap: ?ImageBitmap): Unit {
-        let tmpBitmap = bitmap ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpBitmap = bitmap ?? ImageBitmap("")
         unsafe {
             FfiOHOSAceFrameworkRenderingContextTransferFromImageBitmap(this.getID(), tmpBitmap.getID())
         }
@@ -2276,10 +2192,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createImageData(sw: ?Float64, sh: ?Float64): ImageData {
-        let tmpSh = sw ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpSw = sh ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let imageDataId = FfiOHOSAceFrameworkRenderingContextCreateImageData(this.getID(), tmpSh, tmpSw)
+            let imageDataId = FfiOHOSAceFrameworkRenderingContextCreateImageData(this.getID(), sh ?? 0.0, sw ?? 0.0)
             return ImageData(imageDataId)
         }
     }
@@ -2297,7 +2211,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createImageData(imageData: ?ImageData): ImageData {
-        let tmpImageData = imageData ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpImageData = imageData ?? ImageData(0.0, 0.0)
         unsafe {
             let imageDataId = FfiOHOSAceFrameworkRenderingContextCreateImageDataWithImageData(this.getID(),
                 tmpImageData.getID())
@@ -2320,12 +2234,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getImageData(sx: ?Float64, sy: ?Float64, sw: ?Float64, sh: ?Float64): ImageData {
-        let tmpSh = sw ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpSw = sh ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpSx = sx ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpSy = sy ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let imageDataId = FfiOHOSAceFrameworkRenderingContextGetImageData(this.getID(), tmpSx, tmpSy, tmpSw, tmpSh)
+            let imageDataId = FfiOHOSAceFrameworkRenderingContextGetImageData(this.getID(), sx ?? 0.0, sy ?? 0.0, sw ?? 0.0, sh ?? 0.0)
             return ImageData(imageDataId)
         }
     }
@@ -2373,7 +2283,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func putImageData(
-        imageData: ?ImageData,
+        imageData: ImageData,
         dx: ?Length,
         dy: ?Length,
         dirtyX: ?Length,
@@ -2381,27 +2291,20 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         dirtyWidth: ?Length,
         dirtyHeight: ?Length
     ): Unit {
-        let tmpImageData = imageData ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDx = dx ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDy = dy ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDirtyX = dirtyX ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDirtyY = dirtyY ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDirtyWidth = dirtyWidth ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDirtyHeight = dirtyHeight ?? throw IllegalArgumentException("The type now is not supported.")
         var realDx: Float64 = 0.0
         var realDy: Float64 = 0.0
         var realDirtyX: Float64 = 0.0
         var realDirtyY: Float64 = 0.0
         var realDirtyWidth: Float64 = 0.0
         var realDirtyHeight: Float64 = 0.0
-        realDx = parseLength2Vp(tmpDx)
-        realDy = parseLength2Vp(tmpDy)
-        realDirtyX = parseLength2Vp(tmpDirtyX)
-        realDirtyY = parseLength2Vp(tmpDirtyY)
-        realDirtyWidth = parseLength2Vp(tmpDirtyWidth)
-        realDirtyHeight = parseLength2Vp(tmpDirtyHeight)
+        realDx = parseLength2Vp(dx ?? 0.0)
+        realDy = parseLength2Vp(dy ?? 0.0)
+        realDirtyX = parseLength2Vp(dirtyX ?? 0.0)
+        realDirtyY = parseLength2Vp(dirtyY ?? 0.0)
+        realDirtyWidth = parseLength2Vp(dirtyWidth ?? 0.0)
+        realDirtyHeight = parseLength2Vp(dirtyHeight ?? 0.0)
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextPutImageDataWithDirty(this.getID(), tmpImageData.getID(), realDx, realDy, realDirtyX,
+            FfiOHOSAceFrameworkRenderingContextPutImageDataWithDirty(this.getID(), imageData.getID(), realDx, realDy, realDirtyX,
                 realDirtyY, realDirtyWidth, realDirtyHeight)
         }
     }

@@ -55,10 +55,9 @@ public class ScrollBar <: CommonMethodComponent<ScrollBarAttribute> & ScrollBarA
         state!: ?BarState = None,
         child!: () -> Unit
     ){
-        let tmpScroller = scroller ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpScroller = scroller ?? Scroller()
         let tmpDirection = direction ?? ScrollBarDirection.Vertical
         let tmpState = state ?? BarState.Auto
-        
         unsafe {
             FfiOHOSAceFrameworkScrollBarCreate(tmpScroller.getID(), tmpDirection.getValue(), tmpState.getValue())
         }

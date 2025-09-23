@@ -24,7 +24,21 @@ import ohos.labels.APILevel
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ViewBuilder {
-    public ViewBuilder(public let build: () -> Unit) {}
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public let build: () -> Unit
+
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(build: () -> Unit) {
+        this.build = build
+    }
+    
+
 }
 
 @!APILevel[

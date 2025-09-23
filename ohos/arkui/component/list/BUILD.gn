@@ -21,6 +21,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.list") {
 
   cj_deps = [
     "../../../base:ohos.base",
+    "../../shape:ohos.arkui.shape",
     "../common:ohos.arkui.component.common",
     "../native_struct:ohos.arkui.component.native_struct",
     "../scroll:ohos.arkui.component.scroll",

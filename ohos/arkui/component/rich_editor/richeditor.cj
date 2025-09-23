@@ -139,18 +139,18 @@ public class DecorationStyleResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var color: ?ResourceColor
+    public var color: ResourceColor
 
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        decorationType: ?TextDecorationType,
-        color: ?ResourceColor
+        decorationType: TextDecorationType,
+        color: ResourceColor
     ) {
-        this.decorationType = decorationType ?? throw IllegalArgumentException("The type now is not supported.")
-        this.color = color ?? throw IllegalArgumentException("The type now is not supported.")
+        this.decorationType = decorationType
+        this.color = color
     }
 }
 
@@ -187,8 +187,8 @@ public class RichEditorInsertValue {
         insertOffset: ?Int32,
         insertValue: ?String
     ) {
-        this.insertOffset = insertOffset ?? throw IllegalArgumentException("The type now is not supported.")
-        this.insertValue = insertValue ?? throw IllegalArgumentException("The type now is not supported.")
+        this.insertOffset = insertOffset ?? 0
+        this.insertValue = insertValue ?? ""
     }
 
     init(origin: NativeRichEditorInsertValue) {
@@ -259,8 +259,8 @@ public class RichEditorSpanPosition {
         spanIndex: ?Int32,
         spanRange: ?(Int32, Int32)
     ) {
-        this.spanIndex = spanIndex ?? throw IllegalArgumentException("The type now is not supported.")
-        this.spanRange = spanRange ?? throw IllegalArgumentException("The type now is not supported.")
+        this.spanIndex = spanIndex ?? 0
+        this.spanRange = spanRange ?? (0, 0)
     }
 }
 
@@ -313,7 +313,7 @@ public class RichEditorTextStyleResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontColor: ?String
+    public var fontColor: String
 
     /**
      * font size.
@@ -325,7 +325,7 @@ public class RichEditorTextStyleResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontSize: ?Float64
+    public var fontSize: Float64
 
     /**
      * font style.
@@ -337,7 +337,7 @@ public class RichEditorTextStyleResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontStyle: ?FontStyle
+    public var fontStyle: FontStyle
 
     /**
      * font weight.
@@ -349,7 +349,7 @@ public class RichEditorTextStyleResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontWeight: ?Int32
+    public var fontWeight: Int32
 
     /**
      * font family.
@@ -361,7 +361,7 @@ public class RichEditorTextStyleResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var fontFamily: ?String
+    public var fontFamily: String
 
     /**
      * font decoration.
@@ -373,7 +373,7 @@ public class RichEditorTextStyleResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var decoration: ?DecorationStyleResult
+    public var decoration: DecorationStyleResult
 
     /**
      * RichEditorTextStyleResult constructor
@@ -383,19 +383,19 @@ public class RichEditorTextStyleResult {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        fontColor: ?String,
-        fontSize: ?Float64,
-        fontStyle: ?FontStyle,
-        fontWeight: ?Int32,
-        fontFamily: ?String,
-        decoration: ?DecorationStyleResult
+        fontColor: String,
+        fontSize: Float64,
+        fontStyle: FontStyle,
+        fontWeight: Int32,
+        fontFamily: String,
+        decoration: DecorationStyleResult
     ) {
-        this.fontColor = fontColor ?? throw IllegalArgumentException("The type now is not supported.")
-        this.fontSize = fontSize ?? throw IllegalArgumentException("The type now is not supported.")
-        this.fontStyle = fontStyle ?? throw IllegalArgumentException("The type now is not supported.")
-        this.fontWeight = fontWeight ?? throw IllegalArgumentException("The type now is not supported.")
-        this.fontFamily = fontFamily ?? throw IllegalArgumentException("The type now is not supported.")
-        this.decoration = decoration ?? throw IllegalArgumentException("The type now is not supported.")
+        this.fontColor = fontColor
+        this.fontSize = fontSize
+        this.fontStyle = fontStyle
+        this.fontWeight = fontWeight
+        this.fontFamily = fontFamily
+        this.decoration = decoration
     }
 
     init(origin: NativeRichEditorTextStyleResult) {
@@ -547,7 +547,7 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var spanPosition: ?RichEditorSpanPosition
+    public var spanPosition: RichEditorSpanPosition
 
     /**
      * The content of the text span.
@@ -559,7 +559,7 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var value: ?String
+    public var value: String
 
     /**
      * text style.
@@ -571,7 +571,7 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var textStyle: ?RichEditorTextStyleResult
+    public var textStyle: RichEditorTextStyleResult
 
     /**
      * get offset in span.
@@ -586,7 +586,7 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offsetInSpan: ?(Int32, Int32)
+    public var offsetInSpan: (Int32, Int32)
 
     /**
      * RichEditorTextSpanResult constructor
@@ -596,15 +596,15 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        spanPosition: ?RichEditorSpanPosition,
-        value: ?String,
-        textStyle: ?RichEditorTextStyleResult,
-        offsetInSpan: ?(Int32, Int32)
+        spanPosition: RichEditorSpanPosition,
+        value: String,
+        textStyle: RichEditorTextStyleResult,
+        offsetInSpan: (Int32, Int32)
     ) {
-        this.spanPosition = spanPosition ?? throw IllegalArgumentException("The type now is not supported.")
-        this.value = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.textStyle = textStyle ?? throw IllegalArgumentException("The type now is not supported.")
-        this.offsetInSpan = offsetInSpan ?? throw IllegalArgumentException("The type now is not supported.")
+        this.spanPosition = spanPosition
+        this.value = value
+        this.textStyle = textStyle
+        this.offsetInSpan = offsetInSpan
     }
 }
 
@@ -920,8 +920,8 @@ public class RichEditorSelection {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(selection: ?(Int32, Int32), spans: ?ArrayList<RichEditorSpanResult>) {
-        this.selection = selection ?? throw IllegalArgumentException("The type now is not supported.")
-        this.spans = spans ?? throw IllegalArgumentException("The type now is not supported.")
+        this.selection = selection ?? (0, 0)
+        this.spans = spans ?? ArrayList<RichEditorSpanResult>()
     }
 }
 
@@ -957,7 +957,7 @@ public class RichEditorDeleteValue {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offset: ?Int32
+    public var offset: Int32
 
     /**
      * The deleted direction.
@@ -969,7 +969,7 @@ public class RichEditorDeleteValue {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var direction: ?RichEditorDeleteDirection
+    public var direction: RichEditorDeleteDirection
 
     /**
      * The deleted text length.
@@ -981,7 +981,7 @@ public class RichEditorDeleteValue {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var length: ?Int32
+    public var length: Int32
 
     /**
      * The deleted span object.
@@ -993,7 +993,7 @@ public class RichEditorDeleteValue {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var richEditorDeleteSpans: ?ArrayList<RichEditorSpanResult>
+    public var richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
 
     /**
      * RichEditorDeleteValue constructor
@@ -1003,15 +1003,15 @@ public class RichEditorDeleteValue {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        offset: ?Int32,
-        direction: ?RichEditorDeleteDirection,
-        length: ?Int32,
-        richEditorDeleteSpans: ?ArrayList<RichEditorSpanResult>
+        offset: Int32,
+        direction: RichEditorDeleteDirection,
+        length: Int32,
+        richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
     ) {
-        this.offset = offset ?? throw IllegalArgumentException("The type now is not supported.")
-        this.direction = direction ?? throw IllegalArgumentException("The type now is not supported.")
-        this.length = length ?? throw IllegalArgumentException("The type now is not supported.")
-        this.richEditorDeleteSpans = richEditorDeleteSpans ?? throw IllegalArgumentException("The type now is not supported.")
+        this.offset = offset
+        this.direction = direction
+        this.length = length
+        this.richEditorDeleteSpans = richEditorDeleteSpans
     }
 }
 
@@ -1081,8 +1081,8 @@ public class TextRange {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(start: ?Int32, end: ?Int32) {
-        this.start = start ?? throw IllegalArgumentException("The type now is not supported.")
-        this.end = end ?? throw IllegalArgumentException("The type now is not supported.")
+        this.start = start ?? -1
+        this.end = end ?? -1
     }
 }
 
@@ -1145,7 +1145,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(controller: ?RichEditorController) {
-        let tmpController = controller ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpController = controller ?? RichEditorController()
         unsafe {
             FfiOHOSAceFrameworkRichEditorCreateWithController(tmpController.getID())
         }
@@ -1163,7 +1163,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func customKeyboard(value!: ?CustomBuilder): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? { => }
         unsafe {
             FfiOHOSAceFrameworkRichEditorCustomKeyboard(Callback0Param<Unit>(tmpValue).getID())
         }
@@ -1192,11 +1192,11 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     ): This {
         let tmpSpantype = spantype ?? RichEditorSpanType.Text
         let tmpResponseType = responseType ?? ResponseType.LongPress
-        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpOptions = options ?? SelectionMenuOptions()
         unsafe {
             FfiOHOSAceFrameworkRichEditorBindSelectionMenu(
                 tmpSpantype.getValue(),
-                Callback0Param<Unit>(content ?? throw IllegalArgumentException("The type now is not supported.")).getID(),
+                Callback0Param<Unit>(content ?? { => }).getID(),
                 tmpResponseType.getValue(),
                 Callback0Param<Unit>(tmpOptions.onAppear ?? {=>}).getID(),
                 Callback0Param<Unit>(tmpOptions.onDisappear ?? {=>}).getID()
@@ -1217,9 +1217,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func copyOptions(value: ?CopyOptions): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRichEditorCopyOptions(tmpValue.getValue())
+            FfiOHOSAceFrameworkRichEditorCopyOptions((value ?? CopyOptions.LocalDevice).getValue())
         }
         this
     }
@@ -1236,9 +1235,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReady(callback: ?VoidCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRichEditorOnReady(Callback0Param<Unit>(tmpCallback).getID())
+            FfiOHOSAceFrameworkRichEditorOnReady(Callback0Param<Unit>(callback ?? { => }).getID())
         }
         this
     }
@@ -1255,7 +1253,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func aboutToIMEInput(callback: ?Callback<RichEditorInsertValue, Bool>): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => false }
         let wrapper = {
             value: NativeRichEditorInsertValue => tmpCallback(RichEditorInsertValue(value))
         }
@@ -1278,7 +1276,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onIMEInputComplete(callback: ?Callback<RichEditorTextSpanResult, Unit>): RichEditor {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => false }
         let wrapper = {
             value: NativeRichEditorTextSpanResult => tmpCallback(parseNativeRichEditorTextSpanResult(value))
         }
@@ -1301,7 +1299,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDeleteComplete(callback: ?VoidCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { => }
         unsafe {
             FfiOHOSAceFrameworkRichEditorOnDeleteComplete(Callback0Param<Unit>(tmpCallback).getID())
         }
@@ -1320,7 +1318,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func aboutToDelete(callback: ?Callback<RichEditorDeleteValue, Bool>): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => false }
         let wrapper = {
             value: NativeRichEditorDeleteValue => return tmpCallback(parseNativeRichEditorDeleteValue(value))
         }
@@ -1343,7 +1341,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSelect(callback: ?Callback<RichEditorSelection, Unit>): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             value: NativeRichEditorSelection => tmpCallback(parseNativeRichEditorSelection(value))
         }
@@ -1365,7 +1363,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPaste(callback: ?PasteEventCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             value: Int64 => tmpCallback(PasteEvent(value))
         }
@@ -1387,7 +1385,7 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDidChange(callback: ?OnDidChangeCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { rangeBefore: TextRange, rangeAfter: TextRange => }
         let wrapper = {
             before: NativeTextRange, after: NativeTextRange => tmpCallback(
                 TextRange(before.start, before.end),

@@ -24,6 +24,10 @@ import ohos.multimedia.image.PixelMap
  *
  * @relation declare interface BaseEvent
  */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
 sealed abstract class BaseEvent {
     /**
      * Display area of the element that triggers the gesture event.

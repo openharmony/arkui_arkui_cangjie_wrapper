@@ -384,10 +384,7 @@ public class RotateResult {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var angle: Float64
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
+
     /**
      * Defines RotateResult Type.
      */
