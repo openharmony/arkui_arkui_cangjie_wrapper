@@ -28,7 +28,6 @@ ohos_cangjie_shared_library("ohos.arkui.component.scroll_bar") {
   ]
 
   external_deps = [
-    "access_token:cj_ability_access_ctrl_ffi",
     "ace_engine:cj_frontend_ohos",
   ]
   subsystem_name = "arkui"
