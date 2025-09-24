@@ -17,12 +17,13 @@ ArkUI开发框架仓颉接口是在OpenHarmony上基于ArkUI开发框架封装�
 
 如架构图所示：
 
-- UI组件API：提供内置基础组件，包括文本类组件，布局类组件，绘制类组件等，相关API请参考[UI组件](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-flex.md)。
+- UI组件API：提供内置基础组件，包括文本类组件，布局类组件，绘制类组件等，相关API请参考[UI组件](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/summary_cjnative_ohos.md)。
 - 非UI组件API：提供UI界面控制相关能力，包括曲线插值计算，动画动效，自定义字体，页面路由等，相关API请参考[UI界面](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkui-cj/cj-apis-curves.md)。
 - 状态管理：提供状态监听能力，包括状态变化驱动UI界面刷新，相关API请参考[状态管理](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md)。
 - 前端桥接层：提供仓颉UI前端和ArkUI引擎层桥接的能力，包括基础组件以及自定义组件等的对接。
 
 架构图中依赖部件引入说明：
+
 - ace_engine：arkui_cangjie_wrapper依赖ArkUI框架引擎提供的UI组件，动画，交互事件能力。
 - access_token：Web组件依赖访问控制部件提供的授权与鉴权能力。
 - cangjie_ark_interop：依赖仓颉互操作部件提供的APILevel能力进行API管理。
@@ -54,7 +55,7 @@ foundation/arkui/arkui_cangjie_wrapper
 │   ├── curves                 # 动画曲线
 │   ├── font                   # 自定义字体
 │   ├── measure                # 文本测量计算
-│   ├── prompt_action          # 弹窗提示操作
+│   ├── prompt_action          # 弹窗提示
 │   └── router                 # 页面路由
 └── test                       # 测试用例存放目录
 ```
