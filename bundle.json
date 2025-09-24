@@ -20,7 +20,7 @@
             "standard"
         ],
         "rom": "8930KB",
-        "ram": "8930KB",
+        "ram": "8100KB",
         "hisysevent_config": [
         ],
         "deps": {

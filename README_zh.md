@@ -1,36 +1,48 @@
 # ArkUI开发框架仓颉接口<a name="ZH-CN_TOPIC_0000001076213364"></a>
 
--   [简介](#section15701932113019)
--   [目录](#section1791423143211)
--   [使用说明](#section171384529150)
--   [开发者文档](#section171384529152)
--   [参与贡献](#section171384529153)
--   [相关仓](#section1447164910172)
-
 ## 简介<a name="section15701932113019"></a>
 
-ArkUI开发框架仓颉接口是在OpenHarmony上基于ArkUI开发框架封装的仓颉声明式UI框架，提供开发者进行应用UI开发时所必需的能力，包括状态管理、UI组件、动画、绘制、交互事件等。当前开放的ArkUI开发框架仓颉接口仅支持standard设备。
+ArkUI开发框架仓颉接口提供开发者使用仓颉语言进行应用UI开发时所必需的能力，包括状态管理、UI组件、动画、绘制、交互事件等。当前开放的ArkUI开发框架仓颉接口仅支持standard设备。
 
-其主要结构如下图所示：
+## 系统架构
+
+其主要架构如下图所示：
 
 ![仓颉ArkUI开发框架](./figures/arkui_arkui_cangjie_wrapper.png)
 
 如架构图所示：
 
-- UI组件API：提供内置基础组件，包括文本类组件，布局类组件，绘制类组件等，相关API请参考[UI组件](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/summary_cjnative_ohos.md)。
-- 非UI组件API：提供UI界面控制相关能力，包括曲线插值计算，动画动效，自定义字体，页面路由等，相关API请参考[UI界面](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkui-cj/cj-apis-curves.md)。
-- 状态管理：提供状态监听能力，包括状态变化驱动UI界面刷新，相关API请参考[状态管理](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md)。
-- 前端桥接层：提供仓颉UI前端和ArkUI引擎层桥接的能力，包括基础组件以及自定义组件等的对接。
+接口层
+- UI组件：提供内置组件，包括文本组件，布局组件，绘制组件，渲染控制，开发者可以通过内置组件组合出所需的页面。
+- UI上下文：通过UI上下文可以使用曲线插值计算，动画动效，自定义字体，页面路由等能力。
+- 状态管理宏：使用状态管理宏，可以修饰开发者定义的变量。被修饰的变量值的改变会引起UI的渲染更新。
+
+框架层
+- UI组件封装：UI组件仓颉封装实现，包括
+  - 文本组件：文本组件通常涵盖用户输入的信息、呈现的文本内容以及小图标，这些元素共同构建了用户与系统间的交互界面，提升了操作的便捷性与信息展示的直观性。
+  - 布局组件：布局组件通常用于管理用户页面所放置UI组件的大小和位置，包括线性布局，层叠布局，弹性布局，相对布局，栅格布局。
+  - 绘制组件：绘制组件用于自定义绘制图形，开发者可以在Canvas组件上进行绘制，绘制对象可以是基础形状、文本、图片等。
+  - 渲染控制：渲染控制可以根据条件控制UI组件是否显示，包括条件渲染（if/else），循环渲染（ForEach），数据懒加载（LazyForEach）。
+- UI上下文封装：UI上下文封装实现，包括
+  - 动画：使用动画可以为UI变化添加过度场景。
+  - 弹窗：弹窗用于短时间内展示用户需关注的信息或待处理的操作。
+  - 路由：提供访问不同页面的能力，包括跳转到应用内的指定页面、同应用内的某个页面替换当前页面、返回上一页面或指定的页面等
+  - 自定义字体：提供注册自定义字体的能力
+  - 文本计算：提供文本宽度、高度等相关计算
+- 状态管理：状态管理宏的实现，包括
+  - 组件级状态：组件级别的状态管理，可以观察同一个页面的组件内或不同组件层级的变量变化。
+  - 应用级状态：应用级别的状态管理，可以观察不同页面，是应用内全局的状态管理。
+- 仓颉ArkUI开发框架FFI接口定义：负责定义C语言互操作仓颉接口，用于提供仓颉UI前端和ArkUI开发框架对接的能力，包括UI组件和UI上下文的对接。
 
 架构图中依赖部件引入说明：
 
-- ace_engine：arkui_cangjie_wrapper依赖ArkUI框架引擎提供的UI组件，动画，交互事件能力。
-- access_token：Web组件依赖访问控制部件提供的授权与鉴权能力。
-- cangjie_ark_interop：依赖仓颉互操作部件提供的APILevel能力进行API管理。
-- global_cangjie_wrapper：依赖全球化仓颉部件提供的资源管理仓颉接口。
-- multimedia_cangjie_wrapper：Image组件依赖多媒体仓颉部件提供的PixelMap接口。
-- arkweb_cangjie_wrapper：Web组件依赖Web仓颉部件提供的WebView接口。
-- hiviewdfx_cangjie_wrapper：依赖DFX仓颉部件提供的Hilog接口。
+- arkui_ace_engine：arkui_cangjie_wrapper依赖ArkUI开发框架提供的UI组件，动画，交互事件能力。
+- security_access_token：UI组件依赖访问控制部件提供的授权与鉴权能力。
+- cangjie_ark_interop：依赖cangjie_ark_interop提供的APILevel能力进行API管理。
+- global_cangjie_wrapper：依赖global_cangjie_wrapper提供的资源管理仓能力。
+- multimedia_cangjie_wrapper：Image组件依赖多媒体仓颉部件提供的图像处理能力。
+- arkweb_cangjie_wrapper：Web组件依赖arkweb_cangjie_wrapper提供的WebView控制能力。
+- hiviewdfx_cangjie_wrapper：依赖hiviewdfx_cangjie_wrapper提供的Hilog日志能力。
 
 ## 目录<a name="section1791423143211"></a>
 
@@ -65,7 +77,7 @@ foundation/arkui/arkui_cangjie_wrapper
 ArkUI开发框架仓颉接口提供了丰富的、功能强大的UI组件、样式定义，组件之间相互独立，随取随用，也可以在需求相同的地方重复使用。开发者还可以通过组件间合理的搭配定义满足业务需求的新组件，减少开发量。
 
 提供的能力范围包括：
-- 内置组件：通用事件，通用属性，容器类组件，绘制类组件
+- 内置组件：通用事件，通用属性，文本组件，布局组件，绘制组件，渲染控制
 - 自定义组件：自定义组件生命周期，组件嵌套组合
 - 状态管理：组件级变量状态管理，应用级变量状态管理
 
@@ -92,12 +104,16 @@ class EntryView {
 }
 ```
 
+## 约束
+
 与ArkTS相比，暂不支持以下功能：
+- 高级组件
+- 嵌入式组件：全屏启动原子化服务组件（FullScreenLaunchComponent），同应用进程嵌入式组件 (EmbeddedComponent)
 - 状态管理V2
 - 自定义节点能力：包括自定义组件节点(FrameNode)，自定义渲染节点(RenderNode)，自定义声明式节点(BuilderNode)，详细介绍请参考[自定义节点概述](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/ui/arkts-user-defined-node.md)
 - 自定义扩展能力：包括属性修改器(AttributeModifier)，属性更新器(AttributeUpdater)，详细介绍请参考[自定义扩展概述](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/ui/arkts-user-defined-modifier.md)
 
-## 开发者文档<a name="section171384529152"></a>
+## 参考文档<a name="section171384529152"></a>
 
 [API文档](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/summary_cjnative_ohos.md)
 
