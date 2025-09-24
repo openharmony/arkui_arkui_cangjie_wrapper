@@ -153,6 +153,8 @@ foreign {
 
     func FfiOHOSAceFrameworkSearchSetTextFont(fontSize: Float64, sizeUnit: Int32, fontWeight: CString, fontStyle: Int32,
         fontFamily: CString): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 let DEFAULT_SIZE = 16.0
@@ -199,9 +201,8 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretPosition(value: ?Int32): Unit {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSearchCaretPosition(this.getID(), tmpValue)
+            FfiOHOSAceFrameworkSearchCaretPosition(this.getID(), value ?? 0)
         }
     }
 }
@@ -272,8 +273,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func searchButton(value: ?ResourceStr): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var valueStr = transResourceStrToString(tmpValue)
+        var valueStr = transResourceStrToString(value ?? "")
         unsafe {
             try (unsafeValue = LibC.mallocCString(valueStr).asResource()) {
                 FfiOHOSAceFrameworkSearchSetSearchButton(unsafeValue.value)
@@ -410,9 +410,8 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func copyOption(value: ?CopyOptions): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSearchSetCopyOption(tmpValue.getValue())
+            FfiOHOSAceFrameworkSearchSetCopyOption((value ?? CopyOptions.LocalDevice).getValue())
         }
         this
     }
@@ -429,7 +428,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSubmit(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             value: CString => tmpCallback(value.toString())
         }
@@ -454,7 +453,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             value: CString => tmpCallback(value.toString())
         }
@@ -477,7 +476,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCopy(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             value: CString => tmpCallback(value.toString())
         }
@@ -500,7 +499,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCut(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             value: CString => tmpCallback(value.toString())
         }
@@ -523,7 +522,7 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPaste(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             value: CString => tmpCallback(value.toString())
         }
@@ -534,10 +533,10 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
         this
     }
 
-    protected override func borderInner(width: Length, color: ResourceColor, radius: Length, style: BorderStyle): This {
-        var w = transAppResourceToLength(width)
-        var c = transAppResourceToResourceColor(color)
-        var r = transAppResourceToLength(radius)
+    protected override func borderInner(width: ?Length, color: ?ResourceColor, radius: ?Length, style: ?BorderStyle): This {
+        var w = transAppResourceToLength(width ?? 0.vp)
+        var c = transAppResourceToResourceColor(color ?? Color.Black)
+        var r = transAppResourceToLength(radius ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkSearchSetBorder(
                 SearchSetBorder(
@@ -546,47 +545,52 @@ public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute 
                     c.toUInt32(),
                     r.value,
                     r.unitType.getValue(),
-                    style.getValue()
+                    (style ?? BorderStyle.Solid).getValue()
                 )
             )
         }
         this
     }
 
-    protected override func borderWidthInner(width: Length): This {
-        var w = transAppResourceToLength(width)
+    protected override func borderWidthInner(width: ?Length): This {
+        let tmpValue = width ?? throw IllegalArgumentException("The type now is not supported.")
+        var w = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkSearchSetBorderWidth(w.value, w.unitType.getValue())
         }
         this
     }
 
-    protected override func borderColorInner(color: ResourceColor): This {
+    protected override func borderColorInner(color: ?ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkSearchSetBorderColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkSearchSetBorderColor(transAppResourceToResourceColor(color ?? Color.Black))
         }
         this
     }
 
-    protected override func borderStyleInner(style: BorderStyle): This {
+    protected override func borderStyleInner(style: ?BorderStyle): This {
         unsafe {
-            FfiOHOSAceFrameworkSearchSetBorderStyle(style.getValue())
+            FfiOHOSAceFrameworkSearchSetBorderStyle((style ?? BorderStyle.Solid).getValue())
         }
         this
     }
 
-    protected override func borderRadiusInner(radius: Length): This {
-        var r = transAppResourceToLength(radius)
+    protected override func borderRadiusInner(radius: ?Length): This {
+        var r = transAppResourceToLength(radius ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkSearchSetBorderRadius(r.value, r.unitType.getValue())
         }
         this
     }
 
-    protected override func heightInner(value: Length): This {
-        var v = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkSearchSetHeight(v.value, v.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkSearchSetHeight(v.value, v.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }

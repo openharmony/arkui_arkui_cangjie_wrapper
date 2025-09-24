@@ -54,8 +54,7 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?ResourceStr) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let value_ = transResourceStrToString(tmpValue)
+        let value_ = transResourceStrToString(value ?? "undefined")
         unsafe {
             try (str = LibC.mallocCString(value_).asResource()) {
                 FfiOHOSAceFrameworkQRCodeCreate(str.value)
@@ -75,16 +74,15 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkQRCodeSetQRCodeColor(transAppResourceToResourceColor(tmpValue))
+            FfiOHOSAceFrameworkQRCodeSetQRCodeColor(transAppResourceToResourceColor(value ?? 0xFF000000))
         }
         this
     }
 
-    protected override func backgroundColorInner(value: ResourceColor): This {
+    protected override func backgroundColorInner(value: ?ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkQRCodeSetBackgroundColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkQRCodeSetBackgroundColor(transAppResourceToResourceColor(value ?? 0xFFFFFFFF))
         }
         this
     }
@@ -101,9 +99,8 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentOpacity(value: ?Float64): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkQRCodeSetContentOpacity(tmpValue)
+            FfiOHOSAceFrameworkQRCodeSetContentOpacity(value ?? 1.0)
         }
         this
     }
@@ -120,8 +117,12 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentOpacity(value: ?AppResource): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var dimension: Length = getResourceLength(tmpValue)
-        contentOpacity(dimension.value)
+        if (let Some(v) <- value) {
+            var dimension: Length = getResourceLength(v)
+            contentOpacity(dimension.value)
+        } else {
+            contentOpacity(1.0)
+        }
+        return this
     }
 }

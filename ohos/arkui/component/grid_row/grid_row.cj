@@ -44,6 +44,8 @@ foreign {
     func FfiOHOSAceFrameworkGridRowBreakpointEvent(callback: Int64): Unit
 
     func FfiOHOSAceFrameworkGridRowAlignItem(value: Int32): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 enum GridRowGutter {
@@ -903,10 +905,14 @@ public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribu
         this.child = child
     }
 
-    protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkGridRowSetHeight(value_.value, value_.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkGridRowSetHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }

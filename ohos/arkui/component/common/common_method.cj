@@ -230,7 +230,7 @@ public interface CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func aspectRatio(value: ?Float64): T
+    func aspectRatio(value: Float64): T
 
     @!APILevel[
         22,
@@ -432,7 +432,7 @@ public interface CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func sharedTransition(id: ?String, options!: ?SharedTransitionOptions): T
+    func sharedTransition(id: String, options!: ?SharedTransitionOptions): T
 
     @!APILevel[
         22,
@@ -541,7 +541,7 @@ public interface CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func maskShape(value: ?BaseShape): T
+    func maskShape(value: BaseShape): T
 
     @!APILevel[
         22,
@@ -716,12 +716,12 @@ public interface CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func bindSheet(isShow: ?Bool, builder: ?CustomBuilder, options!: ?SheetOptions): T
+    func bindSheet(isShow: ?Bool, builder: CustomBuilder, options!: ?SheetOptions): T
 
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func dragPreview(value: ?String): T
+    func dragPreview(value: String): T
 }
 

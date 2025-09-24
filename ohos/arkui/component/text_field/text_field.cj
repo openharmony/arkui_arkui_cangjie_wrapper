@@ -204,20 +204,26 @@ foreign {
     func FfiOHOSAceFrameworkTextFieldOnChangePreviewText(callback: Int64): Unit
 
     func FfiOHOSAceFrameworkTextFieldEditMenuOptions(callbackOnCreateMenu: Int64, callbackOnMenuItemClick: Int64): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 
 protected class TextField {
-    protected static func height(width: Length): Unit {
-        var w = transAppResourceToLength(width)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetHeight(w.value, w.unitType.getValue())
+    protected static func height(width: ?Length): Unit {
+        match (width) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkTextFieldSetHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
     }
 
-    protected static func size(width!: Length, height!: Length): Unit {
-        var w = transAppResourceToLength(width)
-        var h = transAppResourceToLength(height)
+    protected static func size(width!: ?Length, height!: ?Length): Unit {
+        var w = transAppResourceToLength(width ?? 0.0.vp)
+        var h = transAppResourceToLength(height ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetSize(
                 w.value,
@@ -228,18 +234,19 @@ protected class TextField {
         }
     }
 
-    protected static func padding(value: Length): Unit {
-        var v = transAppResourceToLength(value)
+    protected static func padding(value: ?Length): Unit {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetPadding(v.value, v.unitType.getValue())
         }
     }
 
-    protected static func padding(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp): Unit {
-        var t = transAppResourceToLength(top)
-        var r = transAppResourceToLength(right)
-        var b = transAppResourceToLength(bottom)
-        var l = transAppResourceToLength(left)
+    protected static func padding(top!: ?Length = None, right!: ?Length = None, bottom!: ?Length = None, left!: ?Length = None): Unit {
+        var t = transAppResourceToLength(top ?? 0.vp)
+        var r = transAppResourceToLength(right ?? 0.vp)
+        var b = transAppResourceToLength(bottom ?? 0.vp)
+        var l = transAppResourceToLength(left ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetPaddings(
                 CJEdge(
@@ -256,18 +263,18 @@ protected class TextField {
         }
     }
 
-    protected static func margin(value: Length): Unit {
-        var v = transAppResourceToLength(value)
+    protected static func margin(value: ?Length): Unit {
+        var v = transAppResourceToLength(value ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetMargin(v.value, v.unitType.getValue())
         }
     }
 
-    protected static func margin(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp): Unit {
-        var t = transAppResourceToLength(top)
-        var r = transAppResourceToLength(right)
-        var b = transAppResourceToLength(bottom)
-        var l = transAppResourceToLength(left)
+    protected static func margin(top!: ?Length = None, right!: ?Length = None, bottom!: ?Length = None, left!: ?Length = None): Unit {
+        var t = transAppResourceToLength(top ?? 0.vp)
+        var r = transAppResourceToLength(right ?? 0.vp)
+        var b = transAppResourceToLength(bottom ?? 0.vp)
+        var l = transAppResourceToLength(left ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetMargins(
                 CJEdge(
@@ -285,74 +292,76 @@ protected class TextField {
     }
 
     protected static func border(
-        width!: Length,
-        color!: ResourceColor = Color.Black,
-        radius!: Length = 0.vp,
-        style!: BorderStyle = BorderStyle.Solid
+        width!: ?Length,
+        color!: ?ResourceColor = None,
+        radius!: ?Length = None,
+        style!: ?BorderStyle = None
     ): Unit {
-        var width_ = transAppResourceToLength(width)
-        var radius_ = transAppResourceToLength(radius)
+        var width_ = transAppResourceToLength(width ?? 0.vp)
+        var radius_ = transAppResourceToLength(radius ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBorder(
                 CJBorder(
                     width_.value,
                     width_.unitType.getValue(),
-                    transAppResourceToResourceColor(color),
+                    transAppResourceToResourceColor(color ?? Color.Black),
                     radius_.value,
                     radius_.unitType.getValue(),
-                    style.getValue()
+                    (style ?? BorderStyle.Solid).getValue()
                 )
             )
         }
     }
 
-    protected static func borderWidth(width: Length): Unit {
-        var w = transAppResourceToLength(width)
+    protected static func borderWidth(width: ?Length): Unit {
+        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
+        var w = transAppResourceToLength(tmpWidth)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBorderWidth(w.value, w.unitType.getValue())
         }
     }
 
-    protected static func borderWidth(edgeWidths: EdgeWidths): Unit {
+    protected static func borderWidth(edgeWidths: ?EdgeWidths): Unit {
+        let tmpEdgeWidths = edgeWidths ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBorderWidthWithCJEdge(
                 CJEdge(
-                    (edgeWidths.top ?? 0.vp).value,
-                    (edgeWidths.top ?? 0.vp).unitType.getValue(),
-                    (edgeWidths.right ?? 0.vp).value,
-                    (edgeWidths.right ?? 0.vp).unitType.getValue(),
-                    (edgeWidths.bottom ?? 0.vp).value,
-                    (edgeWidths.bottom ?? 0.vp).unitType.getValue(),
-                    (edgeWidths.left ?? 0.vp).value,
-                    (edgeWidths.left ?? 0.vp).unitType.getValue()
+                    (tmpEdgeWidths.top ?? 0.vp).value,
+                    (tmpEdgeWidths.top ?? 0.vp).unitType.getValue(),
+                    (tmpEdgeWidths.right ?? 0.vp).value,
+                    (tmpEdgeWidths.right ?? 0.vp).unitType.getValue(),
+                    (tmpEdgeWidths.bottom ?? 0.vp).value,
+                    (tmpEdgeWidths.bottom ?? 0.vp).unitType.getValue(),
+                    (tmpEdgeWidths.left ?? 0.vp).value,
+                    (tmpEdgeWidths.left ?? 0.vp).unitType.getValue()
                 )
             )
         }
     }
 
-    protected static func borderColor(color: ResourceColor): Unit {
+    protected static func borderColor(color: ?ResourceColor): Unit {
         unsafe {
-            FfiOHOSAceFrameworkTextFieldSetBorderColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkTextFieldSetBorderColor(transAppResourceToResourceColor(color ?? Color.Black))
         }
     }
 
-    protected static func borderRadius(radius: Length): Unit {
-        var r = transAppResourceToLength(radius)
+    protected static func borderRadius(radius: ?Length): Unit {
+        var r = transAppResourceToLength(radius ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBorderRadius(r.value, r.unitType.getValue())
         }
     }
 
     protected static func borderRadius(
-        topLeft!: Length = 0.vp,
-        topRight!: Length = 0.vp,
-        bottomLeft!: Length = 0.vp,
-        bottomRight!: Length = 0.vp
+        topLeft!: ?Length = None,
+        topRight!: ?Length = None,
+        bottomLeft!: ?Length = None,
+        bottomRight!: ?Length = None
     ): Unit {
-        var topLeft_ = transAppResourceToLength(topLeft)
-        var topRight_ = transAppResourceToLength(topRight)
-        var bottomLeft_ = transAppResourceToLength(bottomLeft)
-        var bottomRight_ = transAppResourceToLength(bottomRight)
+        var topLeft_ = transAppResourceToLength(topLeft ?? 0.vp)
+        var topRight_ = transAppResourceToLength(topRight ?? 0.vp)
+        var bottomLeft_ = transAppResourceToLength(bottomLeft ?? 0.vp)
+        var bottomRight_ = transAppResourceToLength(bottomRight ?? 0.vp)
         unsafe {
             let value = CJBorderRadius(
                 topLeft_.value,
@@ -368,9 +377,9 @@ protected class TextField {
         }
     }
 
-    protected static func borderStyle(style: BorderStyle): Unit {
+    protected static func borderStyle(style: ?BorderStyle): Unit {
         unsafe {
-            FfiOHOSAceFrameworkTextFieldSetBorderStyle(style.getValue())
+            FfiOHOSAceFrameworkTextFieldSetBorderStyle((style ?? BorderStyle.Solid).getValue())
         }
     }
 
@@ -478,9 +487,9 @@ protected class TextField {
         }
     }
 
-    protected static func backgroundColor(value: ResourceColor): Unit {
+    protected static func backgroundColor(value: ?ResourceColor): Unit {
         unsafe {
-            FfiOHOSAceFrameworkTextFieldSetBackgroundColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkTextFieldSetBackgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
         }
     }
 

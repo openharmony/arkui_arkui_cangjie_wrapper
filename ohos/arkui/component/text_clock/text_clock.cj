@@ -495,7 +495,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDateChange(callback: ?(Int64) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let lambdaData = Callback1Param<Int64, Unit>(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkTextClockOnChange(lambdaData.getID())
@@ -521,7 +521,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func format(value: ?ResourceStr): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? ""
         let value_ = transResourceStrToString(tmpValue)
         unsafe {
             try (valueCString = LibC.mallocCString(value_).asResource()) {
@@ -543,8 +543,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 16.0.fp)
         unsafe {
             FfiOHOSAceFrameworkTextClockFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
         }
@@ -582,7 +581,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? FontStyle.Normal
         unsafe {
             FfiOHOSAceFrameworkTextClockFontStyle(tmpValue.getValue())
         }
@@ -601,7 +600,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? FontWeight.Normal
         unsafe {
             var unsafeFontWeight = LibC.mallocCString(tmpValue.getValue())
             FfiOHOSAceFrameworkTextClockFontWeight(unsafeFontWeight)
@@ -622,8 +621,7 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let value_ = transResourceStrToString(tmpValue)
+        let value_ = transResourceStrToString(value ?? "HarmonyOS Sans")
         unsafe {
             try (unsafeFontFamily = LibC.mallocCString(value_).asResource()) {
                 FfiOHOSAceFrameworkTextClockFontFamily(unsafeFontFamily.value)

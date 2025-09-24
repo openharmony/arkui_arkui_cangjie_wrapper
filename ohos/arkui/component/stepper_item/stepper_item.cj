@@ -70,9 +70,8 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func prevLabel(value: ?String): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (valueCString = LibC.mallocCString(tmpValue).asResource()) {
+            try (valueCString = LibC.mallocCString(value ?? "").asResource()) {
                 FfiOHOSAceFrameworkStepperItemSetPrevLabel(valueCString.value)
             }
         }
@@ -91,9 +90,8 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func nextLabel(value: ?String): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (valueCString = LibC.mallocCString(tmpValue).asResource()) {
+            try (valueCString = LibC.mallocCString(value ?? "").asResource()) {
                 FfiOHOSAceFrameworkStepperItemSetNextLabel(valueCString.value)
             }
         }

@@ -37,6 +37,10 @@ foreign {
     func FfiOHOSAceFrameworkStackSetHeight(height: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkStackSetSize(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 /**
@@ -101,8 +105,8 @@ public class ButtonIconOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(shown!: ?ResourceStr, hidden!: ?ResourceStr, switching!: ?ResourceStr = None) {
-        this.shown = shown ?? throw IllegalArgumentException("The type now is not supported.")
-        this.hidden = hidden ?? throw IllegalArgumentException("The type now is not supported.")
+        this.shown = shown
+        this.hidden = hidden
         this.switching = switching ?? ""
     }
 }
@@ -305,7 +309,7 @@ public class DividerStyle {
     ]
     public init(strokeWidth!: ?Length, color!: ?ResourceColor = None, startMargin!: ?Length = None,
         endMargin!: ?Length = None) {
-        let tmpStrokeWidth = strokeWidth ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpStrokeWidth = strokeWidth ?? 1.vp
         this.strokeWidth = transAppResourceToLength(tmpStrokeWidth)
         this.color = color ?? 0x08000000
         this.startMargin = transAppResourceToLength(startMargin ?? 0.vp)
@@ -314,13 +318,13 @@ public class DividerStyle {
 
     func getNative(): CJDividerStyle {
         if (let Some(v) <- color) {
-            return CJDividerStyle((strokeWidth ?? throw IllegalArgumentException("The type now is not supported.")).value, 
-                (strokeWidth ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue(), true,
+            return CJDividerStyle((strokeWidth ?? 1.vp).value, 
+                (strokeWidth ?? 1.vp).unitType.getValue(), true,
                 transAppResourceToResourceColor(v), (startMargin ?? 0.vp).value, (startMargin ?? 0.vp).unitType.getValue(), (endMargin ?? 0.vp).value,
                 (endMargin ?? 0.vp).unitType.getValue())
         }
-        return CJDividerStyle((strokeWidth ?? throw IllegalArgumentException("The type now is not supported.")).value, 
-            (strokeWidth ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue(), false, 0, (startMargin ?? 0.vp).value,
+        return CJDividerStyle((strokeWidth ?? 1.vp).value, 
+            (strokeWidth ?? 1.vp).unitType.getValue(), false, 0, (startMargin ?? 0.vp).value,
             (startMargin ?? 0.vp).unitType.getValue(), (endMargin ?? 0.vp).value, (endMargin ?? 0.vp).unitType.getValue())
     }
 }
@@ -397,9 +401,8 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showSideBar(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSideBarShowSideBar(tmpValue)
+            FfiOHOSAceFrameworkSideBarShowSideBar(value ?? true)
         }
         this
     }
@@ -451,9 +454,8 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showControlButton(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSideBarShowControlButton(tmpValue)
+            FfiOHOSAceFrameworkSideBarShowControlButton(value ?? true)
         }
         this
     }
@@ -470,7 +472,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Bool) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let lambdaData = Callback1Param<Bool, Unit>(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkSideBarOnChange(lambdaData.getID())
@@ -490,8 +492,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sideBarWidth(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 240.vp)
         unsafe {
             FfiOHOSAceFrameworkSideBarSideBarWidth(value_.value, value_.unitType.getValue())
         }
@@ -510,8 +511,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func minSideBarWidth(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 240.vp)
         unsafe {
             FfiOHOSAceFrameworkSideBarMinSideBarWidth(value_.value, value_.unitType.getValue())
         }
@@ -530,8 +530,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxSideBarWidth(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 280.vp)
         unsafe {
             FfiOHOSAceFrameworkSideBarMaxSideBarWidth(value_.value, value_.unitType.getValue())
         }
@@ -550,9 +549,8 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoHide(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSideBarAutoHide(tmpValue)
+            FfiOHOSAceFrameworkSideBarAutoHide(value ?? true)
         }
         this
     }
@@ -569,9 +567,8 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sideBarPosition(value: ?SideBarPosition): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSideBarSideBarPosition(tmpValue.getValue())
+            FfiOHOSAceFrameworkSideBarSideBarPosition((value ?? SideBarPosition.Start).getValue())
         }
         this
     }
@@ -610,35 +607,47 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func minContentWidth(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let wid = transAppResourceToLength(tmpValue)
+            let wid = transAppResourceToLength(value ?? 360.vp)
             FfiOHOSAceFrameworkSideBarMinContentWidth(wid.value, wid.unitType.getValue())
         }
         this
     }
 
-    protected override func widthInner(value: Length): This {
-        unsafe {
-            let wid = transAppResourceToLength(value)
-            FfiOHOSAceFrameworkStackSetWidth(wid.value, wid.unitType.getValue())
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkStackSetWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
 
-    protected override func heightInner(value: Length): This {
-        unsafe {
-            let hei = transAppResourceToLength(value)
-            FfiOHOSAceFrameworkStackSetHeight(hei.value, hei.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkStackSetHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
-        unsafe {
-            let w = transAppResourceToLength(width)
-            let h = transAppResourceToLength(height)
-            FfiOHOSAceFrameworkStackSetSize(w.value, w.unitType.getValue(), h.value, h.unitType.getValue())
+    protected override func sizeInner(width: ?Length, height: ?Length): This {
+        if (width.isNone() || height.isNone()) {
+            widthInner(width)
+            heightInner(height)
+        } else {
+            unsafe {
+                let w = transAppResourceToLength(width ?? 0.0.vp)
+                let h = transAppResourceToLength(height ?? 0.0.vp)
+                FfiOHOSAceFrameworkStackSetSize(w.value, w.unitType.getValue(), h.value, h.unitType.getValue())
+            }
         }
         this
     }

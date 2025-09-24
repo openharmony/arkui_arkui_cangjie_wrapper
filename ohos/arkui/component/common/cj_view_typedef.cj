@@ -211,7 +211,7 @@ public class BlurOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(grayscale: ?VArray<Float32, $2>) {
-        this.grayscale = grayscale ?? throw IllegalArgumentException("The type now is not supported.")
+        this.grayscale = grayscale ?? [0.0, 0.0]
     }
 }
 
@@ -317,7 +317,7 @@ public class PopupButton {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?String, action!: () -> Unit) {
-        this.value = value ?? throw IllegalArgumentException("The type now is not supported.")
+        this.value = value ?? ""
         this.action = action
     }
 }
@@ -342,7 +342,7 @@ public class PopupStateChangeParam {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var isVisible: ?Bool
+    public var isVisible: Bool
 
     /**
      * constructor
@@ -353,8 +353,8 @@ public class PopupStateChangeParam {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: ?Bool) {
-        this.isVisible = value ?? throw IllegalArgumentException("The type now is not supported.")
+    public init(value: Bool) {
+        this.isVisible = value
     }
 }
 
@@ -648,7 +648,7 @@ public class PopupOptions {
         secondaryButton!: ?PopupButton = None,
         onStateChange!: Option<(PopupStateChangeParam) -> Unit> = Option.None,
         arrowOffset!: ?Length = None,
-        showInSubWindow!: ?Bool,
+        showInSubWindow!: ?Bool = None,
         messageOptions!: ?PopupMessageOptions = None,
         mask!: ?Color = None,
         targetSpace!: ?Length = None,
@@ -668,13 +668,13 @@ public class PopupOptions {
         onWillDismiss!: Option<(DismissPopupAction) -> Unit> = None,
         followTransformOfTarget!: ?Bool = None
     ) {
-        this.message = message ?? throw IllegalArgumentException("The type now is not supported.")
+        this.message = message ?? ""
         this.primaryButton = primaryButton ?? PopupButton(value: "", action: {=>})
         this.secondaryButton = secondaryButton ?? PopupButton(value: "", action: {=>})
         this.onStateChange = onStateChange
         this.messageOptions = messageOptions ?? PopupMessageOptions()
         this.arrowOffset = arrowOffset ?? 0.vp
-        this.showInSubWindow = showInSubWindow ?? throw IllegalArgumentException("The type now is not supported.")
+        this.showInSubWindow = showInSubWindow ?? false
         this.mask = mask ?? Color(0x1000000)
         this.targetSpace = targetSpace ?? 0.vp
         this.placement = placement ?? Placement.BottomLeft
@@ -721,8 +721,7 @@ public class MenuElement {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?ResourceStr, action!: () -> Unit) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.value = transResourceStrToString(tmpValue)
+        this.value = transResourceStrToString(value ?? "")
         this.action = action
     }
 }
@@ -752,7 +751,7 @@ public class CustomPopupOptions {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var builder: ?CustomBuilder
+    public var builder: CustomBuilder
 
     /**
      * Preferred position of the popup. If the set position is insufficient for holding the popup,
@@ -1018,7 +1017,7 @@ public class CustomPopupOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        builder!: ?() -> Unit,
+        builder!: () -> Unit,
         placement!: ?Placement = Option.None,
         maskColor!: ?Color = None,
         popupColor!: ?Color = None,
@@ -1043,7 +1042,7 @@ public class CustomPopupOptions {
         onWillDismiss!: Option<(DismissPopupAction) -> Unit> = None,
         followTransformOfTarget!: ?Bool = None
     ) {
-        this.builder = builder ?? throw IllegalArgumentException("The type now is not supported.")
+        this.builder = builder
         this.placement = placement ?? Placement.Bottom
         this.maskColor = maskColor ?? Color(0x1000000)
         this.popupColor = popupColor ?? Color(0x1000000)

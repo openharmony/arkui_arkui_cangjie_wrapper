@@ -343,7 +343,7 @@ public class RotateOptions {
     ]
     public init(angle: ?Float32, x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, centerX!: ?Length = None,
         centerY!: ?Length = None, centerZ!: ?Length = None, perspective!: ?Float32 = None) {
-        this.angle = angle ?? throw IllegalArgumentException("The type now is not supported.")
+        this.angle = angle ?? 0.0
         this.x = x ?? 0.0
         this.y = y ?? 0.0
         this.z = z ?? 0.0
@@ -369,7 +369,7 @@ struct CRotateOptions {
     let perspective: Float32
 
     init(options: RotateOptions) {
-        angle = options.angle ?? throw IllegalArgumentException("The type now is not supported.")
+        angle = options.angle ?? 0.0
         x = options.x ?? 0.0
         y = options.y ?? 0.0
         z = options.z ?? 0.0
@@ -478,10 +478,9 @@ public class TransitionEffect <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func opacity(alpha: ?Float64): TransitionEffect {
-        let tmpAlpha = alpha ?? throw IllegalArgumentException("The type now is not supported.")
+    public static func opacity(alpha: Float64): TransitionEffect {
         unsafe {
-            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectOpacity(tmpAlpha))
+            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectOpacity(alpha))
         }
     }
 
@@ -496,10 +495,9 @@ public class TransitionEffect <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func translate(options: ?TranslateOptions): TransitionEffect {
-        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
+    public static func translate(options: TranslateOptions): TransitionEffect {
         unsafe {
-            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectTranslate(CTranslateOptions(tmpOptions)))
+            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectTranslate(CTranslateOptions(options)))
         }
     }
 
@@ -515,9 +513,8 @@ public class TransitionEffect <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func scale(options: ?ScaleOptions): TransitionEffect {
-        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectScale(CScaleOptions(tmpOptions)))
+            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectScale(CScaleOptions(options ?? ScaleOptions())))
         }
     }
 
@@ -533,7 +530,7 @@ public class TransitionEffect <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func rotate(options: ?RotateOptions): TransitionEffect {
-        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpOptions = options ?? RotateOptions(0.0)
         unsafe {
             TransitionEffect(FfiOHOSAceFrameworkTransitionEffectRotate(CRotateOptions(tmpOptions)))
         }
@@ -550,10 +547,9 @@ public class TransitionEffect <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func move(edge: ?TransitionEdge): TransitionEffect {
-        let tmpEdge = edge ?? throw IllegalArgumentException("The type now is not supported.")
+    public static func move(edge: TransitionEdge): TransitionEffect {
         unsafe {
-            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectMove(tmpEdge.getValue()))
+            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectMove(edge.getValue()))
         }
     }
 
@@ -569,11 +565,9 @@ public class TransitionEffect <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func asymmetric(appear: ?TransitionEffect, disappear: ?TransitionEffect): TransitionEffect {
-        let tmpAppear = appear ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDisappear = disappear ?? throw IllegalArgumentException("The type now is not supported.")
+    public static func asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect {
         unsafe {
-            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectAsymmetric(tmpAppear.getID(), tmpDisappear.getID()))
+            TransitionEffect(FfiOHOSAceFrameworkTransitionEffectAsymmetric(appear.getID(), disappear.getID()))
         }
     }
 
@@ -588,10 +582,9 @@ public class TransitionEffect <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func combine(transitionEffect: ?TransitionEffect): TransitionEffect {
-        let tmpTransitionEffect = transitionEffect ?? throw IllegalArgumentException("The type now is not supported.")
+    public func combine(transitionEffect: TransitionEffect): TransitionEffect {
         unsafe {
-            FfiOHOSAceFrameworkTransitionEffectCombine(this.getID(), tmpTransitionEffect.getID())
+            FfiOHOSAceFrameworkTransitionEffectCombine(this.getID(), transitionEffect.getID())
         }
         return this
     }
@@ -609,9 +602,8 @@ public class TransitionEffect <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func animation(value: ?AnimateParam): TransitionEffect {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let nativeParam = parseAnimateParam(tmpValue)
+            let nativeParam = parseAnimateParam(value ?? AnimateParam())
             FfiOHOSAceFrameworkTransitionEffectAnimation(this.getID(), nativeParam)
             nativeParam.free()
         }

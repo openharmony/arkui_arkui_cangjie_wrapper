@@ -211,9 +211,8 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showSteps(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSliderShowSteps(tmpValue)
+            FfiOHOSAceFrameworkSliderShowSteps(value ?? false)
         }
         this
     }
@@ -230,7 +229,6 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showTips(value: ?Bool, content!: ?ResourceStr = None): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             var contentValue = ""
             var contentExist = false
@@ -239,7 +237,7 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
                 contentValue = transResourceStrToString(v)
             }
             try (contentCString = LibC.mallocCString(contentValue).asResource()) {
-                FfiOHOSAceFrameworkSliderShowTipsNew(tmpValue, contentCString.value, contentExist)
+                FfiOHOSAceFrameworkSliderShowTipsNew(value ?? false, contentCString.value, contentExist)
             }
         }
         this
@@ -275,7 +273,7 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Float64, SliderChangeMode) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _, _ => }
         unsafe {
             FfiOHOSAceFrameworkSliderOnChange(
                 Callback2Param<Float64, Int32, Unit>(
@@ -300,7 +298,7 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func blockBorderColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? 0x00000000
         unsafe {
             FfiOHOSAceFrameworkSliderBlockBorderColor(transAppResourceToResourceColor(tmpValue))
         }

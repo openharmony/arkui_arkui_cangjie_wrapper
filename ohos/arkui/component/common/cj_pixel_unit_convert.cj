@@ -39,10 +39,6 @@ foreign func FfiOHOSAceFrameworkPx2Lpx(value: Float64): Float64
  * @returns { Option<Length> }
  * @relation vp2px(value: number): number;
  */
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 protected func vp2pxInner(value: Length): Option<Length> {
     var value_ = transAppResourceToLength(value)
     if (value_.unitType.getValue() != LENGTH_VP) {
@@ -62,10 +58,6 @@ protected func vp2pxInner(value: Length): Option<Length> {
  * @returns { Option<Length> }
  * @relation px2vp(value: number): number;
  */
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 protected func px2vpInner(value: Length): Option<Length> {
     var value_ = transAppResourceToLength(value)
     if (value_.unitType.getValue() != LENGTH_PX) {
@@ -85,10 +77,6 @@ protected func px2vpInner(value: Length): Option<Length> {
  * @returns { Option<Length> }
  * @relation fp2px(value: number): number;
  */
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 protected func fp2pxInner(value: Length): Option<Length> {
     var value_ = transAppResourceToLength(value)
     if (value_.unitType.getValue() != LENGTH_FP) {
@@ -108,10 +96,6 @@ protected func fp2pxInner(value: Length): Option<Length> {
  * @returns { Option<Length> }
  * @relation fp2px(value: number): number;
  */
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 protected func px2fpInner(value: Length): Option<Length> {
     var value_ = transAppResourceToLength(value)
     if (value_.unitType.getValue() != LENGTH_PX) {
@@ -131,10 +115,6 @@ protected func px2fpInner(value: Length): Option<Length> {
  * @returns { Option<Length> }
  * @relation lpx2px(value: number): number;
  */
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 protected func lpx2pxInner(value: Length): Option<Length> {
     var value_ = transAppResourceToLength(value)
     if (value_.unitType.getValue() != LENGTH_LPX) {
@@ -154,10 +134,6 @@ protected func lpx2pxInner(value: Length): Option<Length> {
  * @returns { Option<Length> }
  * @relation px2lpx(value: number): number;
  */
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 protected func px2lpxInner(value: Length): Option<Length> {
     var value_ = transAppResourceToLength(value)
     if (value_.unitType.getValue() != LENGTH_PX) {

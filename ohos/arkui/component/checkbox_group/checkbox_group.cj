@@ -52,6 +52,10 @@ foreign {
         strokeWidth: Float64, strokeWidthUnit: Int32): Unit
 
     func FfiOHOSAceFrameworkCheckBoxGroupSetCheckboxShape(value: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 /**
@@ -108,7 +112,7 @@ public class CheckboxGroupResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var status: ?SelectStatus
+    public var status: SelectStatus
     /**
      * Checkbox name.
      *
@@ -119,7 +123,7 @@ public class CheckboxGroupResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var name: ?Array<String>
+    public var name: Array<String>
 
     /**
      * CheckboxGroupResult constructor.
@@ -129,11 +133,11 @@ public class CheckboxGroupResult {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        status: ?SelectStatus,
-        name: ?Array<String>
+        status: SelectStatus,
+        name: Array<String>
     ) {
-        this.status = status ?? throw IllegalArgumentException("The type now is not supported.")
-        this.name = name ?? throw IllegalArgumentException("The type now is not supported.")
+        this.status = status
+        this.name = name
     }
 }
 
@@ -197,9 +201,8 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectAll(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCheckBoxGroupSelectAll(tmpValue)
+            FfiOHOSAceFrameworkCheckBoxGroupSelectAll(value ?? false)
         }
         this
     }
@@ -223,45 +226,58 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
         this
     }
 
-    protected override func widthInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkCheckBoxGroupSetWidth(value_.value, value_.unitType.getValue())
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkCheckBoxGroupSetWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
 
-    protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkCheckBoxGroupSetHeight(value_.value, value_.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkCheckBoxGroupSetHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkCheckBoxGroupSetSize(width_.value, width_.unitType.getValue(), height_.value,
-                height_.unitType.getValue())
+    protected override func sizeInner(width: ?Length, height: ?Length): This {
+        if (width.isNone() || height.isNone()) {
+            widthInner(width)
+            heightInner(height)
+        } else {
+            var width_ = transAppResourceToLength(width ?? 0.0.vp)
+            var height_ = transAppResourceToLength(height ?? 0.0.vp)
+            unsafe {
+                FfiOHOSAceFrameworkCheckBoxGroupSetSize(width_.value, width_.unitType.getValue(), height_.value,
+                    height_.unitType.getValue())
+            }
         }
         this
     }
 
-    protected override func paddingInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    protected override func paddingInner(value: ?Length): This {
+        var value_ = transAppResourceToLength(value ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxGroupSetPadding(value_.value, value_.unitType.getValue())
         }
         this
     }
 
-    protected override func paddingInner(top: Length, right: Length, bottom: Length, left: Length): This {
-        var top_ = transAppResourceToLength(top)
-        var right_ = transAppResourceToLength(right)
-        var bottom_ = transAppResourceToLength(bottom)
-        var left_ = transAppResourceToLength(left)
+    protected override func paddingInner(top: ?Length, right: ?Length, bottom: ?Length, left: ?Length): This {
+        var top_ = transAppResourceToLength(top ?? 0.vp)
+        var right_ = transAppResourceToLength(right ?? 0.vp)
+        var bottom_ = transAppResourceToLength(bottom ?? 0.vp)
+        var left_ = transAppResourceToLength(left ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxGroupSetPaddings(
                 CJEdge(
@@ -279,8 +295,8 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
         this
     }
 
-    protected override func responseRegionInner(rect: Rectangle): This {
-        let cjRect = rect.parseToNative()
+    protected override func responseRegionInner(rect: ?Rectangle): This {
+        let cjRect = (rect ?? Rectangle()).parseToNative()
         unsafe {
             FfiCheckBoxGroupSetResponseRegion(
                 CJResponseRegion(
@@ -298,10 +314,11 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
         this
     }
 
-    protected override func responseRegionInner(array: Array<Rectangle>): This {
-        let vecFFi = FFIVectorNativeRectangle(array.size)
+    protected override func responseRegionInner(array: ?Array<Rectangle>): This {
+        let tmpArray = array ?? [Rectangle()]
+        let vecFFi = FFIVectorNativeRectangle(tmpArray.size)
         var index = 0
-        for (rect in array) {
+        for (rect in tmpArray) {
             BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++
@@ -326,7 +343,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?OnCheckboxGroupChangeCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             value: FFiCheckboxGroupResult =>
             var resolved = parseCheckboxGroupResult(value)

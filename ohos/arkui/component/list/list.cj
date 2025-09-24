@@ -176,6 +176,10 @@ foreign {
     ): Unit
 
     func FfiOHOSAceFrameworkScrollableBaseClipMode(clip: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 /**
@@ -219,18 +223,26 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         this.child = child
     }
 
-    protected override func widthInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkListSetWidth(value_.value, value_.unitType.getValue())
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkListSetWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
 
-    protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkListSetHeight(value_.value, value_.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkListSetHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }
@@ -463,25 +475,26 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         this
     }
 
-    protected func scrollBarColorInner(color: ResourceColor): This {
+    protected func scrollBarColorInner(color: ?ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkListScrollBarColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkListScrollBarColor(transAppResourceToResourceColor(color ?? 0x66182431))
         }
         this
     }
 
-    protected func scrollBarWidthInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    protected func scrollBarWidthInner(value: ?Length): This {
+        var value_ = transAppResourceToLength(value ?? 4.vp)
         unsafe {
             FfiOHOSAceFrameworkListScrollBarWidth(value_.value, value_.unitType.getValue())
         }
         this
     }
 
-    protected func frictionInner(value: Float64): This {
+    protected func frictionInner(value: ?Float64): This {
+        let tmpValue = value ?? -1.0
         var friction: Float64 = 0.75
-        if (value > 0.0) {
-            friction = value
+        if (tmpValue > 0.0) {
+            friction = tmpValue
         }
         unsafe {
             FfiOHOSAceFrameworkListSetFriction(friction)
@@ -497,26 +510,31 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
     }
 
 
-    protected func frictionInner(value: AppResource): This {
+    protected func frictionInner(value: ?AppResource): This {
         var realValue: Float64 = 0.0
-        let t = Float64.tryParse(getResourceString(value))
-        match (t) {
-            case Some(n) => realValue = n
-            case None => BaseLog.debug("AppResource type param of friction func convert to Float64 fail.");
+        match (value) {
+            case Some(v) => 
+                let t = Float64.tryParse(getResourceString(v))
+                match (t) {
+                    case Some(n) => realValue = n
+                    case None => BaseLog.debug("AppResource type param of friction func convert to Float64 fail.");
+                }
+            case None => realValue = -1.0
         }
         frictionInner(realValue)
     }
 
-    protected func enableScrollInteractionInner(value: Bool): This {
+    protected func enableScrollInteractionInner(value: ?Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkListSetEnableScrollInteraction(value)
+            FfiOHOSAceFrameworkListSetEnableScrollInteraction(value ?? true)
         }
         this
     }
 
-    protected func nestedScrollInner(value: NestedScrollOptions): This {
-        let localScrollForward = (value.scrollForward ?? NestedScrollMode.SelfOnly).getValue()
-        let localScrollBackward = (value.scrollBackward ?? NestedScrollMode.SelfOnly).getValue()
+    protected func nestedScrollInner(value: ?NestedScrollOptions): This {
+        let tmpValue = value ?? NestedScrollOptions(NestedScrollMode.SelfOnly, NestedScrollMode.SelfOnly)
+        let localScrollForward = (tmpValue.scrollForward ?? NestedScrollMode.SelfOnly).getValue()
+        let localScrollBackward = (tmpValue.scrollBackward ?? NestedScrollMode.SelfOnly).getValue()
         unsafe {
             FfiOHOSAceFrameworkListSetNestedScroll(localScrollForward, localScrollBackward)
         }

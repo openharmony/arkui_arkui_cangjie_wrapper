@@ -54,6 +54,10 @@ foreign {
     func FfiOHOSAceFrameworkToggleRadius(radius: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkToggleHoverEffect(value: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 /**
@@ -80,7 +84,7 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(toggleType: ?ToggleType, isOn!: ?Bool = None) {
-        let tmpToggleType = toggleType ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpToggleType = toggleType ?? ToggleType.Switch
         unsafe {
             FfiOHOSAceFrameworkToggleCreate(tmpToggleType.getValue(), isOn ?? false)
         }
@@ -99,47 +103,61 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(toggleType: ToggleType, isOn: Bool, subcomponent: () -> Unit) {
+    public init(toggleType: ?ToggleType, isOn: ?Bool, subcomponent: () -> Unit) {
+        let tmpToggleType = toggleType ?? ToggleType.Switch
         unsafe {
-            FfiOHOSAceFrameworkToggleCreate(toggleType.getValue(), isOn)
+            FfiOHOSAceFrameworkToggleCreate(tmpToggleType.getValue(), isOn ?? false)
         }
-        match (toggleType) {
+        match (tmpToggleType) {
             case ToggleType.Button => this.child = subcomponent
             case _ => ()
         }
     }
 
-    protected override func widthInner(width: Length): This {
-        var width_ = transAppResourceToLength(width)
-        unsafe {
-            FfiOHOSAceFrameworkToggleWidth(width_.value, width_.unitType.getValue())
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkToggleWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
 
-    protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkToggleHeight(value_.value, value_.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkToggleHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkToggleSize(width_.value, width_.unitType.getValue(), height_.value,
-                height_.unitType.getValue())
+    protected override func sizeInner(width: ?Length, height: ?Length): This {
+        if (width.isNone() || height.isNone()) {
+            widthInner(width)
+            heightInner(height)
+        } else {
+            var width_ = transAppResourceToLength(width ?? 0.0.vp)
+            var height_ = transAppResourceToLength(height ?? 0.0.vp)
+            unsafe {
+                FfiOHOSAceFrameworkToggleSize(width_.value, width_.unitType.getValue(), height_.value,
+                    height_.unitType.getValue())
+            }
         }
         this
     }
 
-    protected override func paddingInner(top: Length, right: Length, bottom: Length, left: Length): This {
-        var top_ = transAppResourceToLength(top)
-        var right_ = transAppResourceToLength(right)
-        var bottom_ = transAppResourceToLength(bottom)
-        var left_ = transAppResourceToLength(left)
+    protected override func paddingInner(top: ?Length, right: ?Length, bottom: ?Length, left: ?Length): This {
+        var top_ = transAppResourceToLength(top ?? 0.vp)
+        var right_ = transAppResourceToLength(right ?? 0.vp)
+        var bottom_ = transAppResourceToLength(bottom ?? 0.vp)
+        var left_ = transAppResourceToLength(left ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkTogglePadding(left_.value, left_.unitType.getValue(), top_.value,
                 top_.unitType.getValue(), right_.value, right_.unitType.getValue(), bottom_.value,
@@ -186,8 +204,8 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
         this
     }
 
-    protected override func responseRegionInner(rect: Rectangle): This {
-        let cjRect = rect.parseToNative()
+    protected override func responseRegionInner(rect: ?Rectangle): This {
+        let cjRect = (rect ?? Rectangle()).parseToNative()
         unsafe {
             FfiToggleSetResponseRegion(
                 CJResponseRegion(
@@ -205,10 +223,11 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
         this
     }
 
-    protected override func responseRegionInner(array: Array<Rectangle>): This {
-        let vecFFi = FFIVectorNativeRectangle(array.size)
+    protected override func responseRegionInner(array: ?Array<Rectangle>): This {
+        let tmpArray = array ?? [Rectangle()]
+        let vecFFi = FFIVectorNativeRectangle(tmpArray.size)
         var index = 0
-        for (rect in array) {
+        for (rect in tmpArray) {
             BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++
@@ -232,7 +251,7 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Bool) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         unsafe {
             FfiOHOSAceFrameworkToggleOnChange(Callback1Param<Bool, Unit>(tmpCallback).getID())
         }

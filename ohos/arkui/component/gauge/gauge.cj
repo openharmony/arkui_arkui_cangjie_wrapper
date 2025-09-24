@@ -148,9 +148,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?Float64, min!: ?Float64 = None, max!: ?Float64 = None, child!: () -> Unit = { => }) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGaugeCreate(tmpValue, min ?? 0.0, max ?? 100.0)
+            FfiOHOSAceFrameworkGaugeCreate(value ?? 0.0, min ?? 0.0, max ?? 100.0)
         }
         this.child = child
     }
@@ -167,9 +166,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func value(value: ?Float32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetValue(Float64(tmpValue))
+            FfiOHOSAceFrameworkGaugeSetValue(Float64(value ?? 0.0))
         }
         this
     }
@@ -186,9 +184,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func startAngle(angle: ?Float64): This {
-        let tmpAngle = angle ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetStartAngle(tmpAngle)
+            FfiOHOSAceFrameworkGaugeSetStartAngle(angle ?? 0.0)
         }
         this
     }
@@ -205,9 +202,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func endAngle(angle: ?Float64): This {
-        let tmpAngle = angle ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetEndAngle(tmpAngle)
+            FfiOHOSAceFrameworkGaugeSetEndAngle(angle ?? 360.0)
         }
         this
     }
@@ -267,11 +263,11 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
             var curColorStops = tmpValue[i][0].colorStops
             var vecColorStop = FFIVectorColorStops(curColorStops.size)
             for (j in 0..curColorStops.size) {
-                if ((curColorStops[j].offset ?? throw IllegalArgumentException("The type now is not supported.")).value >= 0.0) {
-                    vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color ?? throw IllegalArgumentException("The type now is not supported.")).toUInt32(), 
-                    (curColorStops[j].offset ?? throw IllegalArgumentException("The type now is not supported.")).value))
+                if ((curColorStops[j].offset).value >= 0.0) {
+                    vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color).toUInt32(), 
+                    (curColorStops[j].offset).value))
                 } else {
-                    vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color ?? throw IllegalArgumentException("The type now is not supported.")).toUInt32(), 0.0))
+                    vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color).toUInt32(), 0.0))
                 }
             }
             vecValueHandle.setElement(i, vecColorStop.getNativeHandle())
@@ -337,8 +333,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeWidth(length: ?Length): This {
-        let tmpLength = length ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpLength)
+        var value_ = transAppResourceToLength(length ?? 4.0.vp)
         unsafe {
             FfiOHOSAceFrameworkGaugeSetStrokeWidth(value_.value, value_.unitType.getValue())
         }
@@ -400,7 +395,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func description(builder: ?() -> Unit): This {
-        let tmpBuilder = builder ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpBuilder = builder ?? { => }
         unsafe {
             FfiOHOSAceFrameworkGaugeSetDescription(Callback0Param<Unit>(tmpBuilder).getID())
         }

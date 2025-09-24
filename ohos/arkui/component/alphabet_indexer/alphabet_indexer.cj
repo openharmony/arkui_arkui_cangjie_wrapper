@@ -132,9 +132,9 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(arrayValue!: ?Array<String>, selected!: ?UInt32) {
-        let tmpArrayValue = arrayValue ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpSelected = selected ?? throw IllegalArgumentException("The type now is not supported.")
+    public init(arrayValue!: Array<String>, selected!: ?UInt32) {
+        let tmpArrayValue = arrayValue
+        let tmpSelected = selected ?? 0
         let vecFfi = FFIVectorString(tmpArrayValue.size)
         for (i in 0..tmpArrayValue.size) {
             vecFfi.setElement(i, tmpArrayValue[i])
@@ -158,7 +158,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? Color(0x99182431)
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -177,7 +177,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? Color(0xFF007DFF)
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -196,7 +196,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func popupColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? Color(0xFF007DFF)
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerPopupColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -215,7 +215,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedBackgroundColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? Color(0x1A007DFF)
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerSelectedBackgroundColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -234,7 +234,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func popupBackground(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? Color(0x66808080)
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerPopupBackground(transAppResourceToResourceColor(tmpValue))
         }
@@ -253,7 +253,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func usingPopup(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? false
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerUsingPopup(tmpValue)
         }
@@ -386,7 +386,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func itemSize(size: ?Length): This {
-        let tmpSize = size ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpSize = size ?? 16.vp
         var size_ = transAppResourceToLength(tmpSize)
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerItemSize(size_.value, size_.unitType.getValue())
@@ -407,7 +407,8 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignStyle(value: ?IndexerAlign): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        // not support IndexerAlign.End yet
+        let tmpValue = value ?? IndexerAlign.Right
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerAlignStyle(tmpValue.getValue())
         }
@@ -426,7 +427,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selected(index: ?Int32): This {
-        let tmpIndex = index ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpIndex = index ?? 0
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerSelected(tmpIndex)
         }
@@ -468,7 +469,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSelect(callback: ?OnAlphabetIndexerSelectCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _: Int64 => }
         let wrapper = {
             value: Int32 => tmpCallback(Int64(value))
         }
@@ -492,7 +493,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onRequestPopupData(callback: ?OnAlphabetIndexerRequestPopupDataCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _: Int64 => Array<String>() }
         let wrapper = {
             value: Int32 =>
             let arr = tmpCallback(Int64(value))
@@ -522,7 +523,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPopupSelect(callback: ?OnAlphabetIndexerPopupSelectCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _: Int64 => }
         let wrapper = {
             value: Int32 => tmpCallback(Int64(value))
         }

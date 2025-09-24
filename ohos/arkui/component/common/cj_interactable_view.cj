@@ -49,7 +49,7 @@ sealed abstract class BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var timestamp: ?Int64
+    public var timestamp: Int64
 
     /**
      * Event input device.
@@ -109,7 +109,7 @@ public class TouchObject {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var touchType: ?TouchType
+    public var touchType: TouchType
 
     /**
      * Finger unique identifier.
@@ -120,7 +120,7 @@ public class TouchObject {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var id: ?Int32
+    public var id: Int32
 
     /**
      * X coordinate of the point relative to the global display.
@@ -131,7 +131,7 @@ public class TouchObject {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var screenX: ?Float64
+    public var screenX: Float64
 
     /**
      * Y coordinate of the point relative to the global display.
@@ -142,7 +142,7 @@ public class TouchObject {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var screenY: ?Float64
+    public var screenY: Float64
 
     /**
      * X coordinate of the touch point relative to the upper left corner of the event responding component.
@@ -153,7 +153,7 @@ public class TouchObject {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: ?Float64
+    public var x: Float64
 
     /**
      * Y coordinate of the touch point relative to the upper edge of the touched element.
@@ -164,7 +164,7 @@ public class TouchObject {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: ?Float64
+    public var y: Float64
 
     /**
      * constructor
@@ -173,13 +173,13 @@ public class TouchObject {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(touchType: ?TouchType, id: ?Int32, screenX: ?Float64, screenY: ?Float64, x: ?Float64, y: ?Float64) {
-        this.touchType = touchType ?? throw IllegalArgumentException("The type now is not supported.")
-        this.id = id ?? throw IllegalArgumentException("The type now is not supported.")
-        this.screenX = screenX ?? throw IllegalArgumentException("The type now is not supported.")
-        this.screenY = screenY ?? throw IllegalArgumentException("The type now is not supported.")
-        this.x = x ?? throw IllegalArgumentException("The type now is not supported.")
-        this.y = y ?? throw IllegalArgumentException("The type now is not supported.")
+    public init(touchType: TouchType, id: Int32, screenX: Float64, screenY: Float64, x: Float64, y: Float64) {
+        this.touchType = touchType
+        this.id = id
+        this.screenX = screenX
+        this.screenY = screenY
+        this.x = x
+        this.y = y
     }
 }
 
@@ -202,7 +202,7 @@ public class ClickEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: ?Float64
+    public var x: Float64
     /**
      * Y coordinate of the click point relative to the upper edge of the clicked element.
      *
@@ -212,7 +212,7 @@ public class ClickEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: ?Float64
+    public var y: Float64
 
     /**
      * X coordinate of the click relative to the upper left corner of the application window.
@@ -223,7 +223,7 @@ public class ClickEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var windowX: ?Float64
+    public var windowX: Float64
     /**
      * Y coordinate of the click relative to the upper left corner of the application window.
      *
@@ -233,7 +233,7 @@ public class ClickEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var windowY: ?Float64
+    public var windowY: Float64
     /**
      * X coordinate of the click relative to the upper left corner of the application screen.
      *
@@ -243,7 +243,7 @@ public class ClickEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var displayX: ?Float64
+    public var displayX: Float64
     /**
      * Y coordinate of the click relative to the upper left corner of the application screen.
      *
@@ -253,7 +253,7 @@ public class ClickEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var displayY: ?Float64
+    public var displayY: Float64
 
     init(x: Float64, y: Float64, timestamp: Int64, source: SourceType, target: EventTarget, windowX: Float64,
         windowY: Float64, displayX: Float64, displayY: Float64) {
@@ -357,7 +357,7 @@ public class DragItemInfo {
     public init(pixelMap: ?PixelMap, builder: ?CustomBuilder, extraInfo: ?String) {
         this.pixelMap = pixelMap ?? PixelMap(0)
         this.builder = builder ?? {=>}
-        this.extraInfo = extraInfo ?? throw IllegalArgumentException("The type now is not supported.")
+        this.extraInfo = extraInfo ?? ""
     }
 }
 
@@ -381,7 +381,7 @@ public class MouseEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var screenX: ?Float64
+    public var screenX: Float64
 
     /**
      * Y coordinate of the mouse pointer relative to the upper left corner of the application window.
@@ -393,7 +393,7 @@ public class MouseEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var screenY: ?Float64
+    public var screenY: Float64
 
     /**
      * X coordinate of the mouse pointer relative to the upper left corner of the component being clicked.
@@ -404,7 +404,7 @@ public class MouseEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: ?Float64
+    public var x: Float64
 
     /**
      * Y coordinate of the mouse pointer relative to the upper left corner of the component being clicked.
@@ -415,7 +415,7 @@ public class MouseEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: ?Float64
+    public var y: Float64
 
     /**
      * Mouse button of the click event.
@@ -426,7 +426,7 @@ public class MouseEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var button: ?MouseButton
+    public var button: MouseButton
 
     /**
      * Mouse action of the click event.
@@ -437,7 +437,7 @@ public class MouseEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var action: ?MouseAction
+    public var action: MouseAction
 
     /**
      * constructor
@@ -446,15 +446,15 @@ public class MouseEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(timestamp: ?Int64, screenX: ?Float64, screenY: ?Float64, x: ?Float64, y: ?Float64, button: ?MouseButton,
-        action: ?MouseAction) {
-        super(timestamp: timestamp ?? throw IllegalArgumentException("The type now is not supported."))
-        this.screenX = screenX ?? throw IllegalArgumentException("The type now is not supported.")
-        this.screenY = screenY ?? throw IllegalArgumentException("The type now is not supported.")
-        this.x = x ?? throw IllegalArgumentException("The type now is not supported.")
-        this.y = y ?? throw IllegalArgumentException("The type now is not supported.")
-        this.button = button ?? throw IllegalArgumentException("The type now is not supported.")
-        this.action = action ?? throw IllegalArgumentException("The type now is not supported.")
+    public init(timestamp: Int64, screenX: Float64, screenY: Float64, x: Float64, y: Float64, button: MouseButton,
+        action: MouseAction) {
+        super(timestamp: timestamp)
+        this.screenX = screenX
+        this.screenY = screenY
+        this.x = x
+        this.y = y
+        this.button = button
+        this.action = action
     }
 }
 
@@ -479,7 +479,7 @@ public class TouchEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var eventType: ?TouchType
+    public var eventType: TouchType
 
     /**
      * All finger information.
@@ -490,7 +490,7 @@ public class TouchEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var touches: ?Array<TouchObject>
+    public var touches: Array<TouchObject>
 
     /**
      * Finger information changed.
@@ -501,7 +501,7 @@ public class TouchEvent <: BaseEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var changedTouches: ?Array<TouchObject>
+    public var changedTouches: Array<TouchObject>
 
     @!APILevel[
         22,
@@ -550,7 +550,7 @@ public class KeyEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var keyText: ?String
+    public var keyText: String
 
     /**
      * Type of a key.
@@ -561,7 +561,7 @@ public class KeyEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var keyType: ?KeyType
+    public var keyType: KeyType
 
     /**
      * Key code of a key
@@ -572,7 +572,7 @@ public class KeyEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var keyCode: ?Int32
+    public var keyCode: Int32
 
     /**
      * Type of the input device that triggers the current key, such as the keyboard or handle.
@@ -583,7 +583,7 @@ public class KeyEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var keySource: ?KeySource
+    public var keySource: KeySource
 
     /**
      * Indicates the status of the key when the key is pressed.
@@ -596,7 +596,7 @@ public class KeyEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var metaKey: ?Int32
+    public var metaKey: Int32
 
     /**
      * Timestamp when the key was pressed.
@@ -607,7 +607,7 @@ public class KeyEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var timestamp: ?Int64
+    public var timestamp: Int64
 
     /**
      *  Indicates the ID of the input device that triggers the current key.
@@ -618,7 +618,7 @@ public class KeyEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var deviceId: ?Int64
+    public var deviceId: Int64
 
     /**
      * constructor
@@ -627,15 +627,15 @@ public class KeyEvent {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(keyText: ?String, keyType: ?KeyType, keyCode: ?Int32, keySource: ?KeySource, metaKey: ?Int32,
-        deviceId: ?Int64, timestamp: ?Int64) {
-        this.keyText = keyText ?? throw IllegalArgumentException("The type now is not supported.")
-        this.keyType = keyType ?? throw IllegalArgumentException("The type now is not supported.")
-        this.keyCode = keyCode ?? throw IllegalArgumentException("The type now is not supported.")
-        this.keySource = keySource ?? throw IllegalArgumentException("The type now is not supported.")
-        this.metaKey = metaKey ?? throw IllegalArgumentException("The type now is not supported.")
-        this.deviceId = deviceId ?? throw IllegalArgumentException("The type now is not supported.")
-        this.timestamp = timestamp ?? throw IllegalArgumentException("The type now is not supported.")
+    public init(keyText: String, keyType: KeyType, keyCode: Int32, keySource: KeySource, metaKey: Int32,
+        deviceId: Int64, timestamp: Int64) {
+        this.keyText = keyText
+        this.keyType = keyType
+        this.keyCode = keyCode
+        this.keySource = keySource
+        this.metaKey = metaKey
+        this.deviceId = deviceId
+        this.timestamp = timestamp
     }
 
     /**

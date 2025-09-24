@@ -80,10 +80,10 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollBarColor(color: ?ResourceColor): T {
-        scrollBarColorInner(color ?? 0x66182431)
+        scrollBarColorInner(color)
     }
 
-    protected func scrollBarColorInner(color: ResourceColor): T
+    protected func scrollBarColorInner(color: ?ResourceColor): T
 
     /**
      * Sets the scrollbar width.
@@ -100,7 +100,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         scrollBarWidthInner(value ?? 4.vp)
     }
 
-    protected func scrollBarWidthInner(value: Length): T
+    protected func scrollBarWidthInner(value: ?Length): T
 
     /**
      * Sets the nested scrolling options. You can set the nested scrolling mode in the forward and backward directions
@@ -115,10 +115,10 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func nestedScroll(value: ?NestedScrollOptions): T {
-        nestedScrollInner(value ?? NestedScrollOptions(NestedScrollMode.SelfOnly, NestedScrollMode.SelfOnly))
+        nestedScrollInner(value)
     }
 
-    protected func nestedScrollInner(value: NestedScrollOptions): T
+    protected func nestedScrollInner(value: ?NestedScrollOptions): T
 
     /**
      * Sets whether to support scroll gestures. When this attribute is set to <em>false</em>,
@@ -133,10 +133,10 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableScrollInteraction(value: ?Bool): T {
-        enableScrollInteractionInner(value ?? true)
+        enableScrollInteractionInner(value)
     }
 
-    protected func enableScrollInteractionInner(value: Bool): T
+    protected func enableScrollInteractionInner(value: ?Bool): T
 
     /**
      * Sets the friction coefficient. It applies only to gestures in the scrolling area, and
@@ -152,10 +152,10 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func friction(value: ?Float64): T {
-        frictionInner(value ?? -1.0)
+        frictionInner(value)
     }
 
-    protected func frictionInner(value: Float64): T
+    protected func frictionInner(value: ?Float64): T
 
     /**
      * Sets the friction coefficient. It applies only to gestures in the scrolling area, and
@@ -171,13 +171,10 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func friction(value: ?AppResource): T {
-        match (value) {
-            case Some(v) => frictionInner(v)
-            case None => frictionInner(-1.0)
-        }
+        frictionInner(value)
     }
 
-    protected func frictionInner(value: AppResource): T
+    protected func frictionInner(value: ?AppResource): T
 
     /**
      * Sets the reach start.

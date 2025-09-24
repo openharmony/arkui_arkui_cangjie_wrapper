@@ -281,50 +281,55 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
         this
     }
 
-    protected func scrollBarColorInner(color: ResourceColor): This {
+    protected func scrollBarColorInner(color: ?ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkGridScrollBarColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkGridScrollBarColor(transAppResourceToResourceColor(color ?? 0x66182431))
         }
         this
     }
 
-    protected func scrollBarWidthInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    protected func scrollBarWidthInner(value: ?Length): This {
+        var value_ = transAppResourceToLength(value ?? 4.vp)
         unsafe {
             FfiOHOSAceFrameworkGridScrollBarWidth(value_.value, value_.unitType.getValue())
         }
         this
     }
 
-    protected func enableScrollInteractionInner(isEnable: Bool): This {
+    protected func enableScrollInteractionInner(isEnable: ?Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkGridEnableScrollInteraction(isEnable)
+            FfiOHOSAceFrameworkGridEnableScrollInteraction(isEnable ?? true)
         }
         this
     }
 
-    protected func nestedScrollInner(value: NestedScrollOptions): This {
-        let localScrollForward = (value.scrollForward ?? NestedScrollMode.SelfOnly).getValue()
-        let localScrollBackward = (value.scrollBackward ?? NestedScrollMode.SelfOnly).getValue()
+    protected func nestedScrollInner(value: ?NestedScrollOptions): This {
+        let tmpValue = value ?? NestedScrollOptions(NestedScrollMode.SelfOnly, NestedScrollMode.SelfOnly)
+        let localScrollForward = (tmpValue.scrollForward ?? NestedScrollMode.SelfOnly).getValue()
+        let localScrollBackward = (tmpValue.scrollBackward ?? NestedScrollMode.SelfOnly).getValue()
         unsafe {
             FfiOHOSAceFrameworkGridNestedScroll(localScrollForward, localScrollBackward)
         }
         this
     }
 
-    protected func frictionInner(value: Float64): This {
+    protected func frictionInner(value: ?Float64): This {
         unsafe {
-            FfiOHOSAceFrameworkGridFriction(value)
+            FfiOHOSAceFrameworkGridFriction(value ?? -1.0)
         }
         this
     }
 
-    protected func frictionInner(value: AppResource): This {
+    protected func frictionInner(value: ?AppResource): This {
         var realValue: Float64 = 0.0
-        let t = Float64.tryParse(getResourceString(value))
-        match (t) {
-            case Some(n) => realValue = n
-            case None => BaseLog.debug("AppResource type param of friction func convert to Float64 fail.");
+        match (value) {
+            case Some(v) => 
+                let t = Float64.tryParse(getResourceString(v))
+                match (t) {
+                    case Some(n) => realValue = n
+                    case None => BaseLog.debug("AppResource type param of friction func convert to Float64 fail.");
+                }
+            case None => realValue = -1.0
         }
         frictionInner(realValue)
     }

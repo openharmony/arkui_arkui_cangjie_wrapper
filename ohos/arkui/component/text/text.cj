@@ -145,6 +145,10 @@ foreign {
     func FfiOHOSAceFrameworkTextControllerCtor(): Int64
 
     func FfiOHOSAceFrameworkTextControllerCloseSelectionMenu(selfID: Int64): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 class FFIVectorNativeShadowOptions {
@@ -277,11 +281,9 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(content: ?ResourceStr, controller!: ?TextController = None, child!: () -> Unit = { =>}) {
-        let tmpContent = content ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpController = controller ?? TextController()
-        
+        let tmpController = controller ?? TextController()        
         unsafe {
-            try (unsafeContent = LibC.mallocCString(transResourceStrToString(tmpContent)).asResource()) {
+            try (unsafeContent = LibC.mallocCString(transResourceStrToString(content ?? "")).asResource()) {
                 FfiOHOSAceFrameworkTextCreateWithController(unsafeContent.value, tmpController.getID())
             }
         }
@@ -314,18 +316,26 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         this("", controller: controller ?? TextController())
     }
 
-    protected override func widthInner(value: Length): This {
-        var v = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkTextSetWidth(v.value, v.unitType.getValue())
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkTextSetWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
 
-    protected override func heightInner(value: Length): This {
-        var v = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkTextSetHeight(v.value, v.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkTextSetHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }
@@ -342,8 +352,7 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineSpacing(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var v = transAppResourceToLength(tmpValue)
+        var v = transAppResourceToLength(value ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkTextSetLineSpacing(v.value, v.unitType.getValue())
         }
@@ -441,9 +450,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextSetFontStyle(tmpValue.getValue())
+            FfiOHOSAceFrameworkTextSetFontStyle((value ?? FontStyle.Normal).getValue())
         }
         this
     }
@@ -481,9 +489,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (unsafeFontFamily = LibC.mallocCString(transResourceStrToString(tmpValue)).asResource()) {
+            try (unsafeFontFamily = LibC.mallocCString(transResourceStrToString(value ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkTextSetFontFamily(unsafeFontFamily.value)
             }
         }
@@ -502,7 +509,7 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textAlign(value: ?TextAlign): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? TextAlign.Start
         unsafe {
             FfiOHOSAceFrameworkTextSetTextAlign(tmpValue.getValue())
         }
@@ -521,9 +528,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textOverflow(value: ?TextOverflow): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextSetTextOverflowNew(tmpValue.getValue())
+            FfiOHOSAceFrameworkTextSetTextOverflowNew((value ?? TextOverflow.None).getValue())
         }
         this
     }
@@ -542,9 +548,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxLines(value: ?Int32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextSetMaxLines(tmpValue)
+            FfiOHOSAceFrameworkTextSetMaxLines(value ?? Int32.Max)
         }
         this
     }
@@ -564,8 +569,7 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineHeight(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var v = transAppResourceToLength(tmpValue)
+        var v = transAppResourceToLength(value ?? 0.0.px)
         unsafe {
             FfiOHOSAceFrameworkTextSetLineHeight(v.value, v.unitType.getValue())
         }
@@ -587,9 +591,9 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     ]
     public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor,
         decorationStyle!: ?TextDecorationStyle = None): This {
-        let tmpDecorationType = decorationType ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpDecorationType = decorationType ?? TextDecorationType.None
         let tmpDecorationStyle = decorationStyle ?? TextDecorationStyle.Solid
-        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpColor = color ?? Color.Black
         
         unsafe {
             FfiOHOSAceFrameworkTextSetDecorationNew(tmpDecorationType.getValue(), transAppResourceToResourceColor(tmpColor),
@@ -610,8 +614,7 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func baselineOffset(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var v = transAppResourceToLength(tmpValue)
+        var v = transAppResourceToLength(value ?? 0.0.px)
         unsafe {
             FfiOHOSAceFrameworkTextSetBaselineOffset(v.value, v.unitType.getValue())
         }
@@ -630,19 +633,18 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textCase(value: ?TextCase): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextSetTextCase(tmpValue.getValue())
+            FfiOHOSAceFrameworkTextSetTextCase((value ?? TextCase.Normal).getValue())
         }
         this
     }
 
-    protected override func foregroundColorInner(color: ResourceColor): This {
+    protected override func foregroundColorInner(color: ?ResourceColor): This {
         fontColor(color)
     }
 
-    protected override func responseRegionInner(rect: Rectangle): This {
-        let cjRect = rect.parseToNative()
+    protected override func responseRegionInner(rect: ?Rectangle): This {
+        let cjRect = (rect ?? Rectangle()).parseToNative()
         unsafe {
             FfiTextSetResponseRegion(
                 CJResponseRegion(
@@ -660,10 +662,11 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
         this
     }
 
-    protected override func responseRegionInner(array: Array<Rectangle>): This {
-        let vecFFi = FFIVectorNativeRectangle(array.size)
+    protected override func responseRegionInner(array: ?Array<Rectangle>): This {
+        let tmpArray = array ?? [Rectangle()]
+        let vecFFi = FFIVectorNativeRectangle(tmpArray.size)
         var index = 0
-        for (rect in array) {
+        for (rect in tmpArray) {
             BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++

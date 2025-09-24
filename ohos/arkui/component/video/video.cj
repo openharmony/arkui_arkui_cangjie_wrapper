@@ -155,7 +155,7 @@ public class FullscreenInfo {
     public var fullscreen: ?Bool
 
     init(fullscreen: ?Bool) {
-        this.fullscreen = fullscreen ?? throw IllegalArgumentException("The type now is not supported.")
+        this.fullscreen = fullscreen ?? false
     }
 }
 
@@ -236,11 +236,10 @@ public class VideoController <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setCurrentTime(value: ?Int32, seekMode: ?SeekMode): Unit {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+    public func setCurrentTime(value: Int32, seekMode: ?SeekMode): Unit {
         let tmpSeekMode = seekMode ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkVideoControllerSetCurrentTime(tmpValue, tmpSeekMode.getValue(), this.getID())
+            FfiOHOSAceFrameworkVideoControllerSetCurrentTime(value, tmpSeekMode.getValue(), this.getID())
         }
     }
 
@@ -255,9 +254,8 @@ public class VideoController <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func requestFullscreen(value: ?Bool): Unit {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkVideoControllerRequestFullscreen(tmpValue, this.getID())
+            FfiOHOSAceFrameworkVideoControllerRequestFullscreen(value ?? false, this.getID())
         }
     }
 
@@ -332,9 +330,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func muted(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkVideoMuted(tmpValue)
+            FfiOHOSAceFrameworkVideoMuted(value ?? false)
         }
         this
     }
@@ -351,9 +348,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoPlay(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkVideoAutoPlay(tmpValue)
+            FfiOHOSAceFrameworkVideoAutoPlay(value ?? false)
         }
         this
     }
@@ -370,9 +366,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func controls(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkVideoControls(tmpValue)
+            FfiOHOSAceFrameworkVideoControls(value ?? true)
         }
         this
     }
@@ -389,7 +384,7 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func objectFit(value: ?ImageFit): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? ImageFit.Cover
         unsafe {
             FfiOHOSAceFrameworkVideoObjectFit(tmpValue.getValue())
         }
@@ -408,9 +403,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func loop(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkVideoLoop(tmpValue)
+            FfiOHOSAceFrameworkVideoLoop(value ?? false)
         }
         this
     }
@@ -428,7 +422,7 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStart(event: ?VoidCallback): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { => }
         let wrapper = {
             _: CString => tmpEvent()
         }
@@ -452,7 +446,7 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPause(event: ?VoidCallback): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { => }
         let wrapper = {
             _: CString => tmpEvent()
         }
@@ -476,7 +470,7 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onFinish(event: ?() -> Unit): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { => }
         let wrapper = {
             _: CString => tmpEvent()
         }
@@ -499,7 +493,7 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onError(event: ?VoidCallback): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { => }
         let wrapper = {
             _: CString => tmpEvent()
         }
@@ -523,7 +517,7 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPrepared(callback: ?Callback<PreparedInfo, Unit>): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             duration: Int32 => tmpCallback(PreparedInfo(duration))
         }
@@ -547,7 +541,7 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSeeking(callback: ?Callback<PlaybackInfo, Unit>): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             time: Int32 => tmpCallback(PlaybackInfo(time))
         }
@@ -571,7 +565,7 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSeeked(callback: ?Callback<PlaybackInfo, Unit>): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             time: Int32 => tmpCallback(PlaybackInfo(time))
         }
@@ -595,7 +589,7 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onUpdate(callback: ?Callback<PlaybackInfo, Unit>): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             time: Int32 => tmpCallback(PlaybackInfo(time))
         }
@@ -619,7 +613,7 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onFullscreenChange(callback: ?Callback<FullscreenInfo, Unit>): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             fullscreen: Bool => tmpCallback(FullscreenInfo(fullscreen))
         }

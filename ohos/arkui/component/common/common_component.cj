@@ -76,13 +76,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onClick(event: ?(ClickEvent) -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onClickInner(tmpEvent)
+        onClickInner(event)
     }
 
-    protected open func onClickInner(callback: (ClickEvent) -> Unit): T {
+    protected open func onClickInner(callback: ?(ClickEvent) -> Unit): T {
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
-            evt: CJClickEvent => callback(parseCJClickEvent(evt))
+            evt: CJClickEvent => tmpCallback(parseCJClickEvent(evt))
         }
         let lambdaData = CallbackCJClickEvent(wrapper)
         unsafe {
@@ -103,13 +103,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onAppear(event: ?() -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onAppearInner(tmpEvent)
+        onAppearInner(event)
     }
 
-    protected open func onAppearInner(callback: () -> Unit): T {
+    protected open func onAppearInner(callback: ?() -> Unit): T {
+        let tmpCallback = callback ?? { => }
         unsafe {
-            FfiOHOSAceFrameworkInteractableViewOnAppear(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkInteractableViewOnAppear(Callback0Param<Unit>(tmpCallback).getID())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -126,13 +126,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDisAppear(event: ?() -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onDisAppearInner(tmpEvent)
+        onDisAppearInner(event)
     }
 
-    protected open func onDisAppearInner(callback: () -> Unit): T {
+    protected open func onDisAppearInner(callback: ?() -> Unit): T {
+        let tmpCallback = callback ?? { => }
         unsafe {
-            FfiOHOSAceFrameworkInteractableViewOnDisAppear(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkInteractableViewOnDisAppear(Callback0Param<Unit>(tmpCallback).getID())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -149,15 +149,15 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onTouch(event: ?(TouchEvent) -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onTouchInner(tmpEvent)
+        onTouchInner(event)
     }
 
-    protected open func onTouchInner(event: (TouchEvent) -> Unit): T {
+    protected open func onTouchInner(event: ?(TouchEvent) -> Unit): T {
+        let tmpEvent = event ?? { _: TouchEvent => }
         let wrapper = {
             evt: CJTouchEvent =>
             var resolved = parseCJTouchEvent(evt)
-            event(resolved)
+            tmpEvent(resolved)
             return resolved.isStopPropagation
         }
         unsafe {
@@ -178,13 +178,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onHover(event: ?(Bool) -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onHoverInner(tmpEvent)
+        onHoverInner(event)
     }
 
-    protected open func onHoverInner(callback: (Bool) -> Unit): T {
+    protected open func onHoverInner(callback: ?(Bool) -> Unit): T {
+        let tmpCallback = callback ?? { _ => }
         unsafe {
-            FfiOHOSAceFrameworkInteractableViewOnHover(Callback1Param<Bool, Unit>(callback).getID())
+            FfiOHOSAceFrameworkInteractableViewOnHover(Callback1Param<Bool, Unit>(tmpCallback).getID())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -201,13 +201,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onAreaChange(event: ?(Area, Area) -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onAreaChangeInner(tmpEvent)
+        onAreaChangeInner(event)
     }
 
-    protected open func onAreaChangeInner(callback: (Area, Area) -> Unit): T {
+    protected open func onAreaChangeInner(callback: ?(Area, Area) -> Unit): T {
+        let tmpCallback = callback ?? { _, _ => }
         let wrapper = {
-            lastArea: CJArea, area: CJArea => callback(parseCJArea(lastArea), parseCJArea(area))
+            lastArea: CJArea, area: CJArea => tmpCallback(parseCJArea(lastArea), parseCJArea(area))
         }
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnAreaChanged(CallbackCJAreaChangedEvent(wrapper).getID())
@@ -227,18 +227,18 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onVisibleAreaChange(raitos: ?Array<Float64>, event: ?(Bool, Float64) -> Unit): T {
-        let tmpRaitos = raitos ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onVisibleAreaChangeInner(tmpRaitos, tmpEvent)
+        onVisibleAreaChangeInner(raitos, event)
     }
 
-    protected open func onVisibleAreaChangeInner(raitos: Array<Float64>, callback: (Bool, Float64) -> Unit): T {
+    protected open func onVisibleAreaChangeInner(raitos: ?Array<Float64>, callback: ?(Bool, Float64) -> Unit): T {
+        let tmpRaitos = raitos ?? [0.0, 1.0]
+        let tmpCallback = callback ?? { _: Bool, _: Float64 => }
         let wrapper = {
-            isVisible: Bool, currentRatio: Float64 => callback(isVisible, currentRatio)
+            isVisible: Bool, currentRatio: Float64 => tmpCallback(isVisible, currentRatio)
         }
-        let valuesHandle = FFIVectorFloat64(raitos.size)
-        for (i in 0..raitos.size) {
-            valuesHandle.setElement(i, raitos[i])
+        let valuesHandle = FFIVectorFloat64(tmpRaitos.size)
+        for (i in 0..tmpRaitos.size) {
+            valuesHandle.setElement(i, tmpRaitos[i])
         }
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnVisibleAreaChange(valuesHandle.getNativeHandle(),
@@ -260,15 +260,15 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onMouse(event: ?(MouseEvent) -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onMouseInner(tmpEvent)
+        onMouseInner(event)
     }
 
-    protected open func onMouseInner(event: (MouseEvent) -> Unit): T {
+    protected open func onMouseInner(event: ?(MouseEvent) -> Unit): T {
+        let tmpEvent = event ?? { _: MouseEvent => }
         let wrapper = {
             evt: CJMouseEvent =>
             var resolved = parseCJMouseEvent(evt)
-            event(resolved)
+            tmpEvent(resolved)
         }
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnMouse(CallbackCJMouseEvent(wrapper).getID())
@@ -288,15 +288,15 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onKeyEvent(event: ?(KeyEvent) -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onKeyEventInner(tmpEvent)
+        onKeyEventInner(event)
     }
 
-    protected open func onKeyEventInner(callback: (KeyEvent) -> Unit): T {
+    protected open func onKeyEventInner(callback: ?(KeyEvent) -> Unit): T {
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             evt: CJKeyEvent =>
             let resolved = parseCJKeyEvent(evt)
-            callback(resolved)
+            tmpCallback(resolved)
             return resolved.isStopPropagation
         }
         unsafe {
@@ -317,13 +317,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onFocus(event: ?() -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onFocusInner(tmpEvent)
+        onFocusInner(event)
     }
 
-    protected open func onFocusInner(callback: () -> Unit): T {
+    protected open func onFocusInner(callback: ?() -> Unit): T {
+        let tmpCallback = callback ?? { => }
         unsafe {
-            FfiOHOSAceFrameworkInteractableViewOnFocus(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkInteractableViewOnFocus(Callback0Param<Unit>(tmpCallback).getID())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -340,13 +340,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onBlur(event: ?() -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onBlurInner(tmpEvent)
+        onBlurInner(event)
     }
 
-    protected open func onBlurInner(callback: () -> Unit): T {
+    protected open func onBlurInner(callback: ?() -> Unit): T {
+        let tmpCallback = callback ?? { => }
         unsafe {
-            FfiOHOSAceFrameworkInteractableViewOnBlur(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkInteractableViewOnBlur(Callback0Param<Unit>(tmpCallback).getID())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -363,26 +363,29 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragStart(event: ?(DragInfo) -> DragItemInfo): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onDragStartInner(tmpEvent)
+        onDragStartInner(event)
     }
 
-    protected open func onDragStartInner(callback: (DragInfo) -> DragItemInfo): T {
-        unsafe {
-            FfiOHOSAceFrameworkInteractableViewOnDragStart(
-                CallbackCJDragInfoVCDragItemInfo(
-                    {
-                        evt =>
-                        let ret = callback(parseCJDragEvent(evt))
-                        let pixelMapId = (ret.pixelMap ?? PixelMap(0)).getID()
-                        let builderId = Callback0Param<Unit>(ret.builder ?? {=>}).getID()
-                        return CJDragItemInfo(
-                            pixelMapId: pixelMapId,
-                            builderId: builderId,
-                            extraInfo: LibC.mallocCString(ret.extraInfo ?? throw IllegalArgumentException("The type now is not supported."))
-                        )
-                    }
-                ).getID(), DragComponent.DragCommon.getValue())
+    protected open func onDragStartInner(callback: ?(DragInfo) -> DragItemInfo): T {
+        if (let Some(tmpCallback)<- callback) {
+            unsafe {
+                FfiOHOSAceFrameworkInteractableViewOnDragStart(
+                    CallbackCJDragInfoVCDragItemInfo(
+                        {
+                            evt =>
+                            let ret = tmpCallback(parseCJDragEvent(evt))
+                            let pixelMapId = (ret.pixelMap ?? PixelMap(0)).getID()
+                            let builderId = Callback0Param<Unit>(ret.builder ?? {=>}).getID()
+                            return CJDragItemInfo(
+                                pixelMapId: pixelMapId,
+                                builderId: builderId,
+                                extraInfo: LibC.mallocCString(ret.extraInfo ?? "")
+                            )
+                        }
+                    ).getID(), DragComponent.DragCommon.getValue())
+            }
+        } else {
+            return onDragStartInner({ _: DragInfo => })
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -399,20 +402,23 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragStart(event: ?(DragInfo) -> CustomBuilder): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onDragStartInner(tmpEvent)
+        onDragStartInner(event)
     }
 
-    protected open func onDragStartInner(callback: (DragInfo) -> CustomBuilder): T {
-        unsafe {
-            FfiOHOSAceFrameworkInteractableViewOnDragStart(
-                CallbackCJDragInfoVCDragItemInfo(
-                    {
-                        evt =>
-                        let ret = callback(parseCJDragEvent(evt))
-                        return CJDragItemInfo(builderId: Callback0Param<Unit>(ret).getID())
-                    }
-                ).getID(), DragComponent.DragCommon.getValue())
+    protected open func onDragStartInner(callback: ?(DragInfo) -> CustomBuilder): T {
+        if (let Some(tmpCallback)<- callback) {
+            unsafe {
+                FfiOHOSAceFrameworkInteractableViewOnDragStart(
+                    CallbackCJDragInfoVCDragItemInfo(
+                        {
+                            evt =>
+                            let ret = tmpCallback(parseCJDragEvent(evt))
+                            return CJDragItemInfo(builderId: Callback0Param<Unit>(ret).getID())
+                        }
+                    ).getID(), DragComponent.DragCommon.getValue())
+            }
+        } else {
+            return onDragStartInner({ _: DragInfo => })
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -429,17 +435,17 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragStart(event: ?(DragInfo) -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onDragStartInner(tmpEvent)
+        onDragStartInner(event)
     }
 
-    protected open func onDragStartInner(callback: (DragInfo) -> Unit): T {
+    protected open func onDragStartInner(callback: ?(DragInfo) -> Unit): T {
+        let tmpCallback = callback ?? { _: DragInfo => }
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnDragStart(
                 CallbackCJDragInfoVCDragItemInfo(
                     {
                         evt =>
-                        callback(parseCJDragEvent(evt))
+                        tmpCallback(parseCJDragEvent(evt))
                         return CJDragItemInfo()
                     }
                 ).getID(), DragComponent.DragCommon.getValue())
@@ -459,14 +465,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragEnter(event: ?(DragInfo) -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onDragEnterInner(tmpEvent)
+        onDragEnterInner(event)
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected open func onDragEnterInner(callback: (DragInfo) -> Unit): T {
+    protected open func onDragEnterInner(callback: ?(DragInfo) -> Unit): T {
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
-            info: CJDragInfo => callback(parseCJDragEvent(info))
+            info: CJDragInfo => tmpCallback(parseCJDragEvent(info))
         }
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnDragEnter(CallbackCJDragInfo(wrapper).getID(),
@@ -487,13 +493,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragMove(event: ?(DragInfo) -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onDragMoveInner(tmpEvent)
+        onDragMoveInner(event)
     }
 
-    protected open func onDragMoveInner(callback: (DragInfo) -> Unit): T {
+    protected open func onDragMoveInner(callback: ?(DragInfo) -> Unit): T {
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
-            info: CJDragInfo => callback(parseCJDragEvent(info))
+            info: CJDragInfo => tmpCallback(parseCJDragEvent(info))
         }
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnDragMove(CallbackCJDragInfo(wrapper).getID(),
@@ -514,13 +520,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragLeave(event: ?(DragInfo) -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onDragLeaveInner(tmpEvent)
+        onDragLeaveInner(event)
     }
 
-    protected open func onDragLeaveInner(callback: (DragInfo) -> Unit): T {
+    protected open func onDragLeaveInner(callback: ?(DragInfo) -> Unit): T {
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
-            info: CJDragInfo => callback(parseCJDragEvent(info))
+            info: CJDragInfo => tmpCallback(parseCJDragEvent(info))
         }
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnDragLeave(CallbackCJDragInfo(wrapper).getID(),
@@ -542,15 +548,15 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDrop(event: ?(DragInfo) -> Unit): T {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
-        onDropInenr(tmpEvent)
+        onDropInner(event)
     }
     /*
      * Note: the DragInfo is diff with DragEvent.
      */
-    protected open func onDropInenr(callback: (DragInfo) -> Unit): T {
+    protected open func onDropInner(callback: ?(DragInfo) -> Unit): T {
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
-            info: CJDragInfo => callback(parseCJDragEvent(info))
+            info: CJDragInfo => tmpCallback(parseCJDragEvent(info))
         }
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnDrop(CallbackCJDragInfo(wrapper).getID(),
@@ -573,22 +579,18 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func width(value: Option<Length>): T {
-        match (value) {
-            case Some(v) => match (v) {
-                case i64: Int64 => widthInner(i64)
-                case f64: Float64 => widthInner(f64)
-                case res: AppResource => widthInner(res)
-                case length: Length => widthInner(length)
-            }
-            case None => unsafe { FFISetWidthWithEmpty() }
-        }
+        widthInner(value)
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected open func widthInner(value: Length): T {
-        var v = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetWidth(v.value, v.unitType.getValue())
+    protected open func widthInner(value: ?Length): T {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let val = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkViewAbstractSetWidth(val.value, val.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -607,22 +609,18 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func height(value: Option<Length>): T {
-        match (value) {
-            case Some(v) => match (v) {
-                case i64: Int64 => heightInner(i64)
-                case f64: Float64 => heightInner(f64)
-                case res: AppResource => heightInner(res)
-                case length: Length => heightInner(length)
-            }
-            case None => unsafe { FFISetHeightWithEmpty() }
-        }
+        heightInner(value)
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected open func heightInner(value: Length): T {
-        var v = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetHeight(v.value, v.unitType.getValue())
+    protected open func heightInner(value: ?Length): T {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let val = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkViewAbstractSetHeight(val.value, val.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -640,16 +638,19 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func size(width!: ?Length, height!: ?Length): T {
-        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
-        sizeInner(tmpWidth, tmpHeight)
+        sizeInner(width, height)
     }
 
-    protected open func sizeInner(width: Length, height: Length) {
-        var w = transAppResourceToLength(width)
-        var h = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetSize(w.value, w.unitType.getValue(), h.value, h.unitType.getValue())
+    protected open func sizeInner(width: ?Length, height: ?Length) {
+        if (width.isNone() || height.isNone()) {
+            widthInner(width)
+            heightInner(height)
+        } else {
+            var w = transAppResourceToLength(width ?? 0.0.vp)
+            var h = transAppResourceToLength(height ?? 0.0.vp)
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractSetSize(w.value, w.unitType.getValue(), h.value, h.unitType.getValue())
+            }
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -666,13 +667,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func padding(value: ?Length): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        paddingInner(tmpValue)
+        paddingInner(value)
     }
 
-    protected open func paddingInner(value: Length): T {
+    protected open func paddingInner(value: ?Length): T {
         unsafe {
-            var v = transAppResourceToLength(value)
+            var v = transAppResourceToLength(value ?? 0.0.vp)
             FfiOHOSAceFrameworkViewAbstractSetPadding(v.value, v.unitType.getValue())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
@@ -690,14 +690,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func padding(top!: ?Length = None, right!: ?Length = None, bottom!: ?Length = None, left!: ?Length = None): T {
-        paddingInner(top ?? 0.vp, right ?? 0.vp, bottom ?? 0.vp, left ?? 0.vp)
+        paddingInner(top, right, bottom, left)
     }
 
-    protected open func paddingInner(top: Length, right: Length, bottom: Length, left: Length): T {
-        var topInner = transAppResourceToLength(top)
-        var rightInner = transAppResourceToLength(right)
-        var bottomInner = transAppResourceToLength(bottom)
-        var leftInner = transAppResourceToLength(left)
+    protected open func paddingInner(top: ?Length, right: ?Length, bottom: ?Length, left: ?Length): T {
+        var topInner = transAppResourceToLength(top ?? 0.vp)
+        var rightInner = transAppResourceToLength(right ?? 0.vp)
+        var bottomInner = transAppResourceToLength(bottom ?? 0.vp)
+        var leftInner = transAppResourceToLength(left ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetPaddings(
                 CJEdge(
@@ -727,12 +727,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func margin(value: ?Length): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        marginInner(tmpValue)
+        marginInner(value)
     }
 
-    protected open func marginInner(value: Length): T {
-        var v = transAppResourceToLength(value)
+    protected open func marginInner(value: ?Length): T {
+        var v = transAppResourceToLength(value ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetMargin(v.value, v.unitType.getValue())
         }
@@ -751,14 +750,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func margin(top!: ?Length = None, right!: ?Length = None, bottom!: ?Length = None, left!: ?Length = None): T {
-        marginInner(top: top ?? 0.vp, right: right ?? 0.vp, bottom: bottom ?? 0.vp, left: left ?? 0.vp)
+        marginInner(top: top, right: right, bottom: bottom, left: left)
     }
 
-    protected open func marginInner(top!: Length, right!: Length, bottom!: Length, left!: Length): T {
-        var topInner = transAppResourceToLength(top)
-        var rightInner = transAppResourceToLength(right)
-        var bottomInner = transAppResourceToLength(bottom)
-        var leftInner = transAppResourceToLength(left)
+    protected open func marginInner(top!: ?Length, right!: ?Length, bottom!: ?Length, left!: ?Length): T {
+        var topInner = transAppResourceToLength(top ?? 0.vp)
+        var rightInner = transAppResourceToLength(right ?? 0.vp)
+        var bottomInner = transAppResourceToLength(bottom ?? 0.vp)
+        var leftInner = transAppResourceToLength(left ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetMargins(
                 CJEdge(
@@ -788,14 +787,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func layoutWeight(value: ?Int32): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        layoutWeightInner(tmpValue)
+        layoutWeightInner(value)
     }
 
-    protected open func layoutWeightInner(value: Int32): T {
+    protected open func layoutWeightInner(value: ?Int32): T {
         // Note: ViewAbstract::SetLayoutWeight(float value)
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetLayoutWeight(value)
+            FfiOHOSAceFrameworkViewAbstractSetLayoutWeight(value ?? 0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -813,14 +811,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func constraintSize(minWidth!: ?Length = None, maxWidth!: ?Length = None,
         minHeight!: ?Length = None, maxHeight!: ?Length = None): T {
-        constraintSizeInner(minWidth ?? 0.vp, maxWidth ?? (Float64.Inf).vp, minHeight ?? 0.vp, maxHeight ?? (Float64.Inf).vp)
+        constraintSizeInner(minWidth, maxWidth, minHeight, maxHeight)
     }
 
-    protected open func constraintSizeInner(minWidth: Length, maxWidth: Length, minHeight: Length, maxHeight: Length): T {
-        var minWidthInner = transAppResourceToLength(minWidth)
-        var maxWidthInner = transAppResourceToLength(maxWidth)
-        var minHeightInner = transAppResourceToLength(minHeight)
-        var maxHeightInner = transAppResourceToLength(maxHeight)
+    protected open func constraintSizeInner(minWidth: ?Length, maxWidth: ?Length, minHeight: ?Length, maxHeight: ?Length): T {
+        var minWidthInner = transAppResourceToLength(minWidth ?? 0.vp)
+        var maxWidthInner = transAppResourceToLength(maxWidth ?? (Float64.Inf).vp)
+        var minHeightInner = transAppResourceToLength(minHeight ?? 0.vp)
+        var maxHeightInner = transAppResourceToLength(maxHeight ?? (Float64.Inf).vp)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetConstraintSize(
                 CJConstraintSize(
@@ -851,13 +849,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func align(value: ?Alignment): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        alignInner(tmpValue)
+        alignInner(value)
     }
 
-    protected open func alignInner(value: Alignment): T {
+    protected open func alignInner(value: ?Alignment): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetAlign(value.getValue())
+            FfiOHOSAceFrameworkViewAbstractSetAlign((value ?? Alignment.Center).getValue())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -875,13 +872,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func direction(value: ?Direction): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        directionInner(tmpValue)
+        directionInner(value)
     }
 
-    protected open func directionInner(value: Direction): T {
+    protected open func directionInner(value: ?Direction): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetDirection(value.getValue())
+            FfiOHOSAceFrameworkViewAbstractSetDirection((value ?? Direction.Auto).getValue())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -900,14 +896,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func position(x!: ?Length, y!: ?Length): T {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
-        positionInner(tmpX, tmpY)
+        positionInner(x, y)
     }
 
-    protected open func positionInner(xAxis: Length, yAxis: Length): T {
-        var x = transAppResourceToLength(xAxis)
-        var y = transAppResourceToLength(yAxis)
+    protected open func positionInner(xAxis: ?Length, yAxis: ?Length): T {
+        var x = transAppResourceToLength(xAxis ?? 0.0.vp)
+        var y = transAppResourceToLength(yAxis ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetPosition(x.value, x.unitType.getValue(), y.value, y.unitType.getValue())
         }
@@ -928,14 +922,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func markAnchor(x!: ?Length, y!: ?Length): T {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
-        markAnchorInner(tmpX, tmpY)
+        markAnchorInner(x, y)
     }
 
-    protected open func markAnchorInner(xAxis: Length, yAxis: Length): T {
-        var x = transAppResourceToLength(xAxis)
-        var y = transAppResourceToLength(yAxis)
+    protected open func markAnchorInner(xAxis: ?Length, yAxis: ?Length): T {
+        let tmpX = xAxis ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpY = yAxis ?? throw IllegalArgumentException("The type now is not supported.")
+        var x = transAppResourceToLength(tmpX)
+        var y = transAppResourceToLength(tmpY)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetMarkAnchor(x.value, x.unitType.getValue(), y.value, y.unitType.getValue())
         }
@@ -957,14 +951,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func offset(x!: ?Length, y!: ?Length): T {
-        let tmpX = x ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = y ?? throw IllegalArgumentException("The type now is not supported.")
-        offsetInner(tmpX, tmpY)
+        offsetInner(x, y)
     }
 
-    protected open func offsetInner(xAxis: Length, yAxis: Length): T {
-        var x = transAppResourceToLength(xAxis)
-        var y = transAppResourceToLength(yAxis)
+    protected open func offsetInner(xAxis: ?Length, yAxis: ?Length): T {
+        var x = transAppResourceToLength(xAxis ?? 0.0.vp)
+        var y = transAppResourceToLength(yAxis ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetOffset(x.value, x.unitType.getValue(), y.value, y.unitType.getValue())
         }
@@ -984,11 +976,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignRules(value: ?AlignRuleOptions): T {
-        alignRulesInner(value ?? AlignRuleOptions())
+        alignRulesInner(value)
     }
 
-    protected open func alignRulesInner(value: AlignRuleOptions): T {
-        let option = CJAlignRuleOption(value)
+    protected open func alignRulesInner(value: ?AlignRuleOptions): T {
+        let option = CJAlignRuleOption(value ?? AlignRuleOptions())
         unsafe { FfiOHOSAceFrameworkViewAbstractSetAlignRules(option) }
         option.free()
         (this as T) ?? throw IllegalArgumentException("Type error")
@@ -1007,9 +999,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func aspectRatio(value: ?Float64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        aspectRatioInner(tmpValue)
+    public func aspectRatio(value: Float64): T {
+        aspectRatioInner(value)
     }
 
     protected open func aspectRatioInner(value: Float64): T {
@@ -1030,13 +1021,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func displayPriority(value: ?Int32): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        displayPriorityInner(tmpValue)
+        displayPriorityInner(value)
     }
 
-    protected open func displayPriorityInner(value: Int32): T {
+    protected open func displayPriorityInner(value: ?Int32): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetDisplayPriority(value)
+            FfiOHOSAceFrameworkViewAbstractSetDisplayPriority(value ?? 1)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1051,12 +1041,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flexBasis(value: ?Length): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        flexBasisInner(tmpValue)
+        flexBasisInner(value)
     }
 
-    protected open func flexBasisInner(value: Length): T {
-        var v = transAppResourceToLength(value)
+    protected open func flexBasisInner(value: ?Length): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetFlexBasis(v.value, v.unitType.getValue())
         }
@@ -1074,8 +1064,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flexGrow(value: ?Float64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        flexGrowInner(tmpValue)
+        flexGrowInner(value)
     }
 
     /**
@@ -1089,13 +1078,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flexGrow(value: ?Int64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        flexGrowInner(Float64(tmpValue))
+        flexGrowInner(Float64(value ?? 0))
     }
 
-    protected open func flexGrowInner(value: Float64): T {
+    protected open func flexGrowInner(value: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetFlexGrow(value)
+            FfiOHOSAceFrameworkViewAbstractSetFlexGrow(value ?? 0.0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1111,8 +1099,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flexShrink(value: ?Float64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        flexShrinkInner(tmpValue)
+        flexShrinkInner(value)
     }
 
     /**
@@ -1126,13 +1113,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flexShrink(value: ?Int64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        flexShrinkInner(Float64(tmpValue))
+        flexShrinkInner(Float64(value ?? 0))
     }
 
-    protected open func flexShrinkInner(value: Float64): T {
+    protected open func flexShrinkInner(value: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetFlexShrink(value)
+            FfiOHOSAceFrameworkViewAbstractSetFlexShrink(value ?? 0.0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1150,13 +1136,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignSelf(value: ?ItemAlign): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        alignSelfInner(tmpValue)
+        alignSelfInner(value)
     }
 
-    protected open func alignSelfInner(value: ItemAlign): T {
+    protected open func alignSelfInner(value: ?ItemAlign): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetAlignSelf(value.getValue())
+            FfiOHOSAceFrameworkViewAbstractSetAlignSelf((value ?? ItemAlign.Auto).getValue())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1173,12 +1158,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func responseRegion(value: ?Rectangle): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        responseRegionInner(tmpValue)
+        responseRegionInner(value)
     }
 
-    protected open func responseRegionInner(value: Rectangle): T {
-        let cjRect = value.parseToNative()
+    protected open func responseRegionInner(value: ?Rectangle): T {
+        let cjRect = (value ?? Rectangle()).parseToNative()
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetResponseRegion(
                 CJResponseRegion(
@@ -1208,14 +1192,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func responseRegion(value: ?Array<Rectangle>): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        responseRegionInner(tmpValue)
+        responseRegionInner(value)
     }
 
-    protected open func responseRegionInner(value: Array<Rectangle>): T {
-        let vecFFi = FFIVectorNativeRectangle(value.size)
+    protected open func responseRegionInner(value: ?Array<Rectangle>): T {
+        let tmpValue = value ?? [Rectangle()]
+        let vecFFi = FFIVectorNativeRectangle(tmpValue.size)
         var index = 0
-        for (rect in value) {
+        for (rect in tmpValue) {
             BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++
@@ -1243,17 +1227,16 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func border(width!: ?Length, color!: ?ResourceColor = None, radius!: ?Length = None,
         style!: ?BorderStyle = Option.None): T {
-        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
-        borderInner(tmpWidth, color ?? Color.Black, radius ?? 0.vp, style ?? BorderStyle.Solid)
+        borderInner(width, color, radius, style)
     }
 
-    protected open func borderInner(width: Length, color: ResourceColor, radius: Length, style: BorderStyle): T {
-        var w = transAppResourceToLength(width)
-        var r = transAppResourceToLength(radius)
+    protected open func borderInner(width: ?Length, color: ?ResourceColor, radius: ?Length, style: ?BorderStyle): T {
+        var w = transAppResourceToLength(width ?? 0.vp)
+        var r = transAppResourceToLength(radius ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBorder(
-                CJBorder(w.value, w.unitType.getValue(), transAppResourceToResourceColor(color), r.value,
-                    r.unitType.getValue(), style.getValue()))
+                CJBorder(w.value, w.unitType.getValue(), transAppResourceToResourceColor(color ?? Color.Black), r.value,
+                    r.unitType.getValue(), (style ?? BorderStyle.Solid).getValue()))
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1272,12 +1255,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func borderWidth(value: ?Length): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        borderWidthInner(tmpValue)
+        borderWidthInner(value)
     }
 
-    protected open func borderWidthInner(value: Length): T {
-        var v = transAppResourceToLength(value)
+    protected open func borderWidthInner(value: ?Length): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var v = transAppResourceToLength(tmpValue)
         if (v.unitType.getValue() == LENGTH_PERCENT) {
             throw IllegalArgumentException("Percentage values are not supported.")
         }
@@ -1299,16 +1282,16 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func borderWidth(value: ?EdgeWidths): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        borderWidthInner(tmpValue)
+        borderWidthInner(value)
     }
 
-    protected open func borderWidthInner(edgeWidths: EdgeWidths) {
+    protected open func borderWidthInner(edgeWidths: ?EdgeWidths): T {
+        let tmpedgeWidths = edgeWidths ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBorderWidthWithCJEdge(
-                CJEdge((edgeWidths.top ?? 0.vp).value, (edgeWidths.top ?? 0.vp).unitType.getValue(), (edgeWidths.right ?? 0.vp).value,
-                    (edgeWidths.right ?? 0.vp).unitType.getValue(), (edgeWidths.bottom ?? 0.vp).value, (edgeWidths.bottom ?? 0.vp).unitType.getValue(), 
-                    (edgeWidths.left ?? 0.vp).value, (edgeWidths.left ?? 0.vp).unitType.getValue()))
+                CJEdge((tmpedgeWidths.top ?? 0.vp).value, (tmpedgeWidths.top ?? 0.vp).unitType.getValue(), (tmpedgeWidths.right ?? 0.vp).value,
+                    (tmpedgeWidths.right ?? 0.vp).unitType.getValue(), (tmpedgeWidths.bottom ?? 0.vp).value, (tmpedgeWidths.bottom ?? 0.vp).unitType.getValue(), 
+                    (tmpedgeWidths.left ?? 0.vp).value, (tmpedgeWidths.left ?? 0.vp).unitType.getValue()))
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1326,13 +1309,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func borderColor(value: ?ResourceColor): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        borderColorInner(tmpValue)
+        borderColorInner(value)
     }
 
-    protected open func borderColorInner(value: ResourceColor) {
+    protected open func borderColorInner(value: ?ResourceColor) {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetBorderColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkViewAbstractSetBorderColor(transAppResourceToResourceColor(value ?? Color.Black))
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1354,14 +1336,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func borderRadius(topLeft!: ?Length = None, topRight!: ?Length = None, bottomLeft!: ?Length = None,
         bottomRight!: ?Length = None): T {
-        borderRadiusInner(topLeft: topLeft ?? 0.vp, topRight: topRight ?? 0.vp, bottomLeft: bottomLeft ?? 0.vp, bottomRight: bottomRight ?? 0.vp)
+        borderRadiusInner(topLeft: topLeft, topRight: topRight, bottomLeft: bottomLeft, bottomRight: bottomRight)
     }
 
-    protected open func borderRadiusInner(topLeft!: Length, topRight!: Length, bottomLeft!: Length, bottomRight!: Length): T {
-        var topLeftInner = transAppResourceToLength(topLeft)
-        var topRightInner = transAppResourceToLength(topRight)
-        var bottomLeftInner = transAppResourceToLength(bottomLeft)
-        var bottomRightInner = transAppResourceToLength(bottomRight)
+    protected open func borderRadiusInner(topLeft!: ?Length, topRight!: ?Length, bottomLeft!: ?Length, bottomRight!: ?Length): T {
+        var topLeftInner = transAppResourceToLength(topLeft ?? 0.vp)
+        var topRightInner = transAppResourceToLength(topRight ?? 0.vp)
+        var bottomLeftInner = transAppResourceToLength(bottomLeft ?? 0.vp)
+        var bottomRightInner = transAppResourceToLength(bottomRight ?? 0.vp)
         unsafe {
             let value = CJBorderRadius(
                 topLeftInner.value,
@@ -1391,12 +1373,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func borderRadius(value: ?Length): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        borderRadiusInner(tmpValue)
+        borderRadiusInner(value)
     }
 
-    protected open func borderRadiusInner(value: Length): T {
-        var v = transAppResourceToLength(value)
+    protected open func borderRadiusInner(value: ?Length): T {
+        var v = transAppResourceToLength(value ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBorderRadius(v.value, v.unitType.getValue())
         }
@@ -1416,13 +1397,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func borderStyle(value: ?BorderStyle): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        borderStyleInner(tmpValue)
+        borderStyleInner(value)
     }
 
-    protected open func borderStyleInner(value: BorderStyle): T {
+    protected open func borderStyleInner(value: ?BorderStyle): T {
+        let tmpValue = value ?? BorderStyle.Solid
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetBorderStyle(value.getValue())
+            FfiOHOSAceFrameworkViewAbstractSetBorderStyle(tmpValue.getValue())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1439,8 +1420,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func foregroundBlurStyle(value: ?BlurStyle): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        foregroundBlurStyleInner(tmpValue, Option<ForegroundBlurStyleOptions>.None)
+        foregroundBlurStyleInner(value, Option<ForegroundBlurStyleOptions>.None)
     }
 
     /**
@@ -1456,19 +1436,18 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func foregroundBlurStyle(value: ?BlurStyle, options: ?ForegroundBlurStyleOptions): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
-        foregroundBlurStyleInner(tmpValue, tmpOptions)
+        foregroundBlurStyleInner(value, options)
     }
 
-    protected open func foregroundBlurStyleInner(style: BlurStyle, options: ?ForegroundBlurStyleOptions): T {
+    protected open func foregroundBlurStyleInner(style: ?BlurStyle, options: ?ForegroundBlurStyleOptions): T {
+        let tmpStyle = style ?? BlurStyle.None
         unsafe {
             if (let Some(v) <- options) {
                 let ret = CJForegroundBlurStyleOptions((v.colorMode ?? ThemeColorMode.System).getValue(), (v.adaptiveColor ?? AdaptiveColor.Default).getValue(),
-                    CJBlurOptions((v.blurOptions ?? BlurOptions([0.0, 0.0])).grayscale ?? throw IllegalArgumentException("The type now is not supported.")), v.scale ?? 1.0)
-                FfiOHOSAceFrameworkViewAbstractSetForegroundBlurStyleOption(style.getValue(), ret)
+                    CJBlurOptions((v.blurOptions ?? BlurOptions([0.0, 0.0])).grayscale ?? [0.0, 0.0]), v.scale ?? 1.0)
+                FfiOHOSAceFrameworkViewAbstractSetForegroundBlurStyleOption(tmpStyle.getValue(), ret)
             } else {
-                FfiOHOSAceFrameworkViewAbstractSetForegroundBlurStyle(style.getValue())
+                FfiOHOSAceFrameworkViewAbstractSetForegroundBlurStyle(tmpStyle.getValue())
             }
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
@@ -1487,8 +1466,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func foregroundColor(value: ?ColoringStrategy): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        foregroundColorInner(tmpValue)
+        foregroundColorInner(value)
     }
 
     /**
@@ -1504,22 +1482,26 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func foregroundColor(value: ?ResourceColor): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        foregroundColorInner(tmpValue)
+        foregroundColorInner(value)
     }
 
-    protected open func foregroundColorInner(value: ResourceColor): T {
+    protected open func foregroundColorInner(value: ?ResourceColor): T {
+        let tmpValue = value ?? Color.Transparent
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetForegroundResourceColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkViewAbstractSetForegroundResourceColor(transAppResourceToResourceColor(tmpValue))
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected open func foregroundColorInner(value: ColoringStrategy): T {
-        unsafe {
-            try (strategy = LibC.mallocCString(value.getValue()).asResource()) {
-                FfiOHOSAceFrameworkViewAbstractSetForegroundColor(strategy.value)
-            }
+    protected open func foregroundColorInner(value: ?ColoringStrategy): T {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    try (strategy = LibC.mallocCString(v.getValue()).asResource()) {
+                        FfiOHOSAceFrameworkViewAbstractSetForegroundColor(strategy.value)
+                    }
+                }
+            case None => foregroundColorInner(Color.Transparent)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1536,13 +1518,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundColor(value: ?ResourceColor): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        backgroundColorInner(tmpValue)
+        backgroundColorInner(value)
     }
 
-    protected open func backgroundColorInner(value: ResourceColor): T {
+    protected open func backgroundColorInner(value: ?ResourceColor): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetBackgroundColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkViewAbstractSetBackgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1559,8 +1540,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundImage(src: ?ResourceStr): T {
-        let tmpSrc = src ?? throw IllegalArgumentException("The type now is not supported.")
-        backgroundImageInner(tmpSrc, ImageRepeat.NoRepeat)
+        backgroundImageInner(src, ImageRepeat.NoRepeat)
     }
 
     /**
@@ -1575,19 +1555,18 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundImage(src: ?ResourceStr, repeat: ?ImageRepeat): T {
-        let tmpSrc = src ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpRepeat = repeat ?? throw IllegalArgumentException("The type now is not supported.")
-        backgroundImageInner(tmpSrc, tmpRepeat)
+        backgroundImageInner(src, repeat ?? ImageRepeat.NoRepeat)
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected open func backgroundImageInner(src: ResourceStr, repeat: ?ImageRepeat): T {
+    protected open func backgroundImageInner(src: ?ResourceStr, repeat: ?ImageRepeat): T {
+        let tmpSrc = src ?? ""
         var repeatUnit = if (let Some(v) <- repeat) {
             v.getValue()
         } else {
             ImageRepeat.NoRepeat.getValue()
         }
-        var srcMedia = match (src) {
+        var srcMedia = match (tmpSrc) {
             case v: String => v
             case v: AppResource => getResourceMedia(v)
             case _ => throw IllegalArgumentException("Invaild type.")
@@ -1612,8 +1591,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundImageSize(value: ?ImageSize): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        backgroundImageSizeInner(tmpValue)
+        backgroundImageSizeInner(value)
     }
 
     /**
@@ -1629,12 +1607,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundImageSize(width!: ?Length = None, height!: ?Length = None): T {
-        backgroundImageSizeInner(width ?? 0.vp, height ?? 0.vp)
+        backgroundImageSizeInner(width, height)
     }
 
-    protected open func backgroundImageSizeInner(width: Length, height: Length): T {
-        var w = transAppResourceToLength(width)
-        var h = transAppResourceToLength(height)
+    protected open func backgroundImageSizeInner(width: ?Length, height: ?Length): T {
+        var w = transAppResourceToLength(width ?? 0.vp)
+        var h = transAppResourceToLength(height ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBackgroundImageSize(w.value, w.unitType.getValue(), h.value,
                 h.unitType.getValue())
@@ -1642,9 +1620,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected open func backgroundImageSizeInner(imageSize: ImageSize): T {
+    protected open func backgroundImageSizeInner(imageSize: ?ImageSize): T {
+        let tmpImageSize = imageSize ?? ImageSize.Auto
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetBackgroundImageSizeType(imageSize.getValue())
+            FfiOHOSAceFrameworkViewAbstractSetBackgroundImageSizeType(tmpImageSize.getValue())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1663,8 +1642,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundImagePosition(value: ?Alignment): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        backgroundImagePositionInner(tmpValue)
+        backgroundImagePositionInner(value)
     }
 
     /**
@@ -1682,12 +1660,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backgroundImagePosition(x!: ?Length = None, y!: ?Length = None): T {
-        backgroundImagePositionInner(x ?? 0.vp, y ?? 0.vp)
+        backgroundImagePositionInner(x, y)
     }
 
-    protected open func backgroundImagePositionInner(xAxis: Length, yAxis: Length): T {
-        var x = transAppResourceToLength(xAxis)
-        var y = transAppResourceToLength(yAxis)
+    protected open func backgroundImagePositionInner(xAxis: ?Length, yAxis: ?Length): T {
+        var x = transAppResourceToLength(xAxis ?? 0.vp)
+        var y = transAppResourceToLength(yAxis ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBackgroundImagePositionXY(x.value, x.unitType.getValue(), y.value,
                 y.unitType.getValue())
@@ -1695,9 +1673,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected open func backgroundImagePositionInner(value: Alignment): T {
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetBackgroundImagePositionAlign(value.getValue())
+    protected open func backgroundImagePositionInner(value: ?Alignment): T {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    FfiOHOSAceFrameworkViewAbstractSetBackgroundImagePositionAlign(v.getValue())
+                }
+            case None => backgroundImagePosition()
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1747,13 +1729,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func opacity(value: ?Float64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        opacityInner(tmpValue)
+        opacityInner(value)
     }
 
-    protected open func opacityInner(value: Float64): T {
+    protected open func opacityInner(value: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetOpacity(value)
+            FfiOHOSAceFrameworkViewAbstractSetOpacity(value ?? 1.0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1792,13 +1773,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func translate(x!: ?Length = None, y!: ?Length = None, z!: ?Length = None): T {
-        translateInner(x ?? 0.vp, y ?? 0.vp, z ?? 0.vp)
+        translateInner(x, y, z)
     }
 
-    protected open func translateInner(xAxis: Length, yAxis: Length, zAxis: Length): T {
-        var x = transAppResourceToLength(xAxis)
-        var y = transAppResourceToLength(yAxis)
-        var z = transAppResourceToLength(zAxis)
+    protected open func translateInner(xAxis: ?Length, yAxis: ?Length, zAxis: ?Length): T {
+        var x = transAppResourceToLength(xAxis ?? 0.vp)
+        var y = transAppResourceToLength(yAxis ?? 0.vp)
+        var z = transAppResourceToLength(zAxis ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetTranslate(
                 CJTranslate(x.value, x.unitType.getValue(), y.value, y.unitType.getValue(), z.value,
@@ -1820,13 +1801,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enabled(value: ?Bool): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        enabledInner(tmpValue)
+        enabledInner(value)
     }
 
-    protected open func enabledInner(value: Bool): T {
+    protected open func enabledInner(value: ?Bool): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetEnabled(value)
+            FfiOHOSAceFrameworkViewAbstractSetEnabled(value ?? true)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1843,24 +1823,24 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func sharedTransition(id: ?String, options!: ?SharedTransitionOptions = None): T {
-        let tmpId = id ?? throw IllegalArgumentException("The type now is not supported.")
-        sharedTransitionInner(tmpId, options ?? SharedTransitionOptions())
+    public func sharedTransition(id: String, options!: ?SharedTransitionOptions = None): T {
+        sharedTransitionInner(id, options)
     }
 
-    protected open func sharedTransitionInner(id: String, options: SharedTransitionOptions): T {
+    protected open func sharedTransitionInner(id: String, options: ?SharedTransitionOptions): T {
+        let tmpOptions = options ?? SharedTransitionOptions()
         unsafe {
             try (unsafeId = LibC.mallocCString(id).asResource(), unsafeCurve = LibC
-                .mallocCString((options.curve ?? Curve.Linear).getValue())
-                .asResource(), unsafeMotionPath = LibC.mallocCString((options.motionPath ?? MotionPathOptions(path: "")).path ?? throw IllegalArgumentException("The type now is not supported.")).asResource()) {
+                .mallocCString((tmpOptions.curve ?? Curve.Linear).getValue())
+                .asResource(), unsafeMotionPath = LibC.mallocCString((tmpOptions.motionPath ?? MotionPathOptions(path: "")).path ?? "").asResource()) {
                 let unsafeOptions = CJSharedTransitionOptions(
-                    options.duration ?? 1000,
-                    options.delay ?? 0,
-                    options.zIndex ?? 0,
+                    tmpOptions.duration ?? 1000,
+                    tmpOptions.delay ?? 0,
+                    tmpOptions.zIndex ?? 0,
                     unsafeCurve.value,
-                    CJMotionPathOptions(unsafeMotionPath.value, (options.motionPath ?? MotionPathOptions(path: "")).from ?? 0.0, 
-                    (options.motionPath ?? MotionPathOptions(path: "")).to ?? 1.0, (options.motionPath ?? MotionPathOptions(path: "")).rotatable ?? false),
-                    (options.effectType ?? SharedTransitionEffectType.Exchange).getValue()
+                    CJMotionPathOptions(unsafeMotionPath.value, (tmpOptions.motionPath ?? MotionPathOptions(path: "")).from ?? 0.0, 
+                    (tmpOptions.motionPath ?? MotionPathOptions(path: "")).to ?? 1.0, (tmpOptions.motionPath ?? MotionPathOptions(path: "")).rotatable ?? false),
+                    (tmpOptions.effectType ?? SharedTransitionEffectType.Exchange).getValue()
                 )
                 FfiOHOSAceFrameworkViewAbstractSetSharedTransition(unsafeId.value, unsafeOptions)
             }
@@ -1881,14 +1861,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func geometryTransition(id: ?String, followWithoutTransition!: ?Bool = None): T {
-        let tmpId = id ?? throw IllegalArgumentException("The type now is not supported.")
-        geometryTransitionInner(tmpId, followWithoutTransition ?? false)
+        geometryTransitionInner(id, followWithoutTransition)
     }
 
-    protected open func geometryTransitionInner(id: String, value: Bool): T {
+    protected open func geometryTransitionInner(id: ?String, value: ?Bool): T {
         unsafe {
-            try (idCString = LibC.mallocCString(id).asResource()) {
-                FfiOHOSAceFrameworkViewAbstractSetGeometryTransition(idCString.value, value)
+            try (idCString = LibC.mallocCString(id ?? "").asResource()) {
+                FfiOHOSAceFrameworkViewAbstractSetGeometryTransition(idCString.value, value ?? false)
             }
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
@@ -1908,13 +1887,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func blur(value: ?Float64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        blurInner(tmpValue)
+        blurInner(value)
     }
 
-    protected open func blurInner(value: Float64): T {
+    protected open func blurInner(value: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetBlur(value)
+            FfiOHOSAceFrameworkViewAbstractSetBlur(value ?? 0.0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1931,13 +1909,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colorBlend(value: ?ResourceColor): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        colorBlendInner(tmpValue)
+        colorBlendInner(value)
     }
 
-    protected open func colorBlendInner(value: ResourceColor): T {
+    protected open func colorBlendInner(value: ?ResourceColor): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetColorBlend(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkViewAbstractSetColorBlend(transAppResourceToResourceColor(value ?? Color.Transparent))
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1954,13 +1931,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func backdropBlur(value: ?Float64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        backdropBlurInner(tmpValue)
+        backdropBlurInner(value)
     }
 
-    protected open func backdropBlurInner(value: Float64): T {
+    protected open func backdropBlurInner(value: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetBackdropBlur(value)
+            FfiOHOSAceFrameworkViewAbstractSetBackdropBlur(value ?? 0.0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1976,12 +1952,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func shadow(radius!: ?Float64, color!: ?ResourceColor = None, offsetX!: ?Float64 = None,
         offsetY!: ?Float64 = None): T {
-        shadowInner(radius ?? 0.0, color ?? Color(0x666666), offsetX ?? 0.0, offsetY ?? 0.0)
+        shadowInner(radius, color, offsetX, offsetY)
     }
 
-    protected open func shadowInner(radius: Float64, color: ResourceColor, offsetX: Float64, offsetY: Float64): T {
+    protected open func shadowInner(radius: ?Float64, color: ?ResourceColor, offsetX: ?Float64, offsetY: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetShadow(radius, transAppResourceToResourceColor(color), offsetX, offsetY)
+            FfiOHOSAceFrameworkViewAbstractSetShadow(radius ?? 0.0, transAppResourceToResourceColor(color ?? Color(0x666666)),
+                offsetX ?? 0.0, offsetY ?? 0.0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -1998,13 +1975,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func grayscale(value: ?Float64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        grayscaleInner(tmpValue)
+        grayscaleInner(value)
     }
 
-    protected open func grayscaleInner(value: Float64): T {
+    protected open func grayscaleInner(value: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetGrayScale(value)
+            FfiOHOSAceFrameworkViewAbstractSetGrayScale(value ?? 0.0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -2021,13 +1997,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func brightness(value: ?Float64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        brightnessInner(tmpValue)
+        brightnessInner(value)
     }
 
-    protected open func brightnessInner(value: Float64): T {
+    protected open func brightnessInner(value: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetBrightness(value)
+            FfiOHOSAceFrameworkViewAbstractSetBrightness(value ?? 1.0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -2044,13 +2019,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func saturate(value: ?Float64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        saturateInner(tmpValue)
+        saturateInner(value)
     }
 
-    protected open func saturateInner(value: Float64): T {
+    protected open func saturateInner(value: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetSaturate(value)
+            FfiOHOSAceFrameworkViewAbstractSetSaturate(value ?? 1.0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -2067,13 +2041,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contrast(value: ?Float64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        contrastInner(tmpValue)
+        contrastInner(value)
     }
 
-    protected open func contrastInner(value: Float64): T {
+    protected open func contrastInner(value: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetContrast(value)
+            FfiOHOSAceFrameworkViewAbstractSetContrast(value ?? 1.0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -2091,15 +2064,15 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func invert(value: ?Float64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        invertInner(tmpValue)
+        invertInner(value)
     }
 
-    protected open func invertInner(value: Float64): T {
-        var realValue = if (value > 1.0) {
+    protected open func invertInner(value: ?Float64): T {
+        let tmpValue = value ?? 0.0
+        var realValue = if (tmpValue > 1.0) {
             1.0
         } else {
-            value
+            tmpValue
         }
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetInvert(realValue)
@@ -2118,16 +2091,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func invert(low!: ?Float64, high!: ?Float64, threshold!: ?Float64, thresholdRange!: ?Float64): T {
-        let tmpLow = low ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpHigh = high ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpThreshold = threshold ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpThresholdRange = thresholdRange ?? throw IllegalArgumentException("The type now is not supported.")
-        invertInner(tmpLow, tmpHigh, tmpThreshold, tmpThresholdRange)
+        invertInner(low, high, threshold, thresholdRange)
     }
 
-    protected open func invertInner(low: Float64, high: Float64, threshold: Float64, thresholdRange: Float64): T {
+    protected open func invertInner(low: ?Float64, high: ?Float64, threshold: ?Float64, thresholdRange: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetInvertWithOptions(low, high, threshold, thresholdRange)
+            FfiOHOSAceFrameworkViewAbstractSetInvertWithOptions(low ?? 0.0, high ?? 0.0, threshold ?? 0.0, thresholdRange ?? 0.0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -2223,7 +2192,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sepia(value: ?Float64): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? 0.0
         sepiaInner(tmpValue)
     }
 
@@ -2250,7 +2219,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func hueRotate(value: ?Float32): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? 0.0
         hueRotateInner(tmpValue)
     }
 
@@ -2273,13 +2242,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func zIndex(value: ?Int32): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        zIndexInner(tmpValue)
+        zIndexInner(value)
     }
 
-    protected open func zIndexInner(value: Int32): T {
+    protected open func zIndexInner(value: ?Int32): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetZIndex(value)
+            FfiOHOSAceFrameworkViewAbstractSetZIndex(value ?? 0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -2296,13 +2264,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func visibility(value: ?Visibility): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        visibilityInner(tmpValue)
+        visibilityInner(value)
     }
 
-    protected open func visibilityInner(value: Visibility): T {
+    protected open func visibilityInner(value: ?Visibility): T {
+        let tmpValue = value ?? Visibility.Visible
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetVisibility(value.getValue())
+            FfiOHOSAceFrameworkViewAbstractSetVisibility(tmpValue.getValue())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -2320,13 +2288,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clip(value: ?Bool): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        clipInner(tmpValue)
+        clipInner(value)
     }
 
-    protected open func clipInner(isClip: Bool): T {
+    protected open func clipInner(isClip: ?Bool): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetClip(isClip)
+            FfiOHOSAceFrameworkViewAbstractSetClip(isClip ?? false)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -2343,8 +2310,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clipShape(value: ?BaseShape): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        clipShapeInner(tmpValue)
+        clipShapeInner(value)
     }
 
     /**
@@ -2358,14 +2324,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func maskShape(value: ?BaseShape): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        maskShapeInner(tmpValue)
+    public func maskShape(value: BaseShape): T {
+        maskShapeInner(value)
     }
 
-    protected open func clipShapeInner(value: BaseShape): T {
+    protected open func clipShapeInner(value: ?BaseShape): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetClipByShape(value.getID())
+            FfiOHOSAceFrameworkViewAbstractSetClipByShape(tmpValue.getID())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -2388,15 +2354,15 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func overlay(value!: ?String, align!: ?Alignment = Option.None,
         offset!: ?OverlayOffset = None): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        overlayInner(tmpValue, align ?? Alignment.Center, offset ?? OverlayOffset(x: 0.0, y: 0.0))
+        overlayInner(value, align, offset)
     }
 
-    protected open func overlayInner(title: String, align: Alignment, offset: OverlayOffset): T {
+    protected open func overlayInner(title: ?String, align: ?Alignment, offset: ?OverlayOffset): T {
+        let tmpOffset = offset ?? OverlayOffset(x: 0.0, y: 0.0)
         unsafe {
-            try (titleCString = LibC.mallocCString(title).asResource()) {
-                FfiOHOSAceFrameworkViewAbstractSetOverlay(titleCString.value, align.getValue(), offset.x ?? 0.0,
-                    offset.y ?? 0.0)
+            try (titleCString = LibC.mallocCString(title  ?? "").asResource()) {
+                FfiOHOSAceFrameworkViewAbstractSetOverlay(titleCString.value, (align ?? Alignment.Center).getValue(), tmpOffset.x ?? 0.0,
+                    tmpOffset.y ?? 0.0)
             }
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
@@ -2414,7 +2380,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 case Some(value) => LibC.mallocCString(value.getValue())
                 case None => LibC.mallocCString("")
             }
-            let message = LibC.mallocCString(popup.message ?? throw IllegalArgumentException("The type now is not supported."))
+            let message = LibC.mallocCString(popup.message ?? "")
             let primaryValue = LibC.mallocCString((popup.primaryButton ?? PopupButton(value: "", action: {=>})).value)
             let secondaryValue = LibC.mallocCString((popup.secondaryButton ?? PopupButton(value: "", action: {=>})).value)
             let messageOptions = popup.messageOptions ?? PopupMessageOptions()
@@ -2429,7 +2395,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                     fontSize.value, fontSize.unitType.getValue(),
                     fontStyle.getValue(), (popup.arrowOffset ?? 0.vp).value, (popup.arrowOffset ?? 0.vp)
                         .unitType
-                        .getValue(), popup.showInSubWindow ?? throw IllegalArgumentException("The type now is not supported."), (popup.mask ?? Color(0x1000000)).toUInt32(), (popup.targetSpace ?? 0.vp).value,
+                        .getValue(), popup.showInSubWindow ?? false, (popup.mask ?? Color(0x1000000)).toUInt32(), (popup.targetSpace ?? 0.vp).value,
                     (popup.targetSpace ?? 0.vp).unitType.getValue(), nativePlacement, ((popup.offset ?? Position(x:0.0, y: 0.0)).y ?? 0.0).value, ((popup.offset ?? Position(x:0.0, y: 0.0)).x ?? 0.0).value,
                     (popup.enableArrow ?? true), (popup.popupColor ?? Color(0x1000000)).toUInt32(), popup.autoCancel ?? true, (popup.width ?? 0.vp).value,
                     (popup.width ?? 0.vp).unitType.getValue(), nativeArrowPointPosition, (popup.arrowWidth ?? 16.vp).value,
@@ -2456,7 +2422,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 case None => LibC.mallocCString("")
             }
             FfiOHOSAceFrameworkViewAbstractBindCustomPopupV2(
-                CJBindCustomPopupV2(show, Callback0Param<Unit>(popup.builder ?? throw IllegalArgumentException("The type now is not supported.")).getID(), (popup.placement ?? Placement.Bottom).getValue(),
+                CJBindCustomPopupV2(show, Callback0Param<Unit>(popup.builder).getID(), (popup.placement ?? Placement.Bottom).getValue(),
                     (popup.maskColor ?? Color(0x1000000)).toUInt32(), (popup.backgroundColor ?? Color(0x1000000)).toUInt32(), popup.enableArrow ?? true, popup.autoCancel ?? true,
                     onStateChangeId, nativePopupColor, (popup.arrowOffset ?? 0.vp).value, (popup.arrowOffset ?? 0.vp).unitType.getValue(),
                     popup.showInSubWindow ?? false, nativeMask, (popup.targetSpace ?? 0.vp).value, (popup.targetSpace ?? 0.vp).unitType.getValue(),
@@ -2482,31 +2448,31 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindPopup(show: ?Bool, popup: ?PopupOptions): T {
-        let tmpShow = show ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpPopup = popup ?? throw IllegalArgumentException("The type now is not supported.")
-        bindPopupInner(tmpShow, tmpPopup)
+        bindPopupInner(show, popup)
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected open func bindPopupInner(show: Bool, popup: PopupOptions): T {
-        var primaryActionId: Int64 = if (!(popup.primaryButton ?? PopupButton(value: "", action: {=>})).value.isEmpty()) {
-            Callback0Param<Unit>((popup.primaryButton ?? PopupButton(value: "", action: {=>})).action).getID()
+    protected open func bindPopupInner(show: ?Bool, popup: ?PopupOptions): T {
+        let tmpShow = show ?? false
+        let tmpPopup = popup ?? PopupOptions(message: "")
+        var primaryActionId: Int64 = if (!(tmpPopup.primaryButton ?? PopupButton(value: "", action: {=>})).value.isEmpty()) {
+            Callback0Param<Unit>((tmpPopup.primaryButton ?? PopupButton(value: "", action: {=>})).action).getID()
         } else {
             INVALID_CALLBACK_ID
         }
-        var secondaryActionId: Int64 = if (!(popup.secondaryButton ?? PopupButton(value: "", action: {=>})).value.isEmpty()) {
-            Callback0Param<Unit>((popup.secondaryButton ?? PopupButton(value: "", action: {=>})).action).getID()
+        var secondaryActionId: Int64 = if (!(tmpPopup.secondaryButton ?? PopupButton(value: "", action: {=>})).value.isEmpty()) {
+            Callback0Param<Unit>((tmpPopup.secondaryButton ?? PopupButton(value: "", action: {=>})).action).getID()
         } else {
             INVALID_CALLBACK_ID
         }
-        var onStateChangeId: Int64 = if (let Some(v) <- popup.onStateChange) {
+        var onStateChangeId: Int64 = if (let Some(v) <- tmpPopup.onStateChange) {
             let lambda = {isVisible: Bool => v(PopupStateChangeParam(isVisible))}
             Callback1Param<Bool, Unit>(lambda).getID()
         } else {
             INVALID_CALLBACK_ID
         }
 
-        let nativeOnWillDismiss: NativeOptionCallBack = if (let Some(v) <- popup.onWillDismiss) {
+        let nativeOnWillDismiss: NativeOptionCallBack = if (let Some(v) <- tmpPopup.onWillDismiss) {
             let wrapper = {action: Int32 => v(parseToDismissPopupAction(action))}
             let lambdaData = Callback1Param<Int32, Unit>(wrapper)
             NativeOptionCallBack(true, lambdaData.getID())
@@ -2514,15 +2480,15 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             NativeOptionCallBack(false, INVALID_CALLBACK_ID)
         }
 
-        let nativeTransition: NativeOptionInt64 = if (let Some(v) <- popup.transition) {
+        let nativeTransition: NativeOptionInt64 = if (let Some(v) <- tmpPopup.transition) {
             NativeOptionInt64(true, v.getID())
         } else {
             NativeOptionInt64(false, 0)
         }
 
-        let nativePlacement: Int32 = (popup.placement ?? Placement.BottomLeft).getValue()
-        callFFIBindPopup(popup, primaryActionId, secondaryActionId, onStateChangeId, nativeOnWillDismiss,
-            nativeTransition, nativePlacement, show)
+        let nativePlacement: Int32 = (tmpPopup.placement ?? Placement.BottomLeft).getValue()
+        callFFIBindPopup(tmpPopup, primaryActionId, secondaryActionId, onStateChangeId, nativeOnWillDismiss,
+            nativeTransition, nativePlacement, tmpShow)
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
@@ -2539,47 +2505,50 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindPopup(show: ?Bool, popup: ?CustomPopupOptions): T {
-        let tmpShow = show ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpPopup = popup ?? throw IllegalArgumentException("The type now is not supported.")
-        bindPopupInner(tmpShow, tmpPopup)
+        bindPopupInner(show, popup)
     }
 
-    protected open func bindPopupInner(show: Bool, popup: CustomPopupOptions): T {
-        var onStateChangeId = match (popup.onStateChange) {
-            case Some(v) =>
-                let lambda = {
-                    isVisible: Bool => v(PopupStateChangeParam(isVisible))
-                }
-                Callback1Param<Bool, Unit>(lambda).getID()
-            case None => INVALID_CALLBACK_ID
-        }
+    protected open func bindPopupInner(show: ?Bool, popup: ?CustomPopupOptions): T {
+        let tmpShow = show ?? false
+        if (let Some(tmpPopup)<- popup){
+            var onStateChangeId = match (tmpPopup.onStateChange) {
+                case Some(v) =>
+                    let lambda = {
+                        isVisible: Bool => v(PopupStateChangeParam(isVisible))
+                    }
+                    Callback1Param<Bool, Unit>(lambda).getID()
+                case None => INVALID_CALLBACK_ID
+            }
 
-        let nativeOnWillDismiss = match (popup.onWillDismiss) {
-            case Some(value) =>
-                let wrapper = {
-                    action: Int32 => value(parseToDismissPopupAction(action))
-                }
-                let lambdaData = Callback1Param<Int32, Unit>(wrapper)
-                NativeOptionCallBack(true, lambdaData.getID())
-            case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
-        }
+            let nativeOnWillDismiss = match (tmpPopup.onWillDismiss) {
+                case Some(value) =>
+                    let wrapper = {
+                        action: Int32 => value(parseToDismissPopupAction(action))
+                    }
+                    let lambdaData = Callback1Param<Int32, Unit>(wrapper)
+                    NativeOptionCallBack(true, lambdaData.getID())
+                case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
+            }
 
-        let nativeTransition = match (popup.transition) {
-            case Some(value) => NativeOptionInt64(true, value.getID())
-            case None => NativeOptionInt64(false, 0)
-        }
+            let nativeTransition = match (tmpPopup.transition) {
+                case Some(value) => NativeOptionInt64(true, value.getID())
+                case None => NativeOptionInt64(false, 0)
+            }
 
-        let nativePopupColor = match (popup.popupColor) {
-            case Some(value) => value.toUInt32()
-            case None => (popup.backgroundColor ?? Color(0x1000000)).toUInt32()
-        }
+            let nativePopupColor = match (tmpPopup.popupColor) {
+                case Some(value) => value.toUInt32()
+                case None => (tmpPopup.backgroundColor ?? Color(0x1000000)).toUInt32()
+            }
 
-        let nativeMask = match (popup.mask) {
-            case Some(value) => value.toUInt32()
-            case None => (popup.maskColor ?? Color(0x1000000)).toUInt32()
+            let nativeMask = match (tmpPopup.mask) {
+                case Some(value) => value.toUInt32()
+                case None => (tmpPopup.maskColor ?? Color(0x1000000)).toUInt32()
+            }
+            callFFIBindCustomPopup(tmpPopup, onStateChangeId, nativeOnWillDismiss, nativeTransition, nativePopupColor,
+                nativeMask, tmpShow)
+        } else {
+            bindPopupInner(show, PopupOptions(message: ""))
         }
-        callFFIBindCustomPopup(popup, onStateChangeId, nativeOnWillDismiss, nativeTransition, nativePopupColor,
-            nativeMask, show)
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
@@ -2593,18 +2562,18 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindMenu(content: ?Array<MenuElement>): T {
-        let tmpContent = content ?? throw IllegalArgumentException("The type now is not supported.")
-        bindMenuInner(tmpContent)
+        bindMenuInner(content)
     }
 
-    protected open func bindMenuInner(content: Array<MenuElement>): T {
-        let valueVecFFi = FFIVectorString(content.size)
+    protected open func bindMenuInner(content: ?Array<MenuElement>): T {
+        let tmpContent = content ?? []
+        let valueVecFFi = FFIVectorString(tmpContent.size)
         var index = 0
-        for (menuElement in content) {
+        for (menuElement in tmpContent) {
             valueVecFFi.setElement(index, menuElement.value)
             index++
         }
-        let data = MenuActionData(content)
+        let data = MenuActionData(tmpContent)
         let callback = {
             actionName: CString => data.actionHandle(actionName.toString())
         }
@@ -2628,13 +2597,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindMenu(builder!: ?CustomBuilder): T {
-        let tmpBuilder = builder ?? throw IllegalArgumentException("The type now is not supported.")
-        bindMenuInner(tmpBuilder)
+        bindMenuInner(builder)
     }
 
-    protected open func bindMenuInner(builder: CustomBuilder): T {
+    protected open func bindMenuInner(builder: ?CustomBuilder): T {
+        let tmpBuilder = builder ?? { => }
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractBindCustomMenu(Callback0Param<Unit>(builder).getID())
+            FfiOHOSAceFrameworkViewAbstractBindCustomMenu(Callback0Param<Unit>(tmpBuilder).getID())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -2650,19 +2619,18 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func bindContextMenu(builder!: ?CustomBuilder, responseType!: ?ResponseType,
         options!: ?ContextMenuOptions = None): T {
-        let tmpBuilder = builder ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpResponseType = responseType ?? throw IllegalArgumentException("The type now is not supported.")
-        bindContextMenuInner(tmpBuilder, tmpResponseType, options ?? ContextMenuOptions())
+        bindContextMenuInner(builder, responseType, options)
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected open func bindContextMenuInner(builder: CustomBuilder, responseType: ResponseType,
-        options: ContextMenuOptions): T {
-        var optionElement: CJContextMenuOptions = options.parseContextMenuOptions()
+    protected open func bindContextMenuInner(builder: ?CustomBuilder, responseType: ?ResponseType,
+        options: ?ContextMenuOptions): T {
+        let tmpResponseType = responseType ?? ResponseType.LongPress
+        var optionElement: CJContextMenuOptions = (options ?? ContextMenuOptions()).parseContextMenuOptions()
         unsafe {
             FfiOHOSAceFrameworkViewAbstractBindContextMenuOption(
-                Callback0Param<Unit>(builder).getID(),
-                responseType.getValue(),
+                Callback0Param<Unit>(builder ?? { => }).getID(),
+                tmpResponseType.getValue(),
                 optionElement
             )
         }
@@ -2717,16 +2685,16 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     public func sweepGradient(center: ?(Length, Length), start!: ?Float64 = None, end!: ?Float64 = None,
         rotation!: ?Float64 = None, colors!: ?Array<(ResourceColor, Float64)> = None,
         repeating!: ?Bool = None): T {
-        let tmpCenter = center ?? throw IllegalArgumentException("The type now is not supported.")
-        sweepGradientInner(tmpCenter, start ?? 0.0, end ?? 0.0, rotation ?? 0.0, colors ?? [(Color.Transparent, 0.0)], repeating ?? false)
+        sweepGradientInner(center, start, end, rotation , colors, repeating)
     }
 
-    protected open func sweepGradientInner(center: (Length, Length), start: Float64, end: Float64, rotation: Float64,
-        colors: Array<(ResourceColor, Float64)>, repeating: Bool): T {
-        let cCenter = CTupleLength(center[0].value, center[0].unitType.getValue(), center[1].value,
-            center[1].unitType.getValue())
-        let cColorsArr = toCArrCColors(colors)
-        let sweepGradientParam = SweepGradientParam(cCenter, start, end, rotation, cColorsArr, repeating)
+    protected open func sweepGradientInner(center: ?(Length, Length), start: ?Float64, end: ?Float64, rotation: ?Float64,
+        colors: ?Array<(ResourceColor, Float64)>, repeating: ?Bool): T {
+        let tmpCenter = center ?? (0.0.vp, 0.0.vp)
+        let cCenter = CTupleLength(tmpCenter[0].value, tmpCenter[0].unitType.getValue(), tmpCenter[1].value,
+            tmpCenter[1].unitType.getValue())
+        let cColorsArr = toCArrCColors(colors ?? [(Color.Transparent, 0.0)])
+        let sweepGradientParam = SweepGradientParam(cCenter, start ?? 0.0, end ?? 0.0, rotation ?? 0.0, cColorsArr, repeating ?? false)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSweepGradient(sweepGradientParam)
             LibC.free(cColorsArr.head)
@@ -2745,20 +2713,20 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func radialGradient(center: ?(Length, Length), radius: ?Length, colors: ?Array<(ResourceColor, Float64)>,
         repeating!: ?Bool = None): T {
-        let tmpCenter = center ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpRadius = radius ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpColors = colors ?? throw IllegalArgumentException("The type now is not supported.")
-        radialGradientInner(tmpCenter, tmpRadius, tmpColors, repeating ?? false)
+        radialGradientInner(center, radius, colors, repeating)
     }
 
-    protected open func radialGradientInner(center: (Length, Length), radius: Length,
-        colors: Array<(ResourceColor, Float64)>, repeating: Bool): T {
-        var radius_ = transAppResourceToLength(radius)
-        let cCenter = CTupleLength(center[0].value, center[0].unitType.getValue(), center[1].value,
-            center[1].unitType.getValue())
-        let cColorsArr = toCArrCColors(colors)
+    protected open func radialGradientInner(center: ?(Length, Length), radius: ?Length,
+        colors: ?Array<(ResourceColor, Float64)>, repeating: ?Bool): T {
+        let tmpCenter = center ?? (0.0.px, 0.0.px)
+        let tmpRadius = radius ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpColors = colors ?? []
+        var radius_ = transAppResourceToLength(tmpRadius)
+        let cCenter = CTupleLength(tmpCenter[0].value, tmpCenter[0].unitType.getValue(), tmpCenter[1].value,
+            tmpCenter[1].unitType.getValue())
+        let cColorsArr = toCArrCColors(tmpColors)
         let radialGradientParam = RadialGradientParam(cCenter, radius_.value, radius_.unitType.getValue(), cColorsArr,
-            repeating)
+            repeating ?? false)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractRadialGradient(radialGradientParam)
             LibC.free(cColorsArr.head)
@@ -2796,9 +2764,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpKeys = keys ?? throw IllegalArgumentException("The type now is not supported.")
-        keyboardShortcutInner(tmpValue, tmpKeys, action: None)
+        match (value) {
+            case Some(v) => 
+                keyboardShortcutInner(v, keys, action: Option.None)
+            case None => keyboardShortcutInner("", keys, action: Option.None)
+        }
+        
     }
 
     /**
@@ -2811,9 +2782,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keyboardShortcut(value: ?String, keys: ?Array<ModifierKey>): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpKeys = keys ?? throw IllegalArgumentException("The type now is not supported.")
-        keyboardShortcutInner(tmpValue, tmpKeys, action: None)
+        keyboardShortcutInner(value ?? "", keys, action: Option.None)
     }
 
     /**
@@ -2826,10 +2795,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>, action: ?() -> Unit): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpKeys = keys ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpAction = action ?? throw IllegalArgumentException("The type now is not supported.")
-        keyboardShortcutInner(tmpValue, tmpKeys, action: tmpAction)
+        match (value) {
+            case Some(v) => 
+                keyboardShortcutInner(v, keys, action: action)
+            case None => keyboardShortcutInner("", keys, action: action)
+        }
+        
     }
 
     /**
@@ -2842,25 +2813,23 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keyboardShortcut(value: ?String, keys: ?Array<ModifierKey>, action: ?() -> Unit): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpKeys = keys ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpAction = action ?? throw IllegalArgumentException("The type now is not supported.")
-        keyboardShortcutInner(tmpValue, tmpKeys, action: tmpAction)
+        keyboardShortcutInner(value ?? "", keys, action: action)
     }
 
-    protected open func keyboardShortcutInner(value: CombinationKeyType, keys: Array<ModifierKey>, action!: ?() -> Unit): T {
+    protected open func keyboardShortcutInner(value: CombinationKeyType, keys: ?Array<ModifierKey>, action!: ?() -> Unit): T {
+        let tmpKeys = keys ?? []
         unsafe {
-            let modifierKeys = LibC.malloc<Int32>(count: keys.size)
-            for (i in 0..keys.size) {
-                modifierKeys.write(i, keys[i].getValue())
+            let modifierKeys = LibC.malloc<Int32>(count: tmpKeys.size)
+            for (i in 0..tmpKeys.size) {
+                modifierKeys.write(i, tmpKeys[i].getValue())
             }
             if (let Some(v) <- (value as String)) {
                 try (cValue = LibC.mallocCString(v).asResource()) {
                     if (let Some(actionFunc) <- action) {
-                        FfiOHOSAceFrameworkViewAbstractKeyShortcutByChar(cValue.value, modifierKeys, keys.size,
+                        FfiOHOSAceFrameworkViewAbstractKeyShortcutByChar(cValue.value, modifierKeys, tmpKeys.size,
                             Callback0Param<Unit>(actionFunc).getID())
                     } else {
-                        FfiOHOSAceFrameworkViewAbstractKeyShortcutByChar(cValue.value, modifierKeys, keys.size, 0)
+                        FfiOHOSAceFrameworkViewAbstractKeyShortcutByChar(cValue.value, modifierKeys, tmpKeys.size, 0)
                     }
                 } finally {
                     LibC.free<Int32>(modifierKeys)
@@ -2869,10 +2838,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             }
             if (let Some(v) <- (value as FunctionKey)) {
                 if (let Some(actionFunc) <- action) {
-                    FfiOHOSAceFrameworkViewAbstractKeyShortcutByFuncKey(v.getValue(), modifierKeys, keys.size,
+                    FfiOHOSAceFrameworkViewAbstractKeyShortcutByFuncKey(v.getValue(), modifierKeys, tmpKeys.size,
                         Callback0Param<Unit>(actionFunc).getID())
                 } else {
-                    FfiOHOSAceFrameworkViewAbstractKeyShortcutByFuncKey(v.getValue(), modifierKeys, keys.size, 0)
+                    FfiOHOSAceFrameworkViewAbstractKeyShortcutByFuncKey(v.getValue(), modifierKeys, tmpKeys.size, 0)
                 }
                 LibC.free<Int32>(modifierKeys)
             }
@@ -2890,13 +2859,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func key(value: ?String): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        keyInner(tmpValue)
+        keyInner(value)
     }
 
-    protected open func keyInner(value: String): T {
+    protected open func keyInner(value: ?String): T {
         unsafe {
-            try (unsafeValue = LibC.mallocCString(value).asResource()) {
+            try (unsafeValue = LibC.mallocCString(value ?? "").asResource()) {
                 FfiOHOSAceFrameworkViewAbstractSetInspectorKey(unsafeValue.value)
             }
         }
@@ -2913,13 +2881,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func renderFit(fitMode: ?RenderFit): T {
-        let tmpFitMode = fitMode ?? throw IllegalArgumentException("The type now is not supported.")
-        renderFitInner(tmpFitMode)
+        renderFitInner(fitMode)
     }
 
-    protected func renderFitInner(fitMode: RenderFit): T {
+    protected func renderFitInner(fitMode: ?RenderFit): T {
+        let tmpFitMode = fitMode ?? RenderFit.TopLeft
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractRenderFit(fitMode.getValue())
+            FfiOHOSAceFrameworkViewAbstractRenderFit(tmpFitMode.getValue())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -2934,13 +2902,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func id(value: ?String): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        idInner(tmpValue)
+        idInner(value)
     }
 
-    protected open func idInner(value: String): T {
+    protected open func idInner(value: ?String): T {
         unsafe {
-            let unsafeValue = LibC.mallocCString(value)
+            let unsafeValue = LibC.mallocCString(value ?? "")
             FfiOHOSAceFrameworkViewAbstractSetId(unsafeValue)
             LibC.free(unsafeValue)
         }
@@ -2996,15 +2963,15 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func bindContentCover(isShow: ?Bool, builder: ?CustomBuilder,
         options!: ?ContentCoverOptions = None): T {
-        let tmpIsShow = isShow ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpBuilder = builder ?? throw IllegalArgumentException("The type now is not supported.")
-        bindContentCoverInner(tmpIsShow, tmpBuilder, options ?? ContentCoverOptions())
+        bindContentCoverInner(isShow, builder, options)
     }
 
-    protected open func bindContentCoverInner(isShow: Bool, builder: CustomBuilder, options: ContentCoverOptions): T {
-        let cjBindCustomPopup = options.parseCJContentCoverOptions(options)
+    protected open func bindContentCoverInner(isShow: ?Bool, builder: ?CustomBuilder, options: ?ContentCoverOptions): T {
+        let tmpIsShow = isShow ?? false
+        let tmpOptions = options ?? ContentCoverOptions()
+        let cjBindCustomPopup = tmpOptions.parseCJContentCoverOptions(tmpOptions)
         unsafe {
-            FFIOHOSAceFrameworkBindContentCoverV2(isShow, Callback0Param<Unit>(builder).getID(), cjBindCustomPopup)
+            FFIOHOSAceFrameworkBindContentCoverV2(tmpIsShow, Callback0Param<Unit>(builder ?? { => }).getID(), cjBindCustomPopup)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -3019,13 +2986,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func animationStart(value: ?AnimateParam): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        animationStartInner(tmpValue)
+        animationStartInner(value)
     }
 
-    protected open func animationStartInner(value: AnimateParam): T {
+    protected open func animationStartInner(value: ?AnimateParam): T {
+        let tmpValue = value ?? AnimateParam()
         unsafe {
-            let param = NativeOptionAnimateParam(true, parseAnimateParam(value))
+            let param = NativeOptionAnimateParam(true, parseAnimateParam(tmpValue))
             FfiOHOSAceFrameworkViewContextAnimation(param)
             param.free()
         }
@@ -3064,8 +3031,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func transition(value: ?TransitionEffect): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        transitionInner(tmpValue)
+        transitionInner(value)
     }
 
     /**
@@ -3078,26 +3044,27 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func transition(value: ?TransitionEffect, onFinish: ?TransitionFinishCallback): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         return if (let Some(v) <- onFinish) {
-            transitionInner(tmpValue, v)
+            transitionInner(value, v)
         } else {
-            transitionInner(tmpValue)
+            transitionInner(value)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected open func transitionInner(value: TransitionEffect, onFinish: TransitionFinishCallback): T {
+    protected open func transitionInner(value: ?TransitionEffect, onFinish: TransitionFinishCallback): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         let lambdaData = Callback1Param<Bool, Unit>(onFinish)
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractTransitionWithBack(value.getID(), lambdaData.getID())
+            FfiOHOSAceFrameworkViewAbstractTransitionWithBack(tmpValue.getID(), lambdaData.getID())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected open func transitionInner(value: TransitionEffect): T {
+    protected open func transitionInner(value: ?TransitionEffect): T {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractTransition(value.getID())
+            FfiOHOSAceFrameworkViewAbstractTransition(tmpValue.getID())
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -3114,13 +3081,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func focusable(value: ?Bool): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        focusableInner(tmpValue)
+        focusableInner(value)
     }
 
-    protected open func focusableInner(value: Bool): T {
+    protected open func focusableInner(value: ?Bool): T {
         unsafe {
-            FFIOHOSAceFrameworkFocusable(value)
+            FFIOHOSAceFrameworkFocusable(value ?? true)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -3136,13 +3102,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func tabIndex(index: ?Int32): T {
-        let tmpIndex = index ?? throw IllegalArgumentException("The type now is not supported.")
-        tabIndexInner(tmpIndex)
+        tabIndexInner(index)
     }
 
-    protected open func tabIndexInner(index: Int32): T {
+    protected open func tabIndexInner(index: ?Int32): T {
         unsafe {
-            FFIOHOSAceFrameworkTabIndex(index)
+            FFIOHOSAceFrameworkTabIndex(index ?? 0)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -3157,13 +3122,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func defaultFocus(value: ?Bool): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        defaultFocusInner(tmpValue)
+        defaultFocusInner(value)
     }
 
-    protected open func defaultFocusInner(value: Bool): T {
+    protected open func defaultFocusInner(value: ?Bool): T {
         unsafe {
-            FFIOHOSAceFrameworkDefaultFocus(value)
+            FFIOHOSAceFrameworkDefaultFocus(value ?? false)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -3178,13 +3142,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func groupDefaultFocus(value: ?Bool): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        groupDefaultFocusInner(tmpValue)
+        groupDefaultFocusInner(value)
     }
 
-    protected open func groupDefaultFocusInner(value: Bool): T {
+    protected open func groupDefaultFocusInner(value: ?Bool): T {
         unsafe {
-            FFIOHOSAceFrameworkGroupDefaultFocus(value)
+            FFIOHOSAceFrameworkGroupDefaultFocus(value ?? false)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -3201,13 +3164,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func focusOnTouch(value: ?Bool): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        focusOnTouchInner(tmpValue)
+        focusOnTouchInner(value)
     }
 
-    protected open func focusOnTouchInner(value: Bool): T {
+    protected open func focusOnTouchInner(value: ?Bool): T {
         unsafe {
-            FFIOHOSAceFrameworkFocusOnTouch(value)
+            FFIOHOSAceFrameworkFocusOnTouch(value ?? false)
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
@@ -3225,17 +3187,16 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func bindSheet(isShow: ?Bool, builder: ?CustomBuilder, options!: ?SheetOptions = None): T {
-        let tmpIsShow = isShow ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpBuilder = builder ?? throw IllegalArgumentException("The type now is not supported.")
-        bindSheetInner(tmpIsShow, tmpBuilder, options ?? SheetOptions())
+    public func bindSheet(isShow: ?Bool, builder: CustomBuilder, options!: ?SheetOptions = None): T {
+        bindSheetInner(isShow, builder, options)
     }
 
-    protected open func bindSheetInner(isShow: Bool, builder: CustomBuilder, options: SheetOptions): T {
+    protected open func bindSheetInner(isShow: ?Bool, builder: CustomBuilder, options: ?SheetOptions): T {
+        let tmpOptions = options ?? SheetOptions()
         let cBuilder = Callback0Param<Unit>(builder).getID()
-        let cSheetOption = SheetOptions.parse(options)
+        let cSheetOption = SheetOptions.parse(tmpOptions)
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractbindSheetParamV2(isShow, cBuilder, cSheetOption)
+            FfiOHOSAceFrameworkViewAbstractbindSheetParamV2(isShow ?? false, cBuilder, cSheetOption)
             if (cSheetOption.detents.hasValue) {
                 LibC.free<Int32>(cSheetOption.detents.value.head)
             }
@@ -3254,9 +3215,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func dragPreview(value: ?String): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        dragPreviewInner(tmpValue)
+    public func dragPreview(value: String): T {
+        dragPreviewInner(value)
     }
 
     protected open func dragPreviewInner(value: String): T {

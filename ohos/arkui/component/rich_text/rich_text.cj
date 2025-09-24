@@ -42,7 +42,7 @@ public class RichText <: CommonMethodComponent<RichTextAttribute> & RichTextAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(content: ?ResourceStr) {
-        let tmpContent = content ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpContent = content ?? ""
         var value = match (tmpContent) {
             case res: AppResource => getResourceString(res)
             case _ => (tmpContent as String) ?? ""
@@ -66,7 +66,7 @@ public class RichText <: CommonMethodComponent<RichTextAttribute> & RichTextAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStart(callback: ?() -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { => }
         let lambdaData = Callback0Param<Unit>(tmpCallback)
         unsafe { FfiOHOSAceFrameworkRichTextOnStart(lambdaData.getID()) }
         this
@@ -84,7 +84,7 @@ public class RichText <: CommonMethodComponent<RichTextAttribute> & RichTextAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onComplete(callback: ?() -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { => }
         let lambdaData = Callback0Param<Unit>(tmpCallback)
         unsafe { FfiOHOSAceFrameworkRichTextOnComplete(lambdaData.getID()) }
         this

@@ -372,7 +372,7 @@ public class ColorFilter {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?Array<Float32>) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? []
         if (tmpValue.size != 20) {
             matrix = defaultMatrix
         } else {
@@ -409,8 +409,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(src: ?ResourceStr) {
-        let tmpSrc = src ?? throw IllegalArgumentException("The type now is not supported.")
-        let content = match (tmpSrc) {
+        let content = match (src ?? "") {
             case v: AppResource => getResourceMedia(v)
             case v: String => v
             case _ => ""
@@ -434,7 +433,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(src: ?PixelMap) {
-        let tmpSrc = src ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpSrc = src ?? PixelMap(0)
         unsafe {
             FfiOHOSAceFrameworkImageCreateWithPixelMap(tmpSrc.getID())
         }
@@ -456,7 +455,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alt(src: ?ResourceStr): This {
-        let tmpSrc = src ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpSrc = src ?? ""
         var content = match (tmpSrc) {
             case v: AppResource => getResourceMedia(v)
             case v: String => v
@@ -482,7 +481,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func objectFit(value: ?ImageFit): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? ImageFit.Cover
         unsafe {
             FfiOHOSAceFrameworkImageSetObjectFit(tmpValue.getValue())
         }
@@ -506,7 +505,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func objectRepeat(value: ?ImageRepeat): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? ImageRepeat.NoRepeat
         unsafe {
             FfiOHOSAceFrameworkImageSetObjectRepeat(tmpValue.getValue())
         }
@@ -530,7 +529,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func interpolation(value: ?ImageInterpolation): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? ImageInterpolation.Low
         unsafe {
             FfiOHOSAceFrameworkImageSetInterpolation(tmpValue.getValue())
         }
@@ -555,7 +554,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func renderMode(value: ?ImageRenderMode): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? ImageRenderMode.Original
         unsafe {
             FfiOHOSAceFrameworkImageSetRenderMode(tmpValue.getValue())
         }
@@ -563,10 +562,10 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
     }
 
     protected override func borderInner(
-        width: Length,
-        color: ResourceColor,
-        radius: Length,
-        style: BorderStyle
+        width: ?Length,
+        color: ?ResourceColor,
+        radius: ?Length,
+        style: ?BorderStyle
     ): This {
         super.borderInner(width, color, radius, style)
         unsafe {
@@ -575,7 +574,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         this
     }
 
-    protected override func borderRadiusInner(radius: Length): This {
+    protected override func borderRadiusInner(radius: ?Length): This {
         super.borderRadiusInner(radius)
         unsafe {
             FfiOHOSAceFrameworkImageSetBorderRadius()
@@ -584,10 +583,10 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
     }
 
     protected override func borderRadiusInner(
-        topLeft!: Length,
-        topRight!: Length,
-        bottomLeft!: Length,
-        bottomRight!: Length
+        topLeft!: ?Length,
+        topRight!: ?Length,
+        bottomLeft!: ?Length,
+        bottomRight!: ?Length
     ): This {
         super.borderRadiusInner(topLeft: topLeft, topRight: topRight, bottomLeft: bottomLeft, bottomRight: bottomRight)
         unsafe {
@@ -617,10 +616,8 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sourceSize(width: ?Length, height: ?Length): This {
-        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpHeight = height ?? throw IllegalArgumentException("The type now is not supported.")
-        var width_ = transAppResourceToLength(tmpWidth)
-        var height_ = transAppResourceToLength(tmpHeight)
+        var width_ = transAppResourceToLength(width ?? 0.0.px)
+        var height_ = transAppResourceToLength(height ?? 0.0.px)
         unsafe {
             FfiOHOSAceFrameworkImageSetSourceSize(width_.value, width_.unitType.getValue(), height_.value,
                 height_.unitType.getValue())
@@ -644,9 +641,8 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func syncLoad(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetSyncLoad(tmpValue)
+            FfiOHOSAceFrameworkImageSetSyncLoad(value ?? false)
         }
         this
     }
@@ -695,9 +691,8 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoResize(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetAutoResize(tmpValue)
+            FfiOHOSAceFrameworkImageSetAutoResize(value ?? false)
         }
         this
     }
@@ -718,9 +713,8 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func matchTextDirection(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetMatchTextDirection(tmpValue)
+            FfiOHOSAceFrameworkImageSetMatchTextDirection(value ?? false)
         }
         this
     }
@@ -741,9 +735,8 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fitOriginalSize(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkImageSetFitOriginalSize(tmpValue)
+            FfiOHOSAceFrameworkImageSetFitOriginalSize(value ?? false)
         }
         this
     }
@@ -765,7 +758,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onComplete(callback: ?ImageCompleteCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let lambdaData = CallbackImageLoadResult(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkImageOnCompleteV2(lambdaData.getID())
@@ -790,7 +783,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onError(callback: ?ImageErrorCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let lambdaData = CallbackImageError(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkImageOnErrorV2(lambdaData.getID())
@@ -816,7 +809,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onFinish(event: ?() -> Unit): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { => }
         let lambdaData = Callback0Param<Unit>(tmpEvent)
         unsafe {
             FfiOHOSAceFrameworkImageOnFinish(lambdaData.getID())

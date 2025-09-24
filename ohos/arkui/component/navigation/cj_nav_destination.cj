@@ -140,7 +140,7 @@ public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onBackPressed(callback: ?() -> Bool): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { => true }
         unsafe {
             FfiOHOSAceFrameworkNavdestinationSetOnBackPressed(
                 Callback0Param<Bool>(tmpCallback).getID()
@@ -162,7 +162,7 @@ public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReady(callback: ?Callback<NavDestinationContext, Unit>): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         unsafe {
             let wrapper = { ctx: CJNavDestinationContext =>
                 let pathInfo = NavPathInfo(
@@ -205,9 +205,8 @@ public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func title(value: ?ResourceStr, options!: ?NavigationTitleOptions = None): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try(unsafeSrc = LibC.mallocCString(transResourceStrToString(tmpValue)).asResource()) {
+            try(unsafeSrc = LibC.mallocCString(transResourceStrToString(value ?? "")).asResource()) {
                 if (let Some(v) <- options) {
                     var options_ = v.toNative()
                     FfiOHOSAceFrameworkNavdestinationSetTitleWithStringOptions(unsafeSrc.value, options_)
@@ -237,14 +236,13 @@ public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions = None): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
             if (let Some(v) <- options) {
                 var options_ = v.toNative()
                 FfiOHOSAceFrameworkNavdestinationSetTitleWithBuilderOptions(
-                    Callback0Param<Unit>(tmpValue).getID(), options_)
+                    Callback0Param<Unit>(value ?? {=>}).getID(), options_)
             } else {
-                FfiOHOSAceFrameworkNavdestinationSetTitleWithBuilder(Callback0Param<Unit>(tmpValue).getID())
+                FfiOHOSAceFrameworkNavdestinationSetTitleWithBuilder(Callback0Param<Unit>(value ?? {=>}).getID())
             }
         }
         this
@@ -262,9 +260,8 @@ public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func hideTitleBar(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkNavdestinationSetHideTitleBar(tmpValue)
+            FfiOHOSAceFrameworkNavdestinationSetHideTitleBar(value ?? false)
         }
         this
     }

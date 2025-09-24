@@ -55,6 +55,10 @@ foreign {
 
     func FfiCheckBoxMarkStyle(strokeColor: UInt32, size: Float64, sizeUnit: Int32, strokeWidth: Float64,
         strokeWidthUnit: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 /**
@@ -116,7 +120,7 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func select(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? false
         unsafe {
             FfiOHOSAceFrameworkCheckBoxSelect(tmpValue)
         }
@@ -135,52 +139,66 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        // Need get default value from ffi, value from base/global/system_resources
+        let tmpValue = value ?? 0xff007dff
         unsafe {
             FfiOHOSAceFrameworkCheckBoxSetSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
 
-    protected override func widthInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkCheckBoxSetWidth(value_.value, value_.unitType.getValue())
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkCheckBoxSetWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
 
-    protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkCheckBoxSetHeight(value_.value, value_.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkCheckBoxSetHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkCheckBoxSetSize(width_.value, width_.unitType.getValue(), height_.value,
-                height_.unitType.getValue())
+    protected override func sizeInner(width: ?Length, height: ?Length): This {
+        if (width.isNone() || height.isNone()) {
+            widthInner(width)
+            heightInner(height)
+        } else {
+            var width_ = transAppResourceToLength(width ?? 0.0.vp)
+            var height_ = transAppResourceToLength(height ?? 0.0.vp)
+            unsafe {
+                FfiOHOSAceFrameworkCheckBoxSetSize(width_.value, width_.unitType.getValue(), height_.value,
+                    height_.unitType.getValue())
+            }
         }
         this
     }
 
-    protected override func paddingInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    protected override func paddingInner(value: ?Length): This {
+        var value_ = transAppResourceToLength(value ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxSetPadding(value_.value, value_.unitType.getValue())
         }
         this
     }
 
-    protected override func paddingInner(top: Length, right: Length, bottom: Length, left: Length): This {
-        var top_ = transAppResourceToLength(top)
-        var right_ = transAppResourceToLength(right)
-        var bottom_ = transAppResourceToLength(bottom)
-        var left_ = transAppResourceToLength(left)
+    protected override func paddingInner(top: ?Length, right: ?Length, bottom: ?Length, left: ?Length): This {
+        var top_ = transAppResourceToLength(top ?? 0.vp)
+        var right_ = transAppResourceToLength(right ?? 0.vp)
+        var bottom_ = transAppResourceToLength(bottom ?? 0.vp)
+        var left_ = transAppResourceToLength(left ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxSetPaddings(
                 CJEdge(
@@ -211,7 +229,7 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?OnCheckboxChangeCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _: Bool => }
         let lambdaData = Callback1Param<Bool, Unit>(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkCheckBoxSetOnChange(lambdaData.getID())
@@ -231,15 +249,15 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func shape(value: ?CheckBoxShape): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? CheckBoxShape.Circle
         unsafe {
             FfiOHOSAceFrameworkCheckBoxSetCheckboxStyle(tmpValue.getValue())
         }
         this
     }
 
-    protected override func responseRegionInner(rect: Rectangle): This {
-        let cjRect = rect.parseToNative()
+    protected override func responseRegionInner(rect: ?Rectangle): This {
+        let cjRect = (rect ?? Rectangle()).parseToNative()
         unsafe {
             FfiCheckBoxSetResponseRegion(
                 CJResponseRegion(
@@ -257,10 +275,11 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
         this
     }
 
-    protected override func responseRegionInner(array: Array<Rectangle>): This {
-        let vecFFi = FFIVectorNativeRectangle(array.size)
+    protected override func responseRegionInner(array: ?Array<Rectangle>): This {
+        let tmpArray = array ?? [Rectangle()]
+        let vecFFi = FFIVectorNativeRectangle(tmpArray.size)
         var index = 0
-        for (rect in array) {
+        for (rect in tmpArray) {
             BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++
