@@ -17,7 +17,7 @@ Framework architecture:
 
 As shown in the architecture:
 
-- UI Component API: provide basic components, include Text & Input, Layout, Canvas ets, please refer to [UI component](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_en/arkui-cj/cj-row-column-stack-column.md).
+- UI Component API: provide basic components, include Text & Input, Layout, Canvas ets, please refer to [UI component](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/summary_cjnative_ohos_EN.md).
 - UI Control API: provide UI control capabilities, include curves, animator, custom font, router etc, please refer to [UI Control](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_en/arkui-cj/cj-universal-event-mouse.md).
 - StateManagment: provide state subscribe mechanism, include states change drive UI update, please refer to [StateManage](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md).
 - Declarative Frontend Bridge Layer：provide Bridge Layer for interact between Cangjie Declarative Frontend and ArkUI Engine.
@@ -55,7 +55,7 @@ foundation/arkui/arkui_cangjie_wrapper
 │   ├── curves                 # Animation curves
 │   ├── font                   # Custom font management
 │   ├── measure                # Text measurement calculations
-│   ├── prompt_action          # Prompt dialog operations
+│   ├── prompt_action          # Prompt dialog
 │   └── router                 # Page routing
 └── test                       # Test cases directory
 ```
