@@ -1,15 +1,10 @@
 # ArkUI Framework Cangjie Interface<a name="EN-US_TOPIC_0000001076213364"></a>
 
--   [Introduction](#section15701932113019)
--   [Directory Structure](#section1791423143211)
--   [When to Use](#section171384529150)
--   [Developer Document](#section171384529152)
--   [How to Contribute](#section171384529153)
--   [Repositories Involved](#section1447164910172)
-
 ## Introduction<a name="section15701932113019"></a>
 
 The ArkUI Framework Cangjie Interface provides basic, container, and canvas UI components capabilities, include State Management, UI Components, Animation, Rendering, Events etc. ArkUI Framework Cangjie Interface is only available for standard devices.
+
+## System Architecture
 
 Framework architecture:
 
@@ -17,15 +12,50 @@ Framework architecture:
 
 As shown in the architecture:
 
-- UI Component API: provide basic components, include Text & Input, Layout, Canvas ets, please refer to [UI component](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/summary_cjnative_ohos_EN.md).
-- UI Control API: provide UI control capabilities, include curves, animator, custom font, router etc, please refer to [UI Control](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_en/arkui-cj/cj-universal-event-mouse.md).
-- StateManagment: provide state subscribe mechanism, include states change drive UI update, please refer to [StateManage](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md).
-- Declarative Frontend Bridge Layer：provide Bridge Layer for interact between Cangjie Declarative Frontend and ArkUI Engine.
+Interface Layer
+
+- UI Components: Provides built-in components, including text components, layout components, drawing components, and rendering control components. Developers can combine these built-in components to create desired pages.
+
+- UI Context: Through the UI context, capabilities such as curve interpolation calculations, animations and motion effects, custom fonts, and page routing can be utilized.
+
+- State Management Macros: Using state management macros allows developers to decorate variables they define. Changes to the values of these decorated variables will trigger re-rendering of the UI.
+
+Framework Layer
+
+- UI Component Encapsulation: Implementation of UI component encapsulation by Cangjie, including:
+
+  - Text Components: Text components typically encompass user input information, displayed text content, and small icons. These elements collectively build the interactive interface between the user and the system, enhancing operational convenience and the intuitiveness of information display.
+
+  - Layout Components: Layout components are typically used to manage the size and position of UI components placed on a user page. These include linear layout, stacked layout, flexible layout, relative layout, and grid layout.
+
+  - Drawing Components: Drawing components are used for custom graphic drawing. Developers can draw on the Canvas component, with drawable objects including basic shapes, text, and images.
+
+  - endering Control: Rendering control allows conditional control over whether UI components are displayed. This includes conditional rendering (if/else), loop rendering (ForEach), and lazy data loading (LazyForEach).
+
+- UI Context Encapsulation: Implementation of UI context encapsulation, including:
+
+  - Animation: Using animations can add transition scenarios to UI changes.
+
+  - Dialog: Dialog are used to briefly display information requiring user attention or actions to be processed.
+
+  - Route: Provides the ability to access different pages, including navigating to a specified page within the app, replacing the current page with another page in the same app, returning to the previous page or a specified page, etc.
+
+  - Custom Fonts: Provides the ability to register custom fonts.
+
+  - Measure: Provides calculations related to text width, height, etc.
+
+- State Management: Implementation of state management macros, including:
+
+  - Component-Level State: Manages state at the component level, allowing observation of variable changes within the same component or across different component hierarchies on the same page.
+
+  - Application-Level State: Manages state at the application level, allowing observation across different pages; it is global state management within the application.
+
+- Cangjie ArkUI Development Framework FFI Interface Definitions: Responsible for defining the C language interoperability interfaces for Cangjie, used to provide the capability for the Cangjie UI frontend to interface with the ArkUI development framework. This includes interfacing for both UI components and the UI context.
 
 Dependency Components Introduction in Architecture:
 
 - ace_engine: arkui_cangjie_wrapper relies on the UI components, animations, and interactive event capabilities provided by the ArkUI framework engine.
-- access_token: Web component relies on the authorization and authentication capabilities provided by the access control module.
+- access_token: UI component relies on the authorization and authentication capabilities provided by the access control module.
 - cangjie_ark_interop: API management is facilitated by the API Level capability offered by cangjie_ark_interop.
 - global_cangjie_wrapper: relies on the resource management capability of global_cangjie_wrapper.
 - multimedia_cangjie_wrapper: The PixelMap interface, provided by multimedia_cangjie_wrapper, is utilized by Image component.
@@ -92,7 +122,11 @@ class EntryView {
 }
 ```
 
+## Limitation
+
 Compared to ArkTS, the following features are not supported yet:
+- Advanced Component
+- Embedded Component
 - State Management V2
 - Custom Node capabilities: include FrameNode，RenderNode, BuildNode, pelease refer to [Custom Node Overview](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/arkts-user-defined-node.md)
 - Custom Extend capabilities: includ AttributeModifier, AttributeUpdater, pelease refer to [Custom Extend Overview](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/arkts-user-defined-modifier.md)
