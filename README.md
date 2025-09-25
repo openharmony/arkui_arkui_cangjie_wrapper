@@ -54,7 +54,7 @@ Framework Layer
 
 Dependency Components Introduction in Architecture:
 
-- ace_engine: arkui_cangjie_wrapper relies on the UI components, animations, and interactive event capabilities provided by the ArkUI framework engine.
+- ace_engine: arkui_cangjie_wrapper relies on the UI components, animations, and interactive event capabilities provided by the UI engine.
 - access_token: UI component relies on the authorization and authentication capabilities provided by the access control module.
 - cangjie_ark_interop: API management is facilitated by the API Level capability offered by cangjie_ark_interop.
 - global_cangjie_wrapper: relies on the resource management capability of global_cangjie_wrapper.
@@ -125,9 +125,10 @@ class EntryView {
 ## Limitation
 
 Compared to ArkTS, the following features are not supported yet:
-- Advanced Component
+- Advanced Component：pelease refer to [Advanced Component](https://docs.openharmony.cn/pages/v4.1/en/application-dev/reference/apis-arkui/arkui-ts/ts-composite-components-chip.md)
 - Embedded Component
-- State Management V2
+- Security Component: pelease refer to [Security Component](https://docs.openharmony.cn/pages/v5.1/en/application-dev/reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md)
+- State Management V2: pelease refer to [State Management V2](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/state-management/arkts-new-observedV2-and-trace.md)
 - Custom Node capabilities: include FrameNode，RenderNode, BuildNode, pelease refer to [Custom Node Overview](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/arkts-user-defined-node.md)
 - Custom Extend capabilities: includ AttributeModifier, AttributeUpdater, pelease refer to [Custom Extend Overview](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/arkts-user-defined-modifier.md)
 

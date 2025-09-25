@@ -1,4 +1,4 @@
-# ArkUI开发框架仓颉接口<a name="ZH-CN_TOPIC_0000001076213364"></a>
+# ArkUI开发框架仓颉封装<a name="ZH-CN_TOPIC_0000001076213364"></a>
 
 ## 简介<a name="section15701932113019"></a>
 
@@ -12,18 +12,18 @@ ArkUI开发框架仓颉接口提供开发者使用仓颉语言进行应用UI开�
 
 如架构图所示：
 
-接口层
-- UI组件：提供内置组件，包括文本组件，布局组件，绘制组件，渲染控制，开发者可以通过内置组件组合出所需的页面。
-- UI上下文：通过UI上下文可以使用曲线插值计算，动画动效，自定义字体，页面路由等能力。
-- 状态管理宏：使用状态管理宏，可以修饰开发者定义的变量。被修饰的变量值的改变会引起UI的渲染更新。
+接口层：
+- UI组件：面向开发者提供UI组件接口声明，包括文本组件，布局组件，绘制组件，渲染控制，开发者可以通过内置组件组合出所需的页面。
+- UI上下文：面向开发者提供UI上下文接口声明，开发者可以通过UI上下文可以使用曲线插值计算，动画动效，自定义字体，页面路由等能力。
+- 状态管理宏：面向开发者提供状态管理宏的声明，使用状态管理宏，可以修饰开发者定义的变量，被修饰的变量值的改变会引起UI的渲染更新。
 
-框架层
+框架层：
 - UI组件封装：UI组件仓颉封装实现，包括
   - 文本组件：文本组件通常涵盖用户输入的信息、呈现的文本内容以及小图标，这些元素共同构建了用户与系统间的交互界面，提升了操作的便捷性与信息展示的直观性。
   - 布局组件：布局组件通常用于管理用户页面所放置UI组件的大小和位置，包括线性布局，层叠布局，弹性布局，相对布局，栅格布局。
   - 绘制组件：绘制组件用于自定义绘制图形，开发者可以在Canvas组件上进行绘制，绘制对象可以是基础形状、文本、图片等。
   - 渲染控制：渲染控制可以根据条件控制UI组件是否显示，包括条件渲染（if/else），循环渲染（ForEach），数据懒加载（LazyForEach）。
-- UI上下文封装：UI上下文封装实现，包括
+- UI上下文封装：UI上下文仓颉封装实现，包括
   - 动画：使用动画可以为UI变化添加过度场景。
   - 弹窗：弹窗用于短时间内展示用户需关注的信息或待处理的操作。
   - 路由：提供访问不同页面的能力，包括跳转到应用内的指定页面、同应用内的某个页面替换当前页面、返回上一页面或指定的页面等
@@ -32,11 +32,11 @@ ArkUI开发框架仓颉接口提供开发者使用仓颉语言进行应用UI开�
 - 状态管理：状态管理宏的实现，包括
   - 组件级状态：组件级别的状态管理，可以观察同一个页面的组件内或不同组件层级的变量变化。
   - 应用级状态：应用级别的状态管理，可以观察不同页面，是应用内全局的状态管理。
-- 仓颉ArkUI开发框架FFI接口定义：负责定义C语言互操作仓颉接口，用于提供仓颉UI前端和ArkUI开发框架对接的能力，包括UI组件和UI上下文的对接。
+- 仓颉ArkUI开发框架FFI接口定义：提供仓颉C语言互操作声明，用于提供仓颉UI前端和ArkUI开发框架对接的能力，包括UI组件和UI上下文的对接。
 
 架构图中依赖部件引入说明：
 
-- arkui_ace_engine：arkui_cangjie_wrapper依赖ArkUI开发框架提供的UI组件，动画，交互事件能力。
+- arkui_ace_engine：arkui_cangjie_wrapper依赖UI后端引擎提供的UI组件，动画，交互事件能力。
 - security_access_token：UI组件依赖访问控制部件提供的授权与鉴权能力。
 - cangjie_ark_interop：依赖cangjie_ark_interop提供的APILevel能力进行API管理。
 - global_cangjie_wrapper：依赖global_cangjie_wrapper提供的资源管理仓能力。
@@ -107,9 +107,10 @@ class EntryView {
 ## 约束
 
 与ArkTS相比，暂不支持以下功能：
-- 高级组件
+- 高级组件：详细介绍请参考[高级组件](https://docs.openharmony.cn/pages/v4.1/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-composite-components-chip.md)
 - 嵌入式组件：全屏启动原子化服务组件（FullScreenLaunchComponent），同应用进程嵌入式组件 (EmbeddedComponent)
-- 状态管理V2
+- 安全控件：详细介绍请参考[安全控件](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md)
+- 状态管理V2：详细介绍请参考[状态管理V2](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/ui/state-management/arkts-new-observedV2-and-trace.md)
 - 自定义节点能力：包括自定义组件节点(FrameNode)，自定义渲染节点(RenderNode)，自定义声明式节点(BuilderNode)，详细介绍请参考[自定义节点概述](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/ui/arkts-user-defined-node.md)
 - 自定义扩展能力：包括属性修改器(AttributeModifier)，属性更新器(AttributeUpdater)，详细介绍请参考[自定义扩展概述](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/ui/arkts-user-defined-modifier.md)
 
