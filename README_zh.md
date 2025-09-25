@@ -107,12 +107,12 @@ class EntryView {
 ## 约束
 
 与ArkTS相比，暂不支持以下功能：
-- 高级组件：详细介绍请参考[高级组件](https://docs.openharmony.cn/pages/v4.1/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-composite-components-chip.md)
+- 高级组件：详细介绍请参考[高级组件](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)
 - 嵌入式组件：全屏启动原子化服务组件（FullScreenLaunchComponent），同应用进程嵌入式组件 (EmbeddedComponent)
-- 安全控件：详细介绍请参考[安全控件](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md)
-- 状态管理V2：详细介绍请参考[状态管理V2](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/ui/state-management/arkts-new-observedV2-and-trace.md)
-- 自定义节点能力：包括自定义组件节点(FrameNode)，自定义渲染节点(RenderNode)，自定义声明式节点(BuilderNode)，详细介绍请参考[自定义节点概述](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/ui/arkts-user-defined-node.md)
-- 自定义扩展能力：包括属性修改器(AttributeModifier)，属性更新器(AttributeUpdater)，详细介绍请参考[自定义扩展概述](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/ui/arkts-user-defined-modifier.md)
+- 安全控件：详细介绍请参考[安全控件](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md)
+- 状态管理V2：详细介绍请参考[状态管理V2](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/state-management/arkts-mvvm-V2.md)
+- 自定义节点能力：包括自定义组件节点(FrameNode)，自定义渲染节点(RenderNode)，自定义声明式节点(BuilderNode)，详细介绍请参考[自定义节点概述](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/arkts-user-defined-node.md)
+- 自定义扩展能力：包括属性修改器(AttributeModifier)，属性更新器(AttributeUpdater)，详细介绍请参考[自定义扩展概述](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/arkts-user-defined-modifier.md)
 
 ## 参考文档<a name="section171384529152"></a>
 
