@@ -27,22 +27,33 @@ import std.deriving.Derive
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface Length {
+    /**
+     * The value of length property.
+     * @throws { BusinessException } 100001 - Internal error.
+     */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     prop value: Float64 {
         get() {
-            throw BusinessException(10000, "Current type not support get 'value' attribute")
+            throw BusinessException(100001, "Internal error.")
         }
     }
+
+    /**
+     * The unit of length property.
+     * @throws { BusinessException } 100001 - Internal error.
+     */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     prop unitType: LengthUnit {
         get() {
-            throw BusinessException(10000, "Current type not support get 'unitType' attribute")
+            throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -218,7 +229,7 @@ public enum LengthUnit {
             case Fp => 2
             case Percent => 3
             case Lpx => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -234,7 +245,7 @@ public enum LengthUnit {
             case 2 => LengthUnit.Fp
             case 3 => LengthUnit.Percent
             case 4 => LengthUnit.Lpx
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }

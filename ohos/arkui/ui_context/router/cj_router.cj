@@ -92,7 +92,7 @@ public enum RouterMode {
         match (this) {
             case Standard => 0
             case Single => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }

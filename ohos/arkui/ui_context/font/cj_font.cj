@@ -232,11 +232,13 @@ public class Font {
      *
      * @param { ResourceStr } familyName
      * @param { ResourceStr } familySrc
-     * @relation registerFont(options: font.FontOptions): void
+     * @throws { BusinessException } 401 - Invalid input parameter.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func registerFont(familyName!: ResourceStr, familySrc!: ResourceStr): Unit {
         var src: String = ""
@@ -247,10 +249,10 @@ public class Font {
                 } else if (res.resType == STRING_TYPE) {
                     src = getResourceString(res)
                 } else {
-                    throw IllegalArgumentException("Font.registerFont: not support res type.")
+                    throw BusinessException(401, "Invalid input parameter..")
                 }
             case str: String => src = str
-            case _ => throw IllegalArgumentException("Font.registerFont: not support familySrc type.")
+            case _ => throw BusinessException(401, "Invalid input parameter.")
         }
         unsafe {
             try (nameCStr = LibC.mallocCString(transResourceStrToString(familyName)).asResource(),

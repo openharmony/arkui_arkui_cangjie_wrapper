@@ -1474,7 +1474,7 @@ public enum SheetMode {
         match (this) {
             case Overlay => 0
             case Embedded => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -1527,7 +1527,7 @@ public enum ScrollSizeMode {
         match (this) {
             case FollowDetent => 0
             case Continuous => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 

@@ -77,16 +77,16 @@ class CallbackTextPickerResult <: BaseCallBack {
 
     protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackTextPickerResult")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<TextPickerResult>(argv.read()) }
         if (ptrArg0.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackTextPickerResult")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
         closure(arg0)
@@ -221,11 +221,12 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
      *
      * @param { OnTextPickerChangeCallback } callback - the callback of onChange.
      * @returns { This }
-     * @relation onChange(callback: (value: string | string[], index: number | number[]) => void): TextPickerAttribute
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onChange(callback: ?OnTextPickerChangeCallback): This {
         let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")

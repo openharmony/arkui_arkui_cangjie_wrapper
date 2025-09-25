@@ -69,11 +69,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onClick(event: (event: ClickEvent) => void): T;
+     * @throws { BusinessException } 100001 - Internal error.
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onClick(event: ?(ClickEvent) -> Unit): T {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
@@ -142,11 +144,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onTouch(event: (event: TouchEvent) => void): T;
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onTouch(event: ?(TouchEvent) -> Unit): T {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
@@ -194,11 +197,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onAreaChange(event: (oldValue: Area, newValue: Area) => void): T;
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onAreaChange(event: ?(Area, Area) -> Unit): T {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
@@ -220,11 +224,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback): T;
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onVisibleAreaChange(raitos: ?Array<Float64>, event: ?(Bool, Float64) -> Unit): T {
         let tmpRaitos = raitos ?? throw IllegalArgumentException("The type now is not supported.")
@@ -253,11 +258,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onMouse(event: (event: MouseEvent) => void): T;
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onMouse(event: ?(MouseEvent) -> Unit): T {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
@@ -281,11 +287,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onKeyEvent(event: (event: KeyEvent) => void): T;
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onKeyEvent(event: ?(KeyEvent) -> Unit): T {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
@@ -356,11 +363,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T;
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onDragStart(event: ?(DragInfo) -> DragItemInfo): T {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
@@ -392,11 +400,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T;
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onDragStart(event: ?(DragInfo) -> CustomBuilder): T {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
@@ -422,11 +431,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T;
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onDragStart(event: ?(DragInfo) -> Unit): T {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
@@ -452,11 +462,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T;
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onDragEnter(event: ?(DragInfo) -> Unit): T {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
@@ -480,11 +491,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onDragMove(event: (event: DragEvent, extraParams?: string) => void): T;
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onDragMove(event: ?(DragInfo) -> Unit): T {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
@@ -507,11 +519,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T;
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onDragLeave(event: ?(DragInfo) -> Unit): T {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
@@ -535,11 +548,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onDrop(event: (event: DragEvent, extraParams?: string) => void): T;
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onDrop(event: ?(DragInfo) -> Unit): T {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
@@ -977,11 +991,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { AlignRuleOptions } value
      * @returns { This }
-     * @relation alignRules(value: AlignRuleOption): T;
+     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func alignRules(value: ?AlignRuleOptions): T {
         alignRulesInner(value ?? AlignRuleOptions())

@@ -79,7 +79,7 @@ struct CGuideLineInfos {
         this.guideline = if (size > 0) {
             let ptr = unsafe { LibC.malloc<CGuideLineStyle>(count: size) }
             if (ptr.isNull()) {
-                throw IllegalMemoryException("memory malloc failed.")
+                throw BusinessException(100001, "Internal error: failed to allocate memory.")
             }
             for (i in 0..size) {
                 unsafe { ptr.write(i, CGuideLineStyle(infos[i])) }
@@ -127,7 +127,7 @@ struct CBarrierStyle {
             } else {
                 let ptr = unsafe { LibC.malloc<CString>(count: size) }
                 if (ptr.isNull()) {
-                    throw IllegalMemoryException("memory malloc failed.")
+                    throw BusinessException(100001, "Internal error: failed to allocate memory.")
                 }
                 for (i in 0..size) {
                     unsafe { ptr.write(i, LibC.mallocCString(tmpReferencedId[i])) }
@@ -158,7 +158,7 @@ struct CBarrierInfos {
         this.barrier = if (size > 0) {
             let ptr = unsafe { LibC.malloc<CBarrierStyle>(count: size) }
             if (ptr.isNull()) {
-                throw IllegalMemoryException("memory malloc failed.")
+                throw BusinessException(100001, "Internal error: failed to allocate memory.")
             }
             for (i in 0..size) {
                 unsafe { ptr.write(i, CBarrierStyle(barrierInfos[i])) }
@@ -397,11 +397,12 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     *
     * @param { Array<GuideLineStyle> } value
     * @returns { This }
-    * @relation guideLine(value: Array<GuideLineStyle>): RelativeContainerAttribute
+    * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func guideLine(value: ?Array<GuideLineStyle>): This {
         let cGuideLine = CGuideLineInfos(value ?? [])
@@ -415,11 +416,12 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     *
     * @param { Array<BarrierStyle> } value
     * @returns { This }
-    * @relation barrier(value: Array<BarrierStyle>): RelativeContainerAttribute
+    * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func barrier(value: ?Array<BarrierStyle>): This {
         let cBarrier = CBarrierInfos(value ?? [])

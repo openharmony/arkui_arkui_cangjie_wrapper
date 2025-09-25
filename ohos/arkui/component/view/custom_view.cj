@@ -453,12 +453,13 @@ public abstract class CustomView <: RemoteView & Observer {
 
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func initializeConsume(name: String): ObservedPropertyAbstract {
         match (provideVars_.get(name)) {
             case Some(v) => return v
-            case _ => throw NoneValueException("missing @Provide property with name ${name}.")
+            case _ => throw BusinessException(10905304, "Missing @Provide property with name ${name}.")
         }
     }
 

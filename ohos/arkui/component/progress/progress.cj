@@ -140,7 +140,7 @@ public enum ProgressStatus {
         match (this) {
             case Progressing => 0
             case Loading => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }

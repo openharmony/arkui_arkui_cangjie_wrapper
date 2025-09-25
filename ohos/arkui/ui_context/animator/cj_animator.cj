@@ -113,7 +113,7 @@ public enum AnimatorFill {
             case Forwards => "forwards"
             case Backwards => "backwards"
             case Both => "both"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -158,7 +158,7 @@ public enum AnimatorDirection {
             case Reverse => "reverse"
             case Alternate => "alternate"
             case AlternateReverse => "alternate-reverse"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -368,11 +368,13 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * Trigger when vsync callback.
      *
-     * @relation onframe: (progress: number) => void
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public mut prop onFrame: (Float64) -> Unit {
         get() {
@@ -383,7 +385,7 @@ public class AnimatorResult <: RemoteDataLite {
                 let lambdaData = Callback1Param<Float64, Unit>(callback)
                 let errCode = FfiAnimatorOnFrame(getID(), lambdaData.getID())
                 if (errCode != 0) {
-                    throw BusinessException(errCode, "AnimatorResult play failed: Internal error.")
+                    throw BusinessException(errCode, "Internal error: AnimatorResult play failed.")
                 }
                 onFrame_ = callback
             }
@@ -393,11 +395,13 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * The animation is finished.
      *
-     * @relation onFinish: () => void
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public mut prop onFinish: () -> Unit {
         get() {
@@ -418,11 +422,13 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * The animation is canceled.
      *
-     * @relation onCancel: () => void
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public mut prop onCancel: () -> Unit {
         get() {
@@ -443,11 +449,13 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * The animation is repeated.
      *
-     * @relation onRepeat: () => void
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public mut prop onRepeat: () -> Unit {
         get() {
@@ -469,11 +477,13 @@ public class AnimatorResult <: RemoteDataLite {
      * Reset the options for current animator.
      *
      * @param { AnimatorOptions } options
-     * @relation
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func reset(options: AnimatorOptions): Unit {
         unsafe {
@@ -496,9 +506,16 @@ public class AnimatorResult <: RemoteDataLite {
         }
     }
 
+    /**
+     * Start the animation.
+     *
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> The specified page is not found or the object property list is not obtained.
+     */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func play(): Unit {
         unsafe {
@@ -512,11 +529,13 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * Ends the animation.
      *
-     * @relation finish(): void
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func finish(): Unit {
         unsafe {
@@ -530,11 +549,13 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * Pauses the animation.
      *
-     * @relation pause(): void
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func pause(): Unit {
         unsafe {
@@ -548,11 +569,13 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * Cancels the animation.
      *
-     * @relation cancel(): void
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func cancel(): Unit {
         unsafe {
@@ -567,11 +590,13 @@ public class AnimatorResult <: RemoteDataLite {
      * Plays the animation in reverse direction.
      * Invalid when using interpolating-spring curve.
      *
-     * @relation reverse(): void
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func reverse(): Unit {
         unsafe {
@@ -605,11 +630,13 @@ public class AnimatorResult <: RemoteDataLite {
      * The expected frame rate of dynamical of rate range.
      *
      * @param { ExpectedFrameRateRange } rateRange
-     * @relation
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): Unit {
         let checkFrameRateRange = checkExpectedFrameRateRange(rateRange)

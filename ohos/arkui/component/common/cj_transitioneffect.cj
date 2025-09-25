@@ -444,7 +444,7 @@ public enum TransitionEdge {
             case Bottom => 1
             case Start => 2
             case End => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }

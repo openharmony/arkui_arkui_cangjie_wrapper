@@ -72,7 +72,7 @@ public enum BadgePosition {
             case RightTop => 0
             case Right => 1
             case Left => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }

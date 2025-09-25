@@ -115,11 +115,11 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
         match (cacheData) {
             case None =>
                 nativeLog(msg)
-                throw NoneValueException(msg)
+                throw BusinessException(100001, msg)
             case Some(realData) =>
                 if (index != realData[1]) {
                     nativeLog(msg)
-                    throw NoneValueException(msg)
+                    throw BusinessException(100001, msg)
                 }
                 cacheData = None
                 realData[0]

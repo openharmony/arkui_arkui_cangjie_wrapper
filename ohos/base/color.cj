@@ -32,12 +32,18 @@ let COLOR_TRANSPARENT_VALUE: UInt32 = 0X00000000
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface ResourceColor {
+
+    /**
+     * The value type of ResourceColor.
+     * @throws { BusinessException } 100001 - Internal error.
+     */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     func toUInt32(): UInt32 {
-        throw BusinessException(10000, "AppResource can not get 'UInt32' value from ResourceColor")
+        throw BusinessException(100001, "Internal error.")
     }
 }
 

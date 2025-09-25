@@ -335,7 +335,7 @@ public enum LaunchMode {
             case MoveToTopSingleTon => 1
             case PopToSingleTon => 2
             case NewInstance => 3
-            case _  => throw IllegalArgumentException("The type is not supported.")
+            case _  => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -440,7 +440,7 @@ public enum BarStyle {
         match (this) {
             case Standard => 0
             case Stack => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }

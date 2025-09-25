@@ -137,7 +137,7 @@ func getRemoteViewOrThrow(id: Int64): RemoteView {
     match (optHost) {
         case None =>
             throwNativeError("RemoteView of " + id.toString() + " does not exist!\n")
-            throw NoneValueException("RemoteView of " + id.toString() + " does not exist!")
+            throw BusinessException(100001, "Internal error: RemoteView of " + id.toString() + " does not exist!")
         case Some(host) => host
     }
 }

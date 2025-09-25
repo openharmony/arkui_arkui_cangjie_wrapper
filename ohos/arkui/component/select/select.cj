@@ -188,7 +188,7 @@ public class SelectOptions {
         } catch (e: Exception) {
             valueCString?.free()
             iconCString?.free()
-            throw e
+            throw BusinessException(100001, "Internal error: failed to allocate memory.")
         }
         return NativeSelectOption(
             valueCString.getOrThrow(),
@@ -237,11 +237,12 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      *
      * @param { Array<SelectOptions> } options
      * @returns { This }
-     * @relation (options: Array<SelectOption>): SelectAttribute
+     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public init(options: ?Array<SelectOptions>) {
         let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
