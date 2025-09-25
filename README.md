@@ -125,12 +125,12 @@ class EntryView {
 ## Limitation
 
 Compared to ArkTS, the following features are not supported yet:
-- Advanced Component：pelease refer to [Advanced Component](https://docs.openharmony.cn/pages/v4.1/en/application-dev/reference/apis-arkui/arkui-ts/ts-composite-components-chip.md)
-- Embedded Component
-- Security Component: pelease refer to [Security Component](https://docs.openharmony.cn/pages/v5.1/en/application-dev/reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md)
-- State Management V2: pelease refer to [State Management V2](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/state-management/arkts-new-observedV2-and-trace.md)
-- Custom Node capabilities: include FrameNode，RenderNode, BuildNode, pelease refer to [Custom Node Overview](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/arkts-user-defined-node.md)
-- Custom Extend capabilities: includ AttributeModifier, AttributeUpdater, pelease refer to [Custom Extend Overview](https://docs.openharmony.cn/pages/v5.1/en/application-dev/ui/arkts-user-defined-modifier.md)
+- Advanced Component：pelease refer to [Advanced Component](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)
+- Embedded Component: FullScreenLaunchComponent, EmbeddedComponent
+- Security Component: pelease refer to [Security Component](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md)
+- State Management V2: pelease refer to [State Management V2](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/ui/state-management/arkts-mvvm-V2.md)
+- Custom Node capabilities: include FrameNode，RenderNode, BuildNode, pelease refer to [Custom Node Overview](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/ui/arkts-user-defined-node.md)
+- Custom Extend capabilities: includ AttributeModifier, AttributeUpdater, pelease refer to [Custom Extend Overview](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/ui/arkts-user-defined-modifier.md)
 
 ## Developer Document<a name="section171384529152"></a>
 
