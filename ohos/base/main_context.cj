@@ -59,4 +59,4 @@ public class MainThreadContext <: ThreadContext {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public let Main: MainThreadContext = MainThreadContext.instance_
+public let UIThread: MainThreadContext = MainThreadContext.instance_

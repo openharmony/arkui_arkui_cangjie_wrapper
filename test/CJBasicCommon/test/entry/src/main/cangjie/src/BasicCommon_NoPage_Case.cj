@@ -26,8 +26,8 @@ import std.math.MathExtension
 import ohos.ark_interop.*
 import ohos.ui_test.*
 import std.collection.ArrayList
-import ohos.window.{Window, WindowStage, WindowCallbackType, WindowEventType, WindowStageEventType, Size, 
-    WindowStatusType, TitleButtonRect, SystemBarProperties, Orientation, createWindow, findWindow, WindowType, 
+import ohos.window.{Window, WindowStage, WindowCallbackType, WindowEventType, WindowStageEventType, Size,
+    WindowStatusType, TitleButtonRect, SystemBarProperties, Orientation, createWindow, findWindow, WindowType,
     getLastWindow, shiftAppWindowFocus, AvoidAreaType, WindowProperties, ColorSpace, Configuration as WindowConfig}
 
 @Test
@@ -234,8 +234,8 @@ class BasicCommon_NoPage_Case {
         @Expect(0.3, length.value)
 
         try {
-            Main.hasEnded()
-            Main.end()
+            UIThread.hasEnded()
+            UIThread.end()
         } catch (e: Exception) {
             Hilog.info(1, "1", "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
         }
@@ -277,16 +277,9 @@ class BasicCommon_NoPage_Case {
         }
         try {
             dtcustom.aboutToReuseInternal(ReuseParams())
-            dtcustom.delayCompleteRerender(true)
             dtcustom.aboutToReuseInternal(ReuseParams())
         } catch (e: Exception) {
             Hilog.info(1, "1", "Cangjie-Test", "test_customview aboutToReuseInternal: ${e.toString()}")
-            message = e.toString()
-        }
-        try {
-            dtcustom.aboutToRecycleInternal()
-        } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_customview aboutToRecycleInternal: ${e.toString()}")
             message = e.toString()
         }
         try {
@@ -296,14 +289,7 @@ class BasicCommon_NoPage_Case {
             Hilog.info(1, "1", "Cangjie-Test", "test_customview addProvideVar: ${e.toString()}")
             message = e.toString()
         }
-        try {
-            dtcustom.markLazyForEachProcess("lazyGroupId1")
-            dtcustom.markLazyForEachProcess("lazyGroupId2")
-            dtcustom.removeChildGroupById("lazyGroupId1")
-        } catch (e: Exception) {
-            Hilog.info(1, "1", "Cangjie-Test", "test_customview markLazyForEachProcess: ${e.toString()}")
-            message = e.toString()
-        }
+
         try {
             var bId = If.getBranchId()
             dtcustom.ifElseBranchUpdateFunction(bId, {=>})
@@ -731,12 +717,6 @@ class DtTestCustomView <: CustomView {
         super.getOrCreateRecycleManager()
         super.getRecycleManager()
         super.isRecycled()
-        super.delayCompleteRerender(true)
-        super.flushDelayCompleteRerender()
-        super.aboutToRecycleInternal()
-
-        super.recycleSelf("name")
-        super.setParent(DtTestCustomView(Option.None, Option.None))
         super.recycleSelf("name")
         super.addChildById(3, DtTestCustomView(Option.None, Option.None))
         super.traverseChildDoRecycleOrReuse(true)

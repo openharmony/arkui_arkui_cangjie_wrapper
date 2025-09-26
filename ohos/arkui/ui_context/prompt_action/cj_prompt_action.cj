@@ -1702,7 +1702,8 @@ public class PromptAction {
    */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        workerthread: true
     ]
     public func openCustomDialog(options: CustomDialogOptions, callBack: (Int32) -> Unit): Unit {
         let cOptions = parseCustomDialogOptions(options)

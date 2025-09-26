@@ -64,36 +64,20 @@ foreign {
     func FfiOHOSAceFrameworkNativeViewGetUINodeId(nativeViewId: Int64): Int32
 }
 
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func create(view: View): Unit {
+protected class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
+    protected static func create(view: View): Unit {
         unsafe {
             FfiOHOSAceFrameworkNativeViewCreate(view.getID())
         }
     }
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func create(remoteId: Int64): View {
+    protected static func create(remoteId: Int64): View {
         let id = unsafe {
             FfiOHOSAceFrameworkNativeViewCtor(remoteId)
         }
         View(id)
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func createRecycle(componentCall: View, isRecycling: Bool, reuseId: String, callback: () -> Unit) {
+    protected static func createRecycle(componentCall: View, isRecycling: Bool, reuseId: String, callback: () -> Unit) {
         unsafe {
             FfiOHOSAceFrameworkNativeViewCreateRecycle(componentCall.getID(), isRecycling, LibC.mallocCString(reuseId),
                 Callback0Param<Unit>(callback).getID())
@@ -108,91 +92,55 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
         unsafe { FfiOHOSAceFrameworkNativeViewGetUINodeId(getID()) }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func markNeedUpdate(): Unit {
+    protected func markNeedUpdate(): Unit {
         unsafe {
             FfiOHOSAceFrameworkNativeViewMarkNeedUpdate(this.getID())
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func needsUpdate(): Bool {
+    protected func needsUpdate(): Bool {
         unsafe {
             FfiOHOSAceFrameworkNativeViewNeedsUpdate(this.getID())
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func markStatic(): Unit {
+    protected func markStatic(): Unit {
         unsafe {
             FfiOHOSAceFrameworkNativeViewMarkStatic(this.getID())
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func isStatic(): Bool {
+    protected func isStatic(): Bool {
         unsafe {
             FfiOHOSAceFrameworkNativeViewIsStatic(this.getID())
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func destroy(): Unit {
+    protected func destroy(): Unit {
         unsafe {
             FfiOHOSAceFrameworkNativeViewDestroy(getID())
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func syncInstanceId(): Unit {
+    protected func syncInstanceId(): Unit {
         unsafe {
             FfiOHOSAceFrameworkNativeViewSyncInstanceId(getID())
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func restoreInstanceId(): Unit {
+    protected func restoreInstanceId(): Unit {
         unsafe {
             FfiOHOSAceFrameworkNativeViewRestoreInstanceId(getID())
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func finishUpdateFunc(elmtId: Int64): Unit {
+    protected func finishUpdateFunc(elmtId: Int64): Unit {
         unsafe {
             FfiOHOSAceFrameworkNativeViewFinishUpdateFunc(getID(), elmtId)
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getDeletedElemtIds(): ArrayList<Int64> {
+    protected func getDeletedElemtIds(): ArrayList<Int64> {
         let vecFFi = unsafe { FfiOHOSAceFrameworkViewGetDeletedElemtIds(getID()) }
         let size = vecFFi.size
         var result = ArrayList<Int64>(size)
@@ -207,11 +155,7 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
         result
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func deletedElmtIdsHaveBeenPurged(elmtIds: ArrayList<Int64>): Unit {
+    protected func deletedElmtIdsHaveBeenPurged(elmtIds: ArrayList<Int64>): Unit {
         let vecFFi = FFIVectorInt64(elmtIds.size)
         var index = 0
         for (id in elmtIds) {
@@ -224,21 +168,13 @@ public open class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
         vecFFi.free()
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func isFirstRender(): Bool {
+    protected func isFirstRender(): Bool {
         unsafe {
             return FfiOHOSAceFrameworkNativeViewIsFirstRender(getID())
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func resetRecycleCustomNode() {
+    protected func resetRecycleCustomNode() {
         unsafe {
             FfiOHOSAceFrameworkNativeViewResetRecycleCustomNode(getID())
         }
