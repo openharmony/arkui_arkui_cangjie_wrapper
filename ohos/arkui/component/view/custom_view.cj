@@ -52,11 +52,7 @@ type RecycleUpdateFunc = (Int64, Bool, ?CustomView) -> UINodeBase
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class CustomView <: RemoteView & Observer {
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public let nativeView: View
+    protected let nativeView: View
 
     private let compId_: Int64
 
@@ -187,11 +183,7 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func updateElement(elmtId: Int64): Unit {
+    protected func updateElement(elmtId: Int64): Unit {
         if (elmtId == id()) {
             return
         }
@@ -239,11 +231,7 @@ public abstract class CustomView <: RemoteView & Observer {
         } while (this.dirtDescendantElementIds_.size > 0)
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func purgeDeletedElmtIds(rmElmtIds: ArrayList<Int64>) {
+    protected func purgeDeletedElmtIds(rmElmtIds: ArrayList<Int64>) {
         if (rmElmtIds.size == 0) {
             return
         }
@@ -349,11 +337,7 @@ public abstract class CustomView <: RemoteView & Observer {
         runReuse_ = false
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func aboutToRecycleInternal(): Unit {
+    protected override func aboutToRecycleInternal(): Unit {
         runReuse_ = true
         aboutToRecycle()
         traverseChildDoRecycleOrReuse(true)
@@ -401,29 +385,17 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func delayCompleteRerender(deep: Bool) {
+    protected func delayCompleteRerender(deep: Bool) {
         this.delayRecycleNodeRerender = true
         this.delayRecycleNodeRerenderDeep = deep
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func flushDelayCompleteRerender() {
+    protected func flushDelayCompleteRerender() {
         this.forceCompleteRerender(this.delayRecycleNodeRerenderDeep);
         this.delayRecycleNodeRerender = false
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func resetRecycleCustomNode() {
+    protected func resetRecycleCustomNode() {
         nativeView.resetRecycleCustomNode()
     }
 
@@ -507,11 +479,7 @@ public abstract class CustomView <: RemoteView & Observer {
         return compId_
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func markLazyForEachProcess(groupId: String): Unit {
+    protected func markLazyForEachProcess(groupId: String): Unit {
         isLazyForEachProcess_ = true
         lazyGroupId_ = groupId
         if (!lazyGroups_.contains(groupId)) {
@@ -519,19 +487,11 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func resetLazyForEachProcess(): Unit {
+    protected func resetLazyForEachProcess(): Unit {
         isLazyForEachProcess_ = false
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func removeChildGroupById(groupId: String): Bool {
+    protected func removeChildGroupById(groupId: String): Bool {
         let optGroup = lazyGroups_.remove(groupId)
         match (optGroup) {
             case Some(group) =>
@@ -561,11 +521,7 @@ public abstract class CustomView <: RemoteView & Observer {
         children_.add(id, child)
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func removeChildById(id: Int64): Bool {
+    protected func removeChildById(id: Int64): Bool {
         let child = children_.remove(id)
         let res = child.isSome()
         if (res) {
@@ -578,11 +534,7 @@ public abstract class CustomView <: RemoteView & Observer {
         nativeView
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setParent(parent: Option<CustomView>): Unit {
+    protected func setParent(parent: Option<CustomView>): Unit {
         this.parent_ = parent
     }
 

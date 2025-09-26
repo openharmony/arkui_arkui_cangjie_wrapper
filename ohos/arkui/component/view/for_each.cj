@@ -81,49 +81,6 @@ public class ForEach <: UINodeBase {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func create<T>(viewID: Int64, parentView: CustomView, dataSource: CollectionEx<T>,
-        itemGeneratorFunc!: ItemGenFuncType<T>,
-        keyGeneratorFunc!: KeyGenFuncType<T> = {
-            realData: T, idx: Int64 => match (realData) {
-                case realDataStr: ToString => realDataStr.toString()
-                case _ => idx.toString()
-            }
-        }): Unit {
-        // capture generic type and dataSource information in this closure: lambdaFFI.
-        let lambdaViewFFI = {
-            idx: Int64 =>
-            let realData = dataSource[idx]
-            itemGeneratorFunc(realData, idx)
-        }
-        let lambdaKeyFFI = {
-            idx: Int64 =>
-            let realData = dataSource[idx]
-            let key = keyGeneratorFunc(realData, idx)
-            ExternalString(key)
-        }
-        unsafe {
-            try (viewIDCStr = LibC.mallocCString(viewID.toString()).asResource()) {
-                FfiOHOSAceFrameworkForEachCreateFU(viewIDCStr.value, parentView.getID(), dataSource.size,
-                    Callback1Param<Int64, Unit>(lambdaViewFFI).getID(),
-                    Callback1Param<Int64, ExternalString>(lambdaKeyFFI).getID())
-            }
-        }
-    }
-
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func create() {
-        unsafe {
-            FfiOHOSAceFrameworkForEachCreate()
-        }
-    }
-
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     public init(subcomponent: () -> Unit) {
         this.child = subcomponent
         unsafe {

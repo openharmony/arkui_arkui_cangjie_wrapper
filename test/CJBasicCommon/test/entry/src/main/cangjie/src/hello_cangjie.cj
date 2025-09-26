@@ -52,12 +52,6 @@ class Hello_Cangjie {
                     .onClick {
                         e =>
                         LegalCallCheck.check(this)
-                        try {
-                            this.resetRecycleCustomNode()
-                        } catch (e: Exception) {
-                            Hilog.info(1, "1", "Cangjie-Test", "test_openView: ${e.toString()}")
-                            message = e.toString()
-                        }
                         Hilog.info(1, "1", "Cangjie-App", "Hello Cangjie")
                     }
                     .fontSize(40)

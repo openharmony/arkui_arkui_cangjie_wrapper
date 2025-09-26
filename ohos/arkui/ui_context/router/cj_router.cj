@@ -240,7 +240,8 @@ public class Router {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        workerthread: true
     ]
     public func pushUrl(url!: String, params!: String = ""): Unit {
         unsafe {
