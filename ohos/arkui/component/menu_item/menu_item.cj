@@ -58,7 +58,7 @@ let defaultMenuItemContentFontColor = 0xE5000000
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttribute {
+public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
      * Creates the MenuItem component.

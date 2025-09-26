@@ -669,7 +669,7 @@ public class NavPathStack <: RemoteData {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Navigation <: CommonMethodComponent<NavigationAttribute> & NavigationAttribute {
+public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribute {
     /**
      * Constructor of Navigation
      *

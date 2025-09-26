@@ -49,7 +49,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Stack <: CommonMethodComponent<StackAttribute> & StackAttribute {
+public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
     /**
     * Defines the constructor of Stack.
     *

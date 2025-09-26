@@ -42,7 +42,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribute {
+public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
 
     /**
      * Defines Stepper Component instance.

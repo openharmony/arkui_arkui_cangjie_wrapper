@@ -29,7 +29,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class __Recycle__ <: CommonMethodComponent<RecycleAttribute> & RecycleAttribute {
+public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribute {
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

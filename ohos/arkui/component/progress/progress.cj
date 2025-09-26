@@ -265,7 +265,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttribute {
+public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the progress bar is set.
      *

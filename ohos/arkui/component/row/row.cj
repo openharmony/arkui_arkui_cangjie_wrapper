@@ -47,7 +47,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
+public class Row <: CommonMethodComponent<Row> & RowAttribute {
     /**
     * Defines the constructor of Row.
     *

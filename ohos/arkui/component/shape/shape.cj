@@ -88,7 +88,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribute {
+public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     /**
     * Defines Shape Component instance.
     *

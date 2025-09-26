@@ -1131,7 +1131,7 @@ public type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEditorAttribute {
+public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribute {
 
     /**
      * Called when create RichEditor.

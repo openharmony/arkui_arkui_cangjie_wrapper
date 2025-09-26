@@ -88,7 +88,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute {
+public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Defines Slider Component instance.
     *

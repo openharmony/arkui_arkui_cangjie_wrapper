@@ -41,7 +41,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribute {
+public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
 
     /**
      * Return Counter.

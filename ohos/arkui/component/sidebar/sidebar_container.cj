@@ -368,7 +368,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class SideBarContainer <: CommonMethodComponent<SideBarContainerAttribute> & SideBarContainerAttribute {
+public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideBarContainerAttribute {
     /**
      * Constructs a sidebar container.
      *

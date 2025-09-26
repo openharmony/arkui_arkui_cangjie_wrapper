@@ -41,7 +41,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute {
+public class QRCode <: CommonMethodComponent<QRCode> & QRCodeAttribute {
     /**
      * Called when a QR code is set.
      *

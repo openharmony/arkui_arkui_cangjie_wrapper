@@ -47,7 +47,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Column <: CommonMethodComponent<ColumnAttribute> & ColumnAttribute {
+public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
     /**
     * Column constructor.
     *

@@ -124,7 +124,7 @@ public type OnTextPickerChangeCallback = (String, UInt32) -> Unit
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPickerAttribute {
+public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribute {
     /**
      * Defines the TextPicker constructor.
      *

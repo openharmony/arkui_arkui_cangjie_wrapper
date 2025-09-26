@@ -76,7 +76,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanAttribute {
+public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute {
     /**
      * Called when image is entered in span.
      *

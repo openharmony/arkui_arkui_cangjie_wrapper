@@ -73,7 +73,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Flex <: CommonMethodComponent<FlexAttribute> & FlexAttribute {
+public class Flex <: CommonMethodComponent<Flex> & FlexAttribute {
     /**
     * Defines the constructor of Flex.
     *

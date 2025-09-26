@@ -216,7 +216,7 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Search <: CommonMethodComponent<SearchAttribute> & SearchAttribute {
+public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     /**
      * The options of SearchInterface
      * @param { String } value

@@ -38,7 +38,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class RowSplit <: CommonMethodComponent<RowSplitAttribute> & RowSplitAttribute {
+public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     /**
     * Called when the layout along the vertical direction is set.
     *

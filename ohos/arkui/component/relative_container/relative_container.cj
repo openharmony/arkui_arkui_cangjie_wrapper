@@ -377,7 +377,7 @@ public class GuideLineStyle {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribute> & RelativeContainerAttribute {
+public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & RelativeContainerAttribute {
     /**
     * Constructor of relativeContainer
     *

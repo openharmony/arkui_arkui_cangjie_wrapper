@@ -191,7 +191,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttribute {
+public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
 
     /**
      * Called when interface data is called.

@@ -112,7 +112,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttribute {
+public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
 
     /**
      * Grid is returned when the parameter is transferred.

@@ -32,7 +32,7 @@ foreign func FfiOHOSAceFrameworkEllipseCreate(width: Float64, widthUnit: Int32, 
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Ellipse <: CommonShapeMethodComponent<EllipseAttribute> & EllipseAttribute {
+public class Ellipse <: CommonShapeMethodComponent<Ellipse> & EllipseAttribute {
     /**
      * Create a ellipse.
      *

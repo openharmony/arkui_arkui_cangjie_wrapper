@@ -681,7 +681,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Scroll <: ScrollableCommonMethodComponent<ScrollAttribute> & ScrollAttribute {
+public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute {
 
     /**
      * Constructs a scroll component.

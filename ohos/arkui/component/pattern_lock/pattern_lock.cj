@@ -117,7 +117,7 @@ public class PatternLockController <: RemoteDataLite {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & PatternLockAttribute {
+public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttribute {
     /**
      * Constructor.
      *

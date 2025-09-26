@@ -22,7 +22,7 @@ import ohos.labels.APILevel
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class EmptyComponent <: CommonMethodComponent<EmptyComponentAttribute> & EmptyComponentAttribute {
+public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComponentAttribute {
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

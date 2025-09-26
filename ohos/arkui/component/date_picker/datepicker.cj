@@ -171,7 +171,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePickerAttribute {
+public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribute {
     /**
      * Parameters of the date picker.
      *

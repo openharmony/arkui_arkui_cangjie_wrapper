@@ -171,7 +171,7 @@ public class TextMetrics {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute {
+public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
     /**
      * Construct a canvas component.
      *

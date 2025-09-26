@@ -94,7 +94,7 @@ public class TextAreaController <: RemoteDataLite {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttribute {
+public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     /**
      * Called when writing multiple lines of text.
      *

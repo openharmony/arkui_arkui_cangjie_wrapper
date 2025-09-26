@@ -190,7 +190,7 @@ public class TextTimerController <: RemoteDataLite {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerAttribute {
+public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute {
     /**
      * A constructor used to create a TextTimerController object.
      *

@@ -39,7 +39,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Path <: CommonShapeMethodComponent<PathAttribute> & PathAttribute {
+public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
     /**
      * Create a path.
      *

@@ -127,7 +127,7 @@ public class TextInputController <: RemoteDataLite {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputAttribute {
+public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute {
     /**
      * Called when writing a single line of text.
      *

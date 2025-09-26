@@ -844,7 +844,7 @@ func parsePermissionRequestEvent(event: COnPermissionRequestEvent): OnPermission
     22,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
-public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
+public class Web <: CommonMethodComponent<Web> & WebAttribute {
     @!APILevel[
         22,
         syscap: "SystemCapability.Web.Webview.Core"

@@ -397,7 +397,7 @@ public class ColorFilter {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
+public class Image <: CommonMethodComponent<Image> & ImageAttribute {
     /**
      * Set src to obtain images
      *

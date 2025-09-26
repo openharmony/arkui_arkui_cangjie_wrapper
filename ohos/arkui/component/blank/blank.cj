@@ -31,7 +31,7 @@ foreign func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Blank <: CommonMethodComponent<BlankAttribute> & BlankAttribute {
+public class Blank <: CommonMethodComponent<Blank> & BlankAttribute {
     /**
     * Minimum size of the Blank component in the container along the main axis
     * Default value: **0.vp**.
