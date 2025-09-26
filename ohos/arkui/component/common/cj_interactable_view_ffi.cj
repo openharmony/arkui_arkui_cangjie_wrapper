@@ -168,7 +168,7 @@ func parseCJTouchEvent(cjTouchEvent: CJTouchEvent): TouchEvent {
     let touches: ArrayList<TouchObject> = ArrayList<TouchObject>()
     let changedTouches: ArrayList<TouchObject> = ArrayList<TouchObject>()
     if (cjTouchEvent.touches_.isNull()) {
-        throw NoneValueException("Touches info is null")
+        throw BusinessException(100001, "Internal error.")
     }
 
     for (i in 0..cjTouchEvent.touchesSize) {
@@ -178,7 +178,7 @@ func parseCJTouchEvent(cjTouchEvent: CJTouchEvent): TouchEvent {
                 touchInfo.globalY, touchInfo.localX, touchInfo.localY))
     }
     if (cjTouchEvent.changedTouches_.isNull()) {
-        throw NoneValueException("Changed Touches info is null")
+        throw BusinessException(100001, "Internal error.")
     }
     for (i in 0..cjTouchEvent.changedTouchesSize) {
         let touchInfo = unsafe { cjTouchEvent.changedTouches_.read(Int64(i)) }
@@ -187,7 +187,7 @@ func parseCJTouchEvent(cjTouchEvent: CJTouchEvent): TouchEvent {
                 touchInfo.globalY, touchInfo.localX, touchInfo.localY))
     }
     if (cjTouchEvent.target.isNull()) {
-        throw NoneValueException("Touch event target is null")
+        throw BusinessException(100001, "Internal error.")
     }
     TouchEvent(TouchType.parseValue(cjTouchEvent.eventType), touches.toArray(), changedTouches.toArray(), cjTouchEvent.timestamp,
         parseCJTarget(unsafe { cjTouchEvent.target.read() }), SourceType.parseValue(cjTouchEvent.sourceType))
@@ -196,14 +196,14 @@ func parseCJTouchEvent(cjTouchEvent: CJTouchEvent): TouchEvent {
 protected func parseCJTarget(cjTarget: CJEventTarget): EventTarget {
     unsafe {
         if (cjTarget.area.isNull()) {
-            throw NoneValueException("Touch target area is null")
+            throw BusinessException(100001, "Internal error.")
         }
         let cjArea = cjTarget.area.read()
         if (cjArea.position.isNull()) {
-            throw NoneValueException("Touch area position is null")
+            throw BusinessException(100001, "Internal error.")
         }
         if (cjArea.globalPosition.isNull()) {
-            throw NoneValueException("Touch area global position is null")
+            throw BusinessException(100001, "Internal error.")
         }
         EventTarget(
             Area(
@@ -225,7 +225,7 @@ protected func parseCJTarget(cjTarget: CJEventTarget): EventTarget {
 protected func parseCJClickEvent(cjClickEvent: CJClickEvent): ClickEvent {
     unsafe {
         if (cjClickEvent.target.isNull()) {
-            throw NoneValueException("Click target is null")
+            throw BusinessException(100001, "Internal error.")
         }
         ClickEvent(
             cjClickEvent.x,
@@ -256,7 +256,7 @@ func parseCJKeyEvent(cjKeyEvent: CJKeyEvent): KeyEvent {
 func parseCJDragEvent(cjDragEvent: CJDragInfo): DragInfo {
     unsafe {
         if (cjDragEvent.dragEvent.isNull()) {
-            throw NoneValueException("Drag event position is null")
+            throw BusinessException(100001, "Internal error.")
         }
         DragInfo(
             cjDragEvent.extraParams.toString(),

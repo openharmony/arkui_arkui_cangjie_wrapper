@@ -154,16 +154,16 @@ class CallbackOffset <: BaseCallBack {
     }
     protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackOffset")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<NativeOffsetResult>(argv.read()) }
         if (ptrArg0.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackOffset")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
         closure(arg0.parseToCJ())
@@ -389,7 +389,7 @@ public enum ScrollAlign {
             case Center => 1
             case End => 2
             case Auto => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -516,7 +516,7 @@ public enum ContentClipMode {
             case ContentOnly => 0
             case Boundary => 1
             case SafeArea => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -1145,10 +1145,6 @@ public class Scroller {
      *
      * @param { Float64 } velocity - If the value specified is 0, it is considered as invalid, and will not take effect.
      * A positive value indicates scrolling towards the top, while a negative value indicates scrolling towards the bottom.
-     * @throws { BusinessException } 401 - Parameter error. Possible causes:1. Mandatory parameters are left unspecified;
-     * 2. Incorrect parameters types; 3. Parameter verification failed.
-     * @throws { BusinessException } 100004 - Controller not bound to component.
-     * @relation fling(velocity: number): void;
      */
     @!APILevel[
         22,
@@ -1268,9 +1264,6 @@ public class Scroller {
      * @param { Float64 } x
      * @param { Float64 } y
      * @returns { Int32 }
-     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-     * 2. Incorrect parameters types; 3. Parameter verification failed.
-     * @throws { BusinessException } 100004 - Controller not bound to component.
      * @relation getItemRect(index: number): RectResult;
      */
     @!APILevel[
@@ -1290,9 +1283,6 @@ public class Scroller {
      * @param { Float64 } x
      * @param { Float64 } y
      * @returns { Int32 }
-     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-     * 2. Incorrect parameters types; 3. Parameter verification failed.
-     * @throws { BusinessException } 100004 - The controller not bound to component.
      * @relation getItemIndex(x: number, y: number): number;
      */
     @!APILevel[

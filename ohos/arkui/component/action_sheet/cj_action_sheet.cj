@@ -102,7 +102,7 @@ struct NativeSheetInfoArray {
         this.sheetInfo = if (size > 0) {
             let ptr = unsafe { LibC.malloc<NativeSheetInfo>(count: size) }
             if (ptr.isNull()) {
-                throw IllegalMemoryException("malloc memory")
+                throw BusinessException(100001, "Internal error: failed to allocate memory.")
             }
             for (i in 0..size) {
                 unsafe { ptr.write(i, infos[i].toNative()) }
@@ -805,14 +805,14 @@ public class ActionSheetOptions {
         let cTitle: CString = try {
             unsafe { LibC.mallocCString(transResourceStrToString(title ?? "")) }
         } catch (e: Exception) {
-            throw IllegalMemoryException("malloc memory")
+            throw BusinessException(100001, "Internal error: failed to allocate memory.")
         }
 
         let cMessage: CString = try {
             unsafe { LibC.mallocCString(transResourceStrToString(message ?? "")) }
         } catch (e: Exception) {
             unsafe { LibC.free(cTitle) }
-            throw IllegalMemoryException("malloc memory")
+            throw BusinessException(100001, "Internal error: failed to allocate memory.")
         }
 
         let cStr: CString = try {
@@ -820,7 +820,7 @@ public class ActionSheetOptions {
         } catch (e: Exception) {
             unsafe { LibC.free(cTitle) }
             unsafe { LibC.free(cMessage) }
-            throw IllegalMemoryException("malloc memory")
+            throw BusinessException(100001, "Internal error: failed to allocate memory.")
         }
         let nativeSubtitle = NativeOptionCString(true, cStr)
         let nativeConfirm = NativeOptionConfirm(true, (confirm ?? ActionSheetButtonOptions(value: "", action: {=>})).toNative())

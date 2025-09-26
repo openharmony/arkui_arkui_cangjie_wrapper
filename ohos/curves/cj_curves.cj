@@ -217,7 +217,7 @@ public class Curves {
             case Rhythm => "rhythm"
             case Smooth => "smooth"
             case Friction => "friction"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }

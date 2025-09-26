@@ -46,7 +46,7 @@ protected func getOrThrow<T>(optData: Option<T>, msg!: String = ""): T {
     match (optData) {
         case None =>
             throwNativeError(msg + "\n")
-            throw NoneValueException(msg + "\n")
+            throw BusinessException(100001, msg + "\n")
         case Some(data) => data
     }
 }

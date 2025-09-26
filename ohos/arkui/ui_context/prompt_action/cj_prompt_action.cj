@@ -318,7 +318,7 @@ public enum ToastShowMode {
         match (this) {
             case Default => 0
             case TopMost => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -446,7 +446,7 @@ public enum HoverModeAreaType {
         match (this) {
             case TopScreen => 0
             case BottomScreen => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -485,7 +485,7 @@ public enum KeyboardAvoidMode {
         match (this) {
             case Default => 0
             case None => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -1597,7 +1597,7 @@ func parseShowToastOptions(options: ShowToastOptions): NativeShowToastOptions {
         } catch (e: Exception) {
             LibC.free(cMsg)
             LibC.free(cBottom)
-            throw IllegalMemoryException("Failed to allocate memory.")
+            throw BusinessException(100001, "Internal error: failed to allocate memory.")
         }
         return NativeShowToastOptions(
             cMsg,
@@ -1620,7 +1620,7 @@ func parseShowToastOptions(options: ShowToastOptions): NativeShowToastOptions {
 func parseShowDialogOptions(options: ShowDialogOptions): NativeShowDialogOptions {
     var pButtons: CPointer<CButtonInfo> = CreateCButtons(options.buttons).getOrThrow(
         {
-            => IllegalArgumentException("Fail to create buttons")
+            => BusinessException(100001, "Fail to create buttons")
         })
     let shadowOption = match (options.shadow) {
         case Some(value) => parseShadowOptions(value)
@@ -1636,7 +1636,7 @@ func parseShowDialogOptions(options: ShowDialogOptions): NativeShowDialogOptions
         } catch (e: Exception) {
             LibC.free(cTitle)
             LibC.free(cMsg)
-            throw IllegalMemoryException("Failed to allocate memory.")
+            throw BusinessException(100001, "Internal error: failed to allocate memory.")
         }
         return NativeShowDialogOptions(
             cTitle,
@@ -1661,7 +1661,7 @@ func parseShowDialogOptions(options: ShowDialogOptions): NativeShowDialogOptions
 func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions {
     var pButtons: CPointer<CButtonInfo> = CreateCButtons(options.buttons).getOrThrow(
         {
-            => IllegalArgumentException("Fail to create buttons")
+            => BusinessException(100001, "Fail to create buttons")
         })
     unsafe {
         let cTitle = LibC.mallocCString(transResourceStrToString(options.title))
@@ -1732,11 +1732,12 @@ public class PromptAction {
      * Shows a toast in the given settings.
      *
      * @param { ShowToastOptions } options - Toast options.
-     * @relation showToast(options: promptAction.ShowToastOptions): void
+     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func showToast(option: ShowToastOptions): Unit {
         unsafe {
@@ -1753,11 +1754,12 @@ public class PromptAction {
      * @param { ShowDialogOptions } options - Dialog box options.
      * @param { ShowDialogCallBack } callback - Callback used to return the dialog
      * box response result.
-     * @relation showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback<promptAction.ShowDialogSuccessResponse>): void
+     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func showDialog(option: ShowDialogOptions, callback!: ShowDialogCallBack = defaultCallback) {
         unsafe {
@@ -1783,11 +1785,12 @@ public class PromptAction {
      * @param { ActionMenuOptions } options - Action menu options.
      * @param { ActionMenuSuccessResponse } callback - Callback used to return the action menu
      * response result.
-     * @relation showActionMenu(options: promptAction.ActionMenuOptions, callback: promptAction.ActionMenuSuccessResponse): void
+     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func showActionMenu(option: ActionMenuOptions, callback!: ShowActionMenuCallBack = defaultCallback) {
         unsafe {

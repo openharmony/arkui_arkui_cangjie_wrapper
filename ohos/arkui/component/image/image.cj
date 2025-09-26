@@ -301,16 +301,16 @@ protected class CallbackImageError <: BaseCallBack {
 
     protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackImageError")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<CImageError>(argv.read()) }
         if (ptrArg0.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackImageError")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let c_arg0 = unsafe { ptrArg0.read() }
         let arg0: ImageError = ImageError(c_arg0.componentWidth, c_arg0.componentHeight, "")
@@ -326,16 +326,16 @@ class CallbackImageLoadResult <: BaseCallBack {
 
     protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackImageLoadResult")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<CImageComplete>(argv.read()) }
         if (ptrArg0.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackImageLoadResult")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let c_arg0 = unsafe { ptrArg0.read() }
         let arg0: ImageLoadResult = ImageLoadResult(c_arg0.width, c_arg0.height, c_arg0.componentWidth,
@@ -758,11 +758,12 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
      *
      * @param { function } callback
      * @returns { This }
-     * @relation onComplete
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onComplete(callback: ?ImageCompleteCallback): This {
         let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
@@ -783,11 +784,12 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
      *
      * @param { ImageErrorCallback } callback
      * @returns { This }
-     * @relation onError(callback: ImageErrorCallback): ImageAttribute
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onError(callback: ?ImageErrorCallback): This {
         let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")

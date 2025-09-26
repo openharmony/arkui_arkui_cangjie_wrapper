@@ -272,11 +272,13 @@ public class Span <: BaseSpan {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onClick(event: (event: ClickEvent) => void): T;
+     * @throws { BusinessException } 100001 - Internal error.
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onClick(event: ?(ClickEvent) -> Unit): This {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")

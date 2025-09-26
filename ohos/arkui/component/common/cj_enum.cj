@@ -56,7 +56,7 @@ public enum IndexerAlign {
         match (this) {
             case Left => 0
             case Right => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -148,7 +148,7 @@ public enum InputType {
             case Email => 2
             case Password => 3
             case PhoneNumber => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -244,7 +244,7 @@ public enum EnterKeyType {
             case Done => 6
             case Previous => 7
             case NewLine => 8
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -308,7 +308,7 @@ public enum FlexDirection {
             case Column => 1
             case RowReverse => 2
             case ColumnReverse => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -361,7 +361,7 @@ public enum FlexWrap {
             case NoWrap => 0
             case Wrap => 1
             case WrapReverse => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -455,7 +455,7 @@ public enum FlexAlign {
             case SpaceBetween => 4
             case SpaceAround => 5
             case SpaceEvenly => 6
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -546,7 +546,7 @@ public enum ItemAlign {
             case End => 3
             case Stretch => 4
             case Baseline => 5
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -599,7 +599,7 @@ public enum ToggleType {
             case Checkbox => 0
             case Switch => 1
             case Button => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -642,7 +642,7 @@ public enum FontStyle {
         match (this) {
             case Normal => 0
             case Italic => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -785,7 +785,7 @@ public enum Alignment {
             case BottomStart => 6
             case Bottom => 7
             case BottomEnd => 8
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -840,7 +840,7 @@ public enum HorizontalAlign {
             case Start => 1
             case Center => 2
             case End => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -895,7 +895,7 @@ public enum VerticalAlign {
             case Top => 1
             case Center => 2
             case Bottom => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -1097,7 +1097,7 @@ public enum FontWeight {
             case Lighter => 12
             case Medium => 13
             case Regular => 14
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -1180,7 +1180,7 @@ public enum BarPosition {
         match (this) {
             case Start => 0
             case End => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -1226,7 +1226,7 @@ public enum BarMode {
         match (this) {
             case Fixed => 0
             case Scrollable => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -1268,7 +1268,7 @@ public enum ShadowType {
         match (this) {
             case Color => 0
             case Blur => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -1335,7 +1335,7 @@ public enum TextDecorationType {
             case Underline => 1
             case Overline => 2
             case LineThrough => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -1400,7 +1400,7 @@ public enum TextAlign {
             case Start => 0
             case Center => 1
             case End => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -1464,7 +1464,7 @@ public enum TextOverflow {
             case Clip => 0
             case Ellipsis => 1
             case None => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -1520,7 +1520,7 @@ public enum WordBreak {
             case Normal => 0
             case BreakAll => 1
             case BreakWord => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -1596,7 +1596,7 @@ public enum ImageRepeat {
             case X => 1
             case Y => 2
             case XY => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -1651,7 +1651,7 @@ public enum ImageSize {
             case Contain => 0
             case Cover => 1
             case Auto => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -1742,7 +1742,7 @@ public enum ShadowStyle {
             case OuterDefaultLG => 3
             case OuterFloatingSM => 4
             case OuterFloatingMD => 5
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -1797,7 +1797,7 @@ public enum TextCase {
             case Normal => 0
             case LowerCase => 1
             case UpperCase => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -1852,7 +1852,7 @@ public enum BorderStyle {
             case Solid => 0
             case Dashed => 1
             case Dotted => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -1943,7 +1943,7 @@ public enum ImageFit {
             case Auto => 3
             case None => 5
             case ScaleDown => 6
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -2010,7 +2010,7 @@ public enum Direction {
             case Ltr => 0
             case Rtl => 1
             case Auto => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2053,7 +2053,7 @@ public enum ScrollDirection {
         match (this) {
             case Vertical => 0
             case Horizontal => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2096,7 +2096,7 @@ public enum ScrollBarDirection {
         match (this) {
             case Vertical => 0
             case Horizontal => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2167,7 +2167,7 @@ public enum SliderChangeMode {
             case Moving => 1
             case End => 2
             case Click => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -2219,7 +2219,7 @@ public enum SliderStyle {
         match (this) {
             case OutSet => 0
             case InSet => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2286,7 +2286,7 @@ public enum ImageInterpolation {
             case High => 1
             case Medium => 2
             case Low => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2341,7 +2341,7 @@ public enum BarState {
             case Off => 0
             case Auto => 1
             case On => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2396,7 +2396,7 @@ public enum Visibility {
             case Visible => 0
             case Hidden => 1
             case None => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2451,7 +2451,7 @@ public enum LineCapStyle {
             case Butt => 0
             case Round => 1
             case Square => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2530,7 +2530,7 @@ public enum ProgressType {
             case Eclipse => 2
             case ScaleRing => 3
             case Capsule => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2573,7 +2573,7 @@ public enum ImageRenderMode {
         match (this) {
             case Original => 0
             case Template => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2628,7 +2628,7 @@ public enum NavigationType {
             case Push => 1
             case Replace => 2
             case Back => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2659,7 +2659,7 @@ public enum SwiperDisplayMode {
     protected func getValue(): Int32 {
         match (this) {
             case Stretch => 0
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2834,7 +2834,7 @@ public enum Curve {
             case Rhythm => "rhythm"
             case Smooth => "smooth"
             case Friction => "friction"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2889,7 +2889,7 @@ public enum EdgeEffect {
             case Spring => 0
             case Fade => 1
             case None => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -2956,7 +2956,7 @@ public enum Edge {
             case Start => 1
             case Bottom => 2
             case End => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -3144,7 +3144,7 @@ public enum Placement {
             case RightTop => 10
             case RightBottom => 11
             case None => 12
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -3204,7 +3204,7 @@ public enum LineJoinStyle {
             case Miter => 0
             case Round => 1
             case Bevel => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -3286,7 +3286,7 @@ protected enum CanvasTextAlign {
             case Center => 2
             case Start => 4
             case End => 5
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -3380,7 +3380,7 @@ protected enum CanvasTextBaseline {
             case Bottom => 3
             case Middle => 4
             case Hanging => 5
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -3513,7 +3513,7 @@ protected enum GlobalCompositeOperation {
             case Lighter => 8
             case Copy => 9
             case Xor => 10
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -3568,7 +3568,7 @@ public enum ImageSmoothingQuality {
             case Low => "low"
             case Medium => "medium"
             case High => "high"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -3611,7 +3611,7 @@ public enum GestureMask {
         match (this) {
             case Normal => 0
             case IgnoreInternal => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -3666,7 +3666,7 @@ public enum SwipeDirection {
             case Horizontal => 1
             case Vertical => 2
             case All => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -3791,7 +3791,7 @@ public enum PanDirection {
             case Vertical => 12
             case All => 15
             case Computed(value) => value
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -3868,7 +3868,7 @@ public enum GestureMode {
             case Sequence => 0
             case Parallel => 1
             case Exclusive => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -3916,7 +3916,7 @@ public enum Axis {
         match (this) {
             case Vertical => 0
             case Horizontal => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -3959,7 +3959,7 @@ public enum ResponseType {
         match (this) {
             case RightClick => 0
             case LongPress => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -4014,7 +4014,7 @@ public enum CopyOptions {
             case None => 0
             case InApp => 1
             case LocalDevice => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -4091,7 +4091,7 @@ public enum TouchType {
             case Move => 2
             case Cancel => 3
             case Unknown => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -4121,7 +4121,7 @@ enum DragComponent {
             case DragImage => 2
             case DragList => 3
             case DragGrid => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -4176,7 +4176,7 @@ public enum SideBarContainerType {
             case Embed => 0
             case Overlay => 1
             case Auto => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -4219,7 +4219,7 @@ public enum SideBarPosition {
         match (this) {
             case Start => 0
             case End => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -4274,7 +4274,7 @@ public enum SourceType {
             case Unknown => 0
             case Mouse => 1
             case TouchScreen => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -4374,7 +4374,7 @@ public enum MouseButton {
             case Middle => 4
             case Back => 8
             case Forward => 16
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -4463,7 +4463,7 @@ public enum MouseAction {
             case Release => 2
             case Move => 3
             case Hover => 6
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -4516,7 +4516,7 @@ public enum KeySource {
         match (this) {
             case Unknown => 0
             case Keyboard => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -4576,7 +4576,7 @@ public enum KeyType {
             case Unknown => -1
             case Down => 0
             case Up => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -4640,7 +4640,7 @@ public enum ModifierKey {
             case Ctrl => 0
             case Shift => 1
             case Alt => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -4827,7 +4827,7 @@ public enum FunctionKey {
             case F11 => 11
             case F12 => 12
             case Tab => 13
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -4870,7 +4870,7 @@ public enum DataPanelType {
         match (this) {
             case Circle => 0
             case Line => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -4937,7 +4937,7 @@ public enum ItemState {
             case Disabled => 1
             case Waiting => 2
             case Skip => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -5016,7 +5016,7 @@ public enum RefreshStatus {
             case OverDrag => 2
             case Refresh => 3
             case Done => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -5094,7 +5094,7 @@ public enum SeekMode {
             case NextKeyframe => 1
             case ClosestKeyframe => 2
             case Accurate => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -5173,7 +5173,7 @@ public enum PlaybackSpeed {
             case SpeedForward125X => 1.25
             case SpeedForward175X => 1.75
             case SpeedForward200X => 2.00
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -5228,7 +5228,7 @@ public enum SelectStatus {
             case All => 0
             case Part => 1
             case None => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -5304,7 +5304,7 @@ public enum AnimationStatus {
             case Running => 1
             case Paused => 2
             case Stopped => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -5371,7 +5371,7 @@ public enum FillMode {
             case Forwards => 1
             case Backwards => 2
             case Both => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -5414,7 +5414,7 @@ public enum SwipeEdgeEffect {
         match (this) {
             case Spring => 0
             case None => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -5458,7 +5458,7 @@ public enum SharedTransitionEffectType {
         match (this) {
             case Static => 0
             case Exchange => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -5513,7 +5513,7 @@ public enum ScrollState {
             case Idle => 0
             case Scrolling => 1
             case Fling => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -5577,7 +5577,7 @@ public enum ListItemAlign {
             case Start => 0
             case Center => 1
             case End => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -5635,7 +5635,7 @@ public enum StickyStyle {
             case None => 0
             case Header => 1
             case Footer => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -5690,7 +5690,7 @@ public enum RichEditorSpanType {
             case Text => 0
             case Image => 1
             case Mixed => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -5757,7 +5757,7 @@ public enum ImageSpanAlignment {
             case Center => 1
             case Bottom => 2
             case Baseline => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -5810,7 +5810,7 @@ public enum RichEditorDeleteDirection {
         match (this) {
             case Backward => 0
             case Forward => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -5873,7 +5873,7 @@ public enum MixedMode {
             case All => 0
             case None => 2
             case Compatible => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -5940,7 +5940,7 @@ public enum PlayMode {
             case Reverse => 1
             case Alternate => 2
             case AlternateReverse => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6067,7 +6067,7 @@ public enum GradientDirection {
             case RightTop => 6
             case RightBottom => 7
             case None => 8
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6298,7 +6298,7 @@ public enum RenderFit {
             case ResizeCover => 13
             case ResizeCoverTopLeft => 14
             case ResizeCoverBottomRight => 15
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6437,7 +6437,7 @@ public enum DialogAlignment {
             case CenterEnd => 7
             case BottomStart => 8
             case BottomEnd => 9
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6504,7 +6504,7 @@ public enum BarrierDirection {
             case Right => 1
             case Top => 2
             case Bottom => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6559,7 +6559,7 @@ public enum SafeAreaType {
             case System => 1
             case Cutout => 1 << 1
             case Keyboard => 1 << 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6626,7 +6626,7 @@ public enum SafeAreaEdge {
             case Bottom => 1 << 1
             case Start => 1 << 2
             case End => 1 << 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6657,7 +6657,7 @@ public enum ColoringStrategy {
     protected func getValue(): String {
         match (this) {
             case Invert => "invert"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6724,7 +6724,7 @@ public enum NestedScrollMode {
             case SelfFirst => 1
             case ParentFirst => 2
             case Parallel => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6779,7 +6779,7 @@ public enum ThemeColorMode {
             case System => 0
             case Light => 1
             case Dark => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6823,7 +6823,7 @@ public enum AdaptiveColor {
         match (this) {
             case Default => 0
             case Average => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6866,7 +6866,7 @@ public enum ControlSize {
         match (this) {
             case Small => 0
             case Normal => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6909,7 +6909,7 @@ public enum OptionWidthMode {
         match (this) {
             case FitContent => "fit_content"
             case FitTrigger => "fit_trigger"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -6952,7 +6952,7 @@ public enum ArrowPosition {
         match (this) {
             case End => 0
             case Start => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -7007,7 +7007,7 @@ public enum MenuAlignType {
             case Start => 0
             case Center => 1
             case End => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -7062,7 +7062,7 @@ public enum WebDarkMode {
             case Off => 0
             case On => 1
             case Auto => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -7230,7 +7230,7 @@ public enum Repetition {
             case NoRepeat => "no-repeat"
             case Clamp => "clamp"
             case Mirror => "mirror"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -7345,7 +7345,7 @@ public enum ScrollSource {
             case ScrollBarFling => 5
             case Scroller => 6
             case ScrollerAnimation => 7
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -7669,7 +7669,7 @@ public enum ContentType {
             case Nickname => 23
             case DetailInfoWithoutStreet => 24
             case FormatAddress => 25
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -7724,7 +7724,7 @@ public enum MenuPolicy {
             case Default => 0
             case Hide => 1
             case Show => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -7803,7 +7803,7 @@ public enum TextDecorationStyle {
             case Dotted => 2
             case Dashed => 3
             case Wavy => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -7861,7 +7861,7 @@ public enum LineBreakStrategy {
             case Greedy => 0
             case HighQuality => 1
             case Balanced => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -7913,7 +7913,7 @@ public enum TextContentStyle {
         match (this) {
             case Default => 0
             case Inline => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -7956,7 +7956,7 @@ public enum CheckBoxShape {
         match (this) {
             case Circle => 0
             case RoundedSquare => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -8018,7 +8018,7 @@ public enum TextHeightAdaptivePolicy {
             case MaxLinesFirst => 0
             case MinFontSizeFirst => 1
             case LayoutConstraintFirst => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -8073,7 +8073,7 @@ public enum ArrowPointPosition {
             case Start => "Start"
             case Center => "Center"
             case End => "End"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -8116,7 +8116,7 @@ public enum TitleHeight {
         match (this) {
             case MainOnly => 0
             case MainWithSub => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -8159,7 +8159,7 @@ public enum DialogButtonStyle {
         match (this) {
             case Default => 0
             case Highlight => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -8202,7 +8202,7 @@ public enum LengthMetricsUnit {
         match (this) {
             case Default => 0
             case Px => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -8257,7 +8257,7 @@ public enum CanvasDirection {
             case Inherit => "inherit"
             case Ltr => "ltr"
             case Rtl => "rtl"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -8301,7 +8301,7 @@ public enum CanvasFillRule {
         match (this) {
             case EvenOdd => "evenodd"
             case NonZero => "nonzero"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -8344,7 +8344,7 @@ protected enum ImageType {
             case Png => "image/png"
             case Jpeg => "image/jpeg"
             case Webp => "image/webp"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -8388,7 +8388,7 @@ public enum FinishCallbackType {
         match (this) {
             case Removed => 0
             case Logically => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -8563,7 +8563,7 @@ public enum BlurStyle {
             case ComponentRegular => 10
             case ComponentThick => 11
             case ComponentUltraThick => 12
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -8633,7 +8633,7 @@ public enum DismissReason {
             case TouchOutside => 1
             case CloseButton => 2
             case SlideDown => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -8700,7 +8700,7 @@ public enum TextInputStyle {
         match (this) {
             case Default => 0
             case Inline => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -8797,7 +8797,7 @@ public enum TextAreaType {
             case Email => 5
             case NumberDecimal => 12
             case Url => 13
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }

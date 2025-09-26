@@ -112,14 +112,15 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func set(newValue: ObservedComplexAbstract): Unit {
         let observedArray = newValue as ObservedArrayList<T>
         this.setInternalValue(
             observedArray.getOrThrow(
                 {
-                    => IllegalArgumentException("Type is mismatched, it should be ObservedArrayList<T>")
+                    => BusinessException(100001, "Internal error.")
                 }))
         this.notifyChanges()
     }

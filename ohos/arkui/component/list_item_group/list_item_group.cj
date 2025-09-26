@@ -70,7 +70,7 @@ public enum ListItemGroupStyle {
         match (this) {
             case None => 0
             case Card => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }

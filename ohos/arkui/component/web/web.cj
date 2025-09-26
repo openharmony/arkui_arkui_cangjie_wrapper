@@ -341,16 +341,16 @@ class CallbackCJWebEvent <: BaseCallBack {
 
     protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 1) {
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackCJWebEvent")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<FfiWebEvent>(argv.read()) }
         if (ptrArg0.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackCJWebEvent")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
         closure(arg0)
@@ -1034,11 +1034,12 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     *
     * @param { Callback<OnLoadInterceptEvent, Bool> } callback
     * @returns { This }
-    * @relation onLoadIntercept(callback: Callback<OnLoadInterceptEvent, boolean>): WebAttribute;
+    * @throws { BusinessException } 190002 - The callback function is invalid.
     */
     @!APILevel[
         22,
-        syscap: "SystemCapability.Web.Webview.Core"
+        syscap: "SystemCapability.Web.Webview.Core",
+        throwexception: true
     ]
     public func onLoadIntercept(callback: ?Callback<OnLoadInterceptEvent, Bool>): This {
         let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")

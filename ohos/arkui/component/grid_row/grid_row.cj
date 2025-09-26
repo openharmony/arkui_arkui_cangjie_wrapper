@@ -107,7 +107,7 @@ public enum GridRowDirection {
         match (this) {
             case Row => 0
             case RowReverse => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -150,7 +150,7 @@ public enum BreakpointsReference {
         match (this) {
             case WindowSize => 0
             case ComponentSize => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }

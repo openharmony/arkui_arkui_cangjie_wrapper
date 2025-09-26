@@ -1246,11 +1246,13 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      *
      * @param { (Int32) -> Unit } event
      * @returns { This }
-     * @relation onChange(event: Callback<number>): SwiperAttribute
+     * @throws { BusinessException } 100001 - Internal error.
+     * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onChange(event: ?(Int32) -> Unit): This {
         let tmpEvent = event ?? { res: Int32 => }

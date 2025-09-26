@@ -128,7 +128,7 @@ public enum DialogButtonDirection {
             case Auto => 0
             case Horizontal => 1
             case Vertical => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -386,7 +386,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
         var cValue: CString = try {
             unsafe { LibC.mallocCString(transResourceStrToString(value ?? "")) }
         } catch (e: Exception) {
-            throw IllegalMemoryException("malloc memory")
+            throw BusinessException(100001, "Internal error: failed to allocate memory.")
         }
 
         var cStyle = CPointer<Int32>()
@@ -394,7 +394,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
             cStyle = LibC.malloc<Int32>(count: 1)
             if (cStyle.isNull()) {
                 unsafe { LibC.free(cValue) }
-                throw IllegalMemoryException("malloc memory")
+                throw BusinessException(100001, "Internal error: failed to allocate memory.")
             }
             cStyle.write((style ?? DialogButtonStyle.Default).getValue())
         }
@@ -406,7 +406,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
                 if (cFontColor.isNull()) {
                     LibC.free(cValue)
                     LibC.free<Int32>(cStyle)
-                    throw IllegalMemoryException("malloc memory")
+                    throw BusinessException(100001, "Internal error: failed to allocate memory.")
                 }
                 cFontColor.write(v.toUInt32())
             }
@@ -419,7 +419,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
                     LibC.free(cValue)
                     LibC.free<Int32>(cStyle)
                     LibC.free<UInt32>(cFontColor)
-                    throw IllegalMemoryException("malloc memory")
+                    throw BusinessException(100001, "Internal error: failed to allocate memory.")
                 }
                 cBackgroundColor.write(v.toUInt32())
             }
@@ -1281,7 +1281,7 @@ protected class AlertDialogInner {
             LibC.malloc<NativeAlertDialogButtonOptionsV2>(count: buttonSize)
         }
         if (arr.isNull()) {
-            throw IllegalMemoryException("malloc memory")
+            throw BusinessException(100001, "Internal error: failed to allocate memory.")
         }
         for (i in 0..buttonSize) {
             unsafe {

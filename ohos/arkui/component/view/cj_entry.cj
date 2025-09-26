@@ -189,7 +189,7 @@ func injectFrameworkCJFuncs(): Unit {
         let wrapper: CFunc<(CPointer<AtCPackageV2>) -> Unit> = {
             val: CPointer<AtCPackageV2> =>
             if (val.isNull()) {
-                throw NoneValueException("AtCPackageV2 is null.")
+                throw BusinessException(100001, "Internal error.")
             }
             var cpkg: AtCPackageV2 = val.read()
             cpkg.remoteViewOnDidBuild = OHOSAceFrameworkRemoteViewOnDidBuild

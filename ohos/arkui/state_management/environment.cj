@@ -73,7 +73,7 @@ public enum ColorMode {
         match (this) {
             case Light => 0
             case Dark => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 

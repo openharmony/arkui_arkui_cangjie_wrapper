@@ -82,7 +82,7 @@ public open class HybridComponentBase <: SharedObject {
             let buffer = LibC.malloc<CPointer<Unit>>(count: 1)
             if (buffer.isNull()) {
                 unsafe { LibC.free(handlePointer) }
-                throw IllegalMemoryException("malloc memory")
+                throw BusinessException(100001, "Internal error: failed to allocate memory.")
             }
             unsafe {
                 buffer.write(handlePointer)

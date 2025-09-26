@@ -164,7 +164,7 @@ public enum ButtonType {
             case Capsule => 1
             case Circle => 2
             case RoundRectangle => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -206,7 +206,7 @@ public enum ButtonRole {
         match (this) {
             case Normal => 0
             case Error => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -259,7 +259,7 @@ public enum ButtonStyleMode {
             case Normal => 0
             case Emphasized => 1
             case Textual => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }

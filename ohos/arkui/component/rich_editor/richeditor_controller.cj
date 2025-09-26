@@ -63,7 +63,7 @@ public enum LeadingMarginType {
             case None => 0
             case LengthType(v) => 1
             case PlaceholderType(v) => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -993,11 +993,12 @@ public class RichEditorController <: RichEditorBaseController {
      * @param { ResourceStr } value
      * @param { RichEditorTextSpanOptions } options
      * @returns { Int32 }
-     * @relation addTextSpan(content: ResourceStr, options?: RichEditorTextSpanOptions): number
+     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwsexception: true
     ]
     public func addTextSpan(content!: ?ResourceStr, options!: ?RichEditorTextSpanOptions = None): Int32 {
         let params = parseRichEditorTextSpanOptions(options ?? RichEditorTextSpanOptions())

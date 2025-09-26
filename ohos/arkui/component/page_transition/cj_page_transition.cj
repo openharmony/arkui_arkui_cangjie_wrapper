@@ -45,21 +45,21 @@ class CallbackCJTransitionEvent <: BaseCallBack {
 
     protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 2) {
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<Int32>(argv.read()) }
         if (ptrArg0.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg1 = unsafe { CPointer<Float64>(argv.read(1)) }
         if (ptrArg1.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         unsafe {
             let arg0 = ptrArg0.read()
@@ -125,7 +125,7 @@ public enum RouteType {
             case None => 0
             case Push => 1
             case Pop => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -197,7 +197,7 @@ public enum SlideEffect {
             case Right => 2
             case Top => 3
             case Bottom => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -338,11 +338,12 @@ public class PageTransitionEnter <: CommonTransition {
     * 
     * @param { PageTransitionCallback } event
     * @returns { This } 
-    * @relation onEnter(event: PageTransitionCallback): PageTransitionEnterInterface
+    * @throws { BusinessException } 190002 - The callback function is invalid.
     */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+        throwexception: true
     ]
     public func onEnter(event: ?PageTransitionCallback) {
         let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
