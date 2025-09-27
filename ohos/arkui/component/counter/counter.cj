@@ -73,9 +73,8 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableInc(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCounterEnableInc(tmpValue);
+            FfiOHOSAceFrameworkCounterEnableInc(value ?? true);
         }
         this
     }
@@ -92,9 +91,8 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableDec(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkCounterEnableDec(tmpValue);
+            FfiOHOSAceFrameworkCounterEnableDec(value ?? true);
         }
         this
     }
@@ -111,7 +109,7 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onInc(event: ?VoidCallback): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { => }
         unsafe {
             FfiOHOSAceFrameworkCounterSetOnInc(Callback0Param<Unit>(tmpEvent).getID());
         }
@@ -130,7 +128,7 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDec(event: ?VoidCallback): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { => }
         unsafe {
             FfiOHOSAceFrameworkCounterSetOnDec(Callback0Param<Unit>(tmpEvent).getID());
         }

@@ -80,9 +80,8 @@ public class TextInputController <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretPosition(value: ?Int32): Unit {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextInputControllerCaretPosition(this.getID(), tmpValue)
+            FfiOHOSAceFrameworkTextInputControllerCaretPosition(this.getID(), value ?? 0)
         }
     }
 
@@ -102,13 +101,9 @@ public class TextInputController <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTextSelection(selectionStart: ?Int32, selectionEnd: ?Int32, options!: ?MenuPolicy = None): Unit {
-        let tmpSelectionStart = selectionStart ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpSelectionEnd = selectionEnd ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpOptions = options ?? MenuPolicy.Default
-        
         unsafe {
-            FfiOHOSAceFrameworkTextInputControllerSetTextSelection(this.getID(), tmpSelectionStart, tmpSelectionEnd,
-                tmpOptions.getValue());
+            FfiOHOSAceFrameworkTextInputControllerSetTextSelection(this.getID(), selectionStart ?? 0, selectionEnd ?? 0,
+                (options ?? MenuPolicy.Default).getValue());
         }
     }
 
@@ -167,32 +162,32 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         }
     }
 
-    protected override func heightInner(width: Length): This {
+    protected override func heightInner(width: ?Length): This {
         TextField.height(width)
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
+    protected override func sizeInner(width: ?Length, height: ?Length): This {
         TextField.size(width: width, height: height)
         this
     }
 
-    protected override func paddingInner(value: Length): This {
+    protected override func paddingInner(value: ?Length): This {
         TextField.padding(value)
         this
     }
 
-    protected override func paddingInner(top: Length, right: Length, bottom: Length, left: Length): This {
+    protected override func paddingInner(top: ?Length, right: ?Length, bottom: ?Length, left: ?Length): This {
         TextField.padding(top: top, right: right, bottom: bottom, left: left)
         this
     }
 
-    protected override func marginInner(top!: Length, right!: Length, bottom!: Length, left!: Length): This {
+    protected override func marginInner(top!: ?Length, right!: ?Length, bottom!: ?Length, left!: ?Length): This {
         TextField.margin(top: top, right: right, bottom: bottom, left: left)
         this
     }
 
-    protected override func marginInner(value: Length): This {
+    protected override func marginInner(value: ?Length): This {
         TextField.margin(value)
         this
     }
@@ -208,43 +203,43 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
      * @attention override.
      * @since 11
      */
-    protected override func borderInner(width: Length, color: ResourceColor, radius: Length, style: BorderStyle): This {
+    protected override func borderInner(width: ?Length, color: ?ResourceColor, radius: ?Length, style: ?BorderStyle): This {
         TextField.border(width: width, color: color, radius: radius, style: style)
         this
     }
 
-    protected override func borderWidthInner(width: Length): This {
+    protected override func borderWidthInner(width: ?Length): This {
         TextField.borderWidth(width)
         this
     }
 
-    protected override func borderWidthInner(edgeWidths: EdgeWidths): This {
+    protected override func borderWidthInner(edgeWidths: ?EdgeWidths): This {
         TextField.borderWidth(edgeWidths)
         this
     }
 
-    protected override func borderColorInner(color: ResourceColor): This {
+    protected override func borderColorInner(color: ?ResourceColor): This {
         TextField.borderColor(color)
         this
     }
 
-    protected override func borderRadiusInner(radius: Length): This {
+    protected override func borderRadiusInner(radius: ?Length): This {
         TextField.borderRadius(radius)
         this
     }
 
-    protected override func borderRadiusInner(topLeft!: Length = 0.vp, topRight!: Length = 0.vp,
-        bottomLeft!: Length = 0.vp, bottomRight!: Length = 0.vp): This {
+    protected override func borderRadiusInner(topLeft!: ?Length, topRight!: ?Length,
+        bottomLeft!: ?Length, bottomRight!: ?Length): This {
         TextField.borderRadius(topLeft: topLeft, topRight: topRight, bottomLeft: bottomLeft, bottomRight: bottomRight)
         this
     }
 
-    protected override func backgroundColorInner(value: ResourceColor): This {
+    protected override func backgroundColorInner(value: ?ResourceColor): This {
         TextField.backgroundColor(value)
         this
     }
 
-    protected override func borderStyleInner(style: BorderStyle): This {
+    protected override func borderStyleInner(style: ?BorderStyle): This {
         TextField.borderStyle(style)
         this
     }
@@ -261,8 +256,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enterKeyType(value: ?EnterKeyType): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.enterKeyType(tmpValue)
+        TextField.enterKeyType(value ?? EnterKeyType.Done)
         this
     }
 
@@ -283,8 +277,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textAlign(value: ?TextAlign): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.textAlign(tmpValue)
+        TextField.textAlign(value ?? TextAlign.Start)
         this
     }
 
@@ -317,8 +310,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.caretColor(tmpValue)
+        TextField.caretColor(value ?? 0xFF007DFF)
         this
     }
 
@@ -334,8 +326,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
     ]
     public func placeholderFont(size!: ?Length, weight!: ?FontWeight = None, family!: ?String = None,
         style!: ?FontStyle = None): This {
-        let tmpSize = size ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.placeholderFont(size: tmpSize, weight: weight ?? FontWeight.W400, family: family ?? "", style: style ?? FontStyle.Normal)
+        TextField.placeholderFont(size: size ?? (-1.0).px, weight: weight ?? FontWeight.W400, family: family ?? "", style: style ?? FontStyle.Normal)
         this
     }
 
@@ -388,8 +379,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.fontColor(tmpValue)
+        TextField.fontColor(value ?? 0xdbffffff)
         this
     }
 
@@ -405,8 +395,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.fontWeight(tmpValue)
+        TextField.fontWeight(value ?? FontWeight.Normal)
         this
     }
 
@@ -422,8 +411,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.fontStyle(tmpValue)
+        TextField.fontStyle(value ?? FontStyle.Normal)
         this
     }
 
@@ -442,8 +430,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.fontFamily(transResourceStrToString(tmpValue))
+        TextField.fontFamily(transResourceStrToString(value ?? "HarmonyOS Sans"))
         this
     }
 
@@ -460,13 +447,12 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func inputFilter(value: ?ResourceStr, error!: ?(String) -> Unit = None): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         let errorCallBack = if (let Some(v) <- error) {
             v
         } else {
             {_: String =>}
         }
-        TextField.inputFilter(value: transResourceStrToString(tmpValue), error: errorCallBack)
+        TextField.inputFilter(value: transResourceStrToString(value ?? ""), error: errorCallBack)
         this
     }
 
@@ -482,7 +468,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSubmit(callback: ?(EnterKeyType) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         TextField.onSubmit(tmpCallback)
         this
     }
@@ -499,7 +485,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCopy(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         TextField.onCopy(tmpCallback)
         this
     }
@@ -516,7 +502,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCut(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         TextField.onCut(tmpCallback)
         this
     }
@@ -533,7 +519,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         TextField.onChange(tmpCallback)
         this
     }
@@ -550,7 +536,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPaste(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         TextField.onPaste(tmpCallback)
         this
     }
@@ -567,7 +553,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onEditChange(callback: ?(Bool) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         TextField.onEditChange(tmpCallback)
         this
     }
@@ -585,10 +571,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func customKeyboard(value: ?CustomBuilder, supportAvoidance!: ?Bool = None): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpSupportAvoidance = supportAvoidance ?? false
-        
-        TextField.customKeyboard(tmpValue, tmpSupportAvoidance)
+        TextField.customKeyboard(value ?? { => }, supportAvoidance ?? false)
         this
     }
 
@@ -604,8 +587,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func style(value: ?TextInputStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.style(tmpValue)
+        TextField.style(value ?? TextInputStyle.Default)
         this
     }
 
@@ -621,8 +603,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableKeyboardOnFocus(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.enableKeyboardOnFocus(tmpValue)
+        TextField.enableKeyboardOnFocus(value ?? true)
         this
     }
 
@@ -638,8 +619,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectionMenuHidden(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.selectionMenuHidden(tmpValue)
+        TextField.selectionMenuHidden(value ?? false)
         this
     }
 
@@ -655,8 +635,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showUnderline(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.showUnderline(tmpValue)
+        TextField.showUnderline(value ?? false)
         this
     }
 
@@ -672,8 +651,7 @@ public class TextInput <: CommonMethodComponent<TextInputAttribute> & TextInputA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxLines(value: ?Int32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.maxLines(tmpValue)
+        TextField.maxLines(value ?? 3)
         this
     }
 

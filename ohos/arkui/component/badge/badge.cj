@@ -256,13 +256,13 @@ public class Badge <: CommonMethodComponent<BadgeAttribute> & BadgeAttribute {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(count!: ?Int32, style!: ?BadgeStyle, position!: ?BadgePosition = None,
+    public init(count!: Int32, style!: ?BadgeStyle, position!: ?BadgePosition = None,
         maxCount!: ?Int32 = None, child!: () -> Unit) {
-        let tmpStyle = style ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpStyle = style ?? BadgeStyle()
         let tmpPosition = position ?? BadgePosition.RightTop
         unsafe {
             FfiOHOSAceFrameworkBadgeCreateV2(
-                count ?? throw IllegalArgumentException("The type now is not supported."),
+                count,
                 CJBadgeStyleV2(transAppResourceToResourceColor(tmpStyle.color ?? Color.White), Float64((tmpStyle.fontSize ?? 10.fp).value), Float64((tmpStyle.badgeSize ?? 16.vp).value),
                     transAppResourceToResourceColor(tmpStyle.badgeColor ?? Color.Red), (tmpStyle.fontWeight ?? FontWeight.Normal).getValueInt(), transAppResourceToResourceColor((tmpStyle.borderColor ?? Color.Red)),
                     (tmpStyle.borderWidth ?? 1.vp).value, (tmpStyle.borderWidth ?? 1.vp).unitType.getValue()),
@@ -288,9 +288,9 @@ public class Badge <: CommonMethodComponent<BadgeAttribute> & BadgeAttribute {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: ?String, style!: ?BadgeStyle, position!: ?BadgePosition = None, child!: () -> Unit) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpStyle = style ?? throw IllegalArgumentException("The type now is not supported.")
+    public init(value!: String, style!: ?BadgeStyle, position!: ?BadgePosition = None, child!: () -> Unit) {
+        let tmpValue = value
+        let tmpStyle = style ?? BadgeStyle()
         let tmpPosition = position ?? BadgePosition.RightTop
         
         unsafe {

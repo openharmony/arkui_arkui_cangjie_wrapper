@@ -669,6 +669,8 @@ foreign {
     func FfiOHOSAceFrameworkScrollableBaseOnWillScroll(callback: Int64): Unit
 
     func FfiOHOSAceFrameworkScrollableBaseOnDidScroll(callback: Int64): Unit
+
+    func FFISetWidthWithEmpty(): Unit
 }
 
 /**
@@ -731,29 +733,33 @@ public class Scroll <: ScrollableCommonMethodComponent<ScrollAttribute> & Scroll
         this.child = child
     }
 
-    protected func enableScrollInteractionInner(value: Bool): This {
+    protected func enableScrollInteractionInner(value: ?Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkScrollInteraction(value)
+            FfiOHOSAceFrameworkScrollInteraction(value ?? true)
         }
         this
     }
 
-    protected func frictionInner(value: Float64): This {
+    protected func frictionInner(value: ?Float64): This {
         unsafe {
-            FfiOHOSAceFrameworkScrollFriction(value)
+            FfiOHOSAceFrameworkScrollFriction(value ?? -1.0)
         }
         this
     }
 
-    protected func frictionInner(value: AppResource): This {
-        var friction: Float64 = 0.0
-        let t = Float64.tryParse(getResourceString(value))
-        match (t) {
-            case Some(n) => friction = n
-            case None => BaseLog.debug("AppResource type param of friction func convert to Float64 fail.");
-        }
-        unsafe {
-            FfiOHOSAceFrameworkScrollFriction(friction)
+    protected func frictionInner(value: ?AppResource): This {
+        match (value) {
+            case Some(v) => 
+                var friction: Float64 = 0.0
+                let t = Float64.tryParse(getResourceString(v))
+                match (t) {
+                    case Some(n) => friction = n
+                    case None => BaseLog.debug("AppResource type param of friction func convert to Float64 fail.");
+                }
+                unsafe {
+                    FfiOHOSAceFrameworkScrollFriction(friction)
+                }
+            case None => frictionInner(-1.0)
         }
         this
     }
@@ -783,24 +789,25 @@ public class Scroll <: ScrollableCommonMethodComponent<ScrollAttribute> & Scroll
         this
     }
 
-    protected func scrollBarColorInner(color: ResourceColor): This {
+    protected func scrollBarColorInner(color: ?ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkScrollScrollBarColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkScrollScrollBarColor(transAppResourceToResourceColor(color ?? 0x66182431))
         }
         this
     }
 
-    protected func scrollBarWidthInner(width: Length): This {
-        var width_ = transAppResourceToLength(width)
-        unsafe {
+    protected func scrollBarWidthInner(width: ?Length): This {
+        var width_ = transAppResourceToLength(width ?? 4.vp)	
+        unsafe {	
             FfiOHOSAceFrameworkScrollScrollBarWidth(width_.value, width_.unitType.getValue())
         }
         this
     }
 
-    protected func nestedScrollInner(value: NestedScrollOptions): This {
-        let localScrollForward = (value.scrollForward ?? NestedScrollMode.SelfOnly).getValue()
-        let localScrollBackward = (value.scrollBackward ?? NestedScrollMode.SelfOnly).getValue()
+    protected func nestedScrollInner(value: ?NestedScrollOptions): This {
+        let tmpValue = value ?? NestedScrollOptions(NestedScrollMode.SelfOnly, NestedScrollMode.SelfOnly)
+        let localScrollForward = (tmpValue.scrollForward ?? NestedScrollMode.SelfOnly).getValue()
+        let localScrollBackward = (tmpValue.scrollBackward ?? NestedScrollMode.SelfOnly).getValue()
         unsafe {
             FfiOHOSAceFrameworkScrollNestedScroll(localScrollForward, localScrollBackward)
         }

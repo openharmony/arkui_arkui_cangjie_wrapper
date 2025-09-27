@@ -40,6 +40,8 @@ foreign {
     func FfiOHOSAceFrameworkMenuSetItemGroupDivider(params: DividerParams, hasValue: Bool): Unit
 
     func FfiOHOSAceFrameworkMenuSetExpandingMode(mode: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
 }
 
 let LENGTH_TYPE_LNVALID: Int32 = -2
@@ -167,10 +169,14 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
         this
     }
 
-    protected override func widthInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkMenuSetWidth(value_.value, value_.unitType.getValue());
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkMenuSetWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }

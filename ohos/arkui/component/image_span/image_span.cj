@@ -89,8 +89,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?ResourceStr) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let content = match(tmpValue) {
+        let content = match(value ?? "") {
             case v: AppResource => getResourceMedia(v)
             case v: String => v
             case _ => ""
@@ -114,7 +113,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?PixelMap) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? PixelMap(0)
         unsafe {
             FfiOHOSAceFrameworkImageSpanCreateWithPixelMap(tmpValue.getID())
         }
@@ -132,7 +131,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func verticalAlign(value: ?ImageSpanAlignment): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? ImageSpanAlignment.Bottom
         unsafe {
             FfiOHOSAceFrameworkImageSpanVerticalAlign(tmpValue.getValue())
         }
@@ -151,7 +150,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func objectFit(value: ?ImageFit): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? ImageFit.Cover
         unsafe {
             FfiOHOSAceFrameworkImageSpanObjectFit(tmpValue.getValue())
         }
@@ -170,7 +169,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colorFilter(filter: ?ColorFilter): This {
-        let tmpFilter = filter ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpFilter = filter ?? ColorFilter([])
         let vecFfi = FFIVectorFloat32(tmpFilter.matrix.size)
         for (i in 0..tmpFilter.matrix.size) {
             vecFfi.setElement(i, tmpFilter.matrix[i])
@@ -195,7 +194,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onComplete(callback: ?ImageCompleteCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             value: CImageLoadResult => tmpCallback(parseCImageLoadResult(value))
         }
@@ -219,7 +218,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onError(callback: ?ImageErrorCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             value: CImageError =>
             let error = ImageError(

@@ -275,12 +275,19 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func barWidth(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var width_ = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkTabsSetBarWidth(normalizeValue(width_.value, 0.0), width_.unitType.getValue())
+        if (let Some(v)<- value) {
+            var width_ = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkTabsSetBarWidth(normalizeValue(width_.value, 0.0), width_.unitType.getValue())
+            }
+            return this
+        } else {
+            var width_ = transAppResourceToLength((-1.0).vp)
+            unsafe {
+                FfiOHOSAceFrameworkTabsSetBarWidth(width_.value, width_.unitType.getValue())
+            }
+            return this
         }
-        this
     }
 
     /**
@@ -296,12 +303,19 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func barHeight(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var height_ = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkTabsSetBarHeight(normalizeValue(height_.value, 0.0), height_.unitType.getValue())
+        if (let Some(v)<- value) {
+            var height_ = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkTabsSetBarWidth(normalizeValue(height_.value, 0.0), height_.unitType.getValue())
+            }
+            return this
+        } else {
+            var height_ = transAppResourceToLength((-1.0).vp)
+            unsafe {
+                FfiOHOSAceFrameworkTabsSetBarWidth(height_.value, height_.unitType.getValue())
+            }
+            return this
         }
-        this
     }
 
     protected func index(value: Int32): This {
@@ -323,9 +337,8 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func vertical(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTabsSetVertical(tmpValue)
+            FfiOHOSAceFrameworkTabsSetVertical(value ?? false)
         }
         this
     }
@@ -342,9 +355,8 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollable(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTabsSetScrollable(tmpValue)
+            FfiOHOSAceFrameworkTabsSetScrollable(value ?? true)
         }
         this
     }
@@ -362,9 +374,8 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func barMode(value: ?BarMode): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTabsSetBarMode(tmpValue.getValue())
+            FfiOHOSAceFrameworkTabsSetBarMode((value ?? BarMode.Fixed).getValue())
         }
         this
     }
@@ -382,9 +393,8 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func animationDuration(value: ?Float32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTabsSetAnimationDuration(tmpValue)
+            FfiOHOSAceFrameworkTabsSetAnimationDuration(value ?? -1.0)
         }
         this
     }
@@ -409,7 +419,7 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(event: ?Callback<Int32, Unit>): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { _ => }
         unsafe {
             FfiOHOSAceFrameworkTabsOnChange(Callback1Param<Int32, Unit>(tmpEvent).getID())
         }
@@ -466,9 +476,8 @@ public class TabsController <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func changeIndex(value: ?Int32): Unit {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTabsControllerChangeIndex(this.getID(), tmpValue)
+            FfiOHOSAceFrameworkTabsControllerChangeIndex(this.getID(), value ?? 0)
         }
     }
 }
@@ -542,9 +551,8 @@ public class TabContent <: CommonMethodComponent<TabContentAttribute> & TabConte
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func tabBar(content: ?ResourceStr): This {
-        let tmpContent = content ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (content_ = LibC.mallocCString(transResourceStrToString(tmpContent)).asResource()) {
+            try (content_ = LibC.mallocCString(transResourceStrToString(content ?? "")).asResource()) {
                 FfiOHOSAceFrameworkTabContentSetTabBar(content_.value)
             }
         }
@@ -594,9 +602,8 @@ public class TabContent <: CommonMethodComponent<TabContentAttribute> & TabConte
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func tabBar(content: ?CustomBuilder): This {
-        let tmpContent = content ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTabContentSetTabBarWithComponent(Callback0Param<Unit>(tmpContent).getID())
+            FfiOHOSAceFrameworkTabContentSetTabBarWithComponent(Callback0Param<Unit>(content ?? { => }).getID())
         }
         this
     }

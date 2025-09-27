@@ -79,9 +79,8 @@ public class TextAreaController <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretPosition(value: ?Int32): Unit {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkTextAreaControllerCaretPosition(this.getID(), tmpValue)
+            FfiOHOSAceFrameworkTextAreaControllerCaretPosition(this.getID(), value ?? 0)
         }
     }
 }
@@ -143,8 +142,7 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.caretColor(tmpValue)
+        TextField.caretColor(value ?? 0xFF007DFF)
         this
     }
 
@@ -161,8 +159,7 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     ]
     public func placeholderFont(size!: ?Length, weight!: ?FontWeight = None, family!: ?String = None,
         style!: ?FontStyle = None): This {
-        let tmpSize = size ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.placeholderFont(size: tmpSize, weight: weight ?? FontWeight.W400, family: family ?? "", style: style ?? FontStyle.Normal)
+        TextField.placeholderFont(size: size ?? 16.0.fp, weight: weight ?? FontWeight.W400, family: family ?? "", style: style ?? FontStyle.Normal)
         this
     }
 
@@ -184,8 +181,7 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textAlign(value: ?TextAlign): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.textAlign(tmpValue)
+        TextField.textAlign(value ?? TextAlign.Start)
         this
     }
 
@@ -234,8 +230,7 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.fontWeight(tmpValue)
+        TextField.fontWeight(value ?? FontWeight.Normal)
         this
     }
 
@@ -251,8 +246,7 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.fontStyle(tmpValue)
+        TextField.fontStyle(value ?? FontStyle.Normal)
         this
     }
 
@@ -271,8 +265,7 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.fontFamily(transResourceStrToString(tmpValue))
+        TextField.fontFamily(transResourceStrToString(value ?? "HarmonyOS Sans"))
         this
     }
 
@@ -288,8 +281,7 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enterKeyType(value: ?EnterKeyType): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        TextField.enterKeyType(tmpValue)
+        TextField.enterKeyType(value ?? EnterKeyType.NewLine)
         this
     }
 
@@ -306,13 +298,12 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func inputFilter(value!: ?ResourceStr, error!: ?(String) -> Unit = None): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         let errorCallBack = if (let Some(v) <- error) {
             v
         } else {
             {_: String =>}
         }
-        TextField.inputFilter(value: transResourceStrToString(tmpValue), error: errorCallBack)
+        TextField.inputFilter(value: transResourceStrToString(value ?? ""), error: errorCallBack)
         this
     }
 
@@ -365,7 +356,7 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSubmit(callback: ?(EnterKeyType) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         TextField.onSubmit(tmpCallback)
         this
     }
@@ -382,7 +373,7 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         TextField.onChange(tmpCallback)
         this
     }
@@ -399,7 +390,7 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCopy(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         TextField.onCopy(tmpCallback)
         this
     }
@@ -416,7 +407,7 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCut(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         TextField.onCut(tmpCallback)
         this
     }
@@ -433,7 +424,7 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPaste(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         TextField.onPaste(tmpCallback)
         this
     }
@@ -451,22 +442,22 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onEditChange(callback: ?(Bool) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         TextField.onEditChange(tmpCallback)
         this
     }
 
-    protected override func heightInner(width: Length): This {
+    protected override func heightInner(width: ?Length): This {
         TextField.height(width)
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
+    protected override func sizeInner(width: ?Length, height: ?Length): This {
         TextField.size(width: width, height: height)
         this
     }
 
-    protected override func paddingInner(value: Length): This {
+    protected override func paddingInner(value: ?Length): This {
         TextField.padding(value)
         this
     }
@@ -481,17 +472,17 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
      * @return TextArea instance.
      * @since 11
      */
-    protected override func paddingInner(top: Length, right: Length, bottom: Length, left: Length): This {
+    protected override func paddingInner(top: ?Length, right: ?Length, bottom: ?Length, left: ?Length): This {
         TextField.padding(top: top, right: right, bottom: bottom, left: left)
         this
     }
 
-    protected override func marginInner(top!: Length, right!: Length, bottom!: Length, left!: Length): This {
+    protected override func marginInner(top!: ?Length, right!: ?Length, bottom!: ?Length, left!: ?Length): This {
         TextField.margin(top: top, right: right, bottom: bottom, left: left)
         this
     }
 
-    protected override func marginInner(value: Length): This {
+    protected override func marginInner(value: ?Length): This {
         TextField.margin(value)
         this
     }
@@ -507,52 +498,52 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
      * @since 11
      */
     protected override func borderInner(
-        width: Length,
-        color: ResourceColor,
-        radius: Length,
-        style: BorderStyle
+        width: ?Length,
+        color: ?ResourceColor,
+        radius: ?Length,
+        style: ?BorderStyle
     ): This {
         TextField.border(width: width, color: color, radius: radius, style: style)
         this
     }
 
-    protected override func borderWidthInner(width: Length): This {
+    protected override func borderWidthInner(width: ?Length): This {
         TextField.borderWidth(width)
         this
     }
 
-    protected override func borderWidthInner(edgeWidths: EdgeWidths): This {
+    protected override func borderWidthInner(edgeWidths: ?EdgeWidths): This {
         TextField.borderWidth(edgeWidths)
         this
     }
 
-    protected override func borderColorInner(color: ResourceColor): This {
+    protected override func borderColorInner(color: ?ResourceColor): This {
         TextField.borderColor(color)
         this
     }
 
-    protected override func borderRadiusInner(radius: Length): This {
+    protected override func borderRadiusInner(radius: ?Length): This {
         TextField.borderRadius(radius)
         this
     }
 
     protected override func borderRadiusInner(
-        topLeft!: Length = 0.vp,
-        topRight!: Length = 0.vp,
-        bottomLeft!: Length = 0.vp,
-        bottomRight!: Length = 0.vp
+        topLeft!: ?Length,
+        topRight!: ?Length,
+        bottomLeft!: ?Length,
+        bottomRight!: ?Length
     ): This {
         TextField.borderRadius(topLeft: topLeft, topRight: topRight, bottomLeft: bottomLeft, bottomRight: bottomRight)
         this
     }
 
-    protected override func borderStyleInner(style: BorderStyle): This {
+    protected override func borderStyleInner(style: ?BorderStyle): This {
         TextField.borderStyle(style)
         this
     }
 
-    protected override func backgroundColorInner(value: ResourceColor): This {
-        TextField.backgroundColor(value)
+    protected override func backgroundColorInner(value: ?ResourceColor): This {
+        TextField.backgroundColor(value ?? Color.Transparent)
         this
     }
     // textInput does not need to implement pop function

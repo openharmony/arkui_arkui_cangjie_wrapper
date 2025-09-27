@@ -74,6 +74,10 @@ foreign {
     func FfiOHOSAceFrameworkShapeSetHeight(height: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkShapeSetSize(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 /**
  * Defines Shape Component.

@@ -72,6 +72,10 @@ foreign {
     func FfiOHOSAceFrameworkButtonSetButtonStyle(value: Int32): Unit
 
     func FfiOHOSAceFrameworkButtonSetLabelStyle(labelStyle: CJLabelStyle): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 @C
@@ -411,9 +415,8 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(label: ?ResourceStr) {
-        let tmpLabel = label ?? throw IllegalArgumentException("The type now is not supported.")
-        let content = transResourceStrToString(tmpLabel)
+    public init(label: ResourceStr) {
+        let content = transResourceStrToString(label)
         unsafe {
             try (unsafeContent = LibC.mallocCString(content).asResource()) {
                 FfiOHOSAceFrameworkButtonCreateWithLabel(unsafeContent.value)
@@ -424,7 +427,7 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
     /**
      * Create Button with Text child.
      *
-     * @param { ButtonOptions } options
+     * @param { ?ButtonOptions } options
      * @returns { This }
      * @relation (options: ButtonOptions): ButtonAttribute
      */
@@ -433,7 +436,7 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(options: ?ButtonOptions) {
-        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpOptions = options ?? ButtonOptions()
         unsafe {
             FfiOHOSAceFrameworkButtonCreateWithButtonOptions(
                 ButtonOptional(
@@ -450,7 +453,7 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
     /**
      * Create Button with Text child.
      *
-     * @param { ButtonOptions } options
+     * @param { ?ButtonOptions } options
      * @param { () -> Unit } child
      * @returns { This }
      * @relation (options: ButtonOptions): ButtonAttribute
@@ -460,7 +463,7 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(options: ?ButtonOptions, child: () -> Unit) {
-        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpOptions = options ?? ButtonOptions()
         unsafe {
             FfiOHOSAceFrameworkButtonCreateWithChildAndOptions(
                 ButtonOptional(
@@ -488,8 +491,8 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(label: ?ResourceStr, options: ?ButtonOptions) {
-        let tmpLabel = label ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpLabel = label ?? ""
+        let tmpOptions = options ?? ButtonOptions()
         let content = transResourceStrToString(tmpLabel)
         unsafe {
             try (unsafeContent = LibC.mallocCString(content).asResource()) {
@@ -519,7 +522,8 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        // Need get default value from ffi, The value of sys.float.Body_L is from base/global/system_resources
+        let tmpValue = value ?? 18.fp
         var size = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkButtonSetFontSize(size.value, getLengthUnitOrFp(size).getValue())
@@ -539,7 +543,7 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? FontWeight.W500
         unsafe {
             let unsafeContent = LibC.mallocCString(tmpValue.getValue())
             FfiOHOSAceFrameworkButtonSetFontWeight(unsafeContent)
@@ -560,7 +564,7 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(color: ?ResourceColor): This {
-        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpColor = color ?? Color(0xFFFFFF)
         unsafe {
             FfiOHOSAceFrameworkButtonSetFontColor(transAppResourceToResourceColor(tmpColor))
         }
@@ -580,10 +584,14 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkButtonSetHeight(normalizeValue(value_.value, 0.0), value_.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkButtonSetHeight(normalizeValue(value_.value, 0.0), value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }
@@ -601,10 +609,14 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func widthInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkButtonSetWidth(normalizeValue(value_.value, 0.0), value_.unitType.getValue())
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkButtonSetWidth(normalizeValue(value_.value, 0.0), value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
@@ -621,7 +633,7 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? FontStyle.Normal
         unsafe {
             FfiOHOSAceFrameworkButtonSetFontStyle(tmpValue.getValue())
         }
@@ -640,7 +652,7 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? "HarmonyOS Sans"
         let content = transResourceStrToString(tmpValue)
         unsafe {
             try (contentCString = LibC.mallocCString(content).asResource()) {
@@ -662,7 +674,7 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func shape(value: ?ButtonType): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? ButtonType.RoundRectangle
         unsafe {
             FfiOHOSAceFrameworkButtonSetType(tmpValue.getValue())
         }
@@ -680,8 +692,8 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func paddingInner(value: Length): This {
-        let content = transAppResourceToLength(value)
+    protected override func paddingInner(value: ?Length): This {
+        let content = transAppResourceToLength(value ?? 0.0.vp)
         let value_: Float64 = content.value
         let unitValue_: Int32 = content.unitType.getValue()
         unsafe {
@@ -690,8 +702,8 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         this
     }
 
-    protected override func borderRadiusInner(radius: Length): This {
-        let value_ = transAppResourceToLength(radius)
+    protected override func borderRadiusInner(value: ?Length): This {
+        let value_ = transAppResourceToLength(value ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkButtonSetRadius(value_.value, value_.unitType.getValue())
         }
@@ -710,12 +722,17 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func sizeInner(width: Length, height: Length): This {
-        let width_ = transAppResourceToLength(width)
-        let height_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkButtonSetSize(normalizeValue(width_.value, 0.0), width_.unitType.getValue(),
-                normalizeValue(height_.value, 0.0), height_.unitType.getValue())
+    protected override func sizeInner(width: ?Length, height: ?Length): This {
+        if (width.isNone() || height.isNone()) {
+            widthInner(width)
+            heightInner(height)
+        } else {
+            let width_ = transAppResourceToLength(width ?? 0.0.vp)
+            let height_ = transAppResourceToLength(height ?? 0.0.vp)
+            unsafe {
+                FfiOHOSAceFrameworkButtonSetSize(normalizeValue(width_.value, 0.0), width_.unitType.getValue(),
+                    normalizeValue(height_.value, 0.0), height_.unitType.getValue())
+            }
         }
         this
     }
@@ -732,7 +749,7 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stateEffect(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? true
         unsafe {
             FfiOHOSAceFrameworkButtonSetStateEffect(tmpValue)
         }
@@ -740,33 +757,33 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
     }
 
     protected override func borderInner(
-        width: Length,
-        color: ResourceColor,
-        radius: Length,
-        style: BorderStyle
+        width: ?Length,
+        color: ?ResourceColor,
+        radius: ?Length,
+        style: ?BorderStyle
     ): This {
-        let width_ = transAppResourceToLength(width)
-        let radius_ = transAppResourceToLength(radius)
+        let width_ = transAppResourceToLength(width ?? 0.vp)
+        let radius_ = transAppResourceToLength(radius ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkButtonSetBorder(
                 CJBorder(
                     width_.value,
                     width_.unitType.getValue(),
-                    transAppResourceToResourceColor(color),
+                    transAppResourceToResourceColor(color ?? Color.Black),
                     radius_.value,
                     radius_.unitType.getValue(),
-                    style.getValue()
+                    (style ?? BorderStyle.Solid).getValue()
                 )
             )
         }
         this
     }
 
-    protected override func paddingInner(top: Length, right: Length, bottom: Length, left: Length): This {
-        let top_ = transAppResourceToLength(top)
-        let right_ = transAppResourceToLength(right)
-        let bottom_ = transAppResourceToLength(bottom)
-        let left_ = transAppResourceToLength(left)
+    protected override func paddingInner(top: ?Length, right: ?Length, bottom: ?Length, left: ?Length): This {
+        let top_ = transAppResourceToLength(top ?? 0.vp)
+        let right_ = transAppResourceToLength(right ?? 0.vp)
+        let bottom_ = transAppResourceToLength(bottom ?? 0.vp)
+        let left_ = transAppResourceToLength(left ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkButtonSetPadding(top_.value, top_.unitType.getValue(), right_.value,
                 right_.unitType.getValue(), bottom_.value, bottom_.unitType.getValue(), left_.value,
@@ -776,15 +793,15 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
     }
 
     protected func borderRadiusInner(
-        topLeft!: Length,
-        topRight!: Length,
-        bottomLeft!: Length,
-        bottomRight!: Length
+        topLeft!: ?Length,
+        topRight!: ?Length,
+        bottomLeft!: ?Length,
+        bottomRight!: ?Length
     ): This {
-        let topLeft_ = transAppResourceToLength(topLeft)
-        let topRight_ = transAppResourceToLength(topRight)
-        let bottomLeft_ = transAppResourceToLength(bottomLeft)
-        let bottomRight_ = transAppResourceToLength(bottomRight)
+        let topLeft_ = transAppResourceToLength(topLeft ?? 0.vp)
+        let topRight_ = transAppResourceToLength(topRight ?? 0.vp)
+        let bottomLeft_ = transAppResourceToLength(bottomLeft ?? 0.vp)
+        let bottomRight_ = transAppResourceToLength(bottomRight ?? 0.vp)
         unsafe {
             let value = CJBorderRadius(
                 topLeft_.value,
@@ -813,7 +830,7 @@ public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func buttonStyle(value: ?ButtonStyleMode): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? ButtonStyleMode.Emphasized
         unsafe {
             FfiOHOSAceFrameworkButtonSetButtonStyle(tmpValue.getValue())
         }

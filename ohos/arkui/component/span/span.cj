@@ -97,9 +97,8 @@ public class Span <: BaseSpan {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?ResourceStr) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            var unsafeContent = LibC.mallocCString(transResourceStrToString(tmpValue))
+            var unsafeContent = LibC.mallocCString(transResourceStrToString(value ?? ""))
             FfiOHOSAceFrameworkSpanCreate(unsafeContent)
             LibC.free(unsafeContent)
         }
@@ -156,9 +155,8 @@ public class Span <: BaseSpan {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSpanSetFontStyle(tmpValue.getValue())
+            FfiOHOSAceFrameworkSpanSetFontStyle((value ?? FontStyle.Normal).getValue())
         }
         this
     }
@@ -175,9 +173,8 @@ public class Span <: BaseSpan {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (unsafeFontWeight = LibC.mallocCString(tmpValue.getValue()).asResource()) {
+            try (unsafeFontWeight = LibC.mallocCString((value ?? FontWeight.Normal).getValue()).asResource()) {
                 FfiOHOSAceFrameworkSpanSetFontWeight(unsafeFontWeight.value)
             }
         }
@@ -196,9 +193,8 @@ public class Span <: BaseSpan {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            try (unsafeFontWeight = LibC.mallocCString(transResourceStrToString(tmpValue)).asResource()) {
+            try (unsafeFontWeight = LibC.mallocCString(transResourceStrToString(value ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkSpanSetFontFamily(unsafeFontWeight.value)
             }
         }
@@ -218,12 +214,11 @@ public class Span <: BaseSpan {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor = None): This {
-        let tmpDecorationType = decorationType ?? throw IllegalArgumentException("The type now is not supported.")
         var colorValue = if (let Some(v) <- color) {
             v
         } else { Color.Black }
         unsafe {
-            FfiOHOSAceFrameworkSpanSetDecoration(tmpDecorationType.getValue(), transAppResourceToResourceColor(colorValue))
+            FfiOHOSAceFrameworkSpanSetDecoration((decorationType ?? TextDecorationType.None).getValue(), transAppResourceToResourceColor(colorValue))
         }
         this
     }
@@ -240,8 +235,7 @@ public class Span <: BaseSpan {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func letterSpacing(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var v = transAppResourceToLength(tmpValue)
+        var v = transAppResourceToLength(value ?? 0.0.px)
         unsafe {
             FfiOHOSAceFrameworkSpanSetLetterSpacing(v.value, v.unitType.getValue())
         }
@@ -260,9 +254,8 @@ public class Span <: BaseSpan {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textCase(value: ?TextCase): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSpanSetTextCase(tmpValue.getValue())
+            FfiOHOSAceFrameworkSpanSetTextCase((value ?? TextCase.Normal).getValue())
         }
         this
     }
@@ -281,7 +274,7 @@ public class Span <: BaseSpan {
         throwexception: true
     ]
     public func onClick(event: ?(ClickEvent) -> Unit): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { _ => }
         let wrapper = {
             evt: CJClickEvent => tmpEvent(parseCJClickEvent(evt))
         }

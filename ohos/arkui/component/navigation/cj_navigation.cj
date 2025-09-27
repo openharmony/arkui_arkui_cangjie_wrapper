@@ -495,8 +495,8 @@ public class NavPathInfo <: FFIData {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(name!: ?String, param!: ?String, onPop!: ?Callback<PopInfo, Unit> = None) {
-        this.name = name ?? throw IllegalArgumentException("The type now is not supported.")
-        this.param = param ?? throw IllegalArgumentException("The type now is not supported.")
+        this.name = name ?? ""
+        this.param = param ?? ""
         this.onPop = onPop
         registerSelf()
     }
@@ -520,8 +520,8 @@ public class NavPathInfo <: FFIData {
 
             return CJNavPathInfo(
                 this.getID(),
-                LibC.mallocCString(name ?? throw IllegalArgumentException("The type now is not supported.")),
-                LibC.mallocCString(param ?? throw IllegalArgumentException("The type now is not supported.")),
+                LibC.mallocCString(name ?? ""),
+                LibC.mallocCString(param ?? ""),
                 onPopId,
                 onPopValid,
                 -1,
@@ -593,7 +593,7 @@ public class NavPathStack <: RemoteData {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pushPath(info: ?NavPathInfo, animated!: ?Bool = None) {
-        let tmpInfo = info ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpInfo = info ?? NavPathInfo(name: "", param: "")
         pushPath(tmpInfo, options: NavigationOptions(animated: animated ?? true))
     }
 
@@ -624,8 +624,8 @@ public class NavPathStack <: RemoteData {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pushPathByName(name: ?String, param: ?String, animated!: ?Bool = None) {
-        let tmpName = name ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpParam = param ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpName = name ?? ""
+        let tmpParam = param ?? ""
         pushPath(NavPathInfo(name: tmpName, param: tmpParam), animated: animated)
     }
 
@@ -698,7 +698,7 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(pathInfos: ?NavPathStack, child!: () -> Unit = { => }) {
-        let tmpPathInfos = pathInfos ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpPathInfos = pathInfos ?? NavPathStack()
         unsafe {
             FfiOHOSAceFrameworkNavigationCreateWithPathInfos(tmpPathInfos.getID())
         }
@@ -717,7 +717,7 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func navDestination(builder: ?(String) -> Unit): This {
-        let tmpBuilder = builder ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpBuilder = builder ?? { _ => }
         let wrapper = { value: CString =>
             tmpBuilder(value.toString())
         }
@@ -740,7 +740,6 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func title(value: ?ResourceStr, options!: ?NavigationTitleOptions = None): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         var opt = CJNavigationTitleOptions()
         var withOpt = false
         if (let Some(v) <- options) {
@@ -748,7 +747,7 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
             withOpt = true
         }
         unsafe {
-            try (cTitle = LibC.mallocCString(transResourceStrToString(tmpValue)).asResource()) {
+            try (cTitle = LibC.mallocCString(transResourceStrToString(value ?? "")).asResource()) {
                 FfiOHOSAceFrameworkNavigationSetTitleWithOptions(cTitle.value, withOpt, opt)
             }
         }
@@ -768,7 +767,6 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions = None): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         var opt = CJNavigationTitleOptions()
         var withOpt = false
         if (let Some(v) <- options) {
@@ -777,7 +775,7 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
         }
         unsafe {
             FfiOHOSAceFrameworkNavigationSetTitleWithBuilderWithOptions(
-                Callback0Param<Unit>(tmpValue).getID(), withOpt, opt)
+                Callback0Param<Unit>(value ?? { => }).getID(), withOpt, opt)
         }
         this
     }
@@ -797,9 +795,8 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func hideTitleBar(hide: ?Bool, animated!: ?Bool = None): This {
-        let tmpHide = hide ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkNavigationSetHideTitleBarWithAnimated(tmpHide, animated ?? false)
+            FfiOHOSAceFrameworkNavigationSetHideTitleBarWithAnimated(hide ?? false, animated ?? false)
         }
         this
     }

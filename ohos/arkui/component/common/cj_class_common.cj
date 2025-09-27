@@ -41,7 +41,7 @@ public class EventTarget {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var area: ?Area
+    public var area: Area
 
     /**
      * constructor
@@ -50,8 +50,8 @@ public class EventTarget {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(area: ?Area) {
-        this.area = area ?? throw IllegalArgumentException("The type now is not supported.")
+    public init(area: Area) {
+        this.area = area
     }
 }
 
@@ -69,40 +69,40 @@ public class Area {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var width: ?Length
+    public var width: Length
 
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var height: ?Length
+    public var height: Length
 
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var position: ?Position
+    public var position: Position
 
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var globalPosition: ?Position
+    public var globalPosition: Position
 
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        width: ?Length,
-        height: ?Length,
-        position: ?Position,
-        globalPosition: ?Position
+        width: Length,
+        height: Length,
+        position: Position,
+        globalPosition: Position
     ) {
-        this.width = width ?? throw IllegalArgumentException("The type now is not supported.")
-        this.height = height ?? throw IllegalArgumentException("The type now is not supported.")
-        this.position = position ?? throw IllegalArgumentException("The type now is not supported.")
-        this.globalPosition = globalPosition ?? throw IllegalArgumentException("The type now is not supported.")
+        this.width = width
+        this.height = height
+        this.position = position
+        this.globalPosition = globalPosition
     }
 }
 
@@ -169,7 +169,7 @@ public class MotionPathOptions {
         to!: ?Float64 = None,
         rotatable!: ?Bool = None
     ) {
-        this.path = path ?? throw IllegalArgumentException("The type now is not supported.")
+        this.path = path ?? ""
         this.from = from ?? 0.0
         this.to = to ?? 1.0
         this.rotatable = rotatable ?? false
@@ -791,19 +791,19 @@ protected func parseAnimateParam(params: AnimateParam): NativeAnimateParam {
     }
 
     let min = if (let Some(value) <- params.expectedFrameRateRange) {
-        NativeOptionInt32(true, (value.min ?? throw IllegalArgumentException("The type now is not supported.")))
+        NativeOptionInt32(true, (value.min ?? -1))
     } else {
         NativeOptionInt32(false, 0)
     }
 
     let max = if (let Some(value) <- params.expectedFrameRateRange) {
-        NativeOptionInt32(true, (value.max ?? throw IllegalArgumentException("The type now is not supported.")))
+        NativeOptionInt32(true, (value.max ?? -1))
     } else {
         NativeOptionInt32(false, 0)
     }
 
     let expected = if (let Some(value) <- params.expectedFrameRateRange) {
-        NativeOptionInt32(true, (value.expected ?? throw IllegalArgumentException("The type now is not supported.")))
+        NativeOptionInt32(true, (value.expected ?? -1))
     } else {
         NativeOptionInt32(false, 0)
     }
@@ -850,22 +850,20 @@ public class Offset {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(dx: ?Length, dy: ?Length) {
-        let tmpDx = dx ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpDy = dy ?? throw IllegalArgumentException("The type now is not supported.")
-        this.dx = transAppResourceToLength(tmpDx)
-        this.dy = transAppResourceToLength(tmpDy)
+        this.dx = transAppResourceToLength(dx ?? 0.0.vp)
+        this.dy = transAppResourceToLength(dy ?? 0.0.vp)
     }
 }
 
 protected func parseOffset(offset: Offset): NativeOffset {
     return NativeOffset(
         NativeLength(
-            (offset.dx ?? throw IllegalArgumentException("The type now is not supported.")).value,
-            (offset.dx ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue()
+            (offset.dx ?? 0.0.vp).value,
+            (offset.dx ?? 0.0.vp).unitType.getValue()
         ),
         NativeLength(
-            (offset.dy ?? throw IllegalArgumentException("The type now is not supported.")).value,
-            (offset.dy ?? throw IllegalArgumentException("The type now is not supported.")).unitType.getValue()
+            (offset.dy ?? 0.0.vp).value,
+            (offset.dy ?? 0.0.vp).unitType.getValue()
         )
     )
 }
@@ -900,9 +898,9 @@ public class ExpectedFrameRateRange {
         max!: ?Int32,
         expected!: ?Int32
     ) {
-        this.min = min ?? throw IllegalArgumentException("The type now is not supported.")
-        this.max = max ?? throw IllegalArgumentException("The type now is not supported.")
-        this.expected = expected ?? throw IllegalArgumentException("The type now is not supported.")
+        this.min = min
+        this.max = max
+        this.expected = expected
     }
 }
 

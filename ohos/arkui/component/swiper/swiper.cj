@@ -129,6 +129,10 @@ foreign {
     func FfiOHOSAceFrameworkSwiperContentProxyFinishTransition(): Unit
 
     func FfiOHOSAceFrameworkInteractableViewOnClick(callback: Int64): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 @C
@@ -1204,39 +1208,52 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         this
     }
 
-    protected override func enabledInner(value: Bool): This {
+    protected override func enabledInner(value: ?Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetEnabled(value)
+            FfiOHOSAceFrameworkSwiperSetEnabled(value ?? true)
         }
         this
     }
 
-    protected override func widthInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkSwiperSetWidth(value_.value, value_.unitType.getValue())
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkSwiperSetWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
 
-    protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkSwiperSetHeight(value_.value, value_.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkSwiperSetHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkSwiperSetSize(
-                width_.value,
-                width_.unitType.getValue(),
-                height_.value,
-                height_.unitType.getValue()
-            )
+    protected override func sizeInner(width: ?Length, height: ?Length): This {
+        if (width.isNone() || height.isNone()) {
+            widthInner(width)
+            heightInner(height)
+        } else {
+            var width_ = transAppResourceToLength(width ?? 0.0.vp)
+            var height_ = transAppResourceToLength(height ?? 0.0.vp)
+            unsafe {
+                FfiOHOSAceFrameworkSwiperSetSize(
+                    width_.value,
+                    width_.unitType.getValue(),
+                    height_.value,
+                    height_.unitType.getValue()
+                )
+            }
         }
         this
     }
@@ -1262,9 +1279,10 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
         this
     }
 
-    protected override func onClickInner(callback: (ClickEvent) -> Unit): This {
+    protected override func onClickInner(callback: ?(ClickEvent) -> Unit): This {
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
-            evt: CJClickEvent => callback(parseCJClickEvent(evt))
+            evt: CJClickEvent => tmpCallback(parseCJClickEvent(evt))
         }
         let lambdaData = CallbackCJClickEvent(wrapper);
         unsafe {

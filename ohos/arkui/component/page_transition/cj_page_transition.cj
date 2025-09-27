@@ -218,10 +218,9 @@ sealed abstract class CommonTransition {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func slide(value: ?SlideEffect): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+    public func slide(value: SlideEffect): This {
         unsafe {
-            FfiPageTransitionSlideEffect(tmpValue.getValue())
+            FfiPageTransitionSlideEffect(value.getValue())
         }
         this
     }
@@ -286,10 +285,9 @@ sealed abstract class CommonTransition {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func opacity(value: ?Float64): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+    public func opacity(value: Float64): This {
         unsafe {
-            FfiPageTransitionSetOpacity(tmpValue)
+            FfiPageTransitionSetOpacity(value)
         }
         this
     }
@@ -346,7 +344,7 @@ public class PageTransitionEnter <: CommonTransition {
         throwexception: true
     ]
     public func onEnter(event: ?PageTransitionCallback) {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { _, _ =>}
         let wrapper = {
             ty: Int32, progress: Float64 => tmpEvent(RouteType.parse(ty), progress)
         }
@@ -408,7 +406,7 @@ public class PageTransitionExit <: CommonTransition {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onExit(event: ?PageTransitionCallback) {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { _, _ =>}
         let wrapper = {
             ty: Int32, progress: Float64 => tmpEvent(RouteType.parse(ty), progress)
         }

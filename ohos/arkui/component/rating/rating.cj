@@ -61,9 +61,8 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(rating!: ?Float64, indicator!: ?Bool = None) {
-        let tmpRating = rating ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRatingCreate(tmpRating, indicator ?? false)
+            FfiOHOSAceFrameworkRatingCreate(rating ?? 0.0, indicator ?? false)
         }
     }
 
@@ -79,9 +78,8 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stars(value: ?Int32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkRatingSetStars(tmpValue)
+            FfiOHOSAceFrameworkRatingSetStars(value ?? 5)
         }
         this
     }
@@ -98,7 +96,7 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stepSize(size: ?Float64): This {
-        let tmpSize = size ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpSize = size ?? 0.5
         // When the parameter value is less than or equal to 0, use the default value of 0.5
         if (tmpSize <= 0.0) {
             return this
@@ -123,8 +121,8 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func starStyle(backgroundUri!: ?ResourceStr, foregroundUri!: ?ResourceStr, secondaryUri!: ?ResourceStr = None): This {
-        let tmpBackgroundUri = backgroundUri ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpForegroundUri = foregroundUri ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpBackgroundUri = backgroundUri ?? ""
+        let tmpForegroundUri = foregroundUri ?? ""
         let backgroundUri_ = transResourceStrToString(tmpBackgroundUri)
         let foregroundUri_ = transResourceStrToString(tmpForegroundUri)
         let secondaryUri_ = transResourceStrToString(secondaryUri ?? tmpBackgroundUri)
@@ -151,7 +149,7 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Float64) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         unsafe {
             FfiOHOSAceFrameworkRatingSetOnChange(Callback1Param<Float64, Unit>(tmpCallback).getID())
         }

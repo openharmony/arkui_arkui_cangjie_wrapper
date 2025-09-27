@@ -164,9 +164,9 @@ public class SelectOptions {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: ?ResourceStr, icon!: ?ResourceStr) {
-        this.value = value ?? throw IllegalArgumentException("The type now is not supported.")
-        this.icon = icon ?? throw IllegalArgumentException("The type now is not supported.")
+    public init(value!: ?ResourceStr, icon!: ?ResourceStr = None) {
+        this.value = value ?? ""
+        this.icon = icon ?? ""
     }
 
     func parseToNative(): NativeSelectOption {
@@ -245,7 +245,7 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         throwexception: true
     ]
     public init(options: ?Array<SelectOptions>) {
-        let tmpOptions = options ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpOptions = options ?? []
         let vecValueHandle = FFIVectorNativeSelectOption(tmpOptions.size)
         let elements: Array<NativeSelectOption> = Array(tmpOptions.size) {
             i => tmpOptions[i].parseToNative()
@@ -278,9 +278,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selected(value: ?Int32): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSelectSetSelected(tmpValue)
+            FfiOHOSAceFrameworkSelectSetSelected(value ?? 0)
         }
         this
     }
@@ -297,8 +296,7 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func value(value: ?ResourceStr): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let content = transResourceStrToString(tmpValue)
+        let content = transResourceStrToString(value ?? "")
         unsafe {
             try (unsafeContent = LibC.mallocCString(content).asResource()) {
                 FfiOHOSAceFrameworkSelectSetValue(unsafeContent.value)
@@ -453,9 +451,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionBgColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSelectSetOptionBgColor(transAppResourceToResourceColor(tmpValue))
+            FfiOHOSAceFrameworkSelectSetOptionBgColor(transAppResourceToResourceColor(value ?? Color.Transparent))
         }
         this
     }
@@ -530,8 +527,7 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func space(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 8.0.vp)
         unsafe {
             FfiOHOSAceFrameworkSelectSetSpace(value_.value, value_.unitType.getValue())
         }
@@ -550,7 +546,7 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arrowPosition(value: ?ArrowPosition): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? ArrowPosition.End
         unsafe {
             FfiOHOSAceFrameworkSelectSetArrowPosition(tmpValue.getValue())
         }
@@ -570,11 +566,11 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func menuAlign(alignType!: ?MenuAlignType, offset!: ?Offset): This {
-        let tmpAlignType = alignType ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpOffset = offset ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpAlignType = alignType ?? MenuAlignType.Start
+        let tmpOffset = offset ?? Offset(0.0.vp, 0.0.vp)
         unsafe {
-            let dx = tmpOffset.dx ?? throw IllegalArgumentException("The type now is not supported.")
-            let dy = tmpOffset.dy ?? throw IllegalArgumentException("The type now is not supported.")
+            let dx = tmpOffset.dx ?? 0.0.vp
+            let dy = tmpOffset.dy ?? 0.0.vp
             FfiOHOSAceFrameworkSelectSetMenuAlign(tmpAlignType.getValue(), dx.value, dx.unitType.getValue(), dy.value,
                 dy.unitType.getValue())
         }
@@ -654,9 +650,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func menuBackgroundColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSelectSetMenuBackgroundColor(transAppResourceToResourceColor(tmpValue))
+            FfiOHOSAceFrameworkSelectSetMenuBackgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
         }
         this
     }
@@ -673,29 +668,34 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func menuBackgroundBlurStyle(value: ?BlurStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? BlurStyle.ComponentUltraThick
         unsafe {
             FfiOHOSAceFrameworkSelectSetMenuBackgroundBlurStyle(tmpValue.getValue())
         }
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkSelectSetSize(
-                width_.value,
-                width_.unitType.getValue(),
-                height_.value,
-                height_.unitType.getValue()
-            )
+    protected override func sizeInner(width: ?Length, height: ?Length): This {
+        if (width.isNone() || height.isNone()) {
+            widthInner(width)
+            heightInner(height)
+        } else {
+            var width_ = transAppResourceToLength(width ?? 0.0.vp)
+            var height_ = transAppResourceToLength(height ?? 0.0.vp)
+            unsafe {
+                FfiOHOSAceFrameworkSelectSetSize(
+                    width_.value,
+                    width_.unitType.getValue(),
+                    height_.value,
+                    height_.unitType.getValue()
+                )
+            }
         }
         this
     }
 
-    protected override func paddingInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    protected override func paddingInner(value: ?Length): This {
+        var value_ = transAppResourceToLength(value ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkSelectSetPadding(value_.value, value_.unitType.getValue())
         }
@@ -706,9 +706,9 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    protected override func directionInner(value: Direction): This {
+    protected override func directionInner(value: ?Direction): This {
         unsafe {
-            FfiOHOSAceFrameworkSelectSetDirection(value.getValue())
+            FfiOHOSAceFrameworkSelectSetDirection((value ?? Direction.Auto).getValue())
         }
         this
     }
@@ -725,7 +725,7 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSelect(callback: ?OnSelectCallback): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _, _ => }
         let wrapper = {
             index: Int32, value: CString => tmpCallback(index, value.toString())
         }

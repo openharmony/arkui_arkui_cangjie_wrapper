@@ -82,7 +82,7 @@ public class ColorStop {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var color: ?ResourceColor
+    public var color: ResourceColor
 
     /**
      * Offset property.
@@ -93,7 +93,7 @@ public class ColorStop {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var offset: ?Length
+    public var offset: Length
 
     /**
      * ColorStop constructor
@@ -102,10 +102,9 @@ public class ColorStop {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(color: ?ResourceColor, offset: ?Length) {
-        let tmpOffset = offset ?? throw IllegalArgumentException("The type now is not supported.")
-        this.color = color ?? throw IllegalArgumentException("The type now is not supported.")
-        this.offset = transAppResourceToLength(tmpOffset)
+    public init(color: ResourceColor, offset: Length) {
+        this.color = color
+        this.offset = transAppResourceToLength(offset)
     }
 }
 
@@ -130,8 +129,8 @@ public class LinearGradient {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(colorStops: ?Array<ColorStop>) {
-        this.colorStops = colorStops ?? throw IllegalArgumentException("The type now is not supported.")
+    public init(colorStops: Array<ColorStop>) {
+        this.colorStops = colorStops
     }
 
     /**
@@ -143,18 +142,17 @@ public class LinearGradient {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(color: ?ResourceColor) {
-        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
-        var color_ = transAppResourceToResourceColor(tmpColor)
+    public init(color: ResourceColor) {
+        var color_ = transAppResourceToResourceColor(color)
         this.colorStops = [ColorStop(color_, 0), ColorStop(color_, 1)]
     }
 
     func parseToNative(): NativeLinearGradient {
         return NativeLinearGradient(
-            (colorStops[0].color ?? throw IllegalArgumentException("The type now is not supported.")).toUInt32(),
-            (colorStops[0].offset ?? throw IllegalArgumentException("The type now is not supported.")).value,
-            (colorStops[1].color ?? throw IllegalArgumentException("The type now is not supported.")).toUInt32(),
-            (colorStops[1].offset ?? throw IllegalArgumentException("The type now is not supported.")).value
+            (colorStops[0].color).toUInt32(),
+            (colorStops[0].offset).value,
+            (colorStops[1].color).toUInt32(),
+            (colorStops[1].offset).value
         )
     }
 }
@@ -250,13 +248,12 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(values!: ?Array<Float64>, max!: ?Float64 = None, panelType!: ?DataPanelType = None) {
-        let tmpValues = values ?? throw IllegalArgumentException("The type now is not supported.")
+    public init(values!: Array<Float64>, max!: ?Float64 = None, panelType!: ?DataPanelType = None) {
         let tmpPanelType = panelType ?? DataPanelType.Circle
         
-        let vecValueHandle = FFIVectorFloat64(tmpValues.size)
-        for (i in 0..tmpValues.size) {
-            vecValueHandle.setElement(i, tmpValues[i])
+        let vecValueHandle = FFIVectorFloat64(values.size)
+        for (i in 0..values.size) {
+            vecValueHandle.setElement(i, values[i])
         }
         unsafe {
             FfiOHOSAceFrameworkDataPanelCreate(vecValueHandle.getNativeHandle(), max ?? 100.0, tmpPanelType.getValue())
@@ -276,9 +273,8 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closeEffect(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkDataPanelSetCloseEffect(tmpValue)
+            FfiOHOSAceFrameworkDataPanelSetCloseEffect(value ?? true)
         }
         this
     }
@@ -319,9 +315,8 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func trackBackgroundColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkDataPanelSetTrackBackgroundColor(transAppResourceToResourceColor(tmpValue))
+            FfiOHOSAceFrameworkDataPanelSetTrackBackgroundColor(transAppResourceToResourceColor(value ?? 0x08182431))
         }
         this
     }
@@ -338,8 +333,7 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeWidth(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 24.0.vp)
         unsafe {
             FfiOHOSAceFrameworkDataPanelSetStrokeWidth(value_.value, value_.unitType.getValue())
         }

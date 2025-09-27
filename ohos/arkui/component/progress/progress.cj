@@ -279,11 +279,10 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?Float64, total!: ?Float64 = None, progressType!: ?ProgressType = None) {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         let tmpProgressType = progressType ?? ProgressType.Linear
         
         unsafe {
-            FfiOHOSAceFrameworkProgressCreate(tmpValue, total ?? 100.0, tmpProgressType.getValue())
+            FfiOHOSAceFrameworkProgressCreate(value ?? 0.0, total ?? 100.0, tmpProgressType.getValue())
         }
     }
 
@@ -299,9 +298,8 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func value(value: ?Float64): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkProgressSetValue(tmpValue)
+            FfiOHOSAceFrameworkProgressSetValue(value ?? 0.0)
         }
         this
     }
@@ -325,9 +323,10 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
         this
     }
 
-    protected override func backgroundColorInner(color: ResourceColor): This {
+    protected override func backgroundColorInner(color: ?ResourceColor): This {
+        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkProgressSetBackgroundColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkProgressSetBackgroundColor(transAppResourceToResourceColor(tmpColor))
         }
         this
     }
@@ -370,7 +369,7 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func style(value: ?RingStyleOptions): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? RingStyleOptions()
         unsafe {
             FfiOHOSAceFrameworkProgressSetRingStyle(
                 RingStyle((tmpValue.strokeWidth ?? 4.vp).value, (tmpValue.strokeWidth ?? 4.vp).unitType.getValue(), tmpValue.shadow ?? false,

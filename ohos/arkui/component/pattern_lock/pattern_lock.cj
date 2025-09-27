@@ -147,7 +147,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? 0xFF182431
         unsafe {
             FfiOHOSAceFrameworkPatternLockSelectedColor(tmpValue.toUInt32())
         }
@@ -166,7 +166,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pathColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? 0x33182431
         unsafe {
             FfiOHOSAceFrameworkPatternLockPathColor(tmpValue.toUInt32())
         }
@@ -185,7 +185,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func activeColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? 0xFF182431
         unsafe {
             FfiOHOSAceFrameworkPatternLockActiveColor(tmpValue.toUInt32())
         }
@@ -204,7 +204,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func regularColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? 0xFF182431
         unsafe {
             FfiOHOSAceFrameworkPatternLockRegularColor(tmpValue.toUInt32())
         }
@@ -225,9 +225,8 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoReset(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkPatternLockAutoReset(tmpValue)
+            FfiOHOSAceFrameworkPatternLockAutoReset(value ?? true)
         }
         this
     }
@@ -248,10 +247,9 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func circleRadius(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkPatternLockCircleRadius(transAppResourceToLength(tmpValue).value,
-                transAppResourceToLength(tmpValue).unitType.getValue())
+            FfiOHOSAceFrameworkPatternLockCircleRadius(transAppResourceToLength(value ?? 6.0.vp).value,
+                transAppResourceToLength(value ?? 6.0.vp).unitType.getValue())
         }
         this
     }
@@ -272,7 +270,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sideLength(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? 288.0.vp
         unsafe {
             FfiOHOSAceFrameworkPatternLockSideLength(transAppResourceToLength(tmpValue).value,
                 transAppResourceToLength(tmpValue).unitType.getValue())
@@ -296,10 +294,9 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pathStrokeWidth(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkPatternLockStrokeWidth(transAppResourceToLength(tmpValue).value,
-                transAppResourceToLength(tmpValue).unitType.getValue())
+            FfiOHOSAceFrameworkPatternLockStrokeWidth(transAppResourceToLength(value ?? 12.0.vp).value,
+                transAppResourceToLength(value ?? 12.0.vp).unitType.getValue())
         }
         this
     }
@@ -316,7 +313,7 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPatternComplete(callback: ?(Array<Int32>) -> Unit): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             ffiVector: VectorInt32Handle =>
             let handle = FFIVectorInt32(ffiVector)

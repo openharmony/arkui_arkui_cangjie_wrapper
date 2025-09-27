@@ -295,28 +295,41 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected override func widthInner(value: Length): T {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkShapeSetWidth(value_.value, value_.unitType.getValue())
+    protected override func widthInner(value: ?Length): T {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkShapeSetWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected override func heightInner(value: Length): T {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkShapeSetHeight(value_.value, value_.unitType.getValue())
+    protected override func heightInner(value: ?Length): T {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkShapeSetHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }
 
-    protected override func sizeInner(width: Length, height: Length): T {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkShapeSetSize(width_.value, width_.unitType.getValue(), height_.value,
-                height_.unitType.getValue())
+    protected override func sizeInner(width: ?Length, height: ?Length): T {
+        if (width.isNone() || height.isNone()) {
+            widthInner(width)
+            heightInner(height)
+        } else {
+            var width_ = transAppResourceToLength(width ?? 0.0.vp)
+            var height_ = transAppResourceToLength(height ?? 0.0.vp)
+            unsafe {
+                FfiOHOSAceFrameworkShapeSetSize(width_.value, width_.unitType.getValue(), height_.value,
+                    height_.unitType.getValue())
+            }
         }
         (this as T) ?? throw IllegalArgumentException("Type error")
     }

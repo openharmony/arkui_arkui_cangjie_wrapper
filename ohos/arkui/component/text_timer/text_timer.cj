@@ -229,9 +229,8 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func format(value: ?String): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            let valueCString = LibC.mallocCString(tmpValue)
+            let valueCString = LibC.mallocCString(value ?? "HH:mm:ss.SS")
             FfiOHOSAceFrameworkTextTimerSetFormat(valueCString)
             LibC.free(valueCString)
         }
@@ -252,7 +251,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onTimer(event: ?(Int64, Int64) -> Unit): This {
-        let tmpEvent = event ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEvent = event ?? { _, _ => }
         let lambdaData = Callback2Param<Int64, Int64, Unit>(tmpEvent)
         unsafe {
             FfiOHOSAceFrameworkTextTimerSetOnTimer(lambdaData.getID())
@@ -274,8 +273,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 16.0.fp)
         unsafe {
             FfiOHOSAceFrameworkTextTimerSetFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
         }
@@ -313,7 +311,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? FontStyle.Normal
         unsafe {
             FfiOHOSAceFrameworkTextTimerSetFontStyle(tmpValue.getValue())
         }
@@ -339,7 +337,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? FontWeight.Normal
         unsafe {
             var unsafeFontWeight = LibC.mallocCString(tmpValue.getValue())
             FfiOHOSAceFrameworkTextTimerSetFontWeight(unsafeFontWeight)
@@ -360,8 +358,7 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let value_ = transResourceStrToString(tmpValue)
+        let value_ = transResourceStrToString(value ?? "HarmonyOS Sans")
         unsafe {
             try (unsafeFontFamily = LibC.mallocCString(value_).asResource()) {
                 FfiOHOSAceFrameworkTextTimerSetFontFamily(unsafeFontFamily.value)

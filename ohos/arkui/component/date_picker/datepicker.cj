@@ -50,7 +50,7 @@ public class DatePickerResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var year: ?Int64
+    public var year: Int64
     /**
      * Month index of the selected date.
      * The index is zero-based. 0 indicates January, and 11 indicates December.
@@ -66,7 +66,7 @@ public class DatePickerResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var month: ?Int64
+    public var month: Int64
     /**
      * Day of the selected date.
      *
@@ -81,7 +81,7 @@ public class DatePickerResult {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var day: ?Int64
+    public var day: Int64
 
     /**
      * DatePickerResult constructor.
@@ -95,13 +95,13 @@ public class DatePickerResult {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        year: ?Int64,
-        month: ?Int64,
-        day: ?Int64
+        year: Int64,
+        month: Int64,
+        day: Int64
     ) {
-        this.year = year ?? throw IllegalArgumentException("The type now is not supported.")
-        this.month = month ?? throw IllegalArgumentException("The type now is not supported.")
-        this.day = day ?? throw IllegalArgumentException("The type now is not supported.")
+        this.year = year
+        this.month = month
+        this.day = day
     }
 }
 
@@ -214,9 +214,8 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lunar(value: ?Bool): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkDatePickerSetLunar(tmpValue)
+            FfiOHOSAceFrameworkDatePickerSetLunar(value ?? false)
         }
         this
     }
@@ -234,7 +233,7 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDateChange(callback: ?Callback<DateTime, Unit>): This {
-        let tmpCallback = callback ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpCallback = callback ?? { _ => }
         let wrapper = {
             y: Int64, m: Int64, d: Int64 => tmpCallback(DateTime.of(year: y, month: Month.of(m), dayOfMonth: d))
         }
@@ -258,7 +257,7 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func disappearTextStyle(value: ?PickerTextStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? PickerTextStyle()
         var color: UInt32 = 0xff182431
         var size: Length = 14.fp
         var weight: FontWeight = FontWeight.Regular
@@ -308,7 +307,7 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textStyle(value: ?PickerTextStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? PickerTextStyle()
         var color: UInt32 = 0xff182431
         var size: Length = 16.fp
         var weight: FontWeight = FontWeight.Regular
@@ -358,7 +357,7 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedTextStyle(value: ?PickerTextStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? PickerTextStyle()
         var color: UInt32 = 0xff007dff
         var size: Length = 20.fp
         var weight: FontWeight = FontWeight.Medium
@@ -395,9 +394,9 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         this
     }
 
-    protected override func opacityInner(opacityValue: Float64): This {
+    protected override func opacityInner(opacityValue: ?Float64): This {
         unsafe {
-            FfiOHOSAceFrameworkDatePickerSetOpacity(opacityValue)
+            FfiOHOSAceFrameworkDatePickerSetOpacity(opacityValue ?? 1.0)
         }
         this
     }

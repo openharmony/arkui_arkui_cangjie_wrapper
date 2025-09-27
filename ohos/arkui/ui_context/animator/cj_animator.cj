@@ -608,9 +608,9 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     func checkExpectedFrameRateRange(framerateRange: ExpectedFrameRateRange): ExpectedFrameRateRange {
-        let tmpMin = framerateRange.min ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpMax = framerateRange.max ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpExpected = framerateRange.expected ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpMin = framerateRange.min ?? -1
+        let tmpMax = framerateRange.max ?? -1
+        let tmpExpected = framerateRange.expected ?? -1
         if (tmpMin > tmpMax || tmpMin > tmpExpected || tmpExpected > tmpMax) {
             let framerateRangeFault: ExpectedFrameRateRange = ExpectedFrameRateRange(min: 60, max: 120, expected: 60)
             return framerateRangeFault
@@ -641,9 +641,9 @@ public class AnimatorResult <: RemoteDataLite {
     public func setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): Unit {
         let checkFrameRateRange = checkExpectedFrameRateRange(rateRange)
         unsafe {
-            let errCode = FfiAnimatorSetExpectedFrameRateRange(getID(), checkFrameRateRange.min ?? throw IllegalArgumentException("The type now is not supported."),
-                checkFrameRateRange.max ?? throw IllegalArgumentException("The type now is not supported."),
-                checkFrameRateRange.expected ?? throw IllegalArgumentException("The type now is not supported."))
+            let errCode = FfiAnimatorSetExpectedFrameRateRange(getID(), checkFrameRateRange.min ?? -1,
+                checkFrameRateRange.max ?? -1,
+                checkFrameRateRange.expected ?? -1)
             if (errCode != 0) {
                 throw BusinessException(errCode, "AnimatorResult setFramerate failed: Internal error.")
             }
