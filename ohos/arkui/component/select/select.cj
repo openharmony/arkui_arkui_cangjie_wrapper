@@ -241,8 +241,7 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(options: ?Array<SelectOptions>) {
         let tmpOptions = options ?? []

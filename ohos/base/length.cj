@@ -33,8 +33,7 @@ public interface Length {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop value: Float64 {
         get() {
@@ -48,8 +47,7 @@ public interface Length {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop unitType: LengthUnit {
         get() {

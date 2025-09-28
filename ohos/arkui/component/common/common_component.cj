@@ -74,8 +74,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onClick(event: ?(ClickEvent) -> Unit): T {
         onClickInner(event)
@@ -148,8 +147,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onTouch(event: ?(TouchEvent) -> Unit): T {
         onTouchInner(event)
@@ -201,8 +199,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onAreaChange(event: ?(Area, Area) -> Unit): T {
         onAreaChangeInner(event)
@@ -228,8 +225,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onVisibleAreaChange(raitos: ?Array<Float64>, event: ?(Bool, Float64) -> Unit): T {
         onVisibleAreaChangeInner(raitos, event)
@@ -262,8 +258,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onMouse(event: ?(MouseEvent) -> Unit): T {
         onMouseInner(event)
@@ -291,8 +286,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onKeyEvent(event: ?(KeyEvent) -> Unit): T {
         onKeyEventInner(event)
@@ -367,8 +361,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragStart(event: ?(DragInfo) -> DragItemInfo): T {
         onDragStartInner(event)
@@ -407,8 +400,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragStart(event: ?(DragInfo) -> CustomBuilder): T {
         onDragStartInner(event)
@@ -441,8 +433,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragStart(event: ?(DragInfo) -> Unit): T {
         onDragStartInner(event)
@@ -472,8 +463,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragEnter(event: ?(DragInfo) -> Unit): T {
         onDragEnterInner(event)
@@ -501,8 +491,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragMove(event: ?(DragInfo) -> Unit): T {
         onDragMoveInner(event)
@@ -529,8 +518,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDragLeave(event: ?(DragInfo) -> Unit): T {
         onDragLeaveInner(event)
@@ -558,8 +546,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDrop(event: ?(DragInfo) -> Unit): T {
         onDropInner(event)
@@ -987,8 +974,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignRules(value: ?AlignRuleOptions): T {
         alignRulesInner(value)

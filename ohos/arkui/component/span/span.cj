@@ -270,8 +270,7 @@ public class Span <: BaseSpan {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onClick(event: ?(ClickEvent) -> Unit): This {
         let tmpEvent = event ?? { _ => }

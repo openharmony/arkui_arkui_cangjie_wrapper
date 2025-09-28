@@ -223,8 +223,7 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?OnTextPickerChangeCallback): This {
         let tmpCallback = callback ?? { _, _ => }

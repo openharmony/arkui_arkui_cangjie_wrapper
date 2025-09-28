@@ -755,8 +755,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onComplete(callback: ?ImageCompleteCallback): This {
         let tmpCallback = callback ?? { _ => }
@@ -781,8 +780,7 @@ public class Image <: CommonMethodComponent<ImageAttribute> & ImageAttribute {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onError(callback: ?ImageErrorCallback): This {
         let tmpCallback = callback ?? { _ => }

@@ -340,8 +340,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?OnCheckboxGroupChangeCallback): This {
         let tmpCallback = callback ?? { _ => }

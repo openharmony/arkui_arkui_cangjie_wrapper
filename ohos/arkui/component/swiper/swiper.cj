@@ -1268,8 +1268,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(event: ?(Int32) -> Unit): This {
         let tmpEvent = event ?? { res: Int32 => }

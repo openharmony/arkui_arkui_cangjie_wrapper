@@ -112,8 +112,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set(newValue: ObservedComplexAbstract): Unit {
         let observedArray = newValue as ObservedArrayList<T>

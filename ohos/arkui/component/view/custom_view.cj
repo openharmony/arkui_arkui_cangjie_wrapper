@@ -425,8 +425,7 @@ public abstract class CustomView <: RemoteView & Observer {
 
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func initializeConsume(name: String): ObservedPropertyAbstract {
         match (provideVars_.get(name)) {

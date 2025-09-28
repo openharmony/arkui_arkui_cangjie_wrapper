@@ -1737,8 +1737,7 @@ public class PromptAction {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showToast(option: ShowToastOptions): Unit {
         unsafe {
@@ -1759,8 +1758,7 @@ public class PromptAction {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showDialog(option: ShowDialogOptions, callback!: ShowDialogCallBack = defaultCallback) {
         unsafe {
@@ -1790,8 +1788,7 @@ public class PromptAction {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showActionMenu(option: ActionMenuOptions, callback!: ShowActionMenuCallBack = defaultCallback) {
         unsafe {
