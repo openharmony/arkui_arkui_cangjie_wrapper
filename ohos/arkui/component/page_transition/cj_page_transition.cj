@@ -134,7 +134,7 @@ public enum RouteType {
             case 0 => None
             case 1 => Push
             case 2 => Pop
-            case _ => throw IllegalArgumentException("The type is not supported yet.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }

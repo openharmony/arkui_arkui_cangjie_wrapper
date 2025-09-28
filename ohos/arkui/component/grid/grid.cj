@@ -199,7 +199,7 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
             case 2 => "${value_.value}fp"
             case 3 => "${value_.value * 100.0}%"
             case 4 => "${value_.value}lpx"
-            case _ => throw IllegalArgumentException("Unreachable")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
 
         unsafe {
@@ -229,7 +229,7 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
             case 2 => "${value_.value}fp"
             case 3 => "${value_.value * 100.0}%"
             case 4 => "${value_.value}lpx"
-            case _ => throw IllegalArgumentException("Unreachable")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
 
         unsafe {
