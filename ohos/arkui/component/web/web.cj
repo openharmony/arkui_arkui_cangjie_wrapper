@@ -1029,8 +1029,7 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     */
     @!APILevel[
         22,
-        syscap: "SystemCapability.Web.Webview.Core",
-        throwexception: true
+        syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func onLoadIntercept(callback: ?Callback<OnLoadInterceptEvent, Bool>): This {
         let tmpCallback = callback ?? { _ => true}

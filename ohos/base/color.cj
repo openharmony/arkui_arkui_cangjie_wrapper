@@ -39,8 +39,7 @@ public interface ResourceColor {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func toUInt32(): UInt32 {
         throw BusinessException(100001, "Internal error.")

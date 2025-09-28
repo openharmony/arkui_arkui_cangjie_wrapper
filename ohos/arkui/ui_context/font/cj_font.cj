@@ -237,8 +237,7 @@ public class Font {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func registerFont(familyName!: ResourceStr, familySrc!: ResourceStr): Unit {
         var src: String = ""

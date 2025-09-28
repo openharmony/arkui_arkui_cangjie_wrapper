@@ -401,8 +401,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func guideLine(value: ?Array<GuideLineStyle>): This {
         let cGuideLine = CGuideLineInfos(value ?? [])
@@ -420,8 +419,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func barrier(value: ?Array<BarrierStyle>): This {
         let cBarrier = CBarrierInfos(value ?? [])

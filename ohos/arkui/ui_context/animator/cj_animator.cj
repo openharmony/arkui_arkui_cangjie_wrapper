@@ -373,8 +373,7 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop onFrame: (Float64) -> Unit {
         get() {
@@ -400,8 +399,7 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop onFinish: () -> Unit {
         get() {
@@ -427,8 +425,7 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop onCancel: () -> Unit {
         get() {
@@ -454,8 +451,7 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop onRepeat: () -> Unit {
         get() {
@@ -482,8 +478,7 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func reset(options: AnimatorOptions): Unit {
         unsafe {
@@ -514,8 +509,7 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func play(): Unit {
         unsafe {
@@ -534,8 +528,7 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func finish(): Unit {
         unsafe {
@@ -554,8 +547,7 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pause(): Unit {
         unsafe {
@@ -574,8 +566,7 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cancel(): Unit {
         unsafe {
@@ -595,8 +586,7 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func reverse(): Unit {
         unsafe {
@@ -635,8 +625,7 @@ public class AnimatorResult <: RemoteDataLite {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): Unit {
         let checkFrameRateRange = checkExpectedFrameRateRange(rateRange)

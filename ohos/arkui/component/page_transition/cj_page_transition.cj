@@ -340,8 +340,7 @@ public class PageTransitionEnter <: CommonTransition {
     */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onEnter(event: ?PageTransitionCallback) {
         let tmpEvent = event ?? { _, _ =>}
