@@ -107,12 +107,23 @@ class EntryView {
 ## 约束
 
 与ArkTS相比，暂不支持以下功能：
+- 声明式组件
+  - 暂未支持声明式组件包括：瀑布流组件WaterFlow和FlowItem，大尺寸设备分栏导航MultiNavigation，行内文本和行内图片管理组件ContainerSpan，图标符号组件SymbolSpan，跑马灯组件Marquee，自定义渲染组件XComponent，静态卡片交互组件FormLink，自定义占位组件NodeContainer和ContentSlot，3D渲染组件Component3D。
 - 高级组件：详细介绍请参考[高级组件](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)
 - 嵌入式组件：全屏启动原子化服务组件（FullScreenLaunchComponent），同应用进程嵌入式组件 (EmbeddedComponent)
 - 安全控件：详细介绍请参考[安全控件](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md)
 - 状态管理V2：详细介绍请参考[状态管理V2](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/state-management/arkts-mvvm-V2.md)
+- 组件预览：组件预览支持以自定义组件为最小单位进行预览，方便开发者查看单个自定义组件UI效果。详细介绍请参考[组件预览](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md)
 - 自定义节点能力：包括自定义组件节点(FrameNode)，自定义渲染节点(RenderNode)，自定义声明式节点(BuilderNode)，详细介绍请参考[自定义节点概述](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/arkts-user-defined-node.md)
 - 自定义扩展能力：包括属性修改器(AttributeModifier)，属性更新器(AttributeUpdater)，详细介绍请参考[自定义扩展概述](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/arkts-user-defined-modifier.md)
+- API类别，暂未支持API类别包括：
+  - 组件截图：组件截图的能力，包括已加载的组件的截图和没有加载的组件的截图。
+  - 主动拖拽：提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。
+  - Prefetcher：配合LazyForEach，为List、Grid、WaterFlow和Swiper等容器组件滑动浏览时提供内容预加载能力，提升用户浏览体验。
+  - 主题换肤：自定义主题风格，实现App组件风格跟随Theme切换。
+  - 矩阵变换：提供矩阵变换功能，支持对图形进行平移、旋转和缩放等。
+  - 媒体查询：提供根据不同媒体类型定义不同的样式。详细介绍请参考[媒体查询](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/js-apis-mediaquery.md)。
+  - PluginComponentManager：用于给插件组件的使用方请求组件与数据，使用方发送组件模板和数据。详细介绍请参考[媒体查询](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/js-apis-plugincomponent.md)。
 
 ## 参考文档<a name="section171384529152"></a>
 
