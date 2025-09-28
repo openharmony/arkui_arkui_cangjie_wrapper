@@ -16,7 +16,7 @@
 package ohos_app_cangjie_entry
 
 internal import ohos.arkui.component.*
-internal import ohos.arkui.component.view.loadNativeView
+internal import ohos.arkui.component.custom_component.loadNativeView
 internal import ohos.arkui.state_management.SubscriberManager
 internal import ohos.arkui.state_management.ObservedProperty
 internal import ohos.router.Router

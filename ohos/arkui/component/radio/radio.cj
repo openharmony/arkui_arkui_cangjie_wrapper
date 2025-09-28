@@ -18,7 +18,7 @@ package ohos.arkui.component.radio
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
 import ohos.arkui.component.util.*
-import ohos.arkui.component.view
+import ohos.arkui.component.custom_component
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel

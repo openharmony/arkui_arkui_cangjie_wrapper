@@ -16,7 +16,7 @@
 package ohos.arkui.component.custom_dialog
 
 import ohos.arkui.component.action_sheet.*
-import ohos.arkui.component.view.*
+import ohos.arkui.component.custom_component.*
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
 import ohos.arkui.component.util.*

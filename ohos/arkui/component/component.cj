@@ -86,7 +86,7 @@ public import ohos.arkui.component.scroll_bar.*
 public import ohos.arkui.component.stepper.*
 public import ohos.arkui.component.tab.*
 public import ohos.arkui.component.column.*
-public import ohos.arkui.component.view.*
+public import ohos.arkui.component.custom_component.*
 public import ohos.arkui.component.loading_progress.*
 public import ohos.arkui.component.badge.*
 public import ohos.arkui.component.rich_text.*

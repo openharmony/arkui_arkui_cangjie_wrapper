@@ -13,7 +13,7 @@
 
 import("//build/templates/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.arkui.component.view") {
+ohos_cangjie_shared_library("ohos.arkui.component.custom_component") {
   sources = [
     "cj_entry.cj",
     "cj_recycle_manager.cj",

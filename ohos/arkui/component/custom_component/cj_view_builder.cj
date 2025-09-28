@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.view
+package ohos.arkui.component.custom_component
 
 import ohos.arkui.component.common.*
 import ohos.arkui.state_management.*
