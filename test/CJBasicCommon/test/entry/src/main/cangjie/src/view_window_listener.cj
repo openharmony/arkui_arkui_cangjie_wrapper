@@ -20,9 +20,9 @@ internal import ohos.arkui.component.column.Column
 internal import ohos.arkui.component.row.Row
 internal import ohos.arkui.component.button.Button
 internal import ohos.arkui.component.text.Text
-internal import ohos.arkui.component.view.CustomView
+internal import ohos.arkui.component.custom_component.CustomView
 internal import ohos.arkui.component.common.CJEntry
-internal import ohos.arkui.component.view.loadNativeView
+internal import ohos.arkui.component.custom_component.loadNativeView
 internal import ohos.arkui.state_management.SubscriberManager
 internal import ohos.arkui.state_management.ObservedProperty
 internal import ohos.arkui.state_management.LocalStorage

@@ -394,7 +394,7 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func description(builder: ?() -> Unit): This {
+    public func description(builder: ?CustomBuilder): This {
         let tmpBuilder = builder ?? { => }
         unsafe {
             FfiOHOSAceFrameworkGaugeSetDescription(Callback0Param<Unit>(tmpBuilder).getID())

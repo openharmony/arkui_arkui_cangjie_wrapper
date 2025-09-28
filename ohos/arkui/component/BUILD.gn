@@ -96,7 +96,7 @@ ohos_cangjie_shared_library("ohos.arkui.component") {
     "toggle:ohos.arkui.component.toggle",
     "util:ohos.arkui.component.util",
     "video:ohos.arkui.component.video",
-    "view:ohos.arkui.component.view",
+    "custom_component:ohos.arkui.component.custom_component",
     "web:ohos.arkui.component.web",
   ]
 

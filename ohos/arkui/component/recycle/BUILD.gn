@@ -19,7 +19,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.recycle") {
   cj_deps = [
     "../../../base:ohos.base",
     "../common:ohos.arkui.component.common",
-    "../view:ohos.arkui.component.view",
+    "../custom_component:ohos.arkui.component.custom_component",
   ]
 
   cj_external_deps = [

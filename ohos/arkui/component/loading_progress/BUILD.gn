@@ -23,7 +23,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.loading_progress") {
     "../../../base:ohos.base",
     "../common:ohos.arkui.component.common",
     "../util:ohos.arkui.component.util",
-    "../view:ohos.arkui.component.view",
+    "../custom_component:ohos.arkui.component.custom_component",
   ]
 
   cj_external_deps = [

@@ -24,7 +24,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.radio") {
     "../common:ohos.arkui.component.common",
     "../native_struct:ohos.arkui.component.native_struct",
     "../util:ohos.arkui.component.util",
-    "../view:ohos.arkui.component.view",
+    "../custom_component:ohos.arkui.component.custom_component",
   ]
 
   cj_external_deps = [
