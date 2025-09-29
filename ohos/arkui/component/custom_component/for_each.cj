@@ -61,11 +61,9 @@ type KeyGenFuncType<T> = (T, Int64) -> String
 
 type ItemGenFuncType<T> = (T, Int64) -> Unit
 
-
 /**
  * declare ForEachAttribute
  *
- * @relation declare class ForEachAttribute extends DynamicNode<ForEachAttribute>
  */
 @!APILevel[
     22,
@@ -121,10 +119,9 @@ public class ForEach <: UINodeBase {
     /**
      * Sets the new ID array for given element ID.
      *
-     * @param elmtId: The ID of the element.
-     * @param newIdArray: The Array containing the new ID array elements.
-     * @return ArrayList<Int64>: An Array containing the processed ID.
-     * @since 11
+     * @params elmtId: The ID of the element.
+     * @params newIdArray: The Array containing the new ID array elements.
+     * @returns ArrayList<Int64>: An Array containing the processed ID.
      */
     static func setIdArray(elmtId: Int64, newIdArray: ArrayList<String>): SetIdResult {
         let vecFFi = FFIVectorString(newIdArray.size)
@@ -181,8 +178,7 @@ public class ForEach <: UINodeBase {
     /**
      * Starts to create a new child element with the specified ID.
      *
-     * @param id: The ID of the child element.
-     * @since 11
+     * @params id: The ID of the child element.
      */
     static func createNewChildStart(id: String): Unit {
         unsafe {
@@ -195,8 +191,7 @@ public class ForEach <: UINodeBase {
     /**
      * Finished the creation of the new child.
      *
-     * @param id: The ID of the child element.
-     * @since 11
+     * @params id: The ID of the child element.
      */
     static func createNewChildFinish(id: String): Unit {
         unsafe {

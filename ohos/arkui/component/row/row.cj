@@ -40,8 +40,6 @@ foreign {
 
 /**
  * Defines Row Component.
- *
- * @relation const Row: RowInterface
  */
 @!APILevel[
     22,
@@ -51,8 +49,8 @@ public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
     /**
     * Defines the constructor of Row.
     *
-    * @param { Length } space
-    * @param { () -> Unit } child
+    * @params { Length } space
+    * @params { () -> Unit } child
     * @returns { This }
     */
     @!APILevel[
@@ -70,9 +68,8 @@ public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
     /**
     * Called when the vertical alignment is set.
     *
-    * @param { VerticalAlign } value
+    * @params { VerticalAlign } value
     * @returns { This }
-    * @relation alignItems(value: VerticalAlign): RowAttribute
     */
     @!APILevel[
         22,
@@ -88,9 +85,8 @@ public class Row <: CommonMethodComponent<RowAttribute> & RowAttribute {
     /**
     * Called when the horizontal alignment is set.
     *
-    * @param { FlexAlign } value
+    * @params { FlexAlign } value
     * @returns { This }
-    * @relation justifyContent(value: FlexAlign): RowAttribute
     */
     @!APILevel[
         22,

@@ -52,7 +52,6 @@ foreign {
 /**
  * Defines Radio Component.
  *
- * @relation declare const Radio: RadioInterface
  */
 @!APILevel[
     22,
@@ -62,10 +61,9 @@ public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
     /**
      * Create a radio box.
      *
-     * @param { String } value
-     * @param { String } group
+     * @params { String } value
+     * @params { String } group
      * @returns { This }
-     * @relation (options: RadioOptions): RadioAttribute
      */
     @!APILevel[
         22,
@@ -82,9 +80,8 @@ public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
     /**
      * Called when the radio box is selected.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation checked(value: boolean): RadioAttribute
      */
     @!APILevel[
         22,
@@ -149,9 +146,8 @@ public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
     /**
      * Called when the radio box selection status changes.
      *
-     * @param { (Bool) -> Unit } callback
+     * @params { (Bool) -> Unit } callback
      * @returns { This }
-     * @relation onChange(callback: (isChecked: boolean) => void): RadioAttribute
      */
     @!APILevel[
         22,

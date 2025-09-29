@@ -63,8 +63,6 @@ class CJVectorNativeTextShadow {
  * Defines the options for a DateTimeOptions object. Since API version 9, the DateTimeOptions attribute is changed
  * from mandatory to optional.
  *
- * @class DateTimeOptions
- * @relation interface DateTimeOptions
  */
 @!APILevel[
     22,
@@ -74,8 +72,6 @@ public class DateTimeOptions {
     /**
      * Valid locale ID, for example, "zh-Hans-CN". The default value is the current system locale.
      *
-     * @type { String }
-     * @relation locale?: string
      */
     @!APILevel[
         22,
@@ -86,8 +82,6 @@ public class DateTimeOptions {
     /**
      * Date display format. The value can be: "long", "short", "medium", "full", or "auto".
      *
-     * @type { String }
-     * @relation dateStyle?: string
      */
     @!APILevel[
         22,
@@ -98,8 +92,6 @@ public class DateTimeOptions {
     /**
      * Time display format. The value can be: "long", "short", "medium", "full", or "auto".
      *
-     * @type { String }
-     * @relation timeStyle?: string
      */
     @!APILevel[
         22,
@@ -110,8 +102,6 @@ public class DateTimeOptions {
     /**
      * Hour cycle. The value can be: "h11", "h12", "h23", or "h24".
      *
-     * @type { String }
-     * @relation hourCycle?: string
      */
     @!APILevel[
         22,
@@ -122,8 +112,6 @@ public class DateTimeOptions {
     /**
      * Time zone in use. The value is a valid IANA time zone ID.
      *
-     * @type { String }
-     * @relation timeZone?: string
      */
     @!APILevel[
         22,
@@ -139,8 +127,6 @@ public class DateTimeOptions {
      * "newa", "nkoo", "olck", "orya", "osma", "rohg", "saur", "segment", "shrd", "sind", "sinh", "sora", "sund",
      * "takr", "talu", "tamldec", "telu", "thai", "tibt", "tirh", "vaii", "wara", or "wcho".
      *
-     * @type { String }
-     * @relation numberingSystem?: string
      */
     @!APILevel[
         22,
@@ -153,8 +139,6 @@ public class DateTimeOptions {
      * opposite. If both hour12 and hourCycle are set, hourCycle does not take effect. If hour12 and hourCycle are not
      * set and the 24-hour clock is turned on, the default value of hour12 is false.
      *
-     * @type { Bool }
-     * @relation hour12?: boolean
      */
     @!APILevel[
         22,
@@ -165,8 +149,6 @@ public class DateTimeOptions {
     /**
      * Week display format. The value can be: "long", "short", "narrow", or "auto".
      *
-     * @type { String }
-     * @relation weekday?: string
      */
     @!APILevel[
         22,
@@ -177,8 +159,6 @@ public class DateTimeOptions {
     /**
      * Epoch display format. The value can be: "long", "short", "narrow", or "auto".
      *
-     * @type { String }
-     * @relation era?: string
      */
     @!APILevel[
         22,
@@ -189,8 +169,6 @@ public class DateTimeOptions {
     /**
      * Year display format. The value can be: "numeric" or "2-digit".
      *
-     * @type { String }
-     * @relation year?: string
      */
     @!APILevel[
         22,
@@ -201,8 +179,6 @@ public class DateTimeOptions {
     /**
      * Month display format. The value can be: "numeric", "2-digit", "long", "short", "narrow", or "auto".
      *
-     * @type { String }
-     * @relation month?: string
      */
     @!APILevel[
         22,
@@ -213,8 +189,6 @@ public class DateTimeOptions {
     /**
      * Day display format. The value can be: "numeric" or "2-digit".
      *
-     * @type { String }
-     * @relation day?: string
      */
     @!APILevel[
         22,
@@ -225,8 +199,6 @@ public class DateTimeOptions {
     /**
      * Hour display format. The value can be: "numeric" or "2-digit".
      *
-     * @type { String }
-     * @relation hour?: string
      */
     @!APILevel[
         22,
@@ -237,8 +209,6 @@ public class DateTimeOptions {
     /**
      * Minute display format. The value can be: "numeric" or "2-digit".
      *
-     * @type { String }
-     * @relation minute?: string
      */
     @!APILevel[
         22,
@@ -249,8 +219,6 @@ public class DateTimeOptions {
     /**
      * Second display format. The value can be: "numeric" or "2-digit".
      *
-     * @type { String }
-     * @relation second?: string
      */
     @!APILevel[
         22,
@@ -261,8 +229,6 @@ public class DateTimeOptions {
     /**
      * Localized representation of a time zone name. The value can be: "long", "short", or "auto".
      *
-     * @type { String }
-     * @relation timeZoneName?: string
      */
     @!APILevel[
         22,
@@ -273,8 +239,6 @@ public class DateTimeOptions {
     /**
      * Time period display format. The value can be: "long", "short", "narrow", or "auto".
      *
-     * @type { String }
-     * @relation dayPeriod?: string
      */
     @!APILevel[
         22,
@@ -287,8 +251,6 @@ public class DateTimeOptions {
      * "lookup": exact match.
      * "best fit": best match.
      *
-     * @type { String }
-     * @relation localeMatcher?: string
      */
     @!APILevel[
         22,
@@ -301,8 +263,6 @@ public class DateTimeOptions {
      * "basic": exact match.
      * "best fit": best match.
      *
-     * @type { String }
-     * @relation formatMatcher?: string
      */
     @!APILevel[
         22,
@@ -383,7 +343,6 @@ foreign {
 /**
  * Provides a way to control the textclock status.
  *
- * @relation class TextClockController
  */
 @!APILevel[
     22,
@@ -393,7 +352,6 @@ public class TextClockController <: RemoteDataLite {
     /**
      * constructor.
      *
-     * @relation constructor()
      */
     @!APILevel[
         22,
@@ -411,7 +369,6 @@ public class TextClockController <: RemoteDataLite {
     /**
      * Provides a start event for textclock.
      *
-     * @relation start(): void
      */
     @!APILevel[
         22,
@@ -425,7 +382,6 @@ public class TextClockController <: RemoteDataLite {
     /**
      * Provides a stop event for textclock.
      *
-     * @relation stop(): void
      */
     @!APILevel[
         22,
@@ -441,7 +397,6 @@ public class TextClockController <: RemoteDataLite {
 /**
  * Defines TextClock Component.
  *
- * @relation const TextClock: TextClockInterface
  */
 @!APILevel[
     22,
@@ -455,10 +410,9 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * Where a negative value indicates the eastern time zone, for example, -8.
      * Anonymous Object Rectification.
      *
-     * @param { ?Float32 } timeZoneOffset
-     * @param { TextClockController } controller
+     * @params { ?Float32 } timeZoneOffset
+     * @params { TextClockController } controller
      * @returns { TextClock }
-     * @relation (options?: TextClockOptions): TextClockAttribute
      */
     @!APILevel[
         22,
@@ -486,9 +440,8 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * You can listen to this callback,
      * Use the format attribute method to customize data display in the callback.
      *
-     * @param { function } event - Listening date event callback.
+     * @params { function } event - Listening date event callback.
      * @returns { This }
-     * @relation onDateChange(event: (value: number) => void): TextClockAttribute
      */
     @!APILevel[
         22,
@@ -512,9 +465,8 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
      * The default value is "hh:mm" when TextClock is in a form.
      * If the value has second or millisecond, the value will be set to the default value.
      *
-     * @param { ResourceStr } value
+     * @params { ResourceStr } value
      * @returns { This }
-     * @relation format(value: ResourceStr): TextClockAttribute
      */
     @!APILevel[
         22,
@@ -534,9 +486,8 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
     /**
      * Called when the value of TextClock fontSize is set
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation fontSize(value: Length): TextClockAttribute
      */
     @!APILevel[
         22,
@@ -553,9 +504,8 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
     /**
      * Called when the value of TextClock fontColor is set
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation fontColor(value: ResourceColor): TextClockAttribute
      */
     @!APILevel[
         22,
@@ -572,9 +522,8 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
     /**
      * Called when the value of TextClock fontStyle is set
      *
-     * @param { FontStyle } value
+     * @params { FontStyle } value
      * @returns { This }
-     * @relation fontStyle(value: FontStyle): TextClockAttribute
      */
     @!APILevel[
         22,
@@ -591,9 +540,8 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
     /**
      * Called when the value of TextClock fontWeight is set
      *
-     * @param { FontWeight } value
+     * @params { FontWeight } value
      * @returns { This }
-     * @relation fontWeight(value: number | FontWeight | string): TextClockAttribute;
      */
     @!APILevel[
         22,
@@ -612,9 +560,8 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
     /**
      * Called when the value of TextClock fontFamily is set
      *
-     * @param { ResourceStr } value
+     * @params { ResourceStr } value
      * @returns { This }
-     * @relation fontFamily(value: ResourceStr): TextClockAttribute
      */
     @!APILevel[
         22,
@@ -633,9 +580,8 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
     /**
      * Called when the text shadow is set.
      *
-     * @param { Array<ShadowOptions> } value - The shadow options.
+     * @params { Array<ShadowOptions> } value - The shadow options.
      * @returns { This }
-     * @relation textShadow(value: ShadowOptions | Array<ShadowOptions>): TextClockAttribute
      */
     @!APILevel[
         22,
@@ -657,9 +603,8 @@ public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockA
     /**
      * Called when the text shadow is set.
      *
-     * @param { ShadowOptions } value - The shadow options.
+     * @params { ShadowOptions } value - The shadow options.
      * @returns { This }
-     * @relation textShadow(value: ShadowOptions | Array<ShadowOptions>): TextClockAttribute
      */
     @!APILevel[
         22,

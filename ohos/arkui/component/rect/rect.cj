@@ -42,7 +42,6 @@ foreign {
 /**
  * Defines Rect Component.
  *
- * @relation declare const Rect: RectInterface
  */
 @!APILevel[
     22,
@@ -52,10 +51,9 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
     /**
      * Called when a rectangle is created.
      *
-     * @param { Length } width 
-     * @param { Length } height
+     * @params { Length } width 
+     * @params { Length } height
      * @returns { This }
-     * @relation (options?: RectOptions | RoundedRectOptions): RectAttribute
      */
     @!APILevel[
         22,
@@ -76,9 +74,8 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
     /**
      * Width of the corner radius.
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation radiusWidth(value: Length): RectAttribute
      */
     @!APILevel[
         22,
@@ -94,9 +91,8 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
     /**
      * Height of the corner radius.
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation radiusHeight(value: Length): RectAttribute
      */
     @!APILevel[
         22,
@@ -112,9 +108,8 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
     /**
      * Called when the fillet size is set.
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation radius(value: Length | Array<any>): RectAttribute
      */
     @!APILevel[
         22,
@@ -130,9 +125,8 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
     /**
      * Called when the fillet size is set.
      *
-     * @param { Array<Length> } value
+     * @params { Array<Length> } value
      * @returns { This }
-     * @relation radius(value: Length | Array<any>): RectAttribute
      */
     @!APILevel[
         22,
@@ -157,9 +151,8 @@ public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
     /**
      * Called when the fillet size is set.
      *
-     * @param { Array<(Length, Length)> } value
+     * @params { Array<(Length, Length)> } value
      * @returns { This }
-     * @relation radius(value: Length | Array<any>): RectAttribute
      */
     @!APILevel[
         22,

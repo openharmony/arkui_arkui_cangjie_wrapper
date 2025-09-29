@@ -52,7 +52,6 @@ struct NativeOptionFontInfo {
 /**
  * Provides a font component.
  *
- * @relation FontInfo
  */
 @!APILevel[
     22,
@@ -62,8 +61,6 @@ public class FontInfo {
     /**
      * The path of the font file.
      *
-     * @type { String }
-     * @relation path: string;
      */
     @!APILevel[
         22,
@@ -74,8 +71,6 @@ public class FontInfo {
     /**
      * The name of postscript.
      *
-     * @type { String }
-     * @relation postScriptName: string;
      */
     @!APILevel[
         22,
@@ -86,8 +81,6 @@ public class FontInfo {
     /**
      * The font name.
      *
-     * @type { String }
-     * @relation fullName: string;
      */
     @!APILevel[
         22,
@@ -98,8 +91,6 @@ public class FontInfo {
     /**
      * A set of fonts with a common design.
      *
-     * @type { String }
-     * @relation family: string;
      */
     @!APILevel[
         22,
@@ -110,8 +101,6 @@ public class FontInfo {
     /**
      * A subset of the font family.
      *
-     * @type { String }
-     * @relation subfamily: string;
      */
     @!APILevel[
         22,
@@ -122,8 +111,6 @@ public class FontInfo {
     /**
      * The weight of the font.
      *
-     * @type { UInt32 }
-     * @relation weight: number;
      */
     @!APILevel[
         22,
@@ -134,8 +121,6 @@ public class FontInfo {
     /**
      * The width of the font style.
      *
-     * @type { UInt32 }
-     * @relation width: number;
      */
     @!APILevel[
         22,
@@ -146,8 +131,6 @@ public class FontInfo {
     /**
      * Whether it is italic.
      *
-     * @type { Bool }
-     * @relation italic: boolean;
      */
     @!APILevel[
         22,
@@ -158,8 +141,6 @@ public class FontInfo {
     /**
      * Whether it is compact.
      *
-     * @type { Bool }
-     * @relation monoSpace: boolean;
      */
     @!APILevel[
         22,
@@ -170,8 +151,6 @@ public class FontInfo {
     /**
      * Whether symbol fonts are supported.
      *
-     * @type { Bool }
-     * @relation symbolic: boolean;
      */
     @!APILevel[
         22,
@@ -215,7 +194,6 @@ foreign func FfiFontManagerGetUIFontConfig(): NativeUIFontConfig
 /**
  * class Font
  *
- * @relation export declare class Font
  */
 @!APILevel[
     22,
@@ -231,8 +209,8 @@ public class Font {
     /**
      * Register a customized font in the FontManager.
      *
-     * @param { ResourceStr } familyName
-     * @param { ResourceStr } familySrc
+     * @params { ResourceStr } familyName
+     * @params { ResourceStr } familySrc
      * @throws { BusinessException } 401 - Invalid input parameter.
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -266,7 +244,6 @@ public class Font {
      * Gets a list of fonts supported by system.
      *
      * @returns { Array<String> } A list of font names
-     * @relation getSystemFontList(): Array<string>
      */
     @!APILevel[
         22,
@@ -286,9 +263,8 @@ public class Font {
     /**
      * Get font details according to the font name.
      *
-     * @param { String } fontName - font name
+     * @params { String } fontName - font name
      * @returns { FontInfo } Returns the font info
-     * @relation getFontByName(fontName: string): font.FontInfo
      */
     @!APILevel[
         22,

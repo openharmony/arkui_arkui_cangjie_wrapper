@@ -185,7 +185,6 @@ foreign {
 /**
  * Defines List Component.
  *
- * @relation declare const List: ListInterface
  */
 @!APILevel[
     22,
@@ -196,12 +195,11 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
     /**
      * Called when interface data is called.
      *
-     * @param { Int64 } space
-     * @param { Int32 } initialIndex
-     * @param { Scroller } scroller
-     * @param { () -> Unit } child
+     * @params { Int64 } space
+     * @params { Int32 } initialIndex
+     * @params { Scroller } scroller
+     * @params { () -> Unit } child
      * @returns { This }
-     * @relation (options?: ListOptions): ListAttribute
      */
     @!APILevel[
         22,
@@ -250,9 +248,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
     /**
      * Sets the direction in which the list items are arranged.
      *
-     * @param { Axis } value
+     * @params { Axis } value
      * @returns { This }
-     * @relation listDirection(value: Axis): ListAttribute
      */
     @!APILevel[
         22,
@@ -268,12 +265,11 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
     /**
      * Sets the style of the divider for the list items. By default, there is no divider.
      *
-     * @param { Length } strokeWidth
-     * @param { ResourceColor } color
-     * @param { Length } startMargin
-     * @param { Length } endMargin
+     * @params { Length } strokeWidth
+     * @params { ResourceColor } color
+     * @params { Length } startMargin
+     * @params { Length } endMargin
      * @returns { This }
-     * @relation divider(
                     value: ListDividerOptions | null,
                 ): ListAttribute;
      */
@@ -308,9 +304,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
     /**
      * Sets the effect used when the scroll boundary is reached.
      *
-     * @param { EdgeEffect } value
+     * @params { EdgeEffect } value
      * @returns { This }
-     * @relation edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions): ListAttribute
      */
     @!APILevel[
         22,
@@ -327,9 +322,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      * Sets whether to enable chained animations, which provide a visually connected,
      * or "chained," effect when the list is scrolled or its top or bottom edge is dragged.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation chainAnimation(value: boolean): ListAttribute
      */
     @!APILevel[
         22,
@@ -345,9 +339,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
     /**
      * Called when the minimum number of list item caches is set for long list deferred loading.
      *
-     * @param { Int32 } value
+     * @params { Int32 } value
      * @returns { This }
-     * @relation cachedCount(value: number): ListAttribute
      */
     @!APILevel[
         22,
@@ -363,9 +356,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
     /**
      * Sets whether to enable multiselect.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation multiSelectable(value: boolean): ListAttribute
      */
     @!APILevel[
         22,
@@ -382,9 +374,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      * Sets the number of columns or rows in the list. If the value is set to the gutter type, it indicates the gap between columns.
      * It takes effect when the number of columns is greater than 1.
      *
-     * @param { Int32 } value
+     * @params { Int32 } value
      * @returns { This }
-     * @relation lanes(value: number | LengthConstrain, gutter?: Dimension): ListAttribute
      */
     @!APILevel[
         22,
@@ -401,10 +392,9 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      * Sets the number of columns or rows in the list. If the value is set to the gutter type, it indicates the gap between columns.
      * It takes effect when the number of columns is greater than 1.
      *
-     * @param { Length } minLength
-     * @param { Length } maxLength
+     * @params { Length } minLength
+     * @params { Length } maxLength
      * @returns { This }
-     * @relation lanes(value: number | LengthConstrain, gutter?: Dimension): ListAttribute
      */
     @!APILevel[
         22,
@@ -434,9 +424,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
      * Alignment mode of list items along the cross axis when the cross-axis width of the list is greater
      * than the cross-axis width of list items multiplied by the value of lanes.
      *
-     * @param { ListItemAlign } value
+     * @params { ListItemAlign } value
      * @returns { This }
-     * @relation alignListItem(value: ListItemAlign): ListAttribute
      */
     @!APILevel[
         22,
@@ -452,9 +441,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
     /**
      * Sets whether to pin the header to the top or the footer to the bottom in the list item group.
      *
-     * @param { StickyStyle } value
+     * @params { StickyStyle } value
      * @returns { This }
-     * @relation sticky(value: StickyStyle): ListAttribute
      */
     @!APILevel[
         22,
@@ -509,7 +497,6 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
         this
     }
 
-
     protected func frictionInner(value: ?AppResource): This {
         var realValue: Float64 = 0.0
         match (value) {
@@ -544,9 +531,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
     /**
      * Triggered when a child component enters or leaves the list display area.
      *
-     * @param { (Int32, Int32, Int32) -> Unit } event
+     * @params { (Int32, Int32, Int32) -> Unit } event
      * @returns { This }
-     * @relation onScrollIndex(event: (start: number, end: number, center: number) => void): ListAttribute
      */
     @!APILevel[
         22,
@@ -564,9 +550,8 @@ public class List <: ScrollableCommonMethodComponent<ListAttribute> & ListAttrib
     /**
      * Called when scrolling begin each frame.
      *
-     * @param { (Float64, ScrollState) -> onScrollFrameBeginHandleResult } event
+     * @params { (Float64, ScrollState) -> onScrollFrameBeginHandleResult } event
      * @returns { This }
-     * @relation onScrollFrameBegin(event: OnScrollFrameBeginCallback): ListAttribute
      */
     @!APILevel[
         22,

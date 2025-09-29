@@ -66,8 +66,6 @@ public interface Length {
 public interface LengthProp {
     /**
      * Defines the length property in units of px.
-     *
-     * @relation declare type PX = `${number}px`
      */
     @!APILevel[
         22,
@@ -76,8 +74,6 @@ public interface LengthProp {
     prop px: Length
     /**
      * Defines the length property in units of vp.
-     *
-     * @relation declare type VP = `${number}vp` | number
      */
     @!APILevel[
         22,
@@ -86,8 +82,6 @@ public interface LengthProp {
     prop vp: Length
     /**
      * Defines the length property in units of fp.
-     *
-     * @relation declare type FP = `${number}fp`
      */
     @!APILevel[
         22,
@@ -97,7 +91,6 @@ public interface LengthProp {
     /**
      * Defines the length property in units of percent.
      *
-     * @relation declare type Percentage = `${number}%`
      */
     @!APILevel[
         22,
@@ -106,8 +99,6 @@ public interface LengthProp {
     prop percent: Length
     /**
      * Defines the length property in units of lpx.
-     *
-     * @relation declare type LPX = `${number}lpx`
      */
     @!APILevel[
         22,
@@ -155,8 +146,6 @@ public class LengthMetrics <: Length {
 }
 /**
  * Defines the dimension property with number with units(vp|px|fp|lpx|%)
- *
- * @relation declare type Dimension = PX | VP | FP | LPX | Percentage | Resource
  */
 @Derive[Equatable]
 @!APILevel[
@@ -166,8 +155,6 @@ public class LengthMetrics <: Length {
 public enum LengthUnit {
     /**
      * Defines the length property in units of px.
-     *
-     * @relation declare type PX = `${number}px`
      */
     @!APILevel[
         22,
@@ -176,8 +163,6 @@ public enum LengthUnit {
     Px
     /**
      * Defines the length property in units of vp.
-     *
-     * @relation declare type VP = `${number}vp` | number
      */
     | @!APILevel[
         22,
@@ -186,8 +171,6 @@ public enum LengthUnit {
     Vp
     /**
      * Defines the length property in units of fp.
-     *
-     * @relation declare type FP = `${number}fp`
      */
     | @!APILevel[
         22,
@@ -196,8 +179,6 @@ public enum LengthUnit {
     Fp
     /**
      * Defines the length property in units of percent.
-     *
-     * @relation declare type Percentage = `${number}%`
      */
     | @!APILevel[
         22,
@@ -206,8 +187,6 @@ public enum LengthUnit {
     Percent
     /**
      * Defines the length property in units of lpx.
-     *
-     * @relation declare type LPX = `${number}lpx`
      */
     | @!APILevel[
         22,
@@ -249,8 +228,6 @@ public enum LengthUnit {
 
 /**
  * Defines the Float64 which can use Length.
- *
- * @relation declare type Length = string | number | Resource
  */
 @!APILevel[
     22,
@@ -259,8 +236,6 @@ public enum LengthUnit {
 extend Float64 <: LengthProp & Length {
     /**
      * Defines the length property in units of px.
-     *
-     * @relation declare type PX = `${number}px`
      */
     @!APILevel[
         22,
@@ -274,8 +249,6 @@ extend Float64 <: LengthProp & Length {
 
     /**
      * Defines the length property in units of vp.
-     *
-     * @relation declare type VP = `${number}vp` | number
      */
     @!APILevel[
         22,
@@ -289,8 +262,6 @@ extend Float64 <: LengthProp & Length {
 
     /**
      * Defines the length property in units of fp.
-     *
-     * @relation declare type FP = `${number}fp`
      */
     @!APILevel[
         22,
@@ -304,8 +275,6 @@ extend Float64 <: LengthProp & Length {
 
     /**
      * Defines the length property in units of percent.
-     *
-     * @relation declare type Percentage = `${number}%`
      */
     @!APILevel[
         22,
@@ -319,8 +288,6 @@ extend Float64 <: LengthProp & Length {
 
     /**
      * Defines the length property in units of lpx.
-     *
-     * @relation declare type LPX = `${number}lpx`
      */
     @!APILevel[
         22,
@@ -353,8 +320,6 @@ extend Float64 <: LengthProp & Length {
 
 /**
  * Defines the Int64 which can use Length.
- *
- * @relation declare type Length = string | number | Resource
  */
 @!APILevel[
     22,
@@ -363,8 +328,6 @@ extend Float64 <: LengthProp & Length {
 extend Int64 <: LengthProp & Length {
     /**
      * Defines the length property in units of px.
-     *
-     * @relation declare type PX = `${number}px`
      */
     @!APILevel[
         22,
@@ -377,8 +340,6 @@ extend Int64 <: LengthProp & Length {
     }
     /**
      * Defines the length property in units of vp.
-     *
-     * @relation declare type VP = `${number}vp` | number
      */
     @!APILevel[
         22,
@@ -391,8 +352,6 @@ extend Int64 <: LengthProp & Length {
     }
     /**
      * Defines the length property in units of fp.
-     *
-     * @relation declare type FP = `${number}fp`
      */
     @!APILevel[
         22,
@@ -405,8 +364,6 @@ extend Int64 <: LengthProp & Length {
     }
     /**
      * Defines the length property in units of percent.
-     *
-     * @relation declare type Percentage = `${number}%`
      */
     @!APILevel[
         22,
@@ -419,8 +376,6 @@ extend Int64 <: LengthProp & Length {
     }
     /**
      * Defines the length property in units of lpx.
-     *
-     * @relation declare type LPX = `${number}lpx`
      */
     @!APILevel[
         22,

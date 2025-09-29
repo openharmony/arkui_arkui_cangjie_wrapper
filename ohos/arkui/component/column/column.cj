@@ -41,7 +41,6 @@ foreign {
 /**
  * Defines Column Component.
  *
- * @relation const Column: ColumnInterface
  */
 @!APILevel[
     22,
@@ -51,8 +50,8 @@ public class Column <: CommonMethodComponent<ColumnAttribute> & ColumnAttribute 
     /**
     * Column constructor.
     *
-    * @param { Length } space
-    * @param { () -> Unit } child
+    * @params { Length } space
+    * @params { () -> Unit } child
     * @returns { This }
     */
     @!APILevel[
@@ -70,9 +69,8 @@ public class Column <: CommonMethodComponent<ColumnAttribute> & ColumnAttribute 
     /**
     * Sets the alignment format of the subassembly in the horizontal direction.
     *
-    * @param { HorizontalAlign } value
+    * @params { HorizontalAlign } value
     * @returns { This }
-    * @relation alignItems(value: HorizontalAlign): ColumnAttribute
     */
     @!APILevel[
         22,
@@ -88,9 +86,8 @@ public class Column <: CommonMethodComponent<ColumnAttribute> & ColumnAttribute 
     /**
     * Sets the alignment format of the subassembly in the vertical direction.
     *
-    * @param { FlexAlign } value
+    * @params { FlexAlign } value
     * @returns { This }
-    * @relation justifyContent(value: FlexAlign): ColumnAttribute
     */
     @!APILevel[
         22,

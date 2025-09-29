@@ -35,7 +35,6 @@ foreign {
 /**
  * Defines Counter Component.
  *
- * @relation declare const Counter: CounterInterface
  */
 @!APILevel[
     22,
@@ -46,9 +45,8 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
     /**
      * Return Counter.
      *
-     * @param { () -> Unit } content
+     * @params { () -> Unit } content
      * @returns { This }
-     * @relation (): CounterAttribute
      */
     @!APILevel[
         22,
@@ -64,9 +62,8 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
     /**
      * Indicates whether the increase button of counter component is available or not.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation enableInc(value: boolean): CounterAttribute
      */
     @!APILevel[
         22,
@@ -82,9 +79,8 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
     /**
      * Indicates whether the decrease button of counter component is available or not.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation enableDec(value: boolean): CounterAttribute
      */
     @!APILevel[
         22,
@@ -100,9 +96,8 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
     /**
      * Listen to the event that the value increases.
      *
-     * @param { VoidCallback } event
+     * @params { VoidCallback } event
      * @returns { This }
-     * @relation onInc(event: VoidCallback): CounterAttribute
      */
     @!APILevel[
         22,
@@ -119,9 +114,8 @@ public class Counter <: CommonMethodComponent<CounterAttribute> & CounterAttribu
     /**
      * Listens to the number decrease event.
      *
-     * @param { VoidCallback } event
+     * @params { VoidCallback } event
      * @returns { This }
-     * @relation onDec(event: VoidCallback): CounterAttribute
      */
     @!APILevel[
         22,

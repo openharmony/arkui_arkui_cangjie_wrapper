@@ -29,8 +29,6 @@ foreign {
 
 /**
  * Defines RichText Component.
- *
- * @relation interface RichTextInterface
  */
 @!APILevel[
     22,
@@ -57,9 +55,8 @@ public class RichText <: CommonMethodComponent<RichTextAttribute> & RichTextAttr
     /**
      * Triggered when the RichText loading starts.
      *
-     * @param { () -> Unit } callback
+     * @params { () -> Unit } callback
      * @returns { This } 
-     * @relation onStart(callback: () => void): RichTextAttribute;
      */
     @!APILevel[
         22,
@@ -75,9 +72,8 @@ public class RichText <: CommonMethodComponent<RichTextAttribute> & RichTextAttr
     /**
      * Triggered when the RichText loading ends.
      *
-     * @param { () -> Unit } callback
+     * @params { () -> Unit } callback
      * @returns { This } 
-     * @relation onComplete(callback: () => void): RichTextAttribute;
      */
     @!APILevel[
         22,

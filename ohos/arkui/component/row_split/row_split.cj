@@ -31,8 +31,6 @@ foreign {
 
 /**
  * Defines RowSplit Component.
- *
- * @relation const RowSplit: RowSplitInterface
  */
 @!APILevel[
     22,
@@ -42,9 +40,8 @@ public class RowSplit <: CommonMethodComponent<RowSplitAttribute> & RowSplitAttr
     /**
     * Called when the layout along the vertical direction is set.
     *
-    * @param { () -> Unit } child
+    * @params { () -> Unit } child
     * @returns { This }
-    * @relation (): RowSplitAttribute
     */
     @!APILevel[
         22,
@@ -60,9 +57,8 @@ public class RowSplit <: CommonMethodComponent<RowSplitAttribute> & RowSplitAttr
     /**
     * Called when judging whether the split line can be dragged.
     *
-    * @param { Bool } value
+    * @params { Bool } value
     * @returns { This }
-    * @relation resizeable(value: boolean): RowSplitAttribute
     */
     @!APILevel[
         22,

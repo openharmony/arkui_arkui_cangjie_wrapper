@@ -31,7 +31,6 @@ foreign {
 /**
  * Defines Line Component.
  *
- * @relation declare const Line: LineInterface
  */
 @!APILevel[
     22,
@@ -41,10 +40,9 @@ public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
     /**
      * Create a Line.
      *
-     * @param { Length } windth - Width of the rectangle where the line resides.
-     * @param { Length } height - Height of the rectangle where the line resides.
+     * @params { Length } windth - Width of the rectangle where the line resides.
+     * @params { Length } height - Height of the rectangle where the line resides.
      * @returns { This }
-     * @relation (options?: LineOptions): LineAttribute
      */
     @!APILevel[
         22,
@@ -66,9 +64,8 @@ public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
     /**
      * Coordinate of the start point of the line (relative coordinate).
      *
-     * @param { (Float64, Float64) } value
+     * @params { (Float64, Float64) } value
      * @returns { This }
-     * @relation startPoint(value: Array<any>): LineAttribute
      */
     @!APILevel[
         22,
@@ -85,9 +82,8 @@ public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
     /**
      * Line end coordinates (relative coordinates).
      *
-     * @param { (Float64, Float64) } value
+     * @params { (Float64, Float64) } value
      * @returns { This }
-     * @relation endPoint(value: Array<any>): LineAttribute
      */
     @!APILevel[
         22,

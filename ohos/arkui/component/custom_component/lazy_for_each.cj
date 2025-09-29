@@ -80,7 +80,6 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
     /**
      * Destroy listener.
      *
-     * @since 11
      */
     protected func onDestroyed(): Unit {
         for ((k, v) in cacheListener) {
@@ -93,9 +92,8 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
     /**
      * Get the data and cache it.
      *
-     * @param index: The corresponding index value.
-     * @return The data corresponding to the index value.
-     * @since 11
+     * @params index: The corresponding index value.
+     * @returns The data corresponding to the index value.
      */
     func getDataAndCache(index: Int64): T {
         let data: T = dataSource_.getData(index)
@@ -106,9 +104,8 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
     /**
      * Get the cached data.
      *
-     * @param index: The corresponding index value.
-     * @return The data corresponding to the index value.
-     * @since 11
+     * @params index: The corresponding index value.
+     * @returns The data corresponding to the index value.
      */
     func getCachedData(index: Int64): T {
         let msg = "cached data index does not exist!"
@@ -148,8 +145,7 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
     /**
      * Remove data change listener.
      *
-     * @param listener: Data change listener.
-     * @since 11
+     * @params listener: Data change listener.
      */
     func onRemoveDataChangeListener(listener: DataChangeListener): Unit {
         dataSource_.unregisterDataChangeListener(listener)
@@ -159,8 +155,6 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
 
 /**
  * Enter the value to obtain the LazyForEach.
- *
- * @realtion interface LazyForEachInterface
  */
 @!APILevel[
     22,
@@ -172,7 +166,6 @@ public class LazyForEach <: UINodeBase {
 
     /**
      * Enter the value to obtain the LazyForEach.
-     *
      */
     @!APILevel[
         22,
@@ -182,7 +175,6 @@ public class LazyForEach <: UINodeBase {
 
     /**
      * Enter the value to obtain the LazyForEach.
-     *
      */
     @!APILevel[
         22,

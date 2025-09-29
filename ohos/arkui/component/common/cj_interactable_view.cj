@@ -22,7 +22,6 @@ import ohos.multimedia.image.PixelMap
 /**
  * Defines the base event.
  *
- * @relation declare interface BaseEvent
  */
 @!APILevel[
     22,
@@ -32,7 +31,6 @@ sealed abstract class BaseEvent {
     /**
      * Display area of the element that triggers the gesture event.
      *
-     * @relation target: EventTarget;
      */
     @!APILevel[
         22,
@@ -43,7 +41,6 @@ sealed abstract class BaseEvent {
     /**
      * Timestamp of the event.
      *
-     * @relation timestamp: number;
      */
     @!APILevel[
         22,
@@ -54,7 +51,6 @@ sealed abstract class BaseEvent {
     /**
      * Event input device.
      *
-     * @relation source: SourceType;
      */
     @!APILevel[
         22,
@@ -65,7 +61,6 @@ sealed abstract class BaseEvent {
     /**
      *  Indicates the ID of the input device that triggers the current key.
      *
-     * @relation deviceId: number;
      */
     @!APILevel[
         22,
@@ -93,7 +88,6 @@ sealed abstract class BaseEvent {
 /**
  * Type of the touch event.
  *
- * @relation declare interface TouchObject
  */
 @!APILevel[
     22,
@@ -103,7 +97,6 @@ public class TouchObject {
     /**
      * Type of the touch event.
      *
-     * @relation type: TouchType;
      */
     @!APILevel[
         22,
@@ -114,7 +107,6 @@ public class TouchObject {
     /**
      * Finger unique identifier.
      *
-     * @relation id: number;
      */
     @!APILevel[
         22,
@@ -125,7 +117,6 @@ public class TouchObject {
     /**
      * X coordinate of the point relative to the global display.
      *
-     * @relation globalDisplayX?: number;
      */
     @!APILevel[
         22,
@@ -136,7 +127,6 @@ public class TouchObject {
     /**
      * Y coordinate of the point relative to the global display.
      *
-     * @relation globalDisplayY?: number;
      */
     @!APILevel[
         22,
@@ -147,7 +137,6 @@ public class TouchObject {
     /**
      * X coordinate of the touch point relative to the upper left corner of the event responding component.
      *
-     * @relation x: number;
      */
     @!APILevel[
         22,
@@ -158,7 +147,6 @@ public class TouchObject {
     /**
      * Y coordinate of the touch point relative to the upper edge of the touched element.
      *
-     * @relation y: number;
      */
     @!APILevel[
         22,
@@ -186,7 +174,6 @@ public class TouchObject {
 /**
  * The tap action triggers this method invocation.
  *
- * @relation declare interface ClickEvent extends BaseEvent
  */
 @!APILevel[
     22,
@@ -196,7 +183,6 @@ public class ClickEvent <: BaseEvent {
     /**
      * X coordinate of the click point relative to the left edge of the clicked element.
      *
-     * @relation x: number;
      */
     @!APILevel[
         22,
@@ -206,7 +192,6 @@ public class ClickEvent <: BaseEvent {
     /**
      * Y coordinate of the click point relative to the upper edge of the clicked element.
      *
-     * @relation y: number;
      */
     @!APILevel[
         22,
@@ -217,7 +202,6 @@ public class ClickEvent <: BaseEvent {
     /**
      * X coordinate of the click relative to the upper left corner of the application window.
      *
-     * @relation windowX: number;
      */
     @!APILevel[
         22,
@@ -227,7 +211,6 @@ public class ClickEvent <: BaseEvent {
     /**
      * Y coordinate of the click relative to the upper left corner of the application window.
      *
-     * @relation windowY: number;
      */
     @!APILevel[
         22,
@@ -237,7 +220,6 @@ public class ClickEvent <: BaseEvent {
     /**
      * X coordinate of the click relative to the upper left corner of the application screen.
      *
-     * @relation displayX: number;
      */
     @!APILevel[
         22,
@@ -247,7 +229,6 @@ public class ClickEvent <: BaseEvent {
     /**
      * Y coordinate of the click relative to the upper left corner of the application screen.
      *
-     * @relation displayY: number;
      */
     @!APILevel[
         22,
@@ -270,7 +251,6 @@ public class ClickEvent <: BaseEvent {
 /**
  * DragInfo object description
  *
- * @relation interface DragInfo
  */
 @!APILevel[
     22,
@@ -280,7 +260,6 @@ public class DragInfo {
     /**
      * Additional information about the drag info.
      *
-     * @relation extraParams?: string;
      */
     @!APILevel[
         22,
@@ -290,7 +269,6 @@ public class DragInfo {
     /**
      * Touch point coordinates.
      *
-     * @relation touchPoint?: TouchPoint;
      */
     @!APILevel[
         22,
@@ -307,7 +285,6 @@ public class DragInfo {
 /**
  * DragItemInfo object description
  *
- * @relation declare interface DragItemInfo
  */
 @!APILevel[
     22,
@@ -317,7 +294,6 @@ public class DragItemInfo {
     /**
      * Uses the pixelMap object for drawing.
      *
-     * @relation pixelMap?: PixelMap;
      */
     @!APILevel[
         22,
@@ -328,7 +304,6 @@ public class DragItemInfo {
     /**
      * Uses the custom builder for drawing, if pixelMap is set, this value is ignored.
      *
-     * @relation builder?: CustomBuilder;
      */
     @!APILevel[
         22,
@@ -339,7 +314,6 @@ public class DragItemInfo {
     /**
      * Sets the extra info for drag event.
      *
-     * @relation extraInfo?: string;
      */
     @!APILevel[
         22,
@@ -364,7 +338,6 @@ public class DragItemInfo {
 /**
  * The mouse click action triggers this method invocation.
  *
- * @relation declare interface MouseEvent extends BaseEvent
  */
 @!APILevel[
     22,
@@ -375,7 +348,6 @@ public class MouseEvent <: BaseEvent {
      * X coordinate of the mouse pointer relative to the upper left corner of the application window.
      *
      *
-     * @relation screenX: number;
      */
     @!APILevel[
         22,
@@ -387,7 +359,6 @@ public class MouseEvent <: BaseEvent {
      * Y coordinate of the mouse pointer relative to the upper left corner of the application window.
      *
      *
-     * @relation screenX: number;
      */
     @!APILevel[
         22,
@@ -398,7 +369,6 @@ public class MouseEvent <: BaseEvent {
     /**
      * X coordinate of the mouse pointer relative to the upper left corner of the component being clicked.
      *
-     * @relation x: number;
      */
     @!APILevel[
         22,
@@ -409,7 +379,6 @@ public class MouseEvent <: BaseEvent {
     /**
      * Y coordinate of the mouse pointer relative to the upper left corner of the component being clicked.
      *
-     * @relation y: number;
      */
     @!APILevel[
         22,
@@ -420,7 +389,6 @@ public class MouseEvent <: BaseEvent {
     /**
      * Mouse button of the click event.
      *
-     * @relation button: MouseButton;
      */
     @!APILevel[
         22,
@@ -431,7 +399,6 @@ public class MouseEvent <: BaseEvent {
     /**
      * Mouse action of the click event.
      *
-     * @relation action: MouseAction;
      */
     @!APILevel[
         22,
@@ -461,7 +428,6 @@ public class MouseEvent <: BaseEvent {
 /**
  * Touch Action Function Parameters
  *
- * @relation declare interface TouchEvent extends BaseEvent
  */
 @!APILevel[
     22,
@@ -473,7 +439,6 @@ public class TouchEvent <: BaseEvent {
     /**
      * Type of the touch event.
      *
-     * @relation type: TouchType;
      */
     @!APILevel[
         22,
@@ -484,7 +449,6 @@ public class TouchEvent <: BaseEvent {
     /**
      * All finger information.
      *
-     * @relation touches: TouchObject[];
      */
     @!APILevel[
         22,
@@ -495,7 +459,6 @@ public class TouchEvent <: BaseEvent {
     /**
      * Finger information changed.
      *
-     * @relation touches: TouchObject[];
      */
     @!APILevel[
         22,
@@ -518,7 +481,6 @@ public class TouchEvent <: BaseEvent {
     /**
      * Stops the event from bubbling upwards or downwards.
      *
-     * @relation stopPropagation: () => void;
      */
     @!APILevel[
         22,
@@ -532,7 +494,6 @@ public class TouchEvent <: BaseEvent {
 /**
  * KeyEvent object description:
  *
- * @relation declare interface KeyEvent
  */
 @!APILevel[
     22,
@@ -544,7 +505,6 @@ public class KeyEvent {
     /**
      * Key value of a key.
      *
-     * @relation keyText: string;
      */
     @!APILevel[
         22,
@@ -555,7 +515,6 @@ public class KeyEvent {
     /**
      * Type of a key.
      *
-     * @relation type: KeyType;
      */
     @!APILevel[
         22,
@@ -566,7 +525,6 @@ public class KeyEvent {
     /**
      * Key code of a key
      *
-     * @relation keyCode: number;
      */
     @!APILevel[
         22,
@@ -577,7 +535,6 @@ public class KeyEvent {
     /**
      * Type of the input device that triggers the current key, such as the keyboard or handle.
      *
-     * @relation keySource: KeySource;
      */
     @!APILevel[
         22,
@@ -590,7 +547,6 @@ public class KeyEvent {
      * The value 1 indicates the pressed state, and the value 0 indicates the unpressed state.
      *
      *
-     * @relation metaKey: number;
      */
     @!APILevel[
         22,
@@ -601,7 +557,6 @@ public class KeyEvent {
     /**
      * Timestamp when the key was pressed.
      *
-     * @relation timestamp: number;
      */
     @!APILevel[
         22,
@@ -612,7 +567,6 @@ public class KeyEvent {
     /**
      *  Indicates the ID of the input device that triggers the current key.
      *
-     * @relation deviceId: number;
      */
     @!APILevel[
         22,
@@ -641,7 +595,6 @@ public class KeyEvent {
     /**
      * Stops the event from bubbling upwards or downwards.
      *
-     * @relation stopPropagation: () => void;
      */
     @!APILevel[
         22,
@@ -651,4 +604,3 @@ public class KeyEvent {
         this.isStopPropagation = true
     }
 }
-

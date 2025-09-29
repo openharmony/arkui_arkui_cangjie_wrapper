@@ -135,7 +135,6 @@ struct NativeOptionConfirm {
 /**
  * The information of sheet.
  *
- * @relation interface SheetInfo
  */
 @!APILevel[
     22,
@@ -145,8 +144,6 @@ public class SheetInfo {
     /**
      * Sheet text.
      *
-     * @type { ResourceStr }
-     * @relation title: string | Resource
      */
     @!APILevel[
         22,
@@ -157,8 +154,6 @@ public class SheetInfo {
      * Callback when the sheet is selected.
      * Anonymous Object Rectification.
      *
-     * @type { VoidCallback }
-     * @relation action: VoidCallback
      */
     @!APILevel[
         22,
@@ -168,8 +163,6 @@ public class SheetInfo {
     /**
      * Sheet icon. By default, no icon is displayed.
      *
-     * @type { ?ResourceStr }
-     * @relation icon?: string | Resource
      */
     @!APILevel[
         22,
@@ -179,11 +172,10 @@ public class SheetInfo {
     /**
      * Constructor of SheetInfo
      *
-     * @param { ResourceStr } title
-     * @param { VoidCallback } action
-     * @param { ?ResourceStr } icon
+     * @params { ResourceStr } title
+     * @params { VoidCallback } action
+     * @params { ?ResourceStr } icon
      * @returns { SheetInfo }
-     * @relation interface SheetInfo
      */
     @!APILevel[
         22,
@@ -217,7 +209,6 @@ public class SheetInfo {
 /**
  * Base button params used for ActionSheet.
  *
- * @relation interface ActionSheetButtonOptions
  */
 @!APILevel[
     22,
@@ -227,8 +218,6 @@ public class ActionSheetButtonOptions {
     /**
      * Button text.
      *
-     * @type { ResourceStr }
-     * @relation value: string | Resource
      */
     @!APILevel[
         22,
@@ -238,8 +227,6 @@ public class ActionSheetButtonOptions {
     /**
      * Callback invoked when the button is selected.
      *
-     * @type { VoidCallback }
-     * @relation action: VoidCallback
      */
     @!APILevel[
         22,
@@ -250,9 +237,6 @@ public class ActionSheetButtonOptions {
      * Whether to respond when the button is clicked. The value true means to respond when the button is clicked,
      * and false means the opposite.
      *
-     * @type { Bool }
-     * @default true
-     * @relation enabled?: boolean
      */
     @!APILevel[
         22,
@@ -263,9 +247,6 @@ public class ActionSheetButtonOptions {
      * Whether the button is the default focus. The value true means that the button is the default focus,
      * and false means the opposite.
      *
-     * @type { Bool }
-     * @default false
-     * @relation defaultFocus?: boolean
      */
     @!APILevel[
         22,
@@ -275,9 +256,6 @@ public class ActionSheetButtonOptions {
     /**
      * Button style.
      *
-     * @type { DialogButtonStyle }
-     * @default DialogButtonStyle.Default
-     * @relation style?: DialogButtonStyle
      */
     @!APILevel[
         22,
@@ -287,13 +265,12 @@ public class ActionSheetButtonOptions {
     /**
      * Constructor of ActionSheetButtonOptions
      *
-     * @param { ResourceStr } value
-     * @param { VoidCallback } action
-     * @param { Bool } enabled
-     * @parma { Bool } defaultFocus
-     * @param { DialogButtonStyle } style
+     * @params { ResourceStr } value
+     * @params { VoidCallback } action
+     * @params { Bool } enabled
+     * @params { Bool } defaultFocus
+     * @params { DialogButtonStyle } style
      * @returns { ActionSheetButtonOptions }
-     * @relation interface ActionSheetButtonOptions
      */
     @!APILevel[
         22,
@@ -329,7 +306,6 @@ public class ActionSheetButtonOptions {
 /**
  * Provides information about the action to dismiss the dialog box.
  *
- * @relation declare interface DismissDialogAction
  */
 @!APILevel[
     22,
@@ -340,8 +316,6 @@ public class DismissDialogAction {
      * Reason why the dialog box cannot be dismissed. You must specify whether to close the dialog box for each of the
      * listed actions.
      *
-     * @type { DismissReason }
-     * @relation reason: DismissReason
      */
     @!APILevel[
         22,
@@ -351,9 +325,8 @@ public class DismissDialogAction {
     /**
      * Constructor of DismissDialogAction
 
-     * @param { DismissReason } reason
+     * @params { DismissReason } reason
      * @returns { DismissDialogAction }
-     * @relation declare interface DismissDialogAction
      */
     @!APILevel[
         22,
@@ -365,7 +338,6 @@ public class DismissDialogAction {
     /**
      * Defines dialog dismiss function.
      *
-     * @relation dismiss(): void
      */
     @!APILevel[
         22,
@@ -385,8 +357,6 @@ protected func parseToDismissDialogAction(reason: Int32): DismissDialogAction {
 /**
  * The options of ActionSheet.
  *
- * @class ActionSheetOptions
- * @relation interface ActionSheetOptions
  */
 @!APILevel[
     22,
@@ -396,8 +366,6 @@ public class ActionSheetOptions {
     /**
      * Title of the dialog box.
      *
-     * @type { ResourceStr }
-     * @relation title: string | Resource
      */
     @!APILevel[
         22,
@@ -407,8 +375,6 @@ public class ActionSheetOptions {
     /**
      * Content of the dialog box.
      *
-     * @type { ResourceStr }
-     * @relation message: string | Resource
      */
     @!APILevel[
         22,
@@ -418,8 +384,6 @@ public class ActionSheetOptions {
     /**
      * Options in the dialog box. Each option supports the image, text, and callback.
      *
-     * @type { Array<SheetInfo> }
-     * @relation sheets: Array<SheetInfo>
      */
     @!APILevel[
         22,
@@ -428,8 +392,6 @@ public class ActionSheetOptions {
     public var sheets: ?Array<SheetInfo>
     /**
      * Subtitle of the dialog box.
-     * @type { ResourceStr }
-     * @relation subtitle?: ResourceStr
      */
     @!APILevel[
         22,
@@ -441,8 +403,6 @@ public class ActionSheetOptions {
      * key, the button responds to the Enter key by default, and multiple dialog boxes can gain focus consecutively
      * to respond automatically. The default response to the Enter key does not work when defaultFocus is set to true.
      *
-     * @type { ActionSheetButtonOptions }
-     * @relation confirm?: ActionSheetButtonOptions
      */
     @!APILevel[
         22,
@@ -452,10 +412,7 @@ public class ActionSheetOptions {
     /**
      * Whether to close the dialog box when the overlay is clicked.
      *
-     * @type { Bool }
-     * @default true - The value true means to close the dialog box when the overlay is clicked, and false means
      * the opposite.
-     * @relation autoCancel?: boolean
      */
     @!APILevel[
         22,
@@ -466,8 +423,6 @@ public class ActionSheetOptions {
      * Callback invoked when the dialog box is closed after the overlay is clicked.
      * Anonymous Object Rectification.
      *
-     * @type { VoidCallback }
-     * @relation cancel?: VoidCallback
      */
     @!APILevel[
         22,
@@ -481,9 +436,6 @@ public class ActionSheetOptions {
      * on UIExtension.
      * </p>
      *
-     * @type { DialogAlignment }
-     * @default DialogAlignment.Bottom
-     * @relation alignment?: DialogAlignment
      */
     @!APILevel[
         22,
@@ -495,8 +447,6 @@ public class ActionSheetOptions {
      * <br>When alignment is set to Top, TopStart, or TopEnd: {dx: 0,dy: "40vp"}
      * <br>When alignment is set to any other value: {dx: 0,dy: "-40vp"}
      *
-     * @type { ActionSheetOffset }
-     * @relation offset?: ActionSheetOffset
      */
     @!APILevel[
         22,
@@ -510,9 +460,6 @@ public class ActionSheetOptions {
      * <br>maskRect does not take effect when showInSubWindow is set to true.
      * </p>
      *
-     * @type { Rectangle }
-     * @default - {x:0,y:0, width:'100%', height:'100%'}
-     * @relation maskRect?: Rectangle
      */
     @!APILevel[
         22,
@@ -526,9 +473,6 @@ public class ActionSheetOptions {
      * showInSubWindow attribute is also true.
      * </p>
      *
-     * @type { Bool }
-     * @default false
-     * @relation showInSubWindow?: boolean
      */
     @!APILevel[
         22,
@@ -537,9 +481,6 @@ public class ActionSheetOptions {
     public var showInSubWindow: ?Bool
     /**
      * Whether the dialog box is a modal. A modal dialog box has a mask applied, while a non-modal dialog box does not.
-     * @type { Bool }
-     * @default true
-     * @relation isModal?: boolean
      */
     @!APILevel[
         22,
@@ -553,9 +494,6 @@ public class ActionSheetOptions {
      * otherwise, the color display may not meet the expected effect.
      * </p>
      *
-     * @type { ResourceColor }
-     * @default Color.Transparent
-     * @relation backgroundColor?: ResourceColor
      */
     @!APILevel[
         22,
@@ -570,9 +508,6 @@ public class ActionSheetOptions {
      * visual effect.
      * </p>
      *
-     * @type { BlurStyle }
-     * @default BlurStyle.ComponentUltraThick
-     * @relation backgroundBlurStyle?: BlurStyle
      */
     @!APILevel[
         22,
@@ -589,8 +524,6 @@ public class ActionSheetOptions {
      * 2. In the onWillDismiss callback, another onWillDismiss callback is not allowed.
      * </p>
      *
-     * @type { ?Callback<DismissDialogAction, Unit> }
-     * @relation onWillDismiss?: Callback<DismissDialogAction>
      */
     @!APILevel[
         22,
@@ -600,12 +533,9 @@ public class ActionSheetOptions {
    /**
     * Corner radius of the background. You can set the radius for each of the four corners individually.
     *
-    * @type { BorderRadiuses }
-    * @default - BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp), The corner radius is subject
     * to the component size, with the maximum value being half of the component width or height. If the value is
     * negative, the default value is used. When set to a percentage, the value defines the radius as a percentage of the
     * parent component's width or height.
-    * @relation cornerRadius?: Dimension | BorderRadiuses | LocalizedBorderRadiuses
     */
     @!APILevel[
         22,
@@ -616,11 +546,8 @@ public class ActionSheetOptions {
      * Border width of the dialog box.
      * You can set the width for all four sides or set separate widths for individual sides.
      *
-     * @type { Length }
-     * @default 0 - When set to a percentage, the value defines the border width as a percentage of the parent dialog
      * box's width. If the left and right borders are greater than its width, or the top and bottom borders are greater
      * than its height, the dialog box may not display as expected.
-     * @relation borderWidth?: Dimension | EdgeWidths | LocalizedEdgeWidths
      */
     @!APILevel[
         22,
@@ -634,9 +561,6 @@ public class ActionSheetOptions {
     * user's language settings.
     * </p>
     *
-    * @type { ResourceColor }
-    * @default Color.Black - borderColor must be used with borderWidth in pairs.
-    * @relation borderColor?: ResourceColor | EdgeColors | LocalizedEdgeColors
     */
     @!APILevel[
         22,
@@ -646,9 +570,6 @@ public class ActionSheetOptions {
    /**
     * Border style of the dialog box.
     *
-    * @type { EdgeStyles }
-    * @default EdgeStyles(top: BorderStyle.Solid, right: BorderStyle.Solid, bottom: BorderStyle.Solid, left: BorderStyle.Solid)
-    * @relation borderStyle?: BorderStyle | EdgeStyles
     */
     @!APILevel[
         22,
@@ -658,11 +579,8 @@ public class ActionSheetOptions {
    /**
     * Width of the dialog box.
     *
-    * @type { ?Length }
-    * @default - Default maximum width of the dialog box: 400.vp,
     * When this parameter is set to a percentage, the reference width of the dialog box is the width of the window
     * where the dialog box is located. You can decrease or increase the width as needed.
-    * @relation width?: Dimension
     */
     @!APILevel[
         22,
@@ -672,11 +590,8 @@ public class ActionSheetOptions {
     /**
      * Height of the dialog box.
      *
-     * @type { ?Length }
-     * @default - Default maximum height of the dialog box: 0.9 x (Window height – Safe area)
      * <br>When this parameter is set to a percentage, the reference height of the dialog box is the height of the
      * window where the dialog box is located minus the safe area. You can decrease or increase the height as needed.
-     * @relation height?: Dimension
      */
     @!APILevel[
         22,
@@ -686,8 +601,6 @@ public class ActionSheetOptions {
     /**
      * Shadow of the dialog box.
      *
-     * @type { ShadowOptions }
-     * @relation shadow?: ShadowOptions | ShadowStyle
      */
     @!APILevel[
         22,
@@ -704,8 +617,6 @@ public class ActionSheetOptions {
      * Back button again closes the application.
      * </p>
      *
-     * @type { ?TransitionEffect }
-     * @relation transition?: TransitionEffect
      */
     @!APILevel[
         22,
@@ -715,30 +626,29 @@ public class ActionSheetOptions {
     /**
      * Constructor of ActionSheetOptions
      *
-     * @param { ResourceStr } title
-     * @param { ResourceStr } message
-     * @param { Array<SheetInfo> } sheets
-     * @param { ResourceStr } subtitle
-     * @param { ActionSheetButtonOptions } confirm
-     * @param { Bool } autoCancel
-     * @param { VoidCallback } cancel
-     * @param { DialogAlignment } alignment
-     * @param { ?ActionSheetOffset } offset
-     * @param { Rectangle } maskRect
-     * @param { Bool } showInSubWindow
-     * @param { ResourceColor } backgroundColor
-     * @param { BlurStyle } backgroundBlurStyle
-     * @param { ?Callback<DismissDialogAction, Unit> } onWillDismiss
-     * @param { BorderRadiuses } cornerRadius
-     * @param { Length } borderWidth
-     * @param { ResourceColor } borderColor
-     * @param { EdgeStyles } borderStyle
-     * @param { ?Length } width
-     * @param { ?Length } height
-     * @param { ShadowOptions } shadow
-     * @param { ?TransitionEffect } transition
+     * @params { ResourceStr } title
+     * @params { ResourceStr } message
+     * @params { Array<SheetInfo> } sheets
+     * @params { ResourceStr } subtitle
+     * @params { ActionSheetButtonOptions } confirm
+     * @params { Bool } autoCancel
+     * @params { VoidCallback } cancel
+     * @params { DialogAlignment } alignment
+     * @params { ?ActionSheetOffset } offset
+     * @params { Rectangle } maskRect
+     * @params { Bool } showInSubWindow
+     * @params { ResourceColor } backgroundColor
+     * @params { BlurStyle } backgroundBlurStyle
+     * @params { ?Callback<DismissDialogAction, Unit> } onWillDismiss
+     * @params { BorderRadiuses } cornerRadius
+     * @params { Length } borderWidth
+     * @params { ResourceColor } borderColor
+     * @params { EdgeStyles } borderStyle
+     * @params { ?Length } width
+     * @params { ?Length } height
+     * @params { ShadowOptions } shadow
+     * @params { ?TransitionEffect } transition
      * @returns { ActionSheetOptions }
-     * @relation interface ActionSheetOptions
      */
     @!APILevel[
         22,
@@ -896,8 +806,6 @@ public class ActionSheetOptions {
 /**
  * ActionSheet offset.
  *
- * @class ActionSheetOffset
- * @relation interface ActionSheetOffset
  */
 @!APILevel[
     22,
@@ -908,8 +816,6 @@ public class ActionSheetOffset {
     * Offset of the action sheet along the x-axis relative to the alignment position.
     * Anonymous Object Rectification.
     *
-    * @type { Length }
-    * @relation dx: number | string | Resource
     */
     @!APILevel[
         22,
@@ -920,8 +826,6 @@ public class ActionSheetOffset {
     * Offset of the action sheet along the y-axis relative to the alignment position.
     * Anonymous Object Rectification.
     *
-    * @type { Length }
-    * @relation dy: number | string | Resource
     */
     @!APILevel[
         22,
@@ -931,10 +835,9 @@ public class ActionSheetOffset {
     /**
      * Constructor of ActionSheetOffset
      *
-     * @param { Length } dx
-     * @param { Length } dy
+     * @params { Length } dx
+     * @params { Length } dy
      * @returns { ActionSheetOffset }
-     * @relation interface ActionSheetOffset
      */
     @!APILevel[
         22,

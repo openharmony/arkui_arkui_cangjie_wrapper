@@ -30,8 +30,6 @@ foreign {
 
 /**
  * Defines the badge position property.
- *
- * @relation enum BadgePosition
  */
 @Derive[Equatable]
 @!APILevel[
@@ -41,7 +39,6 @@ foreign {
 public enum BadgePosition {
     /**
      * The badge is displayed in the upper right corner of the parent component.
-     * @relation RightTop
      */
     @!APILevel[
         22,
@@ -50,7 +47,6 @@ public enum BadgePosition {
     RightTop |
     /**
      * The badge is vertically centered on the right of the parent component.
-     * @relation Right
      */
     @!APILevel[
         22,
@@ -59,7 +55,6 @@ public enum BadgePosition {
     Right |
     /**
      * The badge is vertically centered on the left of the parent component.
-     * @relation Left
      */
     @!APILevel[
         22,
@@ -80,9 +75,6 @@ public enum BadgePosition {
 
 /**
  * BadgeStyle object
- *
- * @class BadgeStyle
- * @relation interface BadgeStyle
  */
 @!APILevel[
     22,
@@ -91,10 +83,6 @@ public enum BadgePosition {
 public class BadgeStyle {
     /**
      * Font color.
-     *
-     * @type { ResourceColor }
-     * @default Color.White
-     * @relation color?: ResourceColor
      */
     @!APILevel[
         22,
@@ -110,10 +98,6 @@ public class BadgeStyle {
      * <p><strong>NOTE</strong>:
      * <br>This parameter cannot be set in percentage.
      * </p>
-     *
-     * @type { Length }
-     * @default 10
-     * @relation fontSize?: number | ResourceStr
      */
     @!APILevel[
         22,
@@ -130,10 +114,6 @@ public class BadgeStyle {
      * <br>This parameter cannot be set in percentage.
      * <br>If it is set to an invalid value, the default value is used.
      * </p>
-     *
-     * @type { Length }
-     * @default 16
-     * @relation badgeSize?: number | ResourceStr
      */
     @!APILevel[
         22,
@@ -142,10 +122,6 @@ public class BadgeStyle {
     public var badgeSize: ?Length
     /**
      * Badge color.
-     *
-     * @type { ResourceColor }
-     * @default Color.Red
-     * @relation badgeColor?: ResourceColor
      */
     @!APILevel[
         22,
@@ -161,9 +137,6 @@ public class BadgeStyle {
      * <p><strong>NOTE</strong>:
      * <br>This parameter cannot be set in percentage.
      * </p>
-     *
-     * @type { FontWeight }
-     * @relation fontWeight?: number | FontWeight | ResourceStr
      */
     @!APILevel[
         22,
@@ -173,9 +146,6 @@ public class BadgeStyle {
     /**
      * Border color of the background.
      *
-     * @type { ResourceColor }
-     * @default Color.Red
-     * @relation borderColor?: ResourceColor;
      */
     @!APILevel[
         22,
@@ -185,11 +155,6 @@ public class BadgeStyle {
     /**
      * Border width of the background.
      * This parameter cannot be set in percentage.
-     * Unit: vp
-     *
-     * @type { Length }
-     * @default 1
-     * @relation borderWidth?: Length
      */
     @!APILevel[
         22,
@@ -246,11 +211,11 @@ public class Badge <: CommonMethodComponent<BadgeAttribute> & BadgeAttribute {
      * count: Set the number of reminder messages.
      * style: You can set the style of the Badge component, including the text color, size, dot color, and size.
      *
-     * @param { Int32 } count
-     * @param { BadgeStyle } style
-     * @param { BadgePosition } position
-     * @param { Int32 } maxCount
-     * @param { () -> Unit } child
+     * @params { Int32 } count
+     * @params { BadgeStyle } style
+     * @params { BadgePosition } position
+     * @params { Int32 } maxCount
+     * @params { () -> Unit } child
      * @returns { Badge }
      */
     @!APILevel[
@@ -279,10 +244,10 @@ public class Badge <: CommonMethodComponent<BadgeAttribute> & BadgeAttribute {
      * position: Set the display position of the prompt point.
      * style: You can set the style of the Badge component, including the text color, size, dot color, and size.
      *
-     * @param { String } value
-     * @param { BadgeStyle } style
-     * @param { BadgePosition } position
-     * @param { () -> Unit } child
+     * @params { String } value
+     * @params { BadgeStyle } style
+     * @params { BadgePosition } position
+     * @params { () -> Unit } child
      * @returns { Badge }
      */
     @!APILevel[
@@ -308,5 +273,3 @@ public class Badge <: CommonMethodComponent<BadgeAttribute> & BadgeAttribute {
         this.child = child
     }
 }
-
-

@@ -36,7 +36,6 @@ foreign {
 /**
  * Defines LoadingProgress Component.
  *
- * @relation declare const LoadingProgress: LoadingProgressInterface
  */
 @!APILevel[
     22,
@@ -47,7 +46,6 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgressAttribute> 
      * Create a LoadingProgress
      *
      * @returns { This }
-     * @relation (): LoadingProgressAttribute
      */
     @!APILevel[
         22,
@@ -61,9 +59,8 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgressAttribute> 
     /**
      * Load the color of the progress bar.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation color(value: ResourceColor): LoadingProgressAttribute
      */
     @!APILevel[
         22,

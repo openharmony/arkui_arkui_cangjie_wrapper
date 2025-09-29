@@ -33,7 +33,6 @@ foreign {
 /**
  * Defines Path Component.
  *
- * @relation declare const Path: PathInterface
  */
 @!APILevel[
     22,
@@ -43,9 +42,8 @@ public class Path <: CommonShapeMethodComponent<PathAttribute> & PathAttribute {
     /**
      * Create a path.
      *
-     * @param { ResourceStr } commands - Commands option.
+     * @params { ResourceStr } commands - Commands option.
      * @returns { This }
-     * @relation (options?: PathOptions): PathAttribute
      */
     @!APILevel[
         22,
@@ -63,11 +61,10 @@ public class Path <: CommonShapeMethodComponent<PathAttribute> & PathAttribute {
     /**
      * Create a path.
      *
-     * @param { Length } width - Width option.
-     * @param { Length } height - Height option.
-     * @param { ResourceStr } commands - Commands option.
+     * @params { Length } width - Width option.
+     * @params { Length } height - Height option.
+     * @params { ResourceStr } commands - Commands option.
      * @returns { This }
-     * @relation (options?: PathOptions): PathAttribute
      */
     @!APILevel[
         22,
@@ -88,9 +85,8 @@ public class Path <: CommonShapeMethodComponent<PathAttribute> & PathAttribute {
     /**
      * Called when the command string drawn by the path is set.
      *
-     * @param { ResourceStr } commands
+     * @params { ResourceStr } commands
      * @returns { This }
-     * @relation commands(value: ResourceStr): PathAttribute
      */
     @!APILevel[
         22,

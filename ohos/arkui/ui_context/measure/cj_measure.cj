@@ -59,7 +59,6 @@ foreign {
 /**
  * Defines the options of MeasureText.
  *
- * @relation export interface MeasureOptions
  */
 @!APILevel[
     22,
@@ -180,7 +179,6 @@ func parseCJMeasureContext(context: MeasureOptions): CJMeasureContextToC {
 /**
  * Defines the size options.
  *
- * @relation declare interface SizeOptions
  */
 @!APILevel[
     22,
@@ -190,8 +188,6 @@ public class SizeOptions {
     /**
      * Defines the width.
      *
-     * @type { Length }
-     * @relation width?: Length;
      */
     @!APILevel[
         22,
@@ -201,8 +197,6 @@ public class SizeOptions {
     /**
      * Defines the height.
      *
-     * @type { Length }
-     * @relation height?: Length;
      */
     @!APILevel[
         22,
@@ -247,7 +241,6 @@ protected func measureTextSize(options: MeasureOptions): SizeOptions {
 /**
  * Defines the Measure interface.
  *
- * @relation export default class MeasureText
  */
  @!APILevel[
     22,
@@ -261,9 +254,8 @@ public class MeasureUtils {
     /**
      * Displays the textWidth.
      *
-     * @param  { MeasureOptions } options - Options.
+     * @params  { MeasureOptions } options - Options.
      * @returns { Float64 }
-     * @relation static measureText(options: MeasureOptions): number;
      */
     @!APILevel[
         22,
@@ -275,9 +267,8 @@ public class MeasureUtils {
     /**
      * Displays the text width and height.
      *
-     * @param { MeasureOptions } options - Options of measure area occupied by text.
+     * @params { MeasureOptions } options - Options of measure area occupied by text.
      * @returns { SizeOptions } width and height for text to display
-     * @relation static measureTextSize(options: MeasureOptions): SizeOptions;
      */
     @!APILevel[
         22,

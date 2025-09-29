@@ -32,7 +32,6 @@ foreign {
 /**
  * Defines StepperItem Component.
  *
- * @relation declare const StepperItem: StepperItemInterface
  */
 @!APILevel[
     22,
@@ -43,9 +42,8 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
     /**
      * Constructs a StepperItem component.
      *
-     * @param { () -> Unit } child
+     * @params { () -> Unit } child
      * @returns { This }
-     * @relation (): StepperItemAttribute
      */
     @!APILevel[
         22,
@@ -61,9 +59,8 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
     /**
      * The description text for the fallback text button at the bottom of the step navigator.
      *
-     * @param { String } value
+     * @params { String } value
      * @returns { This }
-     * @relation prevLabel(value: string): StepperItemAttribute
      */
     @!APILevel[
         22,
@@ -81,9 +78,8 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
     /**
      * The description text for the next step text button at the bottom of the step navigator.
      *
-     * @param { String } value
+     * @params { String } value
      * @returns { This }
-     * @relation nextLabel(value: string): StepperItemAttribute
      */
     @!APILevel[
         22,
@@ -101,9 +97,8 @@ public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & Steppe
     /**
      * Sets the display state of the Step Navigator nextLabel.
      *
-     * @param { ItemState } status
+     * @params { ItemState } status
      * @returns { This }
-     * @relation status(value?: ItemState): StepperItemAttribute
      */
     @!APILevel[
         22,

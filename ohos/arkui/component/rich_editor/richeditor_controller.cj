@@ -129,7 +129,6 @@ struct NativeRichEditorTextSpanOptions {
 /**
  * Defines the selection menu options.
  *
- * @relation declare interface SelectionMenuOptions
  */
 @!APILevel[
     22,
@@ -140,8 +139,6 @@ public class SelectionMenuOptions {
     /**
      * Callback function when the selection menu appears.
      *
-     * @type { VoidCallback }
-     * @relation onAppear?: MenuOnAppearCallback
      */
     @!APILevel[
         22,
@@ -152,8 +149,6 @@ public class SelectionMenuOptions {
     /**
      * Callback function when the selection menu disappears.
      *
-     * @type { VoidCallback }
-     * @relation onDisappear?: Callback<void>
      */
     @!APILevel[
         22,
@@ -177,7 +172,6 @@ public class SelectionMenuOptions {
 /**
  * Defines the span text style.
  *
- * @relation declare interface RichEditorTextStyle
  */
 @!APILevel[
     22,
@@ -188,8 +182,6 @@ public class RichEditorTextStyle {
     /**
      * font color.
      *
-     * @type { ResourceColor }
-     * @relation fontColor?: ResourceColor
      */
     @!APILevel[
         22,
@@ -200,8 +192,6 @@ public class RichEditorTextStyle {
     /**
      * font size.
      *
-     * @type { Length }
-     * @relation fontSize?: Length | number
      */
     @!APILevel[
         22,
@@ -212,8 +202,6 @@ public class RichEditorTextStyle {
     /**
      * font style.
      *
-     * @type { FontStyle }
-     * @relation fontStyle?: FontStyle
      */
     @!APILevel[
         22,
@@ -224,8 +212,6 @@ public class RichEditorTextStyle {
     /**
      * font weight.
      *
-     * @type { FontWeight }
-     * @relation fontWeight?: number | FontWeight | string
      */
     @!APILevel[
         22,
@@ -236,8 +222,6 @@ public class RichEditorTextStyle {
     /**
      * font family.
      *
-     * @type { ResourceStr }
-     * @relation fontFamily?: ResourceStr
      */
     @!APILevel[
         22,
@@ -248,8 +232,6 @@ public class RichEditorTextStyle {
     /**
      * font decoration.
      *
-     * @type { TextDecorationOptions }
-     * @relation decoration?: DecorationStyleInterface
      */
     @!APILevel[
         22,
@@ -284,7 +266,6 @@ public class RichEditorTextStyle {
 /**
  * Defines the span options of RichEditor.
  *
- * @relation declare interface RichEditorTextSpanOptions
  */
 @!APILevel[
     22,
@@ -295,8 +276,6 @@ public class RichEditorTextSpanOptions {
     /**
      * the offset that add a text span at.
      *
-     * @type { Int32 }
-     * @relation offset?: number
      */
     @!APILevel[
         22,
@@ -307,8 +286,6 @@ public class RichEditorTextSpanOptions {
     /**
      * text style.
      *
-     * @type { RichEditorTextStyle }
-     * @relation style?: RichEditorTextStyle
      */
     @!APILevel[
         22,
@@ -364,7 +341,6 @@ func parseRichEditorTextSpanOptions(value: RichEditorTextSpanOptions): NativeRic
     return NativeRichEditorTextSpanOptions(value.offset ?? Int32.Max, nativeRichEditorTextStyle)
 }
 
-
 @C
 struct NativeBorderRadiuses {
     NativeBorderRadiuses(
@@ -417,8 +393,6 @@ struct NativeRichEditorImageSpanOptions {
 
 /**
  * Defines the richEditor Image Layout Style.
- *
- * @relation interface RichEditorLayoutStyle
  */
 @!APILevel[
     22,
@@ -480,8 +454,6 @@ public class RichEditorLayoutStyle {
 
 /**
  * Defines the span image style.
- *
- * @relation declare interface RichEditorImageSpanStyle
  */
 @!APILevel[
     22,
@@ -491,12 +463,6 @@ public class RichEditorImageSpanStyle {
 
     /**
      * image size.
-     *
-     * @type { Option<(Length, Length)> }
-     * @relation size?: [
-                    Dimension,
-                    Dimension
-                 ]
      */
     @!APILevel[
         22,
@@ -506,9 +472,6 @@ public class RichEditorImageSpanStyle {
 
     /**
      * image vertical align.
-     *
-     * @type { ImageSpanAlignment }
-     * @relation verticalAlign?: ImageSpanAlignment
      */
     @!APILevel[
         22,
@@ -518,9 +481,6 @@ public class RichEditorImageSpanStyle {
 
     /**
      * image fit.
-     *
-     * @type { ImageFit }
-     * @relation objectFit?: ImageFit
      */
     @!APILevel[
         22,
@@ -551,8 +511,6 @@ public class RichEditorImageSpanStyle {
 
 /**
  * Defines the image span options of RichEditor.
- *
- * @relation declare interface RichEditorImageSpanOptions
  */
 @!APILevel[
     22,
@@ -562,9 +520,6 @@ public class RichEditorImageSpanOptions {
 
     /**
      * the offset that add image span at.
-     *
-     * @type { Int32 }
-     * @relation offset?: number
      */
     @!APILevel[
         22,
@@ -574,9 +529,6 @@ public class RichEditorImageSpanOptions {
 
     /**
      * image style.
-     *
-     * @type { RichEditorImageSpanStyle }
-     * @relation imageStyle?: RichEditorImageSpanStyle
      */
     @!APILevel[
         22,
@@ -685,8 +637,6 @@ struct NativeLeadingMarginPlaceholder {
 
 /**
  * Defines the leading margin placeholder of a paragraph.
- *
- * @relation declare interface LeadingMarginPlaceholder
  */
 @!APILevel[
     22,
@@ -696,9 +646,6 @@ public class LeadingMarginPlaceholder {
 
     /**
      * Placeholder pixelMap.
-     *
-     * @type { PixelMap }
-     * @relation pixelMap: PixelMap
      */
     @!APILevel[
         22,
@@ -708,12 +655,6 @@ public class LeadingMarginPlaceholder {
 
     /**
      * Placeholder size.
-     *
-     * @type { (Length, Length) }
-     * @relation size: [
-                    Dimension,
-                    Dimension
-                 ]
      */
     @!APILevel[
         22,
@@ -768,20 +709,14 @@ struct NativeRichEditorParagraphStyle {
 
 /**
  * Defines the paragraph style.
- *
- * @relation declare interface RichEditorParagraphStyle
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorParagraphStyle {
-
     /**
      * Text alignment.
-     *
-     * @type { TextAlign }
-     * @relation textAlign?: TextAlign
      */
     @!APILevel[
         22,
@@ -791,9 +726,6 @@ public class RichEditorParagraphStyle {
 
     /**
      * Leading margin.
-     *
-     * @type { LeadingMarginType }
-     * @relation leadingMargin?: Dimension | LeadingMarginPlaceholder
      */
     @!APILevel[
         22,
@@ -916,8 +848,6 @@ foreign {
 
 /**
  * Provides Base Controller for RichEditor.
- *
- * @relation declare class RichEditorBaseController implements TextEditControllerEx
  */
 @!APILevel[
     22,
@@ -932,7 +862,6 @@ public open class RichEditorBaseController <: RemoteDataLite {
      * Get caret offset from controller.
      *
      * @returns { Int32 }
-     * @relation getCaretOffset(): number
      */
     @!APILevel[
         22,
@@ -948,9 +877,8 @@ public open class RichEditorBaseController <: RemoteDataLite {
     /**
      * Set caret offset.
      *
-     * @param { Int32 } offset
+     * @params { Int32 } offset
      * @returns { Bool }
-     * @relation setCaretOffset(offset: number): boolean
      */
     @!APILevel[
         22,
@@ -966,8 +894,6 @@ public open class RichEditorBaseController <: RemoteDataLite {
 
 /**
  * Provides Controller for RichEditor.
- *
- * @relation declare class RichEditorController extends RichEditorBaseController
  */
 @!APILevel[
     22,
@@ -991,8 +917,8 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Add a text span.
      *
-     * @param { ResourceStr } value
-     * @param { RichEditorTextSpanOptions } options
+     * @params { ResourceStr } value
+     * @params { RichEditorTextSpanOptions } options
      * @returns { Int32 }
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
@@ -1017,10 +943,9 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Add a image span.
      *
-     * @param { String } value
-     * @param { RichEditorImageSpanOptions } options
+     * @params { String } value
+     * @params { RichEditorImageSpanOptions } options
      * @returns { Int32 }
-     * @relation addImageSpan(value: PixelMap | ResourceStr, options?: RichEditorImageSpanOptions): number
      */
     @!APILevel[
         22,
@@ -1040,10 +965,9 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Modify span style.
      *
-     * @param { Int32 } start
-     * @param { Int32 } end
-     * @param { RichEditorTextStyle } textStyle
-     * @relation updateSpanStyle(value: RichEditorUpdateTextSpanStyleOptions | RichEditorUpdateImageSpanStyleOptions | RichEditorUpdateSymbolSpanStyleOptions): void
+     * @params { Int32 } start
+     * @params { Int32 } end
+     * @params { RichEditorTextStyle } textStyle
      */
     @!APILevel[
         22,
@@ -1062,10 +986,9 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Modify span style.
      *
-     * @param { Int32 } start
-     * @param { Int32 } end
-     * @param { RichEditorImageSpanStyle } imageStyle
-     * @relation updateSpanStyle(value: RichEditorUpdateTextSpanStyleOptions | RichEditorUpdateImageSpanStyleOptions | RichEditorUpdateSymbolSpanStyleOptions): void
+     * @params { Int32 } start
+     * @params { Int32 } end
+     * @params { RichEditorImageSpanStyle } imageStyle
      */
     @!APILevel[
         22,
@@ -1083,9 +1006,8 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Delete span.
      *
-     * @param { Int32 } start
-     * @param { Int32 } end
-     * @relation deleteSpans(value?: RichEditorRange): void
+     * @params { Int32 } start
+     * @params { Int32 } end
      */
     @!APILevel[
         22,
@@ -1100,7 +1022,6 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * close the select menu when menu is on.
      *
-     * @relation closeSelectionMenu(): void
      */
     @!APILevel[
         22,
@@ -1115,10 +1036,9 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Modify span style.
      *
-     * @param { Int32 } start
-     * @param { Int32 } end
-     * @param { RichEditorParagraphStyle } style
-     * @relation updateParagraphStyle(value: RichEditorParagraphStyleOptions): void
+     * @params { Int32 } start
+     * @params { Int32 } end
+     * @params { RichEditorParagraphStyle } style
      */
     @!APILevel[
         22,
@@ -1135,10 +1055,9 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Get span content.
      *
-     * @param { Int32 } start
-     * @param { Int32 } end
+     * @params { Int32 } start
+     * @params { Int32 } end
      * @returns { ArrayList<RichEditorSpanResult> }
-     * @relation getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | RichEditorTextSpanResult>
      */
     @!APILevel[
         22,

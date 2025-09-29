@@ -65,16 +65,13 @@ foreign {
  * Defines a Checkbox callback when onChange.
  * Anonymous Object Rectification.
  *
- * @typedef { function } OnCheckboxChangeCallback
- * @param { boolean } value - selected status
- * @relation declare type OnCheckboxChangeCallback = (value: boolean) => void
+ * @params { boolean } value - selected status
  */
 public type OnCheckboxChangeCallback = (Bool) -> Unit
 
 /**
  * Defines Checkbox Component.
  *
- * @relation const Checkbox: CheckboxInterface
  */
 @!APILevel[
     22,
@@ -85,11 +82,10 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
      * Construct the Checkbox component.
      * Called when the Checkbox component is used.
      *
-     * @param { String } name
-     * @param { String } group
-     * @param { ?CustomBuilder } indicatorBuilder
+     * @params { String } name
+     * @params { String } group
+     * @params { ?CustomBuilder } indicatorBuilder
      * @returns { Checkbox }
-     * @relation (options?: CheckboxOptions): CheckboxAttribute
      */
     @!APILevel[
         22,
@@ -111,9 +107,8 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
     /**
      * setting whether checkbox is selected.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation select(value: boolean): CheckboxAttribute
      */
     @!APILevel[
         22,
@@ -130,9 +125,8 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
     /**
      * setting the display color of checkbox.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation selectedColor(value: ResourceColor): CheckboxAttribute
      */
     @!APILevel[
         22,
@@ -220,9 +214,8 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
      * Called when the selection status changes.
      * Anonymous Object Rectification.
      *
-     * @param { OnCheckboxChangeCallback } callback
+     * @params { OnCheckboxChangeCallback } callback
      * @returns { This }
-     * @relation onChange(callback: OnCheckboxChangeCallback): CheckboxAttribute
      */
     @!APILevel[
         22,
@@ -240,9 +233,8 @@ public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttr
     /**
      * setting the shape of checkbox.
      *
-     * @param { CheckBoxShape } value - The configuration of checkbox shape.
+     * @params { CheckBoxShape } value - The configuration of checkbox shape.
      * @returns { This }
-     * @relation shape(value: CheckBoxShape): CheckboxAttribute
      */
     @!APILevel[
         22,

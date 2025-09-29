@@ -82,7 +82,6 @@ foreign {
 /**
  * Defines Shape Component.
  *
- * @relation const Shape: ShapeInterface;
  */
 @!APILevel[
     22,
@@ -92,7 +91,7 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
     /**
     * Defines Shape Component instance.
     *
-    * @param { () -> Unit } child
+    * @params { () -> Unit } child
     * @returns { This }
     * relation (value?: PixelMap): ShapeAttribute;
     */
@@ -109,7 +108,7 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
     /**
     * Defines Shape Component instance.
     *
-    * @param { PixelMap } value
+    * @params { PixelMap } value
     * @returns { This }
     * relation (value?: PixelMap): ShapeAttribute;
     */
@@ -130,12 +129,11 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
     * Viewport of shape
     * Anonymous Object Rectification.
     *
-    * @param { Length } x
-    * @param { Length } y
-    * @param { Length } width
-    * @param { Length } height
+    * @params { Length } x
+    * @params { Length } y
+    * @params { Length } width
+    * @params { Length } height
     * @returns { This }
-    * @relation viewPort(value: ViewportRect): ShapeAttribute;
     */
     @!APILevel[
         22,
@@ -170,11 +168,10 @@ public class Shape <: CommonShapeMethodComponent<ShapeAttribute> & ShapeAttribut
     /**
     * Called when shape mesh.
     *
-    * @param { Array<Float64> } value
-    * @param { UInt32 } column
-    * @param { UInt32 } row
+    * @params { Array<Float64> } value
+    * @params { UInt32 } column
+    * @params { UInt32 } row
     * @returns { This }
-    * @relation mesh(value: Array<any>, column: number, row: number): ShapeAttribute;
     */
     @!APILevel[
         22,

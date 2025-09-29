@@ -116,16 +116,14 @@ struct NativeSelectOption {
 /**
  * Callback of selecting an item from the select event.
  * 
- * @typedef {function} OnSelectCallback
- * @param {Int32} The index of the selected item.
- * @param {String} The value of the selected item.
+ * @params {Int32} The index of the selected item.
+ * @params {String} The value of the selected item.
  */
 public type OnSelectCallback = (Int32, String) -> Unit;
 
 /**
  * The declare of selectOption.
  *
- * @relation interface SelectOption
  */
 @!APILevel[
     22,
@@ -135,8 +133,6 @@ public class SelectOptions {
     /**
      * Option string.
      *
-     * @type { ResourceStr }
-     * @relation value: ResourceStr
      */
     @!APILevel[
         22,
@@ -146,8 +142,6 @@ public class SelectOptions {
     /**
      * Option icon.
      *
-     * @type { ResourceStr }
-     * @relation icon?: ResourceStr
      */
     @!APILevel[
         22,
@@ -158,8 +152,8 @@ public class SelectOptions {
     /**
      * Constructor selectOption.
      *
-     * @param { ResourceStr } value
-     * @param { ResourceStr } icon
+     * @params { ResourceStr } value
+     * @params { ResourceStr } icon
      */
     @!APILevel[
         22,
@@ -226,7 +220,6 @@ class FFIVectorNativeSelectOption {
 /**
  * Defines Select Component.
  *
- * @relation const Select: SelectInterface
  */
 @!APILevel[
     22,
@@ -236,7 +229,7 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Called when the select is set.
      *
-     * @param { Array<SelectOptions> } options
+     * @params { Array<SelectOptions> } options
      * @returns { This }
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
@@ -269,9 +262,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Sets the serial number of the select item, starting from 0.
      *
-     * @param { Int32 } value - the serial number of the select item.
+     * @params { Int32 } value - the serial number of the select item.
      * @returns { This } the attribute of the select.
-     * @relation selected(value: number | Resource): SelectAttribute
      */
     @!APILevel[
         22,
@@ -287,9 +279,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Sets the text display of the select button itself.
      *
-     * @param { ResourceStr } value - the text display of the select button itself.
+     * @params { ResourceStr } value - the text display of the select button itself.
      * @returns { This } the attribute of the select.
-     * @relation value(value: ResourceStr): SelectAttribute
      */
     @!APILevel[
         22,
@@ -308,12 +299,11 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Sets the text properties of the select button itself.
      *
-     * @param { FontStyle } style
-     * @param { FontWeight } weight
-     * @param { Length } size
-     * @param { ResourceStr } family
+     * @params { FontStyle } style
+     * @params { FontWeight } weight
+     * @params { Length } size
+     * @params { ResourceStr } family
      * @returns { This }
-     * @relation font(value: Font): SelectAttribute
      */
     @!APILevel[
         22,
@@ -347,9 +337,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Sets the text color of the select button itself.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation fontColor(value: ResourceColor): SelectAttribute
      */
     @!APILevel[
         22,
@@ -366,9 +355,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Sets the background color of the selected items in the select.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation selectedOptionBgColor(value: ResourceColor): SelectAttribute
      */
     @!APILevel[
         22,
@@ -385,12 +373,11 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Sets the text style of the selected items in the select.
      *
-     * @param { FontStyle } style
-     * @param { FontWeight } weight
-     * @param { Length } size
-     * @param { String } family
+     * @params { FontStyle } style
+     * @params { FontWeight } weight
+     * @params { Length } size
+     * @params { String } family
      * @returns { This }
-     * @relation selectedOptionFont(selectFont: Optional<Font>): SelectAttribute
      */
     @!APILevel[
         22,
@@ -423,9 +410,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Sets the text color of the selected item in the select.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation selectedOptionFontColor(value: ResourceColor): SelectAttribute
      */
     @!APILevel[
         22,
@@ -442,9 +428,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Sets the background color of the select item.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation optionBgColor(value: ResourceColor): SelectAttribute
      */
     @!APILevel[
         22,
@@ -460,12 +445,11 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Sets the text style for select items.
      *
-     * @param { FontStyle } style
-     * @param { FontWeight } weight
-     * @param { Length } size
-     * @param { ResourceStr } family
+     * @params { FontStyle } style
+     * @params { FontWeight } weight
+     * @params { Length } size
+     * @params { ResourceStr } family
      * @returns { This }
-     * @relation optionFont(value: Font): SelectAttribute
      */
     @!APILevel[
         22,
@@ -499,9 +483,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Sets the text color for select items.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation optionFontColor(value: ResourceColor): SelectAttribute
      */
     @!APILevel[
         22,
@@ -518,9 +501,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Set the space for text and icon in select
      *
-     * @param { Length } value - indicates the length of the space
+     * @params { Length } value - indicates the length of the space
      * @returns { This }
-     * @relation space(value: Length): SelectAttribute
      */
     @!APILevel[
         22,
@@ -537,9 +519,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Set the layout direction for text and arrow in select
      *
-     * @param { ArrowPosition } value - indicates the arrow position in the select
+     * @params { ArrowPosition } value - indicates the arrow position in the select
      * @returns { This }
-     * @relation arrowPosition(value: ArrowPosition): SelectAttribute
      */
     @!APILevel[
         22,
@@ -556,10 +537,9 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Set the alignment between select and menu.
      *
-     * @param { MenuAlignType } alignType - The type of alignment between select and menu.
-     * @param { Offset } offset - The offset between select and menu.
+     * @params { MenuAlignType } alignType - The type of alignment between select and menu.
+     * @params { Offset } offset - The offset between select and menu.
      * @returns { This } the attribute of the select.
-     * @relation menuAlign(alignType: MenuAlignType, offset?: Offset): SelectAttribute
      */
     @!APILevel[
         22,
@@ -580,9 +560,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /** 
      * Set the width of each option and set whether the option width fit the trigger.
      *
-     * @param { OptionWidthMode } value - The length of option width and decide option width to fit trigger or content.
+     * @params { OptionWidthMode } value - The length of option width and decide option width to fit trigger or content.
      * @returns { This } the attribute of the select.
-     * @relation optionWidth(value: Dimension | OptionWidthMode ): SelectAttribute
      */
     @!APILevel[
         22,
@@ -601,9 +580,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /** 
      * Set the width of each option and set whether the option width fit the trigger.
      *
-     * @param { Length } value - The length of option width and decide option width to fit trigger or content.
+     * @params { Length } value - The length of option width and decide option width to fit trigger or content.
      * @returns { This } the attribute of the select.
-     * @relation optionWidth(value: Dimension | OptionWidthMode ): SelectAttribute
      */
     @!APILevel[
         22,
@@ -621,9 +599,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /** 
      * Set the height of each option.
      * 
-     * @param { Length } value - The length of option height.
+     * @params { Length } value - The length of option height.
      * @returns { This } the attribute of the select.
-     * @relation optionHeight(value: Dimension): SelectAttribute
      */
     @!APILevel[
         22,
@@ -641,9 +618,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * set the menu's background color
      *
-     * @param { ResourceColor } value - The backgroundColor of menu.
+     * @params { ResourceColor } value - The backgroundColor of menu.
      * @returns { This } the attribute of the select.
-     * @relation menuBackgroundColor(value: ResourceColor): SelectAttribute
      */
     @!APILevel[
         22,
@@ -659,9 +635,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * set menu background blur Style
      *
-     * @param { BlurStyle } value - The BackgroundBlurStyle of menu.
+     * @params { BlurStyle } value - The BackgroundBlurStyle of menu.
      * @returns { This } the attribute of the select.
-     * @relation menuBackgroundBlurStyle(value: BlurStyle): SelectAttribute
      */
     @!APILevel[
         22,
@@ -716,9 +691,8 @@ public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute 
     /**
      * Callback for selecting an item from the select.
      *
-     * @param { function } callback
+     * @params { function } callback
      * @returns { This }
-     * @relation onSelect(callback: (index: number, value: string) => void): SelectAttribute
      */
     @!APILevel[
         22,

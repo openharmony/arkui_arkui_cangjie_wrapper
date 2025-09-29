@@ -50,7 +50,6 @@ foreign {
 /**
  * Defines ListItem Component.
  *
- * @relation declare const ListItem: ListItemInterface
  */
 @!APILevel[
     22,
@@ -62,9 +61,8 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
     /**
      * Called when an interface is used.
      *
-     * @param { () -> Unit } child
+     * @params { () -> Unit } child
      * @returns { This }
-     * @relation (value?: ListItemOptions): ListItemAttribute
      */
     @!APILevel[
         22,
@@ -107,9 +105,8 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
     /**
      * Called when judging whether it is selectable.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation selectable(value: boolean): ListItemAttribute
      */
     @!APILevel[
         22,
@@ -125,12 +122,11 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
     /**
      * Sets the action item that appears when the list item slides in the cross axis direction of the list.
      *
-     * @param { CustomBuilder } start
-     * @param { CustomBuilder } end
-     * @param { SwipeEdgeEffect } edgeEffect
-     * @param { (Float64) -> Unit } onOffsetChange
+     * @params { CustomBuilder } start
+     * @params { CustomBuilder } end
+     * @params { SwipeEdgeEffect } edgeEffect
+     * @params { (Float64) -> Unit } onOffsetChange
      * @returns { This }
-     * @relation swipeAction(value: SwipeActionOptions): ListItemAttribute
      */
     @!APILevel[
         22,
@@ -157,9 +153,8 @@ public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttr
     /**
      * Called when the listItem is selected.
      *
-     * @param { (Bool) -> Unit } event
+     * @params { (Bool) -> Unit } event
      * @returns { This }
-     * @relation onSelect(event: (isSelected: boolean) => void): ListItemAttribute
      */
     @!APILevel[
         22,

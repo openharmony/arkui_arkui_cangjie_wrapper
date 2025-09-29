@@ -37,7 +37,6 @@ foreign {
 /**
  * class UIContext
  *
- * @relation export declare class UIContext
  */
 @!APILevel[
     22,
@@ -58,7 +57,6 @@ public class UIContext {
      * Obtains a PromptAction object.
      *
      * @returns { PromptAction } PromptAction object.
-     * @relation getPromptAction(): PromptAction
      */
     @!APILevel[
         22,
@@ -75,7 +73,6 @@ public class UIContext {
     /**
       * Get MeasureUtils.
       * @returns { MeasureUtils } the MeasureUtils
-      * @relation getMeasureUtils(): MeasureUtils
       */
     @!APILevel[
         22,
@@ -92,9 +89,8 @@ public class UIContext {
     /**
     * Create an animator object for custom animation.
     *
-    * @param { AnimatorOptions } options - Options.
+    * @params { AnimatorOptions } options - Options.
     * @returns { AnimatorResult }
-    * @relation createAnimator(options: AnimatorOptions): AnimatorResult
     */
     @!APILevel[
         22,
@@ -107,9 +103,8 @@ public class UIContext {
     /**
     * Converts a value in vp units to a value in px.
     *
-    * @param { Length } value
+    * @params { Length } value
     * @returns { Option<Length> }
-    * @relation vp2px(value: number): number;
     */
     @!APILevel[
         22,
@@ -122,9 +117,8 @@ public class UIContext {
     /**
     * Converts a value in px units to a value in vp.
     *
-    * @param { Length } value
+    * @params { Length } value
     * @returns { Option<Length> }
-    * @relation px2vp(value: number): number;
     */
     @!APILevel[
         22,
@@ -137,9 +131,8 @@ public class UIContext {
     /**
     * Converts a value in fp units to a value in px.
     *
-    * @param { Length } value
+    * @params { Length } value
     * @returns { Option<Length> }
-    * @relation fp2px(value: number): number;
     */
     @!APILevel[
         22,
@@ -152,9 +145,8 @@ public class UIContext {
     /**
     * Converts a value in fp units to a value in px.
     *
-    * @param { Length } value
+    * @params { Length } value
     * @returns { Option<Length> }
-    * @relation fp2px(value: number): number;
     */
     @!APILevel[
         22,
@@ -167,9 +159,8 @@ public class UIContext {
     /**
     * Converts a value in lpx units to a value in px.
     *
-    * @param { Length } value
+    * @params { Length } value
     * @returns { Option<Length> }
-    * @relation lpx2px(value: number): number;
     */
     @!APILevel[
         22,
@@ -182,9 +173,8 @@ public class UIContext {
     /**
     * Converts a value in px units to a value in lpx.
     *
-    * @param { Length } value
+    * @params { Length } value
     * @returns { Option<Length> }
-    * @relation px2lpx(value: number): number;
     */
     @!APILevel[
         22,
@@ -198,7 +188,6 @@ public class UIContext {
     * get object font.
     *
     * @returns { Font } object Font.
-    * @relation getFont(): Font
     */
     @!APILevel[
         22,
@@ -216,7 +205,6 @@ public class UIContext {
     * Obtains a Router object.
     *
     * @returns { Router } Router object.
-    * @relation getRouter(): Router
     */
     @!APILevel[
         22,
@@ -234,7 +222,6 @@ public class UIContext {
      * Get object context menu controller.
      *
      * @returns { ContextMenuController } object context menu controller.
-     * @relation getContextMenuController(): ContextMenuController
      */
     @!APILevel[
         22,
@@ -251,9 +238,8 @@ public class UIContext {
     /**
      * Shows an alert dialog box.
      *
-     * @param { AlertDialogParamWithConfirm } options - Shows
+     * @params { AlertDialogParamWithConfirm } options - Shows
      * an AlertDialog component in the given settings.
-     * @relation showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | AlertDialogParamWithOptions): void
      */
     @!APILevel[
         22,
@@ -266,9 +252,8 @@ public class UIContext {
     /**
      * Shows an alert dialog box.
      *
-     * @param { AlertDialogParamWithButtons } options - Shows
+     * @params { AlertDialogParamWithButtons } options - Shows
      * an AlertDialog component in the given settings.
-     * @relation showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | AlertDialogParamWithOptions): void
      */
     @!APILevel[
         22,
@@ -281,9 +266,8 @@ public class UIContext {
     /**
      * Shows an alert dialog box.
      *
-     * @param { AlertDialogParamWithOptions } options - Shows
+     * @params { AlertDialogParamWithOptions } options - Shows
      * an AlertDialog component in the given settings.
-     * @relation showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | AlertDialogParamWithOptions): void
      */
     @!APILevel[
         22,
@@ -295,8 +279,7 @@ public class UIContext {
     /**
      * Shows an action sheet in the given settings.
      *
-     * @param { ActionSheetOptions } value - Parameters of the action sheet.
-     * @relation showActionSheet(value: ActionSheetOptions): void
+     * @params { ActionSheetOptions } value - Parameters of the action sheet.
      */
     @!APILevel[
         22,
@@ -309,9 +292,8 @@ public class UIContext {
     /**
      * Defining animation function
      *
-     * @param { AnimateParam } value - parameters for animation.
-     * @param { VoidCallback } event - the closure base on which, the system will create animation automatically
-     * @relation  animateTo(value: AnimateParam, event: () => void): void
+     * @params { AnimateParam } value - parameters for animation.
+     * @params { VoidCallback } event - the closure base on which, the system will create animation automatically
      */
     @!APILevel[
         22,

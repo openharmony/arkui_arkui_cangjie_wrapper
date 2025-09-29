@@ -44,7 +44,7 @@ public class CJEntry {
     /**
      * Get CJEntry instance.
      *
-     * @return { CJEntry }
+     * @returns { CJEntry }
      */
     @!APILevel[
         22,
@@ -57,9 +57,9 @@ public class CJEntry {
     private let entries_ = HashMap<String, () -> Bool>()
     /**
      * Register entry by name.
-     * @param { String } name
-     * @param { () -> Bool } call
-     * @return { CJEntry }
+     * @params { String } name
+     * @params { () -> Bool } call
+     * @returns { CJEntry }
      */
     @!APILevel[
         22,

@@ -35,7 +35,6 @@ foreign {
 /**
  * Image data object
  *
- * @relation declare class ImageData
  */
 @!APILevel[
     22,
@@ -45,7 +44,6 @@ public class ImageData <: RemoteDataLite {
     /**
      * Width of the image.
      *
-     * @relation readonly height: number
      */
     @!APILevel[
         22,
@@ -62,7 +60,6 @@ public class ImageData <: RemoteDataLite {
     /**
      * Height of the image.
      *
-     * @relation readonly height(): number
      */
     @!APILevel[
         22,
@@ -79,7 +76,6 @@ public class ImageData <: RemoteDataLite {
     /**
      * Array containing image pixel data
      *
-     * @relation readonly data: Uint8ClampedArray
      */
     @!APILevel[
         22,
@@ -99,12 +95,11 @@ public class ImageData <: RemoteDataLite {
     /**
      * Create an ImageData object based on the input parameters.
      *
-     * @param { Float64 } width - Width of the image.
-     * @param { Float64 } height - Height of the image.
-     * @param { Array<UInt8> } data - Data of the image. If this parameter is not specified, the default value is a black rectangular image.
-     * @param { LengthMetricsUnit } unit - the unit mode
+     * @params { Float64 } width - Width of the image.
+     * @params { Float64 } height - Height of the image.
+     * @params { Array<UInt8> } data - Data of the image. If this parameter is not specified, the default value is a black rectangular image.
+     * @params { LengthMetricsUnit } unit - the unit mode
      * @returns { This }
-     * @relation constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)
      */
     @!APILevel[
         22,
@@ -132,11 +127,10 @@ public class ImageData <: RemoteDataLite {
     /**
      * Create an ImageData object based on the input parameters.
      *
-     * @param { Float64 } width - Width of the image.
-     * @param { Float64 } height - Height of the image.
-     * @param { LengthMetricsUnit } unit - the unit mode
+     * @params { Float64 } width - Width of the image.
+     * @params { Float64 } height - Height of the image.
+     * @params { LengthMetricsUnit } unit - the unit mode
      * @returns { This }
-     * @relation constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)
      */
     @!APILevel[
         22,

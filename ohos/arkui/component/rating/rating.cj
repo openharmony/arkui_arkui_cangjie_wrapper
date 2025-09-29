@@ -41,7 +41,6 @@ foreign {
 /**
  * Defines Rating Component.
  * 
- * @relation declare const Rating: RatingInterface
  */
 @!APILevel[
     22,
@@ -54,7 +53,6 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
      * @params { Float64 } rating
      * @params { Bool } indicator
      * @returns { This }
-     * @relation (options?: RatingOptions): RatingAttribute
      */
     @!APILevel[
         22,
@@ -69,9 +67,8 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
     /**
      * Called when the total number of stars is set.
      * 
-     * @param { Int32 } value
+     * @params { Int32 } value
      * @returns { This }
-     * @relation stars(value: number): RatingAttribute
      */
     @!APILevel[
         22,
@@ -87,9 +84,8 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
     /**
      * Called when the step size of the operation rating.
      *
-     * @param { Float64 } size
+     * @params { Float64 } size
      * @returns { This }
-     * @relation stepSize(value: number): RatingAttribute
      */
     @!APILevel[
         22,
@@ -110,11 +106,10 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
     /**
      * Called when a picture is set.
      *
-     * @param { ResourceStr } backgroundUri - Background URI option.
-     * @param { ResourceStr } foregroundUri - Foreground URI option.
-     * @param { ResourceStr } secondaryUri - Secondary URI option.
+     * @params { ResourceStr } backgroundUri - Background URI option.
+     * @params { ResourceStr } foregroundUri - Foreground URI option.
+     * @params { ResourceStr } secondaryUri - Secondary URI option.
      * @returns { This }
-     * @relation starStyle(options: StarStyleOptions): RatingAttribute
      */
     @!APILevel[
         22,
@@ -140,9 +135,8 @@ public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute 
     /**
      * Called when the star rating of the operation scoring bar changes.
      *
-     * @param { (Float64) -> Unit } callback
+     * @params { (Float64) -> Unit } callback
      * @returns { This }
-     * @relation onChange(callback: (value: number) => void): RatingAttribute
      */
     @!APILevel[
         22,

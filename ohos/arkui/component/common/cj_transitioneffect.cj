@@ -45,7 +45,6 @@ foreign func FfiOHOSAceFrameworkTransitionEffectSlideSwitch(): Int64
 /**
  * Defines the options of translate.
  *
- * @relation declare interface TranslateOptions
  */
 @!APILevel[
     22,
@@ -58,8 +57,6 @@ public class TranslateOptions {
      * For the number type, the unit is VP, and the value range is (-∞, +∞).
      * For the string type, the value follows the format of length string type.
      *
-     * @type { Length }
-     * @relation x?: number | string
      */
     @!APILevel[
         22,
@@ -72,8 +69,6 @@ public class TranslateOptions {
      * For the number type, the unit is VP, and the value range is (-∞, +∞).
      * For the string type, the value follows the format of length string type.
      *
-     * @type { Length }
-     * @relation y?: number | string
      */
     @!APILevel[
         22,
@@ -85,8 +80,6 @@ public class TranslateOptions {
      * Distance to translate along the z-axis. The value is a floating
      * point number, the default value is 0.0, and the unit is px.
      *
-     * @type { Length }
-     * @relation z?: number | string
      */
     @!APILevel[
         22,
@@ -111,7 +104,6 @@ public class TranslateOptions {
 /**
  * Defines the options of scale.
  *
- * @relation declare interface ScaleOptions
  */
 @!APILevel[
     22,
@@ -125,8 +117,6 @@ public class ScaleOptions {
      * 0 < x < 1: The component is scaled down along the x-axis.
      * x < 0: The component is scaled in the reverse direction of the x-axis.
      *
-     * @type { Float32 }
-     * @relation x?: number
      */
     @!APILevel[
         22,
@@ -140,8 +130,6 @@ public class ScaleOptions {
      * 0 < y < 1: The component is scaled down along the y-axis.
      * y < 0: The component is scaled in the reverse direction of the y-axis.
      *
-     * @type { Float32 }
-     * @relation y?: number
      */
     @!APILevel[
         22,
@@ -154,8 +142,6 @@ public class ScaleOptions {
      * <br>0 < z < 1: The component is scaled down along the z-axis.
      * <br>z < 0: The component is scaled in the reverse direction of the z-axis.
      *
-     * @type { Float32 }
-     * @relation z?: number
      */
     @!APILevel[
         22,
@@ -166,8 +152,6 @@ public class ScaleOptions {
     /**
      * X coordinate of the transformation center point (anchor). Unit is vp.
      *
-     * @type { Length }
-     * @relation centerX?: number | string
      */
     @!APILevel[
         22,
@@ -178,8 +162,6 @@ public class ScaleOptions {
     /**
      * Y coordinate of the transformation center point (anchor). Unit is vp.
      *
-     * @type { Length }
-     * @relation centerY?: number | string
      */
     @!APILevel[
         22,
@@ -228,7 +210,6 @@ struct CScaleOptions {
 /**
  * The param of rotate.
  *
- * @relation declare interface RotateOptions
  */
 @!APILevel[
     22,
@@ -239,8 +220,6 @@ public class RotateOptions {
     /**
      * The param of angle.
      *
-     * @type { Float32 }
-     * @relation angle: number | string
      */
     @!APILevel[
         22,
@@ -251,8 +230,6 @@ public class RotateOptions {
     /**
      * X coordinate of the rotation axis vector.
      *
-     * @type { Float32 }
-     * @relation x?: number
      */
     @!APILevel[
         22,
@@ -263,8 +240,6 @@ public class RotateOptions {
     /**
      * Y coordinate of the rotation axis vector.
      *
-     * @type { Float32 }
-     * @relation y?: number
      */
     @!APILevel[
         22,
@@ -275,8 +250,6 @@ public class RotateOptions {
     /**
      * Z coordinate of the rotation axis vector.
      *
-     * @type { Float32 }
-     * @relation z?: number
      */
     @!APILevel[
         22,
@@ -287,8 +260,6 @@ public class RotateOptions {
     /**
      * X coordinate of the transformation center point (anchor). Unit is vp.
      *
-     * @type { Length }
-     * @relation centerX?: number | string
      */
     @!APILevel[
         22,
@@ -299,8 +270,6 @@ public class RotateOptions {
     /**
      * Y coordinate of the transformation center point (anchor). Unit is vp.
      *
-     * @type { Length }
-     * @relation centerY?: number | string
      */
     @!APILevel[
         22,
@@ -311,8 +280,6 @@ public class RotateOptions {
     /**
      * Z-axis anchor, that is, the z-component of the 3D rotation center point.
      *
-     * @type { Length }
-     * @relation centerZ?: number
      */
     @!APILevel[
         22,
@@ -325,8 +292,6 @@ public class RotateOptions {
      * The axis and center of rotation are set based on the coordinate system,
      * which remains where it is when the component is moved.
      *
-     * @type { Float32 }
-     * @relation perspective?: number
      */
     @!APILevel[
         22,
@@ -386,7 +351,6 @@ struct CRotateOptions {
 /**
  * Defines the Edge object.
  *
- * @relation declare enum TransitionEdge
  */
 @Derive[Equatable]
 @!APILevel[
@@ -397,7 +361,6 @@ public enum TransitionEdge {
     /**
      * Top edge
      *
-     * @relation TOP
      */
     @!APILevel[
         22,
@@ -407,7 +370,6 @@ public enum TransitionEdge {
     /**
      * Bottom edge of the window.
      *
-     * @relation BOTTOM
      */
     @!APILevel[
         22,
@@ -418,7 +380,6 @@ public enum TransitionEdge {
      * Start edge of the window, which is the left edge for left-to-right
      * scripts and the right edge for right-to-left scripts.
      *
-     * @relation START
      */
     @!APILevel[
         22,
@@ -429,7 +390,6 @@ public enum TransitionEdge {
      * End edge of the window, which is the right edge for left-to-right scripts
      * and the left edge for right-to-left scripts.
      *
-     * @relation END
      */
     @!APILevel[
         22,
@@ -452,7 +412,6 @@ public enum TransitionEdge {
 /**
  * Defines the transition effect
  *
- * @relation declare class TransitionEffect 
  */
 @!APILevel[
     22,
@@ -470,9 +429,8 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Creates an opacity transition effect with alpha value.
      *
-     * @param { Float64 } alpha - opacity alpha value, value range [0, 1].
+     * @params { Float64 } alpha - opacity alpha value, value range [0, 1].
      * @returns { TransitionEffect }
-     * @relation static opacity(alpha: number): TransitionEffect;
      */
     @!APILevel[
         22,
@@ -487,9 +445,8 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Creates a translate transition effect
      *
-     * @param { TranslateOptions } options - translate options
+     * @params { TranslateOptions } options - translate options
      * @returns { TransitionEffect }
-     * @relation static translate(options: TranslateOptions): TransitionEffect;
      */
     @!APILevel[
         22,
@@ -504,9 +461,8 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Creates a scale transition effect
      *
-     * @param { ScaleOptions } options - scale options
+     * @params { ScaleOptions } options - scale options
      * @returns { TransitionEffect }
-     * @relation static scale(options: ScaleOptions): TransitionEffect;
      */
     @!APILevel[
         22,
@@ -521,9 +477,8 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Creates a rotation transition effect
      *
-     * @param { RotateOptions } options - rotate options
+     * @params { RotateOptions } options - rotate options
      * @returns { TransitionEffect }
-     * @relation static rotate(options: RotateOptions): TransitionEffect;
      */
     @!APILevel[
         22,
@@ -539,9 +494,8 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Creates a move transition effect
      *
-     * @param { TransitionEdge } edge - the edge that component will move to
+     * @params { TransitionEdge } edge - the edge that component will move to
      * @returns { TransitionEffect }
-     * @relation static move(edge: TransitionEdge): TransitionEffect;
      */
     @!APILevel[
         22,
@@ -556,10 +510,9 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * reates an asymmetric transition effect
      *
-     * @param { TransitionEffect } appear - the transition which will be attached when the component is appear
-     * @param { TransitionEffect } disappear - the transition which will be attached when the component is disappear
+     * @params { TransitionEffect } appear - the transition which will be attached when the component is appear
+     * @params { TransitionEffect } disappear - the transition which will be attached when the component is disappear
      * @returns { TransitionEffect }
-     * @relation static asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect;
      */
     @!APILevel[
         22,
@@ -574,9 +527,8 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Combines another transition effect
      *
-     * @param { TransitionEffect } transitionEffect - transition effect which is be combined
+     * @params { TransitionEffect } transitionEffect - transition effect which is be combined
      * @returns { TransitionEffect } combined transition effect
-     * @relation combine(transitionEffect: TransitionEffect): TransitionEffect;
      */
     @!APILevel[
         22,
@@ -589,13 +541,11 @@ public class TransitionEffect <: RemoteDataLite {
         return this
     }
 
-
     /**
      * Set the animation of current transition effect
      *
-     * @param { AnimateParam } value - animation parameters
+     * @params { AnimateParam } value - animation parameters
      * @returns { TransitionEffect }
-     * @relation animation(value: AnimateParam): TransitionEffect;
      */
     @!APILevel[
         22,
@@ -613,7 +563,6 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Disables the transition effect
      *
-     * @relation static get IDENTITY(): TransitionEffect;
      */
     @!APILevel[
         22,
@@ -626,7 +575,6 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Specifies a transition effect with transparency of 0, which is equivalent to TransitionEffect.opacity(0).
      *
-     * @relation static get OPACITY(): TransitionEffect;
      */
     @!APILevel[
         22,
@@ -637,7 +585,6 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Defines a slide transition effect
      *
-     * @relation static get SLIDE(): TransitionEffect;
      */
     @!APILevel[
         22,
@@ -653,7 +600,6 @@ public class TransitionEffect <: RemoteDataLite {
      * It comes with default animation parameters, which can also be overridden.
      * The default animation duration is set to 600ms, and the specified animation curve is cubicBezierCurve(0.24, 0.0, 0.50, 1.0).
      *
-     * @relation static get SLIDE_SWITCH(): TransitionEffect;
      */
     @!APILevel[
         22,

@@ -81,8 +81,6 @@ foreign {
 }
 /**
  * Defines Slider Component.
- *
- * @relation const Slider: SliderInterface;
  */
 @!APILevel[
     22,
@@ -92,15 +90,14 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
     /**
     * Defines Slider Component instance.
     *
-    * @param { Float64 } min
-    * @param { Float64 } max
-    * @param { Float64 } step
-    * @param { Float64 } value
-    * @param { SliderStyle } style
-    * @param { Axis } direction
-    * @param { Bool } reverse
+    * @params { Float64 } min
+    * @params { Float64 } max
+    * @params { Float64 } step
+    * @params { Float64 } value
+    * @params { SliderStyle } style
+    * @params { Axis } direction
+    * @params { Bool } reverse
     * @returns { This }
-    * @relation (options?: SliderOptions): SliderAttribute;
     */
     @!APILevel[
         22,
@@ -148,9 +145,8 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
     /**
     * Called when the slider color of the slider bar is set.
     *
-    * @param { ResourceColor } value
+    * @params { ResourceColor } value
     * @returns { This }
-    * @relation blockColor(value: ResourceColor): SliderAttribute;
     */
     @!APILevel[
         22,
@@ -166,9 +162,8 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
     /**
     * Called when the track color of the slider is set.
     *
-    * @param { ResourceColor } value
+    * @params { ResourceColor } value
     * @returns { This }
-    * @relation trackColor(value: ResourceColor | LinearGradient): SliderAttribute;
     */
     @!APILevel[
         22,
@@ -184,9 +179,8 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
     /**
     * Called when the slider of the slider bar is set to slide over the area color.
     *
-    * @param { ResourceColor } value
+    * @params { ResourceColor } value
     * @returns { This }
-    * @relation selectedColor(value: ResourceColor): SliderAttribute;
     */
     @!APILevel[
         22,
@@ -202,9 +196,8 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
     /**
     * Called when setting whether to display step size.
     *
-    * @param { boolean } value
+    * @params { boolean } value
     * @returns { This }
-    * @relation showSteps(value: boolean): SliderAttribute;
     */
     @!APILevel[
         22,
@@ -219,10 +212,9 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
     /**
     * Called when the percentage of bubble prompt is set when sliding.
     *
-    * @param { Bool } value
-    * @param { ResourceStr } content
+    * @params { Bool } value
+    * @params { ResourceStr } content
     * @returns { This }
-    * @relation showTips(value: boolean, content?: ResourceStr): SliderAttribute;
     */
     @!APILevel[
         22,
@@ -245,9 +237,8 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
     /**
     * Called when the thickness of track is set.
     *
-    * @param { Length } value
+    * @params { Length } value
     * @returns { This }
-    * @relation trackThickness(value: Length): SliderAttribute;
     */
     @!APILevel[
         22,
@@ -264,9 +255,8 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
     /**
     * Triggered when the slider is dragged or clicked.
     *
-    * @param { (Float64, SliderChangeMode) -> Unit } callback
+    * @params { (Float64, SliderChangeMode) -> Unit } callback
     * @returns { This }
-    * @relation onChange(callback: (value: number, mode: SliderChangeMode) => void): SliderAttribute;
     */
     @!APILevel[
         22,
@@ -289,9 +279,8 @@ public class Slider <: CommonMethodComponent<SliderAttribute> & SliderAttribute 
     /**
     * Called when the border color of block is set.
     *
-    * @param { ResourceColor } value
+    * @params { ResourceColor } value
     * @returns { This }
-    * @relation blockBorderColor(value: ResourceColor): SliderAttribute;
     */
     @!APILevel[
         22,

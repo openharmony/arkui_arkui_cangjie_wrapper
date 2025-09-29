@@ -106,8 +106,6 @@ foreign {
 /**
  * Current status of progress bar.
  *
- * @enum
- * @relation enum ProgressStatus
  */
 @Derive[Equatable]
 @!APILevel[
@@ -118,17 +116,16 @@ public enum ProgressStatus {
     /**
      * Loading status.
      *
-     * @relation LOADING
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Loading |
+    Loading
+    |
     /**
      * Processing status.
      *
-     * @relation PROGRESSING
      */
     @!APILevel[
         22,
@@ -149,10 +146,8 @@ public enum ProgressStatus {
 /**
  * Progress common style options.
  *
- * @interface CommonProgressStyleOptions
- * @relation interface CommonProgressStyleOptions
  */
- @!APILevel[
+@!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
@@ -161,9 +156,6 @@ sealed interface CommonProgressStyleOptions {}
 /**
  * Defines the ring style Options.
  *
- * @extends CommonProgressStyleOptions
- * @interface RingStyleOptions
- * @relation interface RingStyleOptions extends ScanEffectOptions, CommonProgressStyleOptions
  */
 @!APILevel[
     22,
@@ -173,8 +165,6 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     /**
      * Defines the strokeWidth property.
      *
-     * @type { Length }
-     * @relation strokeWidth?: Length
      */
     @!APILevel[
         22,
@@ -185,8 +175,6 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     /**
      * Enables progress shadow.
      *
-     * @type { Bool }
-     * @relation shadow?: boolean
      */
     @!APILevel[
         22,
@@ -197,8 +185,6 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     /**
      * The status of progress, default is PROGRESSING. Set to LOADING status will trigger the loading animation.
      *
-     * @type { ProgressStatus }
-     * @relation status?: ProgressStatus
      */
     @!APILevel[
         22,
@@ -209,9 +195,6 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     /**
      * Enable smooth effect.
      *
-     * @type { ?boolean }
-     * @default true
-     * @relation enableSmoothEffect?: boolean
      */
     @!APILevel[
         22,
@@ -222,9 +205,6 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     /**
      * Enable scan effect.
      *
-     * @type { ?boolean }
-     * @default false
-     * @relation enableScanEffect?: boolean
      */
     @!APILevel[
         22,
@@ -235,19 +215,18 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     /**
      * Constructor the ring style Options.
      *
-     * @param { Length } strokeWidth
-     * @param { Bool } shadow
-     * @param { ProgressStatus } status
-     * @param { Bool } enableSmoothEffect
-     * @param { Bool } enableScanEffect
+     * @params { Length } strokeWidth
+     * @params { Bool } shadow
+     * @params { ProgressStatus } status
+     * @params { Bool } enableSmoothEffect
+     * @params { Bool } enableScanEffect
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(strokeWidth!: ?Length = None, shadow!: ?Bool = None,
-        status!: ?ProgressStatus = None, enableSmoothEffect!: ?Bool = None,
-        enableScanEffect!: ?Bool = None) {
+    public init(strokeWidth!: ?Length = None, shadow!: ?Bool = None, status!: ?ProgressStatus = None,
+        enableSmoothEffect!: ?Bool = None, enableScanEffect!: ?Bool = None) {
         this.strokeWidth = transAppResourceToLength(strokeWidth ?? 4.vp)
         this.shadow = shadow ?? false
         this.status = status ?? ProgressStatus.Progressing
@@ -258,8 +237,6 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
 
 /**
  * Defines Progress Component.
- *
- * @relation const Progress: ProgressInterface
  */
 @!APILevel[
     22,
@@ -269,11 +246,10 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
     /**
      * Called when the progress bar is set.
      *
-     * @param { Float64 } value
-     * @param { Float64 } total
-     * @param { ProgressType } progressType
+     * @params { Float64 } value
+     * @params { Float64 } total
+     * @params { ProgressType } progressType
      * @returns { Progress }
-     * @relation (options: ProgressOptions): ProgressAttribute
      */
     @!APILevel[
         22,
@@ -281,7 +257,7 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
     ]
     public init(value!: ?Float64, total!: ?Float64 = None, progressType!: ?ProgressType = None) {
         let tmpProgressType = progressType ?? ProgressType.Linear
-        
+
         unsafe {
             FfiOHOSAceFrameworkProgressCreate(value ?? 0.0, total ?? 100.0, tmpProgressType.getValue())
         }
@@ -290,9 +266,8 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
     /**
      * Called when the current progress value is set.
      *
-     * @param { Float64 } value
+     * @params { Float64 } value
      * @returns { This }
-     * @relation value(value: number): ProgressAttribute<Type>
      */
     @!APILevel[
         22,
@@ -308,9 +283,8 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
     /**
      * Called when the progress bar foreground is set.
      *
-     * @param { ResourceColor } value - indicates the color of the progress.
+     * @params { ResourceColor } value - indicates the color of the progress.
      * @returns { This } the attribute of the progress.
-     * @relation color(value: ResourceColor | LinearGradient): ProgressAttribute<Type>
      */
     @!APILevel[
         22,
@@ -335,11 +309,10 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
     /**
      * Called when the style of progress bar is set.
      *
-     * @param { Length } strokeWidth
-     * @param { Int32 } scaleCount
-     * @param { Length } scaleWidth
+     * @params { Length } strokeWidth
+     * @params { Int32 } scaleCount
+     * @params { Length } scaleWidth
      * @returns { This } the attribute of the progress.
-     * @relation style(value: Style): ProgressAttribute<Type>
      */
     @!APILevel[
         22,
@@ -361,9 +334,8 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
     /**
      * Called when the style of progress bar is set.
      *
-     * @param { RingStyleOptions } value - indicates the style of the progress.
+     * @params { RingStyleOptions } value - indicates the style of the progress.
      * @returns { This } the attribute of the progress.
-     * @relation style(value: LinearStyleOptions | RingStyleOptions | CapsuleStyleOptions | ProgressStyleOptions): ProgressAttribute
      */
     @!APILevel[
         22,
@@ -373,8 +345,9 @@ public class Progress <: CommonMethodComponent<ProgressAttribute> & ProgressAttr
         let tmpValue = value ?? RingStyleOptions()
         unsafe {
             FfiOHOSAceFrameworkProgressSetRingStyle(
-                RingStyle((tmpValue.strokeWidth ?? 4.vp).value, (tmpValue.strokeWidth ?? 4.vp).unitType.getValue(), tmpValue.shadow ?? false,
-                    (tmpValue.status ?? ProgressStatus.Progressing).getValue(), tmpValue.enableSmoothEffect ?? true, tmpValue.enableScanEffect ?? false))
+                RingStyle((tmpValue.strokeWidth ?? 4.vp).value, (tmpValue.strokeWidth ?? 4.vp).unitType.getValue(),
+                    tmpValue.shadow ?? false, (tmpValue.status ?? ProgressStatus.Progressing).getValue(),
+                    tmpValue.enableSmoothEffect ?? true, tmpValue.enableScanEffect ?? false))
         }
         this
     }

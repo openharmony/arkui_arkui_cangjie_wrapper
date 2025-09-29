@@ -43,7 +43,6 @@ foreign {
 /**
  * Called when the drop-down refresh is set.
  *
- * @relation interface RefreshOptions
  */
 @!APILevel[
     22,
@@ -51,32 +50,27 @@ foreign {
 ]
 public class RefreshOptions {
     /**
-    * Whether the current component is being refreshed.
-    *
-    * @relation refreshing: boolean
-    */
+     * Whether the current component is being refreshed.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var refreshing: ?Bool
     /**
-    * Whether the current event has changed
-    *
-    * @relation changeEvent: boolean
-    */
+     * Whether the current event has changed
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var changeEvent: ?(Bool) -> Unit
     /**
-    * Defines the options of refresh component.
-    * 
-    * @param { Bool } refreshing
-    * @returns { This }
-    * @relation (value: RefreshOptions): RefreshAttribute
-    */
+     * Defines the options of refresh component.
+     *
+     * @params { Bool } refreshing
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -86,12 +80,11 @@ public class RefreshOptions {
         this.changeEvent = {_ =>}
     }
     /**
-    * Defines the options of refresh component.
-    * 
-    * @param { (Bool, (Bool) -> Unit) } refreshing
-    * @returns { This }
-    * @relation (value: RefreshOptions): RefreshAttribute
-    */
+     * Defines the options of refresh component.
+     *
+     * @params { (Bool, (Bool) -> Unit) } refreshing
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -103,23 +96,21 @@ public class RefreshOptions {
     }
 }
 /**
-* Defines Refresh Component.
-* 
-* @relation declare const Refresh: RefreshInterface
-*/
+ * Defines Refresh Component.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribute {
     /**
-    * Defines Refresh Component.
-    * 
-    * @param { RefreshOptions } value
-    * @param { () -> Unit } content
-    * @returns { This }
-    * @relation (value: RefreshOptions): RefreshAttribute
-    */
+     * Defines Refresh Component.
+     *
+     * @params { RefreshOptions } value
+     * @params { () -> Unit } content
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -129,8 +120,7 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
         var offset: Length = 16.vp
         var friction: Int32 = 62
         let wrapper = {
-            result: Bool =>
-            (tmpValue.changeEvent ?? {_ =>})(result)
+            result: Bool => (tmpValue.changeEvent ?? {_ =>})(result)
         }
         let lambdaData = Callback1Param<Bool, Unit>(wrapper)
         unsafe {
@@ -145,18 +135,17 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
         this.child = child
     }
     /**
-    * Called when the refresh state changes.
-    * 
-    * @param { (RefreshStatus) -> Unit } callback
-    * @returns { This }
-    * @relation onStateChange(callback: (state: RefreshStatus) => void): RefreshAttribute
-    */
+     * Called when the refresh state changes.
+     *
+     * @params { (RefreshStatus) -> Unit } callback
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStateChange(callback: ?(RefreshStatus) -> Unit): This {
-        let tmpCallback = callback ?? { res: RefreshStatus => }
+        let tmpCallback = callback ?? {res: RefreshStatus =>}
         let wrapper = {
             value: Int32 => tmpCallback(RefreshStatus.parseValue(value))
         }
@@ -167,18 +156,17 @@ public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribu
         this
     }
     /**
-    * Called when the refresh state is entered.
-    * 
-    * @param { () -> Unit } callback
-    * @returns { This }
-    * @relation onRefreshing(callback: () => void): RefreshAttribute
-    */
+     * Called when the refresh state is entered.
+     *
+     * @params { () -> Unit } callback
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onRefreshing(callback: ?() -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback ?? { => })
+        let lambdaData = Callback0Param<Unit>(callback ?? {=>})
         unsafe {
             FfiOHOSAceFrameworkRefreshOnRefreshing(lambdaData.getID())
         }

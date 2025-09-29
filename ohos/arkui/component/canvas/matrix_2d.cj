@@ -60,8 +60,6 @@ foreign {
 
 /**
  * 2D transformation matrix, supporting rotation, translation, and scaling of the X-axis and Y-axis
- *
- * @relation declare class Matrix2D
  */
 @!APILevel[
     22,
@@ -71,9 +69,8 @@ public class Matrix2D <: RemoteDataLite {
     /**
      * Constructs a 2D change matrix object. The default value is the unit matrix.
      *
-     * @param { LengthMetricsUnit } unit - the unit mode
+     * @params { LengthMetricsUnit } unit - the unit mode
      * @returns { This }
-     * @relation constructor(unit: LengthMetricsUnit)
      */
     @!APILevel[
         22,
@@ -89,8 +86,6 @@ public class Matrix2D <: RemoteDataLite {
 
     /**
      * Matrix2D constructor.
-     *
-     * @since 14
      */
     init(selfID: Int64) {
         super(selfID)
@@ -102,8 +97,6 @@ public class Matrix2D <: RemoteDataLite {
 
     /**
      * Horizontal Zoom
-     *
-     * @relation scaleX?: number
      */
     @!APILevel[
         22,
@@ -128,8 +121,6 @@ public class Matrix2D <: RemoteDataLite {
 
     /**
      * Vertical Zoom
-     *
-     * @relation scaleY?: number
      */
     @!APILevel[
         22,
@@ -154,8 +145,6 @@ public class Matrix2D <: RemoteDataLite {
 
     /**
      * Horizontal Tilt
-     *
-     * @relation rotateX?: number
      */
     @!APILevel[
         22,
@@ -180,8 +169,6 @@ public class Matrix2D <: RemoteDataLite {
 
     /**
      * Vertical Tilt
-     *
-     * @relation rotateY?: number
      */
     @!APILevel[
         22,
@@ -206,8 +193,6 @@ public class Matrix2D <: RemoteDataLite {
 
     /**
      * Horizontal movement
-     *
-     * @relation translateX?: number
      */
     @!APILevel[
         22,
@@ -232,8 +217,6 @@ public class Matrix2D <: RemoteDataLite {
 
     /**
      * Vertical movement
-     *
-     * @relation translateY?: number
      */
     @!APILevel[
         22,
@@ -261,7 +244,6 @@ public class Matrix2D <: RemoteDataLite {
      * translation scaling effect)
      *
      * @returns { This }
-     * @relation identity(): Matrix2D
      */
     @!APILevel[
         22,
@@ -279,7 +261,6 @@ public class Matrix2D <: RemoteDataLite {
      * is the opposite effect of the original)
      *
      * @returns { This }
-     * @relation invert(): Matrix2D
      */
     @!APILevel[
         22,
@@ -295,11 +276,10 @@ public class Matrix2D <: RemoteDataLite {
     /**
      * Adds the rotation effect of the X and Y axes to the current matrix.
      *
-     * @param { Float64 } degree - The rotation angle, clockwise in radians.
-     * @param { Float64 } rx - Rotation effect of the X-axis
-     * @param { Float64 } ry - Rotation effect of the Y-axis
+     * @params { Float64 } degree - The rotation angle, clockwise in radians.
+     * @params { Float64 } rx - Rotation effect of the X-axis
+     * @params { Float64 } ry - Rotation effect of the Y-axis
      * @returns { This }
-     * @relation rotate(degree: number, rx?: number, ry?: number): Matrix2D
      */
     @!APILevel[
         22,
@@ -315,10 +295,9 @@ public class Matrix2D <: RemoteDataLite {
     /**
      * Adds the translation effect of the X and Y axes to the current matrix.
      *
-     * @param { Float64 } tx - X-axis translation effect
-     * @param { Float64 } ty - Y-axis translation effect
+     * @params { Float64 } tx - X-axis translation effect
+     * @params { Float64 } ty - Y-axis translation effect
      * @returns { This }
-     * @relation translate(tx?: number, ty?: number): Matrix2D
      */
     @!APILevel[
         22,
@@ -334,10 +313,9 @@ public class Matrix2D <: RemoteDataLite {
     /**
      * Adds the scaling effect of the X and Y axes to the current matrix.
      *
-     * @param { Float64 } sx - X-axis scaling effect
-     * @param { Float64 } sy - Y-axis scaling effect
+     * @params { Float64 } sx - X-axis scaling effect
+     * @params { Float64 } sy - Y-axis scaling effect
      * @returns { This }
-     * @relation scale(sx?: number, sy?: number): Matrix2D
      */
     @!APILevel[
         22,

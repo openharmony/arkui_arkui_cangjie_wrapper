@@ -57,4 +57,3 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
     ]
     public func selectedTextStyle(value: ?PickerTextStyle): DatePickerAttribute
 }
-

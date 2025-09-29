@@ -33,9 +33,8 @@ foreign func FfiOHOSAceFrameworkComponentIdSendMouseEvent(cJMouseEvent: CJMouseE
 /**
  * Obtains all attributes of the component with the specified ID.
  *
- * @param { String } id - ID of the component for which the event is to be sent.
+ * @params { String } id - ID of the component for which the event is to be sent.
  * @returns { String }
- * @relation declare function getInspectorByKey(id: string): string
  */
 @!APILevel[
     22,
@@ -57,7 +56,6 @@ public func getInspectorByKey(id: String): String {
  * Get components tree.
  *
  * @returns { String }
- * @relation declare function getInspectorTree(): Object
  */
 @!APILevel[
     22,
@@ -75,11 +73,10 @@ public func getInspectorTree(): String {
 /**
  * Sends an event to the component with the specified ID.
  *
- * @param { String } id - ID of the component for which the event is to be sent.
- * @param { IntNative } action - Type of the event to be sent. The options are as follows: Click event: 10 LongClick: 11.
- * @param { String } params - Event parameters. If there is no parameter, pass an empty string "".
+ * @params { String } id - ID of the component for which the event is to be sent.
+ * @params { IntNative } action - Type of the event to be sent. The options are as follows: Click event: 10 LongClick: 11.
+ * @params { String } params - Event parameters. If there is no parameter, pass an empty string "".
  * @returns { Bool }
- * @relation declare function sendEventByKey(id: string, action: number, params: string): boolean
  */
 @!APILevel[
     22,
@@ -98,9 +95,8 @@ public func sendEventByKey(id: String, action: IntNative, params: String): Bool 
 /**
  * Send touch event.
  *
- * @param { TouchObject } event - TouchObject to be sent.
+ * @params { TouchObject } event - TouchObject to be sent.
  * @returns { Bool }
- * @relation declare function sendTouchEvent(event: TouchObject): boolean
  */
 @!APILevel[
     22,
@@ -115,9 +111,8 @@ public func sendTouchEvent(event: TouchObject): Bool {
 /**
  * Send key event.
  *
- * @param { KeyEvent } event - KeyEvent to be sent.
+ * @params { KeyEvent } event - KeyEvent to be sent.
  * @returns { Bool }
- * @relation declare function sendKeyEvent(event: KeyEvent): boolean
  */
 @!APILevel[
     22,
@@ -135,9 +130,8 @@ public func sendKeyEvent(event: KeyEvent): Bool {
 /**
  * Send mouse event.
  *
- * @param { MouseEvent } event - MouseEvent to be sent.
+ * @params { MouseEvent } event - MouseEvent to be sent.
  * @returns { Bool }
- * @relation declare function sendMouseEvent(event: MouseEvent): boolean
  */
 @!APILevel[
     22,

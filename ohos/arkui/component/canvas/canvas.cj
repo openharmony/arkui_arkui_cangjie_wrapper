@@ -93,7 +93,6 @@ enum CanvasImageType {
 /**
  * This object allows you to set properties when creating a rendering context
  *
- * @relation declare class RenderingContextSettings
  */
 @!APILevel[
     22,
@@ -103,7 +102,6 @@ public class RenderingContextSettings {
     /**
      * Indicates whether anti-aliasing is enabled for canvas. The default value is false.
      *
-     * @relation antialias?: boolean
      */
     @!APILevel[
         22,
@@ -114,7 +112,6 @@ public class RenderingContextSettings {
     /**
      * Create an RenderingContextSettings object based on the antialias and alpha.
      *
-     * @relation constructor(antialias?: boolean)
      */
     @!APILevel[
         22,
@@ -128,7 +125,6 @@ public class RenderingContextSettings {
 /**
  * Size information of the text
  *
- * @relation declare interface TextMetrics
  */
 @!APILevel[
     22,
@@ -138,7 +134,6 @@ public class TextMetrics {
     /**
      * Indicates the width of a character string. The value is of the double type.
      *
-     * @relation readonly width: number
      */
     @!APILevel[
         22,
@@ -148,7 +143,6 @@ public class TextMetrics {
     /**
      * Indicates the height of a character string. The value is of the double type.
      *
-     * @relation readonly height: number
      */
     @!APILevel[
         22,
@@ -165,7 +159,6 @@ public class TextMetrics {
 /**
  * Defines Canvas Component.
  *
- * @relation declare const Canvas: CanvasInterface
  */
 @!APILevel[
     22,
@@ -175,9 +168,8 @@ public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute 
     /**
      * Construct a canvas component.
      *
-     * @param { CanvasRenderingContext2D } context - Canvas context object.
+     * @params { CanvasRenderingContext2D } context - Canvas context object.
      * @returns { This }
-     * @relation (context?: CanvasRenderingContext2D | DrawingRenderingContext): CanvasAttribute
      */
     @!APILevel[
         22,
@@ -195,9 +187,8 @@ public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute 
     /**
      * Event notification after the canvas component is constructed. You can draw the canvas at this time.
      *
-     * @param { () -> Unit } callback
+     * @params { () -> Unit } callback
      * @returns { This }
-     * @relation onReady(event: VoidCallback): CanvasAttribute
      */
     @!APILevel[
         22,
@@ -214,7 +205,6 @@ public class Canvas <: CommonMethodComponent<CanvasAttribute> & CanvasAttribute 
 /**
  * Opaque objects that describe gradients, created by createLinearGradient() or createRadialGradient()
  *
- * @relation declare class CanvasGradient
  */
 @!APILevel[
     22,
@@ -244,10 +234,9 @@ public class CanvasGradient <: RemoteDataLite {
     /**
      * Add a breakpoint defined by offset and color to the gradient
      *
-     * @param { Float64 } offset - Value between 0 and 1, out of range throws INDEX_SIZE_ERR error
-     * @param { String } color - Set the gradient color.
+     * @params { Float64 } offset - Value between 0 and 1, out of range throws INDEX_SIZE_ERR error
+     * @params { String } color - Set the gradient color.
      *    a SYNTAX_ERR error is thrown.
-     * @relation addColorStop(offset: number, color: string): void
      */
     @!APILevel[
         22,

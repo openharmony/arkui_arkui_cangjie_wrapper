@@ -36,7 +36,6 @@ foreign {
 /**
  * Defines the list item group style.
  *
- * @relation declare enum ListItemGroupStyle
  */
 @Derive[Equatable]
 @!APILevel[
@@ -48,7 +47,6 @@ public enum ListItemGroupStyle {
     /**
      * Show custom style.
      *
-     * @relation NONE
      */
     @!APILevel[
         22,
@@ -58,7 +56,6 @@ public enum ListItemGroupStyle {
     /**
      * Show default style.
      *
-     * @relation CARD
      */
     @!APILevel[
         22,
@@ -79,7 +76,6 @@ public enum ListItemGroupStyle {
 /**
  * Defines the item group attribute functions.
  *
- * @relation declare class ListItemGroupAttribute extends CommonMethod<ListItemGroupAttribute>
  */
 @!APILevel[
     22,
@@ -90,8 +86,6 @@ public class ListDividerOptions {
     /**
      * Set the line width of the dividing line.
      *
-     * @type { Length }
-     * @relation strokeWidth: Length
      */
     @!APILevel[
         22,
@@ -102,8 +96,6 @@ public class ListDividerOptions {
     /**
      * Set the color of the dividing line.
      *
-     * @type { ResourceColor }
-     * @relation color?: ResourceColor
      */
     @!APILevel[
         22,
@@ -114,8 +106,6 @@ public class ListDividerOptions {
     /**
      * Set the distance between the dividing line and the starting end of the side of the list.
      *
-     * @type { Length }
-     * @relation startMargin?: Length
      */
     @!APILevel[
         22,
@@ -126,8 +116,6 @@ public class ListDividerOptions {
     /**
      * Set the distance between the dividing line and the end of the side of the list.
      *
-     * @type { Length }
-     * @relation endMargin?: Length
      */
     @!APILevel[
         22,
@@ -158,7 +146,6 @@ public class ListDividerOptions {
 /**
  * Defines ListItemGroup Component.
  *
- * @relation declare const ListItemGroup: ListItemGroupInterface
  */
 @!APILevel[
     22,
@@ -169,13 +156,12 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroupAttribute> & Li
     /**
      * Called when an interface is used.
      *
-     * @param { CustomBuilder } header
-     * @param { CustomBuilder } footer
-     * @param { Length } space
-     * @param { ListItemGroupStyle } style
-     * @param { () -> Unit } child
+     * @params { CustomBuilder } header
+     * @params { CustomBuilder } footer
+     * @params { Length } space
+     * @params { ListItemGroupStyle } style
+     * @params { () -> Unit } child
      * @returns { This }
-     * @relation (options?: ListItemGroupOptions): ListItemGroupAttribute
      */
     @!APILevel[
         22,
@@ -203,9 +189,8 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroupAttribute> & Li
     /**
      * Called when the ListItemGroup split line style is set.
      *
-     * @param { Option<ListDividerOptions> } value
+     * @params { Option<ListDividerOptions> } value
      * @returns { This }
-     * @relation divider(
                     value: ListDividerOptions | null,
                  ): ListItemGroupAttribute
      */

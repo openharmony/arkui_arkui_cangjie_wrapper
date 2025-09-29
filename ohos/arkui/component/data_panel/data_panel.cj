@@ -66,7 +66,6 @@ foreign {
 /**
  * ColorStop type
  *
- * @relation interface ColorStop
  */
 @!APILevel[
     22,
@@ -75,8 +74,6 @@ foreign {
 public class ColorStop {
     /**
      * Color property.
-     * @type { ResourceColor } color - the color value.
-     * @relation color: ResourceColor
      */
     @!APILevel[
         22,
@@ -86,8 +83,6 @@ public class ColorStop {
 
     /**
      * Offset property.
-     * @type { Length } offset - the color offset.
-     * @relation offset: Length
      */
     @!APILevel[
         22,
@@ -111,7 +106,6 @@ public class ColorStop {
 /**
  * LinearGradient class
  *
- * @relation class LinearGradient
  */
 @!APILevel[
     22,
@@ -123,7 +117,7 @@ public class LinearGradient {
     /**
      * Constructor.
      *
-     * @param { Array<ColorStop> } colorStops - the LinearGradient constructor parameter.
+     * @params { Array<ColorStop> } colorStops - the LinearGradient constructor parameter.
      */
     @!APILevel[
         22,
@@ -136,7 +130,7 @@ public class LinearGradient {
     /**
      * Constructor.
      *
-     * @param { ResourceColor } color - the LinearGradient constructor parameter.
+     * @params { ResourceColor } color - the LinearGradient constructor parameter.
      */
     @!APILevel[
         22,
@@ -185,9 +179,6 @@ class FFIVectorNativeLinearGradient {
 /**
  * Defines the options of Shadow.
  *
- * @extends MultiShadowOptions
- * @class DataPanelShadowOptions
- * @relation interface DataPanelShadowOptions extends MultiShadowOptions
  */
 @!APILevel[
     22,
@@ -197,9 +188,6 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
     /**
      * Current shadow colors.
      *
-     * @type { Array<LinearGradient> }
-     * @default Consistent with valueColors
-     * @relation colors?: Array<ResourceColor | LinearGradient>
      */
     @!APILevel[
         22,
@@ -210,10 +198,10 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
     /**
      * DataPanelShadowOptions Constructor.
      *
-     * @param { Length } radius
-     * @param { Array<LinearGradient> } colors
-     * @param { Length } offsetX
-     * @param { Length } offsetY
+     * @params { Length } radius
+     * @params { Array<LinearGradient> } colors
+     * @params { Length } offsetX
+     * @params { Length } offsetY
      */
     @!APILevel[
         22,
@@ -228,7 +216,6 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
 /**
  * Defines DataPanel Component.
  *
- * @relation const DataPanel: DataPanelInterface
  */
 @!APILevel[
     22,
@@ -238,11 +225,10 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
     /**
      * Return a DataPanel.
      *
-     * @param { Array<Float64> } values
-     * @param { Float64 } max
-     * @param { DataPanelType } panelType
+     * @params { Array<Float64> } values
+     * @params { Float64 } max
+     * @params { DataPanelType } panelType
      * @returns { DataPanel }
-     * @relation (options: DataPanelOptions): DataPanelAttribute
      */
     @!APILevel[
         22,
@@ -264,9 +250,8 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
     /**
      * Disable the special effect of the data ratio chart.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation closeEffect(value: boolean): DataPanelAttribute
      */
     @!APILevel[
         22,
@@ -282,9 +267,8 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
     /**
      * Set the value colors of the data ratio chart.
      *
-     * @param { Array<LinearGradient> } value - the value colors of the data ratio chart.
+     * @params { Array<LinearGradient> } value - the value colors of the data ratio chart.
      * @returns { This }
-     * @relation valueColors(value: Array<ResourceColor | LinearGradient>): DataPanelAttribute
      */
     @!APILevel[
         22,
@@ -306,9 +290,8 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
     /**
      * Set track background color of the data ratio chart.
      *
-     * @param { ResourceColor } value - track background color of the data ratio chart.
+     * @params { ResourceColor } value - track background color of the data ratio chart.
      * @returns { This }
-     * @relation trackBackgroundColor(value: ResourceColor): DataPanelAttribute
      */
     @!APILevel[
         22,
@@ -324,9 +307,8 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
     /**
      * Set the stroke width of the data ratio chart.
      *
-     * @param { Length } value - the stroke width of the data ratio chart.
+     * @params { Length } value - the stroke width of the data ratio chart.
      * @returns { This }
-     * @relation strokeWidth(value: Length): DataPanelAttribute
      */
     @!APILevel[
         22,
@@ -343,9 +325,8 @@ public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelA
     /**
      * Set the shadow width of the data ratio chart.
      *
-     * @param { DataPanelShadowOptions } value - the track shadow width of the data ratio chart.
+     * @params { DataPanelShadowOptions } value - the track shadow width of the data ratio chart.
      * @returns { This }
-     * @relation trackShadow(value: DataPanelShadowOptions): DataPanelAttribute
      */
     @!APILevel[
         22,

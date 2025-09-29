@@ -41,9 +41,6 @@ protected func OHOSAceFrameworkRemoteViewRerender(id: Int64): Unit {
     getRemoteViewOrThrow(id).rerender()
 }
 
-/**
- * @deprecated
- */
 @C
 protected func OHOSAceFrameworkRemoteViewRelease(_: Int64): Int64 {
     0

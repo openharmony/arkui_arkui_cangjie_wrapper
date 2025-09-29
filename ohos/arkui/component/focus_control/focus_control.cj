@@ -22,7 +22,6 @@ foreign func FFIOHOSAceFrameworkRequestFocus(inspectorKey: CString): Bool
 /**
  * Defines the namespace of focus controller.
  *
- * @relation declare namespace focusControl
  */
 @!APILevel[
     22,
@@ -37,9 +36,8 @@ public class FocusControl {
     /**
      * Request focus to the specific component by param: 'id/key'.
      *
-     * @param { String } value
+     * @params { String } value
      * @returns { Bool }
-     * @relation function requestFocus(value: string): boolean;
      */
     @!APILevel[
         22,

@@ -25,7 +25,6 @@ import std.convert.*
 /**
  * Defines the event target.
  *
- * @relation declare interface EventTarget
  */
 @!APILevel[
     22,
@@ -35,7 +34,6 @@ public class EventTarget {
     /**
      * Area information of the target element.
      *
-     * @relation area: Area;
      */
     @!APILevel[
         22,
@@ -58,7 +56,6 @@ public class EventTarget {
 /**
  * Defines the area property.
  *
- * @relation declare interface Area
  */
 @!APILevel[
     22,
@@ -340,8 +337,8 @@ public class HorizontalAlignment {
     /**
     * Defines the constructor of HorizontalAlignment.
     *
-    * @param { String } anchor
-    * @param { HorizontalAlign } align
+    * @params { String } anchor
+    * @params { HorizontalAlign } align
     * @returns { This }
     */
     @!APILevel[
@@ -383,8 +380,8 @@ public class VerticalAlignment {
     /**
     * Defines the constructor of VerticalAlignment.
     *
-    * @param { String } anchor
-    * @param { VerticalAlign } align
+    * @params { String } anchor
+    * @params { VerticalAlign } align
     * @returns { This }
     */
     @!APILevel[
@@ -400,7 +397,6 @@ public class VerticalAlignment {
 /**
  * Defines the Bias.
  *
- * @relation interface Bias
  */
 @!APILevel[
     22,
@@ -411,8 +407,6 @@ public class Bias {
     /**
      * Horizontal ratio of the Bias, it must be >= 0.
      *
-     * @type { Float32 }
-     * @default 0.5
     */
     @!APILevel[
         22,
@@ -423,8 +417,6 @@ public class Bias {
     /**
      * Vertical ratio of the Bias, it must be >= 0.
      *
-     * @type { Float32 }
-     * @default 0.5
     */
     @!APILevel[
         22,
@@ -435,8 +427,8 @@ public class Bias {
     /**
     * Defines the constructor of Bias.
     *
-    * @param { Float32 } horizontal
-    * @param { Float32 } vertical
+    * @params { Float32 } horizontal
+    * @params { Float32 } vertical
     * @returns { This }
     */
     @!APILevel[
@@ -452,7 +444,6 @@ public class Bias {
 /**
  * Defines the font used for text.
  *
- * @relation declare interface Font
  */
 @!APILevel[
     22,
@@ -462,7 +453,6 @@ public class Fonts {
     /**
     * font size.
     *
-    * @relation size?: Length;
     */
     @!APILevel[
         22,
@@ -473,7 +463,6 @@ public class Fonts {
     /**
      * font weight.
      *
-     * @relation weight?: FontWeight | number | string;
      */
     @!APILevel[
         22,
@@ -484,7 +473,6 @@ public class Fonts {
     /**
      * font family.
      *
-     * @relation family?: string | Resource;
      */
     @!APILevel[
         22,
@@ -495,7 +483,6 @@ public class Fonts {
     /**
      * font style.
      *
-     * @relation style?: FontStyle;
      */
     @!APILevel[
         22,
@@ -828,7 +815,6 @@ protected func parseAnimateParam(params: AnimateParam): NativeAnimateParam {
 /**
  * Defines the offset property.
  *
- * @relation declare interface Offset
  */
 @!APILevel[
     22,
@@ -907,7 +893,6 @@ public class ExpectedFrameRateRange {
 /**
  * Defines the align rule options of relative container.
  *
- * @relation interface AlignRuleOption
  */
 @!APILevel[
     22,
@@ -919,8 +904,6 @@ public class AlignRuleOptions {
     * <br>anchor: ID of the component that functions as the anchor point.
     * <br>align: alignment mode relative to the anchor component.
     *
-    * @type { ?HorizontalAlignment }
-    * @relation left?: { anchor: string, align: HorizontalAlign }
     */
     @!APILevel[
         22,
@@ -933,8 +916,6 @@ public class AlignRuleOptions {
     * <br>anchor: ID of the component that functions as the anchor point.
     * <br>align: alignment mode relative to the anchor component.
     *
-    * @type { ?HorizontalAlignment }
-    * @relation right?: { anchor: string, align: HorizontalAlign }
     */
     @!APILevel[
         22,
@@ -947,8 +928,6 @@ public class AlignRuleOptions {
     * <br>anchor: ID of the component that functions as the anchor point.
     * <br>align: alignment mode relative to the anchor component.
     *
-    * @type { ?HorizontalAlignment }
-    * @relation middle?: { anchor: string, align: HorizontalAlign }
     */
     @!APILevel[
         22,
@@ -961,8 +940,6 @@ public class AlignRuleOptions {
     * <br>anchor: ID of the component that functions as the anchor point.
     * <br>align: alignment mode relative to the anchor component.
     *
-    * @type { ?VerticalAlignment }
-    * @relation top?: { anchor: string, align: VerticalAlign }
     */
     @!APILevel[
         22,
@@ -975,8 +952,6 @@ public class AlignRuleOptions {
     * <br>anchor: ID of the component that functions as the anchor point.
     * <br>align: alignment mode relative to the anchor component.
     *
-    * @type { ?VerticalAlignment }
-    * @relation bottom?: { anchor: string, align: VerticalAlign }
     */
     @!APILevel[
         22,
@@ -989,8 +964,6 @@ public class AlignRuleOptions {
     * <br>anchor: ID of the component that functions as the anchor point.
     * <br>align: alignment mode relative to the anchor component.
     *
-    * @type { ?VerticalAlignment }
-    * @relation center?: { anchor: string, align: VerticalAlign }
     */
     @!APILevel[
         22,
@@ -1002,8 +975,6 @@ public class AlignRuleOptions {
     * Offset of the component under the anchor constraints.
     * <br>The value is the ratio of the distance to the left/upper anchor to the total distance between anchors.
     *
-    * @type { ?Bias }
-    * @relation bias?: Bias
     */
     @!APILevel[
         22,
@@ -1014,13 +985,13 @@ public class AlignRuleOptions {
     /**
     * Defines the constructor of AlignRuleOptions.
     *
-    * @param { ?HorizontalAlignment } left
-    * @param { ?HorizontalAlignment } right
-    * @param { ?HorizontalAlignment } middle
-    * @param { ?VerticalAlignment } top
-    * @param { ?VerticalAlignment } bottom
-    * @param { ?VerticalAlignment } center
-    * @param { Bias } bias
+    * @params { ?HorizontalAlignment } left
+    * @params { ?HorizontalAlignment } right
+    * @params { ?HorizontalAlignment } middle
+    * @params { ?VerticalAlignment } top
+    * @params { ?VerticalAlignment } bottom
+    * @params { ?VerticalAlignment } center
+    * @params { Bias } bias
     * @returns { This }
     */
     @!APILevel[
@@ -1098,8 +1069,6 @@ protected class MultiShadowOptionsImpl {}
 /**
  * Defines the options of Shadow.
  *
- * @class MultiShadowOptions
- * @relation interface MultiShadowOptions
  */
 @!APILevel[
     22,
@@ -1114,9 +1083,6 @@ public open class MultiShadowOptions {
      * <br>A value less than or equal to 0 is handled as the default value.
      * </p>
      *
-     * @type { Length }
-     * @default 20
-     * @relation radius?: number | Resource
      */
     @!APILevel[
         22,
@@ -1127,9 +1093,6 @@ public open class MultiShadowOptions {
      * Offset on the x-axis.
      * Unit: vp.
      *
-     * @type { Length }
-     * @default 5
-     * @relation offsetX?: number | Resource
      */
     @!APILevel[
         22,
@@ -1140,9 +1103,6 @@ public open class MultiShadowOptions {
      * Offset on the y-axis.
      * Unit: vp.
      *
-     * @type { Length }
-     * @default 5
-     * @relation offsetY?: number | Resource
      */
     @!APILevel[
         22,
@@ -1160,8 +1120,6 @@ public open class MultiShadowOptions {
 /**
  * Provide an interface for the text style of picker
  *
- * @class PickerTextStyle
- * @relation interface PickerTextStyle
  */
 @!APILevel[
     22,
@@ -1171,8 +1129,6 @@ public class PickerTextStyle {
     /**
      * Font color.
      *
-     * @type { ?ResourceColor }
-     * @relation color?: ResourceColor
      */
     @!APILevel[
         22,
@@ -1183,8 +1139,6 @@ public class PickerTextStyle {
     /**
      * Text style.
      *
-     * @type { ?Font }
-     * @relation font?: Font
      */
     @!APILevel[
         22,
@@ -1195,8 +1149,8 @@ public class PickerTextStyle {
     /**
      * PickerTextStyle constructor.
      *
-     * @param { ?ResourceColor } color
-     * @param { ?Font } font
+     * @params { ?ResourceColor } color
+     * @params { ?Font } font
      */
     @!APILevel[
         22,
@@ -1211,8 +1165,6 @@ public class PickerTextStyle {
 /**
  * Provide an interface for the text style of picker
  *
- * @class PickerTextStyle
- * @relation interface PickerTextStyle
  */
 @!APILevel[
     22,
@@ -1222,8 +1174,6 @@ public class Font {
     /**
      * font size.
      *
-     * @type { ?Length }
-     * @relation size?: Length
      */
     @!APILevel[
         22,
@@ -1233,8 +1183,6 @@ public class Font {
     /**
      * font weight.
      *
-     * @type { ?FontWeight }
-     * @relation weight?: FontWeight | number | string
      */
     @!APILevel[
         22,
@@ -1244,8 +1192,6 @@ public class Font {
     /**
      * font family.
      *
-     * @type { ?ResourceStr }
-     * @relation family?: string | Resource
      */
     @!APILevel[
         22,
@@ -1255,8 +1201,6 @@ public class Font {
     /**
      * font style.
      *
-     * @type { ?FontStyle }
-     * @relation style?: FontStyle
      */
     @!APILevel[
         22,
@@ -1267,10 +1211,10 @@ public class Font {
     /**
      * Font constructor.
      *
-     * @param { ?Length } size
-     * @param { ?FontWeight } weight
-     * @param { ?ResourceStr } family
-     * @param { ?FontStyle } style
+     * @params { ?Length } size
+     * @params { ?FontWeight } weight
+     * @params { ?ResourceStr } family
+     * @params { ?FontStyle } style
      */
     @!APILevel[
         22,
@@ -1288,7 +1232,6 @@ public class Font {
 /**
  * TextContentControllerBase
  *
- * @relation declare abstract class TextContentControllerBase
  */
 @!APILevel[
     22,

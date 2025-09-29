@@ -27,8 +27,6 @@ import std.time.*
 /**
  * Defines the struct of DatePickerResult.
  *
- * @class DatePickerResult
- * @relation interface DatePickerResult
  */
 @!APILevel[
     22,
@@ -43,8 +41,6 @@ public class DatePickerResult {
      * If start and end are not set, the default range is [1970, 2100].
      * </p>
      *
-     * @type { Int64 }
-     * @relation year?: number
      */
     @!APILevel[
         22,
@@ -59,8 +55,6 @@ public class DatePickerResult {
      * <br>Value range: depends on start and end. If start and end are not set, the default range is [0, 11].
      * </p>
      *
-     * @type { Int64 }
-     * @relation month?: number
      */
     @!APILevel[
         22,
@@ -74,8 +68,6 @@ public class DatePickerResult {
      * <br>Value range: depends on start and end. If start and end are not set, the default range is [1, 31].
      * </p>
      *
-     * @type { Int64 }
-     * @relation day?: number
      */
     @!APILevel[
         22,
@@ -86,9 +78,9 @@ public class DatePickerResult {
     /**
      * DatePickerResult constructor.
      *
-     * @param { Int64 } year
-     * @param { Int64 } month
-     * @param { Int64 } day
+     * @params { Int64 } year
+     * @params { Int64 } month
+     * @params { Int64 } day
      */
     @!APILevel[
         22,
@@ -165,7 +157,6 @@ foreign {
 /**
  * Defines DatePicker Component.
  *
- * @relation declare const DatePicker: DatePickerInterface
  */
 @!APILevel[
     22,
@@ -175,11 +166,10 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
     /**
      * Parameters of the date picker.
      *
-     * @param { DateTime } start - Start date of the picker.
-     * @param { DateTime } end - End date of the picker.
-     * @param { DateTime } selected - Date of the selected item.
+     * @params { DateTime } start - Start date of the picker.
+     * @params { DateTime } end - End date of the picker.
+     * @params { DateTime } selected - Date of the selected item.
      * @returns { DatePicker }
-     * @relation (options?: DatePickerOptions): DatePickerAttribute
      */
     @!APILevel[
         22,
@@ -202,12 +192,10 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
     /**
      * Specifies whether to display the lunar calendar.
      *
-     * @param { Bool } value - Whether to display the lunar calendar.
+     * @params { Bool } value - Whether to display the lunar calendar.
      * <br>- <em>true</em>: Display the lunar calendar.
      * <br>- <em>false</em>: Do not display the lunar.
-     * @default false
      * @returns { This }
-     * @relation lunar(value: boolean): DatePickerAttribute
      */
     @!APILevel[
         22,
@@ -224,9 +212,8 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
      * Triggered when a date is selected.
      * Anonymous Object Rectification.
      *
-     * @param { Callback<DateTime> } callback
+     * @params { Callback<DateTime> } callback
      * @returns { This }
-     * @relation onDateChange(callback: Callback<DateTime, Unit>): DatePickerAttribute
      */
     @!APILevel[
         22,
@@ -247,10 +234,8 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
     /**
      * Sets the text style for the top and bottom items.
      *
-     * @param { PickerTextStyle } value - Font color, font size, and font weight of the top and bottom items.
-     * @default {<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}
+     * @params { PickerTextStyle } value - Font color, font size, and font weight of the top and bottom items.
      * @returns { This }
-     * @relation disappearTextStyle(value: PickerTextStyle): DatePickerAttribute
      */
     @!APILevel[
         22,
@@ -297,10 +282,9 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
     /**
      * Sets the text style for all items except the top, bottom, and selected items.
      *
-     * @param { PickerTextStyle } value - Font color, font size, and font weight of all items except the top,
+     * @params { PickerTextStyle } value - Font color, font size, and font weight of all items except the top,
      * <br>bottom, and selected items.
      * @returns { This }
-     * @relation textStyle(value: PickerTextStyle): DatePickerAttribute
      */
     @!APILevel[
         22,
@@ -347,10 +331,8 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
     /**
      * Sets the text style for the selected item.
      *
-     * @param { PickerTextStyle } value - Font color, font size, and font weight of the selected item.
-     * @default {<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>}
+     * @params { PickerTextStyle } value - Font color, font size, and font weight of the selected item.
      * @returns { This }
-     * @relation selectedTextStyle(value: PickerTextStyle): DatePickerAttribute
      */
     @!APILevel[
         22,
@@ -401,4 +383,3 @@ public class DatePicker <: CommonMethodComponent<DatePickerAttribute> & DatePick
         this
     }
 }
-

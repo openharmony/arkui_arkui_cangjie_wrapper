@@ -106,7 +106,6 @@ foreign {
  * Defines Grid Component.
  * It is recommended to use LazyForEach or Repeat to generate child components.
  *
- * @relation declare const Grid: GridInterface
  */
 @!APILevel[
     22,
@@ -117,10 +116,9 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
     /**
      * Grid is returned when the parameter is transferred.
      *
-     * @param { Option<Scroller> } scroller
-     * @param { Option<() -> Unit> } child
+     * @params { Option<Scroller> } scroller
+     * @params { Option<() -> Unit> } child
      * @returns { This }
-     * @relation (scroller?: Scroller, layoutOptions?: GridLayoutOptions): GridAttribute
      */
     @!APILevel[
         22,
@@ -143,9 +141,8 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
     /**
      * This parameter specifies the number of columns in the current grid layout.
      *
-     * @param { String } value
+     * @params { String } value
      * @returns { This }
-     * @relation columnsTemplate(value: string): GridAttribute
      */
     @!APILevel[
         22,
@@ -163,9 +160,8 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
     /**
      * Lets you set the number of rows in the current grid layout.
      *
-     * @param { String } value
+     * @params { String } value
      * @returns { This }
-     * @relation rowsTemplate(value: string): GridAttribute
      */
     @!APILevel[
         22,
@@ -183,9 +179,8 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
     /**
      * Allows you to set the spacing between columns.
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation columnsGap(value: Length): GridAttribute
      */
     @!APILevel[
         22,
@@ -213,9 +208,8 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
     /**
      * Lets you set the spacing between rows.
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation rowsGap(value: Length): GridAttribute
      */
     @!APILevel[
         22,
@@ -243,9 +237,8 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
     /**
      * cached Count.
      *
-     * @param { Int32 } count
+     * @params { Int32 } count
      * @returns { This }
-     * @relation cachedCount(value: number): GridAttribute
      */
     @!APILevel[
         22,
@@ -258,10 +251,9 @@ public class Grid <: ScrollableCommonMethodComponent<GridAttribute> & GridAttrib
     /**
      * Called to set number of GridItems to be preloaded (cached) in LazyForEach / Repeat.
      *
-     * @param { Int32 } count
-     * @param { Bool } show
+     * @params { Int32 } count
+     * @params { Bool } show
      * @returns { This }
-     * @relation cachedCount(count: number, show: boolean): GridAttribute
      */
     @!APILevel[
         22,
