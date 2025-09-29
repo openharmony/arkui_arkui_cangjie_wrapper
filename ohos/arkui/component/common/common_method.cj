@@ -724,4 +724,3 @@ public interface CommonMethod<T> {
     ]
     func dragPreview(value: String): T
 }
-

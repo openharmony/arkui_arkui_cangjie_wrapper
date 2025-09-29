@@ -233,7 +233,6 @@ struct CJSwiperContentTransitionProxy {
 /**
  * Defines the indicator class.
  *
- * @relation class Indicator<T>
  */
 @!APILevel[
     22,
@@ -253,7 +252,6 @@ public open class Indicator {
      * DotIndicator class object.
      *
      * @returns { DotIndicator }
-     * @relation static dot(): DotIndicator
      */
     @!APILevel[
         22,
@@ -267,7 +265,6 @@ public open class Indicator {
      * DigitIndicator class object.
      *
      * @returns { DigitIndicator }
-     * @relation static digit(): DigitIndicator
      */
     @!APILevel[
         22,
@@ -280,9 +277,8 @@ public open class Indicator {
     /**
      * Sets the position of the navigation indicator relative to the left edge of the Swiper component.
      *
-     * @param { Length } value - the indicator to the left.
+     * @params { Length } value - the indicator to the left.
      * @returns { This }
-     * @relaiton left(value: Length): T
      */
     @!APILevel[
         22,
@@ -296,9 +292,8 @@ public open class Indicator {
     /**
      * Sets the position of the navigation indicator relative to the top edge of the Swiper component.
      *
-     * @param { Length } value - the indicator to the left.
+     * @params { Length } value - the indicator to the left.
      * @returns { This }
-     * @relation top(value: Length): T
      */
     @!APILevel[
         22,
@@ -312,9 +307,8 @@ public open class Indicator {
     /**
      * Sets the position of the navigation indicator relative to the right edge of the Swiper component.
      *
-     * @param { Length } value - the indicator to the left.
+     * @params { Length } value - the indicator to the left.
      * @returns { This }
-     * @relation right(value: Length): T
      */
     @!APILevel[
         22,
@@ -328,9 +322,8 @@ public open class Indicator {
     /**
      * Sets the position of the navigation indicator relative to the bottom edge of the Swiper component.
      *
-     * @param { Length } value - the indicator to the left.
+     * @params { Length } value - the indicator to the left.
      * @returns { This }
-     * @relation bottom(value: Length): T
      */
     @!APILevel[
         22,
@@ -345,9 +338,8 @@ public open class Indicator {
      * Sets the distance between the navigation indicator and the right edge (in right-to-left scripts)
      * or the left edge (in left-to-right scripts) of the Swiper component.
      *
-     * @param { Length } value - the indicator to the right in LTR, indicator to the left in RTL
+     * @params { Length } value - the indicator to the right in LTR, indicator to the left in RTL
      * @returns { This }
-     * @relation start(value: LengthMetrics): T
      */
     @!APILevel[
         22,
@@ -362,9 +354,8 @@ public open class Indicator {
      * Sets the distance between the navigation indicator and the left edge (in right-to-left scripts)
      * or the right edge (in left-to-right scripts) of the Swiper component.
      *
-     * @param { Length } value - the indicator to the left in RTL, Set the indicator to the right in LTR
+     * @params { Length } value - the indicator to the left in RTL, Set the indicator to the right in LTR
      * @returns { This }
-     * @relation end(value: LengthMetrics): T
      */
     @!APILevel[
         22,
@@ -410,7 +401,6 @@ public open class Indicator {
 /**
  * Define DotIndicator, the indicator type is dot.
  *
- * @relation class DotIndicator extends Indicator<DotIndicator>
  */
 @!APILevel[
     22,
@@ -430,7 +420,6 @@ public class DotIndicator <: Indicator {
      * DotIndicator constructor.
      *
      * @returns { This }
-     * @relation constructor()
      */
     @!APILevel[
         22,
@@ -450,10 +439,9 @@ public class DotIndicator <: Indicator {
     /**
      * Sets the width of the dot-style navigation indicator.
      *
-     * @param { Length } value - Width of the dot-style navigation indicator. Default value is 6vp.
+     * @params { Length } value - Width of the dot-style navigation indicator. Default value is 6vp.
      * This parameter cannot be set in percentage.
      * @returns { This }
-     * @relation itemWidth(value: Length): DotIndicator
      */
     @!APILevel[
         22,
@@ -467,10 +455,9 @@ public class DotIndicator <: Indicator {
     /**
      * Sets the height of the dot-style navigation indicator.
      *
-     * @param { Length } value - Height of the dot-style navigation indicator. Default value is 6vp.
+     * @params { Length } value - Height of the dot-style navigation indicator. Default value is 6vp.
      * This parameter cannot be set in percentage.
      * @returns { This }
-     * @relation itemHeight(value: Length): DotIndicator
      */
     @!APILevel[
         22,
@@ -484,10 +471,9 @@ public class DotIndicator <: Indicator {
     /**
      * Sets the width of the selected dot in the dot-style navigation indicator.
      *
-     * @param { Length } value - Width of the selected dot in the dot-style navigation indicator.
+     * @params { Length } value - Width of the selected dot in the dot-style navigation indicator.
      * Default value is 12vp. This parameter cannot be set in percentage.
      * @returns { This }
-     * @relaiton selectedItemWidth(value: Length): DotIndicator
      */
     @!APILevel[
         22,
@@ -501,10 +487,9 @@ public class DotIndicator <: Indicator {
     /**
      * Sets the height of the selected dot in the dot-style navigation indicator.
      *
-     * @param { Length } value - Height of the selected dot in the dot-style navigation indicator.
+     * @params { Length } value - Height of the selected dot in the dot-style navigation indicator.
      * Default value is 6vp. This parameter cannot be set in percentage.
      * @returns { This }
-     * @relaiton selectedItemHeight(value: Length): DotIndicator
      */
     @!APILevel[
         22,
@@ -518,10 +503,9 @@ public class DotIndicator <: Indicator {
     /**
      * Sets whether to enable the mask for the dot-style navigation indicator.
      *
-     * @param { Bool } value - Whether to enable the mask for the dot-style navigation indicator.
+     * @params { Bool } value - Whether to enable the mask for the dot-style navigation indicator.
      * Default value is false.
      * @returns { This }
-     * @relation mask(value: boolean): DotIndicator
      */
     @!APILevel[
         22,
@@ -535,10 +519,9 @@ public class DotIndicator <: Indicator {
     /**
      * Sets the color of the dot-style navigation indicator.
      *
-     * @param { ResourceColor } value - Color of the dot-style navigation indicator.
+     * @params { ResourceColor } value - Color of the dot-style navigation indicator.
      * Default value is 0x182431(10% opacity).
      * @returns { DotIndicator }
-     * @relation color(value: ResourceColor): DotIndicator
      */
     @!APILevel[
         22,
@@ -553,10 +536,9 @@ public class DotIndicator <: Indicator {
     /**
      * Sets the color of the selected dot in the dot-style navigation indicator.
      *
-     * @param { ResourceColor } value - Color of the selected dot in the dot-style navigation indicator.
+     * @params { ResourceColor } value - Color of the selected dot in the dot-style navigation indicator.
      * Default value is 0x007DFF.
      * @returns { This }
-     * @relation selectedColor(value: ResourceColor): DotIndicator
      */
     @!APILevel[
         22,
@@ -571,9 +553,8 @@ public class DotIndicator <: Indicator {
     /**
      * Sets the maximum number of navigation dots in the dot-style navigation indicator.
      *
-     * @param { UInt32 } maxDisplayCount - Maximum number of navigation dots in the dot-style navigation indicator.
+     * @params { UInt32 } maxDisplayCount - Maximum number of navigation dots in the dot-style navigation indicator.
      * @returns { This } return the DotIndicator
-     * @relation maxDisplayCount(maxDisplayCount: number): DotIndicator
      */
     @!APILevel[
         22,
@@ -606,7 +587,6 @@ public class DotIndicator <: Indicator {
 /**
  * Define DigitIndicator, the indicator type is digit.
  *
- * @relation class DigitIndicator extends Indicator<DigitIndicator>
  */
 @!APILevel[
     22,
@@ -622,7 +602,6 @@ public class DigitIndicator <: Indicator {
      * DigitIndicator constructor.
      *
      * @returns { This }
-     * @relation constructor()
      */
     @!APILevel[
         22,
@@ -638,9 +617,8 @@ public class DigitIndicator <: Indicator {
     /**
     * Sets the font color of the digit-style navigation indicator.
     *
-    * @param { ResourceColor } value - Font color of the digit-style navigation indicator. Default value is #ff182431.
+    * @params { ResourceColor } value - Font color of the digit-style navigation indicator. Default value is #ff182431.
     * @returns { This }
-    * @relaiton fontColor(value: ResourceColor): DigitIndicator
     */
     @!APILevel[
         22,
@@ -654,10 +632,9 @@ public class DigitIndicator <: Indicator {
     /**
      * Sets the font color of the selected digit in the digit-style navigation indicator.
      *
-     * @param { ResourceColor } value - Font color of the selected digit in the digit-style navigation indicator.
+     * @params { ResourceColor } value - Font color of the selected digit in the digit-style navigation indicator.
      * Default value is 0xff182431.
      * @returns { This }
-     * @relation selectedFontColor(value: ResourceColor): DigitIndicator
      */
     @!APILevel[
         22,
@@ -668,7 +645,6 @@ public class DigitIndicator <: Indicator {
         this
     }
 
-
     /**
      * Sets the font style of the digit-style navigation indicator.
      *
@@ -677,10 +653,9 @@ public class DigitIndicator <: Indicator {
      * <brSetting family and style has no effect.
      * </p>
      *
-     * @param { Font } value - Font style of the digit-style navigation indicator.
+     * @params { Font } value - Font style of the digit-style navigation indicator.
      * Default value is Font(14.vp, FontWeight.Normal).
      * @returns { This }
-     * @relation digitFont(value: Font): DigitIndicator
      */
     @!APILevel[
         22,
@@ -694,10 +669,9 @@ public class DigitIndicator <: Indicator {
     /**
      * Sets the font style of the selected digit in the digit-style navigation indicator.
      *
-     * @param { Font } value - Font style of the selected digit in the digit-style navigation indicator.
+     * @params { Font } value - Font style of the selected digit in the digit-style navigation indicator.
      * Default value is Font(14.vp, FontWeight.Normal).
      * @returns { This }
-     * @relaiton selectedDigitFont(value: Font): DigitIndicator
      */
     @!APILevel[
         22,
@@ -736,7 +710,6 @@ public class DigitIndicator <: Indicator {
 /**
  * Provides methods for switching components.
  *
- * @relation class SwiperController
  */
 @!APILevel[
     22,
@@ -747,7 +720,6 @@ public class SwiperController <: RemoteDataLite {
      * SwiperController constructor.
      *
      * @returns { This }
-     * @relation constructor()
      */
     @!APILevel[
         22,
@@ -766,7 +738,6 @@ public class SwiperController <: RemoteDataLite {
     /**
      * Called when the next child component is displayed.
      *
-     * @relation showNext(): void
      */
     @!APILevel[
         22,
@@ -781,7 +752,6 @@ public class SwiperController <: RemoteDataLite {
     /**
      * Called when the previous subcomponent is displayed.
      *
-     * @relation showPrevious(): void
      */
     @!APILevel[
         22,
@@ -796,7 +766,6 @@ public class SwiperController <: RemoteDataLite {
     /**
      * Called when need to stop the swiper animation.
      *
-     * @relation finishAnimation(callback?: VoidCallback): void
      */
     @!APILevel[
         22,
@@ -811,8 +780,7 @@ public class SwiperController <: RemoteDataLite {
     /**
      * Called when need to stop the swiper animation.
      *
-     * @param { VoidCallback } callback
-     * @relation finishAnimation(callback?: VoidCallback): void
+     * @params { VoidCallback } callback
      */
     @!APILevel[
         22,
@@ -830,7 +798,6 @@ public class SwiperController <: RemoteDataLite {
 /**
  * Defines Swiper Component.
  *
- * @relation declare const Swiper: SwiperInterface
  */
 @!APILevel[
     22,
@@ -842,10 +809,9 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     /**
      * Create a Swiper with controller and child component.
      *
-     * @param { ?SwiperController } controller
-     * @param { () -> Unit } child
+     * @params { ?SwiperController } controller
+     * @params { () -> Unit } child
      * @returns { This }
-     * @relation (controller?: SwiperController): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -874,10 +840,9 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * <br>If the Swiper component becomes invisible, the playback stops.
      * </p>
      *
-     * @param { Bool } value - Whether to enable automatic playback for child component switching.
+     * @params { Bool } value - Whether to enable automatic playback for child component switching.
      * Default value is false.
      * @returns { This }
-     * @relation autoPlay(value: boolean): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -893,9 +858,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     /**
      * Sets the duration of the animation for child component switching.
      *
-     * @param { UInt32 } value - Duration of the autoplay for child component switching. Default value is 400,
+     * @params { UInt32 } value - Duration of the autoplay for child component switching. Default value is 400,
      * @returns { This }
-     * @relation duration(value: number): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -911,9 +875,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     /**
      * Sets the index of the child component currently displayed in the container.
      *
-     * @param { UInt32 } value - Index of the child component currently displayed in the container. Default value is 0.
+     * @params { UInt32 } value - Index of the child component currently displayed in the container. Default value is 0.
      * @returns { This }
-     * @relation index(value: number): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -929,9 +892,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     /**
      * Sets the interval for automatic playback.
      *
-     * @param { UInt32 } value - Interval for automatic playback. Default value is 3000, the unit is ms.
+     * @params { UInt32 } value - Interval for automatic playback. Default value is 3000, the unit is ms.
      * @returns { This }
-     * @relation interval(value: number): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -947,9 +909,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     /**
      * Sets whether to enable loop playback.
      *
-     * @param { Bool } value - Whether to enable loop playback. Default value is true.
+     * @params { Bool } value - Whether to enable loop playback. Default value is true.
      * @returns { This }
-     * @relaiton loop(value: boolean): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -965,9 +926,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     /**
      * Sets whether vertical swiping is used.
      *
-     * @param { Bool } value - Whether vertical swiping is used. Default value is false.
+     * @params { Bool } value - Whether vertical swiping is used. Default value is false.
      * @returns { This }
-     * @relation vertical(value: boolean): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -983,10 +943,9 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { Bool } value - Style of the navigation indicator.
+     * @params { Bool } value - Style of the navigation indicator.
      * Default value is true, default style is DotIndicator.
      * @returns { This }
-     * @relation indicator(value: DotIndicator | DigitIndicator | boolean): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -1002,9 +961,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { DotIndicator } value - Style of the navigation indicator.
+     * @params { DotIndicator } value - Style of the navigation indicator.
      * @returns { This }
-     * @relation indicator(value: DotIndicator | DigitIndicator | boolean): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -1021,9 +979,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { DigitIndicator } value - Style of the navigation indicator.
+     * @params { DigitIndicator } value - Style of the navigation indicator.
      * @returns { This }
-     * @relation indicator(value: DotIndicator | DigitIndicator | boolean): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -1048,10 +1005,9 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * if the unit is not specified, for example, '10', the default unit vp is used.
      * </p>
      *
-     * @param { Length } value - Space between child components. Default value is 0,
+     * @params { Length } value - Space between child components. Default value is 0,
      * Minimum value is 0. If a value less than 0 is set, the default value is used.
      * @returns { This }
-     * @relation itemSpace(value: number | string): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -1069,10 +1025,9 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * Sets the mode in which elements are displayed along the main axis.
      * This API takes effect only when displayCount is not set.
      *
-     * @param { SwiperDisplayMode } value - Mode in which elements are displayed along the main axis.
+     * @params { SwiperDisplayMode } value - Mode in which elements are displayed along the main axis.
      * Default value is SwiperDisplayMode.Stretch.
      * @returns { This }
-     * @relation displayMode(value: SwiperDisplayMode): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -1092,10 +1047,9 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * <br>This attribute takes effect when loop is set to false.
      * </p>
      *
-     * @param { EdgeEffect } value - Effect used when the component is at one of the edges.
+     * @params { EdgeEffect } value - Effect used when the component is at one of the edges.
      * Default value is EdgeEffect.Spring.
      * @returns { This }
-     * @relation effectMode(value: EdgeEffect): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -1118,10 +1072,9 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * 4、Placeholder items do not display any content and are only used as placeholders.
      * 5、When turning pages, turn pages by group.
      *
-     * @param { Int32 } value - Number of elements to display per page. Default value is 1.
-     * @param { Bool } swipeByGroup - Whether to turn pages by group. Default value is false.
+     * @params { Int32 } value - Number of elements to display per page. Default value is 1.
+     * @params { Bool } swipeByGroup - Whether to turn pages by group. Default value is false.
      * @returns { This }
-     * @relation displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -1142,10 +1095,9 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
      * <br>If swipeByGroup in displayCount is set to true, child components are cached by group.
      * </p>
      *
-     * @param { Int32 } value - Number of child components to be preloaded (cached). Default value is 1.
+     * @params { Int32 } value - Number of child components to be preloaded (cached). Default value is 1.
      * Minimum value is 0. If a value less than 0 is set, the default value is used.
      * @returns { This }
-     * @relation cachedCount(value: number): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -1161,9 +1113,8 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     /**
      * Sets whether to disable the swipe feature.
      *
-     * @param { Bool } value - Whether to disable the swipe feature. Default value is false.
+     * @params { Bool } value - Whether to disable the swipe feature. Default value is false.
      * @returns { This }
-     * @relation disableSwipe(value: boolean): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -1179,10 +1130,9 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     /**
      * Sets the animation curve.
      *
-     * @param { Curve } value - Animation curve.
+     * @params { Curve } value - Animation curve.
      * Default value is Curve.Linear.
      * @returns { This }
-     * @relation curve(value: Curve | string | ICurve): SwiperAttribute
      */
     @!APILevel[
         22,
@@ -1261,7 +1211,7 @@ public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute 
     /**
      * Triggered when the index of the currently displayed child component changes.
      *
-     * @param { (Int32) -> Unit } event
+     * @params { (Int32) -> Unit } event
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.

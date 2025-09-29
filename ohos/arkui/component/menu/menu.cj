@@ -49,7 +49,6 @@ let LENGTH_TYPE_LNVALID: Int32 = -2
 /**
  * Defines the Menu Component.
  *
- * @relation declare const Menu: MenuInterface
  */
 @!APILevel[
     22,
@@ -60,9 +59,8 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
     /**
      * Creates the menu component.
      *
-     * @param { () -> Unit } child
+     * @params { () -> Unit } child
      * @returns { This }
-     * @relation (): MenuAttribute
      */
     @!APILevel[
         22,
@@ -79,12 +77,11 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
      * Sets the font style.
      * Family and style are not supported currently and will be fixed in future.
      *
-     * @param { Length } size
-     * @param { FontWeight } weight
-     * @param { ResourceStr } family
-     * @param { FontStyle } style
+     * @params { Length } size
+     * @params { FontWeight } weight
+     * @params { ResourceStr } family
+     * @params { FontStyle } style
      * @returns { This }
-     * @relation font(value: Font): MenuAttribute
      */
     @!APILevel[
         22,
@@ -110,9 +107,8 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
     /**
      * Sets the Menu font color.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation fontColor(value: ResourceColor): MenuAttribute
      */
     @!APILevel[
         22,
@@ -129,9 +125,8 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
      * Sets the radius of the corner around the menu.
      * When the radius is less than the menu width, the default border radius is used.
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation radius(value: Dimension | BorderRadiuses): MenuAttribute
      */
     @!APILevel[
         22,
@@ -153,9 +148,8 @@ public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
      * Sets the radius of the corner around the menu.
      * When the radius is less than the menu width, the default border radius is used.
      *
-     * @param { BorderRadiuses } value
+     * @params { BorderRadiuses } value
      * @returns { This }
-     * @relation radius(value: Dimension | BorderRadiuses): MenuAttribute
      */
     @!APILevel[
         22,

@@ -29,7 +29,6 @@ protected const INVALID_CALLBACK_ID = 0
 /**
  * Defines modal transition type.
  *
- * @relation declare enum ModalTransition
  */
 @Derive[Equatable]
 @!APILevel[
@@ -40,7 +39,6 @@ public enum ModalTransition {
     /**
      * Use default animation.
      *
-     * @relation DEFAULT
      */
     @!APILevel[
         22,
@@ -50,7 +48,6 @@ public enum ModalTransition {
     /**
      * No transition animation for the modal.
      *
-     * @relation NONE
      */
     @!APILevel[
         22,
@@ -60,7 +57,6 @@ public enum ModalTransition {
     /**
      * Use alpha animation.
      *
-     * @relation ALPHA
      */
     @!APILevel[
         22,
@@ -81,7 +77,6 @@ public enum ModalTransition {
 /**
  * Defines sheet size type.
  *
- * @relation declare enum SheetSize
  */
 @Derive[Equatable]
 @!APILevel[
@@ -92,7 +87,6 @@ public enum SheetSize {
     /**
      * The sheet height is half of the screen height.
      *
-     * @relation MEDIUM
      */
     @!APILevel[
         22,
@@ -102,7 +96,6 @@ public enum SheetSize {
     /**
      * The sheet height is half of the screen height.
      *
-     * @relation LARGE
      */
     @!APILevel[
         22,
@@ -112,7 +105,6 @@ public enum SheetSize {
     /**
      * The sheet height is half of the screen height.
      *
-     * @relation FIT_CONTENT
      */
     @!APILevel[
         22,
@@ -133,7 +125,6 @@ public enum SheetSize {
 /**
  * Defines the sheet type.
  *
- * @relation declare enum SheetType.
  */
 @Derive[Equatable]
 @!APILevel[
@@ -144,7 +135,6 @@ public enum SheetType {
     /**
      * Bottom sheet.
      *
-     * @relation BOTTOM = 0
      */
     @!APILevel[
         22,
@@ -154,7 +144,6 @@ public enum SheetType {
     /**
      * Center sheet.
      *
-     * @relation CENTER = 1
      */
     @!APILevel[
         22,
@@ -164,7 +153,6 @@ public enum SheetType {
     /**
      * Popup sheet. The popup sheet cannot be dismissed with a pull-down gesture.
      *
-     * @relation POPUP = 2
      */
     @!APILevel[
         22,
@@ -185,7 +173,6 @@ public enum SheetType {
 /**
  * Defines the options of blur
  *
- * @relation declare interface BlurOptions
  */
 @!APILevel[
     22,
@@ -195,7 +182,6 @@ public class BlurOptions {
     /**
      * Fuzzy gray scale parameter
      *
-     * @relation grayscale: [number, number]
      */
     @!APILevel[
         22,
@@ -218,7 +204,6 @@ public class BlurOptions {
 /**
  * Defines the options of ForegroundBlurStyle
  *
- * @relation declare interface ForegroundBlurStyleOptions extends BlurStyleOptions
  */
 @!APILevel[
     22,
@@ -229,7 +214,6 @@ public class ForegroundBlurStyleOptions {
      * Color mode used for the foreground blur.
      * <br>Default value: **ThemeColorMode.System**.
      *
-     * @relation colorMode?: ThemeColorMode;
      */
     @!APILevel[
         22,
@@ -241,7 +225,6 @@ public class ForegroundBlurStyleOptions {
      * Adaptive color mode.
      * <br>Default value: **AdaptiveColor.Default**.
      *
-     * @relation colorMode?: ThemeColorMode;
      */
     @!APILevel[
         22,
@@ -252,7 +235,6 @@ public class ForegroundBlurStyleOptions {
     /**
      * Defines the options of blur
      *
-     * @relation blurOptions?: BlurOptions;
      */
     @!APILevel[
         22,
@@ -265,7 +247,6 @@ public class ForegroundBlurStyleOptions {
      * <br>Default value: **1.0**.
      * <br>Value range: [0.0, 1.0].
      *
-     * @relation scale?: number;
      */
     @!APILevel[
         22,
@@ -296,7 +277,6 @@ public class ForegroundBlurStyleOptions {
 /**
  * Defines the popup options.
  *
- * @relation declare interface PopupButton
  */
 @!APILevel[
     22,
@@ -309,8 +289,8 @@ public class PopupButton {
     /**
      * constructor
      *
-     * @param {String} value - Button text value
-     * @param { () -> Unit } action - action
+     * @params {String} value - Button text value
+     * @params { () -> Unit } action - action
      */
     @!APILevel[
         22,
@@ -325,7 +305,6 @@ public class PopupButton {
 /**
  * Popup state change param
  *
- * @relation declare interface PopupStateChangeParam
  */
 @!APILevel[
     22,
@@ -336,7 +315,6 @@ public class PopupStateChangeParam {
      * is Visible.
      * Anonymous Object Rectification.
      *
-     * @relation isVisible: boolean;
      */
     @!APILevel[
         22,
@@ -347,7 +325,7 @@ public class PopupStateChangeParam {
     /**
      * constructor
      *
-     * @param {Bool} value
+     * @params {Bool} value
      */
     @!APILevel[
         22,
@@ -361,7 +339,6 @@ public class PopupStateChangeParam {
 /**
  * Defines the popup options.
  *
- * @relation declare interface PopupOptions
  */
 @!APILevel[
     22,
@@ -371,7 +348,6 @@ public class PopupOptions {
     /**
      * Content of the popup message.
      *
-     * @relation message: string;
      */
     @!APILevel[
         22,
@@ -383,7 +359,6 @@ public class PopupOptions {
      * The first button.
      *
      *
-     * @relation primaryButton?: PopupButton;
      */
     @!APILevel[
         22,
@@ -395,7 +370,6 @@ public class PopupOptions {
      * The second button.
      *
      *
-     * @relation secondaryButton?:PopupButton
      */
     @!APILevel[
         22,
@@ -406,7 +380,6 @@ public class PopupOptions {
     /**
      * on State Change
      *
-     * @relation onStateChange?: PopupStateChangeCallback;
      */
     @!APILevel[
         22,
@@ -417,7 +390,6 @@ public class PopupOptions {
     /**
      * Parameters of the popup message
      *
-     * @relation messageOptions?: PopupMessageOptions
      */
     @!APILevel[
         22,
@@ -428,7 +400,6 @@ public class PopupOptions {
     /**
      * The offset of the sharp corner of popup.
      *
-     * @relation arrowOffset?: Length;
      */
     @!APILevel[
         22,
@@ -439,7 +410,6 @@ public class PopupOptions {
     /**
      * Whether to display in the sub window.
      *
-     * @relation showInSubWindow?: boolean;
      */
     @!APILevel[
         22,
@@ -451,7 +421,6 @@ public class PopupOptions {
      * Whether to apply a mask to the popup.
      * and a color value means to apply a mask in the corresponding color to the popup.
      *
-     * @relation mask?: boolean | { color: ResourceColor };
      */
     @!APILevel[
         22,
@@ -462,7 +431,6 @@ public class PopupOptions {
     /**
      * Sets the space of between the popup and target.
      *
-     * @relation targetSpace?: Length
      */
     @!APILevel[
         22,
@@ -474,7 +442,6 @@ public class PopupOptions {
      * The placement of popup.
      * Supports all positions defined in Placement.
      *
-     * @relation placement?: Placement;
      */
     @!APILevel[
         22,
@@ -485,7 +452,6 @@ public class PopupOptions {
     /**
      * Sets the position offset of the popup.
      *
-     * @relation offset?: Position
      */
     @!APILevel[
         22,
@@ -496,7 +462,6 @@ public class PopupOptions {
     /**
      * whether show arrow
      *
-     * @relation enableArrow?: boolean;
      */
     @!APILevel[
         22,
@@ -507,7 +472,6 @@ public class PopupOptions {
     /**
      * Sets the position offset of the popup.
      *
-     * @relation popupColor?: Color | string | Resource | number;
      */
     @!APILevel[
         22,
@@ -518,7 +482,6 @@ public class PopupOptions {
     /**
      * Whether hide popup when click mask.
      *
-     * @relation autoCancel?: boolean;
      */
     @!APILevel[
         22,
@@ -529,7 +492,6 @@ public class PopupOptions {
     /**
      * Set the width of the popup.
      *
-     * @relation width?: Dimension;
      */
     @!APILevel[
         22,
@@ -540,7 +502,6 @@ public class PopupOptions {
     /**
      * The position of the sharp corner of popup.
      *
-     * @relation arrowPointPosition?: ArrowPointPosition;
      */
     @!APILevel[
         22,
@@ -551,7 +512,6 @@ public class PopupOptions {
     /**
      * The width of the arrow.
      *
-     * @relation arrowWidth?: Dimension;
      */
     @!APILevel[
         22,
@@ -562,7 +522,6 @@ public class PopupOptions {
     /**
      * The height of the arrow.
      *
-     * @relation arrowWidth?: Dimension;
      */
     @!APILevel[
         22,
@@ -573,7 +532,6 @@ public class PopupOptions {
     /**
      * The round corners of the popup.
      *
-     * @relation adius?: Dimension;
      */
     @!APILevel[
         22,
@@ -584,7 +542,6 @@ public class PopupOptions {
     /**
      * The style of popup Shadow.
      *
-     * @relation shadow?: ShadowOptions | ShadowStyle;
      */
     @!APILevel[
         22,
@@ -595,7 +552,6 @@ public class PopupOptions {
     /**
      * Defines popup background blur Style
      *
-     * @relation backgroundBlurStyle?: BlurStyle;
      */
     @!APILevel[
         22,
@@ -605,7 +561,6 @@ public class PopupOptions {
     /**
      * Defines the transition effect of popup opening and closing
      *
-     * @relation transition?: TransitionEffect;
      */
     @!APILevel[
         22,
@@ -616,7 +571,6 @@ public class PopupOptions {
     /**
      * Callback function when the popup interactive dismiss
      *
-     * @relation onWillDismiss?: boolean | Callback<DismissPopupAction>;
      */
     @!APILevel[
         22,
@@ -627,7 +581,6 @@ public class PopupOptions {
     /**
      * Determine if popup can follow the target node when it has rotation or scale
      *
-     * @relation followTransformOfTarget?: boolean;
      */
     @!APILevel[
         22,
@@ -698,7 +651,6 @@ public class PopupOptions {
 /**
  * Defines the menu element.
  *
- * @relation declare interface MenuElement
  */
 @!APILevel[
     22,
@@ -713,8 +665,8 @@ public class MenuElement {
     /**
      * constructor
      *
-     * @param {ResourceStr} value
-     * @param { () -> Unit } action - action
+     * @params {ResourceStr} value
+     * @params { () -> Unit } action - action
      */
     @!APILevel[
         22,
@@ -729,7 +681,6 @@ public class MenuElement {
 /**
  * Defines the custom popup options.
  *
- * @relation declare interface CustomPopupOptions
  */
 @!APILevel[
     22,
@@ -745,7 +696,6 @@ public class CustomPopupOptions {
      * of the custom component are irrelevant to the visibility of the popup. As such, the lifecycle of the
      * custom component cannot be used to determine whether the popup is displayed or not.
      *
-     * @relation builder: CustomBuilder;
      */
     @!APILevel[
         22,
@@ -757,7 +707,6 @@ public class CustomPopupOptions {
      * Preferred position of the popup. If the set position is insufficient for holding the popup,
      * it will be automatically adjusted.
      *
-     * @relation placement?: Placement;
      */
     @!APILevel[
         22,
@@ -768,7 +717,6 @@ public class CustomPopupOptions {
     /**
      * mask color of popup
      *
-     * @relation maskColor?: Color | string | Resource | number;
      */
     @!APILevel[
         22,
@@ -785,7 +733,6 @@ public class CustomPopupOptions {
     /**
      * whether show arrow
      *
-     * @relation enableArrow?: boolean;
      */
     @!APILevel[
         22,
@@ -799,7 +746,6 @@ public class CustomPopupOptions {
      * <Popup> component in the layout component, and modify the value of the bindPopup variable (show: boolean)
      * in the onClick event of the layout component.
      *
-     * @relation autoCancel?: boolean;
      */
     @!APILevel[
         22,
@@ -809,7 +755,6 @@ public class CustomPopupOptions {
     /**
      * on State Change
      *
-     * @relation onStateChange?: PopupStateChangeCallback;
      */
     @!APILevel[
         22,
@@ -819,7 +764,6 @@ public class CustomPopupOptions {
     /**
      * Color of the popup. To remove the background blur, set backgroundBlurStyle to BlurStyle.NONE.
      *
-     * @relation popupColor?: Color | string | Resource | number;
      */
     @!APILevel[
         22,
@@ -836,7 +780,6 @@ public class CustomPopupOptions {
      * default. When the popup is displayed on either edge of the screen, it will automatically deviate leftward
      * or rightward to stay within the safe area. When the value is 0, the arrow always points to the bound component.
      *
-     * @relation arrowOffset?: Length;
      */
     @!APILevel[
         22,
@@ -847,7 +790,6 @@ public class CustomPopupOptions {
     /**
      * Whether to display in the sub window.
      *
-     * @relation showInSubWindow?: boolean;
      */
     @!APILevel[
         22,
@@ -857,7 +799,6 @@ public class CustomPopupOptions {
     /**
      * Whether to apply a mask to the popup.
      *
-     * @relation mask?: boolean | { color: ResourceColor };
      */
     @!APILevel[
         22,
@@ -867,7 +808,6 @@ public class CustomPopupOptions {
     /**
      * Sets the space of between the popup and target.
      *
-     * @relation targetSpace?: Length
      */
     @!APILevel[
         22,
@@ -877,7 +817,6 @@ public class CustomPopupOptions {
     /**
      * Sets the position offset of the popup.
      *
-     * @relation offset?: Position
      */
     @!APILevel[
         22,
@@ -887,7 +826,6 @@ public class CustomPopupOptions {
     /**
      * Set the width of the popup.
      *
-     * @relation width?: Dimension;
      */
     @!APILevel[
         22,
@@ -898,8 +836,6 @@ public class CustomPopupOptions {
      * Position of the popup arrow relative to its parent component. Available positions are Start, Center, and End,
      * in both vertical and horizontal directions. All these positions are within the parent component area.
      *
-     * @type { ?ArrowPointPosition }
-     * @relation arrowPointPosition?: ArrowPointPosition;
      */
     @!APILevel[
         22,
@@ -910,8 +846,6 @@ public class CustomPopupOptions {
      * Arrow thickness. If the arrow thickness exceeds the length of the edge minus twice the size of the popup
      * rounded corner, the arrow is not drawn.
      *
-     * @type { Length }
-     * @relation arrowWidth?: Dimension;
      */
     @!APILevel[
         22,
@@ -921,8 +855,6 @@ public class CustomPopupOptions {
     /**
      * The height of the arrow.
      *
-     * @type { Length }
-     * @relation arrowHeight?: Dimension;
      */
     @!APILevel[
         22,
@@ -932,8 +864,6 @@ public class CustomPopupOptions {
     /**
      * The round corners of the popup.
      *
-     * @type { Length }
-     * @relation radius?: Dimension;
      */
     @!APILevel[
         22,
@@ -942,8 +872,6 @@ public class CustomPopupOptions {
     public var radius: ?Length
     /**
      * The style of popup Shadow.
-     * @type { ShadowStyle }
-     * @relation shadow?: ShadowOptions | ShadowStyle;
      */
     @!APILevel[
         22,
@@ -952,8 +880,6 @@ public class CustomPopupOptions {
     public var shadow: ?ShadowStyle
     /**
      * Background blur style of the popup.
-     * @type { BlurStyle }
-     * @relation backgroundBlurStyle?: BlurStyle;
      */
     @!APILevel[
         22,
@@ -962,8 +888,6 @@ public class CustomPopupOptions {
     public var backgroundBlurStyle: ?BlurStyle
     /**
      * Set popup focusable
-     * @type { Bool }
-     * @relation focusable?: boolean;
      */
     @!APILevel[
         22,
@@ -973,8 +897,6 @@ public class CustomPopupOptions {
     /**
      * Defines the transition effect of popup opening and closing
      *
-     * @type { ?TransitionEffect }
-     * @relation transition?: TransitionEffect;
      */
     @!APILevel[
         22,
@@ -989,8 +911,6 @@ public class CustomPopupOptions {
      * to the dismissal event as expected.
      * 2. If this parameter is set to a function, the dismissal event is intercepted and the callback function
      * is executed.
-     * @type { Option<(DismissPopupAction) -> Unit> }
-     * @relation onWillDismiss?: boolean | Callback<DismissPopupAction>;
      */
     @!APILevel[
         22,
@@ -1000,9 +920,6 @@ public class CustomPopupOptions {
     /**
      * Determine if popup can follow the target node when it has rotation or scale.
      *
-     * @type { Bool }
-     * @default false
-     * @relation followTransformOfTarget?: boolean;
      */
     @!APILevel[
         22,
@@ -1072,7 +989,6 @@ public class CustomPopupOptions {
 /**
  * Defines the options of popup message.
  *
- * @relation declare interface PopupMessageOptions
  */
 @!APILevel[
     22,
@@ -1082,8 +998,6 @@ public class PopupMessageOptions {
     /**
      * Sets the color of popup text.
      *
-     * @type { ResourceColor }
-     * @relation textColor?: ResourceColor;
      */
     @!APILevel[
         22,
@@ -1093,8 +1007,6 @@ public class PopupMessageOptions {
     /**
      * Sets the color of popup text.
      *
-     * @type { Font }
-     * @relation font?: Font;
      */
     @!APILevel[
         22,
@@ -1117,7 +1029,6 @@ public class PopupMessageOptions {
 /**
  * Defines the OverlayOffset.
  *
- * @relation declare interface OverlayOffset
  */
 @!APILevel[
     22,
@@ -1127,8 +1038,6 @@ public class OverlayOffset {
     /**
      * Defines x.
      *
-     * @type { Float64 }
-     * @relation x?: number;
      */
     @!APILevel[
         22,
@@ -1138,8 +1047,6 @@ public class OverlayOffset {
     /**
      * Defines x.
      *
-     * @type { Float64 }
-     * @relation y?: number;
      */
     @!APILevel[
         22,
@@ -1163,7 +1070,6 @@ public class OverlayOffset {
 /**
  * Defines the border width property.
  *
- * @relation declare interface EdgeWidths
  */
 @!APILevel[
     22,
@@ -1173,8 +1079,6 @@ public class EdgeWidths {
     /**
      * top property.
      *
-     * @type { Length }
-     * @relation top?: Length;
      */
     @!APILevel[
         22,
@@ -1184,8 +1088,6 @@ public class EdgeWidths {
     /**
      * right property.
      *
-     * @type { Length }
-     * @relation right?: Length;
      */
     @!APILevel[
         22,
@@ -1195,8 +1097,6 @@ public class EdgeWidths {
     /**
      * bottom property.
      *
-     * @type { Length }
-     * @relation bottom?: Length;
      */
     @!APILevel[
         22,
@@ -1206,8 +1106,6 @@ public class EdgeWidths {
     /**
      * left property.
      *
-     * @type { Length }
-     * @relation left?: Length;
      */
     @!APILevel[
         22,
@@ -1236,7 +1134,6 @@ public class EdgeWidths {
 /**
  * Overlay module options
  *
- * @relation declare interface BindOptions
  */
 @!APILevel[
     22,
@@ -1252,11 +1149,11 @@ public open class BindOptions {
     /**
      * constructor
      *
-     * @param {ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
-     * @param {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
-     * @param {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
-     * @param {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
-     * @param {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
+     * @params {ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
+     * @params {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
+     * @params {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
+     * @params {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
+     * @params {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
      */
     @!APILevel[
         22,
@@ -1297,7 +1194,6 @@ public open class BindOptions {
 /**
  * Component content cover options
  *
- * @relation declare interface ContentCoverOptions extends BindOptions
  */
 @!APILevel[
     22,
@@ -1310,14 +1206,14 @@ public class ContentCoverOptions <: BindOptions {
     /**
      * constructor
      *
-     * @param {ModalTransition} modalTransition - Defines transition type
-     * @param {?(DismissContentCoverAction) -> Unit} onWillDismiss - Callback function when the content cover interactive dismiss.
-     * @param {?TransitionEffect} transition
-     * @param {ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
-     * @param {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
-     * @param {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
-     * @param {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
-     * @param {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
+     * @params {ModalTransition} modalTransition - Defines transition type
+     * @params {?(DismissContentCoverAction) -> Unit} onWillDismiss - Callback function when the content cover interactive dismiss.
+     * @params {?TransitionEffect} transition
+     * @params {ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
+     * @params {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
+     * @params {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
+     * @params {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
+     * @params {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
      */
     @!APILevel[
         22,
@@ -1381,7 +1277,6 @@ public class ContentCoverOptions <: BindOptions {
 /**
  * Component sheet dismiss
  *
- * @relation declare interface SheetDismiss
  */
 @!APILevel[
     22,
@@ -1393,7 +1288,6 @@ public class SheetDismiss {
     /**
      * Defines sheet dismiss function
      *
-     * @relation dismiss: VoidCallback;
      */
     @!APILevel[
         22,
@@ -1409,7 +1303,6 @@ public class SheetDismiss {
 /**
  * Defines sheet spring back action
  *
- * @relation declare interface SpringBackAction
  */
 @!APILevel[
     22,
@@ -1421,7 +1314,6 @@ public class SpringBackAction {
     /**
      * Defines spring back function
      *
-     * @relation springBack: Callback<void>;
      */
     @!APILevel[
         22,
@@ -1437,7 +1329,6 @@ public class SpringBackAction {
 /**
  * Define the display mode of the sheet.
  *
- * @relation declare enum SheetMode
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1449,7 +1340,6 @@ public enum SheetMode {
      * The sheet is displayed at the top of the window corresponding to the current **UIContext** instance,
      * above all pages. It is displayed at the same level as dialog boxes.
      *
-     * @relation OVERLAY
      */
     @!APILevel[
         22,
@@ -1460,7 +1350,6 @@ public enum SheetMode {
         /**
          * The sheet is displayed at the top of the current page.
          *
-         * @relation EMBEDDED = 1,
          */
         @!APILevel[
         22,
@@ -1491,7 +1380,6 @@ public enum SheetMode {
 /**
  * Define the scroll size mode of the sheet.
  *
- * @relation declare enum ScrollSizeMode
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1502,7 +1390,6 @@ public enum ScrollSizeMode {
     /**
      * Sheet change scroll size after the slide ends.
      *
-     * @relation OLLOW_DETENT = 0,
      */
     @!APILevel[
         22,
@@ -1513,7 +1400,6 @@ public enum ScrollSizeMode {
         /**
          * Sheet change scroll size during the sliding process.
          *
-         * @relation CONTINUOUS = 1,
          */
         @!APILevel[
         22,
@@ -1562,7 +1448,6 @@ func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadow {
 /**
  * Component sheet options
  *
- * @relation declare interface SheetOptions extends BindOptions
  */
 @!APILevel[
     22,
@@ -1817,7 +1702,6 @@ public class SheetOptions <: BindOptions {
 /**
  * Defines the data type of the interface restriction.
  *
- * @relation declare interface Rectangle
  */
 @!APILevel[
     22,
@@ -1827,8 +1711,6 @@ public class Rectangle {
     /**
      * x:Horizontal coordinate
      *
-     * @type { Length }
-     * @relation x?: Length;
      */
     @!APILevel[
         22,
@@ -1839,8 +1721,6 @@ public class Rectangle {
     /**
      * y:Vertical axis coordinate.
      *
-     * @type { Length }
-     * @relation y?: Length;
      */
     @!APILevel[
         22,
@@ -1851,8 +1731,6 @@ public class Rectangle {
     /**
      * Sets the width of the current touchRect.
      *
-     * @type { Length }
-     * @relation width?: Length;
      */
     @!APILevel[
         22,
@@ -1863,8 +1741,6 @@ public class Rectangle {
     /**
      * Sets the height of the current touchRect.
      *
-     * @type { Length }
-     * @relation height?: Length;
      */
     @!APILevel[
         22,
@@ -1920,7 +1796,6 @@ class MenuActionData <: FFIData {
 /**
  * Component popup dismiss
  *
- * @relation declare interface DismissPopupAction
  */
 @!APILevel[
     22,
@@ -1929,7 +1804,6 @@ class MenuActionData <: FFIData {
 public class DismissPopupAction {
     /**
      * Defines popup dismiss reason
-     * @relation reason: DismissReason;
      */
     @!APILevel[
         22,
@@ -1942,7 +1816,6 @@ public class DismissPopupAction {
 
     /**
      * Defines popup dismiss function
-     * @relation dismiss(): void;
      */
     @!APILevel[
         22,
@@ -1958,7 +1831,6 @@ public class DismissPopupAction {
 /**
  * Defines the context menu options.
  *
- * @relation declare interface ContextMenuOptions
  */
 @!APILevel[
     22,
@@ -1968,8 +1840,6 @@ public class ContextMenuOptions {
     /**
      * Sets the position offset of the context menu window.
      *
-     * @type { Position }
-     * @relation offset?: Position;
      */
     @!APILevel[
         22,
@@ -1981,8 +1851,6 @@ public class ContextMenuOptions {
      * Preferred position of the context menu. If the set position is insufficient for holding the component, it will be
      * automatically adjusted
      *
-     * @type { ?Placement }
-     * @relation placement?: Placement;
      */
     @!APILevel[
         22,
@@ -1993,8 +1861,6 @@ public class ContextMenuOptions {
     /**
      * whether show arrow belong to the menu.
      *
-     * @type { ?Bool }
-     * @relation enableArrow?: boolean;
      */
     @!APILevel[
         22,
@@ -2005,8 +1871,6 @@ public class ContextMenuOptions {
     /**
      * The horizontal offset to the left of menu or vertical offset to the top of menu
      *
-     * @type { Length }
-     * @relation arrowOffset?: Length;
      */
     @!APILevel[
         22,
@@ -2017,8 +1881,6 @@ public class ContextMenuOptions {
     /**
     * The preview content of context menu.
     * 
-    * @type { ?CustomBuilder }
-    * @relation preview?: MenuPreviewMode | CustomBuilder;
     */
     @!APILevel[
         22,
@@ -2029,8 +1891,6 @@ public class ContextMenuOptions {
     /**
      * The preview animator options.
      *
-     * @type { ?ContextMenuAnimationOptions }
-     * @relation previewAnimationOptions?: ContextMenuAnimationOptions;
      */
     @!APILevel[
         22,
@@ -2041,8 +1901,6 @@ public class ContextMenuOptions {
     /**
      * Callback triggered when the menu is displayed.
      *
-     * @type { ?() -> Unit }
-     * @relation onAppear?: () => void;
      */
     @!APILevel[
         22,
@@ -2053,8 +1911,6 @@ public class ContextMenuOptions {
     /**
      * Callback function when the context menu disappear.
      *
-     * @type { ?() -> Unit }
-     * @relation onDisappear?: () => void;
      */
     @!APILevel[
         22,
@@ -2065,8 +1921,6 @@ public class ContextMenuOptions {
     /**
      * Callback triggered when the menu is about to appear.
      *
-     * @type { ?() -> Unit }
-     * @relation aboutToAppear?: () => void;
      */
     @!APILevel[
         22,
@@ -2077,8 +1931,6 @@ public class ContextMenuOptions {
     /**
      * Callback triggered when the menu is about to disappear.
      *
-     * @type { ?() -> Unit }
-     * @relation aboutToDisappear?: () => void;
      */
     @!APILevel[
         22,
@@ -2089,8 +1941,6 @@ public class ContextMenuOptions {
     /**
      * Background color of the menu.
      *
-     * @type { ResourceColor }
-     * @relation backgroundColor?: ResourceColor;
      */
     @!APILevel[
         22,
@@ -2101,8 +1951,6 @@ public class ContextMenuOptions {
     /**
      * Background blur style of the menu.
      *
-     * @type { BlurStyle }
-     * @relation backgroundBlurStyle?: BlurStyle;
      */
     @!APILevel[
         22,
@@ -2113,8 +1961,6 @@ public class ContextMenuOptions {
     /**
      * Defines the transition effect of menu opening and closing.
      *
-     * @type { ?TransitionEffect }
-     * @relation transition?: TransitionEffect;
      */
     @!APILevel[
         22,
@@ -2191,7 +2037,6 @@ public class ContextMenuOptions {
 /**
  * Component content cover dismiss
  *
- * @relation declare interface DismissContentCoverAction
  */
 @!APILevel[
     22,
@@ -2201,7 +2046,6 @@ public class DismissContentCoverAction {
     /**
      * Defines content cover dismiss reason
      *
-     * @relation reason: DismissReason;
      */
     @!APILevel[
         22,
@@ -2218,7 +2062,6 @@ public class DismissContentCoverAction {
 
     /**
      *  Defines content cover dismiss function
-     * @relation dismiss: Callback<void>;
      */
     @!APILevel[
         22,
@@ -2234,7 +2077,6 @@ public class DismissContentCoverAction {
 /**
  * Defines the ContextMenu's preview animator options.
  *
- * @relation interface ContextMenuAnimationOptions
  */
 @!APILevel[
     22,
@@ -2244,8 +2086,6 @@ public class ContextMenuAnimationOptions {
     /**
      * Sets the start animator scale and end animator scale.
      *
-     * @type { ?VArray<Float64, $2> }
-     * @relation scale?: AnimationRange<number>;
      */
     @!APILevel[
         22,
@@ -2255,8 +2095,6 @@ public class ContextMenuAnimationOptions {
     /**
      * Defines the transition effect of menu preview opening and closing.
      *
-     * @type { ?TransitionEffect }
-     * @relation transition?: TransitionEffect;
      */
     @!APILevel[
         22,
@@ -2266,8 +2104,6 @@ public class ContextMenuAnimationOptions {
     /**
      * Sets the scale start and end animator of the image displayed before the custom builder preview is displayed.
      *
-     * @type { ?VArray<Float64, $2>  }
-     * @relation hoverScale?: AnimationRange<number>;
      */
     @!APILevel[
         22,
@@ -2327,7 +2163,6 @@ public class ContextMenuAnimationOptions {
 /**
  * Component sheet dismiss
  *
- * @relation declare interface DismissSheetAction
  */
 @!APILevel[
     22,
@@ -2337,7 +2172,6 @@ public class DismissSheetAction {
     /**
      * Dismiss reason type.
      *
-     * @relation reason: DismissReason;
      */
     @!APILevel[
         22,
@@ -2355,7 +2189,6 @@ public class DismissSheetAction {
     /**
      *  Defines sheet dismiss function
      *
-     * @relation reason: DismissReason;
      */
     @!APILevel[
         22,

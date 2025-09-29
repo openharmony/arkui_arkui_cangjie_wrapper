@@ -30,7 +30,6 @@ foreign {
 /**
  * Defines Circle Component.
  *
- * @relation declare const Circle: CircleInterface
  */
 @!APILevel[
     22,
@@ -40,10 +39,9 @@ public class Circle <: CommonShapeMethodComponent<CircleAttribute> & CircleAttri
     /**
      * Create a circle.
      * 
-     * @param { Length } width - Defines the width property.
-     * @param { Length } height - Defines the height property.
+     * @params { Length } width - Defines the width property.
+     * @params { Length } height - Defines the height property.
      * @returns { This }
-     * @relation (value?: CircleOptions): CircleAttribute
      */
     @!APILevel[
         22,

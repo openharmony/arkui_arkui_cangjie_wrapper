@@ -67,7 +67,6 @@ foreign {
 /**
  * Defines Flex Component.
  *
- * @relation const Flex: FlexInterface
  */
 @!APILevel[
     22,
@@ -77,13 +76,12 @@ public class Flex <: CommonMethodComponent<FlexAttribute> & FlexAttribute {
     /**
     * Defines the constructor of Flex.
     *
-    * @param { FlexDirection } direction
-    * @param { FlexWrap } wrap
-    * @param { FlexAlign } justifyContent
-    * @param { ItemAlign } alignItems
-    * @param { FlexAlign } alignContent
+    * @params { FlexDirection } direction
+    * @params { FlexWrap } wrap
+    * @params { FlexAlign } justifyContent
+    * @params { ItemAlign } alignItems
+    * @params { FlexAlign } alignContent
     * @returns { This }
-    * @relation (value?: FlexOptions): FlexAttribute
     */
     @!APILevel[
         22,

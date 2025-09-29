@@ -78,7 +78,6 @@ foreign {
 /**
  * Defines the video controller.
  *
- * @relation interface PreparedInfo
  */
 @!APILevel[
     22,
@@ -89,8 +88,6 @@ public class PreparedInfo {
      * The duration of the current video, in seconds.
      * Anonymous Object Rectification.
      *
-     * @type { Int32 }
-     * @relation duration: number
      */
     @!APILevel[
         22,
@@ -106,7 +103,6 @@ public class PreparedInfo {
 /**
  * Playback information of the video.
  *
- * @relation interface PlaybackInfo
  */
 @!APILevel[
     22,
@@ -117,8 +113,6 @@ public class PlaybackInfo {
      * The duration of the current video, in seconds.
      * Anonymous Object Rectification.
      *
-     * @type { Int32 }
-     * @relation time: number
      */
     @!APILevel[
         22,
@@ -134,7 +128,6 @@ public class PlaybackInfo {
 /**
  * Fullscreen information of the video.
  *
- * @relation interface FullscreenInfo
  */
 @!APILevel[
     22,
@@ -145,8 +138,6 @@ public class FullscreenInfo {
      * The flag whether play in full screen.
      * Anonymous Object Rectification.
      *
-     * @type { Bool }
-     * @relation fullscreen: boolean
      */
     @!APILevel[
         22,
@@ -162,7 +153,6 @@ public class FullscreenInfo {
 /**
  * Defines the video controller.
  *
- * @relation class VideoController
  */
 @!APILevel[
     22,
@@ -172,7 +162,6 @@ public class VideoController <: RemoteDataLite {
     /**
      * constructor.
      *
-     * @relation constructor()
      */
     @!APILevel[
         22,
@@ -189,7 +178,6 @@ public class VideoController <: RemoteDataLite {
     /**
      * Provides events to play.
      *
-     * @relation start(): void
      */
     @!APILevel[
         22,
@@ -202,7 +190,6 @@ public class VideoController <: RemoteDataLite {
     /**
      * Provides a pause event for playback.
      *
-     * @relation pause(): void
      */
     @!APILevel[
         22,
@@ -215,7 +202,6 @@ public class VideoController <: RemoteDataLite {
     /**
      * Provides an event to stop playback.
      *
-     * @relation stop(): void
      */
     @!APILevel[
         22,
@@ -228,9 +214,8 @@ public class VideoController <: RemoteDataLite {
     /**
      * Provide the progress method of video playback.
      *
-     * @param { Int32 } value
-     * @param { SeekMode } seekMode
-     * @relation setCurrentTime(value: number, seekMode: SeekMode): void
+     * @params { Int32 } value
+     * @params { SeekMode } seekMode
      */
     @!APILevel[
         22,
@@ -246,8 +231,7 @@ public class VideoController <: RemoteDataLite {
     /**
      * Provides a full screen playback method.
      *
-     * @param { Bool } value
-     * @relation requestFullscreen(value: boolean): void
+     * @params { Bool } value
      */
     @!APILevel[
         22,
@@ -262,7 +246,6 @@ public class VideoController <: RemoteDataLite {
     /**
      * Provides a method to exit full screen playback.
      *
-     * @relation exitFullscreen(): void
      */
     @!APILevel[
         22,
@@ -278,7 +261,6 @@ public class VideoController <: RemoteDataLite {
 /**
  * Defines Video Component.
  *
- * @relation const Video: VideoInterface
  */
 @!APILevel[
     22,
@@ -288,12 +270,11 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
     /**
      * Set the value.
      *
-     * @param { ResourceStr } src
-     * @param { PlaybackSpeed } currentProgressRate
-     * @param { ResourceStr } previewUri
-     * @param { VideoController } controller
+     * @params { ResourceStr } src
+     * @params { PlaybackSpeed } currentProgressRate
+     * @params { ResourceStr } previewUri
+     * @params { VideoController } controller
      * @returns { Video }
-     * @relation (value: VideoOptions): VideoAttribute
      */
     @!APILevel[
         22,
@@ -321,9 +302,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
     /**
      * Called when judging whether the video is muted.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation muted(value: boolean): VideoAttribute
      */
     @!APILevel[
         22,
@@ -339,9 +319,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
     /**
      * Called when judging whether the video is played automatically.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation autoPlay(value: boolean): VideoAttribute
      */
     @!APILevel[
         22,
@@ -357,9 +336,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
     /**
      * Called when judging whether the control bar is displayed.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation controls(value: boolean): VideoAttribute
      */
     @!APILevel[
         22,
@@ -375,9 +353,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
     /**
      * Called when determining the zoom type of the video source.
      *
-     * @param { ImageFit } value
+     * @params { ImageFit } value
      * @returns { This }
-     * @relation objectFit(value: ImageFit): VideoAttribute
      */
     @!APILevel[
         22,
@@ -394,9 +371,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
     /**
      * Called when judging whether the video is played circular.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation loop(value: boolean): VideoAttribute
      */
     @!APILevel[
         22,
@@ -413,9 +389,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      * Called when the video is played.
      * Anonymous Object Rectification.
      *
-     * @param { VoidCallback } event
+     * @params { VoidCallback } event
      * @returns { This }
-     * @relation onStart(event: VoidCallback): VideoAttribute
      */
     @!APILevel[
         22,
@@ -437,9 +412,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      * Called when the video is paused.
      * Anonymous Object Rectification.
      *
-     * @param { VoidCallback } event
+     * @params { VoidCallback } event
      * @returns { This }
-     * @relation onPause(event: VoidCallback): VideoAttribute
      */
     @!APILevel[
         22,
@@ -461,9 +435,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      * Called when the video playback ends.
      * Anonymous Object Rectification.
      *
-     * @param { VoidCallback } event
+     * @params { VoidCallback } event
      * @returns { This }
-     * @relation onFinish(event: VoidCallback): VideoAttribute
      */
     @!APILevel[
         22,
@@ -484,9 +457,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
     /**
      * Called when playback fails.
      *
-     * @param { VoidCallback } event
+     * @params { VoidCallback } event
      * @returns { This}
-     * @relation onError(event: VoidCallback): VideoAttribute
      */
     @!APILevel[
         22,
@@ -508,9 +480,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      * Called when the video preparation is complete.
      * Anonymous Object Rectification.
      *
-     * @param { Callback<PreparedInfo, Unit> } callback
+     * @params { Callback<PreparedInfo, Unit> } callback
      * @returns { This}
-     * @relation onPrepared(callback: Callback<PreparedInfo>): VideoAttribute
      */
     @!APILevel[
         22,
@@ -532,9 +503,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      * Called when the time information is reported when the progress bar process is operated.
      * Anonymous Object Rectification.
      *
-     * @param { Callback<PlaybackInfo, Unit> } callback
+     * @params { Callback<PlaybackInfo, Unit> } callback
      * @returns { This}
-     * @relation onSeeking(callback: Callback<PlaybackInfo>): VideoAttribute
      */
     @!APILevel[
         22,
@@ -556,9 +526,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      * Called when the playback time information is reported after the operation progress bar is completed.
      * Anonymous Object Rectification.
      *
-     * @param { Callback<PlaybackInfo, Unit> } callback
+     * @params { Callback<PlaybackInfo, Unit> } callback
      * @returns { This }
-     * @relation onSeeked(callback: Callback<PlaybackInfo>): VideoAttribute
      */
     @!APILevel[
         22,
@@ -580,9 +549,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      * Called when the playback progress changes.
      * Anonymous Object Rectification.
      *
-     * @param { Callback<PlaybackInfo, Unit> } callback
+     * @params { Callback<PlaybackInfo, Unit> } callback
      * @returns { This }
-     * @relation onUpdate(callback: Callback<PlaybackInfo>): VideoAttribute
      */
     @!APILevel[
         22,
@@ -604,9 +572,8 @@ public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
      * Called when the video enters and exits the full screen.
      * Anonymous Object Rectification.
      *
-     * @param { Callback<FullscreenInfo, Unit> } callback
+     * @params { Callback<FullscreenInfo, Unit> } callback
      * @returns { This }
-     * @relation onFullscreenChange(callback: Callback<FullscreenInfo>): VideoAttribute
      */
     @!APILevel[
         22,

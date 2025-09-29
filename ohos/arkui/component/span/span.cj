@@ -78,8 +78,6 @@ public abstract class BaseSpan <: UINodeBase {
 
 /**
  * Defines Span Component.
- *
- * @relation declare const Span: SpanInterface;
  */
 @!APILevel[
     22,
@@ -89,8 +87,7 @@ public class Span <: BaseSpan {
     /*
      * Called when text is entered in span.
      * 
-     * @param { ResourceStr } value
-     * @relation (value: string | Resource): SpanAttribute;
+     * @params { ResourceStr } value
      */
     @!APILevel[
         22,
@@ -107,9 +104,8 @@ public class Span <: BaseSpan {
     /*
      * Called when the font size is set.
      * 
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation fontSize(value: number | string | Resource): SpanAttribute;
      */
     @!APILevel[
         22,
@@ -127,9 +123,8 @@ public class Span <: BaseSpan {
     /*
      * Called when the font color is set.
      * 
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation fontColor(value: ResourceColor): SpanAttribute;
      */
     @!APILevel[
         22,
@@ -146,9 +141,8 @@ public class Span <: BaseSpan {
     /*
      * Called when the font style of a font is set.
      * 
-     * @param { FontStyle } value
+     * @params { FontStyle } value
      * @returns { This }
-     * @relation fontStyle(value: FontStyle): SpanAttribute;
      */
     @!APILevel[
         22,
@@ -164,9 +158,8 @@ public class Span <: BaseSpan {
     /*
      * Called when the font weight is set.
      * 
-     * @param { FontWeight } value
+     * @params { FontWeight } value
      * @returns { This }
-     * @relation fontWeight(value: number | FontWeight | ResourceStr): SpanAttribute;
      */
     @!APILevel[
         22,
@@ -184,9 +177,8 @@ public class Span <: BaseSpan {
     /*
      * Called when the font list of text is set.
      * 
-     * @param { ResourceStr } value
+     * @params { ResourceStr } value
      * @returns { This }
-     * @relation fontFamily(value: string | Resource): SpanAttribute;
      */
     @!APILevel[
         22,
@@ -204,10 +196,9 @@ public class Span <: BaseSpan {
     /*
      * Called when the text decoration of the text is set.
      * 
-     * @param { TextDecorationType } decorationType
-     * @param { ResourceColor } color
+     * @params { TextDecorationType } decorationType
+     * @params { ResourceColor } color
      * @returns { This }
-     * @relation decoration(value: DecorationStyleInterface): SpanAttribute;
      */
     @!APILevel[
         22,
@@ -226,9 +217,8 @@ public class Span <: BaseSpan {
     /*
      * Called when the distance between text fonts is set.
      * 
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation letterSpacing(value: number | ResourceStr): SpanAttribute;
      */
     @!APILevel[
         22,
@@ -245,9 +235,8 @@ public class Span <: BaseSpan {
     /*
      * Called when the type of letter in the text font is set.
      * 
-     * @param { TextCase } value
+     * @params { TextCase } value
      * @returns { This }
-     * @relation textCase(value: TextCase): SpanAttribute;
      */
     @!APILevel[
         22,
@@ -263,7 +252,7 @@ public class Span <: BaseSpan {
     /*
      * Called when a click event occurs.
      *
-     * @param { function } event
+     * @params { function } event
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.

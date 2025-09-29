@@ -63,9 +63,7 @@ foreign {
  * Defines a CheckboxGroup callback when onChange.
  * Anonymous Object Rectification.
  *
- * @typedef { function } OnCheckboxGroupChangeCallback
- * @param { CheckboxGroupResult } value - checkbox group result
- * @relation declare type OnCheckboxGroupChangeCallback = (value: CheckboxGroupResult) => void
+ * @params { CheckboxGroupResult } value - checkbox group result
  */
 public type OnCheckboxGroupChangeCallback = (CheckboxGroupResult) -> Unit
 
@@ -95,8 +93,6 @@ class CallbackFFiCheckboxGroupResult <: BaseCallBack {
 /**
  * Defines the options of CheckboxGroupResult.
  *
- * @class CheckboxGroupResult
- * @relation interface CheckboxGroupResult
  */
 @!APILevel[
     22,
@@ -106,8 +102,6 @@ public class CheckboxGroupResult {
     /**
      * Set the group of status.
      *
-     * @type { SelectStatus }
-     * @relation status: SelectStatus
      */
     @!APILevel[
         22,
@@ -117,8 +111,6 @@ public class CheckboxGroupResult {
     /**
      * Checkbox name.
      *
-     * @type { Array<string> }
-     * @relation name: Array<string>
      */
     @!APILevel[
         22,
@@ -164,7 +156,6 @@ func parseCheckboxGroupResult(event: FFiCheckboxGroupResult): CheckboxGroupResul
 /**
  * Defines CheckboxGroup Component.
  * 
- * @relation const CheckboxGroup: CheckboxGroupInterface
  */
 @!APILevel[
     22,
@@ -174,9 +165,8 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
     /**
      * Called when the CheckboxGroup component is used.
      *
-     * @param { String } group
+     * @params { String } group
      * @returns { CheckboxGroup }
-     * @relation (options?: CheckboxGroupOptions): CheckboxGroupAttribute
      */
     @!APILevel[
         22,
@@ -193,9 +183,8 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
     /**
      * setting whether all checkbox is selected.
      *
-     * @param { Bool } isAllSelected
+     * @params { Bool } isAllSelected
      * @returns { This }
-     * @relation selectAll(value: boolean): CheckboxGroupAttribute
      */
     @!APILevel[
         22,
@@ -211,9 +200,8 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
     /**
      * setting the display color of checkbox.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation selectedColor(value: ResourceColor): CheckboxGroupAttribute
      */
     @!APILevel[
         22,
@@ -335,7 +323,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & Ch
      * Called when the selection status changes.
      * Anonymous Object Rectification.
      *
-     * @param { OnCheckboxGroupChangeCallback } callback
+     * @params { OnCheckboxGroupChangeCallback } callback
      * @returns { This }
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */

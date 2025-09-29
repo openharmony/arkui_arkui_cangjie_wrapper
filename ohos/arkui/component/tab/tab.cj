@@ -226,8 +226,6 @@ foreign {
 
 /**
  * Defines Tabs Component.
- *
- * @relation declare const Tabs: TabsInterface
  */
 @!APILevel[
     22,
@@ -242,7 +240,6 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
      * @params { Int32 } index
      * @params { () -> Unit } child
      * @returns { This }
-     * @relation (options?: TabsOptions): TabsAttribute
      */
     @!APILevel[
         22,
@@ -265,10 +262,9 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
     /**
      * Called when the width of the bar graph is set.
      *
-     * @param { Length } value - Width of the tab bar. If the set value is less than 0 
+     * @params { Length } value - Width of the tab bar. If the set value is less than 0 
      * or greater than the width of the Tabs component, the default value is used.
      * @returns { This }
-     * @relation barWidth(value: Length): TabsAttribute
      */
     @!APILevel[
         22,
@@ -293,10 +289,9 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
     /**
      * Called when the height of the bar graph is set.
      *
-     * @param { Length } value - Height of the tab bar. If the set value is less than 0 or
+     * @params { Length } value - Height of the tab bar. If the set value is less than 0 or
      * greater than the height of the Tabs component, the default value is used.
      * @returns { This }
-     * @relation barHeight(value: Length): TabsAttribute
      */
     @!APILevel[
         22,
@@ -328,9 +323,8 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
     /**
      * Sets whether to use vertical tabs.
      *
-     * @param { Bool } value - Whether to use vertical tabs. Default value is false.
+     * @params { Bool } value - Whether to use vertical tabs. Default value is false.
      * @returns { This }
-     * @relation vertical(value: boolean): TabsAttribute
      */
     @!APILevel[
         22,
@@ -346,9 +340,8 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
     /**
      * Sets whether the tabs are scrollable.
      *
-     * @param { Bool } value - Whether the tabs are scrollable. Default value is true.
+     * @params { Bool } value - Whether the tabs are scrollable. Default value is true.
      * @returns { This }
-     * @relaiton scrollable(value: boolean): TabsAttribute
      */
     @!APILevel[
         22,
@@ -364,10 +357,9 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
     /**
      * Sets the tab bar layout mode to BarMode.Fixed.
      *
-     * @param { BarMode } value - The width of each tab is determined by equally dividing 
+     * @params { BarMode } value - The width of each tab is determined by equally dividing 
      * the number of tabs by the bar width (or bar height in the vertical layout).
      * @returns { This }
-     * @relation barMode(value: BarMode.Fixed): TabsAttribute
      */
     @!APILevel[
         22,
@@ -384,9 +376,8 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
      * Sets the length of time required to complete the tab switching animation,
      * which is initiated by clicking a specific tab or by calling the changeIndex API of TabsController.
      *
-     * @param { Float32 } value
+     * @params { Float32 } value
      * @returns { This }
-     * @relation animationDuration(value: number): TabsAttribute
      */
     @!APILevel[
         22,
@@ -410,9 +401,8 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
      * 4. A tab is clicked.
      * </p>
      *
-     * @param { Callback<Int32, Unit> } event
-     * @return { This }
-     * relation onChange(event: Callback<number>): TabsAttribute
+     * @params { Callback<Int32, Unit> } event
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -436,8 +426,6 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
 
 /**
  * Provides methods for switching tabs.
- *
- * @relation class TabsController
  */
 @!APILevel[
     22,
@@ -446,8 +434,6 @@ public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
 public class TabsController <: RemoteDataLite {
     /**
      * TabsController constructor
-     *
-     * @relation constructor()
      */
     @!APILevel[
         22,
@@ -466,10 +452,9 @@ public class TabsController <: RemoteDataLite {
     /**
      * Switches to the specified tab.
      *
-     * @param { Int32 } value - Index of the tab. If this parameter is set to a value less than 0 
+     * @params { Int32 } value - Index of the tab. If this parameter is set to a value less than 0 
      * or greater than the maximum number, the default value 0 is used.
      * @returns { Unit }
-     * @relation changeIndex(value: number): void
      */
     @!APILevel[
         22,
@@ -484,8 +469,6 @@ public class TabsController <: RemoteDataLite {
 
 /**
  * Defines TabContent Component.
- *
- * @relation declare const TabContent: TabContentInterface
  */
 @!APILevel[
     22,
@@ -496,8 +479,7 @@ public class TabContent <: CommonMethodComponent<TabContentAttribute> & TabConte
      * Create a TabContent with child.
      *
      * @params { () -> Unit } child
-     * returns { TabContent }
-     * @relation (): TabContentAttribute
+     * @returns { TabContent }
      */
     @!APILevel[
         22,
@@ -512,8 +494,7 @@ public class TabContent <: CommonMethodComponent<TabContentAttribute> & TabConte
     /**
      * Create a TabContent.
      *
-     * returns { TabContent }
-     * @relation (): TabContentAttribute
+     * @returns { TabContent }
      */
     @!APILevel[
         22,
@@ -525,9 +506,6 @@ public class TabContent <: CommonMethodComponent<TabContentAttribute> & TabConte
         }
     }
 
-    /**
-     * @deprecated
-     */
     protected func pop(): Unit {
         unsafe {
             FfiOHOSAceFrameworkTabContentPop()
@@ -542,9 +520,8 @@ public class TabContent <: CommonMethodComponent<TabContentAttribute> & TabConte
      * <br>If the content set exceeds the space provided by the tab bar, it will be clipped.
      * </p>
      *
-     * @param { ResourceStr } content - Content displayed on the tab bar.
+     * @params { ResourceStr } content - Content displayed on the tab bar.
      * @returns { This }
-     * @relation tabBar(options: string | Resource | CustomBuilder | TabBarOptions): TabContentAttribute
      */
     @!APILevel[
         22,
@@ -567,10 +544,9 @@ public class TabContent <: CommonMethodComponent<TabContentAttribute> & TabConte
      * <br>When an icon display error occurs, a gray blank block is displayed.
      * </p>
      *
-     * @param { ResourceStr } icon - TabBar icon.
-     * @param { ResourceStr } text - TabBar text.
+     * @params { ResourceStr } icon - TabBar icon.
+     * @params { ResourceStr } text - TabBar text.
      * @returns { This }
-     * @relation tabBar(options: string | Resource | CustomBuilder | TabBarOptions): TabContentAttribute
      */
     @!APILevel[
         22,
@@ -593,9 +569,8 @@ public class TabContent <: CommonMethodComponent<TabContentAttribute> & TabConte
      * <br>If the content set exceeds the space provided by the tab bar, it will be clipped.
      * </p>
      *
-     * @param { CustomBuilder } content - Content displayed on the tab bar.
+     * @params { CustomBuilder } content - Content displayed on the tab bar.
      * @returns { This }
-     * @relation tabBar(options: string | Resource | CustomBuilder | TabBarOptions): TabContentAttribute
      */
     @!APILevel[
         22,

@@ -71,7 +71,6 @@ protected class Animator {
 /**
  * Whether to resume to the initial state after the animation is executed.
  *
- * @relation fill: "none" | "forwards" | "backwards" | "both";
  */
 @Derive[Equatable]
 @!APILevel[
@@ -122,7 +121,6 @@ public enum AnimatorFill {
  * The animation playback mode.
  * The default value is "normal".
  *
- * @relation direction: "normal" | "reverse" | "alternate" | "alternate-reverse"
  */
 @Derive[Equatable]
 @!APILevel[
@@ -166,7 +164,6 @@ public enum AnimatorDirection {
 /**
  * Defines the animator options.
  *
- * @relation export interface AnimatorOptions
  */
 @!APILevel[
     22,
@@ -177,7 +174,6 @@ public class AnimatorOptions {
      * Delay for the animation start. The default value indicates no delay.
      * The default value is 0.
      *
-     * @relation duration: number
      */
     @!APILevel[
         22,
@@ -205,7 +201,6 @@ public class AnimatorOptions {
      * interpolating-spring(velocity, mass, stiffness, damping), interpolating spring curve.
      * The default value is ease.
      *
-     * @relation easing: string
      */
     @!APILevel[
         22,
@@ -216,7 +211,6 @@ public class AnimatorOptions {
      * Delay for the animation start. The default value indicates no delay.
      * The default value is 0.
      *
-     * @relation delay: number
      */
     @!APILevel[
         22,
@@ -226,7 +220,6 @@ public class AnimatorOptions {
     /**
      * Whether to resume to the initial state after the animation is executed.
      *
-     * @relation fill: "none" | "forwards" | "backwards" | "both"
      */
     @!APILevel[
         22,
@@ -236,7 +229,6 @@ public class AnimatorOptions {
     /**
      * The animation playback mode.
      *
-     * @relation direction: "normal" | "reverse" | "alternate" | "alternate-reverse"
      */
     @!APILevel[
         22,
@@ -247,7 +239,6 @@ public class AnimatorOptions {
      * Number of times the animation will be played. number indicates a fixed number of playback operations, and -1 an unlimited number of playback operations.
      * The default value is 1.
      *
-     * @relation iterations: number
      */
     @!APILevel[
         22,
@@ -258,7 +249,6 @@ public class AnimatorOptions {
      * Starting point of animator interpolation.
      * The default value is 0.
      *
-     * @relation begin: number
      */
     @!APILevel[
         22,
@@ -269,7 +259,6 @@ public class AnimatorOptions {
      * Ending point of Dynamic Interpolation
      * The default value is 1.
      *
-     * @relation end: number
      */
     @!APILevel[
         22,
@@ -280,20 +269,19 @@ public class AnimatorOptions {
     /**
      * Create an animator options.
      *
-     * @param { Int32 } duration - Duration of the animation, in milliseconds.
+     * @params { Int32 } duration - Duration of the animation, in milliseconds.
      * The default value is 0.
-     * @param { String } easing - Time curve of the animation.
-     * @param { Int32 } delay - Delay for the animation start. The default value indicates no delay.
+     * @params { String } easing - Time curve of the animation.
+     * @params { Int32 } delay - Delay for the animation start. The default value indicates no delay.
      * The default value is 0.
-     * @param { AnimatorFill } fill - Whether to resume to the initial state after the animation is executed.
-     * @param { AnimatorDirection } direction - The animation playback mode.
-     * @param { Int32 } iterations - Number of times the animation will be played. number indicates a fixed number of playback operations, and -1 an unlimited number of playback operations.
+     * @params { AnimatorFill } fill - Whether to resume to the initial state after the animation is executed.
+     * @params { AnimatorDirection } direction - The animation playback mode.
+     * @params { Int32 } iterations - Number of times the animation will be played. number indicates a fixed number of playback operations, and -1 an unlimited number of playback operations.
      * The default value is 1.
-     * @param { Float64 } begin - Starting point of animator interpolation.
+     * @params { Float64 } begin - Starting point of animator interpolation.
      * The default value is 0.
-     * @param { Float64 } end - Ending point of Dynamic Interpolation.
+     * @params { Float64 } end - Ending point of Dynamic Interpolation.
      * @returns { This }
-     * @relation interface AnimatorOptions
      */
     @!APILevel[
         22,
@@ -323,7 +311,6 @@ public class AnimatorOptions {
 /**
  * Defines the Animator result interface.
  *
- * @relation export interface AnimatorResult
  */
 @!APILevel[
     22,
@@ -472,7 +459,7 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * Reset the options for current animator.
      *
-     * @param { AnimatorOptions } options
+     * @params { AnimatorOptions } options
      * @throws { BusinessException } 100001 - Internal error. Possible causes:
      * <br> The specified page is not found or the object property list is not obtained.
      */
@@ -619,7 +606,7 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * The expected frame rate of dynamical of rate range.
      *
-     * @param { ExpectedFrameRateRange } rateRange
+     * @params { ExpectedFrameRateRange } rateRange
      * @throws { BusinessException } 100001 - Internal error. Possible causes:
      * <br> The specified page is not found or the object property list is not obtained.
      */

@@ -45,10 +45,9 @@ foreign {
 /**
  * Handles notification callback with string parameters.
  *
- * @param key Key parameter passed as CString
- * @param value Value parameter passed as CString
- * @return
- * @note The caller manages the memory of the CString.
+ * @params key Key parameter passed as CString
+ * @params value Value parameter passed as CString
+ * @returns
  */
 func notifyCallbackString(key: CString, value: CString): Unit {
     AppStorage.setOrCreate<String>(key.toString(), value.toString())
@@ -57,10 +56,9 @@ func notifyCallbackString(key: CString, value: CString): Unit {
 /**
  * Notification callback function for handling key-value pairs with Int64 type values.
  *
- * @param key Key as a CString, which is converted to a String internally
- * @param value Value of type Int64
- * @return
- * @note The caller manages the memory of the CString.
+ * @params key Key as a CString, which is converted to a String internally
+ * @params value Value of type Int64
+ * @returns
  */
 func notifyCallbackInt64(key: CString, value: Int64): Unit {
     AppStorage.setOrCreate<Int64>(key.toString(), value)
@@ -69,10 +67,9 @@ func notifyCallbackInt64(key: CString, value: Int64): Unit {
 /**
  * Notification callback function for handling key-value pairs with Float64 type values.
  *
- * @param key Key as a CString, which is converted to a String internally
- * @param value Value of type Float64
- * @return
- * @note The caller manages the memory of the CString.
+ * @params key Key as a CString, which is converted to a String internally
+ * @params value Value of type Float64
+ * @returns
  */
 func notifyCallbackFloat64(key: CString, value: Float64): Unit {
     AppStorage.setOrCreate<Float64>(key.toString(), value)
@@ -81,10 +78,9 @@ func notifyCallbackFloat64(key: CString, value: Float64): Unit {
 /**
  * Notification callback function for handling key-value pairs with Bool type values.
  *
- * @param key Key as a CString, which is converted to a String internally
- * @param value Value of type Bool
- * @return
- * @note The caller manages the memory of the CString.
+ * @params key Key as a CString, which is converted to a String internally
+ * @params value Value of type Bool
+ * @returns
  */
 func notifyCallbackBool(key: CString, value: Bool): Unit {
     AppStorage.setOrCreate<Bool>(key.toString(), value)
@@ -92,8 +88,6 @@ func notifyCallbackBool(key: CString, value: Bool): Unit {
 
 /**
  * Defines the PersistentStorage interface.
- *
- * @relation declare class PersistentStorage
  */
 @!APILevel[
     22,
@@ -156,9 +150,8 @@ public class PersistentStorage <: Observer {
     /**
      * Called when a persistence property is stored.
      *
-     * @param { String } key
-     * @param { T } defaultValue
-     * @relation static PersistProp<T>(key: string, defaultValue: T): void;
+     * @params { String } key
+     * @params { T } defaultValue
      */
     @!APILevel[
         22,
@@ -173,8 +166,7 @@ public class PersistentStorage <: Observer {
      * If a property does not exist in AppStorage, add it and initialize it with given value
      * works as persistProp for multiple properties.
      *
-     * @param { Array<(String, T)> } key
-     * @relation static persistProps(props: PersistPropsOptions[]): void;
+     * @params { Array<(String, T)> } key
      */
     @!APILevel[
         22,
@@ -187,8 +179,7 @@ public class PersistentStorage <: Observer {
     /**
     * Reverse of persistProp
     *
-    * @param { String } key - no longer persist the property named key
-    * @relation static deleteProp(key: string): void;
+    * @params { String } key - no longer persist the property named key
     */
     @!APILevel[
         22,
@@ -202,7 +193,6 @@ public class PersistentStorage <: Observer {
      * Inform persisted AppStorage property names
      *
      * @returns { Array<String> } array of AppStorage keys
-     * @relation static keys(): Array<string>;
      */
     @!APILevel[
         22,

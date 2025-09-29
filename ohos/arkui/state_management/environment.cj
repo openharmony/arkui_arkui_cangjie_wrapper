@@ -39,7 +39,6 @@ foreign {
 /**
  * Defines the ColorMode of device.
  *
- * @relation declare enum ColorMode
  */
 @Derive[Equatable]
 @!APILevel[
@@ -50,7 +49,6 @@ public enum ColorMode {
     /**
      * Light mode.
      *
-     * @relation LIGHT = 0
      */
     @!APILevel[
         22,
@@ -61,7 +59,6 @@ public enum ColorMode {
     /**
      * Dark mode.
      *
-     * @relation DARK
      */
     @!APILevel[
         22,
@@ -90,7 +87,6 @@ public enum ColorMode {
 /**
  * Defines the LayoutDirection of device.
  *
- * @relation declare enum LayoutDirection
  */
 @Derive[Equatable]
 @!APILevel[
@@ -101,7 +97,6 @@ public enum LayoutDirection {
     /**
      * Elements are laid out from left to right.
      *
-     * @relation LTR
      */
     @!APILevel[
         22,
@@ -112,7 +107,6 @@ public enum LayoutDirection {
     /**
      * Elements are laid out from right to left.
      *
-     * @relation RTL
      */
     @!APILevel[
     22,
@@ -123,7 +117,6 @@ public enum LayoutDirection {
     /**
      * Elements are laid out from auto.
      *
-     * @relation Auto
      */
     @!APILevel[
     22,
@@ -144,7 +137,6 @@ public enum LayoutDirection {
 /**
  * Defines the Environment interface.
  *
- * @relation declare class Environment
  */
 @!APILevel[
     22,
@@ -182,7 +174,6 @@ public class Environment {
      * returns an Array<string> of all environment property keys
      *
      * @returns { Array<string> } all environment property keys
-     * @relation static keys(): Array<string>;
      */
     @!APILevel[
         22,
@@ -198,10 +189,9 @@ public class Environment {
      * The function call fails and returns false if a property with given name exists in AppStorage already.
      * It is wrong API use to access a property with given name in AppStorage before calling Environment.envProp.
      *
-     * @param { String } key - environment property
-     * @param { T } value - is the default value if cannot get the environment property value
+     * @params { String } key - environment property
+     * @params { T } value - is the default value if cannot get the environment property value
      * @returns { Bool } false if method failed
-     * @relation static envProp<S>(key: string, value: S): boolean;
      */
     @!APILevel[
         22,

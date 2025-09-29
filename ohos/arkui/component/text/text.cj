@@ -221,7 +221,6 @@ class FFIVectorFfiTextMenuItem {
 /**
  * Defines the controller of Text.
  *
- * @relation declare class TextController
  */
 @!APILevel[
     22,
@@ -248,7 +247,6 @@ public class TextController <: RemoteDataLite {
     /**
      * Close the select menu when menu is on.
      *
-     * @relation closeSelectionMenu(): void;
      */
     @!APILevel[
         22,
@@ -264,7 +262,6 @@ public class TextController <: RemoteDataLite {
 /**
  * Provides a class for writing texts.
  *
- * @relation interface TextInterface
  */
 @!APILevel[
     22,
@@ -274,7 +271,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when writing text.
      *
-     * @relation (content?: string | Resource, value?: TextOptions): TextAttribute;
      */
     @!APILevel[
         22,
@@ -293,7 +289,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when writing text.
      *
-     * @relation (content?: string | Resource, value?: TextOptions): TextAttribute;
      */
     @!APILevel[
         22,
@@ -306,7 +301,6 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when writing text.
      *
-     * @relation (content?: string | Resource, value?: TextOptions): TextAttribute;
      */
     @!APILevel[
         22,
@@ -343,9 +337,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Set font line spacing.
      *
-     * @param { Length } value - Default value is 0.
+     * @params { Length } value - Default value is 0.
      * @returns { This }
-     * @relation lineSpacing(value: LengthMetrics): TextAttribute;
      */
     @!APILevel[
         22,
@@ -362,9 +355,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when the font size is set.
      *
-     * @param { Length } value - Default value is 16.fp.
+     * @params { Length } value - Default value is 16.fp.
      * @returns { This }
-     * @relation lineSpacing(value: LengthMetrics): TextAttribute;
      */
     @!APILevel[
         22,
@@ -382,9 +374,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when the maximum font size of the font is set.
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation maxFontSize(value: number | string | Resource): TextAttribute;
      */
     @!APILevel[
         22,
@@ -402,9 +393,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when the minimum font size of the font is set.
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation minFontSize(value: number | string | Resource): TextAttribute;
      */
     @!APILevel[
         22,
@@ -422,9 +412,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when the font color is set.
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation fontColor(value: ResourceColor): TextAttribute;
      */
     @!APILevel[
         22,
@@ -441,9 +430,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when the font style of a font is set.
      *
-     * @param { FontStyle } value - Default value is FontStyle.Normal.
+     * @params { FontStyle } value - Default value is FontStyle.Normal.
      * @returns { This }
-     * @relation fontStyle(value: FontStyle): TextAttribute;
      */
     @!APILevel[
         22,
@@ -459,9 +447,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when the font weight is set.
      *
-     * @param { FontStyle } value
+     * @params { FontStyle } value
      * @returns { This }
-     * @relation fontWeight(value: number | FontWeight | ResourceStr): TextAttribute;
      */
     @!APILevel[
         22,
@@ -480,9 +467,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when the font list of text is set.
      *
-     * @param { ResourceStr } value
+     * @params { ResourceStr } value
      * @returns { This }
-     * @relation fontFamily(value: string | Resource): TextAttribute;
      */
     @!APILevel[
         22,
@@ -500,9 +486,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when the horizontal center mode of the font is set.
      *
-     * @param { TextAlign } value - value - Default value is TextAlign.Start.
+     * @params { TextAlign } value - value - Default value is TextAlign.Start.
      * @returns { This }
-     * @relation textAlign(value: TextAlign): TextAttribute;
      */
     @!APILevel[
         22,
@@ -519,9 +504,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when the overflow mode of the font is set.
      *
-     * @param { TextOverflowOptions } options - Text overflow options.
+     * @params { TextOverflowOptions } options - Text overflow options.
      * @returns { This }
-     * @relation textOverflow(options: TextOverflowOptions): TextAttribute;
      */
     @!APILevel[
         22,
@@ -539,9 +523,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      * <br>By default, text is automatically folded.
      * <br>If this attribute is specified, the text will not exceed the specified number of lines.
      * <br>If there is extra text, you can use textOverflow to specify how it is displayed.
-     * @param { Int32 } options - Text overflow options.
+     * @params { Int32 } options - Text overflow options.
      * @returns { This }
-     * @relation maxLines(value: number): TextAttribute;
      */
     @!APILevel[
         22,
@@ -560,9 +543,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
      * <br>If the value is of the number type, the unit fp is used.
      * <br>For the string type, numeric string values with optional units.
      *
-     * @param { Int32 } value
+     * @params { Int32 } value
      * @returns { This }
-     * @relation maxLines(value: number): TextAttribute;
      */
     @!APILevel[
         22,
@@ -579,11 +561,10 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when the text decoration of the text is set.
      *
-     * @param { TextDecorationType } decorationType - The type value of the decoration property object.
-     * @param { ResourceColor } color - The color value of the decoration property object.
-     * @param { TextDecorationStyle } decorationStyle - The style value of the decoration property object.
+     * @params { TextDecorationType } decorationType - The type value of the decoration property object.
+     * @params { ResourceColor } color - The color value of the decoration property object.
+     * @params { TextDecorationStyle } decorationStyle - The style value of the decoration property object.
      * @returns { This }
-     * @relation decoration(value: DecorationStyleInterface): TextAttribute;
      */
     @!APILevel[
         22,
@@ -605,9 +586,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
      * Called when the baseline offset is set.
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
-     * @relation baselineOffset(value: number | ResourceStr): TextAttribute;
      */
     @!APILevel[
         22,
@@ -624,9 +604,8 @@ public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
     /**
    * Called when the type of letter in the text font is set.
    *
-   * @param { TextCase } value - Default value is TextCase.Normal.
+   * @params { TextCase } value - Default value is TextCase.Normal.
    * @returns { This }
-   * @relation textCase(value: TextCase): TextAttribute;
    */
     @!APILevel[
         22,

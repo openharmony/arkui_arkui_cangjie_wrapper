@@ -108,17 +108,14 @@ func checkSelect(range: Array<String>, value: String): UInt32 {
 /**
  * Callback of TextPicker item is selected event.
  *
- * @typedef {function} OnTextPickerChangeCallback
- * @param { String } selectItem - Value of the selected item.
- * @param { UInt32 } index - Index of the selected item.
- * @relation type OnTextPickerChangeCallback = (selectItem: string | string[], index: number | number[]) => void
+ * @params { String } selectItem - Value of the selected item.
+ * @params { UInt32 } index - Index of the selected item.
  */
 public type OnTextPickerChangeCallback = (String, UInt32) -> Unit
 
 /**
  * Creates a text picker based on the selection range specified by range.
  *
- * @relation const TextPicker: TextPickerInterface
  */
 @!APILevel[
     22,
@@ -128,11 +125,10 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
     /**
      * Defines the TextPicker constructor.
      *
-     * @param { Array<String> } range
-     * @param { ?UInt32 } selected
-     * @param { ?String } value
+     * @params { Array<String> } range
+     * @params { ?UInt32 } selected
+     * @params { ?String } value
      * @returns { TextPicker }
-     * @relation (options?: TextPickerOptions): TextPickerAttribute
      */
     @!APILevel[
         22,
@@ -173,12 +169,10 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
     /**
      * Sets the height of each item in the picker.
      *
-     * @param { Length } value - Height of each item in the picker.
+     * @params { Length } value - Height of each item in the picker.
      * <br>For the number type, the value range is [0, +∞).
      * <br>For the string type, only numeric string values, for example, "56", are supported.
      * @returns { This }
-     * @default 56 vp (selected) and 36 vp (unselected).
-     * @relation defaultPickerItemHeight(value: number | string): TextPickerAttribute
      */
     @!APILevel[
         22,
@@ -196,10 +190,8 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
     /**
      * Sets whether scrolling is loopable.
      *
-     * @param { Bool } value - Whether scrolling is loopable. true: loopable; false: not loopable.
-     * @default true
+     * @params { Bool } value - Whether scrolling is loopable. true: loopable; false: not loopable.
      * @returns { This }
-     * @relation canLoop(value: boolean): TextPickerAttribute
      */
     @!APILevel[
         22,
@@ -218,7 +210,7 @@ public class TextPicker <: CommonMethodComponent<TextPickerAttribute> & TextPick
      * value indicates the text of the selected item.
      * When the picker contains imagery only, value is empty.
      *
-     * @param { OnTextPickerChangeCallback } callback - the callback of onChange.
+     * @params { OnTextPickerChangeCallback } callback - the callback of onChange.
      * @returns { This }
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */

@@ -27,7 +27,6 @@ import std.collection.*
  * AppStorage singleton is sub-class of LocalStorage for
  * UI state of app-wide access and same life cycle as the app.
  *
- * @relation declare class LocalStorage
  */
 @!APILevel[
     22,
@@ -41,7 +40,6 @@ public class LocalStorage {
      * initialize with all properties and their values that Object.keys(params) returns
      * Property values must not be undefined.
      *
-     * @relation constructor(initializingProperties?: Object)
      */
     @!APILevel[
         22,
@@ -64,9 +62,8 @@ public class LocalStorage {
      * return true if property with given name exists
      * same as ES6 Map.prototype.has()
      *
-     * @param { String } propName - searched property
+     * @params { String } propName - searched property
      * @returns { Bool } true if property with such name exists in LocalStorage
-     * @relation has(propName: string): boolean;
      */
     @!APILevel[
         22,
@@ -81,7 +78,6 @@ public class LocalStorage {
      * same as ES6 Map.prototype.keys()
      *
      * @returns { EquatableCollection<String> }
-     * @relation keys(): IterableIterator<string>;
      */
     @!APILevel[
         22,
@@ -96,7 +92,6 @@ public class LocalStorage {
      * same as Map.prototype.size()
      *
      * @returns { Int64 } return number of properties
-     * @relation size(): number;
      */
     @!APILevel[
         22,
@@ -110,9 +105,8 @@ public class LocalStorage {
      * Returns value of given property
      * return undefined if no property with this name
      *
-     * @param { String } propName
+     * @params { String } propName
      * @returns { ?T } property value if found
-     * @relation get<T>(propName: string): T | undefined;
      */
     @!APILevel[
         22,
@@ -134,10 +128,9 @@ public class LocalStorage {
      * Method sets nothing and returns false if property with this name does not exist in LocalStorage
      * newValue can be undefined or null from API 12.
      *
-     * @param { String } propName
-     * @param { T } newValue - must be of type T
+     * @params { String } propName
+     * @params { T } newValue - must be of type T
      * @returns { Bool } true on success
-     * @relation set<T>(propName: string, newValue: T): boolean;
      */
     @!APILevel[
         22,
@@ -161,10 +154,9 @@ public class LocalStorage {
      * Add property if no property with given name and initialize with given value.
      * newValue can be undefined or null from API 12
      *
-     * @param { String } propName
-     * @param { T } newValue - must be of type T, can be undefined or null
+     * @params { String } propName
+     * @params { T } newValue - must be of type T, can be undefined or null
      * @returns { boolean } true on success, i.e. when above conditions are satisfied, otherwise false
-     * @relation setOrCreate<T>(propName: string, newValue: T): boolean;
      */
     @!APILevel[
         22,
@@ -189,9 +181,8 @@ public class LocalStorage {
     /**
      * Create and return a two-way sync "(link") to named property
      *
-     * @param { String } propName - name of source property in LocalStorage
+     * @params { String } propName - name of source property in LocalStorage
      * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
-     * @relation link<T>(propName: string): SubscribedAbstractProperty<T>;
      */
     @!APILevel[
         22,
@@ -211,12 +202,11 @@ public class LocalStorage {
     /**
      * Like see link(), but will create and initialize a new source property in LocalStorage if missing
      *
-     * @param { String } propName - name of source property in LocalStorage
-     * @param { T } defaultValue - value to be used for initializing new property in LocalStorage
+     * @params { String } propName - name of source property in LocalStorage
+     * @params { T } defaultValue - value to be used for initializing new property in LocalStorage
      *        default value must be of type T.
      * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
      *          Apps can use SDK functions of base class ObservedProperty<T>
-     * @relation setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>;
      */
     @!APILevel[
         22,
@@ -234,9 +224,8 @@ public class LocalStorage {
     /**
      * Create and return a one-way sync ('prop') to named property
      *
-     * @param { String } propName - name of source property in LocalStorage
+     * @params { String } propName - name of source property in LocalStorage
      * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
-     * @relation  prop<S>(propName: string): SubscribedAbstractProperty<S>;
      */
     @!APILevel[
         22,
@@ -256,11 +245,10 @@ public class LocalStorage {
     /**
      * Like see prop(), will create and initialize a new source property in LocalStorage if missing
      *
-     * @param { String } propName - name of source property in LocalStorage
-     * @param { T } defaultValue - value to be used for initializing new property in LocalStorage.
+     * @params { String } propName - name of source property in LocalStorage
+     * @params { T } defaultValue - value to be used for initializing new property in LocalStorage.
      *         Default value must be of type T.
      * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
-     * @relation  prop<S>(propName: string): SubscribedAbstractProperty<S>;
      */
     @!APILevel[
         22,
@@ -289,9 +277,8 @@ public class LocalStorage {
      * or a sync relationship with a SubscribedAbstractProperty variable the property can nit
      * (and also should not!) be deleted from LocalStorage.
      *
-     * @param { String } propName
+     * @params { String } propName
      * @returns { Bool } false if method failed
-     * @relation delete(propName: string): boolean;
      */
     @!APILevel[
         22,
@@ -318,7 +305,6 @@ public class LocalStorage {
      * that still has subscribers
      *
      * @returns { Bool }
-     * @relation clear(): boolean;
      */
     @!APILevel[
         22,

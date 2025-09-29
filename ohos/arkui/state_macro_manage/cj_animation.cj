@@ -69,7 +69,6 @@ func getMemberAccessDepth(input: Expr, depth: Int64): Int64 {
     }
 }
 
-
 /**
  * generate animation methods
  * example:

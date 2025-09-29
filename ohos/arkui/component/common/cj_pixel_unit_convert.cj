@@ -35,9 +35,8 @@ foreign func FfiOHOSAceFrameworkPx2Lpx(value: Float64): Float64
 /**
  * Converts a value in vp units to a value in px.
  *
- * @param { Length } value
+ * @params { Length } value
  * @returns { Option<Length> }
- * @relation vp2px(value: number): number;
  */
 protected func vp2pxInner(value: Length): Option<Length> {
     var value_ = transAppResourceToLength(value)
@@ -54,9 +53,8 @@ protected func vp2pxInner(value: Length): Option<Length> {
 /**
  * Converts a value in px units to a value in vp.
  *
- * @param { Length } value
+ * @params { Length } value
  * @returns { Option<Length> }
- * @relation px2vp(value: number): number;
  */
 protected func px2vpInner(value: Length): Option<Length> {
     var value_ = transAppResourceToLength(value)
@@ -73,9 +71,8 @@ protected func px2vpInner(value: Length): Option<Length> {
 /**
  * Converts a value in fp units to a value in px.
  *
- * @param { Length } value
+ * @params { Length } value
  * @returns { Option<Length> }
- * @relation fp2px(value: number): number;
  */
 protected func fp2pxInner(value: Length): Option<Length> {
     var value_ = transAppResourceToLength(value)
@@ -92,9 +89,8 @@ protected func fp2pxInner(value: Length): Option<Length> {
 /**
  * Converts a value in fp units to a value in px.
  *
- * @param { Length } value
+ * @params { Length } value
  * @returns { Option<Length> }
- * @relation fp2px(value: number): number;
  */
 protected func px2fpInner(value: Length): Option<Length> {
     var value_ = transAppResourceToLength(value)
@@ -111,9 +107,8 @@ protected func px2fpInner(value: Length): Option<Length> {
 /**
  * Converts a value in lpx units to a value in px.
  *
- * @param { Length } value
+ * @params { Length } value
  * @returns { Option<Length> }
- * @relation lpx2px(value: number): number;
  */
 protected func lpx2pxInner(value: Length): Option<Length> {
     var value_ = transAppResourceToLength(value)
@@ -130,9 +125,8 @@ protected func lpx2pxInner(value: Length): Option<Length> {
 /**
  * Converts a value in px units to a value in lpx.
  *
- * @param { Length } value
+ * @params { Length } value
  * @returns { Option<Length> }
- * @relation px2lpx(value: number): number;
  */
 protected func px2lpxInner(value: Length): Option<Length> {
     var value_ = transAppResourceToLength(value)

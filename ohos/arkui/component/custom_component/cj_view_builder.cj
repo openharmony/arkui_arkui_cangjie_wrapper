@@ -37,7 +37,6 @@ public class ViewBuilder {
     public init(build: () -> Unit) {
         this.build = build
     }
-    
 
 }
 

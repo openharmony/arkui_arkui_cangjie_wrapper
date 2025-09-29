@@ -57,7 +57,6 @@ foreign {
 /**
  * 2D path object for path drawing.
  *
- * @relation declare class Path2D extends CanvasPath
  */
 @!APILevel[
     22,
@@ -69,7 +68,6 @@ public class Path2D <: RemoteDataLite {
      * Create an empty path object.
      *
      * @returns { This }
-     * @relation constructor()
      */
     @!APILevel[
         22,
@@ -84,9 +82,8 @@ public class Path2D <: RemoteDataLite {
     /**
      * Create a new path according to the description.
      *
-     * @param { String } path
+     * @params { String } path
      * @returns { This }
-     * @relation constructor(d: string)
      */
     @!APILevel[
         22,
@@ -110,8 +107,7 @@ public class Path2D <: RemoteDataLite {
     /**
      * Adds a path according to the specified path variable.
      *
-     * @param { Path2D } path2D
-     * @relation addPath(path: Path2D, transform?: Matrix2D): void
+     * @params { Path2D } path2D
      */
     @!APILevel[
         22,
@@ -128,13 +124,12 @@ public class Path2D <: RemoteDataLite {
      * Adds 2D transformation effects, including rotation, translation, and scaling.
      * The current transformation matrix will not be overwritten. Multiple transformations will be superimposed.
      *
-     * @param { Float64 } scaleX
-     * @param { Float64 } skewX
-     * @param { Float64 } skewY
-     * @param { Float64 } scaleY
-     * @param { Float64 } translateX
-     * @param { Float64 } translateY
-     * @relation setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void
+     * @params { Float64 } scaleX
+     * @params { Float64 } skewX
+     * @params { Float64 } skewY
+     * @params { Float64 } scaleY
+     * @params { Float64 } translateX
+     * @params { Float64 } translateY
      */
     @!APILevel[
         22,
@@ -159,9 +154,8 @@ public class Path2D <: RemoteDataLite {
     /**
      * Moves the start point of a new sub-path to the (x, y) coordinate.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @relation moveTo(x: number, y: number): void
+     * @params { Float64 } x
+     * @params { Float64 } y
      */
     @!APILevel[
         22,
@@ -176,9 +170,8 @@ public class Path2D <: RemoteDataLite {
     /**
      * Connect sub-path using straight lines.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @relation lineTo(x: number, y: number): void
+     * @params { Float64 } x
+     * @params { Float64 } y
      */
     @!APILevel[
         22,
@@ -193,13 +186,12 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw an arc path.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @param { Float64 } radius
-     * @param { Float64 } startAngle
-     * @param { Float64 } endAngle
-     * @param { Bool } counterclockwise
-     * @relation arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void
+     * @params { Float64 } x
+     * @params { Float64 } y
+     * @params { Float64 } radius
+     * @params { Float64 } startAngle
+     * @params { Float64 } endAngle
+     * @params { Bool } counterclockwise
      */
     @!APILevel[
         22,
@@ -221,12 +213,11 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw arc paths based on control points and radius.
      *
-     * @param { Float64 } x1
-     * @param { Float64 } y1
-     * @param { Float64 } x2
-     * @param { Float64 } y2
-     * @param { Float64 } radius
-     * @relation arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
+     * @params { Float64 } x1
+     * @params { Float64 } y1
+     * @params { Float64 } x2
+     * @params { Float64 } y2
+     * @params { Float64 } radius
      */
     @!APILevel[
         22,
@@ -247,11 +238,10 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw quadratic Bezier curve paths.
      *
-     * @param { Float64 } cpx
-     * @param { Float64 } cpy
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @relation quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
+     * @params { Float64 } cpx
+     * @params { Float64 } cpy
+     * @params { Float64 } x
+     * @params { Float64 } y
      */
     @!APILevel[
         22,
@@ -271,13 +261,12 @@ public class Path2D <: RemoteDataLite {
     /**
      * Drawing Cubic Bessel Curve Paths.
      *
-     * @param { Float64 } cp1x
-     * @param { Float64 } cp1y
-     * @param { Float64 } cp2x
-     * @param { Float64 } cp2y
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @relation bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void
+     * @params { Float64 } cp1x
+     * @params { Float64 } cp1y
+     * @params { Float64 } cp2x
+     * @params { Float64 } cp2y
+     * @params { Float64 } x
+     * @params { Float64 } y
      */
     @!APILevel[
         22,
@@ -299,15 +288,14 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw an Elliptic Path.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @param { Float64 } radiusX
-     * @param { Float64 } radiusY
-     * @param { Float64 } rotation
-     * @param { Float64 } startAngle
-     * @param { Float64 } endAngle
-     * @param { Bool } counterclockwise
-     * @relation   ellipse(
+     * @params { Float64 } x
+     * @params { Float64 } y
+     * @params { Float64 } radiusX
+     * @params { Float64 } radiusY
+     * @params { Float64 } rotation
+     * @params { Float64 } startAngle
+     * @params { Float64 } endAngle
+     * @params { Bool } counterclockwise
                     x: number,
                     y: number,
                     radiusX: number,
@@ -344,11 +332,10 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw Rectangular Paths.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @param { Float64 } width
-     * @param { Float64 } height
-     * @relation rect(x: number, y: number, w: number, h: number): void
+     * @params { Float64 } x
+     * @params { Float64 } y
+     * @params { Float64 } width
+     * @params { Float64 } height
      */
     @!APILevel[
         22,
@@ -363,7 +350,6 @@ public class Path2D <: RemoteDataLite {
     /**
      * Returns the pen point to the start point of the current sub-path.
      *
-     * @relation closePath(): void
      */
     @!APILevel[
         22,

@@ -54,7 +54,6 @@ foreign {
 /**
  * Router Mode
  *
- * @relation enum RouterMode
  */
 @Derive[Equatable]
 @!APILevel[
@@ -66,7 +65,6 @@ public enum RouterMode {
      * Default route mode.
      * The page will be added to the top of the page stack.
      *
-     * @relation Standard,
      */
     @!APILevel[
         22,
@@ -80,7 +78,6 @@ public enum RouterMode {
      * the same url page closest to the top of the stack will be moved to the top of the stack.
      * If the target page url does not exist in the page stack, route will use default route mode.
      *
-     * @relation Single,
      */
     | @!APILevel[
         22,
@@ -101,7 +98,6 @@ public enum RouterMode {
 /**
  * Router State
  *
- * @relation enum RouterState
  */
 @!APILevel[
     22,
@@ -112,9 +108,6 @@ public class RouterState {
     /**
      * Index of the current page in the stack.
      * NOTE: The index starts from 1 from the bottom to the top of the stack.
-     *
-     * @type { Int32 }
-     * @relation index: number;
      */
     @!APILevel[
         22,
@@ -124,9 +117,6 @@ public class RouterState {
 
     /**
      * Name of the current page, that is, the file name.
-     *
-     * @type { String }
-     * @relation name: string;
      */
     @!APILevel[
         22,
@@ -136,9 +126,6 @@ public class RouterState {
 
     /**
      * Path of the current page.
-     *
-     * @type { String }
-     * @relation name: string;
      */
     @!APILevel[
         22,
@@ -148,9 +135,6 @@ public class RouterState {
 
     /**
      * Data that passed to the destination page during navigation.
-     *
-     * @type { Object }
-     * @relation params: Object;
      */
     @!APILevel[
         22,
@@ -161,10 +145,10 @@ public class RouterState {
     /**
      * Router State constructor
      *
-     * @param { Int32 } index
-     * @param { String } name
-     * @param { String } path
-     * @param { String } params
+     * @params { Int32 } index
+     * @params { String } name
+     * @params { String } path
+     * @params { String } params
      * @returns { This }
      */
     @!APILevel[
@@ -219,7 +203,6 @@ struct RouterStateList {
 /**
  * class Router
  *
- * @relation export declare class Router
  */
  @!APILevel[
     22,
@@ -235,9 +218,8 @@ public class Router {
     /**
      * Navigates to a specified page in the application.
      *
-     * @param { String } url
-     * @param { String } params
-     * @relation pushUrl(options: router.RouterOptions): Promise<void>
+     * @params { String } url
+     * @params { String } params
      */
     @!APILevel[
         22,
@@ -255,9 +237,8 @@ public class Router {
     /**
      * Returns to the previous page or a specified page.
      *
-     * @param { String } url
-     * @param { String } params
-     * @relation back(options?: router.RouterOptions): void
+     * @params { String } url
+     * @params { String } params
      */
     @!APILevel[
         22,
@@ -275,9 +256,8 @@ public class Router {
     /**
      * Returns to the previous page or a specified page.
      *
-     * @param { Int32 } index
-     * @param { String } params
-     * @relation back(index: number, params?: Object): void;
+     * @params { Int32 } index
+     * @params { String } params
      */
     @!APILevel[
         22,
@@ -295,7 +275,6 @@ public class Router {
      * Obtains information about the current page params.
      *
      * @returns { Option<String> } Page params.
-     * @relation getParams(): Object;
      */
     @!APILevel[
         22,

@@ -202,9 +202,6 @@ public type ShowActionMenuCallBack = AsyncCallback<Int32>
 public class ButtonInfo {
     /**
      * The text displayed in the button.
-     *
-     * @type { ResourceStr }
-     * @relation text: string | Resource;
      */
     @!APILevel[
         22,
@@ -214,9 +211,6 @@ public class ButtonInfo {
 
     /**
      * The foreground color of button.
-     *
-     * @type { ResourceColor }
-     * @relation color: string | Resource;
      */
     @!APILevel[
         22,
@@ -226,9 +220,6 @@ public class ButtonInfo {
 
     /**
      * Define whether the button responds to Enter/Space key by default.
-     *
-     * @type { Bool }
-     * @relation color: primary?: boolean;
      */
     @!APILevel[
         22,
@@ -239,9 +230,9 @@ public class ButtonInfo {
     /**
      * Constructs a menu item button in a menu.
      *
-     * @param { ResourceStr } text: Button text content.
-     * @param { ResourceColor } color: Button text color.
-     * @param { Bool } primary: Whether the button responds to the Enter/Space key by default.
+     * @params { ResourceStr } text: Button text content.
+     * @params { ResourceColor } color: Button text color.
+     * @params { Bool } primary: Whether the button responds to the Enter/Space key by default.
      */
     @!APILevel[
         22,
@@ -283,7 +274,6 @@ unsafe func DestoryCButtons(pButtons: CPointer<CButtonInfo>, size: Int64) {
 /**
  * Enum for the toast showMode.
  *
- * @relation enum ToastShowMode
  */
 @Derive[Equatable]
 @!APILevel[
@@ -294,7 +284,6 @@ public enum ToastShowMode {
 
     /**
      * Toast shows in app.
-     * @relation DEFAULT = 0,
      */
     @!APILevel[
         22,
@@ -304,8 +293,6 @@ public enum ToastShowMode {
 
     /**
      * Toast shows at the top.
-     *
-     * @relation TOP_MOST = 1,
      */
     | @!APILevel[
         22,
@@ -335,7 +322,6 @@ public class EdgeColors {
     /**
      * The top of the EdgeColor.
      *
-     * @type { ResourceColor }
      */
     @!APILevel[
         22,
@@ -346,7 +332,6 @@ public class EdgeColors {
     /**
      * The right of the EdgeColor.
      *
-     * @type { ResourceColor }
      */
     @!APILevel[
         22,
@@ -357,7 +342,6 @@ public class EdgeColors {
     /**
      * The bottom of the EdgeColor.
      *
-     * @type { ResourceColor }
      */
     @!APILevel[
         22,
@@ -368,7 +352,6 @@ public class EdgeColors {
     /**
      * The left of the EdgeColor.
      *
-     * @type { ResourceColor }
      */
     @!APILevel[
         22,
@@ -379,10 +362,10 @@ public class EdgeColors {
     /**
      * EdgeColor constructor
      *
-     * @param { ResourceColor } top
-     * @param { ResourceColor } right
-     * @param { ResourceColor } bottom
-     * @param { ResourceColor } left
+     * @params { ResourceColor } top
+     * @params { ResourceColor } right
+     * @params { ResourceColor } bottom
+     * @params { ResourceColor } left
      * @returns { This }
      */
     @!APILevel[
@@ -414,7 +397,6 @@ public class EdgeColors {
 /**
  * Provides a EdgeColor component.
  *
- * @relation enum HoverModeAreaType
  */
 @Derive[Equatable]
 @!APILevel[
@@ -454,7 +436,6 @@ public enum HoverModeAreaType {
 /**
  * Provides a KeyboardAvoidMode component.
  *
- * @relation enum KeyboardAvoidMode
  */
 @Derive[Equatable]
 @!APILevel[
@@ -493,7 +474,6 @@ public enum KeyboardAvoidMode {
 /**
  * Dialog base options
  *
- * @relation interface BaseDialogOptions
  */
 @!APILevel[
     22,
@@ -504,8 +484,6 @@ public open class BaseDialogOptions {
     /**
      * Mask Region of dialog. The size can't exceed the main window.
      *
-     * @type { Rectangle }
-     * @relation maskRect?: Rectangle;
      */
     @!APILevel[
         22,
@@ -516,8 +494,6 @@ public open class BaseDialogOptions {
     /**
      * Defines the dialog alignment of the screen.
      *
-     * @type { DialogAlignment }
-     * @relation alignment?: DialogAlignment;
      */
     @!APILevel[
         22,
@@ -528,8 +504,6 @@ public open class BaseDialogOptions {
     /**
      * Defines the dialog offset.
      *
-     * @type { Offset }
-     * @relation offset?: Offset;
      */
     @!APILevel[
         22,
@@ -539,8 +513,6 @@ public open class BaseDialogOptions {
 
     /**
      * Whether it is a modal dialog
-     * @type { Bool }
-     * @relation isModal?: boolean;
      */
     @!APILevel[
         22,
@@ -550,8 +522,6 @@ public open class BaseDialogOptions {
     /**
      * Whether to display in the sub window.
      *
-     * @type { Bool }
-     * @relation showInSubWindow?: boolean;
      */
     @!APILevel[
         22,
@@ -562,8 +532,6 @@ public open class BaseDialogOptions {
     /**
      * Allows users to click the mask layer to exit.
      *
-     * @type { Bool }
-     * @relation autoCancel?: boolean;
      */
     @!APILevel[
         22,
@@ -574,8 +542,6 @@ public open class BaseDialogOptions {
     /**
      * Defines custom dialog maskColor
      *
-     * @type { ResourceColor }
-     * @relation maskColor?: ResourceColor;
      */
     @!APILevel[
         22,
@@ -586,8 +552,6 @@ public open class BaseDialogOptions {
     /**
      * Transition parameters of opening/closing custom dialog.
      *
-     * @type { TransitionEffect }
-     * @relation transition?: TransitionEffect;
      */
     @!APILevel[
         22,
@@ -598,8 +562,6 @@ public open class BaseDialogOptions {
     /**
      * Callback function when the dialog appears.
      *
-     * @type { function }
-     * @relation onDidAppear?: () => void;
      */
     @!APILevel[
         22,
@@ -610,8 +572,6 @@ public open class BaseDialogOptions {
     /**
      * Callback function when the dialog disappears.
      *
-     * @type { function }
-     * @relation onDidDisappear?: () => void;
      */
     @!APILevel[
         22,
@@ -622,8 +582,6 @@ public open class BaseDialogOptions {
     /**
      * Callback function before the dialog openAnimation starts.
      *
-     * @type { function }
-     * @relation onWillAppear?: () => void;
      */
     @!APILevel[
         22,
@@ -634,8 +592,6 @@ public open class BaseDialogOptions {
     /**
      * Callback function before the dialog closeAnimation starts.
      *
-     * @type { function }
-     * @relation onWillDisappear?: () => void;
      */
     @!APILevel[
         22,
@@ -646,8 +602,6 @@ public open class BaseDialogOptions {
     /**
      * Defines the customDialog's keyboard avoid mode
      *
-     * @type { KeyboardAvoidMode }
-     * @relation keyboardAvoidMode?: KeyboardAvoidMode;
      */
     @!APILevel[
         22,
@@ -658,8 +612,6 @@ public open class BaseDialogOptions {
     /**
      * Defines whether to respond to the hover mode.
      *
-     * @type { Bool }
-     * @relation enableHoverMode?: boolean;
      */
     @!APILevel[
         22,
@@ -670,8 +622,6 @@ public open class BaseDialogOptions {
     /**
      * Defines the dialog's display area in hover mode.
      *
-     * @type { HoverModeAreaType }
-     * @relation hoverModeArea?: HoverModeAreaType;
      */
     @!APILevel[
         22,
@@ -682,21 +632,21 @@ public open class BaseDialogOptions {
     /**
      * BaseDialogOptions constructor
      *
-     * @param { Rectangle } maskRect
-     * @param { DialogAlignment } alignment
-     * @param { Offset } offset
-     * @param { Bool } isModal
-     * @param { Bool } showInSubWindow
-     * @param { Bool } autoCancel
-     * @param { ResourceColor } maskColor
-     * @param { TransitionEffect } transition
-     * @param { function } onDidAppear
-     * @param { function } onDidDisappear
-     * @param { function } onWillAppear
-     * @param { function } onWillDisappear
-     * @param { KeyboardAvoidMode } keyboardAvoidMode
-     * @param { Bool } enableHoverMode
-     * @param { HoverModeAreaType } hoverModeArea
+     * @params { Rectangle } maskRect
+     * @params { DialogAlignment } alignment
+     * @params { Offset } offset
+     * @params { Bool } isModal
+     * @params { Bool } showInSubWindow
+     * @params { Bool } autoCancel
+     * @params { ResourceColor } maskColor
+     * @params { TransitionEffect } transition
+     * @params { function } onDidAppear
+     * @params { function } onDidDisappear
+     * @params { function } onWillAppear
+     * @params { function } onWillDisappear
+     * @params { KeyboardAvoidMode } keyboardAvoidMode
+     * @params { Bool } enableHoverMode
+     * @params { HoverModeAreaType } hoverModeArea
      * @returns { This }
      */
     @!APILevel[
@@ -741,7 +691,6 @@ public open class BaseDialogOptions {
 /**
  * Dialog's custom content options
  *
- * @relation interface CustomDialogOptions extends BaseDialogOptions
  */
 @!APILevel[
     22,
@@ -752,8 +701,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
     /**
      * Allow developer custom dialog's content.
      *
-     * @type { function }
-     * @relation builder: CustomBuilder;
      */
     @!APILevel[
         22,
@@ -764,8 +711,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
     /**
      * Defines the custom dialog's background color.
      *
-     * @type { ResourceColor }
-     * @relation backgroundColor?: ResourceColor;
      */
     @!APILevel[
         22,
@@ -776,8 +721,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
     /**
      * Defines the custom dialog's corner radius.
      *
-     * @type { BorderRadiuses }
-     * @relation cornerRadius?: Dimension | BorderRadiuses;
      */
     @!APILevel[
         22,
@@ -788,8 +731,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
     /**
      * Defines the custom dialog's border width.
      *
-     * @type { EdgeWidths }
-     * @relation borderWidth?: Dimension | EdgeWidths;
      */
     @!APILevel[
         22,
@@ -800,8 +741,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
     /**
      * Defines the custom dialog's border color.
      *
-     * @type { EdgeColors }
-     * @relation borderColor?: ResourceColor | EdgeColors;
      */
     @!APILevel[
         22,
@@ -812,8 +751,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
     /**
      * Defines the custom dialog's border style.
      *
-     * @type {EdgeStyles }
-     * @relation borderStyle?: BorderStyle | EdgeStyles;
      */
     @!APILevel[
         22,
@@ -824,8 +761,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
     /**
      * Defines the dialog's width.
      *
-     * @type { Length }
-     * @relation width?: Dimension;
      */
     @!APILevel[
         22,
@@ -836,8 +771,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
     /**
      * Defines the dialog's height.
      *
-     * @type { Length }
-     * @relation height?: Dimension;
      */
     @!APILevel[
         22,
@@ -848,8 +781,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
     /**
      * Defines the dialog's shadow.
      *
-     * @type { ShadowOptions }
-     * @relation shadow?: ShadowOptions | ShadowStyle;
      */
     @!APILevel[
         22,
@@ -860,8 +791,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
     /**
      * Defines the dialog's background blur Style
      *
-     * @type { BlurStyle }
-     * @relation backgroundBlurStyle?: BlurStyle;
      */
     @!APILevel[
         22,
@@ -872,31 +801,31 @@ public class CustomDialogOptions <: BaseDialogOptions {
     /**
      * Dialog constructor
      *
-     * @param { function } builder
-     * @param { Rectangle } maskRect
-     * @param { DialogAlignment } alignment
-     * @param { Offset } offset
-     * @param { Bool } isModal
-     * @param { Bool } showInSubWindow
-     * @param { Bool } autoCancel
-     * @param { ResourceColor } maskColor
-     * @param { TransitionEffect } transition
-     * @param { function } onDidAppear
-     * @param { function } onDidDisappear
-     * @param { function } onWillAppear
-     * @param { function } onWillDisappear
-     * @param { KeyboardAvoidMode } keyboardAvoidMode
-     * @param { Bool } enableHoverMode
-     * @param { HoverModeAreaType } hoverModeArea
-     * @param { ResourceColor } backgroundColor
-     * @param { BorderRadiuses } cornerRadius
-     * @param { EdgeWidths } borderWidth
-     * @param { EdgeColors } borderColor
-     * @param { EdgeStyles } borderStyle
-     * @param { Length } width
-     * @param { Length } height
-     * @param { ShadowOptions } shadow
-     * @param { BlurStyle } backgroundBlurStyle
+     * @params { function } builder
+     * @params { Rectangle } maskRect
+     * @params { DialogAlignment } alignment
+     * @params { Offset } offset
+     * @params { Bool } isModal
+     * @params { Bool } showInSubWindow
+     * @params { Bool } autoCancel
+     * @params { ResourceColor } maskColor
+     * @params { TransitionEffect } transition
+     * @params { function } onDidAppear
+     * @params { function } onDidDisappear
+     * @params { function } onWillAppear
+     * @params { function } onWillDisappear
+     * @params { KeyboardAvoidMode } keyboardAvoidMode
+     * @params { Bool } enableHoverMode
+     * @params { HoverModeAreaType } hoverModeArea
+     * @params { ResourceColor } backgroundColor
+     * @params { BorderRadiuses } cornerRadius
+     * @params { EdgeWidths } borderWidth
+     * @params { EdgeColors } borderColor
+     * @params { EdgeStyles } borderStyle
+     * @params { Length } width
+     * @params { Length } height
+     * @params { ShadowOptions } shadow
+     * @params { BlurStyle } backgroundBlurStyle
      * @returns { This }
      */
     @!APILevel[
@@ -964,7 +893,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
 /**
  * Dialog's show options
  *
- * @relation interface ShowDialogOptions
  */
 @!APILevel[
     22,
@@ -976,8 +904,6 @@ public open class ShowDialogOptions {
     /**
      * Title of the text to display.
      *
-     * @type { ResourceStr }
-     * @relation title?: string | Resource;
      */
     @!APILevel[
         22,
@@ -988,8 +914,6 @@ public open class ShowDialogOptions {
     /**
      * Text body.
      *
-     * @type { ResourceStr }
-     * @relation message?: string | Resource;
      */
     @!APILevel[
         22,
@@ -1000,8 +924,6 @@ public open class ShowDialogOptions {
     /**
      * Array of buttons in the dialog box.
      * More than one buttons are supported.
-     * @type { Array<ButtonInfo> }
-     * @relation buttons?: Array<Button>;
      */
     @!APILevel[
         22,
@@ -1012,8 +934,6 @@ public open class ShowDialogOptions {
     /**
      * Defines the dialog alignment of the screen.
      *
-     * @type { DialogAlignment }
-     * @relation alignment?: DialogAlignment;
      */
     @!APILevel[
         22,
@@ -1024,8 +944,6 @@ public open class ShowDialogOptions {
     /**
      * Defines the dialog offset.
      *
-     * @type { Offset }
-     * @relation offset?: Offset;
      */
     @!APILevel[
         22,
@@ -1036,8 +954,6 @@ public open class ShowDialogOptions {
     /**
      * Mask Region of dialog. The size can't exceed the main window.
      *
-     * @type { Rectangle }
-     * @relation maskRect?: Rectangle;
      */
     @!APILevel[
         22,
@@ -1048,8 +964,6 @@ public open class ShowDialogOptions {
     /**
      * Whether to display in the sub window.
      *
-     * @type { Bool }
-     * @relation showInSubWindow?: boolean;
      */
     @!APILevel[
         22,
@@ -1059,8 +973,6 @@ public open class ShowDialogOptions {
 
     /**
      * Whether it is a modal dialog
-     * @type { Bool }
-     * @relation isModal?: boolean;
      */
     @!APILevel[
         22,
@@ -1071,8 +983,6 @@ public open class ShowDialogOptions {
     /**
      * Defines the dialog's background color.
      *
-     * @type { ResourceColor }
-     * @relation backgroundColor?: ResourceColor;
      */
     @!APILevel[
         22,
@@ -1083,8 +993,6 @@ public open class ShowDialogOptions {
     /**
      * Defines the dialog's background blur Style
      *
-     * @type { BlurStyle }
-     * @relation backgroundBlurStyle?: BlurStyle;
      */
     @!APILevel[
         22,
@@ -1095,8 +1003,6 @@ public open class ShowDialogOptions {
     /**
      * Defines the dialog's shadow option
      *
-     * @type { ShadowOptions }
-     * @relation shadow?: ShadowOptions | ShadowStyle;
      */
     @!APILevel[
         22,
@@ -1107,8 +1013,6 @@ public open class ShowDialogOptions {
    /**
      * Defines whether to respond to the hover mode.
      *
-     * @type { Bool }
-     * @relation enableHoverMode?: boolean;
      */
     @!APILevel[
         22,
@@ -1119,8 +1023,6 @@ public open class ShowDialogOptions {
     /**
      * Defines the dialog's display area in hover mode.
      *
-     * @type { HoverModeAreaType }
-     * @relation hoverModeArea?: HoverModeAreaType;
      */
     @!APILevel[
         22,
@@ -1131,19 +1033,19 @@ public open class ShowDialogOptions {
     /**
      * Dialog's show options constructor
      *
-     * @param { ResourceStr } title
-     * @param { ResourceStr } message
-     * @param { Array<ButtonInfo> } buttons
-     * @param { DialogAlignment } alignment
-     * @param { Offset } offset
-     * @param { Rectangle } maskRect
-     * @param { Bool } showInSubWindow
-     * @param { Bool } isModal
-     * @param { Color } backgroundColor
-     * @param { BlurStyle } backgroundBlurStyle
-     * @param { ShadowOptions } shadow
-     * @param { Bool } enableHoverMode
-     * @param { HoverModeAreaType } hoverModeArea
+     * @params { ResourceStr } title
+     * @params { ResourceStr } message
+     * @params { Array<ButtonInfo> } buttons
+     * @params { DialogAlignment } alignment
+     * @params { Offset } offset
+     * @params { Rectangle } maskRect
+     * @params { Bool } showInSubWindow
+     * @params { Bool } isModal
+     * @params { Color } backgroundColor
+     * @params { BlurStyle } backgroundBlurStyle
+     * @params { ShadowOptions } shadow
+     * @params { Bool } enableHoverMode
+     * @params { HoverModeAreaType } hoverModeArea
      * @returns { This }
      */
     @!APILevel[
@@ -1185,7 +1087,6 @@ public open class ShowDialogOptions {
 /**
  * Menu's Action options
  *
- * @relation interface ActionMenuOptions
  */
 @!APILevel[
     22,
@@ -1197,8 +1098,6 @@ public open class ActionMenuOptions {
     /**
      * Title of the text to display.
      *
-     * @type { ResourceStr }
-     * @relation title?: string | Resource;
      */
     @!APILevel[
         22,
@@ -1210,8 +1109,6 @@ public open class ActionMenuOptions {
      * Array of buttons in the dialog box.
      * One to six buttons are supported.
      *
-     * @type { Array<ButtonInfo> }
-     * @relation buttons: [Button, Button?, Button?, Button?, Button?, Button?];
      */
     @!APILevel[
         22,
@@ -1222,8 +1119,6 @@ public open class ActionMenuOptions {
     /**
      * Whether to display in the sub window.
      *
-     * @type { Bool }
-     * @relation showInSubWindow?: boolean;
      */
     @!APILevel[
         22,
@@ -1233,8 +1128,6 @@ public open class ActionMenuOptions {
 
     /**
      * Whether it is a modal dialog
-     * @type { Bool }
-     * @relation isModal?: boolean;
      */
     @!APILevel[
         22,
@@ -1245,10 +1138,10 @@ public open class ActionMenuOptions {
     /**
      * Menu's Action options constructor
      *
-     * @param { ResourceStr } title
-     * @param { Array<ButtonInfo> } buttons
-     * @param { Bool } showInSubWindow
-     * @param { Bool } isModal
+     * @params { ResourceStr } title
+     * @params { Array<ButtonInfo> } buttons
+     * @params { Bool } showInSubWindow
+     * @params { Bool } isModal
      * @returns { This }
      */
     @!APILevel[
@@ -1272,7 +1165,6 @@ public open class ActionMenuOptions {
 /**
  * Toast's show options
  *
- * @relation interface ShowToastOptions
  */
 @!APILevel[
     22,
@@ -1283,8 +1175,6 @@ public class ShowToastOptions {
     /**
      * Text to display.
      *
-     * @type { String }
-     * @relation message: string | Resource;
      */
     @!APILevel[
         22,
@@ -1294,8 +1184,6 @@ public class ShowToastOptions {
 
     /**
      * Duration of toast dialog box.
-     * @type { UInt32 } -The recommended value ranges from 1500ms to 10000ms.
-     * @relation duration?: number;
      */
     @!APILevel[
         22,
@@ -1306,8 +1194,6 @@ public class ShowToastOptions {
     /**
      * The distance between toast dialog box and the bottom of screen.
      *
-     * @type { Length }
-     * @relation bottom?: string | number;
      */
     @!APILevel[
         22,
@@ -1318,8 +1204,6 @@ public class ShowToastOptions {
     /**
      * Determine the show mode of the toast.
      *
-     * @type { ToastShowMode }
-     * @relation showMode?: ToastShowMode;
      */
     @!APILevel[
         22,
@@ -1330,8 +1214,6 @@ public class ShowToastOptions {
     /**
      * Defines the toast alignment of the screen.
      *
-     * @type { Alignment }
-     * @relation alignment?: Alignment;
      */
     @!APILevel[
         22,
@@ -1342,8 +1224,6 @@ public class ShowToastOptions {
     /**
      * Defines the toast offset.
      *
-     * @type { Offset }
-     * @relation offset?: Offset;
      */
     @!APILevel[
         22,
@@ -1354,8 +1234,6 @@ public class ShowToastOptions {
     /**
      * Background color of toast.
      *
-     * @type { ResourceColor }
-     * @relation backgroundColor?: ResourceColor;
      */
     @!APILevel[
         22,
@@ -1366,8 +1244,6 @@ public class ShowToastOptions {
     /**
      * Text color of toast.
      *
-     * @type { ResourceColor }
-     * @relation textColor?: ResourceColor;
      */
     @!APILevel[
         22,
@@ -1378,8 +1254,6 @@ public class ShowToastOptions {
     /**
      * Background blur Style of toast.
      *
-     * @type { BlurStyle }
-     * @relation backgroundBlurStyle?: BlurStyle;
      */
     @!APILevel[
         22,
@@ -1390,8 +1264,6 @@ public class ShowToastOptions {
     /**
      * Shadow of toast's option.
      *
-     * @type { ShadowOptions }
-     * @relation shadow?: ShadowOptions | ShadowStyle;
      */
     @!APILevel[
         22,
@@ -1402,8 +1274,6 @@ public class ShowToastOptions {
     /**
      * Define whether to respond to the hover mode.
      *
-     * @type { Bool }
-     * @relation enableHoverMode?: boolean;
      */
     @!APILevel[
         22,
@@ -1414,8 +1284,6 @@ public class ShowToastOptions {
     /**
      * Defines the toast's display area in hover mode.
      *
-     * @type { HoverModeAreaType }
-     * @relation hoverModeArea?: HoverModeAreaType;
      */
     @!APILevel[
         22,
@@ -1426,18 +1294,18 @@ public class ShowToastOptions {
     /**
      * Toast's show options constructor
      *
-     * @param { ResourceStr } message
-     * @param { UInt32 } duration
-     * @param { Length } bottom
-     * @param { ToastShowMode } showMode
-     * @param { Alignment } alignment
-     * @param { Offset } offset
-     * @param { Color } backgroundColor
-     * @param { Color } textColor
-     * @param { BlurStyle } backgroundBlurStyle
-     * @param { ShadowOptions } shadow
-     * @param { Bool } enableHoverMode
-     * @param { HoverModeAreaType } hoverModeArea
+     * @params { ResourceStr } message
+     * @params { UInt32 } duration
+     * @params { Length } bottom
+     * @params { ToastShowMode } showMode
+     * @params { Alignment } alignment
+     * @params { Offset } offset
+     * @params { Color } backgroundColor
+     * @params { Color } textColor
+     * @params { BlurStyle } backgroundBlurStyle
+     * @params { ShadowOptions } shadow
+     * @params { Bool } enableHoverMode
+     * @params { HoverModeAreaType } hoverModeArea
      * @returns { This }
      */
     @!APILevel[
@@ -1678,7 +1546,6 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
 /**
  * class PromptAction
  *
- * @relation export declare class PromptAction
  */
 @!APILevel[
     22,
@@ -1697,8 +1564,7 @@ public class PromptAction {
    *
    * isModal = true and showInSubWindow = true cannot be used at the same time.
    *
-   * @param { promptAction.CustomDialogOptions } options - Options.
-   * @relation openCustomDialog(options: promptAction.CustomDialogOptions): Promise<number>
+   * @params { promptAction.CustomDialogOptions } options - Options.
    */
     @!APILevel[
         22,
@@ -1715,8 +1581,7 @@ public class PromptAction {
     /**
      * Close the custom dialog.
      *
-     * @param { number } dialogId - the dialog id that returned by openCustomDialog.
-     * @relation closeCustomDialog(dialogId: number): void
+     * @params { number } dialogId - the dialog id that returned by openCustomDialog.
      */
     @!APILevel[
         22,
@@ -1731,7 +1596,7 @@ public class PromptAction {
     /**
      * Shows a toast in the given settings.
      *
-     * @param { ShowToastOptions } options - Toast options.
+     * @params { ShowToastOptions } options - Toast options.
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[
@@ -1750,8 +1615,8 @@ public class PromptAction {
     /**
      * Shows a dialog box in the given settings. This API uses an asynchronous callback to return the result.
      *
-     * @param { ShowDialogOptions } options - Dialog box options.
-     * @param { ShowDialogCallBack } callback - Callback used to return the dialog
+     * @params { ShowDialogOptions } options - Dialog box options.
+     * @params { ShowDialogCallBack } callback - Callback used to return the dialog
      * box response result.
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
@@ -1780,8 +1645,8 @@ public class PromptAction {
     /**
      * Shows an action menu in the given settings. This API uses an asynchronous callback to return the result.
      *
-     * @param { ActionMenuOptions } options - Action menu options.
-     * @param { ActionMenuSuccessResponse } callback - Callback used to return the action menu
+     * @params { ActionMenuOptions } options - Action menu options.
+     * @params { ActionMenuSuccessResponse } callback - Callback used to return the action menu
      * response result.
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */

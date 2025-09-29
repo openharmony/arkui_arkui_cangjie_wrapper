@@ -67,7 +67,6 @@ struct NativeCustomDialogControllerOptions {
 /**
 * Custom builder function.
 * 
-* @relation declare interface CustomDialogControllerOptions
 */
 @!APILevel[
     22,
@@ -77,7 +76,6 @@ public class CustomDialogControllerOptions {
     /**
     * Defines the cancel function.
     *
-    * @relation cancel?: () => void
     */
     @!APILevel[
         22,
@@ -87,7 +85,6 @@ public class CustomDialogControllerOptions {
     /**
     * Defines if use auto cancel when click on the outside of the dialog.
     *
-    * @relation autoCancel?: boolean
     */
     @!APILevel[
         22,
@@ -97,7 +94,6 @@ public class CustomDialogControllerOptions {
     /**
     * Defines the dialog alignment of the screen.
     *
-    * @relation alignment?: DialogAlignment
     */
     @!APILevel[
         22,
@@ -107,7 +103,6 @@ public class CustomDialogControllerOptions {
     /**
     * Defines the dialog offset.
     *
-    * @relation offset?: Offset
     */
     @!APILevel[
         22,
@@ -117,7 +112,6 @@ public class CustomDialogControllerOptions {
     /**
     * Defines if use custom style.
     *
-    * @relation customStyle?: boolean
     */
     @!APILevel[
         22,
@@ -127,7 +121,6 @@ public class CustomDialogControllerOptions {
     /**
     * Grid count of dialog.
     *
-    * @relation gridCount?: number
     */
     @!APILevel[
         22,
@@ -137,7 +130,6 @@ public class CustomDialogControllerOptions {
     /**
     * Mask color of dialog.
     *
-    * @relation maskColor?: ResourceColor
     */
     @!APILevel[
         22,
@@ -147,7 +139,6 @@ public class CustomDialogControllerOptions {
     /**
     * Mask Region of dialog. The size cannot exceed the main window.
     *
-    * @relation maskRect?: Rectangle
     */
     @!APILevel[
         22,
@@ -157,7 +148,6 @@ public class CustomDialogControllerOptions {
     /**
     * Animation parameters of dialog opening.
     *
-    * @relation openAnimation?: AnimateParam
     */
     @!APILevel[
         22,
@@ -167,7 +157,6 @@ public class CustomDialogControllerOptions {
     /**
     * Animation parameters of dialog closing.
     *
-    * @relation closeAnimation?: AnimateParam
     */
     @!APILevel[
         22,
@@ -177,7 +166,6 @@ public class CustomDialogControllerOptions {
     /**
     * Whether to display in the sub window.
     *
-    * @relation showInSubWindow?: boolean
     */
     @!APILevel[
         22,
@@ -187,7 +175,6 @@ public class CustomDialogControllerOptions {
     /**
     * Background color of dialog.
     *
-    * @relation backgroundColor?: ResourceColor
     */
     @!APILevel[
         22,
@@ -197,7 +184,6 @@ public class CustomDialogControllerOptions {
     /**
     * Corner radius of dialog.
     *
-    * @relation cornerRadius?: Dimension | BorderRadiuses
     */
     @!APILevel[
         22,
@@ -207,7 +193,6 @@ public class CustomDialogControllerOptions {
     /**
     * Whether it is a modal dialog
     *
-    * @relation isModal?: boolean
     */
     @!APILevel[
         22,
@@ -217,7 +202,6 @@ public class CustomDialogControllerOptions {
     /**
     * Callback function when the CustomDialog interactive dismiss.
     *
-    * @relation onWillDismiss?: Callback<DismissDialogAction>
     */
     @!APILevel[
         22,
@@ -227,7 +211,6 @@ public class CustomDialogControllerOptions {
     /**
     * Defines the custom dialog's border width.
     *
-    * @relation borderWidth?: Dimension | EdgeWidths
     */
     @!APILevel[
         22,
@@ -237,7 +220,6 @@ public class CustomDialogControllerOptions {
     /**
     * Defines the custom dialog's border color.
     *
-    * @relation borderColor?: ResourceColor | EdgeColors
     */
     @!APILevel[
         22,
@@ -247,7 +229,6 @@ public class CustomDialogControllerOptions {
     /**
     * Defines the custom dialog's border style.
     *
-    * @relation borderStyle?: BorderStyle | EdgeStyles
     */
     @!APILevel[
         22,
@@ -257,7 +238,6 @@ public class CustomDialogControllerOptions {
     /**
     * Defines the custom dialog's width.
     *
-    * @relation width?: Dimension
     */
     @!APILevel[
         22,
@@ -267,7 +247,6 @@ public class CustomDialogControllerOptions {
     /**
     * Defines the custom dialog's height.
     *
-    * @relation height?: Dimension
     */
     @!APILevel[
         22,
@@ -277,7 +256,6 @@ public class CustomDialogControllerOptions {
     /**
     * Defines the custom dialog's shadow.
     *
-    * @relation shadow?: ShadowOptions | ShadowStyle
     */
     @!APILevel[
         22,
@@ -287,7 +265,6 @@ public class CustomDialogControllerOptions {
     /**
     * Defines the customDialog's background blur Style
     *
-    * @relation backgroundBlurStyle?: BlurStyle
     */
     @!APILevel[
         22,
@@ -297,29 +274,28 @@ public class CustomDialogControllerOptions {
     /**
     * Defines the options of CustomDialogController.
     *
-    * @param { VoidCallback } cancel
-    * @param { Bool } autoCancel
-    * @param { Offset } offset
-    * @param { Bool } customStyle
-    * @param { UInt32 } gridCount
-    * @param { ResourceColor } maskColor
-    * @param { Rectangle } maskRect
-    * @param { AnimateParam } openAnimation
-    * @param { AnimateParam } closeAnimation
-    * @param { Bool } showInSubWindow
-    * @param { ResourceColor } backgroundColor
-    * @param { Length } cornerRadius
-    * @param { Bool } isModal
-    * @param { Callback<DismissDialogAction, Unit> } onWillDismiss
-    * @param { Length } borderWidth
-    * @param { ResourceColor } borderColor
-    * @param { EdgeStyles } borderStyle
-    * @param { Length } width
-    * @param { Length } height
-    * @param { ShadowOptions } shadow
-    * @param { BlurStyle } backgroundBlurStyle
+    * @params { VoidCallback } cancel
+    * @params { Bool } autoCancel
+    * @params { Offset } offset
+    * @params { Bool } customStyle
+    * @params { UInt32 } gridCount
+    * @params { ResourceColor } maskColor
+    * @params { Rectangle } maskRect
+    * @params { AnimateParam } openAnimation
+    * @params { AnimateParam } closeAnimation
+    * @params { Bool } showInSubWindow
+    * @params { ResourceColor } backgroundColor
+    * @params { Length } cornerRadius
+    * @params { Bool } isModal
+    * @params { Callback<DismissDialogAction, Unit> } onWillDismiss
+    * @params { Length } borderWidth
+    * @params { ResourceColor } borderColor
+    * @params { EdgeStyles } borderStyle
+    * @params { Length } width
+    * @params { Length } height
+    * @params { ShadowOptions } shadow
+    * @params { BlurStyle } backgroundBlurStyle
     * @returns { This } 
-    * @relation constructor(value: CustomDialogControllerOptions)
     */
     @!APILevel[
         22,
@@ -399,7 +375,6 @@ foreign {
 /**
 * Use the CustomDialogController class to display the custom pop-up window.
 *
-* @relation declare class CustomDialogController
 */
 @!APILevel[
     22,
@@ -490,9 +465,8 @@ public class CustomDialogController <: RemoteDataLite {
     /**
     * The constructor transfers parameter settings.
     * 
-    * @param { CustomDialogControllerOptions } value
+    * @params { CustomDialogControllerOptions } value
     * @returns { This } 
-    * @relation constructor(value: CustomDialogControllerOptions)
     */
     @!APILevel[
         22,

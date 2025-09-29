@@ -41,7 +41,6 @@ foreign {
 /**
  * Provides the method of switching the cursor position.
  *
- * @relation declare class TextAreaController extends TextContentControllerBase
  */
 @!APILevel[
     22,
@@ -52,7 +51,6 @@ public class TextAreaController <: RemoteDataLite {
     /**
      * constructor.
      *
-     * @relation constructor();
      */
     @!APILevel[
         22,
@@ -71,8 +69,7 @@ public class TextAreaController <: RemoteDataLite {
     /**
      * Called when the position of the insertion cursor is set.
      *
-     * @param { Int32 } value  - Length from the start of the string to the position where the caret is located.
-     * @relation caretPosition(value: number): void;
+     * @params { Int32 } value  - Length from the start of the string to the position where the caret is located.
      */
     @!APILevel[
         22,
@@ -88,7 +85,6 @@ public class TextAreaController <: RemoteDataLite {
 /**
  * Defines the options of TextArea.
  *
- * @relation declare interface TextAreaOptions
  */
 @!APILevel[
     22,
@@ -98,10 +94,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when writing multiple lines of text.
      *
-     * @param { ResourceStr } placeholder - The place holder text string. Text displayed when there is no input.
-     * @param { ResourceStr } text - Sets the current value of TextArea.
-     * @param { TextAreaController } controller - Called when the position of the insertion cursor is set.
-     * @relation (value?: TextAreaOptions): TextAreaAttribute;
+     * @params { ResourceStr } placeholder - The place holder text string. Text displayed when there is no input.
+     * @params { ResourceStr } text - Sets the current value of TextArea.
+     * @params { TextAreaController } controller - Called when the position of the insertion cursor is set.
      */
     @!APILevel[
         22,
@@ -133,9 +128,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when the color of the insertion cursor is set.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation caretColor(value: ResourceColor): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -151,7 +145,6 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
      * The 'HarmonyOS Sans' font and registered custom fonts are supported.
      *
      * @returns { This }
-     * @relation placeholderFont(value?: Font): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -172,9 +165,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
      * centered-aligning the text vertically; Alignment.BottomStart, Alignment.Bottom,
      * and Alignment.BottomEnd produce the same effect, bottom-aligning the text.
      *
-     * @param { TextAlign } value - Default value is TextAlign.Start.
+     * @params { TextAlign } value - Default value is TextAlign.Start.
      * @returns { This }
-     * @relation textAlign(value: TextAlign): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -188,9 +180,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when the font size is set.
      *
-     * @param { Length } value - Default value is 16.fp. If fontSize is of the number type, the unit fp is used. This parameter cannot be set in percentage.
+     * @params { Length } value - Default value is 16.fp. If fontSize is of the number type, the unit fp is used. This parameter cannot be set in percentage.
      * @returns { This }
-     * @relation fontSize(value: Length): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -204,9 +195,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
 
     /**
      * Called when the font color is set.
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation fontColor(value: ResourceColor): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -221,9 +211,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when the font weight is set.
      *
-     * @param { FontWeight } value - Default value is FontWeight.Normal.
+     * @params { FontWeight } value - Default value is FontWeight.Normal.
      * @returns { This }
-     * @relation fontWeight(value: number | FontWeight | ResourceStr): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -237,9 +226,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when the font style of a font is set.
      *
-     * @param { FontStyle } value - Default value is FontStyle.Normal.
+     * @params { FontStyle } value - Default value is FontStyle.Normal.
      * @returns { This }
-     * @relation fontStyle(value: FontStyle): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -256,9 +244,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
      * <br>The 'HarmonyOS Sans' font and registered custom fonts are supported for applications.
      * <br>Only the 'HarmonyOS Sans' font is supported for widgets.
      *
-     * @param { ResourceStr } value - Default value is 'HarmonyOS Sans'.
+     * @params { ResourceStr } value - Default value is 'HarmonyOS Sans'.
      * @returns { This }
-     * @relation fontFamily(value: ResourceStr): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -272,9 +259,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when the type of soft keyboard input button is set.
      *
-     * @param { EnterKeyType } value - Default value is Default value is EnterKeyType.NewLine.
+     * @params { EnterKeyType } value - Default value is Default value is EnterKeyType.NewLine.
      * @returns { This }
-     * @relation enterKeyType(value: EnterKeyType): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -288,10 +274,9 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when the inputFilter of text is set.
      *
-     * @param { ResourceStr } value
-     * @param { (String) -> Unit } error
+     * @params { ResourceStr } value
+     * @params { (String) -> Unit } error
      * @returns { This }
-     * @relation inputFilter(value: ResourceStr, error?: (value: string) => void): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -313,9 +298,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
      * <br>When the maximum number of characters is reached,
      * no more characters can be entered, and the border turns red.
      *
-     * @param { UInt32 } value
+     * @params { UInt32 } value
      * @returns { This }
-     * @relation maxLength(value: number): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -330,9 +314,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when the color of the placeholder is set.
      *
-     * @param { ResourceColor } value - Default value follows the theme.
+     * @params { ResourceColor } value - Default value follows the theme.
      * @returns { This }
-     * @relation placeholderColor(value: ResourceColor): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -347,9 +330,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when submitted.
      *
-     * @param { (EnterKeyType) -> Unit } callback - If it is EnterKeyType.NEW_LINE and the text box is in inline input style, onSubmit is not triggered.
+     * @params { (EnterKeyType) -> Unit } callback - If it is EnterKeyType.NEW_LINE and the text box is in inline input style, onSubmit is not triggered.
      * @returns { This }
-     * @relation onSubmit(callback: (enterKey: EnterKeyType) => void): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -364,9 +346,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when the input of the input box changes.
      *
-     * @param { (String) -> Unit }  callback
+     * @params { (String) -> Unit }  callback
      * @returns { This }
-     * @relation onChange(callback: EditableTextOnChangeCallback): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -381,9 +362,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when using the Clipboard menu.
      *
-     * @param { (String) -> Unit }  callback
+     * @params { (String) -> Unit }  callback
      * @returns { This }
-     * @relation onCopy(callback: (value: string) => void): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -398,9 +378,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when using the Clipboard menu.
      *
-     * @param { (String) -> Unit }  callback
+     * @params { (String) -> Unit }  callback
      * @returns { This }
-     * @relation onCut(callback: (value: string) => void): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -415,9 +394,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Called when using the Clipboard menu.
      *
-     * @param { (String) -> Unit } callback - Executed when a paste operation is performed.
+     * @params { (String) -> Unit } callback - Executed when a paste operation is performed.
      * @returns { This }
-     * @relation onPaste(callback: OnPasteCallback): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -433,9 +411,8 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
      * Called when judging whether the text editing change finished.
      * The text box is in the editing state when it has the caret placed in it, and is in the non-editing state otherwise.
      *
-     * @param { (Bool) -> Unit} callback - Triggered when the text area status changes.
+     * @params { (Bool) -> Unit} callback - Triggered when the text area status changes.
      * @returns { This }
-     * @relation onEditChange(callback: (isEditing: boolean) => void): TextAreaAttribute;
      */
     @!APILevel[
         22,
@@ -465,12 +442,11 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Sets the paddingInner of the TextArea.
      *
-     * @param top: Sets the top of paddingInner.
-     * @param right: Sets the right of paddingInner.
-     * @param bottom: Sets the bottom of paddingInner.
-     * @param left: Sets the left of paddingInner.
-     * @return TextArea instance.
-     * @since 11
+     * @params top: Sets the top of paddingInner.
+     * @params right: Sets the right of paddingInner.
+     * @params bottom: Sets the bottom of paddingInner.
+     * @params left: Sets the left of paddingInner.
+     * @returns TextArea instance.
      */
     protected override func paddingInner(top: ?Length, right: ?Length, bottom: ?Length, left: ?Length): This {
         TextField.padding(top: top, right: right, bottom: bottom, left: left)
@@ -490,12 +466,11 @@ public class TextArea <: CommonMethodComponent<TextAreaAttribute> & TextAreaAttr
     /**
      * Sets the borderInner of the TextArea.
      *
-     * @param width: Sets the width of borderInner.
-     * @param color: Sets the color of borderInner.
-     * @param radius: Sets the radius of borderInner.
-     * @param style: Sets the style of borderInner.
-     * @return TextArea instance.
-     * @since 11
+     * @params width: Sets the width of borderInner.
+     * @params color: Sets the color of borderInner.
+     * @params radius: Sets the radius of borderInner.
+     * @params style: Sets the style of borderInner.
+     * @returns TextArea instance.
      */
     protected override func borderInner(
         width: ?Length,

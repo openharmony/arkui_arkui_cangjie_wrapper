@@ -107,8 +107,6 @@ foreign {
 
 /**
  * Provides a way to control the process.
- *
- * @relation class TextTimerController
  */
 @!APILevel[
     22,
@@ -118,8 +116,6 @@ public class TextTimerController <: RemoteDataLite {
     /**
      * constructor.
      * A constructor used to create a TextTimerController object.
-     *
-     * @relation constructor()
      */
     @!APILevel[
         22,
@@ -137,8 +133,6 @@ public class TextTimerController <: RemoteDataLite {
 
     /**
      * Provides a start event for timer.
-     *
-     * @relation start():void
      */
     @!APILevel[
         22,
@@ -152,8 +146,6 @@ public class TextTimerController <: RemoteDataLite {
 
     /**
      * Provides a pause event for timer.
-     *
-     * @relation pause():void
      */
     @!APILevel[
         22,
@@ -167,8 +159,6 @@ public class TextTimerController <: RemoteDataLite {
 
     /**
      * Provides an event to reset timer.
-     *
-     * @relation reset():void
      */
     @!APILevel[
         22,
@@ -183,8 +173,6 @@ public class TextTimerController <: RemoteDataLite {
 
 /**
  * Defines TextTimer Component.
- *
- * @relation const TextTimer: TextTimerInterface
  */
 @!APILevel[
     22,
@@ -194,11 +182,10 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
     /**
      * A constructor used to create a TextTimerController object.
      *
-     * @param { Bool } isCountDown
-     * @param { Int64 } count
-     * @param { TextTimerController } controller
+     * @params { Bool } isCountDown
+     * @params { Int64 } count
+     * @params { TextTimerController } controller
      * @returns { TextTimer }
-     * @relation (options?: TextTimerOptions): TextTimerAttribute
      */
     @!APILevel[
         22,
@@ -220,9 +207,8 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * <br>If the specified date format is yy, MM, or dd, the default value is used instead.
      * </p>
      *
-     * @param { String } value - Custom format.Default value: 'HH:mm:ss.SS'
+     * @params { String } value - Custom format.Default value: 'HH:mm:ss.SS'
      * @returns { This }
-     * @relation format(value: string): TextTimerAttribute
      */
     @!APILevel[
         22,
@@ -242,9 +228,8 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * This event is not triggered when the screen is locked or the application is running in the background.
      * When high-precision formats (such as SSS or SS) are used, the callback interval may vary.
      *
-     * @param { (Int64, Int64) -> Unit } event
+     * @params { (Int64, Int64) -> Unit } event
      * @returns { This }
-     * @relation onTimer(event: (utc: number, elapsedTime: number) => void): TextTimerAttribute
      */
     @!APILevel[
         22,
@@ -262,11 +247,10 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
     /**
      * Sets the font size.
      *
-     * @param { Length } value - Font size.The default font size is 16 fp.
+     * @params { Length } value - Font size.The default font size is 16 fp.
      * <br>If fontSize is of the number type, the unit fp is used.
      * <br>The value cannot be a percentage.
      * @returns { This }
-     * @relation fontSize(value: Length): TextTimerAttribute
      */
     @!APILevel[
         22,
@@ -283,9 +267,8 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
     /**
      * Sets the font color.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation fontColor(value: ResourceColor): TextTimerAttribute
      */
     @!APILevel[
         22,
@@ -302,9 +285,8 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
     /**
      * Sets the font style.
      *
-     * @param { FontStyle } value - Font style.Default value: FontStyle.Normal
+     * @params { FontStyle } value - Font style.Default value: FontStyle.Normal
      * @returns { This }
-     * @relation fontStyle(value: FontStyle): TextTimerAttribute
      */
     @!APILevel[
         22,
@@ -325,12 +307,11 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * <br>If the value is too large, the text may be clipped depending on the font.
      * </p>
      *
-     * @param { FontWeight } value - Font weight.
+     * @params { FontWeight } value - Font weight.
      * <br>For the number type, Value range: [100, 900], at an interval of 100.The default value is 400.
      * <br>A larger value indicates a heavier font weight.
      * <br>For the string type, only strings that represent a number.
      * @returns { This }
-     * @relation fontWeight(value: number | FontWeight | ResourceStr): TextTimerAttribute
      */
     @!APILevel[
         22,
@@ -349,9 +330,8 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
     /**
      * Sets the font family.
      *
-     * @param { ResourceStr } value - Font family. Default font: 'HarmonyOS Sans'
+     * @params { ResourceStr } value - Font family. Default font: 'HarmonyOS Sans'
      * @returns { This }
-     * @relation fontFamily(value: ResourceStr): TextTimerAttribute
      */
     @!APILevel[
         22,
@@ -372,9 +352,8 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
-     * @param { Array<ShadowOptions> } value - The shadow options.
+     * @params { Array<ShadowOptions> } value - The shadow options.
      * @returns { TextTimerAttribute }
-     * @relation textShadow(value: ShadowOptions | Array<ShadowOptions>): TextTimerAttribute
      */
     @!APILevel[
         22,
@@ -398,9 +377,8 @@ public class TextTimer <: CommonMethodComponent<TextTimerAttribute> & TextTimerA
      * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
-     * @param { ShadowOptions } value - The shadow options.
+     * @params { ShadowOptions } value - The shadow options.
      * @returns { TextTimerAttribute }
-     * @relation textShadow(value: ShadowOptions | Array<ShadowOptions>): TextTimerAttribute
      */
     @!APILevel[
         22,

@@ -22,17 +22,12 @@ let COLOR_TRANSPARENT_VALUE: UInt32 = 0X00000000
 
 /**
  * Defines the color which can use resource.
- *
- * @typedef { Color | UInt32 | AppResource } ResourceColor
- * @syscap SystemCapability.ArkUI.ArkUI.Full
- * @relation declare type ResourceColor = Color | number | string | Resource
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface ResourceColor {
-
     /**
      * The value type of ResourceColor.
      * @throws { BusinessException } 100001 - Internal error.
@@ -77,10 +72,6 @@ extend UInt32 <: ResourceColor {
 
 /**
  * common class of color
- *
- * @class Color
- * @syscap SystemCapability.ArkUI.ArkUI.Full
- * @relation declare enum Color
  */
 @!APILevel[
     22,
@@ -91,9 +82,6 @@ public class Color <: ResourceColor {
 
     /**
      * Black.
-     *
-     * @syscap SystemCapability.ArkUI.ArkUI.Full
-     * @relation Black
      */
     @!APILevel[
         22,
@@ -102,9 +90,6 @@ public class Color <: ResourceColor {
     public static let Black: Color = Color(0xff000000)
     /**
      * Blue.
-     *
-     * @syscap SystemCapability.ArkUI.ArkUI.Full
-     * @relation Blue
      */
     @!APILevel[
         22,
@@ -113,9 +98,6 @@ public class Color <: ResourceColor {
     public static let Blue: Color = Color(0xff0000ff)
     /**
      * Gray.
-     *
-     * @syscap SystemCapability.ArkUI.ArkUI.Full
-     * @relation Gray
      */
     @!APILevel[
         22,
@@ -124,9 +106,6 @@ public class Color <: ResourceColor {
     public static let Gray: Color = Color(0xff808080)
     /**
      * Green.
-     *
-     * @syscap SystemCapability.ArkUI.ArkUI.Full
-     * @relation Green
      */
     @!APILevel[
         22,
@@ -135,9 +114,6 @@ public class Color <: ResourceColor {
     public static let Green: Color = Color(0xff008000)
     /**
      * Red.
-     *
-     * @syscap SystemCapability.ArkUI.ArkUI.Full
-     * @relation Red
      */
     @!APILevel[
         22,
@@ -146,9 +122,6 @@ public class Color <: ResourceColor {
     public static let Red: Color = Color(0xffff0000)
     /**
      * White.
-     *
-     * @syscap SystemCapability.ArkUI.ArkUI.Full
-     * @relation White
      */
     @!APILevel[
         22,
@@ -157,9 +130,6 @@ public class Color <: ResourceColor {
     public static let White: Color = Color(0xffffffff)
     /**
      * Transparent.
-     *
-     * @syscap SystemCapability.ArkUI.ArkUI.Full
-     * @relation Transparent
      */
     @!APILevel[
         22,
@@ -169,10 +139,10 @@ public class Color <: ResourceColor {
 
     /**
      * Constructor of color.
-     * @param { UInt8 } red
-     * @param { UInt8 } green
-     * @param { UInt8 } blue
-     * @param { UInt8 } alpha
+     * @params { UInt8 } red
+     * @params { UInt8 } green
+     * @params { UInt8 } blue
+     * @params { UInt8 } alpha
      * @returns { Color }
      */
     @!APILevel[
@@ -195,7 +165,8 @@ public class Color <: ResourceColor {
 
     /**
      * Constructor of color.
-     * @param { UInt32 } value
+     *
+     * @params { UInt32 } value
      * @returns { Color }
      */
     @!APILevel[

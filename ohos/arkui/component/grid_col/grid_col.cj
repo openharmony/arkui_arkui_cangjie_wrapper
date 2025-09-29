@@ -41,7 +41,6 @@ struct NativeGridColColumnOption {
 /**
  * Defines the option in number unit of grid-container child component.
  *
- * @relation interface GridColColumnOption
  */
 @!APILevel[
     22,
@@ -51,8 +50,6 @@ public class GridColOptions {
     /**
     * Grid Col Column Option xs
     *
-    * @type { Int32 }
-    * @relation xs?: number
     */
     @!APILevel[
         22,
@@ -63,8 +60,6 @@ public class GridColOptions {
     /**
     * Grid Col Column Option sm
     *
-    * @type { Int32 }
-    * @relation sm?: number
     */
     @!APILevel[
         22,
@@ -75,8 +70,6 @@ public class GridColOptions {
     /**
     * Grid Col Column Option md
     *
-    * @type { Int32 }
-    * @relation md?: number
     */
     @!APILevel[
         22,
@@ -87,8 +80,6 @@ public class GridColOptions {
     /**
     * Grid Col Column Option lg
     *
-    * @type { Int32 }
-    * @relation lg?: number
     */
     @!APILevel[
         22,
@@ -99,8 +90,6 @@ public class GridColOptions {
     /**
     * Grid Col Column Option xl
     *
-    * @type { Int32 }
-    * @relation xl?: number
     */
     @!APILevel[
         22,
@@ -111,8 +100,6 @@ public class GridColOptions {
     /**
     * Grid Col Column Option xxl
     *
-    * @type { Int32 }
-    * @relation xxl?: number
     */
     @!APILevel[
         22,
@@ -123,12 +110,12 @@ public class GridColOptions {
     /**
     * Defines the constructor of GridColOptions.
     *
-    * @param { Int32 } xs
-    * @param { Int32 } sm
-    * @param { Int32 } md
-    * @param { Int32 } lg
-    * @param { Int32 } xl
-    * @param { Int32 } xxl
+    * @params { Int32 } xs
+    * @params { Int32 } sm
+    * @params { Int32 } md
+    * @params { Int32 } lg
+    * @params { Int32 } xl
+    * @params { Int32 } xxl
     */
     @!APILevel[
         22,
@@ -153,7 +140,7 @@ public class GridColOptions {
     /**
     * Defines the option in number unit of grid-container child component.
     *
-    * @param { Int32 } value
+    * @params { Int32 } value
     */
     @!APILevel[
         22,
@@ -198,7 +185,6 @@ foreign {
 /**
  * Defines GridCol Component.
  *
- * @relation const GridCol: GridColInterface
  */
 @!APILevel[
     22,
@@ -208,10 +194,10 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
     /**
      * GridCol constructor.
      *
-     * @param { Int32 } span
-     * @param { Int32 } offset
-     * @param { Int32 } order
-     * @param { () -> Unit } child
+     * @params { Int32 } span
+     * @params { Int32 } offset
+     * @params { Int32 } order
+     * @params { () -> Unit } child
      * @returns { This }
      */
     @!APILevel[
@@ -228,10 +214,10 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
     /**
      * GridCol constructor.
      *
-     * @param { GridColOptions } span
-     * @param { GridColOptions } offset
-     * @param { GridColOptions } order
-     * @param { () -> Unit } child
+     * @params { GridColOptions } span
+     * @params { GridColOptions } offset
+     * @params { GridColOptions } order
+     * @params { () -> Unit } child
      * @returns { This }
      */
     @!APILevel[
@@ -256,9 +242,8 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
     /**
     * Sets the span of current gird-container item.
     *
-    * @param { Int32 } value
+    * @params { Int32 } value
     * @returns { This }
-    * @relation span(value: number | GridColColumnOption): GridColAttribute
     */
     @!APILevel[
         22,
@@ -274,9 +259,8 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
     /**
     * Sets the span of current gird-container item.
     *
-    * @param { GridColOptions } value
+    * @params { GridColOptions } value
     * @returns { This }
-    * @relation span(value: number | GridColColumnOption): GridColAttribute
     */
     @!APILevel[
         22,
@@ -292,9 +276,8 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
     /**
     * Sets the offset of current gird-container item.
     *
-    * @param { Int32 } value
+    * @params { Int32 } value
     * @returns { This }
-    * @relation gridColOffset(value: number | GridColColumnOption): GridColAttribute
     */
     @!APILevel[
         22,
@@ -309,9 +292,8 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
     /**
     * Sets the offset of current gird-container item.
     *
-    * @param { GridColOptions } value
+    * @params { GridColOptions } value
     * @returns { This }
-    * @relation gridColOffset(value: number | GridColColumnOption): GridColAttribute
     */
     @!APILevel[
         22,
@@ -328,9 +310,8 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
     /**
     * Sets the order of current gird-container item.
     *
-    * @param { Int32 } value
+    * @params { Int32 } value
     * @returns { This }
-    * @relation order(value: number | GridColColumnOption): GridColAttribute
     */
     @!APILevel[
         22,
@@ -346,9 +327,8 @@ public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribu
     /**
     * Sets the order of current gird-container item.
     *
-    * @param { GridColOptions } value
+    * @params { GridColOptions } value
     * @returns { This }
-    * @relation order(value: number | GridColColumnOption): GridColAttribute
     */
     @!APILevel[
         22,

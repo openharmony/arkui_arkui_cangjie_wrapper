@@ -28,7 +28,6 @@ foreign {
 /**
  * Defines ScrollBar Component.
  *
- * @relation const ScrollBar: ScrollBarInterface
  */
 @!APILevel[
     22,
@@ -38,12 +37,11 @@ public class ScrollBar <: CommonMethodComponent<ScrollBarAttribute> & ScrollBarA
     /**
     * Define the constructor of the scrollbar component.
     *
-    * @param { scroller } scroller
-    * @param { ScrollBarDirection } direction
-    * @param { BarState } state
-    * @param { () -> Unit } child
+    * @params { scroller } scroller
+    * @params { ScrollBarDirection } direction
+    * @params { BarState } state
+    * @params { () -> Unit } child
     * @returns { This }
-    * @relation (value: ScrollBarOptions): ScrollBarAttribute;
     */
     @!APILevel[
         22,

@@ -70,7 +70,6 @@ foreign {
 /**
  * Defines ImageSpan Component instance.
  *
- * @relation const ImageSpan: ImageSpanInterface
  */
 @!APILevel[
     22,
@@ -80,9 +79,8 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
     /**
      * Called when image is entered in span.
      *
-     * @param { ResourceStr } value - The image resource.
+     * @params { ResourceStr } value - The image resource.
      * @returns { ImageSpan } The attribute of the image span.
-     * @relation (value: ResourceStr | PixelMap): ImageSpanAttribute
      */
     @!APILevel[
         22,
@@ -104,9 +102,8 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
     /**
      * Called when image is entered in span.
      *
-     * @param { PixelMap } value - The image resource.
+     * @params { PixelMap } value - The image resource.
      * @returns { ImageSpan } The attribute of the image span.
-     * @relation (value: ResourceStr | PixelMap): ImageSpanAttribute
      */
     @!APILevel[
         22,
@@ -122,9 +119,8 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
     /**
      * Called when the alignment of image span is set.
      *
-     * @param { ImageSpanAlignment } value - The alignment type of image span.
+     * @params { ImageSpanAlignment } value - The alignment type of image span.
      * @returns { This } The attribute of the image span.
-     * @relation verticalAlign(value: ImageSpanAlignment): ImageSpanAttribute
      */
     @!APILevel[
         22,
@@ -141,9 +137,8 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
     /**
      * Sets the zoom type of an image.
      *
-     * @param { ImageFit } value - Image display mode.
+     * @params { ImageFit } value - Image display mode.
      * @returns { This } The attribute of the image span.
-     * @relation objectFit(value: ImageFit): ImageSpanAttribute
      */
     @!APILevel[
         22,
@@ -160,9 +155,8 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
     /**
      * Sets the color filter effect on the image span.
      *
-     * @param { ColorFilter } filter ColorFilter object.
+     * @params { ColorFilter } filter ColorFilter object.
      * @returns { This } The attribute of the image span.
-     * @relation colorFilter(filter: ColorFilter | DrawingColorFilter): ImageSpanAttribute
      */
     @!APILevel[
         22,
@@ -185,9 +179,8 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      * Sets a callback which is triggered when the image is successfully loaded.
      * The size of the image source that is successfully loaded is returned, in pixels.
      *
-     * @param { ImageCompleteCallback } callback - Triggered when the image is successfully loaded.
+     * @params { ImageCompleteCallback } callback - Triggered when the image is successfully loaded.
      * @returns { ImageSpanAttribute } The attribute of the image span.
-     * @relation onComplete(callback: ImageCompleteCallback): ImageSpanAttribute
      */
     @!APILevel[
         22,
@@ -209,9 +202,8 @@ public class ImageSpan <: CommonMethodComponent<ImageSpanAttribute> & ImageSpanA
      * Sets a callback which is triggered when an exception occurs during image loading.
      * The field of "message" returned in the callback carries the detailed information of failed image loading.
      *
-     * @param { ImageErrorCallback } callback - Triggered when an exception occurs during image loading.
+     * @params { ImageErrorCallback } callback - Triggered when an exception occurs during image loading.
      * @returns { This } The attribute of the image span.
-     * @relation onError(callback: ImageErrorCallback): ImageSpanAttribute
      */
     @!APILevel[
         22,

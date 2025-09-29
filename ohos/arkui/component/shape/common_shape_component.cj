@@ -48,7 +48,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     /**
      * Called when the fill color is set.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -66,7 +66,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     /**
      * Called when the transparency of the border is set.
      *
-     * @param { Float64 } value
+     * @params { Float64 } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -83,7 +83,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      /**
      * Called when the transparency of the border is set.
      *
-     * @param { AppResource } value
+     * @params { AppResource } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -103,7 +103,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     /**
      * Called when the border color is set.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -121,7 +121,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     /**
      * Called when the gap of the border is set.
      *
-     * @param { Array<Length> } value
+     * @params { Array<Length> } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -151,7 +151,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     /**
      * Called when the offset of the starting point of border drawing is set.
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -170,7 +170,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     /**
      * Called when the path endpoint drawing style is set.
      *
-     * @param { LineCapStyle } value
+     * @params { LineCapStyle } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -188,7 +188,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     /**
      * Called when the border corner drawing style is set.
      *
-     * @param { LineJoinStyle } value
+     * @params { LineJoinStyle } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -206,7 +206,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     /**
      * Called when the limit value for drawing acute angles as oblique angles is set.
      *
-     * @param { Float64 } miterLimit
+     * @params { Float64 } miterLimit
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -224,7 +224,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     /**
      * Called when the opacity of the border is set.
      *
-     * @param { Float64 } value
+     * @params { Float64 } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -241,9 +241,8 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     /**
      * Called when the opacity of the border is set.
      *
-     * @param { AppResource } value
+     * @params { AppResource } value
      * @returns { This }
-     * @relation strokeOpacity(value: number | string | Resource): ShapeAttribute;
      */
     @!APILevel[
         22,
@@ -261,7 +260,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     /**
      * Called when the width of the border is set.
      *
-     * @param { Length } value
+     * @params { Length } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -280,7 +279,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     /**
      * Called when setting whether anti aliasing is on.
      *
-     * @param { boolean } value
+     * @params { boolean } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */

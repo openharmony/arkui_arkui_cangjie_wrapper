@@ -68,7 +68,6 @@ foreign {
 /**
  * Provides methods for control pattern lock component.
  *
- * @relation class PatternLockController
  */
 @!APILevel[
     22,
@@ -78,7 +77,6 @@ public class PatternLockController <: RemoteDataLite {
     /**
      * A constructor used to create a PatternLockController instance.
      *
-     * @relation constructor()
      */
     @!APILevel[
         22,
@@ -95,7 +93,6 @@ public class PatternLockController <: RemoteDataLite {
     /**
      * Reset pattern lock.
      *
-     * @relation reset(): void
      */
     @!APILevel[
         22,
@@ -111,7 +108,6 @@ public class PatternLockController <: RemoteDataLite {
 /**
  * Defines PatternLock Component.
  *
- * @relation const PatternLock: PatternLockInterface
  */
 @!APILevel[
     22,
@@ -121,9 +117,8 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
     /**
      * Constructor.
      *
-     * @param { PatternLockController } [controller]  controller
+     * @params { PatternLockController } [controller]  controller
      * @returns { PatternLock }
-     * @relation (controller?: PatternLockController): PatternLockAttribute
      */
     @!APILevel[
         22,
@@ -138,9 +133,8 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
     /**
      * Sets the fill color of the grid dot in the selected state.
      *
-     * @param { ResourceColor } value - Fill color of the grid dot in the selected state, Default value is '#ff182431'.
+     * @params { ResourceColor } value - Fill color of the grid dot in the selected state, Default value is '#ff182431'.
      * @returns { This }
-     * @relation selectedColor(value: ResourceColor): PatternLockAttribute
      */
     @!APILevel[
         22,
@@ -157,9 +151,8 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
     /**
      * Sets the path color.
      *
-     * @param { ResourceColor } value - Path color.
+     * @params { ResourceColor } value - Path color.
      * @returns { This }
-     * @relation pathColor(value: ResourceColor): PatternLockAttribute
      */
     @!APILevel[
         22,
@@ -176,9 +169,8 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
     /**
      * Sets the fill color of the grid dot in the activated state, which is when the dot is highlighted but not selected.
      *
-     * @param { ResourceColor } value - Fill color of the grid dot in the activated state.
+     * @params { ResourceColor } value - Fill color of the grid dot in the activated state.
      * @returns { This }
-     * @relation activeColor(value: ResourceColor): PatternLockAttribute
      */
     @!APILevel[
         22,
@@ -195,9 +187,8 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
     /**
      * Sets the fill color of the grid dot in the unselected state.
      *
-     * @param { ResourceColor } value - Fill color of the grid dot in the unselected state, Default value is '#ff182431'.
+     * @params { ResourceColor } value - Fill color of the grid dot in the unselected state, Default value is '#ff182431'.
      * @returns { This }
-     * @relation regularColor(value: ResourceColor): PatternLockAttribute
      */
     @!APILevel[
         22,
@@ -215,10 +206,9 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * Sets whether to allow the user to reset the component status (that is, clear the input) by touching the component
      * again after the input is complete.
      *
-     * @param { Bool } value - Whether to allow the user to reset the component status (that is, clear the input) by
+     * @params { Bool } value - Whether to allow the user to reset the component status (that is, clear the input) by
      * touching the component again after the input is complete, Default value is true.
      * @returns { This }
-     * @relation autoReset(value: boolean): PatternLockAttribute
      */
     @!APILevel[
         22,
@@ -238,9 +228,8 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * <br>If this attribute is set to 0 or a negative value, the default value is used.
      * </p>
      *
-     * @param { Length } value - Radius of the dots in a grid, Default value is 6vp.
+     * @params { Length } value - Radius of the dots in a grid, Default value is 6vp.
      * @returns { This }
-     * @relation circleRadius(value: Length): PatternLockAttribute
      */
     @!APILevel[
         22,
@@ -261,9 +250,8 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * <br>If this attribute is set to 0 or a negative number, the component is not displayed.
      * </p>
      *
-     * @param { Length } value - Width and height of the component, Default value is 288vp.
+     * @params { Length } value - Width and height of the component, Default value is 288vp.
      * @returns { This }
-     * @relation sideLength(value: Length): PatternLockAttribute
      */
     @!APILevel[
         22,
@@ -285,9 +273,8 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
      * <br>If this attribute is set to **0** or a negative value, the path stroke is not displayed.
      * </p>
      *
-     * @param { Length } value - Width of the path stroke, Default value is 12vp.
+     * @params { Length } value - Width of the path stroke, Default value is 12vp.
      * @returns { This }
-     * @relation pathStrokeWidth(value: number | string): PatternLockAttribute
      */
     @!APILevel[
         22,
@@ -304,9 +291,8 @@ public class PatternLock <: CommonMethodComponent<PatternLockAttribute> & Patter
     /**
      * Invoked when the pattern password input is complete.
      *
-     * @param { function } callback
+     * @params { function } callback
      * @returns { This }
-     * @relation onPatternComplete(callback: (input: Array<number>) => void): PatternLockAttribute
      */
     @!APILevel[
         22,

@@ -125,7 +125,6 @@ class FFIVectorColorStops {
 /**
  * Defines the Gauge component.
  *
- * @relation declare const Gauge: GaugeInterface
  */
 @!APILevel[
     22,
@@ -136,12 +135,11 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
     /**
      * The constructor of Gauge.
      *
-     * @param { Float64 } value
-     * @param { Float64 } min
-     * @param { Float64 } max
-     * @param { () -> Unit } child
+     * @params { Float64 } value
+     * @params { Float64 } min
+     * @params { Float64 } max
+     * @params { () -> Unit } child
      * @returns { This }
-     * @relation (options: GaugeOptions): GaugeAttribute
      */
     @!APILevel[
         22,
@@ -157,9 +155,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
     /**
      * Sets the value for the current profile.
      *
-     * @param { Float32 } value
+     * @params { Float32 } value
      * @returns { This }
-     * @relation value(value: number): GaugeAttribute
      */
     @!APILevel[
         22,
@@ -175,9 +172,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
     /**
      * Set the start angle. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @param { Float64 } angle
+     * @params { Float64 } angle
      * @returns { This }
-     * @relation startAngle(angle: number): GaugeAttribute
      */
     @!APILevel[
         22,
@@ -193,9 +189,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
     /**
      * Sets the end angle position. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @param { Float64 } angle
+     * @params { Float64 } angle
      * @returns { This }
-     * @relation endAngle(angle: number): GaugeAttribute
      */
     @!APILevel[
         22,
@@ -211,9 +206,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { Array<(ResourceColor, Float32)> } value
+     * @params { Array<(ResourceColor, Float32)> } value
      * @returns { This }
-     * @relation colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute
      */
     @!APILevel[
         22,
@@ -242,9 +236,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { Array<(LinearGradient, Float32)> } value
+     * @params { Array<(LinearGradient, Float32)> } value
      * @returns { This }
-     * @relation colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute
      */
     @!APILevel[
         22,
@@ -288,9 +281,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute
      */
     @!APILevel[
         22,
@@ -306,9 +298,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { LinearGradient } value
+     * @params { LinearGradient } value
      * @returns { This }
-     * @relation colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute
      */
     @!APILevel[
         22,
@@ -324,9 +315,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
     /**
      * Sets the thickness of the ring chart.
      *
-     * @param { Length } length
+     * @params { Length } length
      * @returns { This }
-     * @relation strokeWidth(length: Length): GaugeAttribute
      */
     @!APILevel[
         22,
@@ -343,11 +333,10 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
     /**
      * Sets track shadow of the ring chart.
      *
-     * @param { Float64 } radius
-     * @param { Float64 } offsetX
-     * @param { Float64 } offsetY
+     * @params { Float64 } radius
+     * @params { Float64 } offsetX
+     * @params { Float64 } offsetY
      * @returns { This }
-     * @relation trackShadow(value: GaugeShadowOptions): GaugeAttribute
      */
     @!APILevel[
         22,
@@ -363,10 +352,9 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
     /**
      * Sets indicator options of the ring chart.
      *
-     * @param { ResourceStr } icon
-     * @param { Length } space
+     * @params { ResourceStr } icon
+     * @params { Length } space
      * @returns { This }
-     * @relation indicator(value: GaugeIndicatorOptions): GaugeAttribute
      */
     @!APILevel[
         22,
@@ -386,9 +374,8 @@ public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
     /**
      * Sets description content of the ring chart.
      *
-     * @param { () -> Unit } builder
+     * @params { () -> Unit } builder
      * @returns { This }
-     * @relation description(value: CustomBuilder): GaugeAttribute
      */
     @!APILevel[
         22,

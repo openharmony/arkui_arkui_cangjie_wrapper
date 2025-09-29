@@ -31,7 +31,6 @@ foreign {
 /**
  * Defines MenuItemGroup Component.
  *
- * @relation declare const MenuItemGroup: MenuItemGroupInterface
  */
 @!APILevel[
     22,
@@ -42,11 +41,10 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroupAttribute> & Me
     /**
      * Creates the MenuItem component.
      *
-     * @param { ResourceStr } header
-     * @param { ResourceStr } footer
-     * @param { () -> Unit } child     
+     * @params { ResourceStr } header
+     * @params { ResourceStr } footer
+     * @params { () -> Unit } child     
      * @returns { This }
-     * @relation (value?: MenuItemGroupOptions): MenuItemGroupAttribute
      */
     @!APILevel[
         22,
@@ -65,11 +63,10 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroupAttribute> & Me
     /**
      * Creates the MenuItem component.
      *
-     * @param { CustomBuilder } header
-     * @param { CustomBuilder } footer
-     * @param { () -> Unit } child     
+     * @params { CustomBuilder } header
+     * @params { CustomBuilder } footer
+     * @params { () -> Unit } child     
      * @returns { This }
-     * @relation (value?: MenuItemGroupOptions): MenuItemGroupAttribute
      */
     @!APILevel[
         22,

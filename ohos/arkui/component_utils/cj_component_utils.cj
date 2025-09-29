@@ -37,7 +37,6 @@ struct CSize {
 /**
  * Defines the size property.
  *
- * @relation export interface Size
  */
 @!APILevel[
     22,
@@ -47,7 +46,6 @@ public class Size {
     /**
      * Defines the width property.
      *
-     * @relation width: number
      */
     @!APILevel[
         22,
@@ -58,7 +56,6 @@ public class Size {
     /**
      * Defines the height property.
      *
-     * @relation height: number
      */
     @!APILevel[
         22,
@@ -91,7 +88,6 @@ struct COffset {
 /**
  * Defines the offset property.
  *
- * @relation export interface Offset
  */
 @!APILevel[
     22,
@@ -101,7 +97,6 @@ public class Offset {
     /**
      * Coordinate x of the Position.
      *
-     * @relation x: number
      */
     @!APILevel[
         22,
@@ -112,7 +107,6 @@ public class Offset {
     /**
      * Coordinate y of the Position.
      *
-     * @relation y: number
      */
     @!APILevel[
         22,
@@ -149,7 +143,6 @@ struct CTranslateResult {
 /**
  * Translation Result
  *
- * @relation export interface TranslateResult
  */
 @!APILevel[
     22,
@@ -159,7 +152,6 @@ public class TranslateResult {
     /**
      * Indicates the translation distance of the x-axis, in vp.
      *
-     * @relation x: number
      */
     @!APILevel[
         22,
@@ -170,7 +162,6 @@ public class TranslateResult {
     /**
      * Indicates the translation distance of the y-axis, in vp.
      *
-     * @relation y: number
      */
     @!APILevel[
         22,
@@ -181,7 +172,6 @@ public class TranslateResult {
     /**
      * Indicates the translation distance of the z-axis, in vp.
      *
-     * @relation z: number
      */
     @!APILevel[
         22,
@@ -215,7 +205,6 @@ struct CScaleResult {
 /**
  * Scale Result
  *
- * @relation export interface ScaleResult
  */
 @!APILevel[
     22,
@@ -225,7 +214,6 @@ public class ScaleResult {
     /**
      * Zoom factor of the x-axis.
      *
-     * @relation x: number
      */
     @!APILevel[
         22,
@@ -236,7 +224,6 @@ public class ScaleResult {
     /**
      * Zoom factor of the y-axis.
      *
-     * @relation z: number
      */
     @!APILevel[
         22,
@@ -247,7 +234,6 @@ public class ScaleResult {
     /**
      * Zoom factor of the z-axis.
      *
-     * @relation z: number
      */
     @!APILevel[
         22,
@@ -258,7 +244,6 @@ public class ScaleResult {
     /**
      * Transform the x-axis coordinate of the center point.
      *
-     * @relation centerX: number
      */
     @!APILevel[
         22,
@@ -269,7 +254,6 @@ public class ScaleResult {
     /**
      * Transform the y-axis coordinate of the center point.
      *
-     * @relation centerY: number
      */
     @!APILevel[
         22,
@@ -312,7 +296,6 @@ struct CRotateResult {
 /**
  * Rotation Result.
  *
- * @relation export interface RotateResult
  */
 @!APILevel[
     22,
@@ -322,7 +305,6 @@ public class RotateResult {
     /**
      * Axis of rotation vector x coordinate.
      *
-     * @relation x: number
      */
     @!APILevel[
         22,
@@ -333,7 +315,6 @@ public class RotateResult {
     /**
      * Axis of rotation vector y coordinate.
      *
-     * @relation y: number
      */
     @!APILevel[
         22,
@@ -344,7 +325,6 @@ public class RotateResult {
     /**
      * Axis of rotation vector z coordinate.
      *
-     * @relation z: number
      */
     @!APILevel[
         22,
@@ -355,7 +335,6 @@ public class RotateResult {
     /**
      * Transform the x-axis coordinate of the center point.
      *
-     * @relation centerX: number
      */
     @!APILevel[
         22,
@@ -366,7 +345,6 @@ public class RotateResult {
     /**
      * Transform the y-axis coordinate of the center point.
      *
-     * @relation centerY: number
      */
     @!APILevel[
         22,
@@ -377,7 +355,6 @@ public class RotateResult {
     /**
      * Rotation angle.
      *
-     * @relation angle: number
      */
     @!APILevel[
         22,
@@ -437,7 +414,6 @@ struct CComponentInfo {
 /**
  * Component information.
  *
- * @relation export interface ComponentInfo
  */
 @!APILevel[
     22,
@@ -447,7 +423,6 @@ public class ComponentInfo {
     /**
      * component size.
      *
-     * @relation size: Size
      */
     @!APILevel[
         22,
@@ -458,7 +433,6 @@ public class ComponentInfo {
     /**
      * Obtain attribute information relative to the local.
      *
-     * @relation localOffset: Offset
      */
     @!APILevel[
         22,
@@ -469,7 +443,6 @@ public class ComponentInfo {
     /**
      * Obtain attribute information relative to the window.
      *
-     * @relation windowOffset: Offset
      */
     @!APILevel[
         22,
@@ -480,7 +453,6 @@ public class ComponentInfo {
     /**
      * Obtain attribute information relative to the screen.
      *
-     * @relation screenOffset: Offset
      */
     @!APILevel[
         22,
@@ -491,7 +463,6 @@ public class ComponentInfo {
     /**
      * Obtain attribute information for translation.
      *
-     * @relation translate: TranslateResult
      */
     @!APILevel[
         22,
@@ -502,7 +473,6 @@ public class ComponentInfo {
     /**
      * Obtain attribute information for rotate.
      *
-     * @relation scale: ScaleResult
      */
     @!APILevel[
         22,
@@ -513,7 +483,6 @@ public class ComponentInfo {
     /**
      * Obtain attribute information for rotate.
      *
-     * @relation rotate: RotateResult
      */
     @!APILevel[
         22,
@@ -524,7 +493,6 @@ public class ComponentInfo {
     /**
      * Obtain attribute information of the transformation matrix.
      *
-     * @relation transform: Matrix4Result
      */
     @!APILevel[
         22,
@@ -555,7 +523,6 @@ public class ComponentInfo {
 /**
  * This module provides functionality for component coordinates and sizes.
  *
- * @relation declare namespace componentUtils
  */
 @!APILevel[
     22,
@@ -565,8 +532,7 @@ public class ComponentUtils {
     /**
      * Provide the ability to obtain the coordinates and size of component drawing areas.
      *
-     * @param {string} id - component id.
-     * @relation unction getRectangleById(id: string): ComponentInfo;
+     * @params {string} id - component id.
      */
     @!APILevel[
         22,

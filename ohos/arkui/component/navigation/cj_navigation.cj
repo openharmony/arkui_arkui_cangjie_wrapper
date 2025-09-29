@@ -115,9 +115,6 @@ struct CJPopInfo {
 
 /**
  * Indicates the options of Navigation's Titlebar.
- *
- * @class NavigationTitleOptions
- * @realtion declare interface NavigationTitleOptions
  */
 @!APILevel[
     22,
@@ -126,9 +123,6 @@ struct CJPopInfo {
 public class NavigationTitleOptions {
     /**
      * Background color of the title bar. If this parameter is not set, the default color is used.
-     *
-     * @type { ?ResourceColor }
-     * @relation backgroundColor?: ResourceColor
      */
     @!APILevel[
         22,
@@ -138,9 +132,6 @@ public class NavigationTitleOptions {
     /**
      * Background blur style of the title bar. If this parameter is not set, the background
      * blur effect is disabled.
-     *
-     * @type { ?BlurStyle }
-     * @relation backgroundBlurStyle?: BlurStyle
      */
     @!APILevel[
         22,
@@ -150,9 +141,6 @@ public class NavigationTitleOptions {
     /**
      * Layout style of the title bar.
      * <br>Default value: **BarStyle.STANDARD**.
-     *
-     * @type { ?BarStyle }
-     * @relation barStyle?: BarStyle
      */
     @!APILevel[
         22,
@@ -161,9 +149,6 @@ public class NavigationTitleOptions {
     public var barStyle: ?BarStyle
     /**
      * Set title bar start padding.
-     *
-     * @type { ?Length }
-     * @relation paddingStart?: LengthMetrics
      */
     @!APILevel[
         22,
@@ -172,9 +157,6 @@ public class NavigationTitleOptions {
     public var paddingStart: ?Length
     /**
      * Set title bar end padding.
-     *
-     * @type { ?Length }
-     * @relation paddingEnd?: LengthMetrics
      */
     @!APILevel[
         22,
@@ -184,11 +166,11 @@ public class NavigationTitleOptions {
 
     /**
      * Constructor of NavigationTitleOptions
-     * @param { ?ResourceColor } backgroundColor
-     * @param { ?BlurStyle } backgoundBlurStyle
-     * @param { ?BarStyle } barStyle
-     * @param { ?Length } paddingStart
-     * @param { ?Length } paddingEnd
+     * @params { ?ResourceColor } backgroundColor
+     * @params { ?BlurStyle } backgoundBlurStyle
+     * @params { ?BarStyle } barStyle
+     * @params { ?Length } paddingStart
+     * @params { ?Length } paddingEnd
      */
     @!APILevel[
         22,
@@ -270,9 +252,6 @@ struct CJNavigationTitleOptions {
 
 /**
  * Defines the mode of stack operation.
- *
- * @enum { number }
- * @relation declare enum LaunchMode
  */
 @Derive[Equatable]
 @!APILevel[
@@ -284,8 +263,6 @@ public enum LaunchMode {
      * Default navigation stack operation mode.<br>In this mode,
      * push operations add the specified **NavDestination**page to
      * the stack; replace operations replace the current top **NavDestination** page.
-     *
-     * @relation STANDARD = 0
      */
     @!APILevel[
         22,
@@ -296,8 +273,6 @@ public enum LaunchMode {
     /**
      * When the NavDestination with a specified name exists, it will be moved to top of stack,
      * otherwise, the behavior will be consistent with the STANDARD mode.
-     *
-     * @relation MOVE_TO_TOP_SINGLETON = 1
      */
     @!APILevel[
         22,
@@ -308,8 +283,6 @@ public enum LaunchMode {
     /**
      * When the NavDestination with a specified name exists, the stack will pop until that NavDestination,
      * otherwise, the behavior will be consistent with the STANDARD mode.
-     *
-     * @relation POP_TO_SINGLETON = 2
      */
     @!APILevel[
         22,
@@ -320,8 +293,6 @@ public enum LaunchMode {
     /**
      * This mode creates an instance of **NavDestination**. Compared with
      * **STANDARD**, this mode does not reuse the instance with the same name in the stack.
-     *
-     * @relation NEW_INSTANCE = 3
      */
     @!APILevel[
         22,
@@ -343,9 +314,6 @@ public enum LaunchMode {
 
 /**
  * Indicates the options of stack operation.
- *
- * @class NavigationOptions
- * @relation declare interface NavigationOptions
  */
 @!APILevel[
     22,
@@ -355,9 +323,6 @@ public class NavigationOptions {
     /**
      * Navigation stack operation mode.
      * <br>Default value: **LaunchMode.STANDARD**.
-     *
-     * @type { LaunchMode }
-     * @relation launchMode?: LaunchMode
      */
     @!APILevel[
         22,
@@ -370,9 +335,6 @@ public class NavigationOptions {
      * <br>Default value: **true**.
      * <br>**true**: The transition animation is supported.
      * <br>**false**: The transition animation is not supported.
-     *
-     * @type { Bool }
-     * @relation animated?: boolean
      */
     @!APILevel[
         22,
@@ -381,8 +343,8 @@ public class NavigationOptions {
     public var animated: ?Bool
     /**
      * Constructor of NavigationOptions
-     * @param { ?LaunchMode } launchMode
-     * @param { ?Bool } animated
+     * @params { ?LaunchMode } launchMode
+     * @params { ?Bool } animated
      */
     @!APILevel[
         22,
@@ -403,9 +365,6 @@ public class NavigationOptions {
 
 /**
  * Declare BarStyle enum.
- *
- * @enum { number }
- * @relation declare enum BarStyle
  */
 @Derive[Equatable]
 @!APILevel[
@@ -415,8 +374,6 @@ public class NavigationOptions {
 public enum BarStyle {
     /**
      * In this mode, the title bar or toolbar is laid out above the content area.
-     *
-     * @relation STANDARD = 0
      */
     @!APILevel[
         22,
@@ -426,8 +383,6 @@ public enum BarStyle {
     |
     /**
      *  In this mode, the title bar or toolbar is overlaid on top of the content area.
-     *
-     * @relation STACK = 1
      */
     @!APILevel[
         22,
@@ -448,8 +403,6 @@ public enum BarStyle {
 
 /**
  * Indicates the information of NavDestination.
- *
- * @relation declare class NavPathInfo
  */
 @!APILevel[
     22,
@@ -458,9 +411,6 @@ public enum BarStyle {
 public class NavPathInfo <: FFIData {
     /**
      * Name of the navigation destination page.
-     *
-     * @type { string }
-     * @relation name: string
      */
     @!APILevel[
         22,
@@ -469,9 +419,6 @@ public class NavPathInfo <: FFIData {
     public var name: ?String
     /**
      * Detailed parameters of the navigation destination page.
-     *
-     * @type { String }
-     * @relation param?: unknown
      */
     @!APILevel[
         22,
@@ -487,9 +434,8 @@ public class NavPathInfo <: FFIData {
     /**
      * Creates an instance of NavPathInfo.
      *
-     * @param { String } name - The name of NavDestination.
-     * @param { ?String } param - The detailed parameter of the NavDestination.
-     * @relation constructor(name: string, param: Object | null | undefined, onPop?: Callback<PopInfo>, isEntry?: boolean)
+     * @params { String } name - The name of NavDestination.
+     * @params { ?String } param - The detailed parameter of the NavDestination.
      */
     @!APILevel[
         22,
@@ -550,8 +496,6 @@ func freePathInfo(info: CJNavPathInfo): Unit {
 
 /**
  * Indicates the information of NavDestinations. Providers methods for controlling destination page in the stack
- *
- * @relation declare class NavPathStack
  */
 @!APILevel[
     22,
@@ -561,8 +505,6 @@ public class NavPathStack <: RemoteData {
     private var id: Int64 = 0
     /**
      * Creates an instance of NavPathStack.
-     *
-     * @relation constructor()
      */
     @!APILevel[
         22,
@@ -583,11 +525,10 @@ public class NavPathStack <: RemoteData {
     /**
      * Pushes the navigation destination page specified by **info** onto the navigation stack.
      *
-     * @param { NavPathInfo } info - Indicates the NavDestination to be pushed.
-     * @param { ?Bool } [animated] - Whether to support the transition animation.
+     * @params { NavPathInfo } info - Indicates the NavDestination to be pushed.
+     * @params { ?Bool } [animated] - Whether to support the transition animation.
      * <br>Default value: **true**.
      * <br>**true**: The transition animation is supported. **false**: The transition animation is not supported.
-     * @relation pushPath(info: NavPathInfo, animated?: boolean): void
      */
     @!APILevel[
         22,
@@ -613,12 +554,11 @@ public class NavPathStack <: RemoteData {
     /**
      * Pushes the specified NavDestination into the stack.
      *
-     * @param { string } name - Indicates the name of the NavDestination to be pushed.
-     * @param { unknown } param - Indicates the detailed parameter of the NavDestination to be pushed.
-     * @param { boolean } [animated] - Indicates whether the transition is animated.
+     * @params { string } name - Indicates the name of the NavDestination to be pushed.
+     * @params { unknown } param - Indicates the detailed parameter of the NavDestination to be pushed.
+     * @params { boolean } [animated] - Indicates whether the transition is animated.
      * <br>Default value: **true**.
      * <br>**true**: The transition animation is supported. **false**: The transition animation is not supported.
-     * @relation pushPathByName(name: string, param: unknown, animated?: boolean): void
      */
     @!APILevel[
         22,
@@ -633,9 +573,8 @@ public class NavPathStack <: RemoteData {
     /**
      * Pops the top NavDestination out of the stack.
      *
-     * @param { ?Bool } [animated] - Indicates whether the transition is animated. Default value is **true**.
+     * @params { ?Bool } [animated] - Indicates whether the transition is animated. Default value is **true**.
      * @returns { ?NavPathInfo } Returns the top NavPathInfo if the stack is not empty, otherwise returns None.
-     * @relation pop(animated?: boolean): NavPathInfo | undefined
      */
     @!APILevel[
         22,
@@ -663,7 +602,6 @@ public class NavPathStack <: RemoteData {
 /**
  * Defines Navigation Component.
  *
- * @relation declare const Navigation: NavigationInterface
  */
 @!APILevel[
     22,
@@ -673,8 +611,7 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
     /**
      * Constructor of Navigation
      *
-     * @param { () -> Unit } child
-     * @returns { Navigation }
+     * @params { () -> Unit } child
      */
     @!APILevel[
         22,
@@ -690,9 +627,8 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
     /**
      * Constructor of Navigation
      *
-     * @param { NavPathStack } pathInfos
-     * @param { () -> Unit } child
-     * @returns { Navigation }
+     * @params { NavPathStack } pathInfos
+     * @params { () -> Unit } child
      */
     @!APILevel[
         22,
@@ -709,9 +645,8 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
     /**
      * Set builder for user-defined NavDestination component.
      *
-     * @param { (String) -> Unit } builder - The builder function of NavDestination component.
+     * @params { (String) -> Unit } builder - The builder function of NavDestination component.
      * @returns { Navigation } Returns the instance of the Navigation.
-     * @relation navDestination(builder: (name: string, param: unknown) => void): NavigationAttribute
      */
     @!APILevel[
         22,
@@ -731,10 +666,9 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
     /**
      * Navigation title
      *
-     * @param { ResourceStr } value - Navigation title.
-     * @param { NavigationTitleOptions } [options] - Indicates the options of titlebar.
-     * @returns { Navigation }
-     * @relation title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions): NavigationAttribute
+     * @params { ResourceStr } value - Navigation title.
+     * @params { NavigationTitleOptions } options - Indicates the options of titlebar.
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -758,10 +692,9 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
     /**
      * Navigation title
      *
-     * @param { CustomBuilder } value - Navigation title.
-     * @param { NavigationTitleOptions } [options] - Indicates the options of titlebar.
-     * @returns { Navigation }
-     * @relation title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions): NavigationAttribute
+     * @params { CustomBuilder } value - Navigation title.
+     * @params { NavigationTitleOptions } options - Indicates the options of titlebar.
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -783,13 +716,12 @@ public class Navigation <: CommonMethodComponent<NavigationAttribute> & Navigati
     /**
      * Sets whether to hide the title bar and whether to animate the visibility change.
      *
-     * @param { Bool } hide - Whether to hide the title bar.
+     * @params { Bool } hide - Whether to hide the title bar.
      * <br>Default value is **false**. **true**: Hide the title bar. **false**: Show the title bar.
-     * @param { Bool } animated - Whether to animate the visibility change.
+     * @params { Bool } animated - Whether to animate the visibility change.
      * <br>Default value is **false**.
      * <br>**true**: Animate the visibility change. **false**: Do not animate the visibility change.
-     * @returns { NavigationAttribute }
-     * @relation hideTitleBar(hide: boolean, animated: boolean): NavigationAttribute
+     * @returns { This }
      */
     @!APILevel[
         22,

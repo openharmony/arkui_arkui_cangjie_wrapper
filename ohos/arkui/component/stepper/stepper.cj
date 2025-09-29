@@ -35,8 +35,6 @@ foreign {
 }
 /**
  * Defines Stepper Component.
- *
- * @relation const Stepper: StepperInterface;
  */
 @!APILevel[
     22,
@@ -47,10 +45,9 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
     /**
      * Defines Stepper Component instance.
      *
-     * @param { UInt32 = 0 } index
-     * @param { () -> Unit } child
+     * @params { UInt32 = 0 } index
+     * @params { () -> Unit } child
      * @returns { This }
-     * @relation (value?: StepperOptions): StepperAttribute;
      */
     @!APILevel[
         22,
@@ -66,9 +63,8 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
     /**
      * Callback when the finish label is clicked.
      *
-     * @param { () -> Unit } callback
+     * @params { () -> Unit } callback
      * @returns { This }
-     * @relation onFinish(callback: () => void): StepperAttribute;
      */
     @!APILevel[
         22,
@@ -86,9 +82,8 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
     /**
      * Callback when the skip label is clicked.
      *
-     * @param { () -> Unit } callback
+     * @params { () -> Unit } callback
      * @returns { This }
-     * @relation onSkip(callback: () => void): StepperAttribute;
      */
     @!APILevel[
         22,
@@ -106,9 +101,8 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
      /**
      * Callback when the change label is clicked.
      *
-     * @param { (UInt32, UInt32) -> Unit } callback
+     * @params { (UInt32, UInt32) -> Unit } callback
      * @returns { This }
-     * @relation onChange(callback: (prevIndex: number, index: number) => void): StepperAttribute;
      */
     @!APILevel[
         22,
@@ -129,9 +123,8 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
      /**
      * Callback when the next label is clicked.
      *
-     * @param { (UInt32, UInt32) -> Unit } callback
+     * @params { (UInt32, UInt32) -> Unit } callback
      * @returns { This }
-     * @relation onNext(callback: (index: number, pendingIndex: number) => void): StepperAttribute;
      */
     @!APILevel[
         22,
@@ -152,9 +145,8 @@ public class Stepper <: CommonMethodComponent<StepperAttribute> & StepperAttribu
      /**
      * Callback when the previous label is clicked.
      *
-     * @param { (UInt32, UInt32) -> Unit } callback
+     * @params { (UInt32, UInt32) -> Unit } callback
      * @returns { This }
-     * @relation onPrevious(callback: (index: number, pendingIndex: number) => void): StepperAttribute;
      */
     @!APILevel[
         22,

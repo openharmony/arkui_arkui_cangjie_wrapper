@@ -360,7 +360,6 @@ class CallbackCJWebEvent <: BaseCallBack {
 /**
  * Defines the triggered function at the begin of web page loading.
  *
- * @relation OnPageBeginEvent {url: string;}
  */
 @!APILevel[
     22,
@@ -370,7 +369,6 @@ public class OnPageBeginEvent {
     /**
     * The url of page.
     *
-    * @relation url: string;
     */
     @!APILevel[
         22,
@@ -380,9 +378,8 @@ public class OnPageBeginEvent {
     /**
     * Defines OnPageBeginEvent Component instance.
     * 
-    * @param { String } url
+    * @params { String } url
     * @returns { This }
-    * @relation init {url: string;}
     */
     @!APILevel[
         22,
@@ -395,7 +392,6 @@ public class OnPageBeginEvent {
 /**
  * Defines the triggered function at the end of web page loading.
  *
- * @relation OnPageEndEvent {url: string;}
  */
 @!APILevel[
     22,
@@ -405,7 +401,6 @@ public class OnPageEndEvent {
     /**
     * The url of page.
     *
-    * @relation url: string;
     */
     @!APILevel[
         22,
@@ -415,9 +410,8 @@ public class OnPageEndEvent {
     /**
     * Defines OnPageEndEvent Component instance.
     * 
-    * @param { String } url
+    * @params { String } url
     * @returns { This }
-    * @relation init {url: string;}
     */
     @!APILevel[
         22,
@@ -430,7 +424,6 @@ public class OnPageEndEvent {
 /**
  * Defines the triggered callback when the resources loading is intercepted.
  *
- * @relation OnLoadInterceptEvent {data: WebResourceRequest;}
  */
 @!APILevel[
     22,
@@ -440,7 +433,6 @@ public class OnLoadInterceptEvent {
     /**
     * The information of request.
     *
-    * @relation data: WebResourceRequest;
     */
     @!APILevel[
         22,
@@ -450,9 +442,8 @@ public class OnLoadInterceptEvent {
     /**
     * Defines OnLoadInterceptEvent Component instance.
     * 
-    * @param { WebResourceRequest } data
+    * @params { WebResourceRequest } data
     * @returns { This }
-    * @relation init {data: WebResourceRequest;}
     */
     @!APILevel[
         22,
@@ -465,7 +456,6 @@ public class OnLoadInterceptEvent {
 /**
  * Defines the Web's request/response header.
  *
- * @relation Header  { headerKey: string; headerValue: string; }
  */
 @!APILevel[
     22,
@@ -475,7 +465,6 @@ public class Header {
     /**
     * Gets the key of the request/response header.
     *
-    * @relation headerKey: string;
     */
     @!APILevel[
         22,
@@ -485,7 +474,6 @@ public class Header {
     /**
     * Gets the value of the request/response header.
     *
-    * @relation headerValue: String
     */
     @!APILevel[
         22,
@@ -545,7 +533,6 @@ struct FfiOnDownloadStartEvent {
 /**
 * Defines the Web resource request.
 *
-* @relation WebResourceRequest {constructor();getRequestHeader(): Array<Header>;
 * getRequestUrl(): string;isRequestGesture(): boolean;isMainFrame(): boolean;
 * isRedirect(): boolean;getRequestMethod(): string;}
 */
@@ -566,7 +553,6 @@ public class WebResourceRequest {
     * Gets request headers.
     *
     * @returns { ArrayList<Header> }
-    * @relation getRequestHeader(): Array<Header>;
     */
     @!APILevel[
         22,
@@ -595,7 +581,6 @@ public class WebResourceRequest {
     * Gets the request URL.
     *
     * @returns { String }
-    * @relation getRequestUrl(): string;
     */
     @!APILevel[
         22,
@@ -608,7 +593,6 @@ public class WebResourceRequest {
     * Check whether the request is for getting the main frame.
     *
     * @returns { Bool }
-    * @relation isMainFrame(): boolean;
     */
     @!APILevel[
         22,
@@ -621,7 +605,6 @@ public class WebResourceRequest {
     * Check whether the request redirects.
     *
     * @returns { Bool }
-    * @relation isRedirect(): boolean;
     */
     @!APILevel[
         22,
@@ -634,7 +617,6 @@ public class WebResourceRequest {
     * Check whether the request is associated with gesture.
     *
     * @returns { Bool }
-    * @relation isRequestGesture(): boolean;
     */
     @!APILevel[
         22,
@@ -647,7 +629,6 @@ public class WebResourceRequest {
     * Get request method.
     *
     * @returns { String }
-    * @relation getRequestMethod(): string;
     */
     @!APILevel[
         22,
@@ -661,7 +642,6 @@ public class WebResourceRequest {
  * Defines the triggered callback when the host application that web content from the specified origin is
  *     attempting to access the resources.
  *
- * @relation OnPermissionRequestEvent { request: PermissionRequest; }
  */
 @!APILevel[
     22,
@@ -671,7 +651,6 @@ public class OnPermissionRequestEvent {
     /**
     * Defines the onPermissionRequest callback.
     *
-    * @relation request: PermissionRequest;
     */
     @!APILevel[
         22,
@@ -681,9 +660,8 @@ public class OnPermissionRequestEvent {
     /**
     * Defines OnPermissionRequestEvent Component instance.
     * 
-    * @param { PermissionRequest } request
+    * @params { PermissionRequest } request
     * @returns { This }
-    * @relation init {request: PermissionRequest;}
     */
     @!APILevel[
         22,
@@ -696,7 +674,6 @@ public class OnPermissionRequestEvent {
 /**
  * Defines the onPermissionRequest callback, related to {@link onPermissionRequest} method.
  *
- * @relation PermissionRequest { constructor();deny(): void;getOrigin(): string;getAccessibleResource(): Array<string>;
  * grant(resources: Array<string>): void;}
  */
 @!APILevel[
@@ -714,7 +691,6 @@ public class PermissionRequest {
     * Reject the request.
     * 
     * @returns { Unit }
-    * @relation deny(): void;
     */
     @!APILevel[
         22,
@@ -729,7 +705,6 @@ public class PermissionRequest {
     * Gets the source if the webpage that attempted to access the restricted resource.
     * 
     * @returns { String }
-    * @relation getOrigin(): string;
     */
     @!APILevel[
         22,
@@ -747,7 +722,6 @@ public class PermissionRequest {
     * Obtains the list of accessible resources requested for the web page.
     * 
     * @returns { Array<String> }
-    * @relation getAccessibleResource(): Array<string>;
     */
     @!APILevel[
         22,
@@ -766,9 +740,8 @@ public class PermissionRequest {
     /**
     * Grant origin access to a given resource.
     * 
-    * @param { Array<string> } resources
+    * @params { Array<string> } resources
     * @returns { Unit }
-    * @relation grant(resources: Array<string>): void;
     */
     @!APILevel[
         22,
@@ -863,9 +836,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     /**
     * Sets whether to enable access to the file system in the application.
     *
-    * @param { Bool } fileAccess
+    * @params { Bool } fileAccess
     * @returns { This }
-    * @relation fileAccess(fileAccess: boolean): WebAttribute;
     */
     @!APILevel[
         22,
@@ -880,9 +852,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     /**
     * Sets whether to enable the DOM Storage API. By default, this feature is disabled.
     *
-    * @param { Bool } domStorageAccess
+    * @params { Bool } domStorageAccess
     * @returns { This }
-    * @relation domStorageAccess(domStorageAccess: boolean): WebAttribute;
     */
     @!APILevel[
         22,
@@ -897,9 +868,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     /**
     * Sets whether to enable automatic image loading.
     *
-    * @param { Bool } imageAccess
+    * @params { Bool } imageAccess
     * @returns { This }
-    * @relation imageAccess(imageAccess: boolean): WebAttribute;
     */
     @!APILevel[
         22,
@@ -914,9 +884,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     /**
     * Sets whether to enable access to online images through HTTP and HTTPS.
     *
-    * @param { Bool } onlineImageAccess
+    * @params { Bool } onlineImageAccess
     * @returns { This }
-    * @relation onlineImageAccess(onlineImageAccess: boolean): WebAttribute;
     */
     @!APILevel[
         22,
@@ -932,9 +901,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     *  Sets the behavior when a secure origin attempts to load a resource from an insecure origin.
     *  The default is MixedMode.None, meaning not allow a secure origin to load content from an insecure origin.
     *
-    * @param { MixMode } mixedMode
+    * @params { MixMode } mixedMode
     * @returns { This }
-    * @relation mixedMode(mixedMode: MixedMode): WebAttribute;
     */
     @!APILevel[
         22,
@@ -950,9 +918,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     /**
     * Sets whether the Web supports zooming using gestures.
     *
-    * @param { Bool } zoomAccess
+    * @params { Bool } zoomAccess
     * @returns { This }
-    * @relation zoomAccess(zoomAccess: boolean): WebAttribute;
     */
     @!APILevel[
         22,
@@ -968,9 +935,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     * Set whether to enable geolocation access. By default, this feature is enabled.
     * For details, see Managing Location Permissions.
     *
-    * @param { Bool } geolocationAccess
+    * @params { Bool } geolocationAccess
     * @returns { This }
-    * @relation geolocationAccess(geolocationAccess: boolean): WebAttribute;
     */
     @!APILevel[
         22,
@@ -985,9 +951,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     /**
     * Set whether paint vertical scroll bar, including the system default scrollbar and user-defined scrollbar.
     *
-    * @param { Bool } verticalScrollBar
+    * @params { Bool } verticalScrollBar
     * @returns { This }
-    * @relation verticalScrollBarAccess(verticalScrollBar: boolean): WebAttribute;
     */
     @!APILevel[
         22,
@@ -1002,9 +967,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     /**
     * Called to setting the nested scroll options.
     *
-    * @param { NestedScrollMode } scrollForward scrollBackward
+    * @params { NestedScrollMode } scrollForward scrollBackward
     * @returns { This }
-    * @relation nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt): WebAttribute;
     */
     @!APILevel[
         22,
@@ -1024,7 +988,7 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     /**
     * Triggered when the resources loading is intercepted.
     *
-    * @param { Callback<OnLoadInterceptEvent, Bool> } callback
+    * @params { Callback<OnLoadInterceptEvent, Bool> } callback
     * @returns { This }
     * @throws { BusinessException } 190002 - The callback function is invalid.
     */
@@ -1055,9 +1019,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     /**
     * Called when the web page starts to be loaded.
     *
-    * @param { Callback<OnPageBeginEvent, Unit> } callback
+    * @params { Callback<OnPageBeginEvent, Unit> } callback
     * @returns { This }
-    * @relation onPageBegin(callback: Callback<OnPageBeginEvent>): WebAttribute;
     */
     @!APILevel[
         22,
@@ -1081,9 +1044,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     /**
     * Triggered at the end of web page loading.
     *
-    * @param { Callback<OnPageEndEvent, Unit> } callback
+    * @params { Callback<OnPageEndEvent, Unit> } callback
     * @returns { This }
-    * @relation onPageEnd(callback: Callback<OnPageEndEvent>): WebAttribute;
     */
     @!APILevel[
         22,
@@ -1107,12 +1069,11 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     /**
     * Registers the supplied ArkTS object in javaScriptProxy into this Web component.
     *
-    * @param { Array<(String) -> String> } funcList
-    * @param { String } name
-    * @param { Array<String> } methodList
-    * @param { WebviewController } controller
+    * @params { Array<(String) -> String> } funcList
+    * @params { String } name
+    * @params { Array<String> } methodList
+    * @params { WebviewController } controller
     * @returns { This }
-    * @relation javaScriptProxy(javaScriptProxy: JavaScriptProxy): WebAttribute;
     */
     @!APILevel[
         22,
@@ -1166,9 +1127,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     * if the theme has been defined in prefers-color-scheme of a media query,
     * and remains unchanged otherwise. To enable the forcible dark mode, use this API with forceDarkAccess.
     *
-    * @param { WebDarkMode } mode
+    * @params { WebDarkMode } mode
     * @returns { This }
-    * @relation darkMode(mode: WebDarkMode): WebAttribute;
     */
     @!APILevel[
         22,
@@ -1184,9 +1144,8 @@ public class Web <: CommonMethodComponent<WebAttribute> & WebAttribute {
     * Sets whether to enable forcible dark mode for the web page.
     * This API is applicable only when dark mode is enabled in {@link darkMode}.
     *
-    * @param { Bool } access
+    * @params { Bool } access
     * @returns { This }
-    * @relation forceDarkAccess(access: boolean): WebAttribute;
     */
     @!APILevel[
         22,

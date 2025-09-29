@@ -25,7 +25,6 @@ foreign func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
 /**
  * Defines Blank Component.
  *
- * @relation const Blank: BlankAttribute
  */
 @!APILevel[
     22,
@@ -36,9 +35,8 @@ public class Blank <: CommonMethodComponent<BlankAttribute> & BlankAttribute {
     * Minimum size of the Blank component in the container along the main axis
     * Default value: **0.vp**.
     *
-    * @param { Length } min
+    * @params { Length } min
     * @returns { This }
-    * @relation (min?: number | string): BlankAttribute
     */
     @!APILevel[
         22,
@@ -55,9 +53,8 @@ public class Blank <: CommonMethodComponent<BlankAttribute> & BlankAttribute {
     * Sets the color to fill the blank
     * Default value: **Color.Transparent**.
     *
-    * @param { ResourceColor } value
+    * @params { ResourceColor } value
     * @returns { This }
-    * @relation color(value: ResourceColor): BlankAttribute
     */
     @!APILevel[
         22,
@@ -68,4 +65,3 @@ public class Blank <: CommonMethodComponent<BlankAttribute> & BlankAttribute {
         this
     }
 }
-

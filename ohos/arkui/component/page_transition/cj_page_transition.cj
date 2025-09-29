@@ -72,16 +72,14 @@ class CallbackCJTransitionEvent <: BaseCallBack {
 /**
 * Callback used to report page trasition events.
 * 
-* @param { RouteType } type - transition route type
-* @param { number } progress - transition progess
+* @params { RouteType } type - transition route type
+* @params { number } progress - transition progess
 * @returns { This }
-* @relation declare type PageTransitionCallback = (type: RouteType, progress: number) => void
 */
 public type PageTransitionCallback = (RouteType, Float64) -> Unit
 /**
 * Declare the jump method.
 * 
-* @relation declare enum RouteType 
 */
 @Derive[Equatable]
 @!APILevel[
@@ -92,7 +90,6 @@ public enum RouteType {
     /**
     * The page is not redirected.
     * 
-    * @relation None
     */
     @!APILevel[
         22,
@@ -102,7 +99,6 @@ public enum RouteType {
     /**
     * Go to the next page.
     * 
-    * @relation Push
     */
     | @!APILevel[
         22,
@@ -112,7 +108,6 @@ public enum RouteType {
     /**
     * Redirect to a specified page.
     * 
-    * @relation Pop
     */
     | @!APILevel[
         22,
@@ -142,7 +137,6 @@ public enum RouteType {
 /**
 * Declare the sliding effect of transition.
 * 
-* @relation declare enum SlideEffect 
 */
 @Derive[Equatable]
 @!APILevel[
@@ -153,7 +147,6 @@ public enum SlideEffect {
     /**
     * Swipe left.
     * 
-    * @relation Left
     */
     @!APILevel[
         22,
@@ -163,7 +156,6 @@ public enum SlideEffect {
     /**
     * Swipe right.
     * 
-    * @relation Right
     */
     | @!APILevel[
         22,
@@ -173,7 +165,6 @@ public enum SlideEffect {
     /**
     * Swipe top.
     * 
-    * @relation Top
     */
     | @!APILevel[
         22,
@@ -183,7 +174,6 @@ public enum SlideEffect {
     /**
     * Swipe bottom.
     * 
-    * @relation Bottom
     */
     | @!APILevel[
         22,
@@ -211,9 +201,8 @@ sealed abstract class CommonTransition {
     /**
     * Called when the slide in effect of the transition is set.
     * 
-    * @param { SlideEffect } value
+    * @params { SlideEffect } value
     * @returns { This } 
-    * @relation slide(value: SlideEffect): T
     */
     @!APILevel[
         22,
@@ -228,11 +217,10 @@ sealed abstract class CommonTransition {
     /**
     * Called when the translation effect of page transition is set.
     * 
-    * @param { Length } x 
-    * @param { Length } y 
-    * @param { Length } z
+    * @params { Length } x 
+    * @params { Length } y 
+    * @params { Length } z
     * @returns { This } 
-    * @relation translate(value: TranslateOptions): T
     */
     @!APILevel[
         22,
@@ -250,13 +238,12 @@ sealed abstract class CommonTransition {
     /**
     * Called when setting the zoom effect of page transition.
     * 
-    * @param { Float32 } x 
-    * @param { Float32 } y
-    * @param { Float32 } z
-    * @param { Length } centerX 
-    * @param { Length } centerY
+    * @params { Float32 } x 
+    * @params { Float32 } y
+    * @params { Float32 } z
+    * @params { Length } centerX 
+    * @params { Length } centerY
     * @returns { This } 
-    * @relation scale(value: ScaleOptions): T
     */
     @!APILevel[
         22,
@@ -278,9 +265,8 @@ sealed abstract class CommonTransition {
     /**
     * Called when the transparency value of the starting point of entry or the ending point of exit is set.
     * 
-    * @param { Float64 } value
+    * @params { Float64 } value
     * @returns { This } 
-    * @relation opacity(value: number): T
     */
     @!APILevel[
         22,
@@ -296,7 +282,6 @@ sealed abstract class CommonTransition {
 /**
 * Defines PageTransitionEnter Component.
 * 
-* @relation declare const PageTransitionEnter: PageTransitionEnterInterface
 */
 @!APILevel[
     22,
@@ -306,12 +291,11 @@ public class PageTransitionEnter <: CommonTransition {
     /**
     * Called when page Jump animation is used.
     * 
-    * @param { RouteType } routeType
-    * @param { Int32 } duration
-    * @param { Curve } curve
-    * @param { Int32 } delay
+    * @params { RouteType } routeType
+    * @params { Int32 } duration
+    * @params { Curve } curve
+    * @params { Int32 } delay
     * @returns { This } 
-    * @relation (value: PageTransitionOptions): PageTransitionEnterInterface
     */
     @!APILevel[
         22,
@@ -335,7 +319,7 @@ public class PageTransitionEnter <: CommonTransition {
     * Called frame by frame to customize pageTransition animation when the page enters.
     * The incoming parameter is the normalized progress of the current incoming animation.
     * 
-    * @param { PageTransitionCallback } event
+    * @params { PageTransitionCallback } event
     * @returns { This } 
     * @throws { BusinessException } 190002 - The callback function is invalid.
     */
@@ -358,7 +342,6 @@ public class PageTransitionEnter <: CommonTransition {
 /**
 * Provide an interface to set transition style when a page exits.
 * 
-* @relation declare const PageTransitionExit: PageTransitionExitInterface
 */
 @!APILevel[
     22,
@@ -368,12 +351,11 @@ public class PageTransitionExit <: CommonTransition {
     /**
     * Called when page Jump animation is used.
     * 
-    * @param { RouteType } routeType
-    * @param { Int32 } duration
-    * @param { Curve } curve
-    * @param { Int32 } delay
+    * @params { RouteType } routeType
+    * @params { Int32 } duration
+    * @params { Curve } curve
+    * @params { Int32 } delay
     * @returns { This } 
-    * @relation (value: PageTransitionOptions): PageTransitionEnterInterface
     */
     @!APILevel[
         22,
@@ -397,9 +379,8 @@ public class PageTransitionExit <: CommonTransition {
     * Called frame by frame to customize pageTransition animation when the page exits.
     * The input parameter is the normalized progress of the current exit animation.
     * 
-    * @param { PageTransitionCallback } event
+    * @params { PageTransitionCallback } event
     * @returns { This } 
-    * @relation onExit(event: PageTransitionCallback): PageTransitionExitInterface
     */
     @!APILevel[
         22,

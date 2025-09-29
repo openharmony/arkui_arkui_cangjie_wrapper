@@ -208,7 +208,6 @@ foreign {
     func FFISetHeightWithEmpty(): Unit
 }
 
-
 protected class TextField {
     protected static func height(width: ?Length): Unit {
         match (width) {

@@ -42,8 +42,6 @@ foreign {
 
 /**
  * Defines Stack Component.
- *
- * @relation const Stack: StackInterface
  */
 @!APILevel[
     22,
@@ -53,10 +51,9 @@ public class Stack <: CommonMethodComponent<StackAttribute> & StackAttribute {
     /**
     * Defines the constructor of Stack.
     *
-    * @param { Alignment } alignContent
-    * @param { () -> Unit } child
+    * @params { Alignment } alignContent
+    * @params { () -> Unit } child
     * @returns { This }
-    * @relation (options?: StackOptions): StackAttribute
     */
     @!APILevel[
         22,
@@ -112,9 +109,8 @@ public class Stack <: CommonMethodComponent<StackAttribute> & StackAttribute {
     /**
     * Called when the alignment of items in the container is set.
     *
-    * @param { Alignment } value
+    * @params { Alignment } value
     * @returns { This }
-    * @relation alignContent(value: Alignment): StackAttribute
     */
     @!APILevel[
         22,

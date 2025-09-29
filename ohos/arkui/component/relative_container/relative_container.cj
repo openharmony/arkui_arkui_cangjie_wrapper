@@ -190,8 +190,6 @@ foreign {
 
 /**
  * Specifies the BarrierStyle of relative container
- *
- * @relation interface BarrierStyle
  */
 @!APILevel[
     22,
@@ -200,9 +198,6 @@ foreign {
 public class BarrierStyle {
     /**
     * Specifies the id of barrier
-    *
-    * @type { string }
-    * @relation id : string
     */
     @!APILevel[
         22,
@@ -212,9 +207,6 @@ public class BarrierStyle {
 
     /**
     * Specifies the direction of barrier
-    *
-    * @type { BarrierDirection }
-    * @relation direction : BarrierDirection
     */
     @!APILevel[
         22,
@@ -225,8 +217,6 @@ public class BarrierStyle {
     /**
     * Specifies the referencedId of barrier
     *
-    * @type { Array<string> }
-    * @relation referencedId : Array<string>
     */
     @!APILevel[
         22,
@@ -237,9 +227,9 @@ public class BarrierStyle {
     /**
     * Defines the constructor of BarrierStyle.
     *
-    * @param { String } id
-    * @param { BarrierDirection } direction
-    * @param { Array<String> } referencedId
+    * @params { String } id
+    * @params { BarrierDirection } direction
+    * @params { Array<String> } referencedId
     * @returns { This }
     */
     @!APILevel[
@@ -255,8 +245,6 @@ public class BarrierStyle {
 
 /**
  * Specifies the position of guideLine
- *
- * @relation interface GuideLinePosition
  */
 @!APILevel[
     22,
@@ -266,8 +254,6 @@ public class GuideLinePosition {
     /**
     * Specifies the distance to start of container
     *
-    * @type { ?Length }
-    * @relation start? : Dimension
     */
     @!APILevel[
         22,
@@ -278,8 +264,6 @@ public class GuideLinePosition {
     /**
     * Specifies the distance to end of container
     *
-    * @type { ?Length }
-    * @relation end? : Dimension
     */
     @!APILevel[
         22,
@@ -290,8 +274,8 @@ public class GuideLinePosition {
     /**
     * Defines the constructor of GuideLinePosition.
     *
-    * @param { ?Length } start
-    * @param { ?Length } end
+    * @params { ?Length } start
+    * @params { ?Length } end
     * @returns { This }
     */
     @!APILevel[
@@ -306,8 +290,6 @@ public class GuideLinePosition {
 
 /**
  * Specifies the GuideLineStyle of relative container
- *
- * @relation interface GuideLineStyle
  */
 @!APILevel[
     22,
@@ -317,8 +299,6 @@ public class GuideLineStyle {
     /**
     * Specifies the id of guideLine
     *
-    * @type { String }
-    * @relation id : string
     */
     @!APILevel[
         22,
@@ -328,9 +308,6 @@ public class GuideLineStyle {
 
     /**
     * Specifies the direction of guideLine
-    *
-    * @type { Axis }
-    * @relation direction : Axis
     */
     @!APILevel[
         22,
@@ -341,8 +318,6 @@ public class GuideLineStyle {
     /**
     * Specifies the position of guideLine
     *
-    * @type { GuideLinePosition }
-    * @relation position : GuideLinePosition
     */
     @!APILevel[
         22,
@@ -352,9 +327,9 @@ public class GuideLineStyle {
     /**
     * Defines the constructor of GuideLineStyle.
     *
-    * @param { String } id
-    * @param { Axis } direction
-    * @param { GuideLinePosition } position
+    * @params { String } id
+    * @params { Axis } direction
+    * @params { GuideLinePosition } position
     * @returns { This }
     */
     @!APILevel[
@@ -371,7 +346,6 @@ public class GuideLineStyle {
 /**
  * RelativeContainer
  *
- * @relation const RelativeContainer: RelativeContainerInterface
  */
 @!APILevel[
     22,
@@ -381,7 +355,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     /**
     * Constructor of relativeContainer
     *
-    * @param { () -> Unit } child
+    * @params { () -> Unit } child
     * @returns { This }
     */
     @!APILevel[
@@ -396,7 +370,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     /**
     * Specifies guideLines of relativeContainer
     *
-    * @param { Array<GuideLineStyle> } value
+    * @params { Array<GuideLineStyle> } value
     * @returns { This }
     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
@@ -414,7 +388,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainerAttribu
     /**
     * Specifies barriers of relativeContainer
     *
-    * @param { Array<BarrierStyle> } value
+    * @params { Array<BarrierStyle> } value
     * @returns { This }
     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */

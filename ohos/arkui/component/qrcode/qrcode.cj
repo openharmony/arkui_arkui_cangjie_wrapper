@@ -35,7 +35,6 @@ foreign {
 /**
  * Defines QRCode Component.
  *
- * @relation declare const QRCode: QRCodeInterface
  */
 @!APILevel[
     22,
@@ -45,9 +44,8 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
     /**
      * Called when a QR code is set.
      *
-     * @param { ResourceStr } value
+     * @params { ResourceStr } value
      * @returns { This }
-     * @relation (value: ResourceStr): QRCodeAttribute
      */
     @!APILevel[
         22,
@@ -65,9 +63,8 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
     /**
      * Called when the QR code color is set.
      *
-     * @param { ResourceStr } value
+     * @params { ResourceStr } value
      * @returns { This }
-     * @relation color(value: ResourceColor): QRCodeAttribute
      */
     @!APILevel[
         22,
@@ -90,9 +87,8 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
     /**
      * Set the opacity of the QR code content color.
      *
-     * @param { Float64 } value
+     * @params { Float64 } value
      * @returns { This }
-     * @relation contentOpacity(value: number | Resource): QRCodeAttribute
      */
     @!APILevel[
         22,
@@ -108,9 +104,8 @@ public class QRCode <: CommonMethodComponent<QRCodeAttribute> & QRCodeAttribute 
     /**
      * Set the opacity of the QR code content color.
      *
-     * @param { AppResource } value
+     * @params { AppResource } value
      * @returns { This }
-     * @relation contentOpacity(value: number | Resource): QRCodeAttribute
      */
     @!APILevel[
         22,

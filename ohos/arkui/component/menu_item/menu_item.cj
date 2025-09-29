@@ -52,7 +52,6 @@ let defaultMenuItemContentFontColor = 0xE5000000
 /**
  * Defines MenuItem Component.
  *
- * @relation declare const MenuItem: MenuItemInterface
  */
 @!APILevel[
     22,
@@ -63,9 +62,8 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
     /**
      * Creates the MenuItem component.
      *
-     * @param { () -> Unit } child
+     * @params { () -> Unit } child
      * @returns { This }
-     * @relation (value?: MenuItemOptions | CustomBuilder): MenuItemAttribute
      */
     @!APILevel[
         22,
@@ -80,13 +78,12 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
     /**
      * Creates the MenuItem component.
      *
-     * @param { ResourceStr } startIcon
-     * @param { ResourceStr } content
-     * @param { ResourceStr } endIcon
-     * @param { ResourceStr } labelInfo
-     * @param { Option<() -> Unit> } builder
+     * @params { ResourceStr } startIcon
+     * @params { ResourceStr } content
+     * @params { ResourceStr } endIcon
+     * @params { ResourceStr } labelInfo
+     * @params { Option<() -> Unit> } builder
      * @returns { This }
-     * @relation (value?: MenuItemOptions | CustomBuilder): MenuItemAttribute
      */
     @!APILevel[
         22,
@@ -118,9 +115,8 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
     /**
      * Setting whether menuItem is selected.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation selected(value: boolean): MenuItemAttribute
      */
     @!APILevel[
         22,
@@ -137,9 +133,8 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
      *
-     * @param { Bool } value
+     * @params { Bool } value
      * @returns { This }
-     * @relation selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier): MenuItemAttribute
      */
     @!APILevel[
         22,
@@ -156,9 +151,8 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
      *
-     * @param { ResourceStr } value
+     * @params { ResourceStr } value
      * @returns { This }
-     * @relation selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier): MenuItemAttribute
      */
     @!APILevel[
         22,
@@ -177,12 +171,11 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
     /**
      * Sets the content font style.
      *
-     * @param { Length } size
-     * @param { FontWeight } weight
-     * @param { ResourceStr } family
-     * @param { FontStyle } style   
+     * @params { Length } size
+     * @params { FontWeight } weight
+     * @params { ResourceStr } family
+     * @params { FontStyle } style   
      * @returns { This }
-     * @relation contentFont(value: Font): MenuItemAttribute
      */
     @!APILevel[
         22,
@@ -214,9 +207,8 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
     /**
      * Sets the font color of content text.
      *
-     * @param { ResourceColor } value 
+     * @params { ResourceColor } value 
      * @returns { This }
-     * @relation contentFontColor(value: ResourceColor): MenuItemAttribute
      */
     @!APILevel[
         22,
@@ -233,12 +225,11 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
     /**
      * Sets the label info font style.
      *
-     * @param { Length } size
-     * @param { FontWeight } weight
-     * @param { ResourceStr } family
-     * @param { FontStyle } style   
+     * @params { Length } size
+     * @params { FontWeight } weight
+     * @params { ResourceStr } family
+     * @params { FontStyle } style   
      * @returns { This }
-     * @relation labelFont(value: Font): MenuItemAttribute
      */
     @!APILevel[
         22,
@@ -268,9 +259,8 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
     /**
      * Sets the font color of label info text.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation labelFontColor(value: ResourceColor): MenuItemAttribute
      */
     @!APILevel[
         22,
@@ -287,9 +277,8 @@ public class MenuItem <: CommonMethodComponent<MenuItemAttribute> & MenuItemAttr
     /**
      * Triggers a callback when a menu item is selected or unchecked.
      *
-     * @param { (Bool) -> Unit } callback
+     * @params { (Bool) -> Unit } callback
      * @returns { This }
-     * @relation onChange(callback: (selected: boolean) => void): MenuItemAttribute
      */
     @!APILevel[
         22,

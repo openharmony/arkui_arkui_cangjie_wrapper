@@ -43,7 +43,6 @@ foreign {
 /**
  * Defines GridItem Component.
  *
- * @relation declare const GridItem: GridItemInterface
  */
 @!APILevel[
     22,
@@ -55,7 +54,6 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
      * Return to get GridItem.
      *
      * @returns { This }
-     * @relation (value?: GridItemOptions): GridItemAttribute
      */
     @!APILevel[
         22,
@@ -70,9 +68,8 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
     /**
      * Return to get GridItem.
      *
-     * @param { () -> Unit } child
+     * @params { () -> Unit } child
      * @returns { This }
-     * @relation (value?: GridItemOptions): GridItemAttribute
      */
     @!APILevel[
         22,
@@ -88,9 +85,8 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
     /**
      * This parameter specifies the start column number of the current element.
      *
-     * @param { Int32 } value
+     * @params { Int32 } value
      * @returns { This }
-     * @relation columnStart(value: number): GridItemAttribute
      */
     @!APILevel[
         22,
@@ -106,9 +102,8 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
     /**
      * This parameter specifies the end column number of the current element.
      *
-     * @param { Int32 } columnEnd
+     * @params { Int32 } columnEnd
      * @returns { This }
-     * @relation columnEnd(value: number): GridItemAttribute
      */
     @!APILevel[
         22,
@@ -124,9 +119,8 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
     /**
      * This parameter specifies the start line number of the current element.
      *
-     * @param { Int32 } rowStart
+     * @params { Int32 } rowStart
      * @returns { This }
-     * @relation rowStart(value: number): GridItemAttribute
      */
     @!APILevel[
         22,
@@ -142,9 +136,8 @@ public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttr
     /**
      * Specifies the end line number of the current element.
      *
-     * @param { Int32 } value
+     * @params { Int32 } value
      * @returns { This }
-     * @relation rowEnd(value: number): GridItemAttribute
      */
     @!APILevel[
         22,

@@ -213,7 +213,6 @@ struct NativeRichEditorSpanPosition {
 /**
  * Defines the span position.
  *
- * @relation declare interface RichEditorSpanPosition
  */
 @!APILevel[
     22,
@@ -224,8 +223,6 @@ public class RichEditorSpanPosition {
     /**
      * Define the index of span.
      *
-     * @type { Int32 }
-     * @relation spanIndex: number
      */
     @!APILevel[
         22,
@@ -236,8 +233,6 @@ public class RichEditorSpanPosition {
     /**
      * The range of span.
      *
-     * @type { (Int32, Int32) }
-     * @relation spanRange: [
                     number,
                     number
                  ];
@@ -295,7 +290,6 @@ struct NativeRichEditorTextStyleResult {
 /**
  * Defines the text style result.
  *
- * @relation declare interface RichEditorTextStyleResult
  */
 @!APILevel[
     22,
@@ -306,8 +300,6 @@ public class RichEditorTextStyleResult {
     /**
      * font color.
      *
-     * @type { String }
-     * @relation fontColor: ResourceColor
      */
     @!APILevel[
         22,
@@ -318,8 +310,6 @@ public class RichEditorTextStyleResult {
     /**
      * font size.
      *
-     * @type { Float64 }
-     * @relation fontSize: number
      */
     @!APILevel[
         22,
@@ -330,8 +320,6 @@ public class RichEditorTextStyleResult {
     /**
      * font style.
      *
-     * @type { FontStyle }
-     * @relation fontStyle: FontStyle
      */
     @!APILevel[
         22,
@@ -342,8 +330,6 @@ public class RichEditorTextStyleResult {
     /**
      * font weight.
      *
-     * @type { Int32 }
-     * @relation fontWeight: number
      */
     @!APILevel[
         22,
@@ -354,8 +340,6 @@ public class RichEditorTextStyleResult {
     /**
      * font family.
      *
-     * @type { String }
-     * @relation fontFamily: string
      */
     @!APILevel[
         22,
@@ -366,8 +350,6 @@ public class RichEditorTextStyleResult {
     /**
      * font decoration.
      *
-     * @type { DecorationStyleResult }
-     * @relation decoration: DecorationStyleResult
      */
     @!APILevel[
         22,
@@ -433,7 +415,6 @@ struct NativeRichEditorImageSpanStyleResult {
 /**
  * Defines the span image style result.
  *
- * @relation declare interface RichEditorImageSpanStyleResult
  */
 @!APILevel[
     22,
@@ -444,8 +425,6 @@ public class RichEditorImageSpanStyleResult {
     /**
      * image size.
      *
-     * @type { (Float64, Float64) }
-     * @relation size: [
                     number,
                     number
                  ];
@@ -459,8 +438,6 @@ public class RichEditorImageSpanStyleResult {
     /**
      * image vertical align.
      *
-     * @type { ImageSpanAlignment }
-     * @relation verticalAlign: ImageSpanAlignment
      */
     @!APILevel[
         22,
@@ -471,8 +448,6 @@ public class RichEditorImageSpanStyleResult {
     /**
      * image fit.
      *
-     * @type { ImageFit }
-     * @relation objectFit: ImageFit
      */
     @!APILevel[
         22,
@@ -483,8 +458,6 @@ public class RichEditorImageSpanStyleResult {
     /**
      * RichEditor ImageSpan Layout Style.
      *
-     * @type { RichEditorLayoutStyle }
-     * @relation layoutStyle?: RichEditorLayoutStyle
      */
     @!APILevel[
         22,
@@ -529,7 +502,6 @@ struct NativeRichEditorTextSpanResult {
 /**
  * Defines the text span result.
  *
- * @relation declare interface RichEditorTextSpanResult
  */
 @!APILevel[
     22,
@@ -540,8 +512,6 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
     /**
      * The position of the text span.
      *
-     * @type { RichEditorSpanPosition }
-     * @relation spanPosition: RichEditorSpanPosition
      */
     @!APILevel[
         22,
@@ -552,8 +522,6 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
     /**
      * The content of the text span.
      *
-     * @type { String }
-     * @relation value: string
      */
     @!APILevel[
         22,
@@ -564,8 +532,6 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
     /**
      * text style.
      *
-     * @type { RichEditorTextStyleResult }
-     * @relation textStyle?: RichEditorTextStyle
      */
     @!APILevel[
         22,
@@ -576,8 +542,6 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
     /**
      * get offset in span.
      *
-     * @type { (Int32, Int32) }
-     * @relation offsetInSpan: [
                     number,
                     number
                  ]
@@ -623,7 +587,6 @@ struct NativeRichEditorImageSpanResult {
 /**
  * Defines the image span.
  *
- * @relation declare interface RichEditorImageSpanResult
  */
 @!APILevel[
     22,
@@ -634,8 +597,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
     /**
      * The position of the image span.
      *
-     * @type { RichEditorSpanPosition }
-     * @relation spanPosition: RichEditorSpanPosition
      */
     @!APILevel[
         22,
@@ -646,8 +607,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
     /**
      * The pixel map of the image span.
      *
-     * @type { Option<PixelMap> }
-     * @relation valuePixelMap?: PixelMap
      */
     @!APILevel[
         22,
@@ -658,8 +617,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
     /**
      * The resource string of the image span.
      *
-     * @type { String }
-     * @relation valueResourceStr?: ResourceStr
      */
     @!APILevel[
         22,
@@ -670,8 +627,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
     /**
      * image attribute.
      *
-     * @type { RichEditorImageSpanStyleResult }
-     * @relation imageStyle: RichEditorImageSpanStyleResult
      */
     @!APILevel[
         22,
@@ -682,8 +637,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
     /**
      * get offset in span.
      *
-     * @type { (Int32, Int32) }
-     * @relation offsetInSpan: [
                     number,
                     number
                  ]
@@ -877,7 +830,6 @@ struct NativeRichEditorRange {
 /**
  * Defines the text information for editing.
  *
- * @relation declare interface RichEditorSelection
  */
 @!APILevel[
     22,
@@ -888,8 +840,6 @@ public class RichEditorSelection {
     /**
      * The location info.
      *
-     * @type { (Int32, Int32) }
-     * @relation selection: [
                     number,
                     number
                  ]
@@ -903,8 +853,6 @@ public class RichEditorSelection {
     /**
      * The selected text content.
      *
-     * @type { ArrayList<RichEditorSpanResult> }
-     * @relation spans: Array<RichEditorTextSpanResult | RichEditorImageSpanResult>
      */
     @!APILevel[
         22,
@@ -939,7 +887,6 @@ struct NativeRichEditorDeleteValue {
 /**
  * Provides an interface for deleting value from text.
  *
- * @relation declare interface RichEditorDeleteValue
  */
 @!APILevel[
     22,
@@ -950,8 +897,6 @@ public class RichEditorDeleteValue {
     /**
      * The offset of deleting.
      *
-     * @type { Int32 }
-     * @relation offset: number
      */
     @!APILevel[
         22,
@@ -962,8 +907,6 @@ public class RichEditorDeleteValue {
     /**
      * The deleted direction.
      *
-     * @type { RichEditorDeleteDirection }
-     * @relation direction: RichEditorDeleteDirection
      */
     @!APILevel[
         22,
@@ -974,8 +917,6 @@ public class RichEditorDeleteValue {
     /**
      * The deleted text length.
      *
-     * @type { Int32 }
-     * @relation length: number
      */
     @!APILevel[
         22,
@@ -986,8 +927,6 @@ public class RichEditorDeleteValue {
     /**
      * The deleted span object.
      *
-     * @type { ArrayList<RichEditorSpanResult> }
-     * @relation richEditorDeleteSpans: Array<RichEditorTextSpanResult | RichEditorImageSpanResult>
      */
     @!APILevel[
         22,
@@ -1041,7 +980,6 @@ func parseNativeRichEditorDeleteValue(value: NativeRichEditorDeleteValue): RichE
 /**
  * Defines range of text type component.
  *
- * @relation declare interface TextRange
  */
 @!APILevel[
     22,
@@ -1052,8 +990,6 @@ public class TextRange {
     /**
      * Start offset.
      *
-     * @type { Int32 }
-     * @relation start?: number
      */
     @!APILevel[
         22,
@@ -1064,8 +1000,6 @@ public class TextRange {
     /**
      * End offset.
      *
-     * @type { Int32 }
-     * @relation end?: number
      */
     @!APILevel[
         22,
@@ -1089,7 +1023,6 @@ public class TextRange {
 /**
  * Defines the paste event.
  *
- * @relation declare interface PasteEvent
  */
 @!APILevel[
     22,
@@ -1107,7 +1040,6 @@ public class PasteEvent <: RemoteDataLite {
     /**
      * Override system paste event.
      *
-     * @relation preventDefault?: Callback<void>
      */
     @!APILevel[
         22,
@@ -1125,7 +1057,6 @@ public type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange
 /**
  * Defines RichEditor Component.
  *
- * @relation declare const RichEditor: RichEditorInterface
  */
 @!APILevel[
     22,
@@ -1136,9 +1067,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     /**
      * Called when create RichEditor.
      *
-     * @param { RichEditorController } controller
+     * @params { RichEditorController } controller
      * @returns { This }
-     * @relation (value: RichEditorOptions): RichEditorAttribute
      */
     @!APILevel[
         22,
@@ -1154,9 +1084,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     /**
      * Define custom keyboard.
      *
-     * @param { CustomBuilder } value
+     * @params { CustomBuilder } value
      * @returns { This }
-     * @relation customKeyboard(value: CustomBuilder, options?: KeyboardOptions): RichEditorAttribute
      */
     @!APILevel[
         22,
@@ -1173,12 +1102,11 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     /**
      * Bind to the selection menu.
      *
-     * @param { RichEditorSpanType } spantype
-     * @param { CustomBuilder } content
-     * @param { ResponseType } responseType
-     * @param { SelectionMenuOptions } options
+     * @params { RichEditorSpanType } spantype
+     * @params { CustomBuilder } content
+     * @params { ResponseType } responseType
+     * @params { SelectionMenuOptions } options
      * @returns { This }
-     * @relation bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, responseType: ResponseType | RichEditorResponseType, options?: SelectionMenuOptions): RichEditorAttribute
      */
     @!APILevel[
         22,
@@ -1208,9 +1136,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     /**
      * Allow replication.
      *
-     * @param { CopyOptions } value
+     * @params { CopyOptions } value
      * @returns { This }
-     * @relation copyOptions(value: CopyOptions): RichEditorAttribute
      */
     @!APILevel[
         22,
@@ -1226,9 +1153,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     /**
      * Called when on ready.
      *
-     * @param { VoidCallback } callback
+     * @params { VoidCallback } callback
      * @returns { This }
-     * @relation onReady(callback: Callback<void>): RichEditorAttribute
      */
     @!APILevel[
         22,
@@ -1244,9 +1170,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     /**
      * Get text value information when about to input.
      *
-     * @param { Callback<RichEditorInsertValue, Bool> } callback
+     * @params { Callback<RichEditorInsertValue, Bool> } callback
      * @returns { This }
-     * @relation aboutToIMEInput(callback: Callback<RichEditorInsertValue, boolean>): RichEditorAttribute
      */
     @!APILevel[
         22,
@@ -1267,9 +1192,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     /**
      * Get text value information when completed input.
      *
-     * @param { Callback<RichEditorTextSpanResult, Unit> } callback
+     * @params { Callback<RichEditorTextSpanResult, Unit> } callback
      * @returns { RichEditor }
-     * @relation onIMEInputComplete(callback: Callback<RichEditorTextSpanResult>): RichEditorAttribute
      */
     @!APILevel[
         22,
@@ -1290,9 +1214,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     /**
      * Notify that the deletion has been completed.
      *
-     * @param { VoidCallback } callback
+     * @params { VoidCallback } callback
      * @returns { This }
-     * @relation onDeleteComplete(callback: Callback<void>): RichEditorAttribute
      */
     @!APILevel[
         22,
@@ -1309,9 +1232,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     /**
      * Get text value information when about to delete.
      *
-     * @param { Callback<RichEditorDeleteValue, Bool> } callback
+     * @params { Callback<RichEditorDeleteValue, Bool> } callback
      * @returns { This }
-     * @relation aboutToDelete(callback: Callback<RichEditorDeleteValue, boolean>): RichEditorAttribute
      */
     @!APILevel[
         22,
@@ -1332,9 +1254,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     /**
      * Called when the content is selected.
      *
-     * @param { Callback<RichEditorSelection, Unit> } callback
+     * @params { Callback<RichEditorSelection, Unit> } callback
      * @returns { This }
-     * @relation onSelect(callback: Callback<RichEditorSelection>): RichEditorAttribute
      */
     @!APILevel[
         22,
@@ -1354,9 +1275,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     /**
      * Defines onPaste callback.
      *
-     * @param { PasteEventCallback } callback
+     * @params { PasteEventCallback } callback
      * @returns { This }
-     * @relation onPaste(callback: PasteEventCallback): RichEditorAttribute
      */
     @!APILevel[
         22,
@@ -1376,9 +1296,8 @@ public class RichEditor <: CommonMethodComponent<RichEditorAttribute> & RichEdit
     /**
      * Called after text changed.
      *
-     * @param { OnDidChangeCallback } callback
+     * @params { OnDidChangeCallback } callback
      * @returns { This }
-     * @relation onDidChange(callback: OnDidChangeCallback): RichEditorAttribute
      */
     @!APILevel[
         22,

@@ -37,7 +37,6 @@ let defaultDivierColor = 0x33182431
 /**
  * Defines Divider Component.
  *
- * @relation const Divider: DividerInterface
  */
 @!APILevel[
     22,
@@ -48,7 +47,6 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
     * Divider constructor.
     *
     * @returns { This }
-    * @relation (): DividerAttribute
     */
     @!APILevel[
         22,
@@ -64,9 +62,8 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
     * Indicates whether to use a horizontal splitter or a vertical splitter.
     * The options are as follows: false: horizontal splitter; true: vertical splitter.
     *
-    * @param { Bool } value
+    * @params { Bool } value
     * @returns { This }
-    * @relation vertical(value: boolean): DividerAttribute
     */
     @!APILevel[
         22,
@@ -82,9 +79,8 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
     /**
     * Sets the color of the divider line.
     *
-    * @param { ResourceColor } value
+    * @params { ResourceColor } value
     * @returns { This }
-    * @relation color(value: ResourceColor): DividerAttribute
     */
     @!APILevel[
         22,
@@ -100,9 +96,8 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
     /**
     * Sets the width of the dividing line.
     *
-    * @param { Length } value
+    * @params { Length } value
     * @returns { This }
-    * @relation strokeWidth(value: number | string): DividerAttribute;
     */
     @!APILevel[
         22,
@@ -119,9 +114,8 @@ public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribu
     /**
     * Sets the end style of the split line. The default value is Butt.
     *
-    * @param { LineCapStyle } value
+    * @params { LineCapStyle } value
     * @returns { This }
-    * @relation lineCap(value: LineCapStyle): DividerAttribute;
     */
     @!APILevel[
         22,

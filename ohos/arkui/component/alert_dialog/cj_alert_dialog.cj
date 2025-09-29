@@ -81,8 +81,6 @@ func freeButtonsArr(nativeButtons: CArrNativeAlertDialogButtonOptionsV2) {
 
 /**
 * The arrangement of buttons in dialog.
-*
-* @relation declare enum DialogButtonDirection
 */
 @Derive[Equatable]
 @!APILevel[
@@ -93,7 +91,6 @@ public enum DialogButtonDirection {
     /**
      * Two or fewer buttons are arranged horizontally,
      * and two or more buttons are arranged vertically.
-     * @relation AUTO = 0
      */
     @!APILevel[
         22,
@@ -103,8 +100,6 @@ public enum DialogButtonDirection {
     |
     /**
      * Buttons are arranged horizontally.
-     *
-     * @relation HORIZONTAL = 1
      */
     @!APILevel[
         22,
@@ -114,8 +109,6 @@ public enum DialogButtonDirection {
     |
     /**
      * Buttons are arranged vertically.
-     *
-     * @relation VERTICAL = 2
      */
     @!APILevel[
         22,
@@ -194,9 +187,6 @@ struct NativeAlertDialogParamV2 {
 
 /**
  * Base button param.
- *
- * @class AlertDialogButtonBaseOptions
- * @relation declare interface AlertDialogButtonBaseOptions
  */
 @!APILevel[
     22,
@@ -206,9 +196,6 @@ public open class AlertDialogButtonBaseOptions {
     /**
      * Enable switch of button.
      *
-     * @type { Bool }
-     * @default true
-     * @relation enabled?: boolean
      */
     @!APILevel[
         22,
@@ -217,10 +204,6 @@ public open class AlertDialogButtonBaseOptions {
     public var enabled: ?Bool
    /**
     * Default focus switch of button.
-    *
-    * @type { Bool }
-    * @default false
-    * @relation defaultFocus?: boolean
     */
     @!APILevel[
         22,
@@ -229,10 +212,6 @@ public open class AlertDialogButtonBaseOptions {
     public var defaultFocus: ?Bool
    /**
     * Style of button.
-    *
-    * @type { DialogButtonStyle }
-    * @default DialogButtonStyle.Default
-    * @relation style?: DialogButtonStyle
     */
     @!APILevel[
         22,
@@ -241,9 +220,6 @@ public open class AlertDialogButtonBaseOptions {
     public var style: ?DialogButtonStyle
     /**
      * Text content of button.
-     *
-     * @type { ResourceStr }
-     * @relation value: ResourceStr
      */
     @!APILevel[
         22,
@@ -252,9 +228,6 @@ public open class AlertDialogButtonBaseOptions {
     public var value: ?ResourceStr
     /**
      * Text color of button.
-     *
-     * @type { ?ResourceColor }
-     * @relation fontColor?: ResourceColor
      */
     @!APILevel[
         22,
@@ -263,9 +236,6 @@ public open class AlertDialogButtonBaseOptions {
     public var fontColor: ?ResourceColor
     /**
      * Background color of button.
-     *
-     * @type { ?ResourceColor }
-     * @relation backgroundColor?: ResourceColor
      */
     @!APILevel[
         22,
@@ -274,9 +244,6 @@ public open class AlertDialogButtonBaseOptions {
     public var backgroundColor: ?ResourceColor
     /**
      * Method executed by the callback.
-     *
-     * @type { VoidCallback }
-     * @relation action: VoidCallback
      */
     @!APILevel[
         22,
@@ -286,15 +253,13 @@ public open class AlertDialogButtonBaseOptions {
     /**
      * Constructor of AlertDialogButtonBaseOptions
      *
-     * @param { Bool } enabled
-     * @param { Bool } defaultFocus
-     * @param { DialogButtonStyle } style
-     * @param { ResourceStr } value
-     * @param { ?ResourceColor } fontColor
-     * @param { ?ResourceColor } backgroundColor
-     * @param { VoidCallback } action
-     * @returns { AlertDialogButtonBaseOptions }
-     * @relation declare interface AlertDialogButtonBaseOptions
+     * @params { Bool } enabled
+     * @params { Bool } defaultFocus
+     * @params { DialogButtonStyle } style
+     * @params { ResourceStr } value
+     * @params { ?ResourceColor } fontColor
+     * @params { ?ResourceColor } backgroundColor
+     * @params { VoidCallback } action
      */
     @!APILevel[
         22,
@@ -321,10 +286,6 @@ public open class AlertDialogButtonBaseOptions {
 
 /**
  * Button param used for AlertDialogParamWithOptions.
- *
- * @extends AlertDialogButtonBaseOptions
- * @class AlertDialogButtonOptions
- * @relation declare interface AlertDialogButtonOptions extends AlertDialogButtonBaseOptions
  */
 @!APILevel[
     22,
@@ -334,8 +295,6 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
    /**
     * Define whether the button responds to Enter/Space key by default.
     *
-    * @type { Bool }
-    * @relation primary?: boolean
     */
     @!APILevel[
         22,
@@ -346,16 +305,14 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
     /**
      * Constructor of AlertDialogButtonOptions
      *
-     * @param { Bool } enabled
-     * @param { Bool } defaultFocus
-     * @param { DialogButtonStyle } style
-     * @param { ResourceStr } value
-     * @param { ?ResourceColor } fontColor
-     * @param { ?ResourceColor } backgroundColor
-     * @param { VoidCallback } action
-     * @param { Bool } primary
-     * @returns { AlertDialogButtonOptions }
-     * @relation declare interface AlertDialogButtonOptions extends AlertDialogButtonBaseOptions
+     * @params { Bool } enabled
+     * @params { Bool } defaultFocus
+     * @params { DialogButtonStyle } style
+     * @params { ResourceStr } value
+     * @params { ?ResourceColor } fontColor
+     * @params { ?ResourceColor } backgroundColor
+     * @params { VoidCallback } action
+     * @params { Bool } primary
      */
     @!APILevel[
         22,
@@ -440,9 +397,6 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
 
 /**
  * Base param used for AlertDialog.show method.
- *
- * @class AlertDialogParam
- * @relation declare interface AlertDialogParam
  */
 @!APILevel[
     22,
@@ -451,9 +405,6 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
 public open class AlertDialogParam {
     /**
      * Title Properties
-     *
-     * @type { ResourceStr }
-     * @relation title?: ResourceStr
      */
     @!APILevel[
         22,
@@ -462,8 +413,6 @@ public open class AlertDialogParam {
     public var title: ?ResourceStr
     /**
      * Subtitle Properties
-     * @type { ResourceStr }
-     * @relation subtitle?: ResourceStr
      */
     @!APILevel[
         22,
@@ -472,9 +421,6 @@ public open class AlertDialogParam {
     public var subtitle: ?ResourceStr
     /**
      * message Properties
-     *
-     * @type { ResourceStr }
-     * @relation message: ResourceStr
      */
     @!APILevel[
         22,
@@ -483,9 +429,6 @@ public open class AlertDialogParam {
     public var message: ?ResourceStr
     /**
      * Allows users to click the mask layer to exit.
-     *
-     * @type { Bool }
-     * @relation autoCancel?: boolean
      */
     @!APILevel[
         22,
@@ -494,9 +437,6 @@ public open class AlertDialogParam {
     public var autoCancel: ?Bool
     /**
      * Execute Cancel Function.
-     *
-     * @type { ?VoidCallback }
-     * @relation cancel?: VoidCallback
      */
     @!APILevel[
         22,
@@ -505,9 +445,6 @@ public open class AlertDialogParam {
     public var cancel: ?VoidCallback
     /**
      * Alignment in the vertical direction.
-     *
-     * @type { DialogAlignment }
-     * @relation alignment?: DialogAlignment
      */
     @!APILevel[
         22,
@@ -516,9 +453,6 @@ public open class AlertDialogParam {
     public var alignment: ?DialogAlignment
     /**
      * Offset of the pop-up window relative to the alignment position.
-     *
-     * @type { Offset }
-     * @relation offset?: Offset
      */
     @!APILevel[
         22,
@@ -526,11 +460,8 @@ public open class AlertDialogParam {
     ]
     public var offset: ?Offset
     /**
-      * Grid count of dialog.
-      *
-      * @type { UInt32 }
-      * @relation gridCount?: number
-      */
+     * Grid count of dialog.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -538,22 +469,15 @@ public open class AlertDialogParam {
     public var gridCount: ?UInt32
     /**
      * Mask Region of dialog. The size cannot exceed the main window.
-     *
-     * @type { Rectangle }
-     * @relation maskRect?: Rectangle
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskRect: ?Rectangle
-   /**
-    * Whether to display in the sub window.
-    *
-    * @type { Bool }
-    * @default false
-    * @relation showInSubWindow?: boolean
-    */
+    /**
+     * Whether to display in the sub window.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -561,9 +485,6 @@ public open class AlertDialogParam {
     public var showInSubWindow: ?Bool
     /**
      * Whether it is a modal dialog
-     * @type { Bool }
-     * @default true
-     * @relation isModal?: boolean
      */
     @!APILevel[
         22,
@@ -572,10 +493,6 @@ public open class AlertDialogParam {
     public var isModal: ?Bool
     /**
      * Defines the alertDialog's background color
-     *
-     * @type { ResourceColor }
-     * @default Color.Transparent
-     * @relation backgroundColor?: ResourceColor
      */
     @!APILevel[
         22,
@@ -584,10 +501,6 @@ public open class AlertDialogParam {
     public var backgroundColor: ?ResourceColor
     /**
      * Defines the alertDialog's background blur Style
-     *
-     * @type { BlurStyle }
-     * @default BlurStyle.ComponentUltraThick
-     * @relation backgroundBlurStyle?: BlurStyle
      */
     @!APILevel[
         22,
@@ -596,9 +509,6 @@ public open class AlertDialogParam {
     public var backgroundBlurStyle: ?BlurStyle
     /**
      * Callback function when the dialog interactive dismiss
-     *
-     * @type { ?Callback<DismissDialogAction, Unit> }
-     * @relation onWillDismiss?: Callback<DismissDialogAction>
      */
     @!APILevel[
         22,
@@ -607,10 +517,6 @@ public open class AlertDialogParam {
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
     /**
      * Defines the alertDialog's corner radius.
-     *
-     * @type { BorderRadiuses }
-     * @default BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp)
-     * @relation cornerRadius?: Dimension | BorderRadiuses | LocalizedBorderRadiuses
      */
     @!APILevel[
         22,
@@ -619,9 +525,6 @@ public open class AlertDialogParam {
     public var cornerRadius: ?BorderRadiuses
     /**
      * Transition parameters of opening/closing AlertDialog.
-     *
-     * @type { ?TransitionEffect }
-     * @relation transition?: TransitionEffect
      */
     @!APILevel[
         22,
@@ -631,8 +534,6 @@ public open class AlertDialogParam {
     /**
      * Defines the alertDialog's width.
      *
-     * @type { ?Length }
-     * @relation width?: Dimension
      */
     @!APILevel[
         22,
@@ -642,8 +543,6 @@ public open class AlertDialogParam {
     /**
      * Defines the alertDialog's height.
      *
-     * @type { ?Length }
-     * @relation height?: Dimension
      */
     @!APILevel[
         22,
@@ -652,9 +551,6 @@ public open class AlertDialogParam {
     public var height: ?Length
     /**
      * Defines the alertDialog's border width.
-     *
-     * @type { Length }
-     * @relation borderWidth?: Dimension | EdgeWidths | LocalizedEdgeWidths
      */
     @!APILevel[
         22,
@@ -663,9 +559,6 @@ public open class AlertDialogParam {
     public var borderWidth: ?Length
     /**
      * Defines the alertDialog's border color.
-     *
-     * @type { ResourceColor }
-     * @relation borderColor?: ResourceColor | EdgeColors | LocalizedEdgeColors
      */
     @!APILevel[
         22,
@@ -674,9 +567,6 @@ public open class AlertDialogParam {
     public var borderColor: ?ResourceColor
     /**
      * Defines the alertDialog's border style.
-     *
-     * @type { EdgeStyles }
-     * @relation borderStyle?: BorderStyle | EdgeStyles
      */
     @!APILevel[
         22,
@@ -686,9 +576,6 @@ public open class AlertDialogParam {
 
     /**
      * Defines the alertDialog's shadow.
-     *
-     * @type { ShadowOptions }
-     * @relation shadow?: ShadowOptions | ShadowStyle
      */
     @!APILevel[
         22,
@@ -697,9 +584,6 @@ public open class AlertDialogParam {
     public var shadow: ?ShadowOptions
     /**
      * Set the alertDialog's textStyle.
-     *
-     * @type { WordBreak }
-     * @relation textStyle?: TextStyle
      */
     @!APILevel[
         22,
@@ -710,31 +594,29 @@ public open class AlertDialogParam {
     /**
      * Constructor of AlertDialogParam.
      *
-     * @param { ResourceStr } title
-     * @param { ResourceStr } subtitle
-     * @param { ResourceStr } message
-     * @param { Bool } autoCancel
-     * @param { VoidCallback } cancel
-     * @param { DialogAlignment } alignment
-     * @param { Offset } offset
-     * @param { UInt32 } gridCount
-     * @param { Rectangle } maskRect
-     * @param { Bool } showInSubWindow
-     * @param { Bool } isModal
-     * @param { ResourceColor } backgroundColor
-     * @param { BlurStyle } backgroundBlurStyle
-     * @param { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
-     * @param { BorderRadiuses } cornerRadius
-     * @param { ?TransitionEffect } transition
-     * @param { ?Length } width
-     * @param { ?Length } height
-     * @param { Length } borderWidth
-     * @param { ResourceColor } borderColor
-     * @param { EdgeStyles } borderStyle
-     * @param { ShadowOptions } shadow
-     * @param { WordBreak } textStyle
-     * @returns { AlertDialogParam }
-     * @relation declare interface AlertDialogParam
+     * @params { ResourceStr } title
+     * @params { ResourceStr } subtitle
+     * @params { ResourceStr } message
+     * @params { Bool } autoCancel
+     * @params { VoidCallback } cancel
+     * @params { DialogAlignment } alignment
+     * @params { Offset } offset
+     * @params { UInt32 } gridCount
+     * @params { Rectangle } maskRect
+     * @params { Bool } showInSubWindow
+     * @params { Bool } isModal
+     * @params { ResourceColor } backgroundColor
+     * @params { BlurStyle } backgroundBlurStyle
+     * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
+     * @params { BorderRadiuses } cornerRadius
+     * @params { ?TransitionEffect } transition
+     * @params { ?Length } width
+     * @params { ?Length } height
+     * @params { Length } borderWidth
+     * @params { ResourceColor } borderColor
+     * @params { EdgeStyles } borderStyle
+     * @params { ShadowOptions } shadow
+     * @params { WordBreak } textStyle
      */
     @!APILevel[
         22,
@@ -868,10 +750,6 @@ public open class AlertDialogParam {
 
 /**
  * Defines the AlertDialog with confirm button.
- *
- * @extends AlertDialogParam
- * @class AlertDialogParamWithConfirm
- * @relation declare interface AlertDialogParamWithConfirm extends AlertDialogParam
  */
 @!APILevel[
     22,
@@ -881,9 +759,6 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
     /**
      * Invoke the commit function.
      * Anonymous Object Rectification.
-     *
-     * @type { AlertDialogButtonBaseOptions }
-     * @relation confirm?: AlertDialogButtonBaseOptions
      */
     @!APILevel[
         22,
@@ -893,32 +768,30 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
     /**
      * Constructor of AlertDialogParamWithConfirm.
      *
-     * @param { ResourceStr } title
-     * @param { ResourceStr } subtitle
-     * @param { ResourceStr } message
-     * @param { Bool } autoCancel
-     * @param { VoidCallback } cancel
-     * @param { DialogAlignment } alignment
-     * @param { Offset } offset
-     * @param { UInt32 } gridCount
-     * @param { Rectangle } maskRect
-     * @param { Bool } showInSubWindow
-     * @param { Bool } isModal
-     * @param { ResourceColor } backgroundColor
-     * @param { BlurStyle } backgroundBlurStyle
-     * @param { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
-     * @param { BorderRadiuses } cornerRadius
-     * @param { ?TransitionEffect } transition
-     * @param { ?Length } width
-     * @param { ?Length } height
-     * @param { Length } borderWidth
-     * @param { ResourceColor } borderColor
-     * @param { EdgeStyles } borderStyle
-     * @param { ShadowOptions } shadow
-     * @param { WordBreak } textStyle
-     * @param { AlertDialogButtonBaseOptions } confirm
-     * @returns { AlertDialogParamWithConfirm }
-     * @declare interface AlertDialogParamWithConfirm extends AlertDialogParam
+     * @params { ResourceStr } title
+     * @params { ResourceStr } subtitle
+     * @params { ResourceStr } message
+     * @params { Bool } autoCancel
+     * @params { VoidCallback } cancel
+     * @params { DialogAlignment } alignment
+     * @params { Offset } offset
+     * @params { UInt32 } gridCount
+     * @params { Rectangle } maskRect
+     * @params { Bool } showInSubWindow
+     * @params { Bool } isModal
+     * @params { ResourceColor } backgroundColor
+     * @params { BlurStyle } backgroundBlurStyle
+     * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
+     * @params { BorderRadiuses } cornerRadius
+     * @params { ?TransitionEffect } transition
+     * @params { ?Length } width
+     * @params { ?Length } height
+     * @params { Length } borderWidth
+     * @params { ResourceColor } borderColor
+     * @params { EdgeStyles } borderStyle
+     * @params { ShadowOptions } shadow
+     * @params { WordBreak } textStyle
+     * @params { AlertDialogButtonBaseOptions } confirm
      */
     @!APILevel[
         22,
@@ -981,10 +854,6 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
 
 /**
  * Defines the dialog param with buttons.
- *
- * @extends AlertDialogParam
- * @class AlertDialogParamWithButtons
- * @relation declare interface AlertDialogParamWithButtons extends AlertDialogParam
  */
 @!APILevel[
     22,
@@ -993,9 +862,6 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
 public class AlertDialogParamWithButtons <: AlertDialogParam {
     /**
      * First button.
-     *
-     * @type { AlertDialogButtonBaseOptions }
-     * @relation primaryButton: AlertDialogButtonBaseOptions
      */
     @!APILevel[
         22,
@@ -1004,9 +870,6 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
     public var primaryButton: ?AlertDialogButtonBaseOptions
     /**
      * Second button.
-     *
-     * @type { AlertDialogButtonBaseOptions }
-     * @relation secondaryButton: AlertDialogButtonBaseOptions
      */
     @!APILevel[
         22,
@@ -1016,33 +879,32 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
     /**
      * Constructor of AlertDialogParamWithButtons.
      *
-     * @param { ResourceStr } title
-     * @param { ResourceStr } subtitle
-     * @param { ResourceStr } message
-     * @param { Bool } autoCancel
-     * @param { VoidCallback } cancel
-     * @param { DialogAlignment } alignment
-     * @param { Offset } offset
-     * @param { UInt32 } gridCount
-     * @param { Rectangle } maskRect
-     * @param { Bool } showInSubWindow
-     * @param { Bool } isModal
-     * @param { ResourceColor } backgroundColor
-     * @param { BlurStyle } backgroundBlurStyle
-     * @param { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
-     * @param { BorderRadiuses } cornerRadius
-     * @param { ?TransitionEffect } transition
-     * @param { ?Length } width
-     * @param { ?Length } height
-     * @param { Length } borderWidth
-     * @param { ResourceColor } borderColor
-     * @param { EdgeStyles } borderStyle
-     * @param { ShadwoOptions } shadow
-     * @param { WordBreak } textStyle
-     * @param { AlertDialogButtonBaseOptions } primaryButton
-     * @param { AlertDialogButtonBaseOptions } secondaryButton
+     * @params { ResourceStr } title
+     * @params { ResourceStr } subtitle
+     * @params { ResourceStr } message
+     * @params { Bool } autoCancel
+     * @params { VoidCallback } cancel
+     * @params { DialogAlignment } alignment
+     * @params { Offset } offset
+     * @params { UInt32 } gridCount
+     * @params { Rectangle } maskRect
+     * @params { Bool } showInSubWindow
+     * @params { Bool } isModal
+     * @params { ResourceColor } backgroundColor
+     * @params { BlurStyle } backgroundBlurStyle
+     * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
+     * @params { BorderRadiuses } cornerRadius
+     * @params { ?TransitionEffect } transition
+     * @params { ?Length } width
+     * @params { ?Length } height
+     * @params { Length } borderWidth
+     * @params { ResourceColor } borderColor
+     * @params { EdgeStyles } borderStyle
+     * @params { ShadwoOptions } shadow
+     * @params { WordBreak } textStyle
+     * @params { AlertDialogButtonBaseOptions } primaryButton
+     * @params { AlertDialogButtonBaseOptions } secondaryButton
      * @returns { AlertDialogParamWithButtons }
-     * @relation declare interface AlertDialogParamWithButtons extends AlertDialogParam
      */
     @!APILevel[
         22,
@@ -1107,10 +969,6 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
 
 /**
  * Defines the dialog param with options.
- *
- * @extends AlertDialogParam
- * @class AlertDialogParamWithOptions
- * @relation declare interface AlertDialogParamWithOptions extends AlertDialogParam
  */
 @!APILevel[
     22,
@@ -1119,8 +977,6 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
 public class AlertDialogParamWithOptions <: AlertDialogParam {
     /**
      * The array of buttons.
-     * @type { Array<AlertDialogButtonOptions> }
-     * @relation buttons: Array<AlertDialogButtonOptions>
      */
     @!APILevel[
         22,
@@ -1130,9 +986,6 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
 
     /**
      * The arrangement of buttons.
-     * @type { DialogButtonDirection }
-     * @default DialogButtonDirection.Auto
-     * @relation buttonDirection?: DialogButtonDirection
      */
     @!APILevel[
         22,
@@ -1142,32 +995,31 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
     /**
      * Constructor of AlertDialogParamWithOptions.
      *
-     * @param { ResourceStr } title
-     * @param { ResourceStr } subtitle
-     * @param { ResourceStr } message
-     * @param { Bool } autoCancel
-     * @param { VoidCallback } cancel
-     * @param { DialogAlignment } alignment
-     * @param { Offset } offset
-     * @param { UInt32 } gridCount
-     * @param { Rectangle } maskRect
-     * @param { Bool } showInSubWindow
-     * @param { Bool } isModal
-     * @param { ResourceColor } backgroundColor
-     * @param { BlurStyle } backgroundBlurStyle
-     * @param { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
-     * @param { BorderRadiuses } cornerRadius
-     * @param { ?TransitionEffect } transition
-     * @param { ?Length } width
-     * @param { ?Length } height
-     * @param { Length } borderWidth
-     * @param { ResourceColor } borderColor
-     * @param { EdgeStyles } borderStyle
-     * @param { WordBreak } textStyle
-     * @param { Array<AlertDialogButtonOptions> } buttons
-     * @param { DialogButtonDirection } buttonDirection
+     * @params { ResourceStr } title
+     * @params { ResourceStr } subtitle
+     * @params { ResourceStr } message
+     * @params { Bool } autoCancel
+     * @params { VoidCallback } cancel
+     * @params { DialogAlignment } alignment
+     * @params { Offset } offset
+     * @params { UInt32 } gridCount
+     * @params { Rectangle } maskRect
+     * @params { Bool } showInSubWindow
+     * @params { Bool } isModal
+     * @params { ResourceColor } backgroundColor
+     * @params { BlurStyle } backgroundBlurStyle
+     * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
+     * @params { BorderRadiuses } cornerRadius
+     * @params { ?TransitionEffect } transition
+     * @params { ?Length } width
+     * @params { ?Length } height
+     * @params { Length } borderWidth
+     * @params { ResourceColor } borderColor
+     * @params { EdgeStyles } borderStyle
+     * @params { WordBreak } textStyle
+     * @params { Array<AlertDialogButtonOptions> } buttons
+     * @params { DialogButtonDirection } buttonDirection
      * @returns { AlertDialogParamWithOptions }
-     * @relation declare interface AlertDialogParamWithOptions extends AlertDialogParam
      */
     @!APILevel[
         22,

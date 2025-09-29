@@ -26,7 +26,6 @@ foreign func FfiOHOSAceFrameworkEllipseCreate(width: Float64, widthUnit: Int32, 
 /**
  * Defines Ellipse Component.
  *
- * @relation declare const Ellipse: EllipseInterface
  */
 @!APILevel[
     22,
@@ -36,10 +35,9 @@ public class Ellipse <: CommonShapeMethodComponent<EllipseAttribute> & EllipseAt
     /**
      * Create a ellipse.
      *
-     * @param { Length } width - Set width.
-     * @param { Length } height - Set Height.
+     * @params { Length } width - Set width.
+     * @params { Length } height - Set Height.
      * @returns { This }
-     * @relation (options?: EllipseOptions): EllipseAttribute
      */
     @!APILevel[
         22,

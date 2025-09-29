@@ -63,7 +63,6 @@ foreign {
 /**
  * Defines Toggle Component.
  *
- * @relation declare const Toggle: ToggleInterface
  */
 @!APILevel[
     22,
@@ -74,10 +73,9 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
     /**
      * Set parameters to obtain the toggle.
      *
-     * @param { ToggleType } toggleType
-     * @param { Bool } isOn
+     * @params { ToggleType } toggleType
+     * @params { Bool } isOn
      * @returns { This }
-     * @relation (options: ToggleOptions): ToggleAttribute
      */
     @!APILevel[
         22,
@@ -93,11 +91,10 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
     /**
      * Set parameters to obtain the toggle.
      *
-     * @param { ToggleType } toggleType
-     * @param { Bool } isOn
-     * @param { () -> Unit } subcomponent
+     * @params { ToggleType } toggleType
+     * @params { Bool } isOn
+     * @params { () -> Unit } subcomponent
      * @returns { This }
-     * @relation (options: ToggleOptions): ToggleAttribute
      */
     @!APILevel[
         22,
@@ -169,9 +166,8 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
     /**
      * Called when the color of the selected button is set.
      *
-     * @param { ResourceColor } value
+     * @params { ResourceColor } value
      * @returns { This }
-     * @relation selectedColor(value: ResourceColor): ToggleAttribute
      */
     @!APILevel[
         22,
@@ -188,9 +184,8 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
     /**
      * Called when the color of the selected button is set.
      *
-     * @param { ResourceColor } color
+     * @params { ResourceColor } color
      * @returns { This }
-     * @relation switchPointColor(color: ResourceColor): ToggleAttribute
      */
     @!APILevel[
         22,
@@ -242,9 +237,8 @@ public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute 
     /**
      * Called when the selected state of the component changes.
      *
-     * @param { (Bool) -> Unit } callback
+     * @params { (Bool) -> Unit } callback
      * @returns { This }
-     * @relation onChange(callback: (isOn: boolean) => void): ToggleAttribute
      */
     @!APILevel[
         22,
