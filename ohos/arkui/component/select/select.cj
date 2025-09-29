@@ -225,7 +225,7 @@ class FFIVectorNativeSelectOption {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Select <: CommonMethodComponent<SelectAttribute> & SelectAttribute {
+public class Select <: CommonMethodComponent<Select> & SelectAttribute {
     /**
      * Called when the select is set.
      *

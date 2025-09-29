@@ -112,7 +112,7 @@ public type OnAlphabetIndexerPopupSelectCallback = (Int64) -> Unit
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexerAttribute> & AlphabetIndexerAttribute {
+public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & AlphabetIndexerAttribute {
     /**
      * Construct the alphabet indexer component.
      * Called when the alphabet indexer component is used.

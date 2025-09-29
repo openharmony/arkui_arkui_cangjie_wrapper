@@ -103,7 +103,7 @@ public class RefreshOptions {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Refresh <: CommonMethodComponent<RefreshAttribute> & RefreshAttribute {
+public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
     /**
      * Defines Refresh Component.
      *

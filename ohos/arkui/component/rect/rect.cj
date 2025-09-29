@@ -47,7 +47,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Rect <: CommonShapeMethodComponent<RectAttribute> & RectAttribute {
+public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
     /**
      * Called when a rectangle is created.
      *

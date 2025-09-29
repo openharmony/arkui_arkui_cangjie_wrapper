@@ -42,7 +42,7 @@ let defaultDivierColor = 0x33182431
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Divider <: CommonMethodComponent<DividerAttribute> & DividerAttribute {
+public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     /**
     * Divider constructor.
     *

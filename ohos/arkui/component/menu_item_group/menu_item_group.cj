@@ -36,7 +36,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class MenuItemGroup <: CommonMethodComponent<MenuItemGroupAttribute> & MenuItemGroupAttribute {
+public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGroupAttribute {
 
     /**
      * Creates the MenuItem component.

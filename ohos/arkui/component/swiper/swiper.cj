@@ -803,7 +803,7 @@ public class SwiperController <: RemoteDataLite {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Swiper <: CommonMethodComponent<SwiperAttribute> & SwiperAttribute {
+public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     let controllerDefault: SwiperController = SwiperController()
 
     /**

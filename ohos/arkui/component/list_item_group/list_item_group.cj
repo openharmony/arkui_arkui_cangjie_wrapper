@@ -151,7 +151,7 @@ public class ListDividerOptions {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ListItemGroup <: CommonMethodComponent<ListItemGroupAttribute> & ListItemGroupAttribute {
+public class ListItemGroup <: CommonMethodComponent<ListItemGroup> & ListItemGroupAttribute {
 
     /**
      * Called when an interface is used.

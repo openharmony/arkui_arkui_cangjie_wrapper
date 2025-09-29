@@ -231,7 +231,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Tabs <: CommonMethodComponent<TabsAttribute> & TabsAttribute {
+public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
     /**
      * Create a Tabs.
      *
@@ -474,7 +474,7 @@ public class TabsController <: RemoteDataLite {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class TabContent <: CommonMethodComponent<TabContentAttribute> & TabContentAttribute {
+public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribute {
     /**
      * Create a TabContent with child.
      *

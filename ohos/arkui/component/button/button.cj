@@ -341,7 +341,7 @@ public class ButtonOptions {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Button <: CommonMethodComponent<ButtonAttribute> & ButtonAttribute {
+public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Button object
      *

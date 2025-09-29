@@ -204,7 +204,7 @@ struct CJBadgeStyleV2 {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Badge <: CommonMethodComponent<BadgeAttribute> & BadgeAttribute {
+public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
     /**
      * position: Set the display position of the prompt point.
      * maxCount: Maximum number of messages. If the number of messages exceeds the maximum, only maxCount+ is displayed.

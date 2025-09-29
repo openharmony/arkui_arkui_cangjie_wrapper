@@ -96,7 +96,7 @@ public class NavDestinationContext {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class NavDestination <: CommonMethodComponent<NavDestinationAttribute> & NavDestinationAttribute {
+public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestinationAttribute {
     /**
      * The construct function of NavDestination.
      *

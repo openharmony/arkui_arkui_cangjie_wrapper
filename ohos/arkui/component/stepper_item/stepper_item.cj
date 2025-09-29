@@ -37,7 +37,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class StepperItem <: CommonMethodComponent<StepperItemAttribute> & StepperItemAttribute {
+public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttribute {
 
     /**
      * Constructs a StepperItem component.

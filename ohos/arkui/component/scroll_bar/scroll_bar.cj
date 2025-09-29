@@ -33,7 +33,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ScrollBar <: CommonMethodComponent<ScrollBarAttribute> & ScrollBarAttribute {
+public class ScrollBar <: CommonMethodComponent<ScrollBar> & ScrollBarAttribute {
     /**
     * Define the constructor of the scrollbar component.
     *

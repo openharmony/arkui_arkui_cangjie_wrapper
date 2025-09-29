@@ -36,7 +36,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Line <: CommonShapeMethodComponent<LineAttribute> & LineAttribute {
+public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
     /**
      * Create a Line.
      *

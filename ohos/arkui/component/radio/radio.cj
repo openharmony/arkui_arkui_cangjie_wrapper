@@ -57,7 +57,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Radio <: CommonMethodComponent<RadioAttribute> & RadioAttribute {
+public class Radio <: CommonMethodComponent<Radio> & RadioAttribute {
     /**
      * Create a radio box.
      *

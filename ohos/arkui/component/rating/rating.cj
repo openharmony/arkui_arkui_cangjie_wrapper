@@ -46,7 +46,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Rating <: CommonMethodComponent<RatingAttribute> & RatingAttribute {
+public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     /**
      * Create a Rating.
      *

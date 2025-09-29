@@ -266,7 +266,7 @@ public class VideoController <: RemoteDataLite {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Video <: CommonMethodComponent<VideoAttribute> & VideoAttribute {
+public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     /**
      * Set the value.
      *

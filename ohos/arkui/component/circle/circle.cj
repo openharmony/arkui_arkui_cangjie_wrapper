@@ -35,7 +35,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Circle <: CommonShapeMethodComponent<CircleAttribute> & CircleAttribute {
+public class Circle <: CommonShapeMethodComponent<Circle> & CircleAttribute {
     /**
      * Create a circle.
      * 

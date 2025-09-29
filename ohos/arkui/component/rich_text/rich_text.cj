@@ -34,7 +34,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class RichText <: CommonMethodComponent<RichTextAttribute> & RichTextAttribute {
+public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

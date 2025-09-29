@@ -130,7 +130,7 @@ class FFIVectorColorStops {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Gauge <: CommonMethodComponent<GaugeAttribute> & GaugeAttribute {
+public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
 
     /**
      * The constructor of Gauge.

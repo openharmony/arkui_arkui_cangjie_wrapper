@@ -64,7 +64,7 @@ foreign {
     func FfiOHOSAceFrameworkNativeViewGetUINodeId(nativeViewId: Int64): Int32
 }
 
-protected class View <: CommonMethodComponent<ViewAttribute> & ViewAttribute {
+protected class View <: CommonMethodComponent<View> & ViewAttribute {
     protected static func create(view: View): Unit {
         unsafe {
             FfiOHOSAceFrameworkNativeViewCreate(view.getID())

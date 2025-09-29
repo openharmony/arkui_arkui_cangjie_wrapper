@@ -48,7 +48,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class GridItem <: CommonMethodComponent<GridItemAttribute> & GridItemAttribute {
+public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
 
     /**
      * Return to get GridItem.

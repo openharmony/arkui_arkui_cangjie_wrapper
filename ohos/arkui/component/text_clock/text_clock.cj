@@ -402,7 +402,7 @@ public class TextClockController <: RemoteDataLite {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class TextClock <: CommonMethodComponent<TextClockAttribute> & TextClockAttribute {
+public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute {
     /**
      * Construct the text clock component.
      * Specifies the current time zone.

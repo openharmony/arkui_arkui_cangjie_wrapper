@@ -221,7 +221,7 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class DataPanel <: CommonMethodComponent<DataPanelAttribute> & DataPanelAttribute {
+public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute {
     /**
      * Return a DataPanel.
      *

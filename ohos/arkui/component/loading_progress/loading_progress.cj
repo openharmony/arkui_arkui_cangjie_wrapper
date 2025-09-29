@@ -41,7 +41,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class LoadingProgress <: CommonMethodComponent<LoadingProgressAttribute> & LoadingProgressAttribute {
+public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & LoadingProgressAttribute {
     /**
      * Create a LoadingProgress
      *

@@ -68,7 +68,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Toggle <: CommonMethodComponent<ToggleAttribute> & ToggleAttribute {
+public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
 
     /**
      * Set parameters to obtain the toggle.

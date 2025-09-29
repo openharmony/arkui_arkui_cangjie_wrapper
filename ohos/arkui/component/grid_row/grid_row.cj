@@ -623,7 +623,7 @@ struct GridRowCreateWithSizeOptionInt32 {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class GridRow <: CommonMethodComponent<GridRowAttribute> & GridRowAttribute {
+public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
     * Defines the constructor of GridRow.
     * 

@@ -267,7 +267,7 @@ public class TextController <: RemoteDataLite {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Text <: CommonMethodComponent<TextAttribute> & TextAttribute {
+public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when writing text.
      *

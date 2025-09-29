@@ -190,7 +190,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class GridCol <: CommonMethodComponent<GridColAttribute> & GridColAttribute {
+public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     /**
      * GridCol constructor.
      *

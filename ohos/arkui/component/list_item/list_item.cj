@@ -55,7 +55,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ListItem <: CommonMethodComponent<ListItemAttribute> & ListItemAttribute {
+public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
     var deepRender_: () -> Unit
 
     /**

@@ -77,7 +77,7 @@ public type OnCheckboxChangeCallback = (Bool) -> Unit
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Checkbox <: CommonMethodComponent<CheckboxAttribute> & CheckboxAttribute {
+public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
     /**
      * Construct the Checkbox component.
      * Called when the Checkbox component is used.

@@ -54,7 +54,7 @@ let LENGTH_TYPE_LNVALID: Int32 = -2
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Menu <: CommonMethodComponent<MenuAttribute> & MenuAttribute {
+public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
 
     /**
      * Creates the menu component.

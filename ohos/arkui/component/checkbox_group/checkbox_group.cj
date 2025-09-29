@@ -161,7 +161,7 @@ func parseCheckboxGroupResult(event: FFiCheckboxGroupResult): CheckboxGroupResul
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class CheckboxGroup <: CommonMethodComponent<CheckboxGroupAttribute> & CheckboxGroupAttribute {
+public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGroupAttribute {
     /**
      * Called when the CheckboxGroup component is used.
      *
