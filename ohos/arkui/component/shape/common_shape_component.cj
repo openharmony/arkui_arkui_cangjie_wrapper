@@ -50,7 +50,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      *
      * @param { ResourceColor } value
      * @returns { This }
-     * @relation fill(value: ResourceColor): ShapeAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -60,7 +60,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         unsafe {
             FfiOHOSAceFrameworkShapeSetFill(transAppResourceToResourceColor(value ?? Color.Black))
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -68,7 +68,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      *
      * @param { Float64 } value
      * @returns { This }
-     * @relation fillOpacity(value: number | string | Resource): ShapeAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -78,14 +78,14 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         unsafe {
             FfiOHOSAceFrameworkShapeSetFillOpacity(value ?? 1.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
      /**
      * Called when the transparency of the border is set.
      *
      * @param { AppResource } value
      * @returns { This }
-     * @relation fillOpacity(value: number | string | Resource): ShapeAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -105,7 +105,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      *
      * @param { ResourceColor } value
      * @returns { This }
-     * @relation stroke(value: ResourceColor): ShapeAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -115,7 +115,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         unsafe {
             FfiOHOSAceFrameworkShapeSetStroke(transAppResourceToResourceColor(value ?? Color.Transparent))
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -123,7 +123,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      *
      * @param { Array<Length> } value
      * @returns { This }
-     * @relation strokeDashArray(value: Array<any>): ShapeAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -145,7 +145,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
             vecValueHandle.free()
             vecUnitHandle.free()
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -153,7 +153,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      *
      * @param { Length } value
      * @returns { This }
-     * @relation strokeDashOffset(value: Length): ShapeAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -164,7 +164,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeDashOffset(dashOffset_.value, dashOffset_.unitType.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -172,7 +172,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      *
      * @param { LineCapStyle } value
      * @returns { This }
-     * @relation strokeLineCap(value: LineCapStyle): ShapeAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -182,7 +182,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeLineCap((value ?? LineCapStyle.Butt).getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -190,7 +190,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      *
      * @param { LineJoinStyle } value
      * @returns { This }
-     * @relation strokeLineJoin(value: LineJoinStyle): ShapeAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -200,7 +200,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeLineJoin((value ?? LineJoinStyle.Miter).getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -208,7 +208,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      *
      * @param { Float64 } miterLimit
      * @returns { This }
-     * @relation strokeMiterLimit(value: Length): ShapeAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -218,7 +218,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeMiterLimit(miterLimit ?? 4.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -226,7 +226,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      *
      * @param { Float64 } value
      * @returns { This }
-     * @relation strokeOpacity(value: number | string | Resource): ShapeAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -236,7 +236,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeOpacity(value ?? 1.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
     /**
      * Called when the opacity of the border is set.
@@ -263,7 +263,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      *
      * @param { Length } value
      * @returns { This }
-     * @relation strokeWidth(value: Length): ShapeAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -274,7 +274,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeWidth(value_.value, value_.unitType.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -282,7 +282,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      *
      * @param { boolean } value
      * @returns { This }
-     * @relation antiAlias(value: boolean): ShapeAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -292,7 +292,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         unsafe {
             FfiOHOSAceFrameworkShapeSetAntiAlias(value ?? true)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected override func widthInner(value: ?Length): T {
@@ -304,7 +304,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected override func heightInner(value: ?Length): T {
@@ -316,7 +316,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected override func sizeInner(width: ?Length, height: ?Length): T {
@@ -331,6 +331,6 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
                     height_.unitType.getValue())
             }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 }

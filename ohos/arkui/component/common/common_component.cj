@@ -89,7 +89,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnClick(lambdaData.getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /*
@@ -97,7 +97,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onAppear(event: () => void): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -112,7 +112,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnAppear(Callback0Param<Unit>(tmpCallback).getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /*
@@ -120,7 +120,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onDisAppear(event: () => void): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -135,7 +135,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnDisAppear(Callback0Param<Unit>(tmpCallback).getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /*
@@ -164,7 +164,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnTouch(CallbackCJTouchEvent(wrapper).getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /*
@@ -172,7 +172,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onHover(event: (isHover: boolean, event: HoverEvent) => void): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -187,7 +187,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnHover(Callback1Param<Bool, Unit>(tmpCallback).getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /*
@@ -195,6 +195,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -213,7 +214,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnAreaChanged(CallbackCJAreaChangedEvent(wrapper).getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /*
@@ -221,6 +222,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -246,7 +248,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 CallbackCJVisibleAreaChangeEvent(wrapper).getID())
         }
         valuesHandle.free()
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /*
@@ -254,6 +256,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -274,7 +277,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnMouse(CallbackCJMouseEvent(wrapper).getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /*
@@ -282,6 +285,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -303,7 +307,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnKey(CallbackCJKeyEvent(wrapper).getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /*
@@ -311,7 +315,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onFocus(event: () => void): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -326,7 +330,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnFocus(Callback0Param<Unit>(tmpCallback).getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /*
@@ -334,7 +338,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
-     * @relation onBlur(event: () => void): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -349,7 +353,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnBlur(Callback0Param<Unit>(tmpCallback).getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -357,6 +361,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -388,7 +393,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         } else {
             return onDragStartInner({ _: DragInfo => })
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -396,6 +401,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -421,7 +427,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         } else {
             return onDragStartInner({ _: DragInfo => })
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -429,6 +435,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -451,7 +458,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                     }
                 ).getID(), DragComponent.DragCommon.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -459,6 +466,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -467,7 +475,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func onDragEnter(event: ?(DragInfo) -> Unit): T {
         onDragEnterInner(event)
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func onDragEnterInner(callback: ?(DragInfo) -> Unit): T {
@@ -479,7 +487,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkInteractableViewOnDragEnter(CallbackCJDragInfo(wrapper).getID(),
                 DragComponent.DragCommon.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -487,6 +495,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.     
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -506,7 +515,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkInteractableViewOnDragMove(CallbackCJDragInfo(wrapper).getID(),
                 DragComponent.DragCommon.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -514,6 +523,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -533,7 +543,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkInteractableViewOnDragLeave(CallbackCJDragInfo(wrapper).getID(),
                 DragComponent.DragCommon.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -542,6 +552,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { function } event
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -563,7 +574,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkInteractableViewOnDrop(CallbackCJDragInfo(wrapper).getID(),
                 DragComponent.DragCommon.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -573,7 +584,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Length } value
      * @returns { This }
-     * @relation width(value: Length): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -581,7 +592,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func width(value: Option<Length>): T {
         widthInner(value)
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func widthInner(value: ?Length): T {
@@ -593,7 +604,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -603,7 +614,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Length } value
      * @returns { This }
-     * @relation height(value: Length): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -611,7 +622,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func height(value: Option<Length>): T {
         heightInner(value)
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func heightInner(value: ?Length): T {
@@ -623,7 +634,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -632,7 +643,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { Length } width
      * @param { Length } height
      * @returns { This }
-     * @relation size(value: SizeOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -653,7 +664,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 FfiOHOSAceFrameworkViewAbstractSetSize(w.value, w.unitType.getValue(), h.value, h.unitType.getValue())
             }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -661,7 +672,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Length } value
      * @returns { This }
-     * @relation padding(value: Padding | Length | LocalizedPadding): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -676,7 +687,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             var v = transAppResourceToLength(value ?? 0.0.vp)
             FfiOHOSAceFrameworkViewAbstractSetPadding(v.value, v.unitType.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -684,7 +695,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Length, Length, Length, Length } Indicates safeArea padding values.
      * @returns { This }
-     * @relation padding(value: Padding | Length | LocalizedPadding): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -713,7 +724,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 )
             )
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -721,7 +732,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Length } value
      * @returns { This }
-     * @relation margin(value: Margin | Length | LocalizedMargin): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -736,7 +747,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetMargin(v.value, v.unitType.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -744,7 +755,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Length, Length, Length, Length } Indicates safeArea margin values.
      * @returns { This }
-     * @relation margin(value: Margin | Length | LocalizedMargin): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -773,7 +784,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 )
             )
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
     /**
      * Sets the weight of the component during layout. A component with this attribute is allocated space
@@ -781,7 +792,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Int32 } value
      * @returns { This }
-     * @relation layoutWeight(value: number | string): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -796,7 +807,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetLayoutWeight(value ?? 0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -804,7 +815,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Default value: **{minWidth: 0, maxWidth: Infinity, minHeight: 0, maxHeight: Infinity}**.
      *
      * @returns { This }
-     * @relation constraintSize(value: ConstraintSizeOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -834,7 +845,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 )
             )
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -843,7 +854,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Alignment } value
      * @returns { This }
-     * @relation align(value: Alignment): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -857,7 +868,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetAlign((value ?? Alignment.Center).getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -866,7 +877,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Direction } value
      * @returns { This }
-     * @relation direction(value: Direction): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -880,7 +891,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetDirection((value ?? Direction.Auto).getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -890,7 +901,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { Length } x
      * @param { Length } y
      * @returns { This }
-     * @relation position(value: Position | Edges | LocalizedEdges): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -906,7 +917,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetPosition(x.value, x.unitType.getValue(), y.value, y.unitType.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -916,7 +927,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { Length } x
      * @param { Length } y
      * @returns { This }
-     * @relation markAnchor(value: Position | LocalizedPosition): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -934,7 +945,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetMarkAnchor(x.value, x.unitType.getValue(), y.value, y.unitType.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -945,7 +956,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { Length } x
      * @param { Length } y
      * @returns { This }
-     * @relation offset(value: Position | Edges | LocalizedEdges): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -961,7 +972,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetOffset(x.value, x.unitType.getValue(), y.value, y.unitType.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -970,6 +981,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { AlignRuleOptions } value
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[
@@ -984,7 +996,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         let option = CJAlignRuleOption(value ?? AlignRuleOptions())
         unsafe { FfiOHOSAceFrameworkViewAbstractSetAlignRules(option) }
         option.free()
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -994,7 +1006,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * If width, height, and aspectRatio are all set, the explicitly set height is ignored, and the effective height is calculated using the following formula: width/aspectRatio.
      * This parameter takes effect only when a valid value greater than 0 is specified.
      *
-     * @relation aspectRatio(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1008,14 +1020,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetAspectRatio(value)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Sets the display priority for the component in the layout container.
      * This parameter is only effective in Row, Column, and Flex (single-line) container components.
      *
-     * @relation displayPriority(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1029,13 +1041,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetDisplayPriority(value ?? 1)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Sets the base size of the component in the main axis of the parent container.
      *
-     * @relation flexBasis(value: number | string): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1051,14 +1063,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetFlexBasis(v.value, v.unitType.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Sets the percentage of the parent container's remaining space that is allocated to the component.
      * Default value: **0**.
      *
-     * @relation flexGrow(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1072,7 +1084,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the percentage of the parent container's remaining space that is allocated to the component.
      * Default value: **0**.
      *
-     * @relation flexGrow(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1086,14 +1098,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetFlexGrow(value ?? 0.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Sets the percentage of the parent container's shrink size that is allocated to the component.
      * Default value: 0 when the parent container is Column or Row, 1 when the parent container is Flex.
      *
-     * @relation flexShrink(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1107,7 +1119,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the percentage of the parent container's shrink size that is allocated to the component.
      * Default value: 0 when the parent container is Column or Row, 1 when the parent container is Flex.
      *
-     * @relation flexShrink(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1121,7 +1133,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetFlexShrink(value ?? 0.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1130,7 +1142,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { ItemAlign } value
      * @returns { This }
-     * @relation flexShrink(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1144,7 +1156,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetAlignSelf((value ?? ItemAlign.Auto).getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1152,7 +1164,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Rectangle } value
      * @returns { This }
-     * @relation responseRegion(value: Array<Rectangle> | Rectangle): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1178,7 +1190,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 )
             )
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1186,7 +1198,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Array<Rectangle> } value
      * @returns { This }
-     * @relation responseRegion(value: Array<Rectangle> | Rectangle): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1209,7 +1221,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkViewAbstractSetResponseRegionArray(vecFFi.getNativeHandle())
         }
         vecFFi.free()
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1220,7 +1232,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { Length } radius
      * @param { BorderStyle } style
      * @returns { This }
-     * @relation border(value: BorderOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1239,7 +1251,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 CJBorder(w.value, w.unitType.getValue(), transAppResourceToResourceColor(color ?? Color.Black), r.value,
                     r.unitType.getValue(), (style ?? BorderStyle.Solid).getValue()))
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1248,8 +1260,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Length } value
      * @returns { This }
-     * @throws { IllegalArgumentException } Percentage values are not supported.
-     * @relation borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths): T;
+     * @throws { BusinessException } 100023 - Percentage values are not supported.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1263,12 +1275,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         var v = transAppResourceToLength(tmpValue)
         if (v.unitType.getValue() == LENGTH_PERCENT) {
-            throw IllegalArgumentException("Percentage values are not supported.")
+            throw BusinessException(100023, "Percentage values are not supported.")
         }
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBorderWidth(v.value, v.unitType.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1276,7 +1288,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { EdgeWidths } value
      * @returns { This }
-     * @relation borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1294,7 +1306,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                     (tmpedgeWidths.right ?? 0.vp).unitType.getValue(), (tmpedgeWidths.bottom ?? 0.vp).value, (tmpedgeWidths.bottom ?? 0.vp).unitType.getValue(), 
                     (tmpedgeWidths.left ?? 0.vp).value, (tmpedgeWidths.left ?? 0.vp).unitType.getValue()))
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1303,7 +1315,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { ResourceColor } value
      * @returns { This }
-     * @relation borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1317,7 +1329,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBorderColor(transAppResourceToResourceColor(value ?? Color.Black))
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1329,7 +1341,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { Length } bottomLeft
      * @param { Length } bottomRight
      * @returns { This }
-     * @relation borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1358,7 +1370,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             )
             FfiOHOSAceFrameworkViewAbstractSetAllBorderRadius(value)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1367,7 +1379,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Length } value
      * @returns { This }
-     * @relation borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1382,7 +1394,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBorderRadius(v.value, v.unitType.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1391,7 +1403,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { BorderStyle } value
      * @returns { This }
-     * @relation borderStyle(value: BorderStyle | EdgeStyles): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1406,7 +1418,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBorderStyle(tmpValue.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1414,7 +1426,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { BlurStyle } value
      * @returns { This }
-     * @relation foregroundBlurStyle(value: BlurStyle, options?: ForegroundBlurStyleOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1430,7 +1442,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { BlurStyle } value
      * @param { ForegroundBlurStyleOptions } options
      * @returns { This }
-     * @relation foregroundBlurStyle(value: BlurStyle, options?: ForegroundBlurStyleOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1451,7 +1463,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 FfiOHOSAceFrameworkViewAbstractSetForegroundBlurStyle(tmpStyle.getValue())
             }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1460,7 +1472,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { ColoringStrategy } value
      * @returns { This }
-     * @relation foregroundColor(value: ResourceColor | ColoringStrategy): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1476,7 +1488,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { ResourceColor } value
      * @returns { This }
-     * @relation foregroundColor(value: ResourceColor | ColoringStrategy): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1491,7 +1503,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetForegroundResourceColor(transAppResourceToResourceColor(tmpValue))
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func foregroundColorInner(value: ?ColoringStrategy): T {
@@ -1504,7 +1516,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 }
             case None => foregroundColorInner(Color.Transparent)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1512,7 +1524,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { ResourceColor } value
      * @returns { This }
-     * @relation backgroundColor(value: ResourceColor): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1526,7 +1538,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBackgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1534,7 +1546,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { ResourceColor } src
      * @returns { This }
-     * @relation backgroundImage(src: ResourceStr | PixelMap, options?: BackgroundImageOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1549,7 +1561,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { ResourceColor } src
      * @param { ImageRepeat } repeat
      * @returns { This }
-     * @relation backgroundImage(src: ResourceStr | PixelMap, options?: BackgroundImageOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1557,7 +1569,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func backgroundImage(src: ?ResourceStr, repeat: ?ImageRepeat): T {
         backgroundImageInner(src, repeat ?? ImageRepeat.NoRepeat)
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func backgroundImageInner(src: ?ResourceStr, repeat: ?ImageRepeat): T {
@@ -1570,14 +1582,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         var srcMedia = match (tmpSrc) {
             case v: String => v
             case v: AppResource => getResourceMedia(v)
-            case _ => throw IllegalArgumentException("Invaild type.")
+            case _ => throw BusinessException(100001, "Internal error: Invaild type.")
         }
         unsafe {
             try (unsafeSrc = LibC.mallocCString(srcMedia).asResource()) {
                 FfiOHOSAceFrameworkViewAbstractSetBackgroundImage(unsafeSrc.value, repeatUnit)
             }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1585,7 +1597,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { ImageSize } value
      * @returns { This }
-     * @relation backgroundImageSize(value: SizeOptions | ImageSize): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1601,7 +1613,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { Length } width
      * @param { Length } height
      * @returns { This }
-     * @relation backgroundImageSize(value: SizeOptions | ImageSize): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1618,7 +1630,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkViewAbstractSetBackgroundImageSize(w.value, w.unitType.getValue(), h.value,
                 h.unitType.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func backgroundImageSizeInner(imageSize: ?ImageSize): T {
@@ -1626,7 +1638,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBackgroundImageSizeType(tmpImageSize.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1636,7 +1648,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Alignment } value
      * @returns { This }
-     * @relation backgroundImagePosition(value: Position | Alignment): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1654,7 +1666,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { Length } x
      * @param { Length } y
      * @returns { This }
-     * @relation backgroundImagePosition(value: Position | Alignment): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1671,7 +1683,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkViewAbstractSetBackgroundImagePositionXY(x.value, x.unitType.getValue(), y.value,
                 y.unitType.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func backgroundImagePositionInner(value: ?Alignment): T {
@@ -1682,7 +1694,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 }
             case None => backgroundImagePosition()
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1697,7 +1709,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { Length } centerX
      * @param { Length } centerY
      * @returns { This }
-     * @relation scale(value: ScaleOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1715,7 +1727,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkViewAbstractSetScale(
                 CJSetScale(x, y, z, cx.value, cx.unitType.getValue(), cy.value, cy.unitType.getValue()))
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1723,7 +1735,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Float64 } value - Opacity of the component. The value ranges from 0 to 1.
      * @returns { This }
-     * @relation opacity(value: number | Resource): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1737,13 +1749,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetOpacity(value ?? 1.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Set component rotation.
      *
-     * @relation rotate(value: RotateOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1761,13 +1773,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkViewAbstractSetRotate(
                 CJSetRotate(x, y, z, angle, cx.value, cx.unitType.getValue(), cy.value, cy.unitType.getValue()))
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Sets the translation effect for page transitions.
      *
-     * @relation translate(value: TranslateOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1786,7 +1798,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 CJTranslate(x.value, x.unitType.getValue(), y.value, y.unitType.getValue(), z.value,
                     z.unitType.getValue()))
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1795,7 +1807,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Bool } value
      * @returns { This }
-     * @relation enabled(value: boolean): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1809,7 +1821,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetEnabled(value ?? true)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1818,7 +1830,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * If the parameter is set to an empty string, the shared element transition does not occur.
      * For details about the options parameter, see the options parameter description.
      *
-     * @relation sharedTransition(id: string, options?: sharedTransitionOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1846,7 +1858,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 FfiOHOSAceFrameworkViewAbstractSetSharedTransition(unsafeId.value, unsafeOptions)
             }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1855,7 +1867,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { String } id
      * @param { Bool } followWithoutTransition
      * @returns { This }
-     * @relation geometryTransition(id: string, options?: GeometryTransitionOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1871,7 +1883,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 FfiOHOSAceFrameworkViewAbstractSetGeometryTransition(idCString.value, value ?? false)
             }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1881,7 +1893,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Float64 } value
      * @returns { This }
-     * @relation blur(value: number, options?: BlurOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1895,7 +1907,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBlur(value ?? 0.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1903,7 +1915,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { ResourceColor } value
      * @returns { This }
-     * @relation colorBlend(value: Color | string | Resource): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1917,7 +1929,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetColorBlend(transAppResourceToResourceColor(value ?? Color.Transparent))
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1925,7 +1937,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Float64 } value
      * @returns { This }
-     * @relation backdropBlur(value: number, options?: BlurOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1939,13 +1951,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBackdropBlur(value ?? 0.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Applies a shadow effect to the component.
      *
-     * @relation shadow(value: ShadowOptions | ShadowStyle): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1961,7 +1973,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkViewAbstractSetShadow(radius ?? 0.0, transAppResourceToResourceColor(color ?? Color(0x666666)),
                 offsetX ?? 0.0, offsetY ?? 0.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1969,7 +1981,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Float64 } value
      * @returns { This }
-     * @relation grayscale(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -1983,7 +1995,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetGrayScale(value ?? 0.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -1991,7 +2003,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Float64 } value
      * @returns { This }
-     * @relation grayscale(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2005,7 +2017,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBrightness(value ?? 1.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -2013,7 +2025,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Float64 } value
      * @returns { This }
-     * @relation saturate(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2027,7 +2039,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetSaturate(value ?? 1.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -2035,7 +2047,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Float64 } value
      * @returns { This }
-     * @relation saturate(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2049,7 +2061,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetContrast(value ?? 1.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -2058,7 +2070,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Float64 } value
      * @returns { This }
-     * @relation invert(value: number | InvertOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2078,14 +2090,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetInvert(realValue)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Invert the input image. Value defines the scale of the conversion. 100% of the value is a complete reversal.
      * A value of 0% does not change the image. (Percentage)
      *
-     * @relation invert(value: number | InvertOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2099,7 +2111,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetInvertWithOptions(low ?? 0.0, high ?? 0.0, threshold ?? 0.0, thresholdRange ?? 0.0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func pixelStretchEffectInner(top: Length, right: Length, bottom: Length, left: Length): T {
@@ -2121,7 +2133,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 )
             )
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func outlineWidthInner(top: Length, right: Length, bottom: Length, left: Length): T {
@@ -2143,7 +2155,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 )
             )
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func outlineColorInner(top: ResourceColor, right: ResourceColor, bottom: ResourceColor,
@@ -2156,7 +2168,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 transAppResourceToResourceColor(left)
             )
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func outlineRadiusInner(topLeft: Length, topRight: Length, bottomLeft: Length, bottomRight: Length): T {
@@ -2178,7 +2190,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 )
             )
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -2186,7 +2198,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Float64 } value
      * @returns { This }
-     * @relation sepia(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2197,15 +2209,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         sepiaInner(tmpValue)
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected open func sepiaInner(value: Float64): T {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetSepia(value)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -2213,7 +2221,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Float32 } value
      * @returns { This }
-     * @relation hueRotate(value: number | string): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2228,7 +2236,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetHueRotate(value)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -2236,7 +2244,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Int32 } value
      * @returns { This }
-     * @relation zIndex(value: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2250,7 +2258,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetZIndex(value ?? 0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -2258,7 +2266,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Visibility } value
      * @returns { This }
-     * @relation visibility(value: Visibility): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2273,7 +2281,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetVisibility(tmpValue.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -2282,7 +2290,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Bool } value
      * @returns { This }
-     * @relation clip(value: boolean): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2296,7 +2304,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetClip(isClip ?? false)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -2304,7 +2312,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { BaseShape } value
      * @returns { This }
-     * @relation clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2319,7 +2327,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { BaseShape } value
      * @returns { This }
-     * @relation maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2334,20 +2342,20 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetClipByShape(tmpValue.getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func maskShapeInner(value: BaseShape): T {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetMaskByShape(value.getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Add mask text to the current component. The layout is the same as that of the current component.
      *
-     * @relation overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2366,7 +2374,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                     tmpOffset.y ?? 0.0)
             }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     func parseToDismissPopupAction(reason: Int32): DismissPopupAction {
@@ -2442,7 +2450,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * The popup can be displayed only after the entire page is fully constructed. Therefore, to avoid incorrect
      * display positions and shapes, do not set this parameter to true while the page is still being constructed.
      *
-     * @relation bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2450,7 +2458,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func bindPopup(show: ?Bool, popup: ?PopupOptions): T {
         bindPopupInner(show, popup)
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func bindPopupInner(show: ?Bool, popup: ?PopupOptions): T {
@@ -2490,7 +2498,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         let nativePlacement: Int32 = (tmpPopup.placement ?? Placement.BottomLeft).getValue()
         callFFIBindPopup(tmpPopup, primaryActionId, secondaryActionId, onStateChangeId, nativeOnWillDismiss,
             nativeTransition, nativePlacement, tmpShow)
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -2499,7 +2507,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * The popup can be displayed only after the entire page is fully constructed. Therefore, to avoid incorrect
      * display positions and shapes, do not set this parameter to true while the page is still being constructed.
      *
-     * @relation bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2550,13 +2558,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         } else {
             bindPopupInner(show, PopupOptions(message: ""))
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Menu control
      *
-     * @relation bindMenu(content: Array<MenuElement> | CustomBuilder, options?: MenuOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2585,13 +2593,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             )
             valueVecFFi.free()
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Menu control
      *
-     * @relation bindMenu(content: Array<MenuElement> | CustomBuilder, options?: MenuOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2606,13 +2614,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractBindCustomMenu(Callback0Param<Unit>(tmpBuilder).getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Binds a context menu to the component, whose visibility is subject to the isShown settings.
      *
-     * @relation bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2621,7 +2629,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     public func bindContextMenu(builder!: ?CustomBuilder, responseType!: ?ResponseType,
         options!: ?ContextMenuOptions = None): T {
         bindContextMenuInner(builder, responseType, options)
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func bindContextMenuInner(builder: ?CustomBuilder, responseType: ?ResponseType,
@@ -2635,7 +2643,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 optionElement
             )
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -2645,7 +2653,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * colors: Color description for gradients.
      * repeating: repeating. The default value is false
      *
-     * @relation linearGradient(value: LinearGradientOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2671,13 +2679,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             LibC.free(cAnglePoint)
             LibC.free(cColorsArr.head)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Creates a sweep gradient.
      *
-     * @relation sweepGradient(value: SweepGradientOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2700,13 +2708,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkViewAbstractSweepGradient(sweepGradientParam)
             LibC.free(cColorsArr.head)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Creates a radial gradient.
      *
-     * @relation radialGradient(value: RadialGradientOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2732,7 +2740,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkViewAbstractRadialGradient(radialGradientParam)
             LibC.free(cColorsArr.head)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     func toCArrCColors(colors: Array<(ResourceColor, Float64)>): CArrCColors {
@@ -2758,7 +2766,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets hot keys
      *
-     * @relation keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?: () => void): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2776,7 +2784,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets hot keys
      *
-     * @relation keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?: () => void): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2789,7 +2797,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets hot keys
      *
-     * @relation keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?: () => void): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2807,7 +2815,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets hot keys
      *
-     * @relation keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?: () => void): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2835,7 +2843,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 } finally {
                     LibC.free<Int32>(modifierKeys)
                 }
-                return (this as T) ?? throw IllegalArgumentException("Type error")
+                return (this as T) ?? throw BusinessException(100001, "Internal error.")
             }
             if (let Some(v) <- (value as FunctionKey)) {
                 if (let Some(actionFunc) <- action) {
@@ -2847,13 +2855,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 LibC.free<Int32>(modifierKeys)
             }
         }
-        return (this as T) ?? throw IllegalArgumentException("Type error")
+        return (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Key. User can set an key to the component to identify it.
      *
-     * @relation key(value: string): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2869,13 +2877,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 FfiOHOSAceFrameworkViewAbstractSetInspectorKey(unsafeValue.value)
             }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * How the final state of the component's content is rendered during its width and height animation process.
      *
-     * @relation renderFit(fitMode: RenderFit): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2890,13 +2898,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractRenderFit(tmpFitMode.getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Id. User can set an id to the component to identify it.
      *
-     * @relation id(value: string): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2912,13 +2920,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkViewAbstractSetId(unsafeValue)
             LibC.free(unsafeValue)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Sets the safe area to be expanded to.
      *
-     * @relation expandSafeArea(types?: Array<SafeAreaType>, edges?: Array<SafeAreaEdge>): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2950,13 +2958,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractExpandSafeArea(safeAreaType, safeAreaEdge)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Binds a modal page to the component, whose visibility is subject to the isShow settings.
      *
-     * @relation bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCoverOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2974,13 +2982,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FFIOHOSAceFrameworkBindContentCoverV2(tmpIsShow, Callback0Param<Unit>(builder ?? { => }).getID(), cjBindCustomPopup)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * animation
      *
-     * @relation animation(value: AnimateParam): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -2997,13 +3005,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkViewContextAnimation(param)
             param.free()
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * animation
      *
-     * @relation animation(value: AnimateParam): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -3019,13 +3027,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             FfiOHOSAceFrameworkViewContextAnimation(param)
             param.free()
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Set the transition effect of component when it appears and disappears.
      *
-     * @relation transition(value: TransitionEffect): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -3038,7 +3046,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Set the transition effect of component when it appears and disappears.
      *
-     * @relation transition(value: TransitionEffect): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -3050,7 +3058,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         } else {
             transitionInner(value)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func transitionInner(value: ?TransitionEffect, onFinish: TransitionFinishCallback): T {
@@ -3059,7 +3067,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractTransitionWithBack(tmpValue.getID(), lambdaData.getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func transitionInner(value: ?TransitionEffect): T {
@@ -3067,7 +3075,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractTransition(tmpValue.getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -3075,7 +3083,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Components that have default interaction logic, such as Button and TextInput, are focusable by default. Other
      * components, such as Text and Image, are not focusable by default. Only focusable components can trigger a focus event.
      *
-     * @relation focusable(value: boolean): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -3089,14 +3097,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FFIOHOSAceFrameworkFocusable(value ?? true)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Set focus index by key tab.
      * The tabIndex and focusScopeId cannot be used together.
      *
-     * @relation tabIndex(index: number): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -3110,13 +3118,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FFIOHOSAceFrameworkTabIndex(index ?? 0)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Set default focused component when a page create.
      *
-     * @relation defaultFocus(value: boolean): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -3130,13 +3138,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FFIOHOSAceFrameworkDefaultFocus(value ?? false)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
      * Set default focused component when focus on a focus group.
      *
-     * @relation groupDefaultFocus(value: boolean): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -3150,7 +3158,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FFIOHOSAceFrameworkGroupDefaultFocus(value ?? false)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -3158,7 +3166,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { Bool } value
      * @returns { This }
-     * @relation focusOnTouch(value: boolean): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -3172,7 +3180,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FFIOHOSAceFrameworkFocusOnTouch(value ?? false)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -3182,7 +3190,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { CustomBuilder } builder - the sheet to be displayed.
      * @param { SheetOptions } options - options of sheet.
      * @returns { This }
-     * @relation bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -3202,7 +3210,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 LibC.free<Int32>(cSheetOption.detents.value.head)
             }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -3210,7 +3218,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { String } value - preview of the component for dragging process
      * @returns { This }
-     * @relation dragPreview(value: CustomBuilder | DragItemInfo | string): T;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -3226,7 +3234,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                 FfiOHOSAceFrameworkViewAbstractSetDragPreviewWithString(unsafeSrc.value)
             }
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 }
 

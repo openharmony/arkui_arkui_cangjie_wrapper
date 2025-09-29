@@ -249,6 +249,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      *
      * @param { Float64 } speedLimit
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -262,7 +263,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         unsafe {
             FfiOHOSAceFrameworkScrollableBaseFlingSpeed(speedLimit)
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -270,6 +271,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      *
      * @param { Option<Bool> } enabled
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -287,7 +289,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
                 }
             case None => ()
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -296,6 +298,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @param { Option<Bool> } enabled
      * @param { FadingEdgeOptions } options
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -318,7 +321,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
                 }
             case None => ()
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -326,6 +329,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      *
      * @param { ContentClipMode } clip
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -339,7 +343,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         unsafe {
             FfiOHOSAceFrameworkScrollableBaseClipMode((clip ?? ContentClipMode.Boundary).getValue())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -347,6 +351,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      *
      * @param { RectShape } clip
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -363,7 +368,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         unsafe {
             FfiOHOSAceFrameworkScrollableBaseClipShape(clip.getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -374,7 +379,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      *
      * @param { ScrollResult } handler
      * @returns { ScrollAttribute }
-     * @relation onWillScroll(handler: ScrollOnWillScrollCallback): ScrollAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -398,7 +403,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
                 }
             case None => ()
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -409,7 +414,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      *
      * @param { Unit } handler
      * @returns { This }
-     * @relation onWillScroll(handler: ScrollOnWillScrollCallback): ScrollAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -430,7 +435,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
                 onWillScroll(callbackWithRet)
             case None => ()
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     /**
@@ -441,7 +446,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      *
      * @param { OnScrollCallBack } handler
      * @returns { This }
-     * @relation onDidScroll(handler: ScrollOnScrollCallback): ScrollAttribute;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -460,6 +465,6 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         unsafe {
             FfiOHOSAceFrameworkScrollableBaseOnDidScroll(lambdaData.getID())
         }
-        (this as T) ?? throw IllegalArgumentException("Type error")
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 }
