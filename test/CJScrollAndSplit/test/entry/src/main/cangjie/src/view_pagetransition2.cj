@@ -35,14 +35,14 @@ class ViewPageTransition2 {
         Column() {
             Text(this.text).id("text2")
             Image(@r(app.media.app_icon)).width(75.percent).height(75.percent).id("Image2").scale(x: scale1, y: 1.0).
-                opacity(this.opacity1).onClick {
+                opacity(this.opacity1).onClick({
                 e => getUIContext().getRouter().pushUrl(url: "ViewPageTransition")
-            }
+            })
         }
     }
 
     protected func pageTransition(): Unit {
-        PageTransitionEnter(duration: 1200, curve: Curve.Linear).onEnter {
+        PageTransitionEnter(duration: 1200, curve: Curve.Linear).onEnter({
             ty: RouteType, progress: Float64 =>
             match (ty) {
                 case RouteType.Push | RouteType.Pop =>
@@ -51,14 +51,14 @@ class ViewPageTransition2 {
                 case _ => ()
             }
             this.text = "页面转场2"
-        }
-        PageTransitionExit(routeType: RouteType.Pop, duration: 1200, curve: Curve.Ease).onExit {
+        })
+        PageTransitionExit(routeType: RouteType.Pop, duration: 1200, curve: Curve.Ease).onExit({
             ty: RouteType, progress: Float64 => match (ty) {
                 case RouteType.Push =>
                     this.scale1 = Float32(1.0 - progress)
                     this.opacity1 = 1.0 - progress
                 case _ => ()
             }
-        }
+        })
     }
 }

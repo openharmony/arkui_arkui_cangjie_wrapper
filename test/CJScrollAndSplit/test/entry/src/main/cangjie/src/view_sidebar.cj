@@ -69,9 +69,9 @@ class ViewSideBar {
             .sideBarPosition(SideBarPosition.End)
             .controlButton(ctrlButton)
             .showControlButton(false)
-            .onChange() {
+            .onChange({
                 value: Bool => showSideBarTxt += "${value};"
-            }
+            })
             .width(90.percent)
             .height(85.percent)
     }

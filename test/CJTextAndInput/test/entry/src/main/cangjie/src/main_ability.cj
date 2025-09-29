@@ -26,7 +26,9 @@ import std.sync.*
 import ohos.window.WindowStage
 import ohos.window.Window
 import ohos.resource_manager.*
-import kit.TestKit.*
+import ohos.app.ability.ability_delegator_registry.*
+import ohos.application.test_runner.*
+import ohos.ui_test.*
 
 class MainAbility <: UIAbility {
     public init() {

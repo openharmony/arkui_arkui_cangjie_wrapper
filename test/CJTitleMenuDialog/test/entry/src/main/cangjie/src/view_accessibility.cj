@@ -48,7 +48,7 @@ class ViewAccessibility {
                 //                .accessibilityVirtualNode({=> customAccessibilityNode}) //打印出来是false
 
                 .id("accessibility_id2")
-            Button("PrintAccessibilityAttr1").onClick {
+            Button("PrintAccessibilityAttr1").onClick({
                 e =>
                 let c_id = "accessibility_id"
 
@@ -72,9 +72,9 @@ class ViewAccessibility {
 
                 let accessibilityVirtualNode = getTextFromJSonObj(obj, "accessibilityVirtualNode")
                 Hilog.info(1, "1", "1", accessibilityVirtualNode)
-            }
+            })
 
-            Button("PrintAccessibilityAttr2").onClick {
+            Button("PrintAccessibilityAttr2").onClick({
                 e =>
                 let c_id = "accessibility_id2"
 
@@ -89,7 +89,7 @@ class ViewAccessibility {
 
                 let accessibilityVirtualNode = getTextFromJSonObj(obj, "accessibilityVirtualNode")
                 Hilog.info(1, "1", "1", accessibilityVirtualNode)
-            }
+            })
         }.height(100.percent)
     }
 

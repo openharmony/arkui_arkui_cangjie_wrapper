@@ -36,7 +36,7 @@ class TextAndInputIndex2 {
                         .id(viewName)
                         .borderRadius(4)
                         .margin(2)
-                        .onClick { e => getUIContext().getRouter().pushUrl(url: viewName) }
+                        .onClick({ e => getUIContext().getRouter().pushUrl(url: viewName) })
                     }
                 )
             }.width(100.percent).margin(top: 5)

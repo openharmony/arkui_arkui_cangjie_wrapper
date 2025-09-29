@@ -473,7 +473,7 @@ class ViewScroll2 {
                     .backgroundColor(Color.Green)
                     .onClick({evt =>
                         this.scroller_5.scrollBy(xOffset: 0.vp, yOffset: 60.vp)
-                        this.onscrollMessage = "${this.scroller_5.currentOffset().xOffset.toString()}, ${this.scroller_5.currentOffset().yOffset.toString()}"
+                        this.onscrollMessage = "${this.scroller_5.currentOffset().getOrThrow().xOffset.toString()}, ${this.scroller_5.currentOffset().getOrThrow().yOffset.toString()}"
                     })
                     Text(this.onscrollMessage)
                     .id("onscrollMessage")
