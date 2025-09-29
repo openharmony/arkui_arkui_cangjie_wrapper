@@ -16,6 +16,7 @@
 package ohos.arkui.component.common
 
 import ohos.base.*
+import ohos.business_exception.BusinessException
 
 @C
 struct CJContentCoverOptionsV2 {

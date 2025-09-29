@@ -21,6 +21,7 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 import std.deriving.Derive
+import ohos.business_exception.BusinessException
 
 foreign {
     func FfiOHOSAceFrameworkNavigationCreateWithPathInfos(pathInfos: Int64): Unit

@@ -15,6 +15,7 @@
 
 package ohos.arkui.component.custom_component
 
+internal import ohos.business_exception.BusinessException
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
 import ohos.base.*

@@ -23,6 +23,7 @@ ohos_cangjie_shared_library("ohos.arkui.ui_context.router") {
   cj_external_deps = [
     "cangjie_ark_interop:ohos.ffi",
     "cangjie_ark_interop:ohos.labels",
+    "cangjie_ark_interop:ohos.business_exception",
     "hiviewdfx_cangjie_wrapper:ohos.hilog",
   ]
 

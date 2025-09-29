@@ -19,6 +19,7 @@ import ohos.arkui.component.native_struct.*
 import ohos.labels.APILevel
 import ohos.base.*
 import std.collection.ArrayList
+import ohos.business_exception.BusinessException
 
 type VectorCPointerTouchTestInfoHandle = CPointer<Unit>
 

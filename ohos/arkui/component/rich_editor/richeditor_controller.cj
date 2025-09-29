@@ -24,6 +24,7 @@ import ohos.resource.*
 import ohos.labels.APILevel
 import ohos.multimedia.image.*
 import std.collection.ArrayList
+import ohos.business_exception.BusinessException
 
 // HarmonyOS system default font
 let DEFAULT_FONT: String = "HarmonyOS Sans"
@@ -997,8 +998,7 @@ public class RichEditorController <: RichEditorBaseController {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        throwsexception: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addTextSpan(content!: ?ResourceStr, options!: ?RichEditorTextSpanOptions = None): Int32 {
         let params = parseRichEditorTextSpanOptions(options ?? RichEditorTextSpanOptions())

@@ -20,6 +20,7 @@ import ohos.ffi.*
 import ohos.labels.APILevel
 import std.collection.*
 import std.deriving.Derive
+import ohos.business_exception.BusinessException
 
 foreign {
     func FfiOHOSAceFrameworkEnvironmentGetAccessibilityEnabled(): NativeOptionBool

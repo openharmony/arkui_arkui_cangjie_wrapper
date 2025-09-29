@@ -20,6 +20,7 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.labels.APILevel
 import std.deriving.Derive
+import ohos.business_exception.BusinessException
 
 foreign {
     func FfiOHOSAceFrameworkBadgeCreateV2(count: Int32, style: CJBadgeStyleV2, position: Int32, maxCount: Int32): Unit

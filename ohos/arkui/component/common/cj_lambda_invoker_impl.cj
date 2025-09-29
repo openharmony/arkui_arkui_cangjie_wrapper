@@ -19,6 +19,7 @@ import ohos.arkui.component.native_struct.*
 import ohos.labels.APILevel
 import ohos.base.*
 import ohos.ffi.*
+internal import ohos.business_exception.BusinessException
 
 protected class CallbackCJClickEvent <: BaseCallBack {
     protected CallbackCJClickEvent(let closure: (CJClickEvent) -> Unit) {

@@ -17,6 +17,7 @@ package ohos.arkui.component.common
 
 import ohos.labels.APILevel
 import std.deriving.Derive
+import ohos.business_exception.BusinessException
 
 /**
  * indexer align property.
