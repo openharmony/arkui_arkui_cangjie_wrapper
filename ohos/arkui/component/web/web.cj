@@ -24,6 +24,7 @@ import ohos.resource.*
 import ohos.labels.APILevel
 import ohos.web.webview.*
 import std.collection.ArrayList
+import ohos.business_exception.BusinessException
 
 type VectorScriptItemHandle = CPointer<Unit>
 

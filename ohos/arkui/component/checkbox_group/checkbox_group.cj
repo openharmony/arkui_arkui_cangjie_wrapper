@@ -22,6 +22,7 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 import std.collection.ArrayList
+import ohos.business_exception.BusinessException
 
 foreign {
     func FfiOHOSAceFrameworkCheckBoxGroupCreate(group: CString): Unit

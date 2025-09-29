@@ -18,6 +18,7 @@ package ohos.arkui.state_management
 import ohos.base.*
 import ohos.labels.APILevel
 import std.collection.*
+import ohos.business_exception.BusinessException
 
 @!APILevel[
     22,

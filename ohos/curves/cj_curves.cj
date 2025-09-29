@@ -19,6 +19,7 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 foreign func FfiOHOSAceFrameworkCurvesCreateStepsCurve(count: Int32, end: Bool): Int64
 

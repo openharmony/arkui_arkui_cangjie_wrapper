@@ -19,6 +19,7 @@ import ohos.arkui.component.custom_view.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 @C
 @!APILevel[

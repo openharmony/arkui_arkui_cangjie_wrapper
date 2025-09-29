@@ -21,6 +21,7 @@ import ohos.arkui.component.util.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 @C
 struct TextPickerResult {

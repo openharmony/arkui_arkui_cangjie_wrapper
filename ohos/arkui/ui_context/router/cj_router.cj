@@ -21,6 +21,7 @@ import ohos.ffi.*
 import std.collection.*
 import ohos.labels.APILevel
 import std.deriving.Derive
+import ohos.business_exception.BusinessException
 
 foreign {
     func FfiOHOSAceFrameworkRouterPush(url: CString, param: CString): Unit
@@ -240,8 +241,7 @@ public class Router {
      */
     @!APILevel[
         22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full",
-        workerthread: true
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pushUrl(url!: String, params!: String = ""): Unit {
         unsafe {

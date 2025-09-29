@@ -23,6 +23,7 @@ import ohos.ffi.*
 import ohos.resource.*
 import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
+import ohos.business_exception.BusinessException
 
 @C
 struct CImageComplete {
