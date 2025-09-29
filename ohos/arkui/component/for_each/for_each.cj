@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.custom_component
+package ohos.arkui.component.for_each
 
 import ohos.arkui.component.native_struct.*
 import ohos.arkui.component.common.*
@@ -32,11 +32,11 @@ struct SetIdResultFFI {
     ) {}
 }
 
-struct SetIdResult {
+protected struct SetIdResult {
     SetIdResult(
-        let diffIndexArray: ArrayList<Int64>,
-        let duplicateIds: ArrayList<Int64>,
-        let removedChildElmtIds: ArrayList<Int64>
+        protected let diffIndexArray: ArrayList<Int64>,
+        protected let duplicateIds: ArrayList<Int64>,
+        protected let removedChildElmtIds: ArrayList<Int64>
     ) {}
 }
 
@@ -58,7 +58,6 @@ foreign {
 }
 
 type KeyGenFuncType<T> = (T, Int64) -> String
-
 type ItemGenFuncType<T> = (T, Int64) -> Unit
 
 /**
@@ -94,20 +93,12 @@ public class ForEach <: UINodeBase {
         unsafe { FfiOHOSAceFrameworkForEachPop() }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func initial(): Unit {
+    protected func initial(): Unit {
         genChild()
         pop()
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func update(): Unit {
+    protected func update(): Unit {
         genChild()
         pop()
     }
@@ -123,7 +114,7 @@ public class ForEach <: UINodeBase {
      * @params newIdArray: The Array containing the new ID array elements.
      * @returns ArrayList<Int64>: An Array containing the processed ID.
      */
-    static func setIdArray(elmtId: Int64, newIdArray: ArrayList<String>): SetIdResult {
+    protected static func setIdArray(elmtId: Int64, newIdArray: ArrayList<String>): SetIdResult {
         let vecFFi = FFIVectorString(newIdArray.size)
         var index = 0
         for (id in newIdArray) {
@@ -180,7 +171,7 @@ public class ForEach <: UINodeBase {
      *
      * @params id: The ID of the child element.
      */
-    static func createNewChildStart(id: String): Unit {
+    protected static func createNewChildStart(id: String): Unit {
         unsafe {
             try (id_ = LibC.mallocCString(id).asResource()) {
                 FfiOHOSAceFrameworkViewCreateNewChildStart(id_.value)
@@ -193,7 +184,7 @@ public class ForEach <: UINodeBase {
      *
      * @params id: The ID of the child element.
      */
-    static func createNewChildFinish(id: String): Unit {
+    protected static func createNewChildFinish(id: String): Unit {
         unsafe {
             try (id_ = LibC.mallocCString(id).asResource()) {
                 FfiOHOSAceFrameworkViewCreateNewChildFinish(id_.value)

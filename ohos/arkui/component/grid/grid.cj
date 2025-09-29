@@ -22,6 +22,8 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 import ohos.resource.*
+import ohos.business_exception.BusinessException
+
 import std.convert.*
 
 foreign {

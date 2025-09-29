@@ -17,12 +17,14 @@ package ohos.arkui.component.custom_component
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.ifcomponent.*
+import ohos.arkui.component.for_each.*
 import ohos.arkui.component.custom_view.*
 import ohos.arkui.state_management.*
 import ohos.arkui.ui_context.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+
 import std.sort.*
 import std.collection.*
 import std.collection.HashMap

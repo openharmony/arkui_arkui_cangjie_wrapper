@@ -13,14 +13,16 @@
  * limitations under the License.
  */
 
-package ohos.arkui.component.custom_component
+package ohos.arkui.component.lazy_for_each
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.lazy_for_each.*
+import ohos.arkui.component.custom_component.CustomView
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
+
 import std.collection.HashMap
 
 foreign {
@@ -79,7 +81,6 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
 
     /**
      * Destroy listener.
-     *
      */
     protected func onDestroyed(): Unit {
         for ((k, v) in cacheListener) {
@@ -202,20 +203,12 @@ public class LazyForEach <: UINodeBase {
         unsafe { FfiOHOSAceFrameworkLazyForEachPop() }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func initial(): Unit {
+    protected func initial(): Unit {
         genChild()
         lazyForEachPop()
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func update(): Unit {
+    protected func update(): Unit {
         lazyForEachPop()
     }
 }
