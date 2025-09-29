@@ -14,7 +14,7 @@
 import("//build/templates/cangjie/cjc.gni")
 import("//build/ohos.gni")
 
-ohos_cangjie_shared_library("kit.ArkUI") {
+ohos_cangjie_shared_library("ArkUI") {
   sources = [ "index.cj" ]
 
   cj_deps = [
