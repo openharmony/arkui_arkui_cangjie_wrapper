@@ -123,7 +123,7 @@ class EntryView {
   - 主题换肤：自定义主题风格，实现App组件风格跟随Theme切换。
   - 矩阵变换：提供矩阵变换功能，支持对图形进行平移、旋转和缩放等。
   - 媒体查询：提供根据不同媒体类型定义不同的样式。详细介绍请参考[媒体查询](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/js-apis-mediaquery.md)。
-  - PluginComponentManager：用于给插件组件的使用方请求组件与数据，使用方发送组件模板和数据。详细介绍请参考[媒体查询](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/js-apis-plugincomponent.md)。
+  - PluginComponentManager：用于给插件组件的使用方请求组件与数据，使用方发送组件模板和数据。详细介绍请参考[PluginComponentManager](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/js-apis-plugincomponent.md)。
   - uiExtension：用于EmbeddedUIExtensionAbility（或UIExtensionAbility）中获取宿主应用的窗口信息或对应的EmbeddedComponent组件的信息。详细介绍请参考[uiExtension](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension.md)。
 
 ## 参考文档<a name="section171384529152"></a>
