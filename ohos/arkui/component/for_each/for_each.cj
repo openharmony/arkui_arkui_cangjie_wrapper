@@ -61,8 +61,7 @@ type KeyGenFuncType<T> = (T, Int64) -> String
 type ItemGenFuncType<T> = (T, Int64) -> Unit
 
 /**
- * declare ForEachAttribute
- *
+ * The ForEach class is used to create a list of elements based on a data source.
  */
 @!APILevel[
     22,
@@ -93,11 +92,17 @@ public class ForEach <: UINodeBase {
         unsafe { FfiOHOSAceFrameworkForEachPop() }
     }
 
+    /**
+     * initialize the ForEach component.
+     */
     protected func initial(): Unit {
         genChild()
         pop()
     }
 
+    /**
+     * update the ForEach component.
+     */
     protected func update(): Unit {
         genChild()
         pop()

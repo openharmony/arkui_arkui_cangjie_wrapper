@@ -49,6 +49,9 @@ type UpdateFuncNew = (Int64, Bool) -> UINodeBase
 
 type RecycleUpdateFunc = (Int64, Bool, ?CustomView) -> UINodeBase
 
+/**
+ * CustomView class.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -75,6 +78,9 @@ public abstract class CustomView <: RemoteView & Observer {
     private var localStorage_: Option<LocalStorage> = None
     private var parent_: Option<CustomView> = None
 
+    /**
+     * isReusable property.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -86,6 +92,12 @@ public abstract class CustomView <: RemoteView & Observer {
     private var delayRecycleNodeRerenderDeep: Bool = false
     private var runReuse_: Bool = false
 
+    /**
+     * init function.
+     *
+     * @params { Option<CustomView> } parent
+     * @params { Option<LocalStorage> } localStorage
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -99,6 +111,11 @@ public abstract class CustomView <: RemoteView & Observer {
         localStorage_ = localStorage
     }
 
+    /**
+     * getLocalStorage function.
+     *
+     * @return { LocalStorage }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -113,6 +130,12 @@ public abstract class CustomView <: RemoteView & Observer {
         localStorage_.getOrThrow()
     }
 
+    /**
+     * declareWatch function.
+     *
+     * @params { ObservedProperty<T> } propMember
+     * @params { () -> Unit } callBack
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -134,6 +157,9 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
+    /**
+     * build function for custom view.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -204,6 +230,9 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
+    /**
+     * update dirty elements.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -256,6 +285,14 @@ public abstract class CustomView <: RemoteView & Observer {
         nativeView.deletedElmtIdsHaveBeenPurged(removedElmtIds);
     }
 
+    /**
+     * update function for ForEach.
+     *
+     * @params { Int64 } elmtId
+     * @params { CollectionEx<T> } arr
+     * @params { (T, Int64) -> Unit } itemGenFunc
+     * @params { (T, Int64) -> String } keyGeneratorFunc
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -285,6 +322,11 @@ public abstract class CustomView <: RemoteView & Observer {
         this.purgeDeletedElmtIds(setIdResult.removedChildElmtIds)
     }
 
+    /**
+     * observe component creation.
+     *
+     * @params { UpdateFuncNew } compilerAssignedUpdateFunc
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -298,6 +340,12 @@ public abstract class CustomView <: RemoteView & Observer {
         return
     }
 
+    /**
+     * observe recycle component creation.
+     *
+     * @params { String } name
+     * @params { RecycleUpdateFunc } recycleUpdateFunc
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -411,6 +459,14 @@ public abstract class CustomView <: RemoteView & Observer {
         nativeView.resetRecycleCustomNode()
     }
 
+    /**
+     * Create recycle component.
+     *
+     * @params { CustomView } view
+     * @params { Bool } isRecycling
+     * @params { String } name
+     * @params { () => Unit } callback
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -419,6 +475,11 @@ public abstract class CustomView <: RemoteView & Observer {
         View.createRecycle(view.getView(), isRecycling, name, callback)
     }
 
+    /**
+     * Create custom component.
+     *
+     * @params { CustomView } view
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -427,6 +488,12 @@ public abstract class CustomView <: RemoteView & Observer {
         View.create(view.getView())
     }
 
+    /**
+     * Add provider state variable.
+     *
+     * @params { ObservedPropertyAbstract } value
+     * @params { String } name
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -467,6 +534,12 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
+    /**
+     * notify update for state variable.
+     *
+     * @params { String } stateInfo
+     * @params { ArrayList<Int64> } dependentElmtIds
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -493,6 +566,11 @@ public abstract class CustomView <: RemoteView & Observer {
         nativeView.restoreInstanceId()
     }
 
+    /**
+     * Get component id.
+     *
+     * @return { Int64 }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -535,6 +613,12 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
+    /**
+     * Add child by id.
+     *
+     * @params { Int64 } id
+     * @params { CustomView } child
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -560,6 +644,9 @@ public abstract class CustomView <: RemoteView & Observer {
         this.parent_ = parent
     }
 
+    /**
+     * Called when component is about to be deleted.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -581,6 +668,11 @@ public abstract class CustomView <: RemoteView & Observer {
         nativeView.release()
     }
 
+    /**
+     * update function for IfElse branch.
+     * @params { Int32 } branchId
+     * @params { () -> Unit } branchFunc
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
