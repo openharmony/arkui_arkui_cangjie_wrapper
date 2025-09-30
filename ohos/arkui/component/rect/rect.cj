@@ -39,9 +39,9 @@ foreign {
         arrayHeightUnit: VectorInt32Handle
     ): Unit
 }
+
 /**
  * Defines Rect Component.
- *
  */
 @!APILevel[
     22,
@@ -49,7 +49,7 @@ foreign {
 ]
 public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
     /**
-     * Called when a rectangle is created.
+     * Create the rect component instance.
      *
      * @params { Length } width 
      * @params { Length } height
@@ -72,7 +72,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
         }
     }
     /**
-     * Width of the corner radius.
+     * Set the corner radius width.
      *
      * @params { Length } value
      * @returns { This }
@@ -89,7 +89,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
         this
     }
     /**
-     * Height of the corner radius.
+     * Set the corner radius height.
      *
      * @params { Length } value
      * @returns { This }
@@ -106,7 +106,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
         this
     }
     /**
-     * Called when the fillet size is set.
+     * Set the corner radius size.
      *
      * @params { Length } value
      * @returns { This }
@@ -123,7 +123,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
         this
     }
     /**
-     * Called when the fillet size is set.
+     * Set the corner radius size.
      *
      * @params { Array<Length> } value
      * @returns { This }
@@ -149,7 +149,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
         this
     }
     /**
-     * Called when the fillet size is set.
+     * Set the corner radius size.
      *
      * @params { Array<(Length, Length)> } value
      * @returns { This }
@@ -197,9 +197,5 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
         this
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func initial() {}
+    protected override func initial() {}
 }

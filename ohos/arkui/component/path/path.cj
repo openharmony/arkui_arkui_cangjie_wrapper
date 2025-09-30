@@ -32,7 +32,6 @@ foreign {
 
 /**
  * Defines Path Component.
- *
  */
 @!APILevel[
     22,
@@ -102,9 +101,5 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
         this
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func initial() {}
+    protected override func initial() {}
 }

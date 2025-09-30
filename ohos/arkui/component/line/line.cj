@@ -30,7 +30,6 @@ foreign {
 
 /**
  * Defines Line Component.
- *
  */
 @!APILevel[
     22,
@@ -97,9 +96,5 @@ public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
         this
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func initial() {}
+    protected override func initial() {}
 }

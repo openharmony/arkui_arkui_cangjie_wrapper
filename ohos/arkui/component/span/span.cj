@@ -273,17 +273,7 @@ public class Span <: BaseSpan {
         this
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func initial() {
-    }
+    protected func initial() {}
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func update() {
-    }
+    protected func update() {}
 }

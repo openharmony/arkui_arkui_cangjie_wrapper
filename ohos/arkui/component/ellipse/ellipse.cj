@@ -25,7 +25,6 @@ foreign func FfiOHOSAceFrameworkEllipseCreate(width: Float64, widthUnit: Int32, 
 
 /**
  * Defines Ellipse Component.
- *
  */
 @!APILevel[
     22,
@@ -51,10 +50,5 @@ public class Ellipse <: CommonShapeMethodComponent<Ellipse> & EllipseAttribute {
                 height_.unitType.getValue())
         }
     }
-
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func initial() {}
+    protected override func initial() {}
 }
