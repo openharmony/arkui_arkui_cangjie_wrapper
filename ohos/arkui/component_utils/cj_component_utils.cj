@@ -19,13 +19,15 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 
+public type Matrix4Result = VArray<Float64, $16>
+
 foreign func FFIOHOSAceFrameworkComponentUtilsGetById(id: CString): CComponentInfo
 
 @C
 struct CSize {
-    let width: Float32
-    let height: Float32
-    init(width: Float32, height: Float32) {
+    let width: Float64
+    let height: Float64
+    init(width: Float64, height: Float64) {
         this.width = width
         this.height = height
     }
@@ -36,7 +38,6 @@ struct CSize {
 
 /**
  * Defines the size property.
- *
  */
 @!APILevel[
     22,
@@ -45,13 +46,12 @@ struct CSize {
 public class Size {
     /**
      * Defines the width property.
-     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var width: Float32
+    public var width: Float64
 
     /**
      * Defines the height property.
@@ -61,7 +61,7 @@ public class Size {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var height: Float32
+    public var height: Float64
 
     /**
      * Create an Object of Size.
@@ -70,7 +70,7 @@ public class Size {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width: Float32, height: Float32) {
+    public init(width: Float64, height: Float64) {
         this.width = width
         this.height = height
     }
@@ -78,7 +78,7 @@ public class Size {
 
 @C
 struct COffset {
-    COffset(let x: Float32, let y: Float32) {}
+    COffset(let x: Float64, let y: Float64) {}
 
     func parseToCJ(): Offset {
         Offset(this.x, this.y)
@@ -102,7 +102,7 @@ public class Offset {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: Float32
+    public var x: Float64
 
     /**
      * Coordinate y of the Position.
@@ -112,7 +112,7 @@ public class Offset {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: Float32
+    public var y: Float64
 
     /**
      * Create an Object of Offset.
@@ -121,7 +121,7 @@ public class Offset {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x: Float32, y: Float32) {
+    public init(x: Float64, y: Float64) {
         this.x = x
         this.y = y
     }
@@ -394,9 +394,9 @@ struct CComponentInfo {
 
     func parseToCJ(): ComponentInfo {
         let transform = if (this.transform.head.isNotNull()) {
-            unsafe { VArray<Float32, $16> {i => this.transform.head.read(i)} }
+            unsafe { VArray<Float64, $16> {i => Float64(this.transform.head.read(i))} }
         } else {
-            VArray<Float32, $16>(repeat: 0.0)
+            VArray<Float64, $16>(repeat: 0.0)
         }
         ComponentInfo(
             this.size.parseToCJ(),
@@ -492,13 +492,12 @@ public class ComponentInfo {
 
     /**
      * Obtain attribute information of the transformation matrix.
-     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var transform: VArray<Float32, $16>
+    public var transform: Matrix4Result
 
     /**
      * constructor.
@@ -508,7 +507,7 @@ public class ComponentInfo {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(size: Size, localOffset: Offset, windowOffset: Offset, screenOffset: Offset, translate: TranslateResult,
-        scale: ScaleResult, rotate: RotateResult, transform: VArray<Float32, $16>) {
+        scale: ScaleResult, rotate: RotateResult, transform: Matrix4Result) {
         this.size = size
         this.localOffset = localOffset
         this.windowOffset = windowOffset

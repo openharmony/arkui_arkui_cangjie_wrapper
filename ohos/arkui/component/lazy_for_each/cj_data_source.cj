@@ -30,6 +30,9 @@ foreign {
     func FfiOHOSAceFrameworkDataChangeListenerOnDataMoved(dataChangeListenId: Int64, fromIdx: Int64, toIdx: Int64): Unit
 }
 
+type KeyGenFuncType<T> = (T, Int64) -> String
+type ItemGenFuncType<T> = (T, Int64) -> Unit
+
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"

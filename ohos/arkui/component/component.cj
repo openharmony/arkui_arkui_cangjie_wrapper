@@ -77,6 +77,7 @@ public import ohos.arkui.component.select.*
 public import ohos.arkui.component.focus_control.*
 public import ohos.arkui.component.image_span.*
 public import ohos.arkui.component.lazy_for_each.*
+public import ohos.arkui.component.for_each.*
 public import ohos.arkui.component.text_picker.*
 public import ohos.arkui.component.common.*
 public import ohos.arkui.component.qrcode.*

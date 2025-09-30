@@ -21,9 +21,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.custom_component") {
     "cj_view_builder.cj",
     "cj_view_ffi.cj",
     "custom_view.cj",
-    "for_each.cj",
     "hybrid_component_base.cj",
-    "lazy_for_each.cj",
   ]
 
   cj_deps = [
@@ -33,8 +31,8 @@ ohos_cangjie_shared_library("ohos.arkui.component.custom_component") {
     "../common:ohos.arkui.component.common",
     "../custom_view:ohos.arkui.component.custom_view",
     "../ifcomponent:ohos.arkui.component.ifcomponent",
-    "../lazy_for_each:ohos.arkui.component.lazy_for_each",
     "../native_struct:ohos.arkui.component.native_struct",
+    "../for_each:ohos.arkui.component.for_each",
   ]
 
   cj_external_deps = [
