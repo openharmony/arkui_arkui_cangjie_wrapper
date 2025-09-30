@@ -28,7 +28,7 @@ sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func navDestination(builder: ?(String) -> Unit): NavigationAttribute
+    func navDestination(builder: ?(String, Any) -> Unit): NavigationAttribute
 
     @!APILevel[
         22,
