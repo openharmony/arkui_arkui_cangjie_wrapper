@@ -63,6 +63,11 @@ public abstract class RemoteView <: FFIData {
     protected open func onAfterRender(): Unit {}
     protected open func aboutToDisappear(): Unit {}
     protected open func onAboutToBeDeleted(): Unit {}
+    /**
+     * force rerender function.
+     *
+     * @params { Bool } deep
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

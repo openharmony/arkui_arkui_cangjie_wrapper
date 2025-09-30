@@ -153,6 +153,11 @@ public abstract class CustomView <: RemoteView & Observer {
         isRenderingInProgress = false
     }
 
+    /**
+     * force rerender function.
+     *
+     * @params { Bool } deep
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -323,6 +328,11 @@ public abstract class CustomView <: RemoteView & Observer {
     protected open func aboutToReuse(_: ReuseParams): Unit {} /*cjlint-ignore !G.FUNC.02 */
     protected open func aboutToRecycle(): Unit {}
 
+    /**
+     * internal func called when it is about to reuse.
+     *
+     * @params { ReuseParams } param
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -425,6 +435,12 @@ public abstract class CustomView <: RemoteView & Observer {
         this.provideVars_.add(name, value)
     }
 
+    /**
+     * Initialize consume state variable.
+     *
+     * @params { String } name
+     * @return { ObservedPropertyAbstract }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -436,6 +452,11 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
+    /**
+     * notify read for state variable.
+     *
+     * @params { String } stateInfo
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -576,6 +597,11 @@ public abstract class CustomView <: RemoteView & Observer {
         branchFunc()
     }
 
+    /**
+     * get UIContext from current environment.
+     *
+     * @return { UIContext }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
