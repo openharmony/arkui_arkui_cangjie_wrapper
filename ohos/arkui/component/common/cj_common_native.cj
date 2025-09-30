@@ -94,12 +94,12 @@ struct CJAlignRuleOption {
             if (horizontalBias.isNull()) {
                 throw BusinessException(100001, "Internal error: failed to allocate memory.")
             }
-            unsafe { horizontalBias.write((option.bias ?? Bias()).horizontal ?? 0.5) }
+            unsafe { horizontalBias.write(Float64((option.bias ?? Bias()).horizontal ?? 0.5)) }
             verticalBias = unsafe { LibC.malloc<Float32>() }
             if (verticalBias.isNull()) {
                 throw BusinessException(100001, "Internal error: failed to allocate memory.")
             }
-            unsafe { verticalBias.write((option.bias ?? Bias()).vertical ?? 0.5) }
+            unsafe { verticalBias.write(Float64((option.bias ?? Bias()).vertical ?? 0.5)) }
         } catch (e: Exception) {
             free()
             throw BusinessException(100001, "Internal error: failed to allocate memory.")
