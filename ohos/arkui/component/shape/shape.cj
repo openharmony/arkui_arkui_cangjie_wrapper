@@ -82,7 +82,6 @@ foreign {
 }
 /**
  * Defines Shape Component.
- *
  */
 @!APILevel[
     22,

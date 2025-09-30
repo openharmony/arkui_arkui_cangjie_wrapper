@@ -73,20 +73,12 @@ public class If <: UINodeBase {
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func initial(): Unit {
+    protected func initial(): Unit {
         genChild()
         pop()
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func update(): Unit {
+    protected func update(): Unit {
         genChild()
         pop()
     }

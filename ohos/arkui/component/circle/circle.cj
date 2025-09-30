@@ -29,7 +29,6 @@ foreign {
 
 /**
  * Defines Circle Component.
- *
  */
 @!APILevel[
     22,
@@ -64,5 +63,5 @@ public class Circle <: CommonShapeMethodComponent<Circle> & CircleAttribute {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public override func initial() {}
+    protected override func initial() {}
 }
