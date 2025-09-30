@@ -21,6 +21,7 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 import std.deriving.Derive
+import std.collection.HashMap
 import ohos.business_exception.BusinessException
 
 foreign {
@@ -608,6 +609,7 @@ public class NavPathStack <: RemoteData {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribute {
+    static var navParamsMap: HashMap<String, Any> = HashMap<String, Any>()
     /**
      * Constructor of Navigation
      *
@@ -652,10 +654,12 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func navDestination(builder: ?(String) -> Unit): This {
-        let tmpBuilder = builder ?? { _ => }
+    public func navDestination(builder: ?(String, Any) -> Unit): This {
+        let tmpBuilder = builder ?? { _: String, _: Any => }
         let wrapper = { value: CString =>
-            tmpBuilder(value.toString())
+            let name = value.toString()
+            let param = Navigation.navParamsMap[name]
+            tmpBuilder(name, param)
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
