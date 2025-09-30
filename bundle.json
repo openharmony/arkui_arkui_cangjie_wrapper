@@ -37,7 +37,7 @@
         "build": {
             "sub_component": [
                 "//foundation/arkui/arkui_cangjie_wrapper:arkui_cangjie_wrapper_package",
-                "//foundation/arkui/arkui_cangjie_wrapper/kit/ArkUI:ArkUI"
+                "//foundation/arkui/arkui_cangjie_wrapper/kit/ArkUI:kit.ArkUI"
             ],
             "inner_kits": [
                 {
