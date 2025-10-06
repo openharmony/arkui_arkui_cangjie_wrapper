@@ -84,6 +84,9 @@ public class ForEach <: UINodeBase {
         }
     }
 
+    /**
+     * pop for each node of framework.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -34,6 +34,12 @@ foreign func FfiOHOSAceFrameworkLoadNativeView(view: Int64): Bool
 
 foreign func FfiOHOSAceFrameworkProcessViewId(view: Int64): ExternalString
 
+/**
+ * load native view of custom component.
+ *
+ * @params { CustomView } view
+ * @returns { Bool }
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
