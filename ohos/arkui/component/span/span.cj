@@ -69,6 +69,9 @@ foreign {
     func FfiOHOSAceFrameworkSpanSetFont(fontFamily: CString, fontSize: Float64, unit: Int32, fontWeight: CString, fontStyle: Int32): Unit
 }
 
+/**
+ * Defines the base class of Span.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -87,7 +90,7 @@ public class Span <: BaseSpan {
     /*
      * Called when text is entered in span.
      * 
-     * @params { ResourceStr } value
+     * @params { ?ResourceStr } value
      */
     @!APILevel[
         22,
@@ -104,7 +107,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the font size is set.
      * 
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -123,7 +126,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the font color is set.
      * 
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -141,7 +144,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the font style of a font is set.
      * 
-     * @params { FontStyle } value
+     * @params { ?FontStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -158,7 +161,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the font weight is set.
      * 
-     * @params { FontWeight } value
+     * @params { ?FontWeight } value
      * @returns { This }
      */
     @!APILevel[
@@ -177,7 +180,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the font list of text is set.
      * 
-     * @params { ResourceStr } value
+     * @params { ?ResourceStr } value
      * @returns { This }
      */
     @!APILevel[
@@ -196,8 +199,8 @@ public class Span <: BaseSpan {
     /*
      * Called when the text decoration of the text is set.
      * 
-     * @params { TextDecorationType } decorationType
-     * @params { ResourceColor } color
+     * @params { ?TextDecorationType } decorationType
+     * @params { ?ResourceColor } color
      * @returns { This }
      */
     @!APILevel[
@@ -217,7 +220,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the distance between text fonts is set.
      * 
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -235,7 +238,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the type of letter in the text font is set.
      * 
-     * @params { TextCase } value
+     * @params { ?TextCase } value
      * @returns { This }
      */
     @!APILevel[
@@ -252,7 +255,7 @@ public class Span <: BaseSpan {
     /*
      * Called when a click event occurs.
      *
-     * @params { function } event
+     * @params { ?(ClickEvent) -> Unit } event
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.

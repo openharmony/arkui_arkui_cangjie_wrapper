@@ -48,7 +48,6 @@ let LENGTH_TYPE_LNVALID: Int32 = -2
 
 /**
  * Defines the Menu Component.
- *
  */
 @!APILevel[
     22,
@@ -77,10 +76,10 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      * Sets the font style.
      * Family and style are not supported currently and will be fixed in future.
      *
-     * @params { Length } size
-     * @params { FontWeight } weight
-     * @params { ResourceStr } family
-     * @params { FontStyle } style
+     * @params { ?Length } size
+     * @params { ?FontWeight } weight
+     * @params { ?ResourceStr } family
+     * @params { ?FontStyle } style
      * @returns { This }
      */
     @!APILevel[
@@ -107,7 +106,7 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
     /**
      * Sets the Menu font color.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -125,7 +124,7 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      * Sets the radius of the corner around the menu.
      * When the radius is less than the menu width, the default border radius is used.
      *
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -148,7 +147,7 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      * Sets the radius of the corner around the menu.
      * When the radius is less than the menu width, the default border radius is used.
      *
-     * @params { BorderRadiuses } value
+     * @params { ?BorderRadiuses } value
      * @returns { This }
      */
     @!APILevel[

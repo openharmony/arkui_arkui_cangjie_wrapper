@@ -49,7 +49,6 @@ foreign {
 
 /**
  * Defines ListItem Component.
- *
  */
 @!APILevel[
     22,
@@ -105,7 +104,7 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
     /**
      * Called when judging whether it is selectable.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -122,10 +121,10 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
     /**
      * Sets the action item that appears when the list item slides in the cross axis direction of the list.
      *
-     * @params { CustomBuilder } start
-     * @params { CustomBuilder } end
-     * @params { SwipeEdgeEffect } edgeEffect
-     * @params { (Float64) -> Unit } onOffsetChange
+     * @params { ?CustomBuilder } start
+     * @params { ?CustomBuilder } end
+     * @params { ?SwipeEdgeEffect } edgeEffect
+     * @params { ?(Float64) -> Unit } onOffsetChange
      * @returns { This }
      */
     @!APILevel[
@@ -153,7 +152,7 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
     /**
      * Called when the listItem is selected.
      *
-     * @params { (Bool) -> Unit } event
+     * @params { ?(Bool) -> Unit } event
      * @returns { This }
      */
     @!APILevel[

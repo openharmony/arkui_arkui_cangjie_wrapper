@@ -33,29 +33,55 @@ foreign {
 type KeyGenFuncType<T> = (T, Int64) -> String
 type ItemGenFuncType<T> = (T, Int64) -> Unit
 
+/**
+ * Developers need to implement this interface to provide data to LazyForEach component.
+ *
+ * @params { T } Data type.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface IDataSource<T> {
+    /**
+     * Obtains the total number of data items.
+     *
+     * @returns The total number of data.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func totalCount(): Int64
     
+    /**
+     * Obtains the data item that matches the specified index.
+     *
+     * @params { Int64 } index
+     * @returns { T } The data item.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func getData(index: Int64): T
     
+    /**
+     * Registers a listener for data changes.
+     *
+     * @params { DataChangeListener } listener
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func registerDataChangeListener(listener: DataChangeListener): Unit
     
+    /**
+     * Unregisters the listener for data changes.
+     *
+     * @params { DataChangeListener } listener
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -63,6 +89,9 @@ public interface IDataSource<T> {
     func unregisterDataChangeListener(listener: DataChangeListener): Unit
 }
 
+/**
+ * Listener for data changes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -72,6 +101,10 @@ public class DataChangeListener <: RemoteData {
         super(id)
     }
 
+    /**
+     * Invoked when all data is reloaded. For data items whose key remains unchanged,
+     * the original child component is used. For data items whose key changes, a new child component is created.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -80,6 +113,11 @@ public class DataChangeListener <: RemoteData {
         unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataReloaded(getID()) }
     }
 
+    /**
+     * Invoked when data is added to the position indicated by the specified index.
+     *
+     * @params { IntNative } index
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -88,6 +126,12 @@ public class DataChangeListener <: RemoteData {
         unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataAdded(getID(), Int64(index)) }
     }
 
+    /**
+     * Invoked when data is deleted from the position indicated by the specified index.
+     * LazyForEach will update the displayed content accordingly.
+     *
+     * @params { IntNative } index
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -96,6 +140,11 @@ public class DataChangeListener <: RemoteData {
         unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataDeleted(getID(), Int64(index)) }
     }
 
+    /**
+     * Invoked when data in the position indicated by the specified index is changed.
+     *
+     * @params { IntNative } index
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -104,6 +153,12 @@ public class DataChangeListener <: RemoteData {
         unsafe { FfiOHOSAceFrameworkDataChangeListenerOnDataChanged(getID(), Int64(index)) }
     }
 
+    /**
+     * Invoked when data is moved, that is, when data is swapped between the from and to positions.
+     *
+     * @params { IntNative } from
+     * @params { IntNative } to
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

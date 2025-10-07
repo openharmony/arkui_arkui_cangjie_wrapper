@@ -53,7 +53,6 @@ foreign {
 public class ButtonIconOptions {
     /**
      * Defines whether an icon is shown.
-     * Anonymous Object Rectification.
      */
     @!APILevel[
         22,
@@ -63,7 +62,6 @@ public class ButtonIconOptions {
 
     /**
      * Defines whether an icon is hidden.
-     * Anonymous Object Rectification.
      */
     @!APILevel[
         22,
@@ -73,7 +71,6 @@ public class ButtonIconOptions {
 
     /**
      * Defines whether an icon is switching.
-     * Anonymous Object Rectification.
      */
     @!APILevel[
         22,
@@ -84,9 +81,9 @@ public class ButtonIconOptions {
     /**
      * Constructs a button style icons.
      *
-     * @params { ResourceStr } shown
-     * @params { ResourceStr } hidden
-     * @params { ResourceStr } switching
+     * @params { ?ResourceStr } shown
+     * @params { ?ResourceStr } hidden
+     * @params { ?ResourceStr } switching
      * @returns { This }
      */ 
     @!APILevel[
@@ -157,7 +154,6 @@ public class ButtonStyle {
 
     /**
      * Set the button icon when sidebar status has changed
-     * Anonymous Object Rectification.
      */
     @!APILevel[
         22,
@@ -168,11 +164,11 @@ public class ButtonStyle {
     /**
      * Constructs a button style.
      *
-     * @params { Float64 } left
-     * @params { Float64 } top
-     * @params { Float64 } width
-     * @params { Float64 } icons
-     * @params { ButtonIconOptions } icons
+     * @params { ?Float64 } left
+     * @params { ?Float64 } top
+     * @params { ?Float64 } width
+     * @params { ?Float64 } icons
+     * @params { ?ButtonIconOptions } icons
      * @returns { This }
      */ 
     @!APILevel[
@@ -255,10 +251,10 @@ public class DividerStyle {
     /**
      * Constructs a divider style.
      *
-     * @params { Length } strokeWidth
-     * @params { ResourceColor } color
-     * @params { Length } startMargin
-     * @params { Length } endMargin
+     * @params { ?Length } strokeWidth
+     * @params { ?ResourceColor } color
+     * @params { ?Length } startMargin
+     * @params { ?Length } endMargin
      * @returns { This }
      */ 
     @!APILevel[
@@ -328,8 +324,8 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Constructs a sidebar container.
      *
-     * @params { SideBarContainerType } sideBarType
-     * @params { function } child
+     * @params { ?SideBarContainerType } sideBarType
+     * @params { () -> Unit } child
      * @returns { This }
      */ 
     @!APILevel[
@@ -348,7 +344,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Callback showControlButton function when setting the status of sidebar
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -365,7 +361,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Callback controlButton function when setting the style of button
      *
-     * @params { ButtonStyle } value
+     * @params { ?ButtonStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -399,7 +395,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Callback showControlButton function when setting the status of button
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -416,7 +412,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Trigger callback when sidebar style of showing change finished.
      *
-     * @params { function } callback
+     * @params { ?(Bool) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -435,7 +431,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Sets the length of sidebar.
      *
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -453,7 +449,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Sets the min length of sidebar.
      *
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -471,7 +467,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Sets the max length of sidebar.
      *
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -489,7 +485,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Sets whether to automatically hide when drag sidebar width is less than the minimum width.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -506,7 +502,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Called when determining the location of the sidebar.
      *
-     * @params { SideBarPosition } value
+     * @params { ?SideBarPosition } value
      * @returns { This }
      */
     @!APILevel[
@@ -523,7 +519,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Set divider style for sideBarContainer
      *
-     * @params { DividerStyle } value
+     * @params { ?DividerStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -544,7 +540,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Sets the min length of content.
      * 
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      */
     @!APILevel[

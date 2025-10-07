@@ -108,7 +108,7 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     /**
     * Defines Shape Component instance.
     *
-    * @params { PixelMap } value
+    * @params { ?PixelMap } value
     * @returns { This }
     * relation (value?: PixelMap): ShapeAttribute;
     */
@@ -127,12 +127,11 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     }
     /**
     * Viewport of shape
-    * Anonymous Object Rectification.
     *
-    * @params { Length } x
-    * @params { Length } y
-    * @params { Length } width
-    * @params { Length } height
+    * @params { ?Length } x
+    * @params { ?Length } y
+    * @params { ?Length } width
+    * @params { ?Length } height
     * @returns { This }
     */
     @!APILevel[
@@ -168,9 +167,9 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     /**
     * Called when shape mesh.
     *
-    * @params { Array<Float64> } value
-    * @params { UInt32 } column
-    * @params { UInt32 } row
+    * @params { ?Array<Float64> } value
+    * @params { ?UInt32 } column
+    * @params { ?UInt32 } row
     * @returns { This }
     */
     @!APILevel[

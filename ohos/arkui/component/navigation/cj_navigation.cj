@@ -426,7 +426,10 @@ public class NavPathInfo <: FFIData {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var param: ?String
-
+    /**
+     * Callback returned when pop is called on the navigation destination page.
+     * It is invoked only after the **result** parameter is set in pop.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -435,8 +438,9 @@ public class NavPathInfo <: FFIData {
     /**
      * Creates an instance of NavPathInfo.
      *
-     * @params { String } name - The name of NavDestination.
+     * @params { ?String } name - The name of NavDestination.
      * @params { ?String } param - The detailed parameter of the NavDestination.
+     * @params { ?Callback<PopInfo, Unit> } onPop - Callback returned when pop is called on the navigation destination page.
      */
     @!APILevel[
         22,
@@ -525,29 +529,21 @@ public class NavPathStack <: RemoteData {
 
     /**
      * Pushes the navigation destination page specified by **info** onto the navigation stack.
+     * Depending on the launchMode specified in the **options** parameter, different behaviors will be triggered.
      *
-     * @params { NavPathInfo } info - Indicates the NavDestination to be pushed.
-     * @params { ?Bool } [animated] - Whether to support the transition animation.
-     * <br>Default value: **true**.
-     * <br>**true**: The transition animation is supported. **false**: The transition animation is not supported.
+     * @params { ?NavPathInfo } info - Indicates the NavDestination to be pushed.
+     * @params { ?NavigationOptions } options - Indicates the navigation options.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func pushPath(info: ?NavPathInfo, animated!: ?Bool = None) {
-        let tmpInfo = info ?? NavPathInfo(name: "", param: "")
-        pushPath(tmpInfo, options: NavigationOptions(animated: animated ?? true))
-    }
-
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func pushPath(info: NavPathInfo, options!: NavigationOptions): Unit {
+    public func pushPath(info: ?NavPathInfo, options!: ?NavigationOptions = None): Unit {
         unsafe {
-            let cInfo = info.getNative()
-            FfiOHOSAceFrameworkNavPathStackPushPath(getID(), cInfo, options.getNative())
+            let cjInfo = info ?? NavPathInfo(name: "", param: "")
+            let cjOptions = options ?? NavigationOptions()
+            let cInfo = cjInfo.getNative()
+            FfiOHOSAceFrameworkNavPathStackPushPath(getID(), cInfo, cjOptions.getNative())
             cInfo.free()
         }
     }
@@ -555,9 +551,9 @@ public class NavPathStack <: RemoteData {
     /**
      * Pushes the specified NavDestination into the stack.
      *
-     * @params { string } name - Indicates the name of the NavDestination to be pushed.
-     * @params { unknown } param - Indicates the detailed parameter of the NavDestination to be pushed.
-     * @params { boolean } [animated] - Indicates whether the transition is animated.
+     * @params { ?String } name - Indicates the name of the NavDestination to be pushed.
+     * @params { ?String } param - Indicates the detailed parameter of the NavDestination to be pushed.
+     * @params { ?Bool } animated - Indicates whether the transition is animated.
      * <br>Default value: **true**.
      * <br>**true**: The transition animation is supported. **false**: The transition animation is not supported.
      */
@@ -574,7 +570,7 @@ public class NavPathStack <: RemoteData {
     /**
      * Pops the top NavDestination out of the stack.
      *
-     * @params { ?Bool } [animated] - Indicates whether the transition is animated. Default value is **true**.
+     * @params { ?Bool } animated - Indicates whether the transition is animated. Default value is **true**.
      * @returns { ?NavPathInfo } Returns the top NavPathInfo if the stack is not empty, otherwise returns None.
      */
     @!APILevel[
@@ -602,7 +598,6 @@ public class NavPathStack <: RemoteData {
 
 /**
  * Defines Navigation Component.
- *
  */
 @!APILevel[
     22,
@@ -614,6 +609,7 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
      * Constructor of Navigation
      *
      * @params { () -> Unit } child
+     * @returns { Navigation } Returns the instance of the Navigation.
      */
     @!APILevel[
         22,
@@ -629,8 +625,9 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Constructor of Navigation
      *
-     * @params { NavPathStack } pathInfos
+     * @params { ?NavPathStack } pathInfos
      * @params { () -> Unit } child
+     * @returns { Navigation } Returns the instance of the Navigation.
      */
     @!APILevel[
         22,
@@ -647,8 +644,8 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Set builder for user-defined NavDestination component.
      *
-     * @params { (String) -> Unit } builder - The builder function of NavDestination component.
-     * @returns { Navigation } Returns the instance of the Navigation.
+     * @params { ?(String, Any) -> Unit } builder - The builder function of NavDestination component.
+     * @returns { This } Returns the instance of the Navigation.
      */
     @!APILevel[
         22,
@@ -670,8 +667,8 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Navigation title
      *
-     * @params { ResourceStr } value - Navigation title.
-     * @params { NavigationTitleOptions } options - Indicates the options of titlebar.
+     * @params { ?ResourceStr } value - Navigation title.
+     * @params { ?NavigationTitleOptions } options - Indicates the options of titlebar.
      * @returns { This }
      */
     @!APILevel[
@@ -696,8 +693,8 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Navigation title
      *
-     * @params { CustomBuilder } value - Navigation title.
-     * @params { NavigationTitleOptions } options - Indicates the options of titlebar.
+     * @params { ?CustomBuilder } value - Navigation title.
+     * @params { ?NavigationTitleOptions } options - Indicates the options of titlebar.
      * @returns { This }
      */
     @!APILevel[
@@ -720,9 +717,9 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Sets whether to hide the title bar and whether to animate the visibility change.
      *
-     * @params { Bool } hide - Whether to hide the title bar.
+     * @params { ?Bool } hide - Whether to hide the title bar.
      * <br>Default value is **false**. **true**: Hide the title bar. **false**: Show the title bar.
-     * @params { Bool } animated - Whether to animate the visibility change.
+     * @params { ?Bool } animated - Whether to animate the visibility change.
      * <br>Default value is **false**.
      * <br>**true**: Animate the visibility change. **false**: Do not animate the visibility change.
      * @returns { This }

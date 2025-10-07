@@ -29,6 +29,11 @@ foreign {
     func FfiOHOSAceFrameworkIfElseGetBranchId(): Int32
 }
 
+/**
+ * Bindings for IfElse defined in cj_ifelse.cpp/h
+ *
+ * non-public API
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -36,6 +41,12 @@ foreign {
 public class If <: UINodeBase {
     var child: () -> Unit = {=>}
 
+    /**
+     * Defines the constructor of If.
+     *
+     * @params { () -> Unit } subcomponent
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -47,6 +58,12 @@ public class If <: UINodeBase {
         this.child = subcomponent
     }
 
+    /**
+     * Set the branchId.
+     * BranchId identifies uniquely the if .. <1> .. else if .<2>. else .<3>.branch.
+     *
+     * @params { Int32 } value - branchId
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -57,6 +74,11 @@ public class If <: UINodeBase {
         }
     }
 
+    /**
+     * Get the branchId.
+     *
+     * @returns { Int32 } branchId.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

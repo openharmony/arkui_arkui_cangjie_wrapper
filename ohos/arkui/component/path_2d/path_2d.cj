@@ -56,7 +56,6 @@ foreign {
 
 /**
  * 2D path object for path drawing.
- *
  */
 @!APILevel[
     22,
@@ -82,7 +81,7 @@ public class Path2D <: RemoteDataLite {
     /**
      * Create a new path according to the description.
      *
-     * @params { String } path
+     * @params { ?String } path
      * @returns { This }
      */
     @!APILevel[
@@ -107,7 +106,7 @@ public class Path2D <: RemoteDataLite {
     /**
      * Adds a path according to the specified path variable.
      *
-     * @params { Path2D } path2D
+     * @params { ?Path2D } path2D
      */
     @!APILevel[
         22,
@@ -124,12 +123,12 @@ public class Path2D <: RemoteDataLite {
      * Adds 2D transformation effects, including rotation, translation, and scaling.
      * The current transformation matrix will not be overwritten. Multiple transformations will be superimposed.
      *
-     * @params { Float64 } scaleX
-     * @params { Float64 } skewX
-     * @params { Float64 } skewY
-     * @params { Float64 } scaleY
-     * @params { Float64 } translateX
-     * @params { Float64 } translateY
+     * @params { ?Float64 } scaleX
+     * @params { ?Float64 } skewX
+     * @params { ?Float64 } skewY
+     * @params { ?Float64 } scaleY
+     * @params { ?Float64 } translateX
+     * @params { ?Float64 } translateY
      */
     @!APILevel[
         22,
@@ -296,15 +295,6 @@ public class Path2D <: RemoteDataLite {
      * @params { Float64 } startAngle
      * @params { Float64 } endAngle
      * @params { Bool } counterclockwise
-                    x: number,
-                    y: number,
-                    radiusX: number,
-                    radiusY: number,
-                    rotation: number,
-                    startAngle: number,
-                    endAngle: number,
-                    counterclockwise?: boolean,
-                   ): void
      */
     @!APILevel[
         22,
@@ -349,7 +339,6 @@ public class Path2D <: RemoteDataLite {
 
     /**
      * Returns the pen point to the start point of the current sub-path.
-     *
      */
     @!APILevel[
         22,

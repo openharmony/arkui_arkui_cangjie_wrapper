@@ -38,7 +38,7 @@ foreign {
 ]
 public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     /**
-    * Called when the layout along the vertical direction is set.
+    * Defines the constructor of RowSplit.
     *
     * @params { () -> Unit } child
     * @returns { This }
@@ -57,7 +57,7 @@ public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     /**
     * Called when judging whether the split line can be dragged.
     *
-    * @params { Bool } value
+    * @params { ?Bool } value
     * @returns { This }
     */
     @!APILevel[

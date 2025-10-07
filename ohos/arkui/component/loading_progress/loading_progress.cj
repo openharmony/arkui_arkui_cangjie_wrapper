@@ -35,7 +35,6 @@ foreign {
 
 /**
  * Defines LoadingProgress Component.
- *
  */
 @!APILevel[
     22,
@@ -59,7 +58,7 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & Loading
     /**
      * Load the color of the progress bar.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[

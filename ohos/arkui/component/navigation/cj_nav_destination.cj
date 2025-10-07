@@ -116,7 +116,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
      * Called when the navigation destination is about
      * to be unmounted (or when the transition animation, if any, is about to start).
      *
-     * @params { () -> Bool } callback - Indicates callback when the backButton is pressed.
+     * @params { ?() -> Bool } callback - Indicates callback when the backButton is pressed.
      * @returns { This }
      */
     @!APILevel[
@@ -136,7 +136,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
     /**
      * Invoked before sub-components of NavDestination are created.
      *
-     * @params { Callback<NavDestinationContext> } callback
+     * @params { ?Callback<NavDestinationContext, Unit> } callback
      * - Indicates callback that invoked before sub-components of NavDestination are created.
      * @returns { This }
      */
@@ -177,7 +177,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
      * wrapped in two lines, and then clipped with an ellipsis (...); (2) If a subtitle is set,
      * the subtitle is scaled down and then clipped with an ellipsis (...).
      *
-     * @params { ResourceStr } value
+     * @params { ?ResourceStr } value
      * @params { ?NavigationTitleOptions } [options] - Indicates the options of titlebar.
      * @returns { This }
      */
@@ -206,8 +206,8 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
      * wrapped in two lines, and then clipped with an ellipsis (...); (2) If a subtitle is set,
      * the subtitle is scaled down and then clipped with an ellipsis (...).
      *
-     * @params { CustomBuilder } value
-     * @params { ?NavigationTitleOptions } [options] - Indicates the options of titlebar.
+     * @params { ?CustomBuilder } value
+     * @params { ?NavigationTitleOptions } options - Indicates the options of titlebar.
      * @returns { This }
      */
     @!APILevel[
@@ -230,7 +230,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
     /**
      * Specifies whether to hide the title bar.
      *
-     * @params { boolean } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[

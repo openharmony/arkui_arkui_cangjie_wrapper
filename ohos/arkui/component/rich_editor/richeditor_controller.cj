@@ -37,22 +37,36 @@ struct NativeTextDecoration {
     ) {}
 }
 
+/**
+ * Defines the type of leading margin.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LeadingMarginType {
+    /**
+     * Length.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LengthType(Length)
-    | @!APILevel[
+    |
+    /**
+     * Placeholder.
+     */
+    @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PlaceholderType(LeadingMarginPlaceholder)
-    | @!APILevel[
+    | 
+    /**
+     * None.
+     */
+    @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -69,21 +83,37 @@ public enum LeadingMarginType {
     }
 }
 
+/**
+ * Text decoration.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextDecorationOptions {
+    /**
+     * The type value of the decoration property object.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var decorationType: ?TextDecorationType
+    /**
+     * The color value of the decoration property object.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ?ResourceColor
+    /**
+     * TextDecorationOptions constructor
+     *
+     * @params { ?TextDecorationType } decorationType - The type value of the decoration property object.
+     * @params { ?ResourceColor } color - The color value of the decoration property object.
+     * @return { TextDecorationOptions }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -128,17 +158,14 @@ struct NativeRichEditorTextSpanOptions {
 
 /**
  * Defines the selection menu options.
- *
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SelectionMenuOptions {
-
     /**
      * Callback function when the selection menu appears.
-     *
      */
     @!APILevel[
         22,
@@ -148,7 +175,6 @@ public class SelectionMenuOptions {
 
     /**
      * Callback function when the selection menu disappears.
-     *
      */
     @!APILevel[
         22,
@@ -158,6 +184,10 @@ public class SelectionMenuOptions {
 
     /**
      * SelectionMenuOptions constructor
+     *
+     * @params { ?() -> Unit } onAppear - Callback function when the selection menu appears.
+     * @params { ?() -> Unit } onDisappear - Callback function when the selection menu disappears.
+     * @return { SelectionMenuOptions }
      */
     @!APILevel[
         22,
@@ -171,7 +201,6 @@ public class SelectionMenuOptions {
 
 /**
  * Defines the span text style.
- *
  */
 @!APILevel[
     22,
@@ -181,7 +210,6 @@ public class RichEditorTextStyle {
 
     /**
      * font color.
-     *
      */
     @!APILevel[
         22,
@@ -191,7 +219,6 @@ public class RichEditorTextStyle {
 
     /**
      * font size.
-     *
      */
     @!APILevel[
         22,
@@ -201,7 +228,6 @@ public class RichEditorTextStyle {
 
     /**
      * font style.
-     *
      */
     @!APILevel[
         22,
@@ -211,7 +237,6 @@ public class RichEditorTextStyle {
 
     /**
      * font weight.
-     *
      */
     @!APILevel[
         22,
@@ -221,7 +246,6 @@ public class RichEditorTextStyle {
 
     /**
      * font family.
-     *
      */
     @!APILevel[
         22,
@@ -231,7 +255,6 @@ public class RichEditorTextStyle {
 
     /**
      * font decoration.
-     *
      */
     @!APILevel[
         22,
@@ -241,6 +264,14 @@ public class RichEditorTextStyle {
 
     /**
      * RichEditorTextStyle constructor
+     *
+     * @params { ?ResourceColor } fontColor - font color.
+     * @params { ?Length } fontSize - font size.
+     * @params { ?FontStyle } fontStyle - font style.
+     * @params { ?FontWeight } fontWeight - font weight.
+     * @params { ?ResourceStr } fontFamily - font family.
+     * @params { ?TextDecorationOptions } decoration - font decoration.
+     * @return { RichEditorTextStyle }
      */
     @!APILevel[
         22,
@@ -265,7 +296,6 @@ public class RichEditorTextStyle {
 
 /**
  * Defines the span options of RichEditor.
- *
  */
 @!APILevel[
     22,
@@ -275,7 +305,6 @@ public class RichEditorTextSpanOptions {
 
     /**
      * the offset that add a text span at.
-     *
      */
     @!APILevel[
         22,
@@ -285,7 +314,6 @@ public class RichEditorTextSpanOptions {
 
     /**
      * text style.
-     *
      */
     @!APILevel[
         22,
@@ -295,6 +323,10 @@ public class RichEditorTextSpanOptions {
 
     /**
      * RichEditorTextSpanOptions constructor
+     *
+     * @params { ?Int32 } offset - the offset that add a text span at.
+     * @params { ?RichEditorTextStyle } style - text style.
+     * @return { RichEditorTextSpanOptions }
      */
     @!APILevel[
         22,
@@ -399,12 +431,18 @@ struct NativeRichEditorImageSpanOptions {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorLayoutStyle {
+    /**
+     * Outer Margin.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var margin: ?Margin
 
+    /**
+     * Border Radius.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -413,6 +451,10 @@ public class RichEditorLayoutStyle {
 
     /**
      * RichEditorLayoutStyle constructor
+     *
+     * @params { ?Margin } margin - outer margin.
+     * @params { ?BorderRadiuses } borderRadius - border radius.
+     * @returns { RichEditorLayoutStyle }
      */
     @!APILevel[
         22,
@@ -425,6 +467,10 @@ public class RichEditorLayoutStyle {
 
     /**
      * RichEditorLayoutStyle constructor
+     *
+     * @params { ?Length } margin - outer margin.
+     * @params { ?Length } borderRadius - border radius.
+     * @returns { RichEditorLayoutStyle }
      */
     @!APILevel[
         22,
@@ -460,7 +506,6 @@ public class RichEditorLayoutStyle {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorImageSpanStyle {
-
     /**
      * image size.
      */
@@ -492,6 +537,11 @@ public class RichEditorImageSpanStyle {
 
     /**
      * RichEditorImageSpanStyle constructor
+     *
+     * @params { Option<(Length, Length)> } size - image size.
+     * @params { ?ImageSpanAlignment } verticalAlign - image vertical align.
+     * @params { ?ImageFit } objectFit - image fit.
+     * @returns { RichEditorImageSpanStyle } RichEditorImageSpanStyle.
      */
     @!APILevel[
         22,
@@ -517,7 +567,6 @@ public class RichEditorImageSpanStyle {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorImageSpanOptions {
-
     /**
      * the offset that add image span at.
      */
@@ -538,6 +587,10 @@ public class RichEditorImageSpanOptions {
 
     /**
      * RichEditorImageSpanOptions constructor
+     *
+     * @params { ?Int32 } offset - the offset that add image span at.
+     * @params { ?RichEditorImageSpanStyle } imageStyle - image style.
+     * @returns { RichEditorImageSpanOptions }
      */
     @!APILevel[
         22,
@@ -643,7 +696,6 @@ struct NativeLeadingMarginPlaceholder {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LeadingMarginPlaceholder {
-
     /**
      * Placeholder pixelMap.
      */
@@ -664,6 +716,10 @@ public class LeadingMarginPlaceholder {
 
     /**
      * LeadingMarginPlaceholder constructor
+     *
+     * @params { PixelMap } pixelMap - Placeholder pixelMap.
+     * @params { ?(Length, Length) } size - Placeholder size.
+     * @return { LeadingMarginPlaceholder } LeadingMarginPlaceholder.
      */
     @!APILevel[
         22,
@@ -735,6 +791,9 @@ public class RichEditorParagraphStyle {
 
     /**
      * RichEditorParagraphStyle constructor
+     *
+     * @params { ?TextAlign } textAlign - Text alignment.
+     * @return { RichEditorParagraphStyle } RichEditorParagraphStyle.
      */
     @!APILevel[
         22,
@@ -747,6 +806,10 @@ public class RichEditorParagraphStyle {
 
     /**
      * RichEditorParagraphStyle constructor
+     *
+     * @params { ?TextAlign } textAlign - Text alignment.
+     * @params { ?Length } leadingMargin - Leading margin.
+     * @return { RichEditorParagraphStyle } RichEditorParagraphStyle.
      */
     @!APILevel[
         22,
@@ -759,6 +822,10 @@ public class RichEditorParagraphStyle {
 
     /**
      * RichEditorParagraphStyle constructor
+     *
+     * @params { ?TextAlign } textAlign - Text alignment.
+     * @params { ?LeadingMarginPlaceholder } leadingMargin - Leading margin.
+     * @return { RichEditorParagraphStyle } RichEditorParagraphStyle.
      */
     @!APILevel[
         22,
@@ -877,7 +944,7 @@ public open class RichEditorBaseController <: RemoteDataLite {
     /**
      * Set caret offset.
      *
-     * @params { Int32 } offset
+     * @params { ?Int32 } offset
      * @returns { Bool }
      */
     @!APILevel[
@@ -900,6 +967,11 @@ public open class RichEditorBaseController <: RemoteDataLite {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorController <: RichEditorBaseController {
+    /**
+    * RichEditorController constructor.
+    *
+    * @return { RichEditorController }.
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -917,8 +989,8 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Add a text span.
      *
-     * @params { ResourceStr } value
-     * @params { RichEditorTextSpanOptions } options
+     * @params { ?ResourceStr } value
+     * @params { ?RichEditorTextSpanOptions } options
      * @returns { Int32 }
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
@@ -943,8 +1015,8 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Add a image span.
      *
-     * @params { String } value
-     * @params { RichEditorImageSpanOptions } options
+     * @params { ?ResourceStr } value
+     * @params { ?RichEditorImageSpanOptions } options
      * @returns { Int32 }
      */
     @!APILevel[
@@ -965,9 +1037,9 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Modify span style.
      *
-     * @params { Int32 } start
-     * @params { Int32 } end
-     * @params { RichEditorTextStyle } textStyle
+     * @params { ?Int32 } start
+     * @params { ?Int32 } end
+     * @params { ?RichEditorTextStyle } textStyle
      */
     @!APILevel[
         22,
@@ -986,9 +1058,9 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Modify span style.
      *
-     * @params { Int32 } start
-     * @params { Int32 } end
-     * @params { RichEditorImageSpanStyle } imageStyle
+     * @params { ?Int32 } start
+     * @params { ?Int32 } end
+     * @params { ?RichEditorImageSpanStyle } imageStyle
      */
     @!APILevel[
         22,
@@ -1006,8 +1078,8 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Delete span.
      *
-     * @params { Int32 } start
-     * @params { Int32 } end
+     * @params { ?Int32 } start
+     * @params { ?Int32 } end
      */
     @!APILevel[
         22,
@@ -1021,7 +1093,6 @@ public class RichEditorController <: RichEditorBaseController {
 
     /**
      * close the select menu when menu is on.
-     *
      */
     @!APILevel[
         22,
@@ -1036,9 +1107,9 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Modify span style.
      *
-     * @params { Int32 } start
-     * @params { Int32 } end
-     * @params { RichEditorParagraphStyle } style
+     * @params { ?Int32 } start
+     * @params { ?Int32 } end
+     * @params { ?RichEditorParagraphStyle } style
      */
     @!APILevel[
         22,
@@ -1055,8 +1126,8 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Get span content.
      *
-     * @params { Int32 } start
-     * @params { Int32 } end
+     * @params { ?Int32 } start
+     * @params { ?Int32 } end
      * @returns { ArrayList<RichEditorSpanResult> }
      */
     @!APILevel[

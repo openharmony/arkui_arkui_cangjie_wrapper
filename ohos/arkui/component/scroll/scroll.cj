@@ -51,7 +51,6 @@ struct NativeOffsetResult {
 public class ScrollResult {
     /**
      * The offset remain 0f scroll.
-     *
      */
     @!APILevel[
         22,
@@ -76,7 +75,6 @@ public class ScrollResult {
 
 /**
  * Represents the offset values resulting from a scroll operation.
- *
  */
 @!APILevel[
     22,
@@ -86,7 +84,6 @@ public class OffsetResult {
 
     /**
      * Horizontal scrolling offset.
-     *
      */
     @!APILevel[
         22,
@@ -96,7 +93,6 @@ public class OffsetResult {
 
     /**
      * Vertical scrolling offset.
-     *
      */
     @!APILevel[
         22,
@@ -168,17 +164,14 @@ class CallbackOffset <: BaseCallBack {
 
 /**
  * Represents the rect values resulting from a scroll operation.
- *
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RectResult {
-
     /**
      * Representing the x in the rect values
-     *
      */
     @!APILevel[
         22,
@@ -188,7 +181,6 @@ public class RectResult {
 
     /**
      * Representing the y in the rect values
-     *
      */
     @!APILevel[
         22,
@@ -198,7 +190,6 @@ public class RectResult {
 
     /**
      * Representing the width in the rect values
-     *
      */
     @!APILevel[
         22,
@@ -208,7 +199,6 @@ public class RectResult {
 
     /**
      * Representing the height in the rect values
-     *
      */
     @!APILevel[
         22,
@@ -250,7 +240,6 @@ public class RectResult {
 
 /**
  * Provides parameters for customizing scroll animations.
- *
  */
 @!APILevel[
     22,
@@ -259,7 +248,6 @@ public class RectResult {
 public class ScrollAnimationOptions {
     /**
      * Scrolling duration.
-     *
      */
     @!APILevel[
         22,
@@ -269,7 +257,6 @@ public class ScrollAnimationOptions {
 
     /**
      * Scrolling curve.
-     *
      */
     @!APILevel[
         22,
@@ -289,11 +276,11 @@ public class ScrollAnimationOptions {
     public var canOverScroll: ?Bool
 
     /**
-     * Constructs a customizing scroll animations
+     * The constructor.
      *
-     * @params { Float64 } duration
-     * @params { Curve } curve
-     * @params { Bool } canOverScroll
+     * @params { ?Float64 } duration
+     * @params { ?Curve } curve
+     * @params { ?Bool } canOverScroll
      * @returns { This }
      */
     @!APILevel[
@@ -313,7 +300,6 @@ public class ScrollAnimationOptions {
 
 /**
  * Enumerates alignment modes.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -323,7 +309,6 @@ public class ScrollAnimationOptions {
 public enum ScrollAlign {
     /**
      * The start edge of the list item is flush with the start edge of the list.
-     *
      */
     @!APILevel[
         22,
@@ -333,7 +318,6 @@ public enum ScrollAlign {
 
     /**
      * The list item is centered along the main axis of the list.
-     *
      */
     | @!APILevel[
         22,
@@ -343,7 +327,6 @@ public enum ScrollAlign {
 
     /**
      * The end edge of the list item is flush with the end edge of the list.
-     *
      */
     | @!APILevel[
         22,
@@ -353,7 +336,6 @@ public enum ScrollAlign {
 
     /**
      * The list item is automatically aligned.
-     *
      */
     | @!APILevel[
         22,
@@ -375,7 +357,6 @@ public enum ScrollAlign {
 
 /**
  * Provides parameters for customizing scroll nested.
- *
  */
 @!APILevel[
     22,
@@ -384,7 +365,6 @@ public enum ScrollAlign {
 public class NestedScrollOptions {
     /**
     * Representing the forward in the customizing scroll nested.
-    *
     */
     @!APILevel[
         22,
@@ -394,7 +374,6 @@ public class NestedScrollOptions {
 
     /**
     * Representing the backward in the customizing scroll nested.
-    *
     */
     @!APILevel[
         22,
@@ -403,7 +382,11 @@ public class NestedScrollOptions {
     public var scrollBackward: ?NestedScrollMode
 
     /**
-     * Provides parameters for customizing scroll nested.
+     * The constructor.
+     *
+     * @params { ?NestedScrollMode } scrollForward
+     * @params { ?NestedScrollMode } scrollBackward
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -423,10 +406,8 @@ public class NestedScrollOptions {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class FadingEdgeOptions {
-
     /**
      * Representing the length in the customizing fading edge.
-     *
      */
     @!APILevel[
         22,
@@ -435,9 +416,9 @@ public class FadingEdgeOptions {
     public var fadingEdgeLength: ?Length
 
     /**
-     * Constructs a customizing fading edge.
+     * The constructor.
      *
-     * @params { Length } fadingEdgeLength
+     * @params { ?Length } fadingEdgeLength
      * @returns { This }
      */
     @!APILevel[
@@ -506,17 +487,30 @@ public type OnScrollFrameBeginCallback = (Float64, ScrollState) -> Float64
 
 public type OnScrollEdgeCallback = (Edge) -> Unit
 
+/**
+ * Provides parameters for scrolling to the edge of a scrollable container.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScrollEdgeOptions {
+    /**
+     * Fixed velocity for scrolling to the edge of the container.
+     * If the value specified is less than or equal to 0, the parameter will not take effect.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var velocity: ?Float32
 
+    /**
+     * The constructor.
+     *
+     * @params { ?Float32 } velocity
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -526,17 +520,29 @@ public class ScrollEdgeOptions {
     }
 }
 
+/**
+ * Provides parameters for scrolling to a specific index.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScrollToIndexOptions {
+    /**
+     * Extra offset for scrolling to a specified index.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var extraOffset: ?Length
 
+    /**
+     * The constructor.
+     *
+     * @params { ?Length } extraOffset
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -656,7 +662,6 @@ foreign {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute {
-
     /**
      * Constructs a scroll component.
      *
@@ -675,7 +680,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
     /**
      * Constructs a scroll component.
      *
-     * @params { function } child
+     * @params { () -> Unit } child
      * @returns { This }
      */
     @!APILevel[
@@ -692,8 +697,8 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
     /**
      * Constructs a scroll component.
      *
-     * @params { Scroller } scroller
-     * @params { function } child
+     * @params { ?Scroller } scroller
+     * @params { () -> Unit } child
      * @returns { This }
      */
     @!APILevel[
@@ -742,7 +747,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
     /**
      * Sets the scrolling direction.
      *
-     * @params { ScrollDirection } scrollDirection
+     * @params { ?ScrollDirection } scrollDirection
      * @returns { This }
      */
     @!APILevel[
@@ -808,7 +813,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * 2. This event is triggered when the controller API is called.
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { OffsetResult } handler
+     * @params { ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult } handler
      * @returns { This }
      */
     @!APILevel[
@@ -839,7 +844,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * 2. This event is triggered when the controller API is called.
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { Unit } handler
+     * @params { ?(Float64, Float64, ScrollState, ScrollSource) -> Unit } handler
      * @returns { This }
      */
     @!APILevel[
@@ -862,7 +867,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * 2. This event is triggered when the controller API is called;
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { ScrollOnScrollCallback } callback
+     * @params { ?ScrollOnScrollCallback } callback
      * @returns { This }
      */
     @!APILevel[
@@ -901,7 +906,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * Triggered when each frame scrolling starts.
      * Anonymous Object Rectification.
      *
-     * @params { OnScrollFrameBeginCallback } event
+     * @params { ?OnScrollFrameBeginCallback } event
      * @returns { This }
      */
     @!APILevel[
@@ -927,7 +932,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * 2. This event is triggered when the controller API is called.
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { OnScrollEdgeCallback } event
+     * @params { ?OnScrollEdgeCallback } event
      * @returns { This }
      */
     @!APILevel[
@@ -965,7 +970,6 @@ class ScrollerHandler <: RemoteDataLite {
  * 1. The binding of a Scroller instance to a scrollable container component occurs during the component creation phase.
  * 2. Scroller APIs can only be effectively called after the Scroller instance is bound to a scrollable container component.
  * Otherwise, depending on the API called, it may have no effect or throw an exception.
- *
  */
 
 @!APILevel[
@@ -1095,7 +1099,7 @@ public class Scroller {
      * Called when scrolling to the edge of the container.
      *
      * @params { Edge } value
-     * @params { ScrollEdgeOptions } options
+     * @params { ?ScrollEdgeOptions } options
      */
     @!APILevel[
         22,
@@ -1143,7 +1147,7 @@ public class Scroller {
      * Called when page turning mode is set.
      *
      * @params { Bool } next
-     * @params { Bool } animation
+     * @params { ?Bool } animation
      */
     @!APILevel[
         22,
@@ -1158,7 +1162,7 @@ public class Scroller {
     /**
      * Obtains the current scrolling offset.
      *
-     * @returns { This }
+     * @returns { Option<OffsetResult> }
      */
     @!APILevel[
         22,
@@ -1175,9 +1179,9 @@ public class Scroller {
      * This API only works for the ArcList, Grid, List, and WaterFlow components.
      *
      * @params { Int32 } index
-     * @params { Bool } smooth
-     * @params { ScrollAlign } align
-     * @params { ScrollToIndexOptions } options
+     * @params { ?Bool } smooth
+     * @params { ?ScrollAlign } align
+     * @params { ?ScrollToIndexOptions } options
      * @returns { This }
      */
     @!APILevel[
@@ -1224,9 +1228,8 @@ public class Scroller {
      * The value of <em>index</em> must be the index of a child component visible in the display area.
      * Otherwise, the value is considered invalid.
      *
-     * @params { Float64 } x
-     * @params { Float64 } y
-     * @returns { Int32 }
+     * @params { ?Int32 } index
+     * @returns { RectResult }
      */
     @!APILevel[
         22,

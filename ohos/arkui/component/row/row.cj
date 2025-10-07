@@ -49,7 +49,7 @@ public class Row <: CommonMethodComponent<Row> & RowAttribute {
     /**
     * Defines the constructor of Row.
     *
-    * @params { Length } space
+    * @params { ?Length } space
     * @params { () -> Unit } child
     * @returns { This }
     */
@@ -68,7 +68,7 @@ public class Row <: CommonMethodComponent<Row> & RowAttribute {
     /**
     * Called when the vertical alignment is set.
     *
-    * @params { VerticalAlign } value
+    * @params { ?VerticalAlign } value
     * @returns { This }
     */
     @!APILevel[
@@ -85,7 +85,7 @@ public class Row <: CommonMethodComponent<Row> & RowAttribute {
     /**
     * Called when the horizontal alignment is set.
     *
-    * @params { FlexAlign } value
+    * @params { ?FlexAlign } value
     * @returns { This }
     */
     @!APILevel[
