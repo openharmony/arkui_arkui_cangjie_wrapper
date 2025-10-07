@@ -1345,6 +1345,7 @@ public enum SheetMode {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+
     Overlay
     |
         /**
@@ -1477,6 +1478,39 @@ public class SheetOptions <: BindOptions {
     let shadow: Option<ShadowOptions>
     let mode: Option<SheetMode>
     let scrollSizeMode: Option<ScrollSizeMode>
+
+    /**
+     * Defines sheet options
+     *
+     * @params { Option<ResourceColor> } backgroundColor
+     * @params { Option<() -> Unit> } onAppear
+     * @params { Option<() -> Unit> } onDisappear
+     * @params { Option<() -> Unit> } onWillAppear
+     * @params { Option<() -> Unit> } onWillDisappear
+     * @params { Option<SheetSize> } height
+     * @params { Option<Array<SheetSize>> } detents
+     * @params { Option<SheetType> } preferType
+     * @params { Option<Bool> } showClose
+     * @params { Option<Bool> } dragBar
+     * @params { Option<BlurStyle> } blurStyle
+     * @params { Option<Color> } maskColor
+     * @params { Option<() -> Unit> } title
+     * @params { Option<Bool> } enableOutsideInteractive
+     * @params { Option<(SheetDismiss) -> Unit> } shouldDismiss
+     * @params { Option<(SheetDismiss) -> Unit> } onWillDismiss
+     * @params { Option<(SpringBackAction) -> Unit> } onWillSpringBackWhenDismiss
+     * @params { Option<(Float32) -> Unit> } onHeightDidChange
+     * @params { Option<(Float32) -> Unit> } onDetentsDidChange
+     * @params { Option<(Float32) -> Unit> } onWidthDidChange
+     * @params { Option<(Float32) -> Unit> } onTypeDidChange
+     * @params { Option<Length> } borderWidth
+     * @params { Option<Color> } borderColor
+     * @params { Option<EdgeStyles> } borderStyle
+     * @params { Option<Length> } width
+     * @params { Option<ShadowOptions> } shadow
+     * @params { Option<SheetMode> } mode
+     * @params { Option<ScrollSizeMode> } scrollSizeMode
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
