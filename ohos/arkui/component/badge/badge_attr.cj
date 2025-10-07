@@ -18,6 +18,9 @@ package ohos.arkui.component.badge
 import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 
+/**
+ * Defines Badge attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"

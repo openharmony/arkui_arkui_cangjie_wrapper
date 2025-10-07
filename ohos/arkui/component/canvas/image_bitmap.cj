@@ -42,8 +42,7 @@ foreign {
 }
 
 /**
- * Bitmap image object that can be drawn onto the current Canvas
- *
+ * Bitmap image object that can be drawn onto the current Canvas.
  */
 @!APILevel[
     22,
@@ -52,7 +51,6 @@ foreign {
 public class ImageBitmap <: RemoteData {
     /**
      * Indicates the width of the CSS pixel unit of ImageData.
-     *
      */
     @!APILevel[
         22,
@@ -68,7 +66,6 @@ public class ImageBitmap <: RemoteData {
 
     /**
      * Indicates the height of the CSS pixel unit of ImageData.
-     *
      */
     @!APILevel[
         22,
@@ -89,8 +86,8 @@ public class ImageBitmap <: RemoteData {
     /**
      * Create an ImageBitmap object based on the transferred image path.
      *
-     * @params { String } src - Path of the image object.
-     * @returns { This }
+     * @params { ?String } src - Path of the image object.
+     * @returns { ImageBitmap }
      */
     @!APILevel[
         22,

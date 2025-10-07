@@ -134,7 +134,6 @@ struct NativeOptionConfirm {
 
 /**
  * The information of sheet.
- *
  */
 @!APILevel[
     22,
@@ -143,7 +142,6 @@ struct NativeOptionConfirm {
 public class SheetInfo {
     /**
      * Sheet text.
-     *
      */
     @!APILevel[
         22,
@@ -153,7 +151,6 @@ public class SheetInfo {
     /**
      * Callback when the sheet is selected.
      * Anonymous Object Rectification.
-     *
      */
     @!APILevel[
         22,
@@ -162,7 +159,6 @@ public class SheetInfo {
     public var action: ?VoidCallback
     /**
      * Sheet icon. By default, no icon is displayed.
-     *
      */
     @!APILevel[
         22,
@@ -172,8 +168,8 @@ public class SheetInfo {
     /**
      * Constructor of SheetInfo
      *
-     * @params { ResourceStr } title
-     * @params { VoidCallback } action
+     * @params { ?ResourceStr } title
+     * @params { ?VoidCallback } action
      * @params { ?ResourceStr } icon
      * @returns { SheetInfo }
      */
@@ -217,7 +213,6 @@ public class SheetInfo {
 public class ActionSheetButtonOptions {
     /**
      * Button text.
-     *
      */
     @!APILevel[
         22,
@@ -226,7 +221,6 @@ public class ActionSheetButtonOptions {
     public var value: ?ResourceStr
     /**
      * Callback invoked when the button is selected.
-     *
      */
     @!APILevel[
         22,
@@ -236,7 +230,6 @@ public class ActionSheetButtonOptions {
     /**
      * Whether to respond when the button is clicked. The value true means to respond when the button is clicked,
      * and false means the opposite.
-     *
      */
     @!APILevel[
         22,
@@ -246,7 +239,6 @@ public class ActionSheetButtonOptions {
     /**
      * Whether the button is the default focus. The value true means that the button is the default focus,
      * and false means the opposite.
-     *
      */
     @!APILevel[
         22,
@@ -255,7 +247,6 @@ public class ActionSheetButtonOptions {
     public var defaultFocus: ?Bool
     /**
      * Button style.
-     *
      */
     @!APILevel[
         22,
@@ -265,11 +256,11 @@ public class ActionSheetButtonOptions {
     /**
      * Constructor of ActionSheetButtonOptions
      *
-     * @params { ResourceStr } value
-     * @params { VoidCallback } action
-     * @params { Bool } enabled
-     * @params { Bool } defaultFocus
-     * @params { DialogButtonStyle } style
+     * @params { ?ResourceStr } value
+     * @params { ?VoidCallback } action
+     * @params { ?Bool } enabled
+     * @params { ?Bool } defaultFocus
+     * @params { ?DialogButtonStyle } style
      * @returns { ActionSheetButtonOptions }
      */
     @!APILevel[
@@ -305,7 +296,6 @@ public class ActionSheetButtonOptions {
 
 /**
  * Provides information about the action to dismiss the dialog box.
- *
  */
 @!APILevel[
     22,
@@ -315,7 +305,6 @@ public class DismissDialogAction {
     /**
      * Reason why the dialog box cannot be dismissed. You must specify whether to close the dialog box for each of the
      * listed actions.
-     *
      */
     @!APILevel[
         22,
@@ -325,7 +314,7 @@ public class DismissDialogAction {
     /**
      * Constructor of DismissDialogAction
 
-     * @params { DismissReason } reason
+     * @params { ?DismissReason } reason
      * @returns { DismissDialogAction }
      */
     @!APILevel[
@@ -606,27 +595,27 @@ public class ActionSheetOptions {
     /**
      * Constructor of ActionSheetOptions
      *
-     * @params { ResourceStr } title
-     * @params { ResourceStr } message
-     * @params { Array<SheetInfo> } sheets
-     * @params { ResourceStr } subtitle
-     * @params { ActionSheetButtonOptions } confirm
-     * @params { Bool } autoCancel
-     * @params { VoidCallback } cancel
-     * @params { DialogAlignment } alignment
+     * @params { ?ResourceStr } title
+     * @params { ?ResourceStr } message
+     * @params { ?Array<SheetInfo> } sheets
+     * @params { ?ResourceStr } subtitle
+     * @params { ?ActionSheetButtonOptions } confirm
+     * @params { ?Bool } autoCancel
+     * @params { ?VoidCallback } cancel
+     * @params { ?DialogAlignment } alignment
      * @params { ?ActionSheetOffset } offset
-     * @params { Rectangle } maskRect
-     * @params { Bool } showInSubWindow
-     * @params { ResourceColor } backgroundColor
-     * @params { BlurStyle } backgroundBlurStyle
+     * @params { ?Rectangle } maskRect
+     * @params { ?Bool } showInSubWindow
+     * @params { ?ResourceColor } backgroundColor
+     * @params { ?BlurStyle } backgroundBlurStyle
      * @params { ?Callback<DismissDialogAction, Unit> } onWillDismiss
-     * @params { BorderRadiuses } cornerRadius
-     * @params { Length } borderWidth
-     * @params { ResourceColor } borderColor
-     * @params { EdgeStyles } borderStyle
+     * @params { ?BorderRadiuses } cornerRadius
+     * @params { ?Length } borderWidth
+     * @params { ?ResourceColor } borderColor
+     * @params { ?EdgeStyles } borderStyle
      * @params { ?Length } width
      * @params { ?Length } height
-     * @params { ShadowOptions } shadow
+     * @params { ?ShadowOptions } shadow
      * @params { ?TransitionEffect } transition
      * @returns { ActionSheetOptions }
      */
@@ -791,19 +780,17 @@ public class ActionSheetOptions {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ActionSheetOffset {
-   /**
-    * Offset of the action sheet along the x-axis relative to the alignment position.
-    * Anonymous Object Rectification.
-    */
+    /**
+     * Offset of the action sheet along the x-axis relative to the alignment position.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dx: ?Length
-   /**
-    * Offset of the action sheet along the y-axis relative to the alignment position.
-    * Anonymous Object Rectification.
-    */
+    /**
+     * Offset of the action sheet along the y-axis relative to the alignment position.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -812,8 +799,8 @@ public class ActionSheetOffset {
     /**
      * Constructor of ActionSheetOffset
      *
-     * @params { Length } dx
-     * @params { Length } dy
+     * @params { ?Length } dx
+     * @params { ?Length } dy
      * @returns { ActionSheetOffset }
      */
     @!APILevel[

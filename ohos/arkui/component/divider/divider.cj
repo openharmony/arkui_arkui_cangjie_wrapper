@@ -36,7 +36,6 @@ let defaultDivierColor = 0x33182431
 
 /**
  * Defines Divider Component.
- *
  */
 @!APILevel[
     22,
@@ -46,7 +45,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     /**
     * Divider constructor.
     *
-    * @returns { This }
+    * @returns { Divider }
     */
     @!APILevel[
         22,
@@ -59,12 +58,12 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     }
 
     /**
-    * Indicates whether to use a horizontal splitter or a vertical splitter.
-    * The options are as follows: false: horizontal splitter; true: vertical splitter.
-    *
-    * @params { Bool } value
-    * @returns { This }
-    */
+     * Indicates whether to use a horizontal splitter or a vertical splitter.
+     * The options are as follows: false: horizontal splitter; true: vertical splitter.
+     *
+     * @params { ?Bool } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -77,11 +76,11 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     }
 
     /**
-    * Sets the color of the divider line.
-    *
-    * @params { ResourceColor } value
-    * @returns { This }
-    */
+     * Sets the color of the divider line.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -94,11 +93,11 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     }
 
     /**
-    * Sets the width of the dividing line.
-    *
-    * @params { Length } value
-    * @returns { This }
-    */
+     * Sets the width of the dividing line.
+     *
+     * @params { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -112,11 +111,11 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     }
 
     /**
-    * Sets the end style of the split line. The default value is Butt.
-    *
-    * @params { LineCapStyle } value
-    * @returns { This }
-    */
+     * Sets the end style of the split line. The default value is Butt.
+     *
+     * @params { ?LineCapStyle } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

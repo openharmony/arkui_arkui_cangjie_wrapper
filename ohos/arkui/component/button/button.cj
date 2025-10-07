@@ -314,6 +314,13 @@ public class ButtonOptions {
 
     /**
      * ButtonOptions constructor
+     *
+     * @params { ?ButtonType } shape
+     * @params { ?Bool } stateEffect
+     * @params { ?ButtonStyleMode } buttonStyle
+     * @params { ?ControlSize } controlSize
+     * @params { ?ButtonRole } role
+     * @returns { ButtonOptions }
      */
     @!APILevel[
         22,
@@ -363,7 +370,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Button object
      *
      * @params { () -> Unit } child
-     * @returns { This }
+     * @returns { Button }
      */
     @!APILevel[
         22,
@@ -380,7 +387,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Create Button with inner text label.
      *
      * @params { ResourceStr } label
-     * @returns { This }
+     * @returns { Button }
      */
     @!APILevel[
         22,
@@ -399,7 +406,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Create Button with Text child.
      *
      * @params { ?ButtonOptions } options
-     * @returns { This }
+     * @returns { Button }
      */
     @!APILevel[
         22,
@@ -425,7 +432,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      *
      * @params { ?ButtonOptions } options
      * @params { () -> Unit } child
-     * @returns { This }
+     * @returns { Button }
      */
     @!APILevel[
         22,
@@ -450,9 +457,9 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Create Button with inner text label.
      *
-     * @params { ResourceStr } label
-     * @params { ButtonOptions } options
-     * @returns { This }
+     * @params { ?ResourceStr } label
+     * @params { ?ButtonOptions } options
+     * @returns { Button }
      */
     @!APILevel[
         22,
@@ -481,7 +488,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Text size.
      *
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -501,7 +508,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Font weight.
      *
-     * @params { FontWeight } value
+     * @params { ?FontWeight } value
      * @returns { This }
      */
     @!APILevel[
@@ -521,7 +528,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Text color.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -587,7 +594,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Font style.
      *
-     * @params { FontStyle } value
+     * @params { ?FontStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -605,7 +612,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Font family.
      *
-     * @params { ResourceStr } value
+     * @params { ?ResourceStr } value
      * @returns { This }
      */
     @!APILevel[
@@ -626,8 +633,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Describes the button style.
      *
-     * @params { ButtonType } value
-     * @returns { ButtonAttribute }
+     * @params { ?ButtonType } value
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -699,7 +706,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -779,8 +786,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Describes the button style.
      *
-     * @params { ButtonStyleMode } value - button style mode
-     * @returns { ButtonAttribute }
+     * @params { ?ButtonStyleMode } value - button style mode
+     * @returns { This }
      */
     @!APILevel[
         22,

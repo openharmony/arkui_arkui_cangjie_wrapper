@@ -19,29 +19,57 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Divider attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
+    /**
+     * Indicates whether to use a horizontal splitter or a vertical splitter.
+     * The options are as follows: false: horizontal splitter; true: vertical splitter.
+     *
+     * @params { ?Bool } value
+     * @returns { DividerAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func vertical(value: ?Bool): DividerAttribute
 
+    /**
+     * Sets the color of the divider line.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { DividerAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func color(value: ?ResourceColor): DividerAttribute
 
+    /**
+     * Sets the width of the dividing line.
+     *
+     * @params { ?Length } value
+     * @returns { DividerAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeWidth(value: ?Length): DividerAttribute
 
+    /**
+     * Sets the end style of the split line. The default value is Butt.
+     *
+     * @params { ?LineCapStyle } value
+     * @returns { DividerAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

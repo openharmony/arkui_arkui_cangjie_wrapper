@@ -164,6 +164,15 @@ public class BadgeStyle {
 
     /**
      * BadgeStyle constructor
+     *
+     * @params { ?ResourceColor } color
+     * @params { ?Length } fontSize
+     * @params { ?Length } badgeSize
+     * @params { ?ResourceColor } badgeColor
+     * @params { ?FontWeight } fontWeight
+     * @params { ?ResourceColor } borderColor
+     * @params { ?Length } borderWidth
+     * @returns { BadgeStyle }
      */
     @!APILevel[
         22,
@@ -212,9 +221,9 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
      * style: You can set the style of the Badge component, including the text color, size, dot color, and size.
      *
      * @params { Int32 } count
-     * @params { BadgeStyle } style
-     * @params { BadgePosition } position
-     * @params { Int32 } maxCount
+     * @params { ?BadgeStyle } style
+     * @params { ?BadgePosition } position
+     * @params { ?Int32 } maxCount
      * @params { () -> Unit } child
      * @returns { Badge }
      */
@@ -245,8 +254,8 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
      * style: You can set the style of the Badge component, including the text color, size, dot color, and size.
      *
      * @params { String } value
-     * @params { BadgeStyle } style
-     * @params { BadgePosition } position
+     * @params { ?BadgeStyle } style
+     * @params { ?BadgePosition } position
      * @params { () -> Unit } child
      * @returns { Badge }
      */

@@ -92,7 +92,6 @@ enum CanvasImageType {
 }
 /**
  * This object allows you to set properties when creating a rendering context
- *
  */
 @!APILevel[
     22,
@@ -101,7 +100,6 @@ enum CanvasImageType {
 public class RenderingContextSettings {
     /**
      * Indicates whether anti-aliasing is enabled for canvas. The default value is false.
-     *
      */
     @!APILevel[
         22,
@@ -111,7 +109,6 @@ public class RenderingContextSettings {
 
     /**
      * Create an RenderingContextSettings object based on the antialias and alpha.
-     *
      */
     @!APILevel[
         22,
@@ -124,7 +121,6 @@ public class RenderingContextSettings {
 
 /**
  * Size information of the text
- *
  */
 @!APILevel[
     22,
@@ -133,7 +129,6 @@ public class RenderingContextSettings {
 public class TextMetrics {
     /**
      * Indicates the width of a character string. The value is of the double type.
-     *
      */
     @!APILevel[
         22,
@@ -142,7 +137,6 @@ public class TextMetrics {
     public let width: Float64
     /**
      * Indicates the height of a character string. The value is of the double type.
-     *
      */
     @!APILevel[
         22,
@@ -158,7 +152,6 @@ public class TextMetrics {
 
 /**
  * Defines Canvas Component.
- *
  */
 @!APILevel[
     22,
@@ -168,14 +161,14 @@ public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
     /**
      * Construct a canvas component.
      *
-     * @params { CanvasRenderingContext2D } context - Canvas context object.
-     * @returns { This }
+     * @params { ?CanvasRenderingContext2D } context - Canvas context object.
+     * @returns { Canvas }
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(context: Option<CanvasRenderingContext2D>) {
+    public init(context: ?CanvasRenderingContext2D) {
         match (context) {
             case Some(value) => unsafe {
                     FfiOHOSAceFrameworkCanvasCreate(value.getID())
@@ -187,7 +180,7 @@ public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
     /**
      * Event notification after the canvas component is constructed. You can draw the canvas at this time.
      *
-     * @params { () -> Unit } callback
+     * @params { ?() -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -235,8 +228,7 @@ public class CanvasGradient <: RemoteDataLite {
      * Add a breakpoint defined by offset and color to the gradient
      *
      * @params { Float64 } offset - Value between 0 and 1, out of range throws INDEX_SIZE_ERR error
-     * @params { String } color - Set the gradient color.
-     *    a SYNTAX_ERR error is thrown.
+     * @params { ?ResourceColor } color - Set the gradient color.
      */
     @!APILevel[
         22,

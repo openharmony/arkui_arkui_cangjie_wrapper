@@ -19,6 +19,9 @@ import ohos.arkui.component.common.*
 import ohos.arkui.component.shape.*
 import ohos.labels.APILevel
 
+/**
+ * Defines Circle attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"

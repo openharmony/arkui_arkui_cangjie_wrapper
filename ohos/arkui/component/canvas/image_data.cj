@@ -34,7 +34,6 @@ foreign {
 
 /**
  * Image data object
- *
  */
 @!APILevel[
     22,
@@ -43,7 +42,6 @@ foreign {
 public class ImageData <: RemoteDataLite {
     /**
      * Width of the image.
-     *
      */
     @!APILevel[
         22,
@@ -59,7 +57,6 @@ public class ImageData <: RemoteDataLite {
 
     /**
      * Height of the image.
-     *
      */
     @!APILevel[
         22,
@@ -74,8 +71,7 @@ public class ImageData <: RemoteDataLite {
     }
 
     /**
-     * Array containing image pixel data
-     *
+     * Array containing image pixel data.
      */
     @!APILevel[
         22,
@@ -95,11 +91,11 @@ public class ImageData <: RemoteDataLite {
     /**
      * Create an ImageData object based on the input parameters.
      *
-     * @params { Float64 } width - Width of the image.
-     * @params { Float64 } height - Height of the image.
-     * @params { Array<UInt8> } data - Data of the image. If this parameter is not specified, the default value is a black rectangular image.
-     * @params { LengthMetricsUnit } unit - the unit mode
-     * @returns { This }
+     * @params { ?Float64 } width - Width of the image.
+     * @params { ?Float64 } height - Height of the image.
+     * @params { ?Array<UInt8> } data - Data of the image. If this parameter is not specified, the default value is a black rectangular image.
+     * @params { ?LengthMetricsUnit } unit - the unit mode
+     * @returns { ImageData }
      */
     @!APILevel[
         22,
@@ -127,10 +123,10 @@ public class ImageData <: RemoteDataLite {
     /**
      * Create an ImageData object based on the input parameters.
      *
-     * @params { Float64 } width - Width of the image.
-     * @params { Float64 } height - Height of the image.
-     * @params { LengthMetricsUnit } unit - the unit mode
-     * @returns { This }
+     * @params { ?Float64 } width - Width of the image.
+     * @params { ?Float64 } height - Height of the image.
+     * @params { ?LengthMetricsUnit } unit - the unit mode
+     * @returns { ImageData }
      */
     @!APILevel[
         22,

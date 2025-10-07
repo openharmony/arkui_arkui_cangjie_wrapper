@@ -18,41 +18,80 @@ package ohos.arkui.component.grid_col
 import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 
+/**
+ * Defines GridCol attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
+    /**
+     * Sets the span of current gird-container item.
+     *
+     * @params { ?Int32 } value
+     * @returns { GridColAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func span(value: ?Int32): GridColAttribute
 
+    /**
+     * Sets the span of current gird-container item.
+     *
+     * @params { ?GridColOptions } value
+     * @returns { GridColAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func span(value: ?GridColOptions): GridColAttribute
 
+    /**
+     * Sets the offset of current gird-container item.
+     *
+     * @params { ?Int32 } value
+     * @returns { GridColAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func gridColOffset(value: ?Int32): GridColAttribute
 
+    /**
+     * Sets the offset of current gird-container item.
+     *
+     * @params { ?GridColOptions } value
+     * @returns { GridColAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func gridColOffset(value: ?GridColOptions): GridColAttribute
 
+    /**
+     * Sets the order of current gird-container item.
+     *
+     * @params { ?Int32 } value
+     * @returns { GridColAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func order(value: ?Int32): GridColAttribute
 
+    /**
+     * Sets the order of current gird-container item.
+     *
+     * @params { ?GridColOptions } value
+     * @returns { GridColAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

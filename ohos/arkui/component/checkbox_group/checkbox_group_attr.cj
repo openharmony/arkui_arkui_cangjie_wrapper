@@ -19,23 +19,46 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines CheckboxGroup attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> {
+    /**
+     * setting whether all checkbox is selected.
+     *
+     * @params { ?Bool } isAllSelected
+     * @returns { CheckboxGroupAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectAll(value: ?Bool): CheckboxGroupAttribute
 
+    /**
+     * setting the display color of checkbox.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { CheckboxGroupAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedColor(value: ?ResourceColor): CheckboxGroupAttribute
 
+    /**
+     * Called when the selection status changes.
+     * Anonymous Object Rectification.
+     *
+     * @params { ?OnCheckboxGroupChangeCallback } callback
+     * @returns { CheckboxGroupAttribute }
+     * @throws { BusinessException } 190002 - The callback function is invalid.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

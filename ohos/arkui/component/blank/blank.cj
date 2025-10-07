@@ -24,7 +24,6 @@ foreign func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
 
 /**
  * Defines Blank Component.
- *
  */
 @!APILevel[
     22,

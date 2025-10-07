@@ -18,30 +18,56 @@ package ohos.arkui.component.grid_item
 import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 
+/**
+ * Defines GridItem attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
-
+    /**
+     * This parameter specifies the start column number of the current element.
+     *
+     * @params { ?Int32 } value
+     * @returns { GridItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func columnStart(columnStart: ?Int32): GridItemAttribute
 
+    /**
+     * This parameter specifies the end column number of the current element.
+     *
+     * @params { ?Int32 } columnEnd
+     * @returns { GridItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func columnEnd(columnEnd: ?Int32): GridItemAttribute
 
+    /**
+     * This parameter specifies the start line number of the current element.
+     *
+     * @params { ?Int32 } rowStart
+     * @returns { GridItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func rowStart(rowStart: ?Int32): GridItemAttribute
 
+    /**
+     * Specifies the end line number of the current element.
+     *
+     * @params { ?Int32 } value
+     * @returns { GridItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

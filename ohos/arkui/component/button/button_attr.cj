@@ -20,53 +20,104 @@ import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 
+/**
+ * Defines Button attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
+    /**
+     * Text size.
+     *
+     * @params { ?Length } value
+     * @returns { ButtonAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontSize(value: ?Length): ButtonAttribute
 
+    /**
+     * Font weight.
+     *
+     * @params { ?FontWeight } value
+     * @returns { ButtonAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontWeight(value: ?FontWeight): ButtonAttribute
 
+    /**
+     * Text color.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { ButtonAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(color: ?ResourceColor): ButtonAttribute
 
+    /**
+     * Font style.
+     *
+     * @params { ?FontStyle } value
+     * @returns { ButtonAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontStyle(value: ?FontStyle): ButtonAttribute
 
+    /**
+     * Font family.
+     *
+     * @params { ?ResourceStr } value
+     * @returns { ButtonAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontFamily(value: ?ResourceStr): ButtonAttribute
 
+    /**
+     * Describes the button style.
+     *
+     * @params { ?ButtonType } value
+     * @returns { ButtonAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func shape(value: ?ButtonType): ButtonAttribute
 
+    /**
+     * Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
+     *
+     * @params { ?Bool } value
+     * @returns { ButtonAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func stateEffect(value: ?Bool): ButtonAttribute
 
+    /**
+     * Describes the button style.
+     *
+     * @params { ?ButtonStyleMode } value - button style mode
+     * @returns { ButtonAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -19,11 +19,20 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Canvas attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface CanvasAttribute <: CommonMethod<CanvasAttribute> {
+    /**
+     * Event notification after the canvas component is constructed. You can draw the canvas at this time.
+     *
+     * @params { ?() -> Unit } callback
+     * @returns { CanvasAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
