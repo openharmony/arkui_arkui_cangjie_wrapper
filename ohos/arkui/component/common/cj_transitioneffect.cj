@@ -301,6 +301,14 @@ public class RotateOptions {
 
     /**
      * RotateOptions constructor
+     * @params { ?Float32 } angle
+     * @params { ?Float32 } x
+     * @params { ?Float32 } y
+     * @params { ?Float32 } z
+     * @params { ?Length } centerX
+     * @params { ?Length } centerY
+     * @params { ?Length } centerZ
+     * @params { ?Float32 } perspective
      */
     @!APILevel[
         22,
