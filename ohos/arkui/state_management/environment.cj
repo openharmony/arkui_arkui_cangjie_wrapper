@@ -160,6 +160,9 @@ public class Environment {
         })
     }
 
+    /**
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -173,7 +176,7 @@ public class Environment {
     }
 
     /**
-     * returns an Array<string> of all environment property keys
+     * Returns an Array<string> of all environment property keys.
      *
      * @returns { Array<string> } all environment property keys.
      * @throws { BusinessException } 100001 - Internal error.

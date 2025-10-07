@@ -18,6 +18,9 @@ package ohos.arkui.state_management
 import std.collection.ArrayList
 import ohos.labels.APILevel
 
+/**
+ * Defines class ObservedComplexAbstract.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -31,6 +34,10 @@ public abstract class ObservedComplexAbstract <: Observable {
 
     protected func unsubscribeInner(observer: Observer): Unit
 
+    /**
+     *
+     * @params { ObservedComplexAbstract } v
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -68,6 +75,10 @@ public abstract class ObservedComplexAbstract <: Observable {
         return propsInfo
     }
 
+    /**
+     *
+     * @params { String } info
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

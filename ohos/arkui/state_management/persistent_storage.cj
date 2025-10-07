@@ -19,6 +19,7 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 import std.collection.*
+import ohos.business_exception.BusinessException
 
 foreign {
     func FfiOHOSAceFrameworkPersistentGetString(key: CString): NativeOptionCString
@@ -104,6 +105,11 @@ public class PersistentStorage <: Observer {
         SubscriberManager.getInstance().add(this)
     }
 
+    /**
+     *
+     * @params { String } _
+     * @params { ArrayList<Int64> } _
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -112,12 +118,20 @@ public class PersistentStorage <: Observer {
         innerPropertyHasChanged()
     }
 
+    /**
+     *
+     * @params { String } _
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func notifyRead(_: String): Unit {}
 
+    /**
+     *
+     * @returns { Int64 }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -126,6 +140,9 @@ public class PersistentStorage <: Observer {
         subId
     }
 
+    /**
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -181,7 +198,7 @@ public class PersistentStorage <: Observer {
     }
 
     /**
-    * Reverse of persistProp
+    * Reverse of persistProp.
     *
     * @params { String } key - no longer persist the property named key
     * @throws { BusinessException } 100001 - Internal error.
@@ -195,7 +212,7 @@ public class PersistentStorage <: Observer {
     }
 
     /**
-     * Inform persisted AppStorage property names
+     * Inform persisted AppStorage property names.
      *
      * @returns { Array<String> } array of AppStorage keys
      * @throws { BusinessException } 100001 - Internal error.

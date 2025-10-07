@@ -73,8 +73,8 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Set parameters to obtain the toggle.
      *
-     * @params { ToggleType } toggleType
-     * @params { Bool } isOn
+     * @params { ?ToggleType } toggleType
+     * @params { ?Bool } isOn
      * @returns { This }
      */
     @!APILevel[
@@ -91,8 +91,8 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Set parameters to obtain the toggle.
      *
-     * @params { ToggleType } toggleType
-     * @params { Bool } isOn
+     * @params { ?ToggleType } toggleType
+     * @params { ?Bool } isOn
      * @params { () -> Unit } subcomponent
      * @returns { This }
      */
@@ -113,7 +113,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
 
     protected override func widthInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkToggleWidth(value_.value, value_.unitType.getValue())
@@ -125,7 +125,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
 
     protected override func heightInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkToggleHeight(value_.value, value_.unitType.getValue())
@@ -166,7 +166,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Called when the color of the selected button is set.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -184,7 +184,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Called when the color of the selected button is set.
      *
-     * @params { ResourceColor } color
+     * @params { ?ResourceColor } color
      * @returns { This }
      */
     @!APILevel[
@@ -237,7 +237,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Called when the selected state of the component changes.
      *
-     * @params { (Bool) -> Unit } callback
+     * @params { ?(Bool) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[

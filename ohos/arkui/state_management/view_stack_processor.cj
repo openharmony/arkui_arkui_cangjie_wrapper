@@ -28,10 +28,10 @@ foreign func FfiOHOSAceFrameworkStopGetAccessRecording(): Unit
 foreign func FfiOHOSAceFrameworkImplicitPopBeforeContinue(): Unit
 
 /**
- * ViewStackProcessor declaration
+ * ViewStackProcessor declaration.
  *
  * Implemntation in C++ and exposed to cangjie
- * all definitions in this file are framework internal
+ * all definitions in this file are framework internal.
  */
 @!APILevel[
     22,
@@ -41,6 +41,7 @@ public class ViewStackProcessor {
     /**
      * Make and return new elementId, will be used to create the next Component.
      *
+     * @returns { Int64 }
      */
     @!APILevel[
         22,
@@ -55,6 +56,7 @@ public class ViewStackProcessor {
      * Start Get access recording, and account all access to given elmtId.
      * Note this can be a different elmtId than the one used to create new Component.
      *
+     * @params { Int64 } elmtId
      */
     @!APILevel[
         22,
@@ -71,6 +73,8 @@ public class ViewStackProcessor {
      * but also a different one (in case a whole subtree gets accounted its root elmtId)
      *
      * returns the elmtId given by StartGetAccessRecordingFor -1 no access recording
+     *
+     * @returns { Int64 }
      */
     @!APILevel[
         22,

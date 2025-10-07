@@ -52,7 +52,7 @@ foreign {
 }
 
 /**
- * Router Mode
+ * Router Mode.
  *
  */
 @Derive[Equatable]
@@ -96,7 +96,7 @@ public enum RouterMode {
 }
 
 /**
- * Router State
+ * Router State.
  *
  */
 @!APILevel[
@@ -143,7 +143,7 @@ public class RouterState {
     public var params: String
 
     /**
-     * Router State constructor
+     * Router State constructor.
      *
      * @params { Int32 } index
      * @params { String } name
@@ -201,7 +201,7 @@ struct RouterStateList {
 }
 
 /**
- * class Router
+ * class Router.
  *
  */
  @!APILevel[

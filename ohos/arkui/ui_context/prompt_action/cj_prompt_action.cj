@@ -233,6 +233,7 @@ public class ButtonInfo {
      * @params { ResourceStr } text: Button text content.
      * @params { ResourceColor } color: Button text color.
      * @params { Bool } primary: Whether the button responds to the Enter/Space key by default.
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -689,7 +690,7 @@ public open class BaseDialogOptions {
 }
 
 /**
- * Dialog's custom content options
+ * Dialog's custom content options.
  *
  */
 @!APILevel[
@@ -789,7 +790,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
     public var shadow: ?ShadowOptions
 
     /**
-     * Defines the dialog's background blur Style
+     * Defines the dialog's background blur Style.
      *
      */
     @!APILevel[
@@ -799,7 +800,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
     public var backgroundBlurStyle: BlurStyle
 
     /**
-     * Dialog constructor
+     * Dialog constructor.
      *
      * @params { function } builder
      * @params { Rectangle } maskRect
@@ -891,7 +892,7 @@ public class CustomDialogOptions <: BaseDialogOptions {
 }
 
 /**
- * Dialog's show options
+ * Dialog's show options.
  *
  */
 @!APILevel[
@@ -972,7 +973,7 @@ public open class ShowDialogOptions {
     public var showInSubWindow: Bool
 
     /**
-     * Whether it is a modal dialog
+     * Whether it is a modal dialog.
      */
     @!APILevel[
         22,
@@ -991,7 +992,7 @@ public open class ShowDialogOptions {
     public var backgroundColor: ResourceColor
 
     /**
-     * Defines the dialog's background blur Style
+     * Defines the dialog's background blur Style.
      *
      */
     @!APILevel[
@@ -1001,7 +1002,7 @@ public open class ShowDialogOptions {
     public var backgroundBlurStyle: BlurStyle
 
     /**
-     * Defines the dialog's shadow option
+     * Defines the dialog's shadow option.
      *
      */
     @!APILevel[
@@ -1031,7 +1032,7 @@ public open class ShowDialogOptions {
     public var hoverModeArea: HoverModeAreaType
 
     /**
-     * Dialog's show options constructor
+     * Dialog's show options constructor.
      *
      * @params { ResourceStr } title
      * @params { ResourceStr } message
@@ -1085,7 +1086,7 @@ public open class ShowDialogOptions {
 }
 
 /**
- * Menu's Action options
+ * Menu's Action options.
  *
  */
 @!APILevel[
@@ -1127,7 +1128,7 @@ public open class ActionMenuOptions {
     public var showInSubWindow: Bool
 
     /**
-     * Whether it is a modal dialog
+     * Whether it is a modal dialog.
      */
     @!APILevel[
         22,
@@ -1136,7 +1137,7 @@ public open class ActionMenuOptions {
     public var isModal: Bool
 
     /**
-     * Menu's Action options constructor
+     * Menu's Action options constructor.
      *
      * @params { ResourceStr } title
      * @params { Array<ButtonInfo> } buttons
@@ -1163,7 +1164,7 @@ public open class ActionMenuOptions {
 }
 
 /**
- * Toast's show options
+ * Toast's show options.
  *
  */
 @!APILevel[
@@ -1292,7 +1293,7 @@ public class ShowToastOptions {
     public var hoverModeArea: HoverModeAreaType
 
     /**
-     * Toast's show options constructor
+     * Toast's show options constructor.
      *
      * @params { ResourceStr } message
      * @params { UInt32 } duration
@@ -1544,7 +1545,7 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
 }
 
 /**
- * class PromptAction
+ * class PromptAction.
  *
  */
 @!APILevel[
@@ -1564,7 +1565,8 @@ public class PromptAction {
    *
    * isModal = true and showInSubWindow = true cannot be used at the same time.
    *
-   * @params { promptAction.CustomDialogOptions } options - Options.
+   * @params { CustomDialogOptions } options - Options.
+   * @params { (Int32) -> Unit } callBack
    */
     @!APILevel[
         22,
@@ -1581,7 +1583,7 @@ public class PromptAction {
     /**
      * Close the custom dialog.
      *
-     * @params { number } dialogId - the dialog id that returned by openCustomDialog.
+     * @params { Int32 } dialogId - the dialog id that returned by openCustomDialog.
      */
     @!APILevel[
         22,
@@ -1616,7 +1618,7 @@ public class PromptAction {
      * Shows a dialog box in the given settings. This API uses an asynchronous callback to return the result.
      *
      * @params { ShowDialogOptions } options - Dialog box options.
-     * @params { ShowDialogCallBack } callback - Callback used to return the dialog
+     * @params { ShowDialogCallBack } callback - Callback used to return the dialog.
      * box response result.
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
@@ -1646,7 +1648,7 @@ public class PromptAction {
      * Shows an action menu in the given settings. This API uses an asynchronous callback to return the result.
      *
      * @params { ActionMenuOptions } options - Action menu options.
-     * @params { ActionMenuSuccessResponse } callback - Callback used to return the action menu
+     * @params { ShowActionMenuCallBack } callback - Callback used to return the action menu
      * response result.
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */

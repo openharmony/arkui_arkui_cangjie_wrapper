@@ -18,6 +18,9 @@ package ohos.arkui.state_management
 import ohos.labels.APILevel
 import std.collection.*
 
+/**
+ * Defines interface Observer.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -28,19 +31,19 @@ public interface Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onStateUpdate(info: String, dependentElmtIds: ArrayList<Int64>): Unit
-    
+
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func notifyRead(info: String): Unit
-    
+
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func id(): Int64
-    
+
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

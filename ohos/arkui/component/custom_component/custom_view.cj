@@ -103,6 +103,7 @@ public abstract class CustomView <: RemoteView & Observer {
      *
      * @params { Option<CustomView> } parent
      * @params { Option<LocalStorage> } localStorage
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -676,6 +677,7 @@ public abstract class CustomView <: RemoteView & Observer {
 
     /**
      * update function for IfElse branch.
+     *
      * @params { Int32 } branchId
      * @params { () -> Unit } branchFunc
      */
@@ -698,7 +700,7 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * get UIContext from current environment.
      *
-     * @return { UIContext }
+     * @returns { UIContext }
      */
     @!APILevel[
         22,

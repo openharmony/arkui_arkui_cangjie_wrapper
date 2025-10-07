@@ -272,6 +272,27 @@ public class DateTimeOptions {
 
     /**
      * DateTimeOptions Constructor.
+     *
+     * @params { ?String } locale
+     * @params { ?String } dateStyle
+     * @params { ?String } timeStyle
+     * @params { ?String } hourCycle
+     * @params { ?String } timeZone
+     * @params { ?String } numberingSystem
+     * @params { ?Bool } hour12
+     * @params { ?String } weekday
+     * @params { ?String } era
+     * @params { ?String } year
+     * @params { ?String } month
+     * @params { ?String } day
+     * @params { ?String } hour
+     * @params { ?String } minute
+     * @params { ?String } second
+     * @params { ?String } timeZoneName
+     * @params { ?String } dayPeriod
+     * @params { ?String } localeMatcher
+     * @params { ?String } formatMatcher
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -350,8 +371,9 @@ foreign {
 ]
 public class TextClockController <: RemoteDataLite {
     /**
-     * constructor.
+     * TextClockController constructor.
      *
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -411,7 +433,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * Anonymous Object Rectification.
      *
      * @params { ?Float32 } timeZoneOffset
-     * @params { TextClockController } controller
+     * @params { ?TextClockController } controller
      * @returns { TextClock }
      */
     @!APILevel[
@@ -440,7 +462,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * You can listen to this callback,
      * Use the format attribute method to customize data display in the callback.
      *
-     * @params { function } event - Listening date event callback.
+     * @params { ?(Int64) -> Unit } callback - Listening date event callback.
      * @returns { This }
      */
     @!APILevel[
@@ -457,15 +479,15 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * set display time format,such as "yyyy/mm/dd","yyyy-mm-dd".
-     * support time format：yyyy,mm,mmm(English month abbreviation),mmmm(Full name of the month in English),
+     * Set display time format, such as "yyyy/mm/dd","yyyy-mm-dd".
+     * Supports time format: yyyy,mm,mmm(English month abbreviation),mmmm(Full name of the month in English),
      * dd,ddd(English Week abbreviation),dddd(Full name of the week in English),
      * HH/hh(24-hour clock/12-hour clock),MM/mm(minute),SS/ss(second).
      * The default value is "hh:mm:ss" when TextClock is not in a form.
      * The default value is "hh:mm" when TextClock is in a form.
      * If the value has second or millisecond, the value will be set to the default value.
      *
-     * @params { ResourceStr } value
+     * @params { ?ResourceStr } value
      * @returns { This }
      */
     @!APILevel[
@@ -484,9 +506,9 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Called when the value of TextClock fontSize is set
+     * Called when the value of TextClock fontSize is set.
      *
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -502,9 +524,9 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Called when the value of TextClock fontColor is set
+     * Called when the value of TextClock fontColor is set.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -520,9 +542,9 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Called when the value of TextClock fontStyle is set
+     * Called when the value of TextClock fontStyle is set.
      *
-     * @params { FontStyle } value
+     * @params { ?FontStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -538,9 +560,9 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Called when the value of TextClock fontWeight is set
+     * Called when the value of TextClock fontWeight is set.
      *
-     * @params { FontWeight } value
+     * @params { ?FontWeight } value
      * @returns { This }
      */
     @!APILevel[
@@ -558,9 +580,9 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Called when the value of TextClock fontFamily is set
+     * Called when the value of TextClock fontFamily is set.
      *
-     * @params { ResourceStr } value
+     * @params { ?ResourceStr } value
      * @returns { This }
      */
     @!APILevel[
@@ -580,7 +602,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     /**
      * Called when the text shadow is set.
      *
-     * @params { Array<ShadowOptions> } value - The shadow options.
+     * @params { ?Array<ShadowOptions> } value - The shadow options.
      * @returns { This }
      */
     @!APILevel[
@@ -603,7 +625,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     /**
      * Called when the text shadow is set.
      *
-     * @params { ShadowOptions } value - The shadow options.
+     * @params { ?ShadowOptions } value - The shadow options.
      * @returns { This }
      */
     @!APILevel[

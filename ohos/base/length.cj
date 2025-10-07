@@ -107,6 +107,9 @@ public interface LengthProp {
     prop lpx: Length
 }
 
+/**
+ * Defines class LengthMetrics.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -115,6 +118,13 @@ public class LengthMetrics <: Length {
     let realValue: Float64
     let realUnit: LengthUnit
 
+    /**
+     * LengthMetrics constructor.
+     *
+     * @params { Float64 } value
+     * @params { LengthUnit } unit
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -145,7 +155,7 @@ public class LengthMetrics <: Length {
     }
 }
 /**
- * Defines the dimension property with number with units(vp|px|fp|lpx|%)
+ * Defines the dimension property with number with units(vp|px|fp|lpx|%).
  */
 @Derive[Equatable]
 @!APILevel[
@@ -196,9 +206,14 @@ public enum LengthUnit {
     | ...
 
     /**
+<<<<<<< HEAD
      * Get the length property of number value.
      *
      * @throws { BussnessException } - 100001 - Internal error.
+=======
+     *
+     * @returns { Int32 }
+>>>>>>> 8414072 (Add annotations.)
      */
     @!APILevel[
         22,
@@ -216,9 +231,15 @@ public enum LengthUnit {
     }
 
     /**
+<<<<<<< HEAD
      * Parse the length number value to LengthUnit type.
      *
      * @throws { BussnessException } - 100001 - Internal error.
+=======
+     *
+     * @params { Int32 } value
+     * @returns { LengthUnit }
+>>>>>>> 8414072 (Add annotations.)
      */
     @!APILevel[
         22,

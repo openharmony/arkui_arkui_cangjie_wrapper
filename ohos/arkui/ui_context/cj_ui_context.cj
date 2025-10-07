@@ -35,7 +35,7 @@ foreign {
 }
 
 /**
- * class UIContext
+ * Defines class UIContext.
  *
  */
 @!APILevel[
@@ -72,7 +72,7 @@ public class UIContext {
 
     /**
       * Get MeasureUtils.
-      * @returns { MeasureUtils } the MeasureUtils
+      * @returns { MeasureUtils } the MeasureUtils.
       */
     @!APILevel[
         22,
@@ -293,7 +293,7 @@ public class UIContext {
      * Defining animation function
      *
      * @params { AnimateParam } value - parameters for animation.
-     * @params { VoidCallback } event - the closure base on which, the system will create animation automatically
+     * @params { VoidCallback } event - the closure base on which, the system will create animation automatically.
      */
     @!APILevel[
         22,
@@ -307,6 +307,10 @@ public class UIContext {
     }
 }
 
+/**
+ * Defines class ContextMenuController.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -317,6 +321,9 @@ public class ContextMenuController {
         this.instanceId = instanceId
     }
 
+    /**
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

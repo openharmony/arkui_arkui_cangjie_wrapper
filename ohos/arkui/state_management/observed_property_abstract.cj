@@ -18,6 +18,9 @@ package ohos.arkui.state_management
 import ohos.labels.APILevel
 import std.collection.*
 
+/**
+ * Defines class ObservedPropertyAbstract.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -26,6 +29,12 @@ public abstract class ObservedPropertyAbstract <: Observable {
     protected let info: String
     protected let dependentElementIds_: ArrayList<Int64> = ArrayList<Int64>()
 
+    /**
+     * ObservedPropertyAbstract constructor.
+     *
+     * @params { String } info
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -38,12 +47,20 @@ public abstract class ObservedPropertyAbstract <: Observable {
         return this.info
     }
 
+    /**
+     *
+     * @params { Observer } observer
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func subscribeEx(observer: Observer): Unit
 
+    /**
+     *
+     * @params { Observer } observer
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -63,6 +80,10 @@ public abstract class ObservedPropertyAbstract <: Observable {
         ()
     }
 
+    /**
+     *
+     * @params { Int64 } rmElmtId
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

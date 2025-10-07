@@ -18,6 +18,9 @@ package ohos.arkui.state_management
 import std.collection.ArrayList
 import ohos.labels.APILevel
 
+/**
+ * Defines class ObservedObject.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -25,6 +28,10 @@ import ohos.labels.APILevel
 public abstract class ObservedObject <: ObservedComplexAbstract {
     private let publishVars: ArrayList<ObservedPropertyAbstract> = ArrayList<ObservedPropertyAbstract>()
 
+    /**
+     *
+     * @params { ObservedPropertyAbstract } publishVar
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -33,6 +40,10 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
         publishVars.add(publishVar)
     }
 
+    /**
+     *
+     * @returns { ArrayList<ObservedPropertyAbstract> }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

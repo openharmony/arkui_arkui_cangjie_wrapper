@@ -18,6 +18,9 @@ package ohos.arkui.state_management
 import std.collection.ArrayList
 import ohos.labels.APILevel
 
+/**
+ * Defines class Observable.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -243,7 +243,7 @@ public class Font {
     /**
      * Gets a list of fonts supported by system.
      *
-     * @returns { Array<String> } A list of font names
+     * @returns { Array<String> } A list of font names.
      */
     @!APILevel[
         22,
@@ -263,8 +263,8 @@ public class Font {
     /**
      * Get font details according to the font name.
      *
-     * @params { String } fontName - font name
-     * @returns { FontInfo } Returns the font info
+     * @params { String } fontName - font name.
+     * @returns { ?FontInfo } Returns the font info.
      */
     @!APILevel[
         22,

@@ -46,6 +46,10 @@ public interface ResourceColor {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 extend Int64 <: ResourceColor {
+    /**
+     *
+     * @returns { UInt32 }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -61,6 +65,10 @@ extend Int64 <: ResourceColor {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 extend UInt32 <: ResourceColor {
+    /**
+     *
+     * @returns { UInt32 }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -71,7 +79,7 @@ extend UInt32 <: ResourceColor {
 }
 
 /**
- * common class of color
+ * Common class of color.
  */
 @!APILevel[
     22,
@@ -138,7 +146,7 @@ public class Color <: ResourceColor {
     public static let Transparent: Color = Color(0, 0, 0, alpha: 0.0)
 
     /**
-     * Constructor of color.
+     * Constructor of Color.
      * @params { UInt8 } red
      * @params { UInt8 } green
      * @params { UInt8 } blue
@@ -151,7 +159,7 @@ public class Color <: ResourceColor {
     ]
     public init(red: UInt8, green: UInt8, blue: UInt8, alpha!: ?Float32 = None) {
         let tmpAlpha = alpha ?? 1.0
-        
+
         let a: UInt32 = match {
             case tmpAlpha > 1.0 => 0xff
             case tmpAlpha < 0.0 => 0
@@ -164,7 +172,7 @@ public class Color <: ResourceColor {
     }
 
     /**
-     * Constructor of color.
+     * Constructor of Color.
      *
      * @params { UInt32 } value
      * @returns { Color }
@@ -188,6 +196,10 @@ public class Color <: ResourceColor {
         return result
     }
 
+    /**
+     *
+     * @returns { UInt32 }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

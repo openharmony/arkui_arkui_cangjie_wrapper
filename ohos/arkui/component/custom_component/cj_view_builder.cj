@@ -38,7 +38,9 @@ public class ViewBuilder {
 
     /**
      * Initializes a new instance of the ViewBuilder class.
-     * @params { ()->Unit } build
+     *
+     * @params { () -> Unit } build
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -52,6 +54,7 @@ public class ViewBuilder {
 
 /**
  * Binds the view builder to the custom view.
+ *
  * @params { (CustomView) -> ViewBuilder } builder
  * @params { CustomView } thisView
  */
@@ -65,6 +68,7 @@ public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView) {
 
 /**
  * Binds the view builder to the custom view with one observed property.
+ *
  * @params { (CustomView, ObservedProperty<T1>) -> ViewBuilder } builder
  * @params { CustomView } thisView
  */
@@ -72,12 +76,13 @@ public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView) {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public func bind<T1>(builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder, thisView: CustomView) {
+public func bind<T1> (builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder, thisView: CustomView) {
     {x1: T1 => builder(thisView, ObservedProperty("", x1)).build()}
 }
 
 /**
  * Binds the view builder to the custom view with two observed properties.
+ *
  * @params { (CustomView, ObservedProperty<T1>, ObservedProperty<T2>) -> ViewBuilder } builder
  * @params { CustomView } thisView
  */
@@ -85,7 +90,7 @@ public func bind<T1>(builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder,
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public func bind<T1, T2>(
+public func bind<T1, T2> (
     builder: (CustomView, ObservedProperty<T1>, ObservedProperty<T2>) -> ViewBuilder,
     thisView: CustomView
 ) {
@@ -94,6 +99,7 @@ public func bind<T1, T2>(
 
 /**
  * Binds the view builder to the custom view with three observed properties.
+ *
  * @params { (CustomView, ObservedProperty<T1>, ObservedProperty<T2>, ObservedProperty<T3>) -> ViewBuilder } builder
  * @params { CustomView } thisView
  */
@@ -101,7 +107,7 @@ public func bind<T1, T2>(
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public func bind<T1, T2, T3>(
+public func bind<T1, T2, T3> (
     builder: (CustomView, ObservedProperty<T1>, ObservedProperty<T2>, ObservedProperty<T3>) -> ViewBuilder,
     thisView: CustomView
 ) {
@@ -121,7 +127,8 @@ public func bind<T1, T2, T3>(
 public class LegalCallCheck {
     /**
      * Checks whether the view builder is called in the correct context.
-     * @params { ViewBuilder } builder
+     *
+     * @params { ViewBuilder } _
      */
     @!APILevel[
         22,
@@ -131,7 +138,8 @@ public class LegalCallCheck {
 
     /**
      * Checks whether the view builder is called in the correct context.
-     * @params { CustomView } thisView
+     *
+     * @params { CustomView } _
      */
     @!APILevel[
         22,

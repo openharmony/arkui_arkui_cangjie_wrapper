@@ -19,6 +19,9 @@ import std.collection.*
 import ohos.base.*
 import ohos.labels.APILevel
 
+/**
+ * Defines class SubscriberManager.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -29,6 +32,10 @@ public class SubscriberManager {
     private var nextStateId: Int64 = 0
     private var subscriberById: HashMap<Int64, Observer> = HashMap<Int64, Observer>()
 
+    /**
+     *
+     * @returns { SubscriberManager }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -43,6 +50,11 @@ public class SubscriberManager {
         return now
     }
 
+    /**
+     *
+     * @params { Int64 } id
+     * @returns { Bool }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -51,6 +63,11 @@ public class SubscriberManager {
         return subscriberById.contains(id)
     }
 
+    /**
+     *
+     * @params { Int64 } id
+     * @returns { Option<Observer> }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -59,6 +76,10 @@ public class SubscriberManager {
         return subscriberById.get(id)
     }
 
+    /**
+     *
+     * @params { Observer } value
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -67,6 +88,11 @@ public class SubscriberManager {
         subscriberById.remove(value.id())
     }
 
+    /**
+     *
+     * @params { Observer } value
+     * @returns { Bool }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
