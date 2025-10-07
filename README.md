@@ -1,4 +1,4 @@
-# ArkUI Framework Cangjie Interface<a name="EN-US_TOPIC_0000001076213364"></a>
+# ArkUI Framework Cangjie Interface(beta feature)<a name="EN-US_TOPIC_0000001076213364"></a>
 
 ## Introduction<a name="section15701932113019"></a>
 

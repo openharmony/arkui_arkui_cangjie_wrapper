@@ -1,4 +1,4 @@
-# ArkUI开发框架仓颉封装<a name="ZH-CN_TOPIC_0000001076213364"></a>
+# ArkUI开发框架仓颉封装（beta特性）<a name="ZH-CN_TOPIC_0000001076213364"></a>
 
 ## 简介<a name="section15701932113019"></a>
 
