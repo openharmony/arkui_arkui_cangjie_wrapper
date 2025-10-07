@@ -20,11 +20,20 @@ import ohos.arkui.component.util.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Blank Attribute.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface BlankAttribute <: CommonMethod<BlankAttribute> {
+    /**
+     * Sets the color to fill the blank
+     *
+     * @params { ?ResourceColor } value
+     * @returns { BlankAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
