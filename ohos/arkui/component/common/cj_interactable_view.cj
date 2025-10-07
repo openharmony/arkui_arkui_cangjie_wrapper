@@ -355,8 +355,6 @@ public class DragItemInfo {
 public class MouseEvent <: BaseEvent {
     /**
      * X coordinate of the mouse pointer relative to the upper left corner of the application window.
-     *
-     *
      */
     @!APILevel[
         22,
@@ -366,8 +364,6 @@ public class MouseEvent <: BaseEvent {
 
     /**
      * Y coordinate of the mouse pointer relative to the upper left corner of the application window.
-     *
-     *
      */
     @!APILevel[
         22,
@@ -377,7 +373,6 @@ public class MouseEvent <: BaseEvent {
 
     /**
      * X coordinate of the mouse pointer relative to the upper left corner of the component being clicked.
-     *
      */
     @!APILevel[
         22,
@@ -387,7 +382,6 @@ public class MouseEvent <: BaseEvent {
 
     /**
      * Y coordinate of the mouse pointer relative to the upper left corner of the component being clicked.
-     *
      */
     @!APILevel[
         22,
@@ -397,7 +391,6 @@ public class MouseEvent <: BaseEvent {
 
     /**
      * Mouse button of the click event.
-     *
      */
     @!APILevel[
         22,
@@ -407,7 +400,6 @@ public class MouseEvent <: BaseEvent {
 
     /**
      * Mouse action of the click event.
-     *
      */
     @!APILevel[
         22,

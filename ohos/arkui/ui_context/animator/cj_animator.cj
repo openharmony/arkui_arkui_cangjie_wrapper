@@ -322,10 +322,6 @@ public class AnimatorResult <: RemoteDataLite {
     var onCancel_: () -> Unit = {=>}
     var onRepeat_: () -> Unit = {=>}
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     init(options: AnimatorOptions) {
         super(
             unsafe {

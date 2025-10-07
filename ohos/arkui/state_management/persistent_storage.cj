@@ -144,7 +144,9 @@ public class PersistentStorage <: Observer {
             case None => PersistentStorage.instance = PersistentStorage()
             case Some(v) => ()
         }
-        PersistentStorage.instance.getOrThrow()
+        PersistentStorage.instance.getOrThrow({
+            => BusinessException(100001, "Internal error.")
+        })
     }
 
     /**
@@ -152,6 +154,7 @@ public class PersistentStorage <: Observer {
      *
      * @params { String } key
      * @params { T } defaultValue
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -167,6 +170,7 @@ public class PersistentStorage <: Observer {
      * works as persistProp for multiple properties.
      *
      * @params { Array<(String, T)> } key
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -180,6 +184,7 @@ public class PersistentStorage <: Observer {
     * Reverse of persistProp
     *
     * @params { String } key - no longer persist the property named key
+    * @throws { BusinessException } 100001 - Internal error.
     */
     @!APILevel[
         22,
@@ -193,6 +198,7 @@ public class PersistentStorage <: Observer {
      * Inform persisted AppStorage property names
      *
      * @returns { Array<String> } array of AppStorage keys
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,

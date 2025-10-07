@@ -103,7 +103,7 @@ func generateEntryFunc(input: Tokens, appEntryIdent: Token, localStorageAttr: To
     let entryClassIdent = (parseDecl(input) as ClassDecl).getOrThrow().identifier
     quote(
         public func $appEntryIdent(): Bool {
-            let view = $entryClassIdent(Option<CustomView>.None, localStorage: $localStorageAttr)
+            let view = $entryClassIdent(Option<CustomView>.None, __gen_local_storage: $localStorageAttr)
             loadNativeView(view)
         }
     )

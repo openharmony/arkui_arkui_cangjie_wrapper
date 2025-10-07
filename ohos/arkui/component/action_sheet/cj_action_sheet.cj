@@ -337,7 +337,6 @@ public class DismissDialogAction {
     }
     /**
      * Defines dialog dismiss function.
-     *
      */
     @!APILevel[
         22,
@@ -356,7 +355,6 @@ protected func parseToDismissDialogAction(reason: Int32): DismissDialogAction {
 
 /**
  * The options of ActionSheet.
- *
  */
 @!APILevel[
     22,
@@ -365,7 +363,6 @@ protected func parseToDismissDialogAction(reason: Int32): DismissDialogAction {
 public class ActionSheetOptions {
     /**
      * Title of the dialog box.
-     *
      */
     @!APILevel[
         22,
@@ -374,7 +371,6 @@ public class ActionSheetOptions {
     public var title: ?ResourceStr
     /**
      * Content of the dialog box.
-     *
      */
     @!APILevel[
         22,
@@ -383,7 +379,6 @@ public class ActionSheetOptions {
     public var message: ?ResourceStr
     /**
      * Options in the dialog box. Each option supports the image, text, and callback.
-     *
      */
     @!APILevel[
         22,
@@ -402,7 +397,6 @@ public class ActionSheetOptions {
      * Information about the confirm button. When the dialog box has focus and focus has not been shifted using the Tab
      * key, the button responds to the Enter key by default, and multiple dialog boxes can gain focus consecutively
      * to respond automatically. The default response to the Enter key does not work when defaultFocus is set to true.
-     *
      */
     @!APILevel[
         22,
@@ -411,8 +405,6 @@ public class ActionSheetOptions {
     public var confirm: ?ActionSheetButtonOptions
     /**
      * Whether to close the dialog box when the overlay is clicked.
-     *
-     * the opposite.
      */
     @!APILevel[
         22,
@@ -422,7 +414,6 @@ public class ActionSheetOptions {
     /**
      * Callback invoked when the dialog box is closed after the overlay is clicked.
      * Anonymous Object Rectification.
-     *
      */
     @!APILevel[
         22,
@@ -435,7 +426,6 @@ public class ActionSheetOptions {
      * <br>If showInSubWindow is set to true in UIExtension, the dialog box is aligned with the host window based
      * on UIExtension.
      * </p>
-     *
      */
     @!APILevel[
         22,
@@ -444,9 +434,8 @@ public class ActionSheetOptions {
     public var alignment: ?DialogAlignment
     /**
      * Offset of the dialog box relative to the alignment position.
-     * <br>When alignment is set to Top, TopStart, or TopEnd: {dx: 0,dy: "40vp"}
-     * <br>When alignment is set to any other value: {dx: 0,dy: "-40vp"}
-     *
+     * <br>When alignment is set to Top, TopStart, or TopEnd: dx: 0, dy: 40.vp
+     * <br>When alignment is set to any other value: dx: 0,dy: -40.vp
      */
     @!APILevel[
         22,
@@ -459,7 +448,6 @@ public class ActionSheetOptions {
      * <p><strong>NOTE</strong>:
      * <br>maskRect does not take effect when showInSubWindow is set to true.
      * </p>
-     *
      */
     @!APILevel[
         22,
@@ -472,7 +460,6 @@ public class ActionSheetOptions {
      * <br>A dialog box whose showInSubWindow attribute is true cannot trigger the display of another dialog box whose
      * showInSubWindow attribute is also true.
      * </p>
-     *
      */
     @!APILevel[
         22,
@@ -493,7 +480,6 @@ public class ActionSheetOptions {
      * <br>When backgroundColor is set to a non-transparent color, backgroundBlurStyle must be set to BlurStyle.NONE;
      * otherwise, the color display may not meet the expected effect.
      * </p>
-     *
      */
     @!APILevel[
         22,
@@ -507,7 +493,6 @@ public class ActionSheetOptions {
      * value other than NONE, do not set backgroundColor. If you do, the color display may not produce the expected
      * visual effect.
      * </p>
-     *
      */
     @!APILevel[
         22,
@@ -523,7 +508,6 @@ public class ActionSheetOptions {
      * does not support the value CLOSE_BUTTON.
      * 2. In the onWillDismiss callback, another onWillDismiss callback is not allowed.
      * </p>
-     *
      */
     @!APILevel[
         22,
@@ -560,7 +544,6 @@ public class ActionSheetOptions {
     * <br>When borderColor is of type LocalizedEdgeColors, the layout order can be dynamically adjusted based on the
     * user's language settings.
     * </p>
-    *
     */
     @!APILevel[
         22,
@@ -569,7 +552,6 @@ public class ActionSheetOptions {
     public var borderColor: ?ResourceColor
    /**
     * Border style of the dialog box.
-    *
     */
     @!APILevel[
         22,
@@ -600,7 +582,6 @@ public class ActionSheetOptions {
     public var height: ?Length
     /**
      * Shadow of the dialog box.
-     *
      */
     @!APILevel[
         22,
@@ -616,7 +597,6 @@ public class ActionSheetOptions {
      * 3. Touching the Back button during the exit animation does not affect the animation playback. Touching the
      * Back button again closes the application.
      * </p>
-     *
      */
     @!APILevel[
         22,
@@ -805,7 +785,6 @@ public class ActionSheetOptions {
 
 /**
  * ActionSheet offset.
- *
  */
 @!APILevel[
     22,
@@ -815,7 +794,6 @@ public class ActionSheetOffset {
    /**
     * Offset of the action sheet along the x-axis relative to the alignment position.
     * Anonymous Object Rectification.
-    *
     */
     @!APILevel[
         22,
@@ -825,7 +803,6 @@ public class ActionSheetOffset {
    /**
     * Offset of the action sheet along the y-axis relative to the alignment position.
     * Anonymous Object Rectification.
-    *
     */
     @!APILevel[
         22,

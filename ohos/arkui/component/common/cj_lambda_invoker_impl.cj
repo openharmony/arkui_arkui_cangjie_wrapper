@@ -16,7 +16,6 @@
 package ohos.arkui.component.common
 
 import ohos.arkui.component.native_struct.*
-import ohos.labels.APILevel
 import ohos.base.*
 import ohos.ffi.*
 internal import ohos.business_exception.BusinessException
@@ -251,10 +250,6 @@ protected class CallbackCJWebResourceRequest <: BaseCallBack {
         registerSelf()
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, res: CPointer<Unit>): Unit {
         if (argc != 1) {
             throw BusinessException(190002, "The callback function is invalid.")

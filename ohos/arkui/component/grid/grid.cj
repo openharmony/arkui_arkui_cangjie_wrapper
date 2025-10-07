@@ -164,6 +164,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      *
      * @params { String } value
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -183,6 +184,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      *
      * @params { Length } value
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -212,6 +214,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      *
      * @params { Length } value
      * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,

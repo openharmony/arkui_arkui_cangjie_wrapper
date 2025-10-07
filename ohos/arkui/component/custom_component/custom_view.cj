@@ -471,7 +471,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @params { CustomView } view
      * @params { Bool } isRecycling
      * @params { String } name
-     * @params { () => Unit } callback
+     * @params { () -> Unit } callback
      */
     @!APILevel[
         22,
