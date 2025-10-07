@@ -190,7 +190,7 @@ public class LazyForEach <: UINodeBase {
         }): LazyForEach {
         let funcs = LazyForEachFuncs<T>(parentView, dataSource, itemGeneratorFunc, keyGeneratorFunc)
         unsafe {
-            FfiOHOSAceFrameworkLazyForEachCreate(viewID, parentView.nativeView.getID(), funcs.getID())
+            FfiOHOSAceFrameworkLazyForEachCreate(viewID, parentView.nativeView_inner__.getID(), funcs.getID())
         }
         this
     }
