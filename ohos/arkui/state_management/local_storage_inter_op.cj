@@ -114,11 +114,7 @@ class LocalStorageInterOp {
     private let storage = HashMap<String, ObservedPropertyAbstract>()
     protected static var instance_: ?LocalStorageInterOp = None
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public static func getOrCreate(): LocalStorageInterOp {
+    protected static func getOrCreate(): LocalStorageInterOp {
         match (instance_) {
             case Some(v) => ()
             case None => instance_ = LocalStorageInterOp()
@@ -135,28 +131,16 @@ class LocalStorageInterOp {
         return jsStorage ?? throw NoneValueException("localStorageInterOp: get jsStorage failed.")
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func aboutToBeDeleted(): Bool {
+    protected func aboutToBeDeleted(): Bool {
         return this.clear()
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func has(propName: String): Bool {
+   protected func has(propName: String): Bool {
         Bool.fromJSValue(getRuntimeGlobal(),
             interOpCall(getJsStorage()["has"], [propName.toJSValue(getRuntimeGlobal())], getJsStorage().toJSValue()))
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func keys() {
+    protected func keys() {
         let it = interOpCall(getJsStorage()["keys"], [], getJsStorage().toJSValue()).asObject()
         let retHashmap = HashMap<String, Int64>()
         while (true) {
@@ -170,19 +154,11 @@ class LocalStorageInterOp {
         return retHashmap.keys()
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func size(): Int64 {
+    protected func size(): Int64 {
         Int64.fromJSValue(getRuntimeGlobal(), interOpCall(getJsStorage()["size"], [], getJsStorage().toJSValue()))
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func get<T>(propName: String): T where T <: JSInteropType<T> {
+    protected func get<T>(propName: String): T where T <: JSInteropType<T> {
         let ret = interOpCall(getJsStorage()["get"], [propName.toJSValue(getRuntimeGlobal())],
             getJsStorage().toJSValue())
         if (ret.isUndefined()) {
@@ -192,11 +168,7 @@ class LocalStorageInterOp {
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func set<T>(propName: String, value: T): Bool where T <: JSInteropType<T> {
+    protected func set<T>(propName: String, value: T): Bool where T <: JSInteropType<T> {
         Bool.fromJSValue(
             getRuntimeGlobal(),
             interOpCall(
@@ -207,11 +179,7 @@ class LocalStorageInterOp {
         )
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setOrCreate<T>(propName: String, value: T): Bool where T <: JSInteropType<T> {
+    protected func setOrCreate<T>(propName: String, value: T): Bool where T <: JSInteropType<T> {
         Bool.fromJSValue(
             getRuntimeGlobal(),
             interOpCall(
@@ -222,35 +190,19 @@ class LocalStorageInterOp {
         )
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func link<T>(propName: String): ObservedProperty<T> where T <: JSInteropType<T> {
+    protected func link<T>(propName: String): ObservedProperty<T> where T <: JSInteropType<T> {
         callStorageLink<T>(propName)
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setAndLink<T>(propName: String, value: T): ObservedProperty<T> where T <: JSInteropType<T> {
+    protected func setAndLink<T>(propName: String, value: T): ObservedProperty<T> where T <: JSInteropType<T> {
         callStorageSetAndLink<T>(propName, value)
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func `prop`<T>(propName: String): ObservedProperty<T> where T <: JSInteropType<T> {
+    protected func `prop`<T>(propName: String): ObservedProperty<T> where T <: JSInteropType<T> {
         callStorageLink<T>(propName)
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func setAndProp<T>(propName: String, value: T): ObservedProperty<T> where T <: JSInteropType<T> {
+    protected func setAndProp<T>(propName: String, value: T): ObservedProperty<T> where T <: JSInteropType<T> {
         callStorageSetAndLink<T>(propName, value)
     }
 
@@ -290,28 +242,16 @@ class LocalStorageInterOp {
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func delete(propName: String): Bool {
+    protected func delete(propName: String): Bool {
         Bool.fromJSValue(getRuntimeGlobal(),
             interOpCall(getJsStorage()["delete"], [propName.toJSValue(getRuntimeGlobal())], getJsStorage().toJSValue()))
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func clear(): Bool {
+    protected func clear(): Bool {
         Bool.fromJSValue(getRuntimeGlobal(), interOpCall(getJsStorage()["clear"], [], getJsStorage().toJSValue()))
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func hasChanged(context: JSContext, callInfo: JSCallInfo): JSValue {
+    protected func hasChanged(context: JSContext, callInfo: JSCallInfo): JSValue {
         let obj = callInfo[0].asObject()
         let propName = String.fromJSValue(getRuntimeGlobal(), interOpCall(obj["info"], [], obj.toJSValue()))
         Hilog.debug(0, "cangjiePage", "prop ${propName} hasChanged")

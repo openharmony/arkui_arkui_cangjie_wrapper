@@ -1098,8 +1098,8 @@ func generateInitFunc(classDecl: ClassDecl) {
 
     // add init function
     return quote(
-        public init(parent: Option<$CUSTOM_VIEW> $initParams, localStorage!: Option < LocalStorage >= None) {
-            super(parent, localStorage)
+        public init(__gen_parent: Option<$CUSTOM_VIEW> $initParams, __gen_local_storage!: Option < LocalStorage >= None) {
+            super(__gen_parent, __gen_local_storage)
             $localStorageVarInit
             $initBodyAssign
             $initBodySubscribe
@@ -1107,7 +1107,7 @@ func generateInitFunc(classDecl: ClassDecl) {
             $customDialogBindDecls
             $watchDecls
             registerSelf()
-            parent?.addChildById(id(), this)
+            __gen_parent?.addChildById(id(), this)
         }
     )
 }
@@ -1338,7 +1338,7 @@ func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView
     return quote(
         match ($callExpr) {
             case cv: $CUSTOM_VIEW =>
-                if (cv.isReusable) {
+                if (cv.isReusable_inner__) {
                     let rp: ReuseParams = ReuseParams($paramTokens)
                     $thisView.observeComponentCreation({elmtId, isInitialRender => __Recycle__ {
                         $thisView.observeRecycleComponentCreation($funcName, {elmtId, isInitialRender, recycleNode =>

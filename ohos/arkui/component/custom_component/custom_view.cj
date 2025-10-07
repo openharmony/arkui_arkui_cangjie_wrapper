@@ -54,36 +54,36 @@ type RecycleUpdateFunc = (Int64, Bool, ?CustomView) -> UINodeBase
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class CustomView <: RemoteView & Observer {
-    protected let nativeView: View
+    protected let nativeView_inner__: View
 
-    private let compId_: Int64
+    private let compId_inner__: Int64
 
-    private var provideVars_ = HashMap<String, ObservedPropertyAbstract>()
-    private let watchedProps_ = HashMap<String, () -> Unit>()
+    private var provideVars_inner__ = HashMap<String, ObservedPropertyAbstract>()
+    private let watchedProps_inner__ = HashMap<String, () -> Unit>()
 
-    protected var dirtDescendantElementIds_ = HashSet<Int64>()
-    private var propsUsedForRender = HashSet<String>()
-    private var isRenderingInProgress: Bool = false
-    protected var updateFuncByElmtId = HashMap<Int64, UpdateFuncNew>()
+    protected var dirtDescendantElementIds_inner__ = HashSet<Int64>()
+    private var propsUsedForRender_inner__ = HashSet<String>()
+    private var isRenderingInProgress_inner__: Bool = false
+    protected var updateFuncByElmtId_inner__ = HashMap<Int64, UpdateFuncNew>()
 
-    private var children_: HashMap<Int64, CustomView> = HashMap<Int64, CustomView>()
+    private var children_inner__: HashMap<Int64, CustomView> = HashMap<Int64, CustomView>()
 
-    private let lazyChildren_ = HashMap<String, CustomView>()
-    private let lazyGroups_ = HashMap<String, ArrayList<String>>()
-    private var isLazyForEachProcess_ = false
-    private var lazyGroupId_: String = ""
-    private var localStorage_: Option<LocalStorage> = None
-    private var parent_: Option<CustomView> = None
+    private let lazyChildren_inner__ = HashMap<String, CustomView>()
+    private let lazyGroups_inner__ = HashMap<String, ArrayList<String>>()
+    private var isLazyForEachProcess_inner__ = false
+    private var lazyGroupId_inner__: String = ""
+    private var localStorage_inner__: Option<LocalStorage> = None
+    private var parent_inner__: Option<CustomView> = None
 
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var isReusable: Bool = false
+    public var isReusable_inner__: Bool = false
     private var recycleManager_: ?RecycleManager = None
     private var hasBeenRecycled_: Bool = false
-    private var delayRecycleNodeRerender: Bool = false
-    private var delayRecycleNodeRerenderDeep: Bool = false
+    private var delayRecycleNodeRerender_: Bool = false
+    private var delayRecycleNodeRerenderDeep_: Bool = false
     private var runReuse_: Bool = false
 
     @!APILevel[
@@ -92,11 +92,11 @@ public abstract class CustomView <: RemoteView & Observer {
     ]
     public init(parent: Option<CustomView>, localStorage: Option<LocalStorage>) {
         super()
-        nativeView = View.create(id_)
-        compId_ = SubscriberManager.getInstance().makeId()
-        provideVars_.add(all: parent?.provideVars_ ?? HashMap<String, ObservedPropertyAbstract>())
-        parent_ = parent
-        localStorage_ = localStorage
+        nativeView_inner__ = View.create(id_)
+        compId_inner__ = SubscriberManager.getInstance().makeId()
+        provideVars_inner__.add(all: parent?.provideVars_inner__ ?? HashMap<String, ObservedPropertyAbstract>())
+        parent_inner__ = parent
+        localStorage_inner__ = localStorage
     }
 
     @!APILevel[
@@ -104,13 +104,13 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getLocalStorage(): LocalStorage {
-        if (localStorage_.isNone() && parent_.isSome()) {
-            localStorage_ = parent_.getOrThrow().getLocalStorage()
+        if (localStorage_inner__.isNone() && parent_inner__.isSome()) {
+            localStorage_inner__ = parent_inner__.getOrThrow().getLocalStorage()
         }
-        if (localStorage_.isNone()) {
-            localStorage_ = LocalStorage()
+        if (localStorage_inner__.isNone()) {
+            localStorage_inner__ = LocalStorage()
         }
-        localStorage_.getOrThrow()
+        localStorage_inner__.getOrThrow()
     }
 
     @!APILevel[
@@ -120,16 +120,16 @@ public abstract class CustomView <: RemoteView & Observer {
     public func declareWatch<T>(propMember: ObservedProperty<T>, callBack: () -> Unit) {
         match (propMember.getInner() as ObservedComplexAbstract) {
             case Some(value) =>
-                watchedProps_.add(value.getInfo(), callBack)
+                watchedProps_inner__.add(value.getInfo(), callBack)
                 let propsInfo = value.getPropsInfo()
                 for (info in propsInfo) {
-                    watchedProps_.add(info, callBack)
+                    watchedProps_inner__.add(info, callBack)
                 }
             case None => ()
         }
 
         match (propMember as ObservedPropertyAbstract) {
-            case Some(value) => watchedProps_.add(value.getInfo(), callBack)
+            case Some(value) => watchedProps_inner__.add(value.getInfo(), callBack)
             case None => ()
         }
     }
@@ -145,12 +145,12 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     protected override func onAboutToRender(): Unit {
-        isRenderingInProgress = true
-        propsUsedForRender.clear()
+        isRenderingInProgress_inner__ = true
+        propsUsedForRender_inner__.clear()
     }
 
     protected override func onAfterRender(): Unit {
-        isRenderingInProgress = false
+        isRenderingInProgress_inner__ = false
     }
 
     @!APILevel[
@@ -158,7 +158,7 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func forceCompleteRerender(deep: Bool): Unit {
-        let arr = this.updateFuncByElmtId.keys().toArray()
+        let arr = this.updateFuncByElmtId_inner__.keys().toArray()
         arr.sortBy(
             comparator: {
                 a, b =>
@@ -175,7 +175,7 @@ public abstract class CustomView <: RemoteView & Observer {
             updateElement(id)
         }
         if (deep) {
-            for (child in children_.values()) {
+            for (child in children_inner__.values()) {
                 if (!child.isRecycled()) {
                     child.forceCompleteRerender(true)
                 } else {
@@ -189,13 +189,13 @@ public abstract class CustomView <: RemoteView & Observer {
         if (elmtId == id()) {
             return
         }
-        match (updateFuncByElmtId.get(elmtId)) {
+        match (updateFuncByElmtId_inner__.get(elmtId)) {
             case None => BaseLog.error("update function of ElementId ${elmtId} not found, internal error!")
             case Some(updateFunc) =>
                 ViewStackProcessor.StartGetAccessRecordingFor(elmtId)
                 updateFunc(elmtId, false).update()
                 ViewStackProcessor.StopGetAccessRecording()
-                nativeView.finishUpdateFunc(elmtId)
+                nativeView_inner__.finishUpdateFunc(elmtId)
         }
     }
 
@@ -205,9 +205,9 @@ public abstract class CustomView <: RemoteView & Observer {
     ]
     public func updateDirtyElements() {
         do {
-            let deletedElmtIds = nativeView.getDeletedElemtIds()
+            let deletedElmtIds = nativeView_inner__.getDeletedElemtIds()
             this.purgeDeletedElmtIds(deletedElmtIds)
-            let arr = dirtDescendantElementIds_.toArray()
+            let arr = dirtDescendantElementIds_inner__.toArray()
             arr.sortBy(
                 comparator: {
                     a, b =>
@@ -228,9 +228,9 @@ public abstract class CustomView <: RemoteView & Observer {
                 } else {
                     updateElement(elmtId)
                 }
-                this.dirtDescendantElementIds_.remove(elmtId)
+                this.dirtDescendantElementIds_inner__.remove(elmtId)
             }
-        } while (this.dirtDescendantElementIds_.size > 0)
+        } while (this.dirtDescendantElementIds_inner__.size > 0)
     }
 
     protected func purgeDeletedElmtIds(rmElmtIds: ArrayList<Int64>) {
@@ -241,14 +241,14 @@ public abstract class CustomView <: RemoteView & Observer {
         let removedElmtIds: ArrayList<Int64> = ArrayList<Int64>()
 
         for (elmtId in rmElmtIds) {
-            match (updateFuncByElmtId.remove(elmtId)) {
+            match (updateFuncByElmtId_inner__.remove(elmtId)) {
                 case None => ()
                 case _ =>
                     purgeVariableDependenciesOnElmtId(elmtId)
                     removedElmtIds.add(elmtId)
             }
         }
-        nativeView.deletedElmtIdsHaveBeenPurged(removedElmtIds);
+        nativeView_inner__.deletedElmtIdsHaveBeenPurged(removedElmtIds);
     }
 
     @!APILevel[
@@ -289,7 +289,7 @@ public abstract class CustomView <: RemoteView & Observer {
         ViewStackProcessor.StartGetAccessRecordingFor(elmtId)
         compilerAssignedUpdateFunc(elmtId, true).initial()
         ViewStackProcessor.StopGetAccessRecording()
-        updateFuncByElmtId.add(elmtId, compilerAssignedUpdateFunc)
+        updateFuncByElmtId_inner__.add(elmtId, compilerAssignedUpdateFunc)
         return
     }
 
@@ -308,12 +308,12 @@ public abstract class CustomView <: RemoteView & Observer {
         }
         let node = nodeOpt.getOrThrow()
         let newElemtId = ViewStackProcessor.AllocateNewElmetIdForNextComponent()
-        let oldElemtId = Int64(node.nativeView.getElementId())
+        let oldElemtId = Int64(node.nativeView_inner__.getElementId())
         let recycleManager = recycleManager_.getOrThrow()
         recycleManager.updateNodeId(oldElemtId, newElemtId)
         node.hasBeenRecycled_ = false
-        if (updateFuncByElmtId.contains(oldElemtId)) {
-            updateFuncByElmtId[oldElemtId] = compilerAssignedUpdateFunc
+        if (updateFuncByElmtId_inner__.contains(oldElemtId)) {
+            updateFuncByElmtId_inner__[oldElemtId] = compilerAssignedUpdateFunc
         }
         ViewStackProcessor.StartGetAccessRecordingFor(newElemtId)
         recycleUpdateFunc(oldElemtId, true, node).initial()
@@ -330,7 +330,7 @@ public abstract class CustomView <: RemoteView & Observer {
     public override func aboutToReuseInternal(param: ReuseParams): Unit {
         this.runReuse_ = true
         aboutToReuse(param)
-        if (!this.delayRecycleNodeRerender) {
+        if (!this.delayRecycleNodeRerender_) {
             updateDirtyElements()
         } else {
             flushDelayCompleteRerender()
@@ -363,7 +363,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     protected override func recycleSelf(name: String) {
-        match (parent_) {
+        match (parent_inner__) {
             case Some(v) =>
                 v.getOrCreateRecycleManager().pushRecycleNode(name, this)
                 hasBeenRecycled_ = true
@@ -376,7 +376,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     protected func traverseChildDoRecycleOrReuse(recycleOrReuse: Bool, param!: ReuseParams = ReuseParams([])): Unit {
-        for (child in children_.values()) {
+        for (child in children_inner__.values()) {
             if (!child.hasBeenRecycled_) {
                 if (recycleOrReuse) {
                     child.aboutToRecycleInternal()
@@ -388,17 +388,17 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     protected func delayCompleteRerender(deep: Bool) {
-        this.delayRecycleNodeRerender = true
-        this.delayRecycleNodeRerenderDeep = deep
+        this.delayRecycleNodeRerender_ = true
+        this.delayRecycleNodeRerenderDeep_ = deep
     }
 
     protected func flushDelayCompleteRerender() {
-        this.forceCompleteRerender(this.delayRecycleNodeRerenderDeep);
-        this.delayRecycleNodeRerender = false
+        this.forceCompleteRerender(this.delayRecycleNodeRerenderDeep_);
+        this.delayRecycleNodeRerender_ = false
     }
 
     protected func resetRecycleCustomNode() {
-        nativeView.resetRecycleCustomNode()
+        nativeView_inner__.resetRecycleCustomNode()
     }
 
     @!APILevel[
@@ -422,7 +422,7 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addProvideVar(value: ObservedPropertyAbstract, name: String) {
-        this.provideVars_.add(name, value)
+        this.provideVars_inner__.add(name, value)
     }
 
     @!APILevel[
@@ -430,7 +430,7 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func initializeConsume(name: String): ObservedPropertyAbstract {
-        match (provideVars_.get(name)) {
+        match (provideVars_inner__.get(name)) {
             case Some(v) => return v
             case _ => throw BusinessException(10905304, "Missing @Provide property with name ${name}.")
         }
@@ -441,8 +441,8 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func notifyRead(stateInfo: String): Unit {
-        if (this.isRenderingInProgress) {
-            propsUsedForRender.add(stateInfo)
+        if (this.isRenderingInProgress_inner__) {
+            propsUsedForRender_inner__.add(stateInfo)
         }
     }
 
@@ -451,25 +451,25 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStateUpdate(stateInfo: String, dependentElmtIds: ArrayList<Int64>): Unit {
-        nativeView.syncInstanceId()
-        match (watchedProps_.get(stateInfo)) {
+        nativeView_inner__.syncInstanceId()
+        match (watchedProps_inner__.get(stateInfo)) {
             case Some(v) => v()
             case _ => ()
         }
-        if (dependentElmtIds.size != 0 && !nativeView.isFirstRender()) {
-            if (dirtDescendantElementIds_.size == 0 && !runReuse_) {
-                nativeView.markNeedUpdate()
+        if (dependentElmtIds.size != 0 && !nativeView_inner__.isFirstRender()) {
+            if (dirtDescendantElementIds_inner__.size == 0 && !runReuse_) {
+                nativeView_inner__.markNeedUpdate()
             }
             for (elmtId in dependentElmtIds) {
                 if (hasRecycleManager()) {
                     let rm = recycleManager_.getOrThrow()
-                    dirtDescendantElementIds_.add(rm.proxyNodeId(elmtId))
+                    dirtDescendantElementIds_inner__.add(rm.proxyNodeId(elmtId))
                 } else {
-                    dirtDescendantElementIds_.add(elmtId)
+                    dirtDescendantElementIds_inner__.add(elmtId)
                 }
             }
         }
-        nativeView.restoreInstanceId()
+        nativeView_inner__.restoreInstanceId()
     }
 
     @!APILevel[
@@ -477,23 +477,23 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func id(): Int64 {
-        return compId_
+        return compId_inner__
     }
 
     protected func markLazyForEachProcess(groupId: String): Unit {
-        isLazyForEachProcess_ = true
-        lazyGroupId_ = groupId
-        if (!lazyGroups_.contains(groupId)) {
-            lazyGroups_.add(groupId, ArrayList<String>())
+        isLazyForEachProcess_inner__ = true
+        lazyGroupId_inner__ = groupId
+        if (!lazyGroups_inner__.contains(groupId)) {
+            lazyGroups_inner__.add(groupId, ArrayList<String>())
         }
     }
 
     protected func resetLazyForEachProcess(): Unit {
-        isLazyForEachProcess_ = false
+        isLazyForEachProcess_inner__ = false
     }
 
     protected func removeChildGroupById(groupId: String): Bool {
-        let optGroup = lazyGroups_.remove(groupId)
+        let optGroup = lazyGroups_inner__.remove(groupId)
         match (optGroup) {
             case Some(group) =>
                 removeLazyGroup(group)
@@ -504,10 +504,10 @@ public abstract class CustomView <: RemoteView & Observer {
 
     private func removeLazyGroup(list: ArrayList<String>): Unit {
         for (viewId in list) {
-            let optChild = lazyChildren_.remove(viewId)
+            let optChild = lazyChildren_inner__.remove(viewId)
             match (optChild) {
                 case Some(child) =>
-                    child.nativeView.destroy()
+                    child.nativeView_inner__.destroy()
                     ()
                 case None => ()
             }
@@ -519,11 +519,11 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addChildById(id: Int64, child: CustomView): Unit {
-        children_.add(id, child)
+        children_inner__.add(id, child)
     }
 
     protected func removeChildById(id: Int64): Bool {
-        let child = children_.remove(id)
+        let child = children_inner__.remove(id)
         let res = child.isSome()
         if (res) {
             child?.setParent(Option.None)
@@ -532,11 +532,11 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     protected func getView(): View {
-        nativeView
+        nativeView_inner__
     }
 
     protected func setParent(parent: Option<CustomView>): Unit {
-        this.parent_ = parent
+        this.parent_inner__ = parent
     }
 
     @!APILevel[
@@ -546,7 +546,7 @@ public abstract class CustomView <: RemoteView & Observer {
     public func aboutToBeDeleted(): Unit
 
     protected func aboutToBeDeletedInternal(): Unit {
-        if (let Some(parent) <- parent_) {
+        if (let Some(parent) <- parent_inner__) {
             parent.removeChildById(id())
         }
         if (hasRecycleManager()) {
@@ -556,8 +556,8 @@ public abstract class CustomView <: RemoteView & Observer {
 
     protected func onAboutToBeDeleted(): Unit {
         aboutToBeDeleted()
-        children_.clear()
-        nativeView.release()
+        children_inner__.clear()
+        nativeView_inner__.release()
     }
 
     @!APILevel[
@@ -581,6 +581,6 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getUIContext(): UIContext {
-        UIContext(nativeView.getID())
+        UIContext(nativeView_inner__.getID())
     }
 }
