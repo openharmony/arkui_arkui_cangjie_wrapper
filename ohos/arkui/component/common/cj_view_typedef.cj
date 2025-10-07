@@ -2146,7 +2146,11 @@ public class ContextMenuAnimationOptions {
     public var hoverScale: ?VArray<Float64, $2>
 
     /**
-     * constructor
+     * Defines the ContextMenu's preview animator options.
+     *
+     * @params { ?VArray<Float64, $2> } scale
+     * @params { ?TransitionEffect } transition
+     * @params { ?VArray<Float64, $2> } hoverScale
      */
     @!APILevel[
         22,
