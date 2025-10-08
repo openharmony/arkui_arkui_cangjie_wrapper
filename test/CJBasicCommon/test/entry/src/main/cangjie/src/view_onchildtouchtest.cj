@@ -50,7 +50,7 @@ class ViewOnChildTouchTest {
                 .onScrollFrameBegin({first: Float64, last: ScrollState =>
                     Hilog.info(1, "Cangjie-App", "OnChildTouchTest onScrollFrameBegin")
                     this.text = "onScrollFrameBegin"
-                    return onScrollFrameBeginHandleResult(offsetRemain: first)
+                    return OnScrollFrameBeginHandlerResult(offsetRemain: first)
                 })
                 .width(100.percent)
                 .height(65.percent)

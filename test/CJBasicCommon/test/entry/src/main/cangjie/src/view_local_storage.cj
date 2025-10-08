@@ -31,9 +31,9 @@ class ViewLocalStorage {
         Row {
             Column {
                 Text("${count}").id("parentText").width(count.vp)
-                Button("+").onClick {e=>
+                Button("+").onClick ({e=>
                     count += 10
-                }.id("parentBtn")
+                }).id("parentBtn")
                 Son1()
                 Son2()
                 Son3()
@@ -54,9 +54,9 @@ class Son1 {
     func build() {
         Column(space: 10) {
             // 修改会同步到其他组件中
-            Button("-").onClick {e=>
+            Button("-").onClick ({e=>
                 count -= 10
-            }.id("sonBtn")
+            }).id("sonBtn")
         }
     }
 }

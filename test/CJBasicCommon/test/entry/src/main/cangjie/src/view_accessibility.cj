@@ -46,7 +46,7 @@ class ViewAccessibility {
                 .backgroundColor(Color.Red)
 
                 .id("accessibility_id2")
-            Button("PrintAccessibilityAttr1").onClick { e =>
+            Button("PrintAccessibilityAttr1").onClick ({ e =>
                 let c_id = "accessibility_id"
 
                 let Inspector = getInspectorByKey(c_id)
@@ -65,9 +65,9 @@ class ViewAccessibility {
 
                 let group = getTextFromJSonObj(obj, "accessibilityGroup")
                 Hilog.info(1, "Cangjie-App", group)
-            }
+            })
 
-            Button("PrintAccessibilityAttr2").onClick { e =>
+            Button("PrintAccessibilityAttr2").onClick ({ e =>
                 let c_id = "accessibility_id2"
 
                 let Inspector = getInspectorByKey(c_id)
@@ -86,7 +86,7 @@ class ViewAccessibility {
 
                 let accessibilityVirtualNode = getTextFromJSonObj(obj, "accessibilityVirtualNode")
                 Hilog.info(1, "Cangjie-App", accessibilityVirtualNode)
-            }
+            })
         }.height(100.percent)
     }
 

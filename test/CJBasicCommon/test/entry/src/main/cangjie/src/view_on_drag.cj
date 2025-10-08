@@ -22,7 +22,6 @@ import ohos.base.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
-import kit.ArkUI.*
 import ohos.multimedia.image.PixelMap
 import ohos.multimedia.image.createPixelMap
 import ohos.multimedia.image.InitializationOptions

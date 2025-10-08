@@ -62,16 +62,16 @@ class ViewHello {
         Row {
             Column {
                 Text("textController", controller: this.textController)
-                    .onClick {
+                    .onClick ({
                         e => this
                             .textController
                             .closeSelectionMenu()
-                    }
+                    })
                     .fontSize(40)
                     .id("textController")
 
                 Button(message)
-                    .onClick {
+                    .onClick ({
                         e =>
                         LegalCallCheck.check(this)
                         try {
@@ -81,18 +81,18 @@ class ViewHello {
                             message = e.toString()
                         }
                         Hilog.info(1, "Cangjie-App", "Hello Cangjie")
-                    }
+                    })
                     .fontSize(40)
                     .height(80)
                     .id("helloCangjie")
                 Button("Recycle Manager")
-                    .onClick {
+                    .onClick ({
                         e =>
                         Hilog.info(1, "Cangjie-App", "Hello Cangjie")
-                    }
+                    })
                     .id("RecycleManager")
                 Button("ReuseParams")
-                    .onClick {
+                    .onClick ({
                         e =>
                         var reuseParams = ReuseParams([])
                         var reuseParams1 = ReuseParams([])
@@ -100,7 +100,7 @@ class ViewHello {
                         reuseParams.get<String>("test2")
 
                         Hilog.info(1, "Cangjie-App", "Hello Cangjie")
-                    }
+                    })
                     .id("ReuseParams")
 
                 Button("BindPopup-Custom")

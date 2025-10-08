@@ -51,9 +51,9 @@ class ViewTab {
                         .height(50)
                         .id("Button${viewName}")
                         .borderRadius(10)
-                        .onClick {
+                        .onClick ({
                             e => getUIContext().getRouter().pushUrl(url: viewName)
-                        }
+                        })
                 }
             )
         }.width(100.percent).height(100.percent).margin(top: 5)

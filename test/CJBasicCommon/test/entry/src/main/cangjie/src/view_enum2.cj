@@ -71,15 +71,15 @@ class EnumTypes2 {
     func build() {
         Column {
             Text("APILevel19 Enum Types")
-            Button("panDirection1").onClick{ e =>
+            Button("panDirection1").onClick({ e =>
 
-            }.id("panDirection1")
+            }).id("panDirection1")
 
-            Button("sourceTool").onClick{ e =>
+            Button("sourceTool").onClick({ e =>
                 var p1 = Area(30.0, 30.0, Position(x: 200.0, y: 200.0), Position(x: 200.0, y: 200.0))
                 var v1 = EventTarget(p1)
                 var v2 = SourceType.TouchScreen
-            }.id("sourceTool1")
+            }).id("sourceTool1")
 
             Scroll() {
                 Column {
@@ -118,54 +118,54 @@ class EnumSon2{
         Column {
             Text("${clickCount}").id("enumClickCount")
             Row{
-                Button("menuPreviewMode").onClick{ e =>
+                Button("menuPreviewMode").onClick({ e =>
                     clickCount++
-                }.width(20.percent).height(20).id("menuPreviewMode")
+                }).width(20.percent).height(20).id("menuPreviewMode")
 
-                Button("panDirection").onClick{ e =>
+                Button("panDirection").onClick({ e =>
                     var t: PanDirection = PanDirection.Computed(1)
                     clickCount++
-                }.width(20.percent).height(20).id("panDirection")
+                }).width(20.percent).height(20).id("panDirection")
 
-                Button("sourceTool").onClick{ e =>
+                Button("sourceTool").onClick({ e =>
                     var t: SourceTool = SourceTool.Unknown
                     t = SourceTool.Pen
                     t = SourceTool.Mouse
                     t = SourceTool.Touchpad
                     t = SourceTool.Joystick
                     clickCount++
-                }.width(20.percent).height(20).id("sourceTool")
+                }).width(20.percent).height(20).id("sourceTool")
 
-                Button("scrollSource").onClick{ e =>
+                Button("scrollSource").onClick({ e =>
                     var t: ScrollSource = ScrollSource.ScrollBar
                     t = ScrollSource.ScrollBarFling
                     clickCount++
-                }.width(20.percent).height(20).id("scrollSource")
+                }).width(20.percent).height(20).id("scrollSource")
             }
             Row{
-                Button("week").onClick{ e =>
+                Button("week").onClick({ e =>
                     clickCount++
-                }.width(20.percent).height(20).id("week")
+                }).width(20.percent).height(20).id("week")
 
-                Button("titleHeight").onClick{ e =>
+                Button("titleHeight").onClick({ e =>
                     var t: TitleHeight = TitleHeight.MainWithSub
                     clickCount++
-                }.width(20.percent).height(20).id("titleHeight")
+                }).width(20.percent).height(20).id("titleHeight")
             }
             Row{
-                Button("foldStatus").onClick{ e =>
+                Button("foldStatus").onClick({ e =>
                     clickCount++
-                }.width(20.percent).height(20).id("foldStatus")
+                }).width(20.percent).height(20).id("foldStatus")
             }
             Row{
-                Button("layoutSafeAreaType").onClick{ e =>
+                Button("layoutSafeAreaType").onClick({ e =>
                     clickCount++
-                }.width(20.percent).height(20).id("layoutSafeAreaType")
+                }).width(20.percent).height(20).id("layoutSafeAreaType")
             }
             Row{
-                Button("richEditorResponseType").onClick{ e =>
+                Button("richEditorResponseType").onClick({ e =>
                     clickCount++
-                }.width(20.percent).height(20).id("richEditorResponseType")
+                }).width(20.percent).height(20).id("richEditorResponseType")
             }
         }
     }

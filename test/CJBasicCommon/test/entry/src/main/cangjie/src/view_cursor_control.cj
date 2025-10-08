@@ -28,26 +28,26 @@ class ViewCursorControl {
         Column() {
             Row {
                 Button("CursorControl")
-                .onClick {e =>}
+                .onClick ({e =>})
                 .fontSize(40)
                 .height(80)
-                .onClick { e =>
+                .onClick ({ e =>
                     this.enable = !this.enable
-                }.id("CursorControl-change")
+                }).id("CursorControl-change")
             }
             Row {
                 Button("CursorControl2")
                 .fontSize(40)
                 .height(80)
-                .onClick { e =>
-                }.id("CursorControl-change2")
+                .onClick ({ e =>
+                }).id("CursorControl-change2")
             }
             Row {
                 Button("CursorControl3")
                 .fontSize(40)
                 .height(80)
-                .onClick { e =>
-                }.id("CursorControl-change3")
+                .onClick ({ e =>
+                }).id("CursorControl-change3")
             }
         }.height(100.percent).margin(left: 20,right: 20)
     }

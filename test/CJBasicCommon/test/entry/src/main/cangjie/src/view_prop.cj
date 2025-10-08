@@ -38,17 +38,17 @@ class ViewProp {
             SubComponent(count: count)
                         Button("clear")
                 .id("clear")
-                .onClick {e =>
+                .onClick ({e =>
                 dataSource.clear()
-            }
+            })
             Button("update")
                 .id("update")
-                .onClick { e =>
+                .onClick ({ e =>
                 for (i in 0..20) {
                     dataSource.append("${i}")
                 }
 
-            }
+            })
             List() {
                 ForEach(dataSource, itemGeneratorFunc: {item: String, i: Int64 =>
                     ListItem() {
