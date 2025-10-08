@@ -345,7 +345,6 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Button object
      *
-     * @params { () -> Unit } child
      * @returns { This }
      */
     @!APILevel[

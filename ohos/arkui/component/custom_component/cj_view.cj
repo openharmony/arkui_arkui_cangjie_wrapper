@@ -181,6 +181,9 @@ protected class View <: CommonMethodComponent<View> & ViewAttribute {
     }
 }
 
+/**
+ * ViewAttribute
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"

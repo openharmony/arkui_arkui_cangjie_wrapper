@@ -21,12 +21,20 @@ import std.collection.HashMap
 import ohos.base.*
 import ohos.labels.APILevel
 
+/**
+ * CJPageEntry for register hybrid component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CJPageEntry {
     private static let instance_ = CJPageEntry()
+    /**
+     * Get CJPageEntry instance.
+     *
+     * @return { CJPageEntry }.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -36,6 +44,12 @@ public class CJPageEntry {
     }
 
     private let entries_ = HashMap<String, CustomView>()
+    /**
+     * Register hybrid component.
+     *
+     * @params name { String }.
+     * @params { CustomView } cjPage.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -44,6 +58,11 @@ public class CJPageEntry {
         entries_.add(name, cjPage)
     }
 
+    /**
+     * Remove hybrid component.
+     *
+     * @params { String } name.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -69,6 +88,9 @@ public class CJPageEntry {
     }
 }
 
+/**
+ * Base class for hybrid component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -108,6 +130,13 @@ public open class HybridComponentBase <: SharedObject {
         JSModule.registerFunc(handleName, hd)
     }
 
+    /**
+     * Register hybrid component.
+     *
+     * @params { String } compName.
+     * @params { () -> CPointer<Unit> } loadHandle.
+     * @params { () -> Unit } unloadHandle.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

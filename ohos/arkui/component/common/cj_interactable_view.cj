@@ -155,7 +155,13 @@ public class TouchObject {
     public var y: Float64
 
     /**
-     * constructor
+     * TouchObject constructor
+     * @params { TouchType } touchType
+     * @params { Int32 } id
+     * @params { Float64 } screenX
+     * @params { Float64 } screenY
+     * @params { Float64 } x
+     * @params { Float64 } y
      */
     @!APILevel[
         22,
@@ -322,7 +328,10 @@ public class DragItemInfo {
     public var extraInfo: ?String
 
     /**
-     * constructor
+     * DragItemInfo constructor
+     * @params { PixelMap } pixelMap
+     * @params { CustomBuilder } builder
+     * @params { String } extraInfo
      */
     @!APILevel[
         22,
@@ -407,7 +416,14 @@ public class MouseEvent <: BaseEvent {
     public var action: MouseAction
 
     /**
-     * constructor
+     * MouseEvent constructor
+     * @params { Int64 } timestamp
+     * @params { Float64 } screenX
+     * @params { Float64 } screenY
+     * @params { Float64 } x
+     * @params { Float64 } y
+     * @params { MouseButton } button
+     * @params { MouseAction } action
      */
     @!APILevel[
         22,
@@ -575,7 +591,14 @@ public class KeyEvent {
     public var deviceId: Int64
 
     /**
-     * constructor
+     * KeyEvent constructor
+     * @params { String } keyText
+     * @params { KeyType } keyType
+     * @params { Int32 } keyCode
+     * @params { KeySource } keySource
+     * @params { Int32 } metaKey
+     * @params { Int64 } deviceId
+     * @params { Int64 } timestamp
      */
     @!APILevel[
         22,

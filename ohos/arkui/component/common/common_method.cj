@@ -20,114 +20,227 @@ import ohos.arkui.shape.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * CommonMethod.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface CommonMethod<T> {
     // Common Event
+    /*
+     * Called when a click event occurs.
+     *
+     * @params { ?(ClickEvent) -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onClick(event: ?(ClickEvent) -> Unit): T
 
+    /*
+     * This callback is triggered when a component mounts a display.
+     *
+     * @params { ?() -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onAppear(event: ?() -> Unit): T
 
+    /*
+     * This callback is triggered when component uninstallation disappears.
+     *
+     * @params { ?() -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDisAppear(event: ?() -> Unit): T
 
+    /*
+     * Invoked when a touch event is triggered.
+     *
+     * @params { ?(TouchEvent) -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onTouch(event: ?(TouchEvent) -> Unit): T
 
+    /*
+     * Trigger a hover event.
+     *
+     * @params { ?(Bool) -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onHover(event: ?(Bool) -> Unit): T
 
+    /*
+     * This callback is triggered when the size or position of this component change finished.
+     *
+     * @params { ?(Area, Area) -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onAreaChange(event: ?(Area, Area) -> Unit): T
 
+    /*
+     * Trigger a visible area change event.
+     *
+     * @params { ?Array<Float64> } raitos
+     * @params { ?(Bool, Float64) -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onVisibleAreaChange(raitos: ?Array<Float64>, event: ?(Bool, Float64) -> Unit): T
 
+    /*
+     * Triggered when the component is clicked by a mouse button or the mouse pointer moves on the component.
+     *
+     * @params { ?(MouseEvent) -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onMouse(event: ?(MouseEvent) -> Unit): T
 
+    /*
+     * Keyboard input
+     *
+     * @params { ?(KeyEvent) -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onKeyEvent(event: ?(KeyEvent) -> Unit): T
 
+    /*
+     * Trigger a event when got focus.
+     *
+     * @params { ?() -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onFocus(event: ?() -> Unit): T
 
+    /*
+     * Triggered when the current component loses focus.
+     *
+     * @params { ?() -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onBlur(event: ?() -> Unit): T
 
+    /**
+     * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
+     *
+     * @params { ?(DragInfo) -> DragItemInfo } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDragStart(event: ?(DragInfo) -> DragItemInfo): T
 
+    /**
+     * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
+     *
+     * @params { ?(DragInfo) -> CustomBuilder } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDragStart(event: ?(DragInfo) -> CustomBuilder): T
 
+    /**
+     * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
+     *
+     * @params { ?(DragInfo) -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDragStart(event: ?(DragInfo) -> Unit): T
 
+    /**
+     * After binding, a callback is triggered when the component is dragged to the range of the component.
+     *
+     * @params { ?(DragInfo) -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDragEnter(event: ?(DragInfo) -> Unit): T
 
+    /**
+     * After binding, a callback is triggered when the drag moves within the range of a placeable component.
+     *
+     * @params { ?(DragInfo) -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDragMove(event: ?(DragInfo) -> Unit): T
 
+    /**
+     * After binding, a callback is triggered when the component is dragged out of the component range.
+     *
+     * @params { ?(DragInfo) -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDragLeave(event: ?(DragInfo) -> Unit): T
 
+    /**
+     * The component bound to this event can be used as the drag release target.
+     * This callback is triggered when the drag behavior is stopped within the scope of the component.
+     *
+     * @params { ?(DragInfo) -> Unit } event
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -135,54 +248,121 @@ public interface CommonMethod<T> {
     func onDrop(event: ?(DragInfo) -> Unit): T
 
     // Common Attribute
+    /**
+     * Sets the width of the component. By default, the width required to fully hold the
+     * component content is used.If the width of the component is greater than that of
+     * the parent container, the component will be drawn beyond the parent container scope.
+     *
+     * @params { Option<Length> } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func width(value: Option<Length>): T
 
+    /**
+     * Sets the height of the component. By default, the height required to fully hold the
+     * component content is used. If the height of the component is greater than that of
+     * the parent container, the component will be drawn beyond the parent container scope.
+     *
+     * @params { Option<Length> } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func height(value: Option<Length>): T
 
+    /**
+     * The size of the current component.
+     *
+     * @params { Option<Length> } width
+     * @params { Option<Length> } height
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func size(width!: ?Length, height!: ?Length): T
 
+    /**
+     * Sets the padding of the component.
+     *
+     * @params { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func padding(value: ?Length): T
 
+    /**
+     * Sets the padding of the component.
+     *
+     * @params { Length, Length, Length, Length } Indicates safeArea padding values.
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func padding(top!: ?Length, right!: ?Length, bottom!: ?Length, left!: ?Length): T
 
+    /**
+     * Sets the margin of the component.
+     *
+     * @params { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func margin(value: ?Length): T
 
+    /**
+     * Sets the margin of the component.
+     *
+     * @params { ?Length } top.
+     * @params { ?Length } right.
+     * @params { ?Length } bottom.
+     * @params { ?Length } left.
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func margin(top!: ?Length, right!: ?Length, bottom!: ?Length, left!: ?Length): T
 
+    /**
+     * Sets the weight of the component during layout. A component with this attribute is allocated space
+     * along the main axis of its parent container (Row, Column, or Flex) based on its specified weight.
+     *
+     * @params { ?Int32 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func layoutWeight(value: ?Int32): T
 
+    /**
+     * Sets the constraint size of the component, which is used to limit the size range during component layout.
+     * Default value: **{minWidth: 0, maxWidth: Infinity, minHeight: 0, maxHeight: Infinity}**.
+     *
+     * @params { ?Length } minWidth
+     * @params { ?Length } maxWidth
+     * @params { ?Length } minHeight
+     * @params { ?Length } maxHeight
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -190,102 +370,227 @@ public interface CommonMethod<T> {
     func constraintSize(minWidth!: ?Length, maxWidth!: ?Length,
         minHeight!: ?Length, maxHeight!: ?Length): T
 
+    /**
+     * Sets the alignment mode of the component content in the drawing area.
+     * Default value: **Alignment.Center**.
+     *
+     * @params { ?Alignment } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func align(value: ?Alignment): T
 
+    /**
+     * Sets how elements are laid out along the main axis of the container.
+     * Default value: **Direction.Auto**.
+     *
+     * @params { ?Direction } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func direction(value: ?Direction): T
 
+    /**
+     * Sets the absolute position of the component relative to the position of the parent component.
+     * The attribute is not available for a layout container whose width and height are zero.
+     *
+     * @params { ?Length } x
+     * @params { ?Length } y
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func position(x!: ?Length, y!: ?Length): T
 
+    /**
+     * Sets the anchor for locating the component, which is used to move the component
+     * further away from the position specified by position or offset.
+     *
+     * @params { ?Length } x
+     * @params { ?Length } y
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func markAnchor(x!: ?Length, y!: ?Length): T
 
+    /**
+     * Sets the offset of the component relative to its original position.
+     * <br>The offset attribute does not affect the layout of the parent container.
+     * It adjusts the component position only during drawing.
+     *
+     * @params { ?Length } x
+     * @params { ?Length } y
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func offset(x!: ?Length, y!: ?Length): T
 
+    /**
+     * Sets the alignment rules in the relative container.
+     * This API is valid only when the container is RelativeContainer.
+     *
+     * @params { ?AlignRuleOptions } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignRules(value: ?AlignRuleOptions): T
 
+    /**
+     * Sets the aspect ratio of the component, which can be obtained using the following formula: width/height.
+     * If only width and aspectRatio are set, the height is calculated using the following formula: width/aspectRatio.
+     * If only height and aspectRatio are set, the width is calculated using the following formula: height x aspectRatio.
+     * If width, height, and aspectRatio are all set, the explicitly set height is ignored, and the effective height is calculated using the following formula: width/aspectRatio.
+     * This parameter takes effect only when a valid value greater than 0 is specified.
+     *
+     * @params { Float64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func aspectRatio(value: Float64): T
 
+    /**
+     * Sets the display priority for the component in the layout container.
+     * This parameter is only effective in Row, Column, and Flex (single-line) container components.
+     *
+     * @params { ?Int32 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func displayPriority(value: ?Int32): T
 
+    /**
+     * Sets the base size of the component in the main axis of the parent container.
+     *
+     * @params { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func flexBasis(value: ?Length): T
 
+    /**
+     * Sets the percentage of the parent container's remaining space that is allocated to the component.
+     * Default value: **0**.
+     *
+     * @params { ?Float64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func flexGrow(value: ?Float64): T
 
+    /**
+     * Sets the percentage of the parent container's remaining space that is allocated to the component.
+     * Default value: **0**.
+     *
+     * @params { ?Int64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func flexGrow(value: ?Int64): T
 
+    /**
+     * Sets the percentage of the parent container's shrink size that is allocated to the component.
+     * Default value: 0 when the parent container is Column or Row, 1 when the parent container is Flex.
+     *
+     * @params { ?Float64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func flexShrink(value: ?Float64): T
 
+    /**
+     * Sets the percentage of the parent container's shrink size that is allocated to the component.
+     * Default value: 0 when the parent container is Column or Row, 1 when the parent container is Flex.
+     *
+     * @params { ?Int64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func flexShrink(value: ?Int64): T
 
+    /**
+     * Sets the alignment mode of the child components along the cross axis of the parent container.
+     * Default value: **ItemAlign.Auto**.
+     *
+     * @params { ?ItemAlign } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignSelf(value: ?ItemAlign): T
 
+    /**
+     * Sets the response region of the current component.
+     *
+     * @params { ?Rectangle } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func responseRegion(value: ?Rectangle): T
 
+    /**
+     * Sets the response region of the current component.
+     *
+     * @params { ?Array<Rectangle> } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func responseRegion(value: ?Array<Rectangle>): T
 
+    /**
+     * Sets the border.
+     *
+     * @params { ?Length } width
+     * @params { ?ResourceColor } color
+     * @params { ?Length } radius
+     * @params { ?BorderStyle } style
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -293,24 +598,54 @@ public interface CommonMethod<T> {
     func border(width!: ?Length, color!: ?ResourceColor, radius!: ?Length,
         style!: ?BorderStyle): T
 
+    /**
+     * Sets the border width.
+     * Percentage values are not supported.
+     *
+     * @params { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func borderWidth(value: ?Length): T
 
+    /**
+     * Sets the border width.
+     *
+     * @params { ?EdgeWidths } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func borderWidth(value: ?EdgeWidths): T
 
+    /**
+     * Sets the border color.
+     * Default value: **Color.Black**.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func borderColor(value: ?ResourceColor): T
 
+    /**
+     * Sets the radius of the border rounded corners.
+     * The radius is restricted by the component size. The maximum value is half of the component width or height.
+     *
+     * @params { ?Length } topLeft
+     * @params { ?Length } topRight
+     * @params { ?Length } bottomLeft
+     * @params { ?Length } bottomRight
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -318,84 +653,186 @@ public interface CommonMethod<T> {
     func borderRadius(topLeft!: ?Length, topRight!: ?Length, bottomLeft!: ?Length,
         bottomRight!: ?Length): T
 
+    /**
+     * Sets the radius of the border rounded corners.
+     * The radius is restricted by the component size. The maximum value is half of the component width or height.
+     *
+     * @params { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func borderRadius(value: ?Length): T
 
+    /**
+     * Sets the border style.
+     * Default value: **BorderStyle.Solid**.
+     *
+     * @params { ?BorderStyle } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func borderStyle(value: ?BorderStyle): T
 
+    /**
+     * Applies a foreground blur style to the component.
+     *
+     * @params { ?BlurStyle } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func foregroundBlurStyle(value: ?BlurStyle): T
 
+    /**
+     * Applies a foreground blur style to the component.
+     *
+     * @params { ?BlurStyle } value
+     * @params { ?ForegroundBlurStyleOptions } options
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func foregroundBlurStyle(value: ?BlurStyle, options: ?ForegroundBlurStyleOptions): T
 
+    /**
+     * Sets the foreground color of the component.
+     * If the component does not have a foreground color set, it inherits the color from its parent component by default.
+     *
+     * @params { ?ColoringStrategy } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func foregroundColor(value: ?ColoringStrategy): T
 
+    /**
+     * Sets the foreground color of the component.
+     * If the component does not have a foreground color set, it inherits the color from its parent component by default.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func foregroundColor(value: ?ResourceColor): T
 
+    /**
+     * Background color
+     *
+     * @params { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundColor(value: ?ResourceColor): T
 
+    /**
+     * Background image
+     *
+     * @params { ?ResourceStr } src
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundImage(src: ?ResourceStr): T
 
+    /**
+     * Background image
+     * @params { ?ResourceStr } src
+     * @params { ?ImageRepeat } repeat
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundImage(src: ?ResourceStr, repeat: ?ImageRepeat): T
 
+    /**
+     * Background image size
+     *
+     * @params { ?ImageSize } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundImageSize(value: ?ImageSize): T
 
+    /**
+     * Background image size
+     *
+     * @params { ?Length } width
+     * @params { ?Length } height
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundImageSize(width!: ?Length, height!: ?Length): T
 
+    /**
+     * Background image position
+     * x: Horizontal coordinate;
+     * y: Vertical axis coordinate;
+     *
+     * @params { ?Alignment } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundImagePosition(value: ?Alignment): T
 
+    /**
+     * Background image position
+     * x: Horizontal coordinate;
+     * y: Vertical axis coordinate;
+     *
+     * @params { ?Length } x
+     * @params { ?Length } y
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundImagePosition(x!: ?Length, y!: ?Length): T
 
+    /**
+     * Scales the component.
+     * Scale ratio along the x-, y-, and z-axis. The default value is **1**.
+     * centerX and centerY are used to set the scale center point.
+     * default:{x:1,y:1,z:1,centerX:'50%',centerY:'50%'}
+     *
+     * @params { ?Float32 } x
+     * @params { ?Float32 } y
+     * @params { ?Float32 } z
+     * @params { ?Length } centerX
+     * @params { ?Length } centerY
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -403,12 +840,29 @@ public interface CommonMethod<T> {
     func scale(x!: ?Float32, y!: ?Float32, z!: ?Float32, centerX!: ?Length,
         centerY!: ?Length): T
 
+    /**
+     * Sets the opacity of the component.
+     *
+     * @params { ?Float64 } value - Opacity of the component. The value ranges from 0 to 1.
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func opacity(value: ?Float64): T
 
+    /**
+     * Set component rotation.
+     *
+     * @params { ?Float32 } x
+     * @params { ?Float32 } y
+     * @params { ?Float32 } z
+     * @params { ?Float32 } angle
+     * @params { ?Length } centerX
+     * @params { ?Length } centerY
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -416,48 +870,109 @@ public interface CommonMethod<T> {
     func rotate(x!: ?Float32, y!: ?Float32, z!: ?Float32, angle!: ?Float32,
         centerX!: ?Length, centerY!: ?Length): T
 
+    /**
+     * Sets the translation effect for page transitions.
+     *
+     * @params { ?Length } x
+     * @params { ?Length } y
+     * @params { ?Length } z
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func translate(x!: ?Length, y!: ?Length, z!: ?Length): T
 
+    /**
+     * If the value is true, the component is available and can respond to operations such as clicking.
+     * If it is set to false, click operations are not responded.
+     *
+     * @params { ?Bool } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func enabled(value: ?Bool): T
 
+    /**
+     * If the components of the two pages are configured with the same ID.
+     * The shared element transition is performed during transition.
+     * If the parameter is set to an empty string, the shared element transition does not occur.
+     * For details about the options parameter, see the options parameter description.
+     *
+     * @params { String } id
+     * @params { ?SharedTransitionOptions } options
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sharedTransition(id: String, options!: ?SharedTransitionOptions): T
 
+    /**
+     * Shared geometry transition
+     *
+     * @params { String } id
+     * @params { ?Bool } followWithoutTransition
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func geometryTransition(id: ?String, followWithoutTransition!: ?Bool): T
 
+    /**
+     * Adds the content blurring effect for the current component. The input parameter is the blurring radius.
+     * The larger the blurring radius, the more blurring the content.
+     * If the value is 0, the content blurring effect is not blurring.
+     *
+     * @params { ?Float64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func blur(value: ?Float64): T
 
+    /**
+     * Applies a color blend effect to the component.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func colorBlend(value: ?ResourceColor): T
 
+    /**
+     * Applies a background blur effect to the component. You can customize the blur radius and grayscale parameters.
+     *
+     * @params { ?Float64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backdropBlur(value: ?Float64): T
 
+    /**
+     * Applies a shadow effect to the component.
+     *
+     * @params { ?Float64 } radius
+     * @params { ?ResourceColor } color
+     * @params { ?Float64 } offsetX
+     * @params { ?Float64 } offsetY
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -465,84 +980,178 @@ public interface CommonMethod<T> {
     func shadow(radius!: ?Float64, color!: ?ResourceColor, offsetX!: ?Float64,
         offsetY!: ?Float64): T
 
+    /**
+     * Applies a grayscale effect to the component.
+     *
+     * @params { ?Float64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func grayscale(value: ?Float64): T
 
+    /**
+     * Applies a brightness effect to the component.
+     *
+     * @params { ?Float64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func brightness(value: ?Float64): T
 
+    /**
+     * Applies a saturation effect to the component.
+     *
+     * @params { ?Float64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func saturate(value: ?Float64): T
 
+    /**
+     * Applies a contrast effect to the component.
+     *
+     * @params { ?Float64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func contrast(value: ?Float64): T
 
+    /**
+     * Invert the input image. Value defines the scale of the conversion. 100% of the value is a complete reversal.
+     * A value of 0% does not change the image. (Percentage)
+     *
+     * @params { ?Float64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func invert(value: ?Float64): T
 
+    /**
+     * Invert the input image. Value defines the scale of the conversion. 100% of the value is a complete reversal.
+     * A value of 0% does not change the image. (Percentage)
+     *
+     * @params { ?Float64 } low
+     * @params { ?Float64 } high
+     * @params { ?Float64 } threshold
+     * @params { ?Float64 } thresholdRange
+     * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func invert(low!: ?Float64, high!: ?Float64, threshold!: ?Float64, thresholdRange!: ?Float64): T
 
+    /**
+     * Sepia conversion ratio of the component.
+     *
+     * @params { ?Float64 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sepia(value: ?Float64): T
 
+    /**
+     * Rotates the hue of the component.
+     *
+     * @params { ?Float32 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func hueRotate(value: ?Float32): T
 
+    /**
+     * The sibling components in the same container are hierarchically displayed. A larger value of z indicates a higher display level.
+     *
+     * @params { ?Int32 } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func zIndex(value: ?Int32): T
 
+    /**
+     * Controls the display or hide of the current component.
+     *
+     * @params { ?Visibility } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func visibility(value: ?Visibility): T
 
+    /**
+     * Sets whether to clip the areas of child components that extend beyond this component's boundaries,
+     * That is, whether to perform clipping based on the edge contour of the parent container.
+     *
+     * @params { ?Bool } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func clip(value: ?Bool): T
 
+    /**
+     * Adds a mask of the specified shape to the component.
+     *
+     * @params { ?BaseShape } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func clipShape(value: ?BaseShape): T
 
+    /**
+     * Adds a mask of the specified shape to the component.
+     *
+     * @params { BaseShape } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func maskShape(value: BaseShape): T
 
+    /**
+     * Add mask text to the current component. The layout is the same as that of the current component.
+     *
+     * @params { ?String } value
+     * @params { ?Alignment } align
+     * @params { ?OverlayOffset } offset
+     * @returns { This }
+     * @throws { BusinessException } 100001 - Internal error.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -550,30 +1159,70 @@ public interface CommonMethod<T> {
     func overlay(value!: ?String, align!: ?Alignment,
         offset!: ?OverlayOffset): T
 
+    /**
+     * Popup control
+     * NOTE:
+     * The popup can be displayed only after the entire page is fully constructed. Therefore, to avoid incorrect
+     * display positions and shapes, do not set this parameter to true while the page is still being constructed.
+     *
+     * @params { ?Bool } show
+     * @params { ?PopupOptions } popup
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindPopup(show: ?Bool, popup: ?PopupOptions): T
 
+    /**
+     * Popup control
+     * NOTE:
+     * The popup can be displayed only after the entire page is fully constructed. Therefore, to avoid incorrect
+     * display positions and shapes, do not set this parameter to true while the page is still being constructed.
+     *
+     * @params { ?Bool } show
+     * @params { ?CustomPopupOptions } popup
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindPopup(show: ?Bool, popup: ?CustomPopupOptions): T
 
+    /**
+     * Menu control
+     *
+     * @params { ?Array<MenuElement> } content
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindMenu(content: ?Array<MenuElement>): T
 
+    /**
+     * Menu control
+     *
+     * @params { ?CustomBuilder } builder
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindMenu(builder!: ?CustomBuilder): T
 
+    /**
+     * Binds a context menu to the component, whose visibility is subject to the isShown settings.
+     *
+     * @params { ?CustomBuilder } builder
+     * @params { ?ResponseType } responseType
+     * @params { ?ContextMenuOptions } options
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -581,6 +1230,19 @@ public interface CommonMethod<T> {
     func bindContextMenu(builder!: ?CustomBuilder, responseType!: ?ResponseType,
         options!: ?ContextMenuOptions): T
 
+    /**
+     * Linear Gradient
+     * angle: Angle of Linear Gradient. The default value is 180;
+     * direction: Direction of Linear Gradient. The default value is GradientDirection.Bottom;
+     * colors: Color description for gradients.
+     * repeating: repeating. The default value is false
+     *
+     * @params { ?Float64 } angle
+     * @params { ?GradientDirection } direction
+     * @params { ?Array<(ResourceColor, Float64)> } colors
+     * @params { ?Bool } repeating
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -588,6 +1250,17 @@ public interface CommonMethod<T> {
     func linearGradient(angle!: ?Float64, direction!: ?GradientDirection,
         colors!: ?Array<(ResourceColor, Float64)>, repeating!: ?Bool): T
 
+    /**
+     * Creates a sweep gradient.
+     *
+     * @params { ?(Length, Length) } center
+     * @params { ?Float64 } start
+     * @params { ?Float64 } end
+     * @params { ?Float64 } rotation
+     * @params { ?Array<(ResourceColor, Float64)> } colors
+     * @params { ?Bool } repeating
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -596,6 +1269,15 @@ public interface CommonMethod<T> {
         rotation!: ?Float64, colors!: ?Array<(ResourceColor, Float64)>,
         repeating!: ?Bool): T
 
+    /**
+     * Creates a radial gradient.
+     *
+     * @params { ?(Length, Length) } center
+     * @params { ?Length } radius
+     * @params { ?Array<(ResourceColor, Float64)> } colors
+     * @params { ?Bool } repeating
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -603,54 +1285,117 @@ public interface CommonMethod<T> {
     func radialGradient(center: ?(Length, Length), radius: ?Length, colors: ?Array<(ResourceColor, Float64)>,
         repeating!: ?Bool): T
 
+    /**
+     * Sets hot keys
+     *
+     * @params { ?FunctionKey } value
+     * @params { ?Array<ModifierKey> } keys
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>): T
 
+    /**
+     * Sets hot keys
+     *
+     * @params { ?String } value
+     * @params { ?Array<ModifierKey> } keys
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func keyboardShortcut(value: ?String, keys: ?Array<ModifierKey>): T
 
+    /**
+     * Sets hot keys
+     *
+     * @params { ?FunctionKey } value
+     * @params { ?Array<ModifierKey> } keys
+     * @params { ?() -> Unit } action
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>, action: ?() -> Unit): T
 
+    /**
+     * Sets hot keys
+     *
+     * @params { ?String } value
+     * @params { ?Array<ModifierKey> } keys
+     * @params { ?() -> Unit } action
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func keyboardShortcut(value: ?String, keys: ?Array<ModifierKey>, action: ?() -> Unit): T
 
+    /**
+     * Key. User can set an key to the component to identify it.
+     *
+     * @params { ?String } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func key(value: ?String): T
 
+    /**
+     * How the final state of the component's content is rendered during its width and height animation process.
+     *
+     * @params { ?RenderFit } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func renderFit(fitMode: ?RenderFit): T
 
+    /**
+     * Id. User can set an id to the component to identify it.
+     *
+     * @params { ?String } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func id(value: ?String): T
 
+    /**
+     * Sets the safe area to be expanded to.
+     *
+     * @params { ?Array<SafeAreaType> } types
+     * @params { ?Array<SafeAreaEdge> } edges
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func expandSafeArea(types!: ?Array<SafeAreaType>, edges!: ?Array<SafeAreaEdge>): T
 
+    /**
+     * Binds a modal page to the component, whose visibility is subject to the isShow settings.
+     *
+     * @params { ?Bool } isShow
+     * @params { ?CustomBuilder } builder
+     * @params { ?ContentCoverOptions } options
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -658,66 +1403,137 @@ public interface CommonMethod<T> {
     func bindContentCover(isShow: ?Bool, builder: ?CustomBuilder,
         options!: ?ContentCoverOptions): T
 
+    /**
+     * animation
+     *
+     * @params { ?AnimateParam } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func animationStart(value: ?AnimateParam): T
 
+    /**
+     * animation
+     *
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func animationEnd(): T
 
+    /**
+     * Set the transition effect of component when it appears and disappears.
+     *
+     * @params { ?TransitionEffect } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func transition(value: ?TransitionEffect): T
     
+    /**
+     * Set the transition effect of component when it appears and disappears.
+     *
+     * @params { ?TransitionEffect } value
+     * @params { ?TransitionFinishCallback } onFinish
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func transition(value: ?TransitionEffect, onFinish: ?TransitionFinishCallback): T
 
+    /**
+     * Set focusable.
+     * Components that have default interaction logic, such as Button and TextInput, are focusable by default. Other
+     * components, such as Text and Image, are not focusable by default. Only focusable components can trigger a focus event.
+     *
+     * @params { ?Bool } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func focusable(value: ?Bool): T
 
+    /**
+     * Set focus index by key tab.
+     * The tabIndex and focusScopeId cannot be used together.
+     *
+     * @params { ?Int32 } index
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func tabIndex(index: ?Int32): T
 
+    /**
+     * Set default focused component when a page create.
+     *
+     * @params { ?Bool } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func defaultFocus(value: ?Bool): T
 
+    /**
+     * Set default focused component when focus on a focus group.
+     *
+     * @params { ?Bool } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func groupDefaultFocus(value: ?Bool): T
 
+    /**
+     * Set a component focused when the component be touched.
+     *
+     * @params { ?Bool } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func focusOnTouch(value: ?Bool): T
 
+    /**
+     * Binds a sheet page to the component, whose visibility is subject to the isShow settings.
+     *
+     * @params { Bool } isShow - true means display sheet, false means hide sheet.
+     * @params { CustomBuilder } builder - the sheet to be displayed.
+     * @params { SheetOptions } options - options of sheet.
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindSheet(isShow: ?Bool, builder: CustomBuilder, options!: ?SheetOptions): T
 
+    /**
+     * Set preview of the component for dragging process
+     *
+     * @params { String } value - preview of the component for dragging process
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -67,8 +67,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /*
      * Called when a click event occurs.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(ClickEvent) -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -95,8 +95,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /*
      * This callback is triggered when a component mounts a display.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?() -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -118,8 +118,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /*
      * This callback is triggered when component uninstallation disappears.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?() -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -141,8 +141,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /*
      * Invoked when a touch event is triggered.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(TouchEvent) -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -170,8 +170,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /*
      * Trigger a hover event.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(Bool) -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -193,8 +193,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /*
      * This callback is triggered when the size or position of this component change finished.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(Area, Area) -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -220,8 +220,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /*
      * Trigger a visible area change event.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?Array<Float64> } raitos
+     * @params { ?(Bool, Float64) -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -254,8 +255,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /*
      * Triggered when the component is clicked by a mouse button or the mouse pointer moves on the component.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(MouseEvent) -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -283,8 +284,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /*
      * Keyboard input
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(KeyEvent) -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -313,8 +314,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /*
      * Trigger a event when got focus.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?() -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -336,8 +337,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /*
      * Triggered when the current component loses focus.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?() -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -359,8 +360,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(DragInfo) -> DragItemInfo } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -399,8 +400,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(DragInfo) -> CustomBuilder } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -433,8 +434,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(DragInfo) -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -464,8 +465,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * After binding, a callback is triggered when the component is dragged to the range of the component.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(DragInfo) -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -493,8 +494,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * After binding, a callback is triggered when the drag moves within the range of a placeable component.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(DragInfo) -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.     
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -521,8 +522,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * After binding, a callback is triggered when the component is dragged out of the component range.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(DragInfo) -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -550,8 +551,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * The component bound to this event can be used as the drag release target.
      * This callback is triggered when the drag behavior is stopped within the scope of the component.
      *
-     * @params { function } event
-     * @returns { This }
+     * @params { ?(DragInfo) -> Unit } event
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -582,8 +583,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * component content is used.If the width of the component is greater than that of
      * the parent container, the component will be drawn beyond the parent container scope.
      *
-     * @params { Length } value
-     * @returns { This }
+     * @params { Option<Length> } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -612,8 +613,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * component content is used. If the height of the component is greater than that of
      * the parent container, the component will be drawn beyond the parent container scope.
      *
-     * @params { Length } value
-     * @returns { This }
+     * @params { Option<Length> } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -640,9 +641,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * The size of the current component.
      *
-     * @params { Length } width
-     * @params { Length } height
-     * @returns { This }
+     * @params { Option<Length> } width
+     * @params { Option<Length> } height
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -670,8 +671,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets the padding of the component.
      *
-     * @params { Length } value
-     * @returns { This }
+     * @params { ?Length } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -694,7 +695,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the padding of the component.
      *
      * @params { Length, Length, Length, Length } Indicates safeArea padding values.
-     * @returns { This }
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -730,8 +731,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets the margin of the component.
      *
-     * @params { Length } value
-     * @returns { This }
+     * @params { ?Length } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -753,8 +754,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets the margin of the component.
      *
-     * @params { Length, Length, Length, Length } Indicates safeArea margin values.
-     * @returns { This }
+     * @params { ?Length } top.
+     * @params { ?Length } right.
+     * @params { ?Length } bottom.
+     * @params { ?Length } left.
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -790,8 +794,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the weight of the component during layout. A component with this attribute is allocated space
      * along the main axis of its parent container (Row, Column, or Flex) based on its specified weight.
      *
-     * @params { Int32 } value
-     * @returns { This }
+     * @params { ?Int32 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -814,7 +818,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the constraint size of the component, which is used to limit the size range during component layout.
      * Default value: **{minWidth: 0, maxWidth: Infinity, minHeight: 0, maxHeight: Infinity}**.
      *
-     * @returns { This }
+     * @params { ?Length } minWidth
+     * @params { ?Length } maxWidth
+     * @params { ?Length } minHeight
+     * @params { ?Length } maxHeight
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -852,8 +860,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the alignment mode of the component content in the drawing area.
      * Default value: **Alignment.Center**.
      *
-     * @params { Alignment } value
-     * @returns { This }
+     * @params { ?Alignment } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -875,8 +883,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets how elements are laid out along the main axis of the container.
      * Default value: **Direction.Auto**.
      *
-     * @params { Direction } value
-     * @returns { This }
+     * @params { ?Direction } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -898,9 +906,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the absolute position of the component relative to the position of the parent component.
      * The attribute is not available for a layout container whose width and height are zero.
      *
-     * @params { Length } x
-     * @params { Length } y
-     * @returns { This }
+     * @params { ?Length } x
+     * @params { ?Length } y
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -924,9 +932,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the anchor for locating the component, which is used to move the component
      * further away from the position specified by position or offset.
      *
-     * @params { Length } x
-     * @params { Length } y
-     * @returns { This }
+     * @params { ?Length } x
+     * @params { ?Length } y
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -953,9 +961,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * <br>The offset attribute does not affect the layout of the parent container.
      * It adjusts the component position only during drawing.
      *
-     * @params { Length } x
-     * @params { Length } y
-     * @returns { This }
+     * @params { ?Length } x
+     * @params { ?Length } y
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -979,8 +987,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the alignment rules in the relative container.
      * This API is valid only when the container is RelativeContainer.
      *
-     * @params { AlignRuleOptions } value
-     * @returns { This }
+     * @params { ?AlignRuleOptions } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
@@ -1006,6 +1014,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * If width, height, and aspectRatio are all set, the explicitly set height is ignored, and the effective height is calculated using the following formula: width/aspectRatio.
      * This parameter takes effect only when a valid value greater than 0 is specified.
      *
+     * @params { Float64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1027,6 +1037,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the display priority for the component in the layout container.
      * This parameter is only effective in Row, Column, and Flex (single-line) container components.
      *
+     * @params { ?Int32 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1047,6 +1059,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets the base size of the component in the main axis of the parent container.
      *
+     * @params { ?Length } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1070,6 +1084,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the percentage of the parent container's remaining space that is allocated to the component.
      * Default value: **0**.
      *
+     * @params { ?Float64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1084,6 +1100,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the percentage of the parent container's remaining space that is allocated to the component.
      * Default value: **0**.
      *
+     * @params { ?Int64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1105,6 +1123,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the percentage of the parent container's shrink size that is allocated to the component.
      * Default value: 0 when the parent container is Column or Row, 1 when the parent container is Flex.
      *
+     * @params { ?Float64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1119,6 +1139,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the percentage of the parent container's shrink size that is allocated to the component.
      * Default value: 0 when the parent container is Column or Row, 1 when the parent container is Flex.
      *
+     * @params { ?Int64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1140,8 +1162,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the alignment mode of the child components along the cross axis of the parent container.
      * Default value: **ItemAlign.Auto**.
      *
-     * @params { ItemAlign } value
-     * @returns { This }
+     * @params { ?ItemAlign } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1162,8 +1184,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets the response region of the current component.
      *
-     * @params { Rectangle } value
-     * @returns { This }
+     * @params { ?Rectangle } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1196,8 +1218,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets the response region of the current component.
      *
-     * @params { Array<Rectangle> } value
-     * @returns { This }
+     * @params { ?Array<Rectangle> } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1227,11 +1249,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets the border.
      *
-     * @params { Length } width
-     * @params { ResourceColor } color
-     * @params { Length } radius
-     * @params { BorderStyle } style
-     * @returns { This }
+     * @params { ?Length } width
+     * @params { ?ResourceColor } color
+     * @params { ?Length } radius
+     * @params { ?BorderStyle } style
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1258,8 +1280,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the border width.
      * Percentage values are not supported.
      *
-     * @params { Length } value
-     * @returns { This }
+     * @params { ?Length } value
+     * @returns { T }
      * @throws { BusinessException } 100023 - Percentage values are not supported.
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -1286,8 +1308,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets the border width.
      *
-     * @params { EdgeWidths } value
-     * @returns { This }
+     * @params { ?EdgeWidths } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1313,8 +1335,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the border color.
      * Default value: **Color.Black**.
      *
-     * @params { ResourceColor } value
-     * @returns { This }
+     * @params { ?ResourceColor } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1336,11 +1358,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the radius of the border rounded corners.
      * The radius is restricted by the component size. The maximum value is half of the component width or height.
      *
-     * @params { Length } topLeft
-     * @params { Length } topRight
-     * @params { Length } bottomLeft
-     * @params { Length } bottomRight
-     * @returns { This }
+     * @params { ?Length } topLeft
+     * @params { ?Length } topRight
+     * @params { ?Length } bottomLeft
+     * @params { ?Length } bottomRight
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1377,8 +1399,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the radius of the border rounded corners.
      * The radius is restricted by the component size. The maximum value is half of the component width or height.
      *
-     * @params { Length } value
-     * @returns { This }
+     * @params { ?Length } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1401,8 +1423,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the border style.
      * Default value: **BorderStyle.Solid**.
      *
-     * @params { BorderStyle } value
-     * @returns { This }
+     * @params { ?BorderStyle } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1424,8 +1446,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Applies a foreground blur style to the component.
      *
-     * @params { BlurStyle } value
-     * @returns { This }
+     * @params { ?BlurStyle } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1439,9 +1461,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Applies a foreground blur style to the component.
      *
-     * @params { BlurStyle } value
-     * @params { ForegroundBlurStyleOptions } options
-     * @returns { This }
+     * @params { ?BlurStyle } value
+     * @params { ?ForegroundBlurStyleOptions } options
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1470,8 +1492,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the foreground color of the component.
      * If the component does not have a foreground color set, it inherits the color from its parent component by default.
      *
-     * @params { ColoringStrategy } value
-     * @returns { This }
+     * @params { ?ColoringStrategy } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1486,8 +1508,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the foreground color of the component.
      * If the component does not have a foreground color set, it inherits the color from its parent component by default.
      *
-     * @params { ResourceColor } value
-     * @returns { This }
+     * @params { ?ResourceColor } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1522,8 +1544,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Background color
      *
-     * @params { ResourceColor } value
-     * @returns { This }
+     * @params { ?ResourceColor } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1544,8 +1566,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Background image
      *
-     * @params { ResourceColor } src
-     * @returns { This }
+     * @params { ?ResourceStr } src
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1558,9 +1580,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
 
     /**
      * Background image
-     * @params { ResourceColor } src
-     * @params { ImageRepeat } repeat
-     * @returns { This }
+     * @params { ?ResourceStr } src
+     * @params { ?ImageRepeat } repeat
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1595,8 +1617,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Background image size
      *
-     * @params { ImageSize } value
-     * @returns { This }
+     * @params { ?ImageSize } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1610,9 +1632,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Background image size
      *
-     * @params { Length } width
-     * @params { Length } height
-     * @returns { This }
+     * @params { ?Length } width
+     * @params { ?Length } height
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1646,8 +1668,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * x: Horizontal coordinate;
      * y: Vertical axis coordinate;
      *
-     * @params { Alignment } value
-     * @returns { This }
+     * @params { ?Alignment } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1663,9 +1685,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * x: Horizontal coordinate;
      * y: Vertical axis coordinate;
      *
-     * @params { Length } x
-     * @params { Length } y
-     * @returns { This }
+     * @params { ?Length } x
+     * @params { ?Length } y
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1703,12 +1725,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * centerX and centerY are used to set the scale center point.
      * default:{x:1,y:1,z:1,centerX:'50%',centerY:'50%'}
      *
-     * @params { Float32 } x
-     * @params { Float32 } y
-     * @params { Float32 } z
-     * @params { Length } centerX
-     * @params { Length } centerY
-     * @returns { This }
+     * @params { ?Float32 } x
+     * @params { ?Float32 } y
+     * @params { ?Float32 } z
+     * @params { ?Length } centerX
+     * @params { ?Length } centerY
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1733,8 +1755,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets the opacity of the component.
      *
-     * @params { Float64 } value - Opacity of the component. The value ranges from 0 to 1.
-     * @returns { This }
+     * @params { ?Float64 } value - Opacity of the component. The value ranges from 0 to 1.
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1755,6 +1777,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Set component rotation.
      *
+     * @params { ?Float32 } x
+     * @params { ?Float32 } y
+     * @params { ?Float32 } z
+     * @params { ?Float32 } angle
+     * @params { ?Length } centerX
+     * @params { ?Length } centerY
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1779,6 +1808,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets the translation effect for page transitions.
      *
+     * @params { ?Length } x
+     * @params { ?Length } y
+     * @params { ?Length } z
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1805,8 +1838,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * If the value is true, the component is available and can respond to operations such as clicking.
      * If it is set to false, click operations are not responded.
      *
-     * @params { Bool } value
-     * @returns { This }
+     * @params { ?Bool } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1830,6 +1863,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * If the parameter is set to an empty string, the shared element transition does not occur.
      * For details about the options parameter, see the options parameter description.
      *
+     * @params { String } id
+     * @params { ?SharedTransitionOptions } options
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1865,8 +1901,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Shared geometry transition
      *
      * @params { String } id
-     * @params { Bool } followWithoutTransition
-     * @returns { This }
+     * @params { ?Bool } followWithoutTransition
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1891,8 +1927,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * The larger the blurring radius, the more blurring the content.
      * If the value is 0, the content blurring effect is not blurring.
      *
-     * @params { Float64 } value
-     * @returns { This }
+     * @params { ?Float64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1913,8 +1949,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Applies a color blend effect to the component.
      *
-     * @params { ResourceColor } value
-     * @returns { This }
+     * @params { ?ResourceColor } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1935,8 +1971,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Applies a background blur effect to the component. You can customize the blur radius and grayscale parameters.
      *
-     * @params { Float64 } value
-     * @returns { This }
+     * @params { ?Float64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1957,6 +1993,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Applies a shadow effect to the component.
      *
+     * @params { ?Float64 } radius
+     * @params { ?ResourceColor } color
+     * @params { ?Float64 } offsetX
+     * @params { ?Float64 } offsetY
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -1979,8 +2020,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Applies a grayscale effect to the component.
      *
-     * @params { Float64 } value
-     * @returns { This }
+     * @params { ?Float64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2001,8 +2042,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Applies a brightness effect to the component.
      *
-     * @params { Float64 } value
-     * @returns { This }
+     * @params { ?Float64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2023,8 +2064,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Applies a saturation effect to the component.
      *
-     * @params { Float64 } value
-     * @returns { This }
+     * @params { ?Float64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2045,8 +2086,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Applies a contrast effect to the component.
      *
-     * @params { Float64 } value
-     * @returns { This }
+     * @params { ?Float64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2068,8 +2109,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Invert the input image. Value defines the scale of the conversion. 100% of the value is a complete reversal.
      * A value of 0% does not change the image. (Percentage)
      *
-     * @params { Float64 } value
-     * @returns { This }
+     * @params { ?Float64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2097,6 +2138,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Invert the input image. Value defines the scale of the conversion. 100% of the value is a complete reversal.
      * A value of 0% does not change the image. (Percentage)
      *
+     * @params { ?Float64 } low
+     * @params { ?Float64 } high
+     * @params { ?Float64 } threshold
+     * @params { ?Float64 } thresholdRange
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2196,8 +2242,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sepia conversion ratio of the component.
      *
-     * @params { Float64 } value
-     * @returns { This }
+     * @params { ?Float64 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2219,8 +2265,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Rotates the hue of the component.
      *
-     * @params { Float32 } value
-     * @returns { This }
+     * @params { ?Float32 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2242,8 +2288,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * The sibling components in the same container are hierarchically displayed. A larger value of z indicates a higher display level.
      *
-     * @params { Int32 } value
-     * @returns { This }
+     * @params { ?Int32 } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2264,8 +2310,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Controls the display or hide of the current component.
      *
-     * @params { Visibility } value
-     * @returns { This }
+     * @params { ?Visibility } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2288,8 +2334,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets whether to clip the areas of child components that extend beyond this component's boundaries,
      * That is, whether to perform clipping based on the edge contour of the parent container.
      *
-     * @params { Bool } value
-     * @returns { This }
+     * @params { ?Bool } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2310,8 +2356,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Adds a mask of the specified shape to the component.
      *
-     * @params { BaseShape } value
-     * @returns { This }
+     * @params { ?BaseShape } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2326,7 +2372,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Adds a mask of the specified shape to the component.
      *
      * @params { BaseShape } value
-     * @returns { This }
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2355,6 +2401,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Add mask text to the current component. The layout is the same as that of the current component.
      *
+     * @params { ?String } value
+     * @params { ?Alignment } align
+     * @params { ?OverlayOffset } offset
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2450,6 +2500,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * The popup can be displayed only after the entire page is fully constructed. Therefore, to avoid incorrect
      * display positions and shapes, do not set this parameter to true while the page is still being constructed.
      *
+     * @params { ?Bool } show
+     * @params { ?PopupOptions } popup
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2507,6 +2560,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * The popup can be displayed only after the entire page is fully constructed. Therefore, to avoid incorrect
      * display positions and shapes, do not set this parameter to true while the page is still being constructed.
      *
+     * @params { ?Bool } show
+     * @params { ?CustomPopupOptions } popup
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2564,6 +2620,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Menu control
      *
+     * @params { ?Array<MenuElement> } content
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2599,6 +2657,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Menu control
      *
+     * @params { ?CustomBuilder } builder
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2620,6 +2680,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Binds a context menu to the component, whose visibility is subject to the isShown settings.
      *
+     * @params { ?CustomBuilder } builder
+     * @params { ?ResponseType } responseType
+     * @params { ?ContextMenuOptions } options
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2653,6 +2717,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * colors: Color description for gradients.
      * repeating: repeating. The default value is false
      *
+     * @params { ?Float64 } angle
+     * @params { ?GradientDirection } direction
+     * @params { ?Array<(ResourceColor, Float64)> } colors
+     * @params { ?Bool } repeating
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2685,6 +2753,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Creates a sweep gradient.
      *
+     * @params { ?(Length, Length) } center
+     * @params { ?Float64 } start
+     * @params { ?Float64 } end
+     * @params { ?Float64 } rotation
+     * @params { ?Array<(ResourceColor, Float64)> } colors
+     * @params { ?Bool } repeating
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2714,6 +2789,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Creates a radial gradient.
      *
+     * @params { ?(Length, Length) } center
+     * @params { ?Length } radius
+     * @params { ?Array<(ResourceColor, Float64)> } colors
+     * @params { ?Bool } repeating
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2766,6 +2846,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets hot keys
      *
+     * @params { ?FunctionKey } value
+     * @params { ?Array<ModifierKey> } keys
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2784,6 +2867,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets hot keys
      *
+     * @params { ?String } value
+     * @params { ?Array<ModifierKey> } keys
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2797,6 +2883,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets hot keys
      *
+     * @params { ?FunctionKey } value
+     * @params { ?Array<ModifierKey> } keys
+     * @params { ?() -> Unit } action
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2815,6 +2905,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets hot keys
      *
+     * @params { ?String } value
+     * @params { ?Array<ModifierKey> } keys
+     * @params { ?() -> Unit } action
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2861,6 +2955,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Key. User can set an key to the component to identify it.
      *
+     * @params { ?String } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2883,6 +2979,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * How the final state of the component's content is rendered during its width and height animation process.
      *
+     * @params { ?RenderFit } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2904,6 +3002,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Id. User can set an id to the component to identify it.
      *
+     * @params { ?String } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2926,6 +3026,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets the safe area to be expanded to.
      *
+     * @params { ?Array<SafeAreaType> } types
+     * @params { ?Array<SafeAreaEdge> } edges
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2964,6 +3067,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Binds a modal page to the component, whose visibility is subject to the isShow settings.
      *
+     * @params { ?Bool } isShow
+     * @params { ?CustomBuilder } builder
+     * @params { ?ContentCoverOptions } options
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -2988,6 +3095,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * animation
      *
+     * @params { ?AnimateParam } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -3011,6 +3120,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * animation
      *
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -3033,6 +3143,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Set the transition effect of component when it appears and disappears.
      *
+     * @params { ?TransitionEffect } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -3046,6 +3158,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Set the transition effect of component when it appears and disappears.
      *
+     * @params { ?TransitionEffect } value
+     * @params { ?TransitionFinishCallback } onFinish
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -3083,6 +3198,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Components that have default interaction logic, such as Button and TextInput, are focusable by default. Other
      * components, such as Text and Image, are not focusable by default. Only focusable components can trigger a focus event.
      *
+     * @params { ?Bool } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -3104,6 +3221,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Set focus index by key tab.
      * The tabIndex and focusScopeId cannot be used together.
      *
+     * @params { ?Int32 } index
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -3124,6 +3243,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Set default focused component when a page create.
      *
+     * @params { ?Bool } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -3144,6 +3265,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Set default focused component when focus on a focus group.
      *
+     * @params { ?Bool } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -3164,8 +3287,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Set a component focused when the component be touched.
      *
-     * @params { Bool } value
-     * @returns { This }
+     * @params { ?Bool } value
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -3189,7 +3312,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @params { Bool } isShow - true means display sheet, false means hide sheet.
      * @params { CustomBuilder } builder - the sheet to be displayed.
      * @params { SheetOptions } options - options of sheet.
-     * @returns { This }
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -3217,7 +3340,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Set preview of the component for dragging process
      *
      * @params { String } value - preview of the component for dragging process
-     * @returns { This }
+     * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
