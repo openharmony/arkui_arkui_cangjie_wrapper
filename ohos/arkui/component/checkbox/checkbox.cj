@@ -65,7 +65,7 @@ foreign {
  * Defines a Checkbox callback when onChange.
  * Anonymous Object Rectification.
  *
- * @params { boolean } value - selected status
+ * @params { Bool } value - selected status
  */
 public type OnCheckboxChangeCallback = (Bool) -> Unit
 
