@@ -26,7 +26,7 @@ import ohos.business_exception.BusinessException
 import ohos.multimedia.image.PixelMap
 
 /**
- * CommonShapeMethodComponent.
+ * Defines CommonShapeMethodComponent.
  */
 @!APILevel[
     22,
@@ -97,7 +97,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     ]
     public func fillOpacity(value: ?AppResource): T {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 var dimension: Length = getResourceLength(v)
                 fillOpacity(dimension.value)
             case None => fillOpacity(1.0)
@@ -254,7 +254,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     ]
     public func strokeOpacity(value: ?AppResource): T {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 var dimension: Length = getResourceLength(v)
                 strokeOpacity(dimension.value)
             case None => strokeOpacity(1.0)
@@ -300,7 +300,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
 
     protected override func widthInner(value: ?Length): T {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkShapeSetWidth(value_.value, value_.unitType.getValue())
@@ -312,7 +312,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
 
     protected override func heightInner(value: ?Length): T {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkShapeSetHeight(value_.value, value_.unitType.getValue())

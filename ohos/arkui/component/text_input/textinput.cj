@@ -47,7 +47,9 @@ foreign {
 ]
 public class TextInputController <: RemoteDataLite {
     /**
-     * constructor.
+     * TextInputController constructor.
+     *
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -68,7 +70,7 @@ public class TextInputController <: RemoteDataLite {
      * <br>If the value is less than 0, the value 0 is u    sed.
      * <br>If the value exceeds the text length, the caret is placed at the end of the text.
      *
-     * @params { Int32 } value
+     * @params { ?Int32 } value
      */
     @!APILevel[
         22,
@@ -86,9 +88,9 @@ public class TextInputController <: RemoteDataLite {
      * <br>If the value is less than 0, the value 0 is used.
      * <br>If the value exceeds the text length, the caret is placed at the end of the text.
      *
-     * @params { Int32 } selectionStart - The start position of the selected text.The start position of text in the text box is 0.
-     * @params { Int32 } selectionEnd - The end position of the selected text.
-     * @params { MenuPolicy } options - Indicates the options of the text selection.Default value is MenuPolicy.DEFAULT.
+     * @params { ?Int32 } selectionStart - The start position of the selected text.The start position of text in the text box is 0.
+     * @params { ?Int32 } selectionEnd - The end position of the selected text.
+     * @params { ?MenuPolicy } options - Indicates the options of the text selection.Default value is MenuPolicy.DEFAULT.
      */
     @!APILevel[
         22,
@@ -124,9 +126,10 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when writing a single line of text.
      *
-     * @params { ResourceStr } placeholder - The place holder text string.
-     * @params { ResourceStr } text - Sets the current value of TextInput.
-     * @params { TextInputController } controller - Called when the position of the insertion cursor is set.
+     * @params { ?ResourceStr } placeholder - The place holder text string.
+     * @params { ?ResourceStr } text - Sets the current value of TextInput.
+     * @params { ?TextInputController } controller - Called when the position of the insertion cursor is set.
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -136,7 +139,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
         let tmpPlaceholder = placeholder ?? ""
         let tmpText = text ?? ""
         let tmpController = controller ?? TextInputController()
-        
+
         var placeHolder = match (tmpPlaceholder) {
             case res: AppResource => getResourceString(res)
             case _ => (tmpPlaceholder as String) ?? ""
@@ -237,7 +240,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the type of soft keyboard input button is set.
      *
-     * @params { EnterKeyType } value - Default value is EnterKeyType.Done.
+     * @params { ?EnterKeyType } value - Default value is EnterKeyType.Done.
      * @returns { This }
      */
     @!APILevel[
@@ -258,7 +261,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * Alignment.Start, Alignment.Center, and Alignment.End produce the same effect, centered-aligning the text vertically;
      * Alignment.BottomStart, Alignment.Bottom, and Alignment.BottomEnd produce the same effect, bottom-aligning the text.
      *
-     * @params { TextAlign } value - Default value is TextAlign.Start.
+     * @params { ?TextAlign } value - Default value is TextAlign.Start.
      * @returns { This }
      */
     @!APILevel[
@@ -273,7 +276,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the overflow mode of the font is set.
      *
-     * @params { ResourceColor } value - Default value follows the theme.The default value on wearable devices is '#99ffffff'.
+     * @params { ?ResourceColor } value - Default value follows the theme.The default value on wearable devices is '#99ffffff'.
      * @returns { This }
      */
     @!APILevel[
@@ -289,7 +292,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the color of the insertion cursor is set.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -304,6 +307,10 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the font property of the placeholder is set.
      *
+     * @params { ?Length } size
+     * @params { ?FontWeight } weight
+     * @params { ?String } family
+     * @params { ?FontStyle } style
      * @returns { This }
      */
     @!APILevel[
@@ -319,7 +326,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the input of maximum text length is set.
      *
-     * @params { UInt32 } value - Default value is Infinity, indicating that there is no upper limit on the number of characters that can be entered.
+     * @params { ?UInt32 } value - Default value is Infinity, indicating that there is no upper limit on the number of characters that can be entered.
      * @returns { This }
      */
     @!APILevel[
@@ -339,7 +346,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * <br>The value cannot be a percentage.
      * <br>The default value on wearable devices is 18.fp.
      *
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -354,7 +361,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
 
     /**
      * Called when the font color is set.
-     * @params { ResourceColor } value - The default value on wearable devices is '#dbffffff'.
+     * @params { ?ResourceColor } value - The default value on wearable devices is '#dbffffff'.
      * @returns { This }
      */
     @!APILevel[
@@ -369,7 +376,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the font weight is set.
      *
-     * @params { FontWeight } value - Default value is FontWeight.Normal.
+     * @params { ?FontWeight } value - Default value is FontWeight.Normal.
      * @returns { This }
      */
     @!APILevel[
@@ -384,7 +391,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the font style of a font is set.
      *
-     * @params { FontStyle } value - Default value is FontStyle.Normal.
+     * @params { ?FontStyle } value - Default value is FontStyle.Normal.
      * @returns { This }
      */
     @!APILevel[
@@ -402,7 +409,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * <br>The 'HarmonyOS Sans' font and registered custom fonts are supported for applications.
      * <br>Only the 'HarmonyOS Sans' font is supported for widgets.
      *
-     * @params { ResourceStr } value
+     * @params { ?ResourceStr } value
      * @returns { This }
      */
     @!APILevel[
@@ -417,8 +424,8 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the inputFilter of text is set.
      *
-     * @params { ResourceStr } value
-     * @params { (String) -> Unit } error
+     * @params { ?ResourceStr } value
+     * @params { ?(String) -> Unit } error
      * @returns { This }
      */
     @!APILevel[
@@ -438,7 +445,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when submitted.
      *
-     * @params { (EnterKeyType) -> Unit } callback - Callback of the listened event.
+     * @params { ?(EnterKeyType) -> Unit } callback - Callback of the listened event.
      * @returns { This }
      */
     @!APILevel[
@@ -454,7 +461,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when using the Clipboard menu.
      *
-     * @params { (String) -> Unit }  callback - Callback used to return the copied text content.
+     * @params { ?(String) -> Unit } callback - Callback used to return the copied text content.
      * @returns { This }
      */
     @!APILevel[
@@ -470,7 +477,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when using the Clipboard menu.
      *
-     * @params { (String) -> Unit }  callback
+     * @params { ?(String) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -486,7 +493,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the input of the input box changes.
      *
-     * @params { (String) -> Unit }  callback
+     * @params { ?(String) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -502,7 +509,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when using the Clipboard menu.
      *
-     * @params { (String) -> Unit } callback - Executed when a paste operation is performed.
+     * @params { ?(String) -> Unit } callback - Executed when a paste operation is performed.
      * @returns { This }
      */
     @!APILevel[
@@ -518,7 +525,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when judging whether the text editing change finished.
      *
-     * @params { (Bool) -> Unit} callback
+     * @params { ?(Bool) -> Unit} callback
      * @returns { This }
      */
     @!APILevel[
@@ -534,8 +541,8 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Define custom keyboard of the text input.
      *
-     * @params { CustomBuilder } value - Set up a custom keyboard of TextInput
-     * @params { Bool } supportAvoidance - Indicates the custom keyboard options of TextInput
+     * @params { ?CustomBuilder } value - Set up a custom keyboard of TextInput.
+     * @params { ?Bool } supportAvoidance - Indicates the custom keyboard options of TextInput.
      * @returns { This }
      */
     @!APILevel[
@@ -550,7 +557,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Text input style
      *
-     * @params { TextInputStyle } value - Text input style.Default value is TextInputStyle.Default.
+     * @params { ?TextInputStyle } value - Text input style.Default value is TextInputStyle.Default.
      * @returns { This }
      */
     @!APILevel[
@@ -565,7 +572,8 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Sets whether request keyboard or not when on focus.
      * Sets whether to enable the input method when the TextInput component obtains focus in a way other than clicking.
-     * @params { Bool } value - Default value is true.
+     *
+     * @params { ?Bool } value - Default value is true.
      * @returns { This }
      */
     @!APILevel[
@@ -580,7 +588,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Controls whether the selection menu pops up.
      *
-     * @params { Bool } value - Default value is false.
+     * @params { ?Bool } value - Default value is false.
      * @returns { This }
      */
     @!APILevel[
@@ -595,7 +603,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Define the show underline of the text input.
      *
-     * @params { Bool } value - Default value is false.
+     * @params { ?Bool } value - Default value is false.
      * @returns { This }
      */
     @!APILevel[
@@ -610,7 +618,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Define max lines of the text input.
      *
-     * @params { Int32 } value - Default value is 3.
+     * @params { ?Int32 } value - Default value is 3.
      * @returns { This }
      */
     @!APILevel[

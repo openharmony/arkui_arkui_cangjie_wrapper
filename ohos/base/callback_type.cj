@@ -21,7 +21,7 @@ package ohos.base
 public type VoidCallback = () -> Unit
 
 /**
- * Defines the callback
+ * Defines the callback.
  *
  * @params { T } data
  * @returns { V }

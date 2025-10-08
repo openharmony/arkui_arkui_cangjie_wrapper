@@ -37,7 +37,7 @@ import std.collection.HashMap
 ]
 public class CJEntry {
     /**
-     * used to compare local api version with native api version, different version may occur error.
+     * Used to compare local api version with native api version, different version may occur error.
      */
     static let VERSION: Int64 = 10000
     private static let instance_ = CJEntry()

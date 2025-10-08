@@ -93,7 +93,6 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     *
     * @params { () -> Unit } child
     * @returns { This }
-    * relation (value?: PixelMap): ShapeAttribute;
     */
     @!APILevel[
         22,
@@ -110,7 +109,6 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     *
     * @params { ?PixelMap } value
     * @returns { This }
-    * relation (value?: PixelMap): ShapeAttribute;
     */
     @!APILevel[
         22,

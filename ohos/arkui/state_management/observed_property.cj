@@ -23,6 +23,9 @@ func isEqual<T>(value: T, newValue: T): Bool {
     newValue is Equatable<T> && (newValue as Equatable<T>).getOrThrow() == value
 }
 
+/**
+ * Defines class ObservedProperty.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -31,6 +34,13 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     private var internalValue: T
     private let subProps_ = ArrayList<ObservedProperty<T>>()
 
+    /**
+     * ObservedPropertyAbstract constructor.
+     *
+     * @params { String } info
+     * @params { T } initValue
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -55,6 +65,10 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         }
     }
 
+    /**
+     *
+     * @returns { T }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -68,6 +82,10 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         this.internalValue
     }
 
+    /**
+     *
+     * @params { T } newValue
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -83,6 +101,10 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         }
     }
 
+    /**
+     *
+     * @params { Observer } observer
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -98,6 +120,10 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         }
     }
 
+    /**
+     *
+     * @params { Observer } observer
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -112,6 +138,11 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         }
     }
 
+    /**
+     *
+     * @params { String } info
+     * @returns { ObservedProperty<T> }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

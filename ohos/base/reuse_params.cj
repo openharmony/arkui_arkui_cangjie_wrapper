@@ -3,6 +3,9 @@ package ohos.base
 import std.collection.HashMap
 import ohos.labels.APILevel
 
+/**
+ * Defines class ReuseParams.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -10,6 +13,12 @@ import ohos.labels.APILevel
 public class ReuseParams {
     private var maps: HashMap<String, Any>
 
+    /**
+     * ReuseParams constructor.
+     *
+     * @params { Array<(String, Any)> } arr
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -26,6 +35,11 @@ public class ReuseParams {
         }
     }
 
+    /**
+     *
+     * @params { String } key
+     * @returns { ?T }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

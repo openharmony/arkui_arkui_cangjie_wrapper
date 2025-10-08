@@ -160,8 +160,9 @@ public class FullscreenInfo {
 ]
 public class VideoController <: RemoteDataLite {
     /**
-     * constructor.
+     * VideoController constructor.
      *
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -214,8 +215,8 @@ public class VideoController <: RemoteDataLite {
     /**
      * Provide the progress method of video playback.
      *
-     * @params { Int32 } value
-     * @params { SeekMode } seekMode
+     * @params { ?Int32 } value
+     * @params { ?SeekMode } seekMode
      */
     @!APILevel[
         22,
@@ -231,7 +232,7 @@ public class VideoController <: RemoteDataLite {
     /**
      * Provides a full screen playback method.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      */
     @!APILevel[
         22,
@@ -270,10 +271,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     /**
      * Set the value.
      *
-     * @params { ResourceStr } src
-     * @params { PlaybackSpeed } currentProgressRate
-     * @params { ResourceStr } previewUri
-     * @params { VideoController } controller
+     * @params { ?ResourceStr } src
+     * @params { ?PlaybackSpeed } currentProgressRate
+     * @params { ?ResourceStr } previewUri
+     * @params { ?VideoController } controller
      * @returns { Video }
      */
     @!APILevel[
@@ -302,7 +303,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     /**
      * Called when judging whether the video is muted.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -319,7 +320,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     /**
      * Called when judging whether the video is played automatically.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -336,7 +337,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     /**
      * Called when judging whether the control bar is displayed.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -353,7 +354,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     /**
      * Called when determining the zoom type of the video source.
      *
-     * @params { ImageFit } value
+     * @params { ?ImageFit } value
      * @returns { This }
      */
     @!APILevel[
@@ -371,7 +372,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     /**
      * Called when judging whether the video is played circular.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -389,7 +390,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * Called when the video is played.
      * Anonymous Object Rectification.
      *
-     * @params { VoidCallback } event
+     * @params { ?VoidCallback } event
      * @returns { This }
      */
     @!APILevel[
@@ -412,7 +413,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * Called when the video is paused.
      * Anonymous Object Rectification.
      *
-     * @params { VoidCallback } event
+     * @params { ?VoidCallback } event
      * @returns { This }
      */
     @!APILevel[
@@ -435,14 +436,14 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * Called when the video playback ends.
      * Anonymous Object Rectification.
      *
-     * @params { VoidCallback } event
+     * @params { ?VoidCallback } event
      * @returns { This }
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onFinish(event: ?() -> Unit): This {
+    public func onFinish(event: ?VoidCallback): This {
         let tmpEvent = event ?? { => }
         let wrapper = {
             _: CString => tmpEvent()
@@ -457,8 +458,8 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     /**
      * Called when playback fails.
      *
-     * @params { VoidCallback } event
-     * @returns { This }
+     * @params { ?VoidCallback } event
+     * @returns { This}
      */
     @!APILevel[
         22,
@@ -480,8 +481,8 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * Called when the video preparation is complete.
      * Anonymous Object Rectification.
      *
-     * @params { Callback<PreparedInfo, Unit> } callback
-     * @returns { This }
+     * @params { ?Callback<PreparedInfo, Unit> } callback
+     * @returns { This}
      */
     @!APILevel[
         22,
@@ -503,8 +504,8 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * Called when the time information is reported when the progress bar process is operated.
      * Anonymous Object Rectification.
      *
-     * @params { Callback<PlaybackInfo, Unit> } callback
-     * @returns { This }
+     * @params { ?Callback<PlaybackInfo, Unit> } callback
+     * @returns { This}
      */
     @!APILevel[
         22,
@@ -526,7 +527,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * Called when the playback time information is reported after the operation progress bar is completed.
      * Anonymous Object Rectification.
      *
-     * @params { Callback<PlaybackInfo, Unit> } callback
+     * @params { ?Callback<PlaybackInfo, Unit> } callback
      * @returns { This }
      */
     @!APILevel[
@@ -549,7 +550,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * Called when the playback progress changes.
      * Anonymous Object Rectification.
      *
-     * @params { Callback<PlaybackInfo, Unit> } callback
+     * @params { ?Callback<PlaybackInfo, Unit> } callback
      * @returns { This }
      */
     @!APILevel[
@@ -572,7 +573,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * Called when the video enters and exits the full screen.
      * Anonymous Object Rectification.
      *
-     * @params { Callback<FullscreenInfo, Unit> } callback
+     * @params { ?Callback<FullscreenInfo, Unit> } callback
      * @returns { This }
      */
     @!APILevel[

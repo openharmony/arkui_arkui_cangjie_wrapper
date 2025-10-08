@@ -235,9 +235,9 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
     /**
      * Create a Tabs.
      *
-     * @params { BarPosition } barPosition
-     * @params { TabsController } controller
-     * @params { Int32 } index
+     * @params { ?BarPosition } barPosition
+     * @params { ?TabsController } controller
+     * @params { ?Int32 } index
      * @params { () -> Unit } child
      * @returns { This }
      */
@@ -262,7 +262,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
     /**
      * Called when the width of the bar graph is set.
      *
-     * @params { Length } value - Width of the tab bar. If the set value is less than 0 
+     * @params { ?Length } value - Width of the tab bar. If the set value is less than 0
      * or greater than the width of the Tabs component, the default value is used.
      * @returns { This }
      */
@@ -289,7 +289,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
     /**
      * Called when the height of the bar graph is set.
      *
-     * @params { Length } value - Height of the tab bar. If the set value is less than 0 or
+     * @params { ?Length } value - Height of the tab bar. If the set value is less than 0 or
      * greater than the height of the Tabs component, the default value is used.
      * @returns { This }
      */
@@ -323,7 +323,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
     /**
      * Sets whether to use vertical tabs.
      *
-     * @params { Bool } value - Whether to use vertical tabs. Default value is false.
+     * @params { ?Bool } value - Whether to use vertical tabs. Default value is false.
      * @returns { This }
      */
     @!APILevel[
@@ -340,7 +340,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
     /**
      * Sets whether the tabs are scrollable.
      *
-     * @params { Bool } value - Whether the tabs are scrollable. Default value is true.
+     * @params { ?Bool } value - Whether the tabs are scrollable. Default value is true.
      * @returns { This }
      */
     @!APILevel[
@@ -357,7 +357,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
     /**
      * Sets the tab bar layout mode to BarMode.Fixed.
      *
-     * @params { BarMode } value - The width of each tab is determined by equally dividing 
+     * @params { ?BarMode } value - The width of each tab is determined by equally dividing
      * the number of tabs by the bar width (or bar height in the vertical layout).
      * @returns { This }
      */
@@ -376,7 +376,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * Sets the length of time required to complete the tab switching animation,
      * which is initiated by clicking a specific tab or by calling the changeIndex API of TabsController.
      *
-     * @params { Float32 } value
+     * @params { ?Float32 } value
      * @returns { This }
      */
     @!APILevel[
@@ -392,7 +392,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
 
     /**
      * Triggered when a tab is switched.
-     * 
+     *
      * <p><strong>NOTE</strong>:
      * <br>This event is triggered when any of the following conditions is met:
      * 1. The swiping animation is completed, followed by tab switching.
@@ -401,7 +401,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * 4. A tab is clicked.
      * </p>
      *
-     * @params { Callback<Int32, Unit> } event
+     * @params { ?Callback<Int32, Unit> } event
      * @returns { This }
      */
     @!APILevel[
@@ -433,7 +433,9 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
 ]
 public class TabsController <: RemoteDataLite {
     /**
-     * TabsController constructor
+     * TabsController constructor.
+     *
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -452,9 +454,8 @@ public class TabsController <: RemoteDataLite {
     /**
      * Switches to the specified tab.
      *
-     * @params { Int32 } value - Index of the tab. If this parameter is set to a value less than 0 
+     * @params { ?Int32 } value - Index of the tab. If this parameter is set to a value less than 0
      * or greater than the maximum number, the default value 0 is used.
-     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -515,12 +516,12 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
 
     /**
      * Sets the content displayed on the tab bar.
-     * 
+     *
      * <p><strong>NOTE</strong>:
      * <br>If the content set exceeds the space provided by the tab bar, it will be clipped.
      * </p>
      *
-     * @params { ResourceStr } content - Content displayed on the tab bar.
+     * @params { ?ResourceStr } content - Content displayed on the tab bar.
      * @returns { This }
      */
     @!APILevel[
@@ -538,14 +539,14 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
 
     /**
      * Sets the content displayed on the tab bar.
-     * 
+     *
      * <p><strong>NOTE</strong>:
      * <br>The bottom tab style does not include an indicator.
      * <br>When an icon display error occurs, a gray blank block is displayed.
      * </p>
      *
-     * @params { ResourceStr } icon - TabBar icon.
-     * @params { ResourceStr } text - TabBar text.
+     * @params { ?ResourceStr } icon - TabBar icon.
+     * @params { ?ResourceStr } text - TabBar text.
      * @returns { This }
      */
     @!APILevel[
@@ -564,12 +565,12 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
 
     /**
      * Sets the content displayed on the tab bar.
-     * 
+     *
      * <p><strong>NOTE</strong>:
      * <br>If the content set exceeds the space provided by the tab bar, it will be clipped.
      * </p>
      *
-     * @params { CustomBuilder } content - Content displayed on the tab bar.
+     * @params { ?CustomBuilder } content - Content displayed on the tab bar.
      * @returns { This }
      */
     @!APILevel[

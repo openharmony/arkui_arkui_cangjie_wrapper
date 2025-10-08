@@ -377,7 +377,7 @@ public class OnPageBeginEvent {
     public var url: String
     /**
     * Defines OnPageBeginEvent Component instance.
-    * 
+    *
     * @params { String } url
     * @returns { This }
     */
@@ -409,7 +409,7 @@ public class OnPageEndEvent {
     public var url: String
     /**
     * Defines OnPageEndEvent Component instance.
-    * 
+    *
     * @params { String } url
     * @returns { This }
     */
@@ -441,7 +441,7 @@ public class OnLoadInterceptEvent {
     public var data: WebResourceRequest
     /**
     * Defines OnLoadInterceptEvent Component instance.
-    * 
+    *
     * @params { WebResourceRequest } data
     * @returns { This }
     */
@@ -533,8 +533,6 @@ struct FfiOnDownloadStartEvent {
 /**
 * Defines the Web resource request.
 *
-* getRequestUrl(): string;isRequestGesture(): boolean;isMainFrame(): boolean;
-* isRedirect(): boolean;getRequestMethod(): string;}
 */
 @!APILevel[
     22,
@@ -640,7 +638,7 @@ public class WebResourceRequest {
 }
 /**
  * Defines the triggered callback when the host application that web content from the specified origin is
- *     attempting to access the resources.
+ * attempting to access the resources.
  *
  */
 @!APILevel[
@@ -659,7 +657,7 @@ public class OnPermissionRequestEvent {
     public var request: PermissionRequest
     /**
     * Defines OnPermissionRequestEvent Component instance.
-    * 
+    *
     * @params { PermissionRequest } request
     * @returns { This }
     */
@@ -674,7 +672,6 @@ public class OnPermissionRequestEvent {
 /**
  * Defines the onPermissionRequest callback, related to {@link onPermissionRequest} method.
  *
- * grant(resources: Array<string>): void;}
  */
 @!APILevel[
     22,
@@ -689,8 +686,7 @@ public class PermissionRequest {
     let cFree: CFunc<(CPointer<Unit>) -> Unit>
     /**
     * Reject the request.
-    * 
-    * @returns { Unit }
+    *
     */
     @!APILevel[
         22,
@@ -703,7 +699,7 @@ public class PermissionRequest {
     }
     /**
     * Gets the source if the webpage that attempted to access the restricted resource.
-    * 
+    *
     * @returns { String }
     */
     @!APILevel[
@@ -720,7 +716,7 @@ public class PermissionRequest {
     }
     /**
     * Obtains the list of accessible resources requested for the web page.
-    * 
+    *
     * @returns { Array<String> }
     */
     @!APILevel[
@@ -739,7 +735,7 @@ public class PermissionRequest {
     }
     /**
     * Grant origin access to a given resource.
-    * 
+    *
     * @params { Array<string> } resources
     * @returns { Unit }
     */
@@ -813,11 +809,21 @@ func parsePermissionRequestEvent(event: COnPermissionRequestEvent): OnPermission
     }
 }
 
+/**
+ * Defines Web Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class Web <: CommonMethodComponent<Web> & WebAttribute {
+    /**
+     * Web constructor.
+     *
+     * @params { ?ResourceStr } src
+     * @params { ?WebviewController } controller
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Web.Webview.Core"
@@ -836,7 +842,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
     * Sets whether to enable access to the file system in the application.
     *
-    * @params { Bool } fileAccess
+    * @params { ?Bool } fileAccess
     * @returns { This }
     */
     @!APILevel[
@@ -852,7 +858,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
     * Sets whether to enable the DOM Storage API. By default, this feature is disabled.
     *
-    * @params { Bool } domStorageAccess
+    * @params { ?Bool } domStorageAccess
     * @returns { This }
     */
     @!APILevel[
@@ -868,7 +874,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
     * Sets whether to enable automatic image loading.
     *
-    * @params { Bool } imageAccess
+    * @params { ?Bool } imageAccess
     * @returns { This }
     */
     @!APILevel[
@@ -884,7 +890,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
     * Sets whether to enable access to online images through HTTP and HTTPS.
     *
-    * @params { Bool } onlineImageAccess
+    * @params { ?Bool } onlineImageAccess
     * @returns { This }
     */
     @!APILevel[
@@ -901,7 +907,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     *  Sets the behavior when a secure origin attempts to load a resource from an insecure origin.
     *  The default is MixedMode.None, meaning not allow a secure origin to load content from an insecure origin.
     *
-    * @params { MixMode } mixedMode
+    * @params { ?MixedMode } mixedMode
     * @returns { This }
     */
     @!APILevel[
@@ -909,7 +915,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func mixedMode(mixedMode: ?MixedMode): This {
-        let tmpMixedMode = 
+        let tmpMixedMode =
         unsafe {
             FfiOHOSAceFrameworkWebMixedMode((mixedMode ?? MixedMode.None).getValue())
         }
@@ -918,7 +924,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
     * Sets whether the Web supports zooming using gestures.
     *
-    * @params { Bool } zoomAccess
+    * @params { ?Bool } zoomAccess
     * @returns { This }
     */
     @!APILevel[
@@ -935,7 +941,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     * Set whether to enable geolocation access. By default, this feature is enabled.
     * For details, see Managing Location Permissions.
     *
-    * @params { Bool } geolocationAccess
+    * @params { ?Bool } geolocationAccess
     * @returns { This }
     */
     @!APILevel[
@@ -951,7 +957,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
     * Set whether paint vertical scroll bar, including the system default scrollbar and user-defined scrollbar.
     *
-    * @params { Bool } verticalScrollBar
+    * @params { ?Bool } verticalScrollBar
     * @returns { This }
     */
     @!APILevel[
@@ -967,7 +973,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
     * Called to setting the nested scroll options.
     *
-    * @params { NestedScrollMode } scrollForward scrollBackward
+    * @params { ?NestedScrollMode } scrollForward scrollBackward
     * @returns { This }
     */
     @!APILevel[
@@ -988,7 +994,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
     * Triggered when the resources loading is intercepted.
     *
-    * @params { Callback<OnLoadInterceptEvent, Bool> } callback
+    * @params { ?Callback<OnLoadInterceptEvent, Bool> } callback
     * @returns { This }
     * @throws { BusinessException } 190002 - The callback function is invalid.
     */
@@ -1019,7 +1025,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
     * Called when the web page starts to be loaded.
     *
-    * @params { Callback<OnPageBeginEvent, Unit> } callback
+    * @params { ?Callback<OnPageBeginEvent, Unit> } callback
     * @returns { This }
     */
     @!APILevel[
@@ -1044,7 +1050,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
     * Triggered at the end of web page loading.
     *
-    * @params { Callback<OnPageEndEvent, Unit> } callback
+    * @params { ?Callback<OnPageEndEvent, Unit> } callback
     * @returns { This }
     */
     @!APILevel[
@@ -1069,10 +1075,10 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
     * Registers the supplied ArkTS object in javaScriptProxy into this Web component.
     *
-    * @params { Array<(String) -> String> } funcList
-    * @params { String } name
-    * @params { Array<String> } methodList
-    * @params { WebviewController } controller
+    * @params { ?Array<(String) -> String> } funcList
+    * @params { ?String } name
+    * @params { ?Array<String> } methodList
+    * @params { ?WebviewController } controller
     * @returns { This }
     */
     @!APILevel[
@@ -1106,7 +1112,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
                     funcVec.setElement(i, lambdaData.getID())
                 }
 
-                FfiOHOSAceFrameworkWebJavaScriptProxy(funcVec.getNativeHandle(), cname.value, 
+                FfiOHOSAceFrameworkWebJavaScriptProxy(funcVec.getNativeHandle(), cname.value,
                     vecFfi.getNativeHandle(), tmpController.getID())
                 vecFfi.free()
                 funcVec.free()
@@ -1127,7 +1133,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     * if the theme has been defined in prefers-color-scheme of a media query,
     * and remains unchanged otherwise. To enable the forcible dark mode, use this API with forceDarkAccess.
     *
-    * @params { WebDarkMode } mode
+    * @params { ?WebDarkMode } mode
     * @returns { This }
     */
     @!APILevel[
@@ -1144,7 +1150,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     * Sets whether to enable forcible dark mode for the web page.
     * This API is applicable only when dark mode is enabled in {@link darkMode}.
     *
-    * @params { Bool } access
+    * @params { ?Bool } access
     * @returns { This }
     */
     @!APILevel[

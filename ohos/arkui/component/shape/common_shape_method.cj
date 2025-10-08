@@ -24,6 +24,9 @@ import ohos.labels.APILevel
 
 import ohos.multimedia.image.PixelMap
 
+/**
+ * Defines CommonShapeMethod.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"

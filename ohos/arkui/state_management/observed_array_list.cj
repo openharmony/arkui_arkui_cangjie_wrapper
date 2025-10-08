@@ -20,6 +20,9 @@ import ohos.labels.APILevel
 import std.collection.*
 import ohos.business_exception.BusinessException
 
+/**
+ * Defines class ObservedArrayList.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -27,6 +30,12 @@ import ohos.business_exception.BusinessException
 public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     private var internalValue: ArrayList<T>
 
+    /**
+     * ObservedArrayList constructor.
+     *
+     * @params { ArrayList<T> } initValue
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -35,6 +44,12 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.internalValue = initValue
     }
 
+    /**
+     * ObservedArrayList constructor.
+     *
+     * @params { Array<T> } initValue
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -84,6 +99,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         }
     }
 
+    /**
+     *
+     * @returns { ArrayList<T> }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -93,6 +112,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.internalValue
     }
 
+    /**
+     *
+     * @params { ArrayList<T> } newValue
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -102,6 +125,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     *
+     * @params { Array<T> } newValue
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -111,6 +138,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     *
+     * @params { ObservedComplexAbstract } newValue
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -125,6 +156,11 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     *
+     * @params { Int64 } index
+     * @returns { T }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -134,6 +170,11 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         return internalValue[index]
     }
 
+    /**
+     *
+     * @params { Int64 } index
+     * @params { T } value
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -161,6 +202,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         }
     }
 
+    /**
+     *
+     * @returns { Bool }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -169,6 +214,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         return internalValue.isEmpty()
     }
 
+    /**
+     *
+     * @returns { ObservedArrayList<T> }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -177,6 +226,9 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         return ObservedArrayList<T>(this.get())
     }
 
+    /**
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -196,6 +248,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         }
     }
 
+    /**
+     *
+     * @params { T } element
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -206,6 +262,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     *
+     * @params { Collection<T> } element
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -221,6 +281,11 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     *
+     * @params { Int64 } index
+     * @params { T } element
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -231,6 +296,11 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     *
+     * @params { Int64 } index
+     * @params { Collection<T> } elements
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -246,6 +316,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     *
+     * @params { T } element
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -256,6 +330,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     *
+     * @params { Collection<T> } elements
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -271,6 +349,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     *
+     * @params { Int64 } index
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -281,6 +363,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         return removeElement
     }
 
+    /**
+     *
+     * @params { Range<Int64> } range
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -290,6 +376,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     *
+     * @params { (T) -> Bool } predicate
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

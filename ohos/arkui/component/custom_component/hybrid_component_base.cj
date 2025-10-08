@@ -39,15 +39,21 @@ public class CJPageEntry {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+
+    /**
+     *
+     * @returns { CJPageEntry }
+     */
     public static func getInstance(): CJPageEntry {
         return instance_
     }
 
     private let entries_ = HashMap<String, CustomView>()
+
     /**
      * Register hybrid component.
      *
-     * @params name { String }.
+     * @params name { String } name.
      * @params { CustomView } cjPage.
      */
     @!APILevel[

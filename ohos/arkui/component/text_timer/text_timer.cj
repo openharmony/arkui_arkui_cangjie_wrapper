@@ -35,7 +35,7 @@ foreign {
 
 extend ShadowOptions {
     func optionToNativeTextTimerShadow(): NativeTextTimerShadow {
-        return NativeTextTimerShadow(this.radius ?? 0.0, 
+        return NativeTextTimerShadow(this.radius ?? 0.0,
             this.offsetX ?? 0.0, this.offsetY ?? 0.0, (this.color ?? Color.Black).toUInt32(), this.fill ?? false, (this.shadowType ?? ShadowType.Color).getValue())
     }
 }
@@ -114,8 +114,10 @@ foreign {
 ]
 public class TextTimerController <: RemoteDataLite {
     /**
-     * constructor.
+     * TextTimerController constructor.
      * A constructor used to create a TextTimerController object.
+     *
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -182,9 +184,9 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * A constructor used to create a TextTimerController object.
      *
-     * @params { Bool } isCountDown
-     * @params { Int64 } count
-     * @params { TextTimerController } controller
+     * @params { ?Bool } isCountDown
+     * @params { ?Int64 } count
+     * @params { ?TextTimerController } controller
      * @returns { TextTimer }
      */
     @!APILevel[
@@ -207,7 +209,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      * <br>If the specified date format is yy, MM, or dd, the default value is used instead.
      * </p>
      *
-     * @params { String } value - Custom format.Default value: 'HH:mm:ss.SS'
+     * @params { ?String } value - Custom format.Default value: 'HH:mm:ss.SS'.
      * @returns { This }
      */
     @!APILevel[
@@ -228,7 +230,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      * This event is not triggered when the screen is locked or the application is running in the background.
      * When high-precision formats (such as SSS or SS) are used, the callback interval may vary.
      *
-     * @params { (Int64, Int64) -> Unit } event
+     * @params { ?(Int64, Int64) -> Unit } event
      * @returns { This }
      */
     @!APILevel[
@@ -247,7 +249,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * Sets the font size.
      *
-     * @params { Length } value - Font size.The default font size is 16 fp.
+     * @params { ?Length } value - Font size.The default font size is 16 fp.
      * <br>If fontSize is of the number type, the unit fp is used.
      * <br>The value cannot be a percentage.
      * @returns { This }
@@ -267,7 +269,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * Sets the font color.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -285,7 +287,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * Sets the font style.
      *
-     * @params { FontStyle } value - Font style.Default value: FontStyle.Normal
+     * @params { ?FontStyle } value - Font style.Default value: FontStyle.Normal.
      * @returns { This }
      */
     @!APILevel[
@@ -307,7 +309,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      * <br>If the value is too large, the text may be clipped depending on the font.
      * </p>
      *
-     * @params { FontWeight } value - Font weight.
+     * @params { ?FontWeight } value - Font weight.
      * <br>For the number type, Value range: [100, 900], at an interval of 100.The default value is 400.
      * <br>A larger value indicates a heavier font weight.
      * <br>For the string type, only strings that represent a number.
@@ -330,7 +332,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * Sets the font family.
      *
-     * @params { ResourceStr } value - Font family. Default font: 'HarmonyOS Sans'
+     * @params { ?ResourceStr } value - Font family. Default font: 'HarmonyOS Sans'.
      * @returns { This }
      */
     @!APILevel[
@@ -352,7 +354,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
-     * @params { Array<ShadowOptions> } value - The shadow options.
+     * @params { ?Array<ShadowOptions> } value - The shadow options.
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
@@ -377,7 +379,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
-     * @params { ShadowOptions } value - The shadow options.
+     * @params { ?ShadowOptions } value - The shadow options.
      * @returns { TextTimerAttribute }
      */
     @!APILevel[

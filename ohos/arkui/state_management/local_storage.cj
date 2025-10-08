@@ -18,6 +18,7 @@ package ohos.arkui.state_management
 import ohos.base.*
 import ohos.labels.APILevel
 import std.collection.*
+import ohos.business_exception.BusinessException
 
 /**
  * LocalStorage
@@ -40,6 +41,7 @@ public class LocalStorage {
      * initialize with all properties and their values that Object.keys(params) returns
      * Property values must not be undefined.
      *
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -49,6 +51,10 @@ public class LocalStorage {
         this.storage = HashMap<String, ObservedPropertyAbstract>()
     }
 
+    /**
+     *
+     * @returns { Bool }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -58,12 +64,12 @@ public class LocalStorage {
     }
 
     /**
-     * Check if LocalStorage has a property with given name
-     * return true if property with given name exists
-     * same as ES6 Map.prototype.has()
+     * Check if LocalStorage has a property with given name.
+     * Return true if property with given name exists.
+     * Same as ES6 Map.prototype.has().
      *
-     * @params { String } propName - searched property
-     * @returns { Bool } true if property with such name exists in LocalStorage
+     * @params { String } propName - searched property.
+     * @returns { Bool } true if property with such name exists in LocalStorage.
      */
     @!APILevel[
         22,
@@ -74,8 +80,8 @@ public class LocalStorage {
     }
 
     /**
-     * Provide names of all properties in LocalStorage
-     * same as ES6 Map.prototype.keys()
+     * Provide names of all properties in LocalStorage.
+     * Same as ES6 Map.prototype.keys().
      *
      * @returns { EquatableCollection<String> }
      */
@@ -88,10 +94,10 @@ public class LocalStorage {
     }
 
     /**
-     * Returns number of properties in LocalStorage
-     * same as Map.prototype.size()
+     * Returns number of properties in LocalStorage.
+     * Same as Map.prototype.size().
      *
-     * @returns { Int64 } return number of properties
+     * @returns { Int64 } return number of properties.
      */
     @!APILevel[
         22,
@@ -102,11 +108,11 @@ public class LocalStorage {
     }
 
     /**
-     * Returns value of given property
-     * return undefined if no property with this name
+     * Returns value of given property.
+     * Returns undefined if no property with this name.
      *
      * @params { String } propName
-     * @returns { ?T } property value if found
+     * @returns { ?T } property value if found.
      */
     @!APILevel[
         22,
@@ -124,13 +130,13 @@ public class LocalStorage {
     }
 
     /**
-     * Set value of given property in LocalStorage
-     * Method sets nothing and returns false if property with this name does not exist in LocalStorage
+     * Set value of given property in LocalStorage.
+     * Method sets nothing and returns false if property with this name does not exist in LocalStorage.
      * newValue can be undefined or null from API 12.
      *
      * @params { String } propName
-     * @params { T } newValue - must be of type T
-     * @returns { Bool } true on success
+     * @params { T } newValue - must be of type T.
+     * @returns { Bool } true on success.
      */
     @!APILevel[
         22,
@@ -152,11 +158,11 @@ public class LocalStorage {
     /**
      * Set value of given property, if it exists, see set() .
      * Add property if no property with given name and initialize with given value.
-     * newValue can be undefined or null from API 12
+     * newValue can be undefined or null from API 12.
      *
      * @params { String } propName
-     * @params { T } newValue - must be of type T, can be undefined or null
-     * @returns { boolean } true on success, i.e. when above conditions are satisfied, otherwise false
+     * @params { T } newValue - must be of type T, can be undefined or null.
+     * @returns { boolean } true on success, i.e. when above conditions are satisfied, otherwise false.
      */
     @!APILevel[
         22,
@@ -179,10 +185,10 @@ public class LocalStorage {
     }
 
     /**
-     * Create and return a two-way sync "(link") to named property
+     * Create and return a two-way sync "(link") to named property.
      *
-     * @params { String } propName - name of source property in LocalStorage
-     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
+     * @params { String } propName - name of source property in LocalStorage.
+     * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>.
      */
     @!APILevel[
         22,
@@ -200,7 +206,7 @@ public class LocalStorage {
     }
 
     /**
-     * Like see link(), but will create and initialize a new source property in LocalStorage if missing
+     * Like see link(), but will create and initialize a new source property in LocalStorage if missing.
      *
      * @params { String } propName - name of source property in LocalStorage
      * @params { T } defaultValue - value to be used for initializing new property in LocalStorage
@@ -224,10 +230,10 @@ public class LocalStorage {
     }
 
     /**
-     * Create and return a one-way sync ('prop') to named property
+     * Create and return a one-way sync ('prop') to named property.
      *
-     * @params { String } propName - name of source property in LocalStorage
-     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
+     * @params { String } propName - name of source property in LocalStorage.
+     * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>.
      */
     @!APILevel[
         22,
@@ -245,9 +251,9 @@ public class LocalStorage {
     }
 
     /**
-     * Like see prop(), will create and initialize a new source property in LocalStorage if missing
+     * Like see prop(), will create and initialize a new source property in LocalStorage if missing.
      *
-     * @params { String } propName - name of source property in LocalStorage
+     * @params { String } propName - name of source property in LocalStorage.
      * @params { T } defaultValue - value to be used for initializing new property in LocalStorage.
      *         Default value must be of type T.
      * @returns { ObservedProperty<T> } instance of ObservedProperty<T>.
@@ -269,11 +275,11 @@ public class LocalStorage {
     }
 
     /**
-     * Delete property from StorageBase
+     * Delete property from StorageBase.
      * Use with caution:
      * Before deleting a prop from LocalStorage all its subscribers need to
      * unsubscribe from the property.
-     * This method fails and returns false if given property still has subscribers
+     * This method fails and returns false if given property still has subscribers.
      * Another reason for failing is unknown property.
      * Developer advise:
      * Subscribers are created with see link(), see prop()
@@ -283,7 +289,7 @@ public class LocalStorage {
      * (and also should not!) be deleted from LocalStorage.
      *
      * @params { String } propName
-     * @returns { Bool } false if method failed
+     * @returns { Bool } false if method failed.
      */
     @!APILevel[
         22,
@@ -304,10 +310,10 @@ public class LocalStorage {
     }
 
     /**
-     * Delete all properties from the LocalStorage instance
+     * Delete all properties from the LocalStorage instance.
      * Precondition is that there are no subscribers.
-     * method returns false and deletes no properties if there is any property
-     * that still has subscribers
+     * Method returns false and deletes no properties if there is any property
+     * that still has subscribers.
      *
      * @returns { Bool }
      */

@@ -19,6 +19,9 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 
+/**
+ * The information of a transformation matrix.
+ */
 public type Matrix4Result = VArray<Float64, $16>
 
 foreign func FFIOHOSAceFrameworkComponentUtilsGetById(id: CString): CComponentInfo
@@ -65,6 +68,10 @@ public class Size {
 
     /**
      * Create an Object of Size.
+     *
+     * @params { Float64 } width
+     * @params { Float64 } height
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -116,6 +123,10 @@ public class Offset {
 
     /**
      * Create an Object of Offset.
+     *
+     * @params { Float64 } x
+     * @params { Float64 } y
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -181,6 +192,11 @@ public class TranslateResult {
 
     /**
      * Create an Object of Offset.
+     *
+     * @params { Float64 } x
+     * @params { Float64 } y
+     * @params { Float64 } z
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -263,6 +279,13 @@ public class ScaleResult {
 
     /**
      * Defines ScaleResult Type.
+     *
+     * @params { Float64 } x
+     * @params { Float64 } y
+     * @params { Float64 } z
+     * @params { Float64 } centerX
+     * @params { Float64 } centerY
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -364,6 +387,14 @@ public class RotateResult {
 
     /**
      * Defines RotateResult Type.
+     *
+     * @params { Float64 } x
+     * @params { Float64 } y
+     * @params { Float64 } z
+     * @params { Float64 } centerX
+     * @params { Float64 } centerY
+     * @params { Float64 } angle
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -500,7 +531,17 @@ public class ComponentInfo {
     public var transform: Matrix4Result
 
     /**
-     * constructor.
+     * ComponentInfo constructor.
+     *
+     * @params { Size } size
+     * @params { Offset } localOffset
+     * @params { Offset } windowOffset
+     * @params { Offset } screenOffset
+     * @params { TranslateResult } translate
+     * @params { ScaleResult } scale
+     * @params { RotateResult } rotate
+     * @params { Matrix4Result } transform
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -531,7 +572,8 @@ public class ComponentUtils {
     /**
      * Provide the ability to obtain the coordinates and size of component drawing areas.
      *
-     * @params {string} id - component id.
+     * @params { string } id - component id.
+     * @returns { ComponentInfo }
      */
     @!APILevel[
         22,

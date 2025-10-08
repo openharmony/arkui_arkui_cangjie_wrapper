@@ -18,6 +18,9 @@ package ohos.base
 import std.collection.*
 import ohos.labels.APILevel
 
+/**
+ * Defines interface CollectionEx.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
