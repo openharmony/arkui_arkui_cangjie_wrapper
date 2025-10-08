@@ -40,6 +40,7 @@ foreign {
 
     func FfiOHOSAceFrameworkRefreshOnOffsetChange(callback: Int64): Unit
 }
+
 /**
  * Called when the drop-down refresh is set.
  */
@@ -56,6 +57,7 @@ public class RefreshOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var refreshing: ?Bool
+
     /**
      * Whether the current event has changed
      */
@@ -64,6 +66,7 @@ public class RefreshOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var changeEvent: ?(Bool) -> Unit
+
     /**
      * Defines the options of refresh component.
      *
@@ -88,12 +91,13 @@ public class RefreshOptions {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(refreshing!: ?(Bool, (Bool) -> Unit)) {
-        let tmpRefreshing = refreshing ?? (false, {_ =>})
-        this.refreshing = tmpRefreshing[0]
-        this.changeEvent = tmpRefreshing[1]
+    public init(refreshing!: ?Bindable<Bool>) {
+        let tmpRefreshing = refreshing ?? Bindable(false, {_ =>})
+        this.refreshing = tmpRefreshing.value
+        this.changeEvent = tmpRefreshing.onchange
     }
 }
+
 /**
  * Defines Refresh Component.
  */
