@@ -631,7 +631,7 @@ class ViewScroll2 {
                     .backgroundColor(Color.Green)
                     .onClick({evt =>
                         let res = this.scroller_list.getItemRect(4)
-                        this.itemRect = res.x.toString() + " " + res.y.toString() + " " + res.width.toString() + " " + res.height.toString()
+                        this.itemRect = res.x.getOrThrow().toString() + " " + res.y.getOrThrow().toString() + " " + res.width.getOrThrow().toString() + " " + res.height.getOrThrow().toString()
                     })
                     Text(this.itemRect)
                     .id("itemRect")

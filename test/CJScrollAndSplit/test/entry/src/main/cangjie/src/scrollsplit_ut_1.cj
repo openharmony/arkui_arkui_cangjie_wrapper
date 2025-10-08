@@ -806,7 +806,7 @@ class ScrollSplitUT1 {
         @Expect(sticky, "\"StickyStyle.None\"")
 
         let divider = attrs.get("divider").getOrThrow().toString()
-         @Expect(divider , "{\"strokeWidth\":\"2.00px\",\"startMargin\":\"0.00vp\",\"endMargin\":\"0.00vp\",\"color\":\"#FF000000\"}")
+         @Expect(divider , "{\"strokeWidth\":\"2.00px\",\"startMargin\":\"0.00vp\",\"endMargin\":\"0.00vp\",\"color\":\"#08000000\"}")
     }
 
     @TestCase

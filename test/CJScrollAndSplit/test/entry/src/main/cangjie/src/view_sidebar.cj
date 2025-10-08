@@ -29,7 +29,8 @@ internal import ohos.arkui.component.{DividerStyle, SideBarContainer, ButtonStyl
 internal import ohos.arkui.state_management.SubscriberManager
 internal import ohos.arkui.state_management.ObservedProperty
 internal import ohos.arkui.state_management.LocalStorage
-internal import kit.LocalizationKit.AppResource
+import ohos.i18n.*
+import ohos.resource_manager.*
 import ohos.arkui.state_macro_manage.Entry
 import ohos.arkui.state_macro_manage.Component
 import ohos.arkui.state_macro_manage.State

@@ -229,10 +229,10 @@ class ViewRichEditor {
                 for (i in 0..array.size) {
                     match (array[i]) {
                         case RichEditorImageSpanResult =>
-                            //Hilog.error(1, "Cangjie-Test", "getSpans: RichEditorImageSpanResult")
+                            Hilog.error(1, "Cangjie-Test", "getSpans: RichEditorImageSpanResult")
                             // 现在没法正确match case，临时解决办法, 加count为了不重复构造
                             if (imageCount == 0) {
-                                testBuildRichEditorImageSpanResult((array[i] as RichEditorImageSpanResult).getOrThrow())
+//                                testBuildRichEditorImageSpanResult((array[i] as RichEditorImageSpanResult).getOrThrow())
                                 imageCount++
                             }
                             //Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: Image:" + (array[i] as RichEditorImageSpanResult).getOrThrow().value.toString())

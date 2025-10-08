@@ -24,7 +24,8 @@ import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.resource_manager.*
 import std.collection.*
-import kit.LocalizationKit.*
+import ohos.i18n.*
+import ohos.resource_manager.*
 
 @Entry
 @Component

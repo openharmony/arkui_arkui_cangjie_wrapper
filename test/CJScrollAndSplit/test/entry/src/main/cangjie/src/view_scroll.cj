@@ -158,10 +158,10 @@ class ViewScroll {
                                 offset, state =>
                                 if ((listPosition == 0 && offset <= 0.0) || (listPosition == 2 && offset >= 0.0)) {
                                     scrollerForScroll.scrollBy(xOffset: 0.0, yOffset: offset)
-                                    return onScrollFrameBeginHandleResult(offsetRemain: 0.0)
+                                    return OnScrollFrameBeginHandlerResult(offsetRemain: 0.0)
                                 }
                                 listPosition = 1
-                                return onScrollFrameBeginHandleResult(offsetRemain: offset)
+                                return OnScrollFrameBeginHandlerResult(offsetRemain: offset)
                             }
                         )
 
