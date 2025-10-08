@@ -117,8 +117,8 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Grid is returned when the parameter is transferred.
      *
-     * @params { ?Scroller } scroller
-     * @params { ()->Unit } child
+     * @params { ?Scroller } scroller - Controller bound to the grid.
+     * @params { ()->Unit } child - The child component of the grid.
      */
     @!APILevel[
         22,
