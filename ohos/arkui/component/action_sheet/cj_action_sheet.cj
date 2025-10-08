@@ -150,7 +150,6 @@ public class SheetInfo {
     public var title: ?ResourceStr
     /**
      * Callback when the sheet is selected.
-     * Anonymous Object Rectification.
      */
     @!APILevel[
         22,
@@ -168,9 +167,9 @@ public class SheetInfo {
     /**
      * Constructor of SheetInfo.
      *
-     * @params { ?ResourceStr } title
-     * @params { ?VoidCallback } action
-     * @params { ?ResourceStr } icon
+     * @params { ?ResourceStr } title - Title Properties.
+     * @params { ?VoidCallback } action - Callback when the sheet is selected.
+     * @params { ?ResourceStr } icon - Sheet icon.
      */
     @!APILevel[
         22,
@@ -203,7 +202,6 @@ public class SheetInfo {
 
 /**
  * Base button params used for ActionSheet.
- *
  */
 @!APILevel[
     22,
@@ -255,11 +253,11 @@ public class ActionSheetButtonOptions {
     /**
      * Constructor of ActionSheetButtonOptions.
      *
-     * @params { ?ResourceStr } value
-     * @params { ?VoidCallback } action
-     * @params { ?Bool } enabled
-     * @params { ?Bool } defaultFocus
-     * @params { ?DialogButtonStyle } style
+     * @params { ?ResourceStr } value - Button text.
+     * @params { ?VoidCallback } action - Callback invoked when the button is selected.
+     * @params { ?Bool } enabled - Whether to respond when the button is clicked.
+     * @params { ?Bool } defaultFocus - Whether the button is the default focus.
+     * @params { ?DialogButtonStyle } style - Button style.
      */
     @!APILevel[
         22,
@@ -310,9 +308,9 @@ public class DismissDialogAction {
     ]
     public var reason: ?DismissReason
     /**
-     * Constructor of DismissDialogAction.
-     *
-     * @params { ?DismissReason } reason
+     * Constructor of DismissDialogAction
+
+     * @params { ?DismissReason } reason - Reason why the dialog box cannot be dismissed.
      */
     @!APILevel[
         22,
@@ -500,13 +498,13 @@ public class ActionSheetOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
-   /**
-    * Corner radius of the background. You can set the radius for each of the four corners individually.
-    *
-    * to the component size, with the maximum value being half of the component width or height. If the value is
-    * negative, the default value is used. When set to a percentage, the value defines the radius as a percentage of the
-    * parent component's width or height.
-    */
+    /**
+     * Corner radius of the background. You can set the radius for each of the four corners individually.
+     *
+     * to the component size, with the maximum value being half of the component width or height. If the value is
+     * negative, the default value is used. When set to a percentage, the value defines the radius as a percentage of the
+     * parent component's width or height.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -524,32 +522,32 @@ public class ActionSheetOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: ?Length
-   /**
-    * Border color of the dialog box.
-    * <p><strong>NOTE</strong>:
-    * <br>When borderColor is of type LocalizedEdgeColors, the layout order can be dynamically adjusted based on the
-    * user's language settings.
-    * </p>
-    */
+    /**
+     * Border color of the dialog box.
+     * <p><strong>NOTE</strong>:
+     * <br>When borderColor is of type LocalizedEdgeColors, the layout order can be dynamically adjusted based on the
+     * user's language settings.
+     * </p>
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: ?ResourceColor
-   /**
-    * Border style of the dialog box.
-    */
+    /**
+     * Border style of the dialog box.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderStyle: ?EdgeStyles
-   /**
-    * Width of the dialog box.
-    *
-    * When this parameter is set to a percentage, the reference width of the dialog box is the width of the window
-    * where the dialog box is located. You can decrease or increase the width as needed.
-    */
+    /**
+     * Width of the dialog box.
+     *
+     * When this parameter is set to a percentage, the reference width of the dialog box is the width of the window
+     * where the dialog box is located. You can decrease or increase the width as needed.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -592,28 +590,28 @@ public class ActionSheetOptions {
     /**
      * Constructor of ActionSheetOptions.
      *
-     * @params { ?ResourceStr } title
-     * @params { ?ResourceStr } message
-     * @params { ?Array<SheetInfo> } sheets
-     * @params { ?ResourceStr } subtitle
-     * @params { ?ActionSheetButtonOptions } confirm
-     * @params { ?Bool } autoCancel
-     * @params { ?VoidCallback } cancel
-     * @params { ?DialogAlignment } alignment
-     * @params { ?ActionSheetOffset } offset
-     * @params { ?Rectangle } maskRect
-     * @params { ?Bool } showInSubWindow
-     * @params { ?ResourceColor } backgroundColor
-     * @params { ?BlurStyle } backgroundBlurStyle
-     * @params { ?Callback<DismissDialogAction, Unit> } onWillDismiss
-     * @params { ?BorderRadiuses } cornerRadius
-     * @params { ?Length } borderWidth
-     * @params { ?ResourceColor } borderColor
-     * @params { ?EdgeStyles } borderStyle
-     * @params { ?Length } width
-     * @params { ?Length } height
-     * @params { ?ShadowOptions } shadow
-     * @params { ?TransitionEffect } transition
+     * @params { ?ResourceStr } title - Title of the dialog box.
+     * @params { ?ResourceStr } message - Content of the dialog box.
+     * @params { ?Array<SheetInfo> } sheets - Options in the dialog box.
+     * @params { ?ResourceStr } subtitle - Subtitle of the dialog box.
+     * @params { ?ActionSheetButtonOptions } confirm - Information about the confirm button.
+     * @params { ?Bool } autoCancel - Whether to close the dialog box when the overlay is clicked.
+     * @params { ?VoidCallback } cancel - Callback invoked when the dialog box is closed after the overlay is clicked.
+     * @params { ?DialogAlignment } alignment - Alignment mode of the dialog box in the vertical direction.
+     * @params { ?ActionSheetOffset } offset - Offset of the dialog box relative to the alignment position.
+     * @params { ?Rectangle } maskRect - Mask area of the dialog box.
+     * @params { ?Bool } showInSubWindow - Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window.
+     * @params { ?ResourceColor } backgroundColor - Background color of the dialog box.
+     * @params { ?BlurStyle } backgroundBlurStyle - Background blur style of the dialog box.
+     * @params { ?Callback<DismissDialogAction, Unit> } onWillDismiss - Callback for interactive closure of the dialog box.
+     * @params { ?BorderRadiuses } cornerRadius - Corner radius of the background.
+     * @params { ?Length } borderWidth - Border width of the dialog box.
+     * @params { ?ResourceColor } borderColor - Border color of the dialog box.
+     * @params { ?EdgeStyles } borderStyle - Border style of the dialog box.
+     * @params { ?Length } width - Width of the dialog box.
+     * @params { ?Length } height - Height of the dialog box.
+     * @params { ?ShadowOptions } shadow - Shadow of the dialog box.
+     * @params { ?TransitionEffect } transition - Transition effect for the entrance and exit of the dialog box.
      */
     @!APILevel[
         22,
@@ -795,8 +793,8 @@ public class ActionSheetOffset {
     /**
      * Constructor of ActionSheetOffset.
      *
-     * @params { ?Length } dx
-     * @params { ?Length } dy
+     * @params { ?Length } dx - Offset of the action sheet along the x-axis relative to the alignment position.
+     * @params { ?Length } dy - Offset of the action sheet along the y-axis relative to the alignment position.
      */
     @!APILevel[
         22,
