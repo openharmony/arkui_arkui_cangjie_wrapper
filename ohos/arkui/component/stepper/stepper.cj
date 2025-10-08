@@ -45,7 +45,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
     /**
      * Defines Stepper Component instance.
      *
-     * @params { UInt32 = 0 } index
+     * @params { ?UInt32 } index
      * @params { () -> Unit } child
      * @returns { This }
      */
@@ -63,7 +63,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
     /**
      * Callback when the finish label is clicked.
      *
-     * @params { () -> Unit } callback
+     * @params { ?() -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -82,7 +82,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
     /**
      * Callback when the skip label is clicked.
      *
-     * @params { () -> Unit } callback
+     * @params { ?() -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -101,7 +101,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
      /**
      * Callback when the change label is clicked.
      *
-     * @params { (UInt32, UInt32) -> Unit } callback
+     * @params { ?(UInt32, UInt32) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -123,7 +123,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
      /**
      * Callback when the next label is clicked.
      *
-     * @params { (UInt32, UInt32) -> Unit } callback
+     * @params { ?(UInt32, UInt32) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -145,7 +145,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
      /**
      * Callback when the previous label is clicked.
      *
-     * @params { (UInt32, UInt32) -> Unit } callback
+     * @params { ?(UInt32, UInt32) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[

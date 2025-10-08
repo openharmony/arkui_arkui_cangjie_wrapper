@@ -48,17 +48,28 @@ struct LanesParams {
     ) {}
 }
 
+/**
+ * The data returned by the event handler when onScrollFrameBegin.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class onScrollFrameBeginHandleResult {
+public class OnScrollFrameBeginHandlerResult {
+    /**
+     * Actual scroll offset.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offsetRemain: ?Float64
 
+    /**
+     * Constructor.
+     *
+     * @param { ?Float64 } offsetRemain - Actual scroll offset.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -184,7 +195,6 @@ foreign {
 
 /**
  * Defines List Component.
- *
  */
 @!APILevel[
     22,
@@ -195,9 +205,9 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Called when interface data is called.
      *
-     * @params { Int64 } space
-     * @params { Int32 } initialIndex
-     * @params { Scroller } scroller
+     * @params { ?Int64 } space
+     * @params { ?Int32 } initialIndex
+     * @params { ?Scroller } scroller
      * @params { () -> Unit } child
      * @returns { This }
      */
@@ -248,7 +258,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Sets the direction in which the list items are arranged.
      *
-     * @params { Axis } value
+     * @params { ?Axis } value
      * @returns { This }
      */
     @!APILevel[
@@ -265,13 +275,8 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Sets the style of the divider for the list items. By default, there is no divider.
      *
-     * @params { Length } strokeWidth
-     * @params { ResourceColor } color
-     * @params { Length } startMargin
-     * @params { Length } endMargin
+     * @params { Option<ListDividerOptions> } value
      * @returns { This }
-                    value: ListDividerOptions | null,
-                ): ListAttribute;
      */
     @!APILevel[
         22,
@@ -304,7 +309,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Sets the effect used when the scroll boundary is reached.
      *
-     * @params { EdgeEffect } value
+     * @params { ?EdgeEffect } value
      * @returns { This }
      */
     @!APILevel[
@@ -322,7 +327,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
      * Sets whether to enable chained animations, which provide a visually connected,
      * or "chained," effect when the list is scrolled or its top or bottom edge is dragged.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -339,7 +344,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Called when the minimum number of list item caches is set for long list deferred loading.
      *
-     * @params { Int32 } value
+     * @params { ?Int32 } value
      * @returns { This }
      */
     @!APILevel[
@@ -356,7 +361,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Sets whether to enable multiselect.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -374,7 +379,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
      * Sets the number of columns or rows in the list. If the value is set to the gutter type, it indicates the gap between columns.
      * It takes effect when the number of columns is greater than 1.
      *
-     * @params { Int32 } value
+     * @params { ?Int32 } value
      * @returns { This }
      */
     @!APILevel[
@@ -392,8 +397,8 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
      * Sets the number of columns or rows in the list. If the value is set to the gutter type, it indicates the gap between columns.
      * It takes effect when the number of columns is greater than 1.
      *
-     * @params { Length } minLength
-     * @params { Length } maxLength
+     * @params { ?Length } minLength
+     * @params { ?Length } maxLength
      * @returns { This }
      */
     @!APILevel[
@@ -424,7 +429,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
      * Alignment mode of list items along the cross axis when the cross-axis width of the list is greater
      * than the cross-axis width of list items multiplied by the value of lanes.
      *
-     * @params { ListItemAlign } value
+     * @params { ?ListItemAlign } value
      * @returns { This }
      */
     @!APILevel[
@@ -441,7 +446,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Sets whether to pin the header to the top or the footer to the bottom in the list item group.
      *
-     * @params { StickyStyle } value
+     * @params { ?StickyStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -531,7 +536,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Triggered when a child component enters or leaves the list display area.
      *
-     * @params { (Int32, Int32, Int32) -> Unit } event
+     * @params { ?(Int32, Int32, Int32) -> Unit } event
      * @returns { This }
      */
     @!APILevel[
@@ -550,15 +555,15 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Called when scrolling begin each frame.
      *
-     * @params { (Float64, ScrollState) -> onScrollFrameBeginHandleResult } event
+     * @params { ?(Float64, ScrollState) -> OnScrollFrameBeginHandlerResult } event
      * @returns { This }
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onScrollFrameBegin(event: ?(Float64, ScrollState) -> onScrollFrameBeginHandleResult): This {
-        let tmpEvent = event ?? { _, _ => onScrollFrameBeginHandleResult(offsetRemain: 0.0) }
+    public func onScrollFrameBegin(event: ?(Float64, ScrollState) -> OnScrollFrameBeginHandlerResult): This {
+        let tmpEvent = event ?? { _, _ => OnScrollFrameBeginHandlerResult(offsetRemain: 0.0) }
         let wrapper = { offset: Float64, state: Int32 =>
             let res = tmpEvent(offset, ScrollState.parseValue(state))
             res.offsetRemain ?? 0.0

@@ -35,7 +35,6 @@ foreign {
 
 /**
  * Defines the list item group style.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -43,10 +42,8 @@ foreign {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ListItemGroupStyle {
-
     /**
      * Show custom style.
-     *
      */
     @!APILevel[
         22,
@@ -55,7 +52,6 @@ public enum ListItemGroupStyle {
     None |
     /**
      * Show default style.
-     *
      */
     @!APILevel[
         22,
@@ -75,17 +71,14 @@ public enum ListItemGroupStyle {
 
 /**
  * Defines the item group attribute functions.
- *
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ListDividerOptions {
-
     /**
      * Set the line width of the dividing line.
-     *
      */
     @!APILevel[
         22,
@@ -95,7 +88,6 @@ public class ListDividerOptions {
 
     /**
      * Set the color of the dividing line.
-     *
      */
     @!APILevel[
         22,
@@ -105,7 +97,6 @@ public class ListDividerOptions {
 
     /**
      * Set the distance between the dividing line and the starting end of the side of the list.
-     *
      */
     @!APILevel[
         22,
@@ -115,7 +106,6 @@ public class ListDividerOptions {
 
     /**
      * Set the distance between the dividing line and the end of the side of the list.
-     *
      */
     @!APILevel[
         22,
@@ -125,6 +115,11 @@ public class ListDividerOptions {
 
     /**
      * ListDividerOptions constructor
+     *
+     * @params { ?Length } strokeWidth
+     * @params { ?ResourceColor } color
+     * @params { ?Length } startMargin
+     * @params { ?Length } endMargin
      */
     @!APILevel[
         22,
@@ -145,7 +140,6 @@ public class ListDividerOptions {
 
 /**
  * Defines ListItemGroup Component.
- *
  */
 @!APILevel[
     22,
@@ -156,10 +150,10 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroup> & ListItemGro
     /**
      * Called when an interface is used.
      *
-     * @params { CustomBuilder } header
-     * @params { CustomBuilder } footer
-     * @params { Length } space
-     * @params { ListItemGroupStyle } style
+     * @params { ?CustomBuilder } header
+     * @params { ?CustomBuilder } footer
+     * @params { ?Length } space
+     * @params { ?ListItemGroupStyle } style
      * @params { () -> Unit } child
      * @returns { This }
      */
@@ -191,8 +185,6 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroup> & ListItemGro
      *
      * @params { Option<ListDividerOptions> } value
      * @returns { This }
-                    value: ListDividerOptions | null,
-                 ): ListItemGroupAttribute
      */
     @!APILevel[
         22,

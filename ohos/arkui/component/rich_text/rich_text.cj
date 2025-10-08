@@ -35,6 +35,12 @@ foreign {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
+    /**
+     * Creates a RichText component.
+     *
+     * @params { ?ResourceStr } content
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -55,7 +61,7 @@ public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
     /**
      * Triggered when the RichText loading starts.
      *
-     * @params { () -> Unit } callback
+     * @params { ?() -> Unit } callback
      * @returns { This } 
      */
     @!APILevel[
@@ -72,7 +78,7 @@ public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
     /**
      * Triggered when the RichText loading ends.
      *
-     * @params { () -> Unit } callback
+     * @params { ?() -> Unit } callback
      * @returns { This } 
      */
     @!APILevel[

@@ -56,7 +56,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * Sets the scrollbar state.
      *
-     * @params { BarState } barState
+     * @params { ?BarState } barState
      * @returns { This }
      */
     @!APILevel[
@@ -72,7 +72,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * Sets the scrollbar color.
      *
-     * @params { ResourceColor } color
+     * @params { ?ResourceColor } color
      * @returns { This }
      */
     @!APILevel[
@@ -88,7 +88,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * Sets the scrollbar width.
      *
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -105,7 +105,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * Sets the nested scrolling options. You can set the nested scrolling mode in the forward and backward directions
      * to implement scrolling linkage with the parent component.
      *
-     * @params { NestedScrollOptions } value
+     * @params { ?NestedScrollOptions } value
      * @returns { This }
      */
     @!APILevel[
@@ -122,7 +122,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * Sets whether to support scroll gestures. When this attribute is set to <em>false</em>,
      * scrolling by finger or mouse is not supported, but the scroll controller API is not affected.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -140,7 +140,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * it affects only indirectly the scroll chaining during the inertial scrolling process.
      * If this attribute is set to a value less than or equal to 0, the default value is used.
      *
-     * @params { Float64 } value
+     * @params { ?Float64 } value
      * @returns { This }
      */
     @!APILevel[
@@ -158,7 +158,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * it affects only indirectly the scroll chaining during the inertial scrolling process.
      * If this attribute is set to a value less than or equal to 0, the default value is used.
      *
-     * @params { AppResource } value
+     * @params { ?AppResource } value
      * @returns { This }
      */
     @!APILevel[
@@ -174,7 +174,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * Sets the reach start.
      *
-     * @params { function  } event
+     * @params { ?() -> Unit } event
      * @returns { This }
      */
     @!APILevel[
@@ -190,7 +190,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * Sets the reach end.
      *
-     * @params { function  } event
+     * @params { ?() -> Unit } event
      * @returns { This }
      */
     @!APILevel[
@@ -207,7 +207,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * Called when scrolling start.
      * Anonymous Object Rectification.
      *
-     * @params { function } event
+     * @params { ?() -> Unit } event
      * @returns { This }
      */
     @!APILevel[
@@ -224,7 +224,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * Called when scrolling has stopped.
      * Anonymous Object Rectification.
      *
-     * @params { function } event
+     * @params { ?() -> Unit } event
      * @returns { This }
      */
     @!APILevel[
@@ -240,7 +240,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * Fling Speed Limit.
      *
-     * @params { Float64 } speedLimit
+     * @params { ?Float64 } speedLimit
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -289,7 +289,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * The options of fading Edge.
      *
      * @params { Option<Bool> } enabled
-     * @params { FadingEdgeOptions } options
+     * @params { ?FadingEdgeOptions } options
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -320,7 +320,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * The clip mode of content.
      *
-     * @params { ContentClipMode } clip
+     * @params { ?ContentClipMode } clip
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -342,7 +342,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * The clip mode of content.
      *
-     * @params { RectShape } clip
+     * @params { ?RectShape } clip
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -370,8 +370,8 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * 2. This event is triggered when the controller API is called.
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { ScrollResult } handler
-     * @returns { ScrollAttribute }
+     * @params { ?ScrollResult } handler
+     * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -405,7 +405,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * 2. This event is triggered when the controller API is called.
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { Unit } handler
+     * @params { Option<(Float64, ScrollState, ScrollSource) -> Unit> } handler
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -437,7 +437,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * 2. This event is triggered when the controller API is called;
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { OnScrollCallBack } handler
+     * @params { ?OnScrollCallBack } handler
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */

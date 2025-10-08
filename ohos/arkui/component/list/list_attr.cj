@@ -97,5 +97,5 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func onScrollFrameBegin(event: ?(Float64, ScrollState) -> onScrollFrameBeginHandleResult): ListAttribute
+    func onScrollFrameBegin(event: ?(Float64, ScrollState) -> OnScrollFrameBeginHandlerResult): ListAttribute
 }

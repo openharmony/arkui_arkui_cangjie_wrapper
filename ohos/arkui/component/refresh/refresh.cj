@@ -42,7 +42,6 @@ foreign {
 }
 /**
  * Called when the drop-down refresh is set.
- *
  */
 @!APILevel[
     22,
@@ -68,7 +67,7 @@ public class RefreshOptions {
     /**
      * Defines the options of refresh component.
      *
-     * @params { Bool } refreshing
+     * @params { ?Bool } refreshing
      * @returns { This }
      */
     @!APILevel[
@@ -82,7 +81,7 @@ public class RefreshOptions {
     /**
      * Defines the options of refresh component.
      *
-     * @params { (Bool, (Bool) -> Unit) } refreshing
+     * @params { ?(Bool, (Bool) -> Unit) } refreshing
      * @returns { This }
      */
     @!APILevel[
@@ -97,7 +96,6 @@ public class RefreshOptions {
 }
 /**
  * Defines Refresh Component.
- *
  */
 @!APILevel[
     22,
@@ -107,7 +105,7 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
     /**
      * Defines Refresh Component.
      *
-     * @params { RefreshOptions } value
+     * @params { ?RefreshOptions } value
      * @params { () -> Unit } content
      * @returns { This }
      */
@@ -137,7 +135,7 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
     /**
      * Called when the refresh state changes.
      *
-     * @params { (RefreshStatus) -> Unit } callback
+     * @params { ?(RefreshStatus) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -158,7 +156,7 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
     /**
      * Called when the refresh state is entered.
      *
-     * @params { () -> Unit } callback
+     * @params { ?() -> Unit } callback
      * @returns { This }
      */
     @!APILevel[

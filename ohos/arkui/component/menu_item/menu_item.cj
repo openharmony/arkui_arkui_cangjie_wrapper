@@ -51,7 +51,6 @@ let defaultMenuItemContentFontColor = 0xE5000000
 
 /**
  * Defines MenuItem Component.
- *
  */
 @!APILevel[
     22,
@@ -78,10 +77,10 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     /**
      * Creates the MenuItem component.
      *
-     * @params { ResourceStr } startIcon
-     * @params { ResourceStr } content
-     * @params { ResourceStr } endIcon
-     * @params { ResourceStr } labelInfo
+     * @params { ?ResourceStr } startIcon
+     * @params { ?ResourceStr } content
+     * @params { ?ResourceStr } endIcon
+     * @params { ?ResourceStr } labelInfo
      * @params { Option<() -> Unit> } builder
      * @returns { This }
      */
@@ -115,7 +114,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     /**
      * Setting whether menuItem is selected.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -133,7 +132,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -151,7 +150,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
      *
-     * @params { ResourceStr } value
+     * @params { ?ResourceStr } value
      * @returns { This }
      */
     @!APILevel[
@@ -171,10 +170,10 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     /**
      * Sets the content font style.
      *
-     * @params { Length } size
-     * @params { FontWeight } weight
-     * @params { ResourceStr } family
-     * @params { FontStyle } style   
+     * @params { ?Length } size
+     * @params { ?FontWeight } weight
+     * @params { ?ResourceStr } family
+     * @params { ?FontStyle } style   
      * @returns { This }
      */
     @!APILevel[
@@ -207,7 +206,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     /**
      * Sets the font color of content text.
      *
-     * @params { ResourceColor } value 
+     * @params { ?ResourceColor } value 
      * @returns { This }
      */
     @!APILevel[
@@ -225,10 +224,10 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     /**
      * Sets the label info font style.
      *
-     * @params { Length } size
-     * @params { FontWeight } weight
-     * @params { ResourceStr } family
-     * @params { FontStyle } style   
+     * @params { ?Length } size
+     * @params { ?FontWeight } weight
+     * @params { ?ResourceStr } family
+     * @params { ?FontStyle } style   
      * @returns { This }
      */
     @!APILevel[
@@ -259,7 +258,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     /**
      * Sets the font color of label info text.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -277,7 +276,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     /**
      * Triggers a callback when a menu item is selected or unchecked.
      *
-     * @params { (Bool) -> Unit } callback
+     * @params { ?(Bool) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[

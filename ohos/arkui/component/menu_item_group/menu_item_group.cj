@@ -30,7 +30,6 @@ foreign {
 
 /**
  * Defines MenuItemGroup Component.
- *
  */
 @!APILevel[
     22,
@@ -41,8 +40,8 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGro
     /**
      * Creates the MenuItem component.
      *
-     * @params { ResourceStr } header
-     * @params { ResourceStr } footer
+     * @params { ?ResourceStr } header
+     * @params { ?ResourceStr } footer
      * @params { () -> Unit } child     
      * @returns { This }
      */
@@ -63,8 +62,8 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGro
     /**
      * Creates the MenuItem component.
      *
-     * @params { CustomBuilder } header
-     * @params { CustomBuilder } footer
+     * @params { ?CustomBuilder } header
+     * @params { ?CustomBuilder } footer
      * @params { () -> Unit } child     
      * @returns { This }
      */

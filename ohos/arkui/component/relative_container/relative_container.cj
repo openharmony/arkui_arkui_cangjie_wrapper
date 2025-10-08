@@ -216,7 +216,6 @@ public class BarrierStyle {
 
     /**
     * Specifies the referencedId of barrier
-    *
     */
     @!APILevel[
         22,
@@ -227,9 +226,9 @@ public class BarrierStyle {
     /**
     * Defines the constructor of BarrierStyle.
     *
-    * @params { String } id
-    * @params { BarrierDirection } direction
-    * @params { Array<String> } referencedId
+    * @params { ?String } id
+    * @params { ?BarrierDirection } direction
+    * @params { ?Array<String> } referencedId
     * @returns { This }
     */
     @!APILevel[
@@ -253,7 +252,6 @@ public class BarrierStyle {
 public class GuideLinePosition {
     /**
     * Specifies the distance to start of container
-    *
     */
     @!APILevel[
         22,
@@ -263,7 +261,6 @@ public class GuideLinePosition {
 
     /**
     * Specifies the distance to end of container
-    *
     */
     @!APILevel[
         22,
@@ -298,7 +295,6 @@ public class GuideLinePosition {
 public class GuideLineStyle {
     /**
     * Specifies the id of guideLine
-    *
     */
     @!APILevel[
         22,
@@ -317,19 +313,19 @@ public class GuideLineStyle {
 
     /**
     * Specifies the position of guideLine
-    *
     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var position: ?GuideLinePosition
+
     /**
     * Defines the constructor of GuideLineStyle.
     *
-    * @params { String } id
-    * @params { Axis } direction
-    * @params { GuideLinePosition } position
+    * @params { ?String } id
+    * @params { ?Axis } direction
+    * @params { ?GuideLinePosition } position
     * @returns { This }
     */
     @!APILevel[
@@ -345,7 +341,6 @@ public class GuideLineStyle {
 
 /**
  * RelativeContainer
- *
  */
 @!APILevel[
     22,
@@ -370,7 +365,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     /**
     * Specifies guideLines of relativeContainer
     *
-    * @params { Array<GuideLineStyle> } value
+    * @params { ?Array<GuideLineStyle> } value
     * @returns { This }
     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
@@ -388,7 +383,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     /**
     * Specifies barriers of relativeContainer
     *
-    * @params { Array<BarrierStyle> } value
+    * @params { ?Array<BarrierStyle> } value
     * @returns { This }
     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */

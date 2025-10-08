@@ -124,23 +124,39 @@ struct NativeDecorationStyleResult {
     ) {}
 }
 
+/**
+ * Defines the font decoration result.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DecorationStyleResult {
+    /**
+     * The font decoration type.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var decorationType: ?TextDecorationType
 
+    /**
+     * The font decoration color.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ResourceColor
 
+    /**
+     * Constructor.
+     *
+     * @params { TextDecorationType } decorationType - The font decoration type.
+     * @params { ResourceColor } color - The font decoration color.
+     * @return { DecorationStyleResult }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -163,22 +179,38 @@ struct NativeRichEditorInsertValue {
     ) {}
 }
 
+/**
+ * Defines the inserted text value info.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorInsertValue {
+    /**
+     * The location info where the value will be inserted.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var insertOffset: ?Int32
+    /**
+     * The inserted value.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var insertValue: ?String
 
+    /**
+    * Constructor.
+    *
+    * @params { ?Int32 } insertOffset - The location info where the value will be inserted.
+    * @params { ?String } insertValue - The inserted value.
+    * @return { RichEditorInsertValue }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -212,17 +244,14 @@ struct NativeRichEditorSpanPosition {
 
 /**
  * Defines the span position.
- *
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorSpanPosition {
-
     /**
      * Define the index of span.
-     *
      */
     @!APILevel[
         22,
@@ -232,10 +261,6 @@ public class RichEditorSpanPosition {
 
     /**
      * The range of span.
-     *
-                    number,
-                    number
-                 ];
      */
     @!APILevel[
         22,
@@ -245,6 +270,10 @@ public class RichEditorSpanPosition {
 
     /**
      * RichEditorSpanPosition constructor
+     *
+     * @params { ?Int32 } spanIndex - Define the index of span.
+     * @params { ?(Int32, Int32) } spanRange - The range of span.
+     * @return { RichEditorSpanPosition }
      */
     @!APILevel[
         22,
@@ -289,17 +318,14 @@ struct NativeRichEditorTextStyleResult {
 
 /**
  * Defines the text style result.
- *
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorTextStyleResult {
-
     /**
      * font color.
-     *
      */
     @!APILevel[
         22,
@@ -309,7 +335,6 @@ public class RichEditorTextStyleResult {
 
     /**
      * font size.
-     *
      */
     @!APILevel[
         22,
@@ -319,7 +344,6 @@ public class RichEditorTextStyleResult {
 
     /**
      * font style.
-     *
      */
     @!APILevel[
         22,
@@ -329,7 +353,6 @@ public class RichEditorTextStyleResult {
 
     /**
      * font weight.
-     *
      */
     @!APILevel[
         22,
@@ -339,7 +362,6 @@ public class RichEditorTextStyleResult {
 
     /**
      * font family.
-     *
      */
     @!APILevel[
         22,
@@ -349,7 +371,6 @@ public class RichEditorTextStyleResult {
 
     /**
      * font decoration.
-     *
      */
     @!APILevel[
         22,
@@ -358,7 +379,15 @@ public class RichEditorTextStyleResult {
     public var decoration: DecorationStyleResult
 
     /**
-     * RichEditorTextStyleResult constructor
+     * RichEditorTextStyleResult constructor.
+     *
+     * @params { String } fontColor - font color.
+     * @params { Float64 } fontSize - font size.
+     * @params { FontStyle } fontStyle - font style.
+     * @params { Int32 } fontWeight - font weight.
+     * @params { String } fontFamily - font family.
+     * @params { DecorationStyleResult } decoration - font decoration.
+     * @return { RichEditorTextStyleResult }
      */
     @!APILevel[
         22,
@@ -414,20 +443,14 @@ struct NativeRichEditorImageSpanStyleResult {
 
 /**
  * Defines the span image style result.
- *
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorImageSpanStyleResult {
-
     /**
      * image size.
-     *
-                    number,
-                    number
-                 ];
      */
     @!APILevel[
         22,
@@ -437,7 +460,6 @@ public class RichEditorImageSpanStyleResult {
 
     /**
      * image vertical align.
-     *
      */
     @!APILevel[
         22,
@@ -447,7 +469,6 @@ public class RichEditorImageSpanStyleResult {
 
     /**
      * image fit.
-     *
      */
     @!APILevel[
         22,
@@ -457,7 +478,6 @@ public class RichEditorImageSpanStyleResult {
 
     /**
      * RichEditor ImageSpan Layout Style.
-     *
      */
     @!APILevel[
         22,
@@ -501,17 +521,14 @@ struct NativeRichEditorTextSpanResult {
 
 /**
  * Defines the text span result.
- *
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorTextSpanResult <: RichEditorSpanResult {
-
     /**
      * The position of the text span.
-     *
      */
     @!APILevel[
         22,
@@ -521,7 +538,6 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
 
     /**
      * The content of the text span.
-     *
      */
     @!APILevel[
         22,
@@ -531,7 +547,6 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
 
     /**
      * text style.
-     *
      */
     @!APILevel[
         22,
@@ -541,10 +556,6 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
 
     /**
      * get offset in span.
-     *
-                    number,
-                    number
-                 ]
      */
     @!APILevel[
         22,
@@ -553,7 +564,13 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
     public var offsetInSpan: (Int32, Int32)
 
     /**
-     * RichEditorTextSpanResult constructor
+     * RichEditorTextSpanResult constructor.
+     *
+     * @params { RichEditorSpanPosition } spanPosition - The position of the text span.
+     * @params { String } value - The content of the text span.
+     * @params { RichEditorTextStyleResult } textStyle - text style.
+     * @params { (Int32, Int32) } offsetInSpan - get offset in span.
+     * @return { RichEditorTextSpanResult }
      */
     @!APILevel[
         22,
@@ -586,17 +603,14 @@ struct NativeRichEditorImageSpanResult {
 
 /**
  * Defines the image span.
- *
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorImageSpanResult <: RichEditorSpanResult {
-
     /**
      * The position of the image span.
-     *
      */
     @!APILevel[
         22,
@@ -606,7 +620,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
 
     /**
      * The pixel map of the image span.
-     *
      */
     @!APILevel[
         22,
@@ -616,7 +629,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
 
     /**
      * The resource string of the image span.
-     *
      */
     @!APILevel[
         22,
@@ -626,7 +638,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
 
     /**
      * image attribute.
-     *
      */
     @!APILevel[
         22,
@@ -636,10 +647,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
 
     /**
      * get offset in span.
-     *
-                    number,
-                    number
-                 ]
      */
     @!APILevel[
         22,
@@ -648,7 +655,14 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
     public var offsetInSpan: ?(Int32, Int32)
 
     /**
-     * RichEditorImageSpanResult constructor
+     * RichEditorImageSpanResult constructor.
+     *
+     * @params { ?RichEditorSpanPosition } spanPosition - The position of the image span.
+     * @params { Option<PixelMap> } valuePixelMap - The pixel map of the image span.
+     * @params { ?String } valueResourceStr - The resource string of the image span.
+     * @params { ?RichEditorImageSpanStyleResult } imageStyle - image attribute.
+     * @params { ?(Int32, Int32) offsetInSpan - get offset in span.
+     * @return { RichEditorImageSpanResult }
      */
     @!APILevel[
         22,
@@ -795,6 +809,9 @@ struct NativeRichEditorSpanResult {
     ) {}
 }
 
+/**
+ * Defines the span result.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -829,20 +846,14 @@ struct NativeRichEditorRange {
 
 /**
  * Defines the text information for editing.
- *
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorSelection {
-
     /**
      * The location info.
-     *
-                    number,
-                    number
-                 ]
      */
     @!APILevel[
         22,
@@ -852,7 +863,6 @@ public class RichEditorSelection {
 
     /**
      * The selected text content.
-     *
      */
     @!APILevel[
         22,
@@ -862,6 +872,9 @@ public class RichEditorSelection {
 
     /**
      * RichEditorSelection constructor
+     *
+     * @params { ?(Int32, Int32) } selection - the location info.
+     * @params { ?ArrayList<RichEditorSpanResult> } spans - the selected text content.
      */
     @!APILevel[
         22,
@@ -886,17 +899,14 @@ struct NativeRichEditorDeleteValue {
 
 /**
  * Provides an interface for deleting value from text.
- *
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichEditorDeleteValue {
-
     /**
      * The offset of deleting.
-     *
      */
     @!APILevel[
         22,
@@ -906,7 +916,6 @@ public class RichEditorDeleteValue {
 
     /**
      * The deleted direction.
-     *
      */
     @!APILevel[
         22,
@@ -916,7 +925,6 @@ public class RichEditorDeleteValue {
 
     /**
      * The deleted text length.
-     *
      */
     @!APILevel[
         22,
@@ -926,7 +934,6 @@ public class RichEditorDeleteValue {
 
     /**
      * The deleted span object.
-     *
      */
     @!APILevel[
         22,
@@ -936,6 +943,12 @@ public class RichEditorDeleteValue {
 
     /**
      * RichEditorDeleteValue constructor
+     *
+     * @params { Int32 } offset - the offset of deleting.
+     * @params { RichEditorDeleteDirection } direction - the deleted direction.
+     * @params { Int32 } length - the deleted text length.
+     * @params { ArrayList<RichEditorSpanResult> } richEditorDeleteSpans - the deleted span object.
+     * @return { RichEditorDeleteValue }
      */
     @!APILevel[
         22,
@@ -979,17 +992,14 @@ func parseNativeRichEditorDeleteValue(value: NativeRichEditorDeleteValue): RichE
 
 /**
  * Defines range of text type component.
- *
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextRange {
-
     /**
      * Start offset.
-     *
      */
     @!APILevel[
         22,
@@ -999,7 +1009,6 @@ public class TextRange {
 
     /**
      * End offset.
-     *
      */
     @!APILevel[
         22,
@@ -1022,7 +1031,6 @@ public class TextRange {
 
 /**
  * Defines the paste event.
- *
  */
 @!APILevel[
     22,
@@ -1039,7 +1047,6 @@ public class PasteEvent <: RemoteDataLite {
 
     /**
      * Override system paste event.
-     *
      */
     @!APILevel[
         22,
@@ -1056,7 +1063,6 @@ public type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange
 
 /**
  * Defines RichEditor Component.
- *
  */
 @!APILevel[
     22,
@@ -1067,7 +1073,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Called when create RichEditor.
      *
-     * @params { RichEditorController } controller
+     * @params { ?RichEditorController } controller
      * @returns { This }
      */
     @!APILevel[
@@ -1084,7 +1090,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Define custom keyboard.
      *
-     * @params { CustomBuilder } value
+     * @params { ?CustomBuilder } value
      * @returns { This }
      */
     @!APILevel[
@@ -1102,10 +1108,10 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Bind to the selection menu.
      *
-     * @params { RichEditorSpanType } spantype
-     * @params { CustomBuilder } content
-     * @params { ResponseType } responseType
-     * @params { SelectionMenuOptions } options
+     * @params { ?RichEditorSpanType } spantype
+     * @params { ?CustomBuilder } content
+     * @params { ?ResponseType } responseType
+     * @params { ?SelectionMenuOptions } options
      * @returns { This }
      */
     @!APILevel[
@@ -1136,7 +1142,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Allow replication.
      *
-     * @params { CopyOptions } value
+     * @params { ?CopyOptions } value
      * @returns { This }
      */
     @!APILevel[
@@ -1153,7 +1159,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Called when on ready.
      *
-     * @params { VoidCallback } callback
+     * @params { ?VoidCallback } callback
      * @returns { This }
      */
     @!APILevel[
@@ -1170,7 +1176,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Get text value information when about to input.
      *
-     * @params { Callback<RichEditorInsertValue, Bool> } callback
+     * @params { ?Callback<RichEditorInsertValue, Bool> } callback
      * @returns { This }
      */
     @!APILevel[
@@ -1192,7 +1198,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Get text value information when completed input.
      *
-     * @params { Callback<RichEditorTextSpanResult, Unit> } callback
+     * @params { ?Callback<RichEditorTextSpanResult, Unit> } callback
      * @returns { RichEditor }
      */
     @!APILevel[
@@ -1214,7 +1220,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Notify that the deletion has been completed.
      *
-     * @params { VoidCallback } callback
+     * @params { ?VoidCallback } callback
      * @returns { This }
      */
     @!APILevel[
@@ -1232,7 +1238,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Get text value information when about to delete.
      *
-     * @params { Callback<RichEditorDeleteValue, Bool> } callback
+     * @params { ?Callback<RichEditorDeleteValue, Bool> } callback
      * @returns { This }
      */
     @!APILevel[
@@ -1254,7 +1260,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Called when the content is selected.
      *
-     * @params { Callback<RichEditorSelection, Unit> } callback
+     * @params { ?Callback<RichEditorSelection, Unit> } callback
      * @returns { This }
      */
     @!APILevel[
@@ -1275,7 +1281,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Defines onPaste callback.
      *
-     * @params { PasteEventCallback } callback
+     * @params { ?PasteEventCallback } callback
      * @returns { This }
      */
     @!APILevel[
@@ -1296,7 +1302,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Called after text changed.
      *
-     * @params { OnDidChangeCallback } callback
+     * @params { ?OnDidChangeCallback } callback
      * @returns { This }
      */
     @!APILevel[

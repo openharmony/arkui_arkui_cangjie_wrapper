@@ -105,7 +105,6 @@ foreign {
 
 /**
  * Current status of progress bar.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -115,7 +114,6 @@ foreign {
 public enum ProgressStatus {
     /**
      * Loading status.
-     *
      */
     @!APILevel[
         22,
@@ -125,7 +123,6 @@ public enum ProgressStatus {
     |
     /**
      * Processing status.
-     *
      */
     @!APILevel[
         22,
@@ -145,7 +142,6 @@ public enum ProgressStatus {
 
 /**
  * Progress common style options.
- *
  */
 @!APILevel[
     22,
@@ -155,7 +151,6 @@ sealed interface CommonProgressStyleOptions {}
 
 /**
  * Defines the ring style Options.
- *
  */
 @!APILevel[
     22,
@@ -164,7 +159,6 @@ sealed interface CommonProgressStyleOptions {}
 public class RingStyleOptions <: CommonProgressStyleOptions {
     /**
      * Defines the strokeWidth property.
-     *
      */
     @!APILevel[
         22,
@@ -174,7 +168,6 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
 
     /**
      * Enables progress shadow.
-     *
      */
     @!APILevel[
         22,
@@ -184,7 +177,6 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
 
     /**
      * The status of progress, default is PROGRESSING. Set to LOADING status will trigger the loading animation.
-     *
      */
     @!APILevel[
         22,
@@ -194,7 +186,6 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
 
     /**
      * Enable smooth effect.
-     *
      */
     @!APILevel[
         22,
@@ -204,7 +195,6 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
 
     /**
      * Enable scan effect.
-     *
      */
     @!APILevel[
         22,
@@ -215,11 +205,11 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     /**
      * Constructor the ring style Options.
      *
-     * @params { Length } strokeWidth
-     * @params { Bool } shadow
-     * @params { ProgressStatus } status
-     * @params { Bool } enableSmoothEffect
-     * @params { Bool } enableScanEffect
+     * @params { ?Length } strokeWidth
+     * @params { ?Bool } shadow
+     * @params { ?ProgressStatus } status
+     * @params { ?Bool } enableSmoothEffect
+     * @params { ?Bool } enableScanEffect
      */
     @!APILevel[
         22,
@@ -246,9 +236,9 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the progress bar is set.
      *
-     * @params { Float64 } value
-     * @params { Float64 } total
-     * @params { ProgressType } progressType
+     * @params { ?Float64 } value
+     * @params { ?Float64 } total
+     * @params { ?ProgressType } progressType
      * @returns { Progress }
      */
     @!APILevel[
@@ -266,7 +256,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the current progress value is set.
      *
-     * @params { Float64 } value
+     * @params { ?Float64 } value
      * @returns { This }
      */
     @!APILevel[
@@ -283,8 +273,8 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the progress bar foreground is set.
      *
-     * @params { ResourceColor } value - indicates the color of the progress.
-     * @returns { This } the attribute of the progress.
+     * @params { ?ResourceColor } value - indicates the color of the progress.
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -309,10 +299,10 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the style of progress bar is set.
      *
-     * @params { Length } strokeWidth
-     * @params { Int32 } scaleCount
-     * @params { Length } scaleWidth
-     * @returns { This } the attribute of the progress.
+     * @params { ?Length } strokeWidth
+     * @params { ?Int32 } scaleCount
+     * @params { ?Length } scaleWidth
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -334,8 +324,8 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the style of progress bar is set.
      *
-     * @params { RingStyleOptions } value - indicates the style of the progress.
-     * @returns { This } the attribute of the progress.
+     * @params { ?RingStyleOptions } value - indicates the style of the progress.
+     * @returns { This }
      */
     @!APILevel[
         22,
