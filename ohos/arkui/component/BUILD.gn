@@ -39,6 +39,7 @@ ohos_cangjie_shared_library("ohos.arkui.component") {
     "empty_component:ohos.arkui.component.empty_component",
     "flex:ohos.arkui.component.flex",
     "focus_control:ohos.arkui.component.focus_control",
+    "for_each:ohos.arkui.component.for_each",
     "gauge:ohos.arkui.component.gauge",
     "grid:ohos.arkui.component.grid",
     "grid_col:ohos.arkui.component.grid_col",
