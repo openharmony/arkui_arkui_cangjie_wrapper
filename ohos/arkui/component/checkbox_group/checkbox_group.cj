@@ -92,7 +92,6 @@ class CallbackFFiCheckboxGroupResult <: BaseCallBack {
 
 /**
  * Defines the options of CheckboxGroupResult.
- *
  */
 @!APILevel[
     22,
@@ -101,7 +100,6 @@ class CallbackFFiCheckboxGroupResult <: BaseCallBack {
 public class CheckboxGroupResult {
     /**
      * Set the group of status.
-     *
      */
     @!APILevel[
         22,
@@ -110,7 +108,6 @@ public class CheckboxGroupResult {
     public var status: SelectStatus
     /**
      * Checkbox name.
-     *
      */
     @!APILevel[
         22,
@@ -120,6 +117,10 @@ public class CheckboxGroupResult {
 
     /**
      * CheckboxGroupResult constructor.
+     *
+     * @params { SelectStatus } status
+     * @params { Array<String> } name
+     * @returns { CheckboxGroupResult }
      */
     @!APILevel[
         22,
@@ -155,7 +156,6 @@ func parseCheckboxGroupResult(event: FFiCheckboxGroupResult): CheckboxGroupResul
 
 /**
  * Defines CheckboxGroup Component.
- * 
  */
 @!APILevel[
     22,
@@ -165,7 +165,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
     /**
      * Called when the CheckboxGroup component is used.
      *
-     * @params { String } group
+     * @params { ?String } group
      * @returns { CheckboxGroup }
      */
     @!APILevel[
@@ -183,7 +183,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
     /**
      * setting whether all checkbox is selected.
      *
-     * @params { Bool } isAllSelected
+     * @params { ?Bool } isAllSelected
      * @returns { This }
      */
     @!APILevel[
@@ -200,7 +200,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
     /**
      * setting the display color of checkbox.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -323,7 +323,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
      * Called when the selection status changes.
      * Anonymous Object Rectification.
      *
-     * @params { OnCheckboxGroupChangeCallback } callback
+     * @params { ?OnCheckboxGroupChangeCallback } callback
      * @returns { This }
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */

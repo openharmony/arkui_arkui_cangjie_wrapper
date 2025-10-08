@@ -69,8 +69,8 @@ public class Matrix2D <: RemoteDataLite {
     /**
      * Constructs a 2D change matrix object. The default value is the unit matrix.
      *
-     * @params { LengthMetricsUnit } unit - the unit mode
-     * @returns { This }
+     * @params { ?LengthMetricsUnit } unit - the unit mode
+     * @returns { Matrix2D }
      */
     @!APILevel[
         22,
@@ -96,7 +96,7 @@ public class Matrix2D <: RemoteDataLite {
     }
 
     /**
-     * Horizontal Zoom
+     * Horizontal Zoom.
      */
     @!APILevel[
         22,
@@ -120,7 +120,7 @@ public class Matrix2D <: RemoteDataLite {
     }
 
     /**
-     * Vertical Zoom
+     * Vertical Zoom.
      */
     @!APILevel[
         22,
@@ -144,7 +144,7 @@ public class Matrix2D <: RemoteDataLite {
     }
 
     /**
-     * Horizontal Tilt
+     * Horizontal Tilt.
      */
     @!APILevel[
         22,
@@ -168,7 +168,7 @@ public class Matrix2D <: RemoteDataLite {
     }
 
     /**
-     * Vertical Tilt
+     * Vertical Tilt.
      */
     @!APILevel[
         22,
@@ -192,7 +192,7 @@ public class Matrix2D <: RemoteDataLite {
     }
 
     /**
-     * Horizontal movement
+     * Horizontal movement.
      */
     @!APILevel[
         22,
@@ -216,7 +216,7 @@ public class Matrix2D <: RemoteDataLite {
     }
 
     /**
-     * Vertical movement
+     * Vertical movement.
      */
     @!APILevel[
         22,
@@ -241,7 +241,7 @@ public class Matrix2D <: RemoteDataLite {
 
     /**
      * Transforms the current 2D matrix back to the identity matrix (i.e., without any rotational
-     * translation scaling effect)
+     *   translation scaling effect)
      *
      * @returns { This }
      */
@@ -276,9 +276,9 @@ public class Matrix2D <: RemoteDataLite {
     /**
      * Adds the rotation effect of the X and Y axes to the current matrix.
      *
-     * @params { Float64 } degree - The rotation angle, clockwise in radians.
-     * @params { Float64 } rx - Rotation effect of the X-axis
-     * @params { Float64 } ry - Rotation effect of the Y-axis
+     * @params { ?Float64 } degree - The rotation angle, clockwise in radians.
+     * @params { ?Float64 } rx - Rotation effect of the X-axis
+     * @params { ?Float64 } ry - Rotation effect of the Y-axis
      * @returns { This }
      */
     @!APILevel[
@@ -295,8 +295,8 @@ public class Matrix2D <: RemoteDataLite {
     /**
      * Adds the translation effect of the X and Y axes to the current matrix.
      *
-     * @params { Float64 } tx - X-axis translation effect
-     * @params { Float64 } ty - Y-axis translation effect
+     * @params { ?Float64 } tx - X-axis translation effect
+     * @params { ?Float64 } ty - Y-axis translation effect
      * @returns { This }
      */
     @!APILevel[
@@ -313,8 +313,8 @@ public class Matrix2D <: RemoteDataLite {
     /**
      * Adds the scaling effect of the X and Y axes to the current matrix.
      *
-     * @params { Float64 } sx - X-axis scaling effect
-     * @params { Float64 } sy - Y-axis scaling effect
+     * @params { ?Float64 } sx - X-axis scaling effect
+     * @params { ?Float64 } sy - Y-axis scaling effect
      * @returns { This }
      */
     @!APILevel[

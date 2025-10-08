@@ -19,29 +19,57 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Checkbox attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
+    /**
+     * setting whether checkbox is selected.
+     *
+     * @params { ?Bool } value
+     * @returns { CheckboxAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func select(value: ?Bool): CheckboxAttribute
 
+    /**
+     * setting the display color of checkbox.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { CheckboxAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedColor(value: ?ResourceColor): CheckboxAttribute
 
+    /**
+     * Called when the selection status changes.
+     * Anonymous Object Rectification.
+     *
+     * @params { ?OnCheckboxChangeCallback } callback
+     * @returns { CheckboxAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?OnCheckboxChangeCallback): CheckboxAttribute
 
+    /**
+     * setting the shape of checkbox.
+     *
+     * @params { ?CheckBoxShape } value - The configuration of checkbox shape.
+     * @returns { CheckboxAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -20,42 +20,81 @@ import ohos.labels.APILevel
 import ohos.base.*
 import ohos.arkui.component.scroll.*
 
+/**
+ * Defines Grid attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
-
+    /**
+     * This parameter specifies the number of columns in the current grid layout.
+     *
+     * @params { ?String } value
+     * @returns { GridAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func columnsTemplate(value: ?String): GridAttribute
 
+    /**
+     * Lets you set the number of rows in the current grid layout.
+     *
+     * @params { ?String } value
+     * @returns { GridAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func rowsTemplate(value: ?String): GridAttribute
 
+    /**
+     * Allows you to set the spacing between columns.
+     *
+     * @params { ?Length } value
+     * @returns { GridAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func columnsGap(value: ?Length): GridAttribute
 
+    /**
+     * Lets you set the spacing between rows.
+     *
+     * @params { ?Length } value
+     * @returns { GridAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func rowsGap(value: ?Length): GridAttribute
 
+    /**
+     * cached Count.
+     *
+     * @params { ?Int32 } count
+     * @returns { GridAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func cachedCount(count: ?Int32): GridAttribute
 
+    /**
+     * Called to set number of GridItems to be preloaded (cached) in LazyForEach / Repeat.
+     *
+     * @params { ?Int32 } count
+     * @params { ?Bool } show
+     * @returns { GridAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

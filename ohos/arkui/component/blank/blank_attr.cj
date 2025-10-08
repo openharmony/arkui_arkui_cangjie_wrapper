@@ -21,7 +21,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Blank Attribute.
+ * Defines Blank attributes.
  */
 @!APILevel[
     22,

@@ -21,11 +21,19 @@ import ohos.base.ReuseParams
 import std.collection.HashMap
 import std.collection.ArrayList
 
+/**
+ * Definition of RemoteView class.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class RemoteView <: FFIData {
+    /**
+     * Constructor of RemoteView.
+     *
+     * @return { RemoteView }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -34,18 +42,29 @@ public abstract class RemoteView <: FFIData {
         super()
     }
 
+    /**
+     * Build the view component.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func build(): Unit // abstract
 
+    /**
+     * Do a rerender.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func rerender(): Unit {} // abstract
 
+    /**
+     * Purge element ids no longer in use.
+     *
+     * @params { Int64 } _ - Element id.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -63,10 +82,11 @@ public abstract class RemoteView <: FFIData {
     protected open func onAfterRender(): Unit {}
     protected open func aboutToDisappear(): Unit {}
     protected open func onAboutToBeDeleted(): Unit {}
+
     /**
-     * force rerender function.
+     * Force complete rerender.
      *
-     * @params { Bool } deep
+     * @params { Bool } deep - Whether to rerender components recursive.
      */
     @!APILevel[
         22,

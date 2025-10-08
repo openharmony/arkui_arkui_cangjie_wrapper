@@ -594,29 +594,29 @@ public open class AlertDialogParam {
     /**
      * Constructor of AlertDialogParam.
      *
-     * @params { ResourceStr } title
-     * @params { ResourceStr } subtitle
-     * @params { ResourceStr } message
-     * @params { Bool } autoCancel
-     * @params { VoidCallback } cancel
-     * @params { DialogAlignment } alignment
-     * @params { Offset } offset
-     * @params { UInt32 } gridCount
-     * @params { Rectangle } maskRect
-     * @params { Bool } showInSubWindow
-     * @params { Bool } isModal
-     * @params { ResourceColor } backgroundColor
-     * @params { BlurStyle } backgroundBlurStyle
+     * @params { ?ResourceStr } title
+     * @params { ?ResourceStr } subtitle
+     * @params { ?ResourceStr } message
+     * @params { ?Bool } autoCancel
+     * @params { ?VoidCallback } cancel
+     * @params { ?DialogAlignment } alignment
+     * @params { ?Offset } offset
+     * @params { ?UInt32 } gridCount
+     * @params { ?Rectangle } maskRect
+     * @params { ?Bool } showInSubWindow
+     * @params { ?Bool } isModal
+     * @params { ?ResourceColor } backgroundColor
+     * @params { ?BlurStyle } backgroundBlurStyle
      * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
-     * @params { BorderRadiuses } cornerRadius
+     * @params { ?BorderRadiuses } cornerRadius
      * @params { ?TransitionEffect } transition
      * @params { ?Length } width
      * @params { ?Length } height
-     * @params { Length } borderWidth
-     * @params { ResourceColor } borderColor
-     * @params { EdgeStyles } borderStyle
-     * @params { ShadowOptions } shadow
-     * @params { WordBreak } textStyle
+     * @params { ?Length } borderWidth
+     * @params { ?ResourceColor } borderColor
+     * @params { ?EdgeStyles } borderStyle
+     * @params { ?ShadowOptions } shadow
+     * @params { ?WordBreak } textStyle
      */
     @!APILevel[
         22,

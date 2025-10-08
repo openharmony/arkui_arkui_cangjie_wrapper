@@ -19,29 +19,56 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Counter attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
+    /**
+     * Indicates whether the increase button of counter component is available or not.
+     *
+     * @params { ?Bool } value
+     * @returns { CounterAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func enableInc(value: ?Bool): CounterAttribute
 
+    /**
+     * Indicates whether the decrease button of counter component is available or not.
+     *
+     * @params { ?Bool } value
+     * @returns { CounterAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func enableDec(value: ?Bool): CounterAttribute
 
+    /**
+     * Listen to the event that the value increases.
+     *
+     * @params { ?VoidCallback } event
+     * @returns { CounterAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onInc(event: ?VoidCallback): CounterAttribute
 
+    /**
+     * Listens to the number decrease event.
+     *
+     * @params { ?VoidCallback } event
+     * @returns { CounterAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

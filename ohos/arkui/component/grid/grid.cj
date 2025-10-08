@@ -107,7 +107,6 @@ foreign {
 /**
  * Defines Grid Component.
  * It is recommended to use LazyForEach or Repeat to generate child components.
- *
  */
 @!APILevel[
     22,
@@ -118,15 +117,15 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Grid is returned when the parameter is transferred.
      *
-     * @params { Option<Scroller> } scroller
-     * @params { Option<() -> Unit> } child
-     * @returns { This }
+     * @params { ?Scroller } scroller
+     * @params { ()->Unit } child
+     * @returns { Grid }
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(scroller!: Option<Scroller> = Option.None, child!: () -> Unit = {=>}) {
+    public init(scroller!: ?Scroller = Option.None, child!: () -> Unit = {=>}) {
         match(scroller) {
             case Some(v) =>
                 unsafe {
@@ -143,7 +142,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * This parameter specifies the number of columns in the current grid layout.
      *
-     * @params { String } value
+     * @params { ?String } value
      * @returns { This }
      */
     @!APILevel[
@@ -162,7 +161,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Lets you set the number of rows in the current grid layout.
      *
-     * @params { String } value
+     * @params { ?String } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -182,7 +181,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Allows you to set the spacing between columns.
      *
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -212,7 +211,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Lets you set the spacing between rows.
      *
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -242,7 +241,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * cached Count.
      *
-     * @params { Int32 } count
+     * @params { ?Int32 } count
      * @returns { This }
      */
     @!APILevel[
@@ -256,8 +255,8 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Called to set number of GridItems to be preloaded (cached) in LazyForEach / Repeat.
      *
-     * @params { Int32 } count
-     * @params { Bool } show
+     * @params { ?Int32 } count
+     * @params { ?Bool } show
      * @returns { This }
      */
     @!APILevel[

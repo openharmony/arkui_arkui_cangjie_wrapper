@@ -220,13 +220,13 @@ public class GridRowSizeOptions {
     /**
     * Defines the constructor of GridRowSizeOptions.
     *
-    * @params { Length } xs
-    * @params { Length } sm
-    * @params { Length } md
-    * @params { Length } lg
-    * @params { Length } xl
-    * @params { Length } xxl
-    * @returns { This }
+    * @params { ?Length } xs
+    * @params { ?Length } sm
+    * @params { ?Length } md
+    * @params { ?Length } lg
+    * @params { ?Length } xl
+    * @params { ?Length } xxl
+    * @returns { GridRowSizeOptions }
     */
     @!APILevel[
         22,
@@ -251,8 +251,8 @@ public class GridRowSizeOptions {
     /**
     * Defines the constructor of GridRowSizeOptions.
     *
-    * @params { Length } value
-    * @returns { This }
+    * @params { ?Length } value
+    * @returns { GridRowSizeOptions }
     */
     @!APILevel[
         22,
@@ -332,7 +332,7 @@ struct NativeGridRowColumnOption {
 ]
 public class GridRowOptions {
     /**
-    * Grid Row Column Option xs, select xs column num based on gridRow current breakpoint
+    * Grid Row Column Option xs, select xs column num based on gridRow current breakpoint.
     *
     */
     @!APILevel[
@@ -342,7 +342,7 @@ public class GridRowOptions {
     public var xs: ?Int32
 
     /**
-     * Grid Row Column Option sm, select sm column num based on gridRow current breakpoint
+     * Grid Row Column Option sm, select sm column num based on gridRow current breakpoint.
     *
     */
     @!APILevel[
@@ -352,7 +352,7 @@ public class GridRowOptions {
     public var sm: ?Int32
 
     /**
-    * Grid Row Column Option md, select md column num based on gridRow current breakpoint
+    * Grid Row Column Option md, select md column num based on gridRow current breakpoint.
     *
     */
     @!APILevel[
@@ -362,7 +362,7 @@ public class GridRowOptions {
     public var md: ?Int32
 
     /**
-    * Grid Row Column Option lg, select lg column num based on gridRow current breakpoint
+    * Grid Row Column Option lg, select lg column num based on gridRow current breakpoint.
     *
     */
     @!APILevel[
@@ -372,7 +372,7 @@ public class GridRowOptions {
     public var lg: ?Int32
 
     /**
-    * Grid Row Column Option xl, select xl column num based on gridRow current breakpoint
+    * Grid Row Column Option xl, select xl column num based on gridRow current breakpoint.
     *
     */
     @!APILevel[
@@ -382,7 +382,7 @@ public class GridRowOptions {
     public var xl: ?Int32
 
     /**
-    * Grid Row Column Option xxl, select xxl column num based on gridRow current breakpoint
+    * Grid Row Column Option xxl, select xxl column num based on gridRow current breakpoint.
     *
     */
     @!APILevel[
@@ -394,13 +394,13 @@ public class GridRowOptions {
     /**
     * Defines the constructor of GridRowOptions.
     *
-    * @params { Int32 } xs
-    * @params { Int32 } sm
-    * @params { Int32 } md
-    * @params { Int32 } lg
-    * @params { Int32 } xl
-    * @params { Int32 } xxl
-    * @returns { This }
+    * @params { ?Int32 } xs
+    * @params { ?Int32 } sm
+    * @params { ?Int32 } md
+    * @params { ?Int32 } lg
+    * @params { ?Int32 } xl
+    * @params { ?Int32 } xxl
+    * @returns { GridRowOptions }
     */
     @!APILevel[
         22,
@@ -425,8 +425,8 @@ public class GridRowOptions {
     /**
     * Defines the constructor of GridRowOptions.
     *
-    * @params { Int32 } value
-    * @returns { This }
+    * @params { ?Int32 } value
+    * @returns { GridRowOptions }
     */
     @!APILevel[
         22,
@@ -460,9 +460,9 @@ public class GutterOptions {
     /**
     * Defines the constructor of GutterOptions.
     *
-    * @params { Length } x
-    * @params { Length } y
-    * @returns { This }
+    * @params { ?Length } x
+    * @params { ?Length } y
+    * @returns { GutterOptions }
     */
     @!APILevel[
         22,
@@ -475,9 +475,9 @@ public class GutterOptions {
     /**
     * Defines the constructor of GutterOptions.
     *
-    * @params { GridRowSizeOptions } x
-    * @params { GridRowSizeOptions } y
-    * @returns { This }
+    * @params { ?GridRowSizeOptions } x
+    * @params { ?GridRowSizeOptions } y
+    * @returns { GutterOptions }
     */
     @!APILevel[
         22,
@@ -498,7 +498,7 @@ public class GutterOptions {
 ]
 public class BreakPoints {
     /**
-    * Breakpoint array
+    * Breakpoint array.
     *
     */
     @!APILevel[
@@ -508,7 +508,7 @@ public class BreakPoints {
     public var value: ?Array<Length>
 
     /**
-    * Set breakpoint reference
+    * Set breakpoint reference.
     *
     */
     @!APILevel[
@@ -520,8 +520,8 @@ public class BreakPoints {
     /**
     * BreakPoints constructor.
     *
-    * @params { Array<Length> } value
-    * @returns { This } value
+    * @params { ?Array<Length> } value
+    * @returns { BreakPoints } value
     */
     @!APILevel[
         22,
@@ -618,7 +618,6 @@ struct GridRowCreateWithSizeOptionInt32 {
 
 /**
  * Defines GridRow Component.
- *
  */
 @!APILevel[
     22,
@@ -628,12 +627,12 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
     * Defines the constructor of GridRow.
     * 
-    * @params { Int32 } columns
-    * @params { Length } gutter
-    * @params { BreakPoints } breakpoints
-    * @params { GridRowDirection } direction
+    * @params { ?Int32 } columns
+    * @params { ?Length } gutter
+    * @params { ?BreakPoints } breakpoints
+    * @params { ?GridRowDirection } direction
     * @params { () -> Unit } child
-    * @returns { This }
+    * @returns { GridRow }
     */
     @!APILevel[
         22,
@@ -678,12 +677,12 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
     * Defines the constructor of GridRow.
     * 
-    * @params { GridRowOptions } columns
-    * @params { Length } gutter
-    * @params { BreakPoints } breakpoints
-    * @params { GridRowDirection } direction
+    * @params { ?GridRowOptions } columns
+    * @params { ?Length } gutter
+    * @params { ?BreakPoints } breakpoints
+    * @params { ?GridRowDirection } direction
     * @params { () -> Unit } child
-    * @returns { This }
+    * @returns { GridRow }
     */
     @!APILevel[
         22,
@@ -730,12 +729,12 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
     * Defines the constructor of GridRow.
     * 
-    * @params { Int32 } columns
-    * @params { GutterOptions } gutter
-    * @params { BreakPoints } breakpoints
-    * @params { GridRowDirection } direction
+    * @params { ?Int32 } columns
+    * @params { ?GutterOptions } gutter
+    * @params { ?BreakPoints } breakpoints
+    * @params { ?GridRowDirection } direction
     * @params { () -> Unit } child
-    * @returns { This }
+    * @returns { GridRow }
     */
     @!APILevel[
         22,
@@ -799,12 +798,12 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
     * Defines the constructor of GridRow.
     * 
-    * @params { GridRowOptions } columns
-    * @params { GutterOptions } gutter
-    * @params { BreakPoints } breakpoints
-    * @params { GridRowDirection } direction
+    * @params { ?GridRowOptions } columns
+    * @params { ?GutterOptions } gutter
+    * @params { ?BreakPoints } breakpoints
+    * @params { ?GridRowDirection } direction
     * @params { () -> Unit } child
-    * @returns { This }
+    * @returns { GridRow }
     */
     @!APILevel[
         22,
@@ -881,11 +880,11 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     }
 
     /**
-    * Cross axis alignment of each line in GridRow.
-    *
-    * @params { ItemAlign } value - element alignment
-    * @returns { This }
-    */
+     * Cross axis alignment of each line in GridRow.
+     *
+     * @params { ?ItemAlign } value - element alignment
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -898,11 +897,11 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     }
 
     /**
-    * Callback triggered when the breakpoint changes, breakpoints value can be xs, sm, md, lg, xl, xxl
-    *
-    * @params { (String) -> Unit } callback
-    * @returns { This }
-    */
+     * Callback triggered when the breakpoint changes, breakpoints value can be xs, sm, md, lg, xl, xxl.
+     *
+     * @params { ?(String) -> Unit } callback
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

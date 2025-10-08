@@ -34,7 +34,6 @@ foreign {
 
 /**
  * Defines Counter Component.
- *
  */
 @!APILevel[
     22,
@@ -43,10 +42,10 @@ foreign {
 public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
 
     /**
-     * Return Counter.
+     * Counter constructor.
      *
      * @params { () -> Unit } content
-     * @returns { This }
+     * @returns { Counter }
      */
     @!APILevel[
         22,
@@ -62,7 +61,7 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
     /**
      * Indicates whether the increase button of counter component is available or not.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -79,7 +78,7 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
     /**
      * Indicates whether the decrease button of counter component is available or not.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -96,7 +95,7 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
     /**
      * Listen to the event that the value increases.
      *
-     * @params { VoidCallback } event
+     * @params { ?VoidCallback } event
      * @returns { This }
      */
     @!APILevel[
@@ -114,7 +113,7 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
     /**
      * Listens to the number decrease event.
      *
-     * @params { VoidCallback } event
+     * @params { ?VoidCallback } event
      * @returns { This }
      */
     @!APILevel[

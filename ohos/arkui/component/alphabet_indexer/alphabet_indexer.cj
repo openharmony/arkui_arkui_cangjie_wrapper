@@ -106,7 +106,6 @@ public type OnAlphabetIndexerPopupSelectCallback = (Int64) -> Unit
 
 /**
  * Defines AlphabetIndexer Component.
- *
  */
 @!APILevel[
     22,
@@ -118,7 +117,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
      * Called when the alphabet indexer component is used.
      *
      * @params { Array<String> } arrayValue - Alphabetical index string array.
-     * @params { UInt32 } selected - ID of the selected item.
+     * @params { ?UInt32 } selected - ID of the selected item.
      * @returns { AlphabetIndexer }
      */
     @!APILevel[
@@ -142,7 +141,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Definitions color.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -160,7 +159,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Select the text color.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -178,7 +177,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Font color of the pop-up prompt text.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -196,7 +195,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Select the text background color.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -214,7 +213,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Background color of the pop-up window index.
      *
-     * @params { ResourceColor } value
+     * @params { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -232,7 +231,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Whether to use pop-up index hints.
      *
-     * @params { Bool } value
+     * @params { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -250,10 +249,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Select the text text style,
      *
-     * @params { Length } size
-     * @params { FontWeight } weight
-     * @params { ResourceStr } family
-     * @params { FontStyle } style
+     * @params { ?Length } size
+     * @params { ?FontWeight } weight
+     * @params { ?ResourceStr } family
+     * @params { ?FontStyle } style
      * @returns { This }
      */
     @!APILevel[
@@ -287,10 +286,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**	
      * Select the text background color.	
      *	
-     * @params { Length } size	
-     * @params { FontWeight } weight	
-     * @params { ResourceStr } family	
-     * @params { FontStyle } style	
+     * @params { ?Length } size
+     * @params { ?FontWeight } weight
+     * @params { ?ResourceStr } family
+     * @params { ?FontStyle } style
      * @returns { This }
      */
     @!APILevel[
@@ -324,10 +323,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**	
      * Definitions fonts.	
      *	
-     * @params { Length } size	
-     * @params { FontWeight } weight	
-     * @params { ResourceStr } family	
-     * @params { FontStyle } style	
+     * @params { ?Length } size
+     * @params { ?FontWeight } weight
+     * @params { ?ResourceStr } family
+     * @params { ?FontStyle } style
      * @returns { This }
      */
     @!APILevel[
@@ -361,7 +360,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Size of the letter area on the letter index bar. The letter area is a square. Set the length of the square side.
      *
-     * @params { Length } value
+     * @params { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -381,7 +380,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
      * Alphabet index bar alignment style. The left and right alignment styles are supported,
      * which affects the pop-up position of the pop-up window.
      *
-     * @params { IndexerAlign } value - indicates the alignment style of Alphabet index.
+     * @params { ?IndexerAlign } value - indicates the alignment style of Alphabet index.
      * @returns { This }
      */
     @!APILevel[
@@ -400,7 +399,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Sets the selected index.
      *
-     * @params { Int32 } index
+     * @params { ?Int32 } index
      * @returns { This }
      */
     @!APILevel[
@@ -418,8 +417,8 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Position of the pop-up windows, relative to the midpoint of the top border of the indexer bar.
      *
-     * @params { Length } x
-     * @params { Length } y
+     * @params { ?Length } x
+     * @params { ?Length } y
      * @returns { This }
      */
     @!APILevel[
@@ -440,7 +439,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
      * Index bar selection callback.
      * Anonymous Object Rectification.
      *
-     * @params { OnAlphabetIndexerSelectCallback } callback
+     * @params { ?OnAlphabetIndexerSelectCallback } callback
      * @returns { This }
      */
     @!APILevel[
@@ -463,7 +462,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
      * Index bar selection callback and return the strings which display on pop-up.
      * Anonymous Object Rectification.
      *
-     * @params { OnAlphabetIndexerRequestPopupDataCallback } callback
+     * @params { ?OnAlphabetIndexerRequestPopupDataCallback } callback
      * @returns { This }
      */
     @!APILevel[
@@ -492,7 +491,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
      * Pop-up selection callback.
      * Anonymous Object Rectification.
      *
-     * @params { OnAlphabetIndexerPopupSelectCallback } callback
+     * @params { ?OnAlphabetIndexerPopupSelectCallback } callback
      * @returns { This }
      */
     @!APILevel[

@@ -19,17 +19,32 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines GridRow attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
+    /**
+     * Cross axis alignment of each line in GridRow.
+     *
+     * @params { ?ItemAlign } value - element alignment
+     * @returns { GridRowAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignItems(value: ?ItemAlign): GridRowAttribute
 
+    /**
+     * Callback triggered when the breakpoint changes, breakpoints value can be xs, sm, md, lg, xl, xxl.
+     *
+     * @params { ?(String) -> Unit } callback
+     * @returns { GridRowAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

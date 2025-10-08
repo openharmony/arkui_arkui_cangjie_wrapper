@@ -40,7 +40,6 @@ foreign {
 
 /**
  * Defines Column Component.
- *
  */
 @!APILevel[
     22,
@@ -50,9 +49,9 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
     /**
     * Column constructor.
     *
-    * @params { Length } space
+    * @params { ?Length } space
     * @params { () -> Unit } child
-    * @returns { This }
+    * @returns { Column }
     */
     @!APILevel[
         22,
@@ -67,11 +66,11 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
     }
 
     /**
-    * Sets the alignment format of the subassembly in the horizontal direction.
-    *
-    * @params { HorizontalAlign } value
-    * @returns { This }
-    */
+     * Sets the alignment format of the subassembly in the horizontal direction.
+     *
+     * @params { ?HorizontalAlign } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -84,11 +83,11 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
     }
 
     /**
-    * Sets the alignment format of the subassembly in the vertical direction.
-    *
-    * @params { FlexAlign } value
-    * @returns { This }
-    */
+     * Sets the alignment format of the subassembly in the vertical direction.
+     *
+     * @params { ?FlexAlign } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

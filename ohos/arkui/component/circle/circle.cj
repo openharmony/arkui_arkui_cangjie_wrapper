@@ -38,9 +38,9 @@ public class Circle <: CommonShapeMethodComponent<Circle> & CircleAttribute {
     /**
      * Create a circle.
      * 
-     * @params { Length } width - Defines the width property.
-     * @params { Length } height - Defines the height property.
-     * @returns { This }
+     * @params { ?Length } width - Defines the width property.
+     * @params { ?Length } height - Defines the height property.
+     * @returns { Circle }
      */
     @!APILevel[
         22,

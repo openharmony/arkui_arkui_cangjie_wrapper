@@ -20,35 +20,68 @@ import ohos.arkui.component.util.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines DataPanel attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
+    /**
+     * Disable the special effect of the data ratio chart.
+     *
+     * @params { ?Bool } value
+     * @returns { DataPanelAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func closeEffect(value: ?Bool): DataPanelAttribute
 
+    /**
+     * Set the value colors of the data ratio chart.
+     *
+     * @params { ?Array<LinearGradient> } value - the value colors of the data ratio chart.
+     * @returns { DataPanelAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func valueColors(value: ?Array<LinearGradient>): DataPanelAttribute
 
+    /**
+     * Set track background color of the data ratio chart.
+     *
+     * @params { ?ResourceColor } value - track background color of the data ratio chart.
+     * @returns { DataPanelAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func trackBackgroundColor(value: ?ResourceColor): DataPanelAttribute
 
+    /**
+     * Set the stroke width of the data ratio chart.
+     *
+     * @params { ?Length } value - the stroke width of the data ratio chart.
+     * @returns { DataPanelAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeWidth(value: ?Length): DataPanelAttribute
 
+    /**
+     * Set the shadow width of the data ratio chart.
+     *
+     * @params { ?DataPanelShadowOptions } value - the track shadow width of the data ratio chart.
+     * @returns { DataPanelAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

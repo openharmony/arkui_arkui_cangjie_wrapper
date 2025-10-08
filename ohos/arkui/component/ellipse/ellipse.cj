@@ -34,9 +34,9 @@ public class Ellipse <: CommonShapeMethodComponent<Ellipse> & EllipseAttribute {
     /**
      * Create a ellipse.
      *
-     * @params { Length } width - Set width.
-     * @params { Length } height - Set Height.
-     * @returns { This }
+     * @params { ?Length } width - Set width.
+     * @params { ?Length } height - Set Height.
+     * @returns { Ellipse }
      */
     @!APILevel[
         22,

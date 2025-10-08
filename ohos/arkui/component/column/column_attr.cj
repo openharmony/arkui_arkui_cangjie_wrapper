@@ -19,17 +19,32 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Column attributes.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ColumnAttribute <: CommonMethod<ColumnAttribute> {
+    /**
+     * Sets the alignment format of the subassembly in the horizontal direction.
+     *
+     * @params { ?HorizontalAlign } value
+     * @returns { ColumnAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignItems(value: ?HorizontalAlign): ColumnAttribute
 
+    /**
+     * Sets the alignment format of the subassembly in the vertical direction.
+     *
+     * @params { ?FlexAlign } value
+     * @returns { ColumnAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

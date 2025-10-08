@@ -65,8 +65,7 @@ struct NativeCustomDialogControllerOptions {
     }
 }
 /**
-* Custom builder function.
-* 
+* Defines the options of CustomDialogController.
 */
 @!APILevel[
     22,
@@ -274,28 +273,28 @@ public class CustomDialogControllerOptions {
     /**
     * Defines the options of CustomDialogController.
     *
-    * @params { VoidCallback } cancel
-    * @params { Bool } autoCancel
-    * @params { Offset } offset
-    * @params { Bool } customStyle
-    * @params { UInt32 } gridCount
-    * @params { ResourceColor } maskColor
-    * @params { Rectangle } maskRect
-    * @params { AnimateParam } openAnimation
-    * @params { AnimateParam } closeAnimation
-    * @params { Bool } showInSubWindow
-    * @params { ResourceColor } backgroundColor
-    * @params { Length } cornerRadius
-    * @params { Bool } isModal
-    * @params { Callback<DismissDialogAction, Unit> } onWillDismiss
-    * @params { Length } borderWidth
-    * @params { ResourceColor } borderColor
-    * @params { EdgeStyles } borderStyle
-    * @params { Length } width
-    * @params { Length } height
-    * @params { ShadowOptions } shadow
-    * @params { BlurStyle } backgroundBlurStyle
-    * @returns { This } 
+    * @params { ?VoidCallback } cancel
+    * @params { ?Bool } autoCancel
+    * @params { ?Offset } offset
+    * @params { ?Bool } customStyle
+    * @params { ?UInt32 } gridCount
+    * @params { ?ResourceColor } maskColor
+    * @params { ?Rectangle } maskRect
+    * @params { ?AnimateParam } openAnimation
+    * @params { ?AnimateParam } closeAnimation
+    * @params { ?Bool } showInSubWindow
+    * @params { ?ResourceColor } backgroundColor
+    * @params { ?Length } cornerRadius
+    * @params { ?Bool } isModal
+    * @params { ?Callback<DismissDialogAction, Unit> } onWillDismiss
+    * @params { ?Length } borderWidth
+    * @params { ?ResourceColor } borderColor
+    * @params { ?EdgeStyles } borderStyle
+    * @params { ?Length } width
+    * @params { ?Length } height
+    * @params { ?ShadowOptions } shadow
+    * @params { ?BlurStyle } backgroundBlurStyle
+    * @returns { CustomDialogControllerOptions }
     */
     @!APILevel[
         22,
@@ -374,7 +373,6 @@ foreign {
 }
 /**
 * Use the CustomDialogController class to display the custom pop-up window.
-*
 */
 @!APILevel[
     22,
@@ -463,11 +461,11 @@ public class CustomDialogController <: RemoteDataLite {
         )
     }
     /**
-    * The constructor transfers parameter settings.
-    * 
-    * @params { CustomDialogControllerOptions } value
-    * @returns { This } 
-    */
+     * The constructor transfers parameter settings.
+     *
+     * @params { CustomDialogControllerOptions } value
+     * @returns { CustomDialogController }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -482,6 +480,11 @@ public class CustomDialogController <: RemoteDataLite {
             })
     }
 
+    /**
+     * Set the builder of the customized pop-up window.
+     *
+     * @params { () -> Unit } builder
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -492,36 +495,50 @@ public class CustomDialogController <: RemoteDataLite {
         }
     }
 
+    /**
+     * Bind to view.
+     *
+     * @param { CustomView } view
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func bindView(view: CustomView) {
+    public func bindView(view: CustomView): Unit {
         unsafe {
             FfiOHOSAceFrameworkCustomDialogControllerBindView(this.getID(), view.getView().getID())
         }
     }
 
+    /**
+     * Display the content of the customized pop-up window. If the content has been displayed, it does not take effect.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func openDialog() {
+    public func openDialog(): Unit {
         unsafe {
             FfiOHOSAceFrameworkCustomDialogControllerOpen(this.getID())
         }
     }
 
+    /**
+     * Closes the custom pop-up window. If the window is closed, the window does not take effect.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func closeDialog() {
+    public func closeDialog(): Unit {
         unsafe {
             FfiOHOSAceFrameworkCustomDialogControllerClose(this.getID())
         }
     }
 
+    /**
+     * Manual release the resource after no longer use it.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
