@@ -58,24 +58,24 @@ class ViewPersistentStorage {
         Column(space: 10) {
             Text("${count}").id("p_text").width(count.vp)
 
-            Button("+").onClick {
+            Button("+").onClick ({
                 e => count += 10
-            }.id("plusBtn")
+            }).id("plusBtn")
 
             Text("Name ${name}")
             Text("Age ${age}")
             Text("Heght ${height}")
             Text("Male ${male}")
             Text("Name1 ${name1} Name2 ${name2}")
-            Button("change age").onClick {
+            Button("change age").onClick ({
                 e =>
                 age += 1
                 PersistentStorage.keys()
-            }.id("PersistentStorage_keys")
+            }).id("PersistentStorage_keys")
 
-            Button("clear age").onClick {
+            Button("clear age").onClick ({
                 e => PersistentStorage.deleteProp("Age")
-            }.id("PersistentStorage_deleteProp")
+            }).id("PersistentStorage_deleteProp")
 
         }
     }

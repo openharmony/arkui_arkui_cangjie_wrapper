@@ -36,9 +36,9 @@ class ViewCheckboxGroup {
                     //                .mark(strokeColor: Color.Red, size: 40.0.vp, strokeWidth: 10.0.vp)
                     //                .checkboxShape(CheckBoxShape.RoundedSquare)
                     .selectAll(true)
-                    .onChange {
+                    .onChange ({
                         val => text = "Clicked"
-                    }
+                    })
                     .padding(10.vp)
                     .id("checkboxGroupComponent")
 

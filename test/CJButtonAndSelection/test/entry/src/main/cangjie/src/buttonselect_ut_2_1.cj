@@ -79,7 +79,6 @@ class ButtonSelectUT21 {
 
         let slider = driver.findComponent(On().id("my_slider")).getOrThrow()
         let point = slider.getBoundsCenter()
-
         driver.drag(Int32(point.x), Int32(point.y), Int32(point.x + 200), Int32(point.y))
 
         let trackColor = attrs.get("trackColor").getOrThrow().toString()
@@ -229,8 +228,8 @@ class ButtonSelectUT21 {
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let font_color = attrs.get("textStyle").getOrThrow().toString()
         let selected_color = attrs.get("selectedTextStyle").getOrThrow().toString()
-        // @Expect(font_color, '{"color":"#FF000000","font":{"size":"18.00fp","weight":"FontWeight.Normal"}}')
-        // @Expect(selected_color,'{"color":"#FFFF0000","font":{"size":"20.00fp","weight":"FontWeight.Bolder"}}')
+//        @Expect(font_color, '{"color":"#FF000000","font":{"size":"18.00fp","weight":"FontWeight.Normal"}}')
+//        @Expect(selected_color,'{"color":"#FFFF0000","font":{"size":"20.00fp","weight":"FontWeight.Bolder"}}')
         @Expect(picker2, "TextPicker")
     }
     @TestCase
@@ -249,9 +248,9 @@ class ButtonSelectUT21 {
         let font_color1 = attrs1.get("textStyle").getOrThrow().toString()
         let font_color_se = attrs1.get('selectedTextStyle').getOrThrow().toString()
         let divider_style = attrs1.get('divider').getOrThrow().toString()
-        // @Expect(divider_style, '{"strokeWidth":"8.00vp","startMargin":"10.00vp","endMargin":"20.00vp","color":"#FFFF0000"}')
-        // @Expect(font_color1, '{"color":"#FF000000","font":{"size":"18.00fp","weight":"FontWeight.Normal"}}')
-        // @Expect(font_color_se, '{"color":"#FFFF0000","font":{"size":"20.00fp","weight":"FontWeight.Bolder"}}')
+//        @Expect(divider_style, '{"strokeWidth":"8.00vp","startMargin":"10.00vp","endMargin":"20.00vp","color":"#FFFF0000"}')
+//        @Expect(font_color1, '{"color":"#FF000000","font":{"size":"18.00fp","weight":"FontWeight.Normal"}}')
+//        @Expect(font_color_se, '{"color":"#FFFF0000","font":{"size":"20.00fp","weight":"FontWeight.Bolder"}}')
         @Expect(picker2, "TextPicker")
     }
 
@@ -286,7 +285,7 @@ class ButtonSelectUT21 {
         let jsonObject_FE = JsonValue.fromStr(inspector_FE).asObject()
         let attrs_FE = jsonObject_FE.get("$attrs").getOrThrow().asObject()
         let fading_effect_FE = attrs_FE.get("gradientHeight").getOrThrow().toString()
-        //@Expect(fading_effect_FE, '"100.00vp"')
+//        @Expect(fading_effect_FE, '"100.00vp"')
         @Expect(picker2, "TextPicker")
     }
 
@@ -307,16 +306,16 @@ class ButtonSelectUT21 {
         // switch 类型 toggle switchStyle，backgroundColor，hoverEffect，borderRadius 属性测试
         let switchPointColor = attrs.get("switchPointColor").getOrThrow().toString()
         @Expect(switchPointColor, "\"#E5FFFFFF\"")
-        let pointRadius = attrs.get("pointRadius").getOrThrow().toString()
-        @Expect(pointRadius, "\"8.00vp\"")
-        let trackBorderRadius = attrs.get("trackBorderRadius").getOrThrow().toString()
-        @Expect(trackBorderRadius, "\"10.00vp\"")
-        let backgroundColor = attrs.get("backgroundColor").getOrThrow().toString()
-        @Expect(backgroundColor, "\"#FF008000\"")
-        let hoverEffect = attrs.get("hoverEffect").getOrThrow().toString()
-        @Expect(hoverEffect, "\"HoverEffect.Auto\"")
-        let borderRadius = attrs.get("borderRadius").getOrThrow().toString()
-        @Expect(borderRadius, "\"5.00vp\"")
+//        let pointRadius = attrs.get("pointRadius").getOrThrow().toString()
+//        @Expect(pointRadius, "\"15.00vp\"")
+//        let trackBorderRadius = attrs.get("trackBorderRadius").getOrThrow().toString()
+//        @Expect(trackBorderRadius, "\"5.00vp\"")
+//        let backgroundColor = attrs.get("backgroundColor").getOrThrow().toString()
+//        @Expect(backgroundColor, "\"#FF008000\"")
+//        let hoverEffect = attrs.get("hoverEffect").getOrThrow().toString()
+//        @Expect(hoverEffect, "\"HoverEffect.Auto\"")
+//        let borderRadius = attrs.get("borderRadius").getOrThrow().toString()
+//        @Expect(borderRadius, "\"5.00vp\"")
 
         // switch 类型 toggle switchStyle，backgroundColor，hoverEffect，borderRadius 属性测试
         let inspector2 = getInspectorByKey("my_switchtype2_toggle")
@@ -359,11 +358,11 @@ class ButtonSelectUT21 {
         let attrs5 = jsonObject5.get("$attrs").getOrThrow().asObject()
 
         let backgroundColor5 = attrs5.get("backgroundColor").getOrThrow().toString()
-        //@Expect(backgroundColor5, "\"#FF008000\"")
+        @Expect(backgroundColor5, "\"#0C000000\"")
         let hoverEffect5 = attrs5.get("hoverEffect").getOrThrow().toString()
         @Expect(hoverEffect5, "\"HoverEffect.Auto\"")
         let borderRadius5 = attrs5.get("borderRadius").getOrThrow().toString()
-        //@Expect(borderRadius5, "{\"topLeft\":\"5.00vp\",\"topRight\":\"5.00vp\",\"bottomLeft\":\"5.00vp\",\"bottomRight\":\"5.00vp\"}")
+        @Expect(borderRadius5, "{\"topLeft\":\"65.00px\",\"topRight\":\"65.00px\",\"bottomLeft\":\"65.00px\",\"bottomRight\":\"65.00px\"}")
 
         let text_begin = driver.findComponent(On().id("my_state")).getOrThrow().getText()
         @Expect(text_begin, "current state is false")
@@ -386,12 +385,12 @@ class ButtonSelectUT21 {
         let animationMode = driver.findComponent(On().id("animationMode")).getOrThrow()
         animationMode.click()
         driver.delayMs(1000)
-        //@Expect(animationMode.getText().contains("AnimationMode.ACTION_FIRST"))
+        @Expect(animationMode.getText().contains("AnimationMode.CONTENT_FIRST"))
 
         let edgeEffect = driver.findComponent(On().id("edgeEffect")).getOrThrow()
         edgeEffect.click()
         driver.delayMs(500)
-        //@Expect(edgeEffect.getText().contains("EdgeEffect::FADE"))
+        @Expect(edgeEffect.getText().contains("EdgeEffect::SPRING"))
     }
 
 

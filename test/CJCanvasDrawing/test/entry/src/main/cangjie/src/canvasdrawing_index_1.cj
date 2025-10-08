@@ -36,9 +36,9 @@ class CanvasDrawingIndex1 {
                     UT1,
                     itemGeneratorFunc: {
                         viewName: String, _: Int64 => Button(viewName).fontSize(12).width(47.percent).height(30).id(
-                            viewName).borderRadius(4).margin(2).onClick {
+                            viewName).borderRadius(4).margin(2).onClick ({
                             _ => getUIContext().getRouter().pushUrl(url: viewName)
-                        }
+                        })
                     }
                 )
             }.width(100.percent).margin(top: 5)

@@ -153,7 +153,7 @@ class EnvironmentEnum {
         Column {
             Text("${colorModeString} ${colorModeInt}").id("parsedColorMode")
             Text("${layoutDirectionString} ${layoutDirectionInt}").id("parsedLayoutDirection")
-            Button("parseStatus").onClick { e =>
+            Button("parseStatus").onClick ({ e =>
                 var colorMode_ = arrColorMode[clickCount]
                 var layoutDirection_ = arrLayoutDirection[clickCount]
                 colorModeInt = clickCount
@@ -163,7 +163,7 @@ class EnvironmentEnum {
                 Environment.envProp<ColorMode>("colorMode", colorMode_)
                 Environment.envProp<LayoutDirection>("layoutDirection", layoutDirection_)
                 clickCount++
-            }.id("parseStatus")
+            }).id("parseStatus")
         }
     }
 }

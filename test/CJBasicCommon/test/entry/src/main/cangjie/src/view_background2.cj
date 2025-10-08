@@ -40,7 +40,7 @@ class ViewBackground2 {
                     .id("background_id_01")
                 Text("linearGradient Repeat111111")
 
-                Button("PrintBackgroundAttr").onClick { e =>
+                Button("PrintBackgroundAttr").onClick ({ e =>
                     let c_id = "background_id_01"
 
                     let Inspector = getInspectorByKey(c_id)
@@ -67,7 +67,7 @@ class ViewBackground2 {
 
                     //                    let background = getTextFromJSonObj(obj, "background")
                     //                    Hilog.info(1, "Cangjie-App", background)
-                }
+                })
             }.width(100.percent)
         }.height(100.percent)
     }

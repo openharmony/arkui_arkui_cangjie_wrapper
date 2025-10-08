@@ -17,7 +17,6 @@ package ohos_app_cangjie_entry
 
 internal import ohos.base.LengthProp
 internal import ohos.arkui.component.*
-internal import ohos.arkui.component.view.loadNativeView
 internal import ohos.arkui.state_management.SubscriberManager
 internal import ohos.arkui.state_management.ObservedProperty
 
@@ -36,12 +35,12 @@ class BasicCommonIndex4 {
                     UT4,
                     itemGeneratorFunc: {
                         viewName: String, _: Int64 => Button(viewName).fontSize(12).width(47.percent).height(30).id(
-                            viewName).borderRadius(4).margin(2).onClick { e
+                            viewName).borderRadius(4).margin(2).onClick ({ e
                             => getUIContext().getRouter().pushUrl(url: viewName)
-                        }
+                        })
                     }
                 )
-            }.width(100.percent).margin(top: 5)
+            }.width(100.percent).margin(5)
         }.id("scroller")
     }
 }

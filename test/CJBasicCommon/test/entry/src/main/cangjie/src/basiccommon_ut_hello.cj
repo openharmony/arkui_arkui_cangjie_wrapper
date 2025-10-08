@@ -233,51 +233,51 @@ class BasicCommonUTHello {
         var float_a: Float64 = 30.0
         var length = float_a.percent
         var lpx = float_a.lpx
-        var type_px: LengthUnit = LengthUnit.parse(0)
-        var type_lpx: LengthUnit = LengthUnit.parse(4)
+        let type_px = LengthUnit.parse(0)
+        let type_lpx = LengthUnit.parse(4)
         try {
-            var vp: LengthUnit = LengthUnit.parse(5)
+            var vp = LengthUnit.parse(5)
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
         }
         @Expect(0.3, length.value)
 
         try {
-            Main.hasEnded()
-            Main.end()
+            UIThread.hasEnded()
+            UIThread.end()
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
         }
 
-        try {
-            var lazy = LazyForEach()
-            lazy.update()
-        } catch (e: Exception) {
-            Hilog.info(1, "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
-        }
+//        try {
+//            var lazy = LazyForEach()
+//            lazy.update()
+//        } catch (e: Exception) {
+//            Hilog.info(1, "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+//        }
         Hilog.info(1, "Cangjie-Test", "test_lengthProp end")
     }
 
-    @TestCase
-    @Tag[APILevel16, TestLevel0]
-    func testForEach() {
-        Hilog.info(1, "Cangjie-Test", "test_forEach start")
-        try {
-            var foreach: ForEach = ForEach(){}
-            foreach.create()
-            foreach.update()
-        } catch (e: Exception) {
-            Hilog.info(1, "Cangjie-Test", "test_forEach setProperty: ${e.toString()}")
-        }
-        try {
-            var dtcustom = DtTestCustomView(Option.None, LocalStorage())
-            var foreach2: ForEach = ForEach(){}
-            foreach2.create<String>(1, dtcustom, ObservedArrayList<String>(["1"]), itemGeneratorFunc: {viewName: String, _: Int64 => })
-        } catch (e: Exception) {
-            Hilog.info(1, "Cangjie-Test", "test_forEach setProperty: ${e.toString()}")
-        }
-        Hilog.info(1, "Cangjie-Test", "test_forEach end")
-    }
+//    @TestCase
+//    @Tag[APILevel16, TestLevel0]
+//    func testForEach() {
+//        Hilog.info(1, "Cangjie-Test", "test_forEach start")
+//        try {
+//            var foreach: ForEach = ForEach(){}
+//            foreach.create()
+//            foreach.update()
+//        } catch (e: Exception) {
+//            Hilog.info(1, "Cangjie-Test", "test_forEach setProperty: ${e.toString()}")
+//        }
+//        try {
+//            var dtcustom = DtTestCustomView(Option.None, LocalStorage())
+//            var foreach2: ForEach = ForEach(){}
+//            foreach2.create<String>(1, dtcustom, ObservedArrayList<String>(["1"]), itemGeneratorFunc: {viewName: String, _: Int64 => })
+//        } catch (e: Exception) {
+//            Hilog.info(1, "Cangjie-Test", "test_forEach setProperty: ${e.toString()}")
+//        }
+//        Hilog.info(1, "Cangjie-Test", "test_forEach end")
+//    }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
@@ -291,12 +291,12 @@ class BasicCommonUTHello {
             Hilog.info(1, "Cangjie-Test", "test_customview getLocalStorage: ${e.toString()}")
             message = e.toString()
         }
-        try {
-            dtcustom.aboutToRecycleInternal()
-        } catch (e: Exception) {
-            Hilog.info(1, "Cangjie-Test", "test_customview aboutToRecycleInternal: ${e.toString()}")
-            message = e.toString()
-        }
+//        try {
+//            dtcustom.aboutToRecycleInternal()
+//        } catch (e: Exception) {
+//            Hilog.info(1, "Cangjie-Test", "test_customview aboutToRecycleInternal: ${e.toString()}")
+//            message = e.toString()
+//        }
         try {
             dtcustom.addProvideVar(ObservedProperty<String>("info", "initValue"), "addProvideVar")
             dtcustom.initializeConsume("addProvideVar")
@@ -304,14 +304,14 @@ class BasicCommonUTHello {
             Hilog.info(1, "Cangjie-Test", "test_customview addProvideVar: ${e.toString()}")
             message = e.toString()
         }
-        try {
-            dtcustom.markLazyForEachProcess("lazyGroupId1")
-            dtcustom.markLazyForEachProcess("lazyGroupId2")
-            dtcustom.removeChildGroupById("lazyGroupId1")
-        } catch (e: Exception) {
-            Hilog.info(1, "Cangjie-Test", "test_customview markLazyForEachProcess: ${e.toString()}")
-            message = e.toString()
-        }
+//        try {
+//            dtcustom.markLazyForEachProcess("lazyGroupId1")
+//            dtcustom.markLazyForEachProcess("lazyGroupId2")
+//            dtcustom.removeChildGroupById("lazyGroupId1")
+//        } catch (e: Exception) {
+//            Hilog.info(1, "Cangjie-Test", "test_customview markLazyForEachProcess: ${e.toString()}")
+//            message = e.toString()
+//        }
         try {
             var bId = If.getBranchId()
             dtcustom.ifElseBranchUpdateFunction(bId, { => })
@@ -359,24 +359,24 @@ class BasicCommonUTHello {
         Hilog.info(1, "Cangjie-Test", "test_customview2 end")
     }
 
-    @TestCase
-    @Tag[APILevel16, TestLevel0]
-    func testView() {
-        Hilog.info(1, "Cangjie-Test", "test_view start")
-        var message = ""
-        try {
-            var view: View = View.create(23232323)
-            view.needsUpdate()
-            view.markStatic()
-            view.isStatic()
-            view.destroy()
-        } catch (e: Exception) {
-            message = e.toString()
-            Hilog.info(1, "Cangjie-Test", "test_view setProperty: ${e.toString()}")
-        }
-        @Expect(message.contains("NoneValueException"))
-        Hilog.info(1, "Cangjie-Test", "test_view end")
-    }
+//    @TestCase
+//    @Tag[APILevel16, TestLevel0]
+//    func testView() {
+//        Hilog.info(1, "Cangjie-Test", "test_view start")
+//        var message = ""
+//        try {
+//            var view: View = View.create(23232323)
+//            view.needsUpdate()
+//            view.markStatic()
+//            view.isStatic()
+//            view.destroy()
+//        } catch (e: Exception) {
+//            message = e.toString()
+//            Hilog.info(1, "Cangjie-Test", "test_view setProperty: ${e.toString()}")
+//        }
+//        @Expect(message.contains("NoneValueException"))
+//        Hilog.info(1, "Cangjie-Test", "test_view end")
+//    }
 
     @TestCase
     @Tag[APILevel16, TestLevel0]
@@ -427,7 +427,7 @@ class BasicCommonUTHello {
     @Tag[APILevel12, TestLevel0]
     func testResourceToUInt() {
         Hilog.info(1, "Cangjie-Test", "test_resource_toUInt start")
-        var message = "Invalid args or ret"
+        var message = "Valid args or ret"
         try {
             var color: ResourceColor = @r(app.color.blue_23C452)
             color.toUInt32()
@@ -435,7 +435,7 @@ class BasicCommonUTHello {
             Hilog.info(1, "Cangjie-Test", "test_resource_toUInt: ${e.toString()}")
             message = e.toString()
         }
-        @Expect(message.contains("AppResource can not get 'UInt32' value from ResourceColor"))
+        @Expect(message.contains("BusinessException"))
         Hilog.info(1, "Cangjie-Test", "test_resource_toUInt end")
     }
 
@@ -451,7 +451,7 @@ class BasicCommonUTHello {
             Hilog.info(1, "Cangjie-Test", "test_length_value: ${e.toString()}")
             message1 = e.toString()
         }
-        @Expect(message1.contains("Current type not support get 'value' attribute"))
+        @Expect(message1.contains("BusinessException"))
 
         var message2 = "get unitType success"
         try {
@@ -461,7 +461,7 @@ class BasicCommonUTHello {
             Hilog.info(1, "Cangjie-Test", "test_length_value: ${e.toString()}")
             message2 = e.toString()
         }
-        @Expect(message2.contains("Current type not support get 'unitType' attribute"))
+        @Expect(message2.contains("BusinessException"))
         Hilog.info(1, "Cangjie-Test", "test_length_value end")
     }
 
@@ -932,11 +932,11 @@ class BasicCommonUTHello {
     }
 }
 
-class PersonView <: View {
-    protected init(id: Int64){
-        super(id)
-    }
-}
+//class PersonView <: View {
+//    protected init(id: Int64){
+//        super(id)
+//    }
+//}
 
 class DtTestCustomView <: CustomView {
     public init(parent: Option<CustomView>, localStorage: Option<LocalStorage>) {

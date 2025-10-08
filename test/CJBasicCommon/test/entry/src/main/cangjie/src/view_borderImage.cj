@@ -15,7 +15,6 @@
 
 package ohos_app_cangjie_entry
 
-import kit.ArkUI.*
 import kit.LocalizationKit.*
 import ohos.arkui.state_macro_manage.*
 
