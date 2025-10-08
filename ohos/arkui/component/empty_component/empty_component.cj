@@ -19,7 +19,7 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 
 /**
- * Defines Ellipse Component.
+ * Empty component.
  */
 @!APILevel[
     22,
@@ -27,7 +27,7 @@ import ohos.labels.APILevel
 ]
 public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComponentAttribute {
     /**
-     * Create an empty component.
+     * EmptyComponent Constructor.
      */
     @!APILevel[
         22,
@@ -37,7 +37,7 @@ public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComp
 }
 
 /**
- * Defines Ellipse Component.
+ * Empty component attributes.
  */
 @!APILevel[
     22,
