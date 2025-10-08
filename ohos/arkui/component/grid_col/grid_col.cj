@@ -40,7 +40,6 @@ struct NativeGridColColumnOption {
 
 /**
  * Defines the option in number unit of grid-container child component.
- *
  */
 @!APILevel[
     22,
@@ -48,9 +47,8 @@ struct NativeGridColColumnOption {
 ]
 public class GridColOptions {
     /**
-    * Grid Col Column Option xs.
-    *
-    */
+     * Grid Col Column Option xs.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -58,9 +56,8 @@ public class GridColOptions {
     public var xs: ?Int32
 
     /**
-    * Grid Col Column Option sm.
-    *
-    */
+     * Grid Col Column Option sm.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -68,9 +65,8 @@ public class GridColOptions {
     public var sm: ?Int32
 
     /**
-    * Grid Col Column Option md.
-    *
-    */
+     * Grid Col Column Option md.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -78,9 +74,8 @@ public class GridColOptions {
     public var md: ?Int32
 
     /**
-    * Grid Col Column Option lg.
-    *
-    */
+     * Grid Col Column Option lg.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -88,9 +83,8 @@ public class GridColOptions {
     public var lg: ?Int32
 
     /**
-    * Grid Col Column Option xl.
-    *
-    */
+     * Grid Col Column Option xl.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -98,9 +92,8 @@ public class GridColOptions {
     public var xl: ?Int32
 
     /**
-    * Grid Col Column Option xxl.
-    *
-    */
+     * Grid Col Column Option xxl.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -108,15 +101,15 @@ public class GridColOptions {
     public var xxl: ?Int32
 
     /**
-    * Defines the constructor of GridColOptions.
-    *
-    * @params { ?Int32 } xs
-    * @params { ?Int32 } sm
-    * @params { ?Int32 } md
-    * @params { ?Int32 } lg
-    * @params { ?Int32 } xl
-    * @params { ?Int32 } xxl
-    */
+     * Defines the constructor of GridColOptions.
+     *
+     * @params { ?Int32 } xs - Grid Col Column Option xs.
+     * @params { ?Int32 } sm - Grid Col Column Option sm.
+     * @params { ?Int32 } md - Grid Col Column Option md.
+     * @params { ?Int32 } lg - Grid Col Column Option lg.
+     * @params { ?Int32 } xl - Grid Col Column Option xl.
+     * @params { ?Int32 } xxl - Grid Col Column Option xxl.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -193,10 +186,10 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     /**
      * GridCol constructor.
      *
-     * @params { ?Int32 } span
-     * @params { ?Int32 } offset
-     * @params { ?Int32 } order
-     * @params { () -> Unit } child
+     * @params { ?Int32 } span - Sets the span of current gird-container item.
+     * @params { ?Int32 } offset - Sets the offset of current gird-container item.
+     * @params { ?Int32 } order - Sets the order of current gird-container item.
+     * @params { () -> Unit } child - The child component of GridCol.
      */
     @!APILevel[
         22,
@@ -212,10 +205,10 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     /**
      * GridCol constructor.
      *
-     * @params { ?GridColOptions } span
-     * @params { ?GridColOptions } offset
-     * @params { ?GridColOptions } order
-     * @params { () -> Unit } child
+     * @params { ?GridColOptions } span - Sets the span of current gird-container item.
+     * @params { ?GridColOptions } offset - Sets the offset of current gird-container item.
+     * @params { ?GridColOptions } order - Sets the order of current gird-container item.
+     * @params { () -> Unit } child - The child component of GridCol.
      */
     @!APILevel[
         22,
