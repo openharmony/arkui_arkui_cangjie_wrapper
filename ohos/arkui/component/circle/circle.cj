@@ -40,7 +40,6 @@ public class Circle <: CommonShapeMethodComponent<Circle> & CircleAttribute {
      * 
      * @params { ?Length } width - Defines the width property.
      * @params { ?Length } height - Defines the height property.
-     * @returns { Circle }
      */
     @!APILevel[
         22,
@@ -59,9 +58,5 @@ public class Circle <: CommonShapeMethodComponent<Circle> & CircleAttribute {
         }
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func initial() {}
 }

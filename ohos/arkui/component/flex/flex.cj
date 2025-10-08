@@ -81,7 +81,6 @@ public class Flex <: CommonMethodComponent<Flex> & FlexAttribute {
     * @params { ?ItemAlign } alignItems
     * @params { ?FlexAlign } alignContent
     * @param { () -> Unit } child
-    * @returns { Flex }
     */
     @!APILevel[
         22,

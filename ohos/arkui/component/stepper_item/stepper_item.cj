@@ -42,7 +42,6 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
      * Constructs a StepperItem component.
      *
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,

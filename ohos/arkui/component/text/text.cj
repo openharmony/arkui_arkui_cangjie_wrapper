@@ -229,8 +229,6 @@ class FFIVectorFfiTextMenuItem {
 public class TextController <: RemoteDataLite {
     /**
      * Defines the TextController constructor.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -276,7 +274,6 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @params { ?ResourceStr } content
      * @params { ?TextController } controller
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -297,7 +294,6 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      *
      * @params { ?TextController } controller
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -311,7 +307,6 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * Called when writing text.
      *
      * @params { ?TextController } controller
-     * @returns { This }
      */
     @!APILevel[
         22,

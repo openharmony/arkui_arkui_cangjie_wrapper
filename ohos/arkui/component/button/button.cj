@@ -112,7 +112,6 @@ struct ButtonOptional {
 
 /**
  * Provides a button component.
- * 
  */
 @Derive[Equatable]
 @!APILevel[
@@ -122,7 +121,6 @@ struct ButtonOptional {
 public enum ButtonType {
     /**
      * Common button (no rounded corners by default).
-     *
      */
     @!APILevel[
         22,
@@ -131,7 +129,6 @@ public enum ButtonType {
     Normal |
     /**
      * Capsule button (rounded corners default to half the height).
-     *
      */
     @!APILevel[
         22,
@@ -140,7 +137,6 @@ public enum ButtonType {
     Capsule |
     /**
      * Round buttons.
-     *
      */
     @!APILevel[
         22,
@@ -149,7 +145,6 @@ public enum ButtonType {
     Circle |
     /**
      * Rounded rectangle button.
-     *
      */
     @!APILevel[
         22,
@@ -171,7 +166,6 @@ public enum ButtonType {
 
 /**
  * Enum for button role.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -181,7 +175,6 @@ public enum ButtonType {
 public enum ButtonRole {
     /**
      * Normal button.
-     *
      */
     @!APILevel[
         22,
@@ -190,7 +183,6 @@ public enum ButtonRole {
     Normal |
     /**
      * Error button.
-     *
      */
     @!APILevel[
         22,
@@ -210,7 +202,6 @@ public enum ButtonRole {
 
 /**
  * Enum for button style type.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -220,7 +211,6 @@ public enum ButtonRole {
 public enum ButtonStyleMode {
     /**
      * Normal button (with normal background color).
-     *
      */
     @!APILevel[
         22,
@@ -229,7 +219,6 @@ public enum ButtonStyleMode {
     Normal |
     /**
      * Emphasized button (with emphasized background color).
-     *
      */
     @!APILevel[
         22,
@@ -238,7 +227,6 @@ public enum ButtonStyleMode {
     Emphasized |
     /**
      * Textual button (with none background color).
-     *
      */
     @!APILevel[
         22,
@@ -259,7 +247,6 @@ public enum ButtonStyleMode {
 
 /**
  * Defines the button options.
- *
  */
 @!APILevel[
     22,
@@ -268,7 +255,6 @@ public enum ButtonStyleMode {
 public class ButtonOptions {
     /**
      * Describes the button style.
-     *
      */
     @!APILevel[
         22,
@@ -277,7 +263,6 @@ public class ButtonOptions {
     public var shape: ?ButtonType
     /**
      * Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
-     *
      */
     @!APILevel[
         22,
@@ -286,7 +271,6 @@ public class ButtonOptions {
     public var stateEffect: ?Bool
     /**
      * Describes the button style.
-     *
      */
     @!APILevel[
         22,
@@ -295,7 +279,6 @@ public class ButtonOptions {
     public var buttonStyle: ?ButtonStyleMode
     /**
      * Describes the button size.
-     *
      */
     @!APILevel[
         22,
@@ -304,7 +287,6 @@ public class ButtonOptions {
     public var controlSize: ?ControlSize
     /**
      * Describes the button role.
-     *
      */
     @!APILevel[
         22,
@@ -313,14 +295,13 @@ public class ButtonOptions {
     public var role: ?ButtonRole
 
     /**
-     * ButtonOptions constructor
+     * ButtonOptions constructor.
      *
      * @params { ?ButtonType } shape
      * @params { ?Bool } stateEffect
      * @params { ?ButtonStyleMode } buttonStyle
      * @params { ?ControlSize } controlSize
      * @params { ?ButtonRole } role
-     * @returns { ButtonOptions }
      */
     @!APILevel[
         22,
@@ -350,9 +331,7 @@ public class ButtonOptions {
 ]
 public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
-     * Button object
-     *
-     * @returns { This }
+     * Button object.
      */
     @!APILevel[
         22,
@@ -370,7 +349,6 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Button object
      *
      * @params { () -> Unit } child
-     * @returns { Button }
      */
     @!APILevel[
         22,
@@ -387,7 +365,6 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Create Button with inner text label.
      *
      * @params { ResourceStr } label
-     * @returns { Button }
      */
     @!APILevel[
         22,
@@ -406,7 +383,6 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Create Button with Text child.
      *
      * @params { ?ButtonOptions } options
-     * @returns { Button }
      */
     @!APILevel[
         22,
@@ -432,7 +408,6 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      *
      * @params { ?ButtonOptions } options
      * @params { () -> Unit } child
-     * @returns { Button }
      */
     @!APILevel[
         22,
@@ -459,7 +434,6 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      *
      * @params { ?ResourceStr } label
      * @params { ?ButtonOptions } options
-     * @returns { Button }
      */
     @!APILevel[
         22,

@@ -39,7 +39,6 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      *
      * @params { String } info
      * @params { T } initValue
-     * @returns { This }
      */
     @!APILevel[
         22,

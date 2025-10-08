@@ -59,7 +59,6 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      * Creates the menu component.
      *
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,

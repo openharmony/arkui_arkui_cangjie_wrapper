@@ -163,7 +163,7 @@ public enum BreakpointsReference {
 ]
 public class GridRowSizeOptions {
     /**
-    * Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint
+    * Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint.
     *
     */
     @!APILevel[
@@ -172,7 +172,7 @@ public class GridRowSizeOptions {
     ]
     public var xs: ?Length
     /**
-    * Grid Row Size Option sm, select sm gutter size based on gridRow current breakpoint
+    * Grid Row Size Option sm, select sm gutter size based on gridRow current breakpoint.
     *
     */
     @!APILevel[
@@ -181,7 +181,7 @@ public class GridRowSizeOptions {
     ]
     public var sm: ?Length
     /**
-    * Grid Row Size Option md, select md gutter size based on gridRow current breakpoint
+    * Grid Row Size Option md, select md gutter size based on gridRow current breakpoint.
     *
     */
     @!APILevel[
@@ -190,7 +190,7 @@ public class GridRowSizeOptions {
     ]
     public var md: ?Length
     /**
-    * Grid Row Size Option lg, select lg gutter size based on gridRow current breakpoint
+    * Grid Row Size Option lg, select lg gutter size based on gridRow current breakpoint.
     *
     */
     @!APILevel[
@@ -199,7 +199,7 @@ public class GridRowSizeOptions {
     ]
     public var lg: ?Length
     /**
-    * Grid Row Size Option xl, select xl gutter size based on gridRow current breakpoint
+    * Grid Row Size Option xl, select xl gutter size based on gridRow current breakpoint.
     *
     */
     @!APILevel[
@@ -208,7 +208,7 @@ public class GridRowSizeOptions {
     ]
     public var xl: ?Length
     /**
-    * Grid Row Size Option xxl, select xxl gutter size based on gridRow current breakpoint
+    * Grid Row Size Option xxl, select xxl gutter size based on gridRow current breakpoint.
     *
     */
     @!APILevel[
@@ -226,7 +226,6 @@ public class GridRowSizeOptions {
     * @params { ?Length } lg
     * @params { ?Length } xl
     * @params { ?Length } xxl
-    * @returns { GridRowSizeOptions }
     */
     @!APILevel[
         22,
@@ -252,7 +251,6 @@ public class GridRowSizeOptions {
     * Defines the constructor of GridRowSizeOptions.
     *
     * @params { ?Length } value
-    * @returns { GridRowSizeOptions }
     */
     @!APILevel[
         22,
@@ -400,7 +398,6 @@ public class GridRowOptions {
     * @params { ?Int32 } lg
     * @params { ?Int32 } xl
     * @params { ?Int32 } xxl
-    * @returns { GridRowOptions }
     */
     @!APILevel[
         22,
@@ -426,7 +423,6 @@ public class GridRowOptions {
     * Defines the constructor of GridRowOptions.
     *
     * @params { ?Int32 } value
-    * @returns { GridRowOptions }
     */
     @!APILevel[
         22,
@@ -462,7 +458,6 @@ public class GutterOptions {
     *
     * @params { ?Length } x
     * @params { ?Length } y
-    * @returns { GutterOptions }
     */
     @!APILevel[
         22,
@@ -477,7 +472,6 @@ public class GutterOptions {
     *
     * @params { ?GridRowSizeOptions } x
     * @params { ?GridRowSizeOptions } y
-    * @returns { GutterOptions }
     */
     @!APILevel[
         22,
@@ -521,7 +515,6 @@ public class BreakPoints {
     * BreakPoints constructor.
     *
     * @params { ?Array<Length> } value
-    * @returns { BreakPoints } value
     */
     @!APILevel[
         22,
@@ -632,7 +625,6 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     * @params { ?BreakPoints } breakpoints
     * @params { ?GridRowDirection } direction
     * @params { () -> Unit } child
-    * @returns { GridRow }
     */
     @!APILevel[
         22,
@@ -682,7 +674,6 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     * @params { ?BreakPoints } breakpoints
     * @params { ?GridRowDirection } direction
     * @params { () -> Unit } child
-    * @returns { GridRow }
     */
     @!APILevel[
         22,
@@ -734,7 +725,6 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     * @params { ?BreakPoints } breakpoints
     * @params { ?GridRowDirection } direction
     * @params { () -> Unit } child
-    * @returns { GridRow }
     */
     @!APILevel[
         22,
@@ -803,7 +793,6 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     * @params { ?BreakPoints } breakpoints
     * @params { ?GridRowDirection } direction
     * @params { () -> Unit } child
-    * @returns { GridRow }
     */
     @!APILevel[
         22,

@@ -233,7 +233,6 @@ public class ButtonInfo {
      * @params { ResourceStr } text: Button text content.
      * @params { ResourceColor } color: Button text color.
      * @params { Bool } primary: Whether the button responds to the Enter/Space key by default.
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -367,7 +366,6 @@ public class EdgeColors {
      * @params { ResourceColor } right
      * @params { ResourceColor } bottom
      * @params { ResourceColor } left
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -648,7 +646,6 @@ public open class BaseDialogOptions {
      * @params { KeyboardAvoidMode } keyboardAvoidMode
      * @params { Bool } enableHoverMode
      * @params { HoverModeAreaType } hoverModeArea
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -827,7 +824,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * @params { Length } height
      * @params { ShadowOptions } shadow
      * @params { BlurStyle } backgroundBlurStyle
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -1047,7 +1043,6 @@ public open class ShowDialogOptions {
      * @params { ShadowOptions } shadow
      * @params { Bool } enableHoverMode
      * @params { HoverModeAreaType } hoverModeArea
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -1143,7 +1138,6 @@ public open class ActionMenuOptions {
      * @params { Array<ButtonInfo> } buttons
      * @params { Bool } showInSubWindow
      * @params { Bool } isModal
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -1307,7 +1301,6 @@ public class ShowToastOptions {
      * @params { ShadowOptions } shadow
      * @params { Bool } enableHoverMode
      * @params { HoverModeAreaType } hoverModeArea
-     * @returns { This }
      */
     @!APILevel[
         22,

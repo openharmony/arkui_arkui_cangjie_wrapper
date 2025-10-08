@@ -239,7 +239,6 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * @params { ?TabsController } controller
      * @params { ?Int32 } index
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -324,7 +323,6 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * Sets whether to use vertical tabs.
      *
      * @params { ?Bool } value - Whether to use vertical tabs. Default value is false.
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -434,8 +432,6 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
 public class TabsController <: RemoteDataLite {
     /**
      * TabsController constructor.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -480,7 +476,6 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
      * Create a TabContent with child.
      *
      * @params { () -> Unit } child
-     * @returns { TabContent }
      */
     @!APILevel[
         22,
@@ -494,8 +489,6 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
 
     /**
      * Create a TabContent.
-     *
-     * @returns { TabContent }
      */
     @!APILevel[
         22,

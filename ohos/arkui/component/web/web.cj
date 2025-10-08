@@ -379,7 +379,6 @@ public class OnPageBeginEvent {
     * Defines OnPageBeginEvent Component instance.
     *
     * @params { String } url
-    * @returns { This }
     */
     @!APILevel[
         22,
@@ -411,7 +410,6 @@ public class OnPageEndEvent {
     * Defines OnPageEndEvent Component instance.
     *
     * @params { String } url
-    * @returns { This }
     */
     @!APILevel[
         22,
@@ -443,7 +441,6 @@ public class OnLoadInterceptEvent {
     * Defines OnLoadInterceptEvent Component instance.
     *
     * @params { WebResourceRequest } data
-    * @returns { This }
     */
     @!APILevel[
         22,
@@ -659,7 +656,6 @@ public class OnPermissionRequestEvent {
     * Defines OnPermissionRequestEvent Component instance.
     *
     * @params { PermissionRequest } request
-    * @returns { This }
     */
     @!APILevel[
         22,
@@ -737,7 +733,6 @@ public class PermissionRequest {
     * Grant origin access to a given resource.
     *
     * @params { Array<string> } resources
-    * @returns { Unit }
     */
     @!APILevel[
         22,

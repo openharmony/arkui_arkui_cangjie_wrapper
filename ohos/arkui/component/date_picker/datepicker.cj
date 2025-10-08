@@ -81,7 +81,6 @@ public class DatePickerResult {
      * @params { Int64 } year
      * @params { Int64 } month
      * @params { Int64 } day
-     * @returns { DatePickerResult }
      */
     @!APILevel[
         22,
@@ -169,7 +168,6 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
      * @params { ?DateTime } start - Start date of the picker.
      * @params { ?DateTime } end - End date of the picker.
      * @params { ?DateTime } selected - Date of the selected item.
-     * @returns { DatePicker }
      */
     @!APILevel[
         22,
@@ -192,7 +190,7 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
     /**
      * Specifies whether to display the lunar calendar.
      *
-     * @params { Bool } value - Whether to display the lunar calendar.
+     * @params { ?Bool } value - Whether to display the lunar calendar.
      * <br>- <em>true</em>: Display the lunar calendar.
      * <br>- <em>false</em>: Do not display the lunar.
      * @returns { This }

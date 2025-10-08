@@ -28,7 +28,6 @@ foreign {
 
 /**
  * Describes an opaque object of a template, which is created using the createPattern() method.
- *
  */
 @!APILevel[
     22,

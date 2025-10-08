@@ -18,11 +18,17 @@ protected package ohos.arkui.component.empty_component
 import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 
+/**
+ * Defines Ellipse Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComponentAttribute {
+    /**
+     * Create an empty component.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -30,6 +36,9 @@ public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComp
     public init() {}
 }
 
+/**
+ * Defines Ellipse Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"

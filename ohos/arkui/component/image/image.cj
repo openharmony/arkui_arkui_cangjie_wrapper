@@ -113,7 +113,7 @@ public class ImageError {
     ]
     public var componentHeight: ?Float64
     /**
-     * Message.
+     * ImageError Message.
      */
     @!APILevel[
         22,
@@ -246,6 +246,8 @@ public class ImageLoadResult {
 public type ImageCompleteCallback = (ImageLoadResult) -> Unit
 
 /**
+ * Callback function triggered when an error occurs while loading the image.
+ *
  * @params { ImageError } error
  */
 public type ImageErrorCallback = (ImageError) -> Unit
@@ -352,7 +354,6 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * Set src to obtain images
      *
      * @params { ?ResourceStr } src
-     * @returns { Image }
      */
     @!APILevel[
         22,
@@ -375,7 +376,6 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * Set src to obtain images
      *
      * @params { ?PixelMap } src
-     * @returns { Image }
      */
     @!APILevel[
         22,
@@ -687,7 +687,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * <br>This event is not triggered if the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @params { ?ImageErrorCallback } callback
+     * @params { ?ImageCompleteCallback } callback
      * @returns { This }
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */

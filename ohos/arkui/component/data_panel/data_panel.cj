@@ -95,7 +95,6 @@ public class ColorStop {
      *
      * @params { ResourceColor } color
      * @params { Length } offset
-     * @returns { ColorStop }
      */
     @!APILevel[
         22,
@@ -119,10 +118,9 @@ public class LinearGradient {
     protected var colorStops: Array<ColorStop>
 
     /**
-     * Constructor.
+     * LinearGradient Constructor.
      *
      * @params { Array<ColorStop> } colorStops - the LinearGradient constructor parameter.
-     * @returns { LinearGradient }
      */
     @!APILevel[
         22,
@@ -133,10 +131,9 @@ public class LinearGradient {
     }
 
     /**
-     * Constructor.
+     * LinearGradient Constructor.
      *
      * @params { ResourceColor } color - the LinearGradient constructor parameter.
-     * @returns { LinearGradient }
      */
     @!APILevel[
         22,
@@ -208,7 +205,6 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
      * @params { ?Array<LinearGradient> } colors
      * @params { ?Length } offsetX
      * @params { ?Length } offsetY
-     * @returns { DataPanelShadowOptions }
      */
     @!APILevel[
         22,
@@ -234,7 +230,6 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
      * @params { Array<Float64> } values
      * @params { ?Float64 } max
      * @params { ?DataPanelType } panelType
-     * @returns { DataPanel }
      */
     @!APILevel[
         22,

@@ -44,8 +44,6 @@ let defaultDivierColor = 0x33182431
 public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     /**
     * Divider constructor.
-    *
-    * @returns { Divider }
     */
     @!APILevel[
         22,

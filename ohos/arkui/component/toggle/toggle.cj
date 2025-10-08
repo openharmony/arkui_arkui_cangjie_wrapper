@@ -75,7 +75,6 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
      *
      * @params { ?ToggleType } toggleType
      * @params { ?Bool } isOn
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -94,7 +93,6 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
      * @params { ?ToggleType } toggleType
      * @params { ?Bool } isOn
      * @params { () -> Unit } subcomponent
-     * @returns { This }
      */
     @!APILevel[
         22,

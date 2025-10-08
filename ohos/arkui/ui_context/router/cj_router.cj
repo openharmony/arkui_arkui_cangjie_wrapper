@@ -149,7 +149,6 @@ public class RouterState {
      * @params { String } name
      * @params { String } path
      * @params { String } params
-     * @returns { This }
      */
     @!APILevel[
         22,

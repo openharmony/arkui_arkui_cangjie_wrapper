@@ -84,7 +84,6 @@ public class ButtonIconOptions {
      * @params { ?ResourceStr } shown
      * @params { ?ResourceStr } hidden
      * @params { ?ResourceStr } switching
-     * @returns { This }
      */ 
     @!APILevel[
         22,
@@ -169,7 +168,6 @@ public class ButtonStyle {
      * @params { ?Float64 } width
      * @params { ?Float64 } icons
      * @params { ?ButtonIconOptions } icons
-     * @returns { This }
      */ 
     @!APILevel[
         22,
@@ -255,7 +253,6 @@ public class DividerStyle {
      * @params { ?ResourceColor } color
      * @params { ?Length } startMargin
      * @params { ?Length } endMargin
-     * @returns { This }
      */ 
     @!APILevel[
         22,
@@ -326,7 +323,6 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
      *
      * @params { ?SideBarContainerType } sideBarType
      * @params { () -> Unit } child
-     * @returns { This }
      */ 
     @!APILevel[
         22,

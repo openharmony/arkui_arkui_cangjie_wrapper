@@ -282,7 +282,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     /*
-     * Keyboard input
+     * Keyboard input.
      *
      * @params { ?(KeyEvent) -> Unit } event
      * @returns { T }
@@ -694,7 +694,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Sets the padding of the component.
      *
-     * @params { Length, Length, Length, Length } Indicates safeArea padding values.
+     * @params { ?Length, ?Length, ?Length, ?Length } Indicates safeArea padding values.
      * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -1900,7 +1900,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Shared geometry transition
      *
-     * @params { String } id
+     * @params { ?String } id
      * @params { ?Bool } followWithoutTransition
      * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
@@ -3309,9 +3309,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Binds a sheet page to the component, whose visibility is subject to the isShow settings.
      *
-     * @params { Bool } isShow - true means display sheet, false means hide sheet.
+     * @params { ?Bool } isShow - true means display sheet, false means hide sheet.
      * @params { CustomBuilder } builder - the sheet to be displayed.
-     * @params { SheetOptions } options - options of sheet.
+     * @params { ?SheetOptions } options - options of sheet.
      * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */

@@ -163,7 +163,7 @@ public class BadgeStyle {
     public var borderWidth: ?Length
 
     /**
-     * BadgeStyle constructor
+     * BadgeStyle constructor.
      *
      * @params { ?ResourceColor } color
      * @params { ?Length } fontSize
@@ -172,7 +172,6 @@ public class BadgeStyle {
      * @params { ?FontWeight } fontWeight
      * @params { ?ResourceColor } borderColor
      * @params { ?Length } borderWidth
-     * @returns { BadgeStyle }
      */
     @!APILevel[
         22,
@@ -225,7 +224,6 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
      * @params { ?BadgePosition } position
      * @params { ?Int32 } maxCount
      * @params { () -> Unit } child
-     * @returns { Badge }
      */
     @!APILevel[
         22,
@@ -257,7 +255,6 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
      * @params { ?BadgeStyle } style
      * @params { ?BadgePosition } position
      * @params { () -> Unit } child
-     * @returns { Badge }
      */
     @!APILevel[
         22,

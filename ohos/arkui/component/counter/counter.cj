@@ -45,7 +45,6 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
      * Counter constructor.
      *
      * @params { () -> Unit } content
-     * @returns { Counter }
      */
     @!APILevel[
         22,

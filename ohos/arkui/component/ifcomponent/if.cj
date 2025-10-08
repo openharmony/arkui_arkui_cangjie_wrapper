@@ -45,7 +45,6 @@ public class If <: UINodeBase {
      * Defines the constructor of If.
      *
      * @params { () -> Unit } subcomponent
-     * @returns { This }
      */
     @!APILevel[
         22,

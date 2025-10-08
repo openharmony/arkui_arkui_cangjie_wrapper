@@ -278,7 +278,6 @@ public open class Indicator {
      * Sets the position of the navigation indicator relative to the left edge of the Swiper component.
      *
      * @params { ?Length } value - the indicator to the left.
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -418,8 +417,6 @@ public class DotIndicator <: Indicator {
 
     /**
      * DotIndicator constructor.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -600,8 +597,6 @@ public class DigitIndicator <: Indicator {
 
     /**
      * DigitIndicator constructor.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -618,7 +613,6 @@ public class DigitIndicator <: Indicator {
     * Sets the font color of the digit-style navigation indicator.
     *
     * @params { ?ResourceColor } value - Font color of the digit-style navigation indicator. Default value is #ff182431.
-    * @returns { This }
     */
     @!APILevel[
         22,
@@ -718,8 +712,6 @@ public class DigitIndicator <: Indicator {
 public class SwiperController <: RemoteDataLite {
     /**
      * SwiperController constructor.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -811,7 +803,6 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
      *
      * @params { ?SwiperController } controller
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,

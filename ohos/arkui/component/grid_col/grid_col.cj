@@ -116,7 +116,6 @@ public class GridColOptions {
     * @params { ?Int32 } lg
     * @params { ?Int32 } xl
     * @params { ?Int32 } xxl
-    * @returns { GridColOptions }
     */
     @!APILevel[
         22,
@@ -142,7 +141,6 @@ public class GridColOptions {
     * Defines the option in number unit of grid-container child component.
     *
     * @params { ?Int32 } value
-    * @returns { GridColOptions }
     */
     @!APILevel[
         22,
@@ -199,7 +197,6 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @params { ?Int32 } offset
      * @params { ?Int32 } order
      * @params { () -> Unit } child
-     * @returns { GridCol }
      */
     @!APILevel[
         22,
@@ -219,7 +216,6 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @params { ?GridColOptions } offset
      * @params { ?GridColOptions } order
      * @params { () -> Unit } child
-     * @returns { GridCol }
      */
     @!APILevel[
         22,

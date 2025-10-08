@@ -40,8 +40,6 @@ public class LocalStorage {
      * Construct new instance of LocalStorage
      * initialize with all properties and their values that Object.keys(params) returns
      * Property values must not be undefined.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,

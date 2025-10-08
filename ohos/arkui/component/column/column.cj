@@ -51,7 +51,6 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
     *
     * @params { ?Length } space
     * @params { () -> Unit } child
-    * @returns { Column }
     */
     @!APILevel[
         22,

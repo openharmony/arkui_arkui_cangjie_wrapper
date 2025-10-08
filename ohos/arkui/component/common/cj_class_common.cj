@@ -24,7 +24,6 @@ import std.convert.*
 
 /**
  * Defines the event target.
- *
  */
 @!APILevel[
     22,
@@ -33,7 +32,6 @@ import std.convert.*
 public class EventTarget {
     /**
      * Area information of the target element.
-     *
      */
     @!APILevel[
         22,
@@ -42,7 +40,8 @@ public class EventTarget {
     public var area: Area
 
     /**
-     * constructor
+     * EventTarget constructor.
+     *
      * @params { Area } area
      */
     @!APILevel[
@@ -56,7 +55,6 @@ public class EventTarget {
 
 /**
  * Defines the area property.
- *
  */
 @!APILevel[
     22,
@@ -100,7 +98,8 @@ public class Area {
     public var globalPosition: Position
 
     /**
-     * Area constructor
+     * Area constructor.
+     *
      * @params { Length } width
      * @params { Length } height
      * @params { Position } position
@@ -218,7 +217,8 @@ public class MotionPathOptions {
     public var rotatable: ?Bool
 
     /**
-     * MotionPathOptions constructor
+     * MotionPathOptions constructor.
+     *
      * @params { ?String } path
      * @params { ?Float64 } from
      * @params { ?Float64 } to
@@ -311,7 +311,8 @@ public class SharedTransitionOptions {
     public var effectType: ?SharedTransitionEffectType
 
     /**
-     * SharedTransitionOptions constructor
+     * SharedTransitionOptions constructor.
+     *
      * @params { ?Int32 } duration
      * @params { ?Curve } curve
      * @params { ?Int32 } delay
@@ -426,7 +427,8 @@ public class AnimateParam {
     public var expectedFrameRateRange: Option<ExpectedFrameRateRange>
 
     /**
-     * AnimateParam constructor
+     * AnimateParam constructor.
+     *
      * @params { ?Int32 } duration
      * @params { ?Float32 } tempo
      * @params { ?Curve } curve
@@ -495,7 +497,6 @@ public class HorizontalAlignment {
      *
      * @params { ?String } anchor
      * @params { ?HorizontalAlign } align
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -538,7 +539,6 @@ public class VerticalAlignment {
      *
      * @params { ?String } anchor
      * @params { ?VerticalAlign } align
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -552,7 +552,6 @@ public class VerticalAlignment {
 
 /**
  * Defines the Bias.
- *
  */
 @!APILevel[
     22,
@@ -562,7 +561,6 @@ public class Bias {
 
     /**
      * Horizontal ratio of the Bias, it must be >= 0.
-     *
      */
     @!APILevel[
         22,
@@ -572,7 +570,6 @@ public class Bias {
 
     /**
      * Vertical ratio of the Bias, it must be >= 0.
-     *
      */
     @!APILevel[
         22,
@@ -585,7 +582,6 @@ public class Bias {
      *
      * @params { ?Float64 } horizontal
      * @params { ?Float64 } vertical
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -599,7 +595,6 @@ public class Bias {
 
 /**
  * Defines the font used for text.
- *
  */
 @!APILevel[
     22,
@@ -608,7 +603,6 @@ public class Bias {
 public class Fonts {
     /**
      * font size.
-     *
      */
     @!APILevel[
         22,
@@ -618,7 +612,6 @@ public class Fonts {
 
     /**
      * font weight.
-     *
      */
     @!APILevel[
         22,
@@ -628,7 +621,6 @@ public class Fonts {
 
     /**
      * font family.
-     *
      */
     @!APILevel[
         22,
@@ -638,7 +630,6 @@ public class Fonts {
 
     /**
      * font style.
-     *
      */
     @!APILevel[
         22,
@@ -647,7 +638,8 @@ public class Fonts {
     public var style: ?FontStyle
 
     /**
-     * Fonts constructor
+     * Fonts constructor.
+     *
      * @params { ?Length } size
      * @params { ?FontWeight } weight
      * @params { ?ResourceStr } family
@@ -668,7 +660,6 @@ public class Fonts {
 
 /**
  * Defines the border radius property.
- *
  */
 @!APILevel[
     22,
@@ -712,7 +703,8 @@ public class BorderRadiuses {
     public var bottomRight: ?Length
 
     /**
-     * BorderRadiuses constructor
+     * BorderRadiuses constructor.
+     *
      * @params { ?Length } topLeft
      * @params { ?Length } topRight
      * @params { ?Length } bottomLeft
@@ -781,7 +773,8 @@ public class Margin {
     protected let left: Length
 
     /**
-     * Margin constructor
+     * Margin constructor.
+     *
      * @params { ?Length } top
      * @params { ?Length } right
      * @params { ?Length } bottom
@@ -831,7 +824,7 @@ public class Margin {
 }
 
 /**
- * Define the options of shadow
+ * Define the options of shadow.
  */
 @!APILevel[
     22,
@@ -893,7 +886,8 @@ public class ShadowOptions {
     public var fill: ?Bool
 
     /**
-     * ShadowOptions constructor
+     * ShadowOptions constructor.
+     *
      * @params { ?Float64 } radius
      * @params { ?ShadowType } shadowType
      * @params { ?ResourceColor } color
@@ -1038,7 +1032,6 @@ protected func parseAnimateParam(params: AnimateParam): NativeAnimateParam {
 
 /**
  * Defines the offset property.
- *
  */
 @!APILevel[
     22,
@@ -1152,7 +1145,6 @@ public class ExpectedFrameRateRange {
 
 /**
  * Defines the align rule options of relative container.
- *
  */
 @!APILevel[
     22,
@@ -1163,7 +1155,6 @@ public class AlignRuleOptions {
      * Left alignment.
      * <br>anchor: ID of the component that functions as the anchor point.
      * <br>align: alignment mode relative to the anchor component.
-     *
      */
     @!APILevel[
         22,
@@ -1175,7 +1166,6 @@ public class AlignRuleOptions {
      * Right alignment.
      * <br>anchor: ID of the component that functions as the anchor point.
      * <br>align: alignment mode relative to the anchor component.
-     *
      */
     @!APILevel[
         22,
@@ -1187,7 +1177,6 @@ public class AlignRuleOptions {
      * Horizontal center alignment.
      * <br>anchor: ID of the component that functions as the anchor point.
      * <br>align: alignment mode relative to the anchor component.
-     *
      */
     @!APILevel[
         22,
@@ -1199,7 +1188,6 @@ public class AlignRuleOptions {
      * Top alignment.
      * <br>anchor: ID of the component that functions as the anchor point.
      * <br>align: alignment mode relative to the anchor component.
-     *
      */
     @!APILevel[
         22,
@@ -1211,7 +1199,6 @@ public class AlignRuleOptions {
      * Bottom alignment.
      * <br>anchor: ID of the component that functions as the anchor point.
      * <br>align: alignment mode relative to the anchor component.
-     *
      */
     @!APILevel[
         22,
@@ -1223,7 +1210,6 @@ public class AlignRuleOptions {
      * Vertical center alignment.
      * <br>anchor: ID of the component that functions as the anchor point.
      * <br>align: alignment mode relative to the anchor component.
-     *
      */
     @!APILevel[
         22,
@@ -1234,7 +1220,6 @@ public class AlignRuleOptions {
     /**
      * Offset of the component under the anchor constraints.
      * <br>The value is the ratio of the distance to the left/upper anchor to the total distance between anchors.
-     *
      */
     @!APILevel[
         22,
@@ -1252,7 +1237,6 @@ public class AlignRuleOptions {
      * @params { ?VerticalAlignment } bottom
      * @params { ?VerticalAlignment } center
      * @params { Bias } bias
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -1321,7 +1305,6 @@ public class EdgeStyles {
      * @params { ?BorderStyle } right
      * @params { ?BorderStyle } bottom
      * @params { ?BorderStyle } left
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -1352,7 +1335,6 @@ protected class MultiShadowOptionsImpl {}
 
 /**
  * Defines the options of Shadow.
- *
  */
 @!APILevel[
     22,
@@ -1366,7 +1348,6 @@ public open class MultiShadowOptions {
      * <p>**NOTE**:
      * <br>A value less than or equal to 0 is handled as the default value.
      * </p>
-     *
      */
     @!APILevel[
         22,
@@ -1376,7 +1357,6 @@ public open class MultiShadowOptions {
     /**
      * Offset on the x-axis.
      * Unit: vp.
-     *
      */
     @!APILevel[
         22,
@@ -1386,7 +1366,6 @@ public open class MultiShadowOptions {
     /**
      * Offset on the y-axis.
      * Unit: vp.
-     *
      */
     @!APILevel[
         22,
@@ -1402,8 +1381,7 @@ public open class MultiShadowOptions {
 }
 
 /**
- * Provide an interface for the text style of picker
- *
+ * Provide an interface for the text style of picker.
  */
 @!APILevel[
     22,
@@ -1412,7 +1390,6 @@ public open class MultiShadowOptions {
 public class PickerTextStyle {
     /**
      * Font color.
-     *
      */
     @!APILevel[
         22,
@@ -1422,7 +1399,6 @@ public class PickerTextStyle {
 
     /**
      * Text style.
-     *
      */
     @!APILevel[
         22,
@@ -1447,8 +1423,7 @@ public class PickerTextStyle {
 }
 
 /**
- * Provide an interface for the text style of picker
- *
+ * Provide an interface for the text style of picker.
  */
 @!APILevel[
     22,
@@ -1457,7 +1432,6 @@ public class PickerTextStyle {
 public class Font {
     /**
      * font size.
-     *
      */
     @!APILevel[
         22,
@@ -1466,7 +1440,6 @@ public class Font {
     public var size: ?Length
     /**
      * font weight.
-     *
      */
     @!APILevel[
         22,
@@ -1475,7 +1448,6 @@ public class Font {
     public var weight: ?FontWeight
     /**
      * font family.
-     *
      */
     @!APILevel[
         22,
@@ -1484,7 +1456,6 @@ public class Font {
     public var family: ?ResourceStr
     /**
      * font style.
-     *
      */
     @!APILevel[
         22,
@@ -1514,8 +1485,7 @@ public class Font {
 }
 
 /**
- * TextContentControllerBase
- *
+ * TextContentControllerBase interface.
  */
 @!APILevel[
     22,

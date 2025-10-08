@@ -114,7 +114,6 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
      * Constructor.
      *
      * @params { ?PatternLockController } controller - controller
-     * @returns { PatternLock }
      */
     @!APILevel[
         22,

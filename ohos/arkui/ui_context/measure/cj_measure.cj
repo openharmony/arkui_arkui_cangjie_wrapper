@@ -99,7 +99,6 @@ public class MeasureOptions {
      * @params { TextOverflow } overflow
      * @params { TextCase } textCase
      * @params { WordBreak } wordBreak
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -224,7 +223,6 @@ public class SizeOptions {
      *
      * @params { Length } width
      * @params { Length } height
-     * @returns { This }
      */
     @!APILevel[
         22,

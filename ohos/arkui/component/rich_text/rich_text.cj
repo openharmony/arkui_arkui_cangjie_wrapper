@@ -39,7 +39,6 @@ public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
      * Creates a RichText component.
      *
      * @params { ?ResourceStr } content
-     * @returns { This }
      */
     @!APILevel[
         22,

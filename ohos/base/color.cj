@@ -151,7 +151,6 @@ public class Color <: ResourceColor {
      * @params { UInt8 } green
      * @params { UInt8 } blue
      * @params { UInt8 } alpha
-     * @returns { Color }
      */
     @!APILevel[
         22,
@@ -175,7 +174,6 @@ public class Color <: ResourceColor {
      * Constructor of Color.
      *
      * @params { UInt32 } value
-     * @returns { Color }
      */
     @!APILevel[
         22,

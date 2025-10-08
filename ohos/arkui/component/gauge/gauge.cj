@@ -138,7 +138,6 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      * @params { ?Float64 } min
      * @params { ?Float64 } max
      * @params { () -> Unit } child
-     * @returns { Gauge }
      */
     @!APILevel[
         22,

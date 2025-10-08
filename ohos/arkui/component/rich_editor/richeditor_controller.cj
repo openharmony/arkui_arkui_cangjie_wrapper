@@ -112,7 +112,6 @@ public class TextDecorationOptions {
      *
      * @params { ?TextDecorationType } decorationType - The type value of the decoration property object.
      * @params { ?ResourceColor } color - The color value of the decoration property object.
-     * @return { TextDecorationOptions }
      */
     @!APILevel[
         22,
@@ -187,7 +186,6 @@ public class SelectionMenuOptions {
      *
      * @params { ?() -> Unit } onAppear - Callback function when the selection menu appears.
      * @params { ?() -> Unit } onDisappear - Callback function when the selection menu disappears.
-     * @return { SelectionMenuOptions }
      */
     @!APILevel[
         22,
@@ -271,7 +269,6 @@ public class RichEditorTextStyle {
      * @params { ?FontWeight } fontWeight - font weight.
      * @params { ?ResourceStr } fontFamily - font family.
      * @params { ?TextDecorationOptions } decoration - font decoration.
-     * @return { RichEditorTextStyle }
      */
     @!APILevel[
         22,
@@ -326,7 +323,6 @@ public class RichEditorTextSpanOptions {
      *
      * @params { ?Int32 } offset - the offset that add a text span at.
      * @params { ?RichEditorTextStyle } style - text style.
-     * @return { RichEditorTextSpanOptions }
      */
     @!APILevel[
         22,
@@ -454,7 +450,6 @@ public class RichEditorLayoutStyle {
      *
      * @params { ?Margin } margin - outer margin.
      * @params { ?BorderRadiuses } borderRadius - border radius.
-     * @returns { RichEditorLayoutStyle }
      */
     @!APILevel[
         22,
@@ -470,7 +465,6 @@ public class RichEditorLayoutStyle {
      *
      * @params { ?Length } margin - outer margin.
      * @params { ?Length } borderRadius - border radius.
-     * @returns { RichEditorLayoutStyle }
      */
     @!APILevel[
         22,
@@ -541,7 +535,6 @@ public class RichEditorImageSpanStyle {
      * @params { Option<(Length, Length)> } size - image size.
      * @params { ?ImageSpanAlignment } verticalAlign - image vertical align.
      * @params { ?ImageFit } objectFit - image fit.
-     * @returns { RichEditorImageSpanStyle } RichEditorImageSpanStyle.
      */
     @!APILevel[
         22,
@@ -590,7 +583,6 @@ public class RichEditorImageSpanOptions {
      *
      * @params { ?Int32 } offset - the offset that add image span at.
      * @params { ?RichEditorImageSpanStyle } imageStyle - image style.
-     * @returns { RichEditorImageSpanOptions }
      */
     @!APILevel[
         22,
@@ -719,7 +711,6 @@ public class LeadingMarginPlaceholder {
      *
      * @params { PixelMap } pixelMap - Placeholder pixelMap.
      * @params { ?(Length, Length) } size - Placeholder size.
-     * @return { LeadingMarginPlaceholder } LeadingMarginPlaceholder.
      */
     @!APILevel[
         22,
@@ -793,7 +784,6 @@ public class RichEditorParagraphStyle {
      * RichEditorParagraphStyle constructor
      *
      * @params { ?TextAlign } textAlign - Text alignment.
-     * @return { RichEditorParagraphStyle } RichEditorParagraphStyle.
      */
     @!APILevel[
         22,
@@ -809,7 +799,6 @@ public class RichEditorParagraphStyle {
      *
      * @params { ?TextAlign } textAlign - Text alignment.
      * @params { ?Length } leadingMargin - Leading margin.
-     * @return { RichEditorParagraphStyle } RichEditorParagraphStyle.
      */
     @!APILevel[
         22,
@@ -825,7 +814,6 @@ public class RichEditorParagraphStyle {
      *
      * @params { ?TextAlign } textAlign - Text alignment.
      * @params { ?LeadingMarginPlaceholder } leadingMargin - Leading margin.
-     * @return { RichEditorParagraphStyle } RichEditorParagraphStyle.
      */
     @!APILevel[
         22,
@@ -945,7 +933,6 @@ public open class RichEditorBaseController <: RemoteDataLite {
      * Set caret offset.
      *
      * @params { ?Int32 } offset
-     * @returns { Bool }
      */
     @!APILevel[
         22,
@@ -969,8 +956,6 @@ public open class RichEditorBaseController <: RemoteDataLite {
 public class RichEditorController <: RichEditorBaseController {
     /**
     * RichEditorController constructor.
-    *
-    * @return { RichEditorController }.
     */
     @!APILevel[
         22,

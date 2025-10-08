@@ -41,7 +41,6 @@ public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
      *
      * @params { ?Length } windth - Width of the rectangle where the line resides.
      * @params { ?Length } height - Height of the rectangle where the line resides.
-     * @returns { This }
      */
     @!APILevel[
         22,

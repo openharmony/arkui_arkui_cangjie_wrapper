@@ -251,7 +251,7 @@ public open class AlertDialogButtonBaseOptions {
     ]
     public var action: ?VoidCallback
     /**
-     * Constructor of AlertDialogButtonBaseOptions
+     * Constructor of AlertDialogButtonBaseOptions.
      *
      * @params { Bool } enabled
      * @params { Bool } defaultFocus
@@ -303,7 +303,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
     public var primary: ?Bool
 
     /**
-     * Constructor of AlertDialogButtonOptions
+     * Constructor of AlertDialogButtonOptions.
      *
      * @params { Bool } enabled
      * @params { Bool } defaultFocus
@@ -404,7 +404,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
 ]
 public open class AlertDialogParam {
     /**
-     * Title Properties
+     * Title Properties.
      */
     @!APILevel[
         22,
@@ -412,7 +412,7 @@ public open class AlertDialogParam {
     ]
     public var title: ?ResourceStr
     /**
-     * Subtitle Properties
+     * Subtitle Properties.
      */
     @!APILevel[
         22,
@@ -420,7 +420,7 @@ public open class AlertDialogParam {
     ]
     public var subtitle: ?ResourceStr
     /**
-     * message Properties
+     * message Properties.
      */
     @!APILevel[
         22,
@@ -484,7 +484,7 @@ public open class AlertDialogParam {
     ]
     public var showInSubWindow: ?Bool
     /**
-     * Whether it is a modal dialog
+     * Whether it is a modal dialog.
      */
     @!APILevel[
         22,
@@ -492,7 +492,7 @@ public open class AlertDialogParam {
     ]
     public var isModal: ?Bool
     /**
-     * Defines the alertDialog's background color
+     * Defines the alertDialog's background color.
      */
     @!APILevel[
         22,
@@ -500,7 +500,7 @@ public open class AlertDialogParam {
     ]
     public var backgroundColor: ?ResourceColor
     /**
-     * Defines the alertDialog's background blur Style
+     * Defines the alertDialog's background blur Style.
      */
     @!APILevel[
         22,
@@ -508,7 +508,7 @@ public open class AlertDialogParam {
     ]
     public var backgroundBlurStyle: ?BlurStyle
     /**
-     * Callback function when the dialog interactive dismiss
+     * Callback function when the dialog interactive dismiss.
      */
     @!APILevel[
         22,
@@ -533,7 +533,6 @@ public open class AlertDialogParam {
     public var transition: ?TransitionEffect
     /**
      * Defines the alertDialog's width.
-     *
      */
     @!APILevel[
         22,
@@ -542,7 +541,6 @@ public open class AlertDialogParam {
     public var width: ?Length
     /**
      * Defines the alertDialog's height.
-     *
      */
     @!APILevel[
         22,
@@ -573,7 +571,6 @@ public open class AlertDialogParam {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderStyle: ?EdgeStyles
-
     /**
      * Defines the alertDialog's shadow.
      */
@@ -904,7 +901,6 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
      * @params { WordBreak } textStyle
      * @params { AlertDialogButtonBaseOptions } primaryButton
      * @params { AlertDialogButtonBaseOptions } secondaryButton
-     * @returns { AlertDialogParamWithButtons }
      */
     @!APILevel[
         22,
@@ -983,7 +979,6 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var buttons: ?Array<AlertDialogButtonOptions>
-
     /**
      * The arrangement of buttons.
      */
@@ -1019,7 +1014,6 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
      * @params { WordBreak } textStyle
      * @params { Array<AlertDialogButtonOptions> } buttons
      * @params { DialogButtonDirection } buttonDirection
-     * @returns { AlertDialogParamWithOptions }
      */
     @!APILevel[
         22,

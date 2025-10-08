@@ -85,14 +85,14 @@ foreign {
 /**
  * Defines an AlphabetIndexer callback when onSelect.
  *
- * @params { Int64 } index - selected index
+ * @params { Int64 } index - selected index.
  */
 public type OnAlphabetIndexerSelectCallback = (Int64) -> Unit
 
 /**
  * Defines an AlphabetIndexer callback when onRequestPopupData.
  *
- * @params { Int64 } index - selected index
+ * @params { Int64 } index - selected index.
  * @returns { Array<String> } string array corresponding to the index
  */
 public type OnAlphabetIndexerRequestPopupDataCallback = (Int64) -> Array<String>
@@ -100,7 +100,7 @@ public type OnAlphabetIndexerRequestPopupDataCallback = (Int64) -> Array<String>
 /**
  * Defines an AlphabetIndexer callback when onPopupSelect.
  *
- * @params { Int64 } index - selected index
+ * @params { Int64 } index - selected index.
  */
 public type OnAlphabetIndexerPopupSelectCallback = (Int64) -> Unit
 
@@ -118,7 +118,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
      *
      * @params { Array<String> } arrayValue - Alphabetical index string array.
      * @params { ?UInt32 } selected - ID of the selected item.
-     * @returns { AlphabetIndexer }
      */
     @!APILevel[
         22,
@@ -247,7 +246,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     }
 
     /**
-     * Select the text text style,
+     * Select the text text style.
      *
      * @params { ?Length } size
      * @params { ?FontWeight } weight

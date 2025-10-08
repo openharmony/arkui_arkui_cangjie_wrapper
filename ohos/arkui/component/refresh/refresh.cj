@@ -68,7 +68,6 @@ public class RefreshOptions {
      * Defines the options of refresh component.
      *
      * @params { ?Bool } refreshing
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -82,7 +81,6 @@ public class RefreshOptions {
      * Defines the options of refresh component.
      *
      * @params { ?(Bool, (Bool) -> Unit) } refreshing
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -107,7 +105,6 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
      *
      * @params { ?RefreshOptions } value
      * @params { () -> Unit } content
-     * @returns { This }
      */
     @!APILevel[
         22,

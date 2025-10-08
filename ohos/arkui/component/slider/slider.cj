@@ -97,7 +97,6 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     * @params { ?SliderStyle } style
     * @params { ?Axis } direction
     * @params { ?Bool } reverse
-    * @returns { This }
     */
     @!APILevel[
         22,

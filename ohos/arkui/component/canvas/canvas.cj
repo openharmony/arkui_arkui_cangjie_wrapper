@@ -91,7 +91,7 @@ enum CanvasImageType {
     }
 }
 /**
- * This object allows you to set properties when creating a rendering context
+ * This object allows you to set properties when creating a rendering context.
  */
 @!APILevel[
     22,
@@ -109,6 +109,8 @@ public class RenderingContextSettings {
 
     /**
      * Create an RenderingContextSettings object based on the antialias and alpha.
+     *
+     * @params { ?Bool } antialias
      */
     @!APILevel[
         22,
@@ -162,7 +164,6 @@ public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
      * Construct a canvas component.
      *
      * @params { ?CanvasRenderingContext2D } context - Canvas context object.
-     * @returns { Canvas }
      */
     @!APILevel[
         22,
@@ -196,8 +197,7 @@ public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
 }
 
 /**
- * Opaque objects that describe gradients, created by createLinearGradient() or createRadialGradient()
- *
+ * Opaque objects that describe gradients, created by createLinearGradient() or createRadialGradient().
  */
 @!APILevel[
     22,
@@ -225,9 +225,9 @@ public class CanvasGradient <: RemoteDataLite {
     }
 
     /**
-     * Add a breakpoint defined by offset and color to the gradient
+     * Add a breakpoint defined by offset and color to the gradient.
      *
-     * @params { Float64 } offset - Value between 0 and 1, out of range throws INDEX_SIZE_ERR error
+     * @params { Float64 } offset - Value between 0 and 1, out of range throws INDEX_SIZE_ERR error.
      * @params { ?ResourceColor } color - Set the gradient color.
      */
     @!APILevel[

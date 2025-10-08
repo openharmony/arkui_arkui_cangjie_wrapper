@@ -62,7 +62,6 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * Creates the MenuItem component.
      *
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -82,7 +81,6 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @params { ?ResourceStr } endIcon
      * @params { ?ResourceStr } labelInfo
      * @params { Option<() -> Unit> } builder
-     * @returns { This }
      */
     @!APILevel[
         22,

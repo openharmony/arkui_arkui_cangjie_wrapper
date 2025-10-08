@@ -38,7 +38,6 @@ foreign func FfiOHOSAceFrameworkProcessViewId(view: Int64): ExternalString
  * load native view of custom component.
  *
  * @params { CustomView } view
- * @returns { Bool }
  */
 @!APILevel[
     22,
@@ -103,7 +102,6 @@ public abstract class CustomView <: RemoteView & Observer {
      *
      * @params { Option<CustomView> } parent
      * @params { Option<LocalStorage> } localStorage
-     * @returns { This }
      */
     @!APILevel[
         22,

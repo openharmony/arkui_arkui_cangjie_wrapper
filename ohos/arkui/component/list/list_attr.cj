@@ -21,78 +21,158 @@ import ohos.arkui.component.list_item_group.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines List Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
 
+    /**
+     * Sets the direction in which the list items are arranged.
+     *
+     * @params { ?Axis } value
+     * @returns { ListAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func listDirection(value: ?Axis): ListAttribute
 
+    /**
+     * Sets the style of the divider for the list items. By default, there is no divider.
+     *
+     * @params { Option<ListDividerOptions> } value
+     * @returns { ListAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func divider(value: Option<ListDividerOptions>): ListAttribute
 
+    /**
+     * Sets the effect used when the scroll boundary is reached.
+     *
+     * @params { ?EdgeEffect } value
+     * @returns { ListAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func edgeEffect(value: ?EdgeEffect): ListAttribute
 
+    /**
+     * Sets whether to enable chained animations, which provide a visually connected,
+     * or "chained," effect when the list is scrolled or its top or bottom edge is dragged.
+     *
+     * @params { ?Bool } value
+     * @returns { ListAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func chainAnimation(value: ?Bool): ListAttribute
 
+    /**
+     * Called when the minimum number of list item caches is set for long list deferred loading.
+     *
+     * @params { ?Int32 } value
+     * @returns { ListAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func cachedCount(value: ?Int32): ListAttribute
 
+    /**
+     * Sets whether to enable multiselect.
+     *
+     * @params { ?Bool } value
+     * @returns { ListAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func multiSelectable(value: ?Bool): ListAttribute
 
+    /**
+     * Sets the number of columns or rows in the list. If the value is set to the gutter type, it indicates the gap between columns.
+     * It takes effect when the number of columns is greater than 1.
+     *
+     * @params { ?Int32 } value
+     * @returns { ListAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func lanes(value: ?Int32): ListAttribute
 
+    /**
+     * Sets the number of columns or rows in the list. If the value is set to the gutter type, it indicates the gap between columns.
+     * It takes effect when the number of columns is greater than 1.
+     *
+     * @params { ?Length } minLength
+     * @params { ?Length } maxLength
+     * @returns { ListAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func lanes(minLength!: ?Length, maxLength!: ?Length): ListAttribute
 
+    /**
+     * Alignment mode of list items along the cross axis when the cross-axis width of the list is greater
+     * than the cross-axis width of list items multiplied by the value of lanes.
+     *
+     * @params { ?ListItemAlign } value
+     * @returns { ListAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignListItem(value: ?ListItemAlign): ListAttribute
 
+    /**
+     * Sets whether to pin the header to the top or the footer to the bottom in the list item group.
+     *
+     * @params { ?StickyStyle } value
+     * @returns { ListAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sticky(value: ?StickyStyle): ListAttribute
 
+    /**
+     * Triggered when a child component enters or leaves the list display area.
+     *
+     * @params { ?(Int32, Int32, Int32) -> Unit } event
+     * @returns { ListAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onScrollIndex(event: ?(Int32, Int32, Int32) -> Unit): ListAttribute
 
+    /**
+     * Called when scrolling begin each frame.
+     *
+     * @params { ?(Float64, ScrollState) -> OnScrollFrameBeginHandlerResult } event
+     * @returns { ListAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

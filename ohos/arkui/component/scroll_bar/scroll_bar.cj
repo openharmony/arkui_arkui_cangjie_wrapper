@@ -40,7 +40,6 @@ public class ScrollBar <: CommonMethodComponent<ScrollBar> & ScrollBarAttribute 
     * @params { ?ScrollBarDirection } direction
     * @params { ?BarState } state
     * @params { () -> Unit } child
-    * @returns { This }
     */
     @!APILevel[
         22,

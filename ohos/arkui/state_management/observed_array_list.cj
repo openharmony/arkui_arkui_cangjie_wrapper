@@ -34,7 +34,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * ObservedArrayList constructor.
      *
      * @params { ArrayList<T> } initValue
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -48,7 +47,6 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * ObservedArrayList constructor.
      *
      * @params { Array<T> } initValue
-     * @returns { This }
      */
     @!APILevel[
         22,

@@ -29,6 +29,7 @@ import ohos.labels.APILevel
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CJPageEntry {
+    init() {}
     private static let instance_ = CJPageEntry()
     /**
      * Get CJPageEntry instance.
@@ -39,11 +40,6 @@ public class CJPageEntry {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-
-    /**
-     *
-     * @returns { CJPageEntry }
-     */
     public static func getInstance(): CJPageEntry {
         return instance_
     }

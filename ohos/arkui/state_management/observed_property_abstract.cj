@@ -33,7 +33,6 @@ public abstract class ObservedPropertyAbstract <: Observable {
      * ObservedPropertyAbstract constructor.
      *
      * @params { String } info
-     * @returns { This }
      */
     @!APILevel[
         22,

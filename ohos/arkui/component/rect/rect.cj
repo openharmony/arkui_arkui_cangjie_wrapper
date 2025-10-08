@@ -53,7 +53,6 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
      *
      * @params { ?Length } width 
      * @params { ?Length } height
-     * @returns { This }
      */
     @!APILevel[
         22,

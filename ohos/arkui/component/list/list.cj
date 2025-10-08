@@ -209,7 +209,6 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
      * @params { ?Int32 } initialIndex
      * @params { ?Scroller } scroller
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,
