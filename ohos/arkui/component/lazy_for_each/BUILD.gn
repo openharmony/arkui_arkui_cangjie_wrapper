@@ -20,7 +20,6 @@ ohos_cangjie_shared_library("ohos.arkui.component.lazy_for_each") {
     "../../../base:ohos.base",
     "../common:ohos.arkui.component.common",
     "../native_struct:ohos.arkui.component.native_struct",
-    "../custom_component:ohos.arkui.component.custom_component",
   ]
 
   cj_external_deps = [
