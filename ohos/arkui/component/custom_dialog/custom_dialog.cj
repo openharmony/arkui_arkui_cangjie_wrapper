@@ -73,228 +73,206 @@ struct NativeCustomDialogControllerOptions {
 ]
 public class CustomDialogControllerOptions {
     /**
-    * Defines the cancel function.
-    *
-    */
+     * Defines the cancel function.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cancel: ?VoidCallback
     /**
-    * Defines if use auto cancel when click on the outside of the dialog.
-    *
-    */
+     * Defines if use auto cancel when click on the outside of the dialog.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: ?Bool
     /**
-    * Defines the dialog alignment of the screen.
-    *
-    */
+     * Defines the dialog alignment of the screen.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var alignment: ?DialogAlignment
     /**
-    * Defines the dialog offset.
-    *
-    */
+     * Defines the dialog offset.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Offset
     /**
-    * Defines if use custom style.
-    *
-    */
+     * Defines if use custom style.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var customStyle: ?Bool
     /**
-    * Grid count of dialog.
-    *
-    */
+     * Grid count of dialog.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var gridCount: ?UInt32
     /**
-    * Mask color of dialog.
-    *
-    */
+     * Mask color of dialog.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskColor: ?ResourceColor
     /**
-    * Mask Region of dialog. The size cannot exceed the main window.
-    *
-    */
+     * Mask Region of dialog. The size cannot exceed the main window.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskRect: ?Rectangle
     /**
-    * Animation parameters of dialog opening.
-    *
-    */
+     * Animation parameters of dialog opening.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var openAnimation: ?AnimateParam
     /**
-    * Animation parameters of dialog closing.
-    *
-    */
+     * Animation parameters of dialog closing.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var closeAnimation: ?AnimateParam
     /**
-    * Whether to display in the sub window.
-    *
-    */
+     * Whether to display in the sub window.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: ?Bool
     /**
-    * Background color of dialog.
-    *
-    */
+     * Background color of dialog.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
     /**
-    * Corner radius of dialog.
-    *
-    */
+     * Corner radius of dialog.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cornerRadius: ?Length
     /**
-    * Whether it is a modal dialog
-    *
-    */
+     * Whether it is a modal dialog
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isModal: ?Bool
     /**
-    * Callback function when the CustomDialog interactive dismiss.
-    *
-    */
+     * Callback function when the CustomDialog interactive dismiss.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
     /**
-    * Defines the custom dialog's border width.
-    *
-    */
+     * Defines the custom dialog's border width.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: ?Length
     /**
-    * Defines the custom dialog's border color.
-    *
-    */
+     * Defines the custom dialog's border color.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: ?ResourceColor
     /**
-    * Defines the custom dialog's border style.
-    *
-    */
+     * Defines the custom dialog's border style.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderStyle: ?EdgeStyles
     /**
-    * Defines the custom dialog's width.
-    *
-    */
+     * Defines the custom dialog's width.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
     /**
-    * Defines the custom dialog's height.
-    *
-    */
+     * Defines the custom dialog's height.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Length
     /**
-    * Defines the custom dialog's shadow.
-    *
-    */
+     * Defines the custom dialog's shadow.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowOptions
     /**
-    * Defines the customDialog's background blur Style
-    *
-    */
+     * Defines the customDialog's background blur Style
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
     /**
-    * Defines the options of CustomDialogController.
-    *
-    * @params { ?VoidCallback } cancel
-    * @params { ?Bool } autoCancel
-    * @params { ?Offset } offset
-    * @params { ?Bool } customStyle
-    * @params { ?UInt32 } gridCount
-    * @params { ?ResourceColor } maskColor
-    * @params { ?Rectangle } maskRect
-    * @params { ?AnimateParam } openAnimation
-    * @params { ?AnimateParam } closeAnimation
-    * @params { ?Bool } showInSubWindow
-    * @params { ?ResourceColor } backgroundColor
-    * @params { ?Length } cornerRadius
-    * @params { ?Bool } isModal
-    * @params { ?Callback<DismissDialogAction, Unit> } onWillDismiss
-    * @params { ?Length } borderWidth
-    * @params { ?ResourceColor } borderColor
-    * @params { ?EdgeStyles } borderStyle
-    * @params { ?Length } width
-    * @params { ?Length } height
-    * @params { ?ShadowOptions } shadow
-    * @params { ?BlurStyle } backgroundBlurStyle
-    */
+     * Defines the options of CustomDialogController.
+     *
+     * @params { ?VoidCallback } cancel - Defines the cancel function.
+     * @params { ?Bool } autoCancel - Defines if use auto cancel when click on the outside of the dialog.
+     * @params { ?Offset } offset - Defines the dialog offset.
+     * @params { ?Bool } customStyle - Defines if use custom style.
+     * @params { ?UInt32 } gridCount - Grid count of dialog.
+     * @params { ?ResourceColor } maskColor - Mask color of dialog.
+     * @params { ?Rectangle } maskRect - Mask Region of dialog. The size cannot exceed the main window.
+     * @params { ?AnimateParam } openAnimation - Animation parameters of dialog opening.
+     * @params { ?AnimateParam } closeAnimation - Animation parameters of dialog closing.
+     * @params { ?Bool } showInSubWindow - Whether to display in the sub window.
+     * @params { ?ResourceColor } backgroundColor - Background color of dialog.
+     * @params { ?Length } cornerRadius- Corner radius of dialog.
+     * @params { ?Bool } isModal - Whether it is a modal dialog.
+     * @params { ?Callback<DismissDialogAction, Unit> } onWillDismiss - Callback function when the CustomDialog interactive dismiss.
+     * @params { ?Length } borderWidth - Defines the custom dialog's border width.
+     * @params { ?ResourceColor } borderColor - Defines the custom dialog's border color.
+     * @params { ?EdgeStyles } borderStyle - Defines the custom dialog's border style.
+     * @params { ?Length } width - Defines the custom dialog's width.
+     * @params { ?Length } height - Defines the custom dialog's height.
+     * @params { ?ShadowOptions } shadow - Defines the custom dialog's shadow.
+     * @params { ?BlurStyle } backgroundBlurStyle - Defines the customDialog's background blur Style.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
