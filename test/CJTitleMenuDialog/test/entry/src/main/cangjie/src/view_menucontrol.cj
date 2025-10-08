@@ -21,11 +21,11 @@ import std.collection.{ArrayList, HashMap}
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.convert.*
-import ohos.base.{LengthProp, Length, Color, LengthType}
+import ohos.base.{LengthProp, Length, Color, LengthUnit}
 
 @Entry
 @Component
-class View_Menucontrol {
+class ViewMenucontrol {
     @State
     var text: String = ""
     @State

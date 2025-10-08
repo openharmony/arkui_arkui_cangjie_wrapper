@@ -15,16 +15,17 @@
 
 package ohos_app_cangjie_entry
 
+
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.resource_manager.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_RichText {
+class ViewRichText {
     @State
     var data: String = """
         <h1 style="text-align: center;">h1标题</h1>
@@ -41,26 +42,16 @@ class View_RichText {
 
     func build() {
         Column(space: 30) {
-            RichText(data)
-                .onStart({=> Hilog.info(1, "1", "Cangjie-Test", "RichText onStart")})
-                .onComplete({=> Hilog.info(1, "1", "Cangjie-Test", "RichText onComplete")})
-                .width(500)
-                .height(400)
-                .backgroundColor(0XBDDB69)
-                .id("component_1")
+            RichText(data).onStart({=> Hilog.info(1, "Cangjie-Test", "RichText onStart")}).onComplete(
+                {=> Hilog.info(1, "Cangjie-Test", "RichText onComplete")}).width(500).height(400).backgroundColor(0XBDDB69).id("component_1")
 
-            RichText("layoutWeight(1)")
-                .onStart({=> Hilog.info(1, "1", "Cangjie-Test", "RichText onStart")})
-                .onComplete({=> Hilog.info(1, "1", "Cangjie-Test", "RichText onComplete")})
-                .backgroundColor(0X92D6CC)
-                .layoutWeight(1)
-                .id("component_2")
+            RichText("layoutWeight(1)").onStart({=> Hilog.info(1, "Cangjie-Test", "RichText onStart")}).onComplete(
+                {=> Hilog.info(1, "Cangjie-Test", "RichText onComplete")}).backgroundColor(0X92D6CC).layoutWeight(1).id("component_2")
 
-            RichText("layoutWeight(2)")
-                .onStart({=> Hilog.info(1, "1", "Cangjie-Test", "RichText onStart")})
-                .onComplete({=> Hilog.info(1, "1", "Cangjie-Test", "RichText onComplete")})
-                .backgroundColor(0X92C48D)
-                .layoutWeight(2)
+            RichText("layoutWeight(2)").onStart({=> Hilog.info(1, "Cangjie-Test", "RichText onStart")}).onComplete(
+                {=> Hilog.info(1, "Cangjie-Test", "RichText onComplete")}).backgroundColor(0X92C48D).layoutWeight(2)
+
+            RichText(@r(app.string.len_px))
         }
     }
 }

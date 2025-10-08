@@ -13,25 +13,29 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/17
+ */
+
 package ohos_app_cangjie_entry
 
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Overlay {
+class ViewOverlay {
     func build() {
-        Column(space: 10) {
+       Column(space: 10) {
             Column() {
-                Text("floating layer").fontSize(12).fontColor(0xCCCCCC).maxLines(1)
+                Text("floating layer")
+                    .fontSize(12).fontColor(0xCCCCCC).maxLines(1)
                 Column() {
                     Image(@r(app.media.startIcon))
-                        .width(240)
-                        .height(240)
+                        .width(240).height(240)
                         .overlay(
                             value: "Winter is a beautiful season, especially when it snows.",
                             align: Alignment.Bottom,
@@ -40,6 +44,6 @@ class View_Overlay {
                         .id("image")
                 }.border(color: Color.Black, width: 2.px)
             }.width(100.percent)
-        }
+       }
     }
 }

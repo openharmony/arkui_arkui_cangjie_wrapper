@@ -19,19 +19,18 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.prompt_action.*
+import ohos.arkui.ui_context.*
 
 var customdialogId: Int32 = 0
 
 @Entry
 @Component
-class View_Prompt {
+class ViewPrompt {
     @State
     var index0: Int32 = -1
     @State
     var index1: Int32 = -1
 
-    var promptAction: PromptAction = PromptAction()
     var edgeStyles: EdgeStyles = EdgeStyles()
     var edgeColor: EdgeColors = EdgeColors()
 
@@ -40,13 +39,17 @@ class View_Prompt {
     var actionMenuOptions: ActionMenuOptions = ActionMenuOptions(
         buttons: [ButtonInfo(text: "text1", color: 0xFF7F50), ButtonInfo(text: "text2", color: Color.Red)])
     var showToastOptions: ShowToastOptions = ShowToastOptions(message: "ShowToastOptions")
+    var mButtons: Array<ButtonInfo> = [ButtonInfo(text: "yes", color: Color.Black),
+        ButtonInfo(text: "no", color: Color.Black)]
 
+    var baseDialogOptions: BaseDialogOptions = BaseDialogOptions()
+    var customDialogOptions2: CustomDialogOptions = CustomDialogOptions(builder: {=>})
     @Builder
-    func CustomDialog() {
+    func customDialog() {
         Column() {
             Text("Hello").height(50.vp)
             Button("CloseDialog").onClick({
-                evt => PromptAction.closeCustomDialog(customdialogId)
+                evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
             })
         }.margin(10.vp)
     }
@@ -56,7 +59,7 @@ class View_Prompt {
                 .fontSize(50.px)
                 .margin(10.px)
                 .onClick({
-                    evt => PromptAction.showToast(message: "hello world", duration: 1500)
+                    evt => getUIContext().getPromptAction().showToast(ShowToastOptions(message: "hello world", duration: 1500))
                 })
                 .id("showToast")
             Text("Show dialog! index: " + index0.toString())
@@ -68,12 +71,12 @@ class View_Prompt {
                         let buttons: Array<ButtonInfo> = [ButtonInfo(text: "yes", color: Color.Black),
                             ButtonInfo(text: "no", color: Color.Black)]
                         try {
-                            PromptAction.showDialog(title: "select", message: "yes or no", buttons: [],
+                            getUIContext().getPromptAction().showDialog(ShowDialogOptions(title: "select", message: "yes or no", buttons: []),
                                 callback: {e, i =>})
                         } catch (e: Exception) {
                             logger("PromptAction: Show dialog error: ${e.message}")
                         }
-                        PromptAction.showDialog(title: "select", message: "yes or no", buttons: buttons,
+                        getUIContext().getPromptAction().showDialog(ShowDialogOptions(title: "select", message: "yes or no", buttons: buttons),
                             callback: {
                                 err: Option<BusinessException>, i: Option<Int32> => try {
                                     match (err) {
@@ -94,8 +97,8 @@ class View_Prompt {
                 .margin(10.px)
                 .onClick(
                     {
-                        evt => PromptAction.showToast(message: "hello world", duration: 1500,
-                            showMode: ToastShowMode.TopMost)
+                        evt => getUIContext().getPromptAction().showToast(ShowToastOptions(message: "hello world", duration: 1500,
+                            showMode: ToastShowMode.TopMost))
                     })
                 .id("showToast_2")
 
@@ -108,7 +111,7 @@ class View_Prompt {
                         evt =>
                         let buttons: Array<ButtonInfo> = [ButtonInfo(text: "yes", color: 0xFF4ECF73),
                             ButtonInfo(text: "no", color: 0xFF4ECF73)]
-                        PromptAction.showDialog(title: "select", message: "yes or no", buttons: buttons,
+                        getUIContext().getPromptAction().showDialog(ShowDialogOptions(title: "select", message: "yes or no", buttons: buttons),
                             callback: {
                                 err: Option<BusinessException>, i: Option<Int32> => try {
                                     match (err) {
@@ -132,11 +135,11 @@ class View_Prompt {
                         let buttons: Array<ButtonInfo> = [ButtonInfo(text: "showActionMenu_a", color: Color.Black),
                             ButtonInfo(text: "showActionMenu_b", color: Color.Black)]
                         try {
-                            PromptAction.showActionMenu(title: "menu", buttons: [], callback: {e, i =>})
+                            getUIContext().getPromptAction().showActionMenu(ActionMenuOptions(title: "menu", buttons: []), callback: {e, i =>})
                         } catch (e: Exception) {
                             logger("PromptAction: Show action menu error: ${e.message}")
                         }
-                        PromptAction.showActionMenu(title: "menu", buttons: buttons,
+                        getUIContext().getPromptAction().showActionMenu(ActionMenuOptions(title: "menu", buttons: buttons),
                             callback: {
                                 err: Option<BusinessException>, i: Option<Int32> => try {
                                     match (err) {
@@ -154,8 +157,8 @@ class View_Prompt {
             Text("openDialog")
                 .onClick(
                     {
-                        evt => PromptAction.openCustomDialog(
-                            CustomDialogOptions(builder: bind(this.CustomDialog, this)),
+                        evt => getUIContext().getPromptAction().openCustomDialog(
+                            CustomDialogOptions(builder: bind(this.customDialog, this)),
                             {
                                 id => customdialogId = id
                             }
@@ -166,9 +169,14 @@ class View_Prompt {
             Text("openCustomDialogWithOption")
                 .fontSize(50.px)
                 .margin(10.px)
-                .onClick({
-                    evt => PromptAction.openCustomDialogWithOption(customDialogOptions, {a =>})
-                })
+                .onClick(
+                    {
+                        evt =>
+                        Hilog.info(1, "1", "1", "PromptAction: default_openCustomDialogOption onClick")
+                        var customDialogOptions: CustomDialogOptions = CustomDialogOptions(builder: {=>})
+                        getUIContext().getPromptAction().openCustomDialog(customDialogOptions, {a =>})
+                    }
+                )
                 .id("openCustomDialogWithOption")
 
             Text("openCustomDialogWithOption1")
@@ -181,7 +189,7 @@ class View_Prompt {
                         var customDialogOptions: CustomDialogOptions = CustomDialogOptions(builder: {=>},
                             autoCancel: true, borderStyle: EdgeStyles(),
                             shadow: ShadowOptions(radius: 2.0, shadowType: ShadowType.Color))
-                        PromptAction.openCustomDialogWithOption(customDialogOptions, {a =>})
+                        getUIContext().getPromptAction().openCustomDialog(customDialogOptions, {a =>})
                     }
                 )
                 .id("openCustomDialogWithOption1")
@@ -195,7 +203,7 @@ class View_Prompt {
                         Hilog.info(1, "1", "1", "PromptAction: openCustomDialogWithOption2 onClick")
                         var customDialogOptions: CustomDialogOptions = CustomDialogOptions(builder: {=>},
                             autoCancel: true, borderStyle: EdgeStyles())
-                        PromptAction.openCustomDialogWithOption(customDialogOptions, {a =>})
+                        getUIContext().getPromptAction().openCustomDialog(customDialogOptions, {a =>})
                     }
                 )
                 .id("openCustomDialogWithOption2")
@@ -204,7 +212,12 @@ class View_Prompt {
                 .fontSize(50.px)
                 .margin(10.px)
                 .onClick({
-                    evt => PromptAction.showDialog(showDialogOptions)
+                    evt =>
+                        try {
+                            getUIContext().getPromptAction().showDialog(showDialogOptions)
+                        } catch (e: Exception) {
+                            logger("ViewPrompt: PromptAction.showDialog error: ${e.message}")
+                        }
                 })
                 .id("showDialog3")
 
@@ -217,13 +230,13 @@ class View_Prompt {
                         Hilog.info(1, "1", "1", "PromptAction: showDialog4 onClick")
                         var showDialogOptions2: ShowDialogOptions = ShowDialogOptions(buttons: [])
                         try {
-                            PromptAction.showDialog(showDialogOptions2)
+                            getUIContext().getPromptAction().showDialog(showDialogOptions2)
                         } catch (e: Exception) {
-                            logger("View_Prompt: PromptAction.showDialog error: ${e.message}")
+                            logger("ViewPrompt: PromptAction.showDialog error: ${e.message}")
                         }
                         var showDialogOptions3: ShowDialogOptions = ShowDialogOptions(
-                            shadow: ShadowOptions(radius: 0.0))
-                        PromptAction.showDialog(showDialogOptions3)
+                            shadow: ShadowOptions(radius: 0.0), buttons: mButtons)
+                        getUIContext().getPromptAction().showDialog(showDialogOptions3)
                     }
                 )
                 .id("showDialog4")
@@ -236,8 +249,8 @@ class View_Prompt {
                         evt =>
                         Hilog.info(1, "1", "1", "PromptAction: Show showDialog5 onClick")
                         var showDialogOptions4: ShowDialogOptions = ShowDialogOptions(
-                            shadow: ShadowOptions(radius: 2.0, shadowType: ShadowType.Color))
-                        PromptAction.showDialog(showDialogOptions4)
+                            shadow: ShadowOptions(radius: 2.0, shadowType: ShadowType.Color), buttons: mButtons)
+                        getUIContext().getPromptAction().showDialog(showDialogOptions4)
                     }
                 )
                 .id("showDialog5")
@@ -246,7 +259,7 @@ class View_Prompt {
                 .fontSize(50.px)
                 .margin(10.px)
                 .onClick({
-                    evt => PromptAction.showActionMenu(actionMenuOptions)
+                    evt => getUIContext().getPromptAction().showActionMenu(actionMenuOptions)
                 })
                 .id("showActionMenu2")
 
@@ -256,15 +269,15 @@ class View_Prompt {
                 .onClick(
                     {
                         evt =>
-                        PromptAction.showToast(showToastOptions)
+                        getUIContext().getPromptAction().showToast(showToastOptions)
                         var showToastOptions1: ShowToastOptions = ShowToastOptions(
                             message: "ShowToastOptions",
                             shadow: ShadowOptions(radius: 2.0, shadowType: ShadowType.Color)
                             /*,shadowStyle: ProShadowStyle.OuterDefaultXS*/ )
-                        PromptAction.showToast(showToastOptions1)
+                        getUIContext().getPromptAction().showToast(showToastOptions1)
                         var showToastOptions2: ShowToastOptions = ShowToastOptions(message: "ShowToastOptions"
                             /*shadowStyle: ProShadowStyle.OuterDefaultSM*/ )
-                        PromptAction.showToast(showToastOptions2)
+                        getUIContext().getPromptAction().showToast(showToastOptions2)
                     }
                 )
                 .id("showToast3")

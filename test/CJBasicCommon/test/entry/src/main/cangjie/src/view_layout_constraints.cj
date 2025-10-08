@@ -19,14 +19,19 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Layout_Constraints {
-    func build() {
-        Column() {
-            Row().backgroundColor(0xFFFFFF).aspectRatio(2.0).width(10).displayPriority(1).id("my_layout_constraints")
+class ViewLayoutConstraints{
+    func build(){
+        Column(){
+            Row()
+            .backgroundColor(0xFFFFFF)
+            .aspectRatio(2.0)
+            .width(10)
+            .displayPriority(1)
+            .id("my_layout_constraints")
         }
     }
 }

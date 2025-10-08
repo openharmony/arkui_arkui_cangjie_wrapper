@@ -27,13 +27,13 @@ import ohos.arkui.state_macro_manage.r
 
 @Entry
 @Component
-class View_Badge {
+class ViewBadge {
     @State
     var badge1Text: String = "numberBadge"
     func build() {
         Column() {
             Text(this.badge1Text).width(80.percent)
-            Row(space: 10) {
+            Row(space:10) {
                 Badge(
                     count: 1,
                     style: BadgeStyle(color: Color(0x00FFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
@@ -46,7 +46,7 @@ class View_Badge {
             }.margin(10)
 
             Text("stringBadge")
-            Row(space: 30) {
+            Row(space:30) {
                 Badge(
                     value: "new",
                     style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 9, badgeSize: 20, badgeColor: Color.Blue,
@@ -62,7 +62,7 @@ class View_Badge {
                         .backgroundColor(0xF3F4ED)
                 }.id("my_badge2").width(80).height(50)
             }
-            Row(space: 30) {
+            Row(space:30) {
                 Badge(
                     count: 32,
                     style: BadgeStyle(color: @r(app.color.start_window_background), fontSize: 10, badgeSize: 11,
@@ -75,7 +75,7 @@ class View_Badge {
                 }.id("my_badge3").width(80).height(50)
             }
 
-            Row(space: 30) {
+            Row(space:30) {
                 Badge(
                     count: 42,
                     style: BadgeStyle(color: @r(app.color.start_window_background), fontSize: 12, badgeSize: 13,
@@ -88,7 +88,7 @@ class View_Badge {
                 }.id("my_badge4").width(80).height(50)
             }
 
-            Row(space: 30) {
+            Row(space:30) {
                 Badge(
                     count: 52,
                     style: BadgeStyle(color: Color.Red, fontSize: 14, badgeSize: 15,

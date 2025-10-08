@@ -19,29 +19,26 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Foreach {
+class ViewForeach {
     let simpleList: Array<String> = ["one", "two", "three"]
     let colorList: Array<Color> = [Color.Red, Color.Blue, Color.Green]
 
-    func build(): Unit {
-        Row() {
-            Column() {
-                ForEach(this.simpleList,
-                    itemGeneratorFunc: {
-                        item: String, _: Int64 => Text(item).fontSize(50).id("my_text_${item}")
-                    })
-                ForEach(this.colorList,
-                    itemGeneratorFunc: {
-                        colorItem: Color, idx: Int64 => Text("color")
-                            .fontSize(50)
-                            .id("my_text_color_${idx}")
-                            .backgroundColor(colorItem)
-                    })
-            }.width(100.percent)
-        }.backgroundColor(0xF1F3F5)
+  func build(): Unit {
+    Row() {
+      Column() {
+        ForEach(this.simpleList, itemGeneratorFunc: {item: String, _: Int64 =>
+            Text(item).fontSize(50).id("my_text_${item}")
+        })
+        ForEach(this.colorList, itemGeneratorFunc: {colorItem: Color, idx: Int64 =>
+            Text("color").fontSize(50).id("my_text_color_${idx}").backgroundColor(colorItem)
+        })
+      }
+      .width(100.percent)
     }
+    .backgroundColor(0xF1F3F5)
+  }
 }

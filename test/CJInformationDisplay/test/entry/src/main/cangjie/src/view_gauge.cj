@@ -13,6 +13,10 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/28
+ */
+
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -22,7 +26,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Gauge {
+class ViewGauge {
 
     // Array<(AppResource, Float32)>
     var colorArray_3: Array<(ResourceColor, Float32)> = [(@r(app.color.colorArrayCJResource), 1.0),
@@ -57,7 +61,8 @@ class View_Gauge {
                 .description(this.TextBuilder)
                 .id("my_gauge")
 
-            Gauge(value: 20.0).colors(this.colorArray_l).id("my_gauge_1")
+            Gauge(value: 20.0)
+                .colors(this.colorArray_l).id("my_gauge_1")
 
             // 覆盖率 colors
             Gauge(value: 50.0, min: 0.0, max: 100.0) {
@@ -66,13 +71,14 @@ class View_Gauge {
                 .startAngle(220.0)
                 .endAngle(135.0)
                 .value(30.0)
-                .colors(this.colorArray_3)
+                .colors(this.color3_l)
                 .width(80.percent)
                 .strokeWidth(Float64(28.0))
                 .trackShadow(radius: 7.0, offsetX: 7.0, offsetY: 7.0)
                 .indicator(icon: "default")
                 .description(this.TextBuilder)
                 .id("my_gauge5")
+
 
             // 覆盖率 colors maxSize > 9 + curColorStops[j].offset.value < 0.0 + (gradientColorStops[i][1] < 0.0
             Gauge(value: 50.0, min: 0.0, max: 100.0) {
@@ -98,7 +104,6 @@ class View_Gauge {
                 .endAngle(135.0)
                 .value(30.0)
                 .colors([(Color.Red, 2.0)])
-                .colors([(@r(app.color.colorArrayCJResource), 2.0)])
                 .indicator(space: 2)
         }.width(100.percent)
     }

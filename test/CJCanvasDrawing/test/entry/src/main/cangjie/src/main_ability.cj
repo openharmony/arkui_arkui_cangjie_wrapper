@@ -24,9 +24,6 @@ internal import ohos.resource_manager.AppResource
 import std.sync.*
 import ohos.window.WindowStage
 import ohos.window.Window
-import ohos.ability_access_ctrl.AbilityAccessCtrl
-import ohos.ability_access_ctrl.Permissions
-//import ohos.ability.*
 import ohos.resource_manager.*
 import kit.TestKit.*
 import ohos.app.ability.want.*
@@ -41,23 +38,22 @@ class MainAbility <: UIAbility {
     }
 
     public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-        Hilog.info(1, "1", "1", "MainAbility OnCreated.${want.abilityName}")
+        Hilog.info(1,"1","1","MainAbility OnCreated.${want.abilityName}")
         globalAbilityContext = Option<UIAbilityContext>.Some(this.context)
         match (launchParam.launchReason) {
-            case LaunchReason.StartAbility => Hilog.info(1, "1", "1", "StartAbility")
+            case LaunchReason.StartAbility => Hilog.info(1,"1","1","StartAbility")
             case _ => ()
         }
     }
 
     public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-        Hilog.info(1, "1", "1", "MainAbility onWindowStageCreate.")
+        Hilog.info(1,"1","1","MainAbility onWindowStageCreate.")
         Global.windowStage = windowStage
         windowStage.loadContent("MyView")
-        //        windowStage.loadContentByName("MyView")
+//        windowStage.loadContentByName("MyView")
         let promise = windowStage.getSubWindow()
     }
 }
-
 public class Global {
     public static let initialized = Monitor()
     public static var abilityContext: Option<UIAbilityContext> = None

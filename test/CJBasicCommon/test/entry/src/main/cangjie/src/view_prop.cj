@@ -13,8 +13,10 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2025/3/20
+ */
 package ohos_app_cangjie_entry
-
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
@@ -22,51 +24,54 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Prop {
-    @State
-    var count: Int64 = 0
-    @State
-    var msg: String = "hello"
-    @State
-    var dataSource: ObservedArrayList<String> = ObservedArrayList<String>()
+class ViewProp {
+    @State var count: Int64 = 0
+    @State var msg: String = "hello"
+    @State var dataSource: ObservedArrayList<String> = ObservedArrayList<String>()
     func build() {
         Column {
             Button("This is a case of @Prop ${count} _____ ParentComponent")
-                .id("ParentComponent")
-                .onClick({
-                    evt => count = count + 1
-                })
+            .id("ParentComponent")
+            .onClick({evt =>
+                count = count + 1
+            })
             SubComponent(count: count)
-            Button("clear").id("clear").onClick {
-                e => dataSource.clear()
+                        Button("clear")
+                .id("clear")
+                .onClick {e =>
+                dataSource.clear()
             }
-            Button("update").id("update").onClick {
-                e => for (i in 0..20) {
+            Button("update")
+                .id("update")
+                .onClick { e =>
+                for (i in 0..20) {
                     dataSource.append("${i}")
                 }
+
             }
             List() {
-                ForEach(dataSource, itemGeneratorFunc: {
-                    item: String, i: Int64 => ListItem() {
+                ForEach(dataSource, itemGeneratorFunc: {item: String, i: Int64 =>
+                    ListItem() {
                         Text(msg)
                     }
                 })
-            }
+        }
         }
     }
 }
 
 @Component
 class SubComponent {
-    @Prop
-    var count: Int64
+    @Prop var count: Int64
     func build() {
         Column {
             Button("This is a case of @Prop ${count} _____ SubComponent")
-                .id("SubComponent")
-                .onClick({
-                    evt => count = count + 1
-                })
+            .id("SubComponent")
+            .onClick({evt =>
+                count = count + 1
+            })
         }
     }
 }
+
+

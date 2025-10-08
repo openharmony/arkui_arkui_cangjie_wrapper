@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/19
+ */
 package ohos_app_cangjie_entry
+
 
 import ohos.base.*
 import ohos.arkui.component.*
@@ -22,7 +26,8 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_AlphabetIndexer {
+
+class ViewAlphabetIndexer {
     @State
     var arrayA: ObservedArrayList<String> = ObservedArrayList<String>(["An", "Ai"])
     @State
@@ -80,7 +85,7 @@ class View_AlphabetIndexer {
                     .alignStyle(IndexerAlign.Right)
                     .alignStyle(IndexerAlign.Left)
                     .onSelect({
-                        idx: Int64 => Hilog.info(1, "1", "${idx} selected")
+                        idx: Int64 => Hilog.info(1,"1","${idx} selected")
                     })
                     .onRequestPopupData(
                         {
@@ -108,7 +113,7 @@ class View_AlphabetIndexer {
                         }
                     )
                     .onPopupSelect({
-                        idx: Int64 => Hilog.info(1, "1", "onPopupSelect ${idx}")
+                        idx: Int64 => Hilog.info(1,"1","onPopupSelect ${idx}")
                     })
 
                 AlphabetIndexer(arrayValue: value.get().toArray(), selected: 5)
@@ -126,7 +131,7 @@ class View_AlphabetIndexer {
                     .alignStyle(IndexerAlign.Right)
                     .alignStyle(IndexerAlign.Left)
                     .onSelect({
-                        idx: Int64 => Hilog.info(1, "1", "${idx} selected")
+                        idx: Int64 => Hilog.info(1,"1","${idx} selected")
                     })
                     .onRequestPopupData(
                         {
@@ -154,8 +159,9 @@ class View_AlphabetIndexer {
                         }
                     )
                     .onPopupSelect({
-                        idx: Int64 => Hilog.info(1, "1", "${idx} selected")
+                        idx: Int64 => Hilog.info(1,"1","${idx} selected")
                     })
+
             }
 
             Row() {

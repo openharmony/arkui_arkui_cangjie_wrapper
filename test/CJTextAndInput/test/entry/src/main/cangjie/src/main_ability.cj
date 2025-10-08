@@ -26,7 +26,9 @@ import std.sync.*
 import ohos.window.WindowStage
 import ohos.window.Window
 import ohos.resource_manager.*
-import kit.TestKit.*
+import ohos.app.ability.ability_delegator_registry.*
+import ohos.application.test_runner.*
+import ohos.ui_test.*
 
 class MainAbility <: UIAbility {
     public init() {
@@ -35,24 +37,23 @@ class MainAbility <: UIAbility {
     }
 
     public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-        Hilog.info(1, "1", "Cangjie-App", "MainAbility OnCreated.${want.abilityName}")
+        Hilog.info(1, "Cangjie-App", "MainAbility OnCreated.${want.abilityName}")
         match (launchParam.launchReason) {
-            case LaunchReason.StartAbility => Hilog.info(1, "1", "Cangjie-App", "START_ABILITY")
+            case LaunchReason.StartAbility => Hilog.info(1, "Cangjie-App", "START_ABILITY")
             case _ => ()
         }
     }
 
     public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-        Hilog.info(1, "1", "Cangjie-App", "MainAbility onWindowStageCreate.")
+        Hilog.info(1, "Cangjie-App", "MainAbility onWindowStageCreate.")
         Global.windowStage = windowStage
         windowStage.loadContent("MyView")
         AppStorage.setOrCreate<UIAbilityContext>("abilityContext", this.context) //适配新getContextStage, AbilityContext存在AppStorage
         AppStorage.setOrCreate<WindowStage>("windowStage", windowStage)
-        //        windowStage.loadContentByName("MyView")
+//        windowStage.loadContentByName("MyView")
         let promise = windowStage.getSubWindow()
     }
 }
-
 public class Global {
     public static let initialized = Monitor()
     public static var abilityContext: Option<UIAbilityContext> = None

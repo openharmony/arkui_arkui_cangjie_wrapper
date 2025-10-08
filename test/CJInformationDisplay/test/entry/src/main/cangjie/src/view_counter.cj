@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/11/26
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -20,7 +23,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Counter {
+class ViewCounter {
     @State
     var value1: Int64 = 0
     @State
@@ -31,55 +34,29 @@ class View_Counter {
     var value4: Int64 = 0
     func build() {
         Column {
-            Counter() {Text(this.value1.toString()).id("text1")}
-                .margin(30.0)
-                .height(10.percent)
-                .onInc {
-                    this.value1++
-                }
-                .onDec {
-                    this.value1--
-                }
-                .id("counter1")
+            Counter() {Text(this.value1.toString()).id("text1")}.margin(30.0).height(10.percent).onInc {
+                this.value1++
+            }.onDec {
+                this.value1--
+            }.id("counter1")
 
-            Counter() {Text(this.value2.toString()).id("text2")}
-                .margin(30.0)
-                .height(10.percent)
-                .onInc {
-                    this.value2++
-                }
-                .onDec {
-                    this.value2--
-                }
-                .enableDec(false)
-                .enableInc(false)
-                .id("counter2")
+            Counter() {Text(this.value2.toString()).id("text2")}.margin(30.0).height(10.percent).onInc {
+                this.value2++
+            }.onDec {
+                this.value2--
+            }.enableDec(false).enableInc(false).id("counter2")
 
-            Counter() {Text(this.value3.toString()).id("text3")}
-                .margin(30.0)
-                .height(10.percent)
-                .onInc {
-                    this.value3++
-                }
-                .onDec {
-                    this.value3--
-                }
-                .enableDec(true)
-                .enableInc(true)
-                .id("counter3")
+            Counter() {Text(this.value3.toString()).id("text3")}.margin(30.0).height(10.percent).onInc {
+                this.value3++
+            }.onDec {
+                this.value3--
+            }.enableDec(true).enableInc(true).id("counter3")
 
-            Counter() {Text(this.value4.toString()).id("text4")}
-                .margin(30.0)
-                .height(10.percent)
-                .onInc {
-                    this.value4++
-                }
-                .onDec {
-                    this.value4--
-                }
-                .enableDec(false)
-                .enableInc(true)
-                .id("counter4")
+            Counter() {Text(this.value4.toString()).id("text4")}.margin(30.0).height(10.percent).onInc {
+                this.value4++
+            }.onDec {
+                this.value4--
+            }.enableDec(false).enableInc(true).id("counter4")
         }
     }
 }

@@ -16,7 +16,7 @@
 package ohos_app_cangjie_entry
 
 //import std.unittest.testmacro.*
-//import ohos.base.{LengthProp, Length, AppLog, Color, nativeLog, BaseLog, LengthType}
+//import ohos.base.{LengthProp, Length, AppLog, Color, nativeLog, BaseLog, LengthUnit}
 //import ohos.arkui.component.*
 //import ohos.arkui.state_management.*
 //import ohos.arkui.state_macro_manage.*
@@ -31,7 +31,7 @@ package ohos_app_cangjie_entry
 //
 //@Entry
 //@Component
-//class View_Screenshot {
+//class ViewScreenshot {
 //    @State
 //    var message: String = "Hello World"
 //    var rect: screenshot.Rect = screenshot.Rect(1, 1, 1, 1)
@@ -48,7 +48,7 @@ package ohos_app_cangjie_entry
 //                    {
 //                        =>
 //                        this.capture()
-//                        Hilog.info(1,"1","Cangjie-App", "click capture")
+//                        Hilog.info(1, "Cangjie-App", "click capture")
 //                    }
 //                )
 //                .id("capture")
@@ -57,7 +57,7 @@ package ohos_app_cangjie_entry
 //                    {
 //                        =>
 //                        this.pickExample()
-//                        Hilog.info(1,"1","Cangjie-App", "click pick")
+//                        Hilog.info(1, "Cangjie-App", "click pick")
 //                    }
 //                )
 //                .id("pick")
@@ -68,23 +68,23 @@ package ohos_app_cangjie_entry
 //        let captureOption: screenshot.CaptureOption = screenshot.CaptureOption(displayId: 0)
 //        try {
 //            let pixelMap: PixelMap = screenshot.capture(options: captureOption)
-//            Hilog.info(1,"1","Cangjie-App", "Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}")
+//            Hilog.info(1, "Cangjie-App", "Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}")
 //            pixelMap.Release() // PixelMap使用完后及时释放内存
 //        } catch (exception: Exception) {
-//            Hilog.info(1,"1","Cangjie-App", "exception Failed to save screenshot. Code: ${exception.toString()}")
+//            Hilog.info(1, "Cangjie-App", "exception Failed to save screenshot. Code: ${exception.toString()}")
 //        }
 //    }
 //
 //    func pickExample() {
 //        try {
 //            let pickInfo: screenshot.PickInfo = screenshot.pick()
-//            Hilog.info(1,"1","Cangjie-App",
+//            Hilog.info(1, "Cangjie-App",
 //                "Succeeded in saving screenshot. Pixel bytes number: ${pickInfo.pixelMap.getPixelBytesNumber()}")
 //            pickInfo
 //                .pixelMap
 //                .Release() // PixelMap使用完后及时释放内存
 //        } catch (exception: Exception) {
-//            Hilog.info(1,"1","Cangjie-App", "exception Failed to save screenshot. Code: ${exception.toString()}")
+//            Hilog.info(1, "Cangjie-App", "exception Failed to save screenshot. Code: ${exception.toString()}")
 //        }
 //    }
 //}

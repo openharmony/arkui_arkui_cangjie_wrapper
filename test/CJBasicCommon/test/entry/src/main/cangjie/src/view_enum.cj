@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2025/7/22
+ */
 package ohos_app_cangjie_entry
 
 import std.unittest.testmacro.*
@@ -21,13 +24,19 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.router.*
 import ohos.ui_test.*
 import std.collection.*
 
+enum SpanType {
+    TEXT
+    |
+    IMAGE
+    | ...
+}
+
 @Entry
 @Component
-class View_Enum {
+class ViewEnum {
     func build() {
         Column(space: 10) {
             Row(space: 5) {
@@ -50,9 +59,9 @@ class EnumTypes {
     var navigationType3: NavigationType = NavigationType.Back
 
     // KeyType
-    @State
+    @State 
     var keyType1: String = ""
-    @State
+    @State 
     var keyType2: String = ""
 
     // RefreshStatus
@@ -60,90 +69,73 @@ class EnumTypes {
     var refreshStatus2: RefreshStatus = RefreshStatus.Done
 
     // RichEditorDeleteDirection
-    var richEditorDeleteDirection1: RichEditorDeleteDirection = RichEditorDeleteDirection.FORWARD
+    var richEditorDeleteDirection1: RichEditorDeleteDirection = RichEditorDeleteDirection.Forward
 
     // SpanType
-    var spanType1: SpanType = SpanType.TEXT
-    var spanType2: SpanType = SpanType.IMAGE
+    var spanType1: RichEditorSpanType = RichEditorSpanType.Text
+    var spanType2: RichEditorSpanType = RichEditorSpanType.Image
 
     func build() {
-        Column {
+        Column{
             Text("APILevel17 Enum Types")
 
-            Button("KeyTypeDown").onClick {
-                e => keyType1 = KeyType.Down.toString()
+            Button("KeyTypeDown").onClick{ e =>
+                keyType1 = "Down"
             }.id("keyTypeBtn1")
-            Button("KeyTypeUp").onClick {
-                e => keyType2 = KeyType.Up.toString()
+            Button("KeyTypeUp").onClick{ e =>
+                keyType2 = "Up"
             }.id("keyTypeBtn2")
             Text(keyType1).id("keyType1")
             Text(keyType2).id("keyType2")
 
-            Button("RichEditor1")
-                .onClick {
-                    e => var temp1 = RichEditorDeleteValue(1, richEditorDeleteDirection1, 1,
-                        ArrayList<RichEditorSpanResult>())
-                }
-                .id("richEditor1")
+            Button("RichEditor1").onClick{ e =>
+                var temp1 = RichEditorDeleteValue(1, richEditorDeleteDirection1, 1, ArrayList<RichEditorSpanResult>())
+            }.id("richEditor1")
         }
+
     }
 }
 
 @Component
-class EnumSon {
+class EnumSon{
     @State
     var clickCount: Int32 = 0
 
     func build() {
-        Column {
+        Column{
             Text("${clickCount}").id("enumClickCount")
-            Button("resourceType").onClick {
-                e => clickCount++
+            Button("resourceType").onClick{ e =>
+                clickCount++
             }.id("resourceType")
 
-            Button("sliderChangeMode")
-                .onClick {
-                    e =>
-                    var t: SliderChangeMode = SliderChangeMode.Click
-                    clickCount++
-                }
-                .id("sliderChangeMode")
+            Button("sliderChangeMode").onClick{ e =>
+                var t: SliderChangeMode = SliderChangeMode.Click
+                clickCount++
+            }.id("sliderChangeMode")
 
-            Button("navigationType")
-                .onClick {
-                    e =>
-                    var t: NavigationType = NavigationType.Push
-                    t = NavigationType.Replace
-                    t = NavigationType.Back
-                    clickCount++
-                }
-                .id("navigationType")
+            Button("navigationType").onClick{ e =>
+                var t: NavigationType = NavigationType.Push
+                t = NavigationType.Replace
+                t = NavigationType.Back
+                clickCount++
+            }.id("navigationType")
 
-            Button("refreshStatus")
-                .onClick {
-                    e =>
-                    var t: RefreshStatus = RefreshStatus.Inactive
-                    t = RefreshStatus.Done
-                    clickCount++
-                }
-                .id("refreshStatus")
+            Button("refreshStatus").onClick{ e =>
+                var t: RefreshStatus = RefreshStatus.Inactive
+                t = RefreshStatus.Done
+                clickCount++
+            }.id("refreshStatus")
 
-            Button("richEditorDeleteDirection")
-                .onClick {
-                    e =>
-                    var t: RichEditorDeleteDirection = RichEditorDeleteDirection.FORWARD
-                    clickCount++
-                }
-                .id("richEditorDeleteDirection")
+            Button("richEditorDeleteDirection").onClick{ e =>
+                var t: RichEditorDeleteDirection = RichEditorDeleteDirection.Forward
+                clickCount++
+            }.id("richEditorDeleteDirection")
 
-            Button("spanType")
-                .onClick {
-                    e =>
-                    var t: SpanType = SpanType.TEXT
-                    t = SpanType.IMAGE
-                    clickCount++
-                }
-                .id("spanType")
+            Button("spanType").onClick{ e =>
+                var t: RichEditorSpanType = RichEditorSpanType.Text
+                t = RichEditorSpanType.Image
+                clickCount++
+            }.id("spanType")
         }
     }
 }

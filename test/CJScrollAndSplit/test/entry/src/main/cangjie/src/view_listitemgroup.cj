@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/7/4
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -22,13 +25,14 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_ListItemGroup {
+class ViewListItemGroup {
     @Builder
     func HeaderBuilder() {
         Row {
             Text("Header").fontSize(20.vp)
         }.width(100.percent).justifyContent(FlexAlign.Center).margin(top: 10.vp)
     }
+
 
     @Builder
     func HeaderBuilder2(text: String, size: Length, align: FlexAlign) {
@@ -57,20 +61,17 @@ class View_ListItemGroup {
                         ListItem() {
                             Text("item 1-3")
                         }.width(90.percent).margin(5.percent)
-                    }
-                        .id("list_item_group")
-                        .borderRadius(10.vp)
-                        .backgroundColor(Color.White)
-                        .divider(
-                            ListDividerOptions(strokeWidth: 2.vp, color: Color(0X808080), startMargin: 10.vp,
-                                endMargin: 10.vp))
+                    }.id("list_item_group").borderRadius(10.vp).backgroundColor(Color.White).divider(ListDividerOptions(strokeWidth: 2.vp,
+                        color: Color(0X808080), startMargin: 10.vp, endMargin: 10.vp))
                 }
             }.height(25.percent)
 
             Column() {
                 List(space: 20) {
-                    ListItemGroup(header: {=> bind(this.HeaderBuilder2, this)("Header", 20.vp, FlexAlign.Center)},
-                        footer: {=> Text("Footer 2")}, space: 10) {
+                    ListItemGroup(
+                        header: {=> bind(this.HeaderBuilder2, this)("Header", 20.vp, FlexAlign.Center)},
+                        footer: {=> Text("Footer 2")},
+                        space: 10) {
                         ListItem() {
                             Text("item 2-1")
                         }.width(90.percent).margin(5.percent)
@@ -82,19 +83,16 @@ class View_ListItemGroup {
                         ListItem() {
                             Text("item 2-3")
                         }.width(90.percent).margin(5.percent)
-                    }
-                        .id("list_item_group2")
-                        .borderRadius(10.vp)
-                        .backgroundColor(Color.White)
-                        .divider(
-                            ListDividerOptions(strokeWidth: 2.vp, color: @r(app.color.blue_23C452), startMargin: 10.vp,
-                                endMargin: 10.vp))
+                    }.id("list_item_group2").borderRadius(10.vp).backgroundColor(Color.White).divider(ListDividerOptions(strokeWidth: 2.vp,
+                        color: @r(app.color.blue_23C452)))
                 }
             }.height(25.percent)
 
             Column() {
                 List(space: 20) {
-                    ListItemGroup(header: bind(this.HeaderBuilder, this), footer: {=> Text("Footer 3")}, space: 8.5) {
+                    ListItemGroup(
+                        header: bind(this.HeaderBuilder, this), footer: {=> Text("Footer 3")},
+                        space: 8.5) {
                         ListItem() {
                             Text("item 3-1")
                         }.width(90.percent).margin(5.percent)
@@ -106,19 +104,16 @@ class View_ListItemGroup {
                         ListItem() {
                             Text("item 3-3")
                         }.width(90.percent).margin(5.percent)
-                    }
-                        .id("list_item_group3")
-                        .borderRadius(10.vp)
-                        .backgroundColor(Color.White)
-                        .divider(
-                            ListDividerOptions(strokeWidth: @r(app.string.control_Width), color: Color.Blue,
-                                startMargin: @r(app.string.control_Width), endMargin: @r(app.string.control_Width)))
+                    }.id("list_item_group3").borderRadius(10.vp).backgroundColor(Color.White).divider(
+                        ListDividerOptions(strokeWidth: @r(app.string.control_Width), color: Color.Blue,
+                        startMargin: @r(app.string.control_Width), endMargin: @r(app.string.control_Width)))
                 }
             }.height(25.percent)
 
             Column() {
                 List(space: 20) {
-                    ListItemGroup(space: 10.vp) {
+                    ListItemGroup(
+                        space: 10.vp) {
                         ListItem() {
                             Text("item 4-1")
                         }.width(90.percent).margin(5.percent)
@@ -130,14 +125,9 @@ class View_ListItemGroup {
                         ListItem() {
                             Text("item 4-3")
                         }.width(90.percent).margin(5.percent).swipeAction()
-                    }
-                        .id("list_item_group4")
-                        .borderRadius(10.vp)
-                        .backgroundColor(Color.White)
-                        .divider(
-                            ListDividerOptions(strokeWidth: @r(app.string.control_Width),
-                                color: @r(app.color.blue_23C452), startMargin: @r(app.string.control_Width),
-                                endMargin: @r(app.string.control_Width)))
+                    }.id("list_item_group4").borderRadius(10.vp).backgroundColor(Color.White).divider(
+                        ListDividerOptions(strokeWidth: @r(app.string.control_Width), color: @r(app.color.blue_23C452),
+                        startMargin: @r(app.string.control_Width), endMargin: @r(app.string.control_Width)))
                 }
             }.height(25.percent)
 

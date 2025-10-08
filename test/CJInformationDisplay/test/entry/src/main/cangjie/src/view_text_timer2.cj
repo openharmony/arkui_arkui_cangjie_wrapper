@@ -19,14 +19,12 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.prompt_action.*
 
 @Entry
 @Component
-class View_TextTimer2 {
+class ViewTextTimer2 {
     var textTimerController: TextTimerController = TextTimerController()
-    var shadowoption_arr: Array<ShadowOptions> = [ShadowOptions(radius: 10.0, offsetX: 10.0, offsetY: 0.0,
-        color: Color.Red)]
+    var shadowoption_arr: Array<ShadowOptions> = [ShadowOptions(radius: 10.0, offsetX: 10.0, offsetY: 0.0, color: Color.Red)]
 
     @State
     var format: String = "mm:ss.SS"
@@ -52,9 +50,7 @@ class View_TextTimer2 {
                 .fontStyle(FontStyle.Italic)
                 .fontWeight(FontWeight.Bold)
                 .fontFamily("HarmonyOS Sans")
-                .textShadow(
-                    ShadowOptions(radius: 10.0, offsetX: 10.0, offsetY: 0.0,
-                        color: @r(app.color.start_window_background)))
+                .textShadow(ShadowOptions(radius: 10.0, offsetX: 10.0, offsetY: 0.0, color: @r(app.color.start_window_background)))
                 .onTimer({
                     utc, elapsedTime => onTimerText = "Time Change"
                 })
@@ -64,7 +60,9 @@ class View_TextTimer2 {
                 .textShadow(ShadowOptions(radius: 10.0, offsetX: 10.0, offsetY: 0.0, color: Color.Red))
                 .id("TextTimer_2")
 
-            TextTimer().textShadow(shadowoption_arr).id("TextTimer_3")
+            TextTimer()
+                .textShadow(shadowoption_arr)
+                .id("TextTimer_3")
 
             TextTimer()
                 .textShadow(ShadowOptions(radius: 10.0, offsetX: 10.0, offsetY: 0.0, color: 0xa52a2a))
@@ -72,13 +70,19 @@ class View_TextTimer2 {
 
             Row() {
                 Button("start").onClick({
-                    evt => this.textTimerController.start()
+                    evt => this
+                        .textTimerController
+                        .start()
                 }).id("start")
                 Button("pause").onClick({
-                    evt => this.textTimerController.pause()
+                    evt => this
+                        .textTimerController
+                        .pause()
                 })
                 Button("reset").onClick({
-                    evt => this.textTimerController.reset()
+                    evt => this
+                        .textTimerController
+                        .reset()
                 })
             }
         }

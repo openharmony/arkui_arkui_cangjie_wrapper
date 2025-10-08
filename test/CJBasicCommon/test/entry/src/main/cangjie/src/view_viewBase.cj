@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/27
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
-import ohos.font.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
@@ -24,19 +26,19 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_ViewBase {
+class ViewViewBase {
     @State
     var message: String = "Hello Cangjie"
 
-    protected override func updateWithJson(json: String): Unit {}
+    protected override func updateWithJson(json: String): Unit {
+        Hilog.error(1,"Cangjie-Test","updateWithJson ${json}")
+    }
 
     func build() {
         Row {
             Column {
                 Text("width_resource")
-                    .bindPopup(true,
-                        CustomPopupOptions(showInSubWindow: false, builder: {=>}, onStateChange: {event =>},
-                            onWillDismiss: {action =>}))
+                        .bindPopup(true, CustomPopupOptions(showInSubWindow: false, builder: { => }, onStateChange: {event => }, onWillDismiss: {action => }))
                     .id("width_resource")
 
                 Text(this.message)
@@ -48,17 +50,16 @@ class View_ViewBase {
                     .borderRadius(topLeft: 1.vp)
 
                 Button("button4")
-                    .keyboardShortcut("keyboardShortcut", [ModifierKey.ALT])
+                    .keyboardShortcut("keyboardShortcut", [ModifierKey.Alt])
                     .borderWidth(EdgeWidths())
                     .backgroundImagePosition(Alignment.TopEnd)
                     .backgroundImagePosition(Alignment.Start)
                     .backgroundImagePosition(Alignment.Center)
-                    .onClick({e => LegalCallCheck.check(this)})
-                    .id("button4")
+                    .onClick({ e => LegalCallCheck.check(this)}).id("button4")
 
                 __Recycle__()
 
-                __Recycle__() {}
+                __Recycle__(){}
             }.width(100.percent)
         }.height(100.percent)
     }

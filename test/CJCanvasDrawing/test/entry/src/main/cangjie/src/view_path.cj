@@ -19,11 +19,10 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.prompt_action.*
 
 @Entry
 @Component
-class View_Path {
+class ViewPath {
     @State
     var commands: String = ""
 

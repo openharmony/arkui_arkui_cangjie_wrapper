@@ -24,12 +24,12 @@ import ohos.hilog.Hilog
 
 @Entry
 @Component
-class View_DatePickerDialog {
+class ViewDatePickerDialog {
     //    let acceptButtonStyleCase1 = PickerDialogButtonStyle(
     //        `type`: ButtonType.Normal,
     //        style: ButtonStyleMode.NORMAL,
     //        role: ButtonRole.NORMAL,
-    //        fontColor: Color.RED,
+    //        fontColor: Color.Red,
     //        fontSize: 26.fp,
     //        fontWeight: FontWeight.Bolder,
     //        fontStyle: FontStyle.Normal,
@@ -43,7 +43,7 @@ class View_DatePickerDialog {
     //        `type`: ButtonType.Normal,
     //        style: ButtonStyleMode.NORMAL,
     //        role: ButtonRole.NORMAL,
-    //        fontColor: Color.BLUE,
+    //        fontColor: Color.Blue,
     //        fontSize: 16.fp,
     //        fontWeight: FontWeight.Normal,
     //        fontStyle: FontStyle.Italic,
@@ -59,7 +59,7 @@ class View_DatePickerDialog {
     //            lunarSwitch: true,
     //            showTime: true,
     //            useMilitaryTime: true,
-    //            disappearTextStyle: PickerTextStyle(Color.PINK, MyFont(size: 22.fp, weight: FontWeight.Bold)),
+    //            disappearTextStyle: PickerTextStyle(Color.Red, MyFont(size: 22.fp, weight: FontWeight.Bold)),
     //            textStyle: PickerTextStyle(0xff00ff00, MyFont(size: 18.fp, weight: FontWeight.Normal)),
     //            selectedTextStyle: PickerTextStyle(0xff182431, MyFont(size: 14.fp, weight: FontWeight.Regular)),
     //            acceptButtonStyle: acceptButtonStyleCase1,
@@ -75,22 +75,22 @@ class View_DatePickerDialog {
     //                value => Hilog.info(0, "test",
     //                    "DatePickerDialog:onDateChange(): ${value.year}-${value.monthValue}-${value.dayOfMonth}")
     //            },
-    //            backgroundColor: Color.GRAY,
+    //            backgroundColor: Color.Gray,
     //            backgroundBlurStyle: BlurStyle.Regular,
     //            onDidAppear: {=> Hilog.info(0, "test", "DatePickerDialog:onDidAppear()")},
     //            onDidDisappear: {=> Hilog.info(0, "test", "DatePickerDialog:onDidDisappear()")},
     //            onWillAppear: {=> Hilog.info(0, "test", "DatePickerDialog:onWillAppear()")},
     //            onWillDisappear: {=> Hilog.info(0, "test", "DatePickerDialog:onWillDisappear()")},
-    //            shadow: ShadowOptions(radius: 1.0, shadowType: ShadowType.COLOR),
+    //            shadow: ShadowOptions(radius: 1.0, shadowType: ShadowType.Color),
     //            dateTimeOptions: DateTimeOptions(hour: "2-digit", minute: "numeric")
     //        )
     //    //边界值弹窗背板
     //    var  dataPickerDialogOptionErrorCase1: DatePickerDialogOptions = DatePickerDialogOptions(
-    //        backgroundColor: Color.RED,
-    //        backgroundBlurStyle: BlurStyle.BACKGROUND_ULTRA_THICK
+    //        backgroundColor: Color.Red,
+    //        backgroundBlurStyle: BlurStyle.BackgroundUltraThick
     //    )
     //    var  dataPickerDialogOptionErrorCase2: DatePickerDialogOptions = DatePickerDialogOptions(
-    //        backgroundColor: Color.RED,
+    //        backgroundColor: Color.Red,
     //    )
     //    //边界值按钮显示样式
     //    var  dataPickerDialogOptionErrorCase3: DatePickerDialogOptions = DatePickerDialogOptions(
@@ -98,14 +98,14 @@ class View_DatePickerDialog {
     //        cancelButtonStyle: PickerDialogButtonStyle(primary: true)
     //    )
     //    var  dataPickerDialogOptionErrorCase4: DatePickerDialogOptions = DatePickerDialogOptions(
-    //        backgroundColor: Color.RED,
+    //        backgroundColor: Color.Red,
     //    )
     //    //组合值
     //    var  dataPickerDialogOptionWithCase1: DatePickerDialogOptions = DatePickerDialogOptions(
     //        lunarSwitch: true,
     //    )
     //    var  dataPickerDialogOptionWithCase2: DatePickerDialogOptions = DatePickerDialogOptions(
-    //        backgroundColor: Color.RED,
+    //        backgroundColor: Color.Red,
     //    )
     func build() {
         Column() {

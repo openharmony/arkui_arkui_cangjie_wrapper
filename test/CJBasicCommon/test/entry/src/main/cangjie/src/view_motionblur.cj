@@ -24,50 +24,39 @@ import kit.LocalizationKit.*
 
 @Entry
 @Component
-class View_MotionBlur {
-    @State
-    var widthSize: Int64 = 400
-    @State
-    var heightSize: Int64 = 320
-    @State
-    var flag: Bool = true
-    @State
-    var radius: Float64 = 0.0
-    @State
-    var x: Float64 = 0.0
-    @State
-    var y: Float64 = 0.0
+class ViewMotionBlur {
+    @State var widthSize: Int64 = 400
+    @State var heightSize: Int64 = 320
+    @State var flag: Bool = true
+    @State var radius: Float64 = 0.0
+    @State var x: Float64 = 0.0
+    @State var y: Float64 = 0.0
 
     func build() {
         Column() {
             Column() {
-                Image(@r(app.media.startIcon))
-                    .width(this.widthSize)
-                    .height(this.heightSize)
-                    .onClick(
-                        {
-                            event: ClickEvent =>
-                            this.radius = 5.0
-                            this.x = 0.5
-                            this.y = 0.5
-                            if (this.flag) {
-                                this.widthSize = 100
-                                this.heightSize = 80
-                            } else {
-                                this.widthSize = 400
-                                this.heightSize = 320
-                            }
-                            this.flag = !this.flag
-                        }
-                    )
-                    .animationStart(
-                        AnimateParam(
-                            duration: 2000,
-                            curve: Curve.Rhythm,
-                            onFinish: {=> this.radius = 0.0}
-                        )
-                    )
-                    .id("motionBlur")
+              Image(@r(app.media.startIcon))
+                .width(this.widthSize)
+                .height(this.heightSize)
+                .onClick({ event: ClickEvent =>
+                    this.radius = 5.0
+                    this.x = 0.5
+                    this.y = 0.5
+                    if (this.flag) {
+                      this.widthSize = 100
+                      this.heightSize = 80
+                    } else {
+                      this.widthSize = 400
+                      this.heightSize = 320
+                    }
+                    this.flag = !this.flag
+                })
+                .animationStart(AnimateParam(
+                    duration: 2000,
+                    curve: Curve.Rhythm,
+                    onFinish: { => this.radius = 0.0}
+                ))
+                .id("motionBlur")
             }
         }.width(100.percent).margin(top: 5)
     }

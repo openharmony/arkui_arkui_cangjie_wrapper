@@ -22,18 +22,27 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Divider {
+class ViewDivider {
     func build() {
         Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween) {
             Text("bravery")
-            Divider().vertical(false).strokeWidth(50).color(0x2788D9).lineCap(LineCapStyle.Round).id("my_divider")
+            Divider()
+            .vertical(false)
+            .strokeWidth(50)
+            .color(0x2788D9)
+            .lineCap(LineCapStyle.Round)
+            .id("my_divider")
             Text("effort")
 
+
             Divider()
-                .color(@r(app.color.start_window_background))
-                .strokeWidth(5.0)
-                .strokeWidth(@r(app.string.font_size))
-                .lineCap(LineCapStyle.Round)
-        }.width(100.percent).height(350).padding(left: 35, right: 35, top: 35)
+            .color(@r(app.color.start_window_background))
+            .strokeWidth(5.0)
+            .strokeWidth(@r(app.string.font_size))
+            .lineCap(LineCapStyle.Round)
+        }
+        .width(100.percent)
+        .height(350)
+        .padding(left: 35, right: 35, top: 35)
     }
 }

@@ -19,11 +19,11 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Size {
+class ViewSize {
     func build() {
         Column() {
             Row().width(40).height(60).padding(10).margin(2).backgroundColor(0xFFFFFF).id("testSize")

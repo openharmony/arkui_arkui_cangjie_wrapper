@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/7/17
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -23,9 +26,9 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_ContextMenu {
+class ViewContextMenu {
     @Builder
-    func MenuBuilder() {
+    func menuBuilder() {
         Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center) {
             Button("Test ContextMenu1")
             Divider().strokeWidth(2).margin(5).color(0x2788D9)
@@ -45,7 +48,7 @@ class View_ContextMenu {
                     .backgroundColor(0xAFEEEE)
                     .textAlign(TextAlign.Center)
             }
-                .bindContextMenu(builder: this.MenuBuilder, responseType: ResponseType.LongPress)
+                .bindContextMenu(builder: this.menuBuilder, responseType: ResponseType.LongPress)
                 .onDragStart({
                     evt =>
                 //                        ContextMenu.close()

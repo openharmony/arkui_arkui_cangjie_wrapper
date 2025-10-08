@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 package ohos_app_cangjie_entry
 
 internal import ohos.base.LengthProp
@@ -23,12 +24,13 @@ internal import ohos.arkui.component.Text
 internal import ohos.arkui.component.CustomView
 internal import ohos.arkui.component.CJEntry
 internal import ohos.arkui.component.loadNativeView
-internal import ohos.arkui.component.{DividerStyle, SideBarContainer, ButtonStyle, ButtonIconOptions, SideBarPosition, 
+internal import ohos.arkui.component.{DividerStyle, SideBarContainer, ButtonStyle, ButtonIconOptions, SideBarPosition,
     SideBarContainerType}
 internal import ohos.arkui.state_management.SubscriberManager
 internal import ohos.arkui.state_management.ObservedProperty
 internal import ohos.arkui.state_management.LocalStorage
-internal import kit.LocalizationKit.AppResource
+import ohos.i18n.*
+import ohos.resource_manager.*
 import ohos.arkui.state_macro_manage.Entry
 import ohos.arkui.state_macro_manage.Component
 import ohos.arkui.state_macro_manage.State
@@ -37,11 +39,10 @@ import ohos.base.*
 
 @Entry
 @Component
-class View_SideBar {
+class ViewSideBar {
     let dividerProp = DividerStyle(strokeWidth: 1.vp, color: Color.Blue, startMargin: 4.vp, endMargin: 4.vp)
     let ctrlButton: ButtonStyle = ButtonStyle(left: 17.0, top: 49.0, width: 33.0, height: 31.0,
-        icons: ButtonIconOptions(shown: @r(app.media.startIcon), hidden: @r(app.media.startIcon),
-            switching: @r(app.media.startIcon)))
+        icons: ButtonIconOptions(shown: @r(app.media.startIcon), hidden: @r(app.media.startIcon), switching: @r(app.media.startIcon)))
     @State
     var showSideBarTxt: String = "showSideBar:"
     func build() {
@@ -52,7 +53,9 @@ class View_SideBar {
             }
             Column() {
                 Text('SideBarContainer content text1').fontSize(25)
-                Text(showSideBarTxt).id("showSideBarTxt").fontSize(25)
+                Text(showSideBarTxt)
+                    .id("showSideBarTxt")
+                    .fontSize(25)
             }
         }
             .id("SideBar")
@@ -67,9 +70,9 @@ class View_SideBar {
             .sideBarPosition(SideBarPosition.End)
             .controlButton(ctrlButton)
             .showControlButton(false)
-            .onChange() {
+            .onChange({
                 value: Bool => showSideBarTxt += "${value};"
-            }
+            })
             .width(90.percent)
             .height(85.percent)
     }

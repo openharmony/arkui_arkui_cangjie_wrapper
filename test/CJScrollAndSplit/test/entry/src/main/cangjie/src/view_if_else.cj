@@ -22,15 +22,13 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Ifelse {
-    @State
-    var flag: Bool = true
-    @State
-    var status: Int64 = 0
+class ViewIfelse {
+    @State var flag: Bool = true
+    @State var status: Int64 = 0
     func build() {
         Column(space: 20) {
-            Button("change the flag").onClick({
-                evt => this.flag = !this.flag
+            Button("change the flag").onClick({evt =>
+                this.flag = !this.flag
             }).id("my_button1")
 
             if (this.flag) {
@@ -39,8 +37,8 @@ class View_Ifelse {
                 Text("the flag is false").fontSize(40.fp).id("my_text2")
             }
 
-            Button("change the status").onClick({
-                evt => this.status++
+            Button("change the status").onClick({evt =>
+                this.status ++
             }).id("my_button2")
 
             if (this.status == 0) {

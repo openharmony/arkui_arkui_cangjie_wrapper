@@ -21,7 +21,7 @@ import kit.LocalizationKit.*
 
 @Entry
 @Component
-class View_PatternLock {
+class ViewPatternLock {
     @State
     var passwords: Array<Int32> = []
     @State
@@ -32,9 +32,21 @@ class View_PatternLock {
 
     func build() {
         Column() {
-            Text(this.passwords.toString()).id("Text1").textAlign(TextAlign.Center).margin(20).fontSize(20)
+            Text(this
+                .passwords
+                .toString())
+                .id("Text1")
+                .textAlign(TextAlign.Center)
+                .margin(20)
+                .fontSize(20)
 
-            Text(this.selectIdx.toString()).id("Text2").textAlign(TextAlign.Center).margin(20).fontSize(20)
+            Text(this
+                .selectIdx
+                .toString())
+                .id("Text2")
+                .textAlign(TextAlign.Center)
+                .margin(20)
+                .fontSize(20)
 
             PatternLock(controller: this.patternLockController)
                 .id("PatternLock1")
@@ -55,11 +67,17 @@ class View_PatternLock {
                             return
                         }
                         // 判断密码长度是否大于0
-                        if (this.passwords.size > 0) {
+                        if (this
+                            .passwords
+                            .size > 0) {
                             // 判断两次输入的密码是否相同，相同则提示密码设置成功，否则提示重新输入
-                            if (this.passwords.toString() == input.toString()) {
+                            if (this
+                                .passwords
+                                .toString() == input.toString()) {
                                 this.passwords = input
-                                this.message = 'Set password successfully: ' + this.passwords.toString()
+                                this.message = 'Set password successfully: ' + this
+                                    .passwords
+                                    .toString()
                             } else {
                                 this.message = 'Inconsistent passwords, please enter again.'
                             }
@@ -71,7 +89,10 @@ class View_PatternLock {
                     }
                 )
 
-            PatternLock().id("PatternLock2").autoReset(false).regularColor(Color.Red)
+            PatternLock()
+                .id("PatternLock2")
+                .autoReset(false)
+                .regularColor(Color.Red)
 
             PatternLock()
 
@@ -80,12 +101,16 @@ class View_PatternLock {
                 .onClick(
                     {
                         evt =>
-                        this.patternLockController.reset()
+                        this
+                            .patternLockController
+                            .reset()
                         this.passwords = []
                         this.message = 'Please input password'
                     }
                 )
                 .id("reset")
-        }.width(100.percent).height(100.percent)
+        }
+            .width(100.percent)
+            .height(100.percent)
     }
 }

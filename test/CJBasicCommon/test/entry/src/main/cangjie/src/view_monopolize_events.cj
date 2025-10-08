@@ -18,53 +18,49 @@ package ohos_app_cangjie_entry
 import ohos.arkui.state_macro_manage.*
 import ohos.arkui.state_management.*
 import ohos.arkui.component.*
+
 import ohos.base.Color
 import ohos.base.LengthProp
 
 @Entry
 @Component
-class View_MonopolizeEvents {
-    @State
-    var message: String = 'set monopolizeEvents false'
-    @State
-    var messageOut: String = ' '
-    @State
-    var messageInner: String = ' '
-    @State
-    var monopolize: Bool = false
+class ViewMonopolizeEvents {
+    @State var message: String = 'set monopolizeEvents false'
+    @State var messageOut: String = ' '
+    @State var messageInner: String = ' '
+    @State var monopolize: Bool = false
 
     func build() {
         Column() {
             Text(this.message).id("monopolizeEvents-message")
             Text(this.messageOut).id("monopolizeEvents-messageOut")
             Text(this.messageInner).id("monopolizeEvents-messageInner")
-            Button('clean').onClick {
-                e =>
+            Button('clean')
+            .onClick { e =>
                 this.messageOut = ""
                 this.messageInner = ""
             }.id("monopolizeEvents-clean")
             Button('change monopolizeEvents')
-                // 通过button的点击事件来切换内层column的独占控制属性
-                .onClick {
-                    e =>
-                    this.monopolize = !this.monopolize
-                    if (!this.monopolize) {
-                        this.message = "set monopolizeEvents false"
-                    } else {
-                        this.message = "set monopolizeEvents true"
-                    }
+            // 通过button的点击事件来切换内层column的独占控制属性
+            .onClick { e =>
+                this.monopolize = !this.monopolize
+                if (!this.monopolize) {
+                    this.message = "set monopolizeEvents false"
+                } else {
+                    this.message = "set monopolizeEvents true"
                 }
-                .id("monopolizeEvents-change")
+            }.id("monopolizeEvents-change")
             Column {}
-                .width(100.percent)
-                .height(40.percent)
-                .backgroundColor(Color.Blue)
-                .onClick {
-                    _event => this.messageInner = "inner column touch down"
-                }
-                .id("monopolizeEvents-column")
-        }.onClick {
-            _event => this.messageOut = "inner column touch down"
+            .width(100.percent)
+            .height(40.percent)
+            .backgroundColor(Color.Blue)
+            .onClick { _event =>
+                this.messageInner = "inner column touch down"
+            }
+            .id("monopolizeEvents-column")
+        }
+        .onClick { _event =>
+            this.messageOut = "inner column touch down"
         }
     }
 }

@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Outline {
+class ViewOutline {
     public func build() {
         Column() {
             Row(space: 30) {
@@ -41,8 +41,10 @@ class View_Outline {
                     .height(120.vp)
                     .textAlign(TextAlign.Center)
                     .fontSize(16)
-                    .id("outline_test")
-            }.width(300.vp).height(150)
+                .id("outline_test")
+            }
+                .width(300.vp)
+                .height(150)
 
             Text('.outlineWidth/outlineColor/outlineRadius/outlineStyle')
                 .backgroundColor(Color.Red)
@@ -51,6 +53,9 @@ class View_Outline {
                 .height(300.vp)
                 .textAlign(TextAlign.Center)
                 .id("outline_properties_2")
-        }.height(700.vp).width(380.vp).borderWidth(1.vp)
+        }
+            .height(700.vp)
+            .width(380.vp)
+            .borderWidth(1.vp)
     }
 }

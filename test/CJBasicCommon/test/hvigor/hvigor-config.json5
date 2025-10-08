@@ -16,7 +16,7 @@
 {
   "modelVersion": "6.0.0",
   "dependencies": {
-    "@ohos/cangjie-build-support": "file:cangjie-build-support-6.0.999.tgz"
+    "@ohos/cangjie-build-support": "file:cangjie-build-support-6.0.820.tgz"
   },
   "execution": {
     // "analyze": "normal",                     /* Define the build analyze mode. Value: [ "normal" | "advanced" | "ultrafine" | false ]. Default: "normal" */

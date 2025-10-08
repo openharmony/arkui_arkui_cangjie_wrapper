@@ -19,11 +19,11 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_TextTimer {
+class ViewTextTimer {
     var textTimerController: TextTimerController = TextTimerController()
 
     @State
@@ -37,15 +37,10 @@ class View_TextTimer {
 
     func build() {
         Column {
-            TextTimer(isCountDown: true, count: 30000, controller: this.textTimerController)
-                .format(this.format)
-                .fontColor(Color.Black)
-                .fontSize(50)
-                .fontFamily("HarmonyOS Sans")
-                .onTimer({
-                    utc, elapsedTime => Hilog.info(1, "1", "time has been changed")
-                })
-                .id("textTimer")
+            TextTimer(isCountDown: true, count: 30000, controller: this.textTimerController).format(this.format).
+                fontColor(Color.Black).fontSize(50).fontFamily("HarmonyOS Sans").onTimer({
+                utc, elapsedTime => Hilog.info(1,"1","time has been changed")
+            }).id("textTimer")
 
             Row() {
                 Button("start").onClick({
@@ -59,35 +54,18 @@ class View_TextTimer {
                 }).id("reset")
             }
 
-            TextTimer(isCountDown: true, count: 20000, controller: this.textTimerController2)
-                .format(this.format)
-                .fontColor(@r(app.color.blue_23C452))
-                .fontSize(50.0)
-                .fontFamily(@r(app.string.DEFAULT_FONT))
-                .fontWeight(FontWeight.Normal)
-                .fontStyle(FontStyle.Normal)
-                .onTimer({
-                    utc, elapsedTime => Hilog.info(1, "1", "time has been changed")
-                })
+            TextTimer(isCountDown: true, count: 20000, controller: this.textTimerController2).format(this.format).
+                fontColor(@r(app.color.blue_23C452)).fontSize(50.0).fontFamily(@r(app.string.DEFAULT_FONT)).fontWeight(FontWeight.Normal).fontStyle(FontStyle.Normal).onTimer({
+                utc, elapsedTime => Hilog.info(1,"1","time has been changed")
+            })
 
-            TextTimer(isCountDown: true, count: 10000, controller: this.textTimerController3)
-                .format(this.format)
-                .fontColor(16777222)
-                .fontSize(16.vp)
-                .fontFamily(@r(app.string.DEFAULT_FONT))
-                .fontWeight(FontWeight.Normal)
-                .fontStyle(FontStyle.Normal)
-                .onTimer({
-                    utc, elapsedTime => Hilog.info(1, "1", "time has been changed")
-                })
+            TextTimer(isCountDown: true, count: 10000, controller: this.textTimerController3).format(this.format).
+                fontColor(16777222).fontSize(16.vp).fontFamily(@r(app.string.DEFAULT_FONT)).fontWeight(FontWeight.Normal).fontStyle(FontStyle.Normal).onTimer({
+                utc, elapsedTime => Hilog.info(1,"1","time has been changed")
+            })
 
-            TextTimer(isCountDown: true, count: 10000, controller: this.textTimerController4)
-                .format(this.format)
-                .fontColor(Color.Black)
-                .fontSize(@r(app.string.font_size))
-                .fontFamily(@r(app.string.DEFAULT_FONT))
-                .fontWeight(FontWeight.Normal)
-                .fontStyle(FontStyle.Normal)
+            TextTimer(isCountDown: true, count: 10000, controller: this.textTimerController4).format(this.format).
+                fontColor(Color.Black).fontSize(@r(app.string.font_size)).fontFamily(@r(app.string.DEFAULT_FONT)).fontWeight(FontWeight.Normal).fontStyle(FontStyle.Normal)
         }
     }
 }

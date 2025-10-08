@@ -14,21 +14,17 @@
  */
 
 package ohos_app_cangjie_entry
-
 import ohos.base.*
 import ohos.arkui.component.*
-import ohos.router.*
 import ohos.arkui.state_management.SubscriberManager
 import ohos.arkui.state_management.ObservedProperty
 import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_GeometryTransition {
-    @State
-    var isShow: Bool = false
-    @State
-    var text = "文本02"
+class ViewGeometryTransition {
+    @State var isShow: Bool = false
+    @State var text="文本02"
     func build() {
         Stack(alignContent: Alignment.Center) {
             if (this.isShow) {
@@ -46,25 +42,24 @@ class View_GeometryTransition {
                 Column() {
                     Column() {
                         Text(this.text).id("text1")
-                        Image(@r(app.media.app_icon)).width(100.percent).height(100.percent)
+                        Image(@r(app.media.app_icon))
+                            .width(100.percent).height(100.percent)
                     }.width(100.percent).height(100.percent)
                 }
-                    .width(80)
-                    .height(80)
-                    .borderRadius(20)
-                    .clip(true)
-                    .geometryTransition("picture")
-                    .transition(TransitionEffect.OPACITY)
-                    .id("Test_Image_01")
+                .width(80)
+                .height(80)
+                .borderRadius(20)
+                .clip(true)
+                .geometryTransition("picture")
+                .transition(TransitionEffect.OPACITY)
+                .id("Test_Image_01")
             }
-        }.onClick(
-            {
-                event => animateTo(AnimateParam(duration: 1000, curve: Curve.EaseInOut),
-                    ({
-                        =>
-                        this.isShow = !this.isShow
-                        this.text = "文本01"
-                    }))
+        }
+        .onClick({
+                event =>
+                getUIContext().animateTo(AnimateParam(duration:1000,curve:Curve.EaseInOut), ({=>this.isShow = !this.isShow
+                        this.text="文本01"}))
+
             })
     }
 }

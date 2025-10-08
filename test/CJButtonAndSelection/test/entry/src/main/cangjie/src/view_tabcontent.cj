@@ -21,11 +21,11 @@ import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.*
 import kit.LocalizationKit.*
-//import ohos.ui_resource.*
+//import ohos.resource.*
 
 @Entry
 @Component
-class View_TabContent {
+class ViewTabContent {
     var controller: TabsController = TabsController()
 
     @State
@@ -52,9 +52,9 @@ class View_TabContent {
     var verticalAlign: VerticalAlign = VerticalAlign.Center
 
     @State
-    var onWillShowText: String = ""
+    var onWillShowText: String = "onWillShow"
     @State
-    var onWillHideText: String = ""
+    var onWillHideText: String = "onWillHide"
 
     func build() {
         Column() {

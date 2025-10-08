@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_Animation {
+class ViewAnimation {
     @State
     var widthSize: Length = 250.vp
     @State
@@ -40,7 +40,7 @@ class View_Animation {
         iterations: 3,
         playMode: PlayMode.Normal,
         onFinish: {
-            => Hilog.info(1, "1", "Cangjie-App", "onfinish")
+            => Hilog.info(1, "Cangjie-App", "onfinish")
         },
         expectedFrameRateRange: ExpectedFrameRateRange(
             min: 20,
@@ -51,25 +51,18 @@ class View_Animation {
     func build() {
         Column(space: 5) {
             Text(this.text).id("text")
-            Button("change size")
-                .animationStart(animateOpt)
-                .onClick {
-                    e =>
-                    if (flag) {
-                        this.widthSize = 150.vp
-                        this.heightSize = 60.vp
-                    } else {
-                        this.widthSize = 250.vp
-                        this.heightSize = 100.vp
-                    }
-                    this.flag = !this.flag
-                    this.text = "Animation"
+            Button("change size").animationStart(animateOpt).onClick {
+                e =>
+                if (flag) {
+                    this.widthSize = 150.vp
+                    this.heightSize = 60.vp
+                } else {
+                    this.widthSize = 250.vp
+                    this.heightSize = 100.vp
                 }
-                .margin(30)
-                .width(this.widthSize)
-                .height(this.heightSize)
-                .animationEnd()
-                .id("my_button")
+                this.flag = !this.flag
+                this.text = "Animation"
+            }.margin(30).width(this.widthSize).height(this.heightSize).animationEnd().id("my_button")
         }.width(100.percent).padding(top: 5)
     }
 }

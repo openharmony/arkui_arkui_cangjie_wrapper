@@ -22,12 +22,22 @@ import ohos.base.*
 
 @Entry
 @Component
-class View_Border {
-    func build() {
-        Column() {
-            Text("Hello CangJie").borderWidth(5).borderColor(0xCCCCCC).borderRadius(20).id("my_border")
+class ViewBorder{
+    func build(){
+        Column(){
+            Text("Hello CangJie")
+            .borderWidth(5)
+            .borderColor(0xCCCCCC)
+            .borderRadius(20)
+            .id("my_border")
 
-            Text("test_appear").onAppear({=>}).onDisAppear({=>})
+            Text("Hello CangJie2")
+            .borderWidth(5.vp)
+            .borderColor(0xCCCCCC)
+            .borderRadius(20)
+            .id("my_border")
+
+            Text("test_appear").onAppear({ => }).onDisAppear({ => })
         }
     }
 }

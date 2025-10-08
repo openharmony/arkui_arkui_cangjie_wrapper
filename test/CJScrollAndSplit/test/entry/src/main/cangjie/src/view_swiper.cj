@@ -19,11 +19,11 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Swiper {
+class ViewSwiper {
     let DISPLAY_COUNT: Int32 = 2
     let MIN_SCALE: Float64 = 0.75
 
@@ -55,7 +55,12 @@ class View_Swiper {
                     Text("Swiper  One2").size(width: 100.percent, height: 200.px).backgroundColor(0x668866)
                     Text("Swiper  Two2").size(width: 100.percent, height: 200.px).backgroundColor(0x00ff00)
                     Text("Swiper  Three2").size(width: 100.percent, height: 200.px).backgroundColor(0xff0000)
-                }.autoPlay(true).displayCount(1).indicator(true).height(150.vp).id("swiper_case1")
+                }
+                    .autoPlay(true)
+                    .displayCount(1)
+                    .indicator(true)
+                    .height(150.vp)
+                    .id("swiper_case1")
 
                 // 测试nextMargin生效场景，loop循环下ignoreBlank参数生效
                 // 测试prevMargin生效场景，loop循环下ignoreBlank参数生效
@@ -92,13 +97,12 @@ class View_Swiper {
                     .id("swiper_case3")
                     .indicator(
                         Indicator
-                            .digit()
-                            .left(5.vp)
+                            .digit().left(5.vp)
                             .top(200)
                             .fontColor(Color.Gray)
                             .selectedFontColor(Color.Gray)
-                            .digitFont(FontOptions(size: 20.vp, weight: FontWeight.Bold))
-                            .selectedDigitFont(FontOptions(size: 20.vp, weight: FontWeight.Bold)))
+                            .digitFont(Font(size: 20.vp, weight: FontWeight.Bold))
+                            .selectedDigitFont(Font(size: 20.vp, weight: FontWeight.Bold)))
                     .displayCount(2, swipeByGroup: true)
 
                 // 验证 displayCount传参SwiperAutoFill
@@ -107,7 +111,9 @@ class View_Swiper {
                     Text("Swiper  One2").size(width: 100.percent, height: 200.px).backgroundColor(0x668866)
                     Text("Swiper  Two2").size(width: 100.percent, height: 200.px).backgroundColor(0x00ff00)
                     Text("Swiper  Three2").size(width: 100.percent, height: 200.px).backgroundColor(0xff0000)
-                }.autoPlay(true).id("swiper_case4")
+                }
+                    .autoPlay(true)
+                    .id("swiper_case4")
 
                 // 验证 displayCount传参SwiperAutoFill
                 Swiper(controller: controller2) {
@@ -115,7 +121,9 @@ class View_Swiper {
                     Text("Swiper  Two2").size(width: 100.percent, height: 200.px).backgroundColor(0x00ff00)
                     Text("Swiper  Three2").size(width: 100.percent, height: 200.px).backgroundColor(0xff0000)
                     Text("Swiper  Four2").size(width: 100.percent, height: 200.px).backgroundColor(0xff0000)
-                }.autoPlay(true).id("swiper_case5")
+                }
+                    .autoPlay(true)
+                    .id("swiper_case5")
 
                 Swiper(controller: controller) {
                     Text("Swiper  One").size(width: 100.percent, height: 200.px).backgroundColor(0x668866)
@@ -187,7 +195,6 @@ class View_Swiper {
                     .height(10.percent)
                     .onClick({event =>})
                     .effectMode(EdgeEffect.Spring)
-                    .displayMode(SwiperDisplayMode.AutoLinear)
                     .curve(Curve.ExtremeDeceleration)
                     .curve(Curve.Linear)
                     .itemSpace(@r(app.string.swiper_itemSpace))
@@ -208,7 +215,11 @@ class View_Swiper {
                                 .zIndex(Int32(this.zIndexList[index]))
                         }
                     )
-                }.height(300).indicator(false).displayCount(this.DISPLAY_COUNT, swipeByGroup: true).width(100.percent)
+                }
+                    .height(300)
+                    .indicator(false)
+                    .displayCount(this.DISPLAY_COUNT, swipeByGroup: true)
+                    .width(100.percent)
 
                 Swiper() {}.size(width: 1.vp, height: 1.vp)
             }

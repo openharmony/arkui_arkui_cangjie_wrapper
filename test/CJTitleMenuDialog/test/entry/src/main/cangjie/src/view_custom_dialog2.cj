@@ -51,7 +51,7 @@ class MyDialog1 {
 
 @Entry
 @Component
-class View_CustomDialog2 {
+class ViewCustomDialog2 {
     @State
     var message: String = "begin"
     var dialogController: CustomDialogController = CustomDialogController(
@@ -77,7 +77,7 @@ class View_CustomDialog2 {
             isModal: true,
             onWillDismiss: {
                 action =>
-                match (action.reason) {
+                match (action.reason.getOrThrow()) {
                     case PressBack => Hilog.info(1, "1", "1", "customdialog8 PRESS_BACK")
                     case TouchOutside => Hilog.info(1, "1", "1", "customdialog8 TOUCH_OUTSIDE")
                     case CloseButton => Hilog.info(1, "1", "1", "customdialog8 CLOSE_BUTTON")
@@ -93,7 +93,7 @@ class View_CustomDialog2 {
             builder: MyDialog1(message: message),
             isModal: true,
             onWillDismiss: {
-                action => match (action.reason) {
+                action => match (action.reason.getOrThrow()) {
                     case PressBack =>
                         Hilog.info(1, "1", "1", "customdialog9 PRESS_BACK")
                         action.dismiss()

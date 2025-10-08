@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 package ohos_app_cangjie_entry
 
 internal import ohos.base.LengthProp
@@ -23,13 +24,14 @@ internal import ohos.arkui.component.Text
 internal import ohos.arkui.component.CustomView
 internal import ohos.arkui.component.CJEntry
 internal import ohos.arkui.component.loadNativeView
-internal import ohos.arkui.component.{DividerStyle, SideBarContainer, ButtonStyle, ButtonIconOptions, SideBarPosition, 
+internal import ohos.arkui.component.{DividerStyle, SideBarContainer, ButtonStyle, ButtonIconOptions, SideBarPosition,
     SideBarContainerType}
 internal import ohos.arkui.state_management.SubscriberManager
 internal import ohos.arkui.state_management.ObservedProperty
 internal import ohos.arkui.state_management.LocalStorage
-internal import kit.LocalizationKit.AppResource
-internal import ohos.router.Router
+import ohos.i18n.*
+import ohos.resource_manager.*
+
 import ohos.arkui.state_macro_manage.Entry
 import ohos.arkui.state_macro_manage.Component
 import ohos.arkui.state_macro_manage.State
@@ -38,7 +40,7 @@ import ohos.base.*
 
 @Entry
 @Component
-class View_SideBar_Enhance {
+class ViewSideBarEnhance {
     let dividerProp = DividerStyle(strokeWidth: 2.vp, startMargin: 3.vp, endMargin: 5.vp)
     let ctrlButton: ButtonStyle = ButtonStyle(left: 2.0, top: 10.0, width: 30.0, height: 20.0,
         icons: ButtonIconOptions(shown: @r(app.media.startIcon), hidden: "", switching: @r(app.media.startIcon)))
@@ -52,14 +54,14 @@ class View_SideBar_Enhance {
                 Text('SideBarContainer content').fontSize(25)
             }
         }
-            .id("SideBarEnhance")
-            .divider(this.dividerProp)
-            .size(width: 80.percent, height: 90.percent)
-            .controlButton(this.ctrlButton)
-            .showSideBar(true)
-            .autoHide(true)
-            .minSideBarWidth(100.vp)
-            .maxSideBarWidth(350.vp)
-            .minContentWidth(400.vp)
+        .id("SideBarEnhance")
+        .divider(this.dividerProp)
+        .size(width: 80.percent, height: 90.percent)
+        .controlButton(this.ctrlButton)
+        .showSideBar(true)
+        .autoHide(true)
+        .minSideBarWidth(100.vp)
+        .maxSideBarWidth(350.vp)
+        .minContentWidth(400.vp)
     }
 }

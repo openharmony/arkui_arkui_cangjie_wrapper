@@ -20,11 +20,11 @@ internal import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.arkui.component.*
 import std.unittest.fail
-import ohos.resource_manager.{AppResource, __GenerateResource__}
+import ohos.resource_manager.{AppResource}
 
 @Entry
 @Component
-class View_Background2 {
+class ViewBackground2 {
     @Builder
     public func renderBackground() {
         Column() {
@@ -35,34 +35,48 @@ class View_Background2 {
     func build() {
         Row {
             Column {
-                Button("PrintBackgroundAttr").onClick {
-                    e =>
+                // 测试Background
+                Text("测试背景设置backgroundBlurStyle等")
+                    .id("background_id_01")
+                Text("linearGradient Repeat111111")
+
+                Button("PrintBackgroundAttr").onClick { e =>
                     let c_id = "background_id_01"
 
                     let Inspector = getInspectorByKey(c_id)
-                    let obj = JsonValue.fromStr(Inspector).asObject().get("$attrs").getOrThrow().asObject()
-                    Hilog.info(1, "1", "Cangjie-App", obj.toString().split("direction")[1])
+                    let obj = JsonValue
+                        .fromStr(Inspector)
+                        .asObject()
+                        .get("$attrs")
+                        .getOrThrow()
+                        .asObject()
+                    Hilog.info(1, "Cangjie-App", obj
+                        .toString()
+                        .split("direction")[1])
                     let backgroundBlurStyle = getTextFromJSonObj(obj, "backgroundBlurStyle")
-                    Hilog.info(1, "1", "Cangjie-App", backgroundBlurStyle)
+                    Hilog.info(1, "Cangjie-App", backgroundBlurStyle)
 
                     let backgroundBrightness = getTextFromJSonObj(obj, "BackgroundBrightness")
-                    Hilog.info(1, "1", "Cangjie-App", backgroundBrightness)
+                    Hilog.info(1, "Cangjie-App", backgroundBrightness)
 
                     let backgroundEffect = getTextFromJSonObj(obj, "backgroundEffect")
-                    Hilog.info(1, "1", "Cangjie-App", backgroundEffect)
+                    Hilog.info(1, "Cangjie-App", backgroundEffect)
 
                     let backgroundImageResizable = getTextFromJSonObj(obj, "backgroundImageResizable")
-                    Hilog.info(1, "1", "Cangjie-App", backgroundImageResizable)
+                    Hilog.info(1, "Cangjie-App", backgroundImageResizable)
 
                     //                    let background = getTextFromJSonObj(obj, "background")
-                    //                    Hilog.info(1,"1","Cangjie-App", background)
+                    //                    Hilog.info(1, "Cangjie-App", background)
                 }
             }.width(100.percent)
         }.height(100.percent)
     }
 
     func getTextFromJSonObj(obj: JsonObject, attr_name: String): String {
-        let value = obj.get(attr_name).getOrThrow().toString()
+        let value = obj
+            .get(attr_name)
+            .getOrThrow()
+            .toString()
         let texts = "getText11,${attr_name}: ${value}\n"
         texts
     }

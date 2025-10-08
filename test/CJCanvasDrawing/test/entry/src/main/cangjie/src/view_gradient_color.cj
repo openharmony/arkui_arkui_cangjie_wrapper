@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/17
+ */
 
 package ohos_app_cangjie_entry
 
@@ -20,89 +23,65 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_GradientColor {
+class ViewGradientColor {
     func build() {
-        Column() {
+        Column(){
             Column() {
                 Text("linearGradient").fontSize(24.px).width(90.percent).fontColor(0xCCCCCC)
-                Row()
-                    .width(100.percent)
-                    .height(100.px)
-                    .linearGradient(
-                        angle: 90.0,
-                        colors: [(Color(0x0000ff), 0.0), (Color(0xff0000), 0.3), (Color(0xffff00), 1.0)],
-                        repeating: false
-                    )
-                    .id("row1")
+                Row().width(100.percent).height(100.px).linearGradient(
+                    angle: 90.0,
+                    colors: [(Color(0x0000ff), 0.0), (Color(0xff0000), 0.3), (Color(0xffff00), 1.0)],
+                    repeating: false
+                    ).id("row1")
 
                 Text("linearGradient Repeat").fontSize(24.px).width(90.percent).fontColor(0xCCCCCC)
-                Row()
-                    .width(100.percent)
-                    .height(100.px)
-                    .linearGradient(
-                        colors: [(Color(0x0000ff), 0.0), (Color(0xff0000), 0.3), (Color(0xffff00), 0.5)],
-                        direction: GradientDirection.Left,
-                        repeating: true
-                    )
-                    .id("row2")
+                Row().width(100.percent).height(100.px).linearGradient(
+                    colors: [(Color(0x0000ff), 0.0), (Color(0xff0000), 0.3), (Color(0xffff00), 0.5)],
+                    direction: GradientDirection.Left,
+                    repeating: true
+                    ).id("row2")
             }
 
             Column() {
                 Text("sweepGradient").fontSize(24.px).width(30.percent).fontColor(0xCCCCCC)
-                Row()
-                    .width(200.px)
-                    .height(200.px)
-                    .sweepGradient(
-                        (100.0.px, 100.0.px),
-                        start: 0.0,
-                        end: 359.0,
-                        colors: [(Color(0xff0000), 0.0), (Color(0x0000ff), 0.3), (Color(0xffff00), 1.0)],
-                        repeating: false
-                    )
-                    .id("row3")
+                Row().width(200.px).height(200.px).sweepGradient(
+                    (100.0.px, 100.0.px),
+                    start: 0.0,
+                    end: 359.0,
+                    colors: [(Color(0xff0000), 0.0), (Color(0x0000ff), 0.3), (Color(0xffff00), 1.0)],
+                    repeating: false
+                    ).id("row3")
 
                 Text("sweepGradient Reapeat").fontSize(24.px).width(30.percent).fontColor(0xCCCCCC)
-                Row()
-                    .width(200.px)
-                    .height(200.px)
-                    .sweepGradient(
-                        (100.0.px, 100.0.px),
-                        start: 0.0,
-                        end: 359.0,
-                        rotation: 45.0,
-                        colors: [(Color(0xff0000), 0.0), (Color(0x0000ff), 0.3), (Color(0xffff00), 0.5)],
-                        repeating: true
-                    )
-                    .id("row4")
+                Row().width(200.px).height(200.px).sweepGradient(
+                    (100.0.px, 100.0.px),
+                    start: 0.0,
+                    end: 359.0,
+                    rotation: 45.0,
+                    colors: [(Color(0xff0000), 0.0), (Color(0x0000ff), 0.3), (Color(0xffff00), 0.5)],
+                    repeating: true
+                    ).id("row4")
             }
 
             Column() {
                 Text("radialGradient").fontSize(24.px).width(30.percent).fontColor(0xCCCCCC)
-                Row()
-                    .width(200.px)
-                    .height(200.px)
-                    .radialGradient(
-                        (100.0.px, 100.0.px),
-                        120.0,
-                        [(Color(0xff0000), 0.0), (Color(0x0000ff), 0.3), (Color(0xffff00), 1.0)]
-                    )
-                    .id("row5")
+                Row().width(200.px).height(200.px).radialGradient(
+                    (100.0.px, 100.0.px),
+                    120.0,
+                    [(Color(0xff0000), 0.0), (Color(0x0000ff), 0.3), (Color(0xffff00), 1.0)]
+                    ).id("row5")
 
                 Text("radialGradient Repeat").fontSize(24.px).width(30.percent).fontColor(0xCCCCCC)
-                Row()
-                    .width(200.px)
-                    .height(200.px)
-                    .radialGradient(
-                        (100.0.px, 100.0.px),
-                        120.0,
-                        [(Color(0xff0000), 0.0), (Color(0x0000ff), 0.3), (Color(0xffff00), 0.5)],
-                        repeating: true
-                    )
-                    .id("row6")
+                Row().width(200.px).height(200.px).radialGradient(
+                    (100.0.px, 100.0.px),
+                    120.0,
+                    [(Color(0xff0000), 0.0), (Color(0x0000ff), 0.3), (Color(0xffff00), 0.5)],
+                    repeating: true
+                    ).id("row6")
             }
         }
     }

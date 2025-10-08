@@ -20,8 +20,8 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 
-func parseBool(x: Bool): String {
-    if (x == true) {
+func parseBool(x: Bool): String{
+    if(x==true){
         return "true"
     }
     "false"
@@ -30,14 +30,16 @@ func parseBool(x: Bool): String {
 func parseColor(color: ColorMode): String {
     return match (color) {
         case ColorMode.Light => "Light"
-        case _ => "Dark"
+        case ColorMode.Dark => "Dark"
+        case _ => "Unknown color mode"
     }
 }
 
-func parseLayout(layout: LayoutDirection): String {
+func parseLayout(layout: LayoutDirection): String{
     return match (layout) {
         case LayoutDirection.Ltr => "Ltr"
-        case _ => "Rtl"
+        case LayoutDirection.Rtl => "Rtl"
+        case _ => "Unknown layout direction"
     }
 }
 
@@ -47,13 +49,13 @@ func parseLayout(layout: LayoutDirection): String {
 // 模拟步进测试@StorageProp注解功能
 // 回退
 // fontScale取消注释后报错文件在桌面t.txt
-class View_Environment {
+class ViewEnvironment {
     let d0 = Environment.aboutToBeDeleted()
     // 初始化 清除应用AppStorage
     let d1 = AppStorage.delete("accessibilityEnabled")
     let d2 = AppStorage.delete("colorMode")
-    //    let d3 = AppStorage.delete("fontScale")
-    //    let d4 = AppStorage.delete("fontWeightScale")
+//    let d3 = AppStorage.delete("fontScale")
+//    let d4 = AppStorage.delete("fontWeightScale")
     let d5 = AppStorage.delete("layoutDirection")
     let d6 = AppStorage.delete("languageCode")
 
@@ -62,11 +64,11 @@ class View_Environment {
     let SysAccessibilityEnabled2 = Environment.envProp<Bool>("accessibilityEnabled", false)
     let SysColorMode = Environment.envProp<ColorMode>("colorMode", ColorMode.Light)
     let SysFontScale = Environment.envProp<Float64>("fontScale", 1.30)
-    let SysFontWeightScale = Environment.envProp<Float64>("fontWeightScale", 1.40)
+    let SysFontWeightScale = Environment.envProp<Float64>("fontWeightScale",1.40)
     let SysLayoutDirection = Environment.envProp<LayoutDirection>("layoutDirection", LayoutDirection.Ltr)
     let SysLanguageCode = Environment.envProp<String>("languageCode", "en")
     // 失配 false
-    let SysInvalidKey = Environment.envProp<String>("InvalidKey", "-")
+    let SysInvalidKey = Environment.envProp<String>("InvalidKey","-")
 
     // @StorageProp 链接到 Component
     // 注释关联的 环境参数可以在本地更改，但不能同步回 AppStorage，环境变量参数不可写，只能在 Environment中查询
@@ -76,13 +78,14 @@ class View_Environment {
     @StorageProp["colorMode"]
     let _color: ColorMode = ColorMode.Light
 
-    //    添加以下代码 app会在打开environment用例页面的时候崩溃
+//    添加以下代码 app会在打开environment用例页面的时候崩溃
 
-    //    @StorageProp["fontScale"]
-    //    let _fontScale: Float64 = 1.3
-    //
-    //    @StorageProp["fontWeightScale"]
-    //    let _fontWeightScale: Float64 = 1.4
+//    @StorageProp["fontScale"]
+//    let _fontScale: Float64 = 1.3
+//
+//    @StorageProp["fontWeightScale"]
+//    let _fontWeightScale: Float64 = 1.4
+
 
     @StorageProp["layoutDirection"]
     let _layoutDirection: LayoutDirection = LayoutDirection.Ltr
@@ -103,13 +106,13 @@ class View_Environment {
             Text("  ${parseColor(_color)}").id("colorModeText")
             Text("  SystemProvided: ${this.SysColorMode}").id("System?2")
 
-            Text("FontScale => ")
-            //             Text("  ${this._fontScale}").id("fontScaleText")
-            Text("  SystemProvided: ${this.SysFontScale}").id("System?3")
+             Text("FontScale => ")
+//             Text("  ${this._fontScale}").id("fontScaleText")
+             Text("  SystemProvided: ${this.SysFontScale}").id("System?3")
 
-            Text("FontWeightScale => ")
-            //             Text("  ${this._fontWeightScale}").id("fontWeightScale")
-            Text("  SystemProvided: ${this.SysFontWeightScale}").id("System?4")
+             Text("FontWeightScale => ")
+//             Text("  ${this._fontWeightScale}").id("fontWeightScale")
+             Text("  SystemProvided: ${this.SysFontWeightScale}").id("System?4")
 
             Text("LayoutDirection => ")
             Text("  ${parseLayout(_layoutDirection)}").id("layoutDirection")
@@ -121,13 +124,46 @@ class View_Environment {
 
             Text("InvalidKey => ")
             Text("  SystemProvided: ${this.SysInvalidKey}")
+
+            EnvironmentEnum()
         }
     }
     // 组件渲染前调用的方法
     protected override func aboutToAppear() {
+
     }
 
     protected override func aboutToDisappear() {
         Environment.aboutToBeDeleted()
+    }
+}
+
+@Component
+class EnvironmentEnum {
+    var clickCount: Int64 = 0
+
+    @State var colorModeInt: Int64 = 0
+    @State var colorModeString: String = "null"
+    @State var layoutDirectionInt: Int64 = 0
+    @State var layoutDirectionString: String = "null"
+    var arrColorMode: Array<ColorMode> = [ColorMode.Light, ColorMode.Dark]
+    var arrLayoutDirection: Array<LayoutDirection> = [LayoutDirection.Ltr, LayoutDirection.Rtl]
+
+    func build() {
+        Column {
+            Text("${colorModeString} ${colorModeInt}").id("parsedColorMode")
+            Text("${layoutDirectionString} ${layoutDirectionInt}").id("parsedLayoutDirection")
+            Button("parseStatus").onClick { e =>
+                var colorMode_ = arrColorMode[clickCount]
+                var layoutDirection_ = arrLayoutDirection[clickCount]
+                colorModeInt = clickCount
+                colorModeString = parseColor(colorMode_)
+                layoutDirectionInt = clickCount
+                layoutDirectionString = parseLayout(layoutDirection_)
+                Environment.envProp<ColorMode>("colorMode", colorMode_)
+                Environment.envProp<LayoutDirection>("layoutDirection", layoutDirection_)
+                clickCount++
+            }.id("parseStatus")
+        }
     }
 }

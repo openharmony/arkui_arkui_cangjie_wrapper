@@ -19,54 +19,53 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.router.*
 import ohos.hilog.Hilog
 import std.collection.ArrayList
+import ohos.arkui.ui_context.*
 
 @Entry
 @Component
-class View_Router1 {
+class ViewRouter1 {
     @State
     var message: String = "xxx"
-    var routerrr: Router = Router()
 
     func build() {
         Flex(wrap: FlexWrap.Wrap) {
-            Text("Page View_Router1").fontSize(40.fp).id("my_text1")
+            Text("Page ViewRouter1").fontSize(40.fp).id("my_text1")
             Button("jump1_to_page2").onClick {
-                e => Router.push(url: "View_Router2")
+                e => getUIContext().getRouter().pushUrl(url: "ViewRouter2")
             }.id("jump1_to_page2")
 
             // 覆盖率提升 JsonObject
             Button("jump2_to_page2").onClick {
-                e => Router.push(url: "View_Router2", params: "")
+                e => getUIContext().getRouter().pushUrl(url: "ViewRouter2", params: "")
             }.id("jump2_to_page2")
 
             // 覆盖率提升 getParamsObject
             Button("getParamsObject").onClick {
-                e => Router.getParams()
+                e => getUIContext().getRouter().getParams()
             }.id("getParamsObject")
             Button("to_page2_by_pushurl")
                 .onClick {
-                    e => Router.push(url: "View_Router2", params: "from page1 by pushurl")
+                    e => getUIContext().getRouter().pushUrl(url: "ViewRouter2", params: "from page1 by pushurl")
                 }
                 .id("to_page2_by_pushurl")
             Button("to_page2_by_pushurl_single")
                 .onClick {
-                    e => Router.push(url: "View_Router2", params: "from page1 by pushurl single")
+                    e => getUIContext().getRouter().pushUrl(url: "ViewRouter2", params: "from page1 by pushurl single")
                 }
                 .id("to_page2_by_pushurl_single")
 
             Button("to_page2_by_replace")
                 .onClick {
-                    e => Router.back(url: "View_Router2", params: "from page1 by replace")
+                    e => getUIContext().getRouter().back(url: "ViewRouter2", params: "from page1 by replace")
                 }
                 .id("to_page2_by_replace")
 
             Button("get_params")
                 .onClick {
                     e =>
-                    var str: Option<String> = Router.getParams()
+                    var str: Option<String> = getUIContext().getRouter().getParams()
                     match (str) {
                         case Some(v) => this.message = v
                         case None => this.message = "None"
@@ -76,21 +75,21 @@ class View_Router1 {
 
             Button("back_page2")
                 .onClick {
-                    e => Router.back(url: "View_Router2", params: "page1 back to page2")
+                    e => getUIContext().getRouter().back(url: "ViewRouter2", params: "page1 back to page2")
                 }
                 .id("back_page2")
             Button("back_to_4").onClick {
-                e => Router.back(index: 4, params: "page1 back to 4")
+                e => getUIContext().getRouter().back(index: 3, params: "page1 back to 3")
             }.id("back_to_4")
 
             Button("err_pushurl")
                 .onClick {
-                    e => Router.push(url: "err_pushurl", params: "from page1 by pushurl")
+                    e => getUIContext().getRouter().pushUrl(url: "err_pushurl", params: "from page1 by pushurl")
                 }
                 .id("err_pushurl")
             Button("err_pushurl_single")
                 .onClick {
-                    e => Router.push(url: "err_pushurl_single", params: "from page1 by pushurl single")
+                    e => getUIContext().getRouter().pushUrl(url: "err_pushurl_single", params: "from page1 by pushurl single")
                 }
                 .id("err_pushurl_single")
 

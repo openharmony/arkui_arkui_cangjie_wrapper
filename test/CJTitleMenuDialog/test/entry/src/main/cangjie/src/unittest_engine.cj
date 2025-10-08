@@ -34,7 +34,6 @@ import std.collection.ArrayList
 import std.unittest.TestSuite
 import ohos.app.ability.want.Want
 import std.process.Process
-import ohos.ui_test.UITest
 import ohos.arkui.component.line.Line
 import std.unittest.common.Configuration
 import ohos.ark_interop.*
@@ -188,7 +187,6 @@ public class OpenHarmonyTestRunner <: TestRunner {
             const testTypeFilePath = "/data/storage/el1/base/testType.txt"
             const levelFilePath = "/data/storage/el1/base/level.txt"
             const dryRunFilePath = "/data/storage/el1/base/dryRun.txt"
-            UITest.setup()
             sleepFor(1.second)
             setUp()
             if (FileIo.access(dryRunFilePath)) {
@@ -272,7 +270,7 @@ public class OpenHarmonyTestRunner <: TestRunner {
 
             spawn {
                 try {
-                    abilityDelegator.startAbility(want).get()
+                    abilityDelegator.startAbility(want)
                     if (FileIo.access(classFilePath)) {
                         let text = String.fromUtf8(fs.File.readFrom(classFilePath))
                         FileIo.unlink(classFilePath)
@@ -807,11 +805,11 @@ public func getAbilityStageContext(): AbilityStageContext {
 }
 
 func getFullBundleInfo(): BundleInfo {
-    let bundleFlags = BundleFlag.GetBundleInfoWithApplication.getValue() | GetBundleInfoWithHapModule.getValue() |
-        GetBundleInfoWithAbility.getValue() | GetBundleInfoWithExtensionAbility.getValue() |
-        GetBundleInfoWithRequestedPermission.getValue() | GetBundleInfoWithMetadata.getValue() |
-        GetBundleInfoWithDisable.getValue() | GetBundleInfoWithSignatureInfo.getValue() |
-        GetBundleInfoWithMenu.getValue()
+    let bundleFlags = BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION
+        | BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY |
+        BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY | BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION |
+        BundleFlag.GET_BUNDLE_INFO_WITH_METADATA | BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE |
+        BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO | BundleFlag.GET_BUNDLE_INFO_WITH_MENU
     BundleManager.getBundleInfoForSelf(bundleFlags)
 }
 
@@ -860,7 +858,7 @@ public class getInspector {
             let inspectorInfo = JsonValue.fromStr(inspectorInfoJsonString).asObject()
             inspectorInfo.get("$attrs").getOrThrow().asObject().get(attributeName).getOrThrow().toString()
         } catch (e: Exception) {
-            return "Not find UIComponent or Json parser failed!"
+            return "Not find Component or Json parser failed!"
         }
     }
 }

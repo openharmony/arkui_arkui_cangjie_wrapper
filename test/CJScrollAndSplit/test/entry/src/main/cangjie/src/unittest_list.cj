@@ -13,57 +13,50 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/13
+ */
 package ohos_app_cangjie_entry
 
 let _ = testsuites()
-
 func testsuites(): Unit {
-    registerTestSuite("ScrollSplit_UT1") {ScrollSplit_UT_1()}
-    registerTestSuite("ScrollSplit_UT2") {ScrollSplit_UT_2()}
-    registerTestSuite("ScrollSplit_UT3") {ScrollSplit_UT_3()}
+    registerTestSuite("ScrollSplitUT1") {ScrollSplitUT1()}
+    registerTestSuite("ScrollSplitUT11") {ScrollSplitUT11()}
+    registerTestSuite("ScrollSplitUT2") {ScrollSplitUT2()}
 }
-
 let UT_views = [
-    "ScrollSplit_UT1",
-    "ScrollSplit_UT2",
-    "ScrollSplit_UT3"
+    "ScrollSplitIndex1",
+    "ScrollSplitIndex2"
 ]
 let UT1 = [
-    "View_Column",
-    "View_Flex",
-    "View_Foreach",
-    "View_Grid",
-    "View_Grid2",
-    "View_Grid_Col",
-    "View_Grid_Item",
-    "View_Grid_Row",
-    "View_Ifelse",
-    "View_Lazyforeach",
-    "View_Lazyforeach_DataOptions",
-    "View_List",
-    "View_List2",
-    "View_ListItem",
-    "View_ListItemGroup"
+    "ViewColumn",
+    "ViewFlex",
+    "ViewForeach",
+    "ViewGrid",
+    "ViewGrid2",
+    "ViewGridCol",
+    "ViewGridItem",
+    "ViewGridRow",
+    "ViewIfelse",
+    "ViewLazyforeach",
+    "ViewLazyforeachDataOptions",
+    "ViewList",
+    "ViewList2",
+    "ViewListItem",
+    "ViewListItemGroup"
 ]
 let UT2 = [
-    "View_PageTransition",
-    "View_PageTransition2",
-    "View_Refresh",
-    "View_Row",
-    "View_RowSplit",
-    "View_Scroll",
-    "View_Scroll_2",
-    "View_Scrollbar",
-    "View_SideBar",
-    "View_SideBar_Default",
-    "View_SideBar_Enhance",
-    "View_SideBar_Init",
-    "View_Swiper"
-]
-let UT3 = [
-    "View_SideBar",
-    "View_SideBar_Default",
-    "View_SideBar_Enhance",
-    "View_SideBar_Init",
-    "View_Swiper"
+    "ViewPageTransition",
+    "ViewPageTransition2",
+    "ViewRefresh",
+    "ViewRow",
+    "ViewRowSplit",
+    "ViewScroll",
+    "ViewScroll2",
+    "ViewScrollbar",
+    "ViewSideBar",
+    "ViewSideBarDefault",
+    "ViewSideBarEnhance",
+    "ViewSideBarInit",
+    "ViewSwiper"
 ]

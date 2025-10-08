@@ -27,7 +27,7 @@ import std.database.sql.Transaction
 
 @Entry
 @Component
-class View_MenuBindMenu {
+class ViewMenuBindMenu {
     @State
     var msg_onAppear: String = "onAppear wait"
     @State

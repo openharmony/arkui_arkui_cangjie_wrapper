@@ -16,7 +16,6 @@
 package ohos_app_cangjie_entry
 
 import ohos.base.*
-import ohos.font.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
@@ -42,13 +41,13 @@ extend ImageFit {
 
 @Entry
 @Component
-class View_Video2 {
+class ViewVideo2 {
     @State
-    var videoSrc: ResourceStr = @rawfile("3_resident_services.mp4")
+    var videoSrc: ResourceStr = @rawfile("video.mp4")
     @State
     var previewUri: ResourceStr = @r(app.media.startIcon)
     @State
-    var curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
+    var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X
     @State
     var showControls: Bool = true
 
@@ -154,31 +153,31 @@ class View_Video2 {
                     .objectFit(objectFit)
                     .loop(loop)
                     .onStart({
-                        => Hilog.info(1, "1", "------onStart")
+                        => Hilog.info(1,"1","------onStart")
                     })
                     .onPause({
-                        => Hilog.info(1, "1", "------onPause")
+                        => Hilog.info(1,"1","------onPause")
                     })
                     .onFinish({
-                        => Hilog.info(1, "1", "------onFinish")
+                        => Hilog.info(1,"1","------onFinish")
                     })
                     .onError({
-                        => Hilog.info(1, "1", "--------onError")
+                        => Hilog.info(1,"1","--------onError")
                     })
                     .onPrepared({
-                        count: PreparedInfo => Hilog.info(1, "1", "------onPrepared")
+                        count: PreparedInfo => Hilog.info(1,"1","------onPrepared")
                     })
                     .onSeeking({
-                        count: PlaybackInfo => Hilog.info(1, "1", "------onSeeking")
+                        count: PlaybackInfo => Hilog.info(1,"1","------onSeeking")
                     })
                     .onSeeked({
-                        count: PlaybackInfo => Hilog.info(1, "1", "------onSeeked")
+                        count: PlaybackInfo => Hilog.info(1,"1","------onSeeked")
                     })
                     .onUpdate({
-                        count: PlaybackInfo => Hilog.info(1, "1", "------onUpdate")
+                        count: PlaybackInfo => Hilog.info(1,"1","------onUpdate")
                     })
                     .onFullscreenChange({
-                        isFull: FullscreenInfo => Hilog.info(1, "1", "------onFullscreenChange")
+                        isFull: FullscreenInfo => Hilog.info(1,"1","------onFullscreenChange")
                     })
                     .id("video")
 
@@ -211,15 +210,13 @@ class View_Video2 {
                         .margin(5)
                         .id("Fullscreen")
                     Button("at 30s")
-                        .onClick(
-                            {
-                                event =>
-                                this.controller.setCurrentTime(30, SeekMode.PreviousKeyframe)
-                                this.controller.setCurrentTime(30, SeekMode.NextKeyframe)
-                                this.controller.setCurrentTime(30, SeekMode.Accurate)
-                                this.controller.setCurrentTime(30, SeekMode.ClosestKeyframe)
-                            }
-                        )
+                        .onClick({
+                            event =>
+                        this.controller.setCurrentTime(30, SeekMode.PreviousKeyframe)
+                        this.controller.setCurrentTime(30, SeekMode.NextKeyframe)
+                        this.controller.setCurrentTime(30, SeekMode.Accurate)
+                        this.controller.setCurrentTime(30, SeekMode.ClosestKeyframe)
+                        })
                         .margin(5)
                         .id("setCurrentTime")
                     Button("exitFull").onClick({
@@ -236,23 +233,24 @@ class View_Video2 {
 
                 Video(
                     src: "https://media.w3.org/2010/05/sintel/trailer.mp4",
-                    currentProgressRate: PlaybackSpeed.Speed_Forward_0_75_X,
+                    currentProgressRate: PlaybackSpeed.SpeedForward075X,
                     previewUri: "previewUri",
                     controller: this.controller_2
                 ).autoPlay(false).controls(true).height(50).id("video_3")
 
                 Video(
-                    src: @rawfile("3_resident_services.mp4"),
-                    currentProgressRate: PlaybackSpeed.Speed_Forward_0_75_X,
+                    src: @rawfile("video.mp4"),
+                    currentProgressRate: PlaybackSpeed.SpeedForward075X,
                     previewUri: @r(app.media.startIcon),
                     controller: this.controller_2
                 ).autoPlay(false).controls(true).height(50).id("video_4")
 
-                Video(currentProgressRate: PlaybackSpeed.Speed_Forward_0_75_X)
-                Video(currentProgressRate: PlaybackSpeed.Speed_Forward_1_25_X)
-                Video(currentProgressRate: PlaybackSpeed.Speed_Forward_1_75_X)
-                Video(currentProgressRate: PlaybackSpeed.Speed_Forward_2_00_X)
+                Video(currentProgressRate: PlaybackSpeed.SpeedForward075X)
+                Video(currentProgressRate: PlaybackSpeed.SpeedForward125X)
+                Video(currentProgressRate: PlaybackSpeed.SpeedForward175X)
+                Video(currentProgressRate: PlaybackSpeed.SpeedForward200X)
             }
         }
     }
 }
+

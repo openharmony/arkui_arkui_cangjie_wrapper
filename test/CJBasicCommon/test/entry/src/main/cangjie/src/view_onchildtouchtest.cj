@@ -20,11 +20,10 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.{ArrayList, HashMap}
-import ohos.prompt_action.*
 
 @Entry
 @Component
-class View_OnChildTouchTest {
+class ViewOnChildTouchTest {
     @State
     var value: Int32 = 1
     @State
@@ -32,51 +31,38 @@ class View_OnChildTouchTest {
     let numbers: ObservedArrayList<Int64> = ObservedArrayList<Int64>([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 
     func build() {
-        Column {
-            List(space: 20, initialIndex: 0) {
-                ForEach(this.numbers,
-                    itemGeneratorFunc: {
-                        item: Int64, _: Int64 => ListItem() {
-                            Text("${item}")
-                                .width(100.percent)
-                                .height(56)
-                                .fontSize(16)
-                                .textAlign(TextAlign.Center)
-                                .borderRadius(10)
-                                .backgroundColor(0xFFFFFF)
-                        }.backgroundColor(Color.White).borderRadius(24).padding(12)
-                    })
-            }
+            Column{
+            List( space: 20, initialIndex: 0 ) {
+                        ForEach(this.numbers,
+                        itemGeneratorFunc: {item:Int64,_:Int64 =>
+                                ListItem() {
+                                    Text("${item}")
+                                    .width(100.percent).height(56).fontSize(16)
+                                    .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+                                }.backgroundColor(Color.White).borderRadius(24).padding(12)
+                        })
+                    }
                 .scrollBar(BarState.Off)
                 .width(90.percent)
-                .onScrollIndex(
-                    {
-                        first: Int32, last: Int32, a: Int32 => Hilog.info(1, "1", "Cangjie-App",
-                            "first: " + first.toString() + " last: " + last.toString())
-                    })
-                .onScrollFrameBegin(
-                    {
-                        first: Float64, last: ScrollState =>
-                        Hilog.info(1, "1", "Cangjie-App", "OnChildTouchTest onScrollFrameBegin")
-                        this.text = "onScrollFrameBegin"
-                        return onScrollFrameBeginHandleResult(offsetRemain: first)
-                    }
-                )
+                .onScrollIndex({first: Int32, last: Int32, a: Int32 =>
+                    Hilog.info(1, "Cangjie-App", "first: " + first.toString() + " last: " + last.toString())
+                })
+                .onScrollFrameBegin({first: Float64, last: ScrollState =>
+                    Hilog.info(1, "Cangjie-App", "OnChildTouchTest onScrollFrameBegin")
+                    this.text = "onScrollFrameBegin"
+                    return onScrollFrameBeginHandleResult(offsetRemain: first)
+                })
                 .width(100.percent)
                 .height(65.percent)
                 .id("MyList")
 
-            Button(this.text)
-                .width(312)
-                .height(40)
+                Button(this.text)
+                .width(312).height(40)
                 .id("Mybutton")
-                .onClick(
-                    {
-                        evt =>
-                        this.text = "click the button"
-                        PromptAction.showToast(message: "you click the button", duration: 3000)
-                    }
-                )
-        }.width(100.percent).height(100.percent)
+                .onClick({evt =>
+                        this.text = "click the button"})
+        }
+        .width(100.percent)
+        .height(100.percent)
     }
 }

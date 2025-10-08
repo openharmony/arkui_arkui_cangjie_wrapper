@@ -24,7 +24,8 @@ import std.collection.*
 
 @Entry
 @Component
-class View_TextInput_Enhance {
+class ViewTextInputEnhance {
+
     var controller: TextInputController = TextInputController()
     @State
     var inLineText: String = """
@@ -46,26 +47,35 @@ class View_TextInput_Enhance {
     @State
     var offsetY: Float32 = 0.0
 
-    @State
-    var textError = ""
-    @State
-    var passwordState: Bool = false
-    @State
-    var insertVal: String = ""
-    @State
-    var insertOffset: Float64 = 0.0
-    @State
-    var deleteValue: String = ""
-    @State
-    var deleteOffset: Float64 = 0.0
-    @State
-    var deleteDirection: Int32 = 0
-    @State
-    var onSubmitText: String = ""
-    @State
-    var onDidInsertMsg: String = "支持插入回调文本"
-    @State
-    var onDidDeleteMsg: String = "支持删除回调文本"
+    @Builder
+    func customKeyboardBuilder(){
+        Column {
+            ForEach(["1", "2", "3"],
+                itemGeneratorFunc: {item: String, idx: Int64 =>
+                Button(item)
+                .width(40.vp)
+                .height(40.vp)
+                .fontColor(0x66000000)
+                .fontSize(16.fp)
+            })
+        }
+        .borderRadius(24.vp)
+        .padding(top: 4.vp, bottom: 4.vp, left: 16.vp, right: 16.vp)
+        .backgroundColor(Color.Green)
+        .margin(right: 24.vp, bottom: 4.vp, top: 0.vp)
+        .width(130.vp)
+    }
+
+    @State var textError = ""
+    @State var passwordState: Bool = false
+    @State var insertVal: String = ""
+    @State var insertOffset: Float64 = 0.0
+    @State var deleteValue: String = ""
+    @State var deleteOffset: Float64 = 0.0
+    @State var deleteDirection: Int32 = 0
+    @State var onSubmitText : String = ""
+    @State var onDidInsertMsg : String = "支持插入回调文本"
+    @State var onDidDeleteMsg : String = "支持删除回调文本"
 
     func build() {
         Column() {
@@ -73,21 +83,21 @@ class View_TextInput_Enhance {
                 .onChange({
                     value: String => this.onSubmitText = value
                 })
-                .onSubmit(
-                    {
-                        enterKey: EnterKeyType => if (this.onSubmitText == "test") {
-                            this.textError = ""
-                        } else {
-                            this.textError = '用户名输入错误'
-                            this.onSubmitText = ""
-                        }
-                    })
+                .onSubmit({
+                    enterKey: EnterKeyType =>
+                    if (this.onSubmitText == "test") {
+                        this.textError = ""
+                    } else {
+                        this.textError = '用户名输入错误'
+                        this.onSubmitText = ""
+                    }
+                })
             TextInput(text: "Normal")
                 .id("TextInputNormal")
                 .textAlign(TextAlign.Center)
                 .enableKeyboardOnFocus(false) // no data
                 .selectionMenuHidden(true) // no data
-                //                .caretPosition(3)
+//                .caretPosition(3)
                 .maxLength(10)
                 .showUnderline(true)
 
@@ -105,44 +115,48 @@ class View_TextInput_Enhance {
                 .fontWeight(FontWeight.W500)
                 .fontStyle(FontStyle.Normal)
 
+            TextInput(text: "EventController", placeholder: 'input your word...', controller: controller)
+                .id("TextInputSetSelection")
+                .customKeyboard(bind(this.customKeyboardBuilder, this), supportAvoidance: true)
+
             Button('SetTextSelection')
                 .id("ButtonSetTextSelection")
                 .margin(15)
-                .onClick({
-                    event => this.controller.setTextSelection(1, 5)
+                .onClick({ event =>
+                    this.controller.setTextSelection(1, 5)
                 })
             Text("Selection ${this.lastCaretPosition}-${this.lastCaretPositionEnd}").id("TextSelection")
 
-            Button('StopEditing').id("ButtonStopEditing").margin(15).onClick({
-                event => this.controller.stopEditing()
-            })
+            Button('StopEditing')
+                .id("ButtonStopEditing")
+                .margin(15)
+                .onClick({ event =>
+                    this.controller.stopEditing()
+                })
 
             TextInput(text: this.onDidInsertMsg)
-                .onSubmit(
-                    {
-                        enterKey: EnterKeyType => Hilog.info(1, "1", "Cangjie-Test",
-                            "TextInput_Enhance: TextInput onSubmit")
-                    })
+                .onSubmit({
+                    enterKey: EnterKeyType =>
+                    Hilog.info(1,"Cangjie-Test", "TextInput_Enhance: TextInput onSubmit")
+                })
                 .id("onSubmit")
 
             TextInput(text: this.onDidDeleteMsg)
-                .onSubmit(
-                    {
-                        enterKey: EnterKeyType =>
-                        Hilog.info(1, "1", "Cangjie-Test", "TextInput_Enhance onSubmitWithEvent")
-                        if (this.onSubmitText == "test") {
-                            this.textError = ""
-                        } else {
-                            this.textError = '用户名输入错误'
-                            this.onSubmitText = ""
-                        }
+                .onSubmit({
+                    enterKey: EnterKeyType =>
+                    Hilog.info(1, "Cangjie-Test", "TextInput_Enhance onSubmitWithEvent")
+                    if (this.onSubmitText == "test") {
+                        this.textError = ""
+                    } else {
+                        this.textError = '用户名输入错误'
+                        this.onSubmitText = ""
                     }
-                )
+                })
                 .id("onSubmitWithEvent")
-            Text(
-                "insertValue: ${this.insertVal}.  insertOffset: ${this.insertOffset}; deleteValue:${this.deleteValue}. delOffset:${this.deleteOffset}. Direction:${this.deleteDirection}")
+            Text("insertValue: ${this.insertVal}.  insertOffset: ${this.insertOffset}; deleteValue:${this.deleteValue}. delOffset:${this.deleteOffset}. Direction:${this.deleteDirection}")
 
             TextInput().id("TextInputDefault").style(TextInputStyle.Default)
-        }.width(100.percent)
+
+            }.width(100.percent)
     }
 }

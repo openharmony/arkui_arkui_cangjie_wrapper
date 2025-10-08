@@ -22,7 +22,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_PersistentStorage {
+class ViewPersistentStorage {
     let p0 = PersistentStorage.persistProp<Int64>("count", 100)
 
     let p5 = PersistentStorage.persistProp("Name", "Adonis")
@@ -76,6 +76,7 @@ class View_PersistentStorage {
             Button("clear age").onClick {
                 e => PersistentStorage.deleteProp("Age")
             }.id("PersistentStorage_deleteProp")
+
         }
     }
 }

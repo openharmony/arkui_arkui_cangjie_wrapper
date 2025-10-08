@@ -39,7 +39,7 @@ let tabs_views = [
 
 @Entry
 @Component
-class View_Tab {
+class ViewTab {
     func build() {
         Column() {
             ForEach(
@@ -52,7 +52,7 @@ class View_Tab {
                         .id("Button${viewName}")
                         .borderRadius(10)
                         .onClick {
-                            e => Router.push(url: viewName)
+                            e => getUIContext().getRouter().pushUrl(url: viewName)
                         }
                 }
             )

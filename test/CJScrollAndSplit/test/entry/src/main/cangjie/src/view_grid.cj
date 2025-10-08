@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/14
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -23,7 +26,7 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_Grid {
+class ViewGrid {
     @State
     var DataSource_str_case_003: Array<String> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
         "13", "14", "15", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "0", "1",
@@ -80,13 +83,20 @@ class View_Grid {
     @Builder
     func pixelMapBuilder() { //拖拽过程样式
         Column() {
-            Text(this.text).fontSize(16).backgroundColor(0xF9CF93).width(80).height(80).textAlign(TextAlign.Center)
+            Text(this.text)
+                .fontSize(16)
+                .backgroundColor(0xF9CF93)
+                .width(80)
+                .height(80)
+                .textAlign(TextAlign.Center)
         }
     }
 
     protected override func aboutToAppear() {
         for (i in 1..11) {
-            this.numbers.add("${i}")
+            this
+                .numbers
+                .add("${i}")
         }
     }
 
@@ -106,77 +116,77 @@ class View_Grid {
     public func build() {
         Scroll() {
             Column(space: 20) {
-                Grid(scroller: this.scroller) {
-                    GridItem() {
-                        Text(this.index0)
-                            .fontSize(16)
-                            .backgroundColor(0xF9CF93)
-                            .width(80)
-                            .height(80)
-                            .textAlign(TextAlign.Center)
-                    }
-                    GridItem() {
-                        Text(this.numbers[1])
-                            .fontSize(16)
-                            .backgroundColor(0xF9CF93)
-                            .width(80)
-                            .height(80)
-                            .textAlign(TextAlign.Center)
-                    }
-                    GridItem() {
-                        Text(this.numbers[2])
-                            .fontSize(16)
-                            .backgroundColor(0xF9CF93)
-                            .width(80)
-                            .height(80)
-                            .textAlign(TextAlign.Center)
-                    }
-                    GridItem() {
-                        Text(this.numbers[3])
-                            .fontSize(16)
-                            .backgroundColor(0xF9CF93)
-                            .width(80)
-                            .height(80)
-                            .textAlign(TextAlign.Center)
-                    }
-                    GridItem() {
-                        Text(this.numbers[4])
-                            .fontSize(16)
-                            .backgroundColor(0xF9CF93)
-                            .width(80)
-                            .height(80)
-                            .textAlign(TextAlign.Center)
-                    }.id("gridItem_5")
-                    GridItem() {
-                        Text(this.index5)
-                            .fontSize(16)
-                            .backgroundColor(0xF9CF93)
-                            .width(80)
-                            .height(80)
-                            .textAlign(TextAlign.Center)
-                    }
-                    GridItem() {
-                        Text(this.numbers[6])
-                            .fontSize(16)
-                            .backgroundColor(0xF9CF93)
-                            .width(80)
-                            .height(80)
-                            .textAlign(TextAlign.Center)
-                    }
+            Grid(scroller: this.scroller, child: { =>
+                GridItem() {
+                    Text(this.index0)
+                        .fontSize(16)
+                        .backgroundColor(0xF9CF93)
+                        .width(80)
+                        .height(80)
+                        .textAlign(TextAlign.Center)
                 }
-                    .columnsTemplate("1fr 1fr 1fr")
-                    .columnsGap(10)
-                    .rowsGap(10)
-                    .width(90.percent)
-                    .backgroundColor(0xFAEEE0)
-                    .height(300)
+                GridItem() {
+                    Text(this.numbers[1])
+                        .fontSize(16)
+                        .backgroundColor(0xF9CF93)
+                        .width(80)
+                        .height(80)
+                        .textAlign(TextAlign.Center)
+                }
+                GridItem() {
+                    Text(this.numbers[2])
+                        .fontSize(16)
+                        .backgroundColor(0xF9CF93)
+                        .width(80)
+                        .height(80)
+                        .textAlign(TextAlign.Center)
+                }
+                GridItem() {
+                    Text(this.numbers[3])
+                        .fontSize(16)
+                        .backgroundColor(0xF9CF93)
+                        .width(80)
+                        .height(80)
+                        .textAlign(TextAlign.Center)
+                }
+                GridItem() {
+                    Text(this.numbers[4])
+                        .fontSize(16)
+                        .backgroundColor(0xF9CF93)
+                        .width(80)
+                        .height(80)
+                        .textAlign(TextAlign.Center)
+                }.id("gridItem_5")
+                GridItem() {
+                    Text(this.index5)
+                        .fontSize(16)
+                        .backgroundColor(0xF9CF93)
+                        .width(80)
+                        .height(80)
+                        .textAlign(TextAlign.Center)
+                }
+                GridItem() {
+                    Text(this.numbers[6])
+                        .fontSize(16)
+                        .backgroundColor(0xF9CF93)
+                        .width(80)
+                        .height(80)
+                        .textAlign(TextAlign.Center)
+                }
+            })
+                .columnsTemplate("1fr 1fr 1fr")
+                .columnsGap(10)
+                .rowsGap(10)
+                .width(90.percent)
+                .backgroundColor(0xFAEEE0)
+                .height(300)
                 /*
                  * -@TestCaseID: grid_case_01
                  * -@验证场景: 1、 Grid()；2、Grid(Scroller())；
                  * -@预期结果: 正常运行；
                  */
                 Text("grid_case_01: Grid正常运行；")
-                //                Grid().id("grid_case_01")
+//                Grid().id("grid_case_01")
                 Grid(scroller: Scroller()).id("grid_case_01")
 
                 /*
@@ -201,7 +211,7 @@ class View_Grid {
                  *           3、 rid网格列大小按照Grid自身内容区域大小减去所有行列Gap后按各个行列所占比重分配；
                  */
                 Text("grid_case_04: columnsTemplate入参repeat(auto-fit, 50)")
-                Grid() {
+                Grid(child: { =>
                     ForEach(
                         value2,
                         itemGeneratorFunc: {
@@ -218,7 +228,7 @@ class View_Grid {
                             }
                         }
                     )
-                }
+                })
                     .columnsTemplate("repeat(auto-fit, 50)")
                     .columnsGap(10.vp)
                     .rowsGap(10.vp)
@@ -227,7 +237,7 @@ class View_Grid {
                     .scrollBarWidth(10.0)
                     .cachedCount(2, true)
                     .enableScrollInteraction(true)
-                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SELF_ONLY, NestedScrollMode.SELF_ONLY))
+                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SelfOnly, NestedScrollMode.SelfOnly))
                     .friction(0.8)
                     .width(90.percent)
                     .backgroundColor(0xFAEEE0)
@@ -245,7 +255,7 @@ class View_Grid {
                  *           3、 rid网格列大小按照Grid自身内容区域大小减去所有行列Gap后按各个行列所占比重分配；
                  */
                 Text("grid_case_05: columnsTemplate入参repeat(auto-fill, 50)")
-                Grid(scroller: this.scroller3) {
+                Grid(scroller: this.scroller3, child: { =>
                     ForEach(
                         value2,
                         itemGeneratorFunc: {
@@ -262,14 +272,14 @@ class View_Grid {
                             }
                         }
                     )
-                }
+                })
                     .columnsTemplate("repeat(auto-fill, 50)")
                     .columnsGap(10.0)
                     .rowsGap(10.0)
                     .scrollBar(BarState.Auto)
                     .scrollBarColor(0xFF0000)
                     .scrollBarWidth(10)
-                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SELF_ONLY, NestedScrollMode.SELF_ONLY))
+                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SelfOnly, NestedScrollMode.SelfOnly))
                     .friction(0.8)
                     .width(90.percent)
                     .backgroundColor(0xFAEEE0)
@@ -287,7 +297,7 @@ class View_Grid {
                  *           3、 rid网格列大小按照Grid自身内容区域大小减去所有行列Gap后按各个行列所占比重分配；
                  */
                 Text("grid_case_06: columnsTemplate入参repeat(auto-stretch, 50)")
-                Grid(scroller: Scroller()) {
+                Grid(scroller: Scroller(), child: { =>
                     ForEach(
                         value2,
                         itemGeneratorFunc: {
@@ -308,7 +318,7 @@ class View_Grid {
                             }
                         }
                     )
-                }
+                })
                     .columnsTemplate("repeat(auto-stretch, 50)")
                     .columnsGap(10)
                     .rowsGap(10)
@@ -316,7 +326,7 @@ class View_Grid {
                     .scrollBarColor(@r(app.color.red_color))
                     .scrollBarWidth(10.0.vp)
                     .enableScrollInteraction(true)
-                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SELF_ONLY, NestedScrollMode.SELF_ONLY))
+                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SelfOnly, NestedScrollMode.SelfOnly))
                     .friction(0.8)
                     .width(90.percent)
                     .backgroundColor(0xFAEEE0)
@@ -329,7 +339,7 @@ class View_Grid {
                  * -@Expect: 1、 rowsTemplate设置最小行高值为30，自动计算行数和实际行高；
                  */
                 Text("grid_case_07: rowsTemplate入参repeat(auto-fit, 30)")
-                Grid() {
+                Grid(child: { =>
                     ForEach(
                         value2,
                         itemGeneratorFunc: {
@@ -343,7 +353,7 @@ class View_Grid {
                             }
                         }
                     )
-                }
+                })
                     .rowsTemplate("repeat(auto-fit, 30)")
                     .columnsGap(10.0.vp)
                     .rowsGap(10.0.vp)
@@ -360,7 +370,7 @@ class View_Grid {
                  * -@Expect: 1、 rowsTemplate设置固定行高值为30，自动计算行数；
                  */
                 Text("grid_case_08: rowsTemplate入参repeat(auto-fill, 30)")
-                Grid() {
+                Grid(child: { =>
                     ForEach(
                         value2,
                         itemGeneratorFunc: {
@@ -374,7 +384,7 @@ class View_Grid {
                             }
                         }
                     )
-                }
+                })
                     .rowsTemplate("repeat(auto-fill, 30)")
                     .columnsGap(@r(app.string.len_2))
                     .rowsGap(@r(app.string.len_2))
@@ -389,7 +399,7 @@ class View_Grid {
                  * -@Expect: 1、 rowsTemplate设置固定行高值为30，使用rowsGap为最小行间距，自动计算行数和实际行间距；
                  */
                 Text("grid_case_09: rowsTemplate入参repeat(auto-stretch, 30)")
-                Grid() {
+                Grid(child: { =>
                     ForEach(
                         value2,
                         itemGeneratorFunc: {
@@ -403,7 +413,7 @@ class View_Grid {
                             }
                         }
                     )
-                }
+                })
                     .rowsTemplate("repeat(auto-stretch, 30)")
                     .width(90.percent)
                     .backgroundColor(0xFAEEE0)
@@ -421,7 +431,7 @@ class View_Grid {
                  */
                 Text("grid_case_101: 改变列表显示的起始位置触发onScrollIndex事件,获取返回值绑定Text组件显示")
                 Text("first: ${this.index_grid}; last: ${this.last_grid}").id("index_grid")
-                Grid(scroller: this.scroller) {
+                Grid(scroller: this.scroller, child: { =>
                     ForEach(
                         DataSource_str_case_003,
                         itemGeneratorFunc: {
@@ -430,7 +440,7 @@ class View_Grid {
                             }.height(100.vp)
                         }
                     )
-                }
+                })
                     .cachedCount(1)
                     .columnsGap(10)
                     .rowsGap(10)
@@ -449,8 +459,9 @@ class View_Grid {
                  *           4、 GridItem默认填满网格大小；
                  */
                 Text(
-                    "grid_case_301: rowsTemplate、columnsTemplate同时设置，只展示固定行列，其余不展示；属性layoutDirection、maxCount、minCount、cellLength不生效")
-                Grid() {
+                    "grid_case_301: rowsTemplate、columnsTemplate同时设置，只展示固定行列，其余不展示；属性layoutDirection、maxCount、minCount、cellLength不生效"
+                )
+                Grid(child: { =>
                     ForEach(
                         value2,
                         itemGeneratorFunc: {
@@ -464,7 +475,7 @@ class View_Grid {
                             }
                         }
                     )
-                }
+                })
                     .rowsTemplate("1fr 1fr 1fr 1fr 1fr")
                     .columnsTemplate("1fr 1fr 1fr 1fr 1fr")
                     .columnsGap(10.vp)
@@ -481,7 +492,7 @@ class View_Grid {
                     .id("grid_case_301")
 
                 Text("grid_case_302: 行与行之间的间距: 10")
-                Grid() {
+                Grid(child: { =>
                     GridItem() {
                         Text("-------行与行之间的间距: 10-------").height(100.percent)
                     }.backgroundColor(0xF9CF93)
@@ -495,7 +506,7 @@ class View_Grid {
                         Text("-------行与行之间的间距: 10-------").height(100.percent)
                     }.backgroundColor(0xF9CF93)
                     GridItem()
-                }
+                })
                     .columnsGap(10)
                     .rowsGap(10)
                     .columnsTemplate("3fr 3fr")
@@ -510,8 +521,9 @@ class View_Grid {
                  *           2、 属性layoutDirection、maxCount、minCount、cellLength不生效；
                  */
                 Text(
-                    "grid_case_303: 只设置rowsTemplate，Grid滚动方向为水平方向；属性layoutDirection、maxCount、minCount、cellLength不生效")
-                Grid() {
+                    "grid_case_303: 只设置rowsTemplate，Grid滚动方向为水平方向；属性layoutDirection、maxCount、minCount、cellLength不生效"
+                )
+                Grid(child: { =>
                     ForEach(
                         value2,
                         itemGeneratorFunc: {
@@ -525,7 +537,7 @@ class View_Grid {
                             }
                         }
                     )
-                }
+                })
                     .rowsTemplate("1fr 1fr 1fr 1fr 1fr")
                     .columnsGap(10)
                     .rowsGap(10)
@@ -534,7 +546,7 @@ class View_Grid {
                     .scrollBarWidth(10)
                     .cachedCount(2)
                     .enableScrollInteraction(true)
-                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SELF_ONLY, NestedScrollMode.SELF_ONLY))
+                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SelfOnly, NestedScrollMode.SelfOnly))
                     .friction(0.8)
                     .width(90.percent)
                     .backgroundColor(0xFAEEE0)
@@ -548,8 +560,9 @@ class View_Grid {
                  *           2、 属性layoutDirection、maxCount、minCount、cellLength不生效；
                  */
                 Text(
-                    "grid_case_304: 只设置columnsTemplate，Grid滚动方向为水平方向；属性layoutDirection、maxCount、minCount、cellLength不生效")
-                Grid() {
+                    "grid_case_304: 只设置columnsTemplate，Grid滚动方向为水平方向；属性layoutDirection、maxCount、minCount、cellLength不生效"
+                )
+                Grid(child: { =>
                     ForEach(
                         value2,
                         itemGeneratorFunc: {
@@ -563,7 +576,7 @@ class View_Grid {
                             }
                         }
                     )
-                }
+                })
                     .columnsTemplate("1fr 1fr 1fr 1fr 1fr")
                     .columnsGap(10)
                     .columnsGap(10.px)
@@ -580,7 +593,7 @@ class View_Grid {
                     .scrollBarWidth(10)
                     .cachedCount(2)
                     .enableScrollInteraction(true)
-                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SELF_ONLY, NestedScrollMode.SELF_ONLY))
+                    .nestedScroll(NestedScrollOptions(NestedScrollMode.SelfOnly, NestedScrollMode.SelfOnly))
                     .friction(0.8)
                     .width(90.percent)
                     .backgroundColor(0xFAEEE0)
@@ -595,7 +608,7 @@ class View_Grid {
                  *           2、 此模式下仅生效以下属性：layoutDirection、maxCount、minCount、cellLength、editMode、columnsGap、rowsGap；
                  */
                 Text("grid_case_305: rowsTemplate、columnsTemplate都不设置, 主轴由layoutDirection决定")
-                Grid() {
+                Grid(child: { =>
                     ForEach(
                         value2,
                         itemGeneratorFunc: {
@@ -609,7 +622,7 @@ class View_Grid {
                             }
                         }
                     )
-                }
+                })
                     .columnsGap(10)
                     .rowsGap(10)
                     .width(90.percent)

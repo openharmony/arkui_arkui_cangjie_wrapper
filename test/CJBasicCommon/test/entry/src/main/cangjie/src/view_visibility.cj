@@ -17,7 +17,6 @@ package ohos_app_cangjie_entry
 
 import ohos.base.*
 import ohos.arkui.component.*
-import ohos.router.*
 import ohos.arkui.state_management.SubscriberManager
 import ohos.arkui.state_management.ObservedProperty
 import ohos.arkui.state_macro_manage.*
@@ -25,7 +24,7 @@ import ohos.arkui.state_macro_manage.Entry
 
 @Entry
 @Component
-class View_Visibility {
+class ViewVisibility {
     func build() {
         Column() {
             Row().visibility(Visibility.Hidden).width(90).height(80).backgroundColor(0xAFEEEE).id("my_visibility")

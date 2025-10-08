@@ -19,35 +19,50 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.router.*
+import ohos.arkui.ui_context.*
 
 @Entry
 @Component
-class View_Router2 {
+class ViewRouter2 {
     @State
     var message: String = "xxx"
+    let routerstate : RouterState = RouterState(index:0,name:"",path:"",params:"")
     func build() {
         Column() {
-            Text("Page View_Router2").fontSize(40.fp).id("my_text2")
+            Text("Page ViewRouter2").fontSize(40.fp).id("my_text2")
 
             Button("page2_jumpBack1").onClick {
-                e => Router.back()
+                e => getUIContext().getRouter().back()
             }.id("page2_jumpBack1")
 
             // 覆盖率提升 back  带参url
             Button("page2_jumpBack2").onClick {
-                e => Router.back(url: "View_Router1")
+                e => getUIContext().getRouter().back(url: "ViewRouter1")
             }.id("page2_jumpBack2")
 
             // 覆盖率提升 back JsonObject
             Button("page2_jumpBack3").onClick {
-                e => Router.back(url: "View_Router1", params: "")
+                e => getUIContext().getRouter().back(url: "ViewRouter1", params: "")
             }.id("page2_jumpBack3")
             Button("to_page1_by_pushurl")
                 .onClick {
-                    e => Router.push(url: "View_Router1", params: "from page2")
+                    e => getUIContext().getRouter().pushUrl(url: "ViewRouter1", params: "from page2")
                 }
                 .id("to_page1_by_pushurl")
+
+            Button("get_params").onClick {
+                e =>
+                    var str :Option<String> = getUIContext().getRouter().getParams()
+                    match(str) {
+                        case Some(v) => this.message = v
+                        case None => this.message = "None"
+                    }
+            }.id("get_params")
+
+            Button("back show alert").onClick {
+                e =>
+                    getUIContext().getRouter().back()
+            }.id("back_show_alert")
 
             Text(message).id("router2_get_message")
         }

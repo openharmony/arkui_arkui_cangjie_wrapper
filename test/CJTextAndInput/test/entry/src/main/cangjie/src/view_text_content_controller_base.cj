@@ -23,7 +23,7 @@ import ohos.resource_manager.*
 
 @Entry
 @Component
-class View_TextContentControllerBase {
+class ViewTextContentControllerBase {
     @State
     var message: String = "Hello Cangjie"
 
@@ -32,7 +32,7 @@ class View_TextContentControllerBase {
     @State
     var text: String = ###"123
 321
-222"### //原始字符，别在前面加空格，不然UT会有偏差
+222"###//原始字符，别在前面加空格，不然UT会有偏差
     var controller: SearchController = SearchController()
     var controller1: TextInputController = TextInputController()
     var controller2: TextAreaController = TextAreaController()
@@ -46,9 +46,9 @@ class View_TextContentControllerBase {
                     .width(95.percent)
                     .height(40)
                     .margin(20)
-                    .onChange {
+                    .onChange({
                         value: String => this.text = value
-                    }
+                    })
                     .id("Search")
                 TextInput(text: this.text, placeholder: 'TextInput', controller: this.controller1)
                     .placeholderColor(Color.Gray)
@@ -57,9 +57,9 @@ class View_TextContentControllerBase {
                     .height(40)
                     .margin(20)
                     .fontColor(Color.Black)
-                    .onChange {
+                    .onChange({
                         value: String => this.text = value
-                    }
+                    })
                     .id("TextInput")
                 TextArea(text: this.text, placeholder: 'TextArea', controller: this.controller2)
                     .placeholderColor(Color.Gray)
@@ -67,27 +67,25 @@ class View_TextContentControllerBase {
                     .width(95.percent)
                     .margin(20)
                     .fontColor(Color.Black)
-                    .onChange {
+                    .onChange({
                         value: String => this.text = value
-                    }
+                    })
                     .id("TextArea")
-                Button('Get Search').margin(15).onClick {
-                    event => this.controller.caretPosition(11) //移动光标位置
-                }.id("GetSearch")
+                Button('Get Search')
+                    .margin(15)
+                    .onClick({ event => this.controller.caretPosition(11)//移动光标位置
+                    })
+                    .id("GetSearch")
                 Button('Get TextInput')
                     .margin(5)
-                    .onClick {
-                        event => this.controller1.caretPosition(11) //移动光标位置
-                    }
+                    .onClick({ event => this.controller1.caretPosition(11)//移动光标位置
+                    })
                     .id("GetTextInput")
                 Button('Get TextArea')
                     .margin(5)
-                    .onClick {
-                        event => this.controller2.caretPosition(11) //移动光标位置
-                    }
+                    .onClick({ event => this.controller2.caretPosition(11)//移动光标位置
+                    })
                     .id("GetTextArea")
-
-                Text("${this.linesnum}").id("linesnum").margin(10)
             }.width(100.percent)
         }.height(100.percent)
     }

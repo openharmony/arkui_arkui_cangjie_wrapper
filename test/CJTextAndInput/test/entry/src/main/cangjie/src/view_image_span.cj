@@ -25,24 +25,33 @@ import ohos.multimedia.image.*
 
 @Entry
 @Component
-class View_ImageSpan {
+class ViewImageSpan {
     @State
     var s_width: Float64 = 0.0
     let color = Array<UInt8>(96, repeat: 0)
     let opts = InitializationOptions(Size(4, 6), editable: true, pixelFormat: Rgba8888)
     let pixelMap = createPixelMap(color, opts)
     let ColorFilterMatrix = ColorFilter(
-        [0.239, 0.0, 0.0, 0.0, 0.0, 0.0, 0.616, 0.0, 0.0, 0.0, 0.0, 0.0, 0.706, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]);
+        [0.239, 0.0, 0.0, 0.0, 0.0,
+        0.0, 0.616, 0.0, 0.0, 0.0,
+        0.0,0.0, 0.706, 0.0, 0.0,
+        0.0, 0.0,0.0, 1.0, 0.0]);
 
     func build() {
         Column() {
             // 基础场景用例：默认属性设置
             Text() {
-                ImageSpan(@r(app.media.app_icon)).width(100.vp).height(100.vp).id("imagespan_test_1")
+                ImageSpan(@r(app.media.app_icon))
+                    .width(100.vp)
+                    .height(100.vp)
+                    .id("imagespan_test_1")
             }
 
             Text() {
-                ImageSpan(pixelMap).width(100.vp).height(100.vp).id("imagespan_test_2")
+                ImageSpan(pixelMap)
+                    .width(100.vp)
+                    .height(100.vp)
+                    .id("imagespan_test_2")
             }
 
             // 基础场景用例：合法属性设置
@@ -53,9 +62,9 @@ class View_ImageSpan {
                     .height(100.vp)
                     .colorFilter(ColorFilterMatrix)
                     .objectFit(ImageFit.Fill)
-                    .verticalAlign(ImageSpanAlignment.TOP)
-                    .verticalAlign(ImageSpanAlignment.CENTER)
-                    .onComplete({imobj: ImageLoadResult => s_width = imobj.width})
+                    .verticalAlign(ImageSpanAlignment.Top)
+                    .verticalAlign(ImageSpanAlignment.Center)
+                    .onComplete({imobj: ImageLoadResult => s_width = imobj.width.getOrThrow()})
             }
 
             Text() {
@@ -65,18 +74,18 @@ class View_ImageSpan {
                     .id("imagespan_test_4")
                     .colorFilter(ColorFilterMatrix)
                     .objectFit(ImageFit.Fill)
-                    .verticalAlign(ImageSpanAlignment.CENTER)
-                    .onComplete({imobj: ImageLoadResult => this.s_width = imobj.width})
+                    .verticalAlign(ImageSpanAlignment.Center)
+                    .onComplete({imobj:ImageLoadResult =>this.s_width = imobj.width.getOrThrow()})
             }
 
             Text("${this.s_width}").id("imagespan_width1")
 
             Text() {
-                ImageSpan(AppResource("app", "media", 1))
+                ImageSpan(AppResource("app","media",1))
                     .width(100.vp)
                     .height(100.vp)
                     .id("imagespan_test_5")
-                    .onError({imobj: ImageError => this.s_width = imobj.componentWidth})
+                    .onError({imobj: ImageError =>this.s_width = imobj.componentWidth.getOrThrow()})
             }
 
             Text("${this.s_width}").id("imagespan_width2")
@@ -90,6 +99,8 @@ class View_ImageSpan {
                     .objectFit(ImageFit.Auto)
                     .objectFit(ImageFit.None)
             }.id("11111")
+
         }.width(100.percent).alignItems(HorizontalAlign.Center).justifyContent(FlexAlign.Center)
     }
+
 }

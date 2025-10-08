@@ -23,34 +23,42 @@ import std.collection.{ArrayList, HashMap}
 
 @Entry
 @Component
-class View_Grid_Col {
+class ViewGridCol {
     func build() {
         Column {
             GridRow() {
                 GridCol(span: 1, offset: 0, order: 0) {
                     Row() {
-                        Text("grid_col_1").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
+                        Text("grid_col_1")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
                 }
                     .borderColor(Color.Blue)
                     .borderWidth(2.vp)
                     .span(2)
-                    .order(GridColColumnOption())
+                    .order(GridColOptions())
                     .order(2)
                     .id("grid_col_1")
             }
 
             GridRow() {
-                GridCol(span: GridColColumnOption(md: 16), offset: GridColColumnOption(md: 16),
-                    order: GridColColumnOption(md: 16)) {
+                GridCol(span: GridColOptions(md: 16), offset: GridColOptions(md: 16),
+                    order: GridColOptions(md: 16)) {
                     Row() {
-                        Text("grid_col_2").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
+                        Text("grid_col_2")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
                 }
                     .borderColor(Color.Blue)
                     .borderWidth(2.vp)
                     .span(2)
-                    .order(GridColColumnOption())
+                    .order(GridColOptions())
                     .order(2)
                     .id("grid_col_2")
             }
@@ -58,24 +66,39 @@ class View_Grid_Col {
             GridRow() {
                 GridCol() {
                     Row() {
-                        Text("grid_col_attr_1").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
-                }.borderColor(Color.Blue).borderWidth(2.vp).span(2).gridColOffset(1).order(0).id("grid_col_attr_1")
+                        Text("grid_col_attr_1")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
+                }
+                    .borderColor(Color.Blue)
+                    .borderWidth(2.vp)
+                    .span(2)
+                    .gridColOffset(1)
+                    .order(0)
+                    .id("grid_col_attr_1")
             }
 
             GridRow() {
                 GridCol() {
                     Row() {
-                        Text("grid_col_attr_2").fontColor(Color.Gray).fontSize(12)
-                    }.width(100.percent).height(40.vp)
+                        Text("grid_col_attr_2")
+                            .fontColor(Color.Gray)
+                            .fontSize(12)
+                    }
+                        .width(100.percent)
+                        .height(40.vp)
                 }
                     .borderColor(Color.Blue)
                     .borderWidth(2.vp)
-                    .span(GridColColumnOption())
-                    .gridColOffset(GridColColumnOption())
-                    .order(GridColColumnOption())
+                    .span(GridColOptions())
+                    .gridColOffset(GridColOptions())
+                    .order(GridColOptions())
                     .id("grid_col_attr_2")
             }
         }
     }
 }
+

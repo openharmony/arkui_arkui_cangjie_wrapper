@@ -13,40 +13,37 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/13
+ */
 package ohos_app_cangjie_entry
-
 let _ = testsuites()
-
-private func testsuites(): Unit {
-    //    registerTestSuite("TextAndInput_UT_1") {TextAndInput_UT_1()}
-    //    registerTestSuite("TextAndInput_UT_2") {TextAndInput_UT_2()}
+private func testsuites():Unit{
+    registerTestSuite("TextAndInputUT1") {TextAndInputUT1()}
+    registerTestSuite("TextAndInputUT11") {TextAndInputUT11()}
+    registerTestSuite("TextAndInputUT2") {TextAndInputUT2()}
+    registerTestSuite("TextAndInputUT21") {TextAndInputUT21()}
+    registerTestSuite("TextAndInputUT22") {TextAndInputUT22()}
 }
 
 let UT_views = [
-    "TextAndInput_UT1",
-    "TextAndInput_UT2"
+    "TextAndInputIndex1",
+    "TextAndInputIndex2"
 ]
 let UT1 = [
-    "View_Font",
-    "View_Hyperlink",
-    "View_Hyperlink2",
-    "View_ImageSpan",
-    "View_Measure",
-    "View_Observer",
-    "View_Observer2",
-    "View_RichEditor",
-    "View_RichText",
-    "View_Search",
-    "View_Search_Enhance",
-    "View_Span"
+    "ViewFont",
+    "ViewImageSpan",
+    "ViewRichEditor",
+    "ViewRichEditor2",
+    "ViewRichText",
+    "ViewSearch",
+    "ViewSpan"
 ]
 let UT2 = [
-    "View_SymbolGlyph",
-    "View_SymbolSpan",
-    "View_Text",
-    "View_TextContentControllerBase",
-    "View_TextArea",
-    "View_TextClock",
-    "View_TextInput",
-    "View_TextInput_Enhance"
+    "ViewText",
+    "ViewTextContentControllerBase",
+    "ViewTextArea",
+    "ViewTextClock",
+    "ViewTextInput",
+    "ViewTextInputEnhance"
 ]

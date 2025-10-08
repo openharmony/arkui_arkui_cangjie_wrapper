@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/7/17
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -49,7 +52,7 @@ class MyDialog {
 
 @Entry
 @Component
-class View_CustomDialog {
+class ViewCustomDialog {
     @State
     var message: String = "begin"
     var dialogController1: CustomDialogController = CustomDialogController(

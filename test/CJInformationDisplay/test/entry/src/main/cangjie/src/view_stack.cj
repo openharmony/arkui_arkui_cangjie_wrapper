@@ -13,22 +13,30 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/25
+ */
 package ohos_app_cangjie_entry
-
+ 
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Stack {
+class ViewStack{
     func build() {
         Stack(alignContent: Alignment.BottomStart) { //子组件底部起始端对齐
             Text("stack bottom").size(width: 100.percent, height: 600.px).backgroundColor(0xF5DEB3).id("stack_bottom")
             Text("stack top").size(width: 50.percent, height: 200.px).backgroundColor(0xD2B48C).id("stack_top")
-            Stack().size(width: 100.vp, height: 100.vp)
-        }.align(Alignment.Top).alignContent(Alignment.BottomEnd).width(100.percent).backgroundColor(0xAFEEEE)
+            Stack()
+            .size(width: 100.vp, height: 100.vp)
+        }
+        .align(Alignment.Top)
+        .alignContent(Alignment.BottomEnd)
+        .width(100.percent)
+        .backgroundColor(0xAFEEEE)
     }
 }

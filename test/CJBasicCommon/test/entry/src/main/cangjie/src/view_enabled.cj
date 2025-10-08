@@ -13,21 +13,34 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/17
+ */
+
 package ohos_app_cangjie_entry
 
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.{ ArrayList, HashMap }
 
 @Entry
 @Component
-class View_Enablded {
+class ViewEnablded {
     func build() {
         Flex(justifyContent: FlexAlign.SpaceAround) {
-            Button("disable").enabled(false).backgroundColor(0x317aff).opacity(0.4).id("Button1")
-            Button("enable").enabled(true).backgroundColor(0x317aff).id("Button2")
-        }.width(100.percent).padding(top: 5)
+            Button("disable")
+                .enabled(false)
+                .backgroundColor(0x317aff)
+                .opacity(0.4)
+                .id("Button1")
+            Button("enable")
+                .enabled(true)
+                .backgroundColor(0x317aff)
+                .id("Button2")
+        }
+        .width(100.percent)
+        .padding(top: 5)
     }
 }

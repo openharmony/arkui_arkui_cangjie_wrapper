@@ -55,7 +55,6 @@ public class Global {
         getWindowStage().getMainWindow()
     }
 }
-
 public var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
 class MainAbility <: UIAbility {
@@ -65,20 +64,20 @@ class MainAbility <: UIAbility {
     }
 
     public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-        Hilog.info(1, "1", "MainAbility OnCreated.${want.abilityName}")
+        Hilog.info(1,"1", "MainAbility OnCreated.${want.abilityName}")
         match (launchParam.launchReason) {
-            case LaunchReason.StartAbility => Hilog.info(1, "1", "START_ABILITY")
+            case LaunchReason.StartAbility => Hilog.info(1,"1", "START_ABILITY")
             case _ => ()
         }
     }
 
     public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-        Hilog.info(1, "1", "MainAbility onWindowStageCreate.")
+        Hilog.info(1,"1", "MainAbility onWindowStageCreate.")
         Global.windowStage = windowStage
         windowStage.loadContent("MyView")
         AppStorage.setOrCreate<UIAbilityContext>("abilityContext", this.context) //适配新getContextStage, AbilityContext存在AppStorage
         AppStorage.setOrCreate<WindowStage>("windowStage", windowStage)
-        //        windowStage.loadContentByName("MyView")
+//        windowStage.loadContentByName("MyView")
         let promise = windowStage.getSubWindow()
     }
 }

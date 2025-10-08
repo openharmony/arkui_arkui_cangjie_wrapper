@@ -21,7 +21,7 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class View_BorderImage {
+class ViewBorderImage {
     func build() {
         Column {
             Text('test borderImage 1.').textAlign(TextAlign.Center).height(50).width(200).id("text1")
@@ -32,6 +32,7 @@ class View_BorderImage {
 
             // default
             Text('test borderImage 4.').textAlign(TextAlign.Center).height(50).width(200).id("text4")
+
         }.width(100.percent)
     }
 }

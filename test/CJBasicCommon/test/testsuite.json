@@ -2,27 +2,39 @@
   "name": "testsuite_cj_common_test",
   "test_list": [
     {
-      "name": "BasicCommon_UT_1",
+      "name": "BasicCommonUT1",
       "timeout": 100
     },
     {
-      "name": "BasicCommon_UT_2",
+      "name": "BasicCommonUT2",
       "timeout": 100
     },
     {
-      "name": "BasicCommon_UT_3",
+      "name": "BasicCommonUT21",
       "timeout": 100
     },
     {
-      "name": "BasicCommon_UT_4",
+      "name": "BasicCommonUT3",
       "timeout": 100
     },
     {
-      "name": "BasicCommon_NoPage_Case",
+      "name": "BasicCommonUT31",
       "timeout": 100
     },
     {
-      "name": "Component_UT_Drag_Event",
+      "name": "BasicCommonUT4",
+      "timeout": 100
+    },
+    {
+      "name": "BasicCommonUT41",
+      "timeout": 100
+    },
+    {
+      "name": "BasicCommonUTHello",
+      "timeout": 100
+    },
+    {
+      "name": "BasicCommonUTDragEvent",
       "timeout": 100
     }
   ]

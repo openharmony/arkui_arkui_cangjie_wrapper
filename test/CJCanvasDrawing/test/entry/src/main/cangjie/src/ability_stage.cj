@@ -16,11 +16,11 @@
 package ohos_app_cangjie_entry
 
 internal import ohos.app.ability.ability_stage.AbilityStage
-import ohos.hilog.Hilog
-import ohos.hilog.Hilog
 
+import ohos.hilog.Hilog
+import ohos.hilog.Hilog
 class MyAbilityStage <: AbilityStage {
     public override func onCreate(): Unit {
-        Hilog.info(1, "1", "1", "MyAbilityStage onCreated.")
+        Hilog.info(1,"1","1","MyAbilityStage onCreated.")
     }
 }

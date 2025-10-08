@@ -24,7 +24,7 @@ import std.sync.Timer
 
 @Entry
 @Component
-class View_Global {
+class ViewGlobal {
     @State
     var time: Int64 = 0
     @State

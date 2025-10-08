@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+/**
+ * Created on 2024/6/14
+ */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -23,7 +26,7 @@ import std.collection.{ArrayList, HashMap, HashSet}
 
 @Entry
 @Component
-class View_Grid_Item {
+class ViewGridItem {
     let scroller = Scroller()
     @State
     var numbers: ArrayList<String> = ArrayList(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13",
@@ -53,30 +56,47 @@ class View_Grid_Item {
     @Builder
     func pixelMapBuilder() { //拖拽过程样式
         Column() {
-            Text(this.text).fontSize(16).backgroundColor(0xF9CF93).width(80).height(80).textAlign(TextAlign.Center)
+            Text(this.text)
+                .fontSize(16)
+                .backgroundColor(0xF9CF93)
+                .width(80)
+                .height(80)
+                .textAlign(TextAlign.Center)
         }
     }
 
     protected override func aboutToAppear() {
         for (i in 1..16) {
-            this.numbers.add("${i}")
+            this
+                .numbers
+                .add("${i}")
         }
     }
 
     func changeIndex(index1: Int64, index2: Int64) { //交换数组位置
-        var temp = this.numbers.get(index1).getOrThrow();
-        this.numbers.add(
-            this.numbers.get(index2).getOrThrow(),
-            at: index1
-        )
-        this.numbers.add(temp, at: index2)
+        var temp = this
+            .numbers
+            .get(index1)
+            .getOrThrow();
+        this
+            .numbers
+            .add(
+                this
+                    .numbers
+                    .get(index2)
+                    .getOrThrow(),
+                at: index1
+            )
+        this
+            .numbers
+            .add(temp, at: index2)
     }
 
     func build() {
         Column() {
             Text(this.select_event).id("select_event")
 
-            Grid {
+            Grid(child: { =>
                 //指定当前GridItem组件的起始行号为1，终点行号为4
                 GridItem() {
                     Text("4")
@@ -86,7 +106,10 @@ class View_Grid_Item {
                         .height(100.percent)
                         .textAlign(TextAlign.Center)
                         .id("text1")
-                }.rowStart(1).rowEnd(4).id("gridItem1")
+                }
+                    .rowStart(1)
+                    .rowEnd(4)
+                    .id("gridItem1")
 
                 //循环渲染Griditem，标记为0-15
                 ForEach(
@@ -111,17 +134,20 @@ class View_Grid_Item {
                         .height(100.percent)
                         .textAlign(TextAlign.Center)
                         .id("text2")
-                }.columnStart(1).columnEnd(5).id("gridItem2")
+                }
+                    .columnStart(1)
+                    .columnEnd(5)
+                    .id("gridItem2")
 
                 GridItem()
-            }
+            })
                 .columnsTemplate("1fr 1fr 1fr 1fr 1fr")
                 .rowsTemplate("1fr 1fr 1fr 1fr 1fr")
                 .width(90.percent)
                 .backgroundColor(0xFAEEE0)
                 .height(300)
 
-            Grid() {
+            Grid(child: { =>
                 //循环渲染Griditem，标记为0-15
                 ForEach(
                     this.numbers2,
@@ -141,7 +167,7 @@ class View_Grid_Item {
                         )
                     }
                 )
-            }
+            })
                 .columnsTemplate("1fr 1fr 1fr")
                 .rowsTemplate("1fr 1fr")
                 .columnsGap(4)
@@ -151,7 +177,7 @@ class View_Grid_Item {
                 .height(150)
                 .padding(4.vp)
 
-            Grid() {
+            Grid(child: { =>
                 //循环渲染Griditem，标记为0-15
                 ForEach(
                     this.numbers2,
@@ -171,7 +197,7 @@ class View_Grid_Item {
                         )
                     }
                 )
-            }
+            })
                 .columnsTemplate("1fr 1fr 1fr")
                 .rowsTemplate("1fr 1fr")
                 .columnsGap(4)
@@ -181,8 +207,12 @@ class View_Grid_Item {
                 .height(150)
                 .padding(4.vp)
 
-            Text("scroll").fontColor(0xCCCCCC).fontSize(9).width(90.percent)
-            Grid(scroller: this.scroller3) {
+            Text(this.message)
+                .id("scroll_text")
+                .fontColor(0xCCCCCC)
+                .fontSize(9)
+                .width(90.percent)
+            Grid(scroller: this.scroller3, child: { =>
                 ForEach(
                     this.numbers3,
                     itemGeneratorFunc: {
@@ -201,7 +231,7 @@ class View_Grid_Item {
                         )
                     }
                 )
-            }
+            })
                 .columnsTemplate("1fr 1fr 1fr 1fr 1fr")
                 .columnsGap(10)
                 .rowsGap(10)
@@ -214,7 +244,9 @@ class View_Grid_Item {
                 .backgroundColor(0xFAEEE0)
                 .height(300)
                 .onScrollStart({
-                    => Hilog.info(1, "info", "XXX" + "Grid onScrollStart")
+                    => 
+                        this.message = "onScrollFrameBegin"
+                        Hilog.info(1, "info", "XXX" + "Grid onScrollStart")
                 })
                 .onScrollStop({
                     => Hilog.info(1, "info", "XXX" + "Grid onScrollStop")
@@ -236,10 +268,12 @@ class View_Grid_Item {
 
             Button('next page').onClick({
                 e => // 点击后滑到下一页
-                this.scroller.scrollPage(true, animation: false)
+                this
+                    .scroller
+                    .scrollPage(true, animation: false)
             })
 
-            Grid(scroller: this.scroller4) {
+            Grid(scroller: this.scroller4, child: { =>
                 ForEach(
                     this.numbers4,
                     itemGeneratorFunc: {
@@ -253,13 +287,15 @@ class View_Grid_Item {
                         }
                     }
                 )
-            }
+            })
                 .columnsTemplate("1fr 1fr 1fr")
                 .columnsGap(10)
                 .rowsGap(10)
                 .width(90.percent)
                 .backgroundColor(0xFAEEE0)
                 .height(300)
-        }.width(100.percent).margin(top: 5)
+        }
+            .width(100.percent)
+            .margin(top: 5)
     }
 }

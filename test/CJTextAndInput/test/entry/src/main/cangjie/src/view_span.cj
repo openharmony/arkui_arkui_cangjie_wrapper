@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+///**
+// * Created on 2024/6/17
+// */
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -21,11 +24,12 @@ import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.resource_manager.*
 import std.collection.*
-import kit.LocalizationKit.*
+import ohos.i18n.*
+import ohos.resource_manager.*
 
 @Entry
 @Component
-class View_Span {
+class ViewSpan {
     @State
     var message: Int32 = 0
     @State
@@ -36,8 +40,7 @@ class View_Span {
         ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 30.0, offsetY: 0.0, color: Color.Blue),
         ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 40.0, offsetY: 0.0, color: Color.Green),
         ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 10.0, offsetY: 0.0, color: 0xFFFFFF),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 40.0, offsetY: 0.0,
-            color: @r(app.color.start_window_background))
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Color, offsetX: 40.0, offsetY: 0.0, color: @r(app.color.start_window_background))
     ]
     let textShadows = ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 10.0, offsetY: 0.0,
         color: Color.Red, fill: false)
@@ -54,8 +57,9 @@ class View_Span {
                     .textCase(TextCase.Normal)
                     .decoration(decorationType: TextDecorationType.None, color: Color.Red)
                     .letterSpacing(1.vp)
-                    .id("spanComponent")
-                Span(@r(app.string.span_test)).fontSize(12.5).fontColor(Color.Blue)
+                Span(@r(app.string.span_test))
+                    .fontSize(12.5)
+                    .fontColor(Color.Blue)
                 Span(@r(app.string.span_test))
                     .fontSize(@r(app.string.span_test_font_size))
                     .fontColor(0x123456)
@@ -67,9 +71,12 @@ class View_Span {
                     .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red)
                     .letterSpacing(@r(app.string.distance))
                 Span(@r(app.plural.eat_apple, 5, 5)).fontColor(@r(app.color.blue_color))
-                Span(@r(app.string.span_test)).fontSize(12)
-                Span("This is the Span component").fontSize(12)
-                Span("Test span font").fontSize(12)
+                Span(@r(app.string.span_test))
+                    .fontSize(12)
+                Span("This is the Span component")
+                    .fontSize(12)
+                Span("Test span font")
+                    .fontSize(12)
             }
 
             Text() {
@@ -78,7 +85,7 @@ class View_Span {
                     .fontStyle(FontStyle.Italic)
                     .decoration(decorationType: TextDecorationType.LineThrough,
                         color: @r(app.color.start_window_background))
-                    .onClick({event => Hilog.info(1, "1", "Cangjie-Test", text1)})
+                    .onClick({event => Hilog.info(1, "Cangjie-Test", text1)})
             }.id("spanComponent2")
         }.height(100.percent)
     }

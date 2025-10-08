@@ -24,10 +24,14 @@ import ohos.arkui.state_macro_manage.Entry
 import ohos.arkui.state_macro_manage.Component
 import ohos.arkui.state_macro_manage.State
 import ohos.arkui.state_macro_manage.r
+import ohos.arkui.component.web.*
+
+// Test: transResourceMediaToString  case _
+class Clazz <: ResourceStr {}
 
 @Entry
 @Component
-class View_Web {
+class ViewWeb {
     let webController = WebviewController()
     let webCtrl2 = WebviewController()
 
@@ -45,7 +49,7 @@ class View_Web {
                 Button("refresh")
                     .onClick {
                         evt =>
-                        Hilog.info(1, "1", "refresh")
+                        Hilog.info(1,"1","refresh")
                         webController.refresh()
                     }
                     .width(400.px)
@@ -54,7 +58,7 @@ class View_Web {
                 Button("loadUrl")
                     .onClick {
                         evt =>
-                        Hilog.info(1, "1", "loadUrl")
+                        Hilog.info(1,"1","loadUrl")
                         this.url = "www.baidu.com"
                         webController.loadUrl(this.url)
                     }
@@ -65,10 +69,10 @@ class View_Web {
                 Web(src: @r(app.string.url), controller: webController)
                     .id("my_web")
                     .onPageBegin({
-                        evt => Hilog.info(1, "1", "page begin url: ${evt.url}")
+                        evt => Hilog.info(1,"1","page begin url: ${evt.url}")
                     })
                     .onPageEnd({
-                        evt => Hilog.info(1, "1", "page end url: ${evt.url}")
+                        evt => Hilog.info(1,"1","page end url: ${evt.url}")
                     })
                     .javaScriptProxy(funcList: [{str1 => str1}], name: "objName", methodList: ["test", "toString"],
                         controller: this.webController)
@@ -76,24 +80,32 @@ class View_Web {
                         {
                             req =>
                             req.data.getRequestHeader()
-                            Hilog.info(1, "1", "this.doInter: false")
+                            req.data.getRequestUrl()
+                            req.data.isMainFrame()
+                            req.data.isRedirect()
+                            req.data.isRequestGesture()
+                            req.data.getRequestMethod()
+                            Hilog.info(1,"1","this.doInter: false")
                             return false
                         }
                     )
                     .darkMode(WebDarkMode.On)
                     .mixedMode(MixedMode.All)
-                Web(src: @r(app.string.url), controller: webController)
+                    Web(src: @r(app.string.url), controller: webController)
                     .id("my_web_1")
                     .onPageBegin({
-                        evt => Hilog.info(1, "1", "page begin url: ${evt.url}")
+                        evt => Hilog.info(1,"1","page begin url: ${evt.url}")
                     })
                     .onPageEnd({
-                        evt => Hilog.info(1, "1", "page end url: ${evt.url}")
+                        evt => Hilog.info(1,"1","page end url: ${evt.url}")
                     })
                     .javaScriptProxy(funcList: [{str1 => str1}], name: "objName", methodList: ["test", "toString"],
                         controller: this.webController)
                     .darkMode(WebDarkMode.On)
                     .mixedMode(MixedMode.All)
+
+                    // Test: transResourceMediaToString  case _
+                    Web(src: Clazz(), controller: webController)
             }.height(30.percent)
             Column() {
                 Text(this.outter)
@@ -116,8 +128,8 @@ class View_Web {
                     .zoomAccess(true)
                     .geolocationAccess(true)
                     .verticalScrollBarAccess(true)
-                    .nestedScroll(scrollForward: NestedScrollMode.SELF_FIRST,
-                        scrollBackward: NestedScrollMode.SELF_FIRST)
+                    .nestedScroll(scrollForward: NestedScrollMode.SelfFirst,
+                        scrollBackward: NestedScrollMode.SelfFirst)
             }
         }
     }

@@ -19,7 +19,7 @@ internal import ohos.arkui.component.*
 internal import ohos.arkui.component.loadNativeView
 internal import ohos.arkui.state_management.SubscriberManager
 internal import ohos.arkui.state_management.ObservedProperty
-internal import ohos.router.Router
+
 import ohos.arkui.state_macro_manage.Entry
 import ohos.arkui.state_macro_manage.Component
 import ohos.arkui.state_macro_manage.State
@@ -40,9 +40,9 @@ class MyView {
                             .height(50)
                             .id(viewName)
                             .borderRadius(10)
-                            .onClick {
-                                e => Router.push(url: viewName)
-                            }
+                            .onClick({
+                                e => getUIContext().getRouter().pushUrl(url: viewName)
+                            })
                     }
                 )
             }.width(100.percent).margin(top: 5)
