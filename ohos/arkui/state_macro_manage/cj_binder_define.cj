@@ -33,12 +33,6 @@ public macro Binder(input: Tokens): Tokens {
     }
 
     return quote(
-        (
-            $input,
-            {
-                newValue =>
-                $input = newValue
-            }
-        )
+        Bindable($input, { newValue => $input = newValue })
     )
 }

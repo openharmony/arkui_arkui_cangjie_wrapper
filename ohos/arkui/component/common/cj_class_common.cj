@@ -1513,6 +1513,35 @@ public class Font {
     }
 }
 
+/*
+ * Defines a bindable property.
+ */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class Bindable<T> {
+    /*
+     * Defines value of the bindable property.
+     */
+    public let value: T
+
+    /*
+     * Defines the callback of the bindable property which will be invoked when the property value changes.
+     */
+    public let onchange: (T) -> Unit
+    /**
+     * Bindable constructor.
+     *
+     * @params { T } value - value of the bindable property.
+     * @params { (T) -> Unit } onchange - callback of the bindable property.
+     */
+    public init(value: T, onchange: (T) -> Unit) {
+        this.value = value
+        this.onchange = onchange
+    }
+}
+
 /**
  * TextContentControllerBase
  *
