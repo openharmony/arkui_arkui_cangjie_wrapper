@@ -297,11 +297,11 @@ public class ButtonOptions {
     /**
      * ButtonOptions constructor.
      *
-     * @params { ?ButtonType } shape
-     * @params { ?Bool } stateEffect
-     * @params { ?ButtonStyleMode } buttonStyle
-     * @params { ?ControlSize } controlSize
-     * @params { ?ButtonRole } role
+     * @params { ?ButtonType } shape - Describes the button style.
+     * @params { ?Bool } stateEffect - Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
+     * @params { ?ButtonStyleMode } buttonStyle - Describes the button style.
+     * @params { ?ControlSize } controlSize - Describes the button size.
+     * @params { ?ButtonRole } role - Describes the button role.
      */
     @!APILevel[
         22,
@@ -348,7 +348,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Button object
      *
-     * @params { () -> Unit } child
+     * @params { () -> Unit } child - The child component of the button
      */
     @!APILevel[
         22,
@@ -622,17 +622,6 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
         this
     }
 
-    /**
-     * Sets the padding of the component.
-     * Default value: **0**.
-     *
-     * @params { Length } value
-     * @returns { This }
-     */
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func paddingInner(value: ?Length): This {
         let content = transAppResourceToLength(value ?? 0.0.vp)
         let value_: Float64 = content.value
@@ -651,17 +640,6 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
         this
     }
 
-    /**
-     * Sets the size of the component.
-     *
-     * @params { Length } width
-     * @params { Length } height
-     * @returns { This }
-     */
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func sizeInner(width: ?Length, height: ?Length): This {
         if (width.isNone() || height.isNone()) {
             widthInner(width)
