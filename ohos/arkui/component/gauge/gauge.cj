@@ -134,10 +134,10 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * The constructor of Gauge.
      *
-     * @params { ?Float64 } value
-     * @params { ?Float64 } min
-     * @params { ?Float64 } max
-     * @params { () -> Unit } child
+     * @params { ?Float64 } value - Set current data value.
+     * @params { ?Float64 } min - Set current segment minimum value.
+     * @params { ?Float64 } max - Set current segment maximum value.
+     * @params { () -> Unit } child - Set child component of Gauge.
      */
     @!APILevel[
         22,
