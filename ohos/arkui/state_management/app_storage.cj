@@ -38,14 +38,17 @@ public class AppStorage {
             case None => AppStorage.instance = AppStorage()
             case Some(v) => ()
         }
-        return AppStorage.instance.getOrThrow()
+        return AppStorage.instance.getOrThrow({
+            => BusinessException(100001, "Internal error.")
+        })
     }
 
     /**
      * Create and return a two-way sync ("link") to named property
      *
      * @params { String } propName - name of source property in AppStorage
-     * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>, return 'None' if named property does not already exist in AppStorage
+     * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>, return 'None' if named property does not already exist in AppStorage.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -63,6 +66,7 @@ public class AppStorage {
      * @params { T } defaultValue - value to be used for initializing new property in AppStorage
      *        default value must be of type T, can be None.
      * @returns { ObservedProperty<T> } instance of ObservedProperty<T>.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -77,6 +81,7 @@ public class AppStorage {
      *
      * @params { String } propName - name of source property in AppStorage
      * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>, return None if named property does not already exist in AppStorage.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -94,6 +99,7 @@ public class AppStorage {
      * @params { String } propName - name of source property in AppStorage
      * @params { T } defaultValue - value to be used for initializing new property in AppStorage.
      * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -110,7 +116,8 @@ public class AppStorage {
      * Same as see LocalStorage.has()
      *
      * @params { String } propName - searched property
-     * @returns { Bool } true if property with such name exists in AppStorage
+     * @returns { Bool } true if property with such name exists in AppStorage.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -125,7 +132,8 @@ public class AppStorage {
      * Obtain the value of property with given name, returns undefined if the property does not exist in AppStorage.
      *
      * @params { String } propName
-     * @returns { ?T } property value of type T if found or None
+     * @returns { ?T } property value of type T if found or None.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -142,7 +150,8 @@ public class AppStorage {
      *
      * @params { String } propName
      * @params { T } newValue - must be of type T
-     * @returns { Bool } true on success, i.e. when above conditions are satisfied, otherwise false
+     * @returns { Bool } true on success, i.e. when above conditions are satisfied, otherwise false.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -159,7 +168,8 @@ public class AppStorage {
      * see LocalStorage.setOrCreate()
      *
      * @params { String } propName
-     * @params { T } newValue - must be of type T
+     * @params { T } newValue - must be of type T.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -185,7 +195,8 @@ public class AppStorage {
      * Same as see LocalStorage.delete()
      *
      * @params { String } propName
-     * @returns { Bool } false if method failed
+     * @returns { Bool } false if method failed.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -200,7 +211,8 @@ public class AppStorage {
      * same as ES6 Map.prototype.keys()
      * Same as see LocalStorage.keys()
      *
-     * @returns {  EquatableCollection<String> } return a Map Iterator
+     * @returns {  EquatableCollection<String> } return a Map Iterator.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -213,7 +225,8 @@ public class AppStorage {
     /**
      * Method returns the number of properties currently in AppStorage
      *
-     * @returns { Int64 } Returns the number of properties currently in AppStorage
+     * @returns { Int64 } Returns the number of properties currently in AppStorage.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -228,6 +241,7 @@ public class AppStorage {
      * Precondition is that there are no subscribers, see Delete().
      *
      * @returns { boolean } false and deletes no properties if there is any property that still has subscribers.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,

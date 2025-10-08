@@ -342,7 +342,6 @@ public class PopupStateChangeParam {
 
 /**
  * Defines the popup options.
- *
  */
 @!APILevel[
     22,
@@ -351,7 +350,6 @@ public class PopupStateChangeParam {
 public class PopupOptions {
     /**
      * Content of the popup message.
-     *
      */
     @!APILevel[
         22,
@@ -406,7 +404,6 @@ public class PopupOptions {
 
     /**
      * Whether to display in the sub window.
-     *
      */
     @!APILevel[
         22,
@@ -417,7 +414,6 @@ public class PopupOptions {
     /**
      * Whether to apply a mask to the popup.
      * and a color value means to apply a mask in the corresponding color to the popup.
-     *
      */
     @!APILevel[
         22,
@@ -427,7 +423,6 @@ public class PopupOptions {
 
     /**
      * Sets the space of between the popup and target.
-     *
      */
     @!APILevel[
         22,
@@ -438,7 +433,6 @@ public class PopupOptions {
     /**
      * The placement of popup.
      * Supports all positions defined in Placement.
-     *
      */
     @!APILevel[
         22,
@@ -448,7 +442,6 @@ public class PopupOptions {
 
     /**
      * Sets the position offset of the popup.
-     *
      */
     @!APILevel[
         22,
@@ -468,7 +461,6 @@ public class PopupOptions {
 
     /**
      * Sets the position offset of the popup.
-     *
      */
     @!APILevel[
         22,
@@ -478,7 +470,6 @@ public class PopupOptions {
 
     /**
      * Whether hide popup when click mask.
-     *
      */
     @!APILevel[
         22,
@@ -488,7 +479,6 @@ public class PopupOptions {
 
     /**
      * Set the width of the popup.
-     *
      */
     @!APILevel[
         22,
@@ -498,7 +488,6 @@ public class PopupOptions {
 
     /**
      * The position of the sharp corner of popup.
-     *
      */
     @!APILevel[
         22,
@@ -508,7 +497,6 @@ public class PopupOptions {
 
     /**
      * The width of the arrow.
-     *
      */
     @!APILevel[
         22,
@@ -518,7 +506,6 @@ public class PopupOptions {
 
     /**
      * The height of the arrow.
-     *
      */
     @!APILevel[
         22,
@@ -528,7 +515,6 @@ public class PopupOptions {
 
     /**
      * The round corners of the popup.
-     *
      */
     @!APILevel[
         22,
@@ -538,7 +524,6 @@ public class PopupOptions {
 
     /**
      * The style of popup Shadow.
-     *
      */
     @!APILevel[
         22,
@@ -548,7 +533,6 @@ public class PopupOptions {
 
     /**
      * Defines popup background blur Style
-     *
      */
     @!APILevel[
         22,
@@ -557,7 +541,6 @@ public class PopupOptions {
     public var backgroundBlurStyle: ?BlurStyle
     /**
      * Defines the transition effect of popup opening and closing
-     *
      */
     @!APILevel[
         22,
@@ -567,7 +550,6 @@ public class PopupOptions {
 
     /**
      * Callback function when the popup interactive dismiss
-     *
      */
     @!APILevel[
         22,
@@ -577,7 +559,6 @@ public class PopupOptions {
 
     /**
      * Determine if popup can follow the target node when it has rotation or scale
-     *
      */
     @!APILevel[
         22,

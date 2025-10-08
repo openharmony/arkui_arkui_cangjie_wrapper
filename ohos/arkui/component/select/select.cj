@@ -612,7 +612,7 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
     }
 
     /**
-     * set the menu's background color
+     * Set the menu's background color.
      *
      * @params { ?ResourceColor } value - The backgroundColor of menu.
      * @returns { This } the attribute of the select.
@@ -629,7 +629,7 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
     }
 
     /**
-     * set menu background blur Style
+     * Set menu background blur Style.
      *
      * @params { ?BlurStyle } value - The BackgroundBlurStyle of menu.
      * @returns { This } the attribute of the select.
@@ -673,10 +673,6 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
         this
     }
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     protected override func directionInner(value: ?Direction): This {
         unsafe {
             FfiOHOSAceFrameworkSelectSetDirection((value ?? Direction.Auto).getValue())

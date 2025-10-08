@@ -205,8 +205,8 @@ public class LocalStorage {
      * @params { String } propName - name of source property in LocalStorage
      * @params { T } defaultValue - value to be used for initializing new property in LocalStorage
      *        default value must be of type T.
-     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
-     *          Apps can use SDK functions of base class ObservedProperty<T>
+     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>. Apps can use SDK functions of base class ObservedProperty<T>
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -218,7 +218,9 @@ public class LocalStorage {
             case None => this.setOrCreate<T>(propName, defaultValue)
             case _ => ()
         }
-        return this.link<T>(propName).getOrThrow()
+        return this.link<T>(propName).getOrThrow({
+            => BusinessException(100001, "Internal error.")
+        })
     }
 
     /**
@@ -248,7 +250,8 @@ public class LocalStorage {
      * @params { String } propName - name of source property in LocalStorage
      * @params { T } defaultValue - value to be used for initializing new property in LocalStorage.
      *         Default value must be of type T.
-     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
+     * @returns { ObservedProperty<T> } instance of ObservedProperty<T>.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -260,7 +263,9 @@ public class LocalStorage {
             case None => this.setOrCreate(propName, defaultValue)
             case _ => ()
         }
-        return this.`prop`<T>(propName).getOrThrow()
+        return this.`prop`<T>(propName).getOrThrow({
+            => BusinessException(100001, "Internal error.")
+        })
     }
 
     /**

@@ -195,6 +195,11 @@ public enum LengthUnit {
     Lpx
     | ...
 
+    /**
+     * Get the length property of number value.
+     *
+     * @throws { BussnessException } - 100001 - Internal error.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -210,6 +215,11 @@ public enum LengthUnit {
         }
     }
 
+    /**
+     * Parse the length number value to LengthUnit type.
+     *
+     * @throws { BussnessException } - 100001 - Internal error.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

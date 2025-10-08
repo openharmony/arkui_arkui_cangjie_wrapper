@@ -155,7 +155,9 @@ public class Environment {
             case None => Environment.instance = Environment()
             case Some(v) => ()
         }
-        Environment.instance.getOrThrow()
+        Environment.instance.getOrThrow({
+            => BusinessException(100001, "Internal error.")
+        })
     }
 
     @!APILevel[
@@ -173,7 +175,8 @@ public class Environment {
     /**
      * returns an Array<string> of all environment property keys
      *
-     * @returns { Array<string> } all environment property keys
+     * @returns { Array<string> } all environment property keys.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -191,7 +194,8 @@ public class Environment {
      *
      * @params { String } key - environment property
      * @params { T } value - is the default value if cannot get the environment property value
-     * @returns { Bool } false if method failed
+     * @returns { Bool } false if method failed.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,

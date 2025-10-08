@@ -59,7 +59,6 @@ public class CJEntry {
      * Register entry by name.
      * @params { String } name
      * @params { () -> Bool } call
-     * @returns { CJEntry }
      */
     @!APILevel[
         22,

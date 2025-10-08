@@ -458,7 +458,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * Called when playback fails.
      *
      * @params { VoidCallback } event
-     * @returns { This}
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -481,7 +481,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * Anonymous Object Rectification.
      *
      * @params { Callback<PreparedInfo, Unit> } callback
-     * @returns { This}
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -504,7 +504,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * Anonymous Object Rectification.
      *
      * @params { Callback<PlaybackInfo, Unit> } callback
-     * @returns { This}
+     * @returns { This }
      */
     @!APILevel[
         22,

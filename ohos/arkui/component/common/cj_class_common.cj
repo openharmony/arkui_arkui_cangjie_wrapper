@@ -949,41 +949,41 @@ protected func parseLengthFromString(value: String): Option<Length> {
         let valueNumber = Float64.tryParse(valueString)
         match (valueNumber) {
             case Some(v) => return v.vp
-            case None => throw IllegalArgumentException("The value is not a Length String.")
+            case None => throw BusinessException(100001, "Internal error.")
         }
     } else if (realString.contains("px")) {
         let valueString = realString.removeSuffix("px")
         let valueNumber = Float64.tryParse(valueString)
         match (valueNumber) {
             case Some(v) => return v.px
-            case None => throw IllegalArgumentException("The value is not a Length String.")
+            case None => throw BusinessException(100001, "Internal error.")
         }
     } else if (realString.contains("fp")) {
         let valueString = realString.removeSuffix("fp")
         let valueNumber = Float64.tryParse(valueString)
         match (valueNumber) {
             case Some(v) => return v.fp
-            case None => throw IllegalArgumentException("The value is not a Length String.")
+            case None => throw BusinessException(100001, "Internal error.")
         }
     } else if (realString.contains("lpx")) {
         let valueString = realString.removeSuffix("lpx")
         let valueNumber = Float64.tryParse(valueString)
         match (valueNumber) {
             case Some(v) => return v.lpx
-            case None => throw IllegalArgumentException("The value is not a Length String.")
+            case None => throw BusinessException(100001, "Internal error.")
         }
     } else if (realString.contains("%")) {
         let valueString = realString.removeSuffix("%")
         let valueNumber = Float64.tryParse(valueString)
         match (valueNumber) {
             case Some(v) => return v.percent
-            case None => throw IllegalArgumentException("The value is not a Length String.")
+            case None => throw BusinessException(100001, "Internal error.")
         }
     } else {
         let valueNumber = Float64.tryParse(realString)
         match (valueNumber) {
             case Some(v) => return v.vp
-            case None => throw IllegalArgumentException("The value is not a Length String.")
+            case None => throw BusinessException(100001, "Internal error.")
         }
     }
 }
