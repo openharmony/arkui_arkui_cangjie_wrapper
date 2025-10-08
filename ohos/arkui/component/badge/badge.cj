@@ -165,13 +165,13 @@ public class BadgeStyle {
     /**
      * BadgeStyle constructor.
      *
-     * @params { ?ResourceColor } color
-     * @params { ?Length } fontSize
-     * @params { ?Length } badgeSize
-     * @params { ?ResourceColor } badgeColor
-     * @params { ?FontWeight } fontWeight
-     * @params { ?ResourceColor } borderColor
-     * @params { ?Length } borderWidth
+     * @params { ?ResourceColor } color - Font color.
+     * @params { ?Length } fontSize - Font size.
+     * @params { ?Length } badgeSize - Badge size.
+     * @params { ?ResourceColor } badgeColor - Badge color.
+     * @params { ?FontWeight } fontWeight - Font weight of the text.
+     * @params { ?ResourceColor } borderColor - Border color of the background.
+     * @params { ?Length } borderWidth - Border width of the background.
      */
     @!APILevel[
         22,
@@ -219,11 +219,11 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
      * count: Set the number of reminder messages.
      * style: You can set the style of the Badge component, including the text color, size, dot color, and size.
      *
-     * @params { Int32 } count
-     * @params { ?BadgeStyle } style
-     * @params { ?BadgePosition } position
-     * @params { ?Int32 } maxCount
-     * @params { () -> Unit } child
+     * @params { Int32 } count - Number of notifications.
+     * @params { ?BadgeStyle } style - Style of the badge, including the font color, font size, badge color, and badge size.
+     * @params { ?BadgePosition } position - Position to display the badge relative to the parent component.
+     * @params { ?Int32 } maxCount - Maximum number of notifications.
+     * @params { () -> Unit } child - The child component to be wrapped.
      */
     @!APILevel[
         22,
@@ -251,10 +251,10 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
      * position: Set the display position of the prompt point.
      * style: You can set the style of the Badge component, including the text color, size, dot color, and size.
      *
-     * @params { String } value
-     * @params { ?BadgeStyle } style
-     * @params { ?BadgePosition } position
-     * @params { () -> Unit } child
+     * @params { String } value - Prompt content.
+     * @params { ?BadgeStyle } style - Style of the badge, including the font color, font size, badge color, and badge size.
+     * @params { ?BadgePosition } position - Position to display the badge relative to the parent component.
+     * @params { () -> Unit } child - The child component to be wrapped.
      */
     @!APILevel[
         22,
