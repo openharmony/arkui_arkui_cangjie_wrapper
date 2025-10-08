@@ -18,6 +18,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.for_each") {
 
   cj_deps = [
     "../../../base:ohos.base",
+    "../../state_management:ohos.arkui.state_management",
     "../common:ohos.arkui.component.common",
     "../native_struct:ohos.arkui.component.native_struct",
   ]
