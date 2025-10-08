@@ -564,7 +564,7 @@ public class NavPathStack <: RemoteData {
     public func pushPathByName(name: ?String, param: ?String, animated!: ?Bool = None) {
         let tmpName = name ?? ""
         let tmpParam = param ?? ""
-        pushPath(NavPathInfo(name: tmpName, param: tmpParam), animated: animated)
+        pushPath(NavPathInfo(name: tmpName, param: tmpParam), options: NavigationOptions(animated: animated))
     }
 
     /**
