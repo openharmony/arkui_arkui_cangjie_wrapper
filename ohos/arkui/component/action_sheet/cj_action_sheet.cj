@@ -166,12 +166,11 @@ public class SheetInfo {
     ]
     public var icon: ?ResourceStr
     /**
-     * Constructor of SheetInfo
+     * Constructor of SheetInfo.
      *
      * @params { ?ResourceStr } title
      * @params { ?VoidCallback } action
      * @params { ?ResourceStr } icon
-     * @returns { SheetInfo }
      */
     @!APILevel[
         22,
@@ -254,14 +253,13 @@ public class ActionSheetButtonOptions {
     ]
     public var style: ?DialogButtonStyle
     /**
-     * Constructor of ActionSheetButtonOptions
+     * Constructor of ActionSheetButtonOptions.
      *
      * @params { ?ResourceStr } value
      * @params { ?VoidCallback } action
      * @params { ?Bool } enabled
      * @params { ?Bool } defaultFocus
      * @params { ?DialogButtonStyle } style
-     * @returns { ActionSheetButtonOptions }
      */
     @!APILevel[
         22,
@@ -312,10 +310,9 @@ public class DismissDialogAction {
     ]
     public var reason: ?DismissReason
     /**
-     * Constructor of DismissDialogAction
-
+     * Constructor of DismissDialogAction.
+     *
      * @params { ?DismissReason } reason
-     * @returns { DismissDialogAction }
      */
     @!APILevel[
         22,
@@ -593,7 +590,7 @@ public class ActionSheetOptions {
     ]
     public var transition: ?TransitionEffect
     /**
-     * Constructor of ActionSheetOptions
+     * Constructor of ActionSheetOptions.
      *
      * @params { ?ResourceStr } title
      * @params { ?ResourceStr } message
@@ -617,7 +614,6 @@ public class ActionSheetOptions {
      * @params { ?Length } height
      * @params { ?ShadowOptions } shadow
      * @params { ?TransitionEffect } transition
-     * @returns { ActionSheetOptions }
      */
     @!APILevel[
         22,
@@ -797,11 +793,10 @@ public class ActionSheetOffset {
     ]
     public var dy: ?Length
     /**
-     * Constructor of ActionSheetOffset
+     * Constructor of ActionSheetOffset.
      *
      * @params { ?Length } dx
      * @params { ?Length } dy
-     * @returns { ActionSheetOffset }
      */
     @!APILevel[
         22,

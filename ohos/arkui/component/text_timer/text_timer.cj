@@ -116,8 +116,6 @@ public class TextTimerController <: RemoteDataLite {
     /**
      * TextTimerController constructor.
      * A constructor used to create a TextTimerController object.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -187,7 +185,6 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      * @params { ?Bool } isCountDown
      * @params { ?Int64 } count
      * @params { ?TextTimerController } controller
-     * @returns { TextTimer }
      */
     @!APILevel[
         22,

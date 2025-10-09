@@ -155,7 +155,6 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroup> & ListItemGro
      * @params { ?Length } space
      * @params { ?ListItemGroupStyle } style
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,

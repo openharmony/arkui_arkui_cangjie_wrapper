@@ -51,7 +51,6 @@ public class Row <: CommonMethodComponent<Row> & RowAttribute {
     *
     * @params { ?Length } space
     * @params { () -> Unit } child
-    * @returns { This }
     */
     @!APILevel[
         22,

@@ -53,7 +53,6 @@ public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
     *
     * @params { ?Alignment } alignContent
     * @params { ?() -> Unit } child
-    * @returns { This }
     */
     @!APILevel[
         22,

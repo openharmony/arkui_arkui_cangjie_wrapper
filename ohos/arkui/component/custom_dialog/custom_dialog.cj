@@ -294,7 +294,6 @@ public class CustomDialogControllerOptions {
     * @params { ?Length } height
     * @params { ?ShadowOptions } shadow
     * @params { ?BlurStyle } backgroundBlurStyle
-    * @returns { CustomDialogControllerOptions }
     */
     @!APILevel[
         22,
@@ -464,7 +463,6 @@ public class CustomDialogController <: RemoteDataLite {
      * The constructor transfers parameter settings.
      *
      * @params { CustomDialogControllerOptions } value
-     * @returns { CustomDialogController }
      */
     @!APILevel[
         22,

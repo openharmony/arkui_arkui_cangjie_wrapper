@@ -31,8 +31,6 @@ import std.collection.ArrayList
 public abstract class RemoteView <: FFIData {
     /**
      * Constructor of RemoteView.
-     *
-     * @return { RemoteView }
      */
     @!APILevel[
         22,

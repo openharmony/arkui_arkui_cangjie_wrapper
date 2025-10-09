@@ -84,7 +84,6 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * @params { ?String } name
      * @params { ?String } group
      * @params { ?CustomBuilder } indicatorBuilder
-     * @returns { Checkbox }
      */
     @!APILevel[
         22,

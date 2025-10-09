@@ -46,7 +46,7 @@ public interface IDataSource<T> {
     /**
      * Obtains the total number of data items.
      *
-     * @returns The total number of data.
+     * @returns { Int64 } The total number of data.
      */
     @!APILevel[
         22,

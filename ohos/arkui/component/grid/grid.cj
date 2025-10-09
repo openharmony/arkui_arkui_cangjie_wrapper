@@ -119,7 +119,6 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      *
      * @params { ?Scroller } scroller
      * @params { ()->Unit } child
-     * @returns { Grid }
      */
     @!APILevel[
         22,

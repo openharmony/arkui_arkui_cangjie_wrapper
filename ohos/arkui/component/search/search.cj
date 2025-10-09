@@ -216,7 +216,6 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @params { ?ResourceStr } placeholder
      * @params { Option<AppResource> } icon
      * @params { Option<SearchController> } controller
-     * @returns { This }
      */
     @!APILevel[
         22,

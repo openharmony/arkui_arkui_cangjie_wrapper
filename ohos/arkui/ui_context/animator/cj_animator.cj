@@ -281,7 +281,6 @@ public class AnimatorOptions {
      * @params { Float64 } begin - Starting point of animator interpolation.
      * The default value is 0.
      * @params { Float64 } end - Ending point of Dynamic Interpolation.
-     * @returns { This }
      */
     @!APILevel[
         22,

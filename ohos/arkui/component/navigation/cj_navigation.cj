@@ -606,10 +606,9 @@ public class NavPathStack <: RemoteData {
 public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribute {
     static var navParamsMap: HashMap<String, Any> = HashMap<String, Any>()
     /**
-     * Constructor of Navigation
+     * Constructor of Navigation.
      *
      * @params { () -> Unit } child
-     * @returns { Navigation } Returns the instance of the Navigation.
      */
     @!APILevel[
         22,
@@ -623,11 +622,10 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     }
 
     /**
-     * Constructor of Navigation
+     * Constructor of Navigation.
      *
      * @params { ?NavPathStack } pathInfos
      * @params { () -> Unit } child
-     * @returns { Navigation } Returns the instance of the Navigation.
      */
     @!APILevel[
         22,

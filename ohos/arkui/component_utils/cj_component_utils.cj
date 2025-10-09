@@ -71,7 +71,6 @@ public class Size {
      *
      * @params { Float64 } width
      * @params { Float64 } height
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -126,7 +125,6 @@ public class Offset {
      *
      * @params { Float64 } x
      * @params { Float64 } y
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -196,7 +194,6 @@ public class TranslateResult {
      * @params { Float64 } x
      * @params { Float64 } y
      * @params { Float64 } z
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -285,7 +282,6 @@ public class ScaleResult {
      * @params { Float64 } z
      * @params { Float64 } centerX
      * @params { Float64 } centerY
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -394,7 +390,6 @@ public class RotateResult {
      * @params { Float64 } centerX
      * @params { Float64 } centerY
      * @params { Float64 } angle
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -541,7 +536,6 @@ public class ComponentInfo {
      * @params { ScaleResult } scale
      * @params { RotateResult } rotate
      * @params { Matrix4Result } transform
-     * @returns { This }
      */
     @!APILevel[
         22,

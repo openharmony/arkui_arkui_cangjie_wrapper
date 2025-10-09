@@ -190,7 +190,9 @@ public class BlurOptions {
     public var grayscale: ?VArray<Float32, $2>
 
     /**
-     * constructor
+     * BlurOptions constructor.
+     *
+     * @params { ?VArray<Float32, $2> } grayscale
      */
     @!APILevel[
         22,
@@ -202,7 +204,7 @@ public class BlurOptions {
 }
 
 /**
- * Defines the options of ForegroundBlurStyle
+ * Defines the options of ForegroundBlurStyle.
  *
  */
 @!APILevel[
@@ -233,7 +235,7 @@ public class ForegroundBlurStyleOptions {
     public var adaptiveColor: ?AdaptiveColor
 
     /**
-     * Defines the options of blur
+     * Defines the options of blur.
      *
      */
     @!APILevel[
@@ -255,7 +257,8 @@ public class ForegroundBlurStyleOptions {
     public var scale: ?Float32
 
     /**
-     * ForegroundBlurStyleOptions constructor
+     * ForegroundBlurStyleOptions constructor.
+     *
      * @params { ?ThemeColorMode } colorMode
      * @params { ?AdaptiveColor } adaptiveColor
      * @params { ?BlurOptions } blurOptions
@@ -291,7 +294,7 @@ public class PopupButton {
     let action: () -> Unit
 
     /**
-     * PopupButton constructor
+     * PopupButton constructor.
      *
      * @params { ?String } value - Button text value
      * @params { () -> Unit } action - action
@@ -307,7 +310,7 @@ public class PopupButton {
 }
 
 /**
- * Popup state change param
+ * Popup state change param.
  *
  */
 @!APILevel[
@@ -327,7 +330,7 @@ public class PopupStateChangeParam {
     public var isVisible: Bool
 
     /**
-     * constructor
+     * PopupStateChangeParam constructor.
      *
      * @params {Bool} value
      */
@@ -376,7 +379,7 @@ public class PopupOptions {
     public var secondaryButton: ?PopupButton
 
     /**
-     * on State Change
+     * on State Change.
      */
     @!APILevel[
         22,
@@ -385,7 +388,7 @@ public class PopupOptions {
     public var onStateChange: ?(PopupStateChangeParam) -> Unit
 
     /**
-     * Parameters of the popup message
+     * Parameters of the popup message.
      */
     @!APILevel[
         22,
@@ -450,7 +453,7 @@ public class PopupOptions {
     public var offset: ?Position
 
     /**
-     * whether show arrow
+     * whether show arrow.
      *
      */
     @!APILevel[
@@ -549,7 +552,7 @@ public class PopupOptions {
     public var transition: ?TransitionEffect
 
     /**
-     * Callback function when the popup interactive dismiss
+     * Callback function when the popup interactive dismiss.
      */
     @!APILevel[
         22,
@@ -558,7 +561,7 @@ public class PopupOptions {
     public var onWillDismiss: ?(DismissPopupAction) -> Unit
 
     /**
-     * Determine if popup can follow the target node when it has rotation or scale
+     * Determine if popup can follow the target node when it has rotation or scale.
      */
     @!APILevel[
         22,
@@ -567,7 +570,8 @@ public class PopupOptions {
     public var followTransformOfTarget: ?Bool
 
     /**
-     * PopupOptions constructor
+     * PopupOptions constructor.
+     *
      * @params { ?String } message
      * @params { ?PopupButton } primaryButton
      * @params { ?PopupButton } secondaryButton
@@ -665,7 +669,7 @@ public class MenuElement {
     let icon: ResourceStr = ""
     let enabled: Bool = true
     /**
-     * MenuElement constructor
+     * MenuElement constructor.
      *
      * @params { ?ResourceStr } value
      * @params { () -> Unit } action - action
@@ -717,7 +721,7 @@ public class CustomPopupOptions {
     public var placement: ?Placement
 
     /**
-     * mask color of popup
+     * mask color of popup.
      *
      */
     @!APILevel[
@@ -726,6 +730,10 @@ public class CustomPopupOptions {
     ]
     public var maskColor: ?ResourceColor
 
+    /**
+     * backgroundColor of popup.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -733,7 +741,7 @@ public class CustomPopupOptions {
     public var backgroundColor: ?Color
 
     /**
-     * whether show arrow
+     * Whether show arrow.
      *
      */
     @!APILevel[
@@ -755,7 +763,7 @@ public class CustomPopupOptions {
     ]
     public var autoCancel: ?Bool
     /**
-     * on State Change
+     * on State Change.
      *
      */
     @!APILevel[
@@ -889,7 +897,7 @@ public class CustomPopupOptions {
     ]
     public var backgroundBlurStyle: ?BlurStyle
     /**
-     * Set popup focusable
+     * Set popup focusable.
      */
     @!APILevel[
         22,
@@ -897,7 +905,7 @@ public class CustomPopupOptions {
     ]
     public var focusable: ?Bool
     /**
-     * Defines the transition effect of popup opening and closing
+     * Defines the transition effect of popup opening and closing.
      *
      */
     @!APILevel[
@@ -929,7 +937,8 @@ public class CustomPopupOptions {
     ]
     public var followTransformOfTarget: ?Bool
     /**
-     * CustomPopupOptions constructor
+     * CustomPopupOptions constructor.
+     *
      * @params { () -> Unit } builder
      * @params { ?Placement } placement
      * @params { ?Color } maskColor
@@ -1040,7 +1049,8 @@ public class PopupMessageOptions {
     ]
     public var font: ?Font
     /**
-     * PopupMessageOptions constructor
+     * PopupMessageOptions constructor.
+     *
      * @params { ?ResourceColor } textColor
      * @params { ?Font } font
      */
@@ -1083,7 +1093,8 @@ public class OverlayOffset {
     public var y: ?Float64
 
     /**
-     * OverlayOffset constructor
+     * OverlayOffset constructor.
+     *
      * @params { ?Float64 } x
      * @params { ?Float64 } y
      */
@@ -1143,7 +1154,8 @@ public class EdgeWidths {
     ]
     public var left: ?Length
     /**
-     * EdgeWidths constructor
+     * EdgeWidths constructor.
+     *
      * @params { ?Length } top
      * @params { ?Length } right
      * @params { ?Length } bottom
@@ -1166,7 +1178,7 @@ public class EdgeWidths {
 }
 
 /**
- * Overlay module options
+ * Overlay module options.
  *
  */
 @!APILevel[
@@ -1181,7 +1193,7 @@ public open class BindOptions {
     let onWillDisappear: ?() -> Unit
 
     /**
-     * BindOptions constructor
+     * BindOptions constructor.
      *
      * @params {ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
      * @params {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
@@ -1226,7 +1238,7 @@ public open class BindOptions {
 }
 
 /**
- * Component content cover options
+ * Component content cover options.
  *
  */
 @!APILevel[
@@ -1238,12 +1250,12 @@ public class ContentCoverOptions <: BindOptions {
     let onWillDismiss: Option<(DismissContentCoverAction) -> Unit>
     let transition: Option<TransitionEffect>
     /**
-     * ContentCoverOptions constructor
+     * ContentCoverOptions constructor.
      *
-     * @params {ModalTransition} modalTransition - Defines transition type
+     * @params {?ModalTransition} modalTransition - Defines transition type
      * @params {?(DismissContentCoverAction) -> Unit} onWillDismiss - Callback function when the content cover interactive dismiss.
      * @params {?TransitionEffect} transition
-     * @params {ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
+     * @params {?ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
      * @params {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
      * @params {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
      * @params {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
@@ -1309,7 +1321,7 @@ public class ContentCoverOptions <: BindOptions {
 }
 
 /**
- * Component sheet dismiss
+ * Component sheet dismiss.
  *
  */
 @!APILevel[
@@ -1320,7 +1332,7 @@ public class SheetDismiss {
     init() {}
 
     /**
-     * Defines sheet dismiss function
+     * Defines sheet dismiss function.
      *
      */
     @!APILevel[
@@ -1335,7 +1347,7 @@ public class SheetDismiss {
 }
 
 /**
- * Defines sheet spring back action
+ * Defines sheet spring back action.
  *
  */
 @!APILevel[
@@ -1346,7 +1358,7 @@ public class SpringBackAction {
     init() {}
 
     /**
-     * Defines spring back function
+     * Defines spring back function.
      *
      */
     @!APILevel[
@@ -1379,7 +1391,6 @@ public enum SheetMode {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-
     Overlay
     |
     /**
@@ -1481,7 +1492,7 @@ func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadow {
 }
 
 /**
- * Component sheet options
+ * Component sheet options.
  *
  */
 @!APILevel[
@@ -1514,7 +1525,7 @@ public class SheetOptions <: BindOptions {
     let scrollSizeMode: Option<ScrollSizeMode>
 
     /**
-     * Defines sheet options
+     * Defines sheet options.
      *
      * @params { Option<ResourceColor> } backgroundColor
      * @params { Option<() -> Unit> } onAppear
@@ -1777,7 +1788,7 @@ public class SheetOptions <: BindOptions {
 ]
 public class Rectangle {
     /**
-     * x:Horizontal coordinate
+     * x:Horizontal coordinate.
      *
      */
     @!APILevel[
@@ -1817,7 +1828,12 @@ public class Rectangle {
     public var height: ?Length
 
     /**
-     * constructor
+     * Rectangle constructor.
+     *
+     * @params { ?Length } x
+     * @params { ?Length } y
+     * @params { ?Length } width
+     * @params { ?Length } height
      */
     @!APILevel[
         22,
@@ -1871,7 +1887,7 @@ class MenuActionData <: FFIData {
 ]
 public class DismissPopupAction {
     /**
-     * Defines popup dismiss reason
+     * Defines popup dismiss reason.
      */
     @!APILevel[
         22,
@@ -1883,7 +1899,7 @@ public class DismissPopupAction {
     }
 
     /**
-     * Defines popup dismiss function
+     * Defines popup dismiss function.
      */
     @!APILevel[
         22,
@@ -1917,7 +1933,7 @@ public class ContextMenuOptions {
 
     /**
      * Preferred position of the context menu. If the set position is insufficient for holding the component, it will be
-     * automatically adjusted
+     * automatically adjusted.
      *
      */
     @!APILevel[
@@ -1937,7 +1953,7 @@ public class ContextMenuOptions {
     public var enableArrow: ?Bool
 
     /**
-     * The horizontal offset to the left of menu or vertical offset to the top of menu
+     * The horizontal offset to the left of menu or vertical offset to the top of menu.
      *
      */
     @!APILevel[
@@ -2040,7 +2056,7 @@ public class ContextMenuOptions {
     var layoutRegionMargin: ?Margin = None
 
     /**
-     * ContextMenuOptions constructor
+     * ContextMenuOptions constructor.
      *
      * @params { ?Position } offset
      * @params { Option<Placement> } placement
@@ -2119,7 +2135,7 @@ public class ContextMenuOptions {
 }
 
 /**
- * Component content cover dismiss
+ * Component content cover dismiss.
  *
  */
 @!APILevel[
@@ -2128,7 +2144,7 @@ public class ContextMenuOptions {
 ]
 public class DismissContentCoverAction {
     /**
-     * Defines content cover dismiss reason
+     * Defines content cover dismiss reason.
      *
      */
     @!APILevel[
@@ -2145,7 +2161,7 @@ public class DismissContentCoverAction {
     }
 
     /**
-     *  Defines content cover dismiss function
+     *  Defines content cover dismiss function.
      */
     @!APILevel[
         22,
@@ -2249,7 +2265,7 @@ public class ContextMenuAnimationOptions {
 }
 
 /**
- * Component sheet dismiss
+ * Component sheet dismiss.
  *
  */
 @!APILevel[
@@ -2266,16 +2282,13 @@ public class DismissSheetAction {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var reason: ?DismissReason
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
+
     init(reason: DismissReason) {
         this.reason = reason
     }
 
     /**
-     *  Defines sheet dismiss function
+     *  Defines sheet dismiss function.
      *
      */
     @!APILevel[

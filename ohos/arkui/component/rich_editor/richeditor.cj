@@ -155,7 +155,6 @@ public class DecorationStyleResult {
      *
      * @params { TextDecorationType } decorationType - The font decoration type.
      * @params { ResourceColor } color - The font decoration color.
-     * @return { DecorationStyleResult }
      */
     @!APILevel[
         22,
@@ -209,7 +208,6 @@ public class RichEditorInsertValue {
     *
     * @params { ?Int32 } insertOffset - The location info where the value will be inserted.
     * @params { ?String } insertValue - The inserted value.
-    * @return { RichEditorInsertValue }
     */
     @!APILevel[
         22,
@@ -273,7 +271,6 @@ public class RichEditorSpanPosition {
      *
      * @params { ?Int32 } spanIndex - Define the index of span.
      * @params { ?(Int32, Int32) } spanRange - The range of span.
-     * @return { RichEditorSpanPosition }
      */
     @!APILevel[
         22,
@@ -387,7 +384,6 @@ public class RichEditorTextStyleResult {
      * @params { Int32 } fontWeight - font weight.
      * @params { String } fontFamily - font family.
      * @params { DecorationStyleResult } decoration - font decoration.
-     * @return { RichEditorTextStyleResult }
      */
     @!APILevel[
         22,
@@ -570,7 +566,6 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
      * @params { String } value - The content of the text span.
      * @params { RichEditorTextStyleResult } textStyle - text style.
      * @params { (Int32, Int32) } offsetInSpan - get offset in span.
-     * @return { RichEditorTextSpanResult }
      */
     @!APILevel[
         22,
@@ -662,7 +657,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
      * @params { ?String } valueResourceStr - The resource string of the image span.
      * @params { ?RichEditorImageSpanStyleResult } imageStyle - image attribute.
      * @params { ?(Int32, Int32) offsetInSpan - get offset in span.
-     * @return { RichEditorImageSpanResult }
      */
     @!APILevel[
         22,
@@ -948,7 +942,6 @@ public class RichEditorDeleteValue {
      * @params { RichEditorDeleteDirection } direction - the deleted direction.
      * @params { Int32 } length - the deleted text length.
      * @params { ArrayList<RichEditorSpanResult> } richEditorDeleteSpans - the deleted span object.
-     * @return { RichEditorDeleteValue }
      */
     @!APILevel[
         22,
@@ -1017,7 +1010,7 @@ public class TextRange {
     public var end: ?Int32
 
     /**
-     * TextRange constructor
+     * TextRange constructor.
      */
     @!APILevel[
         22,
@@ -1074,7 +1067,6 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
      * Called when create RichEditor.
      *
      * @params { ?RichEditorController } controller
-     * @returns { This }
      */
     @!APILevel[
         22,

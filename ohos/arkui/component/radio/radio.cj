@@ -62,7 +62,6 @@ public class Radio <: CommonMethodComponent<Radio> & RadioAttribute {
      *
      * @params { ?String } value
      * @params { ?String } group
-     * @returns { This }
      */
     @!APILevel[
         22,

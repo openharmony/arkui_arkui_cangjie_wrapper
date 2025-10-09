@@ -292,7 +292,6 @@ public class DateTimeOptions {
      * @params { ?String } dayPeriod
      * @params { ?String } localeMatcher
      * @params { ?String } formatMatcher
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -372,8 +371,6 @@ foreign {
 public class TextClockController <: RemoteDataLite {
     /**
      * TextClockController constructor.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -434,7 +431,6 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      *
      * @params { ?Float32 } timeZoneOffset
      * @params { ?TextClockController } controller
-     * @returns { TextClock }
      */
     @!APILevel[
         22,

@@ -48,8 +48,6 @@ foreign {
 public class TextInputController <: RemoteDataLite {
     /**
      * TextInputController constructor.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -129,7 +127,6 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @params { ?ResourceStr } placeholder - The place holder text string.
      * @params { ?ResourceStr } text - Sets the current value of TextInput.
      * @params { ?TextInputController } controller - Called when the position of the insertion cursor is set.
-     * @returns { This }
      */
     @!APILevel[
         22,

@@ -44,7 +44,6 @@ public class QRCode <: CommonMethodComponent<QRCode> & QRCodeAttribute {
      * Called when a QR code is set.
      *
      * @params { ?ResourceStr } value
-     * @returns { This }
      */
     @!APILevel[
         22,

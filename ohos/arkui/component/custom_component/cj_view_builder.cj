@@ -40,7 +40,6 @@ public class ViewBuilder {
      * Initializes a new instance of the ViewBuilder class.
      *
      * @params { () -> Unit } build
-     * @returns { This }
      */
     @!APILevel[
         22,

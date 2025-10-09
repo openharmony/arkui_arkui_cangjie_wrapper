@@ -50,8 +50,6 @@ public class TextAreaController <: RemoteDataLite {
 
     /**
      * TextAreaController constructor.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -98,7 +96,6 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @params { ?ResourceStr } placeholder - The place holder text string. Text displayed when there is no input.
      * @params { ?ResourceStr } text - Sets the current value of TextArea.
      * @params { ?TextAreaController } controller - Called when the position of the insertion cursor is set.
-     * @returns { This }
      */
     @!APILevel[
         22,

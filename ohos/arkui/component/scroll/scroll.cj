@@ -62,7 +62,6 @@ public class ScrollResult {
      * Constructs a scroll result.
      *
      * @params { Float64 } offsetRemain
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -105,7 +104,6 @@ public class OffsetResult {
      *
      * @params { Float64 } xOffset
      * @params { Float64 } yOffset
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -219,7 +217,6 @@ public class RectResult {
      * @params { Float64 } y
      * @params { Float64 } width
      * @params { Float64 } height
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -281,7 +278,6 @@ public class ScrollAnimationOptions {
      * @params { ?Float64 } duration
      * @params { ?Curve } curve
      * @params { ?Bool } canOverScroll
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -386,7 +382,6 @@ public class NestedScrollOptions {
      *
      * @params { ?NestedScrollMode } scrollForward
      * @params { ?NestedScrollMode } scrollBackward
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -419,7 +414,6 @@ public class FadingEdgeOptions {
      * The constructor.
      *
      * @params { ?Length } fadingEdgeLength
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -509,7 +503,6 @@ public class ScrollEdgeOptions {
      * The constructor.
      *
      * @params { ?Float32 } velocity
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -541,7 +534,6 @@ public class ScrollToIndexOptions {
      * The constructor.
      *
      * @params { ?Length } extraOffset
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -664,8 +656,6 @@ foreign {
 public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute {
     /**
      * Constructs a scroll component.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -681,7 +671,6 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * Constructs a scroll component.
      *
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -699,7 +688,6 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      *
      * @params { ?Scroller } scroller
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -748,7 +736,6 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * Sets the scrolling direction.
      *
      * @params { ?ScrollDirection } scrollDirection
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -981,7 +968,6 @@ public class Scroller {
 
     /**
      * A constructor used to create a Scroller object.
-     *
      */
     @!APILevel[
         22,

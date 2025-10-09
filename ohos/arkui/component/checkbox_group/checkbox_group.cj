@@ -120,7 +120,6 @@ public class CheckboxGroupResult {
      *
      * @params { SelectStatus } status
      * @params { Array<String> } name
-     * @returns { CheckboxGroupResult }
      */
     @!APILevel[
         22,
@@ -166,7 +165,6 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
      * Called when the CheckboxGroup component is used.
      *
      * @params { ?String } group
-     * @returns { CheckboxGroup }
      */
     @!APILevel[
         22,

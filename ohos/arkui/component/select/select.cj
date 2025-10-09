@@ -226,7 +226,6 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
      * Called when the select is set.
      *
      * @params { ?Array<SelectOptions> } options
-     * @returns { This }
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[

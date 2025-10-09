@@ -43,7 +43,6 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGro
      * @params { ?ResourceStr } header
      * @params { ?ResourceStr } footer
      * @params { () -> Unit } child     
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -65,7 +64,6 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGro
      * @params { ?CustomBuilder } header
      * @params { ?CustomBuilder } footer
      * @params { () -> Unit } child     
-     * @returns { This }
      */
     @!APILevel[
         22,

@@ -229,7 +229,6 @@ public class BarrierStyle {
     * @params { ?String } id
     * @params { ?BarrierDirection } direction
     * @params { ?Array<String> } referencedId
-    * @returns { This }
     */
     @!APILevel[
         22,
@@ -273,7 +272,6 @@ public class GuideLinePosition {
     *
     * @params { ?Length } start
     * @params { ?Length } end
-    * @returns { This }
     */
     @!APILevel[
         22,
@@ -326,7 +324,6 @@ public class GuideLineStyle {
     * @params { ?String } id
     * @params { ?Axis } direction
     * @params { ?GuideLinePosition } position
-    * @returns { This }
     */
     @!APILevel[
         22,
@@ -351,7 +348,6 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     * Constructor of relativeContainer
     *
     * @params { () -> Unit } child
-    * @returns { This }
     */
     @!APILevel[
         22,

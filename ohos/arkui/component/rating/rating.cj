@@ -51,7 +51,6 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
      *
      * @params { ?Float64 } rating
      * @params { ?Bool } indicator
-     * @returns { This }
      */
     @!APILevel[
         22,

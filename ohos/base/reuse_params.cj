@@ -17,7 +17,6 @@ public class ReuseParams {
      * ReuseParams constructor.
      *
      * @params { Array<(String, Any)> } arr
-     * @returns { This }
      */
     @!APILevel[
         22,

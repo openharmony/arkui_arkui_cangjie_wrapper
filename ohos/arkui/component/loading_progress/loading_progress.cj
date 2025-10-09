@@ -43,8 +43,6 @@ foreign {
 public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & LoadingProgressAttribute {
     /**
      * Create a LoadingProgress
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,

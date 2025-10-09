@@ -74,7 +74,6 @@ class CallbackCJTransitionEvent <: BaseCallBack {
 * 
 * @params { RouteType } type - transition route type
 * @params { Float64 } progress - transition progess
-* @returns { Unit }
 */
 public type PageTransitionCallback = (RouteType, Float64) -> Unit
 
@@ -197,7 +196,6 @@ sealed abstract class CommonTransition {
     * Called when the slide in effect of the transition is set.
     * 
     * @params { SlideEffect } value
-    * @returns { This } 
     */
     @!APILevel[
         22,
@@ -290,7 +288,6 @@ public class PageTransitionEnter <: CommonTransition {
     * @params { ?Int32 } duration
     * @params { ?Curve } curve
     * @params { ?Int32 } delay
-    * @returns { This } 
     */
     @!APILevel[
         22,
@@ -349,7 +346,6 @@ public class PageTransitionExit <: CommonTransition {
     * @params { ?Int32 } duration
     * @params { ?Curve } curve
     * @params { ?Int32 } delay
-    * @returns { This } 
     */
     @!APILevel[
         22,

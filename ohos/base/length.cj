@@ -123,7 +123,6 @@ public class LengthMetrics <: Length {
      *
      * @params { Float64 } value
      * @params { LengthUnit } unit
-     * @returns { This }
      */
     @!APILevel[
         22,

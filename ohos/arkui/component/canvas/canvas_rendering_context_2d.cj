@@ -384,7 +384,7 @@ extend CanvasGradient <: FillStyle {}
 extend CanvasPattern <: FillStyle {}
 
 /**
- * FillStyle.
+ * StrokeStyle.
  */
 @!APILevel[
     22,
@@ -414,7 +414,6 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * Init function of the canvas drawing context object, which is used to create a drawing context object.
      *
      * @params { ?RenderingContextSettings } settings
-     * @returns { CanvasRenderingContext2D }
      */
     @!APILevel[
         22,
@@ -943,7 +942,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Provides filter effects such as blur and grayscale. You can set the following filter effects:
-     * blur(<length>): Adds a Gaussian blur effect to the drawing
+     * blur(<length>): Adds a Gaussian blur effect to the drawing.
      * brightness(<percentage>): Provides a linear multiplication for the drawing and adjusts the brightness level.
      * contrast(<percentage>): Adjusts the contrast of the image. When the value is 0%, the image is completely black.
      *    When the value is 100%, there is no change in the image.
@@ -958,7 +957,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *    When the value is 100%, there is no change in the image.
      * sepia(<percentage>): The image is sepia (nostalgic style). At 100%, the image turns completely sepia.
      *    When the value is 0%, there is no change in the image.
-     * none: Turn off filter effects
+     * none: Turn off filter effects.
      */
     @!APILevel[
         22,
@@ -980,7 +979,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Fills a specified rectangular area
+     * Fills a specified rectangular area.
      *
      * @params { Float64 } x - The x-axis coordinate of the start point of the rectangle.
      * @params { Float64 } y - The y-axis coordinate of the start point of the rectangle.
@@ -998,7 +997,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Stroke Specify Rectangular Area
+     * Stroke Specify Rectangular Area.
      *
      * @params { Float64 } x - The x-axis coordinate of the start point of the rectangle.
      * @params { Float64 } y - The y-axis coordinate of the start point of the rectangle.
@@ -1034,7 +1033,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Fills the specified text at the specified location
+     * Fills the specified text at the specified location.
      *
      * @params { String } text - Text string to be drawn.
      * @params { Float64 } x - The x-axis coordinate of the start point of the text.
@@ -1063,7 +1062,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Stroke specified text at specified position
+     * Stroke specified text at specified position.
      *
      * @params { String } text - Text string to be stroked.
      * @params { Float64 } x - The x-axis coordinate of the start point of the text.
@@ -1125,9 +1124,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draws the specified path according to the current stroke style
+     * Draws the specified path according to the current stroke style.
      *
-     * @params { Path2D } path - Specified stroke path object
+     * @params { Path2D } path - Specified stroke path object.
      */
     @!APILevel[
         22,
@@ -1169,7 +1168,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Connect sub-path using straight lines
+     * Connect sub-path using straight lines.
      *
      * @params { number } x - The x-axis coordinate of the end point of the line.
      * @params { number } y - The y-axis coordinate of the end point of the line.
@@ -1185,7 +1184,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Returns the pen point to the start point of the current sub-path
+     * Returns the pen point to the start point of the current sub-path.
      */
     @!APILevel[
         22,
@@ -1198,9 +1197,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Creates a template object using the specified image
+     * Creates a template object using the specified image.
      *
-     * @params { ?ImageBitmap } image - Objects as duplicate image sources
+     * @params { ?ImageBitmap } image - Objects as duplicate image sources.
      * @params { ?Repetition } repetition - Specifies how to repeat images.
      * @returns { Option<CanvasPattern> }
      */
@@ -1217,7 +1216,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Drawing Cubic Bessel Curve Paths
+     * Drawing Cubic Bessel Curve Paths.
      *
      * @params { Float64 } cp1x - The x-axis coordinate of the first control point.
      * @params { Float64 } cp1y - The y-axis coordinate of the first control point.
@@ -1237,7 +1236,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draw quadratic Bezier curve paths
+     * Draw quadratic Bezier curve paths.
      *
      * @params { Float64 } cpx - The x-axis coordinate of the control point.
      * @params { Float64 } cpy - The y-axis coordinate of the control point.
@@ -1255,16 +1254,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-   * Draw an arc path
-   *
-   * @params { Float64 } x - The x-axis coordinate of the center (center of the circle) of the arc.
-   * @params { Float64 } y - The y-axis coordinate of the center (center of the circle) of the arc.
-   * @params { Float64 } radius - Radius of the arc.
-   * @params { Float64 } startAngle - Start point of an arc, which starts to be calculated in the x-axis direction. The unit is radian.
-   * @params { Float64 } endAngle - The end point of the arc, in radians.
-   * @params { ?Bool } counterclockwise - If the value is true, the arc is drawn counterclockwise. Otherwise,
-   *    the arc is drawn clockwise. The default value is false.
-   */
+     * Draw an arc path.
+     *
+     * @params { Float64 } x - The x-axis coordinate of the center (center of the circle) of the arc.
+     * @params { Float64 } y - The y-axis coordinate of the center (center of the circle) of the arc.
+     * @params { Float64 } radius - Radius of the arc.
+     * @params { Float64 } startAngle - Start point of an arc, which starts to be calculated in the x-axis direction. The unit is radian.
+     * @params { Float64 } endAngle - The end point of the arc, in radians.
+     * @params { ?Bool } counterclockwise - If the value is true, the arc is drawn counterclockwise. Otherwise,
+     *    the arc is drawn clockwise. The default value is false.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1283,7 +1282,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draw arc paths based on control points and radius
+     * Draw arc paths based on control points and radius.
      *
      * @params { Float64 } x1 - The x-axis coordinate of the first control point.
      * @params { Float64 } y1 - The y-axis coordinate of the first control point.
@@ -1302,7 +1301,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draw an Elliptic Path
+     * Draw an Elliptic Path.
      *
      * @params { Float64 } x - x-axis coordinate of the center of the ellipse.
      * @params { Float64 } y - y-axis coordinate of the center of the ellipse.
@@ -1345,7 +1344,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draw Rectangular Paths
+     * Draw Rectangular Paths.
      *
      * @params { Float64 } x - The x-axis coordinate of the start point of the rectangle.
      * @params { Float64 } y - The y-axis coordinate of the start point of the rectangle.
@@ -1381,7 +1380,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Fills the specified path according to the current fill style
+     * Fills the specified path according to the current fill style.
      *
      * @params { ?Path2D } path - Path to be filled.
      * @params { ?CanvasFillRule } fillRule - Algorithm rule.
@@ -1401,7 +1400,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Sets the currently created path as the current clipping path
+     * Sets the currently created path as the current clipping path.
      *
      * @params { ?CanvasFillRule } fillRule - Algorithm rule.
      */
@@ -1419,7 +1418,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Tailoring according to the specified path
+     * Tailoring according to the specified path.
      *
      * @params { ?Path2D } path - Path to be cut.
      * @params { ?CanvasFillRule } fillRule - Algorithm rule.
@@ -1439,7 +1438,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Adds the effect of a rotation
+     * Adds the effect of a rotation.
      *
      * @params { Float64 } angle - The radian of clockwise rotation, which can be converted to an angle value using the formula:
      *    degree * Math.PI / 180
@@ -1457,8 +1456,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Increases the scaling effect of the X and Y axes.
      *
-     * @params { Float64 } x - Horizontal scaling factor
-     * @params { Float64 } y - Vertical scaling factor
+     * @params { Float64 } x - Horizontal scaling factor.
+     * @params { Float64 } y - Vertical scaling factor.
      */
     @!APILevel[
         22,
@@ -1474,12 +1473,12 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * Adds the 2D transformation effect, including rotation, translation, and scaling,
      *    and overwrites the current transformation matrix.
      *
-     * @params { Float64 } a - Horizontal Zoom
-     * @params { Float64 } b - Vertical Tilt
-     * @params { Float64 } c - Horizontal Tilt
-     * @params { Float64 } d - Vertical Zoom
-     * @params { Float64 } e - Horizontal movement
-     * @params { Float64 } f - Vertical movement
+     * @params { Float64 } a - Horizontal Zoom.
+     * @params { Float64 } b - Vertical Tilt.
+     * @params { Float64 } c - Horizontal Tilt.
+     * @params { Float64 } d - Vertical Zoom.
+     * @params { Float64 } e - Horizontal movement.
+     * @params { Float64 } f - Vertical movement.
      */
     @!APILevel[
         22,
@@ -1509,12 +1508,12 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * Adds the 2D transformation effect, including rotation, translation, and scaling,
      *    and overwrites the current transformation matrix.
      *
-     * @params { Float64 } a - Horizontal Zoom
-     * @params { Float64 } b - Vertical Tilt
-     * @params { Float64 } c - Horizontal Tilt
-     * @params { Float64 } d - Vertical Zoom
-     * @params { Float64 } e - Horizontal movement
-     * @params { Float64 } f - Vertical movement
+     * @params { Float64 } a - Horizontal Zoom.
+     * @params { Float64 } b - Vertical Tilt.
+     * @params { Float64 } c - Horizontal Tilt.
+     * @params { Float64 } d - Vertical Zoom.
+     * @params { Float64 } e - Horizontal movement.
+     * @params { Float64 } f - Vertical movement.
      */
     @!APILevel[
         22,
@@ -1562,10 +1561,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Increases the translation effect of the X and Y axes
+     * Increases the translation effect of the X and Y axes.
      *
-     * @params { Float64 } x - Horizontal movement distance
-     * @params { Float64 } y - Vertical travel distance
+     * @params { Float64 } x - Horizontal movement distance.
+     * @params { Float64 } y - Vertical travel distance.
      */
     @!APILevel[
         22,
@@ -1578,8 +1577,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Top of the stack pop-up state in the drawing state stack
-     *
+     * Top of the stack pop-up state in the drawing state stack.
      */
     @!APILevel[
         22,
@@ -1592,7 +1590,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Saves the current drawing state to the drawing state stack
+     * Saves the current drawing state to the drawing state stack.
      */
     @!APILevel[
         22,
@@ -1605,7 +1603,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Creates a linear gradient object that is specified along the parameter coordinates
+     * Creates a linear gradient object that is specified along the parameter coordinates.
      *
      * @params { Float64 } x0 - The x-axis coordinate of the start point.
      * @params { Float64 } y0 - The y-axis coordinate of the start point.
@@ -1622,7 +1620,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Creates a radioactive gradient object based on parameters that determine the coordinates of two circles
+     * Creates a radioactive gradient object based on parameters that determine the coordinates of two circles.
      *
      * @params { Float64 } x0 - The x-axis coordinate of the start circle.
      * @params { Float64 } y0 - The y-axis coordinate of the start circle.
@@ -1706,7 +1704,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     *Draw an image on a canvas
+     *Draw an image on a canvas.
      *
      * @params { ImageBitmap } image - Picture objects drawn to the canvas.
      * @params { Float64 } ?sx - x coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
@@ -1753,7 +1751,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draw an image on a canvas
+     * Draw an image on a canvas.
      *
      * @params { PixelMap } image - Picture objects drawn to the canvas.
      * @params { ?Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
@@ -1774,7 +1772,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draw an image on a canvas
+     * Draw an image on a canvas.
      *
      * @params { PixelMap } image - Picture objects drawn to the canvas.
      * @params { ?Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
@@ -1797,7 +1795,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draw an image on a canvas
+     * Draw an image on a canvas.
      *
      * @params { PixelMap } image - Picture objects drawn to the canvas.
      * @params { ?Float64 } sx - x coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
@@ -1909,7 +1907,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Resets the current transformation matrix using the identity matrix
+     * Resets the current transformation matrix using the identity matrix.
      */
     @!APILevel[
         22,
@@ -2066,12 +2064,12 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-   * Creates a new, empty ImageData object of the specified size
-   *
-   * @params { ?Float64 } sw - Width of the ImageData object.
-   * @params { ?Float64 } sh - Height of the ImageData object.
-   * @returns { ImageData }
-   */
+     * Creates a new, empty ImageData object of the specified size.
+     *
+     * @params { ?Float64 } sw - Width of the ImageData object.
+     * @params { ?Float64 } sh - Height of the ImageData object.
+     * @returns { ImageData }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -2124,7 +2122,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draws the specified ImageData object onto the canvas
+     * Draws the specified ImageData object onto the canvas.
      *
      * @params { ImageData } imagedata - ImageData object to be drawn.
      * @params { Length } dx - Position offset of the source image data in the target canvas (the offset in the x-axis direction).
@@ -2145,7 +2143,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draws the specified ImageData object onto the canvas
+     * Draws the specified ImageData object onto the canvas.
      *
      * @params { ImageData } imagedata - ImageData object to be drawn.
      * @params { ?Length } dx - Position offset of the source image data in the target canvas (the offset in the x-axis direction).

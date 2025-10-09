@@ -161,8 +161,6 @@ public class FullscreenInfo {
 public class VideoController <: RemoteDataLite {
     /**
      * VideoController constructor.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -275,7 +273,6 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @params { ?PlaybackSpeed } currentProgressRate
      * @params { ?ResourceStr } previewUri
      * @params { ?VideoController } controller
-     * @returns { Video }
      */
     @!APILevel[
         22,

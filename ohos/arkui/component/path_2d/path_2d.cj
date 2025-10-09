@@ -65,8 +65,6 @@ public class Path2D <: RemoteDataLite {
 
     /**
      * Create an empty path object.
-     *
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -82,7 +80,6 @@ public class Path2D <: RemoteDataLite {
      * Create a new path according to the description.
      *
      * @params { ?String } path
-     * @returns { This }
      */
     @!APILevel[
         22,

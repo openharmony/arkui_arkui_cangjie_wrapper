@@ -61,7 +61,6 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
      * Called when an interface is used.
      *
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,

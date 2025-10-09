@@ -41,7 +41,6 @@ public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     * Defines the constructor of RowSplit.
     *
     * @params { () -> Unit } child
-    * @returns { This }
     */
     @!APILevel[
         22,

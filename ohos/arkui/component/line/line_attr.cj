@@ -19,17 +19,32 @@ import ohos.arkui.component.shape.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Line Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface LineAttribute <: CommonShapeMethod<LineAttribute> {
+    /**
+     * Coordinate of the start point of the line (relative coordinate).
+     *
+     * @params { ?(Float64, Float64) } value
+     * @returns { LineAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func startPoint(value: ?(Float64, Float64)): LineAttribute
 
+    /**
+     * Line end coordinates (relative coordinates).
+     *
+     * @params { ?(Float64, Float64) } value
+     * @returns { LineAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

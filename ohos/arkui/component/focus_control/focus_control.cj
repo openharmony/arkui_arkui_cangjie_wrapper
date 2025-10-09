@@ -28,6 +28,7 @@ foreign func FFIOHOSAceFrameworkRequestFocus(inspectorKey: CString): Bool
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class FocusControl {
+    init() {}
     private static let instance = FocusControl()
     static func getFocusController(): FocusControl {
         instance

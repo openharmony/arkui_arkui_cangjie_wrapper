@@ -128,7 +128,6 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
      * @params { Array<String> } range
      * @params { ?UInt32 } selected
      * @params { ?String } value
-     * @returns { TextPicker }
      */
     @!APILevel[
         22,

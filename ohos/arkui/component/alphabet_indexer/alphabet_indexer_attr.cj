@@ -96,7 +96,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     ]
     func usingPopup(value: ?Bool): AlphabetIndexerAttribute
     /**
-     * Select the text text style,
+     * Select the text text style.
      *
      * @params { ?Length } size
      * @params { ?FontWeight } weight

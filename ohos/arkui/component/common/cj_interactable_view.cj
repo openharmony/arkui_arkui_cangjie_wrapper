@@ -155,7 +155,8 @@ public class TouchObject {
     public var y: Float64
 
     /**
-     * TouchObject constructor
+     * TouchObject constructor.
+     *
      * @params { TouchType } touchType
      * @params { Int32 } id
      * @params { Float64 } screenX
@@ -289,7 +290,7 @@ public class DragInfo {
 }
 
 /**
- * DragItemInfo object description
+ * DragItemInfo object description.
  *
  */
 @!APILevel[
@@ -328,10 +329,11 @@ public class DragItemInfo {
     public var extraInfo: ?String
 
     /**
-     * DragItemInfo constructor
-     * @params { PixelMap } pixelMap
-     * @params { CustomBuilder } builder
-     * @params { String } extraInfo
+     * DragItemInfo constructor.
+     *
+     * @params { ?PixelMap } pixelMap
+     * @params { ?CustomBuilder } builder
+     * @params { ?String } extraInfo
      */
     @!APILevel[
         22,
@@ -408,7 +410,8 @@ public class MouseEvent <: BaseEvent {
     public var action: MouseAction
 
     /**
-     * MouseEvent constructor
+     * MouseEvent constructor.
+     *
      * @params { Int64 } timestamp
      * @params { Float64 } screenX
      * @params { Float64 } screenY
@@ -434,7 +437,7 @@ public class MouseEvent <: BaseEvent {
 }
 
 /**
- * Touch Action Function Parameters
+ * Touch Action Function Parameters.
  *
  */
 @!APILevel[
@@ -474,10 +477,6 @@ public class TouchEvent <: BaseEvent {
     ]
     public var changedTouches: Array<TouchObject>
 
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
     init(eventType: TouchType, touches: Array<TouchObject>, changedTouches: Array<TouchObject>, timestamp: Int64,
         target: EventTarget, source: SourceType) {
         super(source: source, target: target, timestamp: timestamp)    
@@ -500,7 +499,7 @@ public class TouchEvent <: BaseEvent {
 }
 
 /**
- * KeyEvent object description:
+ * KeyEvent object.
  *
  */
 @!APILevel[
@@ -554,7 +553,6 @@ public class KeyEvent {
      * Indicates the status of the key when the key is pressed.
      * The value 1 indicates the pressed state, and the value 0 indicates the unpressed state.
      *
-     *
      */
     @!APILevel[
         22,
@@ -583,7 +581,8 @@ public class KeyEvent {
     public var deviceId: Int64
 
     /**
-     * KeyEvent constructor
+     * KeyEvent constructor.
+     *
      * @params { String } keyText
      * @params { KeyType } keyType
      * @params { Int32 } keyCode

@@ -42,7 +42,6 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
      * Create a path.
      *
      * @params { ?ResourceStr } commands - Commands option.
-     * @returns { This }
      */
     @!APILevel[
         22,
@@ -63,7 +62,6 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
      * @params { ?Length } width - Width option.
      * @params { ?Length } height - Height option.
      * @params { ?ResourceStr } commands - Commands option.
-     * @returns { This }
      */
     @!APILevel[
         22,

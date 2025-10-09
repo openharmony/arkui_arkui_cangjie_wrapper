@@ -37,8 +37,6 @@ foreign {
 public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribute {
     /**
      * Create a Recycle
-     *
-     * @returns {This}
      */
     @!APILevel[
         22,
@@ -53,7 +51,6 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
      * Create a Recycle
      *
      * @params {() -> Unit} child
-     * @returns {This}
      */
     @!APILevel[
         22,

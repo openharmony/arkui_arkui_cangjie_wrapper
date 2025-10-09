@@ -47,7 +47,6 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
      *
      * @params { ?UInt32 } index
      * @params { () -> Unit } child
-     * @returns { This }
      */
     @!APILevel[
         22,

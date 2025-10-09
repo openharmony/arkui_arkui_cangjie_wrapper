@@ -239,7 +239,6 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
      * @params { ?Float64 } value
      * @params { ?Float64 } total
      * @params { ?ProgressType } progressType
-     * @returns { Progress }
      */
     @!APILevel[
         22,

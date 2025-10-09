@@ -51,8 +51,6 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
 
     /**
      * Return to get GridItem.
-     *
-     * @returns { GridItem }
      */
     @!APILevel[
         22,
@@ -68,7 +66,6 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
      * Return to get GridItem.
      *
      * @params { () -> Unit } child
-     * @returns { GridItem }
      */
     @!APILevel[
         22,

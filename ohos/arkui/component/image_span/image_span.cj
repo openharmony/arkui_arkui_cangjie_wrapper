@@ -79,7 +79,6 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
      * Called when image is entered in span.
      *
      * @params { ?ResourceStr } value - The image resource.
-     * @returns { ImageSpan } The attribute of the image span.
      */
     @!APILevel[
         22,
@@ -102,7 +101,6 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
      * Called when image is entered in span.
      *
      * @params { ?PixelMap } value - The image resource.
-     * @returns { ImageSpan } The attribute of the image span.
      */
     @!APILevel[
         22,
@@ -179,7 +177,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
      * The size of the image source that is successfully loaded is returned, in pixels.
      *
      * @params { ?ImageCompleteCallback } callback - Triggered when the image is successfully loaded.
-     * @returns { ImageSpanAttribute } The attribute of the image span.
+     * @returns { This } The attribute of the image span.
      */
     @!APILevel[
         22,
