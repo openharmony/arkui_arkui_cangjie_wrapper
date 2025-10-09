@@ -31,7 +31,7 @@ sealed interface BlankAttribute <: CommonMethod<BlankAttribute> {
     /**
      * Sets the color to fill the blank
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { BlankAttribute }
      */
     @!APILevel[

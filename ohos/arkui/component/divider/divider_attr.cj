@@ -31,7 +31,7 @@ sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
      * Indicates whether to use a horizontal splitter or a vertical splitter.
      * The options are as follows: false: horizontal splitter; true: vertical splitter.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { DividerAttribute }
      */
     @!APILevel[
@@ -43,7 +43,7 @@ sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
     /**
      * Sets the color of the divider line.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { DividerAttribute }
      */
     @!APILevel[
@@ -55,7 +55,7 @@ sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
     /**
      * Sets the width of the dividing line.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { DividerAttribute }
      */
     @!APILevel[
@@ -67,7 +67,7 @@ sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
     /**
      * Sets the end style of the split line. The default value is Butt.
      *
-     * @params { ?LineCapStyle } value
+     * @param { ?LineCapStyle } value
      * @returns { DividerAttribute }
      */
     @!APILevel[

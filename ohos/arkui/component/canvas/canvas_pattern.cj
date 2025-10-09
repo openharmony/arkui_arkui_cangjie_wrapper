@@ -58,7 +58,7 @@ public class CanvasPattern <: RemoteDataLite {
      * The 2D transformation effect is added. The current transformation matrix is not overwritten and
      *    the transformations are superimposed for multiple times.
      *
-     * @params { ?Matrix2D } transform - 2D transformation matrix.
+     * @param { ?Matrix2D } transform - 2D transformation matrix.
      */
     @!APILevel[
         22,

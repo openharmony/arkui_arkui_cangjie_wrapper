@@ -65,7 +65,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
     /**
      * Return to get GridItem.
      *
-     * @params { () -> Unit } child - The child component of GridItem.
+     * @param { () -> Unit } child - The child component of GridItem.
      */
     @!APILevel[
         22,
@@ -81,7 +81,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
     /**
      * This parameter specifies the start column number of the current element.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { This }
      */
     @!APILevel[
@@ -98,7 +98,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
     /**
      * This parameter specifies the end column number of the current element.
      *
-     * @params { ?Int32 } columnEnd
+     * @param { ?Int32 } columnEnd
      * @returns { This }
      */
     @!APILevel[
@@ -115,7 +115,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
     /**
      * This parameter specifies the start line number of the current element.
      *
-     * @params { ?Int32 } rowStart
+     * @param { ?Int32 } rowStart
      * @returns { This }
      */
     @!APILevel[
@@ -132,7 +132,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
     /**
      * Specifies the end line number of the current element.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { This }
      */
     @!APILevel[

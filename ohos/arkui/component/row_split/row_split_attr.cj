@@ -30,7 +30,7 @@ sealed interface RowSplitAttribute <: CommonMethod<RowSplitAttribute> {
     /**
     * Called when judging whether the split line can be dragged.
     *
-    * @params { ?Bool } value
+    * @param { ?Bool } value
     * @returns { This }
     */
     @!APILevel[

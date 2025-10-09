@@ -116,10 +116,10 @@ public class ListDividerOptions {
     /**
      * ListDividerOptions constructor
      *
-     * @params { ?Length } strokeWidth
-     * @params { ?ResourceColor } color
-     * @params { ?Length } startMargin
-     * @params { ?Length } endMargin
+     * @param { ?Length } strokeWidth
+     * @param { ?ResourceColor } color
+     * @param { ?Length } startMargin
+     * @param { ?Length } endMargin
      */
     @!APILevel[
         22,
@@ -150,11 +150,11 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroup> & ListItemGro
     /**
      * Called when an interface is used.
      *
-     * @params { ?CustomBuilder } header
-     * @params { ?CustomBuilder } footer
-     * @params { ?Length } space
-     * @params { ?ListItemGroupStyle } style
-     * @params { () -> Unit } child
+     * @param { ?CustomBuilder } header
+     * @param { ?CustomBuilder } footer
+     * @param { ?Length } space
+     * @param { ?ListItemGroupStyle } style
+     * @param { () -> Unit } child
      */
     @!APILevel[
         22,
@@ -182,7 +182,7 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroup> & ListItemGro
     /**
      * Called when the ListItemGroup split line style is set.
      *
-     * @params { Option<ListDividerOptions> } value
+     * @param { Option<ListDividerOptions> } value
      * @returns { This }
      */
     @!APILevel[

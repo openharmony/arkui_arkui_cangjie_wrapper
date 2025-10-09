@@ -81,9 +81,9 @@ public class ButtonIconOptions {
     /**
      * Constructs a button style icons.
      *
-     * @params { ?ResourceStr } shown
-     * @params { ?ResourceStr } hidden
-     * @params { ?ResourceStr } switching
+     * @param { ?ResourceStr } shown
+     * @param { ?ResourceStr } hidden
+     * @param { ?ResourceStr } switching
      */ 
     @!APILevel[
         22,
@@ -163,11 +163,11 @@ public class ButtonStyle {
     /**
      * Constructs a button style.
      *
-     * @params { ?Float64 } left
-     * @params { ?Float64 } top
-     * @params { ?Float64 } width
-     * @params { ?Float64 } icons
-     * @params { ?ButtonIconOptions } icons
+     * @param { ?Float64 } left
+     * @param { ?Float64 } top
+     * @param { ?Float64 } width
+     * @param { ?Float64 } icons
+     * @param { ?ButtonIconOptions } icons
      */ 
     @!APILevel[
         22,
@@ -249,10 +249,10 @@ public class DividerStyle {
     /**
      * Constructs a divider style.
      *
-     * @params { ?Length } strokeWidth
-     * @params { ?ResourceColor } color
-     * @params { ?Length } startMargin
-     * @params { ?Length } endMargin
+     * @param { ?Length } strokeWidth
+     * @param { ?ResourceColor } color
+     * @param { ?Length } startMargin
+     * @param { ?Length } endMargin
      */ 
     @!APILevel[
         22,
@@ -321,8 +321,8 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Constructs a sidebar container.
      *
-     * @params { ?SideBarContainerType } sideBarType
-     * @params { () -> Unit } child
+     * @param { ?SideBarContainerType } sideBarType
+     * @param { () -> Unit } child
      */ 
     @!APILevel[
         22,
@@ -340,7 +340,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Callback showControlButton function when setting the status of sidebar
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -357,7 +357,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Callback controlButton function when setting the style of button
      *
-     * @params { ?ButtonStyle } value
+     * @param { ?ButtonStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -391,7 +391,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Callback showControlButton function when setting the status of button
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -408,7 +408,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Trigger callback when sidebar style of showing change finished.
      *
-     * @params { ?(Bool) -> Unit } callback
+     * @param { ?(Bool) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -427,7 +427,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Sets the length of sidebar.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -445,7 +445,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Sets the min length of sidebar.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -463,7 +463,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Sets the max length of sidebar.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -481,7 +481,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Sets whether to automatically hide when drag sidebar width is less than the minimum width.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -498,7 +498,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Called when determining the location of the sidebar.
      *
-     * @params { ?SideBarPosition } value
+     * @param { ?SideBarPosition } value
      * @returns { This }
      */
     @!APILevel[
@@ -515,7 +515,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Set divider style for sideBarContainer
      *
-     * @params { ?DividerStyle } value
+     * @param { ?DividerStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -536,7 +536,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     /**
      * Sets the min length of content.
      * 
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[

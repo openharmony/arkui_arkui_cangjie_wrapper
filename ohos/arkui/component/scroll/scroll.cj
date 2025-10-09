@@ -61,7 +61,7 @@ public class ScrollResult {
     /**
      * Constructs a scroll result.
      *
-     * @params { Float64 } offsetRemain
+     * @param { Float64 } offsetRemain
      */
     @!APILevel[
         22,
@@ -102,8 +102,8 @@ public class OffsetResult {
     /**
      * Constructs an offset result.
      *
-     * @params { Float64 } xOffset
-     * @params { Float64 } yOffset
+     * @param { Float64 } xOffset
+     * @param { Float64 } yOffset
      */
     @!APILevel[
         22,
@@ -213,10 +213,10 @@ public class RectResult {
     /**
      * Constructs an rect result.
      *
-     * @params { Float64 } x
-     * @params { Float64 } y
-     * @params { Float64 } width
-     * @params { Float64 } height
+     * @param { Float64 } x
+     * @param { Float64 } y
+     * @param { Float64 } width
+     * @param { Float64 } height
      */
     @!APILevel[
         22,
@@ -275,9 +275,9 @@ public class ScrollAnimationOptions {
     /**
      * The constructor.
      *
-     * @params { ?Float64 } duration
-     * @params { ?Curve } curve
-     * @params { ?Bool } canOverScroll
+     * @param { ?Float64 } duration
+     * @param { ?Curve } curve
+     * @param { ?Bool } canOverScroll
      */
     @!APILevel[
         22,
@@ -380,8 +380,8 @@ public class NestedScrollOptions {
     /**
      * The constructor.
      *
-     * @params { ?NestedScrollMode } scrollForward
-     * @params { ?NestedScrollMode } scrollBackward
+     * @param { ?NestedScrollMode } scrollForward
+     * @param { ?NestedScrollMode } scrollBackward
      */
     @!APILevel[
         22,
@@ -413,7 +413,7 @@ public class FadingEdgeOptions {
     /**
      * The constructor.
      *
-     * @params { ?Length } fadingEdgeLength
+     * @param { ?Length } fadingEdgeLength
      */
     @!APILevel[
         22,
@@ -545,7 +545,7 @@ public class ScrollEdgeOptions {
     /**
      * The constructor.
      *
-     * @params { ?Float32 } velocity
+     * @param { ?Float32 } velocity
      */
     @!APILevel[
         22,
@@ -576,7 +576,7 @@ public class ScrollToIndexOptions {
     /**
      * The constructor.
      *
-     * @params { ?Length } extraOffset
+     * @param { ?Length } extraOffset
      */
     @!APILevel[
         22,
@@ -713,7 +713,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
     /**
      * Constructs a scroll component.
      *
-     * @params { () -> Unit } child
+     * @param { () -> Unit } child
      */
     @!APILevel[
         22,
@@ -729,8 +729,8 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
     /**
      * Constructs a scroll component.
      *
-     * @params { ?Scroller } scroller
-     * @params { () -> Unit } child
+     * @param { ?Scroller } scroller
+     * @param { () -> Unit } child
      */
     @!APILevel[
         22,
@@ -778,7 +778,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
     /**
      * Sets the scrolling direction.
      *
-     * @params { ?ScrollDirection } scrollDirection
+     * @param { ?ScrollDirection } scrollDirection
      * @returns { This }
      */
     @!APILevel[
@@ -844,7 +844,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * 2. This event is triggered when the controller API is called.
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult } handler
+     * @param { ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult } handler
      * @returns { This }
      */
     @!APILevel[
@@ -875,7 +875,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * 2. This event is triggered when the controller API is called.
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { ?(Float64, Float64, ScrollState, ScrollSource) -> Unit } handler
+     * @param { ?(Float64, Float64, ScrollState, ScrollSource) -> Unit } handler
      * @returns { This }
      */
     @!APILevel[
@@ -898,7 +898,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * 2. This event is triggered when the controller API is called;
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { ?ScrollOnScrollCallback } callback
+     * @param { ?ScrollOnScrollCallback } callback
      * @returns { This }
      */
     @!APILevel[
@@ -937,7 +937,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * Triggered when each frame scrolling starts.
      * Anonymous Object Rectification.
      *
-     * @params { ?OnScrollFrameBeginCallback } event
+     * @param { ?OnScrollFrameBeginCallback } event
      * @returns { This }
      */
     @!APILevel[
@@ -963,7 +963,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * 2. This event is triggered when the controller API is called.
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { ?OnScrollEdgeCallback } event
+     * @param { ?OnScrollEdgeCallback } event
      * @returns { This }
      */
     @!APILevel[
@@ -1030,8 +1030,8 @@ public class Scroller {
     /**
      * Sets slides to the specified position.
      *
-     * @params { Length } xOffset
-     * @params { Length } yOffset
+     * @param { Length } xOffset
+     * @param { Length } yOffset
      */
     @!APILevel[
         22,
@@ -1049,9 +1049,9 @@ public class Scroller {
     /**
      * Sets slides to the specified position.
      *
-     * @params { Length } xOffset
-     * @params { Length } yOffset
-     * @params { ScrollAnimationOptions } animation
+     * @param { Length } xOffset
+     * @param { Length } yOffset
+     * @param { ScrollAnimationOptions } animation
      */
     @!APILevel[
         22,
@@ -1073,9 +1073,9 @@ public class Scroller {
     /**
      * Sets slides to the specified position.
      *
-     * @params { Length } xOffset
-     * @params { Length } yOffset
-     * @params { Bool } animation
+     * @param { Length } xOffset
+     * @param { Length } yOffset
+     * @param { Bool } animation
      */
     @!APILevel[
         22,
@@ -1094,8 +1094,8 @@ public class Scroller {
     /**
      * Called when the setting slides by offset.
      *
-     * @params { Length } xOffset
-     * @params { Length } yOffset
+     * @param { Length } xOffset
+     * @param { Length } yOffset
      */
     @!APILevel[
         22,
@@ -1113,7 +1113,7 @@ public class Scroller {
     /**
      * Called when scrolling to the edge of the container.
      *
-     * @params { Edge } value
+     * @param { Edge } value
      */
     @!APILevel[
         22,
@@ -1128,8 +1128,8 @@ public class Scroller {
     /**
      * Called when scrolling to the edge of the container.
      *
-     * @params { Edge } value
-     * @params { ?ScrollEdgeOptions } options
+     * @param { Edge } value
+     * @param { ?ScrollEdgeOptions } options
      */
     @!APILevel[
         22,
@@ -1145,7 +1145,7 @@ public class Scroller {
     /**
      * Performs inertial scrolling based on the initial velocity passed in.
      *
-     * @params { Float64 } velocity - If the value specified is 0, it is considered as invalid, and will not take effect.
+     * @param { Float64 } velocity - If the value specified is 0, it is considered as invalid, and will not take effect.
      * A positive value indicates scrolling towards the top, while a negative value indicates scrolling towards the bottom.
      */
     @!APILevel[
@@ -1161,7 +1161,7 @@ public class Scroller {
     /**
      * Called when page turning mode is set.
      *
-     * @params { Bool } value
+     * @param { Bool } value
      */
     @!APILevel[
         22,
@@ -1176,8 +1176,8 @@ public class Scroller {
     /**
      * Called when page turning mode is set.
      *
-     * @params { Bool } next
-     * @params { ?Bool } animation
+     * @param { Bool } next
+     * @param { ?Bool } animation
      */
     @!APILevel[
         22,
@@ -1208,10 +1208,10 @@ public class Scroller {
      * Scrolls to a specified index, with support for setting an extra offset for the scroll.
      * This API only works for the ArcList, Grid, List, and WaterFlow components.
      *
-     * @params { Int32 } index
-     * @params { ?Bool } smooth
-     * @params { ?ScrollAlign } align
-     * @params { ?ScrollToIndexOptions } options
+     * @param { Int32 } index
+     * @param { ?Bool } smooth
+     * @param { ?ScrollAlign } align
+     * @param { ?ScrollToIndexOptions } options
      * @returns { This }
      */
     @!APILevel[
@@ -1258,7 +1258,7 @@ public class Scroller {
      * The value of <em>index</em> must be the index of a child component visible in the display area.
      * Otherwise, the value is considered invalid.
      *
-     * @params { ?Int32 } index
+     * @param { ?Int32 } index
      * @returns { RectResult }
      */
     @!APILevel[
@@ -1275,8 +1275,8 @@ public class Scroller {
      * Obtains the index of a child component based on coordinates.
      * <br>The returned index is <em>-1</em> for invalid coordinates.
      *
-     * @params { Float64 } x
-     * @params { Float64 } y
+     * @param { Float64 } x
+     * @param { Float64 } y
      * @returns { Int32 }
      */
     @!APILevel[

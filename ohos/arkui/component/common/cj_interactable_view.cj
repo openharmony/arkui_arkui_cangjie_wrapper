@@ -157,12 +157,12 @@ public class TouchObject {
     /**
      * TouchObject constructor.
      *
-     * @params { TouchType } touchType
-     * @params { Int32 } id
-     * @params { Float64 } screenX
-     * @params { Float64 } screenY
-     * @params { Float64 } x
-     * @params { Float64 } y
+     * @param { TouchType } touchType
+     * @param { Int32 } id
+     * @param { Float64 } screenX
+     * @param { Float64 } screenY
+     * @param { Float64 } x
+     * @param { Float64 } y
      */
     @!APILevel[
         22,
@@ -331,9 +331,9 @@ public class DragItemInfo {
     /**
      * DragItemInfo constructor.
      *
-     * @params { ?PixelMap } pixelMap
-     * @params { ?CustomBuilder } builder
-     * @params { ?String } extraInfo
+     * @param { ?PixelMap } pixelMap
+     * @param { ?CustomBuilder } builder
+     * @param { ?String } extraInfo
      */
     @!APILevel[
         22,
@@ -412,13 +412,13 @@ public class MouseEvent <: BaseEvent {
     /**
      * MouseEvent constructor.
      *
-     * @params { Int64 } timestamp
-     * @params { Float64 } screenX
-     * @params { Float64 } screenY
-     * @params { Float64 } x
-     * @params { Float64 } y
-     * @params { MouseButton } button
-     * @params { MouseAction } action
+     * @param { Int64 } timestamp
+     * @param { Float64 } screenX
+     * @param { Float64 } screenY
+     * @param { Float64 } x
+     * @param { Float64 } y
+     * @param { MouseButton } button
+     * @param { MouseAction } action
      */
     @!APILevel[
         22,
@@ -583,13 +583,13 @@ public class KeyEvent {
     /**
      * KeyEvent constructor.
      *
-     * @params { String } keyText
-     * @params { KeyType } keyType
-     * @params { Int32 } keyCode
-     * @params { KeySource } keySource
-     * @params { Int32 } metaKey
-     * @params { Int64 } deviceId
-     * @params { Int64 } timestamp
+     * @param { String } keyText
+     * @param { KeyType } keyType
+     * @param { Int32 } keyCode
+     * @param { KeySource } keySource
+     * @param { Int32 } metaKey
+     * @param { Int64 } deviceId
+     * @param { Int64 } timestamp
      */
     @!APILevel[
         22,

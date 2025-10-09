@@ -33,7 +33,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     /**
      * ObservedArrayList constructor.
      *
-     * @params { ArrayList<T> } initValue
+     * @param { ArrayList<T> } initValue
      */
     @!APILevel[
         22,
@@ -46,7 +46,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     /**
      * ObservedArrayList constructor.
      *
-     * @params { Array<T> } initValue
+     * @param { Array<T> } initValue
      */
     @!APILevel[
         22,
@@ -112,7 +112,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { ArrayList<T> } newValue
+     * @param { ArrayList<T> } newValue
      */
     @!APILevel[
         22,
@@ -125,7 +125,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { Array<T> } newValue
+     * @param { Array<T> } newValue
      */
     @!APILevel[
         22,
@@ -138,7 +138,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { ObservedComplexAbstract } newValue
+     * @param { ObservedComplexAbstract } newValue
      */
     @!APILevel[
         22,
@@ -156,7 +156,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { Int64 } index
+     * @param { Int64 } index
      * @returns { T }
      */
     @!APILevel[
@@ -170,8 +170,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { Int64 } index
-     * @params { T } value
+     * @param { Int64 } index
+     * @param { T } value
      */
     @!APILevel[
         22,
@@ -248,7 +248,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { T } element
+     * @param { T } element
      */
     @!APILevel[
         22,
@@ -262,7 +262,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { Collection<T> } element
+     * @param { Collection<T> } element
      */
     @!APILevel[
         22,
@@ -281,8 +281,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { Int64 } index
-     * @params { T } element
+     * @param { Int64 } index
+     * @param { T } element
      */
     @!APILevel[
         22,
@@ -296,8 +296,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { Int64 } index
-     * @params { Collection<T> } elements
+     * @param { Int64 } index
+     * @param { Collection<T> } elements
      */
     @!APILevel[
         22,
@@ -316,7 +316,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { T } element
+     * @param { T } element
      */
     @!APILevel[
         22,
@@ -330,7 +330,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { Collection<T> } elements
+     * @param { Collection<T> } elements
      */
     @!APILevel[
         22,
@@ -349,7 +349,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { Int64 } index
+     * @param { Int64 } index
      */
     @!APILevel[
         22,
@@ -363,7 +363,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { Range<Int64> } range
+     * @param { Range<Int64> } range
      */
     @!APILevel[
         22,
@@ -376,7 +376,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      *
-     * @params { (T) -> Bool } predicate
+     * @param { (T) -> Bool } predicate
      */
     @!APILevel[
         22,

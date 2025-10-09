@@ -30,7 +30,7 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
     /**
      * setting whether checkbox is selected.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { CheckboxAttribute }
      */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
     /**
      * setting the display color of checkbox.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { CheckboxAttribute }
      */
     @!APILevel[
@@ -55,7 +55,7 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
      * Called when the selection status changes.
      * Anonymous Object Rectification.
      *
-     * @params { ?OnCheckboxChangeCallback } callback
+     * @param { ?OnCheckboxChangeCallback } callback
      * @returns { CheckboxAttribute }
      */
     @!APILevel[
@@ -67,7 +67,7 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
     /**
      * setting the shape of checkbox.
      *
-     * @params { ?CheckBoxShape } value - The configuration of checkbox shape.
+     * @param { ?CheckBoxShape } value - The configuration of checkbox shape.
      * @returns { CheckboxAttribute }
      */
     @!APILevel[

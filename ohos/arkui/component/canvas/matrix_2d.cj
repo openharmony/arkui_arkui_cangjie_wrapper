@@ -69,7 +69,7 @@ public class Matrix2D <: RemoteDataLite {
     /**
      * Constructs a 2D change matrix object. The default value is the unit matrix.
      *
-     * @params { ?LengthMetricsUnit } unit - the unit mode.
+     * @param { ?LengthMetricsUnit } unit - the unit mode.
      */
     @!APILevel[
         22,
@@ -272,9 +272,9 @@ public class Matrix2D <: RemoteDataLite {
     /**
      * Adds the rotation effect of the X and Y axes to the current matrix.
      *
-     * @params { ?Float64 } degree - The rotation angle, clockwise in radians.
-     * @params { ?Float64 } rx - Rotation effect of the X-axis.
-     * @params { ?Float64 } ry - Rotation effect of the Y-axis.
+     * @param { ?Float64 } degree - The rotation angle, clockwise in radians.
+     * @param { ?Float64 } rx - Rotation effect of the X-axis.
+     * @param { ?Float64 } ry - Rotation effect of the Y-axis.
      * @returns { This }
      */
     @!APILevel[
@@ -291,8 +291,8 @@ public class Matrix2D <: RemoteDataLite {
     /**
      * Adds the translation effect of the X and Y axes to the current matrix.
      *
-     * @params { ?Float64 } tx - X-axis translation effect.
-     * @params { ?Float64 } ty - Y-axis translation effect.
+     * @param { ?Float64 } tx - X-axis translation effect.
+     * @param { ?Float64 } ty - Y-axis translation effect.
      * @returns { This }
      */
     @!APILevel[
@@ -309,8 +309,8 @@ public class Matrix2D <: RemoteDataLite {
     /**
      * Adds the scaling effect of the X and Y axes to the current matrix.
      *
-     * @params { ?Float64 } sx - X-axis scaling effect.
-     * @params { ?Float64 } sy - Y-axis scaling effect.
+     * @param { ?Float64 } sx - X-axis scaling effect.
+     * @param { ?Float64 } sy - Y-axis scaling effect.
      * @returns { This }
      */
     @!APILevel[

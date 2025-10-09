@@ -36,7 +36,7 @@ public abstract class ObservedComplexAbstract <: Observable {
 
     /**
      *
-     * @params { ObservedComplexAbstract } v
+     * @param { ObservedComplexAbstract } v
      */
     @!APILevel[
         22,
@@ -77,7 +77,7 @@ public abstract class ObservedComplexAbstract <: Observable {
 
     /**
      *
-     * @params { String } info
+     * @param { String } info
      */
     @!APILevel[
         22,

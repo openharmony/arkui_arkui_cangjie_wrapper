@@ -33,7 +33,7 @@ sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
     /**
      * Called when the alignment of image span is set.
      *
-     * @params { ?ImageSpanAlignment } value - The alignment type of image span.
+     * @param { ?ImageSpanAlignment } value - The alignment type of image span.
      * @returns { ImageSpanAttribute } The attribute of the image span.
      */
     @!APILevel[
@@ -45,7 +45,7 @@ sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
     /**
      * Sets the zoom type of an image.
      *
-     * @params { ?ImageFit } value - Image display mode.
+     * @param { ?ImageFit } value - Image display mode.
      * @returns { ImageSpanAttribute } The attribute of the image span.
      */
     @!APILevel[
@@ -57,7 +57,7 @@ sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
     /**
      * Sets the color filter effect on the image span.
      *
-     * @params { ?ColorFilter } filter ColorFilter object.
+     * @param { ?ColorFilter } filter ColorFilter object.
      * @returns { ImageSpanAttribute } The attribute of the image span.
      */
     @!APILevel[
@@ -70,7 +70,7 @@ sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
      * Sets a callback which is triggered when the image is successfully loaded.
      * The size of the image source that is successfully loaded is returned, in pixels.
      *
-     * @params { ?ImageCompleteCallback } callback - Triggered when the image is successfully loaded.
+     * @param { ?ImageCompleteCallback } callback - Triggered when the image is successfully loaded.
      * @returns { ImageSpanAttribute } The attribute of the image span.
      */
     @!APILevel[
@@ -83,7 +83,7 @@ sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
      * Sets a callback which is triggered when an exception occurs during image loading.
      * The field of "message" returned in the callback carries the detailed information of failed image loading.
      *
-     * @params { ?ImageErrorCallback } callback - Triggered when an exception occurs during image loading.
+     * @param { ?ImageErrorCallback } callback - Triggered when an exception occurs during image loading.
      * @returns { ImageSpanAttribute } The attribute of the image span.
      */
     @!APILevel[

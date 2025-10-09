@@ -51,8 +51,8 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
     /**
      * Create the rect component instance.
      *
-     * @params { ?Length } width 
-     * @params { ?Length } height
+     * @param { ?Length } width 
+     * @param { ?Length } height
      */
     @!APILevel[
         22,
@@ -73,7 +73,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
     /**
      * Set the corner radius width.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -90,7 +90,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
     /**
      * Set the corner radius height.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -107,7 +107,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
     /**
      * Set the corner radius size.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -124,7 +124,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
     /**
      * Set the corner radius size.
      *
-     * @params { ?Array<Length> } value
+     * @param { ?Array<Length> } value
      * @returns { This }
      */
     @!APILevel[
@@ -150,7 +150,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
     /**
      * Set the corner radius size.
      *
-     * @params { ?Array<(Length, Length)> } value
+     * @param { ?Array<(Length, Length)> } value
      * @returns { This }
      */
     @!APILevel[

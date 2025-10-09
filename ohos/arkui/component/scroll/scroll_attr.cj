@@ -31,7 +31,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
     /**
      * Sets the scrolling direction.
      *
-     * @params { ?ScrollDirection } scrollDirection
+     * @param { ?ScrollDirection } scrollDirection
      * @returns { ScrollAttribute }
      */
     @!APILevel[
@@ -46,7 +46,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
      * 2. This event is triggered when the controller API is called.
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult } handler
+     * @param { ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult } handler
      * @returns { ScrollAttribute }
      */
     @!APILevel[
@@ -61,7 +61,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
      * 2. This event is triggered when the controller API is called.
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { ?(Float64, Float64, ScrollState, ScrollSource) -> Unit } handler
+     * @param { ?(Float64, Float64, ScrollState, ScrollSource) -> Unit } handler
      * @returns { ScrollAttribute }
      */
     @!APILevel[
@@ -76,7 +76,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
      * 2. This event is triggered when the controller API is called;
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { ?ScrollOnScrollCallback } callback
+     * @param { ?ScrollOnScrollCallback } callback
      * @returns { ScrollAttribute }
      */
     @!APILevel[
@@ -89,7 +89,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
      * Triggered when each frame scrolling starts.
      * Anonymous Object Rectification.
      *
-     * @params { ?OnScrollFrameBeginCallback } event
+     * @param { ?OnScrollFrameBeginCallback } event
      * @returns { ScrollAttribute }
      */
     @!APILevel[
@@ -105,7 +105,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
      * 2. This event is triggered when the controller API is called.
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @params { ?OnScrollEdgeCallback } event
+     * @param { ?OnScrollEdgeCallback } event
      * @returns { ScrollAttribute }
      */
     @!APILevel[

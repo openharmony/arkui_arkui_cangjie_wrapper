@@ -60,8 +60,8 @@ public class Radio <: CommonMethodComponent<Radio> & RadioAttribute {
     /**
      * Create a radio box.
      *
-     * @params { ?String } value
-     * @params { ?String } group
+     * @param { ?String } value
+     * @param { ?String } group
      */
     @!APILevel[
         22,
@@ -78,7 +78,7 @@ public class Radio <: CommonMethodComponent<Radio> & RadioAttribute {
     /**
      * Called when the radio box is selected.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -144,7 +144,7 @@ public class Radio <: CommonMethodComponent<Radio> & RadioAttribute {
     /**
      * Called when the radio box selection status changes.
      *
-     * @params { ?(Bool) -> Unit } callback
+     * @param { ?(Bool) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[

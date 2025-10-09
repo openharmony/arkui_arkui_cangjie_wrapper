@@ -237,9 +237,9 @@ public class ButtonInfo {
     /**
      * Constructs a menu item button in a menu.
      *
-     * @params { ResourceStr } text: Button text content.
-     * @params { ResourceColor } color: Button text color.
-     * @params { Bool } primary: Whether the button responds to the Enter/Space key by default.
+     * @param { ResourceStr } text: Button text content.
+     * @param { ResourceColor } color: Button text color.
+     * @param { Bool } primary: Whether the button responds to the Enter/Space key by default.
      */
     @!APILevel[
         22,
@@ -369,10 +369,10 @@ public class EdgeColors {
     /**
      * EdgeColor constructor
      *
-     * @params { ResourceColor } top
-     * @params { ResourceColor } right
-     * @params { ResourceColor } bottom
-     * @params { ResourceColor } left
+     * @param { ResourceColor } top
+     * @param { ResourceColor } right
+     * @param { ResourceColor } bottom
+     * @param { ResourceColor } left
      */
     @!APILevel[
         22,
@@ -638,21 +638,21 @@ public open class BaseDialogOptions {
     /**
      * BaseDialogOptions constructor
      *
-     * @params { Rectangle } maskRect
-     * @params { DialogAlignment } alignment
-     * @params { Offset } offset
-     * @params { Bool } isModal
-     * @params { Bool } showInSubWindow
-     * @params { Bool } autoCancel
-     * @params { ResourceColor } maskColor
-     * @params { TransitionEffect } transition
-     * @params { function } onDidAppear
-     * @params { function } onDidDisappear
-     * @params { function } onWillAppear
-     * @params { function } onWillDisappear
-     * @params { KeyboardAvoidMode } keyboardAvoidMode
-     * @params { Bool } enableHoverMode
-     * @params { HoverModeAreaType } hoverModeArea
+     * @param { Rectangle } maskRect
+     * @param { DialogAlignment } alignment
+     * @param { Offset } offset
+     * @param { Bool } isModal
+     * @param { Bool } showInSubWindow
+     * @param { Bool } autoCancel
+     * @param { ResourceColor } maskColor
+     * @param { TransitionEffect } transition
+     * @param { function } onDidAppear
+     * @param { function } onDidDisappear
+     * @param { function } onWillAppear
+     * @param { function } onWillDisappear
+     * @param { KeyboardAvoidMode } keyboardAvoidMode
+     * @param { Bool } enableHoverMode
+     * @param { HoverModeAreaType } hoverModeArea
      */
     @!APILevel[
         22,
@@ -806,31 +806,31 @@ public class CustomDialogOptions <: BaseDialogOptions {
     /**
      * Dialog constructor.
      *
-     * @params { function } builder
-     * @params { Rectangle } maskRect
-     * @params { DialogAlignment } alignment
-     * @params { Offset } offset
-     * @params { Bool } isModal
-     * @params { Bool } showInSubWindow
-     * @params { Bool } autoCancel
-     * @params { ResourceColor } maskColor
-     * @params { TransitionEffect } transition
-     * @params { function } onDidAppear
-     * @params { function } onDidDisappear
-     * @params { function } onWillAppear
-     * @params { function } onWillDisappear
-     * @params { KeyboardAvoidMode } keyboardAvoidMode
-     * @params { Bool } enableHoverMode
-     * @params { HoverModeAreaType } hoverModeArea
-     * @params { ResourceColor } backgroundColor
-     * @params { BorderRadiuses } cornerRadius
-     * @params { EdgeWidths } borderWidth
-     * @params { EdgeColors } borderColor
-     * @params { EdgeStyles } borderStyle
-     * @params { Length } width
-     * @params { Length } height
-     * @params { ShadowOptions } shadow
-     * @params { BlurStyle } backgroundBlurStyle
+     * @param { function } builder
+     * @param { Rectangle } maskRect
+     * @param { DialogAlignment } alignment
+     * @param { Offset } offset
+     * @param { Bool } isModal
+     * @param { Bool } showInSubWindow
+     * @param { Bool } autoCancel
+     * @param { ResourceColor } maskColor
+     * @param { TransitionEffect } transition
+     * @param { function } onDidAppear
+     * @param { function } onDidDisappear
+     * @param { function } onWillAppear
+     * @param { function } onWillDisappear
+     * @param { KeyboardAvoidMode } keyboardAvoidMode
+     * @param { Bool } enableHoverMode
+     * @param { HoverModeAreaType } hoverModeArea
+     * @param { ResourceColor } backgroundColor
+     * @param { BorderRadiuses } cornerRadius
+     * @param { EdgeWidths } borderWidth
+     * @param { EdgeColors } borderColor
+     * @param { EdgeStyles } borderStyle
+     * @param { Length } width
+     * @param { Length } height
+     * @param { ShadowOptions } shadow
+     * @param { BlurStyle } backgroundBlurStyle
      */
     @!APILevel[
         22,
@@ -1037,19 +1037,19 @@ public open class ShowDialogOptions {
     /**
      * Dialog's show options constructor.
      *
-     * @params { ResourceStr } title
-     * @params { ResourceStr } message
-     * @params { Array<ButtonInfo> } buttons
-     * @params { DialogAlignment } alignment
-     * @params { Offset } offset
-     * @params { Rectangle } maskRect
-     * @params { Bool } showInSubWindow
-     * @params { Bool } isModal
-     * @params { Color } backgroundColor
-     * @params { BlurStyle } backgroundBlurStyle
-     * @params { ShadowOptions } shadow
-     * @params { Bool } enableHoverMode
-     * @params { HoverModeAreaType } hoverModeArea
+     * @param { ResourceStr } title
+     * @param { ResourceStr } message
+     * @param { Array<ButtonInfo> } buttons
+     * @param { DialogAlignment } alignment
+     * @param { Offset } offset
+     * @param { Rectangle } maskRect
+     * @param { Bool } showInSubWindow
+     * @param { Bool } isModal
+     * @param { Color } backgroundColor
+     * @param { BlurStyle } backgroundBlurStyle
+     * @param { ShadowOptions } shadow
+     * @param { Bool } enableHoverMode
+     * @param { HoverModeAreaType } hoverModeArea
      */
     @!APILevel[
         22,
@@ -1141,10 +1141,10 @@ public open class ActionMenuOptions {
     /**
      * Menu's Action options constructor.
      *
-     * @params { ResourceStr } title
-     * @params { Array<ButtonInfo> } buttons
-     * @params { Bool } showInSubWindow
-     * @params { Bool } isModal
+     * @param { ResourceStr } title
+     * @param { Array<ButtonInfo> } buttons
+     * @param { Bool } showInSubWindow
+     * @param { Bool } isModal
      */
     @!APILevel[
         22,
@@ -1296,18 +1296,18 @@ public class ShowToastOptions {
     /**
      * Toast's show options constructor.
      *
-     * @params { ResourceStr } message
-     * @params { UInt32 } duration
-     * @params { Length } bottom
-     * @params { ToastShowMode } showMode
-     * @params { Alignment } alignment
-     * @params { Offset } offset
-     * @params { Color } backgroundColor
-     * @params { Color } textColor
-     * @params { BlurStyle } backgroundBlurStyle
-     * @params { ShadowOptions } shadow
-     * @params { Bool } enableHoverMode
-     * @params { HoverModeAreaType } hoverModeArea
+     * @param { ResourceStr } message
+     * @param { UInt32 } duration
+     * @param { Length } bottom
+     * @param { ToastShowMode } showMode
+     * @param { Alignment } alignment
+     * @param { Offset } offset
+     * @param { Color } backgroundColor
+     * @param { Color } textColor
+     * @param { BlurStyle } backgroundBlurStyle
+     * @param { ShadowOptions } shadow
+     * @param { Bool } enableHoverMode
+     * @param { HoverModeAreaType } hoverModeArea
      */
     @!APILevel[
         22,
@@ -1565,8 +1565,8 @@ public class PromptAction {
    *
    * isModal = true and showInSubWindow = true cannot be used at the same time.
    *
-   * @params { CustomDialogOptions } options - Options.
-   * @params { (Int32) -> Unit } callBack
+   * @param { CustomDialogOptions } options - Options.
+   * @param { (Int32) -> Unit } callBack
    */
     @!APILevel[
         22,
@@ -1583,7 +1583,7 @@ public class PromptAction {
     /**
      * Close the custom dialog.
      *
-     * @params { Int32 } dialogId - the dialog id that returned by openCustomDialog.
+     * @param { Int32 } dialogId - the dialog id that returned by openCustomDialog.
      */
     @!APILevel[
         22,
@@ -1598,7 +1598,7 @@ public class PromptAction {
     /**
      * Shows a toast in the given settings.
      *
-     * @params { ShowToastOptions } options - Toast options.
+     * @param { ShowToastOptions } options - Toast options.
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[
@@ -1617,8 +1617,8 @@ public class PromptAction {
     /**
      * Shows a dialog box in the given settings. This API uses an asynchronous callback to return the result.
      *
-     * @params { ShowDialogOptions } options - Dialog box options.
-     * @params { ShowDialogCallBack } callback - Callback used to return the dialog.
+     * @param { ShowDialogOptions } options - Dialog box options.
+     * @param { ShowDialogCallBack } callback - Callback used to return the dialog.
      * box response result.
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
@@ -1647,8 +1647,8 @@ public class PromptAction {
     /**
      * Shows an action menu in the given settings. This API uses an asynchronous callback to return the result.
      *
-     * @params { ActionMenuOptions } options - Action menu options.
-     * @params { ShowActionMenuCallBack } callback - Callback used to return the action menu
+     * @param { ActionMenuOptions } options - Action menu options.
+     * @param { ShowActionMenuCallBack } callback - Callback used to return the action menu
      * response result.
      * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */

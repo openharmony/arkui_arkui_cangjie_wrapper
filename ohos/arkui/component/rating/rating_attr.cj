@@ -31,7 +31,7 @@ sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
     /**
      * Called when the total number of stars is set.
      * 
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { RatingAttribute }
      */
     @!APILevel[
@@ -43,7 +43,7 @@ sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
     /**
      * Called when the step size of the operation rating.
      *
-     * @params { ?Float64 } size
+     * @param { ?Float64 } size
      * @returns { RatingAttribute }
      */
     @!APILevel[
@@ -55,9 +55,9 @@ sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
     /**
      * Called when a picture is set.
      *
-     * @params { ?ResourceStr } backgroundUri - Background URI option.
-     * @params { ?ResourceStr } foregroundUri - Foreground URI option.
-     * @params { ?ResourceStr } secondaryUri - Secondary URI option.
+     * @param { ?ResourceStr } backgroundUri - Background URI option.
+     * @param { ?ResourceStr } foregroundUri - Foreground URI option.
+     * @param { ?ResourceStr } secondaryUri - Secondary URI option.
      * @returns { RatingAttribute }
      */
     @!APILevel[
@@ -69,7 +69,7 @@ sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
     /**
      * Called when the star rating of the operation scoring bar changes.
      *
-     * @params { ?(Float64) -> Unit } callback
+     * @param { ?(Float64) -> Unit } callback
      * @returns { RatingAttribute }
      */
     @!APILevel[

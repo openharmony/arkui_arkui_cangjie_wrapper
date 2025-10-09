@@ -47,7 +47,7 @@ public class AppStorage {
     /**
      * Create and return a two-way sync ("link") to named property.
      *
-     * @params { String } propName - name of source property in AppStorage
+     * @param { String } propName - name of source property in AppStorage
      * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>, return 'None' if named property does not already exist in AppStorage.
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -63,8 +63,8 @@ public class AppStorage {
      * Like see @link(), but will create and initialize a new source property in AppStorage if missing
      * Same as see LocalStorage.setAndLink()
      *
-     * @params { String } propName - name of source property in AppStorage.
-     * @params { T } defaultValue - value to be used for initializing new property in AppStorage,
+     * @param { String } propName - name of source property in AppStorage.
+     * @param { T } defaultValue - value to be used for initializing new property in AppStorage,
      * default value must be of type T, can be None.
      * @returns { ObservedProperty<T> } instance of ObservedProperty<T>.
      * @throws { BusinessException } 100001 - Internal error.
@@ -80,7 +80,7 @@ public class AppStorage {
     /**
      * Create and return a one-way sync ('prop') to named property.
      *
-     * @params { String } propName - name of source property in AppStorage.
+     * @param { String } propName - name of source property in AppStorage.
      * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>, return None if named property does not already exist in AppStorage.
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -97,8 +97,8 @@ public class AppStorage {
      * Like prop(), will create and initialize a new source property in AppStorage if missing.
      * Same as see LocalStorage.setAndProp().
      *
-     * @params { String } propName - name of source property in AppStorage.
-     * @params { T } defaultValue - value to be used for initializing new property in AppStorage.
+     * @param { String } propName - name of source property in AppStorage.
+     * @param { T } defaultValue - value to be used for initializing new property in AppStorage.
      * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>.
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -116,7 +116,7 @@ public class AppStorage {
      * Same as ES6 Map.prototype.has().
      * Same as see LocalStorage.has().
      *
-     * @params { String } propName - searched property
+     * @param { String } propName - searched property
      * @returns { Bool } true if property with such name exists in AppStorage.
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -132,7 +132,7 @@ public class AppStorage {
      * Same as see LocalStorage.get().
      * Obtain the value of property with given name, returns undefined if the property does not exist in AppStorage.
      *
-     * @params { String } propName
+     * @param { String } propName
      * @returns { ?T } property value of type T if found or None.
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -149,8 +149,8 @@ public class AppStorage {
      * Method sets nothing and returns false if property with this name does not exist in AppStorage.
      * Same as see LocalStorage.set().
      *
-     * @params { String } propName
-     * @params { T } newValue - must be of type T
+     * @param { String } propName
+     * @param { T } newValue - must be of type T
      * @returns { Bool } true on success, i.e. when above conditions are satisfied, otherwise false.
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -168,8 +168,8 @@ public class AppStorage {
      * newValue can be undefined or null from API 12.
      * see LocalStorage.setOrCreate().
      *
-     * @params { String } propName
-     * @params { T } newValue - must be of type T.
+     * @param { String } propName
+     * @param { T } newValue - must be of type T.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -195,7 +195,7 @@ public class AppStorage {
      * (and also should not!) be deleted from AppStorage.
      * Same as see LocalStorage.delete()
      *
-     * @params { String } propName
+     * @param { String } propName
      * @returns { Bool } false if method failed.
      * @throws { BusinessException } 100001 - Internal error.
      */

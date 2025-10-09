@@ -84,21 +84,21 @@ public class MeasureOptions {
     /**
      * Create an object of MeasureOptions.
      *
-     * @params { String } textContent
-     * @params { FontWeight } fontWeight
-     * @params { String } fontFamily"
-     * @params { ?Length } constraintWidth
-     * @params { ?Length } fontSize
-     * @params { ?Length } lineHeight
-     * @params { ?Length } baselineOffset
-     * @params { ?Length } letterSpacing
-     * @params { ?Length } textIndent
-     * @params { UInt32 } maxLines
-     * @params { TextAlign } textAlign
-     * @params { FontStyle } fontStyle
-     * @params { TextOverflow } overflow
-     * @params { TextCase } textCase
-     * @params { WordBreak } wordBreak
+     * @param { String } textContent
+     * @param { FontWeight } fontWeight
+     * @param { String } fontFamily"
+     * @param { ?Length } constraintWidth
+     * @param { ?Length } fontSize
+     * @param { ?Length } lineHeight
+     * @param { ?Length } baselineOffset
+     * @param { ?Length } letterSpacing
+     * @param { ?Length } textIndent
+     * @param { UInt32 } maxLines
+     * @param { TextAlign } textAlign
+     * @param { FontStyle } fontStyle
+     * @param { TextOverflow } overflow
+     * @param { TextCase } textCase
+     * @param { WordBreak } wordBreak
      */
     @!APILevel[
         22,
@@ -221,8 +221,8 @@ public class SizeOptions {
     /*
      * SizeOptions constructor.
      *
-     * @params { Length } width
-     * @params { Length } height
+     * @param { Length } width
+     * @param { Length } height
      */
     @!APILevel[
         22,
@@ -272,7 +272,7 @@ public class MeasureUtils {
     /**
      * Displays the textWidth.
      *
-     * @params { MeasureOptions } options - Options.
+     * @param { MeasureOptions } options - Options.
      * @returns { Float64 }
      */
     @!APILevel[
@@ -285,7 +285,7 @@ public class MeasureUtils {
     /**
      * Displays the text width and height.
      *
-     * @params { MeasureOptions } options - Options of measure area occupied by text.
+     * @param { MeasureOptions } options - Options of measure area occupied by text.
      * @returns { SizeOptions } width and height for text to display.
      */
     @!APILevel[

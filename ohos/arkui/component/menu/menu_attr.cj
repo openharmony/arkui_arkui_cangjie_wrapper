@@ -31,10 +31,10 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
      * Sets the font style.
      * Family and style are not supported currently and will be fixed in future.
      *
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?ResourceStr } family
-     * @params { ?FontStyle } style
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?ResourceStr } family
+     * @param { ?FontStyle } style
      * @returns { MenuAttribute }
      */
     @!APILevel[
@@ -51,7 +51,7 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
     /**
      * Sets the Menu font color.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { MenuAttribute }
      */
     @!APILevel[
@@ -64,7 +64,7 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
      * Sets the radius of the corner around the menu.
      * When the radius is less than the menu width, the default border radius is used.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { MenuAttribute }
      */
     @!APILevel[
@@ -77,7 +77,7 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
      * Sets the radius of the corner around the menu.
      * When the radius is less than the menu width, the default border radius is used.
      *
-     * @params { ?BorderRadiuses } value
+     * @param { ?BorderRadiuses } value
      * @returns { MenuAttribute }
      */
     @!APILevel[

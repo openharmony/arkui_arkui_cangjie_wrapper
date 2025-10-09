@@ -40,7 +40,7 @@ public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     /**
     * Defines the constructor of RowSplit.
     *
-    * @params { () -> Unit } child
+    * @param { () -> Unit } child
     */
     @!APILevel[
         22,
@@ -56,7 +56,7 @@ public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     /**
     * Called when judging whether the split line can be dragged.
     *
-    * @params { ?Bool } value
+    * @param { ?Bool } value
     * @returns { This }
     */
     @!APILevel[

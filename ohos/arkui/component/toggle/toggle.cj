@@ -73,8 +73,8 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Set parameters to obtain the toggle.
      *
-     * @params { ?ToggleType } toggleType
-     * @params { ?Bool } isOn
+     * @param { ?ToggleType } toggleType
+     * @param { ?Bool } isOn
      */
     @!APILevel[
         22,
@@ -90,9 +90,9 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Set parameters to obtain the toggle.
      *
-     * @params { ?ToggleType } toggleType
-     * @params { ?Bool } isOn
-     * @params { () -> Unit } subcomponent
+     * @param { ?ToggleType } toggleType
+     * @param { ?Bool } isOn
+     * @param { () -> Unit } subcomponent
      */
     @!APILevel[
         22,
@@ -164,7 +164,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Called when the color of the selected button is set.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -182,7 +182,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Called when the color of the selected button is set.
      *
-     * @params { ?ResourceColor } color
+     * @param { ?ResourceColor } color
      * @returns { This }
      */
     @!APILevel[
@@ -235,7 +235,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Called when the selected state of the component changes.
      *
-     * @params { ?(Bool) -> Unit } callback
+     * @param { ?(Bool) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[

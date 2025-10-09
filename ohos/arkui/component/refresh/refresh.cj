@@ -70,7 +70,7 @@ public class RefreshOptions {
     /**
      * Defines the options of refresh component.
      *
-     * @params { ?Bool } refreshing
+     * @param { ?Bool } refreshing
      */
     @!APILevel[
         22,
@@ -83,7 +83,7 @@ public class RefreshOptions {
     /**
      * Defines the options of refresh component.
      *
-     * @params { ?(Bool, (Bool) -> Unit) } refreshing
+     * @param { ?(Bool, (Bool) -> Unit) } refreshing
      */
     @!APILevel[
         22,
@@ -107,8 +107,8 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
     /**
      * Defines Refresh Component.
      *
-     * @params { ?RefreshOptions } value
-     * @params { () -> Unit } content
+     * @param { ?RefreshOptions } value
+     * @param { () -> Unit } content
      */
     @!APILevel[
         22,
@@ -136,7 +136,7 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
     /**
      * Called when the refresh state changes.
      *
-     * @params { ?(RefreshStatus) -> Unit } callback
+     * @param { ?(RefreshStatus) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -157,7 +157,7 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
     /**
      * Called when the refresh state is entered.
      *
-     * @params { ?() -> Unit } callback
+     * @param { ?() -> Unit } callback
      * @returns { This }
      */
     @!APILevel[

@@ -89,7 +89,7 @@ public class UIContext {
     /**
     * Create an animator object for custom animation.
     *
-    * @params { AnimatorOptions } options - Options.
+    * @param { AnimatorOptions } options - Options.
     * @returns { AnimatorResult }
     */
     @!APILevel[
@@ -103,7 +103,7 @@ public class UIContext {
     /**
     * Converts a value in vp units to a value in px.
     *
-    * @params { Length } value
+    * @param { Length } value
     * @returns { Option<Length> }
     */
     @!APILevel[
@@ -117,7 +117,7 @@ public class UIContext {
     /**
     * Converts a value in px units to a value in vp.
     *
-    * @params { Length } value
+    * @param { Length } value
     * @returns { Option<Length> }
     */
     @!APILevel[
@@ -131,7 +131,7 @@ public class UIContext {
     /**
     * Converts a value in fp units to a value in px.
     *
-    * @params { Length } value
+    * @param { Length } value
     * @returns { Option<Length> }
     */
     @!APILevel[
@@ -145,7 +145,7 @@ public class UIContext {
     /**
     * Converts a value in fp units to a value in px.
     *
-    * @params { Length } value
+    * @param { Length } value
     * @returns { Option<Length> }
     */
     @!APILevel[
@@ -159,7 +159,7 @@ public class UIContext {
     /**
     * Converts a value in lpx units to a value in px.
     *
-    * @params { Length } value
+    * @param { Length } value
     * @returns { Option<Length> }
     */
     @!APILevel[
@@ -173,7 +173,7 @@ public class UIContext {
     /**
     * Converts a value in px units to a value in lpx.
     *
-    * @params { Length } value
+    * @param { Length } value
     * @returns { Option<Length> }
     */
     @!APILevel[
@@ -238,7 +238,7 @@ public class UIContext {
     /**
      * Shows an alert dialog box.
      *
-     * @params { AlertDialogParamWithConfirm } options - Shows
+     * @param { AlertDialogParamWithConfirm } options - Shows
      * an AlertDialog component in the given settings.
      */
     @!APILevel[
@@ -252,7 +252,7 @@ public class UIContext {
     /**
      * Shows an alert dialog box.
      *
-     * @params { AlertDialogParamWithButtons } options - Shows
+     * @param { AlertDialogParamWithButtons } options - Shows
      * an AlertDialog component in the given settings.
      */
     @!APILevel[
@@ -266,7 +266,7 @@ public class UIContext {
     /**
      * Shows an alert dialog box.
      *
-     * @params { AlertDialogParamWithOptions } options - Shows
+     * @param { AlertDialogParamWithOptions } options - Shows
      * an AlertDialog component in the given settings.
      */
     @!APILevel[
@@ -279,7 +279,7 @@ public class UIContext {
     /**
      * Shows an action sheet in the given settings.
      *
-     * @params { ActionSheetOptions } value - Parameters of the action sheet.
+     * @param { ActionSheetOptions } value - Parameters of the action sheet.
      */
     @!APILevel[
         22,
@@ -292,8 +292,8 @@ public class UIContext {
     /**
      * Defining animation function
      *
-     * @params { AnimateParam } value - parameters for animation.
-     * @params { VoidCallback } event - the closure base on which, the system will create animation automatically.
+     * @param { AnimateParam } value - parameters for animation.
+     * @param { VoidCallback } event - the closure base on which, the system will create animation automatically.
      */
     @!APILevel[
         22,

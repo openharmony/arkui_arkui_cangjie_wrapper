@@ -271,9 +271,9 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when writing text.
      *
-     * @params { ?ResourceStr } content
-     * @params { ?TextController } controller
-     * @params { () -> Unit } child
+     * @param { ?ResourceStr } content
+     * @param { ?TextController } controller
+     * @param { () -> Unit } child
      */
     @!APILevel[
         22,
@@ -292,8 +292,8 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when writing text.
      *
-     * @params { ?TextController } controller
-     * @params { () -> Unit } child
+     * @param { ?TextController } controller
+     * @param { () -> Unit } child
      */
     @!APILevel[
         22,
@@ -306,7 +306,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when writing text.
      *
-     * @params { ?TextController } controller
+     * @param { ?TextController } controller
      */
     @!APILevel[
         22,
@@ -343,7 +343,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Set font line spacing.
      *
-     * @params { ?Length } value - Default value is 0.
+     * @param { ?Length } value - Default value is 0.
      * @returns { This }
      */
     @!APILevel[
@@ -361,7 +361,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the font size is set.
      *
-     * @params { ?Length } value - Default value is 16.fp.
+     * @param { ?Length } value - Default value is 16.fp.
      * @returns { This }
      */
     @!APILevel[
@@ -380,7 +380,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the maximum font size of the font is set.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      * @throws { IllegalArgumentException }
      */
@@ -400,7 +400,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the minimum font size of the font is set.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      * @throws { IllegalArgumentException }
      */
@@ -420,7 +420,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the font color is set.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      * @throws { IllegalArgumentException }
      */
@@ -439,7 +439,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the font style of a font is set.
      *
-     * @params { ?FontStyle } value - Default value is FontStyle.Normal.
+     * @param { ?FontStyle } value - Default value is FontStyle.Normal.
      * @returns { This }
      */
     @!APILevel[
@@ -456,7 +456,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the font weight is set.
      *
-     * @params { ?FontWeight } value
+     * @param { ?FontWeight } value
      * @returns { This }
      * @throws { IllegalArgumentException }
      */
@@ -477,7 +477,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the font list of text is set.
      *
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { This }
      */
     @!APILevel[
@@ -496,7 +496,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the horizontal center mode of the font is set.
      *
-     * @params { ?TextAlign } value - Default value is TextAlign.Start.
+     * @param { ?TextAlign } value - Default value is TextAlign.Start.
      * @returns { This }
      */
     @!APILevel[
@@ -514,7 +514,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the overflow mode of the font is set.
      *
-     * @params { ?TextOverflow } options - Text overflow options.
+     * @param { ?TextOverflow } options - Text overflow options.
      * @returns { This }
      */
     @!APILevel[
@@ -534,7 +534,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * <br>If this attribute is specified, the text will not exceed the specified number of lines.
      * <br>If there is extra text, you can use textOverflow to specify how it is displayed.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { This }
      */
     @!APILevel[
@@ -554,7 +554,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * <br>If the value is of the number type, the unit fp is used.
      * <br>For the string type, numeric string values with optional units.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -572,9 +572,9 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the text decoration of the text is set.
      *
-     * @params { ?TextDecorationType } decorationType - The type value of the decoration property object.
-     * @params { ?ResourceColor } color - The color value of the decoration property object.
-     * @params { ?TextDecorationStyle } decorationStyle - The style value of the decoration property object.
+     * @param { ?TextDecorationType } decorationType - The type value of the decoration property object.
+     * @param { ?ResourceColor } color - The color value of the decoration property object.
+     * @param { ?TextDecorationStyle } decorationStyle - The style value of the decoration property object.
      * @returns { This }
      */
     @!APILevel[
@@ -597,7 +597,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the baseline offset is set.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -615,7 +615,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the type of letter in the text font is set.
      *
-     * @params { ?TextCase } value - Default value is TextCase.Normal.
+     * @param { ?TextCase } value - Default value is TextCase.Normal.
      * @returns { This }
      */
     @!APILevel[

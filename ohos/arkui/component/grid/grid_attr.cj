@@ -31,7 +31,7 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
     /**
      * This parameter specifies the number of columns in the current grid layout.
      *
-     * @params { ?String } value
+     * @param { ?String } value
      * @returns { GridAttribute }
      */
     @!APILevel[
@@ -43,7 +43,7 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
     /**
      * Lets you set the number of rows in the current grid layout.
      *
-     * @params { ?String } value
+     * @param { ?String } value
      * @returns { GridAttribute }
      */
     @!APILevel[
@@ -55,7 +55,7 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
     /**
      * Allows you to set the spacing between columns.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { GridAttribute }
      */
     @!APILevel[
@@ -67,7 +67,7 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
     /**
      * Lets you set the spacing between rows.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { GridAttribute }
      */
     @!APILevel[
@@ -79,7 +79,7 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
     /**
      * cached Count.
      *
-     * @params { ?Int32 } count
+     * @param { ?Int32 } count
      * @returns { GridAttribute }
      */
     @!APILevel[
@@ -91,8 +91,8 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
     /**
      * Called to set number of GridItems to be preloaded (cached) in LazyForEach / Repeat.
      *
-     * @params { ?Int32 } count
-     * @params { ?Bool } show
+     * @param { ?Int32 } count
+     * @param { ?Bool } show
      * @returns { GridAttribute }
      */
     @!APILevel[

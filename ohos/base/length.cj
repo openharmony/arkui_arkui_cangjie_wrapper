@@ -121,8 +121,8 @@ public class LengthMetrics <: Length {
     /**
      * LengthMetrics constructor.
      *
-     * @params { Float64 } value
-     * @params { LengthUnit } unit
+     * @param { Float64 } value
+     * @param { LengthUnit } unit
      */
     @!APILevel[
         22,
@@ -236,7 +236,7 @@ public enum LengthUnit {
      * @throws { BussnessException } - 100001 - Internal error.
 =======
      *
-     * @params { Int32 } value
+     * @param { Int32 } value
      * @returns { LengthUnit }
 >>>>>>> 8414072 (Add annotations.)
      */

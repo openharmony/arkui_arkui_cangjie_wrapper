@@ -32,7 +32,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Set font line spacing.
      *
-     * @params { ?Length } value - Default value is 0.
+     * @param { ?Length } value - Default value is 0.
      * @returns { TextAttribute }
      */
     @!APILevel[
@@ -44,7 +44,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the font size is set.
      *
-     * @params { ?Length } value - Default value is 16.fp.
+     * @param { ?Length } value - Default value is 16.fp.
      * @returns { TextAttribute }
      */
     @!APILevel[
@@ -56,7 +56,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the maximum font size of the font is set.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { TextAttribute }
      * @throws { IllegalArgumentException }
      */
@@ -69,7 +69,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the minimum font size of the font is set.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { TextAttribute }
      * @throws { IllegalArgumentException }
      */
@@ -82,7 +82,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the font color is set.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { TextAttribute }
      * @throws { IllegalArgumentException }
      */
@@ -95,7 +95,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the font style of a font is set.
      *
-     * @params { ?FontStyle } value - Default value is FontStyle.Normal.
+     * @param { ?FontStyle } value - Default value is FontStyle.Normal.
      * @returns { TextAttribute }
      */
     @!APILevel[
@@ -107,7 +107,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the font weight is set.
      *
-     * @params { ?FontWeight } value
+     * @param { ?FontWeight } value
      * @returns { TextAttribute }
      * @throws { IllegalArgumentException }
      */
@@ -120,7 +120,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the font list of text is set.
      *
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { TextAttribute }
      */
     @!APILevel[
@@ -132,7 +132,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the horizontal center mode of the font is set.
      *
-     * @params { ?TextAlign } value - Default value is TextAlign.Start.
+     * @param { ?TextAlign } value - Default value is TextAlign.Start.
      * @returns { TextAttribute }
      */
     @!APILevel[
@@ -144,7 +144,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the overflow mode of the font is set.
      *
-     * @params { ?TextOverflow } options - Text overflow options.
+     * @param { ?TextOverflow } options - Text overflow options.
      * @returns { TextAttribute }
      */
     @!APILevel[
@@ -159,7 +159,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * <br>If this attribute is specified, the text will not exceed the specified number of lines.
      * <br>If there is extra text, you can use textOverflow to specify how it is displayed.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { TextAttribute }
      */
     @!APILevel[
@@ -174,7 +174,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * <br>If the value is of the number type, the unit fp is used.
      * <br>For the string type, numeric string values with optional units.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { TextAttribute }
      */
     @!APILevel[
@@ -186,9 +186,9 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the text decoration of the text is set.
      *
-     * @params { ?TextDecorationType } decorationType - The type value of the decoration property object.
-     * @params { ?ResourceColor } color - The color value of the decoration property object.
-     * @params { ?TextDecorationStyle } decorationStyle - The style value of the decoration property object.
+     * @param { ?TextDecorationType } decorationType - The type value of the decoration property object.
+     * @param { ?ResourceColor } color - The color value of the decoration property object.
+     * @param { ?TextDecorationStyle } decorationStyle - The style value of the decoration property object.
      * @returns { TextAttribute }
      */
     @!APILevel[
@@ -201,7 +201,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the baseline offset is set.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { TextAttribute }
      */
     @!APILevel[
@@ -213,7 +213,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the type of letter in the text font is set.
      *
-     * @params { ?TextCase } value - Default value is TextCase.Normal.
+     * @param { ?TextCase } value - Default value is TextCase.Normal.
      * @returns { TextAttribute }
      */
     @!APILevel[

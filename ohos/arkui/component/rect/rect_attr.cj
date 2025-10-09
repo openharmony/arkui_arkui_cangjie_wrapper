@@ -32,7 +32,7 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
     /**
      * Set the corner radius width.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { RectAttribute }
      */
     @!APILevel[
@@ -44,7 +44,7 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
     /**
      * Set the corner radius height.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { RectAttribute }
      */
     @!APILevel[
@@ -56,7 +56,7 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
     /**
      * Set the corner radius size.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { RectAttribute }
      */
     @!APILevel[
@@ -68,7 +68,7 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
     /**
      * Set the corner radius size.
      *
-     * @params { ?Array<Length> } value
+     * @param { ?Array<Length> } value
      * @returns { RectAttribute }
      */
     @!APILevel[
@@ -80,7 +80,7 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
     /**
      * Set the corner radius size.
      *
-     * @params { ?Array<(Length, Length)> } value
+     * @param { ?Array<(Length, Length)> } value
      * @returns { RectAttribute }
      */
     @!APILevel[

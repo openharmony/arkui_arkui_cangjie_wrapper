@@ -50,7 +50,7 @@ public class CJPageEntry {
      * Register hybrid component.
      *
      * @params name { String } name.
-     * @params { CustomView } cjPage.
+     * @param { CustomView } cjPage.
      */
     @!APILevel[
         22,
@@ -63,7 +63,7 @@ public class CJPageEntry {
     /**
      * Remove hybrid component.
      *
-     * @params { String } name.
+     * @param { String } name.
      */
     @!APILevel[
         22,
@@ -135,9 +135,9 @@ public open class HybridComponentBase <: SharedObject {
     /**
      * Register hybrid component.
      *
-     * @params { String } compName.
-     * @params { () -> CPointer<Unit> } loadHandle.
-     * @params { () -> Unit } unloadHandle.
+     * @param { String } compName.
+     * @param { () -> CPointer<Unit> } loadHandle.
+     * @param { () -> Unit } unloadHandle.
      */
     @!APILevel[
         22,

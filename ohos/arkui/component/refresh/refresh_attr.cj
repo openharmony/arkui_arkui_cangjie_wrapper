@@ -30,7 +30,7 @@ sealed interface RefreshAttribute <: CommonMethod<RefreshAttribute> {
     /**
      * Called when the refresh state changes.
      *
-     * @params { ?(RefreshStatus) -> Unit } callback
+     * @param { ?(RefreshStatus) -> Unit } callback
      * @returns { RefreshAttribute }
      */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface RefreshAttribute <: CommonMethod<RefreshAttribute> {
     /**
      * Called when the refresh state is entered.
      *
-     * @params { ?() -> Unit } callback
+     * @param { ?() -> Unit } callback
      * @returns { RefreshAttribute }
      */
     @!APILevel[

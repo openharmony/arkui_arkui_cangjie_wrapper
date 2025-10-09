@@ -31,7 +31,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Text size.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { ButtonAttribute }
      */
     @!APILevel[
@@ -43,7 +43,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Font weight.
      *
-     * @params { ?FontWeight } value
+     * @param { ?FontWeight } value
      * @returns { ButtonAttribute }
      */
     @!APILevel[
@@ -55,7 +55,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Text color.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { ButtonAttribute }
      */
     @!APILevel[
@@ -67,7 +67,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Font style.
      *
-     * @params { ?FontStyle } value
+     * @param { ?FontStyle } value
      * @returns { ButtonAttribute }
      */
     @!APILevel[
@@ -79,7 +79,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Font family.
      *
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { ButtonAttribute }
      */
     @!APILevel[
@@ -91,7 +91,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Describes the button style.
      *
-     * @params { ?ButtonType } value
+     * @param { ?ButtonType } value
      * @returns { ButtonAttribute }
      */
     @!APILevel[
@@ -103,7 +103,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { ButtonAttribute }
      */
     @!APILevel[
@@ -115,7 +115,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Describes the button style.
      *
-     * @params { ?ButtonStyleMode } value - button style mode
+     * @param { ?ButtonStyleMode } value - button style mode
      * @returns { ButtonAttribute }
      */
     @!APILevel[

@@ -176,11 +176,11 @@ public class NavigationTitleOptions {
 
     /**
      * Constructor of NavigationTitleOptions
-     * @params { ?ResourceColor } backgroundColor
-     * @params { ?BlurStyle } backgoundBlurStyle
-     * @params { ?BarStyle } barStyle
-     * @params { ?Length } paddingStart
-     * @params { ?Length } paddingEnd
+     * @param { ?ResourceColor } backgroundColor
+     * @param { ?BlurStyle } backgoundBlurStyle
+     * @param { ?BarStyle } barStyle
+     * @param { ?Length } paddingStart
+     * @param { ?Length } paddingEnd
      */
     @!APILevel[
         22,
@@ -354,8 +354,8 @@ public class NavigationOptions {
     /**
      * Constructor of NavigationOptions.
      *
-     * @params { ?LaunchMode } launchMode
-     * @params { ?Bool } animated
+     * @param { ?LaunchMode } launchMode
+     * @param { ?Bool } animated
      */
     @!APILevel[
         22,
@@ -448,9 +448,9 @@ public class NavPathInfo <: FFIData {
     /**
      * Creates an instance of NavPathInfo.
      *
-     * @params { ?String } name - The name of NavDestination.
-     * @params { ?String } param - The detailed parameter of the NavDestination.
-     * @params { ?Callback<PopInfo, Unit> } onPop - Callback returned when pop is called on the navigation destination page.
+     * @param { ?String } name - The name of NavDestination.
+     * @param { ?String } param - The detailed parameter of the NavDestination.
+     * @param { ?Callback<PopInfo, Unit> } onPop - Callback returned when pop is called on the navigation destination page.
      */
     @!APILevel[
         22,
@@ -541,8 +541,8 @@ public class NavPathStack <: RemoteData {
      * Pushes the navigation destination page specified by **info** onto the navigation stack.
      * Depending on the launchMode specified in the **options** parameter, different behaviors will be triggered.
      *
-     * @params { ?NavPathInfo } info - Indicates the NavDestination to be pushed.
-     * @params { ?NavigationOptions } options - Indicates the navigation options.
+     * @param { ?NavPathInfo } info - Indicates the NavDestination to be pushed.
+     * @param { ?NavigationOptions } options - Indicates the navigation options.
      */
     @!APILevel[
         22,
@@ -561,9 +561,9 @@ public class NavPathStack <: RemoteData {
     /**
      * Pushes the specified NavDestination into the stack.
      *
-     * @params { ?String } name - Indicates the name of the NavDestination to be pushed.
-     * @params { ?String } param - Indicates the detailed parameter of the NavDestination to be pushed.
-     * @params { ?Bool } animated - Indicates whether the transition is animated.
+     * @param { ?String } name - Indicates the name of the NavDestination to be pushed.
+     * @param { ?String } param - Indicates the detailed parameter of the NavDestination to be pushed.
+     * @param { ?Bool } animated - Indicates whether the transition is animated.
      * <br>Default value: **true**.
      * <br>**true**: The transition animation is supported. **false**: The transition animation is not supported.
      */
@@ -580,7 +580,7 @@ public class NavPathStack <: RemoteData {
     /**
      * Pops the top NavDestination out of the stack.
      *
-     * @params { ?Bool } animated - Indicates whether the transition is animated. Default value is **true**.
+     * @param { ?Bool } animated - Indicates whether the transition is animated. Default value is **true**.
      * @returns { ?NavPathInfo } Returns the top NavPathInfo if the stack is not empty, otherwise returns None.
      */
     @!APILevel[
@@ -618,7 +618,7 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Constructor of Navigation.
      *
-     * @params { () -> Unit } child
+     * @param { () -> Unit } child
      */
     @!APILevel[
         22,
@@ -634,8 +634,8 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Constructor of Navigation.
      *
-     * @params { ?NavPathStack } pathInfos
-     * @params { () -> Unit } child
+     * @param { ?NavPathStack } pathInfos
+     * @param { () -> Unit } child
      */
     @!APILevel[
         22,
@@ -652,7 +652,7 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Set builder for user-defined NavDestination component.
      *
-     * @params { ?(String, Any) -> Unit } builder - The builder function of NavDestination component.
+     * @param { ?(String, Any) -> Unit } builder - The builder function of NavDestination component.
      * @returns { This } Returns the instance of the Navigation.
      */
     @!APILevel[
@@ -675,8 +675,8 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Navigation title.
      *
-     * @params { ?ResourceStr } value - Navigation title.
-     * @params { ?NavigationTitleOptions } options - Indicates the options of titlebar.
+     * @param { ?ResourceStr } value - Navigation title.
+     * @param { ?NavigationTitleOptions } options - Indicates the options of titlebar.
      * @returns { This }
      */
     @!APILevel[
@@ -701,8 +701,8 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Navigation title.
      *
-     * @params { ?CustomBuilder } value - Navigation title.
-     * @params { ?NavigationTitleOptions } options - Indicates the options of titlebar.
+     * @param { ?CustomBuilder } value - Navigation title.
+     * @param { ?NavigationTitleOptions } options - Indicates the options of titlebar.
      * @returns { This }
      */
     @!APILevel[
@@ -725,9 +725,9 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Sets whether to hide the title bar and whether to animate the visibility change.
      *
-     * @params { ?Bool } hide - Whether to hide the title bar.
+     * @param { ?Bool } hide - Whether to hide the title bar.
      * <br>Default value is **false**. **true**: Hide the title bar. **false**: Show the title bar.
-     * @params { ?Bool } animated - Whether to animate the visibility change.
+     * @param { ?Bool } animated - Whether to animate the visibility change.
      * <br>Default value is **false**.
      * <br>**true**: Animate the visibility change. **false**: Do not animate the visibility change.
      * @returns { This }

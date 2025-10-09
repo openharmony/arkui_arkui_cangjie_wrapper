@@ -33,7 +33,7 @@ foreign func FfiOHOSAceFrameworkComponentIdSendMouseEvent(cJMouseEvent: CJMouseE
 /**
  * Obtains all attributes of the component with the specified ID.
  *
- * @params { String } id - ID of the component for which the event is to be sent.
+ * @param { String } id - ID of the component for which the event is to be sent.
  * @returns { String }
  */
 @!APILevel[
@@ -73,9 +73,9 @@ public func getInspectorTree(): String {
 /**
  * Sends an event to the component with the specified ID.
  *
- * @params { String } id - ID of the component for which the event is to be sent.
- * @params { IntNative } action - Type of the event to be sent. The options are as follows: Click event: 10 LongClick: 11.
- * @params { String } params - Event parameters. If there is no parameter, pass an empty string "".
+ * @param { String } id - ID of the component for which the event is to be sent.
+ * @param { IntNative } action - Type of the event to be sent. The options are as follows: Click event: 10 LongClick: 11.
+ * @param { String } params - Event parameters. If there is no parameter, pass an empty string "".
  * @returns { Bool }
  */
 @!APILevel[
@@ -95,7 +95,7 @@ public func sendEventByKey(id: String, action: IntNative, params: String): Bool 
 /**
  * Send touch event.
  *
- * @params { TouchObject } event - TouchObject to be sent.
+ * @param { TouchObject } event - TouchObject to be sent.
  * @returns { Bool }
  */
 @!APILevel[
@@ -111,7 +111,7 @@ public func sendTouchEvent(event: TouchObject): Bool {
 /**
  * Send key event.
  *
- * @params { KeyEvent } event - KeyEvent to be sent.
+ * @param { KeyEvent } event - KeyEvent to be sent.
  * @returns { Bool }
  */
 @!APILevel[
@@ -130,7 +130,7 @@ public func sendKeyEvent(event: KeyEvent): Bool {
 /**
  * Send mouse event.
  *
- * @params { MouseEvent } event - MouseEvent to be sent.
+ * @param { MouseEvent } event - MouseEvent to be sent.
  * @returns { Bool }
  */
 @!APILevel[

@@ -65,7 +65,7 @@ foreign {
  * Defines a Checkbox callback when onChange.
  * Anonymous Object Rectification.
  *
- * @params { Bool } value - selected status
+ * @param { Bool } value - selected status
  */
 public type OnCheckboxChangeCallback = (Bool) -> Unit
 
@@ -81,9 +81,9 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * Construct the Checkbox component.
      * Called when the Checkbox component is used.
      *
-     * @params { ?String } name
-     * @params { ?String } group
-     * @params { ?CustomBuilder } indicatorBuilder
+     * @param { ?String } name
+     * @param { ?String } group
+     * @param { ?CustomBuilder } indicatorBuilder
      */
     @!APILevel[
         22,
@@ -105,7 +105,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
     /**
      * setting whether checkbox is selected.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -123,7 +123,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
     /**
      * setting the display color of checkbox.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -212,7 +212,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * Called when the selection status changes.
      * Anonymous Object Rectification.
      *
-     * @params { ?OnCheckboxChangeCallback } callback
+     * @param { ?OnCheckboxChangeCallback } callback
      * @returns { This }
      */
     @!APILevel[
@@ -231,7 +231,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
     /**
      * setting the shape of checkbox.
      *
-     * @params { ?CheckBoxShape } value - The configuration of checkbox shape.
+     * @param { ?CheckBoxShape } value - The configuration of checkbox shape.
      * @returns { This }
      */
     @!APILevel[

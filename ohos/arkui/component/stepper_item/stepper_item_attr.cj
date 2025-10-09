@@ -30,7 +30,7 @@ sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
     /**
      * The description text for the fallback text button at the bottom of the step navigator.
      *
-     * @params { ?String } value
+     * @param { ?String } value
      * @returns { StepperItemAttribute }
      */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
     /**
      * The description text for the next step text button at the bottom of the step navigator.
      *
-     * @params { ?String } value
+     * @param { ?String } value
      * @returns { StepperItemAttribute }
      */
     @!APILevel[
@@ -54,7 +54,7 @@ sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
     /**
      * Sets the display state of the Step Navigator nextLabel.
      *
-     * @params { ?ItemState } status
+     * @param { ?ItemState } status
      * @returns { StepperItemAttribute }
      */
     @!APILevel[

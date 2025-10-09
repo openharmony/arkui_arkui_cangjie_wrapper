@@ -30,7 +30,7 @@ sealed interface RichTextAttribute <: CommonMethod<RichTextAttribute> {
     /**
      * Triggered when the RichText loading starts.
      *
-     * @params { ?() -> Unit } callback
+     * @param { ?() -> Unit } callback
      * @returns { RichTextAttribute } 
      */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface RichTextAttribute <: CommonMethod<RichTextAttribute> {
     /**
      * Triggered when the RichText loading ends.
      *
-     * @params { ?() -> Unit } callback
+     * @param { ?() -> Unit } callback
      * @returns { RichTextAttribute } 
      */
     @!APILevel[

@@ -36,7 +36,7 @@ type ItemGenFuncType<T> = (T, Int64) -> Unit
 /**
  * Developers need to implement this interface to provide data to LazyForEach component.
  *
- * @params { T } Data type.
+ * @param { T } Data type.
  */
 @!APILevel[
     22,
@@ -57,7 +57,7 @@ public interface IDataSource<T> {
     /**
      * Obtains the data item that matches the specified index.
      *
-     * @params { Int64 } index
+     * @param { Int64 } index
      * @returns { T } The data item.
      */
     @!APILevel[
@@ -69,7 +69,7 @@ public interface IDataSource<T> {
     /**
      * Registers a listener for data changes.
      *
-     * @params { DataChangeListener } listener
+     * @param { DataChangeListener } listener
      */
     @!APILevel[
         22,
@@ -80,7 +80,7 @@ public interface IDataSource<T> {
     /**
      * Unregisters the listener for data changes.
      *
-     * @params { DataChangeListener } listener
+     * @param { DataChangeListener } listener
      */
     @!APILevel[
         22,
@@ -116,7 +116,7 @@ public class DataChangeListener <: RemoteData {
     /**
      * Invoked when data is added to the position indicated by the specified index.
      *
-     * @params { IntNative } index
+     * @param { IntNative } index
      */
     @!APILevel[
         22,
@@ -130,7 +130,7 @@ public class DataChangeListener <: RemoteData {
      * Invoked when data is deleted from the position indicated by the specified index.
      * LazyForEach will update the displayed content accordingly.
      *
-     * @params { IntNative } index
+     * @param { IntNative } index
      */
     @!APILevel[
         22,
@@ -143,7 +143,7 @@ public class DataChangeListener <: RemoteData {
     /**
      * Invoked when data in the position indicated by the specified index is changed.
      *
-     * @params { IntNative } index
+     * @param { IntNative } index
      */
     @!APILevel[
         22,
@@ -156,8 +156,8 @@ public class DataChangeListener <: RemoteData {
     /**
      * Invoked when data is moved, that is, when data is swapped between the from and to positions.
      *
-     * @params { IntNative } from
-     * @params { IntNative } to
+     * @param { IntNative } from
+     * @param { IntNative } to
      */
     @!APILevel[
         22,

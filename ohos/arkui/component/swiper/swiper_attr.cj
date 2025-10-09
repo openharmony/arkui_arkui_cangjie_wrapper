@@ -37,7 +37,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * <br>If the Swiper component becomes invisible, the playback stops.
      * </p>
      *
-     * @params { ?Bool } value - Whether to enable automatic playback for child component switching.
+     * @param { ?Bool } value - Whether to enable automatic playback for child component switching.
      * Default value is false.
      * @returns { SwiperAttribute }
      */
@@ -50,7 +50,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the duration of the animation for child component switching.
      *
-     * @params { ?UInt32 } value - Duration of the autoplay for child component switching. Default value is 400.
+     * @param { ?UInt32 } value - Duration of the autoplay for child component switching. Default value is 400.
      * @returns { SwiperAttribute }
      */
     @!APILevel[
@@ -62,7 +62,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the index of the child component currently displayed in the container.
      *
-     * @params { ?UInt32 } value - Index of the child component currently displayed in the container. Default value is 0.
+     * @param { ?UInt32 } value - Index of the child component currently displayed in the container. Default value is 0.
      * @returns { SwiperAttribute }
      */
     @!APILevel[
@@ -74,7 +74,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the interval for automatic playback.
      *
-     * @params { ?UInt32 } value - Interval for automatic playback. Default value is 3000, the unit is ms.
+     * @param { ?UInt32 } value - Interval for automatic playback. Default value is 3000, the unit is ms.
      * @returns { SwiperAttribute }
      */
     @!APILevel[
@@ -86,7 +86,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets whether to enable loop playback.
      *
-     * @params { ?Bool } value - Whether to enable loop playback. Default value is true.
+     * @param { ?Bool } value - Whether to enable loop playback. Default value is true.
      * @returns { SwiperAttribute }
      */
     @!APILevel[
@@ -98,7 +98,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets whether vertical swiping is used.
      *
-     * @params { ?Bool } value - Whether vertical swiping is used. Default value is false.
+     * @param { ?Bool } value - Whether vertical swiping is used. Default value is false.
      * @returns { SwiperAttribute }
      */
     @!APILevel[
@@ -110,7 +110,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @params { ?Bool } value - Style of the navigation indicator.
+     * @param { ?Bool } value - Style of the navigation indicator.
      * Default value is true, default style is DotIndicator.
      * @returns { SwiperAttribute }
      */
@@ -123,7 +123,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @params { ?DotIndicator } value - Style of the navigation indicator.
+     * @param { ?DotIndicator } value - Style of the navigation indicator.
      * @returns { SwiperAttribute }
      */
     @!APILevel[
@@ -135,7 +135,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @params { ?DigitIndicator } value - Style of the navigation indicator.
+     * @param { ?DigitIndicator } value - Style of the navigation indicator.
      * @returns { SwiperAttribute }
      */
     @!APILevel[
@@ -152,7 +152,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * if the unit is not specified, for example, '10', the default unit vp is used.
      * </p>
      *
-     * @params { ?Length } value - Space between child components. Default value is 0.
+     * @param { ?Length } value - Space between child components. Default value is 0.
      * Minimum value is 0. If a value less than 0 is set, the default value is used.
      * @returns { SwiperAttribute }
      */
@@ -166,7 +166,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * Sets the mode in which elements are displayed along the main axis.
      * This API takes effect only when displayCount is not set.
      *
-     * @params { ?SwiperDisplayMode } value - Mode in which elements are displayed along the main axis.
+     * @param { ?SwiperDisplayMode } value - Mode in which elements are displayed along the main axis.
      * Default value is SwiperDisplayMode.Stretch.
      * @returns { SwiperAttribute }
      */
@@ -183,7 +183,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * <br>This attribute takes effect when loop is set to false.
      * </p>
      *
-     * @params { ?EdgeEffect } value - Effect used when the component is at one of the edges.
+     * @param { ?EdgeEffect } value - Effect used when the component is at one of the edges.
      * Default value is EdgeEffect.Spring.
      * @returns { SwiperAttribute }
      */
@@ -203,8 +203,8 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * 4. Placeholder items do not display any content and are only used as placeholders.
      * 5. When turning pages, turn pages by group.
      *
-     * @params { ?Int32 } value - Number of elements to display per page. Default value is 1.
-     * @params { ?Bool } swipeByGroup - Whether to turn pages by group. Default value is false.
+     * @param { ?Int32 } value - Number of elements to display per page. Default value is 1.
+     * @param { ?Bool } swipeByGroup - Whether to turn pages by group. Default value is false.
      * @returns { SwiperAttribute }
      */
     @!APILevel[
@@ -221,7 +221,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * <br>If swipeByGroup in displayCount is set to true, child components are cached by group.
      * </p>
      *
-     * @params { ?Int32 } value - Number of child components to be preloaded (cached). Default value is 1.
+     * @param { ?Int32 } value - Number of child components to be preloaded (cached). Default value is 1.
      * Minimum value is 0. If a value less than 0 is set, the default value is used.
      * @returns { SwiperAttribute }
      */
@@ -234,7 +234,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets whether to disable the swipe feature.
      *
-     * @params { ?Bool } value - Whether to disable the swipe feature. Default value is false.
+     * @param { ?Bool } value - Whether to disable the swipe feature. Default value is false.
      * @returns { SwiperAttribute }
      */
     @!APILevel[
@@ -246,7 +246,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the animation curve.
      *
-     * @params { ?Curve } value - Animation curve.
+     * @param { ?Curve } value - Animation curve.
      * Default value is Curve.Linear.
      * @returns { SwiperAttribute }
      */
@@ -259,7 +259,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Triggered when the index of the currently displayed child component changes.
      *
-     * @params { ?(Int32) -> Unit } event
+     * @param { ?(Int32) -> Unit } event
      * @returns { SwiperAttribute }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.

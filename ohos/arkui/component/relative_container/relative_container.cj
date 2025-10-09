@@ -226,9 +226,9 @@ public class BarrierStyle {
     /**
     * Defines the constructor of BarrierStyle.
     *
-    * @params { ?String } id
-    * @params { ?BarrierDirection } direction
-    * @params { ?Array<String> } referencedId
+    * @param { ?String } id
+    * @param { ?BarrierDirection } direction
+    * @param { ?Array<String> } referencedId
     */
     @!APILevel[
         22,
@@ -270,8 +270,8 @@ public class GuideLinePosition {
     /**
     * Defines the constructor of GuideLinePosition.
     *
-    * @params { ?Length } start
-    * @params { ?Length } end
+    * @param { ?Length } start
+    * @param { ?Length } end
     */
     @!APILevel[
         22,
@@ -321,9 +321,9 @@ public class GuideLineStyle {
     /**
     * Defines the constructor of GuideLineStyle.
     *
-    * @params { ?String } id
-    * @params { ?Axis } direction
-    * @params { ?GuideLinePosition } position
+    * @param { ?String } id
+    * @param { ?Axis } direction
+    * @param { ?GuideLinePosition } position
     */
     @!APILevel[
         22,
@@ -347,7 +347,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     /**
     * Constructor of relativeContainer
     *
-    * @params { () -> Unit } child
+    * @param { () -> Unit } child
     */
     @!APILevel[
         22,
@@ -361,7 +361,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     /**
     * Specifies guideLines of relativeContainer
     *
-    * @params { ?Array<GuideLineStyle> } value
+    * @param { ?Array<GuideLineStyle> } value
     * @returns { This }
     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
@@ -379,7 +379,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     /**
     * Specifies barriers of relativeContainer
     *
-    * @params { ?Array<BarrierStyle> } value
+    * @param { ?Array<BarrierStyle> } value
     * @returns { This }
     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */

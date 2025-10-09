@@ -33,7 +33,7 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
     /**
      * Specifies whether to display the lunar calendar.
      *
-     * @params { ?Bool } value - Whether to display the lunar calendar.
+     * @param { ?Bool } value - Whether to display the lunar calendar.
      * <br>- <em>true</em>: Display the lunar calendar.
      * <br>- <em>false</em>: Do not display the lunar.
      * @returns { DatePickerAttribute }
@@ -48,7 +48,7 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
      * Triggered when a date is selected.
      * Anonymous Object Rectification.
      *
-     * @params { ?Callback<DateTime, Unit> } callback
+     * @param { ?Callback<DateTime, Unit> } callback
      * @returns { DatePickerAttribute }
      */
     @!APILevel[
@@ -60,7 +60,7 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
     /**
      * Sets the text style for the top and bottom items.
      *
-     * @params { ?PickerTextStyle } value - Font color, font size, and font weight of the top and bottom items.
+     * @param { ?PickerTextStyle } value - Font color, font size, and font weight of the top and bottom items.
      * @returns { DatePickerAttribute }
      */
     @!APILevel[
@@ -72,7 +72,7 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
     /**
      * Sets the text style for all items except the top, bottom, and selected items.
      *
-     * @params { ?PickerTextStyle } value - Font color, font size, and font weight of all items except the top,
+     * @param { ?PickerTextStyle } value - Font color, font size, and font weight of all items except the top,
      *   <br>bottom, and selected items.
      * @returns { DatePickerAttribute }
      */
@@ -85,7 +85,7 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
     /**
      * Sets the text style for all items except the top, bottom, and selected items.
      *
-     * @params { ?PickerTextStyle } value - Font color, font size, and font weight of all items except the top,
+     * @param { ?PickerTextStyle } value - Font color, font size, and font weight of all items except the top,
      *   <br>bottom, and selected items.
      * @returns { DatePickerAttribute }
      */

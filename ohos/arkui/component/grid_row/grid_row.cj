@@ -214,12 +214,12 @@ public class GridRowSizeOptions {
     /**
      * Defines the constructor of GridRowSizeOptions.
      *
-     * @params { ?Length } xs - Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint.
-     * @params { ?Length } sm - Grid Row Size Option sm, select sm gutter size based on gridRow current breakpoint.
-     * @params { ?Length } md - Grid Row Size Option md, select md gutter size based on gridRow current breakpoint.
-     * @params { ?Length } lg - Grid Row Size Option lg, select lg gutter size based on gridRow current breakpoint.
-     * @params { ?Length } xl - Grid Row Size Option xl, select xl gutter size based on gridRow current breakpoint.
-     * @params { ?Length } xxl - Grid Row Size Option xxl, select xxl gutter size based on gridRow current breakpoint.
+     * @param { ?Length } xs - Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint.
+     * @param { ?Length } sm - Grid Row Size Option sm, select sm gutter size based on gridRow current breakpoint.
+     * @param { ?Length } md - Grid Row Size Option md, select md gutter size based on gridRow current breakpoint.
+     * @param { ?Length } lg - Grid Row Size Option lg, select lg gutter size based on gridRow current breakpoint.
+     * @param { ?Length } xl - Grid Row Size Option xl, select xl gutter size based on gridRow current breakpoint.
+     * @param { ?Length } xxl - Grid Row Size Option xxl, select xxl gutter size based on gridRow current breakpoint.
      */
     @!APILevel[
         22,
@@ -244,7 +244,7 @@ public class GridRowSizeOptions {
     /**
     * Defines the constructor of GridRowSizeOptions.
     *
-    * @params { ?Length } value
+    * @param { ?Length } value
     */
     @!APILevel[
         22,
@@ -379,12 +379,12 @@ public class GridRowOptions {
     /**
      * Defines the constructor of GridRowOptions.
      *
-     * @params { ?Int32 } xs - Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint.
-     * @params { ?Int32 } sm - Grid Row Size Option sm, select sm gutter size based on gridRow current breakpoint.
-     * @params { ?Int32 } md - Grid Row Size Option md, select md gutter size based on gridRow current breakpoint.
-     * @params { ?Int32 } lg - Grid Row Size Option lg, select lg gutter size based on gridRow current breakpoint.
-     * @params { ?Int32 } xl - Grid Row Size Option xl, select xl gutter size based on gridRow current breakpoint.
-     * @params { ?Int32 } xxl - Grid Row Size Option xxl, select xxl gutter size based on gridRow current breakpoint.
+     * @param { ?Int32 } xs - Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint.
+     * @param { ?Int32 } sm - Grid Row Size Option sm, select sm gutter size based on gridRow current breakpoint.
+     * @param { ?Int32 } md - Grid Row Size Option md, select md gutter size based on gridRow current breakpoint.
+     * @param { ?Int32 } lg - Grid Row Size Option lg, select lg gutter size based on gridRow current breakpoint.
+     * @param { ?Int32 } xl - Grid Row Size Option xl, select xl gutter size based on gridRow current breakpoint.
+     * @param { ?Int32 } xxl - Grid Row Size Option xxl, select xxl gutter size based on gridRow current breakpoint.
      */
     @!APILevel[
         22,
@@ -409,7 +409,7 @@ public class GridRowOptions {
     /**
     * Defines the constructor of GridRowOptions.
     *
-    * @params { ?Int32 } value
+    * @param { ?Int32 } value
     */
     @!APILevel[
         22,
@@ -443,8 +443,8 @@ public class GutterOptions {
     /**
     * Defines the constructor of GutterOptions.
     *
-    * @params { ?Length } x
-    * @params { ?Length } y
+    * @param { ?Length } x
+    * @param { ?Length } y
     */
     @!APILevel[
         22,
@@ -457,8 +457,8 @@ public class GutterOptions {
     /**
     * Defines the constructor of GutterOptions.
     *
-    * @params { ?GridRowSizeOptions } x
-    * @params { ?GridRowSizeOptions } y
+    * @param { ?GridRowSizeOptions } x
+    * @param { ?GridRowSizeOptions } y
     */
     @!APILevel[
         22,
@@ -501,7 +501,7 @@ public class BreakPoints {
     /**
     * BreakPoints constructor.
     *
-    * @params { ?Array<Length> } value
+    * @param { ?Array<Length> } value
     */
     @!APILevel[
         22,
@@ -607,11 +607,11 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
     * Defines the constructor of GridRow.
     * 
-    * @params { ?Int32 } columns - Sets the total number of columns in the current layout.
-    * @params { ?Length } gutter - layout spacing between sub-components.
-    * @params { ?BreakPoints } breakpoints - grid-row layout breakpoints.
-    * @params { ?GridRowDirection } direction - grid-row layout direction.
-    * @params { () -> Unit } child - The child component of GridRow.
+    * @param { ?Int32 } columns - Sets the total number of columns in the current layout.
+    * @param { ?Length } gutter - layout spacing between sub-components.
+    * @param { ?BreakPoints } breakpoints - grid-row layout breakpoints.
+    * @param { ?GridRowDirection } direction - grid-row layout direction.
+    * @param { () -> Unit } child - The child component of GridRow.
     */
     @!APILevel[
         22,
@@ -656,11 +656,11 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
     * Defines the constructor of GridRow.
     * 
-    * @params { ?GridRowOptions } columns - Sets the total number of columns in the current layout.
-    * @params { ?Length } gutter - layout spacing between sub-components.
-    * @params { ?BreakPoints } breakpoints - grid-row layout breakpoints.
-    * @params { ?GridRowDirection } direction - grid-row layout direction.
-    * @params { () -> Unit } child - The child component of GridRow.
+    * @param { ?GridRowOptions } columns - Sets the total number of columns in the current layout.
+    * @param { ?Length } gutter - layout spacing between sub-components.
+    * @param { ?BreakPoints } breakpoints - grid-row layout breakpoints.
+    * @param { ?GridRowDirection } direction - grid-row layout direction.
+    * @param { () -> Unit } child - The child component of GridRow.
     */
     @!APILevel[
         22,
@@ -707,11 +707,11 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
      * Defines the constructor of GridRow.
      * 
-     * @params { ?Int32 } columns - Sets the total number of columns in the current layout.
-     * @params { ?GutterOptions } gutter - layout spacing between sub-components.
-     * @params { ?BreakPoints } breakpoints - grid-row layout breakpoints.
-     * @params { ?GridRowDirection } direction - grid-row layout direction.
-     * @params { () -> Unit } child - The child component of GridRow.
+     * @param { ?Int32 } columns - Sets the total number of columns in the current layout.
+     * @param { ?GutterOptions } gutter - layout spacing between sub-components.
+     * @param { ?BreakPoints } breakpoints - grid-row layout breakpoints.
+     * @param { ?GridRowDirection } direction - grid-row layout direction.
+     * @param { () -> Unit } child - The child component of GridRow.
      */
     @!APILevel[
         22,
@@ -775,11 +775,11 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
     * Defines the constructor of GridRow.
     * 
-    * @params { ?GridRowOptions } columns - Sets the total number of columns in the current layout.
-    * @params { ?GutterOptions } gutter - layout spacing between sub-components.
-    * @params { ?BreakPoints } breakpoints - grid-row layout breakpoints.
-    * @params { ?GridRowDirection } direction - grid-row layout direction.
-    * @params { () -> Unit } child - The child component of GridRow.
+    * @param { ?GridRowOptions } columns - Sets the total number of columns in the current layout.
+    * @param { ?GutterOptions } gutter - layout spacing between sub-components.
+    * @param { ?BreakPoints } breakpoints - grid-row layout breakpoints.
+    * @param { ?GridRowDirection } direction - grid-row layout direction.
+    * @param { () -> Unit } child - The child component of GridRow.
     */
     @!APILevel[
         22,
@@ -858,7 +858,7 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
      * Cross axis alignment of each line in GridRow.
      *
-     * @params { ?ItemAlign } value - element alignment
+     * @param { ?ItemAlign } value - element alignment
      * @returns { This }
      */
     @!APILevel[
@@ -875,7 +875,7 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
      * Callback triggered when the breakpoint changes, breakpoints value can be xs, sm, md, lg, xl, xxl.
      *
-     * @params { ?(String) -> Unit } callback
+     * @param { ?(String) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[

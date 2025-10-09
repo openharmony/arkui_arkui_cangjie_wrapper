@@ -31,7 +31,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Callback showControlButton function when setting the status of sidebar
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -43,7 +43,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Callback controlButton function when setting the style of button
      *
-     * @params { ?ButtonStyle } value
+     * @param { ?ButtonStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -55,7 +55,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Callback showControlButton function when setting the status of button
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -67,7 +67,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Trigger callback when sidebar style of showing change finished.
      *
-     * @params { ?(Bool) -> Unit } callback
+     * @param { ?(Bool) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -79,7 +79,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Sets the length of sidebar.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -91,7 +91,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Sets the min length of sidebar.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -103,7 +103,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Sets the max length of sidebar.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -115,7 +115,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Sets whether to automatically hide when drag sidebar width is less than the minimum width.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -127,7 +127,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Called when determining the location of the sidebar.
      *
-     * @params { ?SideBarPosition } value
+     * @param { ?SideBarPosition } value
      * @returns { This }
      */
     @!APILevel[
@@ -139,7 +139,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Set divider style for sideBarContainer
      *
-     * @params { ?DividerStyle } value
+     * @param { ?DividerStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -151,7 +151,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Sets the min length of content.
      * 
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[

@@ -52,7 +52,7 @@ public class SubscriberManager {
 
     /**
      *
-     * @params { Int64 } id
+     * @param { Int64 } id
      * @returns { Bool }
      */
     @!APILevel[
@@ -65,7 +65,7 @@ public class SubscriberManager {
 
     /**
      *
-     * @params { Int64 } id
+     * @param { Int64 } id
      * @returns { Option<Observer> }
      */
     @!APILevel[
@@ -78,7 +78,7 @@ public class SubscriberManager {
 
     /**
      *
-     * @params { Observer } value
+     * @param { Observer } value
      */
     @!APILevel[
         22,
@@ -90,7 +90,7 @@ public class SubscriberManager {
 
     /**
      *
-     * @params { Observer } value
+     * @param { Observer } value
      * @returns { Bool }
      */
     @!APILevel[

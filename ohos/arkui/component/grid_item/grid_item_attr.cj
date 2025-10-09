@@ -29,7 +29,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
     /**
      * This parameter specifies the start column number of the current element.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { GridItemAttribute }
      */
     @!APILevel[
@@ -41,7 +41,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
     /**
      * This parameter specifies the end column number of the current element.
      *
-     * @params { ?Int32 } columnEnd
+     * @param { ?Int32 } columnEnd
      * @returns { GridItemAttribute }
      */
     @!APILevel[
@@ -53,7 +53,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
     /**
      * This parameter specifies the start line number of the current element.
      *
-     * @params { ?Int32 } rowStart
+     * @param { ?Int32 } rowStart
      * @returns { GridItemAttribute }
      */
     @!APILevel[
@@ -65,7 +65,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
     /**
      * Specifies the end line number of the current element.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { GridItemAttribute }
      */
     @!APILevel[

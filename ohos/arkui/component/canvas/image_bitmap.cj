@@ -86,7 +86,7 @@ public class ImageBitmap <: RemoteData {
     /**
      * Create an ImageBitmap object based on the transferred image path.
      *
-     * @params { ?String } src - Path of the image object.
+     * @param { ?String } src - Path of the image object.
      */
     @!APILevel[
         22,

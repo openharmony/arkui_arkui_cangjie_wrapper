@@ -30,7 +30,7 @@ sealed interface RadioAttribute <: CommonMethod<RadioAttribute> {
     /**
      * Called when the radio box is selected.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { RadioAttribute }
      */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface RadioAttribute <: CommonMethod<RadioAttribute> {
     /**
      * Called when the radio box selection status changes.
      *
-     * @params { ?(Bool) -> Unit } callback
+     * @param { ?(Bool) -> Unit } callback
      * @returns { RadioAttribute }
      */
     @!APILevel[

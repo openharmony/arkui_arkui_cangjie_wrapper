@@ -32,7 +32,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**
      * Definitions color.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -43,7 +43,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**
      * Select the text color.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -54,7 +54,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**
      * Font color of the pop-up prompt text.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -65,7 +65,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**
      * Font color of the pop-up prompt text.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -76,7 +76,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**
      * Background color of the pop-up window index.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -87,7 +87,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**
      * Whether to use pop-up index hints.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -98,10 +98,10 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**
      * Select the text text style.
      *
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?ResourceStr } family
-     * @params { ?FontStyle } style
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?ResourceStr } family
+     * @param { ?FontStyle } style
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -117,10 +117,10 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**	
      * Select the text background color.	
      *	
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?ResourceStr } family
-     * @params { ?FontStyle } style
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?ResourceStr } family
+     * @param { ?FontStyle } style
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -136,10 +136,10 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**	
      * Definitions fonts.	
      *	
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?ResourceStr } family
-     * @params { ?FontStyle } style
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?ResourceStr } family
+     * @param { ?FontStyle } style
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -155,7 +155,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**
      * Size of the letter area on the letter index bar. The letter area is a square. Set the length of the square side.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -167,7 +167,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * Alphabet index bar alignment style. The left and right alignment styles are supported,
      * which affects the pop-up position of the pop-up window.
      *
-     * @params { ?IndexerAlign } value - indicates the alignment style of Alphabet index.
+     * @param { ?IndexerAlign } value - indicates the alignment style of Alphabet index.
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -178,7 +178,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**
      * Sets the selected index.
      *
-     * @params { ?Int32 } index
+     * @param { ?Int32 } index
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -189,8 +189,8 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**
      * Position of the pop-up windows, relative to the midpoint of the top border of the indexer bar.
      *
-     * @params { ?Length } x
-     * @params { ?Length } y
+     * @param { ?Length } x
+     * @param { ?Length } y
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -202,7 +202,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * Index bar selection callback.
      * Anonymous Object Rectification.
      *
-     * @params { ?OnAlphabetIndexerSelectCallback } callback
+     * @param { ?OnAlphabetIndexerSelectCallback } callback
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -214,7 +214,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * Index bar selection callback and return the strings which display on pop-up.
      * Anonymous Object Rectification.
      *
-     * @params { ?OnAlphabetIndexerRequestPopupDataCallback } callback
+     * @param { ?OnAlphabetIndexerRequestPopupDataCallback } callback
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
@@ -226,7 +226,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * Pop-up selection callback.
      * Anonymous Object Rectification.
      *
-     * @params { ?OnAlphabetIndexerPopupSelectCallback } callback
+     * @param { ?OnAlphabetIndexerPopupSelectCallback } callback
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[

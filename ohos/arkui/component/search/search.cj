@@ -188,7 +188,7 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
     /**
      * Called when the position of the insertion cursor is set.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      */
     @!APILevel[
         22,
@@ -212,10 +212,10 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     /**
      * The options of SearchInterface
      *
-     * @params { ?ResourceStr } value
-     * @params { ?ResourceStr } placeholder
-     * @params { Option<AppResource> } icon
-     * @params { Option<SearchController> } controller
+     * @param { ?ResourceStr } value
+     * @param { ?ResourceStr } placeholder
+     * @param { Option<AppResource> } icon
+     * @param { Option<SearchController> } controller
      */
     @!APILevel[
         22,
@@ -255,7 +255,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     /**
      * Set the search button text, fontSize and fontColor
      *
-     * @params { ?ResourceStr } value - indicates the text of the search button.
+     * @param { ?ResourceStr } value - indicates the text of the search button.
      * @returns { This }
      */
     @!APILevel[
@@ -275,7 +275,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     /**
      * Set the search button text, fontSize and fontColor
      *
-     * @params { ?ResourceColor } value - Default value is '#99182431'.The default value on wearable devices is '#99ffffff'.
+     * @param { ?ResourceColor } value - Default value is '#99182431'.The default value on wearable devices is '#99ffffff'.
      * @returns { This }
      */
     @!APILevel[
@@ -293,10 +293,10 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     /**
      * Set the font used for place holder text
      *
-     * @params { ?Length } size - font size.
-     * @params { ?FontWeight } weight - font weight.
-     * @params { ?FontStyle } style - font style.
-     * @params { ?ResourceStr } family - font family.
+     * @param { ?Length } size - font size.
+     * @param { ?FontWeight } weight - font weight.
+     * @param { ?FontStyle } style - font style.
+     * @param { ?ResourceStr } family - font family.
      * @returns { This }
      */
     @!APILevel[
@@ -339,10 +339,10 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     /**
      * Set the font used for input text
      *
-     * @params { ?Length } size - font size.
-     * @params { ?FontWeight } weight - font weight.
-     * @params { ?FontStyle } style - font style.
-     * @params { ?ResourceStr } family - font family.
+     * @param { ?Length } size - font size.
+     * @param { ?FontWeight } weight - font weight.
+     * @param { ?FontStyle } style - font style.
+     * @param { ?ResourceStr } family - font family.
      * @returns { This }
      */
     @!APILevel[
@@ -388,7 +388,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * all other actions, such as copying, cutting, and sharing, are disabled.
      * Dragging is not allowed when CopyOptions.None is set.
      *
-     * @params { ?CopyOptions } value - Default value is CopyOptions.LocalDevice.
+     * @param { ?CopyOptions } value - Default value is CopyOptions.LocalDevice.
      * @returns { This }
      */
     @!APILevel[
@@ -405,7 +405,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     /**
      * Call the function when clicked the search button.
      *
-     * @params { ?(String) -> Unit } callback - Search submission callback, which returns the text content currently in the search box.
+     * @param { ?(String) -> Unit } callback - Search submission callback, which returns the text content currently in the search box.
      * @returns { This }
      */
     @!APILevel[
@@ -429,7 +429,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * In this callback, if cursor operations are performed,
      * <br>developers need to adjust the cursor logic based on the previewText parameter to ensure it works seamlessly within the preview display scenario.
      *
-     * @params { ?(String) -> Unit } callback - Search submission callback, which returns the text content currently in the search box.
+     * @param { ?(String) -> Unit } callback - Search submission callback, which returns the text content currently in the search box.
      * @returns { This }
      */
     @!APILevel[
@@ -451,7 +451,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     /**
      * Called when using the Clipboard menu.
      *
-     * @params { ?(String) -> Unit } callback - Callback used to return the copied text content.
+     * @param { ?(String) -> Unit } callback - Callback used to return the copied text content.
      * @returns { This }
      */
     @!APILevel[
@@ -473,7 +473,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     /**
      * Called when using the Clipboard menu.
      *
-     * @params { ?(String) -> Unit } callback - Callback used to return the cut text content.
+     * @param { ?(String) -> Unit } callback - Callback used to return the cut text content.
      * @returns { This }
      */
     @!APILevel[
@@ -495,7 +495,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     /**
      * Called when using the Clipboard menu.
      *
-     * @params { ?(String) -> Unit } callback - Executed when a paste operation is performed. Callback used to return the pasted text content.
+     * @param { ?(String) -> Unit } callback - Executed when a paste operation is performed. Callback used to return the pasted text content.
      * @returns { This }
      */
     @!APILevel[

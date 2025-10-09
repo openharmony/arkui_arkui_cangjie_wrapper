@@ -63,7 +63,7 @@ foreign {
  * Defines a CheckboxGroup callback when onChange.
  * Anonymous Object Rectification.
  *
- * @params { CheckboxGroupResult } value - checkbox group result
+ * @param { CheckboxGroupResult } value - checkbox group result
  */
 public type OnCheckboxGroupChangeCallback = (CheckboxGroupResult) -> Unit
 
@@ -118,8 +118,8 @@ public class CheckboxGroupResult {
     /**
      * CheckboxGroupResult constructor.
      *
-     * @params { SelectStatus } status
-     * @params { Array<String> } name
+     * @param { SelectStatus } status
+     * @param { Array<String> } name
      */
     @!APILevel[
         22,
@@ -164,7 +164,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
     /**
      * Called when the CheckboxGroup component is used.
      *
-     * @params { ?String } group
+     * @param { ?String } group
      */
     @!APILevel[
         22,
@@ -181,7 +181,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
     /**
      * setting whether all checkbox is selected.
      *
-     * @params { ?Bool } isAllSelected
+     * @param { ?Bool } isAllSelected
      * @returns { This }
      */
     @!APILevel[
@@ -198,7 +198,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
     /**
      * setting the display color of checkbox.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -321,7 +321,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
      * Called when the selection status changes.
      * Anonymous Object Rectification.
      *
-     * @params { ?OnCheckboxGroupChangeCallback } callback
+     * @param { ?OnCheckboxGroupChangeCallback } callback
      * @returns { This }
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */

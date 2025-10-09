@@ -297,11 +297,11 @@ public class ButtonOptions {
     /**
      * ButtonOptions constructor.
      *
-     * @params { ?ButtonType } shape - Describes the button style.
-     * @params { ?Bool } stateEffect - Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
-     * @params { ?ButtonStyleMode } buttonStyle - Describes the button style.
-     * @params { ?ControlSize } controlSize - Describes the button size.
-     * @params { ?ButtonRole } role - Describes the button role.
+     * @param { ?ButtonType } shape - Describes the button style.
+     * @param { ?Bool } stateEffect - Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
+     * @param { ?ButtonStyleMode } buttonStyle - Describes the button style.
+     * @param { ?ControlSize } controlSize - Describes the button size.
+     * @param { ?ButtonRole } role - Describes the button role.
      */
     @!APILevel[
         22,
@@ -348,7 +348,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Button object
      *
-     * @params { () -> Unit } child - The child component of the button
+     * @param { () -> Unit } child - The child component of the button
      */
     @!APILevel[
         22,
@@ -364,7 +364,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Create Button with inner text label.
      *
-     * @params { ResourceStr } label
+     * @param { ResourceStr } label
      */
     @!APILevel[
         22,
@@ -382,7 +382,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Create Button with Text child.
      *
-     * @params { ?ButtonOptions } options
+     * @param { ?ButtonOptions } options
      */
     @!APILevel[
         22,
@@ -406,8 +406,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Create Button with Text child.
      *
-     * @params { ?ButtonOptions } options
-     * @params { () -> Unit } child
+     * @param { ?ButtonOptions } options
+     * @param { () -> Unit } child
      */
     @!APILevel[
         22,
@@ -432,8 +432,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Create Button with inner text label.
      *
-     * @params { ?ResourceStr } label
-     * @params { ?ButtonOptions } options
+     * @param { ?ResourceStr } label
+     * @param { ?ButtonOptions } options
      */
     @!APILevel[
         22,
@@ -462,7 +462,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Text size.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -482,7 +482,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Font weight.
      *
-     * @params { ?FontWeight } value
+     * @param { ?FontWeight } value
      * @returns { This }
      */
     @!APILevel[
@@ -502,7 +502,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Text color.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -522,7 +522,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * component content is used. If the height of the component is greater than that of
      * the parent container, the component will be drawn beyond the parent container scope.
      *
-     * @params { Length } value
+     * @param { Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -546,7 +546,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * component content is used.If the width of the component is greater than that of
      * the parent container, the component will be drawn beyond the parent container scope.
      *
-     * @params { Length } value
+     * @param { Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -568,7 +568,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Font style.
      *
-     * @params { ?FontStyle } value
+     * @param { ?FontStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -586,7 +586,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Font family.
      *
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { This }
      */
     @!APILevel[
@@ -607,7 +607,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Describes the button style.
      *
-     * @params { ?ButtonType } value
+     * @param { ?ButtonType } value
      * @returns { This }
      */
     @!APILevel[
@@ -658,7 +658,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -738,7 +738,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Describes the button style.
      *
-     * @params { ?ButtonStyleMode } value - button style mode
+     * @param { ?ButtonStyleMode } value - button style mode
      * @returns { This }
      */
     @!APILevel[

@@ -66,7 +66,7 @@ public class LocalStorage {
      * Return true if property with given name exists.
      * Same as ES6 Map.prototype.has().
      *
-     * @params { String } propName - searched property.
+     * @param { String } propName - searched property.
      * @returns { Bool } true if property with such name exists in LocalStorage.
      */
     @!APILevel[
@@ -109,7 +109,7 @@ public class LocalStorage {
      * Returns value of given property.
      * Returns undefined if no property with this name.
      *
-     * @params { String } propName
+     * @param { String } propName
      * @returns { ?T } property value if found.
      */
     @!APILevel[
@@ -132,8 +132,8 @@ public class LocalStorage {
      * Method sets nothing and returns false if property with this name does not exist in LocalStorage.
      * newValue can be undefined or null from API 12.
      *
-     * @params { String } propName
-     * @params { T } newValue - must be of type T.
+     * @param { String } propName
+     * @param { T } newValue - must be of type T.
      * @returns { Bool } true on success.
      */
     @!APILevel[
@@ -158,8 +158,8 @@ public class LocalStorage {
      * Add property if no property with given name and initialize with given value.
      * newValue can be undefined or null from API 12.
      *
-     * @params { String } propName
-     * @params { T } newValue - must be of type T, can be undefined or null.
+     * @param { String } propName
+     * @param { T } newValue - must be of type T, can be undefined or null.
      * @returns { boolean } true on success, i.e. when above conditions are satisfied, otherwise false.
      */
     @!APILevel[
@@ -185,7 +185,7 @@ public class LocalStorage {
     /**
      * Create and return a two-way sync "(link") to named property.
      *
-     * @params { String } propName - name of source property in LocalStorage.
+     * @param { String } propName - name of source property in LocalStorage.
      * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>.
      */
     @!APILevel[
@@ -206,8 +206,8 @@ public class LocalStorage {
     /**
      * Like see link(), but will create and initialize a new source property in LocalStorage if missing.
      *
-     * @params { String } propName - name of source property in LocalStorage
-     * @params { T } defaultValue - value to be used for initializing new property in LocalStorage
+     * @param { String } propName - name of source property in LocalStorage
+     * @param { T } defaultValue - value to be used for initializing new property in LocalStorage
      *        default value must be of type T.
      * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>. Apps can use SDK functions of base class ObservedProperty<T>
      * @throws { BusinessException } 100001 - Internal error.
@@ -230,7 +230,7 @@ public class LocalStorage {
     /**
      * Create and return a one-way sync ('prop') to named property.
      *
-     * @params { String } propName - name of source property in LocalStorage.
+     * @param { String } propName - name of source property in LocalStorage.
      * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>.
      */
     @!APILevel[
@@ -251,8 +251,8 @@ public class LocalStorage {
     /**
      * Like see prop(), will create and initialize a new source property in LocalStorage if missing.
      *
-     * @params { String } propName - name of source property in LocalStorage.
-     * @params { T } defaultValue - value to be used for initializing new property in LocalStorage.
+     * @param { String } propName - name of source property in LocalStorage.
+     * @param { T } defaultValue - value to be used for initializing new property in LocalStorage.
      *         Default value must be of type T.
      * @returns { ObservedProperty<T> } instance of ObservedProperty<T>.
      * @throws { BusinessException } 100001 - Internal error.
@@ -286,7 +286,7 @@ public class LocalStorage {
      * or a sync relationship with a SubscribedAbstractProperty variable the property can nit
      * (and also should not!) be deleted from LocalStorage.
      *
-     * @params { String } propName
+     * @param { String } propName
      * @returns { Bool } false if method failed.
      */
     @!APILevel[

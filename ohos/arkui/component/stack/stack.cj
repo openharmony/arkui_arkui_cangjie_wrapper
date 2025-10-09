@@ -51,8 +51,8 @@ public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
     /**
     * Defines the constructor of Stack.
     *
-    * @params { ?Alignment } alignContent
-    * @params { ?() -> Unit } child
+    * @param { ?Alignment } alignContent
+    * @param { ?() -> Unit } child
     */
     @!APILevel[
         22,
@@ -108,7 +108,7 @@ public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
     /**
     * Called when the alignment of items in the container is set.
     *
-    * @params { ?Alignment } value
+    * @param { ?Alignment } value
     * @returns { This }
     */
     @!APILevel[

@@ -31,7 +31,7 @@ sealed interface ListItemAttribute <: CommonMethod<ListItemAttribute> {
     /**
      * Called when judging whether it is selectable.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { ListItemAttribute }
      */
     @!APILevel[
@@ -43,10 +43,10 @@ sealed interface ListItemAttribute <: CommonMethod<ListItemAttribute> {
     /**
      * Sets the action item that appears when the list item slides in the cross axis direction of the list.
      *
-     * @params { ?CustomBuilder } start
-     * @params { ?CustomBuilder } end
-     * @params { ?SwipeEdgeEffect } edgeEffect
-     * @params { ?(Float64) -> Unit } onOffsetChange
+     * @param { ?CustomBuilder } start
+     * @param { ?CustomBuilder } end
+     * @param { ?SwipeEdgeEffect } edgeEffect
+     * @param { ?(Float64) -> Unit } onOffsetChange
      * @returns { ListItemAttribute }
      */
     @!APILevel[
@@ -63,7 +63,7 @@ sealed interface ListItemAttribute <: CommonMethod<ListItemAttribute> {
     /**
      * Called when the listItem is selected.
      *
-     * @params { ?(Bool) -> Unit } event
+     * @param { ?(Bool) -> Unit } event
      * @returns { ListItemAttribute }
      */
     @!APILevel[

@@ -35,7 +35,7 @@ foreign func FfiOHOSAceFrameworkPx2Lpx(value: Float64): Float64
 /**
  * Converts a value in vp units to a value in px.
  *
- * @params { Length } value
+ * @param { Length } value
  * @returns { Option<Length> }
  */
 protected func vp2pxInner(value: Length): Option<Length> {
@@ -53,7 +53,7 @@ protected func vp2pxInner(value: Length): Option<Length> {
 /**
  * Converts a value in px units to a value in vp.
  *
- * @params { Length } value
+ * @param { Length } value
  * @returns { Option<Length> }
  */
 protected func px2vpInner(value: Length): Option<Length> {
@@ -71,7 +71,7 @@ protected func px2vpInner(value: Length): Option<Length> {
 /**
  * Converts a value in fp units to a value in px.
  *
- * @params { Length } value
+ * @param { Length } value
  * @returns { Option<Length> }
  */
 protected func fp2pxInner(value: Length): Option<Length> {
@@ -89,7 +89,7 @@ protected func fp2pxInner(value: Length): Option<Length> {
 /**
  * Converts a value in fp units to a value in px.
  *
- * @params { Length } value
+ * @param { Length } value
  * @returns { Option<Length> }
  */
 protected func px2fpInner(value: Length): Option<Length> {
@@ -107,7 +107,7 @@ protected func px2fpInner(value: Length): Option<Length> {
 /**
  * Converts a value in lpx units to a value in px.
  *
- * @params { Length } value
+ * @param { Length } value
  * @returns { Option<Length> }
  */
 protected func lpx2pxInner(value: Length): Option<Length> {
@@ -125,7 +125,7 @@ protected func lpx2pxInner(value: Length): Option<Length> {
 /**
  * Converts a value in px units to a value in lpx.
  *
- * @params { Length } value
+ * @param { Length } value
  * @returns { Option<Length> }
  */
 protected func px2lpxInner(value: Length): Option<Length> {

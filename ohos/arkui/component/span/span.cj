@@ -90,7 +90,7 @@ public class Span <: BaseSpan {
     /*
      * Called when text is entered in span.
      * 
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      */
     @!APILevel[
         22,
@@ -107,7 +107,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the font size is set.
      * 
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -126,7 +126,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the font color is set.
      * 
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -144,7 +144,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the font style of a font is set.
      * 
-     * @params { ?FontStyle } value
+     * @param { ?FontStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -161,7 +161,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the font weight is set.
      * 
-     * @params { ?FontWeight } value
+     * @param { ?FontWeight } value
      * @returns { This }
      */
     @!APILevel[
@@ -180,7 +180,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the font list of text is set.
      * 
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { This }
      */
     @!APILevel[
@@ -199,8 +199,8 @@ public class Span <: BaseSpan {
     /*
      * Called when the text decoration of the text is set.
      * 
-     * @params { ?TextDecorationType } decorationType
-     * @params { ?ResourceColor } color
+     * @param { ?TextDecorationType } decorationType
+     * @param { ?ResourceColor } color
      * @returns { This }
      */
     @!APILevel[
@@ -220,7 +220,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the distance between text fonts is set.
      * 
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -238,7 +238,7 @@ public class Span <: BaseSpan {
     /*
      * Called when the type of letter in the text font is set.
      * 
-     * @params { ?TextCase } value
+     * @param { ?TextCase } value
      * @returns { This }
      */
     @!APILevel[
@@ -255,7 +255,7 @@ public class Span <: BaseSpan {
     /*
      * Called when a click event occurs.
      *
-     * @params { ?(ClickEvent) -> Unit } event
+     * @param { ?(ClickEvent) -> Unit } event
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.

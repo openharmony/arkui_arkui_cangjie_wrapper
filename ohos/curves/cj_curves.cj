@@ -53,8 +53,8 @@ foreign func FfiOHOSAceFrameworkCurvesInterpolate(id: Int64, fraction: Float32):
 public class Curves {
     /**
      * Creates a step curve.
-     * @params { Int32 } count
-     * @params { Bool } end
+     * @param { Int32 } count
+     * @param { Bool } end
      * @returns { ICurve }
      */
     @!APILevel[
@@ -67,10 +67,10 @@ public class Curves {
 
     /**
      * Creates a cubic Bezier curve. The curve values must be between 0 and 1.
-     * @params { Float32 } x1
-     * @params { Float32 } y1
-     * @params { Float32 } x2
-     * @params { Float32 } y2
+     * @param { Float32 } x1
+     * @param { Float32 } y1
+     * @param { Float32 } x2
+     * @param { Float32 } y2
      * @returns { ICurve }
      */
     @!APILevel[
@@ -83,10 +83,10 @@ public class Curves {
 
     /**
      * Creates a spring curve.
-     * @params { Float32 } velocity
-     * @params { Float32 } mass
-     * @params { Float32 } stiffness
-     * @params { Float32 } damping
+     * @param { Float32 } velocity
+     * @param { Float32 } mass
+     * @param { Float32 } stiffness
+     * @param { Float32 } damping
      * @returns { ICurve }
      */
     @!APILevel[
@@ -100,9 +100,9 @@ public class Curves {
     /**
      * Creates a spring curve. The curve shape is subject to the spring parameters, and the animation duration
      * is subject to the **duration** parameter in **animation** and **animateTo**.
-     * @params { Float32 } response
-     * @params { Float32 } dampingFraction
-     * @params { Float32 } overlapDuration
+     * @param { Float32 } response
+     * @param { Float32 } dampingFraction
+     * @param { Float32 } overlapDuration
      * @returns { ICurve }
      */
     @!APILevel[
@@ -117,9 +117,9 @@ public class Curves {
     /**
      * Creates a responsive spring animation curve. It is a special case of springMotion,
      * with the only difference in the default values. It can be used together with **springMotion**.
-     * @params { Float32 } response
-     * @params { Float32 } dampingFraction
-     * @params { Float32 } overlapDuration
+     * @param { Float32 } response
+     * @param { Float32 } dampingFraction
+     * @param { Float32 } overlapDuration
      * @returns { ICurve }
      */
     @!APILevel[
@@ -136,10 +136,10 @@ public class Curves {
      * Creates an interpolating spring curve animated from 0 to 1. The actual animation value is calculated based
      * on the curve. The animation duration is subject to the curve parameters, rather than the **duration** parameter
      * in **animation** or **animateTo**.
-     * @params { Float32 } velocity
-     * @params { Float32 } mass
-     * @params { Float32 } stiffness
-     * @params { Float32 } damping
+     * @param { Float32 } velocity
+     * @param { Float32 } mass
+     * @param { Float32 } stiffness
+     * @param { Float32 } damping
      * @returns { ICurve }
      */
     @!APILevel[
@@ -153,7 +153,7 @@ public class Curves {
     /**
      * Implements initialization for the interpolation curve,
      * which is used to create an interpolation curve based on the input parameter.
-     * @params { Curve } curve
+     * @param { Curve } curve
      * @returns { ICurve }
      */
     @!APILevel[
@@ -173,7 +173,7 @@ public class Curves {
     /**
      * Creates a custom curve.
      *
-     * @params { (Float32) -> Float32 } interpolate
+     * @param { (Float32) -> Float32 } interpolate
      * @returns { ICurve }
      */
     @!APILevel[
@@ -226,7 +226,7 @@ public class ICurve <: RemoteDataLite {
     /**
      * Get curve value by fraction.
      *
-     * @params { Float32 } fraction
+     * @param { Float32 } fraction
      * @returns { Float32 }
      */
     @!APILevel[

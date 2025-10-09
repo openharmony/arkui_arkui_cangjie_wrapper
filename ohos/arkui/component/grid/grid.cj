@@ -117,8 +117,8 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Grid is returned when the parameter is transferred.
      *
-     * @params { ?Scroller } scroller - Controller bound to the grid.
-     * @params { ()->Unit } child - The child component of the grid.
+     * @param { ?Scroller } scroller - Controller bound to the grid.
+     * @param { ()->Unit } child - The child component of the grid.
      */
     @!APILevel[
         22,
@@ -141,7 +141,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * This parameter specifies the number of columns in the current grid layout.
      *
-     * @params { ?String } value
+     * @param { ?String } value
      * @returns { This }
      */
     @!APILevel[
@@ -160,7 +160,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Lets you set the number of rows in the current grid layout.
      *
-     * @params { ?String } value
+     * @param { ?String } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -180,7 +180,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Allows you to set the spacing between columns.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -210,7 +210,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Lets you set the spacing between rows.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -240,7 +240,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * cached Count.
      *
-     * @params { ?Int32 } count
+     * @param { ?Int32 } count
      * @returns { This }
      */
     @!APILevel[
@@ -254,8 +254,8 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Called to set number of GridItems to be preloaded (cached) in LazyForEach / Repeat.
      *
-     * @params { ?Int32 } count
-     * @params { ?Bool } show
+     * @param { ?Int32 } count
+     * @param { ?Bool } show
      * @returns { This }
      */
     @!APILevel[

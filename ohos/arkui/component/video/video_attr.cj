@@ -32,7 +32,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     /**
      * Called when judging whether the video is muted.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { VideoAttribute }
      */
     @!APILevel[
@@ -44,7 +44,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     /**
      * Called when judging whether the video is played automatically.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { VideoAttribute }
      */
     @!APILevel[
@@ -56,7 +56,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     /**
      * Called when judging whether the control bar is displayed.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { VideoAttribute }
      */
     @!APILevel[
@@ -68,7 +68,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     /**
      * Called when determining the zoom type of the video source.
      *
-     * @params { ?ImageFit } value
+     * @param { ?ImageFit } value
      * @returns { VideoAttribute }
      */
     @!APILevel[
@@ -80,7 +80,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     /**
      * Called when judging whether the video is played circular.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { VideoAttribute }
      */
     @!APILevel[
@@ -93,7 +93,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * Called when the video is played.
      * Anonymous Object Rectification.
      *
-     * @params { ?VoidCallback } event
+     * @param { ?VoidCallback } event
      * @returns { VideoAttribute }
      */
     @!APILevel[
@@ -106,7 +106,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * Called when the video is paused.
      * Anonymous Object Rectification.
      *
-     * @params { ?VoidCallback } event
+     * @param { ?VoidCallback } event
      * @returns { VideoAttribute }
      */
     @!APILevel[
@@ -119,7 +119,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * Called when the video playback ends.
      * Anonymous Object Rectification.
      *
-     * @params { ?VoidCallback } event
+     * @param { ?VoidCallback } event
      * @returns { VideoAttribute }
      */
     @!APILevel[
@@ -131,7 +131,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     /**
      * Called when playback fails.
      *
-     * @params { ?VoidCallback } event
+     * @param { ?VoidCallback } event
      * @returns { This}
      */
     @!APILevel[
@@ -144,7 +144,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * Called when the video preparation is complete.
      * Anonymous Object Rectification.
      *
-     * @params { ?Callback<PreparedInfo, Unit> } callback
+     * @param { ?Callback<PreparedInfo, Unit> } callback
      * @returns { This}
      */
     @!APILevel[
@@ -157,7 +157,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * Called when the time information is reported when the progress bar process is operated.
      * Anonymous Object Rectification.
      *
-     * @params { ?Callback<PlaybackInfo, Unit> } callback
+     * @param { ?Callback<PlaybackInfo, Unit> } callback
      * @returns { This}
      */
     @!APILevel[
@@ -170,7 +170,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * Called when the playback time information is reported after the operation progress bar is completed.
      * Anonymous Object Rectification.
      *
-     * @params { ?Callback<PlaybackInfo, Unit> } callback
+     * @param { ?Callback<PlaybackInfo, Unit> } callback
      * @returns { VideoAttribute }
      */
     @!APILevel[
@@ -183,7 +183,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * Called when the playback progress changes.
      * Anonymous Object Rectification.
      *
-     * @params { ?Callback<PlaybackInfo, Unit> } callback
+     * @param { ?Callback<PlaybackInfo, Unit> } callback
      * @returns { VideoAttribute }
      */
     @!APILevel[
@@ -196,7 +196,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * Called when the video enters and exits the full screen.
      * Anonymous Object Rectification.
      *
-     * @params { ?Callback<FullscreenInfo, Unit> } callback
+     * @param { ?Callback<FullscreenInfo, Unit> } callback
      * @returns { VideoAttribute }
      */
     @!APILevel[

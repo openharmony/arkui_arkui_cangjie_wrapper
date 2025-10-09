@@ -31,7 +31,7 @@ sealed interface ToggleAttribute <: CommonMethod<ToggleAttribute> {
     /**
      * Called when the color of the selected button is set.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { ToggleAttribute }
      */
     @!APILevel[
@@ -43,7 +43,7 @@ sealed interface ToggleAttribute <: CommonMethod<ToggleAttribute> {
     /**
      * Called when the color of the selected button is set.
      *
-     * @params { ?ResourceColor } color
+     * @param { ?ResourceColor } color
      * @returns { ToggleAttribute }
      */
     @!APILevel[
@@ -55,7 +55,7 @@ sealed interface ToggleAttribute <: CommonMethod<ToggleAttribute> {
     /**
      * Called when the selected state of the component changes.
      *
-     * @params { ?(Bool) -> Unit } callback
+     * @param { ?(Bool) -> Unit } callback
      * @returns { ToggleAttribute }
      */
     @!APILevel[

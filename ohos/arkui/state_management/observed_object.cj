@@ -30,7 +30,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
 
     /**
      *
-     * @params { ObservedPropertyAbstract } publishVar
+     * @param { ObservedPropertyAbstract } publishVar
      */
     @!APILevel[
         22,

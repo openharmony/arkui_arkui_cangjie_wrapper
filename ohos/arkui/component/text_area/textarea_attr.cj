@@ -33,7 +33,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     /**
      * Called when the color of the insertion cursor is set.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -46,10 +46,10 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * Called when the font property of the placeholder is set.
      * The 'HarmonyOS Sans' font and registered custom fonts are supported.
      *
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?String } family
-     * @params { ?FontStyle } style
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?String } family
+     * @param { ?FontStyle } style
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -68,7 +68,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * centered-aligning the text vertically; Alignment.BottomStart, Alignment.Bottom,
      * and Alignment.BottomEnd produce the same effect, bottom-aligning the text.
      *
-     * @params { ?TextAlign } value - Default value is TextAlign.Start.
+     * @param { ?TextAlign } value - Default value is TextAlign.Start.
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -80,7 +80,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     /**
      * Called when the font size is set.
      *
-     * @params { ?Length } value - Default value is 16.fp. If fontSize is of the number type, the unit fp is used. This parameter cannot be set in percentage.
+     * @param { ?Length } value - Default value is 16.fp. If fontSize is of the number type, the unit fp is used. This parameter cannot be set in percentage.
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -91,7 +91,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
 
     /**
      * Called when the font color is set.
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -103,7 +103,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     /**
      * Called when the font weight is set.
      *
-     * @params { ?FontWeight } value - Default value is FontWeight.Normal.
+     * @param { ?FontWeight } value - Default value is FontWeight.Normal.
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -115,7 +115,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     /**
      * Called when the font style of a font is set.
      *
-     * @params { ?FontStyle } value - Default value is FontStyle.Normal.
+     * @param { ?FontStyle } value - Default value is FontStyle.Normal.
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -130,7 +130,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * <br>The 'HarmonyOS Sans' font and registered custom fonts are supported for applications.
      * <br>Only the 'HarmonyOS Sans' font is supported for widgets.
      *
-     * @params { ?ResourceStr } value - Default value is 'HarmonyOS Sans'.
+     * @param { ?ResourceStr } value - Default value is 'HarmonyOS Sans'.
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -142,7 +142,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     /**
      * Called when the type of soft keyboard input button is set.
      *
-     * @params { ?EnterKeyType } value - Default value is Default value is EnterKeyType.NewLine.
+     * @param { ?EnterKeyType } value - Default value is Default value is EnterKeyType.NewLine.
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -154,8 +154,8 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     /**
      * Called when the inputFilter of text is set.
      *
-     * @params { ?ResourceStr } value
-     * @params { ?(String) -> Unit } error
+     * @param { ?ResourceStr } value
+     * @param { ?(String) -> Unit } error
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -170,7 +170,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * <br>When the maximum number of characters is reached,
      * no more characters can be entered, and the border turns red.
      *
-     * @params { ?UInt32 } value
+     * @param { ?UInt32 } value
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -182,7 +182,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     /**
      * Called when the color of the placeholder is set.
      *
-     * @params { ?ResourceColor } value - Default value follows the theme.
+     * @param { ?ResourceColor } value - Default value follows the theme.
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -194,7 +194,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     /**
      * Called when submitted.
      *
-     * @params { ?(EnterKeyType) -> Unit } callback - If it is EnterKeyType.NEW_LINE and the text box is in inline input style, onSubmit is not triggered.
+     * @param { ?(EnterKeyType) -> Unit } callback - If it is EnterKeyType.NEW_LINE and the text box is in inline input style, onSubmit is not triggered.
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -206,7 +206,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     /**
      * Called when the input of the input box changes.
      *
-     * @params { ?(String) -> Unit }  callback
+     * @param { ?(String) -> Unit }  callback
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -218,7 +218,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     /**
      * Called when using the Clipboard menu.
      *
-     * @params { ?(String) -> Unit } callback
+     * @param { ?(String) -> Unit } callback
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -230,7 +230,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     /**
      * Called when using the Clipboard menu.
      *
-     * @params { ?(String) -> Unit } callback
+     * @param { ?(String) -> Unit } callback
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -242,7 +242,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     /**
      * Called when using the Clipboard menu.
      *
-     * @params { ?(String) -> Unit } callback - Executed when a paste operation is performed.
+     * @param { ?(String) -> Unit } callback - Executed when a paste operation is performed.
      * @returns { TextAreaAttribute }
      */
     @!APILevel[
@@ -255,7 +255,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * Called when judging whether the text editing change finished.
      * The text box is in the editing state when it has the caret placed in it, and is in the non-editing state otherwise.
      *
-     * @params { ?(Bool) -> Unit} callback - Triggered when the text area status changes.
+     * @param { ?(Bool) -> Unit} callback - Triggered when the text area status changes.
      * @returns { TextAreaAttribute }
      */
     @!APILevel[

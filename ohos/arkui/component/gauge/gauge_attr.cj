@@ -31,7 +31,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Sets the value for the current profile.
      *
-     * @params { ?Float32 } value
+     * @param { ?Float32 } value
      * @returns { GaugeAttribute }
      */
     @!APILevel[
@@ -43,7 +43,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Set the start angle. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @params { ?Float64 } angle
+     * @param { ?Float64 } angle
      * @returns { GaugeAttribute }
      */
     @!APILevel[
@@ -55,7 +55,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Sets the end angle position. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @params { ?Float64 } angle
+     * @param { ?Float64 } angle
      * @returns { GaugeAttribute }
      */
     @!APILevel[
@@ -67,7 +67,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Sets the end angle position. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @params { ?Array<(ResourceColor, Float32)> } angle
+     * @param { ?Array<(ResourceColor, Float32)> } angle
      * @returns { GaugeAttribute }
      */
     @!APILevel[
@@ -79,7 +79,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @params { ?Array<(LinearGradient, Float32)> } value
+     * @param { ?Array<(LinearGradient, Float32)> } value
      * @returns { GaugeAttribute }
      */
     @!APILevel[
@@ -91,7 +91,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { GaugeAttribute }
      */
     @!APILevel[
@@ -103,7 +103,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @params { ?LinearGradient } value
+     * @param { ?LinearGradient } value
      * @returns { GaugeAttribute }
      */
     @!APILevel[
@@ -115,7 +115,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Sets the thickness of the ring chart.
      *
-     * @params { ?Length } length
+     * @param { ?Length } length
      * @returns { GaugeAttribute }
      */
     @!APILevel[
@@ -127,9 +127,9 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Sets track shadow of the ring chart.
      *
-     * @params { ?Float64 } radius
-     * @params { ?Float64 } offsetX
-     * @params { ?Float64 } offsetY
+     * @param { ?Float64 } radius
+     * @param { ?Float64 } offsetX
+     * @param { ?Float64 } offsetY
      * @returns { GaugeAttribute }
      */
     @!APILevel[
@@ -141,8 +141,8 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Sets indicator options of the ring chart.
      *
-     * @params { ?ResourceStr } icon
-     * @params { ?Length } space
+     * @param { ?ResourceStr } icon
+     * @param { ?Length } space
      * @returns { GaugeAttribute }
      */
     @!APILevel[
@@ -154,7 +154,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Sets description content of the ring chart.
      *
-     * @params { ?() -> Unit } builder
+     * @param { ?() -> Unit } builder
      * @returns { GaugeAttribute }
      */
     @!APILevel[

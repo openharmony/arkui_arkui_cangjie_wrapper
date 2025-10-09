@@ -32,7 +32,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     /**
     * Sets whether to enable access to the file system in the application.
     *
-    * @params { ?Bool } fileAccess
+    * @param { ?Bool } fileAccess
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -44,7 +44,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     /**
     * Sets whether to enable the DOM Storage API. By default, this feature is disabled.
     *
-    * @params { ?Bool } domStorageAccess
+    * @param { ?Bool } domStorageAccess
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -56,7 +56,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     /**
     * Sets whether to enable automatic image loading.
     *
-    * @params { ?Bool } imageAccess
+    * @param { ?Bool } imageAccess
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -68,7 +68,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     /**
     * Sets whether to enable access to online images through HTTP and HTTPS.
     *
-    * @params { ?Bool } onlineImageAccess
+    * @param { ?Bool } onlineImageAccess
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -81,7 +81,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     *  Sets the behavior when a secure origin attempts to load a resource from an insecure origin.
     *  The default is MixedMode.None, meaning not allow a secure origin to load content from an insecure origin.
     *
-    * @params { ?MixedMode } mixedMode
+    * @param { ?MixedMode } mixedMode
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -93,7 +93,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     /**
     * Sets whether the Web supports zooming using gestures.
     *
-    * @params { ?Bool } zoomAccess
+    * @param { ?Bool } zoomAccess
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -106,7 +106,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * Set whether to enable geolocation access. By default, this feature is enabled.
     * For details, see Managing Location Permissions.
     *
-    * @params { ?Bool } geolocationAccess
+    * @param { ?Bool } geolocationAccess
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -118,7 +118,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     /**
     * Set whether paint vertical scroll bar, including the system default scrollbar and user-defined scrollbar.
     *
-    * @params { ?Bool } verticalScrollBar
+    * @param { ?Bool } verticalScrollBar
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -130,7 +130,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     /**
     * Called to setting the nested scroll options.
     *
-    * @params { ?NestedScrollMode } scrollForward scrollBackward
+    * @param { ?NestedScrollMode } scrollForward scrollBackward
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -145,7 +145,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     /**
     * Triggered when the resources loading is intercepted.
     *
-    * @params { ?Callback<OnLoadInterceptEvent, Bool> } callback
+    * @param { ?Callback<OnLoadInterceptEvent, Bool> } callback
     * @returns { WebAttribute }
     * @throws { BusinessException } 190002 - The callback function is invalid.
     */
@@ -158,7 +158,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     /**
     * Called when the web page starts to be loaded.
     *
-    * @params { ?Callback<OnPageBeginEvent, Unit> } callback
+    * @param { ?Callback<OnPageBeginEvent, Unit> } callback
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -170,7 +170,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     /**
     * Triggered at the end of web page loading.
     *
-    * @params { ?Callback<OnPageEndEvent, Unit> } callback
+    * @param { ?Callback<OnPageEndEvent, Unit> } callback
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -182,10 +182,10 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     /**
     * Registers the supplied ArkTS object in javaScriptProxy into this Web component.
     *
-    * @params { ?Array<(String) -> String> } funcList
-    * @params { ?String } name
-    * @params { ?Array<String> } methodList
-    * @params { ?WebviewController } controller
+    * @param { ?Array<(String) -> String> } funcList
+    * @param { ?String } name
+    * @param { ?Array<String> } methodList
+    * @param { ?WebviewController } controller
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -201,7 +201,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * if the theme has been defined in prefers-color-scheme of a media query,
     * and remains unchanged otherwise. To enable the forcible dark mode, use this API with forceDarkAccess.
     *
-    * @params { ?WebDarkMode } mode
+    * @param { ?WebDarkMode } mode
     * @returns { WebAttribute }
     */
     @!APILevel[
@@ -214,7 +214,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * Sets whether to enable forcible dark mode for the web page.
     * This API is applicable only when dark mode is enabled in {@link darkMode}.
     *
-    * @params { ?Bool } access
+    * @param { ?Bool } access
     * @returns { WebAttribute }
     */
     @!APILevel[

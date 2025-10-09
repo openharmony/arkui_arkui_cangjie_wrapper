@@ -31,7 +31,7 @@ sealed interface QRCodeAttribute <: CommonMethod<QRCodeAttribute> {
     /**
      * Called when the QR code color is set.
      *
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { QRCodeAttribute }
      */
     @!APILevel[
@@ -43,7 +43,7 @@ sealed interface QRCodeAttribute <: CommonMethod<QRCodeAttribute> {
     /**
      * Set the opacity of the QR code content color.
      *
-     * @params { ?Float64 } value
+     * @param { ?Float64 } value
      * @returns { QRCodeAttribute }
      */
     @!APILevel[
@@ -55,7 +55,7 @@ sealed interface QRCodeAttribute <: CommonMethod<QRCodeAttribute> {
     /**
      * Set the opacity of the QR code content color.
      *
-     * @params { ?AppResource } value
+     * @param { ?AppResource } value
      * @returns { QRCodeAttribute }
      */
     @!APILevel[

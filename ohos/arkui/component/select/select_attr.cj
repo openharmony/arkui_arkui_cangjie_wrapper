@@ -31,7 +31,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Sets the serial number of the select item, starting from 0.
      *
-     * @params { ?Int32 } value - the serial number of the select item.
+     * @param { ?Int32 } value - the serial number of the select item.
      * @returns { This } the attribute of the select.
      */
     @!APILevel[
@@ -43,7 +43,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Sets the text display of the select button itself.
      *
-     * @params { ?ResourceStr } value - the text display of the select button itself.
+     * @param { ?ResourceStr } value - the text display of the select button itself.
      * @returns { This } the attribute of the select.
      */
     @!APILevel[
@@ -55,10 +55,10 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Sets the text properties of the select button itself.
      *
-     * @params { ?FontStyle } style
-     * @params { ?FontWeight } weight
-     * @params { ?Length } size
-     * @params { ?ResourceStr } family
+     * @param { ?FontStyle } style
+     * @param { ?FontWeight } weight
+     * @param { ?Length } size
+     * @param { ?ResourceStr } family
      * @returns { This }
      */
     @!APILevel[
@@ -75,7 +75,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Sets the text color of the select button itself.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -87,7 +87,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Sets the background color of the selected items in the select.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -99,10 +99,10 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Sets the text style of the selected items in the select.
      *
-     * @params { ?FontStyle } style
-     * @params { ?FontWeight } weight
-     * @params { ?Length } size
-     * @params { ?String } family
+     * @param { ?FontStyle } style
+     * @param { ?FontWeight } weight
+     * @param { ?Length } size
+     * @param { ?String } family
      * @returns { This }
      */
     @!APILevel[
@@ -119,7 +119,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Sets the text color of the selected item in the select.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -131,7 +131,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Sets the background color of the select item.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -143,10 +143,10 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Sets the text style for select items.
      *
-     * @params { ?FontStyle } style
-     * @params { ?FontWeight } weight
-     * @params { ?Length } size
-     * @params { ?ResourceStr } family
+     * @param { ?FontStyle } style
+     * @param { ?FontWeight } weight
+     * @param { ?Length } size
+     * @param { ?ResourceStr } family
      * @returns { This }
      */
     @!APILevel[
@@ -163,7 +163,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Sets the text color for select items.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -175,7 +175,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Set the space for text and icon in select
      *
-     * @params { ?Length } value - indicates the length of the space
+     * @param { ?Length } value - indicates the length of the space
      * @returns { This }
      */
     @!APILevel[
@@ -187,7 +187,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Set the layout direction for text and arrow in select
      *
-     * @params { ?ArrowPosition } value - indicates the arrow position in the select
+     * @param { ?ArrowPosition } value - indicates the arrow position in the select
      * @returns { This }
      */
     @!APILevel[
@@ -199,8 +199,8 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Set the alignment between select and menu.
      *
-     * @params { ?MenuAlignType } alignType - The type of alignment between select and menu.
-     * @params { ?Offset } offset - The offset between select and menu.
+     * @param { ?MenuAlignType } alignType - The type of alignment between select and menu.
+     * @param { ?Offset } offset - The offset between select and menu.
      * @returns { This } the attribute of the select.
      */
     @!APILevel[
@@ -212,7 +212,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /** 
      * Set the width of each option and set whether the option width fit the trigger.
      *
-     * @params { ?OptionWidthMode } value - The length of option width and decide option width to fit trigger or content.
+     * @param { ?OptionWidthMode } value - The length of option width and decide option width to fit trigger or content.
      * @returns { This } the attribute of the select.
      */
     @!APILevel[
@@ -224,7 +224,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /** 
      * Set the width of each option and set whether the option width fit the trigger.
      *
-     * @params { ?Length } value - The length of option width and decide option width to fit trigger or content.
+     * @param { ?Length } value - The length of option width and decide option width to fit trigger or content.
      * @returns { This } the attribute of the select.
      */
     @!APILevel[
@@ -236,7 +236,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /** 
      * Set the height of each option.
      * 
-     * @params { ?Length } value - The length of option height.
+     * @param { ?Length } value - The length of option height.
      * @returns { This } the attribute of the select.
      */
     @!APILevel[
@@ -248,7 +248,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Set the menu's background color.
      *
-     * @params { ?ResourceColor } value - The backgroundColor of menu.
+     * @param { ?ResourceColor } value - The backgroundColor of menu.
      * @returns { This } the attribute of the select.
      */
     @!APILevel[
@@ -260,7 +260,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Set menu background blur Style.
      *
-     * @params { ?BlurStyle } value - The BackgroundBlurStyle of menu.
+     * @param { ?BlurStyle } value - The BackgroundBlurStyle of menu.
      * @returns { This } the attribute of the select.
      */
     @!APILevel[
@@ -272,7 +272,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
     /**
      * Callback for selecting an item from the select.
      *
-     * @params { ?OnSelectCallback } callback
+     * @param { ?OnSelectCallback } callback
      * @returns { This }
      */
     @!APILevel[

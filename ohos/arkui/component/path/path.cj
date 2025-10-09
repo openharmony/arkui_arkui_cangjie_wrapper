@@ -41,7 +41,7 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
     /**
      * Create a path.
      *
-     * @params { ?ResourceStr } commands - Commands option.
+     * @param { ?ResourceStr } commands - Commands option.
      */
     @!APILevel[
         22,
@@ -59,9 +59,9 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
     /**
      * Create a path.
      *
-     * @params { ?Length } width - Width option.
-     * @params { ?Length } height - Height option.
-     * @params { ?ResourceStr } commands - Commands option.
+     * @param { ?Length } width - Width option.
+     * @param { ?Length } height - Height option.
+     * @param { ?ResourceStr } commands - Commands option.
      */
     @!APILevel[
         22,
@@ -82,7 +82,7 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
     /**
      * Called when the command string drawn by the path is set.
      *
-     * @params { ?ResourceStr } commands
+     * @param { ?ResourceStr } commands
      * @returns { This }
      */
     @!APILevel[

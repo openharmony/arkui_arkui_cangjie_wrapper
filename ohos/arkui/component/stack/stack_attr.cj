@@ -29,7 +29,7 @@ sealed interface StackAttribute <: CommonMethod<StackAttribute> {
     /**
     * Called when the alignment of items in the container is set.
     *
-    * @params { ?Alignment } value
+    * @param { ?Alignment } value
     * @returns { StackAttribute }
     */
     @!APILevel[

@@ -30,7 +30,7 @@ sealed interface CanvasAttribute <: CommonMethod<CanvasAttribute> {
     /**
      * Event notification after the canvas component is constructed. You can draw the canvas at this time.
      *
-     * @params { ?() -> Unit } callback
+     * @param { ?() -> Unit } callback
      * @returns { CanvasAttribute }
      */
     @!APILevel[

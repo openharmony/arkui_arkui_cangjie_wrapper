@@ -167,9 +167,9 @@ public class SheetInfo {
     /**
      * Constructor of SheetInfo.
      *
-     * @params { ?ResourceStr } title - Title Properties.
-     * @params { ?VoidCallback } action - Callback when the sheet is selected.
-     * @params { ?ResourceStr } icon - Sheet icon.
+     * @param { ?ResourceStr } title - Title Properties.
+     * @param { ?VoidCallback } action - Callback when the sheet is selected.
+     * @param { ?ResourceStr } icon - Sheet icon.
      */
     @!APILevel[
         22,
@@ -253,11 +253,11 @@ public class ActionSheetButtonOptions {
     /**
      * Constructor of ActionSheetButtonOptions.
      *
-     * @params { ?ResourceStr } value - Button text.
-     * @params { ?VoidCallback } action - Callback invoked when the button is selected.
-     * @params { ?Bool } enabled - Whether to respond when the button is clicked.
-     * @params { ?Bool } defaultFocus - Whether the button is the default focus.
-     * @params { ?DialogButtonStyle } style - Button style.
+     * @param { ?ResourceStr } value - Button text.
+     * @param { ?VoidCallback } action - Callback invoked when the button is selected.
+     * @param { ?Bool } enabled - Whether to respond when the button is clicked.
+     * @param { ?Bool } defaultFocus - Whether the button is the default focus.
+     * @param { ?DialogButtonStyle } style - Button style.
      */
     @!APILevel[
         22,
@@ -310,7 +310,7 @@ public class DismissDialogAction {
     /**
      * Constructor of DismissDialogAction
 
-     * @params { ?DismissReason } reason - Reason why the dialog box cannot be dismissed.
+     * @param { ?DismissReason } reason - Reason why the dialog box cannot be dismissed.
      */
     @!APILevel[
         22,
@@ -590,28 +590,28 @@ public class ActionSheetOptions {
     /**
      * Constructor of ActionSheetOptions.
      *
-     * @params { ?ResourceStr } title - Title of the dialog box.
-     * @params { ?ResourceStr } message - Content of the dialog box.
-     * @params { ?Array<SheetInfo> } sheets - Options in the dialog box.
-     * @params { ?ResourceStr } subtitle - Subtitle of the dialog box.
-     * @params { ?ActionSheetButtonOptions } confirm - Information about the confirm button.
-     * @params { ?Bool } autoCancel - Whether to close the dialog box when the overlay is clicked.
-     * @params { ?VoidCallback } cancel - Callback invoked when the dialog box is closed after the overlay is clicked.
-     * @params { ?DialogAlignment } alignment - Alignment mode of the dialog box in the vertical direction.
-     * @params { ?ActionSheetOffset } offset - Offset of the dialog box relative to the alignment position.
-     * @params { ?Rectangle } maskRect - Mask area of the dialog box.
-     * @params { ?Bool } showInSubWindow - Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window.
-     * @params { ?ResourceColor } backgroundColor - Background color of the dialog box.
-     * @params { ?BlurStyle } backgroundBlurStyle - Background blur style of the dialog box.
-     * @params { ?Callback<DismissDialogAction, Unit> } onWillDismiss - Callback for interactive closure of the dialog box.
-     * @params { ?BorderRadiuses } cornerRadius - Corner radius of the background.
-     * @params { ?Length } borderWidth - Border width of the dialog box.
-     * @params { ?ResourceColor } borderColor - Border color of the dialog box.
-     * @params { ?EdgeStyles } borderStyle - Border style of the dialog box.
-     * @params { ?Length } width - Width of the dialog box.
-     * @params { ?Length } height - Height of the dialog box.
-     * @params { ?ShadowOptions } shadow - Shadow of the dialog box.
-     * @params { ?TransitionEffect } transition - Transition effect for the entrance and exit of the dialog box.
+     * @param { ?ResourceStr } title - Title of the dialog box.
+     * @param { ?ResourceStr } message - Content of the dialog box.
+     * @param { ?Array<SheetInfo> } sheets - Options in the dialog box.
+     * @param { ?ResourceStr } subtitle - Subtitle of the dialog box.
+     * @param { ?ActionSheetButtonOptions } confirm - Information about the confirm button.
+     * @param { ?Bool } autoCancel - Whether to close the dialog box when the overlay is clicked.
+     * @param { ?VoidCallback } cancel - Callback invoked when the dialog box is closed after the overlay is clicked.
+     * @param { ?DialogAlignment } alignment - Alignment mode of the dialog box in the vertical direction.
+     * @param { ?ActionSheetOffset } offset - Offset of the dialog box relative to the alignment position.
+     * @param { ?Rectangle } maskRect - Mask area of the dialog box.
+     * @param { ?Bool } showInSubWindow - Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window.
+     * @param { ?ResourceColor } backgroundColor - Background color of the dialog box.
+     * @param { ?BlurStyle } backgroundBlurStyle - Background blur style of the dialog box.
+     * @param { ?Callback<DismissDialogAction, Unit> } onWillDismiss - Callback for interactive closure of the dialog box.
+     * @param { ?BorderRadiuses } cornerRadius - Corner radius of the background.
+     * @param { ?Length } borderWidth - Border width of the dialog box.
+     * @param { ?ResourceColor } borderColor - Border color of the dialog box.
+     * @param { ?EdgeStyles } borderStyle - Border style of the dialog box.
+     * @param { ?Length } width - Width of the dialog box.
+     * @param { ?Length } height - Height of the dialog box.
+     * @param { ?ShadowOptions } shadow - Shadow of the dialog box.
+     * @param { ?TransitionEffect } transition - Transition effect for the entrance and exit of the dialog box.
      */
     @!APILevel[
         22,
@@ -793,8 +793,8 @@ public class ActionSheetOffset {
     /**
      * Constructor of ActionSheetOffset.
      *
-     * @params { ?Length } dx - Offset of the action sheet along the x-axis relative to the alignment position.
-     * @params { ?Length } dy - Offset of the action sheet along the y-axis relative to the alignment position.
+     * @param { ?Length } dx - Offset of the action sheet along the x-axis relative to the alignment position.
+     * @param { ?Length } dy - Offset of the action sheet along the y-axis relative to the alignment position.
      */
     @!APILevel[
         22,

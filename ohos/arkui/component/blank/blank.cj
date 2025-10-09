@@ -34,7 +34,7 @@ public class Blank <: CommonMethodComponent<Blank> & BlankAttribute {
      * Minimum size of the Blank component in the container along the main axis.
      * Default value: **0.vp**.
      *
-     * @params { ?Length } min
+     * @param { ?Length } min
      */
     @!APILevel[
         22,
@@ -51,7 +51,7 @@ public class Blank <: CommonMethodComponent<Blank> & BlankAttribute {
      * Sets the color to fill the blank.
      * Default value: **Color.Transparent**.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[

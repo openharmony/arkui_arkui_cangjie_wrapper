@@ -31,7 +31,7 @@ sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
     /**
      * Sets the height of each item in the picker.
      *
-     * @params { ?Length } value - Height of each item in the picker.
+     * @param { ?Length } value - Height of each item in the picker.
      * <br>For the number type, the value range is [0, +∞).
      * <br>For the string type, only numeric string values, for example, "56", are supported.
      * @returns { TextPickerAttribute }
@@ -45,7 +45,7 @@ sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
     /**
      * Sets whether scrolling is loopable.
      *
-     * @params { ?Bool } value - Whether scrolling is loopable. true: loopable; false: not loopable.
+     * @param { ?Bool } value - Whether scrolling is loopable. true: loopable; false: not loopable.
      * @returns { TextPickerAttribute }
      */
     @!APILevel[
@@ -60,7 +60,7 @@ sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
      * value indicates the text of the selected item.
      * When the picker contains imagery only, value is empty.
      *
-     * @params { ?OnTextPickerChangeCallback } callback - the callback of onChange.
+     * @param { ?OnTextPickerChangeCallback } callback - the callback of onChange.
      * @returns { TextPickerAttribute }
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */

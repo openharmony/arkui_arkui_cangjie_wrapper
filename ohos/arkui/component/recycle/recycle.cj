@@ -50,7 +50,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
     /**
      * Create a Recycle
      *
-     * @params {() -> Unit} child
+     * @param {() -> Unit} child
      */
     @!APILevel[
         22,
