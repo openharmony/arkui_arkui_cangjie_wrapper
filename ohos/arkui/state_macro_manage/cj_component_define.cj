@@ -122,7 +122,7 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
     }
 
     let compId = generateNewId()
-    var res = quote($baseExpr\( )
+    var res = quote($baseExpr().create\($compId, $thisView, )
     for (idx in 0..callExpr.arguments.size) {
         let para = callExpr.arguments[idx]
         let paraExpr = para.expr
