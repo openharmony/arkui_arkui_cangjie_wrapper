@@ -19,17 +19,32 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines RichText Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RichTextAttribute <: CommonMethod<RichTextAttribute> {
+    /**
+     * Triggered when the RichText loading starts.
+     *
+     * @params { ?() -> Unit } callback
+     * @returns { RichTextAttribute } 
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onStart(callback: ?() -> Unit): RichTextAttribute
 
+    /**
+     * Triggered when the RichText loading ends.
+     *
+     * @params { ?() -> Unit } callback
+     * @returns { RichTextAttribute } 
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

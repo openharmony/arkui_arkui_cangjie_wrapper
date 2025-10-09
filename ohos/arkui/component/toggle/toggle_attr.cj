@@ -19,23 +19,45 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Toggle Component.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ToggleAttribute <: CommonMethod<ToggleAttribute> {
+    /**
+     * Called when the color of the selected button is set.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { ToggleAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedColor(value: ?ResourceColor): ToggleAttribute
 
+    /**
+     * Called when the color of the selected button is set.
+     *
+     * @params { ?ResourceColor } color
+     * @returns { ToggleAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func switchPointColor(color: ?ResourceColor): ToggleAttribute
 
+    /**
+     * Called when the selected state of the component changes.
+     *
+     * @params { ?(Bool) -> Unit } callback
+     * @returns { ToggleAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

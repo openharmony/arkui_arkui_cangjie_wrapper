@@ -19,30 +19,59 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Rating Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
 
+    /**
+     * Called when the total number of stars is set.
+     * 
+     * @params { ?Int32 } value
+     * @returns { RatingAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func stars(starCount: ?Int32): RatingAttribute
 
+    /**
+     * Called when the step size of the operation rating.
+     *
+     * @params { ?Float64 } size
+     * @returns { RatingAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func stepSize(size: ?Float64): RatingAttribute
 
+    /**
+     * Called when a picture is set.
+     *
+     * @params { ?ResourceStr } backgroundUri - Background URI option.
+     * @params { ?ResourceStr } foregroundUri - Foreground URI option.
+     * @params { ?ResourceStr } secondaryUri - Secondary URI option.
+     * @returns { RatingAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func starStyle(backgroundUri!: ?ResourceStr, foregroundUri!: ?ResourceStr, secondaryUri!: ?ResourceStr): RatingAttribute
 
+    /**
+     * Called when the star rating of the operation scoring bar changes.
+     *
+     * @params { ?(Float64) -> Unit } callback
+     * @returns { RatingAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

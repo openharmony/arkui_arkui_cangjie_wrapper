@@ -1050,8 +1050,19 @@ public class PasteEvent <: RemoteDataLite {
     }
 }
 
+/**
+ * Callback function when a paste operation is performed.
+ *
+ * @params { PasteEvent } event - The paste event.
+ */
 public type PasteEventCallback = (PasteEvent) -> Unit
 
+/**
+ * Callback after content changed.
+ * 
+ * @param { TextRange } rangeBefore - Range of content that had been replaced.
+ * @param { TextRange } rangeAfter - Range of content that newly added.
+ */
 public type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) -> Unit
 
 /**

@@ -1170,8 +1170,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Connect sub-path using straight lines.
      *
-     * @params { number } x - The x-axis coordinate of the end point of the line.
-     * @params { number } y - The y-axis coordinate of the end point of the line.
+     * @params { Float64 } x - The x-axis coordinate of the end point of the line.
+     * @params { Float64 } y - The y-axis coordinate of the end point of the line.
      */
     @!APILevel[
         22,
@@ -1641,10 +1641,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Creates a gradient around a point with given coordinates.
      *
-     * @params { Float64 } startAngle - The angle at which to begin the gradient, in radians.
+     * @params { ?Float64 } startAngle - The angle at which to begin the gradient, in radians.
      *   Angle measurements start horizontally the right of the center and move around clockwise.
-     * @params { Float64 } x - The x-axis coordinate of the center of the gradient.
-     * @params { Float64 } y - The y-axis coordinate of the center of the gradient.
+     * @params { ?Float64 } x - The x-axis coordinate of the center of the gradient.
+     * @params { ?Float64 } y - The y-axis coordinate of the center of the gradient.
      * @returns { CanvasGradient } A CanvasGradient object that draws a conic gradient around the given coordinates.
      */
     @!APILevel[

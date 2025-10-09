@@ -19,17 +19,32 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Radio Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RadioAttribute <: CommonMethod<RadioAttribute> {
+    /**
+     * Called when the radio box is selected.
+     *
+     * @params { ?Bool } value
+     * @returns { RadioAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func checked(value: ?Bool): RadioAttribute
 
+    /**
+     * Called when the radio box selection status changes.
+     *
+     * @params { ?(Bool) -> Unit } callback
+     * @returns { RadioAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

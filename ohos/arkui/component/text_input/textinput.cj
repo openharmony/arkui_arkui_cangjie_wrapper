@@ -116,6 +116,10 @@ public class TextInputController <: RemoteDataLite {
     }
 }
 
+/**
+ * Defines TextInput Component.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"

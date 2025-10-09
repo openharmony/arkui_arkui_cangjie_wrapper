@@ -19,53 +19,105 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Slider Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
+    /**
+    * Called when the slider color of the slider bar is set.
+    *
+    * @params { ?ResourceColor } value
+    * @returns { SliderAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func blockColor(value: ?ResourceColor): SliderAttribute
 
+    /**
+    * Called when the track color of the slider is set.
+    *
+    * @params { ?ResourceColor } value
+    * @returns { SliderAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func trackColor(value: ?ResourceColor): SliderAttribute
 
+    /**
+    * Called when the slider of the slider bar is set to slide over the area color.
+    *
+    * @params { ?ResourceColor } value
+    * @returns { SliderAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedColor(value: ?ResourceColor): SliderAttribute
 
+    /**
+    * Called when setting whether to display step size.
+    *
+    * @params { ?Bool } value
+    * @returns { SliderAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func showSteps(value: ?Bool): SliderAttribute
 
+    /**
+    * Called when the percentage of bubble prompt is set when sliding.
+    *
+    * @params { ?Bool } value
+    * @params { ?ResourceStr } content
+    * @returns { SliderAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func showTips(value: ?Bool, content!: ?ResourceStr): SliderAttribute
 
+    /**
+    * Called when the thickness of track is set.
+    *
+    * @params { ?Length } value
+    * @returns { SliderAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func trackThickness(value: ?Length): SliderAttribute
 
+    /**
+    * Triggered when the slider is dragged or clicked.
+    *
+    * @params { ?(Float64, SliderChangeMode) -> Unit } callback
+    * @returns { SliderAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(Float64, SliderChangeMode) -> Unit): SliderAttribute
 
+    /**
+    * Called when the border color of block is set.
+    *
+    * @params { ?ResourceColor } value
+    * @returns { SliderAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

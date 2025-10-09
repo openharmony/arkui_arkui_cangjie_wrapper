@@ -213,7 +213,7 @@ public class VideoController <: RemoteDataLite {
     /**
      * Provide the progress method of video playback.
      *
-     * @params { ?Int32 } value
+     * @params { Int32 } value
      * @params { ?SeekMode } seekMode
      */
     @!APILevel[

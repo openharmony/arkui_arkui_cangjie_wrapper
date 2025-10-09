@@ -20,36 +20,69 @@ import ohos.arkui.component.shape.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Rect Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {	
 
+    /**
+     * Set the corner radius width.
+     *
+     * @params { ?Length } value
+     * @returns { RectAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radiusWidth(value: ?Length): RectAttribute
 
+    /**
+     * Set the corner radius height.
+     *
+     * @params { ?Length } value
+     * @returns { RectAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radiusHeight(value: ?Length): RectAttribute
 
+    /**
+     * Set the corner radius size.
+     *
+     * @params { ?Length } value
+     * @returns { RectAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radius(value: ?Length): RectAttribute
 
+    /**
+     * Set the corner radius size.
+     *
+     * @params { ?Array<Length> } value
+     * @returns { RectAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radius(value: ?Array<Length>): RectAttribute
 
+    /**
+     * Set the corner radius size.
+     *
+     * @params { ?Array<(Length, Length)> } value
+     * @returns { RectAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

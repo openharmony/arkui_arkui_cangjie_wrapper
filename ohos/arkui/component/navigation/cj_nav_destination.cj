@@ -90,7 +90,7 @@ public class NavDestinationContext {
 }
 
 /**
- * NavDestination.
+ * Defines NavDestination Component.
  */
 @!APILevel[
     22,

@@ -185,7 +185,6 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      *
      * @params { ?Length } value - Default value is 16.fp. If fontSize is of the number type, the unit fp is used. This parameter cannot be set in percentage.
      * @returns { This }
-     * @throws { IllegalArgumentException }
      */
     @!APILevel[
         22,
@@ -201,7 +200,6 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * Called when the font color is set.
      * @params { ?ResourceColor } value
      * @returns { This }
-     * @throws { IllegalArgumentException }
      */
     @!APILevel[
         22,
@@ -305,7 +303,6 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      *
      * @params { ?UInt32 } value
      * @returns { This }
-     * @throws { IllegalArgumentException }
      */
     @!APILevel[
         22,
@@ -322,7 +319,6 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      *
      * @params { ?ResourceColor } value - Default value follows the theme.
      * @returns { This }
-     * @throws { IllegalArgumentException }
      */
     @!APILevel[
         22,

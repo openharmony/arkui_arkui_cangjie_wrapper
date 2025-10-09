@@ -20,11 +20,23 @@ import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 
+/**
+ * Defines Shape Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
+    /**
+    * Viewport of shape
+    *
+    * @params { ?Length } x
+    * @params { ?Length } y
+    * @params { ?Length } width
+    * @params { ?Length } height
+    * @returns { ShapeAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -36,6 +48,14 @@ sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
         height!: ?Length
     ): ShapeAttribute
 
+    /**
+    * Called when shape mesh.
+    *
+    * @params { ?Array<Float64> } value
+    * @params { ?UInt32 } column
+    * @params { ?UInt32 } row
+    * @returns { ShapeAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

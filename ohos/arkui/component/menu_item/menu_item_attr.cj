@@ -20,30 +20,60 @@ import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 
+/**
+ * Defines MenuItem Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
 
+    /**
+     * Setting whether menuItem is selected.
+     *
+     * @params { ?Bool } value
+     * @returns { MenuItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selected(value: ?Bool): MenuItemAttribute
 
+    /**
+     * Whether the relevant check icon is displayed when a menu item is selected.
+     *
+     * @params { ?Bool } value
+     * @returns { MenuItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectIcon(value: ?Bool): MenuItemAttribute
 
+    /**
+     * Whether the relevant check icon is displayed when a menu item is selected.
+     *
+     * @params { ?ResourceStr } value
+     * @returns { MenuItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectIcon(value: ?ResourceStr): MenuItemAttribute
 
+    /**
+     * Sets the content font style.
+     *
+     * @params { ?Length } size
+     * @params { ?FontWeight } weight
+     * @params { ?ResourceStr } family
+     * @params { ?FontStyle } style   
+     * @returns { MenuItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -55,12 +85,27 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
         style!: ?FontStyle
     ): MenuItemAttribute
 
+    /**
+     * Sets the font color of content text.
+     *
+     * @params { ?ResourceColor } value 
+     * @returns { MenuItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func contentFontColor(value: ?ResourceColor): MenuItemAttribute
 
+    /**
+     * Sets the label info font style.
+     *
+     * @params { ?Length } size
+     * @params { ?FontWeight } weight
+     * @params { ?ResourceStr } family
+     * @params { ?FontStyle } style   
+     * @returns { MenuItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -72,12 +117,24 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
         style!: ?FontStyle
     ): MenuItemAttribute
 
+    /**
+     * Sets the font color of label info text.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { MenuItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func labelFontColor(value: ?ResourceColor): MenuItemAttribute
 
+    /**
+     * Triggers a callback when a menu item is selected or unchecked.
+     *
+     * @params { ?(Bool) -> Unit } callback
+     * @returns { MenuItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

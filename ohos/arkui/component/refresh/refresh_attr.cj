@@ -19,17 +19,32 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Refresh Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RefreshAttribute <: CommonMethod<RefreshAttribute> {
+    /**
+     * Called when the refresh state changes.
+     *
+     * @params { ?(RefreshStatus) -> Unit } callback
+     * @returns { RefreshAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onStateChange(callback: ?(RefreshStatus) -> Unit): RefreshAttribute
 
+    /**
+     * Called when the refresh state is entered.
+     *
+     * @params { ?() -> Unit } callback
+     * @returns { RefreshAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

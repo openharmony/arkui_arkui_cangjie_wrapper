@@ -20,71 +20,140 @@ import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 
+/**
+ * Defines SideBarContainer Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttribute> {
+    /**
+     * Callback showControlButton function when setting the status of sidebar
+     *
+     * @params { ?Bool } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func showSideBar(value: ?Bool): SideBarContainerAttribute
 
+    /**
+     * Callback controlButton function when setting the style of button
+     *
+     * @params { ?ButtonStyle } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func controlButton(value: ?ButtonStyle): SideBarContainerAttribute
 
+    /**
+     * Callback showControlButton function when setting the status of button
+     *
+     * @params { ?Bool } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func showControlButton(value: ?Bool): SideBarContainerAttribute
 
+    /**
+     * Trigger callback when sidebar style of showing change finished.
+     *
+     * @params { ?(Bool) -> Unit } callback
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(Bool) -> Unit): SideBarContainerAttribute
 
+    /**
+     * Sets the length of sidebar.
+     *
+     * @params { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sideBarWidth(value: ?Length): SideBarContainerAttribute
 
+    /**
+     * Sets the min length of sidebar.
+     *
+     * @params { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func minSideBarWidth(value: ?Length): SideBarContainerAttribute
 
+    /**
+     * Sets the max length of sidebar.
+     *
+     * @params { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func maxSideBarWidth(value: ?Length): SideBarContainerAttribute
 
+    /**
+     * Sets whether to automatically hide when drag sidebar width is less than the minimum width.
+     *
+     * @params { ?Bool } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func autoHide(value: ?Bool): SideBarContainerAttribute
 
+    /**
+     * Called when determining the location of the sidebar.
+     *
+     * @params { ?SideBarPosition } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sideBarPosition(value: ?SideBarPosition): SideBarContainerAttribute
 
+    /**
+     * Set divider style for sideBarContainer
+     *
+     * @params { ?DividerStyle } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func divider(value: ?DividerStyle): SideBarContainerAttribute
 
+    /**
+     * Sets the min length of content.
+     * 
+     * @params { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

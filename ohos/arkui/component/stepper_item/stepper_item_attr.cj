@@ -19,23 +19,44 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines StepperItem Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
+    /**
+     * The description text for the fallback text button at the bottom of the step navigator.
+     *
+     * @params { ?String } value
+     * @returns { StepperItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func prevLabel(value: ?String): StepperItemAttribute
 
+    /**
+     * The description text for the next step text button at the bottom of the step navigator.
+     *
+     * @params { ?String } value
+     * @returns { StepperItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func nextLabel(value: ?String): StepperItemAttribute
 
+    /**
+     * Sets the display state of the Step Navigator nextLabel.
+     *
+     * @params { ?ItemState } status
+     * @returns { StepperItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -19,35 +19,68 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Stepper Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
+    /**
+     * Callback when the finish label is clicked.
+     *
+     * @params { ?() -> Unit } callback
+     * @returns { StepperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onFinish(callback: ?() -> Unit): StepperAttribute
 
+    /**
+     * Callback when the skip label is clicked.
+     *
+     * @params { ?() -> Unit } callback
+     * @returns { StepperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onSkip(callback: ?() -> Unit): StepperAttribute
 
+     /**
+     * Callback when the change label is clicked.
+     *
+     * @params { ?(UInt32, UInt32) -> Unit } callback
+     * @returns { StepperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(UInt32, UInt32) -> Unit): StepperAttribute
 
+     /**
+     * Callback when the next label is clicked.
+     *
+     * @params { ?(UInt32, UInt32) -> Unit } callback
+     * @returns { StepperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onNext(callback: ?(UInt32, UInt32) -> Unit): StepperAttribute
 
+     /**
+     * Callback when the previous label is clicked.
+     *
+     * @params { ?(UInt32, UInt32) -> Unit } callback
+     * @returns { StepperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

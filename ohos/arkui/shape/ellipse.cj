@@ -22,11 +22,20 @@ import ohos.labels.APILevel
 
 foreign func FfiOHOSAceFrameworkEllipseInsCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Int64
 
+/**
+ * Defines a ellipse drawing class.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EllipseShape <: BaseShape {
+    /**
+     * Create a ellipse drawing class instance.
+     *
+     * @params { ?Length } width 
+     * @params { ?Length } height
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

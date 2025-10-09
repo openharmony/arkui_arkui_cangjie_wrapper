@@ -19,11 +19,21 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines ListItemGroup Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ListItemGroupAttribute <: CommonMethod<ListItemGroupAttribute> {
+
+    /**
+     * Called when the ListItemGroup split line style is set.
+     *
+     * @params { Option<ListDividerOptions> } value
+     * @returns { ListItemGroupAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

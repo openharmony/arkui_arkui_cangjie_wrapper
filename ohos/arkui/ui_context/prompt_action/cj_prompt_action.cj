@@ -188,8 +188,15 @@ foreign {
     func free(cptr: CPointer<Unit>): Unit
 }
 
+/**
+ * The callBack of a showDialog.
+ */
 public type ShowDialogCallBack = AsyncCallback<Int32>
 
+
+/**
+ * The callBack of a showActionMenu.
+ */
 public type ShowActionMenuCallBack = AsyncCallback<Int32>
 
 /**

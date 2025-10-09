@@ -27,11 +27,19 @@ foreign {
         commands: CString): Int64
 }
 
+/**
+ * Defines a path drawing class.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PathShape <: BaseShape {
+    /**
+     * PathShape constructor.
+     *
+     * @params { ?ResourceStr } commands 
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -48,6 +56,13 @@ public class PathShape <: BaseShape {
             })
     }
 
+    /**
+     * PathShape constructor.
+     *
+     * @params { ?Length } width 
+     * @params { ?Length } height 
+     * @params { ?ResourceStr } commands 
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

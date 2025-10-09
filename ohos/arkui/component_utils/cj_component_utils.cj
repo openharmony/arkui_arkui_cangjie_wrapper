@@ -566,7 +566,7 @@ public class ComponentUtils {
     /**
      * Provide the ability to obtain the coordinates and size of component drawing areas.
      *
-     * @params { string } id - component id.
+     * @params { String } id - component id.
      * @returns { ComponentInfo }
      */
     @!APILevel[

@@ -79,6 +79,11 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
     }
 }
 
+/**
+ * Recycle
+ *
+ * non-public API
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
