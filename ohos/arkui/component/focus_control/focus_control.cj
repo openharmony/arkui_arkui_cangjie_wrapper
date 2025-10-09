@@ -36,7 +36,7 @@ public class FocusControl {
     /**
      * Request focus to the specific component by param: 'id/key'.
      *
-     * @params { String } value
+     * @params { ?String } value
      * @returns { Bool }
      */
     @!APILevel[

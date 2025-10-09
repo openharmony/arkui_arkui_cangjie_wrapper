@@ -19,11 +19,24 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines the Menu Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
+    /**
+     * Sets the font style.
+     * Family and style are not supported currently and will be fixed in future.
+     *
+     * @params { ?Length } size
+     * @params { ?FontWeight } weight
+     * @params { ?ResourceStr } family
+     * @params { ?FontStyle } style
+     * @returns { MenuAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -35,18 +48,38 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
         style!: ?FontStyle
     ): MenuAttribute
 
+    /**
+     * Sets the Menu font color.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { MenuAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(value: ?ResourceColor): MenuAttribute
 
+    /**
+     * Sets the radius of the corner around the menu.
+     * When the radius is less than the menu width, the default border radius is used.
+     *
+     * @params { ?Length } value
+     * @returns { MenuAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radius(value: ?Length): MenuAttribute
 
+    /**
+     * Sets the radius of the corner around the menu.
+     * When the radius is less than the menu width, the default border radius is used.
+     *
+     * @params { ?BorderRadiuses } value
+     * @returns { MenuAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

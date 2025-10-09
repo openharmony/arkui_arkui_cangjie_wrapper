@@ -44,7 +44,7 @@ public class MainThreadContext <: ThreadContext {
     static let instance_: MainThreadContext = MainThreadContext()
 
     /**
-     *
+     * MainThreadContext end func.
      */
     @!APILevel[
         22,
@@ -53,6 +53,7 @@ public class MainThreadContext <: ThreadContext {
     public func end(): Unit {}
 
     /**
+     * MainThreadContext hasEnded func.
      *
      * @returns { Bool }
      */
@@ -65,6 +66,9 @@ public class MainThreadContext <: ThreadContext {
     }
 }
 
+/**
+ * UIThread get MainThreadContext instance.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"

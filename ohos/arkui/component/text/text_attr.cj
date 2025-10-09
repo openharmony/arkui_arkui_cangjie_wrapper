@@ -20,83 +20,177 @@ import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 
+/**
+ * Provides a class for writing texts.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface TextAttribute <: CommonMethod<TextAttribute> {
+    /**
+     * Set font line spacing.
+     *
+     * @params { ?Length } value - Default value is 0.
+     * @returns { TextAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func lineSpacing(value: ?Length): TextAttribute
 
+    /**
+     * Called when the font size is set.
+     *
+     * @params { ?Length } value - Default value is 16.fp.
+     * @returns { TextAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontSize(value: ?Length): TextAttribute
 
+    /**
+     * Called when the maximum font size of the font is set.
+     *
+     * @params { ?Length } value
+     * @returns { TextAttribute }
+     * @throws { IllegalArgumentException }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func maxFontSize(value: ?Length): TextAttribute
 
+    /**
+     * Called when the minimum font size of the font is set.
+     *
+     * @params { ?Length } value
+     * @returns { TextAttribute }
+     * @throws { IllegalArgumentException }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func minFontSize(value: ?Length): TextAttribute
 
+    /**
+     * Called when the font color is set.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { TextAttribute }
+     * @throws { IllegalArgumentException }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(value: ?ResourceColor): TextAttribute
 
+    /**
+     * Called when the font style of a font is set.
+     *
+     * @params { ?FontStyle } value - Default value is FontStyle.Normal.
+     * @returns { TextAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontStyle(value: ?FontStyle): TextAttribute
 
+    /**
+     * Called when the font weight is set.
+     *
+     * @params { ?FontWeight } value
+     * @returns { TextAttribute }
+     * @throws { IllegalArgumentException }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontWeight(value: ?FontWeight): TextAttribute
 
+    /**
+     * Called when the font list of text is set.
+     *
+     * @params { ?ResourceStr } value
+     * @returns { TextAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontFamily(value: ?ResourceStr): TextAttribute
 
+    /**
+     * Called when the horizontal center mode of the font is set.
+     *
+     * @params { ?TextAlign } value - Default value is TextAlign.Start.
+     * @returns { TextAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textAlign(value: ?TextAlign): TextAttribute
 
+    /**
+     * Called when the overflow mode of the font is set.
+     *
+     * @params { ?TextOverflow } options - Text overflow options.
+     * @returns { TextAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textOverflow(value: ?TextOverflow): TextAttribute
 
+    /**
+     * Called when the maximum number of lines of text is set.
+     * <br>By default, text is automatically folded.
+     * <br>If this attribute is specified, the text will not exceed the specified number of lines.
+     * <br>If there is extra text, you can use textOverflow to specify how it is displayed.
+     *
+     * @params { ?Int32 } value
+     * @returns { TextAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func maxLines(value: ?Int32): TextAttribute
 
+    /**
+     * Called when the vertical center mode of the font is set.
+     * <br>If the value is less than or equal to 0, the line height is not limited and the font size is adaptive.
+     * <br>If the value is of the number type, the unit fp is used.
+     * <br>For the string type, numeric string values with optional units.
+     *
+     * @params { ?Length } value
+     * @returns { TextAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func lineHeight(value: ?Length): TextAttribute
 
+    /**
+     * Called when the text decoration of the text is set.
+     *
+     * @params { ?TextDecorationType } decorationType - The type value of the decoration property object.
+     * @params { ?ResourceColor } color - The color value of the decoration property object.
+     * @params { ?TextDecorationStyle } decorationStyle - The style value of the decoration property object.
+     * @returns { TextAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -104,12 +198,24 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor,
         decorationStyle!: ?TextDecorationStyle): TextAttribute
 
+    /**
+     * Called when the baseline offset is set.
+     *
+     * @params { ?Length } value
+     * @returns { TextAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func baselineOffset(value: ?Length): TextAttribute
 
+    /**
+     * Called when the type of letter in the text font is set.
+     *
+     * @params { ?TextCase } value - Default value is TextCase.Normal.
+     * @returns { TextAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -323,6 +323,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * Sets whether to use vertical tabs.
      *
      * @params { ?Bool } value - Whether to use vertical tabs. Default value is false.
+     * @returns { This }
      */
     @!APILevel[
         22,

@@ -352,7 +352,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      * This API does not work with the fill attribute or coloring strategy.
      *
      * @params { ?Array<ShadowOptions> } value - The shadow options.
-     * @returns { TextTimerAttribute }
+     * @returns { This }
      */
     @!APILevel[
         22,
@@ -377,7 +377,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      * This API does not work with the fill attribute or coloring strategy.
      *
      * @params { ?ShadowOptions } value - The shadow options.
-     * @returns { TextTimerAttribute }
+     * @returns { This }
      */
     @!APILevel[
         22,

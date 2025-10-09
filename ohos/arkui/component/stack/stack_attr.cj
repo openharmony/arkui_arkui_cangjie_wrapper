@@ -18,11 +18,20 @@ package ohos.arkui.component.stack
 import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 
+/**
+ * Defines Stack Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface StackAttribute <: CommonMethod<StackAttribute> {
+    /**
+    * Called when the alignment of items in the container is set.
+    *
+    * @params { ?Alignment } value
+    * @returns { StackAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

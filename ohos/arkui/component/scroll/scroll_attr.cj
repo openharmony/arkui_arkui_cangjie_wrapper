@@ -20,41 +20,94 @@ import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 
+/**
+ * Defines scroll component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
+    /**
+     * Sets the scrolling direction.
+     *
+     * @params { ?ScrollDirection } scrollDirection
+     * @returns { ScrollAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func scrollable(scrollDirection: ?ScrollDirection): ScrollAttribute
 
+    /**
+     * Triggered before scrolling.
+     * 1. This event is triggered when scrolling is started by the Scroll component or other input settings,such as keyboard and mouse operations;
+     * 2. This event is triggered when the controller API is called.
+     * 3. This event supports the out-of-bounds bounce effect.
+     *
+     * @params { ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult } handler
+     * @returns { ScrollAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onWillScroll(handler: ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult): ScrollAttribute
 
+    /**
+     * Triggered before scrolling.
+     * 1. This event is triggered when scrolling is started by the Scroll component or other input settings,such as keyboard and mouse operations;
+     * 2. This event is triggered when the controller API is called.
+     * 3. This event supports the out-of-bounds bounce effect.
+     *
+     * @params { ?(Float64, Float64, ScrollState, ScrollSource) -> Unit } handler
+     * @returns { ScrollAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onWillScroll(handler: ?(Float64, Float64, ScrollState, ScrollSource) -> Unit): ScrollAttribute
 
+    /**
+     * Triggered when the Scroll component scrolls.
+     * 1. This event is triggered when scrolling is started by the Scroll component or other input settings,such as keyboard and mouse operations;
+     * 2. This event is triggered when the controller API is called;
+     * 3. This event supports the out-of-bounds bounce effect.
+     *
+     * @params { ?ScrollOnScrollCallback } callback
+     * @returns { ScrollAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDidScroll(callback: ?ScrollOnScrollCallback): ScrollAttribute
 
+    /**
+     * Triggered when each frame scrolling starts.
+     * Anonymous Object Rectification.
+     *
+     * @params { ?OnScrollFrameBeginCallback } event
+     * @returns { ScrollAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onScrollFrameBegin(event: ?OnScrollFrameBeginCallback): ScrollAttribute
 
+    /**
+     * Triggered when scrolling reaches the edge.
+     * Anonymous Object Rectification.
+     * 1. This event is triggered when scrolling reaches the edge after being started by the Scroll component or other input settings, such as keyboard and mouse operations.
+     * 2. This event is triggered when the controller API is called.
+     * 3. This event supports the out-of-bounds bounce effect.
+     *
+     * @params { ?OnScrollEdgeCallback } event
+     * @returns { ScrollAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

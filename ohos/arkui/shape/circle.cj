@@ -22,11 +22,20 @@ import ohos.labels.APILevel
 
 foreign func FfiOHOSAceFrameworkCircleInsCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Int64
 
+/**
+ * Defines a circle drawing class.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CircleShape <: BaseShape {
+    /**
+     * Create a circle drawing class instance.
+     *
+     * @params { ?Length } width 
+     * @params { ?Length } height
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

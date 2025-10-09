@@ -74,17 +74,26 @@ struct CJNavOptions {
     ) {}
 }
 
+/**
+ * Indicates the information of the popped page.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PopInfo {
+    /**
+     * The info of the popped page.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let info: NavPathInfo
 
+    /**
+     * The result of the popped page.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -343,7 +352,8 @@ public class NavigationOptions {
     ]
     public var animated: ?Bool
     /**
-     * Constructor of NavigationOptions
+     * Constructor of NavigationOptions.
+     *
      * @params { ?LaunchMode } launchMode
      * @params { ?Bool } animated
      */
@@ -663,7 +673,7 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
         this
     }
     /**
-     * Navigation title
+     * Navigation title.
      *
      * @params { ?ResourceStr } value - Navigation title.
      * @params { ?NavigationTitleOptions } options - Indicates the options of titlebar.
@@ -689,7 +699,7 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     }
 
     /**
-     * Navigation title
+     * Navigation title.
      *
      * @params { ?CustomBuilder } value - Navigation title.
      * @params { ?NavigationTitleOptions } options - Indicates the options of titlebar.

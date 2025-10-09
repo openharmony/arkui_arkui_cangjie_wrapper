@@ -19,11 +19,20 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines RowSplit Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RowSplitAttribute <: CommonMethod<RowSplitAttribute> {
+    /**
+    * Called when judging whether the split line can be dragged.
+    *
+    * @params { ?Bool } value
+    * @returns { This }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

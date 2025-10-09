@@ -19,18 +19,36 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines ListItem Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ListItemAttribute <: CommonMethod<ListItemAttribute> {
 
+    /**
+     * Called when judging whether it is selectable.
+     *
+     * @params { ?Bool } value
+     * @returns { ListItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectable(value: ?Bool): ListItemAttribute
 
+    /**
+     * Sets the action item that appears when the list item slides in the cross axis direction of the list.
+     *
+     * @params { ?CustomBuilder } start
+     * @params { ?CustomBuilder } end
+     * @params { ?SwipeEdgeEffect } edgeEffect
+     * @params { ?(Float64) -> Unit } onOffsetChange
+     * @returns { ListItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -42,6 +60,12 @@ sealed interface ListItemAttribute <: CommonMethod<ListItemAttribute> {
         onOffsetChange!: ?(Float64) -> Unit
     ): ListItemAttribute
 
+    /**
+     * Called when the listItem is selected.
+     *
+     * @params { ?(Bool) -> Unit } event
+     * @returns { ListItemAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

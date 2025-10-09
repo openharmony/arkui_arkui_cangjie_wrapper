@@ -19,17 +19,34 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * RelativeContainer
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RelativeContainerAttribute <: CommonMethod<RelativeContainerAttribute> {
+    /**
+    * Specifies guideLines of relativeContainer
+    *
+    * @params { ?Array<GuideLineStyle> } value
+    * @returns { RelativeContainerAttribute }
+    * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func guideLine(value: ?Array<GuideLineStyle>): RelativeContainerAttribute
 
+    /**
+    * Specifies barriers of relativeContainer
+    *
+    * @params { ?Array<BarrierStyle> } value
+    * @returns { RelativeContainerAttribute }
+    * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

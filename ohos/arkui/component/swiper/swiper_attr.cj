@@ -19,107 +19,251 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Swiper Component.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
+    /**
+     * Sets whether to enable automatic playback for child component switching.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>If loop is set to false, the playback stops when the last page is reached.
+     * <br>The playback continues when the page is not the last page after a swipe gesture.
+     * <br>If the Swiper component becomes invisible, the playback stops.
+     * </p>
+     *
+     * @params { ?Bool } value - Whether to enable automatic playback for child component switching.
+     * Default value is false.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func autoPlay(value: ?Bool): SwiperAttribute
 
+    /**
+     * Sets the duration of the animation for child component switching.
+     *
+     * @params { ?UInt32 } value - Duration of the autoplay for child component switching. Default value is 400.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func duration(value: ?UInt32): SwiperAttribute
 
+    /**
+     * Sets the index of the child component currently displayed in the container.
+     *
+     * @params { ?UInt32 } value - Index of the child component currently displayed in the container. Default value is 0.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func index(value: ?UInt32): SwiperAttribute
 
+    /**
+     * Sets the interval for automatic playback.
+     *
+     * @params { ?UInt32 } value - Interval for automatic playback. Default value is 3000, the unit is ms.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func interval(value: ?UInt32): SwiperAttribute
 
+    /**
+     * Sets whether to enable loop playback.
+     *
+     * @params { ?Bool } value - Whether to enable loop playback. Default value is true.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func loop(value: ?Bool): SwiperAttribute
 
+    /**
+     * Sets whether vertical swiping is used.
+     *
+     * @params { ?Bool } value - Whether vertical swiping is used. Default value is false.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func vertical(value: ?Bool): SwiperAttribute
 
+    /**
+     * Sets the style of the navigation indicator.
+     *
+     * @params { ?Bool } value - Style of the navigation indicator.
+     * Default value is true, default style is DotIndicator.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func indicator(indicator: ?Bool): SwiperAttribute
 
+    /**
+     * Sets the style of the navigation indicator.
+     *
+     * @params { ?DotIndicator } value - Style of the navigation indicator.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func indicator(indicator: ?DotIndicator): SwiperAttribute
 
+    /**
+     * Sets the style of the navigation indicator.
+     *
+     * @params { ?DigitIndicator } value - Style of the navigation indicator.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func indicator(indicator: ?DigitIndicator): SwiperAttribute
 
+    /**
+     * Sets the space between child components.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>If the type is Length, the default unit is vp.
+     * if the unit is not specified, for example, '10', the default unit vp is used.
+     * </p>
+     *
+     * @params { ?Length } value - Space between child components. Default value is 0.
+     * Minimum value is 0. If a value less than 0 is set, the default value is used.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func itemSpace(value: ?Length): SwiperAttribute
 
+    /**
+     * Sets the mode in which elements are displayed along the main axis.
+     * This API takes effect only when displayCount is not set.
+     *
+     * @params { ?SwiperDisplayMode } value - Mode in which elements are displayed along the main axis.
+     * Default value is SwiperDisplayMode.Stretch.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func displayMode(value: ?SwiperDisplayMode): SwiperAttribute
 
+    /**
+     * Sets the effect used when the component is at one of the edges.
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>This attribute takes effect when loop is set to false.
+     * </p>
+     *
+     * @params { ?EdgeEffect } value - Effect used when the component is at one of the edges.
+     * Default value is EdgeEffect.Spring.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func effectMode(value: ?EdgeEffect): SwiperAttribute
 
+    /**
+     * Sets the number of elements to display per page.
+     *
+     * If swipeByGroup is set to true:
+     * 1. All sub-items are grouped from index 0.
+     * 2. The number of sub-items in each group is the value of displayCount.
+     * 3. If the number of sub-items in the last group is less than displayCount, placeholder items are added to supplement the number of last group.
+     * 4. Placeholder items do not display any content and are only used as placeholders.
+     * 5. When turning pages, turn pages by group.
+     *
+     * @params { ?Int32 } value - Number of elements to display per page. Default value is 1.
+     * @params { ?Bool } swipeByGroup - Whether to turn pages by group. Default value is false.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func displayCount(value: ?Int32, swipeByGroup!: ?Bool): SwiperAttribute
 
+    /**
+     * Sets the number of child components to be preloaded(cached).
+     *
+     * <p><strong>NOTE</strong>:
+     * <br>Which are needed for the specific number of pages immediately before and after the current page.
+     * <br>If swipeByGroup in displayCount is set to true, child components are cached by group.
+     * </p>
+     *
+     * @params { ?Int32 } value - Number of child components to be preloaded (cached). Default value is 1.
+     * Minimum value is 0. If a value less than 0 is set, the default value is used.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func cachedCount(value: ?Int32): SwiperAttribute
 
+    /**
+     * Sets whether to disable the swipe feature.
+     *
+     * @params { ?Bool } value - Whether to disable the swipe feature. Default value is false.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func disableSwipe(value: ?Bool): SwiperAttribute
 
+    /**
+     * Sets the animation curve.
+     *
+     * @params { ?Curve } value - Animation curve.
+     * Default value is Curve.Linear.
+     * @returns { SwiperAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func curve(value: ?Curve): SwiperAttribute
 
+    /**
+     * Triggered when the index of the currently displayed child component changes.
+     *
+     * @params { ?(Int32) -> Unit } event
+     * @returns { SwiperAttribute }
+     * @throws { BusinessException } 100001 - Internal error.
+     * @throws { BusinessException } 190002 - The callback function is invalid.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

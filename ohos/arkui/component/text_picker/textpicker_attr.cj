@@ -19,23 +19,51 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Creates a text picker based on the selection range specified by range.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
+    /**
+     * Sets the height of each item in the picker.
+     *
+     * @params { ?Length } value - Height of each item in the picker.
+     * <br>For the number type, the value range is [0, +∞).
+     * <br>For the string type, only numeric string values, for example, "56", are supported.
+     * @returns { TextPickerAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func defaultPickerItemHeight(value: ?Length): TextPickerAttribute
 
+    /**
+     * Sets whether scrolling is loopable.
+     *
+     * @params { ?Bool } value - Whether scrolling is loopable. true: loopable; false: not loopable.
+     * @returns { TextPickerAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func canLoop(value: ?Bool): TextPickerAttribute
 
+    /**
+     * Triggered when an item in the picker is selected.
+     * When the picker contains text only or both text and imagery,
+     * value indicates the text of the selected item.
+     * When the picker contains imagery only, value is empty.
+     *
+     * @params { ?OnTextPickerChangeCallback } callback - the callback of onChange.
+     * @returns { TextPickerAttribute }
+     * @throws { BusinessException } 190002 - The callback function is invalid.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

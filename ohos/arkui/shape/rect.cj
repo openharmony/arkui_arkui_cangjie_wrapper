@@ -30,11 +30,20 @@ foreign {
     func FfiOHOSAceFrameworkRectSetInsRadius(shapeId: Int64, radius: Float64, radiusUnit: Int32): Unit
 }
 
+/**
+ * Defines a rect drawing class.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RectShape <: BaseShape {
+    /**
+     * Create a rect drawing class instance.
+     *
+     * @params { ?Length } width 
+     * @params { ?Length } height
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -53,6 +62,12 @@ public class RectShape <: BaseShape {
             })
     }
 
+    /**
+     * Sets the width of the corner radius for RectShape.
+     *
+     * @param { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -65,6 +80,12 @@ public class RectShape <: BaseShape {
         this
     }
 
+    /**
+     * Sets the height of the corner radius for RectShape.
+     *
+     * @param { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -77,6 +98,12 @@ public class RectShape <: BaseShape {
         this
     }
 
+    /**
+     * Sets the corner radius for RectShape.
+     *
+     * @param { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

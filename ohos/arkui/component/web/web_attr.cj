@@ -21,59 +21,118 @@ import ohos.base.*
 import ohos.resource.*
 import ohos.web.webview.*
 
+/**
+ * Defines Web Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface WebAttribute <: CommonMethod<WebAttribute> {
+    /**
+    * Sets whether to enable access to the file system in the application.
+    *
+    * @params { ?Bool } fileAccess
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fileAccess(fileAccess: ?Bool): WebAttribute
 
+    /**
+    * Sets whether to enable the DOM Storage API. By default, this feature is disabled.
+    *
+    * @params { ?Bool } domStorageAccess
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func domStorageAccess(domStorageAccess: ?Bool): WebAttribute
 
+    /**
+    * Sets whether to enable automatic image loading.
+    *
+    * @params { ?Bool } imageAccess
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func imageAccess(imageAccess: ?Bool): WebAttribute
 
+    /**
+    * Sets whether to enable access to online images through HTTP and HTTPS.
+    *
+    * @params { ?Bool } onlineImageAccess
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onlineImageAccess(onlineImageAccess: ?Bool): WebAttribute
 
+    /**
+    *  Sets the behavior when a secure origin attempts to load a resource from an insecure origin.
+    *  The default is MixedMode.None, meaning not allow a secure origin to load content from an insecure origin.
+    *
+    * @params { ?MixedMode } mixedMode
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func mixedMode(mixedMode: ?MixedMode): WebAttribute
 
+    /**
+    * Sets whether the Web supports zooming using gestures.
+    *
+    * @params { ?Bool } zoomAccess
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func zoomAccess(zoomAccess: ?Bool): WebAttribute
 
+    /**
+    * Set whether to enable geolocation access. By default, this feature is enabled.
+    * For details, see Managing Location Permissions.
+    *
+    * @params { ?Bool } geolocationAccess
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func geolocationAccess(geolocationAccess: ?Bool): WebAttribute
 
+    /**
+    * Set whether paint vertical scroll bar, including the system default scrollbar and user-defined scrollbar.
+    *
+    * @params { ?Bool } verticalScrollBar
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func verticalScrollBarAccess(verticalScrollBar: ?Bool): WebAttribute
 
+    /**
+    * Called to setting the nested scroll options.
+    *
+    * @params { ?NestedScrollMode } scrollForward scrollBackward
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -83,24 +142,52 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
         scrollBackward!: ?NestedScrollMode
     ): WebAttribute
 
+    /**
+    * Triggered when the resources loading is intercepted.
+    *
+    * @params { ?Callback<OnLoadInterceptEvent, Bool> } callback
+    * @returns { WebAttribute }
+    * @throws { BusinessException } 190002 - The callback function is invalid.
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onLoadIntercept(callback: ?Callback<OnLoadInterceptEvent, Bool>): WebAttribute
 
+    /**
+    * Called when the web page starts to be loaded.
+    *
+    * @params { ?Callback<OnPageBeginEvent, Unit> } callback
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPageBegin(callback: ?Callback<OnPageBeginEvent, Unit>): WebAttribute
 
+    /**
+    * Triggered at the end of web page loading.
+    *
+    * @params { ?Callback<OnPageEndEvent, Unit> } callback
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPageEnd(callback: ?Callback<OnPageEndEvent, Unit>): WebAttribute
 
+    /**
+    * Registers the supplied ArkTS object in javaScriptProxy into this Web component.
+    *
+    * @params { ?Array<(String) -> String> } funcList
+    * @params { ?String } name
+    * @params { ?Array<String> } methodList
+    * @params { ?WebviewController } controller
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -108,12 +195,28 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     func javaScriptProxy(funcList!: ?Array<(String) -> String>, name!: ?String, methodList!: ?Array<String>,
         controller!: ?WebviewController): WebAttribute
 
+    /**
+    * Sets the web dark mode. By default, web dark mode is disabled. When it is enabled,
+    * the Web component enables the dark theme defined for web pages
+    * if the theme has been defined in prefers-color-scheme of a media query,
+    * and remains unchanged otherwise. To enable the forcible dark mode, use this API with forceDarkAccess.
+    *
+    * @params { ?WebDarkMode } mode
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func darkMode(mode: ?WebDarkMode): WebAttribute
 
+    /**
+    * Sets whether to enable forcible dark mode for the web page.
+    * This API is applicable only when dark mode is enabled in {@link darkMode}.
+    *
+    * @params { ?Bool } access
+    * @returns { WebAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

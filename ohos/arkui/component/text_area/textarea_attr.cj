@@ -21,17 +21,37 @@ import ohos.labels.APILevel
 import ohos.base.*
 import ohos.resource.*
 
+/**
+ * Defines the options of TextArea.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
+    /**
+     * Called when the color of the insertion cursor is set.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func caretColor(value: ?ResourceColor): TextAreaAttribute
 
+    /**
+     * Called when the font property of the placeholder is set.
+     * The 'HarmonyOS Sans' font and registered custom fonts are supported.
+     *
+     * @params { ?Length } size
+     * @params { ?FontWeight } weight
+     * @params { ?String } family
+     * @params { ?FontStyle } style
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -39,96 +59,205 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
     func placeholderFont(size!: ?Length, weight!: ?FontWeight, family!: ?String,
         style!: ?FontStyle): TextAreaAttribute
 
+    /**
+     * Called when the text align is set.
+     * <br>To set vertical alignment for the text, use the align attribute.
+     * <br>The align attribute alone does not control the horizontal position of the text.
+     * <br>In other words, Alignment.TopStart, Alignment.Top, and Alignment.TopEnd produce the same effect,
+     * top-aligning the text; Alignment.Start, Alignment.Center, and Alignment.End produce the same effect,
+     * centered-aligning the text vertically; Alignment.BottomStart, Alignment.Bottom,
+     * and Alignment.BottomEnd produce the same effect, bottom-aligning the text.
+     *
+     * @params { ?TextAlign } value - Default value is TextAlign.Start.
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textAlign(value: ?TextAlign): TextAreaAttribute
 
+    /**
+     * Called when the font size is set.
+     *
+     * @params { ?Length } value - Default value is 16.fp. If fontSize is of the number type, the unit fp is used. This parameter cannot be set in percentage.
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontSize(value: ?Length): TextAreaAttribute
 
+    /**
+     * Called when the font color is set.
+     * @params { ?ResourceColor } value
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(value: ?ResourceColor): TextAreaAttribute
 
+    /**
+     * Called when the font weight is set.
+     *
+     * @params { ?FontWeight } value - Default value is FontWeight.Normal.
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontWeight(value: ?FontWeight): TextAreaAttribute
 
+    /**
+     * Called when the font style of a font is set.
+     *
+     * @params { ?FontStyle } value - Default value is FontStyle.Normal.
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontStyle(value: ?FontStyle): TextAreaAttribute
 
+    /**
+     * Called when the font list of text is set.
+     * <br>Default font: 'HarmonyOS Sans'
+     * <br>The 'HarmonyOS Sans' font and registered custom fonts are supported for applications.
+     * <br>Only the 'HarmonyOS Sans' font is supported for widgets.
+     *
+     * @params { ?ResourceStr } value - Default value is 'HarmonyOS Sans'.
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontFamily(value: ?ResourceStr): TextAreaAttribute
 
+    /**
+     * Called when the type of soft keyboard input button is set.
+     *
+     * @params { ?EnterKeyType } value - Default value is Default value is EnterKeyType.NewLine.
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func enterKeyType(value: ?EnterKeyType): TextAreaAttribute
 
+    /**
+     * Called when the inputFilter of text is set.
+     *
+     * @params { ?ResourceStr } value
+     * @params { ?(String) -> Unit } error
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func inputFilter(value!: ?ResourceStr, error!: ?(String) -> Unit): TextAreaAttribute
 
+    /**
+     * Define the max length content of the text area.
+     * <br>By default, there is no maximum number of characters.
+     * <br>When the maximum number of characters is reached,
+     * no more characters can be entered, and the border turns red.
+     *
+     * @params { ?UInt32 } value
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func maxLength(value: ?UInt32): TextAreaAttribute
 
+    /**
+     * Called when the color of the placeholder is set.
+     *
+     * @params { ?ResourceColor } value - Default value follows the theme.
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func placeholderColor(value: ?ResourceColor): TextAreaAttribute
 
+    /**
+     * Called when submitted.
+     *
+     * @params { ?(EnterKeyType) -> Unit } callback - If it is EnterKeyType.NEW_LINE and the text box is in inline input style, onSubmit is not triggered.
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onSubmit(callback: ?(EnterKeyType) -> Unit): TextAreaAttribute
 
+    /**
+     * Called when the input of the input box changes.
+     *
+     * @params { ?(String) -> Unit }  callback
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(String) -> Unit): TextAreaAttribute
 
+    /**
+     * Called when using the Clipboard menu.
+     *
+     * @params { ?(String) -> Unit } callback
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onCopy(callback: ?(String) -> Unit): TextAreaAttribute
 
+    /**
+     * Called when using the Clipboard menu.
+     *
+     * @params { ?(String) -> Unit } callback
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onCut(callback: ?(String) -> Unit): TextAreaAttribute
 
+    /**
+     * Called when using the Clipboard menu.
+     *
+     * @params { ?(String) -> Unit } callback - Executed when a paste operation is performed.
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPaste(callback: ?(String) -> Unit): TextAreaAttribute
 
+    /**
+     * Called when judging whether the text editing change finished.
+     * The text box is in the editing state when it has the caret placed in it, and is in the non-editing state otherwise.
+     *
+     * @params { ?(Bool) -> Unit} callback - Triggered when the text area status changes.
+     * @returns { TextAreaAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

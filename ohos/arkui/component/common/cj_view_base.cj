@@ -192,20 +192,12 @@ foreign {
  * Defines the CustomBuilder Type.
  *
  */
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 public type CustomBuilder = () -> Unit
 
 /**
  * Defines the finish callback type used in transition.
  *
  */
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 public type TransitionFinishCallback = (Bool) -> Unit
 
 @OverflowWrapping

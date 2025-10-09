@@ -19,17 +19,32 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Row Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RowAttribute <: CommonMethod<RowAttribute> {
+    /**
+    * Called when the vertical alignment is set.
+    *
+    * @params { ?VerticalAlign } value
+    * @returns { RowAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignItems(value: ?VerticalAlign): RowAttribute
 
+    /**
+    * Called when the horizontal alignment is set.
+    *
+    * @params { ?FlexAlign } value
+    * @returns { RowAttribute }
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

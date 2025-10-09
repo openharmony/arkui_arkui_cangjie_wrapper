@@ -21,11 +21,20 @@ import ohos.arkui.component.util.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Path Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface PathAttribute <: CommonShapeMethod<PathAttribute> {
+    /**
+     * Called when the command string drawn by the path is set.
+     *
+     * @params { ?ResourceStr } commands
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

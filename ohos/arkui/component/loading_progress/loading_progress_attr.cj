@@ -19,11 +19,20 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines LoadingProgress Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface LoadingProgressAttribute <: CommonMethod<LoadingProgressAttribute> {
+    /**
+     * Load the color of the progress bar.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { LoadingProgressAttribute }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

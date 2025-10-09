@@ -613,11 +613,11 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     }
 
     /**
-   * Called when the type of letter in the text font is set.
-   *
-   * @params { ?TextCase } value - Default value is TextCase.Normal.
-   * @returns { This }
-   */
+     * Called when the type of letter in the text font is set.
+     *
+     * @params { ?TextCase } value - Default value is TextCase.Normal.
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

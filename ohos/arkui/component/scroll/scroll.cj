@@ -471,14 +471,57 @@ public enum ContentClipMode {
     }
 }
 
+/**
+ * Called before scroll to allow developer to control real offset the Scrollable can scroll.
+ *
+ * @param { Float64 } scrollOffset - offset this frame will scroll, which may or may not be reached.
+ * @param { ScrollState } scrollState - current scroll state.
+ * @param { ScrollSource } scrollSource - source of current scroll.
+ * @returns { ScrollResult } the remain offset for the scrollable.
+ */
 public type OnWillScrollCallBack = (Float64, ScrollState, ScrollSource) -> ScrollResult
 
+/**
+ * On scroll callback using in scrollable onDidScroll.
+ *
+ * @param { Float64 } scrollOffset - offset this frame did scroll.
+ * @param { ScrollState } scrollState - current scroll state.
+ */
 public type OnScrollCallBack = (scrollOffset: Float64, scrollState: ScrollState) -> Unit
 
+/**
+ * Represents the callback triggered when the <em>Scroll</em> component scrolls.
+ * 
+ * <p><strong>NOTE</strong>
+ * <br>If the <em>onScrollFrameBegin</em> event and <em>scrollBy</em> method are used to implement nested scrolling,
+ * set the <em>edgeEffect</em> attribute of the scrollable child component to <em>None</em>. For example,
+ * if a <em>List</em> is nested in the <em>Scroll</em> component, <em>edgeEffect</em> of the <em>List</em> must be set to <em>EdgeEffect.None</em>.
+ * </p>
+ * 
+ * @param { Float64 } xOffset - Horizontal offset per frame during scrolling. A positive offset indicates scrolling to the left,
+ * and a negative offset indicates scrolling to the right.
+ * <br>Unit: vp
+ * @param { Float64 } yOffset - Vertical offset per frame during scrolling.
+ * A positive offset indicates scrolling upward, and a negative offset indicates scrolling downward.
+ * <br>Unit: vp
+ * @param { ScrollState } scrollState - Current scrolling state.
+ */
 public type ScrollOnScrollCallback = (Float64, Float64, ScrollState) -> Unit
 
+/**
+ * Represents the callback triggered before each frame scrolling starts.
+ *
+ * @param { Float64 } offset - Amount to scroll by, in vp.
+ * @param { ScrollState } state - Current scroll state.
+ * @returns { Float64 } data - the scroll data return by handler
+ */
 public type OnScrollFrameBeginCallback = (Float64, ScrollState) -> Float64
 
+/**
+ * Represents the callback triggered when scrolling reaches an edge.
+ *
+ * @param { Edge } side - Edge position to scroll to.
+ */
 public type OnScrollEdgeCallback = (Edge) -> Unit
 
 /**
@@ -736,6 +779,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * Sets the scrolling direction.
      *
      * @params { ?ScrollDirection } scrollDirection
+     * @returns { This }
      */
     @!APILevel[
         22,

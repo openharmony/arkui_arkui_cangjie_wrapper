@@ -19,24 +19,48 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 import ohos.base.*
 
+/**
+ * Defines Select Component.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
 
+    /**
+     * Sets the serial number of the select item, starting from 0.
+     *
+     * @params { ?Int32 } value - the serial number of the select item.
+     * @returns { This } the attribute of the select.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selected(value: ?Int32): SelectAttribute
 
+    /**
+     * Sets the text display of the select button itself.
+     *
+     * @params { ?ResourceStr } value - the text display of the select button itself.
+     * @returns { This } the attribute of the select.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func value(value: ?ResourceStr): SelectAttribute
 
+    /**
+     * Sets the text properties of the select button itself.
+     *
+     * @params { ?FontStyle } style
+     * @params { ?FontWeight } weight
+     * @params { ?Length } size
+     * @params { ?ResourceStr } family
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -48,18 +72,39 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
         family!: ?ResourceStr
     ): SelectAttribute
 
+    /**
+     * Sets the text color of the select button itself.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(value: ?ResourceColor): SelectAttribute
 
+    /**
+     * Sets the background color of the selected items in the select.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedOptionBgColor(value: ?ResourceColor): SelectAttribute
 
+    /**
+     * Sets the text style of the selected items in the select.
+     *
+     * @params { ?FontStyle } style
+     * @params { ?FontWeight } weight
+     * @params { ?Length } size
+     * @params { ?String } family
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -71,18 +116,39 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
         family!: ?String
     ): SelectAttribute
 
+    /**
+     * Sets the text color of the selected item in the select.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedOptionFontColor(value: ?ResourceColor): SelectAttribute
 
+    /**
+     * Sets the background color of the select item.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func optionBgColor(value: ?ResourceColor): SelectAttribute
 
+    /**
+     * Sets the text style for select items.
+     *
+     * @params { ?FontStyle } style
+     * @params { ?FontWeight } weight
+     * @params { ?Length } size
+     * @params { ?ResourceStr } family
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -94,60 +160,121 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
         family!: ?ResourceStr
     ): SelectAttribute
 
+    /**
+     * Sets the text color for select items.
+     *
+     * @params { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func optionFontColor(value: ?ResourceColor): SelectAttribute
 
+    /**
+     * Set the space for text and icon in select
+     *
+     * @params { ?Length } value - indicates the length of the space
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func space(value: ?Length): SelectAttribute
 
+    /**
+     * Set the layout direction for text and arrow in select
+     *
+     * @params { ?ArrowPosition } value - indicates the arrow position in the select
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func arrowPosition(value: ?ArrowPosition): SelectAttribute
 
+    /**
+     * Set the alignment between select and menu.
+     *
+     * @params { ?MenuAlignType } alignType - The type of alignment between select and menu.
+     * @params { ?Offset } offset - The offset between select and menu.
+     * @returns { This } the attribute of the select.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func menuAlign(alignType!: ?MenuAlignType, offset!: ?Offset): SelectAttribute
 
+    /** 
+     * Set the width of each option and set whether the option width fit the trigger.
+     *
+     * @params { ?OptionWidthMode } value - The length of option width and decide option width to fit trigger or content.
+     * @returns { This } the attribute of the select.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func optionWidth(value: ?OptionWidthMode): SelectAttribute
 
+    /** 
+     * Set the width of each option and set whether the option width fit the trigger.
+     *
+     * @params { ?Length } value - The length of option width and decide option width to fit trigger or content.
+     * @returns { This } the attribute of the select.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func optionWidth(value: ?Length): SelectAttribute
 
+    /** 
+     * Set the height of each option.
+     * 
+     * @params { ?Length } value - The length of option height.
+     * @returns { This } the attribute of the select.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func optionHeight(value: ?Length): SelectAttribute
 
+    /**
+     * Set the menu's background color.
+     *
+     * @params { ?ResourceColor } value - The backgroundColor of menu.
+     * @returns { This } the attribute of the select.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func menuBackgroundColor(value: ?ResourceColor): SelectAttribute
 
+    /**
+     * Set menu background blur Style.
+     *
+     * @params { ?BlurStyle } value - The BackgroundBlurStyle of menu.
+     * @returns { This } the attribute of the select.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func menuBackgroundBlurStyle(value: ?BlurStyle): SelectAttribute
 
+    /**
+     * Callback for selecting an item from the select.
+     *
+     * @params { ?OnSelectCallback } callback
+     * @returns { This }
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
