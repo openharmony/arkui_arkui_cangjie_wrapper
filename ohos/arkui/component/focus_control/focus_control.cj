@@ -21,7 +21,6 @@ foreign func FFIOHOSAceFrameworkRequestFocus(inspectorKey: CString): Bool
 
 /**
  * Defines the namespace of focus controller.
- *
  */
 @!APILevel[
     22,

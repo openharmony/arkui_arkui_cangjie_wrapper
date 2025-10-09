@@ -73,15 +73,15 @@ foreign {
 ]
 public class Flex <: CommonMethodComponent<Flex> & FlexAttribute {
     /**
-    * Defines the constructor of Flex.
-    *
-    * @params { ?FlexDirection } direction
-    * @params { ?FlexWrap } wrap
-    * @params { ?FlexAlign } justifyContent
-    * @params { ?ItemAlign } alignItems
-    * @params { ?FlexAlign } alignContent
-    * @param { () -> Unit } child
-    */
+     * Defines the constructor of Flex.
+     *
+     * @params { ?FlexDirection } direction - Direction in which child components are arranged in the Flex component.
+     * @params { ?FlexWrap } wrap - Whether the Flex component has a single line or multiple lines.
+     * @params { ?FlexAlign } justifyContent - Alignment mode of the child components in the Flex component along the main axis.
+     * @params { ?ItemAlign } alignItems - Alignment mode of the child components in the Flex component along the cross axis.
+     * @params { ?FlexAlign } alignContent - Alignment mode of the child components in a multi-row Flex component along the cross axis.
+     * @param { () -> Unit } child - The child component to be added to the Flex component.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

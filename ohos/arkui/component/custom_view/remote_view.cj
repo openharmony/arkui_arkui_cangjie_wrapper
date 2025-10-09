@@ -56,7 +56,7 @@ public abstract class RemoteView <: FFIData {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public open func rerender(): Unit {} // abstract
+    public open func rerender(): Unit {}
 
     /**
      * Purge element ids no longer in use.
@@ -67,7 +67,7 @@ public abstract class RemoteView <: FFIData {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public open func purgeVariableDependenciesOnElmtId(_: Int64): Unit {} // abstract
+    public open func purgeVariableDependenciesOnElmtId(_: Int64): Unit {}
     protected open func aboutToAppear(): Unit {}
     protected open func onPageShow(): Unit {}
     protected open func onPageHide(): Unit {}

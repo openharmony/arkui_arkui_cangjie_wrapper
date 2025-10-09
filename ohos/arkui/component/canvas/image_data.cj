@@ -124,7 +124,7 @@ public class ImageData <: RemoteDataLite {
      *
      * @params { ?Float64 } width - Width of the image.
      * @params { ?Float64 } height - Height of the image.
-     * @params { ?LengthMetricsUnit } unit - the unit mode
+     * @params { ?LengthMetricsUnit } unit - the unit mode.
      */
     @!APILevel[
         22,

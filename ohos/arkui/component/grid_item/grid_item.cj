@@ -65,7 +65,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
     /**
      * Return to get GridItem.
      *
-     * @params { () -> Unit } child
+     * @params { () -> Unit } child - The child component of GridItem.
      */
     @!APILevel[
         22,

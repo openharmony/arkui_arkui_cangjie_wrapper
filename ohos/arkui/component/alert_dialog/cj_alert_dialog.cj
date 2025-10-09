@@ -202,17 +202,17 @@ public open class AlertDialogButtonBaseOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enabled: ?Bool
-   /**
-    * Default focus switch of button.
-    */
+    /**
+     * Default focus switch of button.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var defaultFocus: ?Bool
-   /**
-    * Style of button.
-    */
+    /**
+     * Style of button.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -253,13 +253,13 @@ public open class AlertDialogButtonBaseOptions {
     /**
      * Constructor of AlertDialogButtonBaseOptions.
      *
-     * @params { Bool } enabled
-     * @params { Bool } defaultFocus
-     * @params { DialogButtonStyle } style
-     * @params { ResourceStr } value
-     * @params { ?ResourceColor } fontColor
-     * @params { ?ResourceColor } backgroundColor
-     * @params { VoidCallback } action
+     * @params { ?Bool } enabled - Enable switch of button.
+     * @params { ?Bool } defaultFocus - Default focus switch of button.
+     * @params { ?DialogButtonStyle } style - Style of button.
+     * @params { ?ResourceStr } value - Text content of button.
+     * @params { ?ResourceColor } fontColor - Text color of button.
+     * @params { ?ResourceColor } backgroundColor - Background color of button.
+     * @params { ?VoidCallback } action - Method executed by the callback.
      */
     @!APILevel[
         22,
@@ -294,7 +294,6 @@ public open class AlertDialogButtonBaseOptions {
 public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
    /**
     * Define whether the button responds to Enter/Space key by default.
-    *
     */
     @!APILevel[
         22,
@@ -305,14 +304,14 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
     /**
      * Constructor of AlertDialogButtonOptions.
      *
-     * @params { Bool } enabled
-     * @params { Bool } defaultFocus
-     * @params { DialogButtonStyle } style
-     * @params { ResourceStr } value
-     * @params { ?ResourceColor } fontColor
-     * @params { ?ResourceColor } backgroundColor
-     * @params { VoidCallback } action
-     * @params { Bool } primary
+     * @params { Bool } enabled - Enable switch of button.
+     * @params { Bool } defaultFocus - Default focus switch of button.
+     * @params { DialogButtonStyle } style - Style of button.
+     * @params { ResourceStr } value - Text content of button.
+     * @params { ?ResourceColor } fontColor - Font color of button.
+     * @params { ?ResourceColor } backgroundColor - Background color of button.
+     * @params { VoidCallback } action - Action of button.
+     * @params { Bool } primary - Define whether the button responds to Enter/Space key by default.
      */
     @!APILevel[
         22,
@@ -591,29 +590,29 @@ public open class AlertDialogParam {
     /**
      * Constructor of AlertDialogParam.
      *
-     * @params { ?ResourceStr } title
-     * @params { ?ResourceStr } subtitle
-     * @params { ?ResourceStr } message
-     * @params { ?Bool } autoCancel
-     * @params { ?VoidCallback } cancel
-     * @params { ?DialogAlignment } alignment
-     * @params { ?Offset } offset
-     * @params { ?UInt32 } gridCount
-     * @params { ?Rectangle } maskRect
-     * @params { ?Bool } showInSubWindow
-     * @params { ?Bool } isModal
-     * @params { ?ResourceColor } backgroundColor
-     * @params { ?BlurStyle } backgroundBlurStyle
-     * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
-     * @params { ?BorderRadiuses } cornerRadius
-     * @params { ?TransitionEffect } transition
-     * @params { ?Length } width
-     * @params { ?Length } height
-     * @params { ?Length } borderWidth
-     * @params { ?ResourceColor } borderColor
-     * @params { ?EdgeStyles } borderStyle
-     * @params { ?ShadowOptions } shadow
-     * @params { ?WordBreak } textStyle
+     * @params { ?ResourceStr } title - Title Properties.
+     * @params { ?ResourceStr } subtitle - Subtitle Properties.
+     * @params { ?ResourceStr } message - message Properties.
+     * @params { ?Bool } autoCancel - Allows users to click the mask layer to exit.
+     * @params { ?VoidCallback } cancel - Execute Cancel Function.
+     * @params { ?DialogAlignment } alignment - Alignment in the vertical direction.
+     * @params { ?Offset } offset - Offset of the pop-up window relative to the alignment position.
+     * @params { ?UInt32 } gridCount - Grid count of dialog.
+     * @params { ?Rectangle } maskRect - Mask Region of dialog. The size cannot exceed the main window.
+     * @params { ?Bool } showInSubWindow - Whether to display in the sub window.
+     * @params { ?Bool } isModal - Whether it is a modal dialog.
+     * @params { ?ResourceColor } backgroundColor - Defines the alertDialog's background color.
+     * @params { ?BlurStyle } backgroundBlurStyle - Defines the alertDialog's background blur Style
+     * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss - Callback function when the dialog interactive dismiss.
+     * @params { ?BorderRadiuses } cornerRadius - Defines the alertDialog's corner radius.
+     * @params { ?TransitionEffect } transition - Transition parameters of opening/closing AlertDialog.
+     * @params { ?Length } width - Defines the alertDialog's width.
+     * @params { ?Length } height - Defines the alertDialog's height.
+     * @params { ?Length } borderWidth - Defines the alertDialog's border width.
+     * @params { ?ResourceColor } borderColor - Defines the alertDialog's border color.
+     * @params { ?EdgeStyles } borderStyle - Defines the alertDialog's border style.
+     * @params { ?ShadowOptions } shadow - Defines the alertDialog's shadow.
+     * @params { ?WordBreak } textStyle - Set the alertDialog's textStyle.
      */
     @!APILevel[
         22,
@@ -755,7 +754,6 @@ public open class AlertDialogParam {
 public class AlertDialogParamWithConfirm <: AlertDialogParam {
     /**
      * Invoke the commit function.
-     * Anonymous Object Rectification.
      */
     @!APILevel[
         22,
@@ -765,30 +763,30 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
     /**
      * Constructor of AlertDialogParamWithConfirm.
      *
-     * @params { ResourceStr } title
-     * @params { ResourceStr } subtitle
-     * @params { ResourceStr } message
-     * @params { Bool } autoCancel
-     * @params { VoidCallback } cancel
-     * @params { DialogAlignment } alignment
-     * @params { Offset } offset
-     * @params { UInt32 } gridCount
-     * @params { Rectangle } maskRect
-     * @params { Bool } showInSubWindow
-     * @params { Bool } isModal
-     * @params { ResourceColor } backgroundColor
-     * @params { BlurStyle } backgroundBlurStyle
-     * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
-     * @params { BorderRadiuses } cornerRadius
-     * @params { ?TransitionEffect } transition
-     * @params { ?Length } width
-     * @params { ?Length } height
-     * @params { Length } borderWidth
-     * @params { ResourceColor } borderColor
-     * @params { EdgeStyles } borderStyle
-     * @params { ShadowOptions } shadow
-     * @params { WordBreak } textStyle
-     * @params { AlertDialogButtonBaseOptions } confirm
+     * @params { ?ResourceStr } title - Title Properties.
+     * @params { ?ResourceStr } subtitle - Subtitle Properties.
+     * @params { ?ResourceStr } message - message Properties.
+     * @params { ?Bool } autoCancel - Allows users to click the mask layer to exit.
+     * @params { ?VoidCallback } cancel - Execute Cancel Function.
+     * @params { ?DialogAlignment } alignment - Alignment in the vertical direction.
+     * @params { ?Offset } offset - Offset of the pop-up window relative to the alignment position.
+     * @params { ?UInt32 } gridCount - Grid count of dialog.
+     * @params { ?Rectangle } maskRect - Mask Region of dialog. The size cannot exceed the main window.
+     * @params { ?Bool } showInSubWindow - Whether to display in the sub window.
+     * @params { ?Bool } isModal - Whether it is a modal dialog.
+     * @params { ?ResourceColor } backgroundColor - Defines the alertDialog's background color.
+     * @params { ?BlurStyle } backgroundBlurStyle - Defines the alertDialog's background blur Style
+     * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss - Callback function when the dialog interactive dismiss.
+     * @params { ?BorderRadiuses } cornerRadius - Defines the alertDialog's corner radius.
+     * @params { ?TransitionEffect } transition - Transition parameters of opening/closing AlertDialog.
+     * @params { ?Length } width - Defines the alertDialog's width.
+     * @params { ?Length } height - Defines the alertDialog's height.
+     * @params { ?Length } borderWidth - Defines the alertDialog's border width.
+     * @params { ?ResourceColor } borderColor - Defines the alertDialog's border color.
+     * @params { ?EdgeStyles } borderStyle - Defines the alertDialog's border style.
+     * @params { ?ShadowOptions } shadow - Defines the alertDialog's shadow.
+     * @params { ?WordBreak } textStyle - Set the alertDialog's textStyle.
+     * @params { ?AlertDialogButtonBaseOptions } confirm - Invoke the commit function.
      */
     @!APILevel[
         22,
@@ -876,31 +874,31 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
     /**
      * Constructor of AlertDialogParamWithButtons.
      *
-     * @params { ResourceStr } title
-     * @params { ResourceStr } subtitle
-     * @params { ResourceStr } message
-     * @params { Bool } autoCancel
-     * @params { VoidCallback } cancel
-     * @params { DialogAlignment } alignment
-     * @params { Offset } offset
-     * @params { UInt32 } gridCount
-     * @params { Rectangle } maskRect
-     * @params { Bool } showInSubWindow
-     * @params { Bool } isModal
-     * @params { ResourceColor } backgroundColor
-     * @params { BlurStyle } backgroundBlurStyle
-     * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
-     * @params { BorderRadiuses } cornerRadius
-     * @params { ?TransitionEffect } transition
-     * @params { ?Length } width
-     * @params { ?Length } height
-     * @params { Length } borderWidth
-     * @params { ResourceColor } borderColor
-     * @params { EdgeStyles } borderStyle
-     * @params { ShadwoOptions } shadow
-     * @params { WordBreak } textStyle
-     * @params { AlertDialogButtonBaseOptions } primaryButton
-     * @params { AlertDialogButtonBaseOptions } secondaryButton
+     * @params { ?ResourceStr } title - Title Properties.
+     * @params { ?ResourceStr } subtitle - Subtitle Properties.
+     * @params { ?ResourceStr } message - message Properties.
+     * @params { ?Bool } autoCancel - Allows users to click the mask layer to exit.
+     * @params { ?VoidCallback } cancel - Execute Cancel Function.
+     * @params { ?DialogAlignment } alignment - Alignment in the vertical direction.
+     * @params { ?Offset } offset - Offset of the pop-up window relative to the alignment position.
+     * @params { ?UInt32 } gridCount - Grid count of dialog.
+     * @params { ?Rectangle } maskRect - Mask Region of dialog. The size cannot exceed the main window.
+     * @params { ?Bool } showInSubWindow - Whether to display in the sub window.
+     * @params { ?Bool } isModal - Whether it is a modal dialog.
+     * @params { ?ResourceColor } backgroundColor - Defines the alertDialog's background color.
+     * @params { ?BlurStyle } backgroundBlurStyle - Defines the alertDialog's background blur Style
+     * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss - Callback function when the dialog interactive dismiss.
+     * @params { ?BorderRadiuses } cornerRadius - Defines the alertDialog's corner radius.
+     * @params { ?TransitionEffect } transition - Transition parameters of opening/closing AlertDialog.
+     * @params { ?Length } width - Defines the alertDialog's width.
+     * @params { ?Length } height - Defines the alertDialog's height.
+     * @params { ?Length } borderWidth - Defines the alertDialog's border width.
+     * @params { ?ResourceColor } borderColor - Defines the alertDialog's border color.
+     * @params { ?EdgeStyles } borderStyle - Defines the alertDialog's border style.
+     * @params { ?ShadowOptions } shadow - Defines the alertDialog's shadow.
+     * @params { ?WordBreak } textStyle - Set the alertDialog's textStyle.
+     * @params { AlertDialogButtonBaseOptions } primaryButton - First button.
+     * @params { AlertDialogButtonBaseOptions } secondaryButton - Second button.
      */
     @!APILevel[
         22,
@@ -990,30 +988,31 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
     /**
      * Constructor of AlertDialogParamWithOptions.
      *
-     * @params { ResourceStr } title
-     * @params { ResourceStr } subtitle
-     * @params { ResourceStr } message
-     * @params { Bool } autoCancel
-     * @params { VoidCallback } cancel
-     * @params { DialogAlignment } alignment
-     * @params { Offset } offset
-     * @params { UInt32 } gridCount
-     * @params { Rectangle } maskRect
-     * @params { Bool } showInSubWindow
-     * @params { Bool } isModal
-     * @params { ResourceColor } backgroundColor
-     * @params { BlurStyle } backgroundBlurStyle
-     * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss
-     * @params { BorderRadiuses } cornerRadius
-     * @params { ?TransitionEffect } transition
-     * @params { ?Length } width
-     * @params { ?Length } height
-     * @params { Length } borderWidth
-     * @params { ResourceColor } borderColor
-     * @params { EdgeStyles } borderStyle
-     * @params { WordBreak } textStyle
-     * @params { Array<AlertDialogButtonOptions> } buttons
-     * @params { DialogButtonDirection } buttonDirection
+     * @params { ?ResourceStr } title - Title Properties.
+     * @params { ?ResourceStr } subtitle - Subtitle Properties.
+     * @params { ?ResourceStr } message - message Properties.
+     * @params { ?Bool } autoCancel - Allows users to click the mask layer to exit.
+     * @params { ?VoidCallback } cancel - Execute Cancel Function.
+     * @params { ?DialogAlignment } alignment - Alignment in the vertical direction.
+     * @params { ?Offset } offset - Offset of the pop-up window relative to the alignment position.
+     * @params { ?UInt32 } gridCount - Grid count of dialog.
+     * @params { ?Rectangle } maskRect - Mask Region of dialog. The size cannot exceed the main window.
+     * @params { ?Bool } showInSubWindow - Whether to display in the sub window.
+     * @params { ?Bool } isModal - Whether it is a modal dialog.
+     * @params { ?ResourceColor } backgroundColor - Defines the alertDialog's background color.
+     * @params { ?BlurStyle } backgroundBlurStyle - Defines the alertDialog's background blur Style
+     * @params { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss - Callback function when the dialog interactive dismiss.
+     * @params { ?BorderRadiuses } cornerRadius - Defines the alertDialog's corner radius.
+     * @params { ?TransitionEffect } transition - Transition parameters of opening/closing AlertDialog.
+     * @params { ?Length } width - Defines the alertDialog's width.
+     * @params { ?Length } height - Defines the alertDialog's height.
+     * @params { ?Length } borderWidth - Defines the alertDialog's border width.
+     * @params { ?ResourceColor } borderColor - Defines the alertDialog's border color.
+     * @params { ?EdgeStyles } borderStyle - Defines the alertDialog's border style.
+     * @params { ?ShadowOptions } shadow - Defines the alertDialog's shadow.
+     * @params { ?WordBreak } textStyle - Set the alertDialog's textStyle.
+     * @params { Array<AlertDialogButtonOptions> } buttons - The array of buttons.
+     * @params { DialogButtonDirection } buttonDirection - The arrangement of buttons.
      */
     @!APILevel[
         22,

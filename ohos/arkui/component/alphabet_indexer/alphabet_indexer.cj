@@ -248,10 +248,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Select the text text style.
      *
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?ResourceStr } family
-     * @params { ?FontStyle } style
+     * @params { ?Length } size - font size.
+     * @params { ?FontWeight } weight - font weight.
+     * @params { ?ResourceStr } family - font family.
+     * @params { ?FontStyle } style - font style.
      * @returns { This }
      */
     @!APILevel[
@@ -285,10 +285,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**	
      * Select the text background color.	
      *	
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?ResourceStr } family
-     * @params { ?FontStyle } style
+     * @params { ?Length } size - font size.
+     * @params { ?FontWeight } weight - font weight.
+     * @params { ?ResourceStr } family - font family.
+     * @params { ?FontStyle } style - font style.
      * @returns { This }
      */
     @!APILevel[
@@ -322,10 +322,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**	
      * Definitions fonts.	
      *	
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?ResourceStr } family
-     * @params { ?FontStyle } style
+     * @params { ?Length } size - font size.
+     * @params { ?FontWeight } weight - font weight.
+     * @params { ?ResourceStr } family - font family.
+     * @params { ?FontStyle } style - font style.
      * @returns { This }
      */
     @!APILevel[
@@ -416,8 +416,8 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Position of the pop-up windows, relative to the midpoint of the top border of the indexer bar.
      *
-     * @params { ?Length } x
-     * @params { ?Length } y
+     * @params { ?Length } x - Coordinate x of the Position.
+     * @params { ?Length } y - Coordinate y of the Position.
      * @returns { This }
      */
     @!APILevel[

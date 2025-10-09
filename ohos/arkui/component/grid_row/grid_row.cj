@@ -84,9 +84,9 @@ struct GutterSizeOption {
 ]
 public enum GridRowDirection {
     /**
-    * The elements in the grid component are arranged in rows
-    *
-    */
+     * The elements in the grid component are arranged in rows
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -94,9 +94,9 @@ public enum GridRowDirection {
     Row
     |
     /**
-    * The elements in the grid component are arranged in reverse order of rows
-    *
-    */
+     * The elements in the grid component are arranged in reverse order of rows
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -124,9 +124,9 @@ public enum GridRowDirection {
 ]
 public enum BreakpointsReference {
     /**
-    * Respond to breakpoint changes according to window width
-    *
-    */
+     * Respond to breakpoint changes according to window width
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -134,9 +134,9 @@ public enum BreakpointsReference {
     WindowSize
     |
     /**
-    * Respond to breakpoint changes according to component width
-    *
-    */
+     * Respond to breakpoint changes according to component width
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -163,54 +163,48 @@ public enum BreakpointsReference {
 ]
 public class GridRowSizeOptions {
     /**
-    * Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint.
-    *
-    */
+     * Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xs: ?Length
     /**
-    * Grid Row Size Option sm, select sm gutter size based on gridRow current breakpoint.
-    *
-    */
+     * Grid Row Size Option sm, select sm gutter size based on gridRow current breakpoint
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var sm: ?Length
     /**
-    * Grid Row Size Option md, select md gutter size based on gridRow current breakpoint.
-    *
-    */
+     * Grid Row Size Option md, select md gutter size based on gridRow current breakpoint
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var md: ?Length
     /**
-    * Grid Row Size Option lg, select lg gutter size based on gridRow current breakpoint.
-    *
-    */
+     * Grid Row Size Option lg, select lg gutter size based on gridRow current breakpoint
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var lg: ?Length
     /**
-    * Grid Row Size Option xl, select xl gutter size based on gridRow current breakpoint.
-    *
-    */
+     * Grid Row Size Option xl, select xl gutter size based on gridRow current breakpoint
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xl: ?Length
     /**
-    * Grid Row Size Option xxl, select xxl gutter size based on gridRow current breakpoint.
-    *
-    */
+     * Grid Row Size Option xxl, select xxl gutter size based on gridRow current breakpoint
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -218,15 +212,15 @@ public class GridRowSizeOptions {
     public var xxl: ?Length
 
     /**
-    * Defines the constructor of GridRowSizeOptions.
-    *
-    * @params { ?Length } xs
-    * @params { ?Length } sm
-    * @params { ?Length } md
-    * @params { ?Length } lg
-    * @params { ?Length } xl
-    * @params { ?Length } xxl
-    */
+     * Defines the constructor of GridRowSizeOptions.
+     *
+     * @params { ?Length } xs - Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint.
+     * @params { ?Length } sm - Grid Row Size Option sm, select sm gutter size based on gridRow current breakpoint.
+     * @params { ?Length } md - Grid Row Size Option md, select md gutter size based on gridRow current breakpoint.
+     * @params { ?Length } lg - Grid Row Size Option lg, select lg gutter size based on gridRow current breakpoint.
+     * @params { ?Length } xl - Grid Row Size Option xl, select xl gutter size based on gridRow current breakpoint.
+     * @params { ?Length } xxl - Grid Row Size Option xxl, select xxl gutter size based on gridRow current breakpoint.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -322,7 +316,6 @@ struct NativeGridRowColumnOption {
 
 /**
  * Defines the option in number unit of grid-container component.
- *
  */
 @!APILevel[
     22,
@@ -330,9 +323,8 @@ struct NativeGridRowColumnOption {
 ]
 public class GridRowOptions {
     /**
-    * Grid Row Column Option xs, select xs column num based on gridRow current breakpoint.
-    *
-    */
+     * Grid Row Column Option xs, select xs column num based on gridRow current breakpoint.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -341,8 +333,7 @@ public class GridRowOptions {
 
     /**
      * Grid Row Column Option sm, select sm column num based on gridRow current breakpoint.
-    *
-    */
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -350,9 +341,8 @@ public class GridRowOptions {
     public var sm: ?Int32
 
     /**
-    * Grid Row Column Option md, select md column num based on gridRow current breakpoint.
-    *
-    */
+     * Grid Row Column Option md, select md column num based on gridRow current breakpoint.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -360,9 +350,8 @@ public class GridRowOptions {
     public var md: ?Int32
 
     /**
-    * Grid Row Column Option lg, select lg column num based on gridRow current breakpoint.
-    *
-    */
+     * Grid Row Column Option lg, select lg column num based on gridRow current breakpoint.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -370,9 +359,8 @@ public class GridRowOptions {
     public var lg: ?Int32
 
     /**
-    * Grid Row Column Option xl, select xl column num based on gridRow current breakpoint.
-    *
-    */
+     * Grid Row Column Option xl, select xl column num based on gridRow current breakpoint.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -380,9 +368,8 @@ public class GridRowOptions {
     public var xl: ?Int32
 
     /**
-    * Grid Row Column Option xxl, select xxl column num based on gridRow current breakpoint.
-    *
-    */
+     * Grid Row Column Option xxl, select xxl column num based on gridRow current breakpoint.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -390,15 +377,15 @@ public class GridRowOptions {
     public var xxl: ?Int32
 
     /**
-    * Defines the constructor of GridRowOptions.
-    *
-    * @params { ?Int32 } xs
-    * @params { ?Int32 } sm
-    * @params { ?Int32 } md
-    * @params { ?Int32 } lg
-    * @params { ?Int32 } xl
-    * @params { ?Int32 } xxl
-    */
+     * Defines the constructor of GridRowOptions.
+     *
+     * @params { ?Int32 } xs - Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint.
+     * @params { ?Int32 } sm - Grid Row Size Option sm, select sm gutter size based on gridRow current breakpoint.
+     * @params { ?Int32 } md - Grid Row Size Option md, select md gutter size based on gridRow current breakpoint.
+     * @params { ?Int32 } lg - Grid Row Size Option lg, select lg gutter size based on gridRow current breakpoint.
+     * @params { ?Int32 } xl - Grid Row Size Option xl, select xl gutter size based on gridRow current breakpoint.
+     * @params { ?Int32 } xxl - Grid Row Size Option xxl, select xxl gutter size based on gridRow current breakpoint.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -620,11 +607,11 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
     * Defines the constructor of GridRow.
     * 
-    * @params { ?Int32 } columns
-    * @params { ?Length } gutter
-    * @params { ?BreakPoints } breakpoints
-    * @params { ?GridRowDirection } direction
-    * @params { () -> Unit } child
+    * @params { ?Int32 } columns - Sets the total number of columns in the current layout.
+    * @params { ?Length } gutter - layout spacing between sub-components.
+    * @params { ?BreakPoints } breakpoints - grid-row layout breakpoints.
+    * @params { ?GridRowDirection } direction - grid-row layout direction.
+    * @params { () -> Unit } child - The child component of GridRow.
     */
     @!APILevel[
         22,
@@ -669,11 +656,11 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
     * Defines the constructor of GridRow.
     * 
-    * @params { ?GridRowOptions } columns
-    * @params { ?Length } gutter
-    * @params { ?BreakPoints } breakpoints
-    * @params { ?GridRowDirection } direction
-    * @params { () -> Unit } child
+    * @params { ?GridRowOptions } columns - Sets the total number of columns in the current layout.
+    * @params { ?Length } gutter - layout spacing between sub-components.
+    * @params { ?BreakPoints } breakpoints - grid-row layout breakpoints.
+    * @params { ?GridRowDirection } direction - grid-row layout direction.
+    * @params { () -> Unit } child - The child component of GridRow.
     */
     @!APILevel[
         22,
@@ -718,14 +705,14 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     }
 
     /**
-    * Defines the constructor of GridRow.
-    * 
-    * @params { ?Int32 } columns
-    * @params { ?GutterOptions } gutter
-    * @params { ?BreakPoints } breakpoints
-    * @params { ?GridRowDirection } direction
-    * @params { () -> Unit } child
-    */
+     * Defines the constructor of GridRow.
+     * 
+     * @params { ?Int32 } columns - Sets the total number of columns in the current layout.
+     * @params { ?GutterOptions } gutter - layout spacing between sub-components.
+     * @params { ?BreakPoints } breakpoints - grid-row layout breakpoints.
+     * @params { ?GridRowDirection } direction - grid-row layout direction.
+     * @params { () -> Unit } child - The child component of GridRow.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -788,11 +775,11 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
     * Defines the constructor of GridRow.
     * 
-    * @params { ?GridRowOptions } columns
-    * @params { ?GutterOptions } gutter
-    * @params { ?BreakPoints } breakpoints
-    * @params { ?GridRowDirection } direction
-    * @params { () -> Unit } child
+    * @params { ?GridRowOptions } columns - Sets the total number of columns in the current layout.
+    * @params { ?GutterOptions } gutter - layout spacing between sub-components.
+    * @params { ?BreakPoints } breakpoints - grid-row layout breakpoints.
+    * @params { ?GridRowDirection } direction - grid-row layout direction.
+    * @params { () -> Unit } child - The child component of GridRow.
     */
     @!APILevel[
         22,

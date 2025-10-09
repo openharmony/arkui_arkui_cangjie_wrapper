@@ -26,7 +26,6 @@ import std.time.*
 
 /**
  * Defines the struct of DatePickerResult.
- *
  */
 @!APILevel[
     22,
@@ -40,7 +39,6 @@ public class DatePickerResult {
      * <br>Value range: depends on start and end.
      * If start and end are not set, the default range is [1970, 2100].
      * </p>
-     *
      */
     @!APILevel[
         22,
@@ -54,7 +52,6 @@ public class DatePickerResult {
      * <p><strong>NOTE</strong>:
      * <br>Value range: depends on start and end. If start and end are not set, the default range is [0, 11].
      * </p>
-     *
      */
     @!APILevel[
         22,
@@ -67,7 +64,6 @@ public class DatePickerResult {
      * <p><strong>NOTE</strong>:
      * <br>Value range: depends on start and end. If start and end are not set, the default range is [1, 31].
      * </p>
-     *
      */
     @!APILevel[
         22,

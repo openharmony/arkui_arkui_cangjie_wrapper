@@ -83,9 +83,6 @@ public class Matrix2D <: RemoteDataLite {
         })
     }
 
-    /**
-     * Matrix2D constructor.
-     */
     init(selfID: Int64) {
         super(selfID)
     }
@@ -240,7 +237,7 @@ public class Matrix2D <: RemoteDataLite {
 
     /**
      * Transforms the current 2D matrix back to the identity matrix (i.e., without any rotational
-     *   translation scaling effect).
+     * translation scaling effect).
      *
      * @returns { This }
      */
