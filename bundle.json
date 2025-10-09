@@ -1,7 +1,7 @@
 {
     "name": "@ohos/arkui_cangjie_wrapper",
     "description": "Cangjie Declarative UI Frontend for ArkUI Framework, provide UI components and StateManagement",
-    "version": "6.0",
+    "version": "6.1",
     "license": "Apache License 2.0",
     "publishAs": "code-segment",
     "segment": {
