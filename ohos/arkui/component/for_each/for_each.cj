@@ -20,6 +20,7 @@ import ohos.arkui.component.common.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import ohos.arkui.state_management.ObservedArrayList
 import std.collection.ArrayList
 
 @C
@@ -83,7 +84,14 @@ public class ForEach <: UINodeBase {
         }
     }
 
-    func pop(): Unit {
+    /**
+     * pop for each node of framework.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func pop(): Unit {
         unsafe { FfiOHOSAceFrameworkForEachPop() }
     }
 

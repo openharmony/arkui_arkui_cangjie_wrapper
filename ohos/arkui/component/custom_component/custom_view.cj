@@ -75,6 +75,11 @@ public abstract class CustomView <: RemoteView & Observer {
     protected var updateFuncByElmtId_inner__ = HashMap<Int64, UpdateFuncNew>()
 
     private var children_inner__: HashMap<Int64, CustomView> = HashMap<Int64, CustomView>()
+
+    private let lazyChildren_inner__ = HashMap<String, CustomView>()
+    private let lazyGroups_inner__ = HashMap<String, ArrayList<String>>()
+    private var isLazyForEachProcess_inner__ = false
+    private var lazyGroupId_inner__: String = ""
     private var localStorage_inner__: Option<LocalStorage> = None
     private var parent_inner__: Option<CustomView> = None
 
@@ -577,6 +582,40 @@ public abstract class CustomView <: RemoteView & Observer {
     ]
     public func id(): Int64 {
         return compId_inner__
+    }
+
+    protected func markLazyForEachProcess(groupId: String): Unit {
+        isLazyForEachProcess_inner__ = true
+        lazyGroupId_inner__ = groupId
+        if (!lazyGroups_inner__.contains(groupId)) {
+            lazyGroups_inner__.add(groupId, ArrayList<String>())
+        }
+    }
+
+    protected func resetLazyForEachProcess(): Unit {
+        isLazyForEachProcess_inner__ = false
+    }
+
+    protected func removeChildGroupById(groupId: String): Bool {
+        let optGroup = lazyGroups_inner__.remove(groupId)
+        match (optGroup) {
+            case Some(group) =>
+                removeLazyGroup(group)
+                true
+            case _ => false
+        }
+    }
+
+    private func removeLazyGroup(list: ArrayList<String>): Unit {
+        for (viewId in list) {
+            let optChild = lazyChildren_inner__.remove(viewId)
+            match (optChild) {
+                case Some(child) =>
+                    child.nativeView_inner__.destroy()
+                    ()
+                case None => ()
+            }
+        }
     }
 
     /**

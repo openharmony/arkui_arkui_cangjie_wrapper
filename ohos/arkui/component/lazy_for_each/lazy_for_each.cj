@@ -17,11 +17,12 @@ package ohos.arkui.component.lazy_for_each
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.custom_component.CustomView
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
-import std.collection.ArrayList
+
 import std.collection.HashMap
 
 foreign {
@@ -36,19 +37,19 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
      * native pass a listener to cangjie, but cangjie user may not restore this listener, and native pass the same listener mult times(register and unregister).
      * In such cases, cangjie should recognize the listener as the same object. We could use RemoteDataManager if there are more scenarios in the future.
      */
-    private let cacheListener = HashMap<Int64, DataChangeListener>()
-    private let lazyGroups_inner__ = HashMap<String, ArrayList<String>>()
-    private var isLazyForEachProcess_inner__ = false
-    private var lazyGroupId_inner__: String = ""
+    private let cacheListener = HashMap<Int64, DataChangeListener>();
     let dataSource_: IDataSource<T>
     let itemGeneratorFunc_: ItemGenFuncType<T>
     let keyGeneratorFunc_: KeyGenFuncType<T>
+    let parentView_: CustomView
 
-    init(dataSource: IDataSource<T>, itemGeneratorFunc: ItemGenFuncType<T>, keyGeneratorFunc: KeyGenFuncType<T>) {
+    init(parent: CustomView, dataSource: IDataSource<T>, itemGeneratorFunc: ItemGenFuncType<T>,
+        keyGeneratorFunc: KeyGenFuncType<T>) {
         super()
         dataSource_ = dataSource
         itemGeneratorFunc_ = itemGeneratorFunc
         keyGeneratorFunc_ = keyGeneratorFunc
+        parentView_ = parent
         registerSelf()
     }
 
@@ -67,25 +68,15 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
     }
 
     protected func startMarkLazy(id: String): Unit {
-        isLazyForEachProcess_inner__ = true
-        lazyGroupId_inner__ = id
-        if (!lazyGroups_inner__.contains(id)) {
-            lazyGroups_inner__.add(id, ArrayList<String>())
-        }
+        parentView_.markLazyForEachProcess(id)
     }
 
     protected func endMarkLazy(): Unit {
-        isLazyForEachProcess_inner__ = false
+        parentView_.resetLazyForEachProcess()
     }
 
     protected func removeChildGroup(id: String): Unit {
-        let optGroup = lazyGroups_inner__.remove(id)
-        match (optGroup) {
-            case Some(group) =>
-                // never remove LazyGroup
-                true
-            case _ => false
-        }
+        parentView_.removeChildGroupById(id)
     }
 
     /**
@@ -170,21 +161,38 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class LazyForEach<T> <: UINodeBase {
+public class LazyForEach <: UINodeBase {
     var child: () -> Unit = {=>}
     private static var uniqueKey = 0
 
-    public LazyForEach(dataSource: IDataSource<T>, itemGenerator: ItemGenFuncType<T>,
-        keyGenerator!: ?KeyGenFuncType<T> = None) {
-        var keyGeneratorFunc = keyGenerator ?? {
+    /**
+     * Enter the value to obtain the LazyForEach.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init() {}
+
+    /**
+     * Enter the value to obtain the LazyForEach.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func create<T>(viewID: Int64, parentView: CustomView, dataSource: IDataSource<T>,
+        itemGeneratorFunc!: ItemGenFuncType<T>,
+        keyGeneratorFunc!: KeyGenFuncType<T> = {
             _: T, idx: Int64 =>
             uniqueKey++
-            return "${uniqueKey} - ${idx} - ${uniqueKey}"
-        }
-        let funcs = LazyForEachFuncs<T>(dataSource, itemGenerator, keyGeneratorFunc)
+            return "${viewID} - ${idx} - ${uniqueKey}"
+        }): LazyForEach {
+        let funcs = LazyForEachFuncs<T>(parentView, dataSource, itemGeneratorFunc, keyGeneratorFunc)
         unsafe {
-            FfiOHOSAceFrameworkLazyForEachCreate(0, 0, funcs.getID())
+            FfiOHOSAceFrameworkLazyForEachCreate(viewID, parentView.nativeView_inner__.getID(), funcs.getID())
         }
+        this
     }
 
     func genChild(): Unit {
