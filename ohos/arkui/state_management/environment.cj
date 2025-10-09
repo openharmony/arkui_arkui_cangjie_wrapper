@@ -195,8 +195,8 @@ public class Environment {
      * The function call fails and returns false if a property with given name exists in AppStorage already.
      * It is wrong API use to access a property with given name in AppStorage before calling Environment.envProp.
      *
-     * @params { String } key - environment property
-     * @params { T } value - is the default value if cannot get the environment property value
+     * @param { String } key - environment property
+     * @param { T } value - is the default value if cannot get the environment property value
      * @returns { Bool } false if method failed.
      * @throws { BusinessException } 100001 - Internal error.
      */

@@ -145,10 +145,10 @@ public class RouterState {
     /**
      * Router State constructor.
      *
-     * @params { Int32 } index
-     * @params { String } name
-     * @params { String } path
-     * @params { String } params
+     * @param { Int32 } index
+     * @param { String } name
+     * @param { String } path
+     * @param { String } params
      */
     @!APILevel[
         22,
@@ -217,8 +217,8 @@ public class Router {
     /**
      * Navigates to a specified page in the application.
      *
-     * @params { String } url
-     * @params { String } params
+     * @param { String } url
+     * @param { String } params
      */
     @!APILevel[
         22,
@@ -236,8 +236,8 @@ public class Router {
     /**
      * Returns to the previous page or a specified page.
      *
-     * @params { String } url
-     * @params { String } params
+     * @param { String } url
+     * @param { String } params
      */
     @!APILevel[
         22,
@@ -255,8 +255,8 @@ public class Router {
     /**
      * Returns to the previous page or a specified page.
      *
-     * @params { Int32 } index
-     * @params { String } params
+     * @param { Int32 } index
+     * @param { String } params
      */
     @!APILevel[
         22,

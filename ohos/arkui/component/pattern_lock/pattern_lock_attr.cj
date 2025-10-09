@@ -31,7 +31,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
     /**
      * Sets the fill color of the grid dot in the selected state.
      *
-     * @params { ?ResourceColor } value - Fill color of the grid dot in the selected state, Default value is '#ff182431'.
+     * @param { ?ResourceColor } value - Fill color of the grid dot in the selected state, Default value is '#ff182431'.
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
@@ -43,7 +43,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
     /**
      * Sets the path color.
      *
-     * @params { ?ResourceColor } value - Path color.
+     * @param { ?ResourceColor } value - Path color.
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
@@ -55,7 +55,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
     /**
      * Sets the fill color of the grid dot in the activated state, which is when the dot is highlighted but not selected.
      *
-     * @params { ?ResourceColor } value - Fill color of the grid dot in the activated state.
+     * @param { ?ResourceColor } value - Fill color of the grid dot in the activated state.
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
@@ -67,7 +67,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
     /**
      * Sets the fill color of the grid dot in the unselected state.
      *
-     * @params { ?ResourceColor } value - Fill color of the grid dot in the unselected state, Default value is '#ff182431'.
+     * @param { ?ResourceColor } value - Fill color of the grid dot in the unselected state, Default value is '#ff182431'.
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
@@ -80,7 +80,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * Sets whether to allow the user to reset the component status (that is, clear the input) by touching the component
      * again after the input is complete.
      *
-     * @params { ?Bool } value - Whether to allow the user to reset the component status (that is, clear the input) by
+     * @param { ?Bool } value - Whether to allow the user to reset the component status (that is, clear the input) by
      * touching the component again after the input is complete, Default value is true.
      * @returns { PatternLockAttribute }
      */
@@ -97,7 +97,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * <br>If this attribute is set to 0 or a negative value, the default value is used.
      * </p>
      *
-     * @params { ?Length } value - Radius of the dots in a grid, Default value is 6vp.
+     * @param { ?Length } value - Radius of the dots in a grid, Default value is 6vp.
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
@@ -113,7 +113,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * <br>If this attribute is set to 0 or a negative number, the component is not displayed.
      * </p>
      *
-     * @params { ?Length } value - Width and height of the component, Default value is 288vp.
+     * @param { ?Length } value - Width and height of the component, Default value is 288vp.
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
@@ -129,7 +129,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * <br>If this attribute is set to **0** or a negative value, the path stroke is not displayed.
      * </p>
      *
-     * @params { ?Length } value - Width of the path stroke, Default value is 12vp.
+     * @param { ?Length } value - Width of the path stroke, Default value is 12vp.
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
@@ -141,7 +141,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
     /**
      * Invoked when the pattern password input is complete.
      *
-     * @params { ?(Array<Int32>) -> Unit } callback
+     * @param { ?(Array<Int32>) -> Unit } callback
      * @returns { PatternLockAttribute }
      */
     @!APILevel[

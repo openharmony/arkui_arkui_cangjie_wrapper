@@ -205,11 +205,11 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     /**
      * Constructor the ring style Options.
      *
-     * @params { ?Length } strokeWidth
-     * @params { ?Bool } shadow
-     * @params { ?ProgressStatus } status
-     * @params { ?Bool } enableSmoothEffect
-     * @params { ?Bool } enableScanEffect
+     * @param { ?Length } strokeWidth
+     * @param { ?Bool } shadow
+     * @param { ?ProgressStatus } status
+     * @param { ?Bool } enableSmoothEffect
+     * @param { ?Bool } enableScanEffect
      */
     @!APILevel[
         22,
@@ -236,9 +236,9 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the progress bar is set.
      *
-     * @params { ?Float64 } value
-     * @params { ?Float64 } total
-     * @params { ?ProgressType } progressType
+     * @param { ?Float64 } value
+     * @param { ?Float64 } total
+     * @param { ?ProgressType } progressType
      */
     @!APILevel[
         22,
@@ -255,7 +255,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the current progress value is set.
      *
-     * @params { ?Float64 } value
+     * @param { ?Float64 } value
      * @returns { This }
      */
     @!APILevel[
@@ -272,7 +272,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the progress bar foreground is set.
      *
-     * @params { ?ResourceColor } value - indicates the color of the progress.
+     * @param { ?ResourceColor } value - indicates the color of the progress.
      * @returns { This }
      */
     @!APILevel[
@@ -298,9 +298,9 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the style of progress bar is set.
      *
-     * @params { ?Length } strokeWidth
-     * @params { ?Int32 } scaleCount
-     * @params { ?Length } scaleWidth
+     * @param { ?Length } strokeWidth
+     * @param { ?Int32 } scaleCount
+     * @param { ?Length } scaleWidth
      * @returns { This }
      */
     @!APILevel[
@@ -323,7 +323,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the style of progress bar is set.
      *
-     * @params { ?RingStyleOptions } value - indicates the style of the progress.
+     * @param { ?RingStyleOptions } value - indicates the style of the progress.
      * @returns { This }
      */
     @!APILevel[

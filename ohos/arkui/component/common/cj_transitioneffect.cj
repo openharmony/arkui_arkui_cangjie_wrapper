@@ -90,8 +90,8 @@ public class TranslateOptions {
     /**
      * TranslateOptions constructor.
      *
-     * @params { ?Length } x
-     * @params { ?Length } y
+     * @param { ?Length } x
+     * @param { ?Length } y
      */
     @!APILevel[
         22,
@@ -175,11 +175,11 @@ public class ScaleOptions {
     /**
      * ScaleOptions constructor.
      *
-     * @params { ?Float32 } x
-     * @params { ?Float32 } y
-     * @params { ?Float32 } z
-     * @params { ?Length } centerX
-     * @params { ?Length } centerY
+     * @param { ?Float32 } x
+     * @param { ?Float32 } y
+     * @param { ?Float32 } z
+     * @param { ?Length } centerX
+     * @param { ?Length } centerY
      */
     @!APILevel[
         22,
@@ -311,14 +311,14 @@ public class RotateOptions {
     /**
      * RotateOptions constructor.
      *
-     * @params { ?Float32 } angle
-     * @params { ?Float32 } x
-     * @params { ?Float32 } y
-     * @params { ?Float32 } z
-     * @params { ?Length } centerX
-     * @params { ?Length } centerY
-     * @params { ?Length } centerZ
-     * @params { ?Float32 } perspective
+     * @param { ?Float32 } angle
+     * @param { ?Float32 } x
+     * @param { ?Float32 } y
+     * @param { ?Float32 } z
+     * @param { ?Length } centerX
+     * @param { ?Length } centerY
+     * @param { ?Length } centerZ
+     * @param { ?Float32 } perspective
      */
     @!APILevel[
         22,
@@ -447,7 +447,7 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Creates an opacity transition effect with alpha value.
      *
-     * @params { Float64 } alpha - opacity alpha value, value range [0, 1].
+     * @param { Float64 } alpha - opacity alpha value, value range [0, 1].
      * @returns { TransitionEffect }
      */
     @!APILevel[
@@ -463,7 +463,7 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Creates a translate transition effect.
      *
-     * @params { TranslateOptions } options - translate options
+     * @param { TranslateOptions } options - translate options
      * @returns { TransitionEffect }
      */
     @!APILevel[
@@ -479,7 +479,7 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Creates a scale transition effect.
      *
-     * @params { ?ScaleOptions } options - scale options
+     * @param { ?ScaleOptions } options - scale options
      * @returns { TransitionEffect }
      */
     @!APILevel[
@@ -495,7 +495,7 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Creates a rotation transition effect.
      *
-     * @params { ?RotateOptions } options - rotate options
+     * @param { ?RotateOptions } options - rotate options
      * @returns { TransitionEffect }
      */
     @!APILevel[
@@ -512,7 +512,7 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Creates a move transition effect.
      *
-     * @params { TransitionEdge } edge - the edge that component will move to
+     * @param { TransitionEdge } edge - the edge that component will move to
      * @returns { TransitionEffect }
      */
     @!APILevel[
@@ -528,8 +528,8 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * reates an asymmetric transition effect.
      *
-     * @params { TransitionEffect } appear - the transition which will be attached when the component is appear.
-     * @params { TransitionEffect } disappear - the transition which will be attached when the component is disappear.
+     * @param { TransitionEffect } appear - the transition which will be attached when the component is appear.
+     * @param { TransitionEffect } disappear - the transition which will be attached when the component is disappear.
      * @returns { TransitionEffect }
      */
     @!APILevel[
@@ -545,7 +545,7 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Combines another transition effect.
      *
-     * @params { TransitionEffect } transitionEffect - transition effect which is be combined.
+     * @param { TransitionEffect } transitionEffect - transition effect which is be combined.
      * @returns { TransitionEffect } combined transition effect.
      */
     @!APILevel[
@@ -562,7 +562,7 @@ public class TransitionEffect <: RemoteDataLite {
     /**
      * Set the animation of current transition effect.
      *
-     * @params { ?AnimateParam } value - animation parameters.
+     * @param { ?AnimateParam } value - animation parameters.
      * @returns { TransitionEffect }
      */
     @!APILevel[

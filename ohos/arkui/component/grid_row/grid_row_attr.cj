@@ -30,7 +30,7 @@ sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
     /**
      * Cross axis alignment of each line in GridRow.
      *
-     * @params { ?ItemAlign } value - element alignment
+     * @param { ?ItemAlign } value - element alignment
      * @returns { GridRowAttribute }
      */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
     /**
      * Callback triggered when the breakpoint changes, breakpoints value can be xs, sm, md, lg, xl, xxl.
      *
-     * @params { ?(String) -> Unit } callback
+     * @param { ?(String) -> Unit } callback
      * @returns { GridRowAttribute }
      */
     @!APILevel[

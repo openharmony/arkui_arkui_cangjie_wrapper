@@ -30,7 +30,7 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
     /**
      * Indicates whether the increase button of counter component is available or not.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { CounterAttribute }
      */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
     /**
      * Indicates whether the decrease button of counter component is available or not.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { CounterAttribute }
      */
     @!APILevel[
@@ -54,7 +54,7 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
     /**
      * Listen to the event that the value increases.
      *
-     * @params { ?VoidCallback } event
+     * @param { ?VoidCallback } event
      * @returns { CounterAttribute }
      */
     @!APILevel[
@@ -66,7 +66,7 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
     /**
      * Listens to the number decrease event.
      *
-     * @params { ?VoidCallback } event
+     * @param { ?VoidCallback } event
      * @returns { CounterAttribute }
      */
     @!APILevel[

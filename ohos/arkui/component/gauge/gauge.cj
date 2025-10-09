@@ -134,10 +134,10 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * The constructor of Gauge.
      *
-     * @params { ?Float64 } value - Set current data value.
-     * @params { ?Float64 } min - Set current segment minimum value.
-     * @params { ?Float64 } max - Set current segment maximum value.
-     * @params { () -> Unit } child - Set child component of Gauge.
+     * @param { ?Float64 } value - Set current data value.
+     * @param { ?Float64 } min - Set current segment minimum value.
+     * @param { ?Float64 } max - Set current segment maximum value.
+     * @param { () -> Unit } child - Set child component of Gauge.
      */
     @!APILevel[
         22,
@@ -153,7 +153,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets the value for the current profile.
      *
-     * @params { ?Float32 } value
+     * @param { ?Float32 } value
      * @returns { This }
      */
     @!APILevel[
@@ -170,7 +170,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the start angle. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @params { ?Float64 } angle
+     * @param { ?Float64 } angle
      * @returns { This }
      */
     @!APILevel[
@@ -187,7 +187,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets the end angle position. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @params { ?Float64 } angle
+     * @param { ?Float64 } angle
      * @returns { This }
      */
     @!APILevel[
@@ -204,7 +204,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @params { ?Array<(ResourceColor, Float32)> } value
+     * @param { ?Array<(ResourceColor, Float32)> } value
      * @returns { This }
      */
     @!APILevel[
@@ -234,7 +234,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @params { ?Array<(LinearGradient, Float32)> } value
+     * @param { ?Array<(LinearGradient, Float32)> } value
      * @returns { This }
      */
     @!APILevel[
@@ -279,7 +279,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -296,7 +296,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @params { ?LinearGradient } value
+     * @param { ?LinearGradient } value
      * @returns { This }
      */
     @!APILevel[
@@ -313,7 +313,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets the thickness of the ring chart.
      *
-     * @params { ?Length } length
+     * @param { ?Length } length
      * @returns { This }
      */
     @!APILevel[
@@ -331,9 +331,9 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets track shadow of the ring chart.
      *
-     * @params { ?Float64 } radius
-     * @params { ?Float64 } offsetX
-     * @params { ?Float64 } offsetY
+     * @param { ?Float64 } radius
+     * @param { ?Float64 } offsetX
+     * @param { ?Float64 } offsetY
      * @returns { This }
      */
     @!APILevel[
@@ -350,8 +350,8 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets indicator options of the ring chart.
      *
-     * @params { ?ResourceStr } icon
-     * @params { ?Length } space
+     * @param { ?ResourceStr } icon
+     * @param { ?Length } space
      * @returns { This }
      */
     @!APILevel[
@@ -372,7 +372,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets description content of the ring chart.
      *
-     * @params { ?CustomBuilder } builder
+     * @param { ?CustomBuilder } builder
      * @returns { This }
      */
     @!APILevel[

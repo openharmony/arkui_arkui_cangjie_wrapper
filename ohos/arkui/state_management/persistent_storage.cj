@@ -107,8 +107,8 @@ public class PersistentStorage <: Observer {
 
     /**
      *
-     * @params { String } _
-     * @params { ArrayList<Int64> } _
+     * @param { String } _
+     * @param { ArrayList<Int64> } _
      */
     @!APILevel[
         22,
@@ -120,7 +120,7 @@ public class PersistentStorage <: Observer {
 
     /**
      *
-     * @params { String } _
+     * @param { String } _
      */
     @!APILevel[
         22,
@@ -169,8 +169,8 @@ public class PersistentStorage <: Observer {
     /**
      * Called when a persistence property is stored.
      *
-     * @params { String } key
-     * @params { T } defaultValue
+     * @param { String } key
+     * @param { T } defaultValue
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -186,7 +186,7 @@ public class PersistentStorage <: Observer {
      * If a property does not exist in AppStorage, add it and initialize it with given value
      * works as persistProp for multiple properties.
      *
-     * @params { Array<(String, T)> } key
+     * @param { Array<(String, T)> } key
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -200,7 +200,7 @@ public class PersistentStorage <: Observer {
     /**
     * Reverse of persistProp.
     *
-    * @params { String } key - no longer persist the property named key
+    * @param { String } key - no longer persist the property named key
     * @throws { BusinessException } 100001 - Internal error.
     */
     @!APILevel[

@@ -39,7 +39,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
      * You can listen to this callback,
      * Use the format attribute method to customize data display in the callback.
      *
-     * @params { ?(Int64) -> Unit } callback - Listening date event callback.
+     * @param { ?(Int64) -> Unit } callback - Listening date event callback.
      * @returns { TextClockAttribute }
      */
     @!APILevel[
@@ -57,7 +57,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
      * The default value is "hh:mm" when TextClock is in a form.
      * If the value has second or millisecond, the value will be set to the default value.
      *
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { TextClockAttribute }
      */
     @!APILevel[
@@ -69,7 +69,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
     /**
      * Called when the value of TextClock fontSize is set.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { TextClockAttribute }
      */
     @!APILevel[
@@ -81,7 +81,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
     /**
      * Called when the value of TextClock fontColor is set.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { TextClockAttribute }
      */
     @!APILevel[
@@ -93,7 +93,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
     /**
      * Called when the value of TextClock fontStyle is set.
      *
-     * @params { ?FontStyle } value
+     * @param { ?FontStyle } value
      * @returns { TextClockAttribute }
      */
     @!APILevel[
@@ -105,7 +105,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
     /**
      * Called when the value of TextClock fontWeight is set.
      *
-     * @params { ?FontWeight } value
+     * @param { ?FontWeight } value
      * @returns { TextClockAttribute }
      */
     @!APILevel[
@@ -117,7 +117,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
     /**
      * Called when the value of TextClock fontFamily is set.
      *
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { TextClockAttribute }
      */
     @!APILevel[
@@ -129,7 +129,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
     /**
      * Called when the text shadow is set.
      *
-     * @params { ?Array<ShadowOptions> } value - The shadow options.
+     * @param { ?Array<ShadowOptions> } value - The shadow options.
      * @returns { TextClockAttribute }
      */
     @!APILevel[
@@ -141,7 +141,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
     /**
      * Called when the text shadow is set.
      *
-     * @params { ?ShadowOptions } value - The shadow options.
+     * @param { ?ShadowOptions } value - The shadow options.
      * @returns { TextClockAttribute }
      */
     @!APILevel[

@@ -69,8 +69,8 @@ public class Size {
     /**
      * Create an Object of Size.
      *
-     * @params { Float64 } width
-     * @params { Float64 } height
+     * @param { Float64 } width
+     * @param { Float64 } height
      */
     @!APILevel[
         22,
@@ -123,8 +123,8 @@ public class Offset {
     /**
      * Create an Object of Offset.
      *
-     * @params { Float64 } x
-     * @params { Float64 } y
+     * @param { Float64 } x
+     * @param { Float64 } y
      */
     @!APILevel[
         22,
@@ -191,9 +191,9 @@ public class TranslateResult {
     /**
      * Create an Object of Offset.
      *
-     * @params { Float64 } x
-     * @params { Float64 } y
-     * @params { Float64 } z
+     * @param { Float64 } x
+     * @param { Float64 } y
+     * @param { Float64 } z
      */
     @!APILevel[
         22,
@@ -277,11 +277,11 @@ public class ScaleResult {
     /**
      * Defines ScaleResult Type.
      *
-     * @params { Float64 } x
-     * @params { Float64 } y
-     * @params { Float64 } z
-     * @params { Float64 } centerX
-     * @params { Float64 } centerY
+     * @param { Float64 } x
+     * @param { Float64 } y
+     * @param { Float64 } z
+     * @param { Float64 } centerX
+     * @param { Float64 } centerY
      */
     @!APILevel[
         22,
@@ -384,12 +384,12 @@ public class RotateResult {
     /**
      * Defines RotateResult Type.
      *
-     * @params { Float64 } x
-     * @params { Float64 } y
-     * @params { Float64 } z
-     * @params { Float64 } centerX
-     * @params { Float64 } centerY
-     * @params { Float64 } angle
+     * @param { Float64 } x
+     * @param { Float64 } y
+     * @param { Float64 } z
+     * @param { Float64 } centerX
+     * @param { Float64 } centerY
+     * @param { Float64 } angle
      */
     @!APILevel[
         22,
@@ -528,14 +528,14 @@ public class ComponentInfo {
     /**
      * ComponentInfo constructor.
      *
-     * @params { Size } size
-     * @params { Offset } localOffset
-     * @params { Offset } windowOffset
-     * @params { Offset } screenOffset
-     * @params { TranslateResult } translate
-     * @params { ScaleResult } scale
-     * @params { RotateResult } rotate
-     * @params { Matrix4Result } transform
+     * @param { Size } size
+     * @param { Offset } localOffset
+     * @param { Offset } windowOffset
+     * @param { Offset } screenOffset
+     * @param { TranslateResult } translate
+     * @param { ScaleResult } scale
+     * @param { RotateResult } rotate
+     * @param { Matrix4Result } transform
      */
     @!APILevel[
         22,
@@ -566,7 +566,7 @@ public class ComponentUtils {
     /**
      * Provide the ability to obtain the coordinates and size of component drawing areas.
      *
-     * @params { String } id - component id.
+     * @param { String } id - component id.
      * @returns { ComponentInfo }
      */
     @!APILevel[

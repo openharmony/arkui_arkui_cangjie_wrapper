@@ -42,7 +42,7 @@ public class EventTarget {
     /**
      * EventTarget constructor.
      *
-     * @params { Area } area
+     * @param { Area } area
      */
     @!APILevel[
         22,
@@ -100,10 +100,10 @@ public class Area {
     /**
      * Area constructor.
      *
-     * @params { Length } width
-     * @params { Length } height
-     * @params { Position } position
-     * @params { Position } globalPosition
+     * @param { Length } width
+     * @param { Length } height
+     * @param { Position } position
+     * @param { Position } globalPosition
      */
     @!APILevel[
         22,
@@ -150,8 +150,8 @@ public class Position {
 
     /**
      * Position constructor
-     * @params { ?Length } x
-     * @params { ?Length } y
+     * @param { ?Length } x
+     * @param { ?Length } y
      */
     @!APILevel[
         22,
@@ -219,10 +219,10 @@ public class MotionPathOptions {
     /**
      * MotionPathOptions constructor.
      *
-     * @params { ?String } path
-     * @params { ?Float64 } from
-     * @params { ?Float64 } to
-     * @params { ?Bool } rotatable
+     * @param { ?String } path
+     * @param { ?Float64 } from
+     * @param { ?Float64 } to
+     * @param { ?Bool } rotatable
      */
     @!APILevel[
         22,
@@ -313,12 +313,12 @@ public class SharedTransitionOptions {
     /**
      * SharedTransitionOptions constructor.
      *
-     * @params { ?Int32 } duration
-     * @params { ?Curve } curve
-     * @params { ?Int32 } delay
-     * @params { ?MotionPathOptions } motionPath
-     * @params { ?Int32 } zIndex
-     * @params { ?SharedTransitionEffectType } effectType
+     * @param { ?Int32 } duration
+     * @param { ?Curve } curve
+     * @param { ?Int32 } delay
+     * @param { ?MotionPathOptions } motionPath
+     * @param { ?Int32 } zIndex
+     * @param { ?SharedTransitionEffectType } effectType
      */
     @!APILevel[
         22,
@@ -429,15 +429,15 @@ public class AnimateParam {
     /**
      * AnimateParam constructor.
      *
-     * @params { ?Int32 } duration
-     * @params { ?Float32 } tempo
-     * @params { ?Curve } curve
-     * @params { ?Int32 } delay
-     * @params { ?Int32 } iterations
-     * @params { ?PlayMode } playMode
-     * @params { Option<() -> Unit> } onFinish
-     * @params { ?FinishCallbackType } finishCallbackType
-     * @params { Option<ExpectedFrameRateRange> } expectedFrameRateRange
+     * @param { ?Int32 } duration
+     * @param { ?Float32 } tempo
+     * @param { ?Curve } curve
+     * @param { ?Int32 } delay
+     * @param { ?Int32 } iterations
+     * @param { ?PlayMode } playMode
+     * @param { Option<() -> Unit> } onFinish
+     * @param { ?FinishCallbackType } finishCallbackType
+     * @param { Option<ExpectedFrameRateRange> } expectedFrameRateRange
      */
     @!APILevel[
         22,
@@ -495,8 +495,8 @@ public class HorizontalAlignment {
     /**
      * Defines the constructor of HorizontalAlignment.
      *
-     * @params { ?String } anchor
-     * @params { ?HorizontalAlign } align
+     * @param { ?String } anchor
+     * @param { ?HorizontalAlign } align
      */
     @!APILevel[
         22,
@@ -537,8 +537,8 @@ public class VerticalAlignment {
     /**
      * Defines the constructor of VerticalAlignment.
      *
-     * @params { ?String } anchor
-     * @params { ?VerticalAlign } align
+     * @param { ?String } anchor
+     * @param { ?VerticalAlign } align
      */
     @!APILevel[
         22,
@@ -580,8 +580,8 @@ public class Bias {
     /**
      * Defines the constructor of Bias.
      *
-     * @params { ?Float64 } horizontal
-     * @params { ?Float64 } vertical
+     * @param { ?Float64 } horizontal
+     * @param { ?Float64 } vertical
      */
     @!APILevel[
         22,
@@ -640,10 +640,10 @@ public class Fonts {
     /**
      * Fonts constructor.
      *
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?ResourceStr } family
-     * @params { ?FontStyle } style
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?ResourceStr } family
+     * @param { ?FontStyle } style
      */
     @!APILevel[
         22,
@@ -705,10 +705,10 @@ public class BorderRadiuses {
     /**
      * BorderRadiuses constructor.
      *
-     * @params { ?Length } topLeft
-     * @params { ?Length } topRight
-     * @params { ?Length } bottomLeft
-     * @params { ?Length } bottomRight
+     * @param { ?Length } topLeft
+     * @param { ?Length } topRight
+     * @param { ?Length } bottomLeft
+     * @param { ?Length } bottomRight
      */
     @!APILevel[
         22,
@@ -775,10 +775,10 @@ public class Margin {
     /**
      * Margin constructor.
      *
-     * @params { ?Length } top
-     * @params { ?Length } right
-     * @params { ?Length } bottom
-     * @params { ?Length } left
+     * @param { ?Length } top
+     * @param { ?Length } right
+     * @param { ?Length } bottom
+     * @param { ?Length } left
      */
     @!APILevel[
         22,
@@ -888,12 +888,12 @@ public class ShadowOptions {
     /**
      * ShadowOptions constructor.
      *
-     * @params { ?Float64 } radius
-     * @params { ?ShadowType } shadowType
-     * @params { ?ResourceColor } color
-     * @params { ?Float64 } offsetX
-     * @params { ?Float64 } offsetY
-     * @params { ?Bool } fill
+     * @param { ?Float64 } radius
+     * @param { ?ShadowType } shadowType
+     * @param { ?ResourceColor } color
+     * @param { ?Float64 } offsetX
+     * @param { ?Float64 } offsetY
+     * @param { ?Bool } fill
      */
     @!APILevel[
         22,
@@ -1057,8 +1057,8 @@ public class Offset {
     /**
      * Offset constructor.
      *
-     * @params { ?Length } dx
-     * @params { ?Length } dy
+     * @param { ?Length } dx
+     * @param { ?Length } dy
      */
     @!APILevel[
         22,
@@ -1124,9 +1124,9 @@ public class ExpectedFrameRateRange {
     /**
      * ExpectedFrameRateRange constructor.
      *
-     * @params { ?Int32 } min
-     * @params { ?Int32 } max
-     * @params { ?Int32 } expected
+     * @param { ?Int32 } min
+     * @param { ?Int32 } max
+     * @param { ?Int32 } expected
      */
     @!APILevel[
         22,
@@ -1230,13 +1230,13 @@ public class AlignRuleOptions {
     /**
      * Defines the constructor of AlignRuleOptions.
      *
-     * @params { ?HorizontalAlignment } left
-     * @params { ?HorizontalAlignment } right
-     * @params { ?HorizontalAlignment } middle
-     * @params { ?VerticalAlignment } top
-     * @params { ?VerticalAlignment } bottom
-     * @params { ?VerticalAlignment } center
-     * @params { Bias } bias
+     * @param { ?HorizontalAlignment } left
+     * @param { ?HorizontalAlignment } right
+     * @param { ?HorizontalAlignment } middle
+     * @param { ?VerticalAlignment } top
+     * @param { ?VerticalAlignment } bottom
+     * @param { ?VerticalAlignment } center
+     * @param { Bias } bias
      */
     @!APILevel[
         22,
@@ -1301,10 +1301,10 @@ public class EdgeStyles {
     /**
      * Defines the constructor of EdgeStyles.
      *
-     * @params { ?BorderStyle } top
-     * @params { ?BorderStyle } right
-     * @params { ?BorderStyle } bottom
-     * @params { ?BorderStyle } left
+     * @param { ?BorderStyle } top
+     * @param { ?BorderStyle } right
+     * @param { ?BorderStyle } bottom
+     * @param { ?BorderStyle } left
      */
     @!APILevel[
         22,
@@ -1409,8 +1409,8 @@ public class PickerTextStyle {
     /**
      * PickerTextStyle constructor.
      *
-     * @params { ?ResourceColor } color
-     * @params { ?Font } font
+     * @param { ?ResourceColor } color
+     * @param { ?Font } font
      */
     @!APILevel[
         22,
@@ -1466,10 +1466,10 @@ public class Font {
     /**
      * Font constructor.
      *
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?ResourceStr } family
-     * @params { ?FontStyle } style
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?ResourceStr } family
+     * @param { ?FontStyle } style
      */
     @!APILevel[
         22,
@@ -1504,8 +1504,8 @@ public class Bindable<T> {
     /**
      * Bindable constructor.
      *
-     * @params { T } value - value of the bindable property.
-     * @params { (T) -> Unit } onchange - callback of the bindable property.
+     * @param { T } value - value of the bindable property.
+     * @param { (T) -> Unit } onchange - callback of the bindable property.
      */
     public init(value: T, onchange: (T) -> Unit) {
         this.value = value

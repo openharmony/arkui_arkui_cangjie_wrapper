@@ -78,7 +78,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
     /**
      * Called when image is entered in span.
      *
-     * @params { ?ResourceStr } value - The image resource.
+     * @param { ?ResourceStr } value - The image resource.
      */
     @!APILevel[
         22,
@@ -100,7 +100,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
     /**
      * Called when image is entered in span.
      *
-     * @params { ?PixelMap } value - The image resource.
+     * @param { ?PixelMap } value - The image resource.
      */
     @!APILevel[
         22,
@@ -116,7 +116,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
     /**
      * Called when the alignment of image span is set.
      *
-     * @params { ?ImageSpanAlignment } value - The alignment type of image span.
+     * @param { ?ImageSpanAlignment } value - The alignment type of image span.
      * @returns { This } The attribute of the image span.
      */
     @!APILevel[
@@ -134,7 +134,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
     /**
      * Sets the zoom type of an image.
      *
-     * @params { ?ImageFit } value - Image display mode.
+     * @param { ?ImageFit } value - Image display mode.
      * @returns { This } The attribute of the image span.
      */
     @!APILevel[
@@ -152,7 +152,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
     /**
      * Sets the color filter effect on the image span.
      *
-     * @params { ?ColorFilter } filter ColorFilter object.
+     * @param { ?ColorFilter } filter ColorFilter object.
      * @returns { This } The attribute of the image span.
      */
     @!APILevel[
@@ -176,7 +176,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
      * Sets a callback which is triggered when the image is successfully loaded.
      * The size of the image source that is successfully loaded is returned, in pixels.
      *
-     * @params { ?ImageCompleteCallback } callback - Triggered when the image is successfully loaded.
+     * @param { ?ImageCompleteCallback } callback - Triggered when the image is successfully loaded.
      * @returns { This } The attribute of the image span.
      */
     @!APILevel[
@@ -199,7 +199,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
      * Sets a callback which is triggered when an exception occurs during image loading.
      * The field of "message" returned in the callback carries the detailed information of failed image loading.
      *
-     * @params { ?ImageErrorCallback } callback - Triggered when an exception occurs during image loading.
+     * @param { ?ImageErrorCallback } callback - Triggered when an exception occurs during image loading.
      * @returns { This } The attribute of the image span.
      */
     @!APILevel[

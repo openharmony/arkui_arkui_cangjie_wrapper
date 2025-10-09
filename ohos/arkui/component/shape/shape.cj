@@ -91,7 +91,7 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     /**
     * Defines Shape Component instance.
     *
-    * @params { () -> Unit } child
+    * @param { () -> Unit } child
     */
     @!APILevel[
         22,
@@ -106,7 +106,7 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     /**
     * Defines Shape Component instance.
     *
-    * @params { ?PixelMap } value
+    * @param { ?PixelMap } value
     */
     @!APILevel[
         22,
@@ -124,10 +124,10 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     /**
     * Viewport of shape
     *
-    * @params { ?Length } x
-    * @params { ?Length } y
-    * @params { ?Length } width
-    * @params { ?Length } height
+    * @param { ?Length } x
+    * @param { ?Length } y
+    * @param { ?Length } width
+    * @param { ?Length } height
     * @returns { This }
     */
     @!APILevel[
@@ -163,9 +163,9 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     /**
     * Called when shape mesh.
     *
-    * @params { ?Array<Float64> } value
-    * @params { ?UInt32 } column
-    * @params { ?UInt32 } row
+    * @param { ?Array<Float64> } value
+    * @param { ?UInt32 } column
+    * @param { ?UInt32 } row
     * @returns { This }
     */
     @!APILevel[

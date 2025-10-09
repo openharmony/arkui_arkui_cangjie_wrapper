@@ -90,13 +90,13 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Defines Slider Component instance.
     *
-    * @params { ?Float64 } min
-    * @params { ?Float64 } max
-    * @params { ?Float64 } step
-    * @params { ?Float64 } value
-    * @params { ?SliderStyle } style
-    * @params { ?Axis } direction
-    * @params { ?Bool } reverse
+    * @param { ?Float64 } min
+    * @param { ?Float64 } max
+    * @param { ?Float64 } step
+    * @param { ?Float64 } value
+    * @param { ?SliderStyle } style
+    * @param { ?Axis } direction
+    * @param { ?Bool } reverse
     */
     @!APILevel[
         22,
@@ -144,7 +144,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Called when the slider color of the slider bar is set.
     *
-    * @params { ?ResourceColor } value
+    * @param { ?ResourceColor } value
     * @returns { This }
     */
     @!APILevel[
@@ -161,7 +161,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Called when the track color of the slider is set.
     *
-    * @params { ?ResourceColor } value
+    * @param { ?ResourceColor } value
     * @returns { This }
     */
     @!APILevel[
@@ -178,7 +178,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Called when the slider of the slider bar is set to slide over the area color.
     *
-    * @params { ?ResourceColor } value
+    * @param { ?ResourceColor } value
     * @returns { This }
     */
     @!APILevel[
@@ -195,7 +195,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Called when setting whether to display step size.
     *
-    * @params { ?Bool } value
+    * @param { ?Bool } value
     * @returns { This }
     */
     @!APILevel[
@@ -211,8 +211,8 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Called when the percentage of bubble prompt is set when sliding.
     *
-    * @params { ?Bool } value
-    * @params { ?ResourceStr } content
+    * @param { ?Bool } value
+    * @param { ?ResourceStr } content
     * @returns { This }
     */
     @!APILevel[
@@ -236,7 +236,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Called when the thickness of track is set.
     *
-    * @params { ?Length } value
+    * @param { ?Length } value
     * @returns { This }
     */
     @!APILevel[
@@ -254,7 +254,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Triggered when the slider is dragged or clicked.
     *
-    * @params { ?(Float64, SliderChangeMode) -> Unit } callback
+    * @param { ?(Float64, SliderChangeMode) -> Unit } callback
     * @returns { This }
     */
     @!APILevel[
@@ -278,7 +278,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Called when the border color of block is set.
     *
-    * @params { ?ResourceColor } value
+    * @param { ?ResourceColor } value
     * @returns { This }
     */
     @!APILevel[

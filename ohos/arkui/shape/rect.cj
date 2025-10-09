@@ -41,8 +41,8 @@ public class RectShape <: BaseShape {
     /**
      * Create a rect drawing class instance.
      *
-     * @params { ?Length } width 
-     * @params { ?Length } height
+     * @param { ?Length } width 
+     * @param { ?Length } height
      */
     @!APILevel[
         22,

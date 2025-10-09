@@ -32,7 +32,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
     /**
      * ObservedPropertyAbstract constructor.
      *
-     * @params { String } info
+     * @param { String } info
      */
     @!APILevel[
         22,
@@ -48,7 +48,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
 
     /**
      *
-     * @params { Observer } observer
+     * @param { Observer } observer
      */
     @!APILevel[
         22,
@@ -58,7 +58,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
 
     /**
      *
-     * @params { Observer } observer
+     * @param { Observer } observer
      */
     @!APILevel[
         22,
@@ -81,7 +81,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
 
     /**
      *
-     * @params { Int64 } rmElmtId
+     * @param { Int64 } rmElmtId
      */
     @!APILevel[
         22,

@@ -269,18 +269,18 @@ public class AnimatorOptions {
     /**
      * Create an animator options.
      *
-     * @params { Int32 } duration - Duration of the animation, in milliseconds.
+     * @param { Int32 } duration - Duration of the animation, in milliseconds.
      * The default value is 0.
-     * @params { String } easing - Time curve of the animation.
-     * @params { Int32 } delay - Delay for the animation start. The default value indicates no delay.
+     * @param { String } easing - Time curve of the animation.
+     * @param { Int32 } delay - Delay for the animation start. The default value indicates no delay.
      * The default value is 0.
-     * @params { AnimatorFill } fill - Whether to resume to the initial state after the animation is executed.
-     * @params { AnimatorDirection } direction - The animation playback mode.
-     * @params { Int32 } iterations - Number of times the animation will be played. number indicates a fixed number of playback operations, and -1 an unlimited number of playback operations.
+     * @param { AnimatorFill } fill - Whether to resume to the initial state after the animation is executed.
+     * @param { AnimatorDirection } direction - The animation playback mode.
+     * @param { Int32 } iterations - Number of times the animation will be played. number indicates a fixed number of playback operations, and -1 an unlimited number of playback operations.
      * The default value is 1.
-     * @params { Float64 } begin - Starting point of animator interpolation.
+     * @param { Float64 } begin - Starting point of animator interpolation.
      * The default value is 0.
-     * @params { Float64 } end - Ending point of Dynamic Interpolation.
+     * @param { Float64 } end - Ending point of Dynamic Interpolation.
      */
     @!APILevel[
         22,
@@ -454,7 +454,7 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * Reset the options for current animator.
      *
-     * @params { AnimatorOptions } options
+     * @param { AnimatorOptions } options
      * @throws { BusinessException } 100001 - Internal error. Possible causes:
      * <br> The specified page is not found or the object property list is not obtained.
      */
@@ -601,7 +601,7 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * The expected frame rate of dynamical of rate range.
      *
-     * @params { ExpectedFrameRateRange } rateRange
+     * @param { ExpectedFrameRateRange } rateRange
      * @throws { BusinessException } 100001 - Internal error. Possible causes:
      * <br> The specified page is not found or the object property list is not obtained.
      */

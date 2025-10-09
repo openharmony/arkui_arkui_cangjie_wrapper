@@ -192,7 +192,7 @@ public class BlurOptions {
     /**
      * BlurOptions constructor.
      *
-     * @params { ?VArray<Float32, $2> } grayscale
+     * @param { ?VArray<Float32, $2> } grayscale
      */
     @!APILevel[
         22,
@@ -259,10 +259,10 @@ public class ForegroundBlurStyleOptions {
     /**
      * ForegroundBlurStyleOptions constructor.
      *
-     * @params { ?ThemeColorMode } colorMode
-     * @params { ?AdaptiveColor } adaptiveColor
-     * @params { ?BlurOptions } blurOptions
-     * @params { ?Float32 } scale
+     * @param { ?ThemeColorMode } colorMode
+     * @param { ?AdaptiveColor } adaptiveColor
+     * @param { ?BlurOptions } blurOptions
+     * @param { ?Float32 } scale
      */
     @!APILevel[
         22,
@@ -296,8 +296,8 @@ public class PopupButton {
     /**
      * PopupButton constructor.
      *
-     * @params { ?String } value - Button text value
-     * @params { () -> Unit } action - action
+     * @param { ?String } value - Button text value
+     * @param { () -> Unit } action - action
      */
     @!APILevel[
         22,
@@ -332,7 +332,7 @@ public class PopupStateChangeParam {
     /**
      * PopupStateChangeParam constructor.
      *
-     * @params {Bool} value
+     * @param {Bool} value
      */
     @!APILevel[
         22,
@@ -572,30 +572,30 @@ public class PopupOptions {
     /**
      * PopupOptions constructor.
      *
-     * @params { ?String } message
-     * @params { ?PopupButton } primaryButton
-     * @params { ?PopupButton } secondaryButton
-     * @params { ?(PopupStateChangeParam) -> Unit } onStateChange
-     * @params { ?Length } arrowOffset
-     * @params { ?Bool } showInSubWindow
-     * @params { ?PopupMessageOptions } messageOptions
-     * @params { ?ResourceColor } mask
-     * @params { ?Length } targetSpace
-     * @params { ?Placement } placement
-     * @params { ?Position } offset
-     * @params { ?Bool } enableArrow
-     * @params { ?Color } popupColor
-     * @params { ?Bool } autoCancel
-     * @params { ?Length } width
-     * @params { ?ArrowPointPosition } arrowPointPosition
-     * @params { ?Length } arrowWidth
-     * @params { ?Length } arrowHeight
-     * @params { ?Length } radius
-     * @params { ?ShadowStyle } shadow
-     * @params { ?BlurStyle } backgroundBlurStyle
-     * @params { ?TransitionEffect } transition
-     * @params { ?(DismissPopupAction) -> Unit } onWillDismiss
-     * @params { ?Bool } followTransformOfTarget
+     * @param { ?String } message
+     * @param { ?PopupButton } primaryButton
+     * @param { ?PopupButton } secondaryButton
+     * @param { ?(PopupStateChangeParam) -> Unit } onStateChange
+     * @param { ?Length } arrowOffset
+     * @param { ?Bool } showInSubWindow
+     * @param { ?PopupMessageOptions } messageOptions
+     * @param { ?ResourceColor } mask
+     * @param { ?Length } targetSpace
+     * @param { ?Placement } placement
+     * @param { ?Position } offset
+     * @param { ?Bool } enableArrow
+     * @param { ?Color } popupColor
+     * @param { ?Bool } autoCancel
+     * @param { ?Length } width
+     * @param { ?ArrowPointPosition } arrowPointPosition
+     * @param { ?Length } arrowWidth
+     * @param { ?Length } arrowHeight
+     * @param { ?Length } radius
+     * @param { ?ShadowStyle } shadow
+     * @param { ?BlurStyle } backgroundBlurStyle
+     * @param { ?TransitionEffect } transition
+     * @param { ?(DismissPopupAction) -> Unit } onWillDismiss
+     * @param { ?Bool } followTransformOfTarget
      */
     @!APILevel[
         22,
@@ -671,8 +671,8 @@ public class MenuElement {
     /**
      * MenuElement constructor.
      *
-     * @params { ?ResourceStr } value
-     * @params { () -> Unit } action - action
+     * @param { ?ResourceStr } value
+     * @param { () -> Unit } action - action
      */
     @!APILevel[
         22,
@@ -939,30 +939,30 @@ public class CustomPopupOptions {
     /**
      * CustomPopupOptions constructor.
      *
-     * @params { () -> Unit } builder
-     * @params { ?Placement } placement
-     * @params { ?Color } maskColor
-     * @params { ?Color } backgroundColor
-     * @params { ?Bool } enableArrow
-     * @params { ?Bool } autoCancel
-     * @params { ?(PopupStateChangeParam) -> Unit } onStateChange
-     * @params { ?Bool } showInSubWindow
-     * @params { ?Color } backgroundColor
-     * @params { ?Length } arrowOffset
-     * @params { ?Color } mask
-     * @params { ?Length } targetSpace
-     * @params { ?Position } offset
-     * @params { ?Length } width
-     * @params { ?ArrowPointPosition } arrowPointPosition
-     * @params { ?Length } arrowWidth
-     * @params { ?Length } arrowHeight
-     * @params { ?Length } radius
-     * @params { ?ShadowStyle } shadow
-     * @params { ?BlurStyle } backgroundBlurStyle
-     * @params { ?Bool } focusable
-     * @params { ?TransitionEffect } transition
-     * @params { Option<(DismissPopupAction) -> Unit> } onWillDismiss
-     * @params { ?Bool } followTransformOfTarget
+     * @param { () -> Unit } builder
+     * @param { ?Placement } placement
+     * @param { ?Color } maskColor
+     * @param { ?Color } backgroundColor
+     * @param { ?Bool } enableArrow
+     * @param { ?Bool } autoCancel
+     * @param { ?(PopupStateChangeParam) -> Unit } onStateChange
+     * @param { ?Bool } showInSubWindow
+     * @param { ?Color } backgroundColor
+     * @param { ?Length } arrowOffset
+     * @param { ?Color } mask
+     * @param { ?Length } targetSpace
+     * @param { ?Position } offset
+     * @param { ?Length } width
+     * @param { ?ArrowPointPosition } arrowPointPosition
+     * @param { ?Length } arrowWidth
+     * @param { ?Length } arrowHeight
+     * @param { ?Length } radius
+     * @param { ?ShadowStyle } shadow
+     * @param { ?BlurStyle } backgroundBlurStyle
+     * @param { ?Bool } focusable
+     * @param { ?TransitionEffect } transition
+     * @param { Option<(DismissPopupAction) -> Unit> } onWillDismiss
+     * @param { ?Bool } followTransformOfTarget
      */
     @!APILevel[
         22,
@@ -1051,8 +1051,8 @@ public class PopupMessageOptions {
     /**
      * PopupMessageOptions constructor.
      *
-     * @params { ?ResourceColor } textColor
-     * @params { ?Font } font
+     * @param { ?ResourceColor } textColor
+     * @param { ?Font } font
      */
     @!APILevel[
         22,
@@ -1095,8 +1095,8 @@ public class OverlayOffset {
     /**
      * OverlayOffset constructor.
      *
-     * @params { ?Float64 } x
-     * @params { ?Float64 } y
+     * @param { ?Float64 } x
+     * @param { ?Float64 } y
      */
     @!APILevel[
         22,
@@ -1156,10 +1156,10 @@ public class EdgeWidths {
     /**
      * EdgeWidths constructor.
      *
-     * @params { ?Length } top
-     * @params { ?Length } right
-     * @params { ?Length } bottom
-     * @params { ?Length } left
+     * @param { ?Length } top
+     * @param { ?Length } right
+     * @param { ?Length } bottom
+     * @param { ?Length } left
      */
     @!APILevel[
         22,
@@ -1195,11 +1195,11 @@ public open class BindOptions {
     /**
      * BindOptions constructor.
      *
-     * @params {ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
-     * @params {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
-     * @params {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
-     * @params {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
-     * @params {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
+     * @param {ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
+     * @param {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
+     * @param {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
+     * @param {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
+     * @param {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
      */
     @!APILevel[
         22,
@@ -1252,14 +1252,14 @@ public class ContentCoverOptions <: BindOptions {
     /**
      * ContentCoverOptions constructor.
      *
-     * @params {?ModalTransition} modalTransition - Defines transition type
-     * @params {?(DismissContentCoverAction) -> Unit} onWillDismiss - Callback function when the content cover interactive dismiss.
-     * @params {?TransitionEffect} transition
-     * @params {?ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
-     * @params {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
-     * @params {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
-     * @params {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
-     * @params {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
+     * @param {?ModalTransition} modalTransition - Defines transition type
+     * @param {?(DismissContentCoverAction) -> Unit} onWillDismiss - Callback function when the content cover interactive dismiss.
+     * @param {?TransitionEffect} transition
+     * @param {?ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
+     * @param {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
+     * @param {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
+     * @param {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
+     * @param {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
      */
     @!APILevel[
         22,
@@ -1527,34 +1527,34 @@ public class SheetOptions <: BindOptions {
     /**
      * Defines sheet options.
      *
-     * @params { Option<ResourceColor> } backgroundColor
-     * @params { Option<() -> Unit> } onAppear
-     * @params { Option<() -> Unit> } onDisappear
-     * @params { Option<() -> Unit> } onWillAppear
-     * @params { Option<() -> Unit> } onWillDisappear
-     * @params { Option<SheetSize> } height
-     * @params { Option<Array<SheetSize>> } detents
-     * @params { Option<SheetType> } preferType
-     * @params { Option<Bool> } showClose
-     * @params { Option<Bool> } dragBar
-     * @params { Option<BlurStyle> } blurStyle
-     * @params { Option<Color> } maskColor
-     * @params { Option<() -> Unit> } title
-     * @params { Option<Bool> } enableOutsideInteractive
-     * @params { Option<(SheetDismiss) -> Unit> } shouldDismiss
-     * @params { Option<(SheetDismiss) -> Unit> } onWillDismiss
-     * @params { Option<(SpringBackAction) -> Unit> } onWillSpringBackWhenDismiss
-     * @params { Option<(Float32) -> Unit> } onHeightDidChange
-     * @params { Option<(Float32) -> Unit> } onDetentsDidChange
-     * @params { Option<(Float32) -> Unit> } onWidthDidChange
-     * @params { Option<(Float32) -> Unit> } onTypeDidChange
-     * @params { Option<Length> } borderWidth
-     * @params { Option<Color> } borderColor
-     * @params { Option<EdgeStyles> } borderStyle
-     * @params { Option<Length> } width
-     * @params { Option<ShadowOptions> } shadow
-     * @params { Option<SheetMode> } mode
-     * @params { Option<ScrollSizeMode> } scrollSizeMode
+     * @param { Option<ResourceColor> } backgroundColor
+     * @param { Option<() -> Unit> } onAppear
+     * @param { Option<() -> Unit> } onDisappear
+     * @param { Option<() -> Unit> } onWillAppear
+     * @param { Option<() -> Unit> } onWillDisappear
+     * @param { Option<SheetSize> } height
+     * @param { Option<Array<SheetSize>> } detents
+     * @param { Option<SheetType> } preferType
+     * @param { Option<Bool> } showClose
+     * @param { Option<Bool> } dragBar
+     * @param { Option<BlurStyle> } blurStyle
+     * @param { Option<Color> } maskColor
+     * @param { Option<() -> Unit> } title
+     * @param { Option<Bool> } enableOutsideInteractive
+     * @param { Option<(SheetDismiss) -> Unit> } shouldDismiss
+     * @param { Option<(SheetDismiss) -> Unit> } onWillDismiss
+     * @param { Option<(SpringBackAction) -> Unit> } onWillSpringBackWhenDismiss
+     * @param { Option<(Float32) -> Unit> } onHeightDidChange
+     * @param { Option<(Float32) -> Unit> } onDetentsDidChange
+     * @param { Option<(Float32) -> Unit> } onWidthDidChange
+     * @param { Option<(Float32) -> Unit> } onTypeDidChange
+     * @param { Option<Length> } borderWidth
+     * @param { Option<Color> } borderColor
+     * @param { Option<EdgeStyles> } borderStyle
+     * @param { Option<Length> } width
+     * @param { Option<ShadowOptions> } shadow
+     * @param { Option<SheetMode> } mode
+     * @param { Option<ScrollSizeMode> } scrollSizeMode
      */
     @!APILevel[
         22,
@@ -1830,10 +1830,10 @@ public class Rectangle {
     /**
      * Rectangle constructor.
      *
-     * @params { ?Length } x
-     * @params { ?Length } y
-     * @params { ?Length } width
-     * @params { ?Length } height
+     * @param { ?Length } x
+     * @param { ?Length } y
+     * @param { ?Length } width
+     * @param { ?Length } height
      */
     @!APILevel[
         22,
@@ -2058,21 +2058,21 @@ public class ContextMenuOptions {
     /**
      * ContextMenuOptions constructor.
      *
-     * @params { ?Position } offset
-     * @params { Option<Placement> } placement
-     * @params { ?Bool } enableArrow
-     * @params { ?Length } arrowOffset
-     * @params { Option<CustomBuilder> } preview
-     * @params { ?ContextMenuAnimationOptions } previewAnimationOptions
-     * @params { ?() -> Unit } onAppear
-     * @params { ?() -> Unit } onDisappear
-     * @params { ?() -> Unit } aboutToAppear
-     * @params { ?() -> Unit } aboutToDisappear
-     * @params { ?ResourceColor } backgroundColor
-     * @params { ?BlurStyle } backgroundBlurStyle
-     * @params { ?TransitionEffect } transition
-     * @params { ?BorderRadiuses } borderRadius
-     * @params { ?Margin } layoutRegionMargin
+     * @param { ?Position } offset
+     * @param { Option<Placement> } placement
+     * @param { ?Bool } enableArrow
+     * @param { ?Length } arrowOffset
+     * @param { Option<CustomBuilder> } preview
+     * @param { ?ContextMenuAnimationOptions } previewAnimationOptions
+     * @param { ?() -> Unit } onAppear
+     * @param { ?() -> Unit } onDisappear
+     * @param { ?() -> Unit } aboutToAppear
+     * @param { ?() -> Unit } aboutToDisappear
+     * @param { ?ResourceColor } backgroundColor
+     * @param { ?BlurStyle } backgroundBlurStyle
+     * @param { ?TransitionEffect } transition
+     * @param { ?BorderRadiuses } borderRadius
+     * @param { ?Margin } layoutRegionMargin
      */
     @!APILevel[
         22,
@@ -2214,9 +2214,9 @@ public class ContextMenuAnimationOptions {
     /**
      * Defines the ContextMenu's preview animator options.
      *
-     * @params { ?VArray<Float64, $2> } scale
-     * @params { ?TransitionEffect } transition
-     * @params { ?VArray<Float64, $2> } hoverScale
+     * @param { ?VArray<Float64, $2> } scale
+     * @param { ?TransitionEffect } transition
+     * @param { ?VArray<Float64, $2> } hoverScale
      */
     @!APILevel[
         22,

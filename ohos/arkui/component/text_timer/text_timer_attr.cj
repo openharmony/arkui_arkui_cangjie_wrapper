@@ -36,7 +36,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * <br>If the specified date format is yy, MM, or dd, the default value is used instead.
      * </p>
      *
-     * @params { ?String } value - Custom format.Default value: 'HH:mm:ss.SS'.
+     * @param { ?String } value - Custom format.Default value: 'HH:mm:ss.SS'.
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
@@ -50,7 +50,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * This event is not triggered when the screen is locked or the application is running in the background.
      * When high-precision formats (such as SSS or SS) are used, the callback interval may vary.
      *
-     * @params { ?(Int64, Int64) -> Unit } event
+     * @param { ?(Int64, Int64) -> Unit } event
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
@@ -62,7 +62,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
     /**
      * Sets the font size.
      *
-     * @params { ?Length } value - Font size.The default font size is 16 fp.
+     * @param { ?Length } value - Font size.The default font size is 16 fp.
      * <br>If fontSize is of the number type, the unit fp is used.
      * <br>The value cannot be a percentage.
      * @returns { TextTimerAttribute }
@@ -76,7 +76,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
     /**
      * Sets the font color.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
@@ -88,7 +88,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
     /**
      * Sets the font style.
      *
-     * @params { ?FontStyle } value - Font style.Default value: FontStyle.Normal.
+     * @param { ?FontStyle } value - Font style.Default value: FontStyle.Normal.
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
@@ -104,7 +104,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * <br>If the value is too large, the text may be clipped depending on the font.
      * </p>
      *
-     * @params { ?FontWeight } value - Font weight.
+     * @param { ?FontWeight } value - Font weight.
      * <br>For the number type, Value range: [100, 900], at an interval of 100.The default value is 400.
      * <br>A larger value indicates a heavier font weight.
      * <br>For the string type, only strings that represent a number.
@@ -119,7 +119,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
     /**
      * Sets the font family.
      *
-     * @params { ?ResourceStr } value - Font family. Default font: 'HarmonyOS Sans'.
+     * @param { ?ResourceStr } value - Font family. Default font: 'HarmonyOS Sans'.
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
@@ -133,7 +133,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
-     * @params { ?Array<ShadowOptions> } value - The shadow options.
+     * @param { ?Array<ShadowOptions> } value - The shadow options.
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
@@ -147,7 +147,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
-     * @params { ?ShadowOptions } value - The shadow options.
+     * @param { ?ShadowOptions } value - The shadow options.
      * @returns { TextTimerAttribute }
      */
     @!APILevel[

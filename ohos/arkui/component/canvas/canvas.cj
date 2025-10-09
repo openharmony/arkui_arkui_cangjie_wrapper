@@ -110,7 +110,7 @@ public class RenderingContextSettings {
     /**
      * Create an RenderingContextSettings object based on the antialias and alpha.
      *
-     * @params { ?Bool } antialias
+     * @param { ?Bool } antialias
      */
     @!APILevel[
         22,
@@ -163,7 +163,7 @@ public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
     /**
      * Construct a canvas component.
      *
-     * @params { ?CanvasRenderingContext2D } context - Canvas context object.
+     * @param { ?CanvasRenderingContext2D } context - Canvas context object.
      */
     @!APILevel[
         22,
@@ -181,7 +181,7 @@ public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
     /**
      * Event notification after the canvas component is constructed. You can draw the canvas at this time.
      *
-     * @params { ?() -> Unit } callback
+     * @param { ?() -> Unit } callback
      * @returns { This }
      */
     @!APILevel[
@@ -227,8 +227,8 @@ public class CanvasGradient <: RemoteDataLite {
     /**
      * Add a breakpoint defined by offset and color to the gradient.
      *
-     * @params { Float64 } offset - Value between 0 and 1, out of range throws INDEX_SIZE_ERR error.
-     * @params { ?ResourceColor } color - Set the gradient color.
+     * @param { Float64 } offset - Value between 0 and 1, out of range throws INDEX_SIZE_ERR error.
+     * @param { ?ResourceColor } color - Set the gradient color.
      */
     @!APILevel[
         22,

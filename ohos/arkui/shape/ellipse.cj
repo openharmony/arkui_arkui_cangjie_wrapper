@@ -33,8 +33,8 @@ public class EllipseShape <: BaseShape {
     /**
      * Create a ellipse drawing class instance.
      *
-     * @params { ?Length } width 
-     * @params { ?Length } height
+     * @param { ?Length } width 
+     * @param { ?Length } height
      */
     @!APILevel[
         22,

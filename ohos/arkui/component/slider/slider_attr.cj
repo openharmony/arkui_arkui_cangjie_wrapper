@@ -30,7 +30,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     /**
     * Called when the slider color of the slider bar is set.
     *
-    * @params { ?ResourceColor } value
+    * @param { ?ResourceColor } value
     * @returns { SliderAttribute }
     */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     /**
     * Called when the track color of the slider is set.
     *
-    * @params { ?ResourceColor } value
+    * @param { ?ResourceColor } value
     * @returns { SliderAttribute }
     */
     @!APILevel[
@@ -54,7 +54,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     /**
     * Called when the slider of the slider bar is set to slide over the area color.
     *
-    * @params { ?ResourceColor } value
+    * @param { ?ResourceColor } value
     * @returns { SliderAttribute }
     */
     @!APILevel[
@@ -66,7 +66,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     /**
     * Called when setting whether to display step size.
     *
-    * @params { ?Bool } value
+    * @param { ?Bool } value
     * @returns { SliderAttribute }
     */
     @!APILevel[
@@ -78,8 +78,8 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     /**
     * Called when the percentage of bubble prompt is set when sliding.
     *
-    * @params { ?Bool } value
-    * @params { ?ResourceStr } content
+    * @param { ?Bool } value
+    * @param { ?ResourceStr } content
     * @returns { SliderAttribute }
     */
     @!APILevel[
@@ -91,7 +91,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     /**
     * Called when the thickness of track is set.
     *
-    * @params { ?Length } value
+    * @param { ?Length } value
     * @returns { SliderAttribute }
     */
     @!APILevel[
@@ -103,7 +103,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     /**
     * Triggered when the slider is dragged or clicked.
     *
-    * @params { ?(Float64, SliderChangeMode) -> Unit } callback
+    * @param { ?(Float64, SliderChangeMode) -> Unit } callback
     * @returns { SliderAttribute }
     */
     @!APILevel[
@@ -115,7 +115,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     /**
     * Called when the border color of block is set.
     *
-    * @params { ?ResourceColor } value
+    * @param { ?ResourceColor } value
     * @returns { SliderAttribute }
     */
     @!APILevel[

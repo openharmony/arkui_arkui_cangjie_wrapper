@@ -39,7 +39,7 @@ public class ViewBuilder {
     /**
      * Initializes a new instance of the ViewBuilder class.
      *
-     * @params { () -> Unit } build
+     * @param { () -> Unit } build
      */
     @!APILevel[
         22,
@@ -54,8 +54,8 @@ public class ViewBuilder {
 /**
  * Binds the view builder to the custom view.
  *
- * @params { (CustomView) -> ViewBuilder } builder
- * @params { CustomView } thisView
+ * @param { (CustomView) -> ViewBuilder } builder
+ * @param { CustomView } thisView
  */
 @!APILevel[
     22,
@@ -68,8 +68,8 @@ public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView) {
 /**
  * Binds the view builder to the custom view with one observed property.
  *
- * @params { (CustomView, ObservedProperty<T1>) -> ViewBuilder } builder
- * @params { CustomView } thisView
+ * @param { (CustomView, ObservedProperty<T1>) -> ViewBuilder } builder
+ * @param { CustomView } thisView
  */
 @!APILevel[
     22,
@@ -82,8 +82,8 @@ public func bind<T1> (builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder
 /**
  * Binds the view builder to the custom view with two observed properties.
  *
- * @params { (CustomView, ObservedProperty<T1>, ObservedProperty<T2>) -> ViewBuilder } builder
- * @params { CustomView } thisView
+ * @param { (CustomView, ObservedProperty<T1>, ObservedProperty<T2>) -> ViewBuilder } builder
+ * @param { CustomView } thisView
  */
 @!APILevel[
     22,
@@ -99,8 +99,8 @@ public func bind<T1, T2> (
 /**
  * Binds the view builder to the custom view with three observed properties.
  *
- * @params { (CustomView, ObservedProperty<T1>, ObservedProperty<T2>, ObservedProperty<T3>) -> ViewBuilder } builder
- * @params { CustomView } thisView
+ * @param { (CustomView, ObservedProperty<T1>, ObservedProperty<T2>, ObservedProperty<T3>) -> ViewBuilder } builder
+ * @param { CustomView } thisView
  */
 @!APILevel[
     22,
@@ -127,7 +127,7 @@ public class LegalCallCheck {
     /**
      * Checks whether the view builder is called in the correct context.
      *
-     * @params { ViewBuilder } _
+     * @param { ViewBuilder } _
      */
     @!APILevel[
         22,
@@ -138,7 +138,7 @@ public class LegalCallCheck {
     /**
      * Checks whether the view builder is called in the correct context.
      *
-     * @params { CustomView } _
+     * @param { CustomView } _
      */
     @!APILevel[
         22,

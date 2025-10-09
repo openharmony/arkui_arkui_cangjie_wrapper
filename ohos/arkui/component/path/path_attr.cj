@@ -32,7 +32,7 @@ sealed interface PathAttribute <: CommonShapeMethod<PathAttribute> {
     /**
      * Called when the command string drawn by the path is set.
      *
-     * @params { ?ResourceStr } commands
+     * @param { ?ResourceStr } commands
      * @returns { This }
      */
     @!APILevel[

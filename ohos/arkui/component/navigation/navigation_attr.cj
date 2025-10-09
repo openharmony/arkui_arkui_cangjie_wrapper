@@ -30,7 +30,7 @@ sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
     /**
      * Set builder for user-defined NavDestination component.
      *
-     * @params { ?(String, Any) -> Unit } builder - The builder function of NavDestination component.
+     * @param { ?(String, Any) -> Unit } builder - The builder function of NavDestination component.
      * @returns { NavigationAttribute } Returns the instance of the Navigation.
      */
     @!APILevel[
@@ -42,8 +42,8 @@ sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
     /**
      * Navigation title
      *
-     * @params { ?ResourceStr } value - Navigation title.
-     * @params { ?NavigationTitleOptions } options - Indicates the options of titlebar.
+     * @param { ?ResourceStr } value - Navigation title.
+     * @param { ?NavigationTitleOptions } options - Indicates the options of titlebar.
      * @returns { NavigationAttribute }
      */
     @!APILevel[
@@ -55,8 +55,8 @@ sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
     /**
      * Navigation title
      *
-     * @params { ?CustomBuilder } value - Navigation title.
-     * @params { ?NavigationTitleOptions } options - Indicates the options of titlebar.
+     * @param { ?CustomBuilder } value - Navigation title.
+     * @param { ?NavigationTitleOptions } options - Indicates the options of titlebar.
      * @returns { NavigationAttribute }
      */
     @!APILevel[
@@ -68,9 +68,9 @@ sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
     /**
      * Sets whether to hide the title bar and whether to animate the visibility change.
      *
-     * @params { ?Bool } hide - Whether to hide the title bar.
+     * @param { ?Bool } hide - Whether to hide the title bar.
      * <br>Default value is **false**. **true**: Hide the title bar. **false**: Show the title bar.
-     * @params { ?Bool } animated - Whether to animate the visibility change.
+     * @param { ?Bool } animated - Whether to animate the visibility change.
      * <br>Default value is **false**.
      * <br>**true**: Animate the visibility change. **false**: Do not animate the visibility change.
      * @returns { NavigationAttribute }
@@ -94,7 +94,7 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
      * Called when the navigation destination is about
      * to be unmounted (or when the transition animation, if any, is about to start).
      *
-     * @params { ?() -> Bool } callback - Indicates callback when the backButton is pressed.
+     * @param { ?() -> Bool } callback - Indicates callback when the backButton is pressed.
      * @returns { NavDestinationAttribute }
      */
     @!APILevel[
@@ -106,7 +106,7 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
     /**
      * Invoked before sub-components of NavDestination are created.
      *
-     * @params { ?Callback<NavDestinationContext, Unit> } callback
+     * @param { ?Callback<NavDestinationContext, Unit> } callback
      * - Indicates callback that invoked before sub-components of NavDestination are created.
      * @returns { NavDestinationAttribute }
      */
@@ -123,8 +123,8 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
      * wrapped in two lines, and then clipped with an ellipsis (...); (2) If a subtitle is set,
      * the subtitle is scaled down and then clipped with an ellipsis (...).
      *
-     * @params { ?ResourceStr } value
-     * @params { ?NavigationTitleOptions } [options] - Indicates the options of titlebar.
+     * @param { ?ResourceStr } value
+     * @param { ?NavigationTitleOptions } [options] - Indicates the options of titlebar.
      * @returns { NavDestinationAttribute }
      */
     @!APILevel[
@@ -140,8 +140,8 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
      * wrapped in two lines, and then clipped with an ellipsis (...); (2) If a subtitle is set,
      * the subtitle is scaled down and then clipped with an ellipsis (...).
      *
-     * @params { ?CustomBuilder } value
-     * @params { ?NavigationTitleOptions } options - Indicates the options of titlebar.
+     * @param { ?CustomBuilder } value
+     * @param { ?NavigationTitleOptions } options - Indicates the options of titlebar.
      * @returns { NavDestinationAttribute }
      */
     @!APILevel[
@@ -153,7 +153,7 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
     /**
      * Specifies whether to hide the title bar.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { NavDestinationAttribute }
      */
     @!APILevel[

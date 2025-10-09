@@ -40,9 +40,9 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGro
     /**
      * Creates the MenuItem component.
      *
-     * @params { ?ResourceStr } header
-     * @params { ?ResourceStr } footer
-     * @params { () -> Unit } child     
+     * @param { ?ResourceStr } header
+     * @param { ?ResourceStr } footer
+     * @param { () -> Unit } child     
      */
     @!APILevel[
         22,
@@ -61,9 +61,9 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGro
     /**
      * Creates the MenuItem component.
      *
-     * @params { ?CustomBuilder } header
-     * @params { ?CustomBuilder } footer
-     * @params { () -> Unit } child     
+     * @param { ?CustomBuilder } header
+     * @param { ?CustomBuilder } footer
+     * @param { () -> Unit } child     
      */
     @!APILevel[
         22,

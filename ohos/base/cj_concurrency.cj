@@ -25,7 +25,7 @@ foreign func FfiOHOSAceFrameworkHasContainer(): Bool
 /**
  * Submit the task to the main thread for execution.
  *
- * @params { () -> Unit } task
+ * @param { () -> Unit } task
  */
 @!APILevel[
     22,

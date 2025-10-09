@@ -30,7 +30,7 @@ sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> 
     /**
      * setting whether all checkbox is selected.
      *
-     * @params { ?Bool } isAllSelected
+     * @param { ?Bool } isAllSelected
      * @returns { CheckboxGroupAttribute }
      */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> 
     /**
      * setting the display color of checkbox.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { CheckboxGroupAttribute }
      */
     @!APILevel[
@@ -55,7 +55,7 @@ sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> 
      * Called when the selection status changes.
      * Anonymous Object Rectification.
      *
-     * @params { ?OnCheckboxGroupChangeCallback } callback
+     * @param { ?OnCheckboxGroupChangeCallback } callback
      * @returns { CheckboxGroupAttribute }
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */

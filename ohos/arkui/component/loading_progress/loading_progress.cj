@@ -56,7 +56,7 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & Loading
     /**
      * Load the color of the progress bar.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[

@@ -16,7 +16,7 @@ public class ReuseParams {
     /**
      * ReuseParams constructor.
      *
-     * @params { Array<(String, Any)> } arr
+     * @param { Array<(String, Any)> } arr
      */
     @!APILevel[
         22,
@@ -36,7 +36,7 @@ public class ReuseParams {
 
     /**
      *
-     * @params { String } key
+     * @param { String } key
      * @returns { ?T }
      */
     @!APILevel[

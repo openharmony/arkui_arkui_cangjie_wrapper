@@ -30,7 +30,7 @@ sealed interface RelativeContainerAttribute <: CommonMethod<RelativeContainerAtt
     /**
     * Specifies guideLines of relativeContainer
     *
-    * @params { ?Array<GuideLineStyle> } value
+    * @param { ?Array<GuideLineStyle> } value
     * @returns { RelativeContainerAttribute }
     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
@@ -43,7 +43,7 @@ sealed interface RelativeContainerAttribute <: CommonMethod<RelativeContainerAtt
     /**
     * Specifies barriers of relativeContainer
     *
-    * @params { ?Array<BarrierStyle> } value
+    * @param { ?Array<BarrierStyle> } value
     * @returns { RelativeContainerAttribute }
     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */

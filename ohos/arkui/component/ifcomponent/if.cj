@@ -44,7 +44,7 @@ public class If <: UINodeBase {
     /**
      * Defines the constructor of If.
      *
-     * @params { () -> Unit } subcomponent
+     * @param { () -> Unit } subcomponent
      */
     @!APILevel[
         22,
@@ -61,7 +61,7 @@ public class If <: UINodeBase {
      * Set the branchId.
      * BranchId identifies uniquely the if .. <1> .. else if .<2>. else .<3>.branch.
      *
-     * @params { Int32 } value - branchId
+     * @param { Int32 } value - branchId
      */
     @!APILevel[
         22,

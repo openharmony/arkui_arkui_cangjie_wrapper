@@ -37,7 +37,7 @@ foreign func FfiOHOSAceFrameworkProcessViewId(view: Int64): ExternalString
 /**
  * load native view of custom component.
  *
- * @params { CustomView } view
+ * @param { CustomView } view
  */
 @!APILevel[
     22,
@@ -95,8 +95,8 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * init function.
      *
-     * @params { Option<CustomView> } parent
-     * @params { Option<LocalStorage> } localStorage
+     * @param { Option<CustomView> } parent
+     * @param { Option<LocalStorage> } localStorage
      */
     @!APILevel[
         22,
@@ -133,8 +133,8 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * declareWatch function.
      *
-     * @params { ObservedProperty<T> } propMember
-     * @params { () -> Unit } callBack
+     * @param { ObservedProperty<T> } propMember
+     * @param { () -> Unit } callBack
      */
     @!APILevel[
         22,
@@ -182,7 +182,7 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * force rerender function.
      *
-     * @params { Bool } deep
+     * @param { Bool } deep
      */
     @!APILevel[
         22,
@@ -288,10 +288,10 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * update function for ForEach.
      *
-     * @params { Int64 } elmtId
-     * @params { CollectionEx<T> } arr
-     * @params { (T, Int64) -> Unit } itemGenFunc
-     * @params { (T, Int64) -> String } keyGeneratorFunc
+     * @param { Int64 } elmtId
+     * @param { CollectionEx<T> } arr
+     * @param { (T, Int64) -> Unit } itemGenFunc
+     * @param { (T, Int64) -> String } keyGeneratorFunc
      */
     @!APILevel[
         22,
@@ -325,7 +325,7 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * observe component creation.
      *
-     * @params { UpdateFuncNew } compilerAssignedUpdateFunc
+     * @param { UpdateFuncNew } compilerAssignedUpdateFunc
      */
     @!APILevel[
         22,
@@ -343,8 +343,8 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * observe recycle component creation.
      *
-     * @params { String } name
-     * @params { RecycleUpdateFunc } recycleUpdateFunc
+     * @param { String } name
+     * @param { RecycleUpdateFunc } recycleUpdateFunc
      */
     @!APILevel[
         22,
@@ -379,7 +379,7 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * internal func called when it is about to reuse.
      *
-     * @params { ReuseParams } param
+     * @param { ReuseParams } param
      */
     @!APILevel[
         22,
@@ -462,10 +462,10 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * Create recycle component.
      *
-     * @params { CustomView } view
-     * @params { Bool } isRecycling
-     * @params { String } name
-     * @params { () -> Unit } callback
+     * @param { CustomView } view
+     * @param { Bool } isRecycling
+     * @param { String } name
+     * @param { () -> Unit } callback
      */
     @!APILevel[
         22,
@@ -478,7 +478,7 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * Create custom component.
      *
-     * @params { CustomView } view
+     * @param { CustomView } view
      */
     @!APILevel[
         22,
@@ -491,8 +491,8 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * Add provider state variable.
      *
-     * @params { ObservedPropertyAbstract } value
-     * @params { String } name
+     * @param { ObservedPropertyAbstract } value
+     * @param { String } name
      */
     @!APILevel[
         22,
@@ -505,7 +505,7 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * Initialize consume state variable.
      *
-     * @params { String } name
+     * @param { String } name
      * @return { ObservedPropertyAbstract }
      */
     @!APILevel[
@@ -522,7 +522,7 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * notify read for state variable.
      *
-     * @params { String } stateInfo
+     * @param { String } stateInfo
      */
     @!APILevel[
         22,
@@ -537,8 +537,8 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * notify update for state variable.
      *
-     * @params { String } stateInfo
-     * @params { ArrayList<Int64> } dependentElmtIds
+     * @param { String } stateInfo
+     * @param { ArrayList<Int64> } dependentElmtIds
      */
     @!APILevel[
         22,
@@ -582,8 +582,8 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * Add child by id.
      *
-     * @params { Int64 } id
-     * @params { CustomView } child
+     * @param { Int64 } id
+     * @param { CustomView } child
      */
     @!APILevel[
         22,
@@ -637,8 +637,8 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * update function for IfElse branch.
      *
-     * @params { Int32 } branchId
-     * @params { () -> Unit } branchFunc
+     * @param { Int32 } branchId
+     * @param { () -> Unit } branchFunc
      */
     @!APILevel[
         22,

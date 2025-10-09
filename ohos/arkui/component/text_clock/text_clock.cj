@@ -273,25 +273,25 @@ public class DateTimeOptions {
     /**
      * DateTimeOptions Constructor.
      *
-     * @params { ?String } locale
-     * @params { ?String } dateStyle
-     * @params { ?String } timeStyle
-     * @params { ?String } hourCycle
-     * @params { ?String } timeZone
-     * @params { ?String } numberingSystem
-     * @params { ?Bool } hour12
-     * @params { ?String } weekday
-     * @params { ?String } era
-     * @params { ?String } year
-     * @params { ?String } month
-     * @params { ?String } day
-     * @params { ?String } hour
-     * @params { ?String } minute
-     * @params { ?String } second
-     * @params { ?String } timeZoneName
-     * @params { ?String } dayPeriod
-     * @params { ?String } localeMatcher
-     * @params { ?String } formatMatcher
+     * @param { ?String } locale
+     * @param { ?String } dateStyle
+     * @param { ?String } timeStyle
+     * @param { ?String } hourCycle
+     * @param { ?String } timeZone
+     * @param { ?String } numberingSystem
+     * @param { ?Bool } hour12
+     * @param { ?String } weekday
+     * @param { ?String } era
+     * @param { ?String } year
+     * @param { ?String } month
+     * @param { ?String } day
+     * @param { ?String } hour
+     * @param { ?String } minute
+     * @param { ?String } second
+     * @param { ?String } timeZoneName
+     * @param { ?String } dayPeriod
+     * @param { ?String } localeMatcher
+     * @param { ?String } formatMatcher
      */
     @!APILevel[
         22,
@@ -429,8 +429,8 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * Where a negative value indicates the eastern time zone, for example, -8.
      * Anonymous Object Rectification.
      *
-     * @params { ?Float32 } timeZoneOffset
-     * @params { ?TextClockController } controller
+     * @param { ?Float32 } timeZoneOffset
+     * @param { ?TextClockController } controller
      */
     @!APILevel[
         22,
@@ -458,7 +458,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * You can listen to this callback,
      * Use the format attribute method to customize data display in the callback.
      *
-     * @params { ?(Int64) -> Unit } callback - Listening date event callback.
+     * @param { ?(Int64) -> Unit } callback - Listening date event callback.
      * @returns { This }
      */
     @!APILevel[
@@ -483,7 +483,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * The default value is "hh:mm" when TextClock is in a form.
      * If the value has second or millisecond, the value will be set to the default value.
      *
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { This }
      */
     @!APILevel[
@@ -504,7 +504,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     /**
      * Called when the value of TextClock fontSize is set.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -522,7 +522,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     /**
      * Called when the value of TextClock fontColor is set.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -540,7 +540,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     /**
      * Called when the value of TextClock fontStyle is set.
      *
-     * @params { ?FontStyle } value
+     * @param { ?FontStyle } value
      * @returns { This }
      */
     @!APILevel[
@@ -558,7 +558,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     /**
      * Called when the value of TextClock fontWeight is set.
      *
-     * @params { ?FontWeight } value
+     * @param { ?FontWeight } value
      * @returns { This }
      */
     @!APILevel[
@@ -578,7 +578,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     /**
      * Called when the value of TextClock fontFamily is set.
      *
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { This }
      */
     @!APILevel[
@@ -598,7 +598,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     /**
      * Called when the text shadow is set.
      *
-     * @params { ?Array<ShadowOptions> } value - The shadow options.
+     * @param { ?Array<ShadowOptions> } value - The shadow options.
      * @returns { This }
      */
     @!APILevel[
@@ -621,7 +621,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     /**
      * Called when the text shadow is set.
      *
-     * @params { ?ShadowOptions } value - The shadow options.
+     * @param { ?ShadowOptions } value - The shadow options.
      * @returns { This }
      */
     @!APILevel[

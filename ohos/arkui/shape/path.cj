@@ -38,7 +38,7 @@ public class PathShape <: BaseShape {
     /**
      * PathShape constructor.
      *
-     * @params { ?ResourceStr } commands 
+     * @param { ?ResourceStr } commands 
      */
     @!APILevel[
         22,
@@ -59,9 +59,9 @@ public class PathShape <: BaseShape {
     /**
      * PathShape constructor.
      *
-     * @params { ?Length } width 
-     * @params { ?Length } height 
-     * @params { ?ResourceStr } commands 
+     * @param { ?Length } width 
+     * @param { ?Length } height 
+     * @param { ?ResourceStr } commands 
      */
     @!APILevel[
         22,

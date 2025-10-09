@@ -49,8 +49,8 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
     /**
     * Column constructor.
     *
-    * @params { ?Length } space
-    * @params { () -> Unit } child
+    * @param { ?Length } space
+    * @param { () -> Unit } child
     */
     @!APILevel[
         22,
@@ -67,7 +67,7 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
     /**
      * Sets the alignment format of the subassembly in the horizontal direction.
      *
-     * @params { ?HorizontalAlign } value
+     * @param { ?HorizontalAlign } value
      * @returns { This }
      */
     @!APILevel[
@@ -84,7 +84,7 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
     /**
      * Sets the alignment format of the subassembly in the vertical direction.
      *
-     * @params { ?FlexAlign } value
+     * @param { ?FlexAlign } value
      * @returns { This }
      */
     @!APILevel[

@@ -153,8 +153,8 @@ public class DecorationStyleResult {
     /**
      * Constructor.
      *
-     * @params { TextDecorationType } decorationType - The font decoration type.
-     * @params { ResourceColor } color - The font decoration color.
+     * @param { TextDecorationType } decorationType - The font decoration type.
+     * @param { ResourceColor } color - The font decoration color.
      */
     @!APILevel[
         22,
@@ -206,8 +206,8 @@ public class RichEditorInsertValue {
     /**
     * Constructor.
     *
-    * @params { ?Int32 } insertOffset - The location info where the value will be inserted.
-    * @params { ?String } insertValue - The inserted value.
+    * @param { ?Int32 } insertOffset - The location info where the value will be inserted.
+    * @param { ?String } insertValue - The inserted value.
     */
     @!APILevel[
         22,
@@ -269,8 +269,8 @@ public class RichEditorSpanPosition {
     /**
      * RichEditorSpanPosition constructor
      *
-     * @params { ?Int32 } spanIndex - Define the index of span.
-     * @params { ?(Int32, Int32) } spanRange - The range of span.
+     * @param { ?Int32 } spanIndex - Define the index of span.
+     * @param { ?(Int32, Int32) } spanRange - The range of span.
      */
     @!APILevel[
         22,
@@ -378,12 +378,12 @@ public class RichEditorTextStyleResult {
     /**
      * RichEditorTextStyleResult constructor.
      *
-     * @params { String } fontColor - font color.
-     * @params { Float64 } fontSize - font size.
-     * @params { FontStyle } fontStyle - font style.
-     * @params { Int32 } fontWeight - font weight.
-     * @params { String } fontFamily - font family.
-     * @params { DecorationStyleResult } decoration - font decoration.
+     * @param { String } fontColor - font color.
+     * @param { Float64 } fontSize - font size.
+     * @param { FontStyle } fontStyle - font style.
+     * @param { Int32 } fontWeight - font weight.
+     * @param { String } fontFamily - font family.
+     * @param { DecorationStyleResult } decoration - font decoration.
      */
     @!APILevel[
         22,
@@ -562,10 +562,10 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
     /**
      * RichEditorTextSpanResult constructor.
      *
-     * @params { RichEditorSpanPosition } spanPosition - The position of the text span.
-     * @params { String } value - The content of the text span.
-     * @params { RichEditorTextStyleResult } textStyle - text style.
-     * @params { (Int32, Int32) } offsetInSpan - get offset in span.
+     * @param { RichEditorSpanPosition } spanPosition - The position of the text span.
+     * @param { String } value - The content of the text span.
+     * @param { RichEditorTextStyleResult } textStyle - text style.
+     * @param { (Int32, Int32) } offsetInSpan - get offset in span.
      */
     @!APILevel[
         22,
@@ -652,11 +652,11 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
     /**
      * RichEditorImageSpanResult constructor.
      *
-     * @params { ?RichEditorSpanPosition } spanPosition - The position of the image span.
-     * @params { Option<PixelMap> } valuePixelMap - The pixel map of the image span.
-     * @params { ?String } valueResourceStr - The resource string of the image span.
-     * @params { ?RichEditorImageSpanStyleResult } imageStyle - image attribute.
-     * @params { ?(Int32, Int32) offsetInSpan - get offset in span.
+     * @param { ?RichEditorSpanPosition } spanPosition - The position of the image span.
+     * @param { Option<PixelMap> } valuePixelMap - The pixel map of the image span.
+     * @param { ?String } valueResourceStr - The resource string of the image span.
+     * @param { ?RichEditorImageSpanStyleResult } imageStyle - image attribute.
+     * @param { ?(Int32, Int32) offsetInSpan - get offset in span.
      */
     @!APILevel[
         22,
@@ -867,8 +867,8 @@ public class RichEditorSelection {
     /**
      * RichEditorSelection constructor
      *
-     * @params { ?(Int32, Int32) } selection - the location info.
-     * @params { ?ArrayList<RichEditorSpanResult> } spans - the selected text content.
+     * @param { ?(Int32, Int32) } selection - the location info.
+     * @param { ?ArrayList<RichEditorSpanResult> } spans - the selected text content.
      */
     @!APILevel[
         22,
@@ -938,10 +938,10 @@ public class RichEditorDeleteValue {
     /**
      * RichEditorDeleteValue constructor
      *
-     * @params { Int32 } offset - the offset of deleting.
-     * @params { RichEditorDeleteDirection } direction - the deleted direction.
-     * @params { Int32 } length - the deleted text length.
-     * @params { ArrayList<RichEditorSpanResult> } richEditorDeleteSpans - the deleted span object.
+     * @param { Int32 } offset - the offset of deleting.
+     * @param { RichEditorDeleteDirection } direction - the deleted direction.
+     * @param { Int32 } length - the deleted text length.
+     * @param { ArrayList<RichEditorSpanResult> } richEditorDeleteSpans - the deleted span object.
      */
     @!APILevel[
         22,
@@ -1053,7 +1053,7 @@ public class PasteEvent <: RemoteDataLite {
 /**
  * Callback function when a paste operation is performed.
  *
- * @params { PasteEvent } event - The paste event.
+ * @param { PasteEvent } event - The paste event.
  */
 public type PasteEventCallback = (PasteEvent) -> Unit
 
@@ -1077,7 +1077,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Called when create RichEditor.
      *
-     * @params { ?RichEditorController } controller
+     * @param { ?RichEditorController } controller
      */
     @!APILevel[
         22,
@@ -1093,7 +1093,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Define custom keyboard.
      *
-     * @params { ?CustomBuilder } value
+     * @param { ?CustomBuilder } value
      * @returns { This }
      */
     @!APILevel[
@@ -1111,10 +1111,10 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Bind to the selection menu.
      *
-     * @params { ?RichEditorSpanType } spantype
-     * @params { ?CustomBuilder } content
-     * @params { ?ResponseType } responseType
-     * @params { ?SelectionMenuOptions } options
+     * @param { ?RichEditorSpanType } spantype
+     * @param { ?CustomBuilder } content
+     * @param { ?ResponseType } responseType
+     * @param { ?SelectionMenuOptions } options
      * @returns { This }
      */
     @!APILevel[
@@ -1145,7 +1145,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Allow replication.
      *
-     * @params { ?CopyOptions } value
+     * @param { ?CopyOptions } value
      * @returns { This }
      */
     @!APILevel[
@@ -1162,7 +1162,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Called when on ready.
      *
-     * @params { ?VoidCallback } callback
+     * @param { ?VoidCallback } callback
      * @returns { This }
      */
     @!APILevel[
@@ -1179,7 +1179,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Get text value information when about to input.
      *
-     * @params { ?Callback<RichEditorInsertValue, Bool> } callback
+     * @param { ?Callback<RichEditorInsertValue, Bool> } callback
      * @returns { This }
      */
     @!APILevel[
@@ -1201,7 +1201,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Get text value information when completed input.
      *
-     * @params { ?Callback<RichEditorTextSpanResult, Unit> } callback
+     * @param { ?Callback<RichEditorTextSpanResult, Unit> } callback
      * @returns { RichEditor }
      */
     @!APILevel[
@@ -1223,7 +1223,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Notify that the deletion has been completed.
      *
-     * @params { ?VoidCallback } callback
+     * @param { ?VoidCallback } callback
      * @returns { This }
      */
     @!APILevel[
@@ -1241,7 +1241,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Get text value information when about to delete.
      *
-     * @params { ?Callback<RichEditorDeleteValue, Bool> } callback
+     * @param { ?Callback<RichEditorDeleteValue, Bool> } callback
      * @returns { This }
      */
     @!APILevel[
@@ -1263,7 +1263,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Called when the content is selected.
      *
-     * @params { ?Callback<RichEditorSelection, Unit> } callback
+     * @param { ?Callback<RichEditorSelection, Unit> } callback
      * @returns { This }
      */
     @!APILevel[
@@ -1284,7 +1284,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Defines onPaste callback.
      *
-     * @params { ?PasteEventCallback } callback
+     * @param { ?PasteEventCallback } callback
      * @returns { This }
      */
     @!APILevel[
@@ -1305,7 +1305,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Called after text changed.
      *
-     * @params { ?OnDidChangeCallback } callback
+     * @param { ?OnDidChangeCallback } callback
      * @returns { This }
      */
     @!APILevel[

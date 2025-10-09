@@ -49,8 +49,8 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     /**
      * Create a Rating.
      *
-     * @params { ?Float64 } rating
-     * @params { ?Bool } indicator
+     * @param { ?Float64 } rating
+     * @param { ?Bool } indicator
      */
     @!APILevel[
         22,
@@ -65,7 +65,7 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     /**
      * Called when the total number of stars is set.
      * 
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { This }
      */
     @!APILevel[
@@ -82,7 +82,7 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     /**
      * Called when the step size of the operation rating.
      *
-     * @params { ?Float64 } size
+     * @param { ?Float64 } size
      * @returns { This }
      */
     @!APILevel[
@@ -104,9 +104,9 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     /**
      * Called when a picture is set.
      *
-     * @params { ?ResourceStr } backgroundUri - Background URI option.
-     * @params { ?ResourceStr } foregroundUri - Foreground URI option.
-     * @params { ?ResourceStr } secondaryUri - Secondary URI option.
+     * @param { ?ResourceStr } backgroundUri - Background URI option.
+     * @param { ?ResourceStr } foregroundUri - Foreground URI option.
+     * @param { ?ResourceStr } secondaryUri - Secondary URI option.
      * @returns { This }
      */
     @!APILevel[
@@ -133,7 +133,7 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     /**
      * Called when the star rating of the operation scoring bar changes.
      *
-     * @params { ?(Float64) -> Unit } callback
+     * @param { ?(Float64) -> Unit } callback
      * @returns { This }
      */
     @!APILevel[

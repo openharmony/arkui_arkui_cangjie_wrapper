@@ -31,10 +31,10 @@ sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
     /**
     * Viewport of shape
     *
-    * @params { ?Length } x
-    * @params { ?Length } y
-    * @params { ?Length } width
-    * @params { ?Length } height
+    * @param { ?Length } x
+    * @param { ?Length } y
+    * @param { ?Length } width
+    * @param { ?Length } height
     * @returns { ShapeAttribute }
     */
     @!APILevel[
@@ -51,9 +51,9 @@ sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
     /**
     * Called when shape mesh.
     *
-    * @params { ?Array<Float64> } value
-    * @params { ?UInt32 } column
-    * @params { ?UInt32 } row
+    * @param { ?Array<Float64> } value
+    * @param { ?UInt32 } column
+    * @param { ?UInt32 } row
     * @returns { ShapeAttribute }
     */
     @!APILevel[

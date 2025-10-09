@@ -57,8 +57,8 @@ public class CJEntry {
     private let entries_ = HashMap<String, () -> Bool>()
     /**
      * Register entry by name.
-     * @params { String } name
-     * @params { () -> Bool } call
+     * @param { String } name
+     * @param { () -> Bool } call
      */
     @!APILevel[
         22,

@@ -38,7 +38,7 @@ public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
     /**
      * Creates a RichText component.
      *
-     * @params { ?ResourceStr } content
+     * @param { ?ResourceStr } content
      */
     @!APILevel[
         22,
@@ -60,7 +60,7 @@ public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
     /**
      * Triggered when the RichText loading starts.
      *
-     * @params { ?() -> Unit } callback
+     * @param { ?() -> Unit } callback
      * @returns { This } 
      */
     @!APILevel[
@@ -77,7 +77,7 @@ public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
     /**
      * Triggered when the RichText loading ends.
      *
-     * @params { ?() -> Unit } callback
+     * @param { ?() -> Unit } callback
      * @returns { This } 
      */
     @!APILevel[

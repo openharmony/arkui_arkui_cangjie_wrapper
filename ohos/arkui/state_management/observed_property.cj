@@ -37,8 +37,8 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     /**
      * ObservedPropertyAbstract constructor.
      *
-     * @params { String } info
-     * @params { T } initValue
+     * @param { String } info
+     * @param { T } initValue
      */
     @!APILevel[
         22,
@@ -83,7 +83,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
     /**
      *
-     * @params { T } newValue
+     * @param { T } newValue
      */
     @!APILevel[
         22,
@@ -102,7 +102,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
     /**
      *
-     * @params { Observer } observer
+     * @param { Observer } observer
      */
     @!APILevel[
         22,
@@ -121,7 +121,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
     /**
      *
-     * @params { Observer } observer
+     * @param { Observer } observer
      */
     @!APILevel[
         22,
@@ -139,7 +139,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
     /**
      *
-     * @params { String } info
+     * @param { String } info
      * @returns { ObservedProperty<T> }
      */
     @!APILevel[

@@ -41,7 +41,7 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
     /**
      * Constructs a StepperItem component.
      *
-     * @params { () -> Unit } child
+     * @param { () -> Unit } child
      */
     @!APILevel[
         22,
@@ -57,7 +57,7 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
     /**
      * The description text for the fallback text button at the bottom of the step navigator.
      *
-     * @params { ?String } value
+     * @param { ?String } value
      * @returns { This }
      */
     @!APILevel[
@@ -76,7 +76,7 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
     /**
      * The description text for the next step text button at the bottom of the step navigator.
      *
-     * @params { ?String } value
+     * @param { ?String } value
      * @returns { This }
      */
     @!APILevel[
@@ -95,7 +95,7 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
     /**
      * Sets the display state of the Step Navigator nextLabel.
      *
-     * @params { ?ItemState } status
+     * @param { ?ItemState } status
      * @returns { This }
      */
     @!APILevel[

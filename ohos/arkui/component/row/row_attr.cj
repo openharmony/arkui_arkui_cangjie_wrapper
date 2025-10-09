@@ -30,7 +30,7 @@ sealed interface RowAttribute <: CommonMethod<RowAttribute> {
     /**
     * Called when the vertical alignment is set.
     *
-    * @params { ?VerticalAlign } value
+    * @param { ?VerticalAlign } value
     * @returns { RowAttribute }
     */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface RowAttribute <: CommonMethod<RowAttribute> {
     /**
     * Called when the horizontal alignment is set.
     *
-    * @params { ?FlexAlign } value
+    * @param { ?FlexAlign } value
     * @returns { RowAttribute }
     */
     @!APILevel[

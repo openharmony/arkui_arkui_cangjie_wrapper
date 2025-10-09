@@ -30,7 +30,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
     /**
      * Define custom keyboard.
      *
-     * @params { ?CustomBuilder } value
+     * @param { ?CustomBuilder } value
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
@@ -42,10 +42,10 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
     /**
      * Bind to the selection menu.
      *
-     * @params { ?RichEditorSpanType } spantype
-     * @params { ?CustomBuilder } content
-     * @params { ?ResponseType } responseType
-     * @params { ?SelectionMenuOptions } options
+     * @param { ?RichEditorSpanType } spantype
+     * @param { ?CustomBuilder } content
+     * @param { ?ResponseType } responseType
+     * @param { ?SelectionMenuOptions } options
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
@@ -62,7 +62,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
     /**
      * Allow replication.
      *
-     * @params { ?CopyOptions } value
+     * @param { ?CopyOptions } value
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
@@ -74,7 +74,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
     /**
      * Called when on ready.
      *
-     * @params { ?VoidCallback } callback
+     * @param { ?VoidCallback } callback
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
@@ -86,7 +86,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
     /**
      * Get text value information when about to input.
      *
-     * @params { ?Callback<RichEditorInsertValue, Bool> } callback
+     * @param { ?Callback<RichEditorInsertValue, Bool> } callback
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
@@ -98,7 +98,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
     /**
      * Get text value information when completed input.
      *
-     * @params { ?Callback<RichEditorTextSpanResult, Unit> } callback
+     * @param { ?Callback<RichEditorTextSpanResult, Unit> } callback
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
@@ -110,7 +110,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
     /**
      * Notify that the deletion has been completed.
      *
-     * @params { ?VoidCallback } callback
+     * @param { ?VoidCallback } callback
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
@@ -122,7 +122,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
     /**
      * Get text value information when about to delete.
      *
-     * @params { ?Callback<RichEditorDeleteValue, Bool> } callback
+     * @param { ?Callback<RichEditorDeleteValue, Bool> } callback
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
@@ -134,7 +134,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
     /**
      * Called when the content is selected.
      *
-     * @params { ?Callback<RichEditorSelection, Unit> } callback
+     * @param { ?Callback<RichEditorSelection, Unit> } callback
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
@@ -146,7 +146,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
     /**
      * Defines onPaste callback.
      *
-     * @params { ?PasteEventCallback } callback
+     * @param { ?PasteEventCallback } callback
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
@@ -158,7 +158,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
     /**
      * Called after text changed.
      *
-     * @params { ?OnDidChangeCallback } callback
+     * @param { ?OnDidChangeCallback } callback
      * @returns { RichEditorAttribute }
      */
     @!APILevel[

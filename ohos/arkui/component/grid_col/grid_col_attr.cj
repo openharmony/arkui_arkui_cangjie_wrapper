@@ -29,7 +29,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     /**
      * Sets the span of current gird-container item.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { GridColAttribute }
      */
     @!APILevel[
@@ -41,7 +41,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     /**
      * Sets the span of current gird-container item.
      *
-     * @params { ?GridColOptions } value
+     * @param { ?GridColOptions } value
      * @returns { GridColAttribute }
      */
     @!APILevel[
@@ -53,7 +53,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     /**
      * Sets the offset of current gird-container item.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { GridColAttribute }
      */
     @!APILevel[
@@ -65,7 +65,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     /**
      * Sets the offset of current gird-container item.
      *
-     * @params { ?GridColOptions } value
+     * @param { ?GridColOptions } value
      * @returns { GridColAttribute }
      */
     @!APILevel[
@@ -77,7 +77,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     /**
      * Sets the order of current gird-container item.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { GridColAttribute }
      */
     @!APILevel[
@@ -89,7 +89,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     /**
      * Sets the order of current gird-container item.
      *
-     * @params { ?GridColOptions } value
+     * @param { ?GridColOptions } value
      * @returns { GridColAttribute }
      */
     @!APILevel[

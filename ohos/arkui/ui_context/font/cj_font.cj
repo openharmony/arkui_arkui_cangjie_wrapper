@@ -209,8 +209,8 @@ public class Font {
     /**
      * Register a customized font in the FontManager.
      *
-     * @params { ResourceStr } familyName
-     * @params { ResourceStr } familySrc
+     * @param { ResourceStr } familyName
+     * @param { ResourceStr } familySrc
      * @throws { BusinessException } 401 - Invalid input parameter.
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -263,7 +263,7 @@ public class Font {
     /**
      * Get font details according to the font name.
      *
-     * @params { String } fontName - font name.
+     * @param { String } fontName - font name.
      * @returns { ?FontInfo } Returns the font info.
      */
     @!APILevel[

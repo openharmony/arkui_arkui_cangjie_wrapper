@@ -32,7 +32,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     /**
      * Setting whether menuItem is selected.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { MenuItemAttribute }
      */
     @!APILevel[
@@ -44,7 +44,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { MenuItemAttribute }
      */
     @!APILevel[
@@ -56,7 +56,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
      *
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { MenuItemAttribute }
      */
     @!APILevel[
@@ -68,10 +68,10 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     /**
      * Sets the content font style.
      *
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?ResourceStr } family
-     * @params { ?FontStyle } style   
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?ResourceStr } family
+     * @param { ?FontStyle } style   
      * @returns { MenuItemAttribute }
      */
     @!APILevel[
@@ -88,7 +88,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     /**
      * Sets the font color of content text.
      *
-     * @params { ?ResourceColor } value 
+     * @param { ?ResourceColor } value 
      * @returns { MenuItemAttribute }
      */
     @!APILevel[
@@ -100,10 +100,10 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     /**
      * Sets the label info font style.
      *
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?ResourceStr } family
-     * @params { ?FontStyle } style   
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?ResourceStr } family
+     * @param { ?FontStyle } style   
      * @returns { MenuItemAttribute }
      */
     @!APILevel[
@@ -120,7 +120,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     /**
      * Sets the font color of label info text.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { MenuItemAttribute }
      */
     @!APILevel[
@@ -132,7 +132,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     /**
      * Triggers a callback when a menu item is selected or unchecked.
      *
-     * @params { ?(Bool) -> Unit } callback
+     * @param { ?(Bool) -> Unit } callback
      * @returns { MenuItemAttribute }
      */
     @!APILevel[

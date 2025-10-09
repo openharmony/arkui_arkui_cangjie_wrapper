@@ -79,7 +79,7 @@ public class Path2D <: RemoteDataLite {
     /**
      * Create a new path according to the description.
      *
-     * @params { ?String } path
+     * @param { ?String } path
      */
     @!APILevel[
         22,
@@ -103,7 +103,7 @@ public class Path2D <: RemoteDataLite {
     /**
      * Adds a path according to the specified path variable.
      *
-     * @params { ?Path2D } path2D
+     * @param { ?Path2D } path2D
      */
     @!APILevel[
         22,
@@ -120,12 +120,12 @@ public class Path2D <: RemoteDataLite {
      * Adds 2D transformation effects, including rotation, translation, and scaling.
      * The current transformation matrix will not be overwritten. Multiple transformations will be superimposed.
      *
-     * @params { ?Float64 } scaleX
-     * @params { ?Float64 } skewX
-     * @params { ?Float64 } skewY
-     * @params { ?Float64 } scaleY
-     * @params { ?Float64 } translateX
-     * @params { ?Float64 } translateY
+     * @param { ?Float64 } scaleX
+     * @param { ?Float64 } skewX
+     * @param { ?Float64 } skewY
+     * @param { ?Float64 } scaleY
+     * @param { ?Float64 } translateX
+     * @param { ?Float64 } translateY
      */
     @!APILevel[
         22,
@@ -150,8 +150,8 @@ public class Path2D <: RemoteDataLite {
     /**
      * Moves the start point of a new sub-path to the (x, y) coordinate.
      *
-     * @params { Float64 } x
-     * @params { Float64 } y
+     * @param { Float64 } x
+     * @param { Float64 } y
      */
     @!APILevel[
         22,
@@ -166,8 +166,8 @@ public class Path2D <: RemoteDataLite {
     /**
      * Connect sub-path using straight lines.
      *
-     * @params { Float64 } x
-     * @params { Float64 } y
+     * @param { Float64 } x
+     * @param { Float64 } y
      */
     @!APILevel[
         22,
@@ -182,12 +182,12 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw an arc path.
      *
-     * @params { Float64 } x
-     * @params { Float64 } y
-     * @params { Float64 } radius
-     * @params { Float64 } startAngle
-     * @params { Float64 } endAngle
-     * @params { Bool } counterclockwise
+     * @param { Float64 } x
+     * @param { Float64 } y
+     * @param { Float64 } radius
+     * @param { Float64 } startAngle
+     * @param { Float64 } endAngle
+     * @param { Bool } counterclockwise
      */
     @!APILevel[
         22,
@@ -209,11 +209,11 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw arc paths based on control points and radius.
      *
-     * @params { Float64 } x1
-     * @params { Float64 } y1
-     * @params { Float64 } x2
-     * @params { Float64 } y2
-     * @params { Float64 } radius
+     * @param { Float64 } x1
+     * @param { Float64 } y1
+     * @param { Float64 } x2
+     * @param { Float64 } y2
+     * @param { Float64 } radius
      */
     @!APILevel[
         22,
@@ -234,10 +234,10 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw quadratic Bezier curve paths.
      *
-     * @params { Float64 } cpx
-     * @params { Float64 } cpy
-     * @params { Float64 } x
-     * @params { Float64 } y
+     * @param { Float64 } cpx
+     * @param { Float64 } cpy
+     * @param { Float64 } x
+     * @param { Float64 } y
      */
     @!APILevel[
         22,
@@ -257,12 +257,12 @@ public class Path2D <: RemoteDataLite {
     /**
      * Drawing Cubic Bessel Curve Paths.
      *
-     * @params { Float64 } cp1x
-     * @params { Float64 } cp1y
-     * @params { Float64 } cp2x
-     * @params { Float64 } cp2y
-     * @params { Float64 } x
-     * @params { Float64 } y
+     * @param { Float64 } cp1x
+     * @param { Float64 } cp1y
+     * @param { Float64 } cp2x
+     * @param { Float64 } cp2y
+     * @param { Float64 } x
+     * @param { Float64 } y
      */
     @!APILevel[
         22,
@@ -284,14 +284,14 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw an Elliptic Path.
      *
-     * @params { Float64 } x
-     * @params { Float64 } y
-     * @params { Float64 } radiusX
-     * @params { Float64 } radiusY
-     * @params { Float64 } rotation
-     * @params { Float64 } startAngle
-     * @params { Float64 } endAngle
-     * @params { Bool } counterclockwise
+     * @param { Float64 } x
+     * @param { Float64 } y
+     * @param { Float64 } radiusX
+     * @param { Float64 } radiusY
+     * @param { Float64 } rotation
+     * @param { Float64 } startAngle
+     * @param { Float64 } endAngle
+     * @param { Bool } counterclockwise
      */
     @!APILevel[
         22,
@@ -319,10 +319,10 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw Rectangular Paths.
      *
-     * @params { Float64 } x
-     * @params { Float64 } y
-     * @params { Float64 } width
-     * @params { Float64 } height
+     * @param { Float64 } x
+     * @param { Float64 } y
+     * @param { Float64 } width
+     * @param { Float64 } height
      */
     @!APILevel[
         22,

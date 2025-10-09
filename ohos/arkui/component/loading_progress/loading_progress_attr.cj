@@ -30,7 +30,7 @@ sealed interface LoadingProgressAttribute <: CommonMethod<LoadingProgressAttribu
     /**
      * Load the color of the progress bar.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { LoadingProgressAttribute }
      */
     @!APILevel[

@@ -147,10 +147,10 @@ public class Color <: ResourceColor {
 
     /**
      * Constructor of Color.
-     * @params { UInt8 } red
-     * @params { UInt8 } green
-     * @params { UInt8 } blue
-     * @params { UInt8 } alpha
+     * @param { UInt8 } red
+     * @param { UInt8 } green
+     * @param { UInt8 } blue
+     * @param { UInt8 } alpha
      */
     @!APILevel[
         22,
@@ -173,7 +173,7 @@ public class Color <: ResourceColor {
     /**
      * Constructor of Color.
      *
-     * @params { UInt32 } value
+     * @param { UInt32 } value
      */
     @!APILevel[
         22,

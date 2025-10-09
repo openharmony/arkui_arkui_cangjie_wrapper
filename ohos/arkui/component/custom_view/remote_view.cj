@@ -61,7 +61,7 @@ public abstract class RemoteView <: FFIData {
     /**
      * Purge element ids no longer in use.
      *
-     * @params { Int64 } _ - Element id.
+     * @param { Int64 } _ - Element id.
      */
     @!APILevel[
         22,
@@ -84,7 +84,7 @@ public abstract class RemoteView <: FFIData {
     /**
      * Force complete rerender.
      *
-     * @params { Bool } deep - Whether to rerender components recursive.
+     * @param { Bool } deep - Whether to rerender components recursive.
      */
     @!APILevel[
         22,

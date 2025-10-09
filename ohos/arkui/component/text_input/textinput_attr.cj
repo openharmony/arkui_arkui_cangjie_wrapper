@@ -33,7 +33,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when the type of soft keyboard input button is set.
      *
-     * @params { ?EnterKeyType } value - Default value is EnterKeyType.Done.
+     * @param { ?EnterKeyType } value - Default value is EnterKeyType.Done.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -51,7 +51,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * Alignment.Start, Alignment.Center, and Alignment.End produce the same effect, centered-aligning the text vertically;
      * Alignment.BottomStart, Alignment.Bottom, and Alignment.BottomEnd produce the same effect, bottom-aligning the text.
      *
-     * @params { ?TextAlign } value - Default value is TextAlign.Start.
+     * @param { ?TextAlign } value - Default value is TextAlign.Start.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -63,7 +63,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when the overflow mode of the font is set.
      *
-     * @params { ?ResourceColor } value - Default value follows the theme.The default value on wearable devices is '#99ffffff'.
+     * @param { ?ResourceColor } value - Default value follows the theme.The default value on wearable devices is '#99ffffff'.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -75,7 +75,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when the color of the insertion cursor is set.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -87,10 +87,10 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when the font property of the placeholder is set.
      *
-     * @params { ?Length } size
-     * @params { ?FontWeight } weight
-     * @params { ?String } family
-     * @params { ?FontStyle } style
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?String } family
+     * @param { ?FontStyle } style
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -103,7 +103,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when the input of maximum text length is set.
      *
-     * @params { ?UInt32 } value - Default value is Infinity, indicating that there is no upper limit on the number of characters that can be entered.
+     * @param { ?UInt32 } value - Default value is Infinity, indicating that there is no upper limit on the number of characters that can be entered.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -119,7 +119,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * <br>The value cannot be a percentage.
      * <br>The default value on wearable devices is 18.fp.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -130,7 +130,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
 
     /**
      * Called when the font color is set.
-     * @params { ?ResourceColor } value - The default value on wearable devices is '#dbffffff'.
+     * @param { ?ResourceColor } value - The default value on wearable devices is '#dbffffff'.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -142,7 +142,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when the font weight is set.
      *
-     * @params { ?FontWeight } value - Default value is FontWeight.Normal.
+     * @param { ?FontWeight } value - Default value is FontWeight.Normal.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -154,7 +154,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when the font style of a font is set.
      *
-     * @params { ?FontStyle } value - Default value is FontStyle.Normal.
+     * @param { ?FontStyle } value - Default value is FontStyle.Normal.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -169,7 +169,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * <br>The 'HarmonyOS Sans' font and registered custom fonts are supported for applications.
      * <br>Only the 'HarmonyOS Sans' font is supported for widgets.
      *
-     * @params { ?ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -181,8 +181,8 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when the inputFilter of text is set.
      *
-     * @params { ?ResourceStr } value
-     * @params { ?(String) -> Unit } error
+     * @param { ?ResourceStr } value
+     * @param { ?(String) -> Unit } error
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -194,7 +194,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when submitted.
      *
-     * @params { ?(EnterKeyType) -> Unit } callback - Callback of the listened event.
+     * @param { ?(EnterKeyType) -> Unit } callback - Callback of the listened event.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -206,7 +206,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when using the Clipboard menu.
      *
-     * @params { ?(String) -> Unit } callback - Callback used to return the copied text content.
+     * @param { ?(String) -> Unit } callback - Callback used to return the copied text content.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -218,7 +218,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when using the Clipboard menu.
      *
-     * @params { ?(String) -> Unit } callback
+     * @param { ?(String) -> Unit } callback
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -230,7 +230,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when the input of the input box changes.
      *
-     * @params { ?(String) -> Unit } callback
+     * @param { ?(String) -> Unit } callback
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -242,7 +242,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when using the Clipboard menu.
      *
-     * @params { ?(String) -> Unit } callback - Executed when a paste operation is performed.
+     * @param { ?(String) -> Unit } callback - Executed when a paste operation is performed.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -254,7 +254,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when judging whether the text editing change finished.
      *
-     * @params { ?(Bool) -> Unit} callback
+     * @param { ?(Bool) -> Unit} callback
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -266,8 +266,8 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Define custom keyboard of the text input.
      *
-     * @params { ?CustomBuilder } value - Set up a custom keyboard of TextInput.
-     * @params { ?Bool } supportAvoidance - Indicates the custom keyboard options of TextInput.
+     * @param { ?CustomBuilder } value - Set up a custom keyboard of TextInput.
+     * @param { ?Bool } supportAvoidance - Indicates the custom keyboard options of TextInput.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -279,7 +279,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Text input style
      *
-     * @params { ?TextInputStyle } value - Text input style.Default value is TextInputStyle.Default.
+     * @param { ?TextInputStyle } value - Text input style.Default value is TextInputStyle.Default.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -292,7 +292,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * Sets whether request keyboard or not when on focus.
      * Sets whether to enable the input method when the TextInput component obtains focus in a way other than clicking.
      *
-     * @params { ?Bool } value - Default value is true.
+     * @param { ?Bool } value - Default value is true.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -304,7 +304,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Controls whether the selection menu pops up.
      *
-     * @params { ?Bool } value - Default value is false.
+     * @param { ?Bool } value - Default value is false.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -316,7 +316,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Define the show underline of the text input.
      *
-     * @params { ?Bool } value - Default value is false.
+     * @param { ?Bool } value - Default value is false.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -328,7 +328,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Define max lines of the text input.
      *
-     * @params { ?Int32 } value - Default value is 3.
+     * @param { ?Int32 } value - Default value is 3.
      * @returns { TextInputAttribute }
      */
     @!APILevel[

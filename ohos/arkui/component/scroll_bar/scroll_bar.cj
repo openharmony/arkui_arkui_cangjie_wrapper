@@ -36,10 +36,10 @@ public class ScrollBar <: CommonMethodComponent<ScrollBar> & ScrollBarAttribute 
     /**
     * Define the constructor of the scrollbar component.
     *
-    * @params { ?Scroller } scroller
-    * @params { ?ScrollBarDirection } direction
-    * @params { ?BarState } state
-    * @params { () -> Unit } child
+    * @param { ?Scroller } scroller
+    * @param { ?ScrollBarDirection } direction
+    * @param { ?BarState } state
+    * @param { () -> Unit } child
     */
     @!APILevel[
         22,

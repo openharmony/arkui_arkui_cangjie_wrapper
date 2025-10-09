@@ -30,7 +30,7 @@ sealed interface ColumnAttribute <: CommonMethod<ColumnAttribute> {
     /**
      * Sets the alignment format of the subassembly in the horizontal direction.
      *
-     * @params { ?HorizontalAlign } value
+     * @param { ?HorizontalAlign } value
      * @returns { ColumnAttribute }
      */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface ColumnAttribute <: CommonMethod<ColumnAttribute> {
     /**
      * Sets the alignment format of the subassembly in the vertical direction.
      *
-     * @params { ?FlexAlign } value
+     * @param { ?FlexAlign } value
      * @returns { ColumnAttribute }
      */
     @!APILevel[

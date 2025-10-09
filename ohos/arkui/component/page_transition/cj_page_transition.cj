@@ -72,8 +72,8 @@ class CallbackCJTransitionEvent <: BaseCallBack {
 /**
 * Callback used to report page trasition events.
 * 
-* @params { RouteType } type - transition route type
-* @params { Float64 } progress - transition progess
+* @param { RouteType } type - transition route type
+* @param { Float64 } progress - transition progess
 */
 public type PageTransitionCallback = (RouteType, Float64) -> Unit
 
@@ -195,7 +195,7 @@ sealed abstract class CommonTransition {
     /**
     * Called when the slide in effect of the transition is set.
     * 
-    * @params { SlideEffect } value
+    * @param { SlideEffect } value
     */
     @!APILevel[
         22,
@@ -210,9 +210,9 @@ sealed abstract class CommonTransition {
     /**
     * Called when the translation effect of page transition is set.
     * 
-    * @params { ?Length } x 
-    * @params { ?Length } y 
-    * @params { ?Length } z
+    * @param { ?Length } x 
+    * @param { ?Length } y 
+    * @param { ?Length } z
     * @returns { This } 
     */
     @!APILevel[
@@ -231,11 +231,11 @@ sealed abstract class CommonTransition {
     /**
     * Called when setting the zoom effect of page transition.
     * 
-    * @params { ?Float32 } x 
-    * @params { ?Float32 } y
-    * @params { ?Float32 } z
-    * @params { ?Length } centerX 
-    * @params { ?Length } centerY
+    * @param { ?Float32 } x 
+    * @param { ?Float32 } y
+    * @param { ?Float32 } z
+    * @param { ?Length } centerX 
+    * @param { ?Length } centerY
     * @returns { This } 
     */
     @!APILevel[
@@ -258,7 +258,7 @@ sealed abstract class CommonTransition {
     /**
     * Called when the transparency value of the starting point of entry or the ending point of exit is set.
     * 
-    * @params { Float64 } value
+    * @param { Float64 } value
     * @returns { This } 
     */
     @!APILevel[
@@ -284,10 +284,10 @@ public class PageTransitionEnter <: CommonTransition {
     /**
     * Called when page Jump animation is used.
     * 
-    * @params { ?RouteType } routeType
-    * @params { ?Int32 } duration
-    * @params { ?Curve } curve
-    * @params { ?Int32 } delay
+    * @param { ?RouteType } routeType
+    * @param { ?Int32 } duration
+    * @param { ?Curve } curve
+    * @param { ?Int32 } delay
     */
     @!APILevel[
         22,
@@ -311,7 +311,7 @@ public class PageTransitionEnter <: CommonTransition {
     * Called frame by frame to customize pageTransition animation when the page enters.
     * The incoming parameter is the normalized progress of the current incoming animation.
     * 
-    * @params { ?PageTransitionCallback } event
+    * @param { ?PageTransitionCallback } event
     * @returns { This } 
     * @throws { BusinessException } 190002 - The callback function is invalid.
     */
@@ -342,10 +342,10 @@ public class PageTransitionExit <: CommonTransition {
     /**
     * Called when page Jump animation is used.
     * 
-    * @params { ?RouteType } routeType
-    * @params { ?Int32 } duration
-    * @params { ?Curve } curve
-    * @params { ?Int32 } delay
+    * @param { ?RouteType } routeType
+    * @param { ?Int32 } duration
+    * @param { ?Curve } curve
+    * @param { ?Int32 } delay
     */
     @!APILevel[
         22,
@@ -369,7 +369,7 @@ public class PageTransitionExit <: CommonTransition {
     * Called frame by frame to customize pageTransition animation when the page exits.
     * The input parameter is the normalized progress of the current exit animation.
     * 
-    * @params { ?PageTransitionCallback } event
+    * @param { ?PageTransitionCallback } event
     * @returns { This } 
     */
     @!APILevel[

@@ -33,7 +33,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
     /**
      * Sets the direction in which the list items are arranged.
      *
-     * @params { ?Axis } value
+     * @param { ?Axis } value
      * @returns { ListAttribute }
      */
     @!APILevel[
@@ -45,7 +45,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
     /**
      * Sets the style of the divider for the list items. By default, there is no divider.
      *
-     * @params { Option<ListDividerOptions> } value
+     * @param { Option<ListDividerOptions> } value
      * @returns { ListAttribute }
      */
     @!APILevel[
@@ -57,7 +57,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
     /**
      * Sets the effect used when the scroll boundary is reached.
      *
-     * @params { ?EdgeEffect } value
+     * @param { ?EdgeEffect } value
      * @returns { ListAttribute }
      */
     @!APILevel[
@@ -70,7 +70,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * Sets whether to enable chained animations, which provide a visually connected,
      * or "chained," effect when the list is scrolled or its top or bottom edge is dragged.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { ListAttribute }
      */
     @!APILevel[
@@ -82,7 +82,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
     /**
      * Called when the minimum number of list item caches is set for long list deferred loading.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { ListAttribute }
      */
     @!APILevel[
@@ -94,7 +94,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
     /**
      * Sets whether to enable multiselect.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { ListAttribute }
      */
     @!APILevel[
@@ -107,7 +107,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * Sets the number of columns or rows in the list. If the value is set to the gutter type, it indicates the gap between columns.
      * It takes effect when the number of columns is greater than 1.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { ListAttribute }
      */
     @!APILevel[
@@ -120,8 +120,8 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * Sets the number of columns or rows in the list. If the value is set to the gutter type, it indicates the gap between columns.
      * It takes effect when the number of columns is greater than 1.
      *
-     * @params { ?Length } minLength
-     * @params { ?Length } maxLength
+     * @param { ?Length } minLength
+     * @param { ?Length } maxLength
      * @returns { ListAttribute }
      */
     @!APILevel[
@@ -134,7 +134,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * Alignment mode of list items along the cross axis when the cross-axis width of the list is greater
      * than the cross-axis width of list items multiplied by the value of lanes.
      *
-     * @params { ?ListItemAlign } value
+     * @param { ?ListItemAlign } value
      * @returns { ListAttribute }
      */
     @!APILevel[
@@ -146,7 +146,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
     /**
      * Sets whether to pin the header to the top or the footer to the bottom in the list item group.
      *
-     * @params { ?StickyStyle } value
+     * @param { ?StickyStyle } value
      * @returns { ListAttribute }
      */
     @!APILevel[
@@ -158,7 +158,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
     /**
      * Triggered when a child component enters or leaves the list display area.
      *
-     * @params { ?(Int32, Int32, Int32) -> Unit } event
+     * @param { ?(Int32, Int32, Int32) -> Unit } event
      * @returns { ListAttribute }
      */
     @!APILevel[
@@ -170,7 +170,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
     /**
      * Called when scrolling begin each frame.
      *
-     * @params { ?(Float64, ScrollState) -> OnScrollFrameBeginHandlerResult } event
+     * @param { ?(Float64, ScrollState) -> OnScrollFrameBeginHandlerResult } event
      * @returns { ListAttribute }
      */
     @!APILevel[

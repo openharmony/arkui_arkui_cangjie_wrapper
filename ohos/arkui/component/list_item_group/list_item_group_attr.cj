@@ -31,7 +31,7 @@ sealed interface ListItemGroupAttribute <: CommonMethod<ListItemGroupAttribute> 
     /**
      * Called when the ListItemGroup split line style is set.
      *
-     * @params { Option<ListDividerOptions> } value
+     * @param { Option<ListDividerOptions> } value
      * @returns { ListItemGroupAttribute }
      */
     @!APILevel[

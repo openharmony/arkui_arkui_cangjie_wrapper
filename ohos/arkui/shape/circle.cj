@@ -33,8 +33,8 @@ public class CircleShape <: BaseShape {
     /**
      * Create a circle drawing class instance.
      *
-     * @params { ?Length } width 
-     * @params { ?Length } height
+     * @param { ?Length } width 
+     * @param { ?Length } height
      */
     @!APILevel[
         22,

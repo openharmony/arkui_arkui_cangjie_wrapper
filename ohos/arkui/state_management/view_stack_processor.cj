@@ -56,7 +56,7 @@ public class ViewStackProcessor {
      * Start Get access recording, and account all access to given elmtId.
      * Note this can be a different elmtId than the one used to create new Component.
      *
-     * @params { Int64 } elmtId
+     * @param { Int64 } elmtId
      */
     @!APILevel[
         22,

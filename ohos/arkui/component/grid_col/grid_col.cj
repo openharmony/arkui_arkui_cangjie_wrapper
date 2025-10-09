@@ -103,12 +103,12 @@ public class GridColOptions {
     /**
      * Defines the constructor of GridColOptions.
      *
-     * @params { ?Int32 } xs - Grid Col Column Option xs.
-     * @params { ?Int32 } sm - Grid Col Column Option sm.
-     * @params { ?Int32 } md - Grid Col Column Option md.
-     * @params { ?Int32 } lg - Grid Col Column Option lg.
-     * @params { ?Int32 } xl - Grid Col Column Option xl.
-     * @params { ?Int32 } xxl - Grid Col Column Option xxl.
+     * @param { ?Int32 } xs - Grid Col Column Option xs.
+     * @param { ?Int32 } sm - Grid Col Column Option sm.
+     * @param { ?Int32 } md - Grid Col Column Option md.
+     * @param { ?Int32 } lg - Grid Col Column Option lg.
+     * @param { ?Int32 } xl - Grid Col Column Option xl.
+     * @param { ?Int32 } xxl - Grid Col Column Option xxl.
      */
     @!APILevel[
         22,
@@ -133,7 +133,7 @@ public class GridColOptions {
     /**
     * Defines the option in number unit of grid-container child component.
     *
-    * @params { ?Int32 } value
+    * @param { ?Int32 } value
     */
     @!APILevel[
         22,
@@ -186,10 +186,10 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     /**
      * GridCol constructor.
      *
-     * @params { ?Int32 } span - Sets the span of current gird-container item.
-     * @params { ?Int32 } offset - Sets the offset of current gird-container item.
-     * @params { ?Int32 } order - Sets the order of current gird-container item.
-     * @params { () -> Unit } child - The child component of GridCol.
+     * @param { ?Int32 } span - Sets the span of current gird-container item.
+     * @param { ?Int32 } offset - Sets the offset of current gird-container item.
+     * @param { ?Int32 } order - Sets the order of current gird-container item.
+     * @param { () -> Unit } child - The child component of GridCol.
      */
     @!APILevel[
         22,
@@ -205,10 +205,10 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     /**
      * GridCol constructor.
      *
-     * @params { ?GridColOptions } span - Sets the span of current gird-container item.
-     * @params { ?GridColOptions } offset - Sets the offset of current gird-container item.
-     * @params { ?GridColOptions } order - Sets the order of current gird-container item.
-     * @params { () -> Unit } child - The child component of GridCol.
+     * @param { ?GridColOptions } span - Sets the span of current gird-container item.
+     * @param { ?GridColOptions } offset - Sets the offset of current gird-container item.
+     * @param { ?GridColOptions } order - Sets the order of current gird-container item.
+     * @param { () -> Unit } child - The child component of GridCol.
      */
     @!APILevel[
         22,
@@ -232,7 +232,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     /**
      * Sets the span of current gird-container item.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { This }
      */
     @!APILevel[
@@ -249,7 +249,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     /**
      * Sets the span of current gird-container item.
      *
-     * @params { ?GridColOptions } value
+     * @param { ?GridColOptions } value
      * @returns { This }
      */
     @!APILevel[
@@ -267,7 +267,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     /**
      * Sets the offset of current gird-container item.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { This }
      */
     @!APILevel[
@@ -284,7 +284,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     /**
      * Sets the offset of current gird-container item.
      *
-     * @params { ?GridColOptions } value
+     * @param { ?GridColOptions } value
      * @returns { This }
      */
     @!APILevel[
@@ -302,7 +302,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     /**
      * Sets the order of current gird-container item.
      *
-     * @params { ?Int32 } value
+     * @param { ?Int32 } value
      * @returns { This }
      */
     @!APILevel[
@@ -319,7 +319,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     /**
      * Sets the order of current gird-container item.
      *
-     * @params { ?GridColOptions } value
+     * @param { ?GridColOptions } value
      * @returns { This }
      */
     @!APILevel[

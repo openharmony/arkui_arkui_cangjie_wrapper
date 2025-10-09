@@ -59,7 +59,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
      * Indicates whether to use a horizontal splitter or a vertical splitter.
      * The options are as follows: false: horizontal splitter; true: vertical splitter.
      *
-     * @params { ?Bool } value
+     * @param { ?Bool } value
      * @returns { This }
      */
     @!APILevel[
@@ -76,7 +76,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     /**
      * Sets the color of the divider line.
      *
-     * @params { ?ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
      */
     @!APILevel[
@@ -93,7 +93,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     /**
      * Sets the width of the dividing line.
      *
-     * @params { ?Length } value
+     * @param { ?Length } value
      * @returns { This }
      */
     @!APILevel[
@@ -111,7 +111,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     /**
      * Sets the end style of the split line. The default value is Butt.
      *
-     * @params { ?LineCapStyle } value
+     * @param { ?LineCapStyle } value
      * @returns { This }
      */
     @!APILevel[
