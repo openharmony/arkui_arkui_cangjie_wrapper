@@ -67,7 +67,7 @@ type ItemGenFuncType<T> = (T, Int64) -> Unit
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ForEach <: UINodeBase {
+public class ForEach<T> <: UINodeBase {
     var child: () -> Unit = {=>}
 
     /*

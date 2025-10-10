@@ -141,7 +141,7 @@ sealed interface TabContentAttribute <: CommonMethod<TabContentAttribute> {
      * </p>
      *
      * @param { ?ResourceStr } content - Content displayed on the tab bar.
-     * @returns { TTabContentAttributehis }
+     * @returns { TabContentAttribute }
      */
     @!APILevel[
         22,
