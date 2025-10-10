@@ -161,7 +161,7 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class LazyForEach <: UINodeBase {
+public class LazyForEach<T> <: UINodeBase {
     var child: () -> Unit = {=>}
     private static var uniqueKey = 0
 
