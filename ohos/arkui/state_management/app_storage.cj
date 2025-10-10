@@ -23,7 +23,6 @@ import ohos.business_exception.BusinessException
 /**
  * AppStorage singleton is sub-class of see LocalStorage for
  * UI state of app-wide access and same life cycle as the app.
- *
  */
 @!APILevel[
     22,
@@ -93,7 +92,6 @@ public class AppStorage {
     }
 
     /**
-     *
      * Like prop(), will create and initialize a new source property in AppStorage if missing.
      * Same as see LocalStorage.setAndProp().
      *

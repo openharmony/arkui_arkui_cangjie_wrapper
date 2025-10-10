@@ -47,8 +47,9 @@ public abstract class ObservedPropertyAbstract <: Observable {
     }
 
     /**
-     *
-     * @param { Observer } observer
+     * Subscribe an observer.
+     * 
+     * @param { Observer } observer - The observer to subscribe.
      */
     @!APILevel[
         22,
@@ -57,8 +58,9 @@ public abstract class ObservedPropertyAbstract <: Observable {
     public func subscribeEx(observer: Observer): Unit
 
     /**
-     *
-     * @param { Observer } observer
+     * Unsubscribe an observer.
+     * 
+     * @param { Observer } observer - The observer to unsubscribe.
      */
     @!APILevel[
         22,
@@ -80,8 +82,9 @@ public abstract class ObservedPropertyAbstract <: Observable {
     }
 
     /**
-     *
-     * @param { Int64 } rmElmtId
+     * Remove the dependency of this property on a specific element ID.
+     * 
+     * @param { Int64 } rmElmtId - The element ID to remove dependency on.
      */
     @!APILevel[
         22,

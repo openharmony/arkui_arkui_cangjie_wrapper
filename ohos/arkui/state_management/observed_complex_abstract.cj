@@ -35,8 +35,9 @@ public abstract class ObservedComplexAbstract <: Observable {
     protected func unsubscribeInner(observer: Observer): Unit
 
     /**
+     * Sets the value of this observed complex abstract object.
      *
-     * @param { ObservedComplexAbstract } v
+     * @param { ObservedComplexAbstract } v - The new value tha will be set.
      */
     @!APILevel[
         22,
@@ -76,8 +77,9 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     /**
+     * Adds property information to the propsInfo list.
      *
-     * @param { String } info
+     * @param { String } info.
      */
     @!APILevel[
         22,
