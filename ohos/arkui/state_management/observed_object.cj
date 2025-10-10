@@ -29,8 +29,9 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
     private let publishVars: ArrayList<ObservedPropertyAbstract> = ArrayList<ObservedPropertyAbstract>()
 
     /**
+     * Adds a published variable to the observed object.
      *
-     * @param { ObservedPropertyAbstract } publishVar
+     * @param { ObservedPropertyAbstract } publishVar - The published variable to add.
      */
     @!APILevel[
         22,
@@ -41,8 +42,9 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
     }
 
     /**
+     * Gets the list of published variables associated with this observed object.
      *
-     * @returns { ArrayList<ObservedPropertyAbstract> }
+     * @returns { ArrayList<ObservedPropertyAbstract> } The list of published variables.
      */
     @!APILevel[
         22,

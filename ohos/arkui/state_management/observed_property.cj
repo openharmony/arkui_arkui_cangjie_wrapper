@@ -65,8 +65,9 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     }
 
     /**
+     * Gets the current value of the observed property. And record the dependency elements that need to be updated.
      *
-     * @returns { T }
+     * @returns { T } The current value of the property.
      */
     @!APILevel[
         22,
@@ -82,8 +83,11 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     }
 
     /**
+     * Sets a new value for the observed property. Enable observers to receive updated information whenever state variables change.
+     * If the new value is equal to the current value, no changes will be made.
+     * Otherwise, it updates the value and notifies all subscribers of the change.
      *
-     * @param { T } newValue
+     * @param { T } newValue - The new value to set.
      */
     @!APILevel[
         22,
@@ -101,8 +105,10 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     }
 
     /**
+     * Subscribes an observer to this property and its nested observed objects.
+     * The observer will be notified when the property value changes.
      *
-     * @param { Observer } observer
+     * @param { Observer } observer - The observer to subscribe.
      */
     @!APILevel[
         22,
@@ -120,8 +126,9 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     }
 
     /**
+     * Unsubscribes an observer from this property and its nested observed objects.
      *
-     * @param { Observer } observer
+     * @param { Observer } observer - The observer to unsubscribe.
      */
     @!APILevel[
         22,
@@ -138,9 +145,10 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     }
 
     /**
+     * Creates a new property that shares the same value as this property.
      *
-     * @param { String } info
-     * @returns { ObservedProperty<T> }
+     * @param { String } info - Information about the new property.
+     * @returns { ObservedProperty<T> } A new ObservedProperty instance sharing the same value.
      */
     @!APILevel[
         22,
