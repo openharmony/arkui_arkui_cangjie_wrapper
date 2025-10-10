@@ -70,6 +70,20 @@ type ItemGenFuncType<T> = (T, Int64) -> Unit
 public class ForEach <: UINodeBase {
     var child: () -> Unit = {=>}
 
+    /*
+     * Define the ForEach component.
+     *
+     * @param { CollectionEx<T> } arr - the array collection to be used in UI.
+     * @param { ItemGenFuncType<T> } itemGenerator - item generator function.
+     * @param { KeyGenFuncType<T> } keyGenerator - key generator function.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(arr: CollectionEx<T>, itemGenerator!: ItemGenFuncType<T>,
+        keyGenerator!: ?ItemGenFuncType<T> = None) {}
+
     /**
      * Set the value, array, and key.
      */

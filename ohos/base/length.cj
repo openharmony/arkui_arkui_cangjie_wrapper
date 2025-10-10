@@ -205,14 +205,10 @@ public enum LengthUnit {
     | ...
 
     /**
-<<<<<<< HEAD
      * Get the length property of number value.
      *
-     * @throws { BussnessException } - 100001 - Internal error.
-=======
-     *
      * @returns { Int32 }
->>>>>>> 8414072 (Add annotations.)
+     * @throws { BussnessException } - 100001 - Internal error.
      */
     @!APILevel[
         22,
@@ -230,15 +226,11 @@ public enum LengthUnit {
     }
 
     /**
-<<<<<<< HEAD
      * Parse the length number value to LengthUnit type.
-     *
-     * @throws { BussnessException } - 100001 - Internal error.
-=======
      *
      * @param { Int32 } value
      * @returns { LengthUnit }
->>>>>>> 8414072 (Add annotations.)
+     * @throws { BussnessException } - 100001 - Internal error.
      */
     @!APILevel[
         22,

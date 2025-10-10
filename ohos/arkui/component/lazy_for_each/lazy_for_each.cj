@@ -165,6 +165,20 @@ public class LazyForEach <: UINodeBase {
     var child: () -> Unit = {=>}
     private static var uniqueKey = 0
 
+    /*
+     * Enter the value to obtain the LazyForEach
+     *
+     * @param { IDataSource<T> } dateSource - the array collection to be used in UI.
+     * @param { ItemGenFuncType<T> } itemGenerator - item generator function.
+     * @param { KeyGenFuncType<T> } keyGenerator - key generator function.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(dataSource: IDataSource<T>, itemGenerator!: ItemGenFuncType<T>,
+        keyGenerator!: ?KeyGenFuncType<T> = None) {}
+
     /**
      * Enter the value to obtain the LazyForEach.
      */
