@@ -121,21 +121,21 @@ class ViewCurves {
                 Text("${message18}").id("case18")
                 Text("${message19}").id("case19")
                 Text("${message20}").id("case20")
-                Button("normal_case1").onClick {
+                Button("normal_case1").onClick ({
                     _ => setMessage(0.2)
-                }.fontSize(40).height(80).id("normal_case1")
-                Button("normal_case2").onClick {
+                }).fontSize(40).height(80).id("normal_case1")
+                Button("normal_case2").onClick ({
                     _ => setMessage(0.5)
-                }.fontSize(40).height(80).id("normal_case2")
-                Button("edge_case1").onClick {
+                }).fontSize(40).height(80).id("normal_case2")
+                Button("edge_case1").onClick ({
                     _ => setMessage(0.0)
-                }.fontSize(40).height(80).id("edge_case1")
-                Button("edge_case2").onClick {
+                }).fontSize(40).height(80).id("edge_case1")
+                Button("edge_case2").onClick ({
                     _ => setMessage(1.0)
-                }.fontSize(40).height(80).id("edge_case2")
-                Button("edge_case3").onClick {
+                }).fontSize(40).height(80).id("edge_case2")
+                Button("edge_case3").onClick ({
                     _ => setMessage(-100.0)
-                }.fontSize(40).height(80).id("edge_case3")
+                }).fontSize(40).height(80).id("edge_case3")
             }.width(100.percent)
         }.height(100.percent)
     }

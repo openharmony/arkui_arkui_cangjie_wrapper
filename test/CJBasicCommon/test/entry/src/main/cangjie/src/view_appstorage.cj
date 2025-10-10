@@ -39,43 +39,43 @@ class ViewAppstorage {
                 .id("parentText")
                 .width(count.vp)
             // 修改会同步到其他组件中
-            Button("+").onClick {
+            Button("+").onClick ({
                 e => count += 10
-            }.id("parentBtn")
+            }).id("parentBtn")
             Son()
 
             Text(this.msgText)
                 .id("msgText")
 
-            Button("changeLinkTextButton").onClick { e
+            Button("changeLinkTextButton").onClick ({ e
                 =>
                     this.linkToMsg1.set("changed")
                     this.msgText = this.linkToMsg2.get()
-            }.id("changeLinkTextButton")
-            Button("hasButton").onClick { e
+            }).id("changeLinkTextButton")
+            Button("hasButton").onClick ({ e
                 =>
                     this.msgText = "${haveMsg}"
-            }.id("hasButton")
-            Button("nohasButton").onClick {
+            }).id("hasButton")
+            Button("nohasButton").onClick ({
                 e =>
                     this.msgText = "${nohaveMsg}"
-            }.id("nohasButton")
-            Button("keysSizeButton").onClick { e
+            }).id("nohasButton")
+            Button("keysSizeButton").onClick ({ e
                 =>
                     this.msgText = "AppStorage has ${AppStorage.size()} elements: ${AppStorage.keys().toArray()}"
-            }.id("keysSizeButton")
-            Button("clearButton").onClick { e
+            }).id("keysSizeButton")
+            Button("clearButton").onClick ({ e
                 =>
                     this.msgText = "${AppStorage.clear()}"
-            }.id("clearButton")
-            Button("getButton").onClick { e
+            }).id("clearButton")
+            Button("getButton").onClick ({ e
                 =>
                     this.msgText = AppStorage.get<String>("msg").getOrThrow()
-            }.id("getButton")
-            Button("setButton").onClick { e
+            }).id("getButton")
+            Button("setButton").onClick ({ e
                 =>
                     this.msgText = "${AppStorage.set("msg","666")}"
-            }.id("setButton")
+            }).id("setButton")
         }
     }
 }
@@ -87,9 +87,9 @@ class Son {
     func build() {
         Column(space: 10) {
             // 修改会同步到其他组件中
-            Button("-").onClick {
+            Button("-").onClick ({
                 e => count -= 10
-            }.id("sonBtn")
+            }).id("sonBtn")
         }
     }
 }

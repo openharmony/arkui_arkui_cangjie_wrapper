@@ -36,7 +36,7 @@ class ViewTransition {
     func build() {
         Column {
             Button(this.show)
-                .onClick {
+                .onClick ({
                     evt =>
                     Hilog.info(1, "Cangjie-App", "Hello Cangjie")
                     if (this.flag) {
@@ -45,7 +45,7 @@ class ViewTransition {
                         this.show = "show"
                     }
                     this.flag = !this.flag
-                }
+                })
                 .width(800.px)
                 .height(400.px)
                 .id("my_button")

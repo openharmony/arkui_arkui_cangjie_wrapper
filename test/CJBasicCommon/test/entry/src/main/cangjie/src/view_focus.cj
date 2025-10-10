@@ -48,9 +48,9 @@ class ViewFocus {
                 Row() {
                     // 默认焦点，并且点击可获焦
                     Button("Hello Cangjie A")
-                        .onClick {
+                        .onClick ({
                             evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie A")
-                        }
+                        })
                         .backgroundColor(oneButtonColor)
                         .width(400.px)
                         .height(120.px)
@@ -69,9 +69,9 @@ class ViewFocus {
                         .key(this.idList[0])
                     // 不支持点击获焦，但是默认可获焦
                     Button("Hello Cangjie B")
-                        .onClick {
+                        .onClick ({
                             evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie B")
-                        }
+                        })
                         .backgroundColor(twoButtonColor)
                         .width(400.px)
                         .height(120.px)
@@ -91,9 +91,9 @@ class ViewFocus {
                 Row() {
                     // 不支持获焦
                     Button("Hello Cangjie C")
-                        .onClick {
+                        .onClick ({
                             evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie C")
-                        }
+                        })
                         .backgroundColor(threeButtonColor)
                         .width(400.px)
                         .height(120.px)
@@ -111,9 +111,9 @@ class ViewFocus {
                         .key(this.idList[2])
                     // 可获焦，并且支持点击获焦
                     Button("Hello Cangjie D")
-                        .onClick {
+                        .onClick ({
                             evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie D")
-                        }
+                        })
                         .backgroundColor(fourButtonColor)
                         .width(400.px)
                         .height(120.px)
@@ -134,9 +134,9 @@ class ViewFocus {
                 Row() {
                     // 父级组件获焦时的默认焦点
                     Button("Hello Cangjie E")
-                        .onClick {
+                        .onClick ({
                             evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie E")
-                        }
+                        })
                         .backgroundColor(fiveButtonColor)
                         .width(400.px)
                         .height(120.px)
@@ -172,7 +172,7 @@ class ViewFocus {
                         .margin(20.px)
                         .fontColor(Color.Black)
                         .focusable(true)
-                        .onClick { e =>
+                        .onClick ({ e =>
                             let selectId = this.idList[3]
                             let result = FocusControl.requestFocus(selectId)
                             if (result) {
@@ -180,7 +180,7 @@ class ViewFocus {
                             } else {
                                 Hilog.info(1, "Cangjie-App", "Request failed")
                             }
-                        }
+                        })
                 }
                 Row() {
                     Button("Hello Cangjie F")
@@ -242,8 +242,8 @@ class ViewFocus {
                         .focusOnTouch(true)
                         .id(this.idList[11])
                         .key(this.idList[11])
-                        .onClick { e =>
-                        }
+                        .onClick ({ e =>
+                        })
                     Button("Hello Cangjie M2")
                         .width(400.px)
                         .height(120.px)

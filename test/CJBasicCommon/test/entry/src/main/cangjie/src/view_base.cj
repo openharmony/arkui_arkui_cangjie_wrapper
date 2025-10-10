@@ -127,13 +127,13 @@ class ViewBase {
                 false, CustomPopupOptions(builder: {=>}, showInSubWindow: false, placement: Placement.TopRight)).keyboardShortcut(
                 FunctionKey.F6, [ModifierKey.Alt])
 
-            Text("add overlay usages").overlay(value: "hello").radialGradient((100.0.px, 100.0.px), 120.0).bindPopup(
+            Text("add overlay usages").overlay(value: "hello").radialGradient((100.0.px, 100.0.px), 120.0, [(Color.Transparent, 0.0)]).bindPopup(
                 false, CustomPopupOptions(builder: {=>}, showInSubWindow: false, placement: Placement.TopLeft)).keyboardShortcut(
                 FunctionKey.F5, [ModifierKey.Alt]).sharedTransition(
                 "SharedEffectExchange",
                 options: SharedTransitionOptions(effectType: SharedTransitionEffectType.Exchange)
             )
-            Text("add overlay usages").overlay(value: "hello").radialGradient((100.0.px, 100.0.px), 120.vp).bindPopup(
+            Text("add overlay usages").overlay(value: "hello").radialGradient((100.0.px, 100.0.px), 120.vp, [(Color.Transparent, 0.0)]).bindPopup(
                 false, CustomPopupOptions(builder: {=>}, showInSubWindow: false, placement: Placement.Top)).keyboardShortcut(
                 FunctionKey.F4, [ModifierKey.Alt]).sharedTransition(
                 "SharedEffectStatic",

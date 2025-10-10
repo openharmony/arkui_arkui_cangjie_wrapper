@@ -32,65 +32,65 @@ class ViewRouter1 {
     func build() {
         Flex(wrap: FlexWrap.Wrap) {
             Text("Page ViewRouter1").fontSize(40.fp).id("my_text1")
-            Button("jump1_to_page2").onClick {
+            Button("jump1_to_page2").onClick ({
                 e => getUIContext().getRouter().pushUrl(url: "ViewRouter2")
-            }.id("jump1_to_page2")
+            }).id("jump1_to_page2")
 
             // 覆盖率提升 JsonObject
-            Button("jump2_to_page2").onClick {
+            Button("jump2_to_page2").onClick ({
                 e => getUIContext().getRouter().pushUrl(url: "ViewRouter2", params: "")
-            }.id("jump2_to_page2")
+            }).id("jump2_to_page2")
 
             // 覆盖率提升 getParamsObject
-            Button("getParamsObject").onClick {
+            Button("getParamsObject").onClick ({
                 e => getUIContext().getRouter().getParams()
-            }.id("getParamsObject")
+            }).id("getParamsObject")
             Button("to_page2_by_pushurl")
-                .onClick {
+                .onClick ({
                     e => getUIContext().getRouter().pushUrl(url: "ViewRouter2", params: "from page1 by pushurl")
-                }
+                })
                 .id("to_page2_by_pushurl")
             Button("to_page2_by_pushurl_single")
-                .onClick {
+                .onClick ({
                     e => getUIContext().getRouter().pushUrl(url: "ViewRouter2", params: "from page1 by pushurl single")
-                }
+                })
                 .id("to_page2_by_pushurl_single")
 
             Button("to_page2_by_replace")
-                .onClick {
+                .onClick ({
                     e => getUIContext().getRouter().back(url: "ViewRouter2", params: "from page1 by replace")
-                }
+                })
                 .id("to_page2_by_replace")
 
             Button("get_params")
-                .onClick {
+                .onClick ({
                     e =>
                     var str: Option<String> = getUIContext().getRouter().getParams()
                     match (str) {
                         case Some(v) => this.message = v
                         case None => this.message = "None"
                     }
-                }
+                })
                 .id("get_params")
 
             Button("back_page2")
-                .onClick {
+                .onClick ({
                     e => getUIContext().getRouter().back(url: "ViewRouter2", params: "page1 back to page2")
-                }
+                })
                 .id("back_page2")
-            Button("back_to_4").onClick {
+            Button("back_to_4").onClick ({
                 e => getUIContext().getRouter().back(index: 3, params: "page1 back to 3")
-            }.id("back_to_4")
+            }).id("back_to_4")
 
             Button("err_pushurl")
-                .onClick {
+                .onClick ({
                     e => getUIContext().getRouter().pushUrl(url: "err_pushurl", params: "from page1 by pushurl")
-                }
+                })
                 .id("err_pushurl")
             Button("err_pushurl_single")
-                .onClick {
+                .onClick ({
                     e => getUIContext().getRouter().pushUrl(url: "err_pushurl_single", params: "from page1 by pushurl single")
-                }
+                })
                 .id("err_pushurl_single")
 
             Text(message).id("router1_get_message")

@@ -42,13 +42,13 @@ class ViewObservableArrayList {
 
     }
 
-    protected override func aboutToDisappear() {
-
-        obs_arrlist.unsubscribeAll()
-        tmp_obs_arrlist.unsubscribeAll()
-
-
-    }
+//    protected override func aboutToDisappear() {
+//
+//        obs_arrlist.unsubscribeAll()
+//        tmp_obs_arrlist.unsubscribeAll()
+//
+//
+//    }
 
     public func removeif_predicate(test_book: Book2): Bool{
         if(test_book.id == 0){
@@ -67,90 +67,90 @@ class ViewObservableArrayList {
             Text("tmp_obs_arrlist_isempty is ${tmp_obs_arrlist_isempty}").id("tmp_obs_arrlist_isempty")
             Text("arrlist[0].title is ${arrlist[0].title}").id("arrlist_firbok")
         
-            Button("test_arrlist_get").onClick{ e =>
+            Button("test_arrlist_get").onClick({ e =>
                 obs_arrlist[0] = Book2(title: "test_get", id: 123456)
                 arrlist = obs_arrlist.get()
-            }.id("test_arrlist_get")
+            }).id("test_arrlist_get")
 
-            Button("test_set_arr").onClick{ e =>
+            Button("test_set_arr").onClick({ e =>
                 obs_arrlist.set(tmp_array)
-            }.id("test_set_arr")
+            }).id("test_set_arr")
 
-            Button("test_set_arrlist").onClick{ e =>
+            Button("test_set_arrlist").onClick({ e =>
                 tmp_arrlist = ArrayList<Book2>([Book2(title: "test_set_arrlist1", id: 123456), Book2(title: "test_setarrlist2", id: 123456)])
                 obs_arrlist.set(tmp_arrlist)
-            }.id("test_set_arrlist")
+            }).id("test_set_arrlist")
 
-            Button("test_set_oca").onClick{ e =>
+            Button("test_set_oca").onClick({ e =>
                 tmp_obs_arrlist[0].title = "test_set_oca"
                 obs_arrlist.set(tmp_obs_arrlist)
-            }.id("test_set_oca")
+            }).id("test_set_oca")
 
-            Button("test_arrlist_prop_size").onClick{ e =>
+            Button("test_arrlist_prop_size").onClick({ e =>
                 obs_arrlist_size = obs_arrlist.size
-            }.id("test_arrlist_prop_size")
+            }).id("test_arrlist_prop_size")
 
-            Button("test_arrlist_clone").onClick{ e =>
+            Button("test_arrlist_clone").onClick({ e =>
                 obs_arrlist[0].title = "test_clone"
                 tmp_obs_arrlist = obs_arrlist.clone()
-            }.id("test_arrlist_clone")
+            }).id("test_arrlist_clone")
 
-            Button("test_arrlist_clear").onClick{ e =>
+            Button("test_arrlist_clear").onClick({ e =>
                 tmp_obs_arrlist.clear()
                 tmp_obs_arrlist_isempty = tmp_obs_arrlist.isEmpty()
                 tmp_obs_arrlist.clear()
-            }.id("test_arrlist_clear")
+            }).id("test_arrlist_clear")
 
-            Button("test_appendAll").onClick{ e =>
+            Button("test_appendAll").onClick({ e =>
                 tmp_arrlist = ArrayList<Book2>([Book2(title: "test_appendAll_1", id: 123456), Book2(title: "test_appendAll_2", id: 123456)])
                 obs_arrlist.clear()
                 obs_arrlist.appendAll(ArrayList<Book2>())
                 obs_arrlist.appendAll(tmp_arrlist)
-            }.id("test_appendAll")
+            }).id("test_appendAll")
 
-            Button("test_arrlist_insert").onClick{ e =>
+            Button("test_arrlist_insert").onClick({ e =>
                 obs_arrlist.insert(0, Book2(title: "test_insert1", id: 123456))
-            }.id("test_arrlist_insert")
+            }).id("test_arrlist_insert")
 
-            Button("test_arrlist_insertAll").onClick{ e =>
+            Button("test_arrlist_insertAll").onClick({ e =>
                 tmp_arrlist = ArrayList<Book2>([Book2(title: "test_insertAll_1", id: 123456), Book2(title: "test_insertAll_2", id: 123456)])
                 obs_arrlist.insertAll(0, ArrayList<Book2>())
                 obs_arrlist.insertAll(0, tmp_arrlist)
-            }.id("test_arrlist_insertAll")
+            }).id("test_arrlist_insertAll")
 
-            Button("test_prepend").onClick{ e =>
+            Button("test_prepend").onClick({ e =>
                 obs_arrlist.prepend(Book2(title: "test_prepend", id: 123456))
-            }.id("test_prepend")
+            }).id("test_prepend")
 
-            Button("test_prependAll").onClick{ e =>
+            Button("test_prependAll").onClick({ e =>
                 tmp_arrlist = ArrayList<Book2>([Book2(title: "test_prependAll_1", id: 123456), Book2(title: "test_prependAll_2", id: 123456)])
                 obs_arrlist.prependAll(ArrayList<Book2>())
                 obs_arrlist.prependAll(tmp_arrlist)
-            }.id("test_prependAll")
+            }).id("test_prependAll")
 
-            Button("test_remove").onClick{ e =>
+            Button("test_remove").onClick({ e =>
                 obs_arrlist.clear()
                 tmp_arrlist = ArrayList<Book2>([Book2(title: "test_remove_1", id: 123456), Book2(title: "test_remove_2", id: 123456)])
                 obs_arrlist.appendAll(tmp_arrlist)
                 obs_arrlist.remove(0)
-            }.id("test_remove")
+            }).id("test_remove")
 
-            Button("test_remove_range").onClick{ e =>
+            Button("test_remove_range").onClick({ e =>
                 obs_arrlist.clear()
                 tmp_arrlist = ArrayList<Book2>([Book2(title: "test_remove_range_1", id: 123456), Book2(title: "test_remove_range_2", id: 123456), 
                                                                                                 Book2(title: "test_remove_range_3", id: 123456)])
                 obs_arrlist.appendAll(tmp_arrlist)
                 obs_arrlist.remove(Range<Int64>(0,1,1, true, true, true))
-            }.id("test_remove_range")
+            }).id("test_remove_range")
 
-            Button("test_removeif").onClick{ e =>
+            Button("test_removeif").onClick({ e =>
                 let predicate: (test_book: Book2) -> Bool
                 predicate = removeif_predicate
                 obs_arrlist.clear()
                 tmp_arrlist = ArrayList<Book2>([Book2(title: "test_removeif1", id: 0), Book2(title: "test_removeif2", id: 123456)])
                 obs_arrlist.appendAll(tmp_arrlist)
                 obs_arrlist.removeIf(predicate)
-            }.id("test_removeif")
+            }).id("test_removeif")
 
         
         }

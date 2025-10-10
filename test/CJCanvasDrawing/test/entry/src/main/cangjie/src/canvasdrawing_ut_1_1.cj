@@ -427,7 +427,7 @@ class CanvasDrawingUT11 {
         Hilog.error(1,"Cangjie-Test", "test_imageEvent started")
         let image_1_onComplete = driver.findComponent(On().id("image_1_onComplete")).getOrThrow().getText()
         Hilog.info(1,"Cangjie-Test", "image_1_onComplete: " + image_1_onComplete)
-        @Expect(image_1_onComplete, "144.000000, 144.000000, 650.000000, 325.000000, 1, 650.000000, 325.000000, 0.000000, 0.000000")
+        @Expect(image_1_onComplete, "Some(144.000000), Some(144.000000), Some(650.000000), Some(325.000000), Some(1), Some(650.000000), Some(325.000000), Some(0.000000), Some(0.000000)")
 
         let image1 = driver.findComponent(On().id("Image_1")).getOrThrow()
         image1.click()

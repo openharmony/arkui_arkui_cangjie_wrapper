@@ -54,22 +54,22 @@ class ViewSubscriber {
         Column(space: 10) {
             Text(size).width(20.vp).id("show")
 
-            Button("size").onClick { e =>
-                this.size = SubscriberManager.getInstance().sizeOfManager().toString()
-            }.id("size")
+            Button("size").onClick ({ e =>
+//                this.size = SubscriberManager.getInstance().sizeOfManager().toString()
+            }).id("size")
 
-            Button("ShowInfo").onClick {
+            Button("ShowInfo").onClick ({
                 e =>
-                SubscriberManager.getInstance().dumpSubscriberInfo()
-            }.id("info")
+//                SubscriberManager.getInstance().dumpSubscriberInfo()
+            }).id("info")
 
-            Button("get").onClick {
+            Button("get").onClick ({
                 e =>
                 let p0 = TestObserver()
                 SubscriberManager.getInstance().add(p0)
                 SubscriberManager.getInstance().add(p0)
                 SubscriberManager.getInstance().get(2)
-            }.id("get")
+            }).id("get")
         }
     }
 }

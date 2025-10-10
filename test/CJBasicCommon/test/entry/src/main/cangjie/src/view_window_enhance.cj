@@ -21,9 +21,7 @@ internal import ohos.arkui.component.row.Row
 internal import ohos.arkui.component.button.Button
 internal import ohos.arkui.component.text.Text
 internal import ohos.arkui.component.text_input.TextInput
-internal import ohos.arkui.component.view.CustomView
 
-internal import ohos.arkui.component.view.loadNativeView
 internal import ohos.arkui.state_management.SubscriberManager
 internal import ohos.arkui.state_management.ObservedProperty
 internal import ohos.arkui.state_management.LocalStorage
@@ -68,7 +66,7 @@ class ViewWindowEnhance {
                 Column() {
                     Button("setWinSysBarProp")
                         .id("setWindowSystemBarProperties")
-                        .onClick { e
+                        .onClick ({ e
                             =>
                             let property: SystemBarProperties = SystemBarProperties(
                                 statusBarColor: '#ff00ff',
@@ -79,7 +77,7 @@ class ViewWindowEnhance {
                                 enableNavigationBarAnimation: true
                             )
                              mainWindow.setWindowSystemBarProperties(property)
-                        }
+                        })
                         .width(20.percent)
                         .height(20)
                 }
@@ -89,37 +87,37 @@ class ViewWindowEnhance {
                 Column() {
                     Button("showWindow")
                         .id("showWindow")
-                        .onClick { e
+                        .onClick ({ e
                             => mainWindow.showWindow()
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("moveWindowTo")
                         .id("moveWindowTo")
-                        .onClick { e
+                        .onClick ({ e
                             => mainWindow.moveWindowTo(0,0)
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("setWindowLayoutFullScreen")
                         .id("setWindowLayoutFullScreen")
-                        .onClick { e
+                        .onClick ({ e
                             => mainWindow.setWindowLayoutFullScreen(true)
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("isWindowSupportWideGamut")
                         .id("isWindowSupportWideGamut")
-                        .onClick { e
+                        .onClick ({ e
                             =>
                             let state = mainWindow.isWindowSupportWideGamut()
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
@@ -129,41 +127,41 @@ class ViewWindowEnhance {
                 Column() {
                     Button("isWindowShowing")
                         .id("isWindowShowing")
-                        .onClick { e
+                        .onClick ({ e
                             =>
                             let state = mainWindow.isWindowShowing()
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("setWindowBackgroundColor")
                         .id("setWindowBackgroundColor")
-                        .onClick { e
+                        .onClick ({ e
                             =>
                             mainWindow.setWindowBackgroundColor('#00ff33')
                             mainWindow.setWindowBackgroundColor('#ffffff')
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("setWindowBrightness")
                         .id("setWindowBrightness")
-                        .onClick { e
+                        .onClick ({ e
                             =>
                             mainWindow.setWindowBrightness(0.5)
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("setWindowFocusable")
                         .id("setWindowFocusable")
-                        .onClick { e
+                        .onClick ({ e
                             =>
                             let state = mainWindow.setWindowFocusable(true)
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
@@ -173,43 +171,43 @@ class ViewWindowEnhance {
                 Column() {
                     Button("setWindowKeepScreenOn")
                         .id("setWindowKeepScreenOn")
-                        .onClick { e
+                        .onClick ({ e
                             => mainWindow.setWindowKeepScreenOn(true)
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("setWindowTouchable")
                         .id("setWindowTouchable")
-                        .onClick { e
+                        .onClick ({ e
                             =>
                             let state = mainWindow.setWindowTouchable(true)
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("getWindowAvoidArea")
                         .id("getWindowAvoidArea")
-                        .onClick { e
+                        .onClick ({ e
                             =>
                             let avoidarea = mainWindow.getWindowAvoidArea(AvoidAreaType.TypeCutout)
                             mainWindow.getWindowAvoidArea(AvoidAreaType.TypeSystemGesture)
                             mainWindow.getWindowAvoidArea(AvoidAreaType.TypeKeyboard)
                             mainWindow.getWindowAvoidArea(AvoidAreaType.TypeNavigationIndicator)
                             this.msg = "${avoidarea.visible}"+"${avoidarea.leftRect.top},${avoidarea.topRect.top},${avoidarea.rightRect.top},${avoidarea.bottomRect.top}"
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("getWindowProperties")
                         .id("getWindowProperties")
-                        .onClick{ e
+                        .onClick({ e
                             =>
 //                            this.msg = mainWindow.getWindowProperties().windowRect.width.toString()
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
@@ -219,43 +217,43 @@ class ViewWindowEnhance {
                 Column() {
                     Button("setAspectRatio")
                         .id("setAspectRatio")
-                        .onClick{ e
+                        .onClick({ e
                             => mainWindow.setAspectRatio(0.5)
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("resetAspectRatio")
                         .id("resetAspectRatio")
-                        .onClick{ e
+                        .onClick({ e
                             => mainWindow.resetAspectRatio()
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("setWindowColorSpace")
                         .id("setWindowColorSpace")
-                        .onClick{ e
+                        .onClick({ e
                             =>
                             mainWindow.setWindowColorSpace(ColorSpace.Default)
                             mainWindow.setWindowColorSpace(ColorSpace.WideGamut)
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("test checkRet")
                         .id("test checkRet")
-                        .onClick{ e
+                        .onClick({ e
                             =>
                             try {
                                 var windowName = findWindow("abc")
                             }catch (e: Exception) {
                                     Hilog.info(1, "Cangjie-App", "test checkRet " + e.toString())
                             }
-                        }
+                        })
                         .width(20.percent)
                         .height(20)
                     }
@@ -265,36 +263,36 @@ class ViewWindowEnhance {
                 Column() {
                     Button("getWindowColorSpace")
                         .id("getWindowColorSpace")
-                        .onClick{ e
+                        .onClick({ e
                             =>
                             let ColorSpace = mainWindow.getWindowColorSpace()
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("snapshot")
                         .id("snapshot")
-                        .onClick{ e
+                        .onClick({ e
                             => mainWindow.snapshot()
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("setWindowSystemBarEnable")
                         .id("setWindowSystemBarEnable")
-                        .onClick{ e
+                        .onClick({ e
                             =>
                             mainWindow.setWindowSystemBarEnable([SystemBarType.Status])
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
                 Column() {
                     Button("CFwindow")
                         .id("CFwindow")
-                        .onClick{ e
+                        .onClick({ e
                             =>
                             try {
                                 var config1 = Configuration(name: "TestSubWindow1", windowType: WindowType.TypeApp, ctx: stageContext,displayId: 1, parentId: Int64(mainId))
@@ -309,12 +307,12 @@ class ViewWindowEnhance {
                             }catch (e: Exception) {
                                     Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
-                        }
+                        })
                         .width(20.percent)
                         .height(20)
                     Button("destroyWindow")
                         .id("destroyWindow")
-                        .onClick{ e
+                        .onClick({ e
                             =>
                             try {
                                 var TestSubWindow1 = Global.getMainWindow()
@@ -346,12 +344,12 @@ class ViewWindowEnhance {
                             }catch (e: Exception) {
                                     Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                     Button("onOff")
                         .id("onOff")
-                        .onClick{ e
+                        .onClick({ e
                             =>
                             var TestSubWindow1 = Global.getMainWindow()
                             try {
@@ -369,7 +367,7 @@ class ViewWindowEnhance {
                             }catch (e: Exception) {
                                     Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
@@ -379,14 +377,14 @@ class ViewWindowEnhance {
                 Column() {
                     Button("setWindowPrivacyMode")
                         .id("setWindowPrivacyMode")
-                        .onClick{ e
+                        .onClick({ e
                             =>
                             try {
                                 mainWindow.setWindowPrivacyMode(true)
                             }catch (e: Exception) {
                                 Hilog.info(1, "Cangjie-Test", "case_setWindowPrivacyMode " + e.toString())
                         }
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
@@ -394,7 +392,7 @@ class ViewWindowEnhance {
                 Column() {
                     Button("setPreferredOrientation")
                         .id("setPreferredOrientation")
-                        .onClick{ e
+                        .onClick({ e
                             =>
                             try {
                                 let testClass = getLastWindow(stageContext)
@@ -406,7 +404,7 @@ class ViewWindowEnhance {
                             } catch (e: Exception) {
                                     Hilog.info(1, "Cangjie-Test", "case_windowSettingOrientation " + e.toString())
                                 }
-                        }
+                        })
                         .width(20.percent)
                         .height(20)
                 }
@@ -414,14 +412,14 @@ class ViewWindowEnhance {
                 Column() {
                     Button("shiftAppWindowFocus")
                         .id("shiftAppWindowFocus")
-                        .onClick{ e
+                        .onClick({ e
                             =>
                             try{
                                 shiftAppWindowFocus(0,0)
                             }catch (e: Exception) {
                                     Hilog.info(1, "Cangjie-Test", "case_shiftAppWindowFocus " + e.toString())
                                 }
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
@@ -431,7 +429,7 @@ class ViewWindowEnhance {
                 Column(){
                     Button("structtest")
                     .id("structtest")
-                    .onClick{ e
+                    .onClick({ e
                         =>
                         let size = Size(width: 100, height: 200)
                         this.msg = "${size.width},${size.height}"
@@ -441,7 +439,7 @@ class ViewWindowEnhance {
 
                         let titlebutrect = TitleButtonRect(right: 200, top: 200, width: 200, height: 200)
                         this.msg = "${titlebutrect.right},${titlebutrect.top},${titlebutrect.width},${titlebutrect.height}"
-                    }
+                    })
                         .width(20.percent)
                         .height(20)
                 }
@@ -449,7 +447,7 @@ class ViewWindowEnhance {
                 Column(){
                     Button("WindowType")
                         .id("WindowTypeEnum")
-                        .onClick{ e
+                        .onClick({ e
                             =>
                             try {
                                 var config1 = Configuration(name: "TestSubWindow1", windowType: WindowType.TypeDialog, ctx: stageContext,displayId: 1, parentId: Int64(mainId))
@@ -466,7 +464,7 @@ class ViewWindowEnhance {
                             }catch (e: Exception) {
                                     Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
-                        }
+                        })
                         .width(20.percent)
                         .height(20)
                 }
@@ -474,7 +472,7 @@ class ViewWindowEnhance {
                 Column() {
                     Button("WindowEventType")
                         .id("WindowEventTypeEnum")
-                        .onClick{ e =>
+                        .onClick({ e =>
                             try {
                                 var WET1: WindowEventType = WindowEventType.WindowShown
                                 var WET2: WindowEventType = WindowEventType.WindowActive
@@ -484,7 +482,7 @@ class ViewWindowEnhance {
                             }catch (e: Exception) {
                                 Hilog.info(1, "Cangjie-Test", "case_WindowEventTypeEnum " + e.toString())
                             }
-                        }
+                        })
                         .width(20.percent)
                         .height(20)
                 }
@@ -492,7 +490,7 @@ class ViewWindowEnhance {
                 Column() {
                     Button("WindowStageEventType")
                         .id("WindowStageEventTypeEnum")
-                        .onClick{ e =>
+                        .onClick({ e =>
                             try {
                                 var WSET1: WindowStageEventType = WindowStageEventType.Shown
                                 var WSET2: WindowStageEventType = WindowStageEventType.Active
@@ -503,7 +501,7 @@ class ViewWindowEnhance {
                             }catch (e: Exception) {
                                 Hilog.info(1, "Cangjie-Test", "case_WindowStageEventTypeEnum " + e.toString())
                             }
-                        }
+                        })
                         .width(20.percent)
                         .height(20)
                 }
@@ -512,7 +510,7 @@ class ViewWindowEnhance {
                 Column() {
                     Button("WindowStatusType")
                         .id("WindowStatusTypeEnum")
-                        .onClick{ e =>
+                        .onClick({ e =>
                             try{
                                 var WST1: WindowStatusType = WindowStatusType.Undefined
                                 var WST2: WindowStatusType = WindowStatusType.Maximize
@@ -523,7 +521,7 @@ class ViewWindowEnhance {
                             }catch (e: Exception) {
                                 Hilog.info(1, "Cangjie-Test", "case_WindowStatusTypeEnum " + e.toString())
                             }
-                        }
+                        })
                         .width(20.percent)
                         .height(20)
                 }
