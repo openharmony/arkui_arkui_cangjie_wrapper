@@ -106,9 +106,11 @@ public class PersistentStorage <: Observer {
     }
 
     /**
+     * Called when a state update occurs in the observed properties.
+     * This method is triggered when any of the persistent properties change.
      *
-     * @param { String } _
-     * @param { ArrayList<Int64> } _
+     * @param { String } _.
+     * @param { ArrayList<Int64> } _.
      */
     @!APILevel[
         22,
@@ -119,8 +121,10 @@ public class PersistentStorage <: Observer {
     }
 
     /**
+     * Notifies when a property is read.
+     * This method is called when a property value is accessed.
      *
-     * @param { String } _
+     * @param { String } _.
      */
     @!APILevel[
         22,
@@ -129,8 +133,9 @@ public class PersistentStorage <: Observer {
     public func notifyRead(_: String): Unit {}
 
     /**
+     * Gets the unique identifier of the PersistentStorage instance.
      *
-     * @returns { Int64 }
+     * @returns { Int64 } The unique identifier of this PersistentStorage instance.
      */
     @!APILevel[
         22,
@@ -141,7 +146,8 @@ public class PersistentStorage <: Observer {
     }
 
     /**
-     *
+     * Prepares the PersistentStorage instance for deletion, cleaning up any resources.
+     * This method cleans up all persistent properties and resets the instance.
      */
     @!APILevel[
         22,
@@ -168,9 +174,10 @@ public class PersistentStorage <: Observer {
 
     /**
      * Called when a persistence property is stored.
+     * This method makes an AppStorage property persistent by storing its value across application restarts.
      *
-     * @param { String } key
-     * @param { T } defaultValue
+     * @param { String } key.
+     * @param { T } defaultValue.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -183,10 +190,10 @@ public class PersistentStorage <: Observer {
 
     /**
      * Persist given AppStorage properties with given names.
-     * If a property does not exist in AppStorage, add it and initialize it with given value
-     * works as persistProp for multiple properties.
+     * If a property does not exist in AppStorage, add it and initialize it with given value.
+     * Works as persistProp for multiple properties at once.
      *
-     * @param { Array<(String, T)> } key
+     * @param { Array<(String, T)> } props.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -198,11 +205,12 @@ public class PersistentStorage <: Observer {
     }
 
     /**
-    * Reverse of persistProp.
-    *
-    * @param { String } key - no longer persist the property named key
-    * @throws { BusinessException } 100001 - Internal error.
-    */
+     * Reverse of persistProp.
+     * Stops persisting the property with the given name and removes it from persistent storage.
+     *
+     * @param { String } key.
+     * @throws { BusinessException } 100001 - Internal error.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -213,8 +221,9 @@ public class PersistentStorage <: Observer {
 
     /**
      * Inform persisted AppStorage property names.
+     * Returns an array containing the names of all currently persistent properties.
      *
-     * @returns { Array<String> } array of AppStorage keys
+     * @returns { Array<String> } Array of AppStorage keys representing the names of persistent properties.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[

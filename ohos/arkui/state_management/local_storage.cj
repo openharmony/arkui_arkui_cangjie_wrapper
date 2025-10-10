@@ -27,7 +27,6 @@ import ohos.business_exception.BusinessException
  * access, and life cycle as defined by the app.
  * AppStorage singleton is sub-class of LocalStorage for
  * UI state of app-wide access and same life cycle as the app.
- *
  */
 @!APILevel[
     22,
@@ -50,8 +49,13 @@ public class LocalStorage {
     }
 
     /**
-     *
-     * @returns { Bool }
+     * Prepares the LocalStorage instance for deletion by clearing all properties.
+     * This function calls clear() internally which removes all properties from storage
+     * after ensuring no property has active subscribers.
+     * 
+     * @returns { Bool } true if all properties were successfully cleared and the instance 
+     *         is ready for deletion, false if there are still active subscribers 
+     *         preventing cleanup.
      */
     @!APILevel[
         22,

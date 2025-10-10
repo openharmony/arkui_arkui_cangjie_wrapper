@@ -47,6 +47,7 @@ public interface ResourceColor {
 ]
 extend Int64 <: ResourceColor {
     /**
+     * The hexadecimal value of the color.
      *
      * @returns { UInt32 }
      */
@@ -66,6 +67,7 @@ extend Int64 <: ResourceColor {
 ]
 extend UInt32 <: ResourceColor {
     /**
+     * The hexadecimal value of the color.
      *
      * @returns { UInt32 }
      */
@@ -147,6 +149,7 @@ public class Color <: ResourceColor {
 
     /**
      * Constructor of Color.
+     *
      * @param { UInt8 } red
      * @param { UInt8 } green
      * @param { UInt8 } blue
@@ -195,6 +198,7 @@ public class Color <: ResourceColor {
     }
 
     /**
+     * The hexadecimal value of the color.
      *
      * @returns { UInt32 }
      */

@@ -33,8 +33,9 @@ public class SubscriberManager {
     private var subscriberById: HashMap<Int64, Observer> = HashMap<Int64, Observer>()
 
     /**
+     * Gets the singleton instance of SubscriberManager.
      *
-     * @returns { SubscriberManager }
+     * @returns { SubscriberManager } The singleton instance of SubscriberManager.
      */
     @!APILevel[
         22,
@@ -51,9 +52,10 @@ public class SubscriberManager {
     }
 
     /**
+     * Checks if a subscriber with the given ID exists.
      *
-     * @param { Int64 } id
-     * @returns { Bool }
+     * @param { Int64 } id - The ID of the subscriber to check.
+     * @returns { Bool } True if a subscriber with the given ID exists, false otherwise.
      */
     @!APILevel[
         22,
@@ -64,9 +66,10 @@ public class SubscriberManager {
     }
 
     /**
+     * Gets the subscriber with the given ID.
      *
-     * @param { Int64 } id
-     * @returns { Option<Observer> }
+     * @param { Int64 } id - The ID of the subscriber to retrieve.
+     * @returns { Option<Observer> } The subscriber with the given ID, or None if not found.
      */
     @!APILevel[
         22,
@@ -77,8 +80,9 @@ public class SubscriberManager {
     }
 
     /**
+     * Removes a subscriber from the manager.
      *
-     * @param { Observer } value
+     * @param { Observer } value - The subscriber to remove.
      */
     @!APILevel[
         22,
@@ -89,9 +93,10 @@ public class SubscriberManager {
     }
 
     /**
+     * Adds a subscriber to the manager.
      *
-     * @param { Observer } value
-     * @returns { Bool }
+     * @param { Observer } value - The subscriber to add.
+     * @returns { Bool } True if the subscriber was added successfully, false if a subscriber with the same ID already exists.
      */
     @!APILevel[
         22,

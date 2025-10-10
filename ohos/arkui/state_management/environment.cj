@@ -38,7 +38,6 @@ foreign {
 
 /**
  * Defines the ColorMode of device.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -48,7 +47,6 @@ foreign {
 public enum ColorMode {
     /**
      * Light mode.
-     *
      */
     @!APILevel[
         22,
@@ -58,7 +56,6 @@ public enum ColorMode {
     |
     /**
      * Dark mode.
-     *
      */
     @!APILevel[
         22,
@@ -86,7 +83,6 @@ public enum ColorMode {
 
 /**
  * Defines the LayoutDirection of device.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -96,7 +92,6 @@ public enum ColorMode {
 public enum LayoutDirection {
     /**
      * Elements are laid out from left to right.
-     *
      */
     @!APILevel[
         22,
@@ -106,7 +101,6 @@ public enum LayoutDirection {
     |
     /**
      * Elements are laid out from right to left.
-     *
      */
     @!APILevel[
     22,
@@ -116,7 +110,6 @@ public enum LayoutDirection {
     |
     /**
      * Elements are laid out from auto.
-     *
      */
     @!APILevel[
     22,
@@ -136,7 +129,6 @@ public enum LayoutDirection {
 
 /**
  * Defines the Environment interface.
- *
  */
 @!APILevel[
     22,
@@ -161,7 +153,12 @@ public class Environment {
     }
 
     /**
+     * Cleans up the environment properties and releases resources.
+     * This function deletes all environment properties from AppStorage
+     * and clears the internal instance reference.
+     * If the instance is already None, this function returns immediately.
      *
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,
