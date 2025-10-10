@@ -49,7 +49,7 @@ public class CJPageEntry {
     /**
      * Register hybrid component.
      *
-     * @params name { String } name.
+     * @param { String } name.
      * @param { CustomView } cjPage.
      */
     @!APILevel[
