@@ -164,12 +164,12 @@ public class SelectOptions {
     func parseToNative(): NativeSelectOption {
         var valueCString: ?CString = None
         var iconCString: ?CString = None
-        var value_ = match(value) {
+        var value_ = match(value ?? "") {
             case v: AppResource => getResourceString(v)
             case v: String => v
             case _ => ""
         }
-        var icon_ = match(icon) {
+        var icon_ = match(icon ?? "") {
             case v: AppResource => getResourceMedia(v)
             case v: String => v
             case _ => ""
