@@ -45,7 +45,7 @@ foreign {
 public abstract class BaseShape <: RemoteDataLite {
     /**
      * BaseShape Constructor.
-     * @params id: Component ID
+     * @param { Int64 } id - Component ID
      */
     protected init(id: Int64) {
         super(id)
@@ -54,7 +54,7 @@ public abstract class BaseShape <: RemoteDataLite {
     /**
      * Sets the color of the filled area. The abnormal value is processed based on the default value.
      *
-     * @params color: Color of the filled area
+     * @param { ?ResourceColor } color - Color of the filled area
      * @returns BaseShape instance
      */
     @!APILevel[
@@ -71,7 +71,7 @@ public abstract class BaseShape <: RemoteDataLite {
     /**
      * Sets the shape width.
      *
-     * @params value: Shape width
+     * @param { ?Length } value - Shape width
      * @returns BaseShape instance
      */
     @!APILevel[
@@ -93,7 +93,7 @@ public abstract class BaseShape <: RemoteDataLite {
     /**
      * Sets the shape height.
      *
-     * @params value: Shape height
+     * @param { ?Length } value - Shape height
      * @returns BaseShape instance
      */
     @!APILevel[
@@ -115,8 +115,8 @@ public abstract class BaseShape <: RemoteDataLite {
     /**
      * Sets the shape size.
      *
-     * @params width: Shape width
-     * @params height: Shape height
+     * @param { ?Length } width - Shape width
+     * @param { ?Length } height - Shape height
      * @returns BaseShape instance
      */
     @!APILevel[
@@ -136,8 +136,8 @@ public abstract class BaseShape <: RemoteDataLite {
     /**
      * Sets the shape offset.
      *
-     * @params x: x Offset
-     * @params y: y Offset
+     * @param { ?Length } x - x Offset
+     * @param { ?Length } y - y Offset
      * @returns BaseShape instance
      */
     @!APILevel[
