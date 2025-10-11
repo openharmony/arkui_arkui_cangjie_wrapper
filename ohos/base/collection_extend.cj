@@ -58,14 +58,6 @@ public interface CollectionEx<T> {
     operator func [](idx: Int64): T
 }
 
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 extend<T> Array<T> <: CollectionEx<T> {}
 
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 extend<T> ArrayList<T> <: CollectionEx<T> {}

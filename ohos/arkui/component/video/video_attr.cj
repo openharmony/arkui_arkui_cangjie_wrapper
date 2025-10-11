@@ -132,7 +132,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * Called when playback fails.
      *
      * @param { ?VoidCallback } event
-     * @returns { This}
+     * @returns { VideoAttribute }
      */
     @!APILevel[
         22,
@@ -145,7 +145,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * Anonymous Object Rectification.
      *
      * @param { ?Callback<PreparedInfo, Unit> } callback
-     * @returns { This}
+     * @returns { VideoAttribute }
      */
     @!APILevel[
         22,
@@ -158,7 +158,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * Anonymous Object Rectification.
      *
      * @param { ?Callback<PlaybackInfo, Unit> } callback
-     * @returns { This}
+     * @returns { VideoAttribute }
      */
     @!APILevel[
         22,

@@ -133,6 +133,9 @@ public class LengthMetrics <: Length {
         this.realUnit = unit
     }
 
+    /**
+    * Defines the value.
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -143,6 +146,9 @@ public class LengthMetrics <: Length {
         }
     }
 
+    /**
+    * Defines the unit.
+    */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -248,13 +254,6 @@ public enum LengthUnit {
     }
 }
 
-/**
- * Defines the Float64 which can use Length.
- */
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 extend Float64 <: LengthProp & Length {
     /**
      * Defines the length property in units of px.
@@ -320,6 +319,10 @@ extend Float64 <: LengthProp & Length {
             LengthMetrics(this, unit: LengthUnit.Lpx)
         }
     }
+
+    /**
+     * Defines the value.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -329,6 +332,10 @@ extend Float64 <: LengthProp & Length {
             this
         }
     }
+
+    /**
+     * Defines the unit.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -340,13 +347,6 @@ extend Float64 <: LengthProp & Length {
     }
 }
 
-/**
- * Defines the Int64 which can use Length.
- */
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 extend Int64 <: LengthProp & Length {
     /**
      * Defines the length property in units of px.
@@ -408,6 +408,9 @@ extend Int64 <: LengthProp & Length {
             LengthMetrics(Float64(this), unit: LengthUnit.Lpx)
         }
     }
+    /**
+     * Defines the value.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -417,6 +420,9 @@ extend Int64 <: LengthProp & Length {
             Float64(this)
         }
     }
+    /**
+     * Defines the unit.
+     */   
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
