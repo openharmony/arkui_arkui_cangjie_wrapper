@@ -42,9 +42,9 @@ class TitleMenuDialogIndex2 {
                             .id(viewName)
                             .borderRadius(4)
                             .margin(2)
-                            .onClick {
+                            .onClick({
                                 e => getUIContext().getRouter().pushUrl(url: viewName)
-                            }
+                            })
                     }
                 )
             }.width(100.percent).margin(top: 5)

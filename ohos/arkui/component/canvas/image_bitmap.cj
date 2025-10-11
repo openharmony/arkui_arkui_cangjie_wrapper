@@ -44,24 +44,18 @@ foreign {
 }
 
 /**
- * Bitmap image object that can be drawn onto the current Canvas
- *
- * @relation declare class ImageBitmap
+ * Bitmap image object that can be drawn onto the current Canvas.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageBitmap <: RemoteData {
     /**
      * Indicates the width of the CSS pixel unit of ImageData.
-     *
-     * @relation readonly width: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop width: Float64 {
@@ -74,12 +68,9 @@ public class ImageBitmap <: RemoteData {
 
     /**
      * Indicates the height of the CSS pixel unit of ImageData.
-     *
-     * @relation readonly height: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop height: Float64 {
@@ -97,21 +88,18 @@ public class ImageBitmap <: RemoteData {
     /**
      * Create an ImageBitmap object based on the transferred image path.
      *
-     * @param { String } src - Path of the image object.
-     * @returns { This }
-     * @relation constructor(src: string)
+     * @param { ?String } src - Path of the image object.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(src: String) {
+    public init(src: ?String) {
         super(
             unsafe {
                 var id = 0
-                this.src = src
-                try (srcResouce = LibC.mallocCString(src).asResource()) {
+                this.src = src ?? ""
+                try (srcResouce = LibC.mallocCString(src ?? "").asResource()) {
                     id = FfiOHOSAceFrameworkImageBitMapCtor(srcResouce.value, this.unit)
                 }
                 id

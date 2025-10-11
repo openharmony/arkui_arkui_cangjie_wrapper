@@ -14,7 +14,10 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.text_clock") {
-  sources = [ "cj_text_clock.cj" ]
+  sources = [
+    "text_clock.cj",
+    "text_clock_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

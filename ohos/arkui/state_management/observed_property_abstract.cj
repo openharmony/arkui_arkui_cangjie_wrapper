@@ -20,59 +20,57 @@ package ohos.arkui.state_management
 import ohos.labels.APILevel
 import std.collection.*
 
+/**
+ * Defines class ObservedPropertyAbstract.
+ */
 @!APILevel[
-    21,
-    atomicservice: true,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ObservedPropertyAbstract <: Observable {
     protected let info: String
     protected let dependentElementIds_: ArrayList<Int64> = ArrayList<Int64>()
 
+    /**
+     * ObservedPropertyAbstract constructor.
+     *
+     * @param { String } info
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(info: String) {
         this.info = info
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getInfo(): String {
+    protected func getInfo(): String {
         return this.info
     }
 
+    /**
+     * Subscribe an observer.
+     * 
+     * @param { Observer } observer - The observer to subscribe.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func subscribeEx(observer: Observer): Unit
 
+    /**
+     * Unsubscribe an observer.
+     * 
+     * @param { Observer } observer - The observer to unsubscribe.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func unsubscribeEx(observer: Observer): Unit
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func notifyChanges() {
+    protected func notifyChanges() {
         notifyChangesInner(info, dependentElementIds_)
     }
 
@@ -85,10 +83,13 @@ public abstract class ObservedPropertyAbstract <: Observable {
         ()
     }
 
+    /**
+     * Remove the dependency of this property on a specific element ID.
+     * 
+     * @param { Int64 } rmElmtId - The element ID to remove dependency on.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func purgeDependencyOnElmtId(rmElmtId: Int64): Unit {

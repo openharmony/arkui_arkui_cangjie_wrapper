@@ -23,41 +23,53 @@ import ohos.base.ReuseParams
 import std.collection.HashMap
 import std.collection.ArrayList
 
+/**
+ * Definition of RemoteView class.
+ */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class RemoteView <: FFIData {
+    /**
+     * Constructor of RemoteView.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
         super()
     }
 
+    /**
+     * Build the view component.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func build(): Unit // abstract
 
+    /**
+     * Do a rerender.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public open func rerender(): Unit {} // abstract
+    public open func rerender(): Unit {}
 
+    /**
+     * Purge element ids no longer in use.
+     *
+     * @param { Int64 } _ - Element id.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public open func purgeVariableDependenciesOnElmtId(_: Int64): Unit {} // abstract
+    public open func purgeVariableDependenciesOnElmtId(_: Int64): Unit {}
     protected open func aboutToAppear(): Unit {}
     protected open func onPageShow(): Unit {}
     protected open func onPageHide(): Unit {}
@@ -70,9 +82,14 @@ public abstract class RemoteView <: FFIData {
     protected open func onAfterRender(): Unit {}
     protected open func aboutToDisappear(): Unit {}
     protected open func onAboutToBeDeleted(): Unit {}
+
+    /**
+     * Force complete rerender.
+     *
+     * @param { Bool } deep - Whether to rerender components recursive.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func forceCompleteRerender(deep: Bool): Unit {}

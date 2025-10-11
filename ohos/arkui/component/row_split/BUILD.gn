@@ -14,7 +14,10 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.row_split") {
-  sources = [ "row_split.cj" ]
+  sources = [
+    "row_split.cj",
+    "row_split_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

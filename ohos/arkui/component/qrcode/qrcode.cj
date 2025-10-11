@@ -36,30 +36,23 @@ foreign {
 
 /**
  * Defines QRCode Component.
- *
- * @relation declare const QRCode: QRCodeInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class QRCode <: ViewBase {
-
+public class QRCode <: CommonMethodComponent<QRCode> & QRCodeAttribute {
     /**
      * Called when a QR code is set.
      *
-     * @param { ResourceStr } value
-     * @returns { This }
-     * @relation (value: ResourceStr): QRCodeAttribute
+     * @param { ?ResourceStr } value
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value: ResourceStr) {
-        let value_ = transResourceStrToString(value)
+    public init(value: ?ResourceStr) {
+        let value_ = transResourceStrToString(value ?? "undefined")
         unsafe {
             try (str = LibC.mallocCString(value_).asResource()) {
                 FfiOHOSAceFrameworkQRCodeCreate(str.value)
@@ -70,44 +63,23 @@ public class QRCode <: ViewBase {
     /**
      * Called when the QR code color is set.
      *
-     * @param { ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { This }
-     * @relation color(value: ResourceColor): QRCodeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(value: ResourceColor): This {
+    public func color(value: ?ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkQRCodeSetQRCodeColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkQRCodeSetQRCodeColor(transAppResourceToResourceColor(value ?? 0xFF000000))
         }
         this
     }
 
-    protected override func backgroundColorInner(value: ResourceColor): This {
+    protected override func backgroundColorInner(value: ?ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkQRCodeSetBackgroundColor(transAppResourceToResourceColor(value))
-        }
-        this
-    }
-
-    /**
-     * Set the opacity of the QR code content color.
-     *
-     * @param { Float64 } value
-     * @returns { This }
-     * @relation contentOpacity(value: number | Resource): QRCodeAttribute
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func contentOpacity(value: Float64): This {
-        unsafe {
-            FfiOHOSAceFrameworkQRCodeSetContentOpacity(value)
+            FfiOHOSAceFrameworkQRCodeSetBackgroundColor(transAppResourceToResourceColor(value ?? 0xFFFFFFFF))
         }
         this
     }
@@ -115,17 +87,37 @@ public class QRCode <: ViewBase {
     /**
      * Set the opacity of the QR code content color.
      *
-     * @param { AppResource } value
+     * @param { ?Float64 } value
      * @returns { This }
-     * @relation contentOpacity(value: number | Resource): QRCodeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func contentOpacity(value: AppResource): This {
-        var dimension: Length = getResourceLength(value)
-        contentOpacity(dimension.value)
+    public func contentOpacity(value: ?Float64): This {
+        unsafe {
+            FfiOHOSAceFrameworkQRCodeSetContentOpacity(value ?? 1.0)
+        }
+        this
+    }
+
+    /**
+     * Set the opacity of the QR code content color.
+     *
+     * @param { ?AppResource } value
+     * @returns { This }
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func contentOpacity(value: ?AppResource): This {
+        if (let Some(v) <- value) {
+            var dimension: Length = getResourceLength(v)
+            contentOpacity(dimension.value)
+        } else {
+            contentOpacity(1.0)
+        }
+        return this
     }
 }

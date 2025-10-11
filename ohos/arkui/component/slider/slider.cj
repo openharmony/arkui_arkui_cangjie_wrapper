@@ -83,151 +83,145 @@ foreign {
 }
 /**
  * Defines Slider Component.
- *
- * @relation const Slider: SliderInterface;
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Slider <: ViewBase {
+public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Defines Slider Component instance.
     *
-    * @param { Float64 } min
-    * @param { Float64 } max
-    * @param { Float64 } step
-    * @param { Float64 } value
-    * @param { SliderStyle } style
-    * @param { Axis } direction
-    * @param { Bool } reverse
-    * @returns { This }
-    * @relation (options?: SliderOptions): SliderAttribute;
+    * @param { ?Float64 } min
+    * @param { ?Float64 } max
+    * @param { ?Float64 } step
+    * @param { ?Float64 } value
+    * @param { ?SliderStyle } style
+    * @param { ?Axis } direction
+    * @param { ?Bool } reverse
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        min!: Float64 = 0.0,
-        max!: Float64 = 100.0,
-        step!: Float64 = 1.0,
-        value!: Float64 = min,
-        style!: SliderStyle = SliderStyle.OutSet,
-        direction!: Axis = Axis.Horizontal,
-        reverse!: Bool = false
+        min!: ?Float64 = None,
+        max!: ?Float64 = None,
+        step!: ?Float64 = None,
+        value!: ?Float64 = None,
+        style!: ?SliderStyle = None,
+        direction!: ?Axis = None,
+        reverse!: ?Bool = None
     ) {
+        let tmpMin = min ?? 0.0
+        let tmpMax = max ?? 100.0
+        let tmpStep = step ?? 1.0
+        let tmpValue = value ?? tmpMin
+        let tmpStyle = style ?? SliderStyle.OutSet
+        let tmpDirection = direction ?? Axis.Horizontal
+        
         unsafe {
-            var minValue = min;
-            var maxValue = max;
-            var stepValue = step;
-            var valueValue = value;
-            if (min >= max) {
+            var minValue = tmpMin;
+            var maxValue = tmpMax;
+            var stepValue = tmpStep;
+            var valueValue = tmpValue;
+            if (tmpMin >= tmpMax) {
                 minValue = 0.0
                 maxValue = 100.0
             }
-            if (step < 0.0 || step > (maxValue - minValue)) {
+            if (tmpStep < 0.0 || tmpStep > (maxValue - minValue)) {
                 stepValue = 1.0
             }
-            if (value < minValue) {
+            if (tmpValue < minValue) {
                 valueValue = minValue
             }
-            if (value > maxValue) {
+            if (tmpValue > maxValue) {
                 valueValue = maxValue
             }
             FfiOHOSAceFrameworkSliderCreate(
-                CJSliderCreate(valueValue, minValue, maxValue, stepValue, style.getValue(), direction.getValue(),
-                    reverse))
+                CJSliderCreate(valueValue, minValue, maxValue, stepValue, tmpStyle.getValue(), tmpDirection.getValue(),
+                    reverse ?? false))
         }
     }
     /**
     * Called when the slider color of the slider bar is set.
     *
-    * @param { ResourceColor } value
+    * @param { ?ResourceColor } value
     * @returns { This }
-    * @relation blockColor(value: ResourceColor): SliderAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func blockColor(value: ResourceColor): This {
+    public func blockColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSliderBlockColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSliderBlockColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
     /**
     * Called when the track color of the slider is set.
     *
-    * @param { ResourceColor } value
+    * @param { ?ResourceColor } value
     * @returns { This }
-    * @relation trackColor(value: ResourceColor | LinearGradient): SliderAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func trackColor(value: ResourceColor): This {
+    public func trackColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSliderTrackColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSliderTrackColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
     /**
     * Called when the slider of the slider bar is set to slide over the area color.
     *
-    * @param { ResourceColor } value
+    * @param { ?ResourceColor } value
     * @returns { This }
-    * @relation selectedColor(value: ResourceColor): SliderAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(value: ResourceColor): This {
+    public func selectedColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkSliderSelectedColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSliderSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
     /**
     * Called when setting whether to display step size.
     *
-    * @param { boolean } value
+    * @param { ?Bool } value
     * @returns { This }
-    * @relation showSteps(value: boolean): SliderAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func showSteps(value: Bool): This {
+    public func showSteps(value: ?Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkSliderShowSteps(value)
+            FfiOHOSAceFrameworkSliderShowSteps(value ?? false)
         }
         this
     }
     /**
     * Called when the percentage of bubble prompt is set when sliding.
     *
-    * @param { Bool } value
-    * @param { ResourceStr } content
+    * @param { ?Bool } value
+    * @param { ?ResourceStr } content
     * @returns { This }
-    * @relation showTips(value: boolean, content?: ResourceStr): SliderAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func showTips(value: Bool, content!: ?ResourceStr = None): This {
+    public func showTips(value: ?Bool, content!: ?ResourceStr = None): This {
         unsafe {
             var contentValue = ""
             var contentExist = false
@@ -236,7 +230,7 @@ public class Slider <: ViewBase {
                 contentValue = transResourceStrToString(v)
             }
             try (contentCString = LibC.mallocCString(contentValue).asResource()) {
-                FfiOHOSAceFrameworkSliderShowTipsNew(value, contentCString.value, contentExist)
+                FfiOHOSAceFrameworkSliderShowTipsNew(value ?? false, contentCString.value, contentExist)
             }
         }
         this
@@ -244,17 +238,16 @@ public class Slider <: ViewBase {
     /**
     * Called when the thickness of track is set.
     *
-    * @param { Length } value
+    * @param { ?Length } value
     * @returns { This }
-    * @relation trackThickness(value: Length): SliderAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func trackThickness(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    public func trackThickness(value: ?Length): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkSliderTrackThickness(value_.value, value_.unitType.getValue())
         }
@@ -263,23 +256,22 @@ public class Slider <: ViewBase {
     /**
     * Triggered when the slider is dragged or clicked.
     *
-    * @param { (Float64, SliderChangeMode) -> Unit } callback
+    * @param { ?(Float64, SliderChangeMode) -> Unit } callback
     * @returns { This }
-    * @relation onChange(callback: (value: number, mode: SliderChangeMode) => void): SliderAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (Float64, SliderChangeMode) -> Unit): This {
+    public func onChange(callback: ?(Float64, SliderChangeMode) -> Unit): This {
+        let tmpCallback = callback ?? { _, _ => }
         unsafe {
             FfiOHOSAceFrameworkSliderOnChange(
                 Callback2Param<Float64, Int32, Unit>(
                     {
                         value, modeID =>
                         let mode = SliderChangeMode.setValue(modeID)
-                        callback(value, mode)
+                        tmpCallback(value, mode)
                     }
                 ).getID())
         }
@@ -288,18 +280,17 @@ public class Slider <: ViewBase {
     /**
     * Called when the border color of block is set.
     *
-    * @param { ResourceColor } value
+    * @param { ?ResourceColor } value
     * @returns { This }
-    * @relation blockBorderColor(value: ResourceColor): SliderAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func blockBorderColor(value: ResourceColor): This {
+    public func blockBorderColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? 0x00000000
         unsafe {
-            FfiOHOSAceFrameworkSliderBlockBorderColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkSliderBlockBorderColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }

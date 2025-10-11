@@ -19,7 +19,6 @@
 package ohos_app_cangjie_entry
 
 import ohos.base.*
-import ohos.font.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
@@ -38,7 +37,7 @@ class ViewCustomView {
     func build() {
         Row {
             Column {
-                Button(message).onClick {
+                Button(message).onClick({
                     evt =>
                     Hilog.info(1, "Cangjie-App", "Hello Cangjie")
                     onStateUpdate("", ArrayList<Int64>())
@@ -49,13 +48,13 @@ class ViewCustomView {
                         Hilog.info(1, "Cangjie-Test", "initializeConsume: ${e.toString()}")
                     }
                     try {
-                        removeChildGroupById("")
                         initializeConsume("")
                         updateElement(2)
                     } catch (e: Exception) {
                         Hilog.info(1, "Cangjie-Test", "initializeConsume: ${e.toString()}")
                     }
-                }.fontSize(40).height(80).id("click")
+                }
+                ).fontSize(40).height(80).id("click")
             }.width(100.percent)
         }.height(100.percent)
     }

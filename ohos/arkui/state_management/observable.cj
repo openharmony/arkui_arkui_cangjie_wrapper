@@ -20,10 +20,11 @@ package ohos.arkui.state_management
 import std.collection.ArrayList
 import ohos.labels.APILevel
 
+/**
+ * Defines class Observable.
+ */
 @!APILevel[
-    21,
-    atomicservice: true,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class Observable {
@@ -34,36 +35,18 @@ public open class Observable {
         return this.observers
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func subscribe(observer: Observer): Unit {
+    protected func subscribe(observer: Observer): Unit {
         // Add to observer list.
         observers.add(observer)
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func unsubscribe(observer: Observer): Unit {
+    protected func unsubscribe(observer: Observer): Unit {
         observers.removeIf {
             o => o.id() == observer.id()
         }
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func isSubscribed(observer: Observer): Bool {
+    protected func isSubscribed(observer: Observer): Bool {
         for (o in observers) {
             if (o.id() == observer.id()) {
                 return true
@@ -72,23 +55,11 @@ public open class Observable {
         return false
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func numberOfSubscribers(): Int64 {
+    protected func numberOfSubscribers(): Int64 {
         return this.observers.size
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func unsubscribeAll(): Unit {
+    protected func unsubscribeAll(): Unit {
         observers.clear()
     }
 

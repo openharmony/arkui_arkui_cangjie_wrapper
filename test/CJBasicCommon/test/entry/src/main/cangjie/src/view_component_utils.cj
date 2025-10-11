@@ -30,16 +30,16 @@ class ViewComponentUtils {
     func build() {
         Row {
             Column {
-                Button(message).onClick {
+                Button(message).onClick ({
                     evt => Hilog.info(1, "Cangjie-App", "Hello Cangjie")
-                }.fontSize(40).height(80)
+                }).fontSize(40).height(80)
                 .id("ButtonClick")
-                Button("getRectangleById").onClick { e =>
+                Button("getRectangleById").onClick ({ e =>
                     // let info = ComponentUtils.getRectangleById("ButtonClick")
-                }.fontSize(40).height(80).id("getRectangleById")
-                Button("ccomponentInfo").onClick { e =>
+                }).fontSize(40).height(80).id("getRectangleById")
+                Button("ccomponentInfo").onClick ({ e =>
                     let transform: Array<Float32> = [1.0, 0.5, 0.0, 0.0, 0.0]
-                }.fontSize(50).height(100).id("ccomponentInfo")
+                }).fontSize(50).height(100).id("ccomponentInfo")
             }.width(100.percent)
         }.height(100.percent)
     }

@@ -14,7 +14,10 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.video") {
-  sources = [ "cj_video.cj" ]
+  sources = [
+    "video.cj",
+    "video_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

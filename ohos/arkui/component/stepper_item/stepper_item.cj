@@ -33,26 +33,20 @@ foreign {
 
 /**
  * Defines StepperItem Component.
- *
- * @relation declare const StepperItem: StepperItemInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class StepperItem <: ContainerBase {
+public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttribute {
 
     /**
      * Constructs a StepperItem component.
      *
      * @param { () -> Unit } child
-     * @returns { This }
-     * @relation (): StepperItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -65,18 +59,16 @@ public class StepperItem <: ContainerBase {
     /**
      * The description text for the fallback text button at the bottom of the step navigator.
      *
-     * @param { String } value
+     * @param { ?String } value
      * @returns { This }
-     * @relation prevLabel(value: string): StepperItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func prevLabel(value: String): This {
+    public func prevLabel(value: ?String): This {
         unsafe {
-            try (valueCString = LibC.mallocCString(value).asResource()) {
+            try (valueCString = LibC.mallocCString(value ?? "").asResource()) {
                 FfiOHOSAceFrameworkStepperItemSetPrevLabel(valueCString.value)
             }
         }
@@ -86,18 +78,16 @@ public class StepperItem <: ContainerBase {
     /**
      * The description text for the next step text button at the bottom of the step navigator.
      *
-     * @param { String } value
+     * @param { ?String } value
      * @returns { This }
-     * @relation nextLabel(value: string): StepperItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func nextLabel(value: String): This {
+    public func nextLabel(value: ?String): This {
         unsafe {
-            try (valueCString = LibC.mallocCString(value).asResource()) {
+            try (valueCString = LibC.mallocCString(value ?? "").asResource()) {
                 FfiOHOSAceFrameworkStepperItemSetNextLabel(valueCString.value)
             }
         }
@@ -107,18 +97,17 @@ public class StepperItem <: ContainerBase {
     /**
      * Sets the display state of the Step Navigator nextLabel.
      *
-     * @param { ItemState } status
+     * @param { ?ItemState } status
      * @returns { This }
-     * @relation status(value?: ItemState): StepperItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func status(status!: ItemState = ItemState.Normal): This {
+    public func status(status!: ?ItemState = None): This {
+        let tmpStatus = status ?? ItemState.Normal
         unsafe {
-            FfiOHOSAceFrameworkStepperItemSetStatus(status.getValue())
+            FfiOHOSAceFrameworkStepperItemSetStatus(tmpStatus.getValue())
         }
         this
     }

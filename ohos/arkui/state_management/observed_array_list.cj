@@ -20,30 +20,38 @@ package ohos.arkui.state_management
 import ohos.base.*
 import ohos.labels.APILevel
 import std.collection.*
+import ohos.business_exception.BusinessException
 
+/**
+ * Defines class ObservedArrayList.
+ */
 @!APILevel[
-    21,
-    atomicservice: true,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     private var internalValue: ArrayList<T>
 
+    /**
+     * ObservedArrayList constructor.
+     *
+     * @param { ArrayList<T> } initValue
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(initValue: ArrayList<T>) {
         this.internalValue = initValue
     }
 
+    /**
+     * ObservedArrayList constructor.
+     *
+     * @param { Array<T> } initValue
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(initValue: Array<T>) {
@@ -67,13 +75,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         }
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func subscribeInner(observer: Observer): Unit {
+    protected func subscribeInner(observer: Observer): Unit {
         subscribe(observer)
         for (arrItem in internalValue) {
             let observedItem = arrItem as ObservedComplexAbstract
@@ -86,13 +88,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         }
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func unsubscribeInner(observer: Observer): Unit {
+    protected func unsubscribeInner(observer: Observer): Unit {
         unsubscribe(observer)
         for (arrItem in internalValue) {
             let observedItem = arrItem as ObservedComplexAbstract
@@ -103,10 +99,13 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         }
     }
 
+    /**
+     * Gets the current ArrayList value. And record the dependency elements that need to be updated.
+     *
+     * @returns { ArrayList<T> } - The current ArrayList value.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get(): ArrayList<T> {
@@ -114,10 +113,13 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.internalValue
     }
 
+    /**
+     * Sets the current ArrayList value. Enable observers to receive updated information whenever state variables change.
+     *
+     * @param { ArrayList<T> } newValue - The new ArrayList value to set.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set(newValue: ArrayList<T>): Unit {
@@ -125,10 +127,13 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     * Sets the current ArrayList value from another Array object. Enable observers to receive updated information whenever state variables change.
+     *
+     * @param { Array<T> } newValue - The new Array value to set.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set(newValue: Array<T>): Unit {
@@ -136,10 +141,13 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     * Sets the current ArrayList value from another ObservedComplexAbstract object. Enable observers to receive updated information whenever state variables change.
+     *
+     * @param { ObservedComplexAbstract } newValue - The new ObservedComplexAbstract value to set.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set(newValue: ObservedComplexAbstract): Unit {
@@ -147,15 +155,19 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.setInternalValue(
             observedArray.getOrThrow(
                 {
-                    => IllegalArgumentException("Type is mismatched, it should be ObservedArrayList<T>")
+                    => BusinessException(100001, "Internal error.")
                 }))
         this.notifyChanges()
     }
 
+    /**
+     * Gets the element at the specified index in the observed array list. And record the dependency elements that need to be updated.
+     *
+     * @param { Int64 } index - The zero-based index of the element to get.
+     * @returns { T } The element at the specified index.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public operator func [](index: Int64): T {
@@ -163,10 +175,14 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         return internalValue[index]
     }
 
+    /**
+     * Sets the element at the specified index in the observed array list. Enable observers to receive updated information whenever state variables change.
+     *
+     * @param { Int64 } index - The zero-based index of the element to set.
+     * @param { T } value - The new value to set at the specified index.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public operator func [](index: Int64, value!: T): Unit {
@@ -182,10 +198,11 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     * Gets the number of elements in the observed array list.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop size: Int64 {
@@ -194,30 +211,37 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         }
     }
 
+    /**
+     * Checks if the observed array list is empty.
+     *
+     * @returns { Bool } True if the array list is empty, false otherwise.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func isEmpty(): Bool {
         return internalValue.isEmpty()
     }
 
+    /**
+     * Creates a shallow copy of the observed array list.
+     *
+     * @returns { ObservedArrayList<T> } A new ObservedArrayList instance with the same elements.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clone(): ObservedArrayList<T> {
         return ObservedArrayList<T>(this.get())
     }
 
+    /**
+     * Removes all elements from the observed array list. Enable observers to receive updated information whenever state variables change.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clear(): Unit {
@@ -235,10 +259,13 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         }
     }
 
+    /**
+     * Adds an element to the end of the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     *
+     * @param { T } element - The element to append to the array list.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func append(element: T): Unit {
@@ -247,10 +274,13 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     * Adds all elements from a collection to the end of the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     *
+     * @param { Collection<T> } elements - The collection of elements to append.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func appendAll(elements: Collection<T>): Unit {
@@ -264,10 +294,14 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     * Inserts an element at the specified position in the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     *
+     * @param { Int64 } index - The zero-based index at which to insert the element.
+     * @param { T } element - The element to insert.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func insert(index: Int64, element: T): Unit {
@@ -276,10 +310,14 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     * Inserts all elements from a collection at the specified position in the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     *
+     * @param { Int64 } index - The zero-based index at which to insert the elements.
+     * @param { Collection<T> } elements - The collection of elements to insert.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func insertAll(index: Int64, elements: Collection<T>): Unit {
@@ -293,10 +331,13 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     * Adds an element to the beginning of the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     *
+     * @param { T } element - The element to prepend to the array list.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func prepend(element: T): Unit {
@@ -305,10 +346,13 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     * Adds all elements from a collection to the beginning of the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     *
+     * @param { Collection<T> } elements - The collection of elements to prepend.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func prependAll(elements: Collection<T>): Unit {
@@ -322,10 +366,14 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     * Removes and returns the element at the specified index. This function can enable observers to receive updated information whenever state variables change.
+     *
+     * @param { Int64 } index - The zero-based index of the element to remove.
+     * @returns { T } The removed element.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func remove(index: Int64): T {
@@ -334,10 +382,13 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         return removeElement
     }
 
+    /**
+     * Removes elements in the specified range from the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     *
+     * @param { Range<Int64> } range - The range of indices to remove.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func remove(range: Range<Int64>): Unit {
@@ -345,10 +396,13 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         this.notifyChanges()
     }
 
+    /**
+     * Removes all elements that satisfy the provided predicate. This function can enable observers to receive updated information whenever state variables change.
+     *
+     * @param { (T) -> Bool } predicate - A function that returns true for elements to be removed.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func removeIf(predicate: (T) -> Bool): Unit {

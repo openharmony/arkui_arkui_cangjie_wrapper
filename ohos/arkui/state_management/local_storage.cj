@@ -20,6 +20,7 @@ package ohos.arkui.state_management
 import ohos.base.*
 import ohos.labels.APILevel
 import std.collection.*
+import ohos.business_exception.BusinessException
 
 /**
  * LocalStorage
@@ -28,12 +29,9 @@ import std.collection.*
  * access, and life cycle as defined by the app.
  * AppStorage singleton is sub-class of LocalStorage for
  * UI state of app-wide access and same life cycle as the app.
- *
- * @relation declare class LocalStorage
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LocalStorage {
@@ -43,21 +41,26 @@ public class LocalStorage {
      * Construct new instance of LocalStorage
      * initialize with all properties and their values that Object.keys(params) returns
      * Property values must not be undefined.
-     *
-     * @relation constructor(initializingProperties?: Object)
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
         this.storage = HashMap<String, ObservedPropertyAbstract>()
     }
 
+    /**
+     * Prepares the LocalStorage instance for deletion by clearing all properties.
+     * This function calls clear() internally which removes all properties from storage
+     * after ensuring no property has active subscribers.
+     * 
+     * @returns { Bool } true if all properties were successfully cleared and the instance 
+     *         is ready for deletion, false if there are still active subscribers 
+     *         preventing cleanup.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func aboutToBeDeleted(): Bool {
@@ -65,17 +68,15 @@ public class LocalStorage {
     }
 
     /**
-     * Check if LocalStorage has a property with given name
-     * return true if property with given name exists
-     * same as ES6 Map.prototype.has()
+     * Check if LocalStorage has a property with given name.
+     * Return true if property with given name exists.
+     * Same as ES6 Map.prototype.has().
      *
-     * @param { String } propName - searched property
-     * @returns { Bool } true if property with such name exists in LocalStorage
-     * @relation has(propName: string): boolean;
+     * @param { String } propName - searched property.
+     * @returns { Bool } true if property with such name exists in LocalStorage.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func has(propName: String): Bool {
@@ -83,15 +84,13 @@ public class LocalStorage {
     }
 
     /**
-     * Provide names of all properties in LocalStorage
-     * same as ES6 Map.prototype.keys()
+     * Provide names of all properties in LocalStorage.
+     * Same as ES6 Map.prototype.keys().
      *
      * @returns { EquatableCollection<String> }
-     * @relation keys(): IterableIterator<string>;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keys(): EquatableCollection<String> {
@@ -99,15 +98,13 @@ public class LocalStorage {
     }
 
     /**
-     * Returns number of properties in LocalStorage
-     * same as Map.prototype.size()
+     * Returns number of properties in LocalStorage.
+     * Same as Map.prototype.size().
      *
-     * @returns { Int64 } return number of properties
-     * @relation size(): number;
+     * @returns { Int64 } return number of properties.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func size(): Int64 {
@@ -115,16 +112,14 @@ public class LocalStorage {
     }
 
     /**
-     * Returns value of given property
-     * return undefined if no property with this name
+     * Returns value of given property.
+     * Returns undefined if no property with this name.
      *
      * @param { String } propName
-     * @returns { ?T } property value if found
-     * @relation get<T>(propName: string): T | undefined;
+     * @returns { ?T } property value if found.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get<T>(propName: String): ?T {
@@ -139,18 +134,16 @@ public class LocalStorage {
     }
 
     /**
-     * Set value of given property in LocalStorage
-     * Method sets nothing and returns false if property with this name does not exist in LocalStorage
+     * Set value of given property in LocalStorage.
+     * Method sets nothing and returns false if property with this name does not exist in LocalStorage.
      * newValue can be undefined or null from API 12.
      *
      * @param { String } propName
-     * @param { T } newValue - must be of type T
-     * @returns { Bool } true on success
-     * @relation set<T>(propName: string, newValue: T): boolean;
+     * @param { T } newValue - must be of type T.
+     * @returns { Bool } true on success.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set<T>(propName: String, newValue: T): Bool {
@@ -169,16 +162,14 @@ public class LocalStorage {
     /**
      * Set value of given property, if it exists, see set() .
      * Add property if no property with given name and initialize with given value.
-     * newValue can be undefined or null from API 12
+     * newValue can be undefined or null from API 12.
      *
      * @param { String } propName
-     * @param { T } newValue - must be of type T, can be undefined or null
-     * @returns { boolean } true on success, i.e. when above conditions are satisfied, otherwise false
-     * @relation setOrCreate<T>(propName: string, newValue: T): boolean;
+     * @param { T } newValue - must be of type T, can be undefined or null.
+     * @returns { boolean } true on success, i.e. when above conditions are satisfied, otherwise false.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setOrCreate<T>(propName: String, newValue: T): Bool {
@@ -198,15 +189,13 @@ public class LocalStorage {
     }
 
     /**
-     * Create and return a two-way sync "(link") to named property
+     * Create and return a two-way sync "(link") to named property.
      *
-     * @param { String } propName - name of source property in LocalStorage
-     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
-     * @relation link<T>(propName: string): SubscribedAbstractProperty<T>;
+     * @param { String } propName - name of source property in LocalStorage.
+     * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func link<T>(propName: String): ?ObservedProperty<T> {
@@ -221,18 +210,16 @@ public class LocalStorage {
     }
 
     /**
-     * Like see link(), but will create and initialize a new source property in LocalStorage if missing
+     * Like see link(), but will create and initialize a new source property in LocalStorage if missing.
      *
      * @param { String } propName - name of source property in LocalStorage
      * @param { T } defaultValue - value to be used for initializing new property in LocalStorage
      *        default value must be of type T.
-     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
-     *          Apps can use SDK functions of base class ObservedProperty<T>
-     * @relation setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>;
+     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>. Apps can use SDK functions of base class ObservedProperty<T>
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setAndLink<T>(propName: String, defaultValue: T): ObservedProperty<T> {
@@ -241,19 +228,19 @@ public class LocalStorage {
             case None => this.setOrCreate<T>(propName, defaultValue)
             case _ => ()
         }
-        return this.link<T>(propName).getOrThrow()
+        return this.link<T>(propName).getOrThrow({
+            => BusinessException(100001, "Internal error.")
+        })
     }
 
     /**
-     * Create and return a one-way sync ('prop') to named property
+     * Create and return a one-way sync ('prop') to named property.
      *
-     * @param { String } propName - name of source property in LocalStorage
-     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
-     * @relation  prop<S>(propName: string): SubscribedAbstractProperty<S>;
+     * @param { String } propName - name of source property in LocalStorage.
+     * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func `prop`<T>(propName: String): ?ObservedProperty<T> {
@@ -268,17 +255,16 @@ public class LocalStorage {
     }
 
     /**
-     * Like see prop(), will create and initialize a new source property in LocalStorage if missing
+     * Like see prop(), will create and initialize a new source property in LocalStorage if missing.
      *
-     * @param { String } propName - name of source property in LocalStorage
+     * @param { String } propName - name of source property in LocalStorage.
      * @param { T } defaultValue - value to be used for initializing new property in LocalStorage.
      *         Default value must be of type T.
-     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>
-     * @relation  prop<S>(propName: string): SubscribedAbstractProperty<S>;
+     * @returns { ObservedProperty<T> } instance of ObservedProperty<T>.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setAndProp<T>(propName: String, defaultValue: T): ObservedProperty<T> {
@@ -287,15 +273,17 @@ public class LocalStorage {
             case None => this.setOrCreate(propName, defaultValue)
             case _ => ()
         }
-        return this.`prop`<T>(propName).getOrThrow()
+        return this.`prop`<T>(propName).getOrThrow({
+            => BusinessException(100001, "Internal error.")
+        })
     }
 
     /**
-     * Delete property from StorageBase
+     * Delete property from StorageBase.
      * Use with caution:
      * Before deleting a prop from LocalStorage all its subscribers need to
      * unsubscribe from the property.
-     * This method fails and returns false if given property still has subscribers
+     * This method fails and returns false if given property still has subscribers.
      * Another reason for failing is unknown property.
      * Developer advise:
      * Subscribers are created with see link(), see prop()
@@ -305,12 +293,10 @@ public class LocalStorage {
      * (and also should not!) be deleted from LocalStorage.
      *
      * @param { String } propName
-     * @returns { Bool } false if method failed
-     * @relation delete(propName: string): boolean;
+     * @returns { Bool } false if method failed.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func delete(propName: String): Bool {
@@ -328,17 +314,15 @@ public class LocalStorage {
     }
 
     /**
-     * Delete all properties from the LocalStorage instance
+     * Delete all properties from the LocalStorage instance.
      * Precondition is that there are no subscribers.
-     * method returns false and deletes no properties if there is any property
-     * that still has subscribers
+     * Method returns false and deletes no properties if there is any property
+     * that still has subscribers.
      *
      * @returns { Bool }
-     * @relation clear(): boolean;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clear(): Bool {

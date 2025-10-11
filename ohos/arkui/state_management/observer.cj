@@ -13,22 +13,59 @@
  * limitations under the License.
  */
 
-// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
-
 package ohos.arkui.state_management
 
 import ohos.labels.APILevel
 import std.collection.*
 
+/**
+ * Defines interface Observer.
+ */
 @!APILevel[
-    21,
-    atomicservice: true,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface Observer {
+    /**
+     * Called when a state update occurs.
+     * 
+     * @param { String } info - Information about the updated state.
+     * @param { ArrayList<Int64> } dependentElmtIds - List of element IDs that depend on this state.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func onStateUpdate(info: String, dependentElmtIds: ArrayList<Int64>): Unit
-    func notifyRead(info: String): Unit {}
+
+    /**
+     * Notifies when a property is read.
+     * 
+     * @param { String } info - Information about the property being read.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    func notifyRead(info: String): Unit
+
+    /**
+     * Gets the unique identifier of the observer.
+     * 
+     * @returns { Int64 } The unique identifier.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     func id(): Int64
-    func aboutToBeDeleted(): Unit {}
+
+    /**
+     * Prepares the observer for deletion, cleaning up any resources.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    func aboutToBeDeleted(): Unit
 }

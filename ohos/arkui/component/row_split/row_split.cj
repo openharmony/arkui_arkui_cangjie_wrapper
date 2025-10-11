@@ -33,25 +33,19 @@ foreign {
 
 /**
  * Defines RowSplit Component.
- *
- * @relation const RowSplit: RowSplitInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class RowSplit <: ContainerBase {
+public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     /**
-    * Called when the layout along the vertical direction is set.
+    * Defines the constructor of RowSplit.
     *
     * @param { () -> Unit } child
-    * @returns { This }
-    * @relation (): RowSplitAttribute
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -64,18 +58,16 @@ public class RowSplit <: ContainerBase {
     /**
     * Called when judging whether the split line can be dragged.
     *
-    * @param { Bool } value
+    * @param { ?Bool } value
     * @returns { This }
-    * @relation resizeable(value: boolean): RowSplitAttribute
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func resizeable(value: Bool): This {
+    public func resizeable(value: ?Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkRowSplitResizeable(value)
+            FfiOHOSAceFrameworkRowSplitResizeable(value ?? false)
         }
         this
     }

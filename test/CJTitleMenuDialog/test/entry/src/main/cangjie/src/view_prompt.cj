@@ -19,7 +19,7 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.prompt_action.*
+import ohos.arkui.ui_context.*
 
 var customdialogId: Int32 = 0
 

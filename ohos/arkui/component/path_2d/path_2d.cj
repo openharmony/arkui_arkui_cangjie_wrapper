@@ -58,25 +58,18 @@ foreign {
 
 /**
  * 2D path object for path drawing.
- *
- * @relation declare class Path2D extends CanvasPath
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Path2D <: RemoteDataLite {
 
     /**
      * Create an empty path object.
-     *
-     * @returns { This }
-     * @relation constructor()
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -88,20 +81,17 @@ public class Path2D <: RemoteDataLite {
     /**
      * Create a new path according to the description.
      *
-     * @param { String } path
-     * @returns { This }
-     * @relation constructor(d: string)
+     * @param { ?String } path
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(path: String) {
+    public init(d: ?String) {
         super(
             unsafe {
                 var id = 0
-                try (pathString = LibC.mallocCString(path).asResource()) {
+                try (pathString = LibC.mallocCString(d ?? "").asResource()) {
                     id = FfiOHOSAceFrameworkCanvasPathCtorWithPath(pathString.value)
                 }
                 id
@@ -115,17 +105,16 @@ public class Path2D <: RemoteDataLite {
     /**
      * Adds a path according to the specified path variable.
      *
-     * @param { Path2D } path2D
-     * @relation addPath(path: Path2D, transform?: Matrix2D): void
+     * @param { ?Path2D } path2D
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func addPath(path2D: Path2D): Unit {
+    public func addPath(path2D: ?Path2D): Unit {
+        let tmpPath2D = path2D ?? Path2D()
         unsafe {
-            FfiOHOSAceFrameworkCanvasPathAddPath(this.getID(), path2D.getID());
+            FfiOHOSAceFrameworkCanvasPathAddPath(this.getID(), tmpPath2D.getID());
         }
     }
 
@@ -133,31 +122,29 @@ public class Path2D <: RemoteDataLite {
      * Adds 2D transformation effects, including rotation, translation, and scaling.
      * The current transformation matrix will not be overwritten. Multiple transformations will be superimposed.
      *
-     * @param { Float64 } scaleX
-     * @param { Float64 } skewX
-     * @param { Float64 } skewY
-     * @param { Float64 } scaleY
-     * @param { Float64 } translateX
-     * @param { Float64 } translateY
-     * @relation setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void
+     * @param { ?Float64 } scaleX
+     * @param { ?Float64 } skewX
+     * @param { ?Float64 } skewY
+     * @param { ?Float64 } scaleY
+     * @param { ?Float64 } translateX
+     * @param { ?Float64 } translateY
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTransform(
-        scaleX: Float64,
-        skewX: Float64,
-        skewY: Float64,
-        scaleY: Float64,
-        translateX: Float64,
-        translateY: Float64
+        scaleX: ?Float64,
+        skewX: ?Float64,
+        skewY: ?Float64,
+        scaleY: ?Float64,
+        translateX: ?Float64,
+        translateY: ?Float64
     ): Unit {
         unsafe {
             FfiOHOSAceFrameworkCanvasPathSetTransform(
                 this.getID(),
-                TransformParams(scaleX, skewX, skewY, scaleY, translateX, translateY)
+                TransformParams(scaleX ?? 0.0, skewX ?? 0.0, skewY ?? 0.0, scaleY ?? 0.0, translateX ?? 0.0, translateY ?? 0.0)
             );
         }
     }
@@ -167,11 +154,9 @@ public class Path2D <: RemoteDataLite {
      *
      * @param { Float64 } x
      * @param { Float64 } y
-     * @relation moveTo(x: number, y: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func moveTo(x: Float64, y: Float64): Unit {
@@ -185,11 +170,9 @@ public class Path2D <: RemoteDataLite {
      *
      * @param { Float64 } x
      * @param { Float64 } y
-     * @relation lineTo(x: number, y: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineTo(x: Float64, y: Float64): Unit {
@@ -207,11 +190,9 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } startAngle
      * @param { Float64 } endAngle
      * @param { Bool } counterclockwise
-     * @relation arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arc(
@@ -220,10 +201,10 @@ public class Path2D <: RemoteDataLite {
         radius: Float64,
         startAngle: Float64,
         endAngle: Float64,
-        counterclockwise!: Bool = false
+        counterclockwise!: ?Bool = None
     ): Unit {
         unsafe {
-            FfiOHOSAceFrameworkCanvasPathArc(this.getID(), ArcParams(x, y, radius, startAngle, endAngle), counterclockwise);
+            FfiOHOSAceFrameworkCanvasPathArc(this.getID(), ArcParams(x, y, radius, startAngle, endAngle), counterclockwise ?? false);
         }
     }
 
@@ -235,11 +216,9 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } x2
      * @param { Float64 } y2
      * @param { Float64 } radius
-     * @relation arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arcTo(
@@ -261,11 +240,9 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } cpy
      * @param { Float64 } x
      * @param { Float64 } y
-     * @relation quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func quadraticCurveTo(
@@ -288,11 +265,9 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } cp2y
      * @param { Float64 } x
      * @param { Float64 } y
-     * @relation bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bezierCurveTo(
@@ -319,20 +294,9 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } startAngle
      * @param { Float64 } endAngle
      * @param { Bool } counterclockwise
-     * @relation   ellipse(
-                    x: number,
-                    y: number,
-                    radiusX: number,
-                    radiusY: number,
-                    rotation: number,
-                    startAngle: number,
-                    endAngle: number,
-                    counterclockwise?: boolean,
-                   ): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func ellipse(
@@ -343,13 +307,13 @@ public class Path2D <: RemoteDataLite {
         rotation: Float64,
         startAngle: Float64,
         endAngle: Float64,
-        counterclockwise!: Bool = false
+        counterclockwise!: ?Bool = None
     ): Unit {
         unsafe {
             FfiOHOSAceFrameworkCanvasPathEllipse(
                 this.getID(),
                 EllipseParams(x, y, radiusX, radiusY, rotation, startAngle, endAngle),
-                counterclockwise
+                counterclockwise ?? false
             );
         }
     }
@@ -361,11 +325,9 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } y
      * @param { Float64 } width
      * @param { Float64 } height
-     * @relation rect(x: number, y: number, w: number, h: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rect(x: Float64, y: Float64, width: Float64, height: Float64): Unit {
@@ -376,12 +338,9 @@ public class Path2D <: RemoteDataLite {
 
     /**
      * Returns the pen point to the start point of the current sub-path.
-     *
-     * @relation closePath(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closePath(): Unit {

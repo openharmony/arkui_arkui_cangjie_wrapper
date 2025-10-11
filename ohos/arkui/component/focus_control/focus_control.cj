@@ -23,15 +23,13 @@ foreign func FFIOHOSAceFrameworkRequestFocus(inspectorKey: CString): Bool
 
 /**
  * Defines the namespace of focus controller.
- *
- * @relation declare namespace focusControl
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class FocusControl {
+    init() {}
     private static let instance = FocusControl()
     static func getFocusController(): FocusControl {
         instance
@@ -40,19 +38,17 @@ public class FocusControl {
     /**
      * Request focus to the specific component by param: 'id/key'.
      *
-     * @param { String } value
+     * @param { ?String } value
      * @returns { Bool }
-     * @relation function requestFocus(value: string): boolean;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func requestFocus(value: String): Bool {
+    public static func requestFocus(value: ?String): Bool {
         var result: Bool = false
         unsafe {
-            try (inspectorKey = LibC.mallocCString(value).asResource()) {
+            try (inspectorKey = LibC.mallocCString(value ?? "").asResource()) {
                 result = FFIOHOSAceFrameworkRequestFocus(inspectorKey.value)
             }
         }

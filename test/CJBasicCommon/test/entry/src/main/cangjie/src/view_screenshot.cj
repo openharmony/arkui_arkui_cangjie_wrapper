@@ -16,7 +16,7 @@
 package ohos_app_cangjie_entry
 
 //import std.unittest.testmacro.*
-//import ohos.base.{LengthProp, Length, AppLog, Color, nativeLog, BaseLog, LengthType}
+//import ohos.base.{LengthProp, Length, AppLog, Color, nativeLog, BaseLog, LengthUnit}
 //import ohos.arkui.component.*
 //import ohos.arkui.state_management.*
 //import ohos.arkui.state_macro_manage.*

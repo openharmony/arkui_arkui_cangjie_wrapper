@@ -31,22 +31,26 @@ foreign {
 
 /**
  * Defines RichText Component.
- *
- * @relation interface RichTextInterface
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class RichText <: ViewBase {
+public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
+    /**
+     * Creates a RichText component.
+     *
+     * @param { ?ResourceStr } content
+     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(content: ResourceStr) {
-        var value = match (content) {
+    public init(content: ?ResourceStr) {
+        let tmpContent = content ?? ""
+        var value = match (tmpContent) {
             case res: AppResource => getResourceString(res)
-            case _ => (content as String) ?? ""
+            case _ => (tmpContent as String) ?? ""
         }
         unsafe {
             try (cString = LibC.mallocCString(value).asResource()) {
@@ -58,16 +62,16 @@ public class RichText <: ViewBase {
     /**
      * Triggered when the RichText loading starts.
      *
-     * @param { () -> Unit } callback
+     * @param { ?() -> Unit } callback
      * @returns { This } 
-     * @relation onStart(callback: () => void): RichTextAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onStart(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback)
+    public func onStart(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? { => }
+        let lambdaData = Callback0Param<Unit>(tmpCallback)
         unsafe { FfiOHOSAceFrameworkRichTextOnStart(lambdaData.getID()) }
         this
     }
@@ -75,16 +79,16 @@ public class RichText <: ViewBase {
     /**
      * Triggered when the RichText loading ends.
      *
-     * @param { () -> Unit } callback
+     * @param { ?() -> Unit } callback
      * @returns { This } 
-     * @relation onComplete(callback: () => void): RichTextAttribute;
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onComplete(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback)
+    public func onComplete(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? { => }
+        let lambdaData = Callback0Param<Unit>(tmpCallback)
         unsafe { FfiOHOSAceFrameworkRichTextOnComplete(lambdaData.getID()) }
         this
     }

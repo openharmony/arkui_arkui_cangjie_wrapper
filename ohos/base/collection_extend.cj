@@ -20,42 +20,46 @@ package ohos.base
 import std.collection.*
 import ohos.labels.APILevel
 
+/**
+ * Defines interface CollectionEx.
+ */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface CollectionEx<T> {
+    /**
+     * The size of the collection.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop size: Int64
+    /**
+     * Sets the element at the specified index with a new element.
+     *
+     * @param { Int64 } idx - The index of the element to get.
+     * @param { T } value - The new element.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     operator func [](idx: Int64, value!: T): Unit
+    /**
+     * Gets the element at the specified index.
+     *
+     * @param { Int64 } idx - The index of the element to get.
+     * @returns { T }
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     operator func [](idx: Int64): T
 }
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 extend<T> Array<T> <: CollectionEx<T> {}
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 extend<T> ArrayList<T> <: CollectionEx<T> {}

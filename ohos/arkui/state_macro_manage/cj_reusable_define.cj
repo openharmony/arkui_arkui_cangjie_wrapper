@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +36,7 @@ public macro Reusable(input: Tokens): Tokens {
             initFunc = (item as FuncDecl).getOrThrow()
         }
     }
-    let val = AssignExpr(quote(this.isReusable = true))
+    let val = AssignExpr(quote(this.isReusable_inner__ = true))
     initFunc.block.nodes.add(val)
     return classDecl.toTokens()
 }

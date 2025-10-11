@@ -32,34 +32,28 @@ foreign {
 
 /**
  * Defines MenuItemGroup Component.
- *
- * @relation declare const MenuItemGroup: MenuItemGroupInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class MenuItemGroup <: ContainerBase {
+public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGroupAttribute {
 
     /**
      * Creates the MenuItem component.
      *
-     * @param { ResourceStr } header
-     * @param { ResourceStr } footer
+     * @param { ?ResourceStr } header
+     * @param { ?ResourceStr } footer
      * @param { () -> Unit } child     
-     * @returns { This }
-     * @relation (value?: MenuItemGroupOptions): MenuItemGroupAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(header!: ResourceStr = "", footer!: ResourceStr = "", child!: () -> Unit = {=>}) {
+    public init(header!: ?ResourceStr = None, footer!: ?ResourceStr = None, child!: () -> Unit = {=>}) {
         unsafe {
-            try (cheader = LibC.mallocCString(transResourceStrToString(header)).asResource(),
-                cfooter = LibC.mallocCString(transResourceStrToString(footer)).asResource()) {
+            try (cheader = LibC.mallocCString(transResourceStrToString(header ?? "")).asResource(),
+                cfooter = LibC.mallocCString(transResourceStrToString(footer ?? "")).asResource()) {
                 FfiOHOSAceFrameworkMenuItemGroupCreateByString(cheader.value, cfooter.value)
             }
         }
@@ -69,21 +63,18 @@ public class MenuItemGroup <: ContainerBase {
     /**
      * Creates the MenuItem component.
      *
-     * @param { CustomBuilder } header
-     * @param { CustomBuilder } footer
+     * @param { ?CustomBuilder } header
+     * @param { ?CustomBuilder } footer
      * @param { () -> Unit } child     
-     * @returns { This }
-     * @relation (value?: MenuItemGroupOptions): MenuItemGroupAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(header!: CustomBuilder, footer!: CustomBuilder, child!: () -> Unit = {=>}) {
+    public init(header!: ?CustomBuilder, footer!: ?CustomBuilder, child!: () -> Unit = {=>}) {
         unsafe {
-            FfiOHOSAceFrameworkMenuItemGroupCreateByBuilder(Callback0Param<Unit>(header).getID(),
-                Callback0Param<Unit>(footer).getID())
+            FfiOHOSAceFrameworkMenuItemGroupCreateByBuilder(Callback0Param<Unit>(header ?? { => }).getID(),
+                Callback0Param<Unit>(footer ?? { => }).getID())
         }
         this.child = child
     }

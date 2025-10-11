@@ -20,6 +20,7 @@ package ohos.arkui.component.canvas
 import ohos.arkui.component.common.*
 import ohos.arkui.component.path_2d.*
 import ohos.arkui.component.util.*
+import ohos.arkui.ui_context.font.Font as FontApi
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
@@ -332,30 +333,102 @@ foreign {
     ): Unit
 }
 
+func parseLength2Vp(origin: Length): Float64 {
+    match(origin.unitType) {
+        case LengthUnit.Px => px2vpInner(origin.value).getOrDefault({ => origin}).value
+        case LengthUnit.Vp => origin.value
+        case LengthUnit.Fp => px2vpInner(fp2pxInner(origin.value).getOrDefault({ => origin})).getOrDefault({ => origin}).value
+        case LengthUnit.Percent => origin.value
+        case LengthUnit.Lpx => px2vpInner(lpx2pxInner(origin.value).getOrDefault({ => origin})).getOrDefault({ => origin}).value
+        case _ => origin.value
+    }
+}
+
+func parseFontValue(origin: String): (FontStyle, String, Length, String) {
+    var style: FontStyle = FontStyle.Normal
+    var weight: String = "normal"
+    var size: Length = 14.px
+    var family: String = "sans-serif"
+
+    let fontInfoList = origin.split(" ")
+    for (i in 0..fontInfoList.size) {
+        let current = fontInfoList[i]
+        if (FontWights.contains(current)) {
+            weight = current
+        } else if (FontStyles.contains(current)) {
+            style = FontStyle.parseFromString(current)
+        } else if (current.contains("vp") || current.contains("px")) {
+            size = parseLengthFromString(current).getOrDefault({ => 14.px})
+        } else if (FontFamilys.contains(current) || FontApi(0).getSystemFontList().contains(current)) {
+            family = current
+        }
+    }
+    return (style, weight, size, family)
+}
+
 /**
- * Draw context object for the Canvas component.
- *
- * @relation declare class CanvasRenderingContext2D extends CanvasRenderer
+ * FillStyle.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public interface FillStyle {}
+
+extend Int64 <: FillStyle {}
+
+extend UInt32 <: FillStyle {}
+
+extend Color <: FillStyle {}
+
+extend CanvasGradient <: FillStyle {}
+
+extend CanvasPattern <: FillStyle {}
+
+/**
+ * StrokeStyle.
+ */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public interface StrokeStyle {}
+
+extend Int64 <: StrokeStyle {}
+
+extend UInt32 <: StrokeStyle {}
+
+extend Color <: StrokeStyle {}
+
+extend CanvasGradient <: StrokeStyle {}
+
+extend CanvasPattern <: StrokeStyle {}
+
+/**
+ * Draw context object for the Canvas component.
+ */
+@!APILevel[
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Init function of the canvas drawing context object, which is used to create a drawing context object.
      *
-     * @relation constructor(settings?: RenderingContextSettings);
+     * @param { ?RenderingContextSettings } settings
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(settings: RenderingContextSettings) {
+    public init(settings: ?RenderingContextSettings) {
         super(unsafe {
-            FfiOHOSAceFrameworkRenderingContextCtor(settings.antialias)
+            match(settings) {
+                case Some(value) =>
+                    FfiOHOSAceFrameworkRenderingContextCtor(value.antialias ?? false)
+                case None =>
+                    FfiOHOSAceFrameworkRenderingContextCtor(false)
+            }
         })
     }
 
@@ -364,64 +437,42 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Set the attributes specifie the gradient to use inside shapes.
-     * 
-     * @param { ResourceColor } color
-     * @relation set fillStyle(fillStyle: string | number | CanvasGradient | CanvasPattern)
+     * Set the attributes specified the gradient to use inside shapes.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fillStyle(color: ResourceColor): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetFillStyle(this.getID(), transAppResourceToResourceColor(color))
+    public mut prop fillStyle: Option<FillStyle> {
+        get() {
+            return Option.None
         }
-    }
-
-    /**
-     * Set the attributes specifie the gradient to use inside shapes.
-     * 
-     * @param { CanvasGradient } gradient
-     * @relation set fillStyle(fillStyle: string | number | CanvasGradient | CanvasPattern)
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func fillStyle(gradient: CanvasGradient): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetFillStyleByGradient(this.getID(), gradient.getID())
-        }
-    }
-
-    /**
-     * Set the attributes specifie the pattern to use inside shapes.
-     * 
-     * @param { CanvasPattern } pattern
-     * @relation set fillStyle(fillStyle: string | number | CanvasGradient | CanvasPattern)
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func fillStyle(pattern: CanvasPattern): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetFillStyleByCanvasPattern(this.getID(), pattern.getID())
+        set(value) {
+            if (let Some(v) <- value) {
+                match(v) {
+                    case gridient: CanvasGradient =>
+                        unsafe {
+                            FfiOHOSAceFrameworkRenderingContextSetFillStyleByGradient(this.getID(), gridient.getID())
+                        }
+                    case pattern: CanvasPattern =>
+                        unsafe {
+                            FfiOHOSAceFrameworkRenderingContextSetFillStyleByCanvasPattern(this.getID(), pattern.getID())
+                        }
+                    case color: ResourceColor =>
+                        unsafe {
+                            FfiOHOSAceFrameworkRenderingContextSetFillStyle(this.getID(), transAppResourceToResourceColor(color))
+                        }
+                    case _ => ()
+                }
+            }
         }
     }
 
     /**
      * Line thickness attribute. The value cannot be 0 or a negative number.
-     *
-     * @relation lineWidth: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop lineWidth: Option<Float64> {
@@ -438,74 +489,58 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Set the attributes specifie the color to use for the strokes (outlines) around shapes.
-     * 
-     * @param { ResourceColor } color
-     * @relation set strokeStyle(strokeStyle: string | number | CanvasGradient | CanvasPattern)
+     * Set the attributes specified the color to use for the strokes (outlines) around shapes.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeStyle(color: ResourceColor): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetStrokeStyle(this.getID(), transAppResourceToResourceColor(color))
-        }
-    }
-
-    /**
-     * Set the attributes specifie the gradient to use for the strokes (outlines) around shapes.
-     * 
-     * @param { CanvasGradient } gradient
-     * @relation set strokeStyle(strokeStyle: string | number | CanvasGradient | CanvasPattern)
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func strokeStyle(gradient: CanvasGradient): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetStrokeStyleByGradient(this.getID(), gradient.getID())
-        }
-    }
-
-    /**
-     * Set the attributes specifie the pattern to use for the strokes (outlines) around shapes.
-     * 
-     * @param { CanvasPattern } pattern
-     * @relation set strokeStyle(strokeStyle: string | number | CanvasGradient | CanvasPattern)
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func strokeStyle(pattern: CanvasPattern): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkRenderingContextSetStrokeStyleByPattern(this.getID(), pattern.getID())
-        }
-    }
-
-    /**
-     * Line segment endpoint attribute.
-     *
-     * @relation lineCap: CanvasLineCap
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public mut prop lineCap: Option<LineCapStyle> {
+    public mut prop strokeStyle: Option<StrokeStyle> {
         get() {
             return Option.None
         }
         set(value) {
             if (let Some(v) <- value) {
+                match(v) {
+                    case gridient: CanvasGradient =>
+                        unsafe {
+                            FfiOHOSAceFrameworkRenderingContextSetStrokeStyleByGradient(this.getID(), gridient.getID())
+                        }
+                    case pattern: CanvasPattern =>
+                        unsafe {
+                            FfiOHOSAceFrameworkRenderingContextSetStrokeStyleByPattern(this.getID(), pattern.getID())
+                        }
+                    case color: ResourceColor =>
+                        unsafe {
+                            FfiOHOSAceFrameworkRenderingContextSetStrokeStyle(this.getID(), transAppResourceToResourceColor(color))
+                        }
+                    case _ => ()
+                }
+            }
+        }
+    }
+
+    /**
+     * Line segment endpoint attribute.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop lineCap: Option<String> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                let realValue: LineCapStyle = match (v) {
+                    case "butt" => LineCapStyle.Butt
+                    case "round" => LineCapStyle.Round
+                    case "square" => LineCapStyle.Square
+                    case _ => LineCapStyle.Butt
+                }
                 unsafe {
-                    FfiOHOSAceFrameworkRenderingContextSetLineCap(this.getID(), v.getValue())
+                    FfiOHOSAceFrameworkRenderingContextSetLineCap(this.getID(), realValue.getValue())
                 }
             }
         }
@@ -513,22 +548,25 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Line segment connection point attribute
-     *
-     * @relation lineJoin: CanvasLineJoin
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public mut prop lineJoin: Option<LineJoinStyle> {
+    public mut prop lineJoin: Option<String> {
         get() {
             return Option.None
         }
         set(value) {
             if (let Some(v) <- value) {
+                let realValue: LineJoinStyle = match (v) {
+                    case "miter" => LineJoinStyle.Miter
+                    case "round" => LineJoinStyle.Round
+                    case "bevel" => LineJoinStyle.Bevel
+                    case _ => LineJoinStyle.Miter
+                }
                 unsafe {
-                    FfiOHOSAceFrameworkRenderingContextSetLineJoin(this.getID(), v.getValue())
+                    FfiOHOSAceFrameworkRenderingContextSetLineJoin(this.getID(), realValue.getValue())
                 }
             }
         }
@@ -536,12 +574,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * The value of this parameter cannot be 0 or a negative number.
-     *
-     * @relation miterLimit: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop miterLimit: Option<Float64> {
@@ -559,59 +594,61 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Set the font style.
-     * 
-     * @param { FontStyle } style
-     * @param { FontWeight } weight
-     * @param { Length } size
-     * @param { String } family
-     * @relation set font(font: string)
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func font(
-        style!: FontStyle = FontStyle.Normal,
-        weight!: FontWeight = FontWeight.Normal,
-        size!: Length = 14.px,
-        family!: String = "sans-serif"
-    ): Unit {
-        unsafe {
-            var weightValue = LibC.mallocCString(weight.getValue())
-            var familyValue = LibC.mallocCString(family)
-            var size_ = transAppResourceToLength(size)
-            FfiOHOSAceFrameworkRenderingContextSetFont(
-                this.getID(),
-                style.getValue(),
-                weightValue,
-                size_.value,
-                size_.unitType.getValue(),
-                familyValue
-            )
-            weightValue.free()
-            familyValue.free()
-        }
-    }
-
-    /**
-     * Text alignment mode
-     *
-     * @relation textAlign: CanvasTextAlign
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public mut prop textAlign: Option<CanvasTextAlign> {
+    public mut prop font: Option<String> {
         get() {
             return Option.None
         }
         set(value) {
             if (let Some(v) <- value) {
+                let params = parseFontValue(v)
                 unsafe {
-                    FfiOHOSAceFrameworkRenderingContextSetTextAlign(this.getID(), v.getValue())
+                    try (
+                        weightValue = LibC.mallocCString(params[1]).asResource(),
+                        familyValue = LibC.mallocCString(params[3]).asResource()
+                    ) {
+                        var size_ = transAppResourceToLength(params[2])
+                        FfiOHOSAceFrameworkRenderingContextSetFont(
+                            this.getID(),
+                            params[0].getValue(),
+                            weightValue.value,
+                            size_.value,
+                            size_.unitType.getValue(),
+                            familyValue.value
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Text alignment mode
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop textAlign: Option<String> {
+        get() {
+            return Option.None
+        }
+        set(value) {
+            if (let Some(v) <- value) {
+                let realValue = match (v) {
+                    case "center" => CanvasTextAlign.Center
+                    case "end" => CanvasTextAlign.End
+                    case "left" => CanvasTextAlign.Left
+                    case "right" => CanvasTextAlign.Right
+                    case "start" => CanvasTextAlign.Start
+                    case _ => CanvasTextAlign.Start
+                }
+                unsafe {
+                    FfiOHOSAceFrameworkRenderingContextSetTextAlign(this.getID(), realValue.getValue())
                 }
             }
         }
@@ -619,22 +656,29 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Text baseline.
-     *
-     * @relation textBaseline: CanvasTextBaseline
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public mut prop textBaseline: Option<CanvasTextBaseline> {
+    public mut prop textBaseline: Option<String> {
         get() {
             return Option.None
         }
         set(value) {
             if (let Some(v) <- value) {
+                let realValue = match (v) {
+                    case "alphabetic" => CanvasTextBaseline.Alphabetic
+                    case "ideographic" => CanvasTextBaseline.Ideographic
+                    case "top" => CanvasTextBaseline.Top
+                    case "bottom" => CanvasTextBaseline.Bottom
+                    case "middle" => CanvasTextBaseline.Middle
+                    case "hanging" => CanvasTextBaseline.Hanging
+                    case _ =>CanvasTextBaseline.Alphabetic
+                }
                 unsafe {
-                    FfiOHOSAceFrameworkRenderingContextSetTextBaseline(this.getID(), v.getValue())
+                    FfiOHOSAceFrameworkRenderingContextSetTextBaseline(this.getID(),
+                        realValue.getValue())
                 }
             }
         }
@@ -643,12 +687,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Transparency. The value ranges from 0.0 (completely transparent) to 1.0 (completely opaque).
      * If the value is out of range, the assignment is invalid.
-     *
-     * @relation globalAlpha: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop globalAlpha: Option<Float64> {
@@ -667,20 +708,18 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Sets the dashed line mode for line drawing.
      *
-     * @param { Array<Float64> } segments - A set of numbers that describe the length of alternating drawn lines segments and
-     * spacing (coordinate space units).
-     *
-     * @relation setLineDash(segments: number[]): void
+     * @param { ?Array<Float64> } segments - A set of numbers that describe the length of alternating drawn lines
+     *   segments and spacing (coordinate space units).
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setLineDash(dashArr: Array<Float64>): Unit {
-        let vecFFi = FFIVectorFloat64(dashArr.size)
+    public func setLineDash(dashArr: ?Array<Float64>): Unit {
+        let tmpDashArr = dashArr ?? []
+        let vecFFi = FFIVectorFloat64(tmpDashArr.size)
         var index = 0
-        for (i in dashArr) {
+        for (i in tmpDashArr) {
             nativeLog("Canvas LineDash vecdata: " + i.toString())
             vecFFi.setElement(index, i)
             index++
@@ -693,12 +732,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Dotted line offset attribute.
-     *
-     * @relation lineDashOffset: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop lineDashOffset: Option<Float64> {
@@ -716,22 +752,34 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Type of composition operation applied when drawing a new shape。
-     *
-     * @relation globalCompositeOperation: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public mut prop globalCompositeOperation: Option<GlobalCompositeOperation> {
+    public mut prop globalCompositeOperation: Option<String> {
         get() {
             return Option.None
         }
         set(value) {
             if (let Some(v) <- value) {
+                let realValue: GlobalCompositeOperation = match (v) {
+                    case "source-over" => GlobalCompositeOperation.SourceOver
+                    case "source-atop" => GlobalCompositeOperation.SourceAtop
+                    case "source-in" => GlobalCompositeOperation.SourceIn
+                    case "source-out" => GlobalCompositeOperation.SourceOut
+                    case "destination-over" => GlobalCompositeOperation.DestinationOver
+                    case "destination-atop" => GlobalCompositeOperation.DestinationAtop
+                    case "destination-in" => GlobalCompositeOperation.DestinationIn
+                    case "destination-out" => GlobalCompositeOperation.DestinationOut
+                    case "lighter" => GlobalCompositeOperation.Lighter
+                    case "copy" => GlobalCompositeOperation.Copy
+                    case "xor" => GlobalCompositeOperation.Xor
+                    case _ => GlobalCompositeOperation.SourceOver
+                }
                 unsafe {
-                    FfiOHOSAceFrameworkRenderingContextSetGlobalCompositeOperation(this.getID(), v.getValue())
+                    FfiOHOSAceFrameworkRenderingContextSetGlobalCompositeOperation(this.getID(),
+                        realValue.getValue())
                 }
             }
         }
@@ -739,12 +787,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Shadow blur radius. The value cannot be a negative number.
-     *
-     * @relation shadowBlur: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop shadowBlur: Option<Float64> {
@@ -762,12 +807,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Shadow color.
-     *
-     * @relation shadowColor: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop shadowColor: Option<ResourceColor> {
@@ -785,12 +827,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Horizontal offset distance of the shadow.
-     *
-     * @relation shadowOffsetX: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop shadowOffsetX: Option<Float64> {
@@ -808,12 +847,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Vertical offset distance of the shadow.
-     *
-     * @relation shadowOffsetY: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop shadowOffsetY: Option<Float64> {
@@ -832,12 +868,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Specifies whether to smooth the image. The value true indicates that the image is smooth.
      *    The value false indicates that the image is not smooth.
-     *
-     * @relation imageSmoothingEnabled: boolean
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop imageSmoothingEnabled: Option<Bool> {
@@ -855,24 +888,27 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Smoothness level of the current image.
-     *
-     * @relation imageSmoothingQuality: ImageSmoothingQuality
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public mut prop imageSmoothingQuality: Option<ImageSmoothingQuality> {
+    public mut prop imageSmoothingQuality: Option<String> {
         get() {
             return Option.None
         }
         set(value) {
             if (let Some(v) <- value) {
+                let realValue: ImageSmoothingQuality = match (v) {
+                    case "high" => ImageSmoothingQuality.High
+                    case "low" => ImageSmoothingQuality.Low
+                    case "medium" => ImageSmoothingQuality.Medium
+                    case _ => ImageSmoothingQuality.Low
+                }
                 unsafe {
-                    var qualityValue = LibC.mallocCString(v.getValue())
-                    FfiOHOSAceFrameworkRenderingContextSetImageSmoothingQuality(this.getID(), qualityValue)
-                    LibC.free(qualityValue)
+                    try (qualityValue = LibC.mallocCString(realValue.getValue()).asResource()) {
+                        FfiOHOSAceFrameworkRenderingContextSetImageSmoothingQuality(this.getID(), qualityValue.value)
+                    }
                 }
             }
         }
@@ -880,24 +916,27 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Text drawing direction.
-     *
-     * @relation direction: CanvasDirection
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public mut prop direction: Option<CanvasDirection> {
+    public mut prop direction: Option<String> {
         get() {
             return Option.None
         }
         set(value) {
             if (let Some(v) <- value) {
+                let realValue: CanvasDirection = match (v) {
+                    case "inherit" => CanvasDirection.Inherit
+                    case "ltr" => CanvasDirection.Ltr
+                    case "rtl" => CanvasDirection.Rtl
+                    case _ => CanvasDirection.Inherit
+                }
                 unsafe {
-                    var directionValue = LibC.mallocCString(v.getValue())
-                    FfiOHOSAceFrameworkRenderingContextSetDirection(this.getID(), directionValue)
-                    LibC.free(directionValue)
+                    try (directionValue = LibC.mallocCString(realValue.getValue()).asResource()) {
+                        FfiOHOSAceFrameworkRenderingContextSetDirection(this.getID(), directionValue.value)
+                    }
                 }
             }
         }
@@ -905,7 +944,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Provides filter effects such as blur and grayscale. You can set the following filter effects:
-     * blur(<length>): Adds a Gaussian blur effect to the drawing
+     * blur(<length>): Adds a Gaussian blur effect to the drawing.
      * brightness(<percentage>): Provides a linear multiplication for the drawing and adjusts the brightness level.
      * contrast(<percentage>): Adjusts the contrast of the image. When the value is 0%, the image is completely black.
      *    When the value is 100%, there is no change in the image.
@@ -920,14 +959,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *    When the value is 100%, there is no change in the image.
      * sepia(<percentage>): The image is sepia (nostalgic style). At 100%, the image turns completely sepia.
      *    When the value is 0%, there is no change in the image.
-     * none: Turn off filter effects
-     *
-     * @relation filter: string
-     * 
+     * none: Turn off filter effects.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public mut prop filter: Option<String> {
@@ -937,51 +972,47 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         set(value) {
             if (let Some(v) <- value) {
                 unsafe {
-                    var filterValue = LibC.mallocCString(v)
-                    FfiOHOSAceFrameworkRenderingContextSetFilter(this.getID(), filterValue);
-                    LibC.free(filterValue)
+                    try (filterValue = LibC.mallocCString(v).asResource()) {
+                        FfiOHOSAceFrameworkRenderingContextSetFilter(this.getID(), filterValue.value)
+                    }
                 }
             }
         }
     }
 
     /**
-     * Fills a specified rectangular area
+     * Fills a specified rectangular area.
      *
      * @param { Float64 } x - The x-axis coordinate of the start point of the rectangle.
      * @param { Float64 } y - The y-axis coordinate of the start point of the rectangle.
      * @param { Float64 } w - Width of the rectangle.
      * @param { Float64 } h - Height of the rectangle.
-     * @relation fillRect(x: number, y: number, w: number, h: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fillRect(x: Float64, y: Float64, width: Float64, height: Float64): Unit {
+    public func fillRect(x: Float64, y: Float64, w: Float64, h: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextFillRect(this.getID(), x, y, width, height)
+            FfiOHOSAceFrameworkRenderingContextFillRect(this.getID(), x, y, w, h)
         }
     }
 
     /**
-     * Stroke Specify Rectangular Area
+     * Stroke Specify Rectangular Area.
      *
      * @param { Float64 } x - The x-axis coordinate of the start point of the rectangle.
      * @param { Float64 } y - The y-axis coordinate of the start point of the rectangle.
      * @param { Float64 } w - Width of the rectangle.
      * @param { Float64 } h - Height of the rectangle.
-     * @relation strokeRect(x: number, y: number, w: number, h: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeRect(x: Float64, y: Float64, width: Float64, height: Float64): Unit {
+    public func strokeRect(x: Float64, y: Float64, w: Float64, h: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextStrokeRect(this.getID(), x, y, width, height)
+            FfiOHOSAceFrameworkRenderingContextStrokeRect(this.getID(), x, y, w, h)
         }
     }
 
@@ -992,77 +1023,71 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { Float64 } y - The y-axis coordinate of the start point of the rectangle.
      * @param { Float64 } w - Width of the rectangle.
      * @param { Float64 } h - Height of the rectangle.
-     * @relation clearRect(x: number, y: number, w: number, h: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func clearRect(x: Float64, y: Float64, width: Float64, height: Float64): Unit {
+    public func clearRect(x: Float64, y: Float64, w: Float64, h: Float64): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextClearRect(this.getID(), x, y, width, height)
+            FfiOHOSAceFrameworkRenderingContextClearRect(this.getID(), x, y, w, h)
         }
     }
 
     /**
-     * Fills the specified text at the specified location
+     * Fills the specified text at the specified location.
      *
-     * @param { string } text - Text string to be drawn.
-     * @param { number } x - The x-axis coordinate of the start point of the text.
-     * @param { number } y - The y-axis coordinate of the start point of the text.
-     * @param { number } maxWidth - Maximum width of the drawing.
-     * @relation fillText(text: string, x: number, y: number, maxWidth?: number): void
+     * @param { String } text - Text string to be drawn.
+     * @param { Float64 } x - The x-axis coordinate of the start point of the text.
+     * @param { Float64 } y - The y-axis coordinate of the start point of the text.
+     * @param { ?Float64 } maxWidth - Maximum width of the drawing.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fillText(text: String, x: Float64, y: Float64, maxWidth!: Option<Float64> = Option.None): Unit {
+    public func fillText(text: String, x: Float64, y: Float64, maxWidth!: ?Float64 = Option.None): Unit {
         match (maxWidth) {
             case Some(v) =>
                 unsafe {
-                    var content = LibC.mallocCString(text)
-                    FfiOHOSAceFrameworkRenderingContextFillTextWithMaxWidth(this.getID(), x, y, content, v)
-                    LibC.free(content)
+                    try (content = LibC.mallocCString(text).asResource()) {
+                        FfiOHOSAceFrameworkRenderingContextFillTextWithMaxWidth(this.getID(), x, y, content.value, v)
+                    }
                 }
             case None =>
                 unsafe {
-                    var content = LibC.mallocCString(text)
-                    FfiOHOSAceFrameworkRenderingContextFillText(this.getID(), x, y, content)
-                    LibC.free(content)
+                    try (content = LibC.mallocCString(text).asResource()) {
+                        FfiOHOSAceFrameworkRenderingContextFillText(this.getID(), x, y, content.value)
+                    }
                 }
         }
     }
 
     /**
-     * Stroke specified text at specified position
+     * Stroke specified text at specified position.
      *
-     * @param { string } text - Text string to be stroked.
-     * @param { number } x - The x-axis coordinate of the start point of the text.
-     * @param { number } y - The y-axis-axis coordinate of the start point of the text.
-     * @param { number } maxWidth - Maximum width of the stroke.
-     * @relation strokeText(text: string, x: number, y: number, maxWidth?: number): void
+     * @param { String } text - Text string to be stroked.
+     * @param { Float64 } x - The x-axis coordinate of the start point of the text.
+     * @param { Float64 } y - The y-axis-axis coordinate of the start point of the text.
+     * @param { ?Float64 } maxWidth - Maximum width of the stroke.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeText(text: String, x: Float64, y: Float64, maxWidth!: Option<Float64> = Option.None): Unit {
         match (maxWidth) {
             case Some(v) =>
                 unsafe {
-                    var content = LibC.mallocCString(text)
-                    FfiOHOSAceFrameworkRenderingContextStrokeTextWithMaxWidth(this.getID(), x, y, content, v)
-                    LibC.free(content)
+                    try (content = LibC.mallocCString(text).asResource()) {
+                        FfiOHOSAceFrameworkRenderingContextStrokeTextWithMaxWidth(this.getID(), x, y, content.value, v)
+                    }
                 }
             case None =>
                 unsafe {
-                    var content = LibC.mallocCString(text)
-                    FfiOHOSAceFrameworkRenderingContextStrokeText(this.getID(), x, y, content)
-                    LibC.free(content)
+                    try (content = LibC.mallocCString(text).asResource()) {
+                        FfiOHOSAceFrameworkRenderingContextStrokeText(this.getID(), x, y, content.value)
+                    }
                 }
         }
     }
@@ -1070,32 +1095,28 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Measure the size of a specified text.
      *
-     * @param { String } text - Text string to be measured.
-     * @relation measureText(text: string): TextMetrics
+     * @param { ?String } text - Text string to be measured.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func measureText(text: String): TextMetrics {
+    public func measureText(text: ?String): TextMetrics {
+        var metrics = TextMetrics(0.0, 0.0)
         unsafe {
-            var content = LibC.mallocCString(text)
-            let nativeMetrics: NativeTextMetrics = FfiOHOSAceFrameworkRenderingContextMeasureText(this.getID(), content)
-            let metrics = nativeMetrics.parseToCJ()
-            LibC.free(content)
+            try (content = LibC.mallocCString(text ?? "undefined").asResource()) {
+                let nativeMetrics: NativeTextMetrics = FfiOHOSAceFrameworkRenderingContextMeasureText(this.getID(), content.value)
+                metrics = nativeMetrics.parseToCJ()
+            }
             return metrics
         }
     }
 
     /**
      * Draws an existing path according to the current stroke style.
-     *
-     * @relation stroke(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stroke(): Unit {
@@ -1105,14 +1126,12 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draws the specified path according to the current stroke style
+     * Draws the specified path according to the current stroke style.
      *
-     * @param { Path2D } path - Specified stroke path object
-     * @relation stroke(path: Path2D): void
+     * @param { Path2D } path - Specified stroke path object.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stroke(path2D: Path2D): Unit {
@@ -1123,12 +1142,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Clear the sub-path list and start a new path.
-     *
-     * @relation beginPath(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func beginPath(): Unit {
@@ -1142,11 +1158,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
    *
    * @param { Float64 } x - The x-axis coordinate of the point.
    * @param { Float64 } y - The y-axis coordinate of the point.
-   * @relation moveTo(x: number, y: number): void
    */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func moveTo(x: Float64, y: Float64): Unit {
@@ -1156,15 +1170,13 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Connect sub-path using straight lines
+     * Connect sub-path using straight lines.
      *
-     * @param { number } x - The x-axis coordinate of the end point of the line.
-     * @param { number } y - The y-axis coordinate of the end point of the line.
-     * @relation lineTo(x: number, y: number): void
+     * @param { Float64 } x - The x-axis coordinate of the end point of the line.
+     * @param { Float64 } y - The y-axis coordinate of the end point of the line.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineTo(x: Float64, y: Float64): Unit {
@@ -1174,13 +1186,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Returns the pen point to the start point of the current sub-path
-     *
-     * @relation closePath(): void
+     * Returns the pen point to the start point of the current sub-path.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closePath(): Unit {
@@ -1190,23 +1199,26 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Creates a template object using the specified image
+     * Creates a template object using the specified image.
      *
-     * @param { ImageBitmap } image - Objects as duplicate image sources
-     * @param { Repetition } repetition - Specifies how to repeat images.
-     * @relation createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | null
+     * @param { ?ImageBitmap } image - Objects as duplicate image sources.
+     * @param { ?Repetition } repetition - Specifies how to repeat images.
+     * @returns { Option<CanvasPattern> }
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func createPattern(image: ImageBitmap, repetition: Repetition): CanvasPattern {
-        return CanvasPattern(this.getID(), image, repetition)
+    public func createPattern(image: ?ImageBitmap, repetition: Option<Repetition>): Option<CanvasPattern> {
+        let tmpImage = image ?? ImageBitmap("")
+        match (repetition) {
+            case Some(v) => return CanvasPattern(this.getID(), tmpImage, v)
+            case None => return CanvasPattern(this.getID(), tmpImage, Repetition.NoRepeat)
+        }
     }
 
     /**
-     * Drawing Cubic Bessel Curve Paths
+     * Drawing Cubic Bessel Curve Paths.
      *
      * @param { Float64 } cp1x - The x-axis coordinate of the first control point.
      * @param { Float64 } cp1y - The y-axis coordinate of the first control point.
@@ -1214,11 +1226,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { Float64 } cp2y - The y-axis coordinate of the second control point.
      * @param { Float64 } x - x-axis coordinate of the end point.
      * @param { Float64 } y - y-axis coordinate of the end point.
-     * @relation bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bezierCurveTo(cp1x: Float64, cp1y: Float64, cp2x: Float64, cp2y: Float64, x: Float64, y: Float64): Unit {
@@ -1228,17 +1238,15 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draw quadratic Bezier curve paths
+     * Draw quadratic Bezier curve paths.
      *
      * @param { Float64 } cpx - The x-axis coordinate of the control point.
      * @param { Float64 } cpy - The y-axis coordinate of the control point.
      * @param { Float64 } x - x-axis coordinate of the end point.
      * @param { Float64 } y - y-axis coordinate of the end point.
-     * @relation quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func quadraticCurveTo(cpx: Float64, cpy: Float64, x: Float64, y: Float64): Unit {
@@ -1248,20 +1256,18 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-   * Draw an arc path
-   *
-   * @param { Float64 } x - The x-axis coordinate of the center (center of the circle) of the arc.
-   * @param { Float64 } y - The y-axis coordinate of the center (center of the circle) of the arc.
-   * @param { Float64 } radius - Radius of the arc.
-   * @param { Float64 } startAngle - Start point of an arc, which starts to be calculated in the x-axis direction. The unit is radian.
-   * @param { Float64 } endAngle - The end point of the arc, in radians.
-   * @param { Bool } counterclockwise - If the value is true, the arc is drawn counterclockwise. Otherwise,
-   *    the arc is drawn clockwise. The default value is false.
-   * @relation arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void
-   */
+     * Draw an arc path.
+     *
+     * @param { Float64 } x - The x-axis coordinate of the center (center of the circle) of the arc.
+     * @param { Float64 } y - The y-axis coordinate of the center (center of the circle) of the arc.
+     * @param { Float64 } radius - Radius of the arc.
+     * @param { Float64 } startAngle - Start point of an arc, which starts to be calculated in the x-axis direction. The unit is radian.
+     * @param { Float64 } endAngle - The end point of the arc, in radians.
+     * @param { ?Bool } counterclockwise - If the value is true, the arc is drawn counterclockwise. Otherwise,
+     *    the arc is drawn clockwise. The default value is false.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arc(
@@ -1270,26 +1276,24 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         radius: Float64,
         startAngle: Float64,
         endAngle: Float64,
-        counterclockwise!: Bool = false
+        counterclockwise!: ?Bool = None
     ): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextArc(this.getID(), x, y, radius, startAngle, endAngle, counterclockwise)
+            FfiOHOSAceFrameworkRenderingContextArc(this.getID(), x, y, radius, startAngle, endAngle, counterclockwise ?? false)
         }
     }
 
     /**
-     * Draw arc paths based on control points and radius
+     * Draw arc paths based on control points and radius.
      *
      * @param { Float64 } x1 - The x-axis coordinate of the first control point.
      * @param { Float64 } y1 - The y-axis coordinate of the first control point.
      * @param { Float64 } x2 - The x-axis coordinate of the second control point.
      * @param { Float64 } y2 - The y-axis coordinate of the second control point.
      * @param { Float64 } radius - Radius of the arc.
-     * @relation arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arcTo(x1: Float64, y1: Float64, x2: Float64, y2: Float64, radius: Float64): Unit {
@@ -1299,7 +1303,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Draw an Elliptic Path
+     * Draw an Elliptic Path.
      *
      * @param { Float64 } x - x-axis coordinate of the center of the ellipse.
      * @param { Float64 } y - y-axis coordinate of the center of the ellipse.
@@ -1313,8 +1317,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *    the ellipse is drawn clockwise. The default value is false.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func ellipse(
@@ -1325,7 +1328,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         rotation: Float64,
         startAngle: Float64,
         endAngle: Float64,
-        counterclockwise!: Bool = false
+        counterclockwise!: ?Bool = None
     ): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextEllipse(
@@ -1337,23 +1340,21 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
                 rotation,
                 startAngle,
                 endAngle,
-                counterclockwise
+                counterclockwise ?? false
             )
         }
     }
 
     /**
-     * Draw Rectangular Paths
+     * Draw Rectangular Paths.
      *
      * @param { Float64 } x - The x-axis coordinate of the start point of the rectangle.
      * @param { Float64 } y - The y-axis coordinate of the start point of the rectangle.
      * @param { Float64 } w - Width of the rectangle.
      * @param { Float64 } h - Height of the rectangle.
-     * @relation rect(x: number, y: number, w: number, h: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rect(x: Float64, y: Float64, width: Float64, height: Float64): Unit {
@@ -1365,91 +1366,87 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Fills existing paths according to the current fill style.
      *
-     * @param { CanvasFillRule } fillRule - Algorithm rule.
-     * @relation fill(fillRule?: CanvasFillRule): void
+     * @param { ?CanvasFillRule } fillRule - Algorithm rule.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fill(fillRule!: CanvasFillRule = CanvasFillRule.NonZero): Unit {
+    public func fill(fillRule!: ?CanvasFillRule = None): Unit {
+        let tmpFillRule = fillRule ?? CanvasFillRule.NonZero
         unsafe {
-            var ruleStr = LibC.mallocCString(fillRule.getValue())
-            FfiOHOSAceFrameworkRenderingContextFillWithStr(this.getID(), ruleStr)
-            LibC.free(ruleStr)
+            try (ruleStr = LibC.mallocCString(tmpFillRule.getValue()).asResource()) {
+                FfiOHOSAceFrameworkRenderingContextFillWithStr(this.getID(), ruleStr.value)
+            }
         }
     }
 
     /**
-     * Fills the specified path according to the current fill style
+     * Fills the specified path according to the current fill style.
      *
-     * @param { Path2D } path - Path to be filled.
-     * @param { CanvasFillRule } fillRule - Algorithm rule.
-     * @relation fill(path: Path2D, fillRule?: CanvasFillRule): void
+     * @param { ?Path2D } path - Path to be filled.
+     * @param { ?CanvasFillRule } fillRule - Algorithm rule.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fill(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.NonZero): Unit {
+    public func fill(path: ?Path2D, fillRule!: ?CanvasFillRule = None): Unit {
+        let tmpPath = path ?? Path2D()
+        let tmpFillRule = fillRule ?? CanvasFillRule.NonZero
         unsafe {
-            var ruleStr = LibC.mallocCString(fillRule.getValue())
-            FfiOHOSAceFrameworkRenderingContextFillWithPath(this.getID(), path.getID(), ruleStr)
-            LibC.free(ruleStr)
+            try (ruleStr = LibC.mallocCString(tmpFillRule.getValue()).asResource()) {
+                FfiOHOSAceFrameworkRenderingContextFillWithPath(this.getID(), tmpPath.getID(), ruleStr.value)
+            }
         }
     }
 
     /**
-     * Sets the currently created path as the current clipping path
+     * Sets the currently created path as the current clipping path.
      *
-     * @param { CanvasFillRule } fillRule - Algorithm rule.
-     * @relation clip(fillRule?: CanvasFillRule): void
+     * @param { ?CanvasFillRule } fillRule - Algorithm rule.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func clip(fillRule!: CanvasFillRule = CanvasFillRule.NonZero): Unit {
+    public func clip(fillRule!: ?CanvasFillRule = None): Unit {
+        let tmpFillRule = fillRule ?? CanvasFillRule.NonZero
         unsafe {
-            var ruleStr = LibC.mallocCString(fillRule.getValue())
-            FfiOHOSAceFrameworkRenderingContextClipWithStr(this.getID(), ruleStr)
-            LibC.free(ruleStr)
+            try (ruleStr = LibC.mallocCString(tmpFillRule.getValue()).asResource()) {
+                FfiOHOSAceFrameworkRenderingContextClipWithStr(this.getID(), ruleStr.value)
+            }
         }
     }
 
     /**
-     * Tailoring according to the specified path
+     * Tailoring according to the specified path.
      *
-     * @param { Path2D } path - Path to be cut.
-     * @param { CanvasFillRule } fillRule - Algorithm rule.
-     * @relation clip(path: Path2D, fillRule?: CanvasFillRule): void
+     * @param { ?Path2D } path - Path to be cut.
+     * @param { ?CanvasFillRule } fillRule - Algorithm rule.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func clip(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.NonZero): Unit {
+    public func clip(path: ?Path2D, fillRule!: ?CanvasFillRule = None): Unit {
+        let tmpPath = path ?? Path2D()
+        let tmpFillRule = fillRule ?? CanvasFillRule.NonZero
         unsafe {
-            var ruleStr = LibC.mallocCString(fillRule.getValue())
-            FfiOHOSAceFrameworkRenderingContextClipWithPath(this.getID(), path.getID(), ruleStr)
-            LibC.free(ruleStr)
+            try (ruleStr = LibC.mallocCString(tmpFillRule.getValue()).asResource()) {
+                FfiOHOSAceFrameworkRenderingContextClipWithPath(this.getID(), tmpPath.getID(), ruleStr.value)
+            }
         }
     }
 
     /**
-     * Adds the effect of a rotation
+     * Adds the effect of a rotation.
      *
-     * @param { number } angle - The radian of clockwise rotation, which can be converted to an angle value using the formula:
+     * @param { Float64 } angle - The radian of clockwise rotation, which can be converted to an angle value using the formula:
      *    degree * Math.PI / 180
-     * @relation rotate(angle: number): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rotate(angle: Float64): Unit {
@@ -1461,13 +1458,11 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Increases the scaling effect of the X and Y axes.
      *
-     * @param { number } x - Horizontal scaling factor
-     * @param { number } y - Vertical scaling factor
-     * @relation scale(x: number, y: number): void
+     * @param { Float64 } x - Horizontal scaling factor.
+     * @param { Float64 } y - Vertical scaling factor.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scale(x: Float64, y: Float64): Unit {
@@ -1480,36 +1475,34 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * Adds the 2D transformation effect, including rotation, translation, and scaling,
      *    and overwrites the current transformation matrix.
      *
-     * @param { Float64 } scaleX - Horizontal Zoom
-     * @param { Float64 } skewX - Vertical Tilt
-     * @param { Float64 } skewY - Horizontal Tilt
-     * @param { Float64 } scaleY - Vertical Zoom
-     * @param { Float64 } translateX - Horizontal movement
-     * @param { Float64 } translateY - Vertical movement
-     * @relation transform(a: number, b: number, c: number, d: number, e: number, f: number): void
+     * @param { Float64 } a - Horizontal Zoom.
+     * @param { Float64 } b - Vertical Tilt.
+     * @param { Float64 } c - Horizontal Tilt.
+     * @param { Float64 } d - Vertical Zoom.
+     * @param { Float64 } e - Horizontal movement.
+     * @param { Float64 } f - Vertical movement.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func transform(
-        scaleX: Float64,
-        skewX: Float64,
-        skewY: Float64,
-        scaleY: Float64,
-        translateX: Float64,
-        translateY: Float64
+        a: Float64,
+        b: Float64,
+        c: Float64,
+        d: Float64,
+        e: Float64,
+        f: Float64
     ): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextTransform(
                 this.getID(),
-                scaleX,
-                scaleY,
-                skewX,
-                skewY,
-                translateX,
-                translateY
+                a,
+                b,
+                c,
+                d,
+                e,
+                f
             )
         }
     }
@@ -1517,36 +1510,34 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * Adds the 2D transformation effect, including rotation, translation, and scaling,
      *    and overwrites the current transformation matrix.
      *
-     * @param { Float64 } scaleX - Horizontal Zoom
-     * @param { Float64 } skewX - Vertical Tilt
-     * @param { Float64 } skewY - Horizontal Tilt
-     * @param { Float64 } scaleY - Vertical Zoom
-     * @param { Float64 } translateX - Horizontal movement
-     * @param { Float64 } translateY - Vertical movement
-     * @relation transform(a: number, b: number, c: number, d: number, e: number, f: number): void
+     * @param { Float64 } a - Horizontal Zoom.
+     * @param { Float64 } b - Vertical Tilt.
+     * @param { Float64 } c - Horizontal Tilt.
+     * @param { Float64 } d - Vertical Zoom.
+     * @param { Float64 } e - Horizontal movement.
+     * @param { Float64 } f - Vertical movement.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTransform(
-        scaleX: Float64,
-        skewX: Float64,
-        skewY: Float64,
-        scaleY: Float64,
-        translateX: Float64,
-        translateY: Float64
+        a: Float64,
+        b: Float64,
+        c: Float64,
+        d: Float64,
+        e: Float64,
+        f: Float64
     ): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextSetTransform(
                 this.getID(),
-                scaleX,
-                scaleY,
-                skewX,
-                skewY,
-                translateX,
-                translateY
+                a,
+                b,
+                c,
+                d,
+                e,
+                f
             )
         }
     }
@@ -1555,15 +1546,13 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * The 2D transformation effect is added. The current transformation matrix is not overwritten and
      *    the transformations are superimposed for multiple times.
      *
-     * @param { Matrix2D } transform - 2D transformation matrix.
-     * @relation setTransform(transform?: Matrix2D): void
+     * @param { ?Matrix2D } transform - 2D transformation matrix.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setTransform(matrix: Option<Matrix2D>): Unit {
+    public func setTransform(matrix: ?Matrix2D): Unit {
         match (matrix) {
             case Some(v) =>
                 unsafe {
@@ -1574,15 +1563,13 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Increases the translation effect of the X and Y axes
+     * Increases the translation effect of the X and Y axes.
      *
-     * @param { Float64 } x - Horizontal movement distance
-     * @param { Float64 } y - Vertical travel distance
-     * @relation translate(x: number, y: number): void
+     * @param { Float64 } x - Horizontal movement distance.
+     * @param { Float64 } y - Vertical travel distance.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func translate(x: Float64, y: Float64): Unit {
@@ -1592,13 +1579,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Top of the stack pop-up state in the drawing state stack
-     *
-     * @relation restore(): void
+     * Top of the stack pop-up state in the drawing state stack.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func restore(): Unit {
@@ -1608,13 +1592,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Saves the current drawing state to the drawing state stack
-     *
-     * @relation save(): void
+     * Saves the current drawing state to the drawing state stack.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func save(): Unit {
@@ -1624,18 +1605,16 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Creates a linear gradient object that is specified along the parameter coordinates
+     * Creates a linear gradient object that is specified along the parameter coordinates.
      *
      * @param { Float64 } x0 - The x-axis coordinate of the start point.
      * @param { Float64 } y0 - The y-axis coordinate of the start point.
      * @param { Float64 } x1 - x-axis coordinate of the end point.
      * @param { Float64 } y1 - y-axis coordinate of the end point.
      * @returns { CanvasGradient }
-     * @relation createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createLinearGradient(x0: Float64, y0: Float64, x1: Float64, y1: Float64): CanvasGradient {
@@ -1643,7 +1622,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Creates a radioactive gradient object based on parameters that determine the coordinates of two circles
+     * Creates a radioactive gradient object based on parameters that determine the coordinates of two circles.
      *
      * @param { Float64 } x0 - The x-axis coordinate of the start circle.
      * @param { Float64 } y0 - The y-axis coordinate of the start circle.
@@ -1652,11 +1631,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { Float64 } y1 - The y-axis coordinate of the end circle.
      * @param { Float64 } r1 - Radius of the end circle.
      * @returns { CanvasGradient }
-     * @relation createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createRadialGradient(x0: Float64, y0: Float64, r0: Float64, x1: Float64, y1: Float64, r1: Float64): CanvasGradient {
@@ -1666,103 +1643,95 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Creates a gradient around a point with given coordinates.
      *
-     * @param { Float64 } startAngle - The angle at which to begin the gradient, in radians.
-     *                   Angle measurements start horizontally the right of the center and move around clockwise.
-     * @param { Float64 } x - The x-axis coordinate of the center of the gradient.
-     * @param { Float64 } y - The y-axis coordinate of the center of the gradient.
+     * @param { ?Float64 } startAngle - The angle at which to begin the gradient, in radians.
+     *   Angle measurements start horizontally the right of the center and move around clockwise.
+     * @param { ?Float64 } x - The x-axis coordinate of the center of the gradient.
+     * @param { ?Float64 } y - The y-axis coordinate of the center of the gradient.
      * @returns { CanvasGradient } A CanvasGradient object that draws a conic gradient around the given coordinates.
-     * @relation createConicGradient(startAngle: number, x: number, y: number): CanvasGradient
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func createConicGradient(startAngle: Float64, x: Float64, y: Float64): CanvasGradient {
+    public func createConicGradient(startAngle: ?Float64, x: ?Float64, y: ?Float64): CanvasGradient {
         unsafe {
-            let gradientId = FfiOHOSAceFrameworkRenderingContextCreateConicGradient(this.getID(), startAngle, x, y)
+            let gradientId = FfiOHOSAceFrameworkRenderingContextCreateConicGradient(this.getID(), startAngle ?? 0.0, x ?? 0.0, y ?? 0.0)
             return CanvasGradient(gradientId)
         }
     }
 
     /**
-     * Draw an image on a canvas
+     * Draw an image on a canvas.
      *
      * @param { ImageBitmap } image - Picture objects drawn to the canvas.
-     * @param { Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
-     * @param { Float64 } dy - y-axis coordinate of the upper left corner of the image on the target canvas.
-     * @relation drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
+     * @param { ?Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
+     * @param { ?Float64 } dy - y-axis coordinate of the upper left corner of the image on the target canvas.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func drawImage(image: ImageBitmap, dx: Float64, dy: Float64): Unit {
+    public func drawImage(image: ImageBitmap, dx: ?Float64, dy: ?Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithImageBitMap(
                 this.getID(),
                 image.getID(),
-                ImageInfo(CanvasImageType.CoordinatesOnly.getValue(), 0.0, 0.0, 0.0, 0.0, dx, dy, image.width,
+                ImageInfo(CanvasImageType.CoordinatesOnly.getValue(), 0.0, 0.0, 0.0, 0.0, dx ?? 0.0, dy ?? 0.0, image.width,
                     image.height)
             )
         }
     }
 
     /**
-     * Draw an image on a canvas
+     * Draw an image on a canvas.
      *
      * @param { ImageBitmap } image - Picture objects drawn to the canvas.
-     * @param { Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
-     * @param { Float64 } dy - y-axis coordinate of the upper left corner of the image on the target canvas.
-     * @param { Float64 } dw - Specifies the drawing width of the image on the target canvas. The width of the drawn image will be scaled.
-     * @param { Float64 } dh - Specifies the drawing height of the image on the target canvas. The height of the drawn image will be scaled.
-     * @relation drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void
+     * @param { ?Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
+     * @param { ?Float64 } dy - y-axis coordinate of the upper left corner of the image on the target canvas.
+     * @param { ?Float64 } dw - Specifies the drawing width of the image on the target canvas. The width of the drawn image will be scaled.
+     * @param { ?Float64 } dh - Specifies the drawing height of the image on the target canvas. The height of the drawn image will be scaled.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func drawImage(image: ImageBitmap, dx: Float64, dy: Float64, dWidth: Float64, dHeight: Float64): Unit {
+    public func drawImage(image: ImageBitmap, dx: ?Float64, dy: ?Float64, dw: ?Float64, dh: ?Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithImageBitMap(
                 this.getID(),
                 image.getID(),
-                ImageInfo(CanvasImageType.CoordinatesAndSize.getValue(), 0.0, 0.0, 0.0, 0.0, dx, dy, dWidth, dHeight)
+                ImageInfo(CanvasImageType.CoordinatesAndSize.getValue(), 0.0, 0.0, 0.0, 0.0, dx ?? 0.0, dy ?? 0.0, dw ?? 0.0, dh ?? 0.0)
             )
         }
     }
 
     /**
-     *Draw an image on a canvas
+     *Draw an image on a canvas.
      *
      * @param { ImageBitmap } image - Picture objects drawn to the canvas.
-     * @param { Float64 } sx - x coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
-     * @param { Float64 } sy - y coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
-     * @param { Float64 } sw - Width of the rectangle (cropping) selection box of the image.
-     * @param { Float64 } sh - Height of the rectangle (cropping) selection box of the image.
-     * @param { Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
-     * @param { Float64 } dy - y-axis coordinate of the upper left corner of the image on the target canvas.
-     * @param { Float64 } dw - Specifies the drawing width of the image on the target canvas. The width of the drawn image will be scaled.
-     * @param { Float64 } dh - Specifies the drawing height of the image on the target canvas. The height of the drawn image will be scaled.
-     * @relation drawImage(image: ImageBitmap | PixelMap, sx: number, sy: number,sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): void
+     * @param { Float64 } ?sx - x coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
+     * @param { Float64 } ?sy - y coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
+     * @param { Float64 } ?sw - Width of the rectangle (cropping) selection box of the image.
+     * @param { Float64 } ?sh - Height of the rectangle (cropping) selection box of the image.
+     * @param { Float64 } ?dx - x-axis coordinate of the upper left corner of the image on the target canvas.
+     * @param { Float64 } ?dy - y-axis coordinate of the upper left corner of the image on the target canvas.
+     * @param { Float64 } ?dw - Specifies the drawing width of the image on the target canvas. The width of the drawn image will be scaled.
+     * @param { Float64 } ?dh - Specifies the drawing height of the image on the target canvas. The height of the drawn image will be scaled.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func drawImage(
         image: ImageBitmap,
-        sx: Float64,
-        sy: Float64,
-        sWidth: Float64,
-        sHeight: Float64,
-        dx: Float64,
-        dy: Float64,
-        dWidth: Float64,
-        dHeight: Float64
+        sx: ?Float64,
+        sy: ?Float64,
+        sw: ?Float64,
+        sd: ?Float64,
+        dx: ?Float64,
+        dy: ?Float64,
+        dw: ?Float64,
+        dh: ?Float64
     ): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithImageBitMap(
@@ -1770,111 +1739,105 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
                 image.getID(),
                 ImageInfo(
                     CanvasImageType.CoordinatesAndSizeWithSource.getValue(),
-                    sx,
-                    sy,
-                    sWidth,
-                    sHeight,
-                    dx,
-                    dy,
-                    dWidth,
-                    dHeight
+                    sx ?? 0.0,
+                    sy ?? 0.0,
+                    sw ?? 0.0,
+                    sd ?? 0.0,
+                    dx ?? 0.0,
+                    dy ?? 0.0,
+                    dw ?? 0.0,
+                    dh ?? 0.0
                 )
             )
         }
     }
 
     /**
-     * Draw an image on a canvas
+     * Draw an image on a canvas.
      *
      * @param { PixelMap } image - Picture objects drawn to the canvas.
-     * @param { Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
-     * @param { Float64 } dy - y-axis coordinate of the upper left corner of the image on the target canvas.
-     * @relation drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
+     * @param { ?Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
+     * @param { ?Float64 } dy - y-axis coordinate of the upper left corner of the image on the target canvas.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func drawImage(pixelMap: PixelMap, dx: Float64, dy: Float64): Unit {
+    public func drawImage(image: PixelMap, dx: ?Float64, dy: ?Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithPixelMap(
                 this.getID(),
-                pixelMap.getID(),
-                ImageInfo(CanvasImageType.CoordinatesOnly.getValue(), 0.0, 0.0, 0.0, 0.0, dx, dy, 0.0, 0.0)
+                image.getID(),
+                ImageInfo(CanvasImageType.CoordinatesOnly.getValue(), 0.0, 0.0, 0.0, 0.0, dx ?? 0.0, dy ?? 0.0, 0.0, 0.0)
             )
         }
     }
 
     /**
-     * Draw an image on a canvas
+     * Draw an image on a canvas.
      *
      * @param { PixelMap } image - Picture objects drawn to the canvas.
-     * @param { Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
-     * @param { Float64 } dy - y-axis coordinate of the upper left corner of the image on the target canvas.
-     * @param { Float64 } dw - Specifies the drawing width of the image on the target canvas. The width of the drawn image will be scaled.
-     * @param { Float64 } dh - Specifies the drawing height of the image on the target canvas. The height of the drawn image will be scaled.
-     * @relation drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void
+     * @param { ?Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
+     * @param { ?Float64 } dy - y-axis coordinate of the upper left corner of the image on the target canvas.
+     * @param { ?Float64 } dw - Specifies the drawing width of the image on the target canvas. The width of the drawn image will be scaled.
+     * @param { ?Float64 } dh - Specifies the drawing height of the image on the target canvas. The height of the drawn image will be scaled.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func drawImage(pixelMap: PixelMap, dx: Float64, dy: Float64, dWidth: Float64, dHeight: Float64): Unit {
+    public func drawImage(image: PixelMap, dx: ?Float64, dy: ?Float64, dw: ?Float64, dh: ?Float64): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithPixelMap(
                 this.getID(),
-                pixelMap.getID(),
-                ImageInfo(CanvasImageType.CoordinatesAndSize.getValue(), 0.0, 0.0, 0.0, 0.0, dx, dy, dWidth, dHeight)
+                image.getID(),
+                ImageInfo(CanvasImageType.CoordinatesAndSize.getValue(), 0.0, 0.0, 0.0, 0.0, dx ?? 0.0, dy ?? 0.0, dw ?? 0.0, dh ?? 0.0)
             )
         }
     }
 
     /**
-     *Draw an image on a canvas
+     * Draw an image on a canvas.
      *
      * @param { PixelMap } image - Picture objects drawn to the canvas.
-     * @param { Float64 } sx - x coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
-     * @param { Float64 } sy - y coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
-     * @param { Float64 } sw - Width of the rectangle (cropping) selection box of the image.
-     * @param { Float64 } sh - Height of the rectangle (cropping) selection box of the image.
-     * @param { Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
-     * @param { Float64 } dy - y-axis coordinate of the upper left corner of the image on the target canvas.
-     * @param { Float64 } dw - Specifies the drawing width of the image on the target canvas. The width of the drawn image will be scaled.
-     * @param { Float64 } dh - Specifies the drawing height of the image on the target canvas. The height of the drawn image will be scaled.
-     * @relation drawImage(image: ImageBitmap | PixelMap, sx: number, sy: number,sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): void
+     * @param { ?Float64 } sx - x coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
+     * @param { ?Float64 } sy - y coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
+     * @param { ?Float64 } sw - Width of the rectangle (cropping) selection box of the image.
+     * @param { ?Float64 } sh - Height of the rectangle (cropping) selection box of the image.
+     * @param { ?Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
+     * @param { ?Float64 } dy - y-axis coordinate of the upper left corner of the image on the target canvas.
+     * @param { ?Float64 } dw - Specifies the drawing width of the image on the target canvas. The width of the drawn image will be scaled.
+     * @param { ?Float64 } dh - Specifies the drawing height of the image on the target canvas. The height of the drawn image will be scaled.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func drawImage(
-        pixelMap: PixelMap,
-        sx: Float64,
-        sy: Float64,
-        sWidth: Float64,
-        sHeight: Float64,
-        dx: Float64,
-        dy: Float64,
-        dWidth: Float64,
-        dHeight: Float64
+        image: PixelMap,
+        sx: ?Float64,
+        sy: ?Float64,
+        sw: ?Float64,
+        sd: ?Float64,
+        dx: ?Float64,
+        dy: ?Float64,
+        dw: ?Float64,
+        dh: ?Float64
     ): Unit {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextDrawImageWithPixelMap(
                 this.getID(),
-                pixelMap.getID(),
+                image.getID(),
                 ImageInfo(
                     CanvasImageType.CoordinatesAndSizeWithSource.getValue(),
-                    sx,
-                    sy,
-                    sWidth,
-                    sHeight,
-                    dx,
-                    dy,
-                    dWidth,
-                    dHeight
+                    sx ?? 0.0,
+                    sy ?? 0.0,
+                    sw ?? 0.0,
+                    sd ?? 0.0,
+                    dx ?? 0.0,
+                    dy ?? 0.0,
+                    dw ?? 0.0,
+                    dh ?? 0.0
                 )
             )
         }
@@ -1883,26 +1846,24 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Obtains the PixelMap of a specified area on the current canvas.
      *
-     * @param { Float64 } sx - x coordinate of the upper left corner of the rectangular area of the PixelMap to be extracted.
-     * @param { Float64 } sy - y coordinate of the upper left corner of the rectangular area of the PixelMap to be extracted.
-     * @param { Float64 } sw - The width of the rectangular area of the PixelMap to be extracted.
-     * @param { Float64 } sh - The height of the rectangular area of the PixelMap to be extracted.
+     * @param { ?Float64 } sx - x coordinate of the upper left corner of the rectangular area of the PixelMap to be extracted.
+     * @param { ?Float64 } sy - y coordinate of the upper left corner of the rectangular area of the PixelMap to be extracted.
+     * @param { ?Float64 } sw - The width of the rectangular area of the PixelMap to be extracted.
+     * @param { ?Float64 } sh - The height of the rectangular area of the PixelMap to be extracted.
      * @returns { PixelMap }
-     * @relation getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func getPixelMap(left: Float64, top: Float64, width: Float64, height: Float64): PixelMap {
+    public func getPixelMap(sx: ?Float64, sy: ?Float64, sw: ?Float64, sh: ?Float64): PixelMap {
         let id = unsafe {
             FfiOHOSAceFrameworkRenderingContextGetPixelMap(
                 this.getID(),
-                left,
-                top,
-                width,
-                height
+                sx ?? 0.0,
+                sy ?? 0.0,
+                sw ?? 0.0,
+                sh ?? 0.0
             )
         }
         return PixelMap(id)
@@ -1910,12 +1871,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Clear the backing buffer, drawing state stack, any defined paths, and styles.
-     *
-     * @relation reset(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func reset(): Unit {
@@ -1926,12 +1884,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Allocate a layer for subsequent drawing.
-     *
-     * @relation saveLayer(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func saveLayer(): Unit {
@@ -1942,12 +1897,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * Remove changes to transform and clip since saveLayer was last called and draw the layer on canvas.
-     *
-     * @relation restoreLayer(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func restoreLayer(): Unit {
@@ -1957,13 +1909,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Resets the current transformation matrix using the identity matrix
-     *
-     * @relation resetTransform(): void
+     * Resets the current transformation matrix using the identity matrix.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func resetTransform(): Unit {
@@ -1976,11 +1925,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * Obtains the currently applied transformation matrix.
      *
      * @returns { Matrix2D }
-     * @relation getTransform(): Matrix2D
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getTransform(): Matrix2D {
@@ -1993,28 +1940,24 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * transfer ImageBitmap to content.
      *
-     * @param { ImageBitmap } bitmap
-     * @relation transferFromImageBitmap(bitmap: ImageBitmap): void
+     * @param { ?ImageBitmap } bitmap
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func transferFromImageBitmap(bitmap: ImageBitmap): Unit {
+    public func transferFromImageBitmap(bitmap: ?ImageBitmap): Unit {
+        let tmpBitmap = bitmap ?? ImageBitmap("")
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextTransferFromImageBitmap(this.getID(), bitmap.getID())
+            FfiOHOSAceFrameworkRenderingContextTransferFromImageBitmap(this.getID(), tmpBitmap.getID())
         }
     }
 
     /**
      * The default value is 0, which is bound to the height of the specified canvas. The value is read-only.
-     *
-     * @relation readonly height: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop height: Float64 {
@@ -2027,12 +1970,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
 
     /**
      * The default value is 0, which is bound to the width of the specified canvas. The value is read-only.
-     *
-     * @relation readonly width: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop width: Float64 {
@@ -2046,16 +1986,14 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Set a PixelMap to the current context. The drawing content is synchronized to the PixelMap.
      *
-     * @param { PixelMap } value - PixelMap object
-     * @relation setPixelMap(value?: PixelMap): void
+     * @param { ?PixelMap } value - PixelMap object
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setPixelMap(pixelMap: Option<PixelMap>): Unit {
-        match (pixelMap) {
+    public func setPixelMap(value: ?PixelMap): Unit {
+        match (value) {
             case Some(v) =>
                 unsafe {
                     FfiOHOSAceFrameworkRenderingContextSetPixelMap(
@@ -2071,11 +2009,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * Gets the current segment style.
      *
      * @returns { Array<Float64> }
-     * @relation getLineDash(): number[]
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getLineDash(): Array<Float64> {
@@ -2090,51 +2026,59 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Generate a character string in the data url format.
      *
-     * @param { String } type - Image format. The default value is image/png.
-     * @param { Float64 } quality - If the image format is image/jpeg or image/webp, you can select the image quality from 0 to 1.
+     * @param { ?String } type - Image format. The default value is image/png.
+     * @param { ?Float64 } quality - If the image format is image/jpeg or image/webp, you can select the image quality from 0 to 1.
      *    If the value is out of the range, the default value 0.92 is used.
      * @returns { String }
-     * @relation toDataURL(type?: string, quality?: any): string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func toDataURL(imageType!: ImageType = ImageType.Png, quality!: Float64 = 0.92): String {
+    public func toDataURL(imageType!: ?String = None, quality!: ?Float64 = None): String {
+        var tmpImageType = imageType ?? "image/png"
+        let tmpQuality = quality ?? 0.92
         unsafe {
-            let typeStr = LibC.mallocCString(imageType.getValue())
-            var actuaQua: Float64 = 0.0
-            if (quality < 0.0 || quality > 1.0) {
-                actuaQua = 0.92
-            } else {
-                actuaQua = quality
+            var realType = "image/png"
+            if (
+                tmpImageType == ImageType.Png.getValue() ||
+                tmpImageType == ImageType.Jpeg.getValue() ||
+                tmpImageType == ImageType.Webp.getValue()
+            ) {
+                realType = tmpImageType
             }
 
-            let dataUrl = FfiOHOSAceFrameworkRenderingContextToDataURL(this.getID(), typeStr, actuaQua)
-            let result = dataUrl.toString()
-            LibC.free(typeStr)
-            dataUrl.free()
+            var actuaQua: Float64 = 0.0
+            if (tmpQuality < 0.0 || tmpQuality > 1.0) {
+                actuaQua = 0.92
+            } else {
+                actuaQua = tmpQuality
+            }
+
+            var result = ""
+            try (typeStr = LibC.mallocCString(realType).asResource()) {
+                let dataUrl = FfiOHOSAceFrameworkRenderingContextToDataURL(this.getID(), typeStr.value, actuaQua)
+                result = dataUrl.toString()
+                dataUrl.free()
+            }
             return result
         }
     }
 
     /**
-   * Creates a new, empty ImageData object of the specified size
-   *
-   * @param { Float64 } sw - Width of the ImageData object.
-   * @param { Float64 } sh - Height of the ImageData object.
-   * @returns { ImageData }
-   * @relation createImageData(sw: number, sh: number): ImageData
-   */
+     * Creates a new, empty ImageData object of the specified size.
+     *
+     * @param { ?Float64 } sw - Width of the ImageData object.
+     * @param { ?Float64 } sh - Height of the ImageData object.
+     * @returns { ImageData }
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func createImageData(sw: Float64, sh: Float64): ImageData {
+    public func createImageData(sw: ?Float64, sh: ?Float64): ImageData {
         unsafe {
-            let imageDataId = FfiOHOSAceFrameworkRenderingContextCreateImageData(this.getID(), sh, sw)
+            let imageDataId = FfiOHOSAceFrameworkRenderingContextCreateImageData(this.getID(), sh ?? 0.0, sw ?? 0.0)
             return ImageData(imageDataId)
         }
     }
@@ -2143,19 +2087,18 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * From an existing ImageData object, copy an object with the same width and height as the image.
      *    The image content is not copied.
      *
-     * @param { ImageData } imagedata - ImageData object to be copied.
+     * @param { ?ImageData } imagedata - ImageData object to be copied.
      * @returns { ImageData }
-     * @relation createImageData(imagedata: ImageData): ImageData
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func createImageData(imageData: ImageData): ImageData {
+    public func createImageData(imageData: ?ImageData): ImageData {
+        let tmpImageData = imageData ?? ImageData(0.0, 0.0)
         unsafe {
             let imageDataId = FfiOHOSAceFrameworkRenderingContextCreateImageDataWithImageData(this.getID(),
-                imageData.getID())
+                tmpImageData.getID())
             return ImageData(imageDataId)
         }
     }
@@ -2163,78 +2106,87 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Obtains the pixel data of a specified area on the current canvas.
      *
-     * @param { Float64 } sx - x coordinate of the upper left corner of the rectangular area of the image data to be extracted.
-     * @param { Float64 } sy - y coordinate of the upper left corner of the rectangular area of the image data to be extracted.
-     * @param { Float64 } sw - The width of the rectangular area of the image data to be extracted.
-     * @param { Float64 } sh - The height of the rectangular area of the image data to be extracted.
+     * @param { ?Float64 } sx - x coordinate of the upper left corner of the rectangular area of the image data to be extracted.
+     * @param { ?Float64 } sy - y coordinate of the upper left corner of the rectangular area of the image data to be extracted.
+     * @param { ?Float64 } sw - The width of the rectangular area of the image data to be extracted.
+     * @param { ?Float64 } sh - The height of the rectangular area of the image data to be extracted.
      * @returns { ImageData }
-     * @relation getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func getImageData(sx: Float64, sy: Float64, sw: Float64, sh: Float64): ImageData {
+    public func getImageData(sx: ?Float64, sy: ?Float64, sw: ?Float64, sh: ?Float64): ImageData {
         unsafe {
-            let imageDataId = FfiOHOSAceFrameworkRenderingContextGetImageData(this.getID(), sx, sy, sw, sh)
+            let imageDataId = FfiOHOSAceFrameworkRenderingContextGetImageData(this.getID(), sx ?? 0.0, sy ?? 0.0, sw ?? 0.0, sh ?? 0.0)
             return ImageData(imageDataId)
         }
     }
 
     /**
-     * Draws the specified ImageData object onto the canvas
+     * Draws the specified ImageData object onto the canvas.
      *
      * @param { ImageData } imagedata - ImageData object to be drawn.
      * @param { Length } dx - Position offset of the source image data in the target canvas (the offset in the x-axis direction).
      * @param { Length } dy - Position offset of the source image data in the target canvas (the offset in the y-axis direction).
-     * @relation putImageData(imagedata: ImageData, dx: number | string, dy: number | string): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func putImageData(imageData: ImageData, dx: Length, dy: Length): Unit {
-        // TODO
-        // unsafe {
-        //     FfiOHOSAceFrameworkRenderingContextPutImageData(this.getID(), imageData.getID(), dx, dy)
-        // }
+        var realDx: Float64 = 0.0
+        var realDy: Float64 = 0.0
+        realDx = parseLength2Vp(dx)
+        realDy = parseLength2Vp(dy)
+        unsafe {
+            FfiOHOSAceFrameworkRenderingContextPutImageData(this.getID(), imageData.getID(), realDx, realDy)
+        }
     }
 
     /**
-     * Draws the specified ImageData object onto the canvas
+     * Draws the specified ImageData object onto the canvas.
      *
      * @param { ImageData } imagedata - ImageData object to be drawn.
-     * @param { number | string } dx - Position offset of the source image data in the target canvas (the offset in the x-axis direction).
-     * @param { number | string } dy - Position offset of the source image data in the target canvas (the offset in the y-axis direction).
-     * @param { number | string } dirtyX - Position of the upper left corner of the rectangular area in the source image data.
+     * @param { ?Length } dx - Position offset of the source image data in the target canvas (the offset in the x-axis direction).
+     * @param { ?Length } dy - Position offset of the source image data in the target canvas (the offset in the y-axis direction).
+     * @param { ?Length } dirtyX - Position of the upper left corner of the rectangular area in the source image data.
      *    The default is the upper left corner (x coordinate) of the entire image data.
-     * @param { number | string } dirtyY - Position of the upper left corner of the rectangular area in the source image data.
+     * @param { ?Length } dirtyY - Position of the upper left corner of the rectangular area in the source image data.
      *    The default is the upper left corner (y coordinate) of the entire image data.
-     * @param { number | string } dirtyWidth - Width of the rectangular area in the source image data.
+     * @param { ?Length } dirtyWidth - Width of the rectangular area in the source image data.
      *    The default is the width of the image data.
-     * @param { number | string } dirtyHeight - Height of the rectangular area in the source image data.
+     * @param { ?Length } dirtyHeight - Height of the rectangular area in the source image data.
      *    The default is the height of the image data.
-     * @relation putImageData(imagedata: ImageData, dx: number | string, dy: number | string, dirtyX: number | string, dirtyY: number | string, dirtyWidth: number | string, dirtyHeight: number | string): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func putImageData(
         imageData: ImageData,
-        dx: Float64,
-        dy: Float64,
-        dirtyX: Float64,
-        dirtyY: Float64,
-        dirtyWidth: Float64,
-        dirtyHeight: Float64
+        dx: ?Length,
+        dy: ?Length,
+        dirtyX: ?Length,
+        dirtyY: ?Length,
+        dirtyWidth: ?Length,
+        dirtyHeight: ?Length
     ): Unit {
+        var realDx: Float64 = 0.0
+        var realDy: Float64 = 0.0
+        var realDirtyX: Float64 = 0.0
+        var realDirtyY: Float64 = 0.0
+        var realDirtyWidth: Float64 = 0.0
+        var realDirtyHeight: Float64 = 0.0
+        realDx = parseLength2Vp(dx ?? 0.0)
+        realDy = parseLength2Vp(dy ?? 0.0)
+        realDirtyX = parseLength2Vp(dirtyX ?? 0.0)
+        realDirtyY = parseLength2Vp(dirtyY ?? 0.0)
+        realDirtyWidth = parseLength2Vp(dirtyWidth ?? 0.0)
+        realDirtyHeight = parseLength2Vp(dirtyHeight ?? 0.0)
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextPutImageDataWithDirty(this.getID(), imageData.getID(), dx, dy, dirtyX,
-                dirtyY, dirtyWidth, dirtyHeight)
+            FfiOHOSAceFrameworkRenderingContextPutImageDataWithDirty(this.getID(), imageData.getID(), realDx, realDy, realDirtyX,
+                realDirtyY, realDirtyWidth, realDirtyHeight)
         }
     }
 }

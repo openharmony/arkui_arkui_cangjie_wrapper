@@ -18,26 +18,32 @@
 package ohos.arkui.state_management
 
 import ohos.labels.APILevel
+
 import std.collection.*
 
 func isEqual<T>(value: T, newValue: T): Bool {
     newValue is Equatable<T> && (newValue as Equatable<T>).getOrThrow() == value
 }
 
+/**
+ * Defines class ObservedProperty.
+ */
 @!APILevel[
-    21,
-    atomicservice: true,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     private var internalValue: T
     private let subProps_ = ArrayList<ObservedProperty<T>>()
 
+    /**
+     * ObservedPropertyAbstract constructor.
+     *
+     * @param { String } info
+     * @param { T } initValue
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(info: String, initValue: T) {
@@ -60,10 +66,13 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         }
     }
 
+    /**
+     * Gets the current value of the observed property. And record the dependency elements that need to be updated.
+     *
+     * @returns { T } The current value of the property.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get(): T {
@@ -71,20 +80,19 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         this.internalValue
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func getInner(): T {
+    protected func getInner(): T {
         this.internalValue
     }
 
+    /**
+     * Sets a new value for the observed property. Enable observers to receive updated information whenever state variables change.
+     * If the new value is equal to the current value, no changes will be made.
+     * Otherwise, it updates the value and notifies all subscribers of the change.
+     *
+     * @param { T } newValue - The new value to set.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func set(newValue: T): Unit {
@@ -98,10 +106,14 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         }
     }
 
+    /**
+     * Subscribes an observer to this property and its nested observed objects.
+     * The observer will be notified when the property value changes.
+     *
+     * @param { Observer } observer - The observer to subscribe.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func subscribeEx(observer: Observer) {
@@ -115,10 +127,13 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         }
     }
 
+    /**
+     * Unsubscribes an observer from this property and its nested observed objects.
+     *
+     * @param { Observer } observer - The observer to unsubscribe.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func unsubscribeEx(observer: Observer) {
@@ -131,10 +146,14 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         }
     }
 
+    /**
+     * Creates a new property that shares the same value as this property.
+     *
+     * @param { String } info - Information about the new property.
+     * @returns { ObservedProperty<T> } A new ObservedProperty instance sharing the same value.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createProp(info: String): ObservedProperty<T> {

@@ -25,29 +25,35 @@ import std.deriving.Derive
  * Defines the length property.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface Length {
+    /**
+     * The value of length property.
+     * @throws { BusinessException } 100001 - Internal error.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop value: Float64 {
         get() {
-            throw BusinessException(10000, "Current type not support get 'value' attribute")
+            throw BusinessException(100001, "Internal error.")
         }
     }
+
+    /**
+     * The unit of length property.
+     * @throws { BusinessException } 100001 - Internal error.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    prop unitType: LengthType {
+    prop unitType: LengthUnit {
         get() {
-            throw BusinessException(10000, "Current type not support get 'unitType' attribute")
+            throw BusinessException(100001, "Internal error.")
         }
     }
 }
@@ -56,290 +62,271 @@ public interface Length {
  * Defines the length property.
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface LengthProp {
     /**
      * Defines the length property in units of px.
-     *
-     * @relation declare type PX = `${number}px`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop px: Length
     /**
      * Defines the length property in units of vp.
-     *
-     * @relation declare type VP = `${number}vp` | number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop vp: Length
     /**
      * Defines the length property in units of fp.
-     *
-     * @relation declare type FP = `${number}fp`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop fp: Length
     /**
      * Defines the length property in units of percent.
      *
-     * @relation declare type Percentage = `${number}%`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop percent: Length
     /**
      * Defines the length property in units of lpx.
-     *
-     * @relation declare type LPX = `${number}lpx`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop lpx: Length
 }
 
 /**
- * Defines the dimension property with number with units(vp|px|fp|lpx|%)
- *
- * @relation declare type Dimension = PX | VP | FP | LPX | Percentage | Resource
+ * Defines class LengthMetrics.
+ */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class LengthMetrics <: Length {
+    let realValue: Float64
+    let realUnit: LengthUnit
+
+    /**
+     * LengthMetrics constructor.
+     *
+     * @param { Float64 } value
+     * @param { LengthUnit } unit
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(value: Float64, unit!: LengthUnit = LengthUnit.Vp) {
+        this.realValue = value
+        this.realUnit = unit
+    }
+
+    /**
+    * Defines the value.
+    */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public prop value: Float64 {
+        get() {
+            return realValue
+        }
+    }
+
+    /**
+    * Defines the unit.
+    */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public prop unitType: LengthUnit {
+        get() {
+            return realUnit
+        }
+    }
+}
+/**
+ * Defines the dimension property with number with units(vp|px|fp|lpx|%).
  */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public enum LengthType <: Length {
+public enum LengthUnit {
     /**
      * Defines the length property in units of px.
-     *
-     * @relation declare type PX = `${number}px`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    px(Float64)
+    Px
     /**
      * Defines the length property in units of vp.
-     *
-     * @relation declare type VP = `${number}vp` | number
      */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    vp(Float64)
+    Vp
     /**
      * Defines the length property in units of fp.
-     *
-     * @relation declare type FP = `${number}fp`
      */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    fp(Float64)
+    Fp
     /**
      * Defines the length property in units of percent.
-     *
-     * @relation declare type Percentage = `${number}%`
      */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    percent(Float64)
+    Percent
     /**
      * Defines the length property in units of lpx.
-     *
-     * @relation declare type LPX = `${number}lpx`
      */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    lpx(Float64)
+    Lpx
     | ...
 
+    /**
+     * Get the length property of number value.
+     *
+     * @returns { Int32 }
+     * @throws { BussnessException } - 100001 - Internal error.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getValue(): Int32 {
         match (this) {
-            case px(v) => 0
-            case vp(v) => 1
-            case fp(v) => 2
-            case percent(v) => 3
-            case lpx(v) => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case Px => 0
+            case Vp => 1
+            case Fp => 2
+            case Percent => 3
+            case Lpx => 4
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
+    /**
+     * Parse the length number value to LengthUnit type.
+     *
+     * @param { Int32 } value
+     * @returns { LengthUnit }
+     * @throws { BussnessException } - 100001 - Internal error.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func parse(value: Int32): LengthType {
+    public static func parse(value: Int32): LengthUnit {
         match (value) {
-            case 0 => px(Float64(value))
-            case 1 => vp(Float64(value))
-            case 2 => fp(Float64(value))
-            case 3 => percent(Float64(value))
-            case 4 => lpx(Float64(value))
-            case _ => vp(Float64(value))
-        }
-    }
-
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public prop value: Float64 {
-        get() {
-            match (this) {
-                case px(v) => v
-                case vp(v) => v
-                case fp(v) => v
-                case percent(v) => v
-                case lpx(v) => v
-                case _ => throw IllegalArgumentException("The type is not supported.")
-            }
-        }
-    }
-
-    @!APILevel[
-        21,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public prop unitType: LengthType {
-        get() {
-            this
+            case 0 => LengthUnit.Px
+            case 1 => LengthUnit.Vp
+            case 2 => LengthUnit.Fp
+            case 3 => LengthUnit.Percent
+            case 4 => LengthUnit.Lpx
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
 
-/**
- * Defines the Float64 which can use Length.
- *
- * @relation declare type Length = string | number | Resource
- */
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 extend Float64 <: LengthProp & Length {
     /**
      * Defines the length property in units of px.
-     *
-     * @relation declare type PX = `${number}px`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop px: Length {
         get() {
-            LengthType.px(this)
+            LengthMetrics(this, unit: LengthUnit.Px)
         }
     }
 
     /**
      * Defines the length property in units of vp.
-     *
-     * @relation declare type VP = `${number}vp` | number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop vp: Length {
         get() {
-            LengthType.vp(this)
+            LengthMetrics(this, unit: LengthUnit.Vp)
         }
     }
 
     /**
      * Defines the length property in units of fp.
-     *
-     * @relation declare type FP = `${number}fp`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop fp: Length {
         get() {
-            LengthType.fp(this)
+            LengthMetrics(this, unit: LengthUnit.Fp)
         }
     }
 
     /**
      * Defines the length property in units of percent.
-     *
-     * @relation declare type Percentage = `${number}%`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop percent: Length {
         get() {
-            LengthType.percent(this / 100.0)
+            LengthMetrics(this / 100.0, unit: LengthUnit.Percent)
         }
     }
 
     /**
      * Defines the length property in units of lpx.
-     *
-     * @relation declare type LPX = `${number}lpx`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop lpx: Length {
         get() {
-            LengthType.lpx(this)
+            LengthMetrics(this, unit: LengthUnit.Lpx)
         }
     }
+
+    /**
+     * Defines the value.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop value: Float64 {
@@ -347,107 +334,87 @@ extend Float64 <: LengthProp & Length {
             this
         }
     }
+
+    /**
+     * Defines the unit.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public prop unitType: LengthType {
+    public prop unitType: LengthUnit {
         get() {
-            LengthType.vp(Float64(this))
+            LengthUnit.Vp
         }
     }
 }
 
-/**
- * Defines the Int64 which can use Length.
- *
- * @relation declare type Length = string | number | Resource
- */
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 extend Int64 <: LengthProp & Length {
     /**
      * Defines the length property in units of px.
-     *
-     * @relation declare type PX = `${number}px`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop px: Length {
         get() {
-            LengthType.px(Float64(this))
+            LengthMetrics(Float64(this), unit: LengthUnit.Px)
         }
     }
     /**
      * Defines the length property in units of vp.
-     *
-     * @relation declare type VP = `${number}vp` | number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop vp: Length {
         get() {
-            LengthType.vp(Float64(this))
+            LengthMetrics(Float64(this), unit: LengthUnit.Vp)
         }
     }
     /**
      * Defines the length property in units of fp.
-     *
-     * @relation declare type FP = `${number}fp`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop fp: Length {
         get() {
-            LengthType.fp(Float64(this))
+            LengthMetrics(Float64(this), unit: LengthUnit.Fp)
         }
     }
     /**
      * Defines the length property in units of percent.
-     *
-     * @relation declare type Percentage = `${number}%`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop percent: Length {
         get() {
-            LengthType.percent(Float64(this) / 100.0)
+            LengthMetrics(Float64(this) / 100.0, unit: LengthUnit.Percent)
         }
     }
     /**
      * Defines the length property in units of lpx.
-     *
-     * @relation declare type LPX = `${number}lpx`
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop lpx: Length {
         get() {
-            LengthType.lpx(Float64(this))
+            LengthMetrics(Float64(this), unit: LengthUnit.Lpx)
         }
     }
+    /**
+     * Defines the value.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop value: Float64 {
@@ -455,14 +422,16 @@ extend Int64 <: LengthProp & Length {
             Float64(this)
         }
     }
+    /**
+     * Defines the unit.
+     */   
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public prop unitType: LengthType {
+    public prop unitType: LengthUnit {
         get() {
-            LengthType.vp(Float64(this))
+            LengthUnit.Vp
         }
     }
 }

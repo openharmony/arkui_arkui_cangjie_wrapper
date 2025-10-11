@@ -21,7 +21,7 @@ import std.collection.{ArrayList, HashMap}
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.convert.*
-import ohos.base.{LengthProp, Length, Color, LengthType}
+import ohos.base.{LengthProp, Length, Color}
 
 @Entry
 @Component
@@ -160,9 +160,9 @@ class ViewPopup {
             Button('PopupOptions')
                 .id("button3")
                 .margin(top: 200)
-                .onClick { e =>
+                .onClick ({ e =>
                     this.handlePopup = !this.handlePopup
-                }
+                })
                 .bindPopup(
                     this.handlePopup,
                     PopupOptions(
@@ -255,14 +255,14 @@ class ViewPopup {
                 )
             Button("EmptyPopupOptions")
                 .id("button5")
-                .onClick { e =>
+                .onClick ({ e =>
                     text_07 = "Button5 Clicked"
-                }
+                })
             Button("DragPreviewMode")
                 .id("button6")
-                .onClick { e =>
+                .onClick ({ e =>
                     text_08 = "Button6 Clicked"
-                }
+                })
             Text(this.text_01).id("Test_Text_01").width(100).height(80)
             Text(this.text_03).id("Test_Text_03").width(100).height(80)
             Text(this.text_04).id("Test_Text_04").width(100).height(80)

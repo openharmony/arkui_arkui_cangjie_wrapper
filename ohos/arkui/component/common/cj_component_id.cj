@@ -18,6 +18,7 @@
 package ohos.arkui.component.common
 
 import ohos.labels.APILevel
+import ohos.base.*
 
 foreign func FfiOHOSAceFrameworkComponentIdGetInspectorByKey(id: CString): ExternalString
 
@@ -36,11 +37,9 @@ foreign func FfiOHOSAceFrameworkComponentIdSendMouseEvent(cJMouseEvent: CJMouseE
  *
  * @param { String } id - ID of the component for which the event is to be sent.
  * @returns { String }
- * @relation declare function getInspectorByKey(id: string): string
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func getInspectorByKey(id: String): String {
@@ -59,11 +58,9 @@ public func getInspectorByKey(id: String): String {
  * Get components tree.
  *
  * @returns { String }
- * @relation declare function getInspectorTree(): Object
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func getInspectorTree(): String {
@@ -82,11 +79,9 @@ public func getInspectorTree(): String {
  * @param { IntNative } action - Type of the event to be sent. The options are as follows: Click event: 10 LongClick: 11.
  * @param { String } params - Event parameters. If there is no parameter, pass an empty string "".
  * @returns { Bool }
- * @relation declare function sendEventByKey(id: string, action: number, params: string): boolean
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func sendEventByKey(id: String, action: IntNative, params: String): Bool {
@@ -104,11 +99,9 @@ public func sendEventByKey(id: String, action: IntNative, params: String): Bool 
  *
  * @param { TouchObject } event - TouchObject to be sent.
  * @returns { Bool }
- * @relation declare function sendTouchEvent(event: TouchObject): boolean
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func sendTouchEvent(event: TouchObject): Bool {
@@ -122,11 +115,9 @@ public func sendTouchEvent(event: TouchObject): Bool {
  *
  * @param { KeyEvent } event - KeyEvent to be sent.
  * @returns { Bool }
- * @relation declare function sendKeyEvent(event: KeyEvent): boolean
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func sendKeyEvent(event: KeyEvent): Bool {
@@ -143,11 +134,9 @@ public func sendKeyEvent(event: KeyEvent): Bool {
  *
  * @param { MouseEvent } event - MouseEvent to be sent.
  * @returns { Bool }
- * @relation declare function sendMouseEvent(event: MouseEvent): boolean
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func sendMouseEvent(event: MouseEvent): Bool {

@@ -24,7 +24,6 @@ import ohos.multimedia.image.PixelMapFormat
 import ohos.multimedia.image.PixelMap
 import ohos.multimedia.image.createPixelMap
 import ohos.multimedia.image.Size as UniqueImageSize
-import ohos.arkui.component_snapshot.*
 import kit.LocalizationKit.*
 
 @Entry

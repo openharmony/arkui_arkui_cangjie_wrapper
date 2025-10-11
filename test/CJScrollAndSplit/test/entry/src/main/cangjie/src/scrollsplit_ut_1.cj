@@ -21,7 +21,6 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.router.*
 import ohos.ui_test.*
 import ohos.ui_test
 import std.collection.ArrayList
@@ -807,7 +806,7 @@ class ScrollSplitUT1 {
         @Expect(sticky, "\"StickyStyle.None\"")
 
         let divider = attrs.get("divider").getOrThrow().toString()
-         @Expect(divider , "{\"strokeWidth\":\"2.00px\",\"startMargin\":\"0.00vp\",\"endMargin\":\"0.00vp\",\"color\":\"#FF000000\"}")
+         @Expect(divider , "{\"strokeWidth\":\"2.00px\",\"startMargin\":\"0.00vp\",\"endMargin\":\"0.00vp\",\"color\":\"#08000000\"}")
     }
 
     @TestCase

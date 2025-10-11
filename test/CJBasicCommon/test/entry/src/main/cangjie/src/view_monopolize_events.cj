@@ -36,31 +36,31 @@ class ViewMonopolizeEvents {
             Text(this.messageOut).id("monopolizeEvents-messageOut")
             Text(this.messageInner).id("monopolizeEvents-messageInner")
             Button('clean')
-            .onClick { e =>
+            .onClick ({ e =>
                 this.messageOut = ""
                 this.messageInner = ""
-            }.id("monopolizeEvents-clean")
+            }).id("monopolizeEvents-clean")
             Button('change monopolizeEvents')
             // 通过button的点击事件来切换内层column的独占控制属性
-            .onClick { e =>
+            .onClick ({ e =>
                 this.monopolize = !this.monopolize
                 if (!this.monopolize) {
                     this.message = "set monopolizeEvents false"
                 } else {
                     this.message = "set monopolizeEvents true"
                 }
-            }.id("monopolizeEvents-change")
+            }).id("monopolizeEvents-change")
             Column {}
             .width(100.percent)
             .height(40.percent)
             .backgroundColor(Color.Blue)
-            .onClick { _event =>
+            .onClick ({ _event =>
                 this.messageInner = "inner column touch down"
-            }
+            })
             .id("monopolizeEvents-column")
         }
-        .onClick { _event =>
+        .onClick ({ _event =>
             this.messageOut = "inner column touch down"
-        }
+        })
     }
 }

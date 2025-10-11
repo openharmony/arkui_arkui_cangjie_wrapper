@@ -14,7 +14,10 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.badge") {
-  sources = [ "cj_badge.cj" ]
+  sources = [
+    "badge.cj",
+    "badge_attr.cj"
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",
@@ -24,6 +27,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.badge") {
 
   cj_external_deps = [
     "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.business_exception",
     "cangjie_ark_interop:ohos.labels",
   ]
 

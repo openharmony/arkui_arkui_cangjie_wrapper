@@ -18,11 +18,15 @@ ohos_cangjie_shared_library("ohos.arkui.component.for_each") {
 
   cj_deps = [
     "../../../base:ohos.base",
+    "../../state_management:ohos.arkui.state_management",
     "../common:ohos.arkui.component.common",
     "../native_struct:ohos.arkui.component.native_struct",
   ]
 
-  cj_external_deps = [ "cangjie_ark_interop:ohos.labels" ]
+  cj_external_deps = [
+    "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.labels",
+  ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
   subsystem_name = "arkui"

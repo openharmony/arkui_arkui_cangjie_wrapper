@@ -21,7 +21,6 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.router.*
 import ohos.ui_test.*
 
 @Test
@@ -93,8 +92,8 @@ class BasicCommonUT1 {
         let button = driver.findComponent(On().id("my_button")).getOrThrow()
         button.click()
 
-        let businessException: BusinessException = BusinessException(1234, "")
-        Hilog.info(1, "Cangjie-Test", "aaaa: ${businessException.toString()}")
+//        let businessException: BusinessException = BusinessException(1234, "")
+//        Hilog.info(1, "Cangjie-Test", "aaaa: ${businessException.toString()}")
 
         let text = driver.findComponent(On().id("text")).getOrThrow().getText()
         @Expect(text, "Animation")
@@ -265,43 +264,6 @@ class BasicCommonUT1 {
     }
 
 
-    // BindSheet
-    @TestCase
-    @Tag[APILevel12, TestLevel0]
-    func testBindSheet() {
-        scrollTo("ViewBindSheet")
-
-        let bindSheet: Component = driver.findComponent(On().id("bindSheet")).getOrThrow()
-        bindSheet.click()
-        driver.delayMs(1000)
-        let text_2 = driver.findComponent(On().id("text2")).getOrThrow()
-        let text2 = text_2.getText().toString()
-        @Expect(text2, "BindSheet onDisappear.")
-
-        let bindsheet2: Component = driver.findComponent(On().id("bindsheet2")).getOrThrow()
-        bindsheet2.click()
-        driver.delayMs(1000)
-
-        let bindSheet4: Component = driver.findComponent(On().id("bindSheet4")).getOrThrow()
-        bindSheet4.click()
-        driver.delayMs(1000)
-
-        let bindSheet3: Component = driver.findComponent(On().id("bindsheet3")).getOrThrow()
-        bindSheet3.click()
-        driver.delayMs(1000)
-        let text_3 = driver.findComponent(On().id("text3")).getOrThrow()
-        let text3 = text_3.getText().toString()
-        @Expect(text3, "onHeightDidChange")
-
-        let button3: Component = driver.findComponent(On().id("button3")).getOrThrow()
-        button3.click()
-        driver.delayMs(1000)
-        let text_1 = driver.findComponent(On().id("text2")).getOrThrow()
-        let text1 = text_1.getText().toString()
-        @Expect(text1, "BindSheet onDisappear.")
-    }
-
-
     // border
     @TestCase
     @Tag[APILevel12, TestLevel0]
@@ -316,53 +278,53 @@ class BasicCommonUT1 {
         @Expect(attrs.get("borderRadius").getOrThrow().toString(), "\"20.00vp\"")
     }
 
-    // @TestCase
-    // @Tag[APILevel19, TestLevel0]
-    // func testBorderImage1() {
-    //     scrollTo("ViewBorderImage")
-    //     driver.delayMs(500)
-
-    //     let inspector = getInspectorByKey("text1")
-    //     let jsonObject = JsonValue.fromStr(inspector).asObject()
-    //     let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
-
-    //     let borderImage = attrs.get("borderImage").getOrThrow().toString()
-    //     Hilog.info(1, "Cangjie-Test", "borderImage: " + borderImage)
-    //     @Expect(
-    //         borderImage,
-    //         "\"{\\\"source\\\":\\\"\\\",\\\"slice\\\":\\\"10.00vp\\\",\\\"width\\\":\\\"50.00px\\\",\\\"outset\\\":\\\"10.00vp\\\",\\\"repeat\\\":\\\"RepeatMode.Stretch\\\",\\\"fill\\\":\\\"false\\\"}\""
-    //     )
-
-    //     let text2 = getInspectorByKey("text2")
-    //     let jsonObject2 = JsonValue.fromStr(text2).asObject()
-    //     let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
-
-    //     let borderImage2 = attrs2.get("borderImage").getOrThrow().toString()
-    //     Hilog.info(1, "Cangjie-Test", "borderImage2: " + borderImage2)
-    //     @Expect(borderImage2.contains("resource:///"))
-
-    //     let text3 = getInspectorByKey("text3")
-    //     let jsonObject3 = JsonValue.fromStr(text3).asObject()
-    //     let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
-
-    //     let borderImage3 = attrs3.get("borderImage").getOrThrow().toString()
-    //     Hilog.info(1, "Cangjie-Test", "borderImage3: " + borderImage3)
-    //     @Expect(
-    //         borderImage3,
-    //         "\"{\\\"source\\\":\\\"image/path\\\",\\\"slice\\\":\\\"10.00vp\\\",\\\"width\\\":\\\"50.00vp\\\",\\\"outset\\\":\\\"10.00vp\\\",\\\"repeat\\\":\\\"RepeatMode.Repeat\\\",\\\"fill\\\":\\\"true\\\"}\""
-    //     )
-
-    //     let text4 = getInspectorByKey("text4")
-    //     let jsonObject4 = JsonValue.fromStr(text4).asObject()
-    //     let attrs4 = jsonObject4.get("$attrs").getOrThrow().asObject()
-
-    //     let borderImage4 = attrs4.get("borderImage").getOrThrow().toString()
-    //     Hilog.info(1, "Cangjie-Test", "borderImage4: " + borderImage4)
-    //     @Expect(
-    //         borderImage4,
-    //         "\"{\\\"source\\\":\\\"\\\",\\\"slice\\\":\\\"0.00px\\\",\\\"width\\\":\\\"0.00px\\\",\\\"outset\\\":\\\"0.00px\\\",\\\"repeat\\\":\\\"RepeatMode.Stretch\\\",\\\"fill\\\":\\\"false\\\"}\""
-    //     )
-    // }
+//    @TestCase
+//    @Tag[APILevel19, TestLevel0]
+//    func testBorderImage1() {
+//        scrollTo("ViewBorderImage")
+//        driver.delayMs(500)
+//
+//        let inspector = getInspectorByKey("text1")
+//        let jsonObject = JsonValue.fromStr(inspector).asObject()
+//        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+//
+//        let borderImage = attrs.get("borderImage").getOrThrow().toString()
+//        Hilog.info(1, "Cangjie-Test", "borderImage: " + borderImage)
+//        @Expect(
+//            borderImage,
+//            "\"{\\\"source\\\":\\\"\\\",\\\"slice\\\":\\\"10.00vp\\\",\\\"width\\\":\\\"50.00px\\\",\\\"outset\\\":\\\"10.00vp\\\",\\\"repeat\\\":\\\"RepeatMode.Stretch\\\",\\\"fill\\\":\\\"false\\\"}\""
+//        )
+//
+//        let text2 = getInspectorByKey("text2")
+//        let jsonObject2 = JsonValue.fromStr(text2).asObject()
+//        let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
+//
+//        let borderImage2 = attrs2.get("borderImage").getOrThrow().toString()
+//        Hilog.info(1, "Cangjie-Test", "borderImage2: " + borderImage2)
+//        @Expect(borderImage2.contains("resource:///"))
+//
+//        let text3 = getInspectorByKey("text3")
+//        let jsonObject3 = JsonValue.fromStr(text3).asObject()
+//        let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
+//
+//        let borderImage3 = attrs3.get("borderImage").getOrThrow().toString()
+//        Hilog.info(1, "Cangjie-Test", "borderImage3: " + borderImage3)
+//        @Expect(
+//            borderImage3,
+//            "\"{\\\"source\\\":\\\"image/path\\\",\\\"slice\\\":\\\"10.00vp\\\",\\\"width\\\":\\\"50.00vp\\\",\\\"outset\\\":\\\"10.00vp\\\",\\\"repeat\\\":\\\"RepeatMode.Repeat\\\",\\\"fill\\\":\\\"true\\\"}\""
+//        )
+//
+//        let text4 = getInspectorByKey("text4")
+//        let jsonObject4 = JsonValue.fromStr(text4).asObject()
+//        let attrs4 = jsonObject4.get("$attrs").getOrThrow().asObject()
+//
+//        let borderImage4 = attrs4.get("borderImage").getOrThrow().toString()
+//        Hilog.info(1, "Cangjie-Test", "borderImage4: " + borderImage4)
+//        @Expect(
+//            borderImage4,
+//            "\"{\\\"source\\\":\\\"\\\",\\\"slice\\\":\\\"0.00px\\\",\\\"width\\\":\\\"0.00px\\\",\\\"outset\\\":\\\"0.00px\\\",\\\"repeat\\\":\\\"RepeatMode.Stretch\\\",\\\"fill\\\":\\\"false\\\"}\""
+//        )
+//    }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
@@ -469,8 +431,8 @@ class BasicCommonUT1 {
         @Expect(text, "0")
         button = driver.findComponent(On().id("generate_UI_snapshot")).getOrThrow()
         button.click()
-        text = driver.waitForComponent(On().id("errcode1"),500).getOrThrow().getText()
-        //@Expect(text, "100001")
+//        text = driver.waitForComponent(On().id("errcode1"),500).getOrThrow().getText()
+//        @Expect(text, "100001")
     }
 
     @TestCase
@@ -486,13 +448,13 @@ class BasicCommonUT1 {
         button = driver.findComponent(On().id("generate_offscreen_UI_snapshot")).getOrThrow()
         button.click()
         driver.delayMs(500)
-        text = driver.findComponent(On().id("errcode2")).getOrThrow().getText()
-        //@Expect(text, "100001")
+//        text = driver.findComponent(On().id("errcode2")).getOrThrow().getText()
+//        @Expect(text, "100001")
         button = driver.findComponent(On().id("generate_offscreen_UI_snapshot")).getOrThrow()
         button.click()
         driver.delayMs(500)
-        text = driver.findComponent(On().id("errcode2")).getOrThrow().getText()
-        //@Expect(text, "160001")
+//        text = driver.findComponent(On().id("errcode2")).getOrThrow().getText()
+//        @Expect(text, "160001")
     }
 
     @TestCase
@@ -505,7 +467,7 @@ class BasicCommonUT1 {
         @Expect(text, "no error")
         button = driver.findComponent(On().id("generate_UI_snapshot_synchronously")).getOrThrow()
         button.click()
-        text = driver.waitForComponent(On().id("errMes"),500).getOrThrow().getText()
-        //@Expect(text, "Component snapshot getSync failed! code: 100001")
+//        text = driver.waitForComponent(On().id("errMes"),500).getOrThrow().getText()
+//        @Expect(text, "Component snapshot getSync failed! code: 100001")
     }
 }

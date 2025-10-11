@@ -21,10 +21,11 @@ import std.collection.*
 import ohos.base.*
 import ohos.labels.APILevel
 
+/**
+ * Defines class SubscriberManager.
+ */
 @!APILevel[
-    21,
-    atomicservice: true,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SubscriberManager {
@@ -33,62 +34,74 @@ public class SubscriberManager {
     private var nextStateId: Int64 = 0
     private var subscriberById: HashMap<Int64, Observer> = HashMap<Int64, Observer>()
 
+    /**
+     * Gets the singleton instance of SubscriberManager.
+     *
+     * @returns { SubscriberManager } The singleton instance of SubscriberManager.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getInstance(): SubscriberManager {
         instance
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func makeId(): Int64 {
+    protected func makeId(): Int64 {
         var now = this.nextStateId
         this.nextStateId++
         return now
     }
 
+    /**
+     * Checks if a subscriber with the given ID exists.
+     *
+     * @param { Int64 } id - The ID of the subscriber to check.
+     * @returns { Bool } True if a subscriber with the given ID exists, false otherwise.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func has(id: Int64): Bool {
         return subscriberById.contains(id)
     }
 
+    /**
+     * Gets the subscriber with the given ID.
+     *
+     * @param { Int64 } id - The ID of the subscriber to retrieve.
+     * @returns { Option<Observer> } The subscriber with the given ID, or None if not found.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get(id: Int64): Option<Observer> {
         return subscriberById.get(id)
     }
 
+    /**
+     * Removes a subscriber from the manager.
+     *
+     * @param { Observer } value - The subscriber to remove.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func delete(value: Observer): Unit {
         subscriberById.remove(value.id())
     }
 
+    /**
+     * Adds a subscriber to the manager.
+     *
+     * @param { Observer } value - The subscriber to add.
+     * @returns { Bool } True if the subscriber was added successfully, false if a subscriber with the same ID already exists.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func add(value: Observer): Bool {
@@ -101,23 +114,11 @@ public class SubscriberManager {
         return true
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func sizeOfManager(): Int64 {
+    protected func sizeOfManager(): Int64 {
         this.subscriberById.size
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func dumpSubscriberInfo(): Unit {
+    protected func dumpSubscriberInfo(): Unit {
         print("Dump of SubscriberManager +++ (sart) \n")
         print("Current Size: ${subscriberById.size}\n")
         for (idx in subscriberById.keys()) {

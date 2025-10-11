@@ -13,10 +13,6 @@
       "value": "inline style"
     },
     {
-      "name": "control_Width",
-      "value": "20.0.vp"
-    },
-    {
       "name": "EntryAbility_desc",
       "value": "description"
     },
@@ -25,20 +21,36 @@
       "value": "label"
     },
     {
+      "name":"swiper_itemSpace",
+      "value": "10vp"
+    },
+    {
+      "name": "control_Width",
+      "value": "20.0vp"
+    },
+    {
+      "name": "len_2",
+      "value": "10vp"
+    },
+    {
+      "name": "friction_1",
+      "value": "0.85"
+    },
+    {
       "name": "DEFAULT_FONT",
       "value": "HarmonyOS Sans"
     },
     {
       "name": "font_size",
-      "value": "16.vp"
+      "value": "16vp"
     },
     {
       "name": "line_height",
-      "value": "20.vp"
+      "value": "20vp"
     },
     {
       "name": "baselineOffset",
-      "value": "20.vp"
+      "value": "20vp"
     },
     {
       "name": "span_test",
@@ -62,7 +74,7 @@
     },
     {
       "name": "size_desc",
-      "value": "20.vp"
+      "value": "20vp"
     },
     {
       "name": "family_desc",
@@ -102,7 +114,7 @@
     },
     {
       "name": "distance",
-      "value": "0.vp"
+      "value": "0vp"
     },
     {
       "name": "selection_option",
@@ -126,7 +138,7 @@
     },
     {
       "name": "selectedFontSizeStr",
-      "value": "24.vp"
+      "value": "24vp"
     },
     {
       "name": "popupFontFamily",
@@ -138,7 +150,7 @@
     },
     {
       "name": "fontSize",
-      "value": "20.vp"
+      "value": "20vp"
     },
     {
       "name": "button_label",
@@ -146,29 +158,29 @@
     },
     {
       "name": "minfontSize",
-      "value": "20.fp"
+      "value": "20fp"
     },
     {
       "name": "maxfontSize",
-      "value": "20.fp"
+      "value": "20fp"
     },
     {
       "name": "len",
-      "value": "20.px"
+      "value": "20px"
     },
     {
       "name": "len_lpx",
-      "value": "15.lpx"
+      "value": "15lpx"
     },
     {
       "name": "height",
-      "value": "100.vp"
+      "value": "100vp"
     },
     {
       "name": "cangjieWeb",
       "value": "https://www.baidu.com"
     },
-    {      
+    {
       "name": "SmileySans_label",
       "value": "SmileySans"
     },
@@ -178,11 +190,11 @@
     },
     {
       "name": "len_px",
-      "value": "10.px"
+      "value": "10px"
     },
     {
       "name": "len_fp",
-      "value": "10.fp"
+      "value": "10fp"
     },
     {
       "name": "len_percent",
@@ -190,7 +202,7 @@
     },
     {
       "name": "len_llp",
-      "value": "10.llp"
+      "value": "10llp"
     }
   ]
 }

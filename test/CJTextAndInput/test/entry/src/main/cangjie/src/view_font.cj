@@ -15,13 +15,14 @@
 
 package ohos_app_cangjie_entry
 
-import ohos.font.*
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.resource_manager.*
-import kit.LocalizationKit.*
+import ohos.i18n.*
+import ohos.resource_manager.*
+import ohos.arkui.ui_context.*
 
 @Entry
 @Component
@@ -72,15 +73,15 @@ class ViewFont {
                 Text("9: ${message5}").id("message5")
                 Text("10: ${check5}").id("check5")
                 // registerFont(str, str)
-                Button("registerFont1").onClick { event =>
+                Button("registerFont1").onClick({ event =>
                     this.message = "Amiri"
-                }.fontSize(40).height(80).fontFamily("Amiri").id("registerFont1")
+                }).fontSize(40).height(80).fontFamily("Amiri").id("registerFont1")
                 // registerFont(CJResourse, CJResourse)
-                Button("registerFont2").onClick{ event =>
+                Button("registerFont2").onClick({ event =>
                     this.message = "SmileySans"
-                }.fontSize(40).height(80).fontFamily("SmileySans").id("registerFont2")
+                }).fontSize(40).height(80).fontFamily("SmileySans").id("registerFont2")
                 // getFontByName
-                Button("getFontByName1").onClick { event =>
+                Button("getFontByName1").onClick({ event =>
                     var fontInfo =  getUIContext().getFont().getFontByName("HarmonyOS Sans Italic")
                     try {
                         let r1: FontInfo = fontInfo.getOrThrow()
@@ -93,8 +94,8 @@ class ViewFont {
                         this.message = "no value"
                         this.check = "no value"
                     }
-                }.id("getFontByName-sysFontName")
-                Button("getFontByName2").onClick { event =>
+                }).id("getFontByName-sysFontName")
+                Button("getFontByName2").onClick({ event =>
                     var fontInfo =  getUIContext().getFont().getFontByName("Amiri")
                     try {
                         let r1: FontInfo = fontInfo.getOrThrow()
@@ -107,12 +108,12 @@ class ViewFont {
                         this.message = "no value"
                         this.check = "no value"
                     }
-                }.id("getFontByName-noSysFontName")
+                }).id("getFontByName-noSysFontName")
                 // getUIFontConfig
 
-                Button("getFont").onClick { e =>
+                Button("getFont").onClick({ e =>
                     let font1 = getUIContext().getFont()
-                }.id("getFont")
+                }).id("getFont")
 
             }.width(100.percent)
         }.height(100.percent)

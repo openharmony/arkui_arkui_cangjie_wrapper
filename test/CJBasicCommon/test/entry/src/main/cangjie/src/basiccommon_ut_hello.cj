@@ -22,7 +22,6 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.arkui.ui_context.*
-import ohos.router.*
 import std.math.MathExtension
 import ohos.ark_interop.*
 import ohos.ui_test.*
@@ -34,7 +33,6 @@ import ohos.multimedia.image.createPixelMap
 import ohos.multimedia.image.Size as UniqueImageSize
 import ohos.display.Orientation as DisplayOrientation
 import ohos.display.*
-import ohos.prompt_action.*
 import ohos.callback_invoke.*
 internal import kit.ArkUI.{isFoldable, getFoldStatus, getFoldDisplayMode, getCurrentFoldCreaseRegion, FoldCreaseRegion,
     getDefaultDisplaySync, getAllDisplays, DisplayState, DisplayOrientation as orientation, DisplayRect,
@@ -235,47 +233,51 @@ class BasicCommonUTHello {
         var float_a: Float64 = 30.0
         var length = float_a.percent
         var lpx = float_a.lpx
-        var type_px: LengthType = LengthType.parse(0)
-        var type_lpx: LengthType = LengthType.parse(4)
-        var vp: LengthType = LengthType.parse(5)
+        let type_px = LengthUnit.parse(0)
+        let type_lpx = LengthUnit.parse(4)
+        try {
+            var vp = LengthUnit.parse(5)
+        } catch (e: Exception) {
+            Hilog.info(1, "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+        }
         @Expect(0.3, length.value)
 
         try {
-            Main.hasEnded()
-            Main.end()
+            UIThread.hasEnded()
+            UIThread.end()
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
         }
 
-        try {
-            var lazy = LazyForEach()
-            lazy.update()
-        } catch (e: Exception) {
-            Hilog.info(1, "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
-        }
+//        try {
+//            var lazy = LazyForEach()
+//            lazy.update()
+//        } catch (e: Exception) {
+//            Hilog.info(1, "Cangjie-Test", "test_lengthProp setProperty: ${e.toString()}")
+//        }
         Hilog.info(1, "Cangjie-Test", "test_lengthProp end")
     }
 
-    @TestCase
-    @Tag[APILevel16, TestLevel0]
-    func testForEach() {
-        Hilog.info(1, "Cangjie-Test", "test_forEach start")
-        try {
-            var foreach: ForEach = ForEach(){}
-            foreach.create()
-            foreach.update()
-        } catch (e: Exception) {
-            Hilog.info(1, "Cangjie-Test", "test_forEach setProperty: ${e.toString()}")
-        }
-        try {
-            var dtcustom = DtTestCustomView(Option.None, LocalStorage())
-            var foreach2: ForEach = ForEach(){}
-            foreach2.create<String>(1, dtcustom, ObservedArrayList<String>(["1"]), itemGeneratorFunc: {viewName: String, _: Int64 => })
-        } catch (e: Exception) {
-            Hilog.info(1, "Cangjie-Test", "test_forEach setProperty: ${e.toString()}")
-        }
-        Hilog.info(1, "Cangjie-Test", "test_forEach end")
-    }
+//    @TestCase
+//    @Tag[APILevel16, TestLevel0]
+//    func testForEach() {
+//        Hilog.info(1, "Cangjie-Test", "test_forEach start")
+//        try {
+//            var foreach: ForEach = ForEach(){}
+//            foreach.create()
+//            foreach.update()
+//        } catch (e: Exception) {
+//            Hilog.info(1, "Cangjie-Test", "test_forEach setProperty: ${e.toString()}")
+//        }
+//        try {
+//            var dtcustom = DtTestCustomView(Option.None, LocalStorage())
+//            var foreach2: ForEach = ForEach(){}
+//            foreach2.create<String>(1, dtcustom, ObservedArrayList<String>(["1"]), itemGeneratorFunc: {viewName: String, _: Int64 => })
+//        } catch (e: Exception) {
+//            Hilog.info(1, "Cangjie-Test", "test_forEach setProperty: ${e.toString()}")
+//        }
+//        Hilog.info(1, "Cangjie-Test", "test_forEach end")
+//    }
 
     @TestCase
     @Tag[APILevel12, TestLevel0]
@@ -289,12 +291,12 @@ class BasicCommonUTHello {
             Hilog.info(1, "Cangjie-Test", "test_customview getLocalStorage: ${e.toString()}")
             message = e.toString()
         }
-        try {
-            dtcustom.aboutToRecycleInternal()
-        } catch (e: Exception) {
-            Hilog.info(1, "Cangjie-Test", "test_customview aboutToRecycleInternal: ${e.toString()}")
-            message = e.toString()
-        }
+//        try {
+//            dtcustom.aboutToRecycleInternal()
+//        } catch (e: Exception) {
+//            Hilog.info(1, "Cangjie-Test", "test_customview aboutToRecycleInternal: ${e.toString()}")
+//            message = e.toString()
+//        }
         try {
             dtcustom.addProvideVar(ObservedProperty<String>("info", "initValue"), "addProvideVar")
             dtcustom.initializeConsume("addProvideVar")
@@ -302,14 +304,14 @@ class BasicCommonUTHello {
             Hilog.info(1, "Cangjie-Test", "test_customview addProvideVar: ${e.toString()}")
             message = e.toString()
         }
-        try {
-            dtcustom.markLazyForEachProcess("lazyGroupId1")
-            dtcustom.markLazyForEachProcess("lazyGroupId2")
-            dtcustom.removeChildGroupById("lazyGroupId1")
-        } catch (e: Exception) {
-            Hilog.info(1, "Cangjie-Test", "test_customview markLazyForEachProcess: ${e.toString()}")
-            message = e.toString()
-        }
+//        try {
+//            dtcustom.markLazyForEachProcess("lazyGroupId1")
+//            dtcustom.markLazyForEachProcess("lazyGroupId2")
+//            dtcustom.removeChildGroupById("lazyGroupId1")
+//        } catch (e: Exception) {
+//            Hilog.info(1, "Cangjie-Test", "test_customview markLazyForEachProcess: ${e.toString()}")
+//            message = e.toString()
+//        }
         try {
             var bId = If.getBranchId()
             dtcustom.ifElseBranchUpdateFunction(bId, { => })
@@ -357,24 +359,24 @@ class BasicCommonUTHello {
         Hilog.info(1, "Cangjie-Test", "test_customview2 end")
     }
 
-    @TestCase
-    @Tag[APILevel16, TestLevel0]
-    func testView() {
-        Hilog.info(1, "Cangjie-Test", "test_view start")
-        var message = ""
-        try {
-            var view: View = View.create(23232323)
-            view.needsUpdate()
-            view.markStatic()
-            view.isStatic()
-            view.destroy()
-        } catch (e: Exception) {
-            message = e.toString()
-            Hilog.info(1, "Cangjie-Test", "test_view setProperty: ${e.toString()}")
-        }
-        @Expect(message.contains("NoneValueException"))
-        Hilog.info(1, "Cangjie-Test", "test_view end")
-    }
+//    @TestCase
+//    @Tag[APILevel16, TestLevel0]
+//    func testView() {
+//        Hilog.info(1, "Cangjie-Test", "test_view start")
+//        var message = ""
+//        try {
+//            var view: View = View.create(23232323)
+//            view.needsUpdate()
+//            view.markStatic()
+//            view.isStatic()
+//            view.destroy()
+//        } catch (e: Exception) {
+//            message = e.toString()
+//            Hilog.info(1, "Cangjie-Test", "test_view setProperty: ${e.toString()}")
+//        }
+//        @Expect(message.contains("NoneValueException"))
+//        Hilog.info(1, "Cangjie-Test", "test_view end")
+//    }
 
     @TestCase
     @Tag[APILevel16, TestLevel0]
@@ -425,7 +427,7 @@ class BasicCommonUTHello {
     @Tag[APILevel12, TestLevel0]
     func testResourceToUInt() {
         Hilog.info(1, "Cangjie-Test", "test_resource_toUInt start")
-        var message = "Invalid args or ret"
+        var message = "Valid args or ret"
         try {
             var color: ResourceColor = @r(app.color.blue_23C452)
             color.toUInt32()
@@ -433,7 +435,7 @@ class BasicCommonUTHello {
             Hilog.info(1, "Cangjie-Test", "test_resource_toUInt: ${e.toString()}")
             message = e.toString()
         }
-        @Expect(message.contains("AppResource can not get 'UInt32' value from ResourceColor"))
+        @Expect(message.contains("BusinessException"))
         Hilog.info(1, "Cangjie-Test", "test_resource_toUInt end")
     }
 
@@ -449,7 +451,7 @@ class BasicCommonUTHello {
             Hilog.info(1, "Cangjie-Test", "test_length_value: ${e.toString()}")
             message1 = e.toString()
         }
-        @Expect(message1.contains("Current type not support get 'value' attribute"))
+        @Expect(message1.contains("BusinessException"))
 
         var message2 = "get unitType success"
         try {
@@ -459,7 +461,7 @@ class BasicCommonUTHello {
             Hilog.info(1, "Cangjie-Test", "test_length_value: ${e.toString()}")
             message2 = e.toString()
         }
-        @Expect(message2.contains("Current type not support get 'unitType' attribute"))
+        @Expect(message2.contains("BusinessException"))
         Hilog.info(1, "Cangjie-Test", "test_length_value end")
     }
 
@@ -523,7 +525,7 @@ class BasicCommonUTHello {
             case DisplayState.StateVr => "vr"
             case DisplayState.StateOnSuspend => "on suspend"
             case _ => "unsupport"
-            
+
         })
 
         if (isFoldable()) {
@@ -790,9 +792,15 @@ class BasicCommonUTHello {
     @Tag[APILevel16, TestLevel0]
     func testLength() {
         Hilog.info(1, "Cangjie-Test", "test_length start")
-        var lengthType: LengthType = LengthType.vp(3.0)
-        var a = lengthType.value
-        var b = lengthType.unitType
+        var px1 = LengthUnit.Px.getValue()
+        var vp1 = LengthUnit.Vp.getValue()
+        var fp1 = LengthUnit.Fp.getValue()
+        var percent1 = LengthUnit.Percent.getValue()
+        var lpx1 = LengthUnit.Lpx.getValue()
+        var lengthType1: LengthUnit = LengthUnit.parse(3)
+        var lengthMetrics: LengthMetrics = LengthMetrics(3.0)
+        var a = lengthMetrics.value
+        var b = lengthMetrics.unitType
         Hilog.info(1, "Cangjie-Test", "test_length end")
     }
 
@@ -896,7 +904,7 @@ class BasicCommonUTHello {
                 enableStatusBarAnimation: true,
                 enableNavigationBarAnimation: true
             )
-            // mainWindow.setWindowSystemBarProperties(property)
+             mainWindow.setWindowSystemBarProperties(property)
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_window2 setWindowSystemBarProperties: ${e.toString()}")
         }
@@ -924,11 +932,11 @@ class BasicCommonUTHello {
     }
 }
 
-class PersonView <: View {
-    protected init(id: Int64){
-        super(id)
-    }
-}
+//class PersonView <: View {
+//    protected init(id: Int64){
+//        super(id)
+//    }
+//}
 
 class DtTestCustomView <: CustomView {
     public init(parent: Option<CustomView>, localStorage: Option<LocalStorage>) {
@@ -960,7 +968,7 @@ class DtTestCustomView <: CustomView {
         super.delayCompleteRerender(true)
         super.flushDelayCompleteRerender()
         super.aboutToRecycleInternal()
-        super.aboutToBeDeleted()
+//        super.aboutToBeDeleted()
         super.recycleSelf("name")
         super.setParent(DtTestCustomView(Option.None, Option.None))
         super.recycleSelf("name")

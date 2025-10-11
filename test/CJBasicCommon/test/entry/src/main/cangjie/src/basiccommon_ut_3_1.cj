@@ -21,7 +21,6 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.router.*
 import ohos.ui_test.*
 
 @Test
@@ -363,7 +362,7 @@ class BasicCommonUT31 {
         Hilog.info(1, "Cangjie-App", "parentRowWidth:${parentRowWidth}")
         Hilog.info(1, "Cangjie-App", "parentPixelRound:${parentPixelRound}")
         @Expect(parentRowWidth, "\"300.30px\"")
-        //@Expect(parentPixelRound, "\"{\\\"start\\\":\\\"PixelRoundCalcPolicy.FORCE_CEIL\\\",\\\"top\\\":\\\"PixelRoundCalcPolicy.NO_FORCE_ROUND\\\",\\\"end\\\":\\\"PixelRoundCalcPolicy.FORCE_CEIL\\\",\\\"bottom\\\":\\\"PixelRoundCalcPolicy.NO_FORCE_ROUND\\\"}\"")
+//        @Expect(parentPixelRound, "\"{\\\"start\\\":\\\"PixelRoundCalcPolicy.FORCE_CEIL\\\",\\\"top\\\":\\\"PixelRoundCalcPolicy.NO_FORCE_ROUND\\\",\\\"end\\\":\\\"PixelRoundCalcPolicy.FORCE_CEIL\\\",\\\"bottom\\\":\\\"PixelRoundCalcPolicy.NO_FORCE_ROUND\\\"}\"")
 
         inspector = getInspectorByKey("subRow")
         jsonObject = JsonValue.fromStr(inspector).asObject()
@@ -373,7 +372,7 @@ class BasicCommonUT31 {
         Hilog.info(1, "Cangjie-App", "subRowWidth:${subRowWidth}")
         Hilog.info(1, "Cangjie-App", "subPixelRound:${subPixelRound}")
         @Expect(subRowWidth, "\"100.00%\"")
-        //@Expect(subPixelRound, "\"{\\\"start\\\":\\\"PixelRoundCalcPolicy.NO_FORCE_ROUND\\\",\\\"top\\\":\\\"PixelRoundCalcPolicy.FORCE_FLOOR\\\",\\\"end\\\":\\\"PixelRoundCalcPolicy.NO_FORCE_ROUND\\\",\\\"bottom\\\":\\\"PixelRoundCalcPolicy.NO_FORCE_ROUND\\\"}\"")
+//        @Expect(subPixelRound, "\"{\\\"start\\\":\\\"PixelRoundCalcPolicy.NO_FORCE_ROUND\\\",\\\"top\\\":\\\"PixelRoundCalcPolicy.FORCE_FLOOR\\\",\\\"end\\\":\\\"PixelRoundCalcPolicy.NO_FORCE_ROUND\\\",\\\"bottom\\\":\\\"PixelRoundCalcPolicy.NO_FORCE_ROUND\\\"}\"")
 
         inspector = getInspectorByKey("topColumn")
         jsonObject = JsonValue.fromStr(inspector).asObject()

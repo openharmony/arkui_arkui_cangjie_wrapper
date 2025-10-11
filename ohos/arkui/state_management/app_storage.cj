@@ -20,16 +20,14 @@ package ohos.arkui.state_management
 import ohos.base.*
 import ohos.labels.APILevel
 import std.collection.*
+import ohos.business_exception.BusinessException
 
 /**
  * AppStorage singleton is sub-class of see LocalStorage for
  * UI state of app-wide access and same life cycle as the app.
- *
- * @relation declare class AppStorage
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AppStorage {
@@ -42,19 +40,20 @@ public class AppStorage {
             case None => AppStorage.instance = AppStorage()
             case Some(v) => ()
         }
-        return AppStorage.instance.getOrThrow()
+        return AppStorage.instance.getOrThrow({
+            => BusinessException(100001, "Internal error.")
+        })
     }
 
     /**
-     * Create and return a two-way sync ("link") to named property
+     * Create and return a two-way sync ("link") to named property.
      *
      * @param { String } propName - name of source property in AppStorage
-     * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>, return 'None' if named property does not already exist in AppStorage
-     * @relation static link<T>(propName: string): SubscribedAbstractProperty<T>;
+     * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>, return 'None' if named property does not already exist in AppStorage.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func link<T>(propName: String): ?ObservedProperty<T> {
@@ -65,15 +64,14 @@ public class AppStorage {
      * Like see @link(), but will create and initialize a new source property in AppStorage if missing
      * Same as see LocalStorage.setAndLink()
      *
-     * @param { String } propName - name of source property in AppStorage
-     * @param { T } defaultValue - value to be used for initializing new property in AppStorage
-     *        default value must be of type T, can be None.
+     * @param { String } propName - name of source property in AppStorage.
+     * @param { T } defaultValue - value to be used for initializing new property in AppStorage,
+     * default value must be of type T, can be None.
      * @returns { ObservedProperty<T> } instance of ObservedProperty<T>.
-     * @relation static setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func setAndLink<T>(propName: String, defaultValue: T): ObservedProperty<T> {
@@ -81,15 +79,14 @@ public class AppStorage {
     }
 
     /**
-     * Create and return a one-way sync ('prop') to named property
+     * Create and return a one-way sync ('prop') to named property.
      *
-     * @param { String } propName - name of source property in AppStorage
+     * @param { String } propName - name of source property in AppStorage.
      * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>, return None if named property does not already exist in AppStorage.
-     * @relation static prop<T>(propName: string): SubscribedAbstractProperty<T>;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func `prop`<T>(propName: String): ?ObservedProperty<T> {
@@ -97,18 +94,16 @@ public class AppStorage {
     }
 
     /**
+     * Like prop(), will create and initialize a new source property in AppStorage if missing.
+     * Same as see LocalStorage.setAndProp().
      *
-     * Like prop(), will create and initialize a new source property in AppStorage if missing
-     * Same as see LocalStorage.setAndProp()
-     *
-     * @param { String } propName - name of source property in AppStorage
+     * @param { String } propName - name of source property in AppStorage.
      * @param { T } defaultValue - value to be used for initializing new property in AppStorage.
      * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>.
-     * @relation static setAndProp<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func setAndProp<T>(propName: String, defaultValue: T): ObservedProperty<T> {
@@ -116,18 +111,17 @@ public class AppStorage {
     }
 
     /**
-     * Checks if AppStorage has a property with given name
-     * returns true if property with given name exists
-     * same as ES6 Map.prototype.has()
-     * Same as see LocalStorage.has()
+     * Checks if AppStorage has a property with given name.
+     * Returns true if property with given name exists.
+     * Same as ES6 Map.prototype.has().
+     * Same as see LocalStorage.has().
      *
      * @param { String } propName - searched property
-     * @returns { Bool } true if property with such name exists in AppStorage
-     * @relation static has(propName: string): boolean;
+     * @returns { Bool } true if property with such name exists in AppStorage.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func has(propName: String): Bool {
@@ -135,16 +129,15 @@ public class AppStorage {
     }
 
     /**
-     * Same as see LocalStorage.get()
+     * Same as see LocalStorage.get().
      * Obtain the value of property with given name, returns undefined if the property does not exist in AppStorage.
      *
      * @param { String } propName
-     * @returns { ?T } property value of type T if found or None
-     * @relation static get<T>(propName: string): T | undefined;
+     * @returns { ?T } property value of type T if found or None.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func get<T>(propName: String): ?T {
@@ -152,18 +145,17 @@ public class AppStorage {
     }
 
     /**
-     * Set value of given property in AppStorage
+     * Set value of given property in AppStorage.
      * Method sets nothing and returns false if property with this name does not exist in AppStorage.
-     * Same as see LocalStorage.set()
+     * Same as see LocalStorage.set().
      *
      * @param { String } propName
      * @param { T } newValue - must be of type T
-     * @returns { Bool } true on success, i.e. when above conditions are satisfied, otherwise false
-     * @relation static set<T>(propName: string, newValue: T): boolean;
+     * @returns { Bool } true on success, i.e. when above conditions are satisfied, otherwise false.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func set<T>(propName: String, newValue: T): Bool {
@@ -173,16 +165,15 @@ public class AppStorage {
     /**
      * Set value of given property, if it exists, see set() .
      * Add property if no property with given name in AppStorage, and initialize with given value.
-     * newValue can be undefined or null from API 12
-     * see LocalStorage.setOrCreate()
+     * newValue can be undefined or null from API 12.
+     * see LocalStorage.setOrCreate().
      *
      * @param { String } propName
-     * @param { T } newValue - must be of type T
-     * @relation static setOrCreate<T>(propName: string, newValue: T): void;
+     * @param { T } newValue - must be of type T.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func setOrCreate<T>(propName: String, newValue: T): Unit {
@@ -190,11 +181,11 @@ public class AppStorage {
     }
 
     /**
-     * Delete property with given name from AppStorage
+     * Delete property with given name from AppStorage.
      * Use with caution:
      * Before deleting a prop from AppStorage all its subscribers need to
      * unsubscribe from the property.
-     * This method fails and returns false if given property still has subscribers
+     * This method fails and returns false if given property still has subscribers.
      * Another reason for failing is unknown property name.
      * Developer advise:
      * Subscribers to a property in AppStorage are created with see link(), see prop()
@@ -205,12 +196,11 @@ public class AppStorage {
      * Same as see LocalStorage.delete()
      *
      * @param { String } propName
-     * @returns { Bool } false if method failed
-     * @relation static delete(propName: string): boolean;
+     * @returns { Bool } false if method failed.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func delete(propName: String): Bool {
@@ -218,16 +208,15 @@ public class AppStorage {
     }
 
     /**
-     * Provide names of all properties in AppStorage
-     * same as ES6 Map.prototype.keys()
-     * Same as see LocalStorage.keys()
+     * Provide names of all properties in AppStorage.
+     * Same as ES6 Map.prototype.keys().
+     * Same as see LocalStorage.keys().
      *
-     * @returns {  EquatableCollection<String> } return a Map Iterator
-     * @relation static keys(): IterableIterator<string>;
+     * @returns {  EquatableCollection<String> } return a Map Iterator.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func keys(): EquatableCollection<String> {
@@ -235,14 +224,13 @@ public class AppStorage {
     }
 
     /**
-     * Method returns the number of properties currently in AppStorage
+     * Method returns the number of properties currently in AppStorage.
      *
-     * @returns { Int64 } Returns the number of properties currently in AppStorage
-     * @relation static size(): number;
+     * @returns { Int64 } Returns the number of properties currently in AppStorage.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func size(): Int64 {
@@ -254,11 +242,10 @@ public class AppStorage {
      * Precondition is that there are no subscribers, see Delete().
      *
      * @returns { boolean } false and deletes no properties if there is any property that still has subscribers.
-     * @relation static clear(): boolean;
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func clear(): Bool {

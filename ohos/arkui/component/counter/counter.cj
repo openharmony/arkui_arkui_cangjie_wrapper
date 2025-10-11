@@ -36,26 +36,20 @@ foreign {
 
 /**
  * Defines Counter Component.
- *
- * @relation declare const Counter: CounterInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Counter <: ContainerBase {
+public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
 
     /**
-     * Return Counter.
+     * Counter constructor.
      *
      * @param { () -> Unit } content
-     * @returns { This }
-     * @relation (): CounterAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(content: () -> Unit) {
@@ -68,18 +62,16 @@ public class Counter <: ContainerBase {
     /**
      * Indicates whether the increase button of counter component is available or not.
      *
-     * @param { Bool } value
+     * @param { ?Bool } value
      * @returns { This }
-     * @relation enableInc(value: boolean): CounterAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func enableInc(value: Bool): This {
+    public func enableInc(value: ?Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkCounterEnableInc(value);
+            FfiOHOSAceFrameworkCounterEnableInc(value ?? true);
         }
         this
     }
@@ -87,18 +79,16 @@ public class Counter <: ContainerBase {
     /**
      * Indicates whether the decrease button of counter component is available or not.
      *
-     * @param { Bool } value
+     * @param { ?Bool } value
      * @returns { This }
-     * @relation enableDec(value: boolean): CounterAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func enableDec(value: Bool): This {
+    public func enableDec(value: ?Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkCounterEnableDec(value);
+            FfiOHOSAceFrameworkCounterEnableDec(value ?? true);
         }
         this
     }
@@ -106,18 +96,17 @@ public class Counter <: ContainerBase {
     /**
      * Listen to the event that the value increases.
      *
-     * @param { VoidCallback } event
+     * @param { ?VoidCallback } event
      * @returns { This }
-     * @relation onInc(event: VoidCallback): CounterAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onInc(event: VoidCallback): This {
+    public func onInc(event: ?VoidCallback): This {
+        let tmpEvent = event ?? { => }
         unsafe {
-            FfiOHOSAceFrameworkCounterSetOnInc(Callback0Param<Unit>(event).getID());
+            FfiOHOSAceFrameworkCounterSetOnInc(Callback0Param<Unit>(tmpEvent).getID());
         }
         this
     }
@@ -125,18 +114,17 @@ public class Counter <: ContainerBase {
     /**
      * Listens to the number decrease event.
      *
-     * @param { VoidCallback } event
+     * @param { ?VoidCallback } event
      * @returns { This }
-     * @relation onDec(event: VoidCallback): CounterAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onDec(event: VoidCallback): This {
+    public func onDec(event: ?VoidCallback): This {
+        let tmpEvent = event ?? { => }
         unsafe {
-            FfiOHOSAceFrameworkCounterSetOnDec(Callback0Param<Unit>(event).getID());
+            FfiOHOSAceFrameworkCounterSetOnDec(Callback0Param<Unit>(tmpEvent).getID());
         }
         this
     }

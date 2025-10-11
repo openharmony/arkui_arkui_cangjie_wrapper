@@ -85,11 +85,11 @@ class ViewScroll {
                 Button("scrollTo").onClick(
                     {
                         evt =>
-                        Hilog.info(1, "info", "current offset ${this.scroller.currentOffset().yOffset}")
-                        Hilog.info(1, "info", "CALCULATE offset ${this.scroller.currentOffset().yOffset + 100.0}")
+                        Hilog.info(1, "info", "current offset ${this.scroller.currentOffset().getOrThrow().yOffset}")
+                        Hilog.info(1, "info", "CALCULATE offset ${this.scroller.currentOffset().getOrThrow().yOffset + 100.0}")
                         this.scroller.scrollTo(
                             xOffset: 0.px,
-                            yOffset: (this.scroller.currentOffset().yOffset + 100.0).px
+                            yOffset: (this.scroller.currentOffset().getOrThrow().yOffset + 100.0).px
                         )
                         this.scroller.scrollTo(xOffset: 10, yOffset: 20)
                         this.scroller.scrollTo(xOffset: 10.0, yOffset: 20.0)
@@ -131,7 +131,7 @@ class ViewScroll {
                     {
                         evt =>
                         this.scroller.scrollPage(true, animation: false)
-                        this.scroller.currentOffset()
+                        this.scroller.currentOffset().getOrThrow()
                     }
                 ).id("scrollToPage")
 
@@ -158,10 +158,10 @@ class ViewScroll {
                                 offset, state =>
                                 if ((listPosition == 0 && offset <= 0.0) || (listPosition == 2 && offset >= 0.0)) {
                                     scrollerForScroll.scrollBy(xOffset: 0.0, yOffset: offset)
-                                    return onScrollFrameBeginHandleResult(offsetRemain: 0.0)
+                                    return OnScrollFrameBeginHandlerResult(offsetRemain: 0.0)
                                 }
                                 listPosition = 1
-                                return onScrollFrameBeginHandleResult(offsetRemain: offset)
+                                return OnScrollFrameBeginHandlerResult(offsetRemain: offset)
                             }
                         )
 

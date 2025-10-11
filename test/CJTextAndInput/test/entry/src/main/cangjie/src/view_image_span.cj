@@ -64,7 +64,7 @@ class ViewImageSpan {
                     .objectFit(ImageFit.Fill)
                     .verticalAlign(ImageSpanAlignment.Top)
                     .verticalAlign(ImageSpanAlignment.Center)
-                    .onComplete({imobj: ImageLoadResult => s_width = imobj.width})
+                    .onComplete({imobj: ImageLoadResult => s_width = imobj.width.getOrThrow()})
             }
 
             Text() {
@@ -75,7 +75,7 @@ class ViewImageSpan {
                     .colorFilter(ColorFilterMatrix)
                     .objectFit(ImageFit.Fill)
                     .verticalAlign(ImageSpanAlignment.Center)
-                    .onComplete({imobj:ImageLoadResult =>this.s_width = imobj.width})
+                    .onComplete({imobj:ImageLoadResult =>this.s_width = imobj.width.getOrThrow()})
             }
 
             Text("${this.s_width}").id("imagespan_width1")
@@ -85,7 +85,7 @@ class ViewImageSpan {
                     .width(100.vp)
                     .height(100.vp)
                     .id("imagespan_test_5")
-                    .onError({imobj: ImageError =>this.s_width = imobj.componentWidth})
+                    .onError({imobj: ImageError =>this.s_width = imobj.componentWidth.getOrThrow()})
             }
 
             Text("${this.s_width}").id("imagespan_width2")

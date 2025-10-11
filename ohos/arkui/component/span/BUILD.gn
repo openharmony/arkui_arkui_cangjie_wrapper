@@ -14,7 +14,7 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.span") {
-  sources = [ "cj_span.cj" ]
+  sources = [ "span.cj" ]
 
   cj_deps = [
     "../../../base:ohos.base",

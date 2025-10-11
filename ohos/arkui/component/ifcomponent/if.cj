@@ -19,6 +19,7 @@ package ohos.arkui.component.ifcomponent
 
 import ohos.arkui.component.common.*
 import ohos.labels.APILevel
+import ohos.ffi.*
 
 foreign {
     func FfiOHOSAceFrameworkIfElseCreate(): Unit
@@ -30,19 +31,25 @@ foreign {
     func FfiOHOSAceFrameworkIfElseGetBranchId(): Int32
 }
 
+/**
+ * Bindings for IfElse defined in cj_ifelse.cpp/h
+ *
+ * non-public API
+ */
 @!APILevel[
-    21,
-    atomicservice: true,
-    crossplatform: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class If <: UINodeBase {
     var child: () -> Unit = {=>}
 
+    /**
+     * Defines the constructor of If.
+     *
+     * @param { () -> Unit } subcomponent
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(subcomponent: () -> Unit) {
@@ -52,10 +59,14 @@ public class If <: UINodeBase {
         this.child = subcomponent
     }
 
+    /**
+     * Set the branchId.
+     * BranchId identifies uniquely the if .. <1> .. else if .<2>. else .<3>.branch.
+     *
+     * @param { Int32 } value - branchId
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func branchId(value: Int32): Unit {
@@ -64,10 +75,13 @@ public class If <: UINodeBase {
         }
     }
 
+    /**
+     * Get the branchId.
+     *
+     * @returns { Int32 } branchId.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getBranchId(): Int32 {
@@ -82,24 +96,12 @@ public class If <: UINodeBase {
         }
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func initial(): Unit {
+    protected func initial(): Unit {
         genChild()
         pop()
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func update(): Unit {
+    protected func update(): Unit {
         genChild()
         pop()
     }

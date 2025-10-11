@@ -89,7 +89,7 @@ class ViewBackground3 {
                 ForegroundBlurStyleOptions(colorMode: ThemeColorMode.Light,
                 adaptiveColor: AdaptiveColor.Default, blurOptions: BlurOptions([0.0, 0.0]), scale: 1.0))
 
-            Button("打印Background属性").onClick { e =>
+            Button("打印Background属性").onClick ({ e =>
                 let c_id = "background_id_02"
 
                 let Inspector = getInspectorByKey(c_id)
@@ -103,7 +103,7 @@ class ViewBackground3 {
                 let backgroundBlurStyle = getTextFromJSonObj(obj, "backgroundBlurStyle")
                 Hilog.info(1, "Cangjie-App", backgroundBlurStyle)
 
-            }
+            })
         }
     }
     func getTextFromJSonObj(obj: JsonObject, attr_name: String): String {

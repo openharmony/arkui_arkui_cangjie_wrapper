@@ -30,12 +30,9 @@ foreign {
 
 /**
  * Describes an opaque object of a template, which is created using the createPattern() method.
- *
- * @relation interface CanvasPattern
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CanvasPattern <: RemoteDataLite {
@@ -63,17 +60,19 @@ public class CanvasPattern <: RemoteDataLite {
      * The 2D transformation effect is added. The current transformation matrix is not overwritten and
      *    the transformations are superimposed for multiple times.
      *
-     * @param { Matrix2D } transform - 2D transformation matrix.
-     * @relation setTransform(transform?: Matrix2D): void;
+     * @param { ?Matrix2D } transform - 2D transformation matrix.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setTransform(transform: Matrix2D): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkCanvasPatternSetTransform(this.getID(), transform.getID())
+    public func setTransform(transform: ?Matrix2D): Unit {
+        match (transform) {
+            case Some(v) =>
+                unsafe {
+                    FfiOHOSAceFrameworkCanvasPatternSetTransform(this.getID(), v.getID())
+                }
+            case None => ()
         }
     }
 }

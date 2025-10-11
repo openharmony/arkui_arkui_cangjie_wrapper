@@ -32,31 +32,25 @@ foreign {
 
 /**
  * Defines Line Component.
- *
- * @relation declare const Line: LineInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Line <: ShapeComponent {
+public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
     /**
      * Create a Line.
      *
-     * @param { Length } windth - Width of the rectangle where the line resides.
-     * @param { Length } height - Height of the rectangle where the line resides.
-     * @returns { This }
-     * @relation (options?: LineOptions): LineAttribute
+     * @param { ?Length } windth - Width of the rectangle where the line resides.
+     * @param { ?Length } height - Height of the rectangle where the line resides.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length = 0.vp, height!: Length = 0.vp) {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
+    public init(width!: ?Length = None, height!: ?Length = None) {
+        var width_ = transAppResourceToLength(width ?? 0.vp)
+        var height_ = transAppResourceToLength(height ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkLineCreate(
                 width_.value,
@@ -70,18 +64,17 @@ public class Line <: ShapeComponent {
     /**
      * Coordinate of the start point of the line (relative coordinate).
      *
-     * @param { (Float64, Float64) } value
+     * @param { ?(Float64, Float64) } value
      * @returns { This }
-     * @relation startPoint(value: Array<any>): LineAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func startPoint(value: (Float64, Float64)): This {
+    public func startPoint(value: ?(Float64, Float64)): This {
+        let tmpValue = value ?? (0.0, 0.0)
         unsafe {
-            FfiOHOSAceFrameworkLineSetStart(value[0], value[1])
+            FfiOHOSAceFrameworkLineSetStart(tmpValue[0], tmpValue[1])
         }
         this
     }
@@ -89,26 +82,20 @@ public class Line <: ShapeComponent {
     /**
      * Line end coordinates (relative coordinates).
      *
-     * @param { (Float64, Float64) } value
+     * @param { ?(Float64, Float64) } value
      * @returns { This }
-     * @relation endPoint(value: Array<any>): LineAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func endPoint(value: (Float64, Float64)): This {
+    public func endPoint(value: ?(Float64, Float64)): This {
+        let tmpValue = value ?? (0.0, 0.0)
         unsafe {
-            FfiOHOSAceFrameworkLineSetEnd(value[0], value[1])
+            FfiOHOSAceFrameworkLineSetEnd(tmpValue[0], tmpValue[1])
         }
         this
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public override func initial() {}
+    protected override func initial() {}
 }

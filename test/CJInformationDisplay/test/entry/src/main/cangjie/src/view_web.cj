@@ -47,21 +47,21 @@ class ViewWeb {
         Column(space: 10) {
             Column() {
                 Button("refresh")
-                    .onClick {
+                    .onClick ({
                         evt =>
                         Hilog.info(1,"1","refresh")
                         webController.refresh()
-                    }
+                    })
                     .width(400.px)
                     .height(150.px)
                     .id("refresh")
                 Button("loadUrl")
-                    .onClick {
+                    .onClick ({
                         evt =>
                         Hilog.info(1,"1","loadUrl")
                         this.url = "www.baidu.com"
                         webController.loadUrl(this.url)
-                    }
+                    })
                     .width(400.px)
                     .height(150.px)
                     .id("btn_load")

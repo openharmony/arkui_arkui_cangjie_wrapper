@@ -109,9 +109,9 @@ class ViewButton {
             Text('onClick').fontSize(9).fontColor(0xCCCCCC)
             Flex(direction: FlexDirection.Row, alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
                 Button("Ok").shape(ButtonType.Circle).backgroundColor(0x317aff).id("button9")
-                .onClick{ evt =>
+                .onClick ({ evt =>
                     this.effect = "!!!!!!"
-                }
+                })
                 Text(this.effect).fontSize(20).fontColor(Color.Black).backgroundColor(Color.Gray).id('Text').margin(left: 20)
             }
 

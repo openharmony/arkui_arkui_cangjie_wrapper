@@ -14,7 +14,10 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.button") {
-  sources = [ "cj_button.cj" ]
+  sources = [
+    "button.cj",
+    "button_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",
@@ -26,6 +29,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.button") {
   cj_external_deps = [
     "cangjie_ark_interop:ohos.ffi",
     "cangjie_ark_interop:ohos.labels",
+    "cangjie_ark_interop:ohos.business_exception",
     "global_cangjie_wrapper:ohos.resource",
   ]
 

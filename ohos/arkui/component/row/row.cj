@@ -34,33 +34,32 @@ foreign {
     func FfiOHOSAceFrameworkRowSetHeight(height: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkRowSetWidth(width: Float64, unit: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 /**
  * Defines Row Component.
- *
- * @relation const Row: RowInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Row <: ContainerBase {
+public class Row <: CommonMethodComponent<Row> & RowAttribute {
     /**
     * Defines the constructor of Row.
     *
-    * @param { Length } space
+    * @param { ?Length } space
     * @param { () -> Unit } child
-    * @returns { This }
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(space!: Length = 0.vp, child!: () -> Unit = {=>}) {
-        var space_ = transAppResourceToLength(space)
+    public init(space!: ?Length = None, child!: () -> Unit = {=>}) {
+        var space_ = transAppResourceToLength(space ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkRowCreateWithSpace(space_.value, space_.unitType.getValue())
         }
@@ -70,18 +69,16 @@ public class Row <: ContainerBase {
     /**
     * Called when the vertical alignment is set.
     *
-    * @param { VerticalAlign } value
+    * @param { ?VerticalAlign } value
     * @returns { This }
-    * @relation alignItems(value: VerticalAlign): RowAttribute
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alignItems(value: VerticalAlign): This {
+    public func alignItems(value: ?VerticalAlign): This {
         unsafe {
-            FfiOHOSAceFrameworkRowSetAlignItems(value.getValue())
+            FfiOHOSAceFrameworkRowSetAlignItems((value ?? VerticalAlign.Center).getValue())
         }
         this
     }
@@ -89,34 +86,40 @@ public class Row <: ContainerBase {
     /**
     * Called when the horizontal alignment is set.
     *
-    * @param { FlexAlign } value
+    * @param { ?FlexAlign } value
     * @returns { This }
-    * @relation justifyContent(value: FlexAlign): RowAttribute
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func justifyContent(value: FlexAlign): This {
+    public func justifyContent(value: ?FlexAlign): This {
         unsafe {
-            FfiOHOSAceFrameworkRowSetJustifyContent(value.getValue())
+            FfiOHOSAceFrameworkRowSetJustifyContent((value ?? FlexAlign.Start).getValue())
         }
         this
     }
 
-    protected override func widthInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkRowSetWidth(value_.value, value_.unitType.getValue())
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkRowSetWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
 
-    protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkRowSetHeight(value_.value, value_.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkRowSetHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }

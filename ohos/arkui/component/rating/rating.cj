@@ -42,49 +42,41 @@ foreign {
 
 /**
  * Defines Rating Component.
- * 
- * @relation declare const Rating: RatingInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Rating <: ViewBase {
+public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     /**
      * Create a Rating.
      *
-     * @params { Float64 } rating
-     * @params { Bool } indicator
-     * @returns { This }
-     * @relation (options?: RatingOptions): RatingAttribute
+     * @param { ?Float64 } rating
+     * @param { ?Bool } indicator
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(rating!: Float64, indicator!: Bool = false) {
+    public init(rating!: ?Float64, indicator!: ?Bool = None) {
         unsafe {
-            FfiOHOSAceFrameworkRatingCreate(rating, indicator)
+            FfiOHOSAceFrameworkRatingCreate(rating ?? 0.0, indicator ?? false)
         }
     }
 
     /**
      * Called when the total number of stars is set.
      * 
-     * @param { Int32 } starCount
+     * @param { ?Int32 } value
      * @returns { This }
-     * @relation stars(value: number): RatingAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func stars(starCount: Int32): This {
+    public func stars(value: ?Int32): This {
         unsafe {
-            FfiOHOSAceFrameworkRatingSetStars(starCount)
+            FfiOHOSAceFrameworkRatingSetStars(value ?? 5)
         }
         this
     }
@@ -92,22 +84,21 @@ public class Rating <: ViewBase {
     /**
      * Called when the step size of the operation rating.
      *
-     * @param { Float64 } size
+     * @param { ?Float64 } size
      * @returns { This }
-     * @relation stepSize(value: number): RatingAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func stepSize(size: Float64): This {
+    public func stepSize(size: ?Float64): This {
+        let tmpSize = size ?? 0.5
         // When the parameter value is less than or equal to 0, use the default value of 0.5
-        if (size <= 0.0) {
+        if (tmpSize <= 0.0) {
             return this
         }
         unsafe {
-            FfiOHOSAceFrameworkRatingSetStepSize(size)
+            FfiOHOSAceFrameworkRatingSetStepSize(tmpSize)
         }
         this
     }
@@ -115,21 +106,21 @@ public class Rating <: ViewBase {
     /**
      * Called when a picture is set.
      *
-     * @param { ResourceStr } backgroundUri - Background URI option.
-     * @param { ResourceStr } foregroundUri - Foreground URI option.
-     * @param { ResourceStr } secondaryUri - Secondary URI option.
+     * @param { ?ResourceStr } backgroundUri - Background URI option.
+     * @param { ?ResourceStr } foregroundUri - Foreground URI option.
+     * @param { ?ResourceStr } secondaryUri - Secondary URI option.
      * @returns { This }
-     * @relation starStyle(options: StarStyleOptions): RatingAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func starStyle(backgroundUri!: ResourceStr, foregroundUri!: ResourceStr, secondaryUri!: ResourceStr = backgroundUri): This {
-        let backgroundUri_ = transResourceStrToString(backgroundUri)
-        let foregroundUri_ = transResourceStrToString(foregroundUri)
-        let secondaryUri_ = transResourceStrToString(secondaryUri)
+    public func starStyle(backgroundUri!: ?ResourceStr, foregroundUri!: ?ResourceStr, secondaryUri!: ?ResourceStr = None): This {
+        let tmpBackgroundUri = backgroundUri ?? ""
+        let tmpForegroundUri = foregroundUri ?? ""
+        let backgroundUri_ = transResourceStrToString(tmpBackgroundUri)
+        let foregroundUri_ = transResourceStrToString(tmpForegroundUri)
+        let secondaryUri_ = transResourceStrToString(secondaryUri ?? tmpBackgroundUri)
         unsafe {
             try (unsafeBackgroundUri = LibC.mallocCString(backgroundUri_).asResource(),
                 unsafeForegroundUri = LibC.mallocCString(backgroundUri_).asResource(),
@@ -144,18 +135,17 @@ public class Rating <: ViewBase {
     /**
      * Called when the star rating of the operation scoring bar changes.
      *
-     * @param { (Float64) -> Unit } callback
+     * @param { ?(Float64) -> Unit } callback
      * @returns { This }
-     * @relation onChange(callback: (value: number) => void): RatingAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (Float64) -> Unit): This {
+    public func onChange(callback: ?(Float64) -> Unit): This {
+        let tmpCallback = callback ?? { _ => }
         unsafe {
-            FfiOHOSAceFrameworkRatingSetOnChange(Callback1Param<Float64, Unit>(callback).getID())
+            FfiOHOSAceFrameworkRatingSetOnChange(Callback1Param<Float64, Unit>(tmpCallback).getID())
         }
         this
     }

@@ -101,8 +101,8 @@ class ViewSwiper {
                             .top(200)
                             .fontColor(Color.Gray)
                             .selectedFontColor(Color.Gray)
-                            .digitFont(FontOptions(size: 20.vp, weight: FontWeight.Bold))
-                            .selectedDigitFont(FontOptions(size: 20.vp, weight: FontWeight.Bold)))
+                            .digitFont(Font(size: 20.vp, weight: FontWeight.Bold))
+                            .selectedDigitFont(Font(size: 20.vp, weight: FontWeight.Bold)))
                     .displayCount(2, swipeByGroup: true)
 
                 // 验证 displayCount传参SwiperAutoFill

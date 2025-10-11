@@ -20,9 +20,7 @@ internal import ohos.arkui.component.column.Column
 internal import ohos.arkui.component.row.Row
 internal import ohos.arkui.component.button.Button
 internal import ohos.arkui.component.text.Text
-internal import ohos.arkui.component.view.CustomView
 import ohos.callback_invoke.{ Callback0Argument, Callback1Argument }
-internal import ohos.arkui.component.view.loadNativeView
 internal import ohos.arkui.state_management.SubscriberManager
 internal import ohos.arkui.state_management.ObservedProperty
 internal import ohos.arkui.state_management.LocalStorage
@@ -319,12 +317,12 @@ class ViewWindowListener {
             TextInput().id("keyboardHeightTextInput")
             Button("CreateSubWindow")
                 .id("CreateSubWindow")
-                .onClick { e
+                .onClick ({ e
                     =>
                     let sub = Global
                         .getWindowStage()
                         .createSubWindow("testSubWindow")
-                }
+                })
                 .width(40.percent).height(30)
 
             Row() {

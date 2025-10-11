@@ -14,7 +14,10 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.menu_item_group") {
-  sources = [ "menu_item_group.cj" ]
+  sources = [
+    "menu_item_group.cj",
+    "menu_item_group_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",
