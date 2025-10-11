@@ -38,6 +38,7 @@ foreign func FfiOHOSAceFrameworkProcessViewId(view: Int64): ExternalString
  * load native view of custom component.
  *
  * @param { CustomView } view
+ * @returns { Bool }
  */
 @!APILevel[
     22,
