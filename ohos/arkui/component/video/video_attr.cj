@@ -126,7 +126,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func onFinish(event: ?() -> Unit): VideoAttribute
+    func onFinish(event: ?VoidCallback): VideoAttribute
 
     /**
      * Called when playback fails.
