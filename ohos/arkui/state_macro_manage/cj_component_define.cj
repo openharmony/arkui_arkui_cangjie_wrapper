@@ -84,6 +84,7 @@ func generateForEachCreate(callExpr: CallExpr, thisView: Tokens) {
             throw IllegalArgumentException("there should be a lambda in ForEach component.")
     }
     var dataParam = Tokens()
+    var paramType = lamExpr.funcParams[0].paramType
     for (param in lamExpr.funcParams) {
         dataParam = dataParam + quote($param)
     }
@@ -91,7 +92,7 @@ func generateForEachCreate(callExpr: CallExpr, thisView: Tokens) {
     let lamDealBody = generateFuncBody(lamExprBody, thisView)
 
     var res = quote(
-        $baseExpr {
+        $baseExpr<$paramType> {
         let forEachItemGenFunction = {
             $dataParam =>
             $lamDealBody
@@ -124,7 +125,7 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
     }
 
     let compId = generateNewId()
-    var res = quote($baseExpr().create\($compId, $thisView, )
+    var res = quote($callExpr.create\($compId, $thisView, )
     for (idx in 0..callExpr.arguments.size) {
         let para = callExpr.arguments[idx]
         let paraExpr = para.expr
