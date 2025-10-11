@@ -35,6 +35,7 @@ public class ReuseParams {
     }
 
     /**
+     * Gets the value of the specified key.
      *
      * @param { String } key
      * @returns { ?T }
