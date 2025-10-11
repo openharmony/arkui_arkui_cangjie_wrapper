@@ -41,10 +41,6 @@ public interface ResourceColor {
     }
 }
 
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 extend Int64 <: ResourceColor {
     /**
      * The hexadecimal value of the color.
@@ -61,10 +57,6 @@ extend Int64 <: ResourceColor {
     }
 }
 
-@!APILevel[
-    22,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
 extend UInt32 <: ResourceColor {
     /**
      * The hexadecimal value of the color.
