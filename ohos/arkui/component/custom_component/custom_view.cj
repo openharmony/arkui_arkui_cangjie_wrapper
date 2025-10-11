@@ -316,13 +316,13 @@ public abstract class CustomView <: RemoteView & Observer {
         var newIdArray = ArrayList<String>(arr.size) {
             index => keyGeneratorFunc(arr[index], index)
         }
-        let setIdResult = ForEach.setIdArray(elmtId, newIdArray)
+        let setIdResult = ForEach<T>.setIdArray(elmtId, newIdArray)
         let diffIndexArray = setIdResult.diffIndexArray
         for (idx in diffIndexArray) {
             let id = newIdArray[idx]
-            ForEach.createNewChildStart(id)
+            ForEach<T>.createNewChildStart(id)
             itemGenFunc(arr[idx], idx)
-            ForEach.createNewChildFinish(id)
+            ForEach<T>.createNewChildFinish(id)
         }
         this.purgeDeletedElmtIds(setIdResult.removedChildElmtIds)
     }
