@@ -1040,7 +1040,7 @@ public class PopupMessageOptions {
     ]
     public var textColor: ?ResourceColor
     /**
-     * Sets the color of popup text.
+     * Sets the font of popup text.
      *
      */
     @!APILevel[
