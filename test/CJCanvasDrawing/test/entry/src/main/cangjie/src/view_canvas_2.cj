@@ -51,7 +51,7 @@ class ViewCanvas2 {
     var matrix3: Matrix2D = Matrix2D()
     var path: Path2D = Path2D("M250 150 L150 350 L350 350 Z")
     var path2: Path2D = Path2D()
-    var pattern: CanvasPattern = this.context.createPattern(this.img3, Repetition.NoRepeat)
+    var pattern: CanvasPattern = this.context.createPattern(this.img3, Repetition.NoRepeat).getOrThrow()
 
     @State
     var height_width1: String = ""
@@ -111,7 +111,7 @@ class ViewCanvas2 {
                     .onReady(
                         {
                             =>
-                            this.context3.fillStyle(0x00fff00)
+                            this.context3.fillStyle = 0x00fff00
                             this.context3.fillRect(0.0, 0.0, 100.0, 100.0)
                         }
                     )
@@ -215,12 +215,12 @@ class ViewCanvas2 {
                 .onReady(
                     {
                         =>
-                        this.pattern = this.context.createPattern(this.img3, Repetition.NoRepeat)
+                        this.pattern = this.context.createPattern(this.img3, Repetition.NoRepeat).getOrThrow()
                         this.matrix3.scaleY = 0.5
                         this.matrix3.scaleX = 0.5
                         this.matrix3.translateX = 50.0
                         this.matrix3.translateY = 50.0
-                        this.context7.fillStyle(pattern)
+                        this.context7.fillStyle = pattern
                         this.pattern.setTransform(this.matrix3)
                         this.context7.fillRect(0.0, 0.0, 480.0, 720.0)
                     }

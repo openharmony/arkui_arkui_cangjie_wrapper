@@ -17,7 +17,6 @@ package ohos_app_cangjie_entry
 
 import ohos.base.*
 import ohos.arkui.component.*
-import ohos.router.*
 import ohos.arkui.state_management.SubscriberManager
 import ohos.arkui.state_management.ObservedProperty
 import ohos.arkui.state_macro_manage.*
@@ -37,7 +36,7 @@ class ViewTransition {
     func build() {
         Column {
             Button(this.show)
-                .onClick {
+                .onClick ({
                     evt =>
                     Hilog.info(1, "Cangjie-App", "Hello Cangjie")
                     if (this.flag) {
@@ -46,7 +45,7 @@ class ViewTransition {
                         this.show = "show"
                     }
                     this.flag = !this.flag
-                }
+                })
                 .width(800.px)
                 .height(400.px)
                 .id("my_button")

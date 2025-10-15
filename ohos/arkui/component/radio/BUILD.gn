@@ -14,14 +14,17 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.radio") {
-  sources = [ "radio.cj" ]
+  sources = [
+    "radio.cj",
+    "radio_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",
     "../common:ohos.arkui.component.common",
     "../native_struct:ohos.arkui.component.native_struct",
     "../util:ohos.arkui.component.util",
-    "../view:ohos.arkui.component.view",
+    "../custom_component:ohos.arkui.component.custom_component",
   ]
 
   cj_external_deps = [

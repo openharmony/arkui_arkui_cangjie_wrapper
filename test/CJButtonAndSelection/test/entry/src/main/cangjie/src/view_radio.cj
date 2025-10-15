@@ -19,7 +19,6 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.router.*
 
 @Entry
 @Component
@@ -29,25 +28,25 @@ class ViewRadio {
     func build() {
         Column() {
             Radio(value: '10', group: '数字')
-                .onChange {
+                .onChange ({
                     val =>
                     if (!val) {
                         return
                     }
                     Hilog.info(1,"Cangjie-App", "Radio A")
                     radioName = "AAA"
-                }
+                })
                 .size(width: 40, height: 40)
                 .id("my_radio_1")
             Radio(value: '20', group: '数字')
-                .onChange {
+                .onChange ({
                     val =>
                     if (!val) {
                         return
                     }
                     Hilog.info(1,"Cangjie-App", "Radio B")
                     radioName = "BBB"
-                }
+                })
                 .size(width: 40, height: 40)
                 .id("my_radio_2")
 

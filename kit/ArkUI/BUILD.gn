@@ -18,17 +18,11 @@ ohos_cangjie_shared_library("kit.ArkUI") {
   sources = [ "index.cj" ]
 
   cj_deps = [
-    "../../ohos/animator:ohos.animator",
     "../../ohos/arkui/component:ohos.arkui.component",
-    "../../ohos/arkui/component_snapshot:ohos.arkui.component_snapshot",
     "../../ohos/arkui/component_utils:ohos.arkui.component_utils",
     "../../ohos/arkui/state_management:ohos.arkui.state_management",
     "../../ohos/base:ohos.base",
     "../../ohos/curves:ohos.curves",
-    "../../ohos/font:ohos.font",
-    "../../ohos/measure:ohos.measure",
-    "../../ohos/prompt_action:ohos.prompt_action",
-    "../../ohos/router:ohos.router",
   ]
 
   cj_external_deps = [

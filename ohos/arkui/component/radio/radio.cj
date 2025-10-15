@@ -20,7 +20,7 @@ package ohos.arkui.component.radio
 import ohos.arkui.component.common.*
 import ohos.arkui.component.native_struct.*
 import ohos.arkui.component.util.*
-import ohos.arkui.component.view
+import ohos.arkui.component.custom_component
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
@@ -53,31 +53,25 @@ foreign {
 
 /**
  * Defines Radio Component.
- *
- * @relation declare const Radio: RadioInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Radio <: ViewBase {
+public class Radio <: CommonMethodComponent<Radio> & RadioAttribute {
     /**
      * Create a radio box.
      *
-     * @param { String } value
-     * @param { String } group
-     * @returns { This }
-     * @relation (options: RadioOptions): RadioAttribute
+     * @param { ?String } value
+     * @param { ?String } group
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: String, group!: String) {
+    public init(value!: ?String, group!: ?String) {
         unsafe {
-            try (groupStr = LibC.mallocCString(group).asResource(), valStr = LibC.mallocCString(value).asResource()) {
+            try (groupStr = LibC.mallocCString(group ?? "").asResource(), valStr = LibC.mallocCString(value ?? "").asResource()) {
                 FfiOHOSAceFrameworkRadioCreate(groupStr.value, valStr.value)
             }
         }
@@ -86,49 +80,52 @@ public class Radio <: ViewBase {
     /**
      * Called when the radio box is selected.
      *
-     * @param { Bool } value
+     * @param { ?Bool } value
      * @returns { This }
-     * @relation checked(value: boolean): RadioAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func checked(value: Bool): This {
+    public func checked(value: ?Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkRadioChecked(value)
+            FfiOHOSAceFrameworkRadioChecked(value ?? false)
         }
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkRadioSetSize(
-                width_.value,
-                width_.unitType.getValue(),
-                height_.value,
-                height_.unitType.getValue()
-            )
+    protected override func sizeInner(width: ?Length, height: ?Length): This {
+        if (width.isNone() || height.isNone()) {
+            widthInner(width)
+            heightInner(height)
+        } else {
+            var width_ = transAppResourceToLength(width ?? 0.0.vp)
+            var height_ = transAppResourceToLength(height ?? 0.0.vp)
+            unsafe {
+                FfiOHOSAceFrameworkRadioSetSize(
+                    width_.value,
+                    width_.unitType.getValue(),
+                    height_.value,
+                    height_.unitType.getValue()
+                )
+            }
         }
         this
     }
 
-    protected override func paddingInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
+    protected override func paddingInner(value: ?Length): This {
+        var value_ = transAppResourceToLength(value ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkRadioSetPadding(value_.value, value_.unitType.getValue())
         }
         this
     }
 
-    protected override func paddingInner(top: Length, right: Length, bottom: Length, left: Length): This {
-        var top_ = transAppResourceToLength(top)
-        var right_ = transAppResourceToLength(right)
-        var bottom_ = transAppResourceToLength(bottom)
-        var left_ = transAppResourceToLength(left)
+    protected override func paddingInner(top: ?Length, right: ?Length, bottom: ?Length, left: ?Length): This {
+        var top_ = transAppResourceToLength(top ?? 0.vp)
+        var right_ = transAppResourceToLength(right ?? 0.vp)
+        var bottom_ = transAppResourceToLength(bottom ?? 0.vp)
+        var left_ = transAppResourceToLength(left ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkRadioSetPaddings(
                 CJEdge(
@@ -149,25 +146,24 @@ public class Radio <: ViewBase {
     /**
      * Called when the radio box selection status changes.
      *
-     * @param { (Bool) -> Unit } callback
+     * @param { ?(Bool) -> Unit } callback
      * @returns { This }
-     * @relation onChange(callback: (isChecked: boolean) => void): RadioAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (Bool) -> Unit): This {
-        let lambdaData = Callback1Param<Bool, Unit>(callback)
+    public func onChange(callback: ?(Bool) -> Unit): This {
+        let tmpCallback = callback ?? { _ => }
+        let lambdaData = Callback1Param<Bool, Unit>(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkRadioOnChange(lambdaData.getID())
         }
         this
     }
 
-    protected override func responseRegionInner(rect: Rectangle): This {
-        let cjRect = rect.parseToNative()
+    protected override func responseRegionInner(rect: ?Rectangle): This {
+        let cjRect = (rect ?? Rectangle()).parseToNative()
         unsafe {
             FfiRadioSetResponseRegion(
                 CJResponseRegion(
@@ -185,10 +181,11 @@ public class Radio <: ViewBase {
         this
     }
 
-    protected override func responseRegionInner(array: Array<Rectangle>): This {
-        let vecFFi = FFIVectorNativeRectangle(array.size)
+    protected override func responseRegionInner(array: ?Array<Rectangle>): This {
+        let tmpArray = array ?? [Rectangle()]
+        let vecFFi = FFIVectorNativeRectangle(tmpArray.size)
         var index = 0
-        for (rect in array) {
+        for (rect in tmpArray) {
             BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++

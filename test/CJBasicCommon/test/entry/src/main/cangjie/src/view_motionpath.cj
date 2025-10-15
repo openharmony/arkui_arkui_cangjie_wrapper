@@ -34,10 +34,10 @@ class ViewMotionPath {
                 // from 路径长度的初始百占比位置
                 // to 路径长度的结束占比比例
                 // path Mstart Lend固定写法，点位是由布局决定，中间添加路径节点。起点和终点点位是由alignItems的布局决定的，可以设置水平和竖直
-                .onClick { e =>
+                .onClick ({ e =>
                     getUIContext().animateTo(AnimateParam(duration: 4000, curve: Curve.Linear), {=> this.toggle = !this.toggle} // 通过this.toggle变化组件的位置
                     )
-                }
+                })
         }
             .width(100.percent)
             .height(100.percent)

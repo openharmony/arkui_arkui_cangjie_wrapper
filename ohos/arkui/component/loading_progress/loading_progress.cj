@@ -19,7 +19,7 @@ package ohos.arkui.component.loading_progress
 
 import ohos.arkui.component.common.*
 import ohos.arkui.component.util.*
-import ohos.arkui.component.view.*
+import ohos.arkui.component.custom_component.*
 import ohos.base.*
 import ohos.labels.APILevel
 
@@ -37,24 +37,17 @@ foreign {
 
 /**
  * Defines LoadingProgress Component.
- *
- * @relation declare const LoadingProgress: LoadingProgressInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class LoadingProgress <: ViewBase {
+public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & LoadingProgressAttribute {
     /**
      * Create a LoadingProgress
-     *
-     * @returns { This }
-     * @relation (): LoadingProgressAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -65,18 +58,16 @@ public class LoadingProgress <: ViewBase {
     /**
      * Load the color of the progress bar.
      *
-     * @param { ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
-     * @relation color(value: ResourceColor): LoadingProgressAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(value: ResourceColor): This {
+    public func color(value: ?ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkLoadingProgressSetColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkLoadingProgressSetColor(transAppResourceToResourceColor(value ?? 0xFF666666))
         }
         this
     }

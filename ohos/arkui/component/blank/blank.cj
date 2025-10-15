@@ -26,50 +26,42 @@ foreign func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
 
 /**
  * Defines Blank Component.
- *
- * @relation const Blank: BlankAttribute
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Blank <: ViewBase {
+public class Blank <: CommonMethodComponent<Blank> & BlankAttribute {
     /**
-    * Minimum size of the Blank component in the container along the main axis
-    * Default value: **0.vp**.
-    *
-    * @param { Length } min
-    * @returns { This }
-    * @relation (min?: number | string): BlankAttribute
-    */
+     * Minimum size of the Blank component in the container along the main axis.
+     * Default value: **0.vp**.
+     *
+     * @param { ?Length } min
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(min!: Length = 0.vp) {
-        var min_ = transAppResourceToLength(min)
+    public init(min!: ?Length = None) {
+        var min_ = transAppResourceToLength(min ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkBlankCreate(min_.value, min_.unitType.getValue())
         }
     }
 
     /**
-    * Sets the color to fill the blank
-    * Default value: **Color.Transparent**.
-    *
-    * @param { ResourceColor } value
-    * @returns { This }
-    * @relation color(value: ResourceColor): BlankAttribute
-    */
+     * Sets the color to fill the blank.
+     * Default value: **Color.Transparent**.
+     *
+     * @param { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(value: ResourceColor): This {
-        backgroundColor(transAppResourceToResourceColor(value))
+    public func color(value: ?ResourceColor): This {
+        backgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
         this
     }
 }

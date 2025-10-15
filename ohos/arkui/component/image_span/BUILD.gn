@@ -14,7 +14,10 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.image_span") {
-  sources = [ "cj_image_span.cj" ]
+  sources = [
+    "image_span.cj",
+    "image_span_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

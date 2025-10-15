@@ -34,18 +34,20 @@ foreign {
         heightUnit: Int32): Unit
 
     func FfiOHOSAceFrameworkShapeSetInsOffset(shapeId: Int64, x: Float64, xUnit: Int32, y: Float64, yUnit: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class BaseShape <: RemoteDataLite {
     /**
      * BaseShape Constructor.
-     * @param id: Component ID
-     * @since 11
+     * @param { Int64 } id - Component ID
      */
     protected init(id: Int64) {
         super(id)
@@ -54,18 +56,16 @@ public abstract class BaseShape <: RemoteDataLite {
     /**
      * Sets the color of the filled area. The abnormal value is processed based on the default value.
      *
-     * @param color: Color of the filled area
-     * @return BaseShape instance
-     * @since 11
+     * @param { ?ResourceColor } color - Color of the filled area
+     * @returns BaseShape instance
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func fill(color: ResourceColor): This {
+    public func fill(color: ?ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkShapeSetInsFill(getID(), transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkShapeSetInsFill(getID(), transAppResourceToResourceColor(color ?? Color.Black))
         }
         this
     }
@@ -73,19 +73,21 @@ public abstract class BaseShape <: RemoteDataLite {
     /**
      * Sets the shape width.
      *
-     * @param value: Shape width
-     * @return BaseShape instance
-     * @since 11
+     * @param { ?Length } value - Shape width
+     * @returns BaseShape instance
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func width(width: Length): This {
-        var value_ = transAppResourceToLength(width)
-        unsafe {
-            FfiOHOSAceFrameworkShapeSetInsWidth(getID(), value_.value, value_.unitType.getValue())
+    public func width(width: ?Length): This {
+        match (width) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkShapeSetInsWidth(getID(), value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
@@ -93,19 +95,21 @@ public abstract class BaseShape <: RemoteDataLite {
     /**
      * Sets the shape height.
      *
-     * @param value: Shape height
-     * @return BaseShape instance
-     * @since 11
+     * @param { ?Length } value - Shape height
+     * @returns BaseShape instance
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func height(height: Length): This {
-        var value_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkShapeSetInsHeight(getID(), value_.value, value_.unitType.getValue())
+    public func height(height: ?Length): This {
+        match (height) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkShapeSetInsHeight(getID(), value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }
@@ -113,19 +117,17 @@ public abstract class BaseShape <: RemoteDataLite {
     /**
      * Sets the shape size.
      *
-     * @param width: Shape width
-     * @param height: Shape height
-     * @return BaseShape instance
-     * @since 11
+     * @param { ?Length } width - Shape width
+     * @param { ?Length } height - Shape height
+     * @returns BaseShape instance
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func size(width!: Length, height!: Length): This {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
+    public func size(width!: ?Length, height!: ?Length): This {
+        var width_ = transAppResourceToLength(width ?? 0.0.vp)
+        var height_ = transAppResourceToLength(height ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkShapeSetInsSize(getID(), width_.value, width_.unitType.getValue(), height_.value,
                 height_.unitType.getValue())
@@ -136,19 +138,17 @@ public abstract class BaseShape <: RemoteDataLite {
     /**
      * Sets the shape offset.
      *
-     * @param x: x Offset
-     * @param y: y Offset
-     * @return BaseShape instance
-     * @since 11
+     * @param { ?Length } x - x Offset
+     * @param { ?Length } y - y Offset
+     * @returns BaseShape instance
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func offset(x!: Length, y!: Length): This {
-        var x_ = transAppResourceToLength(x)
-        var y_ = transAppResourceToLength(y)
+    public func offset(x!: ?Length, y!: ?Length): This {
+        var x_ = transAppResourceToLength(x ?? 0.0.px)
+        var y_ = transAppResourceToLength(y ?? 0.0.px)
         unsafe {
             FfiOHOSAceFrameworkShapeSetInsOffset(getID(), x_.value, x_.unitType.getValue(), y_.value,
                 y_.unitType.getValue())

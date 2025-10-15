@@ -14,7 +14,10 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.grid_item") {
-  sources = [ "cj_grid_item.cj" ]
+  sources = [
+    "grid_item.cj",
+    "grid_item_attr.cj",
+  ]
 
   cj_deps = [ "../common:ohos.arkui.component.common" ]
 

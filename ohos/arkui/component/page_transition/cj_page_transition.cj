@@ -23,6 +23,7 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 import std.deriving.Derive
+import ohos.business_exception.BusinessException
 
 foreign func FfiPageTransitionEnterCreate(`type`: Int32, duration: Int32, curve: CString, delay: Int32): Unit
 
@@ -47,21 +48,21 @@ class CallbackCJTransitionEvent <: BaseCallBack {
 
     protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
         if (argc != 2) {
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<Int32>(argv.read()) }
         if (ptrArg0.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg1 = unsafe { CPointer<Float64>(argv.read(1)) }
         if (ptrArg1.isNull()) {
             AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
-            throw InvalidArgsException()
+            throw BusinessException(190002, "The callback function is invalid.")
         }
         unsafe {
             let arg0 = ptrArg0.read()
@@ -74,53 +75,40 @@ class CallbackCJTransitionEvent <: BaseCallBack {
 * Callback used to report page trasition events.
 * 
 * @param { RouteType } type - transition route type
-* @param { number } progress - transition progess
-* @returns { This }
-* @relation declare type PageTransitionCallback = (type: RouteType, progress: number) => void
+* @param { Float64 } progress - transition progess
 */
 public type PageTransitionCallback = (RouteType, Float64) -> Unit
+
 /**
 * Declare the jump method.
-* 
-* @relation declare enum RouteType 
 */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RouteType {
     /**
     * The page is not redirected.
-    * 
-    * @relation None
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
     /**
     * Go to the next page.
-    * 
-    * @relation Push
     */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Push
     /**
     * Redirect to a specified page.
-    * 
-    * @relation Pop
     */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Pop
@@ -131,7 +119,7 @@ public enum RouteType {
             case None => 0
             case Push => 1
             case Pop => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -140,63 +128,48 @@ public enum RouteType {
             case 0 => None
             case 1 => Push
             case 2 => Pop
-            case _ => throw IllegalArgumentException("The type is not supported yet.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
 /**
 * Declare the sliding effect of transition.
-* 
-* @relation declare enum SlideEffect 
 */
 @Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SlideEffect {
     /**
     * Swipe left.
-    * 
-    * @relation Left
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
     /**
     * Swipe right.
-    * 
-    * @relation Right
     */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
     /**
     * Swipe top.
-    * 
-    * @relation Top
     */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
     /**
     * Swipe bottom.
-    * 
-    * @relation Bottom
     */
     | @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -208,14 +181,16 @@ public enum SlideEffect {
             case Right => 2
             case Top => 3
             case Bottom => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
 
+/**
+* Provides interfaces for common transitions.
+*/
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed abstract class CommonTransition {
@@ -223,12 +198,9 @@ sealed abstract class CommonTransition {
     * Called when the slide in effect of the transition is set.
     * 
     * @param { SlideEffect } value
-    * @returns { This } 
-    * @relation slide(value: SlideEffect): T
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func slide(value: SlideEffect): This {
@@ -240,21 +212,19 @@ sealed abstract class CommonTransition {
     /**
     * Called when the translation effect of page transition is set.
     * 
-    * @param { Length } x 
-    * @param { Length } y 
-    * @param { Length } z
+    * @param { ?Length } x 
+    * @param { ?Length } y 
+    * @param { ?Length } z
     * @returns { This } 
-    * @relation translate(value: TranslateOptions): T
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func translate(x!: Length = 0.vp, y!: Length = 0.vp, z!: Length = 0.vp): This {
-        var x_ = transAppResourceToLength(x)
-        var y_ = transAppResourceToLength(y)
-        var z_ = transAppResourceToLength(z)
+    public func translate(x!: ?Length = None, y!: ?Length = None, z!: ?Length = None): This {
+        var x_ = transAppResourceToLength(x ?? 0.vp)
+        var y_ = transAppResourceToLength(y ?? 0.vp)
+        var z_ = transAppResourceToLength(z ?? 0.vp)
         unsafe {
             FfiPageTransitionTranslate(x_.value, y_.value, z_.value)
         }
@@ -263,29 +233,27 @@ sealed abstract class CommonTransition {
     /**
     * Called when setting the zoom effect of page transition.
     * 
-    * @param { Float32 } x 
-    * @param { Float32 } y
-    * @param { Float32 } z
-    * @param { Length } centerX 
-    * @param { Length } centerY
+    * @param { ?Float32 } x 
+    * @param { ?Float32 } y
+    * @param { ?Float32 } z
+    * @param { ?Length } centerX 
+    * @param { ?Length } centerY
     * @returns { This } 
-    * @relation scale(value: ScaleOptions): T
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scale(
-        x!: Float32 = 1.0,
-        y!: Float32 = 1.0,
-        z!: Float32 = 1.0,
-        centerX!: Length = 50.percent,
-        centerY!: Length = 50.percent
+        x!: ?Float32 = None,
+        y!: ?Float32 = None,
+        z!: ?Float32 = None,
+        centerX!: ?Length = None,
+        centerY!: ?Length = None
     ): This {
         unsafe {
-            FfiPageTransitionScalePointer(Float64(x), Float64(y), Float64(z), transAppResourceToLength(centerX).value,
-                transAppResourceToLength(centerY).value)
+            FfiPageTransitionScalePointer(Float64(x ?? 1.0), Float64(y ?? 1.0), Float64(z ?? 1.0), 
+                transAppResourceToLength(centerX ?? 50.percent).value, transAppResourceToLength(centerY ?? 50.percent).value)
         }
         this
     }
@@ -294,11 +262,9 @@ sealed abstract class CommonTransition {
     * 
     * @param { Float64 } value
     * @returns { This } 
-    * @relation opacity(value: number): T
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func opacity(value: Float64): This {
@@ -311,38 +277,35 @@ sealed abstract class CommonTransition {
 /**
 * Defines PageTransitionEnter Component.
 * 
-* @relation declare const PageTransitionEnter: PageTransitionEnterInterface
 */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PageTransitionEnter <: CommonTransition {
     /**
     * Called when page Jump animation is used.
     * 
-    * @param { RouteType } routeType
-    * @param { Int32 } duration
-    * @param { Curve } curve
-    * @param { Int32 } delay
-    * @returns { This } 
-    * @relation (value: PageTransitionOptions): PageTransitionEnterInterface
+    * @param { ?RouteType } routeType
+    * @param { ?Int32 } duration
+    * @param { ?Curve } curve
+    * @param { ?Int32 } delay
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        routeType!: RouteType = RouteType.None,
-        duration!: Int32 = 1000,
-        curve!: Curve = Curve.Linear,
-        delay!: Int32 = 0
+        routeType!: ?RouteType = Option.None,
+        duration!: ?Int32 = None,
+        curve!: ?Curve = None,
+        delay!: ?Int32 = None
     ) {
+        let tmpRouteType = routeType ?? RouteType.None
+        let tmpCurve = curve ?? Curve.Linear
         unsafe {
-            try (cCurve = LibC.mallocCString(curve.getValue()).asResource()) {
-                FfiPageTransitionEnterCreate(routeType.getValue(), duration, cCurve.value, delay)
+            try (cCurve = LibC.mallocCString(tmpCurve.getValue()).asResource()) {
+                FfiPageTransitionEnterCreate(tmpRouteType.getValue(), duration ?? 1000, cCurve.value, delay ?? 0)
             }
         }
     }
@@ -350,18 +313,18 @@ public class PageTransitionEnter <: CommonTransition {
     * Called frame by frame to customize pageTransition animation when the page enters.
     * The incoming parameter is the normalized progress of the current incoming animation.
     * 
-    * @param { PageTransitionCallback } event
+    * @param { ?PageTransitionCallback } event
     * @returns { This } 
-    * @relation onEnter(event: PageTransitionCallback): PageTransitionEnterInterface
+    * @throws { BusinessException } 190002 - The callback function is invalid.
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onEnter(event: PageTransitionCallback) {
+    public func onEnter(event: ?PageTransitionCallback) {
+        let tmpEvent = event ?? { _, _ =>}
         let wrapper = {
-            ty: Int32, progress: Float64 => event(RouteType.parse(ty), progress)
+            ty: Int32, progress: Float64 => tmpEvent(RouteType.parse(ty), progress)
         }
         let lambdaData = CallbackCJTransitionEvent(wrapper)
         unsafe {
@@ -372,39 +335,35 @@ public class PageTransitionEnter <: CommonTransition {
 }
 /**
 * Provide an interface to set transition style when a page exits.
-* 
-* @relation declare const PageTransitionExit: PageTransitionExitInterface
 */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PageTransitionExit <: CommonTransition {
     /**
     * Called when page Jump animation is used.
     * 
-    * @param { RouteType } routeType
-    * @param { Int32 } duration
-    * @param { Curve } curve
-    * @param { Int32 } delay
-    * @returns { This } 
-    * @relation (value: PageTransitionOptions): PageTransitionEnterInterface
+    * @param { ?RouteType } routeType
+    * @param { ?Int32 } duration
+    * @param { ?Curve } curve
+    * @param { ?Int32 } delay
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        routeType!: RouteType = RouteType.None,
-        duration!: Int32 = 1000,
-        curve!: Curve = Curve.Linear,
-        delay!: Int32 = 0
+        routeType!: ?RouteType = Option.None,
+        duration!: ?Int32 = None,
+        curve!: ?Curve = None,
+        delay!: ?Int32 = None
     ) {
+        let tmpRouteType = routeType ?? RouteType.None
+        let tmpCurve = curve ?? Curve.Linear
         unsafe {
-            try (cCurve = LibC.mallocCString(curve.getValue()).asResource()) {
-                FfiPageTransitionExitCreate(routeType.getValue(), duration, cCurve.value, delay)
+            try (cCurve = LibC.mallocCString(tmpCurve.getValue()).asResource()) {
+                FfiPageTransitionExitCreate(tmpRouteType.getValue(), duration ?? 1000, cCurve.value, delay ?? 0)
             }
         }
     }
@@ -412,18 +371,17 @@ public class PageTransitionExit <: CommonTransition {
     * Called frame by frame to customize pageTransition animation when the page exits.
     * The input parameter is the normalized progress of the current exit animation.
     * 
-    * @param { PageTransitionCallback } event
+    * @param { ?PageTransitionCallback } event
     * @returns { This } 
-    * @relation onExit(event: PageTransitionCallback): PageTransitionExitInterface
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onExit(event: PageTransitionCallback) {
+    public func onExit(event: ?PageTransitionCallback) {
+        let tmpEvent = event ?? { _, _ =>}
         let wrapper = {
-            ty: Int32, progress: Float64 => event(RouteType.parse(ty), progress)
+            ty: Int32, progress: Float64 => tmpEvent(RouteType.parse(ty), progress)
         }
         let lambdaData = CallbackCJTransitionEvent(wrapper)
         unsafe {

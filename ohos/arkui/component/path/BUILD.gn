@@ -14,7 +14,10 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.path") {
-  sources = [ "cj_path.cj" ]
+  sources = [
+    "path.cj",
+    "path_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

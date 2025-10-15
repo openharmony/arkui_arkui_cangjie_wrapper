@@ -30,22 +30,23 @@ foreign func FfiOHOSAceFrameworkStopGetAccessRecording(): Unit
 foreign func FfiOHOSAceFrameworkImplicitPopBeforeContinue(): Unit
 
 /**
- * ViewStackProcessor declaration
+ * ViewStackProcessor declaration.
  *
  * Implemntation in C++ and exposed to cangjie
- * all definitions in this file are framework internal
+ * all definitions in this file are framework internal.
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ViewStackProcessor {
     /**
      * Make and return new elementId, will be used to create the next Component.
      *
+     * @returns { Int64 }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func AllocateNewElmetIdForNextComponent(): Int64 {
@@ -57,9 +58,10 @@ public class ViewStackProcessor {
      * Start Get access recording, and account all access to given elmtId.
      * Note this can be a different elmtId than the one used to create new Component.
      *
+     * @param { Int64 } elmtId
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func StartGetAccessRecordingFor(elmtId: Int64): Unit {
@@ -73,9 +75,11 @@ public class ViewStackProcessor {
      * but also a different one (in case a whole subtree gets accounted its root elmtId)
      *
      * returns the elmtId given by StartGetAccessRecordingFor -1 no access recording
+     *
+     * @returns { Int64 }
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func GetElmtIdToAccountFor(): Int64 {
@@ -89,7 +93,7 @@ public class ViewStackProcessor {
      * also invalidates any reserved but unclaimed elmtId for Component creation.
      */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func StopGetAccessRecording(): Unit {
@@ -105,9 +109,7 @@ public class ViewStackProcessor {
      * and before read ViewStackProcessor.GetTopMostElementId();
      */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func ImplicitPopBeforeContinue(): Unit {

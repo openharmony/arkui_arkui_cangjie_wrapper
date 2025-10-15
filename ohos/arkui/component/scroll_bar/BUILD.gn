@@ -14,7 +14,10 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.scroll_bar") {
-  sources = [ "scroll_bar.cj" ]
+  sources = [
+    "scroll_bar.cj",
+    "scroll_bar_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

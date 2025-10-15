@@ -161,8 +161,8 @@ class ViewTextInput {
                     timestamp: ${event.timestamp}
                     Distance between point and element:
                     x: ${event.touches[0].x} y: ${event.touches[0].y}
-                    Component localPos:(${event.target.area.position.x.value}, ${event.target.area.position.y.value})
-                    width: ${event.target.area.width.value} height: ${event.target.area.height.value}
+                    Component localPos:(${event.target.getOrThrow().area.position.x.getOrThrow().value}, ${event.target.getOrThrow().area.position.y.getOrThrow().value})
+                    width: ${event.target.getOrThrow().area.width.value} height: ${event.target.getOrThrow().area.height.value}
                 """
                     Hilog.info(1, "Cangjie-Test", this.text)
                     event.stopPropagation()

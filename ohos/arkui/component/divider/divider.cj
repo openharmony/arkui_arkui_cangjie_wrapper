@@ -34,26 +34,21 @@ foreign {
     func FfiOHOSAceFrameworkDividerSetStrokeWidth(width: Float64, unit: Int32): Unit
 }
 
+let defaultDivierColor = 0x33182431
+
 /**
  * Defines Divider Component.
- *
- * @relation const Divider: DividerInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Divider <: ViewBase {
+public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     /**
     * Divider constructor.
-    *
-    * @returns { This }
-    * @relation (): DividerAttribute
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -63,58 +58,52 @@ public class Divider <: ViewBase {
     }
 
     /**
-    * Indicates whether to use a horizontal splitter or a vertical splitter.
-    * The options are as follows: false: horizontal splitter; true: vertical splitter.
-    *
-    * @param { Bool } value
-    * @returns { This }
-    * @relation vertical(value: boolean): DividerAttribute
-    */
+     * Indicates whether to use a horizontal splitter or a vertical splitter.
+     * The options are as follows: false: horizontal splitter; true: vertical splitter.
+     *
+     * @param { ?Bool } value
+     * @returns { This }
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func vertical(value: Bool): This {
+    public func vertical(value: ?Bool): This {
         unsafe {
-            FfiOHOSAceFrameworkDividerSetVertical(value)
+            FfiOHOSAceFrameworkDividerSetVertical(value ?? false)
         }
         this
     }
 
     /**
-    * Sets the color of the divider line.
-    *
-    * @param { ResourceColor } value
-    * @returns { This }
-    * @relation color(value: ResourceColor): DividerAttribute
-    */
+     * Sets the color of the divider line.
+     *
+     * @param { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(value: ResourceColor): This {
+    public func color(value: ?ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkDividerSetDividerColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkDividerSetDividerColor(transAppResourceToResourceColor(value ?? defaultDivierColor))
         }
         this
     }
 
     /**
-    * Sets the width of the dividing line.
-    *
-    * @param { Length } value
-    * @returns { This }
-    * @relation strokeWidth(value: number | string): DividerAttribute;
-    */
+     * Sets the width of the dividing line.
+     *
+     * @param { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeWidth(value: Length): This {
-        var width_ = transAppResourceToLength(value)
+    public func strokeWidth(value: ?Length): This {
+        var width_ = transAppResourceToLength(value ?? 1.0.px)
         unsafe {
             FfiOHOSAceFrameworkDividerSetStrokeWidth(width_.value, width_.unitType.getValue())
         }
@@ -122,20 +111,18 @@ public class Divider <: ViewBase {
     }
 
     /**
-    * Sets the end style of the split line. The default value is Butt.
-    *
-    * @param { LineCapStyle } value
-    * @returns { This }
-    * @relation lineCap(value: LineCapStyle): DividerAttribute;
-    */
+     * Sets the end style of the split line. The default value is Butt.
+     *
+     * @param { ?LineCapStyle } value
+     * @returns { This }
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func lineCap(value: LineCapStyle): This {
+    public func lineCap(value: ?LineCapStyle): This {
         unsafe {
-            FfiOHOSAceFrameworkDividerSetLineCap(value.getValue())
+            FfiOHOSAceFrameworkDividerSetLineCap((value ?? LineCapStyle.Butt).getValue())
         }
         this
     }

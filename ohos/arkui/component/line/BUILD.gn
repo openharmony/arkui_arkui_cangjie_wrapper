@@ -14,7 +14,10 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.line") {
-  sources = [ "line.cj" ]
+  sources = [
+    "line.cj",
+    "line_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

@@ -16,7 +16,7 @@
 package ohos_app_cangjie_entry
 
 internal import ohos.arkui.component.*
-internal import ohos.arkui.component.view.loadNativeView
+//internal import ohos.arkui.component.view.loadNativeView
 internal import ohos.arkui.state_management.SubscriberManager
 internal import ohos.arkui.state_management.ObservedProperty
 
@@ -35,9 +35,9 @@ class MyView {
                     UT_views,
                     itemGeneratorFunc: {
                         viewName: String, _: Int64 => Button(viewName).fontSize(16).width(100.percent).height(50).id(
-                            viewName).borderRadius(10).onClick { e
+                            viewName).borderRadius(10).onClick ({ e
                             => getUIContext().getRouter().pushUrl(url: viewName)
-                        }
+                        })
                     }
                 )
             }.width(100.percent).margin(top: 5)

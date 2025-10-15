@@ -20,16 +20,29 @@ protected package ohos.arkui.component.empty_component
 import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 
+/**
+ * Empty component.
+ */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class EmptyComponent <: ViewBase {
+public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComponentAttribute {
+    /**
+     * EmptyComponent Constructor.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {}
 }
+
+/**
+ * Empty component attributes.
+ */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+sealed interface EmptyComponentAttribute <: CommonMethod<EmptyComponentAttribute> {}

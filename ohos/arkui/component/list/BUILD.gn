@@ -14,14 +14,19 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.list") {
-  sources = [ "cj_list.cj" ]
+  sources = [
+    "list.cj",
+    "list_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",
+    "../../shape:ohos.arkui.shape",
     "../common:ohos.arkui.component.common",
     "../native_struct:ohos.arkui.component.native_struct",
     "../scroll:ohos.arkui.component.scroll",
     "../util:ohos.arkui.component.util",
+    "../list_item_group:ohos.arkui.component.list_item_group",
   ]
 
   cj_external_deps = [

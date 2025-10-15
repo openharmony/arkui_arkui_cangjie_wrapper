@@ -22,7 +22,6 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.hilog.Hilog
-import ohos.router.*
 import ohos.ui_test.*
 internal import ohos.business_exception.BusinessException
 

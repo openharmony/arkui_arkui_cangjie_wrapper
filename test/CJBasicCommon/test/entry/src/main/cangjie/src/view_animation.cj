@@ -51,7 +51,7 @@ class ViewAnimation {
     func build() {
         Column(space: 5) {
             Text(this.text).id("text")
-            Button("change size").animationStart(animateOpt).onClick {
+            Button("change size").animationStart(animateOpt).onClick ({
                 e =>
                 if (flag) {
                     this.widthSize = 150.vp
@@ -62,7 +62,7 @@ class ViewAnimation {
                 }
                 this.flag = !this.flag
                 this.text = "Animation"
-            }.margin(30).width(this.widthSize).height(this.heightSize).animationEnd().id("my_button")
+            }).margin(30).width(this.widthSize).height(this.heightSize).animationEnd().id("my_button")
         }.width(100.percent).padding(top: 5)
     }
 }

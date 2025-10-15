@@ -14,7 +14,10 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.sidebar") {
-  sources = [ "cj_sidebar_container.cj" ]
+  sources = [
+    "sidebar_container.cj",
+    "sidebar_container_attr.cj",
+  ]
 
   cj_deps = [
     "../../../base:ohos.base",

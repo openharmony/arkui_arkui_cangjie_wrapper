@@ -37,32 +37,26 @@ foreign {
 }
 /**
  * Defines Stepper Component.
- *
- * @relation const Stepper: StepperInterface;
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Stepper <: ContainerBase {
+public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
 
     /**
      * Defines Stepper Component instance.
      *
-     * @param { UInt32 = 0 } index
+     * @param { ?UInt32 } index
      * @param { () -> Unit } child
-     * @returns { This }
-     * @relation (value?: StepperOptions): StepperAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(index!: UInt32 = 0, child!: () -> Unit = {=>}) {
+    public init(index!: ?UInt32 = None, child!: () -> Unit = {=>}) {
         unsafe {
-            FfiOHOSAceFrameworkStepperCreate(index)
+            FfiOHOSAceFrameworkStepperCreate(index ?? 0)
         }
         this.child = child
     }
@@ -70,17 +64,16 @@ public class Stepper <: ContainerBase {
     /**
      * Callback when the finish label is clicked.
      *
-     * @param { () -> Unit } callback
+     * @param { ?() -> Unit } callback
      * @returns { This }
-     * @relation onFinish(callback: () => void): StepperAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onFinish(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback);
+    public func onFinish(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? { => }
+        let lambdaData = Callback0Param<Unit>(tmpCallback);
         unsafe {
             FfiOHOSAceFrameworkStepperOnFinish(lambdaData.getID())
         }
@@ -90,17 +83,16 @@ public class Stepper <: ContainerBase {
     /**
      * Callback when the skip label is clicked.
      *
-     * @param { () -> Unit } callback
+     * @param { ?() -> Unit } callback
      * @returns { This }
-     * @relation onSkip(callback: () => void): StepperAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onSkip(callback: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(callback);
+    public func onSkip(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? { => }
+        let lambdaData = Callback0Param<Unit>(tmpCallback);
         unsafe {
             FfiOHOSAceFrameworkStepperOnSkip(lambdaData.getID())
         }
@@ -110,18 +102,17 @@ public class Stepper <: ContainerBase {
      /**
      * Callback when the change label is clicked.
      *
-     * @param { (UInt32, UInt32) -> Unit } callback
+     * @param { ?(UInt32, UInt32) -> Unit } callback
      * @returns { This }
-     * @relation onChange(callback: (prevIndex: number, index: number) => void): StepperAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (UInt32, UInt32) -> Unit): This {
+    public func onChange(callback: ?(UInt32, UInt32) -> Unit): This {
+        let tmpCallback = callback ?? { _, _ => }
         let wrapper = {
-            prevIndex: Int32, index: Int32 => callback(UInt32(prevIndex), UInt32(index))
+            prevIndex: Int32, index: Int32 => tmpCallback(UInt32(prevIndex), UInt32(index))
         }
         let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper)
         unsafe {
@@ -133,18 +124,17 @@ public class Stepper <: ContainerBase {
      /**
      * Callback when the next label is clicked.
      *
-     * @param { (UInt32, UInt32) -> Unit } callback
+     * @param { ?(UInt32, UInt32) -> Unit } callback
      * @returns { This }
-     * @relation onNext(callback: (index: number, pendingIndex: number) => void): StepperAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onNext(callback: (UInt32, UInt32) -> Unit): This {
+    public func onNext(callback: ?(UInt32, UInt32) -> Unit): This {
+        let tmpCallback = callback ?? { _, _ => }
         let wrapper = {
-            index: Int32, pendingIndex: Int32 => callback(UInt32(index), UInt32(pendingIndex))
+            index: Int32, pendingIndex: Int32 => tmpCallback(UInt32(index), UInt32(pendingIndex))
         }
         let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper)
         unsafe {
@@ -156,18 +146,17 @@ public class Stepper <: ContainerBase {
      /**
      * Callback when the previous label is clicked.
      *
-     * @param { (UInt32, UInt32) -> Unit } callback
+     * @param { ?(UInt32, UInt32) -> Unit } callback
      * @returns { This }
-     * @relation onPrevious(callback: (index: number, pendingIndex: number) => void): StepperAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onPrevious(callback: (UInt32, UInt32) -> Unit): This {
+    public func onPrevious(callback: ?(UInt32, UInt32) -> Unit): This {
+        let tmpCallback = callback ?? { _, _ => }
         let wrapper = {
-            index: Int32, pendingIndex: Int32 => callback(UInt32(index), UInt32(pendingIndex))
+            index: Int32, pendingIndex: Int32 => tmpCallback(UInt32(index), UInt32(pendingIndex))
         }
         let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper)
         unsafe {

@@ -46,41 +46,41 @@ class ViewObservable {
         arr2[1].title = "myBook1"
     }
 
-    protected override func aboutToDisappear() {
-        arr2.unsubscribeAll()
-    }
+//    protected override func aboutToDisappear() {
+//        arr2.unsubscribeAll()
+//    }
 
     func build() {
         Column {
             Text("arr[0] is ${arr[0]}").id("text1")
-            Button("click").onClick { e =>
+            Button("click").onClick ({ e =>
                 arr[0] = 0
-            }.id("click")
+            }).id("click")
 
-            Button("click2").onClick{ e =>
+            Button("click2").onClick({ e =>
                 arr[0] = 0
-            }.id("click2")
+            }) .id("click2")
 
             Text("arr_test3_value[0] is ${arr_test3_value[0]}").id("arr3_value_text")
             Text("arr_test3_index[0] is ${arr_test3[0]}").id("arr3_text")
             Text("arr_test3_size is ${arr_test3_size}").id("arr3_size_text")
-            Button("test_array_get").onClick{ e =>
+            Button("test_array_get").onClick({ e =>
                 arr_test3_value = arr_test3.get()
-            }.id("test_array_get")
-            Button("test_array_setA").onClick{ e =>
+            }).id("test_array_get")
+            Button("test_array_setA").onClick({ e =>
                 arr_test3.set(test_array)
-            }.id("test_array_setA")
-            Button("test_array_setOCA").onClick{ e =>
+            }).id("test_array_setA")
+            Button("test_array_setOCA").onClick({ e =>
                 arr_test3.set(tmp_arr)
                 
                 store_arr[0] = Store(addre: "store_addre", size: 130)
                 store_arr.set(tmp_store_arr)
-                book_arr.subscribeInner(this)
-                book_arr.unsubscribeInner(this)
-            }.id("test_array_setOCA")
-            Button("test_array_prop_size").onClick{ e =>
+//                book_arr.subscribeInner(this)
+//                book_arr.unsubscribeInner(this)
+            }).id("test_array_setOCA")
+            Button("test_array_prop_size").onClick({ e =>
                 arr_test3_size = arr_test3.size
-            }.id("test_array_prop_size")
+            }).id("test_array_prop_size")
 
         }
 

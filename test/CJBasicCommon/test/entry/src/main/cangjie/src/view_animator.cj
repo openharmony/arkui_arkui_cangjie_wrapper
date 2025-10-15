@@ -22,7 +22,7 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.animator.*
+import ohos.arkui.ui_context.*
 
 @Entry
 @Component
@@ -93,7 +93,7 @@ class ViewAnimator {
                 Button("depCbCreate")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.depCallbackAnimator = getUIContext().createAnimator(
                             AnimatorOptions(
                                 duration: 3000,
@@ -124,22 +124,22 @@ class ViewAnimator {
                         var oncancel =  this.depCallbackAnimator?.onCancel
                         var onrepeat =  this.depCallbackAnimator?.onRepeat
                         var onfinish = this.depCallbackAnimator?.onFinish
-                    }
+                    })
                     .id("depCreateButton").fontSize(12).width(47.percent).height(30)
 
                 Button("depCbfinish")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = true
                         this.depCallbackAnimator?.finish()
-                    }
+                    })
                     .id("depCbFinishButton").fontSize(12).width(47.percent).height(30)
 
                 Button("temp1")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.depCallbackAnimator = getUIContext().createAnimator(
                             AnimatorOptions(
                                 duration: 3000,
@@ -170,13 +170,13 @@ class ViewAnimator {
                         var oncancel =  this.depCallbackAnimator?.onCancel
                         var onrepeat =  this.depCallbackAnimator?.onRepeat
                         var onfinish = this.depCallbackAnimator?.onFinish
-                    }
+                    })
                     .id("temp1Button").fontSize(12).width(47.percent).height(30)
 
                 Button("temp2")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.depCallbackAnimator = getUIContext().createAnimator(
                             AnimatorOptions(
                                 duration: 3000,
@@ -207,13 +207,13 @@ class ViewAnimator {
                         var oncancel =  this.depCallbackAnimator?.onCancel
                         var onrepeat =  this.depCallbackAnimator?.onRepeat
                         var onfinish = this.depCallbackAnimator?.onFinish
-                    }
+                    })
                     .id("temp2Button").fontSize(12).width(47.percent).height(30)
 
                 Button("Create")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.backAnimator = getUIContext().createAnimator(
                             AnimatorOptions(
                                 duration: 3000,
@@ -245,26 +245,26 @@ class ViewAnimator {
                         var onCancel = this.backAnimator?.onCancel
                         var onRepeat = this.backAnimator?.onRepeat
                         var onFinish = this.backAnimator?.onFinish
-                    }
+                    })
                     .id("CreateButton").fontSize(12).width(47.percent).height(30)
                 Button("Play")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = false
                         this.backAnimator?.play()
-                    }
+                    })
                     .id("PlayButton").fontSize(12).width(47.percent).height(30)
                 Button("Play1")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
-                    }
+                    .onClick ({ e =>
+                    })
                     .id("PlayButton").fontSize(12).width(Option<Length>.None).height(Option<Length>.None)
                 Button("reset1")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         if (this.flag) {
                             this.message8 = "notFinished"
                             this.flag = false
@@ -285,12 +285,12 @@ class ViewAnimator {
                         } else {
                             Hilog.info(1, "Cangjie-App", "Animation not ended")
                         }
-                    }
+                    })
                     .id("ResetButton1").fontSize(12).width(47.percent).height(30)
                 Button("expectedFrameRateRange")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = false
                         this
                             .backAnimator?
@@ -301,12 +301,12 @@ class ViewAnimator {
                                     expected: 3
                                 )
                             )
-                    }
+                    })
                     .id("expectedFrameRateRangeButton").fontSize(12).width(47.percent).height(30)
                 Button("expectedFrameRateRange2")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = false
                         this
                             .backAnimator?
@@ -317,12 +317,12 @@ class ViewAnimator {
                                     expected: 146
                                 )
                             )
-                    }
+                    })
                     .id("expectedFrameRateRangeButton2").fontSize(12).width(47.percent).height(30)
                 Button("expectedFrameRateRange3")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = false
                         this
                             .backAnimator?
@@ -333,12 +333,12 @@ class ViewAnimator {
                                     expected: 2
                                 )
                             )
-                    }
+                    })
                     .id("expectedFrameRateRangeButton3").fontSize(12).width(47.percent).height(30)
                 Button("expectedFrameRateRange4")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = false
                         this
                             .backAnimator?
@@ -349,70 +349,70 @@ class ViewAnimator {
                                     expected: 148
                                 )
                             )
-                    }
+                    })
                     .id("expectedFrameRateRangeButton4").fontSize(12).width(47.percent).height(30)
                 Button("pause")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = false
                         this.backAnimator?.pause()
-                    }
+                    })
                     .id("PauseButton").fontSize(12).width(47.percent).height(30)
                 Button("cancel")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = false
                         this.backAnimator?.cancel()
-                    }
+                    })
                     .id("CancelButton").fontSize(12).width(47.percent).height(30)
                 Button("reverse")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = false
                         this.backAnimator?.reverse()
-                    }
+                    })
                     .id("ReverseButton").fontSize(12).width(47.percent).height(30)
                 Button("finish")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = true
                         this.backAnimator?.finish()
-                    }
+                    })
                     .id("FinishButton").fontSize(12).width(47.percent).height(30)
                 Button("depCbcancel")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = false
                         this.depCallbackAnimator?.cancel()
-                    }
+                    })
                     .id("depCbCancelButton").fontSize(12).width(47.percent).height(30)
                 Button("depCbPlay")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = false
                         this.depCallbackAnimator?.play()
-                    }
+                    })
                     .id("depCbPlayButton").fontSize(12).width(47.percent).height(30)
 
                 Button("depCbReverse")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick { e =>
+                    .onClick ({ e =>
                         this.flag = false
                         this.depCallbackAnimator?.reverse()
-                    }
+                    })
                     .id("depCbReverseButton").fontSize(12).width(47.percent).height(30)
 
                 Button("depCbreset1")
                     .fontSize(20)
                     .fontColor(Color.Black)
-                    .onClick {  e =>
+                    .onClick ({  e =>
                         if (this.flag) {
                             this.message8 = "notFinished"
                             this.flag = false
@@ -433,7 +433,7 @@ class ViewAnimator {
                         } else {
                             Hilog.info(1, "Cangjie-App", "Animation not ended")
                         }
-                    }
+                    })
                     .id("depCbResetButton1").fontSize(12).width(47.percent).height(30)
                 }
             }

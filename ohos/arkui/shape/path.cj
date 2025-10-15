@@ -29,21 +29,27 @@ foreign {
         commands: CString): Int64
 }
 
+/**
+ * Defines a path drawing class.
+ */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PathShape <: BaseShape {
+    /**
+     * PathShape constructor.
+     *
+     * @param { ?ResourceStr } commands 
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(commands!: ResourceStr = "") {
+    public init(commands!: ?ResourceStr = None) {
         super(
             unsafe {
-                let commandsValue = transResourceStrToString(commands)
+                let commandsValue = transResourceStrToString(commands ?? "")
                 var id: Int64 = 0
                 try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
                     id = FfiOHOSAceFrameworkPathInsCreate(unsafeContent.value)
@@ -52,26 +58,29 @@ public class PathShape <: BaseShape {
             })
     }
 
+    /**
+     * PathShape constructor.
+     *
+     * @param { ?Length } width 
+     * @param { ?Length } height 
+     * @param { ?ResourceStr } commands 
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width!: Length, height!: Length, commands!: ResourceStr = "") {
+    public init(width!: ?Length, height!: ?Length, commands!: ?ResourceStr = None) {
         super(
             unsafe {
-                var width_ = transAppResourceToLength(width)
-                var height_ = transAppResourceToLength(height)
-                let commandsValue = transResourceStrToString(commands)
+                var width_ = transAppResourceToLength(width ?? 0.vp)
+                var height_ = transAppResourceToLength(height ?? 0.vp)
+                let commandsValue = transResourceStrToString(commands ?? "")
                 var id: Int64 = 0
                 try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
                     id = FfiOHOSAceFrameworkPathInsCreateWithSize(
-                        width_.value,
-                        width_.unitType.getValue(),
-                        height_.value,
-                        height_.unitType.getValue(),
-                        unsafeContent.value
-                    )
+                        width_.value, width_.unitType.getValue(),
+                        height_.value, height_.unitType.getValue(),
+                        unsafeContent.value)
                 }
                 id
             })

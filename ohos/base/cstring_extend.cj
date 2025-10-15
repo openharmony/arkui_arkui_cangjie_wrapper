@@ -19,6 +19,7 @@ package ohos.base
 
 import ohos.hilog.HilogChannel
 import ohos.labels.APILevel
+import ohos.business_exception.*
 
 foreign {
     func FfiOHOSAceFrameworkThrowNativeError(msg: CString): Unit
@@ -48,7 +49,7 @@ protected func getOrThrow<T>(optData: Option<T>, msg!: String = ""): T {
     match (optData) {
         case None =>
             throwNativeError(msg + "\n")
-            throw NoneValueException(msg + "\n")
+            throw BusinessException(100001, msg + "\n")
         case Some(data) => data
     }
 }

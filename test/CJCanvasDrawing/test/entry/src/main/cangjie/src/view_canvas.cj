@@ -52,15 +52,15 @@ class ViewCanvas {
                         var myGradient = this.context.createRadialGradient(75.0, 50.0, 5.0, 75.0, 50.0, 100.0)
                         myGradient.addColorStop(0.0, 0x03AAAA)
                         myGradient.addColorStop(1.0, 0xFFFFFF)
-                        this.context.fillStyle(myGradient)
+                        this.context.fillStyle = myGradient
                         this.context.fillRect(0.0, 0.0, 300.0, 300.0)
 
-                        this.context.fillStyle(0x0000ff)
-                        this.context.fillStyle(0x0000ff)
+                        this.context.fillStyle = 0x0000ff
+                        this.context.fillStyle = 0x0000ff
 
                         this.context.lineWidth = 10.0
                         var lineWidthGet = this.context.lineWidth
-                        this.context.strokeStyle(0x0000ff)
+                        this.context.strokeStyle = 0x0000ff
                         this.context.strokeRect(25.0, 25.0, 155.0, 105.0)
                         this.context.clearRect(30.0, 30.0, 150.0, 100.0)
 
@@ -68,30 +68,30 @@ class ViewCanvas {
                         var grad = this.context.createLinearGradient(75.0, 50.0, 75.0, 50.0)
                         grad.addColorStop(0.0, 0xff0000)
                         grad.addColorStop(1.0, Color.Blue)
-                        this.context.fillStyle(grad)
+                        this.context.fillStyle = grad
                         this.context.fillRect(0.0, 0.0, 400.0, 400.0)
-                        this.context.strokeStyle(grad)
+                        this.context.strokeStyle = grad
 
-                        this.context.lineJoin = LineJoinStyle.Miter
-                        this.context.lineJoin = LineJoinStyle.Bevel
+                        this.context.lineJoin = "miter"
+                        this.context.lineJoin = "bevel"
                         var lineJoinGet = this.context.lineJoin
 
                         this.context.miterLimit = 2.0
                         var miterLimitGet = this.context.lineJoin
 
-                        this.context.textAlign = CanvasTextAlign.Left
-                        this.context.textAlign = CanvasTextAlign.Right
-                        this.context.textAlign = CanvasTextAlign.Center
-                        this.context.textAlign = CanvasTextAlign.Start
-                        this.context.textAlign = CanvasTextAlign.End
+                        this.context.textAlign = "left"
+                        this.context.textAlign = "right"
+                        this.context.textAlign = "center"
+                        this.context.textAlign = "start"
+                        this.context.textAlign = "end"
                         var textAlignGet = this.context.textAlign
 
-                        this.context.textBaseline = CanvasTextBaseline.Alphabetic
-                        this.context.textBaseline = CanvasTextBaseline.Ideographic
-                        this.context.textBaseline = CanvasTextBaseline.Top
-                        this.context.textBaseline = CanvasTextBaseline.Bottom
-                        this.context.textBaseline = CanvasTextBaseline.Middle
-                        this.context.textBaseline = CanvasTextBaseline.Hanging
+                        this.context.textBaseline = "alphabetic"
+                        this.context.textBaseline = "ideographic"
+                        this.context.textBaseline = "top"
+                        this.context.textBaseline = "bottom"
+                        this.context.textBaseline = "middle"
+                        this.context.textBaseline = "hanging"
                         var textBaselineGet = this.context.textBaseline
 
                         this.context.globalAlpha = 1.0
@@ -102,23 +102,23 @@ class ViewCanvas {
                         this.context.lineDashOffset = 1.0
                         var lineDashOffsetGet = this.context.lineDashOffset
 
-                        this.context.globalCompositeOperation = GlobalCompositeOperation.SourceOver
-                        this.context.globalCompositeOperation = GlobalCompositeOperation.SourceAtop
-                        this.context.globalCompositeOperation = GlobalCompositeOperation.SourceIn
-                        this.context.globalCompositeOperation = GlobalCompositeOperation.SourceOut
-                        this.context.globalCompositeOperation = GlobalCompositeOperation.DestinationOver
-                        this.context.globalCompositeOperation = GlobalCompositeOperation.DestinationAtop
-                        this.context.globalCompositeOperation = GlobalCompositeOperation.DestinationIn
-                        this.context.globalCompositeOperation = GlobalCompositeOperation.DestinationOut
-                        this.context.globalCompositeOperation = GlobalCompositeOperation.Lighter
-                        this.context.globalCompositeOperation = GlobalCompositeOperation.Copy
-                        this.context.globalCompositeOperation = GlobalCompositeOperation.Xor
+                        this.context.globalCompositeOperation = "source-over"
+                        this.context.globalCompositeOperation = "source-atop"
+                        this.context.globalCompositeOperation = "source-in"
+                        this.context.globalCompositeOperation = "source-out"
+                        this.context.globalCompositeOperation = "destination-over"
+                        this.context.globalCompositeOperation = "destination-atop"
+                        this.context.globalCompositeOperation = "destination-in"
+                        this.context.globalCompositeOperation = "destination-out"
+                        this.context.globalCompositeOperation = "lighter"
+                        this.context.globalCompositeOperation = "copy"
+                        this.context.globalCompositeOperation = "xor"
                         var globalCompositeOperationGet = this.context.globalCompositeOperation
 
 
-                        this.context.font(size: 85.px, family: "sans-serif")
+                        this.context.font = "normal normal 85px sans-serif"
                         this.context.fillText("Hello World!", 20.0, 100.0, maxWidth: 100.0)
-                        this.context.font()
+                        this.context.font = "normal normal 14px sans-serif"
                         this.context.strokeText("Hello World!", 20.0, 60.0, maxWidth: 100.0)
                         this.context.setLineDash([0.0,0.0,0.0,0.0])
                         //创建一个蓝色圆形渐变效果
@@ -128,9 +128,9 @@ class ViewCanvas {
                         this.context.shadowBlur = 6.0
                         var shadowBlurGet = this.context.shadowBlur
 
-                        this.context.direction = CanvasDirection.Inherit
-                        this.context.direction = CanvasDirection.Ltr
-                        this.context.direction = CanvasDirection.Rtl
+                        this.context.direction = "inherit"
+                        this.context.direction = "ltr"
+                        this.context.direction = "rtl"
                         var directionGet = this.context.direction
 
                         this.context.filter = "filter"
@@ -146,13 +146,13 @@ class ViewCanvas {
 
                         this.context.imageSmoothingEnabled = true
                         var imageSmoothingEnabledGet = this.context.imageSmoothingEnabled
-                        this.context.imageSmoothingQuality = ImageSmoothingQuality.Low
-                        this.context.imageSmoothingQuality = ImageSmoothingQuality.Medium
-                        this.context.imageSmoothingQuality = ImageSmoothingQuality.High
+                        this.context.imageSmoothingQuality = "low"
+                        this.context.imageSmoothingQuality = "medium"
+                        this.context.imageSmoothingQuality = "high"
                         var imageSmoothingQualityGet = this.context.imageSmoothingQuality
                         this.context.shadowColor = 0x0000ff
                         var shadowColorGet = this.context.shadowColor
-                        this.context.strokeStyle(0x0000ff)
+                        this.context.strokeStyle =0x0000ff
                         this.context.moveTo(15.0, 80.0)
                         this.context.lineTo(280.0, 160.0)
                         var measureText: TextMetrics = this.context.measureText("measureText")
@@ -171,9 +171,9 @@ class ViewCanvas {
                         this.context.fill()
                         this.context.clip()
 
-                        this.context.lineCap = LineCapStyle.Butt
-                        this.context.lineCap = LineCapStyle.Round
-                        this.context.lineCap = LineCapStyle.Square
+                        this.context.lineCap = "butt"
+                        this.context.lineCap = "round"
+                        this.context.lineCap = "square"
                         var lineCapGet = this.context.lineCap
 
                         this.context.rotate(3.0)

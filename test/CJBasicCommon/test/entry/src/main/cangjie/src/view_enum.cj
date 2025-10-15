@@ -24,7 +24,6 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.router.*
 import ohos.ui_test.*
 import std.collection.*
 
@@ -80,18 +79,18 @@ class EnumTypes {
         Column{
             Text("APILevel17 Enum Types")
 
-            Button("KeyTypeDown").onClick{ e =>
+            Button("KeyTypeDown").onClick({ e =>
                 keyType1 = "Down"
-            }.id("keyTypeBtn1")
-            Button("KeyTypeUp").onClick{ e =>
+            }).id("keyTypeBtn1")
+            Button("KeyTypeUp").onClick({ e =>
                 keyType2 = "Up"
-            }.id("keyTypeBtn2")
+            }).id("keyTypeBtn2")
             Text(keyType1).id("keyType1")
             Text(keyType2).id("keyType2")
 
-            Button("RichEditor1").onClick{ e =>
+            Button("RichEditor1").onClick({ e =>
                 var temp1 = RichEditorDeleteValue(1, richEditorDeleteDirection1, 1, ArrayList<RichEditorSpanResult>())
-            }.id("richEditor1")
+            }).id("richEditor1")
         }
 
     }
@@ -105,38 +104,38 @@ class EnumSon{
     func build() {
         Column{
             Text("${clickCount}").id("enumClickCount")
-            Button("resourceType").onClick{ e =>
+            Button("resourceType").onClick({ e =>
                 clickCount++
-            }.id("resourceType")
+            }).id("resourceType")
 
-            Button("sliderChangeMode").onClick{ e =>
+            Button("sliderChangeMode").onClick({ e =>
                 var t: SliderChangeMode = SliderChangeMode.Click
                 clickCount++
-            }.id("sliderChangeMode")
+            }).id("sliderChangeMode")
 
-            Button("navigationType").onClick{ e =>
+            Button("navigationType").onClick({ e =>
                 var t: NavigationType = NavigationType.Push
                 t = NavigationType.Replace
                 t = NavigationType.Back
                 clickCount++
-            }.id("navigationType")
+            }).id("navigationType")
 
-            Button("refreshStatus").onClick{ e =>
+            Button("refreshStatus").onClick({ e =>
                 var t: RefreshStatus = RefreshStatus.Inactive
                 t = RefreshStatus.Done
                 clickCount++
-            }.id("refreshStatus")
+            }).id("refreshStatus")
 
-            Button("richEditorDeleteDirection").onClick{ e =>
+            Button("richEditorDeleteDirection").onClick({ e =>
                 var t: RichEditorDeleteDirection = RichEditorDeleteDirection.Forward
                 clickCount++
-            }.id("richEditorDeleteDirection")
+            }).id("richEditorDeleteDirection")
 
-            Button("spanType").onClick{ e =>
+            Button("spanType").onClick({ e =>
                 var t: RichEditorSpanType = RichEditorSpanType.Text
                 t = RichEditorSpanType.Image
                 clickCount++
-            }.id("spanType")
+            }).id("spanType")
         }
     }
 }

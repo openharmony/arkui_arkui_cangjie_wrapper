@@ -91,7 +91,6 @@ protected struct CJBindPopupParamsV2 {
     ) {}
 }
 
-
 @C
 protected struct CJBindCustomPopupV2 {
     protected CJBindCustomPopupV2(
@@ -129,7 +128,6 @@ protected struct CJBindCustomPopupV2 {
         let followTransformOfTarget: Bool
     ) {}
 }
-
 
 @C
 protected struct CJResponseRegion {
@@ -374,7 +372,6 @@ protected struct CSheetOptionsV2 {
     ) {}
 }
 
-
 @C
 protected struct CJPixelRoundPolicy {
     protected CJPixelRoundPolicy(
@@ -422,7 +419,6 @@ protected struct CJForegroundBlurStyleOptions {
         let scale: Float32
     ) {}
 }
-
 
 @C
 protected struct CJBlurOptions {
@@ -497,7 +493,6 @@ protected struct RadialGradientParam {
         let repeating: Bool
     ) {}
 }
-
 
 @C
 protected struct NativeMenuElement {

@@ -27,13 +27,21 @@ foreign {
     func FfiOHOSAceFrameworkRecyclePop(): Unit
 }
 
+/**
+ * Recycle
+ *
+ * non-public API
+ */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class __Recycle__ <: ContainerBase {
+public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribute {
+    /**
+     * Create a Recycle
+     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -41,8 +49,13 @@ public class __Recycle__ <: ContainerBase {
             FfiOHOSAceFrameworkRecycleCreate()
         }
     }
+    /**
+     * Create a Recycle
+     *
+     * @param {() -> Unit} child
+     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -51,8 +64,14 @@ public class __Recycle__ <: ContainerBase {
         }
         this.child = child
     }
+
+    /**
+     * Pop a Recycle
+     *
+     * @returns {This}
+     */
     @!APILevel[
-        21,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func pop() {
@@ -61,3 +80,14 @@ public class __Recycle__ <: ContainerBase {
         }
     }
 }
+
+/**
+ * Recycle
+ *
+ * non-public API
+ */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+sealed interface RecycleAttribute <: CommonMethod<RecycleAttribute> {}

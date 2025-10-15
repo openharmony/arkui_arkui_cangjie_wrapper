@@ -50,7 +50,6 @@ protected struct CJNavPathInfo {
     }
 }
 
-
 @C
 protected struct CJNavigationTitleOptions {
     protected CJNavigationTitleOptions(

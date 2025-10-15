@@ -21,6 +21,7 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 foreign func FfiOHOSAceFrameworkCurvesCreateStepsCurve(count: Int32, end: Bool): Int64
 
@@ -46,27 +47,20 @@ foreign func FfiOHOSAceFrameworkCurvesInterpolate(id: Int64, fraction: Float32):
 
 /**
  * Contains interpolator functions such as initialization, third-order Bezier curves, and spring curves.
- *
- * @relation curves
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Curves {
-
     /**
      * Creates a step curve.
-     *
      * @param { Int32 } count
      * @param { Bool } end
      * @returns { ICurve }
-     * @relation stepsCurve(count: number, end: boolean): ICurve
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func stepsCurve(count: Int32, end: Bool): ICurve {
@@ -75,17 +69,14 @@ public class Curves {
 
     /**
      * Creates a cubic Bezier curve. The curve values must be between 0 and 1.
-     *
      * @param { Float32 } x1
      * @param { Float32 } y1
      * @param { Float32 } x2
      * @param { Float32 } y2
      * @returns { ICurve }
-     * @relation cubicBezierCurve(x1: number, y1: number, x2: number, y2: number): ICurve
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func cubicBezierCurve(x1: Float32, y1: Float32, x2: Float32, y2: Float32): ICurve {
@@ -94,17 +85,14 @@ public class Curves {
 
     /**
      * Creates a spring curve.
-     *
      * @param { Float32 } velocity
      * @param { Float32 } mass
      * @param { Float32 } stiffness
      * @param { Float32 } damping
      * @returns { ICurve }
-     * @relation springCurve(velocity: number, mass: number, stiffness: number, damping: number): ICurve
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func springCurve(velocity: Float32, mass: Float32, stiffness: Float32, damping: Float32): ICurve {
@@ -114,16 +102,13 @@ public class Curves {
     /**
      * Creates a spring curve. The curve shape is subject to the spring parameters, and the animation duration
      * is subject to the **duration** parameter in **animation** and **animateTo**.
-     *
      * @param { Float32 } response
      * @param { Float32 } dampingFraction
      * @param { Float32 } overlapDuration
      * @returns { ICurve }
-     * @relation springMotion(response?: number, dampingFraction?: number, overlapDuration?: number): ICurve
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func springMotion(response!: Float32 = 0.55, dampingFraction!: Float32 = 0.825,
@@ -134,16 +119,13 @@ public class Curves {
     /**
      * Creates a responsive spring animation curve. It is a special case of springMotion,
      * with the only difference in the default values. It can be used together with **springMotion**.
-     *
      * @param { Float32 } response
      * @param { Float32 } dampingFraction
      * @param { Float32 } overlapDuration
      * @returns { ICurve }
-     * @relation responsiveSpringMotion(response?: number, dampingFraction?: number, overlapDuration?: number): ICurve
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func responsiveSpringMotion(response!: Float32 = 0.15, dampingFraction!: Float32 = 0.86,
@@ -156,17 +138,14 @@ public class Curves {
      * Creates an interpolating spring curve animated from 0 to 1. The actual animation value is calculated based
      * on the curve. The animation duration is subject to the curve parameters, rather than the **duration** parameter
      * in **animation** or **animateTo**.
-     *
      * @param { Float32 } velocity
      * @param { Float32 } mass
      * @param { Float32 } stiffness
      * @param { Float32 } damping
      * @returns { ICurve }
-     * @relation interpolatingSpring(velocity: number, mass: number, stiffness: number, damping: number): ICurve
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func interpolatingSpring(velocity: Float32, mass: Float32, stiffness: Float32, damping: Float32): ICurve {
@@ -176,14 +155,11 @@ public class Curves {
     /**
      * Implements initialization for the interpolation curve,
      * which is used to create an interpolation curve based on the input parameter.
-     *
      * @param { Curve } curve
      * @returns { ICurve }
-     * @relation initCurve(curve?: Curve): ICurve
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func initCurve(curve!: Curve = Curve.Linear): ICurve {
@@ -201,11 +177,9 @@ public class Curves {
      *
      * @param { (Float32) -> Float32 } interpolate
      * @returns { ICurve }
-     * @relation customCurve(interpolate: (fraction: number) => number): ICurve
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func customCurve(interpolate: (Float32) -> Float32): ICurve {
@@ -228,19 +202,16 @@ public class Curves {
             case Rhythm => "rhythm"
             case Smooth => "smooth"
             case Friction => "friction"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 }
 
 /**
  * Interface for curve object.
- *
- * @relation ICurve
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ICurve <: RemoteDataLite {
@@ -259,11 +230,9 @@ public class ICurve <: RemoteDataLite {
      *
      * @param { Float32 } fraction
      * @returns { Float32 }
-     * @relation interpolate(fraction: number): number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func interpolate(fraction: Float32): Float32 {

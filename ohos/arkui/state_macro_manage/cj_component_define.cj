@@ -84,6 +84,7 @@ func generateForEachCreate(callExpr: CallExpr, thisView: Tokens) {
             throw IllegalArgumentException("there should be a lambda in ForEach component.")
     }
     var dataParam = Tokens()
+    var paramType = lamExpr.funcParams[0].paramType
     for (param in lamExpr.funcParams) {
         dataParam = dataParam + quote($param)
     }
@@ -91,7 +92,7 @@ func generateForEachCreate(callExpr: CallExpr, thisView: Tokens) {
     let lamDealBody = generateFuncBody(lamExprBody, thisView)
 
     var res = quote(
-        $baseExpr {
+        $baseExpr<$paramType> {
         let forEachItemGenFunction = {
             $dataParam =>
             $lamDealBody
@@ -124,7 +125,7 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
     }
 
     let compId = generateNewId()
-    var res = quote($baseExpr().create\($compId, $thisView, )
+    var res = quote($callExpr.create\($compId, $thisView, )
     for (idx in 0..callExpr.arguments.size) {
         let para = callExpr.arguments[idx]
         let paraExpr = para.expr
@@ -229,16 +230,7 @@ func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
 }
 
 extend<T> ArrayList<T> {
-    /*
-    @APILevel[
-        16,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-     */
-    public func append(elements: ArrayList<T>): Unit {
+    protected func append(elements: ArrayList<T>): Unit {
         for (element in elements) {
             add(element)
         }
@@ -712,6 +704,9 @@ func handleRender(input: Expr, thisView: Tokens): Tokens {
         // hasChild
         let childComps = generateFuncBody(childs, thisView)
         changeTrailingExpr(input, childComps)
+        if (isContainAnimation(input)) {
+            parseAnimationEntry(input)
+        }
         return thisView + quote(.observeComponentCreation({elmtId, isInitialRender =>
                 $input
             })
@@ -720,6 +715,9 @@ func handleRender(input: Expr, thisView: Tokens): Tokens {
         // noChild
 
         let compName = getTrailingClosureExprValue(input)
+        if (isContainAnimation(input)) {
+            parseAnimationEntry(input)
+        }
         if (stateManageHandler.isContainerComponent(compName) && hasChildInParams(input)) {
             parseChildInParams(input)
             return thisView + quote(.observeComponentCreation({elmtId, isInitialRender =>
@@ -1103,8 +1101,8 @@ func generateInitFunc(classDecl: ClassDecl) {
 
     // add init function
     return quote(
-        public init(parent: Option<$CUSTOM_VIEW> $initParams, localStorage!: Option < LocalStorage >= None) {
-            super(parent, localStorage)
+        public init(__gen_parent: Option<$CUSTOM_VIEW> $initParams, __gen_local_storage!: Option < LocalStorage >= None) {
+            super(__gen_parent, __gen_local_storage)
             $localStorageVarInit
             $initBodyAssign
             $initBodySubscribe
@@ -1112,7 +1110,7 @@ func generateInitFunc(classDecl: ClassDecl) {
             $customDialogBindDecls
             $watchDecls
             registerSelf()
-            parent?.addChildById(id(), this)
+            __gen_parent?.addChildById(id(), this)
         }
     )
 }
@@ -1343,7 +1341,7 @@ func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView
     return quote(
         match ($callExpr) {
             case cv: $CUSTOM_VIEW =>
-                if (cv.isReusable) {
+                if (cv.isReusable_inner__) {
                     let rp: ReuseParams = ReuseParams($paramTokens)
                     $thisView.observeComponentCreation({elmtId, isInitialRender => __Recycle__ {
                         $thisView.observeRecycleComponentCreation($funcName, {elmtId, isInitialRender, recycleNode =>

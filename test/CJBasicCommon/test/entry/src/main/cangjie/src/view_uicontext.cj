@@ -24,7 +24,6 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.router.*
 import ohos.ui_test.*
 import ohos.arkui.ui_context.*
 
@@ -34,7 +33,7 @@ class ViewUiContext {
     func build() {
         Column(space: 10) {
             Button("test uicontext")
-                .onClick {
+                .onClick ({
                     evt =>
                     Hilog.info(1, "1", "Cangjie-App", "Hello Cangjie")
 
@@ -72,13 +71,12 @@ class ViewUiContext {
                         Hilog.info(1, "Cangjie-Test", "initializeConsume: ${e.toString()}")
                     }
                     try {
-                        removeChildGroupById("")
                         initializeConsume("")
                         updateElement(2)
                     } catch (e: Exception) {
                         Hilog.info(1, "Cangjie-Test", "initializeConsume: ${e.toString()}")
                     }
-                }
+                })
                 .fontSize(40)
                 .height(80)
                 .id("click")

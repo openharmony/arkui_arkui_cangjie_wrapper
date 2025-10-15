@@ -21,7 +21,6 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.router.*
 import ohos.ui_test.*
 import ohos.business_exception.*
 
@@ -87,7 +86,7 @@ class CanvasDrawingUT2 {
         @Expect(endPoint, "[50,100]")
 
         let stroke = attrs.get("stroke").getOrThrow().toString()
-        @Expect(stroke, "\"#FF000000\"")
+        @Expect(stroke, "\"#00000000\"")
 
         let backgroundColor = attrs.get("backgroundColor").getOrThrow().toString()
         @Expect(backgroundColor, "\"#FFF5F5F5\"")
@@ -144,7 +143,7 @@ class CanvasDrawingUT2 {
         @Expect(endPoint, "[100,100]")
 
         let stroke = attrs.get("stroke").getOrThrow().toString()
-        @Expect(stroke, "\"#FF000000\"")
+        @Expect(stroke, "\"#00000000\"")
 
         let strokeDashArray = attrs.get("strokeDashArray").getOrThrow().toString()
         @Expect(strokeDashArray,"[\"10.00vp\",\"3.00vp\"]")
@@ -177,7 +176,7 @@ class CanvasDrawingUT2 {
         @Expect(endPoint, "[100,100]")
 
         let stroke = attrs.get("stroke").getOrThrow().toString()
-        @Expect(stroke, "\"#FF000000\"")
+        @Expect(stroke, "\"#00000000\"")
 
         let strokeDashArray = attrs.get("strokeDashArray").getOrThrow().toString()
         @Expect(strokeDashArray,"[\"10.00vp\",\"3.00vp\"]")
@@ -437,26 +436,26 @@ class CanvasDrawingUT2 {
         @Expect(text, "325 255")
 
         text = driver.findComponent(On().id("size")).getOrThrow().getText()
-        @Expect(text, "1.000000 1.000000 -0.500000 0.500000 10.000000 10.000000")
+        @Expect(text, "Some(1.000000) Some(1.000000) Some(-0.500000) Some(0.500000) Some(10.000000) Some(10.000000)")
 
         text = driver.findComponent(On().id("size1")).getOrThrow().getText()
-        @Expect(text, "0.800000 0.800000 0.400000 -0.400000 -12.000000 -4.000000")
+        @Expect(text, "Some(0.800000) Some(0.800000) Some(0.400000) Some(-0.400000) Some(-12.000000) Some(-4.000000)")
 
         var compont1 = driver.findComponent(On().id("height_width1")).getOrThrow()
         var compont2 = driver.findComponent(On().id("size1")).getOrThrow()
         compont2.dragTo(compont1)
 
         text = driver.waitForComponent(On().id("size2"),1500).getOrThrow().getText()
-        @Expect(text, "1.000000 1.000000 0.000000 0.000000 0.000000 0.000000")
+        @Expect(text, "Some(1.000000) Some(1.000000) Some(0.000000) Some(0.000000) Some(0.000000) Some(0.000000)")
 
         text = driver.findComponent(On().id("size3")).getOrThrow().getText()
-        @Expect(text, "1.000000 1.000000 0.000000 0.000000 100.000000 100.000000")
+        @Expect(text, "Some(1.000000) Some(1.000000) Some(0.000000) Some(0.000000) Some(100.000000) Some(100.000000)")
 
         text = driver.findComponent(On().id("size4")).getOrThrow().getText()
-        @Expect(text, "0.500000 0.500000 0.000000 0.000000 100.000000 100.000000")
+        @Expect(text, "Some(0.500000) Some(0.500000) Some(0.000000) Some(0.000000) Some(100.000000) Some(100.000000)")
 
         text = driver.findComponent(On().id("size5")).getOrThrow().getText()
-        @Expect(text, "0.250230 0.250230 0.432880 -0.432880 99.084454 103.413255")
+        @Expect(text, "Some(0.250230) Some(0.250230) Some(0.432880) Some(-0.432880) Some(99.084454) Some(103.413255)")
 
         compont1 = driver.findComponent(On().id("size5")).getOrThrow()
         compont2 = driver.findComponent(On().text("Click to set transform")).getOrThrow()

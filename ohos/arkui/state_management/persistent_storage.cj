@@ -13,14 +13,13 @@
  * limitations under the License.
  */
 
-// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
-
 package ohos.arkui.state_management
 
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 import std.collection.*
+import ohos.business_exception.BusinessException
 
 foreign {
     func FfiOHOSAceFrameworkPersistentGetString(key: CString): NativeOptionCString
@@ -47,10 +46,9 @@ foreign {
 /**
  * Handles notification callback with string parameters.
  *
- * @param key Key parameter passed as CString
- * @param value Value parameter passed as CString
- * @return
- * @note The caller manages the memory of the CString.
+ * @params key Key parameter passed as CString
+ * @params value Value parameter passed as CString
+ * @returns
  */
 func notifyCallbackString(key: CString, value: CString): Unit {
     AppStorage.setOrCreate<String>(key.toString(), value.toString())
@@ -59,10 +57,9 @@ func notifyCallbackString(key: CString, value: CString): Unit {
 /**
  * Notification callback function for handling key-value pairs with Int64 type values.
  *
- * @param key Key as a CString, which is converted to a String internally
- * @param value Value of type Int64
- * @return
- * @note The caller manages the memory of the CString.
+ * @params key Key as a CString, which is converted to a String internally
+ * @params value Value of type Int64
+ * @returns
  */
 func notifyCallbackInt64(key: CString, value: Int64): Unit {
     AppStorage.setOrCreate<Int64>(key.toString(), value)
@@ -71,10 +68,9 @@ func notifyCallbackInt64(key: CString, value: Int64): Unit {
 /**
  * Notification callback function for handling key-value pairs with Float64 type values.
  *
- * @param key Key as a CString, which is converted to a String internally
- * @param value Value of type Float64
- * @return
- * @note The caller manages the memory of the CString.
+ * @params key Key as a CString, which is converted to a String internally
+ * @params value Value of type Float64
+ * @returns
  */
 func notifyCallbackFloat64(key: CString, value: Float64): Unit {
     AppStorage.setOrCreate<Float64>(key.toString(), value)
@@ -83,10 +79,9 @@ func notifyCallbackFloat64(key: CString, value: Float64): Unit {
 /**
  * Notification callback function for handling key-value pairs with Bool type values.
  *
- * @param key Key as a CString, which is converted to a String internally
- * @param value Value of type Bool
- * @return
- * @note The caller manages the memory of the CString.
+ * @params key Key as a CString, which is converted to a String internally
+ * @params value Value of type Bool
+ * @returns
  */
 func notifyCallbackBool(key: CString, value: Bool): Unit {
     AppStorage.setOrCreate<Bool>(key.toString(), value)
@@ -94,12 +89,9 @@ func notifyCallbackBool(key: CString, value: Bool): Unit {
 
 /**
  * Defines the PersistentStorage interface.
- *
- * @relation declare class PersistentStorage
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PersistentStorage <: Observer {
@@ -113,22 +105,57 @@ public class PersistentStorage <: Observer {
         SubscriberManager.getInstance().add(this)
     }
 
+    /**
+     * Called when a state update occurs in the observed properties.
+     * This method is triggered when any of the persistent properties change.
+     *
+     * @param { String } _.
+     * @param { ArrayList<Int64> } _.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStateUpdate(_: String, _: ArrayList<Int64>): Unit {
         innerPropertyHasChanged()
     }
 
+    /**
+     * Notifies when a property is read.
+     * This method is called when a property value is accessed.
+     *
+     * @param { String } _.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func notifyRead(_: String): Unit {}
+
+    /**
+     * Gets the unique identifier of the PersistentStorage instance.
+     *
+     * @returns { Int64 } The unique identifier of this PersistentStorage instance.
+     */
+    @!APILevel[
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func id(): Int64 {
         subId
+    }
+
+    /**
+     * Prepares the PersistentStorage instance for deletion, cleaning up any resources.
+     * This method cleans up all persistent properties and resets the instance.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func aboutToBeDeleted(): Unit {
+        PersistentStorage.getOrCreate().innerAboutToBeDeleted()
+        PersistentStorage.instance = None
     }
 
     private func innerKeys(): EquatableCollection<String> {
@@ -140,19 +167,21 @@ public class PersistentStorage <: Observer {
             case None => PersistentStorage.instance = PersistentStorage()
             case Some(v) => ()
         }
-        PersistentStorage.instance.getOrThrow()
+        PersistentStorage.instance.getOrThrow({
+            => BusinessException(100001, "Internal error.")
+        })
     }
 
     /**
      * Called when a persistence property is stored.
+     * This method makes an AppStorage property persistent by storing its value across application restarts.
      *
-     * @param { String } key
-     * @param { T } defaultValue
-     * @relation static PersistProp<T>(key: string, defaultValue: T): void;
+     * @param { String } key.
+     * @param { T } defaultValue.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func persistProp<T>(key: String, defaultValue: T): Unit {
@@ -161,15 +190,14 @@ public class PersistentStorage <: Observer {
 
     /**
      * Persist given AppStorage properties with given names.
-     * If a property does not exist in AppStorage, add it and initialize it with given value
-     * works as persistProp for multiple properties.
+     * If a property does not exist in AppStorage, add it and initialize it with given value.
+     * Works as persistProp for multiple properties at once.
      *
-     * @param { Array<(String, T)> } key
-     * @relation static persistProps(props: PersistPropsOptions[]): void;
+     * @param { Array<(String, T)> } props.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func persistProps<T>(props: Array<(String, T)>): Unit {
@@ -177,14 +205,14 @@ public class PersistentStorage <: Observer {
     }
 
     /**
-    * Reverse of persistProp
-    *
-    * @param { String } key - no longer persist the property named key
-    * @relation static deleteProp(key: string): void;
-    */
+     * Reverse of persistProp.
+     * Stops persisting the property with the given name and removes it from persistent storage.
+     *
+     * @param { String } key.
+     * @throws { BusinessException } 100001 - Internal error.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func deleteProp(key: String): Unit {
@@ -192,14 +220,14 @@ public class PersistentStorage <: Observer {
     }
 
     /**
-     * Inform persisted AppStorage property names
+     * Inform persisted AppStorage property names.
+     * Returns an array containing the names of all currently persistent properties.
      *
-     * @returns { Array<String> } array of AppStorage keys
-     * @relation static keys(): Array<string>;
+     * @returns { Array<String> } Array of AppStorage keys representing the names of persistent properties.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func keys(): Array<String> {

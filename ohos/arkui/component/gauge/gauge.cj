@@ -126,34 +126,28 @@ class FFIVectorColorStops {
 
 /**
  * Defines the Gauge component.
- *
- * @relation declare const Gauge: GaugeInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Gauge <: ContainerBase {
+public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
 
     /**
      * The constructor of Gauge.
      *
-     * @param { Float64 } value
-     * @param { Float64 } min
-     * @param { Float64 } max
-     * @param { () -> Unit } child
-     * @returns { This }
-     * @relation (options: GaugeOptions): GaugeAttribute
+     * @param { ?Float64 } value - Set current data value.
+     * @param { ?Float64 } min - Set current segment minimum value.
+     * @param { ?Float64 } max - Set current segment maximum value.
+     * @param { () -> Unit } child - Set child component of Gauge.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: Float64, min!: Float64 = 0.0, max!: Float64 = 100.0, child!: () -> Unit = { => }) {
+    public init(value!: ?Float64, min!: ?Float64 = None, max!: ?Float64 = None, child!: () -> Unit = { => }) {
         unsafe {
-            FfiOHOSAceFrameworkGaugeCreate(value, min, max)
+            FfiOHOSAceFrameworkGaugeCreate(value ?? 0.0, min ?? 0.0, max ?? 100.0)
         }
         this.child = child
     }
@@ -161,18 +155,16 @@ public class Gauge <: ContainerBase {
     /**
      * Sets the value for the current profile.
      *
-     * @param { Float32 } value
+     * @param { ?Float32 } value
      * @returns { This }
-     * @relation value(value: number): GaugeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func value(value: Float32): This {
+    public func value(value: ?Float32): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetValue(Float64(value))
+            FfiOHOSAceFrameworkGaugeSetValue(Float64(value ?? 0.0))
         }
         this
     }
@@ -180,18 +172,16 @@ public class Gauge <: ContainerBase {
     /**
      * Set the start angle. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @param { Float64 } angle
+     * @param { ?Float64 } angle
      * @returns { This }
-     * @relation startAngle(angle: number): GaugeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func startAngle(angle: Float64): This {
+    public func startAngle(angle: ?Float64): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetStartAngle(angle)
+            FfiOHOSAceFrameworkGaugeSetStartAngle(angle ?? 0.0)
         }
         this
     }
@@ -199,18 +189,16 @@ public class Gauge <: ContainerBase {
     /**
      * Sets the end angle position. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @param { Float64 } angle
+     * @param { ?Float64 } angle
      * @returns { This }
-     * @relation endAngle(angle: number): GaugeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func endAngle(angle: Float64): This {
+    public func endAngle(angle: ?Float64): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetEndAngle(angle)
+            FfiOHOSAceFrameworkGaugeSetEndAngle(angle ?? 360.0)
         }
         this
     }
@@ -218,24 +206,23 @@ public class Gauge <: ContainerBase {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { Array<(ResourceColor, Float32)> } value
+     * @param { ?Array<(ResourceColor, Float32)> } value
      * @returns { This }
-     * @relation colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(value: Array<(ResourceColor, Float32)>): This {
-        let colors = FFIVectorUInt32(value.size)
-        let weights = FFIVectorFloat32(value.size)
-        for (i in 0..value.size) {
-            colors.setElement(i, transAppResourceToResourceColor(value[i][0]))
-            if (value[i][1] < 0.0) {
+    public func colors(value: ?Array<(ResourceColor, Float32)>): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let colors = FFIVectorUInt32(tmpValue.size)
+        let weights = FFIVectorFloat32(tmpValue.size)
+        for (i in 0..tmpValue.size) {
+            colors.setElement(i, transAppResourceToResourceColor(tmpValue[i][0]))
+            if (tmpValue[i][1] < 0.0) {
                 weights.setElement(i, 0.0)
             } else {
-                weights.setElement(i, value[i][1])
+                weights.setElement(i, tmpValue[i][1])
             }
         }
         unsafe {
@@ -249,17 +236,16 @@ public class Gauge <: ContainerBase {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { Array<(LinearGradient, Float32)> } value
+     * @param { ?Array<(LinearGradient, Float32)> } value
      * @returns { This }
-     * @relation colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(value: Array<(LinearGradient, Float32)>): This {
-        var maxSize = value.size;
+    public func colors(value: ?Array<(LinearGradient, Float32)>): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        var maxSize = tmpValue.size;
         if (maxSize > 9) {
             maxSize = 9
         }
@@ -267,20 +253,21 @@ public class Gauge <: ContainerBase {
         var weights = FFIVectorFloat32(maxSize)
 
         for (i in 0..maxSize) {
-            var curColorStops = value[i][0].colorStops
+            var curColorStops = tmpValue[i][0].colorStops
             var vecColorStop = FFIVectorColorStops(curColorStops.size)
             for (j in 0..curColorStops.size) {
-                if (curColorStops[j].offset.value >= 0.0) {
-                    vecColorStop.setElement(j, GaugeColorStop(curColorStops[j].color.toUInt32(), curColorStops[j].offset.value))
+                if ((curColorStops[j].offset).value >= 0.0) {
+                    vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color).toUInt32(), 
+                    (curColorStops[j].offset).value))
                 } else {
-                    vecColorStop.setElement(j, GaugeColorStop(curColorStops[j].color.toUInt32(), 0.0))
+                    vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color).toUInt32(), 0.0))
                 }
             }
             vecValueHandle.setElement(i, vecColorStop.getNativeHandle())
-            if (value[i][1] < 0.0) {
+            if (tmpValue[i][1] < 0.0) {
                 weights.setElement(i, 0.0)
             } else {
-                weights.setElement(i, value[i][1])
+                weights.setElement(i, tmpValue[i][1])
             }
         }
         unsafe {
@@ -294,17 +281,16 @@ public class Gauge <: ContainerBase {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
-     * @relation colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(value: ResourceColor): This {
-        let array: Array<(ResourceColor, Float32)> = [(value, 1.0)]
+    public func colors(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let array: Array<(ResourceColor, Float32)> = [(tmpValue, 1.0)]
         colors(array)
         this
     }
@@ -312,17 +298,16 @@ public class Gauge <: ContainerBase {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { LinearGradient } value
+     * @param { ?LinearGradient } value
      * @returns { This }
-     * @relation colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(value: LinearGradient): This {
-        let array: Array<(LinearGradient, Float32)> = [(value, 1.0)]
+    public func colors(value: ?LinearGradient): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let array: Array<(LinearGradient, Float32)> = [(tmpValue, 1.0)]
         colors(array)
         this
     }
@@ -330,17 +315,15 @@ public class Gauge <: ContainerBase {
     /**
      * Sets the thickness of the ring chart.
      *
-     * @param { Length } length
+     * @param { ?Length } length
      * @returns { This }
-     * @relation strokeWidth(length: Length): GaugeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeWidth(length: Length): This {
-        var value_ = transAppResourceToLength(length)
+    public func strokeWidth(length: ?Length): This {
+        var value_ = transAppResourceToLength(length ?? 4.0.vp)
         unsafe {
             FfiOHOSAceFrameworkGaugeSetStrokeWidth(value_.value, value_.unitType.getValue())
         }
@@ -350,20 +333,18 @@ public class Gauge <: ContainerBase {
     /**
      * Sets track shadow of the ring chart.
      *
-     * @param { Float64 } radius
-     * @param { Float64 } offsetX
-     * @param { Float64 } offsetY
+     * @param { ?Float64 } radius
+     * @param { ?Float64 } offsetX
+     * @param { ?Float64 } offsetY
      * @returns { This }
-     * @relation trackShadow(value: GaugeShadowOptions): GaugeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func trackShadow(radius!: Float64 = 20.0, offsetX!: Float64 = 5.0, offsetY!: Float64 = 5.0): This {
+    public func trackShadow(radius!: ?Float64 = None, offsetX!: ?Float64 = None, offsetY!: ?Float64 = None): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetShadowOptions(radius, offsetX, offsetY)
+            FfiOHOSAceFrameworkGaugeSetShadowOptions(radius ?? 20.0, offsetX ?? 5.0, offsetY ?? 5.0)
         }
         this
     }
@@ -371,19 +352,17 @@ public class Gauge <: ContainerBase {
     /**
      * Sets indicator options of the ring chart.
      *
-     * @param { ResourceStr } icon
-     * @param { Length } space
+     * @param { ?ResourceStr } icon
+     * @param { ?Length } space
      * @returns { This }
-     * @relation indicator(value: GaugeIndicatorOptions): GaugeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func indicator(icon!: ResourceStr = "default", space!: Length = 8.0.vp): This {
-        let icon_ = transResourceStrToString(icon)
-        let space_ = transAppResourceToLength(space)
+    public func indicator(icon!: ?ResourceStr = None, space!: ?Length = None): This {
+        let icon_ = transResourceStrToString(icon ?? "default")
+        let space_ = transAppResourceToLength(space ?? 8.0.vp)
         unsafe {
             try (iconCString = LibC.mallocCString(icon_).asResource()) {
                 FfiOHOSAceFrameworkGaugeSetIndicator(iconCString.value, space_.value)
@@ -395,18 +374,17 @@ public class Gauge <: ContainerBase {
     /**
      * Sets description content of the ring chart.
      *
-     * @param { () -> Unit } builder
+     * @param { ?CustomBuilder } builder
      * @returns { This }
-     * @relation description(value: CustomBuilder): GaugeAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func description(builder: () -> Unit): This {
+    public func description(builder: ?CustomBuilder): This {
+        let tmpBuilder = builder ?? { => }
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetDescription(Callback0Param<Unit>(builder).getID())
+            FfiOHOSAceFrameworkGaugeSetDescription(Callback0Param<Unit>(tmpBuilder).getID())
         }
         this
     }

@@ -87,62 +87,54 @@ foreign {
 /**
  * Defines an AlphabetIndexer callback when onSelect.
  *
- * @typedef { function } OnAlphabetIndexerSelectCallback
- * @param { Int64 } index - selected index
- * @relation declare type OnAlphabetIndexerSelectCallback = (index: number) => void;
+ * @param { Int64 } index - selected index.
  */
 public type OnAlphabetIndexerSelectCallback = (Int64) -> Unit
 
 /**
  * Defines an AlphabetIndexer callback when onRequestPopupData.
  *
- * @typedef { function } OnAlphabetIndexerRequestPopupDataCallback
- * @param { Int64 } index - selected index
+ * @param { Int64 } index - selected index.
  * @returns { Array<String> } string array corresponding to the index
- * @relation declare type OnAlphabetIndexerRequestPopupDataCallback = (index: number) => Array<string>;
  */
 public type OnAlphabetIndexerRequestPopupDataCallback = (Int64) -> Array<String>
 
 /**
  * Defines an AlphabetIndexer callback when onPopupSelect.
  *
- * @typedef { function } OnAlphabetIndexerPopupSelectCallback
- * @param { Int64 } index - selected index
- * @relation declare type OnAlphabetIndexerPopupSelectCallback = (index: number) => void;
+ * @param { Int64 } index - selected index.
  */
 public type OnAlphabetIndexerPopupSelectCallback = (Int64) -> Unit
 
 /**
  * Defines AlphabetIndexer Component.
- *
- * @syscap SystemCapability.ArkUI.ArkUI.Full
  */
 @!APILevel[
-    21,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class AlphabetIndexer <: ViewBase {
+public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & AlphabetIndexerAttribute {
     /**
      * Construct the alphabet indexer component.
      * Called when the alphabet indexer component is used.
      *
      * @param { Array<String> } arrayValue - Alphabetical index string array.
-     * @param { UInt32 } selected - ID of the selected item.
-     * @returns { AlphabetIndexer }
+     * @param { ?UInt32 } selected - ID of the selected item.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(arrayValue!: Array<String>, selected!: UInt32) {
-        let vecFfi = FFIVectorString(arrayValue.size)
-        for (i in 0..arrayValue.size) {
-            vecFfi.setElement(i, arrayValue[i])
+    public init(arrayValue!: Array<String>, selected!: ?UInt32) {
+        let tmpArrayValue = arrayValue
+        let tmpSelected = selected ?? 0
+        let vecFfi = FFIVectorString(tmpArrayValue.size)
+        for (i in 0..tmpArrayValue.size) {
+            vecFfi.setElement(i, tmpArrayValue[i])
         }
         var actualIdx: UInt32 = 0
-        if (Int64(selected) < arrayValue.size) {
-            actualIdx = selected
+        if (Int64(tmpSelected) < tmpArrayValue.size) {
+            actualIdx = tmpSelected
         }
         unsafe { FfiOHOSAceFrameworkAlphabetIndexerCreate(vecFfi.getNativeHandle(), actualIdx) }
         vecFfi.free()
@@ -150,18 +142,17 @@ public class AlphabetIndexer <: ViewBase {
     /**
      * Definitions color.
      *
-     * @param { ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
-     * @relation color(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func color(value: ResourceColor): This {
+    public func color(value: ?ResourceColor): This {
+        let tmpValue = value ?? Color(0x99182431)
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkAlphabetIndexerColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -169,18 +160,17 @@ public class AlphabetIndexer <: ViewBase {
     /**
      * Select the text color.
      *
-     * @param { ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
-     * @relation selectedColor(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(value: ResourceColor): This {
+    public func selectedColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? Color(0xFF007DFF)
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerSelectedColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkAlphabetIndexerSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -188,18 +178,17 @@ public class AlphabetIndexer <: ViewBase {
     /**
      * Font color of the pop-up prompt text.
      *
-     * @param { ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
-     * @relation popupColor(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func popupColor(value: ResourceColor): This {
+    public func popupColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? Color(0xFF007DFF)
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerPopupColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkAlphabetIndexerPopupColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -207,18 +196,17 @@ public class AlphabetIndexer <: ViewBase {
     /**
      * Select the text background color.
      *
-     * @param { ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
-     * @relation selectedBackgroundColor(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedBackgroundColor(value: ResourceColor): This {
+    public func selectedBackgroundColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? Color(0x1A007DFF)
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerSelectedBackgroundColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkAlphabetIndexerSelectedBackgroundColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -226,18 +214,17 @@ public class AlphabetIndexer <: ViewBase {
     /**
      * Background color of the pop-up window index.
      *
-     * @param { ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
-     * @relation popupBackground(value: ResourceColor): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func popupBackground(value: ResourceColor): This {
+    public func popupBackground(value: ?ResourceColor): This {
+        let tmpValue = value ?? Color(0x66808080)
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerPopupBackground(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkAlphabetIndexerPopupBackground(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -245,53 +232,52 @@ public class AlphabetIndexer <: ViewBase {
     /**
      * Whether to use pop-up index hints.
      *
-     * @param { Bool } value
+     * @param { ?Bool } value
      * @returns { This }
-     * @relation usingPopup(value: boolean): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func usingPopup(value: Bool): This {
+    public func usingPopup(value: ?Bool): This {
+        let tmpValue = value ?? false
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerUsingPopup(value)
+            FfiOHOSAceFrameworkAlphabetIndexerUsingPopup(tmpValue)
         }
         this
     }
 
     /**
-     * Select the text text style,
+     * Select the text text style.
      *
-     * @param { Length } size
-     * @param { FontWeight } weight
-     * @param { ResourceStr } family
-     * @param { FontStyle } style
+     * @param { ?Length } size - font size.
+     * @param { ?FontWeight } weight - font weight.
+     * @param { ?ResourceStr } family - font family.
+     * @param { ?FontStyle } style - font style.
      * @returns { This }
-     * @relation selectedFont(value: Font): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedFont(
-        size!: Length = 10.vp,
-        weight!: FontWeight = FontWeight.Normal,
-        family!: ResourceStr = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        family!: ?ResourceStr = None,
+        style!: ?FontStyle = None
     ): This {
-        var size_ = transAppResourceToLength(size)
+        let tmpWeight = weight ?? FontWeight.Normal
+        let tmpStyle = style ?? FontStyle.Normal
+        var size_ = transAppResourceToLength(size ?? 10.vp)
         unsafe {
-            try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
+            try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkAlphabetIndexerSelectedFont(
                     size_.value,
                     size_.unitType.getValue(),
                     weightCString.value,
                     fontFamilyCString.value,
-                    style.getValue()
+                    tmpStyle.getValue()
                 )
             }
         }
@@ -301,34 +287,34 @@ public class AlphabetIndexer <: ViewBase {
     /**	
      * Select the text background color.	
      *	
-     * @param { Length } size	
-     * @param { FontWeight } weight	
-     * @param { ResourceStr } family	
-     * @param { FontStyle } style	
+     * @param { ?Length } size - font size.
+     * @param { ?FontWeight } weight - font weight.
+     * @param { ?ResourceStr } family - font family.
+     * @param { ?FontStyle } style - font style.
      * @returns { This }
-     * @relation popupFont(value: Font): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func popupFont(
-        size!: Length = 24.vp,
-        weight!: FontWeight = FontWeight.Normal,
-        family!: ResourceStr = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        family!: ?ResourceStr = None,
+        style!: ?FontStyle = None
     ): This {
-        var size_ = transAppResourceToLength(size)
+        let tmpWeight = weight ?? FontWeight.Normal
+        let tmpStyle = style ?? FontStyle.Normal
+        var size_ = transAppResourceToLength(size ?? 24.vp)
         unsafe {
-            try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
+            try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkAlphabetIndexerPopupFont(
                     size_.value,
                     size_.unitType.getValue(),
                     weightCString.value,
                     fontFamilyCString.value,
-                    style.getValue()
+                    tmpStyle.getValue()
                 )
             }
         }
@@ -338,34 +324,34 @@ public class AlphabetIndexer <: ViewBase {
     /**	
      * Definitions fonts.	
      *	
-     * @param { Length } size	
-     * @param { FontWeight } weight	
-     * @param { ResourceStr } family	
-     * @param { FontStyle } style	
+     * @param { ?Length } size - font size.
+     * @param { ?FontWeight } weight - font weight.
+     * @param { ?ResourceStr } family - font family.
+     * @param { ?FontStyle } style - font style.
      * @returns { This }
-     * @relation font(value: Font): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func font(
-        size!: Length = 10.vp,
-        weight!: FontWeight = FontWeight.Normal,
-        family!: ResourceStr = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        family!: ?ResourceStr = None,
+        style!: ?FontStyle = None
     ): This {
-        var size_ = transAppResourceToLength(size)
+        let tmpWeight = weight ?? FontWeight.Normal
+        let tmpStyle = style ?? FontStyle.Normal
+        var size_ = transAppResourceToLength(size ?? 10.vp)
         unsafe {
-            try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
+            try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkAlphabetIndexerFont(
                     size_.value,
                     size_.unitType.getValue(),
                     weightCString.value,
                     fontFamilyCString.value,
-                    style.getValue()
+                    tmpStyle.getValue()
                 )
             }
         }
@@ -375,17 +361,16 @@ public class AlphabetIndexer <: ViewBase {
     /**
      * Size of the letter area on the letter index bar. The letter area is a square. Set the length of the square side.
      *
-     * @param { Length } value
+     * @param { ?Length } value
      * @returns { This }
-     * @relation itemSize(value: string | number): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func itemSize(size: Length): This {
-        var size_ = transAppResourceToLength(size)
+    public func itemSize(size: ?Length): This {
+        let tmpSize = size ?? 16.vp
+        var size_ = transAppResourceToLength(tmpSize)
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerItemSize(size_.value, size_.unitType.getValue())
         }
@@ -396,18 +381,18 @@ public class AlphabetIndexer <: ViewBase {
      * Alphabet index bar alignment style. The left and right alignment styles are supported,
      * which affects the pop-up position of the pop-up window.
      *
-     * @param { IndexerAlign } value - indicates the alignment style of Alphabet index.
+     * @param { ?IndexerAlign } value - indicates the alignment style of Alphabet index.
      * @returns { This }
-     * @relation alignStyle(value: IndexerAlign, offset?: Length): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alignStyle(value: IndexerAlign): This {
+    public func alignStyle(value: ?IndexerAlign): This {
+        // not support IndexerAlign.End yet
+        let tmpValue = value ?? IndexerAlign.Right
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerAlignStyle(value.getValue())
+            FfiOHOSAceFrameworkAlphabetIndexerAlignStyle(tmpValue.getValue())
         }
         this
     }
@@ -415,18 +400,17 @@ public class AlphabetIndexer <: ViewBase {
     /**
      * Sets the selected index.
      *
-     * @param { Int32 } index
+     * @param { ?Int32 } index
      * @returns { This }
-     * @relation selected(index: number): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selected(index: Int32): This {
+    public func selected(index: ?Int32): This {
+        let tmpIndex = index ?? 0
         unsafe {
-            FfiOHOSAceFrameworkAlphabetIndexerSelected(index)
+            FfiOHOSAceFrameworkAlphabetIndexerSelected(tmpIndex)
         }
         this
     }
@@ -434,19 +418,17 @@ public class AlphabetIndexer <: ViewBase {
     /**
      * Position of the pop-up windows, relative to the midpoint of the top border of the indexer bar.
      *
-     * @param { Length } x
-     * @param { Length } y
+     * @param { ?Length } x - Coordinate x of the Position.
+     * @param { ?Length } y - Coordinate y of the Position.
      * @returns { This }
-     * @relation popupPosition(value: Position): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func popupPosition(x!: Length = 60.vp, y!: Length = 48.vp): This {
-        var x_ = transAppResourceToLength(x)
-        var y_ = transAppResourceToLength(y)
+    public func popupPosition(x!: ?Length = None, y!: ?Length = None): This {
+        var x_ = transAppResourceToLength(x ?? 60.vp)
+        var y_ = transAppResourceToLength(y ?? 48.vp)
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerPopupPositionWithUnit(x_.value, x_.unitType.getValue(), y_.value,
                 y_.unitType.getValue())
@@ -458,18 +440,17 @@ public class AlphabetIndexer <: ViewBase {
      * Index bar selection callback.
      * Anonymous Object Rectification.
      *
-     * @param { OnAlphabetIndexerSelectCallback } callback
+     * @param { ?OnAlphabetIndexerSelectCallback } callback
      * @returns { This }
-     * @relation onSelect(callback: OnAlphabetIndexerSelectCallback): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onSelect(callback: OnAlphabetIndexerSelectCallback): This {
+    public func onSelect(callback: ?OnAlphabetIndexerSelectCallback): This {
+        let tmpCallback = callback ?? { _: Int64 => }
         let wrapper = {
-            value: Int32 => callback(Int64(value))
+            value: Int32 => tmpCallback(Int64(value))
         }
         let lambdaData = Callback1Param<Int32, Unit>(wrapper)
         unsafe {
@@ -482,19 +463,18 @@ public class AlphabetIndexer <: ViewBase {
      * Index bar selection callback and return the strings which display on pop-up.
      * Anonymous Object Rectification.
      *
-     * @param { OnAlphabetIndexerRequestPopupDataCallback } callback
+     * @param { ?OnAlphabetIndexerRequestPopupDataCallback } callback
      * @returns { This }
-     * @relation onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback): This {
+    public func onRequestPopupData(callback: ?OnAlphabetIndexerRequestPopupDataCallback): This {
+        let tmpCallback = callback ?? { _: Int64 => Array<String>() }
         let wrapper = {
             value: Int32 =>
-            let arr = callback(Int64(value))
+            let arr = tmpCallback(Int64(value))
             let vecFfi = FFIVectorString(arr.size)
             for (i in 0..arr.size) {
                 vecFfi.setElement(i, arr[i])
@@ -512,18 +492,17 @@ public class AlphabetIndexer <: ViewBase {
      * Pop-up selection callback.
      * Anonymous Object Rectification.
      *
-     * @param { OnAlphabetIndexerPopupSelectCallback } callback
+     * @param { ?OnAlphabetIndexerPopupSelectCallback } callback
      * @returns { This }
-     * @relation onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback): AlphabetIndexerAttribute;
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback): This {
+    public func onPopupSelect(callback: ?OnAlphabetIndexerPopupSelectCallback): This {
+        let tmpCallback = callback ?? { _: Int64 => }
         let wrapper = {
-            value: Int32 => callback(Int64(value))
+            value: Int32 => tmpCallback(Int64(value))
         }
         let lambdaData = Callback1Param<Int32, Unit>(wrapper)
         unsafe {

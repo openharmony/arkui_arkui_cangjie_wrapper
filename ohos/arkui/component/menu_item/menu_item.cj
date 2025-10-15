@@ -48,28 +48,25 @@ foreign {
     func FfiOHOSAceFrameworkMenuItemOnChange(callback: Int64): Unit
 }
 
+let defaultMenuItemFontColor = 0x99000000
+let defaultMenuItemContentFontColor = 0xE5000000
+
 /**
  * Defines MenuItem Component.
- *
- * @relation declare const MenuItem: MenuItemInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class MenuItem <: ViewBase {
+public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
      * Creates the MenuItem component.
      *
      * @param { () -> Unit } child
-     * @returns { This }
-     * @relation (value?: MenuItemOptions | CustomBuilder): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = {=>}) {
@@ -81,20 +78,17 @@ public class MenuItem <: ViewBase {
     /**
      * Creates the MenuItem component.
      *
-     * @param { ResourceStr } startIcon
-     * @param { ResourceStr } content
-     * @param { ResourceStr } endIcon
-     * @param { ResourceStr } labelInfo
+     * @param { ?ResourceStr } startIcon
+     * @param { ?ResourceStr } content
+     * @param { ?ResourceStr } endIcon
+     * @param { ?ResourceStr } labelInfo
      * @param { Option<() -> Unit> } builder
-     * @returns { This }
-     * @relation (value?: MenuItemOptions | CustomBuilder): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(startIcon!: ResourceStr, content!: ResourceStr, endIcon!: ResourceStr, labelInfo!: ResourceStr,
+    public init(startIcon!: ?ResourceStr, content!: ?ResourceStr, endIcon!: ?ResourceStr, labelInfo!: ?ResourceStr,
         builder!: Option<() -> Unit> = None) {
         let builderId = if (let Some(fn) <- builder) {
             Callback0Param<Unit>(fn).getID()
@@ -102,10 +96,10 @@ public class MenuItem <: ViewBase {
             0
         }
         unsafe {
-            try (cstartIcon = LibC.mallocCString(transResourceMediaToString(startIcon)).asResource(),
-                ccontent = LibC.mallocCString(transResourceStrToString(content)).asResource(),
-                cendIcon = LibC.mallocCString(transResourceMediaToString(endIcon)).asResource(),
-                clabelInfo = LibC.mallocCString(transResourceStrToString(labelInfo)).asResource()) {
+            try (cstartIcon = LibC.mallocCString(transResourceMediaToString(startIcon ?? "")).asResource(),
+                ccontent = LibC.mallocCString(transResourceStrToString(content ?? "")).asResource(),
+                cendIcon = LibC.mallocCString(transResourceMediaToString(endIcon ?? "")).asResource(),
+                clabelInfo = LibC.mallocCString(transResourceStrToString(labelInfo ?? "")).asResource()) {
                 FfiOHOSAceFrameworkMenuItemCreateByOption(
                     cstartIcon.value,
                     ccontent.value,
@@ -120,18 +114,17 @@ public class MenuItem <: ViewBase {
     /**
      * Setting whether menuItem is selected.
      *
-     * @param { Bool } value
+     * @param { ?Bool } value
      * @returns { This }
-     * @relation selected(value: boolean): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selected(value: Bool): This {
+    public func selected(value: ?Bool): This {
+        let tmpValue = value ?? false
         unsafe {
-            FfiOHOSAceFrameworkMenuItemIsSelected(value)
+            FfiOHOSAceFrameworkMenuItemIsSelected(tmpValue)
         }
         this
     }
@@ -139,18 +132,17 @@ public class MenuItem <: ViewBase {
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
      *
-     * @param { Bool } value
+     * @param { ?Bool } value
      * @returns { This }
-     * @relation selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectIcon(value: Bool): This {
+    public func selectIcon(value: ?Bool): This {
+        let tmpValue = value ?? false
         unsafe {
-            FfiOHOSAceFrameworkMenuItemSelectIconByBool(value)
+            FfiOHOSAceFrameworkMenuItemSelectIconByBool(tmpValue)
         }
         this
     }
@@ -158,18 +150,17 @@ public class MenuItem <: ViewBase {
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
      *
-     * @param { ResourceStr } value
+     * @param { ?ResourceStr } value
      * @returns { This }
-     * @relation selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectIcon(value: ResourceStr): This {
+    public func selectIcon(value: ?ResourceStr): This {
+        let tmpValue = value ?? ""
         unsafe {
-            try (icon = LibC.mallocCString(transResourceMediaToString(value)).asResource()) {
+            try (icon = LibC.mallocCString(transResourceMediaToString(tmpValue)).asResource()) {
                 FfiOHOSAceFrameworkMenuItemSelectIconByResource(icon.value)
             }
         }
@@ -179,33 +170,33 @@ public class MenuItem <: ViewBase {
     /**
      * Sets the content font style.
      *
-     * @param { Length } size
-     * @param { FontWeight } weight
-     * @param { ResourceStr } family
-     * @param { FontStyle } style   
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?ResourceStr } family
+     * @param { ?FontStyle } style   
      * @returns { This }
-     * @relation contentFont(value: Font): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentFont(
-        size!: Length = 16.vp,
-        weight!: FontWeight = FontWeight.Normal,
-        family!: ResourceStr = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        family!: ?ResourceStr = None,
+        style!: ?FontStyle = None
     ): This {
+        let tmpWeight = weight ?? FontWeight.Normal
+        let tmpStyle = style ?? FontStyle.Normal
         unsafe {
-            try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
+            try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkMenuItemContentFont(
-                    transAppResourceToLength(size).value,
-                    transAppResourceToLength(size).unitType.getValue(),
+                    transAppResourceToLength(size ?? 16.vp).value,
+                    transAppResourceToLength(size ?? 16.vp).unitType.getValue(),
                     weightCString.value,
                     fontFamilyCString.value,
-                    style.getValue()
+                    tmpStyle.getValue()
                 )
             }
         }
@@ -215,18 +206,16 @@ public class MenuItem <: ViewBase {
     /**
      * Sets the font color of content text.
      *
-     * @param { ResourceColor } value 
+     * @param { ?ResourceColor } value 
      * @returns { This }
-     * @relation contentFontColor(value: ResourceColor): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func contentFontColor(value: ResourceColor): This {
+    public func contentFontColor(value: ?ResourceColor): This {
         unsafe {
-            let color = transAppResourceToResourceColor(value)
+            let color = transAppResourceToResourceColor(value ?? defaultMenuItemContentFontColor)
             FfiOHOSAceFrameworkMenuItemContentFontColor(color.toUInt32())
         }
         this
@@ -235,33 +224,31 @@ public class MenuItem <: ViewBase {
     /**
      * Sets the label info font style.
      *
-     * @param { Length } size
-     * @param { FontWeight } weight
-     * @param { ResourceStr } family
-     * @param { FontStyle } style   
+     * @param { ?Length } size
+     * @param { ?FontWeight } weight
+     * @param { ?ResourceStr } family
+     * @param { ?FontStyle } style   
      * @returns { This }
-     * @relation labelFont(value: Font): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func labelFont(
-        size!: Length = 16.vp,
-        weight!: FontWeight = FontWeight.Normal,
-        family!: ResourceStr = "HarmonyOS Sans",
-        style!: FontStyle = FontStyle.Normal
+        size!: ?Length = None,
+        weight!: ?FontWeight = None,
+        family!: ?ResourceStr = None,
+        style!: ?FontStyle = None
     ): This {
         unsafe {
-            try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
-                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family)).asResource()) {
+            try (weightCString = LibC.mallocCString((weight ?? FontWeight.Normal).getValue()).asResource(),
+                fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
                 FfiOHOSAceFrameworkMenuItemLabelFont(
-                    transAppResourceToLength(size).value,
-                    transAppResourceToLength(size).unitType.getValue(),
+                    transAppResourceToLength(size ?? 16.vp).value,
+                    transAppResourceToLength(size ?? 16.vp).unitType.getValue(),
                     weightCString.value,
                     fontFamilyCString.value,
-                    style.getValue()
+                    (style ?? FontStyle.Normal).getValue()
                 )
             }
         }
@@ -271,18 +258,16 @@ public class MenuItem <: ViewBase {
     /**
      * Sets the font color of label info text.
      *
-     * @param { ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
-     * @relation labelFontColor(value: ResourceColor): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func labelFontColor(value: ResourceColor): This {
+    public func labelFontColor(value: ?ResourceColor): This {
         unsafe {
-            let color = transAppResourceToResourceColor(value)
+            let color = transAppResourceToResourceColor(value ?? defaultMenuItemFontColor)
             FfiOHOSAceFrameworkMenuItemLabelFontColor(color.toUInt32())
         }
         this
@@ -291,17 +276,16 @@ public class MenuItem <: ViewBase {
     /**
      * Triggers a callback when a menu item is selected or unchecked.
      *
-     * @param { (Bool) -> Unit } callback
+     * @param { ?(Bool) -> Unit } callback
      * @returns { This }
-     * @relation onChange(callback: (selected: boolean) => void): MenuItemAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (Bool) -> Unit): This {
-        let lambdaData = Callback1Param<Bool, Unit>(callback)
+    public func onChange(callback: ?(Bool) -> Unit): This {
+        let tmpCallback = callback ?? { res: Bool => }
+        let lambdaData = Callback1Param<Bool, Unit>(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkMenuItemOnChange(lambdaData.getID())
         }

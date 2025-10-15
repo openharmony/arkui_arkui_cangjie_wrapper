@@ -21,6 +21,8 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
 import std.collection.*
+import std.deriving.Derive
+import ohos.business_exception.BusinessException
 
 foreign {
     func FfiOHOSAceFrameworkEnvironmentGetAccessibilityEnabled(): NativeOptionBool
@@ -38,35 +40,27 @@ foreign {
 
 /**
  * Defines the ColorMode of device.
- *
- * @relation declare enum ColorMode
  */
+@Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ColorMode {
     /**
      * Light mode.
-     *
-     * @relation LIGHT = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Light
     |
     /**
      * Dark mode.
-     *
-     * @relation DARK
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Dark
@@ -76,7 +70,7 @@ public enum ColorMode {
         match (this) {
             case Light => 0
             case Dark => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(100001, "Internal error.")
         }
     }
 
@@ -91,47 +85,36 @@ public enum ColorMode {
 
 /**
  * Defines the LayoutDirection of device.
- *
- * @relation declare enum LayoutDirection
  */
+@Derive[Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LayoutDirection {
     /**
      * Elements are laid out from left to right.
-     *
-     * @relation LTR
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ltr
     |
     /**
      * Elements are laid out from right to left.
-     *
-     * @relation RTL
      */
     @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Rtl
     |
     /**
      * Elements are laid out from auto.
-     *
-     * @relation Auto
      */
     @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -148,12 +131,9 @@ public enum LayoutDirection {
 
 /**
  * Defines the Environment interface.
- *
- * @relation declare class Environment
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Environment {
@@ -169,12 +149,21 @@ public class Environment {
             case None => Environment.instance = Environment()
             case Some(v) => ()
         }
-        Environment.instance.getOrThrow()
+        Environment.instance.getOrThrow({
+            => BusinessException(100001, "Internal error.")
+        })
     }
 
+    /**
+     * Cleans up the environment properties and releases resources.
+     * This function deletes all environment properties from AppStorage
+     * and clears the internal instance reference.
+     * If the instance is already None, this function returns immediately.
+     *
+     * @throws { BusinessException } 100001 - Internal error.
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func aboutToBeDeleted(): Unit {
@@ -186,14 +175,13 @@ public class Environment {
     }
 
     /**
-     * returns an Array<string> of all environment property keys
+     * Returns an Array<string> of all environment property keys.
      *
-     * @returns { Array<string> } all environment property keys
-     * @relation static keys(): Array<string>;
+     * @returns { Array<string> } all environment property keys.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func keys(): Array<String> {
@@ -208,12 +196,11 @@ public class Environment {
      *
      * @param { String } key - environment property
      * @param { T } value - is the default value if cannot get the environment property value
-     * @returns { Bool } false if method failed
-     * @relation static envProp<S>(key: string, value: S): boolean;
+     * @returns { Bool } false if method failed.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func envProp<T>(key: String, defaultValue: T): Bool {

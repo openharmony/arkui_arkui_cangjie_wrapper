@@ -15,21 +15,21 @@ import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.ui_context") {
   sources = [
-    "cj_measure.cj",
     "cj_ui_context.cj",
     "cj_uicontext_import.cj",
   ]
 
   cj_deps = [
-    "../../animator:ohos.animator",
     "../../base:ohos.base",
-    "../../font:ohos.font",
-    "../../prompt_action:ohos.prompt_action",
-    "../../router:ohos.router",
     "../component/action_sheet:ohos.arkui.component.action_sheet",
     "../component/alert_dialog:ohos.arkui.component.alert_dialog",
     "../component/common:ohos.arkui.component.common",
     "../component/native_struct:ohos.arkui.component.native_struct",
+    "animator:ohos.arkui.ui_context.animator",
+    "font:ohos.arkui.ui_context.font",
+    "measure:ohos.arkui.ui_context.measure",
+    "prompt_action:ohos.arkui.ui_context.prompt_action",
+    "router:ohos.arkui.ui_context.router",
   ]
 
   cj_external_deps = [

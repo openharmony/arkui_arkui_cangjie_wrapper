@@ -21,23 +21,15 @@ import ohos.arkui.component.custom_view.*
 import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 @C
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 protected func OHOSAceFrameworkRemoteViewForceCompleteRerender(id: Int64, deep: Bool): Unit {
     getRemoteViewOrThrow(id).forceCompleteRerender(deep)
-}
-
-@C
-protected struct OHOSAceFrameworkRemoteViewUpdateWithJsonParams {
-    OHOSAceFrameworkRemoteViewUpdateWithJsonParams(
-        let self: Int64,
-        let json: CString
-    ) {}
 }
 
 @C
@@ -51,9 +43,6 @@ protected func OHOSAceFrameworkRemoteViewRerender(id: Int64): Unit {
     getRemoteViewOrThrow(id).rerender()
 }
 
-/**
- * @deprecated
- */
 @C
 protected func OHOSAceFrameworkRemoteViewRelease(_: Int64): Int64 {
     0
@@ -148,7 +137,7 @@ func getRemoteViewOrThrow(id: Int64): RemoteView {
     match (optHost) {
         case None =>
             throwNativeError("RemoteView of " + id.toString() + " does not exist!\n")
-            throw NoneValueException("RemoteView of " + id.toString() + " does not exist!")
+            throw BusinessException(100001, "Internal error: RemoteView of " + id.toString() + " does not exist!")
         case Some(host) => host
     }
 }

@@ -36,61 +36,73 @@ foreign {
     func FfiOHOSAceFrameworkStackSetHeight(height: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkStackSetSize(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 /**
  * Defines Stack Component.
- *
- * @relation const Stack: StackInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Stack <: ContainerBase {
+public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
     /**
     * Defines the constructor of Stack.
     *
-    * @param { Alignment } alignContent
-    * @param { () -> Unit } child
-    * @returns { This }
-    * @relation (options?: StackOptions): StackAttribute
+    * @param { ?Alignment } alignContent
+    * @param { ?() -> Unit } child
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(alignContent!: Alignment = Alignment.Center, child!: () -> Unit = {=>}) {
+    public init(alignContent!: ?Alignment = None, child!: () -> Unit = {=>}) {
+        let tmpAlignContent = alignContent ?? Alignment.Center
         unsafe {
-            FfiOHOSAceFrameworkStackCreate(alignContent.getValue())
+            FfiOHOSAceFrameworkStackCreate(tmpAlignContent.getValue())
         }
         this.child = child
     }
 
-    protected override func widthInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkStackSetWidth(value_.value, value_.unitType.getValue())
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkStackSetWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
 
-    protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkStackSetHeight(value_.value, value_.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkStackSetHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkStackSetSize(width_.value, width_.unitType.getValue(), height_.value,
-                height_.unitType.getValue())
+    protected override func sizeInner(width: ?Length, height: ?Length): This {
+        if (width.isNone() || height.isNone()) {
+            widthInner(width)
+            heightInner(height)
+        } else {
+            var width_ = transAppResourceToLength(width ?? 0.0.vp)
+            var height_ = transAppResourceToLength(height ?? 0.0.vp)
+            unsafe {
+                FfiOHOSAceFrameworkStackSetSize(width_.value, width_.unitType.getValue(), height_.value,
+                    height_.unitType.getValue())
+            }
         }
         this
     }
@@ -98,18 +110,16 @@ public class Stack <: ContainerBase {
     /**
     * Called when the alignment of items in the container is set.
     *
-    * @param { Alignment } value
+    * @param { ?Alignment } value
     * @returns { This }
-    * @relation alignContent(value: Alignment): StackAttribute
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alignContent(value: Alignment): This {
+    public func alignContent(value: ?Alignment): This {
         unsafe {
-            FfiOHOSAceFrameworkStackSetAlignment(value.getValue())
+            FfiOHOSAceFrameworkStackSetAlignment((value ?? Alignment.Center).getValue())
         }
         this
     }

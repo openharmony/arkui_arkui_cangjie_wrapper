@@ -36,23 +36,17 @@ foreign {
 
 /**
  * Image data object
- *
- * @relation declare class ImageData
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageData <: RemoteDataLite {
     /**
      * Width of the image.
-     *
-     * @relation readonly height: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop width: Int32 {
@@ -65,12 +59,9 @@ public class ImageData <: RemoteDataLite {
 
     /**
      * Height of the image.
-     *
-     * @relation readonly height(): number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop height: Int32 {
@@ -82,13 +73,10 @@ public class ImageData <: RemoteDataLite {
     }
 
     /**
-     * Array containing image pixel data
-     *
-     * @relation readonly data: Uint8ClampedArray
+     * Array containing image pixel data.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop data: Array<UInt8> {
@@ -105,28 +93,29 @@ public class ImageData <: RemoteDataLite {
     /**
      * Create an ImageData object based on the input parameters.
      *
-     * @param { Float64 } width - Width of the image.
-     * @param { Float64 } height - Height of the image.
-     * @param { Array<UInt8> } data - Data of the image. If this parameter is not specified, the default value is a black rectangular image.
-     * @param { LengthMetricsUnit } unit - the unit mode
-     * @returns { This }
-     * @relation constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)
+     * @param { ?Float64 } width - Width of the image.
+     * @param { ?Float64 } height - Height of the image.
+     * @param { ?Array<UInt8> } data - Data of the image. If this parameter is not specified, the default value is a black rectangular image.
+     * @param { ?LengthMetricsUnit } unit - the unit mode
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width: Float64, height: Float64, data!: Array<UInt8>,
-        unit!: LengthMetricsUnit = LengthMetricsUnit.Default) {
+    public init(width: ?Float64, height: ?Float64, data!: ?Array<UInt8>,
+        unit!: ?LengthMetricsUnit = None) {
         super(
             unsafe {
-                var vecValueHandle = FFIVectorUInt8(data.size)
-                for (i in 0..data.size) {
-                    vecValueHandle.setElement(i, data[i])
+                let tmpWidth = width ?? 0.0
+                let tmpHeight = height ?? 0.0
+                let tmpData = data ?? []
+                let tmpUnit = unit ?? LengthMetricsUnit.Default
+                var vecValueHandle = FFIVectorUInt8(tmpData.size)
+                for (i in 0..tmpData.size) {
+                    vecValueHandle.setElement(i, tmpData[i])
                 }
-                let id = FfiOHOSAceFrameworkCanvasImageDataCtor(width, height, vecValueHandle.getNativeHandle(),
-                    unit.getValue())
+                let id = FfiOHOSAceFrameworkCanvasImageDataCtor(tmpWidth, tmpHeight, vecValueHandle.getNativeHandle(),
+                    tmpUnit.getValue())
                 vecValueHandle.free()
                 id
             })
@@ -135,21 +124,20 @@ public class ImageData <: RemoteDataLite {
     /**
      * Create an ImageData object based on the input parameters.
      *
-     * @param { Float64 } width - Width of the image.
-     * @param { Float64 } height - Height of the image.
-     * @param { LengthMetricsUnit } unit - the unit mode
-     * @returns { This }
-     * @relation constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)
+     * @param { ?Float64 } width - Width of the image.
+     * @param { ?Float64 } height - Height of the image.
+     * @param { ?LengthMetricsUnit } unit - the unit mode.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(width: Float64, height: Float64, unit!: LengthMetricsUnit = LengthMetricsUnit.Default) {
-        super(unsafe {
-            let id = FfiOHOSAceFrameworkCanvasImageDataCtorWithNoData(width, height, unit.getValue())
-            id
+    public init(width: ?Float64, height: ?Float64, unit!: ?LengthMetricsUnit = None) {
+        super(
+            unsafe {
+                let id = FfiOHOSAceFrameworkCanvasImageDataCtorWithNoData(width ?? 0.0, height ?? 0.0,
+                    (unit ?? LengthMetricsUnit.Default).getValue())
+                id
         })
     }
 

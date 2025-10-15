@@ -20,54 +20,49 @@ package ohos.arkui.state_management
 import std.collection.ArrayList
 import ohos.labels.APILevel
 
+/**
+ * Defines class ObservedObject.
+ */
 @!APILevel[
-    21,
-    atomicservice: true,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ObservedObject <: ObservedComplexAbstract {
     private let publishVars: ArrayList<ObservedPropertyAbstract> = ArrayList<ObservedPropertyAbstract>()
 
+    /**
+     * Adds a published variable to the observed object.
+     *
+     * @param { ObservedPropertyAbstract } publishVar - The published variable to add.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addPublishVar(publishVar: ObservedPropertyAbstract) {
         publishVars.add(publishVar)
     }
 
+    /**
+     * Gets the list of published variables associated with this observed object.
+     *
+     * @returns { ArrayList<ObservedPropertyAbstract> } The list of published variables.
+     */
     @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getPublishVar(): ArrayList<ObservedPropertyAbstract> {
         return publishVars
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func subscribeInner(observer: Observer): Unit {
+    protected func subscribeInner(observer: Observer): Unit {
         for (publishVar in publishVars) {
             publishVar.subscribeEx(observer)
         }
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func unsubscribeInner(observer: Observer): Unit {
+    protected func unsubscribeInner(observer: Observer): Unit {
         for (publishVar in publishVars) {
             publishVar.unsubscribeEx(observer)
         }

@@ -34,33 +34,32 @@ foreign {
     func FfiOHOSAceFrameworkColumnSetHeight(height: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkColumnSetWidth(width: Float64, unit: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 /**
  * Defines Column Component.
- *
- * @relation const Column: ColumnInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Column <: ContainerBase {
+public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
     /**
     * Column constructor.
     *
-    * @param { Length } space
+    * @param { ?Length } space
     * @param { () -> Unit } child
-    * @returns { This }
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(space!: Length = 0.vp, child!: () -> Unit = {=>}) {
-        var space_ = transAppResourceToLength(space)
+    public init(space!: ?Length = None, child!: () -> Unit = {=>}) {
+        var space_ = transAppResourceToLength(space ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkColumnCreateWithSpace(space_.value, space_.unitType.getValue())
         }
@@ -68,55 +67,59 @@ public class Column <: ContainerBase {
     }
 
     /**
-    * Sets the alignment format of the subassembly in the horizontal direction.
-    *
-    * @param { HorizontalAlign } value
-    * @returns { This }
-    * @relation alignItems(value: HorizontalAlign): ColumnAttribute
-    */
+     * Sets the alignment format of the subassembly in the horizontal direction.
+     *
+     * @param { ?HorizontalAlign } value
+     * @returns { This }
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alignItems(value: HorizontalAlign): This {
+    public func alignItems(value: ?HorizontalAlign): This {
         unsafe {
-            FfiOHOSAceFrameworkColumnSetAlignItems(value.getValue())
+            FfiOHOSAceFrameworkColumnSetAlignItems((value ?? HorizontalAlign.Center).getValue())
         }
         this
     }
 
     /**
-    * Sets the alignment format of the subassembly in the vertical direction.
-    *
-    * @param { FlexAlign } value
-    * @returns { This }
-    * @relation justifyContent(value: FlexAlign): ColumnAttribute
-    */
+     * Sets the alignment format of the subassembly in the vertical direction.
+     *
+     * @param { ?FlexAlign } value
+     * @returns { This }
+     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func justifyContent(value: FlexAlign): This {
+    public func justifyContent(value: ?FlexAlign): This {
         unsafe {
-            FfiOHOSAceFrameworkColumnSetJustifyContent(value.getValue())
+            FfiOHOSAceFrameworkColumnSetJustifyContent((value ?? FlexAlign.Start).getValue())
         }
         this
     }
 
-    protected override func widthInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkColumnSetWidth(value_.value, value_.unitType.getValue())
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkColumnSetWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
 
-    protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkColumnSetHeight(value_.value, value_.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkColumnSetHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }

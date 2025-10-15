@@ -271,7 +271,7 @@ class ViewScroll2 {
                     .width(20.percent)
                     .backgroundColor(Color.Green)
                     .onClick({evt =>
-                            this.curOffset = this.scroller.currentOffset().yOffset.toString()
+                            this.curOffset = this.scroller.currentOffset().getOrThrow().yOffset.toString()
                     })
                     Text("YOFFSET: " + this.curOffset)
                     .id("yOffset")
@@ -333,7 +333,7 @@ class ViewScroll2 {
                     .width(20.percent)
                     .backgroundColor(Color.Green)
                     .onClick({evt =>
-                            this.curOffset_2 = this.scroller_3.currentOffset().yOffset.toString()
+                            this.curOffset_2 = this.scroller_3.currentOffset().getOrThrow().yOffset.toString()
                     })
                     Text("initial_offset: " + this.curOffset_2)
                     .id("initial_offset")
@@ -375,7 +375,7 @@ class ViewScroll2 {
                     .width(20.percent)
                     .backgroundColor(Color.Green)
                     .onClick({evt =>
-                            this.curOffset_3 = this.scroller_4.currentOffset().yOffset.toString()
+                            this.curOffset_3 = this.scroller_4.currentOffset().getOrThrow().yOffset.toString()
                     })
                     Text("yoffset: " + this.curOffset_3)
                     .id("scrollPage_offset")
@@ -471,9 +471,9 @@ class ViewScroll2 {
                     .height(20.vp)
                     .width(20.percent)
                     .backgroundColor(Color.Green)
-                    .onClick({evt => 
+                    .onClick({evt =>
                         this.scroller_5.scrollBy(xOffset: 0.vp, yOffset: 60.vp)
-                        this.onscrollMessage = "${this.scroller_5.currentOffset().xOffset.toString()}, ${this.scroller_5.currentOffset().yOffset.toString()}"    
+                        this.onscrollMessage = "${this.scroller_5.currentOffset().getOrThrow().xOffset.toString()}, ${this.scroller_5.currentOffset().getOrThrow().yOffset.toString()}"
                     })
                     Text(this.onscrollMessage)
                     .id("onscrollMessage")
@@ -505,7 +505,7 @@ class ViewScroll2 {
                     .width(20.percent)
                     .backgroundColor(Color.Green)
                     .onClick({evt =>
-                            this.curOffset_4 = this.scroller_6.currentOffset().yOffset.toString()
+                            this.curOffset_4 = this.scroller_6.currentOffset().getOrThrow().yOffset.toString()
                     })
                     Text(this.curOffset_4)
                     .id("onScrollFrameBegin_offset_1")
@@ -540,7 +540,7 @@ class ViewScroll2 {
                     .width(20.percent)
                     .backgroundColor(Color.Green)
                     .onClick({evt =>
-                            this.curOffset_5 = this.scroller_7.currentOffset().yOffset.toString()
+                            this.curOffset_5 = this.scroller_7.currentOffset().getOrThrow().yOffset.toString()
                     })
                     Text(this.curOffset_5)
                     .id("curOffset_5")
@@ -595,7 +595,7 @@ class ViewScroll2 {
                     .width(20.percent)
                     .backgroundColor(Color.Green)
                     .onClick({evt =>
-                            this.curOffset_6 = this.scroller_8.currentOffset().yOffset.toString()
+                            this.curOffset_6 = this.scroller_8.currentOffset().getOrThrow().yOffset.toString()
                     })
 
                     Text(this.curOffset_6)
@@ -631,7 +631,7 @@ class ViewScroll2 {
                     .backgroundColor(Color.Green)
                     .onClick({evt =>
                         let res = this.scroller_list.getItemRect(4)
-                        this.itemRect = res.x.toString() + " " + res.y.toString() + " " + res.width.toString() + " " + res.height.toString()
+                        this.itemRect = res.x.getOrThrow().toString() + " " + res.y.getOrThrow().toString() + " " + res.width.getOrThrow().toString() + " " + res.height.getOrThrow().toString()
                     })
                     Text(this.itemRect)
                     .id("itemRect")
@@ -672,7 +672,7 @@ class ViewScroll2 {
                     }
                     .listDirection(Axis.Vertical)
                     .scrollBar(BarState.Off)
-                    .divider(strokeWidth: 0.vp, color: Color.Black, startMargin: 0.vp, endMargin: 0.vp)
+                    .divider(ListDividerOptions(strokeWidth: 0.vp, color: Color.Black, startMargin: 0.vp, endMargin: 0.vp))
                     .edgeEffect(EdgeEffect.Spring)
                     .width(90.percent)
                 }.height(20.percent)

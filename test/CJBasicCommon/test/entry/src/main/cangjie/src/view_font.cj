@@ -20,7 +20,6 @@ package ohos_app_cangjie_entry
 
 import ohos.base.*
 import ohos.arkui.ui_context.*
-import ohos.font.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
@@ -53,13 +52,13 @@ class ViewFont {
                 Text("HelloWorld").fontFamily("Deyihei")
                 Text("HelloWorld")
 
-                Button("HelloWorld1").onClick {
+                Button("HelloWorld1").onClick ({
                     evt =>
                     let list = getUIContext().getFont().getSystemFontList()
                     Hilog.info(1, "Cangjie-App", "${list.size}")
-                }.id("getSystemFontList")
+                }).id("getSystemFontList")
 
-                Button("HelloWorld2").onClick {
+                Button("HelloWorld2").onClick ({
                     evt =>
                     let info = getUIContext().getFont().getFontByName("HarmonyOS Sans")
                     match (info) {
@@ -76,7 +75,7 @@ class ViewFont {
                             Hilog.info(1, "Cangjie-App", "${v.symbolic}")
                         case None => Hilog.info(1, "Cangjie-App", "None")
                     }
-                }.id("getFontByName")
+                }).id("getFontByName")
             }.width(100.percent)
         }.height(100.percent)
     }

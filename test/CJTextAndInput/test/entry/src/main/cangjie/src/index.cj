@@ -19,7 +19,6 @@ internal import ohos.arkui.state_management.*
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
-import ohos.router.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -37,7 +36,7 @@ class MyView {
                         .height(50)
                         .id(viewName)
                         .borderRadius(10)
-                        .onClick { e => getUIContext().getRouter().pushUrl(url: viewName) }
+                        .onClick({ e => getUIContext().getRouter().pushUrl(url: viewName) })
                     }
                 )
             }.width(100.percent).margin(top: 5)

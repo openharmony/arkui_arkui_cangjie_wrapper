@@ -29,17 +29,6 @@ public import ohos.base.*
 public import ohos.arkui.component.*
 public import ohos.arkui.state_management.*
 
-// font
-public import ohos.font.*
-
-// router
-public import ohos.router.*
-
-// animator
-public import ohos.animator.*
-
 // curves
 public import ohos.curves.*
 
-// component snapshot
-public import ohos.arkui.component_snapshot.*

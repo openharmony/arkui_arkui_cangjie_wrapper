@@ -25,7 +25,9 @@ import ohos.window.WindowStage
 
 
 import ohos.resource_manager.*
-import kit.TestKit.*
+import ohos.app.ability.ability_delegator_registry.*
+import ohos.application.test_runner.*
+import ohos.ui_test.*
 
 public class Global {
     public static let initialized = Monitor()

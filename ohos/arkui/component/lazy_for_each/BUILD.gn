@@ -14,17 +14,19 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.arkui.component.lazy_for_each") {
-  sources = [ "cj_data_source.cj" ]
+  sources = [ "cj_data_source.cj", "lazy_for_each.cj" ]
 
   cj_deps = [
     "../../../base:ohos.base",
     "../common:ohos.arkui.component.common",
     "../native_struct:ohos.arkui.component.native_struct",
+    "../custom_component:ohos.arkui.component.custom_component",
   ]
 
   cj_external_deps = [
     "cangjie_ark_interop:ohos.ffi",
     "cangjie_ark_interop:ohos.labels",
+    "cangjie_ark_interop:ohos.business_exception",
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]

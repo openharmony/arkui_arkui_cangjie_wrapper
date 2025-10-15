@@ -40,7 +40,6 @@ protected struct CJEventTarget {
     protected CJEventTarget(protected let area: CPointer<CJArea>) {}
 }
 
-
 @C
 protected struct CJGestureEventV2 {
     protected CJGestureEventV2(

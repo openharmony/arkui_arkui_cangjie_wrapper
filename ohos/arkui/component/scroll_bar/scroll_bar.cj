@@ -29,38 +29,35 @@ foreign {
 }
 /**
  * Defines ScrollBar Component.
- *
- * @relation const ScrollBar: ScrollBarInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class ScrollBar <: ContainerBase {
+public class ScrollBar <: CommonMethodComponent<ScrollBar> & ScrollBarAttribute {
     /**
     * Define the constructor of the scrollbar component.
     *
-    * @param { scroller } scroller
-    * @param { ScrollBarDirection } direction
-    * @param { BarState } state
+    * @param { ?Scroller } scroller
+    * @param { ?ScrollBarDirection } direction
+    * @param { ?BarState } state
     * @param { () -> Unit } child
-    * @returns { This }
-    * @relation (value: ScrollBarOptions): ScrollBarAttribute;
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        scroller!: Scroller,
-        direction!: ScrollBarDirection = ScrollBarDirection.Vertical,
-        state!: BarState  = BarState.Auto,
-        child!: () -> Unit = { => }
+        scroller!: ?Scroller,
+        direction!: ?ScrollBarDirection = None,
+        state!: ?BarState = None,
+        child!: () -> Unit
     ){
+        let tmpScroller = scroller ?? Scroller()
+        let tmpDirection = direction ?? ScrollBarDirection.Vertical
+        let tmpState = state ?? BarState.Auto
         unsafe {
-            FfiOHOSAceFrameworkScrollBarCreate(scroller.getID(), direction.getValue(), state.getValue())
+            FfiOHOSAceFrameworkScrollBarCreate(tmpScroller.getID(), tmpDirection.getValue(), tmpState.getValue())
         }
         this.child = child
     }

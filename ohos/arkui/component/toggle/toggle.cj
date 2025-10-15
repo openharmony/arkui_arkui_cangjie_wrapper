@@ -56,94 +56,105 @@ foreign {
     func FfiOHOSAceFrameworkToggleRadius(radius: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkToggleHoverEffect(value: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
+    func FFISetHeightWithEmpty(): Unit
 }
 
 /**
  * Defines Toggle Component.
  *
- * @relation declare const Toggle: ToggleInterface
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class Toggle <: ContainerBase {
+public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
 
     /**
      * Set parameters to obtain the toggle.
      *
-     * @param { ToggleType } toggleType
-     * @param { Bool } isOn
-     * @returns { This }
-     * @relation (options: ToggleOptions): ToggleAttribute
+     * @param { ?ToggleType } toggleType
+     * @param { ?Bool } isOn
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(toggleType: ToggleType, isOn!: Bool = false) {
+    public init(toggleType: ?ToggleType, isOn!: ?Bool = None) {
+        let tmpToggleType = toggleType ?? ToggleType.Switch
         unsafe {
-            FfiOHOSAceFrameworkToggleCreate(toggleType.getValue(), isOn)
+            FfiOHOSAceFrameworkToggleCreate(tmpToggleType.getValue(), isOn ?? false)
         }
     }
 
     /**
      * Set parameters to obtain the toggle.
      *
-     * @param { ToggleType } toggleType
-     * @param { Bool } isOn
+     * @param { ?ToggleType } toggleType
+     * @param { ?Bool } isOn
      * @param { () -> Unit } subcomponent
-     * @returns { This }
-     * @relation (options: ToggleOptions): ToggleAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(toggleType: ToggleType, isOn: Bool, subcomponent: () -> Unit) {
+    public init(toggleType: ?ToggleType, isOn: ?Bool, subcomponent: () -> Unit) {
+        let tmpToggleType = toggleType ?? ToggleType.Switch
         unsafe {
-            FfiOHOSAceFrameworkToggleCreate(toggleType.getValue(), isOn)
+            FfiOHOSAceFrameworkToggleCreate(tmpToggleType.getValue(), isOn ?? false)
         }
-        match (toggleType) {
+        match (tmpToggleType) {
             case ToggleType.Button => this.child = subcomponent
             case _ => ()
         }
     }
 
-    protected override func widthInner(width: Length): This {
-        var width_ = transAppResourceToLength(width)
-        unsafe {
-            FfiOHOSAceFrameworkToggleWidth(width_.value, width_.unitType.getValue())
+    protected override func widthInner(value: ?Length): This {
+        match (value) {
+            case Some(v) =>
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkToggleWidth(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }
 
-    protected override func heightInner(value: Length): This {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkToggleHeight(value_.value, value_.unitType.getValue())
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) =>
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    FfiOHOSAceFrameworkToggleHeight(value_.value, value_.unitType.getValue())
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }
 
-    protected override func sizeInner(width: Length, height: Length): This {
-        var width_ = transAppResourceToLength(width)
-        var height_ = transAppResourceToLength(height)
-        unsafe {
-            FfiOHOSAceFrameworkToggleSize(width_.value, width_.unitType.getValue(), height_.value,
-                height_.unitType.getValue())
+    protected override func sizeInner(width: ?Length, height: ?Length): This {
+        if (width.isNone() || height.isNone()) {
+            widthInner(width)
+            heightInner(height)
+        } else {
+            var width_ = transAppResourceToLength(width ?? 0.0.vp)
+            var height_ = transAppResourceToLength(height ?? 0.0.vp)
+            unsafe {
+                FfiOHOSAceFrameworkToggleSize(width_.value, width_.unitType.getValue(), height_.value,
+                    height_.unitType.getValue())
+            }
         }
         this
     }
 
-    protected override func paddingInner(top: Length, right: Length, bottom: Length, left: Length): This {
-        var top_ = transAppResourceToLength(top)
-        var right_ = transAppResourceToLength(right)
-        var bottom_ = transAppResourceToLength(bottom)
-        var left_ = transAppResourceToLength(left)
+    protected override func paddingInner(top: ?Length, right: ?Length, bottom: ?Length, left: ?Length): This {
+        var top_ = transAppResourceToLength(top ?? 0.vp)
+        var right_ = transAppResourceToLength(right ?? 0.vp)
+        var bottom_ = transAppResourceToLength(bottom ?? 0.vp)
+        var left_ = transAppResourceToLength(left ?? 0.vp)
         unsafe {
             FfiOHOSAceFrameworkTogglePadding(left_.value, left_.unitType.getValue(), top_.value,
                 top_.unitType.getValue(), right_.value, right_.unitType.getValue(), bottom_.value,
@@ -155,18 +166,17 @@ public class Toggle <: ContainerBase {
     /**
      * Called when the color of the selected button is set.
      *
-     * @param { ResourceColor } value
+     * @param { ?ResourceColor } value
      * @returns { This }
-     * @relation selectedColor(value: ResourceColor): ToggleAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func selectedColor(value: ResourceColor): This {
+    public func selectedColor(value: ?ResourceColor): This {
+        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkToggleSelectedColor(transAppResourceToResourceColor(value))
+            FfiOHOSAceFrameworkToggleSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -174,24 +184,23 @@ public class Toggle <: ContainerBase {
     /**
      * Called when the color of the selected button is set.
      *
-     * @param { ResourceColor } color
+     * @param { ?ResourceColor } color
      * @returns { This }
-     * @relation switchPointColor(color: ResourceColor): ToggleAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func switchPointColor(color: ResourceColor): This {
+    public func switchPointColor(color: ?ResourceColor): This {
+        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
         unsafe {
-            FfiOHOSAceFrameworkToggleSwitchPointColor(transAppResourceToResourceColor(color))
+            FfiOHOSAceFrameworkToggleSwitchPointColor(transAppResourceToResourceColor(tmpColor))
         }
         this
     }
 
-    protected override func responseRegionInner(rect: Rectangle): This {
-        let cjRect = rect.parseToNative()
+    protected override func responseRegionInner(rect: ?Rectangle): This {
+        let cjRect = (rect ?? Rectangle()).parseToNative()
         unsafe {
             FfiToggleSetResponseRegion(
                 CJResponseRegion(
@@ -209,10 +218,11 @@ public class Toggle <: ContainerBase {
         this
     }
 
-    protected override func responseRegionInner(array: Array<Rectangle>): This {
-        let vecFFi = FFIVectorNativeRectangle(array.size)
+    protected override func responseRegionInner(array: ?Array<Rectangle>): This {
+        let tmpArray = array ?? [Rectangle()]
+        let vecFFi = FFIVectorNativeRectangle(tmpArray.size)
         var index = 0
-        for (rect in array) {
+        for (rect in tmpArray) {
             BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++
@@ -227,18 +237,17 @@ public class Toggle <: ContainerBase {
     /**
      * Called when the selected state of the component changes.
      *
-     * @param { (Bool) -> Unit } callback
+     * @param { ?(Bool) -> Unit } callback
      * @returns { This }
-     * @relation onChange(callback: (isOn: boolean) => void): ToggleAttribute
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onChange(callback: (Bool) -> Unit): This {
+    public func onChange(callback: ?(Bool) -> Unit): This {
+        let tmpCallback = callback ?? { _ => }
         unsafe {
-            FfiOHOSAceFrameworkToggleOnChange(Callback1Param<Bool, Unit>(callback).getID())
+            FfiOHOSAceFrameworkToggleOnChange(Callback1Param<Bool, Unit>(tmpCallback).getID())
         }
         this
     }

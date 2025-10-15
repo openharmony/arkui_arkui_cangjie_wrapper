@@ -21,7 +21,6 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import ohos.router.*
 import ohos.ui_test.*
 
 @Test
@@ -501,7 +500,7 @@ class ButtonSelectUT2 {
         clickTabsExample("ButtonTabsExample8")
         driver.findComponent(On().text("首页")).getOrThrow().click()
         @Expect(driver.waitForComponent(On().id("currentIndex"),1000).getOrThrow().getText(), "0")
-        
+
         driver.waitForComponent(On().text("推荐"), 1000).getOrThrow().click()
         @Expect(driver.waitForComponent(On().id("currentIndex"),1000).getOrThrow().getText(), "2")
     }
