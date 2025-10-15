@@ -30,7 +30,6 @@ foreign {
     func FfiOHOSAceFrameworkNavdestinationSetHideTitleBar(value: Bool): Unit
     func FfiOHOSAceFrameworkNavdestinationSetTitleWithString(value: CString): Unit
     func FfiOHOSAceFrameworkNavdestinationSetTitleWithStringOptions(value: CString, options: CJNavigationTitleOptions): Unit
-    func FfiOHOSAceFrameworkNavdestinationSetBackgroundColor(color: UInt32): Unit
 }
 
 @C
@@ -240,13 +239,6 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
     public func hideTitleBar(value: ?Bool): This {
         unsafe {
             FfiOHOSAceFrameworkNavdestinationSetHideTitleBar(value ?? false)
-        }
-        this
-    }
-
-    protected override func backgroundColorInner(value: ?ResourceColor): This {
-        unsafe {
-            FfiOHOSAceFrameworkNavdestinationSetBackgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
         }
         this
     }
