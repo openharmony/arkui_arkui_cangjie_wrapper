@@ -26,7 +26,7 @@ let COLOR_TRANSPARENT_VALUE: UInt32 = 0X00000000
  * Defines the color which can use resource.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface ResourceColor {
@@ -35,7 +35,7 @@ public interface ResourceColor {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func toUInt32(): UInt32 {
@@ -50,7 +50,7 @@ extend Int64 <: ResourceColor {
      * @returns { UInt32 }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @OverflowWrapping
@@ -66,7 +66,7 @@ extend UInt32 <: ResourceColor {
      * @returns { UInt32 }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func toUInt32(): UInt32 {
@@ -78,7 +78,7 @@ extend UInt32 <: ResourceColor {
  * Common class of color.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Color <: ResourceColor {
@@ -88,7 +88,7 @@ public class Color <: ResourceColor {
      * Black.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Black: Color = Color(0xff000000)
@@ -96,7 +96,7 @@ public class Color <: ResourceColor {
      * Blue.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Blue: Color = Color(0xff0000ff)
@@ -104,7 +104,7 @@ public class Color <: ResourceColor {
      * Gray.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Gray: Color = Color(0xff808080)
@@ -112,7 +112,7 @@ public class Color <: ResourceColor {
      * Green.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Green: Color = Color(0xff008000)
@@ -120,7 +120,7 @@ public class Color <: ResourceColor {
      * Red.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Red: Color = Color(0xffff0000)
@@ -128,7 +128,7 @@ public class Color <: ResourceColor {
      * White.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let White: Color = Color(0xffffffff)
@@ -136,7 +136,7 @@ public class Color <: ResourceColor {
      * Transparent.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Transparent: Color = Color(0, 0, 0, alpha: 0.0)
@@ -150,7 +150,7 @@ public class Color <: ResourceColor {
      * @param { UInt8 } alpha
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(red: UInt8, green: UInt8, blue: UInt8, alpha!: ?Float32 = None) {
@@ -173,7 +173,7 @@ public class Color <: ResourceColor {
      * @param { UInt32 } value
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: UInt32) {
@@ -197,7 +197,7 @@ public class Color <: ResourceColor {
      * @returns { UInt32 }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func toUInt32(): UInt32 {

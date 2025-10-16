@@ -36,7 +36,7 @@ foreign {
  * Defines a rect drawing class.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RectShape <: BaseShape {
@@ -47,7 +47,7 @@ public class RectShape <: BaseShape {
      * @param { ?Length } height
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {
@@ -71,7 +71,7 @@ public class RectShape <: BaseShape {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radiusWidth(value: ?Length): This {
@@ -89,7 +89,7 @@ public class RectShape <: BaseShape {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radiusHeight(value: ?Length): This {
@@ -107,7 +107,7 @@ public class RectShape <: BaseShape {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Length): This {

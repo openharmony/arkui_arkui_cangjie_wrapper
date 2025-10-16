@@ -24,7 +24,7 @@ import ohos.labels.APILevel
  * Defines class ObservedComplexAbstract.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ObservedComplexAbstract <: Observable {
@@ -42,7 +42,7 @@ public abstract class ObservedComplexAbstract <: Observable {
      * @param { ObservedComplexAbstract } v - The new value tha will be set.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set(v: ObservedComplexAbstract): Unit
@@ -84,7 +84,7 @@ public abstract class ObservedComplexAbstract <: Observable {
      * @param { String } info.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addPropsInfo(info: String): Unit {

@@ -24,7 +24,7 @@ import ohos.base.*
  *
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ToggleAttribute <: CommonMethod<ToggleAttribute> {
@@ -35,7 +35,7 @@ sealed interface ToggleAttribute <: CommonMethod<ToggleAttribute> {
      * @returns { ToggleAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedColor(value: ?ResourceColor): ToggleAttribute
@@ -47,7 +47,7 @@ sealed interface ToggleAttribute <: CommonMethod<ToggleAttribute> {
      * @returns { ToggleAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func switchPointColor(color: ?ResourceColor): ToggleAttribute
@@ -59,7 +59,7 @@ sealed interface ToggleAttribute <: CommonMethod<ToggleAttribute> {
      * @returns { ToggleAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(Bool) -> Unit): ToggleAttribute

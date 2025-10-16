@@ -30,7 +30,7 @@ import std.time.*
  * Defines the struct of DatePickerResult.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DatePickerResult {
@@ -43,7 +43,7 @@ public class DatePickerResult {
      * </p>
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var year: Int64
@@ -56,7 +56,7 @@ public class DatePickerResult {
      * </p>
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var month: Int64
@@ -68,7 +68,7 @@ public class DatePickerResult {
      * </p>
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var day: Int64
@@ -81,7 +81,7 @@ public class DatePickerResult {
      * @param { Int64 } day
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -156,7 +156,7 @@ foreign {
  * Defines DatePicker Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribute {
@@ -168,7 +168,7 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
      * @param { ?DateTime } selected - Date of the selected item.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -194,7 +194,7 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lunar(value: ?Bool): This {
@@ -212,7 +212,7 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDateChange(callback: ?Callback<DateTime, Unit>): This {
@@ -234,7 +234,7 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func disappearTextStyle(value: ?PickerTextStyle): This {
@@ -283,7 +283,7 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textStyle(value: ?PickerTextStyle): This {
@@ -331,7 +331,7 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedTextStyle(value: ?PickerTextStyle): This {

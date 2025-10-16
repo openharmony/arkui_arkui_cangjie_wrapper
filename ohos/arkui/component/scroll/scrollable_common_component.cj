@@ -33,7 +33,7 @@ import std.deriving.Derive
  * Provides functions for scroll able Base.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponent<T> {
@@ -60,7 +60,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { T }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollBar(barState: ?BarState): T {
@@ -76,7 +76,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { T }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollBarColor(color: ?ResourceColor): T {
@@ -92,7 +92,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { T }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollBarWidth(value: ?Length): T {
@@ -109,7 +109,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { T }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func nestedScroll(value: ?NestedScrollOptions): T {
@@ -126,7 +126,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { T }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableScrollInteraction(value: ?Bool): T {
@@ -144,7 +144,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { T }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func friction(value: ?Float64): T {
@@ -162,7 +162,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { T }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func friction(value: ?AppResource): T {
@@ -178,7 +178,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { T }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReachStart(event: ?() -> Unit): T {
@@ -194,7 +194,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { T }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReachEnd(event: ?() -> Unit): T {
@@ -211,7 +211,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { T }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onScrollStart(event: ?() -> Unit): T {
@@ -228,7 +228,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @returns { T }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onScrollStop(event: ?() -> Unit): T {
@@ -245,7 +245,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flingSpeedLimit(speedLimit: ?Float64): T {
@@ -267,7 +267,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fadingEdge(enabled: Option<Bool>): T {
@@ -294,7 +294,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fadingEdge(enabled: Option<Bool>, options: ?FadingEdgeOptions): T {
@@ -325,7 +325,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clipContent(clip: ?ContentClipMode): T {
@@ -347,7 +347,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clipContent(clip: ?RectShape): T {
@@ -375,7 +375,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) -> ScrollResult>): T {
@@ -410,7 +410,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onWillScroll(handler: Option<(Float64, ScrollState, ScrollSource) -> Unit>): T {
@@ -442,7 +442,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDidScroll(handler: ?OnScrollCallBack): T {

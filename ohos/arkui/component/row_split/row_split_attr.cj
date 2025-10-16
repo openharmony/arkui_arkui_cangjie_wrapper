@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines RowSplit Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RowSplitAttribute <: CommonMethod<RowSplitAttribute> {
@@ -34,7 +34,7 @@ sealed interface RowSplitAttribute <: CommonMethod<RowSplitAttribute> {
     * @returns { This }
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func resizeable(value: ?Bool): RowSplitAttribute

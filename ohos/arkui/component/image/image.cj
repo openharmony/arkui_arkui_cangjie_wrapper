@@ -94,7 +94,7 @@ foreign {
  * The information about the image error
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageError {
@@ -102,7 +102,7 @@ public class ImageError {
      * Component width.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentWidth: ?Float64
@@ -110,7 +110,7 @@ public class ImageError {
      * Component height.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentHeight: ?Float64
@@ -118,7 +118,7 @@ public class ImageError {
      * ImageError Message.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var message: ?String
@@ -138,7 +138,7 @@ public class ImageError {
  * The information about the successfully loaded image.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageLoadResult {
@@ -146,7 +146,7 @@ public class ImageLoadResult {
      * The width of the image source.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Float64
@@ -154,7 +154,7 @@ public class ImageLoadResult {
      * The height of the image source.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Float64
@@ -162,7 +162,7 @@ public class ImageLoadResult {
      * The width of the component source.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentWidth: ?Float64
@@ -170,7 +170,7 @@ public class ImageLoadResult {
      * The height of the component source.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var componentHeight: ?Float64
@@ -180,7 +180,7 @@ public class ImageLoadResult {
      * If the returned status value is 1, the image is successfully decoded.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var loadingStatus: ?Int32
@@ -188,7 +188,7 @@ public class ImageLoadResult {
      * The width of the picture that is actually drawn.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentWidth: ?Float64
@@ -196,7 +196,7 @@ public class ImageLoadResult {
      * The height of the picture that is actually drawn.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentHeight: ?Float64
@@ -204,7 +204,7 @@ public class ImageLoadResult {
      * The offset between image content and image component on the X-axis.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentOffsetX: ?Float64
@@ -212,7 +212,7 @@ public class ImageLoadResult {
      * The offset between image content and image component on the Y-axis.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var contentOffsetY: ?Float64
@@ -310,7 +310,7 @@ class CallbackImageLoadResult <: BaseCallBack {
  * Defines the ColorFilter object.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ColorFilter {
@@ -325,7 +325,7 @@ public class ColorFilter {
      * @param { ?Array<Float32> } value 4*5 color matrix values. The value[m*n] is located in the m row and n column. The matrix is row-first.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?Array<Float32>) {
@@ -348,7 +348,7 @@ public class ColorFilter {
  * <p>If image loading takes a long time.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Image <: CommonMethodComponent<Image> & ImageAttribute {
@@ -358,7 +358,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @param { ?ResourceStr } src
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(src: ?ResourceStr) {
@@ -380,7 +380,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @param { ?PixelMap } src
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(src: ?PixelMap) {
@@ -401,7 +401,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alt(src: ?ResourceStr): This {
@@ -426,7 +426,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func objectFit(value: ?ImageFit): This {
@@ -449,7 +449,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func objectRepeat(value: ?ImageRepeat): This {
@@ -472,7 +472,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func interpolation(value: ?ImageInterpolation): This {
@@ -496,7 +496,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func renderMode(value: ?ImageRenderMode): This {
@@ -557,7 +557,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sourceSize(width: ?Length, height: ?Length): This {
@@ -581,7 +581,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func syncLoad(value: ?Bool): This {
@@ -605,7 +605,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fillColor(value: ?ResourceColor): This {
@@ -629,7 +629,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoResize(value: ?Bool): This {
@@ -650,7 +650,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func matchTextDirection(value: ?Bool): This {
@@ -671,7 +671,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fitOriginalSize(value: ?Bool): This {
@@ -694,7 +694,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onComplete(callback: ?ImageCompleteCallback): This {
@@ -719,7 +719,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onError(callback: ?ImageErrorCallback): This {
@@ -744,7 +744,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onFinish(event: ?() -> Unit): This {

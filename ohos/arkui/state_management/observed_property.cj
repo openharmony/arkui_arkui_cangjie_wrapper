@@ -29,7 +29,7 @@ func isEqual<T>(value: T, newValue: T): Bool {
  * Defines class ObservedProperty.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class ObservedProperty<T> <: ObservedPropertyAbstract {
@@ -43,7 +43,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * @param { T } initValue
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(info: String, initValue: T) {
@@ -72,7 +72,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * @returns { T } The current value of the property.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get(): T {
@@ -92,7 +92,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * @param { T } newValue - The new value to set.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func set(newValue: T): Unit {
@@ -113,7 +113,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * @param { Observer } observer - The observer to subscribe.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func subscribeEx(observer: Observer) {
@@ -133,7 +133,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * @param { Observer } observer - The observer to unsubscribe.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func unsubscribeEx(observer: Observer) {
@@ -153,7 +153,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * @returns { ObservedProperty<T> } A new ObservedProperty instance sharing the same value.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createProp(info: String): ObservedProperty<T> {

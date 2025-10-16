@@ -24,7 +24,7 @@ import ohos.labels.APILevel
  * Empty component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComponentAttribute {
@@ -32,7 +32,7 @@ public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComp
      * EmptyComponent Constructor.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {}
@@ -42,7 +42,7 @@ public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComp
  * Empty component attributes.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface EmptyComponentAttribute <: CommonMethod<EmptyComponentAttribute> {}

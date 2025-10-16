@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines LoadingProgress Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface LoadingProgressAttribute <: CommonMethod<LoadingProgressAttribute> {
@@ -34,7 +34,7 @@ sealed interface LoadingProgressAttribute <: CommonMethod<LoadingProgressAttribu
      * @returns { LoadingProgressAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func color(value: ?ResourceColor): LoadingProgressAttribute

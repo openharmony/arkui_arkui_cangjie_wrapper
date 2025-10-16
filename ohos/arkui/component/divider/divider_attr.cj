@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines Divider attributes.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
@@ -35,7 +35,7 @@ sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
      * @returns { DividerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func vertical(value: ?Bool): DividerAttribute
@@ -47,7 +47,7 @@ sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
      * @returns { DividerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func color(value: ?ResourceColor): DividerAttribute
@@ -59,7 +59,7 @@ sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
      * @returns { DividerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeWidth(value: ?Length): DividerAttribute
@@ -71,7 +71,7 @@ sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
      * @returns { DividerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func lineCap(value: ?LineCapStyle): DividerAttribute

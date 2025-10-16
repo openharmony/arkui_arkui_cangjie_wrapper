@@ -46,7 +46,7 @@ foreign {
  * Defines Rect Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
@@ -57,7 +57,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
      * @param { ?Length } height
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {
@@ -79,7 +79,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radiusWidth(value: ?Length): This {
@@ -96,7 +96,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radiusHeight(value: ?Length): This {
@@ -113,7 +113,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Length): This {
@@ -130,7 +130,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Array<Length>): This {
@@ -156,7 +156,7 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Array<(Length, Length)>): This {

@@ -21,27 +21,27 @@ import ohos.labels.APILevel
 
 @C
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 protected struct FFiCheckboxGroupResult {
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected FFiCheckboxGroupResult(
         @!APILevel[
-            22,
+            since:"22",
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         protected let status: Int32,
         @!APILevel[
-            22,
+            since:"22",
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         protected let size: Int64,
         @!APILevel[
-            22,
+            since:"22",
             syscap: "SystemCapability.ArkUI.ArkUI.Full"
         ]
         protected let nameBuffer: CPointer<CString>

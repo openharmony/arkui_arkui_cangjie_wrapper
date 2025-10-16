@@ -194,7 +194,7 @@ foreign {
  * Specifies the BarrierStyle of relative container
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BarrierStyle {
@@ -202,7 +202,7 @@ public class BarrierStyle {
     * Specifies the id of barrier
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var id: ?String
@@ -211,7 +211,7 @@ public class BarrierStyle {
     * Specifies the direction of barrier
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var direction: ?BarrierDirection
@@ -220,7 +220,7 @@ public class BarrierStyle {
     * Specifies the referencedId of barrier
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var referencedId: ?Array<String>
@@ -233,7 +233,7 @@ public class BarrierStyle {
     * @param { ?Array<String> } referencedId
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(id: ?String, direction: ?BarrierDirection, referencedId: ?Array<String>) {
@@ -247,7 +247,7 @@ public class BarrierStyle {
  * Specifies the position of guideLine
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GuideLinePosition {
@@ -255,7 +255,7 @@ public class GuideLinePosition {
     * Specifies the distance to start of container
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var start: ?Length
@@ -264,7 +264,7 @@ public class GuideLinePosition {
     * Specifies the distance to end of container
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var end: ?Length
@@ -276,7 +276,7 @@ public class GuideLinePosition {
     * @param { ?Length } end
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(start!: ?Length = None, end!: ?Length = None) {
@@ -289,7 +289,7 @@ public class GuideLinePosition {
  * Specifies the GuideLineStyle of relative container
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GuideLineStyle {
@@ -297,7 +297,7 @@ public class GuideLineStyle {
     * Specifies the id of guideLine
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var id: ?String
@@ -306,7 +306,7 @@ public class GuideLineStyle {
     * Specifies the direction of guideLine
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var direction: ?Axis
@@ -315,7 +315,7 @@ public class GuideLineStyle {
     * Specifies the position of guideLine
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var position: ?GuideLinePosition
@@ -328,7 +328,7 @@ public class GuideLineStyle {
     * @param { ?GuideLinePosition } position
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(id: ?String, direction: ?Axis, position: ?GuideLinePosition) {
@@ -342,7 +342,7 @@ public class GuideLineStyle {
  * RelativeContainer
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & RelativeContainerAttribute {
@@ -352,7 +352,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     * @param { () -> Unit } child
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = {=>}) {
@@ -368,7 +368,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func guideLine(value: ?Array<GuideLineStyle>): This {
@@ -386,7 +386,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func barrier(value: ?Array<BarrierStyle>): This {

@@ -22,7 +22,7 @@ import ohos.labels.APILevel
  * Defines GridCol attributes.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
@@ -33,7 +33,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
      * @returns { GridColAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func span(value: ?Int32): GridColAttribute
@@ -45,7 +45,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
      * @returns { GridColAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func span(value: ?GridColOptions): GridColAttribute
@@ -57,7 +57,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
      * @returns { GridColAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func gridColOffset(value: ?Int32): GridColAttribute
@@ -69,7 +69,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
      * @returns { GridColAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func gridColOffset(value: ?GridColOptions): GridColAttribute
@@ -81,7 +81,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
      * @returns { GridColAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func order(value: ?Int32): GridColAttribute
@@ -93,7 +93,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
      * @returns { GridColAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func order(value: ?GridColOptions): GridColAttribute

@@ -24,7 +24,7 @@ import ohos.base.*
  *
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
@@ -42,7 +42,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func autoPlay(value: ?Bool): SwiperAttribute
@@ -54,7 +54,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func duration(value: ?UInt32): SwiperAttribute
@@ -66,7 +66,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func index(value: ?UInt32): SwiperAttribute
@@ -78,7 +78,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func interval(value: ?UInt32): SwiperAttribute
@@ -90,7 +90,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func loop(value: ?Bool): SwiperAttribute
@@ -102,7 +102,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func vertical(value: ?Bool): SwiperAttribute
@@ -115,7 +115,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func indicator(indicator: ?Bool): SwiperAttribute
@@ -127,7 +127,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func indicator(indicator: ?DotIndicator): SwiperAttribute
@@ -139,7 +139,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func indicator(indicator: ?DigitIndicator): SwiperAttribute
@@ -157,7 +157,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func itemSpace(value: ?Length): SwiperAttribute
@@ -171,7 +171,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func displayMode(value: ?SwiperDisplayMode): SwiperAttribute
@@ -188,7 +188,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func effectMode(value: ?EdgeEffect): SwiperAttribute
@@ -208,7 +208,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func displayCount(value: ?Int32, swipeByGroup!: ?Bool): SwiperAttribute
@@ -226,7 +226,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func cachedCount(value: ?Int32): SwiperAttribute
@@ -238,7 +238,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func disableSwipe(value: ?Bool): SwiperAttribute
@@ -251,7 +251,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @returns { SwiperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func curve(value: ?Curve): SwiperAttribute
@@ -265,7 +265,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(Int32) -> Unit): SwiperAttribute

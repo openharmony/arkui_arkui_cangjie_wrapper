@@ -24,7 +24,7 @@ import ohos.resource.*
  * Defines TextTimer Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
@@ -40,7 +40,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func format(value: ?String): TextTimerAttribute
@@ -54,7 +54,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onTimer(event: ?(Int64, Int64) -> Unit): TextTimerAttribute
@@ -68,7 +68,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontSize(value: ?Length): TextTimerAttribute
@@ -80,7 +80,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(value: ?ResourceColor): TextTimerAttribute
@@ -92,7 +92,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontStyle(value: ?FontStyle): TextTimerAttribute
@@ -111,7 +111,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontWeight(value: ?FontWeight): TextTimerAttribute
@@ -123,7 +123,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontFamily(value: ?ResourceStr): TextTimerAttribute
@@ -137,7 +137,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textShadow(value: ?Array<ShadowOptions>): TextTimerAttribute
@@ -151,7 +151,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * @returns { TextTimerAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textShadow(value: ?ShadowOptions): TextTimerAttribute

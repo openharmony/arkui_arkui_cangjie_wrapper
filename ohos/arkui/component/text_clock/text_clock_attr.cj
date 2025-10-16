@@ -25,7 +25,7 @@ import ohos.resource.*
  *
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
@@ -43,7 +43,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
      * @returns { TextClockAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDateChange(callback: ?(Int64) -> Unit): TextClockAttribute
@@ -61,7 +61,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
      * @returns { TextClockAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func format(value: ?ResourceStr): TextClockAttribute
@@ -73,7 +73,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
      * @returns { TextClockAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontSize(value: ?Length): TextClockAttribute
@@ -85,7 +85,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
      * @returns { TextClockAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(value: ?ResourceColor): TextClockAttribute
@@ -97,7 +97,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
      * @returns { TextClockAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontStyle(value: ?FontStyle): TextClockAttribute
@@ -109,7 +109,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
      * @returns { TextClockAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontWeight(value: ?FontWeight): TextClockAttribute
@@ -121,7 +121,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
      * @returns { TextClockAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontFamily(value: ?ResourceStr): TextClockAttribute
@@ -133,7 +133,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
      * @returns { TextClockAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textShadow(values: ?Array<ShadowOptions>): TextClockAttribute
@@ -145,7 +145,7 @@ sealed interface TextClockAttribute <: CommonMethod<TextClockAttribute> {
      * @returns { TextClockAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textShadow(value: ?ShadowOptions): TextClockAttribute

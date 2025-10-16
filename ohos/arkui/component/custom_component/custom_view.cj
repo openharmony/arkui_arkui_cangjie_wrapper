@@ -40,7 +40,7 @@ foreign func FfiOHOSAceFrameworkProcessViewId(view: Int64): ExternalString
  * @param { CustomView } view
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func loadNativeView(view: CustomView): Bool {
@@ -58,7 +58,7 @@ type RecycleUpdateFunc = (Int64, Bool, ?CustomView) -> UINodeBase
  * CustomView class.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class CustomView <: RemoteView & Observer {
@@ -87,7 +87,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * isReusable property.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isReusable_inner__: Bool = false
@@ -104,7 +104,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { Option<LocalStorage> } localStorage
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(parent: Option<CustomView>, localStorage: Option<LocalStorage>) {
@@ -122,7 +122,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @return { LocalStorage }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getLocalStorage(): LocalStorage {
@@ -142,7 +142,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { () -> Unit } callBack
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func declareWatch<T>(propMember: ObservedProperty<T>, callBack: () -> Unit) {
@@ -166,7 +166,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * build function for custom view.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func build(): Unit
@@ -190,7 +190,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { Bool } deep
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func forceCompleteRerender(deep: Bool): Unit {
@@ -239,7 +239,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * update dirty elements.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func updateDirtyElements() {
@@ -299,7 +299,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { (T, Int64) -> String } keyGeneratorFunc
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func forEachUpdateFunction<T>(
@@ -333,7 +333,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { UpdateFuncNew } compilerAssignedUpdateFunc
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func observeComponentCreation(compilerAssignedUpdateFunc: UpdateFuncNew): Unit {
@@ -352,7 +352,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { RecycleUpdateFunc } recycleUpdateFunc
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func observeRecycleComponentCreation(name: String, recycleUpdateFunc: RecycleUpdateFunc) {
@@ -387,7 +387,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { ReuseParams } param
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func aboutToReuseInternal(param: ReuseParams): Unit {
@@ -473,7 +473,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { () -> Unit } callback
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func createRecycle(view: CustomView, isRecycling: Bool, name: String, callback: () -> Unit) {
@@ -486,7 +486,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { CustomView } view
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func create(view: CustomView) {
@@ -500,7 +500,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { String } name
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addProvideVar(value: ObservedPropertyAbstract, name: String) {
@@ -514,7 +514,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @return { ObservedPropertyAbstract }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func initializeConsume(name: String): ObservedPropertyAbstract {
@@ -530,7 +530,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { String } stateInfo
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func notifyRead(stateInfo: String): Unit {
@@ -546,7 +546,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { ArrayList<Int64> } dependentElmtIds
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStateUpdate(stateInfo: String, dependentElmtIds: ArrayList<Int64>): Unit {
@@ -577,7 +577,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @return { Int64 }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func id(): Int64 {
@@ -625,7 +625,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { CustomView } child
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addChildById(id: Int64, child: CustomView): Unit {
@@ -653,7 +653,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * Called when component is about to be deleted.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func aboutToBeDeleted(): Unit
@@ -680,7 +680,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @param { () -> Unit } branchFunc
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func ifElseBranchUpdateFunction(branchId: Int32, branchFunc: () -> Unit) {
@@ -701,7 +701,7 @@ public abstract class CustomView <: RemoteView & Observer {
      * @returns { UIContext }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getUIContext(): UIContext {

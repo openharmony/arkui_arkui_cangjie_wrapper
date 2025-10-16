@@ -38,7 +38,7 @@ foreign {
  * Image data object
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageData <: RemoteDataLite {
@@ -46,7 +46,7 @@ public class ImageData <: RemoteDataLite {
      * Width of the image.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop width: Int32 {
@@ -61,7 +61,7 @@ public class ImageData <: RemoteDataLite {
      * Height of the image.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop height: Int32 {
@@ -76,7 +76,7 @@ public class ImageData <: RemoteDataLite {
      * Array containing image pixel data.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop data: Array<UInt8> {
@@ -99,7 +99,7 @@ public class ImageData <: RemoteDataLite {
      * @param { ?LengthMetricsUnit } unit - the unit mode
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width: ?Float64, height: ?Float64, data!: ?Array<UInt8>,
@@ -129,7 +129,7 @@ public class ImageData <: RemoteDataLite {
      * @param { ?LengthMetricsUnit } unit - the unit mode.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width: ?Float64, height: ?Float64, unit!: ?LengthMetricsUnit = None) {

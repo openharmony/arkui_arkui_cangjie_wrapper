@@ -40,7 +40,7 @@ let defaultDivierColor = 0x33182431
  * Defines Divider Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
@@ -48,7 +48,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     * Divider constructor.
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -65,7 +65,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func vertical(value: ?Bool): This {
@@ -82,7 +82,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
@@ -99,7 +99,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func strokeWidth(value: ?Length): This {
@@ -117,7 +117,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineCap(value: ?LineCapStyle): This {

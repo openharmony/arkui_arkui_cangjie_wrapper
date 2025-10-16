@@ -24,7 +24,7 @@ import ohos.base.*
  * Defines DataPanel attributes.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
@@ -35,7 +35,7 @@ sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
      * @returns { DataPanelAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func closeEffect(value: ?Bool): DataPanelAttribute
@@ -47,7 +47,7 @@ sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
      * @returns { DataPanelAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func valueColors(value: ?Array<LinearGradient>): DataPanelAttribute
@@ -59,7 +59,7 @@ sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
      * @returns { DataPanelAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func trackBackgroundColor(value: ?ResourceColor): DataPanelAttribute
@@ -71,7 +71,7 @@ sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
      * @returns { DataPanelAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeWidth(value: ?Length): DataPanelAttribute
@@ -83,7 +83,7 @@ sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
      * @returns { DataPanelAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func trackShadow(value: ?DataPanelShadowOptions): DataPanelAttribute

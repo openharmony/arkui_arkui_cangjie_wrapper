@@ -75,7 +75,7 @@ foreign {
  * Defines the base class of Span.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class BaseSpan <: UINodeBase {
@@ -85,7 +85,7 @@ public abstract class BaseSpan <: UINodeBase {
  * Defines Span Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Span <: BaseSpan {
@@ -95,7 +95,7 @@ public class Span <: BaseSpan {
      * @param { ?ResourceStr } value
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?ResourceStr) {
@@ -113,7 +113,7 @@ public class Span <: BaseSpan {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -132,7 +132,7 @@ public class Span <: BaseSpan {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -150,7 +150,7 @@ public class Span <: BaseSpan {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -167,7 +167,7 @@ public class Span <: BaseSpan {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -186,7 +186,7 @@ public class Span <: BaseSpan {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -206,7 +206,7 @@ public class Span <: BaseSpan {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor = None): This {
@@ -226,7 +226,7 @@ public class Span <: BaseSpan {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func letterSpacing(value: ?Length): This {
@@ -244,7 +244,7 @@ public class Span <: BaseSpan {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textCase(value: ?TextCase): This {
@@ -263,7 +263,7 @@ public class Span <: BaseSpan {
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onClick(event: ?(ClickEvent) -> Unit): This {

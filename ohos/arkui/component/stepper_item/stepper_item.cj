@@ -35,7 +35,7 @@ foreign {
  * Defines StepperItem Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttribute {
@@ -46,7 +46,7 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
      * @param { () -> Unit } child
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -63,7 +63,7 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func prevLabel(value: ?String): This {
@@ -82,7 +82,7 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func nextLabel(value: ?String): This {
@@ -101,7 +101,7 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func status(status!: ?ItemState = None): This {

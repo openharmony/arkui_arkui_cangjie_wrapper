@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines Counter attributes.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
@@ -34,7 +34,7 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
      * @returns { CounterAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func enableInc(value: ?Bool): CounterAttribute
@@ -46,7 +46,7 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
      * @returns { CounterAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func enableDec(value: ?Bool): CounterAttribute
@@ -58,7 +58,7 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
      * @returns { CounterAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onInc(event: ?VoidCallback): CounterAttribute
@@ -70,7 +70,7 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
      * @returns { CounterAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDec(event: ?VoidCallback): CounterAttribute

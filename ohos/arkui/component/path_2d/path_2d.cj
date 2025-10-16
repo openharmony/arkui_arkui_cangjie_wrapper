@@ -60,7 +60,7 @@ foreign {
  * 2D path object for path drawing.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Path2D <: RemoteDataLite {
@@ -69,7 +69,7 @@ public class Path2D <: RemoteDataLite {
      * Create an empty path object.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -84,7 +84,7 @@ public class Path2D <: RemoteDataLite {
      * @param { ?String } path
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(d: ?String) {
@@ -108,7 +108,7 @@ public class Path2D <: RemoteDataLite {
      * @param { ?Path2D } path2D
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addPath(path2D: ?Path2D): Unit {
@@ -130,7 +130,7 @@ public class Path2D <: RemoteDataLite {
      * @param { ?Float64 } translateY
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTransform(
@@ -156,7 +156,7 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } y
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func moveTo(x: Float64, y: Float64): Unit {
@@ -172,7 +172,7 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } y
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineTo(x: Float64, y: Float64): Unit {
@@ -192,7 +192,7 @@ public class Path2D <: RemoteDataLite {
      * @param { Bool } counterclockwise
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arc(
@@ -218,7 +218,7 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } radius
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func arcTo(
@@ -242,7 +242,7 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } y
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func quadraticCurveTo(
@@ -267,7 +267,7 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } y
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bezierCurveTo(
@@ -296,7 +296,7 @@ public class Path2D <: RemoteDataLite {
      * @param { Bool } counterclockwise
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func ellipse(
@@ -327,7 +327,7 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } height
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rect(x: Float64, y: Float64, width: Float64, height: Float64): Unit {
@@ -340,7 +340,7 @@ public class Path2D <: RemoteDataLite {
      * Returns the pen point to the start point of the current sub-path.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closePath(): Unit {

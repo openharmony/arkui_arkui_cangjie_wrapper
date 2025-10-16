@@ -24,7 +24,7 @@ import ohos.resource.*
  * Defines Button attributes.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
@@ -35,7 +35,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
      * @returns { ButtonAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontSize(value: ?Length): ButtonAttribute
@@ -47,7 +47,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
      * @returns { ButtonAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontWeight(value: ?FontWeight): ButtonAttribute
@@ -59,7 +59,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
      * @returns { ButtonAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(color: ?ResourceColor): ButtonAttribute
@@ -71,7 +71,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
      * @returns { ButtonAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontStyle(value: ?FontStyle): ButtonAttribute
@@ -83,7 +83,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
      * @returns { ButtonAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontFamily(value: ?ResourceStr): ButtonAttribute
@@ -95,7 +95,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
      * @returns { ButtonAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func shape(value: ?ButtonType): ButtonAttribute
@@ -107,7 +107,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
      * @returns { ButtonAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func stateEffect(value: ?Bool): ButtonAttribute
@@ -119,7 +119,7 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
      * @returns { ButtonAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func buttonStyle(value: ?ButtonStyleMode): ButtonAttribute

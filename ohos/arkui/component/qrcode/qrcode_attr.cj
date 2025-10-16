@@ -24,7 +24,7 @@ import ohos.resource.*
  * Defines QRCode Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface QRCodeAttribute <: CommonMethod<QRCodeAttribute> {
@@ -35,7 +35,7 @@ sealed interface QRCodeAttribute <: CommonMethod<QRCodeAttribute> {
      * @returns { QRCodeAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func color(value: ?ResourceColor): QRCodeAttribute
@@ -47,7 +47,7 @@ sealed interface QRCodeAttribute <: CommonMethod<QRCodeAttribute> {
      * @returns { QRCodeAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func contentOpacity(value: ?Float64): QRCodeAttribute
@@ -59,7 +59,7 @@ sealed interface QRCodeAttribute <: CommonMethod<QRCodeAttribute> {
      * @returns { QRCodeAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func contentOpacity(value: ?AppResource): QRCodeAttribute

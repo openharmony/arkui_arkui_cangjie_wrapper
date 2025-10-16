@@ -23,7 +23,7 @@ import ohos.labels.APILevel
  * ViewBuilder class.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ViewBuilder {
@@ -31,7 +31,7 @@ public class ViewBuilder {
      * Builds the view.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let build: () -> Unit
@@ -42,7 +42,7 @@ public class ViewBuilder {
      * @param { () -> Unit } build
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(build: () -> Unit) {
@@ -58,7 +58,7 @@ public class ViewBuilder {
  * @param { CustomView } thisView
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView) {
@@ -72,7 +72,7 @@ public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView) {
  * @param { CustomView } thisView
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func bind<T1> (builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder, thisView: CustomView) {
@@ -86,7 +86,7 @@ public func bind<T1> (builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder
  * @param { CustomView } thisView
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func bind<T1, T2> (
@@ -103,7 +103,7 @@ public func bind<T1, T2> (
  * @param { CustomView } thisView
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func bind<T1, T2, T3> (
@@ -120,7 +120,7 @@ public func bind<T1, T2, T3> (
  * LegalCallCheck class. Checks whether the view builder is called in the correct context.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LegalCallCheck {
@@ -130,7 +130,7 @@ public class LegalCallCheck {
      * @param { ViewBuilder } _
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func check(_: ViewBuilder) {}
@@ -141,7 +141,7 @@ public class LegalCallCheck {
      * @param { CustomView } _
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func check(_: CustomView) {}

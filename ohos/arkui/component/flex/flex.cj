@@ -68,7 +68,7 @@ foreign {
  * Defines Flex Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Flex <: CommonMethodComponent<Flex> & FlexAttribute {
@@ -83,7 +83,7 @@ public class Flex <: CommonMethodComponent<Flex> & FlexAttribute {
      * @param { () -> Unit } child - The child component to be added to the Flex component.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(direction!: ?FlexDirection = None, wrap!: ?FlexWrap = None,

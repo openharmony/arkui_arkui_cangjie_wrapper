@@ -25,7 +25,7 @@ import std.deriving.Derive
  * Defines the length property.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface Length {
@@ -34,7 +34,7 @@ public interface Length {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop value: Float64 {
@@ -48,7 +48,7 @@ public interface Length {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop unitType: LengthUnit {
@@ -62,7 +62,7 @@ public interface Length {
  * Defines the length property.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface LengthProp {
@@ -70,7 +70,7 @@ public interface LengthProp {
      * Defines the length property in units of px.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop px: Length
@@ -78,7 +78,7 @@ public interface LengthProp {
      * Defines the length property in units of vp.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop vp: Length
@@ -86,7 +86,7 @@ public interface LengthProp {
      * Defines the length property in units of fp.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop fp: Length
@@ -95,7 +95,7 @@ public interface LengthProp {
      *
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop percent: Length
@@ -103,7 +103,7 @@ public interface LengthProp {
      * Defines the length property in units of lpx.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop lpx: Length
@@ -113,7 +113,7 @@ public interface LengthProp {
  * Defines class LengthMetrics.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LengthMetrics <: Length {
@@ -127,7 +127,7 @@ public class LengthMetrics <: Length {
      * @param { LengthUnit } unit
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: Float64, unit!: LengthUnit = LengthUnit.Vp) {
@@ -139,7 +139,7 @@ public class LengthMetrics <: Length {
     * Defines the value.
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop value: Float64 {
@@ -152,7 +152,7 @@ public class LengthMetrics <: Length {
     * Defines the unit.
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop unitType: LengthUnit {
@@ -166,7 +166,7 @@ public class LengthMetrics <: Length {
  */
 @Derive[Equatable]
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LengthUnit {
@@ -174,7 +174,7 @@ public enum LengthUnit {
      * Defines the length property in units of px.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Px
@@ -182,7 +182,7 @@ public enum LengthUnit {
      * Defines the length property in units of vp.
      */
     | @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vp
@@ -190,7 +190,7 @@ public enum LengthUnit {
      * Defines the length property in units of fp.
      */
     | @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fp
@@ -198,7 +198,7 @@ public enum LengthUnit {
      * Defines the length property in units of percent.
      */
     | @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Percent
@@ -206,7 +206,7 @@ public enum LengthUnit {
      * Defines the length property in units of lpx.
      */
     | @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Lpx
@@ -219,7 +219,7 @@ public enum LengthUnit {
      * @throws { BussnessException } - 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getValue(): Int32 {
@@ -241,7 +241,7 @@ public enum LengthUnit {
      * @throws { BussnessException } - 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func parse(value: Int32): LengthUnit {
@@ -261,7 +261,7 @@ extend Float64 <: LengthProp & Length {
      * Defines the length property in units of px.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop px: Length {
@@ -274,7 +274,7 @@ extend Float64 <: LengthProp & Length {
      * Defines the length property in units of vp.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop vp: Length {
@@ -287,7 +287,7 @@ extend Float64 <: LengthProp & Length {
      * Defines the length property in units of fp.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop fp: Length {
@@ -300,7 +300,7 @@ extend Float64 <: LengthProp & Length {
      * Defines the length property in units of percent.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop percent: Length {
@@ -313,7 +313,7 @@ extend Float64 <: LengthProp & Length {
      * Defines the length property in units of lpx.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop lpx: Length {
@@ -326,7 +326,7 @@ extend Float64 <: LengthProp & Length {
      * Defines the value.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop value: Float64 {
@@ -339,7 +339,7 @@ extend Float64 <: LengthProp & Length {
      * Defines the unit.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop unitType: LengthUnit {
@@ -354,7 +354,7 @@ extend Int64 <: LengthProp & Length {
      * Defines the length property in units of px.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop px: Length {
@@ -366,7 +366,7 @@ extend Int64 <: LengthProp & Length {
      * Defines the length property in units of vp.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop vp: Length {
@@ -378,7 +378,7 @@ extend Int64 <: LengthProp & Length {
      * Defines the length property in units of fp.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop fp: Length {
@@ -390,7 +390,7 @@ extend Int64 <: LengthProp & Length {
      * Defines the length property in units of percent.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop percent: Length {
@@ -402,7 +402,7 @@ extend Int64 <: LengthProp & Length {
      * Defines the length property in units of lpx.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop lpx: Length {
@@ -414,7 +414,7 @@ extend Int64 <: LengthProp & Length {
      * Defines the value.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop value: Float64 {
@@ -426,7 +426,7 @@ extend Int64 <: LengthProp & Length {
      * Defines the unit.
      */   
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop unitType: LengthUnit {

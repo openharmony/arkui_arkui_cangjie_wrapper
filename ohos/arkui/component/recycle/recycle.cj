@@ -33,7 +33,7 @@ foreign {
  * non-public API
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribute {
@@ -41,7 +41,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
      * Create a Recycle
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -55,7 +55,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
      * @param {() -> Unit} child
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -71,7 +71,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
      * @returns {This}
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public override func pop() {
@@ -87,7 +87,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
  * non-public API
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RecycleAttribute <: CommonMethod<RecycleAttribute> {}

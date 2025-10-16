@@ -71,7 +71,7 @@ foreign {
  * Provides methods for control pattern lock component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PatternLockController <: RemoteDataLite {
@@ -79,7 +79,7 @@ public class PatternLockController <: RemoteDataLite {
      * A constructor used to create a PatternLockController instance.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -94,7 +94,7 @@ public class PatternLockController <: RemoteDataLite {
      * Reset pattern lock.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func reset(): Unit {
@@ -108,7 +108,7 @@ public class PatternLockController <: RemoteDataLite {
  * Defines PatternLock Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttribute {
@@ -118,7 +118,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
      * @param { ?PatternLockController } controller - controller
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(controller!: ?PatternLockController = None) {
@@ -134,7 +134,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
@@ -152,7 +152,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pathColor(value: ?ResourceColor): This {
@@ -170,7 +170,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func activeColor(value: ?ResourceColor): This {
@@ -188,7 +188,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func regularColor(value: ?ResourceColor): This {
@@ -208,7 +208,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoReset(value: ?Bool): This {
@@ -229,7 +229,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func circleRadius(value: ?Length): This {
@@ -251,7 +251,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sideLength(value: ?Length): This {
@@ -274,7 +274,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pathStrokeWidth(value: ?Length): This {
@@ -292,7 +292,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPatternComplete(callback: ?(Array<Int32>) -> Unit): This {

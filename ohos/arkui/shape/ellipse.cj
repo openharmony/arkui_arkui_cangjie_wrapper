@@ -28,7 +28,7 @@ foreign func FfiOHOSAceFrameworkEllipseInsCreate(width: Float64, widthUnit: Int3
  * Defines a ellipse drawing class.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EllipseShape <: BaseShape {
@@ -39,7 +39,7 @@ public class EllipseShape <: BaseShape {
      * @param { ?Length } height
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {

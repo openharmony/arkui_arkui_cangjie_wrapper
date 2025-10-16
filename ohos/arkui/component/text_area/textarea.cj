@@ -45,7 +45,7 @@ foreign {
  *
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextAreaController <: RemoteDataLite {
@@ -54,7 +54,7 @@ public class TextAreaController <: RemoteDataLite {
      * TextAreaController constructor.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -73,7 +73,7 @@ public class TextAreaController <: RemoteDataLite {
      * @param { ?Int32 } value  - Length from the start of the string to the position where the caret is located.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretPosition(value: ?Int32): Unit {
@@ -88,7 +88,7 @@ public class TextAreaController <: RemoteDataLite {
  *
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
@@ -100,7 +100,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @param { ?TextAreaController } controller - Called when the position of the insertion cursor is set.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(placeholder!: ?ResourceStr = None, text!: ?ResourceStr = None,
@@ -133,7 +133,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretColor(value: ?ResourceColor): This {
@@ -152,7 +152,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderFont(size!: ?Length, weight!: ?FontWeight = None, family!: ?String = None,
@@ -174,7 +174,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textAlign(value: ?TextAlign): This {
@@ -189,7 +189,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -204,7 +204,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -220,7 +220,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -235,7 +235,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -253,7 +253,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -268,7 +268,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enterKeyType(value: ?EnterKeyType): This {
@@ -284,7 +284,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func inputFilter(value!: ?ResourceStr, error!: ?(String) -> Unit = None): This {
@@ -307,7 +307,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxLength(value: ?UInt32): This {
@@ -323,7 +323,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderColor(value: ?ResourceColor): This {
@@ -339,7 +339,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSubmit(callback: ?(EnterKeyType) -> Unit): This {
@@ -355,7 +355,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(String) -> Unit): This {
@@ -371,7 +371,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCopy(callback: ?(String) -> Unit): This {
@@ -387,7 +387,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCut(callback: ?(String) -> Unit): This {
@@ -403,7 +403,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPaste(callback: ?(String) -> Unit): This {
@@ -420,7 +420,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onEditChange(callback: ?(Bool) -> Unit): This {

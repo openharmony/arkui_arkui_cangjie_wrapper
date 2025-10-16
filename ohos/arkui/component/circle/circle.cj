@@ -33,7 +33,7 @@ foreign {
  * Defines Circle Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Circle <: CommonShapeMethodComponent<Circle> & CircleAttribute {
@@ -44,7 +44,7 @@ public class Circle <: CommonShapeMethodComponent<Circle> & CircleAttribute {
      * @param { ?Length } height - Defines the height property.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {

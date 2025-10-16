@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines Stepper Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
@@ -34,7 +34,7 @@ sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
      * @returns { StepperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onFinish(callback: ?() -> Unit): StepperAttribute
@@ -46,7 +46,7 @@ sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
      * @returns { StepperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onSkip(callback: ?() -> Unit): StepperAttribute
@@ -58,7 +58,7 @@ sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
      * @returns { StepperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(UInt32, UInt32) -> Unit): StepperAttribute
@@ -70,7 +70,7 @@ sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
      * @returns { StepperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onNext(callback: ?(UInt32, UInt32) -> Unit): StepperAttribute
@@ -82,7 +82,7 @@ sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
      * @returns { StepperAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPrevious(callback: ?(UInt32, UInt32) -> Unit): StepperAttribute

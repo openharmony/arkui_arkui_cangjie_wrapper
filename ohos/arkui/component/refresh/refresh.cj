@@ -47,7 +47,7 @@ foreign {
  * Called when the drop-down refresh is set.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RefreshOptions {
@@ -55,7 +55,7 @@ public class RefreshOptions {
      * Whether the current component is being refreshed.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var refreshing: ?Bool
@@ -64,7 +64,7 @@ public class RefreshOptions {
      * Whether the current event has changed
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var changeEvent: ?(Bool) -> Unit
@@ -75,7 +75,7 @@ public class RefreshOptions {
      * @param { ?Bool } refreshing
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(refreshing!: ?Bool) {
@@ -88,7 +88,7 @@ public class RefreshOptions {
      * @param { ?(Bool, (Bool) -> Unit) } refreshing
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(refreshing!: ?Bindable<Bool>) {
@@ -102,7 +102,7 @@ public class RefreshOptions {
  * Defines Refresh Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
@@ -113,7 +113,7 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
      * @param { () -> Unit } content
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?RefreshOptions, child: () -> Unit) {
@@ -142,7 +142,7 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStateChange(callback: ?(RefreshStatus) -> Unit): This {
@@ -163,7 +163,7 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onRefreshing(callback: ?() -> Unit): This {

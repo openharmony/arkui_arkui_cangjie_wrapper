@@ -23,7 +23,7 @@ import ohos.labels.APILevel
  * Defines Ellipse attributes.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface EllipseAttribute <: CommonShapeMethod<EllipseAttribute> {}

@@ -25,7 +25,7 @@ import ohos.labels.APILevel
  * Defines class SubscriberManager.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SubscriberManager {
@@ -40,7 +40,7 @@ public class SubscriberManager {
      * @returns { SubscriberManager } The singleton instance of SubscriberManager.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getInstance(): SubscriberManager {
@@ -60,7 +60,7 @@ public class SubscriberManager {
      * @returns { Bool } True if a subscriber with the given ID exists, false otherwise.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func has(id: Int64): Bool {
@@ -74,7 +74,7 @@ public class SubscriberManager {
      * @returns { Option<Observer> } The subscriber with the given ID, or None if not found.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get(id: Int64): Option<Observer> {
@@ -87,7 +87,7 @@ public class SubscriberManager {
      * @param { Observer } value - The subscriber to remove.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func delete(value: Observer): Unit {
@@ -101,7 +101,7 @@ public class SubscriberManager {
      * @returns { Bool } True if the subscriber was added successfully, false if a subscriber with the same ID already exists.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func add(value: Observer): Bool {

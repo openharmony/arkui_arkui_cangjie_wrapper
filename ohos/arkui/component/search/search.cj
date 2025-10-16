@@ -165,7 +165,7 @@ let DEFAULT_SIZE = 16.0
  * Provides the method of switching the cursor position.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SearchController <: RemoteDataLite & TextContentControllerBase{
@@ -174,7 +174,7 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
      * A constructor used to create a SearchController object.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -193,7 +193,7 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
      * @param { ?Int32 } value
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretPosition(value: ?Int32): Unit {
@@ -207,7 +207,7 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
  * The construct function of search
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Search <: CommonMethodComponent<Search> & SearchAttribute {
@@ -220,7 +220,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @param { Option<SearchController> } controller
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -261,7 +261,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func searchButton(value: ?ResourceStr): This {
@@ -281,7 +281,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderColor(value: ?ResourceColor): This {
@@ -302,7 +302,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderFont(
@@ -348,7 +348,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textFont(
@@ -394,7 +394,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func copyOption(value: ?CopyOptions): This {
@@ -411,7 +411,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSubmit(callback: ?(String) -> Unit): This {
@@ -435,7 +435,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(String) -> Unit): This {
@@ -457,7 +457,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCopy(callback: ?(String) -> Unit): This {
@@ -479,7 +479,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCut(callback: ?(String) -> Unit): This {
@@ -501,7 +501,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPaste(callback: ?(String) -> Unit): This {

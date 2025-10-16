@@ -85,7 +85,7 @@ foreign {
  * Defines Slider Component.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
@@ -101,7 +101,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     * @param { ?Bool } reverse
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -150,7 +150,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     * @returns { This }
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func blockColor(value: ?ResourceColor): This {
@@ -167,7 +167,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     * @returns { This }
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func trackColor(value: ?ResourceColor): This {
@@ -184,7 +184,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     * @returns { This }
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
@@ -201,7 +201,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     * @returns { This }
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showSteps(value: ?Bool): This {
@@ -218,7 +218,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     * @returns { This }
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showTips(value: ?Bool, content!: ?ResourceStr = None): This {
@@ -242,7 +242,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     * @returns { This }
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func trackThickness(value: ?Length): This {
@@ -260,7 +260,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     * @returns { This }
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Float64, SliderChangeMode) -> Unit): This {
@@ -284,7 +284,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     * @returns { This }
     */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func blockBorderColor(value: ?ResourceColor): This {

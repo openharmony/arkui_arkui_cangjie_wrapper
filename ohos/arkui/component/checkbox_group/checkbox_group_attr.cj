@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines CheckboxGroup attributes.
  */
 @!APILevel[
-    22,
+    since:"22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> {
@@ -34,7 +34,7 @@ sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> 
      * @returns { CheckboxGroupAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectAll(value: ?Bool): CheckboxGroupAttribute
@@ -46,7 +46,7 @@ sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> 
      * @returns { CheckboxGroupAttribute }
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedColor(value: ?ResourceColor): CheckboxGroupAttribute
@@ -60,7 +60,7 @@ sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> 
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
-        22,
+        since:"22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?OnCheckboxGroupChangeCallback): CheckboxGroupAttribute
