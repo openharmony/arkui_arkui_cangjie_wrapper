@@ -269,7 +269,7 @@ func addInitConsume(identifier: String, ty: Tokens): Tokens {
         case _ => identifier
     }
     return quote(
-        match (parent) {
+        match (__gen_parent) {
             case Some(parentValue) =>
                 this.$identTokenAssociated = match (parentValue.initializeConsume($consumeIdentifier) as $ty) {
                     case Some(v) => v
@@ -290,7 +290,7 @@ func generateConsumeInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitI
      * add consume initialization in init function
      * @Consume var cnt: Int64
      * =>
-     * match (parent) {
+     * match (__gen_parent) {
      *     case Some(parentValue) =>
      *         this.stateVarDecl_cnt_ = match (parentValue.initializeConsume("cnt") as ObservedProperty<Int64>) {
      *             case Some(v) => v

@@ -123,9 +123,17 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
         case v: RefExpr => v
         case _ => throw IllegalArgumentException("callFunc must be RefExpr")
     }
+    let paraExpr = callExpr.arguments[1].expr
+    let lamExpr = match (paraExpr) {
+        case v: LambdaExpr => v
+        case _ =>
+            diag.fatal(quote($paraExpr), "there should be a lambda in ForEach component.")
+            throw IllegalArgumentException("there should be a lambda in ForEach component.")
+    }
+    var paramType = lamExpr.funcParams[0].paramType
 
     let compId = generateNewId()
-    var res = quote($callExpr.create\($compId, $thisView, )
+    var res = quote($baseExpr<$paramType>().create\($compId, $thisView, )
     for (idx in 0..callExpr.arguments.size) {
         let para = callExpr.arguments[idx]
         let paraExpr = para.expr

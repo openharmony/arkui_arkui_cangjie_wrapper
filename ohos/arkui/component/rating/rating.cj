@@ -123,8 +123,8 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
         let secondaryUri_ = transResourceStrToString(secondaryUri ?? tmpBackgroundUri)
         unsafe {
             try (unsafeBackgroundUri = LibC.mallocCString(backgroundUri_).asResource(),
-                unsafeForegroundUri = LibC.mallocCString(backgroundUri_).asResource(),
-                unsafeSecondaryUri = LibC.mallocCString(backgroundUri_).asResource()) {
+                unsafeForegroundUri = LibC.mallocCString(foregroundUri_).asResource(),
+                unsafeSecondaryUri = LibC.mallocCString(secondaryUri_).asResource()) {
                 FfiOHOSAceFrameworkRatingSetStarStyle(unsafeBackgroundUri.value, unsafeForegroundUri.value,
                     unsafeSecondaryUri.value)
             }
