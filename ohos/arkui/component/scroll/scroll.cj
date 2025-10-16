@@ -1163,21 +1163,6 @@ public class Scroller {
     /**
      * Called when page turning mode is set.
      *
-     * @param { Bool } value
-     */
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func scrollPage(value: Bool): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkScrollerScrollPage(this.handler.getID(), value)
-        }
-    }
-
-    /**
-     * Called when page turning mode is set.
-     *
      * @param { Bool } next
      * @param { ?Bool } animation
      */
