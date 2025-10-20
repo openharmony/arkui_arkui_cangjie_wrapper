@@ -25,7 +25,7 @@ import ohos.resource.*
  * Defines AlphabetIndexer attributes.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribute> {
@@ -36,7 +36,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func color(value: ?ResourceColor): AlphabetIndexerAttribute
@@ -47,7 +47,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedColor(value: ?ResourceColor): AlphabetIndexerAttribute
@@ -58,7 +58,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func popupColor(value: ?ResourceColor): AlphabetIndexerAttribute
@@ -69,7 +69,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedBackgroundColor(value: ?ResourceColor): AlphabetIndexerAttribute
@@ -80,7 +80,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func popupBackground(value: ?ResourceColor): AlphabetIndexerAttribute
@@ -91,7 +91,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func usingPopup(value: ?Bool): AlphabetIndexerAttribute
@@ -105,7 +105,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedFont(
@@ -124,7 +124,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func popupFont(
@@ -143,7 +143,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func font(
@@ -159,7 +159,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func itemSize(size: ?Length): AlphabetIndexerAttribute
@@ -171,7 +171,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignStyle(value: ?IndexerAlign): AlphabetIndexerAttribute
@@ -182,7 +182,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selected(index: ?Int32): AlphabetIndexerAttribute
@@ -194,7 +194,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func popupPosition(x!: ?Length, y!: ?Length): AlphabetIndexerAttribute
@@ -206,7 +206,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onSelect(callback: ?OnAlphabetIndexerSelectCallback): AlphabetIndexerAttribute
@@ -218,7 +218,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onRequestPopupData(callback: ?OnAlphabetIndexerRequestPopupDataCallback): AlphabetIndexerAttribute
@@ -230,7 +230,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
      * @returns { AlphabetIndexerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPopupSelect(callback: ?OnAlphabetIndexerPopupSelectCallback): AlphabetIndexerAttribute

@@ -36,7 +36,7 @@ foreign {
  * Defines Path Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
@@ -46,7 +46,7 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
      * @param { ?ResourceStr } commands - Commands option.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(commands!: ?ResourceStr = None) {
@@ -66,7 +66,7 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
      * @param { ?ResourceStr } commands - Commands option.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length, height!: ?Length, commands!: ?ResourceStr = None) {
@@ -88,7 +88,7 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func commands(value: ?ResourceStr): This {

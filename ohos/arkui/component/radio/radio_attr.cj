@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines Radio Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RadioAttribute <: CommonMethod<RadioAttribute> {
@@ -34,7 +34,7 @@ sealed interface RadioAttribute <: CommonMethod<RadioAttribute> {
      * @returns { RadioAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func checked(value: ?Bool): RadioAttribute
@@ -46,7 +46,7 @@ sealed interface RadioAttribute <: CommonMethod<RadioAttribute> {
      * @returns { RadioAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(Bool) -> Unit): RadioAttribute

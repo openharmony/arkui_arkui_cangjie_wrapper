@@ -57,7 +57,7 @@ foreign {
  */
 @Derive[Equatable]
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RouterMode {
@@ -67,7 +67,7 @@ public enum RouterMode {
      *
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Standard
@@ -80,7 +80,7 @@ public enum RouterMode {
      *
      */
     | @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Single
@@ -100,7 +100,7 @@ public enum RouterMode {
  *
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RouterState {
@@ -110,7 +110,7 @@ public class RouterState {
      * NOTE: The index starts from 1 from the bottom to the top of the stack.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var index: Int32
@@ -119,7 +119,7 @@ public class RouterState {
      * Name of the current page, that is, the file name.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var name: String
@@ -128,7 +128,7 @@ public class RouterState {
      * Path of the current page.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var path: String
@@ -137,7 +137,7 @@ public class RouterState {
      * Data that passed to the destination page during navigation.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var params: String
@@ -151,7 +151,7 @@ public class RouterState {
      * @param { String } params
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -204,7 +204,7 @@ struct RouterStateList {
  *
  */
  @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Router {
@@ -221,7 +221,7 @@ public class Router {
      * @param { String } params
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pushUrl(url!: String, params!: String = ""): Unit {
@@ -240,7 +240,7 @@ public class Router {
      * @param { String } params
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func back(url!: ?String = None, params!: String = ""): Unit {
@@ -259,7 +259,7 @@ public class Router {
      * @param { String } params
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func back(index!: Int32, params!: String = ""): Unit {
@@ -276,7 +276,7 @@ public class Router {
      * @returns { Option<String> } Page params.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getParams(): Option<String> {

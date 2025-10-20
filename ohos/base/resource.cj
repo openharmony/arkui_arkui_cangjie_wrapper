@@ -23,7 +23,7 @@ import ohos.labels.APILevel
  * Defines interface ResourceStr.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface ResourceStr {}

@@ -44,7 +44,7 @@ foreign {
  * Defines Rating Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
@@ -55,7 +55,7 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
      * @param { ?Bool } indicator
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(rating!: ?Float64, indicator!: ?Bool = None) {
@@ -71,7 +71,7 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stars(value: ?Int32): This {
@@ -88,7 +88,7 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stepSize(size: ?Float64): This {
@@ -112,7 +112,7 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func starStyle(backgroundUri!: ?ResourceStr, foregroundUri!: ?ResourceStr, secondaryUri!: ?ResourceStr = None): This {
@@ -139,7 +139,7 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Float64) -> Unit): This {

@@ -67,7 +67,7 @@ foreign {
  *
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
@@ -79,7 +79,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
      * @param { ?Bool } isOn
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(toggleType: ?ToggleType, isOn!: ?Bool = None) {
@@ -97,7 +97,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
      * @param { () -> Unit } subcomponent
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(toggleType: ?ToggleType, isOn: ?Bool, subcomponent: () -> Unit) {
@@ -170,7 +170,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
@@ -188,7 +188,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func switchPointColor(color: ?ResourceColor): This {
@@ -241,7 +241,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Bool) -> Unit): This {

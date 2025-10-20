@@ -24,7 +24,7 @@ import ohos.resource.*
  * Defines Shape Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
@@ -38,7 +38,7 @@ sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
     * @returns { ShapeAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func viewPort(
@@ -57,7 +57,7 @@ sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
     * @returns { ShapeAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func mesh(array: ?Array<Float64>, column: ?UInt32, row: ?UInt32): ShapeAttribute

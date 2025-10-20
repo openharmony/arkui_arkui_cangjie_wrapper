@@ -41,7 +41,7 @@ foreign {
  *
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class UIContext {
@@ -61,7 +61,7 @@ public class UIContext {
      * @returns { PromptAction } PromptAction object.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getPromptAction(): PromptAction {
@@ -77,7 +77,7 @@ public class UIContext {
       * @returns { MeasureUtils } the MeasureUtils.
       */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getMeasureUtils(): MeasureUtils {
@@ -95,7 +95,7 @@ public class UIContext {
     * @returns { AnimatorResult }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func createAnimator(options: AnimatorOptions): AnimatorResult {
@@ -109,7 +109,7 @@ public class UIContext {
     * @returns { Option<Length> }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func vp2px(value: Length): Option<Length> {
@@ -123,7 +123,7 @@ public class UIContext {
     * @returns { Option<Length> }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func px2vp(value: Length): Option<Length> {
@@ -137,7 +137,7 @@ public class UIContext {
     * @returns { Option<Length> }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fp2px(value: Length): Option<Length> {
@@ -151,7 +151,7 @@ public class UIContext {
     * @returns { Option<Length> }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func px2fp(value: Length): Option<Length> {
@@ -165,7 +165,7 @@ public class UIContext {
     * @returns { Option<Length> }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lpx2px(value: Length): Option<Length> {
@@ -179,7 +179,7 @@ public class UIContext {
     * @returns { Option<Length> }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func px2lpx(value: Length): Option<Length> {
@@ -192,7 +192,7 @@ public class UIContext {
     * @returns { Font } object Font.
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getFont(): Font {
@@ -209,7 +209,7 @@ public class UIContext {
     * @returns { Router } Router object.
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getRouter(): Router {
@@ -226,7 +226,7 @@ public class UIContext {
      * @returns { ContextMenuController } object context menu controller.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getContextMenuController(): ContextMenuController {
@@ -244,7 +244,7 @@ public class UIContext {
      * an AlertDialog component in the given settings.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showAlertDialog(options: AlertDialogParamWithConfirm): Unit {
@@ -258,7 +258,7 @@ public class UIContext {
      * an AlertDialog component in the given settings.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showAlertDialog(options: AlertDialogParamWithButtons): Unit {
@@ -272,7 +272,7 @@ public class UIContext {
      * an AlertDialog component in the given settings.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showAlertDialog(options: AlertDialogParamWithOptions): Unit {
@@ -284,7 +284,7 @@ public class UIContext {
      * @param { ActionSheetOptions } value - Parameters of the action sheet.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showActionSheet(value: ActionSheetOptions): Unit {
@@ -298,7 +298,7 @@ public class UIContext {
      * @param { VoidCallback } event - the closure base on which, the system will create animation automatically.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func animateTo(value: AnimateParam, event: VoidCallback): Unit {
@@ -314,7 +314,7 @@ public class UIContext {
  *
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ContextMenuController {
@@ -327,7 +327,7 @@ public class ContextMenuController {
      *
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func close(): Unit {

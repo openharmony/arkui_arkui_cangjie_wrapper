@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines GridRow attributes.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
@@ -34,7 +34,7 @@ sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
      * @returns { GridRowAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignItems(value: ?ItemAlign): GridRowAttribute
@@ -46,7 +46,7 @@ sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
      * @returns { GridRowAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onBreakpointChange(callback: ?(String) -> Unit): GridRowAttribute

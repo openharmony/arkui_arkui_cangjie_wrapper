@@ -24,7 +24,7 @@ import ohos.base.*
  * Defines Blank attributes.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface BlankAttribute <: CommonMethod<BlankAttribute> {
@@ -35,7 +35,7 @@ sealed interface BlankAttribute <: CommonMethod<BlankAttribute> {
      * @returns { BlankAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func color(value: ?ResourceColor): BlankAttribute

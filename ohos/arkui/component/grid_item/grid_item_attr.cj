@@ -22,7 +22,7 @@ import ohos.labels.APILevel
  * Defines GridItem attributes.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
@@ -33,7 +33,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
      * @returns { GridItemAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func columnStart(columnStart: ?Int32): GridItemAttribute
@@ -45,7 +45,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
      * @returns { GridItemAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func columnEnd(columnEnd: ?Int32): GridItemAttribute
@@ -57,7 +57,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
      * @returns { GridItemAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func rowStart(rowStart: ?Int32): GridItemAttribute
@@ -69,7 +69,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
      * @returns { GridItemAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func rowEnd(rowEnd: ?Int32): GridItemAttribute

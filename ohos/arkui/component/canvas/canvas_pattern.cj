@@ -32,7 +32,7 @@ foreign {
  * Describes an opaque object of a template, which is created using the createPattern() method.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CanvasPattern <: RemoteDataLite {
@@ -63,7 +63,7 @@ public class CanvasPattern <: RemoteDataLite {
      * @param { ?Matrix2D } transform - 2D transformation matrix.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTransform(transform: ?Matrix2D): Unit {

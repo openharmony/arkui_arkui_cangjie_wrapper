@@ -24,7 +24,7 @@ import ohos.arkui.component.scroll.*
  * Defines Grid attributes.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
@@ -35,7 +35,7 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
      * @returns { GridAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func columnsTemplate(value: ?String): GridAttribute
@@ -47,7 +47,7 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
      * @returns { GridAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func rowsTemplate(value: ?String): GridAttribute
@@ -59,7 +59,7 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
      * @returns { GridAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func columnsGap(value: ?Length): GridAttribute
@@ -71,7 +71,7 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
      * @returns { GridAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func rowsGap(value: ?Length): GridAttribute
@@ -83,7 +83,7 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
      * @returns { GridAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func cachedCount(count: ?Int32): GridAttribute
@@ -96,7 +96,7 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
      * @returns { GridAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func cachedCount(count: ?Int32, show: ?Bool): GridAttribute

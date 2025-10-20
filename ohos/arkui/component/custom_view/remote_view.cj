@@ -27,7 +27,7 @@ import std.collection.ArrayList
  * Definition of RemoteView class.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class RemoteView <: FFIData {
@@ -35,7 +35,7 @@ public abstract class RemoteView <: FFIData {
      * Constructor of RemoteView.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -46,7 +46,7 @@ public abstract class RemoteView <: FFIData {
      * Build the view component.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func build(): Unit // abstract
@@ -55,7 +55,7 @@ public abstract class RemoteView <: FFIData {
      * Do a rerender.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func rerender(): Unit {}
@@ -66,7 +66,7 @@ public abstract class RemoteView <: FFIData {
      * @param { Int64 } _ - Element id.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func purgeVariableDependenciesOnElmtId(_: Int64): Unit {}
@@ -89,7 +89,7 @@ public abstract class RemoteView <: FFIData {
      * @param { Bool } deep - Whether to rerender components recursive.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func forceCompleteRerender(deep: Bool): Unit {}

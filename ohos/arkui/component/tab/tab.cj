@@ -230,7 +230,7 @@ foreign {
  * Defines Tabs Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
@@ -243,7 +243,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * @param { () -> Unit } child
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -268,7 +268,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func barWidth(value: ?Length): This {
@@ -295,7 +295,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func barHeight(value: ?Length): This {
@@ -328,7 +328,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func vertical(value: ?Bool): This {
@@ -345,7 +345,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollable(value: ?Bool): This {
@@ -363,7 +363,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func barMode(value: ?BarMode): This {
@@ -381,7 +381,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func animationDuration(value: ?Float32): This {
@@ -406,7 +406,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(event: ?Callback<Int32, Unit>): This {
@@ -429,7 +429,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
  * Provides methods for switching tabs.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TabsController <: RemoteDataLite {
@@ -437,7 +437,7 @@ public class TabsController <: RemoteDataLite {
      * TabsController constructor.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -457,7 +457,7 @@ public class TabsController <: RemoteDataLite {
      * or greater than the maximum number, the default value 0 is used.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func changeIndex(value: ?Int32): Unit {
@@ -471,7 +471,7 @@ public class TabsController <: RemoteDataLite {
  * Defines TabContent Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribute {
@@ -481,7 +481,7 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
      * @param { () -> Unit } child
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -494,7 +494,7 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
      * Create a TabContent.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -521,7 +521,7 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func tabBar(content: ?ResourceStr): This {
@@ -546,7 +546,7 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func tabBar(icon!: ?ResourceStr = None, text!: ?ResourceStr = None): This {
@@ -570,7 +570,7 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func tabBar(content: ?CustomBuilder): This {

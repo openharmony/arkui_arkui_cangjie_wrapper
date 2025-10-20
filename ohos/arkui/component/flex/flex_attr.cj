@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines Flex attributes.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface FlexAttribute <: CommonMethod<FlexAttribute> {}

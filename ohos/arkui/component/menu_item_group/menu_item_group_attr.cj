@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines MenuItemGroup Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface MenuItemGroupAttribute <: CommonMethod<MenuItemGroupAttribute> {}

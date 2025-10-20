@@ -86,7 +86,7 @@ foreign {
  * Defines Shape Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
@@ -96,7 +96,7 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     * @param { () -> Unit } child
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = { => }) {
@@ -111,7 +111,7 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     * @param { ?PixelMap } value
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?PixelMap) {
@@ -133,7 +133,7 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     * @returns { This }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func viewPort(
@@ -171,7 +171,7 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     * @returns { This }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func mesh(value: ?Array<Float64>, column: ?UInt32, row: ?UInt32): This {

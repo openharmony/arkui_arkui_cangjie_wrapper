@@ -41,7 +41,7 @@ type ItemGenFuncType<T> = (T, Int64) -> Unit
  * @param { T } Data type.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface IDataSource<T> {
@@ -51,7 +51,7 @@ public interface IDataSource<T> {
      * @returns { Int64 } The total number of data.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func totalCount(): Int64
@@ -63,7 +63,7 @@ public interface IDataSource<T> {
      * @returns { T } The data item.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func getData(index: Int64): T
@@ -74,7 +74,7 @@ public interface IDataSource<T> {
      * @param { DataChangeListener } listener
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func registerDataChangeListener(listener: DataChangeListener): Unit
@@ -85,7 +85,7 @@ public interface IDataSource<T> {
      * @param { DataChangeListener } listener
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func unregisterDataChangeListener(listener: DataChangeListener): Unit
@@ -95,7 +95,7 @@ public interface IDataSource<T> {
  * Listener for data changes.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DataChangeListener <: RemoteData {
@@ -108,7 +108,7 @@ public class DataChangeListener <: RemoteData {
      * the original child component is used. For data items whose key changes, a new child component is created.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataReloaded(): Unit {
@@ -121,7 +121,7 @@ public class DataChangeListener <: RemoteData {
      * @param { IntNative } index
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataAdd(index: IntNative): Unit {
@@ -135,7 +135,7 @@ public class DataChangeListener <: RemoteData {
      * @param { IntNative } index
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataDelete(index: IntNative): Unit {
@@ -148,7 +148,7 @@ public class DataChangeListener <: RemoteData {
      * @param { IntNative } index
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataChange(index: IntNative): Unit {
@@ -162,7 +162,7 @@ public class DataChangeListener <: RemoteData {
      * @param { IntNative } to
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataMove(from: IntNative, to: IntNative): Unit {

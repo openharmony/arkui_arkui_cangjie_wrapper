@@ -84,7 +84,7 @@ public type PageTransitionCallback = (RouteType, Float64) -> Unit
 */
 @Derive[Equatable]
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum RouteType {
@@ -92,7 +92,7 @@ public enum RouteType {
     * The page is not redirected.
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
@@ -100,7 +100,7 @@ public enum RouteType {
     * Go to the next page.
     */
     | @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Push
@@ -108,7 +108,7 @@ public enum RouteType {
     * Redirect to a specified page.
     */
     | @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Pop
@@ -137,7 +137,7 @@ public enum RouteType {
 */
 @Derive[Equatable]
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum SlideEffect {
@@ -145,7 +145,7 @@ public enum SlideEffect {
     * Swipe left.
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -153,7 +153,7 @@ public enum SlideEffect {
     * Swipe right.
     */
     | @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
@@ -161,7 +161,7 @@ public enum SlideEffect {
     * Swipe top.
     */
     | @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
@@ -169,7 +169,7 @@ public enum SlideEffect {
     * Swipe bottom.
     */
     | @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
@@ -190,7 +190,7 @@ public enum SlideEffect {
 * Provides interfaces for common transitions.
 */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed abstract class CommonTransition {
@@ -200,7 +200,7 @@ sealed abstract class CommonTransition {
     * @param { SlideEffect } value
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func slide(value: SlideEffect): This {
@@ -218,7 +218,7 @@ sealed abstract class CommonTransition {
     * @returns { This } 
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func translate(x!: ?Length = None, y!: ?Length = None, z!: ?Length = None): This {
@@ -241,7 +241,7 @@ sealed abstract class CommonTransition {
     * @returns { This } 
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scale(
@@ -264,7 +264,7 @@ sealed abstract class CommonTransition {
     * @returns { This } 
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func opacity(value: Float64): This {
@@ -279,7 +279,7 @@ sealed abstract class CommonTransition {
 * 
 */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PageTransitionEnter <: CommonTransition {
@@ -292,7 +292,7 @@ public class PageTransitionEnter <: CommonTransition {
     * @param { ?Int32 } delay
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -318,7 +318,7 @@ public class PageTransitionEnter <: CommonTransition {
     * @throws { BusinessException } 190002 - The callback function is invalid.
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onEnter(event: ?PageTransitionCallback) {
@@ -337,7 +337,7 @@ public class PageTransitionEnter <: CommonTransition {
 * Provide an interface to set transition style when a page exits.
 */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PageTransitionExit <: CommonTransition {
@@ -350,7 +350,7 @@ public class PageTransitionExit <: CommonTransition {
     * @param { ?Int32 } delay
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -375,7 +375,7 @@ public class PageTransitionExit <: CommonTransition {
     * @returns { This } 
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onExit(event: ?PageTransitionCallback) {

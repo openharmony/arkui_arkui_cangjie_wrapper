@@ -22,7 +22,7 @@ import ohos.labels.APILevel
  * Defines Stack Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface StackAttribute <: CommonMethod<StackAttribute> {
@@ -33,7 +33,7 @@ sealed interface StackAttribute <: CommonMethod<StackAttribute> {
     * @returns { StackAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignContent(value: ?Alignment): StackAttribute

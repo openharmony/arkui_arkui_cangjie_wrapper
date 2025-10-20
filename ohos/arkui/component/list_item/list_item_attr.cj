@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines ListItem Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ListItemAttribute <: CommonMethod<ListItemAttribute> {
@@ -35,7 +35,7 @@ sealed interface ListItemAttribute <: CommonMethod<ListItemAttribute> {
      * @returns { ListItemAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectable(value: ?Bool): ListItemAttribute
@@ -50,7 +50,7 @@ sealed interface ListItemAttribute <: CommonMethod<ListItemAttribute> {
      * @returns { ListItemAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func swipeAction(
@@ -67,7 +67,7 @@ sealed interface ListItemAttribute <: CommonMethod<ListItemAttribute> {
      * @returns { ListItemAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onSelect(event: ?(Bool) -> Unit): ListItemAttribute

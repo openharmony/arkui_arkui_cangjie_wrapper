@@ -23,7 +23,7 @@ import ohos.base.*
  * RelativeContainer
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RelativeContainerAttribute <: CommonMethod<RelativeContainerAttribute> {
@@ -35,7 +35,7 @@ sealed interface RelativeContainerAttribute <: CommonMethod<RelativeContainerAtt
     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func guideLine(value: ?Array<GuideLineStyle>): RelativeContainerAttribute
@@ -48,7 +48,7 @@ sealed interface RelativeContainerAttribute <: CommonMethod<RelativeContainerAtt
     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func barrier(value: ?Array<BarrierStyle>): RelativeContainerAttribute

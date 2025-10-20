@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines Row Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RowAttribute <: CommonMethod<RowAttribute> {
@@ -34,7 +34,7 @@ sealed interface RowAttribute <: CommonMethod<RowAttribute> {
     * @returns { RowAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignItems(value: ?VerticalAlign): RowAttribute
@@ -46,7 +46,7 @@ sealed interface RowAttribute <: CommonMethod<RowAttribute> {
     * @returns { RowAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func justifyContent(value: ?FlexAlign): RowAttribute

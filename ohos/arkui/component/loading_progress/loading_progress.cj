@@ -39,7 +39,7 @@ foreign {
  * Defines LoadingProgress Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & LoadingProgressAttribute {
@@ -47,7 +47,7 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & Loading
      * Create a LoadingProgress
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -62,7 +62,7 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & Loading
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {

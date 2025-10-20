@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines Canvas attributes.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface CanvasAttribute <: CommonMethod<CanvasAttribute> {
@@ -34,7 +34,7 @@ sealed interface CanvasAttribute <: CommonMethod<CanvasAttribute> {
      * @returns { CanvasAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onReady(callback: ?() -> Unit): CanvasAttribute

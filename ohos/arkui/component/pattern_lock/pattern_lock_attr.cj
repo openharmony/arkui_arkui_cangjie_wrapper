@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines PatternLock Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
@@ -35,7 +35,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedColor(value: ?ResourceColor): PatternLockAttribute
@@ -47,7 +47,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func pathColor(value: ?ResourceColor): PatternLockAttribute
@@ -59,7 +59,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func activeColor(value: ?ResourceColor): PatternLockAttribute
@@ -71,7 +71,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func regularColor(value: ?ResourceColor): PatternLockAttribute
@@ -85,7 +85,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func autoReset(value: ?Bool): PatternLockAttribute
@@ -101,7 +101,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func circleRadius(value: ?Length): PatternLockAttribute
@@ -117,7 +117,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sideLength(value: ?Length): PatternLockAttribute
@@ -133,7 +133,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func pathStrokeWidth(value: ?Length): PatternLockAttribute
@@ -145,7 +145,7 @@ sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
      * @returns { PatternLockAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPatternComplete(callback: ?(Array<Int32>) -> Unit): PatternLockAttribute

@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines RichEditor Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
@@ -34,7 +34,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func customKeyboard(value!: ?CustomBuilder): RichEditorAttribute
@@ -49,7 +49,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindSelectionMenu(
@@ -66,7 +66,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func copyOptions(value: ?CopyOptions): RichEditorAttribute
@@ -78,7 +78,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onReady(callback: ?VoidCallback): RichEditorAttribute
@@ -90,7 +90,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func aboutToIMEInput(callback: ?Callback<RichEditorInsertValue, Bool>): RichEditorAttribute
@@ -102,7 +102,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onIMEInputComplete(callback: ?Callback<RichEditorTextSpanResult, Unit>): RichEditor
@@ -114,7 +114,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDeleteComplete(callback: ?VoidCallback): RichEditorAttribute
@@ -126,7 +126,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func aboutToDelete(callback: ?Callback<RichEditorDeleteValue, Bool>): RichEditorAttribute
@@ -138,7 +138,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onSelect(callback: ?Callback<RichEditorSelection, Unit>): RichEditorAttribute
@@ -150,7 +150,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPaste(callback: ?PasteEventCallback): RichEditorAttribute
@@ -162,7 +162,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
      * @returns { RichEditorAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDidChange(callback: ?OnDidChangeCallback): RichEditorAttribute

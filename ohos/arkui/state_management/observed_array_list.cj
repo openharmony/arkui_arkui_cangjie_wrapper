@@ -26,7 +26,7 @@ import ohos.business_exception.BusinessException
  * Defines class ObservedArrayList.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
@@ -38,7 +38,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { ArrayList<T> } initValue
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(initValue: ArrayList<T>) {
@@ -51,7 +51,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { Array<T> } initValue
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(initValue: Array<T>) {
@@ -105,7 +105,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @returns { ArrayList<T> } - The current ArrayList value.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get(): ArrayList<T> {
@@ -119,7 +119,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { ArrayList<T> } newValue - The new ArrayList value to set.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set(newValue: ArrayList<T>): Unit {
@@ -133,7 +133,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { Array<T> } newValue - The new Array value to set.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set(newValue: Array<T>): Unit {
@@ -147,7 +147,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { ObservedComplexAbstract } newValue - The new ObservedComplexAbstract value to set.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set(newValue: ObservedComplexAbstract): Unit {
@@ -167,7 +167,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @returns { T } The element at the specified index.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public operator func [](index: Int64): T {
@@ -182,7 +182,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { T } value - The new value to set at the specified index.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public operator func [](index: Int64, value!: T): Unit {
@@ -202,7 +202,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * Gets the number of elements in the observed array list.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop size: Int64 {
@@ -217,7 +217,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @returns { Bool } True if the array list is empty, false otherwise.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func isEmpty(): Bool {
@@ -230,7 +230,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @returns { ObservedArrayList<T> } A new ObservedArrayList instance with the same elements.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clone(): ObservedArrayList<T> {
@@ -241,7 +241,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * Removes all elements from the observed array list. Enable observers to receive updated information whenever state variables change.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clear(): Unit {
@@ -265,7 +265,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { T } element - The element to append to the array list.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func append(element: T): Unit {
@@ -280,7 +280,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { Collection<T> } elements - The collection of elements to append.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func appendAll(elements: Collection<T>): Unit {
@@ -301,7 +301,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { T } element - The element to insert.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func insert(index: Int64, element: T): Unit {
@@ -317,7 +317,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { Collection<T> } elements - The collection of elements to insert.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func insertAll(index: Int64, elements: Collection<T>): Unit {
@@ -337,7 +337,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { T } element - The element to prepend to the array list.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func prepend(element: T): Unit {
@@ -352,7 +352,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { Collection<T> } elements - The collection of elements to prepend.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func prependAll(elements: Collection<T>): Unit {
@@ -373,7 +373,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @returns { T } The removed element.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func remove(index: Int64): T {
@@ -388,7 +388,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { Range<Int64> } range - The range of indices to remove.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func remove(range: Range<Int64>): Unit {
@@ -402,7 +402,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * @param { (T) -> Bool } predicate - A function that returns true for elements to be removed.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func removeIf(predicate: (T) -> Bool): Unit {

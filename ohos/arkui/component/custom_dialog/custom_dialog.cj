@@ -70,7 +70,7 @@ struct NativeCustomDialogControllerOptions {
 * Defines the options of CustomDialogController.
 */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomDialogControllerOptions {
@@ -78,7 +78,7 @@ public class CustomDialogControllerOptions {
      * Defines the cancel function.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cancel: ?VoidCallback
@@ -86,7 +86,7 @@ public class CustomDialogControllerOptions {
      * Defines if use auto cancel when click on the outside of the dialog.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: ?Bool
@@ -94,7 +94,7 @@ public class CustomDialogControllerOptions {
      * Defines the dialog alignment of the screen.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var alignment: ?DialogAlignment
@@ -102,7 +102,7 @@ public class CustomDialogControllerOptions {
      * Defines the dialog offset.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Offset
@@ -110,7 +110,7 @@ public class CustomDialogControllerOptions {
      * Defines if use custom style.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var customStyle: ?Bool
@@ -118,7 +118,7 @@ public class CustomDialogControllerOptions {
      * Grid count of dialog.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var gridCount: ?UInt32
@@ -126,7 +126,7 @@ public class CustomDialogControllerOptions {
      * Mask color of dialog.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskColor: ?ResourceColor
@@ -134,7 +134,7 @@ public class CustomDialogControllerOptions {
      * Mask Region of dialog. The size cannot exceed the main window.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskRect: ?Rectangle
@@ -142,7 +142,7 @@ public class CustomDialogControllerOptions {
      * Animation parameters of dialog opening.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var openAnimation: ?AnimateParam
@@ -150,7 +150,7 @@ public class CustomDialogControllerOptions {
      * Animation parameters of dialog closing.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var closeAnimation: ?AnimateParam
@@ -158,7 +158,7 @@ public class CustomDialogControllerOptions {
      * Whether to display in the sub window.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: ?Bool
@@ -166,7 +166,7 @@ public class CustomDialogControllerOptions {
      * Background color of dialog.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -174,7 +174,7 @@ public class CustomDialogControllerOptions {
      * Corner radius of dialog.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cornerRadius: ?Length
@@ -182,7 +182,7 @@ public class CustomDialogControllerOptions {
      * Whether it is a modal dialog
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isModal: ?Bool
@@ -190,7 +190,7 @@ public class CustomDialogControllerOptions {
      * Callback function when the CustomDialog interactive dismiss.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
@@ -198,7 +198,7 @@ public class CustomDialogControllerOptions {
      * Defines the custom dialog's border width.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: ?Length
@@ -206,7 +206,7 @@ public class CustomDialogControllerOptions {
      * Defines the custom dialog's border color.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: ?ResourceColor
@@ -214,7 +214,7 @@ public class CustomDialogControllerOptions {
      * Defines the custom dialog's border style.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderStyle: ?EdgeStyles
@@ -222,7 +222,7 @@ public class CustomDialogControllerOptions {
      * Defines the custom dialog's width.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
@@ -230,7 +230,7 @@ public class CustomDialogControllerOptions {
      * Defines the custom dialog's height.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Length
@@ -238,7 +238,7 @@ public class CustomDialogControllerOptions {
      * Defines the custom dialog's shadow.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowOptions
@@ -246,7 +246,7 @@ public class CustomDialogControllerOptions {
      * Defines the customDialog's background blur Style
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -276,7 +276,7 @@ public class CustomDialogControllerOptions {
      * @param { ?BlurStyle } backgroundBlurStyle - Defines the customDialog's background blur Style.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -354,7 +354,7 @@ foreign {
 * Use the CustomDialogController class to display the custom pop-up window.
 */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CustomDialogController <: RemoteDataLite {
@@ -445,7 +445,7 @@ public class CustomDialogController <: RemoteDataLite {
      * @param { CustomDialogControllerOptions } value
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: CustomDialogControllerOptions) {
@@ -464,7 +464,7 @@ public class CustomDialogController <: RemoteDataLite {
      * @param { () -> Unit } builder
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setBuilder(builder: () -> Unit) {
@@ -479,7 +479,7 @@ public class CustomDialogController <: RemoteDataLite {
      * @param { CustomView } view
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindView(view: CustomView): Unit {
@@ -492,7 +492,7 @@ public class CustomDialogController <: RemoteDataLite {
      * Display the content of the customized pop-up window. If the content has been displayed, it does not take effect.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func openDialog(): Unit {
@@ -505,7 +505,7 @@ public class CustomDialogController <: RemoteDataLite {
      * Closes the custom pop-up window. If the window is closed, the window does not take effect.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closeDialog(): Unit {
@@ -518,7 +518,7 @@ public class CustomDialogController <: RemoteDataLite {
      * Manual release the resource after no longer use it.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func releaseSelf(): Unit {

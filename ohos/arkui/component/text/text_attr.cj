@@ -25,7 +25,7 @@ import ohos.resource.*
  *
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface TextAttribute <: CommonMethod<TextAttribute> {
@@ -36,7 +36,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @returns { TextAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func lineSpacing(value: ?Length): TextAttribute
@@ -48,7 +48,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @returns { TextAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontSize(value: ?Length): TextAttribute
@@ -61,7 +61,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @throws { IllegalArgumentException }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func maxFontSize(value: ?Length): TextAttribute
@@ -74,7 +74,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @throws { IllegalArgumentException }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func minFontSize(value: ?Length): TextAttribute
@@ -87,7 +87,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @throws { IllegalArgumentException }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(value: ?ResourceColor): TextAttribute
@@ -99,7 +99,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @returns { TextAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontStyle(value: ?FontStyle): TextAttribute
@@ -112,7 +112,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @throws { IllegalArgumentException }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontWeight(value: ?FontWeight): TextAttribute
@@ -124,7 +124,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @returns { TextAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontFamily(value: ?ResourceStr): TextAttribute
@@ -136,7 +136,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @returns { TextAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textAlign(value: ?TextAlign): TextAttribute
@@ -148,7 +148,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @returns { TextAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textOverflow(value: ?TextOverflow): TextAttribute
@@ -163,7 +163,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @returns { TextAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func maxLines(value: ?Int32): TextAttribute
@@ -178,7 +178,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @returns { TextAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func lineHeight(value: ?Length): TextAttribute
@@ -192,7 +192,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @returns { TextAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor,
@@ -205,7 +205,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @returns { TextAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func baselineOffset(value: ?Length): TextAttribute
@@ -217,7 +217,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @returns { TextAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textCase(value: ?TextCase): TextAttribute

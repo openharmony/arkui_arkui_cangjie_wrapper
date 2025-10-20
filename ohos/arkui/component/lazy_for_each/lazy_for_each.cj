@@ -158,7 +158,7 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
  * Enter the value to obtain the LazyForEach.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LazyForEach<T> <: UINodeBase {
@@ -173,7 +173,7 @@ public class LazyForEach<T> <: UINodeBase {
      * @param { KeyGenFuncType<T> } keyGenerator - key generator function.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(dataSource: IDataSource<T>, itemGenerator!: ItemGenFuncType<T>,
@@ -183,7 +183,7 @@ public class LazyForEach<T> <: UINodeBase {
      * Enter the value to obtain the LazyForEach.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {}
@@ -192,7 +192,7 @@ public class LazyForEach<T> <: UINodeBase {
      * Enter the value to obtain the LazyForEach.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func create<T>(viewID: Int64, parentView: CustomView, dataSource: IDataSource<T>,

@@ -120,7 +120,7 @@ public type OnTextPickerChangeCallback = (String, UInt32) -> Unit
  *
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribute {
@@ -132,7 +132,7 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
      * @param { ?String } value
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -176,7 +176,7 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func defaultPickerItemHeight(value: ?Length): This {
@@ -195,7 +195,7 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func canLoop(value: ?Bool): This {
@@ -216,7 +216,7 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?OnTextPickerChangeCallback): This {

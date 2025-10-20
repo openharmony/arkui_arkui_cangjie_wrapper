@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines StepperItem Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
@@ -34,7 +34,7 @@ sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
      * @returns { StepperItemAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func prevLabel(value: ?String): StepperItemAttribute
@@ -46,7 +46,7 @@ sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
      * @returns { StepperItemAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func nextLabel(value: ?String): StepperItemAttribute
@@ -58,7 +58,7 @@ sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
      * @returns { StepperItemAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func status(status!: ?ItemState): StepperItemAttribute

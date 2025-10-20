@@ -33,7 +33,7 @@ foreign {
  * Defines a path drawing class.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PathShape <: BaseShape {
@@ -43,7 +43,7 @@ public class PathShape <: BaseShape {
      * @param { ?ResourceStr } commands 
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(commands!: ?ResourceStr = None) {
@@ -66,7 +66,7 @@ public class PathShape <: BaseShape {
      * @param { ?ResourceStr } commands 
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length, height!: ?Length, commands!: ?ResourceStr = None) {

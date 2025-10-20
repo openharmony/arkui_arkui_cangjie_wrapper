@@ -39,7 +39,7 @@ foreign {
  * Defines Stepper Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
@@ -51,7 +51,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
      * @param { () -> Unit } child
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(index!: ?UInt32 = None, child!: () -> Unit = {=>}) {
@@ -68,7 +68,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onFinish(callback: ?() -> Unit): This {
@@ -87,7 +87,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSkip(callback: ?() -> Unit): This {
@@ -106,7 +106,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(UInt32, UInt32) -> Unit): This {
@@ -128,7 +128,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onNext(callback: ?(UInt32, UInt32) -> Unit): This {
@@ -150,7 +150,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPrevious(callback: ?(UInt32, UInt32) -> Unit): This {

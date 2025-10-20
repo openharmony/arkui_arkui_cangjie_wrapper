@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines Column attributes.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ColumnAttribute <: CommonMethod<ColumnAttribute> {
@@ -34,7 +34,7 @@ sealed interface ColumnAttribute <: CommonMethod<ColumnAttribute> {
      * @returns { ColumnAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignItems(value: ?HorizontalAlign): ColumnAttribute
@@ -46,7 +46,7 @@ sealed interface ColumnAttribute <: CommonMethod<ColumnAttribute> {
      * @returns { ColumnAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func justifyContent(value: ?FlexAlign): ColumnAttribute

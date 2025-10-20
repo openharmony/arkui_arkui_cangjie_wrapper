@@ -28,7 +28,7 @@ foreign func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
  * Defines Blank Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Blank <: CommonMethodComponent<Blank> & BlankAttribute {
@@ -39,7 +39,7 @@ public class Blank <: CommonMethodComponent<Blank> & BlankAttribute {
      * @param { ?Length } min
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(min!: ?Length = None) {
@@ -57,7 +57,7 @@ public class Blank <: CommonMethodComponent<Blank> & BlankAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {

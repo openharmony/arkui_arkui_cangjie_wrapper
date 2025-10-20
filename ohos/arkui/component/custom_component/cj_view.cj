@@ -185,7 +185,7 @@ protected class View <: CommonMethodComponent<View> & ViewAttribute {
  * ViewAttribute
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ViewAttribute <: CommonMethod<ViewAttribute> {}

@@ -29,7 +29,7 @@ foreign func FfiOHOSAceFrameworkEllipseCreate(width: Float64, widthUnit: Int32, 
  * Defines Ellipse Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Ellipse <: CommonShapeMethodComponent<Ellipse> & EllipseAttribute {
@@ -40,7 +40,7 @@ public class Ellipse <: CommonShapeMethodComponent<Ellipse> & EllipseAttribute {
      * @param { ?Length } height - Set Height.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {

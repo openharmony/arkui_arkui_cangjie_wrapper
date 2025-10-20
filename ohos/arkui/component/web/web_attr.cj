@@ -25,7 +25,7 @@ import ohos.web.webview.*
  * Defines Web Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface WebAttribute <: CommonMethod<WebAttribute> {
@@ -36,7 +36,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fileAccess(fileAccess: ?Bool): WebAttribute
@@ -48,7 +48,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func domStorageAccess(domStorageAccess: ?Bool): WebAttribute
@@ -60,7 +60,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func imageAccess(imageAccess: ?Bool): WebAttribute
@@ -72,7 +72,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onlineImageAccess(onlineImageAccess: ?Bool): WebAttribute
@@ -85,7 +85,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func mixedMode(mixedMode: ?MixedMode): WebAttribute
@@ -97,7 +97,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func zoomAccess(zoomAccess: ?Bool): WebAttribute
@@ -110,7 +110,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func geolocationAccess(geolocationAccess: ?Bool): WebAttribute
@@ -122,7 +122,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func verticalScrollBarAccess(verticalScrollBar: ?Bool): WebAttribute
@@ -134,7 +134,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func nestedScroll(
@@ -150,7 +150,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @throws { BusinessException } 190002 - The callback function is invalid.
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onLoadIntercept(callback: ?Callback<OnLoadInterceptEvent, Bool>): WebAttribute
@@ -162,7 +162,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPageBegin(callback: ?Callback<OnPageBeginEvent, Unit>): WebAttribute
@@ -174,7 +174,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPageEnd(callback: ?Callback<OnPageEndEvent, Unit>): WebAttribute
@@ -189,7 +189,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func javaScriptProxy(funcList!: ?Array<(String) -> String>, name!: ?String, methodList!: ?Array<String>,
@@ -205,7 +205,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func darkMode(mode: ?WebDarkMode): WebAttribute
@@ -218,7 +218,7 @@ sealed interface WebAttribute <: CommonMethod<WebAttribute> {
     * @returns { WebAttribute }
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func forceDarkAccess(access: ?Bool): WebAttribute

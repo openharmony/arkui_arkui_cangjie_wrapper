@@ -23,7 +23,7 @@ import ohos.labels.APILevel
  * Defines Circle attributes.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface CircleAttribute <: CommonShapeMethod<CircleAttribute> {}

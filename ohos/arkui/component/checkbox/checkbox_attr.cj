@@ -23,7 +23,7 @@ import ohos.base.*
  * Defines Checkbox attributes.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
@@ -34,7 +34,7 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
      * @returns { CheckboxAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func select(value: ?Bool): CheckboxAttribute
@@ -46,7 +46,7 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
      * @returns { CheckboxAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedColor(value: ?ResourceColor): CheckboxAttribute
@@ -59,7 +59,7 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
      * @returns { CheckboxAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?OnCheckboxChangeCallback): CheckboxAttribute
@@ -71,7 +71,7 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
      * @returns { CheckboxAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func shape(value: ?CheckBoxShape): CheckboxAttribute

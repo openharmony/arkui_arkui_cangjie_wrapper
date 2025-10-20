@@ -24,7 +24,7 @@ import ohos.base.*
  * Defines the Gauge attributes.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
@@ -35,7 +35,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
      * @returns { GaugeAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func value(value: ?Float32): GaugeAttribute
@@ -47,7 +47,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
      * @returns { GaugeAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func startAngle(angle: ?Float64): GaugeAttribute
@@ -59,7 +59,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
      * @returns { GaugeAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func endAngle(angle: ?Float64): GaugeAttribute
@@ -71,7 +71,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
      * @returns { GaugeAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func colors(value: ?Array<(ResourceColor, Float32)>): GaugeAttribute
@@ -83,7 +83,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
      * @returns { GaugeAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func colors(value: ?Array<(LinearGradient, Float32)>): GaugeAttribute
@@ -95,7 +95,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
      * @returns { GaugeAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func colors(value: ?ResourceColor): GaugeAttribute
@@ -107,7 +107,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
      * @returns { GaugeAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func colors(value: ?LinearGradient): GaugeAttribute
@@ -119,7 +119,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
      * @returns { GaugeAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeWidth(length: ?Length): GaugeAttribute
@@ -133,7 +133,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
      * @returns { GaugeAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func trackShadow(radius!: ?Float64, offsetX!: ?Float64, offsetY!: ?Float64): GaugeAttribute
@@ -146,7 +146,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
      * @returns { GaugeAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func indicator(icon!: ?ResourceStr, space!: ?Length): GaugeAttribute
@@ -158,7 +158,7 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
      * @returns { GaugeAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func description(builder: ?() -> Unit): GaugeAttribute

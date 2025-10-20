@@ -96,7 +96,7 @@ class CallbackFFiCheckboxGroupResult <: BaseCallBack {
  * Defines the options of CheckboxGroupResult.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CheckboxGroupResult {
@@ -104,7 +104,7 @@ public class CheckboxGroupResult {
      * Set the group of status.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var status: SelectStatus
@@ -112,7 +112,7 @@ public class CheckboxGroupResult {
      * Checkbox name.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var name: Array<String>
@@ -124,7 +124,7 @@ public class CheckboxGroupResult {
      * @param { Array<String> } name
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -159,7 +159,7 @@ func parseCheckboxGroupResult(event: FFiCheckboxGroupResult): CheckboxGroupResul
  * Defines CheckboxGroup Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGroupAttribute {
@@ -169,7 +169,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
      * @param { ?String } group
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(group!: ?String = None) {
@@ -187,7 +187,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectAll(value: ?Bool): This {
@@ -204,7 +204,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
@@ -328,7 +328,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?OnCheckboxGroupChangeCallback): This {

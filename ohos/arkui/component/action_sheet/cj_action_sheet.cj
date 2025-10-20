@@ -138,7 +138,7 @@ struct NativeOptionConfirm {
  * The information of sheet.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SheetInfo {
@@ -146,7 +146,7 @@ public class SheetInfo {
      * Sheet text.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var title: ?ResourceStr
@@ -154,7 +154,7 @@ public class SheetInfo {
      * Callback when the sheet is selected.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var action: ?VoidCallback
@@ -162,7 +162,7 @@ public class SheetInfo {
      * Sheet icon. By default, no icon is displayed.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var icon: ?ResourceStr
@@ -174,7 +174,7 @@ public class SheetInfo {
      * @param { ?ResourceStr } icon - Sheet icon.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -206,7 +206,7 @@ public class SheetInfo {
  * Base button params used for ActionSheet.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ActionSheetButtonOptions {
@@ -214,7 +214,7 @@ public class ActionSheetButtonOptions {
      * Button text.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var value: ?ResourceStr
@@ -222,7 +222,7 @@ public class ActionSheetButtonOptions {
      * Callback invoked when the button is selected.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var action: ?VoidCallback
@@ -231,7 +231,7 @@ public class ActionSheetButtonOptions {
      * and false means the opposite.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enabled: ?Bool
@@ -240,7 +240,7 @@ public class ActionSheetButtonOptions {
      * and false means the opposite.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var defaultFocus: ?Bool
@@ -248,7 +248,7 @@ public class ActionSheetButtonOptions {
      * Button style.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var style: ?DialogButtonStyle
@@ -262,7 +262,7 @@ public class ActionSheetButtonOptions {
      * @param { ?DialogButtonStyle } style - Button style.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -296,7 +296,7 @@ public class ActionSheetButtonOptions {
  * Provides information about the action to dismiss the dialog box.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DismissDialogAction {
@@ -305,7 +305,7 @@ public class DismissDialogAction {
      * listed actions.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var reason: ?DismissReason
@@ -315,7 +315,7 @@ public class DismissDialogAction {
      * @param { ?DismissReason } reason - Reason why the dialog box cannot be dismissed.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(reason: ?DismissReason) {
@@ -325,7 +325,7 @@ public class DismissDialogAction {
      * Defines dialog dismiss function.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func dismiss(): Unit {
@@ -343,7 +343,7 @@ protected func parseToDismissDialogAction(reason: Int32): DismissDialogAction {
  * The options of ActionSheet.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ActionSheetOptions {
@@ -351,7 +351,7 @@ public class ActionSheetOptions {
      * Title of the dialog box.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var title: ?ResourceStr
@@ -359,7 +359,7 @@ public class ActionSheetOptions {
      * Content of the dialog box.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var message: ?ResourceStr
@@ -367,7 +367,7 @@ public class ActionSheetOptions {
      * Options in the dialog box. Each option supports the image, text, and callback.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var sheets: ?Array<SheetInfo>
@@ -375,7 +375,7 @@ public class ActionSheetOptions {
      * Subtitle of the dialog box.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var subtitle: ?ResourceStr
@@ -385,7 +385,7 @@ public class ActionSheetOptions {
      * to respond automatically. The default response to the Enter key does not work when defaultFocus is set to true.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var confirm: ?ActionSheetButtonOptions
@@ -393,7 +393,7 @@ public class ActionSheetOptions {
      * Whether to close the dialog box when the overlay is clicked.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: ?Bool
@@ -402,7 +402,7 @@ public class ActionSheetOptions {
      * Anonymous Object Rectification.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cancel: ?VoidCallback
@@ -414,7 +414,7 @@ public class ActionSheetOptions {
      * </p>
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var alignment: ?DialogAlignment
@@ -424,7 +424,7 @@ public class ActionSheetOptions {
      * <br>When alignment is set to any other value: dx: 0,dy: -40.vp
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?ActionSheetOffset
@@ -436,7 +436,7 @@ public class ActionSheetOptions {
      * </p>
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskRect: ?Rectangle
@@ -448,7 +448,7 @@ public class ActionSheetOptions {
      * </p>
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: ?Bool
@@ -456,7 +456,7 @@ public class ActionSheetOptions {
      * Whether the dialog box is a modal. A modal dialog box has a mask applied, while a non-modal dialog box does not.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isModal: ?Bool
@@ -468,7 +468,7 @@ public class ActionSheetOptions {
      * </p>
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -481,7 +481,7 @@ public class ActionSheetOptions {
      * </p>
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -496,7 +496,7 @@ public class ActionSheetOptions {
      * </p>
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
@@ -508,7 +508,7 @@ public class ActionSheetOptions {
      * parent component's width or height.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cornerRadius: ?BorderRadiuses
@@ -520,7 +520,7 @@ public class ActionSheetOptions {
      * than its height, the dialog box may not display as expected.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: ?Length
@@ -532,7 +532,7 @@ public class ActionSheetOptions {
      * </p>
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: ?ResourceColor
@@ -540,7 +540,7 @@ public class ActionSheetOptions {
      * Border style of the dialog box.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderStyle: ?EdgeStyles
@@ -551,7 +551,7 @@ public class ActionSheetOptions {
      * where the dialog box is located. You can decrease or increase the width as needed.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
@@ -562,7 +562,7 @@ public class ActionSheetOptions {
      * window where the dialog box is located minus the safe area. You can decrease or increase the height as needed.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Length
@@ -570,7 +570,7 @@ public class ActionSheetOptions {
      * Shadow of the dialog box.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowOptions
@@ -585,7 +585,7 @@ public class ActionSheetOptions {
      * </p>
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: ?TransitionEffect
@@ -616,7 +616,7 @@ public class ActionSheetOptions {
      * @param { ?TransitionEffect } transition - Transition effect for the entrance and exit of the dialog box.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -772,7 +772,7 @@ public class ActionSheetOptions {
  * ActionSheet offset.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ActionSheetOffset {
@@ -780,7 +780,7 @@ public class ActionSheetOffset {
      * Offset of the action sheet along the x-axis relative to the alignment position.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dx: ?Length
@@ -788,7 +788,7 @@ public class ActionSheetOffset {
      * Offset of the action sheet along the y-axis relative to the alignment position.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dy: ?Length
@@ -799,7 +799,7 @@ public class ActionSheetOffset {
      * @param { ?Length } dy - Offset of the action sheet along the y-axis relative to the alignment position.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(

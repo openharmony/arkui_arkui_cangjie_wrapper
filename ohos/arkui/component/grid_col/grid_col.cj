@@ -42,7 +42,7 @@ struct NativeGridColColumnOption {
  * Defines the option in number unit of grid-container child component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GridColOptions {
@@ -50,7 +50,7 @@ public class GridColOptions {
      * Grid Col Column Option xs.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xs: ?Int32
@@ -59,7 +59,7 @@ public class GridColOptions {
      * Grid Col Column Option sm.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var sm: ?Int32
@@ -68,7 +68,7 @@ public class GridColOptions {
      * Grid Col Column Option md.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var md: ?Int32
@@ -77,7 +77,7 @@ public class GridColOptions {
      * Grid Col Column Option lg.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var lg: ?Int32
@@ -86,7 +86,7 @@ public class GridColOptions {
      * Grid Col Column Option xl.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xl: ?Int32
@@ -95,7 +95,7 @@ public class GridColOptions {
      * Grid Col Column Option xxl.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xxl: ?Int32
@@ -111,7 +111,7 @@ public class GridColOptions {
      * @param { ?Int32 } xxl - Grid Col Column Option xxl.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -136,7 +136,7 @@ public class GridColOptions {
     * @param { ?Int32 } value
     */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?Int32) {
@@ -179,7 +179,7 @@ foreign {
  * Defines GridCol Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
@@ -192,7 +192,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @param { () -> Unit } child - The child component of GridCol.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(span!: ?Int32 = None, offset!: ?Int32 = None, order!: ?Int32 = None, child!: () -> Unit = {=>}) {
@@ -211,7 +211,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @param { () -> Unit } child - The child component of GridCol.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -236,7 +236,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func span(value: ?Int32): This {
@@ -253,7 +253,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func span(value: ?GridColOptions): This {
@@ -271,7 +271,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func gridColOffset(value: ?Int32): This {
@@ -288,7 +288,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func gridColOffset(value: ?GridColOptions): This {
@@ -306,7 +306,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func order(value: ?Int32): This {
@@ -323,7 +323,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func order(value: ?GridColOptions): This {

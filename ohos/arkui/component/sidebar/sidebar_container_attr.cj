@@ -24,7 +24,7 @@ import ohos.resource.*
  * Defines SideBarContainer Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttribute> {
@@ -35,7 +35,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func showSideBar(value: ?Bool): SideBarContainerAttribute
@@ -47,7 +47,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func controlButton(value: ?ButtonStyle): SideBarContainerAttribute
@@ -59,7 +59,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func showControlButton(value: ?Bool): SideBarContainerAttribute
@@ -71,7 +71,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(Bool) -> Unit): SideBarContainerAttribute
@@ -83,7 +83,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sideBarWidth(value: ?Length): SideBarContainerAttribute
@@ -95,7 +95,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func minSideBarWidth(value: ?Length): SideBarContainerAttribute
@@ -107,7 +107,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func maxSideBarWidth(value: ?Length): SideBarContainerAttribute
@@ -119,7 +119,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func autoHide(value: ?Bool): SideBarContainerAttribute
@@ -131,7 +131,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sideBarPosition(value: ?SideBarPosition): SideBarContainerAttribute
@@ -143,7 +143,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func divider(value: ?DividerStyle): SideBarContainerAttribute
@@ -155,7 +155,7 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func minContentWidth(value: ?Length): SideBarContainerAttribute

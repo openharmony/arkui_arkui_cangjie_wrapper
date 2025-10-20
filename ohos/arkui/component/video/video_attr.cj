@@ -25,7 +25,7 @@ import ohos.resource.*
  *
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
@@ -36,7 +36,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func muted(value: ?Bool): VideoAttribute
@@ -48,7 +48,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func autoPlay(value: ?Bool): VideoAttribute
@@ -60,7 +60,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func controls(value: ?Bool): VideoAttribute
@@ -72,7 +72,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func objectFit(value: ?ImageFit): VideoAttribute
@@ -84,7 +84,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func loop(value: ?Bool): VideoAttribute
@@ -97,7 +97,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onStart(event: ?VoidCallback): VideoAttribute
@@ -110,7 +110,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPause(event: ?VoidCallback): VideoAttribute
@@ -123,7 +123,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onFinish(event: ?VoidCallback): VideoAttribute
@@ -135,7 +135,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onError(event: ?VoidCallback): VideoAttribute
@@ -148,7 +148,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPrepared(callback: ?Callback<PreparedInfo, Unit>): VideoAttribute
@@ -161,7 +161,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onSeeking(callback: ?Callback<PlaybackInfo, Unit>): VideoAttribute
@@ -174,7 +174,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onSeeked(callback: ?Callback<PlaybackInfo, Unit>): VideoAttribute
@@ -187,7 +187,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onUpdate(callback: ?Callback<PlaybackInfo, Unit>): VideoAttribute
@@ -200,7 +200,7 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
      * @returns { VideoAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onFullscreenChange(callback: ?Callback<FullscreenInfo, Unit>): VideoAttribute

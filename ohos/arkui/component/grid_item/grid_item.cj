@@ -46,7 +46,7 @@ foreign {
  * Defines GridItem Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
@@ -55,7 +55,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
      * Return to get GridItem.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -70,7 +70,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
      * @param { () -> Unit } child - The child component of GridItem.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -87,7 +87,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnStart(value: ?Int32): This {
@@ -104,7 +104,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnEnd(value: ?Int32): This {
@@ -121,7 +121,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowStart(value: ?Int32): This {
@@ -138,7 +138,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
      * @returns { This }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowEnd(value: ?Int32): This {

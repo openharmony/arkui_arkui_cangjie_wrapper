@@ -37,7 +37,7 @@ foreign {
  * non-public API
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class If <: UINodeBase {
@@ -49,7 +49,7 @@ public class If <: UINodeBase {
      * @param { () -> Unit } subcomponent
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(subcomponent: () -> Unit) {
@@ -66,7 +66,7 @@ public class If <: UINodeBase {
      * @param { Int32 } value - branchId
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func branchId(value: Int32): Unit {
@@ -81,7 +81,7 @@ public class If <: UINodeBase {
      * @returns { Int32 } branchId.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getBranchId(): Int32 {

@@ -27,7 +27,7 @@ import ohos.business_exception.BusinessException
  * UI state of app-wide access and same life cycle as the app.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AppStorage {
@@ -53,7 +53,7 @@ public class AppStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func link<T>(propName: String): ?ObservedProperty<T> {
@@ -71,7 +71,7 @@ public class AppStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func setAndLink<T>(propName: String, defaultValue: T): ObservedProperty<T> {
@@ -86,7 +86,7 @@ public class AppStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func `prop`<T>(propName: String): ?ObservedProperty<T> {
@@ -103,7 +103,7 @@ public class AppStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func setAndProp<T>(propName: String, defaultValue: T): ObservedProperty<T> {
@@ -121,7 +121,7 @@ public class AppStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func has(propName: String): Bool {
@@ -137,7 +137,7 @@ public class AppStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func get<T>(propName: String): ?T {
@@ -155,7 +155,7 @@ public class AppStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func set<T>(propName: String, newValue: T): Bool {
@@ -173,7 +173,7 @@ public class AppStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func setOrCreate<T>(propName: String, newValue: T): Unit {
@@ -200,7 +200,7 @@ public class AppStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func delete(propName: String): Bool {
@@ -216,7 +216,7 @@ public class AppStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func keys(): EquatableCollection<String> {
@@ -230,7 +230,7 @@ public class AppStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func size(): Int64 {
@@ -245,7 +245,7 @@ public class AppStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func clear(): Bool {

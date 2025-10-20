@@ -24,7 +24,7 @@ import ohos.base.*
  *
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
@@ -37,7 +37,7 @@ sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
      * @returns { TextPickerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func defaultPickerItemHeight(value: ?Length): TextPickerAttribute
@@ -49,7 +49,7 @@ sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
      * @returns { TextPickerAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func canLoop(value: ?Bool): TextPickerAttribute
@@ -65,7 +65,7 @@ sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?OnTextPickerChangeCallback): TextPickerAttribute

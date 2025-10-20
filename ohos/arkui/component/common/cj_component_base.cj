@@ -24,7 +24,7 @@ import ohos.ffi.*
  * Defines the base type of Component.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class UINodeBase <: RemoteData {

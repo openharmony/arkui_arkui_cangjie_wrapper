@@ -26,7 +26,7 @@ import ohos.resource.*
  *
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
@@ -37,7 +37,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func enterKeyType(value: ?EnterKeyType): TextInputAttribute
@@ -55,7 +55,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textAlign(value: ?TextAlign): TextInputAttribute
@@ -67,7 +67,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func placeholderColor(value: ?ResourceColor): TextInputAttribute
@@ -79,7 +79,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func caretColor(value: ?ResourceColor): TextInputAttribute
@@ -94,7 +94,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func placeholderFont(size!: ?Length, weight!: ?FontWeight, family!: ?String,
@@ -107,7 +107,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func maxLength(value: ?UInt32): TextInputAttribute
@@ -123,7 +123,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontSize(value: ?Length): TextInputAttribute
@@ -134,7 +134,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(value: ?ResourceColor): TextInputAttribute
@@ -146,7 +146,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontWeight(value: ?FontWeight): TextInputAttribute
@@ -158,7 +158,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontStyle(value: ?FontStyle): TextInputAttribute
@@ -173,7 +173,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontFamily(value: ?ResourceStr): TextInputAttribute
@@ -186,7 +186,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func inputFilter(value: ?ResourceStr, error!: ?(String) -> Unit): TextInputAttribute
@@ -198,7 +198,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onSubmit(callback: ?(EnterKeyType) -> Unit): TextInputAttribute
@@ -210,7 +210,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onCopy(callback: ?(String) -> Unit): TextInputAttribute
@@ -222,7 +222,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onCut(callback: ?(String) -> Unit): TextInputAttribute
@@ -234,7 +234,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(String) -> Unit): TextInputAttribute
@@ -246,7 +246,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPaste(callback: ?(String) -> Unit): TextInputAttribute
@@ -258,7 +258,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onEditChange(callback: ?(Bool) -> Unit): TextInputAttribute
@@ -271,7 +271,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func customKeyboard(value: ?CustomBuilder, supportAvoidance!: ?Bool): TextInputAttribute
@@ -283,7 +283,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func style(value: ?TextInputStyle): TextInputAttribute
@@ -296,7 +296,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func enableKeyboardOnFocus(value: ?Bool): TextInputAttribute
@@ -308,7 +308,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectionMenuHidden(value: ?Bool): TextInputAttribute
@@ -320,7 +320,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func showUnderline(value: ?Bool): TextInputAttribute
@@ -332,7 +332,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * @returns { TextInputAttribute }
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func maxLines(value: ?Int32): TextInputAttribute

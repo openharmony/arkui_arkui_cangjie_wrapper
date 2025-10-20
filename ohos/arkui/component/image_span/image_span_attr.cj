@@ -26,7 +26,7 @@ import ohos.multimedia.image.PixelMap
  * Defines ImageSpan Component instance.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
@@ -37,7 +37,7 @@ sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
      * @returns { ImageSpanAttribute } The attribute of the image span.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func verticalAlign(value: ?ImageSpanAlignment): ImageSpanAttribute
@@ -49,7 +49,7 @@ sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
      * @returns { ImageSpanAttribute } The attribute of the image span.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func objectFit(value: ?ImageFit): ImageSpanAttribute
@@ -61,7 +61,7 @@ sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
      * @returns { ImageSpanAttribute } The attribute of the image span.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func colorFilter(filter: ?ColorFilter): ImageSpanAttribute
@@ -74,7 +74,7 @@ sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
      * @returns { ImageSpanAttribute } The attribute of the image span.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onComplete(callback: ?ImageCompleteCallback): ImageSpanAttribute
@@ -87,7 +87,7 @@ sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
      * @returns { ImageSpanAttribute } The attribute of the image span.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onError(callback: ?ImageErrorCallback): ImageSpanAttribute

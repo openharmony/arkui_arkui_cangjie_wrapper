@@ -22,7 +22,7 @@ import std.collection.*
  * Defines interface Observer.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface Observer {
@@ -33,7 +33,7 @@ public interface Observer {
      * @param { ArrayList<Int64> } dependentElmtIds - List of element IDs that depend on this state.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onStateUpdate(info: String, dependentElmtIds: ArrayList<Int64>): Unit
@@ -44,7 +44,7 @@ public interface Observer {
      * @param { String } info - Information about the property being read.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func notifyRead(info: String): Unit
@@ -55,7 +55,7 @@ public interface Observer {
      * @returns { Int64 } The unique identifier.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func id(): Int64
@@ -64,7 +64,7 @@ public interface Observer {
      * Prepares the observer for deletion, cleaning up any resources.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func aboutToBeDeleted(): Unit

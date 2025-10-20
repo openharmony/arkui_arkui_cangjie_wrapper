@@ -24,7 +24,7 @@ import std.collection.*
  * Defines class ObservedPropertyAbstract.
  */
 @!APILevel[
-    since:"22",
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ObservedPropertyAbstract <: Observable {
@@ -37,7 +37,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
      * @param { String } info
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(info: String) {
@@ -54,7 +54,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
      * @param { Observer } observer - The observer to subscribe.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func subscribeEx(observer: Observer): Unit
@@ -65,7 +65,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
      * @param { Observer } observer - The observer to unsubscribe.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func unsubscribeEx(observer: Observer): Unit
@@ -89,7 +89,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
      * @param { Int64 } rmElmtId - The element ID to remove dependency on.
      */
     @!APILevel[
-        since:"22",
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func purgeDependencyOnElmtId(rmElmtId: Int64): Unit {
