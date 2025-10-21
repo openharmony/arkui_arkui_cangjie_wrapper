@@ -1367,7 +1367,7 @@ public class SpringBackAction {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func springBack() {
+    public func springBack(): Unit {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSpringBack()
         }

@@ -93,7 +93,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func aboutToIMEInput(callback: ?Callback<RichEditorInsertValue, Bool>): RichEditorAttribute
+    func aboutToImeInput(callback: ?Callback<RichEditorInsertValue, Bool>): RichEditorAttribute
 
     /**
      * Get text value information when completed input.
@@ -105,7 +105,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func onIMEInputComplete(callback: ?Callback<RichEditorTextSpanResult, Unit>): RichEditor
+    func onImeInputComplete(callback: ?Callback<RichEditorTextSpanResult, Unit>): RichEditor
 
     /**
      * Notify that the deletion has been completed.

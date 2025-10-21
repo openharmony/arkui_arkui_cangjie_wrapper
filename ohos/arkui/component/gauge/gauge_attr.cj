@@ -31,14 +31,14 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Sets the value for the current profile.
      *
-     * @param { ?Float32 } value
+     * @param { ?Float64 } value
      * @returns { GaugeAttribute }
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func value(value: ?Float32): GaugeAttribute
+    func value(value: ?Float64): GaugeAttribute
 
     /**
      * Set the start angle. Clock 0 is 0 degrees and clockwise is positive.
@@ -67,26 +67,26 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Sets the end angle position. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @param { ?Array<(ResourceColor, Float32)> } angle
+     * @param { ?Array<(ResourceColor, Int32)> } angle
      * @returns { GaugeAttribute }
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func colors(value: ?Array<(ResourceColor, Float32)>): GaugeAttribute
+    func colors(value: ?Array<(ResourceColor, Int32)>): GaugeAttribute
 
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { ?Array<(LinearGradient, Float32)> } value
+     * @param { ?Array<(LinearGradient, Int32)> } value
      * @returns { GaugeAttribute }
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func colors(value: ?Array<(LinearGradient, Float32)>): GaugeAttribute
+    func colors(value: ?Array<(LinearGradient, Int32)>): GaugeAttribute
 
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.

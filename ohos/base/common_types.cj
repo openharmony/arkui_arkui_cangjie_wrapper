@@ -21,6 +21,8 @@ import ohos.labels.APILevel
 
 foreign func free(src: CString): Unit
 
+foreign func FfiOHOSAceFrameworkCanIUse(syscap: CString): Bool
+
 @C
 protected struct ExternalString {
     let value_: CString
@@ -152,4 +154,24 @@ protected struct NativeOptionCArrInt32 {
         protected let hasValue: Bool,
         protected let value: CArrInt32
     ) {}
+}
+
+/**
+ * Define syscap function.
+ *
+ * @param { String } syscap - System Capability to be determined
+ * @returns { Bool } - True if the system capability is available, false otherwise
+ */
+@!APILevel[
+    22,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public func canIUse(syscap: String): Bool {
+    var ret: Bool = false
+    unsafe {
+        try(syscapStr = LibC.mallocCString(syscap).asResource()) {
+            ret = FfiOHOSAceFrameworkCanIUse(syscapStr.value)
+        }
+    }
+    return ret
 }

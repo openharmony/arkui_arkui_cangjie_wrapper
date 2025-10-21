@@ -155,16 +155,16 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets the value for the current profile.
      *
-     * @param { ?Float32 } value
+     * @param { ?Float64 } value
      * @returns { This }
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func value(value: ?Float32): This {
+    public func value(value: ?Float64): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetValue(Float64(value ?? 0.0))
+            FfiOHOSAceFrameworkGaugeSetValue(value ?? 0.0)
         }
         this
     }
@@ -206,23 +206,23 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { ?Array<(ResourceColor, Float32)> } value
+     * @param { ?Array<(ResourceColor, Int32)> } value
      * @returns { This }
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(value: ?Array<(ResourceColor, Float32)>): This {
+    public func colors(value: ?Array<(ResourceColor, Int32)>): This {
         let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         let colors = FFIVectorUInt32(tmpValue.size)
         let weights = FFIVectorFloat32(tmpValue.size)
         for (i in 0..tmpValue.size) {
             colors.setElement(i, transAppResourceToResourceColor(tmpValue[i][0]))
-            if (tmpValue[i][1] < 0.0) {
+            if (tmpValue[i][1] < 0) {
                 weights.setElement(i, 0.0)
             } else {
-                weights.setElement(i, tmpValue[i][1])
+                weights.setElement(i, Float32(tmpValue[i][1]))
             }
         }
         unsafe {
@@ -236,14 +236,14 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { ?Array<(LinearGradient, Float32)> } value
+     * @param { ?Array<(LinearGradient, Int32)> } value
      * @returns { This }
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func colors(value: ?Array<(LinearGradient, Float32)>): This {
+    public func colors(value: ?Array<(LinearGradient, Int32)>): This {
         let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
         var maxSize = tmpValue.size;
         if (maxSize > 9) {
@@ -264,10 +264,10 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
                 }
             }
             vecValueHandle.setElement(i, vecColorStop.getNativeHandle())
-            if (tmpValue[i][1] < 0.0) {
+            if (tmpValue[i][1] < 0) {
                 weights.setElement(i, 0.0)
             } else {
-                weights.setElement(i, tmpValue[i][1])
+                weights.setElement(i, Float32(tmpValue[i][1]))
             }
         }
         unsafe {
@@ -290,7 +290,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     ]
     public func colors(value: ?ResourceColor): This {
         let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let array: Array<(ResourceColor, Float32)> = [(tmpValue, 1.0)]
+        let array: Array<(ResourceColor, Int32)> = [(tmpValue, 1)]
         colors(array)
         this
     }
@@ -307,7 +307,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     ]
     public func colors(value: ?LinearGradient): This {
         let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
-        let array: Array<(LinearGradient, Float32)> = [(tmpValue, 1.0)]
+        let array: Array<(LinearGradient, Int32)> = [(tmpValue, 1)]
         colors(array)
         this
     }

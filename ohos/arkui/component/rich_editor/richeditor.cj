@@ -1188,7 +1188,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func aboutToIMEInput(callback: ?Callback<RichEditorInsertValue, Bool>): This {
+    public func aboutToImeInput(callback: ?Callback<RichEditorInsertValue, Bool>): This {
         let tmpCallback = callback ?? { _ => false }
         let wrapper = {
             value: NativeRichEditorInsertValue => tmpCallback(RichEditorInsertValue(value))
@@ -1210,7 +1210,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onIMEInputComplete(callback: ?Callback<RichEditorTextSpanResult, Unit>): RichEditor {
+    public func onImeInputComplete(callback: ?Callback<RichEditorTextSpanResult, Unit>): RichEditor {
         let tmpCallback = callback ?? { _ => false }
         let wrapper = {
             value: NativeRichEditorTextSpanResult => tmpCallback(parseNativeRichEditorTextSpanResult(value))

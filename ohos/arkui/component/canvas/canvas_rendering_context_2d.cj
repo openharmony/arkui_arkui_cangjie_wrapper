@@ -715,8 +715,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setLineDash(dashArr: ?Array<Float64>): Unit {
-        let tmpDashArr = dashArr ?? []
+    public func setLineDash(segments: ?Array<Float64>): Unit {
+        let tmpDashArr = segments ?? []
         let vecFFi = FFIVectorFloat64(tmpDashArr.size)
         var index = 0
         for (i in tmpDashArr) {
@@ -1134,9 +1134,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func stroke(path2D: Path2D): Unit {
+    public func stroke(path: Path2D): Unit {
         unsafe {
-            FfiOHOSAceFrameworkRenderingContextStrokeWithPath(this.getID(), path2D.getID())
+            FfiOHOSAceFrameworkRenderingContextStrokeWithPath(this.getID(), path.getID())
         }
     }
 

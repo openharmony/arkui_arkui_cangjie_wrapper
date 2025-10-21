@@ -214,7 +214,7 @@ public class Environment {
 
     private func innerEnvProp<T>(key: String, value: T): Bool {
         unsafe {
-            var propVal = AppStorage.`prop`<T>(key)
+            var propVal = AppStorage.property<T>(key)
             if (!propVal.isNone()) {
                 return false
             }
