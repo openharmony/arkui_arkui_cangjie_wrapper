@@ -220,7 +220,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /*
      * Trigger a visible area change event.
      *
-     * @param { ?Array<Float64> } raitos
+     * @param { ?Array<Float64> } ratios
      * @param { ?(Bool, Float64) -> Unit } event
      * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
@@ -230,19 +230,19 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onVisibleAreaChange(raitos: ?Array<Float64>, event: ?(Bool, Float64) -> Unit): T {
-        onVisibleAreaChangeInner(raitos, event)
+    public func onVisibleAreaChange(ratios: ?Array<Float64>, event: ?(Bool, Float64) -> Unit): T {
+        onVisibleAreaChangeInner(ratios, event)
     }
 
-    protected open func onVisibleAreaChangeInner(raitos: ?Array<Float64>, callback: ?(Bool, Float64) -> Unit): T {
-        let tmpRaitos = raitos ?? [0.0, 1.0]
+    protected open func onVisibleAreaChangeInner(ratios: ?Array<Float64>, callback: ?(Bool, Float64) -> Unit): T {
+        let tmpRatios = ratios ?? [0.0, 1.0]
         let tmpCallback = callback ?? { _: Bool, _: Float64 => }
         let wrapper = {
             isVisible: Bool, currentRatio: Float64 => tmpCallback(isVisible, currentRatio)
         }
-        let valuesHandle = FFIVectorFloat64(tmpRaitos.size)
-        for (i in 0..tmpRaitos.size) {
-            valuesHandle.setElement(i, tmpRaitos[i])
+        let valuesHandle = FFIVectorFloat64(tmpRatios.size)
+        for (i in 0..tmpRatios.size) {
+            valuesHandle.setElement(i, tmpRatios[i])
         }
         unsafe {
             FfiOHOSAceFrameworkInteractableViewOnVisibleAreaChange(valuesHandle.getNativeHandle(),
@@ -496,7 +496,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      *
      * @param { ?(DragInfo) -> Unit } event
      * @returns { T }
-     * @throws { BusinessException } 100001 - Internal error.     
+     * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
@@ -598,7 +598,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
 
     protected open func widthInner(value: ?Length): T {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let val = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkViewAbstractSetWidth(val.value, val.unitType.getValue())
@@ -628,7 +628,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
 
     protected open func heightInner(value: ?Length): T {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let val = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkViewAbstractSetHeight(val.value, val.unitType.getValue())
@@ -1325,7 +1325,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBorderWidthWithCJEdge(
                 CJEdge((tmpedgeWidths.top ?? 0.vp).value, (tmpedgeWidths.top ?? 0.vp).unitType.getValue(), (tmpedgeWidths.right ?? 0.vp).value,
-                    (tmpedgeWidths.right ?? 0.vp).unitType.getValue(), (tmpedgeWidths.bottom ?? 0.vp).value, (tmpedgeWidths.bottom ?? 0.vp).unitType.getValue(), 
+                    (tmpedgeWidths.right ?? 0.vp).unitType.getValue(), (tmpedgeWidths.bottom ?? 0.vp).value, (tmpedgeWidths.bottom ?? 0.vp).unitType.getValue(),
                     (tmpedgeWidths.left ?? 0.vp).value, (tmpedgeWidths.left ?? 0.vp).unitType.getValue()))
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
@@ -1530,7 +1530,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
 
     protected open func foregroundColorInner(value: ?ColoringStrategy): T {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     try (strategy = LibC.mallocCString(v.getValue()).asResource()) {
                         FfiOHOSAceFrameworkViewAbstractSetForegroundColor(strategy.value)
@@ -1710,7 +1710,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
 
     protected open func backgroundImagePositionInner(value: ?Alignment): T {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     FfiOHOSAceFrameworkViewAbstractSetBackgroundImagePositionAlign(v.getValue())
                 }
@@ -1777,10 +1777,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Set component rotation.
      *
-     * @param { ?Float32 } x
-     * @param { ?Float32 } y
-     * @param { ?Float32 } z
-     * @param { ?Float32 } angle
+     * @param { ?Float64 } x
+     * @param { ?Float64 } y
+     * @param { ?Float64 } z
+     * @param { ?Float64 } angle
      * @param { ?Length } centerX
      * @param { ?Length } centerY
      * @returns { T }
@@ -1790,17 +1790,18 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func rotate(x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, angle!: ?Float32 = None,
+    public func rotate(x!: ?Float64 = None, y!: ?Float64 = None, z!: ?Float64 = None, angle!: ?Float64 = None,
         centerX!: ?Length = None, centerY!: ?Length = None): T {
         rotateInner(x ?? 0.0, y ?? 0.0, z ?? 1.0, angle ?? 0.0, centerX ?? 50.percent, centerY ?? 50.percent)
     }
 
-    protected open func rotateInner(x: Float32, y: Float32, z: Float32, angle: Float32, centerX: Length, centerY: Length): T {
+    protected open func rotateInner(x: Float64, y: Float64, z: Float64, angle: Float64, centerX: Length, centerY: Length): T {
         var cx = transAppResourceToLength(centerX)
         var cy = transAppResourceToLength(centerY)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetRotate(
-                CJSetRotate(x, y, z, angle, cx.value, cx.unitType.getValue(), cy.value, cy.unitType.getValue()))
+                CJSetRotate(Float32(x), Float32(y), Float32(z), Float32(angle),
+                    cx.value, cx.unitType.getValue(), cy.value, cy.unitType.getValue()))
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
@@ -1887,7 +1888,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
                     tmpOptions.delay ?? 0,
                     tmpOptions.zIndex ?? 0,
                     unsafeCurve.value,
-                    CJMotionPathOptions(unsafeMotionPath.value, (tmpOptions.motionPath ?? MotionPathOptions(path: "")).from ?? 0.0, 
+                    CJMotionPathOptions(unsafeMotionPath.value, (tmpOptions.motionPath ?? MotionPathOptions(path: "")).from ?? 0.0,
                     (tmpOptions.motionPath ?? MotionPathOptions(path: "")).to ?? 1.0, (tmpOptions.motionPath ?? MotionPathOptions(path: "")).rotatable ?? false),
                     (tmpOptions.effectType ?? SharedTransitionEffectType.Exchange).getValue()
                 )
@@ -2482,7 +2483,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             }
             FfiOHOSAceFrameworkViewAbstractBindCustomPopupV2(
                 CJBindCustomPopupV2(show, Callback0Param<Unit>(popup.builder).getID(), (popup.placement ?? Placement.Bottom).getValue(),
-                    (popup.maskColor ?? Color(0x1000000)).toUInt32(), (popup.backgroundColor ?? Color(0x1000000)).toUInt32(), popup.enableArrow ?? true, popup.autoCancel ?? true,
+                    Color(0x1000000).toUInt32(), (popup.backgroundColor ?? Color(0x1000000)).toUInt32(), popup.enableArrow ?? true, popup.autoCancel ?? true,
                     onStateChangeId, nativePopupColor, (popup.arrowOffset ?? 0.vp).value, (popup.arrowOffset ?? 0.vp).unitType.getValue(),
                     popup.showInSubWindow ?? false, nativeMask, (popup.targetSpace ?? 0.vp).value, (popup.targetSpace ?? 0.vp).unitType.getValue(),
                     ((popup.offset ?? Position(x: 0.0, y: 0.0)).x ?? 0.0).value, ((popup.offset ?? Position(x: 0.0, y: 0.0)).y ?? 0.0).value, (popup.width ?? 0.vp).value, (popup.width ?? 0.vp).unitType.getValue(),
@@ -2607,7 +2608,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
 
             let nativeMask = match (tmpPopup.mask) {
                 case Some(value) => value.toUInt32()
-                case None => (tmpPopup.maskColor ?? Color(0x1000000)).toUInt32()
+                case None => Color(0x1000000).toUInt32()
             }
             callFFIBindCustomPopup(tmpPopup, onStateChangeId, nativeOnWillDismiss, nativeTransition, nativePopupColor,
                 nativeMask, tmpShow)
@@ -2857,11 +2858,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>): T {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 keyboardShortcutInner(v, keys, action: Option.None)
             case None => keyboardShortcutInner("", keys, action: Option.None)
         }
-        
+
     }
 
     /**
@@ -2895,11 +2896,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>, action: ?() -> Unit): T {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 keyboardShortcutInner(v, keys, action: action)
             case None => keyboardShortcutInner("", keys, action: action)
         }
-        
+
     }
 
     /**

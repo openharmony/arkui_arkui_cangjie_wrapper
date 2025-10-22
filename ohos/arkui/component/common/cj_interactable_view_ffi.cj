@@ -65,7 +65,7 @@ foreign {
     func FfiOHOSAceFrameworkInteractableViewOnDragMove(callback: Int64, name: UInt32): Unit
     func FfiOHOSAceFrameworkInteractableViewOnDragLeave(callback: Int64, name: UInt32): Unit
     func FfiDragEventGetModifierKeyState(ptr: CPointer<Unit>, keys: VectorStringHandle): Bool
-    func FfiOHOSAceFrameworkInteractableViewOnVisibleAreaChange(raitosVals: VectorFloat64Handle, callback: Int64): Unit
+    func FfiOHOSAceFrameworkInteractableViewOnVisibleAreaChange(ratiosVals: VectorFloat64Handle, callback: Int64): Unit
     func FfiOHOSAceFrameworkViewAbstractSetOnGestureRecognizerJudgeBegin(elemId: Int64, exposeInnerGesture: Bool): Unit
 }
 

@@ -723,16 +723,6 @@ public class CustomPopupOptions {
     public var placement: ?Placement
 
     /**
-     * mask color of popup.
-     *
-     */
-    @!APILevel[
-        22,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var maskColor: ?ResourceColor
-
-    /**
      * backgroundColor of popup.
      *
      */
@@ -943,7 +933,6 @@ public class CustomPopupOptions {
      *
      * @param { () -> Unit } builder
      * @param { ?Placement } placement
-     * @param { ?Color } maskColor
      * @param { ?Color } backgroundColor
      * @param { ?Bool } enableArrow
      * @param { ?Bool } autoCancel
@@ -973,7 +962,6 @@ public class CustomPopupOptions {
     public init(
         builder!: () -> Unit,
         placement!: ?Placement = Option.None,
-        maskColor!: ?Color = None,
         popupColor!: ?Color = None,
         enableArrow!: ?Bool = None,
         autoCancel!: ?Bool = None,
@@ -998,7 +986,6 @@ public class CustomPopupOptions {
     ) {
         this.builder = builder
         this.placement = placement ?? Placement.Bottom
-        this.maskColor = maskColor ?? Color(0x1000000)
         this.popupColor = popupColor ?? Color(0x1000000)
         this.enableArrow = enableArrow ?? true
         this.autoCancel = autoCancel ?? true
@@ -1104,7 +1091,7 @@ public class OverlayOffset {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: ?Float64 = None, y!: ?Float64 = None) {        
+    public init(x!: ?Float64 = None, y!: ?Float64 = None) {
         this.x = x ?? 0.0
         this.y = y ?? 0.0
     }
@@ -1592,7 +1579,7 @@ public class SheetOptions <: BindOptions {
         mode!: Option<SheetMode> = None,
         scrollSizeMode!: Option<ScrollSizeMode> = None
     ) {
-        super(backgroundColor: backgroundColor ?? Color.White, onAppear: onAppear, onDisappear: onDisappear, onWillAppear: onWillAppear,	
+        super(backgroundColor: backgroundColor ?? Color.White, onAppear: onAppear, onDisappear: onDisappear, onWillAppear: onWillAppear,
             onWillDisappear: onWillDisappear)
         this.height = height
         this.detents = detents
@@ -1966,7 +1953,7 @@ public class ContextMenuOptions {
 
     /**
     * The preview content of context menu.
-    * 
+    *
     */
     @!APILevel[
         22,

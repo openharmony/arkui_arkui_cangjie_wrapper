@@ -386,7 +386,7 @@ public class AnimateParam {
     public var delay: ?Int32
     /**
      * Number of times that the animation is played. By default, the animation is played once.
-     * The value **-1** indicates that the animation is played for an unlimited number of times. 
+     * The value **-1** indicates that the animation is played for an unlimited number of times.
      * The value **0** indicates that there is no animation.
      */
     @!APILevel[
@@ -469,13 +469,13 @@ public class AnimateParam {
 }
 
 /**
- * Defines the HorizontalAlignment.
+ * Defines the HorizontalAlignParam.
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class HorizontalAlignment {
+public class HorizontalAlignParam {
     /**
      * ID of the component that functions as the anchor point.
      */
@@ -495,7 +495,7 @@ public class HorizontalAlignment {
     public var align: ?HorizontalAlign
 
     /**
-     * Defines the constructor of HorizontalAlignment.
+     * Defines the constructor of HorizontalAlignParam.
      *
      * @param { ?String } anchor
      * @param { ?HorizontalAlign } align
@@ -511,13 +511,13 @@ public class HorizontalAlignment {
 }
 
 /**
- * Defines the VerticalAlignment.
+ * Defines the VerticalAlignParam.
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class VerticalAlignment {
+public class VerticalAlignParam {
     /**
      * ID of the component that functions as the anchor point.
      */
@@ -537,7 +537,7 @@ public class VerticalAlignment {
     public var align: ?VerticalAlign
 
     /**
-     * Defines the constructor of VerticalAlignment.
+     * Defines the constructor of VerticalAlignParam.
      *
      * @param { ?String } anchor
      * @param { ?VerticalAlign } align
@@ -1162,7 +1162,7 @@ public class AlignRuleOptions {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var left: ?HorizontalAlignment
+    public var left: ?HorizontalAlignParam
 
     /**
      * Right alignment.
@@ -1173,7 +1173,7 @@ public class AlignRuleOptions {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var right: ?HorizontalAlignment
+    public var right: ?HorizontalAlignParam
 
     /**
      * Horizontal center alignment.
@@ -1184,7 +1184,7 @@ public class AlignRuleOptions {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var middle: ?HorizontalAlignment
+    public var middle: ?HorizontalAlignParam
 
     /**
      * Top alignment.
@@ -1195,7 +1195,7 @@ public class AlignRuleOptions {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var top: ?VerticalAlignment
+    public var top: ?VerticalAlignParam
 
     /**
      * Bottom alignment.
@@ -1206,7 +1206,7 @@ public class AlignRuleOptions {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var bottom: ?VerticalAlignment
+    public var bottom: ?VerticalAlignParam
 
     /**
      * Vertical center alignment.
@@ -1217,7 +1217,7 @@ public class AlignRuleOptions {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var center: ?VerticalAlignment
+    public var center: ?VerticalAlignParam
 
     /**
      * Offset of the component under the anchor constraints.
@@ -1232,21 +1232,21 @@ public class AlignRuleOptions {
     /**
      * Defines the constructor of AlignRuleOptions.
      *
-     * @param { ?HorizontalAlignment } left
-     * @param { ?HorizontalAlignment } right
-     * @param { ?HorizontalAlignment } middle
-     * @param { ?VerticalAlignment } top
-     * @param { ?VerticalAlignment } bottom
-     * @param { ?VerticalAlignment } center
+     * @param { ?HorizontalAlignParam } left
+     * @param { ?HorizontalAlignParam } right
+     * @param { ?HorizontalAlignParam } middle
+     * @param { ?VerticalAlignParam } top
+     * @param { ?VerticalAlignParam } bottom
+     * @param { ?VerticalAlignParam } center
      * @param { Bias } bias
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = None,
-        middle!: ?HorizontalAlignment = None, top!: ?VerticalAlignment = None,
-        bottom!: ?VerticalAlignment = None, center!: ?VerticalAlignment = None,
+    public init(left!: ?HorizontalAlignParam = None, right!: ?HorizontalAlignParam = None,
+        middle!: ?HorizontalAlignParam = None, top!: ?VerticalAlignParam = None,
+        bottom!: ?VerticalAlignParam = None, center!: ?VerticalAlignParam = None,
         bias!: ?Bias = None
     ) {
         this.left = left

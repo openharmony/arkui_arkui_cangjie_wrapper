@@ -104,7 +104,7 @@ public interface CommonMethod<T> {
     /*
      * Trigger a visible area change event.
      *
-     * @param { ?Array<Float64> } raitos
+     * @param { ?Array<Float64> } ratios
      * @param { ?(Bool, Float64) -> Unit } event
      * @returns { This }
      */
@@ -112,7 +112,7 @@ public interface CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func onVisibleAreaChange(raitos: ?Array<Float64>, event: ?(Bool, Float64) -> Unit): T
+    func onVisibleAreaChange(ratios: ?Array<Float64>, event: ?(Bool, Float64) -> Unit): T
 
     /*
      * Triggered when the component is clicked by a mouse button or the mouse pointer moves on the component.
@@ -855,10 +855,10 @@ public interface CommonMethod<T> {
     /**
      * Set component rotation.
      *
-     * @param { ?Float32 } x
-     * @param { ?Float32 } y
-     * @param { ?Float32 } z
-     * @param { ?Float32 } angle
+     * @param { ?Float64 } x
+     * @param { ?Float64 } y
+     * @param { ?Float64 } z
+     * @param { ?Float64 } angle
      * @param { ?Length } centerX
      * @param { ?Length } centerY
      * @returns { This }
@@ -867,7 +867,7 @@ public interface CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func rotate(x!: ?Float32, y!: ?Float32, z!: ?Float32, angle!: ?Float32,
+    func rotate(x!: ?Float64, y!: ?Float64, z!: ?Float64, angle!: ?Float64,
         centerX!: ?Length, centerY!: ?Length): T
 
     /**
@@ -1437,7 +1437,7 @@ public interface CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func transition(value: ?TransitionEffect): T
-    
+
     /**
      * Set the transition effect of component when it appears and disappears.
      *
