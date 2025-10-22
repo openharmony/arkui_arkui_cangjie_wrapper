@@ -32,7 +32,7 @@ protected struct FfiWebResourceRequest {
 @C
 protected struct FfiMapToCFFIArray {
     protected FfiMapToCFFIArray(
-        protected let size: Int64,
+        protected let size: IntNative,
         protected let key: CPointer<CPointer<UInt8>>,
         protected let value: CPointer<CPointer<UInt8>>
     ) {}

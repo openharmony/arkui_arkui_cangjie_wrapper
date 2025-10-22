@@ -150,31 +150,31 @@ public class ForEach<T> <: UINodeBase {
         }
         let diffArrFFi = setIdResultFFI.diffIndexArrayPtr
         let diffSize = diffArrFFi.size
-        let diffResult = ArrayList<Int64>(diffSize)
+        let diffResult = ArrayList<Int64>(Int64(diffSize))
         for (idx in 0..diffSize) {
             unsafe {
                 let buf = CPointer<Int64>(diffArrFFi.buffer)
-                diffResult.add(buf.read(idx))
+                diffResult.add(buf.read(Int64(idx)))
             }
         }
 
         let duplicateArrFFi = setIdResultFFI.duplicateIdsPtr
         let duplicateSize = duplicateArrFFi.size
-        let duplicateResult = ArrayList<Int64>(duplicateSize)
+        let duplicateResult = ArrayList<Int64>(Int64(duplicateSize))
         for (idx in 0..duplicateSize) {
             unsafe {
                 let buf = CPointer<Int64>(duplicateArrFFi.buffer)
-                duplicateResult.add(buf.read(idx))
+                duplicateResult.add(buf.read(Int64(idx)))
             }
         }
 
         let removedArrFFi = setIdResultFFI.removedChildElmtIdsPtr
         let removedSize = removedArrFFi.size
-        let removedResult = ArrayList<Int64>(removedSize)
+        let removedResult = ArrayList<Int64>(Int64(removedSize))
         for (idx in 0..removedSize) {
             unsafe {
                 let buf = CPointer<Int64>(removedArrFFi.buffer)
-                removedResult.add(buf.read(idx))
+                removedResult.add(buf.read(Int64(idx)))
             }
         }
 
