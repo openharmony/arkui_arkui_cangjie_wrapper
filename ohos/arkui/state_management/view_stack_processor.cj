@@ -19,7 +19,7 @@ package ohos.arkui.state_management
 
 import ohos.labels.APILevel
 
-foreign func FfiOHOSAceFrameworkAllocateNewElmetIdForNextComponent(): Int64
+foreign func FfiOHOSAceFrameworkAllocateNewElmetIdForNextComponent(): Int32
 
 foreign func FfiOHOSAceFrameworkStartGetAccessRecordingFor(elmtId: Int64): Unit
 
@@ -51,7 +51,7 @@ public class ViewStackProcessor {
     ]
     public static func AllocateNewElmetIdForNextComponent(): Int64 {
         unsafe {
-            FfiOHOSAceFrameworkAllocateNewElmetIdForNextComponent()
+            Int64(FfiOHOSAceFrameworkAllocateNewElmetIdForNextComponent())
         }
     }
     /**

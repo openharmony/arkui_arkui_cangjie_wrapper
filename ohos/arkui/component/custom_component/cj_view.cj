@@ -143,11 +143,11 @@ protected class View <: CommonMethodComponent<View> & ViewAttribute {
     protected func getDeletedElemtIds(): ArrayList<Int64> {
         let vecFFi = unsafe { FfiOHOSAceFrameworkViewGetDeletedElemtIds(getID()) }
         let size = vecFFi.size
-        var result = ArrayList<Int64>(size)
+        var result = ArrayList<Int64>(Int64(size))
         for (idx in 0..size) {
             unsafe {
                 let buf = CPointer<Int64>(vecFFi.buffer)
-                result.add(buf.read(idx))
+                result.add(buf.read(Int64(idx)))
             }
         }
 

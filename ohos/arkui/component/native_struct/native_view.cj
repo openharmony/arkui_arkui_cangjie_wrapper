@@ -146,7 +146,7 @@ protected struct CJResponseRegion {
 @C
 protected struct VectorToCFFIArray {
     protected VectorToCFFIArray(
-        protected let size: Int64,
+        protected let size: IntNative,
         protected let buffer: CPointer<Unit>,
         protected let free: CFunc<(CPointer<Unit>) -> Unit>
     ) {}

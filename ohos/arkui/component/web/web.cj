@@ -559,8 +559,8 @@ public class WebResourceRequest {
         var result = ArrayList<Header>()
         for (idx in 0..size) {
             unsafe {
-                let key = CString(CPointer<UInt8>(vecFFi.key.read(idx)))
-                let value = CString(CPointer<UInt8>(vecFFi.value.read(idx)))
+                let key = CString(CPointer<UInt8>(vecFFi.key.read(Int64(idx))))
+                let value = CString(CPointer<UInt8>(vecFFi.value.read(Int64(idx))))
                 try {
                     var kstr = key.toString()
                     var vstr = value.toString()
