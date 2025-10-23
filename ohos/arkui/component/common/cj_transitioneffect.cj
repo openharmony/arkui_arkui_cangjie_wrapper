@@ -236,7 +236,7 @@ public class RotateOptions {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var angle: ?Float32
+    public var angle: ?Float64
 
     /**
      * X coordinate of the rotation axis vector.
@@ -246,7 +246,7 @@ public class RotateOptions {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: ?Float32
+    public var x: ?Float64
 
     /**
      * Y coordinate of the rotation axis vector.
@@ -256,7 +256,7 @@ public class RotateOptions {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: ?Float32
+    public var y: ?Float64
 
     /**
      * Z coordinate of the rotation axis vector.
@@ -266,7 +266,7 @@ public class RotateOptions {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var z: ?Float32
+    public var z: ?Float64
 
     /**
      * X coordinate of the transformation center point (anchor). Unit is vp.
@@ -308,26 +308,26 @@ public class RotateOptions {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var perspective: ?Float32
+    public var perspective: ?Float64
 
     /**
      * RotateOptions constructor.
      *
-     * @param { ?Float32 } angle
-     * @param { ?Float32 } x
-     * @param { ?Float32 } y
-     * @param { ?Float32 } z
+     * @param { ?Float64 } angle
+     * @param { ?Float64 } x
+     * @param { ?Float64 } y
+     * @param { ?Float64 } z
      * @param { ?Length } centerX
      * @param { ?Length } centerY
      * @param { ?Length } centerZ
-     * @param { ?Float32 } perspective
+     * @param { ?Float64 } perspective
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(angle: ?Float32, x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, centerX!: ?Length = None,
-        centerY!: ?Length = None, centerZ!: ?Length = None, perspective!: ?Float32 = None) {
+    public init(angle: ?Float64, x!: ?Float64 = None, y!: ?Float64 = None, z!: ?Float64 = None, centerX!: ?Length = None,
+        centerY!: ?Length = None, centerZ!: ?Length = None, perspective!: ?Float64 = None) {
         this.angle = angle ?? 0.0
         this.x = x ?? 0.0
         this.y = y ?? 0.0
@@ -354,17 +354,17 @@ struct CRotateOptions {
     let perspective: Float32
 
     init(options: RotateOptions) {
-        angle = options.angle ?? 0.0
-        x = options.x ?? 0.0
-        y = options.y ?? 0.0
-        z = options.z ?? 0.0
+        angle = Float32(options.angle ?? 0.0)
+        x = Float32(options.x ?? 0.0)
+        y = Float32(options.y ?? 0.0)
+        z = Float32(options.z ?? 0.0)
         centerX = (options.centerX ?? 50.percent).value
         centerXType = UInt32((options.centerX ?? 50.percent).unitType.getValue())
         centerY = (options.centerY ?? 50.percent).value
         centerYType = UInt32((options.centerY ?? 50.percent).unitType.getValue())
         centerZ = (options.centerZ ?? 0).value
         centerZType = UInt32((options.centerZ ?? 0).unitType.getValue())
-        perspective = options.perspective ?? 0.0
+        perspective = Float32(options.perspective ?? 0.0)
     }
 }
 
@@ -610,7 +610,7 @@ public class TransitionEffect <: RemoteDataLite {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static let SLIDE: TransitionEffect = 
+    public static let SLIDE: TransitionEffect =
         TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.Start),
             TransitionEffect.move(TransitionEdge.End))
 

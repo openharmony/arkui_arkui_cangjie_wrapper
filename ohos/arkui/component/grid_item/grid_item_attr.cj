@@ -36,7 +36,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func columnStart(columnStart: ?Int32): GridItemAttribute
+    func columnStart(value: ?Int32): GridItemAttribute
 
     /**
      * This parameter specifies the end column number of the current element.
@@ -48,19 +48,19 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func columnEnd(columnEnd: ?Int32): GridItemAttribute
+    func columnEnd(value: ?Int32): GridItemAttribute
 
     /**
      * This parameter specifies the start line number of the current element.
      *
-     * @param { ?Int32 } rowStart
+     * @param { ?Int32 } value
      * @returns { GridItemAttribute }
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func rowStart(rowStart: ?Int32): GridItemAttribute
+    func rowStart(value: ?Int32): GridItemAttribute
 
     /**
      * Specifies the end line number of the current element.
@@ -72,5 +72,5 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func rowEnd(rowEnd: ?Int32): GridItemAttribute
+    func rowEnd(value: ?Int32): GridItemAttribute
 }

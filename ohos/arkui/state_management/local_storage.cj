@@ -243,7 +243,7 @@ public class LocalStorage {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func `prop`<T>(propName: String): ?ObservedProperty<T> {
+    public func property<T>(propName: String): ?ObservedProperty<T> {
         var p: Option<ObservedPropertyAbstract> = this.storage.get(propName)
         match (p) {
             case Some(v) => match (v as ObservedProperty<T>) {
@@ -273,7 +273,7 @@ public class LocalStorage {
             case None => this.setOrCreate(propName, defaultValue)
             case _ => ()
         }
-        return this.`prop`<T>(propName).getOrThrow({
+        return this.property<T>(propName).getOrThrow({
             => BusinessException(100001, "Internal error.")
         })
     }
@@ -304,7 +304,7 @@ public class LocalStorage {
         match (p) {
             case Some(v) =>
                 if (v.numberOfSubscribers() > 0) {
-                    BaseLog.error("Subscribers need to unsubscribe before `prop` deletion.")
+                    BaseLog.error("Subscribers need to unsubscribe before property deletion.")
                     return false
                 }
                 this.storage.remove(propName)
@@ -331,7 +331,7 @@ public class LocalStorage {
             match (p) {
                 case Some(v) =>
                     if (v.numberOfSubscribers() > 0) {
-                        BaseLog.error("Subscribers need to unsubscribe before `prop` deletion.")
+                        BaseLog.error("Subscribers need to unsubscribe before property deletion.")
                         return false
                     }
                 case None => ()

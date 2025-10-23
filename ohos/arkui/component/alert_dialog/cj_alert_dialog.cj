@@ -129,6 +129,41 @@ public enum DialogButtonDirection {
     }
 }
 
+/**
+ * Defines the border color for dialog components.
+ * Provides a wrapper class for specifying border colors with a default value.
+ */
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class BorderColor {
+    /**
+     * The color resource used for the border.
+     * Defines the visual color of the border around a component.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var resourceColor: ResourceColor
+
+    /**
+     * BorderColor constructor.
+     * Creates a new BorderColor instance with the specified color or defaults to black.
+     *
+     * @param { ?ResourceColor } color - The color to use for the border
+     * @default Color.Black
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(color!: ?ResourceColor = Color.Black) {
+        this.resourceColor = color ?? Color.Black
+    }
+}
+
 @C
 struct NativeAlertDialogButtonOptionsV2 {
     NativeAlertDialogButtonOptionsV2(
@@ -563,7 +598,7 @@ public open class AlertDialogParam {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var borderColor: ?ResourceColor
+    public var borderColor: ?BorderColor
     /**
      * Defines the alertDialog's border style.
      */
@@ -611,7 +646,7 @@ public open class AlertDialogParam {
      * @param { ?Length } width - Defines the alertDialog's width.
      * @param { ?Length } height - Defines the alertDialog's height.
      * @param { ?Length } borderWidth - Defines the alertDialog's border width.
-     * @param { ?ResourceColor } borderColor - Defines the alertDialog's border color.
+     * @param { ?BorderColor } borderColor - Defines the alertDialog's border color.
      * @param { ?EdgeStyles } borderStyle - Defines the alertDialog's border style.
      * @param { ?ShadowOptions } shadow - Defines the alertDialog's shadow.
      * @param { ?WordBreak } textStyle - Set the alertDialog's textStyle.
@@ -640,7 +675,7 @@ public open class AlertDialogParam {
         width!: ?Length = None,
         height!: ?Length = None,
         borderWidth!: ?Length = None,
-        borderColor!: ?ResourceColor = None,
+        borderColor!: ?BorderColor = None,
         borderStyle!: ?EdgeStyles = None,
         shadow!: ?ShadowOptions = None,
         textStyle!: ?WordBreak = None
@@ -665,7 +700,7 @@ public open class AlertDialogParam {
         this.width = width
         this.height = height
         this.borderWidth = borderWidth ?? 0
-        this.borderColor = borderColor ?? Color.Black
+        this.borderColor = borderColor ?? BorderColor(color: Color.Black)
         this.borderStyle = borderStyle ?? EdgeStyles()
         this.shadow = shadow ?? ShadowOptions(radius: 0.0)
         this.textStyle = textStyle ?? WordBreak.BreakAll
@@ -698,7 +733,7 @@ public open class AlertDialogParam {
             bottomLeft: 32.vp, bottomRight: 32.vp)).toCBorderRadiuses())
         var value_ = transAppResourceToLength(borderWidth ?? 0)
         let nativeBorderWidth = NativeOptionLength(true, NativeLength(value_.value, value_.unitType.getValue()))
-        let nativeBorderColor = NativeOptionUInt32(true, transAppResourceToResourceColor(borderColor ?? Color.Black))
+        let nativeBorderColor = NativeOptionUInt32(true, transAppResourceToResourceColor((borderColor ?? BorderColor(color: Color.Black)).resourceColor))
         let nativeBorderStyle = NativeOptionEdgeStyle(true, (borderStyle ?? EdgeStyles()).toNative())
 
         let nativeWidth = match (width) {
@@ -784,7 +819,7 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
      * @param { ?Length } width - Defines the alertDialog's width.
      * @param { ?Length } height - Defines the alertDialog's height.
      * @param { ?Length } borderWidth - Defines the alertDialog's border width.
-     * @param { ?ResourceColor } borderColor - Defines the alertDialog's border color.
+     * @param { ?BorderColor } borderColor - Defines the alertDialog's border color.
      * @param { ?EdgeStyles } borderStyle - Defines the alertDialog's border style.
      * @param { ?ShadowOptions } shadow - Defines the alertDialog's shadow.
      * @param { ?WordBreak } textStyle - Set the alertDialog's textStyle.
@@ -814,7 +849,7 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
         width!: ?Length = None,
         height!: ?Length = None,
         borderWidth!: ?Length = None,
-        borderColor!: ?ResourceColor = None,
+        borderColor!: ?BorderColor = None,
         borderStyle!: ?EdgeStyles = None,
         shadow!: ?ShadowOptions = None,
         textStyle!: ?WordBreak = None,
@@ -840,7 +875,7 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
             width: width,
             height: height,
             borderWidth: borderWidth ?? 0,
-            borderColor: borderColor ?? Color.Black,
+            borderColor: borderColor ?? BorderColor(color: Color.Black),
             borderStyle: borderStyle ?? EdgeStyles(),
             shadow: shadow ?? ShadowOptions(radius: 0.0),
             textStyle: textStyle ?? WordBreak.BreakAll
@@ -895,7 +930,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
      * @param { ?Length } width - Defines the alertDialog's width.
      * @param { ?Length } height - Defines the alertDialog's height.
      * @param { ?Length } borderWidth - Defines the alertDialog's border width.
-     * @param { ?ResourceColor } borderColor - Defines the alertDialog's border color.
+     * @param { ?BorderColor } borderColor - Defines the alertDialog's border color.
      * @param { ?EdgeStyles } borderStyle - Defines the alertDialog's border style.
      * @param { ?ShadowOptions } shadow - Defines the alertDialog's shadow.
      * @param { ?WordBreak } textStyle - Set the alertDialog's textStyle.
@@ -926,7 +961,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
         width!: ?Length = None,
         height!: ?Length = None,
         borderWidth!: ?Length = None,
-        borderColor!: ?ResourceColor = None,
+        borderColor!: ?BorderColor = None,
         borderStyle!: ?EdgeStyles = None,
         shadow!: ?ShadowOptions = None,
         textStyle!: ?WordBreak = None,
@@ -953,7 +988,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
             width: width,
             height: height,
             borderWidth: borderWidth ?? 0,
-            borderColor: borderColor ?? Color.Black,
+            borderColor: borderColor ?? BorderColor(color: Color.Black),
             borderStyle: borderStyle ?? EdgeStyles(),
             shadow: shadow ?? ShadowOptions(radius: 0.0),
             textStyle: textStyle ?? WordBreak.BreakAll
@@ -1009,7 +1044,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
      * @param { ?Length } width - Defines the alertDialog's width.
      * @param { ?Length } height - Defines the alertDialog's height.
      * @param { ?Length } borderWidth - Defines the alertDialog's border width.
-     * @param { ?ResourceColor } borderColor - Defines the alertDialog's border color.
+     * @param { ?BorderColor } borderColor - Defines the alertDialog's border color.
      * @param { ?EdgeStyles } borderStyle - Defines the alertDialog's border style.
      * @param { ?ShadowOptions } shadow - Defines the alertDialog's shadow.
      * @param { ?WordBreak } textStyle - Set the alertDialog's textStyle.
@@ -1040,7 +1075,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
         width!: ?Length = None,
         height!: ?Length = None,
         borderWidth!: ?Length = None,
-        borderColor!: ?ResourceColor = None,
+        borderColor!: ?BorderColor = None,
         borderStyle!: ?EdgeStyles = None,
         shadow!: ?ShadowOptions = None,
         textStyle!: ?WordBreak = None,
@@ -1068,7 +1103,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
             width: width,
             height: height,
             borderWidth: borderWidth ?? 0,
-            borderColor: borderColor ?? Color.Black,
+            borderColor: borderColor ?? BorderColor(color: Color.Black),
             borderStyle: borderStyle ?? EdgeStyles(),
             shadow: shadow ?? ShadowOptions(radius: 0.0),
             textStyle: textStyle ?? WordBreak.BreakAll

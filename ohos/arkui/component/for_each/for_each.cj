@@ -59,8 +59,22 @@ foreign {
     func FfiOHOSAceFrameworkViewCreateNewChildFinish(id: CString): Unit
 }
 
-type KeyGenFuncType<T> = (T, Int64) -> String
-type ItemGenFuncType<T> = (T, Int64) -> Unit
+/**
+ * Define key generator function.
+ *
+ * @param { T } - item in array.
+ * @param { Int64 } - index corresponding to an array item.
+ * @return { String } - String generated based on item and index.
+ */
+public type KeyGenFuncType<T> = (T, Int64) -> String
+
+/**
+ * Define item generator function.
+ *
+ * @param { T } - item in array.
+ * @param { Int64 } - index corresponding to an array item.
+ */
+public type ItemGenFuncType<T> = (T, Int64) -> Unit
 
 /**
  * The ForEach class is used to create a list of elements based on a data source.
@@ -84,7 +98,7 @@ public class ForEach<T> <: UINodeBase {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(arr: CollectionEx<T>, itemGenerator!: ItemGenFuncType<T>,
-        keyGenerator!: ?ItemGenFuncType<T> = None) {}
+        keyGenerator!: ?KeyGenFuncType<T> = None) {}
 
     /**
      * Set the value, array, and key.
