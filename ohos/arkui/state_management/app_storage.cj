@@ -89,8 +89,8 @@ public class AppStorage {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public static func `prop`<T>(propName: String): ?ObservedProperty<T> {
-        return AppStorage.getOrCreate().storage.`prop`<T>(propName)
+    public static func property<T>(propName: String): ?ObservedProperty<T> {
+        return AppStorage.getOrCreate().storage.property<T>(propName)
     }
 
     /**
