@@ -39,12 +39,12 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
      */
     private let cacheListener = HashMap<Int64, DataChangeListener>();
     let dataSource_: IDataSource<T>
-    let itemGeneratorFunc_: ItemGenFuncType<T>
-    let keyGeneratorFunc_: KeyGenFuncType<T>
+    let itemGeneratorFunc_: ItemGeneratorFunc<T>
+    let keyGeneratorFunc_: KeyGeneratorFunc<T>
     let parentView_: CustomView
 
-    init(parent: CustomView, dataSource: IDataSource<T>, itemGeneratorFunc: ItemGenFuncType<T>,
-        keyGeneratorFunc: KeyGenFuncType<T>) {
+    init(parent: CustomView, dataSource: IDataSource<T>, itemGeneratorFunc: ItemGeneratorFunc<T>,
+        keyGeneratorFunc: KeyGeneratorFunc<T>) {
         super()
         dataSource_ = dataSource
         itemGeneratorFunc_ = itemGeneratorFunc
@@ -169,15 +169,15 @@ public class LazyForEach<T> <: UINodeBase {
      * Enter the value to obtain the LazyForEach
      *
      * @param { IDataSource<T> } dateSource - the array collection to be used in UI.
-     * @param { ItemGenFuncType<T> } itemGenerator - item generator function.
-     * @param { KeyGenFuncType<T> } keyGenerator - key generator function.
+     * @param { ItemGeneratorFunc<T> } itemGenerator - item generator function.
+     * @param { KeyGeneratorFunc<T> } keyGenerator - key generator function.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(dataSource: IDataSource<T>, itemGenerator!: ItemGenFuncType<T>,
-        keyGenerator!: ?KeyGenFuncType<T> = None) {}
+    public init(dataSource: IDataSource<T>, itemGenerator!: ItemGeneratorFunc<T>,
+        keyGenerator!: ?KeyGeneratorFunc<T> = None) {}
 
     /**
      * Enter the value to obtain the LazyForEach.
@@ -196,8 +196,8 @@ public class LazyForEach<T> <: UINodeBase {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func create<T>(viewID: Int64, parentView: CustomView, dataSource: IDataSource<T>,
-        itemGeneratorFunc!: ItemGenFuncType<T>,
-        keyGeneratorFunc!: KeyGenFuncType<T> = {
+        itemGeneratorFunc!: ItemGeneratorFunc<T>,
+        keyGeneratorFunc!: KeyGeneratorFunc<T> = {
             _: T, idx: Int64 =>
             uniqueKey++
             return "${viewID} - ${idx} - ${uniqueKey}"

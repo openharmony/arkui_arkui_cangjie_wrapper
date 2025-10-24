@@ -202,6 +202,23 @@ public type CustomBuilder = () -> Unit
  */
 public type TransitionFinishCallback = (Bool) -> Unit
 
+/**
+ * Define key generator function.
+ *
+ * @param { T } - item in array.
+ * @param { Int64 } - index corresponding to an array item.
+ * @return { String } - String generated based on item and index.
+ */
+public type KeyGeneratorFunc<T> = (T, Int64) -> String
+
+/**
+ * Define item generator function.
+ *
+ * @param { T } - item in array.
+ * @param { Int64 } - index corresponding to an array item.
+ */
+public type ItemGeneratorFunc<T> = (T, Int64) -> Unit
+
 @OverflowWrapping
 func decode(data: Array<UInt8>): Option<Array<UInt8>> {
     var arrLength: Int64 = data.size
