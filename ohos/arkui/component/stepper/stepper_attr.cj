@@ -20,7 +20,8 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Stepper Component.
+ * Defines the Stepper attribute functions.
+ * Provides methods for configuring the behavior of the Stepper component.
  */
 @!APILevel[
     22,
@@ -28,10 +29,10 @@ import ohos.base.*
 ]
 sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
     /**
-     * Callback when the finish label is clicked.
+     * Triggered when the user clicks the finish button to complete all steps.
      *
-     * @param { ?() -> Unit } callback
-     * @returns { StepperAttribute }
+     * @param { ?() -> Unit } callback - Callback function triggered when finish is clicked.
+     * @returns { StepperAttribute } Returns the stepper attribute.
      */
     @!APILevel[
         22,
@@ -40,10 +41,10 @@ sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
     func onFinish(callback: ?() -> Unit): StepperAttribute
 
     /**
-     * Callback when the skip label is clicked.
+     * Triggered when the user clicks the skip button to bypass the current step.
      *
-     * @param { ?() -> Unit } callback
-     * @returns { StepperAttribute }
+     * @param { ?() -> Unit } callback - Callback function triggered when skip is clicked.
+     * @returns { StepperAttribute } Returns the stepper attribute.
      */
     @!APILevel[
         22,
@@ -52,10 +53,11 @@ sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
     func onSkip(callback: ?() -> Unit): StepperAttribute
 
      /**
-     * Callback when the change label is clicked.
+     * Triggered when the step changes, either forward or backward.
      *
-     * @param { ?(UInt32, UInt32) -> Unit } callback
-     * @returns { StepperAttribute }
+     * @param { ?(UInt32, UInt32) -> Unit } callback - Callback function triggered when step changes.
+     * The first parameter is the index of previous step, and the second parameter is the index of current step.
+     * @returns { StepperAttribute } Returns the stepper attribute.
      */
     @!APILevel[
         22,
@@ -64,10 +66,11 @@ sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
     func onChange(callback: ?(UInt32, UInt32) -> Unit): StepperAttribute
 
      /**
-     * Callback when the next label is clicked.
+     * Triggered when the user clicks the next button to proceed to the next step.
      *
-     * @param { ?(UInt32, UInt32) -> Unit } callback
-     * @returns { StepperAttribute }
+     * @param { ?(UInt32, UInt32) -> Unit } callback - Callback function triggered when next is clicked.
+     * The first parameter is the index of current step, and the second parameter is the index of next step.
+     * @returns { StepperAttribute } Returns the stepper attribute.
      */
     @!APILevel[
         22,
@@ -76,10 +79,11 @@ sealed interface StepperAttribute <: CommonMethod<StepperAttribute> {
     func onNext(callback: ?(UInt32, UInt32) -> Unit): StepperAttribute
 
      /**
-     * Callback when the previous label is clicked.
+     * Triggered when the user clicks the previous button to go back to the previous step.
      *
-     * @param { ?(UInt32, UInt32) -> Unit } callback
-     * @returns { StepperAttribute }
+     * @param { ?(UInt32, UInt32) -> Unit } callback - Callback function triggered when previous is clicked.
+     * The first parameter is the index of current step, and the second parameter is the index of previous step.
+     * @returns { StepperAttribute } Returns the stepper attribute.
      */
     @!APILevel[
         22,

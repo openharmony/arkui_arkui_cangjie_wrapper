@@ -21,7 +21,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Blank attributes.
+ * Defines the Blank attribute functions.
  */
 @!APILevel[
     22,
@@ -31,8 +31,9 @@ sealed interface BlankAttribute <: CommonMethod<BlankAttribute> {
     /**
      * Sets the color to fill the blank
      *
-     * @param { ?ResourceColor } value
-     * @returns { BlankAttribute }
+     * @param { ?ResourceColor } value - Fill color for the blank.
+     * @default Color.Transparent
+     * @returns { BlankAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,

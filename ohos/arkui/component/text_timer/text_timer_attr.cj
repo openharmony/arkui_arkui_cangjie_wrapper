@@ -21,7 +21,7 @@ import ohos.base.*
 import ohos.resource.*
 
 /**
- * Defines TextTimer Component.
+ * Defines the TextTimer attribute functions.
  */
 @!APILevel[
     22,
@@ -36,8 +36,9 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * <br>If the specified date format is yy, MM, or dd, the default value is used instead.
      * </p>
      *
-     * @param { ?String } value - Custom format.Default value: 'HH:mm:ss.SS'.
-     * @returns { TextTimerAttribute }
+     * @param { ?String } value - Custom format.
+     * @default 'HH:mm:ss.SS'
+     * @returns { TextTimerAttribute } Returns the text timer attribute to allow method chaining.
      */
     @!APILevel[
         22,
@@ -50,8 +51,10 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * This event is not triggered when the screen is locked or the application is running in the background.
      * When high-precision formats (such as SSS or SS) are used, the callback interval may vary.
      *
-     * @param { ?(Int64, Int64) -> Unit } event
-     * @returns { TextTimerAttribute }
+     * @param { ?(Int64, Int64) -> Unit } event - The callback function when the time text changes.
+     *                                          The first parameter is the timestamp,
+     *                                          and the second parameter is the elapsed time in milliseconds.
+     * @returns { TextTimerAttribute } Returns the text timer attribute to allow method chaining.
      */
     @!APILevel[
         22,
@@ -62,10 +65,11 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
     /**
      * Sets the font size.
      *
-     * @param { ?Length } value - Font size.The default font size is 16 fp.
+     * @param { ?Length } value - Font size.
      * <br>If fontSize is of the number type, the unit fp is used.
      * <br>The value cannot be a percentage.
-     * @returns { TextTimerAttribute }
+     * @default 16.fp
+     * @returns { TextTimerAttribute } Returns the text timer attribute to allow method chaining.
      */
     @!APILevel[
         22,
@@ -76,8 +80,8 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
     /**
      * Sets the font color.
      *
-     * @param { ?ResourceColor } value
-     * @returns { TextTimerAttribute }
+     * @param { ?ResourceColor } value - The font color.
+     * @returns { TextTimerAttribute } Returns the text timer attribute to allow method chaining.
      */
     @!APILevel[
         22,
@@ -88,8 +92,9 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
     /**
      * Sets the font style.
      *
-     * @param { ?FontStyle } value - Font style.Default value: FontStyle.Normal.
-     * @returns { TextTimerAttribute }
+     * @param { ?FontStyle } value - Font style.
+     * @default FontStyle.Normal.
+     * @returns { TextTimerAttribute } Returns the text timer attribute to allow method chaining.
      */
     @!APILevel[
         22,
@@ -105,10 +110,11 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
      * </p>
      *
      * @param { ?FontWeight } value - Font weight.
-     * <br>For the number type, Value range: [100, 900], at an interval of 100.The default value is 400.
+     * <br>For the number type, Value range: [100, 900], at an interval of 100.
      * <br>A larger value indicates a heavier font weight.
      * <br>For the string type, only strings that represent a number.
-     * @returns { TextTimerAttribute }
+     * @default 400
+     * @returns { TextTimerAttribute } Returns the text timer attribute to allow method chaining.
      */
     @!APILevel[
         22,
@@ -119,8 +125,9 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
     /**
      * Sets the font family.
      *
-     * @param { ?ResourceStr } value - Font family. Default font: 'HarmonyOS Sans'.
-     * @returns { TextTimerAttribute }
+     * @param { ?ResourceStr } value - Font family.
+     * @default 'HarmonyOS Sans'
+     * @returns { TextTimerAttribute } Returns the text timer attribute to allow method chaining.
      */
     @!APILevel[
         22,
@@ -130,11 +137,10 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
 
     /**
      * Sets the text shadow.
-     * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
      * @param { ?Array<ShadowOptions> } value - The shadow options.
-     * @returns { TextTimerAttribute }
+     * @returns { TextTimerAttribute } Returns the text timer attribute to allow method chaining.
      */
     @!APILevel[
         22,
@@ -144,11 +150,10 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
 
     /**
      * Sets the text shadow.
-     * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
      * @param { ?ShadowOptions } value - The shadow options.
-     * @returns { TextTimerAttribute }
+     * @returns { TextTimerAttribute } Returns the text timer attribute to allow method chaining.
      */
     @!APILevel[
         22,

@@ -49,7 +49,7 @@ foreign {
 let LENGTH_TYPE_LNVALID: Int32 = -2
 
 /**
- * Defines the Menu Component.
+ * A popup component that displays a list of options or actions for user selection.
  */
 @!APILevel[
     22,
@@ -58,9 +58,9 @@ let LENGTH_TYPE_LNVALID: Int32 = -2
 public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
 
     /**
-     * Creates the menu component.
+     * Initializes a Menu component with child content.
      *
-     * @param { () -> Unit } child
+     * @param { () -> Unit } child - The child component builder function for menu items. The default value is an empty function.
      */
     @!APILevel[
         22,
@@ -76,12 +76,13 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
     /**
      * Sets the font style.
      * Family and style are not supported currently and will be fixed in future.
+     * Configures the font properties of menu items.
      *
-     * @param { ?Length } size
-     * @param { ?FontWeight } weight
-     * @param { ?ResourceStr } family
-     * @param { ?FontStyle } style
-     * @returns { This }
+     * @param { ?Length } size - Indicates the font size of menu item.
+     * @param { ?FontWeight } weight - Indicates the font weight of menu item.
+     * @param { ?ResourceStr } family - Indicates the font family of menu item.
+     * @param { ?FontStyle } style - Indicates the font style of menu item.
+     * @returns { This } Returns the Menu instance.
      */
     @!APILevel[
         22,
@@ -106,9 +107,10 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
 
     /**
      * Sets the Menu font color.
+     * Configures the font color of menu items.
      *
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } value - Indicates the font color of menu item.
+     * @returns { This } Returns the Menu instance.
      */
     @!APILevel[
         22,
@@ -124,9 +126,10 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
     /**
      * Sets the radius of the corner around the menu.
      * When the radius is less than the menu width, the default border radius is used.
+     * Configures the corner radius of the menu container.
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The menu corner radius.
+     * @returns { This } Returns the Menu instance.
      */
     @!APILevel[
         22,
@@ -147,9 +150,10 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
     /**
      * Sets the radius of the corner around the menu.
      * When the radius is less than the menu width, the default border radius is used.
+     * Configures the corner radius of the menu container with individual values for each corner.
      *
-     * @param { ?BorderRadiuses } value
-     * @returns { This }
+     * @param { ?BorderRadiuses } value - The menu corner radius.
+     * @returns { This } Returns the Menu instance.
      */
     @!APILevel[
         22,

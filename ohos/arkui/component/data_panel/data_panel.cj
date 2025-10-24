@@ -95,8 +95,8 @@ public class ColorStop {
     /**
      * ColorStop constructor
      *
-     * @param { ResourceColor } color
-     * @param { Length } offset
+     * @param { ResourceColor } color - The color value.
+     * @param { Length } offset - The color offset.
      */
     @!APILevel[
         22,
@@ -203,10 +203,10 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
     /**
      * DataPanelShadowOptions Constructor.
      *
-     * @param { ?Length } radius
-     * @param { ?Array<LinearGradient> } colors
-     * @param { ?Length } offsetX
-     * @param { ?Length } offsetY
+     * @param { ?Length } radius - The radius of the shadow blur effect.
+     * @param { ?Array<LinearGradient> } colors - The colors to use for the shadow.
+     * @param { ?Length } offsetX - The horizontal offset of the shadow from the component.
+     * @param { ?Length } offsetY - The vertical offset of the shadow from the component.
      */
     @!APILevel[
         22,
@@ -227,11 +227,11 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
 ]
 public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute {
     /**
-     * Return a DataPanel.
+     * DataPanel Constructor.
      *
-     * @param { Array<Float64> } values
-     * @param { ?Float64 } max
-     * @param { ?DataPanelType } panelType
+     * @param { Array<Float64> } values - The data values to display.
+     * @param { ?Float64 } max - The maximum value for scaling the data.
+     * @param { ?DataPanelType } panelType - The type of data panel to display.
      */
     @!APILevel[
         22,
@@ -253,8 +253,8 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
     /**
      * Disable the special effect of the data ratio chart.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether to disable the special effect.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -271,7 +271,7 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
      * Set the value colors of the data ratio chart.
      *
      * @param { ?Array<LinearGradient> } value - the value colors of the data ratio chart.
-     * @returns { This }
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -294,7 +294,7 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
      * Set track background color of the data ratio chart.
      *
      * @param { ?ResourceColor } value - track background color of the data ratio chart.
-     * @returns { This }
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -311,7 +311,7 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
      * Set the stroke width of the data ratio chart.
      *
      * @param { ?Length } value - the stroke width of the data ratio chart.
-     * @returns { This }
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -329,7 +329,7 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
      * Set the shadow width of the data ratio chart.
      *
      * @param { ?DataPanelShadowOptions } value - the track shadow width of the data ratio chart.
-     * @returns { This }
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,

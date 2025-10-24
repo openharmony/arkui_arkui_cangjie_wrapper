@@ -34,8 +34,7 @@ foreign {
 
 /**
  * Developers need to implement this interface to provide data to LazyForEach component.
- *
- * @param { T } Data type.
+ * This interface defines the methods required for LazyForEach to access and monitor data.
  */
 @!APILevel[
     22,
@@ -43,9 +42,9 @@ foreign {
 ]
 public interface IDataSource<T> {
     /**
-     * Obtains the total number of data items.
+     * Returns the count of all data items available in the data source.
      *
-     * @returns { Int64 } The total number of data.
+     * @returns { Int64 } The total number of data items in the data source.
      */
     @!APILevel[
         22,
@@ -55,9 +54,10 @@ public interface IDataSource<T> {
     
     /**
      * Obtains the data item that matches the specified index.
+     * Retrieves a specific data item from the data source by its index.
      *
-     * @param { Int64 } index
-     * @returns { T } The data item.
+     * @param { Int64 } index - The zero-based index of the data item to retrieve.
+     * @returns { T } The data item at the specified index.
      */
     @!APILevel[
         22,
@@ -66,9 +66,9 @@ public interface IDataSource<T> {
     func getData(index: Int64): T
     
     /**
-     * Registers a listener for data changes.
+     * Adds a listener that will be notified when the data in the source changes.
      *
-     * @param { DataChangeListener } listener
+     * @param { DataChangeListener } listener - The listener to be registered for data changes.
      */
     @!APILevel[
         22,
@@ -77,9 +77,9 @@ public interface IDataSource<T> {
     func registerDataChangeListener(listener: DataChangeListener): Unit
     
     /**
-     * Unregisters the listener for data changes.
+     * Removes a previously registered listener so it will no longer be notified of data changes.
      *
-     * @param { DataChangeListener } listener
+     * @param { DataChangeListener } listener - The listener to be unregistered from data changes.
      */
     @!APILevel[
         22,
@@ -89,7 +89,7 @@ public interface IDataSource<T> {
 }
 
 /**
- * Listener for data changes.
+ * Data change listener.
  */
 @!APILevel[
     22,
@@ -115,7 +115,7 @@ public class DataChangeListener <: RemoteData {
     /**
      * Invoked when data is added to the position indicated by the specified index.
      *
-     * @param { IntNative } index
+     * @param { IntNative } index - The index at which to insert the data record.
      */
     @!APILevel[
         22,
@@ -129,7 +129,7 @@ public class DataChangeListener <: RemoteData {
      * Invoked when data is deleted from the position indicated by the specified index.
      * LazyForEach will update the displayed content accordingly.
      *
-     * @param { IntNative } index
+     * @param { IntNative } index - The index at which to delete the data record.
      */
     @!APILevel[
         22,
@@ -142,7 +142,7 @@ public class DataChangeListener <: RemoteData {
     /**
      * Invoked when data in the position indicated by the specified index is changed.
      *
-     * @param { IntNative } index
+     * @param { IntNative } index - The index of the data to be changed.
      */
     @!APILevel[
         22,
@@ -155,8 +155,8 @@ public class DataChangeListener <: RemoteData {
     /**
      * Invoked when data is moved, that is, when data is swapped between the from and to positions.
      *
-     * @param { IntNative } from
-     * @param { IntNative } to
+     * @param { IntNative } from - The start position for the movement.
+     * @param { IntNative } to - The end position for the movement.
      */
     @!APILevel[
         22,

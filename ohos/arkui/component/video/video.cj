@@ -76,8 +76,7 @@ foreign {
 }
 
 /**
- * Defines the video controller.
- *
+ * Contains information about the video that has been prepared for playback.
  */
 @!APILevel[
     22,
@@ -86,8 +85,7 @@ foreign {
 public class PreparedInfo {
     /**
      * The duration of the current video, in seconds.
-     * Anonymous Object Rectification.
-     *
+     * Represents the total length of the video in seconds.
      */
     @!APILevel[
         22,
@@ -101,8 +99,7 @@ public class PreparedInfo {
 }
 
 /**
- * Playback information of the video.
- *
+ * Contains information about the current playback state of the video.
  */
 @!APILevel[
     22,
@@ -110,9 +107,8 @@ public class PreparedInfo {
 ]
 public class PlaybackInfo {
     /**
-     * The duration of the current video, in seconds.
-     * Anonymous Object Rectification.
-     *
+     * The current video playback progress, expressed in seconds.
+     * Represents the current playback position in seconds.
      */
     @!APILevel[
         22,
@@ -127,7 +123,7 @@ public class PlaybackInfo {
 
 /**
  * Fullscreen information of the video.
- *
+ * Contains information about the fullscreen state of the video.
  */
 @!APILevel[
     22,
@@ -136,8 +132,7 @@ public class PlaybackInfo {
 public class FullscreenInfo {
     /**
      * The flag whether play in full screen.
-     * Anonymous Object Rectification.
-     *
+     * True if the video is currently in fullscreen mode, false otherwise.
      */
     @!APILevel[
         22,
@@ -151,8 +146,7 @@ public class FullscreenInfo {
 }
 
 /**
- * Defines the video controller.
- *
+ * Provides methods to control video playback such as play, pause, stop, seek, and fullscreen operations.
  */
 @!APILevel[
     22,
@@ -160,7 +154,7 @@ public class FullscreenInfo {
 ]
 public class VideoController <: RemoteDataLite {
     /**
-     * VideoController constructor.
+     * Creates a new instance of VideoController.
      */
     @!APILevel[
         22,
@@ -176,7 +170,7 @@ public class VideoController <: RemoteDataLite {
 
     /**
      * Provides events to play.
-     *
+     * Starts or resumes video playback.
      */
     @!APILevel[
         22,
@@ -188,7 +182,7 @@ public class VideoController <: RemoteDataLite {
 
     /**
      * Provides a pause event for playback.
-     *
+     * Pauses the current video playback.
      */
     @!APILevel[
         22,
@@ -200,7 +194,7 @@ public class VideoController <: RemoteDataLite {
 
     /**
      * Provides an event to stop playback.
-     *
+     * Stops the video playback and resets the playback position to the beginning.
      */
     @!APILevel[
         22,
@@ -212,9 +206,10 @@ public class VideoController <: RemoteDataLite {
 
     /**
      * Provide the progress method of video playback.
+     * Seeks to a specific position in the video.
      *
-     * @param { Int32 } value
-     * @param { ?SeekMode } seekMode
+     * @param { Int32 } value - The position to seek to, in seconds.
+     * @param { ?SeekMode } seekMode - The seek mode.
      */
     @!APILevel[
         22,
@@ -229,8 +224,9 @@ public class VideoController <: RemoteDataLite {
 
     /**
      * Provides a full screen playback method.
+     * Requests to enter or exit fullscreen mode.
      *
-     * @param { ?Bool } value
+     * @param { ?Bool } value - Whether to play in full screen. The default value is true.
      */
     @!APILevel[
         22,
@@ -244,7 +240,7 @@ public class VideoController <: RemoteDataLite {
 
     /**
      * Provides a method to exit full screen playback.
-     *
+     * Exits fullscreen mode and returns to normal playback mode.
      */
     @!APILevel[
         22,
@@ -258,8 +254,7 @@ public class VideoController <: RemoteDataLite {
 }
 
 /**
- * Defines Video Component.
- *
+ * A component for playing video content with various playback controls and options.
  */
 @!APILevel[
     22,
@@ -267,12 +262,12 @@ public class VideoController <: RemoteDataLite {
 ]
 public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     /**
-     * Set the value.
+     * Initializes the video component with the specified options.
      *
-     * @param { ?ResourceStr } src
-     * @param { ?PlaybackSpeed } currentProgressRate
-     * @param { ?ResourceStr } previewUri
-     * @param { ?VideoController } controller
+     * @param { ?ResourceStr } src - The source URL or resource of the video to play.
+     * @param { ?PlaybackSpeed } currentProgressRate - The playback speed. The default value is PlaybackSpeed.Speed_Forward_1_00_X.
+     * @param { ?ResourceStr } previewUri - The URI of the preview image to display before the video loads.
+     * @param { ?VideoController } controller - The video controller for managing playback.
      */
     @!APILevel[
         22,
@@ -298,10 +293,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     }
 
     /**
-     * Called when judging whether the video is muted.
+     * Controls whether the video audio is muted.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether the video is muted. The default value is false.
+     * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -315,10 +310,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     }
 
     /**
-     * Called when judging whether the video is played automatically.
+     * Controls whether the video starts playing automatically when loaded.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether the video is played automatically. The default value is false.
+     * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -332,10 +327,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     }
 
     /**
-     * Called when judging whether the control bar is displayed.
+     * Controls the visibility of the video control bar.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether the control bar is displayed. The default value is true.
+     * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -349,10 +344,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     }
 
     /**
-     * Called when determining the zoom type of the video source.
+     * Controls how the video content is scaled to fit the display area.
      *
-     * @param { ?ImageFit } value
-     * @returns { This }
+     * @param { ?ImageFit } value - The zoom type. The default value is ImageFit.Contain.
+     * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -367,10 +362,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     }
 
     /**
-     * Called when judging whether the video is played circular.
+     * Controls whether the video playback loops when it reaches the end.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether the video is played circular. The default value is false.
+     * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -384,11 +379,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     }
 
     /**
-     * Called when the video is played.
-     * Anonymous Object Rectification.
+     * Triggered when the video starts playing.
      *
-     * @param { ?VoidCallback } event
-     * @returns { This }
+     * @param { ?VoidCallback } event - The callback function when the video is played.
+     * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -407,11 +401,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     }
 
     /**
-     * Called when the video is paused.
-     * Anonymous Object Rectification.
+     * Triggered when the video is paused.
      *
-     * @param { ?VoidCallback } event
-     * @returns { This }
+     * @param { ?VoidCallback } event - The callback function when the video is paused.
+     * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -430,11 +423,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     }
 
     /**
-     * Called when the video playback ends.
-     * Anonymous Object Rectification.
+     * Triggered when the video playback reaches the end.
      *
-     * @param { ?VoidCallback } event
-     * @returns { This }
+     * @param { ?VoidCallback } event - The callback function when the video playback ends.
+     * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -453,10 +445,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     }
 
     /**
-     * Called when playback fails.
+     * Triggered when an error occurs during video playback.
      *
-     * @param { ?VoidCallback } event
-     * @returns { This}
+     * @param { ?VoidCallback } event - The callback function when playback fails.
+     * @returns { This} Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -475,11 +467,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     }
 
     /**
-     * Called when the video preparation is complete.
-     * Anonymous Object Rectification.
+     * Triggered when the video is fully loaded and ready to play.
      *
-     * @param { ?Callback<PreparedInfo, Unit> } callback
-     * @returns { This}
+     * @param { ?Callback<PreparedInfo, Unit> } callback - The callback function when the video preparation is complete.
+     * @returns { This} Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -499,10 +490,9 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
 
     /**
      * Called when the time information is reported when the progress bar process is operated.
-     * Anonymous Object Rectification.
      *
-     * @param { ?Callback<PlaybackInfo, Unit> } callback
-     * @returns { This}
+     * @param { ?Callback<PlaybackInfo, Unit> } callback - The callback function when seeking.
+     * @returns { This} Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -522,10 +512,9 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
 
     /**
      * Called when the playback time information is reported after the operation progress bar is completed.
-     * Anonymous Object Rectification.
      *
-     * @param { ?Callback<PlaybackInfo, Unit> } callback
-     * @returns { This }
+     * @param { ?Callback<PlaybackInfo, Unit> } callback - The callback function after seeking.
+     * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -544,11 +533,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     }
 
     /**
-     * Called when the playback progress changes.
-     * Anonymous Object Rectification.
+     * Triggered periodically during video playback to report the current playback position.
      *
-     * @param { ?Callback<PlaybackInfo, Unit> } callback
-     * @returns { This }
+     * @param { ?Callback<PlaybackInfo, Unit> } callback - The callback function when the playback progress changes.
+     * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,
@@ -567,11 +555,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     }
 
     /**
-     * Called when the video enters and exits the full screen.
-     * Anonymous Object Rectification.
+     * Triggered when the video enters or exits fullscreen mode.
      *
-     * @param { ?Callback<FullscreenInfo, Unit> } callback
-     * @returns { This }
+     * @param { ?Callback<FullscreenInfo, Unit> } callback - The callback function when the video enters and exits the full screen.
+     * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
         22,

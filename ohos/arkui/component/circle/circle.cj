@@ -40,8 +40,8 @@ public class Circle <: CommonShapeMethodComponent<Circle> & CircleAttribute {
     /**
      * Create a circle.
      * 
-     * @param { ?Length } width - Defines the width property.
-     * @param { ?Length } height - Defines the height property.
+     * @param { ?Length } width - The width of the circle component.
+     * @param { ?Length } height - The height of the circle component.
      */
     @!APILevel[
         22,

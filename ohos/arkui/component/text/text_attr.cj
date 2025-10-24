@@ -21,8 +21,7 @@ import ohos.base.*
 import ohos.resource.*
 
 /**
- * Provides a class for writing texts.
- *
+ * Defines the Text attribute functions.
  */
 @!APILevel[
     22,
@@ -32,8 +31,9 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Set font line spacing.
      *
-     * @param { ?Length } value - Default value is 0.
-     * @returns { TextAttribute }
+     * @param { ?Length } value - The line spacing value.
+     * @default 0
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -44,8 +44,9 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the font size is set.
      *
-     * @param { ?Length } value - Default value is 16.fp.
-     * @returns { TextAttribute }
+     * @param { ?Length } value - The font size.
+     * @default 16.fp
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -56,9 +57,8 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the maximum font size of the font is set.
      *
-     * @param { ?Length } value
-     * @returns { TextAttribute }
-     * @throws { IllegalArgumentException }
+     * @param { ?Length } value - The maximum font size.
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -69,9 +69,8 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the minimum font size of the font is set.
      *
-     * @param { ?Length } value
-     * @returns { TextAttribute }
-     * @throws { IllegalArgumentException }
+     * @param { ?Length } value - The minimum font size.
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -82,9 +81,8 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the font color is set.
      *
-     * @param { ?ResourceColor } value
-     * @returns { TextAttribute }
-     * @throws { IllegalArgumentException }
+     * @param { ?ResourceColor } value - The font color.
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -95,8 +93,9 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the font style of a font is set.
      *
-     * @param { ?FontStyle } value - Default value is FontStyle.Normal.
-     * @returns { TextAttribute }
+     * @param { ?FontStyle } value - The font style.
+     * @default FontStyle.Normal
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -107,9 +106,8 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the font weight is set.
      *
-     * @param { ?FontWeight } value
-     * @returns { TextAttribute }
-     * @throws { IllegalArgumentException }
+     * @param { ?FontWeight } value - The font weight.
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -120,8 +118,8 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the font list of text is set.
      *
-     * @param { ?ResourceStr } value
-     * @returns { TextAttribute }
+     * @param { ?ResourceStr } value - The font family.
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -132,8 +130,9 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the horizontal center mode of the font is set.
      *
-     * @param { ?TextAlign } value - Default value is TextAlign.Start.
-     * @returns { TextAttribute }
+     * @param { ?TextAlign } value - The text alignment.
+     * @default TextAlign.Start
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -145,7 +144,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * Called when the overflow mode of the font is set.
      *
      * @param { ?TextOverflow } options - Text overflow options.
-     * @returns { TextAttribute }
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -159,8 +158,8 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * <br>If this attribute is specified, the text will not exceed the specified number of lines.
      * <br>If there is extra text, you can use textOverflow to specify how it is displayed.
      *
-     * @param { ?Int32 } value
-     * @returns { TextAttribute }
+     * @param { ?Int32 } value - The maximum number of lines.
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -174,8 +173,8 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * <br>If the value is of the number type, the unit fp is used.
      * <br>For the string type, numeric string values with optional units.
      *
-     * @param { ?Length } value
-     * @returns { TextAttribute }
+     * @param { ?Length } value - The line height.
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -189,20 +188,19 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
      * @param { ?TextDecorationType } decorationType - The type value of the decoration property object.
      * @param { ?ResourceColor } color - The color value of the decoration property object.
      * @param { ?TextDecorationStyle } decorationStyle - The style value of the decoration property object.
-     * @returns { TextAttribute }
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor,
-        decorationStyle!: ?TextDecorationStyle): TextAttribute
+    func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor, decorationStyle!: ?TextDecorationStyle): TextAttribute
 
     /**
      * Called when the baseline offset is set.
      *
-     * @param { ?Length } value
-     * @returns { TextAttribute }
+     * @param { ?Length } value - The baseline offset.
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,
@@ -213,8 +211,9 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the type of letter in the text font is set.
      *
-     * @param { ?TextCase } value - Default value is TextCase.Normal.
-     * @returns { TextAttribute }
+     * @param { ?TextCase } value - The text case. 
+     * @default TextCase.Normal.
+     * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
         22,

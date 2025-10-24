@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines ListItemGroup Component.
+ * Defines the ListItemGroup attribute functions.
  */
 @!APILevel[
     22,
@@ -31,7 +31,7 @@ sealed interface ListItemGroupAttribute <: CommonMethod<ListItemGroupAttribute> 
     /**
      * Called when the ListItemGroup split line style is set.
      *
-     * @param { Option<ListDividerOptions> } value
+     * @param { Option<ListDividerOptions> } value - ListItem divider style.
      * @returns { ListItemGroupAttribute }
      */
     @!APILevel[

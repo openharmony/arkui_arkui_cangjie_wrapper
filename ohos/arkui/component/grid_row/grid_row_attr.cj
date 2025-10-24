@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines GridRow attributes.
+ * Defines the GridRow attribute functions.
  */
 @!APILevel[
     22,
@@ -30,7 +30,7 @@ sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
     /**
      * Cross axis alignment of each line in GridRow.
      *
-     * @param { ?ItemAlign } value - element alignment
+     * @param { ?ItemAlign } value - Element alignment.
      * @returns { GridRowAttribute }
      */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
     /**
      * Callback triggered when the breakpoint changes, breakpoints value can be xs, sm, md, lg, xl, xxl.
      *
-     * @param { ?(String) -> Unit } callback
+     * @param { ?(String) -> Unit } callback - Callback function triggered when breakpoint changes.
      * @returns { GridRowAttribute }
      */
     @!APILevel[

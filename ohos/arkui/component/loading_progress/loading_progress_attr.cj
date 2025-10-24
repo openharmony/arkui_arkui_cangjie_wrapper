@@ -20,7 +20,8 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines LoadingProgress Component.
+ * Defines the LoadingProgress attribute functions.
+ * Provides methods for configuring the appearance and behavior of the LoadingProgress component.
  */
 @!APILevel[
     22,
@@ -28,10 +29,10 @@ import ohos.base.*
 ]
 sealed interface LoadingProgressAttribute <: CommonMethod<LoadingProgressAttribute> {
     /**
-     * Load the color of the progress bar.
+     * Configures the color of the loading progress indicator.
      *
-     * @param { ?ResourceColor } value
-     * @returns { LoadingProgressAttribute }
+     * @param { ?ResourceColor } value - Sets the foreground color of the loading progress bar.
+     * @returns { LoadingProgressAttribute } Returns the loading progress attribute.
      */
     @!APILevel[
         22,

@@ -37,7 +37,7 @@ foreign {
 let defaultDivierColor = 0x33182431
 
 /**
- * Defines Divider Component.
+ * Divider component used to separate different content blocks or elements.
  */
 @!APILevel[
     22,
@@ -61,8 +61,9 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
      * Indicates whether to use a horizontal splitter or a vertical splitter.
      * The options are as follows: false: horizontal splitter; true: vertical splitter.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether to use a vertical divider.
+     * @default false
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -78,8 +79,8 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     /**
      * Sets the color of the divider line.
      *
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } value - The color of the divider line.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -95,8 +96,8 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     /**
      * Sets the width of the dividing line.
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The width of the dividing line.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -111,10 +112,11 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     }
 
     /**
-     * Sets the end style of the split line. The default value is Butt.
+     * Sets the end style of the split line.
      *
-     * @param { ?LineCapStyle } value
-     * @returns { This }
+     * @param { ?LineCapStyle } value - The end style of the split line.
+     * @default LineCapStyle.Butt
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,

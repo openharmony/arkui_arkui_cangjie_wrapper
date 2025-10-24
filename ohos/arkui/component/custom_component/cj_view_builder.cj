@@ -54,8 +54,8 @@ public class ViewBuilder {
 /**
  * Binds the view builder to the custom view.
  *
- * @param { (CustomView) -> ViewBuilder } builder
- * @param { CustomView } thisView
+ * @param { (CustomView) -> ViewBuilder } builder - Custom build function modified by @Builder.
+ * @param { CustomView } thisView - Current page object.
  */
 @!APILevel[
     22,
@@ -68,8 +68,8 @@ public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView) {
 /**
  * Binds the view builder to the custom view with one observed property.
  *
- * @param { (CustomView, ObservedProperty<T1>) -> ViewBuilder } builder
- * @param { CustomView } thisView
+ * @param { (CustomView, ObservedProperty<T1>) -> ViewBuilder } builder - Custom build function modified by @Builder.
+ * @param { CustomView } thisView - Current page object.
  */
 @!APILevel[
     22,
@@ -82,8 +82,8 @@ public func bind<T1> (builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder
 /**
  * Binds the view builder to the custom view with two observed properties.
  *
- * @param { (CustomView, ObservedProperty<T1>, ObservedProperty<T2>) -> ViewBuilder } builder
- * @param { CustomView } thisView
+ * @param { (CustomView, ObservedProperty<T1>, ObservedProperty<T2>) -> ViewBuilder } builder - Custom build function modified by @Builder.
+ * @param { CustomView } thisView - Current page object.
  */
 @!APILevel[
     22,
@@ -99,8 +99,8 @@ public func bind<T1, T2> (
 /**
  * Binds the view builder to the custom view with three observed properties.
  *
- * @param { (CustomView, ObservedProperty<T1>, ObservedProperty<T2>, ObservedProperty<T3>) -> ViewBuilder } builder
- * @param { CustomView } thisView
+ * @param { (CustomView, ObservedProperty<T1>, ObservedProperty<T2>, ObservedProperty<T3>) -> ViewBuilder } builder - Custom build function modified by @Builder.
+ * @param { CustomView } thisView - Current page object.
  */
 @!APILevel[
     22,

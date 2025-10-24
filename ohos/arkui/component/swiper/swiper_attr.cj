@@ -20,8 +20,8 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Swiper Component.
- *
+ * Defines the Swiper attribute functions.
+ * Provides methods for configuring the appearance and behavior of the Swiper component.
  */
 @!APILevel[
     22,
@@ -38,8 +38,8 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * </p>
      *
      * @param { ?Bool } value - Whether to enable automatic playback for child component switching.
-     * Default value is false.
-     * @returns { SwiperAttribute }
+     * @default false
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -50,8 +50,9 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the duration of the animation for child component switching.
      *
-     * @param { ?UInt32 } value - Duration of the autoplay for child component switching. Default value is 400.
-     * @returns { SwiperAttribute }
+     * @param { ?UInt32 } value - Duration of the autoplay for child component switching in milliseconds.
+     * @default 400
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -62,8 +63,9 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the index of the child component currently displayed in the container.
      *
-     * @param { ?UInt32 } value - Index of the child component currently displayed in the container. Default value is 0.
-     * @returns { SwiperAttribute }
+     * @param { ?UInt32 } value - Index of the child component currently displayed in the container.
+     * @default 0
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -74,8 +76,9 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the interval for automatic playback.
      *
-     * @param { ?UInt32 } value - Interval for automatic playback. Default value is 3000, the unit is ms.
-     * @returns { SwiperAttribute }
+     * @param { ?UInt32 } value - Interval for automatic playback in milliseconds.
+     * @default 3000
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -86,8 +89,9 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets whether to enable loop playback.
      *
-     * @param { ?Bool } value - Whether to enable loop playback. Default value is true.
-     * @returns { SwiperAttribute }
+     * @param { ?Bool } value - Whether to enable loop playback.
+     * @default true
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -98,8 +102,9 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets whether vertical swiping is used.
      *
-     * @param { ?Bool } value - Whether vertical swiping is used. Default value is false.
-     * @returns { SwiperAttribute }
+     * @param { ?Bool } value - Whether vertical swiping is used.
+     * @default false
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -110,9 +115,9 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { ?Bool } value - Style of the navigation indicator.
-     * Default value is true, default style is DotIndicator.
-     * @returns { SwiperAttribute }
+     * @param { ?Bool } value - Whether to show the navigation indicator.
+     * @default true
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -123,8 +128,8 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { ?DotIndicator } value - Style of the navigation indicator.
-     * @returns { SwiperAttribute }
+     * @param { ?DotIndicator } value - Dot-style navigation indicator.
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -135,8 +140,8 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { ?DigitIndicator } value - Style of the navigation indicator.
-     * @returns { SwiperAttribute }
+     * @param { ?DigitIndicator } value - Digit-style navigation indicator.
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -152,9 +157,9 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * if the unit is not specified, for example, '10', the default unit vp is used.
      * </p>
      *
-     * @param { ?Length } value - Space between child components. Default value is 0.
-     * Minimum value is 0. If a value less than 0 is set, the default value is used.
-     * @returns { SwiperAttribute }
+     * @param { ?Length } value - Space between child components. Minimum value is 0. If a value less than 0 is set, the default value is used.
+     * @default 0
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -167,8 +172,8 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * This API takes effect only when displayCount is not set.
      *
      * @param { ?SwiperDisplayMode } value - Mode in which elements are displayed along the main axis.
-     * Default value is SwiperDisplayMode.Stretch.
-     * @returns { SwiperAttribute }
+     * @default SwiperDisplayMode.Stretch
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -184,8 +189,8 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * </p>
      *
      * @param { ?EdgeEffect } value - Effect used when the component is at one of the edges.
-     * Default value is EdgeEffect.Spring.
-     * @returns { SwiperAttribute }
+     * @default EdgeEffect.Spring
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -205,7 +210,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      *
      * @param { ?Int32 } value - Number of elements to display per page. Default value is 1.
      * @param { ?Bool } swipeByGroup - Whether to turn pages by group. Default value is false.
-     * @returns { SwiperAttribute }
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -221,9 +226,9 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * <br>If swipeByGroup in displayCount is set to true, child components are cached by group.
      * </p>
      *
-     * @param { ?Int32 } value - Number of child components to be preloaded (cached). Default value is 1.
-     * Minimum value is 0. If a value less than 0 is set, the default value is used.
-     * @returns { SwiperAttribute }
+     * @param { ?Int32 } value - Number of child components to be preloaded (cached). Minimum value is 0. If a value less than 0 is set, the default value is used.
+     * @default 1
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -234,8 +239,9 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets whether to disable the swipe feature.
      *
-     * @param { ?Bool } value - Whether to disable the swipe feature. Default value is false.
-     * @returns { SwiperAttribute }
+     * @param { ?Bool } value - Whether to disable the swipe feature.
+     * @default false
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -247,8 +253,8 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
      * Sets the animation curve.
      *
      * @param { ?Curve } value - Animation curve.
-     * Default value is Curve.Linear.
-     * @returns { SwiperAttribute }
+     * @default Curve.Linear
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,
@@ -259,10 +265,9 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Triggered when the index of the currently displayed child component changes.
      *
-     * @param { ?(Int32) -> Unit } event
-     * @returns { SwiperAttribute }
-     * @throws { BusinessException } 100001 - Internal error.
-     * @throws { BusinessException } 190002 - The callback function is invalid.
+     * @param { ?(Int32) -> Unit } callback - Callback function triggered when the index changes.
+     * The parameter is the index of the currently displayed child component.
+     * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
         22,

@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Counter attributes.
+ * Defines the Counter attribute functions.
  */
 @!APILevel[
     22,
@@ -30,8 +30,9 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
     /**
      * Indicates whether the increase button of counter component is available or not.
      *
-     * @param { ?Bool } value
-     * @returns { CounterAttribute }
+     * @param { ?Bool } value - Whether to enable the increment button.
+     * @default true
+     * @returns { CounterAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -42,8 +43,9 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
     /**
      * Indicates whether the decrease button of counter component is available or not.
      *
-     * @param { ?Bool } value
-     * @returns { CounterAttribute }
+     * @param { ?Bool } value - Whether to enable the decrement button.
+     * @default true
+     * @returns { CounterAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -52,10 +54,10 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
     func enableDec(value: ?Bool): CounterAttribute
 
     /**
-     * Listen to the event that the value increases.
+     * Listens to the event when the counter value increases.
      *
-     * @param { ?VoidCallback } event
-     * @returns { CounterAttribute }
+     * @param { ?VoidCallback } event - The callback function triggered when the counter value increases.
+     * @returns { CounterAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -64,10 +66,10 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
     func onInc(event: ?VoidCallback): CounterAttribute
 
     /**
-     * Listens to the number decrease event.
+     * Listens to the event when the counter value decreases.
      *
-     * @param { ?VoidCallback } event
-     * @returns { CounterAttribute }
+     * @param { ?VoidCallback } event - The callback function triggered when the counter value decreases.
+     * @returns { CounterAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,

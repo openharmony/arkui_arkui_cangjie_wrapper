@@ -257,7 +257,7 @@ protected func measureTextSizeInner(options: MeasureOptions): SizeOptions {
 }
 
 /**
- * Defines the Measure interface.
+ * Defines the Measure class.
  *
  */
  @!APILevel[

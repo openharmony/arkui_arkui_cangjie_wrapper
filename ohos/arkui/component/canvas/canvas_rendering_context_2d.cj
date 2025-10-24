@@ -415,7 +415,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Init function of the canvas drawing context object, which is used to create a drawing context object.
      *
-     * @param { ?RenderingContextSettings } settings
+     * @param { ?RenderingContextSettings } settings - The canvas render context setting.
      */
     @!APILevel[
         22,
@@ -627,7 +627,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Text alignment mode
+     * Text alignment mode.
      */
     @!APILevel[
         22,
@@ -1096,6 +1096,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * Measure the size of a specified text.
      *
      * @param { ?String } text - Text string to be measured.
+     * @returns { TextMetrics } - The metrics of the text.
      */
     @!APILevel[
         22,
@@ -1203,7 +1204,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *
      * @param { ?ImageBitmap } image - Objects as duplicate image sources.
      * @param { ?Repetition } repetition - Specifies how to repeat images.
-     * @returns { Option<CanvasPattern> }
+     * @returns { Option<CanvasPattern> } - The created canvas pattern.
      */
     @!APILevel[
         22,
@@ -1611,7 +1612,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { Float64 } y0 - The y-axis coordinate of the start point.
      * @param { Float64 } x1 - x-axis coordinate of the end point.
      * @param { Float64 } y1 - y-axis coordinate of the end point.
-     * @returns { CanvasGradient }
+     * @returns { CanvasGradient } - The created linear gradient.
      */
     @!APILevel[
         22,
@@ -1630,7 +1631,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { Float64 } x1 - The x-axis coordinate of the end circle.
      * @param { Float64 } y1 - The y-axis coordinate of the end circle.
      * @param { Float64 } r1 - Radius of the end circle.
-     * @returns { CanvasGradient }
+     * @returns { CanvasGradient } - The created radial gradient.
      */
     @!APILevel[
         22,
@@ -1647,7 +1648,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *   Angle measurements start horizontally the right of the center and move around clockwise.
      * @param { ?Float64 } x - The x-axis coordinate of the center of the gradient.
      * @param { ?Float64 } y - The y-axis coordinate of the center of the gradient.
-     * @returns { CanvasGradient } A CanvasGradient object that draws a conic gradient around the given coordinates.
+     * @returns { CanvasGradient } - A CanvasGradient object that draws a conic gradient around the given coordinates.
      */
     @!APILevel[
         22,
@@ -1850,7 +1851,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { ?Float64 } sy - y coordinate of the upper left corner of the rectangular area of the PixelMap to be extracted.
      * @param { ?Float64 } sw - The width of the rectangular area of the PixelMap to be extracted.
      * @param { ?Float64 } sh - The height of the rectangular area of the PixelMap to be extracted.
-     * @returns { PixelMap }
+     * @returns { PixelMap } - The pixel map of the specified area.
      */
     @!APILevel[
         22,
@@ -1924,7 +1925,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Obtains the currently applied transformation matrix.
      *
-     * @returns { Matrix2D }
+     * @returns { Matrix2D } - The current transformation matrix.
      */
     @!APILevel[
         22,
@@ -1940,7 +1941,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * transfer ImageBitmap to content.
      *
-     * @param { ?ImageBitmap } bitmap
+     * @param { ?ImageBitmap } bitmap - The image to transfer from.
      */
     @!APILevel[
         22,
@@ -1954,7 +1955,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * The default value is 0, which is bound to the height of the specified canvas. The value is read-only.
+     * Which is bound to the height of the specified canvas. The value is read-only.
+     * @default 0
      */
     @!APILevel[
         22,
@@ -1969,7 +1971,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * The default value is 0, which is bound to the width of the specified canvas. The value is read-only.
+     * Which is bound to the width of the specified canvas. The value is read-only.
+     * @default 0
      */
     @!APILevel[
         22,
@@ -2008,7 +2011,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Gets the current segment style.
      *
-     * @returns { Array<Float64> }
+     * @returns { Array<Float64> } - The current line dash pattern array.
      */
     @!APILevel[
         22,
@@ -2029,7 +2032,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { ?String } type - Image format. The default value is image/png.
      * @param { ?Float64 } quality - If the image format is image/jpeg or image/webp, you can select the image quality from 0 to 1.
      *    If the value is out of the range, the default value 0.92 is used.
-     * @returns { String }
+     * @returns { String } - The data URL string of the canvas.
      */
     @!APILevel[
         22,
@@ -2070,7 +2073,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *
      * @param { ?Float64 } sw - Width of the ImageData object.
      * @param { ?Float64 } sh - Height of the ImageData object.
-     * @returns { ImageData }
+     * @returns { ImageData } - The created empty ImageData object.
      */
     @!APILevel[
         22,
@@ -2088,7 +2091,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *    The image content is not copied.
      *
      * @param { ?ImageData } imagedata - ImageData object to be copied.
-     * @returns { ImageData }
+     * @returns { ImageData } - The created ImageData object with the same dimensions.
      */
     @!APILevel[
         22,
@@ -2110,7 +2113,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { ?Float64 } sy - y coordinate of the upper left corner of the rectangular area of the image data to be extracted.
      * @param { ?Float64 } sw - The width of the rectangular area of the image data to be extracted.
      * @param { ?Float64 } sh - The height of the rectangular area of the image data to be extracted.
-     * @returns { ImageData }
+     * @returns { ImageData } - The pixel data of the specified area.
      */
     @!APILevel[
         22,

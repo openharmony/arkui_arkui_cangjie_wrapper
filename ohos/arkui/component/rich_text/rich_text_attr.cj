@@ -20,7 +20,8 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines RichText Component.
+ * Defines the RichText attribute functions.
+ * Provides methods for configuring the behavior of the RichText component.
  */
 @!APILevel[
     22,
@@ -28,10 +29,10 @@ import ohos.base.*
 ]
 sealed interface RichTextAttribute <: CommonMethod<RichTextAttribute> {
     /**
-     * Triggered when the RichText loading starts.
+     * Called when the rich text content begins loading.
      *
-     * @param { ?() -> Unit } callback
-     * @returns { RichTextAttribute } 
+     * @param { ?() -> Unit } callback - Callback function when loading starts.
+     * @returns { RichTextAttribute } Returns the rich text attribute.
      */
     @!APILevel[
         22,
@@ -40,10 +41,10 @@ sealed interface RichTextAttribute <: CommonMethod<RichTextAttribute> {
     func onStart(callback: ?() -> Unit): RichTextAttribute
 
     /**
-     * Triggered when the RichText loading ends.
+     * Called when the rich text content finishes loading, either successfully or with an error.
      *
-     * @param { ?() -> Unit } callback
-     * @returns { RichTextAttribute } 
+     * @param { ?() -> Unit } callback - Callback function when loading completes.
+     * @returns { RichTextAttribute } Returns the rich text attribute.
      */
     @!APILevel[
         22,

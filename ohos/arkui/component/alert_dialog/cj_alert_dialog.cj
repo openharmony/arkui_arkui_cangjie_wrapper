@@ -231,7 +231,8 @@ struct NativeAlertDialogParamV2 {
 ]
 public open class AlertDialogButtonBaseOptions {
     /**
-     * Enable switch of button.
+     * Enable switch of button
+     * @default true
      *
      */
     @!APILevel[
@@ -240,7 +241,8 @@ public open class AlertDialogButtonBaseOptions {
     ]
     public var enabled: ?Bool
     /**
-     * Default focus switch of button.
+     * Default focus switch of button
+     * @default false
      */
     @!APILevel[
         22,
@@ -297,6 +299,7 @@ public open class AlertDialogButtonBaseOptions {
      * @param { ?ResourceColor } fontColor - Text color of button.
      * @param { ?ResourceColor } backgroundColor - Background color of button.
      * @param { ?VoidCallback } action - Method executed by the callback.
+     * @returns { AlertDialogButtonBaseOptions } Returns the created AlertDialogButtonBaseOptions instance.
      */
     @!APILevel[
         22,
@@ -349,6 +352,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
      * @param { ?ResourceColor } backgroundColor - Background color of button.
      * @param { VoidCallback } action - Action of button.
      * @param { Bool } primary - Define whether the button responds to Enter/Space key by default.
+     * @returns { AlertDialogButtonOptions } Returns the created AlertDialogButtonOptions instance.
      */
     @!APILevel[
         22,
@@ -433,6 +437,8 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
 
 /**
  * Base param used for AlertDialog.show method.
+ * Defines the configuration parameters for displaying an AlertDialog component.
+ * Provides comprehensive control over dialog appearance, behavior, and positioning.
  */
 @!APILevel[
     22,
@@ -441,6 +447,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
 public open class AlertDialogParam {
     /**
      * Title Properties.
+     * The main title text displayed at the top of the alert dialog.
      */
     @!APILevel[
         22,
@@ -449,6 +456,7 @@ public open class AlertDialogParam {
     public var title: ?ResourceStr
     /**
      * Subtitle Properties.
+     * Additional descriptive text displayed below the title in the alert dialog.
      */
     @!APILevel[
         22,
@@ -456,7 +464,7 @@ public open class AlertDialogParam {
     ]
     public var subtitle: ?ResourceStr
     /**
-     * message Properties.
+     * The main content message displayed in the body of the alert dialog.
      */
     @!APILevel[
         22,
@@ -465,6 +473,7 @@ public open class AlertDialogParam {
     public var message: ?ResourceStr
     /**
      * Allows users to click the mask layer to exit.
+     * When enabled, users can dismiss the dialog by clicking on the semi-transparent overlay outside the dialog.
      */
     @!APILevel[
         22,
@@ -472,7 +481,7 @@ public open class AlertDialogParam {
     ]
     public var autoCancel: ?Bool
     /**
-     * Execute Cancel Function.
+     * Callback function that is executed when the dialog is canceled, either by clicking the mask or pressing the back button.
      */
     @!APILevel[
         22,
@@ -481,6 +490,7 @@ public open class AlertDialogParam {
     public var cancel: ?VoidCallback
     /**
      * Alignment in the vertical direction.
+     * Controls the positioning of the dialog on the screen using predefined alignment options.
      */
     @!APILevel[
         22,
@@ -489,6 +499,7 @@ public open class AlertDialogParam {
     public var alignment: ?DialogAlignment
     /**
      * Offset of the pop-up window relative to the alignment position.
+     * Fine-tunes the dialog position by applying additional x/y offsets to the alignment setting.
      */
     @!APILevel[
         22,
@@ -496,7 +507,7 @@ public open class AlertDialogParam {
     ]
     public var offset: ?Offset
     /**
-     * Grid count of dialog.
+     * Specifies the grid layout count for the dialog, affecting its sizing and positioning in grid-based layouts.
      */
     @!APILevel[
         22,
@@ -505,6 +516,7 @@ public open class AlertDialogParam {
     public var gridCount: ?UInt32
     /**
      * Mask Region of dialog. The size cannot exceed the main window.
+     * Defines the rectangular area where the dialog mask (overlay) is displayed.
      */
     @!APILevel[
         22,
@@ -512,7 +524,9 @@ public open class AlertDialogParam {
     ]
     public var maskRect: ?Rectangle
     /**
-     * Whether to display in the sub window.
+     * Whether to display in the sub window
+     * Controls whether the dialog is displayed in a separate sub-window or as an overlay in the main window.
+     * @default false
      */
     @!APILevel[
         22,
@@ -520,7 +534,9 @@ public open class AlertDialogParam {
     ]
     public var showInSubWindow: ?Bool
     /**
-     * Whether it is a modal dialog.
+     * Whether it is a modal dialog
+     * Determines if the dialog blocks interaction with the underlying content when displayed.
+     * @default true
      */
     @!APILevel[
         22,
@@ -528,7 +544,9 @@ public open class AlertDialogParam {
     ]
     public var isModal: ?Bool
     /**
-     * Defines the alertDialog's background color.
+     * Defines the alertDialog's background color
+     * Sets the background color of the dialog, supporting both solid colors and transparent backgrounds.
+     * @default Transparent
      */
     @!APILevel[
         22,
@@ -536,7 +554,9 @@ public open class AlertDialogParam {
     ]
     public var backgroundColor: ?ResourceColor
     /**
-     * Defines the alertDialog's background blur Style.
+     * Defines the alertDialog's background blur Style
+     * Applies a blur effect to the dialog background for a frosted glass appearance.
+     * @default BlurStyle.ComponentUltraThick
      */
     @!APILevel[
         22,
@@ -545,6 +565,7 @@ public open class AlertDialogParam {
     public var backgroundBlurStyle: ?BlurStyle
     /**
      * Callback function when the dialog interactive dismiss.
+     * Function called when the dialog is about to be dismissed through user interaction.
      */
     @!APILevel[
         22,
@@ -552,7 +573,7 @@ public open class AlertDialogParam {
     ]
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
     /**
-     * Defines the alertDialog's corner radius.
+     * Controls the roundness of the dialog corners, creating rounded or sharp corner effects.
      */
     @!APILevel[
         22,
@@ -561,6 +582,7 @@ public open class AlertDialogParam {
     public var cornerRadius: ?BorderRadiuses
     /**
      * Transition parameters of opening/closing AlertDialog.
+     * Defines the animation effects used when the dialog is shown or hidden.
      */
     @!APILevel[
         22,
@@ -568,7 +590,7 @@ public open class AlertDialogParam {
     ]
     public var transition: ?TransitionEffect
     /**
-     * Defines the alertDialog's width.
+     * Sets the width of the dialog, supporting various length units and percentage-based sizing.
      */
     @!APILevel[
         22,
@@ -576,7 +598,7 @@ public open class AlertDialogParam {
     ]
     public var width: ?Length
     /**
-     * Defines the alertDialog's height.
+     * Sets the height of the dialog, supporting various length units and percentage-based sizing.
      */
     @!APILevel[
         22,
@@ -584,7 +606,7 @@ public open class AlertDialogParam {
     ]
     public var height: ?Length
     /**
-     * Defines the alertDialog's border width.
+     * Controls the thickness of the dialog border, creating visual separation from the background.
      */
     @!APILevel[
         22,
@@ -592,7 +614,7 @@ public open class AlertDialogParam {
     ]
     public var borderWidth: ?Length
     /**
-     * Defines the alertDialog's border color.
+     * Sets the color of the dialog border for visual customization.
      */
     @!APILevel[
         22,
@@ -600,7 +622,7 @@ public open class AlertDialogParam {
     ]
     public var borderColor: ?BorderColor
     /**
-     * Defines the alertDialog's border style.
+     * Controls the visual style of the dialog border, such as solid, dashed, or dotted lines.
      */
     @!APILevel[
         22,
@@ -608,7 +630,7 @@ public open class AlertDialogParam {
     ]
     public var borderStyle: ?EdgeStyles
     /**
-     * Defines the alertDialog's shadow.
+     * Applies shadow effects to the dialog for depth and visual emphasis.
      */
     @!APILevel[
         22,
@@ -616,7 +638,7 @@ public open class AlertDialogParam {
     ]
     public var shadow: ?ShadowOptions
     /**
-     * Set the alertDialog's textStyle.
+     * Controls how text within the dialog is broken across lines, affecting readability and layout.
      */
     @!APILevel[
         22,
@@ -627,18 +649,18 @@ public open class AlertDialogParam {
     /**
      * Constructor of AlertDialogParam.
      *
-     * @param { ?ResourceStr } title - Title Properties.
-     * @param { ?ResourceStr } subtitle - Subtitle Properties.
-     * @param { ?ResourceStr } message - message Properties.
-     * @param { ?Bool } autoCancel - Allows users to click the mask layer to exit.
-     * @param { ?VoidCallback } cancel - Execute Cancel Function.
-     * @param { ?DialogAlignment } alignment - Alignment in the vertical direction.
-     * @param { ?Offset } offset - Offset of the pop-up window relative to the alignment position.
-     * @param { ?UInt32 } gridCount - Grid count of dialog.
-     * @param { ?Rectangle } maskRect - Mask Region of dialog. The size cannot exceed the main window.
-     * @param { ?Bool } showInSubWindow - Whether to display in the sub window.
-     * @param { ?Bool } isModal - Whether it is a modal dialog.
-     * @param { ?ResourceColor } backgroundColor - Defines the alertDialog's background color.
+     * @param { ?ResourceStr } title - Title Properties
+     * @param { ?ResourceStr } subtitle - Subtitle Properties
+     * @param { ?ResourceStr } message - message Properties
+     * @param { ?Bool } autoCancel - Allows users to click the mask layer to exit
+     * @param { ?VoidCallback } cancel - Execute Cancel Function
+     * @param { ?DialogAlignment } alignment - Alignment in the vertical direction
+     * @param { ?Offset } offset - Offset of the pop-up window relative to the alignment position
+     * @param { ?UInt32 } gridCount - Grid count of dialog
+     * @param { ?Rectangle } maskRect - Mask Region of dialog. The size cannot exceed the main window
+     * @param { ?Bool } showInSubWindow - Whether to display in the sub window
+     * @param { ?Bool } isModal - Whether it is a modal dialog
+     * @param { ?ResourceColor } backgroundColor - Defines the alertDialog's background color
      * @param { ?BlurStyle } backgroundBlurStyle - Defines the alertDialog's background blur Style
      * @param { ?Callback<(DismissDialogAction, Unit)> } onWillDismiss - Callback function when the dialog interactive dismiss.
      * @param { ?BorderRadiuses } cornerRadius - Defines the alertDialog's corner radius.
@@ -650,6 +672,7 @@ public open class AlertDialogParam {
      * @param { ?EdgeStyles } borderStyle - Defines the alertDialog's border style.
      * @param { ?ShadowOptions } shadow - Defines the alertDialog's shadow.
      * @param { ?WordBreak } textStyle - Set the alertDialog's textStyle.
+     * @returns { AlertDialogParam } Returns the created AlertDialogParam instance.
      */
     @!APILevel[
         22,
@@ -824,6 +847,7 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
      * @param { ?ShadowOptions } shadow - Defines the alertDialog's shadow.
      * @param { ?WordBreak } textStyle - Set the alertDialog's textStyle.
      * @param { ?AlertDialogButtonBaseOptions } confirm - Invoke the commit function.
+     * @returns { AlertDialogParamWithConfirm } Returns the created AlertDialogParamWithConfirm instance.
      */
     @!APILevel[
         22,
@@ -936,6 +960,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
      * @param { ?WordBreak } textStyle - Set the alertDialog's textStyle.
      * @param { AlertDialogButtonBaseOptions } primaryButton - First button.
      * @param { AlertDialogButtonBaseOptions } secondaryButton - Second button.
+     * @returns { AlertDialogParamWithButtons } Returns the created AlertDialogParamWithButtons instance.
      */
     @!APILevel[
         22,
@@ -1015,7 +1040,8 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
     ]
     public var buttons: ?Array<AlertDialogButtonOptions>
     /**
-     * The arrangement of buttons.
+     * The arrangement of buttons
+     * @default DialogButtonDirection.Auto
      */
     @!APILevel[
         22,
@@ -1050,6 +1076,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
      * @param { ?WordBreak } textStyle - Set the alertDialog's textStyle.
      * @param { Array<AlertDialogButtonOptions> } buttons - The array of buttons.
      * @param { DialogButtonDirection } buttonDirection - The arrangement of buttons.
+     * @returns { AlertDialogParamWithOptions } Returns the created AlertDialogParamWithOptions instance.
      */
     @!APILevel[
         22,

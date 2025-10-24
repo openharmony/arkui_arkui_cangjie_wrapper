@@ -32,9 +32,8 @@ foreign {
 }
 
 /**
- * Bindings for IfElse defined in cj_ifelse.cpp/h
- *
- * non-public API
+ * Conditional rendering.
+ * Based on the judgment result, the framework selectively renders the subcomponent.
  */
 @!APILevel[
     22,
@@ -44,9 +43,10 @@ public class If <: UINodeBase {
     var child: () -> Unit = {=>}
 
     /**
-     * Defines the constructor of If.
+     * Constructs an If component.
      *
-     * @param { () -> Unit } subcomponent
+     * @param { () -> Unit } subcomponent - The child component to be rendered when the condition is true.
+     * @returns { If }
      */
     @!APILevel[
         22,
@@ -60,10 +60,11 @@ public class If <: UINodeBase {
     }
 
     /**
-     * Set the branchId.
-     * BranchId identifies uniquely the if .. <1> .. else if .<2>. else .<3>.branch.
+     * Sets the branch ID.
+     * The branch ID uniquely identifies the if..else if..else branches.
      *
-     * @param { Int32 } value - branchId
+     * @param { Int32 } value - The branch ID.
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -76,9 +77,9 @@ public class If <: UINodeBase {
     }
 
     /**
-     * Get the branchId.
+     * Obtains the branch ID.
      *
-     * @returns { Int32 } branchId.
+     * @returns { Int32 } The branch ID.
      */
     @!APILevel[
         22,

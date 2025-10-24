@@ -39,9 +39,9 @@ foreign {
 ]
 public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
     /**
-     * Create a Line.
+     * Uses new to create the line.
      *
-     * @param { ?Length } windth - Width of the rectangle where the line resides.
+     * @param { ?Length } width - Width of the rectangle where the line resides.
      * @param { ?Length } height - Height of the rectangle where the line resides.
      */
     @!APILevel[
@@ -64,7 +64,7 @@ public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
     /**
      * Coordinate of the start point of the line (relative coordinate).
      *
-     * @param { ?(Float64, Float64) } value
+     * @param { ?(Float64, Float64) } value - The start point coordinate.
      * @returns { This }
      */
     @!APILevel[
@@ -82,7 +82,7 @@ public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
     /**
      * Line end coordinates (relative coordinates).
      *
-     * @param { ?(Float64, Float64) } value
+     * @param { ?(Float64, Float64) } value - The end point coordinate.
      * @returns { This }
      */
     @!APILevel[

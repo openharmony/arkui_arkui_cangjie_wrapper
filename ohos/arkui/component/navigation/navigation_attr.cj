@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Navigation Component.
+ * Defines the Navigation attribute functions.
  */
 @!APILevel[
     22,
@@ -83,7 +83,7 @@ sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
 }
 
 /**
- * Defines NavDestination Component.
+ * Defines the NavDestination attribute functions.
  */
 @!APILevel[
     22,
@@ -123,7 +123,7 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
      * wrapped in two lines, and then clipped with an ellipsis (...); (2) If a subtitle is set,
      * the subtitle is scaled down and then clipped with an ellipsis (...).
      *
-     * @param { ?ResourceStr } value
+     * @param { ?ResourceStr } value - Defines the title.
      * @param { ?NavigationTitleOptions } [options] - Indicates the options of titlebar.
      * @returns { NavDestinationAttribute }
      */
@@ -140,7 +140,7 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
      * wrapped in two lines, and then clipped with an ellipsis (...); (2) If a subtitle is set,
      * the subtitle is scaled down and then clipped with an ellipsis (...).
      *
-     * @param { ?CustomBuilder } value
+     * @param { ?CustomBuilder } value - Defines the title.
      * @param { ?NavigationTitleOptions } options - Indicates the options of titlebar.
      * @returns { NavDestinationAttribute }
      */
@@ -153,7 +153,7 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
     /**
      * Specifies whether to hide the title bar.
      *
-     * @param { ?Bool } value
+     * @param { ?Bool } value - Indicates whether to hide the title bar.
      * @returns { NavDestinationAttribute }
      */
     @!APILevel[

@@ -47,6 +47,7 @@ foreign func FfiOHOSAceFrameworkTransitionEffectSlideSwitch(): Int64
 /**
  * Defines the options of translate.
  *
+ * Configuration options for translation transformations.
  */
 @!APILevel[
     22,
@@ -56,9 +57,8 @@ public class TranslateOptions {
 
     /**
      * Translation distance along the x-axis.
-     * For the number type, the unit is VP, and the value range is (-∞, +∞).
+     * For the number type, the unit is vp, and the value range is (-∞, +∞).
      * For the string type, the value follows the format of length string type.
-     *
      */
     @!APILevel[
         22,
@@ -68,9 +68,8 @@ public class TranslateOptions {
 
     /**
      * Translation distance along the y-axis.
-     * For the number type, the unit is VP, and the value range is (-∞, +∞).
+     * For the number type, the unit is vp, and the value range is (-∞, +∞).
      * For the string type, the value follows the format of length string type.
-     *
      */
     @!APILevel[
         22,
@@ -81,7 +80,6 @@ public class TranslateOptions {
     /**
      * Distance to translate along the z-axis. The value is a floating
      * point number, the default value is 0.0, and the unit is px.
-     *
      */
     @!APILevel[
         22,
@@ -90,10 +88,11 @@ public class TranslateOptions {
     public var z: ?Length
 
     /**
-     * TranslateOptions constructor.
+     * Creates a new TranslateOptions instance with the specified properties.
      *
-     * @param { ?Length } x
-     * @param { ?Length } y
+     * @param { ?Length } x - Translation distance along the x-axis
+     * @param { ?Length } y - Translation distance along the y-axis
+     * @param { ?Length } z - Translation distance along the z-axis
      */
     @!APILevel[
         22,
@@ -109,6 +108,7 @@ public class TranslateOptions {
 /**
  * Defines the options of scale.
  *
+ * Configuration options for scaling transformations.
  */
 @!APILevel[
     22,
@@ -121,7 +121,6 @@ public class ScaleOptions {
      * x > 1: The component is scaled up along the x-axis.
      * 0 < x < 1: The component is scaled down along the x-axis.
      * x < 0: The component is scaled in the reverse direction of the x-axis.
-     *
      */
     @!APILevel[
         22,
@@ -134,7 +133,6 @@ public class ScaleOptions {
      * y > 1: The component is scaled up along the y-axis.
      * 0 < y < 1: The component is scaled down along the y-axis.
      * y < 0: The component is scaled in the reverse direction of the y-axis.
-     *
      */
     @!APILevel[
         22,
@@ -146,7 +144,6 @@ public class ScaleOptions {
      * Scale ratio along the z-axis. z > 1: The component is scaled up along the z-axis.
      * <br>0 < z < 1: The component is scaled down along the z-axis.
      * <br>z < 0: The component is scaled in the reverse direction of the z-axis.
-     *
      */
     @!APILevel[
         22,
@@ -156,7 +153,6 @@ public class ScaleOptions {
 
     /**
      * X coordinate of the transformation center point (anchor). Unit is vp.
-     *
      */
     @!APILevel[
         22,
@@ -166,7 +162,6 @@ public class ScaleOptions {
 
     /**
      * Y coordinate of the transformation center point (anchor). Unit is vp.
-     *
      */
     @!APILevel[
         22,
@@ -175,13 +170,13 @@ public class ScaleOptions {
     public var centerY: ?Length
 
     /**
-     * ScaleOptions constructor.
+     * Creates a new ScaleOptions instance with the specified properties.
      *
-     * @param { ?Float32 } x
-     * @param { ?Float32 } y
-     * @param { ?Float32 } z
-     * @param { ?Length } centerX
-     * @param { ?Length } centerY
+     * @param { ?Float32 } x - Scale ratio along the x-axis
+     * @param { ?Float32 } y - Scale ratio along the y-axis
+     * @param { ?Float32 } z - Scale ratio along the z-axis
+     * @param { ?Length } centerX - X coordinate of the transformation center
+     * @param { ?Length } centerY - Y coordinate of the transformation center
      */
     @!APILevel[
         22,
@@ -219,8 +214,7 @@ struct CScaleOptions {
 }
 
 /**
- * The param of rotate.
- *
+ * Configuration options for rotation transformations.
  */
 @!APILevel[
     22,
@@ -229,8 +223,7 @@ struct CScaleOptions {
 public class RotateOptions {
 
     /**
-     * The param of angle.
-     *
+     * Rotation angle in degrees.
      */
     @!APILevel[
         22,
@@ -240,7 +233,7 @@ public class RotateOptions {
 
     /**
      * X coordinate of the rotation axis vector.
-     *
+     * Defines the x-component of the rotation axis.
      */
     @!APILevel[
         22,
@@ -250,7 +243,7 @@ public class RotateOptions {
 
     /**
      * Y coordinate of the rotation axis vector.
-     *
+     * Defines the y-component of the rotation axis.
      */
     @!APILevel[
         22,
@@ -260,7 +253,7 @@ public class RotateOptions {
 
     /**
      * Z coordinate of the rotation axis vector.
-     *
+     * Defines the z-component of the rotation axis.
      */
     @!APILevel[
         22,
@@ -270,7 +263,7 @@ public class RotateOptions {
 
     /**
      * X coordinate of the transformation center point (anchor). Unit is vp.
-     *
+     * Defines the x-coordinate of the rotation center point.
      */
     @!APILevel[
         22,
@@ -280,7 +273,7 @@ public class RotateOptions {
 
     /**
      * Y coordinate of the transformation center point (anchor). Unit is vp.
-     *
+     * Defines the y-coordinate of the rotation center point.
      */
     @!APILevel[
         22,
@@ -290,7 +283,7 @@ public class RotateOptions {
 
     /**
      * Z-axis anchor, that is, the z-component of the 3D rotation center point.
-     *
+     * @default 0.vp
      */
     @!APILevel[
         22,
@@ -302,7 +295,7 @@ public class RotateOptions {
      * Distance from the user to the z=0 plane.
      * The axis and center of rotation are set based on the coordinate system,
      * which remains where it is when the component is moved.
-     *
+     * @default 0.0
      */
     @!APILevel[
         22,
@@ -311,16 +304,16 @@ public class RotateOptions {
     public var perspective: ?Float64
 
     /**
-     * RotateOptions constructor.
+     * Creates a new RotateOptions instance with the specified properties.
      *
-     * @param { ?Float64 } angle
-     * @param { ?Float64 } x
-     * @param { ?Float64 } y
-     * @param { ?Float64 } z
-     * @param { ?Length } centerX
-     * @param { ?Length } centerY
-     * @param { ?Length } centerZ
-     * @param { ?Float64 } perspective
+     * @param { ?Float64 } angle - Rotation angle in degrees
+     * @param { ?Float64 } x - X coordinate of the rotation axis vector
+     * @param { ?Float64 } y - Y coordinate of the rotation axis vector
+     * @param { ?Float64 } z - Z coordinate of the rotation axis vector
+     * @param { ?Length } centerX - X coordinate of the transformation center
+     * @param { ?Length } centerY - Y coordinate of the transformation center
+     * @param { ?Length } centerZ - Z coordinate of the transformation center
+     * @param { ?Float64 } perspective - Perspective distance
      */
     @!APILevel[
         22,
@@ -369,8 +362,7 @@ struct CRotateOptions {
 }
 
 /**
- * Defines the Edge object.
- *
+ * This enum specifies the edges of a component for transition effects.
  */
 @Derive[Equatable]
 @!APILevel[
@@ -379,8 +371,7 @@ struct CRotateOptions {
 ]
 public enum TransitionEdge {
     /**
-     * Top edge.
-     *
+     * Represents the top edge of the component or window.
      */
     @!APILevel[
         22,
@@ -389,7 +380,7 @@ public enum TransitionEdge {
     Top |
     /**
      * Bottom edge of the window.
-     *
+     * Represents the bottom edge of the component or window.
      */
     @!APILevel[
         22,
@@ -399,7 +390,7 @@ public enum TransitionEdge {
     /**
      * Start edge of the window, which is the left edge for left-to-right
      * scripts and the right edge for right-to-left scripts.
-     *
+     * Represents the logical start edge based on text direction.
      */
     @!APILevel[
         22,
@@ -409,7 +400,7 @@ public enum TransitionEdge {
     /**
      * End edge of the window, which is the right edge for left-to-right scripts
      * and the left edge for right-to-left scripts.
-     *
+     * Represents the logical end edge based on text direction.
      */
     @!APILevel[
         22,
@@ -431,7 +422,7 @@ public enum TransitionEdge {
 
 /**
  * Defines the transition effect.
- *
+ * This class provides methods to create various transition effects for components.
  */
 @!APILevel[
     22,
@@ -448,9 +439,10 @@ public class TransitionEffect <: RemoteDataLite {
 
     /**
      * Creates an opacity transition effect with alpha value.
+     * The component fades in or out based on the alpha value.
      *
      * @param { Float64 } alpha - opacity alpha value, value range [0, 1].
-     * @returns { TransitionEffect }
+     * @returns { TransitionEffect } - A new TransitionEffect instance with opacity effect.
      */
     @!APILevel[
         22,
@@ -463,10 +455,13 @@ public class TransitionEffect <: RemoteDataLite {
     }
 
     /**
-     * Creates a translate transition effect.
+     * Sets the translation effect for page transitions.
+     * The component moves from one position to another during the transition.
      *
-     * @param { TranslateOptions } options - translate options
-     * @returns { TransitionEffect }
+     * @param { TranslateOptions } options - Translation effect for page transitions
+     * <br> specifying the start value for entrance and the end value for exit.
+     * @default x: 0, y: 0, z:0.
+     * @returns { TransitionEffect } - A new TransitionEffect instance with translation effect.
      */
     @!APILevel[
         22,
@@ -480,9 +475,12 @@ public class TransitionEffect <: RemoteDataLite {
 
     /**
      * Creates a scale transition effect.
+     * The component scales up or down during the transition.
      *
-     * @param { ?ScaleOptions } options - scale options
-     * @returns { TransitionEffect }
+     * @param { ?ScaleOptions } options - scale options. Scale ratio along the x-, y-, and z-axis.
+     * <br>**centerX** and **centerY** are used to set the scale center point.
+     * <br>default value is x: 1, y: 1, z: 1, centerX: 50.percent, centerY: 50.percent.
+     * @returns { TransitionEffect } - A new TransitionEffect instance with scale effect.
      */
     @!APILevel[
         22,
@@ -496,9 +494,21 @@ public class TransitionEffect <: RemoteDataLite {
 
     /**
      * Creates a rotation transition effect.
+     * The component rotates during the transition.
      *
-     * @param { ?RotateOptions } options - rotate options
-     * @returns { TransitionEffect }
+     * @param { ?RotateOptions } options - rotate options.
+     * Set the rotation effect for component transitions when inserting and deleting.
+     * The value represents the starting rotation point for the inserting animation and the ending rotation point for the deleting animation.
+     * -x: Horizontal component of the rotational vector.
+     * -y: Vertical component of the rotational vector.
+     * -z: Vertical component of the rotational vector.
+     * -centerX, centerY specify the rotation center point, with default values of 50.percent,
+     * meaning that the default rotation center point is the center point of the component.
+     * -The center point of (0, 0) represents the upper-left corner of the component.
+     * -centerZ refers to the Z-axis anchor point. The default value of centerZ is 0.
+     * -perspective indicates the visual distance. The perspective property does not support transition animation.
+     * <br>default value is x: 0.0, y: 0.0, z: 0.0, centerX: 50.percent, centerY: 50.percent, centerY: 0.0, perspective:0.0.
+     * @returns { TransitionEffect } - A new TransitionEffect instance with rotation effect.
      */
     @!APILevel[
         22,
@@ -513,9 +523,10 @@ public class TransitionEffect <: RemoteDataLite {
 
     /**
      * Creates a move transition effect.
+     * The component moves in from or out to the specified edge.
      *
-     * @param { TransitionEdge } edge - the edge that component will move to
-     * @returns { TransitionEffect }
+     * @param { TransitionEdge } edge - The edge that component will move to
+     * @returns { TransitionEffect } - A new TransitionEffect instance with move effect.
      */
     @!APILevel[
         22,
@@ -528,11 +539,12 @@ public class TransitionEffect <: RemoteDataLite {
     }
 
     /**
-     * reates an asymmetric transition effect.
+     * Creates an asymmetric transition effect.
+     * Different effects are applied when the component appears and disappears.
      *
      * @param { TransitionEffect } appear - the transition which will be attached when the component is appear.
      * @param { TransitionEffect } disappear - the transition which will be attached when the component is disappear.
-     * @returns { TransitionEffect }
+     * @returns { TransitionEffect } - A new TransitionEffect instance with asymmetric effect.
      */
     @!APILevel[
         22,
@@ -546,6 +558,7 @@ public class TransitionEffect <: RemoteDataLite {
 
     /**
      * Combines another transition effect.
+     * Allows multiple transition effects to be applied simultaneously.
      *
      * @param { TransitionEffect } transitionEffect - transition effect which is be combined.
      * @returns { TransitionEffect } combined transition effect.
@@ -563,9 +576,10 @@ public class TransitionEffect <: RemoteDataLite {
 
     /**
      * Set the animation of current transition effect.
+     * Configures the animation parameters for the transition effect.
      *
      * @param { ?AnimateParam } value - animation parameters.
-     * @returns { TransitionEffect }
+     * @returns { TransitionEffect } - The current TransitionEffect instance with updated animation parameters.
      */
     @!APILevel[
         22,
@@ -582,7 +596,7 @@ public class TransitionEffect <: RemoteDataLite {
 
     /**
      * Disables the transition effect.
-     *
+     * Represents a transition effect that does nothing.
      */
     @!APILevel[
         22,
@@ -594,7 +608,7 @@ public class TransitionEffect <: RemoteDataLite {
 
     /**
      * Specifies a transition effect with transparency of 0, which is equivalent to TransitionEffect.opacity(0).
-     *
+     * The component becomes completely transparent during the transition.
      */
     @!APILevel[
         22,
@@ -604,7 +618,7 @@ public class TransitionEffect <: RemoteDataLite {
 
     /**
      * Defines a slide transition effect.
-     *
+     * The component slides in from the start edge and slides out to the end edge.
      */
     @!APILevel[
         22,
@@ -619,7 +633,6 @@ public class TransitionEffect <: RemoteDataLite {
      * and exits by shrinking first and then expanding as it slides out to the left, with a minimum scale ratio of 0.8.
      * It comes with default animation parameters, which can also be overridden.
      * The default animation duration is set to 600ms, and the specified animation curve is cubicBezierCurve(0.24, 0.0, 0.50, 1.0).
-     *
      */
     @!APILevel[
         22,

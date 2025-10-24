@@ -57,7 +57,7 @@ public class MainThreadContext <: ThreadContext {
     /**
      * MainThreadContext hasEnded func.
      *
-     * @returns { Bool }
+     * @returns { Bool } - Whether the context has ended
      */
     @!APILevel[
         22,

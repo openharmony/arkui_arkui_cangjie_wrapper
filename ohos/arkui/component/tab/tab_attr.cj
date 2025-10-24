@@ -21,7 +21,8 @@ import ohos.base.*
 import ohos.resource.*
 
 /**
- * Defines Tabs Component.
+ * Defines the Tabs attribute functions.
+ * Provides methods for configuring the appearance and behavior of the Tabs component.
  */
 @!APILevel[
     22,
@@ -30,10 +31,11 @@ import ohos.resource.*
 sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
     /**
      * Called when the width of the bar graph is set.
+     * Configures the width of the tab bar.
      *
      * @param { ?Length } value - Width of the tab bar. If the set value is less than 0
      * or greater than the width of the Tabs component, the default value is used.
-     * @returns { TabsAttribute }
+     * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
         22,
@@ -43,10 +45,11 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
 
     /**
      * Called when the height of the bar graph is set.
+     * Configures the height of the tab bar.
      *
      * @param { ?Length } value - Height of the tab bar. If the set value is less than 0 or
      * greater than the height of the Tabs component, the default value is used.
-     * @returns { TabsAttribute }
+     * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
         22,
@@ -56,9 +59,10 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
 
     /**
      * Sets whether to use vertical tabs.
+     * Configures the orientation of the tabs.
      *
-     * @param { ?Bool } value - Whether to use vertical tabs. Default value is false.
-     * @returns { TabsAttribute }
+     * @param { ?Bool } value - Whether to use vertical tabs. The default value is false.
+     * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
         22,
@@ -68,9 +72,10 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
 
     /**
      * Sets whether the tabs are scrollable.
+     * Controls whether the tab bar can be scrolled when there are many tabs.
      *
-     * @param { ?Bool } value - Whether the tabs are scrollable. Default value is true.
-     * @returns { TabsAttribute }
+     * @param { ?Bool } value - Whether the tabs are scrollable. The default value is true.
+     * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
         22,
@@ -80,10 +85,11 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
 
     /**
      * Sets the tab bar layout mode to BarMode.Fixed.
+     * Configures the layout mode of the tab bar.
      *
      * @param { ?BarMode } value - The width of each tab is determined by equally dividing
      * the number of tabs by the bar width (or bar height in the vertical layout).
-     * @returns { TabsAttribute }
+     * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
         22,
@@ -94,9 +100,10 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
     /**
      * Sets the length of time required to complete the tab switching animation,
      * which is initiated by clicking a specific tab or by calling the changeIndex API of TabsController.
+     * Configures the duration of the tab switching animation.
      *
-     * @param { ?Float32 } value
-     * @returns { TabsAttribute }
+     * @param { ?Float32 } value - Animation duration in seconds.
+     * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
         22,
@@ -115,8 +122,9 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
      * 4. A tab is clicked.
      * </p>
      *
-     * @param { ?Callback<Int32, Unit> } event
-     * @returns { TabsAttribute }
+     * @param { ?Callback<Int32, Unit> } event - Callback function triggered when tab changes.
+     * The parameter is the index of the selected tab.
+     * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
         22,
@@ -126,7 +134,8 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
 }
 
 /**
- * Defines TabContent Component.
+ * Defines the TabContent attribute functions.
+ * Provides methods for configuring the appearance and behavior of the TabContent component.
  */
 @!APILevel[
     22,
@@ -141,7 +150,7 @@ sealed interface TabContentAttribute <: CommonMethod<TabContentAttribute> {
      * </p>
      *
      * @param { ?ResourceStr } content - Content displayed on the tab bar.
-     * @returns { TabContentAttribute }
+     * @returns { TabContentAttribute } Returns the tab content attribute.
      */
     @!APILevel[
         22,
@@ -159,7 +168,7 @@ sealed interface TabContentAttribute <: CommonMethod<TabContentAttribute> {
      *
      * @param { ?ResourceStr } icon - TabBar icon.
      * @param { ?ResourceStr } text - TabBar text.
-     * @returns { TabContentAttribute }
+     * @returns { TabContentAttribute } Returns the tab content attribute.
      */
     @!APILevel[
         22,
@@ -175,7 +184,7 @@ sealed interface TabContentAttribute <: CommonMethod<TabContentAttribute> {
      * </p>
      *
      * @param { ?CustomBuilder } content - Content displayed on the tab bar.
-     * @returns { TabContentAttribute }
+     * @returns { TabContentAttribute } Returns the tab content attribute.
      */
     @!APILevel[
         22,

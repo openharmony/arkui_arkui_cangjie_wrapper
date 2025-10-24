@@ -8083,7 +8083,7 @@ public enum TextInputStyle {
     /**
      * Text input default style.
      * <p><strong>NOTE</strong>:
-     * <br>The caret width is fixed at 1.5 vp,
+     * <br>The caret width is fixed at 1.5.vp,
      * and the caret height is subject to the background height and font size of the selected text.
      * </p>
      *

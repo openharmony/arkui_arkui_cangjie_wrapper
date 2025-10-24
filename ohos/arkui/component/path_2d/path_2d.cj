@@ -81,7 +81,7 @@ public class Path2D <: RemoteDataLite {
     /**
      * Create a new path according to the description.
      *
-     * @param { ?String } path
+     * @param { ?String } path - Indicates the path string that compiles with the SVG path description specifications.
      */
     @!APILevel[
         22,
@@ -105,7 +105,8 @@ public class Path2D <: RemoteDataLite {
     /**
      * Adds a path according to the specified path variable.
      *
-     * @param { ?Path2D } path2D
+     * @param { ?Path2D } path2D - Indicates the path object to be added.
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -122,12 +123,13 @@ public class Path2D <: RemoteDataLite {
      * Adds 2D transformation effects, including rotation, translation, and scaling.
      * The current transformation matrix will not be overwritten. Multiple transformations will be superimposed.
      *
-     * @param { ?Float64 } scaleX
-     * @param { ?Float64 } skewX
-     * @param { ?Float64 } skewY
-     * @param { ?Float64 } scaleY
-     * @param { ?Float64 } translateX
-     * @param { ?Float64 } translateY
+     * @param { ?Float64 } scaleX - The scale value in the x-axis direction.
+     * @param { ?Float64 } skewX - The skew value in the x-axis direction.
+     * @param { ?Float64 } skewY - The skew value in the y-axis direction.
+     * @param { ?Float64 } scaleY - The scale value in the y-axis direction.
+     * @param { ?Float64 } translateX - The translate value in the x-axis direction.
+     * @param { ?Float64 } translateY - The translate value in the y-axis direction.
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -152,8 +154,9 @@ public class Path2D <: RemoteDataLite {
     /**
      * Moves the start point of a new sub-path to the (x, y) coordinate.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
+     * @param { Float64 } x - The x-axis coordinate of the point.
+     * @param { Float64 } y - The y-axis coordinate of the point.
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -168,8 +171,9 @@ public class Path2D <: RemoteDataLite {
     /**
      * Connect sub-path using straight lines.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
+     * @param { Float64 } x - The x-axis coordinate of the end point of the line.
+     * @param { Float64 } y - The y-axis coordinate of the end point of the line.
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -184,12 +188,13 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw an arc path.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @param { Float64 } radius
-     * @param { Float64 } startAngle
-     * @param { Float64 } endAngle
-     * @param { Bool } counterclockwise
+     * @param { Float64 } x - The x-axis coordinate of the center (center of the circle) of the arc.
+     * @param { Float64 } y - The y-axis coordinate of the center (center of the circle) of the arc.
+     * @param { Float64 } radius - Radius of the arc.
+     * @param { Float64 } startAngle - Start point of an arc, which starts to be calculated in the x-axis direction. The unit is radian.
+     * @param { Float64 } endAngle - The end point of the arc, in radians.
+     * @param { ?Bool } counterclockwise - If the value is true, the arc is drawn counterclockwise. Otherwise, the arc is drawn clockwise.
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -211,11 +216,12 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw arc paths based on control points and radius.
      *
-     * @param { Float64 } x1
-     * @param { Float64 } y1
-     * @param { Float64 } x2
-     * @param { Float64 } y2
-     * @param { Float64 } radius
+     * @param { Float64 } x1 - The x-axis coordinate of the first control point.
+     * @param { Float64 } y1 - The y-axis coordinate of the first control point.
+     * @param { Float64 } x2 - The x-axis coordinate of the second control point.
+     * @param { Float64 } y2 - The y-axis coordinate of the second control point.
+     * @param { Float64 } radius - Radius of the arc.
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -236,10 +242,11 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw quadratic Bezier curve paths.
      *
-     * @param { Float64 } cpx
-     * @param { Float64 } cpy
-     * @param { Float64 } x
-     * @param { Float64 } y
+     * @param { Float64 } cpx - The x-axis coordinate of the control point.
+     * @param { Float64 } cpy - The y-axis coordinate of the control point.
+     * @param { Float64 } x - x-axis coordinate of the end point.
+     * @param { Float64 } y - y-axis coordinate of the end point.
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -259,12 +266,13 @@ public class Path2D <: RemoteDataLite {
     /**
      * Drawing Cubic Bessel Curve Paths.
      *
-     * @param { Float64 } cp1x
-     * @param { Float64 } cp1y
-     * @param { Float64 } cp2x
-     * @param { Float64 } cp2y
-     * @param { Float64 } x
-     * @param { Float64 } y
+     * @param { Float64 } cp1x - The x-axis coordinate of the first control point.
+     * @param { Float64 } cp1y - The y-axis coordinate of the first control point.
+     * @param { Float64 } cp2x - The x-axis coordinate of the second control point.
+     * @param { Float64 } cp2y - The y-axis coordinate of the second control point.
+     * @param { Float64 } x - x-axis coordinate of the end point.
+     * @param { Float64 } y - y-axis coordinate of the end point.
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -286,14 +294,15 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw an Elliptic Path.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @param { Float64 } radiusX
-     * @param { Float64 } radiusY
-     * @param { Float64 } rotation
-     * @param { Float64 } startAngle
-     * @param { Float64 } endAngle
-     * @param { Bool } counterclockwise
+     * @param { Float64 } x - x-axis coordinate of the center of the ellipse.
+     * @param { Float64 } y - y-axis coordinate of the center of the ellipse.
+     * @param { Float64 } radiusX - Radius of the major axis of the ellipse.
+     * @param { Float64 } radiusY - Radius of the minor axis of the ellipse.
+     * @param { Float64 } rotation - The rotation angle of the ellipse, in radians (not angular degrees).
+     * @param { Float64 } startAngle - The angle of the starting point to be drawn, measured from the x-axis in radians (not angular degrees).
+     * @param { Float64 } endAngle - The angle, in radians, at which the ellipse is to be drawn (not angular degrees).
+     * @param { ?Bool } counterclockwise - If the value is true, the ellipse is drawn counterclockwise. Otherwise, the ellipse is drawn clockwise.
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -321,10 +330,11 @@ public class Path2D <: RemoteDataLite {
     /**
      * Draw Rectangular Paths.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @param { Float64 } width
-     * @param { Float64 } height
+     * @param { Float64 } x - The x-axis coordinate of the start point of the rectangle.
+     * @param { Float64 } y - The y-axis coordinate of the start point of the rectangle.
+     * @param { Float64 } width - Width of the rectangle.
+     * @param { Float64 } height - Height of the rectangle.
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -338,6 +348,7 @@ public class Path2D <: RemoteDataLite {
 
     /**
      * Returns the pen point to the start point of the current sub-path.
+     * @returns { Unit }
      */
     @!APILevel[
         22,

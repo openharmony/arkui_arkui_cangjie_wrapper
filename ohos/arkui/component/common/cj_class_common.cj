@@ -44,7 +44,7 @@ public class EventTarget {
     /**
      * EventTarget constructor.
      *
-     * @param { Area } area
+     * @param { Area } area - The area of EventTarget.
      */
     @!APILevel[
         22,
@@ -102,10 +102,10 @@ public class Area {
     /**
      * Area constructor.
      *
-     * @param { Length } width
-     * @param { Length } height
-     * @param { Position } position
-     * @param { Position } globalPosition
+     * @param { Length } width - The width of the area.
+     * @param { Length } height - The height of the area.
+     * @param { Position } position - The local position of the area.
+     * @param { Position } globalPosition - The global position of the area.
      */
     @!APILevel[
         22,
@@ -133,7 +133,7 @@ public class Area {
 ]
 public class Position {
     /**
-     * Coordinate x of the Position.
+     * The x-coordinate of the position.
      */
     @!APILevel[
         22,
@@ -142,7 +142,7 @@ public class Position {
     public var x: ?Length
 
     /**
-     * Coordinate y of the Position.
+     * The y-coordinate of the position.
      */
     @!APILevel[
         22,
@@ -151,9 +151,10 @@ public class Position {
     public var y: ?Length
 
     /**
-     * Position constructor
-     * @param { ?Length } x
-     * @param { ?Length } y
+     * Position constructor.
+     *
+     * @param { ?Length } x - The x-coordinate of the position.
+     * @param { ?Length } y - The y-coordinate of the position.
      */
     @!APILevel[
         22,
@@ -221,10 +222,10 @@ public class MotionPathOptions {
     /**
      * MotionPathOptions constructor.
      *
-     * @param { ?String } path
-     * @param { ?Float64 } from
-     * @param { ?Float64 } to
-     * @param { ?Bool } rotatable
+     * @param { ?String } path - The path of motion.
+     * @param { ?Float64 } from - The starting of motion.
+     * @param { ?Float64 } to - The ending of motion.
+     * @param { ?Bool } rotatable - Whether retatable.
      */
     @!APILevel[
         22,
@@ -253,9 +254,10 @@ public class MotionPathOptions {
 public class SharedTransitionOptions {
     /**
      * Animation duration.
-     * <br>Default value: **1000**.
      * <br>Unit: ms.
      * <br>Value range: [0, +∞).
+     *
+     * @default 1000
      */
     @!APILevel[
         22,
@@ -268,7 +270,8 @@ public class SharedTransitionOptions {
      * ** ICurve** type.<br>For the string type, this parameter indicates an animation
      * interpolation curve. For available values, see the **curve** parameter in
      * AnimateParam.
-     * <br>Default value: **Curve.Linear**.
+     *
+     * @default Curve.Linear
      */
     @!APILevel[
         22,
@@ -278,6 +281,8 @@ public class SharedTransitionOptions {
 
     /**
      * Animation delay time, in ms.
+     *
+     * @default 0
      */
     @!APILevel[
         22,
@@ -305,6 +310,8 @@ public class SharedTransitionOptions {
 
     /**
      * the animate type.
+     *
+     * @default SharedTransitionEffectType.Exchange
      */
     @!APILevel[
         22,
@@ -315,12 +322,12 @@ public class SharedTransitionOptions {
     /**
      * SharedTransitionOptions constructor.
      *
-     * @param { ?Int32 } duration
-     * @param { ?Curve } curve
-     * @param { ?Int32 } delay
-     * @param { ?MotionPathOptions } motionPath
-     * @param { ?Int32 } zIndex
-     * @param { ?SharedTransitionEffectType } effectType
+     * @param { ?Int32 } duration - The transition duration.
+     * @param { ?Curve } curve - The transition curve.
+     * @param { ?Int32 } delay - The transition delay.
+     * @param { ?MotionPathOptions } motionPath - The transition path.
+     * @param { ?Int32 } zIndex - The transition zIndex.
+     * @param { ?SharedTransitionEffectType } effectType - The transition effect type.
      */
     @!APILevel[
         22,
@@ -353,6 +360,8 @@ public class SharedTransitionOptions {
 public class AnimateParam {
     /**
      * Animation duration, in ms.
+     *
+     * @default 1000
      */
     @!APILevel[
         22,
@@ -362,6 +371,8 @@ public class AnimateParam {
     /**
      * Animation playback speed. A larger value indicates faster animation playback, and a smaller value indicates slower
      * animation playback. The value 0 means that there is no animation.
+     *
+     * @default 1.0
      */
     @!APILevel[
         22,
@@ -370,6 +381,8 @@ public class AnimateParam {
     public var tempo: ?Float32
     /**
      * Animation curve.
+     *
+     * @default Curve.EaseInOut
      */
     @!APILevel[
         22,
@@ -378,6 +391,8 @@ public class AnimateParam {
     public var curve: ?Curve
     /**
      * Animation delay time, in ms. By default, the animation has no delay.
+     *
+     * @default 0
      */
     @!APILevel[
         22,
@@ -388,6 +403,8 @@ public class AnimateParam {
      * Number of times that the animation is played. By default, the animation is played once.
      * The value **-1** indicates that the animation is played for an unlimited number of times.
      * The value **0** indicates that there is no animation.
+     *
+     * @default 1
      */
     @!APILevel[
         22,
@@ -396,6 +413,8 @@ public class AnimateParam {
     public var iterations: ?Int32
     /**
      * Playback mode. By default, the animation is played from the beginning after the playback is complete.
+     *
+     * @default PlayMode.Normal
      */
     @!APILevel[
         22,
@@ -412,7 +431,8 @@ public class AnimateParam {
     public var onFinish: Option<() -> Unit>
     /**
      * Type of the **onFinish** callback.
-     * Default value: FinishCallbackType.Removed.
+     *
+     * @default FinishCallbackType.Removed
      */
     @!APILevel[
         22,
@@ -431,15 +451,15 @@ public class AnimateParam {
     /**
      * AnimateParam constructor.
      *
-     * @param { ?Int32 } duration
-     * @param { ?Float32 } tempo
-     * @param { ?Curve } curve
-     * @param { ?Int32 } delay
-     * @param { ?Int32 } iterations
-     * @param { ?PlayMode } playMode
-     * @param { Option<() -> Unit> } onFinish
-     * @param { ?FinishCallbackType } finishCallbackType
-     * @param { Option<ExpectedFrameRateRange> } expectedFrameRateRange
+     * @param { ?Int32 } duration - The animation duration.
+     * @param { ?Float32 } tempo - The animation playback speed.
+     * @param { ?Curve } curve - The animation curve.
+     * @param { ?Int32 } delay - The animation delay.
+     * @param { ?Int32 } iterations - The playback times.
+     * @param { ?PlayMode } playMode - The play mode.
+     * @param { Option<() -> Unit> } onFinish - The callback on finish.
+     * @param { ?FinishCallbackType } finishCallbackType - The callback finish type.
+     * @param { Option<ExpectedFrameRateRange> } expectedFrameRateRange - Expected frame rate range of the animation.
      */
     @!APILevel[
         22,
@@ -469,7 +489,8 @@ public class AnimateParam {
 }
 
 /**
- * Defines the HorizontalAlignParam.
+ * Controls how components are aligned horizontally within their container or relative to an anchor.
+ * Provides precise horizontal positioning capabilities for UI layout.
  */
 @!APILevel[
     22,
@@ -478,6 +499,7 @@ public class AnimateParam {
 public class HorizontalAlignParam {
     /**
      * ID of the component that functions as the anchor point.
+     * Specifies the reference component for relative alignment positioning.
      */
     @!APILevel[
         22,
@@ -486,7 +508,8 @@ public class HorizontalAlignParam {
     public var anchor: ?String
 
     /**
-     * alignment mode relative to the anchor component.
+     * Alignment mode relative to the anchor component.
+     * Defines how this component should be horizontally positioned relative to the anchor.
      */
     @!APILevel[
         22,
@@ -497,8 +520,8 @@ public class HorizontalAlignParam {
     /**
      * Defines the constructor of HorizontalAlignParam.
      *
-     * @param { ?String } anchor
-     * @param { ?HorizontalAlign } align
+     * @param { ?String } anchor - ID of the component that functions as the anchor point
+     * @param { ?HorizontalAlign } align - Alignment mode relative to the anchor component
      */
     @!APILevel[
         22,
@@ -511,7 +534,8 @@ public class HorizontalAlignParam {
 }
 
 /**
- * Defines the VerticalAlignParam.
+ * Controls how components are aligned vertically within their container or relative to an anchor.
+ * Provides precise vertical positioning capabilities for UI layout.
  */
 @!APILevel[
     22,
@@ -520,6 +544,7 @@ public class HorizontalAlignParam {
 public class VerticalAlignParam {
     /**
      * ID of the component that functions as the anchor point.
+     * Specifies the reference component for relative alignment positioning.
      */
     @!APILevel[
         22,
@@ -528,7 +553,8 @@ public class VerticalAlignParam {
     public var anchor: ?String
 
     /**
-     * alignment mode relative to the anchor component.
+     * Alignment mode relative to the anchor component.
+     * Defines how this component should be vertically positioned relative to the anchor.
      */
     @!APILevel[
         22,
@@ -539,8 +565,8 @@ public class VerticalAlignParam {
     /**
      * Defines the constructor of VerticalAlignParam.
      *
-     * @param { ?String } anchor
-     * @param { ?VerticalAlign } align
+     * @param { ?String } anchor - ID of the component that functions as the anchor point
+     * @param { ?VerticalAlign } align - Alignment mode relative to the anchor component
      */
     @!APILevel[
         22,
@@ -563,6 +589,8 @@ public class Bias {
 
     /**
      * Horizontal ratio of the Bias, it must be >= 0.
+     *
+     * @default 0.5
      */
     @!APILevel[
         22,
@@ -572,6 +600,8 @@ public class Bias {
 
     /**
      * Vertical ratio of the Bias, it must be >= 0.
+     *
+     * @default 0.5
      */
     @!APILevel[
         22,
@@ -582,8 +612,8 @@ public class Bias {
     /**
      * Defines the constructor of Bias.
      *
-     * @param { ?Float64 } horizontal
-     * @param { ?Float64 } vertical
+     * @param { ?Float64 } horizontal - Horizontal ratio of the Bias, it must be >= 0.
+     * @param { ?Float64 } vertical - Vertical ratio of the Bias, it must be >= 0.
      */
     @!APILevel[
         22,
@@ -604,7 +634,7 @@ public class Bias {
 ]
 public class Fonts {
     /**
-     * font size.
+     * Font size.
      */
     @!APILevel[
         22,
@@ -613,7 +643,7 @@ public class Fonts {
     public var size: ?Length
 
     /**
-     * font weight.
+     * Font weight.
      */
     @!APILevel[
         22,
@@ -622,7 +652,7 @@ public class Fonts {
     public var weight: ?FontWeight
 
     /**
-     * font family.
+     * Font family.
      */
     @!APILevel[
         22,
@@ -631,7 +661,7 @@ public class Fonts {
     public var family: ?String
 
     /**
-     * font style.
+     * Font style.
      */
     @!APILevel[
         22,
@@ -642,10 +672,10 @@ public class Fonts {
     /**
      * Fonts constructor.
      *
-     * @param { ?Length } size
-     * @param { ?FontWeight } weight
-     * @param { ?ResourceStr } family
-     * @param { ?FontStyle } style
+     * @param { ?Length } size - The font size.
+     * @param { ?FontWeight } weight - The font weight.
+     * @param { ?ResourceStr } family - The font family.
+     * @param { ?FontStyle } style - The font style.
      */
     @!APILevel[
         22,
@@ -707,10 +737,10 @@ public class BorderRadiuses {
     /**
      * BorderRadiuses constructor.
      *
-     * @param { ?Length } topLeft
-     * @param { ?Length } topRight
-     * @param { ?Length } bottomLeft
-     * @param { ?Length } bottomRight
+     * @param { ?Length } topLeft - The top left.
+     * @param { ?Length } topRight - The top right.
+     * @param { ?Length } bottomLeft - The bottom left.
+     * @param { ?Length } bottomRight - The bottom right.
      */
     @!APILevel[
         22,
@@ -777,10 +807,10 @@ public class Margin {
     /**
      * Margin constructor.
      *
-     * @param { ?Length } top
-     * @param { ?Length } right
-     * @param { ?Length } bottom
-     * @param { ?Length } left
+     * @param { ?Length } top - The top of margin.
+     * @param { ?Length } right - The right of margin.
+     * @param { ?Length } bottom - The bottom of margin.
+     * @param { ?Length } left - The left of margin.
      */
     @!APILevel[
         22,
@@ -826,7 +856,8 @@ public class Margin {
 }
 
 /**
- * Define the options of shadow.
+ * Provides configuration options for rendering shadows behind UI components.
+ * Allows fine-tuning of shadow appearance including blur, color, offset, and fill properties.
  */
 @!APILevel[
     22,
@@ -835,6 +866,9 @@ public class Margin {
 public class ShadowOptions {
     /**
      * Blur radius of the shadow.
+     * Controls the softness of the shadow edges. Higher values create more blurred shadows.
+     *
+     * @default 0.0
      */
     @!APILevel[
         22,
@@ -842,8 +876,9 @@ public class ShadowOptions {
     ]
     public var radius: ?Float64
     /**
-     * Shadow type.
-     * <br>Default value: **COLOR**.
+     * Specifies the rendering method for the shadow, affecting performance and visual quality.
+     *
+     * @default ShadowType.Color
      */
     @!APILevel[
         22,
@@ -851,7 +886,10 @@ public class ShadowOptions {
     ]
     public var shadowType: ?ShadowType
     /**
-     * Color of the shadow. Default value: **Black**
+     * Color of the shadow.
+     * Defines the color tint applied to the shadow. Can be any valid resource color.
+     *
+     * @default Black
      */
     @!APILevel[
         22,
@@ -859,7 +897,11 @@ public class ShadowOptions {
     ]
     public var color: ?ResourceColor
     /**
-     * Offset of the shadow along the x-axis. Unit is px. Default value is 0.
+     * Offset of the shadow along the x-axis. Unit is px.
+     * Controls the horizontal positioning of the shadow relative to the component.
+     * Positive values shift the shadow to the right, negative values to the left.
+     *
+     * @default 0.0
      */
     @!APILevel[
         22,
@@ -867,7 +909,11 @@ public class ShadowOptions {
     ]
     public var offsetX: ?Float64
     /**
-     * Offset of the shadow along the y-axis. Unit is px. Default value is 0.
+     * Offset of the shadow along the y-axis. Unit is px.
+     * Controls the vertical positioning of the shadow relative to the component.
+     * Positive values shift the shadow downward, negative values upward.
+     *
+     * @default 0.0
      */
     @!APILevel[
         22,
@@ -878,8 +924,9 @@ public class ShadowOptions {
      * Whether to fill the inside of the component with shadow. **true**: Fill
      * the inside of the component with shadow.
      * <br>**false**: Do not fill the inside of the component with shadow.
-     * <br>The default value is **false**.
      * <br>**NOTE**<br>This attribute does not take effect in textShadow.
+     *
+     * @default false
      */
     @!APILevel[
         22,
@@ -890,12 +937,12 @@ public class ShadowOptions {
     /**
      * ShadowOptions constructor.
      *
-     * @param { ?Float64 } radius
-     * @param { ?ShadowType } shadowType
-     * @param { ?ResourceColor } color
-     * @param { ?Float64 } offsetX
-     * @param { ?Float64 } offsetY
-     * @param { ?Bool } fill
+     * @param { ?Float64 } radius - Blur radius of the shadow.
+     * @param { ?ShadowType } shadowType - Shadow type.
+     * @param { ?ResourceColor } color - Color of the shadow.
+     * @param { ?Float64 } offsetX - Offset of the shadow along the x-axis.
+     * @param { ?Float64 } offsetY - Offset of the shadow along the y-axis.
+     * @param { ?Bool } fill - Whether to fill the inside of the component with shadow.
      */
     @!APILevel[
         22,
@@ -1059,8 +1106,8 @@ public class Offset {
     /**
      * Offset constructor.
      *
-     * @param { ?Length } dx
-     * @param { ?Length } dy
+     * @param { ?Length } dx - X offset.
+     * @param { ?Length } dy - Y offset.
      */
     @!APILevel[
         22,
@@ -1086,7 +1133,8 @@ protected func parseOffset(offset: Offset): NativeOffset {
 }
 
 /**
- * Interface for ExpectedFrameRateRange.
+ * Defines the frame rate range for animations, allowing control over animation smoothness and performance.
+ * Provides fine-grained control over animation frame rates for optimal balance between visual quality and resource usage.
  */
 @!APILevel[
     22,
@@ -1094,7 +1142,7 @@ protected func parseOffset(offset: Offset): NativeOffset {
 ]
 public class ExpectedFrameRateRange {
     /**
-     * The minimum animation drawing FPS.
+     * Specifies the lowest acceptable frame rate for the animation.
      * The minimum value should be less than or equal to the maximum value.
      */
     @!APILevel[
@@ -1103,7 +1151,7 @@ public class ExpectedFrameRateRange {
     ]
     public var min: ?Int32
     /**
-     * The maximum animation drawing FPS.
+     * Specifies the highest desired frame rate for the animation.
      * The maximum value should be greater than or equal to the minimum value.
      */
     @!APILevel[
@@ -1113,6 +1161,7 @@ public class ExpectedFrameRateRange {
     public var max: ?Int32
     /**
      * The expected frame rate of dynamical callback rate range.
+     * Represents the target frame rate that the animation should attempt to maintain.
      * The value should be between the minimum and maximum value.
      * Otherwise, the actual callback rate will be dynamically
      * adjusted to better align with other animation sources.
@@ -1126,9 +1175,9 @@ public class ExpectedFrameRateRange {
     /**
      * ExpectedFrameRateRange constructor.
      *
-     * @param { ?Int32 } min
-     * @param { ?Int32 } max
-     * @param { ?Int32 } expected
+     * @param { ?Int32 } min - The minimum animation drawing FPS.
+     * @param { ?Int32 } max - The maximum animation drawing FPS.
+     * @param { ?Int32 } expected - The expected frame rate of dynamical callback rate range. The value should be between the minimum and maximum value
      */
     @!APILevel[
         22,
@@ -1222,6 +1271,7 @@ public class AlignRuleOptions {
     /**
      * Offset of the component under the anchor constraints.
      * <br>The value is the ratio of the distance to the left/upper anchor to the total distance between anchors.
+     * The Bias default value is horizontal: 0.5 and vertical: 0.5.
      */
     @!APILevel[
         22,
@@ -1232,13 +1282,13 @@ public class AlignRuleOptions {
     /**
      * Defines the constructor of AlignRuleOptions.
      *
-     * @param { ?HorizontalAlignParam } left
-     * @param { ?HorizontalAlignParam } right
-     * @param { ?HorizontalAlignParam } middle
-     * @param { ?VerticalAlignParam } top
-     * @param { ?VerticalAlignParam } bottom
-     * @param { ?VerticalAlignParam } center
-     * @param { Bias } bias
+     * @param { ?HorizontalAlignParam } left - The param of left align.
+     * @param { ?HorizontalAlignParam } right - The param of right align.
+     * @param { ?HorizontalAlignParam } middle - The param of middle align.
+     * @param { ?VerticalAlignParam } top - The param of top align.
+     * @param { ?VerticalAlignParam } bottom - The param of bottom align.
+     * @param { ?VerticalAlignParam } center - The param of center align.
+     * @param { Bias } bias - Defines the bias ratio in horizontal and vertical direction.
      */
     @!APILevel[
         22,
@@ -1303,10 +1353,10 @@ public class EdgeStyles {
     /**
      * Defines the constructor of EdgeStyles.
      *
-     * @param { ?BorderStyle } top
-     * @param { ?BorderStyle } right
-     * @param { ?BorderStyle } bottom
-     * @param { ?BorderStyle } left
+     * @param { ?BorderStyle } top - Top border style.
+     * @param { ?BorderStyle } right - Right border style.
+     * @param { ?BorderStyle } bottom - Bottom border style.
+     * @param { ?BorderStyle } left - Left border style.
      */
     @!APILevel[
         22,
@@ -1345,11 +1395,12 @@ protected class MultiShadowOptionsImpl {}
 public open class MultiShadowOptions {
     protected var impl: MultiShadowOptionsImpl = MultiShadowOptionsImpl()
     /**
-     * Shadow blur radius.
-     * Unit: vp.
+     * Shadow blur radius. Unit: vp.
      * <p>**NOTE**:
      * <br>A value less than or equal to 0 is handled as the default value.
      * </p>
+     *
+     * @default 20
      */
     @!APILevel[
         22,
@@ -1357,8 +1408,9 @@ public open class MultiShadowOptions {
     ]
     public var radius: ?Length
     /**
-     * Offset on the x-axis.
-     * Unit: vp.
+     * Offset on the x-axis. Unit: vp.
+     *
+     * @default 5
      */
     @!APILevel[
         22,
@@ -1366,8 +1418,9 @@ public open class MultiShadowOptions {
     ]
     public var offsetX: ?Length
     /**
-     * Offset on the y-axis.
-     * Unit: vp.
+     * Offset on the y-axis. Unit: vp.
+     *
+     * @default 5
      */
     @!APILevel[
         22,
@@ -1383,7 +1436,7 @@ public open class MultiShadowOptions {
 }
 
 /**
- * Provide an interface for the text style of picker.
+ * Provide a class for the text style of picker.
  */
 @!APILevel[
     22,
@@ -1411,8 +1464,8 @@ public class PickerTextStyle {
     /**
      * PickerTextStyle constructor.
      *
-     * @param { ?ResourceColor } color
-     * @param { ?Font } font
+     * @param { ?ResourceColor } color - Font color.
+     * @param { ?Font } font - Text style.
      */
     @!APILevel[
         22,
@@ -1425,7 +1478,7 @@ public class PickerTextStyle {
 }
 
 /**
- * Provide an interface for the text style of picker.
+ * Provide a class for the text style of picker.
  */
 @!APILevel[
     22,
@@ -1468,10 +1521,10 @@ public class Font {
     /**
      * Font constructor.
      *
-     * @param { ?Length } size
-     * @param { ?FontWeight } weight
-     * @param { ?ResourceStr } family
-     * @param { ?FontStyle } style
+     * @param { ?Length } size - Font size.
+     * @param { ?FontWeight } weight - Font weight.
+     * @param { ?ResourceStr } family - Font family.
+     * @param { ?FontStyle } style - Font style.
      */
     @!APILevel[
         22,
@@ -1494,12 +1547,12 @@ public class Font {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Bindable<T> {
-    /*
+    /**
      * Defines value of the bindable property.
      */
     public let value: T
 
-    /*
+    /**
      * Defines the callback of the bindable property which will be invoked when the property value changes.
      */
     public let onChange: (T) -> Unit

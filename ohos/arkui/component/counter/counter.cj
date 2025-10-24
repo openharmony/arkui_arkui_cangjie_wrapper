@@ -46,7 +46,7 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
     /**
      * Counter constructor.
      *
-     * @param { () -> Unit } content
+     * @param { () -> Unit } content - The content to display in the counter.
      */
     @!APILevel[
         22,
@@ -62,8 +62,9 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
     /**
      * Indicates whether the increase button of counter component is available or not.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether to enable the increment button.
+     * @default true
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -79,8 +80,9 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
     /**
      * Indicates whether the decrease button of counter component is available or not.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether to enable the decrement button.
+     * @default true
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -96,8 +98,8 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
     /**
      * Listen to the event that the value increases.
      *
-     * @param { ?VoidCallback } event
-     * @returns { This }
+     * @param { ?VoidCallback } event - The callback function triggered when the counter value increases.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -114,8 +116,8 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
     /**
      * Listens to the number decrease event.
      *
-     * @param { ?VoidCallback } event
-     * @returns { This }
+     * @param { ?VoidCallback } event - The callback function triggered when the counter value decreases.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,

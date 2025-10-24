@@ -82,7 +82,7 @@ foreign {
     func FfiOHOSAceFrameworkSliderBlockStyle(`type`: Int32, image: CString, shapeId: Int64): Unit
 }
 /**
- * Defines Slider Component.
+ * A component that provides a slider for selecting values within a range.
  */
 @!APILevel[
     22,
@@ -92,13 +92,14 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Defines Slider Component instance.
     *
-    * @param { ?Float64 } min
-    * @param { ?Float64 } max
-    * @param { ?Float64 } step
-    * @param { ?Float64 } value
-    * @param { ?SliderStyle } style
-    * @param { ?Axis } direction
-    * @param { ?Bool } reverse
+    * @param { ?Float64 } min - Minimum value.
+    * @param { ?Float64 } max - Maximum value.
+    * @param { ?Float64 } step - Step of the slider.
+    * @param { ?Float64 } value - Current value of Slider.
+    * @param { ?SliderStyle } style - Style of the slider thumb and track.
+    * @param { ?Axis } direction - Whether the slider moves horizontally or vertically.
+    * @param { ?Bool } reverse - Whether the slider values are revers. By default, the values increase from left to right for a horizontal
+    *      slider and from top to bottom for a vertical slider.
     */
     @!APILevel[
         22,
@@ -197,8 +198,9 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Called when setting whether to display step size.
     *
-    * @param { ?Bool } value
+    * @param { ?Bool } value - Called when setting whether to display step size.
     * @returns { This }
+    * @default false
     */
     @!APILevel[
         22,
@@ -213,8 +215,9 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Called when the percentage of bubble prompt is set when sliding.
     *
-    * @param { ?Bool } value
-    * @param { ?ResourceStr } content
+    * @param { ?Bool } value - Whether to display the bubble.
+    * @param { ?ResourceStr } content - Text content in the bubble.If the content is not specified,
+    *     the current percentage is displayed by default.
     * @returns { This }
     */
     @!APILevel[
@@ -280,7 +283,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
     * Called when the border color of block is set.
     *
-    * @param { ?ResourceColor } value
+    * @param { ?ResourceColor } value - The border color of block.
     * @returns { This }
     */
     @!APILevel[

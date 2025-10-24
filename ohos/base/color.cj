@@ -32,6 +32,7 @@ let COLOR_TRANSPARENT_VALUE: UInt32 = 0X00000000
 public interface ResourceColor {
     /**
      * The value type of ResourceColor.
+     * @returns { UInt32 } - Color value in rgba
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -47,7 +48,7 @@ extend Int64 <: ResourceColor {
     /**
      * The hexadecimal value of the color.
      *
-     * @returns { UInt32 }
+     * @returns { UInt32 } - The rgba value of color
      */
     @!APILevel[
         22,
@@ -63,7 +64,7 @@ extend UInt32 <: ResourceColor {
     /**
      * The hexadecimal value of the color.
      *
-     * @returns { UInt32 }
+     * @returns { UInt32 } - The rgba value of color
      */
     @!APILevel[
         22,
@@ -92,6 +93,7 @@ public class Color <: ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Black: Color = Color(0xff000000)
+    
     /**
      * Blue.
      */
@@ -100,6 +102,7 @@ public class Color <: ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Blue: Color = Color(0xff0000ff)
+    
     /**
      * Gray.
      */
@@ -108,6 +111,7 @@ public class Color <: ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Gray: Color = Color(0xff808080)
+    
     /**
      * Green.
      */
@@ -116,6 +120,7 @@ public class Color <: ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Green: Color = Color(0xff008000)
+    
     /**
      * Red.
      */
@@ -124,6 +129,7 @@ public class Color <: ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Red: Color = Color(0xffff0000)
+    
     /**
      * White.
      */
@@ -132,6 +138,7 @@ public class Color <: ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let White: Color = Color(0xffffffff)
+    
     /**
      * Transparent.
      */
@@ -144,10 +151,11 @@ public class Color <: ResourceColor {
     /**
      * Constructor of Color.
      *
-     * @param { UInt8 } red
-     * @param { UInt8 } green
-     * @param { UInt8 } blue
-     * @param { UInt8 } alpha
+     * @param { UInt8 } red - Red component of color
+     * @param { UInt8 } green - Green component of color
+     * @param { UInt8 } blue - Blue component of color
+     * @param { ?Float32 } alpha - Alpha component of color
+     * @default alpha - 1.0
      */
     @!APILevel[
         22,
@@ -170,7 +178,7 @@ public class Color <: ResourceColor {
     /**
      * Constructor of Color.
      *
-     * @param { UInt32 } value
+     * @param { UInt32 } value - The rgba value of color
      */
     @!APILevel[
         22,
@@ -194,7 +202,7 @@ public class Color <: ResourceColor {
     /**
      * The hexadecimal value of the color.
      *
-     * @returns { UInt32 }
+     * @returns { UInt32 } - The rgba value of color
      */
     @!APILevel[
         22,

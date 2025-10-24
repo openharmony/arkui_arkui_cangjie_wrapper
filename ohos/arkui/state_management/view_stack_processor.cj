@@ -43,7 +43,7 @@ public class ViewStackProcessor {
     /**
      * Make and return new elementId, will be used to create the next Component.
      *
-     * @returns { Int64 }
+     * @returns { Int64 } The new element ID.
      */
     @!APILevel[
         22,
@@ -54,11 +54,13 @@ public class ViewStackProcessor {
             Int64(FfiOHOSAceFrameworkAllocateNewElmetIdForNextComponent())
         }
     }
+    
     /**
      * Start Get access recording, and account all access to given elmtId.
      * Note this can be a different elmtId than the one used to create new Component.
      *
-     * @param { Int64 } elmtId
+     * @param { Int64 } elmtId - The element ID to start access recording for.
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -69,6 +71,7 @@ public class ViewStackProcessor {
             FfiOHOSAceFrameworkStartGetAccessRecordingFor(elmtId)
         }
     }
+    
     /**
      * Get the elmtId to which any get access should be accounted.
      * note this can be the same as the currently created elmtId (top of stack)
@@ -76,7 +79,7 @@ public class ViewStackProcessor {
      *
      * returns the elmtId given by StartGetAccessRecordingFor -1 no access recording
      *
-     * @returns { Int64 }
+     * @returns { Int64 } The element ID.
      */
     @!APILevel[
         22,
@@ -91,6 +94,8 @@ public class ViewStackProcessor {
     /**
      * Stop get access recording
      * also invalidates any reserved but unclaimed elmtId for Component creation.
+     * 
+     * @returns { Unit }
      */
     @!APILevel[
         22,
@@ -107,6 +112,8 @@ public class ViewStackProcessor {
      * If, and the if branch creates a Text etc that requires an implict pop
      * this function is needed after executing the inner observeComponentCreation
      * and before read ViewStackProcessor.GetTopMostElementId();
+     * 
+     * @returns { Unit }
      */
     @!APILevel[
         22,

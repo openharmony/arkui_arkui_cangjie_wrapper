@@ -119,8 +119,8 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Grid is returned when the parameter is transferred.
      *
-     * @param { ?Scroller } scroller - Controller bound to the grid.
-     * @param { ()->Unit } child - The child component of the grid.
+     * @param { ?Scroller } scroller - Scroller controller bound to the grid for controlling scrolling.
+     * @param { ()->Unit } child - The child component to be displayed in the grid, typically LazyForEach or Repeat.
      */
     @!APILevel[
         22,
@@ -143,8 +143,9 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * This parameter specifies the number of columns in the current grid layout.
      *
-     * @param { ?String } value
-     * @returns { This }
+     * @param { ?String } value - String specifying the number of columns and their proportional distribution, 
+     * for example "1fr 1fr" means two columns of equal width.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -162,9 +163,9 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Lets you set the number of rows in the current grid layout.
      *
-     * @param { ?String } value
-     * @returns { This }
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?String } value - String specifying the number of rows and their proportional distribution, 
+     * for example "1fr 1fr" means two rows of equal height.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -182,9 +183,8 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Allows you to set the spacing between columns.
      *
-     * @param { ?Length } value
-     * @returns { This }
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?Length } value - Spacing between adjacent columns.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -212,9 +212,8 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Lets you set the spacing between rows.
      *
-     * @param { ?Length } value
-     * @returns { This }
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?Length } value - Spacing between adjacent rows.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -240,10 +239,10 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     }
 
     /**
-     * cached Count.
+     * Sets the number of grid items to be preloaded and cached for performance optimization.
      *
-     * @param { ?Int32 } count
-     * @returns { This }
+     * @param { ?Int32 } value - Number of grid items to preload beyond the visible area.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -256,9 +255,9 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Called to set number of GridItems to be preloaded (cached) in LazyForEach / Repeat.
      *
-     * @param { ?Int32 } count
-     * @param { ?Bool } show
-     * @returns { This }
+     * @param { ?Int32 } count - Number of grid items to preload beyond the visible area.
+     * @param { ?Bool } show - Whether to display cached items when clip is disabled.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,

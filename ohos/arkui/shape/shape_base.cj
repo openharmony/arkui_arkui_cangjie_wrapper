@@ -40,6 +40,10 @@ foreign {
     func FFISetHeightWithEmpty(): Unit
 }
 
+/**
+ * Base shape class.
+ * Abstract base class for all shape components, providing common properties and methods for shape rendering.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -55,9 +59,10 @@ public abstract class BaseShape <: RemoteDataLite {
 
     /**
      * Sets the color of the filled area. The abnormal value is processed based on the default value.
+     * Configures the fill color used to paint the interior of the shape.
      *
-     * @param { ?ResourceColor } color - Color of the filled area
-     * @returns BaseShape instance
+     * @param { ?ResourceColor } color - Color of the filled area.
+     * @returns { This } Returns the BaseShape instance.
      */
     @!APILevel[
         22,
@@ -72,9 +77,10 @@ public abstract class BaseShape <: RemoteDataLite {
 
     /**
      * Sets the shape width.
+     * Configures the width dimension of the shape.
      *
-     * @param { ?Length } value - Shape width
-     * @returns BaseShape instance
+     * @param { ?Length } width - Shape width.
+     * @returns { This } Returns the BaseShape instance.
      */
     @!APILevel[
         22,
@@ -94,9 +100,10 @@ public abstract class BaseShape <: RemoteDataLite {
 
     /**
      * Sets the shape height.
+     * Configures the height dimension of the shape.
      *
-     * @param { ?Length } value - Shape height
-     * @returns BaseShape instance
+     * @param { ?Length } height - Shape height.
+     * @returns { This } Returns the BaseShape instance.
      */
     @!APILevel[
         22,
@@ -116,10 +123,11 @@ public abstract class BaseShape <: RemoteDataLite {
 
     /**
      * Sets the shape size.
+     * Configures both the width and height dimensions of the shape.
      *
-     * @param { ?Length } width - Shape width
-     * @param { ?Length } height - Shape height
-     * @returns BaseShape instance
+     * @param { ?Length } width - Shape width.
+     * @param { ?Length } height - Shape height.
+     * @returns { This } Returns the BaseShape instance.
      */
     @!APILevel[
         22,
@@ -137,10 +145,11 @@ public abstract class BaseShape <: RemoteDataLite {
 
     /**
      * Sets the shape offset.
+     * Configures the position offset of the shape relative to its container.
      *
-     * @param { ?Length } x - x Offset
-     * @param { ?Length } y - y Offset
-     * @returns BaseShape instance
+     * @param { ?Length } y - x Offset from the left.
+     * @param { ?Length } y - y Offset from the top.
+     * @returns { This } Returns the BaseShape instance.
      */
     @!APILevel[
         22,

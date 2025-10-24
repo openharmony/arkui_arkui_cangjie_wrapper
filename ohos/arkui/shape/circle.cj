@@ -25,7 +25,7 @@ import ohos.labels.APILevel
 foreign func FfiOHOSAceFrameworkCircleInsCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Int64
 
 /**
- * Defines a circle drawing class.
+ * A shape component that renders a circular graphic element.
  */
 @!APILevel[
     22,
@@ -33,10 +33,11 @@ foreign func FfiOHOSAceFrameworkCircleInsCreate(width: Float64, widthUnit: Int32
 ]
 public class CircleShape <: BaseShape {
     /**
-     * Create a circle drawing class instance.
+     * Initializes a circular shape with optional width and height parameters.
      *
-     * @param { ?Length } width 
-     * @param { ?Length } height
+     * @param { ?Length } width - Width of the circle.
+     * @param { ?Length } height - Height of the circle.
+     * @returns { CircleShape } Returns the CircleShape instance.
      */
     @!APILevel[
         22,
