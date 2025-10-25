@@ -377,8 +377,24 @@ public abstract class CustomView <: RemoteView & Observer {
         recycleUpdateFunc(oldElemtId, true, node).initial()
         ViewStackProcessor.StopGetAccessRecording()
     }
-
+    /**
+     * Invoked when a reusable custom component is re-added to the node tree
+     * from the reuse cache to receive construction parameters of the component.
+     *
+     * @param { ReuseParams } _ - Custom component init params.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     protected open func aboutToReuse(_: ReuseParams): Unit {} /*cjlint-ignore !G.FUNC.02 */
+    /**
+     * aboutToRecycle Method.
+     */
+    @!APILevel[
+        22,
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
     protected open func aboutToRecycle(): Unit {}
 
     /**
