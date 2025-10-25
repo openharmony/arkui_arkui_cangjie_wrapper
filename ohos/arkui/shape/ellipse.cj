@@ -25,7 +25,7 @@ import ohos.labels.APILevel
 foreign func FfiOHOSAceFrameworkEllipseInsCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Int64
 
 /**
- * Defines a ellipse drawing class.
+ * A shape component that renders an elliptical graphic element.
  */
 @!APILevel[
     22,
@@ -33,10 +33,11 @@ foreign func FfiOHOSAceFrameworkEllipseInsCreate(width: Float64, widthUnit: Int3
 ]
 public class EllipseShape <: BaseShape {
     /**
-     * Create a ellipse drawing class instance.
+     * Initializes an elliptical shape with optional width and height parameters.
      *
-     * @param { ?Length } width 
-     * @param { ?Length } height
+     * @param { ?Length } width - Width of the ellipse.
+     * @param { ?Length } height - Height of the ellipse.
+     * @returns { EllipseShape } Returns the EllipseShape instance.
      */
     @!APILevel[
         22,

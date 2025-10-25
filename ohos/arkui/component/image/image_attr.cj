@@ -23,13 +23,7 @@ import ohos.resource.*
 import ohos.multimedia.image.PixelMap
 
 /**
- * Defines Image Component.
- *
- * <p>If flickering occurs during image loading, set <b>syncLoad</b> to <b>true</b>.
- * 
- * <p>If white blocks persist during image loading.
- * 
- * <p>If image loading takes a long time.
+ * Defines the Image attribute functions.
  */
 @!APILevel[
     22,
@@ -43,7 +37,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      * 
-     * @param { ?ResourceStr } value - Placeholder image displayed during loading, Default value is null.
+     * @param { ?ResourceStr } value - Placeholder image displayed during loading. Default value is null.
      * @returns { ImageAttribute }
      */
     @!APILevel[
@@ -55,7 +49,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
     /**
      * Sets how the image is resized to fit its container.
      *
-     * @param { ?ImageFit } value - How the image is resized to fit its container, Default value is ImageFit.Cover.
+     * @param { ?ImageFit } value - How the image is resized to fit its container. Default value is ImageFit.Cover.
      * @returns { ImageAttribute }
      */
     @!APILevel[
@@ -65,14 +59,14 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
     func objectFit(value: ?ImageFit): ImageAttribute
 
     /**
-     * Set the repeat style of the picture
+     * Set the repeat style of the picture.
      *
      * <p><strong>NOTE</strong>:
      * <br>This attribute is not applicable to SVG images.
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?ImageRepeat } value - How the image is repeated, Default value is ImageRepeat.NoRepeat.
+     * @param { ?ImageRepeat } value - How the image is repeated. Default value is ImageRepeat.NoRepeat.
      * @returns { ImageAttribute }
      */
     @!APILevel[
@@ -89,7 +83,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?ImageInterpolation } value - Interpolation effect of the image, Default value is ImageInterpolation.Low.
+     * @param { ?ImageInterpolation } value - Interpolation effect of the image. Default value is ImageInterpolation.Low.
      * @returns { ImageAttribute }
      */
     @!APILevel[
@@ -107,7 +101,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?ImageRenderMode } value - Rendering mode of the image, Default value is ImageRenderMode.Original.
+     * @param { ?ImageRenderMode } value - Rendering mode of the image. Default value is ImageRenderMode.Original.
      * @returns { ImageAttribute }
      */
     @!APILevel[
@@ -119,7 +113,6 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
     /**
      * Sets the decoding size of the image. 
      * The original picture is decoded into a picture of a specified size. The unit of the number type is px.
-     * Anonymous Object Rectification.
      *
      * <p><strong>NOTE</strong>:
      * <br>This attribute works only when the target size is smaller than the source size.
@@ -144,7 +137,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?Bool } value - Whether to load the image synchronously, Default value is false.
+     * @param { ?Bool } value - Whether to load the image synchronously. Default value is false.
      * @returns { ImageAttribute }
      */
     @!APILevel[
@@ -181,7 +174,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * </p>
      *
      * @param { ?Bool } value - Whether to resize the image source based on the size of the display area
-     * during image decoding, Default value is false.
+     * during image decoding. Default value is false.
      * @returns { ImageAttribute }
      */
     @!APILevel[
@@ -197,7 +190,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?Bool } value - Whether to display the image in the system language direction, Default value is false.
+     * @param { ?Bool } value - Whether to display the image in the system language direction. Default value is false.
      * @returns { ImageAttribute }
      */
     @!APILevel[
@@ -213,7 +206,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?Bool } value - Whether to fit the image to the size of the image source, Default value is false.
+     * @param { ?Bool } value - Whether to fit the image to the size of the image source. Default value is false.
      * @returns { ImageAttribute }
      */
     @!APILevel[
@@ -230,7 +223,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * <br>This event is not triggered if the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?ImageCompleteCallback } callback
+     * @param { ?ImageCompleteCallback } callback - The callback function triggered when image loading is complete.
      * @returns { ImageAttribute }
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -248,7 +241,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * <br>This event is not triggered if the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?ImageErrorCallback } callback
+     * @param { ?ImageErrorCallback } callback - The callback function triggered when an error occurs.
      * @returns { ImageAttribute }
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -267,7 +260,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * <br>This event is not triggered if the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?() -> Unit } event
+     * @param { ?() -> Unit } event - The callback function triggered when SVG playback is complete.
      * @returns { ImageAttribute }
      */
     @!APILevel[

@@ -120,8 +120,8 @@ public class CheckboxGroupResult {
     /**
      * CheckboxGroupResult constructor.
      *
-     * @param { SelectStatus } status
-     * @param { Array<String> } name
+     * @param { SelectStatus } status - The selection status of the checkbox group.
+     * @param { Array<String> } name - The names of the selected checkboxes.
      */
     @!APILevel[
         22,
@@ -164,9 +164,9 @@ func parseCheckboxGroupResult(event: FFiCheckboxGroupResult): CheckboxGroupResul
 ]
 public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGroupAttribute {
     /**
-     * Called when the CheckboxGroup component is used.
+     * CheckboxGroup Constructor.
      *
-     * @param { ?String } group
+     * @param { ?String } group - The group name of the checkbox group.
      */
     @!APILevel[
         22,
@@ -181,10 +181,10 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
     }
 
     /**
-     * setting whether all checkbox is selected.
+     * Set whether all checkbox is selected.
      *
-     * @param { ?Bool } isAllSelected
-     * @returns { This }
+     * @param { ?Bool } value - Whether to select all checkboxes.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -198,10 +198,10 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
     }
 
     /**
-     * setting the display color of checkbox.
+     * Set the display color of checkbox.
      *
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } value - The color to display when checkboxes are selected.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -321,10 +321,9 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
 
     /**
      * Called when the selection status changes.
-     * Anonymous Object Rectification.
      *
-     * @param { ?OnCheckboxGroupChangeCallback } callback
-     * @returns { This }
+     * @param { ?OnCheckboxGroupChangeCallback } callback - The callback function triggered when the selection status changes, with the new selection result as parameter.
+     * @returns { This } - The instance of the component.
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[

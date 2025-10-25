@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Checkbox attributes.
+ * Defines the Checkbox attribute functions.
  */
 @!APILevel[
     22,
@@ -28,10 +28,11 @@ import ohos.base.*
 ]
 sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
     /**
-     * setting whether checkbox is selected.
+     * Set whether checkbox is selected.
      *
-     * @param { ?Bool } value
-     * @returns { CheckboxAttribute }
+     * @param { ?Bool } value - Whether the checkbox is selected.
+     * @default true
+     * @returns { CheckboxAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -40,10 +41,11 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
     func select(value: ?Bool): CheckboxAttribute
 
     /**
-     * setting the display color of checkbox.
+     * Set the display color of checkbox.
      *
-     * @param { ?ResourceColor } value
-     * @returns { CheckboxAttribute }
+     * @param { ?ResourceColor } value - Whether is selected. 
+     * @default true
+     * @returns { CheckboxAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -53,10 +55,9 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
 
     /**
      * Called when the selection status changes.
-     * Anonymous Object Rectification.
      *
-     * @param { ?OnCheckboxChangeCallback } callback
-     * @returns { CheckboxAttribute }
+     * @param { ?OnCheckboxChangeCallback } callback - The callback function triggered when the selected status changes, with the new selected status as parameter.
+     * @returns { CheckboxAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -65,10 +66,10 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
     func onChange(callback: ?OnCheckboxChangeCallback): CheckboxAttribute
 
     /**
-     * setting the shape of checkbox.
+     * Setting the shape of checkbox.
      *
      * @param { ?CheckBoxShape } value - The configuration of checkbox shape.
-     * @returns { CheckboxAttribute }
+     * @returns { CheckboxAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,

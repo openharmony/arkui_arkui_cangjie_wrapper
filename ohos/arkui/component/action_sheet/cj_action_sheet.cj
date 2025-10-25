@@ -136,6 +136,7 @@ struct NativeOptionConfirm {
 
 /**
  * The information of sheet.
+ * Each sheet represents an option in the ActionSheet dialog with text, optional icon, and action callback.
  */
 @!APILevel[
     22,
@@ -169,9 +170,9 @@ public class SheetInfo {
     /**
      * Constructor of SheetInfo.
      *
-     * @param { ?ResourceStr } title - Title Properties.
+     * @param { ?ResourceStr } title - Sheet text.
      * @param { ?VoidCallback } action - Callback when the sheet is selected.
-     * @param { ?ResourceStr } icon - Sheet icon.
+     * @param { ?ResourceStr } icon - Sheet icon. By default, no icon is displayed.
      */
     @!APILevel[
         22,
@@ -204,6 +205,8 @@ public class SheetInfo {
 
 /**
  * Base button params used for ActionSheet.
+ * Defines the properties of buttons used in the ActionSheet dialog, including text, action callback, 
+ * enabled state, focus behavior, and styling.
  */
 @!APILevel[
     22,
@@ -229,6 +232,7 @@ public class ActionSheetButtonOptions {
     /**
      * Whether to respond when the button is clicked. The value true means to respond when the button is clicked,
      * and false means the opposite.
+     * The default value is true.
      */
     @!APILevel[
         22,
@@ -238,6 +242,7 @@ public class ActionSheetButtonOptions {
     /**
      * Whether the button is the default focus. The value true means that the button is the default focus,
      * and false means the opposite.
+     * The default value is false.
      */
     @!APILevel[
         22,
@@ -246,6 +251,7 @@ public class ActionSheetButtonOptions {
     public var defaultFocus: ?Bool
     /**
      * Button style.
+     * The default value is DialogButtonStyle.Default.
      */
     @!APILevel[
         22,
@@ -257,8 +263,8 @@ public class ActionSheetButtonOptions {
      *
      * @param { ?ResourceStr } value - Button text.
      * @param { ?VoidCallback } action - Callback invoked when the button is selected.
-     * @param { ?Bool } enabled - Whether to respond when the button is clicked.
-     * @param { ?Bool } defaultFocus - Whether the button is the default focus.
+     * @param { ?Bool } enabled - Whether to respond when the button is clicked. The value true means to respond when the button is clicked, and false means the opposite.
+     * @param { ?Bool } defaultFocus - Whether the button is the default focus. The value true means that the button is the default focus, and false means the opposite.
      * @param { ?DialogButtonStyle } style - Button style.
      */
     @!APILevel[
@@ -294,6 +300,7 @@ public class ActionSheetButtonOptions {
 
 /**
  * Provides information about the action to dismiss the dialog box.
+ * Used in the onWillDismiss callback to control whether the dialog should be dismissed based on the reason.
  */
 @!APILevel[
     22,
@@ -311,8 +318,8 @@ public class DismissDialogAction {
     public var reason: ?DismissReason
     /**
      * Constructor of DismissDialogAction
-
-     * @param { ?DismissReason } reason - Reason why the dialog box cannot be dismissed.
+     *
+     * @param { ?DismissReason } reason - Reason why the dialog box cannot be dismissed. You must specify whether to close the dialog box for each of the listed actions.
      */
     @!APILevel[
         22,
@@ -341,6 +348,8 @@ protected func parseToDismissDialogAction(reason: Int32): DismissDialogAction {
 
 /**
  * The options of ActionSheet.
+ * Contains all configurable properties for the ActionSheet dialog, including title, message, sheet options,
+ * styling, positioning, and callbacks.
  */
 @!APILevel[
     22,
@@ -391,6 +400,7 @@ public class ActionSheetOptions {
     public var confirm: ?ActionSheetButtonOptions
     /**
      * Whether to close the dialog box when the overlay is clicked.
+     * The default value is true.
      */
     @!APILevel[
         22,
@@ -399,7 +409,6 @@ public class ActionSheetOptions {
     public var autoCancel: ?Bool
     /**
      * Callback invoked when the dialog box is closed after the overlay is clicked.
-     * Anonymous Object Rectification.
      */
     @!APILevel[
         22,
@@ -412,6 +421,7 @@ public class ActionSheetOptions {
      * <br>If showInSubWindow is set to true in UIExtension, the dialog box is aligned with the host window based
      * on UIExtension.
      * </p>
+     * The default value is DialogAlignment.Bottom
      */
     @!APILevel[
         22,
@@ -434,6 +444,7 @@ public class ActionSheetOptions {
      * <p><strong>NOTE</strong>:
      * <br>maskRect does not take effect when showInSubWindow is set to true.
      * </p>
+     * The default value: x is 0, y is 0, width is 100.percent, height is 100.percent.
      */
     @!APILevel[
         22,
@@ -445,6 +456,7 @@ public class ActionSheetOptions {
      * <p><strong>NOTE</strong>:
      * <br>A dialog box whose showInSubWindow attribute is true cannot trigger the display of another dialog box whose
      * showInSubWindow attribute is also true.
+     * The default value is false.
      * </p>
      */
     @!APILevel[
@@ -454,6 +466,7 @@ public class ActionSheetOptions {
     public var showInSubWindow: ?Bool
     /**
      * Whether the dialog box is a modal. A modal dialog box has a mask applied, while a non-modal dialog box does not.
+     * The default value is true.
      */
     @!APILevel[
         22,
@@ -466,6 +479,7 @@ public class ActionSheetOptions {
      * <br>When backgroundColor is set to a non-transparent color, backgroundBlurStyle must be set to BlurStyle.NONE;
      * otherwise, the color display may not meet the expected effect.
      * </p>
+     * The default value is Color.Transparent
      */
     @!APILevel[
         22,
@@ -479,6 +493,7 @@ public class ActionSheetOptions {
      * value other than NONE, do not set backgroundColor. If you do, the color display may not produce the expected
      * visual effect.
      * </p>
+     * The default value is BlurStyle.ComponentUltraThick
      */
     @!APILevel[
         22,
@@ -502,10 +517,10 @@ public class ActionSheetOptions {
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
     /**
      * Corner radius of the background. You can set the radius for each of the four corners individually.
-     *
-     * to the component size, with the maximum value being half of the component width or height. If the value is
-     * negative, the default value is used. When set to a percentage, the value defines the radius as a percentage of the
-     * parent component's width or height.
+     * The value is a multiple of vp or a percentage. The value is multiplied by the component size, with the maximum 
+     * value being half of the component width or height. If the value is negative, the default value is used. 
+     * When set to a percentage, the value defines the radius as a percentage of the parent component's width or height.
+     * In the default values, topLeft is 32.vp, topRight is 32.vp, bottomLeft is 32.vp, bottomRight is 32.vp.
      */
     @!APILevel[
         22,
@@ -515,9 +530,10 @@ public class ActionSheetOptions {
     /**
      * Border width of the dialog box.
      * You can set the width for all four sides or set separate widths for individual sides.
-     *
+     * The value is a multiple of vp or a percentage. The value is multiplied by the dialog 
      * box's width. If the left and right borders are greater than its width, or the top and bottom borders are greater
      * than its height, the dialog box may not display as expected.
+     * The default value is 0, When set to a percentage, the value defines the border width as a percentage of the parent dialog.
      */
     @!APILevel[
         22,
@@ -530,6 +546,7 @@ public class ActionSheetOptions {
      * <br>When borderColor is of type LocalizedEdgeColors, the layout order can be dynamically adjusted based on the
      * user's language settings.
      * </p>
+     * The default value is Color.Black - borderColor must be used with borderWidth in pairs.
      */
     @!APILevel[
         22,
@@ -538,6 +555,7 @@ public class ActionSheetOptions {
     public var borderColor: ?ResourceColor
     /**
      * Border style of the dialog box.
+     * The default value is BorderStyle.Solid - borderStyle must be used with borderWidth in pairs.
      */
     @!APILevel[
         22,
@@ -549,6 +567,7 @@ public class ActionSheetOptions {
      *
      * When this parameter is set to a percentage, the reference width of the dialog box is the width of the window
      * where the dialog box is located. You can decrease or increase the width as needed.
+     * Default maximum width of the dialog box: 400.vp
      */
     @!APILevel[
         22,
@@ -558,8 +577,9 @@ public class ActionSheetOptions {
     /**
      * Height of the dialog box.
      *
-     * <br>When this parameter is set to a percentage, the reference height of the dialog box is the height of the
+     * When this parameter is set to a percentage, the reference height of the dialog box is the height of the
      * window where the dialog box is located minus the safe area. You can decrease or increase the height as needed.
+     * Default maximum height of the dialog box: 0.9 x (Window height – Safe area)
      */
     @!APILevel[
         22,
@@ -568,6 +588,7 @@ public class ActionSheetOptions {
     public var height: ?Length
     /**
      * Shadow of the dialog box.
+     * Default value on 2-in-1 devices: ShadowStyle.OuterFloatingSM when the dialog box is focused and ShadowStyle.OuterFloatingSM otherwise.
      */
     @!APILevel[
         22,
@@ -576,7 +597,8 @@ public class ActionSheetOptions {
     public var shadow: ?ShadowOptions
     /**
      * Transition effect for the entrance and exit of the dialog box.
-     * <p><strong>NOTE</strong>:
+     * 
+     * NOTE:
      * 1. If this parameter is not set, the default effect is used.
      * 2. Touching the Back button during the entrance animation pauses the entrance animation and starts the exit
      * animation. The final effect is one obtained after the curves of the entrance and exit animations are combined.
@@ -770,6 +792,7 @@ public class ActionSheetOptions {
 
 /**
  * ActionSheet offset.
+ * Defines the offset of the action sheet relative to its alignment position.
  */
 @!APILevel[
     22,

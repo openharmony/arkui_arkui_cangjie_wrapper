@@ -154,7 +154,7 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
     /**
      * Sets the color filter effect on the image span.
      *
-     * @param { ?ColorFilter } filter ColorFilter object.
+     * @param { ?ColorFilter } filter - ColorFilter object.
      * @returns { This } The attribute of the image span.
      */
     @!APILevel[

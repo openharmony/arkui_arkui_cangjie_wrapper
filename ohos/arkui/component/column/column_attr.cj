@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Column attributes.
+ * Defines the Column attribute functions.
  */
 @!APILevel[
     22,
@@ -30,8 +30,8 @@ sealed interface ColumnAttribute <: CommonMethod<ColumnAttribute> {
     /**
      * Sets the alignment format of the subassembly in the horizontal direction.
      *
-     * @param { ?HorizontalAlign } value
-     * @returns { ColumnAttribute }
+     * @param { ?HorizontalAlign } value - The horizontal alignment mode for child elements.
+     * @returns { ColumnAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -42,8 +42,8 @@ sealed interface ColumnAttribute <: CommonMethod<ColumnAttribute> {
     /**
      * Sets the alignment format of the subassembly in the vertical direction.
      *
-     * @param { ?FlexAlign } value
-     * @returns { ColumnAttribute }
+     * @param { ?FlexAlign } value - The vertical alignment mode for child elements.
+     * @returns { ColumnAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,

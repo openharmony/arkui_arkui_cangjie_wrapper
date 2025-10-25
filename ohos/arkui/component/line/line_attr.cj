@@ -30,7 +30,7 @@ public interface LineAttribute <: CommonShapeMethod<LineAttribute> {
     /**
      * Coordinate of the start point of the line (relative coordinate).
      *
-     * @param { ?(Float64, Float64) } value
+     * @param { ?(Float64, Float64) } value - The start point coordinate.
      * @returns { LineAttribute }
      */
     @!APILevel[
@@ -42,7 +42,7 @@ public interface LineAttribute <: CommonShapeMethod<LineAttribute> {
     /**
      * Line end coordinates (relative coordinates).
      *
-     * @param { ?(Float64, Float64) } value
+     * @param { ?(Float64, Float64) } value - The end point coordinate.
      * @returns { LineAttribute }
      */
     @!APILevel[

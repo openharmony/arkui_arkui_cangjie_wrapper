@@ -25,6 +25,7 @@ import ohos.business_exception.BusinessException
 /**
  * AppStorage singleton is sub-class of see LocalStorage for
  * UI state of app-wide access and same life cycle as the app.
+ * Provides a centralized storage for application-wide state management.
  */
 @!APILevel[
     22,
@@ -46,10 +47,10 @@ public class AppStorage {
     }
 
     /**
-     * Create and return a two-way sync ("link") to named property.
+     * Establishes a bidirectional synchronization between a component variable and an AppStorage property.
      *
      * @param { String } propName - name of source property in AppStorage
-     * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>, return 'None' if named property does not already exist in AppStorage.
+     * @returns { ?ObservedProperty<T> } The instance of ObservedProperty<T>, return 'None' if named property does not already exist in AppStorage.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -67,7 +68,7 @@ public class AppStorage {
      * @param { String } propName - name of source property in AppStorage.
      * @param { T } defaultValue - value to be used for initializing new property in AppStorage,
      * default value must be of type T, can be None.
-     * @returns { ObservedProperty<T> } instance of ObservedProperty<T>.
+     * @returns { ObservedProperty<T> } The instance of ObservedProperty<T>.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -80,6 +81,7 @@ public class AppStorage {
 
     /**
      * Create and return a one-way sync ('prop') to named property.
+     * Establishes a unidirectional synchronization from AppStorage to a component variable.
      *
      * @param { String } propName - name of source property in AppStorage.
      * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>, return None if named property does not already exist in AppStorage.
@@ -99,7 +101,7 @@ public class AppStorage {
      *
      * @param { String } propName - name of source property in AppStorage.
      * @param { T } defaultValue - value to be used for initializing new property in AppStorage.
-     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>.
+     * @returns { ObservedProperty<T> } The instance of  ObservedProperty<T>.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -132,7 +134,7 @@ public class AppStorage {
      * Same as see LocalStorage.get().
      * Obtain the value of property with given name, returns undefined if the property does not exist in AppStorage.
      *
-     * @param { String } propName
+     * @param { String } propName - name of the property to retrieve
      * @returns { ?T } property value of type T if found or None.
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -149,7 +151,7 @@ public class AppStorage {
      * Method sets nothing and returns false if property with this name does not exist in AppStorage.
      * Same as see LocalStorage.set().
      *
-     * @param { String } propName
+     * @param { String } propName - name of the property to set
      * @param { T } newValue - must be of type T
      * @returns { Bool } true on success, i.e. when above conditions are satisfied, otherwise false.
      * @throws { BusinessException } 100001 - Internal error.
@@ -168,8 +170,9 @@ public class AppStorage {
      * newValue can be undefined or null from API 12.
      * see LocalStorage.setOrCreate().
      *
-     * @param { String } propName
+     * @param { String } propName - name of the property to set or create
      * @param { T } newValue - must be of type T.
+     * @returns { Unit }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -195,7 +198,7 @@ public class AppStorage {
      * (and also should not!) be deleted from AppStorage.
      * Same as see LocalStorage.delete()
      *
-     * @param { String } propName
+     * @param { String } propName - name of the property to delete
      * @returns { Bool } false if method failed.
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -212,7 +215,7 @@ public class AppStorage {
      * Same as ES6 Map.prototype.keys().
      * Same as see LocalStorage.keys().
      *
-     * @returns {  EquatableCollection<String> } return a Map Iterator.
+     * @returns { EquatableCollection<String> } Return a Map Iterator.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[

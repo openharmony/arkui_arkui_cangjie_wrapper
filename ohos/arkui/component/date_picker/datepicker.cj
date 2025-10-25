@@ -76,9 +76,9 @@ public class DatePickerResult {
     /**
      * DatePickerResult constructor.
      *
-     * @param { Int64 } year
-     * @param { Int64 } month
-     * @param { Int64 } day
+     * @param { Int64 } year - Year of the selected date.
+     * @param { Int64 } month - Month index of the selected date (0-11).
+     * @param { Int64 } day - Day of the selected date.
      */
     @!APILevel[
         22,
@@ -191,7 +191,7 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
      * @param { ?Bool } value - Whether to display the lunar calendar.
      * <br>- <em>true</em>: Display the lunar calendar.
      * <br>- <em>false</em>: Do not display the lunar.
-     * @returns { This }
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -206,10 +206,9 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
 
     /**
      * Triggered when a date is selected.
-     * Anonymous Object Rectification.
      *
-     * @param { ?Callback<DateTime, Unit> } callback
-     * @returns { This }
+     * @param { ?Callback<DateTime, Unit> } callback - The callback on date change.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -231,7 +230,7 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
      * Sets the text style for the top and bottom items.
      *
      * @param { ?PickerTextStyle } value - Font color, font size, and font weight of the top and bottom items.
-     * @returns { This }
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -280,7 +279,7 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
      *
      * @param { ?PickerTextStyle } value - Font color, font size, and font weight of all items except the top,
      *   <br>bottom, and selected items.
-     * @returns { This }
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -328,7 +327,7 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
      * Sets the text style for the selected item.
      *
      * @param { ?PickerTextStyle } value - Font color, font size, and font weight of the selected item.
-     * @returns { This }
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,

@@ -194,6 +194,10 @@ foreign func FfiFontManagerGetUIFontConfig(): NativeUIFontConfig
 /**
  * class Font
  *
+ * <p><strong>NOTE</strong>:
+ * <br>You must first use getFont() in UIContext to obtain a Font instance,
+ * and then call the APIs using the obtained instance.
+ * </p>
  */
 @!APILevel[
     22,
@@ -211,8 +215,6 @@ public class Font {
      *
      * @param { ResourceStr } familyName
      * @param { ResourceStr } familySrc
-     * @throws { BusinessException } 401 - Invalid input parameter.
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         22,

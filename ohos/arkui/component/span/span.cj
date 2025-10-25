@@ -73,6 +73,7 @@ foreign {
 
 /**
  * Defines the base class of Span.
+ * Contains common methods and properties for span components.
  */
 @!APILevel[
     22,
@@ -83,16 +84,18 @@ public abstract class BaseSpan <: UINodeBase {
 
 /**
  * Defines Span Component.
+ * A component for displaying formatted text segments within a Text component.
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Span <: BaseSpan {
-    /*
+    /**
      * Called when text is entered in span.
+     * Creates a span with the specified text content.
      * 
-     * @param { ?ResourceStr } value
+     * @param { ?ResourceStr } value - The text content of the span.
      */
     @!APILevel[
         22,
@@ -106,11 +109,12 @@ public class Span <: BaseSpan {
         }
     }
 
-    /*
+    /**
      * Called when the font size is set.
+     * Sets the font size for the text in the span.
      * 
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The font size.
+     * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
         22,
@@ -125,11 +129,12 @@ public class Span <: BaseSpan {
         this
     }
 
-    /*
+    /**
      * Called when the font color is set.
+     * Sets the font color for the text in the span.
      * 
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } value - The font color.
+     * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
         22,
@@ -143,11 +148,12 @@ public class Span <: BaseSpan {
         this
     }
 
-    /*
+    /**
      * Called when the font style of a font is set.
+     * Sets the font style (normal or italic) for the text in the span.
      * 
-     * @param { ?FontStyle } value
-     * @returns { This }
+     * @param { ?FontStyle } value - The font style.
+     * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
         22,
@@ -160,11 +166,12 @@ public class Span <: BaseSpan {
         this
     }
 
-    /*
+    /**
      * Called when the font weight is set.
+     * Sets the font weight (thickness) for the text in the span.
      * 
-     * @param { ?FontWeight } value
-     * @returns { This }
+     * @param { ?FontWeight } value - The font weight.
+     * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
         22,
@@ -179,11 +186,12 @@ public class Span <: BaseSpan {
         this
     }
 
-    /*
+    /**
      * Called when the font list of text is set.
+     * Sets the font family for the text in the span.
      * 
-     * @param { ?ResourceStr } value
-     * @returns { This }
+     * @param { ?ResourceStr } value - The font family.
+     * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
         22,
@@ -198,12 +206,13 @@ public class Span <: BaseSpan {
         this
     }
 
-    /*
+    /**
      * Called when the text decoration of the text is set.
+     * Sets the text decoration (e.g., underline, strikethrough) for the text in the span.
      * 
-     * @param { ?TextDecorationType } decorationType
-     * @param { ?ResourceColor } color
-     * @returns { This }
+     * @param { ?TextDecorationType } decorationType - The type of text decoration.
+     * @param { ?ResourceColor } color - The color of the text decoration.
+     * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
         22,
@@ -219,11 +228,12 @@ public class Span <: BaseSpan {
         this
     }
 
-    /*
+    /**
      * Called when the distance between text fonts is set.
+     * Sets the letter spacing (tracking) for the text in the span.
      * 
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The letter spacing.
+     * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
         22,
@@ -237,11 +247,12 @@ public class Span <: BaseSpan {
         this
     }
 
-    /*
+    /**
      * Called when the type of letter in the text font is set.
+     * Sets the text case transformation (e.g., uppercase, lowercase) for the text in the span.
      * 
-     * @param { ?TextCase } value
-     * @returns { This }
+     * @param { ?TextCase } value - The text case.
+     * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
         22,
@@ -254,13 +265,12 @@ public class Span <: BaseSpan {
         this
     }
 
-    /*
+    /**
      * Called when a click event occurs.
+     * Sets the click event handler for the span.
      *
-     * @param { ?(ClickEvent) -> Unit } event
-     * @returns { This }
-     * @throws { BusinessException } 100001 - Internal error.
-     * @throws { BusinessException } 190002 - The callback function is invalid.
+     * @param { ?(ClickEvent) -> Unit } event - The click event handler.
+     * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
         22,

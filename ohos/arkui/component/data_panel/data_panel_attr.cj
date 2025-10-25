@@ -31,8 +31,8 @@ sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
     /**
      * Disable the special effect of the data ratio chart.
      *
-     * @param { ?Bool } value
-     * @returns { DataPanelAttribute }
+     * @param { ?Bool } value - Whether to disable the special effect.
+     * @returns { DataPanelAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -44,7 +44,7 @@ sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
      * Set the value colors of the data ratio chart.
      *
      * @param { ?Array<LinearGradient> } value - the value colors of the data ratio chart.
-     * @returns { DataPanelAttribute }
+     * @returns { DataPanelAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -56,7 +56,7 @@ sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
      * Set track background color of the data ratio chart.
      *
      * @param { ?ResourceColor } value - track background color of the data ratio chart.
-     * @returns { DataPanelAttribute }
+     * @returns { DataPanelAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -68,7 +68,7 @@ sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
      * Set the stroke width of the data ratio chart.
      *
      * @param { ?Length } value - the stroke width of the data ratio chart.
-     * @returns { DataPanelAttribute }
+     * @returns { DataPanelAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -80,7 +80,7 @@ sealed interface DataPanelAttribute <: CommonMethod<DataPanelAttribute> {
      * Set the shadow width of the data ratio chart.
      *
      * @param { ?DataPanelShadowOptions } value - the track shadow width of the data ratio chart.
-     * @returns { DataPanelAttribute }
+     * @returns { DataPanelAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,

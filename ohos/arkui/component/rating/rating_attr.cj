@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Rating Component.
+ * Provides methods for configuring the appearance and behavior of the Rating component.
  */
 @!APILevel[
     22,
@@ -29,10 +29,10 @@ import ohos.base.*
 sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
 
     /**
-     * Called when the total number of stars is set.
+     * Configures the total number of stars to display in the rating component.
      * 
-     * @param { ?Int32 } value
-     * @returns { RatingAttribute }
+     * @param { ?Int32 } starCount - Number of stars.
+     * @returns { RatingAttribute } Returns the rating attribute.
      */
     @!APILevel[
         22,
@@ -41,10 +41,10 @@ sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
     func stars(starCount: ?Int32): RatingAttribute
 
     /**
-     * Called when the step size of the operation rating.
+     * Configures the increment step size when changing the rating value.
      *
-     * @param { ?Float64 } size
-     * @returns { RatingAttribute }
+     * @param { ?Float64 } size - Step size for rating changes.
+     * @returns { RatingAttribute } Returns the rating attribute.
      */
     @!APILevel[
         22,
@@ -53,12 +53,12 @@ sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
     func stepSize(size: ?Float64): RatingAttribute
 
     /**
-     * Called when a picture is set.
+     * Configures custom images for the rating stars.
      *
-     * @param { ?ResourceStr } backgroundUri - Background URI option.
-     * @param { ?ResourceStr } foregroundUri - Foreground URI option.
-     * @param { ?ResourceStr } secondaryUri - Secondary URI option.
-     * @returns { RatingAttribute }
+     * @param { ?ResourceStr } backgroundUri - Background URI option for unselected stars.
+     * @param { ?ResourceStr } foregroundUri - Foreground URI option for selected stars.
+     * @param { ?ResourceStr } secondaryUri - Secondary URI option for partially selected stars.
+     * @returns { RatingAttribute } Returns the rating attribute.
      */
     @!APILevel[
         22,
@@ -68,9 +68,11 @@ sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
 
     /**
      * Called when the star rating of the operation scoring bar changes.
+     * Triggered when the user changes the rating value by clicking or sliding.
      *
-     * @param { ?(Float64) -> Unit } callback
-     * @returns { RatingAttribute }
+     * @param { ?(Float64) -> Unit } callback - Callback function when rating changes.
+     * The parameter is the new rating value.
+     * @returns { RatingAttribute } Returns the rating attribute.
      */
     @!APILevel[
         22,

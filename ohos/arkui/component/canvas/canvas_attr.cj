@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Canvas attributes.
+ * Defines the Canva attribute functions.
  */
 @!APILevel[
     22,
@@ -30,8 +30,8 @@ sealed interface CanvasAttribute <: CommonMethod<CanvasAttribute> {
     /**
      * Event notification after the canvas component is constructed. You can draw the canvas at this time.
      *
-     * @param { ?() -> Unit } callback
-     * @returns { CanvasAttribute }
+     * @param { ?() -> Unit } callback - The callback on canvas ready to draw.
+     * @returns { CanvasAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,

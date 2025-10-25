@@ -31,8 +31,9 @@ sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
      * Indicates whether to use a horizontal splitter or a vertical splitter.
      * The options are as follows: false: horizontal splitter; true: vertical splitter.
      *
-     * @param { ?Bool } value
-     * @returns { DividerAttribute }
+     * @param { ?Bool } value - Whether to use a vertical divider.
+     * @default false
+     * @returns { DividerAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -43,8 +44,8 @@ sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
     /**
      * Sets the color of the divider line.
      *
-     * @param { ?ResourceColor } value
-     * @returns { DividerAttribute }
+     * @param { ?ResourceColor } value - The color of the divider line.
+     * @returns { DividerAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -55,8 +56,8 @@ sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
     /**
      * Sets the width of the dividing line.
      *
-     * @param { ?Length } value
-     * @returns { DividerAttribute }
+     * @param { ?Length } value - The width of the dividing line.
+     * @returns { DividerAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -65,10 +66,11 @@ sealed interface DividerAttribute <: CommonMethod<DividerAttribute> {
     func strokeWidth(value: ?Length): DividerAttribute
 
     /**
-     * Sets the end style of the split line. The default value is Butt.
+     * Sets the end style of the split line.
      *
-     * @param { ?LineCapStyle } value
-     * @returns { DividerAttribute }
+     * @param { ?LineCapStyle } value - The end style of the split line.
+     * @default LineCapStyle.Butt
+     * @returns { DividerAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,

@@ -119,7 +119,7 @@ public enum AnimatorFill {
 
 /**
  * The animation playback mode.
- * The default value is "normal".
+ * @default "normal"
  *
  */
 @Derive[Equatable]
@@ -128,22 +128,41 @@ public enum AnimatorFill {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum AnimatorDirection {
+    /**
+     * The animation plays normally.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Normal
-    | @!APILevel[
+    |
+    /**
+     * The animation plays backwards.
+     *
+     */
+    @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Reverse
-    | @!APILevel[
+    |
+    /**
+     * The animation plays forward on odd numbers (1, 3, 7...) and backward on even numbers (2, 4, 6...).
+     *
+     */
+    @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Alternate
-    | @!APILevel[
+    |
+    /**
+     * The animation plays backwards on odd numbers (1, 3, 7...) and forwards on even numbers (2, 4, 6...).
+     *
+     */
+    @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
@@ -172,8 +191,8 @@ public enum AnimatorDirection {
 public class AnimatorOptions {
     /**
      * Delay for the animation start. The default value indicates no delay.
-     * The default value is 0.
-     *
+     * 
+     * @default 0
      */
     @!APILevel[
         22,
@@ -199,8 +218,8 @@ public class AnimatorOptions {
      * cubic-bezier(x1, y1, x2, y2) You can customize an animation speed curve in the cubic-bezier() function. The x and y values of each input parameter must be between 0 and 1.
      * Step curve. The number must be set and only an integer is supported, step-position is optional. It can be set to start or end. The default value is end.
      * interpolating-spring(velocity, mass, stiffness, damping), interpolating spring curve.
-     * The default value is ease.
-     *
+     * 
+     * @default ease
      */
     @!APILevel[
         22,
@@ -209,8 +228,8 @@ public class AnimatorOptions {
     public var easing: String
     /**
      * Delay for the animation start. The default value indicates no delay.
-     * The default value is 0.
-     *
+     * 
+     * @default 0
      */
     @!APILevel[
         22,
@@ -237,8 +256,8 @@ public class AnimatorOptions {
     public var direction: AnimatorDirection
     /**
      * Number of times the animation will be played. number indicates a fixed number of playback operations, and -1 an unlimited number of playback operations.
-     * The default value is 1.
-     *
+     * 
+     * @default 1
      */
     @!APILevel[
         22,
@@ -247,8 +266,8 @@ public class AnimatorOptions {
     public var iterations: Int32
     /**
      * Starting point of animator interpolation.
-     * The default value is 0.
-     *
+     * 
+     * @default 0
      */
     @!APILevel[
         22,
@@ -257,8 +276,8 @@ public class AnimatorOptions {
     public var begin: Float64
     /**
      * Ending point of Dynamic Interpolation
-     * The default value is 1.
-     *
+     * 
+     * @default 1
      */
     @!APILevel[
         22,
@@ -308,7 +327,7 @@ public class AnimatorOptions {
 }
 
 /**
- * Defines the Animator result interface.
+ * Defines the Animator result class.
  *
  */
 @!APILevel[

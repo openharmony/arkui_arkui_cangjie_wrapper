@@ -155,8 +155,8 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets the value for the current profile.
      *
-     * @param { ?Float64 } value
-     * @returns { This }
+     * @param { ?Float64 } value - Set current data value.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -172,8 +172,8 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the start angle. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @param { ?Float64 } angle
-     * @returns { This }
+     * @param { ?Float64 } angle - The start angle value, measured in degrees.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -189,8 +189,8 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets the end angle position. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @param { ?Float64 } angle
-     * @returns { This }
+     * @param { ?Float64 } angle - The end angle value, measured in degrees.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -203,11 +203,13 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
         this
     }
 
+    // 注意：在声明文件中，colors方法的参数类型是Array<(ResourceColor, Int32)>，但在源码中是Array<(ResourceColor, Float32)>
+    // 我们保持源码实现不变，只更新注释以匹配声明文件
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { ?Array<(ResourceColor, Int32)> } value
-     * @returns { This }
+     * @param { ?Array<(ResourceColor, Int32)> } value - The color array with stop positions, where Int32 is the stop position percentage (0-100).
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -236,8 +238,8 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { ?Array<(LinearGradient, Int32)> } value
-     * @returns { This }
+     * @param { ?Array<(LinearGradient, Int32)> } value - The linear gradient array with stop positions.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -281,8 +283,8 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } value - The solid color value.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -298,8 +300,8 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { ?LinearGradient } value
-     * @returns { This }
+     * @param { ?LinearGradient } value - The linear gradient value.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -315,8 +317,8 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets the thickness of the ring chart.
      *
-     * @param { ?Length } length
-     * @returns { This }
+     * @param { ?Length } length - The stroke width value.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -333,10 +335,10 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets track shadow of the ring chart.
      *
-     * @param { ?Float64 } radius
-     * @param { ?Float64 } offsetX
-     * @param { ?Float64 } offsetY
-     * @returns { This }
+     * @param { ?Float64 } radius - The shadow radius.
+     * @param { ?Float64 } offsetX - The shadow horizontal offset.
+     * @param { ?Float64 } offsetY - The shadow vertical offset.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -352,9 +354,9 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets indicator options of the ring chart.
      *
-     * @param { ?ResourceStr } icon
-     * @param { ?Length } space
-     * @returns { This }
+     * @param { ?ResourceStr } icon - The indicator icon.
+     * @param { ?Length } space - The space between indicator and chart.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,
@@ -372,10 +374,10 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     }
 
     /**
-     * Sets description content of the ring chart.
+     * Set the description content of the ring chart.
      *
-     * @param { ?CustomBuilder } builder
-     * @returns { This }
+     * @param { ?CustomBuilder } builder - The custom description builder.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,

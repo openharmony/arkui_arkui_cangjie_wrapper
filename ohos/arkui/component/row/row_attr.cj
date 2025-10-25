@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Row Component.
+ * Provides methods for configuring the appearance and behavior of the Row component.
  */
 @!APILevel[
     22,
@@ -28,10 +28,10 @@ import ohos.base.*
 ]
 sealed interface RowAttribute <: CommonMethod<RowAttribute> {
     /**
-    * Called when the vertical alignment is set.
+    * Configures the vertical alignment of child components within the row.
     *
-    * @param { ?VerticalAlign } value
-    * @returns { RowAttribute }
+    * @param { ?VerticalAlign } value - Vertical alignment of child components.
+    * @returns { RowAttribute } Returns the row attribute.
     */
     @!APILevel[
         22,
@@ -40,10 +40,10 @@ sealed interface RowAttribute <: CommonMethod<RowAttribute> {
     func alignItems(value: ?VerticalAlign): RowAttribute
 
     /**
-    * Called when the horizontal alignment is set.
+    * Configures the horizontal alignment of child components within the row.
     *
-    * @param { ?FlexAlign } value
-    * @returns { RowAttribute }
+    * @param { ?FlexAlign } value - Horizontal alignment of child components.
+    * @returns { RowAttribute } Returns the row attribute.
     */
     @!APILevel[
         22,

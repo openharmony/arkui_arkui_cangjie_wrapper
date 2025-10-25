@@ -45,7 +45,7 @@ public class QRCode <: CommonMethodComponent<QRCode> & QRCodeAttribute {
     /**
      * Called when a QR code is set.
      *
-     * @param { ?ResourceStr } value
+     * @param { ?ResourceStr } value - Content of the QR code. Maximum of 512 characters are supported.
      */
     @!APILevel[
         22,
@@ -63,7 +63,7 @@ public class QRCode <: CommonMethodComponent<QRCode> & QRCodeAttribute {
     /**
      * Called when the QR code color is set.
      *
-     * @param { ?ResourceStr } value
+     * @param { ?ResourceColor } value - Color of the QR code. The default value is 0xff000000.
      * @returns { This }
      */
     @!APILevel[
@@ -87,7 +87,7 @@ public class QRCode <: CommonMethodComponent<QRCode> & QRCodeAttribute {
     /**
      * Set the opacity of the QR code content color.
      *
-     * @param { ?Float64 } value
+     * @param { ?Float64 } value - Indicates the opacity of the QR code content color. The value ranges from 0 to 1. The default value is 1.
      * @returns { This }
      */
     @!APILevel[
@@ -104,7 +104,7 @@ public class QRCode <: CommonMethodComponent<QRCode> & QRCodeAttribute {
     /**
      * Set the opacity of the QR code content color.
      *
-     * @param { ?AppResource } value
+     * @param { ?AppResource } value - Indicates the opacity of the QR code content color. The value ranges from 0 to 1. The default value is 1.
      * @returns { This }
      */
     @!APILevel[

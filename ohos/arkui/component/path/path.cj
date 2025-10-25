@@ -84,7 +84,7 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
     /**
      * Called when the command string drawn by the path is set.
      *
-     * @param { ?ResourceStr } commands
+     * @param { ?ResourceStr } value - The command string to draw the path.
      * @returns { This }
      */
     @!APILevel[

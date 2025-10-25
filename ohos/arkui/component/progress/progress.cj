@@ -178,7 +178,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     public var shadow: ?Bool
 
     /**
-     * The status of progress, default is PROGRESSING. Set to LOADING status will trigger the loading animation.
+     * The status of progress, default is Progressing. Set to Loading status will trigger the loading animation.
      */
     @!APILevel[
         22,
@@ -207,11 +207,11 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     /**
      * Constructor the ring style Options.
      *
-     * @param { ?Length } strokeWidth
-     * @param { ?Bool } shadow
-     * @param { ?ProgressStatus } status
-     * @param { ?Bool } enableSmoothEffect
-     * @param { ?Bool } enableScanEffect
+     * @param { ?Length } strokeWidth - Stroke width of the ring. The default value is 4.0vp.
+     * @param { ?Bool } shadow - Whether to enable shadow. The default value is false.
+     * @param { ?ProgressStatus } status - Status of the progress. The default value is ProgressStatus.Progressing.
+     * @param { ?Bool } enableSmoothEffect - Whether to enable smooth effect. The default value is true.
+     * @param { ?Bool } enableScanEffect - Whether to enable scan effect. The default value is false.
      */
     @!APILevel[
         22,
@@ -238,9 +238,9 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the progress bar is set.
      *
-     * @param { ?Float64 } value
-     * @param { ?Float64 } total
-     * @param { ?ProgressType } progressType
+     * @param { ?Float64 } value - Current progress value. The default value is 0.
+     * @param { ?Float64 } total - Total progress value. The default value is 100.
+     * @param { ?ProgressType } progressType - Type of the progress bar. The default value is ProgressType.Linear.
      */
     @!APILevel[
         22,
@@ -257,7 +257,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the current progress value is set.
      *
-     * @param { ?Float64 } value
+     * @param { ?Float64 } value - Current progress value.
      * @returns { This }
      */
     @!APILevel[
@@ -274,7 +274,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the progress bar foreground is set.
      *
-     * @param { ?ResourceColor } value - indicates the color of the progress.
+     * @param { ?ResourceColor } value - Indicates the color of the progress.
      * @returns { This }
      */
     @!APILevel[
@@ -300,9 +300,9 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the style of progress bar is set.
      *
-     * @param { ?Length } strokeWidth
-     * @param { ?Int32 } scaleCount
-     * @param { ?Length } scaleWidth
+     * @param { ?Length } strokeWidth - Stroke width of the progress bar. The default value is 4.0vp.
+     * @param { ?Int32 } scaleCount - Number of scale intervals. The default value is 120.
+     * @param { ?Length } scaleWidth - Width of each scale. The default value is 2.0vp.
      * @returns { This }
      */
     @!APILevel[
@@ -325,7 +325,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the style of progress bar is set.
      *
-     * @param { ?RingStyleOptions } value - indicates the style of the progress.
+     * @param { ?RingStyleOptions } value - Indicates the style of the progress.
      * @returns { This }
      */
     @!APILevel[

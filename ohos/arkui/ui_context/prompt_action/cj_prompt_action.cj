@@ -1599,7 +1599,8 @@ public class PromptAction {
      * Shows a toast in the given settings.
      *
      * @param { ShowToastOptions } options - Toast options.
-     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> Failed to allocate memory.
      */
     @!APILevel[
         22,
@@ -1618,9 +1619,9 @@ public class PromptAction {
      * Shows a dialog box in the given settings. This API uses an asynchronous callback to return the result.
      *
      * @param { ShowDialogOptions } options - Dialog box options.
-     * @param { ShowDialogCallBack } callback - Callback used to return the dialog.
-     * box response result.
-     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
+     * @param { ShowDialogCallBack } callback - Callback used to return the dialog box response result.
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> Failed to allocate memory.
      */
     @!APILevel[
         22,
@@ -1648,9 +1649,9 @@ public class PromptAction {
      * Shows an action menu in the given settings. This API uses an asynchronous callback to return the result.
      *
      * @param { ActionMenuOptions } options - Action menu options.
-     * @param { ShowActionMenuCallBack } callback - Callback used to return the action menu
-     * response result.
-     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
+     * @param { ShowActionMenuCallBack } callback - Callback used to return the action menu response result.
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> Failed to allocate memory.
      */
     @!APILevel[
         22,

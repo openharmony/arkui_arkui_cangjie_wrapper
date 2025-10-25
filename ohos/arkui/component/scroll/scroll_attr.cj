@@ -21,7 +21,8 @@ import ohos.base.*
 import ohos.resource.*
 
 /**
- * Defines scroll component.
+ * Defines the Scroll attribute functions.
+ * Provides methods for configuring the appearance and behavior of the Scroll component.
  */
 @!APILevel[
     22,
@@ -31,7 +32,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
     /**
      * Sets the scrolling direction.
      *
-     * @param { ?ScrollDirection } scrollDirection
+     * @param { ?ScrollDirection } scrollDirection - The direction to apply setting. The default value is ScrollDirection.Vertical.
      * @returns { ScrollAttribute }
      */
     @!APILevel[
@@ -42,11 +43,15 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
 
     /**
      * Triggered before scrolling.
-     * 1. This event is triggered when scrolling is started by the Scroll component or other input settings,such as keyboard and mouse operations;
-     * 2. This event is triggered when the controller API is called.
-     * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @param { ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult } handler
+     * <p><strong>NOTE</strong>
+     * <br>1. This event is triggered when scrolling is started by the <em>Scroll</em> component or other input settings,
+     * such as keyboard and mouse operations.
+     * <br>2. This event is triggered when the controller API is called.
+     * <br>3. This event supports the out-of-bounds bounce effect.
+     * </p>
+     *
+     * @param { ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult } handler - Callback triggered before scrolling.
      * @returns { ScrollAttribute }
      */
     @!APILevel[
@@ -57,11 +62,15 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
 
     /**
      * Triggered before scrolling.
-     * 1. This event is triggered when scrolling is started by the Scroll component or other input settings,such as keyboard and mouse operations;
-     * 2. This event is triggered when the controller API is called.
-     * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @param { ?(Float64, Float64, ScrollState, ScrollSource) -> Unit } handler
+     * <p><strong>NOTE</strong>
+     * <br>1. This event is triggered when scrolling is started by the <em>Scroll</em> component or other input settings,
+     * such as keyboard and mouse operations.
+     * <br>2. This event is triggered when the controller API is called.
+     * <br>3. This event supports the out-of-bounds bounce effect.
+     * </p>
+     *
+     * @param { ?(Float64, Float64, ScrollState, ScrollSource) -> Unit } handler - Callback triggered before scrolling.
      * @returns { ScrollAttribute }
      */
     @!APILevel[
@@ -76,7 +85,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
      * 2. This event is triggered when the controller API is called;
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @param { ?ScrollOnScrollCallback } callback
+     * @param { ?ScrollOnScrollCallback } callback - Callback triggered after scrolling.
      * @returns { ScrollAttribute }
      */
     @!APILevel[
@@ -87,9 +96,8 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
 
     /**
      * Triggered when each frame scrolling starts.
-     * Anonymous Object Rectification.
      *
-     * @param { ?OnScrollFrameBeginCallback } event
+     * @param { ?OnScrollFrameBeginCallback } event - Callback triggered at first frame of scroll.
      * @returns { ScrollAttribute }
      */
     @!APILevel[
@@ -101,11 +109,15 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
     /**
      * Triggered when scrolling reaches the edge.
      * Anonymous Object Rectification.
-     * 1. This event is triggered when scrolling reaches the edge after being started by the Scroll component or other input settings, such as keyboard and mouse operations.
-     * 2. This event is triggered when the controller API is called.
-     * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @param { ?OnScrollEdgeCallback } event
+     * <p><strong>NOTE</strong>
+     * <br>1. This event is triggered when scrolling reaches the edge after being started by the <em>Scroll</em> component or other input settings,
+     * such as keyboard and mouse operations.
+     * <br>2. This event is triggered when the controller API is called.
+     * <br>3. This event supports the out-of-bounds bounce effect.
+     * </p>
+     *
+     * @param { ?OnScrollEdgeCallback } event - Callback triggered when scrolling reaches the edge.
      * @returns { ScrollAttribute }
      */
     @!APILevel[

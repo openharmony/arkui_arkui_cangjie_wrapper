@@ -75,8 +75,8 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Set parameters to obtain the toggle.
      *
-     * @param { ?ToggleType } toggleType
-     * @param { ?Bool } isOn
+     * @param { ?ToggleType } toggleType - Type of the toggle button.
+     * @param { ?Bool } isOn - Initial selected state of the toggle button.
      */
     @!APILevel[
         22,
@@ -92,9 +92,9 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Set parameters to obtain the toggle.
      *
-     * @param { ?ToggleType } toggleType
-     * @param { ?Bool } isOn
-     * @param { () -> Unit } subcomponent
+     * @param { ?ToggleType } toggleType - Type of the toggle button.
+     * @param { ?Bool } isOn - Initial selected state of the toggle button.
+     * @param { () -> Unit } subcomponent - Subcomponent builder function.
      */
     @!APILevel[
         22,
@@ -164,9 +164,9 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     }
 
     /**
-     * Called when the color of the selected button is set.
+     * Set the color of the selected button.
      *
-     * @param { ?ResourceColor } value
+     * @param { ?ResourceColor } value - Color of the selected button.
      * @returns { This }
      */
     @!APILevel[
@@ -182,9 +182,9 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     }
 
     /**
-     * Called when the color of the selected button is set.
+     * Set the color of the switch point.
      *
-     * @param { ?ResourceColor } color
+     * @param { ?ResourceColor } color - Color of the switch point.
      * @returns { This }
      */
     @!APILevel[
@@ -237,7 +237,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     /**
      * Called when the selected state of the component changes.
      *
-     * @param { ?(Bool) -> Unit } callback
+     * @param { ?(Bool) -> Unit } callback - Callback function triggered when the selected state changes.
      * @returns { This }
      */
     @!APILevel[

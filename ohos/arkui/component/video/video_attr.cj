@@ -21,8 +21,7 @@ import ohos.base.*
 import ohos.resource.*
 
 /**
- * Defines Video Component.
- *
+ * Defines the Video attribute functions.
  */
 @!APILevel[
     22,
@@ -30,10 +29,10 @@ import ohos.resource.*
 ]
 sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     /**
-     * Called when judging whether the video is muted.
+     * Controls whether the video audio is muted.
      *
-     * @param { ?Bool } value
-     * @returns { VideoAttribute }
+     * @param { ?Bool } value - Whether the video is muted. The default value is false.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -42,10 +41,10 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     func muted(value: ?Bool): VideoAttribute
 
     /**
-     * Called when judging whether the video is played automatically.
+     * Controls whether the video starts playing automatically when loaded.
      *
-     * @param { ?Bool } value
-     * @returns { VideoAttribute }
+     * @param { ?Bool } value - Whether the video is played automatically. The default value is false.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -54,10 +53,10 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     func autoPlay(value: ?Bool): VideoAttribute
 
     /**
-     * Called when judging whether the control bar is displayed.
+     * Controls the visibility of the video control bar.
      *
-     * @param { ?Bool } value
-     * @returns { VideoAttribute }
+     * @param { ?Bool } value - Whether the control bar is displayed. The default value is true.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -66,10 +65,10 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     func controls(value: ?Bool): VideoAttribute
 
     /**
-     * Called when determining the zoom type of the video source.
+     * Controls how the video content is scaled to fit the display area.
      *
-     * @param { ?ImageFit } value
-     * @returns { VideoAttribute }
+     * @param { ?ImageFit } value - The zoom type. The default value is ImageFit.Contain.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -78,10 +77,10 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     func objectFit(value: ?ImageFit): VideoAttribute
 
     /**
-     * Called when judging whether the video is played circular.
+     * Controls whether the video playback loops when it reaches the end.
      *
-     * @param { ?Bool } value
-     * @returns { VideoAttribute }
+     * @param { ?Bool } value - Whether the video is played circular. The default value is false.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -90,11 +89,10 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     func loop(value: ?Bool): VideoAttribute
 
     /**
-     * Called when the video is played.
-     * Anonymous Object Rectification.
+     * Triggered when the video starts playing.
      *
-     * @param { ?VoidCallback } event
-     * @returns { VideoAttribute }
+     * @param { ?VoidCallback } event - The callback function when the video is played.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -104,10 +102,9 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
 
     /**
      * Called when the video is paused.
-     * Anonymous Object Rectification.
      *
-     * @param { ?VoidCallback } event
-     * @returns { VideoAttribute }
+     * @param { ?VoidCallback } event - The callback function when the video is paused.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -116,11 +113,10 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     func onPause(event: ?VoidCallback): VideoAttribute
 
     /**
-     * Called when the video playback ends.
-     * Anonymous Object Rectification.
+     * Triggered when the video playback reaches the end.
      *
-     * @param { ?VoidCallback } event
-     * @returns { VideoAttribute }
+     * @param { ?VoidCallback } event - The callback function when the video playback ends.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -129,10 +125,10 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     func onFinish(event: ?VoidCallback): VideoAttribute
 
     /**
-     * Called when playback fails.
+     * Triggered when an error occurs during video playback.
      *
-     * @param { ?VoidCallback } event
-     * @returns { VideoAttribute }
+     * @param { ?VoidCallback } event - The callback function when playback fails.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -141,11 +137,10 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     func onError(event: ?VoidCallback): VideoAttribute
 
     /**
-     * Called when the video preparation is complete.
-     * Anonymous Object Rectification.
+     * Triggered when the video is fully loaded and ready to play.
      *
-     * @param { ?Callback<PreparedInfo, Unit> } callback
-     * @returns { VideoAttribute }
+     * @param { ?Callback<PreparedInfo, Unit> } callback - The callback function when the video preparation is complete.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -155,10 +150,9 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
 
     /**
      * Called when the time information is reported when the progress bar process is operated.
-     * Anonymous Object Rectification.
      *
-     * @param { ?Callback<PlaybackInfo, Unit> } callback
-     * @returns { VideoAttribute }
+     * @param { ?Callback<PlaybackInfo, Unit> } callback - The callback function when seeking.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -168,10 +162,9 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
 
     /**
      * Called when the playback time information is reported after the operation progress bar is completed.
-     * Anonymous Object Rectification.
      *
-     * @param { ?Callback<PlaybackInfo, Unit> } callback
-     * @returns { VideoAttribute }
+     * @param { ?Callback<PlaybackInfo, Unit> } callback - The callback function after seeking.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -180,11 +173,10 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
     func onSeeked(callback: ?Callback<PlaybackInfo, Unit>): VideoAttribute
 
     /**
-     * Called when the playback progress changes.
-     * Anonymous Object Rectification.
+     * Triggered periodically during video playback to report the current playback position.
      *
-     * @param { ?Callback<PlaybackInfo, Unit> } callback
-     * @returns { VideoAttribute }
+     * @param { ?Callback<PlaybackInfo, Unit> } callback - The callback function when the playback progress changes.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,
@@ -194,10 +186,9 @@ sealed interface VideoAttribute <: CommonMethod<VideoAttribute> {
 
     /**
      * Called when the video enters and exits the full screen.
-     * Anonymous Object Rectification.
      *
-     * @param { ?Callback<FullscreenInfo, Unit> } callback
-     * @returns { VideoAttribute }
+     * @param { ?Callback<FullscreenInfo, Unit> } callback - The callback function when the video enters and exits the full screen.
+     * @returns { VideoAttribute } Returns the attribute of video.
      */
     @!APILevel[
         22,

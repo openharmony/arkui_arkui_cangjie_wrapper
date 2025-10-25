@@ -19,7 +19,7 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 
 /**
- * Defines GridItem attributes.
+ * Defines the GridItem attribute functions.
  */
 @!APILevel[
     22,
@@ -29,8 +29,8 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
     /**
      * This parameter specifies the start column number of the current element.
      *
-     * @param { ?Int32 } value
-     * @returns { GridItemAttribute }
+     * @param { ?Int32 } value - The start column index, must be a non-negative integer.
+     * @returns { GridItemAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -41,8 +41,8 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
     /**
      * This parameter specifies the end column number of the current element.
      *
-     * @param { ?Int32 } columnEnd
-     * @returns { GridItemAttribute }
+     * @param { ?Int32 } columnEnd - The end column index, must be a non-negative integer greater than or equal to columnStart.
+     * @returns { GridItemAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -53,8 +53,8 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
     /**
      * This parameter specifies the start line number of the current element.
      *
-     * @param { ?Int32 } value
-     * @returns { GridItemAttribute }
+     * @param { ?Int32 } value - Start line number of the element.
+     * @returns { GridItemAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,
@@ -65,8 +65,8 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
     /**
      * Specifies the end line number of the current element.
      *
-     * @param { ?Int32 } value
-     * @returns { GridItemAttribute }
+     * @param { ?Int32 } value - End line number of the element.
+     * @returns { GridItemAttribute } - The attribute of the component.
      */
     @!APILevel[
         22,

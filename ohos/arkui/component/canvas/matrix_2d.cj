@@ -241,7 +241,7 @@ public class Matrix2D <: RemoteDataLite {
      * Transforms the current 2D matrix back to the identity matrix (i.e., without any rotational
      * translation scaling effect).
      *
-     * @returns { This }
+     * @returns { This } - The instance of the matrix.
      */
     @!APILevel[
         22,
@@ -258,7 +258,7 @@ public class Matrix2D <: RemoteDataLite {
      * Transform the current 2D matrix into an inverse matrix (that is, the transformation effect
      * is the opposite effect of the original).
      *
-     * @returns { This }
+     * @returns { This } - The instance of the matrix.
      */
     @!APILevel[
         22,
@@ -277,7 +277,7 @@ public class Matrix2D <: RemoteDataLite {
      * @param { ?Float64 } degree - The rotation angle, clockwise in radians.
      * @param { ?Float64 } rx - Rotation effect of the X-axis.
      * @param { ?Float64 } ry - Rotation effect of the Y-axis.
-     * @returns { This }
+     * @returns { This } - The instance of the matrix.
      */
     @!APILevel[
         22,
@@ -295,7 +295,7 @@ public class Matrix2D <: RemoteDataLite {
      *
      * @param { ?Float64 } tx - X-axis translation effect.
      * @param { ?Float64 } ty - Y-axis translation effect.
-     * @returns { This }
+     * @returns { This } - The instance of the matrix.
      */
     @!APILevel[
         22,
@@ -313,7 +313,7 @@ public class Matrix2D <: RemoteDataLite {
      *
      * @param { ?Float64 } sx - X-axis scaling effect.
      * @param { ?Float64 } sy - Y-axis scaling effect.
-     * @returns { This }
+     * @returns { This } - The instance of the matrix.
      */
     @!APILevel[
         22,

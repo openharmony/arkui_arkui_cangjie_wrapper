@@ -23,7 +23,8 @@ import ohos.multimedia.image.PixelMap
 
 /**
  * Defines the base event.
- *
+ * This class serves as the foundation for all event types in the system,
+ * providing common properties that all events share.
  */
 @!APILevel[
     22,
@@ -32,7 +33,7 @@ import ohos.multimedia.image.PixelMap
 sealed abstract class BaseEvent {
     /**
      * Display area of the element that triggers the gesture event.
-     *
+     * Contains information about the target element's position and dimensions.
      */
     @!APILevel[
         22,
@@ -42,7 +43,7 @@ sealed abstract class BaseEvent {
 
     /**
      * Timestamp of the event.
-     *
+     * Represents the time when the event occurred in milliseconds since Unix epoch.
      */
     @!APILevel[
         22,
@@ -52,7 +53,7 @@ sealed abstract class BaseEvent {
 
     /**
      * Event input device.
-     *
+     * Indicates the type of device that generated the event (e.g. mouse, touch screen).
      */
     @!APILevel[
         22,
@@ -61,8 +62,8 @@ sealed abstract class BaseEvent {
     public var source: ?SourceType
 
     /**
-     *  Indicates the ID of the input device that triggers the current key.
-     *
+     * Indicates the ID of the input device that triggers the current key.
+     * Useful for identifying which specific device generated the event in multi-device scenarios.
      */
     @!APILevel[
         22,
@@ -89,7 +90,7 @@ sealed abstract class BaseEvent {
 
 /**
  * Type of the touch event.
- *
+ * Represents detailed information about a single touch point in a touch event.
  */
 @!APILevel[
     22,
@@ -98,7 +99,7 @@ sealed abstract class BaseEvent {
 public class TouchObject {
     /**
      * Type of the touch event.
-     *
+     * Indicates what type of touch action occurred (e.g., Down, Up, Move, Cancel).
      */
     @!APILevel[
         22,
@@ -108,7 +109,7 @@ public class TouchObject {
 
     /**
      * Finger unique identifier.
-     *
+     * Used to track individual fingers in multi-touch scenarios.
      */
     @!APILevel[
         22,
@@ -118,7 +119,7 @@ public class TouchObject {
 
     /**
      * X coordinate of the point relative to the global display.
-     *
+     * Position of the touch point in screen coordinates.
      */
     @!APILevel[
         22,
@@ -128,7 +129,7 @@ public class TouchObject {
 
     /**
      * Y coordinate of the point relative to the global display.
-     *
+     * Position of the touch point in screen coordinates.
      */
     @!APILevel[
         22,
@@ -138,7 +139,7 @@ public class TouchObject {
 
     /**
      * X coordinate of the touch point relative to the upper left corner of the event responding component.
-     *
+     * Position of the touch point relative to the component that received the event.
      */
     @!APILevel[
         22,
@@ -148,7 +149,7 @@ public class TouchObject {
 
     /**
      * Y coordinate of the touch point relative to the upper edge of the touched element.
-     *
+     * Position of the touch point relative to the component that received the event.
      */
     @!APILevel[
         22,
@@ -159,12 +160,12 @@ public class TouchObject {
     /**
      * TouchObject constructor.
      *
-     * @param { TouchType } touchType
-     * @param { Int32 } id
-     * @param { Float64 } screenX
-     * @param { Float64 } screenY
-     * @param { Float64 } x
-     * @param { Float64 } y
+     * @param { TouchType } touchType - Type of the touch event
+     * @param { Int32 } id - Finger unique identifier
+     * @param { Float64 } screenX - X coordinate relative to global display
+     * @param { Float64 } screenY - Y coordinate relative to global display
+     * @param { Float64 } x - X coordinate relative to the component
+     * @param { Float64 } y - Y coordinate relative to the component
      */
     @!APILevel[
         22,
@@ -182,7 +183,7 @@ public class TouchObject {
 
 /**
  * The tap action triggers this method invocation.
- *
+ * Represents a click/tap event with detailed position information.
  */
 @!APILevel[
     22,
@@ -191,7 +192,7 @@ public class TouchObject {
 public class ClickEvent <: BaseEvent {
     /**
      * X coordinate of the click point relative to the left edge of the clicked element.
-     *
+     * Position within the clicked component's coordinate system.
      */
     @!APILevel[
         22,
@@ -200,7 +201,7 @@ public class ClickEvent <: BaseEvent {
     public var x: Float64
     /**
      * Y coordinate of the click point relative to the upper edge of the clicked element.
-     *
+     * Position within the clicked component's coordinate system.
      */
     @!APILevel[
         22,
@@ -210,7 +211,7 @@ public class ClickEvent <: BaseEvent {
 
     /**
      * X coordinate of the click relative to the upper left corner of the application window.
-     *
+     * Position within the application window's coordinate system.
      */
     @!APILevel[
         22,
@@ -219,7 +220,7 @@ public class ClickEvent <: BaseEvent {
     public var windowX: Float64
     /**
      * Y coordinate of the click relative to the upper left corner of the application window.
-     *
+     * Position within the application window's coordinate system.
      */
     @!APILevel[
         22,
@@ -228,7 +229,7 @@ public class ClickEvent <: BaseEvent {
     public var windowY: Float64
     /**
      * X coordinate of the click relative to the upper left corner of the application screen.
-     *
+     * Position within the device screen's coordinate system.
      */
     @!APILevel[
         22,
@@ -237,7 +238,7 @@ public class ClickEvent <: BaseEvent {
     public var displayX: Float64
     /**
      * Y coordinate of the click relative to the upper left corner of the application screen.
-     *
+     * Position within the device screen's coordinate system.
      */
     @!APILevel[
         22,
@@ -258,8 +259,7 @@ public class ClickEvent <: BaseEvent {
 }
 
 /**
- * DragInfo object description
- *
+ * Contains information about a drag operation.
  */
 @!APILevel[
     22,
@@ -267,8 +267,7 @@ public class ClickEvent <: BaseEvent {
 ]
 public class DragInfo {
     /**
-     * Additional information about the drag info.
-     *
+     * Can contain custom data associated with the drag operation.
      */
     @!APILevel[
         22,
@@ -276,8 +275,7 @@ public class DragInfo {
     ]
     public var extraParams: ?String
     /**
-     * Touch point coordinates.
-     *
+     * Current position of the drag operation.
      */
     @!APILevel[
         22,
@@ -292,8 +290,7 @@ public class DragInfo {
 }
 
 /**
- * DragItemInfo object description.
- *
+ * Contains information about the visual representation of a dragged item.
  */
 @!APILevel[
     22,
@@ -301,8 +298,7 @@ public class DragInfo {
 ]
 public class DragItemInfo {
     /**
-     * Uses the pixelMap object for drawing.
-     *
+     * Visual representation of the dragged item as a PixelMap.
      */
     @!APILevel[
         22,
@@ -312,7 +308,7 @@ public class DragItemInfo {
 
     /**
      * Uses the custom builder for drawing, if pixelMap is set, this value is ignored.
-     *
+     * Custom visual representation of the dragged item.
      */
     @!APILevel[
         22,
@@ -321,8 +317,7 @@ public class DragItemInfo {
     public var builder: ?CustomBuilder
 
     /**
-     * Sets the extra info for drag event.
-     *
+     * Additional custom data associated with the drag operation.
      */
     @!APILevel[
         22,
@@ -331,11 +326,11 @@ public class DragItemInfo {
     public var extraInfo: ?String
 
     /**
-     * DragItemInfo constructor.
+     * Creates a new DragItemInfo instance with the specified properties.
      *
-     * @param { ?PixelMap } pixelMap
-     * @param { ?CustomBuilder } builder
-     * @param { ?String } extraInfo
+     * @param { ?PixelMap } pixelMap - Visual representation as PixelMap
+     * @param { ?CustomBuilder } builder - Custom visual representation
+     * @param { ?String } extraInfo - Additional information about the drag
      */
     @!APILevel[
         22,
@@ -350,7 +345,7 @@ public class DragItemInfo {
 
 /**
  * The mouse click action triggers this method invocation.
- *
+ * Represents a mouse event with detailed position and button information.
  */
 @!APILevel[
     22,
@@ -359,6 +354,7 @@ public class DragItemInfo {
 public class MouseEvent <: BaseEvent {
     /**
      * X coordinate of the mouse pointer relative to the upper left corner of the application window.
+     * Position within the application window's coordinate system.
      */
     @!APILevel[
         22,
@@ -368,6 +364,7 @@ public class MouseEvent <: BaseEvent {
 
     /**
      * Y coordinate of the mouse pointer relative to the upper left corner of the application window.
+     * Position within the application window's coordinate system.
      */
     @!APILevel[
         22,
@@ -377,6 +374,7 @@ public class MouseEvent <: BaseEvent {
 
     /**
      * X coordinate of the mouse pointer relative to the upper left corner of the component being clicked.
+     * Position within the clicked component's coordinate system.
      */
     @!APILevel[
         22,
@@ -386,6 +384,7 @@ public class MouseEvent <: BaseEvent {
 
     /**
      * Y coordinate of the mouse pointer relative to the upper left corner of the component being clicked.
+     * Position within the clicked component's coordinate system.
      */
     @!APILevel[
         22,
@@ -394,7 +393,7 @@ public class MouseEvent <: BaseEvent {
     public var y: Float64
 
     /**
-     * Mouse button of the click event.
+     * Indicates which mouse button was pressed (e.g., Left, Right, Middle).
      */
     @!APILevel[
         22,
@@ -403,7 +402,7 @@ public class MouseEvent <: BaseEvent {
     public var button: MouseButton
 
     /**
-     * Mouse action of the click event.
+     * Indicates the type of mouse action that occurred (e.g., Press, Release, Move, Hover).
      */
     @!APILevel[
         22,
@@ -439,8 +438,7 @@ public class MouseEvent <: BaseEvent {
 }
 
 /**
- * Touch Action Function Parameters.
- *
+ * Represents a touch event containing information about all touch points.
  */
 @!APILevel[
     22,
@@ -450,8 +448,7 @@ public class TouchEvent <: BaseEvent {
     var isStopPropagation: Bool = false
 
     /**
-     * Type of the touch event.
-     *
+     * Indicates the primary type of touch action for this event.
      */
     @!APILevel[
         22,
@@ -460,8 +457,7 @@ public class TouchEvent <: BaseEvent {
     public var eventType: TouchType
 
     /**
-     * All finger information.
-     *
+     * Array containing information about all active touch points.
      */
     @!APILevel[
         22,
@@ -470,8 +466,7 @@ public class TouchEvent <: BaseEvent {
     public var touches: Array<TouchObject>
 
     /**
-     * Finger information changed.
-     *
+     * Array containing information about touch points that changed in this event.
      */
     @!APILevel[
         22,
@@ -489,7 +484,7 @@ public class TouchEvent <: BaseEvent {
 
     /**
      * Stops the event from bubbling upwards or downwards.
-     *
+     * Prevents the event from propagating to parent or child components.
      */
     @!APILevel[
         22,
@@ -501,8 +496,7 @@ public class TouchEvent <: BaseEvent {
 }
 
 /**
- * KeyEvent object.
- *
+ * Represents a keyboard event with detailed information about the key press.
  */
 @!APILevel[
     22,
@@ -512,8 +506,7 @@ public class KeyEvent {
     var isStopPropagation: Bool = false
 
     /**
-     * Key value of a key.
-     *
+     * The string representation of the key that was pressed.
      */
     @!APILevel[
         22,
@@ -522,8 +515,7 @@ public class KeyEvent {
     public var keyText: String
 
     /**
-     * Type of a key.
-     *
+     * Indicates whether the key was pressed down or released.
      */
     @!APILevel[
         22,
@@ -532,8 +524,7 @@ public class KeyEvent {
     public var keyType: KeyType
 
     /**
-     * Key code of a key
-     *
+     * The numeric code representing the physical key that was pressed.
      */
     @!APILevel[
         22,
@@ -543,7 +534,7 @@ public class KeyEvent {
 
     /**
      * Type of the input device that triggers the current key, such as the keyboard or handle.
-     *
+     * Indicates the source device of the key event.
      */
     @!APILevel[
         22,
@@ -554,7 +545,7 @@ public class KeyEvent {
     /**
      * Indicates the status of the key when the key is pressed.
      * The value 1 indicates the pressed state, and the value 0 indicates the unpressed state.
-     *
+     * Used for modifier keys like Ctrl, Shift, Alt.
      */
     @!APILevel[
         22,
@@ -564,7 +555,7 @@ public class KeyEvent {
 
     /**
      * Timestamp when the key was pressed.
-     *
+     * Time when the key event occurred in milliseconds since Unix epoch.
      */
     @!APILevel[
         22,
@@ -573,8 +564,8 @@ public class KeyEvent {
     public var timestamp: Int64
 
     /**
-     *  Indicates the ID of the input device that triggers the current key.
-     *
+     * Indicates the ID of the input device that triggers the current key.
+     * Useful for identifying which specific keyboard generated the event in multi-device scenarios.
      */
     @!APILevel[
         22,
@@ -610,7 +601,7 @@ public class KeyEvent {
 
     /**
      * Stops the event from bubbling upwards or downwards.
-     *
+     * Prevents the event from propagating to parent or child components.
      */
     @!APILevel[
         22,

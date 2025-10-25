@@ -41,7 +41,7 @@ foreign {
 }
 
 /**
- * Defines Row Component.
+ * A layout container that arranges its child components horizontally in a row.
  */
 @!APILevel[
     22,
@@ -50,9 +50,10 @@ foreign {
 public class Row <: CommonMethodComponent<Row> & RowAttribute {
     /**
     * Defines the constructor of Row.
+    * Initializes a Row component with optional spacing and child content.
     *
-    * @param { ?Length } space
-    * @param { () -> Unit } child
+    * @param { ?Length } space - Row spacing between child components.
+    * @param { () -> Unit } child - Child component builder function.
     */
     @!APILevel[
         22,
@@ -68,9 +69,10 @@ public class Row <: CommonMethodComponent<Row> & RowAttribute {
 
     /**
     * Called when the vertical alignment is set.
+    * Configures the vertical alignment of child components within the row.
     *
-    * @param { ?VerticalAlign } value
-    * @returns { This }
+    * @param { ?VerticalAlign } value - Vertical alignment of child components.
+    * @returns { This } Returns the Row instance.
     */
     @!APILevel[
         22,
@@ -85,9 +87,10 @@ public class Row <: CommonMethodComponent<Row> & RowAttribute {
 
     /**
     * Called when the horizontal alignment is set.
+    * Configures the horizontal alignment of child components within the row.
     *
-    * @param { ?FlexAlign } value
-    * @returns { This }
+    * @param { ?FlexAlign } value - Horizontal alignment of child components.
+    * @returns { This } Returns the Row instance.
     */
     @!APILevel[
         22,

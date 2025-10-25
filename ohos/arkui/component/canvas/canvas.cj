@@ -101,7 +101,8 @@ enum CanvasImageType {
 ]
 public class RenderingContextSettings {
     /**
-     * Indicates whether anti-aliasing is enabled for canvas. The default value is false.
+     * Indicates whether anti-aliasing is enabled for canvas.
+     * @default false
      */
     @!APILevel[
         22,
@@ -112,7 +113,7 @@ public class RenderingContextSettings {
     /**
      * Create an RenderingContextSettings object based on the antialias and alpha.
      *
-     * @param { ?Bool } antialias
+     * @param { ?Bool } antialias - Whether enable antialias.
      */
     @!APILevel[
         22,
@@ -124,7 +125,7 @@ public class RenderingContextSettings {
 }
 
 /**
- * Size information of the text
+ * Size information of the text.
  */
 @!APILevel[
     22,
@@ -183,8 +184,8 @@ public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
     /**
      * Event notification after the canvas component is constructed. You can draw the canvas at this time.
      *
-     * @param { ?() -> Unit } callback
-     * @returns { This }
+     * @param { ?() -> Unit } callback - The callback on canvas ready to draw.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         22,

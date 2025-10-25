@@ -34,6 +34,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
      * Adds a published variable to the observed object.
      *
      * @param { ObservedPropertyAbstract } publishVar - The published variable to add.
+     * @returns { Unit }
      */
     @!APILevel[
         22,

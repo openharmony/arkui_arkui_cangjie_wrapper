@@ -22,6 +22,7 @@ import ohos.resource.*
 
 /**
  * Defines Shape Component.
+ * This interface provides the attribute methods for the Shape component.
  */
 @!APILevel[
     22,
@@ -31,11 +32,11 @@ sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
     /**
     * Viewport of shape
     *
-    * @param { ?Length } x
-    * @param { ?Length } y
-    * @param { ?Length } width
-    * @param { ?Length } height
-    * @returns { ShapeAttribute }
+    * @param { ?Length } x - X coordinate of the viewport.
+    * @param { ?Length } y - Y coordinate of the viewport.
+    * @param { ?Length } width - Width of the viewport.
+    * @param { ?Length } height - Height of the viewport.
+    * @returns { ShapeAttribute } - Returns the attribute of Shape.
     */
     @!APILevel[
         22,
@@ -51,10 +52,10 @@ sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
     /**
     * Called when shape mesh.
     *
-    * @param { ?Array<Float64> } value
-    * @param { ?UInt32 } column
-    * @param { ?UInt32 } row
-    * @returns { ShapeAttribute }
+    * @param { ?Array<Float64> } array - The mesh vertex point array.
+    * @param { ?UInt32 } column - The column count of mesh.
+    * @param { ?UInt32 } row - The row count of mesh.
+    * @returns { ShapeAttribute } - Returns the attribute of Shape.
     */
     @!APILevel[
         22,

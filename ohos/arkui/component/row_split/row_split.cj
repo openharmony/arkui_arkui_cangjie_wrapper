@@ -32,7 +32,7 @@ foreign {
 }
 
 /**
- * Defines RowSplit Component.
+ * A layout container that arranges its child components horizontally with resizable dividers between them.
  */
 @!APILevel[
     22,
@@ -40,9 +40,9 @@ foreign {
 ]
 public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     /**
-    * Defines the constructor of RowSplit.
+    * Initializes a RowSplit component with child content.
     *
-    * @param { () -> Unit } child
+    * @param { () -> Unit } child - The child component builder function.
     */
     @!APILevel[
         22,
@@ -56,10 +56,11 @@ public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     }
 
     /**
-    * Called when judging whether the split line can be dragged.
+    * Enable or disable resizeable.
+    * Controls whether the dividers between child components can be dragged to resize the components.
     *
-    * @param { ?Bool } value
-    * @returns { This }
+    * @param { ?Bool } value - Whether enable resizeable.
+    * @returns { This } Returns the RowSplit instance.
     */
     @!APILevel[
         22,
