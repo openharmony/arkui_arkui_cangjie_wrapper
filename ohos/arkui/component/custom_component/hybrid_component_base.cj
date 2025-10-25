@@ -97,6 +97,7 @@ public class CJPageEntry {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public open class HybridComponentBase <: SharedObject {
     static func registerLoadHandle(handleName: String, handle: () -> CPointer<Unit>) {
         let hd = {
@@ -143,6 +144,7 @@ public open class HybridComponentBase <: SharedObject {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func registerHybridComponent(compName: String, loadHandle: () -> CPointer<Unit>,
         unloadHandle: () -> Unit) {
         registerLoadHandle(compName + "_load", loadHandle)

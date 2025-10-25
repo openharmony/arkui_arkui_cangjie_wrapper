@@ -108,6 +108,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func get(): ArrayList<T> {
         recordDependentUpdate()
         this.internalValue
@@ -122,6 +123,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func set(newValue: ArrayList<T>): Unit {
         this.setInternalValue(newValue)
         this.notifyChanges()
@@ -136,6 +138,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func set(newValue: Array<T>): Unit {
         this.setInternalValue(ArrayList<T>(newValue))
         this.notifyChanges()
@@ -150,6 +153,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func set(newValue: ObservedComplexAbstract): Unit {
         let observedArray = newValue as ObservedArrayList<T>
         this.setInternalValue(

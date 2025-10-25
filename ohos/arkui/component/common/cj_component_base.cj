@@ -27,6 +27,7 @@ import ohos.ffi.*
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public abstract class UINodeBase <: RemoteData {
     protected init(id: Int64){
         super(id)

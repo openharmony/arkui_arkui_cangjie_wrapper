@@ -27,6 +27,7 @@ import ohos.labels.APILevel
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComponentAttribute {
     /**
      * EmptyComponent Constructor.
@@ -35,6 +36,7 @@ public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComp
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public init() {}
 }
 
@@ -45,4 +47,5 @@ public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComp
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 sealed interface EmptyComponentAttribute <: CommonMethod<EmptyComponentAttribute> {}

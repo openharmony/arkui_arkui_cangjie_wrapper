@@ -116,6 +116,7 @@ public class PersistentStorage <: Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func onStateUpdate(_: String, _: ArrayList<Int64>): Unit {
         innerPropertyHasChanged()
     }
@@ -130,6 +131,7 @@ public class PersistentStorage <: Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func notifyRead(_: String): Unit {}
 
     /**
@@ -141,6 +143,7 @@ public class PersistentStorage <: Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func id(): Int64 {
         subId
     }
@@ -153,6 +156,7 @@ public class PersistentStorage <: Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func aboutToBeDeleted(): Unit {
         PersistentStorage.getOrCreate().innerAboutToBeDeleted()
         PersistentStorage.instance = None

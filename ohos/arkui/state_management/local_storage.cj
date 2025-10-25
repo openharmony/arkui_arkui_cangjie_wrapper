@@ -63,6 +63,7 @@ public class LocalStorage {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func aboutToBeDeleted(): Bool {
         return this.clear()
     }

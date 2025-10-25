@@ -27,6 +27,7 @@ import ohos.labels.APILevel
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public open class Observable {
     // Record all the observers.
     private var observers: ArrayList<Observer> = ArrayList<Observer>()

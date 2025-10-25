@@ -107,6 +107,7 @@ public class ForEach<T> <: UINodeBase {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public init(subcomponent: () -> Unit) {
         this.child = subcomponent
         unsafe {

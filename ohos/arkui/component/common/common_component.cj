@@ -3104,6 +3104,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func animationStart(value: ?AnimateParam): T {
         animationStartInner(value)
     }
@@ -3128,6 +3129,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func animationEnd(): T {
         animationEndInner()
     }

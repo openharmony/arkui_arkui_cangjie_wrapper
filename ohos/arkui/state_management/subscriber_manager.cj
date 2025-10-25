@@ -28,6 +28,7 @@ import ohos.labels.APILevel
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public class SubscriberManager {
     private static let instance = SubscriberManager()
 
@@ -43,6 +44,7 @@ public class SubscriberManager {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func getInstance(): SubscriberManager {
         instance
     }
@@ -63,6 +65,7 @@ public class SubscriberManager {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func has(id: Int64): Bool {
         return subscriberById.contains(id)
     }
@@ -77,6 +80,7 @@ public class SubscriberManager {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func get(id: Int64): Option<Observer> {
         return subscriberById.get(id)
     }
@@ -90,6 +94,7 @@ public class SubscriberManager {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func delete(value: Observer): Unit {
         subscriberById.remove(value.id())
     }
@@ -104,6 +109,7 @@ public class SubscriberManager {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func add(value: Observer): Bool {
         let id = value.id()
         if (this.has(id)) {

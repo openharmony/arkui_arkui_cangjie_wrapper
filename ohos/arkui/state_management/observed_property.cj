@@ -46,6 +46,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public init(info: String, initValue: T) {
         super(info)
         this.internalValue = initValue
@@ -75,6 +76,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func get(): T {
         recordDependentUpdate()
         this.internalValue
@@ -95,6 +97,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public open func set(newValue: T): Unit {
         if (isEqual<T>(internalValue, newValue)) {
             return
@@ -116,6 +119,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func subscribeEx(observer: Observer) {
         subscribe(observer)
         let observedObject = internalValue as ObservedComplexAbstract
@@ -136,6 +140,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func unsubscribeEx(observer: Observer) {
         unsubscribe(observer)
         let observedObject = internalValue as ObservedComplexAbstract
@@ -156,6 +161,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func createProp(info: String): ObservedProperty<T> {
         let result = ObservedProperty<T>(info, internalValue)
         subProps_.add(result)

@@ -27,6 +27,7 @@ import ohos.labels.APILevel
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public abstract class ObservedObject <: ObservedComplexAbstract {
     private let publishVars: ArrayList<ObservedPropertyAbstract> = ArrayList<ObservedPropertyAbstract>()
 
@@ -39,6 +40,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func addPublishVar(publishVar: ObservedPropertyAbstract) {
         publishVars.add(publishVar)
     }
@@ -52,6 +54,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func getPublishVar(): ArrayList<ObservedPropertyAbstract> {
         return publishVars
     }

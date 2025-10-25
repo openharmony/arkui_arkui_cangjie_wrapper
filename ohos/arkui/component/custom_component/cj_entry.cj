@@ -35,6 +35,7 @@ import std.collection.HashMap
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public class CJEntry {
     /**
      * Used to compare local api version with native api version, different version may occur error.
@@ -50,6 +51,7 @@ public class CJEntry {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func getInstance(): CJEntry {
         return instance_
     }
@@ -64,6 +66,7 @@ public class CJEntry {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func registerEntry(name: String, call: () -> Bool): Unit {
         entries_.add(name, call)
     }

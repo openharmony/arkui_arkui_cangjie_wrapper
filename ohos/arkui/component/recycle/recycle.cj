@@ -36,6 +36,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribute {
     /**
      * Create a Recycle
@@ -44,6 +45,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public init() {
         unsafe {
             FfiOHOSAceFrameworkRecycleCreate()
@@ -58,6 +60,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public init(child: () -> Unit) {
         unsafe {
             FfiOHOSAceFrameworkRecycleCreate()
@@ -74,6 +77,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public override func pop() {
         unsafe {
             FfiOHOSAceFrameworkRecyclePop()
@@ -90,4 +94,5 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 sealed interface RecycleAttribute <: CommonMethod<RecycleAttribute> {}
