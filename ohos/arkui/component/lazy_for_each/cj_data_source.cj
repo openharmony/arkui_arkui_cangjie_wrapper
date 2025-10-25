@@ -32,9 +32,6 @@ foreign {
     func FfiOHOSAceFrameworkDataChangeListenerOnDataMoved(dataChangeListenId: Int64, fromIdx: Int64, toIdx: Int64): Unit
 }
 
-type KeyGenFuncType<T> = (T, Int64) -> String
-type ItemGenFuncType<T> = (T, Int64) -> Unit
-
 /**
  * Developers need to implement this interface to provide data to LazyForEach component.
  *

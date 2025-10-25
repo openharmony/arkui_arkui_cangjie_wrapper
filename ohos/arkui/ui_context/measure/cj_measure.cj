@@ -234,7 +234,7 @@ public class SizeOptions {
     }
 }
 
-protected func measureText(options: MeasureOptions): Float64 {
+protected func measureTextInner(options: MeasureOptions): Float64 {
     unsafe {
         let contextC = parseCJMeasureContext(options)
         let result = FfiMeasureText(contextC)
@@ -245,7 +245,7 @@ protected func measureText(options: MeasureOptions): Float64 {
     }
 }
 
-protected func measureTextSize(options: MeasureOptions): SizeOptions {
+protected func measureTextSizeInner(options: MeasureOptions): SizeOptions {
     unsafe {
         let contextC = parseCJMeasureContext(options)
         let result = FfiMeasureTextSize(contextC)
@@ -280,7 +280,7 @@ public class MeasureUtils {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func measureText(options: MeasureOptions): Float64 {
-        measureText(options)
+        measureTextInner(options)
     }
     /**
      * Displays the text width and height.
@@ -293,6 +293,6 @@ public class MeasureUtils {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func measureTextSize(options: MeasureOptions): SizeOptions {
-        measureTextSize(options)
+        measureTextSizeInner(options)
     }
 }

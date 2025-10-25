@@ -60,23 +60,6 @@ foreign {
 }
 
 /**
- * Define key generator function.
- *
- * @param { T } - item in array.
- * @param { Int64 } - index corresponding to an array item.
- * @return { String } - String generated based on item and index.
- */
-public type KeyGenFuncType<T> = (T, Int64) -> String
-
-/**
- * Define item generator function.
- *
- * @param { T } - item in array.
- * @param { Int64 } - index corresponding to an array item.
- */
-public type ItemGenFuncType<T> = (T, Int64) -> Unit
-
-/**
  * The ForEach class is used to create a list of elements based on a data source.
  */
 @!APILevel[
@@ -90,15 +73,15 @@ public class ForEach<T> <: UINodeBase {
      * Define the ForEach component.
      *
      * @param { CollectionEx<T> } arr - the array collection to be used in UI.
-     * @param { ItemGenFuncType<T> } itemGenerator - item generator function.
-     * @param { KeyGenFuncType<T> } keyGenerator - key generator function.
+     * @param { ItemGeneratorFunc<T> } itemGenerator - item generator function.
+     * @param { KeyGeneratorFunc<T> } keyGenerator - key generator function.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(arr: CollectionEx<T>, itemGenerator!: ItemGenFuncType<T>,
-        keyGenerator!: ?KeyGenFuncType<T> = None) {}
+    public init(arr: CollectionEx<T>, itemGenerator!: ItemGeneratorFunc<T>,
+        keyGenerator!: ?KeyGeneratorFunc<T> = None) {}
 
     /**
      * Set the value, array, and key.

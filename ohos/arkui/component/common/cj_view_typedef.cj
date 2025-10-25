@@ -1218,7 +1218,7 @@ public open class BindOptions {
                 NativeOptionCallBack(false, INVALID_CALLBACK_ID)
             }
         }
-        let onAppear = getCallBack(bindOption.onDisappear)
+        let onAppear = getCallBack(bindOption.onAppear)
         let onDisappear = getCallBack(bindOption.onDisappear)
         let onWillAppear = getCallBack(bindOption.onWillAppear)
         let onWillDisappear = getCallBack(bindOption.onWillDisappear)

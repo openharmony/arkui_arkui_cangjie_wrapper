@@ -94,7 +94,7 @@ public class RefreshOptions {
     public init(refreshing!: ?Bindable<Bool>) {
         let tmpRefreshing = refreshing ?? Bindable(false, {_ =>})
         this.refreshing = tmpRefreshing.value
-        this.changeEvent = tmpRefreshing.onchange
+        this.changeEvent = tmpRefreshing.onChange
     }
 }
 

@@ -1502,16 +1502,16 @@ public class Bindable<T> {
     /*
      * Defines the callback of the bindable property which will be invoked when the property value changes.
      */
-    public let onchange: (T) -> Unit
+    public let onChange: (T) -> Unit
     /**
      * Bindable constructor.
      *
      * @param { T } value - value of the bindable property.
-     * @param { (T) -> Unit } onchange - callback of the bindable property.
+     * @param { (T) -> Unit } onChange - callback of the bindable property.
      */
-    public init(value: T, onchange: (T) -> Unit) {
+    public init(value: T, onChange: (T) -> Unit) {
         this.value = value
-        this.onchange = onchange
+        this.onChange = onChange
     }
 }
 
