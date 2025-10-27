@@ -22,6 +22,7 @@ import ohos.base.*
 
 /**
  * Defines Rect Component.
+ * Provides methods for configuring the appearance and behavior of the Rect component.
  */
 @!APILevel[
     since: "22",
@@ -31,9 +32,10 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
 
     /**
      * Set the corner radius width.
+     * Configures the horizontal radius of the rectangle's rounded corners.
      *
-     * @param { ?Length } value
-     * @returns { RectAttribute }
+     * @param { ?Length } value - Radius width of the rectangle corners.
+     * @returns { RectAttribute } Returns the rect attribute.
      */
     @!APILevel[
         since: "22",
@@ -42,10 +44,10 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
     func radiusWidth(value: ?Length): RectAttribute
 
     /**
-     * Set the corner radius height.
+     * Configures the vertical radius of the rectangle's rounded corners.
      *
-     * @param { ?Length } value
-     * @returns { RectAttribute }
+     * @param { ?Length } value - Radius height of the rectangle corners.
+     * @returns { RectAttribute } Returns the rect attribute.
      */
     @!APILevel[
         since: "22",
@@ -54,10 +56,10 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
     func radiusHeight(value: ?Length): RectAttribute
 
     /**
-     * Set the corner radius size.
+     * Configures the radius of all rectangle corners with a single value.
      *
-     * @param { ?Length } value
-     * @returns { RectAttribute }
+     * @param { ?Length } value - Radius of the rectangle corners.
+     * @returns { RectAttribute } Returns the rect attribute.
      */
     @!APILevel[
         since: "22",
@@ -66,10 +68,10 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
     func radius(value: ?Length): RectAttribute
 
     /**
-     * Set the corner radius size.
+     * Configures the radius of each rectangle corner with individual values.
      *
-     * @param { ?Array<Length> } value
-     * @returns { RectAttribute }
+     * @param { ?Array<Length> } value - Array of radius values for rectangle corners.
+     * @returns { RectAttribute } Returns the rect attribute.
      */
     @!APILevel[
         since: "22",
@@ -79,9 +81,10 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
 
     /**
      * Set the corner radius size.
+     * Configures the radius width and height of each rectangle corner with individual values.
      *
-     * @param { ?Array<(Length, Length)> } value
-     * @returns { RectAttribute }
+     * @param { ?Array<(Length, Length)> } radiusArray - Array of radius values (width, height) for rectangle corners.
+     * @returns { RectAttribute } Returns the rect attribute.
      */
     @!APILevel[
         since: "22",

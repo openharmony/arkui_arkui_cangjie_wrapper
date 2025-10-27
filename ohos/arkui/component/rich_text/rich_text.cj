@@ -30,7 +30,7 @@ foreign {
 }
 
 /**
- * Defines RichText Component.
+ * A component that displays rich text content formatted in HTML or loaded from a resource file.
  */
 @!APILevel[
     since: "22",
@@ -39,8 +39,9 @@ foreign {
 public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
     /**
      * Creates a RichText component.
+     * Initializes a RichText component with HTML content or a resource file.
      *
-     * @param { ?ResourceStr } content
+     * @param { ?ResourceStr } content - HTML format string or local resource file.
      */
     @!APILevel[
         since: "22",
@@ -61,9 +62,10 @@ public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
 
     /**
      * Triggered when the RichText loading starts.
+     * Called when the rich text content begins loading.
      *
-     * @param { ?() -> Unit } callback
-     * @returns { This } 
+     * @param { ?() -> Unit } callback - Callback function when loading starts.
+     * @returns { This } Returns the RichText instance.
      */
     @!APILevel[
         since: "22",
@@ -78,9 +80,10 @@ public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
 
     /**
      * Triggered when the RichText loading ends.
+     * Called when the rich text content finishes loading, either successfully or with an error.
      *
-     * @param { ?() -> Unit } callback
-     * @returns { This } 
+     * @param { ?() -> Unit } callback - Callback function when loading completes.
+     * @returns { This } Returns the RichText instance.
      */
     @!APILevel[
         since: "22",

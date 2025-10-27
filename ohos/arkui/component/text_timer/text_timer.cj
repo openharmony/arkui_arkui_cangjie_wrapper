@@ -116,7 +116,6 @@ foreign {
 ]
 public class TextTimerController <: RemoteDataLite {
     /**
-     * TextTimerController constructor.
      * A constructor used to create a TextTimerController object.
      */
     @!APILevel[
@@ -135,6 +134,8 @@ public class TextTimerController <: RemoteDataLite {
 
     /**
      * Provides a start event for timer.
+     *
+     * @returns { Unit } Returns nothing.
      */
     @!APILevel[
         since: "22",
@@ -148,6 +149,8 @@ public class TextTimerController <: RemoteDataLite {
 
     /**
      * Provides a pause event for timer.
+     *
+     * @returns { Unit } Returns nothing.
      */
     @!APILevel[
         since: "22",
@@ -161,6 +164,8 @@ public class TextTimerController <: RemoteDataLite {
 
     /**
      * Provides an event to reset timer.
+     *
+     * @returns { Unit } Returns nothing.
      */
     @!APILevel[
         since: "22",
@@ -182,11 +187,11 @@ public class TextTimerController <: RemoteDataLite {
 ]
 public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute {
     /**
-     * A constructor used to create a TextTimerController object.
+     * A constructor used to create a TextTimer object.
      *
-     * @param { ?Bool } isCountDown
-     * @param { ?Int64 } count
-     * @param { ?TextTimerController } controller
+     * @param { ?Bool } isCountDown - Whether to count down.
+     * @param { ?Int64 } count - The initial count value.
+     * @param { ?TextTimerController } controller - The controller for the text timer.
      */
     @!APILevel[
         since: "22",
@@ -208,8 +213,9 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      * <br>If the specified date format is yy, MM, or dd, the default value is used instead.
      * </p>
      *
-     * @param { ?String } value - Custom format.Default value: 'HH:mm:ss.SS'.
-     * @returns { This }
+     * @param { ?String } value - Custom format.
+     * @default 'HH:mm:ss.SS'
+     * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -229,8 +235,10 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      * This event is not triggered when the screen is locked or the application is running in the background.
      * When high-precision formats (such as SSS or SS) are used, the callback interval may vary.
      *
-     * @param { ?(Int64, Int64) -> Unit } event
-     * @returns { This }
+     * @param { ?(Int64, Int64) -> Unit } event - The callback function when the time text changes.
+     *                                          The first parameter is the timestamp,
+     *                                          and the second parameter is the elapsed time in milliseconds.
+     * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -248,10 +256,11 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * Sets the font size.
      *
-     * @param { ?Length } value - Font size.The default font size is 16 fp.
+     * @param { ?Length } value - Font size. The default font size is 16.fp.
      * <br>If fontSize is of the number type, the unit fp is used.
      * <br>The value cannot be a percentage.
-     * @returns { This }
+     * @default 16.fp
+     * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -268,8 +277,8 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * Sets the font color.
      *
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } value - The font color.
+     * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -286,8 +295,9 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * Sets the font style.
      *
-     * @param { ?FontStyle } value - Font style.Default value: FontStyle.Normal.
-     * @returns { This }
+     * @param { ?FontStyle } value - Font style.
+     * @default FontStyle.Normal.
+     * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -309,10 +319,11 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      * </p>
      *
      * @param { ?FontWeight } value - Font weight.
-     * <br>For the number type, Value range: [100, 900], at an interval of 100.The default value is 400.
+     * <br>For the number type, Value range: [100, 900], at an interval of 100.
      * <br>A larger value indicates a heavier font weight.
      * <br>For the string type, only strings that represent a number.
-     * @returns { This }
+     * @default 400
+     * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -331,8 +342,9 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * Sets the font family.
      *
-     * @param { ?ResourceStr } value - Font family. Default font: 'HarmonyOS Sans'.
-     * @returns { This }
+     * @param { ?ResourceStr } value - Font family.
+     * @default 'HarmonyOS Sans'.
+     * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -350,11 +362,10 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
 
     /**
      * Sets the text shadow.
-     * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
      * @param { ?Array<ShadowOptions> } value - The shadow options.
-     * @returns { This }
+     * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -375,11 +386,10 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
 
     /**
      * Sets the text shadow.
-     * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
      * @param { ?ShadowOptions } value - The shadow options.
-     * @returns { This }
+     * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
         since: "22",

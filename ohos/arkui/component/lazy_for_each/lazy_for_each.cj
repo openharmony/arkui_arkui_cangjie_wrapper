@@ -155,7 +155,8 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
 }
 
 /**
- * Enter the value to obtain the LazyForEach.
+ * Lazy loading.
+ * A component that implements lazy loading, rendering only the items currently visible on the screen.
  */
 @!APILevel[
     since: "22",
@@ -165,12 +166,13 @@ public class LazyForEach<T> <: UINodeBase {
     var child: () -> Unit = {=>}
     private static var uniqueKey = 0
 
-    /*
-     * Enter the value to obtain the LazyForEach
+    /**
+     * Constructs a LazyForEach component.
      *
-     * @param { IDataSource<T> } dateSource - the array collection to be used in UI.
-     * @param { ItemGeneratorFunc<T> } itemGenerator - item generator function.
-     * @param { KeyGeneratorFunc<T> } keyGenerator - key generator function.
+     * @param { IDataSource<T> } dataSource - LazyForEach data source, need to implement the IDataSource interface.
+     * @param { ItemGeneratorFunc<T> } itemGenerator - Sub-component generator function, create a sub-component for each data in the array.
+     * @param { KeyGeneratorFunc<T> } keyGenerator - Key generator function, used to generate a unique and fixed key for each data.
+     * @returns { LazyForEach<T> }
      */
     @!APILevel[
         since: "22",
@@ -180,7 +182,8 @@ public class LazyForEach<T> <: UINodeBase {
         keyGenerator!: ?KeyGeneratorFunc<T> = None) {}
 
     /**
-     * Enter the value to obtain the LazyForEach.
+     * Lazy loading.
+     * A component that implements lazy loading, rendering only the items currently visible on the screen.
      */
     @!APILevel[
         since: "22",
@@ -189,7 +192,8 @@ public class LazyForEach<T> <: UINodeBase {
     public init() {}
 
     /**
-     * Enter the value to obtain the LazyForEach.
+     * Lazy loading.
+     * A component that implements lazy loading, rendering only the items currently visible on the screen.
      */
     @!APILevel[
         since: "22",

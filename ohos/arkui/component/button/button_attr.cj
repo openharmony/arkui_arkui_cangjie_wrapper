@@ -21,7 +21,7 @@ import ohos.base.*
 import ohos.resource.*
 
 /**
- * Defines Button attributes.
+ * Defines the Button attribute functions.
  */
 @!APILevel[
     since: "22",
@@ -31,8 +31,8 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Text size.
      *
-     * @param { ?Length } value
-     * @returns { ButtonAttribute }
+     * @param { ?Length } value - The font size of button.
+     * @returns { ButtonAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -43,8 +43,8 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Font weight.
      *
-     * @param { ?FontWeight } value
-     * @returns { ButtonAttribute }
+     * @param { ?FontWeight } value - The font weight of button.
+     * @returns { ButtonAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -55,8 +55,8 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Text color.
      *
-     * @param { ?ResourceColor } value
-     * @returns { ButtonAttribute }
+     * @param { ?ResourceColor } color - The font color of button.
+     * @returns { ButtonAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -67,8 +67,8 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Font style.
      *
-     * @param { ?FontStyle } value
-     * @returns { ButtonAttribute }
+     * @param { ?FontStyle } value - The font style of button.
+     * @returns { ButtonAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -79,8 +79,8 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Font family.
      *
-     * @param { ?ResourceStr } value
-     * @returns { ButtonAttribute }
+     * @param { ?ResourceStr } value - The font family of button.
+     * @returns { ButtonAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -91,32 +91,38 @@ sealed interface ButtonAttribute <: CommonMethod<ButtonAttribute> {
     /**
      * Describes the button style.
      *
-     * @param { ?ButtonType } value
-     * @returns { ButtonAttribute }
+     * @param { ?ButtonType } value - The button shape style.
+     * @returns { ButtonAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func shape(value: ?ButtonType): ButtonAttribute
+    /**
+     * @default ButtonType.Capsule
+     */
 
     /**
      * Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
      *
-     * @param { ?Bool } value
-     * @returns { ButtonAttribute }
+     * @param { ?Bool } value - Whether to enable button interactive effect.
+     * @returns { ButtonAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func stateEffect(value: ?Bool): ButtonAttribute
+    /**
+     * @default true
+     */
 
     /**
      * Describes the button style.
      *
-     * @param { ?ButtonStyleMode } value - button style mode
-     * @returns { ButtonAttribute }
+     * @param { ?ButtonStyleMode } value - Button style mode.
+     * @returns { ButtonAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",

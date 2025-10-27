@@ -71,8 +71,8 @@ public class Size {
     /**
      * Create an Object of Size.
      *
-     * @param { Float64 } width
-     * @param { Float64 } height
+     * @param { Float64 } width - The width of the size.
+     * @param { Float64 } height - The height of the size.
      */
     @!APILevel[
         since: "22",
@@ -125,8 +125,8 @@ public class Offset {
     /**
      * Create an Object of Offset.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
+     * @param { Float64 } x - The x coordinate.
+     * @param { Float64 } y - The y coordinate.
      */
     @!APILevel[
         since: "22",
@@ -191,11 +191,11 @@ public class TranslateResult {
     public var z: Float64
 
     /**
-     * Create an Object of Offset.
+     * Create an Object of TranslateResult.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @param { Float64 } z
+     * @param { Float64 } x - The x coordinate.
+     * @param { Float64 } y - The y coordinate.
+     * @param { Float64 } z - The z coordinate.
      */
     @!APILevel[
         since: "22",
@@ -279,11 +279,11 @@ public class ScaleResult {
     /**
      * Defines ScaleResult Type.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @param { Float64 } z
-     * @param { Float64 } centerX
-     * @param { Float64 } centerY
+     * @param { Float64 } x - The zoom factor of the x-axis.
+     * @param { Float64 } y - The zoom factor of the y-axis.
+     * @param { Float64 } z - The zoom factor of the z-axis.
+     * @param { Float64 } centerX - The x-axis coordinate of the center point.
+     * @param { Float64 } centerY - The y-axis coordinate of the center point.
      */
     @!APILevel[
         since: "22",
@@ -386,12 +386,12 @@ public class RotateResult {
     /**
      * Defines RotateResult Type.
      *
-     * @param { Float64 } x
-     * @param { Float64 } y
-     * @param { Float64 } z
-     * @param { Float64 } centerX
-     * @param { Float64 } centerY
-     * @param { Float64 } angle
+     * @param { Float64 } x - The x coordinate of rotation vector.
+     * @param { Float64 } y - The y coordinate of rotation vector.
+     * @param { Float64 } z - The z coordinate of rotation vector.
+     * @param { Float64 } centerX - The x-axis coordinate of the center point.
+     * @param { Float64 } centerY - The y-axis coordinate of the center point.
+     * @param { Float64 } angle - The rotation angle.
      */
     @!APILevel[
         since: "22",
@@ -499,7 +499,7 @@ public class ComponentInfo {
     public var translate: TranslateResult
 
     /**
-     * Obtain attribute information for rotate.
+     * Obtain attribute information for scale.
      *
      */
     @!APILevel[
@@ -530,14 +530,14 @@ public class ComponentInfo {
     /**
      * ComponentInfo constructor.
      *
-     * @param { Size } size
-     * @param { Offset } localOffset
-     * @param { Offset } windowOffset
-     * @param { Offset } screenOffset
-     * @param { TranslateResult } translate
-     * @param { ScaleResult } scale
-     * @param { RotateResult } rotate
-     * @param { Matrix4Result } transform
+     * @param { Size } size - The size of the component.
+     * @param { Offset } localOffset - The local offset of the component.
+     * @param { Offset } windowOffset - The window offset of the component.
+     * @param { Offset } screenOffset - The screen offset of the component.
+     * @param { TranslateResult } translate - The translation result of the component.
+     * @param { ScaleResult } scale - The scale result of the component.
+     * @param { RotateResult } rotate - The rotation result of the component.
+     * @param { Matrix4Result } transform - The transformation matrix of the component.
      */
     @!APILevel[
         since: "22",
@@ -568,8 +568,8 @@ public class ComponentUtils {
     /**
      * Provide the ability to obtain the coordinates and size of component drawing areas.
      *
-     * @param { String } id - component id.
-     * @returns { ComponentInfo }
+     * @param { String } id - Component id.
+     * @returns { ComponentInfo } Returns the component information including size and position.
      */
     @!APILevel[
         since: "22",

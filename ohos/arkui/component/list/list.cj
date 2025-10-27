@@ -71,6 +71,7 @@ public class OnScrollFrameBeginHandlerResult {
      * Constructor.
      *
      * @param { ?Float64 } offsetRemain - Actual scroll offset.
+     * @returns { OnScrollFrameBeginHandlerResult }
      */
     @!APILevel[
         since: "22",
@@ -205,12 +206,12 @@ foreign {
 public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
 
     /**
-     * Called when interface data is called.
+     * Defines the constructor of List.
      *
-     * @param { ?Int64 } space
-     * @param { ?Int32 } initialIndex
-     * @param { ?Scroller } scroller
-     * @param { () -> Unit } child
+     * @param { ?Int64 } space - The space between items.
+     * @param { ?Int32 } initialIndex - The initial index of the list.
+     * @param { ?Scroller } scroller - The scroller instance.
+     * @param { () -> Unit } child - The child component builder.
      */
     @!APILevel[
         since: "22",
@@ -259,7 +260,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Sets the direction in which the list items are arranged.
      *
-     * @param { ?Axis } value
+     * @param { ?Axis } value - The axis direction.
      * @returns { This }
      */
     @!APILevel[
@@ -276,7 +277,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Sets the style of the divider for the list items. By default, there is no divider.
      *
-     * @param { Option<ListDividerOptions> } value
+     * @param { Option<ListDividerOptions> } value - The divider options.
      * @returns { This }
      */
     @!APILevel[
@@ -310,7 +311,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Sets the effect used when the scroll boundary is reached.
      *
-     * @param { ?EdgeEffect } value
+     * @param { ?EdgeEffect } value - The edge effect style.
      * @returns { This }
      */
     @!APILevel[
@@ -328,7 +329,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
      * Sets whether to enable chained animations, which provide a visually connected,
      * or "chained," effect when the list is scrolled or its top or bottom edge is dragged.
      *
-     * @param { ?Bool } value
+     * @param { ?Bool } value - Whether to enable chained animations.
      * @returns { This }
      */
     @!APILevel[
@@ -345,7 +346,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Called when the minimum number of list item caches is set for long list deferred loading.
      *
-     * @param { ?Int32 } value
+     * @param { ?Int32 } value - The cached count value.
      * @returns { This }
      */
     @!APILevel[
@@ -362,7 +363,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Sets whether to enable multiselect.
      *
-     * @param { ?Bool } value
+     * @param { ?Bool } value - Whether to enable multiselect.
      * @returns { This }
      */
     @!APILevel[
@@ -380,7 +381,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
      * Sets the number of columns or rows in the list. If the value is set to the gutter type, it indicates the gap between columns.
      * It takes effect when the number of columns is greater than 1.
      *
-     * @param { ?Int32 } value
+     * @param { ?Int32 } value - The lanes count.
      * @returns { This }
      */
     @!APILevel[
@@ -398,8 +399,8 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
      * Sets the number of columns or rows in the list. If the value is set to the gutter type, it indicates the gap between columns.
      * It takes effect when the number of columns is greater than 1.
      *
-     * @param { ?Length } minLength
-     * @param { ?Length } maxLength
+     * @param { ?Length } minLength - The minimum length of lanes.
+     * @param { ?Length } maxLength - The maximum length of lanes.
      * @returns { This }
      */
     @!APILevel[
@@ -430,7 +431,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
      * Alignment mode of list items along the cross axis when the cross-axis width of the list is greater
      * than the cross-axis width of list items multiplied by the value of lanes.
      *
-     * @param { ?ListItemAlign } value
+     * @param { ?ListItemAlign } value - The alignment mode.
      * @returns { This }
      */
     @!APILevel[
@@ -447,7 +448,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Sets whether to pin the header to the top or the footer to the bottom in the list item group.
      *
-     * @param { ?StickyStyle } value
+     * @param { ?StickyStyle } value - The sticky style.
      * @returns { This }
      */
     @!APILevel[
@@ -537,7 +538,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Triggered when a child component enters or leaves the list display area.
      *
-     * @param { ?(Int32, Int32, Int32) -> Unit } event
+     * @param { ?(Int32, Int32, Int32) -> Unit } event - The scroll index event handler.
      * @returns { This }
      */
     @!APILevel[
@@ -556,7 +557,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Called when scrolling begin each frame.
      *
-     * @param { ?(Float64, ScrollState) -> OnScrollFrameBeginHandlerResult } event
+     * @param { ?(Float64, ScrollState) -> OnScrollFrameBeginHandlerResult } event - The scroll frame begin event handler.
      * @returns { This }
      */
     @!APILevel[

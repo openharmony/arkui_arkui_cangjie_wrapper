@@ -26,6 +26,7 @@ import ohos.multimedia.image.PixelMap
 
 /**
  * Defines CommonShapeMethod.
+ * This interface provides common shape methods for shape components.
  */
 @!APILevel[
     since: "22",
@@ -35,8 +36,9 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     /**
      * Called when the fill color is set.
      *
-     * @param { ?ResourceColor } value
-     * @returns { T }
+     * @param { ?ResourceColor } value - The shape fill color.
+     * @default Color.Black
+     * @returns { T } - Returns the component instance itself for method chaining.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -46,10 +48,10 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     func fill(value: ?ResourceColor): T
 
     /**
-     * Called when the transparency of the border is set.
+     * Sets the opacity of the fill area.
      *
-     * @param { ?Float64 } value
-     * @returns { T }
+     * @param { ?Float64 } value - The shape fill opacity. Value range is [0.0, 1.0].
+     * @returns { T } - Returns the component instance itself for method chaining.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -59,10 +61,10 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     func fillOpacity(value: ?Float64): T
 
      /**
-     * Called when the transparency of the border is set.
+     * Sets the opacity of the fill area.
      *
-     * @param { ?AppResource } value
-     * @returns { T }
+     * @param { ?AppResource } value - The shape fill opacity id source.
+     * @returns { T } - Returns the component instance itself for method chaining.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -74,8 +76,8 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     /**
      * Called when the border color is set.
      *
-     * @param { ?ResourceColor } value
-     * @returns { T }
+     * @param { ?ResourceColor } value - The stroke color.
+     * @returns { T } - Returns the component instance itself for method chaining.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -85,10 +87,11 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     func stroke(value: ?ResourceColor): T
 
     /**
-     * Called when the gap of the border is set.
+     * Sets the offset of the start point for drawing the stroke.
      *
-     * @param { ?Array<Length> } value
-     * @returns { T }
+     * @param { ?Array<Length> } value - Offset of the start point for drawing the stroke.
+     * @default [0.vp]
+     * @returns { T } - Returns the component instance itself for method chaining.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -100,8 +103,9 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     /**
      * Called when the offset of the starting point of border drawing is set.
      *
-     * @param { ?Length } value
-     * @returns { T }
+     * @param { ?Length } value - The stroke dash offset.
+     * @default 0.vp
+     * @returns { T } - Returns the component instance itself for method chaining.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -113,8 +117,9 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     /**
      * Called when the path endpoint drawing style is set.
      *
-     * @param { ?LineCapStyle } value
-     * @returns { T }
+     * @param { ?LineCapStyle } value - The stroke line cap style.
+     * @default LineCapStyle.Butt
+     * @returns { T } - Returns the component instance itself for method chaining.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -124,10 +129,12 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     func strokeLineCap(value: ?LineCapStyle): T
 
     /**
-     * Called when the border corner drawing style is set.
+     * Sets the join style of the stroke.
+     * This attribute does not work for the Circle component, which does not have corners.
      *
-     * @param { ?LineJoinStyle } value
-     * @returns { T }
+     * @param { ?LineJoinStyle } value - Join style of the stroke.
+     * @default LineJoinStyle.Miter
+     * @returns { T } - Returns the component instance itself for method chaining.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -137,10 +144,10 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     func strokeLineJoin(value: ?LineJoinStyle): T
 
     /**
-     * Called when the limit value for drawing acute angles as oblique angles is set.
+     * Limits for drawing acute angles as bevels.
      *
-     * @param { ?Float64 } miterLimit
-     * @returns { T }
+     * @param { ?Float64 } miterLimit - The stroke miter limit.
+     * @returns { T } - Returns the component instance itself for method chaining.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -150,10 +157,14 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     func strokeMiterLimit(miterLimit: ?Float64): T
 
     /**
-     * Called when the opacity of the border is set.
+     * Sets the stroke opacity
+     * The value range is [0.0, 1.0].
+     * A value less than 0.0 evaluates to the value 0.0. A value greater than 1.0 evaluates to the value 1.0.
+     * Any other value evaluates to the value 1.0.
      *
-     * @param { ?Float64 } value
-     * @returns { T }
+     * @param { ?Float64 } value - The stroke opacity.
+     * @default 1.0
+     * @returns { T } - Returns the component instance itself for method chaining.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -163,10 +174,14 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     func strokeOpacity(value: ?Float64): T
 
     /**
-     * Called when the opacity of the border is set.
+     * Sets the stroke opacity
+     * The value range is [0.0, 1.0].
+     * A value less than 0.0 evaluates to the value 0.0. A value greater than 1.0 evaluates to the value 1.0.
+     * Any other value evaluates to the value 1.0.
      *
-     * @param { ?AppResource } value
-     * @returns { T }
+     * @param { ?AppResource } value - The stroke opacity id source.
+     * @default 1.0
+     * @returns { T } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -175,10 +190,12 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     func strokeOpacity(value: ?AppResource): T
 
     /**
-     * Called when the width of the border is set.
+     * Called when the width of the border is set. 
+     * If this attribute is of the string type, percentage values are not supported and will be treated as 1.px.
      *
-     * @param { ?Length } value
-     * @returns { T }
+     * @param { ?Length } value - The stroke width. The value must be greater than or equal to 0.
+     * @default 1.vp
+     * @returns { T } - Returns the component instance itself for method chaining.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -190,8 +207,9 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
     /**
      * Called when setting whether anti aliasing is on.
      *
-     * @param { ?Bool } value
-     * @returns { T }
+     * @param { ?Bool } value - Whether enable anti-alias.
+     * @default true
+     * @returns { T } - Returns the component instance itself for method chaining.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[

@@ -24,6 +24,7 @@ import ohos.business_exception.BusinessException
 
 /**
  * Defines class ObservedArrayList.
+ * An observable array list that can be used for reactive state management.
  */
 @!APILevel[
     since: "22",
@@ -33,9 +34,9 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     private var internalValue: ArrayList<T>
 
     /**
-     * ObservedArrayList constructor.
+     * Creates an ObservedArrayList from an ArrayList.
      *
-     * @param { ArrayList<T> } initValue
+     * @param { ArrayList<T> } initValue - Initial values for the array list.
      */
     @!APILevel[
         since: "22",
@@ -46,9 +47,9 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * ObservedArrayList constructor.
+     * Creates an ObservedArrayList from an Array.
      *
-     * @param { Array<T> } initValue
+     * @param { Array<T> } initValue - Initial values for the array list.
      */
     @!APILevel[
         since: "22",
@@ -117,6 +118,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * Sets the current ArrayList value. Enable observers to receive updated information whenever state variables change.
      *
      * @param { ArrayList<T> } newValue - The new ArrayList value to set.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -131,6 +133,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * Sets the current ArrayList value from another Array object. Enable observers to receive updated information whenever state variables change.
      *
      * @param { Array<T> } newValue - The new Array value to set.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -145,6 +148,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * Sets the current ArrayList value from another ObservedComplexAbstract object. Enable observers to receive updated information whenever state variables change.
      *
      * @param { ObservedComplexAbstract } newValue - The new ObservedComplexAbstract value to set.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -180,6 +184,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      *
      * @param { Int64 } index - The zero-based index of the element to set.
      * @param { T } value - The new value to set at the specified index.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -214,7 +219,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     /**
      * Checks if the observed array list is empty.
      *
-     * @returns { Bool } True if the array list is empty, false otherwise.
+     * @returns { Bool } true if the array list is empty, false otherwise.
      */
     @!APILevel[
         since: "22",
@@ -225,7 +230,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * Creates a shallow copy of the observed array list.
+     * Creates a shallow copy of the observed array list. This function also record the dependency elements that need to be updated.
      *
      * @returns { ObservedArrayList<T> } A new ObservedArrayList instance with the same elements.
      */
@@ -239,6 +244,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
 
     /**
      * Removes all elements from the observed array list. Enable observers to receive updated information whenever state variables change.
+     *
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -263,6 +270,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * Adds an element to the end of the observed array list. This function can enable observers to receive updated information whenever state variables change.
      *
      * @param { T } element - The element to append to the array list.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -278,6 +286,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * Adds all elements from a collection to the end of the observed array list. This function can enable observers to receive updated information whenever state variables change.
      *
      * @param { Collection<T> } elements - The collection of elements to append.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -299,6 +308,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      *
      * @param { Int64 } index - The zero-based index at which to insert the element.
      * @param { T } element - The element to insert.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -315,6 +325,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      *
      * @param { Int64 } index - The zero-based index at which to insert the elements.
      * @param { Collection<T> } elements - The collection of elements to insert.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -335,6 +346,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * Adds an element to the beginning of the observed array list. This function can enable observers to receive updated information whenever state variables change.
      *
      * @param { T } element - The element to prepend to the array list.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -350,6 +362,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
      * Adds all elements from a collection to the beginning of the observed array list. This function can enable observers to receive updated information whenever state variables change.
      *
      * @param { Collection<T> } elements - The collection of elements to prepend.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -367,7 +380,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * Removes and returns the element at the specified index. This function can enable observers to receive updated information whenever state variables change.
+     * Removes and returns the element at the specified index. Enable observers to receive updated information whenever state variables change.
      *
      * @param { Int64 } index - The zero-based index of the element to remove.
      * @returns { T } The removed element.
@@ -383,9 +396,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * Removes elements in the specified range from the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     * Removes elements in the specified range from the observed array list. Enable observers to receive updated information whenever state variables change.
      *
      * @param { Range<Int64> } range - The range of indices to remove.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -397,9 +411,10 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * Removes all elements that satisfy the provided predicate. This function can enable observers to receive updated information whenever state variables change.
+     * Removes all elements that satisfy the provided predicate.
      *
-     * @param { (T) -> Bool } predicate - A function that returns true for elements to be removed.
+     * @param { (T) -> Bool } predicate - A function that returns true for elements to be removed. Enable observers to receive updated information whenever state variables change.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",

@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * The construct function of search
+ * Provides methods for configuring the appearance and behavior of the Search component.
  */
 @!APILevel[
     since: "22",
@@ -28,10 +28,11 @@ import ohos.base.*
 ]
 sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
     /**
-     * Set the search button text, fontSize and fontColor
+     * Set the search button text, fontSize and fontColor.
+     * Configures the text displayed on the search button.
      *
-     * @param { ?ResourceStr } value - indicates the text of the search button.
-     * @returns { SearchAttribute }
+     * @param { ?ResourceStr } value - Indicates the text of the search button.
+     * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
         since: "22",
@@ -40,10 +41,12 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
     func searchButton(value: ?ResourceStr): SearchAttribute
 
     /**
-     * Set the search button text, fontSize and fontColor
+     * Set the search button text, fontSize and fontColor.
+     * Configures the color of the placeholder text.
      *
-     * @param { ?ResourceColor } value - Default value is '#99182431'.The default value on wearable devices is '#99ffffff'.
-     * @returns { SearchAttribute }
+     * @param { ?ResourceColor } value - indicates the color of the placeholder text. The default value on wearable devices is 0x9ffffff.
+     * @default 0x99182431
+     * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
         since: "22",
@@ -52,13 +55,14 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
     func placeholderColor(value: ?ResourceColor): SearchAttribute
 
     /**
-     * Set the font used for place holder text
+     * Set the font used for place holder text.
+     * Configures the font properties of the placeholder text.
      *
-     * @param { ?Length } size - font size.
-     * @param { ?FontWeight } weight - font weight.
-     * @param { ?FontStyle } style - font style.
-     * @param { ?ResourceStr } family - font family.
-     * @returns { SearchAttribute }
+     * @param { ?Length } size - The placeholder font size.
+     * @param { ?FontWeight } weight - The placeholder font weight.
+     * @param { ?FontStyle } style - The placeholder font style.
+     * @param { ?ResourceStr } family - The placeholder font family.
+     * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
         since: "22",
@@ -72,13 +76,14 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
     ): SearchAttribute
 
     /**
-     * Set the font used for input text
+     * Set the font used for input text.
+     * Configures the font properties of the input text.
      *
-     * @param { ?Length } size - font size.
-     * @param { ?FontWeight } weight - font weight.
-     * @param { ?FontStyle } style - font style.
-     * @param { ?ResourceStr } family - font family.
-     * @returns { SearchAttribute }
+     * @param { ?Length } size - Font size.
+     * @param { ?FontWeight } weight - Font weight.
+     * @param { ?FontStyle } style - Font style.
+     * @param { ?ResourceStr } family - Font family.
+     * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
         since: "22",
@@ -97,8 +102,9 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * all other actions, such as copying, cutting, and sharing, are disabled.
      * Dragging is not allowed when CopyOptions.None is set.
      *
-     * @param { ?CopyOptions } value - Default value is CopyOptions.LocalDevice.
-     * @returns { SearchAttribute }
+     * @param { ?CopyOptions } value - Copy options for the search input.
+     * @default CopyOptions.LocalDevice
+     * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
         since: "22",
@@ -107,10 +113,10 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
     func copyOption(value: ?CopyOptions): SearchAttribute
 
     /**
-     * Call the function when clicked the search button.
+     * Triggered when the user clicks the search button or presses Enter in the search field.
      *
      * @param { ?(String) -> Unit } callback - Search submission callback, which returns the text content currently in the search box.
-     * @returns { SearchAttribute }
+     * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
         since: "22",
@@ -123,8 +129,8 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * In this callback, if cursor operations are performed,
      * <br>developers need to adjust the cursor logic based on the previewText parameter to ensure it works seamlessly within the preview display scenario.
      *
-     * @param { ?(String) -> Unit } callback - Search submission callback, which returns the text content currently in the search box.
-     * @returns { SearchAttribute }
+     * @param { ?(String) -> Unit } callback - Text change callback, which returns the current text content in the search box.
+     * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
         since: "22",
@@ -133,10 +139,10 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
     func onChange(callback: ?(String) -> Unit): SearchAttribute
 
     /**
-     * Called when using the Clipboard menu.
+     * Triggered when the user copies text from the search field.
      *
      * @param { ?(String) -> Unit } callback - Callback used to return the copied text content.
-     * @returns { SearchAttribute }
+     * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
         since: "22",
@@ -145,10 +151,10 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
     func onCopy(callback: ?(String) -> Unit): SearchAttribute
 
     /**
-     * Called when using the Clipboard menu.
+     * Triggered when the user cuts text from the search field.
      *
      * @param { ?(String) -> Unit } callback - Callback used to return the cut text content.
-     * @returns { SearchAttribute }
+     * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
         since: "22",
@@ -157,10 +163,10 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
     func onCut(callback: ?(String) -> Unit): SearchAttribute
 
     /**
-     * Called when using the Clipboard menu.
+     * Triggered when the user pastes text into the search field.
      *
      * @param { ?(String) -> Unit } callback - Executed when a paste operation is performed. Callback used to return the pasted text content.
-     * @returns { SearchAttribute }
+     * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
         since: "22",

@@ -42,7 +42,7 @@ foreign {
 
 /**
  * Provides the method of switching the cursor position.
- *
+ * TextAreaController allows you to control the caret position in a TextArea component.
  */
 @!APILevel[
     since: "22",
@@ -52,6 +52,7 @@ public class TextAreaController <: RemoteDataLite {
 
     /**
      * TextAreaController constructor.
+     * Creates a new instance of TextAreaController.
      */
     @!APILevel[
         since: "22",
@@ -68,7 +69,7 @@ public class TextAreaController <: RemoteDataLite {
     }
 
     /**
-     * Called when the position of the insertion cursor is set.
+     * Set caret position.
      *
      * @param { ?Int32 } value  - Length from the start of the string to the position where the caret is located.
      */
@@ -85,7 +86,7 @@ public class TextAreaController <: RemoteDataLite {
 
 /**
  * Defines the options of TextArea.
- *
+ * TextArea is a multi-line text input component that allows users to input and edit text.
  */
 @!APILevel[
     since: "22",
@@ -93,7 +94,7 @@ public class TextAreaController <: RemoteDataLite {
 ]
 public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     /**
-     * Called when writing multiple lines of text.
+     * The TextArea constructor.
      *
      * @param { ?ResourceStr } placeholder - The place holder text string. Text displayed when there is no input.
      * @param { ?ResourceStr } text - Sets the current value of TextArea.
@@ -127,10 +128,10 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     }
 
     /**
-     * Called when the color of the insertion cursor is set.
+     * Set caret color.
      *
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } value - The caret color resource.
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -142,14 +143,14 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     }
 
     /**
-     * Called when the font property of the placeholder is set.
+     * Set placeholder font.
      * The 'HarmonyOS Sans' font and registered custom fonts are supported.
      *
-     * @param { ?Length } size
-     * @param { ?FontWeight } weight
-     * @param { ?String } family
-     * @param { ?FontStyle } style
-     * @returns { This }
+     * @param { ?Length } size - Font size of the placeholder text.
+     * @param { ?FontWeight } weight - Font weight of the placeholder text.
+     * @param { ?String } family - Font family of the placeholder text.
+     * @param { ?FontStyle } style - Font style of the placeholder text.
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -162,7 +163,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     }
 
     /**
-     * Called when the text align is set.
+     * Set text align.
      * <br>To set vertical alignment for the text, use the align attribute.
      * <br>The align attribute alone does not control the horizontal position of the text.
      * <br>In other words, Alignment.TopStart, Alignment.Top, and Alignment.TopEnd produce the same effect,
@@ -170,8 +171,9 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * centered-aligning the text vertically; Alignment.BottomStart, Alignment.Bottom,
      * and Alignment.BottomEnd produce the same effect, bottom-aligning the text.
      *
-     * @param { ?TextAlign } value - Default value is TextAlign.Start.
-     * @returns { This }
+     * @param { ?TextAlign } value - Horizontal alignment of the text.
+     * @default TextAlign.Start
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -183,10 +185,11 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     }
 
     /**
-     * Called when the font size is set.
+     * Set font size.
      *
-     * @param { ?Length } value - Default value is 16.fp. If fontSize is of the number type, the unit fp is used. This parameter cannot be set in percentage.
-     * @returns { This }
+     * @param { ?Length } value - Font size of the text.
+     * @default 16.fp
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -199,9 +202,11 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     }
 
     /**
-     * Called when the font color is set.
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * Set font color.
+     *
+     * @param { ?ResourceColor } value - Color of the text.
+     * @default 0xe6182431
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -214,10 +219,11 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     }
 
     /**
-     * Called when the font weight is set.
+     * Set font weight.
      *
-     * @param { ?FontWeight } value - Default value is FontWeight.Normal.
-     * @returns { This }
+     * @param { ?FontWeight } value - Weight of the font.
+     * @default FontWeight.Normal
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -229,10 +235,11 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     }
 
     /**
-     * Called when the font style of a font is set.
+     * Set font style.
      *
-     * @param { ?FontStyle } value - Default value is FontStyle.Normal.
-     * @returns { This }
+     * @param { ?FontStyle } value - Style of the font.
+     * @default FontStyle.Normal
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -244,13 +251,14 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     }
 
     /**
-     * Called when the font list of text is set.
+     * Set font family.
      * <br>Default font: 'HarmonyOS Sans'
      * <br>The 'HarmonyOS Sans' font and registered custom fonts are supported for applications.
      * <br>Only the 'HarmonyOS Sans' font is supported for widgets.
      *
-     * @param { ?ResourceStr } value - Default value is 'HarmonyOS Sans'.
-     * @returns { This }
+     * @param { ?ResourceStr } value - Font family name.
+     * @default 'HarmonyOS Sans'
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -262,10 +270,11 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     }
 
     /**
-     * Called when the type of soft keyboard input button is set.
+     * Set enter key type.
      *
-     * @param { ?EnterKeyType } value - Default value is Default value is EnterKeyType.NewLine.
-     * @returns { This }
+     * @param { ?EnterKeyType } value - Type of the enter key.
+     * @default EnterKeyType.NewLine
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -277,11 +286,11 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     }
 
     /**
-     * Called when the inputFilter of text is set.
+     * Set input filter.
      *
-     * @param { ?ResourceStr } value
-     * @param { ?(String) -> Unit } error
-     * @returns { This }
+     * @param { ?ResourceStr } value - Regular expression pattern for input filtering.
+     * @param { ?(String) -> Unit } error - Callback function executed when input doesn't match the pattern.
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -303,8 +312,8 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * <br>When the maximum number of characters is reached,
      * no more characters can be entered, and the border turns red.
      *
-     * @param { ?UInt32 } value
-     * @returns { This }
+     * @param { ?UInt32 } value - Maximum number of characters allowed.
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -317,10 +326,10 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     }
 
     /**
-     * Called when the color of the placeholder is set.
+     * Set placeholder color.
      *
-     * @param { ?ResourceColor } value - Default value follows the theme.
-     * @returns { This }
+     * @param { ?ResourceColor } value - Color of the placeholder text.
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -335,8 +344,8 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     /**
      * Called when submitted.
      *
-     * @param { ?(EnterKeyType) -> Unit } callback - If it is EnterKeyType.NEW_LINE and the text box is in inline input style, onSubmit is not triggered.
-     * @returns { This }
+     * @param { ?(EnterKeyType) -> Unit } callback - Callback function executed when the enter key is pressed.
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -351,8 +360,8 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     /**
      * Called when the input of the input box changes.
      *
-     * @param { ?(String) -> Unit }  callback
-     * @returns { This }
+     * @param { ?(String) -> Unit }  callback - Callback function executed when the text content changes.
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -367,8 +376,8 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     /**
      * Called when using the Clipboard menu.
      *
-     * @param { ?(String) -> Unit } callback
-     * @returns { This }
+     * @param { ?(String) -> Unit } callback - Callback function executed when copy operation is performed.
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -383,8 +392,8 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     /**
      * Called when using the Clipboard menu.
      *
-     * @param { ?(String) -> Unit } callback
-     * @returns { This }
+     * @param { ?(String) -> Unit } callback - Callback function executed when cut operation is performed.
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -400,7 +409,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * Called when using the Clipboard menu.
      *
      * @param { ?(String) -> Unit } callback - Executed when a paste operation is performed.
-     * @returns { This }
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -417,7 +426,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * The text box is in the editing state when it has the caret placed in it, and is in the non-editing state otherwise.
      *
      * @param { ?(Bool) -> Unit} callback - Triggered when the text area status changes.
-     * @returns { This }
+     * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",

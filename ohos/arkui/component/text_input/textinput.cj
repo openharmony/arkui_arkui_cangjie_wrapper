@@ -67,7 +67,7 @@ public class TextInputController <: RemoteDataLite {
 
     /**
      * Called when the position of the insertion cursor is set.
-     * <br>If the value is less than 0, the value 0 is u    sed.
+     * <br>If the value is less than 0, the value 0 is used.
      * <br>If the value exceeds the text length, the caret is placed at the end of the text.
      *
      * @param { ?Int32 } value
@@ -243,8 +243,9 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the type of soft keyboard input button is set.
      *
-     * @param { ?EnterKeyType } value - Default value is EnterKeyType.Done.
-     * @returns { This }
+     * @param { ?EnterKeyType } value - The type of the enter key.
+     * @default EnterKeyType.Done.
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -264,8 +265,10 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * Alignment.Start, Alignment.Center, and Alignment.End produce the same effect, centered-aligning the text vertically;
      * Alignment.BottomStart, Alignment.Bottom, and Alignment.BottomEnd produce the same effect, bottom-aligning the text.
      *
-     * @param { ?TextAlign } value - Default value is TextAlign.Start.
-     * @returns { This }
+     * @param { ?TextAlign } value - The placeholder text color.
+     * @default TextAlign.Start
+
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -279,8 +282,8 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the overflow mode of the font is set.
      *
-     * @param { ?ResourceColor } value - Default value follows the theme.The default value on wearable devices is '#99ffffff'.
-     * @returns { This }
+     * @param { ?ResourceColor } value - Default value follows the theme. The default value on wearable devices is 0x99ffffff.
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -295,8 +298,8 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the color of the insertion cursor is set.
      *
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } value - The color of the insertion cursor.
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -310,11 +313,11 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the font property of the placeholder is set.
      *
-     * @param { ?Length } size
-     * @param { ?FontWeight } weight
-     * @param { ?String } family
-     * @param { ?FontStyle } style
-     * @returns { This }
+     * @param { ?Length } size - The font size of the placeholder.
+     * @param { ?FontWeight } weight - The font weight of the placeholder.
+     * @param { ?String } family - The font family of the placeholder.
+     * @param { ?FontStyle } style - The font style of the placeholder.
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -330,7 +333,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * Called when the input of maximum text length is set.
      *
      * @param { ?UInt32 } value - Default value is Infinity, indicating that there is no upper limit on the number of characters that can be entered.
-     * @returns { This }
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -345,12 +348,12 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the font size is set.
      * <br>If fontSize is of the number type, the unit fp is used.
-     * <br>The default font size is 16.fp.
      * <br>The value cannot be a percentage.
-     * <br>The default value on wearable devices is 18.fp.
+     * <br>
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The font size.
+     * @default 16.fp
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -363,9 +366,11 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     }
 
     /**
-     * Called when the font color is set.
-     * @param { ?ResourceColor } value - The default value on wearable devices is '#dbffffff'.
-     * @returns { This }
+     * Set font color.
+     *
+     * @param { ?ResourceColor } value - The font color.
+     * @default 0xdbffffff
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -377,10 +382,11 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     }
 
     /**
-     * Called when the font weight is set.
+     * Set font weight.
      *
-     * @param { ?FontWeight } value - Default value is FontWeight.Normal.
-     * @returns { This }
+     * @param { ?FontWeight } value - The font weight.
+     * @default FontWeight.Normal.
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -392,10 +398,11 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     }
 
     /**
-     * Called when the font style of a font is set.
+     * Set font style.
      *
-     * @param { ?FontStyle } value - Default value is FontStyle.Normal.
-     * @returns { This }
+     * @param { ?FontStyle } value - The font style.
+     * @default FontStyle.Normal.
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -407,13 +414,13 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     }
 
     /**
-     * Called when the font list of text is set.
+     * Set font family.
      * <br>Default font: 'HarmonyOS Sans'
      * <br>The 'HarmonyOS Sans' font and registered custom fonts are supported for applications.
      * <br>Only the 'HarmonyOS Sans' font is supported for widgets.
      *
-     * @param { ?ResourceStr } value
-     * @returns { This }
+     * @param { ?ResourceStr } value - The font family resource.
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -425,11 +432,11 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     }
 
     /**
-     * Called when the inputFilter of text is set.
+     * Set input filter.
      *
-     * @param { ?ResourceStr } value
-     * @param { ?(String) -> Unit } error
-     * @returns { This }
+     * @param { ?ResourceStr } value - The input filter pattern.
+     * @param { ?(String) -> Unit } error - Callback function when input error occurs.
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -449,7 +456,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * Called when submitted.
      *
      * @param { ?(EnterKeyType) -> Unit } callback - Callback of the listened event.
-     * @returns { This }
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -465,7 +472,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * Called when using the Clipboard menu.
      *
      * @param { ?(String) -> Unit } callback - Callback used to return the copied text content.
-     * @returns { This }
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -480,8 +487,8 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when using the Clipboard menu.
      *
-     * @param { ?(String) -> Unit } callback
-     * @returns { This }
+     * @param { ?(String) -> Unit } callback - Callback function when text is cut from the input.
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -496,8 +503,8 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when the input of the input box changes.
      *
-     * @param { ?(String) -> Unit } callback
-     * @returns { This }
+     * @param { ?(String) -> Unit } callback - Callback function when the input text changes.
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -513,7 +520,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * Called when using the Clipboard menu.
      *
      * @param { ?(String) -> Unit } callback - Executed when a paste operation is performed.
-     * @returns { This }
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -528,8 +535,8 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when judging whether the text editing change finished.
      *
-     * @param { ?(Bool) -> Unit} callback
-     * @returns { This }
+     * @param { ?(Bool) -> Unit} callback - Callback function when text editing state changes.
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -546,7 +553,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      *
      * @param { ?CustomBuilder } value - Set up a custom keyboard of TextInput.
      * @param { ?Bool } supportAvoidance - Indicates the custom keyboard options of TextInput.
-     * @returns { This }
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -560,8 +567,9 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Text input style
      *
-     * @param { ?TextInputStyle } value - Text input style.Default value is TextInputStyle.Default.
-     * @returns { This }
+     * @param { ?TextInputStyle } value - The text input style.
+     * @default TextInputStyle.Default
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -576,8 +584,9 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * Sets whether request keyboard or not when on focus.
      * Sets whether to enable the input method when the TextInput component obtains focus in a way other than clicking.
      *
-     * @param { ?Bool } value - Default value is true.
-     * @returns { This }
+     * @param { ?Bool } value - Whether to enable the keyboard on focus.
+     * @default true
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -591,8 +600,9 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Controls whether the selection menu pops up.
      *
-     * @param { ?Bool } value - Default value is false.
-     * @returns { This }
+     * @param { ?Bool } value - Whether to hide the selection menu.
+     * @default false
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -606,8 +616,9 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Define the show underline of the text input.
      *
-     * @param { ?Bool } value - Default value is false.
-     * @returns { This }
+     * @param { ?Bool } value - Whether to show the underline.
+     * @default false.
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",
@@ -621,8 +632,9 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Define max lines of the text input.
      *
-     * @param { ?Int32 } value - Default value is 3.
-     * @returns { This }
+     * @param { ?Int32 } value - Maximum number of lines.
+     * @default 3
+     * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
         since: "22",

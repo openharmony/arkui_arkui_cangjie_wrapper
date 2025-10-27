@@ -31,12 +31,11 @@ import std.time.*
 ]
 sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
     /**
-     * Specifies whether to display the lunar calendar.
+     * Sets whether to display the lunar calendar alongside the Gregorian calendar.
      *
-     * @param { ?Bool } value - Whether to display the lunar calendar.
-     * <br>- <em>true</em>: Display the lunar calendar.
-     * <br>- <em>false</em>: Do not display the lunar.
-     * @returns { DatePickerAttribute }
+     * @param { ?Bool } value - Whether to display the lunar calendar. true means display lunar calendar, false means not display.
+     * @default false
+     * @returns { DatePickerAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -46,10 +45,9 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
 
     /**
      * Triggered when a date is selected.
-     * Anonymous Object Rectification.
      *
-     * @param { ?Callback<DateTime, Unit> } callback
-     * @returns { DatePickerAttribute }
+     * @param { ?Callback<DateTime, Unit> } callback - The callback function to invoke when the date changes.
+     * @returns { DatePickerAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -58,10 +56,10 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
     public func onDateChange(callback: ?Callback<DateTime, Unit>): DatePickerAttribute
 
     /**
-     * Sets the text style for the top and bottom items.
+     * Sets the text style for the items at the top and bottom of the visible area.
      *
      * @param { ?PickerTextStyle } value - Font color, font size, and font weight of the top and bottom items.
-     * @returns { DatePickerAttribute }
+     * @returns { DatePickerAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -74,7 +72,7 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
      *
      * @param { ?PickerTextStyle } value - Font color, font size, and font weight of all items except the top,
      *   <br>bottom, and selected items.
-     * @returns { DatePickerAttribute }
+     * @returns { DatePickerAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -83,11 +81,10 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
     public func textStyle(value: ?PickerTextStyle): DatePickerAttribute
 
     /**
-     * Sets the text style for all items except the top, bottom, and selected items.
+     * Sets the text style for the currently selected item.
      *
-     * @param { ?PickerTextStyle } value - Font color, font size, and font weight of all items except the top,
-     *   <br>bottom, and selected items.
-     * @returns { DatePickerAttribute }
+     * @param { ?PickerTextStyle } value - The text style for the selected item.
+     * @returns { DatePickerAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",

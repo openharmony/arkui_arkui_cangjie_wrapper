@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines MenuItemGroup Component.
+ * Defines the MenuItemGroup attribute functions.
  */
 @!APILevel[
     since: "22",

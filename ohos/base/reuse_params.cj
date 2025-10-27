@@ -33,7 +33,7 @@ public class ReuseParams {
     /**
      * ReuseParams constructor.
      *
-     * @param { Array<(String, Any)> } arr
+     * @param { Array<(String, Any)> } arr - The params array
      */
     @!APILevel[
         since: "22",
@@ -54,8 +54,8 @@ public class ReuseParams {
     /**
      * Gets the value of the specified key.
      *
-     * @param { String } key
-     * @returns { ?T }
+     * @param { String } key - The key to get value
+     * @returns { ?T } - The value associated with the key, or null if not found
      */
     @!APILevel[
         since: "22",

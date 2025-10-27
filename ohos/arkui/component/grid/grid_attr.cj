@@ -31,8 +31,8 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
     /**
      * This parameter specifies the number of columns in the current grid layout.
      *
-     * @param { ?String } value
-     * @returns { GridAttribute }
+     * @param { ?String } value - String specifying the number of columns and their proportional distribution.
+     * @returns { GridAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -43,8 +43,8 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
     /**
      * Lets you set the number of rows in the current grid layout.
      *
-     * @param { ?String } value
-     * @returns { GridAttribute }
+     * @param { ?String } value - String specifying the number of rows and their proportional distribution.
+     * @returns { GridAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -55,8 +55,8 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
     /**
      * Allows you to set the spacing between columns.
      *
-     * @param { ?Length } value
-     * @returns { GridAttribute }
+     * @param { ?Length } value - Spacing between adjacent columns.
+     * @returns { GridAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -67,8 +67,8 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
     /**
      * Lets you set the spacing between rows.
      *
-     * @param { ?Length } value
-     * @returns { GridAttribute }
+     * @param { ?Length } value - Spacing between adjacent rows.
+     * @returns { GridAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -77,10 +77,10 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
     func rowsGap(value: ?Length): GridAttribute
 
     /**
-     * cached Count.
+     * Sets the number of grid items to be preloaded and cached for performance optimization.
      *
-     * @param { ?Int32 } count
-     * @returns { GridAttribute }
+     * @param { ?Int32 } count - Number of grid items to preload beyond the visible area.
+     * @returns { GridAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -91,9 +91,9 @@ sealed interface GridAttribute <: ScrollableCommonMethod<GridAttribute> {
     /**
      * Called to set number of GridItems to be preloaded (cached) in LazyForEach / Repeat.
      *
-     * @param { ?Int32 } count
-     * @param { ?Bool } show
-     * @returns { GridAttribute }
+     * @param { ?Int32 } count - Number of grid items to preload beyond the visible area.
+     * @param { ?Bool } show - Whether to display cached items when clip is disabled.
+     * @returns { GridAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",

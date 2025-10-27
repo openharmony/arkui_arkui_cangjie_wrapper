@@ -43,7 +43,7 @@ public abstract class RemoteView <: FFIData {
     }
 
     /**
-     * Build the view component.
+     * Define declarative UI descriptions for custom component.
      */
     @!APILevel[
         since: "22",

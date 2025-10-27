@@ -20,8 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Creates a text picker based on the selection range specified by range.
- *
+ * Defines the TextPicker attribute functions.
  */
 @!APILevel[
     since: "22",
@@ -31,10 +30,11 @@ sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
     /**
      * Sets the height of each item in the picker.
      *
-     * @param { ?Length } value - Height of each item in the picker.
+     * @param { ?Length } value - Height of each item in the picker. The default value are 56.vp (selected) and 36.vp (unselected).
      * <br>For the number type, the value range is [0, +∞).
      * <br>For the string type, only numeric string values, for example, "56", are supported.
-     * @returns { TextPickerAttribute }
+     * @default 56.vp
+     * @returns { TextPickerAttribute } Returns the text picker attribute.
      */
     @!APILevel[
         since: "22",
@@ -46,7 +46,8 @@ sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
      * Sets whether scrolling is loopable.
      *
      * @param { ?Bool } value - Whether scrolling is loopable. true: loopable; false: not loopable.
-     * @returns { TextPickerAttribute }
+     * @default true
+     * @returns { TextPickerAttribute } Returns the text picker attribute.
      */
     @!APILevel[
         since: "22",
@@ -60,9 +61,8 @@ sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
      * value indicates the text of the selected item.
      * When the picker contains imagery only, value is empty.
      *
-     * @param { ?OnTextPickerChangeCallback } callback - the callback of onChange.
-     * @returns { TextPickerAttribute }
-     * @throws { BusinessException } 190002 - The callback function is invalid.
+     * @param { ?OnTextPickerChangeCallback } callback - The callback of onChange.
+     * @returns { TextPickerAttribute } Returns the text picker attribute.
      */
     @!APILevel[
         since: "22",

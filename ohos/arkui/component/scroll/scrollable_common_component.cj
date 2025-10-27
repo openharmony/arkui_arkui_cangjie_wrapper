@@ -56,7 +56,8 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * Sets the scrollbar state.
      *
-     * @param { ?BarState } barState
+     * @param { ?BarState } barState - Scrollbar state.
+     * @default BarState.Auto
      * @returns { T }
      */
     @!APILevel[
@@ -72,7 +73,8 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * Sets the scrollbar color.
      *
-     * @param { ?ResourceColor } color
+     * @param { ?ResourceColor } color - Scrollbar color.
+     * @default 0x182431
      * @returns { T }
      */
     @!APILevel[
@@ -88,7 +90,8 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * Sets the scrollbar width.
      *
-     * @param { ?Length } value
+     * @param { ?Length } value - Scrollbar width.
+     * @default 4.vp
      * @returns { T }
      */
     @!APILevel[
@@ -105,8 +108,8 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
      * Sets the nested scrolling options. You can set the nested scrolling mode in the forward and backward directions
      * to implement scrolling linkage with the parent component.
      *
-     * @param { ?NestedScrollOptions } value
-     * @returns { T }
+     * @param { ?NestedScrollOptions } value - Nested scrolling options.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -190,8 +193,8 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * Sets the reach end.
      *
-     * @param { ?() -> Unit } event
-     * @returns { T }
+     * @param { ?() -> Unit } event - The callback on reach end.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -205,10 +208,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
 
     /**
      * Called when scrolling start.
-     * Anonymous Object Rectification.
      *
-     * @param { ?() -> Unit } event
-     * @returns { T }
+     * @param { ?() -> Unit } event - The callback on scroll start.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -222,10 +224,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
 
     /**
      * Called when scrolling has stopped.
-     * Anonymous Object Rectification.
      *
-     * @param { ?() -> Unit } event
-     * @returns { T }
+     * @param { ?() -> Unit } event - The callback on scroll stop.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -240,9 +241,8 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * Fling Speed Limit.
      *
-     * @param { ?Float64 } speedLimit
-     * @returns { T}
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?Float64 } speedLimit - The speed limit.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -262,9 +262,8 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * The options of fading Edge.
      *
-     * @param { Option<Bool> } enabled
-     * @returns { T}
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { Option<Bool> } enabled - Whether enable fading edge.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -288,10 +287,9 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * The options of fading Edge.
      *
-     * @param { Option<Bool> } enabled
-     * @param { ?FadingEdgeOptions } options
-     * @returns { T}
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { Option<Bool> } enabled - Whether enable fading edge.
+     * @param { ?FadingEdgeOptions } options - Fading edge options.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -320,9 +318,8 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * The clip mode of content.
      *
-     * @param { ?ContentClipMode } clip
-     * @returns { T}
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?ContentClipMode } clip - The clip mode.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -342,9 +339,8 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
     /**
      * The clip mode of content.
      *
-     * @param { ?RectShape } clip
-     * @returns { T}
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?RectShape } clip - The clip mode.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -366,13 +362,16 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
 
     /**
      * Triggered before scrolling.
-     * 1. This event is triggered when scrolling is started by the Scroll component or other input settings,such as keyboard and mouse operations;
-     * 2. This event is triggered when the controller API is called.
-     * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @param { Option<(Float64, ScrollState, ScrollSource) -> ScrollResult> } handler
-     * @returns { T}
-     * @throws { BusinessException } 100001 - Internal error.
+     * <p><strong>NOTE</strong>
+     * <br>1. This event is triggered when scrolling is started by the <em>Scroll</em> component or other input settings,
+     * such as keyboard and mouse operations.
+     * <br>2. This event is triggered when the controller API is called.
+     * <br>3. This event supports the out-of-bounds bounce effect.
+     * </p>
+     *
+     * @param { Option<(Float64, ScrollState, ScrollSource) -> ScrollResult> } handler - Callback triggered before scrolling.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -401,13 +400,16 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
 
     /**
      * Triggered before scrolling.
-     * 1. This event is triggered when scrolling is started by the Scroll component or other input settings,such as keyboard and mouse operations;
-     * 2. This event is triggered when the controller API is called.
-     * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @param { Option<(Float64, ScrollState, ScrollSource) -> Unit> } handler
-     * @returns { T}
-     * @throws { BusinessException } 100001 - Internal error.
+     * <p><strong>NOTE</strong>
+     * <br>1. This event is triggered when scrolling is started by the <em>Scroll</em> component or other input settings,
+     * such as keyboard and mouse operations.
+     * <br>2. This event is triggered when the controller API is called.
+     * <br>3. This event supports the out-of-bounds bounce effect.
+     * </p>
+     *
+     * @param { Option<(Float64, ScrollState, ScrollSource) -> Unit> } handler - Callback triggered before scrolling.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -433,13 +435,12 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
 
     /**
      * Triggered when the Scroll component scrolls.
-     * 1. This event is triggered when scrolling is started by the Scroll component or other input settings,such as keyboard and mouse operations;
+     * 1. This event is triggered when scrolling is started by the Scroll component or other input settings, such as keyboard and mouse operations;
      * 2. This event is triggered when the controller API is called;
      * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @param { ?OnScrollCallBack } handler
-     * @returns { T}
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?OnScrollCallBack } handler - Callback triggered after scrolling.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",

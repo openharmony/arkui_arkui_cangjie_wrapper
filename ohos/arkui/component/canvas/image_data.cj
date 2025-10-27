@@ -35,7 +35,7 @@ foreign {
 }
 
 /**
- * Image data object
+ * Image data object.
  */
 @!APILevel[
     since: "22",

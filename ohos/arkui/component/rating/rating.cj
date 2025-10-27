@@ -42,6 +42,7 @@ foreign {
 
 /**
  * Defines Rating Component.
+ * A component that allows users to rate by clicking or sliding stars, commonly used for product ratings or feedback collection.
  */
 @!APILevel[
     since: "22",
@@ -49,10 +50,10 @@ foreign {
 ]
 public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     /**
-     * Create a Rating.
+     * Initializes a Rating component with optional initial rating value and indicator mode.
      *
-     * @param { ?Float64 } rating
-     * @param { ?Bool } indicator
+     * @param { ?Float64 } rating - Current rating value.
+     * @param { ?Bool } indicator - Whether the rating component is used as indicator (read-only mode).
      */
     @!APILevel[
         since: "22",
@@ -65,10 +66,10 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     }
 
     /**
-     * Called when the total number of stars is set.
+     * Configures the total number of stars to display in the rating component.
      * 
-     * @param { ?Int32 } value
-     * @returns { This }
+     * @param { ?Int32 } value - Number of stars.
+     * @returns { This } Returns the Rating instance.
      */
     @!APILevel[
         since: "22",
@@ -82,10 +83,10 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     }
 
     /**
-     * Called when the step size of the operation rating.
+     * Configures the increment step size when changing the rating value.
      *
-     * @param { ?Float64 } size
-     * @returns { This }
+     * @param { ?Float64 } size - Step size for rating changes.
+     * @returns { This } Returns the Rating instance.
      */
     @!APILevel[
         since: "22",
@@ -104,12 +105,12 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     }
 
     /**
-     * Called when a picture is set.
+     * Configures custom images for the rating stars.
      *
-     * @param { ?ResourceStr } backgroundUri - Background URI option.
-     * @param { ?ResourceStr } foregroundUri - Foreground URI option.
-     * @param { ?ResourceStr } secondaryUri - Secondary URI option.
-     * @returns { This }
+     * @param { ?ResourceStr } backgroundUri - Background URI option for unselected stars.
+     * @param { ?ResourceStr } foregroundUri - Foreground URI option for selected stars.
+     * @param { ?ResourceStr } secondaryUri - Secondary URI option for partially selected stars.
+     * @returns { This } Returns the Rating instance.
      */
     @!APILevel[
         since: "22",
@@ -133,10 +134,11 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     }
 
     /**
-     * Called when the star rating of the operation scoring bar changes.
+     * Triggered when the user changes the rating value by clicking or sliding.
      *
-     * @param { ?(Float64) -> Unit } callback
-     * @returns { This }
+     * @param { ?(Float64) -> Unit } callback - Callback function when rating changes.
+     * The parameter is the new rating value.
+     * @returns { This } Returns the Rating instance.
      */
     @!APILevel[
         since: "22",

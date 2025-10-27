@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines StepperItem Component.
+ * Provides methods for configuring the appearance and behavior of the StepperItem component.
  */
 @!APILevel[
     since: "22",
@@ -29,9 +29,10 @@ import ohos.base.*
 sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
     /**
      * The description text for the fallback text button at the bottom of the step navigator.
+     * Sets the label text for the previous step button.
      *
-     * @param { ?String } value
-     * @returns { StepperItemAttribute }
+     * @param { ?String } value - Text displayed on the previous step button.
+     * @returns { StepperItemAttribute } Returns the stepper item attribute.
      */
     @!APILevel[
         since: "22",
@@ -42,8 +43,8 @@ sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
     /**
      * The description text for the next step text button at the bottom of the step navigator.
      *
-     * @param { ?String } value
-     * @returns { StepperItemAttribute }
+     * @param { ?String } value - Text displayed on the next step button.
+     * @returns { StepperItemAttribute } Returns the stepper item attribute.
      */
     @!APILevel[
         since: "22",
@@ -52,10 +53,10 @@ sealed interface StepperItemAttribute <: CommonMethod<StepperItemAttribute> {
     func nextLabel(value: ?String): StepperItemAttribute
 
     /**
-     * Sets the display state of the Step Navigator nextLabel.
+     * Configures the status of the step item, which affects its appearance and behavior.
      *
-     * @param { ?ItemState } status
-     * @returns { StepperItemAttribute }
+     * @param { ?ItemState } status - Display state of the step item.
+     * @returns { StepperItemAttribute } Returns the stepper item attribute.
      */
     @!APILevel[
         since: "22",

@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines ScrollBar Component.
+ * Defines the ScrollBar attribute functions.
  */
 @!APILevel[
     since: "22",

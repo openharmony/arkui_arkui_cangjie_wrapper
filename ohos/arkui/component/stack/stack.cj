@@ -43,7 +43,8 @@ foreign {
 }
 
 /**
- * Defines Stack Component.
+ * A layout container that positions its child components relative to its edges.
+ * Child components are stacked on top of each other in the order they are added.
  */
 @!APILevel[
     since: "22",
@@ -52,9 +53,10 @@ foreign {
 public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
     /**
     * Defines the constructor of Stack.
+    * Initializes a Stack component with optional alignment and child content.
     *
-    * @param { ?Alignment } alignContent
-    * @param { ?() -> Unit } child
+    * @param { ?Alignment } alignContent - Alignment of child components within the stack.
+    * @param { ?() -> Unit } child - Builder function for Stack content.
     */
     @!APILevel[
         since: "22",
@@ -109,9 +111,10 @@ public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
 
     /**
     * Called when the alignment of items in the container is set.
+    * Configures how child components are aligned within the stack container.
     *
-    * @param { ?Alignment } value
-    * @returns { This }
+    * @param { ?Alignment } value - Alignment of child components within the stack.
+    * @returns { This } Returns the Stack instance.
     */
     @!APILevel[
         since: "22",

@@ -21,7 +21,8 @@ import ohos.base.*
 import ohos.resource.*
 
 /**
- * Defines SideBarContainer Component.
+ * Defines the SideBarContainer attribute functions.
+ * Provides methods for configuring the appearance and behavior of the SideBarContainer component.
  */
 @!APILevel[
     since: "22",

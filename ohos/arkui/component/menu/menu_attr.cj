@@ -20,7 +20,8 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines the Menu Component.
+ * Defines the Menu attribute functions.
+ * Provides methods for configuring the appearance and behavior of the Menu component.
  */
 @!APILevel[
     since: "22",
@@ -31,11 +32,11 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
      * Sets the font style.
      * Family and style are not supported currently and will be fixed in future.
      *
-     * @param { ?Length } size
-     * @param { ?FontWeight } weight
-     * @param { ?ResourceStr } family
-     * @param { ?FontStyle } style
-     * @returns { MenuAttribute }
+     * @param { ?Length } size - Indicates the font size of menu item.
+     * @param { ?FontWeight } weight - Indicates the font weight of menu item.
+     * @param { ?ResourceStr } family - Indicates the font family of menu item.
+     * @param { ?FontStyle } style - Indicates the font style of menu item.
+     * @returns { MenuAttribute } Returns the menu attribute.
      */
     @!APILevel[
         since: "22",
@@ -49,10 +50,10 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
     ): MenuAttribute
 
     /**
-     * Sets the Menu font color.
+     * Configures the font color of menu items.
      *
-     * @param { ?ResourceColor } value
-     * @returns { MenuAttribute }
+     * @param { ?ResourceColor } value - Indicates the font color of menu item.
+     * @returns { MenuAttribute } Returns the menu attribute.
      */
     @!APILevel[
         since: "22",
@@ -63,9 +64,10 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
     /**
      * Sets the radius of the corner around the menu.
      * When the radius is less than the menu width, the default border radius is used.
+     * Configures the corner radius of the menu container.
      *
-     * @param { ?Length } value
-     * @returns { MenuAttribute }
+     * @param { ?Length } value - The menu corner radius.
+     * @returns { MenuAttribute } Returns the menu attribute.
      */
     @!APILevel[
         since: "22",
@@ -76,9 +78,10 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
     /**
      * Sets the radius of the corner around the menu.
      * When the radius is less than the menu width, the default border radius is used.
+     * Configures the corner radius of the menu container with individual values for each corner.
      *
-     * @param { ?BorderRadiuses } value
-     * @returns { MenuAttribute }
+     * @param { ?BorderRadiuses } value - The menu corner radius.
+     * @returns { MenuAttribute } Returns the menu attribute.
      */
     @!APILevel[
         since: "22",

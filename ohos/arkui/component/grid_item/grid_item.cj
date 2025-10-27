@@ -52,7 +52,7 @@ foreign {
 public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
 
     /**
-     * Return to get GridItem.
+     * GridItem constructor.
      */
     @!APILevel[
         since: "22",
@@ -65,7 +65,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
     }
 
     /**
-     * Return to get GridItem.
+     * GridItem constructor.
      *
      * @param { () -> Unit } child - The child component of GridItem.
      */
@@ -83,8 +83,8 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
     /**
      * This parameter specifies the start column number of the current element.
      *
-     * @param { ?Int32 } value
-     * @returns { This }
+     * @param { ?Int32 } value - The start column index, must be a non-negative integer.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -100,8 +100,8 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
     /**
      * This parameter specifies the end column number of the current element.
      *
-     * @param { ?Int32 } columnEnd
-     * @returns { This }
+     * @param { ?Int32 } value - The end column index, must be a non-negative integer greater than or equal to columnStart.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -117,8 +117,8 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
     /**
      * This parameter specifies the start line number of the current element.
      *
-     * @param { ?Int32 } rowStart
-     * @returns { This }
+     * @param { ?Int32 } value - Start line number of the element.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -134,8 +134,8 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
     /**
      * Specifies the end line number of the current element.
      *
-     * @param { ?Int32 } value
-     * @returns { This }
+     * @param { ?Int32 } value - End line number of the element.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",

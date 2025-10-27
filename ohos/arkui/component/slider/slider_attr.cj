@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Slider Component.
+ * Provides methods for configuring the appearance and behavior of the Slider component.
  */
 @!APILevel[
     since: "22",
@@ -66,8 +66,9 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     /**
     * Called when setting whether to display step size.
     *
-    * @param { ?Bool } value
+    * @param { ?Bool } value - Called when setting whether to display step size.
     * @returns { SliderAttribute }
+    * @default false
     */
     @!APILevel[
         since: "22",
@@ -78,8 +79,9 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     /**
     * Called when the percentage of bubble prompt is set when sliding.
     *
-    * @param { ?Bool } value
-    * @param { ?ResourceStr } content
+    * @param { ?Bool } value - Whether to display the bubble.
+    * @param { ?ResourceStr } content - Text content in the bubble. If the content is not specified,
+    *     the current percentage is displayed by default.
     * @returns { SliderAttribute }
     */
     @!APILevel[
@@ -115,7 +117,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     /**
     * Called when the border color of block is set.
     *
-    * @param { ?ResourceColor } value
+    * @param { ?ResourceColor } value - The border color of block.
     * @returns { SliderAttribute }
     */
     @!APILevel[

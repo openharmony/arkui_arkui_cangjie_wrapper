@@ -52,7 +52,7 @@ let defaultMenuItemFontColor = 0x99000000
 let defaultMenuItemContentFontColor = 0xE5000000
 
 /**
- * Defines MenuItem Component.
+ * A component that represents a single item within a Menu component, typically with text, icons, and optional submenus.
  */
 @!APILevel[
     since: "22",
@@ -61,9 +61,9 @@ let defaultMenuItemContentFontColor = 0xE5000000
 public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
-     * Creates the MenuItem component.
+     * Initializes a MenuItem component with optional child content.
      *
-     * @param { () -> Unit } child
+     * @param { () -> Unit } child - The child component builder function for the menu item.
      */
     @!APILevel[
         since: "22",
@@ -76,13 +76,13 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     }
 
     /**
-     * Creates the MenuItem component.
+     * Initializes a MenuItem component with icon, content, and label information.
      *
-     * @param { ?ResourceStr } startIcon
-     * @param { ?ResourceStr } content
-     * @param { ?ResourceStr } endIcon
-     * @param { ?ResourceStr } labelInfo
-     * @param { Option<() -> Unit> } builder
+     * @param { ?ResourceStr } startIcon - Defines the start display image info.
+     * @param { ?ResourceStr } content - Defines the content string display info.
+     * @param { ?ResourceStr } endIcon - Defines the end display image info.
+     * @param { ?ResourceStr } labelInfo - Defines the end label info like shortcut.
+     * @param { Option<() -> Unit> } builder - Create the submenu.
      */
     @!APILevel[
         since: "22",
@@ -113,9 +113,10 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
      * Setting whether menuItem is selected.
+     * Configures the selection state of the menu item.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - menuItem is selected.
+     * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
         since: "22",
@@ -131,9 +132,10 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
+     * Controls the visibility of the check icon when the menu item is selected.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Indicates whether to display the check icon when selected.
+     * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
         since: "22",
@@ -149,9 +151,10 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
+     * Sets a custom icon to display when the menu item is selected.
      *
-     * @param { ?ResourceStr } value
-     * @returns { This }
+     * @param { ?ResourceStr } value - Indicates whether to display icon when selected.
+     * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
         since: "22",
@@ -168,13 +171,13 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     }
 
     /**
-     * Sets the content font style.
+     * Configures the font properties of the menu item content text.
      *
-     * @param { ?Length } size
-     * @param { ?FontWeight } weight
-     * @param { ?ResourceStr } family
-     * @param { ?FontStyle } style   
-     * @returns { This }
+     * @param { ?Length } size - Indicates the font size of content text.
+     * @param { ?FontWeight } weight - Indicates the font weight of content text.
+     * @param { ?ResourceStr } family - Indicates the font family of content text.
+     * @param { ?FontStyle } style - Indicates the font style of content text.
+     * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
         since: "22",
@@ -205,9 +208,10 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
      * Sets the font color of content text.
+     * Configures the font color of the menu item content text.
      *
-     * @param { ?ResourceColor } value 
-     * @returns { This }
+     * @param { ?ResourceColor } value - Indicates the font color of content text.
+     * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
         since: "22",
@@ -223,12 +227,13 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
      * Sets the label info font style.
+     * Configures the font properties of the menu item label text.
      *
-     * @param { ?Length } size
-     * @param { ?FontWeight } weight
-     * @param { ?ResourceStr } family
-     * @param { ?FontStyle } style   
-     * @returns { This }
+     * @param { ?Length } size - Indicates the font size of label info text.
+     * @param { ?FontWeight } weight - Indicates the font weight of label info text.
+     * @param { ?ResourceStr } family - Indicates the font family of label info text.
+     * @param { ?FontStyle } style - Indicates the font style of label info text.
+     * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
         since: "22",
@@ -257,9 +262,10 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
      * Sets the font color of label info text.
+     * Configures the font color of the menu item label text.
      *
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } value - Indicates the font color of label info text.
+     * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
         since: "22",
@@ -275,9 +281,11 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
      * Triggers a callback when a menu item is selected or unchecked.
+     * Called when the selection state of the menu item changes.
      *
-     * @param { ?(Bool) -> Unit } callback
-     * @returns { This }
+     * @param { ?(Bool) -> Unit } callback - Callback when a menu item is selected or unchecked.
+     * The parameter indicates whether the menu item is currently selected (true) or not (false).
+     * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
         since: "22",

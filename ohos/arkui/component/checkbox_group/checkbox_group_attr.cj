@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines CheckboxGroup attributes.
+ * Defines the CheckboxGroup attribute functions.
  */
 @!APILevel[
     since: "22",
@@ -28,10 +28,10 @@ import ohos.base.*
 ]
 sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> {
     /**
-     * setting whether all checkbox is selected.
+     * Set whether all checkbox is selected.
      *
-     * @param { ?Bool } isAllSelected
-     * @returns { CheckboxGroupAttribute }
+     * @param { ?Bool } value - Whether to select all checkboxes.
+     * @returns { CheckboxGroupAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -40,10 +40,10 @@ sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> 
     func selectAll(value: ?Bool): CheckboxGroupAttribute
 
     /**
-     * setting the display color of checkbox.
+     * Set the display color of checkbox.
      *
-     * @param { ?ResourceColor } value
-     * @returns { CheckboxGroupAttribute }
+     * @param { ?ResourceColor } value - The color to display when checkboxes are selected.
+     * @returns { CheckboxGroupAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
@@ -53,11 +53,9 @@ sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> 
 
     /**
      * Called when the selection status changes.
-     * Anonymous Object Rectification.
      *
-     * @param { ?OnCheckboxGroupChangeCallback } callback
-     * @returns { CheckboxGroupAttribute }
-     * @throws { BusinessException } 190002 - The callback function is invalid.
+     * @param { ?OnCheckboxGroupChangeCallback } callback - The callback function triggered when the selection status changes, with the new selection result as parameter.
+     * @returns { CheckboxGroupAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",

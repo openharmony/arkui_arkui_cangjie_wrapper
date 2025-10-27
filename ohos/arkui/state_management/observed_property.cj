@@ -37,10 +37,10 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     private let subProps_ = ArrayList<ObservedProperty<T>>()
 
     /**
-     * ObservedPropertyAbstract constructor.
+     * ObservedProperty constructor.
      *
-     * @param { String } info
-     * @param { T } initValue
+     * @param { String } info - Information about the property.
+     * @param { T } initValue - Initial value for the property.
      */
     @!APILevel[
         since: "22",
@@ -90,6 +90,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * Otherwise, it updates the value and notifies all subscribers of the change.
      *
      * @param { T } newValue - The new value to set.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -111,6 +112,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * The observer will be notified when the property value changes.
      *
      * @param { Observer } observer - The observer to subscribe.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -131,6 +133,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * Unsubscribes an observer from this property and its nested observed objects.
      *
      * @param { Observer } observer - The observer to unsubscribe.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",

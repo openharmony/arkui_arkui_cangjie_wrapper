@@ -34,7 +34,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
     /**
      * ObservedPropertyAbstract constructor.
      *
-     * @param { String } info
+     * @param { String } info - Information about the property.
      */
     @!APILevel[
         since: "22",
@@ -52,6 +52,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
      * Subscribe an observer.
      * 
      * @param { Observer } observer - The observer to subscribe.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -63,6 +64,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
      * Unsubscribe an observer.
      * 
      * @param { Observer } observer - The observer to unsubscribe.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -87,6 +89,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
      * Remove the dependency of this property on a specific element ID.
      * 
      * @param { Int64 } rmElmtId - The element ID to remove dependency on.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",

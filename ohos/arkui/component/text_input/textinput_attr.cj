@@ -22,8 +22,7 @@ import ohos.base.*
 import ohos.resource.*
 
 /**
- * Defines TextInput Component.
- *
+ * Defines the TextInput attribute functions.
  */
 @!APILevel[
     since: "22",
@@ -31,9 +30,10 @@ import ohos.resource.*
 ]
 sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
-     * Called when the type of soft keyboard input button is set.
+     * Set enter key type.
      *
-     * @param { ?EnterKeyType } value - Default value is EnterKeyType.Done.
+     * @param { ?EnterKeyType } value - The type of the enter key.
+     * @default EnterKeyType.Done
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -43,7 +43,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     func enterKeyType(value: ?EnterKeyType): TextInputAttribute
 
     /**
-     * Called when the text align is set.
+     * Set text align.
      * <br>Available options are TextAlign.Start, TextAlign.Center, and TextAlign.End.
      * <br>To set vertical alignment for the text, use the align attribute.
      * <br>The align attribute alone does not control the horizontal position of the text.
@@ -51,7 +51,8 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * Alignment.Start, Alignment.Center, and Alignment.End produce the same effect, centered-aligning the text vertically;
      * Alignment.BottomStart, Alignment.Bottom, and Alignment.BottomEnd produce the same effect, bottom-aligning the text.
      *
-     * @param { ?TextAlign } value - Default value is TextAlign.Start.
+     * @param { ?TextAlign } value - The text alignment type.
+     * @default TextAlign.Start
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -61,9 +62,9 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     func textAlign(value: ?TextAlign): TextInputAttribute
 
     /**
-     * Called when the overflow mode of the font is set.
+     * Set placeholder color.
      *
-     * @param { ?ResourceColor } value - Default value follows the theme.The default value on wearable devices is '#99ffffff'.
+     * @param { ?ResourceColor } value - Default value follows the theme.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -73,9 +74,9 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     func placeholderColor(value: ?ResourceColor): TextInputAttribute
 
     /**
-     * Called when the color of the insertion cursor is set.
+     * Set caret color.
      *
-     * @param { ?ResourceColor } value
+     * @param { ?ResourceColor } value - The color of the insertion cursor.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -85,12 +86,12 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     func caretColor(value: ?ResourceColor): TextInputAttribute
 
     /**
-     * Called when the font property of the placeholder is set.
+     * Set placeholder font.
      *
-     * @param { ?Length } size
-     * @param { ?FontWeight } weight
-     * @param { ?String } family
-     * @param { ?FontStyle } style
+     * @param { ?Length } size - The font size of the placeholder.
+     * @param { ?FontWeight } weight - The font weight of the placeholder.
+     * @param { ?String } family - The font family of the placeholder.
+     * @param { ?FontStyle } style - The font style of the placeholder.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -101,9 +102,10 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
         style!: ?FontStyle): TextInputAttribute
 
     /**
-     * Called when the input of maximum text length is set.
+     * Set max input length.
      *
-     * @param { ?UInt32 } value - Default value is Infinity, indicating that there is no upper limit on the number of characters that can be entered.
+     * @param { ?UInt32 } value - Maximum number of characters that can be entered.
+     * @default Infinity.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -113,13 +115,14 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     func maxLength(value: ?UInt32): TextInputAttribute
 
     /**
-     * Called when the font size is set.
+     * Set font size.
      * <br>If fontSize is of the number type, the unit fp is used.
      * <br>The default font size is 16.fp.
      * <br>The value cannot be a percentage.
      * <br>The default value on wearable devices is 18.fp.
      *
-     * @param { ?Length } value
+     * @param { ?Length } value - .The default value on wearable devices is 18.fp.
+     * @default 16.fp
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -129,8 +132,9 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     func fontSize(value: ?Length): TextInputAttribute
 
     /**
-     * Called when the font color is set.
-     * @param { ?ResourceColor } value - The default value on wearable devices is '#dbffffff'.
+     * Set font color.
+     *
+     * @param { ?ResourceColor } value - The font color of the text.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -140,9 +144,10 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     func fontColor(value: ?ResourceColor): TextInputAttribute
 
     /**
-     * Called when the font weight is set.
+     * Set font weight.
      *
-     * @param { ?FontWeight } value - Default value is FontWeight.Normal.
+     * @param { ?FontWeight } value - The font weight of the text.
+     * @default FontWeight.Normal
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -152,9 +157,10 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     func fontWeight(value: ?FontWeight): TextInputAttribute
 
     /**
-     * Called when the font style of a font is set.
+     * Set font style.
      *
-     * @param { ?FontStyle } value - Default value is FontStyle.Normal.
+     * @param { ?FontStyle } value - The font style of the text.
+     * @default FontStyle.Normal
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -164,12 +170,12 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     func fontStyle(value: ?FontStyle): TextInputAttribute
 
     /**
-     * Called when the font list of text is set.
+     * Set font family.
      * <br>Default font: 'HarmonyOS Sans'
      * <br>The 'HarmonyOS Sans' font and registered custom fonts are supported for applications.
      * <br>Only the 'HarmonyOS Sans' font is supported for widgets.
      *
-     * @param { ?ResourceStr } value
+     * @param { ?ResourceStr } value - The font family resource.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -179,10 +185,10 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     func fontFamily(value: ?ResourceStr): TextInputAttribute
 
     /**
-     * Called when the inputFilter of text is set.
+     * Set input filter.
      *
-     * @param { ?ResourceStr } value
-     * @param { ?(String) -> Unit } error
+     * @param { ?ResourceStr } value - The input filter pattern.
+     * @param { ?(String) -> Unit } error - Callback function when input does not match the filter.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -194,7 +200,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when submitted.
      *
-     * @param { ?(EnterKeyType) -> Unit } callback - Callback of the listened event.
+     * @param { ?(EnterKeyType) -> Unit } callback - Callback function when text input is submitted.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -206,7 +212,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when using the Clipboard menu.
      *
-     * @param { ?(String) -> Unit } callback - Callback used to return the copied text content.
+     * @param { ?(String) -> Unit } callback - Callback function when text is copied from the input.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -218,7 +224,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when using the Clipboard menu.
      *
-     * @param { ?(String) -> Unit } callback
+     * @param { ?(String) -> Unit } callback - Callback function when text is cut from the input.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -230,7 +236,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when the input of the input box changes.
      *
-     * @param { ?(String) -> Unit } callback
+     * @param { ?(String) -> Unit } callback - Callback function when the input text changes.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -242,7 +248,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when using the Clipboard menu.
      *
-     * @param { ?(String) -> Unit } callback - Executed when a paste operation is performed.
+     * @param { ?(String) -> Unit } callback - Callback function when text is pasted to the input.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -254,7 +260,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Called when judging whether the text editing change finished.
      *
-     * @param { ?(Bool) -> Unit} callback
+     * @param { ?(Bool) -> Unit} callback - Callback function when text editing state changes.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -264,7 +270,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     func onEditChange(callback: ?(Bool) -> Unit): TextInputAttribute
 
     /**
-     * Define custom keyboard of the text input.
+     * Set custom keyboard.
      *
      * @param { ?CustomBuilder } value - Set up a custom keyboard of TextInput.
      * @param { ?Bool } supportAvoidance - Indicates the custom keyboard options of TextInput.
@@ -279,7 +285,8 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Text input style
      *
-     * @param { ?TextInputStyle } value - Text input style.Default value is TextInputStyle.Default.
+     * @param { ?TextInputStyle } value - The text input style.
+     * @default TextInputStyle.Default.
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -292,7 +299,8 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * Sets whether request keyboard or not when on focus.
      * Sets whether to enable the input method when the TextInput component obtains focus in a way other than clicking.
      *
-     * @param { ?Bool } value - Default value is true.
+     * @param { ?Bool } value - Whether to enable the keyboard on focus.
+     * @default true
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -304,7 +312,8 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Controls whether the selection menu pops up.
      *
-     * @param { ?Bool } value - Default value is false.
+     * @param { ?Bool } value - Whether to hide the selection menu.
+     * @default false
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -316,7 +325,8 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Define the show underline of the text input.
      *
-     * @param { ?Bool } value - Default value is false.
+     * @param { ?Bool } value - Whether to show the underline.
+     * @default false
      * @returns { TextInputAttribute }
      */
     @!APILevel[
@@ -328,7 +338,8 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
     /**
      * Define max lines of the text input.
      *
-     * @param { ?Int32 } value - Default value is 3.
+     * @param { ?Int32 } value - Maximum number of lines.
+     * @default 3
      * @returns { TextInputAttribute }
      */
     @!APILevel[

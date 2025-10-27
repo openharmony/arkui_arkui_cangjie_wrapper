@@ -33,7 +33,7 @@ foreign {
 }
 
 /**
- * Defines a rect drawing class.
+ * A shape component that renders rectangular graphic elements with optional rounded corners.
  */
 @!APILevel[
     since: "22",
@@ -41,10 +41,10 @@ foreign {
 ]
 public class RectShape <: BaseShape {
     /**
-     * Create a rect drawing class instance.
+     * Initializes a rectangular shape with optional width and height parameters.
      *
-     * @param { ?Length } width 
-     * @param { ?Length } height
+     * @param { ?Length } width - Width of the rectangle.
+     * @param { ?Length } height - Height of the rectangle.
      */
     @!APILevel[
         since: "22",
@@ -66,9 +66,10 @@ public class RectShape <: BaseShape {
 
     /**
      * Sets the width of the corner radius for RectShape.
+     * Configures the horizontal radius of the rectangle's rounded corners.
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - Width of the corner radius.
+     * @returns { This } Returns the RectShape instance.
      */
     @!APILevel[
         since: "22",
@@ -84,9 +85,10 @@ public class RectShape <: BaseShape {
 
     /**
      * Sets the height of the corner radius for RectShape.
+     * Configures the vertical radius of the rectangle's rounded corners.
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - Height of the corner radius.
+     * @returns { This } Returns the RectShape instance.
      */
     @!APILevel[
         since: "22",
@@ -102,9 +104,10 @@ public class RectShape <: BaseShape {
 
     /**
      * Sets the corner radius for RectShape.
+     * Configures both the horizontal and vertical radius of the rectangle's rounded corners.
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - Corner radius value applied to both width and height.
+     * @returns { This } Returns the RectShape instance.
      */
     @!APILevel[
         since: "22",

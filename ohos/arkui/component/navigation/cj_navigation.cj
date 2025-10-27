@@ -149,8 +149,7 @@ public class NavigationTitleOptions {
     ]
     public var backgroundBlurStyle: ?BlurStyle
     /**
-     * Layout style of the title bar.
-     * <br>Default value: **BarStyle.STANDARD**.
+     * Layout style of the title bar, the default value is BarStyle.Standard.
      */
     @!APILevel[
         since: "22",
@@ -159,6 +158,7 @@ public class NavigationTitleOptions {
     public var barStyle: ?BarStyle
     /**
      * Set title bar start padding.
+     * @default @r(sys.float.margin_left)
      */
     @!APILevel[
         since: "22",
@@ -167,6 +167,7 @@ public class NavigationTitleOptions {
     public var paddingStart: ?Length
     /**
      * Set title bar end padding.
+     * @default @r(sys.float.margin_right)
      */
     @!APILevel[
         since: "22",
@@ -176,11 +177,12 @@ public class NavigationTitleOptions {
 
     /**
      * Constructor of NavigationTitleOptions
-     * @param { ?ResourceColor } backgroundColor
-     * @param { ?BlurStyle } backgoundBlurStyle
-     * @param { ?BarStyle } barStyle
-     * @param { ?Length } paddingStart
-     * @param { ?Length } paddingEnd
+     * @param { ?ResourceColor } backgroundColor - Background color of the title bar.
+     * @param { ?BlurStyle } backgroundBlurStyle - Background blur style of the title bar.
+     * @param { ?BarStyle } barStyle - Layout style of the title bar.
+     * @param { ?Length } paddingStart - Set title bar start padding.
+     * @param { ?Length } paddingEnd - Set title bar end padding.
+     * @returns { NavigationTitleOptions }
      */
     @!APILevel[
         since: "22",
@@ -282,7 +284,7 @@ public enum LaunchMode {
     |
     /**
      * When the NavDestination with a specified name exists, it will be moved to top of stack,
-     * otherwise, the behavior will be consistent with the STANDARD mode.
+     * otherwise, the behavior will be consistent with the Standard mode.
      */
     @!APILevel[
         since: "22",
@@ -292,7 +294,7 @@ public enum LaunchMode {
     |
     /**
      * When the NavDestination with a specified name exists, the stack will pop until that NavDestination,
-     * otherwise, the behavior will be consistent with the STANDARD mode.
+     * otherwise, the behavior will be consistent with the Standard mode.
      */
     @!APILevel[
         since: "22",
@@ -302,7 +304,7 @@ public enum LaunchMode {
     |
     /**
      * This mode creates an instance of **NavDestination**. Compared with
-     * **STANDARD**, this mode does not reuse the instance with the same name in the stack.
+     * **Standard**, this mode does not reuse the instance with the same name in the stack.
      */
     @!APILevel[
         since: "22",
@@ -332,7 +334,7 @@ public enum LaunchMode {
 public class NavigationOptions {
     /**
      * Navigation stack operation mode.
-     * <br>Default value: **LaunchMode.STANDARD**.
+     * <br>Default value: **LaunchMode.Standard**.
      */
     @!APILevel[
         since: "22",
@@ -354,8 +356,9 @@ public class NavigationOptions {
     /**
      * Constructor of NavigationOptions.
      *
-     * @param { ?LaunchMode } launchMode
-     * @param { ?Bool } animated
+     * @param { ?LaunchMode } launchMode - Navigation stack operation mode.
+     * @param { ?Bool } animated - Whether to support transition animation.
+     * @returns { NavigationOptions }
      */
     @!APILevel[
         since: "22",
@@ -451,6 +454,7 @@ public class NavPathInfo <: FFIData {
      * @param { ?String } name - The name of NavDestination.
      * @param { ?String } param - The detailed parameter of the NavDestination.
      * @param { ?Callback<PopInfo, Unit> } onPop - Callback returned when pop is called on the navigation destination page.
+     * @returns { NavPathInfo }
      */
     @!APILevel[
         since: "22",
@@ -520,6 +524,7 @@ public class NavPathStack <: RemoteData {
     private var id: Int64 = 0
     /**
      * Creates an instance of NavPathStack.
+     * @returns { NavPathStack }
      */
     @!APILevel[
         since: "22",
@@ -543,6 +548,7 @@ public class NavPathStack <: RemoteData {
      *
      * @param { ?NavPathInfo } info - Indicates the NavDestination to be pushed.
      * @param { ?NavigationOptions } options - Indicates the navigation options.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -566,6 +572,7 @@ public class NavPathStack <: RemoteData {
      * @param { ?Bool } animated - Indicates whether the transition is animated.
      * <br>Default value: **true**.
      * <br>**true**: The transition animation is supported. **false**: The transition animation is not supported.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -580,7 +587,9 @@ public class NavPathStack <: RemoteData {
     /**
      * Pops the top NavDestination out of the stack.
      *
-     * @param { ?Bool } animated - Indicates whether the transition is animated. Default value is **true**.
+     * @param { ?Bool } animated - Indicates whether the transition is animated.
+     * <br>Default value: **true**.
+     * <br>**true**: The transition animation is supported. **false**: The transition animation is not supported.
      * @returns { ?NavPathInfo } Returns the top NavPathInfo if the stack is not empty, otherwise returns None.
      */
     @!APILevel[
@@ -618,7 +627,7 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Constructor of Navigation.
      *
-     * @param { () -> Unit } child
+     * @param { () -> Unit } child - The child component of Navigation.
      */
     @!APILevel[
         since: "22",
@@ -634,8 +643,8 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
     /**
      * Constructor of Navigation.
      *
-     * @param { ?NavPathStack } pathInfos
-     * @param { () -> Unit } child
+     * @param { ?NavPathStack } pathInfos - The stack of the route table.
+     * @param { () -> Unit } child - The child component of Navigation.
      */
     @!APILevel[
         since: "22",

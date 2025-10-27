@@ -55,9 +55,15 @@ foreign func FfiOHOSAceFrameworkCurvesInterpolate(id: Int64, fraction: Float32):
 public class Curves {
     /**
      * Creates a step curve.
-     * @param { Int32 } count
-     * @param { Bool } end
-     * @returns { ICurve }
+     *
+     * @param { Int32 } count - Number of steps. The value must be a positive integer.<br>Value range: [1, +∞).
+     *     <p>**NOTE**:
+     *     <br>A value less than 1 evaluates to the value **1**.
+     *     </p>
+     * @param { Bool } end - Whether jumping occurs when the interpolation ends.
+     *     **true**: Jumping occurs when the interpolation ends.
+     *     **false**: Jumping occurs when the interpolation starts.
+     * @returns { ICurve } Interpolation curve.
      */
     @!APILevel[
         since: "22",
@@ -69,11 +75,18 @@ public class Curves {
 
     /**
      * Creates a cubic Bezier curve. The curve values must be between 0 and 1.
-     * @param { Float32 } x1
-     * @param { Float32 } y1
-     * @param { Float32 } x2
-     * @param { Float32 } y2
-     * @returns { ICurve }
+     *
+     * @param { Float32 } x1 - X coordinate of the first point on the Bezier curve.<br>Value range: [0, 1].
+     *     <p>**NOTE**:
+     *     <br>A value less than 0 is handed as **0**. A value greater than 1 is handed as **1**.
+     *     </p>
+     * @param { Float32 } y1 - Y coordinate of the first point on the Bezier curve.<br>Value range: (-∞, +∞).
+     * @param { Float32 } x2 - X coordinate of the second point on the Bezier curve.<br>Value range: [0, 1].
+     *     <p>**NOTE**:
+     *     <br>A value less than 0 is handed as **0**. A value greater than 1 is handed as **1**.
+     *     </p>
+     * @param { Float32 } y2 - Y coordinate of the second point on the Bezier curve.<br>Value range: (-∞, +∞).
+     * @returns { ICurve } Interpolation curve.
      */
     @!APILevel[
         since: "22",
@@ -84,12 +97,37 @@ public class Curves {
     }
 
     /**
-     * Creates a spring curve.
-     * @param { Float32 } velocity
-     * @param { Float32 } mass
-     * @param { Float32 } stiffness
-     * @param { Float32 } damping
-     * @returns { ICurve }
+     * Creates a spring curve. The curve shape is subject to the spring parameters, and the animation duration
+     * is subject to the **duration** parameter in **animation** and **animateTo**.
+     *
+     * @param { Float32 } velocity - Initial velocity.
+     *     It is applied by external factors to the spring animation,
+     *     designed to help ensure the smooth transition from the previous motion state.
+     *     The velocity is the normalized velocity, and its value is equal to the actual velocity at the beginning of
+     *     the animation divided by the animation attribute change value.
+     *     Value range: (-∞, +∞).
+     * @param { Float32 } mass - Mass
+     *     which influences the inertia in the spring system.
+     *     The greater the mass, the greater the amplitude of the oscillation,
+     *     and the slower the speed of restoring to the equilibrium position.
+     *     Value range: (0, +∞).
+     *     <p>**NOTE**:
+     *     <br>If this parameter is set to a value less than or equal to 0, the value 1 is used.
+     *     </p>
+     * @param { Float32 } stiffness - Stiffness.
+     *     It is the degree to which an object deforms by resisting the force applied.
+     *     In an elastic system, the greater the stiffness, the stronger the ability to resist deformation,
+     *     and the faster the speed of restoring to the equilibrium position.Value range: (0, +∞).
+     *     <p>**NOTE**:
+     *     <br>If this parameter is set to a value less than or equal to 0, the value 1 is used.
+     *     </p>
+     * @param { Float32 } damping -Damping. It is used to describe the oscillation and attenuation of the system
+     *     after being disturbed. The larger the damping, the smaller the number of oscillations of elastic motion,
+     *     and the smaller the oscillation amplitude.Value range: (0, +∞).
+     *     <p>**NOTE**:
+     *     <br>If this parameter is set to a value less than or equal to 0, the value 1 is used.
+     *     </p>
+     * @returns { ICurve } Interpolation curve.
      */
     @!APILevel[
         since: "22",
@@ -102,9 +140,10 @@ public class Curves {
     /**
      * Creates a spring curve. The curve shape is subject to the spring parameters, and the animation duration
      * is subject to the **duration** parameter in **animation** and **animateTo**.
-     * @param { Float32 } response
-     * @param { Float32 } dampingFraction
-     * @param { Float32 } overlapDuration
+     *
+     * @param { Float32 } response - Duration of one complete oscillation.
+     * @param { Float32 } dampingFraction - Damping coefficient.
+     * @param { Float32 } overlapDuration - Duration for animations to overlap, in seconds.
      * @returns { ICurve }
      */
     @!APILevel[
@@ -119,9 +158,10 @@ public class Curves {
     /**
      * Creates a responsive spring animation curve. It is a special case of springMotion,
      * with the only difference in the default values. It can be used together with **springMotion**.
-     * @param { Float32 } response
-     * @param { Float32 } dampingFraction
-     * @param { Float32 } overlapDuration
+     *
+     * @param { Float32 } response - See **response** in **springMotion**.<br>Default value: **0.15**.
+     * @param { Float32 } dampingFraction - See **dampingFraction** in **springMotion**.<br>Default value: **0.86**.
+     * @param { Float32 } overlapDuration - See **overlapDuration** in **springMotion**.<br>Default value: **0.25**.
      * @returns { ICurve }
      */
     @!APILevel[
@@ -138,10 +178,11 @@ public class Curves {
      * Creates an interpolating spring curve animated from 0 to 1. The actual animation value is calculated based
      * on the curve. The animation duration is subject to the curve parameters, rather than the **duration** parameter
      * in **animation** or **animateTo**.
-     * @param { Float32 } velocity
-     * @param { Float32 } mass
-     * @param { Float32 } stiffness
-     * @param { Float32 } damping
+     *
+     * @param { Float32 } velocity - Initial velocity.
+     * @param { Float32 } mass - Mass, which influences the inertia in the spring system.
+     * @param { Float32 } stiffness - Stiffness.
+     * @param { Float32 } damping - Damping.
      * @returns { ICurve }
      */
     @!APILevel[
@@ -155,7 +196,9 @@ public class Curves {
     /**
      * Implements initialization for the interpolation curve,
      * which is used to create an interpolation curve based on the input parameter.
-     * @param { Curve } curve
+     *
+     * @param { Curve } curve - Curve type.
+     * @default Curve.Linear
      * @returns { ICurve }
      */
     @!APILevel[
@@ -175,8 +218,8 @@ public class Curves {
     /**
      * Creates a custom curve.
      *
-     * @param { (Float32) -> Float32 } interpolate
-     * @returns { ICurve }
+     * @param { (Float32) -> Float32 } interpolate - Custom interpolation callback.
+     * @returns { ICurve } Interpolation curve.
      */
     @!APILevel[
         since: "22",
@@ -228,7 +271,7 @@ public class ICurve <: RemoteDataLite {
     /**
      * Get curve value by fraction.
      *
-     * @param { Float32 } fraction
+     * @param { Float32 } fraction - Indicates the current normalized time parameter. Value range: [0, 1].
      * @returns { Float32 }
      */
     @!APILevel[

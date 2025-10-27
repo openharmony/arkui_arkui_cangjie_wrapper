@@ -31,6 +31,7 @@ public interface Observer {
      * 
      * @param { String } info - Information about the updated state.
      * @param { ArrayList<Int64> } dependentElmtIds - List of element IDs that depend on this state.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -42,6 +43,7 @@ public interface Observer {
      * Notifies when a property is read.
      * 
      * @param { String } info - Information about the property being read.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -62,6 +64,8 @@ public interface Observer {
 
     /**
      * Prepares the observer for deletion, cleaning up any resources.
+     * 
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",

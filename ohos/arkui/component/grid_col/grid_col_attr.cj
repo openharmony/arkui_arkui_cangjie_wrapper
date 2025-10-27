@@ -19,7 +19,8 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 
 /**
- * Defines GridCol attributes.
+ * Defines the GridCol attribute functions.
+ * This interface provides the attribute methods for the GridCol component.
  */
 @!APILevel[
     since: "22",
@@ -27,10 +28,11 @@ import ohos.labels.APILevel
 ]
 sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     /**
-     * Sets the span of current gird-container item.
+     * Sets the span of current grid-container item.
+     * Defines how many columns the grid item should span.
      *
-     * @param { ?Int32 } value
-     * @returns { GridColAttribute }
+     * @param { ?Int32 } value - The span value to set. This determines how many columns the grid item will occupy.
+     * @returns { GridColAttribute } - Returns the attribute of GridCol.
      */
     @!APILevel[
         since: "22",
@@ -39,10 +41,11 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     func span(value: ?Int32): GridColAttribute
 
     /**
-     * Sets the span of current gird-container item.
+     * Sets the span of current grid-container item.
+     * Defines how many columns the grid item should span on different screen sizes.
      *
-     * @param { ?GridColOptions } value
-     * @returns { GridColAttribute }
+     * @param { ?GridColOptions } value - The GridColOptions to set as span. This defines how many columns the grid item will occupy on different screen sizes.
+     * @returns { GridColAttribute } - Returns the attribute of GridCol.
      */
     @!APILevel[
         since: "22",
@@ -51,10 +54,11 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     func span(value: ?GridColOptions): GridColAttribute
 
     /**
-     * Sets the offset of current gird-container item.
+     * Sets the offset of current grid-container item.
+     * Defines how many columns to offset the grid item from its normal position.
      *
-     * @param { ?Int32 } value
-     * @returns { GridColAttribute }
+     * @param { ?Int32 } value - The offset value to set. This determines how many columns the grid item will be offset from its normal position.
+     * @returns { GridColAttribute } - Returns the attribute of GridCol.
      */
     @!APILevel[
         since: "22",
@@ -63,10 +67,11 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     func gridColOffset(value: ?Int32): GridColAttribute
 
     /**
-     * Sets the offset of current gird-container item.
+     * Sets the offset of current grid-container item.
+     * Defines how many columns to offset the grid item from its normal position on different screen sizes.
      *
-     * @param { ?GridColOptions } value
-     * @returns { GridColAttribute }
+     * @param { ?GridColOptions } value - The GridColOptions to set as offset. This defines how many columns the grid item will be offset from its normal position on different screen sizes.
+     * @returns { GridColAttribute } - Returns the attribute of GridCol.
      */
     @!APILevel[
         since: "22",
@@ -75,10 +80,11 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     func gridColOffset(value: ?GridColOptions): GridColAttribute
 
     /**
-     * Sets the order of current gird-container item.
+     * Sets the order of current grid-container item.
+     * Defines the display order of the grid item in the grid layout.
      *
-     * @param { ?Int32 } value
-     * @returns { GridColAttribute }
+     * @param { ?Int32 } value - The order value to set. Items with a lower order value are displayed before items with a higher order value.
+     * @returns { GridColAttribute } - Returns the attribute of GridCol.
      */
     @!APILevel[
         since: "22",
@@ -87,10 +93,11 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
     func order(value: ?Int32): GridColAttribute
 
     /**
-     * Sets the order of current gird-container item.
+     * Sets the order of current grid-container item.
+     * Defines the display order of the grid item in the grid layout on different screen sizes.
      *
-     * @param { ?GridColOptions } value
-     * @returns { GridColAttribute }
+     * @param { ?GridColOptions } value - The GridColOptions to set as order. This defines the display order of the grid item on different screen sizes.
+     * @returns { GridColAttribute } - Returns the attribute of GridCol.
      */
     @!APILevel[
         since: "22",

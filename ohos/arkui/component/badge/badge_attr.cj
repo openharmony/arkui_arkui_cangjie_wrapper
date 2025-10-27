@@ -19,7 +19,7 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 
 /**
- * Defines Badge attributes.
+ * Defines the Badge attribute functions.
  */
 @!APILevel[
     since: "22",

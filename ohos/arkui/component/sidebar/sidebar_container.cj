@@ -46,7 +46,7 @@ foreign {
 }
 
 /**
- * ButtonStyle icons.
+ * Defines the icon resources for different states of the sidebar control button.
  */
 @!APILevel[
     since: "22",
@@ -110,7 +110,7 @@ struct CJSideBarButtonStyle {
 }
 
 /**
- * Sets the control button style
+ * Defines the appearance and positioning of the sidebar control button.
  */
 @!APILevel[
     since: "22",
@@ -205,7 +205,8 @@ struct CJDividerStyle {
 }
 
 /**
- * Provides an interface for the style of a divider including stroke width, color, start margin and end margin
+ * Provides a class for the style of a divider including stroke width, color, start margin and end margin.
+ * Defines the appearance properties of the divider between the sidebar and main content.
  */
 @!APILevel[
     since: "22",
@@ -313,7 +314,7 @@ foreign {
 }
 
 /**
- * Defines SideBarContainer Component.
+ * A container component that provides a collapsible sidebar for navigation or additional content.
  */
 @!APILevel[
     since: "22",

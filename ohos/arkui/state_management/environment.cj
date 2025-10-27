@@ -39,7 +39,7 @@ foreign {
 }
 
 /**
- * Defines the ColorMode of device.
+ * Represents the color mode (theme) of the device.
  */
 @Derive[Equatable]
 @!APILevel[
@@ -48,7 +48,7 @@ foreign {
 ]
 public enum ColorMode {
     /**
-     * Light mode.
+     * Represents the light color theme of the device.
      */
     @!APILevel[
         since: "22",
@@ -57,7 +57,7 @@ public enum ColorMode {
     Light
     |
     /**
-     * Dark mode.
+     * Represents the dark color theme of the device.
      */
     @!APILevel[
         since: "22",
@@ -85,6 +85,7 @@ public enum ColorMode {
 
 /**
  * Defines the LayoutDirection of device.
+ * Represents the layout direction of the device interface.
  */
 @Derive[Equatable]
 @!APILevel[
@@ -93,7 +94,7 @@ public enum ColorMode {
 ]
 public enum LayoutDirection {
     /**
-     * Elements are laid out from left to right.
+     * Represents left-to-right layout direction.
      */
     @!APILevel[
         since: "22",
@@ -102,20 +103,20 @@ public enum LayoutDirection {
     Ltr
     |
     /**
-     * Elements are laid out from right to left.
+     * Represents right-to-left layout direction.
      */
     @!APILevel[
-    since: "22",
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Rtl
     |
     /**
-     * Elements are laid out from auto.
+     * Represents automatic layout direction based on locale.
      */
     @!APILevel[
-    since: "22",
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
     | ...
@@ -131,6 +132,7 @@ public enum LayoutDirection {
 
 /**
  * Defines the Environment interface.
+ * Provides access to device environment properties and allows binding them to AppStorage.
  */
 @!APILevel[
     since: "22",
@@ -160,6 +162,7 @@ public class Environment {
      * and clears the internal instance reference.
      * If the instance is already None, this function returns immediately.
      *
+     * @returns { Unit }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -176,6 +179,7 @@ public class Environment {
 
     /**
      * Returns an Array<string> of all environment property keys.
+     * Lists all available environment property keys.
      *
      * @returns { Array<string> } all environment property keys.
      * @throws { BusinessException } 100001 - Internal error.
@@ -194,8 +198,8 @@ public class Environment {
      * The function call fails and returns false if a property with given name exists in AppStorage already.
      * It is wrong API use to access a property with given name in AppStorage before calling Environment.envProp.
      *
-     * @param { String } key - environment property
-     * @param { T } value - is the default value if cannot get the environment property value
+     * @param { String } key - environment property name
+     * @param { T } defaultValue - is the default value if cannot get the environment property value
      * @returns { Bool } false if method failed.
      * @throws { BusinessException } 100001 - Internal error.
      */

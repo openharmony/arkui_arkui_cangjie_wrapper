@@ -64,7 +64,7 @@ class CJVectorNativeTextShadow {
 /**
  * Defines the options for a DateTimeOptions object. Since API version 9, the DateTimeOptions attribute is changed
  * from mandatory to optional.
- *
+ * Provides configuration options for date and time formatting in TextClock component.
  */
 @!APILevel[
     since: "22",
@@ -73,7 +73,6 @@ class CJVectorNativeTextShadow {
 public class DateTimeOptions {
     /**
      * Valid locale ID, for example, "zh-Hans-CN". The default value is the current system locale.
-     *
      */
     @!APILevel[
         since: "22",
@@ -83,7 +82,6 @@ public class DateTimeOptions {
 
     /**
      * Date display format. The value can be: "long", "short", "medium", "full", or "auto".
-     *
      */
     @!APILevel[
         since: "22",
@@ -93,7 +91,6 @@ public class DateTimeOptions {
 
     /**
      * Time display format. The value can be: "long", "short", "medium", "full", or "auto".
-     *
      */
     @!APILevel[
         since: "22",
@@ -103,7 +100,6 @@ public class DateTimeOptions {
 
     /**
      * Hour cycle. The value can be: "h11", "h12", "h23", or "h24".
-     *
      */
     @!APILevel[
         since: "22",
@@ -113,7 +109,7 @@ public class DateTimeOptions {
 
     /**
      * Time zone in use. The value is a valid IANA time zone ID.
-     *
+     * Specifies the time zone for date and time display.
      */
     @!APILevel[
         since: "22",
@@ -128,7 +124,6 @@ public class DateTimeOptions {
      * "mathmono", "mathsanb", "mathsans", "mlym", "modi", "mong", "mroo", "mtei", "mymr", "mymrshan", "mymrtlng",
      * "newa", "nkoo", "olck", "orya", "osma", "rohg", "saur", "segment", "shrd", "sind", "sinh", "sora", "sund",
      * "takr", "talu", "tamldec", "telu", "thai", "tibt", "tirh", "vaii", "wara", or "wcho".
-     *
      */
     @!APILevel[
         since: "22",
@@ -139,8 +134,9 @@ public class DateTimeOptions {
     /**
      * Whether to use the 12-hour clock. The value true means to use the 12-hour clock, and the value false means the
      * opposite. If both hour12 and hourCycle are set, hourCycle does not take effect. If hour12 and hourCycle are not
-     * set and the 24-hour clock is turned on, the default value of hour12 is false.
-     *
+     * set and the 24-hour clock is turned on.
+     * Controls whether to use 12-hour or 24-hour time format.
+     * @default false
      */
     @!APILevel[
         since: "22",
@@ -150,7 +146,6 @@ public class DateTimeOptions {
 
     /**
      * Week display format. The value can be: "long", "short", "narrow", or "auto".
-     *
      */
     @!APILevel[
         since: "22",
@@ -160,7 +155,6 @@ public class DateTimeOptions {
 
     /**
      * Epoch display format. The value can be: "long", "short", "narrow", or "auto".
-     *
      */
     @!APILevel[
         since: "22",
@@ -170,7 +164,6 @@ public class DateTimeOptions {
 
     /**
      * Year display format. The value can be: "numeric" or "2-digit".
-     *
      */
     @!APILevel[
         since: "22",
@@ -180,7 +173,6 @@ public class DateTimeOptions {
 
     /**
      * Month display format. The value can be: "numeric", "2-digit", "long", "short", "narrow", or "auto".
-     *
      */
     @!APILevel[
         since: "22",
@@ -190,7 +182,6 @@ public class DateTimeOptions {
 
     /**
      * Day display format. The value can be: "numeric" or "2-digit".
-     *
      */
     @!APILevel[
         since: "22",
@@ -200,7 +191,6 @@ public class DateTimeOptions {
 
     /**
      * Hour display format. The value can be: "numeric" or "2-digit".
-     *
      */
     @!APILevel[
         since: "22",
@@ -210,7 +200,6 @@ public class DateTimeOptions {
 
     /**
      * Minute display format. The value can be: "numeric" or "2-digit".
-     *
      */
     @!APILevel[
         since: "22",
@@ -220,7 +209,6 @@ public class DateTimeOptions {
 
     /**
      * Second display format. The value can be: "numeric" or "2-digit".
-     *
      */
     @!APILevel[
         since: "22",
@@ -230,7 +218,6 @@ public class DateTimeOptions {
 
     /**
      * Localized representation of a time zone name. The value can be: "long", "short", or "auto".
-     *
      */
     @!APILevel[
         since: "22",
@@ -240,7 +227,6 @@ public class DateTimeOptions {
 
     /**
      * Time period display format. The value can be: "long", "short", "narrow", or "auto".
-     *
      */
     @!APILevel[
         since: "22",
@@ -252,7 +238,6 @@ public class DateTimeOptions {
      * Locale matching algorithm. The value can be:
      * "lookup": exact match.
      * "best fit": best match.
-     *
      */
     @!APILevel[
         since: "22",
@@ -264,7 +249,6 @@ public class DateTimeOptions {
      * Format matching algorithm. The value can be:
      * "basic": exact match.
      * "best fit": best match.
-     *
      */
     @!APILevel[
         since: "22",
@@ -273,27 +257,27 @@ public class DateTimeOptions {
     public var formatMatcher: ?String
 
     /**
-     * DateTimeOptions Constructor.
+     * Creates a new DateTimeOptions instance with the specified formatting options.
      *
-     * @param { ?String } locale
-     * @param { ?String } dateStyle
-     * @param { ?String } timeStyle
-     * @param { ?String } hourCycle
-     * @param { ?String } timeZone
-     * @param { ?String } numberingSystem
-     * @param { ?Bool } hour12
-     * @param { ?String } weekday
-     * @param { ?String } era
-     * @param { ?String } year
-     * @param { ?String } month
-     * @param { ?String } day
-     * @param { ?String } hour
-     * @param { ?String } minute
-     * @param { ?String } second
-     * @param { ?String } timeZoneName
-     * @param { ?String } dayPeriod
-     * @param { ?String } localeMatcher
-     * @param { ?String } formatMatcher
+     * @param { ?String } locale - Valid locale ID, for example, "zh-Hans-CN".
+     * @param { ?String } dateStyle - Date display format.
+     * @param { ?String } timeStyle - Time display format.
+     * @param { ?String } hourCycle - Hour cycle.
+     * @param { ?String } timeZone - Time zone in use.
+     * @param { ?String } numberingSystem - Numbering system.
+     * @param { ?Bool } hour12 - Whether to use the 12-hour clock.
+     * @param { ?String } weekday - Week display format.
+     * @param { ?String } era - Epoch display format.
+     * @param { ?String } year - Year display format.
+     * @param { ?String } month - Month display format.
+     * @param { ?String } day - Day display format.
+     * @param { ?String } hour - Hour display format.
+     * @param { ?String } minute - Minute display format.
+     * @param { ?String } second - Second display format.
+     * @param { ?String } timeZoneName - Localized representation of a time zone name.
+     * @param { ?String } dayPeriod - Time period display format.
+     * @param { ?String } localeMatcher - Locale matching algorithm.
+     * @param { ?String } formatMatcher - Format matching algorithm.
      */
     @!APILevel[
         since: "22",
@@ -364,7 +348,7 @@ foreign {
 
 /**
  * Provides a way to control the textclock status.
- *
+ * Allows starting and stopping the TextClock component updates.
  */
 @!APILevel[
     since: "22",
@@ -373,6 +357,7 @@ foreign {
 public class TextClockController <: RemoteDataLite {
     /**
      * TextClockController constructor.
+     * Creates a new TextClockController instance.
      */
     @!APILevel[
         since: "22",
@@ -389,7 +374,9 @@ public class TextClockController <: RemoteDataLite {
     }
     /**
      * Provides a start event for textclock.
+     * Starts the TextClock updates.
      *
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -402,7 +389,9 @@ public class TextClockController <: RemoteDataLite {
     }
     /**
      * Provides a stop event for textclock.
+     * Stops the TextClock updates.
      *
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -416,8 +405,7 @@ public class TextClockController <: RemoteDataLite {
 }
 
 /**
- * Defines TextClock Component.
- *
+ * A component that displays the current date and time, automatically updating at regular intervals.
  */
 @!APILevel[
     since: "22",
@@ -427,12 +415,11 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     /**
      * Construct the text clock component.
      * Specifies the current time zone.
-     * The valid value is an integer ranging from - 14 to 12,
-     * Where a negative value indicates the eastern time zone, for example, -8.
-     * Anonymous Object Rectification.
+     * The valid value is an integer ranging from -14 to 12,
+     * where a negative value indicates the western time zone and a positive value indicates the eastern time zone.
      *
-     * @param { ?Float32 } timeZoneOffset
-     * @param { ?TextClockController } controller
+     * @param { ?Float32 } timeZoneOffset - The time zone offset in hours.
+     * @param { ?TextClockController } controller - The controller for the text clock.
      */
     @!APILevel[
         since: "22",
@@ -461,7 +448,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * Use the format attribute method to customize data display in the callback.
      *
      * @param { ?(Int64) -> Unit } callback - Listening date event callback.
-     * @returns { This }
+     * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
         since: "22",
@@ -485,8 +472,8 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * The default value is "hh:mm" when TextClock is in a form.
      * If the value has second or millisecond, the value will be set to the default value.
      *
-     * @param { ?ResourceStr } value
-     * @returns { This }
+     * @param { ?ResourceStr } value - The time format string.
+     * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
         since: "22",
@@ -504,10 +491,10 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Called when the value of TextClock fontSize is set.
+     * Configures the font size of the text displayed in the TextClock.
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The font size.
+     * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
         since: "22",
@@ -522,10 +509,10 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Called when the value of TextClock fontColor is set.
+     * Configures the font color of the text displayed in the TextClock.
      *
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } value - The font color resource.
+     * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
         since: "22",
@@ -540,10 +527,10 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Called when the value of TextClock fontStyle is set.
+     * Configures the font style of the text displayed in the TextClock.
      *
-     * @param { ?FontStyle } value
-     * @returns { This }
+     * @param { ?FontStyle } value - The font style.
+     * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
         since: "22",
@@ -558,10 +545,10 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Called when the value of TextClock fontWeight is set.
+     * Configures the font weight of the text displayed in the TextClock.
      *
-     * @param { ?FontWeight } value
-     * @returns { This }
+     * @param { ?FontWeight } value - The font weight.
+     * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
         since: "22",
@@ -578,10 +565,10 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Called when the value of TextClock fontFamily is set.
+     * Configures the font family of the text displayed in the TextClock.
      *
-     * @param { ?ResourceStr } value
-     * @returns { This }
+     * @param { ?ResourceStr } value - The font family.
+     * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
         since: "22",
@@ -598,10 +585,10 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Called when the text shadow is set.
+     * Applies a shadow effect to the text displayed in the TextClock.
      *
-     * @param { ?Array<ShadowOptions> } value - The shadow options.
-     * @returns { This }
+     * @param { ?Array<ShadowOptions> } values - The shadow options.
+     * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
         since: "22",
@@ -621,10 +608,10 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Called when the text shadow is set.
+     * Applies a shadow effect to the text displayed in the TextClock.
      *
      * @param { ?ShadowOptions } value - The shadow options.
-     * @returns { This }
+     * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
         since: "22",

@@ -19,7 +19,8 @@ import ohos.arkui.component.common.*
 import ohos.labels.APILevel
 
 /**
- * Defines Stack Component.
+ * Defines the Stack attribute functions.
+ * Provides methods for configuring the appearance and behavior of the Stack component.
  */
 @!APILevel[
     since: "22",
@@ -28,9 +29,10 @@ import ohos.labels.APILevel
 sealed interface StackAttribute <: CommonMethod<StackAttribute> {
     /**
     * Called when the alignment of items in the container is set.
+    * Configures how child components are aligned within the stack container.
     *
-    * @param { ?Alignment } value
-    * @returns { StackAttribute }
+    * @param { ?Alignment } value - Alignment of child components within the stack.
+    * @returns { StackAttribute } Returns the stack attribute.
     */
     @!APILevel[
         since: "22",

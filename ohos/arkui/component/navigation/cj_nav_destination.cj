@@ -99,7 +99,8 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
     /**
      * The construct function of NavDestination.
      *
-     * @param { () -> Unit } child
+     * @param { () -> Unit } child - The child component of NavDestination. The default value is {=>}.
+     * @returns { NavDestination }
      */
     @!APILevel[
         since: "22",
@@ -176,7 +177,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
      * wrapped in two lines, and then clipped with an ellipsis (...); (2) If a subtitle is set,
      * the subtitle is scaled down and then clipped with an ellipsis (...).
      *
-     * @param { ?ResourceStr } value
+     * @param { ?ResourceStr } value - Defines the title.
      * @param { ?NavigationTitleOptions } [options] - Indicates the options of titlebar.
      * @returns { This }
      */
@@ -205,7 +206,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
      * wrapped in two lines, and then clipped with an ellipsis (...); (2) If a subtitle is set,
      * the subtitle is scaled down and then clipped with an ellipsis (...).
      *
-     * @param { ?CustomBuilder } value
+     * @param { ?CustomBuilder } value - Defines the title.
      * @param { ?NavigationTitleOptions } options - Indicates the options of titlebar.
      * @returns { This }
      */
@@ -229,7 +230,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
     /**
      * Specifies whether to hide the title bar.
      *
-     * @param { ?Bool } value
+     * @param { ?Bool } value - Indicates whether to hide the title bar.
      * @returns { This }
      */
     @!APILevel[

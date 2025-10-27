@@ -324,7 +324,7 @@ public class ContextMenuController {
     }
 
     /**
-     *
+     * Close the context menu.
      */
     @!APILevel[
         since: "22",

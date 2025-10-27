@@ -25,7 +25,7 @@ public type VoidCallback = () -> Unit
 /**
  * Defines the callback.
  *
- * @param { T } data
- * @returns { V }
+ * @param { T } data - The input data
+ * @returns { V } - The result of the callback
  */
 public type Callback<T, V> = (T) -> V

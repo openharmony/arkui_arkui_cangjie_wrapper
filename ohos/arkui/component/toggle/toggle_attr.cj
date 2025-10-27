@@ -20,8 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines Toggle Component.
- *
+ * Defines the Toggle attribute functions.
  */
 @!APILevel[
     since: "22",
@@ -29,9 +28,9 @@ import ohos.base.*
 ]
 sealed interface ToggleAttribute <: CommonMethod<ToggleAttribute> {
     /**
-     * Called when the color of the selected button is set.
+     * Set the color of the selected button.
      *
-     * @param { ?ResourceColor } value
+     * @param { ?ResourceColor } value - Color of the selected button.
      * @returns { ToggleAttribute }
      */
     @!APILevel[
@@ -41,9 +40,9 @@ sealed interface ToggleAttribute <: CommonMethod<ToggleAttribute> {
     func selectedColor(value: ?ResourceColor): ToggleAttribute
 
     /**
-     * Called when the color of the selected button is set.
+     * Set the color of the switch point.
      *
-     * @param { ?ResourceColor } color
+     * @param { ?ResourceColor } color - Color of the switch point.
      * @returns { ToggleAttribute }
      */
     @!APILevel[
@@ -55,7 +54,7 @@ sealed interface ToggleAttribute <: CommonMethod<ToggleAttribute> {
     /**
      * Called when the selected state of the component changes.
      *
-     * @param { ?(Bool) -> Unit } callback
+     * @param { ?(Bool) -> Unit } callback - Callback function triggered when the selected state changes.
      * @returns { ToggleAttribute }
      */
     @!APILevel[

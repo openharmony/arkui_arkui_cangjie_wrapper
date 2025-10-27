@@ -31,6 +31,7 @@ import std.deriving.Derive
 public interface Length {
     /**
      * The value of length property.
+     * @returns { Float64 } - The value of length
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -45,6 +46,7 @@ public interface Length {
 
     /**
      * The unit of length property.
+     * @returns { LengthUnit } - The unit of length
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -74,6 +76,7 @@ public interface LengthProp {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop px: Length
+    
     /**
      * Defines the length property in units of vp.
      */
@@ -82,6 +85,7 @@ public interface LengthProp {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop vp: Length
+    
     /**
      * Defines the length property in units of fp.
      */
@@ -90,15 +94,16 @@ public interface LengthProp {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop fp: Length
+    
     /**
      * Defines the length property in units of percent.
-     *
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop percent: Length
+    
     /**
      * Defines the length property in units of lpx.
      */
@@ -123,8 +128,9 @@ public class LengthMetrics <: Length {
     /**
      * LengthMetrics constructor.
      *
-     * @param { Float64 } value
-     * @param { LengthUnit } unit
+     * @param { Float64 } value - The value of length
+     * @param { LengthUnit } unit - The unit of length
+     * @default unit - LengthUnit.Vp
      */
     @!APILevel[
         since: "22",
@@ -161,6 +167,7 @@ public class LengthMetrics <: Length {
         }
     }
 }
+
 /**
  * Defines the dimension property with number with units(vp|px|fp|lpx|%).
  */
@@ -178,6 +185,7 @@ public enum LengthUnit {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Px
+    
     /**
      * Defines the length property in units of vp.
      */
@@ -186,6 +194,7 @@ public enum LengthUnit {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vp
+    
     /**
      * Defines the length property in units of fp.
      */
@@ -194,6 +203,7 @@ public enum LengthUnit {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fp
+    
     /**
      * Defines the length property in units of percent.
      */
@@ -202,6 +212,7 @@ public enum LengthUnit {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Percent
+    
     /**
      * Defines the length property in units of lpx.
      */
@@ -215,8 +226,8 @@ public enum LengthUnit {
     /**
      * Get the length property of number value.
      *
-     * @returns { Int32 }
-     * @throws { BussnessException } - 100001 - Internal error.
+     * @returns { Int32 } - The integer value of the length unit
+     * @throws { BusinessException } - 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -236,9 +247,9 @@ public enum LengthUnit {
     /**
      * Parse the length number value to LengthUnit type.
      *
-     * @param { Int32 } value
-     * @returns { LengthUnit }
-     * @throws { BussnessException } - 100001 - Internal error.
+     * @param { Int32 } value - The integer value to parse
+     * @returns { LengthUnit } - The corresponding LengthUnit
+     * @throws { BusinessException } - 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -323,8 +334,8 @@ extend Float64 <: LengthProp & Length {
     }
 
     /**
-     * Defines the value.
-     */
+    * Defines the value.
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -336,8 +347,8 @@ extend Float64 <: LengthProp & Length {
     }
 
     /**
-     * Defines the unit.
-     */
+    * Defines the unit.
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -362,6 +373,7 @@ extend Int64 <: LengthProp & Length {
             LengthMetrics(Float64(this), unit: LengthUnit.Px)
         }
     }
+    
     /**
      * Defines the length property in units of vp.
      */
@@ -374,6 +386,7 @@ extend Int64 <: LengthProp & Length {
             LengthMetrics(Float64(this), unit: LengthUnit.Vp)
         }
     }
+    
     /**
      * Defines the length property in units of fp.
      */
@@ -386,6 +399,7 @@ extend Int64 <: LengthProp & Length {
             LengthMetrics(Float64(this), unit: LengthUnit.Fp)
         }
     }
+    
     /**
      * Defines the length property in units of percent.
      */
@@ -398,6 +412,7 @@ extend Int64 <: LengthProp & Length {
             LengthMetrics(Float64(this) / 100.0, unit: LengthUnit.Percent)
         }
     }
+    
     /**
      * Defines the length property in units of lpx.
      */
@@ -410,9 +425,10 @@ extend Int64 <: LengthProp & Length {
             LengthMetrics(Float64(this), unit: LengthUnit.Lpx)
         }
     }
+    
     /**
-     * Defines the value.
-     */
+    * Defines the value.
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -422,9 +438,10 @@ extend Int64 <: LengthProp & Length {
             Float64(this)
         }
     }
+    
     /**
-     * Defines the unit.
-     */   
+    * Defines the unit.
+    */   
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -57,7 +57,7 @@ sealed interface ImageSpanAttribute <: CommonMethod<ImageSpanAttribute> {
     /**
      * Sets the color filter effect on the image span.
      *
-     * @param { ?ColorFilter } filter ColorFilter object.
+     * @param { ?ColorFilter } filter - ColorFilter object.
      * @returns { ImageSpanAttribute } The attribute of the image span.
      */
     @!APILevel[

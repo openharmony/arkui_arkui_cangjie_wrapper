@@ -257,6 +257,7 @@ public enum ButtonStyleMode {
 public class ButtonOptions {
     /**
      * Describes the button style.
+     * @returns { ButtonType } The button shape type.
      */
     @!APILevel[
         since: "22",
@@ -265,6 +266,7 @@ public class ButtonOptions {
     public var shape: ?ButtonType
     /**
      * Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
+     * @returns { Bool } Whether the state effect is enabled.
      */
     @!APILevel[
         since: "22",
@@ -272,7 +274,11 @@ public class ButtonOptions {
     ]
     public var stateEffect: ?Bool
     /**
+     * @default true
+     */
+    /**
      * Describes the button style.
+     * @returns { ButtonStyleMode } The button style mode.
      */
     @!APILevel[
         since: "22",
@@ -280,7 +286,11 @@ public class ButtonOptions {
     ]
     public var buttonStyle: ?ButtonStyleMode
     /**
+     * @default ButtonStyleMode.Emphasized
+     */
+    /**
      * Describes the button size.
+     * @returns { ControlSize } The control size of the button.
      */
     @!APILevel[
         since: "22",
@@ -288,13 +298,20 @@ public class ButtonOptions {
     ]
     public var controlSize: ?ControlSize
     /**
+     * @default ControlSize.Normal
+     */
+    /**
      * Describes the button role.
+     * @returns { ButtonRole } The role of the button.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var role: ?ButtonRole
+    /**
+     * @default ButtonRole.Normal
+     */
 
     /**
      * ButtonOptions constructor.
@@ -304,6 +321,7 @@ public class ButtonOptions {
      * @param { ?ButtonStyleMode } buttonStyle - Describes the button style.
      * @param { ?ControlSize } controlSize - Describes the button size.
      * @param { ?ButtonRole } role - Describes the button role.
+     * @returns { ButtonOptions } A new instance of ButtonOptions.
      */
     @!APILevel[
         since: "22",
@@ -333,7 +351,8 @@ public class ButtonOptions {
 ]
 public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
-     * Button object.
+     * Button constructor.
+     * @returns { Button } A new instance of Button.
      */
     @!APILevel[
         since: "22",
@@ -348,9 +367,10 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     }
 
     /**
-     * Button object
+     * Button constructor.
      *
-     * @param { () -> Unit } child - The child component of the button
+     * @param { () -> Unit } child - The child component of the button.
+     * @returns { Button } A new instance of Button.
      */
     @!APILevel[
         since: "22",
@@ -366,7 +386,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Create Button with inner text label.
      *
-     * @param { ResourceStr } label
+     * @param { ResourceStr } label - The button label value.
+     * @returns { Button } A new instance of Button.
      */
     @!APILevel[
         since: "22",
@@ -384,7 +405,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Create Button with Text child.
      *
-     * @param { ?ButtonOptions } options
+     * @param { ?ButtonOptions } options - The options of button.
+     * @returns { Button } A new instance of Button.
      */
     @!APILevel[
         since: "22",
@@ -408,8 +430,9 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Create Button with Text child.
      *
-     * @param { ?ButtonOptions } options
-     * @param { () -> Unit } child
+     * @param { ?ButtonOptions } options - The options of button.
+     * @param { () -> Unit } child - The child component of the button.
+     * @returns { Button } A new instance of Button.
      */
     @!APILevel[
         since: "22",
@@ -434,8 +457,9 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Create Button with inner text label.
      *
-     * @param { ?ResourceStr } label
-     * @param { ?ButtonOptions } options
+     * @param { ?ResourceStr } label - The button label.
+     * @param { ?ButtonOptions } options - The options of button.
+     * @returns { Button } A new instance of Button.
      */
     @!APILevel[
         since: "22",
@@ -464,8 +488,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Text size.
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The font size of button.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -484,8 +508,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Font weight.
      *
-     * @param { ?FontWeight } value
-     * @returns { This }
+     * @param { ?FontWeight } value - The font weight of button.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -504,8 +528,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Text color.
      *
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } color - The font color of button.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -570,8 +594,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Font style.
      *
-     * @param { ?FontStyle } value
-     * @returns { This }
+     * @param { ?FontStyle } value - The font style of button.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -588,8 +612,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Font family.
      *
-     * @param { ?ResourceStr } value
-     * @returns { This }
+     * @param { ?ResourceStr } value - The font family of button.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -609,8 +633,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Describes the button style.
      *
-     * @param { ?ButtonType } value
-     * @returns { This }
+     * @param { ?ButtonType } value - The button shape style. 
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -660,8 +684,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether to enable button interactive effect. 
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -740,8 +764,8 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Describes the button style.
      *
-     * @param { ?ButtonStyleMode } value - button style mode
-     * @returns { This }
+     * @param { ?ButtonStyleMode } value - Button style mode.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",

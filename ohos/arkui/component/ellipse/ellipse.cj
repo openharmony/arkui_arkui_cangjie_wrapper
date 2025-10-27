@@ -34,7 +34,7 @@ foreign func FfiOHOSAceFrameworkEllipseCreate(width: Float64, widthUnit: Int32, 
 ]
 public class Ellipse <: CommonShapeMethodComponent<Ellipse> & EllipseAttribute {
     /**
-     * Create a ellipse.
+     * Create an ellipse.
      *
      * @param { ?Length } width - Set width.
      * @param { ?Length } height - Set Height.

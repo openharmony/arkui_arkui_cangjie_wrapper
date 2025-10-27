@@ -91,7 +91,7 @@ foreign {
 }
 
 /**
- * The information about the image error
+ * Contains details about an image loading error, including component dimensions and error message.
  */
 @!APILevel[
     since: "22",
@@ -135,7 +135,7 @@ public class ImageError {
 }
 
 /**
- * The information about the successfully loaded image.
+ * Contains details about a successfully loaded image, including dimensions and loading status.
  */
 @!APILevel[
     since: "22",
@@ -243,14 +243,14 @@ public class ImageLoadResult {
 /**
  * Callback function triggered when the image is successfully loaded.
  * 
- * @param { ImageLoadResult } result - the information about the successfully loaded image.
+ * @param { ImageLoadResult } result - The information about the successfully loaded image.
  */
 public type ImageCompleteCallback = (ImageLoadResult) -> Unit
 
 /**
  * Callback function triggered when an error occurs while loading the image.
  *
- * @param { ImageError } error
+ * @param { ImageError } error - The error information.
  */
 public type ImageErrorCallback = (ImageError) -> Unit
 
@@ -322,7 +322,8 @@ public class ColorFilter {
     /**
      * Creates ColorFilter with 4*5 matrix.
      *
-     * @param { ?Array<Float32> } value 4*5 color matrix values. The value[m*n] is located in the m row and n column. The matrix is row-first.
+     * @param { ?Array<Float32> } value - 4*5 color matrix values. The value[m*n] is located in the m row and n column. The matrix is row-first.
+     * @returns { ColorFilter }
      */
     @!APILevel[
         since: "22",
@@ -353,9 +354,10 @@ public class ColorFilter {
 ]
 public class Image <: CommonMethodComponent<Image> & ImageAttribute {
     /**
-     * Set src to obtain images
+     * Set src to obtain images.
      *
-     * @param { ?ResourceStr } src
+     * @param { ?ResourceStr } src - The resource string of the image.
+     * @returns { Image }
      */
     @!APILevel[
         since: "22",
@@ -375,9 +377,10 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
     }
 
     /**
-     * Set src to obtain images
+     * Set src to obtain images.
      *
-     * @param { ?PixelMap } src
+     * @param { ?PixelMap } src - The pixel map of the image.
+     * @returns { Image }
      */
     @!APILevel[
         since: "22",
@@ -397,7 +400,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      * 
-     * @param { ?ResourceStr } value - Placeholder image displayed during loading, Default value is null.
+     * @param { ?ResourceStr } value - Placeholder image displayed during loading. Default value is null.
      * @returns { This }
      */
     @!APILevel[
@@ -422,7 +425,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
     /**
      * Sets how the image is resized to fit its container.
      *
-     * @param { ?ImageFit } value - How the image is resized to fit its container, Default value is ImageFit.Cover.
+     * @param { ?ImageFit } value - How the image is resized to fit its container. Default value is ImageFit.Cover.
      * @returns { This }
      */
     @!APILevel[
@@ -438,14 +441,14 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
     }
 
     /**
-     * Set the repeat style of the picture
+     * Set the repeat style of the picture.
      *
      * <p><strong>NOTE</strong>:
      * <br>This attribute is not applicable to SVG images.
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?ImageRepeat } value - How the image is repeated, Default value is ImageRepeat.NoRepeat.
+     * @param { ?ImageRepeat } value - How the image is repeated. Default value is ImageRepeat.NoRepeat.
      * @returns { This }
      */
     @!APILevel[
@@ -468,7 +471,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?ImageInterpolation } value - Interpolation effect of the image, Default value is ImageInterpolation.Low.
+     * @param { ?ImageInterpolation } value - Interpolation effect of the image. Default value is ImageInterpolation.Low.
      * @returns { This }
      */
     @!APILevel[
@@ -492,7 +495,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?ImageRenderMode } value - Rendering mode of the image, Default value is ImageRenderMode.Original.
+     * @param { ?ImageRenderMode } value - Rendering mode of the image. Default value is ImageRenderMode.Original.
      * @returns { This }
      */
     @!APILevel[
@@ -544,7 +547,6 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
     /**
      * Sets the decoding size of the image. 
      * The original picture is decoded into a picture of a specified size. The unit of the number type is px.
-     * Anonymous Object Rectification.
      *
      * <p><strong>NOTE</strong>:
      * <br>This attribute works only when the target size is smaller than the source size.
@@ -577,7 +579,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?Bool } value - Whether to load the image synchronously, Default value is false.
+     * @param { ?Bool } value - Whether to load the image synchronously. Default value is false.
      * @returns { This }
      */
     @!APILevel[
@@ -625,7 +627,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * </p>
      *
      * @param { ?Bool } value - Whether to resize the image source based on the size of the display area
-     * during image decoding, Default value is false.
+     * during image decoding. Default value is false.
      * @returns { This }
      */
     @!APILevel[
@@ -646,7 +648,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?Bool } value - Whether to display the image in the system language direction, Default value is false.
+     * @param { ?Bool } value - Whether to display the image in the system language direction. Default value is false.
      * @returns { This }
      */
     @!APILevel[
@@ -667,7 +669,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?Bool } value - Whether to fit the image to the size of the image source, Default value is false.
+     * @param { ?Bool } value - Whether to fit the image to the size of the image source. Default value is false.
      * @returns { This }
      */
     @!APILevel[
@@ -689,7 +691,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * <br>This event is not triggered if the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?ImageCompleteCallback } callback
+     * @param { ?ImageCompleteCallback } callback - The callback function triggered when image loading is complete.
      * @returns { This }
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -714,7 +716,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * <br>This event is not triggered if the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?ImageErrorCallback } callback
+     * @param { ?ImageErrorCallback } callback - The callback function triggered when an error occurs.
      * @returns { This }
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
@@ -740,7 +742,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      * <br>This event is not triggered if the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      *
-     * @param { ?() -> Unit } event
+     * @param { ?() -> Unit } event - The callback function triggered when SVG playback is complete.
      * @returns { This }
      */
     @!APILevel[

@@ -367,19 +367,19 @@ class CallbackCJWebEvent <: BaseCallBack {
 ]
 public class OnPageBeginEvent {
     /**
-    * The url of page.
-    *
-    */
+     * The URL of the page.
+     *
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public var url: String
     /**
-    * Defines OnPageBeginEvent Component instance.
-    *
-    * @param { String } url
-    */
+     * Defines OnPageBeginEvent Component instance.
+     *
+     * @param { String } url - The URL of the page that begins to load.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -398,19 +398,19 @@ public class OnPageBeginEvent {
 ]
 public class OnPageEndEvent {
     /**
-    * The url of page.
-    *
-    */
+     * The URL of the page.
+     *
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public var url: String
     /**
-    * Defines OnPageEndEvent Component instance.
-    *
-    * @param { String } url
-    */
+     * Defines OnPageEndEvent Component instance.
+     *
+     * @param { String } url - The URL of the page that finished loading.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -429,19 +429,19 @@ public class OnPageEndEvent {
 ]
 public class OnLoadInterceptEvent {
     /**
-    * The information of request.
-    *
-    */
+     * The information of request.
+     *
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var data: WebResourceRequest
     /**
-    * Defines OnLoadInterceptEvent Component instance.
-    *
-    * @param { WebResourceRequest } data
-    */
+     * Defines OnLoadInterceptEvent Component instance.
+     *
+     * @param { WebResourceRequest } data - The web resource request information.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -460,18 +460,18 @@ public class OnLoadInterceptEvent {
 ]
 public class Header {
     /**
-    * Gets the key of the request/response header.
-    *
-    */
+     * Gets the key of the request/response header.
+     *
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public var headerKey: ?String
     /**
-    * Gets the value of the request/response header.
-    *
-    */
+     * Gets the value of the request/response header.
+     *
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -528,9 +528,9 @@ struct FfiOnDownloadStartEvent {
     ) {}
 }
 /**
-* Defines the Web resource request.
-*
-*/
+ * Defines the Web resource request.
+ *
+ */
 @!APILevel[
     since: "22",
     syscap: "SystemCapability.Web.Webview.Core"
@@ -545,10 +545,10 @@ public class WebResourceRequest {
         let headers: FfiMapToCFFIArray
     ) {}
     /**
-    * Gets request headers.
-    *
-    * @returns { ArrayList<Header> }
-    */
+     * Gets request headers.
+     *
+     * @returns { Array<Header> }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -573,10 +573,10 @@ public class WebResourceRequest {
         return result.toArray()
     }
     /**
-    * Gets the request URL.
-    *
-    * @returns { String }
-    */
+     * Gets the request URL.
+     *
+     * @returns { String }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -585,10 +585,10 @@ public class WebResourceRequest {
         return requestUrl_
     }
     /**
-    * Check whether the request is for getting the main frame.
-    *
-    * @returns { Bool }
-    */
+     * Check whether the request is for getting the main frame.
+     *
+     * @returns { Bool }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -597,10 +597,10 @@ public class WebResourceRequest {
         return isMainFrame_
     }
     /**
-    * Check whether the request redirects.
-    *
-    * @returns { Bool }
-    */
+     * Check whether the request redirects.
+     *
+     * @returns { Bool }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -609,10 +609,10 @@ public class WebResourceRequest {
         return isRedirect_
     }
     /**
-    * Check whether the request is associated with gesture.
-    *
-    * @returns { Bool }
-    */
+     * Check whether the request is associated with gesture.
+     *
+     * @returns { Bool }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -621,10 +621,10 @@ public class WebResourceRequest {
         return isRequestGesture_
     }
     /**
-    * Get request method.
-    *
-    * @returns { String }
-    */
+     * Get request method.
+     *
+     * @returns { String }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -644,19 +644,19 @@ public class WebResourceRequest {
 ]
 public class OnPermissionRequestEvent {
     /**
-    * Defines the onPermissionRequest callback.
-    *
-    */
+     * Defines the onPermissionRequest callback.
+     *
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public var request: PermissionRequest
     /**
-    * Defines OnPermissionRequestEvent Component instance.
-    *
-    * @param { PermissionRequest } request
-    */
+     * Defines OnPermissionRequestEvent Component instance.
+     *
+     * @param { PermissionRequest } request - The permission request object.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -681,9 +681,9 @@ public class PermissionRequest {
     let cPermission: CPointer<Unit>
     let cFree: CFunc<(CPointer<Unit>) -> Unit>
     /**
-    * Reject the request.
-    *
-    */
+     * Reject the request.
+     *
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -694,10 +694,10 @@ public class PermissionRequest {
         }
     }
     /**
-    * Gets the source if the webpage that attempted to access the restricted resource.
-    *
-    * @returns { String }
-    */
+     * Gets the source if the webpage that attempted to access the restricted resource.
+     *
+     * @returns { String }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -711,10 +711,10 @@ public class PermissionRequest {
         }
     }
     /**
-    * Obtains the list of accessible resources requested for the web page.
-    *
-    * @returns { Array<String> }
-    */
+     * Obtains the list of accessible resources requested for the web page.
+     *
+     * @returns { Array<String> }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -730,10 +730,10 @@ public class PermissionRequest {
         }
     }
     /**
-    * Grant origin access to a given resource.
-    *
-    * @param { Array<string> } resources
-    */
+     * Grant origin access to a given resource.
+     *
+     * @param { Array<string> } resources - An array of resources to grant access to.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -815,8 +815,8 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
      * Web constructor.
      *
-     * @param { ?ResourceStr } src
-     * @param { ?WebviewController } controller
+     * @param { ResourceStr } src - The source URL of the web content.
+     * @param { WebviewController } controller - The controller for managing the web component.
      * @returns { This }
      */
     @!APILevel[
@@ -835,11 +835,11 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         }
     }
     /**
-    * Sets whether to enable access to the file system in the application.
-    *
-    * @param { ?Bool } fileAccess
-    * @returns { This }
-    */
+     * Sets whether to enable access to the file system in the application.
+     *
+     * @param { ?Bool } fileAccess - Whether to enable file system access. True to enable, false to disable.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -851,11 +851,11 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Sets whether to enable the DOM Storage API. By default, this feature is disabled.
-    *
-    * @param { ?Bool } domStorageAccess
-    * @returns { This }
-    */
+     * Sets whether to enable the DOM Storage API. By default, this feature is disabled.
+     *
+     * @param { ?Bool } domStorageAccess - Whether to enable DOM Storage API. True to enable, false to disable.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -867,11 +867,11 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Sets whether to enable automatic image loading.
-    *
-    * @param { ?Bool } imageAccess
-    * @returns { This }
-    */
+     * Sets whether to enable automatic image loading.
+     *
+     * @param { ?Bool } imageAccess - Whether to enable automatic image loading. True to enable, false to disable.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -883,11 +883,11 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Sets whether to enable access to online images through HTTP and HTTPS.
-    *
-    * @param { ?Bool } onlineImageAccess
-    * @returns { This }
-    */
+     * Sets whether to enable access to online images through HTTP and HTTPS.
+     *
+     * @param { ?Bool } onlineImageAccess - Whether to allow image resources to be loaded from the network. True to enable, false to disable.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -899,12 +899,13 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    *  Sets the behavior when a secure origin attempts to load a resource from an insecure origin.
-    *  The default is MixedMode.None, meaning not allow a secure origin to load content from an insecure origin.
-    *
-    * @param { ?MixedMode } mixedMode
-    * @returns { This }
-    */
+     * Sets the behavior when a secure origin attempts to load a resource from an insecure origin.
+     * The default is MixedMode.None, meaning not allow a secure origin to load content from an insecure origin.
+     *
+     * @param { ?MixedMode } mixedMode - The mixed content mode to apply.
+     * @default MixedMode.None
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -917,11 +918,11 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Sets whether the Web supports zooming using gestures.
-    *
-    * @param { ?Bool } zoomAccess
-    * @returns { This }
-    */
+     * Sets whether the Web supports zooming using gestures.
+     *
+     * @param { ?Bool } zoomAccess - Whether to enable zoom gestures. True to enable, false to disable.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -933,12 +934,12 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Set whether to enable geolocation access. By default, this feature is enabled.
-    * For details, see Managing Location Permissions.
-    *
-    * @param { ?Bool } geolocationAccess
-    * @returns { This }
-    */
+     * Set whether to enable geolocation access. By default, this feature is enabled.
+     * For details, see Managing Location Permissions.
+     *
+     * @param { ?Bool } geolocationAccess - Whether to enable geolocation access. True to enable, false to disable.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -950,11 +951,11 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Set whether paint vertical scroll bar, including the system default scrollbar and user-defined scrollbar.
-    *
-    * @param { ?Bool } verticalScrollBar
-    * @returns { This }
-    */
+     * Set whether paint vertical scroll bar, including the system default scrollbar and user-defined scrollbar.
+     *
+     * @param { ?Bool } verticalScrollBar - Whether to display the vertical scroll bar. True to display, false to hide.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -966,11 +967,12 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Called to setting the nested scroll options.
-    *
-    * @param { ?NestedScrollMode } scrollForward scrollBackward
-    * @returns { This }
-    */
+     * Called to setting the nested scroll options.
+     *
+     * @param { ?NestedScrollMode } scrollForward - Set NestedScrollMode when the scrollable component scrolls forward.
+     * @param { ?NestedScrollMode } scrollBackward - Set NestedScrollMode when the scrollable component scrolls backward.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -987,12 +989,11 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Triggered when the resources loading is intercepted.
-    *
-    * @param { ?Callback<OnLoadInterceptEvent, Bool> } callback
-    * @returns { This }
-    * @throws { BusinessException } 190002 - The callback function is invalid.
-    */
+     * Triggered when the resources loading is intercepted.
+     *
+     * @param { ?Callback<OnLoadInterceptEvent, Bool> } callback - The callback function triggered when resource loading is intercepted.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -1018,11 +1019,11 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Called when the web page starts to be loaded.
-    *
-    * @param { ?Callback<OnPageBeginEvent, Unit> } callback
-    * @returns { This }
-    */
+     * Called when the web page starts to be loaded.
+     *
+     * @param { ?Callback<OnPageBeginEvent, Unit> } callback - The callback function triggered when page loading begins.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -1043,11 +1044,11 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Triggered at the end of web page loading.
-    *
-    * @param { ?Callback<OnPageEndEvent, Unit> } callback
-    * @returns { This }
-    */
+     * Triggered at the end of web page loading.
+     *
+     * @param { ?Callback<OnPageEndEvent, Unit> } callback - The callback function triggered when page loading completes.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -1068,14 +1069,14 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Registers the supplied ArkTS object in javaScriptProxy into this Web component.
-    *
-    * @param { ?Array<(String) -> String> } funcList
-    * @param { ?String } name
-    * @param { ?Array<String> } methodList
-    * @param { ?WebviewController } controller
-    * @returns { This }
-    */
+     * Registers the supplied ArkTS object in javaScriptProxy into this Web component.
+     *
+     * @param { ?Array<(String) -> String> } funcList - An array of functions to register.
+     * @param { ?String } name - The name of the JavaScript object.
+     * @param { ?Array<String> } methodList - An array of method names to register.
+     * @param { ?WebviewController } controller - The web view controller.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -1123,14 +1124,14 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Sets the web dark mode. By default, web dark mode is disabled. When it is enabled,
-    * the Web component enables the dark theme defined for web pages
-    * if the theme has been defined in prefers-color-scheme of a media query,
-    * and remains unchanged otherwise. To enable the forcible dark mode, use this API with forceDarkAccess.
-    *
-    * @param { ?WebDarkMode } mode
-    * @returns { This }
-    */
+     * Sets the web dark mode. By default, web dark mode is disabled. When it is enabled,
+     * the Web component enables the dark theme defined for web pages
+     * if the theme has been defined in prefers-color-scheme of a media query,
+     * and remains unchanged otherwise. To enable the forcible dark mode, use this API with forceDarkAccess.
+     *
+     * @param { ?WebDarkMode } mode - The dark mode setting to apply.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"
@@ -1142,12 +1143,12 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-    * Sets whether to enable forcible dark mode for the web page.
-    * This API is applicable only when dark mode is enabled in {@link darkMode}.
-    *
-    * @param { ?Bool } access
-    * @returns { This }
-    */
+     * Sets whether to enable forcible dark mode for the web page.
+     * This API is applicable only when dark mode is enabled in {@link darkMode}.
+     *
+     * @param { ?Bool } access - Whether to enable forcible dark mode. True to enable, false to disable.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Web.Webview.Core"

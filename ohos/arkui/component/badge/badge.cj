@@ -85,6 +85,7 @@ public enum BadgePosition {
 public class BadgeStyle {
     /**
      * Font color.
+     * @default Color.White
      */
     @!APILevel[
         since: "22",
@@ -124,6 +125,7 @@ public class BadgeStyle {
     public var badgeSize: ?Length
     /**
      * Badge color.
+     * @default Color.Red
      */
     @!APILevel[
         since: "22",
@@ -132,9 +134,10 @@ public class BadgeStyle {
     public var badgeColor: ?ResourceColor
     /**
      * Font weight of the text.
-     * For the number type, the value ranges from 100 to 900, at an interval of 100. Default value: 400
-     * A larger value indicates a heavier font weight.
-     * For the string type, only strings that represent a number. Default value: FontWeight.Normal
+     * For the number type, the value ranges from 100 to 900, at an interval of 100. 
+     * A larger value indicates a heavier font weight.  
+     * For the string type, only strings that represent a number.
+     * @default 400 or FontWeight.Normal
      *
      * <p><strong>NOTE</strong>:
      * <br>This parameter cannot be set in percentage.
@@ -147,7 +150,7 @@ public class BadgeStyle {
     public var fontWeight: ?FontWeight
     /**
      * Border color of the background.
-     *
+     * @default Color.Red
      */
     @!APILevel[
         since: "22",
@@ -157,6 +160,7 @@ public class BadgeStyle {
     /**
      * Border width of the background.
      * This parameter cannot be set in percentage.
+     * @default 1.vp
      */
     @!APILevel[
         since: "22",
@@ -216,6 +220,7 @@ struct CJBadgeStyleV2 {
 ]
 public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
     /**
+     * Creates a Badge component with a numeric count.
      * position: Set the display position of the prompt point.
      * maxCount: Maximum number of messages. If the number of messages exceeds the maximum, only maxCount+ is displayed.
      * count: Set the number of reminder messages.
@@ -249,6 +254,7 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
     }
 
     /**
+     * Creates a Badge component with a text value.
      * value: Text string of the prompt content.
      * position: Set the display position of the prompt point.
      * style: You can set the style of the Badge component, including the text color, size, dot color, and size.

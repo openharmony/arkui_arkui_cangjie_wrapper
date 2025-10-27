@@ -84,6 +84,7 @@ foreign {
 }
 /**
  * Defines Shape Component.
+ * The Shape component is used to draw custom shapes using path drawing commands.
  */
 @!APILevel[
     since: "22",
@@ -93,7 +94,8 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     /**
     * Defines Shape Component instance.
     *
-    * @param { () -> Unit } child
+    * @param { () -> Unit } child - Child component of shape.
+    * @returns { This } - Returns the component instance itself for method chaining.
     */
     @!APILevel[
         since: "22",
@@ -108,7 +110,8 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     /**
     * Defines Shape Component instance.
     *
-    * @param { ?PixelMap } value
+    * @param { ?PixelMap } value - The shape background image.
+    * @returns { This } - Returns the component instance itself for method chaining.
     */
     @!APILevel[
         since: "22",
@@ -124,13 +127,13 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
         }
     }
     /**
-    * Viewport of shape
+    * Viewport of shape.
     *
-    * @param { ?Length } x
-    * @param { ?Length } y
-    * @param { ?Length } width
-    * @param { ?Length } height
-    * @returns { This }
+    * @param { ?Length } x - X coordinate of the viewport.
+    * @param { ?Length } y - Y coordinate of the viewport.
+    * @param { ?Length } width - Width of the viewport.
+    * @param { ?Length } height - Height of the viewport.
+    * @returns { This } - Returns the component instance itself for method chaining.
     */
     @!APILevel[
         since: "22",
@@ -165,10 +168,10 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     /**
     * Called when shape mesh.
     *
-    * @param { ?Array<Float64> } value
-    * @param { ?UInt32 } column
-    * @param { ?UInt32 } row
-    * @returns { This }
+    * @param { ?Array<Float64> } value - The mesh points array[x1, y1, x2, y2, ...].
+    * @param { ?UInt32 } column - The column count of mesh.
+    * @param { ?UInt32 } row - The row count of mesh.
+    * @returns { This } - Returns the component instance itself for method chaining.
     */
     @!APILevel[
         since: "22",

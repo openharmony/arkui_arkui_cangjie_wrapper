@@ -29,6 +29,7 @@ import ohos.business_exception.BusinessException
  * access, and life cycle as defined by the app.
  * AppStorage singleton is sub-class of LocalStorage for
  * UI state of app-wide access and same life cycle as the app.
+ * Provides storage for component-local state management.
  */
 @!APILevel[
     since: "22",
@@ -72,7 +73,7 @@ public class LocalStorage {
      * Return true if property with given name exists.
      * Same as ES6 Map.prototype.has().
      *
-     * @param { String } propName - searched property.
+     * @param { String } propName - searched property name.
      * @returns { Bool } true if property with such name exists in LocalStorage.
      */
     @!APILevel[
@@ -87,7 +88,7 @@ public class LocalStorage {
      * Provide names of all properties in LocalStorage.
      * Same as ES6 Map.prototype.keys().
      *
-     * @returns { EquatableCollection<String> }
+     * @returns { EquatableCollection<String> } Collection of property names.
      */
     @!APILevel[
         since: "22",
@@ -115,7 +116,7 @@ public class LocalStorage {
      * Returns value of given property.
      * Returns undefined if no property with this name.
      *
-     * @param { String } propName
+     * @param { String } propName - name of the property to retrieve
      * @returns { ?T } property value if found.
      */
     @!APILevel[
@@ -138,7 +139,7 @@ public class LocalStorage {
      * Method sets nothing and returns false if property with this name does not exist in LocalStorage.
      * newValue can be undefined or null from API 12.
      *
-     * @param { String } propName
+     * @param { String } propName - name of the property to set
      * @param { T } newValue - must be of type T.
      * @returns { Bool } true on success.
      */
@@ -164,7 +165,7 @@ public class LocalStorage {
      * Add property if no property with given name and initialize with given value.
      * newValue can be undefined or null from API 12.
      *
-     * @param { String } propName
+     * @param { String } propName - name of the property to set or create
      * @param { T } newValue - must be of type T, can be undefined or null.
      * @returns { boolean } true on success, i.e. when above conditions are satisfied, otherwise false.
      */
@@ -192,7 +193,7 @@ public class LocalStorage {
      * Create and return a two-way sync "(link") to named property.
      *
      * @param { String } propName - name of source property in LocalStorage.
-     * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>.
+     * @returns { ?ObservedProperty<T> } The instance of ObservedProperty<T>.
      */
     @!APILevel[
         since: "22",
@@ -215,7 +216,7 @@ public class LocalStorage {
      * @param { String } propName - name of source property in LocalStorage
      * @param { T } defaultValue - value to be used for initializing new property in LocalStorage
      *        default value must be of type T.
-     * @returns { ObservedProperty<T> } instance of  ObservedProperty<T>. Apps can use SDK functions of base class ObservedProperty<T>
+     * @returns { ObservedProperty<T> } The instance of ObservedProperty<T>. Apps can use SDK functions of base class ObservedProperty<T>
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -237,7 +238,7 @@ public class LocalStorage {
      * Create and return a one-way sync ('prop') to named property.
      *
      * @param { String } propName - name of source property in LocalStorage.
-     * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>.
+     * @returns { ?ObservedProperty<T> } The instance of ObservedProperty<T>.
      */
     @!APILevel[
         since: "22",
@@ -260,7 +261,7 @@ public class LocalStorage {
      * @param { String } propName - name of source property in LocalStorage.
      * @param { T } defaultValue - value to be used for initializing new property in LocalStorage.
      *         Default value must be of type T.
-     * @returns { ObservedProperty<T> } instance of ObservedProperty<T>.
+     * @returns { ObservedProperty<T> } The instance of ObservedProperty<T>.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -292,7 +293,7 @@ public class LocalStorage {
      * or a sync relationship with a SubscribedAbstractProperty variable the property can nit
      * (and also should not!) be deleted from LocalStorage.
      *
-     * @param { String } propName
+     * @param { String } propName - name of the property to delete
      * @returns { Bool } false if method failed.
      */
     @!APILevel[
@@ -319,7 +320,7 @@ public class LocalStorage {
      * Method returns false and deletes no properties if there is any property
      * that still has subscribers.
      *
-     * @returns { Bool }
+     * @returns { Bool } false if method failed.
      */
     @!APILevel[
         since: "22",

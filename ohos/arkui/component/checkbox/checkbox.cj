@@ -65,9 +65,8 @@ foreign {
 
 /**
  * Defines a Checkbox callback when onChange.
- * Anonymous Object Rectification.
  *
- * @param { Bool } value - selected status
+ * @param { Bool } value - selected status.
  */
 public type OnCheckboxChangeCallback = (Bool) -> Unit
 
@@ -83,9 +82,9 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * Construct the Checkbox component.
      * Called when the Checkbox component is used.
      *
-     * @param { ?String } name
-     * @param { ?String } group
-     * @param { ?CustomBuilder } indicatorBuilder
+     * @param { ?String } name - The initial name of current checkbox.
+     * @param { ?String } group - The initial group name of current checkbox.
+     * @param { ?CustomBuilder } indicatorBuilder - The builder of current checkbox.
      */
     @!APILevel[
         since: "22",
@@ -105,10 +104,11 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
     }
 
     /**
-     * setting whether checkbox is selected.
+     * Set whether checkbox is selected.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether the checkbox is selected.
+     * @default true
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -123,10 +123,10 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
     }
 
     /**
-     * setting the display color of checkbox.
+     * Set the display color of checkbox.
      *
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } value - The color to display.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -212,10 +212,9 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
 
     /**
      * Called when the selection status changes.
-     * Anonymous Object Rectification.
      *
-     * @param { ?OnCheckboxChangeCallback } callback
-     * @returns { This }
+     * @param { ?OnCheckboxChangeCallback } callback - The callback on selected status change.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -231,10 +230,10 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
     }
 
     /**
-     * setting the shape of checkbox.
+     * Setting the shape of checkbox.
      *
      * @param { ?CheckBoxShape } value - The configuration of checkbox shape.
-     * @returns { This }
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",

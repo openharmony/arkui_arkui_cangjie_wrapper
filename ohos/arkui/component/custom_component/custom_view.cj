@@ -117,9 +117,9 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     /**
-     * getLocalStorage function.
+     * Get the LocalStorage instance of current page.
      *
-     * @return { LocalStorage }
+     * @returns { LocalStorage } - The LocalStorage instance of the current page.
      */
     @!APILevel[
         since: "22",
@@ -163,7 +163,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     /**
-     * build function for custom view.
+     * Define declarative UI descriptions for custom component.
      */
     @!APILevel[
         since: "22",
@@ -714,7 +714,7 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * get UIContext from current environment.
      *
-     * @returns { UIContext }
+     * @returns { UIContext } - The UIContext instance for the current component.
      */
     @!APILevel[
         since: "22",

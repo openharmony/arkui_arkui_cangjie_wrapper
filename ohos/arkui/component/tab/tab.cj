@@ -228,6 +228,7 @@ foreign {
 
 /**
  * Defines Tabs Component.
+ * A component that allows navigation between multiple views through tabs.
  */
 @!APILevel[
     since: "22",
@@ -236,11 +237,13 @@ foreign {
 public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
     /**
      * Create a Tabs.
+     * Initializes a Tabs component with the specified parameters.
      *
-     * @param { ?BarPosition } barPosition
-     * @param { ?TabsController } controller
-     * @param { ?Int32 } index
-     * @param { () -> Unit } child
+     * @param { ?BarPosition } barPosition - Position of the tab bar.
+     * @param { ?TabsController } controller - Controller for managing tab switching.
+     * @param { ?Int32 } index - Initial index of the selected tab.
+     * @param { () -> Unit } child - Builder function for tab content. The default value is an empty function.
+     * @returns { Tabs } Returns the Tabs instance.
      */
     @!APILevel[
         since: "22",
@@ -262,10 +265,11 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
 
     /**
      * Called when the width of the bar graph is set.
+     * Configures the width of the tab bar.
      *
      * @param { ?Length } value - Width of the tab bar. If the set value is less than 0
      * or greater than the width of the Tabs component, the default value is used.
-     * @returns { This }
+     * @returns { This }  Returns the TabContent instance.
      */
     @!APILevel[
         since: "22",
@@ -289,10 +293,11 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
 
     /**
      * Called when the height of the bar graph is set.
+     * Configures the height of the tab bar.
      *
      * @param { ?Length } value - Height of the tab bar. If the set value is less than 0 or
      * greater than the height of the Tabs component, the default value is used.
-     * @returns { This }
+     * @returns { This }  Returns the TabContent instance.
      */
     @!APILevel[
         since: "22",
@@ -323,9 +328,10 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
 
     /**
      * Sets whether to use vertical tabs.
+     * Configures the orientation of the tabs.
      *
-     * @param { ?Bool } value - Whether to use vertical tabs. Default value is false.
-     * @returns { This }
+     * @param { ?Bool } value - Whether to use vertical tabs. The default value is false.
+     * @returns { This }  Returns the TabContent instance.
      */
     @!APILevel[
         since: "22",
@@ -340,9 +346,10 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
 
     /**
      * Sets whether the tabs are scrollable.
+     * Controls whether the tab bar can be scrolled when there are many tabs.
      *
-     * @param { ?Bool } value - Whether the tabs are scrollable. Default value is true.
-     * @returns { This }
+     * @param { ?Bool } value - Whether the tabs are scrollable. The default value is true.
+     * @returns { This }  Returns the TabContent instance.
      */
     @!APILevel[
         since: "22",
@@ -357,10 +364,11 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
 
     /**
      * Sets the tab bar layout mode to BarMode.Fixed.
+     * Configures the layout mode of the tab bar.
      *
      * @param { ?BarMode } value - The width of each tab is determined by equally dividing
      * the number of tabs by the bar width (or bar height in the vertical layout).
-     * @returns { This }
+     * @returns { This }  Returns the TabContent instance.
      */
     @!APILevel[
         since: "22",
@@ -376,9 +384,10 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
     /**
      * Sets the length of time required to complete the tab switching animation,
      * which is initiated by clicking a specific tab or by calling the changeIndex API of TabsController.
+     * Configures the duration of the tab switching animation.
      *
-     * @param { ?Float32 } value
-     * @returns { This }
+     * @param { ?Float32 } value - Animation duration in seconds.
+     * @returns { This }  Returns the TabContent instance.
      */
     @!APILevel[
         since: "22",
@@ -402,8 +411,9 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * 4. A tab is clicked.
      * </p>
      *
-     * @param { ?Callback<Int32, Unit> } event
-     * @returns { This }
+     * @param { ?Callback<Int32, Unit> } event - Callback function triggered when tab changes.
+     * The parameter is the index of the selected tab.
+     * @returns { This }  Returns the TabContent instance.
      */
     @!APILevel[
         since: "22",
@@ -427,6 +437,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
 
 /**
  * Provides methods for switching tabs.
+ * Controller for managing tab switching operations.
  */
 @!APILevel[
     since: "22",
@@ -434,7 +445,7 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
 ]
 public class TabsController <: RemoteDataLite {
     /**
-     * TabsController constructor.
+     * Creates a new TabsController instance.
      */
     @!APILevel[
         since: "22",
@@ -452,9 +463,11 @@ public class TabsController <: RemoteDataLite {
 
     /**
      * Switches to the specified tab.
+     * Programmatically changes the currently selected tab.
      *
      * @param { ?Int32 } value - Index of the tab. If this parameter is set to a value less than 0
      * or greater than the maximum number, the default value 0 is used.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -469,6 +482,7 @@ public class TabsController <: RemoteDataLite {
 
 /**
  * Defines TabContent Component.
+ * Represents the content of a single tab within the Tabs component.
  */
 @!APILevel[
     since: "22",
@@ -476,9 +490,10 @@ public class TabsController <: RemoteDataLite {
 ]
 public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribute {
     /**
-     * Create a TabContent with child.
+     * TabContent constructor.
+     * Initializes a TabContent component with a child builder function.
      *
-     * @param { () -> Unit } child
+     * @param { () -> Unit } child - Builder function for tab content.
      */
     @!APILevel[
         since: "22",
@@ -491,7 +506,8 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
     }
 
     /**
-     * Create a TabContent.
+     * TabContent constructor.
+     * Initializes a TabContent component without a child builder function.
      */
     @!APILevel[
         since: "22",
@@ -518,7 +534,7 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
      * </p>
      *
      * @param { ?ResourceStr } content - Content displayed on the tab bar.
-     * @returns { This }
+     * @returns { This } Returns the TabContent instance.
      */
     @!APILevel[
         since: "22",
@@ -543,7 +559,7 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
      *
      * @param { ?ResourceStr } icon - TabBar icon.
      * @param { ?ResourceStr } text - TabBar text.
-     * @returns { This }
+     * @returns { This } Returns the TabContent instance.
      */
     @!APILevel[
         since: "22",
@@ -567,7 +583,7 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
      * </p>
      *
      * @param { ?CustomBuilder } content - Content displayed on the tab bar.
-     * @returns { This }
+     * @returns { This } Returns the TabContent instance.
      */
     @!APILevel[
         since: "22",

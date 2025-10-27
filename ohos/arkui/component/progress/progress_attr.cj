@@ -30,7 +30,7 @@ sealed interface ProgressAttribute <: CommonMethod<ProgressAttribute> {
     /**
      * Called when the current progress value is set.
      *
-     * @param { ?Float64 } value
+     * @param { ?Float64 } value - Current progress value.
      * @returns { ProgressAttribute }
      */
     @!APILevel[
@@ -42,7 +42,7 @@ sealed interface ProgressAttribute <: CommonMethod<ProgressAttribute> {
     /**
      * Called when the progress bar foreground is set.
      *
-     * @param { ?ResourceColor } value - indicates the color of the progress.
+     * @param { ?ResourceColor } value - Indicates the color of the progress.
      * @returns { ProgressAttribute }
      */
     @!APILevel[
@@ -54,9 +54,9 @@ sealed interface ProgressAttribute <: CommonMethod<ProgressAttribute> {
     /**
      * Called when the style of progress bar is set.
      *
-     * @param { ?Length } strokeWidth
-     * @param { ?Int32 } scaleCount
-     * @param { ?Length } scaleWidth
+     * @param { ?Length } strokeWidth - Stroke width of the progress bar. The default value is 4.0vp.
+     * @param { ?Int32 } scaleCount - Number of scale intervals. The default value is 120.
+     * @param { ?Length } scaleWidth - Width of each scale. The default value is 2.0vp.
      * @returns { ProgressAttribute }
      */
     @!APILevel[
@@ -68,7 +68,7 @@ sealed interface ProgressAttribute <: CommonMethod<ProgressAttribute> {
     /**
      * Called when the style of progress bar is set.
      *
-     * @param { ?RingStyleOptions } value - indicates the style of the progress.
+     * @param { ?RingStyleOptions } value - Indicates the style of the progress.
      * @returns { ProgressAttribute }
      */
     @!APILevel[

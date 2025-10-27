@@ -67,7 +67,7 @@ struct NativeCustomDialogControllerOptions {
     }
 }
 /**
-* Defines the options of CustomDialogController.
+* Defines the options for configuring a CustomDialogController.
 */
 @!APILevel[
     since: "22",
@@ -75,7 +75,7 @@ struct NativeCustomDialogControllerOptions {
 ]
 public class CustomDialogControllerOptions {
     /**
-     * Defines the cancel function.
+     * The callback function triggered when the dialog is canceled.
      */
     @!APILevel[
         since: "22",
@@ -83,7 +83,8 @@ public class CustomDialogControllerOptions {
     ]
     public var cancel: ?VoidCallback
     /**
-     * Defines if use auto cancel when click on the outside of the dialog.
+     * Whether to automatically cancel the dialog when clicking outside of it.
+     * @default true
      */
     @!APILevel[
         since: "22",
@@ -91,7 +92,7 @@ public class CustomDialogControllerOptions {
     ]
     public var autoCancel: ?Bool
     /**
-     * Defines the dialog alignment of the screen.
+     * The alignment of the dialog on the screen.
      */
     @!APILevel[
         since: "22",
@@ -99,7 +100,7 @@ public class CustomDialogControllerOptions {
     ]
     public var alignment: ?DialogAlignment
     /**
-     * Defines the dialog offset.
+     * The offset of the dialog from its alignment position.
      */
     @!APILevel[
         since: "22",
@@ -107,7 +108,8 @@ public class CustomDialogControllerOptions {
     ]
     public var offset: ?Offset
     /**
-     * Defines if use custom style.
+     * Whether to use custom style for the dialog.
+     * @default false
      */
     @!APILevel[
         since: "22",
@@ -115,7 +117,7 @@ public class CustomDialogControllerOptions {
     ]
     public var customStyle: ?Bool
     /**
-     * Grid count of dialog.
+     * The grid count for positioning the dialog.
      */
     @!APILevel[
         since: "22",
@@ -123,7 +125,7 @@ public class CustomDialogControllerOptions {
     ]
     public var gridCount: ?UInt32
     /**
-     * Mask color of dialog.
+     * The color of the mask covering the background when the dialog is displayed.
      */
     @!APILevel[
         since: "22",
@@ -131,7 +133,7 @@ public class CustomDialogControllerOptions {
     ]
     public var maskColor: ?ResourceColor
     /**
-     * Mask Region of dialog. The size cannot exceed the main window.
+     * The region of the mask. The size cannot exceed the main window.
      */
     @!APILevel[
         since: "22",
@@ -139,7 +141,7 @@ public class CustomDialogControllerOptions {
     ]
     public var maskRect: ?Rectangle
     /**
-     * Animation parameters of dialog opening.
+     * The animation parameters for the dialog opening.
      */
     @!APILevel[
         since: "22",
@@ -147,7 +149,7 @@ public class CustomDialogControllerOptions {
     ]
     public var openAnimation: ?AnimateParam
     /**
-     * Animation parameters of dialog closing.
+     * The animation parameters for the dialog closing.
      */
     @!APILevel[
         since: "22",
@@ -155,7 +157,8 @@ public class CustomDialogControllerOptions {
     ]
     public var closeAnimation: ?AnimateParam
     /**
-     * Whether to display in the sub window.
+     * Whether to display the dialog in a sub window.
+     * @default false
      */
     @!APILevel[
         since: "22",
@@ -163,7 +166,7 @@ public class CustomDialogControllerOptions {
     ]
     public var showInSubWindow: ?Bool
     /**
-     * Background color of dialog.
+     * The background color of the dialog.
      */
     @!APILevel[
         since: "22",
@@ -171,7 +174,7 @@ public class CustomDialogControllerOptions {
     ]
     public var backgroundColor: ?ResourceColor
     /**
-     * Corner radius of dialog.
+     * The corner radius of the dialog.
      */
     @!APILevel[
         since: "22",
@@ -179,7 +182,8 @@ public class CustomDialogControllerOptions {
     ]
     public var cornerRadius: ?Length
     /**
-     * Whether it is a modal dialog
+     * Whether the dialog is modal.
+     * @default true
      */
     @!APILevel[
         since: "22",
@@ -187,7 +191,7 @@ public class CustomDialogControllerOptions {
     ]
     public var isModal: ?Bool
     /**
-     * Callback function when the CustomDialog interactive dismiss.
+     * The callback function triggered when the dialog is about to be dismissed interactively.
      */
     @!APILevel[
         since: "22",
@@ -195,7 +199,7 @@ public class CustomDialogControllerOptions {
     ]
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
     /**
-     * Defines the custom dialog's border width.
+     * The border width of the dialog.
      */
     @!APILevel[
         since: "22",
@@ -203,7 +207,7 @@ public class CustomDialogControllerOptions {
     ]
     public var borderWidth: ?Length
     /**
-     * Defines the custom dialog's border color.
+     * The border color of the dialog.
      */
     @!APILevel[
         since: "22",
@@ -211,7 +215,7 @@ public class CustomDialogControllerOptions {
     ]
     public var borderColor: ?ResourceColor
     /**
-     * Defines the custom dialog's border style.
+     * The border style of the dialog.
      */
     @!APILevel[
         since: "22",
@@ -219,7 +223,7 @@ public class CustomDialogControllerOptions {
     ]
     public var borderStyle: ?EdgeStyles
     /**
-     * Defines the custom dialog's width.
+     * The width of the dialog.
      */
     @!APILevel[
         since: "22",
@@ -243,7 +247,8 @@ public class CustomDialogControllerOptions {
     ]
     public var shadow: ?ShadowOptions
     /**
-     * Defines the customDialog's background blur Style
+     * The background blur style of the dialog.
+     * @default BlurStyle.ComponentUltraThick
      */
     @!APILevel[
         since: "22",
@@ -253,6 +258,7 @@ public class CustomDialogControllerOptions {
     /**
      * Defines the options of CustomDialogController.
      *
+     * @param { CustomView } builder - customDialog content constructor.
      * @param { ?VoidCallback } cancel - Defines the cancel function.
      * @param { ?Bool } autoCancel - Defines if use auto cancel when click on the outside of the dialog.
      * @param { ?Offset } offset - Defines the dialog offset.
@@ -442,7 +448,7 @@ public class CustomDialogController <: RemoteDataLite {
     /**
      * The constructor transfers parameter settings.
      *
-     * @param { CustomDialogControllerOptions } value
+     * @param { CustomDialogControllerOptions } value - The configuration options for the dialog controller.
      */
     @!APILevel[
         since: "22",
@@ -515,7 +521,7 @@ public class CustomDialogController <: RemoteDataLite {
     }
 
     /**
-     * Manual release the resource after no longer use it.
+     * Manually releases the resources used by the dialog controller when it is no longer needed.
      */
     @!APILevel[
         since: "22",

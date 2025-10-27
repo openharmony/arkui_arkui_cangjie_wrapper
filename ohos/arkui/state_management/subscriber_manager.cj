@@ -85,6 +85,7 @@ public class SubscriberManager {
      * Removes a subscriber from the manager.
      *
      * @param { Observer } value - The subscriber to remove.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",

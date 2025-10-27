@@ -60,9 +60,9 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
     var deepRender_: () -> Unit
 
     /**
-     * Called when an interface is used.
+     * ListItem constructor.
      *
-     * @param { () -> Unit } child
+     * @param { () -> Unit } child - The child component.
      */
     @!APILevel[
         since: "22",
@@ -105,7 +105,7 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
     /**
      * Called when judging whether it is selectable.
      *
-     * @param { ?Bool } value
+     * @param { ?Bool } value - Whether enable selection for the item.
      * @returns { This }
      */
     @!APILevel[
@@ -122,10 +122,10 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
     /**
      * Sets the action item that appears when the list item slides in the cross axis direction of the list.
      *
-     * @param { ?CustomBuilder } start
-     * @param { ?CustomBuilder } end
-     * @param { ?SwipeEdgeEffect } edgeEffect
-     * @param { ?(Float64) -> Unit } onOffsetChange
+     * @param { ?CustomBuilder } start - The action when swipe start.
+     * @param { ?CustomBuilder } end - The action when swipe end.
+     * @param { ?SwipeEdgeEffect } edgeEffect - The swipe edge effect.
+     * @param { ?(Float64) -> Unit } onOffsetChange - The callback on offset change.
      * @returns { This }
      */
     @!APILevel[
@@ -153,7 +153,7 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
     /**
      * Called when the listItem is selected.
      *
-     * @param { ?(Bool) -> Unit } event
+     * @param { ?(Bool) -> Unit } event - The callback on selection.
      * @returns { This }
      */
     @!APILevel[

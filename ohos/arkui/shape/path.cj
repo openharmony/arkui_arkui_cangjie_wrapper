@@ -30,7 +30,7 @@ foreign {
 }
 
 /**
- * Defines a path drawing class.
+ * A shape component that renders custom paths defined by SVG path commands.
  */
 @!APILevel[
     since: "22",
@@ -38,9 +38,10 @@ foreign {
 ]
 public class PathShape <: BaseShape {
     /**
-     * PathShape constructor.
+     * Initializes a path shape with optional path commands.
      *
-     * @param { ?ResourceStr } commands 
+     * @param { ?ResourceStr } commands - Path drawing commands in SVG path format.
+     * @returns { PathShape } Returns the PathShape instance.
      */
     @!APILevel[
         since: "22",
@@ -59,11 +60,11 @@ public class PathShape <: BaseShape {
     }
 
     /**
-     * PathShape constructor.
+     * Initializes a path shape with specified dimensions and optional path commands.
      *
-     * @param { ?Length } width 
-     * @param { ?Length } height 
-     * @param { ?ResourceStr } commands 
+     * @param { ?Length } width - Width of the path shape.
+     * @param { ?Length } height - Height of the path shape.
+     * @param { ?ResourceStr } commands - Path drawing commands in SVG path format.
      */
     @!APILevel[
         since: "22",

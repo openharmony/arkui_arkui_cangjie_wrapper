@@ -20,7 +20,7 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * Defines RowSplit Component.
+ * Provides methods for configuring the appearance and behavior of the RowSplit component.
  */
 @!APILevel[
     since: "22",
@@ -28,10 +28,10 @@ import ohos.base.*
 ]
 sealed interface RowSplitAttribute <: CommonMethod<RowSplitAttribute> {
     /**
-    * Called when judging whether the split line can be dragged.
+    * Controls whether the dividers between child components can be dragged to resize the components.
     *
-    * @param { ?Bool } value
-    * @returns { This }
+    * @param { ?Bool } value - Whether enable resizeable.
+    * @returns { RowSplitAttribute } Returns the row split attribute.
     */
     @!APILevel[
         since: "22",

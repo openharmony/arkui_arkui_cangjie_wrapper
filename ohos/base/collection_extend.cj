@@ -36,22 +36,24 @@ public interface CollectionEx<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop size: Int64
+    
     /**
      * Sets the element at the specified index with a new element.
      *
-     * @param { Int64 } idx - The index of the element to get.
-     * @param { T } value - The new element.
+     * @param { Int64 } idx - The index of the element to set
+     * @param { T } value - The new element
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     operator func [](idx: Int64, value!: T): Unit
+    
     /**
      * Gets the element at the specified index.
      *
-     * @param { Int64 } idx - The index of the element to get.
-     * @returns { T }
+     * @param { Int64 } idx - The index of the element to get
+     * @returns { T } - The element at the specified index
      */
     @!APILevel[
         since: "22",

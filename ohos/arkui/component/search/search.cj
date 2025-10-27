@@ -162,16 +162,16 @@ foreign {
 let DEFAULT_SIZE = 16.0
 
 /**
- * Provides the method of switching the cursor position.
+ * Controller for managing the Search component, including cursor positioning and text operations.
  */
 @!APILevel[
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class SearchController <: RemoteDataLite & TextContentControllerBase{
+public class SearchController <: RemoteDataLite & TextContentControllerBase {
     /**
-     * constructor.
      * A constructor used to create a SearchController object.
+     * @returns { SearchController } Returns the SearchController instance.
      */
     @!APILevel[
         since: "22",
@@ -189,8 +189,10 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
 
     /**
      * Called when the position of the insertion cursor is set.
+     * Sets the position of the text input cursor within the Search component.
      *
-     * @param { ?Int32 } value
+     * @param { ?Int32 } value - Length from the start of the character string to the position where the caret is located.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -204,7 +206,7 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
 }
 
 /**
- * The construct function of search
+ * A component that provides a search input field with a search button.
  */
 @!APILevel[
     since: "22",
@@ -212,12 +214,13 @@ public class SearchController <: RemoteDataLite & TextContentControllerBase{
 ]
 public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     /**
-     * The options of SearchInterface
+     * The options of SearchInterface.
+     * Initializes a Search component with optional initial value, placeholder, icon, and controller.
      *
-     * @param { ?ResourceStr } value
-     * @param { ?ResourceStr } placeholder
-     * @param { Option<AppResource> } icon
-     * @param { Option<SearchController> } controller
+     * @param { ?ResourceStr } value - Indicates the initial text of the search input.
+     * @param { ?ResourceStr } placeholder - Text displayed when there is no input.
+     * @param { Option<AppResource> } icon - The icon resource displayed in the search field.
+     * @param { Option<SearchController> } controller - Controller of the <Search> component for managing text operations.
      */
     @!APILevel[
         since: "22",
@@ -255,10 +258,11 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     /**
-     * Set the search button text, fontSize and fontColor
+     * Set the search button text, fontSize and fontColor.
+     * Configures the text displayed on the search button.
      *
-     * @param { ?ResourceStr } value - indicates the text of the search button.
-     * @returns { This }
+     * @param { ?ResourceStr } value - Indicates the text of the search button.
+     * @returns { This } Returns the Search instance.
      */
     @!APILevel[
         since: "22",
@@ -275,10 +279,12 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     /**
-     * Set the search button text, fontSize and fontColor
+     * Set the search button text, fontSize and fontColor.
+     * Configures the color of the placeholder text.
      *
-     * @param { ?ResourceColor } value - Default value is '#99182431'.The default value on wearable devices is '#99ffffff'.
-     * @returns { This }
+     * @param { ?ResourceColor } value - indicates the color of the placeholder text. The default value on wearable devices is 0x9ffffff.
+     * @default 0x99182431
+     * @returns { This } Returns the Search instance.
      */
     @!APILevel[
         since: "22",
@@ -293,13 +299,14 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     /**
-     * Set the font used for place holder text
+     * Set the font used for place holder text.
+     * Configures the font properties of the placeholder text.
      *
-     * @param { ?Length } size - font size.
-     * @param { ?FontWeight } weight - font weight.
-     * @param { ?FontStyle } style - font style.
-     * @param { ?ResourceStr } family - font family.
-     * @returns { This }
+     * @param { ?Length } size - The placeholder font size.
+     * @param { ?FontWeight } weight - The placeholder font weight.
+     * @param { ?FontStyle } style - The placeholder font style.
+     * @param { ?ResourceStr } family - The placeholder font family.
+     * @returns { This } Returns the Search instance.
      */
     @!APILevel[
         since: "22",
@@ -339,13 +346,14 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     /**
-     * Set the font used for input text
+     * Set the font used for input text.
+     * Configures the font properties of the input text.
      *
-     * @param { ?Length } size - font size.
-     * @param { ?FontWeight } weight - font weight.
-     * @param { ?FontStyle } style - font style.
-     * @param { ?ResourceStr } family - font family.
-     * @returns { This }
+     * @param { ?Length } size - Font size.
+     * @param { ?FontWeight } weight - Font weight.
+     * @param { ?FontStyle } style - Font style.
+     * @param { ?ResourceStr } family - Font family.
+     * @returns { This } Returns the Search instance.
      */
     @!APILevel[
         since: "22",
@@ -390,8 +398,9 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * all other actions, such as copying, cutting, and sharing, are disabled.
      * Dragging is not allowed when CopyOptions.None is set.
      *
-     * @param { ?CopyOptions } value - Default value is CopyOptions.LocalDevice.
-     * @returns { This }
+     * @param { ?CopyOptions } value - Copy options for the search input.
+     * @default CopyOptions.LocalDevice
+     * @returns { This } RReturns the Search instance.
      */
     @!APILevel[
         since: "22",
@@ -405,10 +414,10 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     /**
-     * Call the function when clicked the search button.
+     * Triggered when the user clicks the search button or presses Enter in the search field.
      *
      * @param { ?(String) -> Unit } callback - Search submission callback, which returns the text content currently in the search box.
-     * @returns { This }
+     * @returns { This } Returns the Search instance.
      */
     @!APILevel[
         since: "22",
@@ -431,8 +440,8 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * In this callback, if cursor operations are performed,
      * <br>developers need to adjust the cursor logic based on the previewText parameter to ensure it works seamlessly within the preview display scenario.
      *
-     * @param { ?(String) -> Unit } callback - Search submission callback, which returns the text content currently in the search box.
-     * @returns { This }
+     * @param { ?(String) -> Unit } callback - Text change callback, which returns the current text content in the search box.
+     * @returns { This } Returns the Search instance.
      */
     @!APILevel[
         since: "22",
@@ -451,10 +460,10 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     /**
-     * Called when using the Clipboard menu.
+     * Triggered when the user copies text from the search field.
      *
      * @param { ?(String) -> Unit } callback - Callback used to return the copied text content.
-     * @returns { This }
+     * @returns { This } Returns the Search instance.
      */
     @!APILevel[
         since: "22",
@@ -473,10 +482,10 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     /**
-     * Called when using the Clipboard menu.
+     * Triggered when the user cuts text from the search field.
      *
      * @param { ?(String) -> Unit } callback - Callback used to return the cut text content.
-     * @returns { This }
+     * @returns { This } Returns the Search instance.
      */
     @!APILevel[
         since: "22",
@@ -495,10 +504,10 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     /**
-     * Called when using the Clipboard menu.
+     * Triggered when the user pastes text into the search field.
      *
      * @param { ?(String) -> Unit } callback - Executed when a paste operation is performed. Callback used to return the pasted text content.
-     * @returns { This }
+     * @returns { This } Returns the Search instance.
      */
     @!APILevel[
         since: "22",

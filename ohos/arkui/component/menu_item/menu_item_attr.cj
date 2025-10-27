@@ -21,7 +21,8 @@ import ohos.base.*
 import ohos.resource.*
 
 /**
- * Defines MenuItem Component.
+ * Defines the MenuItem attribute functions.
+ * Provides methods for configuring the appearance and behavior of the MenuItem component.
  */
 @!APILevel[
     since: "22",
@@ -31,9 +32,10 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
 
     /**
      * Setting whether menuItem is selected.
+     * Configures the selection state of the menu item.
      *
-     * @param { ?Bool } value
-     * @returns { MenuItemAttribute }
+     * @param { ?Bool } value - menuItem is selected.
+     * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
         since: "22",
@@ -43,9 +45,10 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
 
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
+     * Controls the visibility of the check icon when the menu item is selected.
      *
-     * @param { ?Bool } value
-     * @returns { MenuItemAttribute }
+     * @param { ?Bool } value - Indicates whether to display the check icon when selected.
+     * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
         since: "22",
@@ -56,8 +59,8 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
      *
-     * @param { ?ResourceStr } value
-     * @returns { MenuItemAttribute }
+     * @param { ?ResourceStr } value - Indicates whether to display icon when selected.
+     * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
         since: "22",
@@ -66,13 +69,13 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     func selectIcon(value: ?ResourceStr): MenuItemAttribute
 
     /**
-     * Sets the content font style.
+     * Configures the font properties of the menu item content text.
      *
-     * @param { ?Length } size
-     * @param { ?FontWeight } weight
-     * @param { ?ResourceStr } family
-     * @param { ?FontStyle } style   
-     * @returns { MenuItemAttribute }
+     * @param { ?Length } size - Indicates the font size of content text.
+     * @param { ?FontWeight } weight - Indicates the font weight of content text.
+     * @param { ?ResourceStr } family - Indicates the font family of content text.
+     * @param { ?FontStyle } style - Indicates the font style of content text.
+     * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
         since: "22",
@@ -86,10 +89,10 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     ): MenuItemAttribute
 
     /**
-     * Sets the font color of content text.
+     * Configures the font color of the menu item content text.
      *
-     * @param { ?ResourceColor } value 
-     * @returns { MenuItemAttribute }
+     * @param { ?ResourceColor } value - Indicates the font color of content text.
+     * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
         since: "22",
@@ -99,12 +102,13 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
 
     /**
      * Sets the label info font style.
+     * Configures the font properties of the menu item label text.
      *
-     * @param { ?Length } size
-     * @param { ?FontWeight } weight
-     * @param { ?ResourceStr } family
-     * @param { ?FontStyle } style   
-     * @returns { MenuItemAttribute }
+     * @param { ?Length } size - Indicates the font size of label info text.
+     * @param { ?FontWeight } weight - Indicates the font weight of label info text.
+     * @param { ?ResourceStr } family - Indicates the font family of label info text.
+     * @param { ?FontStyle } style - Indicates the font style of label info text.
+     * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
         since: "22",
@@ -118,10 +122,10 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     ): MenuItemAttribute
 
     /**
-     * Sets the font color of label info text.
+     * Configures the font color of the menu item label text.
      *
-     * @param { ?ResourceColor } value
-     * @returns { MenuItemAttribute }
+     * @param { ?ResourceColor } value - Indicates the font color of label info text.
+     * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
         since: "22",
@@ -132,8 +136,9 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
     /**
      * Triggers a callback when a menu item is selected or unchecked.
      *
-     * @param { ?(Bool) -> Unit } callback
-     * @returns { MenuItemAttribute }
+     * @param { ?(Bool) -> Unit } callback - Callback when a menu item is selected or unchecked.
+     * The parameter indicates whether the menu item is currently selected (true) or not (false).
+     * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
         since: "22",

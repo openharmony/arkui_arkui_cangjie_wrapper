@@ -36,7 +36,7 @@ foreign {
 }
 
 /**
- * Defines LoadingProgress Component.
+ * A component that displays an indeterminate loading progress indicator, typically used to show that an operation is in progress.
  */
 @!APILevel[
     since: "22",
@@ -44,7 +44,7 @@ foreign {
 ]
 public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & LoadingProgressAttribute {
     /**
-     * Create a LoadingProgress
+     * Initializes a LoadingProgress component.
      */
     @!APILevel[
         since: "22",
@@ -56,10 +56,10 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & Loading
         }
     }
     /**
-     * Load the color of the progress bar.
+     * Configures the color of the loading progress indicator.
      *
-     * @param { ?ResourceColor } value
-     * @returns { This }
+     * @param { ?ResourceColor } value - Sets the foreground color of the loading progress bar.
+     * @returns { This } Returns the LoadingProgress instance.
      */
     @!APILevel[
         since: "22",

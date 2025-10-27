@@ -88,7 +88,7 @@ func notifyCallbackBool(key: CString, value: Bool): Unit {
 }
 
 /**
- * Defines the PersistentStorage interface.
+ * Provides mechanisms for persisting AppStorage properties across application sessions.
  */
 @!APILevel[
     since: "22",
@@ -111,6 +111,7 @@ public class PersistentStorage <: Observer {
      *
      * @param { String } _.
      * @param { ArrayList<Int64> } _.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -125,6 +126,7 @@ public class PersistentStorage <: Observer {
      * This method is called when a property value is accessed.
      *
      * @param { String } _.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -148,6 +150,8 @@ public class PersistentStorage <: Observer {
     /**
      * Prepares the PersistentStorage instance for deletion, cleaning up any resources.
      * This method cleans up all persistent properties and resets the instance.
+     *
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -173,11 +177,11 @@ public class PersistentStorage <: Observer {
     }
 
     /**
-     * Called when a persistence property is stored.
-     * This method makes an AppStorage property persistent by storing its value across application restarts.
+     * Makes an AppStorage property persistent across application sessions.
      *
-     * @param { String } key.
-     * @param { T } defaultValue.
+     * @param { String } key - name of the property to persist
+     * @param { T } defaultValue - default value for the property if not already present
+     * @returns { Unit }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -190,10 +194,11 @@ public class PersistentStorage <: Observer {
 
     /**
      * Persist given AppStorage properties with given names.
-     * If a property does not exist in AppStorage, add it and initialize it with given value.
-     * Works as persistProp for multiple properties at once.
+     * If a property does not exist in AppStorage, add it and initialize it with given value
+     * works as persistProp for multiple properties.
      *
-     * @param { Array<(String, T)> } props.
+     * @param { Array<(String, T)> } props - array of property name-value pairs to persist
+     * @returns { Unit }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -206,9 +211,9 @@ public class PersistentStorage <: Observer {
 
     /**
      * Reverse of persistProp.
-     * Stops persisting the property with the given name and removes it from persistent storage.
      *
-     * @param { String } key.
+     * @param { String } key - no longer persist the property named key
+     * @returns { Unit }
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
@@ -221,9 +226,8 @@ public class PersistentStorage <: Observer {
 
     /**
      * Inform persisted AppStorage property names.
-     * Returns an array containing the names of all currently persistent properties.
      *
-     * @returns { Array<String> } Array of AppStorage keys representing the names of persistent properties.
+     * @returns { Array<String> } array of AppStorage keys
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
