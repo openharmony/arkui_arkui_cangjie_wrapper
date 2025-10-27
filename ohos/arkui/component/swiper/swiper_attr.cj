@@ -115,7 +115,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { ?Bool } value - Whether to show the navigation indicator.
+     * @param { ?Bool } indicator - Whether to show the navigation indicator.
      * @default true
      * @returns { SwiperAttribute } Returns the swiper attribute.
      */
@@ -128,7 +128,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { ?DotIndicator } value - Dot-style navigation indicator.
+     * @param { ?DotIndicator } indicator - Dot-style navigation indicator.
      * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
@@ -140,7 +140,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { ?DigitIndicator } value - Digit-style navigation indicator.
+     * @param { ?DigitIndicator } indicator - Digit-style navigation indicator.
      * @returns { SwiperAttribute } Returns the swiper attribute.
      */
     @!APILevel[
@@ -251,6 +251,7 @@ sealed interface SwiperAttribute <: CommonMethod<SwiperAttribute> {
 
     /**
      * Sets the animation curve.
+     * Curve is an enumeration type for common curves.
      *
      * @param { ?Curve } value - Animation curve.
      * @default Curve.Linear

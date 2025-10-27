@@ -43,8 +43,8 @@ public class RectShape <: BaseShape {
     /**
      * Initializes a rectangular shape with optional width and height parameters.
      *
-     * @param { ?Length } width - Width of the rectangle.
-     * @param { ?Length } height - Height of the rectangle.
+     * @param { ?Length } [width] - Width of the rectangle.
+     * @param { ?Length } [height] - Height of the rectangle.
      */
     @!APILevel[
         22,

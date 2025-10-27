@@ -92,11 +92,11 @@ foreign {
 ]
 public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     /**
-    * Defines Shape Component instance.
-    *
-    * @param { () -> Unit } child - Child component of shape.
-    * @returns { This } - Returns the component instance itself for method chaining.
-    */
+     * Defines Shape Component instance.
+     *
+     * @param { () -> Unit } [child] - Child component of shape.
+     * @returns { This } - Returns the component instance itself for method chaining.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -127,14 +127,14 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
         }
     }
     /**
-    * Viewport of shape.
-    *
-    * @param { ?Length } x - X coordinate of the viewport.
-    * @param { ?Length } y - Y coordinate of the viewport.
-    * @param { ?Length } width - Width of the viewport.
-    * @param { ?Length } height - Height of the viewport.
-    * @returns { This } - Returns the component instance itself for method chaining.
-    */
+     * Viewport of shape.
+     *
+     * @param { ?Length } [x] - X coordinate of the viewport.
+     * @param { ?Length } [y] - Y coordinate of the viewport.
+     * @param { ?Length } [width] - Width of the viewport.
+     * @param { ?Length } [height] - Height of the viewport.
+     * @returns { This } - Returns the component instance itself for method chaining.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

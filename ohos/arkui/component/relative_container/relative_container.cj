@@ -270,11 +270,11 @@ public class GuideLinePosition {
     public var end: ?Length
 
     /**
-    * Defines the constructor of GuideLinePosition.
-    *
-    * @param { ?Length } start
-    * @param { ?Length } end
-    */
+     * Defines the constructor of GuideLinePosition.
+     *
+     * @param { ?Length } [start] - Distance to start of container.
+     * @param { ?Length } [end] - Distance to end of container.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -347,10 +347,10 @@ public class GuideLineStyle {
 ]
 public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & RelativeContainerAttribute {
     /**
-    * Constructor of relativeContainer
-    *
-    * @param { () -> Unit } child
-    */
+     * Constructor of relativeContainer
+     *
+     * @param { () -> Unit } [child] - Content of the relative container.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -239,11 +239,10 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * Create a Tabs.
      * Initializes a Tabs component with the specified parameters.
      *
-     * @param { ?BarPosition } barPosition - Position of the tab bar.
-     * @param { ?TabsController } controller - Controller for managing tab switching.
-     * @param { ?Int32 } index - Initial index of the selected tab.
-     * @param { () -> Unit } child - Builder function for tab content. The default value is an empty function.
-     * @returns { Tabs } Returns the Tabs instance.
+     * @param { ?BarPosition } [barPosition] - Position of the tab bar.
+     * @param { ?TabsController } [controller] - Controller for managing tab switching.
+     * @param { ?Int32 } [index] - Initial index of the selected tab.
+     * @param { () -> Unit } [child] - Builder function for tab content. The default value is an empty function.
      */
     @!APILevel[
         22,
@@ -557,8 +556,8 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
      * <br>When an icon display error occurs, a gray blank block is displayed.
      * </p>
      *
-     * @param { ?ResourceStr } icon - TabBar icon.
-     * @param { ?ResourceStr } text - TabBar text.
+     * @param { ?ResourceStr } [icon] - TabBar icon.
+     * @param { ?ResourceStr } [text] - TabBar text.
      * @returns { This } Returns the TabContent instance.
      */
     @!APILevel[

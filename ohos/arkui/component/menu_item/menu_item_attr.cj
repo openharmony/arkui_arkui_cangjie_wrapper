@@ -102,7 +102,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
 
     /**
      * Sets the label info font style.
-     * Configures the font properties of the menu item label text.
+     * Family and style are not supported currently and will be fixed in future.
      *
      * @param { ?Length } size - Indicates the font size of label info text.
      * @param { ?FontWeight } weight - Indicates the font weight of label info text.

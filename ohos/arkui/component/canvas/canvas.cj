@@ -113,7 +113,7 @@ public class RenderingContextSettings {
     /**
      * Create an RenderingContextSettings object based on the antialias and alpha.
      *
-     * @param { ?Bool } antialias - Whether enable antialias.
+     * @param { ?Bool } [antialias] - Whether enable antialias.
      */
     @!APILevel[
         22,

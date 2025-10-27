@@ -53,8 +53,8 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
     /**
      * Initializes a Rect component with optional width and height.
      *
-     * @param { ?Length } width - Width of the rectangle.
-     * @param { ?Length } height - Height of the rectangle.
+     * @param { ?Length } [width] - Width of the rectangle.
+     * @param { ?Length } [height] - Height of the rectangle.
      */
     @!APILevel[
         22,

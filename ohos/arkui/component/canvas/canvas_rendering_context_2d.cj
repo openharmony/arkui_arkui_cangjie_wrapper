@@ -1040,7 +1040,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { String } text - Text string to be drawn.
      * @param { Float64 } x - The x-axis coordinate of the start point of the text.
      * @param { Float64 } y - The y-axis coordinate of the start point of the text.
-     * @param { ?Float64 } maxWidth - Maximum width of the drawing.
+     * @param { ?Float64 } [maxWidth] - Maximum width of the drawing.
      */
     @!APILevel[
         22,
@@ -1069,13 +1069,13 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { String } text - Text string to be stroked.
      * @param { Float64 } x - The x-axis coordinate of the start point of the text.
      * @param { Float64 } y - The y-axis-axis coordinate of the start point of the text.
-     * @param { ?Float64 } maxWidth - Maximum width of the stroke.
+     * @param { ?Float64 } [maxWidth] - Maximum width of the stroke.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func strokeText(text: String, x: Float64, y: Float64, maxWidth!: Option<Float64> = Option.None): Unit {
+    public func strokeText(text: String, x: Float64, y: Float64, maxWidth!: ?Float64 = Option.None): Unit {
         match (maxWidth) {
             case Some(v) =>
                 unsafe {
@@ -1264,8 +1264,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { Float64 } radius - Radius of the arc.
      * @param { Float64 } startAngle - Start point of an arc, which starts to be calculated in the x-axis direction. The unit is radian.
      * @param { Float64 } endAngle - The end point of the arc, in radians.
-     * @param { ?Bool } counterclockwise - If the value is true, the arc is drawn counterclockwise. Otherwise,
-     *    the arc is drawn clockwise. The default value is false.
+     * @param { ?Bool } [counterclockwise] - If the value is true, the arc is drawn counterclockwise. Otherwise,
+     * the arc is drawn clockwise. The default value is false.
      */
     @!APILevel[
         22,
@@ -1351,8 +1351,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *
      * @param { Float64 } x - The x-axis coordinate of the start point of the rectangle.
      * @param { Float64 } y - The y-axis coordinate of the start point of the rectangle.
-     * @param { Float64 } w - Width of the rectangle.
-     * @param { Float64 } h - Height of the rectangle.
+     * @param { Float64 } width - Width of the rectangle.
+     * @param { Float64 } height - Height of the rectangle.
      */
     @!APILevel[
         22,
@@ -1367,7 +1367,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Fills existing paths according to the current fill style.
      *
-     * @param { ?CanvasFillRule } fillRule - Algorithm rule.
+     * @param { ?CanvasFillRule } [fillRule] - Algorithm rule.
      */
     @!APILevel[
         22,
@@ -1386,7 +1386,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * Fills the specified path according to the current fill style.
      *
      * @param { ?Path2D } path - Path to be filled.
-     * @param { ?CanvasFillRule } fillRule - Algorithm rule.
+     * @param { ?CanvasFillRule } [fillRule] - Algorithm rule.
      */
     @!APILevel[
         22,
@@ -1405,7 +1405,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Sets the currently created path as the current clipping path.
      *
-     * @param { ?CanvasFillRule } fillRule - Algorithm rule.
+     * @param { ?CanvasFillRule } [fillRule] - Algorithm rule.
      */
     @!APILevel[
         22,
@@ -1424,7 +1424,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * Tailoring according to the specified path.
      *
      * @param { ?Path2D } path - Path to be cut.
-     * @param { ?CanvasFillRule } fillRule - Algorithm rule.
+     * @param { ?CanvasFillRule } [fillRule] - Algorithm rule.
      */
     @!APILevel[
         22,
@@ -1710,14 +1710,14 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *Draw an image on a canvas.
      *
      * @param { ImageBitmap } image - Picture objects drawn to the canvas.
-     * @param { Float64 } ?sx - x coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
-     * @param { Float64 } ?sy - y coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
-     * @param { Float64 } ?sw - Width of the rectangle (cropping) selection box of the image.
-     * @param { Float64 } ?sh - Height of the rectangle (cropping) selection box of the image.
-     * @param { Float64 } ?dx - x-axis coordinate of the upper left corner of the image on the target canvas.
-     * @param { Float64 } ?dy - y-axis coordinate of the upper left corner of the image on the target canvas.
-     * @param { Float64 } ?dw - Specifies the drawing width of the image on the target canvas. The width of the drawn image will be scaled.
-     * @param { Float64 } ?dh - Specifies the drawing height of the image on the target canvas. The height of the drawn image will be scaled.
+     * @param { ?Float64 } sx - x coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
+     * @param { ?Float64 } sy - y coordinate of the upper left corner of the rectangle (cropping) selection box of the image.
+     * @param { ?Float64 } sw - Width of the rectangle (cropping) selection box of the image.
+     * @param { ?Float64 } sh - Height of the rectangle (cropping) selection box of the image.
+     * @param { ?Float64 } dx - x-axis coordinate of the upper left corner of the image on the target canvas.
+     * @param { ?Float64 } dy - y-axis coordinate of the upper left corner of the image on the target canvas.
+     * @param { ?Float64 } dw - Specifies the drawing width of the image on the target canvas. The width of the drawn image will be scaled.
+     * @param { ?Float64 } dh - Specifies the drawing height of the image on the target canvas. The height of the drawn image will be scaled.
      */
     @!APILevel[
         22,
@@ -1728,7 +1728,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         sx: ?Float64,
         sy: ?Float64,
         sw: ?Float64,
-        sd: ?Float64,
+        sh: ?Float64,
         dx: ?Float64,
         dy: ?Float64,
         dw: ?Float64,
@@ -1819,7 +1819,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         sx: ?Float64,
         sy: ?Float64,
         sw: ?Float64,
-        sd: ?Float64,
+        sh: ?Float64,
         dx: ?Float64,
         dy: ?Float64,
         dw: ?Float64,
@@ -2029,9 +2029,9 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Generate a character string in the data url format.
      *
-     * @param { ?String } type - Image format. The default value is image/png.
-     * @param { ?Float64 } quality - If the image format is image/jpeg or image/webp, you can select the image quality from 0 to 1.
-     *    If the value is out of the range, the default value 0.92 is used.
+     * @param { ?String } [imageType] - Image format. The default value is image/png.
+     * @param { ?Float64 } [quality] - If the image format is image/jpeg or image/webp, you can select the image quality from 0 to 1.
+     * If the value is out of the range, the default value 0.92 is used.
      * @returns { String } - The data URL string of the canvas.
      */
     @!APILevel[

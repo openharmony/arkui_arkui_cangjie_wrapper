@@ -141,9 +141,9 @@ public class Curves {
      * Creates a spring curve. The curve shape is subject to the spring parameters, and the animation duration
      * is subject to the **duration** parameter in **animation** and **animateTo**.
      *
-     * @param { Float32 } response - Duration of one complete oscillation.
-     * @param { Float32 } dampingFraction - Damping coefficient.
-     * @param { Float32 } overlapDuration - Duration for animations to overlap, in seconds.
+     * @param { Float32 } [response] - Duration of one complete oscillation.
+     * @param { Float32 } [dampingFraction] - Damping coefficient.
+     * @param { Float32 } [overlapDuration] - Duration for animations to overlap, in seconds.
      * @returns { ICurve }
      */
     @!APILevel[
@@ -159,9 +159,9 @@ public class Curves {
      * Creates a responsive spring animation curve. It is a special case of springMotion,
      * with the only difference in the default values. It can be used together with **springMotion**.
      *
-     * @param { Float32 } response - See **response** in **springMotion**.<br>Default value: **0.15**.
-     * @param { Float32 } dampingFraction - See **dampingFraction** in **springMotion**.<br>Default value: **0.86**.
-     * @param { Float32 } overlapDuration - See **overlapDuration** in **springMotion**.<br>Default value: **0.25**.
+     * @param { Float32 } [response] - See **response** in **springMotion**.<br>Default value: **0.15**.
+     * @param { Float32 } [dampingFraction] - See **dampingFraction** in **springMotion**.<br>Default value: **0.86**.
+     * @param { Float32 } [overlapDuration] - See **overlapDuration** in **springMotion**.<br>Default value: **0.25**.
      * @returns { ICurve }
      */
     @!APILevel[
@@ -197,7 +197,7 @@ public class Curves {
      * Implements initialization for the interpolation curve,
      * which is used to create an interpolation curve based on the input parameter.
      *
-     * @param { Curve } curve - Curve type.
+     * @param { Curve } [curve] - Curve type.
      * @default Curve.Linear
      * @returns { ICurve }
      */

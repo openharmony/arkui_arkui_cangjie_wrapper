@@ -35,8 +35,8 @@ public class CircleShape <: BaseShape {
     /**
      * Initializes a circular shape with optional width and height parameters.
      *
-     * @param { ?Length } width - Width of the circle.
-     * @param { ?Length } height - Height of the circle.
+     * @param { ?Length } [width] - Width of the circle.
+     * @param { ?Length } [height] - Height of the circle.
      * @returns { CircleShape } Returns the CircleShape instance.
      */
     @!APILevel[

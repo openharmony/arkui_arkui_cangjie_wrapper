@@ -114,8 +114,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     /**
      * Sets the end style of the split line.
      *
-     * @param { ?LineCapStyle } value - The end style of the split line.
-     * @default LineCapStyle.Butt
+     * @param { ?LineCapStyle } value - The end style of the split line. The default value is LineCapStyle.butt.
      * @returns { This } - The instance of the component.
      */
     @!APILevel[

@@ -137,9 +137,9 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      * The constructor of Gauge.
      *
      * @param { ?Float64 } value - Set current data value.
-     * @param { ?Float64 } min - Set current segment minimum value.
-     * @param { ?Float64 } max - Set current segment maximum value.
-     * @param { () -> Unit } child - Set child component of Gauge.
+     * @param { ?Float64 } [min] - Set current segment minimum value.
+     * @param { ?Float64 } [max] - Set current segment maximum value.
+     * @param { () -> Unit } [child] - Set child component of Gauge.
      */
     @!APILevel[
         22,
@@ -335,9 +335,9 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets track shadow of the ring chart.
      *
-     * @param { ?Float64 } radius - The shadow radius.
-     * @param { ?Float64 } offsetX - The shadow horizontal offset.
-     * @param { ?Float64 } offsetY - The shadow vertical offset.
+     * @param { ?Float64 } [radius] - The shadow radius.
+     * @param { ?Float64 } [offsetX] - The shadow horizontal offset.
+     * @param { ?Float64 } [offsetY] - The shadow vertical offset.
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
@@ -354,8 +354,8 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets indicator options of the ring chart.
      *
-     * @param { ?ResourceStr } icon - The indicator icon.
-     * @param { ?Length } space - The space between indicator and chart.
+     * @param { ?ResourceStr } [icon] - The indicator icon.
+     * @param { ?Length } [space] - The space between indicator and chart.
      * @returns { This } - The instance of the component.
      */
     @!APILevel[

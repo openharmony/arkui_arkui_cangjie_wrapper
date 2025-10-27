@@ -41,8 +41,8 @@ public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
     /**
      * Uses new to create the line.
      *
-     * @param { ?Length } width - Width of the rectangle where the line resides.
-     * @param { ?Length } height - Height of the rectangle where the line resides.
+     * @param { ?Length } [width] - Width of the rectangle where the line resides.
+     * @param { ?Length } [height] - Height of the rectangle where the line resides.
      */
     @!APILevel[
         22,

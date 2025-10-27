@@ -620,7 +620,7 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * The expected frame rate of dynamical of rate range.
      *
-     * @param { ExpectedFrameRateRange } rateRange
+     * @param { ExpectedFrameRateRange } rateRange - The expected frame rate range.
      * @throws { BusinessException } 100001 - Internal error. Possible causes:
      * <br> The specified page is not found or the object property list is not obtained.
      */

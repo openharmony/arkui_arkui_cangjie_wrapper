@@ -85,20 +85,20 @@ public class MeasureOptions {
      * Create an object of MeasureOptions.
      *
      * @param { String } textContent
-     * @param { FontWeight } fontWeight
-     * @param { String } fontFamily"
-     * @param { ?Length } constraintWidth
-     * @param { ?Length } fontSize
-     * @param { ?Length } lineHeight
-     * @param { ?Length } baselineOffset
-     * @param { ?Length } letterSpacing
-     * @param { ?Length } textIndent
-     * @param { UInt32 } maxLines
-     * @param { TextAlign } textAlign
-     * @param { FontStyle } fontStyle
-     * @param { TextOverflow } overflow
-     * @param { TextCase } textCase
-     * @param { WordBreak } wordBreak
+     * @param { FontWeight } [fontWeight]
+     * @param { String } [fontFamily]
+     * @param { ?Length } [constraintWidth]
+     * @param { ?Length } [fontSize]
+     * @param { ?Length } [lineHeight]
+     * @param { ?Length } [baselineOffset]
+     * @param { ?Length } [letterSpacing]
+     * @param { ?Length } [textIndent]
+     * @param { UInt32 } [maxLines]
+     * @param { TextAlign } [textAlign]
+     * @param { FontStyle } [fontStyle]
+     * @param { TextOverflow } [overflow]
+     * @param { TextCase } [textCase]
+     * @param { WordBreak } [wordBreak]
      */
     @!APILevel[
         22,
@@ -218,11 +218,12 @@ public class SizeOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: Length = 0
-    /*
+
+    /**
      * SizeOptions constructor.
      *
-     * @param { Length } width
-     * @param { Length } height
+     * @param { Length } [width]
+     * @param { Length } [height]
      */
     @!APILevel[
         22,

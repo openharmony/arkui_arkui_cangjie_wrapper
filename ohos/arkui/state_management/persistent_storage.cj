@@ -227,7 +227,7 @@ public class PersistentStorage <: Observer {
     /**
      * Inform persisted AppStorage property names.
      *
-     * @returns { Array<String> } array of AppStorage keys
+     * @returns { Array<String> } the array of all keys
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[

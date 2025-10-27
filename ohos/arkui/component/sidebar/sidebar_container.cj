@@ -82,11 +82,12 @@ public class ButtonIconOptions {
 
     /**
      * Constructs a button style icons.
+     * Initializes a ButtonIconOptions instance with icon resources for different states.
      *
-     * @param { ?ResourceStr } shown
-     * @param { ?ResourceStr } hidden
-     * @param { ?ResourceStr } switching
-     */ 
+     * @param { ?ResourceStr } shown - The resource string for the shown icon.
+     * @param { ?ResourceStr } hidden - The resource string for the hidden icon.
+     * @param { ?ResourceStr } [switching] - The resource string for the switching icon.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -118,7 +119,8 @@ struct CJSideBarButtonStyle {
 ]
 public class ButtonStyle {
     /**
-     * Set the left of control button
+     * Horizontal position of the control button from the left edge.
+     * @default 16.0
      */
     @!APILevel[
         22,
@@ -127,7 +129,8 @@ public class ButtonStyle {
     public var left: ?Float64
 
     /**
-     * Set the top of control button
+     * Vertical position of the control button from the top edge.
+     * @default 24.0
      */
     @!APILevel[
         22,
@@ -136,7 +139,8 @@ public class ButtonStyle {
     public var top: ?Float64
 
     /**
-     * Set the width of control button
+     * Set the width of control button.
+     * @default 24.0
      */
     @!APILevel[
         22,
@@ -145,7 +149,8 @@ public class ButtonStyle {
     public var width: ?Float64
 
     /**
-     * Set the height of control button
+     * Set the height of control button.
+     * @default 24.0
      */
     @!APILevel[
         22,
@@ -164,13 +169,14 @@ public class ButtonStyle {
 
     /**
      * Constructs a button style.
+     * Initializes a ButtonStyle instance with positioning, sizing, and icon options.
      *
-     * @param { ?Float64 } left
-     * @param { ?Float64 } top
-     * @param { ?Float64 } width
-     * @param { ?Float64 } icons
-     * @param { ?ButtonIconOptions } icons
-     */ 
+     * @param { ?Float64 } [left] - The left position of the button.
+     * @param { ?Float64 } [top] - The top position of the button.
+     * @param { ?Float64 } [width] - The width of the button.
+     * @param { ?Float64 } [height] - The height of the button.
+     * @param { ?ButtonIconOptions } [icons] - The button icon options.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -214,7 +220,8 @@ struct CJDividerStyle {
 ]
 public class DividerStyle {
     /**
-     * Define the stroke width of the divider
+     * Define the stroke width of the divider.
+     * @default 1.vp
      */
     @!APILevel[
         22,
@@ -232,7 +239,8 @@ public class DividerStyle {
     public var color: ?ResourceColor
 
     /**
-     * Define the start margin of the divider
+     * Distance from the start of the divider to the edge of the container.
+     * @default 0.vp
      */
     @!APILevel[
         22,
@@ -241,7 +249,8 @@ public class DividerStyle {
     public var startMargin: ?Length
 
     /**
-     * Define the end margin of the divider
+     * Distance from the end of the divider to the edge of the container.
+     * @default 0.vp
      */
     @!APILevel[
         22,
@@ -251,12 +260,13 @@ public class DividerStyle {
 
     /**
      * Constructs a divider style.
+     * Initializes a DividerStyle instance with stroke width, color, and margin properties.
      *
-     * @param { ?Length } strokeWidth
-     * @param { ?ResourceColor } color
-     * @param { ?Length } startMargin
-     * @param { ?Length } endMargin
-     */ 
+     * @param { ?Length } strokeWidth - The stroke width of the divider.
+     * @param { ?ResourceColor } [color] - The color of the divider.
+     * @param { ?Length } [startMargin] - The start margin of the divider.
+     * @param { ?Length } [endMargin] - The end margin of the divider.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -323,10 +333,11 @@ foreign {
 public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideBarContainerAttribute {
     /**
      * Constructs a sidebar container.
+     * Initializes a SideBarContainer component with optional type and child content.
      *
-     * @param { ?SideBarContainerType } sideBarType
-     * @param { () -> Unit } child
-     */ 
+     * @param { ?SideBarContainerType } [sideBarType] - The type of the sidebar container.
+     * @param { () -> Unit } [child] - The child component builder function.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -341,10 +352,11 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     }
 
     /**
-     * Callback showControlButton function when setting the status of sidebar
+     * Callback showControlButton function when setting the status of sidebar.
+     * Controls the visibility of the sidebar.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether to show the sidebar.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         22,
@@ -358,10 +370,11 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     }
 
     /**
-     * Callback controlButton function when setting the style of button
+     * Callback controlButton function when setting the style of button.
+     * Configures the appearance and positioning of the control button.
      *
-     * @param { ?ButtonStyle } value
-     * @returns { This }
+     * @param { ?ButtonStyle } value - The button style.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         22,
@@ -392,10 +405,11 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     }
 
     /**
-     * Callback showControlButton function when setting the status of button
+     * Callback showControlButton function when setting the status of button.
+     * Controls the visibility of the control button.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether to show the control button.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         22,
@@ -410,9 +424,11 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
 
     /**
      * Trigger callback when sidebar style of showing change finished.
+     * Called when the sidebar show/hide animation completes.
      *
-     * @param { ?(Bool) -> Unit } callback
-     * @returns { This }
+     * @param { ?(Bool) -> Unit } callback - The callback function triggered when sidebar style changes.
+     * The parameter indicates whether the sidebar is currently shown (true) or hidden (false).
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         22,
@@ -429,9 +445,11 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
 
     /**
      * Sets the length of sidebar.
+     * Configures the width of the sidebar when it is shown.
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The width of the sidebar.
+     * @default 240.vp
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         22,
@@ -447,9 +465,11 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
 
     /**
      * Sets the min length of sidebar.
+     * Configures the minimum width the sidebar can be resized to.
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The minimum width of the sidebar.
+     * @default 200.vp
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         22,
@@ -465,9 +485,11 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
 
     /**
      * Sets the max length of sidebar.
+     * Configures the maximum width the sidebar can be resized to.
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The maximum width of the sidebar.
+     * @default 280.vp
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         22,
@@ -483,9 +505,10 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
 
     /**
      * Sets whether to automatically hide when drag sidebar width is less than the minimum width.
+     * Controls whether the sidebar automatically collapses when resized below its minimum width.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether to automatically hide. The default value is true.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         22,
@@ -500,9 +523,10 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
 
     /**
      * Called when determining the location of the sidebar.
+     * Configures which edge of the container the sidebar appears on.
      *
-     * @param { ?SideBarPosition } value
-     * @returns { This }
+     * @param { ?SideBarPosition } value - The position of the sidebar. The default value is SideBarPosition.Start.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         22,
@@ -516,10 +540,11 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     }
 
     /**
-     * Set divider style for sideBarContainer
+     * Set divider style for sideBarContainer.
+     * Configures the appearance of the divider between the sidebar and main content.
      *
-     * @param { ?DividerStyle } value
-     * @returns { This }
+     * @param { ?DividerStyle } value - Indicates the style of the divider or whether to show the divider.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         22,
@@ -537,10 +562,10 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     }
 
     /**
-     * Sets the min length of content.
-     * 
-     * @param { ?Length } value
-     * @returns { This }
+     * Configures the minimum width of the main content area.
+     *
+     * @param { ?Length } value - Min length of content. The default value is 360.vp.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         22,

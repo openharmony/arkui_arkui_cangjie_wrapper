@@ -21,19 +21,21 @@ import ohos.labels.APILevel
 import ohos.base.*
 
 /**
- * CommonMethod.
+ * CommonMethod interface.
+ * This interface defines common methods that can be applied to UI components.
+ * It provides a generic type T that represents the return type of the methods,
+ * allowing for method chaining in fluent APIs.
  */
 @!APILevel[
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface CommonMethod<T> {
-    // Common Event
-    /*
-     * Called when a click event occurs.
+    /**
+     * Registers a callback function that is triggered when the component is clicked.
      *
-     * @param { ?(ClickEvent) -> Unit } event
-     * @returns { This }
+     * @param { ?(ClickEvent) -> Unit } event - The callback function to be executed on click
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -41,11 +43,11 @@ public interface CommonMethod<T> {
     ]
     func onClick(event: ?(ClickEvent) -> Unit): T
 
-    /*
-     * This callback is triggered when a component mounts a display.
+    /**
+     * Registers a callback function that is triggered when the component appears on the screen.
      *
-     * @param { ?() -> Unit } event
-     * @returns { This }
+     * @param { ?() -> Unit } event - The callback function to be executed when the component appears
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -53,11 +55,12 @@ public interface CommonMethod<T> {
     ]
     func onAppear(event: ?() -> Unit): T
 
-    /*
+    /**
      * This callback is triggered when component uninstallation disappears.
+     * Registers a callback function that is triggered when the component disappears from the screen.
      *
-     * @param { ?() -> Unit } event
-     * @returns { This }
+     * @param { ?() -> Unit } event - The callback function triggered when the component tree disappears
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -65,11 +68,12 @@ public interface CommonMethod<T> {
     ]
     func onDisAppear(event: ?() -> Unit): T
 
-    /*
+    /**
      * Invoked when a touch event is triggered.
+     * Registers a callback function that is triggered when touch events occur on the component.
      *
-     * @param { ?(TouchEvent) -> Unit } event
-     * @returns { This }
+     * @param { ?(TouchEvent) -> Unit } event - The callback function to be executed on touch events
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -77,11 +81,12 @@ public interface CommonMethod<T> {
     ]
     func onTouch(event: ?(TouchEvent) -> Unit): T
 
-    /*
-     * Trigger a hover event.
+    /**
+     * Registers a callback function that is triggered when the mouse pointer enters or leaves the component.
      *
-     * @param { ?(Bool) -> Unit } event
-     * @returns { This }
+     * @param { ?(Bool) -> Unit } event - The callback function to be executed on hover events.
+     *                                   The boolean parameter indicates whether the pointer is hovering over the component.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -89,11 +94,13 @@ public interface CommonMethod<T> {
     ]
     func onHover(event: ?(Bool) -> Unit): T
 
-    /*
+    /**
      * This callback is triggered when the size or position of this component change finished.
+     * Registers a callback function that is triggered when the component's size or position changes.
      *
-     * @param { ?(Area, Area) -> Unit } event
-     * @returns { This }
+     * @param { ?(Area, Area) -> Unit } event - The callback function to be executed when the area changes.
+     *                                        The first parameter is the old area, the second is the new area.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -101,12 +108,13 @@ public interface CommonMethod<T> {
     ]
     func onAreaChange(event: ?(Area, Area) -> Unit): T
 
-    /*
-     * Trigger a visible area change event.
+    /**
+     * Registers a callback function that is triggered when the visible area of the component changes.
      *
-     * @param { ?Array<Float64> } ratios
-     * @param { ?(Bool, Float64) -> Unit } event
-     * @returns { This }
+     * @param { ?Array<Float64> } ratios - Array of visibility ratios that trigger the callback
+     * @param { ?(Bool, Float64) -> Unit } event - The callback function to be executed when visibility changes.
+     *                                           The boolean indicates if the component is visible, and the float is the visibility ratio.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -114,11 +122,12 @@ public interface CommonMethod<T> {
     ]
     func onVisibleAreaChange(ratios: ?Array<Float64>, event: ?(Bool, Float64) -> Unit): T
 
-    /*
+    /**
      * Triggered when the component is clicked by a mouse button or the mouse pointer moves on the component.
+     * Registers a callback function that is triggered when mouse events occur on the component.
      *
-     * @param { ?(MouseEvent) -> Unit } event
-     * @returns { This }
+     * @param { ?(MouseEvent) -> Unit } event - The callback function to be executed on mouse events
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -126,11 +135,11 @@ public interface CommonMethod<T> {
     ]
     func onMouse(event: ?(MouseEvent) -> Unit): T
 
-    /*
-     * Keyboard input
+    /**
+     * Registers a callback function that is triggered when keyboard events occur.
      *
-     * @param { ?(KeyEvent) -> Unit } event
-     * @returns { This }
+     * @param { ?(KeyEvent) -> Unit } event - The callback function to be executed on key events
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -138,11 +147,11 @@ public interface CommonMethod<T> {
     ]
     func onKeyEvent(event: ?(KeyEvent) -> Unit): T
 
-    /*
-     * Trigger a event when got focus.
+    /**
+     * Registers a callback function that is triggered when the component receives focus.
      *
-     * @param { ?() -> Unit } event
-     * @returns { This }
+     * @param { ?() -> Unit } event - The callback function to be executed when the component gets focus
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -150,11 +159,11 @@ public interface CommonMethod<T> {
     ]
     func onFocus(event: ?() -> Unit): T
 
-    /*
-     * Triggered when the current component loses focus.
+    /**
+     * Registers a callback function that is triggered when the component loses focus.
      *
-     * @param { ?() -> Unit } event
-     * @returns { This }
+     * @param { ?() -> Unit } event - The callback function to be executed when the component loses focus
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -164,9 +173,10 @@ public interface CommonMethod<T> {
 
     /**
      * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
+     * Registers a callback function that is triggered when a drag operation starts, providing a DragItemInfo.
      *
-     * @param { ?(DragInfo) -> DragItemInfo } event
-     * @returns { This }
+     * @param { ?(DragInfo) -> DragItemInfo } event - The callback function to be executed when drag starts
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -175,10 +185,10 @@ public interface CommonMethod<T> {
     func onDragStart(event: ?(DragInfo) -> DragItemInfo): T
 
     /**
-     * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
+     * Registers a callback function that is triggered when a drag operation starts, providing a CustomBuilder.
      *
-     * @param { ?(DragInfo) -> CustomBuilder } event
-     * @returns { This }
+     * @param { ?(DragInfo) -> CustomBuilder } event - The callback function to be executed when drag starts
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -187,10 +197,10 @@ public interface CommonMethod<T> {
     func onDragStart(event: ?(DragInfo) -> CustomBuilder): T
 
     /**
-     * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
+     * Registers a callback function that is triggered when a drag operation starts, with no return value.
      *
-     * @param { ?(DragInfo) -> Unit } event
-     * @returns { This }
+     * @param { ?(DragInfo) -> Unit } event - The callback function to be executed when drag starts
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -199,10 +209,10 @@ public interface CommonMethod<T> {
     func onDragStart(event: ?(DragInfo) -> Unit): T
 
     /**
-     * After binding, a callback is triggered when the component is dragged to the range of the component.
+     * Registers a callback function that is triggered when a dragged item enters the component's area.
      *
-     * @param { ?(DragInfo) -> Unit } event
-     * @returns { This }
+     * @param { ?(DragInfo) -> Unit } event - The callback function to be executed when drag enters
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -212,9 +222,10 @@ public interface CommonMethod<T> {
 
     /**
      * After binding, a callback is triggered when the drag moves within the range of a placeable component.
+     * Registers a callback function that is triggered when a dragged item moves within the component's area.
      *
-     * @param { ?(DragInfo) -> Unit } event
-     * @returns { This }
+     * @param { ?(DragInfo) -> Unit } event - The callback function to be executed when drag moves
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -224,9 +235,10 @@ public interface CommonMethod<T> {
 
     /**
      * After binding, a callback is triggered when the component is dragged out of the component range.
+     * Registers a callback function that is triggered when a dragged item leaves the component's area.
      *
-     * @param { ?(DragInfo) -> Unit } event
-     * @returns { This }
+     * @param { ?(DragInfo) -> Unit } event - The callback on drag leave
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -237,9 +249,10 @@ public interface CommonMethod<T> {
     /**
      * The component bound to this event can be used as the drag release target.
      * This callback is triggered when the drag behavior is stopped within the scope of the component.
+     * Registers a callback function that is triggered when a dragged item is dropped on the component.
      *
-     * @param { ?(DragInfo) -> Unit } event
-     * @returns { This }
+     * @param { ?(DragInfo) -> Unit } event - The callback function to be executed when drag drops
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -247,14 +260,13 @@ public interface CommonMethod<T> {
     ]
     func onDrop(event: ?(DragInfo) -> Unit): T
 
-    // Common Attribute
     /**
      * Sets the width of the component. By default, the width required to fully hold the
      * component content is used. If the width of the component is greater than that of
      * the parent container, the component will be drawn beyond the parent container scope.
      *
      * @param { Option<Length> } value - The width of the component
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -268,7 +280,7 @@ public interface CommonMethod<T> {
      * the parent container, the component will be drawn beyond the parent container scope.
      *
      * @param { Option<Length> } value - The height of the component
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -277,11 +289,11 @@ public interface CommonMethod<T> {
     func height(value: Option<Length>): T
 
     /**
-     * The size of the current component.
+     * Sets both the width and height of the component.
      *
      * @param { Option<Length> } width - The width of the component
      * @param { Option<Length> } height - The height of the component
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -291,9 +303,11 @@ public interface CommonMethod<T> {
 
     /**
      * Sets the padding of the component.
+     * Sets uniform padding for all sides of the component.
      *
-     * @param { ?Length } value - The padding value
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } value - The padding value for all sides
+     * @default 0
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -302,13 +316,14 @@ public interface CommonMethod<T> {
     func padding(value: ?Length): T
 
     /**
-     * Sets the padding of the component.
+     * Sets the padding of the component. Default value: **0**.
+     * Sets individual padding values for each side of the component.
      *
-     * @param { ?Length } top - Top padding value
-     * @param { ?Length } right - Right padding value
-     * @param { ?Length } bottom - Bottom padding value
-     * @param { ?Length } left - Left padding value
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } top - Padding for the top side
+     * @param { ?Length } right - Padding for the right side
+     * @param { ?Length } bottom - Padding for the bottom side
+     * @param { ?Length } left - Padding for the left side
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -317,10 +332,11 @@ public interface CommonMethod<T> {
     func padding(top!: ?Length, right!: ?Length, bottom!: ?Length, left!: ?Length): T
 
     /**
-     * Sets the margin of the component.
+     * Sets uniform margin for all sides of the component.
      *
-     * @param { ?Length } value - The margin value
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } value - The margin value for all sides
+     * @default 0
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -329,13 +345,13 @@ public interface CommonMethod<T> {
     func margin(value: ?Length): T
 
     /**
-     * Sets the margin of the component.
+     * Sets individual margin values for each side of the component.
      *
-     * @param { ?Length } top - Top margin value
-     * @param { ?Length } right - Right margin value
-     * @param { ?Length } bottom - Bottom margin value
-     * @param { ?Length } left - Left margin value
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } top - Margin for the top side
+     * @param { ?Length } right - Margin for the right side
+     * @param { ?Length } bottom - Margin for the bottom side
+     * @param { ?Length } left - Margin for the left side
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -346,9 +362,11 @@ public interface CommonMethod<T> {
     /**
      * Sets the weight of the component during layout. A component with this attribute is allocated space
      * along the main axis of its parent container (Row, Column, or Flex) based on its specified weight.
+     * Sets the layout weight of the component.
      *
-     * @param { ?Int32 } value - The layout weight
-     * @returns { This } - Returns the component itself
+     * @param { ?Int32 } value - The layout weight of the component
+     * @default 0
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -358,13 +376,14 @@ public interface CommonMethod<T> {
 
     /**
      * Sets the constraint size of the component, which is used to limit the size range during component layout.
-     * Default value: **{minWidth: 0, maxWidth: Infinity, minHeight: 0, maxHeight: Infinity}**.
+     * Default value: **minWidth: 0, maxWidth: Infinity, minHeight: 0, maxHeight: Infinity**.
+     * Sets the constraint size of the component.
      *
-     * @param { ?Length } minWidth - The minimum width of the component
-     * @param { ?Length } maxWidth - The maximum width of the component
-     * @param { ?Length } minHeight - The minimum height of the component
-     * @param { ?Length } maxHeight - The maximum height of the component
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } minWidth - Minimum width of the component
+     * @param { ?Length } maxWidth - Maximum width of the component
+     * @param { ?Length } minHeight - Minimum height of the component
+     * @param { ?Length } maxHeight - Maximum height of the component
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -375,10 +394,11 @@ public interface CommonMethod<T> {
 
     /**
      * Sets the alignment mode of the component content in the drawing area.
-     * Default value: **Alignment.Center**.
+     * Sets the alignment of the component within its container.
      *
      * @param { ?Alignment } value - The alignment mode
-     * @returns { This } - Returns the component itself
+     * @default Alignment.Center.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -388,10 +408,10 @@ public interface CommonMethod<T> {
 
     /**
      * Sets how elements are laid out along the main axis of the container.
-     * Default value: **Direction.Auto**.
      *
      * @param { ?Direction } value - The layout direction
-     * @returns { This } - Returns the component itself
+     * @default Direction.Auto.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -402,10 +422,11 @@ public interface CommonMethod<T> {
     /**
      * Sets the absolute position of the component relative to the position of the parent component.
      * The attribute is not available for a layout container whose width and height are zero.
+     * Sets the absolute position of the component.
      *
-     * @param { ?Length } x - The x-coordinate relative to the parent component
-     * @param { ?Length } y - The y-coordinate relative to the parent component
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } x - X coordinate relative to the parent component
+     * @param { ?Length } y - Y coordinate relative to the parent component
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -416,10 +437,11 @@ public interface CommonMethod<T> {
     /**
      * Sets the anchor for locating the component, which is used to move the component
      * further away from the position specified by position or offset.
+     * Sets the anchor point for the component.
      *
-     * @param { ?Length } x - The x-coordinate of the anchor
-     * @param { ?Length } y - The y-coordinate of the anchor
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } x - X coordinate of the anchor point
+     * @param { ?Length } y - Y coordinate of the anchor point
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -431,10 +453,11 @@ public interface CommonMethod<T> {
      * Sets the offset of the component relative to its original position.
      * <br>The offset attribute does not affect the layout of the parent container.
      * It adjusts the component position only during drawing.
+     * Sets the offset of the component.
      *
-     * @param { ?Length } x - The x-coordinate offset
-     * @param { ?Length } y - The y-coordinate offset
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } x - X offset from the original position
+     * @param { ?Length } y - Y offset from the original position
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -445,9 +468,10 @@ public interface CommonMethod<T> {
     /**
      * Sets the alignment rules in the relative container.
      * This API is valid only when the container is RelativeContainer.
+     * Sets the alignment rules for the component in a RelativeContainer.
      *
      * @param { ?AlignRuleOptions } value - The alignment rules
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -461,9 +485,10 @@ public interface CommonMethod<T> {
      * If only height and aspectRatio are set, the width is calculated using the following formula: height x aspectRatio.
      * If width, height, and aspectRatio are all set, the explicitly set height is ignored, and the effective height is calculated using the following formula: width/aspectRatio.
      * This parameter takes effect only when a valid value greater than 0 is specified.
+     * Sets the aspect ratio of the component.
      *
-     * @param { Float64 } value - The aspect ratio
-     * @returns { This } - Returns the component itself
+     * @param { Float64 } value - The aspect ratio (width/height)
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -474,9 +499,10 @@ public interface CommonMethod<T> {
     /**
      * Sets the display priority for the component in the layout container.
      * This parameter is only effective in Row, Column, and Flex (single-line) container components.
+     * Sets the display priority of the component.
      *
      * @param { ?Int32 } value - The display priority
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -486,9 +512,10 @@ public interface CommonMethod<T> {
 
     /**
      * Sets the base size of the component in the main axis of the parent container.
+     * Sets the flex basis of the component.
      *
-     * @param { ?Length } value - The base size
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } value - The base size in the main axis
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -498,10 +525,11 @@ public interface CommonMethod<T> {
 
     /**
      * Sets the percentage of the parent container's remaining space that is allocated to the component.
-     * Default value: **0**.
+     * Sets the flex grow factor of the component.
      *
-     * @param { ?Float64 } value - The percentage of remaining space
-     * @returns { This } - Returns the component itself
+     * @param { ?Float64 } value - The flex grow factor
+     * @default 0.0
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -511,10 +539,11 @@ public interface CommonMethod<T> {
 
     /**
      * Sets the percentage of the parent container's remaining space that is allocated to the component.
-     * Default value: **0**.
+     * Sets the flex grow factor of the component.
      *
-     * @param { ?Int64 } value - The percentage of remaining space
-     * @returns { This } - Returns the component itself
+     * @param { ?Int64 } value - The flex grow factor
+     * @default 0
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -525,9 +554,10 @@ public interface CommonMethod<T> {
     /**
      * Sets the percentage of the parent container's shrink size that is allocated to the component.
      * Default value: 0 when the parent container is Column or Row, 1 when the parent container is Flex.
+     * Sets the flex shrink factor of the component.
      *
-     * @param { ?Float64 } value - The percentage of shrink size
-     * @returns { This } - Returns the component itself
+     * @param { ?Float64 } value - The flex shrink factor
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -538,9 +568,10 @@ public interface CommonMethod<T> {
     /**
      * Sets the percentage of the parent container's shrink size that is allocated to the component.
      * Default value: 0 when the parent container is Column or Row, 1 when the parent container is Flex.
+     * Sets the flex shrink factor of the component.
      *
-     * @param { ?Int64 } value - The percentage of shrink size
-     * @returns { This } - Returns the component itself
+     * @param { ?Int64 } value - The flex shrink factor
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -550,10 +581,11 @@ public interface CommonMethod<T> {
 
     /**
      * Sets the alignment mode of the child components along the cross axis of the parent container.
-     * Default value: **ItemAlign.Auto**.
+     * Sets the alignment of the component along the cross axis.
      *
-     * @param { ?ItemAlign } value - The alignment mode
-     * @returns { This } - Returns the component itself
+     * @param { ?ItemAlign } value - The alignment mode along the cross axis
+     * @default ItemAlign.Auto
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -564,8 +596,8 @@ public interface CommonMethod<T> {
     /**
      * Sets the response region of the current component.
      *
-     * @param { ?Rectangle } value - The response region
-     * @returns { This } - Returns the component itself
+     * @param { ?Rectangle } value - The response region rectangle
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -576,8 +608,8 @@ public interface CommonMethod<T> {
     /**
      * Sets the response region of the current component.
      *
-     * @param { ?Array<Rectangle> } value - The response regions
-     * @returns { This } - Returns the component itself
+     * @param { ?Array<Rectangle> } value - Array of response region rectangles
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -586,13 +618,13 @@ public interface CommonMethod<T> {
     func responseRegion(value: ?Array<Rectangle>): T
 
     /**
-     * Sets the border.
+     * Sets all border properties at once.
      *
-     * @param { ?Length } width - The border width
-     * @param { ?ResourceColor } color - The border color
-     * @param { ?Length } radius - The border radius
-     * @param { ?BorderStyle } style - The border style
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } width - Border width
+     * @param { ?ResourceColor } color - Border color
+     * @param { ?Length } radius - Border radius
+     * @param { ?BorderStyle } style - Border style
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -602,11 +634,10 @@ public interface CommonMethod<T> {
         style!: ?BorderStyle): T
 
     /**
-     * Sets the border width.
-     * Percentage values are not supported.
+     * Sets uniform border width for all sides.
      *
-     * @param { ?Length } value - The border width
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } value - Border width for all sides
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -615,10 +646,10 @@ public interface CommonMethod<T> {
     func borderWidth(value: ?Length): T
 
     /**
-     * Sets the border width.
+     * Sets individual border widths for each side.
      *
-     * @param { ?EdgeWidths } value - The border widths
-     * @returns { This } - Returns the component itself
+     * @param { ?EdgeWidths } value - Border widths for each side
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -628,10 +659,10 @@ public interface CommonMethod<T> {
 
     /**
      * Sets the border color.
-     * Default value: **Color.Black**.
      *
-     * @param { ?ResourceColor } value - The border color
-     * @returns { This } - Returns the component itself
+     * @param { ?ResourceColor } value - Border color
+     * @default Color.Black
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -642,12 +673,13 @@ public interface CommonMethod<T> {
     /**
      * Sets the radius of the border rounded corners.
      * The radius is restricted by the component size. The maximum value is half of the component width or height.
+     * Sets individual border radius values for each corner.
      *
-     * @param { ?Length } topLeft - The top-left corner radius
-     * @param { ?Length } topRight - The top-right corner radius
-     * @param { ?Length } bottomLeft - The bottom-left corner radius
-     * @param { ?Length } bottomRight - The bottom-right corner radius
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } topLeft - Radius of the top-left corner
+     * @param { ?Length } topRight - Radius of the top-right corner
+     * @param { ?Length } bottomLeft - Radius of the bottom-left corner
+     * @param { ?Length } bottomRight - Radius of the bottom-right corner
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -659,9 +691,10 @@ public interface CommonMethod<T> {
     /**
      * Sets the radius of the border rounded corners.
      * The radius is restricted by the component size. The maximum value is half of the component width or height.
+     * Sets uniform border radius for all corners.
      *
-     * @param { ?Length } value - The border radius
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } value - Border radius for all corners
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -671,10 +704,10 @@ public interface CommonMethod<T> {
 
     /**
      * Sets the border style.
-     * Default value: **BorderStyle.Solid**.
      *
-     * @param { ?BorderStyle } value - The border style
-     * @returns { This } - Returns the component itself
+     * @param { ?BorderStyle } value - Border style
+     * @default BorderStyle.Solid
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -683,10 +716,10 @@ public interface CommonMethod<T> {
     func borderStyle(value: ?BorderStyle): T
 
     /**
-     * Applies a foreground blur style to the component.
+     * Applies a foreground blur effect.
      *
      * @param { ?BlurStyle } value - The blur style
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -695,11 +728,11 @@ public interface CommonMethod<T> {
     func foregroundBlurStyle(value: ?BlurStyle): T
 
     /**
-     * Applies a foreground blur style to the component.
+     * Applies a foreground blur effect with additional options.
      *
      * @param { ?BlurStyle } value - The blur style
-     * @param { ?ForegroundBlurStyleOptions } options - The blur style options
-     * @returns { This } - Returns the component itself
+     * @param { ?ForegroundBlurStyleOptions } options - Additional blur options
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -708,11 +741,11 @@ public interface CommonMethod<T> {
     func foregroundBlurStyle(value: ?BlurStyle, options: ?ForegroundBlurStyleOptions): T
 
     /**
-     * Sets the foreground color of the component.
      * If the component does not have a foreground color set, it inherits the color from its parent component by default.
+     * Sets the foreground color using a coloring strategy.
      *
-     * @param { ?ColoringStrategy } value - The foreground color strategy
-     * @returns { This } - Returns the component itself
+     * @param { ?ColoringStrategy } value - Foreground color strategy
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -721,11 +754,11 @@ public interface CommonMethod<T> {
     func foregroundColor(value: ?ColoringStrategy): T
 
     /**
-     * Sets the foreground color of the component.
      * If the component does not have a foreground color set, it inherits the color from its parent component by default.
+     * Sets the foreground color using a specific color.
      *
-     * @param { ?ResourceColor } value - The foreground color
-     * @returns { This } - Returns the component itself
+     * @param { ?ResourceColor } value - Foreground color
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -734,10 +767,11 @@ public interface CommonMethod<T> {
     func foregroundColor(value: ?ResourceColor): T
 
     /**
-     * Background color
+     * Background color.
+     * Sets the background color of the component.
      *
-     * @param { ?ResourceColor } value - The background color
-     * @returns { This } - Returns the component itself
+     * @param { ?ResourceColor } value - Background color
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -746,10 +780,10 @@ public interface CommonMethod<T> {
     func backgroundColor(value: ?ResourceColor): T
 
     /**
-     * Background image
+     * Sets the background image of the component.
      *
      * @param { ?ResourceStr } src - The background image source
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -758,10 +792,12 @@ public interface CommonMethod<T> {
     func backgroundImage(src: ?ResourceStr): T
 
     /**
-     * Background image
+     * Background image.
+     * Sets the background image of the component with repeat options.
+     *
      * @param { ?ResourceStr } src - The background image source
      * @param { ?ImageRepeat } repeat - How to repeat the background image
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -770,10 +806,10 @@ public interface CommonMethod<T> {
     func backgroundImage(src: ?ResourceStr, repeat: ?ImageRepeat): T
 
     /**
-     * Background image size
+     * Sets the size of the background image using ImageSize.
      *
      * @param { ?ImageSize } value - The width and height of the background image
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -782,11 +818,11 @@ public interface CommonMethod<T> {
     func backgroundImageSize(value: ?ImageSize): T
 
     /**
-     * Background image size
+     * Sets the size of the background image using width and height.
      *
-     * @param { ?Length } width - The width of the background image
-     * @param { ?Length } height - The height of the background image
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } width - Width of the background image
+     * @param { ?Length } height - Height of the background image
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -795,12 +831,13 @@ public interface CommonMethod<T> {
     func backgroundImageSize(width!: ?Length, height!: ?Length): T
 
     /**
-     * Background image position
+     * Background image position.
+     * Sets the position of the background image using Alignment.
      * x: Horizontal coordinate;
      * y: Vertical axis coordinate;
      *
-     * @param { ?Alignment } value - The alignment of the background image
-     * @returns { This } - Returns the component itself
+     * @param { ?Alignment } value - Alignment of the background image
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -809,13 +846,14 @@ public interface CommonMethod<T> {
     func backgroundImagePosition(value: ?Alignment): T
 
     /**
-     * Background image position
+     * Background image position.
+     * Sets the position of the background image using coordinates.
      * x: Horizontal coordinate;
      * y: Vertical axis coordinate;
      *
-     * @param { ?Length } x - The x-coordinate
-     * @param { ?Length } y - The y-coordinate
-     * @returns { This } - Returns the component itself
+     * @param { ?Length } x - Horizontal coordinate
+     * @param { ?Length } y - Vertical coordinate
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -824,17 +862,17 @@ public interface CommonMethod<T> {
     func backgroundImagePosition(x!: ?Length, y!: ?Length): T
 
     /**
-     * Scales the component.
      * Scale ratio along the x-, y-, and z-axis. The default value is **1**.
      * centerX and centerY are used to set the scale center point.
      * default:{x:1,y:1,z:1,centerX:'50%',centerY:'50%'}
+     * Sets the scale transformation of the component.
      *
      * @param { ?Float32 } x - Scale ratio along the x-axis
      * @param { ?Float32 } y - Scale ratio along the y-axis
      * @param { ?Float32 } z - Scale ratio along the z-axis
      * @param { ?Length } centerX - X coordinate of the scale center point
      * @param { ?Length } centerY - Y coordinate of the scale center point
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -846,8 +884,8 @@ public interface CommonMethod<T> {
     /**
      * Sets the opacity of the component.
      *
-     * @param { ?Float64 } value - Opacity of the component. The value ranges from 0 to 1.
-     * @returns { This } - Returns the component itself
+     * @param { ?Float64 } value - Opacity of the component. The value ranges from 0 to 1
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -857,6 +895,7 @@ public interface CommonMethod<T> {
 
     /**
      * Set component rotation.
+     * Sets the rotation transformation of the component.
      *
      * @param { ?Float64 } x - X component of the rotation vector
      * @param { ?Float64 } y - Y component of the rotation vector
@@ -864,7 +903,7 @@ public interface CommonMethod<T> {
      * @param { ?Float64 } angle - Rotation angle in degrees
      * @param { ?Length } centerX - X coordinate of the rotation center point
      * @param { ?Length } centerY - Y coordinate of the rotation center point
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -874,12 +913,12 @@ public interface CommonMethod<T> {
         centerX!: ?Length, centerY!: ?Length): T
 
     /**
-     * Sets the translation effect for page transitions.
+     * Sets the translation transformation of the component.
      *
      * @param { ?Length } x - Translation distance along the x-axis
      * @param { ?Length } y - Translation distance along the y-axis
      * @param { ?Length } z - Translation distance along the z-axis
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -890,9 +929,10 @@ public interface CommonMethod<T> {
     /**
      * If the value is true, the component is available and can respond to operations such as clicking.
      * If it is set to false, click operations are not responded.
+     * Sets whether the component is enabled.
      *
      * @param { ?Bool } value - Whether the component is enabled
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -905,10 +945,11 @@ public interface CommonMethod<T> {
      * The shared element transition is performed during transition.
      * If the parameter is set to an empty string, the shared element transition does not occur.
      * For details about the options parameter, see the options parameter description.
+     * Sets a shared transition for the component.
      *
      * @param { String } id - The shared transition ID
      * @param { ?SharedTransitionOptions } options - Shared transition options
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -917,11 +958,11 @@ public interface CommonMethod<T> {
     func sharedTransition(id: String, options!: ?SharedTransitionOptions): T
 
     /**
-     * Shared geometry transition
+     * Sets a geometry transition for the component.
      *
      * @param { ?String } id - Geometry transition ID
      * @param { ?Bool } followWithoutTransition - Whether to follow without transition
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -933,9 +974,10 @@ public interface CommonMethod<T> {
      * Adds the content blurring effect for the current component. The input parameter is the blurring radius.
      * The larger the blurring radius, the more blurring the content.
      * If the value is 0, the content blurring effect is not blurring.
+     * Applies a blur effect to the component.
      *
      * @param { ?Float64 } value - The blurring radius
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -947,7 +989,7 @@ public interface CommonMethod<T> {
      * Applies a color blend effect to the component.
      *
      * @param { ?ResourceColor } value - The blend color
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -959,7 +1001,7 @@ public interface CommonMethod<T> {
      * Applies a background blur effect to the component. You can customize the blur radius and grayscale parameters.
      *
      * @param { ?Float64 } value - The blurring radius
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -974,7 +1016,7 @@ public interface CommonMethod<T> {
      * @param { ?ResourceColor } color - Shadow color
      * @param { ?Float64 } offsetX - Shadow offset on the x-axis
      * @param { ?Float64 } offsetY - Shadow offset on the y-axis
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -987,7 +1029,7 @@ public interface CommonMethod<T> {
      * Applies a grayscale effect to the component.
      *
      * @param { ?Float64 } value - Grayscale value (0.0 to 1.0)
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1003,7 +1045,7 @@ public interface CommonMethod<T> {
      * <br> The value **0** indicates the complete darkness. If the value is less than **1**, the brightness decreases.
      * <br> If the value is greater than **1**, the brightness increases.
      * <br> A larger value indicates a higher brightness. A brightness of 2 turns the component completely white.
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1015,7 +1057,7 @@ public interface CommonMethod<T> {
      * Applies a saturation effect to the component.
      *
      * @param { ?Float64 } value - Saturation value
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1032,7 +1074,7 @@ public interface CommonMethod<T> {
      * <br> If the value is greater than 1, a larger value indicates a higher contrast and a clearer image.
      * <br> If the value is less than 1, a smaller value indicates a lower contrast is.
      * <br> If the value is **0**, the image becomes all gray. The unit is percentage.
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1045,7 +1087,7 @@ public interface CommonMethod<T> {
      * A value of 0% does not change the image. (Percentage)
      *
      * @param { ?Float64 } value - Value indicates the scale of the conversion or the options of invert
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1061,8 +1103,7 @@ public interface CommonMethod<T> {
      * @param { ?Float64 } high - Defines the high value of threshold
      * @param { ?Float64 } threshold - Defines the threshold
      * @param { ?Float64 } thresholdRange - Defines the threshold range
-     * @returns { This } - Returns the component itself
-     * @throws { BusinessException } 100001 - Internal error.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1071,11 +1112,11 @@ public interface CommonMethod<T> {
     func invert(low!: ?Float64, high!: ?Float64, threshold!: ?Float64, thresholdRange!: ?Float64): T
 
     /**
-     * Sepia conversion ratio of the component.
+     * Applies a sepia effect to the component.
      *
      * @param { ?Float64 } value - Sepia conversion ratio of the component. If the value is **1**, the image
      * <br> is completely sepia. If the value is **0**, the component remains unchanged.
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1084,10 +1125,10 @@ public interface CommonMethod<T> {
     func sepia(value: ?Float64): T
 
     /**
-     * Rotates the hue of the component.
+     * Applies a hue rotation effect to the component.
      *
      * @param { ?Float32 } value - Hue rotation angle of the component
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1099,7 +1140,7 @@ public interface CommonMethod<T> {
      * The sibling components in the same container are hierarchically displayed. A larger value of z indicates a higher display level.
      *
      * @param { ?Int32 } value - The z-index value
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1111,7 +1152,7 @@ public interface CommonMethod<T> {
      * Controls the display or hide of the current component.
      *
      * @param { ?Visibility } value - The visibility state
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1122,13 +1163,14 @@ public interface CommonMethod<T> {
     /**
      * Sets whether to clip the areas of child components that extend beyond this component's boundaries,
      * That is, whether to perform clipping based on the edge contour of the parent container.
+     * Sets whether to clip the component's content.
      *
      * @param { ?Bool } value - Whether to perform clipping based on the edge contour of the parent container.
      * <br>Default value: **false**.
      * <br>**true**: Perform clipping. **false**: Do not perform clipping.
      * <br>If this parameter is set to **true**.
      * <br>child components exceeding the current component's bounds will not respond to bound gesture events.
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1137,10 +1179,10 @@ public interface CommonMethod<T> {
     func clip(value: ?Bool): T
 
     /**
-     * Adds a mask of the specified shape to the component.
+     * Clips this component based on the given shape.
      *
      * @param { ?BaseShape } value - Shape that the component to be clipped into. The clipped area remains responsive to bound gesture events.
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1149,10 +1191,10 @@ public interface CommonMethod<T> {
     func clipShape(value: ?BaseShape): T
 
     /**
-     * Adds a mask of the specified shape to the component.
+     * Adds a mask to the component using a specific shape.
      *
      * @param { BaseShape } value - Mask of the specified shape to add to the component
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1166,8 +1208,7 @@ public interface CommonMethod<T> {
      * @param { ?String } value - The overlay text
      * @param { ?Alignment } align - The alignment of the overlay
      * @param { ?OverlayOffset } offset - The offset of the overlay
-     * @returns { This } - Returns the component itself
-     * @throws { BusinessException } 100001 - Internal error.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1184,7 +1225,7 @@ public interface CommonMethod<T> {
      *
      * @param { ?Bool } show - Whether to show the popup, default value is false
      * @param { ?PopupOptions } popup - Popup options
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1200,7 +1241,7 @@ public interface CommonMethod<T> {
      *
      * @param { ?Bool } show - Whether to show the popup, default value is false
      * @param { ?CustomPopupOptions } popup - Custom popup options
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1209,10 +1250,10 @@ public interface CommonMethod<T> {
     func bindPopup(show: ?Bool, popup: ?CustomPopupOptions): T
 
     /**
-     * Menu control
+     * Binds a menu to the component.
      *
      * @param { ?Array<MenuElement> } content - Indicates the content of menu
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1221,10 +1262,10 @@ public interface CommonMethod<T> {
     func bindMenu(content: ?Array<MenuElement>): T
 
     /**
-     * Menu control
+     * Binds a custom menu to the component.
      *
      * @param { ?CustomBuilder } builder - Custom menu builder
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1238,7 +1279,7 @@ public interface CommonMethod<T> {
      * @param { ?CustomBuilder } builder - Indicates the content of context menu
      * @param { ?ResponseType } responseType - Indicates response type of context menu, Long pressing with a mouse device is not supported
      * @param { ?ContextMenuOptions } options - Indicates the options of context menu
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1258,7 +1299,7 @@ public interface CommonMethod<T> {
      * @param { ?GradientDirection } direction - Defines the direction of linear gradient. The default value is GradientDirection.Bottom
      * @param { ?Array<(ResourceColor, Float64)> } colors - Defines color description for gradients
      * @param { ?Bool } repeating - Defines gradient colors with repeated coloring. The default value is false
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1268,7 +1309,7 @@ public interface CommonMethod<T> {
         colors!: ?Array<(ResourceColor, Float64)>, repeating!: ?Bool): T
 
     /**
-     * Creates a sweep gradient.
+     * Applies a sweep gradient to the component.
      *
      * @param { ?(Length, Length) } center - Defines center point for angle gradient
      * @param { ?Float64 } start - Defines the starting point of angle gradient. The default value is 0
@@ -1276,7 +1317,7 @@ public interface CommonMethod<T> {
      * @param { ?Float64 } rotation - Defines the rotation angle of the gradient. The default value is 0
      * @param { ?Array<(ResourceColor, Float64)> } colors - Defines color description for gradients
      * @param { ?Bool } repeating - Defines gradient colors with repeated coloring. The default value is false
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1287,13 +1328,13 @@ public interface CommonMethod<T> {
         repeating!: ?Bool): T
 
     /**
-     * Creates a radial gradient.
+     * Applies a radial gradient to the component.
      *
      * @param { ?(Length, Length) } center - Defines center point for radial gradient
      * @param { ?Length } radius - Defines radius of the radial gradient
      * @param { ?Array<(ResourceColor, Float64)> } colors - Defines color description for gradients
      * @param { ?Bool } repeating - Defines gradient colors with repeated coloring. The default value is false
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1303,11 +1344,11 @@ public interface CommonMethod<T> {
         repeating!: ?Bool): T
 
     /**
-     * Sets hot keys
+     * Sets a keyboard shortcut using a FunctionKey.
      *
      * @param { ?FunctionKey } value - The function key
      * @param { ?Array<ModifierKey> } keys - Modifier keys
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1316,11 +1357,11 @@ public interface CommonMethod<T> {
     func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>): T
 
     /**
-     * Sets hot keys
+     * Sets a keyboard shortcut using a string.
      *
      * @param { ?String } value - The key string
      * @param { ?Array<ModifierKey> } keys - Modifier keys
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1329,12 +1370,12 @@ public interface CommonMethod<T> {
     func keyboardShortcut(value: ?String, keys: ?Array<ModifierKey>): T
 
     /**
-     * Sets hot keys
+     * Sets a keyboard shortcut using a FunctionKey with a custom action.
      *
      * @param { ?FunctionKey } value - The function key
      * @param { ?Array<ModifierKey> } keys - Modifier keys
      * @param { ?() -> Unit } action - Custom action to execute
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1343,12 +1384,12 @@ public interface CommonMethod<T> {
     func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>, action: ?() -> Unit): T
 
     /**
-     * Sets hot keys
+     * Sets a keyboard shortcut using a string with a custom action.
      *
      * @param { ?String } value - The key string
      * @param { ?Array<ModifierKey> } keys - Modifier keys
      * @param { ?() -> Unit } action - Custom action to execute
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1360,7 +1401,7 @@ public interface CommonMethod<T> {
      * Key. User can set an key to the component to identify it.
      *
      * @param { ?String } value - The key value
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1371,9 +1412,9 @@ public interface CommonMethod<T> {
     /**
      * How the final state of the component's content is rendered during its width and height animation process.
      *
-     * @param { ?RenderFit } value - How the final state of the component's content is rendered during.
+     * @param { ?RenderFit } fitMode - How the final state of the component's content is rendered during.
      * @default RenderFit.TopLeft
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1385,7 +1426,7 @@ public interface CommonMethod<T> {
      * Id. User can set an id to the component to identify it.
      *
      * @param { ?String } value - The ID value
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1402,7 +1443,7 @@ public interface CommonMethod<T> {
      *
      * @param { ?Array<SafeAreaType> } types - Indicates the types of the safe area
      * @param { ?Array<SafeAreaEdge> } edges - Indicates the edges of the safe area
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself
      */
     @!APILevel[
         22,
@@ -1416,7 +1457,7 @@ public interface CommonMethod<T> {
      * @param { ?Bool } isShow - true means display content, false means hide content
      * @param { ?CustomBuilder } builder - the content to be displayed
      * @param { ?ContentCoverOptions } options - options of content cover
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself
      */
     @!APILevel[
         22,
@@ -1429,7 +1470,7 @@ public interface CommonMethod<T> {
      * animation
      *
      * @param { ?AnimateParam } value - The animation parameters
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself
      */
     @!APILevel[
         22,
@@ -1440,7 +1481,7 @@ public interface CommonMethod<T> {
     /**
      * animation
      *
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself
      */
     @!APILevel[
         22,
@@ -1452,7 +1493,7 @@ public interface CommonMethod<T> {
      * Set the transition effect of component when it appears and disappears.
      *
      * @param { ?TransitionEffect } value - The transition effect
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself
      */
     @!APILevel[
         22,
@@ -1465,7 +1506,7 @@ public interface CommonMethod<T> {
      *
      * @param { ?TransitionEffect } value - The transition effect
      * @param { ?TransitionFinishCallback } onFinish - Callback when transition finishes
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself
      */
     @!APILevel[
         22,
@@ -1477,9 +1518,10 @@ public interface CommonMethod<T> {
      * Set focusable.
      * Components that have default interaction logic, such as Button and TextInput, are focusable by default. Other
      * components, such as Text and Image, are not focusable by default. Only focusable components can trigger a focus event.
+     * Sets whether the component is focusable.
      *
      * @param { ?Bool } value - Whether the component is focusable
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1488,11 +1530,11 @@ public interface CommonMethod<T> {
     func focusable(value: ?Bool): T
 
     /**
-     * Set focus index by key tab.
      * The tabIndex and focusScopeId cannot be used together.
+     * Sets the tab index of the component.
      *
      * @param { ?Int32 } index - The tab index
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1501,10 +1543,10 @@ public interface CommonMethod<T> {
     func tabIndex(index: ?Int32): T
 
     /**
-     * Set default focused component when a page create.
+     * Sets whether the component is the default focus when the page is created.
      *
      * @param { ?Bool } value - Whether the component is the default focus
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1513,10 +1555,10 @@ public interface CommonMethod<T> {
     func defaultFocus(value: ?Bool): T
 
     /**
-     * Set default focused component when focus on a focus group.
+     * Sets whether the component is the default focus within a focus group.
      *
      * @param { ?Bool } value - Whether the component is the group default focus
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1525,10 +1567,10 @@ public interface CommonMethod<T> {
     func groupDefaultFocus(value: ?Bool): T
 
     /**
-     * Set a component focused when the component be touched.
+     * Sets whether the component should receive focus when touched.
      *
      * @param { ?Bool } value - Whether to focus on touch
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1542,7 +1584,7 @@ public interface CommonMethod<T> {
      * @param { ?Bool } isShow - true means display sheet, false means hide sheet
      * @param { CustomBuilder } builder - the sheet to be displayed
      * @param { ?SheetOptions } options - options of sheet
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,
@@ -1551,10 +1593,10 @@ public interface CommonMethod<T> {
     func bindSheet(isShow: ?Bool, builder: CustomBuilder, options!: ?SheetOptions): T
 
     /**
-     * Set preview of the component for dragging process
+     * Set preview of the component for dragging process.
      *
      * @param { String } value - preview of the component for dragging process
-     * @returns { This } - Returns the component itself
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         22,

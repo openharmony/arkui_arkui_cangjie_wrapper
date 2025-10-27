@@ -252,10 +252,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Select the text text style.
      *
-     * @param { ?Length } size - The selected item font size.
-     * @param { ?FontWeight } weight - The selected item font weight.
-     * @param { ?ResourceStr } family - The selected item font family.
-     * @param { ?FontStyle } style - The selected item font style.
+     * @param { ?Length } [size] - The selected item font size.
+     * @param { ?FontWeight } [weight] - The selected item font weight.
+     * @param { ?ResourceStr } [family] - The selected item font family.
+     * @param { ?FontStyle } [style] - The selected item font style.
      * @returns { This } Returns the current AlphabetIndexer instance.
      */
     @!APILevel[
@@ -285,14 +285,14 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
         }
         this
     }
- 
-    /**	
-     * Select the text background color.	
-     *	
-     * @param { ?Length } size - The popup font size.
-     * @param { ?FontWeight } weight - The popup font weight.
-     * @param { ?ResourceStr } family - The popup font family.
-     * @param { ?FontStyle } style - The popup font style.
+
+    /**
+     * Select the text background color.
+     *
+     * @param { ?Length } [size] - The popup font size.
+     * @param { ?FontWeight } [weight] - The popup font weight.
+     * @param { ?ResourceStr } [family] - The popup font family.
+     * @param { ?FontStyle } [style] - The popup font style.
      * @returns { This } Returns the current AlphabetIndexer instance.
      */
     @!APILevel[
@@ -363,7 +363,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Size of the letter area on the letter index bar. The letter area is a square. Set the length of the square side.
      *
-     * @param { ?Length } value - The normal item size.
+     * @param { ?Length } size - The normal item size.
      * @returns { This } Returns the current AlphabetIndexer instance.
      */
     @!APILevel[

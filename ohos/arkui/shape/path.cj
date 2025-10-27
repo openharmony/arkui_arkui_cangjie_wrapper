@@ -40,7 +40,7 @@ public class PathShape <: BaseShape {
     /**
      * Initializes a path shape with optional path commands.
      *
-     * @param { ?ResourceStr } commands - Path drawing commands in SVG path format.
+     * @param { ?ResourceStr } [commands] - Path drawing commands in SVG path format.
      * @returns { PathShape } Returns the PathShape instance.
      */
     @!APILevel[
@@ -64,7 +64,7 @@ public class PathShape <: BaseShape {
      *
      * @param { ?Length } width - Width of the path shape.
      * @param { ?Length } height - Height of the path shape.
-     * @param { ?ResourceStr } commands - Path drawing commands in SVG path format.
+     * @param { ?ResourceStr } [commands] - Path drawing commands in SVG path format.
      */
     @!APILevel[
         22,

@@ -96,7 +96,7 @@ public class ImageData <: RemoteDataLite {
      * @param { ?Float64 } width - Width of the image.
      * @param { ?Float64 } height - Height of the image.
      * @param { ?Array<UInt8> } data - Data of the image. If this parameter is not specified, the default value is a black rectangular image.
-     * @param { ?LengthMetricsUnit } unit - the unit mode
+     * @param { ?LengthMetricsUnit } [unit] - the unit mode
      */
     @!APILevel[
         22,
@@ -126,7 +126,7 @@ public class ImageData <: RemoteDataLite {
      *
      * @param { ?Float64 } width - Width of the image.
      * @param { ?Float64 } height - Height of the image.
-     * @param { ?LengthMetricsUnit } unit - the unit mode.
+     * @param { ?LengthMetricsUnit } [unit] - the unit mode.
      */
     @!APILevel[
         22,

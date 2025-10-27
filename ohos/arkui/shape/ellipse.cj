@@ -35,8 +35,8 @@ public class EllipseShape <: BaseShape {
     /**
      * Initializes an elliptical shape with optional width and height parameters.
      *
-     * @param { ?Length } width - Width of the ellipse.
-     * @param { ?Length } height - Height of the ellipse.
+     * @param { ?Length } [width] - Width of the ellipse.
+     * @param { ?Length } [height] - Height of the ellipse.
      * @returns { EllipseShape } Returns the EllipseShape instance.
      */
     @!APILevel[

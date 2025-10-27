@@ -129,7 +129,7 @@ public class LengthMetrics <: Length {
      * LengthMetrics constructor.
      *
      * @param { Float64 } value - The value of length
-     * @param { LengthUnit } unit - The unit of length
+     * @param { LengthUnit } [unit] - The unit of length
      * @default unit - LengthUnit.Vp
      */
     @!APILevel[

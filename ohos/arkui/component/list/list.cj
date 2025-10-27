@@ -208,9 +208,9 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Defines the constructor of List.
      *
-     * @param { ?Int64 } space - The space between items.
-     * @param { ?Int32 } initialIndex - The initial index of the list.
-     * @param { ?Scroller } scroller - The scroller instance.
+     * @param { ?Int64 } [space] - The space between items.
+     * @param { ?Int32 } [initialIndex] - The initial index of the list.
+     * @param { ?Scroller } [scroller] - The scroller instance.
      * @param { () -> Unit } child - The child component builder.
      */
     @!APILevel[

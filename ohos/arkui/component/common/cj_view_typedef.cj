@@ -261,10 +261,10 @@ public class ForegroundBlurStyleOptions {
     /**
      * ForegroundBlurStyleOptions constructor.
      *
-     * @param { ?ThemeColorMode } colorMode
-     * @param { ?AdaptiveColor } adaptiveColor
-     * @param { ?BlurOptions } blurOptions
-     * @param { ?Float32 } scale
+     * @param { ?ThemeColorMode } [colorMode] - Color mode used for the foreground blur
+     * @param { ?AdaptiveColor } [adaptiveColor] - Adaptive color mode
+     * @param { ?BlurOptions } [blurOptions] - Blur options
+     * @param { ?Float32 } [scale] - Foreground blur scale
      */
     @!APILevel[
         22,
@@ -298,8 +298,8 @@ public class PopupButton {
     /**
      * PopupButton constructor.
      *
-     * @param { ?String } value - Button text value
-     * @param { () -> Unit } action - action
+     * @param { ?String } [value] - Button text value.
+     * @param { () -> Unit } action - Action to be executed when the button is clicked.
      */
     @!APILevel[
         22,
@@ -564,6 +564,8 @@ public class PopupOptions {
 
     /**
      * Determine if popup can follow the target node when it has rotation or scale.
+     * Controls whether the popup follows its target when the target is transformed.
+     * @default false
      */
     @!APILevel[
         22,
@@ -572,32 +574,32 @@ public class PopupOptions {
     public var followTransformOfTarget: ?Bool
 
     /**
-     * PopupOptions constructor.
+     * Creates a new PopupOptions instance with the specified properties.
      *
-     * @param { ?String } message
-     * @param { ?PopupButton } primaryButton
-     * @param { ?PopupButton } secondaryButton
-     * @param { ?(PopupStateChangeParam) -> Unit } onStateChange
-     * @param { ?Length } arrowOffset
-     * @param { ?Bool } showInSubWindow
-     * @param { ?PopupMessageOptions } messageOptions
-     * @param { ?ResourceColor } mask
-     * @param { ?Length } targetSpace
-     * @param { ?Placement } placement
-     * @param { ?Position } offset
-     * @param { ?Bool } enableArrow
-     * @param { ?Color } popupColor
-     * @param { ?Bool } autoCancel
-     * @param { ?Length } width
-     * @param { ?ArrowPointPosition } arrowPointPosition
-     * @param { ?Length } arrowWidth
-     * @param { ?Length } arrowHeight
-     * @param { ?Length } radius
-     * @param { ?ShadowStyle } shadow
-     * @param { ?BlurStyle } backgroundBlurStyle
-     * @param { ?TransitionEffect } transition
-     * @param { ?(DismissPopupAction) -> Unit } onWillDismiss
-     * @param { ?Bool } followTransformOfTarget
+     * @param { ?String } message - Content of the popup message
+     * @param { ?PopupButton } [primaryButton] - The first button
+     * @param { ?PopupButton } [secondaryButton] - The second button
+     * @param { ?(PopupStateChangeParam) -> Unit } [onStateChange] - on State Change callback
+     * @param { ?Length } [arrowOffset] - The offset of the sharp corner of popup
+     * @param { ?Bool } [showInSubWindow] - Whether to display in the sub window
+     * @param { ?PopupMessageOptions } [messageOptions] - Parameters of the popup message
+     * @param { ?ResourceColor } [mask] - Whether to apply a mask to the popup
+     * @param { ?Length } [targetSpace] - Sets the space of between the popup and target
+     * @param { ?Placement } [placement] - The placement of popup
+     * @param { ?Position } [offset] - Sets the position offset of the popup
+     * @param { ?Bool } [enableArrow] - whether show arrow
+     * @param { ?Color } [popupColor] - Sets the position offset of the popup
+     * @param { ?Bool } [autoCancel] - Whether hide popup when click mask
+     * @param { ?Length } [width] - Set the width of the popup
+     * @param { ?ArrowPointPosition } [arrowPointPosition] - The position of the sharp corner of popup
+     * @param { ?Length } [arrowWidth] - The width of the arrow
+     * @param { ?Length } [arrowHeight] - The height of the arrow
+     * @param { ?Length } [radius] - The round corners of the popup
+     * @param { ?ShadowStyle } [shadow] - The style of popup Shadow
+     * @param { ?BlurStyle } [backgroundBlurStyle] - Defines popup background blur Style
+     * @param { ?TransitionEffect } [transition] - Defines the transition effect of popup opening and closing
+     * @param { ?(DismissPopupAction) -> Unit } [onWillDismiss] - Callback function when the popup interactive dismiss
+     * @param { ?Bool } [followTransformOfTarget] - Determine if popup can follow the target node when it has rotation or scale
      */
     @!APILevel[
         22,
@@ -658,7 +660,7 @@ public class PopupOptions {
 
 /**
  * Defines the menu element.
- *
+ * Represents an item in a menu.
  */
 @!APILevel[
     22,
@@ -670,11 +672,13 @@ public class MenuElement {
 
     let icon: ResourceStr = ""
     let enabled: Bool = true
+
     /**
      * MenuElement constructor.
+     * Creates a new MenuElement instance with the specified properties.
      *
-     * @param { ?ResourceStr } value
-     * @param { () -> Unit } action - action
+     * @param { ?ResourceStr } value - Text value of the menu element
+     * @param { () -> Unit } action - Action to be executed when the menu element is selected
      */
     @!APILevel[
         22,
@@ -688,7 +692,7 @@ public class MenuElement {
 
 /**
  * Defines the custom popup options.
- *
+ * Configuration options for custom popup components.
  */
 @!APILevel[
     22,
@@ -703,7 +707,7 @@ public class CustomPopupOptions {
      * <br>If a custom component is used in the builder, the aboutToAppear and aboutToDisappear lifecycle callbacks
      * of the custom component are irrelevant to the visibility of the popup. As such, the lifecycle of the
      * custom component cannot be used to determine whether the popup is displayed or not.
-     *
+     * Function that builds the content of the custom popup.
      */
     @!APILevel[
         22,
@@ -714,7 +718,7 @@ public class CustomPopupOptions {
     /**
      * Preferred position of the popup. If the set position is insufficient for holding the popup,
      * it will be automatically adjusted.
-     *
+     * @default Placement.Bottom.
      */
     @!APILevel[
         22,
@@ -724,7 +728,7 @@ public class CustomPopupOptions {
 
     /**
      * backgroundColor of popup.
-     *
+     * Controls the background color of the popup.
      */
     @!APILevel[
         22,
@@ -733,8 +737,8 @@ public class CustomPopupOptions {
     public var backgroundColor: ?Color
 
     /**
-     * Whether show arrow.
-     *
+     * Controls whether to display the popup's arrow/indicator.
+     * @default true
      */
     @!APILevel[
         22,
@@ -747,31 +751,36 @@ public class CustomPopupOptions {
      * <br>To enable the popup to disappear upon a click on it, place a layout component in the builder place the
      * <Popup> component in the layout component, and modify the value of the bindPopup variable (show: boolean)
      * in the onClick event of the layout component.
-     *
+     * Controls whether the popup is automatically dismissed.
+     * @default true
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: ?Bool
+
     /**
      * on State Change.
-     *
+     * Callback function triggered when the popup state changes.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onStateChange: Option<(PopupStateChangeParam) -> Unit>
+
     /**
-     * Color of the popup. To remove the background blur, set backgroundBlurStyle to BlurStyle.NONE.
-     *
+     * Color of the popup. To remove the background blur, set backgroundBlurStyle to BlurStyle.None.
+     * Controls the color of the popup.
+     * @default: 0x4d4d4d
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var popupColor: ?Color
+
     /**
      * The offset of the sharp corner of popup.
      *
@@ -781,7 +790,7 @@ public class CustomPopupOptions {
      * side of the popup: The value indicates the distance from the arrow to the top; the arrow is centered by
      * default. When the popup is displayed on either edge of the screen, it will automatically deviate leftward
      * or rightward to stay within the safe area. When the value is 0, the arrow always points to the bound component.
-     *
+     * Controls the position of the popup's arrow/indicator.
      */
     @!APILevel[
         22,
@@ -791,122 +800,142 @@ public class CustomPopupOptions {
 
     /**
      * Whether to display in the sub window.
-     *
+     * Controls whether the popup appears in a separate window.
+     * @default false.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: ?Bool
+
     /**
      * Whether to apply a mask to the popup.
-     *
+     * Controls the background mask of the popup.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var mask: ?Color
+
     /**
      * Sets the space of between the popup and target.
-     *
+     * Controls the spacing between the popup and its target element.
+     * @default 8.vp
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var targetSpace: ?Length
+
     /**
      * Sets the position offset of the popup.
-     *
+     * Additional offset for the popup position.
+     * @default Position(x: 0, y:0)
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Position
+
     /**
      * Set the width of the popup.
-     *
+     * Controls the width of the popup.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
+
     /**
      * Position of the popup arrow relative to its parent component. Available positions are Start, Center, and End,
      * in both vertical and horizontal directions. All these positions are within the parent component area.
-     *
+     * Controls the position of the popup's arrow/indicator.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowPointPosition: Option<ArrowPointPosition>
+
     /**
      * Arrow thickness. If the arrow thickness exceeds the length of the edge minus twice the size of the popup
      * rounded corner, the arrow is not drawn.
-     *
+     * @default 16.vp.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowWidth: ?Length
+
     /**
-     * The height of the arrow.
-     *
+     * Controls the height of the popup's arrow/indicator.
+     * @default 8.vp.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var arrowHeight: ?Length
+
     /**
-     * The round corners of the popup.
-     *
+     * Controls the corner radius of the popup.
+     * @default 20.vp
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var radius: ?Length
+
     /**
      * The style of popup Shadow.
+     * Controls the shadow style of the popup.
+     * @default ShadowStyle.OuterDefaultMD
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowStyle
+
     /**
-     * Background blur style of the popup.
+     * Controls the background blur effect of the popup.
+     * @default BlurStyle.ComponentUltraThick
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
+
     /**
-     * Set popup focusable.
+     * Controls whether the popup can receive focus.
+     * @default true
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var focusable: ?Bool
+
     /**
      * Defines the transition effect of popup opening and closing.
-     *
+     * Controls the animation when the popup opens or closes.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: Option<TransitionEffect>
+
     /**
-     * * Whether to perform dismissal event interception and interception callback.
+     * Whether to perform dismissal event interception and interception callback.
      * 1. If this parameter is set to false, the system does not respond to the dismissal event initiated by
      * touching the Back button, swiping left or right on the screen, or pressing the Esc key; and the system
      * dismisses the popup only when show is set to false. If this parameter is set to true, the system responds
@@ -919,41 +948,43 @@ public class CustomPopupOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDismiss: Option<(DismissPopupAction) -> Unit>
+
     /**
      * Determine if popup can follow the target node when it has rotation or scale.
-     *
+     * @default false
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var followTransformOfTarget: ?Bool
+
     /**
-     * CustomPopupOptions constructor.
+     * Creates a new CustomPopupOptions instance with the specified properties.
      *
-     * @param { () -> Unit } builder
-     * @param { ?Placement } placement
-     * @param { ?Color } backgroundColor
-     * @param { ?Bool } enableArrow
-     * @param { ?Bool } autoCancel
-     * @param { ?(PopupStateChangeParam) -> Unit } onStateChange
-     * @param { ?Bool } showInSubWindow
-     * @param { ?Color } backgroundColor
-     * @param { ?Length } arrowOffset
-     * @param { ?Color } mask
-     * @param { ?Length } targetSpace
-     * @param { ?Position } offset
-     * @param { ?Length } width
-     * @param { ?ArrowPointPosition } arrowPointPosition
-     * @param { ?Length } arrowWidth
-     * @param { ?Length } arrowHeight
-     * @param { ?Length } radius
-     * @param { ?ShadowStyle } shadow
-     * @param { ?BlurStyle } backgroundBlurStyle
-     * @param { ?Bool } focusable
-     * @param { ?TransitionEffect } transition
-     * @param { Option<(DismissPopupAction) -> Unit> } onWillDismiss
-     * @param { ?Bool } followTransformOfTarget
+     * @param { () -> Unit } builder - Popup builder function
+     * @param { ?Placement } [placement] - Preferred position of the popup
+     * @param { ?Color } [backgroundColor] - backgroundColor of popup
+     * @param { ?Bool } [enableArrow] - Whether show arrow
+     * @param { ?Bool } [autoCancel] - Whether to automatically dismiss the popup
+     * @param { ?(PopupStateChangeParam) -> Unit } [onStateChange] - on State Change callback
+     * @param { ?Bool } [showInSubWindow] - Whether to display in the sub window
+     * @param { ?Color } [backgroundColor] - backgroundColor of popup
+     * @param { ?Length } [arrowOffset] - The offset of the sharp corner of popup
+     * @param { ?Color } [mask] - Whether to apply a mask to the popup
+     * @param { ?Length } [targetSpace] - Sets the space of between the popup and target
+     * @param { ?Position } [offset] - Sets the position offset of the popup
+     * @param { ?Length } [width] - Set the width of the popup
+     * @param { ?ArrowPointPosition } [arrowPointPosition] - Position of the popup arrow relative to its parent component
+     * @param { ?Length } [arrowWidth] - Arrow thickness
+     * @param { ?Length } [arrowHeight] - The height of the arrow
+     * @param { ?Length } [radius] - The round corners of the popup
+     * @param { ?ShadowStyle } [shadow] - The style of popup Shadow
+     * @param { ?BlurStyle } [backgroundBlurStyle] - Background blur style of the popup
+     * @param { ?Bool } [focusable] - Set popup focusable
+     * @param { ?TransitionEffect } [transition] - Defines the transition effect of popup opening and closing
+     * @param { Option<(DismissPopupAction) -> Unit> } [onWillDismiss] - Whether to perform dismissal event interception and interception callback
+     * @param { ?Bool } [followTransformOfTarget] - Determine if popup can follow the target node when it has rotation or scale
      */
     @!APILevel[
         22,
@@ -1012,7 +1043,7 @@ public class CustomPopupOptions {
 
 /**
  * Defines the options of popup message.
- *
+ * Configuration options for popup message styling.
  */
 @!APILevel[
     22,
@@ -1021,27 +1052,30 @@ public class CustomPopupOptions {
 public class PopupMessageOptions {
     /**
      * Sets the color of popup text.
-     *
+     * Controls the text color in popup messages.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var textColor: ?ResourceColor
+
     /**
-     * Sets the color of popup text.
-     *
+     * Sets the font of popup text.
+     * Controls the font styling of popup messages.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var font: ?Font
+
     /**
      * PopupMessageOptions constructor.
+     * Creates a new PopupMessageOptions instance with the specified properties.
      *
-     * @param { ?ResourceColor } textColor
-     * @param { ?Font } font
+     * @param { ?ResourceColor } [textColor] - Sets the color of popup text
+     * @param { ?Font } [font] - Sets the font of popup text
      */
     @!APILevel[
         22,
@@ -1055,7 +1089,7 @@ public class PopupMessageOptions {
 
 /**
  * Defines the OverlayOffset.
- *
+ * Represents offset values for overlay positioning.
  */
 @!APILevel[
     22,
@@ -1063,17 +1097,18 @@ public class PopupMessageOptions {
 ]
 public class OverlayOffset {
     /**
-     * Defines x.
-     *
+     * Defines x coordinate offset.
+     * Horizontal offset value for overlay positioning.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Float64
+
     /**
-     * Defines y.
-     *
+     * Defines y coordinate offset.
+     * Vertical offset value for overlay positioning.
      */
     @!APILevel[
         22,
@@ -1083,9 +1118,10 @@ public class OverlayOffset {
 
     /**
      * OverlayOffset constructor.
+     * Creates a new OverlayOffset instance with the specified properties.
      *
-     * @param { ?Float64 } x
-     * @param { ?Float64 } y
+     * @param { ?Float64 } [x] - Defines x coordinate offset
+     * @param { ?Float64 } [y] - Defines y coordinate offset
      */
     @!APILevel[
         22,
@@ -1099,7 +1135,7 @@ public class OverlayOffset {
 
 /**
  * Defines the border width property.
- *
+ * Represents border width values for each edge of a component.
  */
 @!APILevel[
     22,
@@ -1108,47 +1144,52 @@ public class OverlayOffset {
 public class EdgeWidths {
     /**
      * top property.
-     *
+     * Border width for the top edge.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var top: ?Length
+
     /**
      * right property.
-     *
+     * Border width for the right edge.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var right: ?Length
+
     /**
      * bottom property.
-     *
+     * Border width for the bottom edge.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var bottom: ?Length
+
     /**
      * left property.
-     *
+     * Border width for the left edge.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var left: ?Length
+
     /**
      * EdgeWidths constructor.
+     * Creates a new EdgeWidths instance with the specified properties.
      *
-     * @param { ?Length } top
-     * @param { ?Length } right
-     * @param { ?Length } bottom
-     * @param { ?Length } left
+     * @param { ?Length } [top] - top property
+     * @param { ?Length } [right] - right property
+     * @param { ?Length } [bottom] - bottom property
+     * @param { ?Length } [left] - left property
      */
     @!APILevel[
         22,
@@ -1168,7 +1209,7 @@ public class EdgeWidths {
 
 /**
  * Overlay module options.
- *
+ * Base class for overlay-related configuration options.
  */
 @!APILevel[
     22,
@@ -1183,12 +1224,13 @@ public open class BindOptions {
 
     /**
      * BindOptions constructor.
+     * Creates a new BindOptions instance with the specified properties.
      *
-     * @param {ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
-     * @param {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
-     * @param {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
-     * @param {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
-     * @param {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
+     * @param {ResourceColor} [backgroundColor] - Background color of the sheet. Default value: **Color.White**.
+     * @param {?() -> Unit} [onAppear] - Callback for when the sheet is displayed (after the animation ends).
+     * @param {?() -> Unit} [onDisappear] - Callback for when the sheet disappears (after the animation ends).
+     * @param {?() -> Unit} [onWillAppear] - Callback for when the sheet is about to be displayed (before the animation starts).
+     * @param {?() -> Unit} [onWillDisappear] - Callback function before overlay popAnimation starts.
      */
     @!APILevel[
         22,
@@ -1228,7 +1270,7 @@ public open class BindOptions {
 
 /**
  * Component content cover options.
- *
+ * Configuration options for content cover components.
  */
 @!APILevel[
     22,
@@ -1238,17 +1280,19 @@ public class ContentCoverOptions <: BindOptions {
     let modalTransition: ModalTransition
     let onWillDismiss: Option<(DismissContentCoverAction) -> Unit>
     let transition: Option<TransitionEffect>
+
     /**
      * ContentCoverOptions constructor.
+     * Creates a new ContentCoverOptions instance with the specified properties.
      *
-     * @param {?ModalTransition} modalTransition - Defines transition type
-     * @param {?(DismissContentCoverAction) -> Unit} onWillDismiss - Callback function when the content cover interactive dismiss.
-     * @param {?TransitionEffect} transition
-     * @param {?ResourceColor} backgroundColor - Background color of the sheet. Default value: **Color.White**.
-     * @param {?() -> Unit} onAppear - Callback for when the sheet is displayed (after the animation ends).
-     * @param {?() -> Unit} onDisappear - Callback for when the sheet disappears (after the animation ends).
-     * @param {?() -> Unit} onWillAppear - Callback for when the sheet is about to be displayed (before the animation starts).
-     * @param {?() -> Unit} onWillDisappear - Callback function before overlay popAnimation starts.
+     * @param {?ModalTransition} [modalTransition] - Defines transition type. The default value is ModalTransition.Default.
+     * @param {?(DismissContentCoverAction) -> Unit} [onWillDismiss] - Callback function when the content cover interactive dismiss.
+     * @param {?TransitionEffect} [transition] - Defines the transition effect
+     * @param {?ResourceColor} [backgroundColor] - Background color of the sheet. Default value: **Color.White**.
+     * @param {?() -> Unit} [onAppear] - Callback for when the sheet is displayed (after the animation ends).
+     * @param {?() -> Unit} [onDisappear] - Callback for when the sheet disappears (after the animation ends).
+     * @param {?() -> Unit} [onWillAppear] - Callback for when the sheet is about to be displayed (before the animation starts).
+     * @param {?() -> Unit} [onWillDisappear] - Callback function before overlay popAnimation starts.
      */
     @!APILevel[
         22,
@@ -1311,7 +1355,7 @@ public class ContentCoverOptions <: BindOptions {
 
 /**
  * Component sheet dismiss.
- *
+ * Provides functionality to dismiss a sheet component.
  */
 @!APILevel[
     22,
@@ -1322,7 +1366,7 @@ public class SheetDismiss {
 
     /**
      * Defines sheet dismiss function.
-     *
+     * Programmatically dismisses the sheet.
      */
     @!APILevel[
         22,
@@ -1337,7 +1381,7 @@ public class SheetDismiss {
 
 /**
  * Defines sheet spring back action.
- *
+ * Provides functionality for spring back animations in sheet components.
  */
 @!APILevel[
     22,
@@ -1348,7 +1392,7 @@ public class SpringBackAction {
 
     /**
      * Defines spring back function.
-     *
+     * Triggers a spring back animation.
      */
     @!APILevel[
         22,
@@ -1363,7 +1407,7 @@ public class SpringBackAction {
 
 /**
  * Define the display mode of the sheet.
- *
+ * This enum specifies how sheets are displayed in the UI.
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1374,7 +1418,7 @@ public enum SheetMode {
     /**
      * The sheet is displayed at the top of the window corresponding to the current **UIContext** instance,
      * above all pages. It is displayed at the same level as dialog boxes.
-     *
+     * Overlay mode displays the sheet above all other content.
      */
     @!APILevel[
         22,
@@ -1384,7 +1428,7 @@ public enum SheetMode {
     |
     /**
      * The sheet is displayed at the top of the current page.
-     *
+     * Embedded mode displays the sheet within the current page context.
      */
     @!APILevel[
         22,
@@ -1414,7 +1458,7 @@ public enum SheetMode {
 
 /**
  * Define the scroll size mode of the sheet.
- *
+ * This enum specifies how sheet size changes during scrolling.
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1424,7 +1468,7 @@ public enum SheetMode {
 public enum ScrollSizeMode {
     /**
      * Sheet change scroll size after the slide ends.
-     *
+     * Size changes occur after scrolling completes.
      */
     @!APILevel[
         22,
@@ -1434,7 +1478,7 @@ public enum ScrollSizeMode {
     |
     /**
      * Sheet change scroll size during the sliding process.
-     *
+     * Size changes occur continuously during scrolling.
      */
     @!APILevel[
         22,
@@ -1482,7 +1526,7 @@ func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadow {
 
 /**
  * Component sheet options.
- *
+ * Configuration options for sheet components.
  */
 @!APILevel[
     22,
@@ -1515,35 +1559,36 @@ public class SheetOptions <: BindOptions {
 
     /**
      * Defines sheet options.
+     * Creates a new SheetOptions instance with the specified properties.
      *
-     * @param { Option<ResourceColor> } backgroundColor
-     * @param { Option<() -> Unit> } onAppear
-     * @param { Option<() -> Unit> } onDisappear
-     * @param { Option<() -> Unit> } onWillAppear
-     * @param { Option<() -> Unit> } onWillDisappear
-     * @param { Option<SheetSize> } height
-     * @param { Option<Array<SheetSize>> } detents
-     * @param { Option<SheetType> } preferType
-     * @param { Option<Bool> } showClose
-     * @param { Option<Bool> } dragBar
-     * @param { Option<BlurStyle> } blurStyle
-     * @param { Option<Color> } maskColor
-     * @param { Option<() -> Unit> } title
-     * @param { Option<Bool> } enableOutsideInteractive
-     * @param { Option<(SheetDismiss) -> Unit> } shouldDismiss
-     * @param { Option<(SheetDismiss) -> Unit> } onWillDismiss
-     * @param { Option<(SpringBackAction) -> Unit> } onWillSpringBackWhenDismiss
-     * @param { Option<(Float32) -> Unit> } onHeightDidChange
-     * @param { Option<(Float32) -> Unit> } onDetentsDidChange
-     * @param { Option<(Float32) -> Unit> } onWidthDidChange
-     * @param { Option<(Float32) -> Unit> } onTypeDidChange
-     * @param { Option<Length> } borderWidth
-     * @param { Option<Color> } borderColor
-     * @param { Option<EdgeStyles> } borderStyle
-     * @param { Option<Length> } width
-     * @param { Option<ShadowOptions> } shadow
-     * @param { Option<SheetMode> } mode
-     * @param { Option<ScrollSizeMode> } scrollSizeMode
+     * @param { Option<ResourceColor> } [backgroundColor] - Background color of the sheet
+     * @param { Option<() -> Unit> } [onAppear] - Callback for when the sheet is displayed (after the animation ends)
+     * @param { Option<() -> Unit> } [onDisappear] - Callback for when the sheet disappears (after the animation ends)
+     * @param { Option<() -> Unit> } [onWillAppear] - Callback for when the sheet is about to be displayed (before the animation starts)
+     * @param { Option<() -> Unit> } [onWillDisappear] - Callback function before overlay popAnimation starts
+     * @param { Option<SheetSize> } [height] - Whether to display the drag bar. The default value is SheetSize.Large
+     * @param { Option<Array<SheetSize>> } [detents] - Defines sheet detents
+     * @param { Option<SheetType> } [preferType] - Type of the sheet
+     * @param { Option<Bool> } [showClose] - Defines whether the close icon is displayed. The default value is true
+     * @param { Option<Bool> } [dragBar] - Whether to display the drag bar. The default value is true
+     * @param { Option<BlurStyle> } [blurStyle] - Background blur of the sheet. By default, there is no background blur, the default value is BlurStyle.None
+     * @param { Option<Color> } [maskColor] - Mask color of the sheet
+     * @param { Option<() -> Unit> } [title] - Title of the sheet
+     * @param { Option<Bool> } [enableOutsideInteractive] - Whether to allow users to interact with the page pertaining to the sheet. The default value is false
+     * @param { Option<(SheetDismiss) -> Unit> } [shouldDismiss] - Callback invoked when the user performs an interactive dismiss operation
+     * @param { Option<(SheetDismiss) -> Unit> } [onWillDismiss] - Callback invoked when the user performs an interactive dismiss operation
+     * @param { Option<(SpringBackAction) -> Unit> } [onWillSpringBackWhenDismiss] - Callback invoked when the user performs a pull-down-to-dismiss gesture, to control the bounce effect
+     * @param { Option<(Float32) -> Unit> } [onHeightDidChange] - Callback for changes in the height of the sheet
+     * @param { Option<(Float32) -> Unit> } [onDetentsDidChange] - Callback for changes in the detents of the sheet
+     * @param { Option<(Float32) -> Unit> } [onWidthDidChange] - Called when width of the sheet changed
+     * @param { Option<(Float32) -> Unit> } [onTypeDidChange] - Called when the sheet type changed
+     * @param { Option<Length> } [borderWidth] - Border width of the sheet. The default value is 0
+     * @param { Option<Color> } [borderColor] - Border color of the sheet. The default value is Color.Black
+     * @param { Option<EdgeStyles> } [borderStyle] - Defines the sheet's border style
+     * @param { Option<Length> } [width] -Width of the sheet
+     * @param { Option<ShadowOptions> } [shadow] - Shadow of the sheet
+     * @param { Option<SheetMode> } [mode] - Determine the level sheet shows, whether sheet should be displayed within the page. The default value is SheetMode.Overlay
+     * @param { Option<ScrollSizeMode> } [scrollSizeMode] - Content update mode of the sheet when it is scrolled
      */
     @!APILevel[
         22,
@@ -1769,7 +1814,7 @@ public class SheetOptions <: BindOptions {
 
 /**
  * Defines the data type of the interface restriction.
- *
+ * Represents a rectangular area with position and dimensions.
  */
 @!APILevel[
     22,
@@ -1778,7 +1823,7 @@ public class SheetOptions <: BindOptions {
 public class Rectangle {
     /**
      * x:Horizontal coordinate.
-     *
+     * X position of the rectangle's top-left corner.
      */
     @!APILevel[
         22,
@@ -1788,7 +1833,7 @@ public class Rectangle {
 
     /**
      * y:Vertical axis coordinate.
-     *
+     * Y position of the rectangle's top-left corner.
      */
     @!APILevel[
         22,
@@ -1798,7 +1843,7 @@ public class Rectangle {
 
     /**
      * Sets the width of the current touchRect.
-     *
+     * Width of the rectangle.
      */
     @!APILevel[
         22,
@@ -1808,7 +1853,7 @@ public class Rectangle {
 
     /**
      * Sets the height of the current touchRect.
-     *
+     * Height of the rectangle.
      */
     @!APILevel[
         22,
@@ -1818,11 +1863,12 @@ public class Rectangle {
 
     /**
      * Rectangle constructor.
+     * Creates a new Rectangle instance with the specified properties.
      *
-     * @param { ?Length } x
-     * @param { ?Length } y
-     * @param { ?Length } width
-     * @param { ?Length } height
+     * @param { ?Length } [x] - x:Horizontal coordinate
+     * @param { ?Length } [y] - y:Vertical axis coordinate
+     * @param { ?Length } [width] - Sets the width of the current touchRect
+     * @param { ?Length } [height] - Sets the height of the current touchRect
      */
     @!APILevel[
         22,
@@ -1868,7 +1914,7 @@ class MenuActionData <: FFIData {
 
 /**
  * Component popup dismiss
- *
+ * Provides functionality to dismiss a popup with a reason.
  */
 @!APILevel[
     22,
@@ -1877,6 +1923,7 @@ class MenuActionData <: FFIData {
 public class DismissPopupAction {
     /**
      * Defines popup dismiss reason.
+     * The reason why the popup is being dismissed.
      */
     @!APILevel[
         22,
@@ -1889,6 +1936,7 @@ public class DismissPopupAction {
 
     /**
      * Defines popup dismiss function.
+     * Programmatically dismisses the popup.
      */
     @!APILevel[
         22,
@@ -1903,7 +1951,7 @@ public class DismissPopupAction {
 
 /**
  * Defines the context menu options.
- *
+ * Configuration options for context menu components.
  */
 @!APILevel[
     22,
@@ -1912,7 +1960,8 @@ public class DismissPopupAction {
 public class ContextMenuOptions {
     /**
      * Sets the position offset of the context menu window.
-     *
+     * The default value of Position is x:0, y:0.
+     * Additional offset for the context menu position.
      */
     @!APILevel[
         22,
@@ -1922,8 +1971,9 @@ public class ContextMenuOptions {
 
     /**
      * Preferred position of the context menu. If the set position is insufficient for holding the component, it will be
-     * automatically adjusted.
-     *
+     * <br> automatically adjusted.
+     * @default Placement.BottomLeft.
+     * Preferred placement of the context menu.
      */
     @!APILevel[
         22,
@@ -1932,8 +1982,8 @@ public class ContextMenuOptions {
     public var placement: Option<Placement>
 
     /**
-     * whether show arrow belong to the menu.
-     *
+     * Controls whether to display an arrow indicator on the menu.
+     * @default false
      */
     @!APILevel[
         22,
@@ -1943,7 +1993,8 @@ public class ContextMenuOptions {
 
     /**
      * The horizontal offset to the left of menu or vertical offset to the top of menu.
-     *
+     * Offset of the menu arrow relative to the menu.
+     * @default 0.vp
      */
     @!APILevel[
         22,
@@ -1952,9 +2003,9 @@ public class ContextMenuOptions {
     public var arrowOffset: ?Length
 
     /**
-    * The preview content of context menu.
-    *
-    */
+     * The preview content of context menu.
+     * Custom preview content for the context menu.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1962,8 +2013,7 @@ public class ContextMenuOptions {
     public var preview: ?CustomBuilder
 
     /**
-     * The preview animator options.
-     *
+     * Animation options for the context menu preview.
      */
     @!APILevel[
         22,
@@ -2022,8 +2072,8 @@ public class ContextMenuOptions {
     public var backgroundColor: ?ResourceColor
 
     /**
-     * Background blur style of the menu.
-     *
+     * Background blur style of the context menu.
+     * @default BlurStyle.BackgroundUltraThick.
      */
     @!APILevel[
         22,
@@ -2033,7 +2083,7 @@ public class ContextMenuOptions {
 
     /**
      * Defines the transition effect of menu opening and closing.
-     *
+     * Transition effect for menu open/close animations.
      */
     @!APILevel[
         22,
@@ -2046,22 +2096,23 @@ public class ContextMenuOptions {
 
     /**
      * ContextMenuOptions constructor.
+     * Creates a new ContextMenuOptions instance with the specified properties.
      *
-     * @param { ?Position } offset
-     * @param { Option<Placement> } placement
-     * @param { ?Bool } enableArrow
-     * @param { ?Length } arrowOffset
-     * @param { Option<CustomBuilder> } preview
-     * @param { ?ContextMenuAnimationOptions } previewAnimationOptions
-     * @param { ?() -> Unit } onAppear
-     * @param { ?() -> Unit } onDisappear
-     * @param { ?() -> Unit } aboutToAppear
-     * @param { ?() -> Unit } aboutToDisappear
-     * @param { ?ResourceColor } backgroundColor
-     * @param { ?BlurStyle } backgroundBlurStyle
-     * @param { ?TransitionEffect } transition
-     * @param { ?BorderRadiuses } borderRadius
-     * @param { ?Margin } layoutRegionMargin
+     * @param { ?Position } [offset] - Sets the position offset of the context menu window
+     * @param { Option<Placement> } [placement] - Preferred position of the context menu
+     * @param { ?Bool } [enableArrow] - whether show arrow belong to the menu
+     * @param { ?Length } [arrowOffset] - The horizontal offset to the left of menu or vertical offset to the top of menu
+     * @param { Option<CustomBuilder> } [preview] - The preview content of context menu
+     * @param { ?ContextMenuAnimationOptions } [previewAnimationOptions] - The preview animator options
+     * @param { ?() -> Unit } [onAppear] - Callback triggered when the menu is displayed
+     * @param { ?() -> Unit } [onDisappear] - Callback function when the context menu disappear
+     * @param { ?() -> Unit } [aboutToAppear] - Callback triggered when the menu is about to appear
+     * @param { ?() -> Unit } [aboutToDisappear] - Callback triggered when the menu is about to disappear
+     * @param { ?ResourceColor } [backgroundColor] - Background color of the menu
+     * @param { ?BlurStyle } [backgroundBlurStyle] - Background blur style of the menu
+     * @param { ?TransitionEffect } [transition] - Defines the transition effect of menu opening and closing
+     * @param { ?BorderRadiuses } [borderRadius] - Border radius of the menu
+     * @param { ?Margin } [layoutRegionMargin] - Margin around the menu layout region
      */
     @!APILevel[
         22,
@@ -2125,7 +2176,7 @@ public class ContextMenuOptions {
 
 /**
  * Component content cover dismiss.
- *
+ * Provides functionality to dismiss a content cover with a reason.
  */
 @!APILevel[
     22,
@@ -2134,7 +2185,7 @@ public class ContextMenuOptions {
 public class DismissContentCoverAction {
     /**
      * Defines content cover dismiss reason.
-     *
+     * The reason why the content cover is being dismissed.
      */
     @!APILevel[
         22,
@@ -2150,7 +2201,8 @@ public class DismissContentCoverAction {
     }
 
     /**
-     *  Defines content cover dismiss function.
+     * Defines content cover dismiss function.
+     * Programmatically dismisses the content cover.
      */
     @!APILevel[
         22,
@@ -2165,7 +2217,7 @@ public class DismissContentCoverAction {
 
 /**
  * Defines the ContextMenu's preview animator options.
- *
+ * Configuration options for context menu preview animations.
  */
 @!APILevel[
     22,
@@ -2174,25 +2226,27 @@ public class DismissContentCoverAction {
 public class ContextMenuAnimationOptions {
     /**
      * Sets the start animator scale and end animator scale.
-     *
+     * Scale values for the animation start and end states.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var scale: ?VArray<Float64, $2>
+
     /**
      * Defines the transition effect of menu preview opening and closing.
-     *
+     * Transition effect for preview open/close animations.
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: ?TransitionEffect
+
     /**
      * Sets the scale start and end animator of the image displayed before the custom builder preview is displayed.
-     *
+     * Scale values for hover animations.
      */
     @!APILevel[
         22,
@@ -2201,11 +2255,11 @@ public class ContextMenuAnimationOptions {
     public var hoverScale: ?VArray<Float64, $2>
 
     /**
-     * Defines the ContextMenu's preview animator options.
+     * Creates a new ContextMenuAnimationOptions instance with the specified properties.
      *
-     * @param { ?VArray<Float64, $2> } scale
-     * @param { ?TransitionEffect } transition
-     * @param { ?VArray<Float64, $2> } hoverScale
+     * @param { ?VArray<Float64, $2> } [scale] - Sets the start animator scale and end animator scale
+     * @param { ?TransitionEffect } [transition] - Defines the transition effect of menu preview opening and closing
+     * @param { ?VArray<Float64, $2> } [hoverScale] - Sets the scale start and end animator of the image displayed before the custom builder preview is displayed
      */
     @!APILevel[
         22,
@@ -2254,8 +2308,7 @@ public class ContextMenuAnimationOptions {
 }
 
 /**
- * Component sheet dismiss.
- *
+ * Provides functionality to dismiss a sheet with a reason.
  */
 @!APILevel[
     22,
@@ -2263,8 +2316,7 @@ public class ContextMenuAnimationOptions {
 ]
 public class DismissSheetAction {
     /**
-     * Dismiss reason type.
-     *
+     * The reason why the sheet is being dismissed.
      */
     @!APILevel[
         22,
@@ -2277,8 +2329,8 @@ public class DismissSheetAction {
     }
 
     /**
-     *  Defines sheet dismiss function.
-     *
+     * Defines sheet dismiss function.
+     * Programmatically dismisses the sheet.
      */
     @!APILevel[
         22,

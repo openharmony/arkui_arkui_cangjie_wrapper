@@ -732,7 +732,7 @@ public class PermissionRequest {
     /**
      * Grant origin access to a given resource.
      *
-     * @param { Array<string> } resources - An array of resources to grant access to.
+     * @param { Array<String> } resources - An array of resources to grant access to.
      */
     @!APILevel[
         22,

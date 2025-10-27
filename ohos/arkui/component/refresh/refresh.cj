@@ -109,8 +109,8 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
     /**
      * Defines Refresh Component.
      *
-     * @param { ?RefreshOptions } value
-     * @param { () -> Unit } content
+     * @param { ?RefreshOptions } value - Refresh options.
+     * @param { () -> Unit } child - Content of the refresh component.
      */
     @!APILevel[
         22,

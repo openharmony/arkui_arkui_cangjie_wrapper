@@ -181,7 +181,7 @@ public class Environment {
      * Returns an Array<string> of all environment property keys.
      * Lists all available environment property keys.
      *
-     * @returns { Array<string> } all environment property keys.
+     * @returns { Array<string> } the array of all keys.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[

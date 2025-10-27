@@ -32,7 +32,7 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
      *
      * @param { ?Bool } value - Whether to enable the increment button.
      * @default true
-     * @returns { CounterAttribute } - The attribute of the component.
+     * @returns { CounterAttribute } - The attribute of the Counter.
      */
     @!APILevel[
         22,
@@ -45,7 +45,7 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
      *
      * @param { ?Bool } value - Whether to enable the decrement button.
      * @default true
-     * @returns { CounterAttribute } - The attribute of the component.
+     * @returns { CounterAttribute } - The attribute of the Counter.
      */
     @!APILevel[
         22,
@@ -57,7 +57,7 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
      * Listens to the event when the counter value increases.
      *
      * @param { ?VoidCallback } event - The callback function triggered when the counter value increases.
-     * @returns { CounterAttribute } - The attribute of the component.
+     * @returns { CounterAttribute } - The attribute of the Counter.
      */
     @!APILevel[
         22,
@@ -69,7 +69,7 @@ sealed interface CounterAttribute <: CommonMethod<CounterAttribute> {
      * Listens to the event when the counter value decreases.
      *
      * @param { ?VoidCallback } event - The callback function triggered when the counter value decreases.
-     * @returns { CounterAttribute } - The attribute of the component.
+     * @returns { CounterAttribute } - The attribute of the Counter.
      */
     @!APILevel[
         22,
