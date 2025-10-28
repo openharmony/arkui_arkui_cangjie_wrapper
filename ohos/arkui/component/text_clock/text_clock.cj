@@ -342,6 +342,8 @@ foreign {
     func FfiOHOSAceFrameworkTextClockControllerStop(selfID: Int64): Unit
 
     func FfiOHOSAceFrameworkTextClockDateTimeOptions(hourOptions: CString): Unit
+
+    func FfiOHOSAceFrameworkTextClockResetTextColor(): Unit
 }
 
 /**
@@ -511,16 +513,20 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      *
      * @param { ?ResourceColor } value - The font color resource.
      * @returns { This } Returns the TextClock instance.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkTextClockTextColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkTextClockTextColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkTextClockResetTextColor()
+            }
         }
         this
     }
@@ -588,22 +594,22 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      *
      * @param { ?Array<ShadowOptions> } values - The shadow options.
      * @returns { This } Returns the TextClock instance.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(values: ?Array<ShadowOptions>): This {
-        let tmpValues = values ?? throw BusinessException(100001, "The type now is not supported.")
-        let vecValueHandle = CJVectorNativeTextShadow(tmpValues.size)
-        for (i in 0..tmpValues.size) {
-            vecValueHandle.setElement(i, tmpValues[i].toNative())
+        if (let Some(v) <- values) {
+            let vecValueHandle = CJVectorNativeTextShadow(v.size)
+            for (i in 0..v.size) {
+                vecValueHandle.setElement(i, v[i].toNative())
+            }
+            unsafe {
+                FfiOHOSAceFrameworkTextClockTextShadowV2(vecValueHandle.getNativeHandle())
+            }
+            vecValueHandle.free()
         }
-        unsafe {
-            FfiOHOSAceFrameworkTextClockTextShadowV2(vecValueHandle.getNativeHandle())
-        }
-        vecValueHandle.free()
         this
     }
 
@@ -612,23 +618,23 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      *
      * @param { ?ShadowOptions } value - The shadow options.
      * @returns { This } Returns the TextClock instance.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(value: ?ShadowOptions): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        let thisShadow: NativeTextShadowV2 = NativeTextShadowV2(tmpValue.radius ?? 0.0,
-            tmpValue.offsetX ?? 0.0, tmpValue.offsetY ?? 0.0,
-            transAppResourceToResourceColor(tmpValue.color ?? Color.Black), tmpValue.fill ?? false, (tmpValue.shadowType ?? ShadowType.Color).getValue())
-        let vecValueHandle = CJVectorNativeTextShadow(1)
-        vecValueHandle.setElement(0, thisShadow)
-        unsafe {
-            FfiOHOSAceFrameworkTextClockTextShadowV2(vecValueHandle.getNativeHandle())
+        if (let Some(v) <- value) {
+            let thisShadow: NativeTextShadowV2 = NativeTextShadowV2(v.radius ?? 0.0,
+                v.offsetX ?? 0.0, v.offsetY ?? 0.0,
+                transAppResourceToResourceColor(v.color ?? Color.Black), v.fill ?? false, (v.shadowType ?? ShadowType.Color).getValue())
+            let vecValueHandle = CJVectorNativeTextShadow(1)
+            vecValueHandle.setElement(0, thisShadow)
+            unsafe {
+                FfiOHOSAceFrameworkTextClockTextShadowV2(vecValueHandle.getNativeHandle())
+            }
+            vecValueHandle.free()
         }
-        vecValueHandle.free()
         this
     }
 }

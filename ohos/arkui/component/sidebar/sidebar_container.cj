@@ -43,6 +43,10 @@ foreign {
     func FFISetWidthWithEmpty(): Unit
 
     func FFISetHeightWithEmpty(): Unit
+
+    func FfiOHOSAceFrameworkSideBarResetControlButton(): Unit
+
+    func FfiOHOSAceFrameworkSideBarResetControlButtonIcons(): Unit
 }
 
 /**
@@ -381,24 +385,35 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func controlButton(value: ?ButtonStyle): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            try (shownStr = LibC.mallocCString(transResourceMediaToString((tmpValue.icons ?? ButtonIconOptions(shown: "", hidden: "")).shown ?? "")).asResource(),
-                hiddenStr = LibC.mallocCString(transResourceMediaToString((tmpValue.icons ?? ButtonIconOptions(shown: "", hidden: "")).hidden ?? "")).asResource(),
-                switchingStr = LibC.mallocCString(transResourceMediaToString((tmpValue.icons ?? ButtonIconOptions(shown: "", hidden: "")).switching ?? "")).asResource()) {
-                FfiOHOSAceFrameworkSideBarControlButton(
-                    CJSideBarButtonStyle(
-                        tmpValue.left ?? 16.0,
-                        tmpValue.top ?? 48.0,
-                        tmpValue.width ?? 24.0,
-                        tmpValue.height ?? 24.0,
-                        CJSideBarIconStyle(
-                            shownStr.value,
-                            hiddenStr.value,
-                            switchingStr.value
+        if (let Some(v) <- value) {
+            if (v.icons.isNone()) {
+                unsafe {
+                    FfiOHOSAceFrameworkSideBarResetControlButtonIcons()
+                }
+            } else {
+                unsafe {
+                    try (shownStr = LibC.mallocCString(transResourceMediaToString((v.icons ?? ButtonIconOptions(shown: "", hidden: "")).shown ?? "")).asResource(),
+                        hiddenStr = LibC.mallocCString(transResourceMediaToString((v.icons ?? ButtonIconOptions(shown: "", hidden: "")).hidden ?? "")).asResource(),
+                        switchingStr = LibC.mallocCString(transResourceMediaToString((v.icons ?? ButtonIconOptions(shown: "", hidden: "")).switching ?? "")).asResource()) {
+                        FfiOHOSAceFrameworkSideBarControlButton(
+                            CJSideBarButtonStyle(
+                                v.left ?? 16.0,
+                                v.top ?? 48.0,
+                                v.width ?? 24.0,
+                                v.height ?? 24.0,
+                                CJSideBarIconStyle(
+                                    shownStr.value,
+                                    hiddenStr.value,
+                                    switchingStr.value
+                                )
+                            )
                         )
-                    )
-                )
+                    }
+                }
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSideBarResetControlButton()
             }
         }
         this

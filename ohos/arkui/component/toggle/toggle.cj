@@ -61,6 +61,10 @@ foreign {
     func FFISetWidthWithEmpty(): Unit
 
     func FFISetHeightWithEmpty(): Unit
+
+    func FfiOHOSAceFrameworkToggleResetSelectedColor(): Unit
+
+    func FfiOHOSAceFrameworkToggleResetSwitchPointColor(): Unit
 }
 
 /**
@@ -176,16 +180,21 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
      *
      * @param { ?ResourceColor } value - Color of the selected button.
      * @returns { This }
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkToggleSelectedColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkToggleSelectedColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkToggleResetSelectedColor()
+            }
+
         }
         this
     }
@@ -195,16 +204,20 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
      *
      * @param { ?ResourceColor } color - Color of the switch point.
      * @returns { This }
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func switchPointColor(color: ?ResourceColor): This {
-        let tmpColor = color ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkToggleSwitchPointColor(transAppResourceToResourceColor(tmpColor))
+        if (let Some(v) <- color) {
+            unsafe {
+                FfiOHOSAceFrameworkToggleSwitchPointColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkToggleResetSwitchPointColor()
+            }
         }
         this
     }

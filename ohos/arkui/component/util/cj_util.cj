@@ -27,6 +27,7 @@ protected const LENGTH_VP: Int32 = 1
 protected const LENGTH_FP: Int32 = 2
 protected const LENGTH_PERCENT: Int32 = 3
 protected const LENGTH_LPX: Int32 = 4
+protected const EMPTY_FUNCTION = { => }
 let EPSILON: Float64 = -0.001
 let MEMORY_OP_ERR: Int32 = 9800001
 

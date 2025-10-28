@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{Axis, EdgeEffect, ListItemAlign, StickyStyle
 import ohos.arkui.component.list_item_group.{ListDividerOptions}
 import ohos.arkui.component.native_struct.{DividerParams, RectResultParams}
 import ohos.arkui.component.scroll.{ScrollableCommonMethodComponent, ScrollableCommonMethod, Scroller, NestedScrollOptions, ContentClipMode}
-import ohos.arkui.component.util.{LENGTH_VP, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
+import ohos.arkui.component.util.{LENGTH_VP, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual, EMPTY_FUNCTION}
 import ohos.base.{Length, LengthProp, ResourceColor, BASE_LOG}
 import ohos.ffi.{Callback3Param, Callback2Param, Callback0Param}
 import ohos.labels.APILevel
@@ -459,9 +459,9 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
         this
     }
 
-    protected func scrollBarInner(value: BarState): This {
+    protected func scrollBarInner(barState: ?BarState): This {
         unsafe {
-            FfiOHOSAceFrameworkListSetScrollBar(value.getValue())
+            FfiOHOSAceFrameworkListSetScrollBar((barState ?? BarState.Auto).getValue())
         }
         this
     }
@@ -573,32 +573,32 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
         this
     }
 
-    protected func onReachStartInner(event: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(event)
+    protected func onReachStartInner(event: ?() -> Unit): This {
+        let lambdaData = Callback0Param<Unit>(event ?? EMPTY_FUNCTION)
         unsafe {
             FfiOHOSAceFrameworkListSetOnReachStartCallback(lambdaData.getID())
         }
         this
     }
 
-    protected func onReachEndInner(event: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(event)
+    protected func onReachEndInner(event: ?() -> Unit): This {
+        let lambdaData = Callback0Param<Unit>(event ?? EMPTY_FUNCTION)
         unsafe {
             FfiOHOSAceFrameworkListSetOnReachEndCallback(lambdaData.getID())
         }
         this
     }
 
-    protected func onScrollStartInner(event: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(event)
+    protected func onScrollStartInner(event: ?() -> Unit): This {
+        let lambdaData = Callback0Param<Unit>(event ?? EMPTY_FUNCTION)
         unsafe {
             FfiOHOSAceFrameworkListSetOnScrollStartCallback(lambdaData.getID())
         }
         this
     }
 
-    protected func onScrollStopInner(event: () -> Unit): This {
-        let lambdaData = Callback0Param<Unit>(event)
+    protected func onScrollStopInner(event: ?() -> Unit): This {
+        let lambdaData = Callback0Param<Unit>(event ?? EMPTY_FUNCTION)
         unsafe {
             FfiOHOSAceFrameworkListSetOnScrollStopCallback(lambdaData.getID())
         }

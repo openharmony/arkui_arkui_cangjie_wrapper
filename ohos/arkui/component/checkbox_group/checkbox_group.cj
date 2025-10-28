@@ -59,6 +59,8 @@ foreign {
     func FFISetWidthWithEmpty(): Unit
 
     func FFISetHeightWithEmpty(): Unit
+
+    func FfiOHOSAceFrameworkCheckBoxGroupResetSelectedColor(): Unit
 }
 
 /**
@@ -202,16 +204,20 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
      *
      * @param { ?ResourceColor } value - The color to display when checkboxes are selected.
      * @returns { This } - The instance of the component.
-     * @throws { BusinessException } The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkCheckBoxGroupSetSelectedColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkCheckBoxGroupSetSelectedColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkCheckBoxGroupResetSelectedColor()
+            }
         }
         this
     }

@@ -209,6 +209,14 @@ foreign {
     func FfiOHOSAceFrameworkTextFieldEditMenuOptions(callbackOnCreateMenu: Int64, callbackOnMenuItemClick: Int64): Unit
 
     func FFISetHeightWithEmpty(): Unit
+
+    func FfiOHOSAceFrameworkTextFieldResetFontColor(): Unit
+
+    func FfiOHOSAceFrameworkTextFieldResetMaxLength(): Unit
+
+    func FfiOHOSAceFrameworkTextFieldResetPlaceholderColor(): Unit
+
+    func FfiOHOSAceFrameworkTextFieldResetFontSize(): Unit
 }
 
 protected class TextField {
@@ -228,10 +236,11 @@ protected class TextField {
     }
 
     protected static func padding(value: ?Length): Unit {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var v = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetPadding(v.value, v.unitType.getValue())
+        if (let Some(v) <- value) {
+            var v_ = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkTextFieldSetPadding(v_.value, v_.unitType.getValue())
+            }
         }
     }
 
@@ -307,28 +316,30 @@ protected class TextField {
     }
 
     protected static func borderWidth(width: ?Length): Unit {
-        let tmpWidth = width ?? throw BusinessException(100001, "The type now is not supported.")
-        var w = transAppResourceToLength(tmpWidth)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetBorderWidth(w.value, w.unitType.getValue())
+        if (let Some(v) <- width) {
+            var w = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkTextFieldSetBorderWidth(w.value, w.unitType.getValue())
+            }
         }
     }
 
     protected static func borderWidth(edgeWidths: ?EdgeWidths): Unit {
-        let tmpEdgeWidths = edgeWidths ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetBorderWidthWithCJEdge(
-                CJEdge(
-                    (tmpEdgeWidths.top ?? 0.vp).value,
-                    (tmpEdgeWidths.top ?? 0.vp).unitType.getValue(),
-                    (tmpEdgeWidths.right ?? 0.vp).value,
-                    (tmpEdgeWidths.right ?? 0.vp).unitType.getValue(),
-                    (tmpEdgeWidths.bottom ?? 0.vp).value,
-                    (tmpEdgeWidths.bottom ?? 0.vp).unitType.getValue(),
-                    (tmpEdgeWidths.left ?? 0.vp).value,
-                    (tmpEdgeWidths.left ?? 0.vp).unitType.getValue()
+        if (let Some(v) <- edgeWidths) {
+            unsafe {
+                FfiOHOSAceFrameworkTextFieldSetBorderWidthWithCJEdge(
+                    CJEdge(
+                        (v.top ?? 0.vp).value,
+                        (v.top ?? 0.vp).unitType.getValue(),
+                        (v.right ?? 0.vp).value,
+                        (v.right ?? 0.vp).unitType.getValue(),
+                        (v.bottom ?? 0.vp).value,
+                        (v.bottom ?? 0.vp).unitType.getValue(),
+                        (v.left ?? 0.vp).value,
+                        (v.left ?? 0.vp).unitType.getValue()
+                    )
                 )
-            )
+            }
         }
     }
 
@@ -394,9 +405,15 @@ protected class TextField {
         }
     }
 
-    protected static func placeholderColor(value: ResourceColor): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetPlaceholderColor(transAppResourceToResourceColor(value))
+    protected static func placeholderColor(value: ?ResourceColor): Unit {
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkTextFieldSetPlaceholderColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkTextFieldResetPlaceholderColor()
+            }
         }
     }
 
@@ -429,22 +446,40 @@ protected class TextField {
         }
     }
 
-    protected static func maxLength(value: UInt32): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetMaxLength(value)
+    protected static func maxLength(value: ?UInt32): Unit {
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkTextFieldSetMaxLength(v)
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkTextFieldResetMaxLength()
+            }
         }
     }
 
-    protected static func fontSize(value: Length): Unit {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
+    protected static func fontSize(value: ?Length): Unit {
+        if (let Some(v) <- value) {
+            var value_ = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkTextFieldSetFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkTextFieldResetFontSize()
+            }
         }
     }
 
-    protected static func fontColor(value: ResourceColor): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetFontColor(transAppResourceToResourceColor(value))
+    protected static func fontColor(value: ?ResourceColor): Unit {
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkTextFieldSetFontColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkTextFieldResetFontColor()
+            }
         }
     }
 

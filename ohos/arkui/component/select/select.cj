@@ -105,6 +105,16 @@ foreign {
     func FfiOHOSAceFrameworkSelectOnSelect(callback: Int64): Unit
 
     func FfiOHOSAceFrameworkSelectSetBackgroundColor(color: UInt32): Unit
+
+    func FfiOHOSAceFrameworkSelectResetFontColor(): Unit
+
+    func FfiOHOSAceFrameworkSelectResetSelectedOptionBgColor(): Unit
+
+    func FfiOHOSAceFrameworkSelectResetSelectedOptionFontColor(): Unit
+
+    func FfiOHOSAceFrameworkSelectResetOptionWidth(): Unit
+
+    func FfiOHOSAceFrameworkSelectResetOptionFontColor(): Unit
 }
 
 @C
@@ -335,16 +345,20 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
      *
      * @param { ?ResourceColor } value - The font color of current Select component.
      * @returns { This }
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkSelectSetFontColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkSelectSetFontColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSelectResetFontColor()
+            }
         }
         this
     }
@@ -354,16 +368,20 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
      *
      * @param { ?ResourceColor } value - The selected item background color.
      * @returns { This }
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedOptionBgColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkSelectSetSelectedOptionBgColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkSelectSetSelectedOptionBgColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSelectResetSelectedOptionBgColor()
+            }
         }
         this
     }
@@ -410,16 +428,20 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
      *
      * @param { ?ResourceColor } value - The selected item font color.
      * @returns { This }
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedOptionFontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkSelectSetSelectedOptionFontColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkSelectSetSelectedOptionFontColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSelectResetSelectedOptionFontColor()
+            }
         }
         this
     }
@@ -484,16 +506,20 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
      *
      * @param { ?ResourceColor } value - The font color.
      * @returns { This }
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionFontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkSelectSetOptionFontColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkSelectSetOptionFontColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSelectResetOptionFontColor()
+            }
         }
         this
     }
@@ -562,17 +588,21 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
      *
      * @param { ?OptionWidthMode } value - The length of option width and decide option width to fit trigger or content.
      * @returns { This } The attribute of the select.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionWidth(value: ?OptionWidthMode): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            try (optionWidth = LibC.mallocCString(tmpValue.getValue()).asResource()) {
-                FfiOHOSAceFrameworkSelectSetOptionWidthWithMode(optionWidth.value)
+        if (let Some(v) <- value) {
+            unsafe {
+                try (optionWidth = LibC.mallocCString(v.getValue()).asResource()) {
+                    FfiOHOSAceFrameworkSelectSetOptionWidthWithMode(optionWidth.value)
+                }
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSelectResetOptionWidth()
             }
         }
         this
@@ -583,17 +613,21 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
      *
      * @param { ?Length } value - The length of option width and decide option width to fit trigger or content.
      * @returns { This } the attribute of the select.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionWidth(value: ?Length): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkSelectSetOptionWidth(value_.value, value_.unitType.getValue())
+        if (let Some(v) <- value) {
+            var value_ = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkSelectSetOptionWidth(value_.value, value_.unitType.getValue())
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSelectResetOptionWidth()
+            }
         }
         this
     }
@@ -603,17 +637,17 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
      *
      * @param { ?Length } value - The length of option height.
      * @returns { This } The attribute of the select.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionHeight(value: ?Length): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkSelectSetOptionHeight(value_.value, value_.unitType.getValue())
+        if (let Some(v) <- value) {
+            let value_ = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkSelectSetOptionHeight(value_.value, value_.unitType.getValue())
+            }
         }
         this
     }

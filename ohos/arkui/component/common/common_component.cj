@@ -953,8 +953,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func markAnchorInner(xAxis: ?Length, yAxis: ?Length): T {
-        let tmpX = xAxis ?? throw BusinessException(100001, "The type now is not supported.")
-        let tmpY = yAxis ?? throw BusinessException(100001, "The type now is not supported.")
+        var tmpX = xAxis ?? 0.0.px
+        var tmpY = yAxis ?? 0.0.px
+        // 在入参x/y均为Option.None时,处理方式为x、y均为0.0_vp
+        if (xAxis.isNone() && yAxis.isNone()) {
+            tmpX = 0.0.vp
+            tmpY = 0.0.vp
+        }
         var x = transAppResourceToLength(tmpX)
         var y = transAppResourceToLength(tmpY)
         unsafe {
@@ -1085,10 +1090,15 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func flexBasisInner(value: ?Length): T {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var v = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetFlexBasis(v.value, v.unitType.getValue())
+        if (let Some(v) <- value) {
+            var v_ = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractSetFlexBasis(v_.value, v_.unitType.getValue())
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractResetFlexBasis()
+            }
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
@@ -1317,13 +1327,18 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func borderWidthInner(value: ?Length): T {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var v = transAppResourceToLength(tmpValue)
-        if (v.unitType.getValue() == LENGTH_PERCENT) {
-            throw BusinessException(100023, "Percentage values are not supported.")
-        }
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetBorderWidth(v.value, v.unitType.getValue())
+        if (let Some(v) <- value) {
+            var v_ = transAppResourceToLength(v)
+            if (v_.unitType.getValue() == LENGTH_PERCENT) {
+                throw BusinessException(100023, "Percentage values are not supported.")
+            }
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractSetBorderWidth(v.value, v.unitType.getValue())
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractResetBorderWidth()
+            }
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
@@ -1344,12 +1359,17 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func borderWidthInner(edgeWidths: ?EdgeWidths): T {
-        let tmpedgeWidths = edgeWidths ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetBorderWidthWithCJEdge(
-                CJEdge((tmpedgeWidths.top ?? 0.vp).value, (tmpedgeWidths.top ?? 0.vp).unitType.getValue(), (tmpedgeWidths.right ?? 0.vp).value,
-                    (tmpedgeWidths.right ?? 0.vp).unitType.getValue(), (tmpedgeWidths.bottom ?? 0.vp).value, (tmpedgeWidths.bottom ?? 0.vp).unitType.getValue(),
-                    (tmpedgeWidths.left ?? 0.vp).value, (tmpedgeWidths.left ?? 0.vp).unitType.getValue()))
+        if (let Some(v) <- edgeWidths) {
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractSetBorderWidthWithCJEdge(
+                    CJEdge((v.top ?? 0.vp).value, (v.top ?? 0.vp).unitType.getValue(), (v.right ?? 0.vp).value,
+                        (v.right ?? 0.vp).unitType.getValue(), (v.bottom ?? 0.vp).value, (v.bottom ?? 0.vp).unitType.getValue(),
+                        (v.left ?? 0.vp).value, (v.left ?? 0.vp).unitType.getValue()))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractResetBorderWidth()
+            }
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
@@ -1762,15 +1782,16 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func scale(x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, centerX!: ?Length = None,
         centerY!: ?Length = None): T {
-        scaleInner(x ?? 1.0, y ?? 1.0, z ?? 1.0, centerX ?? 50.percent, centerY ?? 50.percent)
+        scaleInner(x, y, z, centerX, centerY)
     }
 
-    protected open func scaleInner(x: Float32, y: Float32, z: Float32, centerX: Length, centerY: Length) {
-        var cx = transAppResourceToLength(centerX)
-        var cy = transAppResourceToLength(centerY)
+    protected open func scaleInner(x: ?Float32, y: ?Float32, z: ?Float32, centerX: ?Length, centerY: ?Length) {
+        // 默认值参考default:{x:1,y:1,z:1,centerX:'50%',centerY:'50%'}
+        var cx = transAppResourceToLength(centerX ?? 50.percent)
+        var cy = transAppResourceToLength(centerY ?? 50.percent)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetScale(
-                CJSetScale(x, y, z, cx.value, cx.unitType.getValue(), cy.value, cy.unitType.getValue()))
+                CJSetScale(x ?? 1.0, y ?? 1.0, z ?? 1.0, cx.value, cx.unitType.getValue(), cy.value, cy.unitType.getValue()))
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
@@ -2184,85 +2205,6 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
-    protected open func pixelStretchEffectInner(top: Length, right: Length, bottom: Length, left: Length): T {
-        var top_ = transAppResourceToLength(top);
-        var right_ = transAppResourceToLength(right);
-        var bottom_ = transAppResourceToLength(bottom);
-        var left_ = transAppResourceToLength(left);
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetPixelStretchEffect(
-                CJEdge(
-                    top_.value,
-                    top_.unitType.getValue(),
-                    right_.value,
-                    right_.unitType.getValue(),
-                    bottom_.value,
-                    bottom_.unitType.getValue(),
-                    left_.value,
-                    left_.unitType.getValue()
-                )
-            )
-        }
-        (this as T) ?? throw BusinessException(100001, "Internal error.")
-    }
-
-    protected open func outlineWidthInner(top: Length, right: Length, bottom: Length, left: Length): T {
-        var top_ = transAppResourceToLength(top);
-        var right_ = transAppResourceToLength(right);
-        var bottom_ = transAppResourceToLength(bottom);
-        var left_ = transAppResourceToLength(left);
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetOutlineWidths(
-                CJEdge(
-                    top_.value,
-                    top_.unitType.getValue(),
-                    right_.value,
-                    right_.unitType.getValue(),
-                    bottom_.value,
-                    bottom_.unitType.getValue(),
-                    left_.value,
-                    left_.unitType.getValue()
-                )
-            )
-        }
-        (this as T) ?? throw BusinessException(100001, "Internal error.")
-    }
-
-    protected open func outlineColorInner(top: ResourceColor, right: ResourceColor, bottom: ResourceColor,
-        left: ResourceColor): T {
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetOutlineColors(
-                transAppResourceToResourceColor(top),
-                transAppResourceToResourceColor(right),
-                transAppResourceToResourceColor(bottom),
-                transAppResourceToResourceColor(left)
-            )
-        }
-        (this as T) ?? throw BusinessException(100001, "Internal error.")
-    }
-
-    protected open func outlineRadiusInner(topLeft: Length, topRight: Length, bottomLeft: Length, bottomRight: Length): T {
-        var topLeft_ = transAppResourceToLength(topLeft);
-        var topRight_ = transAppResourceToLength(topRight);
-        var bottomLeft_ = transAppResourceToLength(bottomLeft);
-        var bottomRight_ = transAppResourceToLength(bottomRight);
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetOutlineRadiuses(
-                CJBorderRadius(
-                    topLeft_.value,
-                    topLeft_.unitType.getValue(),
-                    topRight_.value,
-                    topRight_.unitType.getValue(),
-                    bottomLeft_.value,
-                    bottomLeft_.unitType.getValue(),
-                    bottomRight_.value,
-                    bottomRight_.unitType.getValue()
-                )
-            )
-        }
-        (this as T) ?? throw BusinessException(100001, "Internal error.")
-    }
-
     /**
      * Sepia conversion ratio of the component.
      *
@@ -2275,13 +2217,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func sepia(value: ?Float64): T {
-        let tmpValue = value ?? 0.0
-        sepiaInner(tmpValue)
+        sepiaInner(value)
     }
 
-    protected open func sepiaInner(value: Float64): T {
+    protected open func sepiaInner(value: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetSepia(value)
+            // Option.None入参时，默认值为0.0
+            FfiOHOSAceFrameworkViewAbstractSetSepia(value ?? 0.0)
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
@@ -2302,9 +2244,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         hueRotateInner(trunc(tmpValue)) // Truncate
     }
 
-    protected open func hueRotateInner(value: Float32): T {
+    protected open func hueRotateInner(value: ?Float32): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetHueRotate(value)
+            // Option.None入参时，默认值为0.0
+            FfiOHOSAceFrameworkViewAbstractSetHueRotate(value ?? 0.0)
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
@@ -2408,9 +2351,15 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func clipShapeInner(value: ?BaseShape): T {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetClipByShape(tmpValue.getID())
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    FfiOHOSAceFrameworkViewAbstractSetClipByShape(v.getID())
+                }
+            case None => 
+                unsafe {
+                    FfiOHOSAceFrameworkViewAbstractSetClip(false)
+                }
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
@@ -2832,17 +2781,25 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     protected open func radialGradientInner(center: ?(Length, Length), radius: ?Length,
         colors: ?Array<(ResourceColor, Float64)>, repeating: ?Bool): T {
         let tmpCenter = center ?? (0.0.px, 0.0.px)
-        let tmpRadius = radius ?? throw BusinessException(100001, "The type now is not supported.")
         let tmpColors = colors ?? []
-        var radius_ = transAppResourceToLength(tmpRadius)
+        var radius_ = transAppResourceToLength(radius ?? 0.0.px)
         let cCenter = CTupleLength(tmpCenter[0].value, tmpCenter[0].unitType.getValue(), tmpCenter[1].value,
             tmpCenter[1].unitType.getValue())
         let cColorsArr = toCArrCColors(tmpColors)
         let radialGradientParam = RadialGradientParam(cCenter, radius_.value, radius_.unitType.getValue(), cColorsArr,
             repeating ?? false)
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractRadialGradient(radialGradientParam)
-            LibC.free(cColorsArr.head)
+        let needResetRadius = radius.isNone()
+        let needResetCenter = center.isNone()
+        if (!needResetRadius && !needResetCenter) {
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractRadialGradient(radialGradientParam)
+                LibC.free(cColorsArr.head)
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractResetRadialGradient(radialGradientParam, needResetCenter, needResetRadius)
+                LibC.free(cColorsArr.head)
+            }
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
@@ -3203,18 +3160,30 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func transitionInner(value: ?TransitionEffect, onFinish: TransitionFinishCallback): T {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        let lambdaData = Callback1Param<Bool, Unit>(onFinish)
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractTransitionWithBack(tmpValue.getID(), lambdaData.getID())
+        match (value) {
+            case Some(v) => 
+                let lambdaData = Callback1Param<Bool, Unit>(onFinish)
+                unsafe {
+                    FfiOHOSAceFrameworkViewAbstractTransitionWithBack(v.getID(), lambdaData.getID())
+                }
+            case None =>
+                unsafe {
+                    FfiOHOSAceFrameworkViewAbstractResetTransition()
+                }
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
 
     protected open func transitionInner(value: ?TransitionEffect): T {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractTransition(tmpValue.getID())
+        match (value) {
+            case Some(v) =>
+                unsafe {
+                    FfiOHOSAceFrameworkViewAbstractTransition(v.getID())
+                }
+            case None =>
+                unsafe {
+                    FfiOHOSAceFrameworkViewAbstractResetTransition()
+                }
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }

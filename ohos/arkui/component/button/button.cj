@@ -79,6 +79,8 @@ foreign {
     func FFISetWidthWithEmpty(): Unit
 
     func FFISetHeightWithEmpty(): Unit
+
+    func FfiOHOSAceFrameworkButtonResetFontSize(): Unit
 }
 
 @C
@@ -480,11 +482,15 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
-        // Need get default value from ffi, The value of sys.float.Body_L is from base/global/system_resources
-        let tmpValue = value ?? 18.fp
-        var size = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkButtonSetFontSize(size.value, getLengthUnitOrFp(size).getValue())
+        if (let Some(v) <- value) {
+            var size = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkButtonSetFontSize(size.value, getLengthUnitOrFp(size).getValue())
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkButtonResetFontSize()
+            }
         }
         this
     }

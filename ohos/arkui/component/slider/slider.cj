@@ -19,7 +19,7 @@ package ohos.arkui.component.slider
 
 import ohos.arkui.component.common.{CommonMethodComponent, SliderStyle, Axis, SliderChangeMode}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString}
-import ohos.base.{ResourceStr, Length, ResourceColor}
+import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp}
 import ohos.ffi.{Callback2Param}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
@@ -81,6 +81,12 @@ foreign {
     func FfiOHOSAceFrameworkSliderContentModifier(): Unit
 
     func FfiOHOSAceFrameworkSliderBlockStyle(`type`: Int32, image: CString, shapeId: Int64): Unit
+
+    func FfiOHOSAceFrameworkSliderResetBlockColor(): Unit
+
+    func FfiOHOSAceFrameworkSliderResetTrackColor(): Unit
+
+    func FfiOHOSAceFrameworkSliderResetSelectedColor(): Unit
 }
 
 /**
@@ -152,16 +158,20 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     *
     * @param { ?ResourceColor } value
     * @returns { This }
-    * @throws { BusinessException } 100001 - The type now is not supported.
     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func blockColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkSliderBlockColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkSliderBlockColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSliderResetBlockColor()
+            }
         }
         this
     }
@@ -170,16 +180,20 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     *
     * @param { ?ResourceColor } value
     * @returns { This }
-    * @throws { BusinessException } 100001 - The type now is not supported.
     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func trackColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkSliderTrackColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkSliderTrackColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSliderResetTrackColor()
+            }
         }
         this
     }
@@ -188,16 +202,20 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     *
     * @param { ?ResourceColor } value
     * @returns { This }
-    * @throws { BusinessException } 100001 - The type now is not supported.
     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkSliderSelectedColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkSliderSelectedColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSliderResetSelectedColor()
+            }
         }
         this
     }
@@ -251,15 +269,13 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     *
     * @param { ?Length } value
     * @returns { This }
-    * @throws { BusinessException } 100001 - The type now is not supported.
     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func trackThickness(value: ?Length): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
+        var value_ = transAppResourceToLength(value ?? 0.0.vp)
         unsafe {
             FfiOHOSAceFrameworkSliderTrackThickness(value_.value, value_.unitType.getValue())
         }

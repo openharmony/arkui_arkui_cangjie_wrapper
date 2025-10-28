@@ -158,6 +158,10 @@ foreign {
         fontFamily: CString): Unit
 
     func FFISetHeightWithEmpty(): Unit
+
+    func FfiOHOSAceFrameworkSearchResetPlaceholderColor(): Unit
+
+    func FfiOHOSAceFrameworkViewAbstractResetBorderWidth(): Unit
 }
 
 let DEFAULT_SIZE = 16.0
@@ -285,16 +289,20 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @param { ?ResourceColor } value - indicates the color of the placeholder text. The default value on wearable devices is 0x9ffffff.
      * @default 0x99182431
      * @returns { This } Returns the Search instance.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkSearchSetPlaceholderColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkSearchSetPlaceholderColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSearchResetPlaceholderColor()
+            }
         }
         this
     }
@@ -549,10 +557,15 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     protected override func borderWidthInner(width: ?Length): This {
-        let tmpValue = width ?? throw BusinessException(100001, "The type now is not supported.")
-        var w = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkSearchSetBorderWidth(w.value, w.unitType.getValue())
+        if (let Some(v) <- width) {
+            var w = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkSearchSetBorderWidth(w.value, w.unitType.getValue())
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractResetBorderWidth()
+            }
         }
         this
     }

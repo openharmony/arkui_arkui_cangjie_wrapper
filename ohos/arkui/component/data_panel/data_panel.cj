@@ -64,6 +64,8 @@ foreign {
     func FfiOHOSAceFrameworkDataPanelSetStrokeWidth(strokeWidth: Float64, widthUnit: Int32): Unit
 
     func FfiOHOSAceFrameworkDataPanelSetTrackShadow(value: NativeDataPanelShadow): Unit
+
+    func FfiOHOSAceFrameworkDataPanelResetValueColors(): Unit
 }
 
 /**
@@ -273,22 +275,26 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
      *
      * @param { ?Array<LinearGradient> } value - the value colors of the data ratio chart.
      * @returns { This } - The instance of the component.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func valueColors(value: ?Array<LinearGradient>): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        let vecValueHandle = FFIVectorNativeLinearGradient(tmpValue.size)
-        for (i in 0..tmpValue.size) {
-            vecValueHandle.setElement(i, tmpValue[i].parseToNative())
+        if (let Some(v) <- value) {
+            let vecValueHandle = FFIVectorNativeLinearGradient(v.size)
+            for (i in 0..v.size) {
+                vecValueHandle.setElement(i, v[i].parseToNative())
+            }
+            unsafe {
+                FfiOHOSAceFrameworkDataPanelSetValueColors(vecValueHandle.getNativeHandle())
+            }
+            vecValueHandle.free()
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkDataPanelResetValueColors()
+            }
         }
-        unsafe {
-            FfiOHOSAceFrameworkDataPanelSetValueColors(vecValueHandle.getNativeHandle())
-        }
-        vecValueHandle.free()
         this
     }
 
