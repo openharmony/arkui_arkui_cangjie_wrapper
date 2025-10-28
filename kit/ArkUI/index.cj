@@ -32,3 +32,11 @@ public import ohos.arkui.state_management.*
 // curves
 public import ohos.curves.*
 
+// component_utils
+public import ohos.arkui.component_utils.*
+
+// shape
+public import ohos.arkui.shape.*
+
+// ui_context
+public import ohos.arkui.ui_context.*
