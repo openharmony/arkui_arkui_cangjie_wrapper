@@ -17,10 +17,9 @@
 
 package ohos.arkui.component.loading_progress
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.arkui.component.custom_component.*
-import ohos.base.*
+import ohos.arkui.component.common.{CommonMethodComponent}
+import ohos.arkui.component.util.{transAppResourceToResourceColor}
+import ohos.base.{ResourceColor}
 import ohos.labels.APILevel
 
 foreign {

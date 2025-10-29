@@ -17,12 +17,11 @@
 
 package ohos.arkui.component.gauge
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.data_panel.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder}
+import ohos.arkui.component.data_panel.{LinearGradient}
+import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, transAppResourceToResourceColor}
+import ohos.base.{VectorUInt32Handle, VectorFloat64Handle, ResourceColor, Length, LengthProp, ResourceStr, FFIVectorUInt32, FFIVectorFloat32}
+import ohos.ffi.{Callback0Param}
 import ohos.labels.APILevel
 
 type VectorNativeGaugeLinearGradientHandle = CPointer<Unit>

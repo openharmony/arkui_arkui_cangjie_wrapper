@@ -17,7 +17,7 @@
 
 protected package ohos.arkui.component.native_struct
 
-import ohos.base.*
+import ohos.base.{NativeOffset}
 
 @C
 protected struct NativeActionSheetShadowOptions {

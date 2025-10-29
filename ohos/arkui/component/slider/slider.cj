@@ -17,10 +17,10 @@
 
 package ohos.arkui.component.slider
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, SliderStyle, Axis, SliderChangeMode}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString}
+import ohos.base.{ResourceStr, Length, ResourceColor}
+import ohos.ffi.{Callback2Param}
 import ohos.labels.APILevel
 
 @C

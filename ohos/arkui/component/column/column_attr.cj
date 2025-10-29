@@ -15,9 +15,8 @@
 
 package ohos.arkui.component.column
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, HorizontalAlign, FlexAlign}
 import ohos.labels.APILevel
-import ohos.base.*
 
 /**
  * Defines the Column attribute functions.

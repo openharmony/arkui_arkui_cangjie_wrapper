@@ -15,10 +15,9 @@
 
 package ohos.arkui.component.blank
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
+import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ResourceColor}
 
 /**
  * Defines the Blank attribute functions.

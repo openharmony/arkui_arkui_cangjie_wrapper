@@ -17,11 +17,10 @@
 
 package ohos.arkui.component.canvas
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.arkui.component.native_struct.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, Repetition, FontStyle}
+import ohos.arkui.component.util.{transAppResourceToResourceColor}
+import ohos.base.{ResourceColor, VectorFloat64Handle, Color}
+import ohos.ffi.{RemoteDataLite, Callback0Param, releaseFFIData}
 import ohos.labels.APILevel
 import std.deriving.Derive
 

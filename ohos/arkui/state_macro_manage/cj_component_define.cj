@@ -17,9 +17,9 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
-import std.collection.*
-import std.unicode.*
+import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess, Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, parseExprFragment, TokenKind, ToTokens, parseDecl, getChildMessages, Argument}
+import std.collection.{ArrayList}
+import std.unicode.{UnicodeStringExtension}
 
 public macro Component(input: Tokens): Tokens {
     checkComponentSyntax(input)

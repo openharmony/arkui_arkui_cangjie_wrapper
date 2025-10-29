@@ -15,11 +15,9 @@
 
 package ohos.arkui.component.text_area
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.text_field.*
+import ohos.arkui.component.common.{CommonMethod, FontWeight, FontStyle, TextAlign, EnterKeyType}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
+import ohos.base.{Length, ResourceColor, ResourceStr}
 
 /**
  * Defines the TextArea attribute functions.

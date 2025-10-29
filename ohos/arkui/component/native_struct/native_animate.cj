@@ -17,8 +17,8 @@
 
 protected package ohos.arkui.component.native_struct
 
-import ohos.base.*
-import ohos.ffi.*
+import ohos.base.{NativeOptionInt32, NativeOptionFloat32, NativeOptionCString, NativeOptionCallBack}
+import ohos.ffi.{Callback0Param}
 
 @C
 protected struct NativeAnimateParam {

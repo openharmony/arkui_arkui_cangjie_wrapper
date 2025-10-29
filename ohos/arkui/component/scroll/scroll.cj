@@ -17,18 +17,15 @@
 
 package ohos.arkui.component.scroll
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.rect.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{ScrollState, Edge, Curve, NestedScrollMode, ScrollDirection, BarState, ScrollSource}
+import ohos.arkui.component.native_struct.{RectResultParams}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.base.{VectorFloat32Handle, VectorInt32Handle, Length, ResourceColor, AppLog, LengthProp, BaseLog}
+import ohos.ffi.{BaseCallBack, RemoteDataLite, Callback0Param, Callback4Param, Callback3Param, Callback2Param, Callback1Param, releaseFFIData}
+import ohos.resource.{AppResource, getResourceString}
 import ohos.labels.APILevel
-import ohos.arkui.shape.*
 import ohos.business_exception.BusinessException
-
-import std.convert.*
+import std.convert.{Parsable}
 import std.deriving.Derive
 
 @C

@@ -15,9 +15,9 @@
 
 package ohos.arkui.component.checkbox
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, CheckBoxShape}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ResourceColor}
 
 /**
  * Defines the Checkbox attribute functions.

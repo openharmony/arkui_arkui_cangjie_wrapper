@@ -17,9 +17,8 @@
 
 package ohos.arkui.component.scroll_bar
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.scroll.*
-import ohos.base.*
+import ohos.arkui.component.common.{CommonMethodComponent, ScrollBarDirection, BarState}
+import ohos.arkui.component.scroll.{Scroller}
 import ohos.labels.APILevel
 
 foreign {

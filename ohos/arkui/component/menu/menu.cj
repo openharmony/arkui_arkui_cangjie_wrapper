@@ -17,11 +17,10 @@
 
 package ohos.arkui.component.menu
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, FontWeight, FontStyle, BorderRadiuses}
+import ohos.arkui.component.native_struct.{CBorderRadiuses, DividerParams}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.base.{Length, ResourceStr, ResourceColor, LengthProp}
 import ohos.labels.APILevel
 
 foreign {

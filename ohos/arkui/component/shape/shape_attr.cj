@@ -15,10 +15,8 @@
 
 package ohos.arkui.component.shape
 
-import ohos.arkui.component.common.*
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
+import ohos.base.{Length}
 
 /**
  * Defines Shape Component.

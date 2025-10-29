@@ -17,12 +17,10 @@
 
 package ohos.arkui.component.pattern_lock
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.arkui.component.custom_component.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent}
+import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.base.{ResourceColor, Length, VectorInt32Handle, FFIVectorInt32, LengthProp}
+import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback1Param}
 import ohos.labels.APILevel
 
 @C

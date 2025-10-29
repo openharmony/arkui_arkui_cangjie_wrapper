@@ -17,7 +17,7 @@
 
 protected package ohos.arkui.component.native_struct
 
-import ohos.base.*
+import ohos.base.{NativeOptionInt64, NativeOptionCallBack, Length, NativeOptionInt32, NativeLength, NativeOptionFloat64, NativeOptionUInt32, NativeOptionCArrInt32, NativeOptionBool, NativeOptionLength, NativeOptionCString}
 
 protected type VectorNativeRectangleHandle = CPointer<Unit>
 

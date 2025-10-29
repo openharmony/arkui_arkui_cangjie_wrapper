@@ -15,10 +15,9 @@
 
 package ohos.arkui.component.rect	
 
-import ohos.arkui.component.common.*	
-import ohos.arkui.component.shape.*
+import ohos.arkui.component.shape.{CommonShapeMethod}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{Length}
 
 /**
  * Defines Rect Component.

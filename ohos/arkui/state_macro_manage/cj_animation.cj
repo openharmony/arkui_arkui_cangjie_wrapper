@@ -15,9 +15,8 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
-import std.collection.*
-import std.unicode.*
+import std.ast.{Argument, Expr, CallExpr, TrailingClosureExpr, MemberAccess, RefExpr, Token, TokenKind}
+import std.collection.ArrayList
 
 var currentAnimationParmas: ArrayList<Argument> = ArrayList<Argument>([])
 

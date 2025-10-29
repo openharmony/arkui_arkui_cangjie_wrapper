@@ -15,10 +15,10 @@
 
  package ohos.arkui.component.navigation
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToResourceColor}
+import ohos.base.{Callback, ResourceStr, LengthProp}
+import ohos.ffi.{Callback0Param, RemoteDataManager, Callback1Param}
 import ohos.labels.APILevel
 
 foreign {

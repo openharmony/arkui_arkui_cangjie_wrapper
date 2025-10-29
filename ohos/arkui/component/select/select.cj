@@ -17,12 +17,12 @@
 
 package ohos.arkui.component.select
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{Direction, FontStyle, FontWeight, ArrowPosition, MenuAlignType, Offset, OptionWidthMode, BlurStyle, CommonMethodComponent}
+import ohos.arkui.component.native_struct.{DividerParams}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.base.{ResourceStr, CStringExtend, Length, ResourceColor, Color, LengthProp}
+import ohos.ffi.{Callback2Param}
+import ohos.resource.{AppResource, getResourceString, getResourceMedia}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 

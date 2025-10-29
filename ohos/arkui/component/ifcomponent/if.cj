@@ -17,9 +17,8 @@
 
 package ohos.arkui.component.ifcomponent
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{UINodeBase}
 import ohos.labels.APILevel
-import ohos.ffi.*
 
 foreign {
     func FfiOHOSAceFrameworkIfElseCreate(): Unit

@@ -17,9 +17,9 @@
 
 package ohos.arkui.component.stepper
 
-import ohos.arkui.component.common.*
-import ohos.ffi.*
-import ohos.base.*
+import ohos.arkui.component.common.{CommonMethodComponent}
+import ohos.ffi.{Callback0Param, Callback2Param}
+import ohos.base.{ResourceStr}
 import ohos.labels.APILevel
 
 foreign {

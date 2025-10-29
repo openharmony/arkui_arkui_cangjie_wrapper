@@ -15,9 +15,9 @@
 
 package ohos.arkui.component.divider
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, LineCapStyle}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ResourceColor, Length}
 
 /**
  * Defines Divider attributes.

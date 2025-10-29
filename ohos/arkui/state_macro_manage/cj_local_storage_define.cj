@@ -17,8 +17,8 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
-import std.unicode.*
+import std.ast.{Token, Tokens, LitConstExpr, VarDecl, parseExpr, parseDecl}
+import std.unicode.{UnicodeStringExtension}
 
 /**
  * support two-way data binding between app storage and component data

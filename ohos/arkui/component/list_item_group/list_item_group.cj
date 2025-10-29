@@ -17,11 +17,11 @@
 
 package ohos.arkui.component.list_item_group
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder}
+import ohos.arkui.component.native_struct.{DividerParams}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.base.{Length, ResourceColor, LengthProp}
+import ohos.ffi.{Callback0Param}
 import ohos.labels.APILevel
 import std.deriving.Derive
 import ohos.business_exception.BusinessException

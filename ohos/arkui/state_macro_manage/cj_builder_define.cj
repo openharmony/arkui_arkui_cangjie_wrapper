@@ -17,8 +17,8 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
-import std.collection.*
+import std.ast.{Tokens, CallExpr, MemberAccess, VarDecl, Node, Expr, parseDecl, Token, Visitor, TokenKind, FuncDecl, ASTException, FuncParam, ToTokens, RefType}
+import std.collection.{HashMap, ArrayList}
 
 public macro Builder(input: Tokens): Tokens {
     let decl = parseDecl(input)

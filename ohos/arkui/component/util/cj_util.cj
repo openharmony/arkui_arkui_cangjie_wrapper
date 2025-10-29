@@ -17,8 +17,8 @@
 
 protected package ohos.arkui.component.util
 
-import ohos.base.*
-import ohos.resource.*
+import ohos.base.{Length, ResourceColor, LengthUnit, ResourceStr}
+import ohos.resource.{AppResource, getResourceLength, getResourceColor, getResourceString, getResourceMedia}
 
 // !! Do not use the following variables as match-case conditions
 

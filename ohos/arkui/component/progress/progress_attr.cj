@@ -15,9 +15,9 @@
 
 package ohos.arkui.component.progress
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ResourceColor, Length}
 
 /**
  * Defines Progress Component.

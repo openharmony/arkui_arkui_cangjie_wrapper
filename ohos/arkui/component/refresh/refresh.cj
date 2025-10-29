@@ -17,9 +17,9 @@
 
 package ohos.arkui.component.refresh
 
-import ohos.arkui.component.common.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, Bindable, RefreshStatus}
+import ohos.base.{Length, LengthProp}
+import ohos.ffi.{Callback1Param, Callback0Param}
 import ohos.labels.APILevel
 
 foreign {

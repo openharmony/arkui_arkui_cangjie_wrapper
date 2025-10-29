@@ -15,11 +15,9 @@
 
 package ohos.arkui.component.path
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.shape.*
-import ohos.arkui.component.util.*
+import ohos.arkui.component.shape.{CommonShapeMethod}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ResourceStr}
 
 /**
  * Defines Path Component.

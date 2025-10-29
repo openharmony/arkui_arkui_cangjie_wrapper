@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
+import std.ast.{Tokens, ClassDecl, FuncDecl, parseDecl, AssignExpr}
 
 /**
  * Constraint: define reuseable component before @Entry

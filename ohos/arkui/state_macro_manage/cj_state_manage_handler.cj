@@ -17,8 +17,8 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.collection.*
-import std.ast.*
+import std.collection.{HashMap, ArrayList, HashSet}
+import std.ast.{VarDecl, Token, CallExpr, Tokens}
 
 class StateManageHandler {
     /*

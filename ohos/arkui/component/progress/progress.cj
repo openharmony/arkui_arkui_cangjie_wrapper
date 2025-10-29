@@ -17,10 +17,9 @@
 
 package ohos.arkui.component.progress
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, ProgressType}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.base.{VectorFloat64Handle, VectorInt32Handle, Length, ResourceColor, VectorUInt32Handle, LengthProp}
 import ohos.labels.APILevel
 import std.deriving.Derive
 import ohos.business_exception.BusinessException

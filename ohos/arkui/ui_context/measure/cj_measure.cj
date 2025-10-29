@@ -15,10 +15,9 @@
 
 protected package ohos.arkui.ui_context.measure
 
-import ohos.base.*
-import ohos.ffi.*
+import ohos.base.{NativeOptionLength, Length, LengthProp, NativeLength}
 import ohos.labels.APILevel
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{FontWeight, TextAlign, FontStyle, TextOverflow, TextCase, WordBreak}
 
 @C
 struct CJMeasureContextToC {

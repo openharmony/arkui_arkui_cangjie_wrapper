@@ -15,10 +15,10 @@
 
 package ohos.arkui.component.common
 
-import ohos.arkui.component.util.*
-import ohos.arkui.shape.*
+import ohos.arkui.shape.{BaseShape}
+import ohos.business_exception.BusinessException
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ResourceColor, Length, ResourceStr}
 
 /**
  * CommonMethod.

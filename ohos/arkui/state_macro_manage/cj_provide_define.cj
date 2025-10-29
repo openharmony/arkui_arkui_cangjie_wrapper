@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
+import std.ast.{Tokens, VarDecl, Token, LitConstExpr, parseDecl, parseExpr}
 
 public macro Provide(input: Tokens): Tokens {
     generateProvide(input)

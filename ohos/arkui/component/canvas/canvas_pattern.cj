@@ -17,9 +17,8 @@
 
 package ohos.arkui.component.canvas
 
-import ohos.arkui.component.common.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{Repetition}
+import ohos.ffi.{RemoteDataLite, releaseFFIData}
 import ohos.labels.APILevel
 
 foreign {

@@ -15,9 +15,9 @@
 
 package ohos.arkui.component.navigation
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, CustomBuilder}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ResourceStr, Callback}
 
 /**
  * Defines the Navigation attribute functions.

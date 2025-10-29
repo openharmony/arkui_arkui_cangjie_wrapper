@@ -18,8 +18,7 @@
 package ohos.arkui.state_management
 
 import ohos.labels.APILevel
-
-import std.collection.*
+import std.collection.{ArrayList}
 
 func isEqual<T>(value: T, newValue: T): Bool {
     newValue is Equatable<T> && (newValue as Equatable<T>).getOrThrow() == value

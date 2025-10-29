@@ -17,9 +17,9 @@
 
 package ohos.arkui.component.counter
 
-import ohos.arkui.component.common.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent}
+import ohos.base.{VoidCallback}
+import ohos.ffi.{Callback0Param}
 import ohos.labels.APILevel
 
 foreign {

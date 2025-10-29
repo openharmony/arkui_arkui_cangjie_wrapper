@@ -17,7 +17,7 @@
 
 package ohos.base
 
-import std.collection.*
+import std.collection.{ArrayList}
 import ohos.labels.APILevel
 
 /**

@@ -17,9 +17,9 @@
 
 package ohos.arkui.component.divider
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
+import ohos.arkui.component.common.{CommonMethodComponent, LineCapStyle}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.base.{ResourceColor, Length, LengthProp}
 import ohos.labels.APILevel
 
 foreign {

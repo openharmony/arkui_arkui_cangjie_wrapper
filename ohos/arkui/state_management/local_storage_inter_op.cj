@@ -15,11 +15,8 @@
 
 package ohos.arkui.state_management
 
-import ohos.base.*
-import ohos.hilog.*
-import ohos.ark_interop.*
+import ohos.ark_interop.{JSContext, JSModule, JSValue, JSFunction}
 import ohos.labels.APILevel
-import std.collection.*
 
 var globalContext: ?JSContext = None
 let initLocalStorageEnvModule = JSModule.registerModule {

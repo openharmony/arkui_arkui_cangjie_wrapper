@@ -15,12 +15,10 @@
 
 package ohos.arkui.component.date_picker
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.text_clock.*
+import ohos.arkui.component.common.{CommonMethod, PickerTextStyle, FontWeight, FontStyle}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
-import std.time.*
+import ohos.base.{Callback, Length}
+import std.time.{DateTime}
 
 /**
  * Defines DatePicker attributes.

@@ -17,8 +17,8 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
-import std.collection.*
+import std.ast.{Token, TokenKind}
+import std.collection.{HashSet, HashMap}
 
 // record all built-in component name, which will be handled when expand macro.
 let MACRO_EXPAND_COMPONENTS_INTEROP: Array<String> = ["NavRouter", "WithTheme", "LocationButton", "PasteButton",

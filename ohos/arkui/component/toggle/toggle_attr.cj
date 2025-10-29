@@ -15,9 +15,9 @@
 
 package ohos.arkui.component.toggle
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ResourceColor}
 
 /**
  * Defines the Toggle attribute functions.

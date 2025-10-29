@@ -15,10 +15,11 @@
 
 package ohos.arkui.component.custom_component
 
-import ohos.hilog.*
-import ohos.ark_interop.*
+import ohos.hilog.{Hilog}
+import ohos.ark_interop.{SharedObject, JSContext, JSCallInfo, JSModule}
+import ohos.business_exception.BusinessException
 import std.collection.HashMap
-import ohos.base.*
+import ohos.base.{launch}
 import ohos.labels.APILevel
 
 /**

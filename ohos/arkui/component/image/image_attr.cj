@@ -15,11 +15,10 @@
 
 package ohos.arkui.component.image
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, ImageFit, ImageRepeat, ImageInterpolation, ImageRenderMode}
+import ohos.business_exception.BusinessException
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.base.{ResourceStr, Length, ResourceColor}
 import ohos.multimedia.image.PixelMap
 
 /**

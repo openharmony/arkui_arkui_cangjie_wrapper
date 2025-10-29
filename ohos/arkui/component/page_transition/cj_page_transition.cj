@@ -17,10 +17,10 @@
 
 package ohos.arkui.component.page_transition
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{Curve}
+import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.base.{Length, AppLog, LengthProp}
+import ohos.ffi.{BaseCallBack}
 import ohos.labels.APILevel
 import std.deriving.Derive
 import ohos.business_exception.BusinessException

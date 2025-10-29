@@ -17,12 +17,11 @@
 
 package ohos.arkui.component.action_sheet
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{DialogButtonStyle, DismissReason, DialogAlignment, Rectangle, BlurStyle, BorderRadiuses, EdgeStyles, ShadowOptions, TransitionEffect, INVALID_CALLBACK_ID}
+import ohos.arkui.component.native_struct.{NativeActionSheetShadowOptions, NativeOptionOffset, NativeOptionRectangle, NativeOptionEdgeStyle, NativeOptionRadius, NativeConfirm}
+import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, transResourceMediaToString}
+import ohos.base.{NativeOptionLength, NativeOptionUInt32, NativeOffset, NativeOptionInt64, ResourceStr, VoidCallback, Length, NativeOptionCString, NativeOptionBool, NativeOptionCallBack, NativeOptionInt32, ResourceColor, Callback, NativeLength, Color, LengthProp}
+import ohos.ffi.{Callback0Param, Callback1Param}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 

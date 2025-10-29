@@ -15,12 +15,13 @@
 
 package ohos.arkui.component.custom_component
 
-internal import ohos.business_exception.BusinessException
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.base.*
+import ohos.business_exception.BusinessException
+import ohos.arkui.component.common.{AceLog, }
+import ohos.arkui.component.native_struct.{OHOSAceFrameworkRemoteViewRender, OHOSAceFrameworkRemoteViewOnAppear, OHOSAceFrameworkRemoteViewRelease, OHOSAceFrameworkRemoteViewOnShow, OHOSAceFrameworkRemoteViewOnHide, OHOSAceFrameworkRemoteViewOnBackPress, OHOSAceFrameworkRemoteViewUpdateWithJson, OHOSAceFrameworkRemoteViewOnTransition, OHOSAceFrameworkRemoteViewOnAboutToRender, OHOSAceFrameworkRemoteViewOnDisappear, OHOSAceFrameworkRemoteViewOnAboutToBeDeleted, OHOSAceFrameworkRemoteViewForceCompleteRerender, OHOSAceFrameworkLazyForEachFuncsGenerateKey, OHOSAceFrameworkLazyForEachFuncsGenerateItem, OHOSAceFrameworkLazyForEachFuncsGetTotalCount, OHOSAceFrameworkLazyForEachFuncsMarkLazy, OHOSAceFrameworkLazyForEachFuncsResetLazy, OHOSAceFrameworkLazyForEachFuncsRemoveChildGroup, OHOSAceFrameworkLazyForEachFuncsDataChangeListenerRegister, OHOSAceFrameworkLazyForEachFuncsDataChangeListenerUnregister, 
+OHOSAceFrameworkRemoteViewOnDidBuild, OHOSAceFrameworkRemoteViewAboutToReuse, OHOSAceFrameworkRemoteViewAboutToRecycle, OHOSAceFrameworkRemoteViewRecycleSelf, OHOSAceFrameworkRemoteViewRerender, OHOSAceFrameworkRemoteViewOnAfterRender}
 import ohos.labels.APILevel
 import std.collection.HashMap
+import ohos.base.{ExternalString}
 
 /**
  * CJEntry is a singleton class, it provides global functions to be accessed by native.

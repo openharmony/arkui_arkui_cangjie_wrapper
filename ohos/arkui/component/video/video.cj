@@ -15,13 +15,11 @@
 
 package ohos.arkui.component.video
 
-import ohos.arkui.component.common.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, SeekMode, PlaybackSpeed, ImageFit}
+import ohos.base.{ResourceStr, VoidCallback, Callback}
+import ohos.ffi.{Callback1Param, RemoteDataLite, releaseFFIData}
 import ohos.labels.APILevel
-import std.convert.*
-import ohos.arkui.component.util.*
+import ohos.arkui.component.util.{transResourceMediaToString}
 
 foreign {
     func FfiOHOSAceFrameworkVideoCreate(src: CString, progressRate: Float64, preview: CString, controller: Int64): Unit

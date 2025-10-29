@@ -17,7 +17,6 @@
 
 package ohos.arkui.component.common
 
-import ohos.arkui.component.native_struct.*
 import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 

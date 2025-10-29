@@ -15,8 +15,7 @@
 
 package ohos.arkui.component.circle
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.shape.*
+import ohos.arkui.component.shape.{CommonShapeMethod}
 import ohos.labels.APILevel
 
 /**

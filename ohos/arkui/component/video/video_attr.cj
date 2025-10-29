@@ -15,10 +15,9 @@
 
 package ohos.arkui.component.video
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, ImageFit}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
+import ohos.base.{VoidCallback, Callback}
 
 /**
  * Defines the Video attribute functions.

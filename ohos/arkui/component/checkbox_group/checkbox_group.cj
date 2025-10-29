@@ -17,11 +17,11 @@
 
 package ohos.arkui.component.checkbox_group
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, SelectStatus, Rectangle}
+import ohos.arkui.component.native_struct.{CJEdge, VectorNativeRectangleHandle, CJResponseRegion, FFiCheckboxGroupResult, FFIVectorNativeRectangle}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.base.{ResourceColor, Length, AppLog, BaseLog, LengthProp}
+import ohos.ffi.{BaseCallBack}
 import ohos.labels.APILevel
 import std.collection.ArrayList
 import ohos.business_exception.BusinessException

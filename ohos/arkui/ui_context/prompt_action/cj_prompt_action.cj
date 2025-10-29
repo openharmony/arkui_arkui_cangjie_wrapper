@@ -15,14 +15,13 @@
 
 protected package ohos.arkui.ui_context.prompt_action
 
-import ohos.base.*
-import ohos.business_exception.*
-import ohos.callback_invoke.*
-import ohos.ffi.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.arkui.component.common.*
-import ohos.multimedia.image.*
+import ohos.base.{ResourceColor, Length, ResourceStr, Color, NativeOffset, LengthProp, CStringExtend, NativeLength}
+import ohos.business_exception.{BusinessException, AsyncCallback}
+import ohos.ffi.{Callback1Param, Callback2Param, Callback0Param}
+import ohos.arkui.component.native_struct.{NativeEdgeStyles}
+import ohos.arkui.component.native_struct.{CJEdge, NativeRectangle}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.arkui.component.common.{Rectangle, DialogAlignment, Offset, TransitionEffect, BorderRadiuses, EdgeWidths, EdgeStyles, ShadowOptions, BlurStyle, Alignment, ShadowType}
 import ohos.labels.APILevel
 import std.deriving.Derive
 

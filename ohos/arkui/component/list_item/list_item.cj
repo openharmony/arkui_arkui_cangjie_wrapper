@@ -17,10 +17,9 @@
 
 package ohos.arkui.component.list_item
 
-import ohos.arkui.component.common.*
-import ohos.arkui.state_management.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder, SwipeEdgeEffect}
+import ohos.arkui.state_management.{ViewStackProcessor}
+import ohos.ffi.{Callback1Param, Callback0Param}
 import ohos.labels.APILevel
 
 foreign {

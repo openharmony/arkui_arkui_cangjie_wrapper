@@ -17,12 +17,12 @@
 
 package ohos.arkui.component.alert_dialog
 
-import ohos.arkui.component.action_sheet.*
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.action_sheet.{DismissDialogAction, parseToDismissDialogAction}
+import ohos.arkui.component.common.{Rectangle, BlurStyle, BorderRadiuses, TransitionEffect, EdgeStyles, ShadowOptions, WordBreak, DialogAlignment, Offset, DialogButtonStyle, parseOffset, INVALID_CALLBACK_ID}
+import ohos.arkui.component.native_struct.{NativeOptionRadius, NativeOptionRectangle, NativeOptionEdgeStyle, NativeOptionOffset, NativeActionSheetShadowOptions}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.base.{ResourceColor, Length, LengthProp, Callback, ResourceStr, VoidCallback, Color, NativeOptionBool, NativeOptionCallBack, NativeOptionInt32, NativeOptionUInt32, NativeOptionLength, NativeOptionCString, NativeOptionInt64, NativeLength}
+import ohos.ffi.{Callback0Param, Callback1Param}
 import ohos.labels.APILevel
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
@@ -308,7 +308,7 @@ public open class AlertDialogButtonBaseOptions {
     public init(
         enabled!: ?Bool = None,
         defaultFocus!: ?Bool = None,
-        style!: ?DialogButtonStyle = None,
+        style!: ?DialogButtonStyle = Option.None,
         value!: ?ResourceStr,
         fontColor!: ?ResourceColor = None,
         backgroundColor!: ?ResourceColor = None,
@@ -361,7 +361,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
     public init(
         enabled!: ?Bool = None,
         defaultFocus!: ?Bool = None,
-        style!: ?DialogButtonStyle = None,
+        style!: ?DialogButtonStyle = Option.None,
         value!: ?ResourceStr,
         fontColor!: ?ResourceColor = None,
         backgroundColor!: ?ResourceColor = None,

@@ -15,10 +15,9 @@
 
 package ohos.arkui.component.button
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, FontWeight, FontStyle}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
+import ohos.base.{ResourceColor, Length, ResourceStr}
 
 /**
  * Defines the Button attribute functions.

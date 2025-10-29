@@ -15,9 +15,9 @@
 
 package ohos.arkui.component.flex
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
+import ohos.arkui.component.common.{CommonMethodComponent, FlexDirection, FlexWrap, FlexAlign, ItemAlign}
+import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.base.{Length, LengthProp}
 import ohos.labels.APILevel
 
 @C

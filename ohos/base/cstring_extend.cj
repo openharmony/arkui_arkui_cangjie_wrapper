@@ -19,7 +19,7 @@ package ohos.base
 
 import ohos.hilog.HilogChannel
 import ohos.labels.APILevel
-import ohos.business_exception.*
+import ohos.business_exception.BusinessException
 
 foreign {
     func FfiOHOSAceFrameworkThrowNativeError(msg: CString): Unit

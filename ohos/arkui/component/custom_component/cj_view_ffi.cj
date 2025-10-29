@@ -15,12 +15,8 @@
 
 package ohos.arkui.component.custom_component
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.base.{Length, LengthProp}
 import ohos.labels.APILevel
-import std.math.*
 
 @C
 struct CJMultiShadowOptions {

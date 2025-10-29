@@ -15,9 +15,9 @@
 
 package ohos.arkui.component.text_picker
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{Length}
 
 /**
  * Defines the TextPicker attribute functions.

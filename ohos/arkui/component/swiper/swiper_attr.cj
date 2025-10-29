@@ -15,9 +15,9 @@
 
 package ohos.arkui.component.swiper
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, SwiperDisplayMode, EdgeEffect, Curve}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{Length}
 
 /**
  * Defines the Swiper attribute functions.

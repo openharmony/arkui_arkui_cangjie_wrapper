@@ -17,17 +17,16 @@
 
 package ohos.arkui.component.list
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.list_item_group.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.scroll.*
-import ohos.arkui.component.util.*
-import ohos.arkui.shape.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{Axis, EdgeEffect, ListItemAlign, StickyStyle, BarState, ScrollState, NestedScrollMode}
+import ohos.arkui.component.list_item_group.{ListDividerOptions}
+import ohos.arkui.component.native_struct.{DividerParams, RectResultParams}
+import ohos.arkui.component.scroll.{ScrollableCommonMethodComponent, ScrollableCommonMethod, Scroller, NestedScrollOptions, ContentClipMode}
+import ohos.arkui.component.util.{LENGTH_VP, transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.base.{Length, LengthProp, ResourceColor, BaseLog}
+import ohos.ffi.{Callback3Param, Callback2Param, Callback0Param}
 import ohos.labels.APILevel
-import ohos.resource.*
-import std.convert.*
+import ohos.resource.{AppResource, getResourceString}
+import std.convert.{Parsable}
 
 @C
 struct CJVisibleListContentInfo {

@@ -15,12 +15,11 @@
 
 package ohos.arkui.component.scroll
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.rect.*
+import ohos.arkui.component.common.{CommonMethod, BarState, ScrollState, ScrollSource}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
-import ohos.arkui.shape.*
+import ohos.base.{ResourceColor, Length}
+import ohos.resource.{AppResource}
+import ohos.arkui.shape.{RectShape}
 
 /**
  * Provides functions for scroll able Base.

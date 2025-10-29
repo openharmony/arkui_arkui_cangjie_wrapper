@@ -17,8 +17,7 @@
 
 package ohos.arkui.component.recycle
 
-import ohos.arkui.component.common.*
-import ohos.base.*
+import ohos.arkui.component.common.{CommonMethodComponent, CommonMethod}
 import ohos.labels.APILevel
 
 foreign {

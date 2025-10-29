@@ -17,11 +17,11 @@
 
 package ohos.arkui.component.search
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, TextContentControllerBase, FontWeight, FontStyle, CopyOptions, BorderStyle}
+import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, LENGTH_PERCENT, transAppResourceToResourceColor, LENGTH_FP}
+import ohos.base.{ResourceStr, ResourceColor, Length, Color, LengthProp}
+import ohos.ffi.{Callback1Param, RemoteDataLite, releaseFFIData}
+import ohos.resource.{AppResource, getResourceMedia}
 import ohos.labels.APILevel
 
 @C

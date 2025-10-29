@@ -17,12 +17,12 @@
 
 package ohos.arkui.component.image
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, ImageFit, ImageRepeat, ImageInterpolation, ImageRenderMode, BorderStyle}
+import ohos.arkui.component.native_struct.{CImageError}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.base.{VectorFloat32Handle, ResourceStr, Length, LengthProp, ResourceColor, AppLog}
+import ohos.ffi.{BaseCallBack, Callback0Param}
+import ohos.resource.{AppResource, getResourceMedia}
 import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 import ohos.business_exception.BusinessException

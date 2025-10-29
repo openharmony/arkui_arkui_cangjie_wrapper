@@ -17,11 +17,11 @@
 
 package ohos.arkui.component.swiper
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, Font, SwiperDisplayMode, EdgeEffect, Curve, ClickEvent, CallbackCJClickEvent, FontWeight, parseCJClickEvent}
+import ohos.arkui.component.native_struct.{CJClickEvent}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.base.{Length, ResourceColor, VoidCallback, LengthProp, Color, CStringExtend}
+import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback1Param, Callback0Param}
 import ohos.labels.APILevel
 
 @C

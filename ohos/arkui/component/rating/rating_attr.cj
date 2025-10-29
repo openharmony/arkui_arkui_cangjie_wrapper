@@ -15,9 +15,9 @@
 
 package ohos.arkui.component.rating
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ResourceStr}
 
 /**
  * Provides methods for configuring the appearance and behavior of the Rating component.

@@ -17,10 +17,10 @@
 
 package ohos.arkui.component.rich_text
 
-import ohos.arkui.component.common.*
-import ohos.ffi.*
-import ohos.base.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent}
+import ohos.ffi.{Callback0Param}
+import ohos.base.{ResourceStr}
+import ohos.resource.{AppResource, getResourceString}
 import ohos.labels.APILevel
 
 foreign {

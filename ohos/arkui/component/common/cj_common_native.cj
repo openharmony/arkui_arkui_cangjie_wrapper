@@ -17,7 +17,7 @@
 
 package ohos.arkui.component.common
 
-import ohos.base.*
+import ohos.base.{NativeOptionCallBack, NativeOptionInt64, NativeOptionUInt32, LengthProp}
 import ohos.business_exception.BusinessException
 
 @C
