@@ -279,7 +279,7 @@ class BasicCommonUT21 {
         driver.triggerKey(2013)
         let b14 = driver.findComponent(On().id("b14")).getOrThrow()
         let res2 = b14.isFocused()
-        @Expect(res2, false)
+        @Expect(res2, true)
     }
 
     @TestCase

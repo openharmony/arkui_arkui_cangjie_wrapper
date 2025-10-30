@@ -294,7 +294,7 @@ class ViewRichEditor {
                         this.message = "[" + this.start.toString() + ", " + this.end.toString() + "]"
 //                        var results = controller.getSpans()
                     }
-                ).aboutToIMEInput(
+                ).aboutToImeInput(
                     {
                         value =>
                         Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: ---------------------- aboutToIMEInput ----------------------")
@@ -304,7 +304,7 @@ class ViewRichEditor {
                         this.insertValue = value.insertValue.toString() + ""
                         return true
                     }
-                ).onIMEInputComplete(
+                ).onImeInputComplete(
                     {
                         value =>
                         Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: ---------------------- onIMEInputComplete ---------------------")

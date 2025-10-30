@@ -49,7 +49,7 @@ class ViewAlertDialog {
                             confirm: confirm1,
                             cornerRadius: BorderRadiuses(topLeft: 0.vp, topRight: 32.vp, bottomLeft: 0.vp,
                                 bottomRight: 32.vp),
-                            borderColor: Color.Red,
+                            borderColor: BorderColor(color: Color.Red),
                             maskRect: Rectangle(x: 0, y: 15, width: 85.percent, height: 100.percent),
                             onWillDismiss: {
                                 action =>
@@ -97,7 +97,7 @@ class ViewAlertDialog {
                             confirm: confirm1,
                             cornerRadius: BorderRadiuses(topLeft: 0.vp, topRight: 32.vp, bottomLeft: 0.vp,
                                 bottomRight: 32.vp),
-                            borderColor: Color.Red,
+                            borderColor: BorderColor(color: Color.Red),
                             maskRect: Rectangle(x: 0, y: 15, width: 85.percent, height: 100.percent),
                             onWillDismiss: {
                                 action =>
@@ -145,7 +145,7 @@ class ViewAlertDialog {
                             confirm: confirm1,
                             cornerRadius: BorderRadiuses(topLeft: 0.vp, topRight: 32.vp, bottomLeft: 0.vp,
                                 bottomRight: 32.vp),
-                            borderColor: Color.Red,
+                            borderColor: BorderColor(color: Color.Red),
                             maskRect: Rectangle(x: 0, y: 15, width: 85.percent, height: 100.percent),
                             onWillDismiss: {
                                 action =>
@@ -202,7 +202,7 @@ class ViewAlertDialog {
                             gridCount: 4,
                             cornerRadius: BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
                                 bottomRight: 32.vp),
-                            borderColor: Color.Red,
+                            borderColor: BorderColor(color: Color.Red),
                             onWillDismiss: {
                                 action =>
                                 match (action.reason) {
@@ -258,7 +258,7 @@ class ViewAlertDialog {
                             gridCount: 4,
                             cornerRadius: BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
                                 bottomRight: 32.vp),
-                            borderColor: Color.Red,
+                            borderColor: BorderColor(color: Color.Red),
                             onWillDismiss: {
                                 action =>
                                 match (action.reason) {
@@ -314,7 +314,7 @@ class ViewAlertDialog {
                             gridCount: 4,
                             cornerRadius: BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
                                 bottomRight: 32.vp),
-                            borderColor: Color.Red,
+                            borderColor: BorderColor(color: Color.Red),
                             onWillDismiss: {
                                 action =>
                                 match (action.reason) {
@@ -563,7 +563,7 @@ class ViewAlertDialog {
                             cornerRadius: BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
                                 bottomRight: 32.vp),
                             borderWidth: 0,
-                            borderColor: Color.Black,
+                            borderColor: BorderColor(color: Color.Black),
                             borderStyle: EdgeStyles(),
                             textStyle: WordBreak.BreakAll,
                             buttons: [button1, button2],

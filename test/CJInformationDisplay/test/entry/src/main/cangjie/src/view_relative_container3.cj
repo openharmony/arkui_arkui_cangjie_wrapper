@@ -35,11 +35,11 @@ class ViewRelativeContainer3 {
                 .backgroundColor(0xa3cf62)
                 .alignRules(
                     AlignRuleOptions(
-                        top: VerticalAlignment("__container__", VerticalAlign.Top),
-                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
-                        left: HorizontalAlignment("__container__", HorizontalAlign.Start),
-                        right: HorizontalAlignment("__container__", HorizontalAlign.End),
-                        center: VerticalAlignment("__container__", VerticalAlign.Center),
+                        top: VerticalAlignParam("__container__", VerticalAlign.Top),
+                        bottom: VerticalAlignParam("__container__", VerticalAlign.Bottom),
+                        left: HorizontalAlignParam("__container__", HorizontalAlign.Start),
+                        right: HorizontalAlignParam("__container__", HorizontalAlign.End),
+                        center: VerticalAlignParam("__container__", VerticalAlign.Center),
                         bias: Bias(vertical: 0.3, horizontal: 0.3),
                     )
                 )
@@ -58,11 +58,11 @@ class ViewRelativeContainer3 {
                 .backgroundColor(0xa3cf62)
                 .alignRules(
                     AlignRuleOptions(
-                        top: VerticalAlignment("__container__", VerticalAlign.Top),
-                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
-                        left: HorizontalAlignment("__container__", HorizontalAlign.Start),
-                        right: HorizontalAlignment("__container__", HorizontalAlign.End),
-                        center: VerticalAlignment("__container__", VerticalAlign.Center),
+                        top: VerticalAlignParam("__container__", VerticalAlign.Top),
+                        bottom: VerticalAlignParam("__container__", VerticalAlign.Bottom),
+                        left: HorizontalAlignParam("__container__", HorizontalAlign.Start),
+                        right: HorizontalAlignParam("__container__", HorizontalAlign.End),
+                        center: VerticalAlignParam("__container__", VerticalAlign.Center),
                         bias: Bias(),
                     )
                 )

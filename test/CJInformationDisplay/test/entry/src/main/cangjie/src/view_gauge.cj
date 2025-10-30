@@ -37,9 +37,9 @@ class ViewGauge {
     var color4_l: LinearGradient = LinearGradient(0x20FF0000)
     var color5_l: LinearGradient = LinearGradient([ColorStop(0x00FF00, 0), ColorStop(0x20FF0000, 1)])
     var color6_l: LinearGradient = LinearGradient([ColorStop(0x00FF00, -1), ColorStop(0x20FF0000, -1)])
-    var colorArray_l: Array<(LinearGradient, Float32)> = [(this.color3_l, 1.0), (this.color4_l, 2.0),
-        (this.color5_l, -3.0), (this.color5_l, 2.0), (this.color6_l, 2.0), (this.color6_l, -2.0), (this.color4_l, 2.0),
-        (this.color4_l, 2.0), (this.color4_l, 2.0), (this.color4_l, 2.0), (this.color4_l, 2.0)]
+    var colorArray_l: Array<(LinearGradient, Int32)> = [(this.color3_l, 1), (this.color4_l, 2),
+        (this.color5_l, -3), (this.color5_l, 2), (this.color6_l, 2), (this.color6_l, -2), (this.color4_l, 2),
+        (this.color4_l, 2), (this.color4_l, 2), (this.color4_l, 2), (this.color4_l, 2)]
 
     @Builder
     func TextBuilder() {
@@ -53,7 +53,7 @@ class ViewGauge {
                 .startAngle(220.0)
                 .endAngle(135.0)
                 .value(30.0)
-                .colors([(0x2788D9, 1.0)])
+                .colors([(0x2788D9, 1)])
                 .width(80.percent)
                 .strokeWidth(28)
                 .trackShadow(radius: 7.0, offsetX: 7.0, offsetY: 7.0)
@@ -87,9 +87,9 @@ class ViewGauge {
                 .startAngle(220.0)
                 .endAngle(135.0)
                 .value(30.0)
-                .colors([(0x6572B513, 2.0)])
+                .colors([(0x6572B513, 2)])
                 .colors(Color.Red)
-                .colors([(@r(app.color.colorArrayCJResource), 2.0)])
+                .colors([(@r(app.color.colorArrayCJResource), 2)])
                 .width(80.percent)
                 .strokeWidth(Float64(28.0))
                 .trackShadow(radius: 7.0, offsetX: 7.0, offsetY: 7.0)
@@ -103,7 +103,7 @@ class ViewGauge {
                 .startAngle(220.0)
                 .endAngle(135.0)
                 .value(30.0)
-                .colors([(Color.Red, 2.0)])
+                .colors([(Color.Red, 2)])
                 .indicator(space: 2)
         }.width(100.percent)
     }

@@ -20,7 +20,8 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.*
-import kit.LocalizationKit.*
+import ohos.i18n.*
+import ohos.resource_manager.*
 //import ohos.resource.*
 
 @Entry

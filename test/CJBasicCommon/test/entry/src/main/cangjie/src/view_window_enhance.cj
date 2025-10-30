@@ -284,7 +284,7 @@ class ViewWindowEnhance {
                         .id("setWindowSystemBarEnable")
                         .onClick({ e
                             =>
-                            mainWindow.setWindowSystemBarEnable([SystemBarType.Status])
+                            mainWindow.setWindowSystemBarEnabled([SystemBarType.Status])
                     })
                         .width(20.percent)
                         .height(20)

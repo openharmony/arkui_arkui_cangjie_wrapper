@@ -46,8 +46,17 @@ class ViewUiContext {
                     getUIContext().getMeasureUtils()
                     getUIContext().getMeasureUtils()
                     SizeOptions()
-//                    var f2 = getUIContext().getMeasureUtils().measureText(MeasureOptions(textContent: "textContent"))
-//                    var sizeOptions  = getUIContext().getMeasureUtils().measureTextSize(MeasureOptions(textContent: "textContent"))
+
+                    try {
+                        let measureutils = getUIContext().getMeasureUtils()
+                        let measureopotions = MeasureOptions(textContent:"cangjie")
+                        let measuretext = measureutils.measureText(measureopotions)
+                    } catch (e: Exception) {
+                        Hilog.info(1, "Cangjie-Test", "MeasureOptions: ${e.toString()}")
+                    }
+
+                    var f2 = getUIContext().getMeasureUtils().measureText(MeasureOptions(textContent: "textContent"))
+                    var sizeOptions  = getUIContext().getMeasureUtils().measureTextSize(MeasureOptions(textContent: "textContent"))
 
                     var vp2px  = getUIContext().vp2px(2.vp).getOrThrow()
                     var vp2px1  = getUIContext().vp2px(2.px)
