@@ -27,6 +27,7 @@ import ohos.labels.APILevel
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public abstract class ObservedComplexAbstract <: Observable {
     private var dependentElementIds_: ArrayList<Int64> = ArrayList<Int64>()
     protected var info: String = ""
@@ -46,6 +47,7 @@ public abstract class ObservedComplexAbstract <: Observable {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func set(v: ObservedComplexAbstract): Unit
 
     protected func inheritObservers(newObservers: ArrayList<Observer>) {
@@ -89,6 +91,7 @@ public abstract class ObservedComplexAbstract <: Observable {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func addPropsInfo(info: String): Unit {
         propsInfo.add(info)
     }

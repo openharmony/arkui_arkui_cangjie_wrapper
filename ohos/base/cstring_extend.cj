@@ -60,12 +60,14 @@ protected interface CStringExtend {
 }
 
 extend CString <: CStringExtend {
+    @!Hide
     public func free(): Unit {
         unsafe {
             LibC.free(this)
         }
     }
 
+    @!Hide
     public func toStringOption(): ?String {
         if (this.isNull()) {
             return Option<String>.None

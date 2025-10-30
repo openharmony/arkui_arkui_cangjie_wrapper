@@ -43,6 +43,7 @@ foreign func FfiOHOSAceFrameworkProcessViewId(view: Int64): ExternalString
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public func loadNativeView(view: CustomView): Bool {
     FFIDataManager.getInstance().register(view)
     unsafe {
@@ -90,6 +91,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public var isReusable_inner__: Bool = false
     private var recycleManager_: ?RecycleManager = None
     private var hasBeenRecycled_: Bool = false
@@ -145,6 +147,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func declareWatch<T>(propMember: ObservedProperty<T>, callBack: () -> Unit) {
         match (propMember.getInner() as ObservedComplexAbstract) {
             case Some(value) =>
@@ -193,6 +196,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public override func forceCompleteRerender(deep: Bool): Unit {
         let arr = this.updateFuncByElmtId_inner__.keys().toArray()
         arr.sortBy(
@@ -242,6 +246,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func updateDirtyElements() {
         do {
             let deletedElmtIds = nativeView_inner__.getDeletedElemtIds()
@@ -302,6 +307,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func forEachUpdateFunction<T>(
         elmtId: Int64,
         arr: CollectionEx<T>,
@@ -336,6 +342,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func observeComponentCreation(compilerAssignedUpdateFunc: UpdateFuncNew): Unit {
         let elmtId = ViewStackProcessor.AllocateNewElmetIdForNextComponent()
         ViewStackProcessor.StartGetAccessRecordingFor(elmtId)
@@ -355,6 +362,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func observeRecycleComponentCreation(name: String, recycleUpdateFunc: RecycleUpdateFunc) {
         let compilerAssignedUpdateFunc: UpdateFuncNew = {
             elmtId: Int64, isFirstRender: Bool => recycleUpdateFunc(elmtId, isFirstRender, None)
@@ -406,6 +414,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public override func aboutToReuseInternal(param: ReuseParams): Unit {
         this.runReuse_ = true
         aboutToReuse(param)
@@ -492,6 +501,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func createRecycle(view: CustomView, isRecycling: Bool, name: String, callback: () -> Unit) {
         View.createRecycle(view.getView(), isRecycling, name, callback)
     }
@@ -505,6 +515,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func create(view: CustomView) {
         View.create(view.getView())
     }
@@ -519,6 +530,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func addProvideVar(value: ObservedPropertyAbstract, name: String) {
         this.provideVars_inner__.add(name, value)
     }
@@ -533,6 +545,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func initializeConsume(name: String): ObservedPropertyAbstract {
         match (provideVars_inner__.get(name)) {
             case Some(v) => return v
@@ -549,6 +562,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func notifyRead(stateInfo: String): Unit {
         if (this.isRenderingInProgress_inner__) {
             propsUsedForRender_inner__.add(stateInfo)
@@ -565,6 +579,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func onStateUpdate(stateInfo: String, dependentElmtIds: ArrayList<Int64>): Unit {
         nativeView_inner__.syncInstanceId()
         match (watchedProps_inner__.get(stateInfo)) {
@@ -596,6 +611,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func id(): Int64 {
         return compId_inner__
     }
@@ -644,6 +660,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func addChildById(id: Int64, child: CustomView): Unit {
         children_inner__.add(id, child)
     }
@@ -699,6 +716,7 @@ public abstract class CustomView <: RemoteView & Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func ifElseBranchUpdateFunction(branchId: Int32, branchFunc: () -> Unit) {
         let oldBranchId: Int32 = If.getBranchId()
 

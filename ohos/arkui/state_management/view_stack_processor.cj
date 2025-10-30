@@ -39,6 +39,7 @@ foreign func FfiOHOSAceFrameworkImplicitPopBeforeContinue(): Unit
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public class ViewStackProcessor {
     /**
      * Make and return new elementId, will be used to create the next Component.
@@ -49,6 +50,7 @@ public class ViewStackProcessor {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func AllocateNewElmetIdForNextComponent(): Int64 {
         unsafe {
             Int64(FfiOHOSAceFrameworkAllocateNewElmetIdForNextComponent())
@@ -66,6 +68,7 @@ public class ViewStackProcessor {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func StartGetAccessRecordingFor(elmtId: Int64): Unit {
         unsafe {
             FfiOHOSAceFrameworkStartGetAccessRecordingFor(elmtId)
@@ -85,6 +88,7 @@ public class ViewStackProcessor {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func GetElmtIdToAccountFor(): Int64 {
         unsafe {
             Int64(FfiOHOSAceFrameworkGetElmtIdToAccountFor())
@@ -101,6 +105,7 @@ public class ViewStackProcessor {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func StopGetAccessRecording(): Unit {
         unsafe {
             FfiOHOSAceFrameworkStopGetAccessRecording()
@@ -119,6 +124,7 @@ public class ViewStackProcessor {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func ImplicitPopBeforeContinue(): Unit {
         unsafe {
             FfiOHOSAceFrameworkImplicitPopBeforeContinue()

@@ -34,6 +34,7 @@ public class ViewBuilder {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public let build: () -> Unit
 
     /**
@@ -45,6 +46,7 @@ public class ViewBuilder {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public init(build: () -> Unit) {
         this.build = build
     }
@@ -123,6 +125,7 @@ public func bind<T1, T2, T3> (
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public class LegalCallCheck {
     /**
      * Checks whether the view builder is called in the correct context.
@@ -133,6 +136,7 @@ public class LegalCallCheck {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func check(_: ViewBuilder) {}
 
     /**
@@ -144,5 +148,6 @@ public class LegalCallCheck {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func check(_: CustomView) {}
 }

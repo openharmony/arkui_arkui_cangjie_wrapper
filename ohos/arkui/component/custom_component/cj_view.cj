@@ -188,4 +188,5 @@ protected class View <: CommonMethodComponent<View> & ViewAttribute {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 sealed interface ViewAttribute <: CommonMethod<ViewAttribute> {}

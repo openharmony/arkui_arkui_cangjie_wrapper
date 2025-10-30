@@ -25,6 +25,7 @@ import std.collection.*
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public interface Observer {
     /**
      * Called when a state update occurs.
@@ -37,6 +38,7 @@ public interface Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     func onStateUpdate(info: String, dependentElmtIds: ArrayList<Int64>): Unit
 
     /**
@@ -49,6 +51,7 @@ public interface Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     func notifyRead(info: String): Unit
 
     /**
@@ -60,6 +63,7 @@ public interface Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     func id(): Int64
 
     /**
@@ -71,5 +75,6 @@ public interface Observer {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     func aboutToBeDeleted(): Unit
 }

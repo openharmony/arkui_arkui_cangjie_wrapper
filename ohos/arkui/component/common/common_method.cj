@@ -1435,6 +1435,7 @@ public interface CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     func animationStart(value: ?AnimateParam): T
 
     /**
@@ -1446,6 +1447,7 @@ public interface CommonMethod<T> {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     func animationEnd(): T
 
     /**

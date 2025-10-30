@@ -27,6 +27,7 @@ import std.collection.*
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public abstract class ObservedPropertyAbstract <: Observable {
     protected let info: String
     protected let dependentElementIds_: ArrayList<Int64> = ArrayList<Int64>()
@@ -40,6 +41,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public init(info: String) {
         this.info = info
     }
@@ -58,6 +60,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func subscribeEx(observer: Observer): Unit
 
     /**
@@ -70,6 +73,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func unsubscribeEx(observer: Observer): Unit
 
     protected func notifyChanges() {
@@ -95,6 +99,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func purgeDependencyOnElmtId(rmElmtId: Int64): Unit {
         this.dependentElementIds_.removeIf({
             v => v == rmElmtId

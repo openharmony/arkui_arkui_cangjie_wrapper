@@ -39,6 +39,7 @@ foreign {
     22,
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public class If <: UINodeBase {
     var child: () -> Unit = {=>}
 
@@ -52,6 +53,7 @@ public class If <: UINodeBase {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public init(subcomponent: () -> Unit) {
         unsafe {
             FfiOHOSAceFrameworkIfElseCreate()
@@ -70,6 +72,7 @@ public class If <: UINodeBase {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func branchId(value: Int32): Unit {
         unsafe {
             FfiOHOSAceFrameworkIfElseSetBranchId(value)
@@ -85,6 +88,7 @@ public class If <: UINodeBase {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func getBranchId(): Int32 {
         unsafe {
             FfiOHOSAceFrameworkIfElseGetBranchId()

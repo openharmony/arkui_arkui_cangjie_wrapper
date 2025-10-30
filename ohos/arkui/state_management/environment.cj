@@ -169,6 +169,7 @@ public class Environment {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func aboutToBeDeleted(): Unit {
         if (Environment.instance.isNone()) {
             return

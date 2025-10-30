@@ -189,6 +189,7 @@ public class LazyForEach<T> <: UINodeBase {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public init() {}
 
     /**
@@ -199,6 +200,7 @@ public class LazyForEach<T> <: UINodeBase {
         22,
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func create<T>(viewID: Int64, parentView: CustomView, dataSource: IDataSource<T>,
         itemGeneratorFunc!: ItemGeneratorFunc<T>,
         keyGeneratorFunc!: KeyGeneratorFunc<T> = {
