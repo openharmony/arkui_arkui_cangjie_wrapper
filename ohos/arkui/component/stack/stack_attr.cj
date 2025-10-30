@@ -23,7 +23,7 @@ import ohos.labels.APILevel
  * Provides methods for configuring the appearance and behavior of the Stack component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface StackAttribute <: CommonMethod<StackAttribute> {
@@ -35,7 +35,7 @@ sealed interface StackAttribute <: CommonMethod<StackAttribute> {
     * @returns { StackAttribute } Returns the stack attribute.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignContent(value: ?Alignment): StackAttribute

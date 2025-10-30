@@ -22,7 +22,7 @@ import ohos.labels.APILevel
  * Defines the Badge attribute functions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface BadgeAttribute <: CommonMethod<BadgeAttribute> {}

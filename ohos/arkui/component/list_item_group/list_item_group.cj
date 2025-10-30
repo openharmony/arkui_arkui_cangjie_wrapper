@@ -40,7 +40,7 @@ foreign {
  */
 @Derive[Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ListItemGroupStyle {
@@ -48,7 +48,7 @@ public enum ListItemGroupStyle {
      * Show custom style.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None |
@@ -56,7 +56,7 @@ public enum ListItemGroupStyle {
      * Show default style.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Card | 
@@ -75,7 +75,7 @@ public enum ListItemGroupStyle {
  * Defines the item group attribute functions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ListDividerOptions {
@@ -83,7 +83,7 @@ public class ListDividerOptions {
      * Set the line width of the dividing line.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var strokeWidth: ?Length
@@ -93,7 +93,7 @@ public class ListDividerOptions {
      * The default value is 0x08000000.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ?ResourceColor
@@ -103,7 +103,7 @@ public class ListDividerOptions {
      * The default value is 0.vp.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var startMargin: ?Length
@@ -113,7 +113,7 @@ public class ListDividerOptions {
      * The default value is 0.vp.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var endMargin: ?Length
@@ -127,7 +127,7 @@ public class ListDividerOptions {
      * @param { ?Length } endMargin - Set the distance between the dividing line and the end of the side of the list.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -147,7 +147,7 @@ public class ListDividerOptions {
  * Defines ListItemGroup Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ListItemGroup <: CommonMethodComponent<ListItemGroup> & ListItemGroupAttribute {
@@ -162,7 +162,7 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroup> & ListItemGro
      * @param { () -> Unit } child - The child component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -191,7 +191,7 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroup> & ListItemGro
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func divider(value: Option<ListDividerOptions>): This {

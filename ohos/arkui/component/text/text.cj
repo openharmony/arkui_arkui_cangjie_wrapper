@@ -225,7 +225,7 @@ class FFIVectorFfiTextMenuItem {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextController <: RemoteDataLite {
@@ -233,7 +233,7 @@ public class TextController <: RemoteDataLite {
      * Defines the TextController constructor.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -252,7 +252,7 @@ public class TextController <: RemoteDataLite {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func closeSelectionMenu(): Unit {
@@ -267,7 +267,7 @@ public class TextController <: RemoteDataLite {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Text <: CommonMethodComponent<Text> & TextAttribute {
@@ -279,7 +279,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @param { () -> Unit } child - The child component builder.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(content: ?ResourceStr, controller!: ?TextController = None, child!: () -> Unit = { => }) {
@@ -299,7 +299,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @param { () -> Unit } child - The child component builder.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(controller!: ?TextController = None, child!: () -> Unit) {
@@ -312,7 +312,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @param { ?TextController } controller - The text controller.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(controller!: ?TextController = None) {
@@ -351,7 +351,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineSpacing(value: ?Length): This {
@@ -370,7 +370,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -389,7 +389,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxFontSize(value: ?Length): This {
@@ -408,7 +408,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func minFontSize(value: ?Length): This {
@@ -427,7 +427,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -446,7 +446,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -463,7 +463,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -483,7 +483,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -503,7 +503,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textAlign(value: ?TextAlign): This {
@@ -521,7 +521,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textOverflow(value: ?TextOverflow): This {
@@ -541,7 +541,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxLines(value: ?Int32): This {
@@ -561,7 +561,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lineHeight(value: ?Length): This {
@@ -581,7 +581,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor,
@@ -604,7 +604,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func baselineOffset(value: ?Length): This {
@@ -623,7 +623,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textCase(value: ?TextCase): This {

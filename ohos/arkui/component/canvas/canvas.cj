@@ -95,7 +95,7 @@ enum CanvasImageType {
  * This object allows you to set properties when creating a rendering context.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RenderingContextSettings {
@@ -104,7 +104,7 @@ public class RenderingContextSettings {
      * @default false
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var antialias: ?Bool
@@ -115,7 +115,7 @@ public class RenderingContextSettings {
      * @param { ?Bool } antialias - Whether enable antialias.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(antialias!: ?Bool = None) {
@@ -127,7 +127,7 @@ public class RenderingContextSettings {
  * Size information of the text.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextMetrics {
@@ -135,7 +135,7 @@ public class TextMetrics {
      * Indicates the width of a character string. The value is of the double type.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let width: Float64
@@ -143,7 +143,7 @@ public class TextMetrics {
      * Indicates the height of a character string. The value is of the double type.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let height: Float64
@@ -158,7 +158,7 @@ public class TextMetrics {
  * Defines Canvas Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
@@ -168,7 +168,7 @@ public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
      * @param { ?CanvasRenderingContext2D } context - Canvas context object.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(context: ?CanvasRenderingContext2D) {
@@ -187,7 +187,7 @@ public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReady(callback: ?() -> Unit): This {
@@ -202,7 +202,7 @@ public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
  * Opaque objects that describe gradients, created by createLinearGradient() or createRadialGradient().
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CanvasGradient <: RemoteDataLite {
@@ -233,7 +233,7 @@ public class CanvasGradient <: RemoteDataLite {
      * @param { ?ResourceColor } color - Set the gradient color.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func addColorStop(offset: Float64, color: ?ResourceColor): Unit {

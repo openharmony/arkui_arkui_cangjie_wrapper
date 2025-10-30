@@ -22,7 +22,7 @@ import ohos.labels.APILevel
  * Defines the GridItem attribute functions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
@@ -33,7 +33,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
      * @returns { GridItemAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func columnStart(value: ?Int32): GridItemAttribute
@@ -45,7 +45,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
      * @returns { GridItemAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func columnEnd(value: ?Int32): GridItemAttribute
@@ -57,7 +57,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
      * @returns { GridItemAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func rowStart(value: ?Int32): GridItemAttribute
@@ -69,7 +69,7 @@ sealed interface GridItemAttribute <: CommonMethod<GridItemAttribute> {
      * @returns { GridItemAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func rowEnd(value: ?Int32): GridItemAttribute

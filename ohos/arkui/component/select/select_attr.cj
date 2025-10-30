@@ -23,7 +23,7 @@ import ohos.base.{ResourceStr, Length, ResourceColor}
  * Defines the Select attribute functions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
@@ -35,7 +35,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute } The attribute of the select.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selected(value: ?Int32): SelectAttribute
@@ -47,7 +47,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute } The attribute of the select.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func value(value: ?ResourceStr): SelectAttribute
@@ -62,7 +62,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func font(
@@ -79,7 +79,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(value: ?ResourceColor): SelectAttribute
@@ -91,7 +91,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedOptionBgColor(value: ?ResourceColor): SelectAttribute
@@ -106,7 +106,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedOptionFont(
@@ -123,7 +123,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedOptionFontColor(value: ?ResourceColor): SelectAttribute
@@ -135,7 +135,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func optionBgColor(value: ?ResourceColor): SelectAttribute
@@ -150,7 +150,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func optionFont(
@@ -167,7 +167,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func optionFontColor(value: ?ResourceColor): SelectAttribute
@@ -179,7 +179,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func space(value: ?Length): SelectAttribute
@@ -191,7 +191,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func arrowPosition(value: ?ArrowPosition): SelectAttribute
@@ -204,7 +204,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute } The attribute of the select.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func menuAlign(alignType!: ?MenuAlignType, offset!: ?Offset): SelectAttribute
@@ -216,7 +216,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute } The attribute of the select.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func optionWidth(value: ?OptionWidthMode): SelectAttribute
@@ -228,7 +228,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute } The attribute of the select.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func optionWidth(value: ?Length): SelectAttribute
@@ -240,7 +240,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute } The attribute of the select.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func optionHeight(value: ?Length): SelectAttribute
@@ -252,7 +252,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute } The attribute of the select.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func menuBackgroundColor(value: ?ResourceColor): SelectAttribute
@@ -264,7 +264,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute } The attribute of the select.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func menuBackgroundBlurStyle(value: ?BlurStyle): SelectAttribute
@@ -276,7 +276,7 @@ sealed interface SelectAttribute <: CommonMethod<SelectAttribute> {
      * @returns { SelectAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onSelect(callback: ?OnSelectCallback): SelectAttribute

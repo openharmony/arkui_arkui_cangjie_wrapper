@@ -23,7 +23,7 @@ import ohos.base.{ResourceStr, Callback}
  * Defines the Navigation attribute functions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
@@ -34,7 +34,7 @@ sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
      * @returns { NavigationAttribute } Returns the instance of the Navigation.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func navDestination(builder: ?(String, Any) -> Unit): NavigationAttribute
@@ -47,7 +47,7 @@ sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
      * @returns { NavigationAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func title(value: ?ResourceStr, options!: ?NavigationTitleOptions): NavigationAttribute
@@ -60,7 +60,7 @@ sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
      * @returns { NavigationAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions): NavigationAttribute
@@ -76,7 +76,7 @@ sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
      * @returns { NavigationAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func hideTitleBar(hide: ?Bool, animated!: ?Bool): NavigationAttribute
@@ -86,7 +86,7 @@ sealed interface NavigationAttribute <: CommonMethod<NavigationAttribute> {
  * Defines the NavDestination attribute functions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute> {
@@ -98,7 +98,7 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
      * @returns { NavDestinationAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onBackPressed(callback: ?() -> Bool): NavDestinationAttribute
@@ -111,7 +111,7 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
      * @returns { NavDestinationAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onReady(callback: ?Callback<NavDestinationContext, Unit>): NavDestinationAttribute
@@ -128,7 +128,7 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
      * @returns { NavDestinationAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func title(value: ?ResourceStr, options!: ?NavigationTitleOptions): NavDestinationAttribute
@@ -145,7 +145,7 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
      * @returns { NavDestinationAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions): NavDestinationAttribute
@@ -157,7 +157,7 @@ sealed interface NavDestinationAttribute <: CommonMethod<NavDestinationAttribute
      * @returns { NavDestinationAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func hideTitleBar(value: ?Bool): NavDestinationAttribute

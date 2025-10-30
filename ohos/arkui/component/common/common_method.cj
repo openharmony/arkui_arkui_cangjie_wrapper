@@ -24,7 +24,7 @@ import ohos.base.{ResourceColor, Length, ResourceStr}
  * CommonMethod.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface CommonMethod<T> {
@@ -36,7 +36,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onClick(event: ?(ClickEvent) -> Unit): T
@@ -48,7 +48,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onAppear(event: ?() -> Unit): T
@@ -60,7 +60,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDisAppear(event: ?() -> Unit): T
@@ -72,7 +72,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onTouch(event: ?(TouchEvent) -> Unit): T
@@ -84,7 +84,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onHover(event: ?(Bool) -> Unit): T
@@ -96,7 +96,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onAreaChange(event: ?(Area, Area) -> Unit): T
@@ -109,7 +109,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onVisibleAreaChange(ratios: ?Array<Float64>, event: ?(Bool, Float64) -> Unit): T
@@ -121,7 +121,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onMouse(event: ?(MouseEvent) -> Unit): T
@@ -133,7 +133,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onKeyEvent(event: ?(KeyEvent) -> Unit): T
@@ -145,7 +145,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onFocus(event: ?() -> Unit): T
@@ -157,7 +157,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onBlur(event: ?() -> Unit): T
@@ -169,7 +169,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDragStart(event: ?(DragInfo) -> DragItemInfo): T
@@ -181,7 +181,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDragStart(event: ?(DragInfo) -> CustomBuilder): T
@@ -193,7 +193,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDragStart(event: ?(DragInfo) -> Unit): T
@@ -205,7 +205,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDragEnter(event: ?(DragInfo) -> Unit): T
@@ -217,7 +217,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDragMove(event: ?(DragInfo) -> Unit): T
@@ -229,7 +229,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDragLeave(event: ?(DragInfo) -> Unit): T
@@ -242,7 +242,7 @@ public interface CommonMethod<T> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDrop(event: ?(DragInfo) -> Unit): T
@@ -257,7 +257,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func width(value: Option<Length>): T
@@ -271,7 +271,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func height(value: Option<Length>): T
@@ -284,7 +284,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func size(width!: ?Length, height!: ?Length): T
@@ -296,7 +296,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func padding(value: ?Length): T
@@ -311,7 +311,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func padding(top!: ?Length, right!: ?Length, bottom!: ?Length, left!: ?Length): T
@@ -323,7 +323,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func margin(value: ?Length): T
@@ -338,7 +338,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func margin(top!: ?Length, right!: ?Length, bottom!: ?Length, left!: ?Length): T
@@ -351,7 +351,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func layoutWeight(value: ?Int32): T
@@ -367,7 +367,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func constraintSize(minWidth!: ?Length, maxWidth!: ?Length,
@@ -381,7 +381,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func align(value: ?Alignment): T
@@ -394,7 +394,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func direction(value: ?Direction): T
@@ -408,7 +408,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func position(x!: ?Length, y!: ?Length): T
@@ -422,7 +422,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func markAnchor(x!: ?Length, y!: ?Length): T
@@ -437,7 +437,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func offset(x!: ?Length, y!: ?Length): T
@@ -450,7 +450,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignRules(value: ?AlignRuleOptions): T
@@ -466,7 +466,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func aspectRatio(value: Float64): T
@@ -479,7 +479,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func displayPriority(value: ?Int32): T
@@ -491,7 +491,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func flexBasis(value: ?Length): T
@@ -504,7 +504,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func flexGrow(value: ?Float64): T
@@ -517,7 +517,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func flexGrow(value: ?Int64): T
@@ -530,7 +530,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func flexShrink(value: ?Float64): T
@@ -543,7 +543,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func flexShrink(value: ?Int64): T
@@ -556,7 +556,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignSelf(value: ?ItemAlign): T
@@ -568,7 +568,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func responseRegion(value: ?Rectangle): T
@@ -580,7 +580,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func responseRegion(value: ?Array<Rectangle>): T
@@ -595,7 +595,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func border(width!: ?Length, color!: ?ResourceColor, radius!: ?Length,
@@ -609,7 +609,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func borderWidth(value: ?Length): T
@@ -621,7 +621,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func borderWidth(value: ?EdgeWidths): T
@@ -634,7 +634,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func borderColor(value: ?ResourceColor): T
@@ -650,7 +650,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func borderRadius(topLeft!: ?Length, topRight!: ?Length, bottomLeft!: ?Length,
@@ -664,7 +664,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func borderRadius(value: ?Length): T
@@ -677,7 +677,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func borderStyle(value: ?BorderStyle): T
@@ -689,7 +689,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func foregroundBlurStyle(value: ?BlurStyle): T
@@ -702,7 +702,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func foregroundBlurStyle(value: ?BlurStyle, options: ?ForegroundBlurStyleOptions): T
@@ -715,7 +715,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func foregroundColor(value: ?ColoringStrategy): T
@@ -728,7 +728,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func foregroundColor(value: ?ResourceColor): T
@@ -740,7 +740,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundColor(value: ?ResourceColor): T
@@ -752,7 +752,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundImage(src: ?ResourceStr): T
@@ -764,7 +764,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundImage(src: ?ResourceStr, repeat: ?ImageRepeat): T
@@ -776,7 +776,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundImageSize(value: ?ImageSize): T
@@ -789,7 +789,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundImageSize(width!: ?Length, height!: ?Length): T
@@ -803,7 +803,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundImagePosition(value: ?Alignment): T
@@ -818,7 +818,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backgroundImagePosition(x!: ?Length, y!: ?Length): T
@@ -837,7 +837,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func scale(x!: ?Float32, y!: ?Float32, z!: ?Float32, centerX!: ?Length,
@@ -850,7 +850,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func opacity(value: ?Float64): T
@@ -867,7 +867,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func rotate(x!: ?Float64, y!: ?Float64, z!: ?Float64, angle!: ?Float64,
@@ -882,7 +882,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func translate(x!: ?Length, y!: ?Length, z!: ?Length): T
@@ -895,7 +895,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func enabled(value: ?Bool): T
@@ -911,7 +911,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sharedTransition(id: String, options!: ?SharedTransitionOptions): T
@@ -924,7 +924,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func geometryTransition(id: ?String, followWithoutTransition!: ?Bool): T
@@ -938,7 +938,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func blur(value: ?Float64): T
@@ -950,7 +950,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func colorBlend(value: ?ResourceColor): T
@@ -962,7 +962,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func backdropBlur(value: ?Float64): T
@@ -977,7 +977,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func shadow(radius!: ?Float64, color!: ?ResourceColor, offsetX!: ?Float64,
@@ -990,7 +990,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func grayscale(value: ?Float64): T
@@ -1006,7 +1006,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func brightness(value: ?Float64): T
@@ -1018,7 +1018,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func saturate(value: ?Float64): T
@@ -1035,7 +1035,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func contrast(value: ?Float64): T
@@ -1048,7 +1048,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func invert(value: ?Float64): T
@@ -1065,7 +1065,7 @@ public interface CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func invert(low!: ?Float64, high!: ?Float64, threshold!: ?Float64, thresholdRange!: ?Float64): T
@@ -1078,7 +1078,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sepia(value: ?Float64): T
@@ -1090,7 +1090,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func hueRotate(value: ?Float32): T
@@ -1102,7 +1102,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func zIndex(value: ?Int32): T
@@ -1114,7 +1114,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func visibility(value: ?Visibility): T
@@ -1131,7 +1131,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func clip(value: ?Bool): T
@@ -1143,7 +1143,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func clipShape(value: ?BaseShape): T
@@ -1155,7 +1155,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func maskShape(value: BaseShape): T
@@ -1170,7 +1170,7 @@ public interface CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func overlay(value!: ?String, align!: ?Alignment,
@@ -1187,7 +1187,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindPopup(show: ?Bool, popup: ?PopupOptions): T
@@ -1203,7 +1203,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindPopup(show: ?Bool, popup: ?CustomPopupOptions): T
@@ -1215,7 +1215,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindMenu(content: ?Array<MenuElement>): T
@@ -1227,7 +1227,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindMenu(builder!: ?CustomBuilder): T
@@ -1241,7 +1241,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindContextMenu(builder!: ?CustomBuilder, responseType!: ?ResponseType,
@@ -1261,7 +1261,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func linearGradient(angle!: ?Float64, direction!: ?GradientDirection,
@@ -1279,7 +1279,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sweepGradient(center: ?(Length, Length), start!: ?Float64, end!: ?Float64,
@@ -1296,7 +1296,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radialGradient(center: ?(Length, Length), radius: ?Length, colors: ?Array<(ResourceColor, Float64)>,
@@ -1310,7 +1310,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>): T
@@ -1323,7 +1323,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func keyboardShortcut(value: ?String, keys: ?Array<ModifierKey>): T
@@ -1337,7 +1337,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>, action: ?() -> Unit): T
@@ -1351,7 +1351,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func keyboardShortcut(value: ?String, keys: ?Array<ModifierKey>, action: ?() -> Unit): T
@@ -1363,7 +1363,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func key(value: ?String): T
@@ -1376,7 +1376,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func renderFit(fitMode: ?RenderFit): T
@@ -1388,7 +1388,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func id(value: ?String): T
@@ -1405,7 +1405,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func expandSafeArea(types!: ?Array<SafeAreaType>, edges!: ?Array<SafeAreaEdge>): T
@@ -1419,7 +1419,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindContentCover(isShow: ?Bool, builder: ?CustomBuilder,
@@ -1432,7 +1432,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -1444,7 +1444,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -1457,7 +1457,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func transition(value: ?TransitionEffect): T
@@ -1470,7 +1470,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func transition(value: ?TransitionEffect, onFinish: ?TransitionFinishCallback): T
@@ -1484,7 +1484,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func focusable(value: ?Bool): T
@@ -1497,7 +1497,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func tabIndex(index: ?Int32): T
@@ -1509,7 +1509,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func defaultFocus(value: ?Bool): T
@@ -1521,7 +1521,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func groupDefaultFocus(value: ?Bool): T
@@ -1533,7 +1533,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func focusOnTouch(value: ?Bool): T
@@ -1547,7 +1547,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindSheet(isShow: ?Bool, builder: CustomBuilder, options!: ?SheetOptions): T
@@ -1559,7 +1559,7 @@ public interface CommonMethod<T> {
      * @returns { This } - Returns the component itself
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func dragPreview(value: String): T

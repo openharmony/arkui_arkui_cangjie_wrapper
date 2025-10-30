@@ -45,7 +45,7 @@ struct CJNavDestinationContext {
  * Indicates the context of NavDestination.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavDestinationContext {
@@ -53,7 +53,7 @@ public class NavDestinationContext {
      * Path information of the navigation destination page.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var pathInfo: ?NavPathInfo
@@ -62,7 +62,7 @@ public class NavDestinationContext {
      * Page stack where the current navigation destination page is located.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var pathStack: ?NavPathStack
@@ -72,7 +72,7 @@ public class NavDestinationContext {
      * and is irrelevant to the universal attribute **id** of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var navDestinationId: ?String
@@ -92,7 +92,7 @@ public class NavDestinationContext {
  * Defines NavDestination Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestinationAttribute {
@@ -103,7 +103,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
      * @returns { NavDestination }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = { => }) {
@@ -120,7 +120,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onBackPressed(callback: ?() -> Bool): This {
@@ -141,7 +141,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReady(callback: ?Callback<NavDestinationContext, Unit>): This {
@@ -182,7 +182,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func title(value: ?ResourceStr, options!: ?NavigationTitleOptions = None): This {
@@ -211,7 +211,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions = None): This {
@@ -234,7 +234,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func hideTitleBar(value: ?Bool): This {

@@ -35,7 +35,7 @@ foreign {
  * Based on the judgment result, the framework selectively renders the subcomponent.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide
@@ -49,7 +49,7 @@ public class If <: UINodeBase {
      * @returns { If }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -68,7 +68,7 @@ public class If <: UINodeBase {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -84,7 +84,7 @@ public class If <: UINodeBase {
      * @returns { Int32 } The branch ID.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide

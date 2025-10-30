@@ -109,7 +109,7 @@ foreign {
  */
 @Derive[Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ProgressStatus {
@@ -117,7 +117,7 @@ public enum ProgressStatus {
      * Loading status.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Loading
@@ -126,7 +126,7 @@ public enum ProgressStatus {
      * Processing status.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Progressing
@@ -145,7 +145,7 @@ public enum ProgressStatus {
  * Progress common style options.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface CommonProgressStyleOptions {}
@@ -154,7 +154,7 @@ sealed interface CommonProgressStyleOptions {}
  * Defines the ring style Options.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RingStyleOptions <: CommonProgressStyleOptions {
@@ -162,7 +162,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
      * Defines the strokeWidth property.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var strokeWidth: ?Length
@@ -171,7 +171,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
      * Enables progress shadow.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?Bool
@@ -180,7 +180,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
      * The status of progress, default is Progressing. Set to Loading status will trigger the loading animation.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var status: ?ProgressStatus
@@ -189,7 +189,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
      * Enable smooth effect.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enableSmoothEffect: ?Bool
@@ -198,7 +198,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
      * Enable scan effect.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enableScanEffect: ?Bool
@@ -213,7 +213,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
      * @param { ?Bool } enableScanEffect - Whether to enable scan effect. The default value is false.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(strokeWidth!: ?Length = None, shadow!: ?Bool = None, status!: ?ProgressStatus = None,
@@ -230,7 +230,7 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
  * Defines Progress Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
@@ -242,7 +242,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
      * @param { ?ProgressType } progressType - Type of the progress bar. The default value is ProgressType.Linear.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?Float64, total!: ?Float64 = None, progressType!: ?ProgressType = None) {
@@ -260,7 +260,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func value(value: ?Float64): This {
@@ -277,7 +277,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
@@ -305,7 +305,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func style(strokeWidth!: ?Length = None, scaleCount!: ?Int32 = None, scaleWidth!: ?Length = None): This {
@@ -328,7 +328,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func style(value: ?RingStyleOptions): This {

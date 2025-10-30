@@ -32,7 +32,7 @@ foreign {
  * A shape component that renders custom paths defined by SVG path commands.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PathShape <: BaseShape {
@@ -43,7 +43,7 @@ public class PathShape <: BaseShape {
      * @returns { PathShape } Returns the PathShape instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(commands!: ?ResourceStr = None) {
@@ -66,7 +66,7 @@ public class PathShape <: BaseShape {
      * @param { ?ResourceStr } commands - Path drawing commands in SVG path format.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length, height!: ?Length, commands!: ?ResourceStr = None) {

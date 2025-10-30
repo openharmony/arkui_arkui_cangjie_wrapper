@@ -52,7 +52,7 @@ foreign {
  * Defines ListItem Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
@@ -64,7 +64,7 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
      * @param { () -> Unit } child - The child component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -108,7 +108,7 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectable(value: ?Bool): This {
@@ -128,7 +128,7 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func swipeAction(
@@ -156,7 +156,7 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSelect(event: ?(Bool) -> Unit): This {

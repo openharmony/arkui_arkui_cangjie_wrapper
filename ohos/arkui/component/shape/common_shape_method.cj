@@ -28,7 +28,7 @@ import ohos.multimedia.image.PixelMap
  * This interface provides common shape methods for shape components.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface CommonShapeMethod<T> <: CommonMethod<T> {
@@ -41,7 +41,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fill(value: ?ResourceColor): T
@@ -54,7 +54,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fillOpacity(value: ?Float64): T
@@ -67,7 +67,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fillOpacity(value: ?AppResource): T
@@ -80,7 +80,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func stroke(value: ?ResourceColor): T
@@ -94,7 +94,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeDashArray(value: ?Array<Length>): T
@@ -108,7 +108,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeDashOffset(value: ?Length): T
@@ -122,7 +122,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeLineCap(value: ?LineCapStyle): T
@@ -137,7 +137,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeLineJoin(value: ?LineJoinStyle): T
@@ -150,7 +150,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeMiterLimit(miterLimit: ?Float64): T
@@ -167,7 +167,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeOpacity(value: ?Float64): T
@@ -183,7 +183,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @returns { T } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeOpacity(value: ?AppResource): T
@@ -198,7 +198,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func strokeWidth(value: ?Length): T
@@ -212,7 +212,7 @@ public interface CommonShapeMethod<T> <: CommonMethod<T> {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func antiAlias(value: ?Bool): T

@@ -24,7 +24,7 @@ import ohos.labels.APILevel
  * Defines class ObservedObject.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide
@@ -38,7 +38,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -52,7 +52,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
      * @returns { ArrayList<ObservedPropertyAbstract> } The list of published variables.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide

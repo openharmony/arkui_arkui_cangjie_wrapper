@@ -44,7 +44,7 @@ foreign {
  * Defines Column Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
@@ -55,7 +55,7 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
      * @param { () -> Unit } child - The child component of the column.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(space!: ?Length = None, child!: () -> Unit = {=>}) {
@@ -73,7 +73,7 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignItems(value: ?HorizontalAlign): This {
@@ -90,7 +90,7 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func justifyContent(value: ?FlexAlign): This {

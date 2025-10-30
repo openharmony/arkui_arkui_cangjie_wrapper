@@ -32,7 +32,7 @@ foreign {
  * non-public API
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide
@@ -41,7 +41,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
      * Create a Recycle
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -56,7 +56,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
      * @param {() -> Unit} child
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -73,7 +73,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
      * @returns {This}
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -90,7 +90,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
  * non-public API
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide

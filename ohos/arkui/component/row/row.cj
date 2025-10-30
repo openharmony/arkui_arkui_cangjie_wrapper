@@ -44,7 +44,7 @@ foreign {
  * A layout container that arranges its child components horizontally in a row.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Row <: CommonMethodComponent<Row> & RowAttribute {
@@ -56,7 +56,7 @@ public class Row <: CommonMethodComponent<Row> & RowAttribute {
     * @param { () -> Unit } child - Child component builder function.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(space!: ?Length = None, child!: () -> Unit = {=>}) {
@@ -75,7 +75,7 @@ public class Row <: CommonMethodComponent<Row> & RowAttribute {
     * @returns { This } Returns the Row instance.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignItems(value: ?VerticalAlign): This {
@@ -93,7 +93,7 @@ public class Row <: CommonMethodComponent<Row> & RowAttribute {
     * @returns { This } Returns the Row instance.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func justifyContent(value: ?FlexAlign): This {

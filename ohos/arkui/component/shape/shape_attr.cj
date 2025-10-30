@@ -23,7 +23,7 @@ import ohos.base.{Length}
  * This interface provides the attribute methods for the Shape component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
@@ -37,7 +37,7 @@ sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
     * @returns { ShapeAttribute } - Returns the attribute of Shape.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func viewPort(
@@ -56,7 +56,7 @@ sealed interface ShapeAttribute <: CommonShapeMethod<ShapeAttribute> {
     * @returns { ShapeAttribute } - Returns the attribute of Shape.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func mesh(array: ?Array<Float64>, column: ?UInt32, row: ?UInt32): ShapeAttribute

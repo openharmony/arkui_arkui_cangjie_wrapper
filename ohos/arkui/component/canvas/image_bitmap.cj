@@ -46,7 +46,7 @@ foreign {
  * Bitmap image object that can be drawn onto the current Canvas.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageBitmap <: RemoteData {
@@ -54,7 +54,7 @@ public class ImageBitmap <: RemoteData {
      * Indicates the width of the CSS pixel unit of ImageData.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop width: Float64 {
@@ -69,7 +69,7 @@ public class ImageBitmap <: RemoteData {
      * Indicates the height of the CSS pixel unit of ImageData.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public prop height: Float64 {
@@ -90,7 +90,7 @@ public class ImageBitmap <: RemoteData {
      * @param { ?String } src - Path of the image object.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(src: ?String) {

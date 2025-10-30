@@ -27,7 +27,7 @@ foreign func FfiOHOSAceFrameworkEllipseInsCreate(width: Float64, widthUnit: Int3
  * A shape component that renders an elliptical graphic element.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class EllipseShape <: BaseShape {
@@ -39,7 +39,7 @@ public class EllipseShape <: BaseShape {
      * @returns { EllipseShape } Returns the EllipseShape instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {

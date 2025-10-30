@@ -22,7 +22,7 @@ import ohos.labels.APILevel
  * Provides methods for configuring the appearance and behavior of the RowSplit component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RowSplitAttribute <: CommonMethod<RowSplitAttribute> {
@@ -33,7 +33,7 @@ sealed interface RowSplitAttribute <: CommonMethod<RowSplitAttribute> {
     * @returns { RowSplitAttribute } Returns the row split attribute.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func resizeable(value: ?Bool): RowSplitAttribute

@@ -28,7 +28,7 @@ func isEqual<T>(value: T, newValue: T): Bool {
  * Defines class ObservedProperty.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class ObservedProperty<T> <: ObservedPropertyAbstract {
@@ -42,7 +42,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * @param { T } initValue - Initial value for the property.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -72,7 +72,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * @returns { T } The current value of the property.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -94,7 +94,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -117,7 +117,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -139,7 +139,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -160,7 +160,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
      * @returns { ObservedProperty<T> } A new ObservedProperty instance sharing the same value.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide

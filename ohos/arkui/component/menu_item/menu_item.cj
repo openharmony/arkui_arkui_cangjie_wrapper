@@ -55,7 +55,7 @@ let defaultMenuItemContentFontColor = 0xE5000000
  * A component that represents a single item within a Menu component, typically with text, icons, and optional submenus.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
@@ -66,7 +66,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @param { () -> Unit } child - The child component builder function for the menu item.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = {=>}) {
@@ -85,7 +85,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @param { Option<() -> Unit> } builder - Create the submenu.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(startIcon!: ?ResourceStr, content!: ?ResourceStr, endIcon!: ?ResourceStr, labelInfo!: ?ResourceStr,
@@ -119,7 +119,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selected(value: ?Bool): This {
@@ -138,7 +138,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectIcon(value: ?Bool): This {
@@ -157,7 +157,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectIcon(value: ?ResourceStr): This {
@@ -180,7 +180,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentFont(
@@ -214,7 +214,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentFontColor(value: ?ResourceColor): This {
@@ -236,7 +236,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func labelFont(
@@ -268,7 +268,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func labelFontColor(value: ?ResourceColor): This {
@@ -288,7 +288,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Bool) -> Unit): This {

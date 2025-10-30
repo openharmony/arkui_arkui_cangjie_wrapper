@@ -78,7 +78,7 @@ struct CJNavOptions {
  * Indicates the information of the popped page.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PopInfo {
@@ -86,7 +86,7 @@ public class PopInfo {
      * The info of the popped page.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let info: NavPathInfo
@@ -95,7 +95,7 @@ public class PopInfo {
      * The result of the popped page.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public let result: String
@@ -127,7 +127,7 @@ struct CJPopInfo {
  * Indicates the options of Navigation's Titlebar.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavigationTitleOptions {
@@ -135,7 +135,7 @@ public class NavigationTitleOptions {
      * Background color of the title bar. If this parameter is not set, the default color is used.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -144,7 +144,7 @@ public class NavigationTitleOptions {
      * blur effect is disabled.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -152,7 +152,7 @@ public class NavigationTitleOptions {
      * Layout style of the title bar, the default value is BarStyle.Standard.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var barStyle: ?BarStyle
@@ -161,7 +161,7 @@ public class NavigationTitleOptions {
      * @default @r(sys.float.margin_left)
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var paddingStart: ?Length
@@ -170,7 +170,7 @@ public class NavigationTitleOptions {
      * @default @r(sys.float.margin_right)
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var paddingEnd: ?Length
@@ -185,7 +185,7 @@ public class NavigationTitleOptions {
      * @returns { NavigationTitleOptions }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -267,7 +267,7 @@ struct CJNavigationTitleOptions {
  */
 @Derive[Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LaunchMode {
@@ -277,7 +277,7 @@ public enum LaunchMode {
      * the stack; replace operations replace the current top **NavDestination** page.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Standard
@@ -287,7 +287,7 @@ public enum LaunchMode {
      * otherwise, the behavior will be consistent with the Standard mode.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     MoveToTopSingleTon
@@ -297,7 +297,7 @@ public enum LaunchMode {
      * otherwise, the behavior will be consistent with the Standard mode.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PopToSingleTon
@@ -307,7 +307,7 @@ public enum LaunchMode {
      * **Standard**, this mode does not reuse the instance with the same name in the stack.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     NewInstance
@@ -328,7 +328,7 @@ public enum LaunchMode {
  * Indicates the options of stack operation.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavigationOptions {
@@ -337,7 +337,7 @@ public class NavigationOptions {
      * <br>Default value: **LaunchMode.Standard**.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var launchMode: ?LaunchMode
@@ -349,7 +349,7 @@ public class NavigationOptions {
      * <br>**false**: The transition animation is not supported.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var animated: ?Bool
@@ -361,7 +361,7 @@ public class NavigationOptions {
      * @returns { NavigationOptions }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(launchMode!: ?LaunchMode = None, animated!: ?Bool = None) {
@@ -382,7 +382,7 @@ public class NavigationOptions {
  */
 @Derive[Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BarStyle {
@@ -390,7 +390,7 @@ public enum BarStyle {
      * In this mode, the title bar or toolbar is laid out above the content area.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Standard
@@ -399,7 +399,7 @@ public enum BarStyle {
      *  In this mode, the title bar or toolbar is overlaid on top of the content area.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Stack
@@ -419,7 +419,7 @@ public enum BarStyle {
  * Indicates the information of NavDestination.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavPathInfo <: FFIData {
@@ -427,7 +427,7 @@ public class NavPathInfo <: FFIData {
      * Name of the navigation destination page.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var name: ?String
@@ -435,7 +435,7 @@ public class NavPathInfo <: FFIData {
      * Detailed parameters of the navigation destination page.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var param: ?String
@@ -444,7 +444,7 @@ public class NavPathInfo <: FFIData {
      * It is invoked only after the **result** parameter is set in pop.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onPop: ?Callback<PopInfo, Unit> = None
@@ -457,7 +457,7 @@ public class NavPathInfo <: FFIData {
      * @returns { NavPathInfo }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(name!: ?String, param!: ?String, onPop!: ?Callback<PopInfo, Unit> = None) {
@@ -517,7 +517,7 @@ func freePathInfo(info: CJNavPathInfo): Unit {
  * Indicates the information of NavDestinations. Providers methods for controlling destination page in the stack
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NavPathStack <: RemoteData {
@@ -527,7 +527,7 @@ public class NavPathStack <: RemoteData {
      * @returns { NavPathStack }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -551,7 +551,7 @@ public class NavPathStack <: RemoteData {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pushPath(info: ?NavPathInfo, options!: ?NavigationOptions = None): Unit {
@@ -575,7 +575,7 @@ public class NavPathStack <: RemoteData {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pushPathByName(name: ?String, param: ?String, animated!: ?Bool = None) {
@@ -593,7 +593,7 @@ public class NavPathStack <: RemoteData {
      * @returns { ?NavPathInfo } Returns the top NavPathInfo if the stack is not empty, otherwise returns None.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pop(animated!: ?Bool = None): ?NavPathInfo {
@@ -619,7 +619,7 @@ public class NavPathStack <: RemoteData {
  * Defines Navigation Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribute {
@@ -630,7 +630,7 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
      * @param { () -> Unit } child - The child component of Navigation.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = { => }) {
@@ -647,7 +647,7 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
      * @param { () -> Unit } child - The child component of Navigation.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(pathInfos: ?NavPathStack, child!: () -> Unit = { => }) {
@@ -665,7 +665,7 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
      * @returns { This } Returns the instance of the Navigation.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func navDestination(builder: ?(String, Any) -> Unit): This {
@@ -689,7 +689,7 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func title(value: ?ResourceStr, options!: ?NavigationTitleOptions = None): This {
@@ -715,7 +715,7 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func title(value: ?CustomBuilder, options!: ?NavigationTitleOptions = None): This {
@@ -742,7 +742,7 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func hideTitleBar(hide: ?Bool, animated!: ?Bool = None): This {

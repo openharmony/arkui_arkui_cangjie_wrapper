@@ -22,7 +22,7 @@ import ohos.labels.APILevel
  * Defines Line Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface LineAttribute <: CommonShapeMethod<LineAttribute> {
@@ -33,7 +33,7 @@ public interface LineAttribute <: CommonShapeMethod<LineAttribute> {
      * @returns { LineAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func startPoint(value: ?(Float64, Float64)): LineAttribute
@@ -45,7 +45,7 @@ public interface LineAttribute <: CommonShapeMethod<LineAttribute> {
      * @returns { LineAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func endPoint(value: ?(Float64, Float64)): LineAttribute

@@ -24,7 +24,7 @@ import ohos.base.{Length, Callback, ResourceStr}
  * Provides methods for configuring the appearance and behavior of the Tabs component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
@@ -37,7 +37,7 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
      * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func barWidth(value: ?Length): TabsAttribute
@@ -51,7 +51,7 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
      * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func barHeight(value: ?Length): TabsAttribute
@@ -64,7 +64,7 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
      * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func vertical(value: ?Bool): TabsAttribute
@@ -77,7 +77,7 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
      * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func scrollable(value: ?Bool): TabsAttribute
@@ -91,7 +91,7 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
      * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func barMode(value: ?BarMode): TabsAttribute
@@ -105,7 +105,7 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
      * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func animationDuration(value: ?Float32): TabsAttribute
@@ -126,7 +126,7 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
      * @returns { TabsAttribute } Returns the tabs attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(event: ?Callback<Int32, Unit>): TabsAttribute
@@ -137,7 +137,7 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
  * Provides methods for configuring the appearance and behavior of the TabContent component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface TabContentAttribute <: CommonMethod<TabContentAttribute> {
@@ -152,7 +152,7 @@ sealed interface TabContentAttribute <: CommonMethod<TabContentAttribute> {
      * @returns { TabContentAttribute } Returns the tab content attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func tabBar(content: ?ResourceStr): TabContentAttribute
@@ -170,7 +170,7 @@ sealed interface TabContentAttribute <: CommonMethod<TabContentAttribute> {
      * @returns { TabContentAttribute } Returns the tab content attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func tabBar(icon!: ?ResourceStr, text!: ?ResourceStr): TabContentAttribute
@@ -186,7 +186,7 @@ sealed interface TabContentAttribute <: CommonMethod<TabContentAttribute> {
      * @returns { TabContentAttribute } Returns the tab content attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func tabBar(content: ?CustomBuilder): TabContentAttribute

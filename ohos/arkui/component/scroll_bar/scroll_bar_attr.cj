@@ -22,7 +22,7 @@ import ohos.labels.APILevel
  * Defines the ScrollBar attribute functions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ScrollBarAttribute <: CommonMethod<ScrollBarAttribute> {}

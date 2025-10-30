@@ -26,7 +26,7 @@ import ohos.labels.APILevel
  * CJPageEntry for register hybrid component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CJPageEntry {
@@ -38,7 +38,7 @@ public class CJPageEntry {
      * @return { CJPageEntry }.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getInstance(): CJPageEntry {
@@ -54,7 +54,7 @@ public class CJPageEntry {
      * @param { CustomView } cjPage.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func registerHybridPage(name: String, cjPage: CustomView): Unit {
@@ -67,7 +67,7 @@ public class CJPageEntry {
      * @param { String } name.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func removeHybridPage(name: String): Unit {
@@ -95,7 +95,7 @@ public class CJPageEntry {
  * Base class for hybrid component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide
@@ -142,7 +142,7 @@ public open class HybridComponentBase <: SharedObject {
      * @param { () -> Unit } unloadHandle.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide

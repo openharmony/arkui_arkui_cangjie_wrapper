@@ -35,7 +35,7 @@ foreign {
  */
 @Derive[Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum BadgePosition {
@@ -43,7 +43,7 @@ public enum BadgePosition {
      * The badge is displayed in the upper right corner of the parent component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     RightTop |
@@ -51,7 +51,7 @@ public enum BadgePosition {
      * The badge is vertically centered on the right of the parent component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right |
@@ -59,7 +59,7 @@ public enum BadgePosition {
      * The badge is vertically centered on the left of the parent component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
@@ -79,7 +79,7 @@ public enum BadgePosition {
  * BadgeStyle object
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BadgeStyle {
@@ -88,7 +88,7 @@ public class BadgeStyle {
      * @default Color.White
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var color: ?ResourceColor
@@ -103,7 +103,7 @@ public class BadgeStyle {
      * </p>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontSize: ?Length
@@ -119,7 +119,7 @@ public class BadgeStyle {
      * </p>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var badgeSize: ?Length
@@ -128,7 +128,7 @@ public class BadgeStyle {
      * @default Color.Red
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var badgeColor: ?ResourceColor
@@ -144,7 +144,7 @@ public class BadgeStyle {
      * </p>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontWeight: ?FontWeight
@@ -153,7 +153,7 @@ public class BadgeStyle {
      * @default Color.Red
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: ?ResourceColor
@@ -163,7 +163,7 @@ public class BadgeStyle {
      * @default 1.vp
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: ?Length
@@ -180,7 +180,7 @@ public class BadgeStyle {
      * @param { ?Length } borderWidth - Border width of the background.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(color!: ?ResourceColor = None, fontSize!: ?Length = None, badgeSize!: ?Length = None,
@@ -215,7 +215,7 @@ struct CJBadgeStyleV2 {
  * Defines Badge Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
@@ -233,7 +233,7 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
      * @param { () -> Unit } child - The child component to be wrapped.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(count!: Int32, style!: ?BadgeStyle, position!: ?BadgePosition = None,
@@ -265,7 +265,7 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
      * @param { () -> Unit } child - The child component to be wrapped.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: String, style!: ?BadgeStyle, position!: ?BadgePosition = None, child!: () -> Unit) {

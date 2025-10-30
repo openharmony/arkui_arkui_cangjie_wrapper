@@ -22,7 +22,7 @@ import ohos.labels.APILevel
  * Defines the GridRow attribute functions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
@@ -33,7 +33,7 @@ sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
      * @returns { GridRowAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignItems(value: ?ItemAlign): GridRowAttribute
@@ -45,7 +45,7 @@ sealed interface GridRowAttribute <: CommonMethod<GridRowAttribute> {
      * @returns { GridRowAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onBreakpointChange(callback: ?(String) -> Unit): GridRowAttribute

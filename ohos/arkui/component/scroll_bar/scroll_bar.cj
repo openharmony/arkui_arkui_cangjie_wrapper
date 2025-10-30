@@ -30,7 +30,7 @@ foreign {
  * Defines ScrollBar Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScrollBar <: CommonMethodComponent<ScrollBar> & ScrollBarAttribute {
@@ -43,7 +43,7 @@ public class ScrollBar <: CommonMethodComponent<ScrollBar> & ScrollBarAttribute 
     * @param { () -> Unit } child - Child component contained in the scroll bar.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(

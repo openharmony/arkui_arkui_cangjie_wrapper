@@ -24,7 +24,7 @@ import ohos.labels.APILevel
  * Defines class Observable.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide

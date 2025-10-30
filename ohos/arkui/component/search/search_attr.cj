@@ -23,7 +23,7 @@ import ohos.base.{ResourceStr, ResourceColor, Length}
  * Provides methods for configuring the appearance and behavior of the Search component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
@@ -35,7 +35,7 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func searchButton(value: ?ResourceStr): SearchAttribute
@@ -49,7 +49,7 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func placeholderColor(value: ?ResourceColor): SearchAttribute
@@ -65,7 +65,7 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func placeholderFont(
@@ -86,7 +86,7 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textFont(
@@ -107,7 +107,7 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func copyOption(value: ?CopyOptions): SearchAttribute
@@ -119,7 +119,7 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onSubmit(callback: ?(String) -> Unit): SearchAttribute
@@ -133,7 +133,7 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(String) -> Unit): SearchAttribute
@@ -145,7 +145,7 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onCopy(callback: ?(String) -> Unit): SearchAttribute
@@ -157,7 +157,7 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onCut(callback: ?(String) -> Unit): SearchAttribute
@@ -169,7 +169,7 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPaste(callback: ?(String) -> Unit): SearchAttribute

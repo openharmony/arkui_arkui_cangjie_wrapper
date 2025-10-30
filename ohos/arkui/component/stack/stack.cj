@@ -47,7 +47,7 @@ foreign {
  * Child components are stacked on top of each other in the order they are added.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
@@ -59,7 +59,7 @@ public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
     * @param { ?() -> Unit } child - Builder function for Stack content.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(alignContent!: ?Alignment = None, child!: () -> Unit = {=>}) {
@@ -117,7 +117,7 @@ public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
     * @returns { This } Returns the Stack instance.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func alignContent(value: ?Alignment): This {

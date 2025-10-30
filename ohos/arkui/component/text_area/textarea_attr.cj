@@ -24,7 +24,7 @@ import ohos.base.{Length, ResourceColor, ResourceStr}
  * This interface provides the attribute methods for the TextArea component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
@@ -35,7 +35,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func caretColor(value: ?ResourceColor): TextAreaAttribute
@@ -51,7 +51,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func placeholderFont(size!: ?Length, weight!: ?FontWeight, family!: ?String,
@@ -71,7 +71,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func textAlign(value: ?TextAlign): TextAreaAttribute
@@ -84,7 +84,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontSize(value: ?Length): TextAreaAttribute
@@ -97,7 +97,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(value: ?ResourceColor): TextAreaAttribute
@@ -110,7 +110,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontWeight(value: ?FontWeight): TextAreaAttribute
@@ -123,7 +123,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontStyle(value: ?FontStyle): TextAreaAttribute
@@ -139,7 +139,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontFamily(value: ?ResourceStr): TextAreaAttribute
@@ -152,7 +152,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func enterKeyType(value: ?EnterKeyType): TextAreaAttribute
@@ -165,7 +165,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func inputFilter(value!: ?ResourceStr, error!: ?(String) -> Unit): TextAreaAttribute
@@ -180,7 +180,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func maxLength(value: ?UInt32): TextAreaAttribute
@@ -192,7 +192,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func placeholderColor(value: ?ResourceColor): TextAreaAttribute
@@ -204,7 +204,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onSubmit(callback: ?(EnterKeyType) -> Unit): TextAreaAttribute
@@ -216,7 +216,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(String) -> Unit): TextAreaAttribute
@@ -228,7 +228,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onCopy(callback: ?(String) -> Unit): TextAreaAttribute
@@ -240,7 +240,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onCut(callback: ?(String) -> Unit): TextAreaAttribute
@@ -252,7 +252,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onPaste(callback: ?(String) -> Unit): TextAreaAttribute
@@ -265,7 +265,7 @@ sealed interface TextAreaAttribute <: CommonMethod<TextAreaAttribute> {
      * @returns { TextAreaAttribute } - Returns the attribute of TextArea.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onEditChange(callback: ?(Bool) -> Unit): TextAreaAttribute

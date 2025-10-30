@@ -91,7 +91,7 @@ func notifyCallbackBool(key: CString, value: Bool): Unit {
  * Provides mechanisms for persisting AppStorage properties across application sessions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PersistentStorage <: Observer {
@@ -114,7 +114,7 @@ public class PersistentStorage <: Observer {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -130,7 +130,7 @@ public class PersistentStorage <: Observer {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -142,7 +142,7 @@ public class PersistentStorage <: Observer {
      * @returns { Int64 } The unique identifier of this PersistentStorage instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -157,7 +157,7 @@ public class PersistentStorage <: Observer {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -189,7 +189,7 @@ public class PersistentStorage <: Observer {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func persistProp<T>(key: String, defaultValue: T): Unit {
@@ -206,7 +206,7 @@ public class PersistentStorage <: Observer {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func persistProps<T>(props: Array<(String, T)>): Unit {
@@ -221,7 +221,7 @@ public class PersistentStorage <: Observer {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func deleteProp(key: String): Unit {
@@ -235,7 +235,7 @@ public class PersistentStorage <: Observer {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func keys(): Array<String> {

@@ -23,7 +23,7 @@ import ohos.labels.APILevel
  * This interface provides the attribute methods for the GridCol component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
@@ -35,7 +35,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
      * @returns { GridColAttribute } - Returns the attribute of GridCol.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func span(value: ?Int32): GridColAttribute
@@ -48,7 +48,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
      * @returns { GridColAttribute } - Returns the attribute of GridCol.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func span(value: ?GridColOptions): GridColAttribute
@@ -61,7 +61,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
      * @returns { GridColAttribute } - Returns the attribute of GridCol.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func gridColOffset(value: ?Int32): GridColAttribute
@@ -74,7 +74,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
      * @returns { GridColAttribute } - Returns the attribute of GridCol.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func gridColOffset(value: ?GridColOptions): GridColAttribute
@@ -87,7 +87,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
      * @returns { GridColAttribute } - Returns the attribute of GridCol.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func order(value: ?Int32): GridColAttribute
@@ -100,7 +100,7 @@ sealed interface GridColAttribute <: CommonMethod<GridColAttribute> {
      * @returns { GridColAttribute } - Returns the attribute of GridCol.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func order(value: ?GridColOptions): GridColAttribute

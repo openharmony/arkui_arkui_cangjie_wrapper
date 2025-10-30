@@ -24,7 +24,7 @@ import ohos.ffi.{RemoteData}
  * Defines the base type of Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide

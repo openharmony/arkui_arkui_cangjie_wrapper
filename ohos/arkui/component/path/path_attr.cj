@@ -23,7 +23,7 @@ import ohos.base.{ResourceStr}
  * Defines Path Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface PathAttribute <: CommonShapeMethod<PathAttribute> {
@@ -34,7 +34,7 @@ sealed interface PathAttribute <: CommonShapeMethod<PathAttribute> {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func commands(commands: ?ResourceStr): PathAttribute

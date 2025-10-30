@@ -33,7 +33,7 @@ import ohos.base.{ExternalString}
  *   4. provide native method to throw CJ error
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide
@@ -49,7 +49,7 @@ public class CJEntry {
      * @returns { CJEntry }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -64,7 +64,7 @@ public class CJEntry {
      * @param { () -> Bool } call
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide

@@ -37,7 +37,7 @@ foreign {
  * Defines QRCode Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class QRCode <: CommonMethodComponent<QRCode> & QRCodeAttribute {
@@ -47,7 +47,7 @@ public class QRCode <: CommonMethodComponent<QRCode> & QRCodeAttribute {
      * @param { ?ResourceStr } value - Content of the QR code. Maximum of 512 characters are supported.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?ResourceStr) {
@@ -66,7 +66,7 @@ public class QRCode <: CommonMethodComponent<QRCode> & QRCodeAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
@@ -90,7 +90,7 @@ public class QRCode <: CommonMethodComponent<QRCode> & QRCodeAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentOpacity(value: ?Float64): This {
@@ -107,7 +107,7 @@ public class QRCode <: CommonMethodComponent<QRCode> & QRCodeAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func contentOpacity(value: ?AppResource): This {

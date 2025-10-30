@@ -27,7 +27,7 @@ import std.collection.ArrayList
  * Definition of RemoteView class.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class RemoteView <: FFIData {
@@ -35,7 +35,7 @@ public abstract class RemoteView <: FFIData {
      * Constructor of RemoteView.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -46,7 +46,7 @@ public abstract class RemoteView <: FFIData {
      * Define declarative UI descriptions for custom component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func build(): Unit // abstract
@@ -55,7 +55,7 @@ public abstract class RemoteView <: FFIData {
      * Do a rerender.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func rerender(): Unit {}
@@ -66,7 +66,7 @@ public abstract class RemoteView <: FFIData {
      * @param { Int64 } _ - Element id.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func purgeVariableDependenciesOnElmtId(_: Int64): Unit {}
@@ -78,7 +78,7 @@ public abstract class RemoteView <: FFIData {
      * is invoked during the layout process.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected open func aboutToAppear(): Unit {}
@@ -88,12 +88,12 @@ public abstract class RemoteView <: FFIData {
      * It works only for the custom components decorated by **@Entry**.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected open func onPageShow(): Unit {}
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     /**
@@ -110,7 +110,7 @@ public abstract class RemoteView <: FFIData {
      * @returns { Bool }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected open func onBackPress(): Bool {
@@ -122,7 +122,7 @@ public abstract class RemoteView <: FFIData {
      * Implement Animation when enter this page or move to other pages.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected open func pageTransition(): Unit {}
@@ -134,7 +134,7 @@ public abstract class RemoteView <: FFIData {
      * For example, the modification of the @Link decorated variable may cause unstable application running.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected open func aboutToDisappear(): Unit {}
@@ -146,7 +146,7 @@ public abstract class RemoteView <: FFIData {
      * @param { Bool } deep - Whether to rerender components recursive.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public open func forceCompleteRerender(deep: Bool): Unit {}
@@ -156,7 +156,7 @@ public abstract class RemoteView <: FFIData {
      * Triggered when the custom component has been built.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected open func onDidBuild(): Unit {}

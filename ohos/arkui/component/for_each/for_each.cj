@@ -62,7 +62,7 @@ foreign {
  * The ForEach class is used to create a list of elements based on a data source.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ForEach<T> <: UINodeBase {
@@ -76,7 +76,7 @@ public class ForEach<T> <: UINodeBase {
      * @param { KeyGeneratorFunc<T> } keyGenerator - key generator function.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(arr: CollectionEx<T>, itemGenerator!: ItemGeneratorFunc<T>,
@@ -86,7 +86,7 @@ public class ForEach<T> <: UINodeBase {
      * Set the value, array, and key.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -101,7 +101,7 @@ public class ForEach<T> <: UINodeBase {
      * pop for each node of framework.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pop(): Unit {

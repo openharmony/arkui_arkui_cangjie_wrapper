@@ -43,7 +43,7 @@ struct NativeGridColColumnOption {
  * a grid item should span on different screen sizes.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GridColOptions {
@@ -52,7 +52,7 @@ public class GridColOptions {
      * Defines how many columns the grid item should span on extra small screens.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xs: ?Int32
@@ -62,7 +62,7 @@ public class GridColOptions {
      * Defines how many columns the grid item should span on small screens.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var sm: ?Int32
@@ -72,7 +72,7 @@ public class GridColOptions {
      * Defines how many columns the grid item should span on medium screens.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var md: ?Int32
@@ -82,7 +82,7 @@ public class GridColOptions {
      * Defines how many columns the grid item should span on large screens.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var lg: ?Int32
@@ -92,7 +92,7 @@ public class GridColOptions {
      * Defines how many columns the grid item should span on extra large screens.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xl: ?Int32
@@ -102,7 +102,7 @@ public class GridColOptions {
      * Defines how many columns the grid item should span on double extra large screens.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xxl: ?Int32
@@ -119,7 +119,7 @@ public class GridColOptions {
      * @param { ?Int32 } xxl - Grid Col Column Option xxl. Defines how many columns the grid item should span on double extra large screens.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -145,7 +145,7 @@ public class GridColOptions {
     * @param { ?Int32 } value - The value to set for all grid column options. This value will be applied to xs, sm, md, lg, xl, and xxl.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?Int32) {
@@ -190,7 +190,7 @@ foreign {
  * a grid item should span, its offset, and order in the grid layout.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
@@ -204,7 +204,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @param { () -> Unit } child - The child component of GridCol. This is the content to be displayed within the grid item.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(span!: ?Int32 = None, offset!: ?Int32 = None, order!: ?Int32 = None, child!: () -> Unit = {=>}) {
@@ -224,7 +224,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @param { () -> Unit } child - The child component of GridCol. This is the content to be displayed within the grid item.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -250,7 +250,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @returns { This } - Returns the component itself for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func span(value: ?Int32): This {
@@ -268,7 +268,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @returns { This } - Returns the component itself for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func span(value: ?GridColOptions): This {
@@ -287,7 +287,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @returns { This } - Returns the component itself for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func gridColOffset(value: ?Int32): This {
@@ -305,7 +305,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @returns { This } - Returns the component itself for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func gridColOffset(value: ?GridColOptions): This {
@@ -324,7 +324,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @returns { This } - Returns the component itself for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func order(value: ?Int32): This {
@@ -342,7 +342,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @returns { This } - Returns the component itself for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func order(value: ?GridColOptions): This {

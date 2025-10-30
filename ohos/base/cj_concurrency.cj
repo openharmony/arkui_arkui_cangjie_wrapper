@@ -30,7 +30,7 @@ foreign func FfiOHOSAceFrameworkHasContainer(): Bool
  * @param { () -> Unit } task - The task to be executed on the main thread
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func launch(task: () -> Unit): Unit {

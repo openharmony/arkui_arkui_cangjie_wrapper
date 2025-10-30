@@ -64,7 +64,7 @@ class CJVectorNativeTextShadow {
  * Provides configuration options for date and time formatting in TextClock component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DateTimeOptions {
@@ -72,7 +72,7 @@ public class DateTimeOptions {
      * Valid locale ID, for example, "zh-Hans-CN". The default value is the current system locale.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var locale: ?String
@@ -81,7 +81,7 @@ public class DateTimeOptions {
      * Date display format. The value can be: "long", "short", "medium", "full", or "auto".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dateStyle: ?String
@@ -90,7 +90,7 @@ public class DateTimeOptions {
      * Time display format. The value can be: "long", "short", "medium", "full", or "auto".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timeStyle: ?String
@@ -99,7 +99,7 @@ public class DateTimeOptions {
      * Hour cycle. The value can be: "h11", "h12", "h23", or "h24".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hourCycle: ?String
@@ -109,7 +109,7 @@ public class DateTimeOptions {
      * Specifies the time zone for date and time display.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timeZone: ?String
@@ -123,7 +123,7 @@ public class DateTimeOptions {
      * "takr", "talu", "tamldec", "telu", "thai", "tibt", "tirh", "vaii", "wara", or "wcho".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var numberingSystem: ?String
@@ -136,7 +136,7 @@ public class DateTimeOptions {
      * @default false
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hour12: ?Bool
@@ -145,7 +145,7 @@ public class DateTimeOptions {
      * Week display format. The value can be: "long", "short", "narrow", or "auto".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var weekday: ?String
@@ -154,7 +154,7 @@ public class DateTimeOptions {
      * Epoch display format. The value can be: "long", "short", "narrow", or "auto".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var era: ?String
@@ -163,7 +163,7 @@ public class DateTimeOptions {
      * Year display format. The value can be: "numeric" or "2-digit".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var year: ?String
@@ -172,7 +172,7 @@ public class DateTimeOptions {
      * Month display format. The value can be: "numeric", "2-digit", "long", "short", "narrow", or "auto".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var month: ?String
@@ -181,7 +181,7 @@ public class DateTimeOptions {
      * Day display format. The value can be: "numeric" or "2-digit".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var day: ?String
@@ -190,7 +190,7 @@ public class DateTimeOptions {
      * Hour display format. The value can be: "numeric" or "2-digit".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var hour: ?String
@@ -199,7 +199,7 @@ public class DateTimeOptions {
      * Minute display format. The value can be: "numeric" or "2-digit".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var minute: ?String
@@ -208,7 +208,7 @@ public class DateTimeOptions {
      * Second display format. The value can be: "numeric" or "2-digit".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var second: ?String
@@ -217,7 +217,7 @@ public class DateTimeOptions {
      * Localized representation of a time zone name. The value can be: "long", "short", or "auto".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timeZoneName: ?String
@@ -226,7 +226,7 @@ public class DateTimeOptions {
      * Time period display format. The value can be: "long", "short", "narrow", or "auto".
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var dayPeriod: ?String
@@ -237,7 +237,7 @@ public class DateTimeOptions {
      * "best fit": best match.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var localeMatcher: ?String
@@ -248,7 +248,7 @@ public class DateTimeOptions {
      * "best fit": best match.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var formatMatcher: ?String
@@ -277,7 +277,7 @@ public class DateTimeOptions {
      * @param { ?String } formatMatcher - Format matching algorithm.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(locale!: ?String = None, dateStyle!: ?String = None, timeStyle!: ?String = None,
@@ -348,7 +348,7 @@ foreign {
  * Allows starting and stopping the TextClock component updates.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextClockController <: RemoteDataLite {
@@ -357,7 +357,7 @@ public class TextClockController <: RemoteDataLite {
      * Creates a new TextClockController instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -376,7 +376,7 @@ public class TextClockController <: RemoteDataLite {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func start(): Unit {
@@ -391,7 +391,7 @@ public class TextClockController <: RemoteDataLite {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stop(): Unit {
@@ -405,7 +405,7 @@ public class TextClockController <: RemoteDataLite {
  * A component that displays the current date and time, automatically updating at regular intervals.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute {
@@ -419,7 +419,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * @param { ?TextClockController } controller - The controller for the text clock.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(timeZoneOffset!: ?Float32 = None, controller!: ?TextClockController = None) {
@@ -448,7 +448,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDateChange(callback: ?(Int64) -> Unit): This {
@@ -473,7 +473,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func format(value: ?ResourceStr): This {
@@ -494,7 +494,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -512,7 +512,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -530,7 +530,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -548,7 +548,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -568,7 +568,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -588,7 +588,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(values: ?Array<ShadowOptions>): This {
@@ -611,7 +611,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * @returns { This } Returns the TextClock instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(value: ?ShadowOptions): This {

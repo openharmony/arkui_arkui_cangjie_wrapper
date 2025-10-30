@@ -25,7 +25,7 @@ foreign func FfiOHOSBaseGetUISchedulerHandle(): CPointer<Unit>
  * Defines class MainThreadContext.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MainThreadContext <: ThreadContext {
@@ -49,7 +49,7 @@ public class MainThreadContext <: ThreadContext {
      * MainThreadContext end func.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -61,7 +61,7 @@ public class MainThreadContext <: ThreadContext {
      * @returns { Bool } - Whether the context has ended
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -74,7 +74,7 @@ public class MainThreadContext <: ThreadContext {
  * UIThread get MainThreadContext instance.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public let UIThread: MainThreadContext = MainThreadContext.instance_

@@ -22,7 +22,7 @@ import ohos.labels.APILevel
  * Defines Refresh Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RefreshAttribute <: CommonMethod<RefreshAttribute> {
@@ -33,7 +33,7 @@ sealed interface RefreshAttribute <: CommonMethod<RefreshAttribute> {
      * @returns { RefreshAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onStateChange(callback: ?(RefreshStatus) -> Unit): RefreshAttribute
@@ -45,7 +45,7 @@ sealed interface RefreshAttribute <: CommonMethod<RefreshAttribute> {
      * @returns { RefreshAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onRefreshing(callback: ?() -> Unit): RefreshAttribute

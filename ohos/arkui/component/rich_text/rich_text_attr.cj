@@ -23,7 +23,7 @@ import ohos.labels.APILevel
  * Provides methods for configuring the behavior of the RichText component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RichTextAttribute <: CommonMethod<RichTextAttribute> {
@@ -34,7 +34,7 @@ sealed interface RichTextAttribute <: CommonMethod<RichTextAttribute> {
      * @returns { RichTextAttribute } Returns the rich text attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onStart(callback: ?() -> Unit): RichTextAttribute
@@ -46,7 +46,7 @@ sealed interface RichTextAttribute <: CommonMethod<RichTextAttribute> {
      * @returns { RichTextAttribute } Returns the rich text attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onComplete(callback: ?() -> Unit): RichTextAttribute

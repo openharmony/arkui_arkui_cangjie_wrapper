@@ -110,7 +110,7 @@ foreign {
  * It is recommended to use LazyForEach or Repeat to generate child components.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
@@ -122,7 +122,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      * @param { ()->Unit } child - The child component to be displayed in the grid, typically LazyForEach or Repeat.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(scroller!: ?Scroller = Option.None, child!: () -> Unit = {=>}) {
@@ -147,7 +147,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnsTemplate(value: ?String): This {
@@ -167,7 +167,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowsTemplate(value: ?String): This {
@@ -186,7 +186,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func columnsGap(value: ?Length): This {
@@ -215,7 +215,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func rowsGap(value: ?Length): This {
@@ -244,7 +244,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(value: ?Int32): This {
@@ -259,7 +259,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(count: ?Int32, show: ?Bool): This {

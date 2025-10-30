@@ -86,7 +86,7 @@ func freeButtonsArr(nativeButtons: CArrNativeAlertDialogButtonOptionsV2) {
 */
 @Derive[Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum DialogButtonDirection {
@@ -95,7 +95,7 @@ public enum DialogButtonDirection {
      * and two or more buttons are arranged vertically.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -104,7 +104,7 @@ public enum DialogButtonDirection {
      * Buttons are arranged horizontally.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Horizontal
@@ -113,7 +113,7 @@ public enum DialogButtonDirection {
      * Buttons are arranged vertically.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vertical
@@ -134,7 +134,7 @@ public enum DialogButtonDirection {
  * Provides a wrapper class for specifying border colors with a default value.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class BorderColor {
@@ -143,7 +143,7 @@ public class BorderColor {
      * Defines the visual color of the border around a component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var resourceColor: ResourceColor
@@ -156,7 +156,7 @@ public class BorderColor {
      * @default Color.Black
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(color!: ?ResourceColor = Color.Black) {
@@ -226,7 +226,7 @@ struct NativeAlertDialogParamV2 {
  * Base button param.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class AlertDialogButtonBaseOptions {
@@ -236,7 +236,7 @@ public open class AlertDialogButtonBaseOptions {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var enabled: ?Bool
@@ -245,7 +245,7 @@ public open class AlertDialogButtonBaseOptions {
      * @default false
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var defaultFocus: ?Bool
@@ -253,7 +253,7 @@ public open class AlertDialogButtonBaseOptions {
      * Style of button.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var style: ?DialogButtonStyle
@@ -261,7 +261,7 @@ public open class AlertDialogButtonBaseOptions {
      * Text content of button.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var value: ?ResourceStr
@@ -269,7 +269,7 @@ public open class AlertDialogButtonBaseOptions {
      * Text color of button.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fontColor: ?ResourceColor
@@ -277,7 +277,7 @@ public open class AlertDialogButtonBaseOptions {
      * Background color of button.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -285,7 +285,7 @@ public open class AlertDialogButtonBaseOptions {
      * Method executed by the callback.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var action: ?VoidCallback
@@ -302,7 +302,7 @@ public open class AlertDialogButtonBaseOptions {
      * @returns { AlertDialogButtonBaseOptions } Returns the created AlertDialogButtonBaseOptions instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -328,7 +328,7 @@ public open class AlertDialogButtonBaseOptions {
  * Button param used for AlertDialogParamWithOptions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
@@ -336,7 +336,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
     * Define whether the button responds to Enter/Space key by default.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var primary: ?Bool
@@ -355,7 +355,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
      * @returns { AlertDialogButtonOptions } Returns the created AlertDialogButtonOptions instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -441,7 +441,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
  * Provides comprehensive control over dialog appearance, behavior, and positioning.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public open class AlertDialogParam {
@@ -450,7 +450,7 @@ public open class AlertDialogParam {
      * The main title text displayed at the top of the alert dialog.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var title: ?ResourceStr
@@ -459,7 +459,7 @@ public open class AlertDialogParam {
      * Additional descriptive text displayed below the title in the alert dialog.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var subtitle: ?ResourceStr
@@ -467,7 +467,7 @@ public open class AlertDialogParam {
      * The main content message displayed in the body of the alert dialog.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var message: ?ResourceStr
@@ -476,7 +476,7 @@ public open class AlertDialogParam {
      * When enabled, users can dismiss the dialog by clicking on the semi-transparent overlay outside the dialog.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var autoCancel: ?Bool
@@ -484,7 +484,7 @@ public open class AlertDialogParam {
      * Callback function that is executed when the dialog is canceled, either by clicking the mask or pressing the back button.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cancel: ?VoidCallback
@@ -493,7 +493,7 @@ public open class AlertDialogParam {
      * Controls the positioning of the dialog on the screen using predefined alignment options.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var alignment: ?DialogAlignment
@@ -502,7 +502,7 @@ public open class AlertDialogParam {
      * Fine-tunes the dialog position by applying additional x/y offsets to the alignment setting.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offset: ?Offset
@@ -510,7 +510,7 @@ public open class AlertDialogParam {
      * Specifies the grid layout count for the dialog, affecting its sizing and positioning in grid-based layouts.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var gridCount: ?UInt32
@@ -519,7 +519,7 @@ public open class AlertDialogParam {
      * Defines the rectangular area where the dialog mask (overlay) is displayed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var maskRect: ?Rectangle
@@ -529,7 +529,7 @@ public open class AlertDialogParam {
      * @default false
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var showInSubWindow: ?Bool
@@ -539,7 +539,7 @@ public open class AlertDialogParam {
      * @default true
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var isModal: ?Bool
@@ -549,7 +549,7 @@ public open class AlertDialogParam {
      * @default Transparent
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundColor: ?ResourceColor
@@ -559,7 +559,7 @@ public open class AlertDialogParam {
      * @default BlurStyle.ComponentUltraThick
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
@@ -568,7 +568,7 @@ public open class AlertDialogParam {
      * Function called when the dialog is about to be dismissed through user interaction.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
@@ -576,7 +576,7 @@ public open class AlertDialogParam {
      * Controls the roundness of the dialog corners, creating rounded or sharp corner effects.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var cornerRadius: ?BorderRadiuses
@@ -585,7 +585,7 @@ public open class AlertDialogParam {
      * Defines the animation effects used when the dialog is shown or hidden.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var transition: ?TransitionEffect
@@ -593,7 +593,7 @@ public open class AlertDialogParam {
      * Sets the width of the dialog, supporting various length units and percentage-based sizing.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Length
@@ -601,7 +601,7 @@ public open class AlertDialogParam {
      * Sets the height of the dialog, supporting various length units and percentage-based sizing.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Length
@@ -609,7 +609,7 @@ public open class AlertDialogParam {
      * Controls the thickness of the dialog border, creating visual separation from the background.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderWidth: ?Length
@@ -617,7 +617,7 @@ public open class AlertDialogParam {
      * Sets the color of the dialog border for visual customization.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderColor: ?BorderColor
@@ -625,7 +625,7 @@ public open class AlertDialogParam {
      * Controls the visual style of the dialog border, such as solid, dashed, or dotted lines.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var borderStyle: ?EdgeStyles
@@ -633,7 +633,7 @@ public open class AlertDialogParam {
      * Applies shadow effects to the dialog for depth and visual emphasis.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var shadow: ?ShadowOptions
@@ -641,7 +641,7 @@ public open class AlertDialogParam {
      * Controls how text within the dialog is broken across lines, affecting readability and layout.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var textStyle: ?WordBreak
@@ -675,7 +675,7 @@ public open class AlertDialogParam {
      * @returns { AlertDialogParam } Returns the created AlertDialogParam instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -808,7 +808,7 @@ public open class AlertDialogParam {
  * Defines the AlertDialog with confirm button.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AlertDialogParamWithConfirm <: AlertDialogParam {
@@ -816,7 +816,7 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
      * Invoke the commit function.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var confirm: ?AlertDialogButtonBaseOptions
@@ -850,7 +850,7 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
      * @returns { AlertDialogParamWithConfirm } Returns the created AlertDialogParamWithConfirm instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -912,7 +912,7 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
  * Defines the dialog param with buttons.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AlertDialogParamWithButtons <: AlertDialogParam {
@@ -920,7 +920,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
      * First button.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var primaryButton: ?AlertDialogButtonBaseOptions
@@ -928,7 +928,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
      * Second button.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var secondaryButton: ?AlertDialogButtonBaseOptions
@@ -963,7 +963,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
      * @returns { AlertDialogParamWithButtons } Returns the created AlertDialogParamWithButtons instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -1027,7 +1027,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
  * Defines the dialog param with options.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class AlertDialogParamWithOptions <: AlertDialogParam {
@@ -1035,7 +1035,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
      * The array of buttons.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var buttons: ?Array<AlertDialogButtonOptions>
@@ -1044,7 +1044,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
      * @default DialogButtonDirection.Auto
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var buttonDirection: ?DialogButtonDirection
@@ -1079,7 +1079,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
      * @returns { AlertDialogParamWithOptions } Returns the created AlertDialogParamWithOptions instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(

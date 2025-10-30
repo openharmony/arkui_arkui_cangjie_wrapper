@@ -75,7 +75,7 @@ foreign {
  * Contains common methods and properties for span components.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class BaseSpan <: UINodeBase {
@@ -86,7 +86,7 @@ public abstract class BaseSpan <: UINodeBase {
  * A component for displaying formatted text segments within a Text component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Span <: BaseSpan {
@@ -97,7 +97,7 @@ public class Span <: BaseSpan {
      * @param { ?ResourceStr } value - The text content of the span.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?ResourceStr) {
@@ -116,7 +116,7 @@ public class Span <: BaseSpan {
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -136,7 +136,7 @@ public class Span <: BaseSpan {
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -155,7 +155,7 @@ public class Span <: BaseSpan {
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -173,7 +173,7 @@ public class Span <: BaseSpan {
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -193,7 +193,7 @@ public class Span <: BaseSpan {
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -214,7 +214,7 @@ public class Span <: BaseSpan {
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor = None): This {
@@ -235,7 +235,7 @@ public class Span <: BaseSpan {
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func letterSpacing(value: ?Length): This {
@@ -254,7 +254,7 @@ public class Span <: BaseSpan {
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textCase(value: ?TextCase): This {
@@ -272,7 +272,7 @@ public class Span <: BaseSpan {
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onClick(event: ?(ClickEvent) -> Unit): This {

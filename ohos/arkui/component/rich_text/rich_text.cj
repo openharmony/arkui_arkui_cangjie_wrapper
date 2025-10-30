@@ -33,7 +33,7 @@ foreign {
  * A component that displays rich text content formatted in HTML or loaded from a resource file.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
@@ -44,7 +44,7 @@ public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
      * @param { ?ResourceStr } content - HTML format string or local resource file.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(content: ?ResourceStr) {
@@ -68,7 +68,7 @@ public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
      * @returns { This } Returns the RichText instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStart(callback: ?() -> Unit): This {
@@ -86,7 +86,7 @@ public class RichText <: CommonMethodComponent<RichText> & RichTextAttribute {
      * @returns { This } Returns the RichText instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onComplete(callback: ?() -> Unit): This {

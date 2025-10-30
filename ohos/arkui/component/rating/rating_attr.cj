@@ -23,7 +23,7 @@ import ohos.base.{ResourceStr}
  * Provides methods for configuring the appearance and behavior of the Rating component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
@@ -35,7 +35,7 @@ sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
      * @returns { RatingAttribute } Returns the rating attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func stars(starCount: ?Int32): RatingAttribute
@@ -47,7 +47,7 @@ sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
      * @returns { RatingAttribute } Returns the rating attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func stepSize(size: ?Float64): RatingAttribute
@@ -61,7 +61,7 @@ sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
      * @returns { RatingAttribute } Returns the rating attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func starStyle(backgroundUri!: ?ResourceStr, foregroundUri!: ?ResourceStr, secondaryUri!: ?ResourceStr): RatingAttribute
@@ -75,7 +75,7 @@ sealed interface RatingAttribute <: CommonMethod<RatingAttribute> {
      * @returns { RatingAttribute } Returns the rating attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(Float64) -> Unit): RatingAttribute

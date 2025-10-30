@@ -37,7 +37,7 @@ foreign {
  * This interface defines the methods required for LazyForEach to access and monitor data.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface IDataSource<T> {
@@ -47,7 +47,7 @@ public interface IDataSource<T> {
      * @returns { Int64 } The total number of data items in the data source.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func totalCount(): Int64
@@ -60,7 +60,7 @@ public interface IDataSource<T> {
      * @returns { T } The data item at the specified index.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func getData(index: Int64): T
@@ -71,7 +71,7 @@ public interface IDataSource<T> {
      * @param { DataChangeListener } listener - The listener to be registered for data changes.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func registerDataChangeListener(listener: DataChangeListener): Unit
@@ -82,7 +82,7 @@ public interface IDataSource<T> {
      * @param { DataChangeListener } listener - The listener to be unregistered from data changes.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func unregisterDataChangeListener(listener: DataChangeListener): Unit
@@ -92,7 +92,7 @@ public interface IDataSource<T> {
  * Data change listener.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DataChangeListener <: RemoteData {
@@ -105,7 +105,7 @@ public class DataChangeListener <: RemoteData {
      * the original child component is used. For data items whose key changes, a new child component is created.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataReloaded(): Unit {
@@ -118,7 +118,7 @@ public class DataChangeListener <: RemoteData {
      * @param { IntNative } index - The index at which to insert the data record.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataAdd(index: IntNative): Unit {
@@ -132,7 +132,7 @@ public class DataChangeListener <: RemoteData {
      * @param { IntNative } index - The index at which to delete the data record.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataDelete(index: IntNative): Unit {
@@ -145,7 +145,7 @@ public class DataChangeListener <: RemoteData {
      * @param { IntNative } index - The index of the data to be changed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataChange(index: IntNative): Unit {
@@ -159,7 +159,7 @@ public class DataChangeListener <: RemoteData {
      * @param { IntNative } to - The end position for the movement.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDataMove(from: IntNative, to: IntNative): Unit {

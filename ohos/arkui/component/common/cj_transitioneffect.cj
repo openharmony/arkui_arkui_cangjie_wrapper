@@ -51,7 +51,7 @@ foreign func FfiOHOSAceFrameworkTransitionEffectSlideSwitch(): Int64
  * Configuration options for translation transformations.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TranslateOptions {
@@ -62,7 +62,7 @@ public class TranslateOptions {
      * For the string type, the value follows the format of length string type.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Length
@@ -73,7 +73,7 @@ public class TranslateOptions {
      * For the string type, the value follows the format of length string type.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Length
@@ -83,7 +83,7 @@ public class TranslateOptions {
      * point number, the default value is 0.0, and the unit is px.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var z: ?Length
@@ -96,7 +96,7 @@ public class TranslateOptions {
      * @param { ?Length } z - Translation distance along the z-axis
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x!: ?Length = None, y!: ?Length = None, z!: ?Length = None) {
@@ -112,7 +112,7 @@ public class TranslateOptions {
  * Configuration options for scaling transformations.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScaleOptions {
@@ -124,7 +124,7 @@ public class ScaleOptions {
      * x < 0: The component is scaled in the reverse direction of the x-axis.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Float32
@@ -136,7 +136,7 @@ public class ScaleOptions {
      * y < 0: The component is scaled in the reverse direction of the y-axis.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Float32
@@ -147,7 +147,7 @@ public class ScaleOptions {
      * <br>z < 0: The component is scaled in the reverse direction of the z-axis.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var z: ?Float32
@@ -156,7 +156,7 @@ public class ScaleOptions {
      * X coordinate of the transformation center point (anchor). Unit is vp.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerX: ?Length
@@ -165,7 +165,7 @@ public class ScaleOptions {
      * Y coordinate of the transformation center point (anchor). Unit is vp.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerY: ?Length
@@ -180,7 +180,7 @@ public class ScaleOptions {
      * @param { ?Length } centerY - Y coordinate of the transformation center
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, centerX!: ?Length = None,
@@ -218,7 +218,7 @@ struct CScaleOptions {
  * Configuration options for rotation transformations.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RotateOptions {
@@ -227,7 +227,7 @@ public class RotateOptions {
      * Rotation angle in degrees.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var angle: ?Float64
@@ -237,7 +237,7 @@ public class RotateOptions {
      * Defines the x-component of the rotation axis.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Float64
@@ -247,7 +247,7 @@ public class RotateOptions {
      * Defines the y-component of the rotation axis.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Float64
@@ -257,7 +257,7 @@ public class RotateOptions {
      * Defines the z-component of the rotation axis.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var z: ?Float64
@@ -267,7 +267,7 @@ public class RotateOptions {
      * Defines the x-coordinate of the rotation center point.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerX: ?Length
@@ -277,7 +277,7 @@ public class RotateOptions {
      * Defines the y-coordinate of the rotation center point.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerY: ?Length
@@ -287,7 +287,7 @@ public class RotateOptions {
      * @default 0.vp
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var centerZ: ?Length
@@ -299,7 +299,7 @@ public class RotateOptions {
      * @default 0.0
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var perspective: ?Float64
@@ -317,7 +317,7 @@ public class RotateOptions {
      * @param { ?Float64 } perspective - Perspective distance
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(angle: ?Float64, x!: ?Float64 = None, y!: ?Float64 = None, z!: ?Float64 = None, centerX!: ?Length = None,
@@ -367,7 +367,7 @@ struct CRotateOptions {
  */
 @Derive[Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum TransitionEdge {
@@ -375,7 +375,7 @@ public enum TransitionEdge {
      * Represents the top edge of the component or window.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top |
@@ -384,7 +384,7 @@ public enum TransitionEdge {
      * Represents the bottom edge of the component or window.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom |
@@ -394,7 +394,7 @@ public enum TransitionEdge {
      * Represents the logical start edge based on text direction.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start |
@@ -404,7 +404,7 @@ public enum TransitionEdge {
      * Represents the logical end edge based on text direction.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End |
@@ -426,7 +426,7 @@ public enum TransitionEdge {
  * This class provides methods to create various transition effects for components.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TransitionEffect <: RemoteDataLite {
@@ -446,7 +446,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @returns { TransitionEffect } - A new TransitionEffect instance with opacity effect.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func opacity(alpha: Float64): TransitionEffect {
@@ -465,7 +465,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @returns { TransitionEffect } - A new TransitionEffect instance with translation effect.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func translate(options: TranslateOptions): TransitionEffect {
@@ -484,7 +484,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @returns { TransitionEffect } - A new TransitionEffect instance with scale effect.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func scale(options: ?ScaleOptions): TransitionEffect {
@@ -512,7 +512,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @returns { TransitionEffect } - A new TransitionEffect instance with rotation effect.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func rotate(options: ?RotateOptions): TransitionEffect {
@@ -530,7 +530,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @returns { TransitionEffect } - A new TransitionEffect instance with move effect.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func move(edge: TransitionEdge): TransitionEffect {
@@ -548,7 +548,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @returns { TransitionEffect } - A new TransitionEffect instance with asymmetric effect.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect {
@@ -565,7 +565,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @returns { TransitionEffect } combined transition effect.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func combine(transitionEffect: TransitionEffect): TransitionEffect {
@@ -583,7 +583,7 @@ public class TransitionEffect <: RemoteDataLite {
      * @returns { TransitionEffect } - The current TransitionEffect instance with updated animation parameters.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func animation(value: ?AnimateParam): TransitionEffect {
@@ -600,7 +600,7 @@ public class TransitionEffect <: RemoteDataLite {
      * Represents a transition effect that does nothing.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let IDENTITY: TransitionEffect = unsafe {
@@ -612,7 +612,7 @@ public class TransitionEffect <: RemoteDataLite {
      * The component becomes completely transparent during the transition.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let OPACITY: TransitionEffect = TransitionEffect.opacity(0.0)
@@ -622,7 +622,7 @@ public class TransitionEffect <: RemoteDataLite {
      * The component slides in from the start edge and slides out to the end edge.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let SLIDE: TransitionEffect =
@@ -636,7 +636,7 @@ public class TransitionEffect <: RemoteDataLite {
      * The default animation duration is set to 600ms, and the specified animation curve is cubicBezierCurve(0.24, 0.0, 0.50, 1.0).
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let SLIDE_SWITCH: TransitionEffect = unsafe {

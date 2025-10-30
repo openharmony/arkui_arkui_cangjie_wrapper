@@ -51,7 +51,7 @@ let LENGTH_TYPE_LNVALID: Int32 = -2
  * A popup component that displays a list of options or actions for user selection.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
@@ -62,7 +62,7 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      * @param { () -> Unit } child - The child component builder function for menu items. The default value is an empty function.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = {=>}) {
@@ -84,7 +84,7 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      * @returns { This } Returns the Menu instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func font(
@@ -112,7 +112,7 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      * @returns { This } Returns the Menu instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -131,7 +131,7 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      * @returns { This } Returns the Menu instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Length): This {
@@ -155,7 +155,7 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      * @returns { This } Returns the Menu instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?BorderRadiuses): This {

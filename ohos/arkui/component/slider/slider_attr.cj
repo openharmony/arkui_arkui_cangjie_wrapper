@@ -23,7 +23,7 @@ import ohos.base.{ResourceStr, Length, ResourceColor}
  * Provides methods for configuring the appearance and behavior of the Slider component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
@@ -34,7 +34,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     * @returns { SliderAttribute }
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func blockColor(value: ?ResourceColor): SliderAttribute
@@ -46,7 +46,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     * @returns { SliderAttribute }
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func trackColor(value: ?ResourceColor): SliderAttribute
@@ -58,7 +58,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     * @returns { SliderAttribute }
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedColor(value: ?ResourceColor): SliderAttribute
@@ -71,7 +71,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     * @default false
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func showSteps(value: ?Bool): SliderAttribute
@@ -85,7 +85,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     * @returns { SliderAttribute }
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func showTips(value: ?Bool, content!: ?ResourceStr): SliderAttribute
@@ -97,7 +97,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     * @returns { SliderAttribute }
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func trackThickness(value: ?Length): SliderAttribute
@@ -109,7 +109,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     * @returns { SliderAttribute }
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(Float64, SliderChangeMode) -> Unit): SliderAttribute
@@ -121,7 +121,7 @@ sealed interface SliderAttribute <: CommonMethod<SliderAttribute> {
     * @returns { SliderAttribute }
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func blockBorderColor(value: ?ResourceColor): SliderAttribute

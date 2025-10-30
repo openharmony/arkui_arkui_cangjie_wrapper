@@ -34,7 +34,7 @@ foreign {
  * Defines Line Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
@@ -45,7 +45,7 @@ public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
      * @param { ?Length } height - Height of the rectangle where the line resides.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {
@@ -68,7 +68,7 @@ public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func startPoint(value: ?(Float64, Float64)): This {
@@ -86,7 +86,7 @@ public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func endPoint(value: ?(Float64, Float64)): This {

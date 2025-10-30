@@ -24,7 +24,7 @@ import ohos.labels.APILevel
  * Defines class ReuseParams.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ReuseParams {
@@ -36,7 +36,7 @@ public class ReuseParams {
      * @param { Array<(String, Any)> } arr - The params array
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(arr: Array<(String, Any)>) {
@@ -58,7 +58,7 @@ public class ReuseParams {
      * @returns { ?T } - The value associated with the key, or null if not found
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get<T>(key: String): ?T {

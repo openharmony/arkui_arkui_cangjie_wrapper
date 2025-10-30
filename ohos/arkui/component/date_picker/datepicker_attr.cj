@@ -24,7 +24,7 @@ import std.time.{DateTime}
  * Defines DatePicker attributes.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
@@ -36,7 +36,7 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
      * @returns { DatePickerAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lunar(value: ?Bool): DatePickerAttribute
@@ -48,7 +48,7 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
      * @returns { DatePickerAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDateChange(callback: ?Callback<DateTime, Unit>): DatePickerAttribute
@@ -60,7 +60,7 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
      * @returns { DatePickerAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func disappearTextStyle(value: ?PickerTextStyle): DatePickerAttribute
@@ -73,7 +73,7 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
      * @returns { DatePickerAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textStyle(value: ?PickerTextStyle): DatePickerAttribute
@@ -85,7 +85,7 @@ sealed interface DatePickerAttribute <: CommonMethod<DatePickerAttribute> {
      * @returns { DatePickerAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedTextStyle(value: ?PickerTextStyle): DatePickerAttribute

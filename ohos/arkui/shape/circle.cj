@@ -27,7 +27,7 @@ foreign func FfiOHOSAceFrameworkCircleInsCreate(width: Float64, widthUnit: Int32
  * A shape component that renders a circular graphic element.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class CircleShape <: BaseShape {
@@ -39,7 +39,7 @@ public class CircleShape <: BaseShape {
      * @returns { CircleShape } Returns the CircleShape instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {

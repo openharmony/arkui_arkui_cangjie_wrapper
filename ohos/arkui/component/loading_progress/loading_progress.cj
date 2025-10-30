@@ -38,7 +38,7 @@ foreign {
  * A component that displays an indeterminate loading progress indicator, typically used to show that an operation is in progress.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & LoadingProgressAttribute {
@@ -46,7 +46,7 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & Loading
      * Initializes a LoadingProgress component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -61,7 +61,7 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & Loading
      * @returns { This } Returns the LoadingProgress instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {

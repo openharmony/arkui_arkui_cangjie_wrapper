@@ -77,7 +77,7 @@ foreign {
  * Contains information about the video that has been prepared for playback.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PreparedInfo {
@@ -86,7 +86,7 @@ public class PreparedInfo {
      * Represents the total length of the video in seconds.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var duration: ?Int32
@@ -100,7 +100,7 @@ public class PreparedInfo {
  * Contains information about the current playback state of the video.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PlaybackInfo {
@@ -109,7 +109,7 @@ public class PlaybackInfo {
      * Represents the current playback position in seconds.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var time: ?Int32
@@ -124,7 +124,7 @@ public class PlaybackInfo {
  * Contains information about the fullscreen state of the video.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class FullscreenInfo {
@@ -133,7 +133,7 @@ public class FullscreenInfo {
      * True if the video is currently in fullscreen mode, false otherwise.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fullscreen: ?Bool
@@ -147,7 +147,7 @@ public class FullscreenInfo {
  * Provides methods to control video playback such as play, pause, stop, seek, and fullscreen operations.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class VideoController <: RemoteDataLite {
@@ -155,7 +155,7 @@ public class VideoController <: RemoteDataLite {
      * Creates a new instance of VideoController.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -171,7 +171,7 @@ public class VideoController <: RemoteDataLite {
      * Starts or resumes video playback.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func start(): Unit {
@@ -183,7 +183,7 @@ public class VideoController <: RemoteDataLite {
      * Pauses the current video playback.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func pause(): Unit {
@@ -195,7 +195,7 @@ public class VideoController <: RemoteDataLite {
      * Stops the video playback and resets the playback position to the beginning.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stop(): Unit {
@@ -210,7 +210,7 @@ public class VideoController <: RemoteDataLite {
      * @param { ?SeekMode } seekMode - The seek mode.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setCurrentTime(value: Int32, seekMode: ?SeekMode): Unit {
@@ -227,7 +227,7 @@ public class VideoController <: RemoteDataLite {
      * @param { ?Bool } value - Whether to play in full screen. The default value is true.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func requestFullscreen(value: ?Bool): Unit {
@@ -241,7 +241,7 @@ public class VideoController <: RemoteDataLite {
      * Exits fullscreen mode and returns to normal playback mode.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func exitFullscreen(): Unit {
@@ -255,7 +255,7 @@ public class VideoController <: RemoteDataLite {
  * A component for playing video content with various playback controls and options.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Video <: CommonMethodComponent<Video> & VideoAttribute {
@@ -268,7 +268,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @param { ?VideoController } controller - The video controller for managing playback.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -297,7 +297,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func muted(value: ?Bool): This {
@@ -314,7 +314,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func autoPlay(value: ?Bool): This {
@@ -331,7 +331,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func controls(value: ?Bool): This {
@@ -348,7 +348,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func objectFit(value: ?ImageFit): This {
@@ -366,7 +366,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func loop(value: ?Bool): This {
@@ -383,7 +383,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStart(event: ?VoidCallback): This {
@@ -405,7 +405,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPause(event: ?VoidCallback): This {
@@ -427,7 +427,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onFinish(event: ?VoidCallback): This {
@@ -449,7 +449,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This} Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onError(event: ?VoidCallback): This {
@@ -471,7 +471,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This} Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPrepared(callback: ?Callback<PreparedInfo, Unit>): This {
@@ -493,7 +493,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This} Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSeeking(callback: ?Callback<PlaybackInfo, Unit>): This {
@@ -515,7 +515,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSeeked(callback: ?Callback<PlaybackInfo, Unit>): This {
@@ -537,7 +537,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onUpdate(callback: ?Callback<PlaybackInfo, Unit>): This {
@@ -559,7 +559,7 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
      * @returns { This } Returns the Video component instance for chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onFullscreenChange(callback: ?Callback<FullscreenInfo, Unit>): This {

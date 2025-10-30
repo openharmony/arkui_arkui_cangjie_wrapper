@@ -23,7 +23,7 @@ import ohos.base.{Length}
  * Defines the TextPicker attribute functions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
@@ -37,7 +37,7 @@ sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
      * @returns { TextPickerAttribute } Returns the text picker attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func defaultPickerItemHeight(value: ?Length): TextPickerAttribute
@@ -50,7 +50,7 @@ sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
      * @returns { TextPickerAttribute } Returns the text picker attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func canLoop(value: ?Bool): TextPickerAttribute
@@ -65,7 +65,7 @@ sealed interface TextPickerAttribute <: CommonMethod<TextPickerAttribute> {
      * @returns { TextPickerAttribute } Returns the text picker attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?OnTextPickerChangeCallback): TextPickerAttribute

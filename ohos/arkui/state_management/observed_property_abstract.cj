@@ -24,7 +24,7 @@ import std.collection.{ArrayList}
  * Defines class ObservedPropertyAbstract.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide
@@ -38,7 +38,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
      * @param { String } info - Information about the property.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -57,7 +57,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -70,7 +70,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -96,7 +96,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide

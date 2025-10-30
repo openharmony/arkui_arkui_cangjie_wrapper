@@ -26,7 +26,7 @@ import ohos.multimedia.image.PixelMap
  * providing common properties that all events share.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed abstract class BaseEvent {
@@ -35,7 +35,7 @@ sealed abstract class BaseEvent {
      * Contains information about the target element's position and dimensions.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var target: ?EventTarget
@@ -45,7 +45,7 @@ sealed abstract class BaseEvent {
      * Represents the time when the event occurred in milliseconds since Unix epoch.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timestamp: Int64
@@ -55,7 +55,7 @@ sealed abstract class BaseEvent {
      * Indicates the type of device that generated the event (e.g. mouse, touch screen).
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var source: ?SourceType
@@ -65,7 +65,7 @@ sealed abstract class BaseEvent {
      * Useful for identifying which specific device generated the event in multi-device scenarios.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var deviceId: ?Int64
@@ -92,7 +92,7 @@ sealed abstract class BaseEvent {
  * Represents detailed information about a single touch point in a touch event.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TouchObject {
@@ -101,7 +101,7 @@ public class TouchObject {
      * Indicates what type of touch action occurred (e.g., Down, Up, Move, Cancel).
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var touchType: TouchType
@@ -111,7 +111,7 @@ public class TouchObject {
      * Used to track individual fingers in multi-touch scenarios.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var id: Int32
@@ -121,7 +121,7 @@ public class TouchObject {
      * Position of the touch point in screen coordinates.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenX: Float64
@@ -131,7 +131,7 @@ public class TouchObject {
      * Position of the touch point in screen coordinates.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenY: Float64
@@ -141,7 +141,7 @@ public class TouchObject {
      * Position of the touch point relative to the component that received the event.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float64
@@ -151,7 +151,7 @@ public class TouchObject {
      * Position of the touch point relative to the component that received the event.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float64
@@ -167,7 +167,7 @@ public class TouchObject {
      * @param { Float64 } y - Y coordinate relative to the component
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(touchType: TouchType, id: Int32, screenX: Float64, screenY: Float64, x: Float64, y: Float64) {
@@ -185,7 +185,7 @@ public class TouchObject {
  * Represents a click/tap event with detailed position information.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ClickEvent <: BaseEvent {
@@ -194,7 +194,7 @@ public class ClickEvent <: BaseEvent {
      * Position within the clicked component's coordinate system.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float64
@@ -203,7 +203,7 @@ public class ClickEvent <: BaseEvent {
      * Position within the clicked component's coordinate system.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float64
@@ -213,7 +213,7 @@ public class ClickEvent <: BaseEvent {
      * Position within the application window's coordinate system.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var windowX: Float64
@@ -222,7 +222,7 @@ public class ClickEvent <: BaseEvent {
      * Position within the application window's coordinate system.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var windowY: Float64
@@ -231,7 +231,7 @@ public class ClickEvent <: BaseEvent {
      * Position within the device screen's coordinate system.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var displayX: Float64
@@ -240,7 +240,7 @@ public class ClickEvent <: BaseEvent {
      * Position within the device screen's coordinate system.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var displayY: Float64
@@ -261,7 +261,7 @@ public class ClickEvent <: BaseEvent {
  * Contains information about a drag operation.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DragInfo {
@@ -269,7 +269,7 @@ public class DragInfo {
      * Can contain custom data associated with the drag operation.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var extraParams: ?String
@@ -277,7 +277,7 @@ public class DragInfo {
      * Current position of the drag operation.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var touchPoint: ?Position
@@ -292,7 +292,7 @@ public class DragInfo {
  * Contains information about the visual representation of a dragged item.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class DragItemInfo {
@@ -300,7 +300,7 @@ public class DragItemInfo {
      * Visual representation of the dragged item as a PixelMap.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var pixelMap: ?PixelMap
@@ -310,7 +310,7 @@ public class DragItemInfo {
      * Custom visual representation of the dragged item.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var builder: ?CustomBuilder
@@ -319,7 +319,7 @@ public class DragItemInfo {
      * Additional custom data associated with the drag operation.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var extraInfo: ?String
@@ -332,7 +332,7 @@ public class DragItemInfo {
      * @param { ?String } extraInfo - Additional information about the drag
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(pixelMap: ?PixelMap, builder: ?CustomBuilder, extraInfo: ?String) {
@@ -347,7 +347,7 @@ public class DragItemInfo {
  * Represents a mouse event with detailed position and button information.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MouseEvent <: BaseEvent {
@@ -356,7 +356,7 @@ public class MouseEvent <: BaseEvent {
      * Position within the application window's coordinate system.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenX: Float64
@@ -366,7 +366,7 @@ public class MouseEvent <: BaseEvent {
      * Position within the application window's coordinate system.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var screenY: Float64
@@ -376,7 +376,7 @@ public class MouseEvent <: BaseEvent {
      * Position within the clicked component's coordinate system.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: Float64
@@ -386,7 +386,7 @@ public class MouseEvent <: BaseEvent {
      * Position within the clicked component's coordinate system.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: Float64
@@ -395,7 +395,7 @@ public class MouseEvent <: BaseEvent {
      * Indicates which mouse button was pressed (e.g., Left, Right, Middle).
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var button: MouseButton
@@ -404,7 +404,7 @@ public class MouseEvent <: BaseEvent {
      * Indicates the type of mouse action that occurred (e.g., Press, Release, Move, Hover).
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var action: MouseAction
@@ -421,7 +421,7 @@ public class MouseEvent <: BaseEvent {
      * @param { MouseAction } action
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(timestamp: Int64, screenX: Float64, screenY: Float64, x: Float64, y: Float64, button: MouseButton,
@@ -440,7 +440,7 @@ public class MouseEvent <: BaseEvent {
  * Represents a touch event containing information about all touch points.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TouchEvent <: BaseEvent {
@@ -450,7 +450,7 @@ public class TouchEvent <: BaseEvent {
      * Indicates the primary type of touch action for this event.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var eventType: TouchType
@@ -459,7 +459,7 @@ public class TouchEvent <: BaseEvent {
      * Array containing information about all active touch points.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var touches: Array<TouchObject>
@@ -468,7 +468,7 @@ public class TouchEvent <: BaseEvent {
      * Array containing information about touch points that changed in this event.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var changedTouches: Array<TouchObject>
@@ -486,7 +486,7 @@ public class TouchEvent <: BaseEvent {
      * Prevents the event from propagating to parent or child components.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stopPropagation(): Unit {
@@ -498,7 +498,7 @@ public class TouchEvent <: BaseEvent {
  * Represents a keyboard event with detailed information about the key press.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class KeyEvent {
@@ -508,7 +508,7 @@ public class KeyEvent {
      * The string representation of the key that was pressed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keyText: String
@@ -517,7 +517,7 @@ public class KeyEvent {
      * Indicates whether the key was pressed down or released.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keyType: KeyType
@@ -526,7 +526,7 @@ public class KeyEvent {
      * The numeric code representing the physical key that was pressed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keyCode: Int32
@@ -536,7 +536,7 @@ public class KeyEvent {
      * Indicates the source device of the key event.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var keySource: KeySource
@@ -547,7 +547,7 @@ public class KeyEvent {
      * Used for modifier keys like Ctrl, Shift, Alt.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var metaKey: Int32
@@ -557,7 +557,7 @@ public class KeyEvent {
      * Time when the key event occurred in milliseconds since Unix epoch.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var timestamp: Int64
@@ -567,7 +567,7 @@ public class KeyEvent {
      * Useful for identifying which specific keyboard generated the event in multi-device scenarios.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var deviceId: Int64
@@ -584,7 +584,7 @@ public class KeyEvent {
      * @param { Int64 } timestamp
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(keyText: String, keyType: KeyType, keyCode: Int32, keySource: KeySource, metaKey: Int32,
@@ -603,7 +603,7 @@ public class KeyEvent {
      * Prevents the event from propagating to parent or child components.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stopPropagation(): Unit {

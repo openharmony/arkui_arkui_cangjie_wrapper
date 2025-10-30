@@ -25,7 +25,7 @@ import ohos.multimedia.image.PixelMap
  * Defines the Image attribute functions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
@@ -40,7 +40,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @returns { ImageAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alt(src: ?ResourceStr): ImageAttribute
@@ -52,7 +52,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @returns { ImageAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func objectFit(value: ?ImageFit): ImageAttribute
@@ -69,7 +69,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @returns { ImageAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func objectRepeat(value: ?ImageRepeat): ImageAttribute
@@ -86,7 +86,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @returns { ImageAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func interpolation(value: ?ImageInterpolation): ImageAttribute
@@ -104,7 +104,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @returns { ImageAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func renderMode(value: ?ImageRenderMode): ImageAttribute
@@ -124,7 +124,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @returns { ImageAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sourceSize(width: ?Length, height: ?Length): ImageAttribute
@@ -140,7 +140,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @returns { ImageAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func syncLoad(value: ?Bool): ImageAttribute
@@ -159,7 +159,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @returns { ImageAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fillColor(value: ?ResourceColor): ImageAttribute
@@ -177,7 +177,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @returns { ImageAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func autoResize(value: ?Bool): ImageAttribute
@@ -193,7 +193,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @returns { ImageAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func matchTextDirection(value: ?Bool): ImageAttribute
@@ -209,7 +209,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @returns { ImageAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fitOriginalSize(value: ?Bool): ImageAttribute
@@ -227,7 +227,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onComplete(callback: ?ImageCompleteCallback): ImageAttribute
@@ -245,7 +245,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @throws { BusinessException } 190002 - The callback function is invalid.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onError(callback: ?ImageErrorCallback): ImageAttribute
@@ -263,7 +263,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * @returns { ImageAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onFinish(event: ?() -> Unit): ImageAttribute

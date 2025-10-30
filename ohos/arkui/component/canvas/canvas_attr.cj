@@ -22,7 +22,7 @@ import ohos.labels.APILevel
  * Defines the Canva attribute functions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface CanvasAttribute <: CommonMethod<CanvasAttribute> {
@@ -33,7 +33,7 @@ sealed interface CanvasAttribute <: CommonMethod<CanvasAttribute> {
      * @returns { CanvasAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onReady(callback: ?() -> Unit): CanvasAttribute

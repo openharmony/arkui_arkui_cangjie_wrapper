@@ -44,7 +44,7 @@ struct NativeOffsetResult {
  * Represents the scroll values resulting from a scroll operation.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScrollResult {
@@ -52,7 +52,7 @@ public class ScrollResult {
      * The offset remain of scroll.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var offsetRemain: Float64
@@ -64,7 +64,7 @@ public class ScrollResult {
      * @returns { ScrollResult }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(offsetRemain!: Float64) {
@@ -76,7 +76,7 @@ public class ScrollResult {
  * Represents the offset values resulting from a scroll operation.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class OffsetResult {
@@ -85,7 +85,7 @@ public class OffsetResult {
      * Horizontal scrolling offset.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var xOffset: Float64
@@ -94,7 +94,7 @@ public class OffsetResult {
      * Vertical scrolling offset.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var yOffset: Float64
@@ -107,7 +107,7 @@ public class OffsetResult {
      * @returns { OffsetResult }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(xOffset: Float64, yOffset: Float64) {
@@ -165,7 +165,7 @@ class CallbackOffset <: BaseCallBack {
  * Represents the rect values resulting from a scroll operation.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RectResult {
@@ -173,7 +173,7 @@ public class RectResult {
      * Representing the x in the rect values.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var x: ?Float64
@@ -182,7 +182,7 @@ public class RectResult {
      * Representing the y in the rect values.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var y: ?Float64
@@ -191,7 +191,7 @@ public class RectResult {
      * Representing the width in the rect values
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: ?Float64
@@ -200,7 +200,7 @@ public class RectResult {
      * Representing the height in the rect values
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: ?Float64
@@ -221,7 +221,7 @@ public class RectResult {
      * @returns { RectResult }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -241,7 +241,7 @@ public class RectResult {
  * Provides parameters for customizing scroll animations.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScrollAnimationOptions {
@@ -251,7 +251,7 @@ public class ScrollAnimationOptions {
      * @default 1000.0
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var duration: ?Float64
@@ -262,7 +262,7 @@ public class ScrollAnimationOptions {
      * @default Curve.Ease
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var curve: ?Curve
@@ -278,7 +278,7 @@ public class ScrollAnimationOptions {
      * @default false
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var canOverScroll: ?Bool
@@ -292,7 +292,7 @@ public class ScrollAnimationOptions {
      * @returns { ScrollAnimationOptions }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -311,7 +311,7 @@ public class ScrollAnimationOptions {
  */
 @Derive[Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ScrollAlign {
@@ -319,7 +319,7 @@ public enum ScrollAlign {
      * The start edge of the list item is flush with the start edge of the list.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Start
@@ -328,7 +328,7 @@ public enum ScrollAlign {
      * The list item is centered along the main axis of the list.
      */
     | @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Center
@@ -337,7 +337,7 @@ public enum ScrollAlign {
      * The end edge of the list item is flush with the end edge of the list.
      */
     | @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
@@ -346,7 +346,7 @@ public enum ScrollAlign {
      * The list item is automatically aligned.
      */
     | @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -367,7 +367,7 @@ public enum ScrollAlign {
  * Provides parameters for customizing scroll nested.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class NestedScrollOptions {
@@ -375,7 +375,7 @@ public class NestedScrollOptions {
     * Representing the forward in the customizing scroll nested.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var scrollForward: ?NestedScrollMode
@@ -384,7 +384,7 @@ public class NestedScrollOptions {
     * Representing the backward in the customizing scroll nested.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var scrollBackward: ?NestedScrollMode
@@ -396,7 +396,7 @@ public class NestedScrollOptions {
      * @param { ?NestedScrollMode } scrollBackward
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(scrollForward: ?NestedScrollMode, scrollBackward: ?NestedScrollMode) {
@@ -409,7 +409,7 @@ public class NestedScrollOptions {
  * Provides a parameter for customizing fading edge.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class FadingEdgeOptions {
@@ -419,7 +419,7 @@ public class FadingEdgeOptions {
      * @default 32.vp
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var fadingEdgeLength: ?Length
@@ -432,7 +432,7 @@ public class FadingEdgeOptions {
      * @returns { FadingEdgeOptions }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(fadingEdgeLength!: ?Length = None) {
@@ -445,7 +445,7 @@ public class FadingEdgeOptions {
  */
 @Derive[Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ContentClipMode {
@@ -453,7 +453,7 @@ public enum ContentClipMode {
      * The only content mode of content clip modes.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ContentOnly
@@ -462,7 +462,7 @@ public enum ContentClipMode {
      * The boundary mode of content clip modes.
      */
     | @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Boundary
@@ -471,7 +471,7 @@ public enum ContentClipMode {
      * The safe area mode of content clip modes.
      */
     | @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SafeArea
@@ -544,7 +544,7 @@ public type OnScrollEdgeCallback = (Edge) -> Unit
  * Provides parameters for scrolling to the edge of a scrollable container.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScrollEdgeOptions {
@@ -555,7 +555,7 @@ public class ScrollEdgeOptions {
      * @default 0
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var velocity: ?Float32
@@ -568,7 +568,7 @@ public class ScrollEdgeOptions {
      * @returns { ScrollEdgeOptions }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(velocity!: ?Float32 = None) {
@@ -580,7 +580,7 @@ public class ScrollEdgeOptions {
  * Provides parameters for scrolling to a specific index.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ScrollToIndexOptions {
@@ -588,7 +588,7 @@ public class ScrollToIndexOptions {
      * Extra offset for scrolling to a specified index.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var extraOffset: ?Length
@@ -600,7 +600,7 @@ public class ScrollToIndexOptions {
      * @returns { ScrollToIndexOptions }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(extraOffset!: ?Length = None) {
@@ -714,7 +714,7 @@ foreign {
  * A component that provides a scrollable container for its child components.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute {
@@ -724,7 +724,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * @returns { Scroll }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -740,7 +740,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * @returns { Scroll }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -758,7 +758,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * @returns { Scroll }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(scroller: ?Scroller, child: () -> Unit) {
@@ -808,7 +808,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollable(scrollDirection: ?ScrollDirection): This {
@@ -878,7 +878,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onWillScroll(handler: ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult): This {
@@ -913,7 +913,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onWillScroll(handler: ?(Float64, Float64, ScrollState, ScrollSource) -> Unit): This {
@@ -936,7 +936,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDidScroll(callback: ?ScrollOnScrollCallback): This {
@@ -974,7 +974,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onScrollFrameBegin(event: ?OnScrollFrameBeginCallback): This {
@@ -1004,7 +1004,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onScrollEdge(event: ?OnScrollEdgeCallback): This {
@@ -1041,7 +1041,7 @@ class ScrollerHandler <: RemoteDataLite {
  */
 
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Scroller {
@@ -1051,7 +1051,7 @@ public class Scroller {
      * A constructor used to create a Scroller object.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -1072,7 +1072,7 @@ public class Scroller {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollTo(xOffset!: Length, yOffset!: Length): Unit {
@@ -1093,7 +1093,7 @@ public class Scroller {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollTo(xOffset!: Length, yOffset!: Length, animation!: ?ScrollAnimationOptions): Unit {
@@ -1118,7 +1118,7 @@ public class Scroller {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollTo(xOffset!: Length, yOffset!: Length, animation!: ?Bool): Unit {
@@ -1139,7 +1139,7 @@ public class Scroller {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollBy(xOffset!: Length, yOffset!: Length): Unit {
@@ -1158,7 +1158,7 @@ public class Scroller {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollEdge(value: Edge): Unit {
@@ -1175,7 +1175,7 @@ public class Scroller {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollEdge(value: Edge, options: ?ScrollEdgeOptions): Unit {
@@ -1192,7 +1192,7 @@ public class Scroller {
      * A positive value indicates scrolling towards the top, while a negative value indicates scrolling towards the bottom.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fling(velocity: Float64): Unit {
@@ -1209,7 +1209,7 @@ public class Scroller {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollPage(next: Bool, animation!: ?Bool = None): Unit {
@@ -1224,7 +1224,7 @@ public class Scroller {
      * @returns { Option<OffsetResult> }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func currentOffset(): Option<OffsetResult> {
@@ -1244,7 +1244,7 @@ public class Scroller {
      * @returns { This }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollToIndex(
@@ -1273,7 +1273,7 @@ public class Scroller {
      * @returns { Bool } - Returns whether the component scrolls to the end position.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func isAtEnd(): Bool {
@@ -1296,7 +1296,7 @@ public class Scroller {
      * @returns { RectResult } Returns the size and position.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getItemRect(index: ?Int32): RectResult {
@@ -1317,7 +1317,7 @@ public class Scroller {
      * @returns { Int32 } Index of the item.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func getItemIndex(x: Float64, y: Float64): Int32 {

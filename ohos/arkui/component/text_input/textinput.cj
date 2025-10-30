@@ -44,7 +44,7 @@ foreign {
  * Provides the method of switching the cursor position.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextInputController <: RemoteDataLite {
@@ -52,7 +52,7 @@ public class TextInputController <: RemoteDataLite {
      * TextInputController constructor.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -73,7 +73,7 @@ public class TextInputController <: RemoteDataLite {
      * @param { ?Int32 } value
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretPosition(value: ?Int32): Unit {
@@ -93,7 +93,7 @@ public class TextInputController <: RemoteDataLite {
      * @param { ?MenuPolicy } options - Indicates the options of the text selection.Default value is MenuPolicy.DEFAULT.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setTextSelection(selectionStart: ?Int32, selectionEnd: ?Int32, options!: ?MenuPolicy = None): Unit {
@@ -108,7 +108,7 @@ public class TextInputController <: RemoteDataLite {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func stopEditing(): Unit {
@@ -123,7 +123,7 @@ public class TextInputController <: RemoteDataLite {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute {
@@ -135,7 +135,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @param { ?TextInputController } controller - Called when the position of the insertion cursor is set.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(placeholder!: ?ResourceStr = None, text!: ?ResourceStr = None, controller!: ?TextInputController = None) {
@@ -248,7 +248,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enterKeyType(value: ?EnterKeyType): This {
@@ -271,7 +271,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textAlign(value: ?TextAlign): This {
@@ -286,7 +286,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderColor(value: ?ResourceColor): This {
@@ -302,7 +302,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func caretColor(value: ?ResourceColor): This {
@@ -320,7 +320,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderFont(size!: ?Length, weight!: ?FontWeight = None, family!: ?String = None,
@@ -336,7 +336,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxLength(value: ?UInt32): This {
@@ -356,7 +356,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
@@ -373,7 +373,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
@@ -389,7 +389,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
@@ -405,7 +405,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontStyle(value: ?FontStyle): This {
@@ -423,7 +423,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontFamily(value: ?ResourceStr): This {
@@ -439,7 +439,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func inputFilter(value: ?ResourceStr, error!: ?(String) -> Unit = None): This {
@@ -459,7 +459,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSubmit(callback: ?(EnterKeyType) -> Unit): This {
@@ -475,7 +475,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCopy(callback: ?(String) -> Unit): This {
@@ -491,7 +491,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onCut(callback: ?(String) -> Unit): This {
@@ -507,7 +507,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(String) -> Unit): This {
@@ -523,7 +523,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onPaste(callback: ?(String) -> Unit): This {
@@ -539,7 +539,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onEditChange(callback: ?(Bool) -> Unit): This {
@@ -556,7 +556,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func customKeyboard(value: ?CustomBuilder, supportAvoidance!: ?Bool = None): This {
@@ -572,7 +572,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func style(value: ?TextInputStyle): This {
@@ -589,7 +589,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableKeyboardOnFocus(value: ?Bool): This {
@@ -605,7 +605,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectionMenuHidden(value: ?Bool): This {
@@ -621,7 +621,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func showUnderline(value: ?Bool): This {
@@ -637,7 +637,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxLines(value: ?Int32): This {

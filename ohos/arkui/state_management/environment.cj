@@ -42,7 +42,7 @@ foreign {
  */
 @Derive[Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum ColorMode {
@@ -50,7 +50,7 @@ public enum ColorMode {
      * Represents the light color theme of the device.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Light
@@ -59,7 +59,7 @@ public enum ColorMode {
      * Represents the dark color theme of the device.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Dark
@@ -88,7 +88,7 @@ public enum ColorMode {
  */
 @Derive[Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public enum LayoutDirection {
@@ -96,7 +96,7 @@ public enum LayoutDirection {
      * Represents left-to-right layout direction.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Ltr
@@ -105,7 +105,7 @@ public enum LayoutDirection {
      * Represents right-to-left layout direction.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Rtl
@@ -114,7 +114,7 @@ public enum LayoutDirection {
      * Represents automatic layout direction based on locale.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
@@ -134,7 +134,7 @@ public enum LayoutDirection {
  * Provides access to device environment properties and allows binding them to AppStorage.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Environment {
@@ -165,7 +165,7 @@ public class Environment {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -185,7 +185,7 @@ public class Environment {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func keys(): Array<String> {
@@ -204,7 +204,7 @@ public class Environment {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func envProp<T>(key: String, defaultValue: T): Bool {

@@ -38,7 +38,7 @@ foreign {
  * Defines Counter Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
@@ -49,7 +49,7 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
      * @param { () -> Unit } content - The content to display in the counter.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(content: () -> Unit) {
@@ -67,7 +67,7 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableInc(value: ?Bool): This {
@@ -85,7 +85,7 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func enableDec(value: ?Bool): This {
@@ -102,7 +102,7 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onInc(event: ?VoidCallback): This {
@@ -120,7 +120,7 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDec(event: ?VoidCallback): This {

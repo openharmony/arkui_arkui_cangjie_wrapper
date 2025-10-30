@@ -74,7 +74,7 @@ public type OnCheckboxChangeCallback = (Bool) -> Unit
  * Defines Checkbox Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
@@ -87,7 +87,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * @param { ?CustomBuilder } indicatorBuilder - The builder of current checkbox.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(name!: ?String = None, group!: ?String = None, indicatorBuilder!: ?CustomBuilder = None) {
@@ -111,7 +111,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func select(value: ?Bool): This {
@@ -129,7 +129,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
@@ -217,7 +217,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?OnCheckboxChangeCallback): This {
@@ -236,7 +236,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func shape(value: ?CheckBoxShape): This {

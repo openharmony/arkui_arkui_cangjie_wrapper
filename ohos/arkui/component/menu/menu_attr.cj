@@ -24,7 +24,7 @@ import ohos.base.{Length, ResourceStr, ResourceColor}
  * Provides methods for configuring the appearance and behavior of the Menu component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
@@ -39,7 +39,7 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
      * @returns { MenuAttribute } Returns the menu attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func font(
@@ -56,7 +56,7 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
      * @returns { MenuAttribute } Returns the menu attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func fontColor(value: ?ResourceColor): MenuAttribute
@@ -70,7 +70,7 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
      * @returns { MenuAttribute } Returns the menu attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radius(value: ?Length): MenuAttribute
@@ -84,7 +84,7 @@ sealed interface MenuAttribute <: CommonMethod<MenuAttribute> {
      * @returns { MenuAttribute } Returns the menu attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radius(value: ?BorderRadiuses): MenuAttribute

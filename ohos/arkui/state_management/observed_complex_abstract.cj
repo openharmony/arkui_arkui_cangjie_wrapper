@@ -24,7 +24,7 @@ import ohos.labels.APILevel
  * Defines class ObservedComplexAbstract.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide
@@ -44,7 +44,7 @@ public abstract class ObservedComplexAbstract <: Observable {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -88,7 +88,7 @@ public abstract class ObservedComplexAbstract <: Observable {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide

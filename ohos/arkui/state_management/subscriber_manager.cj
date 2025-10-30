@@ -25,7 +25,7 @@ import ohos.labels.APILevel
  * Defines class SubscriberManager.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide
@@ -41,7 +41,7 @@ public class SubscriberManager {
      * @returns { SubscriberManager } The singleton instance of SubscriberManager.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -62,7 +62,7 @@ public class SubscriberManager {
      * @returns { Bool } True if a subscriber with the given ID exists, false otherwise.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -77,7 +77,7 @@ public class SubscriberManager {
      * @returns { Option<Observer> } The subscriber with the given ID, or None if not found.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -92,7 +92,7 @@ public class SubscriberManager {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -107,7 +107,7 @@ public class SubscriberManager {
      * @returns { Bool } True if the subscriber was added successfully, false if a subscriber with the same ID already exists.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide

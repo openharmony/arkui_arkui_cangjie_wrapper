@@ -33,7 +33,7 @@ foreign {
  * Defines MenuItemGroup Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGroupAttribute {
@@ -46,7 +46,7 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGro
      * @param { () -> Unit } child - The child component of menu item group.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(header!: ?ResourceStr = None, footer!: ?ResourceStr = None, child!: () -> Unit = {=>}) {
@@ -67,7 +67,7 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGro
      * @param { () -> Unit } child - The child component of menu item group.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(header!: ?CustomBuilder, footer!: ?CustomBuilder, child!: () -> Unit = {=>}) {

@@ -23,7 +23,7 @@ import ohos.base.{ResourceColor}
  * Defines the CheckboxGroup attribute functions.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> {
@@ -34,7 +34,7 @@ sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> 
      * @returns { CheckboxGroupAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectAll(value: ?Bool): CheckboxGroupAttribute
@@ -46,7 +46,7 @@ sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> 
      * @returns { CheckboxGroupAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectedColor(value: ?ResourceColor): CheckboxGroupAttribute
@@ -58,7 +58,7 @@ sealed interface CheckboxGroupAttribute <: CommonMethod<CheckboxGroupAttribute> 
      * @returns { CheckboxGroupAttribute } - The attribute of the component.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?OnCheckboxGroupChangeCallback): CheckboxGroupAttribute

@@ -24,7 +24,7 @@ import ohos.base.{Length}
  * Provides methods for configuring the appearance and behavior of the Rect component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {	
@@ -37,7 +37,7 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
      * @returns { RectAttribute } Returns the rect attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radiusWidth(value: ?Length): RectAttribute
@@ -49,7 +49,7 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
      * @returns { RectAttribute } Returns the rect attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radiusHeight(value: ?Length): RectAttribute
@@ -61,7 +61,7 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
      * @returns { RectAttribute } Returns the rect attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radius(value: ?Length): RectAttribute
@@ -73,7 +73,7 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
      * @returns { RectAttribute } Returns the rect attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radius(value: ?Array<Length>): RectAttribute
@@ -86,7 +86,7 @@ sealed interface RectAttribute <: CommonShapeMethod<RectAttribute> {
      * @returns { RectAttribute } Returns the rect attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func radius(radiusArray: ?Array<(Length, Length)>): RectAttribute

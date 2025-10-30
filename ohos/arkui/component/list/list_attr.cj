@@ -25,7 +25,7 @@ import ohos.base.{Length, ResourceColor}
  * Defines List Component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
@@ -37,7 +37,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * @returns { ListAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func listDirection(value: ?Axis): ListAttribute
@@ -49,7 +49,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * @returns { ListAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func divider(value: Option<ListDividerOptions>): ListAttribute
@@ -61,7 +61,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * @returns { ListAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func edgeEffect(value: ?EdgeEffect): ListAttribute
@@ -74,7 +74,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * @returns { ListAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func chainAnimation(value: ?Bool): ListAttribute
@@ -86,7 +86,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * @returns { ListAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func cachedCount(value: ?Int32): ListAttribute
@@ -98,7 +98,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * @returns { ListAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func multiSelectable(value: ?Bool): ListAttribute
@@ -111,7 +111,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * @returns { ListAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func lanes(value: ?Int32): ListAttribute
@@ -125,7 +125,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * @returns { ListAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func lanes(minLength!: ?Length, maxLength!: ?Length): ListAttribute
@@ -138,7 +138,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * @returns { ListAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func alignListItem(value: ?ListItemAlign): ListAttribute
@@ -150,7 +150,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * @returns { ListAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func sticky(value: ?StickyStyle): ListAttribute
@@ -162,7 +162,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * @returns { ListAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onScrollIndex(event: ?(Int32, Int32, Int32) -> Unit): ListAttribute
@@ -174,7 +174,7 @@ sealed interface ListAttribute <: ScrollableCommonMethod<ListAttribute> {
      * @returns { ListAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onScrollFrameBegin(event: ?(Float64, ScrollState) -> OnScrollFrameBeginHandlerResult): ListAttribute

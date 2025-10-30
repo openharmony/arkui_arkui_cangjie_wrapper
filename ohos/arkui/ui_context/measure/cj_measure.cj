@@ -60,7 +60,7 @@ foreign {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MeasureOptions {
@@ -100,7 +100,7 @@ public class MeasureOptions {
      * @param { WordBreak } wordBreak
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
@@ -195,7 +195,7 @@ func parseCJMeasureContext(context: MeasureOptions): CJMeasureContextToC {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class SizeOptions {
@@ -204,7 +204,7 @@ public class SizeOptions {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var width: Length = 0
@@ -213,7 +213,7 @@ public class SizeOptions {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var height: Length = 0
@@ -224,7 +224,7 @@ public class SizeOptions {
      * @param { Length } height
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: Length = 0, height!: Length = 0) {
@@ -260,7 +260,7 @@ protected func measureTextSizeInner(options: MeasureOptions): SizeOptions {
  *
  */
  @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MeasureUtils {
@@ -275,7 +275,7 @@ public class MeasureUtils {
      * @returns { Float64 }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func measureText(options: MeasureOptions): Float64 {
@@ -288,7 +288,7 @@ public class MeasureUtils {
      * @returns { SizeOptions } width and height for text to display.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func measureTextSize(options: MeasureOptions): SizeOptions {

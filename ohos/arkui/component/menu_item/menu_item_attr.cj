@@ -24,7 +24,7 @@ import ohos.base.{Length, ResourceColor, ResourceStr}
  * Provides methods for configuring the appearance and behavior of the MenuItem component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
@@ -37,7 +37,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
      * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selected(value: ?Bool): MenuItemAttribute
@@ -50,7 +50,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
      * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectIcon(value: ?Bool): MenuItemAttribute
@@ -62,7 +62,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
      * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func selectIcon(value: ?ResourceStr): MenuItemAttribute
@@ -77,7 +77,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
      * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func contentFont(
@@ -94,7 +94,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
      * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func contentFontColor(value: ?ResourceColor): MenuItemAttribute
@@ -110,7 +110,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
      * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func labelFont(
@@ -127,7 +127,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
      * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func labelFontColor(value: ?ResourceColor): MenuItemAttribute
@@ -140,7 +140,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
      * @returns { MenuItemAttribute } Returns the menu item attribute.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onChange(callback: ?(Bool) -> Unit): MenuItemAttribute

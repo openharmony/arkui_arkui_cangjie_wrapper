@@ -34,7 +34,7 @@ foreign {
  * A layout container that arranges its child components horizontally with resizable dividers between them.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
@@ -44,7 +44,7 @@ public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     * @param { () -> Unit } child - The child component builder function.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child: () -> Unit) {
@@ -62,7 +62,7 @@ public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     * @returns { This } Returns the RowSplit instance.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func resizeable(value: ?Bool): This {

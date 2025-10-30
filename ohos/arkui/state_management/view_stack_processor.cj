@@ -36,7 +36,7 @@ foreign func FfiOHOSAceFrameworkImplicitPopBeforeContinue(): Unit
  * all definitions in this file are framework internal.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide
@@ -47,7 +47,7 @@ public class ViewStackProcessor {
      * @returns { Int64 } The new element ID.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -65,7 +65,7 @@ public class ViewStackProcessor {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -85,7 +85,7 @@ public class ViewStackProcessor {
      * @returns { Int64 } The element ID.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -102,7 +102,7 @@ public class ViewStackProcessor {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -121,7 +121,7 @@ public class ViewStackProcessor {
      * @returns { Unit }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide

@@ -32,7 +32,7 @@ import ohos.business_exception.BusinessException
  * Provides storage for component-local state management.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LocalStorage {
@@ -44,7 +44,7 @@ public class LocalStorage {
      * Property values must not be undefined.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init() {
@@ -61,7 +61,7 @@ public class LocalStorage {
      *         preventing cleanup.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -78,7 +78,7 @@ public class LocalStorage {
      * @returns { Bool } true if property with such name exists in LocalStorage.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func has(propName: String): Bool {
@@ -92,7 +92,7 @@ public class LocalStorage {
      * @returns { EquatableCollection<String> } Collection of property names.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func keys(): EquatableCollection<String> {
@@ -106,7 +106,7 @@ public class LocalStorage {
      * @returns { Int64 } return number of properties.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func size(): Int64 {
@@ -121,7 +121,7 @@ public class LocalStorage {
      * @returns { ?T } property value if found.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func get<T>(propName: String): ?T {
@@ -145,7 +145,7 @@ public class LocalStorage {
      * @returns { Bool } true on success.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func set<T>(propName: String, newValue: T): Bool {
@@ -171,7 +171,7 @@ public class LocalStorage {
      * @returns { boolean } true on success, i.e. when above conditions are satisfied, otherwise false.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setOrCreate<T>(propName: String, newValue: T): Bool {
@@ -197,7 +197,7 @@ public class LocalStorage {
      * @returns { ?ObservedProperty<T> } The instance of ObservedProperty<T>.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func link<T>(propName: String): ?ObservedProperty<T> {
@@ -221,7 +221,7 @@ public class LocalStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setAndLink<T>(propName: String, defaultValue: T): ObservedProperty<T> {
@@ -242,7 +242,7 @@ public class LocalStorage {
      * @returns { ?ObservedProperty<T> } The instance of ObservedProperty<T>.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func property<T>(propName: String): ?ObservedProperty<T> {
@@ -266,7 +266,7 @@ public class LocalStorage {
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setAndProp<T>(propName: String, defaultValue: T): ObservedProperty<T> {
@@ -298,7 +298,7 @@ public class LocalStorage {
      * @returns { Bool } false if method failed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func delete(propName: String): Bool {
@@ -324,7 +324,7 @@ public class LocalStorage {
      * @returns { Bool } false if method failed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func clear(): Bool {

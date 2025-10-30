@@ -158,7 +158,7 @@ class LazyForEachFuncs<T> <: BaseLazyForEachFuncs {
  * A component that implements lazy loading, rendering only the items currently visible on the screen.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class LazyForEach<T> <: UINodeBase {
@@ -174,7 +174,7 @@ public class LazyForEach<T> <: UINodeBase {
      * @returns { LazyForEach<T> }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(dataSource: IDataSource<T>, itemGenerator!: ItemGeneratorFunc<T>,
@@ -185,7 +185,7 @@ public class LazyForEach<T> <: UINodeBase {
      * A component that implements lazy loading, rendering only the items currently visible on the screen.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
@@ -196,7 +196,7 @@ public class LazyForEach<T> <: UINodeBase {
      * A component that implements lazy loading, rendering only the items currently visible on the screen.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide

@@ -84,7 +84,7 @@ foreign {
  * The Shape component is used to draw custom shapes using path drawing commands.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
@@ -95,7 +95,7 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     * @returns { This } - Returns the component instance itself for method chaining.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(child!: () -> Unit = { => }) {
@@ -111,7 +111,7 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     * @returns { This } - Returns the component instance itself for method chaining.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value!: ?PixelMap) {
@@ -133,7 +133,7 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     * @returns { This } - Returns the component instance itself for method chaining.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func viewPort(
@@ -171,7 +171,7 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
     * @returns { This } - Returns the component instance itself for method chaining.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func mesh(value: ?Array<Float64>, column: ?UInt32, row: ?UInt32): This {

@@ -23,7 +23,7 @@ import ohos.labels.APILevel
  * Provides methods for configuring the appearance and behavior of the Scroll component.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
@@ -34,7 +34,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
      * @returns { ScrollAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func scrollable(scrollDirection: ?ScrollDirection): ScrollAttribute
@@ -53,7 +53,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
      * @returns { ScrollAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onWillScroll(handler: ?(Float64, Float64, ScrollState, ScrollSource) -> OffsetResult): ScrollAttribute
@@ -72,7 +72,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
      * @returns { ScrollAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onWillScroll(handler: ?(Float64, Float64, ScrollState, ScrollSource) -> Unit): ScrollAttribute
@@ -87,7 +87,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
      * @returns { ScrollAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onDidScroll(callback: ?ScrollOnScrollCallback): ScrollAttribute
@@ -99,7 +99,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
      * @returns { ScrollAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onScrollFrameBegin(event: ?OnScrollFrameBeginCallback): ScrollAttribute
@@ -119,7 +119,7 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
      * @returns { ScrollAttribute }
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func onScrollEdge(event: ?OnScrollEdgeCallback): ScrollAttribute

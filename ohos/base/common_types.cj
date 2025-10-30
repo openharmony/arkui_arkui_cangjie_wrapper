@@ -163,7 +163,7 @@ protected struct NativeOptionCArrInt32 {
  * @returns { Bool } - True if the system capability is available, false otherwise
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public func canIUse(syscap: String): Bool {

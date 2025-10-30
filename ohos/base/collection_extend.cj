@@ -24,7 +24,7 @@ import ohos.labels.APILevel
  * Defines interface CollectionEx.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public interface CollectionEx<T> {
@@ -32,7 +32,7 @@ public interface CollectionEx<T> {
      * The size of the collection.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop size: Int64
@@ -44,7 +44,7 @@ public interface CollectionEx<T> {
      * @param { T } value - The new element
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     operator func [](idx: Int64, value!: T): Unit
@@ -56,7 +56,7 @@ public interface CollectionEx<T> {
      * @returns { T } - The element at the specified index
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     operator func [](idx: Int64): T
