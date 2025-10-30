@@ -15,10 +15,9 @@
 
 package ohos.arkui.component.grid
 
-import ohos.arkui.component.common.*
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.arkui.component.scroll.*
+import ohos.base.{Length}
+import ohos.arkui.component.scroll.{ScrollableCommonMethod}
 
 /**
  * Defines Grid attributes.

@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
+import std.ast.{Tokens, VarDecl, Token, parseDecl}
 
 public macro Publish(input: Tokens): Tokens {
     checkStateKindAndInit(input, StateKind.PublishTy)

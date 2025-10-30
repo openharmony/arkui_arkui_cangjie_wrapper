@@ -17,12 +17,12 @@
 
 package ohos.arkui.component.text_input
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.text_field.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, MenuPolicy, BorderStyle, EdgeWidths, EnterKeyType, TextAlign, FontWeight, FontStyle, CustomBuilder, TextInputStyle}
+import ohos.arkui.component.text_field.{TextField}
+import ohos.arkui.component.util.{transResourceStrToString}
+import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp}
+import ohos.ffi.{RemoteDataLite, releaseFFIData}
+import ohos.resource.{getResourceString, AppResource}
 import ohos.labels.APILevel
 
 foreign {

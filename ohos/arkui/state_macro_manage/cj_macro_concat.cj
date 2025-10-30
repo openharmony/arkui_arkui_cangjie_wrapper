@@ -17,8 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
-import std.collection.*
+import std.ast.Tokens
 
 func createMethodDeclaration(
     annotations!: Tokens = Tokens(),

@@ -17,13 +17,12 @@
 
 package ohos.arkui.component.image_span
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.image.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, ImageSpanAlignment, ImageFit}
+import ohos.arkui.component.native_struct.{CBorderRadiuses, CImageError}
+import ohos.arkui.component.image.{ImageLoadResult, ColorFilter, ImageCompleteCallback, ImageErrorCallback, ImageError}
+import ohos.base.{VectorFloat32Handle, ResourceStr, FFIVectorFloat32}
+import ohos.ffi.{Callback1Param}
+import ohos.resource.{AppResource, getResourceMedia}
 import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 

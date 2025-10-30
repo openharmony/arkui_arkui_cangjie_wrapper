@@ -17,9 +17,8 @@
 
 package ohos.arkui.shape
 
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength}
+import ohos.base.{Length, ResourceStr, LengthProp}
 import ohos.labels.APILevel
 
 foreign {

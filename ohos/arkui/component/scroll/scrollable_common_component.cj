@@ -15,18 +15,14 @@
 
 package ohos.arkui.component.scroll
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.rect.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, BarState, ScrollState, ScrollSource}
+import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.base.{ResourceColor, Length, LengthProp}
+import ohos.ffi.{Callback2Param, Callback3Param}
+import ohos.resource.{AppResource}
 import ohos.labels.APILevel
-import ohos.arkui.shape.*
+import ohos.arkui.shape.{RectShape}
 import ohos.business_exception.BusinessException
-
-import std.convert.*
 import std.deriving.Derive
 
 /**

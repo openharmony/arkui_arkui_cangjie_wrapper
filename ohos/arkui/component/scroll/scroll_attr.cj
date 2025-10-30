@@ -15,10 +15,8 @@
 
 package ohos.arkui.component.scroll
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{ScrollDirection, ScrollState, ScrollSource}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
 
 /**
  * Defines the Scroll attribute functions.

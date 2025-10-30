@@ -17,7 +17,8 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
+import std.ast.{Tokens, ClassDecl, Token, Decl, FuncDecl, CallExpr, MemberAccess, RefExpr, parseDecl, TokenKind, ToTokens}
+import std.collection.ArrayList
 
 public macro Entry(input: Tokens): Tokens {
     parseEntry(input, true)

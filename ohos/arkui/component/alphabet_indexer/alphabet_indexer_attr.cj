@@ -15,11 +15,9 @@
 
 package ohos.arkui.component.alphabet_indexer
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
+import ohos.arkui.component.common.{CommonMethod, FontWeight, FontStyle, IndexerAlign}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
+import ohos.base.{Length, ResourceStr, ResourceColor}
 
 /**
  * Defines the AlphabetIndexer attribute functions.

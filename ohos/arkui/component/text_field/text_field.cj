@@ -17,11 +17,11 @@
 
 package ohos.arkui.component.text_field
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{BorderStyle, EnterKeyType, TextAlign, InputType, FontWeight, FontStyle, TextDecorationType, TextDecorationStyle, LineBreakStrategy, WordBreak, TextHeightAdaptivePolicy, TextOverflow, TextContentStyle, TextInputStyle, BarState, ContentType, TextAreaType, CopyOptions, EnterKeyType, EdgeWidths}
+import ohos.arkui.component.native_struct.{CJBorderRadius, CJEdge, CJBorder}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, getLengthUnitOrFp}
+import ohos.base.{Length, ResourceColor, CStringExtend, AppLog, Color, LengthProp}
+import ohos.ffi.{Callback1Param, Callback0Param, Callback2Param, Callback3Param}
 import ohos.labels.APILevel
 
 foreign {

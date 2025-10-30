@@ -17,9 +17,9 @@
 
 package ohos.arkui.component.relative_container
 
-import ohos.arkui.component.common.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, BarrierDirection, Axis}
+import ohos.base.{Length}
+import ohos.ffi.{CArrString}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 

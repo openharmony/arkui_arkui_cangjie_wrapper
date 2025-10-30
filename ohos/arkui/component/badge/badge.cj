@@ -17,9 +17,9 @@
 
 package ohos.arkui.component.badge
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
+import ohos.arkui.component.common.{CommonMethodComponent, FontWeight}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.base.{ResourceColor, Length, Color, LengthProp}
 import ohos.labels.APILevel
 import std.deriving.Derive
 import ohos.business_exception.BusinessException

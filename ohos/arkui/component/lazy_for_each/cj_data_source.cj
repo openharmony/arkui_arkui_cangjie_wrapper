@@ -17,7 +17,7 @@
 
 package ohos.arkui.component.lazy_for_each
 
-import ohos.ffi.*
+import ohos.ffi.{RemoteData}
 import ohos.labels.APILevel
 
 foreign {

@@ -17,10 +17,9 @@
 
 package ohos.arkui.component.path
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.shape.*
-import ohos.arkui.component.util.*
-import ohos.base.*
+import ohos.arkui.component.shape.{CommonShapeMethodComponent, CommonShapeMethod}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength}
+import ohos.base.{ResourceStr, Length}
 import ohos.labels.APILevel
 
 foreign {

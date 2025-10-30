@@ -15,9 +15,8 @@
 
 package ohos.arkui.component.stepper
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.APILevel
-import ohos.base.*
 
 /**
  * Defines the Stepper attribute functions.

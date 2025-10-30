@@ -15,11 +15,11 @@
 
 protected package ohos.arkui.ui_context.font
 
-import ohos.base.*
+import ohos.base.{ExternalString, VectorStringHandle, ResourceStr, FFIVectorString, AppLog}
 import ohos.hilog.HilogChannel
-import ohos.resource.*
+import ohos.resource.{AppResource, getResourceMedia, getResourceString}
 import ohos.labels.APILevel
-import ohos.arkui.component.util.*
+import ohos.arkui.component.util.{transResourceStrToString}
 import ohos.business_exception.BusinessException
 
 const RAWFILE_TYPE: Int32 = 30000

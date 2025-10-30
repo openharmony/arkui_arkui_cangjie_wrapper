@@ -17,11 +17,10 @@
 
 package ohos.arkui.component.menu_item_group
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder}
+import ohos.arkui.component.util.{transResourceStrToString}
+import ohos.base.{ResourceStr}
+import ohos.ffi.{Callback0Param}
 import ohos.labels.APILevel
 
 foreign {

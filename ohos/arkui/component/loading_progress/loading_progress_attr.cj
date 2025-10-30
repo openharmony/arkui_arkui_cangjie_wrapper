@@ -15,9 +15,9 @@
 
 package ohos.arkui.component.loading_progress
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ResourceColor}
 
 /**
  * Defines the LoadingProgress attribute functions.

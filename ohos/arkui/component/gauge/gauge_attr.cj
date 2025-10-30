@@ -15,10 +15,10 @@
 
 package ohos.arkui.component.gauge
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.data_panel.*
+import ohos.arkui.component.common.{CommonMethod}
+import ohos.arkui.component.data_panel.{LinearGradient}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ResourceColor, Length, ResourceStr}
 
 /**
  * Defines the Gauge attributes.

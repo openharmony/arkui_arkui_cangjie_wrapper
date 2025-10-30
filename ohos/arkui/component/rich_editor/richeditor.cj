@@ -17,14 +17,13 @@
 
 package ohos.arkui.component.rich_editor
 
-import ohos.arkui.component.common.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{FontStyle, FontWeight, CommonMethodComponent, TextDecorationType, ImageSpanAlignment, ImageFit, RichEditorDeleteDirection, CustomBuilder, ResponseType, CopyOptions, RichEditorSpanType}
+import ohos.base.{ExternalString, Color, VectorStringHandle, CStringExtend, ResourceColor,VoidCallback, Callback}
+import ohos.ffi.{releaseFFIData, Callback0Param, Callback1Param, Callback2Param, RemoteDataLite}
 import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 import std.collection.ArrayList
-import std.convert.*
+import std.convert.{Parsable}
 
 foreign {
     func FfiOHOSAceFrameworkRichEditorCreateWithController(controller: Int64): Unit

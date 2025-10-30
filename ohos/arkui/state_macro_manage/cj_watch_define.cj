@@ -17,8 +17,8 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
-import std.regex.*
+import std.ast.{Tokens, VarDecl, Token, RefExpr, parseExpr, parseDecl, TokenKind}
+import std.regex.{Regex}
 
 public macro Watch(watcher: Tokens, watched: Tokens): Tokens {
     checkWatch(watcher, watched)

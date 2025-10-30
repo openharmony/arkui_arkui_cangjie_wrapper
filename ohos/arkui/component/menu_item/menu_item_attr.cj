@@ -15,10 +15,9 @@
 
 package ohos.arkui.component.menu_item
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, FontWeight, FontStyle}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
+import ohos.base.{Length, ResourceColor, ResourceStr}
 
 /**
  * Defines the MenuItem attribute functions.

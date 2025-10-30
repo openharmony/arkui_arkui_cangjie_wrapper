@@ -15,12 +15,11 @@
 
 protected package ohos.arkui.ui_context.animator
 
-import ohos.base.*
-import ohos.ffi.*
+import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback1Param, Callback0Param}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 import std.deriving.Derive
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{ExpectedFrameRateRange}
 
 foreign {
     func FfiAnimatorCreate(option: CAnimatorOptions): Int64

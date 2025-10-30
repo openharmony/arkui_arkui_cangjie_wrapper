@@ -17,8 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.collection.*
-import std.ast.*
+import std.ast.{Tokens, Token, TokenKind}
 import std.ast.Position as AstPosition
 
 class DiagnosticEngine {

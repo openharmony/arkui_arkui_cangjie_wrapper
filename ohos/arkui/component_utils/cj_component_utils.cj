@@ -17,8 +17,7 @@
 
 package ohos.arkui.component_utils
 
-import ohos.base.*
-import ohos.ffi.*
+import ohos.ffi.{CArrFloat32}
 import ohos.labels.APILevel
 
 /**

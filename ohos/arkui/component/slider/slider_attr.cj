@@ -15,9 +15,9 @@
 
 package ohos.arkui.component.slider
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, SliderChangeMode}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ResourceStr, Length, ResourceColor}
 
 /**
  * Provides methods for configuring the appearance and behavior of the Slider component.

@@ -18,7 +18,7 @@
 package ohos.arkui.component.common
 
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{ExternalString}
 
 foreign func FfiOHOSAceFrameworkComponentIdGetInspectorByKey(id: CString): ExternalString
 

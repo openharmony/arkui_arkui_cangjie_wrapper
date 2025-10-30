@@ -15,11 +15,10 @@
 
 package ohos.arkui.component.web
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{WebDarkMode, CommonMethod, MixedMode, NestedScrollMode}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
-import ohos.web.webview.*
+import ohos.base.{Callback}
+import ohos.web.webview.{WebviewController}
 
 /**
  * Defines the Web attribute functions.

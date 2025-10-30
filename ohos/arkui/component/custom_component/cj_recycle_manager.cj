@@ -15,8 +15,6 @@
 
 package ohos.arkui.component.custom_component
 
-import ohos.arkui.component.common.*
-import ohos.base.*
 import std.collection.HashMap
 import std.collection.ArrayList
 

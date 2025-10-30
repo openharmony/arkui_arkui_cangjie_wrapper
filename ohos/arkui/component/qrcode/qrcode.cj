@@ -17,11 +17,10 @@
 
 package ohos.arkui.component.qrcode
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, }
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToResourceColor}
+import ohos.base.{ResourceStr, ResourceColor, Length}
+import ohos.resource.{AppResource, getResourceLength}
 import ohos.labels.APILevel
 
 foreign {

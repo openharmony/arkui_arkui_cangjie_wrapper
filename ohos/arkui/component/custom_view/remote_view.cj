@@ -17,7 +17,7 @@
 
 package ohos.arkui.component.custom_view
 
-import ohos.ffi.*
+import ohos.ffi.{FFIData}
 import ohos.labels.APILevel
 import ohos.base.ReuseParams
 import std.collection.HashMap

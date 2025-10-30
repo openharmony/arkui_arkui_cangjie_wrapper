@@ -17,10 +17,11 @@
 
 package ohos.arkui.component.common
 
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.native_struct.{NativeAnimateParam}
+import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.base.{Length, LengthProp}
+import ohos.ffi.{RemoteDataLite, FFIData, releaseFFIData}
+import ohos.business_exception.BusinessException
 import ohos.labels.APILevel
 import std.deriving.Derive
 

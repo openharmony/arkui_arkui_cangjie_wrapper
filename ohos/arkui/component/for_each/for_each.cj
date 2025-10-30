@@ -17,10 +17,9 @@
 
 package ohos.arkui.component.for_each
 
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.common.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.native_struct.{VectorToCFFIArray}
+import ohos.arkui.component.common.{ItemGeneratorFunc, KeyGeneratorFunc, UINodeBase}
+import ohos.base.{VectorStringHandle, CollectionEx, FFIVectorString}
 import ohos.labels.APILevel
 import ohos.arkui.state_management.ObservedArrayList
 import std.collection.ArrayList

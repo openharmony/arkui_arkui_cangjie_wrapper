@@ -17,11 +17,11 @@
 
 package ohos.arkui.component.toggle
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, CommonMethod, ToggleType, Rectangle}
+import ohos.arkui.component.native_struct.{VectorNativeRectangleHandle, CJResponseRegion, FFIVectorNativeRectangle}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.base.{Length, ResourceColor, BaseLog, LengthProp}
+import ohos.ffi.{Callback1Param}
 import ohos.labels.APILevel
 
 foreign {

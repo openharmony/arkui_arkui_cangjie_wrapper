@@ -15,10 +15,9 @@
 
 package ohos.arkui.component.text_timer
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{FontStyle, FontWeight, ShadowOptions, CommonMethod}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
+import ohos.base.{Length, ResourceColor, ResourceStr}
 
 /**
  * Defines the TextTimer attribute functions.

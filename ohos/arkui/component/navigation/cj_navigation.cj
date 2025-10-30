@@ -15,10 +15,10 @@
 
 package ohos.arkui.component.navigation
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, BlurStyle, CustomBuilder}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString}
+import ohos.base.{ResourceColor, Length, Callback, ResourceStr, LengthProp}
+import ohos.ffi.{FFIData, RemoteData, FFIDataManager, Callback1Param, RemoteDataManager, releaseFFIData, Callback0Param}
 import ohos.labels.APILevel
 import std.deriving.Derive
 import std.collection.HashMap
@@ -190,7 +190,7 @@ public class NavigationTitleOptions {
     ]
     public init(
         backgroundColor!: ?ResourceColor = None,
-        backgroundBlurStyle!: ?BlurStyle = None,
+        backgroundBlurStyle!: ?BlurStyle = Option.None,
         barStyle!: ?BarStyle = None,
         paddingStart!: ?Length = None,
         paddingEnd!: ?Length = None

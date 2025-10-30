@@ -15,10 +15,9 @@
 
 package ohos.arkui.component.sidebar
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, SideBarPosition}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
+import ohos.base.{Length}
 
 /**
  * Defines the SideBarContainer attribute functions.

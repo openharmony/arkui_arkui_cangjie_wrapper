@@ -15,8 +15,7 @@
 
 package ohos.arkui.component.custom_component
 
-import ohos.arkui.component.common.*
-import ohos.arkui.state_management.*
+import ohos.arkui.state_management.{ObservedProperty}
 import ohos.labels.APILevel
 
 /**

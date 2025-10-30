@@ -17,13 +17,13 @@
 
 package ohos.arkui.component.custom_dialog
 
-import ohos.arkui.component.action_sheet.*
-import ohos.arkui.component.custom_component.*
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.action_sheet.{DismissDialogAction, parseToDismissDialogAction}
+import ohos.arkui.component.custom_component.{CustomView}
+import ohos.arkui.component.common.{DialogAlignment, Offset, Rectangle, AnimateParam, EdgeStyles, ShadowOptions, BlurStyle, ShadowType, parseAnimateParam, parseOffset}
+import ohos.arkui.component.native_struct.{NativeShadowOptions, NativeOptionEdgeStyle, NativeRectangle, NativeOptionAnimateParam, NativeAnimateParam}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.base.{NativeOptionInt32, NativeOptionUInt32, NativeOptionBool, NativeOptionLength, NativeOffset, NativeLength, NativeOptionCallBack, VoidCallback, ResourceColor, Length, Callback, LengthProp, Color}
+import ohos.ffi.{Callback0Param, FFIDataManager, RemoteDataLite, FFIData, Callback1Param}
 import ohos.labels.APILevel
 
 @C

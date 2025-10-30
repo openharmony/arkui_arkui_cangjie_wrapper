@@ -17,9 +17,9 @@
 
 protected package ohos.arkui.component.native_struct
 
-import ohos.arkui.component.custom_view.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.custom_view.{RemoteView}
+import ohos.base.{ReuseParams, throwNativeError}
+import ohos.ffi.{FFIDataManager}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 

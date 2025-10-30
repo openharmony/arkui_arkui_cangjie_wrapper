@@ -17,11 +17,10 @@
 
 package ohos.arkui.component.sidebar
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, SideBarContainerType, SideBarPosition}
+import ohos.arkui.component.util.{transResourceMediaToString, transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp}
+import ohos.ffi.{Callback1Param}
 import ohos.labels.APILevel
 
 @C

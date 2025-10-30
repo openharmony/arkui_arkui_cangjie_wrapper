@@ -17,12 +17,12 @@
 
 package ohos.arkui.component.button
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
+import ohos.arkui.component.common.{CommonMethodComponent, ControlSize, FontWeight, FontStyle, BorderStyle}
+import ohos.arkui.component.native_struct.{CJBorderRadius, CJBorder}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength, normalizeValue, getLengthUnitOrFp}
+import ohos.base.{Length, LengthProp, ResourceStr, ResourceColor, Color, LengthProp}
 import ohos.labels.APILevel
-import ohos.resource.*
+import ohos.resource.{AppResource}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
 

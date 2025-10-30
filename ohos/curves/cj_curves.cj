@@ -17,9 +17,8 @@
 
 package ohos.curves
 
-import ohos.base.*
-import ohos.arkui.component.*
-import ohos.ffi.*
+import ohos.arkui.component.{Curve}
+import ohos.ffi.{RemoteDataLite, Callback1Param, releaseFFIData}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 

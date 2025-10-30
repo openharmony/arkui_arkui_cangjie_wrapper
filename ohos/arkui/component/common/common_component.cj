@@ -15,18 +15,15 @@
 
 package ohos.arkui.component.common
 
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
-import ohos.hi_trace_meter.*
+import ohos.arkui.component.native_struct.{CJClickEvent, CJArea, CJEdge, CJConstraintSize, CJResponseRegion, FFIVectorNativeRectangle, CJBorder, CJBorderRadius, CJForegroundBlurStyleOptions, CJSetScale, CJSetRotate, CJTranslate, CJSharedTransitionOptions, CJBindPopupParamsV2, CJBindCustomPopupV2, CArrCColors, LinearGradientParam, CTupleLength, SweepGradientParam, RadialGradientParam, NativeOptionAnimateParam, CJContextMenuOptions, CColors, CJBlurOptions, CJMotionPathOptions, NativeAnimateParam}
+import ohos.arkui.component.util.{transAppResourceToLength, LENGTH_PERCENT, transAppResourceToResourceColor}
+import ohos.base.{Length, ResourceColor, FFIVectorFloat64, BaseLog, Color, NativeOptionCallBack, NativeOptionInt64, FFIVectorString, ResourceStr, LengthProp}
+import ohos.ffi.{Callback0Param, Callback1Param}
+import ohos.resource.{AppResource, getResourceMedia}
 import ohos.labels.APILevel
-import ohos.arkui.shape.*
+import ohos.arkui.shape.{BaseShape}
+import ohos.business_exception.BusinessException
 import ohos.multimedia.image.PixelMap
-import std.regex.*
-import std.math.*
-import std.convert.*
 
 protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     protected init(id: Int64){

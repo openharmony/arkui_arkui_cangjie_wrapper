@@ -17,11 +17,11 @@
 
 package ohos.arkui.component.menu_item
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{FontWeight, FontStyle}
+import ohos.arkui.component.util.{transResourceMediaToString, transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp}
+import ohos.ffi.{Callback0Param, Callback1Param}
+import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.labels.APILevel
 
 foreign {

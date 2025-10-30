@@ -15,11 +15,11 @@
 
 package ohos.arkui.component.list
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.scroll.*
-import ohos.arkui.component.list_item_group.*
+import ohos.arkui.component.common.{Axis, EdgeEffect, ListItemAlign, StickyStyle, BarState, ScrollState}
+import ohos.arkui.component.scroll.{ScrollableCommonMethod, NestedScrollOptions, ContentClipMode}
+import ohos.arkui.component.list_item_group.{ListDividerOptions}
 import ohos.labels.APILevel
-import ohos.base.*
+import ohos.base.{Length, ResourceColor}
 
 /**
  * Defines List Component.

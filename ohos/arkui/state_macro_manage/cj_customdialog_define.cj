@@ -17,10 +17,10 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
-import std.unicode.*
-import std.unicode.*
-import std.regex.*
+import std.ast.{Tokens, ClassDecl, VarDecl, parseDecl, Visitor, Token, TokenKind, ToTokens}
+import std.unicode.{UnicodeStringExtension}
+import std.regex.{Regex}
+import std.collection.ArrayList
 
 public macro CustomDialog(input: Tokens): Tokens {
     checkCustomDialogSyntax(input)

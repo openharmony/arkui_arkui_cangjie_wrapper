@@ -17,15 +17,12 @@
 
 package ohos.arkui.component.text_clock
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.ffi.*
-import ohos.base.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, FontStyle, FontWeight, ShadowOptions, ShadowType}
+import ohos.arkui.component.native_struct.{VectorNativeTextShadow, NativeTextShadowV2}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, getLengthUnitOrFp}
+import ohos.ffi.{RemoteDataLite, Callback1Param, releaseFFIData}
+import ohos.base.{ResourceStr, Length, ResourceColor, Color, LengthProp}
 import ohos.labels.APILevel
-
-import std.convert.*
 
 foreign {
     func FFICJCreateVectorNativeTextShadowV2(size: Int64): VectorNativeTextShadow

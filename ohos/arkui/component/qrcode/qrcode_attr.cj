@@ -15,10 +15,10 @@
 
 package ohos.arkui.component.qrcode
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
+import ohos.base.{ResourceColor}
+import ohos.resource.{AppResource}
 
 /**
  * Defines QRCode Component.

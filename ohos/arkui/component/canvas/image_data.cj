@@ -17,9 +17,9 @@
 
 package ohos.arkui.component.canvas
 
-import ohos.arkui.component.common.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{LengthMetricsUnit}
+import ohos.base.{FFIVectorUInt8, VectorUInt8Handle}
+import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback0Param}
 import ohos.labels.APILevel
 
 foreign {

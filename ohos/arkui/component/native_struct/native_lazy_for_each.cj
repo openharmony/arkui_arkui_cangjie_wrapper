@@ -17,8 +17,8 @@
 
 protected package ohos.arkui.component.native_struct
 
-import ohos.base.*
-import ohos.ffi.*
+import ohos.base.{ExternalString, getOrThrow}
+import ohos.ffi.{FFIData, FFIDataManager}
 
 protected abstract class BaseLazyForEachFuncs <: FFIData {
     protected func generateKey(index: Int64): String

@@ -15,11 +15,10 @@
 
 package ohos.arkui.component.lazy_for_each
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
+import ohos.arkui.component.common.{UINodeBase, ItemGeneratorFunc, KeyGeneratorFunc}
+import ohos.arkui.component.native_struct.{BaseLazyForEachFuncs}
 import ohos.arkui.component.custom_component.CustomView
-import ohos.base.*
-import ohos.ffi.*
+import ohos.base.{nativeLog}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 

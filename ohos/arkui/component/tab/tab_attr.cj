@@ -15,10 +15,9 @@
 
 package ohos.arkui.component.tab
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, BarMode, CustomBuilder}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
+import ohos.base.{Length, Callback, ResourceStr}
 
 /**
  * Defines the Tabs attribute functions.

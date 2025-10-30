@@ -17,8 +17,8 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.*
-import std.collection.*
+import std.ast.{Tokens, Argument, Token, ASTException, VarDecl, Expr, LitConstExpr, ClassDecl, PrimaryCtorDecl, FuncDecl, TokenKind, ToTokens, parseDecl, Visitor, parseExprFragment}
+import std.collection.{ArrayList}
 
 /**
  * record state and init declaration

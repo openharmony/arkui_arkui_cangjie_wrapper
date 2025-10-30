@@ -17,11 +17,8 @@
 
 package ohos.arkui.component.shape
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.base.{ResourceColor, Length, VectorFloat64Handle, VectorInt32Handle, FFIVectorFloat64, FFIVectorInt32, LengthProp}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 

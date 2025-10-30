@@ -17,10 +17,10 @@
 
 package ohos.arkui.component.common
 
-import ohos.arkui.component.native_struct.*
-import ohos.base.*
-import ohos.ffi.*
-internal import ohos.business_exception.BusinessException
+import ohos.arkui.component.native_struct.{CJClickEvent, CJArea, CJGestureEventV2, FfiWebResourceRequest}
+import ohos.base.{AppLog}
+import ohos.ffi.{BaseCallBack}
+import ohos.business_exception.BusinessException
 
 protected class CallbackCJClickEvent <: BaseCallBack {
     protected CallbackCJClickEvent(let closure: (CJClickEvent) -> Unit) {

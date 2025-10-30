@@ -17,11 +17,10 @@
 
 package ohos.arkui.component.span
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.resource.*
+import ohos.arkui.component.common.{UINodeBase, FontStyle, FontWeight, TextDecorationType, ClickEvent, CallbackCJClickEvent, TextCase, parseCJClickEvent}
+import ohos.arkui.component.native_struct.{VectorNativeTextShadow, CBorderRadiuses, CJClickEvent}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, transResourceStrToString, getLengthUnitOrFp}
+import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp, Color}
 import ohos.labels.APILevel
 
 type VectorNativeTextShadows = CPointer<Unit>

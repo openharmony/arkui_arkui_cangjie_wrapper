@@ -17,9 +17,8 @@
 
 package ohos.arkui.shape
 
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.base.{Length, LengthProp}
 import ohos.labels.APILevel
 
 foreign func FfiOHOSAceFrameworkEllipseInsCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Int64

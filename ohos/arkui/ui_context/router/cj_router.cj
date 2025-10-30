@@ -15,10 +15,8 @@
 
 protected package ohos.arkui.ui_context.router
 
-import ohos.base.*
+import ohos.base.{ExternalString}
 import ohos.hilog.HilogChannel
-import ohos.ffi.*
-import std.collection.*
 import ohos.labels.APILevel
 import std.deriving.Derive
 import ohos.business_exception.BusinessException

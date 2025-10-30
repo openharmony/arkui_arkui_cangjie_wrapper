@@ -17,19 +17,15 @@
 
 package ohos.arkui.ui_context
 
-import ohos.base.*
-import ohos.business_exception.*
+import ohos.base.{Length, VoidCallback}
 import ohos.labels.APILevel
-import ohos.arkui.ui_context.animator.*
-import ohos.arkui.ui_context.prompt_action.*
-import ohos.arkui.component.action_sheet.*
-import ohos.arkui.component.alert_dialog.*
+import ohos.arkui.ui_context.animator.{Animator}
+import ohos.arkui.component.action_sheet.{ActionSheetOptions, ActionSheetInner}
+import ohos.arkui.component.alert_dialog.{AlertDialogParamWithConfirm, AlertDialogParamWithButtons, AlertDialogInner, AlertDialogParamWithOptions}
 import ohos.arkui.component.common.{AnimateParam, vp2pxInner, px2vpInner,
     fp2pxInner, lpx2pxInner, px2fpInner, px2lpxInner, parseAnimateParam}
-import ohos.arkui.component.native_struct.*
-import ohos.ffi.*
-import ohos.arkui.ui_context.font.*
-import ohos.arkui.ui_context.router.*
+import ohos.arkui.component.native_struct.{NativeAnimateParam}
+import ohos.ffi.{Callback0Param}
 
 foreign {
     func FfiOHOSAceFrameworkContextMenuClose(): Unit

@@ -17,14 +17,13 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.io.*
-import std.fs.*
-import std.ast.*
-import std.process.*
-import std.convert.*
-import std.collection.*
-import std.regex.*
-import ohos.encoding.json.*
+import std.fs.{canonicalize, exists, File}
+import std.ast.{Tokens, LitConstExpr, ToTokens, parseExpr, parseDecl, FuncDecl, AssignExpr}
+import std.process.{Process}
+import std.convert.{Parsable}
+import std.collection.{HashMap, ArrayList}
+import std.regex.{Regex}
+import ohos.encoding.json.{JsonObject, JsonValue}
 
 let RES_ORIGIN_POS = 0
 let RES_TYPE_POS = 2

@@ -17,9 +17,9 @@
 
 package ohos.arkui.component.line
 
-import ohos.arkui.component.shape.*
-import ohos.arkui.component.util.*
-import ohos.base.*
+import ohos.arkui.component.shape.{CommonShapeMethodComponent, CommonShapeMethod}
+import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.base.{Length, LengthProp}
 import ohos.labels.APILevel
 
 foreign {

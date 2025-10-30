@@ -17,9 +17,8 @@
 
 package ohos.arkui.component.path_2d
 
-import ohos.arkui.component.native_struct.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.native_struct.{TransformParams, ArcParams, QuadraticCurveToParams, BezierCurveToParams, EllipseParams, RectParams, ArcToParams}
+import ohos.ffi.{RemoteDataLite, releaseFFIData}
 import ohos.labels.APILevel
 
 foreign {

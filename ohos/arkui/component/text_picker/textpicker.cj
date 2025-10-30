@@ -17,11 +17,11 @@
 
 package ohos.arkui.component.text_picker
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.native_struct.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent}
+import ohos.arkui.component.native_struct.{DividerParams}
+import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.base.{VectorStringHandle, VectorUInt32Handle, Length, AppLog, FFIVectorString}
+import ohos.ffi.{BaseCallBack}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 

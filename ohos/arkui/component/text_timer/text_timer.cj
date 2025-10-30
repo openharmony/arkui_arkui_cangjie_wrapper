@@ -17,11 +17,10 @@
 
 package ohos.arkui.component.text_timer
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.ffi.*
-import ohos.base.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, CommonMethod, ShadowOptions, FontStyle, FontWeight, ShadowType}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, transResourceStrToString, getLengthUnitOrFp}
+import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback2Param}
+import ohos.base.{Length, ResourceColor, ResourceStr, Color, LengthProp}
 import ohos.labels.APILevel
 
 type VectorNativeTextTimerShadow = CPointer<Unit>

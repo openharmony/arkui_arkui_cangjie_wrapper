@@ -15,8 +15,7 @@
 
 package ohos.arkui.component.grid_col
 
-import ohos.arkui.component.common.*
-import ohos.base.*
+import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.labels.APILevel
 
 @C

@@ -17,14 +17,11 @@
 
 package ohos.arkui.component.alphabet_indexer
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.arkui.component.common.{CommonMethodComponent, FontWeight, FontStyle, IndexerAlign}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString}
+import ohos.base.{FFIVectorString, Length, ResourceStr, VectorStringHandle, ResourceColor, LengthProp, Color}
+import ohos.ffi.{Callback1Param}
 import ohos.labels.APILevel
-import ohos.resource.*
-
-import std.convert.*
 
 foreign {
     func FfiOHOSAceFrameworkAlphabetIndexerCreate(handle: VectorStringHandle, selected: UInt32): Unit

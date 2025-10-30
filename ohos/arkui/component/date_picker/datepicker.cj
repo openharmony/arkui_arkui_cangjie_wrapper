@@ -17,14 +17,12 @@
 
 package ohos.arkui.component.date_picker
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.text_clock.*
-import ohos.arkui.component.util.*
-import ohos.base.*
-import ohos.ffi.*
-import ohos.resource.*
+import ohos.arkui.component.common.{CommonMethodComponent, PickerTextStyle, FontWeight, FontStyle}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength}
+import ohos.base.{Callback, Length, LengthProp}
+import ohos.ffi.{Callback3Param}
 import ohos.labels.APILevel
-import std.time.*
+import std.time.{DateTime, Month}
 
 /**
  * Defines the struct of DatePickerResult.

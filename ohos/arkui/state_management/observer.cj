@@ -16,7 +16,7 @@
 package ohos.arkui.state_management
 
 import ohos.labels.APILevel
-import std.collection.*
+import std.collection.{ArrayList}
 
 /**
  * Defines interface Observer.

@@ -17,8 +17,7 @@
 
 package ohos.arkui.component.canvas
 
-import ohos.arkui.component.common.*
-import ohos.ffi.*
+import ohos.ffi.{RemoteData, RemoteDataManager}
 import ohos.labels.APILevel
 import ohos.multimedia.image.PixelMap
 

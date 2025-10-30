@@ -15,7 +15,7 @@
 
 package ohos.arkui.component.stack
 
-import ohos.arkui.component.common.*
+import ohos.arkui.component.common.{CommonMethod, Alignment}
 import ohos.labels.APILevel
 
 /**

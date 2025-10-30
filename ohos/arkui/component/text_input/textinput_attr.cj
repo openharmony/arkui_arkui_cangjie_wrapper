@@ -15,11 +15,9 @@
 
 package ohos.arkui.component.text_input
 
-import ohos.arkui.component.common.*
-import ohos.arkui.component.text_field.*
+import ohos.arkui.component.common.{CommonMethod, EnterKeyType, TextAlign, FontWeight, FontStyle, CustomBuilder, TextInputStyle}
 import ohos.labels.APILevel
-import ohos.base.*
-import ohos.resource.*
+import ohos.base.{ResourceColor, Length, ResourceStr}
 
 /**
  * Defines the TextInput attribute functions.
