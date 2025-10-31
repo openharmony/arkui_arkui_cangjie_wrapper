@@ -20,7 +20,9 @@ ohos_cangjie_shared_library("kit.ArkUI") {
   cj_deps = [
     "../../ohos/arkui/component:ohos.arkui.component",
     "../../ohos/arkui/component_utils:ohos.arkui.component_utils",
+    "../../ohos/arkui/shape:ohos.arkui.shape",
     "../../ohos/arkui/state_management:ohos.arkui.state_management",
+    "../../ohos/arkui/ui_context:ohos.arkui.ui_context",
     "../../ohos/base:ohos.base",
     "../../ohos/curves:ohos.curves",
   ]

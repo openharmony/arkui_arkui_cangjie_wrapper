@@ -17,7 +17,7 @@
 
 package ohos.arkui.state_management
 
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign func FfiOHOSAceFrameworkAllocateNewElmetIdForNextComponent(): Int32
 
@@ -56,7 +56,7 @@ public class ViewStackProcessor {
             Int64(FfiOHOSAceFrameworkAllocateNewElmetIdForNextComponent())
         }
     }
-    
+
     /**
      * Start Get access recording, and account all access to given elmtId.
      * Note this can be a different elmtId than the one used to create new Component.
@@ -74,7 +74,7 @@ public class ViewStackProcessor {
             FfiOHOSAceFrameworkStartGetAccessRecordingFor(elmtId)
         }
     }
-    
+
     /**
      * Get the elmtId to which any get access should be accounted.
      * note this can be the same as the currently created elmtId (top of stack)
@@ -98,7 +98,7 @@ public class ViewStackProcessor {
     /**
      * Stop get access recording
      * also invalidates any reserved but unclaimed elmtId for Component creation.
-     * 
+     *
      * @returns { Unit }
      */
     @!APILevel[
@@ -117,7 +117,7 @@ public class ViewStackProcessor {
      * If, and the if branch creates a Text etc that requires an implict pop
      * this function is needed after executing the inner observeComponentCreation
      * and before read ViewStackProcessor.GetTopMostElementId();
-     * 
+     *
      * @returns { Unit }
      */
     @!APILevel[

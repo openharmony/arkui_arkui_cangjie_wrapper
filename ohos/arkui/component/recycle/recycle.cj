@@ -18,7 +18,7 @@
 package ohos.arkui.component.recycle
 
 import ohos.arkui.component.common.{CommonMethodComponent, CommonMethod}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkRecycleCreate(): Unit

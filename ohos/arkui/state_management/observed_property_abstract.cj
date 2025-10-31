@@ -17,7 +17,7 @@
 
 package ohos.arkui.state_management
 
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.collection.{ArrayList}
 
 /**
@@ -52,7 +52,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
 
     /**
      * Subscribe an observer.
-     * 
+     *
      * @param { Observer } observer - The observer to subscribe.
      * @returns { Unit }
      */
@@ -65,7 +65,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
 
     /**
      * Unsubscribe an observer.
-     * 
+     *
      * @param { Observer } observer - The observer to unsubscribe.
      * @returns { Unit }
      */
@@ -91,7 +91,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
 
     /**
      * Remove the dependency of this property on a specific element ID.
-     * 
+     *
      * @param { Int64 } rmElmtId - The element ID to remove dependency on.
      * @returns { Unit }
      */

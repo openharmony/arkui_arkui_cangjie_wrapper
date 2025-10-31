@@ -20,7 +20,7 @@ import ohos.arkui.component.util.{transAppResourceToLength, LENGTH_PERCENT, tran
 import ohos.base.{Length, ResourceColor, FFIVectorFloat64, BaseLog, Color, NativeOptionCallBack, NativeOptionInt64, FFIVectorString, ResourceStr, LengthProp}
 import ohos.ffi.{Callback0Param, Callback1Param}
 import ohos.resource.{AppResource, getResourceMedia}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.arkui.shape.{BaseShape}
 import ohos.business_exception.BusinessException
 import ohos.multimedia.image.PixelMap

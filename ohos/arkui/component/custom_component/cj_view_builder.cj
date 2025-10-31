@@ -16,7 +16,7 @@
 package ohos.arkui.component.custom_component
 
 import ohos.arkui.state_management.{ObservedProperty}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * ViewBuilder class.

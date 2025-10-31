@@ -15,7 +15,7 @@
 
 package ohos.arkui.state_management
 
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.collection.{ArrayList}
 
 /**
@@ -29,7 +29,7 @@ import std.collection.{ArrayList}
 public interface Observer {
     /**
      * Called when a state update occurs.
-     * 
+     *
      * @param { String } info - Information about the updated state.
      * @param { ArrayList<Int64> } dependentElmtIds - List of element IDs that depend on this state.
      * @returns { Unit }
@@ -43,7 +43,7 @@ public interface Observer {
 
     /**
      * Notifies when a property is read.
-     * 
+     *
      * @param { String } info - Information about the property being read.
      * @returns { Unit }
      */
@@ -56,7 +56,7 @@ public interface Observer {
 
     /**
      * Gets the unique identifier of the observer.
-     * 
+     *
      * @returns { Int64 } The unique identifier.
      */
     @!APILevel[
@@ -68,7 +68,7 @@ public interface Observer {
 
     /**
      * Prepares the observer for deletion, cleaning up any resources.
-     * 
+     *
      * @returns { Unit }
      */
     @!APILevel[

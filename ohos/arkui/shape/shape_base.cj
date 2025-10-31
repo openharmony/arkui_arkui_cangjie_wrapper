@@ -88,7 +88,7 @@ public abstract class BaseShape <: RemoteDataLite {
     ]
     public func width(width: ?Length): This {
         match (width) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkShapeSetInsWidth(getID(), value_.value, value_.unitType.getValue())
@@ -111,7 +111,7 @@ public abstract class BaseShape <: RemoteDataLite {
     ]
     public func height(height: ?Length): This {
         match (height) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkShapeSetInsHeight(getID(), value_.value, value_.unitType.getValue())

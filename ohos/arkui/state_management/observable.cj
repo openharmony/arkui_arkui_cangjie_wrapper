@@ -18,7 +18,7 @@
 package ohos.arkui.state_management
 
 import std.collection.ArrayList
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * Defines class Observable.
