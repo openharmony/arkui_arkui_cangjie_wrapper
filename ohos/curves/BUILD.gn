@@ -19,7 +19,7 @@ ohos_cangjie_shared_library("ohos.curves") {
   cj_deps = [
     "../arkui/component:ohos.arkui.component",
     "../base:ohos.base",
-    "../arkui/component:ohos.arkui.component.common",
+    "../arkui/component/common:ohos.arkui.component.common",
   ]
 
   cj_external_deps = [

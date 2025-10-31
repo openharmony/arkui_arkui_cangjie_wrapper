@@ -24,7 +24,7 @@ import ohos.arkui.ui_context.{UIContext}
 import ohos.base.{ExternalString, CollectionEx, ReuseParams, BaseLog}
 import ohos.ffi.{FFIDataManager}
 import ohos.business_exception.BusinessException
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.sort.{SortByExtension}
 import std.collection.{HashSet}
 import std.collection.HashMap

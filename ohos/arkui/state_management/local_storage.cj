@@ -18,7 +18,7 @@
 package ohos.arkui.state_management
 
 import ohos.base.{BaseLog}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.collection.{HashMap, EquatableCollection}
 import ohos.business_exception.BusinessException
 
@@ -55,9 +55,9 @@ public class LocalStorage {
      * Prepares the LocalStorage instance for deletion by clearing all properties.
      * This function calls clear() internally which removes all properties from storage
      * after ensuring no property has active subscribers.
-     * 
-     * @returns { Bool } true if all properties were successfully cleared and the instance 
-     *         is ready for deletion, false if there are still active subscribers 
+     *
+     * @returns { Bool } true if all properties were successfully cleared and the instance
+     *         is ready for deletion, false if there are still active subscribers
      *         preventing cleanup.
      */
     @!APILevel[

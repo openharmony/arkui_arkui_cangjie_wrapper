@@ -18,7 +18,7 @@
 protected package ohos.arkui.component.empty_component
 
 import ohos.arkui.component.common.{CommonMethod, CommonMethodComponent}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * Empty component.

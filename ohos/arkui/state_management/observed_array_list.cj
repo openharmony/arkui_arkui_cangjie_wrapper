@@ -18,7 +18,7 @@
 package ohos.arkui.state_management
 
 import ohos.base.{CollectionEx}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.collection.{ArrayList}
 import ohos.business_exception.BusinessException
 

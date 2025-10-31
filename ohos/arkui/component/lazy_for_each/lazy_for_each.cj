@@ -19,7 +19,7 @@ import ohos.arkui.component.common.{UINodeBase, ItemGeneratorFunc, KeyGeneratorF
 import ohos.arkui.component.native_struct.{BaseLazyForEachFuncs}
 import ohos.arkui.component.custom_component.CustomView
 import ohos.base.{nativeLog}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 import std.collection.HashMap

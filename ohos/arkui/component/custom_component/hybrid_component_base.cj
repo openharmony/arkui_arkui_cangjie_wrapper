@@ -20,7 +20,7 @@ import ohos.ark_interop.{SharedObject, JSContext, JSCallInfo, JSModule}
 import ohos.business_exception.BusinessException
 import std.collection.HashMap
 import ohos.base.{launch}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * CJPageEntry for register hybrid component.

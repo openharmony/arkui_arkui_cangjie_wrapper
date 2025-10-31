@@ -17,7 +17,7 @@
 
 package ohos.arkui.state_management
 
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.collection.{ArrayList}
 
 func isEqual<T>(value: T, newValue: T): Bool {
