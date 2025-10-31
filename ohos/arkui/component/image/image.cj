@@ -105,7 +105,7 @@ public class ImageError {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var componentWidth: ?Float64
+    public var componentWidth: Float64
     /**
      * Component height.
      */
@@ -113,7 +113,7 @@ public class ImageError {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var componentHeight: ?Float64
+    public var componentHeight: Float64
     /**
      * ImageError Message.
      */
@@ -121,7 +121,7 @@ public class ImageError {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var message: ?String
+    public var message: String
 
     protected init(
         componentWidth: Float64,
@@ -149,7 +149,7 @@ public class ImageLoadResult {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var width: ?Float64
+    public var width: Float64
     /**
      * The height of the image source.
      */
@@ -157,7 +157,7 @@ public class ImageLoadResult {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var height: ?Float64
+    public var height: Float64
     /**
      * The width of the component source.
      */
@@ -165,7 +165,7 @@ public class ImageLoadResult {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var componentWidth: ?Float64
+    public var componentWidth: Float64
     /**
      * The height of the component source.
      */
@@ -173,7 +173,7 @@ public class ImageLoadResult {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var componentHeight: ?Float64
+    public var componentHeight: Float64
     /**
      * The value of the status of the image being loaded successfully.
      * If the returned status value is 0, the image data is successfully loaded.
@@ -183,7 +183,7 @@ public class ImageLoadResult {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var loadingStatus: ?Int32
+    public var loadingStatus: Int32
     /**
      * The width of the picture that is actually drawn.
      */
@@ -191,7 +191,7 @@ public class ImageLoadResult {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var contentWidth: ?Float64
+    public var contentWidth: Float64
     /**
      * The height of the picture that is actually drawn.
      */
@@ -199,7 +199,7 @@ public class ImageLoadResult {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var contentHeight: ?Float64
+    public var contentHeight: Float64
     /**
      * The offset between image content and image component on the X-axis.
      */
@@ -207,7 +207,7 @@ public class ImageLoadResult {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var contentOffsetX: ?Float64
+    public var contentOffsetX: Float64
     /**
      * The offset between image content and image component on the Y-axis.
      */
@@ -215,7 +215,7 @@ public class ImageLoadResult {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var contentOffsetY: ?Float64
+    public var contentOffsetY: Float64
 
     protected init(
         width: Float64,

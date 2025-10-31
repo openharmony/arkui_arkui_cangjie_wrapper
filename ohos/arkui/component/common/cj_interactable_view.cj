@@ -272,7 +272,7 @@ public class DragInfo {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var extraParams: ?String
+    public var extraParams: String
     /**
      * Current position of the drag operation.
      */
@@ -280,7 +280,7 @@ public class DragInfo {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var touchPoint: ?Position
+    public var touchPoint: Position
 
     init(extraParams: String, touchPoint: Position) {
         this.extraParams = extraParams
