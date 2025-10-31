@@ -209,13 +209,14 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      *
      * @param { ?Array<(ResourceColor, Int32)> } value - The color array with stop positions, where Int32 is the stop position percentage (0-100).
      * @returns { This } - The instance of the component.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colors(value: ?Array<(ResourceColor, Int32)>): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         let colors = FFIVectorUInt32(tmpValue.size)
         let weights = FFIVectorFloat32(tmpValue.size)
         for (i in 0..tmpValue.size) {
@@ -239,13 +240,14 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      *
      * @param { ?Array<(LinearGradient, Int32)> } value - The linear gradient array with stop positions.
      * @returns { This } - The instance of the component.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colors(value: ?Array<(LinearGradient, Int32)>): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         var maxSize = tmpValue.size;
         if (maxSize > 9) {
             maxSize = 9
@@ -258,7 +260,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
             var vecColorStop = FFIVectorColorStops(curColorStops.size)
             for (j in 0..curColorStops.size) {
                 if ((curColorStops[j].offset).value >= 0.0) {
-                    vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color).toUInt32(), 
+                    vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color).toUInt32(),
                     (curColorStops[j].offset).value))
                 } else {
                     vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color).toUInt32(), 0.0))
@@ -284,13 +286,14 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      *
      * @param { ?ResourceColor } value - The solid color value.
      * @returns { This } - The instance of the component.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colors(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         let array: Array<(ResourceColor, Int32)> = [(tmpValue, 1)]
         colors(array)
         this
@@ -301,13 +304,14 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      *
      * @param { ?LinearGradient } value - The linear gradient value.
      * @returns { This } - The instance of the component.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colors(value: ?LinearGradient): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         let array: Array<(LinearGradient, Int32)> = [(tmpValue, 1)]
         colors(array)
         this

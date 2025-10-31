@@ -31,13 +31,13 @@ func generateProvide(input: Tokens, provideIdentifier!: Tokens = Tokens()) {
     checkStateKindAndInit(input, StateKind.ProvideTy)
     let varDecl = (parseDecl(input) as VarDecl).getOrThrow()
     let identTok: Token = varDecl.identifier
-    stateManageHandler.stateInformation.add(mangle(identTok.value), (VariableKind.ProvideTy, varDecl))
+    STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.ProvideTy, varDecl))
 
     if (provideIdentifier.size > 0) {
         let expr = parseExpr(provideIdentifier)
         checkConsumeIdentifier(expr)
         let provideIdentifierStr = (expr as LitConstExpr).getOrThrow().literal.value
-        stateManageHandler.provideVarDeclsMap.add(identTok.value, provideIdentifierStr)
+        STATE_MANAGE_HANDLER.provideVarDeclsMap.add(identTok.value, provideIdentifierStr)
     }
 
     return genProp(varDecl, StateKind.ProvideTy)

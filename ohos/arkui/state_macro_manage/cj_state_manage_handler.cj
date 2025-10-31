@@ -29,7 +29,7 @@ class StateManageHandler {
      * stateInformation:
      * [(varDeclName, stateKind*varDecl)*]
      */
-    var compWithStateInfo: HashMap<String, HashMap<String, (VariableKind, VarDecl)>> = HashMap<String, HashMap<String, (VariableKind, 
+    var compWithStateInfo: HashMap<String, HashMap<String, (VariableKind, VarDecl)>> = HashMap<String, HashMap<String, (VariableKind,
             VarDecl)>>()
     var stateInformation: HashMap<String, (VariableKind, VarDecl)> = HashMap<String, (VariableKind, VarDecl)>()
 
@@ -100,10 +100,10 @@ class StateManageHandler {
 
     private init() {}
 
-    private static let instance = StateManageHandler()
+    private static let INSTANCE = StateManageHandler()
 
     static func getInstance() {
-        return instance
+        return INSTANCE
     }
 
     // Component id, each Component has an unique id.
@@ -145,7 +145,7 @@ class StateManageHandler {
     let consumeVarDeclsMap = HashMap<String, String>()
     let provideVarDeclsMap = HashMap<String, String>()
 
-    public func clearGlobalInComponent() {
+    public func clearGlobalInComponent(): Unit {
         watchDeclare.clear()
         stateInformation.clear()
         builderSingleInfo.clear()
@@ -155,7 +155,7 @@ class StateManageHandler {
         customDialogInfo.clear()
     }
 
-    public let entryFileId = HashSet<UInt32>()
+    public let entryFileId: HashSet<UInt32> = HashSet<UInt32>()
 }
 
-let stateManageHandler = StateManageHandler.getInstance()
+let STATE_MANAGE_HANDLER = StateManageHandler.getInstance()

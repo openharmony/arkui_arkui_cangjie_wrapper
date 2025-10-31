@@ -93,7 +93,7 @@ public class Span <: BaseSpan {
     /**
      * Called when text is entered in span.
      * Creates a span with the specified text content.
-     * 
+     *
      * @param { ?ResourceStr } value - The text content of the span.
      */
     @!APILevel[
@@ -111,16 +111,17 @@ public class Span <: BaseSpan {
     /**
      * Called when the font size is set.
      * Sets the font size for the text in the span.
-     * 
+     *
      * @param { ?Length } value - The font size.
      * @returns { This } Returns Span component instance itself.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkSpanSetFontSize(v.value, getLengthUnitOrFp(v).getValue())
@@ -131,16 +132,17 @@ public class Span <: BaseSpan {
     /**
      * Called when the font color is set.
      * Sets the font color for the text in the span.
-     * 
+     *
      * @param { ?ResourceColor } value - The font color.
      * @returns { This } Returns Span component instance itself.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkSpanSetFontColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -150,7 +152,7 @@ public class Span <: BaseSpan {
     /**
      * Called when the font style of a font is set.
      * Sets the font style (normal or italic) for the text in the span.
-     * 
+     *
      * @param { ?FontStyle } value - The font style.
      * @returns { This } Returns Span component instance itself.
      */
@@ -168,7 +170,7 @@ public class Span <: BaseSpan {
     /**
      * Called when the font weight is set.
      * Sets the font weight (thickness) for the text in the span.
-     * 
+     *
      * @param { ?FontWeight } value - The font weight.
      * @returns { This } Returns Span component instance itself.
      */
@@ -188,7 +190,7 @@ public class Span <: BaseSpan {
     /**
      * Called when the font list of text is set.
      * Sets the font family for the text in the span.
-     * 
+     *
      * @param { ?ResourceStr } value - The font family.
      * @returns { This } Returns Span component instance itself.
      */
@@ -230,7 +232,7 @@ public class Span <: BaseSpan {
     /**
      * Called when the distance between text fonts is set.
      * Sets the letter spacing (tracking) for the text in the span.
-     * 
+     *
      * @param { ?Length } value - The letter spacing.
      * @returns { This } Returns Span component instance itself.
      */
@@ -249,7 +251,7 @@ public class Span <: BaseSpan {
     /**
      * Called when the type of letter in the text font is set.
      * Sets the text case transformation (e.g., uppercase, lowercase) for the text in the span.
-     * 
+     *
      * @param { ?TextCase } value - The text case.
      * @returns { This } Returns Span component instance itself.
      */

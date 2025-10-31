@@ -15,6 +15,6 @@
 
 package ohos.arkui.component.canvas
 
-let FontWights = ["normal", "bold", "lighter", "bolder", "100", "200", "300", "400", "500", "600", "700", "800", "900"]
-let FontStyles = [ "italic", "normal" ]
-let FontFamilys = [ "sans-serif", "serif", "monospace" ]
+let FONT_WEIGHTS = ["normal", "bold", "lighter", "bolder", "100", "200", "300", "400", "500", "600", "700", "800", "900"]
+let FONT_STYLES = [ "italic", "normal" ]
+let FONT_FAMILIES = [ "sans-serif", "serif", "monospace" ]

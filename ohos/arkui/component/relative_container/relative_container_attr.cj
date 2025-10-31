@@ -31,7 +31,7 @@ sealed interface RelativeContainerAttribute <: CommonMethod<RelativeContainerAtt
     *
     * @param { ?Array<GuideLineStyle> } value
     * @returns { RelativeContainerAttribute }
-    * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
+    * @throws { BusinessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
     @!APILevel[
         since: "22",
@@ -44,7 +44,7 @@ sealed interface RelativeContainerAttribute <: CommonMethod<RelativeContainerAtt
     *
     * @param { ?Array<BarrierStyle> } value
     * @returns { RelativeContainerAttribute }
-    * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
+    * @throws { BusinessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
     @!APILevel[
         since: "22",

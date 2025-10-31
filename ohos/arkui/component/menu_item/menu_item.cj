@@ -48,8 +48,8 @@ foreign {
     func FfiOHOSAceFrameworkMenuItemOnChange(callback: Int64): Unit
 }
 
-let defaultMenuItemFontColor = 0x99000000
-let defaultMenuItemContentFontColor = 0xE5000000
+let DEFAULT_MENU_ITEM_FONT_COLOR = 0x99000000
+let DEFAULT_MENU_ITEM_CONTENT_FONT_COLOR = 0xE5000000
 
 /**
  * A component that represents a single item within a Menu component, typically with text, icons, and optional submenus.
@@ -218,7 +218,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     ]
     public func contentFontColor(value: ?ResourceColor): This {
         unsafe {
-            let color = transAppResourceToResourceColor(value ?? defaultMenuItemContentFontColor)
+            let color = transAppResourceToResourceColor(value ?? DEFAULT_MENU_ITEM_CONTENT_FONT_COLOR)
             FfiOHOSAceFrameworkMenuItemContentFontColor(color.toUInt32())
         }
         this
@@ -272,7 +272,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     ]
     public func labelFontColor(value: ?ResourceColor): This {
         unsafe {
-            let color = transAppResourceToResourceColor(value ?? defaultMenuItemFontColor)
+            let color = transAppResourceToResourceColor(value ?? DEFAULT_MENU_ITEM_FONT_COLOR)
             FfiOHOSAceFrameworkMenuItemLabelFontColor(color.toUInt32())
         }
         this

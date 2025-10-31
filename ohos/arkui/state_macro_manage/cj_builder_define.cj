@@ -24,7 +24,7 @@ public macro Builder(input: Tokens): Tokens {
     let decl = parseDecl(input)
 
     if ((decl as FuncDecl).isNone()) {
-        diag.fatal(input, "@Builder should decorate function.")
+        DIAG.fatal(input, "@Builder should decorate function.")
     }
     let funcDecl = (decl as FuncDecl).getOrThrow()
 
@@ -32,9 +32,11 @@ public macro Builder(input: Tokens): Tokens {
     try {
         let retType = funcDecl.declType
         if (retType.toTokens().toString() != "Unit") {
-            diag.fatal(input, "The declaration type of the @Builder function should be Unit")
+            DIAG.fatal(input, "The declaration type of the @Builder function should be Unit")
         }
-    } catch (e: ASTException) {}
+    } catch (e: ASTException) {
+        ()
+    }
 
     let modifier = funcDecl.modifiers
     let funcIdent = funcDecl.identifier
@@ -43,7 +45,9 @@ public macro Builder(input: Tokens): Tokens {
     try {
         let gen = funcDecl.genericParam
         generics = Some(quote($gen))
-    } catch (e: ASTException) {}
+    } catch (e: ASTException) {
+        ()
+    }
     let params = funcDecl.funcParams
     let genConstraints = if (funcDecl.genericConstraint.size != 0) {
         var genCons = Tokens()
@@ -94,7 +98,7 @@ public macro Builder(input: Tokens): Tokens {
         )
     }
 
-    stateManageHandler.builderSingleInfo.add(funcIdent.value)
+    STATE_MANAGE_HANDLER.builderSingleInfo.add(funcIdent.value)
 
     funcBody = bindBuilderCtx(funcBody, quote(thisView))
     let innerFunc = createMethodDeclaration(
@@ -124,7 +128,9 @@ func generateBuilderParam(param: FuncParam): Tokens {
     try {
         let expr = param.expr
         param.expr = CallExpr(quote(ObservedProperty<$paramType>("", $expr)))
-    } catch (e: ASTException) {}
+    } catch (e: ASTException) {
+        ()
+    }
     param.toTokens()
 }
 
@@ -144,9 +150,9 @@ func generateInnerFuncIdent(name: String): Token {
 /**
  * Supporting @Builder function as parameters in some common properties
  */
-let bindFunctions: HashMap<String, Int64> = HashMap<String, Int64>(
+let BIND_FUNCTIONS: HashMap<String, Int64> = HashMap<String, Int64>(
     [("bindContentCover", 1), ("bindSheet", 1), ("description", 0)])
-let bindFunctionsNamedParam: HashMap<String, Int64> = HashMap<String, Int64>([("bindMenu", 0), ("bindContextMenu", 0)])
+let BIND_FUNCTION_NAMED_PARAM: HashMap<String, Int64> = HashMap<String, Int64>([("bindMenu", 0), ("bindContextMenu", 0)])
 
 class VisitBuilder <: Visitor {
     var ident: ArrayList<String> = ArrayList<String>()
@@ -161,11 +167,11 @@ class VisitBuilder <: Visitor {
             return
         }
         var ma = (curNode.callFunc as MemberAccess).getOrThrow()
-        if (let Some(index) <- bindFunctions.get(ma.field.value)) {
+        if (let Some(index) <- BIND_FUNCTIONS.get(ma.field.value)) {
             var builder = curNode.arguments[index].expr
             var callBind = CallExpr(quote(bind($builder, $thisView)))
             curNode.arguments[index].expr = callBind
-        } else if (let Some(index) <- bindFunctionsNamedParam.get(ma.field.value)) {
+        } else if (let Some(index) <- BIND_FUNCTION_NAMED_PARAM.get(ma.field.value)) {
             if (getArgumentIdentifier(curNode.arguments[index]).value == "builder") {
                 var builder = curNode.arguments[index].expr
                 var callBind = CallExpr(quote(bind($builder, $thisView)))

@@ -344,12 +344,12 @@ class CallbackCJWebEvent <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJWebEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJWebEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<FfiWebEvent>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJWebEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJWebEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -565,7 +565,7 @@ public class WebResourceRequest {
                     var vstr = value.toString()
                     result.add(Header(kstr, vstr))
                 } catch (e: Exception) {
-                    AppLog.debug("getRequestHeader Exception: ${e.message}")
+                    APP_LOG.debug("getRequestHeader Exception: ${e.message}")
                 }
             }
         }

@@ -365,7 +365,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     *
     * @param { ?Array<GuideLineStyle> } value
     * @returns { This }
-    * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
+    * @throws { BusinessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
     @!APILevel[
         since: "22",
@@ -383,7 +383,7 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     *
     * @param { ?Array<BarrierStyle> } value
     * @returns { This }
-    * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
+    * @throws { BusinessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
     */
     @!APILevel[
         since: "22",

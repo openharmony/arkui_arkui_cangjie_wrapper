@@ -51,7 +51,7 @@ public class ViewStackProcessor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public static func AllocateNewElmetIdForNextComponent(): Int64 {
+    public static func allocateNewElmetIdForNextComponent(): Int64 {
         unsafe {
             Int64(FfiOHOSAceFrameworkAllocateNewElmetIdForNextComponent())
         }
@@ -69,7 +69,7 @@ public class ViewStackProcessor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public static func StartGetAccessRecordingFor(elmtId: Int64): Unit {
+    public static func startGetAccessRecordingFor(elmtId: Int64): Unit {
         unsafe {
             FfiOHOSAceFrameworkStartGetAccessRecordingFor(elmtId)
         }
@@ -80,7 +80,7 @@ public class ViewStackProcessor {
      * note this can be the same as the currently created elmtId (top of stack)
      * but also a different one (in case a whole subtree gets accounted its root elmtId)
      *
-     * returns the elmtId given by StartGetAccessRecordingFor -1 no access recording
+     * returns the elmtId given by startGetAccessRecordingFor -1 no access recording
      *
      * @returns { Int64 } The element ID.
      */
@@ -89,7 +89,7 @@ public class ViewStackProcessor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public static func GetElmtIdToAccountFor(): Int64 {
+    public static func getElmtIdToAccountFor(): Int64 {
         unsafe {
             Int64(FfiOHOSAceFrameworkGetElmtIdToAccountFor())
         }
@@ -106,7 +106,7 @@ public class ViewStackProcessor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public static func StopGetAccessRecording(): Unit {
+    public static func stopGetAccessRecording(): Unit {
         unsafe {
             FfiOHOSAceFrameworkStopGetAccessRecording()
         }
@@ -125,7 +125,7 @@ public class ViewStackProcessor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public static func ImplicitPopBeforeContinue(): Unit {
+    public static func implicitPopBeforeContinue(): Unit {
         unsafe {
             FfiOHOSAceFrameworkImplicitPopBeforeContinue()
         }

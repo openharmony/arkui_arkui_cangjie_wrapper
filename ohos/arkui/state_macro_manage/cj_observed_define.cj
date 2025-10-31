@@ -59,7 +59,7 @@ public macro Observed(input: Tokens): Tokens {
     let classIdent = observedClass.identifier
     let classBody = observedClass.body.decls
 
-    stateManageHandler.observedWithPublishInfo.add(classIdent.value, stateManageHandler.publishInformation)
+    STATE_MANAGE_HANDLER.observedWithPublishInfo.add(classIdent.value, STATE_MANAGE_HANDLER.publishInformation)
 
     // generate set function, it will assign new value to all publish declarations.
     let memberSetFunc = generateSetFunc(quote($classIdent))
@@ -68,10 +68,10 @@ public macro Observed(input: Tokens): Tokens {
     let initFunc = generateObservedInitFunc(observedClass)
 
     // reset global var declaration in macro
-    stateManageHandler.publishInformation.clear()
+    STATE_MANAGE_HANDLER.publishInformation.clear()
 
     // emit all error in macro
-    diag.emit()
+    DIAG.emit()
 
     createClassDeclaration(
         modifiers: quote($classModifier),
@@ -88,14 +88,14 @@ public macro Observed(input: Tokens): Tokens {
 func checkObserved(input: Tokens) {
     let decl = parseDecl(input)
     if (!(decl is ClassDecl)) {
-        diag.fatal(input, "Only class is supported in @Observed.")
+        DIAG.fatal(input, "Only class is supported in @Observed.")
     }
     let classDecl = (decl as ClassDecl).getOrThrow()
     checkInitFunc(classDecl)
     var superTypes = classDecl.superTypes
 
     if (superTypes.size > 0) {
-        diag.error(input, "Observed class should not inherit other class or interface.")
+        DIAG.error(input, "Observed class should not inherit other class or interface.")
     }
 }
 
@@ -105,7 +105,7 @@ func generateSetFunc(classIdent: Tokens): Tokens {
     )
 
     // Assign new values to publish declarations
-    for (item in stateManageHandler.publishInformation.values()) {
+    for (item in STATE_MANAGE_HANDLER.publishInformation.values()) {
         let memberItem = item.identifier
         body = body + quote(
             this.$memberItem = realValue.$memberItem
@@ -193,7 +193,7 @@ func generateNormalVarDecl(varDecl: VarDecl): MacroExpandInitInfo {
 
 func genSingleInitParamAndAssign(varDecl: VarDecl): (Tokens, Tokens, Tokens) {
     let ident = varDecl.identifier
-    match (stateManageHandler.publishInformation.get(ident.value)) {
+    match (STATE_MANAGE_HANDLER.publishInformation.get(ident.value)) {
         case None => generateNormalVarDecl(varDecl)
         case Some(v) => generatePublishVarDecl(v, varDecl)
     }

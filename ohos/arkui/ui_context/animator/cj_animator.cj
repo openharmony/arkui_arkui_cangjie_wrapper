@@ -190,7 +190,7 @@ public enum AnimatorDirection {
 public class AnimatorOptions {
     /**
      * Delay for the animation start. The default value indicates no delay.
-     * 
+     *
      * @default 0
      */
     @!APILevel[
@@ -217,7 +217,7 @@ public class AnimatorOptions {
      * cubic-bezier(x1, y1, x2, y2) You can customize an animation speed curve in the cubic-bezier() function. The x and y values of each input parameter must be between 0 and 1.
      * Step curve. The number must be set and only an integer is supported, step-position is optional. It can be set to start or end. The default value is end.
      * interpolating-spring(velocity, mass, stiffness, damping), interpolating spring curve.
-     * 
+     *
      * @default ease
      */
     @!APILevel[
@@ -227,7 +227,7 @@ public class AnimatorOptions {
     public var easing: String
     /**
      * Delay for the animation start. The default value indicates no delay.
-     * 
+     *
      * @default 0
      */
     @!APILevel[
@@ -255,7 +255,7 @@ public class AnimatorOptions {
     public var direction: AnimatorDirection
     /**
      * Number of times the animation will be played. number indicates a fixed number of playback operations, and -1 an unlimited number of playback operations.
-     * 
+     *
      * @default 1
      */
     @!APILevel[
@@ -265,7 +265,7 @@ public class AnimatorOptions {
     public var iterations: Int32
     /**
      * Starting point of animator interpolation.
-     * 
+     *
      * @default 0
      */
     @!APILevel[
@@ -275,7 +275,7 @@ public class AnimatorOptions {
     public var begin: Float64
     /**
      * Ending point of Dynamic Interpolation
-     * 
+     *
      * @default 1
      */
     @!APILevel[

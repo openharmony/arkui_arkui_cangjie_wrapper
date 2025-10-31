@@ -121,7 +121,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public func subscribeEx(observer: Observer) {
+    public func subscribeEx(observer: Observer): Unit {
         subscribe(observer)
         let observedObject = internalValue as ObservedComplexAbstract
         match (observedObject) {
@@ -143,7 +143,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public func unsubscribeEx(observer: Observer) {
+    public func unsubscribeEx(observer: Observer): Unit {
         unsubscribe(observer)
         let observedObject = internalValue as ObservedComplexAbstract
         match (observedObject) {

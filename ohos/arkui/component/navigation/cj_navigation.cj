@@ -577,7 +577,7 @@ public class NavPathStack <: RemoteData {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func pushPathByName(name: ?String, param: ?String, animated!: ?Bool = None) {
+    public func pushPathByName(name: ?String, param: ?String, animated!: ?Bool = None): Unit {
         let tmpName = name ?? ""
         let tmpParam = param ?? ""
         pushPath(NavPathInfo(name: tmpName, param: tmpParam), options: NavigationOptions(animated: animated))

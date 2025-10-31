@@ -29,11 +29,11 @@ public macro Watch(watcher: Tokens, watched: Tokens): Tokens {
     if (isMangled(identifierValue)) {
         // @Watch @State var cnt: Int64 = 0
         let originDeclType = generateOriginDeclType(declType.toTokens().toString())
-        stateManageHandler.watchDeclare.add((quote($originDeclType), quote($identifier), watcher))
+        STATE_MANAGE_HANDLER.watchDeclare.add((quote($originDeclType), quote($identifier), watcher))
     } else {
         // @State @Watch var cnt: Int64 = 0
         let identTokenAssociated = generateAssociatedToken(identifierValue)
-        stateManageHandler.watchDeclare.add((quote($declType), quote($identTokenAssociated), watcher))
+        STATE_MANAGE_HANDLER.watchDeclare.add((quote($declType), quote($identTokenAssociated), watcher))
     }
     return watched
 }
@@ -66,9 +66,9 @@ func checkWatch(watcher: Tokens, watched: Tokens) {
     let watchFunc = parseExpr(watcher)
     let watchDecl = parseDecl(watched)
     if (!(watchFunc is RefExpr)) {
-        diag.error(quote($watchFunc), "@Watch attr should be a ref expression.")
+        DIAG.error(quote($watchFunc), "@Watch attr should be a ref expression.")
     }
     if (!(watchDecl is VarDecl)) {
-        diag.fatal(quote($watchDecl), "@Watch should modify a variable declaration.")
+        DIAG.fatal(quote($watchDecl), "@Watch should modify a variable declaration.")
     }
 }

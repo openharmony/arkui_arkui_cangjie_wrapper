@@ -251,7 +251,7 @@ public class ButtonInfo {
     }
 }
 
-func CreateCButtons(buttons: Array<ButtonInfo>): Option<CPointer<CButtonInfo>> {
+func createCButtons(buttons: Array<ButtonInfo>): Option<CPointer<CButtonInfo>> {
     let size = buttons.size
     var pButtons: CPointer<CButtonInfo> = unsafe { FfiPromptMallocButtons(size) }
     if (pButtons.isNull()) {
@@ -269,7 +269,7 @@ func CreateCButtons(buttons: Array<ButtonInfo>): Option<CPointer<CButtonInfo>> {
     }
 }
 
-unsafe func DestoryCButtons(pButtons: CPointer<CButtonInfo>, size: Int64) {
+unsafe func destoryCButtons(pButtons: CPointer<CButtonInfo>, size: Int64) {
     for (i in 0..size) {
         let cButton = pButtons.read(i)
         LibC.free(cButton.text)
@@ -1486,7 +1486,7 @@ func parseShowToastOptions(options: ShowToastOptions): NativeShowToastOptions {
 }
 
 func parseShowDialogOptions(options: ShowDialogOptions): NativeShowDialogOptions {
-    var pButtons: CPointer<CButtonInfo> = CreateCButtons(options.buttons).getOrThrow(
+    var pButtons: CPointer<CButtonInfo> = createCButtons(options.buttons).getOrThrow(
         {
             => BusinessException(100001, "Fail to create buttons")
         })
@@ -1527,7 +1527,7 @@ func parseShowDialogOptions(options: ShowDialogOptions): NativeShowDialogOptions
 }
 
 func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions {
-    var pButtons: CPointer<CButtonInfo> = CreateCButtons(options.buttons).getOrThrow(
+    var pButtons: CPointer<CButtonInfo> = createCButtons(options.buttons).getOrThrow(
         {
             => BusinessException(100001, "Fail to create buttons")
         })
@@ -1553,7 +1553,7 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
 ]
 public class PromptAction {
     private var instanceId_: Int64 = 0
-    private static let defaultCallback = {_: Option<BusinessException>, _: Option<Int32> =>}
+    private static let DEFAULT_CALLBACK = {_: Option<BusinessException>, _: Option<Int32> =>}
 
     protected init(instanceId: Int64) {
         this.instanceId_ = instanceId
@@ -1626,7 +1626,7 @@ public class PromptAction {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func showDialog(option: ShowDialogOptions, callback!: ShowDialogCallBack = defaultCallback) {
+    public func showDialog(option: ShowDialogOptions, callback!: ShowDialogCallBack = DEFAULT_CALLBACK): Unit {
         unsafe {
             let cOption = parseShowDialogOptions(option)
             let wrapper = {
@@ -1640,7 +1640,7 @@ public class PromptAction {
             FfiPromptShowDialogWithOption(cOption, lambdaData.getID())
             cOption.title.free()
             cOption.message.free()
-            DestoryCButtons(cOption.buttons, Int64(cOption.buttonsSize))
+            destoryCButtons(cOption.buttons, Int64(cOption.buttonsSize))
         }
     }
 
@@ -1657,7 +1657,7 @@ public class PromptAction {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func showActionMenu(option: ActionMenuOptions, callback!: ShowActionMenuCallBack = defaultCallback) {
+    public func showActionMenu(option: ActionMenuOptions, callback!: ShowActionMenuCallBack = DEFAULT_CALLBACK): Unit {
         unsafe {
             let cOption = parseActionMenuOptions(option)
             let wrapper = {
@@ -1669,7 +1669,7 @@ public class PromptAction {
             let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper)
             FfiPromptShowActionMenuWithOption(cOption, lambdaData.getID())
             cOption.title.free()
-            DestoryCButtons(cOption.buttons, Int64(cOption.buttonsSize))
+            destoryCButtons(cOption.buttons, Int64(cOption.buttonsSize))
         }
     }
 }

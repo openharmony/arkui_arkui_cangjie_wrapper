@@ -30,7 +30,7 @@ import ohos.labels.{APILevel, Hide}
 ]
 @!Hide
 public class SubscriberManager {
-    private static let instance = SubscriberManager()
+    private static let INSTANCE = SubscriberManager()
 
     private var nextStateId: Int64 = 0
     private var subscriberById: HashMap<Int64, Observer> = HashMap<Int64, Observer>()
@@ -46,7 +46,7 @@ public class SubscriberManager {
     ]
     @!Hide
     public static func getInstance(): SubscriberManager {
-        instance
+        INSTANCE
     }
 
     protected func makeId(): Int64 {
@@ -114,7 +114,7 @@ public class SubscriberManager {
     public func add(value: Observer): Bool {
         let id = value.id()
         if (this.has(id)) {
-            BaseLog.debug("this has same id ${id}")
+            BASE_LOG.debug("this has same id ${id}")
             return false
         }
         this.subscriberById.add(id, value)

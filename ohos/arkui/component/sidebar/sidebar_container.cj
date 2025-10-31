@@ -281,12 +281,12 @@ public class DividerStyle {
 
     func getNative(): CJDividerStyle {
         if (let Some(v) <- color) {
-            return CJDividerStyle((strokeWidth ?? 1.vp).value, 
+            return CJDividerStyle((strokeWidth ?? 1.vp).value,
                 (strokeWidth ?? 1.vp).unitType.getValue(), true,
                 transAppResourceToResourceColor(v), (startMargin ?? 0.vp).value, (startMargin ?? 0.vp).unitType.getValue(), (endMargin ?? 0.vp).value,
                 (endMargin ?? 0.vp).unitType.getValue())
         }
-        return CJDividerStyle((strokeWidth ?? 1.vp).value, 
+        return CJDividerStyle((strokeWidth ?? 1.vp).value,
             (strokeWidth ?? 1.vp).unitType.getValue(), false, 0, (startMargin ?? 0.vp).value,
             (startMargin ?? 0.vp).unitType.getValue(), (endMargin ?? 0.vp).value, (endMargin ?? 0.vp).unitType.getValue())
     }
@@ -343,7 +343,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     ]
     public init(sideBarType!: ?SideBarContainerType = None, child!: () -> Unit = {=>}) {
         let tmpSideBarType = sideBarType ?? SideBarContainerType.Embed
-        
+
         unsafe {
             FfiOHOSAceFrameworkSideBarCreate(tmpSideBarType.getValue())
         }
@@ -380,7 +380,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func controlButton(value: ?ButtonStyle): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             try (shownStr = LibC.mallocCString(transResourceMediaToString((tmpValue.icons ?? ButtonIconOptions(shown: "", hidden: "")).shown ?? "")).asResource(),
                 hiddenStr = LibC.mallocCString(transResourceMediaToString((tmpValue.icons ?? ButtonIconOptions(shown: "", hidden: "")).hidden ?? "")).asResource(),
@@ -580,7 +580,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
 
     protected override func widthInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkStackSetWidth(value_.value, value_.unitType.getValue())
@@ -592,7 +592,7 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
 
     protected override func heightInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkStackSetHeight(value_.value, value_.unitType.getValue())

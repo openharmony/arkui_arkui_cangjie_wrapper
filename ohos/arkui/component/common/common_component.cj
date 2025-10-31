@@ -943,8 +943,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func markAnchorInner(xAxis: ?Length, yAxis: ?Length): T {
-        let tmpX = xAxis ?? throw IllegalArgumentException("The type now is not supported.")
-        let tmpY = yAxis ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpX = xAxis ?? throw BusinessException(100001, "The type now is not supported.")
+        let tmpY = yAxis ?? throw BusinessException(100001, "The type now is not supported.")
         var x = transAppResourceToLength(tmpX)
         var y = transAppResourceToLength(tmpY)
         unsafe {
@@ -987,7 +987,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * @param { ?AlignRuleOptions } value
      * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
-     * @throws { BussnessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
+     * @throws { BusinessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[
         since: "22",
@@ -1069,7 +1069,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func flexBasisInner(value: ?Length): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetFlexBasis(v.value, v.unitType.getValue())
@@ -1232,7 +1232,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         let vecFFi = FFIVectorNativeRectangle(tmpValue.size)
         var index = 0
         for (rect in tmpValue) {
-            BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
+            BASE_LOG.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++
         }
@@ -1291,7 +1291,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func borderWidthInner(value: ?Length): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         var v = transAppResourceToLength(tmpValue)
         if (v.unitType.getValue() == LENGTH_PERCENT) {
             throw BusinessException(100023, "Percentage values are not supported.")
@@ -1318,7 +1318,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func borderWidthInner(edgeWidths: ?EdgeWidths): T {
-        let tmpedgeWidths = edgeWidths ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpedgeWidths = edgeWidths ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetBorderWidthWithCJEdge(
                 CJEdge((tmpedgeWidths.top ?? 0.vp).value, (tmpedgeWidths.top ?? 0.vp).unitType.getValue(), (tmpedgeWidths.right ?? 0.vp).value,
@@ -2382,7 +2382,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func clipShapeInner(value: ?BaseShape): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetClipByShape(tmpValue.getID())
         }
@@ -2806,7 +2806,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     protected open func radialGradientInner(center: ?(Length, Length), radius: ?Length,
         colors: ?Array<(ResourceColor, Float64)>, repeating: ?Bool): T {
         let tmpCenter = center ?? (0.0.px, 0.0.px)
-        let tmpRadius = radius ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpRadius = radius ?? throw BusinessException(100001, "The type now is not supported.")
         let tmpColors = colors ?? []
         var radius_ = transAppResourceToLength(tmpRadius)
         let cCenter = CTupleLength(tmpCenter[0].value, tmpCenter[0].unitType.getValue(), tmpCenter[1].value,
@@ -3177,7 +3177,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func transitionInner(value: ?TransitionEffect, onFinish: TransitionFinishCallback): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         let lambdaData = Callback1Param<Bool, Unit>(onFinish)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractTransitionWithBack(tmpValue.getID(), lambdaData.getID())
@@ -3186,7 +3186,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func transitionInner(value: ?TransitionEffect): T {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkViewAbstractTransition(tmpValue.getID())
         }

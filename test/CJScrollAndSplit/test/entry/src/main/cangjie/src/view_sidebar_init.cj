@@ -187,7 +187,7 @@ class ViewSideBarInit {
 //                Hilog.info(1,"text_source", "getResourceLength: " + text3.value.toString())
 //                Hilog.info(1,"text_source", "getResourceColor: " + text4.toUInt32().toString())
 //                Hilog.info(1,"text_media", "getResourceMedia: " + text5)
-                ViewStackProcessor.ImplicitPopBeforeContinue()
+                ViewStackProcessor.implicitPopBeforeContinue()
                 PersistentStorage.deleteProp("ikun")
                 PersistentStorage.keys()
          }).id("AppResource")

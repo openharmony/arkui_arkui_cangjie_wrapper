@@ -39,13 +39,13 @@ public macro CustomDialog(input: Tokens): Tokens {
     let setDialogControllerFunc = handleSetDialogControllerFunc()
 
     // record state with component and state kind
-    stateManageHandler.compWithStateInfo.add(classIdent.value, stateManageHandler.stateInformation.clone())
+    STATE_MANAGE_HANDLER.compWithStateInfo.add(classIdent.value, STATE_MANAGE_HANDLER.stateInformation.clone())
 
     // reset global var declaration in macro
-    stateManageHandler.clearGlobalInComponent()
+    STATE_MANAGE_HANDLER.clearGlobalInComponent()
 
     // emit all error in component
-    diag.emit()
+    DIAG.emit()
 
     // generate class after expand.
     createClassDeclaration(
@@ -69,7 +69,7 @@ class CustomDialogVarVisitor <: Visitor {
     protected func visit(varDecl: VarDecl): Unit {
         match (varDecl) {
             case varDecl: VarDecl where isNeeadGenerateCustomDialogOption(varDecl) =>
-                stateManageHandler.customDialogControllerVarName = varDecl.identifier.value
+                STATE_MANAGE_HANDLER.customDialogControllerVarName = varDecl.identifier.value
                 hasController = true
                 breakTraverse()
             case _ => ()
@@ -83,13 +83,13 @@ func checkCustomDialogController(classDecl: ClassDecl) {
     let visitor = CustomDialogVarVisitor()
     classDecl.traverse(visitor)
     if (!visitor.hasController) {
-        diag.error(quote($classDecl),
+        DIAG.error(quote($classDecl),
             "CustomDialog class must contain a property of the Option<CustomDialogController> type.")
     }
 }
 
 func handleSetDialogControllerFunc(): Tokens {
-    let varName = Token(TokenKind.IDENTIFIER, stateManageHandler.customDialogControllerVarName)
+    let varName = Token(TokenKind.IDENTIFIER, STATE_MANAGE_HANDLER.customDialogControllerVarName)
     return quote(
         public func setController(value: CustomDialogController) {
             this.$varName = value
@@ -105,7 +105,7 @@ func checkCustomDialogSyntax(input: Tokens) {
     }
     checkInitFunc(classDecl)
     if (classDecl.superTypes.size > 0) {
-        diag.error(input, "CustomDialog class should not inherit other class or interface.")
+        DIAG.error(input, "CustomDialog class should not inherit other class or interface.")
     }
     checkCustomDialogController(classDecl)
 }

@@ -63,7 +63,7 @@ public enum LeadingMarginType {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PlaceholderType(LeadingMarginPlaceholder)
-    | 
+    |
     /**
      * None.
      */
@@ -285,7 +285,7 @@ public class RichEditorTextStyle {
         fontWeight!: ?FontWeight = None,
         fontFamily!: ?ResourceStr = None,
         decoration!: ?TextDecorationOptions = None
-    ) {  
+    ) {
         this.fontColor = transAppResourceToResourceColor(fontColor ?? Color.Black)
         this.fontSize = transAppResourceToLength(fontSize ?? 16.vp)
         this.fontStyle = fontStyle ?? FontStyle.Normal
@@ -981,6 +981,7 @@ public class RichEditorController <: RichEditorBaseController {
      * @param { ?ResourceStr } content - text value.
      * @param { ?RichEditorTextSpanOptions } [options] - span info.
      * @returns { Int32 }
+     * @throws { BusinessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[
         since: "22",

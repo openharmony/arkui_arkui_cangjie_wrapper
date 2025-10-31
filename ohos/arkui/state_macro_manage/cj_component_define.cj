@@ -39,13 +39,13 @@ public macro Component(input: Tokens): Tokens {
     let purgeVariableFunc = handlePurgeVariable(classDecl)
 
     // record state with component and state kind
-    stateManageHandler.compWithStateInfo.add(classIdent.value, stateManageHandler.stateInformation.clone())
+    STATE_MANAGE_HANDLER.compWithStateInfo.add(classIdent.value, STATE_MANAGE_HANDLER.stateInformation.clone())
 
     // reset global var declaration in macro
-    stateManageHandler.clearGlobalInComponent()
+    STATE_MANAGE_HANDLER.clearGlobalInComponent()
 
     // emit all error in component
-    diag.emit()
+    DIAG.emit()
 
     // generate class after expand.
     createClassDeclaration(
@@ -80,7 +80,7 @@ func generateForEachCreate(callExpr: CallExpr, thisView: Tokens) {
     let lamExpr = match (paraExpr) {
         case v: LambdaExpr => v
         case _ =>
-            diag.fatal(quote($paraExpr), "there should be a lambda in ForEach component.")
+            DIAG.fatal(quote($paraExpr), "there should be a lambda in ForEach component.")
             throw IllegalArgumentException("there should be a lambda in ForEach component.")
     }
     var dataParam = Tokens()
@@ -127,7 +127,7 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
     let lamExpr = match (paraExpr) {
         case v: LambdaExpr => v
         case _ =>
-            diag.fatal(quote($paraExpr), "there should be a lambda in ForEach component.")
+            DIAG.fatal(quote($paraExpr), "there should be a lambda in ForEach component.")
             throw IllegalArgumentException("there should be a lambda in ForEach component.")
     }
     var paramType = lamExpr.funcParams[0].paramType
@@ -211,7 +211,7 @@ func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
             }
             if (isComponent(expr) && COMPONENT_NO_CHILD_CONSTRAINT_LIST.contains(componentName)) {
                 // throws the same error in ETS.
-                diag.error(quote($input), "${quote($input)}, The component ${componentName} cannot have any child.")
+                DIAG.error(quote($input), "${quote($input)}, The component ${componentName} cannot have any child.")
             }
             if (COMPONENT_TYPE_CONSTRAINT_LIST.contains(componentName)) {
                 checkChild(input, componentName)
@@ -231,7 +231,7 @@ func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
                 $input.create()
             )
         case _ =>
-            diag.fatal(quote($input), "The format of component is error.")
+            DIAG.fatal(quote($input), "The format of component is error.")
             return Tokens()
     }
     return Tokens()
@@ -281,7 +281,7 @@ func getGestureName(expr: Expr): Token {
         case v: CallExpr => return getGestureName(v.callFunc)
         case v: RefExpr => return v.identifier
         case _ =>
-            diag.fatal(quote($expr), "illegal expr in gesture.")
+            DIAG.fatal(quote($expr), "illegal expr in gesture.")
             return Token()
     }
 }
@@ -303,7 +303,7 @@ func generateGestureActions(name: Token, expr: Expr): Tokens {
     let callExpr = match (expr) {
         case v: CallExpr => v
         case _ =>
-            diag.fatal(quote($expr), "Gesture should be callExpression.")
+            DIAG.fatal(quote($expr), "Gesture should be callExpression.")
             throw IllegalArgumentException("Gesture should be callExpression.")
     }
 
@@ -327,7 +327,7 @@ func generateGestureArgs(expr: Expr): ArrayList<Argument> {
     let callExpr = match (expr) {
         case v: CallExpr => v
         case _ =>
-            diag.fatal(quote($expr), "Gesture should be callExpression.")
+            DIAG.fatal(quote($expr), "Gesture should be callExpression.")
             throw IllegalArgumentException("Gesture should be callExpression.")
     }
 
@@ -514,7 +514,7 @@ func generateComponentAttribute(input: Expr, baseCompRef: Tokens): Tokens {
                 return generateSingleAttribute(callExpr, baseCompRef) + quote($lambdaExpr) + NEWLINE
             }
         case _ =>
-            diag.fatal(quote($input),
+            DIAG.fatal(quote($input),
                 "Illegal tokens ${quote($input)}, attributes of components should be a call expression.")
             return Tokens()
     }
@@ -612,7 +612,7 @@ func getCompName(input: Expr): Tokens {
             return getCompName(memAccess.baseExpr)
         case v: RefExpr => return quote($input)
         case _ =>
-            diag.fatal(quote($input), "The format of component is error.")
+            DIAG.fatal(quote($input), "The format of component is error.")
             return Tokens()
     }
 }
@@ -726,7 +726,7 @@ func handleRender(input: Expr, thisView: Tokens): Tokens {
         if (isContainAnimation(input)) {
             parseAnimationEntry(input)
         }
-        if (stateManageHandler.isContainerComponent(compName) && hasChildInParams(input)) {
+        if (STATE_MANAGE_HANDLER.isContainerComponent(compName) && hasChildInParams(input)) {
             parseChildInParams(input)
             return thisView + quote(.observeComponentCreation({elmtId, isInitialRender =>
                     $input
@@ -753,7 +753,7 @@ func generateArgs(identifier: Token, argValue: Expr, argName: Token) {
     } else {
         quote($argName:)
     }
-    match (stateManageHandler.stateInformation.get(mangle(identifier.value))) {
+    match (STATE_MANAGE_HANDLER.stateInformation.get(mangle(identifier.value))) {
         case Some(v) =>
             let variableKind = v[0]
             match (variableKind) {
@@ -790,7 +790,7 @@ func generateCustomComponentArgs(argValue: Expr, argName: Token): Tokens {
                  * Son(arg: $OBSERVED_PROPERTY("", arg))
                  */
                 case v: RefExpr where v.identifier.value == "this" =>
-                    if (stateManageHandler.stateInformation.contains(mangle(identifier.value))) {
+                    if (STATE_MANAGE_HANDLER.stateInformation.contains(mangle(identifier.value))) {
                         return generateArgs(identifier, argValue, argName)
                     } else {
                         return quote(, $formatArg $OBSERVED_PROPERTY("", $argValue))
@@ -806,9 +806,9 @@ func generateCustomComponentArgs(argValue: Expr, argName: Token): Tokens {
  * example
  * SubComponent(cnt: 0)
  * =>
- * ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+ * ViewStackProcessor.startGetAccessRecordingFor(ViewStackProcessor.allocateNewElmetIdForNextComponent())
  * CustomView.create(SubComponent(this, cnt: 0))
- * ViewStackProcessor.StopGetAccessRecording()
+ * ViewStackProcessor.stopGetAccessRecording()
  */
 @When[pipeline == "NG"]
 func handleCustomRender(input: Expr, thisView: Tokens): Tokens {
@@ -831,10 +831,10 @@ func getComponentType(input: Expr): ComponentType {
             if (MACRO_EXPAND_COMPONENTS.contains(field)) {
                 return ComponentType.BuiltInComponent
             }
-            if (stateManageHandler.isInMacroComponents(field)) {
+            if (STATE_MANAGE_HANDLER.isInMacroComponents(field)) {
                 return ComponentType.CustomComponent
             }
-            if (stateManageHandler.isInBuilderComponents(field) || stateManageHandler.isInBuilderParams(field)) {
+            if (STATE_MANAGE_HANDLER.isInBuilderComponents(field) || STATE_MANAGE_HANDLER.isInBuilderParams(field)) {
                 return ComponentType.BuilderComponent
             }
             return getComponentType(memAccess.baseExpr)
@@ -843,10 +843,10 @@ func getComponentType(input: Expr): ComponentType {
             if (MACRO_EXPAND_COMPONENTS.contains(ref)) {
                 return ComponentType.BuiltInComponent
             }
-            if (stateManageHandler.isInMacroComponents(ref)) {
+            if (STATE_MANAGE_HANDLER.isInMacroComponents(ref)) {
                 return ComponentType.CustomComponent
             }
-            if (stateManageHandler.isInBuilderComponents(ref) || stateManageHandler.isInBuilderParams(ref)) {
+            if (STATE_MANAGE_HANDLER.isInBuilderComponents(ref) || STATE_MANAGE_HANDLER.isInBuilderParams(ref)) {
                 return ComponentType.BuilderComponent
             }
             return ComponentType.MethodCall
@@ -856,7 +856,7 @@ func getComponentType(input: Expr): ComponentType {
 }
 
 func printUISyntaxError(value: Node) {
-    diag.error(quote($value),
+    DIAG.error(quote($value),
         "Only UI component syntax can be written in build method. " + "${quote($value)} does not meet UI component.")
 }
 
@@ -897,29 +897,29 @@ func generateFuncBody(funcBody: ArrayList<Node>, thisView: Tokens): Tokens {
  * }
  * =>
  * observeComponentCreation({elmtId, isInitialRender =>
- *     ViewStackProcessor.StartGetAccessRecordingFor(elmtId)
+ *     ViewStackProcessor.startGetAccessRecordingFor(elmtId)
  *     If.create()
  *     if (condition) {
  *         this.ifElseBranchUpdateFunction(0, { =>
  *             this.observeComponentCreation({elmtId, isInitialRender =>
- *                 ViewStackProcessor.StartGetAccessRecordingFor(elmtId)
+ *                 ViewStackProcessor.startGetAccessRecordingFor(elmtId)
  *                 Text.create("hello")
  *                 if (!isInitialRender) {
  *                     Text.pop()
  *                 }
- *                 ViewStackProcessor.StopGetAccessRecording()
+ *                 ViewStackProcessor.stopGetAccessRecording()
  *             })
  *             Text.pop()
  *         })
  *     } else {
  *         this.ifElseBranchUpdateFunction(1, { =>
  *             this.observeComponentCreation({ elmtId, isInitialRender =>
- *                 ViewStackProcessor.StartGetAccessRecordingFor(elmtId)
+ *                 ViewStackProcessor.startGetAccessRecordingFor(elmtId)
  *                 Text.create("world")
  *                 if (!isInitialRender) {
  *                     Text.pop()
  *                 }
- *                 ViewStackProcessor.StopGetAccessRecording()
+ *                 ViewStackProcessor.stopGetAccessRecording()
  *             })
  *             Text.pop()
  *         })
@@ -927,7 +927,7 @@ func generateFuncBody(funcBody: ArrayList<Node>, thisView: Tokens): Tokens {
  *     if (!isInitialRender) {
  *         If.pop()
  *     }
- *     ViewStackProcessor.StopGetAccessRecording()
+ *     ViewStackProcessor.stopGetAccessRecording()
  * }
  * If.pop()
  */
@@ -1008,7 +1008,7 @@ func generateUpdateParam(classDecl: ClassDecl) {
             continue
         }
         var varDeclKind = VariableKind.CommonTy
-        let rawVarDecl = match (stateManageHandler.stateInformation.get(varDecl.identifier.value)) {
+        let rawVarDecl = match (STATE_MANAGE_HANDLER.stateInformation.get(varDecl.identifier.value)) {
             // v is VariableKind*VarDecl, v[1] get the variable declaration before expanded by macro
             case Some(v) =>
                 updateAssigment = updateAssigment + generateUpdateAssignment(v)
@@ -1044,7 +1044,7 @@ func generateUpdateAssignment(value: (VariableKind, VarDecl)) {
 
 func generateWatchDecls(): Tokens {
     var watchDecls = Tokens()
-    for ((declType, variable, funcInfo) in stateManageHandler.watchDeclare) {
+    for ((declType, variable, funcInfo) in STATE_MANAGE_HANDLER.watchDeclare) {
         watchDecls = watchDecls + quote(
             this.declareWatch<$declType>($variable, $funcInfo)
         )
@@ -1054,7 +1054,7 @@ func generateWatchDecls(): Tokens {
 
 func generateCustomDialogBindDecls(): Tokens {
     var customDialogBind = Tokens()
-    for ((varName, callExpr) in stateManageHandler.customDialogInfo) {
+    for ((varName, callExpr) in STATE_MANAGE_HANDLER.customDialogInfo) {
         let baseExpr = callExpr.callFunc
         let args = callExpr.arguments
         var componentArg = Tokens()
@@ -1188,7 +1188,7 @@ func checkChildMessage(classBody: ArrayList<Decl>, className: String) {
         }
         let value1 = m.getString("IDENTIFIER")
         if (!checkBinderValue(classBody, value1)) {
-            diag.error(quote($value1), "${value1} is not a member of class ${className}")
+            DIAG.error(quote($value1), "${value1} is not a member of class ${className}")
         }
     }
 }
@@ -1222,7 +1222,7 @@ func generateAboutToBeDelete(classDecl: ClassDecl) {
     var tokens = Tokens()
     for (item in varDecls) {
         let identifier = item.identifier
-        match (stateManageHandler.stateInformation.get(identifier.value)) {
+        match (STATE_MANAGE_HANDLER.stateInformation.get(identifier.value)) {
             case None => quote()
             case Some(v) => tokens += quote(
                 this.$identifier.unsubscribeEx(this)
@@ -1230,7 +1230,7 @@ func generateAboutToBeDelete(classDecl: ClassDecl) {
         }
     }
 
-    for ((varName, callExpr) in stateManageHandler.customDialogInfo) {
+    for ((varName, callExpr) in STATE_MANAGE_HANDLER.customDialogInfo) {
         tokens += quote(
             this.$varName.releaseSelf()
         )
@@ -1268,7 +1268,7 @@ func handlePurgeVariable(classDecl: ClassDecl) {
     var purgeVariable = Tokens()
     for (item in varDecls) {
         let identifier = item.identifier
-        match (stateManageHandler.stateInformation.get(identifier.value)) {
+        match (STATE_MANAGE_HANDLER.stateInformation.get(identifier.value)) {
             case None => ()
             case Some(v) => purgeVariable = purgeVariable + quote(
                 this.$identifier.purgeDependencyOnElmtId(rmElmtId)
@@ -1296,7 +1296,7 @@ func generateCustomDialogControllerCreate(varDecl: VarDecl): Unit {
 
     let expr = varDecl.expr
     match (expr as CallExpr) {
-        case None => diag.fatal(quote($varDecl),
+        case None => DIAG.fatal(quote($varDecl),
             "${quote($varDecl)}, CustomDialogController can only create by CustomDialogController Constructer")
         case _ => ()
     }
@@ -1304,7 +1304,7 @@ func generateCustomDialogControllerCreate(varDecl: VarDecl): Unit {
     let callExpr = (expr as CallExpr).getOrThrow()
     let callfunc = callExpr.callFunc
     if (!isCustomdialogController(callfunc.toTokens().toString().trim())) {
-        diag.fatal(quote($varDecl),
+        DIAG.fatal(quote($varDecl),
             "${quote($varDecl)}, CustomDialogController can only create by CustomDialogController Constructer")
     }
     let params = callExpr.arguments
@@ -1314,7 +1314,7 @@ func generateCustomDialogControllerCreate(varDecl: VarDecl): Unit {
 
     let options = params[0].expr
     match (options as CallExpr) {
-        case None => diag.fatal(quote($varDecl),
+        case None => DIAG.fatal(quote($varDecl),
             "${quote($varDecl)}, CustomDialogController can only create with CustomDialogControllerOptions")
         case _ => ()
     }
@@ -1323,12 +1323,12 @@ func generateCustomDialogControllerCreate(varDecl: VarDecl): Unit {
     let optionsBuilder = optionsParams[0].expr
 
     match (optionsBuilder as CallExpr) {
-        case None => diag.fatal(quote($varDecl),
+        case None => DIAG.fatal(quote($varDecl),
             "${quote($varDecl)}, CustomDialogControllerOptions must contain a CustomDialog Builder")
         case _ => ()
     }
 
-    stateManageHandler.customDialogInfo.add((varDecl.identifier, (optionsBuilder as CallExpr).getOrThrow()))
+    STATE_MANAGE_HANDLER.customDialogInfo.add((varDecl.identifier, (optionsBuilder as CallExpr).getOrThrow()))
     optionsParams.remove(at: 0)
 }
 
@@ -1362,9 +1362,9 @@ func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView
                         })
                     }})
                 } else {
-                    ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+                    ViewStackProcessor.startGetAccessRecordingFor(ViewStackProcessor.allocateNewElmetIdForNextComponent())
                     $CUSTOM_VIEW.create(cv)
-                    ViewStackProcessor.StopGetAccessRecording()
+                    ViewStackProcessor.stopGetAccessRecording()
                 }
             case vb: $VIEW_BUILDER =>
                 vb.build()

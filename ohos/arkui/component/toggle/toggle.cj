@@ -167,13 +167,14 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
      *
      * @param { ?ResourceColor } value - Color of the selected button.
      * @returns { This }
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkToggleSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -185,13 +186,14 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
      *
      * @param { ?ResourceColor } color - Color of the switch point.
      * @returns { This }
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func switchPointColor(color: ?ResourceColor): This {
-        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpColor = color ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkToggleSwitchPointColor(transAppResourceToResourceColor(tmpColor))
         }
@@ -222,7 +224,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
         let vecFFi = FFIVectorNativeRectangle(tmpArray.size)
         var index = 0
         for (rect in tmpArray) {
-            BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
+            BASE_LOG.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++
         }

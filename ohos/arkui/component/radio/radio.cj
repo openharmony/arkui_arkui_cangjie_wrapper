@@ -186,7 +186,7 @@ public class Radio <: CommonMethodComponent<Radio> & RadioAttribute {
         let vecFFi = FFIVectorNativeRectangle(tmpArray.size)
         var index = 0
         for (rect in tmpArray) {
-            BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
+            BASE_LOG.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++
         }

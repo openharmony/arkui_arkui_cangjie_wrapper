@@ -275,13 +275,14 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
      *
      * @param { ?ResourceColor } value - Indicates the color of the progress.
      * @returns { This }
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkProgressSetColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -289,7 +290,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     }
 
     protected override func backgroundColorInner(color: ?ResourceColor): This {
-        let tmpColor = color ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpColor = color ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkProgressSetBackgroundColor(transAppResourceToResourceColor(tmpColor))
         }

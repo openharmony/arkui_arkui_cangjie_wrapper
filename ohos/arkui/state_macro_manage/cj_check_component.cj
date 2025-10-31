@@ -28,7 +28,7 @@ func checkComponentSyntax(input: Tokens) {
     }
     checkInitFunc(classDecl)
     if (classDecl.superTypes.size > 0) {
-        diag.error(input, "Component class should not inherit other class or interface.")
+        DIAG.error(input, "Component class should not inherit other class or interface.")
     }
 }
 
@@ -70,7 +70,7 @@ func checkBuildFunc(funcBody: ArrayList<Node>, funcDecl: FuncDecl) {
     if (isComponentSingle(funcBody)) {
         return
     }
-    diag.error(
+    DIAG.error(
         quote($funcDecl),
         "The build method can only have one root node and can only be a container component and cannot be a custom component."
     )
@@ -101,7 +101,7 @@ func checkMonadicContainer(input: Expr, name: String): Unit {
         }
     }
     if (index > 1) {
-        diag.error(quote($input), "${quote($input)}, The component ${name} can only have a single child component.")
+        DIAG.error(quote($input), "${quote($input)}, The component ${name} can only have a single child component.")
     }
 }
 
@@ -112,7 +112,7 @@ func checkArgsAndChildLimit(input: Expr, name: String) {
         case _ => throw IllegalArgumentException("input must be TrailingClosureExpr")
     }
     if (childCount > 0 && tce is CallExpr && (tce as CallExpr).getOrThrow().arguments.size > 0) {
-        diag.error(quote($input),
+        DIAG.error(quote($input),
             "${quote($input)}, The component ${name} cannot create with both parameters and child component.")
     }
 }
@@ -145,7 +145,7 @@ func checkChildInComp(input: Expr, name: String): Unit {
     let isBuilderAndContain = {
         left: HashSet<String> =>
         for (name in compNames) {
-            if (!left.contains(name) && !stateManageHandler.builderSingleInfo.contains(name) &&
+            if (!left.contains(name) && !STATE_MANAGE_HANDLER.builderSingleInfo.contains(name) &&
                 MACRO_EXPAND_COMPONENTS.contains(name)) {
                 return false
             }
@@ -154,7 +154,7 @@ func checkChildInComp(input: Expr, name: String): Unit {
     }
 
     if (!isBuilderAndContain(HashSet<String>(childNameArr))) {
-        diag.error(quote($input),
+        DIAG.error(quote($input),
             "${quote($input)}, The component ${name} can only have the child component ${childNameArr.toString()}.")
     }
 }
@@ -163,7 +163,7 @@ func checkParentInComp(input: Expr, name: String): Unit {
     let compName = getTrailingClosureExprValue(input)
     if (let Some(parentArr) <- CONTAINER_TO_SPECIFIC_CHILD_MAP.get(compName)) {
         if (!parentArr.contains(name)) {
-            diag.fatal(quote($input), "The component ${compName} can not be inside of parent component ${name}.")
+            DIAG.fatal(quote($input), "The component ${compName} can not be inside of parent component ${name}.")
         }
         return
     }
@@ -310,7 +310,7 @@ func checkMonadicIfBody(input: ArrayList<Node>, name: String): Unit {
         }
     }
     if (index > 1) {
-        diag.error(quote($input), "${quote($input)}, The component ${name} can only have a single child component.")
+        DIAG.error(quote($input), "${quote($input)}, The component ${name} can only have a single child component.")
     }
 }
 
@@ -321,7 +321,7 @@ func ifForEach(input: Expr, name: String): Bool {
                 let refExpr = (callExpr.callFunc as RefExpr).getOrThrow()
                 let childName = refExpr.identifier.value
                 if (COMPONENT_TYPE_FOREACH_LIST.contains(childName)) {
-                    diag.error(quote($input), "${quote($input)}, The component ${name} can not contain ${childName}.")
+                    DIAG.error(quote($input), "${quote($input)}, The component ${name} can not contain ${childName}.")
                     return true
                 }
             }
@@ -337,7 +337,7 @@ func checkLazyForEachBody(input: Expr): Unit {
     }
     let lamExprBody = lamExpr.nodes
     if (lamExprBody.size > 1) {
-        diag.error(quote($input),
+        DIAG.error(quote($input),
             "${quote($input)}, The lambda of LazyForeach component can only have a single component.")
     }
 }
@@ -360,7 +360,7 @@ enum StateVariableTransferable {
  * @Provide | Support    | Support    | Support    | Support  | Support
  * @Consume | Support    | Support    | Support    | Support  | Support
  */
-let varDeclTransfer = [
+let VAR_DECL_TRANSFER = [
     [NotSupport, Support, Support, Support, Support, Support],
     [NotSupport, Support, NotRecommended, Support, Support, Support],
     [NotSupport, NotSupport, Support, Support, Support, Support],
@@ -375,10 +375,10 @@ let varDeclTransfer = [
 class ObservedClassInitDeclVisitor <: Visitor {
     protected func visit(decl: Decl): Unit {
         if (decl is PrimaryCtorDecl) {
-            diag.error(quote($decl), "primary constructor is not allowed in @Observed class.")
+            DIAG.error(quote($decl), "primary constructor is not allowed in @Observed class.")
         }
         match (decl) {
-            case funcDecl: FuncDecl where funcDecl.identifier.value == "init" => diag.error(quote($decl),
+            case funcDecl: FuncDecl where funcDecl.identifier.value == "init" => DIAG.error(quote($decl),
                 "init constructor is not allowed in @Observed class.")
             case _ => breakTraverse()
         }

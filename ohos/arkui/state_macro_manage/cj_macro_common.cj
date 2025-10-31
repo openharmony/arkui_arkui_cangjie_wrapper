@@ -30,14 +30,14 @@ import std.collection.{ArrayList}
 var localStorageStateInfo: ArrayList<(Tokens, Tokens)> = ArrayList([])
 
 func generateNewId(): Int64 {
-    let ret = stateManageHandler.uuid
-    stateManageHandler.uuid++
+    let ret = STATE_MANAGE_HANDLER.uuid
+    STATE_MANAGE_HANDLER.uuid++
     return ret
 }
 
 func generateNewEntryId(): Int64 {
-    let ret = stateManageHandler.entryId
-    stateManageHandler.entryId++
+    let ret = STATE_MANAGE_HANDLER.entryId
+    STATE_MANAGE_HANDLER.entryId++
     return ret
 }
 
@@ -63,7 +63,7 @@ enum StateKind <: ToString {
     | LocalStorageLinkInterOpTy
     | LocalStoragePropInterOpTy
 
-    public func toString() {
+    public func toString(): String {
         match (this) {
             case StateTy => return "State"
             case PublishTy => return "Publish"
@@ -138,7 +138,7 @@ func genProp(varDecl: VarDecl, stateKind: StateKind): Tokens {
         case _ => false
     }
     if (!isPublish && varDeclModifiers.size != 0) {
-        diag.error(quote($varDecl),
+        DIAG.error(quote($varDecl),
             "The variables modified by status macros such as @State, @Link, etc," +
                 "should not have modifiers like public, private, protected and static.")
     }
@@ -191,14 +191,14 @@ func genProp(varDecl: VarDecl, stateKind: StateKind): Tokens {
 }
 
 func getAppStorageAttrByIdent(identTok: String) {
-    stateManageHandler.appStorageVarAttrInfo.get(identTok)
+    STATE_MANAGE_HANDLER.appStorageVarAttrInfo.get(identTok)
         .getOrThrow({
             => NoneValueException("AppStorage: can not found value by key: ${identTok}")
         })
 }
 
 func getLocalStorageAttrByIdent(identTok: String) {
-    stateManageHandler.localStorageVarAttrInfo.get(identTok)
+    STATE_MANAGE_HANDLER.localStorageVarAttrInfo.get(identTok)
         .getOrThrow({
             => NoneValueException("LocalStorage: can not found value by key: ${identTok}")
         })
@@ -269,7 +269,7 @@ func generateAssociatedToken(identTokStr: String): Token {
 
 func checkStorageAttr(input: Expr): Unit {
     if (!isLiteral(input) || !isStringType(input)) {
-        diag.fatal(quote($input), "invalid type, attribute must be a string literal.")
+        DIAG.fatal(quote($input), "invalid type, attribute must be a string literal.")
     }
 }
 
@@ -287,7 +287,7 @@ func isStringType(expr: Expr): Bool {
 func checkStateKindAndInit(input: Tokens, stateKind: StateKind): Unit {
     let decl = parseDecl(input)
     if (!(decl is VarDecl)) {
-        diag.fatal(input, "${stateKind} can only modify varDecl.")
+        DIAG.fatal(input, "${stateKind} can only modify varDecl.")
     }
 
     let varDecl = (decl as VarDecl).getOrThrow()
@@ -301,12 +301,12 @@ func checkStateKindAndInit(input: Tokens, stateKind: StateKind): Unit {
         try {
             varDecl.expr
         } catch (e: Exception) {
-            diag.fatal(input, "You should have an initial value for ${stateKind}.")
+            DIAG.fatal(input, "You should have an initial value for ${stateKind}.")
         }
     } else {
         try {
             varDecl.expr
-            diag.fatal(input, "${stateKind} declaration should not have an initial value.")
+            DIAG.fatal(input, "${stateKind} declaration should not have an initial value.")
         } catch (e: Exception) {
             ()
         }
@@ -325,11 +325,11 @@ class ComponentVarDeclVisitor <: Visitor {
     protected func visit(classDecl: ClassDecl): Unit {
         for (decl in classDecl.body.decls) {
             match (decl) {
-                case v: PrimaryCtorDecl => diag.error(quote($decl),
+                case v: PrimaryCtorDecl => DIAG.error(quote($decl),
                     "primary constructor is not allowed in @Component class.")
                 case funcDecl: FuncDecl =>
                     if (funcDecl.identifier.value == "init") {
-                        diag.error(quote($decl), "init constructor is not allowed in @Component class.")
+                        DIAG.error(quote($decl), "init constructor is not allowed in @Component class.")
                     }
                 case varDecl: VarDecl => varDecls.add(varDecl)
                 case _ => breakTraverse()
@@ -367,6 +367,6 @@ func checkLocalStorageInterOpAttr(attr: Tokens): Unit {
     var p: Int64
     (e, p) = parseExprFragment(attr)
     if (!isLiteral(e) || !isStringType(e) || attr[p].kind != TokenKind.COMMA || attr[p + 1].value != "InterOp") {
-        diag.fatal(quote($attr), "attribute invalid, must be like [\"name\", \"InterOp\"].")
+        DIAG.fatal(quote($attr), "attribute invalid, must be like [\"name\", \"InterOp\"].")
     }
 }

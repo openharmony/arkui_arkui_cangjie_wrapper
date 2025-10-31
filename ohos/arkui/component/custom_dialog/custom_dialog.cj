@@ -474,7 +474,7 @@ public class CustomDialogController <: RemoteDataLite {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func setBuilder(builder: () -> Unit) {
+    public func setBuilder(builder: () -> Unit): Unit {
         unsafe {
             FfiOHOSAceFrameworkCustomDialogControllerSetBuilder(this.getID(), Callback0Param<Unit>(builder).getID())
         }

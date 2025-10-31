@@ -31,13 +31,13 @@ func generateConsume(input: Tokens, consumeIdentifier!: Tokens = Tokens()) {
     checkStateKindAndInit(input, StateKind.ConsumeTy)
     let varDecl = (parseDecl(input) as VarDecl).getOrThrow()
     let identTok: Token = varDecl.identifier
-    stateManageHandler.stateInformation.add(mangle(identTok.value), (VariableKind.ConsumeTy, varDecl))
+    STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.ConsumeTy, varDecl))
 
     if (consumeIdentifier.size > 0) {
         let expr = parseExpr(consumeIdentifier)
         checkConsumeIdentifier(expr)
         let consumeIdentifierStr = (expr as LitConstExpr).getOrThrow().literal.value
-        stateManageHandler.consumeVarDeclsMap.add(identTok.value, consumeIdentifierStr)
+        STATE_MANAGE_HANDLER.consumeVarDeclsMap.add(identTok.value, consumeIdentifierStr)
     }
 
     return genProp(varDecl, StateKind.ConsumeTy)
@@ -45,6 +45,6 @@ func generateConsume(input: Tokens, consumeIdentifier!: Tokens = Tokens()) {
 
 func checkConsumeIdentifier(input: Expr) {
     if (!isLiteral(input) || !isStringType(input)) {
-        diag.fatal(quote($input), "invalid type, attribute must be a string literal.")
+        DIAG.fatal(quote($input), "invalid type, attribute must be a string literal.")
     }
 }

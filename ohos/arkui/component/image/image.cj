@@ -242,7 +242,7 @@ public class ImageLoadResult {
 
 /**
  * Callback function triggered when the image is successfully loaded.
- * 
+ *
  * @param { ImageLoadResult } result - The information about the successfully loaded image.
  */
 public type ImageCompleteCallback = (ImageLoadResult) -> Unit
@@ -264,12 +264,12 @@ protected class CallbackImageError <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackImageError")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackImageError")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<CImageError>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackImageError")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackImageError")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let c_arg0 = unsafe { ptrArg0.read() }
@@ -289,12 +289,12 @@ class CallbackImageLoadResult <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackImageLoadResult")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackImageLoadResult")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<CImageComplete>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackImageLoadResult")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackImageLoadResult")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let c_arg0 = unsafe { ptrArg0.read() }
@@ -314,7 +314,7 @@ class CallbackImageLoadResult <: BaseCallBack {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ColorFilter {
-    private static let defaultMatrix: Array<Float32> = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+    private static let DEFAULT_MATRIX: Array<Float32> = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
         0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
 
     protected let matrix: Array<Float32>
@@ -332,7 +332,7 @@ public class ColorFilter {
     public init(value: ?Array<Float32>) {
         let tmpValue = value ?? []
         if (tmpValue.size != 20) {
-            matrix = defaultMatrix
+            matrix = DEFAULT_MATRIX
         } else {
             matrix = tmpValue
         }
@@ -343,9 +343,9 @@ public class ColorFilter {
  * Defines Image Component.
  *
  * <p>If flickering occurs during image loading, set <b>syncLoad</b> to <b>true</b>.
- * 
+ *
  * <p>If white blocks persist during image loading.
- * 
+ *
  * <p>If image loading takes a long time.
  */
 @!APILevel[
@@ -395,11 +395,11 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
 
     /**
      * Sets the placeholder image displayed during loading.
-     * 
+     *
      * <p><strong>NOTE</strong>:
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
-     * 
+     *
      * @param { ?ResourceStr } value - Placeholder image displayed during loading. Default value is null.
      * @returns { This }
      */
@@ -545,7 +545,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
     }
 
     /**
-     * Sets the decoding size of the image. 
+     * Sets the decoding size of the image.
      * The original picture is decoded into a picture of a specified size. The unit of the number type is px.
      *
      * <p><strong>NOTE</strong>:
@@ -605,13 +605,14 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      *
      * @param { ?ResourceColor } value - Fill color to be superimposed on the image.
      * @returns { This }
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fillColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkImageSetImageFill(transAppResourceToResourceColor(tmpValue))
         }
@@ -711,7 +712,7 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
     /**
      * Triggered when an error occurs during image loading.
      * The field of "message" carries the detailed information of failed image loading.
-     * 
+     *
      * <p><strong>NOTE</strong>:
      * <br>This event is not triggered if the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>

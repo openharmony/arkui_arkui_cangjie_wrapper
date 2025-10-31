@@ -510,13 +510,14 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      *
      * @param { ?ResourceColor } value - The font color resource.
      * @returns { This } Returns the TextClock instance.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkTextClockTextColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -586,13 +587,14 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      *
      * @param { ?Array<ShadowOptions> } values - The shadow options.
      * @returns { This } Returns the TextClock instance.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(values: ?Array<ShadowOptions>): This {
-        let tmpValues = values ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValues = values ?? throw BusinessException(100001, "The type now is not supported.")
         let vecValueHandle = CJVectorNativeTextShadow(tmpValues.size)
         for (i in 0..tmpValues.size) {
             vecValueHandle.setElement(i, tmpValues[i].toNative())
@@ -609,13 +611,14 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      *
      * @param { ?ShadowOptions } value - The shadow options.
      * @returns { This } Returns the TextClock instance.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(value: ?ShadowOptions): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         let thisShadow: NativeTextShadowV2 = NativeTextShadowV2(tmpValue.radius ?? 0.0,
             tmpValue.offsetX ?? 0.0, tmpValue.offsetY ?? 0.0,
             transAppResourceToResourceColor(tmpValue.color ?? Color.Black), tmpValue.fill ?? false, (tmpValue.shadowType ?? ShadowType.Color).getValue())

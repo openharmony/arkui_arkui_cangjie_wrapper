@@ -34,7 +34,7 @@ foreign {
     func FfiOHOSAceFrameworkDividerSetStrokeWidth(width: Float64, unit: Int32): Unit
 }
 
-let defaultDivierColor = 0x33182431
+let DEFAULT_DIVIDER_COLOR = 0x33182431
 
 /**
  * Divider component used to separate different content blocks or elements.
@@ -88,7 +88,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     ]
     public func color(value: ?ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkDividerSetDividerColor(transAppResourceToResourceColor(value ?? defaultDivierColor))
+            FfiOHOSAceFrameworkDividerSetDividerColor(transAppResourceToResourceColor(value ?? DEFAULT_DIVIDER_COLOR))
         }
         this
     }

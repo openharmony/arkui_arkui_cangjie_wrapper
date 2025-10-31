@@ -142,7 +142,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * This parameter specifies the number of columns in the current grid layout.
      *
-     * @param { ?String } value - String specifying the number of columns and their proportional distribution, 
+     * @param { ?String } value - String specifying the number of columns and their proportional distribution,
      * for example "1fr 1fr" means two columns of equal width.
      * @returns { This } - The instance of the component.
      */
@@ -162,7 +162,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Lets you set the number of rows in the current grid layout.
      *
-     * @param { ?String } value - String specifying the number of rows and their proportional distribution, 
+     * @param { ?String } value - String specifying the number of rows and their proportional distribution,
      * for example "1fr 1fr" means two rows of equal height.
      * @returns { This } - The instance of the component.
      */
@@ -184,6 +184,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      *
      * @param { ?Length } value - Spacing between adjacent columns.
      * @returns { This } - The instance of the component.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -213,6 +214,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      *
      * @param { ?Length } value - Spacing between adjacent rows.
      * @returns { This } - The instance of the component.
+     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -318,11 +320,11 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     protected func frictionInner(value: ?AppResource): This {
         var realValue: Float64 = 0.0
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 let t = Float64.tryParse(getResourceString(v))
                 match (t) {
                     case Some(n) => realValue = n
-                    case None => BaseLog.debug("AppResource type param of friction func convert to Float64 fail.");
+                    case None => BASE_LOG.debug("AppResource type param of friction func convert to Float64 fail.");
                 }
             case None => realValue = -1.0
         }

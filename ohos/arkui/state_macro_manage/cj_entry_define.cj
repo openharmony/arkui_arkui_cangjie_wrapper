@@ -56,11 +56,11 @@ func parseEntry(input: Tokens, needCheckEntry: Bool, localStorageAttr!: ?Tokens 
  */
 func checkEntry(input: Token) {
     let fileId = input.pos.fileID
-    if (!stateManageHandler.entryFileId.contains(fileId)) {
-        stateManageHandler.entryFileId.add(fileId)
+    if (!STATE_MANAGE_HANDLER.entryFileId.contains(fileId)) {
+        STATE_MANAGE_HANDLER.entryFileId.add(fileId)
         ()
     } else {
-        diag.fatal(input.toTokens(), "An cangjie file can contain only one '@Entry' decorator.")
+        DIAG.fatal(input.toTokens(), "An cangjie file can contain only one '@Entry' decorator.")
     }
 }
 
@@ -78,9 +78,9 @@ func checkEntryBody(classBody: ArrayList<Decl>) {
                 }
                 let memAccess = ((lastDecl as CallExpr).getOrThrow().callFunc as MemberAccess).getOrThrow()
                 let compName = (memAccess.baseExpr as RefExpr).getOrThrow().identifier.value
-                if (!stateManageHandler.isContainerComponent(compName) || stateManageHandler.isInBuilderComponents(
+                if (!STATE_MANAGE_HANDLER.isContainerComponent(compName) || STATE_MANAGE_HANDLER.isInBuilderComponents(
                     compName)) {
-                    diag.fatal(
+                    DIAG.fatal(
                         quote($funcDecl),
                         "${compName} The build method in the Entry component can only have one root node and can only be a container component and cannot be a custom component."
                     )
@@ -159,11 +159,11 @@ func parseHybridComponentEntry(input: Tokens, needCheckEntry: Bool): Tokens {
  */
 func checkHybridComponentEntry(input: Token) {
     let fileId = input.pos.fileID
-    if (!stateManageHandler.entryFileId.contains(fileId)) {
-        stateManageHandler.entryFileId.add(fileId)
+    if (!STATE_MANAGE_HANDLER.entryFileId.contains(fileId)) {
+        STATE_MANAGE_HANDLER.entryFileId.add(fileId)
         ()
     } else {
-        diag.fatal(input.toTokens(), "An cangjie file can contain only one '@HybridComponentEntry' decorator.")
+        DIAG.fatal(input.toTokens(), "An cangjie file can contain only one '@HybridComponentEntry' decorator.")
     }
 }
 
@@ -181,9 +181,9 @@ func checkHybridComponentEntryBody(classBody: ArrayList<Decl>) {
                 }
                 let memAccess = ((lastDecl as CallExpr).getOrThrow().callFunc as MemberAccess).getOrThrow()
                 let compName = (memAccess.baseExpr as RefExpr).getOrThrow().identifier.value
-                if (!stateManageHandler.isContainerComponent(compName) || stateManageHandler.isInBuilderComponents(
+                if (!STATE_MANAGE_HANDLER.isContainerComponent(compName) || STATE_MANAGE_HANDLER.isInBuilderComponents(
                     compName)) {
-                    diag.fatal(
+                    DIAG.fatal(
                         quote($funcDecl),
                         "${compName} The build method in the HybridComponentEntry component can only have one root node and can only be a container component and cannot be a custom component."
                     )
@@ -202,11 +202,11 @@ func generateHybridComponentEntryFunc(input: Tokens, hybridCompIdentLoad: Token,
     let h_c_ident = Token(TokenKind.IDENTIFIER, "hybrid_comp_${entryId}")
     quote(
         public func $hybridCompIdentLoad(): CPointer<Unit> {
-            let elemId = ViewStackProcessor.AllocateNewElmetIdForNextComponent()
-            ViewStackProcessor.StartGetAccessRecordingFor(elemId)
+            let elemId = ViewStackProcessor.allocateNewElmetIdForNextComponent()
+            ViewStackProcessor.startGetAccessRecordingFor(elemId)
             let $instanceIdent = $entryClassIdent(Option<CustomView>.None)
             CustomView.create($instanceIdent)
-            ViewStackProcessor.StopGetAccessRecording()
+            ViewStackProcessor.stopGetAccessRecording()
             CJPageEntry.getInstance().registerHybridPage($registerName, $instanceIdent)
             return CPointer<Unit>()
         }

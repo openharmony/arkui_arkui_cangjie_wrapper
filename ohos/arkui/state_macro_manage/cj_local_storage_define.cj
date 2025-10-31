@@ -42,9 +42,9 @@ public macro LocalStorageLink(attr: Tokens, input: Tokens): Tokens {
                 "LocalStorageLink should be used to decorate the decl of variable")
         }
         let identTok: Token = varDecl.identifier
-        stateManageHandler.stateInformation.add(mangle(identTok.value), (VariableKind.LocalStorageLinkTy, varDecl))
+        STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.LocalStorageLinkTy, varDecl))
         checkLocalStorageTypeConflict(attrStr, varDecl)
-        stateManageHandler.localStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
+        STATE_MANAGE_HANDLER.localStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
         return genProp(varDecl, StateKind.LocalStorageLinkTy)
     } else {
         checkStateKindAndInit(input, StateKind.LocalStorageLinkInterOpTy)
@@ -75,9 +75,9 @@ public macro LocalStorageProp(attr: Tokens, input: Tokens): Tokens {
                 "LocalStorageProp should be used to decorate the decl of variable")
         }
         let identTok: Token = varDecl.identifier
-        stateManageHandler.stateInformation.add(mangle(identTok.value), (VariableKind.LocalStoragePropTy, varDecl))
+        STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.LocalStoragePropTy, varDecl))
         checkLocalStorageTypeConflict(attrStr, varDecl)
-        stateManageHandler.localStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
+        STATE_MANAGE_HANDLER.localStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
         return genProp(varDecl, StateKind.LocalStoragePropTy)
     } else {
         checkStateKindAndInit(input, StateKind.LocalStoragePropInterOpTy)
@@ -95,14 +95,14 @@ public macro LocalStorageProp(attr: Tokens, input: Tokens): Tokens {
 func checkLocalStorageTypeConflict(attrStr: String, varDecl: VarDecl): Unit {
     let varType = varDecl.declType
     let newTypeStr = varType.toTokens().toString().trim()
-    let typeOption = stateManageHandler.localStorageAttrTypeInfo.get(attrStr)
+    let typeOption = STATE_MANAGE_HANDLER.localStorageAttrTypeInfo.get(attrStr)
     match (typeOption) {
         case Some(v) =>
             let originTypeStr = v.trim()
             if (originTypeStr != newTypeStr) {
-                diag.error(quote($varDecl), "error: ${attrStr} type conflicts!\n${originTypeStr} => ${newTypeStr}.")
+                DIAG.error(quote($varDecl), "error: ${attrStr} type conflicts!\n${originTypeStr} => ${newTypeStr}.")
             }
-        case _ => stateManageHandler.localStorageAttrTypeInfo.add(attrStr, newTypeStr)
+        case _ => STATE_MANAGE_HANDLER.localStorageAttrTypeInfo.add(attrStr, newTypeStr)
     }
 }
 
@@ -119,7 +119,7 @@ func genLocalStorage(attr: Tokens, input: Tokens, stateKink: StateKind, variable
     }
 
     let identTok: Token = varDecl.identifier
-    stateManageHandler.stateInformation.add(mangle(identTok.value), (variableKind, varDecl))
-    stateManageHandler.localStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
+    STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (variableKind, varDecl))
+    STATE_MANAGE_HANDLER.localStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
     return genProp(varDecl, stateKink)
 }

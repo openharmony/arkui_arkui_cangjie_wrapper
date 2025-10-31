@@ -23,6 +23,6 @@ public macro Prop(input: Tokens): Tokens {
     checkStateKindAndInit(input, StateKind.PropTy)
     let varDecl = (parseDecl(input) as VarDecl).getOrThrow()
     let identTok: Token = varDecl.identifier
-    stateManageHandler.stateInformation.add(mangle(identTok.value), (VariableKind.PropTy, varDecl))
+    STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.PropTy, varDecl))
     return genProp(varDecl, StateKind.PropTy)
 }

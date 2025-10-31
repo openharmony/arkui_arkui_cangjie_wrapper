@@ -31,7 +31,7 @@ import ohos.labels.{APILevel, Hide}
 ]
 public class CJPageEntry {
     init() {}
-    private static let instance_ = CJPageEntry()
+    private static let INSTANCE_ = CJPageEntry()
     /**
      * Get CJPageEntry instance.
      *
@@ -42,7 +42,7 @@ public class CJPageEntry {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static func getInstance(): CJPageEntry {
-        return instance_
+        return INSTANCE_
     }
 
     private let entries_ = HashMap<String, CustomView>()
@@ -147,7 +147,7 @@ public open class HybridComponentBase <: SharedObject {
     ]
     @!Hide
     public static func registerHybridComponent(compName: String, loadHandle: () -> CPointer<Unit>,
-        unloadHandle: () -> Unit) {
+        unloadHandle: () -> Unit): Unit {
         registerLoadHandle(compName + "_load", loadHandle)
         registerUnloadHandle(compName + "_unload", unloadHandle)
     }

@@ -234,7 +234,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
 
     protected override func widthInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkListSetWidth(value_.value, value_.unitType.getValue())
@@ -246,7 +246,7 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
 
     protected override func heightInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkListSetHeight(value_.value, value_.unitType.getValue())
@@ -506,11 +506,11 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     protected func frictionInner(value: ?AppResource): This {
         var realValue: Float64 = 0.0
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 let t = Float64.tryParse(getResourceString(v))
                 match (t) {
                     case Some(n) => realValue = n
-                    case None => BaseLog.debug("AppResource type param of friction func convert to Float64 fail.");
+                    case None => BASE_LOG.debug("AppResource type param of friction func convert to Float64 fail.");
                 }
             case None => realValue = -1.0
         }

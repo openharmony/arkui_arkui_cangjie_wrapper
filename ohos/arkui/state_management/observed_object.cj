@@ -42,7 +42,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public func addPublishVar(publishVar: ObservedPropertyAbstract) {
+    public func addPublishVar(publishVar: ObservedPropertyAbstract): Unit {
         publishVars.add(publishVar)
     }
 

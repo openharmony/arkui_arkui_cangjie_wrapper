@@ -26,8 +26,8 @@ foreign {
     func FfiOHOSAceFrameworkNativeLog(msg: CString): Unit
 }
 
-protected let BaseLog = HilogChannel(1, 0xD003901, "Cangjie-Base")
-protected let AppLog = HilogChannel(0, 0xD003903, "Cangjie-App")
+protected let BASE_LOG = HilogChannel(1, 0xD003901, "Cangjie-Base")
+protected let APP_LOG = HilogChannel(0, 0xD003903, "Cangjie-App")
 
 protected func throwNativeError(msg: String): Unit {
     unsafe {

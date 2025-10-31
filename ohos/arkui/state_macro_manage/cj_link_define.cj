@@ -23,6 +23,6 @@ public macro Link(input: Tokens): Tokens {
     checkStateKindAndInit(input, StateKind.LinkTy)
     let varDecl = (parseDecl(input) as VarDecl).getOrThrow()
     let identTok: Token = varDecl.identifier
-    stateManageHandler.stateInformation.add(mangle(identTok.value), (VariableKind.LinkTy, varDecl))
+    STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.LinkTy, varDecl))
     return genProp(varDecl, StateKind.LinkTy)
 }

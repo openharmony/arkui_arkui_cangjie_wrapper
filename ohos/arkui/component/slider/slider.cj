@@ -121,7 +121,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         let tmpValue = value ?? tmpMin
         let tmpStyle = style ?? SliderStyle.OutSet
         let tmpDirection = direction ?? Axis.Horizontal
-        
+
         unsafe {
             var minValue = tmpMin;
             var maxValue = tmpMax;
@@ -147,17 +147,18 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     }
 
     /**
-     * Called when the slider color of the slider bar is set.
-     *
-     * @param { ?ResourceColor } value
-     * @returns { This }
-     */
+    * Called when the slider color of the slider bar is set.
+    *
+    * @param { ?ResourceColor } value
+    * @returns { This }
+    * @throws { BusinessException } 100001 - The type now is not supported.
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func blockColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkSliderBlockColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -168,13 +169,14 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     *
     * @param { ?ResourceColor } value
     * @returns { This }
+    * @throws { BusinessException } 100001 - The type now is not supported.
     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func trackColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkSliderTrackColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -185,13 +187,14 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     *
     * @param { ?ResourceColor } value
     * @returns { This }
+    * @throws { BusinessException } 100001 - The type now is not supported.
     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkSliderSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -243,17 +246,18 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     }
 
     /**
-     * Called when the thickness of track is set.
-     *
-     * @param { ?Length } value
-     * @returns { This }
-     */
+    * Called when the thickness of track is set.
+    *
+    * @param { ?Length } value
+    * @returns { This }
+    * @throws { BusinessException } 100001 - The type now is not supported.
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func trackThickness(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         var value_ = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkSliderTrackThickness(value_.value, value_.unitType.getValue())

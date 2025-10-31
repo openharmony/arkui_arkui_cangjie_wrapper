@@ -31,12 +31,12 @@ protected class CallbackCJClickEvent <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJClickEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJClickEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<CJClickEvent>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJClickEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJClickEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -53,17 +53,17 @@ class CallbackCJAreaChangedEvent <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJAreaChangedEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJAreaChangedEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<CJArea>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJAreaChangedEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJAreaChangedEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg1 = unsafe { CPointer<CJArea>(argv.read(1)) }
         if (ptrArg1.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJAreaChangedEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJAreaChangedEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -81,17 +81,17 @@ class CallbackCJVisibleAreaChangeEvent <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJVisibleAreaChangeEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJVisibleAreaChangeEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<Bool>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJVisibleAreaChangeEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJVisibleAreaChangeEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg1 = unsafe { CPointer<Float64>(argv.read(1)) }
         if (ptrArg1.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJVisibleAreaChangeEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJVisibleAreaChangeEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -110,12 +110,12 @@ class CallbackCJTouchEvent <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJTouchEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJTouchEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<CJTouchEvent>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJTouchEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJTouchEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -136,12 +136,12 @@ class CallbackCJMouseEvent <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJMouseEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJMouseEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<CJMouseEvent>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJMouseEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJMouseEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -159,12 +159,12 @@ class CallbackCJDragInfo <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJDragInfo")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJDragInfo")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<CJDragInfo>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJDragInfo")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJDragInfo")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -182,12 +182,12 @@ class CallbackCJKeyEvent <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJKeyEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJKeyEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<CJKeyEvent>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJKeyEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJKeyEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -208,12 +208,12 @@ protected class CallbackCJGestureEvent <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJGestureEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJGestureEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<CJGestureEventV2>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJGestureEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJGestureEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -231,12 +231,12 @@ class CallbackCJDragInfoVCDragItemInfo <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJDragInfoVCDragItemInfo")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJDragInfoVCDragItemInfo")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<CJDragInfo>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJDragInfoVCDragItemInfo")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJDragInfoVCDragItemInfo")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         unsafe {

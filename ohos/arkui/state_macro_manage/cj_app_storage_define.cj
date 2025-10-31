@@ -39,9 +39,9 @@ public macro StorageLink(attr: Tokens, input: Tokens): Tokens {
         case None => throw IllegalArgumentException("Invaild decl after StorageLink")
     }
     let identTok: Token = varDecl.identifier
-    stateManageHandler.stateInformation.add(mangle(identTok.value), (VariableKind.AppStorageLinkTy, varDecl))
+    STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.AppStorageLinkTy, varDecl))
     checkAppStorageTypeConflict(attrStr, varDecl)
-    stateManageHandler.appStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
+    STATE_MANAGE_HANDLER.appStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
     return genProp(varDecl, StateKind.AppStorageLinkTy)
 }
 
@@ -64,9 +64,9 @@ public macro StorageProp(attr: Tokens, input: Tokens): Tokens {
         case None => throw IllegalArgumentException("Invaild decl after StorageLink")
     }
     let identTok: Token = varDecl.identifier
-    stateManageHandler.stateInformation.add(mangle(identTok.value), (VariableKind.AppStoragePropTy, varDecl))
+    STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.AppStoragePropTy, varDecl))
     checkAppStorageTypeConflict(attrStr, varDecl)
-    stateManageHandler.appStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
+    STATE_MANAGE_HANDLER.appStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
     return genProp(varDecl, StateKind.AppStoragePropTy)
 }
 
@@ -79,13 +79,13 @@ public macro StorageProp(attr: Tokens, input: Tokens): Tokens {
 func checkAppStorageTypeConflict(attrStr: String, varDecl: VarDecl): Unit {
     let varType = varDecl.declType
     let newTypeStr = varType.toTokens().toString().trim()
-    let typeOption = stateManageHandler.appStorageAttrTypeInfo.get(attrStr)
+    let typeOption = STATE_MANAGE_HANDLER.appStorageAttrTypeInfo.get(attrStr)
     match (typeOption) {
         case Some(v) =>
             let originTypeStr = v.trim()
             if (originTypeStr != newTypeStr) {
-                diag.error(quote($varDecl), "error: ${attrStr} type conflicts!\n${originTypeStr} => ${newTypeStr}.")
+                DIAG.error(quote($varDecl), "error: ${attrStr} type conflicts!\n${originTypeStr} => ${newTypeStr}.")
             }
-        case _ => stateManageHandler.appStorageAttrTypeInfo.add(attrStr, newTypeStr)
+        case _ => STATE_MANAGE_HANDLER.appStorageAttrTypeInfo.add(attrStr, newTypeStr)
     }
 }

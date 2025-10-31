@@ -41,7 +41,7 @@ type MacroExpandInitInfo = (Tokens, Tokens, Tokens)
 func generateVarDecl(varDecl: VarDecl): MacroExpandInitInfo {
     let identifier = varDecl.identifier
 
-    match (stateManageHandler.stateInformation.get(identifier.value)) {
+    match (STATE_MANAGE_HANDLER.stateInformation.get(identifier.value)) {
         case None => generateCommonVarDecl(varDecl)
         case Some(v) => generateStateVarDecl(v[0], v[1], varDecl)
     }
@@ -246,7 +246,7 @@ func generateLinkInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitInfo
 
 func generateProvideInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitInfo {
     let identifier = varDecl.identifier.value
-    let provideIdentifier = match (stateManageHandler.provideVarDeclsMap.get(identifier)) {
+    let provideIdentifier = match (STATE_MANAGE_HANDLER.provideVarDeclsMap.get(identifier)) {
         case Some(v) => v
         case _ => identifier
     }
@@ -263,7 +263,7 @@ func generateProvideInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitI
 
 func addInitConsume(identifier: String, ty: Tokens): Tokens {
     var identTokenAssociated: Token = generateAssociatedToken(identifier)
-    let consumeIdentifier = match (stateManageHandler.consumeVarDeclsMap.get(identifier)) {
+    let consumeIdentifier = match (STATE_MANAGE_HANDLER.consumeVarDeclsMap.get(identifier)) {
         case Some(v) => v
         case _ => identifier
     }

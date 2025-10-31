@@ -306,7 +306,7 @@ public class LocalStorage {
         match (p) {
             case Some(v) =>
                 if (v.numberOfSubscribers() > 0) {
-                    BaseLog.error("Subscribers need to unsubscribe before property deletion.")
+                    BASE_LOG.error("Subscribers need to unsubscribe before property deletion.")
                     return false
                 }
                 this.storage.remove(propName)
@@ -333,7 +333,7 @@ public class LocalStorage {
             match (p) {
                 case Some(v) =>
                     if (v.numberOfSubscribers() > 0) {
-                        BaseLog.error("Subscribers need to unsubscribe before property deletion.")
+                        BASE_LOG.error("Subscribers need to unsubscribe before property deletion.")
                         return false
                     }
                 case None => ()
