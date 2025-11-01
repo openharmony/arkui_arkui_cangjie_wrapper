@@ -35,7 +35,7 @@ class ViewRelativeContainer {
                     }.width(100.px).height(100.px)
                     .alignRules(
                         AlignRuleOptions(
-                            top: VerticalAlignment("guideline1", VerticalAlign.Top),
+                            top: VerticalAlignParam("guideline1", VerticalAlign.Top),
                         )
                     )
                     .backgroundColor(0xff3333)
@@ -55,7 +55,7 @@ class ViewRelativeContainer {
                     }.width(100.px).height(100.px)
                     .alignRules(
                         AlignRuleOptions(
-                            left: HorizontalAlignment("guideline2", HorizontalAlign.End),
+                            left: HorizontalAlignParam("guideline2", HorizontalAlign.End),
                         )
                     )
                     .backgroundColor(0xff3333)
@@ -75,7 +75,7 @@ class ViewRelativeContainer {
                     }.width(100.px).height(100.px)
                     .alignRules(
                         AlignRuleOptions(
-                            top: VerticalAlignment("guideline3", VerticalAlign.Top),
+                            top: VerticalAlignParam("guideline3", VerticalAlign.Top),
                         )
                     )
                     .backgroundColor(0xff3333)
@@ -95,7 +95,7 @@ class ViewRelativeContainer {
                     }.width(100.px).height(100.px)
                     .alignRules(
                         AlignRuleOptions(
-                            left: HorizontalAlignment("guideline4", HorizontalAlign.End),
+                            left: HorizontalAlignParam("guideline4", HorizontalAlign.End),
                         )
                     )
                     .backgroundColor(0xff3333)
@@ -122,7 +122,7 @@ class ViewRelativeContainer {
                     .backgroundColor(0xFFCC00)
                     .alignRules(
                         AlignRuleOptions(
-                            left: HorizontalAlignment("barrier1", HorizontalAlign.End)
+                            left: HorizontalAlignParam("barrier1", HorizontalAlign.End)
                         )
                     ).id("row6")
                 }
@@ -146,7 +146,7 @@ class ViewRelativeContainer {
                     .backgroundColor(0xFFCC00)
                     .alignRules(
                         AlignRuleOptions(
-                            left: HorizontalAlignment("barrier2", HorizontalAlign.End)
+                            left: HorizontalAlignParam("barrier2", HorizontalAlign.End)
                         )
                     ).id("row8")
                 }
@@ -170,7 +170,7 @@ class ViewRelativeContainer {
                     .backgroundColor(0xFFCC00)
                     .alignRules(
                         AlignRuleOptions(
-                            top:VerticalAlignment("barrier3", VerticalAlign.Bottom)
+                            top:VerticalAlignParam("barrier3", VerticalAlign.Bottom)
                         )
                     ).id("row10")
                 }
@@ -194,7 +194,7 @@ class ViewRelativeContainer {
                     .backgroundColor(0xFFCC00)
                     .alignRules(
                         AlignRuleOptions(
-                            top:VerticalAlignment("barrier4", VerticalAlign.Bottom)
+                            top:VerticalAlignParam("barrier4", VerticalAlign.Bottom)
                         )
                     ).id("row12")
                 }
@@ -211,8 +211,8 @@ class ViewRelativeContainer {
                     }.width(100.px).height(100.px)
                     .alignRules(
                         AlignRuleOptions(
-                            top: VerticalAlignment("guideline5", VerticalAlign.Top),
-                            left: HorizontalAlignment("guideline6", HorizontalAlign.End)
+                            top: VerticalAlignParam("guideline5", VerticalAlign.Top),
+                            left: HorizontalAlignParam("guideline6", HorizontalAlign.End)
                         )
                     )
                     .backgroundColor(0xff3333)
@@ -240,8 +240,8 @@ class ViewRelativeContainer {
                     .backgroundColor(0xFFCC00)
                     .alignRules(
                         AlignRuleOptions(
-                            top: VerticalAlignment("row17", VerticalAlign.Bottom),
-                            middle: HorizontalAlignment("row17", HorizontalAlign.End)
+                            top: VerticalAlignParam("row17", VerticalAlign.Bottom),
+                            middle: HorizontalAlignParam("row17", HorizontalAlign.End)
                         )
                     ).id("row18")
 
@@ -251,8 +251,8 @@ class ViewRelativeContainer {
                     .backgroundColor(0xFF6633)
                     .alignRules(
                         AlignRuleOptions(
-                            top: VerticalAlignment("row17", VerticalAlign.Top),
-                            left: HorizontalAlignment("barrier5", HorizontalAlign.End)
+                            top: VerticalAlignParam("row17", VerticalAlign.Top),
+                            left: HorizontalAlignParam("barrier5", HorizontalAlign.End)
                         )
                     ).id("row19")
 
@@ -262,8 +262,8 @@ class ViewRelativeContainer {
                     .backgroundColor(0xFF9966)
                     .alignRules(
                         AlignRuleOptions(
-                            top: VerticalAlignment("barrier6", VerticalAlign.Bottom),
-                            left: HorizontalAlignment("row17", HorizontalAlign.Start),
+                            top: VerticalAlignParam("barrier6", VerticalAlign.Bottom),
+                            left: HorizontalAlignParam("row17", HorizontalAlign.Start),
                         )
                     ).id("row20")
                 }

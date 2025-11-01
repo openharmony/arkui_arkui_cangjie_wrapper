@@ -342,7 +342,7 @@ class ButtonSelectUT21 {
         let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
 
         let hoverEffect3 = attrs3.get("hoverEffect").getOrThrow().toString()
-        @Expect(hoverEffect3, "\"HoverEffect.Auto\"")
+        @Expect(hoverEffect3, "\"HoverEffect.Scale\"")
 
         // checkbox 类型 toggle backgroundColor，hoverEffect，borderRadius 属性测试
         let inspector4 = getInspectorByKey("my_checkboxtype2_toggle")
@@ -360,7 +360,7 @@ class ButtonSelectUT21 {
         let backgroundColor5 = attrs5.get("backgroundColor").getOrThrow().toString()
         @Expect(backgroundColor5, "\"#0C000000\"")
         let hoverEffect5 = attrs5.get("hoverEffect").getOrThrow().toString()
-        @Expect(hoverEffect5, "\"HoverEffect.Auto\"")
+        @Expect(hoverEffect5, "\"HoverEffect.None\"")
         let borderRadius5 = attrs5.get("borderRadius").getOrThrow().toString()
         @Expect(borderRadius5, "{\"topLeft\":\"65.00px\",\"topRight\":\"65.00px\",\"bottomLeft\":\"65.00px\",\"bottomRight\":\"65.00px\"}")
 

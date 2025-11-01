@@ -36,7 +36,7 @@ class ViewOutline {
                     .id("outline_properties")
                 // 点线
                 Text('DOTTED')
-                    .backgroundColor(Color.Red)
+                    .backgroundColor(@r(app.color.blue_color))
                     .width(120.vp)
                     .height(120.vp)
                     .textAlign(TextAlign.Center)

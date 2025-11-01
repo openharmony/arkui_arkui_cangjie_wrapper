@@ -15,7 +15,8 @@
 
 package ohos_app_cangjie_entry
 
-import kit.LocalizationKit.*
+import ohos.i18n.*
+import ohos.resource_manager.*
 import ohos.arkui.state_macro_manage.*
 import ohos.multimedia.image.InitializationOptions
 import ohos.multimedia.image.PixelMapFormat

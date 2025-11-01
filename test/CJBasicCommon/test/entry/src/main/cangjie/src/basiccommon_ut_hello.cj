@@ -510,11 +510,11 @@ class BasicCommonUTHello {
         Hilog.info(1, "Cangjie-Test","rotation:    " + displayClass.rotation.toString())
         Hilog.info(1, "Cangjie-Test","width:       " + displayClass.width.toString())
         Hilog.info(1, "Cangjie-Test","height:      " + displayClass.height.toString())
-        Hilog.info(1, "Cangjie-Test","densityDPI:  " + displayClass.densityDPI.toString())
+        Hilog.info(1, "Cangjie-Test","densityDPI:  " + displayClass.densityDpi.toString())
         Hilog.info(1, "Cangjie-Test","densityPixels: " + displayClass.densityPixels.toString())
         Hilog.info(1, "Cangjie-Test","scaledDensity: " + displayClass.scaledDensity.toString())
-        Hilog.info(1, "Cangjie-Test","xDPI: " + displayClass.xDPI.toString())
-        Hilog.info(1, "Cangjie-Test","yDPI: " + displayClass.yDPI.toString())
+        Hilog.info(1, "Cangjie-Test","xDPI: " + displayClass.xDpi.toString())
+        Hilog.info(1, "Cangjie-Test","yDPI: " + displayClass.yDpi.toString())
 
         Hilog.info(1, "Cangjie-Test","state: " + match(displayClass.state){
             case DisplayState.StateUnknown => "unknow"
@@ -749,11 +749,11 @@ class BasicCommonUTHello {
             var foldStatus = getFoldStatus()
             var foldDisplayMode = getFoldDisplayMode()
             Hilog.info(1, "Cangjie-Test", "test_display foldDisplayMode: success")
-            off(ListenerType.ListnerTypeAdd)
-            off(ListenerType.ListnerTypeRemove)
-            off(ListenerType.ListnerTypeChange)
-            off(ListenerType.ListnerTypeFoldAngleChange)
-            off(ListenerType.ListnerTypeCaptureStatusChange)
+            off(ListenerType.ListenerTypeAdd)
+            off(ListenerType.ListenerTypeRemove)
+            off(ListenerType.ListenerTypeChange)
+            off(ListenerType.ListenerTypeFoldAngleChange)
+            off(ListenerType.ListenerTypeCaptureStatusChange)
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_display foldDisplayMode: ${e.toString()}")
         }
@@ -765,17 +765,17 @@ class BasicCommonUTHello {
         }
         let aa = FoldStatusCallback()
         try {
-            on(ListenerType.ListnerTypeFoldStatusChange, aa)
-            off(ListenerType.ListnerTypeFoldStatusChange, aa)
-            off(ListenerType.ListnerTypeFoldStatusChange)
+            on(ListenerType.ListenerTypeFoldStatusChange, aa)
+            off(ListenerType.ListenerTypeFoldStatusChange, aa)
+            off(ListenerType.ListenerTypeFoldStatusChange)
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_display FoldStatusCallback: ${e.toString()}")
         }
         let bb = FoldDisplayModeCallback()
         try {
-            on(ListenerType.ListnerTypeFoldDisplayModeChange, bb)
-            off(ListenerType.ListnerTypeFoldDisplayModeChange, bb)
-            off(ListenerType.ListnerTypeFoldDisplayModeChange)
+            on(ListenerType.ListenerTypeFoldDisplayModeChange, bb)
+            off(ListenerType.ListenerTypeFoldDisplayModeChange, bb)
+            off(ListenerType.ListenerTypeFoldDisplayModeChange)
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_display FoldDisplayModeCallback: ${e.toString()}")
         }

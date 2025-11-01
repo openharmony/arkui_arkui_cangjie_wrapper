@@ -71,7 +71,7 @@ class ViewTransition {
                 .transition(
                     TransitionEffect
                         .asymmetric(
-                            TransitionEffect.rotate(RotateOptions(Float32(5.0))),
+                            TransitionEffect.rotate(RotateOptions(Float64(5.0))),
                             TransitionEffect.IDENTITY
                         )
                         .animation(AnimateParam(duration: 2000, curve: Curve.Ease)))
@@ -97,7 +97,7 @@ class ViewTransition {
                 .transition(
                     TransitionEffect
                         .asymmetric(
-                            TransitionEffect.rotate(RotateOptions(Float32(5.0))),
+                            TransitionEffect.rotate(RotateOptions(Float64(5.0))),
                             TransitionEffect.IDENTITY
                         )
                         .animation(AnimateParam(duration: 2000, curve: Curve.Ease))

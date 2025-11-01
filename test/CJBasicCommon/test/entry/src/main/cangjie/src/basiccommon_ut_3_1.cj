@@ -284,6 +284,11 @@ class BasicCommonUT31 {
         let outlineStyle = attrs.get("outlineStyle").getOrThrow().toString()
         @Expect(outlineStyle, "\"OutlineStyle.SOLID\"")
 
+        let strJson = getInspectorByKey("outline_properties")
+        Hilog.info(0x0001, "outline_properties", "1111" + strJson)
+        Hilog.info(0x0001, "outline_properties", "1111" + strJson.split("visibility")[0])
+        Hilog.info(0x0001, "outline_properties", "1111" + strJson.split("visibility")[1])
+
         let outlineWidth = attrs.get("outlineWidth").getOrThrow().toString()
         @Expect(outlineWidth, "\"0.00vp\"")
 
@@ -293,6 +298,13 @@ class BasicCommonUT31 {
         let outlineRadius = attrs.get("outlineRadius").getOrThrow().toString()
         @Expect(outlineRadius, "{\"topLeft\":\"0.00vp\",\"topRight\":\"0.00vp\",\"bottomLeft\":\"0.00vp\",\"bottomRight\":\"0.00vp\"}")
 
+
+
+
+        let strJson2 = getInspectorByKey("outline_test")
+        Hilog.info(0x0001, "outline_test", "1111" + strJson2)
+        Hilog.info(0x0001, "outline_test", "1111" + strJson2.split("visibility")[0])
+        Hilog.info(0x0001, "outline_test", "1111" + strJson2.split("visibility")[1])
         // let Inspector2 = getInspectorByKey("outline_test")
         // let jsonObject2 = JsonValue.fromStr(Inspector2).asObject()
         // let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
