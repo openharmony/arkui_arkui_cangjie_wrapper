@@ -423,6 +423,15 @@ public class GridRowOptions {
         NativeGridRowColumnOption(this.xs ?? 2, this.sm ?? 4, this.md ?? 8,
             this.lg ?? 12, this.xl ?? 12, this.xxl ?? 12)
     }
+
+    func validateInput(): GridRowOptions {
+        if ((this.xs ?? 2) <= 0 || (this.sm ?? 4) <= 0 || (this.md ?? 8) <= 0 
+            || (this.lg ?? 12) <= 0 || (this.xl ?? 12) <= 0 || (this.xxl ?? 12) <= 0) {
+            return GridRowOptions()
+        }
+        return this
+    }
+
 }
 
 /**
@@ -616,33 +625,7 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
         direction!: ?GridRowDirection = Option.None,
         child!: () -> Unit = {=>}
     ) {
-        let tmpBreakpoints = breakpoints ?? BreakPoints()
-        let tmpBreakpointsValue = tmpBreakpoints.value ?? [320.vp, 600.vp, 840.vp]
-        let tmpDirection = direction ?? GridRowDirection.Row
-
-        var gutter_ = transAppResourceToLength(gutter ?? 0.vp)
-        let valuesHandle = FFIVectorFloat64(tmpBreakpointsValue.size)
-        let unitsHandle = FFIVectorInt32(tmpBreakpointsValue.size)
-        for (i in 0..tmpBreakpointsValue.size) {
-            valuesHandle.setElement(i, tmpBreakpointsValue[i].value)
-            unitsHandle.setElement(i, tmpBreakpointsValue[i].unitType.getValue())
-        }
-        unsafe {
-            FfiOHOSAceFrameworkGridRowCreateWithFloat64Int32(
-                GridRowCreateWithFloat64Int32(
-                    gutter_.value,
-                    gutter_.unitType.getValue(),
-                    columns ?? 12,
-                    valuesHandle.getNativeHandle(),
-                    unitsHandle.getNativeHandle(),
-                    (tmpBreakpoints.reference ?? BreakpointsReference.WindowSize).getValue(),
-                    tmpDirection.getValue()
-                )
-            )
-            valuesHandle.free()
-            unitsHandle.free()
-        }
-        this.child = child
+        this(columns: GridRowOptions(columns), gutter: gutter, breakpoints: breakpoints, direction: direction, child: child)
     }
 
     /**
@@ -678,7 +661,7 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
             unitsHandle.setElement(i, tmpBreakpointsValue[i].unitType.getValue())
         }
         unsafe {
-            let nativeColumns = tmpColumns.parseToNative()
+            let nativeColumns = tmpColumns.validateInput().parseToNative()
             FfiOHOSAceFrameworkGridRowCreateWithFloat64ColumnOption(
                 GridRowCreateWithFloat64ColumnOption(
                     gutter_.value,
@@ -716,52 +699,7 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
         direction!: ?GridRowDirection = Option.None,
         child!: () -> Unit = {=>}
     ) {
-        let tmpGutter = gutter ?? GutterOptions()
-        let tmpBreakpoints = breakpoints ?? BreakPoints()
-        let tmpBreakpointsValue = tmpBreakpoints.value ?? [320.vp, 600.vp, 840.vp]
-        let tmpDirection = direction ?? GridRowDirection.Row
-
-        let valuesHandle = FFIVectorFloat64(tmpBreakpointsValue.size)
-        let unitsHandle = FFIVectorInt32(tmpBreakpointsValue.size)
-        for (i in 0..tmpBreakpointsValue.size) {
-            valuesHandle.setElement(i, tmpBreakpointsValue[i].value)
-            unitsHandle.setElement(i, tmpBreakpointsValue[i].unitType.getValue())
-        }
-        match (tmpGutter.data) {
-            case GUTTERLENGTH(gutterValue) => unsafe {
-                FfiOHOSAceFrameworkGridRowCreateWithFloat64OptionInt32(
-                    GridRowCreateWithFloat64OptionInt32(
-                        gutterValue.x.value,
-                        gutterValue.x.unitType.getValue(),
-                        gutterValue.y.value,
-                        gutterValue.y.unitType.getValue(),
-                        columns ?? 12,
-                        valuesHandle.getNativeHandle(),
-                        unitsHandle.getNativeHandle(),
-                        (tmpBreakpoints.reference ?? BreakpointsReference.WindowSize).getValue(),
-                        tmpDirection.getValue()
-                    )
-                )
-                valuesHandle.free()
-                unitsHandle.free()
-            }
-            case GUTTEROPTION(gutterValue) => unsafe {
-                FfiOHOSAceFrameworkGridRowCreateWithSizeOptionInt32(
-                    GridRowCreateWithSizeOptionInt32(
-                        gutterValue.x.toAtC(),
-                        gutterValue.y.toAtC(),
-                        columns ?? 12,
-                        valuesHandle.getNativeHandle(),
-                        unitsHandle.getNativeHandle(),
-                        (tmpBreakpoints.reference ?? BreakpointsReference.WindowSize).getValue(),
-                        tmpDirection.getValue()
-                    )
-                )
-                valuesHandle.free()
-                unitsHandle.free()
-            }
-        }
-        this.child = child
+        this(columns: GridRowOptions(columns), gutter: gutter, breakpoints: breakpoints, direction: direction, child: child)
     }
 
     /**
@@ -798,7 +736,7 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
         }
         match (tmpGutter.data) {
             case GUTTERLENGTH(gutterValue) => unsafe {
-                let nativeColumns = tmpColumns.parseToNative()
+                let nativeColumns = tmpColumns.validateInput().parseToNative()
                 FfiOHOSAceFrameworkGridRowCreateWithFloat64OptionColumnOption(
                     GridRowCreateWithFloat64OptionColumnOption(
                         gutterValue.x.value,
