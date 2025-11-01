@@ -314,17 +314,17 @@ public class DismissDialogAction {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var reason: ?DismissReason
+    public var reason: DismissReason
     /**
      * Constructor of DismissDialogAction
      *
-     * @param { ?DismissReason } reason - Reason why the dialog box cannot be dismissed. You must specify whether to close the dialog box for each of the listed actions.
+     * @param { DismissReason } reason - Reason why the dialog box cannot be dismissed. You must specify whether to close the dialog box for each of the listed actions.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(reason: ?DismissReason) {
+    public init(reason: DismissReason) {
         this.reason = reason
     }
     /**

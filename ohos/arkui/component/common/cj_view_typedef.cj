@@ -2323,7 +2323,7 @@ public class DismissSheetAction {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var reason: ?DismissReason
+    public var reason: DismissReason
 
     init(reason: DismissReason) {
         this.reason = reason
