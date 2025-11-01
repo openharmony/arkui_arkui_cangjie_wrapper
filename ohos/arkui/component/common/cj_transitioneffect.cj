@@ -91,9 +91,9 @@ public class TranslateOptions {
     /**
      * Creates a new TranslateOptions instance with the specified properties.
      *
-     * @param { ?Length } x - Translation distance along the x-axis
-     * @param { ?Length } y - Translation distance along the y-axis
-     * @param { ?Length } z - Translation distance along the z-axis
+     * @param { ?Length } [x] - Translation distance along the x-axis
+     * @param { ?Length } [y] - Translation distance along the y-axis
+     * @param { ?Length } [z] - Translation distance along the z-axis
      */
     @!APILevel[
         since: "22",
@@ -173,11 +173,11 @@ public class ScaleOptions {
     /**
      * Creates a new ScaleOptions instance with the specified properties.
      *
-     * @param { ?Float32 } x - Scale ratio along the x-axis
-     * @param { ?Float32 } y - Scale ratio along the y-axis
-     * @param { ?Float32 } z - Scale ratio along the z-axis
-     * @param { ?Length } centerX - X coordinate of the transformation center
-     * @param { ?Length } centerY - Y coordinate of the transformation center
+     * @param { ?Float32 } [x] - Scale ratio along the x-axis
+     * @param { ?Float32 } [y] - Scale ratio along the y-axis
+     * @param { ?Float32 } [z] - Scale ratio along the z-axis
+     * @param { ?Length } [centerX] - X coordinate of the transformation center
+     * @param { ?Length } [centerY] - Y coordinate of the transformation center
      */
     @!APILevel[
         since: "22",
@@ -308,13 +308,13 @@ public class RotateOptions {
      * Creates a new RotateOptions instance with the specified properties.
      *
      * @param { ?Float64 } angle - Rotation angle in degrees
-     * @param { ?Float64 } x - X coordinate of the rotation axis vector
-     * @param { ?Float64 } y - Y coordinate of the rotation axis vector
-     * @param { ?Float64 } z - Z coordinate of the rotation axis vector
-     * @param { ?Length } centerX - X coordinate of the transformation center
-     * @param { ?Length } centerY - Y coordinate of the transformation center
-     * @param { ?Length } centerZ - Z coordinate of the transformation center
-     * @param { ?Float64 } perspective - Perspective distance
+     * @param { ?Float64 } [x] - X coordinate of the rotation axis vector
+     * @param { ?Float64 } [y] - Y coordinate of the rotation axis vector
+     * @param { ?Float64 } [z] - Z coordinate of the rotation axis vector
+     * @param { ?Length } [centerX] - X coordinate of the transformation center
+     * @param { ?Length } [centerY] - Y coordinate of the transformation center
+     * @param { ?Length } [centerZ] - Z coordinate of the transformation center
+     * @param { ?Float64 } [perspective] - Perspective distance
      */
     @!APILevel[
         since: "22",

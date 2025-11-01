@@ -161,9 +161,9 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
     /**
      * Parameters of the date picker.
      *
-     * @param { ?DateTime } start - Start date of the picker.
-     * @param { ?DateTime } end - End date of the picker.
-     * @param { ?DateTime } selected - Date of the selected item.
+     * @param { ?DateTime } [start] - Start date of the picker.
+     * @param { ?DateTime } [end] - End date of the picker.
+     * @param { ?DateTime } [selected] - Date of the selected item.
      */
     @!APILevel[
         since: "22",

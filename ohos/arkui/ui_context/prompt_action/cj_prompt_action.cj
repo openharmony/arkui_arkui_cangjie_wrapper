@@ -236,9 +236,9 @@ public class ButtonInfo {
     /**
      * Constructs a menu item button in a menu.
      *
-     * @param { ResourceStr } text: Button text content.
-     * @param { ResourceColor } color: Button text color.
-     * @param { Bool } primary: Whether the button responds to the Enter/Space key by default.
+     * @param { ResourceStr } text - Button text content.
+     * @param { ResourceColor } color - Button text color.
+     * @param { Bool } [primary] - Whether the button responds to the Enter/Space key by default.
      */
     @!APILevel[
         since: "22",
@@ -368,10 +368,10 @@ public class EdgeColors {
     /**
      * EdgeColor constructor
      *
-     * @param { ResourceColor } top
-     * @param { ResourceColor } right
-     * @param { ResourceColor } bottom
-     * @param { ResourceColor } left
+     * @param { ResourceColor } [top]
+     * @param { ResourceColor } [right]
+     * @param { ResourceColor } [bottom]
+     * @param { ResourceColor } [left]
      */
     @!APILevel[
         since: "22",
@@ -637,21 +637,21 @@ public open class BaseDialogOptions {
     /**
      * BaseDialogOptions constructor
      *
-     * @param { Rectangle } maskRect
-     * @param { DialogAlignment } alignment
-     * @param { Offset } offset
-     * @param { Bool } isModal
-     * @param { Bool } showInSubWindow
-     * @param { Bool } autoCancel
-     * @param { ResourceColor } maskColor
-     * @param { TransitionEffect } transition
-     * @param { function } onDidAppear
-     * @param { function } onDidDisappear
-     * @param { function } onWillAppear
-     * @param { function } onWillDisappear
-     * @param { KeyboardAvoidMode } keyboardAvoidMode
-     * @param { Bool } enableHoverMode
-     * @param { HoverModeAreaType } hoverModeArea
+     * @param { Rectangle } [maskRect]
+     * @param { DialogAlignment } [alignment]
+     * @param { Offset } [offset]
+     * @param { Bool } [isModal]
+     * @param { Bool } [showInSubWindow]
+     * @param { Bool } [autoCancel]
+     * @param { ResourceColor } [maskColor]
+     * @param { TransitionEffect } [transition]
+     * @param { function } [onDidAppear]
+     * @param { function } [onDidDisappear]
+     * @param { function } [onWillAppear]
+     * @param { function } [onWillDisappear]
+     * @param { KeyboardAvoidMode } [keyboardAvoidMode]
+     * @param { Bool } [enableHoverMode]
+     * @param { HoverModeAreaType } [hoverModeArea]
      */
     @!APILevel[
         since: "22",
@@ -806,30 +806,30 @@ public class CustomDialogOptions <: BaseDialogOptions {
      * Dialog constructor.
      *
      * @param { function } builder
-     * @param { Rectangle } maskRect
-     * @param { DialogAlignment } alignment
-     * @param { Offset } offset
-     * @param { Bool } isModal
-     * @param { Bool } showInSubWindow
-     * @param { Bool } autoCancel
-     * @param { ResourceColor } maskColor
-     * @param { TransitionEffect } transition
-     * @param { function } onDidAppear
-     * @param { function } onDidDisappear
-     * @param { function } onWillAppear
-     * @param { function } onWillDisappear
-     * @param { KeyboardAvoidMode } keyboardAvoidMode
-     * @param { Bool } enableHoverMode
-     * @param { HoverModeAreaType } hoverModeArea
-     * @param { ResourceColor } backgroundColor
-     * @param { BorderRadiuses } cornerRadius
-     * @param { EdgeWidths } borderWidth
-     * @param { EdgeColors } borderColor
-     * @param { EdgeStyles } borderStyle
-     * @param { Length } width
-     * @param { Length } height
-     * @param { ShadowOptions } shadow
-     * @param { BlurStyle } backgroundBlurStyle
+     * @param { Rectangle } [maskRect]
+     * @param { DialogAlignment } [alignment]
+     * @param { Offset } [offset]
+     * @param { Bool } [isModal]
+     * @param { Bool } [showInSubWindow]
+     * @param { Bool } [autoCancel]
+     * @param { ResourceColor } [maskColor]
+     * @param { TransitionEffect } [transition]
+     * @param { function } [onDidAppear]
+     * @param { function } [onDidDisappear]
+     * @param { function } [onWillAppear]
+     * @param { function } [onWillDisappear]
+     * @param { KeyboardAvoidMode } [keyboardAvoidMode]
+     * @param { Bool } [enableHoverMode]
+     * @param { HoverModeAreaType } [hoverModeArea]
+     * @param { ResourceColor } [backgroundColor]
+     * @param { BorderRadiuses } [cornerRadius]
+     * @param { EdgeWidths } [borderWidth]
+     * @param { EdgeColors } [borderColor]
+     * @param { EdgeStyles } [borderStyle]
+     * @param { Length } [width]
+     * @param { Length } [height]
+     * @param { ShadowOptions } [shadow]
+     * @param { BlurStyle } [backgroundBlurStyle]
      */
     @!APILevel[
         since: "22",
@@ -1036,19 +1036,19 @@ public open class ShowDialogOptions {
     /**
      * Dialog's show options constructor.
      *
-     * @param { ResourceStr } title
-     * @param { ResourceStr } message
-     * @param { Array<ButtonInfo> } buttons
-     * @param { DialogAlignment } alignment
-     * @param { Offset } offset
-     * @param { Rectangle } maskRect
-     * @param { Bool } showInSubWindow
-     * @param { Bool } isModal
-     * @param { Color } backgroundColor
-     * @param { BlurStyle } backgroundBlurStyle
-     * @param { ShadowOptions } shadow
-     * @param { Bool } enableHoverMode
-     * @param { HoverModeAreaType } hoverModeArea
+     * @param { ResourceStr } [title]
+     * @param { ResourceStr } [message]
+     * @param { Array<ButtonInfo> } [buttons]
+     * @param { DialogAlignment } [alignment]
+     * @param { Offset } [offset]
+     * @param { Rectangle } [maskRect]
+     * @param { Bool } [showInSubWindow]
+     * @param { Bool } [isModal]
+     * @param { Color } [backgroundColor]
+     * @param { BlurStyle } [backgroundBlurStyle]
+     * @param { ShadowOptions } [shadow]
+     * @param { Bool } [enableHoverMode]
+     * @param { HoverModeAreaType } [hoverModeArea]
      */
     @!APILevel[
         since: "22",
@@ -1140,10 +1140,10 @@ public open class ActionMenuOptions {
     /**
      * Menu's Action options constructor.
      *
-     * @param { ResourceStr } title
-     * @param { Array<ButtonInfo> } buttons
-     * @param { Bool } showInSubWindow
-     * @param { Bool } isModal
+     * @param { ResourceStr } [title]
+     * @param { Array<ButtonInfo> } [buttons]
+     * @param { Bool } [showInSubWindow]
+     * @param { Bool } [isModal]
      */
     @!APILevel[
         since: "22",
@@ -1296,17 +1296,17 @@ public class ShowToastOptions {
      * Toast's show options constructor.
      *
      * @param { ResourceStr } message
-     * @param { UInt32 } duration
-     * @param { Length } bottom
-     * @param { ToastShowMode } showMode
-     * @param { Alignment } alignment
-     * @param { Offset } offset
-     * @param { Color } backgroundColor
-     * @param { Color } textColor
-     * @param { BlurStyle } backgroundBlurStyle
-     * @param { ShadowOptions } shadow
-     * @param { Bool } enableHoverMode
-     * @param { HoverModeAreaType } hoverModeArea
+     * @param { UInt32 } [duration]
+     * @param { Length } [bottom]
+     * @param { ToastShowMode } [showMode]
+     * @param { Alignment } [alignment]
+     * @param { Offset } [offset]
+     * @param { Color } [backgroundColor]
+     * @param { Color } [textColor]
+     * @param { BlurStyle } [backgroundBlurStyle]
+     * @param { ShadowOptions } [shadow]
+     * @param { Bool } [enableHoverMode]
+     * @param { HoverModeAreaType } [hoverModeArea]
      */
     @!APILevel[
         since: "22",
@@ -1597,7 +1597,7 @@ public class PromptAction {
     /**
      * Shows a toast in the given settings.
      *
-     * @param { ShowToastOptions } options - Toast options.
+     * @param { ShowToastOptions } option - Toast options.
      * @throws { BusinessException } 100001 - Internal error. Possible causes:
      * <br> Failed to allocate memory.
      */
@@ -1617,8 +1617,8 @@ public class PromptAction {
     /**
      * Shows a dialog box in the given settings. This API uses an asynchronous callback to return the result.
      *
-     * @param { ShowDialogOptions } options - Dialog box options.
-     * @param { ShowDialogCallBack } callback - Callback used to return the dialog box response result.
+     * @param { ShowDialogOptions } option - Dialog box options.
+     * @param { ShowDialogCallBack } [callback] - Callback used to return the dialog box response result.
      * @throws { BusinessException } 100001 - Internal error. Possible causes:
      * <br> Failed to allocate memory.
      */
@@ -1647,8 +1647,9 @@ public class PromptAction {
     /**
      * Shows an action menu in the given settings. This API uses an asynchronous callback to return the result.
      *
-     * @param { ActionMenuOptions } options - Action menu options.
-     * @param { ShowActionMenuCallBack } callback - Callback used to return the action menu response result.
+     * @param { ActionMenuOptions } option - Action menu options.
+     * @param { ShowActionMenuCallBack } [callback] - Callback used to return the action menu
+     * response result.
      * @throws { BusinessException } 100001 - Internal error. Possible causes:
      * <br> Failed to allocate memory.
      */

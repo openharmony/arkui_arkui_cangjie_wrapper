@@ -79,11 +79,15 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
 
     /**
      * Triggered when the Scroll component scrolls.
-     * 1. This event is triggered when scrolling is started by the Scroll component or other input settings,such as keyboard and mouse operations;
-     * 2. This event is triggered when the controller API is called;
-     * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @param { ?ScrollOnScrollCallback } callback - Callback triggered after scrolling.
+     * <p><strong>NOTE</strong>
+     * <br>1. This event is triggered when scrolling is started by the <em>Scroll</em> component or other input settings,
+     * such as keyboard and mouse operations.
+     * <br>2. This event is triggered when the controller API is called.
+     * <br>3. This event supports the out-of-bounds bounce effect.
+     * </p>
+     *
+     * @param { ?ScrollOnScrollCallback } callback -  Callback triggered when the <em>Scroll</em> component scrolls.
      * @returns { ScrollAttribute }
      */
     @!APILevel[

@@ -68,12 +68,12 @@ foreign {
 public class ForEach<T> <: UINodeBase {
     var child: () -> Unit = {=>}
 
-    /*
+    /**
      * Define the ForEach component.
      *
      * @param { CollectionEx<T> } arr - the array collection to be used in UI.
      * @param { ItemGeneratorFunc<T> } itemGenerator - item generator function.
-     * @param { KeyGeneratorFunc<T> } keyGenerator - key generator function.
+     * @param { ?KeyGeneratorFunc<T> } [keyGenerator] - key generator function.
      */
     @!APILevel[
         since: "22",

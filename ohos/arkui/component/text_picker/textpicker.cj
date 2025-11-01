@@ -116,8 +116,7 @@ func checkSelect(range: Array<String>, value: String): UInt32 {
 public type OnTextPickerChangeCallback = (String, UInt32) -> Unit
 
 /**
- * Creates a text picker based on the selection range specified by range.
- *
+ * A text picker dialog box is a dialog box that allows users to select text from the given range.
  */
 @!APILevel[
     since: "22",
@@ -128,8 +127,8 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
      * Defines the TextPicker constructor.
      *
      * @param { Array<String> } range - Data selection range of the picker.
-     * @param { ?UInt32 } selected - Index of the default selected item in the array.
-     * @param { ?String } value - Value of the default item in the range.
+     * @param { ?UInt32 } [selected] - Index of the default selected item in the array.
+     * @param { ?String } [value] - Value of the default item in the range.
      */
     @!APILevel[
         since: "22",

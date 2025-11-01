@@ -113,7 +113,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
     /**
      * Constructor.
      *
-     * @param { ?PatternLockController } controller - Sets PatternLock component controller, which can be used to control component status reset.
+     * @param { ?PatternLockController } [controller] - Sets PatternLock component controller, which can be used to control component status reset.
      */
     @!APILevel[
         since: "22",

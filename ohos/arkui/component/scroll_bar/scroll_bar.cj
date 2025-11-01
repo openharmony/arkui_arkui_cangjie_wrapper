@@ -35,13 +35,13 @@ foreign {
 ]
 public class ScrollBar <: CommonMethodComponent<ScrollBar> & ScrollBarAttribute {
     /**
-    * Constructs a ScrollBar component with the provided parameters.
-    *
-    * @param { ?Scroller } scroller - Scroller controller for the scrollable component.
-    * @param { ?ScrollBarDirection } direction - Layout direction of the scroll bar.
-    * @param { ?BarState } state - Display state of the scroll bar.
-    * @param { () -> Unit } child - Child component contained in the scroll bar.
-    */
+     * Constructs a ScrollBar component with the provided parameters.
+     *
+     * @param { ?Scroller } scroller - Scroller controller for the scrollable component.
+     * @param { ?ScrollBarDirection } [direction] - Layout direction of the scroll bar.
+     * @param { ?BarState } [state] - Display state of the scroll bar.
+     * @param { () -> Unit } child - Child component contained in the scroll bar.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

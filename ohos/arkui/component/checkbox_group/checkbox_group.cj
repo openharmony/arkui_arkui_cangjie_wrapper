@@ -166,7 +166,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
     /**
      * CheckboxGroup Constructor.
      *
-     * @param { ?String } group - The group name of the checkbox group.
+     * @param { ?String } [group] - The group name of the checkbox group.
      */
     @!APILevel[
         since: "22",

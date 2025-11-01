@@ -217,10 +217,10 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * The options of SearchInterface.
      * Initializes a Search component with optional initial value, placeholder, icon, and controller.
      *
-     * @param { ?ResourceStr } value - Indicates the initial text of the search input.
-     * @param { ?ResourceStr } placeholder - Text displayed when there is no input.
-     * @param { Option<AppResource> } icon - The icon resource displayed in the search field.
-     * @param { Option<SearchController> } controller - Controller of the <Search> component for managing text operations.
+     * @param { ?ResourceStr } [value] - Indicates the initial text of the search input.
+     * @param { ?ResourceStr } [placeholder] - Text displayed when there is no input.
+     * @param { Option<AppResource> } [icon] - The icon resource displayed in the search field.
+     * @param { Option<SearchController> } [controller] - Controller of the <Search> component for managing text operations.
      */
     @!APILevel[
         since: "22",
@@ -258,7 +258,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     /**
-     * Set the search button text, fontSize and fontColor.
+     * Set the search button text.
      * Configures the text displayed on the search button.
      *
      * @param { ?ResourceStr } value - Indicates the text of the search button.
@@ -279,8 +279,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     /**
-     * Set the search button text, fontSize and fontColor.
-     * Configures the color of the placeholder text.
+     * Set the place hold text color.
      *
      * @param { ?ResourceColor } value - indicates the color of the placeholder text. The default value on wearable devices is 0x9ffffff.
      * @default 0x99182431
@@ -299,13 +298,17 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     /**
-     * Set the font used for place holder text.
-     * Configures the font properties of the placeholder text.
+     * Set the font used for place holder text
      *
-     * @param { ?Length } size - The placeholder font size.
-     * @param { ?FontWeight } weight - The placeholder font weight.
-     * @param { ?FontStyle } style - The placeholder font style.
-     * @param { ?ResourceStr } family - The placeholder font family.
+     * <p><strong>NOTE</strong>:
+     * <br>The 'HarmonyOS Sans' font and registered custom fonts are supported.
+     * <br>The default font size on wearable devices is 18.px.
+     * </p>
+     *
+     * @param { ?Length } [size] - The placeholder font size.
+     * @param { ?FontWeight } [weight] - The placeholder font weight.
+     * @param { ?FontStyle } [style] - The placeholder font style.
+     * @param { ?ResourceStr } [family] - The placeholder font family.
      * @returns { This } Returns the Search instance.
      */
     @!APILevel[
@@ -349,10 +352,10 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * Set the font used for input text.
      * Configures the font properties of the input text.
      *
-     * @param { ?Length } size - Font size.
-     * @param { ?FontWeight } weight - Font weight.
-     * @param { ?FontStyle } style - Font style.
-     * @param { ?ResourceStr } family - Font family.
+     * @param { ?Length } [size] - Font size.
+     * @param { ?FontWeight } [weight] - Font weight.
+     * @param { ?FontStyle } [style] - Font style.
+     * @param { ?ResourceStr } [family] - Font family.
      * @returns { This } Returns the Search instance.
      */
     @!APILevel[
@@ -398,8 +401,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * all other actions, such as copying, cutting, and sharing, are disabled.
      * Dragging is not allowed when CopyOptions.None is set.
      *
-     * @param { ?CopyOptions } value - Copy options for the search input.
-     * @default CopyOptions.LocalDevice
+     * @param { ?CopyOptions } value - Copy options for the search input. The default value is CopyOptions.LocalDevice.
      * @returns { This } RReturns the Search instance.
      */
     @!APILevel[

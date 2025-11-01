@@ -47,8 +47,8 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
     /**
      * Initializes a Stepper component with optional initial index and child content.
      *
-     * @param { ?UInt32 } index - Initial step index.
-     * @param { () -> Unit } child - Builder function for Stepper content.
+     * @param { ?UInt32 } [index] - Initial step index.
+     * @param { () -> Unit } [child] - Builder function for Stepper content.
      */
     @!APILevel[
         since: "22",

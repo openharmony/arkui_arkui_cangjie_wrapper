@@ -51,8 +51,8 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
     /**
      * Column constructor.
      *
-     * @param { ?Length } space - The spacing between child elements in the vertical layout.
-     * @param { () -> Unit } child - The child component of the column.
+     * @param { ?Length } [space] - The spacing between child elements in the vertical layout.
+     * @param { () -> Unit } [child] - The child component of the column.
      */
     @!APILevel[
         since: "22",

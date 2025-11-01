@@ -31,7 +31,7 @@ sealed interface PathAttribute <: CommonShapeMethod<PathAttribute> {
      * Called when the command string drawn by the path is set.
      *
      * @param { ?ResourceStr } commands - The command string to draw the path.
-     * @returns { This }
+     * @returns { PathAttribute } - The path attribute.
      */
     @!APILevel[
         since: "22",

@@ -154,7 +154,7 @@ sealed interface AlphabetIndexerAttribute <: CommonMethod<AlphabetIndexerAttribu
     /**
      * Size of the letter area on the letter index bar. The letter area is a square. Set the length of the square side.
      * 
-     * @param { ?Length } value - The normal item size.
+     * @param { ?Length } size - The normal item size.
      * @default 16.vp
      * @returns { AlphabetIndexerAttribute } Returns the current AlphabetIndexerAttribute instance.
      */

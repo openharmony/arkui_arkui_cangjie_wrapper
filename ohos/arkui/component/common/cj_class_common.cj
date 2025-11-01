@@ -154,8 +154,8 @@ public class Position {
     /**
      * Position constructor.
      *
-     * @param { ?Length } x - The x-coordinate of the position.
-     * @param { ?Length } y - The y-coordinate of the position.
+     * @param { ?Length } [x] - The x-coordinate of the position.
+     * @param { ?Length } [y] - The y-coordinate of the position.
      */
     @!APILevel[
         since: "22",
@@ -224,9 +224,9 @@ public class MotionPathOptions {
      * MotionPathOptions constructor.
      *
      * @param { ?String } path - The path of motion.
-     * @param { ?Float64 } from - The starting of motion.
-     * @param { ?Float64 } to - The ending of motion.
-     * @param { ?Bool } rotatable - Whether retatable.
+     * @param { ?Float64 } [from] - The starting of motion.
+     * @param { ?Float64 } [to] - The ending of motion.
+     * @param { ?Bool } [rotatable] - Whether retatable.
      */
     @!APILevel[
         since: "22",
@@ -323,12 +323,12 @@ public class SharedTransitionOptions {
     /**
      * SharedTransitionOptions constructor.
      *
-     * @param { ?Int32 } duration - The transition duration.
-     * @param { ?Curve } curve - The transition curve.
-     * @param { ?Int32 } delay - The transition delay.
-     * @param { ?MotionPathOptions } motionPath - The transition path.
-     * @param { ?Int32 } zIndex - The transition zIndex.
-     * @param { ?SharedTransitionEffectType } effectType - The transition effect type.
+     * @param { ?Int32 } [duration] - The transition duration.
+     * @param { ?Curve } [curve] - The transition curve.
+     * @param { ?Int32 } [delay] - The transition delay.
+     * @param { ?MotionPathOptions } [motionPath] - The transition path.
+     * @param { ?Int32 } [zIndex] - The transition zIndex.
+     * @param { ?SharedTransitionEffectType } [effectType] - The transition effect type.
      */
     @!APILevel[
         since: "22",
@@ -452,15 +452,15 @@ public class AnimateParam {
     /**
      * AnimateParam constructor.
      *
-     * @param { ?Int32 } duration - The animation duration.
-     * @param { ?Float32 } tempo - The animation playback speed.
-     * @param { ?Curve } curve - The animation curve.
-     * @param { ?Int32 } delay - The animation delay.
-     * @param { ?Int32 } iterations - The playback times.
-     * @param { ?PlayMode } playMode - The play mode.
-     * @param { Option<() -> Unit> } onFinish - The callback on finish.
-     * @param { ?FinishCallbackType } finishCallbackType - The callback finish type.
-     * @param { Option<ExpectedFrameRateRange> } expectedFrameRateRange - Expected frame rate range of the animation.
+     * @param { ?Int32 } [duration] - The animation duration.
+     * @param { ?Float32 } [tempo] - The animation playback speed.
+     * @param { ?Curve } [curve] - The animation curve.
+     * @param { ?Int32 } [delay] - The animation delay.
+     * @param { ?Int32 } [iterations] - The playback times.
+     * @param { ?PlayMode } [playMode] - The play mode.
+     * @param { Option<() -> Unit> } [onFinish] - The callback on finish.
+     * @param { ?FinishCallbackType } [finishCallbackType] - The callback finish type.
+     * @param { Option<ExpectedFrameRateRange> } [expectedFrameRateRange] - Expected frame rate range of the animation.
      */
     @!APILevel[
         since: "22",
@@ -613,8 +613,8 @@ public class Bias {
     /**
      * Defines the constructor of Bias.
      *
-     * @param { ?Float64 } horizontal - Horizontal ratio of the Bias, it must be >= 0.
-     * @param { ?Float64 } vertical - Vertical ratio of the Bias, it must be >= 0.
+     * @param { ?Float64 } [horizontal] - Horizontal ratio of the Bias, it must be >= 0.
+     * @param { ?Float64 } [vertical] - Vertical ratio of the Bias, it must be >= 0.
      */
     @!APILevel[
         since: "22",
@@ -673,10 +673,10 @@ public class Fonts {
     /**
      * Fonts constructor.
      *
-     * @param { ?Length } size - The font size.
-     * @param { ?FontWeight } weight - The font weight.
-     * @param { ?ResourceStr } family - The font family.
-     * @param { ?FontStyle } style - The font style.
+     * @param { ?Length } [size] - The font size.
+     * @param { ?FontWeight } [weight] - The font weight.
+     * @param { ?ResourceStr } [family] - The font family.
+     * @param { ?FontStyle } [style] - The font style.
      */
     @!APILevel[
         since: "22",
@@ -738,10 +738,10 @@ public class BorderRadiuses {
     /**
      * BorderRadiuses constructor.
      *
-     * @param { ?Length } topLeft - The top left.
-     * @param { ?Length } topRight - The top right.
-     * @param { ?Length } bottomLeft - The bottom left.
-     * @param { ?Length } bottomRight - The bottom right.
+     * @param { ?Length } [topLeft] - The top left.
+     * @param { ?Length } [topRight] - The top right.
+     * @param { ?Length } [bottomLeft] - The bottom left.
+     * @param { ?Length } [bottomRight] - The bottom right.
      */
     @!APILevel[
         since: "22",
@@ -808,10 +808,10 @@ public class Margin {
     /**
      * Margin constructor.
      *
-     * @param { ?Length } top - The top of margin.
-     * @param { ?Length } right - The right of margin.
-     * @param { ?Length } bottom - The bottom of margin.
-     * @param { ?Length } left - The left of margin.
+     * @param { ?Length } [top] - The top of margin.
+     * @param { ?Length } [right] - The right of margin.
+     * @param { ?Length } [bottom] - The bottom of margin.
+     * @param { ?Length } [left] - The left of margin.
      */
     @!APILevel[
         since: "22",
@@ -939,11 +939,11 @@ public class ShadowOptions {
      * ShadowOptions constructor.
      *
      * @param { ?Float64 } radius - Blur radius of the shadow.
-     * @param { ?ShadowType } shadowType - Shadow type.
-     * @param { ?ResourceColor } color - Color of the shadow.
-     * @param { ?Float64 } offsetX - Offset of the shadow along the x-axis.
-     * @param { ?Float64 } offsetY - Offset of the shadow along the y-axis.
-     * @param { ?Bool } fill - Whether to fill the inside of the component with shadow.
+     * @param { ?ShadowType } [shadowType] - Shadow type.
+     * @param { ?ResourceColor } [color] - Color of the shadow.
+     * @param { ?Float64 } [offsetX] - Offset of the shadow along the x-axis.
+     * @param { ?Float64 } [offsetY] - Offset of the shadow along the y-axis.
+     * @param { ?Bool } [fill] - Whether to fill the inside of the component with shadow.
      */
     @!APILevel[
         since: "22",
@@ -1283,13 +1283,13 @@ public class AlignRuleOptions {
     /**
      * Defines the constructor of AlignRuleOptions.
      *
-     * @param { ?HorizontalAlignParam } left - The param of left align.
-     * @param { ?HorizontalAlignParam } right - The param of right align.
-     * @param { ?HorizontalAlignParam } middle - The param of middle align.
-     * @param { ?VerticalAlignParam } top - The param of top align.
-     * @param { ?VerticalAlignParam } bottom - The param of bottom align.
-     * @param { ?VerticalAlignParam } center - The param of center align.
-     * @param { Bias } bias - Defines the bias ratio in horizontal and vertical direction.
+     * @param { ?HorizontalAlignParam } [left] - The param of left align.
+     * @param { ?HorizontalAlignParam } [right] - The param of right align.
+     * @param { ?HorizontalAlignParam } [middle] - The param of middle align.
+     * @param { ?VerticalAlignParam } [top] - The param of top align.
+     * @param { ?VerticalAlignParam } [bottom] - The param of bottom align.
+     * @param { ?VerticalAlignParam } [center] - The param of center align.
+     * @param { Bias } [bias] - Defines the bias ratio in horizontal and vertical direction.
      */
     @!APILevel[
         since: "22",
@@ -1354,10 +1354,10 @@ public class EdgeStyles {
     /**
      * Defines the constructor of EdgeStyles.
      *
-     * @param { ?BorderStyle } top - Top border style.
-     * @param { ?BorderStyle } right - Right border style.
-     * @param { ?BorderStyle } bottom - Bottom border style.
-     * @param { ?BorderStyle } left - Left border style.
+     * @param { ?BorderStyle } [top] - Top border style.
+     * @param { ?BorderStyle } [right] - Right border style.
+     * @param { ?BorderStyle } [bottom] - Bottom border style.
+     * @param { ?BorderStyle } [left] - Left border style.
      */
     @!APILevel[
         since: "22",
@@ -1465,8 +1465,8 @@ public class PickerTextStyle {
     /**
      * PickerTextStyle constructor.
      *
-     * @param { ?ResourceColor } color - Font color.
-     * @param { ?Font } font - Text style.
+     * @param { ?ResourceColor } [color] - Font color.
+     * @param { ?Font } [font] - Text style.
      */
     @!APILevel[
         since: "22",
@@ -1522,10 +1522,10 @@ public class Font {
     /**
      * Font constructor.
      *
-     * @param { ?Length } size - Font size.
-     * @param { ?FontWeight } weight - Font weight.
-     * @param { ?ResourceStr } family - Font family.
-     * @param { ?FontStyle } style - Font style.
+     * @param { ?Length } [size] - Font size.
+     * @param { ?FontWeight } [weight] - Font weight.
+     * @param { ?ResourceStr } [family] - Font family.
+     * @param { ?FontStyle } [style] - Font style.
      */
     @!APILevel[
         since: "22",

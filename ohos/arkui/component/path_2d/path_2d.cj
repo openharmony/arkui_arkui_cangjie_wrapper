@@ -80,7 +80,7 @@ public class Path2D <: RemoteDataLite {
     /**
      * Create a new path according to the description.
      *
-     * @param { ?String } path - Indicates the path string that compiles with the SVG path description specifications.
+     * @param { ?String } d - Indicates the path string that compiles with the SVG path description specifications.
      */
     @!APILevel[
         since: "22",
@@ -192,7 +192,7 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } radius - Radius of the arc.
      * @param { Float64 } startAngle - Start point of an arc, which starts to be calculated in the x-axis direction. The unit is radian.
      * @param { Float64 } endAngle - The end point of the arc, in radians.
-     * @param { ?Bool } counterclockwise - If the value is true, the arc is drawn counterclockwise. Otherwise, the arc is drawn clockwise.
+     * @param { ?Bool } [counterclockwise] - If the value is true, the arc is drawn counterclockwise. Otherwise, the arc is drawn clockwise.
      * @returns { Unit }
      */
     @!APILevel[
@@ -300,7 +300,7 @@ public class Path2D <: RemoteDataLite {
      * @param { Float64 } rotation - The rotation angle of the ellipse, in radians (not angular degrees).
      * @param { Float64 } startAngle - The angle of the starting point to be drawn, measured from the x-axis in radians (not angular degrees).
      * @param { Float64 } endAngle - The angle, in radians, at which the ellipse is to be drawn (not angular degrees).
-     * @param { ?Bool } counterclockwise - If the value is true, the ellipse is drawn counterclockwise. Otherwise, the ellipse is drawn clockwise.
+     * @param { ?Bool } [counterclockwise] - If the value is true, the ellipse is drawn counterclockwise. Otherwise, the ellipse is drawn clockwise.
      * @returns { Unit }
      */
     @!APILevel[

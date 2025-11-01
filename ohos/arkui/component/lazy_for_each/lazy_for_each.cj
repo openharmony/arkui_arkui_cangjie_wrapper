@@ -170,8 +170,7 @@ public class LazyForEach<T> <: UINodeBase {
      *
      * @param { IDataSource<T> } dataSource - LazyForEach data source, need to implement the IDataSource interface.
      * @param { ItemGeneratorFunc<T> } itemGenerator - Sub-component generator function, create a sub-component for each data in the array.
-     * @param { KeyGeneratorFunc<T> } keyGenerator - Key generator function, used to generate a unique and fixed key for each data.
-     * @returns { LazyForEach<T> }
+     * @param { KeyGeneratorFunc<T> } [keyGenerator] - Key generator function, used to generate a unique and fixed key for each data.
      */
     @!APILevel[
         since: "22",

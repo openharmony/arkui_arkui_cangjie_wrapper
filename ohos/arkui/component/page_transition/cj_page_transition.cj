@@ -210,14 +210,15 @@ sealed abstract class CommonTransition {
         }
         this
     }
+
     /**
-    * Called when the translation effect of page transition is set.
-    * 
-    * @param { ?Length } x - X coordinate to translate to.
-    * @param { ?Length } y - Y coordinate to translate to.
-    * @param { ?Length } z - Z coordinate to translate to.
-    * @returns { This } 
-    */
+     * Called when the translation effect of page transition is set.
+     *
+     * @param { ?Length } [x] - X coordinate to translate to.
+     * @param { ?Length } [y] - Y coordinate to translate to.
+     * @param { ?Length } [z] - Z coordinate to translate to.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -343,13 +344,14 @@ public class PageTransitionEnter <: CommonTransition {
 ]
 public class PageTransitionExit <: CommonTransition {
     /**
-    * Called when page Jump animation is used.
-    * 
-    * @param { ?RouteType } routeType - The transition route type. The default value is RouteType.None.
-    * @param { ?Int32 } duration - The transition duration, in milliseconds. The default value is 1000.
-    * @param { ?Curve } curve - The transition curve. The default value is Curve.Linear.
-    * @param { ?Int32 } delay - The transition delay, in milliseconds. The default value is 0.
-    */
+     * Called when page Jump animation is used.
+     *
+     * @param { ?RouteType } [routeType] - The transition route type. The default value is RouteType.None.
+     * @param { ?Int32 } [duration] - The transition duration, in milliseconds. The default value is 1000.
+     * @param { ?Curve } [curve] - The transition curve. The default value is Curve.Linear.
+     * @param { ?Int32 } [delay] - The transition delay, in milliseconds. The default value is 0.
+     * @returns { PageTransitionExit }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

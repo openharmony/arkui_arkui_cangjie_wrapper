@@ -52,12 +52,12 @@ foreign {
 ]
 public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
     /**
-    * Defines the constructor of Stack.
-    * Initializes a Stack component with optional alignment and child content.
-    *
-    * @param { ?Alignment } alignContent - Alignment of child components within the stack.
-    * @param { ?() -> Unit } child - Builder function for Stack content.
-    */
+     * Defines the constructor of Stack.
+     * Initializes a Stack component with optional alignment and child content.
+     *
+     * @param { ?Alignment } [alignContent] - Alignment of child components within the stack.
+     * @param { ?() -> Unit } [child] - Builder function for Stack content.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

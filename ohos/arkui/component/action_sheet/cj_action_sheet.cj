@@ -171,7 +171,7 @@ public class SheetInfo {
      *
      * @param { ?ResourceStr } title - Sheet text.
      * @param { ?VoidCallback } action - Callback when the sheet is selected.
-     * @param { ?ResourceStr } icon - Sheet icon. By default, no icon is displayed.
+     * @param { ?ResourceStr } [icon] - Sheet icon. By default, no icon is displayed.
      */
     @!APILevel[
         since: "22",
@@ -262,9 +262,9 @@ public class ActionSheetButtonOptions {
      *
      * @param { ?ResourceStr } value - Button text.
      * @param { ?VoidCallback } action - Callback invoked when the button is selected.
-     * @param { ?Bool } enabled - Whether to respond when the button is clicked. The value true means to respond when the button is clicked, and false means the opposite.
-     * @param { ?Bool } defaultFocus - Whether the button is the default focus. The value true means that the button is the default focus, and false means the opposite.
-     * @param { ?DialogButtonStyle } style - Button style.
+     * @param { ?Bool } [enabled] - Whether to respond when the button is clicked. The value true means to respond when the button is clicked, and false means the opposite.
+     * @param { ?Bool } [defaultFocus] - Whether the button is the default focus. The value true means that the button is the default focus, and false means the opposite.
+     * @param { ?DialogButtonStyle } [style] - Button style.
      */
     @!APILevel[
         since: "22",
@@ -616,25 +616,26 @@ public class ActionSheetOptions {
      * @param { ?ResourceStr } title - Title of the dialog box.
      * @param { ?ResourceStr } message - Content of the dialog box.
      * @param { ?Array<SheetInfo> } sheets - Options in the dialog box.
-     * @param { ?ResourceStr } subtitle - Subtitle of the dialog box.
-     * @param { ?ActionSheetButtonOptions } confirm - Information about the confirm button.
-     * @param { ?Bool } autoCancel - Whether to close the dialog box when the overlay is clicked.
-     * @param { ?VoidCallback } cancel - Callback invoked when the dialog box is closed after the overlay is clicked.
-     * @param { ?DialogAlignment } alignment - Alignment mode of the dialog box in the vertical direction.
-     * @param { ?ActionSheetOffset } offset - Offset of the dialog box relative to the alignment position.
-     * @param { ?Rectangle } maskRect - Mask area of the dialog box.
-     * @param { ?Bool } showInSubWindow - Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window.
-     * @param { ?ResourceColor } backgroundColor - Background color of the dialog box.
-     * @param { ?BlurStyle } backgroundBlurStyle - Background blur style of the dialog box.
-     * @param { ?Callback<DismissDialogAction, Unit> } onWillDismiss - Callback for interactive closure of the dialog box.
-     * @param { ?BorderRadiuses } cornerRadius - Corner radius of the background.
-     * @param { ?Length } borderWidth - Border width of the dialog box.
-     * @param { ?ResourceColor } borderColor - Border color of the dialog box.
-     * @param { ?EdgeStyles } borderStyle - Border style of the dialog box.
-     * @param { ?Length } width - Width of the dialog box.
-     * @param { ?Length } height - Height of the dialog box.
-     * @param { ?ShadowOptions } shadow - Shadow of the dialog box.
-     * @param { ?TransitionEffect } transition - Transition effect for the entrance and exit of the dialog box.
+     * @param { ?ResourceStr } [subtitle] - Subtitle of the dialog box.
+     * @param { ?ActionSheetButtonOptions } [confirm] - Information about the confirm button.
+     * @param { ?Bool } [autoCancel] - Whether to close the dialog box when the overlay is clicked.
+     * @param { ?VoidCallback } [cancel] - Callback invoked when the dialog box is closed after the overlay is clicked.
+     * @param { ?DialogAlignment } [alignment] - Alignment mode of the dialog box in the vertical direction.
+     * @param { ?ActionSheetOffset } [offset] - Offset of the dialog box relative to the alignment position.
+     * @param { ?Rectangle } [maskRect] - Mask area of the dialog box.
+     * @param { ?Bool } [showInSubWindow] - Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window.
+     * @param { ?Bool } [isModal] - Whether the dialog box is a modal.
+     * @param { ?ResourceColor } [backgroundColor] - Background color of the dialog box.
+     * @param { ?BlurStyle } [backgroundBlurStyle] - Background blur style of the dialog box.
+     * @param { ?Callback<DismissDialogAction, Unit> } [onWillDismiss] - Callback for interactive closure of the dialog box.
+     * @param { ?BorderRadiuses } [cornerRadius] - Corner radius of the background.
+     * @param { ?Length } [borderWidth] - Border width of the dialog box.
+     * @param { ?ResourceColor } [borderColor] - Border color of the dialog box.
+     * @param { ?EdgeStyles } [borderStyle] - Border style of the dialog box.
+     * @param { ?Length } [width] - Width of the dialog box.
+     * @param { ?Length } [height] - Height of the dialog box.
+     * @param { ?ShadowOptions } [shadow] - Shadow of the dialog box.
+     * @param { ?TransitionEffect } [transition] - Transition effect for the entrance and exit of the dialog box.
      */
     @!APILevel[
         since: "22",

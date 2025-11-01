@@ -27,7 +27,6 @@ import ohos.base.{ResourceColor, Length}
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 sealed interface PatternLockAttribute <: CommonMethod<PatternLockAttribute> {
-
     /**
      * Sets the fill color of the grid dot in the selected state.
      *

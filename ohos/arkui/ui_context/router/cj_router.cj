@@ -216,7 +216,7 @@ public class Router {
      * Navigates to a specified page in the application.
      *
      * @param { String } url
-     * @param { String } params
+     * @param { String } [params]
      */
     @!APILevel[
         since: "22",
@@ -234,8 +234,8 @@ public class Router {
     /**
      * Returns to the previous page or a specified page.
      *
-     * @param { String } url
-     * @param { String } params
+     * @param { String } [url]
+     * @param { String } [params]
      */
     @!APILevel[
         since: "22",
@@ -254,7 +254,7 @@ public class Router {
      * Returns to the previous page or a specified page.
      *
      * @param { Int32 } index
-     * @param { String } params
+     * @param { String } [params]
      */
     @!APILevel[
         since: "22",

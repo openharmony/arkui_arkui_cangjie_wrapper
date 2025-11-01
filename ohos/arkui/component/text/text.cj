@@ -275,8 +275,8 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * Called when writing text.
      *
      * @param { ?ResourceStr } content - The text content.
-     * @param { ?TextController } controller - The text controller.
-     * @param { () -> Unit } child - The child component builder.
+     * @param { ?TextController } [controller] - The text controller.
+     * @param { () -> Unit } [child] - The child component builder.
      */
     @!APILevel[
         since: "22",
@@ -295,7 +295,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when writing text.
      *
-     * @param { ?TextController } controller - The text controller.
+     * @param { ?TextController } [controller] - The text controller.
      * @param { () -> Unit } child - The child component builder.
      */
     @!APILevel[
@@ -309,7 +309,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when writing text.
      *
-     * @param { ?TextController } controller - The text controller.
+     * @param { ?TextController } [controller] - The text controller.
      */
     @!APILevel[
         since: "22",
@@ -346,8 +346,11 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Set font line spacing.
      *
+     * <p><strong>NOTE</strong>:
+     * <br>If the value specified is less than or equal to 0, the default value 0 is used.
+     * </p>
+     *
      * @param { ?Length } value - The line spacing value.
-     * @default 0
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -499,7 +502,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * Called when the horizontal center mode of the font is set.
      *
      * @param { ?TextAlign } value - The text alignment.
-     * @defalut TextAlign.Start
+     * @default TextAlign.Start
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -517,7 +520,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the overflow mode of the font is set.
      *
-     * @param { ?TextOverflow } options - Text overflow options.
+     * @param { ?TextOverflow } value - Text overflow options.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -577,7 +580,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      *
      * @param { ?TextDecorationType } decorationType - The type value of the decoration property object.
      * @param { ?ResourceColor } color - The color value of the decoration property object.
-     * @param { ?TextDecorationStyle } decorationStyle - The style value of the decoration property object.
+     * @param { ?TextDecorationStyle } [decorationStyle] - The style value of the decoration property object.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[

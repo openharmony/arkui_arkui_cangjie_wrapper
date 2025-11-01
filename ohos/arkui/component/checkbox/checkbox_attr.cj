@@ -31,7 +31,7 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
      * Set whether checkbox is selected.
      *
      * @param { ?Bool } value - Whether the checkbox is selected.
-     * @default true
+     * @default True
      * @returns { CheckboxAttribute } - The attribute of the component.
      */
     @!APILevel[
@@ -43,8 +43,7 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
     /**
      * Set the display color of checkbox.
      *
-     * @param { ?ResourceColor } value - Whether is selected. 
-     * @default true
+     * @param { ?ResourceColor } value - The display color of checkbox.
      * @returns { CheckboxAttribute } - The attribute of the component.
      */
     @!APILevel[

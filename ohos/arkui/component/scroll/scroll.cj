@@ -218,7 +218,6 @@ public class RectResult {
      * @param { Float64 } y - Representing the y in the rect values.
      * @param { Float64 } width - Representing the width in the rect values.
      * @param { Float64 } height - Representing the height in the rect values.
-     * @returns { RectResult }
      */
     @!APILevel[
         since: "22",
@@ -286,9 +285,9 @@ public class ScrollAnimationOptions {
     /**
      * The constructor.
      *
-     * @param { ?Float64 } duration - The animation duration. The default value is 1000.0.
-     * @param { ?Curve } curve - The animation curve. The default value is Curve.Ease.
-     * @param { ?Bool } canOverScroll - Whether allow over scroll. The default value is false.
+     * @param { ?Float64 } [duration] - The animation duration. The default value is 1000.0.
+     * @param { ?Curve } [curve] - The animation curve. The default value is Curve.Ease.
+     * @param { ?Bool } [canOverScroll] - Whether allow over scroll. The default value is false.
      * @returns { ScrollAnimationOptions }
      */
     @!APILevel[
@@ -427,7 +426,7 @@ public class FadingEdgeOptions {
     /**
      * The constructor.
      *
-     * @param { ?Length } fadingEdgeLength - The fading edge length.
+     * @param { ?Length } [fadingEdgeLength] - The fading edge length.
      * @default 32.vp
      * @returns { FadingEdgeOptions }
      */
@@ -550,9 +549,9 @@ public type OnScrollEdgeCallback = (Edge) -> Unit
 public class ScrollEdgeOptions {
     /**
      * Fixed velocity for scrolling to the edge of the container.
-     * If the value specified is less than or equal to 0, the parameter will not take effect. Unit is vp/s.
-     * 
-     * @default 0
+     * If the value specified is less than or equal to 0, the parameter will not take effect.
+     *
+     * @default 0vp/s
      */
     @!APILevel[
         since: "22",
@@ -563,15 +562,14 @@ public class ScrollEdgeOptions {
     /**
      * The constructor.
      *
-     * @param { ?Float64 } velocity - Fixed velocity for scrolling to the edge of the container. The default unit is vp/s.
-     * @default 0
-     * @returns { ScrollEdgeOptions }
+     * @param { ?Float64 } [velocity] - Fixed velocity for scrolling to the edge of the container.
+     * @default 0vp/s
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(velocity!: ?Float32 = None) {
+    public init(velocity!: ?Float64 = None) {
         this.velocity = velocity ?? 0.0
     }
 }
@@ -596,8 +594,7 @@ public class ScrollToIndexOptions {
     /**
      * The constructor.
      *
-     * @param { ?Length } extraOffset - Extra offset for scrolling to a specified index.
-     * @returns { ScrollToIndexOptions }
+     * @param { ?Length } [extraOffset] - Extra offset for scrolling to a specified index.
      */
     @!APILevel[
         since: "22",
@@ -928,11 +925,15 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
 
     /**
      * Triggered when the Scroll component scrolls.
-     * 1. This event is triggered when scrolling is started by the Scroll component or other input settings,such as keyboard and mouse operations;
-     * 2. This event is triggered when the controller API is called;
-     * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @param { ?ScrollOnScrollCallback } callback - Callback triggered after scrolling.
+     * <p><strong>NOTE</strong>
+     * <br>1. This event is triggered when scrolling is started by the <em>Scroll</em> component or other input settings,
+     * such as keyboard and mouse operations.
+     * <br>2. This event is triggered when the controller API is called.
+     * <br>3. This event supports the out-of-bounds bounce effect.
+     * </p>
+     *
+     * @param { ?ScrollOnScrollCallback } callback - Callback triggered when the <em>Scroll</em> component scrolls.
      * @returns { This }
      */
     @!APILevel[
@@ -1035,11 +1036,18 @@ class ScrollerHandler <: RemoteDataLite {
 
 /**
  * Defines a controller for scrollable container components.
- * 1. The binding of a Scroller instance to a scrollable container component occurs during the component creation phase.
- * 2. Scroller APIs can only be effectively called after the Scroller instance is bound to a scrollable container component.
+ *
+ * <p><strong>NOTE</strong>
+ * <br>1. The binding of a <em>Scroller</em> instance to a scrollable container component occurs during the component creation phase.
+ * <br>2. <em>Scroller</em> APIs can only be effectively called after the <em>Scroller</em> instance is bound to a scrollable container component.
  * Otherwise, depending on the API called, it may have no effect or throw an exception.
+ * <br>3. For example, with aboutToAppear, this callback is executed after a new instance of a custom component is
+ * created and before its <em>build()</em> method is called.
+ * Therefore, if a scrollable component is defined within the <em>build</em> method of a custom component,
+ * the internal scrollable component has not yet been created during the <em>aboutToAppear</em> callback
+ * of that custom component, and therefore the <em>Scroller</em> APIs cannot be called effectively.
+ * </p>
  */
-
 @!APILevel[
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1188,8 +1196,11 @@ public class Scroller {
     /**
      * Performs inertial scrolling based on the initial velocity passed in.
      *
-     * @param { Float64 } velocity - If the value specified is 0, it is considered as invalid, and will not take effect.
+     * @param { Float64 } velocity -  Initial velocity of inertial scrolling. Unit: vp/s
+     * <br><em>NOTE</em>
+     * <br>If the value specified is 0, it is considered as invalid, and the scrolling for this instance will not take effect.
      * A positive value indicates scrolling towards the top, while a negative value indicates scrolling towards the bottom.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -1205,8 +1216,7 @@ public class Scroller {
      * Applied when page turning mode is set.
      *
      * @param { Bool } next - Whether scroll from page to page.
-     * @param { ?Bool } animation - Whether enable animation on page scroll. The default value is false.
-     * @returns { Unit }
+     * @param { ?Bool } [animation] - Whether enable animation on page scroll. The default value is false.
      */
     @!APILevel[
         since: "22",
@@ -1238,9 +1248,9 @@ public class Scroller {
      * This API only works for the ArcList, Grid, List, and WaterFlow components.
      *
      * @param { Int32 } index - Index to jump to.
-     * @param { ?Bool } smooth - If true, scroll to index item with animation. If false, scroll to index item without animation. The default value is false.
-     * @param { ?ScrollAlign } align - Sets the alignment mode of a specified index.
-     * @param { ?ScrollToIndexOptions } options - Sets the options of a specified index, such as extra offset.
+     * @param { ?Bool } [smooth] - If true, scroll to index item with animation. If false, scroll to index item without animation. The default value is false.
+     * @param { ?ScrollAlign } [align] - Sets the alignment mode of a specified index.
+     * @param { ?ScrollToIndexOptions } [options] - Sets the options of a specified index, such as extra offset.
      * @returns { This }
      */
     @!APILevel[
@@ -1268,8 +1278,10 @@ public class Scroller {
 
     /**
      * Checks whether the component has scrolled to the bottom.
-     * This API is available for the ArcList, Scroll, List, Grid, and WaterFlow components.
      *
+     * <p><strong>NOTE</strong>
+     * <br>This API is available for the <em>ArcList</em>, <em>Scroll</em>, <em>List</em>, <em>Grid</em>, and <em>WaterFlow</em> components.
+     * </p>
      * @returns { Bool } - Returns whether the component scrolls to the end position.
      */
     @!APILevel[

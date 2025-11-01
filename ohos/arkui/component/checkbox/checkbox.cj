@@ -82,9 +82,9 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * Construct the Checkbox component.
      * Called when the Checkbox component is used.
      *
-     * @param { ?String } name - The initial name of current checkbox.
-     * @param { ?String } group - The initial group name of current checkbox.
-     * @param { ?CustomBuilder } indicatorBuilder - The builder of current checkbox.
+     * @param { ?String } [name] - The initial name of current checkbox.
+     * @param { ?String } [group] - The initial group name of current checkbox.
+     * @param { ?CustomBuilder } [indicatorBuilder] - The builder of current checkbox.
      */
     @!APILevel[
         since: "22",

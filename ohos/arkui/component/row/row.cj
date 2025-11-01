@@ -49,12 +49,12 @@ foreign {
 ]
 public class Row <: CommonMethodComponent<Row> & RowAttribute {
     /**
-    * Defines the constructor of Row.
-    * Initializes a Row component with optional spacing and child content.
-    *
-    * @param { ?Length } space - Row spacing between child components.
-    * @param { () -> Unit } child - Child component builder function.
-    */
+     * Defines the constructor of Row.
+     * Initializes a Row component with optional spacing and child content.
+     *
+     * @param { ?Length } [space] - Row spacing between child components.
+     * @param { () -> Unit } [child] - Child component builder function.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

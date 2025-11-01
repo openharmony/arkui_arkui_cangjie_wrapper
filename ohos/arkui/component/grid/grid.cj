@@ -118,8 +118,8 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Grid is returned when the parameter is transferred.
      *
-     * @param { ?Scroller } scroller - Scroller controller bound to the grid for controlling scrolling.
-     * @param { ()->Unit } child - The child component to be displayed in the grid, typically LazyForEach or Repeat.
+     * @param { ?Scroller } [scroller] - Scroller controller bound to the grid for controlling scrolling.
+     * @param { ()->Unit } [child] - The child component to be displayed in the grid, typically LazyForEach or Repeat.
      */
     @!APILevel[
         since: "22",

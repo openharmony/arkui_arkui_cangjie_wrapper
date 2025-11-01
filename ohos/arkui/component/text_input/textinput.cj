@@ -90,7 +90,7 @@ public class TextInputController <: RemoteDataLite {
      *
      * @param { ?Int32 } selectionStart - The start position of the selected text.The start position of text in the text box is 0.
      * @param { ?Int32 } selectionEnd - The end position of the selected text.
-     * @param { ?MenuPolicy } options - Indicates the options of the text selection.Default value is MenuPolicy.DEFAULT.
+     * @param { ?MenuPolicy } [options] - Indicates the options of the text selection.Default value is MenuPolicy.DEFAULT.
      */
     @!APILevel[
         since: "22",
@@ -130,9 +130,9 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
     /**
      * Called when writing a single line of text.
      *
-     * @param { ?ResourceStr } placeholder - The place holder text string.
-     * @param { ?ResourceStr } text - Sets the current value of TextInput.
-     * @param { ?TextInputController } controller - Called when the position of the insertion cursor is set.
+     * @param { ?ResourceStr } [placeholder] - The place holder text string.
+     * @param { ?ResourceStr } [text] - Sets the current value of TextInput.
+     * @param { ?TextInputController } [controller] - Called when the position of the insertion cursor is set.
      */
     @!APILevel[
         since: "22",
@@ -314,9 +314,9 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * Called when the font property of the placeholder is set.
      *
      * @param { ?Length } size - The font size of the placeholder.
-     * @param { ?FontWeight } weight - The font weight of the placeholder.
-     * @param { ?String } family - The font family of the placeholder.
-     * @param { ?FontStyle } style - The font style of the placeholder.
+     * @param { ?FontWeight } [weight] - The font weight of the placeholder.
+     * @param { ?String } [family] - The font family of the placeholder.
+     * @param { ?FontStyle } [style] - The font style of the placeholder.
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
@@ -435,7 +435,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * Set input filter.
      *
      * @param { ?ResourceStr } value - The input filter pattern.
-     * @param { ?(String) -> Unit } error - Callback function when input error occurs.
+     * @param { ?(String) -> Unit } [error] - Callback function when input error occurs.
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[
@@ -552,7 +552,7 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * Define custom keyboard of the text input.
      *
      * @param { ?CustomBuilder } value - Set up a custom keyboard of TextInput.
-     * @param { ?Bool } supportAvoidance - Indicates the custom keyboard options of TextInput.
+     * @param { ?Bool } [supportAvoidance] - Indicates the custom keyboard options of TextInput.
      * @returns { This } Returns TextInput instance to allow method chaining.
      */
     @!APILevel[

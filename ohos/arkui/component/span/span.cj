@@ -208,9 +208,9 @@ public class Span <: BaseSpan {
     /**
      * Called when the text decoration of the text is set.
      * Sets the text decoration (e.g., underline, strikethrough) for the text in the span.
-     * 
+     *
      * @param { ?TextDecorationType } decorationType - The type of text decoration.
-     * @param { ?ResourceColor } color - The color of the text decoration.
+     * @param { ?ResourceColor } [color] - The color of the text decoration.
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[

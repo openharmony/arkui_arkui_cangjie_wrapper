@@ -119,8 +119,7 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * <br>The value cannot be a percentage.
      * <br>The default value on wearable devices is 18.fp.
      *
-     * @param { ?Length } value - .The default value on wearable devices is 18.fp.
-     * @default 16.fp
+     * @param { ?Length } value - The value of font size.
      * @returns { TextInputAttribute }
      */
     @!APILevel[

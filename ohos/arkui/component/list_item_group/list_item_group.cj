@@ -122,9 +122,9 @@ public class ListDividerOptions {
      * ListDividerOptions constructor
      *
      * @param { ?Length } strokeWidth - Set the line width of the dividing line.
-     * @param { ?ResourceColor } color - Set the color of the dividing line.
-     * @param { ?Length } startMargin - Set the distance between the dividing line and the starting end of the side of the list.
-     * @param { ?Length } endMargin - Set the distance between the dividing line and the end of the side of the list.
+     * @param { ?ResourceColor } [color] - Set the color of the dividing line.
+     * @param { ?Length } [startMargin] - Set the distance between the dividing line and the starting end of the side of the list.
+     * @param { ?Length } [endMargin] - Set the distance between the dividing line and the end of the side of the list.
      */
     @!APILevel[
         since: "22",
@@ -155,10 +155,10 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroup> & ListItemGro
     /**
      * Defines the constructor of ListItemGroup.
      *
-     * @param { ?CustomBuilder } header - Describes the ListItemGroup header.
-     * @param { ?CustomBuilder } footer - Describes the ListItemGroup footer.
-     * @param { ?Length } space - Describes the ListItemGroup space.
-     * @param { ?ListItemGroupStyle } style - Describes the ListItemGroup style.
+     * @param { ?CustomBuilder } [header] - Describes the ListItemGroup header.
+     * @param { ?CustomBuilder } [footer] - Describes the ListItemGroup footer.
+     * @param { ?Length } [space] - Describes the ListItemGroup space.
+     * @param { ?ListItemGroupStyle } [style] - Describes the ListItemGroup style.
      * @param { () -> Unit } child - The child component.
      */
     @!APILevel[

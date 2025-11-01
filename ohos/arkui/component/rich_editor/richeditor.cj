@@ -653,11 +653,12 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
     /**
      * RichEditorImageSpanResult constructor.
      *
-     * @param { ?RichEditorSpanPosition } spanPosition - The position of the image span.
-     * @param { Option<PixelMap> } valuePixelMap - The pixel map of the image span.
-     * @param { ?String } valueResourceStr - The resource string of the image span.
-     * @param { ?RichEditorImageSpanStyleResult } imageStyle - image attribute.
-     * @param { ?(Int32, Int32) offsetInSpan - get offset in span.
+     * @param { ?RichEditorSpanPosition } [spanPosition] - The position of the image span.
+     * @param { Option<PixelMap> } [valuePixelMap] - The pixel map of the image span.
+     * @param { ?String } [valueResourceStr] - The resource string of the image span.
+     * @param { ?RichEditorImageSpanStyleResult } [imageStyle] - image attribute.
+     * @param { ?(Int32, Int32) } [offsetInSpan] - get offset in span.
+     * @returns { RichEditorImageSpanResult }
      */
     @!APILevel[
         since: "22",
@@ -1112,10 +1113,10 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Bind to the selection menu.
      *
-     * @param { ?RichEditorSpanType } spantype
-     * @param { ?CustomBuilder } content
-     * @param { ?ResponseType } responseType
-     * @param { ?SelectionMenuOptions } options
+     * @param { ?RichEditorSpanType } [spantype] - Indicates the type of selection menu. The default value is RichEditorSpanType.TEXT.
+     * @param { ?CustomBuilder } content - Indicates the content of selection menu.
+     * @param { ?ResponseType } [responseType] - Indicates response type of selection menu. The default value is ResponseType.LongPress.
+     * @param { ?SelectionMenuOptions } options - Indicates the options of selection menu.
      * @returns { This }
      */
     @!APILevel[

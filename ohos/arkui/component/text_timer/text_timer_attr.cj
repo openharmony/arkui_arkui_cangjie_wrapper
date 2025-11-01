@@ -136,6 +136,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
 
     /**
      * Sets the text shadow.
+     * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
      * @param { ?Array<ShadowOptions> } value - The shadow options.
@@ -149,6 +150,7 @@ sealed interface TextTimerAttribute <: CommonMethod<TextTimerAttribute> {
 
     /**
      * Sets the text shadow.
+     * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
      * @param { ?ShadowOptions } value - The shadow options.

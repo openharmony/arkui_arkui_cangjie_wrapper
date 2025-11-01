@@ -35,7 +35,7 @@ public class Blank <: CommonMethodComponent<Blank> & BlankAttribute {
     /**
      * Minimum size of the Blank component in the container along the main axis.
      *
-     * @param { ?Length } min - Blank options.
+     * @param { ?Length } [min] - Blank options.
      * @default 0.vp
      */
     @!APILevel[

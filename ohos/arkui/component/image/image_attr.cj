@@ -36,7 +36,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      * 
-     * @param { ?ResourceStr } value - Placeholder image displayed during loading. Default value is null.
+     * @param { ?ResourceStr } src - Placeholder image displayed during loading. Default value is null.
      * @returns { ImageAttribute }
      */
     @!APILevel[

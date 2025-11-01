@@ -147,7 +147,7 @@ public abstract class BaseShape <: RemoteDataLite {
      * Sets the shape offset.
      * Configures the position offset of the shape relative to its container.
      *
-     * @param { ?Length } y - x Offset from the left.
+     * @param { ?Length } x - x Offset from the left.
      * @param { ?Length } y - y Offset from the top.
      * @returns { This } Returns the BaseShape instance.
      */
