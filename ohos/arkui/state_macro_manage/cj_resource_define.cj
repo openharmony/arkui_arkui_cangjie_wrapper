@@ -78,6 +78,8 @@ func getResEnv(): ResEnv {
  * @r(app.media.icon)
  * @r(app.string.value, "hello", 1, 1.1)
  * @r(app.plural.value, 5, 5)
+ * @throws IllegalArgumentException if The input is invalid.
+ * @throws NoneValueException if The input resource not found.
  */
 public macro r(input: Tokens): Tokens {
     let env = getResEnv()
@@ -114,6 +116,8 @@ public macro r(input: Tokens): Tokens {
 /**
  * input example
  * @rawfile("image.png")
+ * @throws IllegalArgumentException if The input is invalid.
+ * @throws NoneValueException if The input resource not found.
  */
 public macro rawfile(input: Tokens): Tokens {
     let env = getResEnv()

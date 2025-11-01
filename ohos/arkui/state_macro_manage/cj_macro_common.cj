@@ -205,8 +205,6 @@ func getLocalStorageAttrByIdent(identTok: String) {
 }
 
 func genPropDecl(varDecl: VarDecl, stateKind: StateKind): Tokens {
-    let varDeclModifiers = varDecl.modifiers
-    let varDeclKeyWord = varDecl.keyword
     var identTok: Token = varDecl.identifier
     var identTokStr: String = identTok.value
     var identTokenAssociated: Token = generateAssociatedToken(identTokStr)
@@ -220,6 +218,7 @@ func genPropDecl(varDecl: VarDecl, stateKind: StateKind): Tokens {
 
     var modifier = quote(private)
 
+    let varDeclModifiers = varDecl.modifiers
     match (stateKind) {
         case PublishTy => modifier = quote($varDeclModifiers)
         case _ => ()
@@ -236,6 +235,7 @@ func genPropDecl(varDecl: VarDecl, stateKind: StateKind): Tokens {
         )
     }
 
+    let varDeclKeyWord = varDecl.keyword
     if (varDeclKeyWord.value == "var") {
         quote(
             $modifier mut prop $identTok: $valType

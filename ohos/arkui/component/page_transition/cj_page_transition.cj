@@ -323,7 +323,7 @@ public class PageTransitionEnter <: CommonTransition {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onEnter(event: ?PageTransitionCallback) {
+    public func onEnter(event: ?PageTransitionCallback): This {
         let tmpEvent = event ?? { _, _ =>}
         let wrapper = {
             ty: Int32, progress: Float64 => tmpEvent(RouteType.parse(ty), progress)
@@ -381,7 +381,7 @@ public class PageTransitionExit <: CommonTransition {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onExit(event: ?PageTransitionCallback) {
+    public func onExit(event: ?PageTransitionCallback): This {
         let tmpEvent = event ?? { _, _ =>}
         let wrapper = {
             ty: Int32, progress: Float64 => tmpEvent(RouteType.parse(ty), progress)
