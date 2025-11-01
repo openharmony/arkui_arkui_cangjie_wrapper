@@ -582,7 +582,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
             case Some(v) => 
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkSearchSetHeight(v.value, v.unitType.getValue())
+                    FfiOHOSAceFrameworkSearchSetHeight(value_.value, value_.unitType.getValue())
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }
