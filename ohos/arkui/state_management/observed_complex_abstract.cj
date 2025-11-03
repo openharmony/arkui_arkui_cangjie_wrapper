@@ -61,7 +61,7 @@ public abstract class ObservedComplexAbstract <: Observable {
     }
 
     protected func recordDependentUpdate() {
-        let elmtId = ViewStackProcessor.GetElmtIdToAccountFor()
+        let elmtId = ViewStackProcessor.getElmtIdToAccountFor()
         if (elmtId < 0) {
             return
         }

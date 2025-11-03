@@ -244,14 +244,14 @@ public class PersistentStorage <: Observer {
 
     // invoke when property changed by appstorge operation
     private func innerPropertyHasChanged(): Unit {
-        BaseLog.debug("Property has changed")
+        BASE_LOG.debug("Property has changed")
         write()
     }
 
     private func innerPersistProp<T>(propName: String, defaultValue: T): Unit {
         if (!(defaultValue is String) && !(defaultValue is Int64) && !(defaultValue is Float64) &&
             !(defaultValue is Bool)) {
-            BaseLog.error("PersistentStorage: ${propName} type error, only support String, Int64, Float64 and Bool.")
+            BASE_LOG.error("PersistentStorage: ${propName} type error, only support String, Int64, Float64 and Bool.")
             return
         }
         if (persistHelper(propName, defaultValue)) {
@@ -311,7 +311,7 @@ public class PersistentStorage <: Observer {
 
     private func persistHelper<T>(propName: String, defaultValue: T): Bool {
         if (links.contains(propName)) {
-            BaseLog.debug("PersistentStorage: persistProp: ${propName} is already persisted")
+            BASE_LOG.debug("PersistentStorage: persistProp: ${propName} is already persisted")
             return false
         }
         let link = AppStorage.link<T>(propName)

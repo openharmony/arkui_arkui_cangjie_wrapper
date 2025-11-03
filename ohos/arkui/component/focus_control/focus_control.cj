@@ -30,9 +30,9 @@ foreign func FFIOHOSAceFrameworkRequestFocus(inspectorKey: CString): Bool
 ]
 public class FocusControl {
     init() {}
-    private static let instance = FocusControl()
+    private static let INSTANCE = FocusControl()
     static func getFocusController(): FocusControl {
-        instance
+        INSTANCE
     }
 
     /**

@@ -19,7 +19,7 @@ import ohos.ark_interop.{JSContext, JSModule, JSValue, JSFunction}
 import ohos.labels.APILevel
 
 var globalContext: ?JSContext = None
-let initLocalStorageEnvModule = JSModule.registerModule {
+let INIT_LOCAL_STORAGE_ENV_MODULE = JSModule.registerModule {
     context, _ => setRuntimeGlobal(context)
 }
 
@@ -95,12 +95,12 @@ class ObservedPropertyInterOp<T> <: ObservedProperty<T> & ObservedPropertySyncIn
         subscribedProperty_ = subscribedProperty
     }
 
-    public func set(newValue: T) {
+    func set(newValue: T): Unit {
         subscribedProperty_.set(newValue)
         super.set(newValue)
     }
 
-    public func sync() {
+    func sync(): Unit {
         Hilog.debug(0, "cangjiePage", "sync prop ${subscribedProperty_.info()}")
         super.set(subscribedProperty_.get())
     }
@@ -109,14 +109,14 @@ class ObservedPropertyInterOp<T> <: ObservedProperty<T> & ObservedPropertySyncIn
 class LocalStorageInterOp {
     private var jsStorage: ?JSObject = None
     private let storage = HashMap<String, ObservedPropertyAbstract>()
-    protected static var instance_: ?LocalStorageInterOp = None
+    protected static var INSTANCE_: ?LocalStorageInterOp = None
 
     protected static func getOrCreate(): LocalStorageInterOp {
-        match (instance_) {
+        match (INSTANCE_) {
             case Some(v) => ()
-            case None => instance_ = LocalStorageInterOp()
+            case None => INSTANCE_ = LocalStorageInterOp()
         }
-        return instance_ ?? throw NoneValueException("localStorageInterOp: get LocalStorageInterOp failed.")
+        return INSTANCE_ ?? throw NoneValueException("localStorageInterOp: get LocalStorageInterOp failed.")
     }
 
     private func getJsStorage(): JSObject {

@@ -77,7 +77,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public override func pop() {
+    public override func pop(): Unit {
         unsafe {
             FfiOHOSAceFrameworkRecyclePop()
         }

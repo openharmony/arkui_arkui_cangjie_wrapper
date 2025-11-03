@@ -23,6 +23,6 @@ public macro Publish(input: Tokens): Tokens {
     checkStateKindAndInit(input, StateKind.PublishTy)
     let varDecl = (parseDecl(input) as VarDecl).getOrThrow()
     let identTok: Token = varDecl.identifier
-    stateManageHandler.publishInformation.add(mangle(identTok.value), varDecl)
+    STATE_MANAGE_HANDLER.publishInformation.add(mangle(identTok.value), varDecl)
     return genProp(varDecl, StateKind.PublishTy)
 }

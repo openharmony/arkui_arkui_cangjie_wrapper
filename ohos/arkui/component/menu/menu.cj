@@ -128,13 +128,14 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      *
      * @param { ?Length } value - The menu corner radius.
      * @returns { This } Returns the Menu instance.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         var value_ = transAppResourceToLength(tmpValue)
         if (value_.value < 0.0f64) {
             return this
@@ -152,13 +153,14 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      *
      * @param { ?BorderRadiuses } value - The menu corner radius.
      * @returns { This } Returns the Menu instance.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?BorderRadiuses): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkMenuSetRadiusByBorderRadiuses(tmpValue.toCBorderRadiuses());
         }
@@ -167,7 +169,7 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
 
     protected override func widthInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkMenuSetWidth(value_.value, value_.unitType.getValue())

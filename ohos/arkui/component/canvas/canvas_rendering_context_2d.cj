@@ -353,13 +353,13 @@ func parseFontValue(origin: String): (FontStyle, String, Length, String) {
     let fontInfoList = origin.split(" ")
     for (i in 0..fontInfoList.size) {
         let current = fontInfoList[i]
-        if (FontWights.contains(current)) {
+        if (FONT_WEIGHTS.contains(current)) {
             weight = current
-        } else if (FontStyles.contains(current)) {
+        } else if (FONT_STYLES.contains(current)) {
             style = FontStyle.parseFromString(current)
         } else if (current.contains("vp") || current.contains("px")) {
             size = parseLengthFromString(current).getOrDefault({ => 14.px})
-        } else if (FontFamilys.contains(current) || FontApi(0).getSystemFontList().contains(current)) {
+        } else if (FONT_FAMILIES.contains(current) || FontApi(0).getSystemFontList().contains(current)) {
             family = current
         }
     }

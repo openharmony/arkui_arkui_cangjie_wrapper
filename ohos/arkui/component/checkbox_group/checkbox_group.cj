@@ -79,12 +79,12 @@ class CallbackFFiCheckboxGroupResult <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackFFiCheckboxGroupResult")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackFFiCheckboxGroupResult")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<FFiCheckboxGroupResult>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackFFiCheckboxGroupResult")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackFFiCheckboxGroupResult")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -202,13 +202,14 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
      *
      * @param { ?ResourceColor } value - The color to display when checkboxes are selected.
      * @returns { This } - The instance of the component.
+     * @throws { BusinessException } The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func selectedColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkCheckBoxGroupSetSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -217,7 +218,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
 
     protected override func widthInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkCheckBoxGroupSetWidth(value_.value, value_.unitType.getValue())
@@ -229,7 +230,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
 
     protected override func heightInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkCheckBoxGroupSetHeight(value_.value, value_.unitType.getValue())
@@ -308,7 +309,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
         let vecFFi = FFIVectorNativeRectangle(tmpArray.size)
         var index = 0
         for (rect in tmpArray) {
-            BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
+            BASE_LOG.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++
         }

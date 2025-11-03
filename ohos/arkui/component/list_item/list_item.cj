@@ -84,14 +84,14 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
 
     func doDeepRender(elmId: Int64): Unit {
         // push listitem node to stack
-        ViewStackProcessor.StartGetAccessRecordingFor(elmId)
+        ViewStackProcessor.startGetAccessRecordingFor(elmId)
         let lambda = Callback1Param<Int32, Unit>({
             id => doDeepRender(Int64(id))
         })
         unsafe {
             FfiOHOSAceFrameworkListItemLazyCreate(lambda.getID(), -1)
         }
-        ViewStackProcessor.StopGetAccessRecording()
+        ViewStackProcessor.stopGetAccessRecording()
         deepRender_()
         pop()
     }

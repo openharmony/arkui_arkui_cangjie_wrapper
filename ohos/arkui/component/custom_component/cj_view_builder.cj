@@ -62,7 +62,7 @@ public class ViewBuilder {
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView) {
+public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView): Unit {
     builder(thisView).build
 }
 
@@ -76,7 +76,7 @@ public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView) {
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public func bind<T1> (builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder, thisView: CustomView) {
+public func bind<T1> (builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder, thisView: CustomView): (T1) -> Unit {
     {x1: T1 => builder(thisView, ObservedProperty("", x1)).build()}
 }
 
@@ -93,7 +93,7 @@ public func bind<T1> (builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder
 public func bind<T1, T2> (
     builder: (CustomView, ObservedProperty<T1>, ObservedProperty<T2>) -> ViewBuilder,
     thisView: CustomView
-) {
+): (T1, T2) -> Unit {
     {x1: T1, x2: T2 => builder(thisView, ObservedProperty("", x1), ObservedProperty("", x2)).build()}
 }
 
@@ -136,7 +136,7 @@ public class LegalCallCheck {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public static func check(_: ViewBuilder) {}
+    public static func check(_: ViewBuilder): Unit {}
 
     /**
      * Checks whether the view builder is called in the correct context.
@@ -148,5 +148,5 @@ public class LegalCallCheck {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public static func check(_: CustomView) {}
+    public static func check(_: CustomView): Unit {}
 }

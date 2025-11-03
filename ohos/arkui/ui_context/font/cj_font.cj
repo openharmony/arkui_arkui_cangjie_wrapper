@@ -215,6 +215,7 @@ public class Font {
      *
      * @param { ResourceStr } familyName
      * @param { ResourceStr } familySrc
+     * @throws { BusinessException } 100001 - Invalid input parameter.
      */
     @!APILevel[
         since: "22",
@@ -229,10 +230,10 @@ public class Font {
                 } else if (res.resType == STRING_TYPE) {
                     src = getResourceString(res)
                 } else {
-                    throw BusinessException(401, "Invalid input parameter..")
+                    throw BusinessException(100001, "Invalid input parameter.")
                 }
             case str: String => src = str
-            case _ => throw BusinessException(401, "Invalid input parameter.")
+            case _ => throw BusinessException(100001, "Invalid input parameter.")
         }
         unsafe {
             try (nameCStr = LibC.mallocCString(transResourceStrToString(familyName)).asResource(),
@@ -278,7 +279,7 @@ public class Font {
             try (name = LibC.mallocCString(fontName).asResource()) {
                 let res = FfiFontManagerGetFontByName(name.value)
                 if (res.isNull()) {
-                    AppLog.warn("Can not find system FontInfo for ${fontName}")
+                    APP_LOG.warn("Can not find system FontInfo for ${fontName}")
                     return None
                 }
                 let realValue = res.read()

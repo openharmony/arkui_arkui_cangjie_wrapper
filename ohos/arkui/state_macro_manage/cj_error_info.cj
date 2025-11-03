@@ -24,7 +24,7 @@ class DiagnosticEngine {
     private DiagnosticEngine() {}
 
     static func getInstance(): DiagnosticEngine {
-        diag
+        DIAG
     }
 
     private static func dealPos(input: Tokens): AstPosition {
@@ -62,7 +62,7 @@ class DiagnosticEngine {
         throw IllegalArgumentException(msg)
     }
 
-    private static let diag = DiagnosticEngine()
+    private static let DIAG = DiagnosticEngine()
 
     private var errorCount_: Int64 = 0
 
@@ -73,4 +73,4 @@ class DiagnosticEngine {
     private let ERROR_TAG: String = "error"
 }
 
-let diag = DiagnosticEngine.getInstance()
+let DIAG = DiagnosticEngine.getInstance()

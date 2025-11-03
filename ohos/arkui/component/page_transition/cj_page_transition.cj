@@ -51,17 +51,17 @@ class CallbackCJTransitionEvent <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<Int32>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg1 = unsafe { CPointer<Float64>(argv.read(1)) }
         if (ptrArg1.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackCJTransitionEvent")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         unsafe {
@@ -73,7 +73,7 @@ class CallbackCJTransitionEvent <: BaseCallBack {
 }
 /**
 * Callback used to report page transition events.
-* 
+*
 * @param { RouteType } type - transition route type
 * @param { Float64 } progress - transition progress. The value ranges from 0 to 1.
 */
@@ -196,7 +196,7 @@ public enum SlideEffect {
 sealed abstract class CommonTransition {
     /**
     * Called when the slide in effect of the transition is set.
-    * 
+    *
     * @param { SlideEffect } value - Page transition slide effect.
     * @returns { This }
     */
@@ -234,13 +234,13 @@ sealed abstract class CommonTransition {
     }
     /**
     * Called when setting the zoom effect of page transition.
-    * 
+    *
     * @param { ?Float32 } x - The degree of scaling along the X-axis, 1 is original scale.
     * @param { ?Float32 } y - The degree of scaling along the Y-axis, 1 is original scale.
     * @param { ?Float32 } z - The degree of scaling along the Z-axis, 1 is original scale.
     * @param { ?Length } centerX - X coordinate of the scale center.
     * @param { ?Length } centerY - Y coordinate of the scale center.
-    * @returns { This } 
+    * @returns { This }
     */
     @!APILevel[
         since: "22",
@@ -254,16 +254,16 @@ sealed abstract class CommonTransition {
         centerY!: ?Length = None
     ): This {
         unsafe {
-            FfiPageTransitionScalePointer(Float64(x ?? 1.0), Float64(y ?? 1.0), Float64(z ?? 1.0), 
+            FfiPageTransitionScalePointer(Float64(x ?? 1.0), Float64(y ?? 1.0), Float64(z ?? 1.0),
                 transAppResourceToLength(centerX ?? 50.percent).value, transAppResourceToLength(centerY ?? 50.percent).value)
         }
         this
     }
     /**
     * Called when the transparency value of the starting point of entry or the ending point of exit is set.
-    * 
+    *
     * @param { Float64 } value - The opacity to transition to. The value ranges from 0 to 1.
-    * @returns { This } 
+    * @returns { This }
     */
     @!APILevel[
         since: "22",
@@ -278,7 +278,7 @@ sealed abstract class CommonTransition {
 }
 /**
 * Defines PageTransitionEnter Component.
-* 
+*
 */
 @!APILevel[
     since: "22",
@@ -287,7 +287,7 @@ sealed abstract class CommonTransition {
 public class PageTransitionEnter <: CommonTransition {
     /**
     * Called when page Jump animation is used.
-    * 
+    *
     * @param { ?RouteType } routeType - The transition route type. The default value is RouteType.None.
     * @param { ?Int32 } duration - The transition duration, in milliseconds. The default value is 1000.
     * @param { ?Curve } curve - The transition curve. The default value is Curve.Linear.
@@ -314,9 +314,9 @@ public class PageTransitionEnter <: CommonTransition {
     /**
     * Called frame by frame to customize pageTransition animation when the page enters.
     * The incoming parameter is the normalized progress of the current incoming animation.
-    * 
+    *
     * @param { ?PageTransitionCallback } event - The callback on transition enter.
-    * @returns { This } 
+    * @returns { This }
     * @throws { BusinessException } 190002 - The callback function is invalid.
     */
     @!APILevel[
@@ -373,9 +373,9 @@ public class PageTransitionExit <: CommonTransition {
     /**
     * Called frame by frame to customize pageTransition animation when the page exits.
     * The input parameter is the normalized progress of the current exit animation.
-    * 
+    *
     * @param { ?PageTransitionCallback } event - The callback on transition exit.
-    * @returns { This } 
+    * @returns { This }
     */
     @!APILevel[
         since: "22",

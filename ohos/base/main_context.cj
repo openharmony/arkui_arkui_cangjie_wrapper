@@ -43,7 +43,7 @@ public class MainThreadContext <: ThreadContext {
 
     private init() {}
 
-    static let instance_: MainThreadContext = MainThreadContext()
+    static let INSTANCE_: MainThreadContext = MainThreadContext()
 
     /**
      * MainThreadContext end func.
@@ -77,4 +77,4 @@ public class MainThreadContext <: ThreadContext {
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public let UIThread: MainThreadContext = MainThreadContext.instance_
+public let UIThread: MainThreadContext = MainThreadContext.INSTANCE_

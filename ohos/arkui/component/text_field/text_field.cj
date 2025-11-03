@@ -213,7 +213,7 @@ foreign {
 protected class TextField {
     protected static func height(width: ?Length): Unit {
         match (width) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkTextFieldSetHeight(value_.value, value_.unitType.getValue())
@@ -236,7 +236,7 @@ protected class TextField {
     }
 
     protected static func padding(value: ?Length): Unit {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetPadding(v.value, v.unitType.getValue())
@@ -315,7 +315,7 @@ protected class TextField {
     }
 
     protected static func borderWidth(width: ?Length): Unit {
-        let tmpWidth = width ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpWidth = width ?? throw BusinessException(100001, "The type now is not supported.")
         var w = transAppResourceToLength(tmpWidth)
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBorderWidth(w.value, w.unitType.getValue())
@@ -323,7 +323,7 @@ protected class TextField {
     }
 
     protected static func borderWidth(edgeWidths: ?EdgeWidths): Unit {
-        let tmpEdgeWidths = edgeWidths ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpEdgeWidths = edgeWidths ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetBorderWidthWithCJEdge(
                 CJEdge(
@@ -682,7 +682,7 @@ protected class TextField {
             try {
                 callback(typeArr[Int64(value) - 2])
             } catch (e: IndexOutOfBoundsException) {
-                AppLog.error("onSubmit: EnterKeyType is invalid")
+                APP_LOG.error("onSubmit: EnterKeyType is invalid")
                 callback(EnterKeyType.Done)
             }
         }

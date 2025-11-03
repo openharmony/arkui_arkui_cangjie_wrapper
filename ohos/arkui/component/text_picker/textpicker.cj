@@ -83,12 +83,12 @@ class CallbackTextPickerResult <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackTextPickerResult")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackTextPickerResult")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<TextPickerResult>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackTextPickerResult")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackTextPickerResult")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -174,13 +174,14 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
      * <br>For the string type, only numeric string values, for example, "56", are supported.
      * @default 56.vp
      * @returns { This } Returns TextPicker instance to allow method chaining.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func defaultPickerItemHeight(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         var height = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextPickerSetDefaultPickerItemHeight(height.value, height.unitType.getValue())

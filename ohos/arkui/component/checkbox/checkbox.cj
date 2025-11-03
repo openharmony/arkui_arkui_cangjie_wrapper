@@ -143,7 +143,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
 
     protected override func widthInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkCheckBoxSetWidth(value_.value, value_.unitType.getValue())
@@ -155,7 +155,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
 
     protected override func heightInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkCheckBoxSetHeight(value_.value, value_.unitType.getValue())
@@ -271,7 +271,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
         let vecFFi = FFIVectorNativeRectangle(tmpArray.size)
         var index = 0
         for (rect in tmpArray) {
-            BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
+            BASE_LOG.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++
         }

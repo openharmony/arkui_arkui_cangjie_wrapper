@@ -368,16 +368,17 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the font size is set.
      *
-     * @param { ?Length } value - The font size. 
+     * @param { ?Length } value - The font size.
      * @default 16.fp (wearable devices is 15.fp)
      * @returns { This } Returns itself to allow method chaining.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextSetFontSize(v.value, getLengthUnitOrFp(v).getValue())
@@ -390,13 +391,14 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      *
      * @param { ?Length } value - The maximum font size.
      * @returns { This } Returns itself to allow method chaining.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxFontSize(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextSetMaxFontSize(v.value, v.unitType.getValue())
@@ -409,13 +411,14 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      *
      * @param { ?Length } value - The minimum font size.
      * @returns { This } Returns itself to allow method chaining.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func minFontSize(value: ?Length): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         var v = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkTextSetMinFontSize(v.value, v.unitType.getValue())
@@ -428,13 +431,14 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      *
      * @param { ?ResourceColor } value - The font color.
      * @returns { This } Returns itself to allow method chaining.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkTextSetFontColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -464,13 +468,14 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      *
      * @param { ?FontWeight } value - The font weight.
      * @returns { This } Returns itself to allow method chaining.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             var unsafeFontWeight = LibC.mallocCString(tmpValue.getValue())
             FfiOHOSAceFrameworkTextSetFontWeight(unsafeFontWeight)
@@ -664,7 +669,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
         let vecFFi = FFIVectorNativeRectangle(tmpArray.size)
         var index = 0
         for (rect in tmpArray) {
-            BaseLog.debug("CJRectangle responseRegion vecdata: " + index.toString())
+            BASE_LOG.debug("CJRectangle responseRegion vecdata: " + index.toString())
             vecFFi.setElement(index, rect.parseToNative())
             index++
         }

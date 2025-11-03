@@ -20,4 +20,4 @@ package ohos.arkui.component.common
 import ohos.ark_interop.JSInteropType
 import ohos.hilog.HilogChannel
 
-protected let AceLog = HilogChannel(1, 0xD003902, "Cangjie-Ace")
+protected let ACE_LOG = HilogChannel(1, 0xD003902, "Cangjie-Ace")

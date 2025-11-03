@@ -148,7 +148,7 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public func declareWatch<T>(propMember: ObservedProperty<T>, callBack: () -> Unit) {
+    public func declareWatch<T>(propMember: ObservedProperty<T>, callBack: () -> Unit): Unit {
         match (propMember.getInner() as ObservedComplexAbstract) {
             case Some(value) =>
                 watchedProps_inner__.add(value.getInfo(), callBack)
@@ -230,11 +230,11 @@ public abstract class CustomView <: RemoteView & Observer {
             return
         }
         match (updateFuncByElmtId_inner__.get(elmtId)) {
-            case None => BaseLog.error("update function of ElementId ${elmtId} not found, internal error!")
+            case None => BASE_LOG.error("update function of ElementId ${elmtId} not found, internal error!")
             case Some(updateFunc) =>
-                ViewStackProcessor.StartGetAccessRecordingFor(elmtId)
+                ViewStackProcessor.startGetAccessRecordingFor(elmtId)
                 updateFunc(elmtId, false).update()
-                ViewStackProcessor.StopGetAccessRecording()
+                ViewStackProcessor.stopGetAccessRecording()
                 nativeView_inner__.finishUpdateFunc(elmtId)
         }
     }
@@ -247,7 +247,7 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public func updateDirtyElements() {
+    public func updateDirtyElements(): Unit {
         do {
             let deletedElmtIds = nativeView_inner__.getDeletedElemtIds()
             this.purgeDeletedElmtIds(deletedElmtIds)
@@ -344,10 +344,10 @@ public abstract class CustomView <: RemoteView & Observer {
     ]
     @!Hide
     public func observeComponentCreation(compilerAssignedUpdateFunc: UpdateFuncNew): Unit {
-        let elmtId = ViewStackProcessor.AllocateNewElmetIdForNextComponent()
-        ViewStackProcessor.StartGetAccessRecordingFor(elmtId)
+        let elmtId = ViewStackProcessor.allocateNewElmetIdForNextComponent()
+        ViewStackProcessor.startGetAccessRecordingFor(elmtId)
         compilerAssignedUpdateFunc(elmtId, true).initial()
-        ViewStackProcessor.StopGetAccessRecording()
+        ViewStackProcessor.stopGetAccessRecording()
         updateFuncByElmtId_inner__.add(elmtId, compilerAssignedUpdateFunc)
         return
     }
@@ -363,7 +363,7 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public func observeRecycleComponentCreation(name: String, recycleUpdateFunc: RecycleUpdateFunc) {
+    public func observeRecycleComponentCreation(name: String, recycleUpdateFunc: RecycleUpdateFunc): Unit {
         let compilerAssignedUpdateFunc: UpdateFuncNew = {
             elmtId: Int64, isFirstRender: Bool => recycleUpdateFunc(elmtId, isFirstRender, None)
         }
@@ -373,7 +373,7 @@ public abstract class CustomView <: RemoteView & Observer {
             return
         }
         let node = nodeOpt.getOrThrow()
-        let newElemtId = ViewStackProcessor.AllocateNewElmetIdForNextComponent()
+        let newElemtId = ViewStackProcessor.allocateNewElmetIdForNextComponent()
         let oldElemtId = Int64(node.nativeView_inner__.getElementId())
         let recycleManager = recycleManager_.getOrThrow()
         recycleManager.updateNodeId(oldElemtId, newElemtId)
@@ -381,9 +381,9 @@ public abstract class CustomView <: RemoteView & Observer {
         if (updateFuncByElmtId_inner__.contains(oldElemtId)) {
             updateFuncByElmtId_inner__[oldElemtId] = compilerAssignedUpdateFunc
         }
-        ViewStackProcessor.StartGetAccessRecordingFor(newElemtId)
+        ViewStackProcessor.startGetAccessRecordingFor(newElemtId)
         recycleUpdateFunc(oldElemtId, true, node).initial()
-        ViewStackProcessor.StopGetAccessRecording()
+        ViewStackProcessor.stopGetAccessRecording()
     }
     /**
      * Invoked when a reusable custom component is re-added to the node tree
@@ -502,7 +502,7 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public static func createRecycle(view: CustomView, isRecycling: Bool, name: String, callback: () -> Unit) {
+    public static func createRecycle(view: CustomView, isRecycling: Bool, name: String, callback: () -> Unit): Unit {
         View.createRecycle(view.getView(), isRecycling, name, callback)
     }
 
@@ -516,7 +516,7 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public static func create(view: CustomView) {
+    public static func create(view: CustomView): Unit {
         View.create(view.getView())
     }
 
@@ -531,7 +531,7 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public func addProvideVar(value: ObservedPropertyAbstract, name: String) {
+    public func addProvideVar(value: ObservedPropertyAbstract, name: String): Unit {
         this.provideVars_inner__.add(name, value)
     }
 
@@ -540,6 +540,7 @@ public abstract class CustomView <: RemoteView & Observer {
      *
      * @param { String } name
      * @return { ObservedPropertyAbstract }
+     * @throws { BusinessException } 10905304 - Missing @Provide property with name.
      */
     @!APILevel[
         since: "22",
@@ -717,11 +718,11 @@ public abstract class CustomView <: RemoteView & Observer {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     @!Hide
-    public func ifElseBranchUpdateFunction(branchId: Int32, branchFunc: () -> Unit) {
+    public func ifElseBranchUpdateFunction(branchId: Int32, branchFunc: () -> Unit): Unit {
         let oldBranchId: Int32 = If.getBranchId()
 
         if (branchId == oldBranchId) {
-            BaseLog.debug("IfElse branch unchanged, no work to do")
+            BASE_LOG.debug("IfElse branch unchanged, no work to do")
             return
         }
 

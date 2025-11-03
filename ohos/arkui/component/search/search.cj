@@ -284,13 +284,14 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
      * @param { ?ResourceColor } value - indicates the color of the placeholder text. The default value on wearable devices is 0x9ffffff.
      * @default 0x99182431
      * @returns { This } Returns the Search instance.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkSearchSetPlaceholderColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -547,7 +548,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     }
 
     protected override func borderWidthInner(width: ?Length): This {
-        let tmpValue = width ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = width ?? throw BusinessException(100001, "The type now is not supported.")
         var w = transAppResourceToLength(tmpValue)
         unsafe {
             FfiOHOSAceFrameworkSearchSetBorderWidth(w.value, w.unitType.getValue())
@@ -579,7 +580,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
 
     protected override func heightInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     FfiOHOSAceFrameworkSearchSetHeight(value_.value, value_.unitType.getValue())

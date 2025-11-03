@@ -203,50 +203,51 @@ func getAppResId(path: String, moduleName: String, resType: String, resName: Str
 
 func findSysId(obj: JsonObject, resType: String, resName: String): Int32 {
     var id = INVALID_RES_ID
-    if (obj.containsKey("startId")) {
-        let startId = Int32.parse(
-            obj
-                .get("startId")
-                .getOrThrow({=> NoneValueException("can not find system resource")})
-                .asString()
-                .getValue())
-        var recordOpt = obj.get("record")
-        var recordArr = ArrayList<JsonValue>([])
-        if (let Some(record) <- recordOpt) {
-            recordArr = record.asArray().getItems()
-        }
-        for (item in recordArr) {
-            let val = item.asObject()
-            let ty = val
-                .get("type")
-                .getOrThrow({=> NoneValueException("resource type invalid: ${resType}")})
-                .asString()
-                .getValue()
-            let name = val
-                .get("name")
-                .getOrThrow({=> NoneValueException("can not find resource: ${resName}")})
-                .asString()
-                .getValue()
-            if (ty == resType && name == resName) {
-                if (val.containsKey("flags")) {
-                    let flags = val
-                        .get("flags")
-                        .getOrThrow({=> NoneValueException("can not find resource: ${resName}")})
-                        .asString()
-                        .getValue()
-                    if (flags == "private") {
-                        break
-                    }
+    if (!obj.containsKey("startId")) {
+        return id
+    }
+    let startId = Int32.parse(
+        obj
+            .get("startId")
+            .getOrThrow({=> NoneValueException("can not find system resource")})
+            .asString()
+            .getValue())
+    var recordOpt = obj.get("record")
+    var recordArr = ArrayList<JsonValue>([])
+    if (let Some(record) <- recordOpt) {
+        recordArr = record.asArray().getItems()
+    }
+    for (item in recordArr) {
+        let val = item.asObject()
+        let ty = val
+            .get("type")
+            .getOrThrow({=> NoneValueException("resource type invalid: ${resType}")})
+            .asString()
+            .getValue()
+        let name = val
+            .get("name")
+            .getOrThrow({=> NoneValueException("can not find resource: ${resName}")})
+            .asString()
+            .getValue()
+        if (ty == resType && name == resName) {
+            if (val.containsKey("flags")) {
+                let flags = val
+                    .get("flags")
+                    .getOrThrow({=> NoneValueException("can not find resource: ${resName}")})
+                    .asString()
+                    .getValue()
+                if (flags == "private") {
+                    break
                 }
-                id = Int32.parse(
-                    val
-                        .get("order")
-                        .getOrThrow({=> NoneValueException("can not find resource: ${resName}")})
-                        .asInt()
-                        .getValue()
-                        .toString()) + startId
-                break
             }
+            id = Int32.parse(
+                val
+                    .get("order")
+                    .getOrThrow({=> NoneValueException("can not find resource: ${resName}")})
+                    .asInt()
+                    .getValue()
+                    .toString()) + startId
+            break
         }
     }
     return id

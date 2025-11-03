@@ -148,12 +148,12 @@ class CallbackOffset <: BaseCallBack {
             throw BusinessException(190002, "The callback function is invalid.")
         }
         if (argv.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackOffset")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackOffset")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let ptrArg0 = unsafe { CPointer<NativeOffsetResult>(argv.read()) }
         if (ptrArg0.isNull()) {
-            AppLog.error("Invalid argument, failed to invoke CallbackOffset")
+            APP_LOG.error("Invalid argument, failed to invoke CallbackOffset")
             throw BusinessException(190002, "The callback function is invalid.")
         }
         let arg0 = unsafe { ptrArg0.read() }
@@ -246,7 +246,7 @@ public class RectResult {
 public class ScrollAnimationOptions {
     /**
      * Scrolling duration.
-     * 
+     *
      * @default 1000.0
      */
     @!APILevel[
@@ -257,7 +257,7 @@ public class ScrollAnimationOptions {
 
     /**
      * Scrolling curve.
-     * 
+     *
      * @default Curve.Ease
      */
     @!APILevel[
@@ -273,7 +273,7 @@ public class ScrollAnimationOptions {
      * <br> Scrolling can exceed the boundary and initiate a bounce animation when this parameter is set to <em>true</em>,
      * and the component's edgeEffect attribute is set to EdgeEffect.Spring.
      * </p>
-     * 
+     *
      * @default false
      */
     @!APILevel[
@@ -414,7 +414,7 @@ public class NestedScrollOptions {
 public class FadingEdgeOptions {
     /**
      * Representing the length in the customizing fading edge.
-     * 
+     *
      * @default 32.vp
      */
     @!APILevel[
@@ -506,13 +506,13 @@ public type OnScrollCallBack = (scrollOffset: Float64, scrollState: ScrollState)
 
 /**
  * Represents the callback triggered when the <em>Scroll</em> component scrolls.
- * 
+ *
  * <p><strong>NOTE</strong>
  * <br>If the <em>onScrollFrameBegin</em> event and <em>scrollBy</em> method are used to implement nested scrolling,
  * set the <em>edgeEffect</em> attribute of the scrollable child component to <em>None</em>. For example,
  * if a <em>List</em> is nested in the <em>Scroll</em> component, <em>edgeEffect</em> of the <em>List</em> must be set to <em>EdgeEffect.None</em>.
  * </p>
- * 
+ *
  * @param { Float64 } xOffset - Horizontal offset per frame during scrolling. A positive offset indicates scrolling to the left,
  * and a negative offset indicates scrolling to the right.
  * <br>Unit: vp
@@ -782,12 +782,12 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
 
     protected func frictionInner(value: ?AppResource): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 var friction: Float64 = 0.0
                 let t = Float64.tryParse(getResourceString(v))
                 match (t) {
                     case Some(n) => friction = n
-                    case None => BaseLog.debug("AppResource type param of friction func convert to Float64 fail.");
+                    case None => BASE_LOG.debug("AppResource type param of friction func convert to Float64 fail.");
                 }
                 unsafe {
                     FfiOHOSAceFrameworkScrollFriction(friction)
@@ -830,8 +830,8 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
     }
 
     protected func scrollBarWidthInner(width: ?Length): This {
-        var width_ = transAppResourceToLength(width ?? 4.vp)	
-        unsafe {	
+        var width_ = transAppResourceToLength(width ?? 4.vp)
+        unsafe {
             FfiOHOSAceFrameworkScrollScrollBarWidth(width_.value, width_.unitType.getValue())
         }
         this
@@ -1265,7 +1265,7 @@ public class Scroller {
     ): This {
         let tmpAlign = align ?? ScrollAlign.Start
         let tmpOptions = options ?? ScrollToIndexOptions()
-        
+
         var extraOffset_ = transAppResourceToLength(tmpOptions.extraOffset ?? 0.vp)
         unsafe {
             if (index >= 0) {

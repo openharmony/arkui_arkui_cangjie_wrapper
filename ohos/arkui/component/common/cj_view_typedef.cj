@@ -1248,7 +1248,7 @@ public open class BindOptions {
     }
 
     func parseCBindOptions(bindOption: BindOptions): CBindOptions {
-        let backgroundColor = if (let Some(v) <- bindOption.backgroundColor) {
+        let backgroundColorFfi = if (let Some(v) <- bindOption.backgroundColor) {
             NativeOptionUInt32(true, transAppResourceToResourceColor(v))
         } else {
             NativeOptionUInt32(false, 0)
@@ -1261,11 +1261,11 @@ public open class BindOptions {
                 NativeOptionCallBack(false, INVALID_CALLBACK_ID)
             }
         }
-        let onAppear = getCallBack(bindOption.onAppear)
-        let onDisappear = getCallBack(bindOption.onDisappear)
-        let onWillAppear = getCallBack(bindOption.onWillAppear)
-        let onWillDisappear = getCallBack(bindOption.onWillDisappear)
-        return CBindOptions(backgroundColor, onAppear, onDisappear, onWillAppear, onWillDisappear)
+        let onAppearFfi = getCallBack(bindOption.onAppear)
+        let onDisappearFfi = getCallBack(bindOption.onDisappear)
+        let onWillAppearFfi = getCallBack(bindOption.onWillAppear)
+        let onWillDisappearFfi = getCallBack(bindOption.onWillDisappear)
+        return CBindOptions(backgroundColorFfi, onAppearFfi, onDisappearFfi, onWillAppearFfi, onWillDisappearFfi)
     }
 }
 
@@ -1325,14 +1325,14 @@ public class ContentCoverOptions <: BindOptions {
             onWillDisappear: contentCoverOptions.onWillDisappear
         )
         let cjBindOptions = contentCoverOptions.parseCBindOptions(bindOptions)
-        let modalTransition = contentCoverOptions.modalTransition.getValue()
+        let modalTransitionFfi = contentCoverOptions.modalTransition.getValue()
 
-        let transition = match (contentCoverOptions.transition) {
+        let transitionFfi = match (contentCoverOptions.transition) {
             case Some(value) => NativeOptionInt64(true, value.getID())
             case None => NativeOptionInt64(false, 0)
         }
 
-        let onWillDismiss = match (contentCoverOptions.onWillDismiss) {
+        let onWillDismissFfi = match (contentCoverOptions.onWillDismiss) {
             case Some(value) =>
                 let wrapper = {
                     proxy: CJDismissContentCoverAction => value(proxy.parseToCJ())
@@ -1342,9 +1342,9 @@ public class ContentCoverOptions <: BindOptions {
             case None => NativeOptionCallBack(false, INVALID_CALLBACK_ID)
         }
         return CJContentCoverOptionsV2(
-            modalTransition,
-            onWillDismiss,
-            transition,
+            modalTransitionFfi,
+            onWillDismissFfi,
+            transitionFfi,
             cjBindOptions.backgroundColor,
             cjBindOptions.onAppear,
             cjBindOptions.onDisappear,

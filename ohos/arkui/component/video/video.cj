@@ -208,13 +208,14 @@ public class VideoController <: RemoteDataLite {
      *
      * @param { Int32 } value - The position to seek to, in seconds.
      * @param { ?SeekMode } seekMode - The seek mode.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func setCurrentTime(value: Int32, seekMode: ?SeekMode): Unit {
-        let tmpSeekMode = seekMode ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpSeekMode = seekMode ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkVideoControllerSetCurrentTime(value, tmpSeekMode.getValue(), this.getID())
         }

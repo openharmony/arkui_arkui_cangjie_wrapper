@@ -274,7 +274,7 @@ public class Environment {
                     // res.value always malloced in native side
                     res.free()
                 case _ =>
-                    BaseLog.warn("Environment: invalid key: ${key}")
+                    BASE_LOG.warn("Environment: invalid key: ${key}")
                     return false
             }
             return true

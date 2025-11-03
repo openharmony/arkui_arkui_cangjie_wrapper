@@ -42,7 +42,7 @@ public class CJEntry {
      * Used to compare local api version with native api version, different version may occur error.
      */
     static let VERSION: Int64 = 10000
-    private static let instance_ = CJEntry()
+    private static let INSTANCE_ = CJEntry()
     /**
      * Get CJEntry instance.
      *
@@ -54,7 +54,7 @@ public class CJEntry {
     ]
     @!Hide
     public static func getInstance(): CJEntry {
-        return instance_
+        return INSTANCE_
     }
 
     private let entries_ = HashMap<String, () -> Bool>()
@@ -74,7 +74,7 @@ public class CJEntry {
 
     func initialize(_: Int16, version: Int64, packagePtr: CPointer<AtCPackage>): Bool {
         if (version != VERSION) {
-            AceLog.info(
+            ACE_LOG.info(
                 "cj entry initialize fail, version not match, required '" + VERSION.toString() + "' yet get ''" +
                     version.toString() + "'")
             return false
@@ -89,7 +89,7 @@ public class CJEntry {
         let optEntry = entries_.get(name)
         match (optEntry) {
             case None =>
-                AceLog.error("LoadEntry fail, no such entry: " + name)
+                ACE_LOG.error("LoadEntry fail, no such entry: " + name)
                 false
             case Some(entryFunc) => entryFunc()
         }

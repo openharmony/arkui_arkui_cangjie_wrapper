@@ -25,21 +25,21 @@ public macro BuilderParam(input: Tokens): Tokens {
 
     // check whether @BuilderParam decorated a variable declaration
     if ((decl as VarDecl).isNone()) {
-        diag.fatal(input, "@BuilderParam should decorate variable declaration")
+        DIAG.fatal(input, "@BuilderParam should decorate variable declaration")
     }
     let varDecl: VarDecl = (decl as VarDecl).getOrThrow()
 
     // check whether @BuilderParam decorated a variable with function type
     if ((varDecl.declType as FuncType).isNone()) {
-        diag.fatal(input, "@BuilderParam variable should be function type")
+        DIAG.fatal(input, "@BuilderParam variable should be function type")
     }
     let funcType = (varDecl.declType as FuncType).getOrThrow()
     match (funcType.returnType as PrimitiveType) {
         case Some(r) =>
             if (r.keyword.kind != UNIT) {
-                diag.fatal(input, "@BuilderParam variable should be a function type and the return type should be Unit")
+                DIAG.fatal(input, "@BuilderParam variable should be a function type and the return type should be Unit")
             }
-        case None => diag.fatal(input, "@BuilderParam variable should be a function type and the return type is Unit")
+        case None => DIAG.fatal(input, "@BuilderParam variable should be a function type and the return type is Unit")
     }
 
     // update the return type to ViewBuilder
@@ -48,13 +48,13 @@ public macro BuilderParam(input: Tokens): Tokens {
     // add a CustomView
     let entryTypes = ArrayList<TypeNode>.of(RefType(quote(CustomView)))
 
-    // update the type T of the parameter to ObservedProperty<T> 
+    // update the type T of the parameter to ObservedProperty<T>
     for (paramType in funcType.types) {
         entryTypes.add(RefType(quote(ObservedProperty<$paramType>)))
     }
     funcType.types = entryTypes
 
-    stateManageHandler.builderParamInfo.add(varDecl.identifier.value)
+    STATE_MANAGE_HANDLER.builderParamInfo.add(varDecl.identifier.value)
 
     quote(private) + varDecl.toTokens()
 }

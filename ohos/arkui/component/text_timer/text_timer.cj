@@ -278,13 +278,14 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      *
      * @param { ?ResourceColor } value - The font color.
      * @returns { This } Returns itself to allow method chaining.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         unsafe {
             FfiOHOSAceFrameworkTextTimerSetFontColor(transAppResourceToResourceColor(tmpValue))
         }
@@ -366,13 +367,14 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      *
      * @param { ?Array<ShadowOptions> } value - The shadow options.
      * @returns { This } Returns itself to allow method chaining.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(value: ?Array<ShadowOptions>): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         let vecValueHandle = TextTimerVectorNativeTextShadow(tmpValue.size)
         for (i in 0..tmpValue.size) {
             vecValueHandle.setElement(i, tmpValue[i].optionToNativeTextTimerShadow())
@@ -390,13 +392,14 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      *
      * @param { ?ShadowOptions } value - The shadow options.
      * @returns { This } Returns itself to allow method chaining.
+     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(value: ?ShadowOptions): This {
-        let tmpValue = value ?? throw IllegalArgumentException("The type now is not supported.")
+        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
         let thisShadow: NativeTextTimerShadow = NativeTextTimerShadow(tmpValue.radius ?? 0.0,
             tmpValue.offsetX ?? 0.0, tmpValue.offsetY ?? 0.0, transAppResourceToResourceColor(tmpValue.color ?? Color.Black), tmpValue.fill ?? false,
             (tmpValue.shadowType ?? ShadowType.Color).getValue())
