@@ -29,15 +29,6 @@ import ohos.resource.{AppResource, getResourceString}
 import std.convert.{Parsable}
 
 @C
-struct CJVisibleListContentInfo {
-    CJVisibleListContentInfo(
-        let index: Int32,
-        let itemGroupArea: Int32,
-        let itemIndexInGroup: Int32
-    ) {}
-}
-
-@C
 struct LanesParams {
     LanesParams(
         let min: Float64,
@@ -178,8 +169,6 @@ foreign {
 
     func FfiOHOSAceFrameworkListScrollerScrollToItemInGroup(listScrollerId: Int64, index: Int32, indexInGroup: Int32,
         smooth: Bool, align: Int32): Unit
-
-    func FfiOHOSAceFrameworkListScrollerGetVisibleListContentInfo(listScrollerId: Int64, x: Float64, y: Float64): CJVisibleListContentInfo
 
     func FfiOHOSAceFrameworkListScrollerCloseAllSwipeActions(listScrollerId: Int64): Unit
 

@@ -47,10 +47,6 @@ public class CanvasPattern <: RemoteDataLite {
             })
     }
 
-    init(selfId: Int64) {
-        super(selfId)
-    }
-
     ~init() {
         releaseFFIData(myDataId)
     }

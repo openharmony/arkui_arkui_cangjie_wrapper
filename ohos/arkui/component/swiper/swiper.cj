@@ -88,8 +88,6 @@ foreign {
 
     func FfiOHOSAceFrameworkSwiperSetCurve(curveStr: CString): Unit
 
-    func FfiOHOSAceFrameworkSwiperSetDigital(value: Bool): Unit
-
     func FfiOHOSAceFrameworkSwiperSetDisplayArrowWithBool(value: Bool, isHoverShow: Bool): Unit
 
     func FfiOHOSAceFrameworkSwiperSetDisplayArrowWithObj(value: CJArrowStyle, isHoverShow: Bool): Unit
@@ -1156,17 +1154,6 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
             try (content = LibC.mallocCString((value ?? Curve.Linear).getValue()).asResource()) {
                 FfiOHOSAceFrameworkSwiperSetCurve(content.value)
             }
-        }
-        this
-    }
-
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    func digital(value: Bool): This {
-        unsafe {
-            FfiOHOSAceFrameworkSwiperSetDigital(value)
         }
         this
     }
