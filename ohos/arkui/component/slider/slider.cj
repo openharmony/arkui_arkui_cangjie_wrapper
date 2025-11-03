@@ -111,7 +111,7 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         max!: ?Float64 = None,
         step!: ?Float64 = None,
         value!: ?Float64 = None,
-        style!: ?SliderStyle = None,
+        style!: ?SliderStyle = Option.None,
         direction!: ?Axis = None,
         reverse!: ?Bool = None
     ) {
