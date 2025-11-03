@@ -252,7 +252,7 @@ protected func measureTextSizeInner(options: MeasureOptions): SizeOptions {
         LibC.free(contextC.textContent)
         LibC.free(contextC.fontWeight)
         LibC.free(contextC.fontFamily)
-        SizeOptions(width: result.width, height: result.height)
+        SizeOptions(width: result.width.px, height: result.height.px)
     }
 }
 

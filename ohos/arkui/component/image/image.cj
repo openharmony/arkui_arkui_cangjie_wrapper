@@ -274,7 +274,6 @@ protected class CallbackImageError <: BaseCallBack {
         }
         let c_arg0 = unsafe { ptrArg0.read() }
         let arg0: ImageError = ImageError(c_arg0.componentWidth, c_arg0.componentHeight, "")
-        //arg0.message = c_arg0.message.toString()
         closure(arg0)
     }
 }
