@@ -305,13 +305,13 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
         if (let Some(v)<- value) {
             var height_ = transAppResourceToLength(v)
             unsafe {
-                FfiOHOSAceFrameworkTabsSetBarWidth(normalizeValue(height_.value, 0.0), height_.unitType.getValue())
+                FfiOHOSAceFrameworkTabsSetBarHeight(normalizeValue(height_.value, 0.0), height_.unitType.getValue())
             }
             return this
         } else {
             var height_ = transAppResourceToLength((-1.0).vp)
             unsafe {
-                FfiOHOSAceFrameworkTabsSetBarWidth(height_.value, height_.unitType.getValue())
+                FfiOHOSAceFrameworkTabsSetBarHeight(height_.value, height_.unitType.getValue())
             }
             return this
         }
