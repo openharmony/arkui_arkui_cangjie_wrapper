@@ -106,17 +106,4 @@ public class ImageBitmap <: RemoteData {
         )
         RemoteDataManager.getInstance().register(this)
     }
-
-    init(selfId: Int64, _: Bool) {
-        super(selfId)
-        RemoteDataManager.getInstance().register(this)
-    }
-
-    init(offscreenCanvasId: Int64) {
-        super(unsafe {
-            let id = FfiOHOSAceFrameworkImageBitMapCtorByOffscreenCanvas(offscreenCanvasId)
-            id
-        })
-        RemoteDataManager.getInstance().register(this)
-    }
 }

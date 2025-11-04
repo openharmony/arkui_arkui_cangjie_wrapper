@@ -55,13 +55,9 @@ foreign {
 
     func FfiOHOSAceFrameworkRichEditorEnableDataDetector(enable: Bool): Unit
 
-    func FfiOHOSAceFrameworkRichEditorDataDetectorConfig(config: NativeTextDataDetectorConfig): Unit
-
     func FfiOHOSAceFrameworkRichEditorEditMenuOptions(cjOnCreateMenu: Int64, cjOnMenuItemClick: Int64): Unit
 
     func FfiOHOSAceFrameworkRichEditorEnablePreviewText(enable: Bool): Unit
-
-    func FfiOHOSAceFrameworkRichEditorPlaceholder(value: CString, style: NativePlaceholderStyle): Unit
 
     func FfiOHOSAceFrameworkRichEditorCaretColor(color: UInt32): Unit
 
@@ -70,8 +66,6 @@ foreign {
     func FfiOHOSAceFrameworkRichEditorEnterKeyType(value: Int32): Unit
 
     func FfiOHOSAceFrameworkRichEditorEnableKeyboardOnFocus(enable: Bool): Unit
-
-    func FfiOHOSAceFrameworkRichEditorCustomKeyboardWithOptions(builder: Int64, options: NativeKeyboardOptions): Unit
 
     func FfiOHOSAceFrameworkRichEditorOnDidIMEInput(callback: Int64): Unit
 
@@ -679,74 +673,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
     }
 }
 
-@C
-struct NativeDecorationStyleInterface {
-    NativeDecorationStyleInterface(
-        let decorationType: Int32,
-        let color: UInt32,
-        let style: Int32,
-        let hasColor: Bool,
-        let hasStyle: Bool
-    ) {}
-}
-
-@C
-struct NativeTextDataDetectorConfig {
-    NativeTextDataDetectorConfig(
-        let types: VectorStringHandle,
-        let onDetectResultUpdate: Int64,
-        let color: UInt32,
-        let decoration: NativeDecorationStyleInterface,
-        let hasColor: Bool,
-        let hasOnDetectResultUpdate: Bool,
-        let hasDecoration: Bool
-    ) {}
-}
-
-@C
-struct NativeFont {
-    NativeFont(
-        var size: Float64,
-        var sizeUnit: Int32,
-        var weight: CString,
-        var family: CString,
-        var style: Int32
-    ) {}
-
-    func free(): Unit {
-        weight.free()
-        family.free()
-    }
-}
-
-@C
-struct NativePlaceholderStyle {
-    NativePlaceholderStyle(
-        var hasFont: Bool,
-        var hasFontColor: Bool,
-        var font: NativeFont,
-        var fontColor: UInt32
-    ) {}
-}
-
-@C
-struct NativeKeyboardOptions {
-    NativeKeyboardOptions(let supportAvoidance: Bool) {}
-}
-
-@C
-struct NativeRichEditorChangeValue {
-    NativeRichEditorChangeValue(
-        let rangeBefore: NativeTextRange,
-        let replacedSpans: CPointer<NativeRichEditorSpanResult>,
-        let replacedSpansSize: Int64,
-        let replacedImageSpans: CPointer<NativeRichEditorImageSpanResult>,
-        let replacedImageSpansSize: Int64,
-        let replacedSymbolSpans: CPointer<NativeRichEditorTextSpanResult>,
-        let replacedSymbolSpansSize: Int64
-    ) {}
-}
-
 func parseNativeRichEditorImageSpanResult(value: NativeRichEditorImageSpanResult): RichEditorImageSpanResult {
     let nativeSpanPosition = value.spanPosition
 
@@ -829,14 +755,6 @@ struct NativeRichEditorSelection {
         let selectionEnd: Int32,
         let spans: CPointer<NativeRichEditorSpanResult>,
         let spanSize: Int64
-    ) {}
-}
-
-@C
-struct NativeRichEditorRange {
-    NativeRichEditorRange(
-        let start: Int32,
-        let end: Int32
     ) {}
 }
 
@@ -1061,7 +979,7 @@ public type PasteEventCallback = (PasteEvent) -> Unit
 
 /**
  * Callback after content changed.
- * 
+ *
  * @param { TextRange } rangeBefore - Range of content that had been replaced.
  * @param { TextRange } rangeAfter - Range of content that newly added.
  */

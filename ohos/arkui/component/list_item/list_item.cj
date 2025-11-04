@@ -96,11 +96,6 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
         pop()
     }
 
-    private init() {
-        this.child = {=>}
-        this.deepRender_ = {=>}
-    }
-
     /**
      * Called when judging whether it is selectable.
      *

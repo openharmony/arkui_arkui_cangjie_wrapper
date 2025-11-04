@@ -20,8 +20,6 @@ package ohos.base
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 
-let COLOR_TRANSPARENT_VALUE: UInt32 = 0X00000000
-
 /**
  * Defines the color which can use resource.
  */
@@ -93,7 +91,7 @@ public class Color <: ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Black: Color = Color(0xff000000)
-    
+
     /**
      * Blue.
      */
@@ -102,7 +100,7 @@ public class Color <: ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Blue: Color = Color(0xff0000ff)
-    
+
     /**
      * Gray.
      */
@@ -111,7 +109,7 @@ public class Color <: ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Gray: Color = Color(0xff808080)
-    
+
     /**
      * Green.
      */
@@ -120,7 +118,7 @@ public class Color <: ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Green: Color = Color(0xff008000)
-    
+
     /**
      * Red.
      */
@@ -129,7 +127,7 @@ public class Color <: ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let Red: Color = Color(0xffff0000)
-    
+
     /**
      * White.
      */
@@ -138,7 +136,7 @@ public class Color <: ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public static let White: Color = Color(0xffffffff)
-    
+
     /**
      * Transparent.
      */
@@ -190,9 +188,6 @@ public class Color <: ResourceColor {
 
     protected static func alphaAdapt(origin: UInt32): UInt32 {
         var result: UInt32 = origin
-        if (origin == COLOR_TRANSPARENT_VALUE) {
-            return result
-        }
         if ((origin >> 24) == 0) {
             result = origin | 0xff000000
         }

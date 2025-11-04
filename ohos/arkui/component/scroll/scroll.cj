@@ -139,28 +139,6 @@ struct ScrollOnWillScrollCallbackParams {
     ) {}
 }
 
-class CallbackOffset <: BaseCallBack {
-    CallbackOffset(let closure: (OffsetResult) -> Unit) {
-        registerSelf()
-    }
-    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
-        if (argc != 1) {
-            throw BusinessException(190002, "The callback function is invalid.")
-        }
-        if (argv.isNull()) {
-            APP_LOG.error("Invalid argument, failed to invoke CallbackOffset")
-            throw BusinessException(190002, "The callback function is invalid.")
-        }
-        let ptrArg0 = unsafe { CPointer<NativeOffsetResult>(argv.read()) }
-        if (ptrArg0.isNull()) {
-            APP_LOG.error("Invalid argument, failed to invoke CallbackOffset")
-            throw BusinessException(190002, "The callback function is invalid.")
-        }
-        let arg0 = unsafe { ptrArg0.read() }
-        closure(arg0.parseToCJ())
-    }
-}
-
 /**
  * Represents the rect values resulting from a scroll operation.
  */
