@@ -22,7 +22,7 @@ import ohos.arkui.component.list_item_group.{ListDividerOptions}
 import ohos.arkui.component.native_struct.{DividerParams, RectResultParams}
 import ohos.arkui.component.scroll.{ScrollableCommonMethodComponent, ScrollableCommonMethod, Scroller, NestedScrollOptions, ContentClipMode}
 import ohos.arkui.component.util.{LENGTH_VP, transAppResourceToLength, transAppResourceToResourceColor}
-import ohos.base.{Length, LengthProp, ResourceColor, BaseLog}
+import ohos.base.{Length, LengthProp, ResourceColor, BASE_LOG}
 import ohos.ffi.{Callback3Param, Callback2Param, Callback0Param}
 import ohos.labels.APILevel
 import ohos.resource.{AppResource, getResourceString}

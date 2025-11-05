@@ -24,6 +24,7 @@ import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp}
 import ohos.ffi.{RemoteDataLite, releaseFFIData}
 import ohos.resource.{getResourceString, AppResource}
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 foreign {
     func FfiOHOSAceFrameworkTextInputCreate(placeholder: CString, text: CString, controllerId: Int64): Unit

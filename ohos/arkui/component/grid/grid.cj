@@ -20,7 +20,7 @@ package ohos.arkui.component.grid
 import ohos.arkui.component.common.{BarState, NestedScrollMode}
 import ohos.arkui.component.scroll.{ScrollableCommonMethodComponent, ScrollableCommonMethod, Scroller, NestedScrollOptions}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
-import ohos.base.{Length, ResourceColor, LengthProp, BaseLog}
+import ohos.base.{Length, ResourceColor, LengthProp, BASE_LOG}
 import ohos.ffi.{Callback0Param}
 import ohos.labels.APILevel
 import ohos.resource.{AppResource, getResourceString}

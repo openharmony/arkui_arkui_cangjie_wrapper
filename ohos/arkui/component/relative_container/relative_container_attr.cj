@@ -17,6 +17,7 @@ package ohos.arkui.component.relative_container
 
 import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 /**
  * RelativeContainer

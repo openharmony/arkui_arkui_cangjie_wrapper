@@ -21,7 +21,7 @@ import ohos.arkui.component.for_each.{ForEach}
 import ohos.arkui.component.custom_view.{RemoteView}
 import ohos.arkui.state_management.{Observer, ObservedPropertyAbstract, LocalStorage, ObservedProperty, ObservedComplexAbstract, SubscriberManager, ViewStackProcessor}
 import ohos.arkui.ui_context.{UIContext}
-import ohos.base.{ExternalString, CollectionEx, ReuseParams, BaseLog}
+import ohos.base.{ExternalString, CollectionEx, ReuseParams, BASE_LOG}
 import ohos.ffi.{FFIDataManager}
 import ohos.business_exception.BusinessException
 import ohos.labels.{APILevel, Hide}

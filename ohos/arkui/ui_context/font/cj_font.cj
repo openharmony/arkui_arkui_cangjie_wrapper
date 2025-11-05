@@ -15,7 +15,7 @@
 
 protected package ohos.arkui.ui_context.font
 
-import ohos.base.{ExternalString, VectorStringHandle, ResourceStr, FFIVectorString, AppLog}
+import ohos.base.{ExternalString, VectorStringHandle, ResourceStr, FFIVectorString, APP_LOG}
 import ohos.hilog.HilogChannel
 import ohos.resource.{AppResource, getResourceMedia, getResourceString}
 import ohos.labels.APILevel

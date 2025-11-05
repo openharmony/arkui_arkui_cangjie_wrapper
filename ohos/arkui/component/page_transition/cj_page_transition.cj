@@ -19,7 +19,7 @@ package ohos.arkui.component.page_transition
 
 import ohos.arkui.component.common.{Curve}
 import ohos.arkui.component.util.{transAppResourceToLength}
-import ohos.base.{Length, AppLog, LengthProp}
+import ohos.base.{Length, APP_LOG, LengthProp}
 import ohos.ffi.{BaseCallBack}
 import ohos.labels.APILevel
 import std.deriving.Derive

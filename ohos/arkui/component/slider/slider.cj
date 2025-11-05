@@ -22,6 +22,7 @@ import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResou
 import ohos.base.{ResourceStr, Length, ResourceColor}
 import ohos.ffi.{Callback2Param}
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 @C
 struct CJSliderCreate {

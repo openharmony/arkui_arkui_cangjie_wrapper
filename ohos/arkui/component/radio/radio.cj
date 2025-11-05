@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, Rectangle}
 import ohos.arkui.component.native_struct.{CJEdge, VectorNativeRectangleHandle, CJResponseRegion, FFIVectorNativeRectangle}
 import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.arkui.component.custom_component
-import ohos.base.{Length, BaseLog, LengthProp}
+import ohos.base.{Length, BASE_LOG, LengthProp}
 import ohos.ffi.{Callback1Param}
 import ohos.labels.APILevel
 

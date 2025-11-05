@@ -18,7 +18,7 @@
 package ohos.arkui.component.common
 
 import ohos.arkui.component.native_struct.{CJClickEvent, CJArea, CJGestureEventV2, FfiWebResourceRequest}
-import ohos.base.{AppLog}
+import ohos.base.{APP_LOG}
 import ohos.ffi.{BaseCallBack}
 import ohos.business_exception.BusinessException
 

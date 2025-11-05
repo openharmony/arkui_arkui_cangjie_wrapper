@@ -22,6 +22,7 @@ import ohos.arkui.component.native_struct.{VectorNativeTextShadow, CBorderRadius
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, transResourceStrToString, getLengthUnitOrFp}
 import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp, Color}
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 type VectorNativeTextShadows = CPointer<Unit>
 

@@ -23,6 +23,7 @@ import ohos.base.{ResourceStr, ResourceColor, Length, Color, LengthProp}
 import ohos.ffi.{Callback1Param, RemoteDataLite, releaseFFIData}
 import ohos.resource.{AppResource, getResourceMedia}
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 @C
 struct SearchCreateParam {

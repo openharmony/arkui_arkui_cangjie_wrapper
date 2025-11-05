@@ -23,6 +23,7 @@ import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToSt
 import ohos.base.{VectorUInt32Handle, VectorFloat64Handle, ResourceColor, Length, LengthProp, ResourceStr, FFIVectorUInt32, FFIVectorFloat32}
 import ohos.ffi.{Callback0Param}
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 type VectorNativeGaugeLinearGradientHandle = CPointer<Unit>
 
