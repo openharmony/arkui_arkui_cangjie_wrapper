@@ -21,9 +21,10 @@ import ohos.arkui.component.common.{CommonMethod, FontStyle, FontWeight, TextAli
 import ohos.arkui.component.native_struct.{FFIVectorNativeRectangle, VectorNativeRectangleHandle, CJResponseRegion, NativeShadowOptions}
 import ohos.arkui.component.util.{getLengthUnitOrFp}
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor}
-import ohos.base.{BaseLog, Length, ResourceColor, ResourceStr, VectorStringHandle, ExternalString, CStringExtend, Color, LengthProp}
+import ohos.base.{BASE_LOG, Length, ResourceColor, ResourceStr, VectorStringHandle, ExternalString, CStringExtend, Color, LengthProp}
 import ohos.ffi.{releaseFFIData, RemoteDataLite}
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 type VectorNativeShadowOptionsHandle = CPointer<Unit>
 

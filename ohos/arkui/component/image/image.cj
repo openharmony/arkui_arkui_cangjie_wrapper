@@ -20,7 +20,7 @@ package ohos.arkui.component.image
 import ohos.arkui.component.common.{CommonMethodComponent, ImageFit, ImageRepeat, ImageInterpolation, ImageRenderMode, BorderStyle}
 import ohos.arkui.component.native_struct.{CImageError}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
-import ohos.base.{VectorFloat32Handle, ResourceStr, Length, LengthProp, ResourceColor, AppLog}
+import ohos.base.{VectorFloat32Handle, ResourceStr, Length, LengthProp, ResourceColor, APP_LOG}
 import ohos.ffi.{BaseCallBack, Callback0Param}
 import ohos.resource.{AppResource, getResourceMedia}
 import ohos.labels.APILevel

@@ -22,6 +22,7 @@ import ohos.arkui.component.util.{transResourceMediaToString, transAppResourceTo
 import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp}
 import ohos.ffi.{Callback1Param}
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 @C
 struct CJSideBarIconStyle {

@@ -15,7 +15,7 @@
 
 package ohos.arkui.state_management
 
-import ohos.base.{BaseLog, NativeOptionCString, NativeOptionBool, NativeOptionInt64, NativeOptionFloat64, CStringExtend}
+import ohos.base.{BASE_LOG, NativeOptionCString, NativeOptionBool, NativeOptionInt64, NativeOptionFloat64, CStringExtend}
 import ohos.ffi.{Callback2Param}
 import ohos.labels.{APILevel, Hide}
 import std.collection.{HashMap, ArrayList, EquatableCollection}

@@ -20,7 +20,7 @@ package ohos.arkui.component.scroll
 import ohos.arkui.component.common.{ScrollState, Edge, Curve, NestedScrollMode, ScrollDirection, BarState, ScrollSource}
 import ohos.arkui.component.native_struct.{RectResultParams}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
-import ohos.base.{VectorFloat32Handle, VectorInt32Handle, Length, ResourceColor, AppLog, LengthProp, BaseLog}
+import ohos.base.{VectorFloat32Handle, VectorInt32Handle, Length, ResourceColor, APP_LOG, LengthProp, BASE_LOG}
 import ohos.ffi.{BaseCallBack, RemoteDataLite, Callback0Param, Callback4Param, Callback3Param, Callback2Param, Callback1Param, releaseFFIData}
 import ohos.resource.{AppResource, getResourceString}
 import ohos.labels.APILevel
@@ -540,14 +540,14 @@ public class ScrollEdgeOptions {
     /**
      * The constructor.
      *
-     * @param { ?Float64 } [velocity] - Fixed velocity for scrolling to the edge of the container.
+     * @param { ?Float32 } [velocity] - Fixed velocity for scrolling to the edge of the container.
      * @default 0vp/s
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(velocity!: ?Float64 = None) {
+    public init(velocity!: ?Float32 = None) {
         this.velocity = velocity ?? 0.0
     }
 }

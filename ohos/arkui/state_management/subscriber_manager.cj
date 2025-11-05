@@ -18,7 +18,7 @@
 package ohos.arkui.state_management
 
 import std.collection.{HashMap}
-import ohos.base.{BaseLog}
+import ohos.base.{BASE_LOG}
 import ohos.labels.{APILevel, Hide}
 
 /**

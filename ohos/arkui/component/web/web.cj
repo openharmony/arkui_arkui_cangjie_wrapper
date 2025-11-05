@@ -18,7 +18,7 @@ package ohos.arkui.component.web
 import ohos.arkui.component.common.{CallbackCJWebResourceRequest, CommonMethodComponent, MixedMode, NestedScrollMode, WebDarkMode}
 import ohos.arkui.component.native_struct.{FfiMapToCFFIArray, FfiWebResourceRequest}
 import ohos.arkui.component.util.{transResourceMediaToString, transAppResourceToResourceColor}
-import ohos.base.{AppLog, VectorStringHandle, ExternalString, FFIVectorString, FFIVectorInt64, VectorInt64Handle, ResourceStr, Callback, ResourceColor, Color}
+import ohos.base.{APP_LOG, VectorStringHandle, ExternalString, FFIVectorString, FFIVectorInt64, VectorInt64Handle, ResourceStr, Callback, ResourceColor, Color}
 import ohos.ffi.{CArrString, Callback1Param, BaseCallBack}
 import ohos.labels.APILevel
 import ohos.web.webview.{WebviewController}

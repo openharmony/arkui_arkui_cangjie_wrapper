@@ -22,6 +22,7 @@ import ohos.arkui.component.native_struct.{CBorderRadiuses, DividerParams}
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor}
 import ohos.base.{Length, ResourceStr, ResourceColor, LengthProp}
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 foreign {
     func FfiOHOSAceFrameworkMenuCreate(): Unit

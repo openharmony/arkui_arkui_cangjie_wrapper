@@ -21,6 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, MultiShadowOptions, D
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
 import ohos.base.{VectorFloat64Handle, ResourceColor, Length, FFIVectorFloat64, LengthProp}
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 type VectorNativeLinearGradientHandle = CPointer<Unit>
 

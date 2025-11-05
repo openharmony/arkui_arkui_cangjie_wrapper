@@ -22,6 +22,7 @@ import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToRe
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback2Param}
 import ohos.base.{Length, ResourceColor, ResourceStr, Color, LengthProp}
 import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 type VectorNativeTextTimerShadow = CPointer<Unit>
 

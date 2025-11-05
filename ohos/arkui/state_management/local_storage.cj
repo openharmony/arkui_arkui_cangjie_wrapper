@@ -17,7 +17,7 @@
 
 package ohos.arkui.state_management
 
-import ohos.base.{BaseLog}
+import ohos.base.{BASE_LOG}
 import ohos.labels.{APILevel, Hide}
 import std.collection.{HashMap, EquatableCollection}
 import ohos.business_exception.BusinessException

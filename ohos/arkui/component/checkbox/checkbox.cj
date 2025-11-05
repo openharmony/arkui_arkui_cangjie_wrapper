@@ -20,7 +20,7 @@ package ohos.arkui.component.checkbox
 import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder, CheckBoxShape, Rectangle}
 import ohos.arkui.component.native_struct.{VectorNativeRectangleHandle, CJResponseRegion, CJEdge, FFIVectorNativeRectangle}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
-import ohos.base.{ResourceColor, Length, BaseLog, LengthProp}
+import ohos.base.{ResourceColor, Length, BASE_LOG, LengthProp}
 import ohos.ffi.{Callback0Param, Callback1Param}
 import ohos.labels.APILevel
 

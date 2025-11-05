@@ -20,6 +20,7 @@ import ohos.base.{ResourceStr, VoidCallback, Callback}
 import ohos.ffi.{Callback1Param, RemoteDataLite, releaseFFIData}
 import ohos.labels.APILevel
 import ohos.arkui.component.util.{transResourceMediaToString}
+import ohos.business_exception.BusinessException
 
 foreign {
     func FfiOHOSAceFrameworkVideoCreate(src: CString, progressRate: Float64, preview: CString, controller: Int64): Unit
