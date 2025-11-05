@@ -754,7 +754,7 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
                 unitsHandle.free()
             }
             case GUTTEROPTION(gutterValue) => unsafe {
-                let nativeColumns = tmpColumns.parseToNative()
+                let nativeColumns = tmpColumns.validateInput().parseToNative()
                 FfiOHOSAceFrameworkGridRowCreateWithSizeOptionColumnOption(
                     GridRowCreateWithSizeOptionColumnOption(
                         gutterValue.x.toAtC(),
