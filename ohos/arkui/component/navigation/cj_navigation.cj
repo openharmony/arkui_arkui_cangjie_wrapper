@@ -403,6 +403,16 @@ public enum BarStyle {
     ]
     Stack
     |
+    /**
+     *  SafeAreaPadding style means the bar height will be taken as content's safeAreaPadding.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    SafeAreaPadding
+    |
     ...
 
     protected func getValue(): Int32 {

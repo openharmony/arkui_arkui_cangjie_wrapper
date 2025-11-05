@@ -50,6 +50,28 @@ public enum IndexerAlign {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
+    |
+    /**
+     * A dialog box is displayed on the start of the index bar.
+     *
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Start
+    |
+    /**
+     * A dialog box is displayed on the end of the index bar.
+     *
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    End
     | ...
 
     protected func getValue(): Int32 {
@@ -133,6 +155,76 @@ public enum InputType {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     PhoneNumber
+    |
+    /**
+     * Number Password entry mode.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    NumberPassword
+    |
+    /**
+     * Screen Lock Password entry mode.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    ScreenLockPassword
+    |
+    /**
+     * UserName entry mode.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    UserName
+    |
+    /**
+     * NewPassword entry mode.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    NewPassword
+    |
+    /**
+     * Number decimal entry mode.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    NumberDecimal
+    |
+    /**
+     * URL entry mode.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Url
+    |
+    /**
+     * One time code mode.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    OneTimeCode
     | ...
 
     protected func getValue(): Int32 {
@@ -1306,6 +1398,16 @@ public enum TextAlign {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
+    |
+    /**
+     * Justify the text.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Justify
     | ...
 
     protected func getValue(): Int32 {
@@ -1366,6 +1468,16 @@ public enum TextOverflow {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
+    |
+    /**
+     * When the text overflows its dimensions, the text will scroll for displaying.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Marquee
     | ...
 
     protected func getValue(): Int32 {
@@ -1418,6 +1530,16 @@ public enum WordBreak {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     BreakWord
+    |
+    /**
+     * For supported languages, line breaks can be performed by syllables.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Hyphenation
     | ...
 
     protected func getValue(): Int32 {
@@ -1540,6 +1662,16 @@ public enum ImageSize {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Auto
+    |
+    /**
+     * Zoom in or out without maintaining the aspect ratio so that the image fills the display boundary.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Fill
     | ...
 
     protected func getValue(): Int32 {
@@ -1807,6 +1939,106 @@ public enum ImageFit {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     ScaleDown
+    |
+    /**
+     * Top Start.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    TopStart
+    |
+    /**
+     * The top is centered horizontally.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Top
+    |
+    /**
+     * Top tail end.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    TopEnd
+    |
+    /**
+     * The starting end is centered longitudinally.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Start
+    |
+    /**
+     * Center horizontal and vertical.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Center
+    |
+    /**
+     * The tail end is centered longitudinally.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    End
+    |
+    /**
+     * Bottom starting end.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    BottomStart
+    |
+    /**
+     * The bottom is centered horizontally.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Bottom
+    |
+    /**
+     * Bottom end.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    BottomEnd
+    |
+    /**
+     * Matrix of Image.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Matrix
     | ...
 
     protected func getValue(): Int32 {
@@ -1914,6 +2146,26 @@ public enum ScrollDirection {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Horizontal
+    |
+    /**
+     * Scrolling is disabled.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    None
+    |
+    /**
+     * Free scrolling is supported.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Free
     | ...
 
     protected func getValue(): Int32 {
@@ -2069,6 +2321,16 @@ public enum SliderStyle {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     InSet
+    |
+    /**
+     * There is no thumb.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    None
     | ...
 
     protected func getValue(): Int32 {
@@ -2478,6 +2740,16 @@ public enum SwiperDisplayMode {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Stretch
+    |
+    /**
+     * The rotation chart is self linear.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    AutoLinear
     | ...
 
     protected func getValue(): Int32 {
@@ -2749,6 +3021,37 @@ public enum Edge {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     End
+    |
+    /**
+     * Center horizontal and vertical.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Center
+    |
+    /**
+     * Cross axis direction text baseline alignment.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Baseline
+    |
+    /**
+     * Middle
+     *
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Middle
     | ...
 
     protected func getValue(): Int32 {
@@ -3743,6 +4046,17 @@ public enum CopyOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     LocalDevice
+    |
+    /**
+     * Share in cross Device
+     *
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    CrossDevice
     | ...
 
     protected func getValue(): Int32 {
@@ -3813,6 +4127,46 @@ public enum TouchType {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Unknown
+    |
+    /**
+     * Triggers when the touch event turns to hover enter in accessibility processing.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    HoverEnter
+    |
+    /**
+     * Triggers when the touch event turns to hover move in accessibility processing.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    HoverMove
+    |
+    /**
+     * Triggers when the touch event turns to hover exit in accessibility processing.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    HoverExit
+    |
+    /**
+     * Triggers when the touch event turns to hover cancel in accessibility processing.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    HoverCancel
     | ...
 
     protected func getValue(): UInt8 {
@@ -3987,6 +4341,26 @@ public enum SourceType {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     TouchScreen
+    |
+    /**
+     * The key type.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Key
+    |
+    /**
+     * The joystick type.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Joystick
     | ...
 
     protected func getValue(): Int32 {
@@ -4162,6 +4536,36 @@ public enum MouseAction {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Hover
+    |
+    /**
+     * Triggered when mouse enters the window.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    EnterWindow
+    |
+    /**
+     * Triggered when mouse leaves the window.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    LeaveWindow
+    |
+    /**
+     * Triggered when the mouse event is canceled.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Cancel
     | ...
 
     protected func getValue(): Int32 {
@@ -4215,6 +4619,16 @@ public enum KeySource {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Keyboard
+    |
+    /**
+     * Set Device Type to Joystic.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Joystick
     | ...
 
     protected func getValue(): Int32 {
@@ -4492,6 +4906,47 @@ public enum FunctionKey {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Tab
+    |
+    /**
+     * Up arrow key.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    DpadUp
+    |
+    /**
+     * Down arrow key.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    DpadDown
+    |
+    /**
+     * Left arrow key.
+     *
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    DpadLeft
+    |
+    /**
+     * Right arrow key.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    DpadRight
     | ...
 
     protected func getValue(): Int32 {
@@ -4822,6 +5277,56 @@ public enum PlaybackSpeed {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SpeedForward200X
+    |
+    /**
+     * 0.50x speed playback.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    SpeedForward050X
+    |
+    /**
+     * 1.50x speed playback.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    SpeedForward150X
+    |
+    /**
+     * 3.00x speed playback.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    SpeedForward300X
+    |
+    /**
+     * 0.25x speed playback.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    SpeedForward025X
+    |
+    /**
+     * 0.125x speed playback.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    SpeedForward0125X
     | ...
 
     protected func getValue(): Float64 {
@@ -5254,6 +5759,17 @@ public enum StickyStyle {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Footer
+    |
+    /**
+     * In the <em>ListItemGroup</em> component, the header is pinned to the top,
+     * and the footer is pinned to the bottom.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Both
     | ...
 
     protected func getValue(): Int32 {
@@ -5305,6 +5821,26 @@ public enum RichEditorSpanType {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Mixed
+    |
+    /**
+     * Builder,corresponding builderSpan type.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Builder
+    |
+    /**
+     * When no other types are explicitly specified, this type will be matched.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Default
     | ...
 
     protected func getValue(): Int32 {
@@ -5366,6 +5902,16 @@ public enum ImageSpanAlignment {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Baseline
+    |
+    /**
+     * The ImageSpan's alignment is same with the text.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    FollowParagraph
     | ...
 
     protected func getValue(): Int32 {
@@ -6203,6 +6749,26 @@ public enum ColoringStrategy {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Invert
+    |
+    /**
+     * Use the primary color strategy. Get the color that dominate the background color. Only applies to shadow.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Average
+    |
+    /**
+     * Use the primary color strategy. Get the color that dominate the background color. Only applies to shadow.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Primary
     | ...
 
     protected func getValue(): String {
@@ -7128,6 +7694,145 @@ public enum ContentType {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     FormatAddress
+    |
+    /**
+     * Passport number content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in passport numbers.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    PassportNumber
+    |
+    /**
+     * Passport validity content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in passport validity periods.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Validity
+    |
+    /**
+     * Place of issue content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in the place of issue for passports.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    IssueAt
+    |
+    /**
+     * Invoice organization content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in invoice titles.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Organization
+    |
+    /**
+     * Invoice tax id content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in tax IDs.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    TaxId
+    |
+    /**
+     * Address city and state content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in locations.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    AddressCityAndState
+    |
+    /**
+     * Airline flight number content type.
+     * Currently not supported for automatic saving and auto-filling.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    FlightNumber
+    |
+    /**
+     * License number for drivers content type.
+     * Currently not supported for automatic saving and auto-filling.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    LicenseNumber
+    |
+    /**
+     * License file number for drivers content type.
+     * Currently not supported for automatic saving and auto-filling.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    LicenseFileNumber
+    |
+    /**
+     * License plate for vehicles content type.
+     * The scenario-based autofill feature, when enabled,
+     * can automatically save and fill in license plate numbers.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    LicensePlate
+    |
+    /**
+     * Engine number for vehicles content type.
+     * Currently not supported for automatic saving and auto-filling.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    EngineNumber
+    |
+    /**
+     * License chassis number for vehicles content type.
+     * Currently not supported for automatic saving and auto-filling.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    LicenseChassisNumber
     | ...
 
     protected func getValue(): Int32 {
@@ -8043,6 +8748,18 @@ public enum DismissReason {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     SlideDown
+    |
+    /**
+     * Slide down
+     * Default means slide right, after mirroring it means slide left.
+     * Choosing to slide left or slide right is not supported.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Slide
     | ...
 
     func toValue(): Int32 {
@@ -8195,6 +8912,16 @@ public enum TextAreaType {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Url
+    |
+    /**
+     * One time code mode.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    OneTimeCode
     | ...
 
     protected func getValue(): Int32 {

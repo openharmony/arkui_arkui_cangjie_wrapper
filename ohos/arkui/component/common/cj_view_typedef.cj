@@ -155,13 +155,30 @@ public enum SheetType {
     Center |
     /**
      * Popup sheet. The popup sheet cannot be dismissed with a pull-down gesture.
-     *
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Popup
+    Popup |
+    /**
+     * Defines side sheet type.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Side |
+    /**
+     * Defines content cover type.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    ContentCover
     | ...
 
     func getValue(): Int32 {

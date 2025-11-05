@@ -173,6 +173,26 @@ public enum SlideEffect {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Bottom
+    |
+    /**
+     *  Swipe start.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    Start
+    |
+    /**
+     *  Swipe end.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    End
     | ...
 
     func getValue(): Int32 {
