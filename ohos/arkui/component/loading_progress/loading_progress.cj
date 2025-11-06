@@ -70,4 +70,23 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & Loading
         }
         this
     }
+
+    protected override func foregroundColorInner(value: ?ResourceColor): This {
+        unsafe {
+            FfiOHOSAceFrameworkLoadingProgressForegroundColor(transAppResourceToResourceColor(value))
+        }
+    }
+
+    protected override func foregroundColorInner(value: ?ColoringStrategy): This {
+        match (value) {
+            case Some(v) =>
+                unsafe {
+                    try (strategy = LibC.mallocCString(v.getValue()).asResource()) {
+                        FfiOHOSAceFrameworkLoadingProgressForegroundColorStrategy(strategy.value)
+                    }
+                }
+            case None => foregroundColorInner(Color.Transparent)
+        }
+        (this as T) ?? throw BusinessException(100001, "Internal error.")
+    }
 }
