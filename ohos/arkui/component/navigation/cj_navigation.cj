@@ -19,7 +19,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, BlurStyle, CustomBuil
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString}
 import ohos.base.{ResourceColor, Length, Callback, ResourceStr, LengthProp}
 import ohos.ffi.{FFIData, RemoteData, FFIDataManager, Callback1Param, RemoteDataManager, releaseFFIData, Callback0Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.deriving.Derive
 import std.collection.HashMap
 import ohos.business_exception.BusinessException

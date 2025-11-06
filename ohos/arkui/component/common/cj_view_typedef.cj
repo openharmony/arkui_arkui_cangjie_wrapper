@@ -22,7 +22,7 @@ import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLe
 import ohos.base.{Length, ResourceColor, Color, ResourceStr, NativeOptionFloat64, NativeOptionInt32, NativeOptionCallBack, NativeOptionInt64, NativeOptionBool, NativeOptionUInt32, NativeOptionLength, throwNativeError, NativeOptionCArrInt32, CArrInt32, NativeLength, LengthProp}
 import ohos.ffi.{FFIData, Callback0Param, Callback1Param}
 import ohos.business_exception.BusinessException
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.deriving.Derive
 import std.collection.HashMap
 import std.collection.forEach

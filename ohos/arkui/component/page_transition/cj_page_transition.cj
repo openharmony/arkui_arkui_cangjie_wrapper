@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{Curve}
 import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{Length, APP_LOG, LengthProp}
 import ohos.ffi.{BaseCallBack}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
 
