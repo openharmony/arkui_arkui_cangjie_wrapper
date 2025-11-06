@@ -17,9 +17,9 @@
 
 package ohos.arkui.component.loading_progress
 
-import ohos.arkui.component.common.{CommonMethodComponent}
+import ohos.arkui.component.common.{CommonMethodComponent, ColoringStrategy}
 import ohos.arkui.component.util.{transAppResourceToResourceColor}
-import ohos.base.{ResourceColor}
+import ohos.base.{ResourceColor, Color}
 import ohos.labels.APILevel
 
 foreign {
@@ -67,6 +67,27 @@ public class LoadingProgress <: CommonMethodComponent<LoadingProgress> & Loading
     public func color(value: ?ResourceColor): This {
         unsafe {
             FfiOHOSAceFrameworkLoadingProgressSetColor(transAppResourceToResourceColor(value ?? 0xFF666666))
+        }
+        this
+    }
+
+    protected override func foregroundColorInner(value: ?ResourceColor): This {
+        let tmpValue = value ?? Color.Transparent
+        unsafe {
+            FfiOHOSAceFrameworkLoadingProgressForegroundColor(transAppResourceToResourceColor(tmpValue))
+        }
+        this
+    }
+
+    protected override func foregroundColorInner(value: ?ColoringStrategy): This {
+        match (value) {
+            case Some(v) =>
+                unsafe {
+                    try (strategy = LibC.mallocCString(v.getValue()).asResource()) {
+                        FfiOHOSAceFrameworkLoadingProgressForegroundColorStrategy(strategy.value)
+                    }
+                }
+            case None => foregroundColorInner(Color.Transparent)
         }
         this
     }
