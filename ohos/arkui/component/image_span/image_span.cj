@@ -20,7 +20,7 @@ package ohos.arkui.component.image_span
 import ohos.arkui.component.common.{CommonMethodComponent, ImageSpanAlignment, ImageFit}
 import ohos.arkui.component.native_struct.{CBorderRadiuses, CImageError}
 import ohos.arkui.component.image.{ImageLoadResult, ColorFilter, ImageCompleteCallback, ImageErrorCallback, ImageError}
-import ohos.base.{VectorFloat32Handle, ResourceStr, FFIVectorFloat32}
+import ohos.base.{VectorFloat32Handle, ResourceStr, FFIVectorFloat32, Length}
 import ohos.ffi.{Callback1Param}
 import ohos.resource.{AppResource, getResourceMedia}
 import ohos.labels.APILevel
@@ -66,6 +66,8 @@ foreign {
     func FfiOHOSAceFrameworkImageSpanOnComplete(callback: Int64): Unit
 
     func FfiOHOSAceFrameworkImageSpanOnError(callback: Int64): Unit
+
+    func FfiOHOSAceFrameworkImageSetBorderRadius(): Unit
 }
 
 /**
@@ -224,4 +226,25 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
 
     // ImageSpan does not need to implement pop function
     protected func pop(): Unit {}
+
+    protected override func borderRadiusInner(radius: ?Length): This {
+        super.borderRadiusInner(radius)
+        unsafe {
+            FfiOHOSAceFrameworkImageSetBorderRadius()
+        }
+        this
+    }
+
+    protected override func borderRadiusInner(
+            topLeft!: ?Length,
+            topRight!: ?Length,
+            bottomLeft!: ?Length,
+            bottomRight!: ?Length
+    ): This {
+        super.borderRadiusInner(topLeft: topLeft, topRight: topRight, bottomLeft: bottomLeft, bottomRight: bottomRight)
+        unsafe {
+            FfiOHOSAceFrameworkImageSetBorderRadius()
+        }
+        this
+    }
 }
