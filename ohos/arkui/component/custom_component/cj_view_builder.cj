@@ -62,7 +62,7 @@ public class ViewBuilder {
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView): Unit {
+public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView): () -> Unit {
     builder(thisView).build
 }
 

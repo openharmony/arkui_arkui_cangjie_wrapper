@@ -219,10 +219,6 @@ public class RichEditorInsertValue {
     init(origin: NativeRichEditorInsertValue) {
         this.insertOffset = origin.insertOffset
         this.insertValue = origin.insertValue.toString()
-        unsafe {
-            origin.insertValue.free()
-            origin.previewText.free()
-        }
     }
 }
 
@@ -1109,7 +1105,13 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     public func aboutToImeInput(callback: ?Callback<RichEditorInsertValue, Bool>): This {
         let tmpCallback = callback ?? { _ => false }
         let wrapper = {
-            value: NativeRichEditorInsertValue => tmpCallback(RichEditorInsertValue(value))
+            value: NativeRichEditorInsertValue =>
+            let result = tmpCallback(RichEditorInsertValue(value))
+            unsafe {
+                value.insertValue.free()
+                value.previewText.free()
+            }
+            return result
         }
         unsafe {
             FfiOHOSAceFrameworkRichEditorAboutToIMEInput12(
