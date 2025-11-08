@@ -18,7 +18,7 @@
 package ohos.arkui.component.search
 
 import ohos.arkui.component.common.{CommonMethodComponent, TextContentControllerBase, FontWeight, FontStyle, CopyOptions, BorderStyle}
-import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, LENGTH_PERCENT, transAppResourceToResourceColor, LENGTH_FP}
+import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, LENGTH_PERCENT, transAppResourceToResourceColor, LENGTH_FP, lessNotEqual}
 import ohos.base.{ResourceStr, ResourceColor, Length, Color, LengthProp}
 import ohos.ffi.{Callback1Param, RemoteDataLite, releaseFFIData}
 import ohos.resource.{AppResource, getResourceMedia}
@@ -584,7 +584,11 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkSearchSetHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkSearchSetHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }

@@ -19,7 +19,7 @@ package ohos.arkui.component.button
 
 import ohos.arkui.component.common.{CommonMethodComponent, ControlSize, FontWeight, FontStyle, BorderStyle}
 import ohos.arkui.component.native_struct.{CJBorderRadius, CJBorder}
-import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength, normalizeValue, getLengthUnitOrFp}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength, normalizeValue, getLengthUnitOrFp, lessNotEqual}
 import ohos.base.{Length, LengthProp, ResourceStr, ResourceColor, Color, LengthProp}
 import ohos.labels.APILevel
 import ohos.resource.{AppResource}
@@ -544,7 +544,11 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
             case Some(v) => 
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkButtonSetHeight(normalizeValue(value_.value, 0.0), value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkButtonSetHeight(normalizeValue(value_.value, 0.0), value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }
@@ -568,7 +572,11 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
             case Some(v) => 
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkButtonSetWidth(normalizeValue(value_.value, 0.0), value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else { 
+                        FfiOHOSAceFrameworkButtonSetWidth(normalizeValue(value_.value, 0.0), value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
@@ -651,16 +659,16 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     }
 
     protected override func sizeInner(width: ?Length, height: ?Length): This {
-        if (width.isNone() || height.isNone()) {
+        let width_ = transAppResourceToLength(width ?? (-1.0).vp)
+        let height_ = transAppResourceToLength(height ?? (-1.0).vp)
+        if (lessNotEqual(height_.value, 0.0) || lessNotEqual(width_.value, 0.0)) {
             widthInner(width)
             heightInner(height)
-        } else {
-            let width_ = transAppResourceToLength(width ?? 0.0.vp)
-            let height_ = transAppResourceToLength(height ?? 0.0.vp)
-            unsafe {
-                FfiOHOSAceFrameworkButtonSetSize(normalizeValue(width_.value, 0.0), width_.unitType.getValue(),
-                    normalizeValue(height_.value, 0.0), height_.unitType.getValue())
-            }
+            return this
+        }
+        unsafe {
+            FfiOHOSAceFrameworkButtonSetSize(normalizeValue(width_.value, 0.0), width_.unitType.getValue(),
+                normalizeValue(height_.value, 0.0), height_.unitType.getValue())
         }
         this
     }

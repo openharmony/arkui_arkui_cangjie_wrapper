@@ -19,7 +19,7 @@ package ohos.arkui.component.checkbox_group
 
 import ohos.arkui.component.common.{CommonMethodComponent, SelectStatus, Rectangle}
 import ohos.arkui.component.native_struct.{CJEdge, VectorNativeRectangleHandle, CJResponseRegion, FFiCheckboxGroupResult, FFIVectorNativeRectangle}
-import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessNotEqual}
 import ohos.base.{ResourceColor, Length, APP_LOG, BASE_LOG, LengthProp}
 import ohos.ffi.{BaseCallBack}
 import ohos.labels.APILevel
@@ -216,41 +216,17 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
         this
     }
 
-    protected override func widthInner(value: ?Length): This {
-        match (value) {
-            case Some(v) =>
-                unsafe {
-                    let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkCheckBoxGroupSetWidth(value_.value, value_.unitType.getValue())
-                }
-            case None => unsafe { FFISetWidthWithEmpty() }
-        }
-        this
-    }
-
-    protected override func heightInner(value: ?Length): This {
-        match (value) {
-            case Some(v) =>
-                unsafe {
-                    let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkCheckBoxGroupSetHeight(value_.value, value_.unitType.getValue())
-                }
-            case None => unsafe { FFISetHeightWithEmpty() }
-        }
-        this
-    }
-
     protected override func sizeInner(width: ?Length, height: ?Length): This {
-        if (width.isNone() || height.isNone()) {
+        let width_ = transAppResourceToLength(width ?? (-1.0).vp)
+        let height_ = transAppResourceToLength(height ?? (-1.0).vp)
+        if (lessNotEqual(height_.value, 0.0) || lessNotEqual(width_.value, 0.0)) {
             widthInner(width)
             heightInner(height)
-        } else {
-            var width_ = transAppResourceToLength(width ?? 0.0.vp)
-            var height_ = transAppResourceToLength(height ?? 0.0.vp)
-            unsafe {
-                FfiOHOSAceFrameworkCheckBoxGroupSetSize(width_.value, width_.unitType.getValue(), height_.value,
-                    height_.unitType.getValue())
-            }
+            return this
+        }
+        unsafe {
+            FfiOHOSAceFrameworkCheckBoxGroupSetSize(width_.value, width_.unitType.getValue(), height_.value,
+                height_.unitType.getValue())
         }
         this
     }

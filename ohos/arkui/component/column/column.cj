@@ -18,7 +18,7 @@
 package ohos.arkui.component.column
 
 import ohos.arkui.component.common.{CommonMethodComponent, HorizontalAlign, FlexAlign}
-import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, LengthProp}
 import ohos.labels.APILevel
 
@@ -105,7 +105,11 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
             case Some(v) => 
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkColumnSetWidth(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkColumnSetWidth(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
@@ -117,7 +121,11 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
             case Some(v) => 
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkColumnSetHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkColumnSetHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }

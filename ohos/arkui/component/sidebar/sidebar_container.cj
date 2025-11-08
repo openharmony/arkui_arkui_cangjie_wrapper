@@ -18,7 +18,7 @@
 package ohos.arkui.component.sidebar
 
 import ohos.arkui.component.common.{CommonMethodComponent, SideBarContainerType, SideBarPosition}
-import ohos.arkui.component.util.{transResourceMediaToString, transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transResourceMediaToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp}
 import ohos.ffi.{Callback1Param}
 import ohos.labels.APILevel
@@ -584,7 +584,11 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkStackSetWidth(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkStackSetWidth(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
@@ -596,7 +600,11 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkStackSetHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkStackSetHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }
@@ -604,15 +612,17 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
     }
 
     protected override func sizeInner(width: ?Length, height: ?Length): This {
-        if (width.isNone() || height.isNone()) {
+        let w = transAppResourceToLength(width ?? (-1.0).vp)
+        let h = transAppResourceToLength(height ?? (-1.0).vp)
+        if (lessNotEqual(h.value, 0.0) || lessNotEqual(w.value, 0.0)) {
             widthInner(width)
             heightInner(height)
-        } else {
-            unsafe {
-                let w = transAppResourceToLength(width ?? 0.0.vp)
-                let h = transAppResourceToLength(height ?? 0.0.vp)
-                FfiOHOSAceFrameworkStackSetSize(w.value, w.unitType.getValue(), h.value, h.unitType.getValue())
-            }
+            return this
+        }
+        unsafe {
+            let w = transAppResourceToLength(width ?? 0.0.vp)
+            let h = transAppResourceToLength(height ?? 0.0.vp)
+            FfiOHOSAceFrameworkStackSetSize(w.value, w.unitType.getValue(), h.value, h.unitType.getValue())
         }
         this
     }

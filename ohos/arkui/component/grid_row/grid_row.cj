@@ -18,7 +18,7 @@
 package ohos.arkui.component.grid_row
 
 import ohos.arkui.component.common.{CommonMethodComponent, ItemAlign}
-import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, VectorInt32Handle, FFIVectorFloat64, FFIVectorInt32, LengthProp, VectorFloat64Handle}
 import ohos.ffi.{Callback1Param}
 import ohos.business_exception.BusinessException
@@ -778,7 +778,11 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
             case Some(v) => 
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkGridRowSetHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkGridRowSetHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }

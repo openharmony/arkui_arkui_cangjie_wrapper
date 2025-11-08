@@ -18,7 +18,7 @@
 package ohos.arkui.component.stack
 
 import ohos.arkui.component.common.{CommonMethodComponent, Alignment}
-import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, LengthProp}
 import ohos.labels.APILevel
 
@@ -75,7 +75,11 @@ public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
             case Some(v) => 
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkStackSetWidth(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkStackSetWidth(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
@@ -87,7 +91,11 @@ public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
             case Some(v) => 
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkStackSetHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkStackSetHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }
@@ -95,16 +103,16 @@ public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
     }
 
     protected override func sizeInner(width: ?Length, height: ?Length): This {
-        if (width.isNone() || height.isNone()) {
+        let width_ = transAppResourceToLength(width ?? (-1.0).vp)
+        let height_ = transAppResourceToLength(height ?? (-1.0).vp)
+        if (lessNotEqual(height_.value, 0.0) || lessNotEqual(width_.value, 0.0)) {
             widthInner(width)
             heightInner(height)
-        } else {
-            var width_ = transAppResourceToLength(width ?? 0.0.vp)
-            var height_ = transAppResourceToLength(height ?? 0.0.vp)
-            unsafe {
-                FfiOHOSAceFrameworkStackSetSize(width_.value, width_.unitType.getValue(), height_.value,
-                    height_.unitType.getValue())
-            }
+            return this
+        }
+        unsafe {
+            FfiOHOSAceFrameworkStackSetSize(width_.value, width_.unitType.getValue(), height_.value,
+                height_.unitType.getValue())
         }
         this
     }

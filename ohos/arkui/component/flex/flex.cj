@@ -16,7 +16,7 @@
 package ohos.arkui.component.flex
 
 import ohos.arkui.component.common.{CommonMethodComponent, FlexDirection, FlexWrap, FlexAlign, ItemAlign}
-import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, LengthProp}
 import ohos.labels.APILevel
 
@@ -108,7 +108,11 @@ public class Flex <: CommonMethodComponent<Flex> & FlexAttribute {
             case Some(v) => 
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkFlexSetFlexWidth(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkFlexSetFlexWidth(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
@@ -120,7 +124,11 @@ public class Flex <: CommonMethodComponent<Flex> & FlexAttribute {
             case Some(v) => 
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkFlexSetFlexHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkFlexSetFlexHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }
@@ -128,16 +136,16 @@ public class Flex <: CommonMethodComponent<Flex> & FlexAttribute {
     }
 
     protected override func sizeInner(width: ?Length, height: ?Length): This {
-        if (width.isNone() || height.isNone()) {
+        let width_ = transAppResourceToLength(width ?? (-1.0).vp)
+        let height_ = transAppResourceToLength(height ?? (-1.0).vp)
+        if (lessNotEqual(height_.value, 0.0) || lessNotEqual(width_.value, 0.0)) {
             widthInner(width)
             heightInner(height)
-        } else {
-            var width_ = transAppResourceToLength(width ?? 0.0.vp)
-            var height_ = transAppResourceToLength(height ?? 0.0.vp)
-            unsafe {
-                FfiOHOSAceFrameworkFlexSetFlexSize(width_.value, width_.unitType.getValue(), height_.value,
-                    height_.unitType.getValue())
-            }
+            return this
+        }
+        unsafe {
+            FfiOHOSAceFrameworkFlexSetFlexSize(width_.value, width_.unitType.getValue(), height_.value,
+                height_.unitType.getValue())
         }
         this
     }
