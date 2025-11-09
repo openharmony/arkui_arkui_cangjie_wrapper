@@ -19,8 +19,7 @@ package ohos.arkui.component.text
 
 import ohos.arkui.component.common.{CommonMethod, FontStyle, FontWeight, TextAlign, TextOverflow, TextDecorationType, TextCase, Rectangle, CommonMethodComponent, TextDecorationStyle}
 import ohos.arkui.component.native_struct.{FFIVectorNativeRectangle, VectorNativeRectangleHandle, CJResponseRegion, NativeShadowOptions}
-import ohos.arkui.component.util.{getLengthUnitOrFp}
-import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
+import ohos.arkui.component.util.{getLengthUnitOrFp, transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{BASE_LOG, Length, ResourceColor, ResourceStr, VectorStringHandle, ExternalString, CStringExtend, Color, LengthProp}
 import ohos.ffi.{releaseFFIData, RemoteDataLite}
 import ohos.labels.APILevel
@@ -655,7 +654,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     }
 
     protected override func responseRegionInner(rect: ?Rectangle): This {
-        let cjRect = (rect ?? Rectangle()).parseToNative()
+        let cjRect = (rect ?? Rectangle()).normalizeValue().parseToNative()
         unsafe {
             FfiTextSetResponseRegion(
                 CJResponseRegion(
@@ -679,7 +678,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
         var index = 0
         for (rect in tmpArray) {
             BASE_LOG.debug("CJRectangle responseRegion vecdata: " + index.toString())
-            vecFFi.setElement(index, rect.parseToNative())
+            vecFFi.setElement(index, rect.normalizeValue().parseToNative())
             index++
         }
         unsafe {

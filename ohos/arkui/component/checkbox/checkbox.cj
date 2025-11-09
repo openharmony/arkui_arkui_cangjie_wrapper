@@ -256,7 +256,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
     }
 
     protected override func responseRegionInner(rect: ?Rectangle): This {
-        let cjRect = (rect ?? Rectangle()).parseToNative()
+        let cjRect = (rect ?? Rectangle()).normalizeValue().parseToNative()
         unsafe {
             FfiCheckBoxSetResponseRegion(
                 CJResponseRegion(
@@ -280,7 +280,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
         var index = 0
         for (rect in tmpArray) {
             BASE_LOG.debug("CJRectangle responseRegion vecdata: " + index.toString())
-            vecFFi.setElement(index, rect.parseToNative())
+            vecFFi.setElement(index, rect.normalizeValue().parseToNative())
             index++
         }
         unsafe {

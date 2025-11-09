@@ -18,8 +18,8 @@
 package ohos.arkui.component.common
 
 import ohos.arkui.component.native_struct.{CJEdge, CBindOptions, NativeShadow, CSheetOptionsV2, NativeRectangle, CJContextMenuOptions, CJContextMenuAnimationOptions, NativeOptionCJContextMenuAnimationOptions, NativeOptionRadius, NativeOptionMargin, NativeShadowOptions, NativeOptionEdgeStyle, NativePosition, NativeMargin, NativeEdgeStyles}
-import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor}
-import ohos.base.{Length, ResourceColor, Color, ResourceStr, NativeOptionFloat64, NativeOptionInt32, NativeOptionCallBack, NativeOptionInt64, NativeOptionBool, NativeOptionUInt32, NativeOptionLength, throwNativeError, NativeOptionCArrInt32, CArrInt32, NativeLength, LengthProp}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
+import ohos.base.{Length, ResourceColor, Color, ResourceStr, NativeOptionFloat64, NativeOptionInt32, NativeOptionCallBack, NativeOptionInt64, NativeOptionBool, NativeOptionUInt32, NativeOptionLength, throwNativeError, NativeOptionCArrInt32, CArrInt32, NativeLength, LengthProp, LengthUnit}
 import ohos.ffi.{FFIData, Callback0Param, Callback1Param}
 import ohos.business_exception.BusinessException
 import ohos.labels.{APILevel, Hide}
@@ -1897,6 +1897,20 @@ public class Rectangle {
         this.y = transAppResourceToLength(y ?? 0.vp)
         this.width = transAppResourceToLength(width ?? 100.percent)
         this.height = transAppResourceToLength(height ?? 100.percent)
+    }
+
+    protected func normalizeValue(): This {
+        match (width) {
+            case Some(v) where v.unitType == LengthUnit.Percent && lessNotEqual(v.value, 0.0) =>
+                width = 100.percent
+            case _ => ()
+        }
+        match (height) {
+            case Some(v) where v.unitType == LengthUnit.Percent && lessNotEqual(v.value, 0.0) =>
+                height = 100.percent
+            case _ => ()
+        }
+        return this
     }
 
     protected func parseToNative(): NativeRectangle {
