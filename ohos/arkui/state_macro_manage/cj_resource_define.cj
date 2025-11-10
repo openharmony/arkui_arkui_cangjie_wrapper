@@ -18,7 +18,7 @@
 macro package ohos.arkui.state_macro_manage
 
 import std.fs.{canonicalize, exists, File}
-import std.ast.{Tokens, LitConstExpr, ToTokens, parseExpr, parseDecl, FuncDecl, AssignExpr}
+import std.ast.{Tokens, LitConstExpr, ToTokens, parseExpr, parseDecl, FuncDecl, AssignExpr, diagReport, DiagReportLevel}
 import std.process.{Process}
 import std.convert.{Parsable}
 import std.collection.{HashMap, ArrayList}
@@ -36,12 +36,19 @@ let OHOS_SYS_ID_DEFINED = "ohosSysIdDefined"
 let HOS_SYS_ID_DEFINED = "hosSysIdDefined"
 let RAWFILE_RESOURCE = "rawfileRes"
 let INVALID_RES_ID: Int32 = 0
+let INVALID_NUMBER_NAME: Int64 = -1
 let APP_ID_MAP = HashMap<String, JsonObject>()
 let SYS_ID_MAP = HashMap<String, JsonObject>()
 let APP_FLAG = "app"
 let SYS_FLAG = "sys"
 var RES_ENV: ?ResEnv = None
 let RES_TOKEN_PATTERN = Regex("^(app|sys|[.+?]).(\\S+?).(\\S+)$")
+
+let NUMBER_RES_NAME_RANGE = 0..4
+let NUMBER_RES_PARAM_START = 5
+let NUMBER_NAME_INDEX = 2
+let NORMAL_RES_NAME_RANGE = 0..5
+let NORMAL_RES_PARAM_START = 6
 
 struct ResEnv {
     ResEnv(
@@ -83,19 +90,35 @@ func getResEnv(): ResEnv {
  */
 public macro r(input: Tokens): Tokens {
     let env = getResEnv()
-    let res = input[0..5]
-    if (!checkResFormat(res)) {
-        throw IllegalArgumentException("Parse resource failed: ${input.toString()} format error.")
+    var res = Tokens()
+    var resName = ""
+    var resParams = Tokens()
+
+    if (!checkResFormat(input)) {
+        diagReport(DiagReportLevel.ERROR, input, "Parse resource failed: ${input.toString()} format error.", "")
+        return Tokens()
     }
+
+    let numberName = getNumberName(input)
+    if (numberName != INVALID_NUMBER_NAME) {
+        res = input[NUMBER_RES_NAME_RANGE]
+        resName = numberName.toString()
+        if (input.size > NUMBER_RES_PARAM_START - 1) {
+            resParams = input[NUMBER_RES_PARAM_START..input.size]
+        }
+    } else {
+        res = input[NORMAL_RES_NAME_RANGE]
+        resName = input[RES_NAME_POS].value
+        if (input.size > NORMAL_RES_PARAM_START - 1) {
+            resParams = input[NORMAL_RES_PARAM_START..input.size]
+        }
+    }
+
     let bundleName = env.bundleName
     let moduleType = env.moduleType
     let moduleName = env.moduleName
-    var resParams = Tokens()
-    if (input.size > 5) {
-        resParams = input[6..input.size]
-    }
+
     let resOrigin = res[RES_ORIGIN_POS].value
-    let resName = res[RES_NAME_POS].value
     let resType = res[RES_TYPE_POS].value
     let resTypeVal = getResType(resType)
     var resId = INVALID_RES_ID
@@ -109,7 +132,7 @@ public macro r(input: Tokens): Tokens {
         throw NoneValueException("Resource not found: ${resOrigin}.${resType}.${resName}")
     }
 
-    let resToken = quote(AppResource($bundleName, $moduleName, $resId, params: [$resParams], resType: $resTypeVal))
+    let resToken = quote(__GenerateResource__($bundleName, $moduleType, $moduleName, $resId, $(res.toString()), [$resParams], $resTypeVal))
     return resToken
 }
 
@@ -133,7 +156,7 @@ public macro rawfile(input: Tokens): Tokens {
     if (!rawfileRes.isEmpty() && !rawfileExists(rawfileRes, name)) {
         throw NoneValueException("Rawfile not found: ${name}")
     }
-    return quote(AppResource($bundleName, $moduleName, 0, params: [$name], resType: 30000))
+    return quote(__GenerateResource__($bundleName, $moduleType, $moduleName, 0, $name, [], 30000))
 }
 
 func rawfileExists(path: String, fileName: String): Bool {
@@ -284,7 +307,24 @@ func getResType(val: String): Int64 {
 }
 
 func checkResFormat(input: Tokens): Bool {
-    let inputStr = input.toString()
+    let inputStr = trimSpace(input)
     let matcher = RES_TOKEN_PATTERN.matcher(inputStr)
     return matcher.allCount() > 0
+}
+
+func getNumberName(input: Tokens): Int64 {
+    let inputStr = trimSpace(input)
+    let arr = inputStr.split(".")
+    let number = arr[NUMBER_NAME_INDEX].split(",")[0]
+    let resOpt = Int64.tryParse(number)
+    return resOpt.getOrDefault({ => INVALID_NUMBER_NAME })
+}
+
+func trimSpace(input: Tokens): String {
+    let inputArr = input.toString().split(" ")
+    var inputStr = ""
+    for (str in inputArr) {
+        inputStr += str
+    }
+    inputStr
 }
