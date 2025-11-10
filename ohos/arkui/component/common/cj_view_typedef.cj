@@ -1901,12 +1901,12 @@ public class Rectangle {
 
     protected func normalizeValue(): This {
         match (width) {
-            case Some(v) where v.unitType == LengthUnit.Percent && lessNotEqual(v.value, 0.0) =>
+            case Some(v) where lessNotEqual(v.value, 0.0) =>
                 width = 100.percent
             case _ => ()
         }
         match (height) {
-            case Some(v) where v.unitType == LengthUnit.Percent && lessNotEqual(v.value, 0.0) =>
+            case Some(v) where lessNotEqual(v.value, 0.0) =>
                 height = 100.percent
             case _ => ()
         }
