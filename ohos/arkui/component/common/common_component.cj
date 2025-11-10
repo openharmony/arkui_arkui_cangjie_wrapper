@@ -16,7 +16,7 @@
 package ohos.arkui.component.common
 
 import ohos.arkui.component.native_struct.{CJClickEvent, CJArea, CJEdge, CJConstraintSize, CJResponseRegion, FFIVectorNativeRectangle, CJBorder, CJBorderRadius, CJForegroundBlurStyleOptions, CJSetScale, CJSetRotate, CJTranslate, CJSharedTransitionOptions, CJBindPopupParamsV2, CJBindCustomPopupV2, CArrCColors, LinearGradientParam, CTupleLength, SweepGradientParam, RadialGradientParam, NativeOptionAnimateParam, CJContextMenuOptions, CColors, CJBlurOptions, CJMotionPathOptions, NativeAnimateParam}
-import ohos.arkui.component.util.{transAppResourceToLength, LENGTH_PERCENT, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transAppResourceToLength, LENGTH_PERCENT, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{Length, ResourceColor, FFIVectorFloat64, BASE_LOG, Color, NativeOptionCallBack, NativeOptionInt64, FFIVectorString, ResourceStr, LengthProp}
 import ohos.ffi.{Callback0Param, Callback1Param}
 import ohos.resource.{AppResource, getResourceMedia}
@@ -598,7 +598,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             case Some(v) =>
                 unsafe {
                     let val = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkViewAbstractSetWidth(val.value, val.unitType.getValue())
+                    if (lessNotEqual(val.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkViewAbstractSetWidth(val.value, val.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
@@ -628,7 +632,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
             case Some(v) =>
                 unsafe {
                     let val = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkViewAbstractSetHeight(val.value, val.unitType.getValue())
+                    if (lessNotEqual(val.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkViewAbstractSetHeight(val.value, val.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }
@@ -651,15 +659,16 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         sizeInner(width, height)
     }
 
-    protected open func sizeInner(width: ?Length, height: ?Length) {
-        if (width.isNone() || height.isNone()) {
+    protected open func sizeInner(width: ?Length, height: ?Length): T {
+        let width_ = transAppResourceToLength(width ?? (-1.0).vp)
+        let height_ = transAppResourceToLength(height ?? (-1.0).vp)
+        if (lessNotEqual(height_.value, 0.0) || lessNotEqual(width_.value, 0.0)) {
             widthInner(width)
             heightInner(height)
         } else {
-            var w = transAppResourceToLength(width ?? 0.0.vp)
-            var h = transAppResourceToLength(height ?? 0.0.vp)
             unsafe {
-                FfiOHOSAceFrameworkViewAbstractSetSize(w.value, w.unitType.getValue(), h.value, h.unitType.getValue())
+                FfiOHOSAceFrameworkViewAbstractSetSize(width_.value, width_.unitType.getValue(),
+                    height_.value, height_.unitType.getValue())
             }
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")

@@ -448,11 +448,6 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
         this
     }
 
-    protected override func sizeInner(width: ?Length, height: ?Length): This {
-        TextField.size(width: width, height: height)
-        this
-    }
-
     protected override func paddingInner(value: ?Length): This {
         TextField.padding(value)
         this

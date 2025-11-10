@@ -19,7 +19,7 @@ package ohos.arkui.component.text_field
 
 import ohos.arkui.component.common.{BorderStyle, EnterKeyType, TextAlign, InputType, FontWeight, FontStyle, TextDecorationType, TextDecorationStyle, LineBreakStrategy, WordBreak, TextHeightAdaptivePolicy, TextOverflow, TextContentStyle, TextInputStyle, BarState, ContentType, TextAreaType, CopyOptions, EnterKeyType, EdgeWidths}
 import ohos.arkui.component.native_struct.{CJBorderRadius, CJEdge, CJBorder}
-import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, getLengthUnitOrFp}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, getLengthUnitOrFp, lessNotEqual}
 import ohos.base.{Length, ResourceColor, CStringExtend, APP_LOG, Color, LengthProp}
 import ohos.ffi.{Callback1Param, Callback0Param, Callback2Param, Callback3Param}
 import ohos.labels.APILevel
@@ -217,22 +217,13 @@ protected class TextField {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkTextFieldSetHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkTextFieldSetHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
-        }
-    }
-
-    protected static func size(width!: ?Length, height!: ?Length): Unit {
-        var w = transAppResourceToLength(width ?? 0.0.vp)
-        var h = transAppResourceToLength(height ?? 0.0.vp)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetSize(
-                w.value,
-                w.unitType.getValue(),
-                h.value,
-                h.unitType.getValue()
-            )
         }
     }
 

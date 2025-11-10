@@ -16,7 +16,7 @@
 package ohos.arkui.component.shape
 
 import ohos.arkui.component.common.{CommonMethodComponent, LineCapStyle, LineJoinStyle}
-import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessNotEqual}
 import ohos.base.{ResourceColor, Length, VectorFloat64Handle, VectorInt32Handle, FFIVectorFloat64, FFIVectorInt32, Color, LengthProp}
 import ohos.resource.{AppResource, getResourceLength}
 import ohos.labels.APILevel
@@ -319,7 +319,11 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkShapeSetWidth(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkShapeSetWidth(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
@@ -331,7 +335,11 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkShapeSetHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkShapeSetHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }
@@ -339,12 +347,12 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     }
 
     protected override func sizeInner(width: ?Length, height: ?Length): T {
-        if (width.isNone() || height.isNone()) {
+        let width_ = transAppResourceToLength(width ?? (-1.0).vp)
+        let height_ = transAppResourceToLength(height ?? (-1.0).vp)
+        if (lessNotEqual(height_.value, 0.0) || lessNotEqual(width_.value, 0.0)) {
             widthInner(width)
             heightInner(height)
         } else {
-            var width_ = transAppResourceToLength(width ?? 0.0.vp)
-            var height_ = transAppResourceToLength(height ?? 0.0.vp)
             unsafe {
                 FfiOHOSAceFrameworkShapeSetSize(width_.value, width_.unitType.getValue(), height_.value,
                     height_.unitType.getValue())

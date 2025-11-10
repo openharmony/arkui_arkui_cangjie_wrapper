@@ -19,7 +19,7 @@ package ohos.arkui.component.swiper
 
 import ohos.arkui.component.common.{CommonMethodComponent, Font, SwiperDisplayMode, EdgeEffect, Curve, ClickEvent, CallbackCJClickEvent, FontWeight, parseCJClickEvent}
 import ohos.arkui.component.native_struct.{CJClickEvent}
-import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, ResourceColor, VoidCallback, LengthProp, Color, CStringExtend}
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback1Param, Callback0Param}
 import ohos.labels.APILevel
@@ -1170,7 +1170,11 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkSwiperSetWidth(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkSwiperSetWidth(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
@@ -1182,7 +1186,11 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkSwiperSetHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkSwiperSetHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }
@@ -1190,20 +1198,16 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     }
 
     protected override func sizeInner(width: ?Length, height: ?Length): This {
-        if (width.isNone() || height.isNone()) {
+        let width_ = transAppResourceToLength(width ?? (-1.0).vp)
+        let height_ = transAppResourceToLength(height ?? (-1.0).vp)
+        if (lessNotEqual(height_.value, 0.0) || lessNotEqual(width_.value, 0.0)) {
             widthInner(width)
             heightInner(height)
-        } else {
-            var width_ = transAppResourceToLength(width ?? 0.0.vp)
-            var height_ = transAppResourceToLength(height ?? 0.0.vp)
-            unsafe {
-                FfiOHOSAceFrameworkSwiperSetSize(
-                    width_.value,
-                    width_.unitType.getValue(),
-                    height_.value,
-                    height_.unitType.getValue()
-                )
-            }
+            return this
+        }
+        unsafe {
+            FfiOHOSAceFrameworkSwiperSetSize(width_.value, width_.unitType.getValue(),
+                height_.value, height_.unitType.getValue())
         }
         this
     }

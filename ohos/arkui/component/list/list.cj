@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{Axis, EdgeEffect, ListItemAlign, StickyStyle
 import ohos.arkui.component.list_item_group.{ListDividerOptions}
 import ohos.arkui.component.native_struct.{DividerParams, RectResultParams}
 import ohos.arkui.component.scroll.{ScrollableCommonMethodComponent, ScrollableCommonMethod, Scroller, NestedScrollOptions, ContentClipMode}
-import ohos.arkui.component.util.{LENGTH_VP, transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{LENGTH_VP, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{Length, LengthProp, ResourceColor, BASE_LOG}
 import ohos.ffi.{Callback3Param, Callback2Param, Callback0Param}
 import ohos.labels.APILevel
@@ -226,7 +226,11 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkListSetWidth(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkListSetWidth(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
@@ -238,7 +242,11 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkListSetHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkListSetHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }

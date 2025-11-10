@@ -19,7 +19,7 @@ package ohos.arkui.component.checkbox
 
 import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder, CheckBoxShape, Rectangle}
 import ohos.arkui.component.native_struct.{VectorNativeRectangleHandle, CJResponseRegion, CJEdge, FFIVectorNativeRectangle}
-import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessNotEqual}
 import ohos.base.{ResourceColor, Length, BASE_LOG, LengthProp}
 import ohos.ffi.{Callback0Param, Callback1Param}
 import ohos.labels.APILevel
@@ -146,7 +146,11 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkCheckBoxSetWidth(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else { 
+                        FfiOHOSAceFrameworkCheckBoxSetWidth(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
@@ -158,7 +162,11 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkCheckBoxSetHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkCheckBoxSetHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }
@@ -166,16 +174,16 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
     }
 
     protected override func sizeInner(width: ?Length, height: ?Length): This {
-        if (width.isNone() || height.isNone()) {
+        let width_ = transAppResourceToLength(width ?? (-1.0).vp)
+        let height_ = transAppResourceToLength(height ?? (-1.0).vp)
+        if (lessNotEqual(height_.value, 0.0) || lessNotEqual(width_.value, 0.0)) {
             widthInner(width)
             heightInner(height)
-        } else {
-            var width_ = transAppResourceToLength(width ?? 0.0.vp)
-            var height_ = transAppResourceToLength(height ?? 0.0.vp)
-            unsafe {
-                FfiOHOSAceFrameworkCheckBoxSetSize(width_.value, width_.unitType.getValue(), height_.value,
-                    height_.unitType.getValue())
-            }
+            return this
+        }
+        unsafe {
+            FfiOHOSAceFrameworkCheckBoxSetSize(width_.value, width_.unitType.getValue(), height_.value,
+                height_.unitType.getValue())
         }
         this
     }

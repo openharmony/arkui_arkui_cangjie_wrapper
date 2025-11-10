@@ -166,11 +166,6 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
         this
     }
 
-    protected override func sizeInner(width: ?Length, height: ?Length): This {
-        TextField.size(width: width, height: height)
-        this
-    }
-
     protected override func paddingInner(value: ?Length): This {
         TextField.padding(value)
         this

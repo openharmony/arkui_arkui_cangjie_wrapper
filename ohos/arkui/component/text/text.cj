@@ -20,7 +20,7 @@ package ohos.arkui.component.text
 import ohos.arkui.component.common.{CommonMethod, FontStyle, FontWeight, TextAlign, TextOverflow, TextDecorationType, TextCase, Rectangle, CommonMethodComponent, TextDecorationStyle}
 import ohos.arkui.component.native_struct.{FFIVectorNativeRectangle, VectorNativeRectangleHandle, CJResponseRegion, NativeShadowOptions}
 import ohos.arkui.component.util.{getLengthUnitOrFp}
-import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{BASE_LOG, Length, ResourceColor, ResourceStr, VectorStringHandle, ExternalString, CStringExtend, Color, LengthProp}
 import ohos.ffi.{releaseFFIData, RemoteDataLite}
 import ohos.labels.APILevel
@@ -325,7 +325,11 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkTextSetWidth(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkTextSetWidth(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
@@ -337,7 +341,11 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkTextSetHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkTextSetHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }

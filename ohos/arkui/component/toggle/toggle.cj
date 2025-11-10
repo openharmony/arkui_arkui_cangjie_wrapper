@@ -19,7 +19,7 @@ package ohos.arkui.component.toggle
 
 import ohos.arkui.component.common.{CommonMethodComponent, CommonMethod, ToggleType, Rectangle}
 import ohos.arkui.component.native_struct.{VectorNativeRectangleHandle, CJResponseRegion, FFIVectorNativeRectangle}
-import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{Length, ResourceColor, BASE_LOG, LengthProp}
 import ohos.ffi.{Callback1Param}
 import ohos.labels.APILevel
@@ -116,7 +116,11 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkToggleWidth(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkToggleWidth(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }
@@ -128,7 +132,11 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkToggleHeight(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkToggleHeight(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetHeightWithEmpty() }
         }
@@ -136,16 +144,16 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     }
 
     protected override func sizeInner(width: ?Length, height: ?Length): This {
-        if (width.isNone() || height.isNone()) {
+        let width_ = transAppResourceToLength(width ?? (-1.0).vp)
+        let height_ = transAppResourceToLength(height ?? (-1.0).vp)
+        if (lessNotEqual(height_.value, 0.0) || lessNotEqual(width_.value, 0.0)) {
             widthInner(width)
             heightInner(height)
-        } else {
-            var width_ = transAppResourceToLength(width ?? 0.0.vp)
-            var height_ = transAppResourceToLength(height ?? 0.0.vp)
-            unsafe {
-                FfiOHOSAceFrameworkToggleSize(width_.value, width_.unitType.getValue(), height_.value,
-                    height_.unitType.getValue())
-            }
+            return this
+        }
+        unsafe {
+            FfiOHOSAceFrameworkToggleSize(width_.value, width_.unitType.getValue(), height_.value,
+                height_.unitType.getValue())
         }
         this
     }

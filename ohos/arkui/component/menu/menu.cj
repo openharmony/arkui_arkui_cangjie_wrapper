@@ -19,7 +19,7 @@ package ohos.arkui.component.menu
 
 import ohos.arkui.component.common.{CommonMethodComponent, FontWeight, FontStyle, BorderRadiuses}
 import ohos.arkui.component.native_struct.{CBorderRadiuses, DividerParams}
-import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{Length, ResourceStr, ResourceColor, LengthProp}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
@@ -173,7 +173,11 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
             case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
-                    FfiOHOSAceFrameworkMenuSetWidth(value_.value, value_.unitType.getValue())
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkMenuSetWidth(value_.value, value_.unitType.getValue())
+                    }
                 }
             case None => unsafe { FFISetWidthWithEmpty() }
         }

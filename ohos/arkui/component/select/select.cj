@@ -19,7 +19,7 @@ package ohos.arkui.component.select
 
 import ohos.arkui.component.common.{Direction, FontStyle, FontWeight, ArrowPosition, MenuAlignType, Offset, OptionWidthMode, BlurStyle, CommonMethodComponent}
 import ohos.arkui.component.native_struct.{DividerParams}
-import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{ResourceStr, CStringExtend, Length, ResourceColor, Color, LengthProp}
 import ohos.ffi.{Callback2Param}
 import ohos.resource.{AppResource, getResourceString, getResourceMedia}
@@ -654,20 +654,16 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
     }
 
     protected override func sizeInner(width: ?Length, height: ?Length): This {
-        if (width.isNone() || height.isNone()) {
+        let width_ = transAppResourceToLength(width ?? (-1.0).vp)
+        let height_ = transAppResourceToLength(height ?? (-1.0).vp)
+        if (lessNotEqual(height_.value, 0.0) || lessNotEqual(width_.value, 0.0)) {
             widthInner(width)
             heightInner(height)
-        } else {
-            var width_ = transAppResourceToLength(width ?? 0.0.vp)
-            var height_ = transAppResourceToLength(height ?? 0.0.vp)
-            unsafe {
-                FfiOHOSAceFrameworkSelectSetSize(
-                    width_.value,
-                    width_.unitType.getValue(),
-                    height_.value,
-                    height_.unitType.getValue()
-                )
-            }
+            return this
+        }
+        unsafe {
+            FfiOHOSAceFrameworkSelectSetSize(width_.value, width_.unitType.getValue(),
+                height_.value, height_.unitType.getValue())
         }
         this
     }

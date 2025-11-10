@@ -19,7 +19,7 @@ package ohos.arkui.component.radio
 
 import ohos.arkui.component.common.{CommonMethodComponent, Rectangle}
 import ohos.arkui.component.native_struct.{CJEdge, VectorNativeRectangleHandle, CJResponseRegion, FFIVectorNativeRectangle}
-import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToLength, lessNotEqual}
 import ohos.arkui.component.custom_component
 import ohos.base.{Length, BASE_LOG, LengthProp}
 import ohos.ffi.{Callback1Param}
@@ -95,20 +95,17 @@ public class Radio <: CommonMethodComponent<Radio> & RadioAttribute {
     }
 
     protected override func sizeInner(width: ?Length, height: ?Length): This {
-        if (width.isNone() || height.isNone()) {
+        let width_ = transAppResourceToLength(width ?? (-1.0).vp)
+        let height_ = transAppResourceToLength(height ?? (-1.0).vp)
+        if (lessNotEqual(height_.value, 0.0) || lessNotEqual(width_.value, 0.0)) {
             widthInner(width)
             heightInner(height)
-        } else {
-            var width_ = transAppResourceToLength(width ?? 0.0.vp)
-            var height_ = transAppResourceToLength(height ?? 0.0.vp)
-            unsafe {
-                FfiOHOSAceFrameworkRadioSetSize(
-                    width_.value,
-                    width_.unitType.getValue(),
-                    height_.value,
-                    height_.unitType.getValue()
-                )
-            }
+            return this
+        }
+        unsafe {
+            FfiOHOSAceFrameworkRadioSetSize(width_.value, width_.unitType.getValue(),
+                height_.value, height_.unitType.getValue()
+            )
         }
         this
     }
