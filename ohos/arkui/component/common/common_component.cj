@@ -1203,7 +1203,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func responseRegionInner(value: ?Rectangle): T {
-        let cjRect = (value ?? Rectangle()).parseToNative()
+        let cjRect = (value ?? Rectangle()).normalizeValue().parseToNative()
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetResponseRegion(
                 CJResponseRegion(
@@ -1242,7 +1242,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         var index = 0
         for (rect in tmpValue) {
             BASE_LOG.debug("CJRectangle responseRegion vecdata: " + index.toString())
-            vecFFi.setElement(index, rect.parseToNative())
+            vecFFi.setElement(index, rect.normalizeValue().parseToNative())
             index++
         }
         unsafe {
