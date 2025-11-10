@@ -1119,8 +1119,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func flexGrowInner(value: ?Float64): T {
+        var positiveValue = value ?? 0.0
+        if (positiveValue < 0.0) {
+            positiveValue = 0.0
+        }
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetFlexGrow(value ?? 0.0)
+            FfiOHOSAceFrameworkViewAbstractSetFlexGrow(positiveValue)
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }
