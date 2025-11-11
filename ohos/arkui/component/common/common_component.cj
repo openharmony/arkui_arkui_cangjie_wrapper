@@ -1033,8 +1033,14 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func aspectRatioInner(value: Float64): T {
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetAspectRatio(value)
+        if (lessNotEqual(value, 0.0)) {
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractResetAspectRatio()
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractSetAspectRatio(value)
+            }
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }

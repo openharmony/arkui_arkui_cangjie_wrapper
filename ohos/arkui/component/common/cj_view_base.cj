@@ -80,6 +80,7 @@ foreign {
     func FfiOHOSAceFrameworkViewAbstractSetChainMode(option: CJChainInfo): Unit
     func FfiOHOSAceFrameworkViewAbstractSetEnabled(value: Bool): Unit
     func FfiOHOSAceFrameworkViewAbstractSetAspectRatio(value: Float64): Unit
+    func FfiOHOSAceFrameworkViewAbstractResetAspectRatio(): Unit
     func FfiOHOSAceFrameworkViewAbstractSetDisplayPriority(value: Int32): Unit
     func FfiOHOSAceFrameworkViewAbstractSetBlur(value: Float64): Unit
     func FfiOHOSAceFrameworkViewAbstractSetColorBlend(color: UInt32): Unit
