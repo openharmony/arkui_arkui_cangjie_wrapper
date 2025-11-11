@@ -1164,12 +1164,18 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flexShrink(value: ?Int64): T {
-        flexShrinkInner(Float64(value ?? 0))
+        flexShrinkInner(Float64(value ?? -1))
     }
 
     protected open func flexShrinkInner(value: ?Float64): T {
-        unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetFlexShrink(value ?? 0.0)
+        if (value.isNone() || (value ?? 0.0) < 0.0) {
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractResetFlexShrink()
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkViewAbstractSetFlexShrink(value ?? 0.0)
+            }
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }

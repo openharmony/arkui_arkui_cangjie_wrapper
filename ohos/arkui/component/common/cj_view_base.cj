@@ -97,6 +97,7 @@ foreign {
     func FfiOHOSAceFrameworkViewAbstractSetFlexBasis(value: Float64, unit: Int32): Unit
     func FfiOHOSAceFrameworkViewAbstractSetFlexGrow(value: Float64): Unit
     func FfiOHOSAceFrameworkViewAbstractSetFlexShrink(value: Float64): Unit
+    func FfiOHOSAceFrameworkViewAbstractResetFlexShrink(): Unit
     func FfiOHOSAceFrameworkViewAbstractSetAlignSelf(alignValue: Int32): Unit
     func FfiOHOSAceFrameworkViewAbstractSetZIndex(value: Int32): Unit
     func FfiOHOSAceFrameworkViewAbstractSetVisibility(visibility: Int32): Unit
