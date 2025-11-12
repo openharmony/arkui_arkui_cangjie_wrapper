@@ -19,7 +19,7 @@ internal import ohos.arkui.component.*
 internal import ohos.arkui.component.loadNativeView
 internal import ohos.arkui.state_management.SubscriberManager
 internal import ohos.arkui.state_management.ObservedProperty
-
+internal import ohos.resource.__GenerateResource__
 internal import ohos.business_exception.*
 import ohos.arkui.state_macro_manage.Entry
 import ohos.arkui.state_macro_manage.Component

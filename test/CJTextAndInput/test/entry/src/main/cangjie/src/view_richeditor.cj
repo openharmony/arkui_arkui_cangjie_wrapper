@@ -289,8 +289,8 @@ class ViewRichEditor {
                     {
                         value =>
                         Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: ---------------------- onSelect ----------------------")
-                        this.start = value.selection.getOrThrow()[0]
-                        this.end = value.selection.getOrThrow()[1]
+                        this.start = value.selection[0]
+                        this.end = value.selection[1]
                         this.message = "[" + this.start.toString() + ", " + this.end.toString() + "]"
 //                        var results = controller.getSpans()
                     }
