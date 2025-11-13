@@ -77,7 +77,7 @@ class ViewCustomDialog2 {
             isModal: true,
             onWillDismiss: {
                 action =>
-                match (action.reason.getOrThrow()) {
+                match (action.reason) {
                     case PressBack => Hilog.info(1, "1", "1", "customdialog8 PRESS_BACK")
                     case TouchOutside => Hilog.info(1, "1", "1", "customdialog8 TOUCH_OUTSIDE")
                     case CloseButton => Hilog.info(1, "1", "1", "customdialog8 CLOSE_BUTTON")
@@ -93,7 +93,7 @@ class ViewCustomDialog2 {
             builder: MyDialog1(message: message),
             isModal: true,
             onWillDismiss: {
-                action => match (action.reason.getOrThrow()) {
+                action => match (action.reason) {
                     case PressBack =>
                         Hilog.info(1, "1", "1", "customdialog9 PRESS_BACK")
                         action.dismiss()

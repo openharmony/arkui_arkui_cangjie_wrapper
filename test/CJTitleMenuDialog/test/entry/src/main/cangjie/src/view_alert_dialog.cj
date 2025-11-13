@@ -75,6 +75,8 @@ class ViewAlertDialog {
                         getUIContext().showAlertDialog(dialog1)
                     }
                 )
+                .fontSize(12)
+                .height(30)
                 .id("button_1")
 
             Button("one dialog shadowoptions")
@@ -123,6 +125,8 @@ class ViewAlertDialog {
                         getUIContext().showAlertDialog(dialog1)
                     }
                 )
+                .fontSize(12)
+                .height(30)
                 .id("button_2")
 
             Button("one dialog")
@@ -171,6 +175,8 @@ class ViewAlertDialog {
                         getUIContext().showAlertDialog(dialog1)
                     }
                 )
+                .fontSize(12)
+                .height(30)
                 .id("button_3")
 
             Button("two dialog shadowoptions")
@@ -227,6 +233,8 @@ class ViewAlertDialog {
                         getUIContext().showAlertDialog(dialog2)
                     }
                 )
+                .fontSize(12)
+                .height(30)
                 .id("button_4")
 
             Button("two dialog shadowstyle")
@@ -283,6 +291,8 @@ class ViewAlertDialog {
                         getUIContext().showAlertDialog(dialog2)
                     }
                 )
+                .fontSize(12)
+                .height(30)
                 .id("button_5")
 
             Button("two dialog")
@@ -339,6 +349,8 @@ class ViewAlertDialog {
                         getUIContext().showAlertDialog(dialog2)
                     }
                 )
+                .fontSize(12)
+                .height(30)
                 .id("button_6")
 
             Button("three dialog")
@@ -387,6 +399,8 @@ class ViewAlertDialog {
                         getUIContext().showAlertDialog(dialog3)
                     }
                 )
+                .fontSize(12)
+                .height(30)
                 .id("button_7")
 
             Button("three dialog shadowoptions")
@@ -435,6 +449,8 @@ class ViewAlertDialog {
                         getUIContext().showAlertDialog(dialog3)
                     }
                 )
+                .fontSize(12)
+                .height(30)
                 .id("button_8")
 
             Button("three dialog shadowstyle")
@@ -483,6 +499,8 @@ class ViewAlertDialog {
                         getUIContext().showAlertDialog(dialog3)
                     }
                 )
+                .fontSize(12)
+                .height(30)
                 .id("button_9")
 
             Button("4 button dialog")
@@ -525,6 +543,8 @@ class ViewAlertDialog {
                         getUIContext().showAlertDialog(dialog4)
                     }
                 )
+                .fontSize(12)
+                .height(30)
                 .id("button_10")
 
             Button("test None dialog")
@@ -572,6 +592,8 @@ class ViewAlertDialog {
                         getUIContext().showAlertDialog(dialog4)
                     }
                 )
+                .fontSize(12)
+                .height(30)
                 .id("button_11")
 
             Button("default_AlertDialogParam")
@@ -587,19 +609,29 @@ class ViewAlertDialog {
                         let dialog4 = AlertDialogParamWithOptions(message: "text", buttons: [])
                     }
                 )
+                .fontSize(12)
+                .height(30)
                 .id("button_12")
 
-            Text(this.msg).id("text")
-            Text(this.msg1).id("text_1")
-            Text(this.msg1).id("text_2")
-            Text(this.msg1).id("text_3")
-            Text(this.msg2).id("text_4")
-            Text(this.msg2).id("text_5")
-            Text(this.msg2).id("text_6")
-            Text(this.msg3).id("text_7")
-            Text(this.msg3).id("text_8")
-            Text(this.msg3).id("text_9")
-            Text(this.msg3).id("text_11")
+            Row {
+                Text(this.msg).id("text")
+                Text(this.msg1).id("text_1")
+                Text(this.msg1).id("text_2")
+            }
+            Row {
+                Text(this.msg1).id("text_3")
+                Text(this.msg2).id("text_4")
+                Text(this.msg2).id("text_5")
+            }
+            Row {
+                Text(this.msg2).id("text_6")
+                Text(this.msg3).id("text_7")
+                Text(this.msg3).id("text_8")
+            }
+            Row {
+                Text(this.msg3).id("text_9")
+                Text(this.msg3).id("text_11")
+            }
         }.width(@r(app.string.width_100p)).margin(5.percent).id("my_aDialog")
     }
 }

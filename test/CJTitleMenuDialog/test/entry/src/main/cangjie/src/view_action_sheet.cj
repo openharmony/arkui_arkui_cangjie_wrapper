@@ -27,6 +27,8 @@ class ViewActionSheet {
                         evt => getUIContext().showActionSheet(createDefaultSheetOptions())
                     })
                     .id("action_sheet_button1")
+                            .fontSize(12)
+                            .height(30)
                 Button("DefaultActionSheet with highlight confirmButton")
                     .onClick(
                         {
@@ -38,6 +40,8 @@ class ViewActionSheet {
                             getUIContext().showActionSheet(options)
                         }
                     )
+                            .fontSize(12)
+                            .height(30)
                     .id("action_sheet_button2")
                 Button("DefaultActionSheet with default confirmButton")
                     .onClick(
@@ -50,6 +54,8 @@ class ViewActionSheet {
                             getUIContext().showActionSheet(options)
                         }
                     )
+                            .fontSize(12)
+                            .height(30)
                     .id("action_sheet_button3")
                 Button("DefaultActionSheet with subtitle")
                     .onClick(
@@ -62,6 +68,8 @@ class ViewActionSheet {
 //                            getUIContext().showActionSheet(options, ShadowStyle.OuterDefaultMD)
                         }
                     )
+                            .fontSize(12)
+                            .height(30)
                     .id("action_sheet_button4")
                 Button("DefaultActionSheet without autoCancel")
                     .onClick(
@@ -72,6 +80,8 @@ class ViewActionSheet {
                             getUIContext().showActionSheet(options)
                         }
                     )
+                            .fontSize(12)
+                            .height(30)
                     .id("action_sheet_button5")
                 Button("DefaultActionSheet with cancel callback")
                     .onClick(
@@ -82,6 +92,8 @@ class ViewActionSheet {
                             getUIContext().showActionSheet(options)
                         }
                     )
+                            .fontSize(12)
+                            .height(30)
                     .id("action_sheet_button6")
                 Button("DefaultActionSheet with alignment Top")
                     .onClick(
@@ -92,6 +104,8 @@ class ViewActionSheet {
                             getUIContext().showActionSheet(options)
                         }
                     )
+                            .fontSize(12)
+                            .height(30)
                     .id("action_sheet_button7")
                 Button("DefaultActionSheet with alignment TopStart")
                     .onClick(
@@ -102,6 +116,8 @@ class ViewActionSheet {
                             getUIContext().showActionSheet(options)
                         }
                     )
+                            .fontSize(12)
+                            .height(30)
                     .id("action_sheet_button8")
                 Button("DefaultActionSheet with alignment BottomEnd")
                     .onClick(
@@ -112,6 +128,8 @@ class ViewActionSheet {
                             getUIContext().showActionSheet(options)
                         }
                     )
+                            .fontSize(12)
+                            .height(30)
                     .id("action_sheet_button9")
                 Button("DefaultActionSheet with offset")
                     .onClick(
@@ -122,6 +140,8 @@ class ViewActionSheet {
                             getUIContext().showActionSheet(options)
                         }
                     )
+                            .fontSize(12)
+                            .height(30)
                     .id("action_sheet_button10")
                 Button("DefaultActionSheet with maskRect")
                     .onClick(
@@ -132,6 +152,8 @@ class ViewActionSheet {
                             getUIContext().showActionSheet(options)
                         }
                     )
+                            .fontSize(12)
+                            .height(30)
                     .id("action_sheet_button11")
                 Button("DefaultActionSheet with showInSubWindow")
                     .onClick(
@@ -142,6 +164,8 @@ class ViewActionSheet {
                             getUIContext().showActionSheet(options)
                         }
                     )
+                            .fontSize(12)
+                            .height(30)
                     .id("action_sheet_button12")
                 Button("DefaultActionSheet without modal")
                     .onClick(
@@ -152,6 +176,8 @@ class ViewActionSheet {
                             getUIContext().showActionSheet(options)
                         }
                     )
+                            .fontSize(12)
+                            .height(30)
                     .id("action_sheet_button13")
                 Button("DefaultActionSheet with GREEN background")
                     .onClick(

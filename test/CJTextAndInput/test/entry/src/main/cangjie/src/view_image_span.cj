@@ -41,7 +41,7 @@ class ViewImageSpan {
         Column() {
             // 基础场景用例：默认属性设置
             Text() {
-                ImageSpan(@r(app.media.app_icon))
+                ImageSpan(@r(app.media.background)).borderRadius(20.vp)
                     .width(100.vp)
                     .height(100.vp)
                     .id("imagespan_test_1")
@@ -64,7 +64,7 @@ class ViewImageSpan {
                     .objectFit(ImageFit.Fill)
                     .verticalAlign(ImageSpanAlignment.Top)
                     .verticalAlign(ImageSpanAlignment.Center)
-                    .onComplete({imobj: ImageLoadResult => s_width = imobj.width.getOrThrow()})
+                    .onComplete({imobj: ImageLoadResult => s_width = imobj.width})
             }
 
             Text() {
@@ -75,7 +75,7 @@ class ViewImageSpan {
                     .colorFilter(ColorFilterMatrix)
                     .objectFit(ImageFit.Fill)
                     .verticalAlign(ImageSpanAlignment.Center)
-                    .onComplete({imobj:ImageLoadResult =>this.s_width = imobj.width.getOrThrow()})
+                    .onComplete({imobj:ImageLoadResult =>this.s_width = imobj.width})
             }
 
             Text("${this.s_width}").id("imagespan_width1")
@@ -85,7 +85,7 @@ class ViewImageSpan {
                     .width(100.vp)
                     .height(100.vp)
                     .id("imagespan_test_5")
-                    .onError({imobj: ImageError =>this.s_width = imobj.componentWidth.getOrThrow()})
+                    .onError({imobj: ImageError =>this.s_width = imobj.componentWidth})
             }
 
             Text("${this.s_width}").id("imagespan_width2")

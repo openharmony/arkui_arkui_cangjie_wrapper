@@ -22,6 +22,7 @@ import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.*
 internal import ohos.hilog.Hilog
+internal import ohos.resource.__GenerateResource__
 
 @Entry
 @Component

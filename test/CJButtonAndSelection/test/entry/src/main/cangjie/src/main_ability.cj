@@ -20,6 +20,7 @@ internal import ohos.app.ability.ability_stage.AbilityStage
 internal import ohos.app.ability.ability_constant.LaunchReason
 internal import ohos.app.ability.ui_ability.UIAbilityContext
 internal import ohos.resource_manager.{AppResource}
+internal import ohos.resource.__GenerateResource__
 import std.sync.*
 import ohos.window.WindowStage
 
