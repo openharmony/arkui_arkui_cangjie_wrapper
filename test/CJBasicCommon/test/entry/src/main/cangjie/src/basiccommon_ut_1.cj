@@ -234,6 +234,7 @@ class BasicCommonUT1 {
     @Tag[APILevel12, TestLevel0]
     func testBase() {
         scrollTo("ViewBase")
+        driver.delayMs(600)
         let bindPopup = driver.findComponent(On().text("BindPopup")).getOrThrow()
         bindPopup.click()
         let cjresource = driver.waitForComponent(On().id("cjresource"),2000).getOrThrow()

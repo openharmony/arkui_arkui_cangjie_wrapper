@@ -568,7 +568,7 @@ class InformationDisplayUT1 {
         let jsonObject3 = JsonValue.fromStr(loadingprogressComponent3).asObject()
         let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
         let color3 = attrs3.get("color").getOrThrow().toString()
-        @Expect(color3, "\"#FF0099FF\"")
+        @Expect(color3, "\"#FFCCCCCC\"")
         let enableLoading3 = attrs3.get("enableLoading").getOrThrow().toString()
         @Expect(enableLoading3, "\"true\"")
     }

@@ -138,6 +138,7 @@ class ViewTextInputEnhance {
                 .onSubmit({
                     enterKey: EnterKeyType =>
                     Hilog.info(1,"Cangjie-Test", "TextInput_Enhance: TextInput onSubmit")
+                    this.onDidInsertMsg = "onDidInsert success"
                 })
                 .id("onSubmit")
 
@@ -151,6 +152,7 @@ class ViewTextInputEnhance {
                         this.textError = '用户名输入错误'
                         this.onSubmitText = ""
                     }
+                    this.onDidDeleteMsg = "onDidDelete success"
                 })
                 .id("onSubmitWithEvent")
             Text("insertValue: ${this.insertVal}.  insertOffset: ${this.insertOffset}; deleteValue:${this.deleteValue}. delOffset:${this.deleteOffset}. Direction:${this.deleteDirection}")

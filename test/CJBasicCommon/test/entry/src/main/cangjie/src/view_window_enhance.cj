@@ -47,7 +47,6 @@ import ohos.display.FoldCreaseRegion
 @Component
 class ViewWindowEnhance {
     let mainWindow: Window = Global.getMainWindow()
-    // let mainId = mainWindow.getWindowProperties().id
     let mainId = 1
     let stageContext = getAbilityContext()
     let rect:displayRect = displayRect(left:1,top:1,width:1,height:1)
@@ -206,7 +205,7 @@ class ViewWindowEnhance {
                         .id("getWindowProperties")
                         .onClick({ e
                             =>
-//                            this.msg = mainWindow.getWindowProperties().windowRect.width.toString()
+                            this.msg = mainWindow.getWindowProperties().windowRect.width.toString()
                     })
                         .width(20.percent)
                         .height(20)
