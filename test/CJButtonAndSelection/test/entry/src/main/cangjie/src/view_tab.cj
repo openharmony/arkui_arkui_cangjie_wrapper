@@ -46,9 +46,10 @@ class ViewTab {
                 tabs_views,
                 itemGeneratorFunc: {
                     viewName: String, _: Int64 => Button(viewName)
-                        .fontSize(16)
-                        .width(100.percent)
-                        .height(50)
+                        .fontSize(10)
+                        .width(90.percent)
+                        .height(38)
+                        .margin(1)
                         .id("Button${viewName}")
                         .borderRadius(10)
                         .onClick ({

@@ -81,20 +81,20 @@ class TabsExample8 {
                     index: Int32 => this.currentIndex = index
                 })
                 .width(360)
-                .height(600)
+                .height(360)
                 .backgroundColor(0xF1F3F5)
                 .scrollable(true)
 
             Button('动态修改index')
                 .width(50.percent)
-                .margin(top: 20)
+                .margin(top: 5)
                 .onClick({
                     e => this.currentIndex = (this.currentIndex + 1) % 4
                 })
 
             Button('changeIndex')
                 .width(50.percent)
-                .margin(top: 20)
+                .margin(top: 5)
                 .onClick(
                     {
                         e =>

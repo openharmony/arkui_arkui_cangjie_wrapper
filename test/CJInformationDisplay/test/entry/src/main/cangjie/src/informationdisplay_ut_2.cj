@@ -567,7 +567,7 @@ class InformationDisplayUT2 {
     @Tag[APILevel12, TestLevel0]
     func testWebCommonAttrs() {
         scrollTo("ViewWeb")
-
+        driver.delayMs(600)
         let refresh = driver.findComponent(On().id("refresh")).getOrThrow()
         refresh.click()
         let btn_load = driver.waitForComponent(On().id("btn_load"),500).getOrThrow()

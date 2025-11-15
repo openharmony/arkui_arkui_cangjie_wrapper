@@ -41,7 +41,7 @@ class ViewImageSpan {
         Column() {
             // 基础场景用例：默认属性设置
             Text() {
-                ImageSpan(@r(app.media.background)).borderRadius(20.vp)
+                ImageSpan(@r(app.media.media1)).borderRadius(20.vp)
                     .width(100.vp)
                     .height(100.vp)
                     .id("imagespan_test_1")
