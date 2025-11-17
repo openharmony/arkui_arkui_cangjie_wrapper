@@ -375,7 +375,7 @@ class CanvasDrawingUT2 {
     @Tag[APILevel12, TestLevel0]
     func testShapeClipAttrs1() {
         scrollTo("ViewShapeClip")
-        driver.delayMs(600)
+        driver.delayMs(1500)
 
         let inspector = getInspectorByKey("test_row_1")
         let jsonObject = JsonValue.fromStr(inspector).asObject()

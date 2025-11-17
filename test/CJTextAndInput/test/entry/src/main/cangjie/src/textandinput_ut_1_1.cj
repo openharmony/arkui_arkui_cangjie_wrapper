@@ -92,6 +92,10 @@ class TextAndInputUT11 {
         let richEditor1 = driver.findComponent(On().id("RichEditor_Test1_RichEditor1")).getOrThrow()
         richEditor1.click()
         driver.delayMs(500)
+
+        // 输入法弹窗同意点
+        agreeXiaoYi(driver)
+
         // 点击回车键
         driver.click(1200, 2500)
         driver.delayMs(500)

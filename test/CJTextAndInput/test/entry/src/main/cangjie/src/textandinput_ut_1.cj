@@ -24,6 +24,26 @@ import ohos.arkui.state_macro_manage.*
 import ohos.ui_test.*
 import ohos.business_exception.*
 
+protected func agreeXiaoYi(driver: Driver) {
+    driver.delayMs(600)
+    // 输入法弹窗同意点
+    try{
+        driver.findComponent(On().text("同意")).getOrThrow().click()
+        Hilog.info(1,"Cangjie-Test", "[ViewSearch]: 输入法弹窗同意点 成功")
+    }catch (e: Exception){
+        Hilog.info(1,"Cangjie-Test", "[ViewSearch]: 输入法弹窗同意点 不存在")
+    }
+    driver.delayMs(1000)
+    // 键盘布局同意点
+    try{
+        driver.findComponent(On().text("下一步")).getOrThrow().click()
+        Hilog.info(1,"Cangjie-Test", "[ViewSearch]: 键盘布局同意点 成功")
+    }catch (e: Exception){
+        Hilog.info(1,"Cangjie-Test", "[ViewSearch]: 键盘布局同意点 不存在")
+    }
+    driver.delayMs(600)
+}
+
 @Test
 class TextAndInputUT1 {
     prop driver: Driver {
@@ -308,6 +328,9 @@ class TextAndInputUT1 {
         let searchItem = driver.findComponent(On().id("searchComponent")).getOrThrow()
         searchItem.inputText("changeString")
 
+        // 输入法弹窗同意点
+        agreeXiaoYi(driver)
+
 
         // 光标位置为 3
         let button4 = driver.waitForComponent(On().id("caretPosition"),500).getOrThrow()
@@ -376,6 +399,7 @@ class TextAndInputUT1 {
     @Tag[APILevel12, TestLevel0]
     func testRicheditor() {
         scrollTo("ViewRichEditor")
+        driver.delayMs(800)
         let addTextSpan1 = driver.findComponent(On().id("addTextSpan1")).getOrThrow()
         addTextSpan1.click()
         let getInfo = driver.findComponent(On().id("getInfo")).getOrThrow()
@@ -405,6 +429,7 @@ class TextAndInputUT1 {
     @Tag[APILevel12, TestLevel0]
     func testRicheditor2() {
         scrollTo("ViewRichEditor")
+        driver.delayMs(800)
         let richEditor = driver.findComponent(On().id("RichEditorKey")).getOrThrow()
         Hilog.info(1,"Cangjie-Test", "test_richeditor2  richEditor.click 3000")
         richEditor.click()
@@ -458,6 +483,7 @@ class TextAndInputUT1 {
     @Tag[APILevel12, TestLevel0]
     func testRichText1() {
         scrollTo("ViewRichText")
+        driver.delayMs(800)
         let inspector = getInspectorByKey("component_1")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
@@ -477,6 +503,7 @@ class TextAndInputUT1 {
     func testRichText2() {
         driver.delayMs(1000)
         scrollTo("ViewRichText")
+        driver.delayMs(800)
         let inspector = getInspectorByKey("component_2")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()

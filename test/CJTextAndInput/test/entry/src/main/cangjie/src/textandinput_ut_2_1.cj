@@ -175,6 +175,10 @@ class TextAndInputUT21 {
         let onSubmit = driver.waitForComponent(On().id("onSubmit"),200).getOrThrow()
         onSubmit.inputText("0")
         driver.delayMs(500)
+
+        // 输入法弹窗同意点
+        agreeXiaoYi(driver)
+
         onSubmit.click()
         driver.delayMs(500)
         driver.triggerKey(2016)
