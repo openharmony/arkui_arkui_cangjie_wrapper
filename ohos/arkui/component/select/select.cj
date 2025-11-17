@@ -683,6 +683,13 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
         this
     }
 
+    protected override func backgroundColorInner(value: ?ResourceColor): This {
+        unsafe {
+            FfiOHOSAceFrameworkSelectSetBackgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
+        }
+        this
+    }
+
     /**
      * Callback for selecting an item from the select.
      *

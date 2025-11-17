@@ -897,10 +897,10 @@ public interface CommonMethod<T> {
      * Set component rotation.
      * Sets the rotation transformation of the component.
      *
-     * @param { ?Float64 } x - X component of the rotation vector
-     * @param { ?Float64 } y - Y component of the rotation vector
-     * @param { ?Float64 } z - Z component of the rotation vector
-     * @param { ?Float64 } angle - Rotation angle in degrees
+     * @param { ?Float32 } x - X component of the rotation vector
+     * @param { ?Float32 } y - Y component of the rotation vector
+     * @param { ?Float32 } z - Z component of the rotation vector
+     * @param { ?Float32 } angle - Rotation angle in degrees
      * @param { ?Length } centerX - X coordinate of the rotation center point
      * @param { ?Length } centerY - Y coordinate of the rotation center point
      * @returns { T } - Returns the component itself.
@@ -909,7 +909,7 @@ public interface CommonMethod<T> {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func rotate(x!: ?Float64, y!: ?Float64, z!: ?Float64, angle!: ?Float64,
+    func rotate(x!: ?Float32, y!: ?Float32, z!: ?Float32, angle!: ?Float32,
         centerX!: ?Length, centerY!: ?Length): T
 
     /**

@@ -16,9 +16,9 @@
 package ohos.arkui.component.web
 
 import ohos.arkui.component.common.{CallbackCJWebResourceRequest, CommonMethodComponent, MixedMode, NestedScrollMode, WebDarkMode}
-import ohos.arkui.component.native_struct.{FfiMapToCFFIArray, FfiWebResourceRequest}
-import ohos.arkui.component.util.{transResourceMediaToString, transAppResourceToResourceColor}
-import ohos.base.{APP_LOG, VectorStringHandle, ExternalString, FFIVectorString, FFIVectorInt64, VectorInt64Handle, ResourceStr, Callback, ResourceColor, Color}
+import ohos.arkui.component.native_struct.{FfiMapToCFFIArray, FfiWebResourceRequest, CJSetRotate}
+import ohos.arkui.component.util.{transResourceMediaToString, transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.base.{APP_LOG, VectorStringHandle, ExternalString, FFIVectorString, FFIVectorInt64, VectorInt64Handle, ResourceStr, Callback, ResourceColor, Color, Length, LengthProp}
 import ohos.ffi.{CArrString, Callback1Param, BaseCallBack}
 import ohos.labels.APILevel
 import ohos.web.webview.{WebviewController}
@@ -236,6 +236,8 @@ foreign {
     func FfiWebGetResponseHeader(ptr: CPointer<Unit>): VectorHeaderHandle
 
     func FfiWebFreeResourceResponse(ptr: CPointer<Unit>): Unit
+
+    func FfiOHOSAceFrameworkWebSetRotate(value: CJSetRotate): Unit
 }
 
 class FfiVectorScriptItem {
@@ -1155,6 +1157,17 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     public func forceDarkAccess(access: ?Bool): This {
         unsafe {
             FfiOHOSAceFrameworkWebForceDarkAccess(access ?? false)
+        }
+        this
+    }
+
+    protected override func rotateInner(x: ?Float32, y: ?Float32, z: ?Float32, angle: ?Float32, centerX: ?Length, centerY: ?Length): This {
+        var cx = transAppResourceToLength(centerX ?? 50.percent)
+        var cy = transAppResourceToLength(centerY ?? 50.percent)
+        unsafe {
+            FfiOHOSAceFrameworkWebSetRotate(
+                CJSetRotate(x ?? 0.0, y ?? 0.0, z ?? 1.0, angle ?? 0.0,
+                    cx.value, cx.unitType.getValue(), cy.value, cy.unitType.getValue()))
         }
         this
     }
