@@ -22,6 +22,7 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.ui_test.*
+import std.convert.*
 
 @Test
 class BasicCommonUT3 {
@@ -183,28 +184,104 @@ class BasicCommonUT3 {
         let jsonObject1 = JsonValue.fromStr(inspector1).asObject()
         let attrs1 = jsonObject1.get("$attrs").getOrThrow().asObject()
         let responseRegion1 = attrs1.get("responseRegion").getOrThrow().toString()
-        @Expect(responseRegion1.contains('\\"x\\":\\"0.00vp\\"'))
-        @Expect(responseRegion1.contains('\\"y\\":\\"0.00vp\\"'))
-        @Expect(responseRegion1.contains('\\"width\\":\\"50.00%\\"'))
-        @Expect(responseRegion1.contains('\\"height\\":\\"100.00%\\"'))
+
+        // 热区宽度为按钮的一半，点击右侧无响应
+        let rect1 = jsonObject1.get("$rect").getOrThrow().toString()
+        let rectArr1 = rect1.replace("[", "").replace("]", "").replace(" ", "").replace("\"", "").split(",")
+        Hilog.info(0x0001, "InspectorInfo", "responseRegion1  rect1 ${rect1}")
+        let rect1x0 = Float64.tryParse(rectArr1[0]).getOrThrow()
+        let rect1y0 = Float64.tryParse(rectArr1[1]).getOrThrow()
+        let rect1x1 = Float64.tryParse(rectArr1[2]).getOrThrow()
+        let rect1y1 = Float64.tryParse(rectArr1[3]).getOrThrow()
+
+        // 点击右半边，不响应点击事件
+        let textUI = driver.findComponent(On().id("expect_text")).getOrThrow()
+        var x1 = Int32((rect1x1 + rect1x0)/ 2.0 + 5.0)
+        var y1 = Int32((rect1y1 + rect1y0) / 2.0)
+        driver.click(x1, y1)
+        driver.delayMs(500)
+        Hilog.info(0x0001, "InspectorInfo", "responseRegion1  click  (${x1}, ${y1}), textLeft ${textUI.getText()}")
+        @Expect(textUI.getText().contains("no button click"))
+
+        // 点击左半边，响应点击事件
+        var x11 = Int32((rect1x1 + rect1x0)/ 2.0 - 5.0)
+        var y11 = Int32((rect1y1 + rect1y0) / 2.0)
+        driver.click(x11, y11)
+        driver.delayMs(500)
+        Hilog.info(0x0001, "InspectorInfo", "responseRegion1  click  (${x11}, ${y11}), textLeft ${textUI.getText()}")
+        @Expect(textUI.getText().contains("button1 clicked"))
+
+        // getInspectorByKey获取到的responseRegion值为空， ArkTs侧目前返回的responseRegion值也是空
+        //        @Expect(responseRegion1.contains('\\"x\\":\\"0.00vp\\"'))
+        //        @Expect(responseRegion1.contains('\\"y\\":\\"0.00vp\\"'))
+        //        @Expect(responseRegion1.contains('\\"width\\":\\"50.00%\\"'))
+        //        @Expect(responseRegion1.contains('\\"height\\":\\"100.00%\\"'))
 
         let inspector2 = getInspectorByKey("responseRegion2")
         let jsonObject2 = JsonValue.fromStr(inspector2).asObject()
         let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
         let responseRegion2 = attrs2.get("responseRegion").getOrThrow().toString()
-        @Expect(responseRegion2.contains('\\"x\\":\\"100.00%\\"'))
-        @Expect(responseRegion2.contains('\\"y\\":\\"0.00vp\\"'))
-        @Expect(responseRegion2.contains('\\"width\\":\\"50.00%\\"'))
-        @Expect(responseRegion2.contains('\\"height\\":\\"100.00%\\"'))
+        // getInspectorByKey获取到的responseRegion值为空， ArkTs侧目前返回的responseRegion值也是空
+        //        @Expect(responseRegion2.contains('\\"x\\":\\"100.00%\\"'))
+        //        @Expect(responseRegion2.contains('\\"y\\":\\"0.00vp\\"'))
+        //        @Expect(responseRegion2.contains('\\"width\\":\\"50.00%\\"'))
+        //        @Expect(responseRegion2.contains('\\"height\\":\\"100.00%\\"'))
+        // 热区宽度为按钮的一半，且右移一个按钮宽度，点击button2右侧左边，点击事件生效
+        let rect2 = jsonObject2.get("$rect").getOrThrow().toString()
+        let rectArr2 = rect2.replace("[", "").replace("]", "").replace(" ", "").replace("\"", "").split(",")
+        Hilog.info(0x0001, "InspectorInfo", "responseRegion2  rectArr2 ${rectArr2}")
+        let rect2x0 = Float64.tryParse(rectArr2[0]).getOrThrow()
+        let rect2y0 = Float64.tryParse(rectArr2[1]).getOrThrow()
+        let rect2x1 = Float64.tryParse(rectArr2[2]).getOrThrow()
+        let rect2y1 = Float64.tryParse(rectArr2[3]).getOrThrow()
+
+        // 点击按钮任何区域，不响应点击事件
+        driver.click(Int32((rect2x1 + rect2x0)/ 2.0), Int32((rect2y1 + rect2y0) / 2.0))
+        driver.delayMs(500)
+        @Expect(textUI.getText().contains("button1 clicked"))
+
+        // 点击按钮右边超过一半的区域，不响应点击事件
+        driver.click(Int32(rect2x1 + (rect2x1 - rect2x0)/ 2.0 + 5.0), Int32((rect2y1 + rect2y0) / 2.0))
+        driver.delayMs(500)
+        @Expect(textUI.getText().contains("button1 clicked"))
+
+        // 点击按钮右边不超过一半的区域，响应点击事件
+        driver.click(Int32(rect2x1 + 5.0), Int32((rect2y1 + rect2y0) / 2.0))
+        driver.delayMs(500)
+        @Expect(textUI.getText().contains("button2 clicked"))
 
         let inspector3 = getInspectorByKey("responseRegion3")
         let jsonObject3 = JsonValue.fromStr(inspector3).asObject()
         let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
         let responseRegion3 = attrs3.get("responseRegion").getOrThrow().toString()
-        @Expect(responseRegion3.contains('\\"x\\":\\"0.00vp\\"'))
-        @Expect(responseRegion3.contains('\\"y\\":\\"100.00%\\"'))
-        @Expect(responseRegion3.contains('\\"width\\":\\"100.00%\\"'))
-        @Expect(responseRegion3.contains('\\"height\\":\\"100.00%\\"'))
+        // getInspectorByKey获取到的responseRegion值为空， ArkTs侧目前返回的responseRegion值也是空
+        //        @Expect(responseRegion3.contains('\\"x\\":\\"0.00vp\\"'))
+        //        @Expect(responseRegion3.contains('\\"y\\":\\"100.00%\\"'))
+        //        @Expect(responseRegion3.contains('\\"width\\":\\"100.00%\\"'))
+        //        @Expect(responseRegion3.contains('\\"height\\":\\"100.00%\\"'))
+        // 热区大小为整个按钮，且下移一个按钮高度，点击button3下方按钮大小区域，点击事件生效
+        let rect3 = jsonObject3.get("$rect").getOrThrow().toString()
+        let rectArr3 = rect3.replace("[", "").replace("]", "").replace(" ", "").replace("\"", "").split(",")
+        Hilog.info(0x0001, "InspectorInfo", "responseRegion3  rectArr3 ${rectArr3}")
+        let rect3x0 = Float64.tryParse(rectArr3[0]).getOrThrow()
+        let rect3y0 = Float64.tryParse(rectArr3[1]).getOrThrow()
+        let rect3x1 = Float64.tryParse(rectArr3[2]).getOrThrow()
+        let rect3y1 = Float64.tryParse(rectArr3[3]).getOrThrow()
+
+        // 点击按钮任何区域，不响应点击事件
+        driver.click(Int32((rect3x1 + rect3x0)/ 2.0), Int32((rect3y1 + rect3y0) / 2.0))
+        driver.delayMs(500)
+        @Expect(textUI.getText().contains("button2 clicked"))
+
+        // 点击按钮右边不超过一半的区域，不响应点击事件
+        driver.click(Int32(rect3x1 + 5.0), Int32((rect3y1 + rect3y0) / 2.0))
+        driver.delayMs(500)
+        @Expect(textUI.getText().contains("button2 clicked"))
+
+        // 点击按钮右边超过一半的区域，不响应点击事件
+        driver.click(Int32((rect3x1 + rect3x0)/ 2.0), Int32(rect3y1 + 10.0))
+        driver.delayMs(500)
+        @Expect(textUI.getText().contains("button3 clicked"))
     }
 
     // Popup
