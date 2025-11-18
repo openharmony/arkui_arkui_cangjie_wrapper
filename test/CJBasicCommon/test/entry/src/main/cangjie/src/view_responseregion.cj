@@ -24,14 +24,15 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class ViewResponseRegion {
     @State
-    var text: String = ""
+    var text: String = "no button click"
     func build() {
         Column() {
+            Text(this.text).id("expect_text")
             Text("x:0,y:0,width:50.percent,height:100.percent")
             // 热区宽度为按钮的一半，点击右侧无响应
             Button("button1").responseRegion(Rectangle(x: 0.vp, y: 0.vp, width: 50.percent, height: 100.percent)).
                 onClick({ e
-                => text = "button1 clicked"
+                => this.text = "button1 clicked"
             }).id("responseRegion1")
 
             // 热区宽度为按钮的一半，且右移一个按钮宽度，点击button2右侧左边，点击事件生效

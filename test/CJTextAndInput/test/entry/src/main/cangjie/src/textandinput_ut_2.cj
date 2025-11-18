@@ -110,6 +110,8 @@ class TextAndInputUT2 {
 
         let textArea = driver.waitForComponent(On().id("component_1"),500)
         textArea?.inputText("1")
+        // 输入法弹窗同意点
+        agreeXiaoYi(driver)
     }
 
     @TestCase
