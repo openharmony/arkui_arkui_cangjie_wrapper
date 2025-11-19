@@ -362,15 +362,16 @@ class CanvasDrawingUT2 {
         scrollTo("ViewShape")
         let GetSurfaceId = driver.findComponent(On().id("SizeLengthTest"))
         GetSurfaceId?.click()
-        driver.delayMs(200)
+        driver.delayMs(500)
         // 触发了小艺对话，影响后面一个用例
        try{
             driver.findComponent(On().text("下一步")).getOrThrow().click()
-            driver.delayMs(500)
+            driver.delayMs(800)
             driver.findComponent(On().text("知道了")).getOrThrow().click()
-            Hilog.info(1,"Cangjie-Test", "[ViewSearch]: 小艺对话同意点 成功")
+            driver.delayMs(800)
+            Hilog.info(1,"Cangjie-Test", "[testSizeLength]: 小艺对话同意点 成功")
         }catch (e: Exception){
-            Hilog.info(1,"Cangjie-Test", "[ViewSearch]: 小艺对话同意点 不存在")
+            Hilog.info(1,"Cangjie-Test", "[testSizeLength]: 小艺对话同意点 不存在")
         }
         let inspector = getInspectorByKey("SizeLengthTest")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
