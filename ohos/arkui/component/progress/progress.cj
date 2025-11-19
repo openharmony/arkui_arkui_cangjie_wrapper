@@ -102,6 +102,10 @@ foreign {
 
     func FfiOHOSAceFrameworkProgressSetGradientColor(color: VectorUInt32Handle, number: VectorFloat64Handle,
         unitType: VectorInt32Handle): Unit
+
+    func FfiOHOSAceFrameworkProgressResetColor(progressType: Int32): Unit
+
+    func FfiOHOSAceFrameworkProgressResetBackgroundColor(progressType: Int32): Unit
 }
 
 /**
@@ -234,6 +238,8 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
+    let mProgressType: ProgressType
+
     /**
      * Called when the progress bar is set.
      *
@@ -247,7 +253,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     ]
     public init(value!: ?Float64, total!: ?Float64 = None, progressType!: ?ProgressType = None) {
         let tmpProgressType = progressType ?? ProgressType.Linear
-
+        this.mProgressType = tmpProgressType
         unsafe {
             FfiOHOSAceFrameworkProgressCreate(value ?? 0.0, total ?? 100.0, tmpProgressType.getValue())
         }
@@ -275,24 +281,33 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
      *
      * @param { ?ResourceColor } value - Indicates the color of the progress.
      * @returns { This }
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkProgressSetColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkProgressSetColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkProgressResetColor(this.mProgressType.getValue())
+            }
         }
         this
     }
 
     protected override func backgroundColorInner(color: ?ResourceColor): This {
-        let tmpColor = color ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkProgressSetBackgroundColor(transAppResourceToResourceColor(tmpColor))
+        if (let Some(v) <- color) {
+            unsafe {
+                FfiOHOSAceFrameworkProgressSetBackgroundColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkProgressResetBackgroundColor(this.mProgressType.getValue())
+            }
         }
         this
     }

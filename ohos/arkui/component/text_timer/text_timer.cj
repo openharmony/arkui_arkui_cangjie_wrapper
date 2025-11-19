@@ -105,6 +105,8 @@ foreign {
     func FfiOHOSAceFrameworkTextTimerControllerPause(selfID: Int64): Unit
 
     func FfiOHOSAceFrameworkTextTimerControllerReset(selfID: Int64): Unit
+
+    func FfiOHOSAceFrameworkTextTimerResetFontColor(): Unit
 }
 
 /**
@@ -279,16 +281,20 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      *
      * @param { ?ResourceColor } value - The font color.
      * @returns { This } Returns itself to allow method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkTextTimerSetFontColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkTextTimerSetFontColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkTextTimerResetFontColor()
+            }
         }
         this
     }
@@ -368,22 +374,22 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      *
      * @param { ?Array<ShadowOptions> } value - The shadow options.
      * @returns { This } Returns itself to allow method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(value: ?Array<ShadowOptions>): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        let vecValueHandle = TextTimerVectorNativeTextShadow(tmpValue.size)
-        for (i in 0..tmpValue.size) {
-            vecValueHandle.setElement(i, tmpValue[i].optionToNativeTextTimerShadow())
+        if (let Some(v) <- value) {
+            let vecValueHandle = TextTimerVectorNativeTextShadow(v.size)
+            for (i in 0..v.size) {
+                vecValueHandle.setElement(i, v[i].optionToNativeTextTimerShadow())
+            }
+            unsafe {
+                FfiOHOSAceFrameworkTextTimerSetTextShadow(vecValueHandle.getNativeHandle())
+            }
+            vecValueHandle.free()
         }
-        unsafe {
-            FfiOHOSAceFrameworkTextTimerSetTextShadow(vecValueHandle.getNativeHandle())
-        }
-        vecValueHandle.free()
         this
     }
 
@@ -393,23 +399,23 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      *
      * @param { ?ShadowOptions } value - The shadow options.
      * @returns { This } Returns itself to allow method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func textShadow(value: ?ShadowOptions): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        let thisShadow: NativeTextTimerShadow = NativeTextTimerShadow(tmpValue.radius ?? 0.0,
-            tmpValue.offsetX ?? 0.0, tmpValue.offsetY ?? 0.0, transAppResourceToResourceColor(tmpValue.color ?? Color.Black), tmpValue.fill ?? false,
-            (tmpValue.shadowType ?? ShadowType.Color).getValue())
-        let vecValueHandle = TextTimerVectorNativeTextShadow(1)
-        vecValueHandle.setElement(0, thisShadow)
-        unsafe {
-            FfiOHOSAceFrameworkTextTimerSetTextShadow(vecValueHandle.getNativeHandle())
+        if (let Some(v) <- value) {
+            let thisShadow: NativeTextTimerShadow = NativeTextTimerShadow(v.radius ?? 0.0,
+                v.offsetX ?? 0.0, v.offsetY ?? 0.0, transAppResourceToResourceColor(v.color ?? Color.Black), v.fill ?? false,
+                (v.shadowType ?? ShadowType.Color).getValue())
+            let vecValueHandle = TextTimerVectorNativeTextShadow(1)
+            vecValueHandle.setElement(0, thisShadow)
+            unsafe {
+                FfiOHOSAceFrameworkTextTimerSetTextShadow(vecValueHandle.getNativeHandle())
+            }
+            vecValueHandle.free()
         }
-        vecValueHandle.free()
         this
     }
 }

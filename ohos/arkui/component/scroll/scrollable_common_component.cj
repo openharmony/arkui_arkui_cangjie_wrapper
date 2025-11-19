@@ -60,10 +60,10 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func scrollBar(barState: ?BarState): T {
-        scrollBarInner(barState ?? BarState.Auto)
+        scrollBarInner(barState)
     }
 
-    protected func scrollBarInner(barState: BarState): T
+    protected func scrollBarInner(barState: ?BarState): T
 
     /**
      * Sets the scrollbar color.
@@ -178,10 +178,10 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReachStart(event: ?() -> Unit): T {
-        onReachStartInner(event ?? { => })
+        onReachStartInner(event)
     }
 
-    protected func onReachStartInner(event: () -> Unit): T
+    protected func onReachStartInner(event: ?() -> Unit): T
 
     /**
      * Sets the reach end.
@@ -194,10 +194,10 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onReachEnd(event: ?() -> Unit): T {
-        onReachEndInner(event ?? { => })
+        onReachEndInner(event)
     }
 
-    protected func onReachEndInner(event: () -> Unit): T
+    protected func onReachEndInner(event: ?() -> Unit): T
 
     /**
      * Called when scrolling start.
@@ -210,10 +210,10 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onScrollStart(event: ?() -> Unit): T {
-        onScrollStartInner(event ?? { => })
+        onScrollStartInner(event)
     }
 
-    protected func onScrollStartInner(event: () -> Unit): T
+    protected func onScrollStartInner(event: ?() -> Unit): T
 
     /**
      * Called when scrolling has stopped.
@@ -230,10 +230,10 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onScrollStop(event: ?() -> Unit): T {
-        onScrollStopInner(event ?? { => })
+        onScrollStopInner(event)
     }
 
-    protected func onScrollStopInner(event: () -> Unit): T
+    protected func onScrollStopInner(event: ?() -> Unit): T
 
     /**
      * Fling Speed Limit.
@@ -246,12 +246,12 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func flingSpeedLimit(speedLimit: ?Float64): T {
-        flingSpeedLimitInner(speedLimit ?? 0.0)
+        flingSpeedLimitInner(speedLimit)
     }
 
-    protected func flingSpeedLimitInner(speedLimit: Float64): T {
+    protected func flingSpeedLimitInner(speedLimit: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkScrollableBaseFlingSpeed(speedLimit)
+            FfiOHOSAceFrameworkScrollableBaseFlingSpeed(speedLimit ?? 0.0)
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")
     }

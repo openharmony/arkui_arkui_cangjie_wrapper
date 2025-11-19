@@ -19,7 +19,7 @@ package ohos.arkui.component.scroll
 
 import ohos.arkui.component.common.{ScrollState, Edge, Curve, NestedScrollMode, ScrollDirection, BarState, ScrollSource}
 import ohos.arkui.component.native_struct.{RectResultParams}
-import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, EMPTY_FUNCTION}
 import ohos.base.{VectorFloat32Handle, VectorInt32Handle, Length, ResourceColor, APP_LOG, LengthProp, BASE_LOG}
 import ohos.ffi.{BaseCallBack, RemoteDataLite, Callback0Param, Callback4Param, Callback3Param, Callback2Param, Callback1Param, releaseFFIData}
 import ohos.resource.{AppResource, getResourceString}
@@ -793,9 +793,9 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
         this
     }
 
-    protected func scrollBarInner(barState: BarState): This {
+    protected func scrollBarInner(barState: ?BarState): This {
         unsafe {
-            FfiOHOSAceFrameworkScrollScrollBar(barState.getValue())
+            FfiOHOSAceFrameworkScrollScrollBar((barState ?? BarState.Auto).getValue())
         }
         this
     }
@@ -825,16 +825,18 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
         this
     }
 
-    protected func onReachStartInner(callback: () -> Unit): This {
+    protected func onReachStartInner(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? EMPTY_FUNCTION
         unsafe {
-            FfiOHOSAceFrameworkScrollOnReachStart(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkScrollOnReachStart(Callback0Param<Unit>(tmpCallback).getID())
         }
         this
     }
 
-    protected func onReachEndInner(callback: () -> Unit): This {
+    protected func onReachEndInner(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? EMPTY_FUNCTION
         unsafe {
-            FfiOHOSAceFrameworkScrollOnReachEnd(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkScrollOnReachEnd(Callback0Param<Unit>(tmpCallback).getID())
         }
         this
     }
@@ -932,16 +934,18 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
         this
     }
 
-    protected func onScrollStartInner(callback: () -> Unit): This {
+    protected func onScrollStartInner(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? EMPTY_FUNCTION
         unsafe {
-            FfiOHOSAceFrameworkScrollOnScrollStart(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkScrollOnScrollStart(Callback0Param<Unit>(tmpCallback).getID())
         }
         this
     }
 
-    protected func onScrollStopInner(callback: () -> Unit): This {
+    protected func onScrollStopInner(callback: ?() -> Unit): This {
+        let tmpCallback = callback ?? EMPTY_FUNCTION
         unsafe {
-            FfiOHOSAceFrameworkScrollOnScrollStop(Callback0Param<Unit>(callback).getID())
+            FfiOHOSAceFrameworkScrollOnScrollStop(Callback0Param<Unit>(tmpCallback).getID())
         }
         this
     }

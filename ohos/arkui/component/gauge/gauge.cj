@@ -64,6 +64,8 @@ foreign {
     func FFICJVectorGaugeLinearGradientDelete(vec: VectorNativeGaugeLinearGradientHandle): Unit
 
     func FfiOHOSAceFrameworkSetPrivacySensitive(enable: Bool): Unit
+
+    func FfiOHOSAceFrameworkGaugeResetColors(): Unit
 }
 
 @C
@@ -210,28 +212,30 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      *
      * @param { ?Array<(ResourceColor, Int32)> } value - The color array with stop positions, where Int32 is the stop position percentage (0-100).
      * @returns { This } - The instance of the component.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colors(value: ?Array<(ResourceColor, Int32)>): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        let colors = FFIVectorUInt32(tmpValue.size)
-        let weights = FFIVectorFloat32(tmpValue.size)
-        for (i in 0..tmpValue.size) {
-            colors.setElement(i, transAppResourceToResourceColor(tmpValue[i][0]))
-            if (tmpValue[i][1] < 0) {
-                weights.setElement(i, 0.0)
-            } else {
-                weights.setElement(i, Float32(tmpValue[i][1]))
+        if (let Some(v) <- value) {
+            let colors = FFIVectorUInt32(v.size)
+            let weights = FFIVectorFloat32(v.size)
+            for (i in 0..v.size) {
+                colors.setElement(i, transAppResourceToResourceColor(v[i][0]))
+                if (v[i][1] < 0) {
+                    weights.setElement(i, 0.0)
+                } else {
+                    weights.setElement(i, Float32(v[i][1]))
+                }
             }
-        }
-        unsafe {
-            FfiOHOSAceFrameworkGaugeSetColors(colors.getNativeHandle(), weights.getNativeHandle())
-            colors.free()
-            weights.free()
+            unsafe {
+                FfiOHOSAceFrameworkGaugeSetColors(colors.getNativeHandle(), weights.getNativeHandle())
+                colors.free()
+                weights.free()
+            }
+        } else {
+            unsafe { FfiOHOSAceFrameworkGaugeResetColors() }
         }
         this
     }
@@ -241,43 +245,45 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      *
      * @param { ?Array<(LinearGradient, Int32)> } value - The linear gradient array with stop positions.
      * @returns { This } - The instance of the component.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colors(value: ?Array<(LinearGradient, Int32)>): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var maxSize = tmpValue.size;
-        if (maxSize > 9) {
-            maxSize = 9
-        }
-        var vecValueHandle = FFIVectorGaugeLinearGradient(maxSize)
-        var weights = FFIVectorFloat32(maxSize)
+        if (let Some(v) <- value) {
+            var maxSize = v.size;
+            if (maxSize > 9) {
+                maxSize = 9
+            }
+            var vecValueHandle = FFIVectorGaugeLinearGradient(maxSize)
+            var weights = FFIVectorFloat32(maxSize)
 
-        for (i in 0..maxSize) {
-            var curColorStops = tmpValue[i][0].colorStops
-            var vecColorStop = FFIVectorColorStops(curColorStops.size)
-            for (j in 0..curColorStops.size) {
-                if ((curColorStops[j].offset).value >= 0.0) {
-                    vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color).toUInt32(),
-                    (curColorStops[j].offset).value))
+            for (i in 0..maxSize) {
+                var curColorStops = v[i][0].colorStops
+                var vecColorStop = FFIVectorColorStops(curColorStops.size)
+                for (j in 0..curColorStops.size) {
+                    if ((curColorStops[j].offset).value >= 0.0) {
+                        vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color).toUInt32(),
+                        (curColorStops[j].offset).value))
+                    } else {
+                        vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color).toUInt32(), 0.0))
+                    }
+                }
+                vecValueHandle.setElement(i, vecColorStop.getNativeHandle())
+                if (v[i][1] < 0) {
+                    weights.setElement(i, 0.0)
                 } else {
-                    vecColorStop.setElement(j, GaugeColorStop((curColorStops[j].color).toUInt32(), 0.0))
+                    weights.setElement(i, Float32(v[i][1]))
                 }
             }
-            vecValueHandle.setElement(i, vecColorStop.getNativeHandle())
-            if (tmpValue[i][1] < 0) {
-                weights.setElement(i, 0.0)
-            } else {
-                weights.setElement(i, Float32(tmpValue[i][1]))
+            unsafe {
+                FfiOHOSAceFrameworkGaugeSetLinearGradientColors(vecValueHandle.getNativeHandle(), weights.getNativeHandle())
+                vecValueHandle.free()
+                weights.free()
             }
-        }
-        unsafe {
-            FfiOHOSAceFrameworkGaugeSetLinearGradientColors(vecValueHandle.getNativeHandle(), weights.getNativeHandle())
-            vecValueHandle.free()
-            weights.free()
+        } else {
+            unsafe { FfiOHOSAceFrameworkGaugeResetColors() }
         }
         this
     }
@@ -287,16 +293,18 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      *
      * @param { ?ResourceColor } value - The solid color value.
      * @returns { This } - The instance of the component.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colors(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        let array: Array<(ResourceColor, Int32)> = [(tmpValue, 1)]
-        colors(array)
+        if (let Some(v) <- value) {
+            let array: Array<(ResourceColor, Int32)> = [(v, 1)]
+            colors(array)
+        } else {
+            unsafe { FfiOHOSAceFrameworkGaugeResetColors() }
+        }
         this
     }
 
@@ -305,16 +313,18 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      *
      * @param { ?LinearGradient } value - The linear gradient value.
      * @returns { This } - The instance of the component.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func colors(value: ?LinearGradient): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        let array: Array<(LinearGradient, Int32)> = [(tmpValue, 1)]
-        colors(array)
+        if (let Some(v) <- value) {
+            let array: Array<(LinearGradient, Int32)> = [(v, 1)]
+            colors(array)
+        } else {
+            unsafe { FfiOHOSAceFrameworkGaugeResetColors() }
+        }
         this
     }
 

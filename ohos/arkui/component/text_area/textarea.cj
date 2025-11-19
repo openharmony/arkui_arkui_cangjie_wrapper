@@ -191,15 +191,13 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @param { ?Length } value - Font size of the text.
      * @default 16.fp
      * @returns { This } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        TextField.fontSize(tmpValue)
+        TextField.fontSize(value)
         this
     }
 
@@ -209,15 +207,13 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * @param { ?ResourceColor } value - Color of the text.
      * @default 0xe6182431
      * @returns { This } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        TextField.fontColor(tmpValue)
+        TextField.fontColor(value)
         this
     }
 
@@ -317,15 +313,13 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      *
      * @param { ?UInt32 } value - Maximum number of characters allowed.
      * @returns { This } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxLength(value: ?UInt32): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        TextField.maxLength(tmpValue)
+        TextField.maxLength(value)
         this
     }
 
@@ -334,15 +328,13 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      *
      * @param { ?ResourceColor } value - Color of the placeholder text.
      * @returns { This } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        TextField.placeholderColor(tmpValue)
+        TextField.placeholderColor(value)
         this
     }
 

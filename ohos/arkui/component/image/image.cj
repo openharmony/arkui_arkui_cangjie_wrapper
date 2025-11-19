@@ -88,6 +88,8 @@ foreign {
     func FfiOHOSAceFrameworkImageOnFinish(callback: Int64): Unit
 
     func FfiOHOSAceFrameworkImageOnCompleteV2(callback: Int64): Unit
+
+    func FfiOHOSAceFrameworkImageResetImageFill(): Unit
 }
 
 /**
@@ -604,16 +606,20 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
      *
      * @param { ?ResourceColor } value - Fill color to be superimposed on the image.
      * @returns { This }
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fillColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkImageSetImageFill(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkImageSetImageFill(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkImageResetImageFill()
+            }
         }
         this
     }

@@ -184,6 +184,10 @@ foreign {
     func FfiOHOSAceFrameworkViewAbstractSetBorderImageWithLinearGradient(source: LinearGradientParam, option: CBorderImageOption): Unit
     func FfiOHOSAceFrameworkViewAbstractHoverEffect(value: Int32): Unit
     func FfiOHOSAceFrameworkViewAbstractHitTestBehavior(value: Int32): Unit
+    func FfiOHOSAceFrameworkViewAbstractResetFlexBasis(): Unit
+    func FfiOHOSAceFrameworkViewAbstractResetBorderWidth(): Unit
+    func FfiOHOSAceFrameworkViewAbstractResetTransition(): Unit
+    func FfiOHOSAceFrameworkViewAbstractResetRadialGradient(radialGradientParam: RadialGradientParam, needResetCenter: Bool, needResetRadius: Bool): Unit
 }
 
 /**

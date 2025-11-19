@@ -280,15 +280,13 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      *
      * @param { ?ResourceColor } value - Default value follows the theme. The default value on wearable devices is 0x99ffffff.
      * @returns { This } Returns TextInput instance to allow method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func placeholderColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        TextField.placeholderColor(tmpValue)
+        TextField.placeholderColor(value)
         this
     }
 
@@ -331,15 +329,13 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      *
      * @param { ?UInt32 } value - Default value is Infinity, indicating that there is no upper limit on the number of characters that can be entered.
      * @returns { This } Returns TextInput instance to allow method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxLength(value: ?UInt32): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        TextField.maxLength(tmpValue)
+        TextField.maxLength(value)
         this
     }
 
@@ -352,15 +348,13 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
      * @param { ?Length } value - The font size.
      * @default 16.fp
      * @returns { This } Returns TextInput instance to allow method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        TextField.fontSize(tmpValue)
+        TextField.fontSize(value)
         this
     }
 

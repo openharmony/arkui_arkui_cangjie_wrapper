@@ -19,7 +19,7 @@ package ohos.arkui.component.grid
 
 import ohos.arkui.component.common.{BarState, NestedScrollMode}
 import ohos.arkui.component.scroll.{ScrollableCommonMethodComponent, ScrollableCommonMethod, Scroller, NestedScrollOptions}
-import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, EMPTY_FUNCTION}
 import ohos.base.{Length, ResourceColor, LengthProp, BASE_LOG}
 import ohos.ffi.{Callback0Param}
 import ohos.labels.APILevel
@@ -271,9 +271,9 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
         this
     }
 
-    protected func scrollBarInner(value: BarState): This {
+    protected func scrollBarInner(barState: ?BarState): This {
         unsafe {
-            FfiOHOSAceFrameworkGridScrollBar(value.getValue())
+            FfiOHOSAceFrameworkGridScrollBar((barState ?? BarState.Auto).getValue())
         }
         this
     }
@@ -331,30 +331,34 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
         frictionInner(realValue)
     }
 
-    protected func onReachStartInner(event: () -> Unit): This {
+    protected func onReachStartInner(event: ?() -> Unit): This {
+        let tmpEvent = event ?? EMPTY_FUNCTION
         unsafe {
-            FfiOHOSAceFrameworkGridOnReachStart(Callback0Param<Unit>(event).getID())
+            FfiOHOSAceFrameworkGridOnReachStart(Callback0Param<Unit>(tmpEvent).getID())
         }
         this
     }
 
-    protected func onReachEndInner(event: () -> Unit): This {
+    protected func onReachEndInner(event: ?() -> Unit): This {
+        let tmpEvent = event ?? EMPTY_FUNCTION
         unsafe {
-            FfiOHOSAceFrameworkGridOnReachEnd(Callback0Param<Unit>(event).getID())
+            FfiOHOSAceFrameworkGridOnReachEnd(Callback0Param<Unit>(tmpEvent).getID())
         }
         this
     }
 
-    protected func onScrollStartInner(event: () -> Unit): This {
+    protected func onScrollStartInner(event: ?() -> Unit): This {
+        let tmpEvent = event ?? EMPTY_FUNCTION
         unsafe {
-            FfiOHOSAceFrameworkGridOnScrollStart(Callback0Param<Unit>(event).getID())
+            FfiOHOSAceFrameworkGridOnScrollStart(Callback0Param<Unit>(tmpEvent).getID())
         }
         this
     }
 
-    protected func onScrollStopInner(event: () -> Unit): This {
+    protected func onScrollStopInner(event: ?() -> Unit): This {
+        let tmpEvent = event ?? EMPTY_FUNCTION
         unsafe {
-            FfiOHOSAceFrameworkGridOnScrollStop(Callback0Param<Unit>(event).getID())
+            FfiOHOSAceFrameworkGridOnScrollStop(Callback0Param<Unit>(tmpEvent).getID())
         }
         this
     }

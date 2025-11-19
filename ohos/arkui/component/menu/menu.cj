@@ -44,6 +44,8 @@ foreign {
     func FfiOHOSAceFrameworkMenuSetExpandingMode(mode: Int32): Unit
 
     func FFISetWidthWithEmpty(): Unit
+
+    func FfiOHOSAceFrameworkMenuResetRadius(): Unit
 }
 
 let LENGTH_TYPE_LNVALID: Int32 = -2
@@ -129,20 +131,27 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      *
      * @param { ?Length } value - The menu corner radius.
      * @returns { This } Returns the Menu instance.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?Length): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var value_ = transAppResourceToLength(tmpValue)
-        if (value_.value < 0.0f64) {
-            return this
-        }
-        unsafe {
-            FfiOHOSAceFrameworkMenuSetRadiusByLength(value_.value, value_.unitType.getValue());
+        if (let Some(v) <- value) {
+            var value_ = transAppResourceToLength(v)
+            if (lessNotEqual(value_.value, 0.0)) {
+                unsafe {
+                    FfiOHOSAceFrameworkMenuResetRadius()
+                }
+                return this
+            }
+            unsafe {
+                FfiOHOSAceFrameworkMenuSetRadiusByLength(value_.value, value_.unitType.getValue());
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkMenuResetRadius()
+            }
         }
         this
     }
@@ -154,16 +163,20 @@ public class Menu <: CommonMethodComponent<Menu> & MenuAttribute {
      *
      * @param { ?BorderRadiuses } value - The menu corner radius.
      * @returns { This } Returns the Menu instance.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func radius(value: ?BorderRadiuses): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkMenuSetRadiusByBorderRadiuses(tmpValue.toCBorderRadiuses());
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkMenuSetRadiusByBorderRadiuses(v.toCBorderRadiuses())
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkMenuResetRadius()
+            }
         }
         this
     }

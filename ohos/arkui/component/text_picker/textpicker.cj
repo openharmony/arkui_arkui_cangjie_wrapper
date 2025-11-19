@@ -174,17 +174,17 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
      * <br>For the string type, only numeric string values, for example, "56", are supported.
      * @default 56.vp
      * @returns { This } Returns TextPicker instance to allow method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func defaultPickerItemHeight(value: ?Length): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var height = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkTextPickerSetDefaultPickerItemHeight(height.value, height.unitType.getValue())
+        if (let Some(v) <- value) {
+            var height = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkTextPickerSetDefaultPickerItemHeight(height.value, height.unitType.getValue())
+            }
         }
         this
     }

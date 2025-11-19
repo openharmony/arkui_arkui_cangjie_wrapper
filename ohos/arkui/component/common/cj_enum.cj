@@ -1103,27 +1103,6 @@ public enum FontWeight {
         }
     }
 
-    func toInt32(): Int32 {
-        match (this) {
-            case W100 => 0
-            case W200 => 1
-            case W300 => 2
-            case W400 => 3
-            case W500 => 4
-            case W600 => 5
-            case W700 => 6
-            case W800 => 7
-            case W900 => 8
-            case Bold => 9
-            case Normal => 10
-            case Bolder => 11
-            case Lighter => 12
-            case Medium => 13
-            case Regular => 14
-            case _ => throw BusinessException(100001, "Internal error.")
-        }
-    }
-
     protected func getValueInt(): UInt32 {
         match (this) {
             case Bold => 0

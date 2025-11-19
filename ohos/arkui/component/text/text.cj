@@ -151,6 +151,14 @@ foreign {
     func FFISetWidthWithEmpty(): Unit
 
     func FFISetHeightWithEmpty(): Unit
+
+    func FfiOHOSAceFrameworkTextResetFontSize(): Unit
+
+    func FfiOHOSAceFrameworkTextResetMaxFontSize(): Unit
+
+    func FfiOHOSAceFrameworkTextResetMinFontSize(): Unit
+
+    func FfiOHOSAceFrameworkTextResetFontColor(): Unit
 }
 
 class FFIVectorNativeShadowOptions {
@@ -379,17 +387,27 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      * @param { ?Length } value - The font size.
      * @default 16.fp (wearable devices is 15.fp)
      * @returns { This } Returns itself to allow method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var v = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkTextSetFontSize(v.value, getLengthUnitOrFp(v).getValue())
+        if (let Some(v) <- value) {
+            var v_ = transAppResourceToLength(v)
+            if (v_.value < 0.0) {
+                unsafe {
+                    FfiOHOSAceFrameworkTextResetFontSize()
+                }
+                return this
+            }
+            unsafe {
+                FfiOHOSAceFrameworkTextSetFontSize(v_.value, getLengthUnitOrFp(v_).getValue())
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkTextResetFontSize()
+            }
         }
         this
     }
@@ -399,17 +417,21 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      *
      * @param { ?Length } value - The maximum font size.
      * @returns { This } Returns itself to allow method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func maxFontSize(value: ?Length): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var v = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkTextSetMaxFontSize(v.value, v.unitType.getValue())
+        if (let Some(v) <- value) {
+            var v_ = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkTextSetMaxFontSize(v_.value, v_.unitType.getValue())
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkTextResetMaxFontSize()
+            }
         }
         this
     }
@@ -419,17 +441,21 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      *
      * @param { ?Length } value - The minimum font size.
      * @returns { This } Returns itself to allow method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func minFontSize(value: ?Length): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var v = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkTextSetMinFontSize(v.value, v.unitType.getValue())
+        if (let Some(v) <- value) {
+            var v_ = transAppResourceToLength(v)
+            unsafe {
+                FfiOHOSAceFrameworkTextSetMinFontSize(v_.value, v_.unitType.getValue())
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkTextResetMinFontSize()
+            }
         }
         this
     }
@@ -439,16 +465,20 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      *
      * @param { ?ResourceColor } value - The font color.
      * @returns { This } Returns itself to allow method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkTextSetFontColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkTextSetFontColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkTextResetFontColor()
+            }
         }
         this
     }
@@ -476,16 +506,18 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
      *
      * @param { ?FontWeight } value - The font weight.
      * @returns { This } Returns itself to allow method chaining.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontWeight(value: ?FontWeight): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
+        var fontWeightString = ""
+        if (let Some(v) <- value) {
+            fontWeightString = v.getValue()
+        }
         unsafe {
-            var unsafeFontWeight = LibC.mallocCString(tmpValue.getValue())
+            var unsafeFontWeight = LibC.mallocCString(fontWeightString)
             FfiOHOSAceFrameworkTextSetFontWeight(unsafeFontWeight)
             unsafeFontWeight.free()
         }

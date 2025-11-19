@@ -69,6 +69,8 @@ foreign {
     func FfiOHOSAceFrameworkSpanSetTextBackgroundStyle(color: UInt32, radius: Float64, unit: Int32): Unit
     func FfiOHOSAceFrameworkSpanSetTextBackgroundStyleBorder(color: UInt32, radius: CBorderRadiuses): Unit
     func FfiOHOSAceFrameworkSpanSetFont(fontFamily: CString, fontSize: Float64, unit: Int32, fontWeight: CString, fontStyle: Int32): Unit
+    func FfiOHOSAceFrameworkSpanResetFontSize(): Unit
+    func FfiOHOSAceFrameworkSpanResetFontColor(): Unit
 }
 
 /**
@@ -115,17 +117,27 @@ public class Span <: BaseSpan {
      *
      * @param { ?Length } value - The font size.
      * @returns { This } Returns Span component instance itself.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontSize(value: ?Length): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        var v = transAppResourceToLength(tmpValue)
-        unsafe {
-            FfiOHOSAceFrameworkSpanSetFontSize(v.value, getLengthUnitOrFp(v).getValue())
+        if (let Some(v) <- value) {
+            var v_ = transAppResourceToLength(v)
+            if (v_.value < 0.0) {
+                unsafe {
+                    FfiOHOSAceFrameworkSpanResetFontSize()
+                }
+                return this
+            }
+            unsafe {
+                FfiOHOSAceFrameworkSpanSetFontSize(v_.value, getLengthUnitOrFp(v_).getValue())
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSpanResetFontSize()
+            }
         }
         this
     }
@@ -136,16 +148,20 @@ public class Span <: BaseSpan {
      *
      * @param { ?ResourceColor } value - The font color.
      * @returns { This } Returns Span component instance itself.
-     * @throws { BusinessException } 100001 - The type now is not supported.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func fontColor(value: ?ResourceColor): This {
-        let tmpValue = value ?? throw BusinessException(100001, "The type now is not supported.")
-        unsafe {
-            FfiOHOSAceFrameworkSpanSetFontColor(transAppResourceToResourceColor(tmpValue))
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkSpanSetFontColor(transAppResourceToResourceColor(v))
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkSpanResetFontColor()
+            }
         }
         this
     }
