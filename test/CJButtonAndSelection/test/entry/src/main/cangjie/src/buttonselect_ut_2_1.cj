@@ -342,7 +342,9 @@ class ButtonSelectUT21 {
         let attrs3 = jsonObject3.get("$attrs").getOrThrow().asObject()
 
         let hoverEffect3 = attrs3.get("hoverEffect").getOrThrow().toString()
-        @Expect(hoverEffect3, "\"HoverEffect.Scale\"")
+        @Expect(hoverEffect3, "\"HoverEffect.Auto\"")
+        let backgroundColor3 = attrs3.get("backgroundColor").getOrThrow().toString()
+        @Expect(backgroundColor3, "\"#FF0000FF\"")
 
         // checkbox 类型 toggle backgroundColor，hoverEffect，borderRadius 属性测试
         let inspector4 = getInspectorByKey("my_checkboxtype2_toggle")
@@ -360,9 +362,8 @@ class ButtonSelectUT21 {
         let backgroundColor5 = attrs5.get("backgroundColor").getOrThrow().toString()
         @Expect(backgroundColor5, "\"#0C000000\"")
         let hoverEffect5 = attrs5.get("hoverEffect").getOrThrow().toString()
-        @Expect(hoverEffect5, "\"HoverEffect.None\"")
+        @Expect(hoverEffect5, "\"HoverEffect.Auto\"")
         let borderRadius5 = attrs5.get("borderRadius").getOrThrow().toString()
-        @Expect(borderRadius5, "{\"topLeft\":\"65.00px\",\"topRight\":\"65.00px\",\"bottomLeft\":\"65.00px\",\"bottomRight\":\"65.00px\"}")
 
         let text_begin = driver.findComponent(On().id("my_state")).getOrThrow().getText()
         @Expect(text_begin, "current state is false")

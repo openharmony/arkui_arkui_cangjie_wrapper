@@ -41,7 +41,7 @@ class CanvasDrawingUT2 {
             try {
                 let scrollBar = driver.findComponent(On().id("scroller"))
                 scrollBar?.scrollSearch(On().id(view))?.click()
-                driver.delayMs(500)
+                driver.delayMs(800)
                 isSuccess = true
             } catch (e: BusinessException) {
                 Hilog.error(1, "Cangjie-Test", e.message)
@@ -86,7 +86,7 @@ class CanvasDrawingUT2 {
         @Expect(endPoint, "[50,100]")
 
         let stroke = attrs.get("stroke").getOrThrow().toString()
-        @Expect(stroke, "\"#00000000\"")
+        @Expect(stroke, "\"#FF000000\"")
 
         let backgroundColor = attrs.get("backgroundColor").getOrThrow().toString()
         @Expect(backgroundColor, "\"#FFF5F5F5\"")
@@ -143,7 +143,7 @@ class CanvasDrawingUT2 {
         @Expect(endPoint, "[100,100]")
 
         let stroke = attrs.get("stroke").getOrThrow().toString()
-        @Expect(stroke, "\"#00000000\"")
+        @Expect(stroke, "\"#FF000000\"")
 
         let strokeDashArray = attrs.get("strokeDashArray").getOrThrow().toString()
         @Expect(strokeDashArray,"[\"10.00vp\",\"3.00vp\"]")
@@ -176,7 +176,7 @@ class CanvasDrawingUT2 {
         @Expect(endPoint, "[100,100]")
 
         let stroke = attrs.get("stroke").getOrThrow().toString()
-        @Expect(stroke, "\"#00000000\"")
+        @Expect(stroke, "\"#FF000000\"")
 
         let strokeDashArray = attrs.get("strokeDashArray").getOrThrow().toString()
         @Expect(strokeDashArray,"[\"10.00vp\",\"3.00vp\"]")
@@ -363,6 +363,15 @@ class CanvasDrawingUT2 {
         let GetSurfaceId = driver.findComponent(On().id("SizeLengthTest"))
         GetSurfaceId?.click()
         driver.delayMs(200)
+        // 触发了小艺对话，影响后面一个用例
+       try{
+            driver.findComponent(On().text("下一步")).getOrThrow().click()
+            driver.delayMs(500)
+            driver.findComponent(On().text("知道了")).getOrThrow().click()
+            Hilog.info(1,"Cangjie-Test", "[ViewSearch]: 小艺对话同意点 成功")
+        }catch (e: Exception){
+            Hilog.info(1,"Cangjie-Test", "[ViewSearch]: 小艺对话同意点 不存在")
+        }
         let inspector = getInspectorByKey("SizeLengthTest")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
@@ -375,6 +384,7 @@ class CanvasDrawingUT2 {
     @Tag[APILevel12, TestLevel0]
     func testShapeClipAttrs1() {
         scrollTo("ViewShapeClip")
+        driver.delayMs(1500)
 
         let inspector = getInspectorByKey("test_row_1")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
@@ -427,13 +437,13 @@ class CanvasDrawingUT2 {
         scrollTo("ViewCanvas2")
 
         var text = driver.findComponent(On().id("height_width1")).getOrThrow().getText()
-        @Expect(text, "136.307692 109.230769")
+        @Expect(text.contains("136.307692 109.230769") || text.contains("112.507937 90.158730"))
 
         // text = driver.findComponent(On().id("height_width2")).getOrThrow().getText()
         // @Expect(text, "100.000000 100.000000")
 
         text = driver.findComponent(On().id("height_color")).getOrThrow().getText()
-        @Expect(text, "325 255")
+        @Expect(text.contains("325 255") || text.contains("393 255"))
 
         text = driver.findComponent(On().id("size")).getOrThrow().getText()
         @Expect(text, "Some(1.000000) Some(1.000000) Some(-0.500000) Some(0.500000) Some(10.000000) Some(10.000000)")

@@ -44,7 +44,7 @@ class ViewBackground {
     func build() {
         Column() {
             Row().backgroundImage(@r(app.media.startIcon), ImageRepeat.NoRepeat).backgroundImagePosition(
-                x: 10, y: 20).backgroundImageSize(width: 30, height: 40).id("my_background")
+                x: 10, y: 20).backgroundImageSize(width: 30, height: 40).id("my_background").width(100.percent).height(100.percent)
         }
     }
 }

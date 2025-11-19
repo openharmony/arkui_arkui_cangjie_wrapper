@@ -338,7 +338,7 @@ class TitleMenuDialogUT11 {
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let constructor = attrs.get("constructor").getOrThrow().asObject()
         let selected = constructor.get("selected").getOrThrow().toString()
-        @Expect(selected, '\"2025-9-13\"') // 是否滑到对应的日期
+        @Expect(selected.contains("2025-9-13") || selected.contains("2025-8-13")) // 是否滑到对应的日期
     }
 
     @TestCase

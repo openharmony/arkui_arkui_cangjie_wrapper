@@ -261,8 +261,10 @@ class BasicCommonUT21 {
         driver.triggerKey(2049)
         driver.triggerKey(2012)
         let bl = driver.findComponent(On().id("L")).getOrThrow()
+        bl.click()
         let res2 = bl.isFocused()
-//        @Expect(res2, true)
+        // focusables设置为false后，组件不可以获焦，即使focusOnTouch是true
+        @Expect(res2, false)
     }
 
     @TestCase
@@ -278,8 +280,10 @@ class BasicCommonUT21 {
         driver.triggerKey(2049)
         driver.triggerKey(2013)
         let b14 = driver.findComponent(On().id("b14")).getOrThrow()
+        b14.click()
         let res2 = b14.isFocused()
-        @Expect(res2, true)
+        // 当组件未设置focusOnTouch时，组件不支持点击获焦能力
+        @Expect(res2, false)
     }
 
     @TestCase

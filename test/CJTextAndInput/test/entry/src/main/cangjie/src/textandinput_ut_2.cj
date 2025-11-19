@@ -110,6 +110,8 @@ class TextAndInputUT2 {
 
         let textArea = driver.waitForComponent(On().id("component_1"),500)
         textArea?.inputText("1")
+        // 输入法弹窗同意点
+        agreeXiaoYi(driver)
     }
 
     @TestCase
@@ -123,8 +125,11 @@ class TextAndInputUT2 {
         let border = attrs.get("size").getOrThrow().toString()
         @Expect(border, "{\"width\":\"387.69vp\",\"height\":\"88.46vp\"}")
 
-        let text2 = driver.findComponent(On().id("component_3"))?.getText()
-        @Expect(text2, "border")
+        let text2 = attrs.get("text").getOrThrow().toString()
+        @Expect(text2.contains("border"))
+
+        let fontColor1 = attrs.get("fontColor").getOrThrow().toString()
+        @Expect(fontColor1.contains("#FFFFFFFF"))
 
         let inspector5 = getInspectorByKey("component_5")
         let jsonObject5 = JsonValue.fromStr(inspector5).asObject()

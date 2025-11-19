@@ -24,7 +24,7 @@ import ohos.labels.{APILevel, Hide}
 import ohos.arkui.shape.{BaseShape}
 import ohos.business_exception.BusinessException
 import ohos.multimedia.image.PixelMap
-import std.math.clamp
+import std.math.{clamp, trunc}
 
 protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     protected init(id: Int64){
@@ -2300,7 +2300,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     ]
     public func hueRotate(value: ?Float32): T {
         let tmpValue = value ?? 0.0
-        hueRotateInner(tmpValue)
+        hueRotateInner(trunc(tmpValue)) // Truncate
     }
 
     protected open func hueRotateInner(value: Float32): T {

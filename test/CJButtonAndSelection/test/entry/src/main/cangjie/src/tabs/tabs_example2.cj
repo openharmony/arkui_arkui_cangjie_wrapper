@@ -87,12 +87,13 @@ class TabsExample2 {
                     index: Int32 => Hilog.info(1, "1", "${index}")
                 })
                 .height(200.vp)
-                .margin(bottom: 12.vp)
+                .margin(bottom: 2.vp)
 
             Button('常规Divider')
                 .id("normalDivider")
                 .width(100.percent)
-                .margin(bottom: 12.vp)
+                .height(30)
+                .margin(bottom: 2.vp)
                 .onClick(
                     {
                         e =>
@@ -106,25 +107,29 @@ class TabsExample2 {
             Button('空Divider')
                 .id("nullDivider")
                 .width(100.percent)
-                .margin(bottom: 12.vp)
+                .height(30)
+                .margin(bottom: 2.vp)
                 .onClick({
                     e => this.nullFlag = true
                 })
             Button('颜色变为蓝色')
                 .width(100.percent)
-                .margin(bottom: 12.vp)
+                .height(30)
+                .margin(bottom: 2.vp)
                 .onClick({
                     e => this.dividerColor = Color(0x007DFF)
                 })
             Button('宽度增加')
                 .width(100.percent)
-                .margin(bottom: 12.vp)
+                .height(30)
+                .margin(bottom: 2.vp)
                 .onClick({
                     e => this.strokeWidth = (this.strokeWidth.value + 2.0)
                 })
             Button('宽度减小')
                 .width(100.percent)
-                .margin(bottom: 12.vp)
+                .height(30)
+                .margin(bottom: 2.vp)
                 .onClick({
                     e => if (this.strokeWidth.value > 2.0) {
                         this.strokeWidth = (this.strokeWidth.value - 2.0)
@@ -132,13 +137,15 @@ class TabsExample2 {
                 })
             Button('上边距增加')
                 .width(100.percent)
-                .margin(bottom: 12.vp)
+                .height(30)
+                .margin(bottom: 2.vp)
                 .onClick({
                     e => this.startMargin = (this.startMargin.value + 2.0)
                 })
             Button('上边距减少')
                 .width(100.percent)
-                .margin(bottom: 12.vp)
+                .height(30)
+                .margin(bottom: 2.vp)
                 .onClick({
                     e => if (this.startMargin.value > 2.0) {
                         this.startMargin = (this.startMargin.value - 2.0)
@@ -146,13 +153,15 @@ class TabsExample2 {
                 })
             Button('下边距增加')
                 .width(100.percent)
-                .margin(bottom: 12.vp)
+                .height(30)
+                .margin(bottom: 2.vp)
                 .onClick({
                     e => this.endMargin = (this.endMargin.value + 2.0)
                 })
             Button('下边距减少')
                 .width(100.percent)
-                .margin(bottom: 12.vp)
+                .height(30)
+                .margin(bottom: 2.vp)
                 .onClick({
                     e => if (this.endMargin.value > 2.0) {
                         this.endMargin = (this.endMargin.value - 2.0)
@@ -161,6 +170,7 @@ class TabsExample2 {
 
             Button('divider')
                 .id("dividerButton")
+                .height(30)
                 .onClick(
                     {
                         e =>

@@ -175,23 +175,23 @@ class TextAndInputUT21 {
         let onSubmit = driver.waitForComponent(On().id("onSubmit"),200).getOrThrow()
         onSubmit.inputText("0")
         driver.delayMs(500)
+
+        // 输入法弹窗同意点
+        agreeXiaoYi(driver)
+
         onSubmit.click()
         driver.delayMs(500)
-        driver.click(1158, 2474)
+        driver.triggerKey(2016)
         driver.delayMs(500)
-        //@Expect(onSubmit.getText(), "onDidInsert success")
+        @Expect(onSubmit.getText(), "onDidInsert success")
 
         let onSubmitWithEvent = driver.findComponent(On().id("onSubmitWithEvent")).getOrThrow()
         onSubmitWithEvent.inputText("0.0")
         driver.delayMs(500)
         onSubmitWithEvent.click()
         driver.delayMs(500)
-        driver.click(1158, 2474)
+        driver.triggerKey(2016)
         driver.delayMs(300)
-        driver.pressBack()
-        driver.delayMs(200)
-//        onSubmitWithEvent.inputText("onDidDelete success")
-//        driver.delayMs(300)
-//        @Expect(onSubmitWithEvent.getText(), "onDidDelete success")
+        @Expect(onSubmitWithEvent.getText(), "onDidDelete success")
     }
 }
