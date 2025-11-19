@@ -1240,7 +1240,7 @@ public class Scroller {
         smooth!: ?Bool = None,
         align!: ?ScrollAlign = None,
         options!: ?ScrollToIndexOptions = None
-    ): This {
+    ): Unit {
         let tmpAlign = align ?? ScrollAlign.Start
         let tmpOptions = options ?? ScrollToIndexOptions()
 
@@ -1251,7 +1251,6 @@ public class Scroller {
                     extraOffset_.value, extraOffset_.unitType.getValue())
             }
         }
-        this
     }
 
     /**
