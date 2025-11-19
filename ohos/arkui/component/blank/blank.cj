@@ -18,11 +18,17 @@
 package ohos.arkui.component.blank
 
 import ohos.arkui.component.common.{CommonMethodComponent}
-import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual, normalizeValue}
 import ohos.base.{Length, ResourceColor, Color, LengthProp}
 import ohos.labels.APILevel
 
-foreign func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
+foreign {
+    func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
+
+    func FfiOHOSAceFrameworkBlankHeight(value: Float64, unit: Int32): Unit
+
+    func FFISetHeightWithEmpty(): Unit
+}
 
 /**
  * Defines Blank Component.
@@ -62,6 +68,22 @@ public class Blank <: CommonMethodComponent<Blank> & BlankAttribute {
     ]
     public func color(value: ?ResourceColor): This {
         backgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
+        this
+    }
+
+    protected override func heightInner(value: ?Length): This {
+        match (value) {
+            case Some(v) => 
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkBlankHeight(normalizeValue(value_.value, 0.0), value_.unitType.getValue())
+                    }
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
+        }
         this
     }
 }

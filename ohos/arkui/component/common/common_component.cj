@@ -1825,10 +1825,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     /**
      * Set component rotation.
      *
-     * @param { ?Float64 } x
-     * @param { ?Float64 } y
-     * @param { ?Float64 } z
-     * @param { ?Float64 } angle
+     * @param { ?Float32 } x
+     * @param { ?Float32 } y
+     * @param { ?Float32 } z
+     * @param { ?Float32 } angle
      * @param { ?Length } centerX
      * @param { ?Length } centerY
      * @returns { T }
@@ -1838,17 +1838,17 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func rotate(x!: ?Float64 = None, y!: ?Float64 = None, z!: ?Float64 = None, angle!: ?Float64 = None,
+    public func rotate(x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, angle!: ?Float32 = None,
         centerX!: ?Length = None, centerY!: ?Length = None): T {
-        rotateInner(x ?? 0.0, y ?? 0.0, z ?? 1.0, angle ?? 0.0, centerX ?? 50.percent, centerY ?? 50.percent)
+        rotateInner(x, y, z, angle, centerX, centerY)
     }
 
-    protected open func rotateInner(x: Float64, y: Float64, z: Float64, angle: Float64, centerX: Length, centerY: Length): T {
-        var cx = transAppResourceToLength(centerX)
-        var cy = transAppResourceToLength(centerY)
+    protected open func rotateInner(x: ?Float32, y: ?Float32, z: ?Float32, angle: ?Float32, centerX: ?Length, centerY: ?Length): T {
+        var cx = transAppResourceToLength(centerX ?? 50.percent)
+        var cy = transAppResourceToLength(centerY ?? 50.percent)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetRotate(
-                CJSetRotate(Float32(x), Float32(y), Float32(z), Float32(angle),
+                CJSetRotate(x ?? 0.0, y ?? 0.0, z ?? 1.0, angle ?? 0.0,
                     cx.value, cx.unitType.getValue(), cy.value, cy.unitType.getValue()))
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")

@@ -17,8 +17,9 @@
 
 package ohos.arkui.component.shape
 
+import ohos.arkui.component.common.{ColoringStrategy}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
-import ohos.base.{ResourceColor, Length, VectorFloat64Handle, VectorInt32Handle, FFIVectorFloat64, FFIVectorInt32, LengthProp}
+import ohos.base.{ResourceColor, Length, VectorFloat64Handle, VectorInt32Handle, FFIVectorFloat64, FFIVectorInt32, LengthProp, Color}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 
@@ -74,6 +75,10 @@ foreign {
     func FfiOHOSAceFrameworkShapeSetHeight(height: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkShapeSetSize(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
+
+    func FfiOHOSAceFrameworkShapeSetForegroundColorV2(color: UInt32): Unit
+
+    func FfiOHOSAceFrameworkShapeSetForegroundColorStrategy(strategy: CString): Unit
 
     func FFISetWidthWithEmpty(): Unit
 
@@ -186,6 +191,26 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
             FfiOHOSAceFrameworkShapeSetMesh(vecValueHandle.getNativeHandle(), tmpColumn, tmpRow)
         }
         vecValueHandle.free()
+        this
+    }
+
+    protected override func foregroundColorInner(value: ?ResourceColor): This {
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkShapeSetForegroundColorV2(transAppResourceToResourceColor(v))
+            }
+        }
+        this
+    }
+
+    protected override func foregroundColorInner(value: ?ColoringStrategy): This {
+        if (let Some(v) <- value) {
+            unsafe {
+                try (strategy = LibC.mallocCString(v.getValue()).asResource()) {
+                    FfiOHOSAceFrameworkShapeSetForegroundColorStrategy(strategy.value)
+                }
+            }
+        }
         this
     }
 }
