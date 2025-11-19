@@ -24,7 +24,7 @@ import ohos.labels.{APILevel, Hide}
 import ohos.arkui.shape.{BaseShape}
 import ohos.business_exception.BusinessException
 import ohos.multimedia.image.PixelMap
-import std.math.trunc
+import std.math.{clamp, trunc}
 
 protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     protected init(id: Int64){
@@ -1787,7 +1787,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func opacity(value: ?Float64): T {
-        opacityInner(value)
+        let val = clamp(value ?? 1.0, 0.0, 1.0)
+        opacityInner(val)
     }
 
     protected open func opacityInner(value: ?Float64): T {
