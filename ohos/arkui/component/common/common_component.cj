@@ -26,6 +26,9 @@ import ohos.business_exception.BusinessException
 import ohos.multimedia.image.PixelMap
 import std.math.{clamp, trunc}
 
+let MAX_ANGLE: Float64 = 360.0
+let MIN_ANGLE: Float64 = 0.0
+
 protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     protected init(id: Int64){
         super(id)
@@ -2794,7 +2797,10 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     public func sweepGradient(center: ?(Length, Length), start!: ?Float64 = None, end!: ?Float64 = None,
         rotation!: ?Float64 = None, colors!: ?Array<(ResourceColor, Float64)> = None,
         repeating!: ?Bool = None): T {
-        sweepGradientInner(center, start, end, rotation , colors, repeating)
+        let start_ = clamp(start ?? MIN_ANGLE, MIN_ANGLE, MAX_ANGLE)
+        let end_ = clamp(end ?? MIN_ANGLE, MIN_ANGLE, MAX_ANGLE)
+        let rotation_ = clamp(rotation ?? MIN_ANGLE, MIN_ANGLE, MAX_ANGLE)
+        sweepGradientInner(center, start_, end_, rotation_, colors, repeating)
     }
 
     protected open func sweepGradientInner(center: ?(Length, Length), start: ?Float64, end: ?Float64, rotation: ?Float64,
