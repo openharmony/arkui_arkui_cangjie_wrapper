@@ -5613,7 +5613,7 @@ public enum ScrollState {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    Scrolling
+    Scroll
     |
     /**
      * Inertial scrolling state.
@@ -5629,7 +5629,7 @@ public enum ScrollState {
     protected func getValue(): Int32 {
         match (this) {
             case Idle => 0
-            case Scrolling => 1
+            case Scroll => 1
             case Fling => 2
             case _ => throw BusinessException(100001, "Internal error.")
         }
@@ -5638,7 +5638,7 @@ public enum ScrollState {
     protected static func parseValue(value: Int32): ScrollState {
         match (value) {
             case 0 => Idle
-            case 1 => Scrolling
+            case 1 => Scroll
             case 2 => Fling
             case _ => Idle
         }

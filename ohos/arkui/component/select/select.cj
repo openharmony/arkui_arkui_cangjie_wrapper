@@ -140,7 +140,7 @@ public type OnSelectCallback = (Int32, String) -> Unit;
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class SelectOptions {
+public class SelectOption {
     /**
      * Option string.
      */
@@ -237,13 +237,13 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
     /**
      * Called when the select is set.
      *
-     * @param { ?Array<SelectOptions> } options - The Select component options.
+     * @param { ?Array<SelectOption> } options - The Select component options.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(options: ?Array<SelectOptions>) {
+    public init(options: ?Array<SelectOption>) {
         let tmpOptions = options ?? []
         let vecValueHandle = FFIVectorNativeSelectOption(tmpOptions.size)
         let elements: Array<NativeSelectOption> = Array(tmpOptions.size) {

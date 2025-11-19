@@ -359,227 +359,6 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     /**
-     * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
-     *
-     * @param { ?(DragInfo) -> DragItemInfo } event
-     * @returns { T }
-     * @throws { BusinessException } 100001 - Internal error.
-     * @throws { BusinessException } 190002 - The callback function is invalid.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onDragStart(event: ?(DragInfo) -> DragItemInfo): T {
-        onDragStartInner(event)
-    }
-
-    protected open func onDragStartInner(callback: ?(DragInfo) -> DragItemInfo): T {
-        if (let Some(tmpCallback)<- callback) {
-            unsafe {
-                FfiOHOSAceFrameworkInteractableViewOnDragStart(
-                    CallbackCJDragInfoVCDragItemInfo(
-                        {
-                            evt =>
-                            let ret = tmpCallback(parseCJDragEvent(evt))
-                            let pixelMapId = (ret.pixelMap ?? PixelMap(0)).getID()
-                            let builderId = Callback0Param<Unit>(ret.builder ?? {=>}).getID()
-                            return CJDragItemInfo(
-                                pixelMapId: pixelMapId,
-                                builderId: builderId,
-                                extraInfo: LibC.mallocCString(ret.extraInfo ?? "")
-                            )
-                        }
-                    ).getID(), DragComponent.DragCommon.getValue())
-            }
-        } else {
-            return onDragStartInner({ _: DragInfo => })
-        }
-        (this as T) ?? throw BusinessException(100001, "Internal error.")
-    }
-
-    /**
-     * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
-     *
-     * @param { ?(DragInfo) -> CustomBuilder } event
-     * @returns { T }
-     * @throws { BusinessException } 100001 - Internal error.
-     * @throws { BusinessException } 190002 - The callback function is invalid.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onDragStart(event: ?(DragInfo) -> CustomBuilder): T {
-        onDragStartInner(event)
-    }
-
-    protected open func onDragStartInner(callback: ?(DragInfo) -> CustomBuilder): T {
-        if (let Some(tmpCallback)<- callback) {
-            unsafe {
-                FfiOHOSAceFrameworkInteractableViewOnDragStart(
-                    CallbackCJDragInfoVCDragItemInfo(
-                        {
-                            evt =>
-                            let ret = tmpCallback(parseCJDragEvent(evt))
-                            return CJDragItemInfo(builderId: Callback0Param<Unit>(ret).getID())
-                        }
-                    ).getID(), DragComponent.DragCommon.getValue())
-            }
-        } else {
-            return onDragStartInner({ _: DragInfo => })
-        }
-        (this as T) ?? throw BusinessException(100001, "Internal error.")
-    }
-
-    /**
-     * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
-     *
-     * @param { ?(DragInfo) -> Unit } event
-     * @returns { T }
-     * @throws { BusinessException } 100001 - Internal error.
-     * @throws { BusinessException } 190002 - The callback function is invalid.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onDragStart(event: ?(DragInfo) -> Unit): T {
-        onDragStartInner(event)
-    }
-
-    protected open func onDragStartInner(callback: ?(DragInfo) -> Unit): T {
-        let tmpCallback = callback ?? { _: DragInfo => }
-        unsafe {
-            FfiOHOSAceFrameworkInteractableViewOnDragStart(
-                CallbackCJDragInfoVCDragItemInfo(
-                    {
-                        evt =>
-                        tmpCallback(parseCJDragEvent(evt))
-                        return CJDragItemInfo()
-                    }
-                ).getID(), DragComponent.DragCommon.getValue())
-        }
-        (this as T) ?? throw BusinessException(100001, "Internal error.")
-    }
-
-    /**
-     * After binding, a callback is triggered when the component is dragged to the range of the component.
-     *
-     * @param { ?(DragInfo) -> Unit } event
-     * @returns { T }
-     * @throws { BusinessException } 100001 - Internal error.
-     * @throws { BusinessException } 190002 - The callback function is invalid.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onDragEnter(event: ?(DragInfo) -> Unit): T {
-        onDragEnterInner(event)
-        (this as T) ?? throw BusinessException(100001, "Internal error.")
-    }
-
-    protected open func onDragEnterInner(callback: ?(DragInfo) -> Unit): T {
-        let tmpCallback = callback ?? { _ => }
-        let wrapper = {
-            info: CJDragInfo => tmpCallback(parseCJDragEvent(info))
-        }
-        unsafe {
-            FfiOHOSAceFrameworkInteractableViewOnDragEnter(CallbackCJDragInfo(wrapper).getID(),
-                DragComponent.DragCommon.getValue())
-        }
-        (this as T) ?? throw BusinessException(100001, "Internal error.")
-    }
-
-    /**
-     * After binding, a callback is triggered when the drag moves within the range of a placeable component.
-     *
-     * @param { ?(DragInfo) -> Unit } event
-     * @returns { T }
-     * @throws { BusinessException } 100001 - Internal error.
-     * @throws { BusinessException } 190002 - The callback function is invalid.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onDragMove(event: ?(DragInfo) -> Unit): T {
-        onDragMoveInner(event)
-    }
-
-    protected open func onDragMoveInner(callback: ?(DragInfo) -> Unit): T {
-        let tmpCallback = callback ?? { _ => }
-        let wrapper = {
-            info: CJDragInfo => tmpCallback(parseCJDragEvent(info))
-        }
-        unsafe {
-            FfiOHOSAceFrameworkInteractableViewOnDragMove(CallbackCJDragInfo(wrapper).getID(),
-                DragComponent.DragCommon.getValue())
-        }
-        (this as T) ?? throw BusinessException(100001, "Internal error.")
-    }
-
-    /**
-     * After binding, a callback is triggered when the component is dragged out of the component range.
-     *
-     * @param { ?(DragInfo) -> Unit } event
-     * @returns { T }
-     * @throws { BusinessException } 100001 - Internal error.
-     * @throws { BusinessException } 190002 - The callback function is invalid.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onDragLeave(event: ?(DragInfo) -> Unit): T {
-        onDragLeaveInner(event)
-    }
-
-    protected open func onDragLeaveInner(callback: ?(DragInfo) -> Unit): T {
-        let tmpCallback = callback ?? { _ => }
-        let wrapper = {
-            info: CJDragInfo => tmpCallback(parseCJDragEvent(info))
-        }
-        unsafe {
-            FfiOHOSAceFrameworkInteractableViewOnDragLeave(CallbackCJDragInfo(wrapper).getID(),
-                DragComponent.DragCommon.getValue())
-        }
-        (this as T) ?? throw BusinessException(100001, "Internal error.")
-    }
-
-    /**
-     * The component bound to this event can be used as the drag release target.
-     * This callback is triggered when the drag behavior is stopped within the scope of the component.
-     *
-     * @param { ?(DragInfo) -> Unit } event
-     * @returns { T }
-     * @throws { BusinessException } 100001 - Internal error.
-     * @throws { BusinessException } 190002 - The callback function is invalid.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public func onDrop(event: ?(DragInfo) -> Unit): T {
-        onDropInner(event)
-    }
-    /*
-     * Note: the DragInfo is diff with DragEvent.
-     */
-    protected open func onDropInner(callback: ?(DragInfo) -> Unit): T {
-        let tmpCallback = callback ?? { _ => }
-        let wrapper = {
-            info: CJDragInfo => tmpCallback(parseCJDragEvent(info))
-        }
-        unsafe {
-            FfiOHOSAceFrameworkInteractableViewOnDrop(CallbackCJDragInfo(wrapper).getID(),
-                DragComponent.DragCommon.getValue())
-        }
-        (this as T) ?? throw BusinessException(100001, "Internal error.")
-    }
-
-    /**
      * Sets the width of the component. By default, the width required to fully hold the
      * component content is used.If the width of the component is greater than that of
      * the parent container, the component will be drawn beyond the parent container scope.
@@ -1002,7 +781,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Sets the alignment rules in the relative container.
      * This API is valid only when the container is RelativeContainer.
      *
-     * @param { ?AlignRuleOptions } value
+     * @param { ?AlignRuleOption } value
      * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      * @throws { BusinessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
@@ -1011,12 +790,12 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func alignRules(value: ?AlignRuleOptions): T {
+    public func alignRules(value: ?AlignRuleOption): T {
         alignRulesInner(value)
     }
 
-    protected open func alignRulesInner(value: ?AlignRuleOptions): T {
-        let option = CJAlignRuleOption(value ?? AlignRuleOptions())
+    protected open func alignRulesInner(value: ?AlignRuleOption): T {
+        let option = CJAlignRuleOption(value ?? AlignRuleOption())
         unsafe { FfiOHOSAceFrameworkViewAbstractSetAlignRules(option) }
         option.free()
         (this as T) ?? throw BusinessException(100001, "Internal error.")
@@ -1950,7 +1729,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
      * Shared geometry transition
      *
      * @param { ?String } id
-     * @param { ?Bool } followWithoutTransition
+     * @param { ?Bool } follow
      * @returns { T }
      * @throws { BusinessException } 100001 - Internal error.
      */
@@ -1958,8 +1737,8 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func geometryTransition(id: ?String, followWithoutTransition!: ?Bool = None): T {
-        geometryTransitionInner(id, followWithoutTransition)
+    public func geometryTransition(id: ?String, follow!: ?Bool = None): T {
+        geometryTransitionInner(id, follow)
     }
 
     protected open func geometryTransitionInner(id: ?String, value: ?Bool): T {

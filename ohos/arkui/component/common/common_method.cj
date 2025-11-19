@@ -171,95 +171,7 @@ public interface CommonMethod<T> {
     ]
     func onBlur(event: ?() -> Unit): T
 
-    /**
-     * After a listener is bound, the component can be dragged. After the drag occurs, a callback is triggered.
-     * Registers a callback function that is triggered when a drag operation starts, providing a DragItemInfo.
-     *
-     * @param { ?(DragInfo) -> DragItemInfo } event - The callback function to be executed when drag starts
-     * @returns { T } - Returns the component itself.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    func onDragStart(event: ?(DragInfo) -> DragItemInfo): T
-
-    /**
-     * Registers a callback function that is triggered when a drag operation starts, providing a CustomBuilder.
-     *
-     * @param { ?(DragInfo) -> CustomBuilder } event - The callback function to be executed when drag starts
-     * @returns { T } - Returns the component itself.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    func onDragStart(event: ?(DragInfo) -> CustomBuilder): T
-
-    /**
-     * Registers a callback function that is triggered when a drag operation starts, with no return value.
-     *
-     * @param { ?(DragInfo) -> Unit } event - The callback function to be executed when drag starts
-     * @returns { T } - Returns the component itself.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    func onDragStart(event: ?(DragInfo) -> Unit): T
-
-    /**
-     * Registers a callback function that is triggered when a dragged item enters the component's area.
-     *
-     * @param { ?(DragInfo) -> Unit } event - The callback function to be executed when drag enters
-     * @returns { T } - Returns the component itself.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    func onDragEnter(event: ?(DragInfo) -> Unit): T
-
-    /**
-     * After binding, a callback is triggered when the drag moves within the range of a placeable component.
-     * Registers a callback function that is triggered when a dragged item moves within the component's area.
-     *
-     * @param { ?(DragInfo) -> Unit } event - The callback function to be executed when drag moves
-     * @returns { T } - Returns the component itself.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    func onDragMove(event: ?(DragInfo) -> Unit): T
-
-    /**
-     * After binding, a callback is triggered when the component is dragged out of the component range.
-     * Registers a callback function that is triggered when a dragged item leaves the component's area.
-     *
-     * @param { ?(DragInfo) -> Unit } event - The callback on drag leave
-     * @returns { T } - Returns the component itself.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    func onDragLeave(event: ?(DragInfo) -> Unit): T
-
-    /**
-     * The component bound to this event can be used as the drag release target.
-     * This callback is triggered when the drag behavior is stopped within the scope of the component.
-     * Registers a callback function that is triggered when a dragged item is dropped on the component.
-     *
-     * @param { ?(DragInfo) -> Unit } event - The callback function to be executed when drag drops
-     * @returns { T } - Returns the component itself.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    func onDrop(event: ?(DragInfo) -> Unit): T
-
+    // Common Attribute
     /**
      * Sets the width of the component. By default, the width required to fully hold the
      * component content is used. If the width of the component is greater than that of
@@ -470,14 +382,14 @@ public interface CommonMethod<T> {
      * This API is valid only when the container is RelativeContainer.
      * Sets the alignment rules for the component in a RelativeContainer.
      *
-     * @param { ?AlignRuleOptions } value - The alignment rules
-     * @returns { T } - Returns the component itself.
+     * @param { ?AlignRuleOption } value - The alignment rules
+     * @returns { This } - Returns the component itself
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func alignRules(value: ?AlignRuleOptions): T
+    func alignRules(value: ?AlignRuleOption): T
 
     /**
      * Sets the aspect ratio of the component, which can be obtained using the following formula: width/height.
@@ -961,14 +873,14 @@ public interface CommonMethod<T> {
      * Sets a geometry transition for the component.
      *
      * @param { ?String } id - Geometry transition ID
-     * @param { ?Bool } followWithoutTransition - Whether to follow without transition
-     * @returns { T } - Returns the component itself.
+     * @param { ?Bool } follow - Whether to follow without transition
+     * @returns { This } - Returns the component itself
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func geometryTransition(id: ?String, followWithoutTransition!: ?Bool): T
+    func geometryTransition(id: ?String, follow!: ?Bool): T
 
     /**
      * Adds the content blurring effect for the current component. The input parameter is the blurring radius.

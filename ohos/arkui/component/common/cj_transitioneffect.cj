@@ -230,7 +230,7 @@ public class RotateOptions {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var angle: ?Float64
+    public var angle: ?Float32
 
     /**
      * X coordinate of the rotation axis vector.
@@ -240,7 +240,7 @@ public class RotateOptions {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var x: ?Float64
+    public var x: ?Float32
 
     /**
      * Y coordinate of the rotation axis vector.
@@ -250,7 +250,7 @@ public class RotateOptions {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var y: ?Float64
+    public var y: ?Float32
 
     /**
      * Z coordinate of the rotation axis vector.
@@ -260,7 +260,7 @@ public class RotateOptions {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var z: ?Float64
+    public var z: ?Float32
 
     /**
      * X coordinate of the transformation center point (anchor). Unit is vp.
@@ -302,26 +302,26 @@ public class RotateOptions {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var perspective: ?Float64
+    public var perspective: ?Float32
 
     /**
      * Creates a new RotateOptions instance with the specified properties.
      *
-     * @param { ?Float64 } angle - Rotation angle in degrees
-     * @param { ?Float64 } [x] - X coordinate of the rotation axis vector
-     * @param { ?Float64 } [y] - Y coordinate of the rotation axis vector
-     * @param { ?Float64 } [z] - Z coordinate of the rotation axis vector
+     * @param { ?Float32 } angle - Rotation angle in degrees
+     * @param { ?Float32 } [x] - X coordinate of the rotation axis vector
+     * @param { ?Float32 } [y] - Y coordinate of the rotation axis vector
+     * @param { ?Float32 } [z] - Z coordinate of the rotation axis vector
      * @param { ?Length } [centerX] - X coordinate of the transformation center
      * @param { ?Length } [centerY] - Y coordinate of the transformation center
      * @param { ?Length } [centerZ] - Z coordinate of the transformation center
-     * @param { ?Float64 } [perspective] - Perspective distance
+     * @param { ?Float32 } [perspective] - Perspective distance
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(angle: ?Float64, x!: ?Float64 = None, y!: ?Float64 = None, z!: ?Float64 = None, centerX!: ?Length = None,
-        centerY!: ?Length = None, centerZ!: ?Length = None, perspective!: ?Float64 = None) {
+    public init(angle: ?Float32, x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, centerX!: ?Length = None,
+        centerY!: ?Length = None, centerZ!: ?Length = None, perspective!: ?Float32 = None) {
         this.angle = angle ?? 0.0
         this.x = x ?? 0.0
         this.y = y ?? 0.0
