@@ -154,7 +154,7 @@ public enum ButtonType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    RoundRectangle
+    RoundedRectangle
     | ...
 
     func getValue(): Int32 {
@@ -162,7 +162,7 @@ public enum ButtonType {
             case Normal => 0
             case Capsule => 1
             case Circle => 2
-            case RoundRectangle => 3
+            case RoundedRectangle => 3
             case _ => throw BusinessException(100001, "Internal error.")
         }
     }
@@ -639,7 +639,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func shape(value: ?ButtonType): This {
-        let tmpValue = value ?? ButtonType.RoundRectangle
+        let tmpValue = value ?? ButtonType.RoundedRectangle
         unsafe {
             FfiOHOSAceFrameworkButtonSetType(tmpValue.getValue())
         }

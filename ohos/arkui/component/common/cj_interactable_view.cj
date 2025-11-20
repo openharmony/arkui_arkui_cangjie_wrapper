@@ -258,37 +258,6 @@ public class ClickEvent <: BaseEvent {
 }
 
 /**
- * Contains information about a drag operation.
- */
-@!APILevel[
-    since: "22",
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public class DragInfo {
-    /**
-     * Can contain custom data associated with the drag operation.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var extraParams: String
-    /**
-     * Current position of the drag operation.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    public var touchPoint: Position
-
-    init(extraParams: String, touchPoint: Position) {
-        this.extraParams = extraParams
-        this.touchPoint = touchPoint
-    }
-}
-
-/**
  * Contains information about the visual representation of a dragged item.
  */
 @!APILevel[

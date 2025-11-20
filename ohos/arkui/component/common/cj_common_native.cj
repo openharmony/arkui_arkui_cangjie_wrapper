@@ -66,7 +66,7 @@ struct CJAlignRuleOption {
     var horizontalBias: CPointer<Float32> = CPointer<Float32>()
     var verticalBias: CPointer<Float32> = CPointer<Float32>()
 
-    init(option: AlignRuleOptions) {
+    init(option: AlignRuleOption) {
         try {
             if (let Some(v) <- option.left) {
                 leftAnchor = unsafe { LibC.mallocCString(v.anchor ?? "") }

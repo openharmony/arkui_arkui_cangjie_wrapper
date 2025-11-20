@@ -256,18 +256,6 @@ func parseCJKeyEvent(cjKeyEvent: CJKeyEvent): KeyEvent {
     )
 }
 
-func parseCJDragEvent(cjDragEvent: CJDragInfo): DragInfo {
-    unsafe {
-        if (cjDragEvent.dragEvent.isNull()) {
-            throw BusinessException(100001, "Internal error.")
-        }
-        DragInfo(
-            cjDragEvent.extraParams.toString(),
-            Position(x: cjDragEvent.dragEvent.read().x, y: cjDragEvent.dragEvent.read().y),
-        )
-    }
-}
-
 func parseCJMouseEvent(cjMouseEvent: CJMouseEvent): MouseEvent {
     return MouseEvent(
         cjMouseEvent.timestamp,

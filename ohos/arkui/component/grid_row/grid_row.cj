@@ -67,9 +67,9 @@ struct GutterLength {
 }
 
 struct GutterSizeOption {
-    let x: GridRowSizeOptions
-    let y: GridRowSizeOptions
-    GutterSizeOption(x: GridRowSizeOptions, y: GridRowSizeOptions) {
+    let x: GridRowSizeOption
+    let y: GridRowSizeOption
+    GutterSizeOption(x: GridRowSizeOption, y: GridRowSizeOption) {
         this.x = x
         this.y = y
     }
@@ -156,7 +156,7 @@ public enum BreakpointsReference {
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class GridRowSizeOptions {
+public class GridRowSizeOption {
     /**
      * Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint.
      */
@@ -207,7 +207,7 @@ public class GridRowSizeOptions {
     public var xxl: ?Length
 
     /**
-     * Defines the constructor of GridRowSizeOptions.
+     * Defines the constructor of GridRowSizeOption.
      *
      * @param { ?Length } [xs] - Grid Row Size Option xs, select xs gutter size based on gridRow current breakpoint.
      * @param { ?Length } [sm] - Grid Row Size Option sm, select sm gutter size based on gridRow current breakpoint.
@@ -237,7 +237,7 @@ public class GridRowSizeOptions {
     }
 
     /**
-    * Defines the constructor of GridRowSizeOptions.
+    * Defines the constructor of GridRowSizeOption.
     *
     * @param { ?Length } value - The value to set for all breakpoints.
     */
@@ -441,14 +441,14 @@ public class GridRowOptions {
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public class GutterOptions {
+public class GutterOption {
     let data: GridRowGutter
     /**
-     * Defines the constructor of GutterOptions.
-     *
-     * @param { ?Length } [x] - Horizontal spacing between grid items.
-     * @param { ?Length } [y] - Vertical spacing between grid items.
-     */
+    * Defines the constructor of GutterOption.
+    *
+    * @param { ?Length } [x] - Horizontal spacing between grid items.
+    * @param { ?Length } [y] - Vertical spacing between grid items.
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -458,17 +458,17 @@ public class GutterOptions {
     }
 
     /**
-    * Defines the constructor of GutterOptions.
+    * Defines the constructor of GutterOption.
     *
-    * @param { ?GridRowSizeOptions } x - Horizontal spacing options between grid items.
-    * @param { ?GridRowSizeOptions } y - Vertical spacing options between grid items.
+    * @param { ?GridRowSizeOption } x - Horizontal spacing options between grid items.
+    * @param { ?GridRowSizeOption } y - Vertical spacing options between grid items.
     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(x!: ?GridRowSizeOptions, y!: ?GridRowSizeOptions) {
-        this.data = GridRowGutter.GUTTEROPTION(GutterSizeOption(x ?? GridRowSizeOptions(), y ?? GridRowSizeOptions()))
+    public init(x!: ?GridRowSizeOption, y!: ?GridRowSizeOption) {
+        this.data = GridRowGutter.GUTTEROPTION(GutterSizeOption(x ?? GridRowSizeOption(), y ?? GridRowSizeOption()))
     }
 }
 
@@ -683,9 +683,9 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
      * Defines the constructor of GridRow.
      *
      * @param { ?Int32 } columns - Sets the total number of columns in the current layout.
-     * @param { ?GutterOptions } gutter - layout spacing between sub-components.
-     * @param { ?BreakPoints } [breakpoints] - grid-row layout breakpoints.
-     * @param { ?GridRowDirection } [direction] - grid-row layout direction.
+     * @param { ?GutterOption } gutter - Layout spacing between sub-components.
+     * @param { ?BreakPoints } [breakpoints] - Grid-row layout breakpoints.
+     * @param { ?GridRowDirection } [direction] - Grid-row layout direction.
      * @param { () -> Unit } [child] - The child component of GridRow.
      */
     @!APILevel[
@@ -694,7 +694,7 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     ]
     public init(
         columns!: ?Int32,
-        gutter!: ?GutterOptions,
+        gutter!: ?GutterOption,
         breakpoints!: ?BreakPoints = Option.None,
         direction!: ?GridRowDirection = Option.None,
         child!: () -> Unit = {=>}
@@ -703,27 +703,27 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     }
 
     /**
-     * Defines the constructor of GridRow.
-     *
-     * @param { ?GridRowOptions } [columns] - Sets the total number of columns in the current layout.
-     * @param { ?GutterOptions } gutter - layout spacing between sub-components.
-     * @param { ?BreakPoints } [breakpoints] - grid-row layout breakpoints.
-     * @param { ?GridRowDirection } [direction] - grid-row layout direction.
-     * @param { () -> Unit } [child] - The child component of GridRow.
-     */
+    * Defines the constructor of GridRow.
+    * 
+    * @param { ?GridRowOptions } columns - Sets the total number of columns in the current layout.
+    * @param { ?GutterOption } gutter - Layout spacing between sub-components.
+    * @param { ?BreakPoints } [breakpoints] - Grid-row layout breakpoints.
+    * @param { ?GridRowDirection } [direction] - Grid-row layout direction.
+    * @param { () -> Unit } [child] - The child component of GridRow.
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
         columns!: ?GridRowOptions = None,
-        gutter!: ?GutterOptions,
+        gutter!: ?GutterOption,
         breakpoints!: ?BreakPoints = Option.None,
         direction!: ?GridRowDirection = Option.None,
         child!: () -> Unit = {=>}
     ) {
         let tmpColumns = columns ?? GridRowOptions()
-        let tmpGutter = gutter ?? GutterOptions()
+        let tmpGutter = gutter ?? GutterOption()
         let tmpBreakpoints = breakpoints ?? BreakPoints()
         let tmpBreakpointsValue = tmpBreakpoints.value ?? [320.vp, 600.vp, 840.vp]
         let tmpDirection = direction ?? GridRowDirection.Row
