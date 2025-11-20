@@ -135,7 +135,15 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
         let tmpEdgeEffect = edgeEffect ?? SwipeEdgeEffect.Spring
         let startLambda = Callback0Param<Unit>(start ?? {=>})
         let endLambda = Callback0Param<Unit>(end ?? {=>})
-        let onOffsetLambda = Callback1Param<Float64, Unit>(onOffsetChange ?? {_: Float64 =>})
+        let onOffsetWrapper = { value: Int32 =>
+            match(onOffsetChange) {
+                case Some(callback) =>
+                    callback(Float64(value))
+                case None => ()
+            }
+        }
+
+        let onOffsetLambda = Callback1Param<Int32, Unit>(onOffsetWrapper)
 
         unsafe {
             FfiOHOSAceFrameworkListItemSetSwipeAction2(startLambda.getID(), endLambda.getID(), tmpEdgeEffect.getValue(),
