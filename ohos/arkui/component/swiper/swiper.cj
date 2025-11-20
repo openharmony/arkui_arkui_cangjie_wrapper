@@ -24,6 +24,8 @@ import ohos.base.{Length, ResourceColor, VoidCallback, LengthProp, Color, CStrin
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback1Param, Callback0Param}
 import ohos.labels.APILevel
 
+const DEFAULT_CACHED_COUNT: Int32 = 1
+
 @C
 struct CJIndicatorStyle {
     CJIndicatorStyle(
@@ -1113,8 +1115,12 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func cachedCount(value: ?Int32): This {
+        var cachedCountNum = value ?? DEFAULT_CACHED_COUNT
+        if (cachedCountNum < 0) {
+            cachedCountNum = DEFAULT_CACHED_COUNT
+        }
         unsafe {
-            FfiOHOSAceFrameworkSwiperSetCachedCount(value ?? 1)
+            FfiOHOSAceFrameworkSwiperSetCachedCount(cachedCountNum)
         }
         this
     }
