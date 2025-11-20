@@ -1130,7 +1130,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func onImeInputComplete(callback: ?Callback<RichEditorTextSpanResult, Unit>): RichEditor {
+    public func onImeInputComplete(callback: ?Callback<RichEditorTextSpanResult, Unit>): This {
         let tmpCallback = callback ?? { _ => false }
         let wrapper = {
             value: NativeRichEditorTextSpanResult => tmpCallback(parseNativeRichEditorTextSpanResult(value))
