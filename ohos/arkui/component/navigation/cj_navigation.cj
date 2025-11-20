@@ -681,7 +681,10 @@ public class Navigation <: CommonMethodComponent<Navigation> & NavigationAttribu
         let tmpBuilder = builder ?? { _: String, _: Any => }
         let wrapper = { value: CString =>
             let name = value.toString()
-            let param = Navigation.navParamsMap[name]
+            var param: Any = ""
+            if (Navigation.navParamsMap.contains(name)) {
+                param = Navigation.navParamsMap[name]
+            }
             tmpBuilder(name, param)
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)

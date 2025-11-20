@@ -16,7 +16,7 @@
 package ohos.arkui.component.common
 
 import ohos.arkui.component.native_struct.{CJClickEvent, CJArea, CJEdge, CJConstraintSize, CJResponseRegion, FFIVectorNativeRectangle, CJBorder, CJBorderRadius, CJForegroundBlurStyleOptions, CJSetScale, CJSetRotate, CJTranslate, CJSharedTransitionOptions, CJBindPopupParamsV2, CJBindCustomPopupV2, CArrCColors, LinearGradientParam, CTupleLength, SweepGradientParam, RadialGradientParam, NativeOptionAnimateParam, CJContextMenuOptions, CColors, CJBlurOptions, CJMotionPathOptions, NativeAnimateParam}
-import ohos.arkui.component.util.{transAppResourceToLength, LENGTH_PERCENT, transAppResourceToResourceColor, lessNotEqual}
+import ohos.arkui.component.util.{transAppResourceToLength, LENGTH_PERCENT, transAppResourceToResourceColor, lessNotEqual, lessOrEqual}
 import ohos.base.{Length, ResourceColor, FFIVectorFloat64, BASE_LOG, Color, NativeOptionCallBack, NativeOptionInt64, FFIVectorString, ResourceStr, LengthProp}
 import ohos.ffi.{Callback0Param, Callback1Param}
 import ohos.resource.{AppResource, getResourceMedia}
@@ -821,7 +821,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func aspectRatioInner(value: Float64): T {
-        if (lessNotEqual(value, 0.0)) {
+        if (lessOrEqual(value, 0.0)) {
             unsafe {
                 FfiOHOSAceFrameworkViewAbstractResetAspectRatio()
             }
