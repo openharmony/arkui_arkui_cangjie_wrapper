@@ -874,8 +874,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     protected open func flexBasisInner(value: ?Length): T {
         if (let Some(v) <- value) {
             var v_ = transAppResourceToLength(v)
-            unsafe {
-                FfiOHOSAceFrameworkViewAbstractSetFlexBasis(v_.value, v_.unitType.getValue())
+            // flexbasis not support percent, but when value < 0, cffi will set value to 0.0.px
+            if (v_.unitType.getValue() != LENGTH_PERCENT || lessNotEqual(v_.value, 0.0)) {
+                unsafe {
+                    FfiOHOSAceFrameworkViewAbstractSetFlexBasis(v_.value, v_.unitType.getValue())
+                }
             }
         } else {
             unsafe {
