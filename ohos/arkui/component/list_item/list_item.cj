@@ -135,12 +135,11 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
         let tmpEdgeEffect = edgeEffect ?? SwipeEdgeEffect.Spring
         let startLambda = Callback0Param<Unit>(start ?? {=>})
         let endLambda = Callback0Param<Unit>(end ?? {=>})
-        let onOffsetWrapper = { value: Int32 =>
-            match(onOffsetChange) {
-                case Some(callback) =>
-                    callback(Float64(value))
-                case None => ()
-            }
+        let onOffsetWrapper = match(onOffsetChange) {
+            case Some(callback) =>
+                { value: Int32 => callback(Float64(value)) }
+            case None =>
+                { value: Int32 => () }
         }
 
         let onOffsetLambda = Callback1Param<Int32, Unit>(onOffsetWrapper)
