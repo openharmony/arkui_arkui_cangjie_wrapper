@@ -19,7 +19,7 @@ package ohos.arkui.component.text_field
 
 import ohos.arkui.component.common.{BorderStyle, EnterKeyType, TextAlign, InputType, FontWeight, FontStyle, TextDecorationType, TextDecorationStyle, LineBreakStrategy, WordBreak, TextHeightAdaptivePolicy, TextOverflow, TextContentStyle, TextInputStyle, BarState, ContentType, TextAreaType, CopyOptions, EnterKeyType, EdgeWidths}
 import ohos.arkui.component.native_struct.{CJBorderRadius, CJEdge, CJBorder}
-import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, getLengthUnitOrFp, lessNotEqual}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, getLengthUnitOrFp, lessNotEqual, LENGTH_PERCENT}
 import ohos.base.{Length, ResourceColor, CStringExtend, APP_LOG, Color, LengthProp}
 import ohos.ffi.{Callback1Param, Callback0Param, Callback2Param, Callback3Param}
 import ohos.labels.APILevel
@@ -318,6 +318,10 @@ protected class TextField {
     protected static func borderWidth(width: ?Length): Unit {
         if (let Some(v) <- width) {
             var w = transAppResourceToLength(v)
+            if (w.unitType.getValue() == LENGTH_PERCENT) {
+                // borderWidth doesn't support percent, defaults to 0.0.px
+                w = transAppResourceToLength(0.0.px)
+            }
             unsafe {
                 FfiOHOSAceFrameworkTextFieldSetBorderWidth(w.value, w.unitType.getValue())
             }

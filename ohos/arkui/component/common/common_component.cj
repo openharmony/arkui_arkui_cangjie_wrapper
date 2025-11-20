@@ -1115,10 +1115,11 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         if (let Some(v) <- value) {
             var v_ = transAppResourceToLength(v)
             if (v_.unitType.getValue() == LENGTH_PERCENT) {
-                throw BusinessException(100023, "Percentage values are not supported.")
+                // borderWidth doesn't support percent, defaults to 0.0.px
+                v_ = transAppResourceToLength(0.0.px)
             }
             unsafe {
-                FfiOHOSAceFrameworkViewAbstractSetBorderWidth(v.value, v.unitType.getValue())
+                FfiOHOSAceFrameworkViewAbstractSetBorderWidth(v_.value, v_.unitType.getValue())
             }
         } else {
             unsafe {

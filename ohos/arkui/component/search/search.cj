@@ -559,6 +559,10 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     protected override func borderWidthInner(width: ?Length): This {
         if (let Some(v) <- width) {
             var w = transAppResourceToLength(v)
+            if (w.unitType.getValue() == LENGTH_PERCENT) {
+                // borderWidth doesn't support percent, defaults to 0.0.px
+                w = transAppResourceToLength(0.0.px)
+            }
             unsafe {
                 FfiOHOSAceFrameworkSearchSetBorderWidth(w.value, w.unitType.getValue())
             }
