@@ -28,7 +28,7 @@ protected const LENGTH_FP: Int32 = 2
 protected const LENGTH_PERCENT: Int32 = 3
 protected const LENGTH_LPX: Int32 = 4
 protected const EMPTY_FUNCTION = { => }
-let EPSILON: Float64 = -0.001
+let EPSILON: Float64 = 0.001
 let MEMORY_OP_ERR: Int32 = 9800001
 
 protected func normalizeValue(value: Length, targetValue: Float64) {
@@ -88,5 +88,9 @@ protected func transResourceMediaToString(value: ResourceStr): String {
 }
 
 protected func lessNotEqual(left: Float64, right: Float64): Bool {
+    return (left - right < -EPSILON)
+}
+
+protected func lessOrEqual(left: Float64, right: Float64): Bool {
     return (left - right < EPSILON)
 }
