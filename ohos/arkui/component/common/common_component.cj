@@ -1655,9 +1655,9 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     }
 
     protected open func translateInner(xAxis: ?Length, yAxis: ?Length, zAxis: ?Length): T {
-        var x = transAppResourceToLength(xAxis ?? 0.vp)
-        var y = transAppResourceToLength(yAxis ?? 0.vp)
-        var z = transAppResourceToLength(zAxis ?? 0.vp)
+        var x = transAppResourceToLength(xAxis ?? 0.px)
+        var y = transAppResourceToLength(yAxis ?? 0.px)
+        var z = transAppResourceToLength(zAxis ?? 0.px)
         unsafe {
             FfiOHOSAceFrameworkViewAbstractSetTranslate(
                 CJTranslate(x.value, x.unitType.getValue(), y.value, y.unitType.getValue(), z.value,
