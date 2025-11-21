@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess, Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, parseExprFragment, TokenKind, ToTokens, parseDecl, getChildMessages, Argument}
+import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess, Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, parseExprFragment, TokenKind, ToTokens, parseDecl, getChildMessages, Argument, DiagReportLevel, diagReport}
 import std.collection.{ArrayList}
 import std.unicode.{UnicodeStringExtension}
 
@@ -1389,7 +1389,13 @@ func handleBuilderRender(input: Expr, thisView: Tokens): Tokens {
 
 @When[pipeline == "NG"]
 func handleCallArgs(input: Expr, thisView: Tokens): Tokens {
-    let callExpr = (input as CallExpr).getOrThrow()
+    let callExpr = match(input as CallExpr) {
+        case Some(v) => v
+        case None =>
+            diagReport(DiagReportLevel.ERROR, input.toTokens(),
+                "Only UI component syntax can be written in build method. " + "${quote($input)} does not meet UI component.", "")
+            return input.toTokens()
+    }
     let baseExpr = callExpr.callFunc
     let args = callExpr.arguments
     var componentArg = Tokens()
