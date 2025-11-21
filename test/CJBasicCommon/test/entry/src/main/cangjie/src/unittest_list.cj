@@ -31,15 +31,13 @@ func testsuite(): Unit{
     registerTestSuite("BasicCommonUT4") {BasicCommonUT4()}
     registerTestSuite("BasicCommonUT41") {BasicCommonUT41()}
     registerTestSuite("BasicCommonUTHello") {BasicCommonUTHello()}
-    registerTestSuite("BasicCommonUTDragEvent") {BasicCommonUTDragEvent()}
 }
 let UT_views = ObservedArrayList<String>([
     "BasicCommonIndex1",
     "BasicCommonIndex2",
     "BasicCommonIndex3",
     "BasicCommonIndex4",
-    "ViewHello",
-    "ViewDragTest"
+    "ViewHello"
 ])
 let UT1 = ObservedArrayList<String>([
     "ViewAccessibility",

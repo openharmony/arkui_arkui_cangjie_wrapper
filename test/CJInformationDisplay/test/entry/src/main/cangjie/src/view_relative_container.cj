@@ -34,7 +34,7 @@ class ViewRelativeContainer {
                         Text("Row1")
                     }.width(100.px).height(100.px)
                     .alignRules(
-                        AlignRuleOptions(
+                        AlignRuleOption(
                             top: VerticalAlignParam("guideline1", VerticalAlign.Top),
                         )
                     )
@@ -54,7 +54,7 @@ class ViewRelativeContainer {
                         Text("Row2")
                     }.width(100.px).height(100.px)
                     .alignRules(
-                        AlignRuleOptions(
+                        AlignRuleOption(
                             left: HorizontalAlignParam("guideline2", HorizontalAlign.End),
                         )
                     )
@@ -74,7 +74,7 @@ class ViewRelativeContainer {
                         Text("Row3")
                     }.width(100.px).height(100.px)
                     .alignRules(
-                        AlignRuleOptions(
+                        AlignRuleOption(
                             top: VerticalAlignParam("guideline3", VerticalAlign.Top),
                         )
                     )
@@ -94,7 +94,7 @@ class ViewRelativeContainer {
                         Text("Row4")
                     }.width(100.px).height(100.px)
                     .alignRules(
-                        AlignRuleOptions(
+                        AlignRuleOption(
                             left: HorizontalAlignParam("guideline4", HorizontalAlign.End),
                         )
                     )
@@ -121,7 +121,7 @@ class ViewRelativeContainer {
                     }.width(100.px).height(100.px)
                     .backgroundColor(0xFFCC00)
                     .alignRules(
-                        AlignRuleOptions(
+                        AlignRuleOption(
                             left: HorizontalAlignParam("barrier1", HorizontalAlign.End)
                         )
                     ).id("row6")
@@ -145,7 +145,7 @@ class ViewRelativeContainer {
                     }.width(100.px).height(100.px)
                     .backgroundColor(0xFFCC00)
                     .alignRules(
-                        AlignRuleOptions(
+                        AlignRuleOption(
                             left: HorizontalAlignParam("barrier2", HorizontalAlign.End)
                         )
                     ).id("row8")
@@ -169,7 +169,7 @@ class ViewRelativeContainer {
                     }.width(100.px).height(100.px)
                     .backgroundColor(0xFFCC00)
                     .alignRules(
-                        AlignRuleOptions(
+                        AlignRuleOption(
                             top:VerticalAlignParam("barrier3", VerticalAlign.Bottom)
                         )
                     ).id("row10")
@@ -193,7 +193,7 @@ class ViewRelativeContainer {
                     }.width(100.px).height(100.px)
                     .backgroundColor(0xFFCC00)
                     .alignRules(
-                        AlignRuleOptions(
+                        AlignRuleOption(
                             top:VerticalAlignParam("barrier4", VerticalAlign.Bottom)
                         )
                     ).id("row12")
@@ -210,7 +210,7 @@ class ViewRelativeContainer {
                         Text("Row13")
                     }.width(100.px).height(100.px)
                     .alignRules(
-                        AlignRuleOptions(
+                        AlignRuleOption(
                             top: VerticalAlignParam("guideline5", VerticalAlign.Top),
                             left: HorizontalAlignParam("guideline6", HorizontalAlign.End)
                         )
@@ -239,7 +239,7 @@ class ViewRelativeContainer {
                     }.width(100.px).height(100.px)
                     .backgroundColor(0xFFCC00)
                     .alignRules(
-                        AlignRuleOptions(
+                        AlignRuleOption(
                             top: VerticalAlignParam("row17", VerticalAlign.Bottom),
                             middle: HorizontalAlignParam("row17", HorizontalAlign.End)
                         )
@@ -250,7 +250,7 @@ class ViewRelativeContainer {
                     }.height(100.px).width(100.px)
                     .backgroundColor(0xFF6633)
                     .alignRules(
-                        AlignRuleOptions(
+                        AlignRuleOption(
                             top: VerticalAlignParam("row17", VerticalAlign.Top),
                             left: HorizontalAlignParam("barrier5", HorizontalAlign.End)
                         )
@@ -261,7 +261,7 @@ class ViewRelativeContainer {
                     }.width(100.px).height(100.px)
                     .backgroundColor(0xFF9966)
                     .alignRules(
-                        AlignRuleOptions(
+                        AlignRuleOption(
                             top: VerticalAlignParam("barrier6", VerticalAlign.Bottom),
                             left: HorizontalAlignParam("row17", HorizontalAlign.Start),
                         )

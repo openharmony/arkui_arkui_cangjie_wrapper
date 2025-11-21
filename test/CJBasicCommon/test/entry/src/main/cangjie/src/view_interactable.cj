@@ -99,37 +99,13 @@ class ViewInteractable {
             Flex(direction: FlexDirection.Row, alignItems: ItemAlign.Center,
                 justifyContent: FlexAlign.SpaceAround) {
                 Button("apple").width(25.percent).height(35).fontSize(16).id("apple").backgroundColor(0xAFEEEE).
-                    visibility(this.appleVisible).onDragStart(
-                    {
-                        evt =>
-                        this.text = "apple"
-                        this.appleVisible = Visibility.Hidden
-                    }
-                )
+                    visibility(this.appleVisible)
 
                 Button("orange").width(25.percent).height(35).fontSize(16).id("orange").backgroundColor(0xAFEEEE).
-                    visibility(this.orangeVisible).onDragStart(
-                    {
-                        evt =>
-                        this.text = "apple"
-                        this.orangeVisible = Visibility.Hidden
-                        pixelMapBuilder
-                    }
-                )
+                    visibility(this.orangeVisible)
 
                 Button("banana").width(25.percent).height(35).fontSize(16).backgroundColor(0xAFEEEE).visibility(
-                    this.bananaVisible).onDragStart(
-                    {
-                        evt =>
-                        this.text = "apple"
-                        this.bananaVisible = Visibility.Hidden
-                        var colors: Array<UInt8> = [80, 2, 4, 8, 40, 2, 4, 8]
-                        var size: Size = Size(4, 3)
-                        let opts = InitializationOptions(size)
-                        let pixelMap = createPixelMap(colors, opts)
-                        return  bind(pixelMapBuilder, this)
-                    }
-                )
+                    this.bananaVisible)
             }.border(width: 1.px).width(90.percent).padding(top: 10, bottom: 10).margin(10)
 
             Text("This is a List element").fontSize(12).fontColor(0xCCCCCC).width(90.percent).textAlign(TextAlign.Start)
@@ -141,28 +117,11 @@ class ViewInteractable {
                         itemInfo: String, index: Int64 => ListItem() {
                             Text(itemInfo).fontSize(16.px).textAlign(TextAlign.Center).borderRadius(10.px).
                                 backgroundColor(0xAFEEEE).width(100.percent).height(80).id("text_${index}")
-                        }.onDragStart(
-                            {
-                                evt =>
-                                return {=>}
-                            }
-                        )
+                        }
                     }
                 )
             }.height(20.percent).width(90.percent).border(width: 1.px).divider(ListDividerOptions(strokeWidth: 2.px,
-                color: Color.Red, startMargin: 20.px, endMargin: 20.px)).onDragEnter(
-                {
-                evt =>
-            }).onDragMove(
-                {
-                evt =>
-            }).onDragLeave(
-                {
-                evt =>
-            }).onDrop(
-                {
-                evt =>
-            })
+                color: Color.Red, startMargin: 20.px, endMargin: 20.px))
 
             Button("Click").backgroundColor(0x2788D9).id("keyBtn").onKeyEvent(
                 {

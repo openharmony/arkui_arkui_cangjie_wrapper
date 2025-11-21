@@ -60,7 +60,6 @@ class ViewDragControl {
             .bindContextMenu(builder: this.menuBuilder, responseType: ResponseType.RightClick)
 
             Button("test drag control 1.").width(200).height(200).id("button1")
-            .onDragStart({ evt =>  })
             .dragPreview("")
             .bindContextMenu(builder: this.menuBuilder, responseType: ResponseType.RightClick)
 

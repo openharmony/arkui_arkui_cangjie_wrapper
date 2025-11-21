@@ -50,7 +50,7 @@ class ViewWeb {
                     .onClick ({
                         evt =>
                         Hilog.info(1,"1","refresh")
-                        webController.refresh()
+                        webController.reload()
                     })
                     .width(400.px)
                     .height(150.px)

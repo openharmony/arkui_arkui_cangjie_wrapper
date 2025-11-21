@@ -34,7 +34,7 @@ class ViewRelativeContainer3 {
                 .height(100)
                 .backgroundColor(0xa3cf62)
                 .alignRules(
-                    AlignRuleOptions(
+                    AlignRuleOption(
                         top: VerticalAlignParam("__container__", VerticalAlign.Top),
                         bottom: VerticalAlignParam("__container__", VerticalAlign.Bottom),
                         left: HorizontalAlignParam("__container__", HorizontalAlign.Start),
@@ -57,7 +57,7 @@ class ViewRelativeContainer3 {
                 .height(100)
                 .backgroundColor(0xa3cf62)
                 .alignRules(
-                    AlignRuleOptions(
+                    AlignRuleOption(
                         top: VerticalAlignParam("__container__", VerticalAlign.Top),
                         bottom: VerticalAlignParam("__container__", VerticalAlign.Bottom),
                         left: HorizontalAlignParam("__container__", HorizontalAlign.Start),
