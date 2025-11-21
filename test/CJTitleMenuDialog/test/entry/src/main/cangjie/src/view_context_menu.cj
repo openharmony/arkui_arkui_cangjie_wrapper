@@ -49,10 +49,6 @@ class ViewContextMenu {
                     .textAlign(TextAlign.Center)
             }
                 .bindContextMenu(builder: this.menuBuilder, responseType: ResponseType.LongPress)
-                .onDragStart({
-                    evt =>
-                //                        ContextMenu.close()
-                })
                 .id("context_menu")
         }.width(100.percent).height(100.percent).id("my_menu")
     }

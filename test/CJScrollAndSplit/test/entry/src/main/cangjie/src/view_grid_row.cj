@@ -127,8 +127,8 @@ class ViewGridRow {
                 .id("grid_row_4")
 
             GridRow(
-                gutter: GutterOptions(x: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
-                    y: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
+                gutter: GutterOption(x: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
+                    y: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp], //设置断点位置的单调递增数组。
                     reference: BreakpointsReference.WindowSize
@@ -208,8 +208,8 @@ class ViewGridRow {
                 .id("grid_row_7")
 
             GridRow(
-                gutter: GutterOptions(x: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
-                    y: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
+                gutter: GutterOption(x: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
+                    y: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
                 columns: 2,
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp], //设置断点位置的单调递增数组。
@@ -236,8 +236,8 @@ class ViewGridRow {
                 .id("grid_row_8")
 
             GridRow(
-                gutter: GutterOptions(x: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
-                    y: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
+                gutter: GutterOption(x: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
+                    y: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
                 columns: GridRowOptions(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp], //设置断点位置的单调递增数组。
@@ -264,8 +264,8 @@ class ViewGridRow {
                 .id("grid_row_9")
 
             GridRow(
-                gutter: GutterOptions(x: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
-                    y: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
+                gutter: GutterOption(x: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
+                    y: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
                 columns: 2,
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp], //设置断点位置的单调递增数组。
@@ -297,8 +297,8 @@ class ViewGridRow {
                 .id("grid_row_attr")
 
             GridRow(
-                gutter: GutterOptions(x: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
-                    y: GridRowSizeOptions(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
+                gutter: GutterOption(x: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp),
+                    y: GridRowSizeOption(xs: 1.vp, sm: 2.vp, md: 3.vp, lg: 2.vp, xl: 3.vp, xxl: 3.vp)),
                 columns: 2,
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp], //设置断点位置的单调递增数组。
@@ -360,9 +360,9 @@ class ViewGridRow {
             }
 
             GridRow(
-                gutter: GutterOptions(
-                    x: GridRowSizeOptions(),
-                    y: GridRowSizeOptions(0.vp)
+                gutter: GutterOption(
+                    x: GridRowSizeOption(),
+                    y: GridRowSizeOption(0.vp)
                 ),
                 direction: GridRowDirection.Row) {
                 GridCol() {
@@ -395,7 +395,7 @@ class ViewGridRow {
             }
 
             GridRow(
-                gutter: GutterOptions(x: 1.vp,
+                gutter: GutterOption(x: 1.vp,
                     y: 1.vp),
                 columns: 1,
                 direction: GridRowDirection.Row) {
@@ -407,7 +407,7 @@ class ViewGridRow {
             }
 
             GridRow(
-                gutter: GutterOptions(x: 1.vp,
+                gutter: GutterOption(x: 1.vp,
                     y: 1.vp),
                 columns: GridRowOptions(xs: 5, sm: 6, md: 7, lg: 8, xl: 9, xxl: 10),
                 direction: GridRowDirection.RowReverse) {

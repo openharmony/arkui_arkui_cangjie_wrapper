@@ -61,7 +61,7 @@ class ViewButton {
                 Button(
                     "Ok",
                     ButtonOptions(
-                        shape: ButtonType.RoundRectangle,
+                        shape: ButtonType.RoundedRectangle,
                         stateEffect: true,
                         buttonStyle: ButtonStyleMode.Textual,
                         controlSize: ControlSize.Small,

@@ -31,13 +31,13 @@ class ViewSelect {
     var space: Int64 = 8
 
     @State
-    var values1: Array<SelectOptions> = [
-        SelectOptions(value: "aaa", icon: @r(app.media.app_icon)),
-        SelectOptions(value: "bbb", icon: @r(app.media.app_icon)),
-        SelectOptions(value: "ccc", icon: @r(app.media.app_icon)),
-        SelectOptions(value: "ddd", icon: @r(app.media.app_icon)),
-        SelectOptions(value: @r(app.string.selection_option), icon: @r(app.media.app_icon)),
-        SelectOptions(value: @r(app.string.selection_option), icon: "text content")
+    var values1: Array<SelectOption> = [
+        SelectOption(value: "aaa", icon: @r(app.media.app_icon)),
+        SelectOption(value: "bbb", icon: @r(app.media.app_icon)),
+        SelectOption(value: "ccc", icon: @r(app.media.app_icon)),
+        SelectOption(value: "ddd", icon: @r(app.media.app_icon)),
+        SelectOption(value: @r(app.string.selection_option), icon: @r(app.media.app_icon)),
+        SelectOption(value: @r(app.string.selection_option), icon: "text content")
     ]
 
     @State
