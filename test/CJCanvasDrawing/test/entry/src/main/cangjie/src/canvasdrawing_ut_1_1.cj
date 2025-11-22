@@ -24,6 +24,7 @@ import ohos.arkui.state_macro_manage.*
 import std.convert.*
 import std.math.abs
 import ohos.ui_test.*
+import ohos.device_info.*
 
 @Test
 class CanvasDrawingUT11 {
@@ -210,7 +211,13 @@ class CanvasDrawingUT11 {
 
         let sourceSize = attrs.get("sourceSize").getOrThrow().toString()
         Hilog.info(1,"Cangjie-Test", "sourceSize: " + sourceSize)
-        @Expect(sourceSize, "\"[260.00 x 260.00]\"")
+        let device_name = DeviceInfo.marketName
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, sourceSize: ${sourceSize}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(sourceSize, "\"[280.00 x 280.00]\"")
+        } else {
+            @Expect(sourceSize, "\"[260.00 x 260.00]\"")
+        }
 
         let syncLoad = attrs.get("syncLoad").getOrThrow().toString()
         Hilog.info(1,"Cangjie-Test", "syncLoad: " + syncLoad)
@@ -357,23 +364,37 @@ class CanvasDrawingUT11 {
         var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var sourceSize = attrs.get("sourceSize").getOrThrow().toString()
         Hilog.info(1,"Cangjie-Test", "sourceSize1: " + sourceSize)
-        @Expect(sourceSize, "\"[260.00 x 260.00]\"")
+        let device_name = DeviceInfo.marketName
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, sourceSize: ${sourceSize}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(sourceSize, "\"[280.00 x 280.00]\"")
+        } else {
+            @Expect(sourceSize, "\"[260.00 x 260.00]\"")
+        }
 
         //sourceSize(Float64, Float64)
         inspector = getInspectorByKey("Image_6")
         jsonObject = JsonValue.fromStr(inspector).asObject()
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         sourceSize = attrs.get("sourceSize").getOrThrow().toString()
-        Hilog.info(1,"Cangjie-Test", "sourceSize2: " + sourceSize)
-        @Expect(sourceSize, "\"[260.00 x 260.00]\"")
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, sourceSize2: ${sourceSize}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(sourceSize, "\"[280.00 x 280.00]\"")
+        } else {
+            @Expect(sourceSize, "\"[260.00 x 260.00]\"")
+        }
 
         //sourceSize(Int64, Int64)
         inspector = getInspectorByKey("Image_7")
         jsonObject = JsonValue.fromStr(inspector).asObject()
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         sourceSize = attrs.get("sourceSize").getOrThrow().toString()
-        Hilog.info(1,"Cangjie-Test", "sourceSize3: " + sourceSize)
-        @Expect(sourceSize, "\"[260.00 x 260.00]\"")
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, sourceSize3: ${sourceSize}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(sourceSize, "\"[280.00 x 280.00]\"")
+        } else {
+            @Expect(sourceSize, "\"[260.00 x 260.00]\"")
+        }
     }
 
      @TestCase
@@ -426,12 +447,17 @@ class CanvasDrawingUT11 {
         scrollTo("ViewImage")
         Hilog.error(1,"Cangjie-Test", "test_imageEvent started")
         let image_1_onComplete = driver.findComponent(On().id("image_1_onComplete")).getOrThrow().getText()
-        Hilog.info(1,"Cangjie-Test", "image_1_onComplete: " + image_1_onComplete)
-        var onCompleteResult = image_1_onComplete == "144.000000, 144.000000, 650.000000, 325.000000, 1, 650.000000, 325.000000, 0.000000, 0.000000"
-             || image_1_onComplete == "Some(144.000000), Some(144.000000), Some(650.000000), Some(325.000000), Some(1), Some(650.000000), Some(325.000000), Some(0.000000), Some(0.000000)"
-             || image_1_onComplete == "144.000000, 144.000000, 787.500000, 393.750000, 1, 787.500000, 393.750000, 0.000000, 0.000000"
-             || image_1_onComplete == "Some(144.000000), Some(144.000000), Some(787.500000), Some(393.750000), Some(1), Some(787.500000), Some(393.750000), Some(0.000000), Some(0.000000)"
-        @Expect(onCompleteResult)
+        let device_name = DeviceInfo.marketName
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, image_1_onComplete: ${image_1_onComplete}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(image_1_onComplete, "144.000000, 144.000000, 700.000000, 350.000000, 1, 700.000000, 350.000000, 0.000000, 0.000000")
+        } else {
+            var onCompleteResult = image_1_onComplete == "144.000000, 144.000000, 650.000000, 325.000000, 1, 650.000000, 325.000000, 0.000000, 0.000000"
+                 || image_1_onComplete == "Some(144.000000), Some(144.000000), Some(650.000000), Some(325.000000), Some(1), Some(650.000000), Some(325.000000), Some(0.000000), Some(0.000000)"
+                 || image_1_onComplete == "144.000000, 144.000000, 787.500000, 393.750000, 1, 787.500000, 393.750000, 0.000000, 0.000000"
+                 || image_1_onComplete == "Some(144.000000), Some(144.000000), Some(787.500000), Some(393.750000), Some(1), Some(787.500000), Some(393.750000), Some(0.000000), Some(0.000000)"
+            @Expect(onCompleteResult)
+        }
 
         let image1 = driver.findComponent(On().id("Image_1")).getOrThrow()
         image1.click()

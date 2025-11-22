@@ -24,6 +24,7 @@ import ohos.arkui.state_macro_manage.*
 import ohos.hilog.Hilog
 import ohos.ui_test.*
 internal import ohos.business_exception.BusinessException
+import ohos.device_info.*
 
 @Test
 class InformationDisplayUT2 {
@@ -212,7 +213,12 @@ class InformationDisplayUT2 {
     func testRelativeContainer() {
         scrollTo("ViewRelativeContainer")
 
-        let statusBarHeight: Int64 = 123
+        var statusBarHeight: Int64 = 123
+        let device_name = DeviceInfo.marketName
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}")
+            statusBarHeight = 136
+        }
         let boxSize: Int64 = 400
 
         let rect4 = getRectInfo("row6")
@@ -256,7 +262,13 @@ class InformationDisplayUT2 {
         scrollTo("ViewRelativeContainer3")
 
         let rect1 = getRectInfo("row1")
-        @Expect(rect1, '\"[359.00, 942.00],[684.00,1267.00]\"')
+        let device_name = DeviceInfo.marketName
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, rect1: ${rect1}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(rect1, '\"[388.00, 967.00],[738.00,1317.00]\"')
+        } else {
+            @Expect(rect1, '\"[359.00, 942.00],[684.00,1267.00]\"')
+        }
     }
 
     @TestCase

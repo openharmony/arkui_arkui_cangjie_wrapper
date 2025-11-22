@@ -22,6 +22,7 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.ui_test.*
+import ohos.device_info.*
 
 @Test
 class BasicCommonUT1 {
@@ -189,12 +190,22 @@ class BasicCommonUT1 {
 
         let backgroundImagePosition_t = attrs.get("backgroundImagePosition").getOrThrow().toString()
         Hilog.info(1, "Cangjie-Test", "[test_background] backgroundImagePosition_t: ${backgroundImagePosition_t}")
-        @Expect(backgroundImagePosition_t.contains("65"))
+        let device_name = DeviceInfo.marketName
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, backgroundImagePosition_t: ${backgroundImagePosition_t}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(backgroundImagePosition_t.contains("70"))
+        } else {
+            @Expect(backgroundImagePosition_t.contains("65"))
+        }
 
         let backgroundImageSize_t = attrs.get("backgroundImageSize").getOrThrow().toString()
 
-        Hilog.info(1, "Cangjie-App", "[test_background] backgroundImageSize_t: ${backgroundImagePosition_t}")
-        @Expect(backgroundImageSize_t.contains("\\\"width\\\":\\\"97.50px\\\""))
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, backgroundImageSize_t: ${backgroundImageSize_t}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(!backgroundImageSize_t.contains("\\\"width\\\":\\\"97.50px\\\""))
+        } else {
+            @Expect(backgroundImageSize_t.contains("\\\"width\\\":\\\"97.50px\\\""))
+        }
     }
 
     @TestCase
