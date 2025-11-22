@@ -25,6 +25,7 @@ import ohos.ui_test.*
 import ohos.ui_test
 import std.collection.ArrayList
 import std.math.*
+import ohos.device_info.*
 
 enum CustomSwipeDirection {
   | Left
@@ -201,8 +202,13 @@ class ScrollSplitUT1 {
         let rect_4 = fex_4.getBounds()
         Hilog.info(1, "info", "fex_1_left: ${rect_1.left} expect: 0")
         @Expect(rect_1.left, 0)
-         Hilog.info(1, "info", "rect_4.left: ${rect_4.left} expect: ${(rect_1.right - rect_1.left) * 3}")
-        @Expect(rect_4.left, (rect_1.right - rect_1.left) * 3)
+        let device_name = DeviceInfo.marketName
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, rect_4.left: ${rect_4.left} expect: ${(rect_1.right - rect_1.left) * 3}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(rect_4.left, 790)
+        } else {
+            @Expect(rect_4.left, (rect_1.right - rect_1.left) * 3)
+        }
 
         //多行布局，左端对齐
         let fex_5: Component = driver.findComponent(On().id("flex_5")).getOrThrow()

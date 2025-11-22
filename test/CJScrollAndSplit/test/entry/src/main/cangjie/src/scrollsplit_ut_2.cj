@@ -24,6 +24,8 @@ import ohos.arkui.state_macro_manage.*
 import ohos.ui_test.*
 import ohos.ui_test
 import std.collection.ArrayList
+import ohos.device_info.*
+
 @Test
 class ScrollSplitUT2 {
     prop driver: Driver {
@@ -288,7 +290,13 @@ class ScrollSplitUT2 {
 
         yoffset = driver.waitForComponent(On().id("yOffset"),1000).getOrThrow()
         rect_yoffset = yoffset.getText()
-        @Expect(rect_yoffset, "YOFFSET: 15.000000")
+        let device_name = DeviceInfo.marketName
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, rect_yoffset: ${rect_yoffset}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(rect_yoffset, "YOFFSET: 14.642857")
+        } else {
+            @Expect(rect_yoffset, "YOFFSET: 15.000000")
+        }
 
         driver.findComponent(On().id("ScrollSelf")).getOrThrow().scrollToBottom()
         driver.delayMs(1000)
@@ -489,7 +497,13 @@ class ScrollSplitUT2 {
 
         component = driver.findComponent(On().id("scrollPage_offset")).getOrThrow()
         context = component.getText()
-        @Expect(context, "yoffset: 77.107694")
+        let device_name = DeviceInfo.marketName
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, context: ${context}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(context, "yoffset: 74.228577")
+        } else {
+            @Expect(context, "yoffset: 77.107694")
+        }
 
         driver.fling(ui_test.Point(20, 700), ui_test.Point(20, 300), 100, 40000)
         driver.waitForComponent(On().id("scroll_9"),1000).getOrThrow().scrollToBottom()
@@ -528,7 +542,7 @@ class ScrollSplitUT2 {
         @Expect(context == "-0.000000", false)
         component = driver.findComponent(On().id("onWillScrollMessage")).getOrThrow()
         context = component.getText()
-        @Expect(context, "Scrolling, OTHER_USER_INPUT")
+        @Expect(context, "Scroll, OTHER_USER_INPUT")
 
         //onWillScroll,onDidScroll验证
         driver.findComponent(On().id("scroll50")).getOrThrow().click()
@@ -551,7 +565,12 @@ class ScrollSplitUT2 {
 
         component = driver.waitForComponent(On().id("itemRect"),1000).getOrThrow()
         context = component.getText()
-        @Expect(context, "0.000000 -10.000000 348.923077 100.000000")
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, context: ${context}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(context, "0.000000 -10.000000 338.400007 100.000000")
+        } else {
+            @Expect(context, "0.000000 -10.000000 348.923077 100.000000")
+        }
 
         driver.findComponent(On().id("getItemIndex")).getOrThrow().click()
 

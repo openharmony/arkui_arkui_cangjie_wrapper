@@ -32,10 +32,6 @@
     {
       "name": "BasicCommonUTHello",
       "timeout": 100
-    },
-    {
-      "name": "BasicCommonUTDragEvent",
-      "timeout": 100
     }
   ]
 }

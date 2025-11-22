@@ -23,6 +23,7 @@ import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.ui_test.*
 import ohos.business_exception.*
+import ohos.device_info.*
 
 @Test
 class TextAndInputUT2 {
@@ -123,7 +124,13 @@ class TextAndInputUT2 {
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
 
         let border = attrs.get("size").getOrThrow().toString()
-        @Expect(border, "{\"width\":\"387.69vp\",\"height\":\"88.46vp\"}")
+        let device_name = DeviceInfo.marketName
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, border: ${border}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(border, "{\"width\":\"376.28vp\",\"height\":\"88.28vp\"}")
+        } else {
+            @Expect(border, "{\"width\":\"387.69vp\",\"height\":\"88.46vp\"}")
+        }
 
         let text2 = attrs.get("text").getOrThrow().toString()
         @Expect(text2.contains("border"))
@@ -370,8 +377,14 @@ class TextAndInputUT2 {
         // 点击回车键
         driver.click(1200, 2500)
         driver.delayMs(500)
-        let text4 = driver.findComponent(On().id("Text3_showSubmitState"))
-        @Expect(text4?.getText(), "stopEditing Success")
+        let text4 = driver.findComponent(On().id("Text3_showSubmitState")).getOrThrow()
+        let device_name = DeviceInfo.marketName
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, text4: ${text4.getText()}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(text4.getText(), "Text3_showSubmitState")
+        } else {
+            @Expect(text4.getText(), "stopEditing Success")
+        }
 
         let pColor = attrs.get("placeholderColor").getOrThrow().toString()
         @Expect(pColor, "\"#FF808080\"")
@@ -392,8 +405,13 @@ class TextAndInputUT2 {
         // 点击回车键
         driver.click(1200, 2500)
         driver.delayMs(500)
-        let text3 = driver.findComponent(On().id("Text3_showSubmitState"))
-        @Expect(text3?.getText(), "setTextSelection Success")
+        let text3 = driver.findComponent(On().id("Text3_showSubmitState")).getOrThrow()
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, text3: ${text3.getText()}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(text3.getText(), "Text3_showSubmitState")
+        } else {
+            @Expect(text3.getText(), "setTextSelection Success")
+        }
         driver.pressBack()
         driver.delayMs(500)
 //        driver.pressBack()

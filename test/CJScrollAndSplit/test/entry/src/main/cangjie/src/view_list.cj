@@ -27,7 +27,7 @@ import std.collection.{ArrayList, HashMap}
 func parseScrollState(state: ScrollState) {
         match (state) {
             case Idle => "Idle"
-            case Scrolling => "Scrolling"
+            case Scroll => "Scroll"
             case Fling => "Fling"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }

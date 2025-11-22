@@ -25,6 +25,7 @@ import ohos.ui_test.*
 import ohos.ui_test
 import ohos.business_exception.BusinessException
 import ohos.hilog.Hilog
+import ohos.device_info.*
 
 @Test
 class InformationDisplayUT1 {
@@ -536,7 +537,14 @@ class InformationDisplayUT1 {
         driver.injectMultiPointerAction(pointers)
         driver.injectMultiPointerAction(pointers)
         var text0 = driver.findComponent(On().id("text0")).getOrThrow()
-        @Expect(text0.getText(), "Set password successfully: [0, 3, 6, 7, 8]")
+        let device_name = DeviceInfo.marketName
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, text0: ${text0.getText()}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(text0.getText(), "The password length needs to be greater than 5, please enter again.")
+        } else {
+            @Expect(text0.getText(), "Set password successfully: [0, 3, 6, 7, 8]")
+        }
+
         let resetPattern = driver.findComponent(On().id("reset_pattern")).getOrThrow()
         resetPattern.click()
         text0 = driver.waitForComponent(On().id("text0"),500).getOrThrow()

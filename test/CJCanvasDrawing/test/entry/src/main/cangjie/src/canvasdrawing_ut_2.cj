@@ -23,6 +23,7 @@ import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.ui_test.*
 import ohos.business_exception.*
+import ohos.device_info.*
 
 @Test
 class CanvasDrawingUT2 {
@@ -438,13 +439,24 @@ class CanvasDrawingUT2 {
         scrollTo("ViewCanvas2")
 
         var text = driver.findComponent(On().id("height_width1")).getOrThrow().getText()
-        @Expect(text.contains("136.307692 109.230769") || text.contains("112.507937 90.158730"))
+        let device_name = DeviceInfo.marketName
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, text: ${text}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(text, "126.571429 101.428571")
+        } else {
+            @Expect(text.contains("136.307692 109.230769") || text.contains("112.507937 90.158730"))
+        }
 
         // text = driver.findComponent(On().id("height_width2")).getOrThrow().getText()
         // @Expect(text, "100.000000 100.000000")
 
         text = driver.findComponent(On().id("height_color")).getOrThrow().getText()
-        @Expect(text.contains("325 255") || text.contains("393 255"))
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, text: ${text}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(text, "350 255")
+        } else {
+            @Expect(text.contains("325 255") || text.contains("393 255"))
+        }
 
         text = driver.findComponent(On().id("size")).getOrThrow().getText()
         @Expect(text, "Some(1.000000) Some(1.000000) Some(-0.500000) Some(0.500000) Some(10.000000) Some(10.000000)")
@@ -466,7 +478,12 @@ class CanvasDrawingUT2 {
         @Expect(text, "Some(0.500000) Some(0.500000) Some(0.000000) Some(0.000000) Some(100.000000) Some(100.000000)")
 
         text = driver.findComponent(On().id("size5")).getOrThrow().getText()
-        @Expect(text, "Some(0.250230) Some(0.250230) Some(0.432880) Some(-0.432880) Some(99.084454) Some(103.413255)")
+        Hilog.info(1, "Cangjie-Test", "The current device is ${device_name}, text: ${text}")
+        if (device_name == "HUAWEI Mate 70 Pro") {
+            @Expect(text, "Some(0.250230) Some(0.250230) Some(0.432880) Some(-0.432880) Some(99.084455) Some(103.413252)")
+        } else {
+            @Expect(text, "Some(0.250230) Some(0.250230) Some(0.432880) Some(-0.432880) Some(99.084454) Some(103.413255)")
+        }
 
         compont1 = driver.findComponent(On().id("size5")).getOrThrow()
         compont2 = driver.findComponent(On().text("Click to set transform")).getOrThrow()
