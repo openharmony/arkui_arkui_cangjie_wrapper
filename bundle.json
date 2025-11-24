@@ -51,6 +51,12 @@
                 },
                 {
                     "name": "//foundation/arkui/arkui_cangjie_wrapper/ohos/arkui/state_macro_manage:ohos.arkui.state_macro_manage_cjo"
+                },
+                {
+                    "name": "//foundation/arkui/arkui_cangjie_wrapper:copy_sdk_arkui_cangjie_libs"
+                },
+                {
+                    "name": "//foundation/arkui/arkui_cangjie_wrapper:copy_sdk_arkui_cangjie_libs_kit"
                 }
             ],
             "test": [
