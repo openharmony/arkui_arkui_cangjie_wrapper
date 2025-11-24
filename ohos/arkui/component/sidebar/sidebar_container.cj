@@ -385,35 +385,36 @@ public class SideBarContainer <: CommonMethodComponent<SideBarContainer> & SideB
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func controlButton(value: ?ButtonStyle): This {
-        if (let Some(v) <- value) {
-            if (v.icons.isNone()) {
-                unsafe {
-                    FfiOHOSAceFrameworkSideBarResetControlButtonIcons()
-                }
-            } else {
-                unsafe {
-                    try (shownStr = LibC.mallocCString(transResourceMediaToString((v.icons ?? ButtonIconOptions(shown: "", hidden: "")).shown ?? "")).asResource(),
-                        hiddenStr = LibC.mallocCString(transResourceMediaToString((v.icons ?? ButtonIconOptions(shown: "", hidden: "")).hidden ?? "")).asResource(),
-                        switchingStr = LibC.mallocCString(transResourceMediaToString((v.icons ?? ButtonIconOptions(shown: "", hidden: "")).switching ?? "")).asResource()) {
-                        FfiOHOSAceFrameworkSideBarControlButton(
-                            CJSideBarButtonStyle(
-                                v.left ?? 16.0,
-                                v.top ?? 48.0,
-                                v.width ?? 24.0,
-                                v.height ?? 24.0,
-                                CJSideBarIconStyle(
-                                    shownStr.value,
-                                    hiddenStr.value,
-                                    switchingStr.value
-                                )
-                            )
-                        )
-                    }
-                }
+        if (value.isNone()) {
+            unsafe {
+                FfiOHOSAceFrameworkSideBarResetControlButton()
+            }
+            return this
+        }
+        let v = value.getOrThrow()
+        if (v.icons.isNone()) {
+            unsafe {
+                FfiOHOSAceFrameworkSideBarResetControlButtonIcons()
             }
         } else {
             unsafe {
-                FfiOHOSAceFrameworkSideBarResetControlButton()
+                try (shownStr = LibC.mallocCString(transResourceMediaToString((v.icons ?? ButtonIconOptions(shown: "", hidden: "")).shown ?? "")).asResource(),
+                    hiddenStr = LibC.mallocCString(transResourceMediaToString((v.icons ?? ButtonIconOptions(shown: "", hidden: "")).hidden ?? "")).asResource(),
+                    switchingStr = LibC.mallocCString(transResourceMediaToString((v.icons ?? ButtonIconOptions(shown: "", hidden: "")).switching ?? "")).asResource()) {
+                    FfiOHOSAceFrameworkSideBarControlButton(
+                        CJSideBarButtonStyle(
+                            v.left ?? 16.0,
+                            v.top ?? 48.0,
+                            v.width ?? 24.0,
+                            v.height ?? 24.0,
+                            CJSideBarIconStyle(
+                                shownStr.value,
+                                hiddenStr.value,
+                                switchingStr.value
+                            )
+                        )
+                    )
+                }
             }
         }
         this
