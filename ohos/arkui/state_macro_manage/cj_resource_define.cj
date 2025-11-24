@@ -212,7 +212,7 @@ func getAppResId(path: String, moduleName: String, resType: String, resName: Str
             .asString()
             .getValue()
         if (ty == resType && name == resName) {
-            id = Int32.parse(
+            id = parseResId(
                 val
                     .get("id")
                     .getOrThrow({=> NoneValueException("can not find resource: ${resName}")})
@@ -229,7 +229,7 @@ func findSysId(obj: JsonObject, resType: String, resName: String): Int32 {
     if (!obj.containsKey("startId")) {
         return id
     }
-    let startId = Int32.parse(
+    let startId = parseResId(
         obj
             .get("startId")
             .getOrThrow({=> NoneValueException("can not find system resource")})
@@ -263,7 +263,7 @@ func findSysId(obj: JsonObject, resType: String, resName: String): Int32 {
                     break
                 }
             }
-            id = Int32.parse(
+            id = parseResId(
                 val
                     .get("order")
                     .getOrThrow({=> NoneValueException("can not find resource: ${resName}")})
@@ -327,4 +327,10 @@ func trimSpace(input: Tokens): String {
         inputStr += str
     }
     inputStr
+}
+
+@OverflowWrapping
+func parseResId(resId: String): Int32 {
+    // Forced conversion for Int32 overflow, consistent with existed scenarios
+    return Int32(UInt32.parse(resId))
 }
