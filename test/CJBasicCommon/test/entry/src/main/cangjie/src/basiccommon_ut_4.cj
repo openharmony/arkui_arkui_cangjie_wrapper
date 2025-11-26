@@ -243,7 +243,6 @@ class BasicCommonUT4 {
         clickButton("setWindowSystemBarEnable")
         clickButton("CFwindow")
         clickButton("onOff")
-        clickButton("setWindowPrivacyMode")
         clickButton("setPreferredOrientation")
         clickButton("shiftAppWindowFocus")
         clickButton("structtest")
