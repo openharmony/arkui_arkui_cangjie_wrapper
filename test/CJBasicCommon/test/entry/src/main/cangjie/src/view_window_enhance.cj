@@ -374,21 +374,6 @@ class ViewWindowEnhance {
 
             Row(){
                 Column() {
-                    Button("setWindowPrivacyMode")
-                        .id("setWindowPrivacyMode")
-                        .onClick({ e
-                            =>
-                            try {
-                                mainWindow.setWindowPrivacyMode(true)
-                            }catch (e: Exception) {
-                                Hilog.info(1, "Cangjie-Test", "case_setWindowPrivacyMode " + e.toString())
-                        }
-                    })
-                        .width(20.percent)
-                        .height(20)
-                }
-
-                Column() {
                     Button("setPreferredOrientation")
                         .id("setPreferredOrientation")
                         .onClick({ e
