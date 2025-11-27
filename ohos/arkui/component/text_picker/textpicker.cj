@@ -155,7 +155,10 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
 
         var defValue: String = ""
         match (value) {
-            case None => defValue = range[0]
+            case None =>
+                if (range.size > 0) {
+                    defValue = range[0]
+                }
             case Some(v) => defValue = v
         }
         unsafe {

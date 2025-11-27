@@ -19,7 +19,7 @@ package ohos.arkui.component.button
 
 import ohos.arkui.component.common.{CommonMethodComponent, ControlSize, FontWeight, FontStyle, BorderStyle}
 import ohos.arkui.component.native_struct.{CJBorderRadius, CJBorder}
-import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength, normalizeValue, getLengthUnitOrFp, lessNotEqual}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength, normalizeValue, getLengthUnitOrFp, lessNotEqual, LENGTH_PERCENT}
 import ohos.base.{Length, LengthProp, ResourceStr, ResourceColor, Color, LengthProp}
 import ohos.labels.APILevel
 import ohos.resource.{AppResource}
@@ -484,6 +484,12 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     public func fontSize(value: ?Length): This {
         if (let Some(v) <- value) {
             var size = transAppResourceToLength(v)
+            if (size.unitType.getValue() == LENGTH_PERCENT || lessNotEqual(size.value, 0.0)) {
+                unsafe {
+                    FfiOHOSAceFrameworkButtonResetFontSize()
+                }
+                return this
+            }
             unsafe {
                 FfiOHOSAceFrameworkButtonSetFontSize(size.value, getLengthUnitOrFp(size).getValue())
             }
