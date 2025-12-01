@@ -115,7 +115,7 @@ class ViewWindowEnhance {
                         .id("isWindowSupportWideGamut")
                         .onClick ({ e
                             =>
-                            let state = mainWindow.isWindowSupportWideGamut()
+                            let state = mainWindow.isWideGamutSupported()
                     })
                         .width(20.percent)
                         .height(20)
