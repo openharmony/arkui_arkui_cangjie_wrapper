@@ -18,7 +18,7 @@ package ohos.arkui.component.custom_component
 import ohos.arkui.component.common.{CommonMethod, CommonMethodComponent}
 import ohos.arkui.component.native_struct.{VectorToCFFIArray}
 import ohos.base.{FFIVectorInt64}
-import ohos.ffi.{Callback0Param}
+import ohos.ffi.{Callback0Param, RemoteData}
 import ohos.labels.{APILevel, Hide}
 import std.collection.ArrayList
 
@@ -64,7 +64,7 @@ foreign {
     func FfiOHOSAceFrameworkNativeViewGetUINodeId(nativeViewId: Int64): Int32
 }
 
-protected class View <: CommonMethodComponent<View> & ViewAttribute {
+protected class View <: RemoteData {
     protected static func create(view: View): Unit {
         unsafe {
             FfiOHOSAceFrameworkNativeViewCreate(view.getID())
@@ -180,13 +180,3 @@ protected class View <: CommonMethodComponent<View> & ViewAttribute {
         }
     }
 }
-
-/**
- * ViewAttribute
- */
-@!APILevel[
-    since: "22",
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-@!Hide
-sealed interface ViewAttribute <: CommonMethod<ViewAttribute> {}
