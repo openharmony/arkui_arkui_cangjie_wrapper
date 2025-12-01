@@ -18,6 +18,7 @@
 package ohos.arkui.component.relative_container
 
 import ohos.arkui.component.common.{CommonMethodComponent, BarrierDirection, Axis}
+import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{Length}
 import ohos.ffi.{CArrString}
 import ohos.labels.APILevel
@@ -40,12 +41,16 @@ struct CGuideLinePosition {
 
     init(position: GuideLinePosition) {
         this.start = match (position.start) {
-            case Some(v) => CLength(v.value, v.unitType.getValue())
+            case Some(v) =>
+                let v_ = transAppResourceToLength(v)
+                CLength(v_.value, v_.unitType.getValue())
             case None => CLength(Float64(0), -1)
         }
 
         this.end = match (position.end) {
-            case Some(v) => CLength(v.value, v.unitType.getValue())
+            case Some(v) =>
+                let v_ = transAppResourceToLength(v)
+                CLength(v_.value, v_.unitType.getValue())
             case None => CLength(Float64(0), -1)
         }
     }

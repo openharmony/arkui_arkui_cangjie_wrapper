@@ -22,6 +22,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.relative_container") {
   cj_deps = [
     "../../../base:ohos.base",
     "../common:ohos.arkui.component.common",
+    "../util:ohos.arkui.component.util"
   ]
 
   cj_external_deps = [
