@@ -18,7 +18,7 @@
 package ohos.arkui.component.date_picker
 
 import ohos.arkui.component.common.{CommonMethodComponent, PickerTextStyle, FontWeight, FontStyle}
-import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength, LENGTH_PERCENT}
 import ohos.base.{Callback, Length, LengthProp}
 import ohos.ffi.{Callback3Param}
 import ohos.labels.APILevel
@@ -261,6 +261,10 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
             }
         }
 
+        // fontsize not support percent, use default.
+        if (size.unitType.getValue() == LENGTH_PERCENT) {
+            size = 14.fp
+        }
         unsafe {
             try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
                  fontFamilyCString = LibC.mallocCString(family).asResource()
@@ -310,6 +314,10 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
             }
         }
 
+        // fontsize not support percent, use default.
+        if (size.unitType.getValue() == LENGTH_PERCENT) {
+            size = 16.fp
+        }
         unsafe {
             try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
                  fontFamilyCString = LibC.mallocCString(family).asResource()
@@ -358,6 +366,10 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
             }
         }
 
+        // fontsize not support percent, use default.
+        if (size.unitType.getValue() == LENGTH_PERCENT) {
+            size = 20.fp
+        }
         unsafe {
             try (weightCString = LibC.mallocCString(weight.getValue()).asResource(),
                  fontFamilyCString = LibC.mallocCString(family).asResource()
