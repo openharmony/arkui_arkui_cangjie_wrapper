@@ -152,6 +152,10 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
             }
             case Some(v) => getSelected = v
         }
+        // When selected is out of range, set to default
+        if (getSelected >= UInt32(range.size)) {
+            getSelected = 0
+        }
 
         var defValue: String = ""
         match (value) {
