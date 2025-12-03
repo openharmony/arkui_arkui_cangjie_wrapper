@@ -1146,9 +1146,9 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
 protected class AlertDialogInner {
     protected static func show(value: AlertDialogParamWithConfirm): Unit {
         let nativeDialog = value.getNativeParam()
-        let nativeConfirm = match (value.confirm as AlertDialogButtonOptions) {
+        let nativeConfirm = match (value.confirm as AlertDialogButtonBaseOptions) {
             case Some(v) => v.toNative()
-            case None => AlertDialogButtonOptions(value: "", action: {=>}).toNative()
+            case None => AlertDialogButtonBaseOptions(value: "", action: {=>}).toNative()
         }
         unsafe {
             FfiOHOSShowAlertDialogParamWithConfirmShadowOptions(
@@ -1161,13 +1161,13 @@ protected class AlertDialogInner {
 
     protected static func show(value: AlertDialogParamWithButtons): Unit {
         let nativeDialog = value.getNativeParam()
-        let nativePrimaryButton = match (value.primaryButton as AlertDialogButtonOptions) {
+        let nativePrimaryButton = match (value.primaryButton as AlertDialogButtonBaseOptions) {
             case Some(v) => v.toNative()
-            case None => AlertDialogButtonOptions(value: "", action: {=>}).toNative()
+            case None => AlertDialogButtonBaseOptions(value: "", action: {=>}).toNative()
         }
-        let nativeSecondaryButton = match (value.secondaryButton as AlertDialogButtonOptions) {
+        let nativeSecondaryButton = match (value.secondaryButton as AlertDialogButtonBaseOptions) {
             case Some(v) => v.toNative()
-            case None => AlertDialogButtonOptions(value: "", action: {=>}).toNative()
+            case None => AlertDialogButtonBaseOptions(value: "", action: {=>}).toNative()
         }
         unsafe {
             FfiOHOSShowAlertDialogParamWithButtonsShadowOptions(nativeDialog, nativePrimaryButton, nativeSecondaryButton,
@@ -1184,9 +1184,9 @@ protected class AlertDialogInner {
         let buttons = value.buttons ?? []
         let buttonSize = buttons.size
         let buttonsArr = Array<NativeAlertDialogButtonOptionsV2>(buttonSize, {index =>
-            let res = match(buttons[index] as AlertDialogButtonOptions) {
+            let res = match(buttons[index] as AlertDialogButtonBaseOptions) {
                 case Some(v) => v.toNative()
-                case None => AlertDialogButtonOptions(value: "", action: {=>}).toNative()
+                case None => AlertDialogButtonBaseOptions(value: "", action: {=>}).toNative()
             }
             return res
         })
