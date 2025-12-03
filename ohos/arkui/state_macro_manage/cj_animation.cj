@@ -46,6 +46,10 @@ func parseAnimation(input: Expr, hasPriorityAnimation: Bool, depth: Int64): Unit
                 parseAnimationBeforeCallFunc(v.callFunc)
                 return
             }
+            if (depth == 2) {
+                parseAnimationBeforeTrailingClosure(v.callFunc)
+                return
+            }
             return parseAnimation(v.callFunc, true, depth)
         case v: TrailingClosureExpr =>
             if (depth == 2) {
