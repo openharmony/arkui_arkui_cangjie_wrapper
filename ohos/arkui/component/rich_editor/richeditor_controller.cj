@@ -19,7 +19,7 @@ package ohos.arkui.component.rich_editor
 
 import ohos.arkui.component.common.{Margin, BorderRadiuses, ImageSpanAlignment, ImageFit,ImageSpanAlignment, TextAlign, FontStyle, FontWeight, TextDecorationType}
 import ohos.arkui.component.native_struct.{NativeMargin}
-import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToResourceColor, transAppResourceToLength, transResourceMediaToString}
 import ohos.base.{ResourceStr, Length, ExternalString, ResourceColor, LengthProp, VoidCallback, Color, CStringExtend}
 import ohos.ffi.{RemoteDataLite, releaseFFIData}
 import ohos.labels.APILevel
@@ -1016,7 +1016,7 @@ public class RichEditorController <: RichEditorBaseController {
         let params = unsafe { parseRichEditorImageSpanOptions(options ?? RichEditorImageSpanOptions()) }
         var result: Int32 = 0
         unsafe {
-            try (valueCString = LibC.mallocCString(transResourceStrToString(value ?? "")).asResource()) {
+            try (valueCString = LibC.mallocCString(transResourceMediaToString(value ?? "")).asResource()) {
                 result = FfiOHOSAceFrameworkRichEditorControllerAddImageSpan(this.getID(), valueCString.value, params)
             }
         }
