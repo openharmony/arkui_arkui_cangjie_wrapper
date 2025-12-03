@@ -15,7 +15,7 @@
 
 protected package ohos.arkui.ui_context.prompt_action
 
-import ohos.base.{ResourceColor, Length, ResourceStr, Color, NativeOffset, LengthProp, CStringExtend, NativeLength}
+import ohos.base.{ResourceColor, Length, ResourceStr, Color, NativeOffset, LengthProp, CStringExtend, NativeLength, LengthUnit}
 import ohos.business_exception.{BusinessException, AsyncCallback}
 import ohos.ffi.{Callback1Param, Callback2Param, Callback0Param}
 import ohos.arkui.component.native_struct.{NativeEdgeStyles}
@@ -24,6 +24,9 @@ import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToRe
 import ohos.arkui.component.common.{Rectangle, DialogAlignment, Offset, TransitionEffect, BorderRadiuses, EdgeWidths, EdgeStyles, ShadowOptions, BlurStyle, Alignment, ShadowType}
 import ohos.labels.APILevel
 import std.deriving.Derive
+
+const SHADOW_NONE: Int32 = 1000
+const SHADOWOPTIONS_EXIST: Int32 = 1001
 
 @C
 struct CButtonInfo {
@@ -117,7 +120,7 @@ struct NativeEdgeColor {
 struct NativeShowToastOptions {
     NativeShowToastOptions(
         let message: CString,
-        let duration: UInt32,
+        let duration: Int32,
         let bottom: CString,
         let showMode: Int32,
         let alignment: Int32,
@@ -125,8 +128,8 @@ struct NativeShowToastOptions {
         let backgroundColor: UInt32,
         let textColor: UInt32,
         let backgroundBlurStyle: Int32,
-        let shadowOption: NativeShadowOptions,
         let shadowStyle: Int32,
+        let shadowOption: NativeShadowOptions,
         let enableHoverMode: Bool,
         let hoverModeArea: Int32
     ) {}
@@ -177,6 +180,8 @@ foreign {
     func FfiPromptCloseCustomDialog(id: Int32): Unit
 
     func FfiPromptShowToastWithOption(options: NativeShowToastOptions): Unit
+
+    func FfiPromptShowToastWithOptionV2(options: NativeShowToastOptions): Unit
 
     func FfiPromptShowDialogWithOption(options: NativeShowDialogOptions, callBack: Int64): Unit
 
@@ -1441,21 +1446,24 @@ func parseCustomDialogOptions(options: CustomDialogOptions): NativeCustomDialogO
 func length2String(value: Length): String {
     let length = transAppResourceToLength(value)
         return match (length.unitType) {
-            case Px => "${length.value}px"
-            case Vp => "${length.value}vp"
-            case Fp => "${length.value}fp"
-            case Percent => "${length.value}%"
-            case Lpx => "${length.value}lpx"
+            case LengthUnit.Px => "${length.value}px"
+            case LengthUnit.Vp => "${length.value}vp"
+            case LengthUnit.Fp => "${length.value}fp"
+            case LengthUnit.Percent => "${length.value * 100.0}%"       // set percent value same with input
+            case LengthUnit.Lpx => "${length.value}lpx"
             case _ => "${length.value}"
         }
 }
 
+@OverflowWrapping
 func parseShowToastOptions(options: ShowToastOptions): NativeShowToastOptions {
+    var shadowStyle = SHADOW_NONE
     let shadowOption = match (options.shadow) {
-        case Some(value) => parseShadowOptions(value)
-        case None => parseShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.Color))
+        case Some(value) =>
+            shadowStyle = SHADOWOPTIONS_EXIST
+            parseShadowOptions(value)
+        case None => parseShadowOptions(ShadowOptions(radius: 0.0))
     }
-    let shadowStyle = Int32(100)
     unsafe {
         var cMsg = CString(CPointer<UInt8>())
         var cBottom = CString(CPointer<UInt8>())
@@ -1469,7 +1477,7 @@ func parseShowToastOptions(options: ShowToastOptions): NativeShowToastOptions {
         }
         return NativeShowToastOptions(
             cMsg,
-            options.duration,
+            Int32(options.duration),
             cBottom,
             options.showMode.getValue(),
             options.alignment.getValue(),
@@ -1477,8 +1485,8 @@ func parseShowToastOptions(options: ShowToastOptions): NativeShowToastOptions {
             options.backgroundColor.toUInt32(),
             Color.alphaAdapt(options.textColor.toUInt32()),
             options.backgroundBlurStyle.getValue(),
-            shadowOption,
             shadowStyle,
+            shadowOption,
             options.enableHoverMode,
             options.hoverModeArea.getValue()
         )
@@ -1608,7 +1616,7 @@ public class PromptAction {
     public func showToast(option: ShowToastOptions): Unit {
         unsafe {
             let cOption = parseShowToastOptions(option)
-            FfiPromptShowToastWithOption(cOption)
+            FfiPromptShowToastWithOptionV2(cOption)
             cOption.message.free()
             cOption.bottom.free()
         }
