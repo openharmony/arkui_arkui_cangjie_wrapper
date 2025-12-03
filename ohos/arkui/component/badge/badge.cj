@@ -187,8 +187,8 @@ public class BadgeStyle {
         badgeColor!: ?ResourceColor = None, fontWeight!: ?FontWeight = None,
         borderColor!: ?ResourceColor = None, borderWidth!: ?Length = None) {
         this.color = color ?? Color.White
-        this.fontSize = fontSize ?? 10.fp
-        this.badgeSize = badgeSize ?? 16.vp
+        this.fontSize = transAppResourceToLength(fontSize ?? 10.fp)
+        this.badgeSize = transAppResourceToLength(badgeSize ?? 16.vp)
         this.badgeColor = badgeColor ?? Color.Red
         this.fontWeight = fontWeight ?? FontWeight.Normal
         this.borderColor = borderColor ?? Color.Red

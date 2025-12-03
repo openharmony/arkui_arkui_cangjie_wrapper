@@ -38,7 +38,7 @@ foreign {
 extend ShadowOptions {
     func optionToNativeTextTimerShadow(): NativeTextTimerShadow {
         return NativeTextTimerShadow(this.radius ?? 0.0,
-            this.offsetX ?? 0.0, this.offsetY ?? 0.0, (this.color ?? Color.Black).toUInt32(), this.fill ?? false, (this.shadowType ?? ShadowType.Color).getValue())
+            this.offsetX ?? 0.0, this.offsetY ?? 0.0, transAppResourceToResourceColor(this.color ?? Color.Black), this.fill ?? false, (this.shadowType ?? ShadowType.Color).getValue())
     }
 }
 

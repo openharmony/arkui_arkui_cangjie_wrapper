@@ -139,8 +139,9 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
         let vecValueHandle = FFIVectorFloat64(tmpValue.size)
         let vecUnitHandle = FFIVectorInt32(tmpValue.size)
         for (i in 0..tmpValue.size) {
-            vecValueHandle.setElement(i, tmpValue[i].value)
-            vecUnitHandle.setElement(i, tmpValue[i].unitType.getValue())
+            var itemValue_ = transAppResourceToLength(tmpValue[i])
+            vecValueHandle.setElement(i, itemValue_.value)
+            vecUnitHandle.setElement(i, itemValue_.unitType.getValue())
         }
         unsafe {
             FfiOHOSAceFrameworkShapeSetStrokeDashArray(
