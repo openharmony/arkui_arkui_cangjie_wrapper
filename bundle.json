@@ -12,9 +12,6 @@
     "component": {
         "name": "arkui_cangjie_wrapper",
         "subsystem": "arkui",
-        "syscap": [
-            "SystemCapability.ArkUI.ArkUI.Full"
-        ],
         "features": [],
         "adapted_system_type": [
             "standard"
