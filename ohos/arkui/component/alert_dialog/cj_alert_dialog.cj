@@ -768,7 +768,7 @@ public open class AlertDialogParam {
         this.maskRect = maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)
         this.showInSubWindow = showInSubWindow ?? false
         this.isModal = isModal ?? true
-        this.backgroundColor = backgroundColor ?? Color.Transparent
+        this.backgroundColor = backgroundColor
         this.backgroundBlurStyle = backgroundBlurStyle ?? BlurStyle.ComponentUltraThick
         this.onWillDismiss = onWillDismiss
         this.cornerRadius = cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp,
@@ -795,7 +795,11 @@ public open class AlertDialogParam {
         let nativeMaskRect = NativeOptionRectangle(true, (maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)).parseToNative())
         let nativeShowInSubWindow = NativeOptionBool(true, showInSubWindow ?? false)
         let nativeIsModal = NativeOptionBool(true, isModal ?? true)
-        let nativeBackgroundColor = NativeOptionUInt32(true, transAppResourceToResourceColor(backgroundColor ?? Color.Transparent))
+        let nativeBackgroundColor = match (backgroundColor) {
+            NativeOptionUInt32(true, transAppResourceToResourceColor(backgroundColor ?? Color.White))
+        } else {
+            NativeOptionUInt32(false, 0)
+        }
         let nativeBackgroundBlurStyle = NativeOptionInt32(true, (backgroundBlurStyle ?? BlurStyle.ComponentUltraThick).getValue())
         let nativeOnWillDismiss = match (onWillDismiss) {
             case Some(value) =>
@@ -946,7 +950,7 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
             maskRect: maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
             showInSubWindow: showInSubWindow ?? false,
             isModal: isModal ?? true,
-            backgroundColor: backgroundColor ?? Color.Transparent,
+            backgroundColor: backgroundColor,
             backgroundBlurStyle: backgroundBlurStyle ?? BlurStyle.ComponentUltraThick,
             onWillDismiss: onWillDismiss,
             cornerRadius: cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp),
@@ -1061,7 +1065,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
             maskRect: maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
             showInSubWindow: showInSubWindow ?? false,
             isModal: isModal ?? true,
-            backgroundColor: backgroundColor ?? Color.Transparent,
+            backgroundColor: backgroundColor,
             backgroundBlurStyle: backgroundBlurStyle ?? BlurStyle.ComponentUltraThick,
             onWillDismiss: onWillDismiss,
             cornerRadius: cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp),
@@ -1178,7 +1182,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
             maskRect: maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
             showInSubWindow: showInSubWindow ?? false,
             isModal: isModal ?? true,
-            backgroundColor: backgroundColor ?? Color.Transparent,
+            backgroundColor: backgroundColor,
             backgroundBlurStyle: backgroundBlurStyle ?? BlurStyle.ComponentUltraThick,
             onWillDismiss: onWillDismiss,
             cornerRadius: cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp,
