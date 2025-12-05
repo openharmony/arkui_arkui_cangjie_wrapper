@@ -18,7 +18,7 @@
 package ohos.arkui.component.pattern_lock
 
 import ohos.arkui.component.common.{CommonMethodComponent}
-import ohos.arkui.component.util.{transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
 import ohos.base.{ResourceColor, Length, VectorInt32Handle, FFIVectorInt32, LengthProp}
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback1Param}
 import ohos.labels.APILevel
@@ -139,7 +139,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
     public func selectedColor(value: ?ResourceColor): This {
         let tmpValue = value ?? 0xFF182431
         unsafe {
-            FfiOHOSAceFrameworkPatternLockSelectedColor(tmpValue.toUInt32())
+            FfiOHOSAceFrameworkPatternLockSelectedColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -158,7 +158,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
     public func pathColor(value: ?ResourceColor): This {
         let tmpValue = value ?? 0x33182431
         unsafe {
-            FfiOHOSAceFrameworkPatternLockPathColor(tmpValue.toUInt32())
+            FfiOHOSAceFrameworkPatternLockPathColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -177,7 +177,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
     public func activeColor(value: ?ResourceColor): This {
         let tmpValue = value ?? 0xFF182431
         unsafe {
-            FfiOHOSAceFrameworkPatternLockActiveColor(tmpValue.toUInt32())
+            FfiOHOSAceFrameworkPatternLockActiveColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
@@ -196,7 +196,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
     public func regularColor(value: ?ResourceColor): This {
         let tmpValue = value ?? 0xFF182431
         unsafe {
-            FfiOHOSAceFrameworkPatternLockRegularColor(tmpValue.toUInt32())
+            FfiOHOSAceFrameworkPatternLockRegularColor(transAppResourceToResourceColor(tmpValue))
         }
         this
     }
