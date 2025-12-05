@@ -165,7 +165,7 @@ public class BorderColor {
 }
 
 @C
-struct NativeAlertDialogButtonOptionsV2 {
+protected struct NativeAlertDialogButtonOptionsV2 {
     NativeAlertDialogButtonOptionsV2(
         let enabled: Bool,
         let defaultFocus: Bool,
@@ -322,6 +322,60 @@ public open class AlertDialogButtonBaseOptions {
         this.backgroundColor = backgroundColor
         this.action = action ?? { => }
     }
+
+    protected open func toNative(): NativeAlertDialogButtonOptionsV2 {
+        var cValue: CString = try {
+            unsafe { LibC.mallocCString(transResourceStrToString(value ?? "")) }
+        } catch (e: Exception) {
+            throw BusinessException(100001, "Internal error: failed to allocate memory.")
+        }
+
+        var cStyle = CPointer<Int32>()
+        unsafe {
+            cStyle = LibC.malloc<Int32>(count: 1)
+            if (cStyle.isNull()) {
+                unsafe { LibC.free(cValue) }
+                throw BusinessException(100001, "Internal error: failed to allocate memory.")
+            }
+            cStyle.write((style ?? DialogButtonStyle.Default).getValue())
+        }
+
+        var cFontColor = CPointer<UInt32>()
+        if (let Some(v) <- fontColor) {
+            unsafe {
+                cFontColor = LibC.malloc<UInt32>(count: 1)
+                if (cFontColor.isNull()) {
+                    LibC.free(cValue)
+                    LibC.free<Int32>(cStyle)
+                    throw BusinessException(100001, "Internal error: failed to allocate memory.")
+                }
+                cFontColor.write(v.toUInt32())
+            }
+        }
+        var cBackgroundColor = CPointer<UInt32>()
+        if (let Some(v) <- backgroundColor) {
+            unsafe {
+                cBackgroundColor = LibC.malloc<UInt32>(count: 1)
+                if (cBackgroundColor.isNull()) {
+                    LibC.free(cValue)
+                    LibC.free<Int32>(cStyle)
+                    LibC.free<UInt32>(cFontColor)
+                    throw BusinessException(100001, "Internal error: failed to allocate memory.")
+                }
+                cBackgroundColor.write(v.toUInt32())
+            }
+        }
+        NativeAlertDialogButtonOptionsV2(
+            enabled ?? true,
+            defaultFocus ?? false,
+            cStyle,
+            cValue,
+            cFontColor,
+            cBackgroundColor,
+            Callback0Param<Unit>(action ?? { => }).getID(),
+            false
+        )
+    }
 }
 
 /**
@@ -380,7 +434,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
         this.primary = primary ?? false
     }
 
-    func toNative(): NativeAlertDialogButtonOptionsV2 {
+    protected func toNative(): NativeAlertDialogButtonOptionsV2 {
         var cValue: CString = try {
             unsafe { LibC.mallocCString(transResourceStrToString(value ?? "")) }
         } catch (e: Exception) {
@@ -714,7 +768,7 @@ public open class AlertDialogParam {
         this.maskRect = maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)
         this.showInSubWindow = showInSubWindow ?? false
         this.isModal = isModal ?? true
-        this.backgroundColor = backgroundColor ?? Color.Transparent
+        this.backgroundColor = backgroundColor
         this.backgroundBlurStyle = backgroundBlurStyle ?? BlurStyle.ComponentUltraThick
         this.onWillDismiss = onWillDismiss
         this.cornerRadius = cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp,
@@ -741,7 +795,11 @@ public open class AlertDialogParam {
         let nativeMaskRect = NativeOptionRectangle(true, (maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)).parseToNative())
         let nativeShowInSubWindow = NativeOptionBool(true, showInSubWindow ?? false)
         let nativeIsModal = NativeOptionBool(true, isModal ?? true)
-        let nativeBackgroundColor = NativeOptionUInt32(true, transAppResourceToResourceColor(backgroundColor ?? Color.Transparent))
+        let nativeBackgroundColor = match (backgroundColor) {
+            NativeOptionUInt32(true, transAppResourceToResourceColor(backgroundColor ?? Color.White))
+        } else {
+            NativeOptionUInt32(false, 0)
+        }
         let nativeBackgroundBlurStyle = NativeOptionInt32(true, (backgroundBlurStyle ?? BlurStyle.ComponentUltraThick).getValue())
         let nativeOnWillDismiss = match (onWillDismiss) {
             case Some(value) =>
@@ -892,7 +950,7 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
             maskRect: maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
             showInSubWindow: showInSubWindow ?? false,
             isModal: isModal ?? true,
-            backgroundColor: backgroundColor ?? Color.Transparent,
+            backgroundColor: backgroundColor,
             backgroundBlurStyle: backgroundBlurStyle ?? BlurStyle.ComponentUltraThick,
             onWillDismiss: onWillDismiss,
             cornerRadius: cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp),
@@ -1007,7 +1065,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
             maskRect: maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
             showInSubWindow: showInSubWindow ?? false,
             isModal: isModal ?? true,
-            backgroundColor: backgroundColor ?? Color.Transparent,
+            backgroundColor: backgroundColor,
             backgroundBlurStyle: backgroundBlurStyle ?? BlurStyle.ComponentUltraThick,
             onWillDismiss: onWillDismiss,
             cornerRadius: cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp),
@@ -1124,7 +1182,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
             maskRect: maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
             showInSubWindow: showInSubWindow ?? false,
             isModal: isModal ?? true,
-            backgroundColor: backgroundColor ?? Color.Transparent,
+            backgroundColor: backgroundColor,
             backgroundBlurStyle: backgroundBlurStyle ?? BlurStyle.ComponentUltraThick,
             onWillDismiss: onWillDismiss,
             cornerRadius: cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp,
@@ -1146,7 +1204,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
 protected class AlertDialogInner {
     protected static func show(value: AlertDialogParamWithConfirm): Unit {
         let nativeDialog = value.getNativeParam()
-        let nativeConfirm = match (value.confirm as AlertDialogButtonBaseOptions) {
+        let nativeConfirm = match (value.confirm) {
             case Some(v) => v.toNative()
             case None => AlertDialogButtonBaseOptions(value: "", action: {=>}).toNative()
         }
@@ -1161,11 +1219,11 @@ protected class AlertDialogInner {
 
     protected static func show(value: AlertDialogParamWithButtons): Unit {
         let nativeDialog = value.getNativeParam()
-        let nativePrimaryButton = match (value.primaryButton as AlertDialogButtonBaseOptions) {
+        let nativePrimaryButton = match (value.primaryButton) {
             case Some(v) => v.toNative()
             case None => AlertDialogButtonBaseOptions(value: "", action: {=>}).toNative()
         }
-        let nativeSecondaryButton = match (value.secondaryButton as AlertDialogButtonBaseOptions) {
+        let nativeSecondaryButton = match (value.secondaryButton) {
             case Some(v) => v.toNative()
             case None => AlertDialogButtonBaseOptions(value: "", action: {=>}).toNative()
         }
