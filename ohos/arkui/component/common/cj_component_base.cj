@@ -28,15 +28,7 @@ import ohos.ffi.{RemoteData}
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 @!Hide
-public abstract class UINodeBase <: RemoteData {
-    protected init(id: Int64){
-        super(id)
-    }
-
-    protected init(){
-        super()
-    }
-
+public abstract class UINodeBase {
     protected func initial(): Unit
     protected func update(): Unit
 }

@@ -33,14 +33,6 @@ import std.deriving.Derive
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponent<T> {
-    protected init(id: Int64){
-        super(id)
-    }
-
-    protected init(){
-        super()
-    }
-
     protected open func initial(): Unit {
         super.initial()
     }

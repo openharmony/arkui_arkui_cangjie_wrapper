@@ -30,14 +30,6 @@ let MAX_ANGLE: Float64 = 360.0
 let MIN_ANGLE: Float64 = 0.0
 
 protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
-    protected init(id: Int64){
-        super(id)
-    }
-
-    protected init(){
-        super()
-    }
-
     protected var child: ?() -> Unit = None
 
     protected open func pop(): Unit {
