@@ -33,10 +33,12 @@ import std.deriving.Derive
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponent<T> {
+    @!Hide
     protected open func initial(): Unit {
         super.initial()
     }
 
+    @!Hide
     protected open func update(): Unit {
         super.update()
     }
@@ -55,6 +57,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         scrollBarInner(barState)
     }
 
+    @!Hide
     protected func scrollBarInner(barState: ?BarState): T
 
     /**
@@ -71,6 +74,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         scrollBarColorInner(color)
     }
 
+    @!Hide
     protected func scrollBarColorInner(color: ?ResourceColor): T
 
     /**
@@ -87,6 +91,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         scrollBarWidthInner(value ?? 4.vp)
     }
 
+    @!Hide
     protected func scrollBarWidthInner(value: ?Length): T
 
     /**
@@ -104,6 +109,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         nestedScrollInner(value)
     }
 
+    @!Hide
     protected func nestedScrollInner(value: ?NestedScrollOptions): T
 
     /**
@@ -121,6 +127,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         enableScrollInteractionInner(value)
     }
 
+    @!Hide
     protected func enableScrollInteractionInner(value: ?Bool): T
 
     /**
@@ -139,6 +146,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         frictionInner(value)
     }
 
+    @!Hide
     protected func frictionInner(value: ?Float64): T
 
     /**
@@ -157,6 +165,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         frictionInner(value)
     }
 
+    @!Hide
     protected func frictionInner(value: ?AppResource): T
 
     /**
@@ -173,6 +182,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         onReachStartInner(event)
     }
 
+    @!Hide
     protected func onReachStartInner(event: ?() -> Unit): T
 
     /**
@@ -189,6 +199,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         onReachEndInner(event)
     }
 
+    @!Hide
     protected func onReachEndInner(event: ?() -> Unit): T
 
     /**
@@ -205,6 +216,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         onScrollStartInner(event)
     }
 
+    @!Hide
     protected func onScrollStartInner(event: ?() -> Unit): T
 
     /**
@@ -225,6 +237,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         onScrollStopInner(event)
     }
 
+    @!Hide
     protected func onScrollStopInner(event: ?() -> Unit): T
 
     /**
@@ -241,6 +254,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         flingSpeedLimitInner(speedLimit)
     }
 
+    @!Hide
     protected func flingSpeedLimitInner(speedLimit: ?Float64): T {
         unsafe {
             FfiOHOSAceFrameworkScrollableBaseFlingSpeed(speedLimit ?? 0.0)
@@ -262,6 +276,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         fadingEdgeInner(enabled)
     }
 
+    @!Hide
     protected func fadingEdgeInner(enabled: Option<Bool>): T {
         match (enabled) {
             case Some(v) =>
@@ -288,6 +303,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         fadingEdgeInner(enabled, options ?? FadingEdgeOptions())
     }
 
+    @!Hide
     protected func fadingEdgeInner(enabled: Option<Bool>, options: FadingEdgeOptions): T {
         match (enabled) {
             case Some(v) =>
@@ -318,6 +334,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         clipContentInner(clip)
     }
 
+    @!Hide
     protected open func clipContentInner(clip: ?ContentClipMode): T {
         unsafe {
             FfiOHOSAceFrameworkScrollableBaseClipMode((clip ?? ContentClipMode.Boundary).getValue())
@@ -342,6 +359,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         }
     }
 
+    @!Hide
     protected func clipContentInner(clip: RectShape): T {
         unsafe {
             FfiOHOSAceFrameworkScrollableBaseClipShape(clip.getID())
@@ -370,6 +388,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         onWillScrollInner(handler)
     }
 
+    @!Hide
     protected func onWillScrollInner(handler: Option<(Float64, ScrollState, ScrollSource) -> ScrollResult>): T {
         match (handler) {
             case Some(v) =>
@@ -408,6 +427,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         onWillScrollInner(handler)
     }
 
+    @!Hide
     protected func onWillScrollInner(handler: Option<(Float64, ScrollState, ScrollSource) -> Unit>): T {
         match (handler) {
             case Some(v) =>
@@ -439,6 +459,7 @@ public abstract class ScrollableCommonMethodComponent<T> <: CommonMethodComponen
         onDidScrollInner(handler ?? { _, _ => })
     }
 
+    @!Hide
     protected func onDidScrollInner(handler: OnScrollCallBack): T {
         let wrapper = {
             scrollOffset: Float64, scrollState: Int32 => handler(scrollOffset, ScrollState.parseValue(scrollState))

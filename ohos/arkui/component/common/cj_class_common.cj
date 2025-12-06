@@ -597,7 +597,7 @@ public class Bias {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var horizontal: ?Float64
+    public var horizontal: ?Float32
 
     /**
      * Vertical ratio of the Bias, it must be >= 0.
@@ -608,19 +608,19 @@ public class Bias {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public var vertical: ?Float64
+    public var vertical: ?Float32
 
     /**
      * Defines the constructor of Bias.
      *
-     * @param { ?Float64 } [horizontal] - Horizontal ratio of the Bias, it must be >= 0.
-     * @param { ?Float64 } [vertical] - Vertical ratio of the Bias, it must be >= 0.
+     * @param { ?Float32 } [horizontal] - Horizontal ratio of the Bias, it must be >= 0.
+     * @param { ?Float32 } [vertical] - Vertical ratio of the Bias, it must be >= 0.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(horizontal!: ?Float64 = None, vertical!: ?Float64 = None) {
+    public init(horizontal!: ?Float32 = None, vertical!: ?Float32 = None) {
         this.horizontal = horizontal ?? 0.5
         this.vertical = vertical ?? 0.5
     }

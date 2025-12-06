@@ -553,15 +553,15 @@ public class DotIndicator <: Indicator {
     /**
      * Sets the maximum number of navigation dots in the dot-style navigation indicator.
      *
-     * @param { UInt32 } value - Maximum number of navigation dots in the dot-style navigation indicator.
+     * @param { ?UInt32 } value - Maximum number of navigation dots in the dot-style navigation indicator.
      * @returns { This } Returns the DotIndicator instance.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func maxDisplayCount(value: UInt32): This {
-        this.mMaxDisplayCount = value
+    public func maxDisplayCount(value: ?UInt32): This {
+        this.mMaxDisplayCount = value ?? 0
         this
     }
 

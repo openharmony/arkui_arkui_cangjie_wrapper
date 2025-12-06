@@ -42,7 +42,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
     /**
      * Bind to the selection menu.
      *
-     * @param { ?RichEditorSpanType } spantype
+     * @param { ?RichEditorSpanType } spanType
      * @param { ?CustomBuilder } content
      * @param { ?ResponseType } responseType
      * @param { ?SelectionMenuOptions } options
@@ -53,7 +53,7 @@ sealed interface RichEditorAttribute <: CommonMethod<RichEditorAttribute> {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func bindSelectionMenu(
-        spantype!: ?RichEditorSpanType,
+        spanType!: ?RichEditorSpanType,
         content!: ?CustomBuilder,
         responseType!: ?ResponseType,
         options!: ?SelectionMenuOptions

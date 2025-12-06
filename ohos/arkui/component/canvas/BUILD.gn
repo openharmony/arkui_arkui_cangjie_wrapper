@@ -26,7 +26,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.canvas") {
   ]
 
   cj_deps = [
-    "../../ui_context/font:ohos.arkui.ui_context.font",
+    "../../ui_context:ohos.arkui.ui_context",
     "../../../base:ohos.base",
     "../common:ohos.arkui.component.common",
     "../native_struct:ohos.arkui.component.native_struct",

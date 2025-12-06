@@ -19,7 +19,6 @@ package ohos.arkui.ui_context
 
 import ohos.base.{Length, VoidCallback}
 import ohos.labels.APILevel
-import ohos.arkui.ui_context.animator.{Animator}
 import ohos.arkui.component.action_sheet.{ActionSheetOptions, ActionSheetInner}
 import ohos.arkui.component.alert_dialog.{AlertDialogParamWithConfirm, AlertDialogParamWithButtons, AlertDialogInner, AlertDialogParamWithOptions}
 import ohos.arkui.component.common.{AnimateParam, vp2pxInner, px2vpInner,

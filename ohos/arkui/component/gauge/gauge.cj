@@ -138,18 +138,18 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * The constructor of Gauge.
      *
-     * @param { ?Float64 } value - Set current data value.
-     * @param { ?Float64 } [min] - Set current segment minimum value.
-     * @param { ?Float64 } [max] - Set current segment maximum value.
+     * @param { ?Float32 } value - Set current data value.
+     * @param { ?Float32 } [min] - Set current segment minimum value.
+     * @param { ?Float32 } [max] - Set current segment maximum value.
      * @param { () -> Unit } [child] - Set child component of Gauge.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public init(value!: ?Float64, min!: ?Float64 = None, max!: ?Float64 = None, child!: () -> Unit = { => }) {
+    public init(value!: ?Float32, min!: ?Float32 = None, max!: ?Float32 = None, child!: () -> Unit = { => }) {
         unsafe {
-            FfiOHOSAceFrameworkGaugeCreate(value ?? 0.0, min ?? 0.0, max ?? 100.0)
+            FfiOHOSAceFrameworkGaugeCreate(Float64(value ?? 0.0), Float64(min ?? 0.0), Float64(max ?? 100.0))
         }
         this.child = child
     }
@@ -157,16 +157,16 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets the value for the current profile.
      *
-     * @param { ?Float64 } value - Set current data value.
+     * @param { ?Float32 } value - Set current data value.
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func value(value: ?Float64): This {
+    public func value(value: ?Float32): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetValue(value ?? 0.0)
+            FfiOHOSAceFrameworkGaugeSetValue(Float64(value ?? 0.0))
         }
         this
     }
@@ -174,16 +174,16 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the start angle. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @param { ?Float64 } angle - The start angle value, measured in degrees.
+     * @param { ?Float32 } angle - The start angle value, measured in degrees.
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func startAngle(angle: ?Float64): This {
+    public func startAngle(angle: ?Float32): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetStartAngle(angle ?? 0.0)
+            FfiOHOSAceFrameworkGaugeSetStartAngle(Float64(angle ?? 0.0))
         }
         this
     }
@@ -191,16 +191,16 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets the end angle position. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @param { ?Float64 } angle - The end angle value, measured in degrees.
+     * @param { ?Float32 } angle - The end angle value, measured in degrees.
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func endAngle(angle: ?Float64): This {
+    public func endAngle(angle: ?Float32): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetEndAngle(angle ?? 360.0)
+            FfiOHOSAceFrameworkGaugeSetEndAngle(Float64(angle ?? 360.0))
         }
         this
     }
@@ -349,18 +349,18 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets track shadow of the ring chart.
      *
-     * @param { ?Float64 } [radius] - The shadow radius.
-     * @param { ?Float64 } [offsetX] - The shadow horizontal offset.
-     * @param { ?Float64 } [offsetY] - The shadow vertical offset.
+     * @param { ?Float32 } [radius] - The shadow radius.
+     * @param { ?Float32 } [offsetX] - The shadow horizontal offset.
+     * @param { ?Float32 } [offsetY] - The shadow vertical offset.
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    public func trackShadow(radius!: ?Float64 = None, offsetX!: ?Float64 = None, offsetY!: ?Float64 = None): This {
+    public func trackShadow(radius!: ?Float32 = None, offsetX!: ?Float32 = None, offsetY!: ?Float32 = None): This {
         unsafe {
-            FfiOHOSAceFrameworkGaugeSetShadowOptions(radius ?? 20.0, offsetX ?? 5.0, offsetY ?? 5.0)
+            FfiOHOSAceFrameworkGaugeSetShadowOptions(Float64(radius ?? 20.0), Float64(offsetX ?? 5.0), Float64(offsetY ?? 5.0))
         }
         this
     }

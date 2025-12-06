@@ -126,7 +126,7 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
     /**
      * Defines the TextPicker constructor.
      *
-     * @param { Array<String> } range - Data selection range of the picker.
+     * @param { ?Array<String> } range - Data selection range of the picker.
      * @param { ?UInt32 } [selected] - Index of the default selected item in the array.
      * @param { ?String } [value] - Value of the default item in the range.
      */
@@ -135,33 +135,34 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        range!: Array<String>,
+        range!: ?Array<String>,
         selected!: ?UInt32 = Option.None,
         value!: ?String = Option.None
     ) {
-        let vecFFi = FFIVectorString(range.size)
-        for (i in 0..range.size) {
-            vecFFi.setElement(i, range[i])
+        let tmpRange = range ?? []
+        let vecFFi = FFIVectorString(tmpRange.size)
+        for (i in 0..tmpRange.size) {
+            vecFFi.setElement(i, tmpRange[i])
         }
 
         var getSelected: UInt32 = 0
         match (selected) {
             case None => match (value) {
                 case None => getSelected = 0
-                case Some(v) => getSelected = checkSelect(range, v)
+                case Some(v) => getSelected = checkSelect(tmpRange, v)
             }
             case Some(v) => getSelected = v
         }
         // When selected is out of range, set to default
-        if (getSelected >= UInt32(range.size)) {
+        if (getSelected >= UInt32(tmpRange.size)) {
             getSelected = 0
         }
 
         var defValue: String = ""
         match (value) {
             case None =>
-                if (range.size > 0) {
-                    defValue = range[0]
+                if (tmpRange.size > 0) {
+                    defValue = tmpRange[0]
                 }
             case Some(v) => defValue = v
         }

@@ -184,8 +184,8 @@ public class BadgeStyle {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(color!: ?ResourceColor = None, fontSize!: ?Length = None, badgeSize!: ?Length = None,
-        badgeColor!: ?ResourceColor = None, fontWeight!: ?FontWeight = None,
-        borderColor!: ?ResourceColor = None, borderWidth!: ?Length = None) {
+        badgeColor!: ?ResourceColor = None, borderColor!: ?ResourceColor = None,
+        borderWidth!: ?Length = None, fontWeight!: ?FontWeight = None) {
         this.color = color ?? Color.White
         this.fontSize = transAppResourceToLength(fontSize ?? 10.fp)
         this.badgeSize = transAppResourceToLength(badgeSize ?? 16.vp)

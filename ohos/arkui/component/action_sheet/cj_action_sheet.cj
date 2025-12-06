@@ -179,8 +179,8 @@ public class SheetInfo {
     ]
     public init(
         title!: ?ResourceStr,
-        action!: ?VoidCallback,
-        icon!: ?ResourceStr = None
+        icon!: ?ResourceStr = None,
+        action!: ?VoidCallback
     ) {
         this.title = title ?? ""
         this.action = action ?? { => }
@@ -643,12 +643,12 @@ public class ActionSheetOptions {
     ]
     public init(
         title!: ?ResourceStr,
-        message!: ?ResourceStr,
-        sheets!: ?Array<SheetInfo>,
         subtitle!: ?ResourceStr = None,
+        message!: ?ResourceStr,
         confirm!: ?ActionSheetButtonOptions = None,
-        autoCancel!: ?Bool = None,
         cancel!: ?VoidCallback = None,
+        sheets!: ?Array<SheetInfo>,
+        autoCancel!: ?Bool = None,
         alignment!: ?DialogAlignment = None,
         offset!: ?ActionSheetOffset = None,
         maskRect!: ?Rectangle = None,
@@ -657,14 +657,14 @@ public class ActionSheetOptions {
         backgroundColor!: ?ResourceColor = None,
         backgroundBlurStyle!: ?BlurStyle = None,
         onWillDismiss!: ?Callback<DismissDialogAction, Unit> = None,
+        transition!: ?TransitionEffect = None,
         cornerRadius!: ?BorderRadiuses = None,
+        width!: ?Length = None,
+        height!: ?Length = None,
         borderWidth!: ?Length = None,
         borderColor!: ?ResourceColor = None,
         borderStyle!: ?EdgeStyles = None,
-        width!: ?Length = None,
-        height!: ?Length = None,
-        shadow!: ?ShadowOptions = None,
-        transition!: ?TransitionEffect = None
+        shadow!: ?ShadowOptions = None
     ) {
         this.title = title ?? ""
         this.message = message ?? ""

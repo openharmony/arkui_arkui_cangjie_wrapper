@@ -31,38 +31,38 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Sets the value for the current profile.
      *
-     * @param { ?Float64 } value - Set current data value.
+     * @param { ?Float32 } value - Set current data value.
      * @returns { GaugeAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func value(value: ?Float64): GaugeAttribute
+    func value(value: ?Float32): GaugeAttribute
 
     /**
      * Set the start angle. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @param { ?Float64 } angle - The start angle value.
+     * @param { ?Float32 } angle - The start angle value.
      * @returns { GaugeAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func startAngle(angle: ?Float64): GaugeAttribute
+    func startAngle(angle: ?Float32): GaugeAttribute
 
     /**
      * Sets the end angle position. Clock 0 is 0 degrees and clockwise is positive.
      *
-     * @param { ?Float64 } angle - The end angle value.
+     * @param { ?Float32 } angle - The end angle value.
      * @returns { GaugeAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func endAngle(angle: ?Float64): GaugeAttribute
+    func endAngle(angle: ?Float32): GaugeAttribute
 
     /**
      * Sets the end angle position. Clock 0 is 0 degrees and clockwise is positive.
@@ -127,16 +127,16 @@ sealed interface GaugeAttribute <: CommonMethod<GaugeAttribute> {
     /**
      * Sets track shadow of the ring chart.
      *
-     * @param { ?Float64 } radius - The shadow radius.
-     * @param { ?Float64 } offsetX - The shadow horizontal offset.
-     * @param { ?Float64 } offsetY - The shadow vertical offset.
+     * @param { ?Float32 } radius - The shadow radius.
+     * @param { ?Float32 } offsetX - The shadow horizontal offset.
+     * @param { ?Float32 } offsetY - The shadow vertical offset.
      * @returns { GaugeAttribute } - The attribute of the component.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func trackShadow(radius!: ?Float64, offsetX!: ?Float64, offsetY!: ?Float64): GaugeAttribute
+    func trackShadow(radius!: ?Float32, offsetX!: ?Float32, offsetY!: ?Float32): GaugeAttribute
 
     /**
      * Sets indicator options of the ring chart.
