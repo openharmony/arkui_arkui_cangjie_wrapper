@@ -1027,7 +1027,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
     /**
      * Bind to the selection menu.
      *
-     * @param { ?RichEditorSpanType } [spantype] - Indicates the type of selection menu. The default value is RichEditorSpanType.TEXT.
+     * @param { ?RichEditorSpanType } [spanType] - Indicates the type of selection menu. The default value is RichEditorSpanType.TEXT.
      * @param { ?CustomBuilder } content - Indicates the content of selection menu.
      * @param { ?ResponseType } [responseType] - Indicates response type of selection menu. The default value is ResponseType.LongPress.
      * @param { ?SelectionMenuOptions } options - Indicates the options of selection menu.
@@ -1038,17 +1038,17 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func bindSelectionMenu(
-        spantype!: ?RichEditorSpanType = None,
+        spanType!: ?RichEditorSpanType = None,
         content!: ?CustomBuilder,
         responseType!: ?ResponseType = None,
         options!: ?SelectionMenuOptions
     ): This {
-        let tmpSpantype = spantype ?? RichEditorSpanType.Text
+        let tmpSpanType = spanType ?? RichEditorSpanType.Text
         let tmpResponseType = responseType ?? ResponseType.LongPress
         let tmpOptions = options ?? SelectionMenuOptions()
         unsafe {
             FfiOHOSAceFrameworkRichEditorBindSelectionMenu(
-                tmpSpantype.getValue(),
+                tmpSpanType.getValue(),
                 Callback0Param<Unit>(content ?? { => }).getID(),
                 tmpResponseType.getValue(),
                 Callback0Param<Unit>(tmpOptions.onAppear ?? {=>}).getID(),

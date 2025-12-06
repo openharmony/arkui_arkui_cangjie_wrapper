@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.ui_context.prompt_action
+package ohos.arkui.ui_context
 
 import ohos.base.{ResourceColor, Length, ResourceStr, Color, NativeOffset, LengthProp, CStringExtend, NativeLength, LengthUnit}
 import ohos.business_exception.{BusinessException, AsyncCallback}

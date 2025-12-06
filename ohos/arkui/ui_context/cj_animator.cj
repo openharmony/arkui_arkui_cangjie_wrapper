@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.ui_context.animator
+package ohos.arkui.ui_context
 
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback1Param, Callback0Param}
 import ohos.labels.APILevel

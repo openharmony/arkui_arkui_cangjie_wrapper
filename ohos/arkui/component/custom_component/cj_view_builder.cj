@@ -57,6 +57,7 @@ public class ViewBuilder {
  *
  * @param { (CustomView) -> ViewBuilder } builder - Custom build function modified by @Builder.
  * @param { CustomView } thisView - Current page object.
+ * @returns { () -> Unit } Returns the bind function, can used as a builder
  */
 @!APILevel[
     since: "22",
@@ -71,12 +72,13 @@ public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView): ()
  *
  * @param { (CustomView, ObservedProperty<T1>) -> ViewBuilder } builder - Custom build function modified by @Builder.
  * @param { CustomView } thisView - Current page object.
+ * @returns { () -> Unit } Returns the bind function, can used as a builder
  */
 @!APILevel[
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public func bind<T1> (builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder, thisView: CustomView): (T1) -> Unit {
+public func bind<T1>(builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder, thisView: CustomView): (T1) -> Unit {
     {x1: T1 => builder(thisView, ObservedProperty("", x1)).build()}
 }
 
@@ -85,12 +87,13 @@ public func bind<T1> (builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder
  *
  * @param { (CustomView, ObservedProperty<T1>, ObservedProperty<T2>) -> ViewBuilder } builder - Custom build function modified by @Builder.
  * @param { CustomView } thisView - Current page object.
+ * @returns { () -> Unit } Returns the bind function, can used as a builder
  */
 @!APILevel[
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public func bind<T1, T2> (
+public func bind<T1, T2>(
     builder: (CustomView, ObservedProperty<T1>, ObservedProperty<T2>) -> ViewBuilder,
     thisView: CustomView
 ): (T1, T2) -> Unit {
@@ -107,7 +110,7 @@ public func bind<T1, T2> (
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
-public func bind<T1, T2, T3> (
+public func bind<T1, T2, T3>(
     builder: (CustomView, ObservedProperty<T1>, ObservedProperty<T2>, ObservedProperty<T3>) -> ViewBuilder,
     thisView: CustomView
 ) {

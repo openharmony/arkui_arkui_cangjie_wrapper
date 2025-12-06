@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.ui_context.font
+package ohos.arkui.ui_context
 
 import ohos.base.{ExternalString}
 import ohos.labels.APILevel

@@ -274,11 +274,11 @@ public class CustomDialogControllerOptions {
      * @param { ?Length } [cornerRadius]- Corner radius of dialog.
      * @param { ?Bool } [isModal] - Whether it is a modal dialog.
      * @param { ?Callback<DismissDialogAction, Unit> } [onWillDismiss] - Callback function when the CustomDialog interactive dismiss.
+     * @param { ?Length } [width] - Defines the custom dialog's width.
+     * @param { ?Length } [height] - Defines the custom dialog's height.
      * @param { ?Length } [borderWidth] - Defines the custom dialog's border width.
      * @param { ?ResourceColor } [borderColor] - Defines the custom dialog's border color.
      * @param { ?EdgeStyles } [borderStyle] - Defines the custom dialog's border style.
-     * @param { ?Length } [width] - Defines the custom dialog's width.
-     * @param { ?Length } [height] - Defines the custom dialog's height.
      * @param { ?ShadowOptions } [shadow] - Defines the custom dialog's shadow.
      * @param { ?BlurStyle } [backgroundBlurStyle] - Defines the customDialog's background blur Style.
      */
@@ -286,6 +286,87 @@ public class CustomDialogControllerOptions {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    public init(
+        builder!: CustomView,
+        cancel!: ?VoidCallback = None,
+        autoCancel!: ?Bool = None,
+        alignment!: ?DialogAlignment = None,
+        offset!: ?Offset = None,
+        customStyle!: ?Bool = None,
+        gridCount!: ?UInt32 = None,
+        maskColor!: ?ResourceColor = None,
+        maskRect!: ?Rectangle = None,
+        openAnimation!: ?AnimateParam = None,
+        closeAnimation!: ?AnimateParam = None,
+        showInSubWindow!: ?Bool = None,
+        backgroundColor!: ?ResourceColor = None,
+        cornerRadius!: ?Length = None,
+        isModal!: ?Bool = None,
+        onWillDismiss!: ?Callback<DismissDialogAction, Unit> = None,
+        width!: ?Length = None,
+        height!: ?Length = None,
+        borderWidth!: ?Length = None,
+        borderColor!: ?ResourceColor = None,
+        borderStyle!: ?EdgeStyles = None,
+        shadow!: ?ShadowOptions = None,
+        backgroundBlurStyle!: ?BlurStyle = None
+    ) {
+        this(
+            cancel: cancel, 
+            autoCancel: autoCancel, 
+            alignment: alignment, 
+            offset: offset, 
+            customStyle: customStyle, 
+            gridCount: gridCount,
+            maskColor: maskColor,
+            maskRect: maskRect,
+            openAnimation: openAnimation,
+            closeAnimation: closeAnimation,
+            showInSubWindow: showInSubWindow,
+            backgroundColor: backgroundColor,
+            cornerRadius: cornerRadius,
+            isModal: isModal,
+            onWillDismiss: onWillDismiss,
+            width: width,
+            height: height,
+            borderWidth: borderWidth,
+            borderColor: borderColor,
+            borderStyle: borderStyle,
+            shadow: shadow,
+            backgroundBlurStyle: backgroundBlurStyle
+            )
+    }
+
+    /**
+     * Defines the options of CustomDialogController.
+     *
+     * @param { ?VoidCallback } [cancel] - Defines the cancel function.
+     * @param { ?Bool } [autoCancel] - Defines if use auto cancel when click on the outside of the dialog.
+     * @param { ?Offset } [offset] - Defines the dialog offset.
+     * @param { ?Bool } [customStyle] - Defines if use custom style.
+     * @param { ?UInt32 } [gridCount] - Grid count of dialog.
+     * @param { ?ResourceColor } [maskColor] - Mask color of dialog.
+     * @param { ?Rectangle } [maskRect] - Mask Region of dialog. The size cannot exceed the main window.
+     * @param { ?AnimateParam } [openAnimation] - Animation parameters of dialog opening.
+     * @param { ?AnimateParam } [closeAnimation] - Animation parameters of dialog closing.
+     * @param { ?Bool } [showInSubWindow] - Whether to display in the sub window.
+     * @param { ?ResourceColor } [backgroundColor] - Background color of dialog.
+     * @param { ?Length } [cornerRadius]- Corner radius of dialog.
+     * @param { ?Bool } [isModal] - Whether it is a modal dialog.
+     * @param { ?Callback<DismissDialogAction, Unit> } [onWillDismiss] - Callback function when the CustomDialog interactive dismiss.
+     * @param { ?Length } [width] - Defines the custom dialog's width.
+     * @param { ?Length } [height] - Defines the custom dialog's height.
+     * @param { ?Length } [borderWidth] - Defines the custom dialog's border width.
+     * @param { ?ResourceColor } [borderColor] - Defines the custom dialog's border color.
+     * @param { ?EdgeStyles } [borderStyle] - Defines the custom dialog's border style.
+     * @param { ?ShadowOptions } [shadow] - Defines the custom dialog's shadow.
+     * @param { ?BlurStyle } [backgroundBlurStyle] - Defines the customDialog's background blur Style.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
     public init(
         cancel!: ?VoidCallback = None,
         autoCancel!: ?Bool = None,
@@ -302,11 +383,11 @@ public class CustomDialogControllerOptions {
         cornerRadius!: ?Length = None,
         isModal!: ?Bool = None,
         onWillDismiss!: ?Callback<DismissDialogAction, Unit> = None,
+        width!: ?Length = None,
+        height!: ?Length = None,
         borderWidth!: ?Length = None,
         borderColor!: ?ResourceColor = None,
         borderStyle!: ?EdgeStyles = None,
-        width!: ?Length = None,
-        height!: ?Length = None,
         shadow!: ?ShadowOptions = None,
         backgroundBlurStyle!: ?BlurStyle = None
     ) {

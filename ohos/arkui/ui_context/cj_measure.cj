@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.ui_context.measure
+package ohos.arkui.ui_context
 
 import ohos.base.{NativeOptionLength, Length, LengthProp, NativeLength}
 import ohos.labels.APILevel

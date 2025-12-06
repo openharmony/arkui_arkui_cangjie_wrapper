@@ -20,7 +20,7 @@ package ohos.arkui.component.canvas
 import ohos.arkui.component.common.{ImageType, CanvasTextBaseline, GlobalCompositeOperation, ImageSmoothingQuality, CanvasDirection, parseLengthFromString, LineJoinStyle, CanvasTextAlign, FontStyle, LineCapStyle, Repetition, CanvasFillRule, px2vpInner, fp2pxInner, lpx2pxInner}
 import ohos.arkui.component.path_2d.{Path2D}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
-import ohos.arkui.ui_context.font.Font as FontApi
+import ohos.arkui.ui_context.Font as FontApi
 import ohos.base.{FFIVectorFloat64, Length, LengthProp, nativeLog, CStringExtend, VectorFloat64Handle, Color, ResourceColor, LengthUnit}
 import ohos.ffi.{RemoteDataLite, releaseFFIData}
 import ohos.labels.APILevel

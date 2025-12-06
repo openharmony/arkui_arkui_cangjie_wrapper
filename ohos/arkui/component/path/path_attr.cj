@@ -30,12 +30,12 @@ sealed interface PathAttribute <: CommonShapeMethod<PathAttribute> {
     /**
      * Called when the command string drawn by the path is set.
      *
-     * @param { ?ResourceStr } commands - The command string to draw the path.
+     * @param { ?ResourceStr } value - The command string to draw the path.
      * @returns { PathAttribute } - The path attribute.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    func commands(commands: ?ResourceStr): PathAttribute
+    func commands(value: ?ResourceStr): PathAttribute
 }

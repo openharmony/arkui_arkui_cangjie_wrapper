@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-protected package ohos.arkui.ui_context.router
+package ohos.arkui.ui_context
 
 import ohos.base.{ExternalString}
 import ohos.hilog.HilogChannel
