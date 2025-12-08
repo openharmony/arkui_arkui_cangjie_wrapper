@@ -19,7 +19,7 @@ package ohos.arkui.component.action_sheet
 
 import ohos.arkui.component.common.{DialogButtonStyle, DismissReason, DialogAlignment, Rectangle, BlurStyle, BorderRadiuses, EdgeStyles, ShadowOptions, TransitionEffect, INVALID_CALLBACK_ID}
 import ohos.arkui.component.native_struct.{NativeActionSheetShadowOptions, NativeOptionOffset, NativeOptionRectangle, NativeOptionEdgeStyle, NativeOptionRadius, NativeConfirm}
-import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, transResourceMediaToString}
+import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, transResourceMediaToString, transAppResourceToResourceColor}
 import ohos.base.{NativeOptionLength, NativeOptionUInt32, NativeOffset, NativeOptionInt64, ResourceStr, VoidCallback, Length, NativeOptionCString, NativeOptionBool, NativeOptionCallBack, NativeOptionInt32, ResourceColor, Callback, NativeLength, Color, LengthProp}
 import ohos.ffi.{Callback0Param, Callback1Param}
 import ohos.labels.APILevel
@@ -204,7 +204,7 @@ public class SheetInfo {
 
 /**
  * Base button params used for ActionSheet.
- * Defines the properties of buttons used in the ActionSheet dialog, including text, action callback, 
+ * Defines the properties of buttons used in the ActionSheet dialog, including text, action callback,
  * enabled state, focus behavior, and styling.
  */
 @!APILevel[
@@ -516,8 +516,8 @@ public class ActionSheetOptions {
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
     /**
      * Corner radius of the background. You can set the radius for each of the four corners individually.
-     * The value is a multiple of vp or a percentage. The value is multiplied by the component size, with the maximum 
-     * value being half of the component width or height. If the value is negative, the default value is used. 
+     * The value is a multiple of vp or a percentage. The value is multiplied by the component size, with the maximum
+     * value being half of the component width or height. If the value is negative, the default value is used.
      * When set to a percentage, the value defines the radius as a percentage of the parent component's width or height.
      * In the default values, topLeft is 32.vp, topRight is 32.vp, bottomLeft is 32.vp, bottomRight is 32.vp.
      */
@@ -529,7 +529,7 @@ public class ActionSheetOptions {
     /**
      * Border width of the dialog box.
      * You can set the width for all four sides or set separate widths for individual sides.
-     * The value is a multiple of vp or a percentage. The value is multiplied by the dialog 
+     * The value is a multiple of vp or a percentage. The value is multiplied by the dialog
      * box's width. If the left and right borders are greater than its width, or the top and bottom borders are greater
      * than its height, the dialog box may not display as expected.
      * The default value is 0, When set to a percentage, the value defines the border width as a percentage of the parent dialog.
@@ -596,7 +596,7 @@ public class ActionSheetOptions {
     public var shadow: ?ShadowOptions
     /**
      * Transition effect for the entrance and exit of the dialog box.
-     * 
+     *
      * NOTE:
      * 1. If this parameter is not set, the default effect is used.
      * 2. Touching the Back button during the entrance animation pauses the entrance animation and starts the exit
@@ -685,7 +685,7 @@ public class ActionSheetOptions {
         this.maskRect = maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)
         this.showInSubWindow = showInSubWindow ?? false
         this.isModal = isModal ?? true
-        this.backgroundColor = backgroundColor ?? Color.Transparent
+        this.backgroundColor = backgroundColor ?? Color.White
         this.backgroundBlurStyle = backgroundBlurStyle ?? BlurStyle.ComponentUltraThick
         this.onWillDismiss = onWillDismiss
         this.cornerRadius = cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp,
@@ -729,7 +729,7 @@ public class ActionSheetOptions {
         let nativeMaskRect = NativeOptionRectangle(true, (maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)).parseToNative())
         let nativeShowInSubWindow = NativeOptionBool(true, showInSubWindow ?? false)
         let nativeIsModal = NativeOptionBool(true, isModal ?? true)
-        let nativeBackgroundColor = NativeOptionUInt32(true, (backgroundColor ?? Color.Transparent).toUInt32())
+        let nativeBackgroundColor = NativeOptionUInt32(true, transAppResourceToResourceColor(backgroundColor ?? Color.White))
         let nativeBackgroundBlurStyle = NativeOptionInt32(true, (backgroundBlurStyle ?? BlurStyle.ComponentUltraThick).getValue())
         let nativeOnWillDismiss = match (onWillDismiss) {
             case Some(value) =>
