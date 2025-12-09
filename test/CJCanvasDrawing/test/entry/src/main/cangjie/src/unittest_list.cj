@@ -45,13 +45,9 @@ let UT1 = [
 ]
 let UT2 = [
     "ViewLine",
-    "ViewOffscreenCanvasRenderingContext2D",
     "ViewPath",
-    "ViewPolygon",
-    "ViewPolyline",
     "ViewShape",
     "ViewShapeClip",
-    "ViewXComponent",
     "ViewCanvas2",
     "ViewCanvasRenderingContext2D"
 ]
