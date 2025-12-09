@@ -281,7 +281,7 @@ class ViewRichEditor {
                         )
                     }
                 ).bindSelectionMenu(
-                    spantype: RichEditorSpanType.Image,
+                    spanType: RichEditorSpanType.Image,
                     content: bind(builder, this),
                     options: SelectionMenuOptions(onAppear: {=> Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: SelectionMenuOptions onAppear")},
                         onDisappear: {=> Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: SelectionMenuOptions onDisappear")})
@@ -365,7 +365,7 @@ class ViewRichEditor {
                     }
                 ).borderWidth(1).borderColor(Color.Green).width(100.percent).height(30.percent)
                 RichEditor(this.controller1).bindSelectionMenu(
-                    spantype: RichEditorSpanType.Text,
+                    spanType: RichEditorSpanType.Text,
                     content: bind(builder, this),
                     responseType: ResponseType.LongPress,
                     options: SelectionMenuOptions(onAppear: {=> Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: SelectionMenuOptions onAppear")},
@@ -418,7 +418,7 @@ class ViewRichEditor {
                 }).borderWidth(1).borderColor(Color.Green).width(100.percent).height(30.percent)
 
                 RichEditor(RichEditorController()).bindSelectionMenu(
-                    spantype: RichEditorSpanType.Mixed,
+                    spanType: RichEditorSpanType.Mixed,
                     content: bind(builder, this),
                     options: SelectionMenuOptions(onAppear: {=> Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: SelectionMenuOptions onAppear")},
                         onDisappear: {=> Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: SelectionMenuOptions onDisappear")})

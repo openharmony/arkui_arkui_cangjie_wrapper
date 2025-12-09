@@ -680,7 +680,7 @@ class BasicCommonUTHello {
         var WindowProperties: WindowProperties = WindowProperties(
                     windowRect: rectA,
                     drawableRect: rectA,
-                    winType: WindowType.TypeApp,
+                    windowType: WindowType.TypeApp,
                     isFullScreen: false,
                     isLayoutFullScreen: false,
                     focusable: false,
