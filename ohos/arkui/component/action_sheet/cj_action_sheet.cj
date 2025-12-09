@@ -271,11 +271,11 @@ public class ActionSheetButtonOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(
-        value!: ?ResourceStr,
-        action!: ?VoidCallback,
         enabled!: ?Bool = None,
         defaultFocus!: ?Bool = None,
-        style!: ?DialogButtonStyle = None
+        style!: ?DialogButtonStyle = None,
+        value!: ?ResourceStr,
+        action!: ?VoidCallback
     ) {
         this.value = value ?? ""
         this.action = action ?? { => }
