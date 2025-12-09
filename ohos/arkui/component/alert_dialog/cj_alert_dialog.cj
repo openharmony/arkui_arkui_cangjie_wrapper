@@ -768,7 +768,7 @@ public open class AlertDialogParam {
         this.maskRect = maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)
         this.showInSubWindow = showInSubWindow ?? false
         this.isModal = isModal ?? true
-        this.backgroundColor = backgroundColor
+        this.backgroundColor = backgroundColor ?? Color.White
         this.backgroundBlurStyle = backgroundBlurStyle ?? BlurStyle.ComponentUltraThick
         this.onWillDismiss = onWillDismiss
         this.cornerRadius = cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp,
@@ -795,11 +795,7 @@ public open class AlertDialogParam {
         let nativeMaskRect = NativeOptionRectangle(true, (maskRect ?? Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)).parseToNative())
         let nativeShowInSubWindow = NativeOptionBool(true, showInSubWindow ?? false)
         let nativeIsModal = NativeOptionBool(true, isModal ?? true)
-        let nativeBackgroundColor = match (backgroundColor) {
-            NativeOptionUInt32(true, transAppResourceToResourceColor(backgroundColor ?? Color.White))
-        } else {
-            NativeOptionUInt32(false, 0)
-        }
+        let nativeBackgroundColor = NativeOptionUInt32(true, transAppResourceToResourceColor(backgroundColor ?? Color.White))
         let nativeBackgroundBlurStyle = NativeOptionInt32(true, (backgroundBlurStyle ?? BlurStyle.ComponentUltraThick).getValue())
         let nativeOnWillDismiss = match (onWillDismiss) {
             case Some(value) =>

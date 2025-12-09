@@ -402,7 +402,7 @@ public class CustomDialogControllerOptions {
         this.openAnimation = openAnimation
         this.closeAnimation = closeAnimation
         this.showInSubWindow = showInSubWindow ?? false
-        this.backgroundColor = backgroundColor ?? Color.Transparent
+        this.backgroundColor = backgroundColor ?? Color.White
         this.cornerRadius = cornerRadius ?? 32.vp
         this.isModal = isModal ?? true
         this.onWillDismiss = onWillDismiss
@@ -454,7 +454,7 @@ public class CustomDialogController <: RemoteDataLite {
             case None => NativeOptionInt32(false, 0)
         }
 
-        let nativeBackgroundColor = NativeOptionUInt32(true, transAppResourceToResourceColor(options.backgroundColor ?? Color.Transparent))
+        let nativeBackgroundColor = NativeOptionUInt32(true, transAppResourceToResourceColor(options.backgroundColor ?? Color.White))
 
         let openAnimation = match (options.openAnimation) {
             case Some(value) => NativeOptionAnimateParam(true, parseAnimateParam(value))
