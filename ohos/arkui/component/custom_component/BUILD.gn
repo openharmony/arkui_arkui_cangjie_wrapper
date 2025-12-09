@@ -22,6 +22,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.custom_component") {
     "cj_view_ffi.cj",
     "custom_view.cj",
     "hybrid_component_base.cj",
+    "uinode_register_proxy.cj",
   ]
 
   cj_deps = [

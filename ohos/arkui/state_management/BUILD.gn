@@ -30,7 +30,10 @@ ohos_cangjie_shared_library("ohos.arkui.state_management") {
     "view_stack_processor.cj",
   ]
 
-  cj_deps = [ "../../base:ohos.base" ]
+  cj_deps = [
+    "../../base:ohos.base",
+    "../component/native_struct:ohos.arkui.component.native_struct",
+  ]
 
   cj_external_deps = [
     "cangjie_ark_interop:ohos.ark_interop",

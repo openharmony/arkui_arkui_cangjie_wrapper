@@ -140,6 +140,11 @@ struct AtCPackageV2 {
 }
 
 @C
+struct AtCPackageV3 {
+    var cjCleanUpIdleTask: CFunc<(Int64) -> Unit> = OHOSAceFrameworkCJCleanUpIdleTask
+}
+
+@C
 struct OHOSAceFrameworkCJInstanceInitializeParams {
     OHOSAceFrameworkCJInstanceInitializeParams(
         let runtimeId: Int16,
@@ -183,9 +188,16 @@ func OHOSAceFrameworkCJInstanceLoadEntry(paramsPtr: CPointer<OHOSAceFrameworkCJI
     0
 }
 
+@C
+func OHOSAceFrameworkCJCleanUpIdleTask(maxTimeInMs: Int64): Unit {
+    uiNodeCleanUpIdleTask(maxTimeInMs)
+}
+
 foreign func FfiOHOSAceFrameworkRegisterCJFuncs(cjFuncs: AtCPackage): Unit
 
 foreign func FfiOHOSAceFrameworkRegisterCJFuncsV2(cjFuncs: CFunc<(CPointer<AtCPackageV2>) -> Unit>): Unit
+
+foreign func FfiOHOSAceFrameworkRegisterCJFuncsV3(cjFuncs: CFunc<(CPointer<AtCPackageV3>) -> Unit>): Unit
 
 func injectFrameworkCJFuncs(): Unit {
     unsafe {
@@ -203,6 +215,16 @@ func injectFrameworkCJFuncs(): Unit {
             val.write(cpkg)
         }
         FfiOHOSAceFrameworkRegisterCJFuncsV2(wrapper)
+        let wrapperV3: CFunc<(CPointer<AtCPackageV3>) -> Unit> = {
+            val: CPointer<AtCPackageV3> =>
+            if (val.isNull()) {
+                throw BusinessException(100001, "Internal error.")
+            }
+            var cpkg: AtCPackageV3 = val.read()
+            cpkg.cjCleanUpIdleTask = OHOSAceFrameworkCJCleanUpIdleTask
+            val.write(cpkg)
+        }
+        FfiOHOSAceFrameworkRegisterCJFuncsV3(wrapperV3)
     }
 }
 
