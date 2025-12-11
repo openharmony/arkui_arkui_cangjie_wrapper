@@ -19,7 +19,7 @@ package ohos.arkui.component.common
 
 import ohos.arkui.component.util.{transAppResourceToLength, LENGTH_VP, LENGTH_PX, LENGTH_FP, LENGTH_LPX}
 import ohos.base.{Length, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign func FfiOHOSAceFrameworkVp2Px(value: Float64): Float64
 

@@ -15,7 +15,7 @@
 
 package ohos.arkui.component.grid
 
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{Length}
 import ohos.arkui.component.scroll.{ScrollableCommonMethod}
 

@@ -20,7 +20,7 @@ package ohos.arkui.component.data_panel
 import ohos.arkui.component.common.{CommonMethodComponent, MultiShadowOptions, DataPanelType}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
 import ohos.base.{VectorFloat64Handle, ResourceColor, Length, FFIVectorFloat64, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 type VectorNativeLinearGradientHandle = CPointer<Unit>
@@ -206,10 +206,10 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
     /**
      * DataPanelShadowOptions Constructor.
      *
-     * @param { ?Length } [radius] - The radius of the shadow blur effect.
-     * @param { ?Array<LinearGradient> } [colors] - The colors to use for the shadow.
-     * @param { ?Length } [offsetX] - The horizontal offset of the shadow from the component.
-     * @param { ?Length } [offsetY] - The vertical offset of the shadow from the component.
+     * @param { ?Length } radius - The radius of the shadow blur effect.
+     * @param { ?Array<LinearGradient> } colors - The colors to use for the shadow.
+     * @param { ?Length } offsetX - The horizontal offset of the shadow from the component.
+     * @param { ?Length } offsetY - The vertical offset of the shadow from the component.
      */
     @!APILevel[
         since: "22",
@@ -233,8 +233,8 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
      * DataPanel Constructor.
      *
      * @param { Array<Float64> } values - The data values to display.
-     * @param { ?Float64 } [max] - The maximum value for scaling the data.
-     * @param { ?DataPanelType } [panelType] - The type of data panel to display.
+     * @param { ?Float64 } max - The maximum value for scaling the data.
+     * @param { ?DataPanelType } panelType - The type of data panel to display.
      */
     @!APILevel[
         since: "22",

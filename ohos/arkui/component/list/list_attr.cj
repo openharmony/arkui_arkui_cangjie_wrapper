@@ -18,7 +18,7 @@ package ohos.arkui.component.list
 import ohos.arkui.component.common.{Axis, EdgeEffect, ListItemAlign, StickyStyle, BarState, ScrollState}
 import ohos.arkui.component.scroll.{ScrollableCommonMethod, NestedScrollOptions, ContentClipMode}
 import ohos.arkui.component.list_item_group.{ListDividerOptions}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{Length, ResourceColor}
 
 /**

@@ -16,7 +16,7 @@
 package ohos.arkui.component.menu_item
 
 import ohos.arkui.component.common.{CommonMethod, FontWeight, FontStyle}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{Length, ResourceColor, ResourceStr}
 
 /**
@@ -101,7 +101,7 @@ sealed interface MenuItemAttribute <: CommonMethod<MenuItemAttribute> {
 
     /**
      * Sets the label info font style.
-     * Family and style are not supported currently and will be fixed in future.
+     * Configures the font properties of the menu item label text.
      *
      * @param { ?Length } size - Indicates the font size of label info text.
      * @param { ?FontWeight } weight - Indicates the font weight of label info text.

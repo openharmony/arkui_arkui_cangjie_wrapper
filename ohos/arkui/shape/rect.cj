@@ -19,7 +19,7 @@ package ohos.arkui.shape
 
 import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{Length, ResourceColor, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkRectInsCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Int64
@@ -42,8 +42,8 @@ public class RectShape <: BaseShape {
     /**
      * Initializes a rectangular shape with optional width and height parameters.
      *
-     * @param { ?Length } [width] - Width of the rectangle.
-     * @param { ?Length } [height] - Height of the rectangle.
+     * @param { ?Length } width - Width of the rectangle.
+     * @param { ?Length } height - Height of the rectangle.
      */
     @!APILevel[
         since: "22",

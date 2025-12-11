@@ -20,7 +20,7 @@ package ohos.arkui.component.loading_progress
 import ohos.arkui.component.common.{CommonMethodComponent, ColoringStrategy}
 import ohos.arkui.component.util.{transAppResourceToResourceColor}
 import ohos.base.{ResourceColor, Color}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkLoadingProgressCreate(): Unit

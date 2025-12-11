@@ -19,7 +19,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder}
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToResourceColor}
 import ohos.base.{Callback, ResourceStr, LengthProp}
 import ohos.ffi.{Callback0Param, RemoteDataManager, Callback1Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkNavdestinationCreate(): Unit
@@ -99,7 +99,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
     /**
      * The construct function of NavDestination.
      *
-     * @param { () -> Unit } [child] - The child component of NavDestination. The default value is {=>}.
+     * @param { () -> Unit } child - The child component of NavDestination. The default value is {=>}.
      * @returns { NavDestination }
      */
     @!APILevel[
@@ -207,7 +207,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
      * the subtitle is scaled down and then clipped with an ellipsis (...).
      *
      * @param { ?CustomBuilder } value - Defines the title.
-     * @param { ?NavigationTitleOptions } [options] - Indicates the options of titlebar.
+     * @param { ?NavigationTitleOptions } options - Indicates the options of titlebar.
      * @returns { This }
      */
     @!APILevel[

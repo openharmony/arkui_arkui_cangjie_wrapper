@@ -16,7 +16,7 @@
 package ohos.arkui.component.rich_text
 
 import ohos.arkui.component.common.{CommonMethod}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * Defines the RichText attribute functions.

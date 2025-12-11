@@ -22,7 +22,7 @@ import ohos.arkui.component.data_panel.{LinearGradient}
 import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, transAppResourceToResourceColor}
 import ohos.base.{VectorUInt32Handle, VectorFloat64Handle, ResourceColor, Length, LengthProp, ResourceStr, FFIVectorUInt32, FFIVectorFloat32}
 import ohos.ffi.{Callback0Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 type VectorNativeGaugeLinearGradientHandle = CPointer<Unit>
@@ -368,8 +368,8 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets indicator options of the ring chart.
      *
-     * @param { ?ResourceStr } [icon] - The indicator icon.
-     * @param { ?Length } [space] - The space between indicator and chart.
+     * @param { ?ResourceStr } icon - The indicator icon.
+     * @param { ?Length } space - The space between indicator and chart.
      * @returns { This } - The instance of the component.
      */
     @!APILevel[

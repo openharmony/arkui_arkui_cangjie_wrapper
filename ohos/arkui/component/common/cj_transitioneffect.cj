@@ -22,7 +22,7 @@ import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{Length, LengthProp}
 import ohos.ffi.{RemoteDataLite, FFIData, releaseFFIData}
 import ohos.business_exception.BusinessException
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.deriving.Derive
 
 foreign func FfiOHOSAceFrameworkTransitionEffectOpacity(number: Float64): Int64
@@ -91,9 +91,9 @@ public class TranslateOptions {
     /**
      * Creates a new TranslateOptions instance with the specified properties.
      *
-     * @param { ?Length } [x] - Translation distance along the x-axis
-     * @param { ?Length } [y] - Translation distance along the y-axis
-     * @param { ?Length } [z] - Translation distance along the z-axis
+     * @param { ?Length } x - Translation distance along the x-axis
+     * @param { ?Length } y - Translation distance along the y-axis
+     * @param { ?Length } z - Translation distance along the z-axis
      */
     @!APILevel[
         since: "22",
@@ -173,11 +173,11 @@ public class ScaleOptions {
     /**
      * Creates a new ScaleOptions instance with the specified properties.
      *
-     * @param { ?Float32 } [x] - Scale ratio along the x-axis
-     * @param { ?Float32 } [y] - Scale ratio along the y-axis
-     * @param { ?Float32 } [z] - Scale ratio along the z-axis
-     * @param { ?Length } [centerX] - X coordinate of the transformation center
-     * @param { ?Length } [centerY] - Y coordinate of the transformation center
+     * @param { ?Float32 } x - Scale ratio along the x-axis
+     * @param { ?Float32 } y - Scale ratio along the y-axis
+     * @param { ?Float32 } z - Scale ratio along the z-axis
+     * @param { ?Length } centerX - X coordinate of the transformation center
+     * @param { ?Length } centerY - Y coordinate of the transformation center
      */
     @!APILevel[
         since: "22",

@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, Repetition, FontStyle
 import ohos.arkui.component.util.{transAppResourceToResourceColor}
 import ohos.base.{ResourceColor, VectorFloat64Handle, Color}
 import ohos.ffi.{RemoteDataLite, Callback0Param, releaseFFIData}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.deriving.Derive
 
 foreign {
@@ -112,7 +112,7 @@ public class RenderingContextSettings {
     /**
      * Create an RenderingContextSettings object based on the antialias and alpha.
      *
-     * @param { ?Bool } [antialias] - Whether enable antialias.
+     * @param { ?Bool } antialias - Whether enable antialias.
      */
     @!APILevel[
         since: "22",

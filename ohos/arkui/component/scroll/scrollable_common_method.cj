@@ -16,7 +16,7 @@
 package ohos.arkui.component.scroll
 
 import ohos.arkui.component.common.{CommonMethod, BarState, ScrollState, ScrollSource}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{ResourceColor, Length}
 import ohos.resource.{AppResource}
 import ohos.arkui.shape.{RectShape}
@@ -32,8 +32,9 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
     /**
      * Sets the scrollbar state.
      *
-     * @param { ?BarState } barState - Scrollbar state. The default value is BarState.Auto.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @param { ?BarState } barState - Scrollbar state.
+     * @default BarState.Auto
+     * @returns { T }
      */
     @!APILevel[
         since: "22",
@@ -44,8 +45,9 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
     /**
      * Sets the scrollbar color.
      *
-     * @param { ?ResourceColor } color - Scrollbar color. The default value is 0x182431.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @param { ?ResourceColor } color - Scrollbar color.
+     * @default 0x182431
+     * @returns { T }
      */
     @!APILevel[
         since: "22",
@@ -56,8 +58,9 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
     /**
      * Sets the scrollbar width.
      *
-     * @param { ?Length } value - Scrollbar width. The default value is 4.vp.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @param { ?Length } value - Scrollbar width.
+     * @default 4.vp
+     * @returns { T }
      */
     @!APILevel[
         since: "22",
@@ -70,7 +73,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * to implement scrolling linkage with the parent component.
      *
      * @param { ?NestedScrollOptions } value - Nested scrolling options.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -82,8 +85,8 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * Sets whether to support scroll gestures. When this attribute is set to <em>false</em>,
      * scrolling by finger or mouse is not supported, but the scroll controller API is not affected.
      *
-     * @param { ?Bool } value - Whether to support scroll gestures. The default value is true.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @param { ?Bool } value
+     * @returns { T }
      */
     @!APILevel[
         since: "22",
@@ -97,7 +100,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * If this attribute is set to a value less than or equal to 0, the default value is used.
      *
      * @param { ?Float64 } value
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T }
      */
     @!APILevel[
         since: "22",
@@ -111,7 +114,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * If this attribute is set to a value less than or equal to 0, the default value is used.
      *
      * @param { ?AppResource } value
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T }
      */
     @!APILevel[
         since: "22",
@@ -122,8 +125,8 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
     /**
      * Sets the reach start.
      *
-     * @param { ?() -> Unit } event - The callback on reach start.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @param { ?() -> Unit } event
+     * @returns { T }
      */
     @!APILevel[
         since: "22",
@@ -135,7 +138,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * Sets the reach end.
      *
      * @param { ?() -> Unit } event - The callback on reach end.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -147,7 +150,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * Called when scrolling start.
      *
      * @param { ?() -> Unit } event - The callback on scroll start.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -158,12 +161,8 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
     /**
      * Called when scrolling has stopped.
      *
-     * <p><strong>NOTE</strong>
-     * <br>1. This event is triggered when scrolling is stopped by the <em>Scroll</em> component or other input settings, such as keyboard and mouse operations.
-     * <br>2. This event is triggered when the controller API is called, accompanied by a transition animation.
-     * </p>
-     * @param { ?() -> Unit } event - Callback triggered when scrolling stops.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @param { ?() -> Unit } event - The callback on scroll stop.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -175,7 +174,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * Fling Speed Limit.
      *
      * @param { ?Float64 } speedLimit - The speed limit.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -187,7 +186,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * The options of fading Edge.
      *
      * @param { Option<Bool> } enabled - Whether enable fading edge.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -200,7 +199,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      *
      * @param { Option<Bool> } enabled - Whether enable fading edge.
      * @param { ?FadingEdgeOptions } options - Fading edge options.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -212,7 +211,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * The clip mode of content.
      *
      * @param { ?ContentClipMode } clip - The clip mode.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -224,7 +223,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * The clip mode of content.
      *
      * @param { ?RectShape } clip - The clip mode.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -243,7 +242,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * </p>
      *
      * @param { Option<(Float64, ScrollState, ScrollSource) -> ScrollResult> } handler - Callback triggered before scrolling.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -262,7 +261,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * </p>
      *
      * @param { Option<(Float64, ScrollState, ScrollSource) -> Unit> } handler - Callback triggered before scrolling.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",
@@ -277,7 +276,7 @@ public interface ScrollableCommonMethod<T> <: CommonMethod<T> {
      * 3. This event supports the out-of-bounds bounce effect.
      *
      * @param { ?OnScrollCallBack } handler - Callback triggered after scrolling.
-     * @returns { T } - Specifically instantiated type of scrollable common method.
+     * @returns { T } - Returns the component itself.
      */
     @!APILevel[
         since: "22",

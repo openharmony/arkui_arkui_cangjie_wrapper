@@ -16,7 +16,7 @@
 package ohos.arkui.component.button
 
 import ohos.arkui.component.common.{CommonMethod, FontWeight, FontStyle}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{ResourceColor, Length, ResourceStr}
 
 /**

@@ -20,7 +20,7 @@ package ohos.arkui.component.rich_editor
 import ohos.arkui.component.common.{FontStyle, FontWeight, CommonMethodComponent, TextDecorationType, ImageSpanAlignment, ImageFit, RichEditorDeleteDirection, CustomBuilder, ResponseType, CopyOptions, RichEditorSpanType}
 import ohos.base.{ExternalString, Color, VectorStringHandle, CStringExtend, ResourceColor,VoidCallback, Callback}
 import ohos.ffi.{releaseFFIData, Callback0Param, Callback1Param, Callback2Param, RemoteDataLite}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.multimedia.image.PixelMap
 import std.collection.ArrayList
 import std.convert.{Parsable}
@@ -643,12 +643,11 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
     /**
      * RichEditorImageSpanResult constructor.
      *
-     * @param { ?RichEditorSpanPosition } [spanPosition] - The position of the image span.
-     * @param { Option<PixelMap> } [valuePixelMap] - The pixel map of the image span.
-     * @param { ?String } [valueResourceStr] - The resource string of the image span.
-     * @param { ?RichEditorImageSpanStyleResult } [imageStyle] - image attribute.
-     * @param { ?(Int32, Int32) } [offsetInSpan] - get offset in span.
-     * @returns { RichEditorImageSpanResult }
+     * @param { ?RichEditorSpanPosition } spanPosition - The position of the image span.
+     * @param { Option<PixelMap> } valuePixelMap - The pixel map of the image span.
+     * @param { ?String } valueResourceStr - The resource string of the image span.
+     * @param { ?RichEditorImageSpanStyleResult } imageStyle - image attribute.
+     * @param { ?(Int32, Int32) offsetInSpan - get offset in span.
      */
     @!APILevel[
         since: "22",

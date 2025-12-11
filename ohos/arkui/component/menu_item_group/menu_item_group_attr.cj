@@ -16,7 +16,7 @@
 package ohos.arkui.component.menu_item_group
 
 import ohos.arkui.component.common.{CommonMethod}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * Defines the MenuItemGroup attribute functions.

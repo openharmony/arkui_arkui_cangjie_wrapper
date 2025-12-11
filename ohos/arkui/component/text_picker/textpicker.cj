@@ -22,7 +22,7 @@ import ohos.arkui.component.native_struct.{DividerParams}
 import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{VectorStringHandle, VectorUInt32Handle, Length, APP_LOG, FFIVectorString}
 import ohos.ffi.{BaseCallBack}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 @C
@@ -116,7 +116,8 @@ func checkSelect(range: Array<String>, value: String): UInt32 {
 public type OnTextPickerChangeCallback = (String, UInt32) -> Unit
 
 /**
- * A text picker dialog box is a dialog box that allows users to select text from the given range.
+ * Creates a text picker based on the selection range specified by range.
+ *
  */
 @!APILevel[
     since: "22",

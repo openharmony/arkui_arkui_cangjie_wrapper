@@ -18,7 +18,7 @@
 package ohos.arkui.component_utils
 
 import ohos.ffi.{CArrFloat32}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * The information of a transformation matrix.

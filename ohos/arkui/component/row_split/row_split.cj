@@ -18,7 +18,7 @@
 package ohos.arkui.component.row_split
 
 import ohos.arkui.component.common.{CommonMethodComponent}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkRowSplitCreate(): Unit

@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CustomBuilder, CommonMethodComponent, CTrans
 import ohos.arkui.component.util.{transAppResourceToLength, normalizeValue, transResourceStrToString, transResourceMediaToString}
 import ohos.ffi.{Callback1Param, releaseFFIData, Callback0Param, RemoteDataLite}
 import ohos.base.{Callback, ResourceStr, VectorFloat32Handle, VectorInt32Handle, Length, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 @C
 struct CJTabsScrollableBarModeOptions {
@@ -238,10 +238,11 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
      * Create a Tabs.
      * Initializes a Tabs component with the specified parameters.
      *
-     * @param { ?BarPosition } [barPosition] - Position of the tab bar.
-     * @param { ?TabsController } [controller] - Controller for managing tab switching.
-     * @param { ?Int32 } [index] - Initial index of the selected tab.
-     * @param { () -> Unit } [child] - Builder function for tab content. The default value is an empty function.
+     * @param { ?BarPosition } barPosition - Position of the tab bar.
+     * @param { ?TabsController } controller - Controller for managing tab switching.
+     * @param { ?Int32 } index - Initial index of the selected tab.
+     * @param { () -> Unit } child - Builder function for tab content. The default value is an empty function.
+     * @returns { Tabs } Returns the Tabs instance.
      */
     @!APILevel[
         since: "22",
@@ -555,8 +556,8 @@ public class TabContent <: CommonMethodComponent<TabContent> & TabContentAttribu
      * <br>When an icon display error occurs, a gray blank block is displayed.
      * </p>
      *
-     * @param { ?ResourceStr } [icon] - TabBar icon.
-     * @param { ?ResourceStr } [text] - TabBar text.
+     * @param { ?ResourceStr } icon - TabBar icon.
+     * @param { ?ResourceStr } text - TabBar text.
      * @returns { This } Returns the TabContent instance.
      */
     @!APILevel[

@@ -22,7 +22,7 @@ import ohos.arkui.component.scroll.{ScrollableCommonMethodComponent, ScrollableC
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, EMPTY_FUNCTION}
 import ohos.base.{Length, ResourceColor, LengthProp, BASE_LOG}
 import ohos.ffi.{Callback0Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.resource.{AppResource, getResourceString}
 import ohos.business_exception.BusinessException
 import std.convert.{Parsable}
@@ -118,8 +118,8 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Grid is returned when the parameter is transferred.
      *
-     * @param { ?Scroller } [scroller] - Scroller controller bound to the grid for controlling scrolling.
-     * @param { ()->Unit } [child] - The child component to be displayed in the grid, typically LazyForEach or Repeat.
+     * @param { ?Scroller } scroller - Scroller controller bound to the grid for controlling scrolling.
+     * @param { ()->Unit } child - The child component to be displayed in the grid, typically LazyForEach or Repeat.
      */
     @!APILevel[
         since: "22",

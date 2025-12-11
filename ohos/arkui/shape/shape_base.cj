@@ -20,7 +20,7 @@ package ohos.arkui.shape
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
 import ohos.base.{ResourceColor, Length, Color, LengthProp}
 import ohos.ffi.{RemoteDataLite}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
 
@@ -147,7 +147,7 @@ public abstract class BaseShape <: RemoteDataLite {
      * Sets the shape offset.
      * Configures the position offset of the shape relative to its container.
      *
-     * @param { ?Length } x - x Offset from the left.
+     * @param { ?Length } y - x Offset from the left.
      * @param { ?Length } y - y Offset from the top.
      * @returns { This } Returns the BaseShape instance.
      */

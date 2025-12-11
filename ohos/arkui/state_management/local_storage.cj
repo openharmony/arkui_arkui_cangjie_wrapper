@@ -168,7 +168,7 @@ public class LocalStorage {
      *
      * @param { String } propName - name of the property to set or create
      * @param { T } newValue - must be of type T, can be undefined or null.
-     * @returns { Bool } true on success, i.e. when above conditions are satisfied, otherwise false.
+     * @returns { boolean } true on success, i.e. when above conditions are satisfied, otherwise false.
      */
     @!APILevel[
         since: "22",

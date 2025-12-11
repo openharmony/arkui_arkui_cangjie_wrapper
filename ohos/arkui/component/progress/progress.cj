@@ -20,7 +20,7 @@ package ohos.arkui.component.progress
 import ohos.arkui.component.common.{CommonMethodComponent, ProgressType}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
 import ohos.base.{VectorFloat64Handle, VectorInt32Handle, Length, ResourceColor, VectorUInt32Handle, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
 
@@ -210,11 +210,11 @@ public class RingStyleOptions <: CommonProgressStyleOptions {
     /**
      * Constructor the ring style Options.
      *
-     * @param { ?Length } [strokeWidth] - Stroke width of the ring. The default value is 4.0vp.
-     * @param { ?Bool } [shadow] - Whether to enable shadow. The default value is false.
-     * @param { ?ProgressStatus } [status] - Status of the progress. The default value is ProgressStatus.Progressing.
-     * @param { ?Bool } [enableSmoothEffect] - Whether to enable smooth effect. The default value is true.
-     * @param { ?Bool } [enableScanEffect] - Whether to enable scan effect. The default value is false.
+     * @param { ?Length } strokeWidth - Stroke width of the ring. The default value is 4.0vp.
+     * @param { ?Bool } shadow - Whether to enable shadow. The default value is false.
+     * @param { ?ProgressStatus } status - Status of the progress. The default value is ProgressStatus.Progressing.
+     * @param { ?Bool } enableSmoothEffect - Whether to enable smooth effect. The default value is true.
+     * @param { ?Bool } enableScanEffect - Whether to enable scan effect. The default value is false.
      */
     @!APILevel[
         since: "22",
@@ -244,8 +244,8 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
      * Called when the progress bar is set.
      *
      * @param { ?Float64 } value - Current progress value. The default value is 0.
-     * @param { ?Float64 } [total] - Total progress value. The default value is 100.
-     * @param { ?ProgressType } [progressType] - Type of the progress bar. The default value is ProgressType.Linear.
+     * @param { ?Float64 } total - Total progress value. The default value is 100.
+     * @param { ?ProgressType } progressType - Type of the progress bar. The default value is ProgressType.Linear.
      */
     @!APILevel[
         since: "22",
@@ -315,9 +315,9 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the style of progress bar is set.
      *
-     * @param { ?Length } [strokeWidth] - Stroke width of the progress bar. The default value is 4.0vp.
-     * @param { ?Int32 } [scaleCount] - Number of scale intervals. The default value is 120.
-     * @param { ?Length } [scaleWidth] - Width of each scale. The default value is 2.0vp.
+     * @param { ?Length } strokeWidth - Stroke width of the progress bar. The default value is 4.0vp.
+     * @param { ?Int32 } scaleCount - Number of scale intervals. The default value is 120.
+     * @param { ?Length } scaleWidth - Width of each scale. The default value is 2.0vp.
      * @returns { This }
      */
     @!APILevel[

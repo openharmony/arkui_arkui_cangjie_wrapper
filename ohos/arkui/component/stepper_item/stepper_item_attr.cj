@@ -16,7 +16,7 @@
 package ohos.arkui.component.stepper_item
 
 import ohos.arkui.component.common.{CommonMethod, ItemState}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * Provides methods for configuring the appearance and behavior of the StepperItem component.

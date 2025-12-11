@@ -20,7 +20,7 @@ package ohos.arkui.component.canvas
 import ohos.arkui.component.common.{LengthMetricsUnit}
 import ohos.base.{FFIVectorUInt8, VectorUInt8Handle}
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback0Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkCanvasImageDataCtor(width: Float64, height: Float64, handle: VectorUInt8Handle, unit: Int32): Int64
@@ -96,7 +96,7 @@ public class ImageData <: RemoteDataLite {
      * @param { ?Float64 } width - Width of the image.
      * @param { ?Float64 } height - Height of the image.
      * @param { ?Array<UInt8> } data - Data of the image. If this parameter is not specified, the default value is a black rectangular image.
-     * @param { ?LengthMetricsUnit } [unit] - the unit mode
+     * @param { ?LengthMetricsUnit } unit - the unit mode
      */
     @!APILevel[
         since: "22",
@@ -126,7 +126,7 @@ public class ImageData <: RemoteDataLite {
      *
      * @param { ?Float64 } width - Width of the image.
      * @param { ?Float64 } height - Height of the image.
-     * @param { ?LengthMetricsUnit } [unit] - the unit mode.
+     * @param { ?LengthMetricsUnit } unit - the unit mode.
      */
     @!APILevel[
         since: "22",

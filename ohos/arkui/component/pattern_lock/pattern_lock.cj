@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
 import ohos.base.{ResourceColor, Length, VectorInt32Handle, FFIVectorInt32, LengthProp}
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback1Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 @C
 struct CJCircleStyleOptions {
@@ -113,7 +113,7 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
     /**
      * Constructor.
      *
-     * @param { ?PatternLockController } [controller] - Sets PatternLock component controller, which can be used to control component status reset.
+     * @param { ?PatternLockController } controller - Sets PatternLock component controller, which can be used to control component status reset.
      */
     @!APILevel[
         since: "22",

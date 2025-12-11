@@ -20,7 +20,7 @@ package ohos.arkui.component.line
 import ohos.arkui.component.shape.{CommonShapeMethodComponent, CommonShapeMethod}
 import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{Length, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkLineCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
@@ -41,8 +41,8 @@ public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
     /**
      * Uses new to create the line.
      *
-     * @param { ?Length } [width] - Width of the rectangle where the line resides.
-     * @param { ?Length } [height] - Height of the rectangle where the line resides.
+     * @param { ?Length } width - Width of the rectangle where the line resides.
+     * @param { ?Length } height - Height of the rectangle where the line resides.
      */
     @!APILevel[
         since: "22",

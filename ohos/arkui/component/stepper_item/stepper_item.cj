@@ -18,7 +18,7 @@
 package ohos.arkui.component.stepper_item
 
 import ohos.arkui.component.common.{CommonMethodComponent, ItemState}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkStepperItemCreate(): Unit
@@ -97,7 +97,7 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
      * Sets the display state of the Step Navigator nextLabel.
      * Configures the status of the step item, which affects its appearance and behavior.
      *
-     * @param { ?ItemState } [status] - Display state of the step item.
+     * @param { ?ItemState } status - Display state of the step item.
      * @returns { This } Returns the StepperItem instance.
      */
     @!APILevel[

@@ -16,7 +16,7 @@
 package ohos.arkui.component.web
 
 import ohos.arkui.component.common.{WebDarkMode, CommonMethod, MixedMode, NestedScrollMode}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{Callback}
 import ohos.web.webview.{WebviewController}
 

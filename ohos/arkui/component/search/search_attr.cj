@@ -16,7 +16,7 @@
 package ohos.arkui.component.search
 
 import ohos.arkui.component.common.{CommonMethod, FontWeight, FontStyle, CopyOptions}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{ResourceStr, ResourceColor, Length}
 
 /**
@@ -44,7 +44,8 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * Set the search button text, fontSize and fontColor.
      * Configures the color of the placeholder text.
      *
-     * @param { ?ResourceColor } value - indicates the color of the placeholder text. The default value is 0x99182431. The default value on wearable devices is 0x99ffffff.
+     * @param { ?ResourceColor } value - indicates the color of the placeholder text. The default value on wearable devices is 0x9ffffff.
+     * @default 0x99182431
      * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[
@@ -54,12 +55,8 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
     func placeholderColor(value: ?ResourceColor): SearchAttribute
 
     /**
-     * Set the font used for place holder text
-     *
-     * <p><strong>NOTE</strong>:
-     * <br>The 'HarmonyOS Sans' font and registered custom fonts are supported.
-     * <br>The default font size on wearable devices is 18.px.
-     * </p>
+     * Set the font used for place holder text.
+     * Configures the font properties of the placeholder text.
      *
      * @param { ?Length } size - The placeholder font size.
      * @param { ?FontWeight } weight - The placeholder font weight.
@@ -79,12 +76,8 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
     ): SearchAttribute
 
     /**
-     * Set the font used for input text
-     *
-     * <p><strong>NOTE</strong>:
-     * <br>Currently, only the default font family is supported.
-     * <br>The default font size on wearable devices is 18.fp.
-     * </p>
+     * Set the font used for input text.
+     * Configures the font properties of the input text.
      *
      * @param { ?Length } size - Font size.
      * @param { ?FontWeight } weight - Font weight.
@@ -109,7 +102,8 @@ sealed interface SearchAttribute <: CommonMethod<SearchAttribute> {
      * all other actions, such as copying, cutting, and sharing, are disabled.
      * Dragging is not allowed when CopyOptions.None is set.
      *
-     * @param { ?CopyOptions } value - Copy options for the search input. The default value is CopyOptions.LocalDevice.
+     * @param { ?CopyOptions } value - Copy options for the search input.
+     * @default CopyOptions.LocalDevice
      * @returns { SearchAttribute } Returns the search attribute.
      */
     @!APILevel[

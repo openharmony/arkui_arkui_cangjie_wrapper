@@ -20,7 +20,7 @@ package ohos.arkui.component.rect
 import ohos.arkui.component.shape.{CommonShapeMethodComponent}
 import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{Length, LengthProp, FFIVectorFloat64, FFIVectorInt32, VectorFloat64Handle, VectorInt32Handle}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkRectCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
@@ -52,8 +52,8 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
     /**
      * Initializes a Rect component with optional width and height.
      *
-     * @param { ?Length } [width] - Width of the rectangle.
-     * @param { ?Length } [height] - Height of the rectangle.
+     * @param { ?Length } width - Width of the rectangle.
+     * @param { ?Length } height - Height of the rectangle.
      */
     @!APILevel[
         since: "22",

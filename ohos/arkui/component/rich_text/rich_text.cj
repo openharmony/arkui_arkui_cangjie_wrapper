@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.ffi.{Callback0Param}
 import ohos.base.{ResourceStr}
 import ohos.resource.{AppResource, getResourceString}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkRichTextCreate(content: CString): Unit

@@ -20,7 +20,7 @@ package ohos.arkui.component.ellipse
 import ohos.arkui.component.shape.{CommonShapeMethodComponent, CommonShapeMethod}
 import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{Length, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign func FfiOHOSAceFrameworkEllipseCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
 
@@ -35,8 +35,8 @@ public class Ellipse <: CommonShapeMethodComponent<Ellipse> & EllipseAttribute {
     /**
      * Create an ellipse.
      *
-     * @param { ?Length } [width] - Set width.
-     * @param { ?Length } [height] - Set Height.
+     * @param { ?Length } width - Set width.
+     * @param { ?Length } height - Set Height.
      */
     @!APILevel[
         since: "22",

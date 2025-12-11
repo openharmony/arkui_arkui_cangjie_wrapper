@@ -24,7 +24,7 @@ import ohos.arkui.component.scroll.{ScrollableCommonMethodComponent, ScrollableC
 import ohos.arkui.component.util.{LENGTH_VP, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual, EMPTY_FUNCTION}
 import ohos.base.{Length, LengthProp, ResourceColor, BASE_LOG}
 import ohos.ffi.{Callback3Param, Callback2Param, Callback0Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.resource.{AppResource, getResourceString}
 import std.convert.{Parsable}
 
@@ -196,9 +196,9 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
     /**
      * Defines the constructor of List.
      *
-     * @param { ?Int64 } [space] - The space between items.
-     * @param { ?Int32 } [initialIndex] - The initial index of the list.
-     * @param { ?Scroller } [scroller] - The scroller instance.
+     * @param { ?Int64 } space - The space between items.
+     * @param { ?Int32 } initialIndex - The initial index of the list.
+     * @param { ?Scroller } scroller - The scroller instance.
      * @param { () -> Unit } child - The child component builder.
      */
     @!APILevel[

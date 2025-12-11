@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, ControlSize, FontWeig
 import ohos.arkui.component.native_struct.{CJBorderRadius, CJBorder}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength, normalizeValue, getLengthUnitOrFp, lessNotEqual, LENGTH_PERCENT}
 import ohos.base.{Length, LengthProp, ResourceStr, ResourceColor, Color, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.resource.{AppResource}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
@@ -259,6 +259,7 @@ public enum ButtonStyleMode {
 public class ButtonOptions {
     /**
      * Describes the button style.
+     * @returns { ButtonType } The button shape type.
      */
     @!APILevel[
         since: "22",
@@ -267,52 +268,61 @@ public class ButtonOptions {
     public var shape: ?ButtonType
     /**
      * Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
-     * @default true
+     * @returns { Bool } Whether the state effect is enabled.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var stateEffect: ?Bool
-
+    /**
+     * @default true
+     */
     /**
      * Describes the button style.
-     * @default ButtonStyleMode.Emphasized
+     * @returns { ButtonStyleMode } The button style mode.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var buttonStyle: ?ButtonStyleMode
-
+    /**
+     * @default ButtonStyleMode.Emphasized
+     */
     /**
      * Describes the button size.
-     * @default ControlSize.Normal
+     * @returns { ControlSize } The control size of the button.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var controlSize: ?ControlSize
-
+    /**
+     * @default ControlSize.Normal
+     */
     /**
      * Describes the button role.
-     * @default ButtonRole.Normal
+     * @returns { ButtonRole } The role of the button.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var role: ?ButtonRole
+    /**
+     * @default ButtonRole.Normal
+     */
 
     /**
      * ButtonOptions constructor.
      *
-     * @param { ?ButtonType } [shape] - Describes the button style.
-     * @param { ?Bool } [stateEffect] - Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
-     * @param { ?ButtonStyleMode } [buttonStyle] - Describes the button style.
-     * @param { ?ControlSize } [controlSize] - Describes the button size.
-     * @param { ?ButtonRole } [role] - Describes the button role.
+     * @param { ?ButtonType } shape - Describes the button style.
+     * @param { ?Bool } stateEffect - Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
+     * @param { ?ButtonStyleMode } buttonStyle - Describes the button style.
+     * @param { ?ControlSize } controlSize - Describes the button size.
+     * @param { ?ButtonRole } role - Describes the button role.
      * @returns { ButtonOptions } A new instance of ButtonOptions.
      */
     @!APILevel[
@@ -344,6 +354,7 @@ public class ButtonOptions {
 public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Button constructor.
+     * @returns { Button } A new instance of Button.
      */
     @!APILevel[
         since: "22",
@@ -361,6 +372,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Button constructor.
      *
      * @param { () -> Unit } child - The child component of the button.
+     * @returns { Button } A new instance of Button.
      */
     @!APILevel[
         since: "22",
@@ -377,6 +389,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Create Button with inner text label.
      *
      * @param { ResourceStr } label - The button label value.
+     * @returns { Button } A new instance of Button.
      */
     @!APILevel[
         since: "22",
@@ -395,6 +408,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Create Button with Text child.
      *
      * @param { ?ButtonOptions } options - The options of button.
+     * @returns { Button } A new instance of Button.
      */
     @!APILevel[
         since: "22",
@@ -420,6 +434,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      *
      * @param { ?ButtonOptions } options - The options of button.
      * @param { () -> Unit } child - The child component of the button.
+     * @returns { Button } A new instance of Button.
      */
     @!APILevel[
         since: "22",
@@ -446,6 +461,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      *
      * @param { ?ResourceStr } label - The button label.
      * @param { ?ButtonOptions } options - The options of button.
+     * @returns { Button } A new instance of Button.
      */
     @!APILevel[
         since: "22",

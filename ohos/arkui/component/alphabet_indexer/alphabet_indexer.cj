@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, FontWeight, FontStyle
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString}
 import ohos.base.{FFIVectorString, Length, ResourceStr, VectorStringHandle, ResourceColor, LengthProp, Color}
 import ohos.ffi.{Callback1Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkAlphabetIndexerCreate(handle: VectorStringHandle, selected: UInt32): Unit
@@ -249,10 +249,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Select the text text style.
      *
-     * @param { ?Length } [size] - The selected item font size.
-     * @param { ?FontWeight } [weight] - The selected item font weight.
-     * @param { ?ResourceStr } [family] - The selected item font family.
-     * @param { ?FontStyle } [style] - The selected item font style.
+     * @param { ?Length } size - The selected item font size.
+     * @param { ?FontWeight } weight - The selected item font weight.
+     * @param { ?ResourceStr } family - The selected item font family.
+     * @param { ?FontStyle } style - The selected item font style.
      * @returns { This } Returns the current AlphabetIndexer instance.
      */
     @!APILevel[
@@ -282,14 +282,14 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
         }
         this
     }
-
-    /**
-     * Select the text background color.
-     *
-     * @param { ?Length } [size] - The popup font size.
-     * @param { ?FontWeight } [weight] - The popup font weight.
-     * @param { ?ResourceStr } [family] - The popup font family.
-     * @param { ?FontStyle } [style] - The popup font style.
+ 
+    /**	
+     * Select the text background color.	
+     *	
+     * @param { ?Length } size - The popup font size.
+     * @param { ?FontWeight } weight - The popup font weight.
+     * @param { ?ResourceStr } family - The popup font family.
+     * @param { ?FontStyle } style - The popup font style.
      * @returns { This } Returns the current AlphabetIndexer instance.
      */
     @!APILevel[
@@ -360,7 +360,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Size of the letter area on the letter index bar. The letter area is a square. Set the length of the square side.
      *
-     * @param { ?Length } size - The normal item size.
+     * @param { ?Length } value - The normal item size.
      * @returns { This } Returns the current AlphabetIndexer instance.
      */
     @!APILevel[

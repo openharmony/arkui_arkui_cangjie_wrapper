@@ -16,7 +16,7 @@
 package ohos.arkui.component.line
 
 import ohos.arkui.component.shape.{CommonShapeMethod}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * Defines Line Component.

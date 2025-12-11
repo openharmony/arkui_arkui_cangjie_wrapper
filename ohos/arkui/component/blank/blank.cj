@@ -20,7 +20,7 @@ package ohos.arkui.component.blank
 import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual, normalizeValue}
 import ohos.base.{Length, ResourceColor, Color, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
@@ -41,7 +41,7 @@ public class Blank <: CommonMethodComponent<Blank> & BlankAttribute {
     /**
      * Minimum size of the Blank component in the container along the main axis.
      *
-     * @param { ?Length } [min] - Blank options.
+     * @param { ?Length } min - Blank options.
      * @default 0.vp
      */
     @!APILevel[

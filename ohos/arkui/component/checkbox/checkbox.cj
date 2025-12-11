@@ -22,7 +22,7 @@ import ohos.arkui.component.native_struct.{VectorNativeRectangleHandle, CJRespon
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessNotEqual}
 import ohos.base.{ResourceColor, Length, BASE_LOG, LengthProp}
 import ohos.ffi.{Callback0Param, Callback1Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 const INVALID_UNIT: Int32 = -1
 
@@ -82,9 +82,9 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * Construct the Checkbox component.
      * Called when the Checkbox component is used.
      *
-     * @param { ?String } [name] - The initial name of current checkbox.
-     * @param { ?String } [group] - The initial group name of current checkbox.
-     * @param { ?CustomBuilder } [indicatorBuilder] - The builder of current checkbox.
+     * @param { ?String } name - The initial name of current checkbox.
+     * @param { ?String } group - The initial group name of current checkbox.
+     * @param { ?CustomBuilder } indicatorBuilder - The builder of current checkbox.
      */
     @!APILevel[
         since: "22",

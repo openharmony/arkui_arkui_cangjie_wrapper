@@ -21,9 +21,9 @@ import ohos.arkui.component.common.{BorderStyle, EnterKeyType, TextAlign, InputT
 import ohos.arkui.component.native_struct.{CJBorderRadius, CJEdge, CJBorder}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, getLengthUnitOrFp, lessNotEqual, LENGTH_PERCENT}
 import ohos.base.{Length, ResourceColor, CStringExtend, APP_LOG, Color, LengthProp}
-import ohos.ffi.{Callback1Param, Callback0Param, Callback2Param, Callback3Param}
-import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
+import ohos.ffi.{Callback1Param, Callback0Param, Callback2Param, Callback3Param}
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkTextFieldSetHeight(height: Float64, unit: Int32): Unit

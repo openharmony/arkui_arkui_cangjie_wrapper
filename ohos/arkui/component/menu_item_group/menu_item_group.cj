@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder}
 import ohos.arkui.component.util.{transResourceStrToString}
 import ohos.base.{ResourceStr}
 import ohos.ffi.{Callback0Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkMenuItemGroupCreateByBuilder(header: Int64, footer: Int64): Unit
@@ -37,12 +37,13 @@ foreign {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGroupAttribute {
+
     /**
      * Creates the MenuItemGroup component.
      *
-     * @param { ?ResourceStr } [header] - Defines the header display info.
-     * @param { ?ResourceStr } [footer] - Defines the footer display info.
-     * @param { () -> Unit } [child] - The child component of menu item group.
+     * @param { ?ResourceStr } header - Defines the header display info.
+     * @param { ?ResourceStr } footer - Defines the footer display info.
+     * @param { () -> Unit } child - The child component of menu item group.
      */
     @!APILevel[
         since: "22",
@@ -63,7 +64,7 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGro
      *
      * @param { ?CustomBuilder } header - Defines the header display info.
      * @param { ?CustomBuilder } footer - Defines the footer display info.
-     * @param { () -> Unit } [child] - The child component of menu item group.
+     * @param { () -> Unit } child - The child component of menu item group.
      */
     @!APILevel[
         since: "22",

@@ -23,7 +23,7 @@ import ohos.arkui.component.util.{transAppResourceToLength, lessNotEqual}
 import ohos.arkui.component.custom_component
 import ohos.base.{Length, BASE_LOG, LengthProp}
 import ohos.ffi.{Callback1Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkRadioCreate(group: CString, value: CString): Unit
