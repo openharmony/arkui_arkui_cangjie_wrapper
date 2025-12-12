@@ -68,13 +68,50 @@ func isForEach(refExpr: RefExpr) {
     return COMPONENT_TYPE_FOREACH_LIST.contains(refExpr.identifier.value)
 }
 
+/**
+ * Validates and processes the parameters of a ForEach component.
+ * 
+ * This function checks if the given parameter has a valid identifier and if that identifier
+ * matches one of the expected parameter names for the ForEach component. It reports errors
+ * if the parameter is invalid or unknown.
+ *
+ * @param { Argument } para - The Argument object representing the parameter to validate.
+ * @param { Array<String> } expectedParamNames - An array of valid parameter names that are allowed.
+ * @param { String } paramName - The name of the parameter being validated (used in error messages).
+ * @returns { Bool } true if the parameter is valid and recognized, false otherwise.
+ */
+func validateAndProcessForEachParameter(para: Argument, expectedParamNames: Array<String>,
+                                      paramName: String): Bool {
+    let identifier = try {
+        para.identifier
+    } catch(e: Exception) {
+        diagReport(DiagReportLevel.ERROR, para.toTokens(),
+        "Invalid parameter: expected named parameter '${paramName}'.", "")
+        return false
+    }
+    
+    var isValidName = false
+    for (expectedName in expectedParamNames) {
+        if (identifier.value == expectedName) {
+            isValidName = true
+            break
+        }
+    }
+    
+    if (!isValidName) {
+        diagReport(DiagReportLevel.ERROR, Tokens().append(identifier),
+        "unknown named argument: '" + identifier.value + "'.", "")
+        return false
+    }
+    return true
+}
+
 @When[pipeline == "NG"]
 func generateForEachCreate(callExpr: CallExpr, thisView: Tokens) {
     let baseExpr = match (callExpr.callFunc) {
         case v: RefExpr => v
         case _ => throw IllegalArgumentException("callFunc must be RefExpr")
     }
-
     // the second parameter is lambdaExpr, and it contains child components
     let paraExpr = callExpr.arguments[1].expr
     let lamExpr = match (paraExpr) {
@@ -101,16 +138,18 @@ func generateForEachCreate(callExpr: CallExpr, thisView: Tokens) {
     )
     for (idx in 0..callExpr.arguments.size) {
         let para = callExpr.arguments[idx]
-        let paraExpr = para.expr
-
-        // In ForEach component, the second parameter is lambdaExpr.
-        if (idx == 1) {
-            res = res + quote(itemGenFunc: forEachItemGenFunction)
-            if (idx != callExpr.arguments.size - 1) {
-                res = res + quote(, )
-            }
-        } else {
-            res = res + quote($para)
+        match (idx) {
+            case 1 =>
+                validateAndProcessForEachParameter(para, ["itemGenerator", "itemGeneratorFunc"], "itemGenerator")
+                res = res + quote(itemGenFunc: forEachItemGenFunction)
+                if (idx != callExpr.arguments.size - 1) {
+                    res = res + quote(, )
+                }
+            case 2 =>
+                validateAndProcessForEachParameter(para, ["keyGenerator", "keyGeneratorFunc"], "keyGenerator")
+                para.identifier = Token(TokenKind.IDENTIFIER, "keyGeneratorFunc")
+                res.append(quote($para))
+            case _ => res = res + quote($para)
         }
     }
     return res + quote(\)
@@ -124,13 +163,13 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
         case _ => throw IllegalArgumentException("callFunc must be RefExpr")
     }
     let paraExpr = callExpr.arguments[1].expr
-    let lamExpr = match (paraExpr) {
+    let itemLambda = match (paraExpr) {
         case v: LambdaExpr => v
         case _ =>
-            DIAG.fatal(quote($paraExpr), "there should be a lambda in ForEach component.")
-            throw IllegalArgumentException("there should be a lambda in ForEach component.")
+            DIAG.fatal(quote($paraExpr), "there should be a lambda in LazyForEach component.")
+            throw IllegalArgumentException("there should be a lambda in LazyForEach component.")
     }
-    var paramType = lamExpr.funcParams[0].paramType
+    var paramType = itemLambda.funcParams[0].paramType
 
     let compId = generateNewId()
     var res = quote($baseExpr<$paramType>().create\($compId, $thisView, )
@@ -138,32 +177,42 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
         let para = callExpr.arguments[idx]
         let paraExpr = para.expr
 
-        // In ForEach component, the second parameter is lambdaExpr, and it contains child components
-        if (idx == 1) {
-            let lamExpr = match (paraExpr) {
-                case v: LambdaExpr => v
-                case _ =>
-                    // The second parameter should be lambdaExpr, compiler will check it.
-                    continue
-            }
-            checkLazyForEachBody(paraExpr)
-            let lamExprParams = lamExpr.funcParams
-            let ident = getArgumentIdentifier(para)
-            var myBuild = match (ident.value) {
-                case "" => quote({)
-                case _ => ident + quote(: {)
-            }
-            for (param in lamExprParams) {
-                myBuild = myBuild + quote($param)
-            }
-            let lamExprBody = lamExpr.nodes
-            myBuild = myBuild + quote( => ) + generateFuncBody(lamExprBody, thisView)
-            res = res + myBuild + quote(})
-            if (idx != callExpr.arguments.size - 1) {
-                res = res + quote(, )
-            }
-        } else {
-            res = res + quote($para)
+        match (idx) {
+            case 1 =>
+                // Item generator parameter
+                checkLazyForEachBody(para.expr)
+                let lambdaParams = itemLambda.funcParams
+                
+                // Create item generator function signature
+                var lambdaSignature = if (validateAndProcessForEachParameter(
+                        para, ["itemGenerator", "itemGeneratorFunc"], "itemGenerator")) {
+                    quote(itemGeneratorFunc: {)
+                } else {
+                    quote({)
+                }
+                
+                // Add parameters to signature
+                for (param in lambdaParams) {
+                    lambdaSignature = lambdaSignature + quote($param)
+                }
+                
+                // Complete lambda function
+                let lambdaBody = itemLambda.nodes
+                let processedBody = generateFuncBody(lambdaBody, thisView)
+                res = res + lambdaSignature + quote( => ) + processedBody + quote(})
+                
+                // Add separator if not last argument
+                if (idx != callExpr.arguments.size - 1) {
+                    res = res + quote(, )
+                }
+            case 2 =>
+                // Check key generator parameter
+                validateAndProcessForEachParameter(para, ["keyGenerator", "keyGeneratorFunc"], "keyGenerator")
+                para.identifier = Token(TokenKind.IDENTIFIER, "keyGeneratorFunc")
+                res.append(quote($para))
+            case _ =>
+                // Other parameters
+                res = res + quote($para)
         }
     }
     return res + quote(\)
